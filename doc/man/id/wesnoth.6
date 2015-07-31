@@ -62,17 +62,11 @@ ditentukan, pilihan kesulitan kampanye widget akan muncul.
 Id skenario dari kampanye yang ditentukan. Standarnya adalah skenario
 pertama.
 .TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Menentukan konfigurasi direktori pengguna ke \fInama\fP dalam $HOME atau "My
-Documents\eMy Games" untuk windows. Anda juga dapat menentukan suatu lokasi
-sesungguhnya untuk direktori konfigurasi diluar $HOME atau "My Documents\eMy
-Games"
-.TP 
-\fB\-\-config\-path\fP
-mencetak alur direktori konfigurasi pengguna dan keluar.
-.TP 
 \fB\-\-data\-dir <directori>\fP
 menggantikan direktori data dengan yang ditetapkan
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 memungkinkan opsi perintah tambahan dalam game mode (lihat halaman wiki di
@@ -188,6 +182,24 @@ kesalahan pengesahan diperlakukan sebagai kesalahan fatal.
 \fB\-t, \-\-test\fP
 jalankan permainan pada pengujian skenario kecil\-kecilan.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+mencetak alur direktori konfigurasi pengguna dan keluar.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 berasumsi bahwa cache sah. (berbahaya)
 .TP 
@@ -228,6 +240,10 @@ untuk pembandingan scriptable.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 menjalankan permainan tanpa GUI. Harus muncul sebelum \fB\-\-multiplayer\fP
@@ -271,7 +287,7 @@ Kunjungi halaman resmi kami di: http://www.wesnoth.org/
 .
 .SH "HAK CIPTA"
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Hak Cipta \(co 2003\-2013 David White <davidnwhite@verizon.net>
 .br
 Ini adalah perangkat lunak gratis, perangkat lunak ini berlisensi di bawah
 GPL versi 2, seperti dipublikasikan oleh Free Software Foundation. TIDAK ADA

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -233,7 +233,7 @@ void statistics_dialog::display_stats(bool campaign)
 		unit_count_[0] = n;
 		str << _("Recruits") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold.png"
 		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
@@ -244,7 +244,7 @@ void statistics_dialog::display_stats(bool campaign)
 		unit_count_[1] = n;
 		str << _("Recalls") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold.png"
 		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
@@ -262,7 +262,7 @@ void statistics_dialog::display_stats(bool campaign)
 		cost = statistics::sum_cost_str_int_map(stats.deaths);
 		str << _("Losses") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold.png"
 		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
@@ -273,7 +273,7 @@ void statistics_dialog::display_stats(bool campaign)
 		cost = statistics::sum_cost_str_int_map(stats.killed);
 		str << _("Kills") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold.png"
 		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -96,22 +96,23 @@ private:
  * Makes it so the village at the given location is owned by the given side.
  * Returns true if getting the village triggered a mutating event.
  */
-bool get_village(const map_location& loc, int side, int *time_bonus = NULL);
+bool get_village(const map_location& loc, int side, int *time_bonus = NULL, bool fire_event = true);
 
 /// Moves a unit across the board.
-size_t move_unit(const std::vector<map_location> &steps,
-                 replay* move_recorder, undo_list* undo_stack,
-                 bool continued_move = false, bool show_move = true,
+/// And enters the synced context.
+size_t move_unit_and_record(const std::vector<map_location> &steps,
+                 undo_list* undo_stack,
+                 bool continued_move = false,
+				 bool show_move = true,
                  bool* interrupted = NULL,
-                 move_unit_spectator* move_spectator = NULL,
-                 const map_location* replay_dest = NULL);
+                 move_unit_spectator* move_spectator = NULL);
 
-/**
- * Will return true iff the unit @a u has any possible moves
- * it can do (including attacking etc).
- */
-bool unit_can_move(const unit &u);
-
+/// Moves a unit across the board.
+/// to be called from replay when we are already in the synced context.
+size_t move_unit_from_replay(const std::vector<map_location> &steps,
+                 undo_list* undo_stack,
+                 bool continued_move, bool skip_ally_sighted,
+				 bool show_move = true);
 
 }//namespace actions
 

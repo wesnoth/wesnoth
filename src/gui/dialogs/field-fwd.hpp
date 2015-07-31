@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #ifndef GUI_DIALOGS_FIELD_FORWARD_HPP_INCLUDED
 #define GUI_DIALOGS_FIELD_FORWARD_HPP_INCLUDED
 
-namespace gui2 {
+namespace gui2
+{
 
 class twidget;
 class twindow;
@@ -31,11 +32,11 @@ class tfield_label;
 class tfield_text;
 
 // NOTE the const must be in the template else things fail :/ bug in gcc?
-template<class T, class W, class CT = const T> class tfield;
+template <class T, class W, class CT = const T>
+class tfield;
 class tinteger_selector_;
 typedef tfield<int, tinteger_selector_> tfield_integer;
 
 } // namespace gui2
 
 #endif
-

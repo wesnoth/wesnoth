@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Fabian Mueller
+   Copyright (C) 2011 - 2015 by Fabian Mueller
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,8 @@
 #include "joystick.hpp"
 #include "preferences.hpp"
 #include "log.hpp"
-
-#define PI 3.14159265
+#include <boost/math/constants/constants.hpp>
+using namespace boost::math::constants;
 
 static lg::log_domain log_joystick("joystick");
 #define ERR_JOY LOG_STREAM(err, log_joystick)
@@ -55,7 +55,7 @@ static const char* name(
 
 static bool attached(const std::vector<SDL_Joystick*>&, const size_t index)
 {
-	return SDL_JoystickOpened(index);
+	return SDL_JoystickOpened(index) == 1;
 }
 
 static const char* name(const std::vector<SDL_Joystick*>&, const size_t index)
@@ -233,7 +233,7 @@ std::pair<double, double> joystick_manager::get_polar_coordinates(int joystick_x
 	const double radius = (sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f))) / 32768.0;
 	const double angle = (atan2(
 			  static_cast<double>(values.second)
-			, static_cast<double>(values.first))) * 180.0 / PI;
+			, static_cast<double>(values.first))) * 180.0 / pi<double>();
 
 	return std::make_pair(radius, angle);
 }
@@ -392,7 +392,7 @@ double joystick_manager::get_angle() {
 
 	const double angle = (atan2(
 				  static_cast<double>(y_axis)
-				, static_cast<double>(x_axis))) * 180.0 / PI;
+				, static_cast<double>(x_axis))) * 180.0 / pi<double>();
 
 	return angle;
 }
@@ -400,13 +400,13 @@ double joystick_manager::get_angle() {
 
 const map_location joystick_manager::get_next_hex(int x_axis, int y_axis, map_location loc)  {
 
-	map_location new_loc = map_location::null_location;
+	map_location new_loc = map_location::null_location();
 
 	if (x_axis == 0) return (y_axis > 0) ? get_direction(loc, SOUTH) : get_direction(loc, NORTH);
 	if (y_axis == 0) return (x_axis > 0) ? get_direction(loc, EAST) : get_direction(loc, WEST);
 	const double angle = (atan2(
 			  static_cast<double>(y_axis)
-			, static_cast<double>(x_axis))) * 180.0 / PI;
+			, static_cast<double>(x_axis))) * 180.0 / pi<double>();
 
 	if (angle < -112.5 && angle > -157.5)
 		new_loc = get_direction(loc, NORTH_WEST);

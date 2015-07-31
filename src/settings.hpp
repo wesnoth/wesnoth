@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 #define SETTINGS_HPP_INCLUDED
 
 #include <string>
+#include "game_classification.hpp"
 
 /**
  * Contains the general settings which have a default.
@@ -41,14 +42,15 @@ namespace settings {
 	 *  @returns            the number of turns
 	 */
 	int get_turns(const std::string& value);
-	const int turns_min = 1;          //< minimum number of turns
-	const int turns_max = 100;        //< maximum number of turns
-	const int turns_default = 100;    //< default number of turns
-	const int turns_step = 1;         //< slider step size for turns
+	const int turns_min = 1;          /**< minimum number of turns */
+	const int turns_max = 100;        /**< maximum number of turns */
+	const int turns_default = 100;    /**< default number of turns */
+	const int turns_step = 1;         /**< slider step size for turns */
 
 	/**
 	 *  Gets the village gold.
 	 *  If no valid value supplied, it will return a default.
+	 *  The default is 1 for singleplayer, and 2 for multiplayer.
 	 *  The value is also range checked.
 	 *  When out of bounds, it will be set to the nearest bound.
 	 *
@@ -56,7 +58,7 @@ namespace settings {
 	 *
 	 *  @returns            the village gold
 	 */
-	int get_village_gold(const std::string& value);
+	int get_village_gold(const std::string& value, const game_classification* classification = NULL);
 
 	/**
 	 *  Gets the village unit level support.

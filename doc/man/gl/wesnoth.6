@@ -35,14 +35,14 @@ mundo fantástico.
 
 Derrota a todos os líderes inimigos escollendo sabiamente as tropas e
 xestionando coidadosamente os recursos de ouro e vilas. Todas as unidades
-teñen as fortalezas e debilidades. Para gañar, desprega as túas forzas de
-xeito que aproveiten completamente o seu potencial, e impide que os inimigos
-fagan o mesmo. A medida que as unidades consigan experiencia, adquirirán
-novas habilidades e volveranse máis fortes. Xoga na lingua que queiras e pon
-a proba as túas habilidades contra a intelixencia artificial, ou únete á
-enorme comunidade internacional de xogadores que se reúne na internet. Crea
-unidades, escenarios ou campañas personalizadas, e compárteo todo co resto
-da comunidade.
+teñen fortalezas e debilidades de seu. Para gañar, desprega as túas forzas
+de xeito que aproveiten completamente o seu potencial, e impide que os
+inimigos fagan o mesmo. A medida que as unidades consigan experiencia,
+adquirirán novas habilidades e volveranse máis fortes. Xoga na lingua que
+queiras e pon a proba as túas habilidades contra a intelixencia artificial,
+ou únete á enorme comunidade internacional de xogadores que se reúne en
+internet. Crea unidades, escenarios ou campañas personalizadas, e compárteo
+todo co resto da comunidade.
 .
 .SH OPCIÓNS
 .
@@ -64,17 +64,11 @@ aparecería un diálogo de escolla da dificultade da campaña.
 O identificador do escenario da campaña indicada. De omitirse o parámetro,
 empregarase o primeiro escenario.
 .TP 
-\fB\-\-config\-dir\fP\fI\ nome\fP
-Define \fInome\fP coma o nome do cartafol da configuración do usuario no seu
-directorio persoal («$HOME») ou «Os meus documentos\eOs meus xogos» en
-Windows. Tamén podes indicar unha ruta absoluta para o directorio da
-configuración fóra dos antes mencionados.
-.TP 
-\fB\-\-config\-path\fP
-Devolve a ruta do directorio da configuración do usuario.
-.TP 
 \fB\-\-data\-dir <directorio>\fP
 Substitúe o directorio dos datos polo directorio indicado.
+.TP 
+\fB\-\-data\-path\fP
+Devolve o directorio de datos do xogo.
 .TP 
 \fB\-d, \-\-debug\fP
 Activa opcións adicionais no modo de ordes do xogo. Consulta o wiki en
@@ -86,19 +80,19 @@ Inicia directamente o editor de mapas integrado. Se se indica un
 \fIficheiro\fP, fai o mesmo que \fB\-l \-\-load\fP.
 .TP 
 \fB\-\-fps\fP
-Amosa nunha esquina da pantalla o número de fotogramas por segundo ao que se
-está executando o xogo.
+Mostra nunha esquina da pantalla o número de fotogramas por segundo ao que
+se está executando o xogo.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 Executa o xogo a pantalla completa.
 .TP 
 \fB\-\-gunzip\fP\fI\ ficheiro_de_entrada.gz\fP
-Descomprime un ficheiro que debería estar en formato “gzip” e gárdao sen o
+Descomprime un ficheiro que debería estar en formato GZIP e gárdao sen o
 sufixo «.gz». Borrarase o \fIficheiro_de_entrada.gz\fP.
 .TP 
 \fB\-\-gzip\fP\fI\ ficheiro_de_entrada\fP
-Comprime un ficheiro en formato “gzip”, gárdao coma
-\fIficheiro_de_entrada\fP.gz e borra o \fIficheiro_de_entrada\fP.
+Comprime un ficheiro en formato GZIP, gárdao coma \fIficheiro_de_entrada\fP.gz
+e borra o \fIficheiro_de_entrada\fP.
 .TP 
 \fB\-h, \-\-help\fP
 Devolve un resumo das opcións da liña de ordes.
@@ -146,7 +140,7 @@ Devolve o directorio de datos do xogo.
 .TP 
 \fB\-p, \-\-preprocess <ficheiro ou cartafol de orixe> <directorio de destino>\fP
 Preprocesa o ficheiro ou cartafol indicado. O ficheiro ou ficheiros
-escribiranse no directorio de destino indicado: un ficheiro “.cfg” simple e
+escribiranse no directorio de destino indicado: un ficheiro «.cfg» simple e
 outro procesado. Se se indica un cartafol, preprocesaranse todos os seus
 contidos baseándose nas regras coñecidas para o preprocesador. Os macros
 comúns do directorio «data/core/macros» preprocesaranse antes que os
@@ -191,6 +185,25 @@ Os erros de corrección trátanse coma erros graves.
 \fB\-t, \-\-test\fP
 Executa o xogo nun pequeno escenario de proba.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+Define \fInome\fP coma o nome do cartafol da configuración do usuario no seu
+directorio persoal («$HOME») ou «Os meus documentos\eOs meus xogos» en
+Windows. Tamén podes indicar unha ruta absoluta para o directorio da
+configuración fóra dos antes mencionados. En X11 o cartafol predeterminado é
+«$XDG_CONFIG_HOME» ou «$HOME/.config/wesnoth», noutros sistemas é a ruta de
+datos do usuario.
+.TP 
+\fB\-\-userconfig\-path\fP
+Devolve a ruta do directorio da configuración do usuario.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ nome\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+Devolve a ruta do directorio dos datos do usuario.
+.TP 
 \fB\-\-validcache\fP
 Asume que a caché está ben (perigoso).
 .TP 
@@ -228,12 +241,17 @@ predeterminada (\fBDefault\fP). A era elíxese mediante un identificador. As
 eras descríbense no ficheiro \fBdata/multiplayer/eras.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP
-Sae do xogo unha vez se remate o escenario, sen amosar un diálogo de vitoria
-ou derrota que requira que o usuario prema «Aceptar». Isto tamén se emprega
-para probas de rendemento automatizadas mediante guións.
+Sae do xogo unha vez se remate o escenario, sen mostrar un diálogo de
+vitoria ou derrota que requira que o usuario prema «Aceptar». Isto tamén se
+emprega para probas de rendemento automatizadas mediante scripts.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+Non usar a configuración do mapa, senón os valores predeterminados.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalor\fP
+Repite unha partida de varios xogadores \fIvalor\fP veces. Recoméndase usar
+esta opción xunto con \fB\-\-nogui\fP para probas de rendemento executadas con
+scripts.
 .TP 
 \fB\-\-nogui\fP
 Executa o xogo sen interface gráfica. Debe aparecer antes de
@@ -278,7 +296,7 @@ Visite o sitio web oficial: http://www.wesnoth.org/
 .
 .SH "DEREITOS DE AUTOR"
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2013, David White <davidnwhite@verizon.net>
 .br
 Isto é software libre. Este software está protexido polos termos da versión
 2 da licenza GNU GPL, tal e como foi publicada pola Free Software

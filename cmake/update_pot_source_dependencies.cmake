@@ -31,7 +31,7 @@ if(DOMAIN STREQUAL ${DEFAULT_DOMAIN})
 					# If the file doesn't contain a GETTEXT_DOMAIN
 					# definition it should be added to the default domain.
 					if ! grep \"^\#define  *GETTEXT_DOMAIN\" 
-							$$file &>/dev/null\; then 
+							$$file > /dev/null 2>&1\; then
 
 						echo $$file >> 
 							${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in \;
@@ -61,7 +61,7 @@ else(DOMAIN STREQUAL ${DEFAULT_DOMAIN})
 					# If the file contains a GETTEXT_DOMAIN definition for
 					# the current domain add it to the domain.
 					if grep \"^\#define  *GETTEXT_DOMAIN  *\\\"${DOMAIN}\\\"\"
-							$$file &>/dev/null\; then 
+							$$file > /dev/null 2>&1\; then
 
 						echo $$file >> 
 							${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in \;

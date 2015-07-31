@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,16 +18,17 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/pane.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
-	struct tbuilder_matrix;
+namespace implementation
+{
+struct tbuilder_matrix;
 }
 
 class tstate_default
 {
 public:
-
 	tstate_default();
 
 	void set_active(const bool active);
@@ -42,10 +43,13 @@ protected:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, DISABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		COUNT
+	};
 
 private:
-
 	/**
 	 * Current state of the widget.
 	 *
@@ -55,15 +59,12 @@ private:
 	tstate state_;
 };
 
-template<class STATE>
-class tcontrol_NEW
-	: public tcontrol
-	, public STATE
+template <class STATE>
+class tcontrol_NEW : public tcontrol, public STATE
 {
 public:
-	tcontrol_NEW(
-			  const implementation::tbuilder_control& builder
-			, const std::string& control_type)
+	tcontrol_NEW(const implementation::tbuilder_control& builder,
+				 const std::string& control_type)
 		: tcontrol(builder, STATE::COUNT, control_type)
 
 	{
@@ -91,24 +92,20 @@ public:
 typedef tcontrol_NEW<tstate_default> tbase;
 
 /** The matrix class. */
-class tmatrix
-	: public tbase
+class tmatrix : public tbase
 {
 	friend class tdebug_layout_graph;
 
 private:
-
 	explicit tmatrix(const implementation::tbuilder_matrix& builder);
 
 public:
-
 	static tmatrix* build(const implementation::tbuilder_matrix& builder);
 
 	/***** ***** ***** ***** Item handling. ***** ***** ****** *****/
 
-	unsigned create_item(
-			  const std::map<std::string, string_map>& item_data
-			, const std::map<std::string, std::string>& tags);
+	unsigned create_item(const std::map<std::string, string_map>& item_data,
+						 const std::map<std::string, std::string>& tags);
 
 
 	/***** ***** ***** ***** Inherited operations. ***** ***** ****** *****/
@@ -120,39 +117,35 @@ public:
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_children(surface& frame_buffer,
+									int x_offset,
+									int y_offset) OVERRIDE;
 
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE;
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** Forwarded to pane_. ***** ***** ****** *****/
 	/**
@@ -186,7 +179,6 @@ private:
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
 public:
-
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;
 
@@ -218,7 +210,6 @@ public:
 	const tgrid* grid(const unsigned id) const;
 
 private:
-
 	/** The grid containing our children. */
 	tgrid content_;
 

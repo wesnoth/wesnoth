@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 
 /**
  * @file
- * Helper class for buffering a @ref std::istream.
+ * Helper class for buffering a @c std::istream.
  */
 
 #ifndef BUFFERED_ISTREAM_HPP_INCLUDED
@@ -23,13 +23,13 @@
 #include "util.hpp"
 
 /**
- * Helper class for buffering a @ref std::istream.
+ * Helper class for buffering a @c std::istream.
  *
- * This class is used to buffer a @ref std::istream which is used for small
- * reads; a character at a time. The @ref std::istream needs to create a
- * sentinel object for every read and profiling showed the @ref std::istream
+ * This class is used to buffer a @c std::istream which is used for small
+ * reads; a character at a time. The @c std::istream needs to create a
+ * sentinel object for every read and profiling showed the @c std::istream
  * class was causing a lot of overhead when parsing WML. This class helps by
- * reading chunks from the @ref std::stream and store them in an internal
+ * reading chunks from the @c std::stream and store them in an internal
  * buffer. Then the next request can deliver data from this buffer.
  *
  * Since the class is only designed for small reads it only offers the @ref
@@ -113,9 +113,9 @@ private:
 	std::istream& stream_;
 
 	/**
-	 * Buffer to store the data read from @ref std::istream.
+	 * Buffer to store the data read from @c std::istream.
 	 *
-	 * Reading from @ref std::istream isn't to fast, especially not a byte at a
+	 * Reading from @c std::istream isn't to fast, especially not a byte at a
 	 * time. This buffer is used to buffer x bytes at a time. The size of the
 	 * buffer is determined experimentally.
 	 */

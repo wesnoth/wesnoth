@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,8 @@
 #ifndef EVENTS_HPP_INCLUDED
 #define EVENTS_HPP_INCLUDED
 
-#include "SDL.h"
+#include "SDL_events.h"
+#include "SDL_version.h"
 #include <vector>
 
 //our user-defined double-click event type
@@ -36,7 +37,7 @@ namespace events
 //NOTE: an event_context object must be initialized before a handler object
 //can be initialized, and the event_context must be destroyed after
 //the handler is destroyed.
-class handler
+class sdl_handler
 {
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
@@ -55,11 +56,11 @@ public:
 	virtual void leave(); /*leave the event context*/
 
 protected:
-	handler(const bool auto_join=true);
-	virtual ~handler();
-	virtual std::vector<handler*> handler_members()
+	sdl_handler(const bool auto_join=true);
+	virtual ~sdl_handler();
+	virtual std::vector<sdl_handler*> handler_members()
 	{
-		return std::vector<handler*>();
+		return std::vector<sdl_handler*>();
 	}
 
 private:
@@ -67,10 +68,10 @@ private:
 	bool has_joined_;
 };
 
-void focus_handler(const handler* ptr);
+void focus_handler(const sdl_handler* ptr);
 void cycle_focus();
 
-bool has_focus(const handler* ptr, const SDL_Event* event);
+bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 
 //event_context objects control the handler objects that SDL events are sent
 //to. When an event_context is created, it will become the current event context.
@@ -99,7 +100,7 @@ private:
 };
 
 class pump_monitor {
-//pump_monitors receive notifcation after an events::pump() occurs
+//pump_monitors receive notification after an events::pump() occurs
 public:
 	pump_monitor();
 	virtual ~pump_monitor();
@@ -125,7 +126,7 @@ void discard_input();
 
 }
 
-typedef std::vector<events::handler*> handler_vector;
+typedef std::vector<events::sdl_handler*> sdl_handler_vector;
 
 #if ! SDL_VERSION_ATLEAST(2,0,0)
 

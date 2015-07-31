@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,6 +37,7 @@ public:
 
 	bool append() const { return append_; }
 	bool immediate() const { return immediate_; }
+	bool shuffle() const { return shuffle_; }
 	bool play_once() const { return once_; }
 	int ms_before() const { return ms_before_; }
 	int ms_after()  const { return ms_after_;  }
@@ -59,6 +60,7 @@ private:
 	bool once_;
 	bool append_;
 	bool immediate_;
+	bool shuffle_;
 };
 
 } /* end namespace sound */

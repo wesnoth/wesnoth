@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,17 +24,9 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
 #include "marked-up_text.hpp"
-#include "storyscreen/interface.hpp"
 
-static lg::log_domain log_engine("engine");
-#define ERR_NG LOG_STREAM(err, log_engine)
-#define LOG_NG LOG_STREAM(info, log_engine)
-
-static bool use_shadowm_storyscreen = false;
-
-static void the_end_old(display &disp, std::string text, unsigned int duration)
+void the_end(display &disp, std::string text, unsigned int duration)
 {
 	//
 	// Some sane defaults.
@@ -46,7 +38,7 @@ static void the_end_old(display &disp, std::string text, unsigned int duration)
 
 	SDL_Rect area = screen_area();
 	CVideo &video = disp.video();
-	sdl_fill_rect(video.getSurface(),&area,0);
+	sdl::fill_rect(video.getSurface(),&area,0);
 
 	update_whole_screen();
 	disp.flip();
@@ -59,7 +51,7 @@ static void the_end_old(display &disp, std::string text, unsigned int duration)
 
 	for(size_t n = 0; n < 255; n += 5) {
 		if(n)
-			sdl_fill_rect(video.getSurface(),&area,0);
+			sdl::fill_rect(video.getSurface(),&area,0);
 
 		const SDL_Color col = create_color(n, n, n, n);
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
@@ -86,20 +78,3 @@ static void the_end_old(display &disp, std::string text, unsigned int duration)
 		--count;
 	}
 }
-
-void set_new_storyscreen(bool enabled)
-{
-	use_shadowm_storyscreen = enabled;
-	LOG_NG << "enabled experimental story/endscreen code\n";
-}
-
-void the_end(display &disp, std::string text, unsigned int duration)
-{
-	if(use_shadowm_storyscreen) {
-		show_endscreen(disp, t_string(text) /* dumb! */, duration);
-	}
-	else {
-		the_end_old(disp,text,duration);
-	}
-}
-

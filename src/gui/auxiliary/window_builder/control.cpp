@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,9 +23,11 @@
 #include "gui/widgets/control.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_control::tbuilder_control(const config& cfg)
 	: tbuilder_widget(cfg)
@@ -39,15 +41,15 @@ tbuilder_control::tbuilder_control(const config& cfg)
 		definition = "default";
 	}
 
-	VALIDATE_WITH_DEV_MESSAGE(help.empty() || !tooltip.empty()
-			, _("Found a widget with a helptip and without a tooltip.")
-			, (formatter() << "id '" << id
-				<< "' label '" << label
-				<< "' helptip '" << help << "'.").str());
+	VALIDATE_WITH_DEV_MESSAGE(
+			help.empty() || !tooltip.empty(),
+			_("Found a widget with a helptip and without a tooltip."),
+			(formatter() << "id '" << id << "' label '" << label
+						 << "' helptip '" << help << "'.").str());
 
 
-	DBG_GUI_P << "Window builder: found control with id '"
-			<< id << "' and definition '" << definition << "'.\n";
+	DBG_GUI_P << "Window builder: found control with id '" << id
+			  << "' and definition '" << definition << "'.\n";
 }
 
 void tbuilder_control::init_control(tcontrol* control) const
@@ -153,4 +155,3 @@ twidget* tbuilder_control::build(const treplacements& /*replacements*/) const
  * @end{tag}{name="widget_instance"}
  * @end{parent}{name="generic/"}
  */
-

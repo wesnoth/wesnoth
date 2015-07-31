@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,10 +17,12 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
-	struct tbuilder_scrollbar_panel;
+namespace implementation
+{
+struct tbuilder_scrollbar_panel;
 }
 
 /**
@@ -29,19 +31,18 @@ namespace implementation {
  * This widget can draw items beyond the widgets it holds and in front of
  * them. A panel is always active so these functions return dummy values.
  */
-class tscrollbar_panel
-	: public tscrollbar_container
+class tscrollbar_panel : public tscrollbar_container
 {
 	friend struct implementation::tbuilder_scrollbar_panel;
-public:
 
+public:
 	/**
 	 * Constructor.
 	 *
 	 * @param canvas_count        The canvas count for tcontrol.
 	 */
-	explicit tscrollbar_panel(const unsigned canvas_count = 2) :
-		tscrollbar_container(canvas_count)
+	explicit tscrollbar_panel(const unsigned canvas_count = 2)
+		: tscrollbar_container(canvas_count)
 	{
 	}
 
@@ -52,7 +53,6 @@ public:
 	virtual unsigned get_state() const OVERRIDE;
 
 private:
-
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 
@@ -63,4 +63,3 @@ private:
 } // namespace gui2
 
 #endif
-

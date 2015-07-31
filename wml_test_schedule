@@ -1,0 +1,145 @@
+#
+# Sanity checks of the unit test system
+#
+0 test_return
+1 test_return_fail
+0 test_assert
+1 test_assert_fail
+1 test_assert_fail_two
+2 empty_test
+4 break_replay_with_lua_random
+0 fixed_lua_random_replay_with_sync_choice
+0 test_end_turn
+#
+# Test Check Victory (If this isn't working other tests may have dubious value)
+#
+2 check_victory_basic_timeout
+1 check_victory_basic_macro_check
+0 check_victory_basic
+1 check_victory_basic_fail
+0 check_victory_basic_two
+0 check_victory_basic_ai
+1 check_victory_basic_ai_fail
+0 check_victory_basic_ai_two
+1 check_victory_one_no_units_fail_one
+1 check_victory_one_no_units_fail_two
+0 check_victory_one_no_units
+1 check_victory_two_no_units_fail_one
+1 check_victory_two_no_units_fail_two
+0 check_victory_two_no_units
+0 check_victory_always_one
+0 check_victory_always_two
+1 check_victory_always_no_units_fail
+0 check_victory_always_no_units
+1 check_victory_always_fail
+1 check_victory_never_fail_one
+1 check_victory_never_fail_two
+1 check_victory_never_fail_three
+0 check_victory_never_pass
+1 check_victory_never_ai_fail
+#
+# WML API tests
+#
+0 two_plus_two
+1 two_plus_two_fail
+0 order_of_nested_events
+0 test_clear_one
+0 test_clear_two
+0 test_unit_map
+0 unit_spawns_at_nearest_vacant_hex
+0 units_offmap_goto_recall
+0 test_move
+1 test_move_fail_1
+1 test_move_fail_2
+1 test_move_fail_3
+1 test_move_fail_4
+1 test_move_fail_5
+1 test_move_fail_6
+0 test_move_unit
+0 sighted_events
+1 sighted_events_fail
+0 sighted_on_opponents_turn
+1 sighted_on_opponents_turn_fail
+0 move_skip_no_sighted_no_share_view
+0 move_skip_ally_sighted_no_share_view
+0 move_skip_all_sighted_no_share_view
+0 move_skip_no_sighted_yes_share_view
+0 move_skip_ally_sighted_yes_share_view
+0 move_skip_all_sighted_yes_share_view
+0 set_gold_in_prestart_one
+0 set_gold_in_prestart_two
+0 modify_turns_one
+0 modify_turns_two
+0 modify_turns_three
+0 modify_turns_four
+0 replace_schedule_prestart
+0 modify_unit_facing
+0 event_handlers_in_events_1
+0 event_handlers_in_events_3
+0 event_handlers_in_events_2
+1 event_handlers_in_events_4
+0 event_handlers_in_events_5
+0 event_handlers_in_events_6
+0 event_handlers_in_events_7
+0 event_handlers_in_events_8
+0 filter_vision
+0 has_ally
+0 xp_mod_1
+0 xp_mod_2
+0 xp_mod_3
+0 test_role_1
+0 test_role_2
+0 test_role_3
+0 test_role_lua
+#
+# LUA
+#
+0 lua_dofile
+0 lua_require
+0 lua_get_sides
+0 test_wml_actions
+0 test_wml_conditionals
+#
+# Pathfinding
+#
+0 store_locations_one
+# This test occasionally takes too long... (FIXME):       0 characterize_pathfinding_one
+# The following tests segfault becasue of http://gna.org/bugs/?23188
+0 characterize_pathfinding_reach_1
+0 characterize_pathfinding_reach_2
+0 characterize_pathfinding_reach_3
+0 characterize_pathfinding_reach_4
+0 characterize_pathfinding_reach_5
+0 characterize_pathfinding_reach_6
+0 characterize_pathfinding_reach_7
+#
+# Attack calculations & codepath tests
+#
+0 alice_kills_bob
+0 bob_kills_alice_on_retal
+0 alice_kills_bob_levelup
+0 bob_kills_alice
+0 alice_kills_bob_on_retal
+0 alice_kills_bob_on_retal_levelup
+0 test_grunt_tod_damage
+0 test_time_area_damage
+0 test_time_area_prestart
+0 test_berzerk_firststrike
+0 feeding
+#
+# Deterministic unit facing tests
+0 recruit_facing_enemy_one
+0 recruit_facing_enemy_two
+0 recruit_facing_leader
+0 recruit_facing_center
+#
+# Interface tests
+#
+0 test_wml_menu_items_1
+1 test_wml_menu_items_2
+0 test_wml_menu_items_3
+#
+# Conditional tests
+#
+0 check_conditionals_1
+0 check_conditionals_2

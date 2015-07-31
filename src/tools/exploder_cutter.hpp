@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2015 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -15,9 +15,8 @@
 #ifndef EXPLODER_CUTTER_HPP_INCLUDED
 #define EXPLODER_CUTTER_HPP_INCLUDED
 
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 #include "../config.hpp"
-#include "../sdl_utils.hpp"
 #include "exploder_utils.hpp"
 
 class cutter
@@ -49,7 +48,7 @@ public:
 			, image(NULL)
 			, mask()
 		{
-		};
+		}
 
 		std::string name;
 		exploder_point pos;

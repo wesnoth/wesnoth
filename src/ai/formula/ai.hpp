@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,14 +21,26 @@
 #ifndef AI_FORMULA_AI_HPP_INCLUDED
 #define AI_FORMULA_AI_HPP_INCLUDED
 
-#include "callable_objects.hpp"
-#include "candidates.hpp"
-#include "function_table.hpp"
-
-#include "../default/ai.hpp"
-#include "../../pathfind/teleport.hpp"
-
-#include <boost/noncopyable.hpp>
+#include "ai/contexts.hpp"
+#include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
+#include "callable_objects.hpp"         // for position_callable, etc
+#include "candidates.hpp"               // for candidate_action_ptr, etc
+#include "config.hpp"                   // for config
+#include "formula_callable.hpp"         // for formula_callable, etc
+#include "formula_fwd.hpp"              // for const_formula_ptr, etc
+#include "generic_event.hpp"  // for observer
+#include "pathfind/teleport.hpp"  // for teleport_map
+#include "unit_map.hpp"
+#include "variant.hpp"                  // for variant
+#include <boost/noncopyable.hpp>        // for noncopyable
+#include <set>                          // for multiset
+#include <string>                       // for string
+#include <utility>                      // for pair
+#include <vector>                       // for vector
+namespace ai { class ai_context; }
+namespace game_logic { struct formula_error; }
+namespace pathfind { struct plain_route; }  // lines 57-57
+struct map_location;
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -63,7 +75,7 @@ namespace ai {
 class formula_ai : public readonly_context_proxy, public game_logic::formula_callable, public boost::noncopyable {
 public:
 	explicit formula_ai(readonly_context &context, const config &cfg);
-	virtual ~formula_ai() {};
+	virtual ~formula_ai() {}
 	virtual config to_config() const;
 
 	std::string evaluate(const std::string& formula_str);

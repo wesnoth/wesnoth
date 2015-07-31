@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,17 +18,23 @@
 #include "tests/utils/game_config_manager.hpp"
 #include "tests/utils/fake_display.hpp"
 
+#include "config_assign.hpp"
 #include "game_display.hpp"
-#include "gamestatus.hpp"
-#include "playcampaign.hpp"
+#include "saved_game.hpp"
+#include "game_initialization/playcampaign.hpp"
+#include "terrain_type_data.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 
+#include <boost/make_shared.hpp>
+
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 	play_scenario::play_scenario(const std::string& id) :
 		id_(id),
 		source_(),
 		game_config_(get_test_config_ref()),
+		tdata_(boost::make_shared<terrain_type_data>(game_config_)),
 		current_time_(80),
 		end_pos_()
 	{
@@ -67,7 +73,7 @@ namespace test_utils {
 	}
 
 	class end_position_collector : public event_node {
-		game_state state_;
+		saved_game state_;
 		unit_map units_;
 
 		public:
@@ -84,7 +90,7 @@ namespace test_utils {
 				units_ = game_display::get_singleton()->get_units();
 			}
 
-			game_state& get_state()
+			saved_game& get_state()
 			{
 				return state_;
 			}
@@ -107,10 +113,12 @@ namespace test_utils {
 		source_.type_key(current_time_++, SDLK_EXCLAIM);
 		source_.type_key(current_time_++, SDLK_RETURN);
 
-		game_state& state = end->get_state();
-		state.classification().campaign_type = "test";
-		state.carryover_sides_start["next_scenario"] = id_;
-		play_game(get_fake_display(1024, 768), state, game_config_);
+		saved_game& state = end->get_state();
+		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
+		state.set_carryover_sides_start(
+			config_of("next_scenario", id_)
+		);
+		play_game(get_fake_display(1024, 768), state, game_config_, tdata_);
 	}
 
 	std::string play_scenario::get_unit_id(const map_location &loc)
@@ -127,3 +135,4 @@ namespace test_utils {
 	}
 
 }
+#endif

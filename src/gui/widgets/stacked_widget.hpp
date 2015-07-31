@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,22 +17,22 @@
 
 #include "gui/widgets/container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
-	struct tbuilder_stacked_widget;
+namespace implementation
+{
+struct tbuilder_stacked_widget;
 }
 
 class tgenerator_;
 
-class tstacked_widget
-		: public tcontainer_
+class tstacked_widget : public tcontainer_
 {
 	friend struct implementation::tbuilder_stacked_widget;
 	friend class tdebug_layout_graph;
 
 public:
-
 	tstacked_widget();
 
 	/***** ***** ***** inherited ***** ****** *****/
@@ -46,8 +46,29 @@ public:
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;
 
-private:
+	/**
+	 * Gets the current visible layer number.
+	 *
+	 * The current layer number will be -1 if all layers are currently visible.
+	 * In this case, only the topmost (highest-numbered) layer will receive
+	 * events.
+	 */
+	int current_layer() const { return selected_layer_; }
 
+	/**
+	 * Selects and displays a particular layer.
+	 *
+	 * If layer -1 is selected, all layers will be displayed but only the
+	 * topmost (highest-numbered) layer will receive events.
+	 */
+	void select_layer(const int layer);
+
+	/**
+	 * Gets the total number of layers.
+	 */
+	unsigned int get_layer_count() const;
+
+private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
@@ -65,6 +86,16 @@ private:
 	 */
 	tgenerator_* generator_;
 
+	/**
+	 * The number of the current selected layer.
+	 */
+	int selected_layer_;
+
+	/**
+	 * Helper to ensure the correct state is set when selecting a layer.
+	 */
+	void select_layer_internal(const unsigned int layer, const bool select) const;
+
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 
@@ -75,4 +106,3 @@ private:
 } // namespace gui2
 
 #endif
-

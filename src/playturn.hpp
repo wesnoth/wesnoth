@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,59 +15,68 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
-class config;
-class replay_network_sender;
-
-#include "generic_event.hpp"
-#include "network.hpp"
+#include <string>                       // for string
+#include "generic_event.hpp"            // for generic_event
 #include "replay.hpp"
 
+class config;  // lines 18-18
+class playturn_network_adapter;
+
+/**
+	TODO: rename this class since it isn't that much related to turns.
+*/
 class turn_info
 {
 public:
-	turn_info(unsigned team_num, replay_network_sender &network_sender);
+	turn_info(replay_network_sender &network_sender, playturn_network_adapter &network_reader);
 
 	~turn_info();
 
-	void sync_network();
 
-	void send_data();
 
-	enum PROCESS_DATA_RESULT {
+	enum PROCESS_DATA_RESULT
+	{
 		PROCESS_CONTINUE,
 		PROCESS_RESTART_TURN,
 		PROCESS_END_TURN,
 		/** When the host uploaded the next scenario this is returned. */
-		PROCESS_END_LINGER
-		};
+		PROCESS_END_LINGER,
+		/** When we couldn't process the network data because we found a dependent command, this should only happen if we were called playmp_controller::from handle_generic_event -> sync_network*/
+		PROCESS_FOUND_DEPENDENT,
+		/** We foudn a player action in the replay that caused the game to end*/
+		PROCESS_END_LEVEL
+	};
 
-	//function which will process incoming network data, and act on it. If there is
-	//more data than a single turn's worth, excess data will be placed into 'backlog'.
-	//No more than one turn's worth of data will be placed into a single backlog item,
-	//so it is safe to assume that backlog won't be touched if cfg is a member of a previous
-	//backlog.
-	//data will be forwarded to all peers other than 'from', unless 'from' is null, in
-	//which case data will not be forwarded
-	PROCESS_DATA_RESULT process_network_data(const config& cfg,network::connection from,std::deque<config>& backlog, bool skip_replay);
+	PROCESS_DATA_RESULT sync_network();
+
+	void send_data();
+
+	//function which will process incoming network data received with playturn_network_adapter, and act on it.
+	PROCESS_DATA_RESULT process_network_data(const config& cfg);
+
+	//reads as much data from network_reader_ as possible and processed it.
+	PROCESS_DATA_RESULT process_network_data_from_reader();
 
 	events::generic_event& host_transfer() { return host_transfer_; }
+
+
+	bool is_host() const { return is_host_; }
+	void set_host(bool val) { is_host_ = val; }
+	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 private:
-	static void change_controller(const std::string& side, const std::string& controller);
-	static void change_side_controller(const std::string& side, const std::string& player);
+	static void change_controller(int side, const std::string& controller);
+	static void change_side_controller(int side, const std::string& player);
+	PROCESS_DATA_RESULT handle_turn(const config& t);
 
-	void handle_turn(
-		bool& turn_end,
-		const config& t,
-		const bool skip_replay,
-		std::deque<config>& backlog);
-
-	unsigned int team_num_;
+	void do_save();
 
 	replay_network_sender& replay_sender_;
 
 	events::generic_event host_transfer_;
 
-	replay replay_;
+	playturn_network_adapter& network_reader_;
+
+	bool is_host_;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -36,6 +36,7 @@
 #include <set>
 #include <cstring>
 #include <stdexcept>
+#include <sstream>
 
 #include <boost/exception/get_error_info.hpp>
 #include <boost/exception/info.hpp>
@@ -51,11 +52,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>  // for TCP_NODELAY
-#ifdef __BEOS__
-#include <socket.h>
-#else
 #include <fcntl.h>
-#endif
 #define SOCKET int
 #endif
 
@@ -256,7 +253,7 @@ manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 	}
 
 	if(SDLNet_Init() == -1) {
-		ERR_NW << "could not initialize SDLNet; throwing error...\n";
+		ERR_NW << "could not initialize SDLNet; throwing error..." << std::endl;
 		throw error(SDL_GetError());
 	}
 
@@ -427,7 +424,7 @@ void connect_operation::run()
 		unsigned long mode = 1;
 		ioctlsocket (raw_sock->channel, FIONBIO, &mode);
 	}
-#elif !defined(__BEOS__)
+#else
 	int flags;
 	flags = fcntl(raw_sock->channel, F_GETFL, 0);
 #if defined(O_NONBLOCK)
@@ -441,21 +438,6 @@ void connect_operation::run()
 		error_ = "Could not make socket non-blocking: " + std::string(strerror(errno));
 		SDLNet_TCP_Close(sock);
 		return;
-	}
-#else
-	int on = 1;
-	if (setsockopt(raw_sock->channel, SOL_SOCKET, SO_NONBLOCK, &on, sizeof(int)) < 0) {
-		error_ = "Could not make socket non-blocking: " + std::string(strerror(errno));
-		SDLNet_TCP_Close(sock);
-		return;
-	}
-
-	int fd_flags = fcntl(raw_sock->channel, F_GETFD, 0);
-	fd_flags |= FD_CLOEXEC;
-	if (fcntl(raw_sock->channel, F_SETFD, fd_flags) == -1) {
-		WRN_NW << "could not make socket " << sock << " close-on-exec: " << strerror(errno);
-	} else {
-		DBG_NW << "made socket " << sock << " close-on-exec\n";
 	}
 #endif
 
@@ -559,7 +541,7 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 
 	const int len = SDLNet_TCP_Recv(psock,&buf,4);
 	if(len != 4) {
-		WRN_NW << "pending socket disconnected\n";
+		WRN_NW << "pending socket disconnected" << std::endl;
 		SDLNet_TCP_Close(psock);
 		return 0;
 	}
@@ -570,7 +552,7 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 
 	const int res = SDLNet_TCP_AddSocket(socket_set,psock);
 	if(res == -1) {
-		ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "\n";
+		ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << std::endl;
 		SDLNet_TCP_Close(psock);
 
 		throw network::error(_("Could not add socket to socket set"));
@@ -637,13 +619,13 @@ connection accept_connection()
 			if (res != -1) {
 				pending_sockets.push_back(sock);
 			} else {
-				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection\n";
-				ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "\n";
+				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection" << std::endl;
+				ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << std::endl;
 
 				SDLNet_TCP_Close(sock);
 			}
 		} else {
-			ERR_NW << "Error in SDLNet_AllocSocketSet\n";
+			ERR_NW << "Error in SDLNet_AllocSocketSet" << std::endl;
 		}
 	}
 
@@ -835,7 +817,7 @@ connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr
 	int set_res = SDLNet_TCP_AddSocket(socket_set,sock);
 	if (set_res == -1)
 	{
-		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection\n";
+		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection" << std::endl;
 		SDLNet_TCP_Close(sock);
 		return 0;
 	}
@@ -939,7 +921,7 @@ connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
 
 	if (set_res == -1)
 	{
-		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection\n";
+		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection" << std::endl;
 		SDLNet_TCP_Close(sock);
 		return 0;
 	}
@@ -976,8 +958,8 @@ struct bandwidth_stats {
 };
 typedef std::map<const std::string, bandwidth_stats> bandwidth_map;
 typedef std::vector<bandwidth_map> hour_stats_vector;
-hour_stats_vector hour_stats(24);
 
+static hour_stats_vector hour_stats(24);
 
 
 static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_type)
@@ -1098,8 +1080,15 @@ void send_file(const std::string& filename, connection connection_num, const std
 		return;
 	}
 
+	const int size = filesystem::file_size(filename);
+
+	if(size < 0) {
+		ERR_NW << "Could not determine size of file " << filename << ", not sending." << std::endl;
+		return;
+	}
+
 	const int packet_headers = 4;
-	add_bandwidth_out(packet_type, file_size(filename) + packet_headers);
+	add_bandwidth_out(packet_type, size + packet_headers);
 	network_worker_pool::queue_file(info->second.sock, filename);
 
 }

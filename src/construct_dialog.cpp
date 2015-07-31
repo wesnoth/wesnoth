@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Patrick Parker <patrick_x99@hotmail.com>
+   Copyright (C) 2006 - 2015 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth widget Copyright (C) 2003-5 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -17,12 +17,18 @@
 
 #include "construct_dialog.hpp"
 
+#include "config_assign.hpp"
 #include "display.hpp"
+#include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
+#include "sdl/utils.hpp"
 
+#include <boost/bind.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -66,9 +72,9 @@ dialog_textbox::~dialog_textbox()
 dialog::dimension_measurements::dimension_measurements() :
 	x(-1),
 	y(-1),
-	interior(empty_rect),
-	message(empty_rect),
-	textbox(empty_rect),
+	interior(sdl::empty_rect),
+	message(sdl::empty_rect),
+	textbox(sdl::empty_rect),
 	menu_width(0),
 	panes(),
 	label_x(-1),
@@ -140,8 +146,8 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	try {
 		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
 		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOR, false);
-	} catch(utils::invalid_utf8_exception&) {
-		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
+	} catch(utf8::invalid_utf8_exception&) {
+		ERR_DP << "Problem handling utf8 in message '" << message << "'" << std::endl;
 		throw;
 	}
 
@@ -280,15 +286,32 @@ int dialog::show(int xloc, int yloc)
 
 int dialog::show()
 {
-    if (disp_.video().faked()) return CLOSE_DIALOG;
+	if (disp_.video().faked()) {
+		plugins_manager * pm = plugins_manager::get();
+		if (pm && pm->any_running()) {
+			pm->notify_event("show_dialog", config(config_of
+					("title",	title_)
+					("message",	message_->get_text())
+			));
+
+			plugins_context pc("Dialog");
+			pc.set_callback("set_result", boost::bind(&dialog::set_result, this, boost::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
+
+			while (pm->any_running() && result() == CONTINUE_DIALOG) {
+				pc.play_slice();
+			}
+			return result();
+		}
+		return CLOSE_DIALOG;
+	}
 
 	if(disp_.video().update_locked()) {
-		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'\n";
+		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'" << std::endl;
 		return CLOSE_DIALOG;
 	}
 
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_->get_text() << "'\n";
-	if(dim_.interior == empty_rect) { layout(); }
+	if(dim_.interior == sdl::empty_rect) { layout(); }
 
 	//create the event context, remember to instruct any passed-in widgets to join it
 	const events::event_context dialog_events_context;
@@ -301,6 +324,14 @@ int dialog::show()
 	draw_contents();
 
 	//process
+	plugins_manager::get()->notify_event("show_dialog", config(config_of
+			("title",	title_)
+			("message",	message_->get_text())
+		));
+
+	plugins_context pc("Dialog");
+	pc.set_callback("set_result", boost::bind(&dialog::set_result, this, boost::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
+
 	dialog_process_info dp_info;
 	do
 	{
@@ -311,6 +342,8 @@ int dialog::show()
 		}
 		action(dp_info);
 		dp_info.cycle();
+
+		pc.play_slice();
 	} while(!done());
 
 	clear_background();
@@ -425,7 +458,7 @@ void dialog::refresh()
 dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 {
 	CVideo& screen = disp_.video();
-	surface const scr = screen.getSurface();
+	const surface& scr = screen.getSurface();
 
 	dimension_measurements dim;
 	dim.x = xloc;
@@ -624,7 +657,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		}
 	}
 
-	const int text_widget_y = dim.y+top_padding+text_and_image_height-6+menu_hpadding;
+	const int text_widget_y = dim.y + top_padding + text_and_image_height - 6 + menu_hpadding;
 
 	if(use_textbox) {
 		dim.textbox.x = dim.x + left_padding + text_widget_width - dim.textbox.w;
@@ -675,7 +708,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	//set the position of any tick boxes. by default, they go right below the menu,
 	//slammed against the right side of the dialog
 	if(extra_buttons_.empty() == false) {
-		int options_y = text_widget_y + std::max<int>(text_widget_height, top_button_height) + menu_->height() + button_height_padding + menu_hpadding;
+		int options_y = dim.menu_y + menu_->height() + menu_hpadding + button_height_padding;
 		int options_left_y = options_y;
 		for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
 		dialog_button const *const btn = b->first;
@@ -771,7 +804,7 @@ int dialog::process(dialog_process_info &info)
 
 	//left-clicking outside of a drop-down or context-menu should close it
 	if (info.new_left_button && !info.left_button) {
-		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location())) {
+		if (standard_buttons_.empty() && !sdl::point_in_rect(mousex,mousey, menu_->location())) {
 			if (use_menu)
 				sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
@@ -783,7 +816,7 @@ int dialog::process(dialog_process_info &info)
 	//      but that may be changed to allow right-click selection instead.
 	if (info.new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
-		|| (!point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
+		|| (!sdl::point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
 		&& type_ != YES_NO && !(type_ == OK_ONLY && has_input))) {
 			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
@@ -910,8 +943,8 @@ void filter_textbox::delete_item(int selection) {
 	/* dialog_.set_menu_items(filtered_items_); */
 }
 
-void filter_textbox::handle_text_changed(const wide_string& text) {
-	const std::vector<std::string> words = utils::split(utils::wstring_to_string(text),' ');
+void filter_textbox::handle_text_changed(const ucs4::string& text) {
+	const std::vector<std::string> words = utils::split(unicode_cast<utf8::string>(text),' ');
 	if (words == last_words)
 		return;
 	last_words = words;

@@ -19,7 +19,7 @@ This utility provides two tools
 * update the translations in a campaign (in the packed campaign)
 """
 
-import sys, os.path, optparse, tempfile, shutil, logging, socket
+import sys, os.path, argparse, tempfile, shutil, logging, socket
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 
@@ -122,7 +122,7 @@ if __name__ == "__main__":
         init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
 
         # Grab master build system's version
-        # Uglyness
+        # Ugliness
         out, err, res = build_system._execute(["git", "show", "--pretty=oneline", "--summary"])
         build_system_version = out.split()[0]
         if len(build_system_version) != 40:
@@ -136,7 +136,7 @@ if __name__ == "__main__":
                 logging.info("Build system for add-on {0} is up-to-date".format(addon_name))
                 return True
 
-        # Uglyness
+        # Ugliness
         out, err, res = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
         if len(err):
             logging.warn("init-build-sys.sh in add-on {0}:\n{1}".format(addon_name, err))
@@ -170,7 +170,7 @@ if __name__ == "__main__":
         if not os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile")):
             logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon_name))
             return False
-        # Uglyness, again
+        # Ugliness, again
         out, err, res = addon_obj._execute(["make"])
         if len(err):
             logging.warn("pot-update in addon {0}:\n{1}".format(addon_name, err))
@@ -225,7 +225,7 @@ if __name__ == "__main__":
         server              The url of the addon server eg
                             add-ons.wesnoth.org:15005.
         translatable_only   If True only returns translatable addons.
-        returns             A dictonary with the addon as key and the translatable
+        returns             A dictionary with the addon as key and the translatable
                             status as value.
         """
 
@@ -350,76 +350,76 @@ if __name__ == "__main__":
             sys.exit(2)
 
 
-    optionparser = optparse.OptionParser("%prog [options]")
+    argumentparser = argparse.ArgumentParser("%(prog)s [options]")
 
-    optionparser.add_option("-l", "--list", action = "store_true",
+    argumentparser.add_argument("-l", "--list", action = "store_true",
         help = "List available addons. Usage [SERVER [PORT] [VERBOSE]")
 
-    optionparser.add_option("-L", "--list-translatable", action = "store_true",
+    argumentparser.add_argument("-L", "--list-translatable", action = "store_true",
         help = "List addons available for translation. "
         + "Usage [SERVER [PORT] [VERBOSE]")
 
-    optionparser.add_option("-u", "--upload",
+    argumentparser.add_argument("-u", "--upload",
         help = "Upload a addon to wescamp. Usage: 'addon' WESCAMP-CHECKOUT "
         + "[SERVER [PORT]] [TEMP-DIR] [VERBOSE]")
 
-    optionparser.add_option("-U", "--upload-all", action = "store_true",
+    argumentparser.add_argument("-U", "--upload-all", action = "store_true",
         help = "Upload all addons to wescamp. Usage WESCAMP-CHECKOUT "
         + " [SERVER [PORT]] [VERBOSE]")
 
-    optionparser.add_option("-s", "--server",
+    argumentparser.add_argument("-s", "--server",
         help = "Server to connect to [localhost]")
 
-    optionparser.add_option("-p", "--port",
-        help = "Port on the server to connect to. If omitted will try to selet a port based on --branch. ['']")
+    argumentparser.add_argument("-p", "--port",
+        help = "Port on the server to connect to. If omitted will try to select a port based on --branch. ['']")
 
-    optionparser.add_option("-t", "--temp-dir", help = "Directory to store the "
+    argumentparser.add_argument("-t", "--temp-dir", help = "Directory to store the "
         + "tempory data, if omitted a tempdir is created and destroyed after "
         + "usage, if specified the data is left in the tempdir. ['']")
 
-    optionparser.add_option("-w", "--wescamp-checkout",
+    argumentparser.add_argument("-w", "--wescamp-checkout",
         help = "The directory containing the wescamp checkout root. ['']")
 
-    optionparser.add_option("-v", "--verbose", action = "store_const", const="verbose", dest="verbosity",
+    argumentparser.add_argument("-v", "--verbose", action = "store_const", const="verbose", dest="verbosity",
         help = "Show more verbose output. [FALSE]")
 
-    optionparser.add_option("-q", "--quiet", action = "store_const", const="quiet", dest="verbosity",
+    argumentparser.add_argument("-q", "--quiet", action = "store_const", const="quiet", dest="verbosity",
         help = "Show less verbose output. [FALSE]")
 
-    optionparser.add_option("-P", "--password",
+    argumentparser.add_argument("-P", "--password",
         help = "The master password for the addon server. ['']")
 
-    optionparser.add_option("-G", "--github-auth",
+    argumentparser.add_argument("-G", "--github-auth",
         help = "Username and password for github in the user:pass format, or an OAuth2 token.")
 
-    optionparser.add_option("-B", "--branch",
+    argumentparser.add_argument("-B", "--branch",
         help = "WesCamp version branch to use. If omitted, we try to determine this from the wescamp directory.")
 
-    optionparser.add_option("-c", "--checkout", action = "store_true",
+    argumentparser.add_argument("-c", "--checkout", action = "store_true",
         help = "Create a new branch checkout directory. "
         + "Can also be used to update existing checkout directories.")
 
-    optionparser.add_option("-C", "--checkout-readonly", action = "store_true",
+    argumentparser.add_argument("-C", "--checkout-readonly", action = "store_true",
         help = "Create a read-only branch checkout directory. "
         + "Can also be used to update existing checkout directories.")
 
-    optionparser.add_option("-b", "--build-system",
+    argumentparser.add_argument("-b", "--build-system",
         help = "Path to a github.com/wescamp/build-system checkout.")
 
-    optionparser.add_option("-e", "--error-log",
+    argumentparser.add_argument("-e", "--error-log",
         help = "File to append errors and warnings to.")
 
-    options, args = optionparser.parse_args()
+    args = argumentparser.parse_args()
 
     campaignd_configured = False
     wescamp_configured = False
 
-    if(options.verbosity == "verbose"):
+    if(args.verbosity == "verbose"):
         logging.basicConfig(level=logging.DEBUG,
             format='[%(levelname)s] %(message)s',
             stream=sys.stdout)
         quiet_libwml = False
-    elif(options.verbosity == "quiet"):
+    elif(args.verbosity == "quiet"):
         logging.basicConfig(level=logging.WARN,
             format='[%(levelname)s] %(message)s',
             stream=sys.stdout)
@@ -428,11 +428,11 @@ if __name__ == "__main__":
             format='[%(levelname)s] %(message)s',
             stream=sys.stdout)
 
-    if options.error_log:
+    if args.error_log:
         import time
         formatter = logging.Formatter(fmt="[%(levelname)s %(asctime)s]\n%(message)s")
         formatter.converter = time.gmtime
-        handler = logging.FileHandler(options.error_log)
+        handler = logging.FileHandler(args.error_log)
         handler.setLevel(logging.WARN)
         handler.setFormatter(formatter)
         record = logging.LogRecord(
@@ -448,41 +448,41 @@ if __name__ == "__main__":
         logging.getLogger().addHandler(handler)
 
     server = "localhost"
-    if(options.server != None):
-        server = options.server
+    if(args.server != None):
+        server = args.server
 
-    if options.port != None:
-        server += ":" + options.port
+    if args.port != None:
+        server += ":" + args.port
         campaignd_configured = True
-    elif options.branch != None:
+    elif args.branch != None:
         for port, version in libwml.CampaignClient.portmap:
-            if version.startswith(options.branch):
+            if version.startswith(args.branch):
                 server += ":" + port
                 campaignd_configured = True
                 break
 
     target = None
     tmp = tempdir()
-    if(options.temp_dir != None):
-        if(options.upload_all != None):
+    if(args.temp_dir != None):
+        if(args.upload_all):
             logging.error("TEMP-DIR not allowed for UPLOAD-ALL.")
             sys.exit(2)
 
-        target = options.temp_dir
+        target = args.temp_dir
     else:
         target = tmp.path
 
     wescamp = None
-    if(options.wescamp_checkout):
-        wescamp = options.wescamp_checkout
+    if(args.wescamp_checkout):
+        wescamp = args.wescamp_checkout
 
-    password = options.password
-    build_sys_dir = options.build_system
+    password = args.password
+    build_sys_dir = args.build_system
 
-    git_auth = options.github_auth
+    git_auth = args.github_auth
 
-    if options.branch:
-        git_version = options.branch
+    if args.branch:
+        git_version = args.branch
         wescamp_configured = True
     elif wescamp:
         try:
@@ -495,20 +495,20 @@ if __name__ == "__main__":
 
     # List the addons on the server and optional filter on translatable
     # addons.
-    if(options.list or options.list_translatable):
+    if(args.list or args.list_translatable):
         assert_campaignd(campaignd_configured)
         try:
-            addons = list_addons(server, options.list_translatable)
-        except libgithub.AddonError, e:
+            addons = list_addons(server, args.list_translatable)
+        except libgithub.AddonError as e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
-        except libgithub.Error, e:
+        except libgithub.Error as e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
-        except IOError, e:
+        except IOError as e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
@@ -519,7 +519,7 @@ if __name__ == "__main__":
                 print k
 
     # Upload an addon to wescamp.
-    elif(options.upload != None):
+    elif(args.upload != None):
         assert_campaignd(campaignd_configured)
         assert_wescamp(wescamp_configured)
         if(wescamp == None):
@@ -527,22 +527,22 @@ if __name__ == "__main__":
             sys.exit(2)
 
         try:
-            upload(server, options.upload, target, wescamp, build_sys_dir)
-        except libgithub.AddonError, e:
+            upload(server, args.upload, target, wescamp, build_sys_dir)
+        except libgithub.AddonError as e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
-        except libgithub.Error, e:
+        except libgithub.Error as e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
-        except IOError, e:
+        except IOError as e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
     # Upload all addons from wescamp.
-    elif(options.upload_all != None):
+    elif(args.upload_all):
         assert_campaignd(campaignd_configured)
         assert_wescamp(wescamp_configured)
         if(wescamp == None):
@@ -552,7 +552,7 @@ if __name__ == "__main__":
         error = False
         try:
             addons = list_addons(server, True)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
         for k, v in addons.iteritems():
@@ -561,23 +561,23 @@ if __name__ == "__main__":
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp, build_sys_dir)
-            except libgithub.AddonError, e:
+            except libgithub.AddonError as e:
                 print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
                 error = True
-            except libgithub.Error, e:
-                print "[ERROR github] in addon '" + k + "'" + str(e)
+            except libgithub.Error as e:
+                print "[ERROR github] in addon '{0}' {1}".format(k, str(e))
                 error = True
-            except socket.error, e:
+            except socket.error as e:
                 print "Socket error: " + str(e)
                 error = True
-            except IOError, e:
+            except IOError as e:
                 print "Unexpected error occured: " + str(e)
                 error = True
 
         if(error):
             sys.exit(1)
 
-    elif(options.checkout != None or options.checkout_readonly != None):
+    elif(args.checkout or args.checkout_readonly):
         assert_wescamp(wescamp_configured)
 
         if(wescamp == None):
@@ -585,19 +585,19 @@ if __name__ == "__main__":
             sys.exit(2)
 
         try:
-            checkout(wescamp, auth=git_auth, readonly=(options.checkout_readonly != None))
-        except libgithub.AddonError, e:
+            checkout(wescamp, auth=git_auth, readonly=(args.checkout_readonly))
+        except libgithub.AddonError as e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
-        except libgithub.Error, e:
+        except libgithub.Error as e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
-        except IOError, e:
+        except IOError as e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
     else:
-        optionparser.print_help()
+        argumentparser.print_help()

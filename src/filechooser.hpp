@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,7 +29,7 @@ namespace dialogs
 
 class file_dialog : public gui::dialog {
 public:
-	file_dialog(display &disp, const std::string& file_path, const std::string& title, bool show_directory_buttons);
+	file_dialog(display &disp, const std::string& file_path, const std::string& title, const std::string& default_file_name, bool show_directory_buttons);
 
 	virtual gui::dialog::dimension_measurements layout(int xloc=-1, int yloc=-1);
 
@@ -42,6 +42,7 @@ public:
 
 protected:
 	void action(gui::dialog_process_info &dp_info);
+	void set_save_text(const std::string& filename);
 	std::string unformat_filename(const std::string& filename) const;
 	std::string format_filename(const std::string& filename) const;
 	std::string format_dirname(const std::string& dirname) const;
@@ -52,6 +53,7 @@ private:
 	int last_selection_;
 	std::string last_textbox_text_;
 	std::string chosen_file_;
+	std::string default_file_name_;
     bool autocomplete_;
 };
 
@@ -68,7 +70,9 @@ int show_file_chooser_dialog(display &displ, std::string &filename,
 /// Show a filechooser dialog in a "save" mode, that is, without relying
 /// on autocomplete to allow saving under any filename
 int show_file_chooser_dialog_save(display &displ, std::string &filename,
-                             std::string const &title, bool show_directory_buttons = true,
+                             std::string const &title,
+                             const std::string& default_file_name = "",
+                             bool show_directory_buttons = true,
 							 const std::string& file_to_search = "",
 							 int xloc = -1, int yloc = -1);
 } // end of dialogs namespace

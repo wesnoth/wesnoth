@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,14 +26,16 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(stacked_widget)
 
 tstacked_widget::tstacked_widget()
 	: tcontainer_(1)
 	, generator_(
-			tgenerator_::build(false, false, tgenerator_::independent, false))
+			  tgenerator_::build(false, false, tgenerator_::independent, false))
+	, selected_layer_(-1)
 {
 }
 
@@ -55,12 +57,15 @@ void tstacked_widget::layout_children()
 	}
 }
 
-namespace {
+namespace
+{
 
 /**
  * Swaps an item in a grid for another one.*/
 void swap_grid(tgrid* grid,
-		tgrid* content_grid, twidget* widget, const std::string& id)
+			   tgrid* content_grid,
+			   twidget* widget,
+			   const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
@@ -88,25 +93,24 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void tstacked_widget::finalize(
-		std::vector<tbuilder_grid_const_ptr> widget_builder)
+void
+tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
 	string_map empty_data;
-	FOREACH(const AUTO& builder, widget_builder) {
+	FOREACH(const AUTO & builder, widget_builder)
+	{
 		generator_->create_item(-1, builder, empty_data, NULL);
 	}
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
 
-	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
-		generator_->select_item(i, true);
-	}
+	select_layer(-1);
 }
 
 const std::string& tstacked_widget::get_control_type() const
 {
-    static const std::string type = "stacked_widget";
-    return type;
+	static const std::string type = "stacked_widget";
+	return type;
 }
 
 void tstacked_widget::set_self_active(const bool /*active*/)
@@ -114,5 +118,39 @@ void tstacked_widget::set_self_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
-} // namespace gui2
+void tstacked_widget::select_layer_internal(const unsigned int layer, const bool select) const
+{
+	// Selecting a layer that's already selected appears to actually deselect
+	// it, so make sure to only perform changes we want.
+	if(generator_->is_selected(layer) != select) {
+		generator_->select_item(layer, select);
+	}
+}
 
+void tstacked_widget::select_layer(const int layer)
+{
+	const unsigned int num_layers = generator_->get_item_count();
+	selected_layer_ = std::max(-1, std::min<int>(layer, num_layers - 1));
+
+	for(unsigned int i = 0; i < num_layers; ++i) {
+		if(selected_layer_ >= 0) {
+			const bool selected = i == static_cast<unsigned int>(selected_layer_);
+			// Select current layer, leave the rest unselected.
+			select_layer_internal(i, selected);
+			generator_->item(i).set_visible(selected
+											? twidget::tvisible::visible
+											: twidget::tvisible::hidden);
+		} else {
+			// Select everything.
+			select_layer_internal(i, true);
+			generator_->item(i).set_visible(twidget::tvisible::visible);
+		}
+	}
+}
+
+unsigned int tstacked_widget::get_layer_count() const
+{
+	return generator_->get_item_count();
+}
+
+} // namespace gui2

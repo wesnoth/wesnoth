@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,8 @@
 
 #include "editor_palettes.hpp"
 
+#include "../../unit_types.hpp"
+
 namespace editor {
 
 //std::string get_selected_terrain();
@@ -37,12 +39,21 @@ public:
 
 	virtual std::string get_help_string();
 
+	bool supports_swap() { return false; }
+
+	const std::set<std::string>& get_selected_bg_items() { return selected_bg_items_; }
+
 private:
 	virtual const std::string& get_id(const unit_type& terrain);
 
 	virtual void draw_item(const unit_type& terrain, surface& image, std::stringstream& tooltip_text);
 
+	virtual bool is_selected_bg_item(const std::string& id);
+
+	virtual void select_bg_item(const std::string& item_id);
 //	virtual void update_report();
+
+	std::set<std::string> selected_bg_items_;
 
 };
 

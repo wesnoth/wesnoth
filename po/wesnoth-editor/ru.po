@@ -13,21 +13,22 @@
 # Automatically generated, 2004.
 # Azamat H. Hackimov <azazello1984@mail.ru>, 2005.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007.
+# Fedor Khodkov <fkhodkov@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:03-0400\n"
-"PO-Revision-Date: 2012-04-06 16:06+0400\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"PO-Revision-Date: 2014-11-11 12:20+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: Russian <bugs.wesnoth.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -55,9 +56,9 @@ msgstr "Диагональ СЗ-ЮВ"
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 #, fuzzy
-#| msgid "Hex Line NW-SE"
-msgid "Hex Line SE-NW"
-msgstr "Диагональ СЗ-ЮВ"
+#| msgid "Hex Line SE-NW"
+msgid "Hex Line SW-NE"
+msgstr "Диагональ ЮВ-СЗ"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -92,7 +93,7 @@ msgstr "лес"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "осень"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -134,165 +135,164 @@ msgstr "мост"
 msgid "special"
 msgstr "особое"
 
-#. [editor_times]: id=test
+#. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
+msgid "None"
+msgstr "Нет"
+
+#. [editor_times]: id=test
+#: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "Тест"
 
 #. [editor_times]: id=default
-#: data/core/editor/time-of-day.cfg:16
+#: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "По умолчанию"
+
+#. [editor_times]: id=summer
+#: data/core/editor/time-of-day.cfg:27
+msgid "Summer"
+msgstr "Лето"
+
+#. [editor_times]: id=winter
+#: data/core/editor/time-of-day.cfg:33
+msgid "Winter"
+msgstr "Зима"
 
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "Подземелье"
 
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "Глубокое подземелье"
+
+#. [editor_times]: id=indoors
+#: data/core/editor/time-of-day.cfg:51
+msgid "Indoors"
+msgstr "В здании"
 
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24-часовое расписание"
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:46
+#: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "После осени"
 
-#. [editor_tool_hint]: id=editor-tool-fill
-#. [editor_tool_hint]: id=editor-tool-paint
-#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-msgid ""
-"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only. Ctrl+click to sample terrain under cursor."
-msgstr ""
-"Используйте левую (правую) кнопку мышки, чтобы рисовать основной "
-"(дополнительный) ландшафт. Удерживайте Shift, чтобы рисовать только на "
-"базовом слое. Ctrl+клик включает выделенный курсором ландшафт."
-
-#. [editor_tool_hint]: id=editor-tool-select
-#: data/core/editor/tool-hints.cfg:19
-msgid ""
-"Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain."
-msgstr ""
-"Выбирайте левой кнопкой мыши, отменяйте выбор правой. Shift — «волшебная "
-"палочка», она выбирает клетки с одинаковым ландшафтом."
-
-#. [editor_tool_hint]: id=editor-tool-starting-position
-#: data/core/editor/tool-hints.cfg:25
-msgid ""
-"Left mouse button displays player selection, right clears. Number keys "
-"scroll to the starting position, alt+number sets respective starting "
-"position under cursor, delete clears."
-msgstr ""
-"Левая кнопка мышки выбирает игрока, права стирает. Цифровые клавиши "
-"перемещают к начальным позициям, Alt+цифровая клавиша устанавливает "
-"соответствующую начальную позицию под курсором, Delete стирает."
-
-#. [editor_tool_hint]: id=editor-paste
-#: data/core/editor/tool-hints.cfg:30
-msgid ""
-"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
-"edit menu to transform the clipboard (rotate, mirror)."
-msgstr ""
-"Кликните мышкой для вставки. Когда вставляете большие области, увеличьте "
-"масштаб для большей точности. Используйте меню «Правка», чтобы изменить "
-"(повернуть, отразить) буфер обмена."
+#. [theme]: id=editor
+#: data/themes/editor.cfg:11
+msgid "theme^Editor"
+msgstr "Редактор"
 
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:63
+#: data/themes/editor.cfg:61
 msgid "File"
 msgstr "Файл"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:89
+#: data/themes/editor.cfg:82
 msgid "Map"
 msgstr "Карта"
 
-#. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:98
-msgid "Transition update"
+#. [menu]: id=menu-unit-facing
+#: data/themes/editor.cfg:90
+msgid "Unit Facing"
 msgstr ""
 
+#. [menu]: id=menu-editor-transitions
+#: data/themes/editor.cfg:96
+msgid "Transition Update"
+msgstr "Обновление перехода"
+
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:105
+#: data/themes/editor.cfg:103
 msgid "Window"
 msgstr "Окно"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:115
+#: data/themes/editor.cfg:112
 msgid "Areas"
-msgstr ""
+msgstr "Области"
+
+#. [menu]: id=menu-editor-local-time
+#: data/themes/editor.cfg:120
+msgid "Assign Local Time"
+msgstr "Назначить местное время"
+
+#. [menu]: id=menu-editor-local-schedule
+#: data/themes/editor.cfg:126
+msgid "Assign Local Time Schedule"
+msgstr "Назначить местное расписание"
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:125
+#: data/themes/editor.cfg:134
 msgid "Side"
-msgstr ""
+msgstr "Сторона"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:144
+#: data/themes/editor.cfg:152
 msgid "villages"
 msgstr "деревни"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:161
+#: data/themes/editor.cfg:169
 msgid "units"
-msgstr ""
+msgstr "бойцы"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:489
+#: data/themes/editor.cfg:448
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Меню расписания"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:499
+#: data/themes/editor.cfg:459
 msgid "Playlist"
-msgstr ""
+msgstr "Плейлист"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:505
+#: data/themes/editor.cfg:465
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Назначить расписание"
 
-#. [label]: id=terrain-icon
-#: data/themes/editor.cfg:609
-msgid "terrain"
-msgstr ""
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
+msgid "Identifier: "
+msgstr "Идентификатор:"
 
-#. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:669
-#, fuzzy
-#| msgid "Action not implemented"
-msgid "Not implemented yet."
-msgstr "Еще не реализовано"
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:58
-msgid "ID: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:59
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Name: "
-msgstr ""
+msgstr "Имя:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:60
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Type: "
-msgstr ""
+msgstr "Вид:"
 
-#: src/editor/editor_controller.cpp:175
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
+msgid "Level: "
+msgstr "Уровень:"
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
+msgid "Cost: "
+msgstr "Цена:"
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
+msgid "Recruit: "
+msgstr "Найм:"
+
+#: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
 msgstr "Критическая ошибка"
 
-#: src/editor/editor_controller.cpp:203
+#: src/editor/controller/editor_controller.cpp:209
 msgid "Do you really want to quit?"
 msgstr "Действительно хотите выйти?"
 
-#: src/editor/editor_controller.cpp:205
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -300,7 +300,7 @@ msgstr ""
 "Действительно хотите выйти? Вы потеряете все изменения, которые внесли с "
 "последнего сохранения."
 
-#: src/editor/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -308,115 +308,139 @@ msgstr ""
 "Действительно хотите выйти? У вас есть несохранённые карты, все изменения в "
 "них будут утрачены:"
 
-#: src/editor/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/editor/editor_controller.cpp:221
+#: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor/editor_controller.cpp:949
+#: src/editor/controller/editor_controller.cpp:1101
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Сменить ИД бойца"
 
-#: src/editor/editor_controller.cpp:950
+#: src/editor/controller/editor_controller.cpp:1102
 msgid "ID:"
-msgstr ""
+msgstr "ИД:"
 
-#: src/editor/editor_controller.cpp:966
+#: src/editor/controller/editor_controller.cpp:1118
 msgid "Rename Unit"
-msgstr ""
+msgstr "Переименовать бойца"
 
-#: src/editor/editor_controller.cpp:967
+#: src/editor/controller/editor_controller.cpp:1119
 msgid "Name:"
-msgstr ""
+msgstr "Имя:"
 
-#: src/editor/map/context_manager.cpp:119
-#: src/editor/map/context_manager.cpp:202
+#: src/editor/map/context_manager.cpp:128
+#: src/editor/map/context_manager.cpp:290
 msgid "(New Map)"
 msgstr "(Новая карта)"
 
-#: src/editor/map/context_manager.cpp:176
-msgid "Choose a Map to Open"
-msgstr "Выберите, какую карту открыть"
+#: src/editor/map/context_manager.cpp:186
+msgid "Choose a File to Open"
+msgstr "Выберите, какой файл открыть"
 
-#: src/editor/map/context_manager.cpp:234
-#, fuzzy
-#| msgid "(New Map)"
-msgid "(New Area)"
-msgstr "(Новая карта)"
+#: src/editor/map/context_manager.cpp:292
+msgid "(New Scenario)"
+msgstr "(Новый сценарий)"
 
-#: src/editor/map/context_manager.cpp:257
-#, fuzzy
-#| msgid "(New Map)"
+#: src/editor/map/context_manager.cpp:326
+msgid "(Unnamed Area)"
+msgstr "(Неназванная область)"
+
+#: src/editor/map/context_manager.cpp:354
 msgid "(New Side)"
-msgstr "(Новая карта)"
+msgstr "(Новая сторона)"
 
-#: src/editor/map/context_manager.cpp:303
+#: src/editor/map/context_manager.cpp:420
 msgid "Choose a Mask to Apply"
 msgstr "Выберите, какую маску применить"
 
-#: src/editor/map/context_manager.cpp:310
+#: src/editor/map/context_manager.cpp:427
 msgid "Error loading mask"
 msgstr "Не удалось заглузить маску"
 
-#: src/editor/map/context_manager.cpp:331
+#: src/editor/map/context_manager.cpp:446
+msgid "Identifier:"
+msgstr "Идентификатор:"
+
+#: src/editor/map/context_manager.cpp:446
+msgid "Rename Area"
+msgstr "Переименовать область"
+
+#: src/editor/map/context_manager.cpp:457
 msgid "Choose Target Map"
 msgstr "Выберите целевую карту"
 
-#: src/editor/map/context_manager.cpp:338
-#: src/editor/map/context_manager.cpp:700
+#: src/editor/map/context_manager.cpp:464
+#: src/editor/map/context_manager.cpp:899
 msgid "Error loading map"
 msgstr "Не удалось загрузить карту"
 
-#: src/editor/map/context_manager.cpp:456
+#: src/editor/map/context_manager.cpp:581
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/editor/map/context_manager.cpp:460
+#: src/editor/map/context_manager.cpp:585
+#: src/editor/map/context_manager.cpp:613
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Файл уже существует. Хотите перезаписать?"
 
-#: src/editor/map/context_manager.cpp:494
+#: src/editor/map/context_manager.cpp:609
+msgid "Save the Scenario As"
+msgstr "Сохранить сценарий как"
+
+#: src/editor/map/context_manager.cpp:648
 msgid "No random map generators found."
 msgstr "Генераторы случайных карт не найдены."
 
-#: src/editor/map/context_manager.cpp:507
-#: src/editor/map/context_manager.cpp:511
+#: src/editor/map/context_manager.cpp:662
+#: src/editor/map/context_manager.cpp:666
 msgid "Map creation failed."
 msgstr "Не удалось создать карту."
 
-#: src/editor/map/context_manager.cpp:523
+#: src/editor/map/context_manager.cpp:679
 msgid "Unsaved Changes"
 msgstr "Несохранённые изменения"
 
-#: src/editor/map/context_manager.cpp:524
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
+#: src/editor/map/context_manager.cpp:680
+#, fuzzy
+#| msgid ""
+#| "Do you want to discard all changes you made to the map since the last "
+#| "save?"
+msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Вы правда хотите сбросить все изменения, которые внесли с последнего "
 "сохранения карты?"
 
-#: src/editor/map/context_manager.cpp:615
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:777
+msgid "This scenario is already open."
+msgstr "Вы уже открыли этот сценарий."
+
+#: src/editor/map/context_manager.cpp:799
+#: src/editor/map/context_manager.cpp:854
 msgid "This map is already open."
 msgstr "Вы уже открыли эту карту"
 
-#: src/editor/map/context_manager.cpp:636
+#: src/editor/map/context_manager.cpp:820
+msgid "Scenario saved."
+msgstr "Сценарий сохранен."
+
+#: src/editor/map/context_manager.cpp:834
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/editor/map/context_manager.cpp:679
+#: src/editor/map/context_manager.cpp:877
 msgid "Loaded embedded map data"
 msgstr "Загрузил встроенные в карту данные"
 
-#: src/editor/map/context_manager.cpp:680
-#: src/editor/map/context_manager.cpp:694
+#: src/editor/map/context_manager.cpp:878
+#: src/editor/map/context_manager.cpp:892
 msgid "Map loaded from scenario"
 msgstr "Карта загружена из сценария"
 
-#: src/editor/map/context_manager.cpp:690
+#: src/editor/map/context_manager.cpp:888
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -424,19 +448,23 @@ msgstr ""
 "Загрузил файл карты по ссылке:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:149
+#: src/editor/map/editor_map.cpp:152
 msgid "Player"
 msgstr "Игрок"
 
-#: src/editor/map/editor_map.cpp:266
+#: src/editor/map/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
-#: src/editor/map/map_context.cpp:107
+#: src/editor/map/map_context.cpp:132
 msgid "File not found"
 msgstr "Файл не найден"
 
-#: src/editor/map/map_context.cpp:121
+#: src/editor/map/map_context.cpp:138
+msgid "Empty file"
+msgstr "Файл пуст"
+
+#: src/editor/map/map_context.cpp:184
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -444,172 +472,47 @@ msgstr ""
 "Файл карты похож на сценарий, но значение map_data не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:137
-msgid "Empty map file"
-msgstr "Файл карты пуст"
+#: src/editor/map/map_context.cpp:524
+msgid "Could not save the scenario: $msg"
+msgstr "Невозможно сохранить сценарий: $msg"
 
-#: src/editor/map/map_context.cpp:350
+#: src/editor/map/map_context.cpp:551
 msgid "Could not save into scenario"
 msgstr "Невозможно сохранить сценарий"
 
-#: src/editor/map/map_context.cpp:357
+#: src/editor/map/map_context.cpp:558
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:56
-#: src/editor/palette/editor_palettes.cpp:101
+#: src/editor/palette/editor_palettes.cpp:60
+#: src/editor/palette/editor_palettes.cpp:115
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Неизвестная группа)"
 
-#: src/editor/palette/editor_palettes.cpp:340
+#: src/editor/palette/editor_palettes.cpp:384
 msgid "(non-core)"
 msgstr "(не-базовые)"
 
-#: src/editor/palette/editor_palettes.cpp:341
+#: src/editor/palette/editor_palettes.cpp:385
 msgid "Will not work in game without extra care."
 msgstr "В игре не заработает без дополнительной работы."
 
-#: src/editor/palette/terrain_palettes.cpp:225
+#: src/editor/palette/terrain_palettes.cpp:224
 msgid "FG: "
 msgstr "ПП: "
 
-#: src/editor/palette/terrain_palettes.cpp:226
+#: src/editor/palette/terrain_palettes.cpp:225
 msgid "BG: "
 msgstr "ФОН: "
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:86
+#: src/gui/dialogs/editor/custom_tod.cpp:129
+msgid "Choose File"
+msgstr "Выберите файл"
+
+#: src/gui/dialogs/editor_set_starting_position.cpp:87
 msgid "player^None"
 msgstr "Нет"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:98
+#: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Игрок $player_number"
-
-#: src/gui/dialogs/editor_settings.cpp:161
-msgid "Custom setting"
-msgstr "Настройка произвольных параметров"
-
-#~ msgid "Edit"
-#~ msgstr "Правка"
-
-#~ msgid "Quit Editor"
-#~ msgstr "Выход из редактора"
-
-#~ msgid "Undo"
-#~ msgstr "Отменить"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Нечего отменять"
-
-#~ msgid "Redo"
-#~ msgstr "Повторить"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Нечего повторять"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Автоматически обновлять переходы тайлов: Да"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Автоматически обновлять переходы тайлов: Частично"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Автоматически обновлять переходы тайлов: Нет"
-
-#, fuzzy
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "Файл карты пуст"
-
-#~ msgid "Choose player"
-#~ msgstr "Выберите игрока"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "Какому игроку начинать отсюда? Можете использовать Alt и клавиши с "
-#~ "цифрами, чтобы задать начальную позицию игрока, и Delete, чтобы очистить "
-#~ "начальную позицию под курсором. Если просто нажать клавишу с цифрой, вы "
-#~ "переместитесь к начальной позиции соответствующего игрока."
-
-#~ msgid "FG"
-#~ msgstr "ОСН"
-
-#~ msgid "BG"
-#~ msgstr "ДОП"
-
-#~ msgid "Error creating action object"
-#~ msgstr "Ошибка при создании объекта действия"
-
-#~ msgid "Error"
-#~ msgstr "Ошибка"
-
-#~ msgid "Settings"
-#~ msgstr "Настройки"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Рисовать ячейки"
-
-#~ msgid "Fill"
-#~ msgstr "Заполнить"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Установить начальные позиции игроков"
-
-#~ msgid "Zoom in"
-#~ msgstr "Увеличить"
-
-#~ msgid "Zoom out"
-#~ msgstr "Уменьшить"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Размер по умолчанию"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Включить сетку"
-
-#~ msgid "Resize the map"
-#~ msgstr "Изменить размер карты"
-
-#~ msgid "Flip map"
-#~ msgstr "Перебросить карту"
-
-#~ msgid "Language"
-#~ msgstr "Язык"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Выберите предпочтительный язык:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Битва за Веснот: Редактор карт"
-
-#~ msgid "None"
-#~ msgstr "Нет"
-
-#~ msgid "Which Player?"
-#~ msgstr "Какой игрок?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Какой игрок должен начинать здесь?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Внимание: Недопустимые символы в названии карты. Вы должны сохранить под "
-#~ "другим именем."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Файл не содержит карту."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Вы хотите сохранить карту перед выходом?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Ошибка: Недопустимые символы в названии файла."
-
-#~ msgid " maximum="
-#~ msgstr " максимум="

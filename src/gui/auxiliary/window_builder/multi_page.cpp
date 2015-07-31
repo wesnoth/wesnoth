@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,59 +24,62 @@
 #include "utils/foreach.tpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
-	: implementation::tbuilder_control(cfg)
-	, builder(NULL)
-	, data()
+	: implementation::tbuilder_control(cfg), builder(NULL), data()
 {
-	const config &page = cfg.child("page_definition");
+	const config& page = cfg.child("page_definition");
 
 	VALIDATE(page, _("No page defined."));
 	builder = new tbuilder_grid(page);
 	assert(builder);
 
 	/** @todo This part is untested. */
-	const config &d = cfg.child("page_data");
-	if(!d){
+	const config& d = cfg.child("page_data");
+	if(!d) {
 		return;
 	}
 
-	FOREACH(const AUTO& row, d.child_range("row")) {
+	FOREACH(const AUTO & row, d.child_range("row"))
+	{
 		unsigned col = 0;
 
-		FOREACH(const AUTO& column, row.child_range("column")) {
+		FOREACH(const AUTO & column, row.child_range("column"))
+		{
 			data.push_back(string_map());
-			FOREACH(const AUTO& i, column.attribute_range()) {
+			FOREACH(const AUTO & i, column.attribute_range())
+			{
 				data.back()[i.first] = i.second;
 			}
 			++col;
 		}
 
-		VALIDATE(col == builder->cols
-				, _("'list_data' must have "
-					"the same number of columns as the 'list_definition'."));
+		VALIDATE(col == builder->cols,
+				 _("'list_data' must have "
+				   "the same number of columns as the 'list_definition'."));
 	}
 }
 
 twidget* tbuilder_multi_page::build() const
 {
-	tmulti_page *widget = new tmulti_page();
+	tmulti_page* widget = new tmulti_page();
 
 	init_control(widget);
 
 	widget->set_page_builder(builder);
 
-	DBG_GUI_G << "Window builder: placed multi_page '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed multi_page '" << id
+			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tmulti_page_definition::tresolution> conf =
-			boost::dynamic_pointer_cast
-				<const tmulti_page_definition::tresolution>(widget->config());
+	boost::intrusive_ptr<const tmulti_page_definition::tresolution>
+	conf = boost::
+			dynamic_pointer_cast<const tmulti_page_definition::tresolution>(
+					widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -132,4 +135,3 @@ twidget* tbuilder_multi_page::build() const
  * @end{tag}{name="multi_page"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

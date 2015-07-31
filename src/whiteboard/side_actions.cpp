@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -37,8 +37,10 @@
 #include "actions/undo.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_state.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+#include "unit.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -310,7 +312,7 @@ bool side_actions::execute_next()
 bool side_actions::execute(side_actions::iterator position)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	if(actions_.empty() || position == actions_.end()) {
@@ -334,7 +336,7 @@ bool side_actions::execute(side_actions::iterator position)
 	bool action_complete;
 	try	{
 		 action->execute(action_successful, action_complete);
-	} catch (end_turn_exception&) {
+	} catch (return_to_play_side_exception&) {
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
 		//validate actions at next map rebuild
@@ -395,7 +397,7 @@ void side_actions::show()
 side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 	iterator valid_position = synced_insert(position, action);
 	LOG_WB << "Inserted into turn #" << get_turn(valid_position) << " at position #"
@@ -407,7 +409,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 side_actions::iterator side_actions::queue_action(size_t turn_num, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 	iterator result = synced_enqueue(turn_num, action);
 	LOG_WB << "Queue into turn #" << turn_num << " : " << action <<"\n";
@@ -453,9 +455,9 @@ namespace
 		move_ptr second_;
 
 		void check_recruit_recall(const map_location &loc) {
-			unit const* leader = second_->get_unit();
-			if(leader->can_recruit() && can_recruit_on(*leader, loc)) {
-				if(unit const* backup_leader = find_backup_leader(*leader)) {
+			const unit_const_ptr leader = second_->get_unit();
+			if(leader->can_recruit() && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, loc)) {
+				if(const unit_const_ptr backup_leader = find_backup_leader(*leader)) {
 					side_actions::iterator it = sa_.find_first_action_of(*backup_leader);
 					if(!(it == sa_.end() || position_ < it)) {
 						return; //backup leader but he moves before us, refuse bump
@@ -473,7 +475,7 @@ namespace
 side_actions::iterator side_actions::bump_earlier(side_actions::iterator position)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	assert(position <= end());
@@ -487,9 +489,9 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	side_actions::iterator previous = position - 1;
 
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
-	unit const* previous_ptr = (*previous)->get_unit();
-	unit const* current_ptr = (*position)->get_unit();
-	if(previous_ptr && current_ptr && previous_ptr == current_ptr) {
+	const unit_const_ptr previous_ptr = (*previous)->get_unit();
+	const unit_const_ptr current_ptr = (*position)->get_unit();
+	if(previous_ptr && current_ptr && previous_ptr.get() == current_ptr.get()) {
 		return end();
 	}
 
@@ -537,7 +539,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 side_actions::iterator side_actions::remove_action(side_actions::iterator position, bool validate_after_delete)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	assert(position < end());
@@ -597,8 +599,7 @@ std::deque<action_ptr> side_actions::actions_of(unit const &target)
 	typedef container::action_set::index<container::by_unit>::type::iterator unit_iterator;
 	std::pair<unit_iterator, unit_iterator> action_its = actions_.get<container::by_unit>().equal_range(target.underlying_id());
 
-	std::deque<action_ptr> actions;
-	std::copy(action_its.first, action_its.second, std::back_inserter(actions));
+	std::deque<action_ptr> actions (action_its.first, action_its.second);
 	return actions;
 }
 
@@ -705,13 +706,13 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.child("action"), hidden_);
 		if(!act) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid action data!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
 			return;
 		}
 
 		iterator itor = safe_insert(turn, pos, act);
 		if(itor >= end()) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid insertion position!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid insertion position!" << std::endl;
 			return;
 		}
 
@@ -727,18 +728,18 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.child("action"), hidden_);
 		if(!act) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid action data!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
 			return;
 		}
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
 			return;
 		}
 
 		if(!actions_.replace(itor, act)){
-			ERR_WB << "side_actions::execute_network_command(): replace failed!\n";
+			ERR_WB << "side_actions::execute_network_command(): replace failed!" << std::endl;
 			return;
 		}
 
@@ -749,7 +750,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
 			return;
 		}
 
@@ -767,7 +768,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor+1 >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
 			return;
 		}
 
@@ -789,7 +790,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		BOOST_FOREACH(net_cmd const& sub_cmd, cmd.child_range("net_cmd"))
 			execute_net_cmd(sub_cmd);
 	} else {
-		ERR_WB << "side_actions::execute_network_command(): received invalid type!\n";
+		ERR_WB << "side_actions::execute_network_command(): received invalid type!" << std::endl;
 		return;
 	}
 
@@ -860,16 +861,16 @@ side_actions::net_cmd side_actions::make_net_cmd_refresh() const
 void side_actions::raw_turn_shift()
 {
 	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
-	std::set<unit const*> lazy_units;
+	std::set<unit_const_ptr> lazy_units;
 	BOOST_FOREACH(action_ptr const& act, iter_turn(0)) {
-		unit const* u = act->get_unit();
+		unit_const_ptr u = act->get_unit();
 		if(u) {
 			lazy_units.insert(u);
 		}
 	}
 
 	//push their plans back one turn
-	std::set<unit const*>::iterator lazy_end = lazy_units.end();
+	std::set<unit_const_ptr>::iterator lazy_end = lazy_units.end();
 	iterator itor = end();
 	while(itor != begin()) {
 		--itor;

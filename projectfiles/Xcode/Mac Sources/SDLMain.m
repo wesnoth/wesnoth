@@ -58,11 +58,18 @@ static char  **gArgv;
 	/* This makes SDL give events to Cocoa, so it can handle things like command+h to hide, etc. */
 	setenv ("SDL_ENABLEAPPEVENTS", "1", 1);
 	setenv ("SDL_VIDEO_ALLOW_SCREENSAVER", "1", 1);
+
+    /* Set config files for pango and fontconfig, so the data they need can be found */
+	setenv ("PANGO_RC_FILE", "./pangorc", 1);
+	setenv ("PANGO_SYSCONFDIR", ".", 1);
+	setenv ("PANGO_LIBDIR", ".", 1);
+	setenv ("FONTCONFIG_PATH", ".", 1);
+	setenv ("FONTCONFIG_FILE", "fonts.conf", 1);
+
 	int status;
 
 	/* Set the working directory to the .app's Resources directory */
 	chdir([[[NSBundle mainBundle] resourcePath] fileSystemRepresentation]);
-
 	//setenv("PYTHONHOME", ".", 1); //not needed because we don't use Python anymore
 
 	/* Hand off to main application code */
@@ -82,7 +89,7 @@ int main (int argc, char **argv)
 {
 	/* Copy the arguments into a global variable */
 	int i;
-	
+
 	/* This is passed if we are launched by double-clicking */
 	if (argc >= 2 && strncmp (argv[1], "-psn", 4) == 0)
 	{

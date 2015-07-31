@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Jody Northup
+   Copyright (C) 2010 - 2015 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,24 +18,27 @@
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text.hpp"
-#include "savegame.hpp"
+#include "save_index.hpp"
 #include "tstring.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tdata_manage : public tdialog
 {
 public:
 	tdata_manage();
 
-	const std::string& filename() const { return filename_; }
+	const std::string& filename() const
+	{
+		return filename_;
+	}
 
 protected:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -43,7 +46,8 @@ private:
 	void list_item_clicked(twindow& window);
 	void delete_button_callback(twindow& window);
 
-	void fill_game_list(twindow& window, std::vector<savegame::save_info>& games);
+	void fill_game_list(twindow& window,
+						std::vector<savegame::save_info>& games);
 
 	tfield_text* txtFilter_;
 
@@ -53,8 +57,6 @@ private:
 
 	std::vector<std::string> last_words_;
 };
-
 }
 
 #endif
-

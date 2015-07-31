@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2008 - 2015 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,20 +18,33 @@
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text.hpp"
-#include "savegame.hpp"
+#include "save_index.hpp"
 #include "tstring.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tgame_load : public tdialog
 {
 public:
 	explicit tgame_load(const config& cache_config);
 
-	const std::string& filename() const { return filename_; }
-	bool change_difficulty() const { return change_difficulty_; }
-	bool show_replay() const { return show_replay_; }
-	bool cancel_orders() const { return cancel_orders_; }
+	const std::string& filename() const
+	{
+		return filename_;
+	}
+	bool change_difficulty() const
+	{
+		return change_difficulty_;
+	}
+	bool show_replay() const
+	{
+		return show_replay_;
+	}
+	bool cancel_orders() const
+	{
+		return cancel_orders_;
+	}
 
 protected:
 	/** Inherited from tdialog. */
@@ -41,7 +54,6 @@ protected:
 	void post_show(twindow& window);
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -50,8 +62,10 @@ private:
 	void delete_button_callback(twindow& window);
 
 	void display_savegame(twindow& window);
-	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
-	void fill_game_list(twindow& window, std::vector<savegame::save_info>& games);
+	void evaluate_summary_string(std::stringstream& str,
+								 const config& cfg_summary);
+	void fill_game_list(twindow& window,
+						std::vector<savegame::save_info>& games);
 
 	tfield_text* txtFilter_;
 	tfield_bool* chk_change_difficulty_;
@@ -68,8 +82,6 @@ private:
 
 	std::vector<std::string> last_words_;
 };
-
 }
 
 #endif
-

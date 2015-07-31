@@ -64,18 +64,11 @@ pas spécifiée, le menu de sélection de difficulté apparaîtra.
 L'identifiant du scénario de la campagne spécifiée. La valeur par défaut est
 le premier scénario.
 .TP 
-\fB\-\-config\-dir\fP\fI\ nom\fP
-Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
-ou dans "Mes Documents\eMes Jeux" pour windows.  Vous pouvez aussi
-renseigner un chemin absolu pour un dossier de configuration situé en dehors
-de $HOME ou de "Mes Documents\eMes Jeux"
-.TP 
-\fB\-\-config\-path\fP
-Affiche le nom du répertoire de configuration utilisateur et quitte le
-programme.
-.TP 
 \fB\-\-data\-dir <répertoire>\fP
 Remplace le répertoire data par celui spécifié
+.TP 
+\fB\-\-data\-path\fP
+Affiche le nom du répertoire principal du jeu et quitte le programme.
 .TP 
 \fB\-d, \-\-debug\fP
 Active des options supplémentaires pour la ligne de commande dans le jeu (se
@@ -193,6 +186,26 @@ Les erreurs de validation sont traitées comme des erreurs fatales.
 \fB\-t, \-\-test\fP
 Lance le jeu avec un petit scénario de test.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
+ou dans "Mes Documents\eMes Jeux" pour Windows.  Vous pouvez aussi indiquer
+un chemin absolu pour un dossier de configuration situé en dehors de $HOME
+ou de "Mes Documents\eMes Jeux". Sous X11 le répertoire par défaut est
+$XDG_CONFIG_HOME ou $HOME/.config/wesnoth. Sur les autres systèmes le
+répertoire par défaut est le répertoire de données.
+.TP 
+\fB\-\-userconfig\-path\fP
+Affiche le nom du répertoire de configuration utilisateur et quitte le
+programme.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ nom\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+Affiche le nom du répertoire de données et quitte le programme.
+.TP 
 \fB\-\-validcache\fP
 Suppose que le cache est valide (risqué).
 .TP 
@@ -234,7 +247,11 @@ victoire/défaite qui nécessite un click sur OK de la part du
 joueur. Utilisable pour permettre une mesure par script des performances.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+Ne pas utiliser les paramètres de la carte mais les valeurs par défaut.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvaleur\fP
+Répète une partie multijoueur \fIvaleur\fP fois. Il est préférable d'utiliser
+\fB\-\-nogui\fP pour une analyse comparative scriptée.
 .TP 
 \fB\-\-nogui\fP
 Lance le jeu sans interface graphique. Doit apparaître avant

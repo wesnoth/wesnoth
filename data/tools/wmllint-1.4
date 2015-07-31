@@ -1,0 +1,2295 @@
+#!/usr/bin/env python
+#
+# wmllint -- check WML for conformance to the most recent dialect
+#
+# By Eric S. Raymond April 2007.
+#
+# All conversion logic for lifting WML and maps from older versions of the
+# markup to newer ones should live here.  This includes resource path changes
+# and renames, also map format conversions.
+#
+# While the script is at it, it checks for various incorrect and dodgy WML
+# constructs, including:
+#   * unbalanced tags
+#   * strings that need a translation mark and should not have them
+#   * strings that have a translation mark and should not
+#   * translatable strings containing macro references 
+#   * filter references by description= not matched by an actual unit
+#   * abilities or traits without matching special notes, or vice-versa
+#   * consistency between recruit= and recruitment_pattern= instances
+#   * double space after punctuation in translatable strings.
+#   * unknown races or movement types in units
+#
+# Takes any number of directories as arguments.  Each directory is converted.
+# If no directories are specified, acts on the current directory.
+#
+# The recommended procedure is this:
+# 1. Run it with --dryrun first to see what it will do.
+# 2. If the messages look good, run without --dryrun; the old content
+#    will be left in backup files with a -bak extension.
+# 3. Eyeball the changes with the --diff option.
+# 4. Use wmlscope, with a directory list including the Wesnoth mainline WML
+#    as first argument, to check that you have no unresolved references.
+# 5. Test the conversion.
+# 6. Use either --clean to remove the -bak files or --revert to
+#    undo the conversion.
+#
+# This script will barf on 1.2.x maps with custom terrains.  Also, if you
+# have a single subdirectory that mixes old-style and new-style
+# terrain coding it might get confused.
+#
+# Standalone terrain mask files *must* have a .mask extension on their name
+# or they'll have an incorrect usage=map generated into them.
+#
+# Note: You can shut wmllint up about custom terrains by having a comment
+# on the same line that includes the string "wmllint: ignore".
+#
+# You can also prevent description insertions with "wmllint: no-icon".
+#
+# You can force otherwise undeclared characters to be recognized with
+# a magic comment containing the string "wmllint: recognize".
+# The rest of the line is stripped and treated as the name of a character
+# who should be recognized in descriptions.  This will be useful,
+# for example, if your scenario follows a continue so there are
+# characters present who were not explicitly recalled.  It may
+# also be useful if you have wrapped unit-creation or recall markup in macros
+# and wmllint cannot recognize it.
+#
+# Similarly, it is possible to explicitly declare a unit's usage class
+# with a magic comment that looks like thisL
+#    wmllint: usage of <unit> is <class>
+# Note that <unit> must be a string wrapped in ASCII doublequotes.  This
+# declaration will be useful if you are declaring units with macros that
+# include a substitutable formal in the unit name; there are examples in UtBS.
+#
+# You can disable stack-based malformation checks with a comment
+# containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
+#
+# You can prevent file conversions with a comment containing
+# "wmllint: noconvert" on the same line as the filename.
+#
+# You can skip checks on unbalanced WML (e.g. in a macro definition) by
+# bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
+# Note that this will also disable stack-based validation on the span
+# of lines they enclose.
+
+import sys, os, re, getopt, string, copy, difflib, time
+from wesnoth.wmltools import *
+from wesnoth.wmliterator import *
+
+filemoves = {
+    # Older includes all previous to 1.3.1.
+    "older" : (
+        # Moved before 1.1.9
+        ("portraits/core/", "portraits/"),
+        # File naming error made repeatedly in NR and elsewhere.
+        ("human-loyalists/human-", "human-loyalists/"),
+        # These are picked to cover as many as possible of the broken
+        # references in UMC on the campaign server.  Some things we
+        # don't try to fix include:
+        # - attack/staff.png may map to one of several staves.
+        # - magic.wav may map to one of several sounds depending on the unit.
+        # Some other assumptions that are sound in current UMC as of April 2007
+        # but theoretically dubious are marked with *.
+        ("../music/defeat.ogg",     "defeat.ogg"),
+        ("../music/victory.ogg",    "victory.ogg"),
+        ("AMLA TOUGH",              "AMLA_TOUGH"),
+        ("AMLA_TOUGH_2",            "AMLA_TOUGH 2"),
+        ("AMLA_TOUGH_3",            "AMLA_TOUGH 3"),
+        ("SOUND_LIST:DAGGER_SWISH", "SOUND_LIST:SWORD_SWISH"),
+        ("arrow-hit.wav",           "bow.ogg"),
+        ("arrow-miss.wav",          "bow-miss.ogg"),
+        ("attacks/animal-fangs.png","attacks/fangs-animal.png"),
+        ("attacks/crossbow.png",    "attacks/human-crossbow.png"),        #*
+        ("attacks/dagger.png",      "attacks/human-dagger.png"),          #*
+        ("attacks/darkstaff.png",   "attacks/staff-necromantic.png"),
+        ("attacks/human-fist.png",  "attacks/fist-human.png"),
+        ("attacks/human-mace.png",  "attacks/mace.png"),
+        ("attacks/human-sabre.png", "attacks/sabre-human.png"),
+        ("attacks/icebolt.png",     "attacks/iceball.png"),    # Is this right?
+        ("attacks/lightingbolt.png","attacks/lightning.png"),
+        ("attacks/missile.png",     "attacks/magic-missile.png"),
+        ("attacks/morning_star.png","attacks/morning-star.png"),
+        ("attacks/plaguestaff.png", "attacks/staff-plague.png"),
+        ("attacks/slam.png",        "attacks/slam-drake.png"),
+        ("attacks/staff-magical.png","attacks/staff-magic.png"),
+        ("attacks/sword-paladin.png","attacks/sword-holy.png"),
+        ("attacks/sword.png",       "attacks/human-sword.png"),                #*
+        ("attacks/sword_holy.png",  "attacks/sword-holy.png"),
+        ("attacks/throwing-dagger-human.png", "attacks/dagger-thrown-human.png"),
+        ("bow-hit.ogg",             "bow.ogg"),
+        ("bow-hit.wav",             "bow.ogg"),
+        ("bowman-attack-sword.png", "bowman-sword-1.png"),
+        ("bowman-attack1.png",      "bowman-ranged-1.png"),
+        ("bowman-attack2.png",      "bowman-ranged-2.png"),
+        ("creepy.ogg",              "underground.ogg"),
+        ("dwarves/warrior.png",     "dwarves/fighter.png"),
+        ("eagle.wav",               "gryphon-shriek-1.ogg"),
+        ("elfland.ogg",             "elf-land.ogg"),
+        ("elvish-fighter.png",      "elves-wood/fighter.png"),
+        ("elvish-hero.png",         "elves-wood/hero.png"),
+        ("fist.wav",                "fist.ogg"),
+        ("flame-miss.ogg",          "flame-big-miss.ogg"),
+        ("flame.ogg",               "flame-big.ogg"),
+        ("gameplay2.ogg",           "gameplay02.ogg"),                    # Changes in 1.3.2
+        ("goblin-hit2.ogg",         "goblin-hit-2.ogg"),
+        ("hatchet-miss-1.ogg",      "hatchet-miss.wav"),
+        ("heal.ogg",                "heal.wav"),
+        ("hiss-big.ogg",            "hiss-big.wav"),
+        ("human-dagger.png",        "dagger-human.png"),
+        ("human-male-die.ogg",      "human-die-1.ogg"),
+        ("human-male-hit.ogg",      "human-hit-1.ogg"),
+        ("human-male-weak-die.ogg", "human-old-die-1.ogg"),
+        ("human-male-weak-hit.ogg", "human-old-hit-1.ogg"),
+        ("human-sword.png",         "sword-human.png"),
+        ("items/castle-ruins.png",  "scenery/castle-ruins.png"),
+        ("items/fire.png",          "scenery/fire1.png"),
+        ("items/fire1.png",         "scenery/fire1.png"),
+        ("items/fire2.png",         "scenery/fire2.png"),
+        ("items/fire3.png",         "scenery/fire3.png"),
+        ("items/fire4.png",         "scenery/fire4.png"),
+        ("items/hero-icon.png",     "misc/hero-icon.png"),
+        ("items/leanto.png",        "scenery/leanto.png"),
+        ("items/lighthouse.png",    "scenery/lighthouse.png"),
+        ("items/monolith1.png",     "scenery/monolith1.png"),
+        ("items/monolith2.png",     "scenery/monolith2.png"),
+        ("items/monolith3.png",     "scenery/monolith3.png"),
+        ("items/monolith4.png",     "scenery/monolith4.png"),
+        ("items/ring1.png",         "items/ring-silver.png"),  # Is this right?
+        ("items/ring2.png",         "items/ring-gold.png"),    # Is this right?
+        ("items/rock1.png",         "scenery/rock1.png"),
+        ("items/rock2.png",         "scenery/rock2.png"),
+        ("items/rock3.png",         "scenery/rock3.png"),
+        ("items/rock4.png",         "scenery/rock4.png"),
+        ("items/signpost.png",      "scenery/signpost.png"),
+        ("items/slab.png",          "scenery/slab-1.png"),
+        ("items/well.png",          "scenery/well.png"),
+        ("knife.ogg",               "dagger-swish.wav"),       # Is this right?
+        ("knife.wav",               "dagger-swish.wav"),       # Is this right?
+        ("lightning.wav",           "lightning.ogg"),
+        ("longbowman-ranged-1.png", "longbowman-bow-attack1.png"),
+        ("longbowman-ranged-2.png", "longbowman-bow-attack2.png"),
+        ("longbowman-ranged-3.png", "longbowman-bow-attack3.png"),
+        ("longbowman-ranged-4.png", "longbowman-bow-attack4.png"),
+        ("misc/chest.png",          "items/chest.png"),
+        ("misc/dwarven-doors.png",  "scenery/dwarven-doors-closed.png"),
+        ("misc/mine.png",           "scenery/mine-abandoned.png"),
+        ("misc/nest-empty.png",     "scenery/nest-empty.png"),
+        ("misc/rocks.png",          "scenery/rubble.png"),
+        ("misc/snowbits.png",       "scenery/snowbits.png"),
+        ("misc/temple.png",         "scenery/temple1.png"),
+        ("miss.wav",                "miss-1.ogg"),
+        ("orc-die.wav",             "orc-die-1.ogg"),
+        ("orc-hit.wav",             "orc-hit-1.ogg"),
+        ("ork-die-2.ogg",           "orc-die-2.ogg"),
+        ("pistol.wav",              "gunshot.wav"),
+        ("spear-miss-1.ogg",        "spear-miss.ogg"),
+        ("spearman-attack-south-1.png", "spearman-attack-s-1.png"),
+        ("spearman-attack-south-2.png", "spearman-attack-s-2.png"),
+        ("spearman-attack-south-3.png", "spearman-attack-s-3.png"),
+        ("squishy-miss-1.ogg",      "squishy-miss.wav"),
+        ("sword-swish.wav",         "sword-1.ogg"),
+        ("sword.wav",               "sword-1.ogg"),
+        ("terrain/flag-1.png",      "flags/flag-1.png"),
+        ("terrain/flag-2.png",      "flags/flag-2.png"),
+        ("terrain/flag-3.png",      "flags/flag-3.png"),
+        ("terrain/flag-4.png",      "flags/flag-4.png"),
+        ("terrain/rocks.png",       "scenery/rock2.png"),
+        ("terrain/signpost.png",    "scenery/signpost.png"),
+        ("terrain/village-cave-tile.png","terrain/village/cave-tile.png"),
+        ("terrain/village-dwarven-tile.png","terrain/village/dwarven-tile.png"),
+        ("terrain/village-elven4.png","terrain/village/elven4.png"),
+        ("terrain/village-human-snow.png", "terrain/village/human-snow.png"),
+        ("terrain/village-human.png","terrain/village/human.png"),
+        ("terrain/village-human4.png","terrain/village/human4.png"),
+        ("throwing-dagger-swish.wav","dagger-swish.wav"),      # Is this right?
+        ("units/undead/ghost-attack.png", "units/undead/ghost-attack-2.png"),
+        ("units/undead/ghost-attack1.png", "units/undead/ghost-attack-1.png"),
+        ("wolf-attack.wav",         "wolf-bite.ogg"),
+        ("wolf-cry.wav",            "wolf-die.wav"),
+        ("wose-attack.wav",         "wose-attack.ogg"),
+        (r"wose\.attack.ogg",       "wose-attack.ogg"),
+    ),
+    "1.3.1" : (
+        # Peasant images moved to a new directory
+        ("human-loyalists/peasant.png", "human-peasants/peasant.png"),
+        ("human-loyalists/peasant-attack.png", "human-peasants/peasant-attack.png"),
+        ("human-loyalists/peasant-attack2.png", "human-peasants/peasant-attack2.png"),
+        ("human-loyalists/peasant-ranged.png", "human-peasants/peasant-ranged.png"),
+        ("human-loyalists/peasant-idle-1.png", "human-peasants/peasant-idle-1.png"),
+        ("human-loyalists/peasant-idle-2.png", "human-peasants/peasant-idle-2.png"),
+        ("human-loyalists/peasant-idle-3.png", "human-peasants/peasant-idle-3.png"),
+        ("human-loyalists/peasant-idle-4.png", "human-peasants/peasant-idle-4.png"),
+        ("human-loyalists/peasant-idle-5.png", "human-peasants/peasant-idle-5.png"),
+        ("human-loyalists/peasant-idle-6.png", "human-peasants/peasant-idle-6.png"),
+        ("human-loyalists/peasant-idle-7.png", "human-peasants/peasant-idle-7.png"),
+        # All Great Mage attacks were renamed
+        ("great-mage-attack-magic1.png", "great-mage-attack-magic-1.png"),
+        ("great-mage-attack-magic2.png", "great-mage-attack-magic-2.png"),
+        ("great-mage+female-attack-magic1.png", "great-mage+female-attack-magic-1.png"),
+        ("great-mage+female-attack-magic2.png", "great-mage+female-attack-magic-2.png"),
+        ("great-mage-attack-staff1.png", "great-mage-attack-staff-1.png"),
+        ("great-mage-attack-staff2.png", "great-mage-attack-staff-2.png"),
+        ("great-mage+female-attack-staff1.png", "great-mage+female-attack-staff-1.png"),
+        ("great-mage+female-attack-staff2.png", "great-mage+female-attack-staff-2.png"),
+        # All Arch Mage attacks were renamed
+        ("arch-mage-attack-magic1.png", "arch-mage-attack-magic-1.png"),
+        ("arch-mage-attack-magic2.png", "arch-mage-attack-magic-2.png"),
+        ("arch-mage+female-attack-magic1.png", "arch-mage+female-attack-magic-1.png"),
+        ("arch-mage+female-attack-magic2.png", "arch-mage+female-attack-magic-2.png"),
+        ("arch-mage-attack-staff1.png", "arch-mage-attack-staff-1.png"),
+        ("arch-mage-attack-staff2.png", "arch-mage-attack-staff-2.png"),
+        ("arch-mage+female-attack-staff1.png", "arch-mage+female-attack-staff-1.png"),
+        ("arch-mage+female-attack-staff2.png", "arch-mage+female-attack-staff-2.png"),
+        # All Red Mage attacks were renamed
+        ("red-mage-attack-magic1.png", "red-mage-attack-magic-1.png"),
+        ("red-mage-attack-magic2.png", "red-mage-attack-magic-2.png"),
+        ("red-mage+female-attack-magic1.png", "red-mage+female-attack-magic-1.png"),
+        ("red-mage+female-attack-magic2.png", "red-mage+female-attack-magic-2.png"),
+        ("red-mage-attack-staff1.png", "red-mage-attack-staff-1.png"),
+        ("red-mage-attack-staff2.png", "red-mage-attack-staff-2.png"),
+        ("red-mage+female-attack-staff1.png", "red-mage+female-attack-staff-1.png"),
+        ("red-mage+female-attack-staff2.png", "red-mage+female-attack-staff-2.png"),
+        # Timothy Pinkham supplied titles for two of his music files.
+        # Zhaytee supplied a title for wesnoth-1.ogg
+        # gameplay03.ogg, and and wesnoth-[25].ogg already had titles.
+        ("gameplay01.ogg", "knolls.ogg"),
+        ("gameplay02.ogg", "wanderer.ogg"),
+        ("gameplay03.ogg", "battle.ogg"),
+        ("wesnoth-1.ogg", "revelation.ogg"),
+        ("wesnoth-2.ogg", "loyalists.ogg"),
+        ("wesnoth-5.ogg", "northerners.ogg"),
+        # And the holy->arcane change
+        ("type=holy", "type=arcane"),
+        ("holy=", "arcane="),
+    ),
+    "1.3.2" : (
+        ("misc/item-holywater.png", "items/holywater.png"),
+        ("orc-small-hit.wav",       "orc-small-hit-1.ogg"),
+    ),
+    "1.3.3" : (
+    	("sounds/dragonstick-hit.ogg", "sounds/dragonstick-hit-1.ogg"),
+    	("sounds/dragonstick-miss.ogg", "sounds/dragonstick-miss.wav"),
+    ),
+    "1.3.4" : (
+    	# This release changed from numeric to string palette IDs
+        ("RC(magenta>1)", "RC(magenta>red)"),
+        ("RC(magenta>2)", "RC(magenta>blue)"),
+        ("RC(magenta>3)", "RC(magenta>green)"),
+        ("RC(magenta>4)", "RC(magenta>purple)"),
+        ("RC(magenta>5)", "RC(magenta>black)"),
+        ("RC(magenta>6)", "RC(magenta>brown)"),
+        ("RC(magenta>7)", "RC(magenta>orange)"),
+        ("RC(magenta>8)", "RC(magenta>white)"),
+        ("RC(magenta>9)", "RC(magenta>teal)"),
+        ("colour=1", "colour=red"),
+        ("colour=2", "colour=blue"),
+        ("colour=3", "colour=green"),
+        ("colour=4", "colour=purple"),
+        ("colour=5", "colour=black"),
+        ("colour=6", "colour=brown"),
+        ("colour=7", "colour=orange"),
+        ("colour=8", "colour=white"),
+        ("colour=9", "colour=teal"),
+    ),
+    # 1.35 was an aborted release
+    "1.3.6" : (
+	("Soul Shooter", "Banebow"),
+	("Halbardier" , "Halberdier"),
+    ),
+    "1.3.9" : (
+	("Outlaw Ranger", "Ranger"),
+    ),
+    "1.3.14" : (
+	("{AMLA_TOUGH 3}", "{AMLA_DEFAULT}"),
+    ),
+    # An empty sentinel value at end is required.
+    "trunk" : (),
+}
+
+# Turn all the filemove string substitution pairs into nearly equivalent
+# regexp-substitution pairs, forbidding the match from being preceded
+# by a dash.  This prevents, e.g., "miss.ogg" false-matching on "big-miss.ogg".
+for (key, value) in filemoves.items():
+    filemoves[key] = map(lambda (old, new): (re.compile("(?<!-)"+old), new), value)
+
+# 1.2.x to 1.3.2 terrain conversion
+conversion1 = {
+    " " : "_s",
+    "&" : "Mm^Xm",
+    "'" : "Uu^Ii",
+    "/" : "Ww^Bw/",
+    "1" : "1 _K",
+    "2" : "2 _K",
+    "3" : "3 _K",
+    "4" : "4 _K",
+    "5" : "5 _K",
+    "6" : "6 _K",
+    "7" : "7 _K",
+    "8" : "8 _K",
+    "9" : "9 _K",
+    "?" : "Gg^Fet",
+    "A" : "Ha^Vhha",
+    "B" : "Dd^Vda",
+    "C" : "Ch",
+    "D" : "Uu^Vu",
+    "E" : "Rd",
+    "F" : "Aa^Fpa",
+    "G" : "Gs",
+    "H" : "Ha",
+    "I" : "Dd",
+    "J" : "Hd",
+    "K" : "_K",
+    "L" : "Gs^Vht",
+    "M" : "Md",
+    "N" : "Chr",
+    "P" : "Dd^Do",
+    "Q" : "Chw",
+    "R" : "Rr",
+    "S" : "Aa",
+    "T" : "Gs^Ft",
+    "U" : "Dd^Vdt",
+    "V" : "Aa^Vha",
+    "W" : "Xu",
+    "X" : "Qxu",
+    "Y" : "Ss^Vhs",
+    "Z" : "Ww^Vm",
+    "[" : "Uh",
+    "\\": "Ww^Bw\\",
+    "]" : "Uu^Uf",
+    "a" : "Hh^Vhh",
+    "b" : "Mm^Vhh",
+    "c" : "Ww",
+    "d" : "Ds",
+    "e" : "Aa^Vea",
+    "f" : "Gs^Fp",
+    "g" : "Gg",
+    "h" : "Hh",
+    "i" : "Ai",
+    "k" : "Wwf",
+    "l" : "Ql",
+    "m" : "Mm",
+    "n" : "Ce",
+    "o" : "Cud",
+    "p" : "Uu^Vud",
+    "q" : "Chs",
+    "r" : "Re",
+    "s" : "Wo",
+    "t" : "Gg^Ve",
+    "u" : "Uu",
+    "v" : "Gg^Vh",
+    "w" : "Ss",
+    "|" : "Ww^Bw|",
+    "~" : "_f",
+}
+max_len = max(*map(len, conversion1.values()))
+width = max_len+2
+
+def neighborhood(x, y, map):
+    "Returns list of original location+adjacent locations from a hex map"
+    odd = (x) % 2
+    adj = [map[y][x]];
+    if x > 0:
+	adj.append(map[y][x-1])
+    if x < len(map[y])-1:
+	adj.append(map[y][x+1])
+    if y > 0:
+	adj.append(map[y-1][x])
+    if y < len(map)-1:
+	adj.append(map[y+1][x])
+    if x > 0 and y > 0 and not odd:
+	adj.append(map[y-1][x-1])
+    if x < len(map[y])-1 and y > 0 and not odd:
+	adj.append(map[y-1][x+1])
+    if x > 0 and y < len(map)-1 and odd:
+	adj.append(map[y+1][x-1])
+    if x < len(map[y])-1 and y < len(map)-1 and odd:
+	adj.append(map[y+1][x+1])
+    return adj
+
+def maptransform1(filename, baseline, inmap, y):
+    "Transform a map line from 1.2.x to 1.3.x format."
+    global lock_terrain_coding
+    # The one truly ugly piece of implementation.
+    # We're relying here on maps being seen before scenario files.
+    # We notice whether the maps are oldstyle (single-letter codes)
+    # or newstyle (multiletter comma-seeparated fields) and retain that
+    # information to help with ambiguous cases later on.  We're also relying
+    # on terrain coding to be consistent within a single subdirectory. 
+    if len(inmap[y][0]) > 1:
+        lock_terrain_coding = "newstyle"
+    else:
+        format = "%%%d.%ds" % (width, max_len)
+        for (x, field) in enumerate(inmap[y]):
+            if field in conversion1:
+                lock_terrain_coding = "oldstyle"
+                inmap[y][x] = format % conversion1[field]
+            else:
+                raise maptransform_error(filename, baseline+y+1,
+                                         "unrecognized map element %s at (%s, %s)" % (`field`, x, y))
+
+# Mostly 1.3.1 -> 1.3.2 terrain conversions.
+# One 1.3.13 -> 1.3.14 conversion -- old windmill terrain to stock villages.
+# We don't version-check these because the source patterns are vanishingly
+# unlikely to turn up by accident.
+conversion2 = {
+    re.compile(r"(?<!\^)Bww([|/\\])") : "Ww^Bw\\1",
+    re.compile(r"(?<!\^)Bwo([|/\\])") : "Wo^Bw\\1",
+    re.compile(r"(?<!\^)Bss([|/\\])") : "Ss^Bw\\1",
+    re.compile(r"(?<!\^)Dc\b") : "Dd^Dc",
+    re.compile(r"(?<!\^)Dr\b") : "Dd^Dr",
+    re.compile(r"(?<!\^)Do\b") : "Dd^Do",
+    re.compile(r"(?<!\^)Fa\b") : "Aa^Fpa",
+    re.compile(r"(?<!\^)Fet\b") : "Gg^Fet",
+    re.compile(r"(?<!\^)Ff\b") : "Gs^Fp",
+    re.compile(r"(?<!\^)Ft\b") : "Gs^Ft",
+    re.compile(r"(?<!\^)Rfvs\b") : "Re^Gvs",
+    re.compile(r"(?<!\^)Uf\b") : "Uu^Uf",
+    re.compile(r"(?<!\^)Uui\b") : "Uu^Ii",
+    re.compile(r"(?<!\^)Uhi\b") : "Uh^Ii",
+    re.compile(r"(?<!\^)Vda\b") : "Dd^Vda",
+    re.compile(r"(?<!\^)Vdt\b") : "Dd^Vdt",
+    re.compile(r"(?<!\^)Vea\b") : "Aa^Vea",
+    re.compile(r"(?<!\^)Veg\b") : "Gg^Ve",
+    re.compile(r"(?<!\^)Vha\b") : "Aa^Vha",
+    re.compile(r"(?<!\^)Vhg\b") : "Gg^Vh",
+    re.compile(r"(?<!\^)Vhh\b") : "Hh^Vhh",
+    re.compile(r"(?<!\^)Vhha\b") : "Ha^Vhha",
+    re.compile(r"(?<!\^)Vhm\b") : "Mm^Vhh",
+    re.compile(r"(?<!\^)Vht\b") : "Gs^Vht",
+    re.compile(r"(?<!\^)Vu\b") : "Uu^Vu",
+    re.compile(r"(?<!\^)Vud\b") : "Uu^Vud",
+    re.compile(r"(?<!\^)Vwm\b") : "Ww^Vm",
+    re.compile(r"(?<!\^)Vs\b") : "Ss^Vhs",
+    re.compile(r"(?<!\^)Vsm\b") : "Ss^Vm",
+    re.compile(r"(?<!\^)Xm\b") : "Mm^Xm",
+    re.compile(r"\bGg\^Vwm\b") : "Gg^Vh",		# This is the 1.3.13 -> 1.3.14 one
+    }
+
+# Global changes meant to be done on all lines
+linechanges = (
+        ("canrecruit=1", "canrecruit=yes"),
+        ("canrecruit=0", "canrecruit=no"),
+)
+
+def maptransform2(filename, baseline, inmap, y):
+    "Convert a map line between 1.3.x formats."
+    for x in range(len(inmap[y])):
+        # General conversions
+        for (old, new) in conversion2.items():
+            inmap[y][x] = old.sub(new, inmap[y][x])
+        # Convert keeps according to adjacent hexes
+        if "_K" in inmap[y][x]:
+            adj = map(string.strip, neighborhood(x, y, inmap))
+
+            # print "adjacent: %s" % adj
+            hexcount = {}
+            # Intentionally skipping 0 as it is original hex
+            for i in range(1, len(adj)):
+                if adj[i].startswith("C"): # this is a castle hex
+                    # Magic: extract second character of each adjacent castle,
+                    # which is its base type.  Count occurrences of each type.
+                    basetype = adj[i][1]
+                    hexcount[basetype] = hexcount.get(basetype, 0) + 1
+            maxc = 0;
+            maxk = "h";
+            # Note: if two kinds of basetype tie for most instances adjacent,
+            # which one dominates will be a pseudorandom artifact of
+            # Python's hash function.
+            for k in hexcount.keys():
+                if hexcount[k] > maxc:
+                    maxc = hexcount[k]
+                    maxk = k
+            #print "Dominated by %s" % maxk
+            inmap[y][x] = inmap[y][x].replace("_K", "K" + maxk)
+            # There's only one kind of underground keep at present.
+            inmap[y][x] = inmap[y][x].replace("Ku", "Kud")
+
+def validate_stack(stack, filename, lineno):
+    "Check the stack for deprecated WML syntax."
+    if verbose >= 3:
+        print '"%s", line %d: %s' % (filename, lineno+1, stack)
+    if stack:
+        (tag, attributes) = tagstack[-1]
+        ancestors = map(lambda x: x[0], tagstack)
+        #if tag == "sound" and "attack" in ancestors:
+        #    print '"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1)
+
+def validate_on_pop(tagstack, closer, filename, lineno):
+    "Validate the stack at the time a new close tag is seen."
+    (tag, attributes) = tagstack[-1]
+    ancestors = map(lambda x: x[0], tagstack)
+    if verbose >= 3:
+        print '"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes)
+    # Detect a malformation that will cause the game to barf while attempting
+    # to deserialize an empty unit.
+    if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
+        print '"%s", line %d: [side] without type attribute' % (filename, lineno)
+
+def within(tag):
+    "Did the specified tag lead one of our enclosing contexts?"
+    return tag in map(lambda x: x[0], tagstack)
+
+# Sanity checking
+
+# Associations for the ability sanity checks.
+# Note: Depends on ABILITY_EXTRA_HEAL not occurring outside ABILITY_CURES.
+notepairs = (
+    ("movement_type=undeadspirit", "{SPECIAL_NOTES_SPIRIT}"),
+    ("type=arcane", "{SPECIAL_NOTES_ARCANE}"),
+    ("{ABILITY_HEALS}", "{SPECIAL_NOTES_HEALS}"),
+    #("{ABILITY_EXTRA_HEAL}", "{SPECIAL_NOTES_EXTRA_HEAL}"),
+    ("{ABILITY_UNPOISON}", "{SPECIAL_NOTES_UNPOISON}"),
+    ("{ABILITY_CURES}", "{SPECIAL_NOTES_CURES}"),
+    ("{ABILITY_REGENERATES}", "{SPECIAL_NOTES_REGENERATES}"),
+    ("{ABILITY_STEADFAST}", "{SPECIAL_NOTES_STEADFAST}"),
+    ("{ABILITY_LEADERSHIP_LEVEL_", "{SPECIAL_NOTES_LEADERSHIP}"), # No } deliberately
+    ("{ABILITY_SKIRMISHER}", "{SPECIAL_NOTES_SKIRMISHER}"),
+    ("{ABILITY_ILLUMINATES}", "{SPECIAL_NOTES_ILLUMINATES}"),
+    ("{ABILITY_TELEPORT}", "{SPECIAL_NOTES_TELEPORT}"),
+    ("{ABILITY_AMBUSH}", "{SPECIAL_NOTES_AMBUSH}"),
+    ("{ABILITY_NIGHTSTALK}", "{SPECIAL_NOTES_NIGHTSTALK}"),
+    ("{ABILITY_CONCEALMENT}", "{SPECIAL_NOTES_CONCEALMENT}"),
+    ("{ABILITY_SUBMERGE}", "{SPECIAL_NOTES_SUBMERGE}"),
+    ("{ABILITY_FEEDING}", "{SPECIAL_NOTES_FEEDING}"),
+    ("{WEAPON_SPECIAL_BERSERK}", "{SPECIAL_NOTES_BERSERK}"),
+    ("{WEAPON_SPECIAL_BACKSTAB}", "{SPECIAL_NOTES_BACKSTAB}"),
+    ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"),	# No } deliberately
+    ("{WEAPON_SPECIAL_SLOW}", "{SPECIAL_NOTES_SLOW}"),
+    ("{WEAPON_SPECIAL_STONE}", "{SPECIAL_NOTES_STONE}"),
+    ("{WEAPON_SPECIAL_MARKSMAN}", "{SPECIAL_NOTES_MARKSMAN}"),
+    ("{WEAPON_SPECIAL_MAGICAL}", "{SPECIAL_NOTES_MAGICAL}"),
+    ("{WEAPON_SPECIAL_SWARM}", "{SPECIAL_NOTES_SWARM}"),
+    ("{WEAPON_SPECIAL_CHARGE}", "{SPECIAL_NOTES_CHARGE}"),
+    ("{WEAPON_SPECIAL_DRAIN}", "{SPECIAL_NOTES_DRAIN}"),
+    ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{SPECIAL_NOTES_FIRSTSTRIKE}"),
+    ("{WEAPON_SPECIAL_POISON}", "{SPECIAL_NOTES_POISON}"),
+    )
+
+trait_note = dict(notepairs)
+note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
+
+def string_strip(value):
+    "String-strip the value"
+    if value.startswith('"'):
+        value = value[1:]
+        if value.endswith('"'):
+            value = value[:-1]
+    if value.startswith("'"):
+        value = value[1:]
+        if value.endswith("'"):
+            value = value[:-1]
+    return value
+
+def parse_attribute(str):
+    "Parse a WML key-value pair from a line."
+    if '=' not in str:
+        return None
+    where = str.find("=")
+    leader = str[:where]
+    after = str[where+1:]
+    after = after.lstrip()
+    if "#" in after:
+        where = after.find("#")
+        while after[where-1] in (" ", "\t"):
+            where -= 1
+        value = after[:where+1]
+        comment = after[where:]
+    else:
+        value = after.rstrip()
+        comment = ""
+    # Return four fields: stripped key, part of line before value,
+    # value, trailing whitespace and comment.
+    return (leader.strip(), leader+"=", string_strip(value), comment)
+
+# This needs to match the list of usage types in ai_python.cpp
+usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
+
+# These are accumulated by sanity_check() and examined by sanity_postcheck() 
+usage = {}
+sides = []
+movetypes = []
+unit_movetypes = []
+races = []
+unit_races = []
+
+# Will be used to move files to _main.cfg
+is_main = []
+
+def sanity_check(filename, lines):
+    "Perform sanity and consistency checks on input lines."
+    modified = False
+    unit_id = ""
+    # Sanity-check abilities and traits against notes macros.
+    # Note: This check is disabled on units derived via [base_unit].
+    # Also, build dictionaries of unit movement types and races
+    in_unit = False
+    in_attack_filter = False
+    for i in range(len(lines)):
+        if "[attack_filter]" in lines[i]:
+            in_attack_filter = True
+            continue
+        elif "[/attack_filter]" in lines[i]:
+            in_attack_filter = False
+            continue
+        elif "[unit]" in lines[i]:
+            traits = []
+            notes = []
+            has_special_notes = False
+            derived_unit = False
+            in_unit = i+1
+            continue
+        elif "[/unit]" in lines[i]:
+            #print '"%s", %d: unit has traits %s and notes %s' \
+            #      % (filename, in_unit, traits, notes)
+            if unit_id and not derived_unit:
+                missing_notes = []
+                for trait in traits:
+                    tn = trait_note[trait]
+                    if tn not in notes and tn not in missing_notes:
+                        missing_notes.append(tn)
+                missing_traits = []
+                for note in notes:
+                    nt = note_trait[note]
+                    if nt not in traits and nt not in missing_traits:
+                        missing_traits.append(nt)
+                if (notes or traits) and not has_special_notes:
+                    missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
+                if missing_notes:
+                    print '"%s", line %d: unit %s is missing notes +%s' \
+                          % (filename, in_unit, unit_id, "+".join(missing_notes))
+                if missing_traits:
+                    print '"%s", line %d: unit %s is missing traits %s' \
+                          % (filename, in_unit, unit_id, "+".join(missing_traits))
+                if not (notes or traits) and has_special_notes:
+                    print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
+                          % (filename, in_unit, unit_id)
+            in_unit = None
+            traits = []
+            notes = []
+            unit_id = ""
+            has_special_notes = False
+        if in_unit and not in_attack_filter:
+            try:
+                (key, prefix, value, comment) = parse_attribute(lines[i])
+                if key == "id" and not unit_id:
+                    if value[0] == "_":
+                        value = value[1:].strip()
+                    unit_id = value
+                elif key == "usage":
+                    assert(unit_id)
+                    usage[unit_id] = value
+                elif key == "movement_type":
+                    if '{' not in value:
+                        assert(unit_id)
+                        unit_movetypes.append((unit_id, filename, i+1, value))
+                elif key == "race":
+                    if '{' not in value:
+                        assert(unit_id)
+                        unit_races.append((unit_id, filename, i+1, value))
+            except TypeError:
+                pass
+            if "{SPECIAL_NOTES}" in lines[i]:
+                has_special_notes = True
+            if "[base_unit]" in lines[i]:
+                derived_unit = True
+            for (p, q) in notepairs:
+                if p in lines[i]:
+                    traits.append(p)
+                if q in lines[i]:
+                    notes.append(q)
+    # Collect information on defined movement types
+    in_movetype = False
+    for i in range(len(lines)):
+        if "[movetype]" in lines[i]:
+            in_movetype = True
+            continue
+        elif "[/movetype]" in lines[i]:
+            in_movetype = False
+            continue
+        if in_movetype:
+            try:
+                (key, prefix, value, comment) = parse_attribute(lines[i])
+                if key == 'name':
+                    movetypes.append(value)
+            except TypeError:
+                pass
+    # Collect information on defined races
+    in_race = False
+    for i in range(len(lines)):
+        if "[race]" in lines[i]:
+            in_race = True
+            continue
+        elif "[/race]" in lines[i]:
+            in_race = False
+            continue
+        if in_race:
+            try:
+                (key, prefix, value, comment) = parse_attribute(lines[i])
+                if key == 'id':
+                    races.append(value)
+            except TypeError:
+                pass
+    # Sanity-check recruit and recruitment_pattern.
+    # This code has a limitation; if there are multiple instances of
+    # recruit and recruitment_pattern (as can happen if these lists
+    # vary by EASY/NORMAL/HARD level) this code will only record the
+    # last of each for later consistency checking.
+    in_side = False
+    in_subtag = False
+    recruit = []
+    in_generator = False
+    sidecount = 0
+    recruitment_pattern = []
+    for i in range(len(lines)):
+        if "[generator]" in lines[i]:
+            in_generator = True
+            continue
+        elif "[/generator]" in lines[i]:
+            in_generator = False
+            continue
+        elif "[side]" in lines[i]:
+            in_side = True
+            sidecount += 1
+            continue
+        elif "[/side]" in lines[i]:
+            if recruit and recruitment_pattern:
+                sides.append((filename, recruit, recruitment_pattern))
+            in_side = False
+            recruit = []
+            recruitment_pattern = []
+            continue
+        elif in_side and ("[unit]" in lines[i] or "[ai]" in lines[i]):
+            in_subtag = True
+            continue
+        elif in_side and ("[/side]" in lines[i] or "[/ai]" in lines[i]):
+            in_subtag = False
+        if not in_side or in_subtag or '=' not in lines[i]:
+            continue
+        try:
+            (key, prefix, value, comment) = parse_attribute(lines[i])
+            if key == "recruit" and value:
+                recruit = (i+1, map(lambda x: x.strip(), value.split(",")))
+            elif key == "recruitment_pattern" and value:
+                recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
+                for utype in recruitment_pattern[1]:
+                    if not utype in usage_types:
+                        print '"%s", line %d: unknown usage class %s' \
+                              % (filename, i+1, utype)
+            elif key == "side":
+                try:
+                    if not in_generator and sidecount != int(value):
+                        print '"%s", line %d: side number %s is out of sequence' \
+                              % (filename, i+1, value)
+                except ValueError:
+                    pass	# Ignore ill-formed integer literals
+        except TypeError:
+            pass
+    # Consistency-check the description attributes in [side], [unit], [recall],
+    # and [message] scopes, also correctness-check translation marks.
+    present = []
+    in_scenario = False
+    in_person = False
+    in_objective = False
+    in_trait = False
+    ignoreable = False
+    for i in range(len(lines)):
+        if "[scenario]" in lines[i]:
+            in_scenario = True
+        elif "[/scenario]" in lines[i]:
+            in_scenario = False
+        elif "[objective]" in lines[i]:
+            in_objective = True
+        elif "[/objective]" in lines[i]:
+            in_objective = False
+        elif "[trait]" in lines[i]:
+            in_trait = True
+        elif "[/trait]" in lines[i]:
+            in_trait = False
+        elif "[kill]" in lines[i] or "[object]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
+            ignoreable = True
+        elif "[/kill]" in lines[i] or "[/object]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
+            ignoreable = False
+        elif "[side]" in lines[i] or "[unit]" in lines[i] or "[recall]" in lines[i]:
+            in_person = True
+            continue
+        elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
+            in_person = False
+        if not in_scenario:
+            continue
+        m = re.search("# *wmllint: recognize +(.*)", lines[i])
+        if m:
+            present.append(string_strip(m.group(1)).strip())
+        if '=' not in lines[i] or ignoreable:
+            continue
+        try:
+            (key, prefix, value, comment) = parse_attribute(lines[i])
+            if "wmllint: ignore" in comment:
+                continue
+            if len(value) == 0:
+                continue
+            has_tr_mark = value.lstrip().startswith("_")
+            if key == 'role':
+                present.append(value)
+            if has_tr_mark:
+                if '{' in value:
+                    print '"%s", line %d: macro reference in translatable string'\
+                          % (filename, i+1)
+                if future and re.search("[.,!?]  ", lines[i]):
+                    print '"%s", line %d: extraneous space in translatable string'\
+                          % (filename, i+1)
+            # Check correctness of translation marks and descriptions
+            if key.startswith("#"):	# FIXME: parse_attribute is confused.
+                pass
+            elif key == 'letter':	# May be led with _s for void 
+                pass
+            elif key == 'name':		# FIXME: check this someday
+                pass
+            elif key in ("message", "user_description", "story", "note", "text", "summary", "caption", "label", "unit_description") and not value.startswith("$"):
+                if not has_tr_mark:
+                    print '"%s", line %d: %s needs translation mark' \
+                          % (filename, i+1, key)
+                    value = "_ " + value
+                    modified = True
+            elif  key == "description":
+                if (in_trait or in_objective) and not has_tr_mark:
+                    print '"%s", line %d: description in [objectives] needs translation mark' \
+                          % (filename, i+1)
+                    value = "_ " + value
+                    modified = True
+                elif not (in_trait or in_objective) and has_tr_mark:
+                    print '"%s", line %d: description should not have translation mark' \
+                          % (filename, i+1)
+                    value = value.replace("_", "", 1)
+                    modified = True
+                if in_person:
+                    present.append(value)
+                elif value in ('narrator', 'unit', 'second_unit') or value[0] in ("$", "{"):
+                    continue
+                elif not in_objective and value not in present:
+                    print '"%s", line %d: unknown \'%s\' referred to by description' \
+                          % (filename, i+1, value)
+            elif has_tr_mark:
+                print '"%s", line %d: %s should not have a translation mark' \
+                          % (filename, i+1, key)                
+                value = value.replace("_", "", 1)
+                modified = True
+        except TypeError:
+            pass
+    # Interpret magic comments for setting the sage pattern of units.
+    # This copes with some wacky UtBS units that are defined with
+    # variant-spawning macros.  The prototype comment looks like this:
+    #wmllint: usage of "Desert Fighter" is fighter 
+    for i in range(len(lines)):
+        m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
+        if m:
+            usage[m.group(1)] = m.group(2).strip()
+    # Check for textdomain strings; should be exactly one, on line 1
+    # We will also take the opportunity to check if the file is a top-level main
+    textdomains = []
+    for i in range(len(lines)):
+        if ("[campaign]" in lines[i] or "[binary_path]" in lines[i] or "[textdomain]" in lines[i]) and not filename.endswith("_main.cfg") and not filename in is_main:
+            is_main.append(filename)
+        if "#textdomain" in lines[i]:
+            textdomains.append(i+1)
+    if not textdomains:
+        print '"%s", line 1: no textdomain string' % filename
+    elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
+        pass
+    elif len(textdomains) > 1:
+        print '"%s", line %d: multiple textdomain strings on lines %s' % \
+              (filename, textdomains[0], ", ".join(map(str, textdomains)))
+    else:
+        w = textdomains[0]
+        print '"%s", line %d: single textdomain declaration not on line 1.' % \
+              (filename, w)
+        lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
+        modified = True
+    return (lines, modified)
+
+def consistency_check():
+    "Consistency-check state information picked up by sanity_check"
+    utypes = []
+    for (filename, (rl, recruit), (pl, recruitment_pattern)) in sides:
+        #print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
+        for rtype in recruit:
+            if rtype not in usage:
+                print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
+                continue
+            utype = usage[rtype]
+            if utype not in recruitment_pattern:
+                print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
+            utypes.append(utype)
+        for utype in recruitment_pattern:
+            if utype not in utypes:
+                print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, rl, utype)
+    if movetypes:
+        for (unit_id, filename, line, movetype) in unit_movetypes:
+            if movetype not in movetypes:
+                print '"%s", line %d: %s has unknown movement type' \
+                      % (filename, line, unit_id)
+    if races:
+        for (unit_id, filename, line, race) in unit_races:
+            if race not in races:
+                print '"%s", line %d: %s has unknown race' \
+                      % (filename, line, unit_id)
+
+# Syntax transformations
+
+leading_ws = re.compile(r"^\s*")
+
+def leader(s):
+    "Return a copy of the leading whitespace in the argument."
+    return leading_ws.match(s).group(0)
+
+def outdent(s):
+    "Outdent line by one level."
+    if s.startswith(baseindent):
+        return s[len(baseindent):]
+    elif s.endswith("\t"):
+        return s[:-1] + baseindent
+    else:
+        return s
+
+def hack_syntax(filename, lines):
+    # Syntax transformations go here.  This gets called once per WML file;
+    # the name of the file is passed as filename, text of the file as the
+    # array of strings in lines.  Modify lines in place as needed, and
+    # set modcount to nonzero when you actually change any.
+    global versions
+    modcount = 0
+    # Ensure that every attack has a translatable description.
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        elif "[attack]" in lines[i]:
+            j = i;
+            have_description = False
+            while '[/attack]' not in lines[j]:
+                if lines[j].strip().startswith("description"):
+                    have_description = True
+                j += 1
+            if not have_description:
+                j = i
+                while '[/attack]' not in lines[j]:
+                    fields = lines[j].strip().split('#')
+                    syntactic = fields[0]
+                    comment = ""
+                    if len(fields) > 1:
+                        comment = fields[1]
+                    if syntactic.strip().startswith("name"):
+                        description = syntactic.split("=")[1].strip()
+                        if not description.startswith('"'):
+                            description = '"' + description + '"'
+                        # Skip the insertion if this is a dummy declaration
+                        # or one modifying an attack inherited from a base unit.
+                        if "no-icon" not in comment:
+                            new_line = leader(lines[j]) + "description=_"+description+'\n'
+                            if verbose:
+                                print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
+                            lines.insert(j+1, new_line)
+                            j += 1
+                            modcount += 1
+                    j += 1
+    # Ensure that every speaker=narrator block without an image uses
+    # wesnoth-icon.png as an image.
+    need_image = False
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        precomment = lines[i].split("#")[0]
+        if "speaker=narrator" in precomment:
+            need_image = True
+        elif precomment.strip().startswith("image"):
+            need_image = False
+        elif '[/message]' in precomment:
+            if need_image:
+                # This line presumes the code has been through wmlindent
+                if verbose:
+                    print 'wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
+                lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
+                modcount += 1        
+            need_image = False
+    # Remove get_hit_sound fields (and image_defensive, if also present)
+    in_unit = False
+    unit_id = ""
+    unit_image = None
+    unit_sound = None
+    get_hit_sound = None
+    defend_image = None
+    image_defensive = None
+    in_defend = False
+    defend_frame = None
+    has_defense_anim = None
+    has_special_notes = False
+    image_done = []
+    for i in range(len(lines)):
+        if "[unit]" in lines[i]:
+            in_unit = i+1
+            continue
+        elif "[/unit]" in lines[i]:
+            if has_defense_anim:
+                if get_hit_sound:
+                    print 'wmllint: "%s", lines %d, %d: unit%s has both deprecated get_hit_sound key and a DEFENSE_ANIM'%(filename, get_hit_sound+1, has_defense_anim+1, unit_id)
+                if image_defensive:
+                    if re.search('{DEFENSE_ANIM[A-Z_]* +["(]*' + defend_image, lines[has_defense_anim]):
+                        image_done.append(image_defensive)
+                    else:
+                        print 'wmllint: "%s", lines %d, %d: unit%s has both outdated image_defensive key and a DEFENSE_ANIM' \
+                                % (filename, image_defensive+1, has_defense_anim+1, unit_id)
+                if defend_frame:
+                    print 'wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' \
+                          % (filename, defend_frame+1, has_defense_anim+1, unit_id)
+            elif unit_id and get_hit_sound:
+                if not defend_image:
+                    defend_image = unit_image
+                new_anim = "{DEFENSE_ANIM %s %s %s}" % \
+                           (defend_image, unit_image, unit_sound)
+                (key, prefix, val, comment) = parse_attribute(lines[get_hit_sound])
+                print 'wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound+1, unit_id, new_anim)
+                lines[get_hit_sound] = leader(lines[get_hit_sound]) \
+                                       + new_anim + comment + "\n"
+                modcount += 1
+                if image_defensive:
+                    image_done.append(image_defensive)
+                if defend_frame:
+                    print 'wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' \
+                          % (filename, defend_frame+1, get_hit_sound+1, unit_id)
+            elif image_defensive:
+                print 'wmllint: "%s", line %d: unit%s has outdated image_defensive key' \
+                      % (filename, image_defensive+1, unit_id)
+            in_unit = None
+            unit_id = ""
+            unit_image = None
+            unit_sound = None
+            get_hit_sound = None
+            defend_image = None
+            image_defensive = None
+            in_defend = False
+            defend_frame = None
+            has_defense_anim = None
+            has_special_notes = False
+        if in_unit:
+            if "{DEFENSE_ANIM" in lines[i] and not has_defense_anim:
+                has_defense_anim = i
+            if "[defend]" in lines[i]:
+                in_defend = True
+            if "[/defend]" in lines[i] or "[attack]" in lines[i]:
+                in_defend = False
+            if in_defend and not defend_frame and "[frame]" in lines[i]:
+                defend_frame = i
+            else:
+                fields = parse_attribute(lines[i])
+                if fields is None:
+                    continue
+                (key, prefix, value, comment) = fields
+                if key == "id" and not unit_id:
+                    unit_id = value
+                    if unit_id[0] == "_":
+                        unit_id = unit_id[1:].strip()
+                    unit_id = " " + unit_id
+                elif key == "get_hit_sound":
+                    get_hit_sound = i
+                    unit_sound = value
+                elif key == "image" and not unit_image:
+                    unit_image = value
+                elif key == "image_defensive" and not image_defensive:
+                    defend_image = value
+                    image_defensive = i
+                elif key == "image" and in_defend and not defend_image:
+                    defend_image = value
+    # If image_defensive is the same image as the one in DEFENSE_ANIM, it is safe to discard
+    image_done.reverse()
+    for bye in image_done:
+        print 'wmllint: "%s", line %d: removing outdated attribute (%s)' \
+              % (filename, bye+1, lines[bye].strip())
+        del lines[bye]
+        modcount += 1
+    # Boucman's transformation of animation syntax.
+    # Wrap this in try/except because some newer animation syntax chokes it.
+    try:
+        class anim_frame:
+            def __init__(self, attackline, attackname, lineno, female, variation):
+                self.attackstart = attackline
+                self.name = attackname
+                self.animstart = lineno
+                self.female = female
+                self.variation = variation
+                self.animend = None
+                self.attackend = None
+            def __repr__(self):
+                return `self.__dict__`
+        in_attack = in_animation = in_female = in_variation = False
+        animations = []
+        attackname = None
+        attackline = None
+        for i in range(len(lines)):
+            if "no-syntax-rewrite" in lines[i]:
+                break
+            elif "[female]" in lines[i]:
+                in_female = True
+            elif "[/female]" in lines[i]:
+                in_female = False
+            elif "[variation]" in lines[i]:
+                variation_index += 1
+                in_variation = True
+            elif "[/variation]" in lines[i]:
+                in_variation = False
+            elif "[unit]" in lines[i]:
+                in_attack = in_animation = in_female = in_variation = False
+                female_attack_index = -1
+                variation_index = 0
+                male_attack_start = len(animations)
+            elif "[attack]" in lines[i]:
+                in_attack = True;
+                attackname = None
+                attackline = i
+                if in_female:
+                    female_attack_index += 1
+            elif "[animation]" in lines[i] and in_attack:
+                #if verbose:
+                #    print '"%s", line %d: [animation] within [attack]' \
+                #          % (filename, i+1)
+                # This weird piece of code is because attacks for female
+                # variants don't have names.  Instead, they're supposed
+                # to pick up the name of the corresponding male attack,
+                # where correspondence is by order of declaration.  The
+                # male_attack_start variable copes with the possibility
+                # of multiple units per file.
+                if attackname == None and in_female:
+                    attackname = animations[male_attack_start + female_attack_index].name
+                if not attackname:
+                    print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
+                if in_variation:
+                    variation = variation_index
+                else:
+                    variation = None
+                animations.append(anim_frame(attackline, attackname, i, in_female, variation))
+                in_animation = True
+            elif "[/animation]" in lines[i] and in_attack:
+                in_animation = False
+                if animations and animations[-1].animstart != None and animations[-1].animend == None:
+                    animations[-1].animend = i
+                else:
+                    print '"%s", line %d: [animation] ending here may be ill-formed'%(filename, i+1)
+            elif "[/attack]" in lines[i]:
+                inattack = False;
+                attackname = None
+                if animations and (animations[-1].attackstart == None or animations[-1].attackend != None):
+                    print '"%s", line %d: [attack] ending here may be ill-formed'%(filename, i+1)
+                elif animations:
+                    # This loop is needed because a single attack tag may
+                    # enclose both hit and miss animations.
+                    j = len(animations)-1
+                    while True:
+                        animations[j].attackend = i
+                        j -= 1
+                        if j < 0 or animations[j].attackend != None:
+                            break
+            # Only pick up the *first* name field in an attack block;
+            # by convention, it will be right after the opening [attack] tag
+            elif in_attack and not in_animation and not attackname:
+                #print filename + ":" + `i+1` + ";" + `lines[i]` 
+                fields = lines[i].strip().split('#')
+                syntactic = fields[0]
+                comment = ""
+                if len(fields) > 1:
+                    comment = fields[1]
+                if syntactic.strip().startswith("name"):
+                    attackname = syntactic.split("=")[1].strip()
+        boucmanized = False
+        # All animation ranges have been gathered,  We have a list of objects
+        # containing the attack information.  Reverse it, because we're
+        # going to process them back to front to avoid invalidating the
+        # already-collected line numbers.  Then pull out the animation
+        # WML and stash it in the frame objects.
+        animations.reverse()
+        for aframe in animations:
+            if verbose:
+                print '"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' % (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1)
+            # Make a copy of the animation block, change its enclosing tags,
+            # outdent it, and add the needed filter clause.
+            animation = lines[aframe.animstart:aframe.animend+1]
+            animation[0] = animation[0].replace("[animation]", "[attack_anim]")
+            animation[-1] = animation[-1].replace("[/animation]","[/attack_anim]")
+            for i in range(len(animation)):
+                animation[i] = outdent(animation[i])
+            indent = leader(animation[1])
+            animation.insert(1, indent + "[/attack_filter]\n")
+            animation.insert(1, indent + baseindent + "name="+aframe.name+"\n")
+            animation.insert(1, indent + "[attack_filter]\n")
+            # Save it and delete it from its original location
+            aframe.wml = "".join(animation)
+            lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
+            modcount += 1
+            boucmanized = True
+        # Insert non-variation attacks where they belong
+        female_attacks = filter(lambda a: a.female and a.variation == None, animations)
+        female_attacks.reverse()
+        if female_attacks:
+            female_end = -1
+            for i in range(len(lines)):
+                if lines[i].rstrip().endswith("[/female]"):
+                    female_end = i
+                    break
+            assert female_end != -1
+            female_wml = "".join(map(lambda x: x.wml, female_attacks))
+            lines = lines[:female_end] + [female_wml] + lines[female_end:]
+        male_attacks = filter(lambda a: not a.female and a.variation == None, animations)
+        male_attacks.reverse()
+        if male_attacks:
+            male_end = -1
+            for i in range(len(lines)):
+                # Male attacks go either before the [female] tag or just
+                # before the closing [/unit]
+                if lines[i].rstrip().endswith("[/unit]") or lines[i].rstrip().endswith("[female]"):
+                    male_end = i
+                    break
+            assert male_end != -1
+            male_wml = "".join(map(lambda x: x.wml, male_attacks))
+            lines = lines[:male_end] + [male_wml] + lines[male_end:]
+        # Now insert variation attacks where they belong.
+        for animation in animations:
+            if animation.variation != None:
+                vcount = 0
+                for j in range(len(lines)):
+                    if "[/variation]" in lines[j]:
+                        vcount += 1
+                    if vcount == animation.variation:
+                        break
+                lines = lines[:j] + [animation.wml] + lines[j:]
+    except TypeError:
+        pass
+    # Garbage-collect any empty [attack] scopes left behind;
+    # this is likely to happen with female-variant units.
+    nullattack = True
+    while nullattack:
+        nullattack = False
+        for i in range(len(lines)-1):
+            if lines[i].strip() == "[attack]" and lines[i+1].strip() == "[/attack]":
+                nullattack = True
+                break
+        if nullattack:
+            lines = lines[:i] + lines[i+2:]
+    # Lift new_attack animation blocks within [effect] tags
+    # Note: This assumes that the animation WML goes last in the [effect] WML
+    # with nothing after it, and will fail if that is not true.
+    in_effect = False
+    attackname = None
+    converting = False
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        elif "[effect]" in lines[i]:
+            in_effect = True
+        elif "apply_to=new_attack" in lines[i]:
+            converting = True
+        elif "[/effect]" in lines[i]:
+            converting = in_effect = False
+        elif in_effect and not attackname:
+            #print filename + ":" + `i+1` + ";" + `lines[i]` 
+            fields = lines[i].strip().split('#')
+            syntactic = fields[0]
+            comment = ""
+            if len(fields) > 1:
+                comment = fields[1]
+            if syntactic.strip().startswith("name"):
+                attackname = syntactic.split("=")[1].strip()
+        elif converting and "[animation]" in lines[i]:
+            print '"%s", line %d: converting [animation] in [effect] '%(filename, i+1)
+            ws = leader(lines[i])
+            outer = outdent(ws)
+            assert attackname != None
+            before = outer + "[/effect]\n" \
+                     + outer + "[effect]\n" \
+                     + ws + "apply_to=new_animation\n"
+            after = ws + baseindent + "[attack_filter]\n" \
+                    + ws + baseindent*2 + "name=" + attackname + "\n" \
+                    + ws + baseindent + "[/attack_filter]\n"
+            lines[i] = before \
+                       + lines[i].replace("animation", "attack_anim") \
+                       + after
+            modcount += 1
+        elif converting and "[/animation]" in lines[i]:
+            lines[i] = lines[i].replace("animation", "attack_anim")
+    # Upconvert ancient ability declarations from 1.x
+    level = None
+    abilities = []
+    specials = []
+    lastability = None
+    lastspecial = None
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if "[unit]" in lines[i]:
+            abilities = []
+        if "[attack]" in lines[i]:
+            specials = []
+        elif "[/attack]" in lines[i]:
+            if specials:
+                if verbose:
+                    print "Lifting obsolete specials:", " ".join(specials)
+                ws = leader(lines[i])
+                insertion = ws + baseindent + "[specials]\n"
+                for special in specials:
+                    if special.startswith("plague("):
+                        insertion += ws + baseindent*2 + "{WEAPON_SPECIAL_PLAGUE_TYPE " + special[7:-1] + "}\n"
+                    elif special in ("backstab", "berserk", "charge", "drain",
+                                     "firststrike", "magical", "marksman", "plague",
+                                     "poison", "slow", "stone", "swarm",):
+                        insertion += ws + baseindent*2 + "{WEAPON_SPECIAL_" + special.upper() + "}\n"
+                    else:
+                        print "Don't know how to convert '%s'" % special
+                insertion += ws + baseindent + "[/specials]\n"
+                lines[lastspecial] = insertion
+                modcount += 1
+        elif "[/unit]" in lines[i]:
+            if abilities:
+                if verbose:
+                    print "Lifting obsolete abilities:", " ".join(abilities)
+                ws = leader(lines[i])
+                insertion = ws + baseindent + "[abilities]\n"
+                for ability in abilities:
+                    if ability == "leadership":
+                        if level is None:
+                            print "warning: can't convert ancient leadership ability"
+                        else:
+                            insertion += ws + baseindent*2 + "{ABILITY_LEADERSHIP_LEVEL_"+level+"}\n"
+                    elif ability in ("cures", "heals", "nightstalk", "regenerates",
+                                     "skirmisher", "steadfast", "illuminates",
+                                     "teleport", "ambush",):
+                        insertion += ws + baseindent*2 + "{ABILITY_" + ability.upper() + "}\n"
+                    else:
+                        print "Don't know how to convert '%s'" % ability
+                insertion += ws + baseindent + "[/abilities]\n"
+                lines[lastability] = insertion
+                modcount += 1
+        elif lines[i].count("=") == 1:
+            (tag, value) = lines[i].strip().split("=")
+            if tag == "level":
+                level = value
+            if tag == "ability":
+                for able in value.split(","):
+                    abilities.append(able.strip())
+                lastability = i
+                lines[i] = ""
+            if tag == "special":
+                specials.append(value)
+                lastspecial = i
+                lines[i] = ""
+    # Lift [frame] declarations directly within attacks
+    in_attack = False
+    attackname = None
+    soundpath = None
+    misspath = None
+    soundtime = None
+    in_sound = False
+    in_frame = False
+    postframe = []
+    begins = []
+    converting = 0
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        elif "[attack]" in lines[i]:
+            in_attack = True
+        elif "[/attack]" in lines[i]:
+            if converting:
+                assert attackname != None
+                lines[i] = lines[i].replace("/attack", "/attack_anim")
+                print '"%s", line %d: converting frame in [attack]'%(filename, converting+1)
+                ws = leader(lines[converting])
+                outer = outdent(ws)
+                if soundpath:
+                    if misspath:
+                        if not soundtime:
+                            soundtime = "-100"
+                            print '"%s", line %d: inserting "-100" for missing time value in SOUND:HIT_AND_MISS' % (filename, converting+1)
+                        lines[converting] = ws + "{SOUND:HIT_AND_MISS %s %s %s}\n" \
+                                            % (soundpath, misspath, soundtime) + lines[converting]
+                    else:
+                        for (when, where) in begins:
+                            if when == soundtime:
+                                lines[where] = leader(lines[where]) + "sound=" + soundpath + "\n" + lines[where]
+                                break
+                            continue
+                        else:
+                            lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
+                            print '"%s", line %d: no match found for [sound] time (%s), placing sound path in first frame' % (filename, where+1, soundtime)
+                insertion = outer + "[/attack]\n" \
+                            + outer + "[attack_anim]\n" \
+                            + ws + "[attack_filter]\n" \
+                            + ws + baseindent + "name=" + attackname + "\n" \
+                            + ws + "[/attack_filter]\n"
+                lines[converting] = insertion + lines[converting]
+                postframe.reverse()
+                for preframe in postframe:
+                    lines[converting] = preframe + lines[converting]
+                modcount += 1
+                converting = 0
+            in_attack = False
+            attackname = None
+            soundpath = None
+            misspath = None
+            soundtime = None
+            in_sound = False
+            in_frame = False
+            postframe = []
+            begins = []
+        elif ("[frame]" in lines[i] or "[missile_frame]" in lines[i]) and in_attack and converting == 0:
+            converting = i
+            in_frame = True
+        elif in_attack:
+            fields = lines[i].strip().split('#')
+            syntactic = fields[0]
+            comment = ""
+            if len(fields) > 1:
+                comment = fields[1]
+            if  not attackname and syntactic.strip().startswith("name"):
+                attackname = syntactic.split("=")[1].strip()
+            elif  not soundtime and syntactic.strip().startswith("time"):
+                soundtime = syntactic.split("=")[1].strip()
+            elif  not misspath and syntactic.strip().startswith("sound_miss"):
+                misspath = syntactic.split("=")[1].strip()
+            elif  not soundpath and syntactic.strip().startswith("sound"):
+                soundpath = syntactic.split("=")[1].strip()
+            elif  in_frame and syntactic.strip().startswith("begin"):
+                begins.append((syntactic.split("=")[1].strip(), i))
+            # Ignore sound tags, and their contents, within [attack]
+            if "[sound]" in lines[i]:
+                print '"%s", line %d: [sound] within [attack] discarded (path will be saved)' % (filename, i+1)
+                in_sound = True
+                modcount += 1
+            if "[/sound]" in lines[i]:
+                lines[i] = ""
+                in_sound = False
+            if in_sound:
+                lines[i] = ""
+            # Move post-frame lines up
+            if "[frame]" in lines[i] or "[missile_frame]" in lines[i]:
+                in_frame = True
+            elif "[/frame]" in lines[i] or "[/missile_frame]" in lines[i]:
+                in_frame = False
+            elif converting and not in_frame:
+                postframe.append(lines[i])
+                lines[i] = ""
+    # Upconvert old radius usage
+    if upconvert and "1.3.7" in versions and "older" not in versions:
+        radius_pos = wmlfind("radius=", WmlIterator(lines, filename))
+        while radius_pos is not None:
+            scopeIter = radius_pos.iterScope()
+            startline = scopeIter.lineno + 1
+            wspace = radius_pos.text
+            wspace = wspace[:len(wspace)-len(wspace.lstrip())]
+            radius_danger = False
+            to_indent = []
+            no_indent = []
+	    insideElem = 0
+            for i in scopeIter:
+                elem = i.element
+                if elem in ("[and]", "[or]", "[not]"):
+                    radius_danger = True
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
+		    insideElem += 1
+		elif insideElem:
+		    if elem in ("[/and]", "[/or]", "[/not]"):
+		        insideElem -= 1
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
+                elif elem in ("variable=", "side=", "count=", "adjacent="):
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
+                else:
+                    to_add = [txt+'\n' for txt in i.text.splitlines()]
+                    to_add[0] = baseindent + to_add[0]
+                    to_indent.extend(to_add)
+            if radius_danger:
+                lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
+                    wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
+		radius_pos.lines = lines
+                modcount += 1
+                #backup to rescan
+                radius_pos.seek(startline-1)
+                #pass the inserted content
+                radius_pos.seek(startline+len(to_indent)+1)
+            radius_pos = wmlfind("radius=", radius_pos)
+    # Boucmanize death animations
+    if future:
+        in_death = None
+        frame_commented = in_death_commented = False
+        frame_start = frame_end = None
+        image = None
+        for i in range(len(lines)):
+            if "no-syntax-rewrite" in lines[i]:
+                break
+            elif "[death]" in lines[i]:
+                in_death = i
+                in_death_commented = lines[i].strip().startswith("#")
+            elif "[/death]" in lines[i]:
+                if frame_start is None:
+                    print >>sys.stderr, '"%s", %d: [death] with no frames' % (filename, i)
+                    continue
+                # Find the image tag
+                for inside in range(frame_start, frame_end):
+                    if "image=" in lines[inside]:
+                        image = lines[inside].strip().split("=")[1]
+                        break
+                else:
+                    print >>sys.stderr,'"%s", line %d: no image in last frame'\
+                          % (filename, i)
+                    continue
+                # Modify the death wrapper
+                lines[i] = lines[i].replace("death", "animation")
+                inner = leader(lines[in_death])+baseindent
+                if in_death_commented:
+                    inner = "#" + inner
+                lines[in_death] = lines[in_death].replace("death", "animation") \
+                                  + inner + "apply_to=death" + "\n"
+                # Add a new last frame to the death animation
+                outer = leader(lines[frame_start])
+                if frame_commented:
+                    outer = "#" + outer
+                inner = outer + baseindent
+                if frame_commented:
+                    inner = "#" + inner
+                insertion = outer + "[frame]\n" + \
+                            inner + "duration=600\n" + \
+                            inner + "alpha=1~0\n" + \
+                            inner + "image=" + image + "\n" + \
+                            outer + "[/frame]\n"
+                lines[i] = insertion + lines[i]
+                in_death = frame_start = frame_end = None
+                frame_commented = in_death_commented = False
+                modcount += 1
+            elif in_death and "[frame]" in lines[i]:
+                frame_start = i
+                frame_commented = lines[i].strip().startswith("#")
+            elif in_death and "[/frame]" in lines[i]:
+                frame_end = i
+    # Check for duplicated attack names -- may be a result of a naive
+    # boucman conversion.
+    if boucmanized:
+        name_pos = wmlfind("name=", WmlIterator(lines, filename))
+        duplist = {}
+        while name_pos is not None:
+            key = lines[name_pos.lineno].strip()
+            context = map(lambda x: x.element, name_pos.scopes)
+            if '[attack]' in context:
+                if key not in duplist:
+                    duplist[key] = []
+                duplist[key].append(name_pos.lineno)
+            # Go to next
+            name_pos = wmlfind("name=", name_pos)
+        for (key, linenos) in duplist.items():
+            if len(linenos) > 1:
+                print >>sys.stderr, 'warning: duplicated attack %s at:' % key
+                for dup in linenos:
+                    print >>sys.stderr, '"%s", %d: %s' % (filename, dup, key)
+    # Lift obsolete image_short and image_long tags
+    expanded = """\
+[attack_anim]
+apply_to=attack
+start_time=-150
+[frame]
+    duration=300
+    image=%s
+[/frame]
+[attack_filter]
+    range=%s
+[/attack_filter]
+[/attack_anim]\
+"""
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        m = re.search(r"(\s+)image_short=(.*)", lines[i])
+        if m:
+            image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
+            lines[i] = m.group(1) + image_block % (m.group(2), "melee")
+            modcount += 1
+        m = re.search(r"(\s+)image_long=(.*)", lines[i])
+        if m:
+            image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
+            lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
+            modcount += 1
+    # In [terrain], letter= to terrain=
+    in_terrain = False
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if "[terrain]" in lines[i]:
+            in_terrain = True
+        if "[/terrain]" in lines[i]:
+            in_terrain = False
+        if in_terrain:
+            lines[i] = lines[i].replace("letter", "terrain")
+    # Upgrade old UNIT macro to 1.4's LOYAL_UNIT
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if '{UNIT ' in lines[i]:
+            old = lines[i].strip()
+            (new, num) = re.subn(r'{UNIT +(\([^)]*\)|"[^"]*"|[^(" ][^ ]*) +(\([^)]*\)|"[^"]*"|[^(" ][^ ]*) +(\([^)]*\)|_? *"[^"]*"|_? *[^(" ][^ ]*) +([0-9]+) +([0-9]+|[^ ]*\$[^ ]*x[^ ]*|\(?{[A-Z0-9_]*X[A-Z0-9_]*}\)?) +([0-9]+|[^ ]*\$[^ ]*y[^ ]*|\(?{[A-Z0-9_]*Y[A-Z0-9_]*}\)?)}', r'{LOYAL_UNIT \4 \1 \5 \6 \2 \3}', lines[i])
+            if num > 0:
+                lines[i] = new
+                print '"%s", line %d: %s -> %s' % (filename, i+1, old, new.strip())
+            if num == 0:
+                print '"%s", line %d: UNIT macro not converted to LOYAL_UNIT (%s)' % (filename, i+1, old)
+    # More syntax transformations would go here.
+    return (lines, modcount)
+
+# Generic machinery starts here
+
+def is_map(filename):
+    "Is this file a map in either old or new style?"
+    if isresource(filename) or '{' in filename or '}' in filename:
+        return False
+    if "map" in os.path.dirname(filename) or filename.endswith(".map"):
+        return True
+    try:
+        fp = open(filename)
+        lines = fp.readlines()
+        fp.close()
+        has_map_content = False
+        for i in range(len(lines)):
+            if lines[i].endswith("\n"):
+                lines[i] = lines[i][:-1] 
+            if lines[i].endswith("\r"):
+                lines[i] = lines[i][:-1] 
+        w = len(lines[0])
+        for line in lines:
+            if len(line) != w:
+                break
+        else:
+            has_map_content = len(lines) > 1
+    except OSError:
+        has_map_content = False
+    except IndexError:
+        has_map_content = False
+    return has_map_content
+
+class maptransform_error:
+    "Error object to be thrown by maptransform."
+    def __init__(self, infile, inline, type):
+        self.infile = infile
+        self.inline = inline
+        self.type = type
+    def __repr__(self):
+        return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
+
+tagstack = []	# For tracking tag nesting
+
+def outermap(func, inmap):
+    "Apply a transformation based on neighborhood to the outermost ring."
+    # Top and bottom rows
+    for i in range(len(inmap[0])):
+        inmap[0][i] = func(inmap[0][i])
+        inmap[len(inmap)-1][i] = func(inmap[len(inmap)-1][i])
+    # Leftmost and rightmost columns excluding top and bottom rows
+    for i in range(1, len(inmap)-1):
+        inmap[i][0] = func(inmap[i][0])
+        inmap[i][len(inmap[0])-1] = func(inmap[i][len(inmap[0])-1])
+
+def translator(filename, mapxforms, textxform, versions):
+    "Apply mapxform to map lines and textxform to non-map lines."
+    global tagstack
+    modified = False
+    mfile = []
+    map_only = not filename.endswith(".cfg")
+    terminator = "\n"
+    for line in open(filename):
+        if line.endswith("\n"):
+            line = line[:-1]
+        if line.endswith("\r"):
+            line = line[:-1]
+            if not stripcr:
+                terminator = '\r\n'
+        mfile.append(line)
+        if "map_data" in line:
+            map_only = False
+    lineno = baseline = 0
+    cont = False
+    validate = True
+    unbalanced = False
+    newdata = []
+    refname = None
+    while mfile:
+        if not map_only:
+            line = mfile.pop(0)
+            if verbose >= 3:
+                sys.stdout.write(line + terminator)
+            lineno += 1
+        # Check for one certain error condition
+        if line.count("{") and line.count("}"):
+            refname = line[line.find("{"):line.rfind("}")]            
+            # Ignore all-caps macro arguments.
+            if refname == refname.upper():
+                refname = None
+            if 'mask=' in line and refname and not refname.endswith(".mask"):
+                print >>sys.stderr, \
+                      '"%s", line %d: fatal error, mask file without .mask extension (%s)' \
+                      % (filename, lineno+1, refname)
+                sys.exit(1)
+        # Exclude map_data= lines that are just 1 line without
+        # continuation, or which contain {}.  The former are
+        # pathological and the parse won't handle them, the latter
+        # refer to map files which will be checked separately.
+        if map_only or (("map_data=" in line or "mask=" in line)
+                        and line.count('"') in (1, 2)
+                        and line.count("{") == 0
+                        and  line.count("}") == 0
+                        and not within('time')):
+            outmap = []
+            add_border = True
+            add_usage = True
+            have_header = have_delimiter = False
+            maskwarn = False
+            maptype = None
+            if map_only:
+                if filename.endswith(".mask"):
+                    maptype = "mask"
+                else:
+                    maptype = "map"
+            else:
+                if "map_data" in line:
+                    maptype = "map"
+                elif "mask" in line:
+                    maptype = "mask"
+            baseline = 0
+            cont = True
+            if verbose >= 3:
+                print "*** Entering map mode."
+            if not map_only:
+                fields = line.split('"')
+                if fields[1].strip():
+                    mfile.insert(0, fields[1])
+                if len(fields) == 3:
+                    mfile.insert(1, '"')
+            # Gather the map header (if any) and data lines
+            while cont and mfile:
+                line = mfile.pop(0)
+                if verbose >= 3:
+                    sys.stdout.write(line + terminator)
+                lineno += 1
+                # This code supports ignoring comments and header lines
+                if len(line) == 0 or line[0] == '#' or '=' in line:
+                    if '=' in line:
+                        have_header = True
+                    if 'border_size' in line:
+                        add_border = False
+                    if "usage" in line:
+                        add_usage = False
+                        usage = line.split("=")[1].strip()
+                        if usage == 'mask':
+                            add_border = False
+                            if filename.endswith(".map"):
+                                print "warning: usage=mask in file with .map extension"
+                        elif usage == 'map':
+                            if filename.endswith(".mask"):
+                                print "warning: usage=map in file with .mask extension"
+                    if len(line) == 0:
+                        have_delimiter = True
+                    newdata.append(line + terminator)
+                    continue
+                if '"' in line:
+                    cont = False
+                    if verbose >= 3:
+                        print "*** Exiting map mode."
+                    line = line.split('"')[0]
+                if line:
+                    if ',' in line:
+                        fields = line.split(",")
+                    else:
+                        fields = map(lambda x: x, line)
+                    outmap.append(fields)
+                    if not maskwarn and maptype == 'map' and "_s" in line:
+                        print >>sys.stderr, \
+                              '"%s", line %d: warning, fog in map file' \
+                              % (filename, lineno+1)
+                        maskwarn = True
+            # Checking the outmap length here is a bit of a crock;
+            # the one-line map we don't want to mess with is in the
+            # NO_MAP macro.
+            if len(outmap) == 1:
+                add_border = add_usage = False
+            # Deduce the map type
+            if not map_only:
+                if maptype == "map":
+                    newdata.append("map_data=\"" + terminator)
+                elif maptype == "mask":
+                    newdata.append("mask=\"" + terminator)
+            original = copy.deepcopy(outmap)
+            for transform in mapxforms:
+                for y in range(len(outmap)):
+                    transform(filename, baseline, outmap, y)
+            if maptype == "mask":
+                add_border = False
+            if add_border:
+                if verbose:
+                    print "adding border..."
+                newdata.append("border_size=1" + terminator)
+                have_header = True
+                # Start by duplicating the current outermost ring
+                outmap = [outmap[0]] + outmap + [outmap[-1]]
+                for i in range(len(outmap)):
+                    outmap[i] = [outmap[i][0]] + outmap[i] + [outmap[i][-1]]
+                # Strip villages out of the edges
+                outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap) 
+                # Strip keeps out of the edges
+                outermap(lambda n: re.sub(r"K([a-z]+)", r"C\1", n), outmap)
+                # Strip the starting positions out of the edges
+                outermap(lambda n: re.sub(r"[1-9] ", r"", n), outmap)
+                # Turn big trees on the edges to ordinary forest hexes
+                outermap(lambda n: n.replace(r"Gg^Fet", r"Gs^Fp"), outmap)
+                modified = True
+            if add_usage:
+                newdata.append("usage=" + maptype + terminator)
+                have_header = True
+                modified = True
+            if have_header and not have_delimiter:
+                newdata.append(terminator)
+                modified = True
+            for y in range(len(outmap)):
+                newdata.append(",".join(outmap[y]) + terminator)
+                if not modified and original[y] != outmap[y]:
+                    modified = True
+            # All lines of the map are processed, add the appropriate trailer
+            if not map_only:
+                newdata.append("\"" + terminator)
+        elif "map_data=" in line and (line.count("{") or line.count("}")):
+            newline = line
+            refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
+            if refre:
+                mapfile = refre.group(1)
+                if not mapfile.endswith(".map") and is_map(mapfile):
+                    newline = newline.replace(mapfile, mapfile + ".map") 
+            newdata.append(newline + terminator)
+            if newline != line:
+                modified = True
+                if verbose > 0:
+                    print >>sys.stderr, 'wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
+        elif "map_data=" in line and line.count('"') > 1:
+            print >>sys.stderr, 'wmllint: "%s", line %d: one-line map.' % (filename, lineno)
+            newdata.append(line + terminator)
+        else:
+            # Handle text (non-map) lines
+            newline = textxform(filename, lineno, line, versions)
+            newdata.append(newline + terminator)
+            if newline != line:
+                modified = True
+            # Now do warnings based on the state of the tag stack.
+            if not unbalanced:
+                fields = newline.split("#")
+                trimmed = fields[0]
+                destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
+                comment = ""
+                if len(fields) > 1:
+                    comment = fields[1]
+                for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
+                    tag = instance.group(1)
+                    attributes = []
+                    closer = instance.group(0)[1] == '/'
+                    if not closer:
+                        tagstack.append((tag, {}))
+                    else:
+                        if len(tagstack) == 0:
+                            print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
+                        elif tagstack[-1][0] != tag:
+                            print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1][0], tag)
+                        else:
+                            if validate:
+                                validate_on_pop(tagstack, tag, filename, lineno)
+                            tagstack.pop()
+                if tagstack:
+                    for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(\w+|"[^"]*")', trimmed):
+                        attribute = instance.group(1)
+                        value = instance.group(2)
+                        tagstack[-1][1][attribute] = value
+                    if validate:
+                        validate_stack(tagstack, filename, lineno)
+            if "wmllint: validate-on" in comment:
+                validate = True
+            if "wmllint: validate-off" in comment:
+                validate = False
+            if "wmllint: unbalanced-on" in comment:
+                unbalanced = True
+            if "wmllint: unbalanced-off" in comment:
+                unbalanced = False
+    # It's an error if the tag stack is nonempty at the end of any file:
+    if tagstack:
+        print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
+    tagstack = []
+    if iswml(filename):
+        # Perform semantic sanity checks
+        (newdata, modified1) = sanity_check(filename, newdata)
+        # OK, now perform WML rewrites
+        (newdata, modified2) = hack_syntax(filename, newdata)
+        # Run everything together
+        filetext = "".join(newdata)
+        modified |= modified1 or modified2
+        transformed = filetext
+        if upconvert:
+            # WML syntax changed in 1.3.5.  The transformation cannot
+            # conveniently be done line-by-line.
+            transformed = re.sub(r"(if]|while])\s*\[or]([\w\W]*?)\[/or]\s*",
+                             r"\1\2", filetext);
+            modified |= (transformed != filetext)
+    else:
+        # Map or mask -- just run everything together
+        transformed = "".join(newdata)
+    # Simple check for unbalanced macro calls
+    unclosed = None
+    linecount = 1
+    startline = None
+    depth = quotecount = 0
+    for i in range(len(transformed)):
+        if transformed[i] == '\n':
+            linecount += 1
+        elif transformed[i] == '{':
+            if depth == 0:
+                unclosed = startline = linecount
+                quotecount = 0
+            depth += 1
+        elif transformed[i] == '"':
+            quotecount += 1
+        elif transformed[i] == '}':
+            depth -= 1
+            if depth == 0:
+                unclosed = None
+                if quotecount % 2:
+                    print >>sys.stderr, '"%s", line %d: unbalanced quote.' % (filename, startline)
+    if unclosed:
+        print >>sys.stderr, '"%s", line %d: unbalanced {.' % (filename, unclosed)
+    # Return None if the transformation functions made no changes.
+    if modified:
+        return transformed
+    else:
+        return None
+
+ignore = (".tgz", ".png", ".jpg", "-bak")
+
+def interesting(fn):
+    "Is a file interesting for conversion purposes?"
+    return fn.endswith(".cfg") or fn.endswith(".map") \
+        or ("maps" in fn and fn[-4:] not in ignore) \
+        or is_map(fn)
+
+def allcfgfiles(dir):
+    "Get the names of all interesting files under dir."
+    datafiles = []
+    if not os.path.isdir(dir):
+        if interesting(dir):
+            if not os.path.exists(dir):
+                sys.stderr.write("wmllint: %s does not exist\n" % dir)
+            else:
+                datafiles.append(dir)
+    else:
+        for root, dirs, files in os.walk(dir):
+            if vcdir in dirs:
+                dirs.remove(vcdir)
+            for name in files:
+                if interesting(os.path.join(root, name)):
+                    datafiles.append(os.path.join(root, name))
+    datafiles.sort()	# So diffs for same campaigns will cluster in reports
+    return map(os.path.normpath, datafiles)
+
+def help():
+        sys.stderr.write("""\
+Usage: wmllint [options] [dir]
+    Included because wmllint has dropped support for pre-1.4 Wesnoth WML.
+    Use it to convert 1.0 and 1.2 material to "1.4", then use regular wmllint
+    to port it to a modern Battle of Wesnoth version.  Can also be used to
+    validate 1.4 add-ons against remnants of archaic WML.
+
+    Takes any number of directories as arguments.  Each directory is converted.
+    If no directories are specified, acts on the current directory.
+    Options may be any of these:
+    -h, --help                 Emit this help message and quit.
+    -d, --dryrun               List changes but don't perform them.
+    -n, --nolift               Don't perform version-lifting.
+    -o, --oldversion           Specify version to begin with.
+                               Note: wmllint-1.4 already defaults to "older",
+                               which covers everything before 1.3.1.
+    -v, --verbose              -v        lists changes.
+                               -v -v     names each file before it's processed.
+                               -v -v -v  shows verbose parse details.
+    -c, --clean                Clean up -bak files.
+    -D, --diff                 Display diffs between converted and unconverted files.
+    -r, --revert               Revert the conversion from the -bak files.
+    -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
+                               Note: does not work on Windows, due to Python
+                               defaulting to universal newlines support there.
+    --future                   Enable experimental WML conversions.
+    More about wmllint can be found in the introduction in the file itself, and
+    at http://wiki.wesnoth.org/Maintenance_tools.
+""")
+
+if __name__ == '__main__':
+    global versions
+    try:
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhno:rsv", [
+            "clean",
+            "diffs",
+            "dryrun",
+            "future",
+            "help",
+            "nolift",
+            "oldversion=",
+            "revert",
+            "stripcr",
+            "verbose",
+            ])
+    except getopt.GetoptError:
+        help()
+        sys.exit(1)
+    clean = False
+    diffs = False
+    dryrun = False
+    future = False
+    oldversion = 'older'
+    revert = False
+    stripcr = False
+    upconvert = True
+    verbose = 0
+    for (switch, val) in options:
+        if switch in ('-h', '--help'):
+            help()
+            sys.exit(0)
+        elif switch in ('-c', '--clean'):
+            clean = True
+        elif switch in ('-d', '--dryrun'):
+            dryrun = True
+            verbose = max(1, verbose)
+        elif switch in ('-D', '--diffs'):
+            diffs = True
+        elif switch in ('-f', '--future'):
+            future = True
+        elif switch in ('-n', '--nolift'):
+            upconvert = False
+        elif switch in ('-o', '--oldversion'):
+            oldversion = val
+        elif switch in ('-r', '--revert'):
+            revert = True
+        elif switch in ('-s', '--stripcr'):
+            stripcr = True
+        elif switch in ('-v', '--verbose'):
+            verbose += 1
+    if clean and revert:
+        sys.stderr.write("wmllint: can't do clean and revert together.\n")
+        sys.exit(1)
+
+    # Compute the series of version upgrades to perform, and describe it.
+    versions = filemoves.keys()
+    versions.sort()
+    # Relies on 'older' sorting before trunk
+    versions = [versions[-2]] + versions[:-2] + [versions[-1]]	# Move 'older' to front
+    if oldversion in versions:
+        versions = versions[versions.index(oldversion):]
+    else:
+        print >>sys.stderr, "wmllint: unrecognized version."
+        sys.exit(1)
+    if not dryrun and not clean and not revert and not diffs and len(versions) > 1:
+        explain = "Upgrades for:"
+        for i in range(len(versions)-1):
+            explain += " %s -> %s," % (versions[i],  versions[i+1])
+        sys.stdout.write(explain[:-1] + ".\n")
+    fileconversions = map(lambda x: filemoves[x], versions[:-1])
+
+    def hasdigit(str):
+        for c in str:
+            if c in "0123456789":
+                return True
+        return False
+
+    def texttransform(filename, lineno, line, versions):
+        "Resource-name transformation on text lines."
+        if not upconvert:
+            return line
+        transformed = line
+        # First, do resource-file moves
+        if "wmllint: noconvert" not in line:
+            for step in fileconversions:
+                for (old, new) in step:
+                    transformed = old.sub(new, transformed)
+        # Handle terrain_liked=, terrain=, valid_terrain=, letter=
+        spaceless = transformed.replace(" ", "").replace("\t", "")
+        if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless or 'letter=' in spaceless) and "wmllint:ignore" not in spaceless:
+            (key, pre, value, post) = parse_attribute(transformed)
+            # We have to cope with the following cases...
+            # Old style:
+            #    terrain_liked=ghM
+            #    terrain_liked=BEITU
+            #    valid_terrain=gfh
+            #    terrain=AaBbDeLptUVvYZ
+            #    terrain=r
+            #    terrain={LETTERS}
+            #    terrain=""
+            #    terrain=s,c,w,k
+            # New style:
+            #    terrain=Mm
+            #    terrain=Gs^Fp
+            #    terrain=Hh, Gg^Vh, Mm
+            # The sticky part is that, while it never happens in the current
+            # corpus, terrain=Mm (capital letter followed by small) could be
+            # interpreted either way.
+            #
+            # There are some unambiguous tests: 
+            oldstyle = (len(value) == 1 or len(value) > 6) and not ',' in value
+            newstyle = len(value) > 1 \
+                       and value[0].isupper() and value[1].islower() \
+                       and (',' in value \
+                            or len(value) == 2 \
+                            or (len(value) >= 3 and value[2] == "^"))
+            # See maptransform1() for explanation of this ugly hack.
+            oldstyle = oldstyle or lock_terrain_coding == "oldstyle"
+            newstyle = newstyle or lock_terrain_coding == "newstyle"
+            # Maybe we lose...
+            if not oldstyle and not newstyle:
+                print '"%s", line %d: leaving ambiguous terrain value %s alone.' \
+                      % (filename, lineno, value)
+            else:
+                if oldstyle and not lock_terrain_coding == "newstyle":
+                    # 1.2.x to 1.3.2 conversions
+                    newterrains = ""
+                    inmacro = False
+                    for c in value:
+                        if not inmacro:
+                            if c == '{':
+                                inmacro = True
+                                newterrains += c                            
+                            elif c == ',':
+                                pass
+                            elif c.isspace():
+                                newterrains += c
+                            elif c in conversion1:
+                                newterrains += conversion1[c] + ","
+                            else:
+                                print "%s, line %d: custom terrain %s ignored." \
+                                  % (filename, lineno+1, c)
+                        else: # inmacro == True
+                            if c == '}':
+                                inmacro = False
+                            newterrains += c
+                    if newterrains.endswith(","):
+                        newterrains = newterrains[:-1]
+                    transformed = pre + newterrains + post
+                if newstyle:
+                    if len(value) == 2:
+                        # 1.3.1 to 1.3.2 conversion
+                        for (old, new) in conversion2.items():
+                            transformed = old.sub(new, transformed)
+        # Check for things marked translated that aren't strings
+        if "_" in transformed and not "wmllint: ignore" in transformed:
+            m = re.search(r'[=(]\s*_\s+("?)', transformed)
+            if m and not m.group(1):
+                msg = '"%s", line %d: translatability mark before non-string' % \
+                      (filename, lineno)
+                print >>sys.stderr, msg
+        # Perform unconditional line changes
+        for (old, new) in linechanges:
+            transformed = transformed.replace(old, new)
+        # Report the changes
+        if verbose > 0 and transformed != line:
+            msg = "%s, line %d: %s -> %s" % \
+                  (filename, lineno, line.strip(), transformed.strip())
+            print msg
+        return transformed
+
+    if upconvert and "1.3.1" in versions and "older" not in versions:
+        maptransforms = [maptransform2]
+    else:
+        maptransforms = [maptransform1, maptransform2]
+
+    # In certain situations, Windows' command prompt appends a double quote
+    # to the command line parameters. The first block takes care of this issue.
+    # Also, Windows does not expand wildcards. The second turns on globbing.
+    if arguments and sys.platform == 'win32':
+        wildcard = False
+        for i,arg in enumerate(arguments):
+            if arg.endswith('"'):
+                arguments[i] = arg[:-1]
+            if '*' in arg:
+                wildcard = True
+        if wildcard:
+            from glob import glob
+            for arg in arguments:
+                wildarg = glob(arg)
+                arguments.remove(arg)
+                for newarg in wildarg:
+                    arguments.append(newarg)
+
+    if not arguments:
+        arguments = ["."]
+
+    for dir in arguments:
+        ofp = None
+        if "older" in versions:
+            lock_terrain_coding = None
+        else:
+            lock_terrain_coding = "newstyle"
+        for fn in allcfgfiles(dir):
+            if verbose >= 2:
+                print fn + ":"
+            backup = fn + "-bak"
+            if clean or revert:
+                # Do housekeeping
+                if os.path.exists(backup):
+                    if clean:
+                        print "wmllint: removing %s" % backup
+                        if not dryrun:
+                            os.remove(backup)
+                    elif revert:
+                        print "wmllint: reverting %s" % backup
+                        if not dryrun:
+                            if sys.platform == 'win32':
+                                os.remove(fn)
+                            os.rename(backup, fn)
+            elif diffs:
+                # Display diffs
+                if os.path.exists(backup):
+                    fromdate = time.ctime(os.stat(backup).st_mtime)
+                    todate = time.ctime(os.stat(fn).st_mtime)
+                    fromlines = open(backup, 'U').readlines()
+                    tolines = open(fn, 'U').readlines()
+                    diff = difflib.unified_diff(fromlines, tolines,
+                                         backup, fn, fromdate, todate, n=3)
+                    sys.stdout.writelines(diff)
+            else:
+                # Do file conversions
+                try:
+                    changed = translator(fn, maptransforms, texttransform, versions)
+                    if changed:
+                        print "wmllint: converting", fn
+                        if not dryrun:
+                            if sys.platform == 'win32' and os.path.exists(backup):
+                                os.remove(backup)
+                            os.rename(fn, backup)
+                            ofp = open(fn, "w")
+                            ofp.write(changed)
+                            ofp.close()
+                except maptransform_error, e:
+                    sys.stderr.write("wmllint: " + `e` + "\n")
+                except:
+                    sys.stderr.write("wmllint: internal error on %s\n" % fn)
+                    (exc_type, exc_value, exc_traceback) = sys.exc_info()
+                    raise exc_type, exc_value, exc_traceback
+            # Time for map and main file renames
+            # FIXME: We should make some effort to rename mask files.
+            if not revert and not diffs:
+                if not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
+                    mover = vcmove(fn, fn + ".map")
+                    print mover
+                    if not dryrun:
+                        os.system(mover)
+                elif fn in is_main and os.path.isdir(fn.replace('.cfg', '')):
+                    main = fn.replace('.cfg', '/_main.cfg')
+                    if os.path.exists(main):
+                        print 'wmllint: both "%s" and "%s" topfiles exist' % (fn, main)
+                    else:
+                        print 'wmllint: renaming "%s" to "%s"' % (fn, main)
+                        if not dryrun:
+                            os.rename(fn, main)
+                            if os.path.exists(backup):
+                                os.rename(backup, main + '-bak')
+    # Constency-check everything we got from the file scans
+    consistency_check()
+
+# wmllint ends here

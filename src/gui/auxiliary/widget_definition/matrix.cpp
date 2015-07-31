@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,8 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tmatrix_definition::tmatrix_definition(const config& cfg)
 	: tcontrol_definition(cfg)

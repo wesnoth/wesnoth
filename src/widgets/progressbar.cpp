@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 
 #include "font.hpp"
 #include "marked-up_text.hpp"
+#include "sdl/rect.hpp"
 #include "video.hpp"
 
 namespace gui {
@@ -51,24 +52,24 @@ void progress_bar::draw_contents()
 		int	lightning_thickness = 2;
 		static const SDL_Color selected_text_color = {0xCC,0xCC,0xCC,0};
 
-		SDL_Rect inner_area = create_rect(area.x + 1
+		SDL_Rect inner_area = sdl::create_rect(area.x + 1
 				, area.y + 1
 				, area.w - 2
 				, area.h - 2);
 
-		sdl_fill_rect(surf,&area,SDL_MapRGB(surf->format,bcr,bcg,bcb));
-		sdl_fill_rect(surf,&inner_area,SDL_MapRGB(surf->format,gcr,gcg,gcb));
+		sdl::fill_rect(surf,&area,SDL_MapRGB(surf->format,bcr,bcg,bcb));
+		sdl::fill_rect(surf,&inner_area,SDL_MapRGB(surf->format,gcr,gcg,gcb));
 
 		inner_area.w = (inner_area.w*progress_)/100;
-		sdl_fill_rect(surf,&inner_area,SDL_MapRGB(surf->format,fcr,fcg,fcb));
+		sdl::fill_rect(surf,&inner_area,SDL_MapRGB(surf->format,fcr,fcg,fcb));
 
 		SDL_Rect lightning = inner_area;
 		lightning.h = lightning_thickness;
 		//we add 25% of white to the color of the bar to simulate a light effect
-		sdl_fill_rect(surf,&lightning,SDL_MapRGB(surf->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
+		sdl::fill_rect(surf,&lightning,SDL_MapRGB(surf->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
 		lightning.y = inner_area.y+inner_area.h-lightning.h;
 		//remove 50% of color to simulate a shadow effect
-		sdl_fill_rect(surf,&lightning,SDL_MapRGB(surf->format,fcr/2,fcg/2,fcb/2));
+		sdl::fill_rect(surf,&lightning,SDL_MapRGB(surf->format,fcr/2,fcg/2,fcb/2));
 
 		const std::string text = text_.empty() ? str_cast(progress_) + "%" :
 		                         text_ + " (" + str_cast(progress_) + "%)";

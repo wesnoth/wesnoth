@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,18 +18,27 @@
 #define UNIT_H_INCLUDED
 
 #include <boost/tuple/tuple.hpp>
+#include <boost/scoped_ptr.hpp>
 
-#include "formula_callable.hpp"
-#include "portrait.hpp"
-#include "resources.hpp"
-#include "unit_animation.hpp"
 #include "unit_types.hpp"
-#include "unit_map.hpp"
+#include "unit_ptr.hpp"
+#include "unit_id.hpp"
 
 class display;
-class game_state;
-class vconfig;
+class gamemap;
+#if defined(_MSC_VER) && _MSC_VER <= 1600
+/*
+	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
+	And will create corrupt binaries without giving a warning / error.
+*/
+#include <SDL_video.h>
+#else
+struct SDL_Color;
+#endif
 class team;
+class unit_animation_component;
+class unit_formula_manager;
+class vconfig;
 
 /// The things contained within a unit_ability_list.
 typedef std::pair<const config *, map_location> unit_ability;
@@ -79,10 +88,18 @@ public:
 	 */
 	static void clear_status_caches();
 
+	/** The path to the leader crown overlay. */
+	static const std::string& leader_crown();
+
 	// Copy constructor
 	unit(const unit& u);
+
 	/** Initializes a unit from a config */
-	unit(const config& cfg, bool use_traits = false, game_state *state = NULL, const vconfig* vcfg = NULL);
+	explicit unit(
+			  const config& cfg
+			, bool use_traits = false
+			, const vconfig* vcfg = NULL);
+
 	/**
 	  * Initializes a unit from a unit type
 	  * only real_unit may have random traits, name and gender
@@ -91,7 +108,10 @@ public:
 	unit(const unit_type& t, int side, bool real_unit,
 		unit_race::GENDER gender = unit_race::NUM_GENDERS);
 	virtual ~unit();
-	virtual unit& operator=(const unit&);
+
+	void swap (unit &);
+
+	unit& operator=(unit);
 
 
 	/** Advances this unit to another type */
@@ -116,11 +136,12 @@ public:
 	void set_id(const std::string& id) { id_ = id; }
 	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }
 	/** The unique internal ID of the unit */
-	size_t underlying_id() const { return underlying_id_; }
+	size_t underlying_id() const { return underlying_id_.value; }
 
 	/** The unit type name */
 	const t_string& type_name() const {return type_name_;}
 	const std::string& undead_variation() const {return undead_variation_;}
+	const std::string variation() const {return variation_; }
 
 	/** The unit name for display */
 	const t_string &name() const { return name_; }
@@ -139,7 +160,9 @@ public:
 	int experience() const { return experience_; }
 	int max_experience() const { return max_experience_; }
 	void set_experience(int xp) { experience_ = xp; }
+	void set_recall_cost(int recall_cost) { recall_cost_ = recall_cost; }
 	int level() const { return level_; }
+	int recall_cost() const { return recall_cost_; }
 	void remove_movement_ai();
 	void remove_attacks_ai();
 
@@ -156,11 +179,14 @@ public:
 	SDL_Color hp_color(int hitpoints) const;
 	/** Colors for the unit's XP. */
 	SDL_Color xp_color() const;
+
+	double hp_bar_scaling() const { return hp_bar_scaling_; }
+	double xp_bar_scaling() const { return xp_bar_scaling_; }
+
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
 	void set_unrenamable(bool unrenamable) { unrenamable_ = unrenamable; }
 	int side() const { return side_; }
-	std::string side_id() const;
 	const std::string& team_color() const { return flag_rgb_; }
 	unit_race::GENDER gender() const { return gender_; }
 	void set_side(unsigned int new_side) { side_ = new_side; }
@@ -173,7 +199,10 @@ public:
 	void set_recruits(const std::vector<std::string>& recruits);
 	const config& recall_filter() const { return filter_recall_; }
 
+	bool poisoned() const { return get_state(STATE_POISONED); }
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
+	bool slowed() const { return get_state(STATE_SLOWED); }
+
 	int total_movement() const { return max_movement_; }
 	/// Returns how far a unit can move this turn (zero if incapacitated).
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
@@ -194,7 +223,6 @@ public:
 	void end_turn();
 	void new_scenario();
 	/** Called on every draw */
-	void refresh();
 
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
@@ -217,7 +245,6 @@ public:
 	bool emits_zoc() const { return emit_zoc_ && !incapacitated();}
 	bool matches_id(const std::string& unit_id) const;
 	/* cfg: standard unit filter */
-	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false) const;
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
 	void write(config& cfg) const;
@@ -225,32 +252,19 @@ public:
 	void set_role(const std::string& role) { role_ = role; }
 	const std::string &get_role() const { return role_; }
 
+	void set_emit_zoc(bool val) { emit_zoc_ = val; }
+	bool get_emit_zoc() const { return emit_zoc_; }
+	
+
 	const std::vector<attack_type>& attacks() const { return attacks_; }
 	std::vector<attack_type>& attacks() { return attacks_; }
 
 	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { return resistance_against(attack,attacker,loc); }
 
-	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
-	const surface still_image(bool scaled = false) const;
-
-	/** draw a unit.  */
-	void redraw_unit();
-	/** Clear unit_halo_  */
-	void clear_haloes();
-
-	void set_standing(bool with_bars = true);
-
-	void set_ghosted(bool with_bars = true);
-	void set_disabled_ghosted(bool with_bars = true);
-
-	void set_idling();
-	void set_selecting();
-	unit_animation* get_animation() {  return anim_;};
-	const unit_animation* get_animation() const {  return anim_;};
-	void set_facing(map_location::DIRECTION dir);
+	unit_animation_component & anim_comp() const { return *anim_comp_; }
+	void set_facing(map_location::DIRECTION dir) const;
 	map_location::DIRECTION facing() const { return facing_; }
 
-	bool invalidate(const map_location &loc);
 	const std::vector<t_string>& trait_names() const { return trait_names_; }
 	const std::vector<t_string>& trait_descriptions() const { return trait_descriptions_; }
 	std::vector<std::string> get_traits_list() const;
@@ -267,7 +281,7 @@ public:
 	int upkeep() const;
 	bool loyal() const;
 
-	void set_hidden(bool state);
+	void set_hidden(bool state) const;
 	bool get_hidden() const { return hidden_; }
 	bool is_flying() const { return movement_type_.is_flying(); }
 	bool is_fearless() const { return is_fearless_; }
@@ -290,12 +304,13 @@ public:
 	bool can_advance() const { return advances_to_.empty()==false || get_modification_advances().empty() == false; }
 	bool advances() const { return experience_ >= max_experience() && can_advance(); }
 
-    std::map<std::string,std::string> advancement_icons() const;
-    std::vector<std::pair<std::string,std::string> > amla_icons() const;
+	std::map<std::string,std::string> advancement_icons() const;
+	std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
+	void set_advancements(std::vector<config> advancements);
 
 	size_t modification_count(const std::string& type, const std::string& id) const;
 
@@ -307,17 +322,12 @@ public:
 	const map_location& get_interrupted_move() const { return interrupted_move_; }
 	void set_interrupted_move(const map_location& interrupted_move) { interrupted_move_ = interrupted_move; }
 
-	/** States for animation. */
-	enum STATE {
-		STATE_STANDING,   /** anim must fit in a hex */
-		STATE_FORGET,     /** animation will be automatically replaced by a standing anim when finished */
-		STATE_ANIM};      /** normal anims */
-	void start_animation(int start_time, const unit_animation *animation,
-		bool with_bars,  const std::string &text = "",
-		Uint32 text_color = 0, STATE state = STATE_ANIM);
-
 	/** The name of the file to game_display (used in menus). */
 	std::string absolute_image() const;
+
+	/** The default image to use for animation frames with no defined image. */
+	std::string default_anim_image() const;
+
 	std::string image_halo() const { return cfg_["halo"]; }
 
 	std::string image_ellipse() const { return cfg_["ellipse"]; }
@@ -330,13 +340,6 @@ public:
 	/// Never returns NULL, but may point to the null race.
 	const unit_race* race() const { return race_; }
 
-	const unit_animation* choose_animation(const display& disp,
-		       	const map_location& loc, const std::string& event,
-		       	const map_location& second_loc = map_location::null_location,
-			const int damage=0,
-			const unit_animation::hit_type hit_type = unit_animation::INVALID,
-			const attack_type* attack=NULL,const attack_type* second_attack = NULL,
-			int swing_num =0) const;
 
 	/**
 	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
@@ -357,24 +360,17 @@ public:
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 
-	const game_logic::map_formula_callable_ptr& formula_vars() const { return formula_vars_; }
-	void add_formula_var(std::string str, variant var);
-	bool has_formula() const { return !unit_formula_.empty(); }
-	bool has_loop_formula() const { return !unit_loop_formula_.empty(); }
-	bool has_priority_formula() const { return !unit_priority_formula_.empty(); }
-	const std::string& get_formula() const { return unit_formula_; }
-	const std::string& get_loop_formula() const { return unit_loop_formula_; }
-	const std::string& get_priority_formula() const { return unit_priority_formula_; }
+	unit_formula_manager & formula_manager() const { return *formula_man_; }
 
 	void backup_state();
 	void apply_modifications();
 	void generate_traits(bool musthaveonly=false);
-	void generate_name(rand_rng::simple_rng *rng = 0);
+	void generate_name();
 
 	// Only see_all=true use caching
 	bool invisible(const map_location& loc, bool see_all=true) const;
 
-	bool is_visible_to_team(team const& team, bool const see_all = true, gamemap const& map = *resources::game_map) const;
+	bool is_visible_to_team(team const& team, gamemap const & map , bool const see_all = true) const;
 
 	/** Mark this unit as clone so it can be inserted to unit_map
 	 * @returns                   self (for convenience)
@@ -385,24 +381,14 @@ public:
 	const std::string& effect_image_mods() const;
 	std::string image_mods() const;
 
-	/**
-	 * Gets the portrait for a unit.
-	 *
-	 * @param size                The size of the portrait.
-	 * @param side                The side the portrait is shown on.
-	 *
-	 * @returns                   The portrait with the wanted size.
-	 * @retval NULL               The wanted portrait doesn't exist.
-	 */
-	const tportrait* portrait(
-		const unsigned size, const tportrait::tside side) const;
-
+	long ref_count() const { return ref_count_; }
+	friend void intrusive_ptr_add_ref(const unit *);
+	friend void intrusive_ptr_release(const unit *);
+protected:
+	mutable long ref_count_; //used by intrusive_ptr
 private:
 	void advance_to(const config &old_cfg, const unit_type &t,
 		bool use_traits);
-
-	bool internal_matches_filter(const vconfig& cfg,const map_location& loc,
-		bool use_flat_tod) const;
 	/*
 	 * cfg: an ability WML structure
 	 */
@@ -411,7 +397,10 @@ private:
 	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
+public:
 	bool has_ability_by_id(const std::string& ability) const;
+	// ^ Needed for unit_filter
+private:
 	void remove_ability_by_id(const std::string& ability);
 
 	/** register a trait's name and its description for UI's use*/
@@ -420,6 +409,7 @@ private:
 	void set_underlying_id();
 
 	config cfg_;
+private:
 	map_location loc_;
 
 	std::vector<std::string> advances_to_;
@@ -428,7 +418,7 @@ private:
 	const unit_race* race_;	/// Never NULL, but may point to the null race.
 	std::string id_;
 	t_string name_;
-	size_t underlying_id_;
+	n_unit::unit_id underlying_id_;
 	std::string undead_variation_;
 	std::string variation_;
 
@@ -436,7 +426,10 @@ private:
 	int max_hit_points_;
 	int experience_;
 	int max_experience_;
+
 	int level_;
+
+	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
 	unit_type::ALIGNMENT alignment_;
@@ -444,15 +437,14 @@ private:
 	std::string image_mods_;
 
 	bool unrenamable_;
+
 	int side_;
-	const unit_race::GENDER gender_;
+
+	unit_race::GENDER gender_;
 
 	fixed_t alpha_;
 
-	std::string unit_formula_;
-	std::string unit_loop_formula_;
-	std::string unit_priority_formula_;
-	game_logic::map_formula_callable_ptr formula_vars_;
+	boost::scoped_ptr<unit_formula_manager> formula_man_;
 
 	int movement_;
 	int max_movement_;
@@ -471,15 +463,17 @@ private:
 	config variables_;
 	config events_;
 	config filter_recall_;
+
 	bool emit_zoc_;
-	STATE state_;
 
 	std::vector<std::string> overlays_;
 
 	std::string role_;
 	std::vector<attack_type> attacks_;
-	map_location::DIRECTION facing_;
-
+protected:
+	mutable map_location::DIRECTION facing_; //TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable
+						 //But it's not easy to separate this guy from the animation code right now.
+private:
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
 
@@ -490,22 +484,21 @@ private:
 
 	utils::string_map modification_descriptions_;
 	// Animations:
-	std::vector<unit_animation> animations_;
+	friend class unit_animation_component;
 
-	unit_animation *anim_;
-	int next_idling_;
-	int frame_begin_time_;
+private:
+	boost::scoped_ptr<unit_animation_component> anim_comp_;
 
-
-	int unit_halo_;
 	bool getsHit_;
-	bool refreshing_; // avoid infinite recursion
-	bool hidden_;
-	bool draw_bars_;
+	mutable bool hidden_;
+	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
 
-	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
+	/**
+	 * Hold the visibility status cache for a unit, when not uncovered.
+	 * This is mutable since it is a cache.
+	 */
 	mutable std::map<map_location, bool> invisibility_cache_;
 
 	/**
@@ -534,107 +527,6 @@ struct unit_movement_resetter
 private:
 	unit& u_;
 	int moves_;
-};
-
-/// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<unit>::iterator find_if_matches_id(
-		std::vector<unit> &unit_list,
-		const std::string &unit_id);
-/// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<unit>::const_iterator find_if_matches_id(
-		const std::vector<unit> &unit_list,
-		const std::string &unit_id);
-/// Used to erase units from vectors by their ID. (Convenience wrapper)
-std::vector<unit>::iterator erase_if_matches_id(
-		std::vector<unit> &unit_list,
-		const std::string &unit_id);
-
-/** Returns the number of units of the side @a side_num. */
-int side_units(int side_num);
-
-/** Returns the total cost of units of side @a side_num. */
-int side_units_cost(int side_num);
-
-int side_upkeep(int side_num);
-
-unit_map::iterator find_visible_unit(const map_location &loc,
-	const team &current_team, bool see_all = false);
-
-unit *get_visible_unit(const map_location &loc,
-	const team &current_team, bool see_all = false);
-
-struct team_data
-{
-	team_data() :
-		units(0),
-		upkeep(0),
-		villages(0),
-		expenses(0),
-		net_income(0),
-		gold(0),
-		teamname()
-	{
-	}
-
-	int units, upkeep, villages, expenses, net_income, gold;
-	std::string teamname;
-};
-
-team_data calculate_team_data(const class team& tm, int side);
-
-/**
- * This object is used to temporary place a unit in the unit map, swapping out
- * any unit that is already there.  On destruction, it restores the unit map to
- * its original.
- */
-struct temporary_unit_placer
-{
-	temporary_unit_placer(unit_map& m, const map_location& loc, unit& u);
-	virtual  ~temporary_unit_placer();
-
-private:
-	unit_map& m_;
-	const map_location loc_;
-	unit *temp_;
-};
-
-/**
- * This object is used to temporary remove a unit from the unit map.
- * On destruction, it restores the unit map to its original.
- * unit_map iterators to this unit must not be accessed while the unit is temporarily
- * removed, otherwise a collision will happen when trying to reinsert the unit.
- */
-struct temporary_unit_remover
-{
-	temporary_unit_remover(unit_map& m, const map_location& loc);
-	virtual  ~temporary_unit_remover();
-
-private:
-	unit_map& m_;
-	const map_location loc_;
-	unit *temp_;
-};
-
-
-/**
- * This object is used to temporary move a unit in the unit map, swapping out
- * any unit that is already there.  On destruction, it restores the unit map to
- * its original.
- */
-struct temporary_unit_mover
-{
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst);
-	virtual  ~temporary_unit_mover();
-
-private:
-	unit_map& m_;
-	const map_location src_;
-	const map_location dst_;
-	int old_moves_;
-	unit *temp_;
 };
 
 /**

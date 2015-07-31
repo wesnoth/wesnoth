@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,9 @@
 #include "utility.hpp"
 
 #include "arrow.hpp"
+#include "config.hpp"
+#include "fake_unit_ptr.hpp"
+#include "game_board.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
@@ -195,6 +198,24 @@ void attack::draw_hex(const map_location& hex)
 		std::string direction_text = map_location::write_direction(
 				get_dest_hex().get_relative_dir(target_hex_));
 
+#ifdef SDL_GPU
+		if (hex == get_dest_hex()) //add symbol to attacker hex
+		{
+			int xpos = resources::screen->get_location_x(get_dest_hex());
+			int ypos = resources::screen->get_location_y(get_dest_hex());
+
+			resources::screen->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
+					image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
+		}
+		else if (hex == target_hex_) //add symbol to defender hex
+		{
+			int xpos = resources::screen->get_location_x(target_hex_);
+			int ypos = resources::screen->get_location_y(target_hex_);
+
+			resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
+					image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
+		}
+#else
 		if (hex == get_dest_hex()) //add symbol to attacker hex
 		{
 			int xpos = resources::screen->get_location_x(get_dest_hex());
@@ -211,6 +232,7 @@ void attack::draw_hex(const map_location& hex)
 			resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
 					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
+#endif
 	}
 }
 

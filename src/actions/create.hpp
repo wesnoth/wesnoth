@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,12 +21,13 @@
 #ifndef ACTIONS_CREATE_H_INCLUDED
 #define ACTIONS_CREATE_H_INCLUDED
 
-class  config;
-class  team;
-class  vconfig;
+class config;
+class team;
+class unit_type;
+class vconfig;
 
 #include "../map_location.hpp"
-#include "../unit.hpp"
+#include "../unit_ptr.hpp"
 
 
 class unit_creator {
@@ -41,7 +42,7 @@ public:
 
 	/**
 	 * finds a suitable location for unit
-	 * @retval map_location::null_location if unit is to be put into recall list
+	 * @retval map_location::null_location() if unit is to be put into recall list
 	 * @retval valid on-board map location otherwise
 	 */
 	map_location find_location(const config &cfg, const unit* pass_check=NULL);
@@ -65,23 +66,6 @@ private:
 	team &team_;
 
 };
-
-
-/// Checks to see if a leader at @a leader_loc could recruit somewhere.
-bool can_recruit_from(const map_location& leader_loc, int side);
-/// Checks to see if @a leader (assumed a leader) can recruit somewhere.
-/// This takes into account terrain, shroud, and the presence of visible units.
-inline bool can_recruit_from(const unit& leader)
-{ return can_recruit_from(leader.get_location(), leader.side()); }
-
-/// Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
-bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side);
-/// Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
-/// This takes into account terrain, shroud, and whether or not there is already
-/// a visible unit at recruit_loc.
-inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
-{ return can_recruit_on(leader.get_location(), recruit_loc, leader.side()); }
-
 
 namespace actions {
 
@@ -190,7 +174,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
  * @param recall_loc the hex field being part of the castle the player wants to recruit on or from.
  * @return a set of units that can be recalled by @a side on (or from) @a recall_loc or the full recall list of @a side.
  */
-const std::vector<const unit*> get_recalls(int side, const map_location &recall_loc);
+std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc);
 
 /**
  * Place a unit into the game.
@@ -210,8 +194,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
  * statistics, and (unless @a is_ai) updating the undo stack.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show=true, bool use_undo=true,
-                  bool use_recorder=true);
+                  const map_location & from, bool show=true, bool use_undo=true);
 
 /**
  * Recalls the unit with the indicated ID for the provided team.
@@ -225,8 +208,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show=true, bool use_undo=true, bool use_recorder=true);
-
+                 bool show=true, bool use_undo=true);
 }//namespace actions
 
 #endif

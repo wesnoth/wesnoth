@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/lobby_player_info.hpp"
+#include "gui/dialogs/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 
@@ -37,6 +38,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
+#include "construct_dialog.hpp"
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -45,7 +47,7 @@
 #include "network.hpp"
 #include "playmp_controller.hpp"
 #include "preferences_display.hpp"
-#include "sound.hpp"
+#include "mp_ui_alerts.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -69,24 +71,23 @@ static lg::log_domain log_lobby("lobby");
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_DIALOG(lobby_main)
 
-void tsub_player_list::init(gui2::twindow &w, const std::string &id)
+void tsub_player_list::init(gui2::twindow& w, const std::string& id)
 {
 	list = find_widget<tlistbox>(&w, id, false, true);
-	show_toggle = find_widget<ttoggle_button>(&w, id + "_show_toggle"
-			, false, true);
+	show_toggle
+			= find_widget<ttoggle_button>(&w, id + "_show_toggle", false, true);
 	show_toggle->set_icon_name("lobby/group-expanded.png");
 	show_toggle->set_callback_state_change(
-		boost::bind(&tsub_player_list::show_toggle_callback, this, _1));
+			boost::bind(&tsub_player_list::show_toggle_callback, this, _1));
 	count = find_widget<tlabel>(&w, id + "_count", false, true);
 	label = find_widget<tlabel>(&w, id + "_label", false, true);
 
-	ttree_view& parent_tree = find_widget<ttree_view>(&w
-			, "player_tree"
-			, false);
+	ttree_view& parent_tree = find_widget<ttree_view>(&w, "player_tree", false);
 
 	string_map tree_group_field;
 	std::map<std::string, string_map> tree_group_item;
@@ -95,18 +96,14 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 	tree_group_item["tree_view_node_label"] = tree_group_field;
 	tree = &parent_tree.add_node("player_group", tree_group_item);
 
-	tree_label = find_widget<tlabel>(tree
-				, "tree_view_node_label"
-				, false
-				, true);
+	tree_label = find_widget<tlabel>(tree, "tree_view_node_label", false, true);
 
 	tree_label->set_label(label->label());
-
 }
 
-void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
+void tsub_player_list::show_toggle_callback(gui2::twidget& /*widget*/)
 {
-	if (show_toggle->get_value()) {
+	if(show_toggle->get_value()) {
 		list->set_visible(twidget::tvisible::invisible);
 		show_toggle->set_icon_name("lobby/group-folded.png");
 	} else {
@@ -129,31 +126,28 @@ void tsub_player_list::auto_hide()
 		 */
 		assert(label);
 		tree_label->set_label(label->label() + " (0)");
-//			tree_label->set_visible(twidget::tvisible::invisible);
+		// tree_label->set_visible(twidget::tvisible::invisible);
 	} else {
 		assert(label);
 		std::stringstream ss;
 		ss << label->label() << " (" << tree->size() << ")";
 		tree_label->set_label(ss.str());
-//			tree_label->set_visible(twidget::tvisible::visible);
-		}
+		// tree_label->set_visible(twidget::tvisible::visible);
+	}
 }
 
-void tplayer_list::init(gui2::twindow &w)
+void tplayer_list::init(gui2::twindow& w)
 {
 	active_game.init(w, "active_game");
 	active_room.init(w, "active_room");
 	other_rooms.init(w, "other_rooms");
 	other_games.init(w, "other_games");
-	sort_by_name = find_widget<ttoggle_button>(&w
-			, "player_list_sort_name", false, true);
-	sort_by_relation = find_widget<ttoggle_button>(&w
-			, "player_list_sort_relation", false, true);
+	sort_by_name = find_widget<ttoggle_button>(
+			&w, "player_list_sort_name", false, true);
+	sort_by_relation = find_widget<ttoggle_button>(
+			&w, "player_list_sort_relation", false, true);
 
-	tree = find_widget<ttree_view>(&w
-			, "player_tree"
-			, false
-			, true);
+	tree = find_widget<ttree_view>(&w, "player_tree", false, true);
 
 	find_widget<twidget>(&w, "old_player_list", false)
 			.set_visible(twidget::tvisible::invisible);
@@ -164,40 +158,39 @@ void tplayer_list::init(gui2::twindow &w)
 	 * This hack can be removed when folding is properly implemented.
 	 */
 	assert(active_room.tree);
-	find_widget<ttoggle_button>(active_room.tree
-				, "tree_view_node_icon"
-				, false).set_value(true);
+	find_widget<ttoggle_button>(active_room.tree, "tree_view_node_icon", false)
+			.set_value(true);
 	assert(other_rooms.tree);
-	find_widget<ttoggle_button>(other_rooms.tree
-				, "tree_view_node_icon"
-				, false).set_value(true);
+	find_widget<ttoggle_button>(other_rooms.tree, "tree_view_node_icon", false)
+			.set_value(true);
 	assert(other_games.tree);
-	find_widget<ttoggle_button>(other_games.tree
-				, "tree_view_node_icon"
-				, false).set_value(true);
+	find_widget<ttoggle_button>(other_games.tree, "tree_view_node_icon", false)
+			.set_value(true);
 }
 
 void tplayer_list::update_sort_icons()
 {
-	if (sort_by_name->get_value()) {
+	if(sort_by_name->get_value()) {
 		sort_by_name->set_icon_name("lobby/sort-az.png");
 	} else {
 		sort_by_name->set_icon_name("lobby/sort-az-off.png");
 	}
-	if (sort_by_relation->get_value()) {
+	if(sort_by_relation->get_value()) {
 		sort_by_relation->set_icon_name("lobby/sort-friend.png");
 	} else {
 		sort_by_relation->set_icon_name("lobby/sort-friend-off.png");
 	}
 }
-void tlobby_main::send_chat_message(const std::string& message, bool /*allies_only*/)
+void tlobby_main::send_chat_message(const std::string& message,
+									bool /*allies_only*/)
 {
 	config data, msg;
 	msg["message"] = message;
 	msg["sender"] = preferences::login();
 	data.add_child("message", msg);
 
-	add_chat_message(time(NULL), preferences::login(), 0, message); //local echo
+	add_chat_message(time(NULL), preferences::login(), 0, message); // local
+																	// echo
 	network::send_data(data, 0);
 }
 
@@ -206,8 +199,11 @@ void tlobby_main::user_relation_changed(const std::string& /*name*/)
 	player_list_dirty_ = true;
 }
 
-void tlobby_main::add_chat_message(const time_t& /*time*/, const std::string& speaker,
-	int /*side*/, const std::string& message, events::chat_handler::MESSAGE_TYPE /*type*/)
+void tlobby_main::add_chat_message(const time_t& /*time*/,
+								   const std::string& speaker,
+								   int /*side*/,
+								   const std::string& message,
+								   events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::stringstream ss;
 	ss << "<" << speaker << "> ";
@@ -216,69 +212,77 @@ void tlobby_main::add_chat_message(const time_t& /*time*/, const std::string& sp
 }
 
 
-void tlobby_main::add_whisper_sent(const std::string& receiver, const std::string& message)
+void tlobby_main::add_whisper_sent(const std::string& receiver,
+								   const std::string& message)
 {
-	if (whisper_window_active(receiver)) {
+	if(whisper_window_active(receiver)) {
 		add_active_window_message(preferences::login(), message);
-	} else if (tlobby_chat_window* t =  whisper_window_open(receiver, preferences::auto_open_whisper_windows())) {
+	} else if(tlobby_chat_window* t = whisper_window_open(
+					  receiver, preferences::auto_open_whisper_windows())) {
 		switch_to_window(t);
 		add_active_window_message(preferences::login(), message);
 	} else {
 		utils::string_map symbols;
 		symbols["receiver"] = receiver;
-		add_active_window_whisper(VGETTEXT("whisper to $receiver", symbols), message);
+		add_active_window_whisper(VGETTEXT("whisper to $receiver", symbols),
+								  message);
 	}
-	lobby_info_.get_whisper_log(receiver).add_message(preferences::login(), message);
+	lobby_info_.get_whisper_log(receiver)
+			.add_message(preferences::login(), message);
 }
 
-void tlobby_main::add_whisper_received(const std::string& sender, const std::string& message)
+void tlobby_main::add_whisper_received(const std::string& sender,
+									   const std::string& message)
 {
-	bool can_go_to_active = !preferences::whisper_friends_only() || preferences::is_friend(sender);
-	bool can_open_new = preferences::auto_open_whisper_windows() && can_go_to_active;
+	bool can_go_to_active = !preferences::whisper_friends_only()
+							|| preferences::is_friend(sender);
+	bool can_open_new = preferences::auto_open_whisper_windows()
+						&& can_go_to_active;
 	lobby_info_.get_whisper_log(sender).add_message(sender, message);
-	if (whisper_window_open(sender, can_open_new)) {
-		if (whisper_window_active(sender)) {
+	if(whisper_window_open(sender, can_open_new)) {
+		if(whisper_window_active(sender)) {
 			add_active_window_message(sender, message);
-			do_notify(NOTIFY_WHISPER);
+			do_notify(NOTIFY_WHISPER, sender, message);
 		} else {
 			add_whisper_window_whisper(sender, message);
 			increment_waiting_whsipers(sender);
-			do_notify(NOTIFY_WHISPER_OTHER_WINDOW);
+			do_notify(NOTIFY_WHISPER_OTHER_WINDOW, sender, message);
 		}
-	} else if (can_go_to_active) {
+	} else if(can_go_to_active) {
 		add_active_window_whisper(sender, message);
-		do_notify(NOTIFY_WHISPER);
+		do_notify(NOTIFY_WHISPER, sender, message);
 	} else {
 		LOG_LB << "Ignoring whisper from " << sender << "\n";
 	}
 }
 
 void tlobby_main::add_chat_room_message_sent(const std::string& room,
-	const std::string& message)
+											 const std::string& message)
 {
-	//do not open room window here, player should be in the room before sending
-	//messages yo it should be allowed to happen
-	if (tlobby_chat_window* t = room_window_open(room, false)) {
+	// do not open room window here, player should be in the room before sending
+	// messages yo it should be allowed to happen
+	if(tlobby_chat_window* t = room_window_open(room, false)) {
 		room_info* ri = lobby_info_.get_room(room);
 		assert(ri);
-		if (!room_window_active(room)) {
+		if(!room_window_active(room)) {
 			switch_to_window(t);
 		}
 		ri->log().add_message(preferences::login(), message);
 		add_active_window_message(preferences::login(), message);
 	} else {
 		LOG_LB << "Cannot add sent message to ui for room " << room
-			<< ", player not in the room\n";
+			   << ", player not in the room\n";
 	}
 }
 
 void tlobby_main::add_chat_room_message_received(const std::string& room,
-	const std::string& speaker, const std::string& message)
+												 const std::string& speaker,
+												 const std::string& message)
 {
-	if (room_info* ri = lobby_info_.get_room(room)) {
+	if(room_info* ri = lobby_info_.get_room(room)) {
 		t_notify_mode notify_mode = NOTIFY_NONE;
 		ri->log().add_message(speaker, message);
-		if (room_window_active(room)) {
+		if(room_window_active(room)) {
 			add_active_window_message(speaker, message);
 			notify_mode = NOTIFY_MESSAGE;
 		} else {
@@ -286,17 +290,17 @@ void tlobby_main::add_chat_room_message_received(const std::string& room,
 			increment_waiting_messages(room);
 			notify_mode = NOTIFY_MESSAGE_OTHER_WINDOW;
 		}
-		if (speaker == "server") {
+		if(speaker == "server") {
 			notify_mode = NOTIFY_SERVER_MESSAGE;
-		} else if (utils::word_match(message, preferences::login())) {
+		} else if(utils::word_match(message, preferences::login())) {
 			notify_mode = NOTIFY_OWN_NICK;
-		} else if (preferences::is_friend(speaker)) {
+		} else if(preferences::is_friend(speaker)) {
 			notify_mode = NOTIFY_FRIEND_MESSAGE;
 		}
-		do_notify(notify_mode);
+		do_notify(notify_mode, speaker, message);
 	} else {
-		LOG_LB << "Discarding message to room " << room
-			<< " from " << speaker << " (room not open)\n";
+		LOG_LB << "Discarding message to room " << room << " from " << speaker
+			   << " (room not open)\n";
 	}
 }
 
@@ -309,42 +313,42 @@ void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
 {
 	tgrid& grid = chat_log_container_->page_grid(id);
 	tscroll_label& log = find_widget<tscroll_label>(&grid, "log_text", false);
-	log.set_label(log.label() + "\n" + preferences::get_chat_timestamp(time(0)) + text);
+	log.set_label(log.label() + "\n" + preferences::get_chat_timestamp(time(0))
+				  + text);
 	log.scroll_vertical_scrollbar(tscrollbar_::END);
 }
 
-void tlobby_main::do_notify(t_notify_mode mode)
+void tlobby_main::do_notify(t_notify_mode mode, const std::string & sender, const std::string & message)
 {
-	if (preferences::lobby_sounds()) {
-		switch (mode) {
+		switch(mode) {
 			case NOTIFY_WHISPER:
 			case NOTIFY_WHISPER_OTHER_WINDOW:
 			case NOTIFY_OWN_NICK:
-				sound::play_UI_sound(game_config::sounds::receive_message_highlight);
+				mp_ui_alerts::private_message(true, sender, message);
 				break;
 			case NOTIFY_FRIEND_MESSAGE:
-				sound::play_UI_sound(game_config::sounds::receive_message_friend);
+				mp_ui_alerts::friend_message(true, sender, message);
 				break;
 			case NOTIFY_SERVER_MESSAGE:
-				sound::play_UI_sound(game_config::sounds::receive_message_server);
+				mp_ui_alerts::server_message(true, sender, message);
 				break;
 			case NOTIFY_LOBBY_QUIT:
-				sound::play_UI_sound(game_config::sounds::user_leave);
+				mp_ui_alerts::player_leaves(true);
 				break;
 			case NOTIFY_LOBBY_JOIN:
-				sound::play_UI_sound(game_config::sounds::user_arrive);
+				mp_ui_alerts::player_joins(true);
 				break;
 			case NOTIFY_MESSAGE:
+				mp_ui_alerts::public_message(true, sender, message);
 				break;
 			default:
 				break;
 		}
-	}
 }
 
-tlobby_main::tlobby_main(const config& game_config
-		, lobby_info& info
-		, display& disp)
+tlobby_main::tlobby_main(const config& game_config,
+						 lobby_info& info,
+						 display& disp)
 	: legacy_result_(QUIT)
 	, game_config_(game_config)
 	, gamelistbox_(NULL)
@@ -379,16 +383,18 @@ tlobby_main::tlobby_main(const config& game_config
 
 struct lobby_delay_gamelist_update_guard
 {
-	lobby_delay_gamelist_update_guard(tlobby_main& l) : l(l) {
+	lobby_delay_gamelist_update_guard(tlobby_main& l) : l(l)
+	{
 		l.delay_gamelist_update_ = true;
 	}
-	~lobby_delay_gamelist_update_guard() {
+	~lobby_delay_gamelist_update_guard()
+	{
 		l.delay_gamelist_update_ = false;
 	}
 	tlobby_main& l;
 };
 
-void tlobby_main::set_preferences_callback(boost::function<void ()> cb)
+void tlobby_main::set_preferences_callback(boost::function<void()> cb)
 {
 	preferences_callback_ = cb;
 }
@@ -400,17 +406,16 @@ tlobby_main::~tlobby_main()
 	}
 }
 
-static void signal_handler_sdl_video_resize(
-		  const event::tevent event
-		, bool& handled
-		, bool& halt
-		, const tpoint& new_size
-		, CVideo& video)
+static void signal_handler_sdl_video_resize(const event::tevent event,
+											bool& handled,
+											bool& halt,
+											const tpoint& new_size,
+											CVideo& video)
 {
-	DBG_GUI_E << __func__  << ": " << event << ".\n";
+	DBG_GUI_E << __func__ << ": " << event << ".\n";
 
 	if(new_size.x < preferences::min_allowed_width()
-			|| new_size.y < preferences::min_allowed_height()) {
+	   || new_size.y < preferences::min_allowed_height()) {
 
 		DBG_GUI_E << __func__ << ": resize aborted, too small.\n";
 		handled = true;
@@ -419,32 +424,38 @@ static void signal_handler_sdl_video_resize(
 	}
 
 	if(new_size.x == static_cast<int>(settings::screen_width)
-			&& new_size.y == static_cast<int>(settings::screen_height)) {
+	   && new_size.y == static_cast<int>(settings::screen_height)) {
 
 		DBG_GUI_E << __func__ << ": resize not needed.\n";
 		handled = true;
 		return;
 	}
 
-	if(!preferences::set_resolution(video , new_size.x, new_size.y)) {
+	if(!preferences::set_resolution(video, new_size.x, new_size.y)) {
 
-		LOG_GUI_E << __func__
-				<< ": resize aborted, resize failed.\n";
+		LOG_GUI_E << __func__ << ": resize aborted, resize failed.\n";
 	}
 }
 
 static bool fullscreen(CVideo& video)
 {
-	preferences::set_fullscreen(video , !preferences::fullscreen());
+	preferences::set_fullscreen(video, !preferences::fullscreen());
 
 	// Setting to fullscreen doesn't seem to generate a resize event.
 	const SDL_Rect& rect = screen_area();
 
 	SDL_Event event;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	event.type = SDL_WINDOWEVENT;
+	event.window.event = SDL_WINDOWEVENT_RESIZED;
+	event.window.data1 = rect.w;
+	event.window.data2 = rect.h;
+#else
 	event.type = SDL_VIDEORESIZE;
 	event.resize.type = SDL_VIDEORESIZE;
 	event.resize.w = rect.w;
 	event.resize.h = rect.h;
+#endif
 
 	SDL_PushEvent(&event);
 
@@ -454,33 +465,39 @@ static bool fullscreen(CVideo& video)
 void tlobby_main::post_build(CVideo& video, twindow& window)
 {
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
-	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN
-			, boost::bind(fullscreen, boost::ref(video)));
+	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
+						   boost::bind(fullscreen, boost::ref(video)));
 
 
 	/** @todo Remove this code once the resizing in twindow is finished. */
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(
-			  boost::bind(&signal_handler_sdl_video_resize
-				  , _2, _3, _4, _5, boost::ref(video))
-			, event::tdispatcher::front_child);
+			boost::bind(&signal_handler_sdl_video_resize,
+						_2,
+						_3,
+						_4,
+						_5,
+						boost::ref(video)),
+			event::tdispatcher::front_child);
 
 	/*** Local hotkeys. ***/
-	preferences_wrapper_ = boost::bind(
-			  &tlobby_main::show_preferences_button_callback
-			, this
-			, boost::ref(window));
+	preferences_wrapper_
+			= boost::bind(&tlobby_main::show_preferences_button_callback,
+						  this,
+						  boost::ref(window));
 
 	window.register_hotkey(
-			  hotkey::HOTKEY_PREFERENCES
-			, boost::bind(function_wrapper<bool, boost::function<void()> >
-				, true
-				, boost::cref(preferences_wrapper_)));
+			hotkey::HOTKEY_PREFERENCES,
+			boost::bind(function_wrapper<bool, boost::function<void()> >,
+						true,
+						boost::cref(preferences_wrapper_)));
 }
 
-namespace {
+namespace
+{
 
 void add_label_data(std::map<std::string, string_map>& map,
-					const std::string& key, const std::string& label)
+					const std::string& key,
+					const std::string& label)
 {
 	string_map item;
 	item["label"] = label;
@@ -488,26 +505,32 @@ void add_label_data(std::map<std::string, string_map>& map,
 }
 
 void add_tooltip_data(std::map<std::string, string_map>& map,
-					const std::string& key, const std::string& label)
+					  const std::string& key,
+					  const std::string& label)
 {
 	string_map item;
 	item["tooltip"] = label;
 	map.insert(std::make_pair(key, item));
 }
 
-void modify_grid_with_data(tgrid* grid, const std::map<std::string, string_map>& map)
+void modify_grid_with_data(tgrid* grid,
+						   const std::map<std::string, string_map>& map)
 {
-	FOREACH(const AUTO& v, map) {
+	FOREACH(const AUTO & v, map)
+	{
 		const std::string& key = v.first;
 		const string_map& strmap = v.second;
 		twidget* w = grid->find(key, false);
-		if (w == NULL) continue;
+		if(w == NULL)
+			continue;
 		tcontrol* c = dynamic_cast<tcontrol*>(w);
-		if (c == NULL) continue;
-		FOREACH(const AUTO& vv, strmap) {
-			if (vv.first == "label") {
+		if(c == NULL)
+			continue;
+		FOREACH(const AUTO & vv, strmap)
+		{
+			if(vv.first == "label") {
 				c->set_label(vv.second);
-			} else if (vv.first == "tooltip") {
+			} else if(vv.first == "tooltip") {
 				c->set_tooltip(vv.second);
 			}
 		}
@@ -517,16 +540,15 @@ void modify_grid_with_data(tgrid* grid, const std::map<std::string, string_map>&
 void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
 {
 	twidget* w = grid->find(id, false);
-	if (w) {
-		w->set_visible(visible
-				? twidget::tvisible::visible
-				: twidget::tvisible::invisible);
+	if(w) {
+		w->set_visible(visible ? twidget::tvisible::visible
+							   : twidget::tvisible::invisible);
 	}
 }
 
 std::string colorize(const std::string& str, const std::string& color)
 {
-	return "<span color=\"" + color +"\">" + str + "</span>";
+	return "<span color=\"" + color + "\">" + str + "</span>";
 }
 
 std::string tag(const std::string& str, const std::string& tag)
@@ -534,7 +556,7 @@ std::string tag(const std::string& str, const std::string& tag)
 	return "<" + tag + ">" + str + "</" + tag + ">";
 }
 
-} //end anonymous namespace
+} // end anonymous namespace
 
 void tlobby_main::update_gamelist()
 {
@@ -543,18 +565,20 @@ void tlobby_main::update_gamelist()
 	gamelist_id_at_row_.clear();
 	lobby_info_.make_games_vector();
 	int select_row = -1;
-	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
+	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const game_info& game = *lobby_info_.games()[i];
-		if (game.id == selected_game_id_) {
+		if(game.id == selected_game_id_) {
 			select_row = i;
 		}
 		gamelist_id_at_row_.push_back(game.id);
 		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
 		gamelistbox_->add_row(make_game_row_data(game));
-		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
-		adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
+		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count()
+												 - 1);
+		adjust_game_row_contents(
+				game, gamelistbox_->get_item_count() - 1, grid);
 	}
-	if (select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
+	if(select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
 		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
@@ -574,74 +598,82 @@ void tlobby_main::update_gamelist_diff()
 	unsigned list_i = 0;
 	int list_rows_deleted = 0;
 	std::vector<int> next_gamelist_id_at_row;
-	for (unsigned i = 0; i < lobby_info_.games().size(); ++i) {
+	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
 		const game_info& game = *lobby_info_.games()[i];
-		if (game.display_status == game_info::NEW) {
+		if(game.display_status == game_info::NEW) {
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
-			if (list_i != gamelistbox_->get_item_count()) {
+			if(list_i != gamelistbox_->get_item_count()) {
 				gamelistbox_->add_row(make_game_row_data(game), list_i);
-				DBG_LB << "Added a game listbox row not at the end"
-					<< list_i << " " << gamelistbox_->get_item_count() << "\n";
+				DBG_LB << "Added a game listbox row not at the end" << list_i
+					   << " " << gamelistbox_->get_item_count() << "\n";
 				list_rows_deleted--;
 			} else {
 				gamelistbox_->add_row(make_game_row_data(game));
 			}
-			tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
-			adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
+			tgrid* grid = gamelistbox_->get_row_grid(
+					gamelistbox_->get_item_count() - 1);
+			adjust_game_row_contents(
+					game, gamelistbox_->get_item_count() - 1, grid);
 			list_i++;
 			next_gamelist_id_at_row.push_back(game.id);
 		} else {
-			if (list_i >= gamelistbox_->get_item_count()) {
-				ERR_LB << "Ran out of listbox items -- triggering a full refresh\n";
+			if(list_i >= gamelistbox_->get_item_count()) {
+				ERR_LB << "Ran out of listbox items -- triggering a full "
+						  "refresh\n";
 				network::send_data(config("refresh_lobby"), 0);
 				return;
 			}
-			if (list_i + list_rows_deleted >= gamelist_id_at_row_.size()) {
-				ERR_LB << "gamelist_id_at_row_ overflow! "
-					<< list_i << " + " << list_rows_deleted
-					<< " >= " << gamelist_id_at_row_.size()
-					<< " -- triggering a full refresh\n";
+			if(list_i + list_rows_deleted >= gamelist_id_at_row_.size()) {
+				ERR_LB << "gamelist_id_at_row_ overflow! " << list_i << " + "
+					   << list_rows_deleted
+					   << " >= " << gamelist_id_at_row_.size()
+					   << " -- triggering a full refresh\n";
 				network::send_data(config("refresh_lobby"), 0);
 				return;
 			}
-			int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
-			if (game.id != listbox_game_id) {
+			int listbox_game_id
+					= gamelist_id_at_row_[list_i + list_rows_deleted];
+			if(game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
-					<< listbox_game_id << " " << game.id << " (row " << list_i << ")\n";
+					   << listbox_game_id << " " << game.id << " (row "
+					   << list_i << ")\n";
 				network::send_data(config("refresh_lobby"), 0);
 				return;
 			}
-			if (game.display_status == game_info::UPDATED) {
-				LOG_LB << "Modyfying game in listbox " << game.id << " (row " << list_i << ")\n";
+			if(game.display_status == game_info::UPDATED) {
+				LOG_LB << "Modifying game in listbox " << game.id << " (row "
+					   << list_i << ")\n";
 				tgrid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, list_i, grid);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
-			} else if (game.display_status == game_info::DELETED) {
-				LOG_LB << "Deleting game from listbox " << game.id << " (row " << list_i << ")\n";
+			} else if(game.display_status == game_info::DELETED) {
+				LOG_LB << "Deleting game from listbox " << game.id << " (row "
+					   << list_i << ")\n";
 				gamelistbox_->remove_row(list_i);
 				++list_rows_deleted;
 			} else {
-				//clean
-				LOG_LB << "Clean game in listbox " << game.id << " (row " << list_i << ")\n";
+				// clean
+				LOG_LB << "Clean game in listbox " << game.id << " (row "
+					   << list_i << ")\n";
 				next_gamelist_id_at_row.push_back(game.id);
 				++list_i;
 			}
 		}
 	}
-	for (unsigned i = 0; i < next_gamelist_id_at_row.size(); ++i) {
-		if (next_gamelist_id_at_row[i] == selected_game_id_) {
+	for(unsigned i = 0; i < next_gamelist_id_at_row.size(); ++i) {
+		if(next_gamelist_id_at_row[i] == selected_game_id_) {
 			select_row = i;
 		}
 	}
 	next_gamelist_id_at_row.swap(gamelist_id_at_row_);
-	if (select_row >= static_cast<int>(gamelistbox_->get_item_count())) {
-		ERR_LB << "Would select a row beyond the listbox"
-			<< select_row << " " << gamelistbox_->get_item_count() << "\n";
+	if(select_row >= static_cast<int>(gamelistbox_->get_item_count())) {
+		ERR_LB << "Would select a row beyond the listbox" << select_row << " "
+			   << gamelistbox_->get_item_count() << "\n";
 		select_row = gamelistbox_->get_item_count() - 1;
 	}
-	if (select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
+	if(select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
 		gamelistbox_->select_row(select_row);
 	}
 	update_selected_game();
@@ -657,32 +689,36 @@ void tlobby_main::update_gamelist_header()
 {
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 	utils::string_map symbols;
-	symbols["num_shown"] = lexical_cast<std::string>(lobby_info_.games_filtered().size());
-	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
-	std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", symbols);
+	symbols["num_shown"]
+			= lexical_cast<std::string>(lobby_info_.games_filtered().size());
+	symbols["num_total"]
+			= lexical_cast<std::string>(lobby_info_.games().size());
+	std::string games_string
+			= VGETTEXT("Games: showing $num_shown out of $num_total", symbols);
 	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
 #endif
 }
 
-std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_info& game)
+std::map<std::string, string_map>
+tlobby_main::make_game_row_data(const game_info& game)
 {
 	std::map<std::string, string_map> data;
 
 	const char* color_string;
-	if (game.vacant_slots > 0) {
-		if (game.reloaded || game.started) {
+	if(game.vacant_slots > 0) {
+		if(game.reloaded || game.started) {
 			color_string = "yellow";
 		} else {
 			color_string = "green";
 		}
 	} else {
-		if (game.observers) {
+		if(game.observers) {
 			color_string = "#ddd";
 		} else {
 			color_string = "red";
 		}
 	}
-	if (!game.have_era && (game.vacant_slots > 0 || game.observers)) {
+	if(!game.have_era && (game.vacant_slots > 0 || game.observers)) {
 		color_string = "#444";
 	}
 
@@ -700,7 +736,7 @@ std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_inf
 	add_label_data(data, "vision_text", game.vision);
 	add_label_data(data, "time_limit_text", game.time_limit);
 	add_label_data(data, "status", game.status);
-	if (game.observers) {
+	if(game.observers) {
 		add_label_data(data, "observer_icon", "misc/eye.png");
 		add_tooltip_data(data, "observer_icon", _("Observers allowed"));
 	} else {
@@ -709,14 +745,14 @@ std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_inf
 	}
 
 	const char* vision_icon;
-	if (game.fog) {
-		if (game.shroud) {
+	if(game.fog) {
+		if(game.shroud) {
 			vision_icon = "misc/vision-fog-shroud.png";
 		} else {
 			vision_icon = "misc/vision-fog.png";
 		}
 	} else {
-		if (game.shroud) {
+		if(game.shroud) {
 			vision_icon = "misc/vision-shroud.png";
 		} else {
 			vision_icon = "misc/vision-none.png";
@@ -727,17 +763,18 @@ std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_inf
 	return data;
 }
 
-void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid* grid)
+void tlobby_main::adjust_game_row_contents(const game_info& game,
+										   int idx,
+										   tgrid* grid)
 {
 	find_widget<tcontrol>(grid, "name", false).set_use_markup(true);
 
 	find_widget<tcontrol>(grid, "status", false).set_use_markup(true);
 
-	ttoggle_panel& row_panel =
-			find_widget<ttoggle_panel>(grid, "panel", false);
+	ttoggle_panel& row_panel = find_widget<ttoggle_panel>(grid, "panel", false);
 
-	row_panel.set_callback_mouse_left_double_click(boost::bind(
-		&tlobby_main::join_or_observe, this, idx));
+	row_panel.set_callback_mouse_left_double_click(
+			boost::bind(&tlobby_main::join_or_observe, this, idx));
 
 	set_visible_if_exists(grid, "time_limit_icon", !game.time_limit.empty());
 	set_visible_if_exists(grid, "vision_fog", game.fog);
@@ -754,23 +791,26 @@ void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid
 
 
 	tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false));
-	if (join_button) {
-		connect_signal_mouse_left_click(*join_button, boost::bind(
-				  &tlobby_main::join_button_callback
-				, this
-				, boost::ref(*window_)));
+	if(join_button) {
+		connect_signal_mouse_left_click(
+				*join_button,
+				boost::bind(&tlobby_main::join_button_callback,
+							this,
+							boost::ref(*window_)));
 		join_button->set_active(game.can_join());
 	}
-	tbutton* observe_button = dynamic_cast<tbutton*>(grid->find("observe", false));
-	if (observe_button) {
-		connect_signal_mouse_left_click(*observe_button, boost::bind(
-				  &tlobby_main::observe_button_callback
-				, this
-				, boost::ref(*window_)));
+	tbutton* observe_button
+			= dynamic_cast<tbutton*>(grid->find("observe", false));
+	if(observe_button) {
+		connect_signal_mouse_left_click(
+				*observe_button,
+				boost::bind(&tlobby_main::observe_button_callback,
+							this,
+							boost::ref(*window_)));
 		observe_button->set_active(game.can_observe());
 	}
 	tminimap* minimap = dynamic_cast<tminimap*>(grid->find("minimap", false));
-	if (minimap) {
+	if(minimap) {
 		minimap->set_config(&game_config_);
 		minimap->set_map_data(game.map_data);
 	}
@@ -781,7 +821,7 @@ void tlobby_main::update_gamelist_filter()
 	DBG_LB << "tlobby_main::update_gamelist_filter\n";
 	lobby_info_.apply_game_filter();
 	DBG_LB << "Games in lobby_info: " << lobby_info_.games().size()
-		<< ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
+		   << ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
@@ -789,15 +829,17 @@ void tlobby_main::update_gamelist_filter()
 
 void tlobby_main::update_playerlist()
 {
-	if (delay_playerlist_update_) return;
+	if(delay_playerlist_update_)
+		return;
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
-	lobby_info_.sort_users(player_list_.sort_by_name->get_value(), player_list_.sort_by_relation->get_value());
+	lobby_info_.sort_users(player_list_.sort_by_name->get_value(),
+						   player_list_.sort_by_relation->get_value());
 
 	bool lobby = false;
-	if (room_info* ri = active_window_room()) {
-		if (ri->name() == "lobby") {
+	if(room_info* ri = active_window_room()) {
+		if(ri->name() == "lobby") {
 			lobby = true;
 		}
 	}
@@ -824,11 +866,11 @@ void tlobby_main::update_playerlist()
 		std::stringstream icon_ss;
 		std::string name = user.name;
 		icon_ss << "lobby/status";
-		switch (user.state) {
+		switch(user.state) {
 			case user_info::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
-				if (lobby) {
+				if(lobby) {
 					target_list = &player_list_.other_rooms;
 				}
 				break;
@@ -847,12 +889,13 @@ void tlobby_main::update_playerlist()
 				target_list = &player_list_.other_games;
 				break;
 			default:
-				ERR_LB << "Bad user state in lobby: " << user.name << ": " << user.state << "\n";
+				ERR_LB << "Bad user state in lobby: " << user.name << ": "
+					   << user.state << "\n";
 				continue;
 		}
-		switch (user.relation) {
+		switch(user.relation) {
 			case user_info::ME:
-				/* fall through */
+			/* fall through */
 			case user_info::NEUTRAL:
 				icon_ss << "-n";
 				break;
@@ -863,15 +906,16 @@ void tlobby_main::update_playerlist()
 				icon_ss << "-i";
 				break;
 			default:
-				ERR_LB << "Bad user relation in lobby: " << user.relation << "\n";
+				ERR_LB << "Bad user relation in lobby: " << user.relation
+					   << "\n";
 		}
-		if (user.registered) {
+		if(user.registered) {
 			name = tag(name, "b");
 		}
 		icon_ss << ".png";
 		add_label_data(data, "player", name);
 		add_label_data(data, "main_icon", icon_ss.str());
-		if (!preferences::playerlist_group_players()) {
+		if(!preferences::playerlist_group_players()) {
 			target_list = &player_list_.other_rooms;
 		}
 
@@ -888,12 +932,12 @@ void tlobby_main::update_playerlist()
 		tree_group_field["use_markup"] = "true";
 		tree_group_item["name"] = tree_group_field;
 
-		ttree_view_node& player =
-				target_list->tree->add_child("player", tree_group_item);
+		ttree_view_node& player
+				= target_list->tree->add_child("player", tree_group_item);
 
 		find_widget<ttoggle_panel>(&player, "tree_view_node_label", false)
 				.set_callback_mouse_left_double_click(boost::bind(
-					&tlobby_main::user_dialog_callback, this, userptr));
+						 &tlobby_main::user_dialog_callback, this, userptr));
 	}
 	player_list_.active_game.auto_hide();
 	player_list_.active_room.auto_hide();
@@ -907,7 +951,7 @@ void tlobby_main::update_selected_game()
 {
 	int idx = gamelistbox_->get_selected_row();
 	bool can_join = false, can_observe = false;
-	if (idx >= 0) {
+	if(idx >= 0) {
 		const game_info& game = *lobby_info_.games()[idx];
 		can_observe = game.can_observe();
 		can_join = game.can_join();
@@ -928,37 +972,40 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	SCOPE_LB;
 	roomlistbox_ = find_widget<tlistbox>(&window, "room_list", false, true);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*roomlistbox_, boost::bind(
-				  &tlobby_main::room_switch_callback
-				, *this
-				, boost::ref(window)));
+	connect_signal_notify_modified(
+			*roomlistbox_,
+			boost::bind(&tlobby_main::room_switch_callback,
+						*this,
+						boost::ref(window)));
 #else
 	roomlistbox_->set_callback_value_change(
 			dialog_callback<tlobby_main, &tlobby_main::room_switch_callback>);
 #endif
 
-	gamelistbox_ =  find_widget<tlistbox>(&window, "game_list", false, true);
+	gamelistbox_ = find_widget<tlistbox>(&window, "game_list", false, true);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*gamelistbox_, boost::bind(
-				  &tlobby_main::gamelist_change_callback
-				, *this
-				, boost::ref(window)));
+	connect_signal_notify_modified(
+			*gamelistbox_,
+			boost::bind(&tlobby_main::gamelist_change_callback,
+						*this,
+						boost::ref(window)));
 #else
 	gamelistbox_->set_callback_value_change(
-			dialog_callback<tlobby_main
-				, &tlobby_main::gamelist_change_callback>);
+			dialog_callback<tlobby_main,
+							&tlobby_main::gamelist_change_callback>);
 #endif
 
 	player_list_.init(window);
 
 	player_list_.sort_by_name->set_value(preferences::playerlist_sort_name());
-	player_list_.sort_by_relation->set_value(preferences::playerlist_sort_relation());
+	player_list_.sort_by_relation->set_value(
+			preferences::playerlist_sort_relation());
 	player_list_.update_sort_icons();
 
-	player_list_.sort_by_name->set_callback_state_change(boost::bind(
-		&tlobby_main::player_filter_callback, this, _1));
-	player_list_.sort_by_relation->set_callback_state_change(boost::bind(
-		&tlobby_main::player_filter_callback, this, _1));
+	player_list_.sort_by_name->set_callback_state_change(
+			boost::bind(&tlobby_main::player_filter_callback, this, _1));
+	player_list_.sort_by_relation->set_callback_state_change(
+			boost::bind(&tlobby_main::player_filter_callback, this, _1));
 
 	chat_log_container_ = find_widget<tmulti_page>(
 			&window, "chat_log_container", false, true);
@@ -969,69 +1016,64 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 
 	chat_input_ = find_widget<ttext_box>(&window, "chat_input", false, true);
 	assert(chat_input_);
-	connect_signal_pre_key_press(*chat_input_, boost::bind(
-			  &tlobby_main::chat_input_keypress_callback
-			, this
-			, _3
-			, _4
-			, _5
-			, boost::ref(window)));
+	connect_signal_pre_key_press(
+			*chat_input_,
+			boost::bind(&tlobby_main::chat_input_keypress_callback,
+						this,
+						_3,
+						_4,
+						_5,
+						boost::ref(window)));
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "send_message", false)
-			, boost::bind(
-				  &tlobby_main::send_message_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "send_message", false),
+			boost::bind(&tlobby_main::send_message_button_callback,
+						this,
+						boost::ref(window)));
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "create", false)
-			, boost::bind(
-				  &tlobby_main::create_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "create", false),
+			boost::bind(&tlobby_main::create_button_callback,
+						this,
+						boost::ref(window)));
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "refresh", false)
-			, boost::bind(
-				  &tlobby_main::refresh_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "refresh", false),
+			boost::bind(&tlobby_main::refresh_button_callback,
+						this,
+						boost::ref(window)));
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "show_preferences", false)
-			, boost::bind(
-				  &tlobby_main::show_preferences_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "show_preferences", false),
+			boost::bind(&tlobby_main::show_preferences_button_callback,
+						this,
+						boost::ref(window)));
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "join_global", false)
-			, boost::bind(
-				  &tlobby_main::join_global_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "join_global", false),
+			boost::bind(&tlobby_main::join_global_button_callback,
+						this,
+						boost::ref(window)));
 	find_widget<tbutton>(&window, "join_global", false).set_active(false);
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "observe_global", false)
-			, boost::bind(
-				  &tlobby_main::observe_global_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "observe_global", false),
+			boost::bind(&tlobby_main::observe_global_button_callback,
+						this,
+						boost::ref(window)));
 	find_widget<tbutton>(&window, "observe_global", false).set_active(false);
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "close_window", false)
-			, boost::bind(
-				  &tlobby_main::close_window_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "close_window", false),
+			boost::bind(&tlobby_main::close_window_button_callback,
+						this,
+						boost::ref(window)));
 
-	ttoggle_button& skip_replay =
-			find_widget<ttoggle_button>(&window, "skip_replay", false);
+	ttoggle_button& skip_replay
+			= find_widget<ttoggle_button>(&window, "skip_replay", false);
 	skip_replay.set_value(preferences::skip_mp_replay());
-	skip_replay.set_callback_state_change(boost::bind(&tlobby_main::skip_replay_changed_callback, this, _1));
+	skip_replay.set_callback_state_change(
+			boost::bind(&tlobby_main::skip_replay_changed_callback, this, _1));
 
 	filter_friends_ = find_widget<ttoggle_button>(
 			&window, "filter_with_friends", false, true);
@@ -1041,20 +1083,19 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 			&window, "filter_vacant_slots", false, true);
 	filter_invert_ = find_widget<ttoggle_button>(
 			&window, "filter_invert", false, true);
-	filter_text_= find_widget<ttext_box>(&window, "filter_text", false, true);
+	filter_text_ = find_widget<ttext_box>(&window, "filter_text", false, true);
 
 	filter_friends_->set_callback_state_change(
-		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_ignored_->set_callback_state_change(
-		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_slots_->set_callback_state_change(
-		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_invert_->set_callback_state_change(
-		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
-	connect_signal_pre_key_press(*filter_text_, boost::bind(
-			  &tlobby_main::game_filter_keypress_callback
-			, this
-			, _5));
+			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+	connect_signal_pre_key_press(
+			*filter_text_,
+			boost::bind(&tlobby_main::game_filter_keypress_callback, this, _5));
 
 	room_window_open("lobby", true);
 	active_window_changed();
@@ -1062,9 +1103,10 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Force first update to be directly.
 	tlobby_main::network_handler();
-	lobby_update_timer_ = add_timer(game_config::lobby_network_timer
-			, boost::bind(&tlobby_main::network_handler, this)
-			, true);
+	lobby_update_timer_
+			= add_timer(game_config::lobby_network_timer,
+						boost::bind(&tlobby_main::network_handler, this),
+						true);
 }
 
 void tlobby_main::post_show(twindow& /*window*/)
@@ -1077,40 +1119,50 @@ void tlobby_main::post_show(twindow& /*window*/)
 room_info* tlobby_main::active_window_room()
 {
 	const tlobby_chat_window& t = open_windows_[active_window_];
-	if (t.whisper) return NULL;
+	if(t.whisper)
+		return NULL;
 	return lobby_info_.get_room(t.name);
 }
 
-tlobby_chat_window* tlobby_main::room_window_open(const std::string& room, bool open_new)
+tlobby_chat_window* tlobby_main::room_window_open(const std::string& room,
+												  bool open_new)
 {
 	return search_create_window(room, false, open_new);
 }
 
-tlobby_chat_window* tlobby_main::whisper_window_open(const std::string& name, bool open_new)
+tlobby_chat_window* tlobby_main::whisper_window_open(const std::string& name,
+													 bool open_new)
 {
 	return search_create_window(name, true, open_new);
 }
 
-tlobby_chat_window* tlobby_main::search_create_window(const std::string& name, bool whisper, bool open_new)
+tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
+													  bool whisper,
+													  bool open_new)
 {
-	FOREACH(AUTO& t, open_windows_) {
-		if (t.name == name && t.whisper == whisper) return &t;
+	FOREACH(AUTO & t, open_windows_)
+	{
+		if(t.name == name && t.whisper == whisper)
+			return &t;
 	}
-	if (open_new) {
+	if(open_new) {
 		open_windows_.push_back(tlobby_chat_window(name, whisper));
 		std::map<std::string, string_map> data;
 		utils::string_map symbols;
 		symbols["name"] = name;
-		if (whisper) {
+		if(whisper) {
 			add_label_data(data, "log_header", "<" + name + ">");
-			add_label_data(data, "log_text", VGETTEXT(
-				"Whisper session with $name started. "
-				"If you don’t want to receive messages from this user, "
-				"type /ignore $name\n", symbols));
+			add_label_data(data,
+						   "log_text",
+						   VGETTEXT("Whisper session with $name started. "
+									"If you don’t want to receive messages "
+									"from this user, "
+									"type /ignore $name\n",
+									symbols));
 		} else {
 			add_label_data(data, "log_header", name);
-			add_label_data(data, "log_text", VGETTEXT(
-				"Room $name joined", symbols));
+			add_label_data(
+					data, "log_text", VGETTEXT("Room $name joined", symbols));
 			lobby_info_.open_room(name);
 		}
 		chat_log_container_->add_page(data);
@@ -1137,16 +1189,16 @@ bool tlobby_main::room_window_active(const std::string& room)
 
 void tlobby_main::increment_waiting_whsipers(const std::string& name)
 {
-	if (tlobby_chat_window* t = whisper_window_open(name, false)) {
+	if(tlobby_chat_window* t = whisper_window_open(name, false)) {
 		t->pending_messages++;
-		if (t->pending_messages == 1) {
-			DBG_LB << "do whisper pending mark row "
-				<< (t - &open_windows_[0]) << " with " << t->name << "\n";
+		if(t->pending_messages == 1) {
+			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0])
+				   << " with " << t->name << "\n";
 			tgrid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
-			//this breaks for some reason
-			//tlabel& label = grid->get_widget<tlabel>("room", false);
-			//label.set_use_markup(true);
-			//label.set_label(colorize("<" + t->name + ">", "red"));
+			// this breaks for some reason
+			// tlabel& label = grid->get_widget<tlabel>("room", false);
+			// label.set_use_markup(true);
+			// label.set_label(colorize("<" + t->name + ">", "red"));
 			find_widget<timage>(grid, "pending_messages", false)
 					.set_visible(twidget::tvisible::visible);
 		}
@@ -1155,56 +1207,63 @@ void tlobby_main::increment_waiting_whsipers(const std::string& name)
 
 void tlobby_main::increment_waiting_messages(const std::string& room)
 {
-	if (tlobby_chat_window* t = room_window_open(room, false)) {
+	if(tlobby_chat_window* t = room_window_open(room, false)) {
 		t->pending_messages++;
-		if (t->pending_messages == 1) {
+		if(t->pending_messages == 1) {
 			int idx = t - &open_windows_[0];
-			DBG_LB << "do room pending mark row "
-				<< idx << " with " << t->name << "\n";
+			DBG_LB << "do room pending mark row " << idx << " with " << t->name
+				   << "\n";
 			tgrid* grid = roomlistbox_->get_row_grid(idx);
-			//this breaks for some reason
-			//tlabel& label = grid->get_widget<tlabel>("room", false);
-			//label.set_use_markup(true);
-			//label.set_label(colorize(t->name, "red"));
+			// this breaks for some reason
+			// tlabel& label = grid->get_widget<tlabel>("room", false);
+			// label.set_use_markup(true);
+			// label.set_label(colorize(t->name, "red"));
 			find_widget<timage>(grid, "pending_messages", false)
 					.set_visible(twidget::tvisible::visible);
 		}
 	}
 }
 
-void tlobby_main::add_whisper_window_whisper(const std::string& sender, const std::string& message)
+void tlobby_main::add_whisper_window_whisper(const std::string& sender,
+											 const std::string& message)
 {
 	std::stringstream ss;
 	ss << "<" << sender << ">" << message;
 	tlobby_chat_window* t = whisper_window_open(sender, false);
-	if (!t) {
-		ERR_LB << "Whisper window not open in add_whisper_window_whisper for " << sender << "\n";
+	if(!t) {
+		ERR_LB << "Whisper window not open in add_whisper_window_whisper for "
+			   << sender << "\n";
 		return;
 	}
 	append_to_chatbox(ss.str(), t - &open_windows_[0]);
 }
 
-void tlobby_main::add_active_window_whisper(const std::string& sender, const std::string& message)
+void tlobby_main::add_active_window_whisper(const std::string& sender,
+											const std::string& message)
 {
 	std::stringstream ss;
-	ss << "<" << "whisper: " << sender << ">" << message;
+	ss << "<"
+	   << "whisper: " << sender << ">" << message;
 	append_to_chatbox(ss.str());
 }
 
 void tlobby_main::add_room_window_message(const std::string& room,
-	const std::string& sender, const std::string& message)
+										  const std::string& sender,
+										  const std::string& message)
 {
 	std::stringstream ss;
 	ss << "<" << sender << ">" << message;
 	tlobby_chat_window* t = room_window_open(room, false);
-	if (!t) {
-		ERR_LB << "Room window not open in add_room_window_message for " << room << "\n";
+	if(!t) {
+		ERR_LB << "Room window not open in add_room_window_message for " << room
+			   << "\n";
 		return;
 	}
 	append_to_chatbox(ss.str(), t - &open_windows_[0]);
 }
 
-void tlobby_main::add_active_window_message(const std::string& sender, const std::string& message)
+void tlobby_main::add_active_window_message(const std::string& sender,
+											const std::string& message)
 {
 	std::stringstream ss;
 	ss << "<" << sender << ">" << message;
@@ -1228,35 +1287,34 @@ void tlobby_main::switch_to_window(size_t id)
 void tlobby_main::active_window_changed()
 {
 	tlabel& header = find_widget<tlabel>(
-			  &chat_log_container_->page_grid(active_window_)
-			, "log_header"
-			, false);
+			&chat_log_container_->page_grid(active_window_),
+			"log_header",
+			false);
 
 	tlobby_chat_window& t = open_windows_[active_window_];
 	std::string expected_label;
-	if (t.whisper) {
+	if(t.whisper) {
 		expected_label = "<" + t.name + ">";
 	} else {
 		expected_label = t.name;
 	}
-	if (header.label() != expected_label) {
-		ERR_LB << "Chat log header not what it should be! "
-			<< header.label() << " vs " << expected_label << "\n";
+	if(header.label() != expected_label) {
+		ERR_LB << "Chat log header not what it should be! " << header.label()
+			   << " vs " << expected_label << "\n";
 	}
 
 	bool close_button_active = (t.whisper || (t.name != "lobby"));
 
 	DBG_LB << "active window changed to " << active_window_ << " "
-		<< (t.whisper ? "w" : "r") << " "
-		<< t.name << " " << t.pending_messages << " : "
-		<< expected_label
-	    << " close button:" << close_button_active << "\n";
+		   << (t.whisper ? "w" : "r") << " " << t.name << " "
+		   << t.pending_messages << " : " << expected_label
+		   << " close button:" << close_button_active << "\n";
 
-	//clear pending messages notification in room listbox
+	// clear pending messages notification in room listbox
 	tgrid* grid = roomlistbox_->get_row_grid(active_window_);
-	//this breaks for some reason
-	//tlabel& label = grid->get_widget<tlabel>("room", false);
-	//label.set_label(expected_label);
+	// this breaks for some reason
+	// tlabel& label = grid->get_widget<tlabel>("room", false);
+	// label.set_label(expected_label);
 	find_widget<timage>(grid, "pending_messages", false)
 			.set_visible(twidget::tvisible::hidden);
 	t.pending_messages = 0;
@@ -1278,20 +1336,22 @@ void tlobby_main::close_window(size_t idx)
 	const tlobby_chat_window& t = open_windows_[idx];
 	bool active_changed = idx == active_window_;
 	DBG_LB << "Close window " << idx << " - " << t.name << "\n";
-	if (t.name == "lobby" && t.whisper == false) return;
-	if (open_windows_.size() == 1) return;
-	if (t.whisper == false) {
-		//closing a room window -- send a part to the server
+	if(t.name == "lobby" && t.whisper == false)
+		return;
+	if(open_windows_.size() == 1)
+		return;
+	if(t.whisper == false) {
+		// closing a room window -- send a part to the server
 		config data, msg;
 		msg["room"] = t.name;
 		msg["player"] = preferences::login();
 		data.add_child("room_part", msg);
 		network::send_data(data, 0);
 	}
-	if (active_window_ == open_windows_.size() - 1) {
+	if(active_window_ == open_windows_.size() - 1) {
 		active_window_--;
 	}
-	if (t.whisper) {
+	if(t.whisper) {
 		lobby_info_.get_whisper_log(t.name).clear();
 	} else {
 		lobby_info_.close_room(t.name);
@@ -1301,78 +1361,86 @@ void tlobby_main::close_window(size_t idx)
 	roomlistbox_->select_row(active_window_);
 	chat_log_container_->remove_page(idx);
 	chat_log_container_->select_page(active_window_);
-	if (active_changed) active_window_changed();
+	if(active_changed)
+		active_window_changed();
 }
 
 void tlobby_main::network_handler()
 {
-	if (gamelist_dirty_ && !delay_gamelist_update_
-		&&(SDL_GetTicks() - last_gamelist_update_ > game_config::lobby_refresh)) {
-		if (gamelist_diff_update_) {
+	if(gamelist_dirty_ && !delay_gamelist_update_
+	   && (SDL_GetTicks() - last_gamelist_update_
+		   > game_config::lobby_refresh)) {
+		if(gamelist_diff_update_) {
 			update_gamelist_diff();
 		} else {
 			update_gamelist();
 			gamelist_diff_update_ = true;
 		}
 	}
-	if (player_list_dirty_) {
+	if(player_list_dirty_) {
 		update_gamelist_filter();
 		update_playerlist();
 	}
-	try {
+	try
+	{
 		config data;
 		const network::connection sock = network::receive_data(data);
 		if(sock) {
 			process_network_data(data);
 		}
-	} catch(network::error& e) {
-		LOG_LB << "caught network::error in network_handler: " << e.message << "\n";
+	}
+	catch(network::error& e)
+	{
+		LOG_LB << "caught network::error in network_handler: " << e.message
+			   << "\n";
 		throw;
 	}
 }
 
-void tlobby_main::process_network_data(const config &data)
+void tlobby_main::process_network_data(const config& data)
 {
-	if (const config &c = data.child("error")) {
+	if(const config& c = data.child("error")) {
 		throw network::error(c["message"]);
-	} else if (const config &c = data.child("message")) {
+	} else if(const config& c = data.child("message")) {
 		process_message(c);
-	} else if (const config &c = data.child("whisper")) {
+	} else if(const config& c = data.child("whisper")) {
 		process_message(c, true);
 	} else if(data.child("gamelist")) {
 		process_gamelist(data);
-	} else if (const config &c = data.child("gamelist_diff")) {
+	} else if(const config& c = data.child("gamelist_diff")) {
 		process_gamelist_diff(c);
-	} else if (const config &c = data.child("room_join")) {
+	} else if(const config& c = data.child("room_join")) {
 		process_room_join(c);
-	} else if (const config &c = data.child("room_part")) {
+	} else if(const config& c = data.child("room_part")) {
 		process_room_part(c);
-	} else if (const config &c = data.child("room_query_response")) {
+	} else if(const config& c = data.child("room_query_response")) {
 		process_room_query_response(c);
 	}
 }
 
-void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
+void tlobby_main::process_message(const config& data, bool whisper /*= false*/)
 {
 	std::string sender = data["sender"];
-	DBG_LB << "process message from " << sender << " "
-		<< (whisper ? "(w)" : "") << ", len " << data["message"].str().size() << '\n';
-	if (preferences::is_ignored(sender)) return;
+	DBG_LB << "process message from " << sender << " " << (whisper ? "(w)" : "")
+		   << ", len " << data["message"].str().size() << '\n';
+	if(preferences::is_ignored(sender))
+		return;
 	const std::string& message = data["message"];
 	preferences::parse_admin_authentication(sender, message);
-	if (whisper) {
+	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
 		std::string room = data["room"];
-		if (room.empty()) {
-			LOG_LB << "Message without a room from " << sender << ", assuming lobby\n";
+		if(room.empty()) {
+			LOG_LB << "Message without a room from " << sender
+				   << ", assuming lobby\n";
 			room = "lobby";
 		}
 		add_chat_room_message_received(room, sender, message);
 	}
 }
 
-void tlobby_main::process_gamelist(const config &data)
+void tlobby_main::process_gamelist(const config& data)
 {
 	lobby_info_.process_gamelist(data);
 	DBG_LB << "Received gamelist\n";
@@ -1380,18 +1448,18 @@ void tlobby_main::process_gamelist(const config &data)
 	gamelist_diff_update_ = false;
 }
 
-void tlobby_main::process_gamelist_diff(const config &data)
+void tlobby_main::process_gamelist_diff(const config& data)
 {
-	if (lobby_info_.process_gamelist_diff(data)) {
+	if(lobby_info_.process_gamelist_diff(data)) {
 		DBG_LB << "Received gamelist diff\n";
 		gamelist_dirty_ = true;
 	} else {
-		ERR_LB << "process_gamelist_diff failed!\n";
+		ERR_LB << "process_gamelist_diff failed!" << std::endl;
 	}
 	int joined = data.child_count("insert_child");
 	int left = data.child_count("remove_child");
-	if (joined > 0 || left > 0) {
-		if (left > joined) {
+	if(joined > 0 || left > 0) {
+		if(left > joined) {
 			do_notify(NOTIFY_LOBBY_QUIT);
 		} else {
 			do_notify(NOTIFY_LOBBY_JOIN);
@@ -1399,17 +1467,17 @@ void tlobby_main::process_gamelist_diff(const config &data)
 	}
 }
 
-void tlobby_main::process_room_join(const config &data)
+void tlobby_main::process_room_join(const config& data)
 {
 	const std::string& room = data["room"];
 	const std::string& player = data["player"];
 	room_info* r = lobby_info_.get_room(room);
 	DBG_LB << "room join: " << room << " " << player << " "
-			<< static_cast<void*>(r) << "\n";
+		   << static_cast<void*>(r) << "\n";
 
-	if (r) {
-		if (player == preferences::login()) {
-			if (const config& members = data.child("members")) {
+	if(r) {
+		if(player == preferences::login()) {
+			if(const config& members = data.child("members")) {
 				r->process_room_members(members);
 			}
 		} else {
@@ -1417,25 +1485,29 @@ void tlobby_main::process_room_join(const config &data)
 			/* TODO: add/use preference */
 			utils::string_map symbols;
 			symbols["player"] = player;
-			add_room_window_message(room, "server", VGETTEXT("$player has entered the room", symbols));
+			add_room_window_message(
+					room,
+					"server",
+					VGETTEXT("$player has entered the room", symbols));
 		}
-		if (r == active_window_room()) {
+		if(r == active_window_room()) {
 			player_list_dirty_ = true;
 		}
 	} else {
-		if (player == preferences::login()) {
+		if(player == preferences::login()) {
 			tlobby_chat_window* t = room_window_open(room, true);
 			lobby_info_.open_room(room);
 			r = lobby_info_.get_room(room);
 			assert(r);
-			if (const config& members = data.child("members")) {
+			if(const config& members = data.child("members")) {
 				r->process_room_members(members);
 			}
 			switch_to_window(t);
 
 			const std::string& topic = data["topic"];
-			if (!topic.empty()) {
-				add_chat_room_message_received("room", "server", room + ": " + topic);
+			if(!topic.empty()) {
+				add_chat_room_message_received(
+						"room", "server", room + ": " + topic);
 			}
 		} else {
 			LOG_LB << "Discarding join info for a room the player is not in\n";
@@ -1443,22 +1515,23 @@ void tlobby_main::process_room_join(const config &data)
 	}
 }
 
-void tlobby_main::process_room_part(const config &data)
+void tlobby_main::process_room_part(const config& data)
 {
-	//todo close room window when the part message is sent
+	// todo close room window when the part message is sent
 	const std::string& room = data["room"];
 	const std::string& player = data["player"];
 	DBG_LB << "Room part: " << room << " " << player << "\n";
 	room_info* r = lobby_info_.get_room(room);
-	if (r) {
+	if(r) {
 		r->remove_member(player);
 		/* TODO: add/use preference */
 		utils::string_map symbols;
 		symbols["player"] = player;
-		add_room_window_message(room, "server", VGETTEXT("$player has left the room", symbols));
-        if (active_window_room() == r) {
+		add_room_window_message(
+				room, "server", VGETTEXT("$player has left the room", symbols));
+		if(active_window_room() == r) {
 			player_list_dirty_ = true;
-        }
+		}
 	} else {
 		LOG_LB << "Discarding part info for a room the player is not in\n";
 	}
@@ -1469,65 +1542,66 @@ void tlobby_main::process_room_query_response(const config& data)
 	const std::string& room = data["room"];
 	const std::string& message = data["message"];
 	DBG_LB << "room query response: " << room << " " << message << "\n";
-	if (room.empty()) {
-		if (!message.empty()) {
+	if(room.empty()) {
+		if(!message.empty()) {
 			add_active_window_message("server", message);
 		}
-		if (const config& rooms = data.child("rooms")) {
-			//TODO: this should really open a nice join room dialog instead
+		if(const config& rooms = data.child("rooms")) {
+			// TODO: this should really open a nice join room dialog instead
 			std::stringstream ss;
 			ss << "Rooms:";
-			FOREACH(const AUTO& r, rooms.child_range("room")) {
+			FOREACH(const AUTO & r, rooms.child_range("room"))
+			{
 				ss << " " << r["name"];
 			}
 			add_active_window_message("server", ss.str());
 		}
 	} else {
-		if (room_window_open(room, false)) {
-			if (!message.empty()) {
+		if(room_window_open(room, false)) {
+			if(!message.empty()) {
 				add_chat_room_message_received(room, "server", message);
 			}
-			if (const config& members = data.child("members")) {
+			if(const config& members = data.child("members")) {
 				room_info* r = lobby_info_.get_room(room);
 				assert(r);
 				r->process_room_members(members);
-				if (r == active_window_room()) {
+				if(r == active_window_room()) {
 					player_list_dirty_ = true;
 				}
 			}
 		} else {
-			if (!message.empty()) {
+			if(!message.empty()) {
 				add_active_window_message("server", room + ": " + message);
 			}
 		}
 	}
 }
 
-void tlobby_main::join_button_callback(gui2::twindow &window)
+void tlobby_main::join_button_callback(gui2::twindow& window)
 {
 	LOG_LB << "join_button_callback\n";
 	join_global_button_callback(window);
 }
 
-void tlobby_main::observe_button_callback(gui2::twindow &window)
+void tlobby_main::observe_button_callback(gui2::twindow& window)
 {
 	LOG_LB << "observe_button_callback\n";
 	observe_global_button_callback(window);
 }
 
-void tlobby_main::observe_global_button_callback(gui2::twindow &window)
+void tlobby_main::observe_global_button_callback(gui2::twindow& window)
 {
 	LOG_LB << "observe_global_button_callback\n";
-	if (do_game_join(gamelistbox_->get_selected_row(), true)) {
+	if(do_game_join(gamelistbox_->get_selected_row(), true)) {
 		legacy_result_ = OBSERVE;
 		window.close();
 	}
 }
 
-void tlobby_main::join_global_button_callback(gui2::twindow &window)
+void tlobby_main::join_global_button_callback(gui2::twindow& window)
 {
 	LOG_LB << "join_global_button_callback\n";
-	if (do_game_join(gamelistbox_->get_selected_row(), false)) {
+	if(do_game_join(gamelistbox_->get_selected_row(), false)) {
 		legacy_result_ = JOIN;
 		window.close();
 	}
@@ -1536,7 +1610,7 @@ void tlobby_main::join_global_button_callback(gui2::twindow &window)
 void tlobby_main::join_or_observe(int idx)
 {
 	const game_info& game = *lobby_info_.games()[idx];
-	if (do_game_join(idx, !game.can_join())) {
+	if(do_game_join(idx, !game.can_join())) {
 		legacy_result_ = game.can_join() ? JOIN : OBSERVE;
 		window_->close();
 	}
@@ -1544,20 +1618,23 @@ void tlobby_main::join_or_observe(int idx)
 
 bool tlobby_main::do_game_join(int idx, bool observe)
 {
-	if (idx < 0 || idx > static_cast<int>(lobby_info_.games().size())) {
+	if(idx < 0 || idx > static_cast<int>(lobby_info_.games().size())) {
 		ERR_LB << "Requested join/observe of a game with index out of range: "
-			<< idx << ", games size is " << lobby_info_.games().size() << "\n";
+			   << idx << ", games size is " << lobby_info_.games().size()
+			   << "\n";
 		return false;
 	}
 	const game_info& game = *lobby_info_.games()[idx];
-	if (observe) {
-		if (!game.can_observe()) {
-			ERR_LB << "Requested observe of a game with observers disabled\n";
+	if(observe) {
+		if(!game.can_observe()) {
+			ERR_LB << "Requested observe of a game with observers disabled"
+				   << std::endl;
 			return false;
 		}
 	} else {
-		if (!game.can_join()) {
-			ERR_LB << "Requested join to a game with no vacant slots\n";
+		if(!game.can_join()) {
+			ERR_LB << "Requested join to a game with no vacant slots"
+				   << std::endl;
 			return false;
 		}
 	}
@@ -1565,32 +1642,28 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	config& join = response.add_child("join");
 	join["id"] = lexical_cast<std::string>(game.id);
 	join["observe"] = observe;
-	if (join && !observe && game.password_required) {
+	if(join && !observe && game.password_required) {
 		std::string password;
-		//TODO replace with a gui2 dialog
-		const int res = gui::show_dialog(disp_, NULL, _("Password Required"),
-		          _("Joining this game requires a password."),
-		          gui::OK_CANCEL, NULL, NULL, _("Password: "), &password);
-		if (res != 0) {
+		if(!gui2::tmp_join_game_password_prompt::execute(password, disp_.video())) {
 			return false;
 		}
-		if(!password.empty()) {
-			join["password"] = password;
-		}
+
+		join["password"] = password;
 	}
 	network::send_data(response, 0);
-	if (observe && game.started) {
+	if(observe && game.started) {
 		playmp_controller::set_replay_last_turn(game.current_turn);
 	}
 	return true;
 }
 
-void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
+void tlobby_main::send_message_button_callback(gui2::twindow& /*window*/)
 {
 	const std::string& input = chat_input_->get_value();
-	if (input.empty()) return;
-	if (input[0] == '/') {
-		//TODO: refactor do_speak so it uses context information about
+	if(input.empty())
+		return;
+	if(input[0] == '/') {
+		// TODO: refactor do_speak so it uses context information about
 		//      opened window, so e.g. /ignore in a whisper session ignores
 		//      the other party without having to specify it's nick.
 		chat_handler::do_speak(input);
@@ -1605,7 +1678,7 @@ void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
 void tlobby_main::send_message_to_active_window(const std::string& input)
 {
 	tlobby_chat_window& t = open_windows_[active_window_];
-	if (t.whisper) {
+	if(t.whisper) {
 		send_whisper(t.name, input);
 		add_whisper_sent(t.name, input);
 	} else {
@@ -1633,7 +1706,7 @@ void tlobby_main::refresh_button_callback(gui2::twindow& /*window*/)
 
 void tlobby_main::show_preferences_button_callback(gui2::twindow& window)
 {
-	if (preferences_callback_) {
+	if(preferences_callback_) {
 		preferences_callback_();
 
 		/**
@@ -1652,13 +1725,12 @@ void tlobby_main::room_switch_callback(twindow& /*window*/)
 	switch_to_window(roomlistbox_->get_selected_row());
 }
 
-void tlobby_main::chat_input_keypress_callback(
-		  bool& handled
-		, bool& halt
-		, const SDLKey key
-		, twindow& window)
+void tlobby_main::chat_input_keypress_callback(bool& handled,
+											   bool& halt,
+											   const SDLKey key,
+											   twindow& window)
 {
-	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
+	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		send_message_button_callback(window);
 		handled = true;
 		halt = true;
@@ -1667,18 +1739,19 @@ void tlobby_main::chat_input_keypress_callback(
 		const std::vector<user_info>& match_infos = lobby_info_.users();
 		std::vector<std::string> matches;
 
-		FOREACH(const AUTO& ui, match_infos) {
+		FOREACH(const AUTO & ui, match_infos)
+		{
 			if(ui.name != preferences::login()) {
 				matches.push_back(ui.name);
 			}
 		}
 		const bool line_start = utils::word_completion(text, matches);
 
-		if (matches.empty()) {
+		if(matches.empty()) {
 			return;
 		}
 
-		if (matches.size() == 1) {
+		if(matches.size() == 1) {
 			text.append(line_start ? ": " : " ");
 		} else {
 			std::string completion_list = utils::join(matches, " ");
@@ -1694,51 +1767,56 @@ void tlobby_main::game_filter_reload()
 {
 	lobby_info_.clear_game_filter();
 
-	FOREACH(const AUTO& s, utils::split(filter_text_->get_value(), ' ')) {
+	FOREACH(const AUTO & s, utils::split(filter_text_->get_value(), ' '))
+	{
 		lobby_info_.add_game_filter(new game_filter_general_string_part(s));
 	}
-	//TODO: make changing friend/ignore lists trigger a refresh
-	if (filter_friends_->get_value()) {
+	// TODO: make changing friend/ignore lists trigger a refresh
+	if(filter_friends_->get_value()) {
 		lobby_info_.add_game_filter(
-			new game_filter_value<bool, &game_info::has_friends>(true));
+				new game_filter_value<bool, &game_info::has_friends>(true));
 	}
-	if (filter_ignored_->get_value()) {
+	if(filter_ignored_->get_value()) {
 		lobby_info_.add_game_filter(
-			new game_filter_value<bool, &game_info::has_ignored>(false));
+				new game_filter_value<bool, &game_info::has_ignored>(false));
 	}
-	if (filter_slots_->get_value()) {
+	if(filter_slots_->get_value()) {
 		lobby_info_.add_game_filter(
-			new game_filter_value<size_t, &game_info::vacant_slots, std::greater<size_t> >(0));
+				new game_filter_value<size_t,
+									  &game_info::vacant_slots,
+									  std::greater<size_t> >(0));
 	}
 	lobby_info_.set_game_filter_invert(filter_invert_->get_value());
 }
 
 void tlobby_main::game_filter_keypress_callback(const SDLKey key)
 {
-	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
+	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		game_filter_reload();
 		update_gamelist_filter();
 	}
 }
 
-void tlobby_main::game_filter_change_callback(gui2::twidget* /*widget*/)
+void tlobby_main::game_filter_change_callback(gui2::twidget& /*widget*/)
 {
 	game_filter_reload();
 	update_gamelist_filter();
 }
 
-void tlobby_main::gamelist_change_callback(gui2::twindow &/*window*/)
+void tlobby_main::gamelist_change_callback(gui2::twindow& /*window*/)
 {
 	update_selected_game();
 }
 
-void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
+void tlobby_main::player_filter_callback(gui2::twidget& /*widget*/)
 {
 	player_list_.update_sort_icons();
-	preferences::set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
-	preferences::set_playerlist_sort_name(player_list_.sort_by_name->get_value());
+	preferences::set_playerlist_sort_relation(
+			player_list_.sort_by_relation->get_value());
+	preferences::set_playerlist_sort_name(
+			player_list_.sort_by_name->get_value());
 	player_list_dirty_ = true;
-	//window_->invalidate_layout();
+	// window_->invalidate_layout();
 }
 
 void tlobby_main::user_dialog_callback(user_info* info)
@@ -1747,15 +1825,15 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	lobby_delay_gamelist_update_guard g(*this);
 	dlg.show(window_->video());
 	delay_playerlist_update_ = true;
-	if (dlg.result_open_whisper()) {
+	if(dlg.result_open_whisper()) {
 		tlobby_chat_window* t = whisper_window_open(info->name, true);
 		switch_to_window(t);
 		window_->invalidate_layout();
 	}
 	selected_game_id_ = info->game_id;
-	//the commented out code below should be enough, but that'd delete the
-	//playerlist and the widget calling this callback, so instead the game
-	//will be selected on the netxt gamelist update.
+	// the commented out code below should be enough, but that'd delete the
+	// playerlist and the widget calling this callback, so instead the game
+	// will be selected on the next gamelist update.
 	/*
 	if (info->game_id != 0) {
 		for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
@@ -1768,19 +1846,18 @@ void tlobby_main::user_dialog_callback(user_info* info)
 		}
 	}
 	*/
-	//do not update here as it can cause issues with removing the widget
-	//from within it's event handler. Should get updated as soon as possible
-	//update_gamelist();
+	// do not update here as it can cause issues with removing the widget
+	// from within it's event handler. Should get updated as soon as possible
+	// update_gamelist();
 	delay_playerlist_update_ = false;
 	player_list_dirty_ = true;
 	network::send_data(config("refresh_lobby"), 0);
 }
 
-void tlobby_main::skip_replay_changed_callback(twidget* w)
+void tlobby_main::skip_replay_changed_callback(twidget& w)
 {
-	ttoggle_button* tb = dynamic_cast<ttoggle_button*>(w);
-	assert(tb);
-	preferences::set_skip_mp_replay(tb->get_value());
+	ttoggle_button& tb = dynamic_cast<ttoggle_button&>(w);
+	preferences::set_skip_mp_replay(tb.get_value());
 }
 
 } // namespace gui2

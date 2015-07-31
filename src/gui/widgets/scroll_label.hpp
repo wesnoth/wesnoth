@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,13 +17,15 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tlabel;
 class tspacer;
 
-namespace implementation {
-	struct tbuilder_scroll_label;
+namespace implementation
+{
+struct tbuilder_scroll_label;
 }
 
 /**
@@ -36,8 +38,8 @@ namespace implementation {
 class tscroll_label : public tscrollbar_container
 {
 	friend struct implementation::tbuilder_scroll_label;
-public:
 
+public:
 	tscroll_label();
 
 	/** See @ref tcontrol::set_label. */
@@ -63,10 +65,14 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, DISABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		COUNT
+	};
 
-//  It's not needed for now so keep it disabled, no definition exists yet.
-//	void set_state(const tstate state);
+	// It's not needed for now so keep it disabled, no definition exists yet.
+	// void set_state(const tstate state);
 
 	/**
 	 * Current state of the widget.
@@ -91,4 +97,3 @@ private:
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,12 +23,11 @@
 #include "value_translator.hpp"
 #include "../lua/lua_object.hpp"
 #include "../lua/core.hpp"
-#include "../../scripting/lua.hpp"
+#include "../../scripting/game_lua_kernel.hpp"
 
 #include "../../log.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/pointer_cast.hpp>
 
 #ifdef _MSC_VER
@@ -325,6 +324,7 @@ public:
 	}
 
 
+	using typesafe_aspect<T>::add_facet;
 	virtual bool add_facet(int pos, const config &cfg)
 	{
 		if (pos<0) {

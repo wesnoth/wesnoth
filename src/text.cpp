@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,12 +22,17 @@
 #include "gui/lib/types/point.hpp"
 #include "font.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "tstring.hpp"
 
 #include <boost/foreach.hpp>
 
 #include <cassert>
 #include <cstring>
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "video.hpp"
+#endif
 
 namespace font {
 
@@ -64,6 +69,8 @@ const unsigned ttext::STYLE_BOLD = TTF_STYLE_BOLD;
 const unsigned ttext::STYLE_ITALIC = TTF_STYLE_ITALIC;
 const unsigned ttext::STYLE_UNDERLINE = TTF_STYLE_UNDERLINE;
 
+static bool looks_like_url(const std::string & token);
+
 std::string escape_text(const std::string& text)
 {
 	std::string result;
@@ -81,12 +88,23 @@ std::string escape_text(const std::string& text)
 }
 
 ttext::ttext() :
+#if PANGO_VERSION_CHECK(1,22,0)
 	context_(pango_font_map_create_context(pango_cairo_font_map_get_default())),
+#else
+	context_(pango_cairo_font_map_create_context((
+		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default())))),
+#endif
 	layout_(pango_layout_new(context_)),
 	rect_(),
 	surface_(),
+#ifdef SDL_GPU
+	texture_(),
+#endif
 	text_(),
 	markedup_text_(false),
+	link_aware_(false),
+	link_color_(),
+	font_class_(font::FONT_SANS_SERIF),
 	font_size_(14),
 	font_style_(STYLE_NORMAL),
 	foreground_color_(0xFFFFFFFF), // solid white
@@ -117,6 +135,15 @@ ttext::ttext() :
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
 	cairo_font_options_set_hint_metrics(fo, CAIRO_HINT_METRICS_ON);
+#ifdef _WIN32
+	// Cairo on Windows (at least the latest available version from gtk.org
+	// as of 2014-02-22, version 1.10.2) has issues with ClearType resulting
+	// in glitchy anti-aliasing with CAIRO_ANTIALIAS_SUBPIXEL or
+	// CAIRO_ANTIALIAS_DEFAULT, but not CAIRO_ANTIALIAS_GRAY, so we use that
+	// as a workaround until the Windows package is updated to use a newer
+	// version of Cairo (see Wesnoth bug #21648).
+	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_GRAY);
+#endif
 	pango_cairo_context_set_font_options(context_, fo);
 	cairo_font_options_destroy(fo);
 }
@@ -140,6 +167,14 @@ surface ttext::render() const
 	rerender();
 	return surface_;
 }
+
+#ifdef SDL_GPU
+sdl::timage ttext::render_as_texture() const
+{
+	rerender();
+	return texture_;
+}
+#endif
 
 int ttext::get_width() const
 {
@@ -167,35 +202,33 @@ bool ttext::is_truncated() const
 
 unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 {
-	if(text.empty()) {
+	if (text.empty() || length_ == maximum_length_) {
 		return 0;
 	}
 
-	return insert_unicode(offset, utils::string_to_wstring(text));
-}
-
-bool ttext::insert_unicode(const unsigned offset, const wchar_t unicode)
-{
-	return (insert_unicode(offset, wide_string(1, unicode)) == 1);
-}
-
-unsigned ttext::insert_unicode(const unsigned offset, const wide_string& unicode)
-{
+	// do we really need that assert? utf8::insert will just append in this case, which seems fine
 	assert(offset <= length_);
 
-	if(length_ == maximum_length_) {
-		return 0;
+	unsigned len = utf8::size(text);
+	if (length_ + len > maximum_length_) {
+		len = maximum_length_ - length_;
 	}
-
-	const unsigned len = length_ + unicode.size() > maximum_length_
-		? maximum_length_ - length_  : unicode.size();
-
-	wide_string tmp = utils::string_to_wstring(text_);
-	tmp.insert(tmp.begin() + offset, unicode.begin(), unicode.begin() + len);
-
-	set_text(utils::wstring_to_string(tmp), false);
-
+	const utf8::string insert = text.substr(0, utf8::index(text, len));
+	utf8::string tmp = text_;
+	set_text(utf8::insert(tmp, offset, insert), false);
+	// report back how many characters were actually inserted (e.g. to move the cursor selection)
 	return len;
+}
+
+bool ttext::insert_unicode(const unsigned offset, ucs4::char_t unicode)
+{
+	return (insert_unicode(offset, ucs4::string(1, unicode)) == 1);
+}
+
+unsigned ttext::insert_unicode(const unsigned offset, const ucs4::string& unicode)
+{
+	const utf8::string insert = unicode_cast<utf8::string>(unicode);
+	return insert_text(offset, insert);
 }
 
 gui2::tpoint ttext::get_cursor_position(
@@ -242,6 +275,53 @@ gui2::tpoint ttext::get_cursor_position(
 	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
+std::string ttext::get_token(const gui2::tpoint & position, const char * delim) const
+{
+	recalculate();
+
+	// Get the index of the character.
+	int index, trailing;
+	if (!pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
+		position.y * PANGO_SCALE, &index, &trailing)) {
+		return "";
+	}
+
+	std::string txt = pango_layout_get_text(layout_);
+
+	std::string d(delim);
+
+	if (index < 0 || (static_cast<size_t>(index) >= txt.size()) || d.find(txt.at(index)) != std::string::npos) {
+		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
+	}
+
+	size_t l = index;
+	while (l > 0 && (d.find(txt.at(l-1)) == std::string::npos)) {
+		--l;
+	}
+
+	size_t r = index + 1;
+	while (r < txt.size() && (d.find(txt.at(r)) == std::string::npos)) {
+		++r;
+	}
+
+	return txt.substr(l,r-l);
+}
+
+std::string ttext::get_link(const gui2::tpoint & position) const
+{
+	if (!link_aware_) {
+		return "";
+	}
+
+	std::string tok = get_token(position, " \n\r\t");
+
+	if (looks_like_url(tok)) {
+		return tok;
+	} else {
+		return "";
+	}
+}
+
 gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 {
 	recalculate();
@@ -281,8 +361,8 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	if(markedup != markedup_text_ || text != text_) {
 		assert(layout_);
 
-		const wide_string wide = utils::string_to_wstring(text);
-		const std::string narrow = utils::wstring_to_string(wide);
+		const ucs4::string wide = unicode_cast<ucs4::string>(text);
+		const std::string narrow = unicode_cast<utf8::string>(wide);
 		if(text != narrow) {
 			ERR_GUI_L << "ttext::" << __func__
 					<< " text '" << text
@@ -309,6 +389,17 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	}
 
 	return true;
+}
+
+ttext& ttext::set_family_class(font::family_class fclass)
+{
+	if(fclass != font_class_) {
+		font_class_ = fclass;
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
 }
 
 ttext& ttext::set_font_size(const unsigned font_size)
@@ -339,6 +430,13 @@ ttext& ttext::set_foreground_color(const Uint32 color)
 		foreground_color_ = color;
 		surface_dirty_ = true;
 	}
+
+	return *this;
+}
+
+ttext &ttext::set_foreground_color(const SDL_Color color)
+{
+	set_foreground_color((color.r << 16) + (color.g << 8) + color.b);
 
 	return *this;
 }
@@ -435,11 +533,30 @@ ttext& ttext::set_maximum_length(const size_t maximum_length)
 	if(maximum_length != maximum_length_) {
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
-
-			wide_string tmp = utils::string_to_wstring(text_);
-			tmp.resize(maximum_length_);
-			set_text(utils::wstring_to_string(tmp), false);
+			utf8::string tmp = text_;
+			set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
+	}
+
+	return *this;
+}
+
+ttext& ttext::set_link_aware(bool b)
+{
+	if (link_aware_ != b) {
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+		link_aware_ = b;
+	}
+	return *this;
+}
+
+ttext& ttext::set_link_color(const std::string & color)
+{
+	if(color != link_color_) {
+		link_color_ = color;
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -495,7 +612,7 @@ void ttext::recalculate(const bool force) const
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
-		tfont font(get_font_families(), font_size_, font_style_);
+		tfont font(get_font_families(font_class_), font_size_, font_style_);
 		pango_layout_set_font_description(layout_, font.get());
 
 		if(font_style_ & ttext::STYLE_UNDERLINE) {
@@ -584,7 +701,7 @@ struct decode_table
 	}
 };
 
-static decode_table decode_table;
+static struct decode_table decode_table;
 
 
 #ifndef _WIN32
@@ -674,6 +791,9 @@ void ttext::rerender(const bool force) const
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			surface_buffer_, width, height, 32, stride,
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
+#ifdef SDL_GPU
+		texture_ = sdl::timage(surface_);
+#endif
 		cairo_destroy(cr);
 		cairo_surface_destroy(cairo_surface);
 	}
@@ -691,7 +811,47 @@ void ttext::create_surface_buffer(const size_t size) const
 	memset(surface_buffer_, 0, size);
 }
 
-bool ttext::set_markup(const std::string& text)
+bool ttext::set_markup(const std::string & text) {
+	if (!link_aware_) {
+		return set_markup_helper(text);
+	} else {
+		std::string delim = " \n\r\t";
+
+		// Tokenize according to these delimiters, and stream the results of `handle_token` on each token to get the new text.
+
+		std::stringstream ss;
+
+		int last_delim = -1;
+		for (size_t index = 0; index < text.size(); ++index) {
+			if (delim.find(text.at(index)) != std::string::npos) {
+				ss << handle_token(text.substr(last_delim + 1, index - last_delim - 1)); // want to include chars from range since last token, dont want to include any delimiters
+				ss << text.at(index);
+				last_delim = index;
+			}
+		}
+		if (last_delim < static_cast<int>(text.size()) - 1) {
+			ss << handle_token(text.substr(last_delim + 1, text.size() - last_delim - 1));
+		}
+
+		return set_markup_helper(ss.str());
+	}
+}
+
+static bool looks_like_url(const std::string & str)
+{
+	return (str.size() >= 8) && ((str.substr(0,7) == "http://") || (str.substr(0,8) == "https://"));
+}
+
+std::string ttext::handle_token(const std::string & token) const
+{
+	if (looks_like_url(token)) {
+		return "<span underline=\'single\' color=\'" + link_color_ + "\'>" + token + "</span>";
+	} else {
+		return token;
+	}
+}
+
+bool ttext::set_markup_helper(const std::string& text)
 {
 	if(pango_parse_markup(text.c_str(), text.size()
 			, 0, NULL, NULL, NULL, NULL)) {
@@ -720,10 +880,11 @@ bool ttext::set_markup(const std::string& text)
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string
-	 * is longer than the original.
+	 * is longer than the original. If this isn't the case then the
+	 * markup wasn't (only) broken by ampersands in the first place.
 	 */
-	if(text.size() != semi_escaped.size()
-			&& !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
+	if(text.size() == semi_escaped.size()
+			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
 				, 0, NULL, NULL, NULL, NULL)) {
 
 		/* Fixing the ampersands didn't work. */

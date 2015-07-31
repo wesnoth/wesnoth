@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,19 +17,21 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Base class for the wml generated messages.
  *
  * We have a separate sub class for left and right images.
  */
-class twml_message_
-	: public tdialog
+class twml_message_ : public tdialog
 {
 public:
-	twml_message_(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
+	twml_message_(const std::string& title,
+				  const std::string& message,
+				  const std::string& portrait,
+				  const bool mirror)
 		: title_(title)
 		, image_("")
 		, message_(message)
@@ -53,13 +55,13 @@ public:
 	 * @param maximum_length      The maximum length of the text.
 	 */
 	void set_input(const std::string& caption,
-			std::string* text, const unsigned maximum_length);
+				   std::string* text,
+				   const unsigned maximum_length);
 
-	void set_option_list(
-			const std::vector<std::string>& option_list, int* chosen_option);
+	void set_option_list(const std::vector<std::string>& option_list,
+						 int* chosen_option);
 
 private:
-
 	/** The title for the dialog. */
 	std::string title_;
 
@@ -94,7 +96,7 @@ private:
 	std::vector<std::string> option_list_;
 
 	/** The chosen option. */
-	int *chosen_option_;
+	int* chosen_option_;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
@@ -107,14 +109,15 @@ private:
 class twml_message_left : public twml_message_
 {
 public:
-	twml_message_left(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
+	twml_message_left(const std::string& title,
+					  const std::string& message,
+					  const std::string& portrait,
+					  const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -123,14 +126,15 @@ private:
 class twml_message_right : public twml_message_
 {
 public:
-	twml_message_right(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
+	twml_message_right(const std::string& title,
+					   const std::string& message,
+					   const std::string& portrait,
+					   const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -160,21 +164,20 @@ private:
  *                                Will be set to the chosen_option when the
  *                                dialog closes.
  */
-int show_wml_message(const bool left_side
-		, CVideo& video
-		, const std::string& title
-		, const std::string& message
-		, const std::string& portrait
-		, const bool mirror
-		, const bool has_input
-		, const std::string& input_caption
-		, std::string* input_text
-	    , const unsigned maximum_length
-		, const std::vector<std::string>& option_list
-		, int* chosen_option);
+int show_wml_message(const bool left_side,
+					 CVideo& video,
+					 const std::string& title,
+					 const std::string& message,
+					 const std::string& portrait,
+					 const bool mirror,
+					 const bool has_input,
+					 const std::string& input_caption,
+					 std::string* input_text,
+					 const unsigned maximum_length,
+					 const std::vector<std::string>& option_list,
+					 int* chosen_option);
 
 
 } // namespace gui2
 
 #endif
-

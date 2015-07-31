@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2015 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 
 #include <vector>
 
+#include <boost/shared_ptr.hpp>
 #include <mysql/mysql.h>
 
 // The [user_handler] section in the server configuration
@@ -93,8 +94,13 @@ class fuh : public user_handler {
 
 		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_extra_table_;
 
+		// std::unique_ptr would be better, as the object isn't actually shared
+		// boost::scoped_ptr cannot be returned, so we can't use that
+		// TODO C++11: switch to std::unique_ptr
+		typedef boost::shared_ptr<MYSQL_RES> mysql_result;
+
 		// Throws user_handler::error
-		MYSQL_RES* db_query(const std::string& query);
+		mysql_result db_query(const std::string& query);
 
 		// Throws user_handler::error via db_query()
 		std::string db_query_to_string(const std::string& query);

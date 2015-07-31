@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,26 +19,27 @@
 #include "gui/auxiliary/window_builder.hpp"
 #include "gui/auxiliary/placer.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include <list>
 
-typedef std::map< std::string, t_string > string_map;
+typedef std::map<std::string, t_string> string_map;
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 struct tbuilder_pane;
 } // namespace implementation
 
 class tgrid;
 
-class tpane
-	: public twidget
+class tpane : public twidget
 {
 	friend struct tpane_implementation;
-public:
 
+public:
 	struct titem
 	{
 
@@ -48,9 +49,7 @@ public:
 		tgrid* grid;
 	};
 
-	typedef
-		boost::function<bool(const titem&, const titem&)>
-		tcompare_functor;
+	typedef boost::function<bool(const titem&, const titem&)> tcompare_functor;
 
 	typedef boost::function<bool(const titem&)> tfilter_functor;
 
@@ -58,24 +57,16 @@ public:
 	explicit tpane(const tbuilder_grid_ptr item_builder);
 
 private:
-
 	explicit tpane(const implementation::tbuilder_pane& builder);
 
 public:
-
 	static tpane* build(const implementation::tbuilder_pane& builder);
 
 	/**
 	 * Creates a new item.
-	 *
-	 * @note At the moment it's a simple label nothing fancy or controlable by
-	 * the client code.
-	 *
-	 * @param label               The text on the label.
 	 */
-	unsigned create_item(
-			  const std::map<std::string, string_map>& item_data
-			, const std::map<std::string, std::string>& tags);
+	unsigned create_item(const std::map<std::string, string_map>& item_data,
+						 const std::map<std::string, std::string>& tags);
 
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
@@ -84,28 +75,25 @@ public:
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_children(surface& frame_buffer,
+									int x_offset,
+									int y_offset) OVERRIDE;
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE;
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/**
 	 * Sorts the contents of the pane.
@@ -161,7 +149,6 @@ public:
 	const tgrid* grid(const unsigned id) const;
 
 private:
-
 	/** The items in the pane. */
 	std::list<titem> items_;
 
@@ -202,10 +189,9 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_request_placement(
-			  tdispatcher& dispatcher
-			, const event::tevent event
-			, bool& handled);
+	void signal_handler_request_placement(tdispatcher& dispatcher,
+										  const event::tevent event,
+										  bool& handled);
 };
 
 } // namespace gui2

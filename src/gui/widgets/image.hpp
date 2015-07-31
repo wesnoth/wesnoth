@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,15 +17,14 @@
 
 #include "gui/widgets/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /** An image. */
 class timage : public tcontrol
 {
 public:
-
-	timage()
-		: tcontrol(COUNT)
+	timage() : tcontrol(COUNT)
 	{
 	}
 
@@ -60,8 +59,8 @@ public:
 private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
-public:
 
+public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
@@ -77,13 +76,15 @@ public:
 	bool disable_click_dismiss() const OVERRIDE;
 
 private:
-
 	/**
 	 * Possible states of the widget.
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		COUNT
+	};
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
@@ -92,4 +93,3 @@ private:
 } // namespace gui2
 
 #endif
-

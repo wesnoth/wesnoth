@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,6 +30,8 @@ namespace editor {
 
 	int auto_update_transitions();
 	void set_auto_update_transitions(int value);
+
+	//std::vector<std::string>* get_editor_history();
 
 	std::string default_dir();
 

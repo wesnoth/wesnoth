@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,31 +21,43 @@
 
 #include "vision.hpp"
 
+#include "../ai/lua/unit_advancements_aspect.hpp"
 #include "../attack_prediction.hpp"
+#include "../config_assign.hpp"
+#include "../dialogs.hpp"
 #include "../game_config.hpp"
 #include "../game_display.hpp"
-#include "../game_events.hpp"
+#include "game_events/manager.hpp"
+#include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
+#include "../game_data.hpp"
 #include "../gettext.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../mouse_handler_base.hpp"
-#include "../random.hpp"
+#include "../play_controller.hpp"
+#include "../random_new.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
+#include "../synced_checkup.hpp"
 #include "../team.hpp"
 #include "../tod_manager.hpp"
 #include "../unit.hpp"
 #include "../unit_abilities.hpp"
+#include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
+#include "../unit_helper.hpp"
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
 #include "../wml_exception.hpp"
 
+#include <boost/foreach.hpp>
+
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define WRN_NG LOG_STREAM(err, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_config("config");
@@ -71,6 +83,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 	backstab_pos(false),
 	swarm(false),
 	firststrike(false),
+	disable(false),
 	experience(u.experience()),
 	max_experience(u.max_experience()),
 	level(u.level()),
@@ -115,11 +128,16 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
+		{
+			const int distance = distance_between(u_loc, opp_loc);
+			const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
+			disable = weapon->get_special_bool("disable") || out_of_range;
+		}
 
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
-			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
+			strcmp(opp.undead_variation().c_str(), "null") && !resources::gameboard->map().is_village(opp_loc);
 
 		if (plagues) {
 			plague_type = (*plague_specials.front().first)["type"].str();
@@ -129,7 +147,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 
 		// Compute chance to hit.
 		chance_to_hit = opp.defense_modifier(
-			resources::game_map->get_terrain(opp_loc)) + weapon->accuracy() -
+			resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy() -
 			(opp_weapon ? opp_weapon->parry() : 0);
 		if(chance_to_hit > 100) {
 			chance_to_hit = 100;
@@ -145,7 +163,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		// Get the damage multiplier applied to the base damage of the weapon.
 		int damage_multiplier = 100;
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(u_loc, u.alignment(), u.is_fearless());
+		damage_multiplier += combat_modifier(resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 		// Leadership bonus.
 		int leader_bonus = 0;
 		if (under_leadership(units, u_loc, &leader_bonus).valid())
@@ -182,6 +200,121 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 	}
 }
 
+battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
+	   const attack_type* att_weapon, bool attacking,
+	   const unit_type* opp_type,
+	   const attack_type* opp_weapon,
+	   unsigned int opp_terrain_defense,
+	   int lawful_bonus) :
+	weapon(att_weapon),
+	attack_num(-2),  // This is and stays invalid. Always use weapon, when using this constructor.
+	is_attacker(attacking),
+	is_poisoned(false),
+	is_slowed(false),
+	slows(false),
+	drains(false),
+	petrifies(false),
+	plagues(false),
+	poisons(false),
+	backstab_pos(false),
+	swarm(false),
+	firststrike(false),
+	disable(false),
+	experience(0),
+	max_experience(0),
+	level(0),
+	rounds(1),
+	hp(0),
+	max_hp(0),
+	chance_to_hit(0),
+	damage(0),
+	slow_damage(0),
+	drain_percent(0),
+	drain_constant(0),
+	num_blows(0),
+	swarm_min(0),
+	swarm_max(0),
+	plague_type()
+{
+	if (!u_type || !opp_type) {
+		return;
+	}
+
+	// Get the current state of the unit.
+	if (u_type->hitpoints() < 0) {
+		hp = 0;
+	} else {
+		hp = u_type->hitpoints();
+	}
+	max_experience = u_type->experience_needed();
+	level = (u_type->level());
+	max_hp = (u_type->hitpoints());
+
+	// Get the weapon characteristics, if any.
+	if (weapon) {
+		weapon->set_specials_context(map_location::null_location(), attacking);
+		if (opp_weapon) {
+			opp_weapon->set_specials_context(map_location::null_location(), !attacking);
+		}
+		slows = weapon->get_special_bool("slow");
+		drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool("drains");
+		petrifies = weapon->get_special_bool("petrifies");
+		poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool("poison");
+		rounds = weapon->get_specials("berserk").highest("value", 1).first;
+		firststrike = weapon->get_special_bool("firststrike");
+		disable = weapon->get_special_bool("disable");
+
+		unit_ability_list plague_specials = weapon->get_specials("plague");
+		plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
+			strcmp(opp_type->undead_variation().c_str(), "null");
+
+		if (plagues) {
+			plague_type = (*plague_specials.front().first)["type"].str();
+			if (plague_type.empty()) {
+				plague_type = u_type->base_id();
+			}
+		}
+
+		signed int cth = 100 - opp_terrain_defense + weapon->accuracy() -
+				(opp_weapon ? opp_weapon->parry() : 0);
+		cth = std::min(100, cth);
+		cth = std::max(0, cth);
+		chance_to_hit = cth;
+
+		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
+		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
+		chance_to_hit = cth_effects.get_composite_value();
+
+		int base_damage = weapon->modified_damage(backstab_pos);
+		int damage_multiplier = 100;
+		damage_multiplier += generic_combat_modifier(lawful_bonus, u_type->alignment(),
+				u_type->musthave_status("fearless"));
+		damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
+
+		damage = round_damage(base_damage, damage_multiplier, 10000);
+		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+
+		if (drains) {
+			unit_ability_list drain_specials = weapon->get_specials("drains");
+
+			// Compute the drain percent (with 50% as the base for backward compatibility)
+			unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
+			drain_percent = drain_percent_effects.get_composite_value();
+		}
+
+		// Add heal_on_hit (the drain constant)
+		unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
+		unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
+		drain_constant += heal_on_hit_effects.get_composite_value();
+
+		drains = drain_constant || drain_percent;
+
+		// Compute the number of blows and handle swarm.
+		weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
+		swarm = swarm_min != swarm_max;
+		num_blows = calc_blows(hp);
+	}
+}
 
 		/* battle_context */
 
@@ -228,6 +361,10 @@ battle_context::battle_context(const unit_map& units,
 		defender_stats_ = new battle_context_unit_stats(defender, defender_loc, defender_weapon, false,
 				attacker, attacker_loc, adef, units);
 	}
+
+	// There have been various bugs where only one of these was set
+	assert(attacker_stats_);
+	assert(defender_stats_);
 }
 
 battle_context::battle_context(const battle_context_unit_stats &att,
@@ -353,6 +490,17 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
 			attacker_loc, defender_loc, prev_def);
+		const attack_type *def_weapon = *defender_weapon >= 0 ? &defender.attacks()[*defender_weapon] : NULL;
+		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[0],
+						true, defender, defender_loc, def_weapon, units);
+		if (attacker_stats_->disable) {
+			delete attacker_stats_;
+			attacker_stats_ = NULL;
+			return -1;
+		}
+		const attack_type &att = attacker.attacks()[choices[0]];
+		defender_stats_ = new battle_context_unit_stats(defender, defender_loc, *defender_weapon, false,
+			attacker, attacker_loc, &att, units);
 		return choices[0];
 	}
 
@@ -372,6 +520,11 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			}
 			attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[i],
 				true, defender, defender_loc, def, units);
+			if (attacker_stats_->disable) {
+				delete attacker_stats_;
+				attacker_stats_ = NULL;
+				continue;
+			}
 			defender_stats_ = new battle_context_unit_stats(defender, defender_loc, def_weapon, false,
 				attacker, attacker_loc, &att, units);
 			attacker_combatant_ = new combatant(*attacker_stats_);
@@ -405,6 +558,10 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 	attacker_stats_ = best_att_stats;
 	defender_stats_ = best_def_stats;
 
+	// These currently mean the same thing, but assumptions like that have been broken before
+	if (!defender_stats_ || !attacker_stats_) {
+		return -1;
+	}
 	*defender_weapon = defender_stats_->attack_num;
 	return attacker_stats_->attack_num;
 }
@@ -430,27 +587,33 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 	}
 	if (choices.empty())
 		return -1;
-	if (choices.size() == 1)
-		return choices[0];
+	if (choices.size() == 1) {
+		const battle_context_unit_stats def_stats(defender, defender_loc,
+				choices[0], false, attacker, attacker_loc, &att, units);
+		return (def_stats.disable) ? -1 : choices[0];
+	}
 
 	// Multiple options:
 	// First pass : get the best weight and the minimum simple rating for this weight.
 	// simple rating = number of blows * damage per blows (resistance taken in account) * cth * weight
-	// Elligible attacks for defense should have a simple rating greater or equal to this weight.
+	// Eligible attacks for defense should have a simple rating greater or equal to this weight.
 
-	double max_weight = 0.0;
 	int min_rating = 0;
+	{
+		double max_weight = 0.0;
 
-	for (i = 0; i < choices.size(); ++i) {
-		const attack_type &def = defender.attacks()[choices[i]];
-		if (def.defense_weight() >= max_weight) {
-			max_weight = def.defense_weight();
-			const battle_context_unit_stats def_stats(defender, defender_loc,
-					choices[i], false, attacker, attacker_loc, &att, units);
-			int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
-					def_stats.chance_to_hit * def.defense_weight());
-			if (def.defense_weight() > max_weight || rating < min_rating ) {
-				min_rating = rating;
+		for (i = 0; i < choices.size(); ++i) {
+			const attack_type &def = defender.attacks()[choices[i]];
+			if (def.defense_weight() >= max_weight) {
+				const battle_context_unit_stats def_stats(defender, defender_loc,
+						choices[i], false, attacker, attacker_loc, &att, units);
+				if (def_stats.disable) continue;
+				max_weight = def.defense_weight();
+				int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
+						def_stats.chance_to_hit * def.defense_weight());
+				if (def.defense_weight() > max_weight || rating < min_rating ) {
+					min_rating = rating;
+				}
 			}
 		}
 	}
@@ -462,7 +625,11 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 				true, defender, defender_loc, &def, units);
 		battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
 				attacker, attacker_loc, &att, units);
-
+		if (def_stats->disable) {
+			delete att_stats;
+			delete def_stats;
+			continue;
+		}
 		combatant *att_comb = new combatant(*att_stats);
 		combatant *def_comb = new combatant(*def_stats, prev_def);
 		att_comb->fight(*def_comb);
@@ -489,7 +656,7 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 		}
 	}
 
-	return defender_stats_->attack_num;
+	return defender_stats_ ? defender_stats_->attack_num : -1;
 }
 
 
@@ -648,10 +815,10 @@ namespace {
 		config& a_weapon_cfg = ev_data.add_child("first");
 		config& d_weapon_cfg = ev_data.add_child("second");
 		if(a_stats_->weapon != NULL && a_.valid()) {
-			a_weapon_cfg = a_stats_->weapon->get_cfg();
+			a_stats_->weapon->write(a_weapon_cfg);
 		}
 		if(d_stats_->weapon != NULL && d_.valid()) {
-			d_weapon_cfg = d_stats_->weapon->get_cfg();
+			d_stats_->weapon->write(d_weapon_cfg);
 		}
 		if(a_weapon_cfg["name"].empty()) {
 			a_weapon_cfg["name"] = "none";
@@ -661,11 +828,11 @@ namespace {
 		}
 		if(n == "attack_end") {
 			// We want to fire attack_end event in any case! Even if one of units was removed by WML
-			game_events::fire(n, a_.loc_, d_.loc_, ev_data);
+			resources::game_events->pump().fire(n, a_.loc_, d_.loc_, ev_data);
 			return;
 		}
 		const int defender_side = d_.get_unit().side();
-		game_events::fire(n, game_events::entity_location(a_.loc_, a_.id_),
+		resources::game_events->pump().fire(n, game_events::entity_location(a_.loc_, a_.id_),
 			game_events::entity_location(d_.loc_, d_.id_), ev_data);
 
 		// The event could have killed either the attacker or
@@ -724,8 +891,8 @@ namespace {
 		int &abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
 		bool &update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
 
-		int ran_num = get_random();
-		bool hits = (ran_num % 100) < attacker.cth_;
+		int ran_num = random_new::generator->get_random_int(0,99);
+		bool hits = (ran_num < attacker.cth_);
 
 		int damage = 0;
 		if (hits) {
@@ -733,15 +900,33 @@ namespace {
 			resources::gamedata->get_variable("damage_inflicted") = damage;
 		}
 
+
 		// Make sure that if we're serializing a game here,
 		// we got the same results as the game did originally.
-		const config *ran_results = get_random_results();
-		if (ran_results)
+		const config local_results = config_of("chance", attacker.cth_)("hits", hits)("damage", damage);
+		config replay_results;
+		bool equals_replay = checkup_instance->local_checkup(local_results, replay_results);
+		if (!equals_replay)
 		{
-			int results_chance = (*ran_results)["chance"];
-			bool results_hits = (*ran_results)["hits"].to_bool();
-			int results_damage = (*ran_results)["damage"];
 
+			int results_chance = replay_results["chance"];
+			bool results_hits = replay_results["hits"].to_bool();
+			int results_damage = replay_results["damage"];
+			/*
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< " replay data differs from local calculated data:"
+				<< " chance to hit in data source: " << results_chance
+				<< " chance to hit in calculated:  " << attacker.cth_
+				<< " chance to hit in data source: " << results_chance
+				<< " chance to hit in calculated:  " << attacker.cth_
+				;
+
+				attacker.cth_ = results_chance;
+				hits = results_hits;
+				damage = results_damage;
+
+				OOS_error_ = true;
+				*/
 			if (results_chance != attacker.cth_)
 			{
 				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
@@ -811,7 +996,8 @@ namespace {
 				}
 			}
 
-			unit_display::unit_attack(attacker.loc_, defender.loc_, damage,
+			unit_display::unit_attack(game_display::get_singleton(), *resources::gameboard,
+				attacker.loc_, defender.loc_, damage,
 				*attacker_stats->weapon, defender_stats->weapon,
 				abs_n, float_text.str(), drains_damage, "");
 		}
@@ -828,23 +1014,14 @@ namespace {
 				: statistics::attack_context::MISSES, damage_done, drains_damage);
 		}
 
-		if (!ran_results)
-		{
-			log_scope2(log_engine, "setting random results");
-			config cfg;
-			cfg["hits"] = hits;
-			cfg["dies"] = dies;
-			cfg["unit_hit"] = "defender";
-			cfg["damage"] = damage;
-			cfg["chance"] = attacker.cth_;
 
-			set_random_results(cfg);
-		}
-		else
+		replay_results.clear();
+		// there was also a attribute cfg["unit_hit"] which was never used so i deleted.
+		equals_replay = checkup_instance->local_checkup(config_of("dies", dies), replay_results);
+		if (!equals_replay)
 		{
-			bool results_dies = (*ran_results)["dies"].to_bool();
-			if (results_dies != dies)
-			{
+			bool results_dies = replay_results["dies"].to_bool();
+
 				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 					<< ": the data source says the "
 					<< (attacker_turn ? "defender" : "attacker") << ' '
@@ -854,10 +1031,8 @@ namespace {
 					<< " (over-riding game calculations with data source results)\n";
 				dies = results_dies;
 				// Set hitpoints to 0 so later checks don't invalidate the death.
-				// Maybe set to > 0 for the else case to avoid more errors?
 				if (results_dies) defender.get_unit().set_hitpoints(0);
 				OOS_error_ = true;
-			}
 		}
 
 		if (hits)
@@ -922,7 +1097,7 @@ namespace {
 				update_fog = true;
 				attacker.n_attacks_ = 0;
 				defender.n_attacks_ = -1; // Petrified.
-				game_events::fire("petrified", defender.loc_, attacker.loc_);
+				resources::game_events->pump().fire("petrified", defender.loc_, attacker.loc_);
 				refresh_bc();
 			}
 		}
@@ -955,9 +1130,9 @@ namespace {
 		// get weapon info for last_breath and die events
 		config dat;
 		config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ?
-			attacker_stats->weapon->get_cfg() : config();
+			attacker_stats->weapon->to_config() : config();
 		config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
-			defender_stats->weapon->get_cfg() : config();
+			defender_stats->weapon->to_config() : config();
 		if (a_weapon_cfg["name"].empty())
 			a_weapon_cfg["name"] = "none";
 		if (d_weapon_cfg["name"].empty())
@@ -965,7 +1140,7 @@ namespace {
 		dat.add_child("first",  d_weapon_cfg);
 		dat.add_child("second", a_weapon_cfg);
 
-		game_events::fire("last breath", death_loc, attacker_loc, dat);
+		resources::game_events->pump().fire("last breath", death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -982,7 +1157,7 @@ namespace {
 				attacker.loc_, &attacker.get_unit());
 		}
 
-		game_events::fire("die", death_loc, attacker_loc, dat);
+		resources::game_events->pump().fire("die", death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -1154,13 +1329,13 @@ namespace {
 
 		if (a_.valid()) {
 			unit &u = a_.get_unit();
-			u.set_standing();
+			u.anim_comp().set_standing();
 			u.set_experience(u.experience() + a_.xp_);
 		}
 
 		if (d_.valid()) {
 			unit &u = d_.get_unit();
-			u.set_standing();
+			u.anim_comp().set_standing();
 			u.set_experience(u.experience() + d_.xp_);
 		}
 
@@ -1190,22 +1365,168 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 }
 
 
-unit get_advanced_unit(const unit &u, const std::string& advance_to)
+
+namespace
+{
+	class unit_advancement_choice : public mp_sync::user_choice
+	{
+	public:
+		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect* ai_advancement, bool force_dialog)
+			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement), force_dialog_(force_dialog)
+		{
+		}
+
+		virtual ~unit_advancement_choice()
+		{
+		}
+
+		virtual config query_user(int /*side*/) const
+		{
+			//the 'side' parameter might differ from side_num_-
+			int res = 0;
+			team t = (*resources::teams)[side_num_ - 1];
+			//i wonder how this got included here ?
+			bool is_mp = network::nconnections() != 0;
+			bool is_current_side = resources::controller->current_side() == side_num_;
+			//note, that the advancements for networked sides are also determined on the current playing side.
+
+			//to make mp games equal we only allow selecting advancements to the current side.
+			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
+			if(!non_interactive() && (force_dialog_ || (t.is_local_human() && !t.is_idle() && (is_current_side || !is_mp))))
+			{
+				res = dialogs::advance_unit_dialog(loc_);
+			}
+			else if(t.is_local_ai() || t.is_network_ai() || t.is_empty())
+			{
+				res = rand() % nb_options_;
+
+				//if ai_advancement_ is the default advancement the following code will
+				//have no effect because get_advancements returns an empty list.
+				if(ai_advancement_ != NULL)
+				{
+					unit_map::iterator u = resources::units->find(loc_);
+					const std::vector<std::string>& options = u->advances_to();
+					const std::vector<std::string>& allowed = ai_advancement_->get_advancements(u);
+
+					for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
+						if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
+							res = a - options.begin();
+							break;
+						}
+					}
+				}
+
+			}
+			else
+			{
+				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
+				//because it's a mp game and it's not his turn.
+				//note that it doesn't matter whether we call random_new::generator->next_random() or rand().
+				res = random_new::generator->get_random_int(0, nb_options_-1);
+			}
+			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
+			config retv;
+			retv["value"] = res;
+			return retv;
+
+		}
+		virtual config random_choice(int /*side*/) const
+		{
+			config retv;
+			retv["value"] = 0;
+			return retv;
+		}
+	private:
+		const map_location loc_;
+		int nb_options_;
+		int side_num_;
+		const ai::unit_advancements_aspect* ai_advancement_;
+		bool force_dialog_;
+	};
+}
+
+/*
+advances the unit and stores data in the replay (or reads data from replay).
+*/
+void advance_unit_at(const advance_unit_params& params)
+{
+	//i just don't want infinite loops...
+	// the 20 is picked rather randomly.
+	for(int advacment_number = 0; advacment_number < 20; advacment_number++)
+	{
+		unit_map::iterator u = resources::units->find(params.loc_);
+		//this implies u.valid()
+		if(!unit_helper::will_certainly_advance(u)) {
+			return;
+		}
+
+		if(params.fire_events_)
+		{
+			LOG_NG << "Firing pre_advance event at " << params.loc_ <<".\n";
+			resources::game_events->pump().fire("pre_advance", params.loc_);
+			//TODO: maybe use id instead of location here ?.
+			u = resources::units->find(params.loc_);
+			if(!unit_helper::will_certainly_advance(u))
+			{
+				LOG_NG << "pre_advance event aborted advancing.\n";
+				return;
+			}
+		}
+		//we don't want to let side 1 decide it during start/prestart.
+		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
+		config selected = mp_sync::get_user_choice("choose",
+			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.ai_advancements_, params.force_dialog_), side_for);
+		//calls actions::advance_unit.
+		bool result = dialogs::animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
+
+		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
+		u = resources::units->find(params.loc_);
+		// level 10 unit gives 80 XP and the highest mainline is level 5
+		if (u.valid() && u->experience() > 80)
+		{
+			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
+		}
+	}
+	ERR_NG << "unit at " << params.loc_ << "tried to advance more than 20 times. Advancing was aborted" << std::endl;
+}
+
+
+static void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement = ai::unit_advancements_aspect())
+{ advance_unit_at(advance_unit_params(loc).ai_advancements(ai_advancement)); }
+
+void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
+                 int attack_with, int defend_with, bool update_display,
+				 const ai::unit_advancements_aspect& ai_advancement)
+{
+	attack_unit(attacker, defender, attack_with, defend_with, update_display);
+	unit_map::const_iterator atku = resources::units->find(attacker);
+	if (atku != resources::units->end()) {
+		advance_unit_at(attacker, ai_advancement);
+	}
+
+	unit_map::const_iterator defu = resources::units->find(defender);
+	if (defu != resources::units->end()) {
+		advance_unit_at(defender, ai_advancement);
+	}
+}
+
+
+unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
 {
 	const unit_type *new_type = unit_types.find(advance_to);
 	if (!new_type) {
 		throw game::game_error("Could not find the unit being advanced"
 			" to: " + advance_to);
 	}
-	unit new_unit(u);
-	new_unit.set_experience(new_unit.experience() - new_unit.max_experience());
-	new_unit.advance_to(*new_type);
-	new_unit.heal_all();
-	new_unit.set_state(unit::STATE_POISONED, false);
-	new_unit.set_state(unit::STATE_SLOWED, false);
-	new_unit.set_state(unit::STATE_PETRIFIED, false);
-	new_unit.set_user_end_turn(false);
-	new_unit.set_hidden(false);
+	unit_ptr new_unit(new unit(u));
+	new_unit->set_experience(new_unit->experience() - new_unit->max_experience());
+	new_unit->advance_to(*new_type);
+	new_unit->heal_all();
+	new_unit->set_state(unit::STATE_POISONED, false);
+	new_unit->set_state(unit::STATE_SLOWED, false);
+	new_unit->set_state(unit::STATE_PETRIFIED, false);
+	new_unit->set_user_end_turn(false);
+	new_unit->set_hidden(false);
 	return new_unit;
 }
 
@@ -1213,11 +1534,11 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 /**
  * Returns the AMLA-advanced version of a unit (with traits and items retained).
  */
-unit get_amla_unit(const unit &u, const config &mod_option)
+unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 {
-	unit amla_unit(u);
-	amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
-	amla_unit.add_modification("advance", mod_option);
+	unit_ptr amla_unit(new unit(u));
+	amla_unit->set_experience(amla_unit->experience() - amla_unit->max_experience());
+	amla_unit->add_modification("advance", mod_option);
 	return amla_unit;
 }
 
@@ -1236,7 +1557,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	if(fire_event)
 	{
 		LOG_NG << "Firing advance event at " << loc <<".\n";
-		game_events::fire("advance",loc);
+		resources::game_events->pump().fire("advance",loc);
 
 		if (!u.valid() || u->experience() < u->max_experience() ||
 			u->type_id() != original_type)
@@ -1255,25 +1576,25 @@ void advance_unit(map_location loc, const std::string &advance_to,
 
 	// Create the advanced unit.
 	bool use_amla = mod_option != NULL;
-	unit new_unit = use_amla ? get_amla_unit(*u, *mod_option) :
+	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *mod_option) :
 	                           get_advanced_unit(*u, advance_to);
 	if ( !use_amla )
 	{
-		statistics::advance_unit(new_unit);
-		preferences::encountered_units().insert(new_unit.type_id());
-		LOG_CF << "Added '" << new_unit.type_id() << "' to the encountered units.\n";
+		statistics::advance_unit(*new_unit);
+		preferences::encountered_units().insert(new_unit->type_id());
+		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
 	}
-	u = resources::units->replace(loc, new_unit).first;
+	u = resources::units->replace(loc, *new_unit).first;
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;
-	clearer.clear_unit(loc, new_unit);
+	clearer.clear_unit(loc, *new_unit);
 
 	// "post_advance" event.
 	if(fire_event)
 	{
 		LOG_NG << "Firing post_advance event at " << loc << ".\n";
-		game_events::fire("post_advance",loc);
+		resources::game_events->pump().fire("post_advance",loc);
 	}
 
 	// "sighted" event(s).
@@ -1289,7 +1610,7 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
-		return map_location::null_location;
+		return map_location::null_location();
 	}
 	unit_ability_list abil = un->get_abilities("leadership");
 	if(bonus) {
@@ -1298,24 +1619,29 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
 	return abil.highest("value").second;
 }
 
-int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
+int combat_modifier(const unit_map & units, const gamemap & map, const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless)
 {
 	const tod_manager & tod_m = *resources::tod_manager;
+	int lawful_bonus = tod_m.get_illuminated_time_of_day(units, map, loc).lawful_bonus;
+	return generic_combat_modifier(lawful_bonus, alignment, is_fearless);
+}
 
+int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment,
+                            bool is_fearless) {
 	int bonus;
-	switch(alignment) {
-		case unit_type::LAWFUL:
-			bonus = tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
+	switch(alignment.v) {
+		case unit_type::ALIGNMENT::LAWFUL:
+			bonus = lawful_bonus;
 			break;
-		case unit_type::NEUTRAL:
+		case unit_type::ALIGNMENT::NEUTRAL:
 			bonus = 0;
 			break;
-		case unit_type::CHAOTIC:
-			bonus = -tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
+		case unit_type::ALIGNMENT::CHAOTIC:
+			bonus = -lawful_bonus;
 			break;
-		case unit_type::LIMINAL:
-			bonus = -abs(tod_m.get_illuminated_time_of_day(loc).lawful_bonus);
+		case unit_type::ALIGNMENT::LIMINAL:
+			bonus = -abs(lawful_bonus);
 			break;
 		default:
 			bonus = 0;

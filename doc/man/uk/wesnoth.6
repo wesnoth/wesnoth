@@ -61,16 +61,11 @@ wesnoth \- Битва за Веснот, покрокова стратегічн
 Ідентифікатор сценарію з зазначеної кампанії. За умовчанням це перший
 сценарій.
 .TP 
-\fB\-\-config\-dir\fP\fI\ назва\fP
-змінює теку конфігурації користувача на \fIname\fP в $HOME або "My
-Documents\eMy Games" для Windows. Ви також можете вказати абсолютний шлях до
-директорії конфігурації поза межами $HOME чи "My Documents\eMy Games"
-.TP 
-\fB\-\-config\-path\fP
-виводить шлях теки налаштувань користувача та виходить.
-.TP 
 \fB\-\-data\-dir <тека>\fP
 перевизначає теку даних вказаною текою
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 увімкнути додаткові команди в грі (див. wiki\-сторінку на сайті
@@ -183,6 +178,24 @@ http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 \fB\-t, \-\-test\fP
 стартує гру в малому тестовому сценарії.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+виводить шлях теки налаштувань користувача та виходить.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 припускає, що кеш коректний. (небезпечно)
 .TP 
@@ -223,6 +236,10 @@ http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 запустити гру без GUI. Повинен вказуватися перед \fB\-\-multiplayer\fP для

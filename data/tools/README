@@ -38,15 +38,15 @@ easy.
 This tool lifts WML from older dialects to current and performs sanity checks.
 See the header comment of wmllint for a description and invocation options.
 
-=== wmllint_gui ===
+=== GUI.pyw ===
 
-A simple GUI interface for wmllint, to aid WML developers frightened of
-the command line.
+A Tkinter based GUI interface for wmllint, wmlscope and wmllint, to aid WML
+developers frightened of the command line.
 
 === wmlscope ===
 
 A WML cross-reference checker.  Normally you'll use this to list
-unresolved symbols., if any.  See the header comment of wmlscope for a
+unresolved symbols, if any.  See the header comment of wmlscope for a
 description and invocation options.
 
 === wmlmove ===
@@ -74,9 +74,14 @@ Presently this generates a table suitable for wiki inclusion.
 
 === terrain2wiki.py ===
 
-A script to create the "Terrain Table" on the TerrainLettersWML wiki page.
+A script to create the "Terrain Table" on the TerrainCodeTableWML wiki page.
 Run this and splice the output into the wiki whenever you add a new
 terrain type to mainline.
+
+=== campaign2wiki.py ===
+
+A script that generates general information about mainline campaigns and
+outputs wiki-ready output
 
 == Python API ==
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,12 +19,15 @@
 
 #include "movetype.hpp"
 
+#include "game_board.hpp"
+#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "resources.hpp"
 #include "terrain_translation.hpp"
+#include "terrain_type_data.hpp"
 #include "unit_types.hpp" // for attack_type
 
+#include <boost/assign.hpp>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
@@ -280,13 +283,17 @@ int movetype::terrain_info::data::calc_value(
 			   << " depth " << recurse_count << '\n';
 		return params_.default_value;
 	}
-	assert(resources::game_map);
-	gamemap & map = *resources::game_map;
+
+	tdata_cache tdata;
+	if (game_config_manager::get()){
+		tdata = game_config_manager::get()->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
+	}
+	assert(tdata);
 
 	// Get a list of underlying terrains.
 	const t_translation::t_list & underlying = params_.use_move ?
-			map.underlying_mvt_terrain(terrain) :
-			map.underlying_def_terrain(terrain);
+			tdata->underlying_mvt_terrain(terrain) :
+			tdata->underlying_def_terrain(terrain);
 	assert(!underlying.empty());
 
 
@@ -295,7 +302,7 @@ int movetype::terrain_info::data::calc_value(
 		// This is not an alias; get the value directly.
 		int result = params_.default_value;
 
-		const std::string & id = map.get_terrain_info(terrain).id();
+		const std::string & id = tdata->get_terrain_info(terrain).id();
 		if (const config::attribute_value *val = cfg_.get(id)) {
 			// Read the value from our config.
 			result = val->to_int(params_.default_value);
@@ -729,6 +736,15 @@ movetype::movetype(const movetype & that) :
 {
 }
 
+/**
+ * Checks if we have a defense cap (nontrivial min value) for any of the given terrain types.
+ */
+bool movetype::has_terrain_defense_caps(const std::set<t_translation::t_terrain> & ts) const {
+	BOOST_FOREACH(const t_translation::t_terrain & t, ts)
+		if (defense_.capped(t))
+			return true;
+	return false;
+}
 
 /**
  * Merges the given config over the existing data.
@@ -758,6 +774,11 @@ void movetype::merge(const config & new_cfg, bool overwrite)
 	flying_ = new_cfg["flying"].to_bool(flying_);
 }
 
+/**
+ * The set of strings defining effects which apply to movetypes.
+ */
+const std::set<std::string> movetype::effects = boost::assign::list_of("movement_costs")
+	("vision_costs")("jamming_costs")("defense")("resistance");
 
 /**
  * Writes the movement type data to the provided config.

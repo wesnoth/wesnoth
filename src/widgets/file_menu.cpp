@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,23 +24,40 @@
 
 namespace {
 	std::vector<std::string> empty_string_vector;
+
+
+	std::string uniform_path(const std::string& path)
+	{
+#ifdef _WIN32
+		std::string res = path;
+		std::replace(res.begin(), res.end(), '/', '\\');
+		return res;
+#else
+		return path;
+#endif
+	}
+
 }
 
 namespace gui {
 
 static const std::string dir_picture("misc/folder-icon.png");
 static const std::string path_up("..");
+#ifdef _WIN32
+const char file_menu::path_delim('\\');
+#else
 const char file_menu::path_delim('/');
+#endif
 
 file_menu::file_menu(CVideo &disp, std::string start_file)
 	: menu(disp, empty_string_vector, false),
-	  current_dir_(get_path(start_file)),
+	  current_dir_(uniform_path(get_path(start_file))),
 	  chosen_file_(start_file), last_selection_(-1),
 	  type_a_head_(-1)
 {
 	// If the start file is not a file or directory, use the root.
-	if((!file_exists(chosen_file_) && !::is_directory(chosen_file_))
-		|| !::is_directory(current_dir_)) {
+	if((!filesystem::file_exists(chosen_file_) && !::filesystem::is_directory(chosen_file_))
+		|| !::filesystem::is_directory(current_dir_)) {
 		current_dir_ = path_delim;
 		chosen_file_ = current_dir_;
 	}
@@ -61,11 +78,11 @@ void file_menu::display_current_files() {
 	for (it = dirs_in_current_dir_.begin(); it != dirs_in_current_dir_.end(); ++it) {
 		// Add an image to show that these are directories.
 		std::stringstream ss;
-		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << *it;
+		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << font::NULL_MARKUP << *it;
 		to_show.push_back(ss.str());
 	}
 	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); ++it) {
-		const std::string display_string = COLUMN_SEPARATOR + *it;
+		const std::string display_string = COLUMN_SEPARATOR + std::string(1, font::NULL_MARKUP) + *it;
 		to_show.push_back(display_string);
 	}
 	const int menu_font_size = font::SIZE_NORMAL; // Known from menu.cpp.
@@ -83,7 +100,7 @@ void file_menu::display_current_files() {
 }
 
 int file_menu::delete_chosen_file() {
-	const int ret = remove(chosen_file_.c_str());
+	const int ret = filesystem::delete_file(chosen_file_);
 	if (ret == -1) {
 	//	gui2::show_transient_message(disp_.video(), "", _("Deletion of the file failed."));
 	}
@@ -96,7 +113,7 @@ int file_menu::delete_chosen_file() {
 }
 
 bool file_menu::make_directory(const std::string& subdir_name) {
-	bool ret = ::make_directory(add_path(current_dir_, subdir_name));
+	bool ret = ::filesystem::make_directory(add_path(current_dir_, subdir_name));
 	if (ret == false) {
 	//	gui2::show_transient_message(disp_.video(), "", _("Creation of the directory failed."));
 	}
@@ -144,7 +161,7 @@ void file_menu::entry_selected(const unsigned entry) {
 bool file_menu::is_directory(const std::string& fname) const {
 	if(fname == path_up)
 		return true;
-	return ::is_directory(fname);
+	return ::filesystem::is_directory(fname);
 }
 
 void file_menu::change_directory(const std::string& path) {
@@ -162,7 +179,7 @@ void file_menu::change_directory(const std::string& path) {
 		}
 
 	} else {
-		current_dir_ = path;
+		current_dir_ = uniform_path(path);
 		chosen_file_ = current_dir_;
 		last_selection_ = -1;
 		update_file_lists();
@@ -176,7 +193,7 @@ std::string file_menu::get_choice() const {
 
 std::string file_menu::get_path(const std::string& file_or_dir) const {
 	std::string res_path = file_or_dir;
-	if (!::is_directory(file_or_dir)) {
+	if (!::filesystem::is_directory(file_or_dir)) {
 		size_t index = file_or_dir.find_last_of(path_delim);
 		if (index != std::string::npos) {
 			res_path = file_or_dir.substr(0, index);
@@ -197,10 +214,6 @@ std::string file_menu::get_path_up(const std::string& path, const unsigned level
 			curr_path = curr_path.substr(0, index);
 		}
 		else {
-#ifdef __AMIGAOS4__
-			index = curr_path.find_last_of(':');
-			if (index != std::string::npos) index++;
-#endif
 			break;
 		}
 	}
@@ -223,11 +236,7 @@ std::string file_menu::strip_last_delim(const std::string& path) const {
 }
 
 bool file_menu::is_root(const std::string& path) const {
-#ifdef __AMIGAOS4__
-	return path.empty() || path[path.size()-1] == ':';
-#else
 	return path.empty() || (path.size() == 1 && path[0] == path_delim);
-#endif
 }
 
 std::string file_menu::add_path(const std::string& path, const std::string& to_add) const
@@ -237,14 +246,6 @@ std::string file_menu::add_path(const std::string& path, const std::string& to_a
 		if (to_add == path_up) {
 			return get_path_up(path);
 		}
-#ifdef __AMIGAOS4__
-		else if (joined_path.empty() || joined_path[joined_path.size()-1] == ':') {
-			if (to_add[0] == path_delim)
-				joined_path += to_add.substr(1);
-			else
-				joined_path += to_add;
-		}
-#endif
 #ifdef _WIN32
 		else if (to_add.size() > 1 && to_add[1] == ':') {
 			joined_path = to_add;
@@ -314,8 +315,8 @@ void file_menu::select_file(const std::string& begin_of_filename)
 void file_menu::update_file_lists() {
 	files_in_current_dir_.clear();
 	dirs_in_current_dir_.clear();
-	get_files_in_dir(current_dir_, &files_in_current_dir_,
-	                 &dirs_in_current_dir_, FILE_NAME_ONLY);
+	filesystem::get_files_in_dir(current_dir_, &files_in_current_dir_,
+	                 &dirs_in_current_dir_, filesystem::FILE_NAME_ONLY);
 	display_current_files();
 }
 

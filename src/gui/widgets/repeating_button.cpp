@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,31 +30,23 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(repeating_button)
 
 trepeating_button::trepeating_button()
-	: tcontrol(COUNT)
-	, tclickable_()
-	, state_(ENABLED)
-	, repeat_timer_(0)
+	: tcontrol(COUNT), tclickable_(), state_(ENABLED), repeat_timer_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&trepeating_button::signal_handler_mouse_enter, this, _2, _3));
+			&trepeating_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&trepeating_button::signal_handler_mouse_leave, this, _2, _3));
+			&trepeating_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
-				  &trepeating_button::signal_handler_left_button_down
-				, this
-				, _2
-				, _3));
+			&trepeating_button::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
-				  &trepeating_button::signal_handler_left_button_up
-				, this
-				, _2
-				, _3));
+			&trepeating_button::signal_handler_left_button_up, this, _2, _3));
 }
 
 trepeating_button::~trepeating_button()
@@ -97,7 +89,7 @@ void trepeating_button::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_dirty(true);
+		set_is_dirty(true);
 
 		if(state_ == DISABLED && repeat_timer_) {
 			remove_timer(repeat_timer_);
@@ -112,8 +104,8 @@ const std::string& trepeating_button::get_control_type() const
 	return type;
 }
 
-void trepeating_button::signal_handler_mouse_enter(
-		const event::tevent event, bool& handled)
+void trepeating_button::signal_handler_mouse_enter(const event::tevent event,
+												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -121,8 +113,8 @@ void trepeating_button::signal_handler_mouse_enter(
 	handled = true;
 }
 
-void trepeating_button::signal_handler_mouse_leave(
-		const event::tevent event, bool& handled)
+void trepeating_button::signal_handler_mouse_leave(const event::tevent event,
+												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -130,8 +122,9 @@ void trepeating_button::signal_handler_mouse_leave(
 	handled = true;
 }
 
-void trepeating_button::signal_handler_left_button_down(
-		const event::tevent event, bool& handled)
+void
+trepeating_button::signal_handler_left_button_down(const event::tevent event,
+												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -143,14 +136,12 @@ void trepeating_button::signal_handler_left_button_down(
 
 		twindow* window = get_window();
 		if(window) {
-			repeat_timer_ = add_timer(
-					  settings::repeat_button_repeat_time
-					, boost::bind(
-						  &tdispatcher::fire
-						, window
-						, event::LEFT_BUTTON_DOWN
-						, boost::ref(*this))
-					, true);
+			repeat_timer_ = add_timer(settings::repeat_button_repeat_time,
+									  boost::bind(&tdispatcher::fire,
+												  window,
+												  event::LEFT_BUTTON_DOWN,
+												  boost::ref(*this)),
+									  true);
 
 			window->mouse_capture();
 		}
@@ -161,8 +152,8 @@ void trepeating_button::signal_handler_left_button_down(
 	handled = true;
 }
 
-void trepeating_button::signal_handler_left_button_up(
-		const event::tevent event, bool& handled)
+void trepeating_button::signal_handler_left_button_up(const event::tevent event,
+													  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

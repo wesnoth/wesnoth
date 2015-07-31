@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,14 +18,16 @@
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/selectable.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Class for a toggle button.
  *
- * Quite some code looks like ttoggle_button maybe we should inherit from that but let's test first.
- * the problem is that the toggle_button has an icon we don't want, but maybe look at refactoring later.
- * but maybe we should also ditch the icon, not sure however since it's handy for checkboxes...
+ * Quite some code looks like ttoggle_button maybe we should inherit from that
+ * but let's test first.  the problem is that the toggle_button has an icon we
+ * don't want, but maybe look at refactoring later.  but maybe we should also
+ * ditch the icon, not sure however since it's handy for checkboxes...
  */
 class ttoggle_panel : public tpanel, public tselectable_
 {
@@ -38,21 +40,21 @@ public:
 	 * Sets the members for all controls which have the proper member id. See
 	 * tcontrol::set_members for more info.
 	 *
-	 * @param data                Map with the key value pairs to set the members.
+	 * @param data                Map with the key value pairs to set the
+	 *                            members.
 	 */
-	void set_child_members(const std::map<std::string /* widget id */, string_map>& data);
+	void set_child_members(
+			const std::map<std::string /* widget id */, string_map>& data);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) OVERRIDE;
@@ -76,13 +78,16 @@ public:
 	 * See @ref tcontainer_::border_space.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_definition we need to override this function and do about the same,
-	 * look at a way to 'fix' that.
+	 * tpanel_definition we need to override this function and do about the
+	 * same, look at a way to 'fix' that.
 	 */
 	virtual tpoint border_space() const OVERRIDE;
 
 	/** Inherited from tselectable_ */
-	bool get_value() const { return state_ >= ENABLED_SELECTED; }
+	bool get_value() const
+	{
+		return state_ >= ENABLED_SELECTED;
+	}
 
 	/** Inherited from tselectable_ */
 	void set_value(const bool selected);
@@ -92,13 +97,18 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(boost::function<void (twidget*)> callback)
-		{ callback_state_change_ = callback; }
+	void set_callback_state_change(boost::function<void(twidget&)> callback)
+	{
+		callback_state_change_ = callback;
+	}
 
-	void set_callback_mouse_left_double_click(boost::function<void (twidget*)> callback)
-		{ callback_mouse_left_double_click_ = callback; }
+	void set_callback_mouse_left_double_click(
+			boost::function<void(twidget&)> callback)
+	{
+		callback_mouse_left_double_click_ = callback;
+	}
+
 private:
-
 	/**
 	 * Possible states of the widget.
 	 *
@@ -108,9 +118,14 @@ private:
 	 * the SELECTED suffix.
 	 */
 	enum tstate {
-		ENABLED,          DISABLED,          FOCUSSED,
-		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED,
-		COUNT};
+		ENABLED,
+		DISABLED,
+		FOCUSSED,
+		ENABLED_SELECTED,
+		DISABLED_SELECTED,
+		FOCUSSED_SELECTED,
+		COUNT
+	};
 
 	void set_state(const tstate state);
 
@@ -131,28 +146,26 @@ private:
 	int retval_;
 
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void (twidget*)> callback_state_change_;
+	boost::function<void(twidget&)> callback_state_change_;
 
 	/** Mouse left double click callback */
-	boost::function<void (twidget*)> callback_mouse_left_double_click_;
+	boost::function<void(twidget&)> callback_mouse_left_double_click_;
 
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_background(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_foreground(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
@@ -165,16 +178,13 @@ private:
 
 	void signal_handler_pre_left_button_click(const event::tevent event);
 
-	void signal_handler_left_button_click(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_click(const event::tevent event,
+										  bool& handled);
 
-	void signal_handler_left_button_double_click(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_double_click(const event::tevent event,
+												 bool& handled);
 };
 
 } // namespace gui2
 
 #endif
-
-
-

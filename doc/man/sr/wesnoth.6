@@ -59,16 +59,11 @@ wesnoth \-\- "Бој за Веснот", фантазијска стратеги
 \fB\-\-campaign\-scenario <ид\-сценарија>\fP
 ИД сценарија из задатог похода. Подразумеван је први сценарио.
 .TP 
-\fB\-\-config\-dir\fP\fI\ име\fP
-задаје поставни директоријум \fIиме\fP, под $HOME или "Моји документи\eМоје
-игре" на Виндоузу. Такође можете задати апсолутну путању поставног
-директоријума изван $HOME или "My Documents\eMy Games".
-.TP 
-\fB\-\-config\-path\fP
-исписује путању корисничког поставног директоријума и излази.
-.TP 
 \fB\-\-data\-dir <директоријум>\fP
 потискује директоријум података овде задатим.
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 укључује допунске опције командног режима током игре (више детаља потражите
@@ -180,6 +175,24 @@ preferences. Unsafe.
 \fB\-t, \-\-test\fP
 покреће игру са малим пробним сценариом.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+исписује путању корисничког поставног директоријума и излази.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 претпоставља да је кеш ажуран (опасно).
 .TP 
@@ -221,6 +234,10 @@ preferences. Unsafe.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 покреће игру без графичког сучеља. Мора се јавити пре \fB\-\-multiplayer\fP да би

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -32,8 +32,12 @@
 #include "actions/undo.hpp"
 #include "arrow.hpp"
 #include "chat_events.hpp"
+#include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "formula_string_utils.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
+#include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "key.hpp"
@@ -41,8 +45,9 @@
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "team.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_display.hpp"
 
 #include <boost/lexical_cast.hpp>
@@ -142,7 +147,7 @@ bool manager::can_modify_game_state() const
 	if(wait_for_side_init_
 					|| resources::teams == NULL
 					|| executing_actions_
-					|| is_observer()
+					|| resources::gameboard->is_observer()
 					|| resources::controller->is_linger_mode())
 	{
 		return false;
@@ -261,7 +266,7 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	//Look for another leader on another keep in the same castle
 	{ wb::future_map future; // start planned unit map scope
 		if(!has_planned_unit_map()) {
-			WRN_WB << "Unable to build future map to determine whether leader's allowed to move.\n";
+			WRN_WB << "Unable to build future map to determine whether leader's allowed to move." << std::endl;
 		}
 		if(find_backup_leader(leader))
 			return true;
@@ -279,7 +284,7 @@ bool manager::allow_leader_to_move(unit const& leader) const
 		if(recruit || recall)
 		{
 			map_location const target_hex = recruit?recruit->get_recruit_hex():recall->get_recall_hex();
-			if ( can_recruit_on(leader, target_hex) )
+			if ( dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(leader, target_hex) )
 				return false;
 		}
 	}
@@ -291,7 +296,7 @@ void manager::on_init_side()
 	//Turn should never start with action auto-execution already enabled!
 	assert(!executing_all_actions_ && !executing_actions_);
 
-	update_plan_hiding(); //< validates actions
+	update_plan_hiding(); /* validates actions */
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()\n";
 
@@ -326,13 +331,13 @@ void manager::post_delete_action(action_ptr action)
 
 	side_actions_ptr side_actions = resources::teams->at(action->team_index()).get_side_actions();
 
-	unit *actor = action->get_unit();
-	if(actor != NULL) { // The unit might have died following the execution of an attack
+	unit_ptr actor = action->get_unit();
+	if(actor) { // The unit might have died following the execution of an attack
 		side_actions::iterator action_it = side_actions->find_last_action_of(*actor);
 		if(action_it != side_actions->end()) {
 			move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it);
 			if(move && move->get_fake_unit()) {
-				move->get_fake_unit()->set_standing(true);
+				move->get_fake_unit()->anim_comp().set_standing(true);
 			}
 		}
 	}
@@ -348,9 +353,9 @@ static void hide_all_plans()
 void manager::update_plan_hiding(size_t team_index)
 {
 	//We don't control the "viewing" side ... we're probably an observer
-	if(!resources::teams->at(team_index).is_human())
+	if(!resources::teams->at(team_index).is_local_human())
 		hide_all_plans();
-	else //< normal circumstance
+	else // normal circumstance
 	{
 		BOOST_FOREACH(team& t, *resources::teams)
 		{
@@ -375,10 +380,10 @@ void manager::on_viewer_change(size_t team_index)
 		update_plan_hiding(team_index);
 }
 
-void manager::on_change_controller(int side, team& t)
+void manager::on_change_controller(int side, const team& t)
 {
 	wb::side_actions& sa = *t.get_side_actions();
-	if(t.is_human()) //< we own this side now
+	if(t.is_local_human()) // we own this side now
 	{
 		//tell everyone to clear this side's actions -- we're starting anew
 		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
@@ -386,19 +391,19 @@ void manager::on_change_controller(int side, team& t)
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
 	}
-	else if(t.is_ai() || t.is_network_ai()) //< no one owns this side anymore
-		sa.clear(); //< clear its plans away -- the ai doesn't plan ... yet
-	else if(t.is_network()) //< Another client is taking control of the side
+	else if(t.is_local_ai() || t.is_network_ai()) // no one owns this side anymore
+		sa.clear(); // clear its plans away -- the ai doesn't plan ... yet
+	else if(t.is_network()) // Another client is taking control of the side
 	{
-		if(side==viewer_side()) //< They're taking OUR side away!
-			hide_all_plans(); //< give up knowledge of everyone's plans, in case we became an observer
+		if(side==viewer_side()) // They're taking OUR side away!
+			hide_all_plans(); // give up knowledge of everyone's plans, in case we became an observer
 
 		//tell them our plans -- they may not have received them up to this point
 		size_t num_teams = resources::teams->size();
 		for(size_t i=0; i<num_teams; ++i)
 		{
 			team& local_team = resources::teams->at(i);
-			if(local_team.is_human() && !local_team.is_enemy(side))
+			if(local_team.is_local_human() && !local_team.is_enemy(side))
 				resources::whiteboard->queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
 		}
 	}
@@ -554,7 +559,7 @@ void manager::draw_hex(const map_location& hex)
 			if(!sa.hidden())
 				sa.get_numbers(hex,numbers);
 		}
-		draw_numbers(hex,numbers); //< helper fcn
+		draw_numbers(hex,numbers); // helper fcn
 	}
 
 }
@@ -564,7 +569,7 @@ void manager::on_mouseover_change(const map_location& hex)
 
 	map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
 	bool hex_has_unit;
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // start planned unit map scope
 		hex_has_unit = resources::units->find(selected_hex) != resources::units->end();
 	} // end planned unit map scope
 	if (!((selected_hex.valid() && hex_has_unit)
@@ -604,7 +609,7 @@ void manager::send_network_data()
 		config packet;
 		config& wb_cfg = packet.add_child("whiteboard",buf_cfg);
 		wb_cfg["side"] = static_cast<int>(team_index+1);
-		wb_cfg["team_name"] = resources::teams->at(team_index).team_name();
+		wb_cfg["to_sides"] = resources::teams->at(team_index).allied_human_teams();
 
 		buf_cfg = config();
 
@@ -630,6 +635,7 @@ void manager::process_network_data(config const& cfg)
 
 void manager::queue_net_cmd(size_t team_index, side_actions::net_cmd const& cmd)
 {
+	assert(team_index < net_buffer_.size());
 	net_buffer_[team_index].add_child("net_cmd",cmd);
 }
 
@@ -710,15 +716,14 @@ void manager::create_temp_move()
 				if(!fake_unit)
 				{
 					// Create temp ghost unit
-					fake_unit.reset(new game_display::fake_unit(*temp_moved_unit));
-					fake_unit->place_on_game_display( resources::screen);
-					fake_unit->set_ghosted(true);
+					fake_unit = fake_unit_ptr(unit_ptr (new unit(*temp_moved_unit)), resources::fake_units);
+					fake_unit->anim_comp().set_ghosted(true);
 				}
 
-				unit_display::move_unit(path, *fake_unit, false); //get facing right
-				fake_unit->invalidate(fake_unit->get_location());
+				unit_display::move_unit(path, fake_unit.get_unit_ptr(), false); //get facing right
+				fake_unit->anim_comp().invalidate(*game_display::get_singleton());
 				fake_unit->set_location(*curr_itor);
-				fake_unit->set_ghosted(true);
+				fake_unit->anim_comp().set_ghosted(true);
 			}
 			else //zero-hex path -- don't bother drawing a fake unit
 				fake_unit.reset();
@@ -728,7 +733,7 @@ void manager::create_temp_move()
 	}
 	//in case path shortens on next step and one ghosted unit has to be removed
 	int ind = fake_units_.size() - 1;
-	fake_units_[ind]->invalidate(fake_units_[ind]->get_location());
+	fake_units_[ind]->anim_comp().invalidate(*game_display::get_singleton());
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);
 	fake_units_.resize(turn+1);
@@ -739,7 +744,7 @@ void manager::erase_temp_move()
 	move_arrows_.clear();
 	BOOST_FOREACH(fake_unit_ptr const& tmp, fake_units_) {
 		if(tmp) {
-			tmp->invalidate(tmp->get_location());
+			tmp->anim_comp().invalidate(*game_display::get_singleton());
 		}
 	}
 	fake_units_.clear();
@@ -810,7 +815,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			assert(route_->steps.back() == attacker_loc);
 			source_hex = route_->steps.front();
 
-			fake_unit->set_disabled_ghosted(true);
+			fake_unit->anim_comp().set_disabled_ghosted(true);
 		}
 		else
 		{
@@ -972,7 +977,7 @@ bool manager::execute_all_actions()
 
 	if (resources::whiteboard->has_planned_unit_map())
 	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	//LOG_WB << "Before executing all actions, " << *sa << "\n";
@@ -981,15 +986,6 @@ bool manager::execute_all_actions()
 	{
 		bool action_successful = sa->execute(sa->begin());
 
-		// Interrupt if an attack is waiting for a random seed from the server
-		if ( rand_rng::has_new_seed_callback())
-		{
-			//leave executing_all_actions_ to true, we'll resume once attack completes
-			finalize_executing_all_actions.clear();
-
-			events::commands_disabled++; //to be decremented by continue_execute_all()
-			return false;
-		}
 		// Interrupt on incomplete action
 		if (!action_successful)
 		{
@@ -997,16 +993,6 @@ bool manager::execute_all_actions()
 		}
 	}
 	return true;
-}
-
-void manager::continue_execute_all()
-{
-	if (executing_all_actions_ && !rand_rng::has_new_seed_callback()) {
-		events::commands_disabled--;
-		if (execute_all_actions() && preparing_to_end_turn_) {
-			resources::controller->force_end_turn();
-		}
-	}
 }
 
 void manager::contextual_delete()
@@ -1153,7 +1139,7 @@ void manager::set_planned_unit_map()
 		return;
 	}
 	if (planned_unit_map_active_) {
-		WRN_WB << "Not building planned unit map: already set.\n";
+		WRN_WB << "Not building planned unit map: already set." << std::endl;
 		return;
 	}
 
@@ -1205,10 +1191,12 @@ future_map::future_map():
 
 future_map::~future_map()
 {
+	try {
 	if (!resources::whiteboard)
 		return;
 	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
+	} catch (...) {}
 }
 
 future_map_if_active::future_map_if_active():
@@ -1229,10 +1217,12 @@ future_map_if_active::future_map_if_active():
 
 future_map_if_active::~future_map_if_active()
 {
+	try {
 	if (!resources::whiteboard)
 		return;
 	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
+	} catch (...) {}
 }
 
 

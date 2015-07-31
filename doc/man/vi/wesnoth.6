@@ -65,17 +65,11 @@ hộp chọn mức độ khó của chiến dịch sẽ xuất hiện.
 Định danh của màn chơi từ chiến dịch được chỉ định. Mặc định là màn chơi đầu
 tiên.
 .TP 
-\fB\-\-config\-dir\fP\fI\ tên\fP
-đặt đường dẫn thư mục chứa thiết lập người dùng thành \fItên\fP dưới $HOME hoặc
-"My Documents\eMy Games" với windows. Bạn cũng có thể chỉ định một đường dẫn
-tuyệt đối cho thư mục chứa thiết lập nằm ngoài $HOME hoặc "My Documents\eMy
-Games"
-.TP 
-\fB\-\-config\-path\fP
-in đường dẫn của thư mục chứa thiết lập người dùng và thoát.
-.TP 
 \fB\-\-data\-dir <thư mục>\fP
 ghi đè thư mục dữ liệu bằng thư mục được chỉ định
+.TP 
+\fB\-\-data\-path\fP
+in đường dẫn của thư mục dữ liệu và thoát.
 .TP 
 \fB\-d, \-\-debug\fP
 bật các tùy chọn chế độ lệnh bổ sung trong trò chơi (xem trang wiki ở địa
@@ -189,6 +183,24 @@ lỗi kiểm định được đối xử như là lỗi nghiêm trọng.
 \fB\-t, \-\-test\fP
 chạy trò chơi trong một màn chơi thử nghiệm nhỏ.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+đặt đường dẫn thư mục cấu hình của người dùng thành \fItên\fP dưới $HOME hoặc
+"My Documents\eMy Games" với windows. Bạn cũng có thể chỉ định một đường dẫn
+tuyệt đối cho thư mục cấu hình nằm ngoài $HOME hoặc "My Documents\eMy
+Games". Dưới X11 mặc định là $XDG_CONFIG_HOME hoặc $HOME/.config/wesnoth,
+trên các hệ thống khác là đường dẫn dữ liệu của người dùng.
+.TP 
+\fB\-\-userconfig\-path\fP
+in đường dẫn của thư mục chứa thiết lập người dùng và thoát.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ tên\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+in đường dẫn của thư mục dữ liệu của người dùng và thoát.
+.TP 
 \fB\-\-validcache\fP
 giả sử rằng bộ nhớ đệm hợp lệ. (nguy hiểm)
 .TP 
@@ -230,6 +242,10 @@ nghiệm theo kịch bản.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 không sử dụng thiết lập bản đồ, mà sử dụng các giá trị mặc định.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIgiá_trị\fP
+lặp lại một trò chơi nhiều người chơi \fIgiá_trị\fP lần. Sử dụng tốt nhất với
+\fB\-\-nogui\fP để kiểm nghiệm theo kịch bản.
 .TP 
 \fB\-\-nogui\fP
 chạy trò chơi không có giao diện người dùng đồ họa. Phải xuất hiện trước

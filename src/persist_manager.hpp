@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Jody Northup
+   Copyright (C) 2010 - 2015 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,10 @@
 #ifndef PERSIST_MANAGER_HPP_INCLUDED
 #define PERSIST_MANAGER_HPP_INCLUDED
 
-#include "persist_context.hpp"
+#include <map>
+#include <string>
+
+class persist_context;
 
 class persist_manager {
 	protected:
@@ -28,12 +31,9 @@ class persist_manager {
 		bool end_transaction();
 		bool cancel_transaction();
 
-		persist_manager() : in_transaction_(false),contexts_() {}
-		virtual ~persist_manager() {
-			cancel_transaction();
-			for (context_map::iterator i = contexts_.begin(); i != contexts_.end(); ++i)
-				delete (i->second);
-		}
+		persist_manager();
+		virtual ~persist_manager();
+
 		persist_context &get_context(const std::string &ns);
 };
 

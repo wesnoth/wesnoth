@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -24,59 +24,53 @@
 
 #include "lua_jailbreak_exception.hpp"
 
+#include "config.hpp"
+#include "make_enum.hpp"
+
 #include <string>
+#include <exception>
+#include <boost/optional.hpp>
 
-class config;
-
-enum LEVEL_RESULT {
-	NONE,
-	VICTORY,
-	DEFEAT,
-	QUIT,
-	OBSERVER_END,
-	SKIP_TO_LINGER
-};
+MAKE_ENUM(LEVEL_RESULT,
+	(VICTORY,      "victory")
+	(DEFEAT,       "defeat")
+	(QUIT,         "quit")
+	(OBSERVER_END, "observer_end")
+)
 
 /**
- * Exception used to signal the end of a player turn.
+ * Exception used to escape form the ai or ui code to playsingle_controller::play_side.
+ * Never thrown during replays.
  */
-class end_turn_exception
-	: public tlua_jailbreak_exception
+class return_to_play_side_exception : public tlua_jailbreak_exception, public std::exception
 {
 public:
 
-	end_turn_exception(unsigned r = 0)
+	return_to_play_side_exception()
 		: tlua_jailbreak_exception()
-		, redo(r)
+		, std::exception()
 	{
 	}
-
-	unsigned redo;
-
+	const char * what() const throw() { return "return_to_play_side_exception"; }
 private:
 
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_turn_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(return_to_play_side_exception)
 };
 
-/**
- * Exception used to signal the end of a scenario.
- */
-class end_level_exception
+class quit_game_exception
 	: public tlua_jailbreak_exception
+	, public std::exception
 {
 public:
 
-	end_level_exception(LEVEL_RESULT res)
+	quit_game_exception()
 		: tlua_jailbreak_exception()
-		, result(res)
+		, std::exception()
 	{
 	}
-
-	LEVEL_RESULT result;
-
+	const char * what() const throw() { return "quit_game_exception"; }
 private:
-
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit_game_exception)
 };
 
 /**
@@ -90,7 +84,6 @@ struct transient_end_level{
 	bool linger_mode;                  /**< Should linger mode be invoked? */
 	std::string custom_endlevel_music; /**< Custom short music played at the end. */
 	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
-	bool disabled;                     /**< Limits execution of tag [endlevel] to a single time > */
 };
 
 /**
@@ -103,14 +96,25 @@ struct end_level_data
 
 	bool prescenario_save;             /**< Should a prescenario be created the next game? */
 	bool replay_save;                  /**< Should a replay save be made? */
-	bool gold_bonus;                   /**< Should early-finish bonus be applied? */
-	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
-	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
+	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals is_victory in sp. We need to save this in saves during linger mode. > */
+	bool is_victory;
 	transient_end_level transient;
-
 	void write(config& cfg) const;
 
 	void read(const config& cfg);
-};
 
+	config to_config() const
+	{
+		config r;
+		write(r);
+		return r;
+	}
+};
+inline void throw_quit_game_exception()
+{
+	// Distinguish 'Quit' from 'Regular' end_level_exceptions to solve the following problem:
+	//   If a player quits the game during an event after an [endlevel] occurs, the game won't
+	//   Quit but continue with the [endlevel] instead.
+	throw quit_game_exception();
+}
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

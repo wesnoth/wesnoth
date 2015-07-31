@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -130,6 +130,9 @@ public:
 		/// Returns the defense associated with the given terrain.
 		int defense(const t_translation::t_terrain & terrain) const
 		{ return std::max(min_.value(terrain), max_.value(terrain)); }
+		/// Returns whether there is a defense cap associated to this terrain.
+		bool capped(const t_translation::t_terrain & terrain) const
+		{ return min_.value(terrain) != 0; }
 		/// Merges the given config over the existing costs.
 		/// (Not overwriting implies adding.)
 		void merge(const config & new_data, bool overwrite)
@@ -216,6 +219,8 @@ public:
 	utils::string_map damage_table() const
 	{ return resist_.damage_table(); }
 
+	/// Returns whether or not there are any terrain caps with respect to a set of terrains.
+	bool has_terrain_defense_caps(const std::set<t_translation::t_terrain> & ts) const;
 	/// Returns whether or not there are any vision-specific costs.
 	bool has_vision_data()  const { return !vision_.empty(); }
 	/// Returns whether or not there are any jamming-specific costs.
@@ -223,6 +228,9 @@ public:
 
 	/// Merges the given config over the existing data.
 	void merge(const config & new_cfg, bool overwrite=true);
+
+	/// The set of applicable effects for movement types
+	static const std::set<std::string> effects;
 
 	/// Writes the movement type data to the provided config.
 	void write(config & cfg) const;

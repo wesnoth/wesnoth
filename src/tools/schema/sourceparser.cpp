@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2011 - 2013 by Sytyi Nick <nsytyi@gmail.com>
+ Copyright (C) 2011 - 2015 by Sytyi Nick <nsytyi@gmail.com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
  This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 
 #include "tools/schema/sourceparser.hpp"
 
-#include "boost/regex.hpp"
+#include <boost/regex.hpp>
 
 #include <stack>
 

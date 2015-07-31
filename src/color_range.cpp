@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -183,4 +183,20 @@ int color_range::index() const
 		}
 	}
 	return 0;
+}
+
+std::string color_range::debug() const
+{
+	std::ostringstream o;
+
+	static const Uint32 mask = 0x00FFFFFF;
+
+	o << std::hex << std::setfill('0')
+	  << '{' << std::setw(6) << (mid_ & mask)
+	  << ',' << std::setw(6) << (max_ & mask)
+	  << ',' << std::setw(6) << (min_ & mask)
+	  << ',' << std::setw(6) << (rep_ & mask)
+	  << '}';
+
+	return o.str();
 }

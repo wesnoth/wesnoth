@@ -24,6 +24,14 @@
 */
 
 
+
+/* how much to allocate before next GC step */
+#if !defined(GCSTEPSIZE)
+/* ~100 small strings */
+#define GCSTEPSIZE	(cast_int(100 * sizeof(TString)))
+#endif
+
+
 /*
 ** Possible states of the Garbage Collector
 */
@@ -41,14 +49,24 @@
 #define isgenerational(g)	((g)->gckind == KGC_GEN)
 
 /*
-** macro to tell when main invariant (white objects cannot point to black
+** macros to tell when main invariant (white objects cannot point to black
 ** ones) must be kept. During a non-generational collection, the sweep
 ** phase may break the invariant, as objects turned white may point to
 ** still-black objects. The invariant is restored when sweep ends and
 ** all objects are white again. During a generational collection, the
 ** invariant must be kept all times.
 */
-#define keepinvariant(g)  (isgenerational(g) || g->gcstate <= GCSatomic)
+
+#define keepinvariant(g)	(isgenerational(g) || g->gcstate <= GCSatomic)
+
+
+/*
+** Outside the collector, the state in generational mode is kept in
+** 'propagate', so 'keepinvariant' is always true.
+*/
+#define keepinvariantout(g)  \
+  check_exp(g->gcstate == GCSpropagate || !isgenerational(g),  \
+            g->gcstate <= GCSatomic)
 
 
 /*

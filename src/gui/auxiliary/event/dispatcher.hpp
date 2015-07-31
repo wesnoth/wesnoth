@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,20 +16,26 @@
 #define GUI_WIDGETS_AUXILIARY_EVENT_DISPATCHER_HPP_INCLUDED
 
 #include "gui/auxiliary/event/handler.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "sdl/compat.hpp"
+#include "serialization/unicode_types.hpp"
 
-#include <boost/function.hpp>
+#include "SDL_events.h"
+
+#include "utils/boost_function_guarded.hpp"
 #include <boost/mpl/int.hpp>
 #include <boost/utility/enable_if.hpp>
 
 #include <map>
 
-namespace gui2 {
+namespace gui2
+{
 
 struct tpoint;
 class twidget;
 
-namespace event {
+namespace event
+{
 
 struct tmessage;
 
@@ -41,43 +47,34 @@ struct tmessage;
  *
  * This function is used for the callbacks in tset_event.
  */
-typedef
-		boost::function<void(
-			  tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt)>
-		tsignal_function;
+typedef boost::function<void(
+		tdispatcher& dispatcher, const tevent event, bool& handled, bool& halt)>
+tsignal_function;
 
 /**
  * Callback function signature.
  *
  * This function is used for the callbacks in tset_event_mouse.
  */
-typedef
-		boost::function<void(
-			  tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt
-			, const tpoint& coordinate)>
-		tsignal_mouse_function;
+typedef boost::function<void(tdispatcher& dispatcher,
+							 const tevent event,
+							 bool& handled,
+							 bool& halt,
+							 const tpoint& coordinate)> tsignal_mouse_function;
 
 /**
  * Callback function signature.
  *
  * This function is used for the callbacks in tset_event_keyboard.
  */
-typedef
-		boost::function<void(
-			  tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt
-			, const SDLKey key
-			, const SDLMod modifier
-			, const Uint16 unicode) >
-		tsignal_keyboard_function;
+typedef boost::function<void(tdispatcher& dispatcher,
+							 const tevent event,
+							 bool& handled,
+							 bool& halt,
+							 const SDLKey key,
+							 const SDLMod modifier,
+							 const utf8::string& unicode)>
+tsignal_keyboard_function;
 
 /**
  * Callback function signature.
@@ -86,35 +83,26 @@ typedef
  * Added the dummy void* parameter which will be NULL to get a different
  * signature as tsignal_function's callback.
  */
-typedef
-		boost::function<void(
-			  tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt
-			, void*)>
-		tsignal_notification_function;
+typedef boost::function<void(tdispatcher& dispatcher,
+							 const tevent event,
+							 bool& handled,
+							 bool& halt,
+							 void*)> tsignal_notification_function;
 
 /**
  * Callback function signature.
  *
  * This function is used for the callbacks in tset_message_notification.
  */
-typedef
-		boost::function<void(
-			  tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt
-			, tmessage& message)>
-		tsignal_message_function;
+typedef boost::function<void(tdispatcher& dispatcher,
+							 const tevent event,
+							 bool& handled,
+							 bool& halt,
+							 tmessage& message)> tsignal_message_function;
 
 /** Hotkey function handler signature. */
-typedef
-		boost::function<bool(
-				  tdispatcher& dispatcher
-				, hotkey::HOTKEY_COMMAND id)>
-		thotkey_function;
+typedef boost::function<bool(tdispatcher& dispatcher,
+							 hotkey::HOTKEY_COMMAND id)> thotkey_function;
 
 /**
  * Base class for event handling.
@@ -134,6 +122,7 @@ typedef
 class tdispatcher
 {
 	friend struct tdispatcher_implementation;
+
 public:
 	tdispatcher();
 	virtual ~tdispatcher();
@@ -163,11 +152,10 @@ public:
 	 */
 	virtual bool is_at(const tpoint& coordinate) const = 0;
 
-	enum tevent_type
-	{
-		  pre   = 1
-		, child = 2
-		, post  = 4
+	enum tevent_type {
+		pre = 1,
+		child = 2,
+		post = 4
 	};
 
 	bool has_event(const tevent event, const tevent_type event_type);
@@ -193,11 +181,11 @@ public:
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
 	 */
-	bool fire(const tevent event
-			, twidget& target
-			, const SDLKey key
-			, const SDLMod modifier
-			, const Uint16 unicode);
+	bool fire(const tevent event,
+			  twidget& target,
+			  const SDLKey key,
+			  const SDLMod modifier,
+			  const utf8::string& unicode);
 
 	/**
 	 * Fires an event which takes notification parameters.
@@ -248,7 +236,7 @@ public:
 	 * * The buttons internal click handler is invoked and sets the handled
 	 *   flag
 	 * * The callback installed by the user is in the same queue and gets
-	 *   exectuted afterwards.
+	 *   executed afterwards.
 	 *
 	 * A toggle button may or may not be toggled:
 	 * * The user inserts a callback, that validates whether the action is
@@ -258,8 +246,7 @@ public:
 	 *   sets the handled flag.
 	 * * Optionally there is another user callback invoked at this point.
 	 */
-	enum tposition
-	{
+	enum tposition {
 		front_pre_child,
 		back_pre_child,
 		front_child,
@@ -276,20 +263,20 @@ public:
 	 * widget->connect_signal<EVENT_ID>(
 	 * boost::bind(&tmy_dialog::my_member, this));
 	 * This allows simply adding a member of a dialog to be used as a callback
-	 * for widget without a lot of magic. Note most widgets probaly will get a
+	 * for widget without a lot of magic. Note most widgets probably will get a
 	 * callback like
 	 * connect_signal_mouse_left_click(const tsignal_function& callback)
-	 * which hides this function for the avarage use.
+	 * which hides this function for the average use.
 	 *
 	 * @tparam E                     The event the callback needs to react to.
 	 * @param signal                 The callback function.
 	 * @param position               The position to place the callback.
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event, boost::mpl::int_<E> > >::type
-	connect_signal(const tsignal_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event,
+												  boost::mpl::int_<E> > >::type
+	connect_signal(const tsignal_function& signal,
+				   const tposition position = back_child)
 	{
 		signal_queue_.connect_signal(E, position, signal);
 	}
@@ -304,11 +291,11 @@ public:
 	 *                               place. (The function doesn't care whether
 	 *                               was added in front or back.)
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event, boost::mpl::int_<E> > >::type
-	disconnect_signal(const tsignal_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event,
+												  boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_function& signal,
+					  const tposition position = back_child)
 	{
 		signal_queue_.disconnect_signal(E, position, signal);
 	}
@@ -320,11 +307,11 @@ public:
 	 * @param signal                 The callback function.
 	 * @param position               The position to place the callback.
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_mouse, boost::mpl::int_<E> > >::type
-	connect_signal(const tsignal_mouse_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_mouse,
+												  boost::mpl::int_<E> > >::type
+	connect_signal(const tsignal_mouse_function& signal,
+				   const tposition position = back_child)
 	{
 		signal_mouse_queue_.connect_signal(E, position, signal);
 	}
@@ -339,11 +326,11 @@ public:
 	 *                               place. (The function doesn't care whether
 	 *                               was added in front or back.)
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_mouse, boost::mpl::int_<E> > >::type
-	disconnect_signal(const tsignal_mouse_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_mouse,
+												  boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_mouse_function& signal,
+					  const tposition position = back_child)
 	{
 		signal_mouse_queue_.disconnect_signal(E, position, signal);
 	}
@@ -355,11 +342,11 @@ public:
 	 * @param signal                 The callback function.
 	 * @param position               The position to place the callback.
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_keyboard, boost::mpl::int_<E> > >::type
-	connect_signal(const tsignal_keyboard_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_keyboard,
+												  boost::mpl::int_<E> > >::type
+	connect_signal(const tsignal_keyboard_function& signal,
+				   const tposition position = back_child)
 	{
 		signal_keyboard_queue_.connect_signal(E, position, signal);
 	}
@@ -374,11 +361,11 @@ public:
 	 *                               place. (The function doesn't care whether
 	 *                               was added in front or back.)
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_keyboard, boost::mpl::int_<E> > >::type
-	disconnect_signal(const tsignal_keyboard_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_keyboard,
+												  boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_keyboard_function& signal,
+					  const tposition position = back_child)
 	{
 		signal_keyboard_queue_.disconnect_signal(E, position, signal);
 	}
@@ -393,11 +380,11 @@ public:
 	 *                               the pre and post positions make no sense
 	 *                               and shouldn't be used.
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_notification, boost::mpl::int_<E> > >::type
-	connect_signal(const tsignal_notification_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_notification,
+												  boost::mpl::int_<E> > >::type
+	connect_signal(const tsignal_notification_function& signal,
+				   const tposition position = back_child)
 	{
 		signal_notification_queue_.connect_signal(E, position, signal);
 	}
@@ -417,11 +404,11 @@ public:
 	 *                               front_child and remove with
 	 *                               front_pre_child)
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_notification, boost::mpl::int_<E> > >::type
-	disconnect_signal(const tsignal_notification_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_notification,
+												  boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_notification_function& signal,
+					  const tposition position = back_child)
 	{
 		signal_notification_queue_.disconnect_signal(E, position, signal);
 	}
@@ -436,11 +423,11 @@ public:
 	 *                               the pre and post positions make no sense
 	 *                               and shouldn't be used.
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_message, boost::mpl::int_<E> > >::type
-	connect_signal(const tsignal_message_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_message,
+												  boost::mpl::int_<E> > >::type
+	connect_signal(const tsignal_message_function& signal,
+				   const tposition position = back_child)
 	{
 		signal_message_queue_.connect_signal(E, position, signal);
 	}
@@ -460,11 +447,11 @@ public:
 	 *                               front_child and remove with
 	 *                               front_pre_child)
 	 */
-	template<tevent E>
-	typename boost::enable_if<boost::mpl::has_key<
-			tset_event_message, boost::mpl::int_<E> > >::type
-	disconnect_signal(const tsignal_message_function& signal
-			, const tposition position = back_child)
+	template <tevent E>
+	typename boost::enable_if<boost::mpl::has_key<tset_event_message,
+												  boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_message_function& signal,
+					  const tposition position = back_child)
 	{
 		signal_message_queue_.disconnect_signal(E, position, signal);
 	}
@@ -472,10 +459,10 @@ public:
 	/**
 	 * The behavior of the mouse events.
 	 *
-	 * Normally for mouse events there's first cheched whether a dispatcher has
+	 * Normally for mouse events there's first checked whether a dispatcher has
 	 * captured the mouse if so it gets the event.
 	 * If not the dispatcher is searched from the back to the front in the
-	 * layers and it's behavious is checked.
+	 * layers and its behavior is checked.
 	 * * none The event is never send to the layer and goes on the the next
 	 *   layer. This is used for tooltips who might cover a button but a click
 	 *   on the tooltips should still click the button.
@@ -486,11 +473,10 @@ public:
 	 *
 	 * If after these tests no dispatcher is found the event is ignored.
 	 */
-	enum tmouse_behavior
-	{
-		  all
-		, hit
-		, none
+	enum tmouse_behavior {
+		all,
+		hit,
+		none
 	};
 
 	/** Captures the mouse. */
@@ -528,13 +514,10 @@ public:
 	}
 
 	/** Helper struct to generate the various signal types. */
-	template<class T>
+	template <class T>
 	struct tsignal
 	{
-		tsignal()
-			: pre_child()
-			, child()
-			, post_child()
+		tsignal() : pre_child(), child(), post_child()
 		{
 		}
 
@@ -544,104 +527,99 @@ public:
 	};
 
 	/** Helper struct to generate the various event queues. */
-	template<class T>
+	template <class T>
 	struct tsignal_queue
 	{
-		tsignal_queue()
-			: queue()
+		tsignal_queue() : queue()
 		{
 		}
 
 		std::map<tevent, tsignal<T> > queue;
 
-		void connect_signal(const tevent event
-				, const tposition position
-				, const T& signal)
+		void connect_signal(const tevent event,
+							const tposition position,
+							const T& signal)
 		{
 			switch(position) {
-				case front_pre_child :
+				case front_pre_child:
 					queue[event].pre_child.insert(
 							queue[event].pre_child.begin(), signal);
 					break;
-				case back_pre_child :
+				case back_pre_child:
 					queue[event].pre_child.push_back(signal);
 					break;
 
-				case front_child :
-					queue[event].child.insert(
-							queue[event].child.begin(), signal);
+				case front_child:
+					queue[event]
+							.child.insert(queue[event].child.begin(), signal);
 					break;
-				case back_child :
+				case back_child:
 					queue[event].child.push_back(signal);
 					break;
 
-				case front_post_child :
+				case front_post_child:
 					queue[event].post_child.insert(
 							queue[event].post_child.begin(), signal);
 					break;
-				case back_post_child :
+				case back_post_child:
 					queue[event].post_child.push_back(signal);
 					break;
 			}
-
 		}
 
-		void disconnect_signal(const tevent event
-				, const tposition position
-				, const T& signal)
+		void disconnect_signal(const tevent event,
+							   const tposition position,
+							   const T& signal)
 		{
 			/*
 			 * The function doesn't differentiate between front and back
 			 * position so fall down from front to back.
 			 */
 			switch(position) {
-				case front_pre_child :
-				case back_pre_child : {
-						tsignal<T>& signal_queue = queue[event];
-						for(typename std::vector<T>::iterator itor =
-									signal_queue.child.begin()
-								; itor != signal_queue.child.end()
-								; ++itor) {
+				case front_pre_child:
+				case back_pre_child: {
+					tsignal<T>& signal_queue = queue[event];
+					for(typename std::vector<T>::iterator itor
+						= signal_queue.child.begin();
+						itor != signal_queue.child.end();
+						++itor) {
 
-							if(signal.target_type() == itor->target_type()) {
-								signal_queue.child.erase(itor);
-								return;
-							}
+						if(signal.target_type() == itor->target_type()) {
+							signal_queue.child.erase(itor);
+							return;
 						}
 					}
-					break;
+				} break;
 
-				case front_child :
-				case back_child : {
-						tsignal<T>& signal_queue = queue[event];
-						for(typename std::vector<T>::iterator itor =
-									signal_queue.child.begin()
-								; itor != signal_queue.child.end()
-								; ++itor) {
+				case front_child:
+				case back_child: {
+					tsignal<T>& signal_queue = queue[event];
+					for(typename std::vector<T>::iterator itor
+						= signal_queue.child.begin();
+						itor != signal_queue.child.end();
+						++itor) {
 
-							if(signal.target_type() == itor->target_type()) {
-								signal_queue.child.erase(itor);
-								return;
-							}
+						if(signal.target_type() == itor->target_type()) {
+							signal_queue.child.erase(itor);
+							return;
 						}
 					}
-					break;
+				} break;
 
-				case front_post_child :
-				case back_post_child : {
-						tsignal<T>& signal_queue = queue[event];
-						for(typename std::vector<T>::iterator itor =
-									signal_queue.child.begin()
-								; itor != signal_queue.child.end()
-								; ++itor) {
+				case front_post_child:
+				case back_post_child: {
+					tsignal<T>& signal_queue = queue[event];
+					for(typename std::vector<T>::iterator itor
+						= signal_queue.child.begin();
+						itor != signal_queue.child.end();
+						++itor) {
 
-							if(signal.target_type() == itor->target_type()) {
-								signal_queue.child.erase(itor);
-								return;
-							}
+						if(signal.target_type() == itor->target_type()) {
+							signal_queue.child.erase(itor);
+							return;
 						}
 					}
-					break;
+				} break;
 			}
 		}
 	};
@@ -657,8 +635,8 @@ public:
 	 * @param id                  The hotkey to register.
 	 * @param function            The callback function to call.
 	 */
-	void register_hotkey(const hotkey::HOTKEY_COMMAND id
-			, const thotkey_function& function);
+	void register_hotkey(const hotkey::HOTKEY_COMMAND id,
+						 const thotkey_function& function);
 
 	/**
 	 * Executes a hotkey.
@@ -671,7 +649,6 @@ public:
 	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
 
 private:
-
 	/** The mouse behavior for the dispatcher. */
 	tmouse_behavior mouse_behavior_;
 
@@ -722,35 +699,31 @@ private:
  * This callback is called before the widget itself allowing you to either
  * snoop on the input or filter it.
  */
-inline void connect_signal_pre_key_press(
-		  tdispatcher& dispatcher
-		, const tsignal_keyboard_function& signal)
+inline void
+connect_signal_pre_key_press(tdispatcher& dispatcher,
+							 const tsignal_keyboard_function& signal)
 {
-	dispatcher.connect_signal<SDL_KEY_DOWN>(
-			  signal
-			, tdispatcher::front_child);
+	dispatcher.connect_signal<SDL_KEY_DOWN>(signal, tdispatcher::front_child);
 }
 
 /** Connects a signal handler for a left mouse button click. */
-inline void connect_signal_mouse_left_click(
-		  tdispatcher& dispatcher
-		, const tsignal_function& signal)
+inline void connect_signal_mouse_left_click(tdispatcher& dispatcher,
+											const tsignal_function& signal)
 {
 	dispatcher.connect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
 /** Disconnects a signal handler for a left mouse button click. */
-inline void disconnect_signal_mouse_left_click(
-		  tdispatcher& dispatcher
-		, const tsignal_function& signal)
+inline void disconnect_signal_mouse_left_click(tdispatcher& dispatcher,
+											   const tsignal_function& signal)
 {
 	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
 /** Connects a signal handler for getting a notification upon modification. */
-inline void connect_signal_notify_modified(
-		  tdispatcher& dispatcher
-		, const tsignal_notification_function& signal)
+inline void
+connect_signal_notify_modified(tdispatcher& dispatcher,
+							   const tsignal_notification_function& signal)
 {
 	dispatcher.connect_signal<event::NOTIFY_MODIFIED>(signal);
 }
@@ -760,4 +733,3 @@ inline void connect_signal_notify_modified(
 } // namespace gui2
 
 #endif
-

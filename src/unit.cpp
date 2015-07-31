@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,27 +18,58 @@
  */
 
 #include "unit.hpp"
+#include "global.hpp"
 
-#include "actions/move.hpp"
-#include "callable_objects.hpp"
-#include "formula.hpp"
-#include "game_display.hpp"
-#include "game_preferences.hpp"
-#include "gamestatus.hpp"
-#include "gettext.hpp"
-#include "halo.hpp"
-#include "log.hpp"
-#include "resources.hpp"
+#include "display_context.hpp"
+#include "formula_string_utils.hpp"     // for vgettext
+#include "game_board.hpp"               // for game_board
+#include "game_data.hpp"
+#include "game_config.hpp"              // for add_color_info, etc
+#include "game_errors.hpp"              // for game_error
+#include "game_events/manager.hpp"     // for add_events
+#include "game_preferences.hpp"         // for encountered_units
+#include "gettext.hpp"                  // for N_
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "make_enum.hpp"                // for operator<<, operator>>
+#include "map.hpp"       // for gamemap
+#include "random_new.hpp"               // for generator, rng
+#include "resources.hpp"                // for units, gameboard, teams, etc
+#include "scripting/game_lua_kernel.hpp"            // for game_lua_kernel
+#include "synced_context.hpp"
+#include "side_filter.hpp"              // for side_filter
+#include "team.hpp"                     // for team, get_teams, etc
+#include "terrain_filter.hpp"           // for terrain_filter
+#include "unit_abilities.hpp"           // for effect, filter_base_matches
+#include "unit_animation.hpp"           // for unit_animation
+#include "unit_animation_component.hpp"  // for unit_animation_component
+#include "unit_filter.hpp"
+#include "unit_formula_manager.hpp"     // for unit_formula_manager
 #include "unit_id.hpp"
-#include "unit_abilities.hpp"
-#include "terrain_filter.hpp"
-#include "formula_string_utils.hpp"
-#include "scripting/lua.hpp"
-#include "side_filter.hpp"
-#include "play_controller.hpp"
+#include "unit_map.hpp"      // for unit_map, etc
+#include "variable.hpp"                 // for vconfig, etc
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/function_output_iterator.hpp>
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4510 4610)
+#endif
+#include <boost/range/algorithm.hpp>
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
+#include <cassert>                     // for assert
+#include <cstdlib>                     // for NULL, rand
+#include <exception>                    // for exception
+#include <iterator>                     // for back_insert_iterator, etc
+#include <new>                          // for operator new
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "SDL_video.h"                  // for SDL_Color
+
+
+namespace t_translation { struct t_terrain; }
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
@@ -67,6 +98,41 @@ namespace {
 	 * always valid.
 	 */
 	static std::vector<const unit *> units_with_cache;
+
+	const std::string leader_crown_path = "misc/leader-crown.png";
+}
+
+/**
+ * Intrusive Pointer interface
+ *
+ **/
+
+void intrusive_ptr_add_ref(const unit * u)
+{
+	assert(u->ref_count_ >= 0);
+	// the next code line is to notice possible wrongly initialized units.
+	// The 100000 is picked rather randomly. If you are in the situation
+	// that you can actually have more then 100000 intrusive_ptr to one unit
+	// or if you are sure that the refcounting system works
+	// then feel free to remove the next line
+	assert(u->ref_count_ < 100000);
+	LOG_UT << "Adding a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
+	if (u->ref_count_ == 0) {
+		LOG_UT << "Freshly constructed" << std::endl;
+	}
+	++(u->ref_count_);
+}
+
+void intrusive_ptr_release(const unit * u)
+{
+	assert(u->ref_count_ >= 1);
+	assert(u->ref_count_ < 100000); //See comment in intrusive_ptr_add_ref
+	LOG_UT << "Removing a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
+	if (--(u->ref_count_) == 0)
+	{
+		LOG_UT << "Deleting a unit: id = " << u->id() << ", uid = " << u->underlying_id() << std::endl;
+		delete u;
+	}
 }
 
 /**
@@ -83,187 +149,169 @@ static const unit_type &get_unit_type(const std::string &type_id)
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
+	assert( genders.size() > 0 );
 
 	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
 	} else {
-		int random = state ? resources::gamedata->rng().get_next_random() : get_random_nocheck();
-		return genders[random % genders.size()];
+		return genders[random_new::generator->get_random_int(0,genders.size()-1)];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
+		// Note: Whoever wrote this code, you should have used an assertion, to save others hours of work...
+		// If the assertion size>0 is failing for you, one possible cause is that you are constructing a unit
+		// from a unit type which has not been ``built'' using the unit_type_data methods.
 	}
 }
 
-static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
 
-	return generate_gender(u_type, cfg["random_gender"].to_bool(), state);
+	return generate_gender(u_type, cfg["random_gender"].to_bool());
+}
+
+const std::string& unit::leader_crown()
+{
+	return leader_crown_path;
 }
 
 // Copy constructor
-unit::unit(const unit& o):
-           cfg_(o.cfg_),
-           loc_(o.loc_),
-           advances_to_(o.advances_to_),
-           type_(o.type_),
-           type_name_(o.type_name_),
-           race_(o.race_),
-           id_(o.id_),
-           name_(o.name_),
-           underlying_id_(o.underlying_id_),
-           undead_variation_(o.undead_variation_),
-           variation_(o.variation_),
-
-           hit_points_(o.hit_points_),
-           max_hit_points_(o.max_hit_points_),
-           experience_(o.experience_),
-           max_experience_(o.max_experience_),
-           level_(o.level_),
-           canrecruit_(o.canrecruit_),
-           recruit_list_(o.recruit_list_),
-           alignment_(o.alignment_),
-           flag_rgb_(o.flag_rgb_),
-           image_mods_(o.image_mods_),
-
-           unrenamable_(o.unrenamable_),
-           side_(o.side_),
-           gender_(o.gender_),
-
-           alpha_(o.alpha_),
-
-           unit_formula_(o.unit_formula_),
-           unit_loop_formula_(o.unit_loop_formula_),
-           unit_priority_formula_(o.unit_priority_formula_),
-           formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
-
-           movement_(o.movement_),
-           max_movement_(o.max_movement_),
-           vision_(o.vision_),
-           jamming_(o.jamming_),
-           movement_type_(o.movement_type_),
-           hold_position_(o.hold_position_),
-           end_turn_(o.end_turn_),
-           resting_(o.resting_),
-           attacks_left_(o.attacks_left_),
-           max_attacks_(o.max_attacks_),
-
-           states_(o.states_),
-           known_boolean_states_(o.known_boolean_states_),
-           variables_(o.variables_),
-           events_(o.events_),
-           filter_recall_(o.filter_recall_),
-           emit_zoc_(o.emit_zoc_),
-           state_(o.state_),
-
-           overlays_(o.overlays_),
-
-           role_(o.role_),
-           attacks_(o.attacks_),
-           facing_(o.facing_),
-
-           trait_names_(o.trait_names_),
-           trait_descriptions_(o.trait_descriptions_),
-           unit_value_(o.unit_value_),
-           goto_(o.goto_),
-           interrupted_move_(o.interrupted_move_),
-           is_fearless_(o.is_fearless_),
-           is_healthy_(o.is_healthy_),
-
-           modification_descriptions_(o.modification_descriptions_),
-
-           animations_(o.animations_),
-
-           anim_(NULL),
-		   next_idling_(0),
-
-           frame_begin_time_(o.frame_begin_time_),
-           unit_halo_(halo::NO_HALO),
-           getsHit_(o.getsHit_),
-           refreshing_(o.refreshing_),
-           hidden_(o.hidden_),
-           draw_bars_(o.draw_bars_),
-
-           modifications_(o.modifications_),
-		   invisibility_cache_()
+unit::unit(const unit& o)
+	: ref_count_(0)
+	, cfg_(o.cfg_)
+	, loc_(o.loc_)
+	, advances_to_(o.advances_to_)
+	, type_(o.type_)
+	, type_name_(o.type_name_)
+	, race_(o.race_)
+	, id_(o.id_)
+	, name_(o.name_)
+	, underlying_id_(o.underlying_id_)
+	, undead_variation_(o.undead_variation_)
+	, variation_(o.variation_)
+	, hit_points_(o.hit_points_)
+	, max_hit_points_(o.max_hit_points_)
+	, experience_(o.experience_)
+	, max_experience_(o.max_experience_)
+	, level_(o.level_)
+	, recall_cost_(o.recall_cost_)
+	, canrecruit_(o.canrecruit_)
+	, recruit_list_(o.recruit_list_)
+	, alignment_(o.alignment_)
+	, flag_rgb_(o.flag_rgb_)
+	, image_mods_(o.image_mods_)
+	, unrenamable_(o.unrenamable_)
+	, side_(o.side_)
+	, gender_(o.gender_)
+	, alpha_(o.alpha_)
+	, formula_man_(new unit_formula_manager(o.formula_manager()))
+	, movement_(o.movement_)
+	, max_movement_(o.max_movement_)
+	, vision_(o.vision_)
+	, jamming_(o.jamming_)
+	, movement_type_(o.movement_type_)
+	, hold_position_(o.hold_position_)
+	, end_turn_(o.end_turn_)
+	, resting_(o.resting_)
+	, attacks_left_(o.attacks_left_)
+	, max_attacks_(o.max_attacks_)
+	, states_(o.states_)
+	, known_boolean_states_(o.known_boolean_states_)
+	, variables_(o.variables_)
+	, events_(o.events_)
+	, filter_recall_(o.filter_recall_)
+	, emit_zoc_(o.emit_zoc_)
+	, overlays_(o.overlays_)
+	, role_(o.role_)
+	, attacks_(o.attacks_)
+	, facing_(o.facing_)
+	, trait_names_(o.trait_names_)
+	, trait_descriptions_(o.trait_descriptions_)
+	, unit_value_(o.unit_value_)
+	, goto_(o.goto_)
+	, interrupted_move_(o.interrupted_move_)
+	, is_fearless_(o.is_fearless_)
+	, is_healthy_(o.is_healthy_)
+	, modification_descriptions_(o.modification_descriptions_)
+	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
+	, getsHit_(o.getsHit_)
+	, hidden_(o.hidden_)
+	, hp_bar_scaling_(o.hp_bar_scaling_)
+	, xp_bar_scaling_(o.xp_bar_scaling_)
+	, modifications_(o.modifications_)
+	, invisibility_cache_()
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig* vcfg) :
-	cfg_(),
-	loc_(cfg["x"] - 1, cfg["y"] - 1),
-	advances_to_(),
-	type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"])),
-	type_name_(),
-	race_(&unit_race::null_race),
-	id_(cfg["id"]),
-	name_(cfg["name"].t_str()),
-	underlying_id_(0),
-	undead_variation_(),
-	variation_(cfg["variation"]),
-	hit_points_(1),
-	max_hit_points_(0),
-	experience_(0),
-	max_experience_(0),
-	level_(0),
-	canrecruit_(cfg["canrecruit"].to_bool()),
-	recruit_list_(),
-	alignment_(),
-	flag_rgb_(),
-	image_mods_(),
-	unrenamable_(false),
-	side_(0),
-	gender_(generate_gender(*type_, cfg, state)),
-	alpha_(),
-	unit_formula_(),
-	unit_loop_formula_(),
-	unit_priority_formula_(),
-	formula_vars_(),
-	movement_(0),
-	max_movement_(0),
-	vision_(-1),
-	jamming_(0),
-	movement_type_(),
-	hold_position_(false),
-	end_turn_(false),
-	resting_(false),
-	attacks_left_(0),
-	max_attacks_(0),
-	states_(),
-	known_boolean_states_(known_boolean_state_names_.size(),false),
-	variables_(),
-	events_(),
-	filter_recall_(),
-	emit_zoc_(0),
-	state_(STATE_STANDING),
-	overlays_(),
-	role_(cfg["role"]),
-	attacks_(),
-	facing_(map_location::NDIRECTIONS),
-	trait_names_(),
-	trait_descriptions_(),
-	unit_value_(),
-	goto_(),
-	interrupted_move_(),
-	is_fearless_(false),
-	is_healthy_(false),
-	modification_descriptions_(),
-	animations_(),
-	anim_(NULL),
-	next_idling_(0),
-	frame_begin_time_(0),
-	unit_halo_(halo::NO_HALO),
-	getsHit_(0),
-	refreshing_(false),
-	hidden_(false),
-	draw_bars_(false),
-	modifications_(),
-	invisibility_cache_()
+unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
+	: ref_count_(0)
+	, cfg_()
+	, loc_(cfg["x"] - 1, cfg["y"] - 1)
+	, advances_to_()
+	, type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"]))
+	, type_name_()
+	, race_(&unit_race::null_race)
+	, id_(cfg["id"])
+	, name_(cfg["name"].t_str())
+	, underlying_id_(0)
+	, undead_variation_()
+	, variation_(cfg["variation"].empty() ? type_->default_variation() : cfg["variation"])
+	, hit_points_(1)
+	, max_hit_points_(0)
+	, experience_(0)
+	, max_experience_(0)
+	, level_(0)
+	, recall_cost_(-1)
+	, canrecruit_(cfg["canrecruit"].to_bool())
+	, recruit_list_()
+	, alignment_()
+	, flag_rgb_()
+	, image_mods_()
+	, unrenamable_(false)
+	, side_(0)
+	, gender_(generate_gender(*type_, cfg))
+	, alpha_()
+	, formula_man_(new unit_formula_manager())
+	, movement_(0)
+	, max_movement_(0)
+	, vision_(-1)
+	, jamming_(0)
+	, movement_type_()
+	, hold_position_(false)
+	, end_turn_(false)
+	, resting_(false)
+	, attacks_left_(0)
+	, max_attacks_(0)
+	, states_()
+	, known_boolean_states_(known_boolean_state_names_.size(),false)
+	, variables_()
+	, events_()
+	, filter_recall_()
+	, emit_zoc_(0)
+	, overlays_()
+	, role_(cfg["role"])
+	, attacks_()
+	, facing_(map_location::NDIRECTIONS)
+	, trait_names_()
+	, trait_descriptions_()
+	, unit_value_()
+	, goto_()
+	, interrupted_move_()
+	, is_fearless_(false)
+	, is_healthy_(false)
+	, modification_descriptions_()
+	, anim_comp_(new unit_animation_component(*this))
+	, getsHit_(0)
+	, hidden_(false)
+	, hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"])
+	, xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"])
+	, modifications_()
+	, invisibility_cache_()
 {
 	side_ = cfg["side"];
 	if(side_ <= 0) {
@@ -271,8 +319,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	}
 
 	validate_side(side_);
-
-	underlying_id_ = cfg["underlying_id"];
+	underlying_id_ = n_unit::unit_id::create_real(cfg["underlying_id"].to_int());
 	set_underlying_id();
 
 	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
@@ -301,8 +348,10 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 			events_.add_child("event", unit_event);
 		}
 	}
-	game_events::add_events(events_.child_range("event"));
 
+	if (resources::game_events) {
+		resources::game_events->add_events(events_.child_range("event"));
+	}
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
@@ -342,8 +391,11 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	if (const config::attribute_value *v = cfg.get("cost")) {
 		unit_value_ = *v;
 	}
+	if (const config::attribute_value *v = cfg.get("ellipse")) {
+		cfg_["ellipse"] = *v;
+	}
 	if (const config::attribute_value *v = cfg.get("halo")) {
-		clear_haloes();
+		anim_comp_->clear_haloes();
 		cfg_["halo"] = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("profile")) {
@@ -367,22 +419,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 
 	if (const config &ai = cfg.child("ai"))
 	{
-		unit_formula_ = ai["formula"].str();
-		unit_loop_formula_ = ai["loop_formula"].str();
-		unit_priority_formula_ = ai["priority"].str();
-
-		if (const config &ai_vars = ai.child("vars"))
-		{
-			formula_vars_ = new game_logic::map_formula_callable;
-
-			variant var;
-			BOOST_FOREACH(const config::attribute &i, ai_vars.attribute_range()) {
-				var.serialize_from_string(i.second);
-				formula_vars_->add(i.first, var);
-			}
-		} else {
-			formula_vars_ = game_logic::map_formula_callable_ptr();
-		}
+		formula_man_->read(ai);
 	}
 
 	//don't use the unit_type's attacks if this config has its own defined
@@ -392,6 +429,20 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		do {
 			attacks_.push_back(attack_type(*cfg_range.first));
 		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//If cfg specifies [advancement]s, replace this [advancement]s with them.
+	if(cfg.has_child("advancement"))
+	{
+		cfg_.clear_children("advancement");
+		boost::copy( cfg.child_range("advancement")
+			, boost::make_function_output_iterator(
+				boost::bind(
+					  /* The static_cast is required to select the proper overload in C++11 mode. */
+					  static_cast<config&(config::*)(const std::string &, const config&)>(&config::add_child)
+					, boost::ref(cfg_) /*thisptr*/
+					, "advancement"
+					, _1 )) );
 	}
 
 	//don't use the unit_type's abilities if this config has its own defined
@@ -411,13 +462,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	if (const config &status_flags = cfg.child("status"))
 	{
 		BOOST_FOREACH(const config::attribute &st, status_flags.attribute_range()) {
-			if (st.first == "healable") {
-				///@deprecated 1.9.2 'healable' instead of 'unhealable'
-				ERR_UT << "Usage of 'healable' is deprecated, use 'unhealable' instead, "
-					"support will be removed in 1.9.2.\n";
-				if (!st.second.to_bool(true))
-					set_state("unhealable", true);
-			} else if (st.second.to_bool()) {
+			if (st.second.to_bool()) {
 				set_state(st.first, true);
 			}
 		}
@@ -453,20 +498,15 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
 
-	const std::string& align = cfg["alignment"];
-	if(align == "lawful") {
-		alignment_ = unit_type::LAWFUL;
-	} else if(align == "neutral") {
-		alignment_ = unit_type::NEUTRAL;
-	} else if(align == "chaotic") {
-		alignment_ = unit_type::CHAOTIC;
-	} else if(align == "liminal") {
-		alignment_ = unit_type::LIMINAL;
-	} else if(align.empty()==false){
-		alignment_ = unit_type::NEUTRAL;
+	/* We need to check to make sure that the cfg is not blank and if it
+	isn't pull that value otherwise it goes with the default of -1.  */
+	if(!cfg["recall_cost"].blank()) {
+		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
 	}
 
-	generate_name(resources::gamedata ? &(resources::gamedata->rng()) : 0);
+	alignment_ = lexical_cast_default<unit_type::ALIGNMENT> (cfg["alignment"].str(), alignment_);
+
+	generate_name();
 
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
@@ -483,7 +523,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	static char const *internalized_attrs[] = { "type", "id", "name",
 		"gender", "random_gender", "variation", "role", "ai_special",
 		"side", "underlying_id", "overlays", "facing", "race",
-		"level", "undead_variation", "max_attacks",
+		"level", "recall_cost", "undead_variation", "max_attacks",
 		"attacks_left", "alpha", "zoc", "flying", "cost",
 		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
@@ -506,8 +546,13 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 
 	BOOST_FOREACH(const config::attribute &attr, input_cfg.attribute_range()) {
 		if (attr.first == "do_not_list") continue;
-		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
+		WRN_UT << "Unknown attribute '" << attr.first << "' discarded." << std::endl;
 	}
+
+	//debug unit animations for units as they appear in game
+	/*for(std::vector<unit_animation>::const_iterator i = anim_comp_->animations_.begin(); i != anim_comp_->animations_.end(); ++i) {
+		std::cout << (*i).debug();
+	}*/
 }
 
 void unit::clear_status_caches()
@@ -521,77 +566,69 @@ void unit::clear_status_caches()
 }
 
 unit::unit(const unit_type &u_type, int side, bool real_unit,
-	unit_race::GENDER gender) :
-	cfg_(),
-	loc_(),
-	advances_to_(),
-	type_(&u_type),
-	type_name_(),
-	race_(&unit_race::null_race),
-	id_(),
-	name_(),
-	underlying_id_(real_unit? 0: n_unit::id_manager::instance().next_fake_id()),
-	undead_variation_(),
-	variation_(),
-	hit_points_(0),
-	max_hit_points_(0),
-	experience_(0),
-	max_experience_(0),
-	level_(0),
-	canrecruit_(false),
-	recruit_list_(),
-	alignment_(),
-	flag_rgb_(),
-	image_mods_(),
-	unrenamable_(false),
-	side_(side),
-	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit, NULL)),
-	alpha_(),
-	unit_formula_(),
-	unit_loop_formula_(),
-    unit_priority_formula_(),
-	formula_vars_(),
-	movement_(0),
-	max_movement_(0),
-	vision_(-1),
-	jamming_(0),
-	movement_type_(),
-	hold_position_(false),
-	end_turn_(false),
-	resting_(false),
-	attacks_left_(0),
-	max_attacks_(0),
-	states_(),
-	known_boolean_states_(known_boolean_state_names_.size(),false),
-	variables_(),
-	events_(),
-	filter_recall_(),
-	emit_zoc_(0),
-	state_(STATE_STANDING),
-	overlays_(),
-	role_(),
-	attacks_(),
-	facing_(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS)),
-	trait_names_(),
-	trait_descriptions_(),
-	unit_value_(),
-	goto_(),
-	interrupted_move_(),
-	is_fearless_(false),
-	is_healthy_(false),
-	modification_descriptions_(),
-	animations_(),
-	anim_(NULL),
-	next_idling_(0),
-	frame_begin_time_(0),
-	unit_halo_(halo::NO_HALO),
-	getsHit_(0),
-	refreshing_(false),
-	hidden_(false),
-	draw_bars_(false),
-	modifications_(),
-	invisibility_cache_()
+	unit_race::GENDER gender)
+	: ref_count_(0)
+	, cfg_()
+	, loc_()
+	, advances_to_()
+	, type_(&u_type)
+	, type_name_()
+	, race_(&unit_race::null_race)
+	, id_()
+	, name_()
+	, underlying_id_(real_unit? n_unit::unit_id(0) : n_unit::id_manager::instance().next_fake_id())
+	, undead_variation_()
+	, variation_(type_->default_variation())
+	, hit_points_(0)
+	, max_hit_points_(0)
+	, experience_(0)
+	, max_experience_(0)
+	, level_(0)
+	, recall_cost_(-1)
+	, canrecruit_(false)
+	, recruit_list_()
+	, alignment_()
+	, flag_rgb_()
+	, image_mods_()
+	, unrenamable_(false)
+	, side_(side)
+	, gender_(gender != unit_race::NUM_GENDERS ?
+		gender : generate_gender(u_type, real_unit))
+	, alpha_()
+	, formula_man_(new unit_formula_manager())
+	, movement_(0)
+	, max_movement_(0)
+	, vision_(-1)
+	, jamming_(0)
+	, movement_type_()
+	, hold_position_(false)
+	, end_turn_(false)
+	, resting_(false)
+	, attacks_left_(0)
+	, max_attacks_(0)
+	, states_()
+	, known_boolean_states_( get_known_boolean_state_names().size(),false)
+	, variables_()
+	, events_()
+	, filter_recall_()
+	, emit_zoc_(0)
+	, overlays_()
+	, role_()
+	, attacks_()
+	, facing_(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS))
+	, trait_names_()
+	, trait_descriptions_()
+	, unit_value_()
+	, goto_()
+	, interrupted_move_()
+	, is_fearless_(false)
+	, is_healthy_(false)
+	, modification_descriptions_()
+	, anim_comp_(new unit_animation_component(*this))
+	, getsHit_(0)
+	, hidden_(false)
+	, modifications_()
+	, invisibility_cache_()
 {
 	cfg_["upkeep"]="full";
 
@@ -611,9 +648,8 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 
 unit::~unit()
 {
-	clear_haloes();
-
-	delete anim_;
+	try {
+	anim_comp_->clear_haloes();
 
 	// Remove us from the status cache
 	std::vector<const unit *>::iterator itor =
@@ -622,37 +658,96 @@ unit::~unit()
 	if(itor != units_with_cache.end()) {
 		units_with_cache.erase(itor);
 	}
+	} catch (std::exception & e) {
+		ERR_UT << "Caught exception when destroying unit: " << e.what() << std::endl;
+	} catch (...) {}
 }
 
+/**
+ * Swap, for copy and swap idiom
+ */
+void unit::swap(unit & o)
+{
+	using std::swap;
 
+	// Don't swap reference count, or it will be incorrect...
+	swap(cfg_, o.cfg_);
+	swap(loc_, o.loc_);
+	swap(advances_to_, o.advances_to_);
+	swap(type_, o.type_);
+	swap(type_name_, o.type_name_);
+	swap(race_, o.race_);
+	swap(id_, o.id_);
+	swap(name_, o.name_);
+	swap(underlying_id_, o.underlying_id_);
+	swap(undead_variation_, o.undead_variation_);
+	swap(variation_, o.variation_);
+	swap(hit_points_, o.hit_points_);
+	swap(max_hit_points_, o.max_hit_points_);
+	swap(experience_, o.experience_);
+	swap(max_experience_, o.max_experience_);
+	swap(level_, o.level_);
+	swap(recall_cost_, o.recall_cost_);
+	swap(canrecruit_, o.canrecruit_);
+	swap(recruit_list_, o.recruit_list_);
+	swap(alignment_, o.alignment_);
+	swap(flag_rgb_, o.flag_rgb_);
+	swap(image_mods_, o.image_mods_);
+	swap(unrenamable_, o.unrenamable_);
+	swap(side_, o.side_);
+	swap(gender_, o.gender_);
+	swap(alpha_, o.alpha_);
+	swap(formula_man_, o.formula_man_);
+	swap(movement_, o.movement_);
+	swap(max_movement_, o.max_movement_);
+	swap(vision_, o.vision_);
+	swap(jamming_, o.jamming_);
+	swap(movement_type_, o.movement_type_);
+	swap(hold_position_, o.hold_position_);
+	swap(end_turn_, o.end_turn_);
+	swap(resting_, o.resting_);
+	swap(attacks_left_, o.attacks_left_);
+	swap(max_attacks_, o.max_attacks_);
+	swap(states_, o.states_);
+	swap(known_boolean_states_, o.known_boolean_states_);
+	swap(variables_, o.variables_);
+	swap(events_, o.events_);
+	swap(filter_recall_, o.filter_recall_);
+	swap(emit_zoc_, o.emit_zoc_);
+	swap(overlays_, o.overlays_);
+	swap(role_, o.role_);
+	swap(attacks_, o.attacks_);
+	swap(facing_, o.facing_);
+	swap(trait_names_, o.trait_names_);
+	swap(trait_descriptions_, o.trait_descriptions_);
+	swap(unit_value_, o.unit_value_);
+	swap(goto_, o.goto_);
+	swap(interrupted_move_, o.interrupted_move_);
+	swap(is_fearless_, o.is_fearless_);
+	swap(is_healthy_, o.is_healthy_);
+	swap(modification_descriptions_, o.modification_descriptions_);
+	swap(anim_comp_, o.anim_comp_);
+	swap(getsHit_, o.getsHit_);
+	swap(hidden_, o.hidden_);
+	swap(modifications_, o.modifications_);
+	swap(invisibility_cache_, o.invisibility_cache_);
+}
 
 /**
  * Assignment operator.
- *
- * This function is unsuitable for derived classes and MUST be overridden.
- * Furthermore, derived classes must not explicitly call this version.
- *
- * The overriding function can be almost the same, except "new (this)" should
- * be followed by the derived class instead of "unit(u)".
- * (There was only one derived class when this was written, so this approach
- * might be simplest.)
  */
-unit& unit::operator=(const unit& u)
+unit& unit::operator=(unit other)
 {
-	// Use copy constructor to make sure we are coherant
-	if (this != &u) {
-		this->~unit();
-		new (this) unit(u) ;
-	}
-	return *this ;
+	swap(other);
+	return *this;
 }
 
 
-void unit::generate_name(rand_rng::simple_rng* rng)
+void unit::generate_name()
 {
 	if (!name_.empty() || !cfg_["generate_name"].to_bool(true)) return;
 
-	name_ = race_->generate_name(gender_, rng);
+	name_ = race_->generate_name(gender_);
 	cfg_["generate_name"] = false;
 }
 
@@ -667,7 +762,7 @@ void unit::generate_name(rand_rng::simple_rng* rng)
  * Note that random numbers used in config files don't work in multiplayer,
  * so that leaders should be barred from all random traits until that
  * is fixed. Later the restrictions will be based on play balance.
- * @musthaveonly is true when you don't want to generate random traits or
+ * @a musthaveonly is true when you don't want to generate random traits or
  * you don't want to give any optional traits to a unit.
  */
 void unit::generate_traits(bool musthaveonly)
@@ -716,8 +811,7 @@ void unit::generate_traits(bool musthaveonly)
 	int max_traits = u_type.num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
-		int num = (resources::gamedata ? resources::gamedata->rng().get_next_random() : get_random_nocheck())
-		          % candidate_traits.size();
+		int num = random_new::generator->get_random_int(0,candidate_traits.size()-1);
 		modifications_.add_child("trait", candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
 	}
@@ -734,8 +828,9 @@ std::vector<std::string> unit::get_traits_list() const
 	BOOST_FOREACH(const config &mod, modifications_.child_range("trait"))
 	{
 			std::string const &id = mod["id"];
-			if (!id.empty())
-				res.push_back(id);
+			// Make sure to return empty id trait strings as otherwise
+			// names will not match in length (Bug #21967)
+			res.push_back(id);
 	}
 	return res;
 }
@@ -805,9 +900,18 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
+	recall_cost_ = new_type.recall_cost();
+	/* Need to add a check to see if the unit's old cost is equal
+	to the unit's old unit_type cost first.  If it is change the cost
+	otherwise keep the old cost. */
+	if(old_type.recall_cost() == recall_cost_) {
+		recall_cost_ = new_type.recall_cost();
+	}
 	alignment_ = new_type.alignment();
 	alpha_ = new_type.alpha();
 	max_hit_points_ = new_type.hitpoints();
+	hp_bar_scaling_ = new_type.hp_bar_scaling();
+	xp_bar_scaling_ = new_type.xp_bar_scaling();
 	max_movement_ = new_type.movement();
 	vision_ = new_type.vision(true);
 	jamming_ = new_type.jamming();
@@ -818,10 +922,9 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	max_attacks_ = new_type.max_attacks();
 
-	animations_ = new_type.animations();
-
 	flag_rgb_ = new_type.flag_rgb();
 
+	anim_comp_->reset_after_advance(&new_type);
 
 	if (cfg_["random_traits"].to_bool(true)) {
 		generate_traits(!use_traits);
@@ -850,12 +953,11 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 		hit_points_ = max_hit_points_;
 
 	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.child_range("event"), new_type.id());
-	cfg_.clear_children("event");
+	if (resources::game_events) {
+		resources::game_events->add_events(cfg_.child_range("event"), new_type.id());
+	}
 
-	refreshing_ = false;
-	delete anim_;
-	anim_ = NULL;
+	cfg_.clear_children("event");
 }
 
 std::string unit::big_profile() const
@@ -990,8 +1092,6 @@ void unit::set_advances_to(const std::vector<std::string>& advances_to)
 	advances_to_ = advances_to;
 }
 
-std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
-
 /**
  * Set the unit's remaining movement to @a moves.
  * If @a unit_action is set to true, then additionally the "end turn" and
@@ -1059,7 +1159,7 @@ void unit::expire_modifications(const std::string & duration)
 	}
 
 	if ( rebuild_from != NULL ) {
-		clear_haloes();
+		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
 	}
 }
@@ -1077,6 +1177,9 @@ void unit::new_turn()
 
 void unit::end_turn()
 {
+	expire_modifications("turn end");
+	expire_modifications("turn_end");
+
 	set_state(STATE_SLOWED,false);
 	if((movement_ != total_movement()) && !(get_state(STATE_NOT_MOVED))) {
 		resting_ = false;
@@ -1232,374 +1335,6 @@ void unit::remove_ability_by_id(const std::string &ability)
 	}
 }
 
-bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod) const
-{
-	bool matches = true;
-
-	if(loc.valid()) {
-		assert(resources::units != NULL);
-		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, *resources::units);
-		matches = internal_matches_filter(cfg, loc, use_flat_tod);
-	} else {
-		// If loc is invalid, then this is a recall list unit (already been scoped)
-		matches = internal_matches_filter(cfg, loc, use_flat_tod);
-	}
-
-	// Handle [and], [or], and [not] with in-order precedence
-	vconfig::all_children_iterator cond = cfg.ordered_begin();
-	vconfig::all_children_iterator cond_end = cfg.ordered_end();
-	while(cond != cond_end)
-	{
-
-		const std::string& cond_name = cond.get_key();
-		const vconfig& cond_filter = cond.get_child();
-
-		// Handle [and]
-		if(cond_name == "and") {
-			matches = matches && matches_filter(cond_filter,loc,use_flat_tod);
-		}
-		// Handle [or]
-		else if(cond_name == "or") {
-			matches = matches || matches_filter(cond_filter,loc,use_flat_tod);
-		}
-		// Handle [not]
-		else if(cond_name == "not") {
-			matches = matches && !matches_filter(cond_filter,loc,use_flat_tod);
-		}
-
-		++cond;
-	}
-	return matches;
-}
-
-bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod) const
-{
-	config::attribute_value cfg_name = cfg["name"];
-	if (!cfg_name.blank() && cfg_name.str() != name_) {
-		return false;
-	}
-
-	const config::attribute_value cfg_id = cfg["id"];
-	if (!cfg_id.blank()) {
-		const std::string& id = cfg_id;
-		const std::string& this_id = this->id();
-
-		if (id == this_id) {
-		}
-		else if ( id.find(',') == std::string::npos ){
-			return false;
-		}
-		else {
-			const std::vector<std::string>& ids = utils::split(id);
-			if (std::find(ids.begin(), ids.end(), this_id) == ids.end()) {
-				return false;
-			}
-		}
-	}
-
-	// Allow 'speaker' as an alternative to id, since people use it so often
-	config::attribute_value cfg_speaker = cfg["speaker"];
-	if (!cfg_speaker.blank() && cfg_speaker.str() != id()) {
-		return false;
-	}
-
-	if(cfg.has_child("filter_location")) {
-		assert(resources::game_map != NULL);
-		assert(resources::teams != NULL);
-		assert(resources::tod_manager != NULL);
-		assert(resources::units != NULL);
-		const vconfig& t_cfg = cfg.child("filter_location");
-		terrain_filter t_filter(t_cfg, *resources::units, use_flat_tod);
-		if(!t_filter.match(loc)) {
-			return false;
-		}
-	}
-
-	const vconfig& filter_side = cfg.child("filter_side");
-	if(!filter_side.null()) {
-		side_filter s_filter(filter_side);
-		if(!s_filter.match(this->side()))
-			return false;
-	}
-
-	// Also allow filtering on location ranges outside of the location filter
-	config::attribute_value cfg_x = cfg["x"];
-	config::attribute_value cfg_y = cfg["y"];
-	if (!cfg_x.blank() || !cfg_y.blank()){
-		if(cfg_x == "recall" && cfg_y == "recall") {
-			//locations on the map are considered to not be on a recall list
-			if ((!resources::game_map && loc.valid()) ||
-			    (resources::game_map && resources::game_map->on_board(loc)))
-			{
-				return false;
-			}
-		} else if(cfg_x.empty() && cfg_y.empty()) {
-			return false;
-		} else if(!loc.matches_range(cfg_x, cfg_y)) {
-			return false;
-		}
-	}
-
-	// The type could be a comma separated list of types
-	config::attribute_value cfg_type = cfg["type"];
-	if (!cfg_type.blank())
-	{
-		std::string type_ids = cfg_type.str();
-		const std::string& this_type = type_id();
-
-		// We only do the full CSV search if we find a comma in there,
-		// and if the subsequence is found within the main sequence.
-		// This is because doing the full CSV split is expensive.
-		if ( type_ids == this_type ) {
-			// pass
-		} else if ( type_ids.find(',') != std::string::npos  &&
-		            type_ids.find(this_type) != std::string::npos ) {
-			const std::vector<std::string>& vals = utils::split(type_ids);
-
-			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
-
-	config::attribute_value cfg_ability = cfg["ability"];
-	if (!cfg_ability.blank())
-	{
-		std::string ability = cfg_ability;
-		if(has_ability_by_id(ability)) {
-			// pass
-		} else if ( ability.find(',') != std::string::npos ) {
-			const std::vector<std::string>& vals = utils::split(ability);
-			bool has_ability = false;
-			for(std::vector<std::string>::const_iterator this_ability = vals.begin(); this_ability != vals.end(); ++this_ability) {
-				if(has_ability_by_id(*this_ability)) {
-					has_ability = true;
-					break;
-				}
-			}
-			if(!has_ability) {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
-
-	config::attribute_value cfg_race = cfg["race"];
-	if (!cfg_race.blank()) {
-		std::string race = cfg_race;
-
-		if(race != race_->id()) {
-			const std::vector<std::string>& vals = utils::split(race);
-			if(std::find(vals.begin(), vals.end(), race_->id()) == vals.end()) {
-				return false;
-			}
-		}
-	}
-
-	config::attribute_value cfg_gender = cfg["gender"];
-	if (!cfg_gender.blank() && string_gender(cfg_gender) != gender()) {
-		return false;
-	}
-
-	config::attribute_value cfg_side = cfg["side"];
-	if (!cfg_side.blank() && cfg_side.to_int() != side()) {
-		std::string side = cfg_side;
-		if ( side.find(',') == std::string::npos ) {
-			return false;
-		}
-		std::vector<std::string> vals = utils::split(side);
-		if (std::find(vals.begin(), vals.end(), str_cast(side_)) == vals.end()) {
-			return false;
-		}
-	}
-
-	config::attribute_value cfg_has_weapon = cfg["has_weapon"];
-	if (!cfg_has_weapon.blank()) {
-		std::string weapon = cfg_has_weapon;
-		bool has_weapon = false;
-		const std::vector<attack_type>& attacks = this->attacks();
-		for(std::vector<attack_type>::const_iterator i = attacks.begin();
-			i != attacks.end(); ++i) {
-			if(i->id() == weapon) {
-				has_weapon = true;
-				break;
-			}
-		}
-		if(!has_weapon) {
-			return false;
-		}
-	}
-
-	config::attribute_value cfg_role = cfg["role"];
-	if (!cfg_role.blank() && cfg_role.str() != role_) {
-		return false;
-	}
-
-	config::attribute_value cfg_ai_special = cfg["ai_special"];
-	if (!cfg_ai_special.blank() && ((cfg_ai_special.str() == "guardian")  != get_state(STATE_GUARDIAN))) {
-		return false;
-	}
-
-	config::attribute_value cfg_canrecruit = cfg["canrecruit"];
-	if (!cfg_canrecruit.blank() && cfg_canrecruit.to_bool() != can_recruit()) {
-		return false;
-	}
-
-	config::attribute_value cfg_level = cfg["level"];
-	if (!cfg_level.blank() && cfg_level.to_int(-1) != level_) {
-		return false;
-	}
-
-	config::attribute_value cfg_defense = cfg["defense"];
-	if (!cfg_defense.blank() && cfg_defense.to_int(-1) != defense_modifier(resources::game_map->get_terrain(loc))) {
-		return false;
-	}
-
-	config::attribute_value cfg_movement = cfg["movement_cost"];
-	if (!cfg_movement.blank() && cfg_movement.to_int(-1) != movement_cost(resources::game_map->get_terrain(loc))) {
-		return false;
-	}
-
-	// Now start with the new WML based comparison.
-	// If a key is in the unit and in the filter, they should match
-	// filter only => not for us
-	// unit only => not filtered
-	const vconfig::child_list& wmlcfgs = cfg.get_children("filter_wml");
-	if (!wmlcfgs.empty()) {
-		config unit_cfg;
-		for (unsigned i = 0; i < wmlcfgs.size(); ++i)
-		{
-			config fwml = wmlcfgs[i].get_parsed_config();
-			/* Check if the filter only cares about variables.
-			   If so, no need to serialize the whole unit. */
-			config::const_attr_itors ai = fwml.attribute_range();
-			config::all_children_itors ci = fwml.all_children_range();
-			if (std::distance(ai.first, ai.second) == 0 &&
-			    std::distance(ci.first, ci.second) == 1 &&
-			    ci.first->key == "variables") {
-				if (!variables_.matches(ci.first->cfg))
-					return false;
-			} else {
-				if (unit_cfg.empty())
-					write(unit_cfg);
-				if (!unit_cfg.matches(fwml))
-					return false;
-			}
-		}
-	}
-
-	if (cfg.has_child("filter_vision")) {
-		const vconfig::child_list& vis_filt = cfg.get_children("filter_vision");
-		vconfig::child_list::const_iterator i, i_end = vis_filt.end();
-		for (i = vis_filt.begin(); i != i_end; ++i) {
-			bool visible = (*i)["visible"].to_bool(true);
-			std::set<int> viewers;
-			if (i->has_attribute("viewing_side")) {
-				ERR_NG << "[filter_vision]viewing_side= is deprecated, use side=\n";
-				const int max_side = static_cast<int>(teams_manager::get_teams().size());
-				std::vector<std::pair<int,int> > ranges = utils::parse_ranges((*i)["viewing_side"]);
-				std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
-				for (range = ranges.begin(); range != range_end; ++range) {
-					for (int i=range->first; i<=range->second; ++i) {
-						if ( 0 < i  &&  i <= max_side ) {
-							viewers.insert(i);
-						}
-					}
-				}
-			} else {
-				// Use standard side filter
-				side_filter ssf(*i);
-				std::vector<int> sides = ssf.get_teams();
-				viewers.insert(sides.begin(), sides.end());
-			}
-			if (viewers.empty()) {
-				return false;
-			}
-			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
-			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
-				bool not_fogged = !teams_manager::get_teams()[*viewer - 1].fogged(loc);
-				bool not_hiding = !this->invisible(loc/*, false(?) */);
-				if (visible != not_fogged && not_hiding) {
-					return false;
-				}
-			}
-		}
-	}
-
-	if (cfg.has_child("filter_adjacent")) {
-		assert(resources::units && resources::game_map);
-		const unit_map& units = *resources::units;
-		map_location adjacent[6];
-		get_adjacent_tiles(loc, adjacent);
-		vconfig::child_list::const_iterator i, i_end;
-		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent");
-		for (i = adj_filt.begin(), i_end = adj_filt.end(); i != i_end; ++i) {
-			int match_count=0;
-			static std::vector<map_location::DIRECTION> default_dirs
-				= map_location::parse_directions("n,ne,se,s,sw,nw");
-			config::attribute_value i_adjacent = (*i)["adjacent"];
-			std::vector<map_location::DIRECTION> dirs = !i_adjacent.blank() ?
-				map_location::parse_directions(i_adjacent) : default_dirs;
-			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
-			for (j = dirs.begin(); j != j_end; ++j) {
-				unit_map::const_iterator unit_itor = units.find(adjacent[*j]);
-				if (unit_itor == units.end()
-				|| !unit_itor->matches_filter(*i, unit_itor->get_location(), use_flat_tod)) {
-					continue;
-				}
-				config::attribute_value i_is_enemy = (*i)["is_enemy"];
-				if (i_is_enemy.blank() || i_is_enemy.to_bool() ==
-				    teams_manager::get_teams()[this->side() - 1].is_enemy(unit_itor->side())) {
-					++match_count;
-				}
-			}
-			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
-			config::attribute_value i_count = (*i)["count"];
-			std::vector<std::pair<int,int> > counts = !i_count.blank()
-				? utils::parse_ranges(i_count) : default_counts;
-			if(!in_ranges(match_count, counts)) {
-				return false;
-			}
-		}
-	}
-
-	config::attribute_value cfg_find_in = cfg["find_in"];
-	if (!cfg_find_in.blank()) {
-		// Allow filtering by searching a stored variable of units
-		variable_info vi(cfg_find_in, false, variable_info::TYPE_CONTAINER);
-		if(!vi.is_valid) return false;
-		if(vi.explicit_index) {
-			config::const_child_iterator i = vi.vars->child_range(vi.key).first;
-			std::advance(i, vi.index);
-			if ((*i)["id"] != id_) {
-				return false;
-			}
-		} else {
-			if (!vi.vars->find_child(vi.key, "id", id_))
-				return false;
-		}
-	}
-	config::attribute_value cfg_formula = cfg["formula"];
-	if (!cfg_formula.blank()) {
-		const unit_callable callable(std::pair<map_location, unit>(loc,*this));
-		const game_logic::formula form(cfg_formula);
-		if(!form.evaluate(callable).as_bool()) {///@todo use formula_ai
-			return false;
-		}
-	}
-
-	config::attribute_value cfg_lua_function = cfg["lua_function"];
-	if (!cfg_lua_function.blank()) {
-		bool b = resources::lua_kernel->run_filter(cfg_lua_function.str().c_str(), *this);
-		if (!b) return false;
-	}
-
-	return true;
-}
-
 void unit::write(config& cfg) const
 {
 	cfg.append(cfg_);
@@ -1614,6 +1349,7 @@ void unit::write(config& cfg) const
 
 	cfg["experience"] = experience_;
 	cfg["max_experience"] = max_experience_;
+	cfg["recall_cost"] = recall_cost_;
 
 	cfg["side"] = side_;
 
@@ -1623,36 +1359,8 @@ void unit::write(config& cfg) const
 
 	//support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 
-	if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
+	formula_man_->write(cfg);
 
-		config &ai = cfg.add_child("ai");
-
-		if (has_formula())
-			ai["formula"] = unit_formula_;
-
-		if (has_loop_formula())
-			ai["loop_formula"] = unit_loop_formula_;
-
-		if (has_priority_formula())
-			ai["priority"] = unit_priority_formula_;
-
-
-		if (formula_vars_ && formula_vars_->empty() == false)
-		{
-			config &ai_vars = ai.add_child("vars");
-
-			std::string str;
-			for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
-			{
-				i->second.serialize_to_string(str);
-				if (!str.empty())
-				{
-					ai_vars[i->first] = str;
-					str.clear();
-				}
-			}
-		}
-	}
 
 	cfg["gender"] = gender_string(gender_);
 	cfg["variation"] = variation_;
@@ -1677,8 +1385,7 @@ void unit::write(config& cfg) const
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
-	cfg["underlying_id"] = str_cast(underlying_id_);
-
+	cfg["underlying_id"] = underlying_id_.value;
 	if(can_recruit())
 		cfg["canrecruit"] = true;
 
@@ -1702,22 +1409,7 @@ void unit::write(config& cfg) const
 	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
 	cfg["level"] = level_;
-	switch(alignment_) {
-		case unit_type::LAWFUL:
-			cfg["alignment"] = "lawful";
-			break;
-		case unit_type::NEUTRAL:
-			cfg["alignment"] = "neutral";
-			break;
-		case unit_type::CHAOTIC:
-			cfg["alignment"] = "chaotic";
-			break;
-		case unit_type::LIMINAL:
-			cfg["alignment"] = "liminal";
-			break;
-		default:
-			cfg["alignment"] = "neutral";
-	}
+	cfg["alignment"] = lexical_cast<std::string> (alignment_);
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
 	cfg["alpha"] = str_cast(alpha_);
@@ -1727,7 +1419,7 @@ void unit::write(config& cfg) const
 	cfg["zoc"] = emit_zoc_;
 	cfg.clear_children("attack");
 	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
-		cfg.add_child("attack",i->get_cfg());
+		i->write(cfg.add_child("attack"));
 	}
 	cfg["cost"] = unit_value_;
 	cfg.clear_children("modifications");
@@ -1735,380 +1427,11 @@ void unit::write(config& cfg) const
 
 }
 
-void unit::add_formula_var(std::string str, variant var) {
-	if(!formula_vars_) formula_vars_ = new game_logic::map_formula_callable;
-	formula_vars_->add(str, var);
-}
-
-const surface unit::still_image(bool scaled) const
-{
-	image::locator image_loc;
-
-#ifdef LOW_MEM
-	image_loc = image::locator(absolute_image());
-#else
-	std::string mods=image_mods();
-	if(!mods.empty()){
-		image_loc = image::locator(absolute_image(),mods);
-	} else {
-		image_loc = image::locator(absolute_image());
-	}
-#endif
-
-	surface unit_image(image::get_image(image_loc, scaled ? image::SCALED_TO_ZOOM : image::UNSCALED));
-	return unit_image;
-}
-
-void unit::set_standing(bool with_bars)
-{
-	display *disp = display::get_singleton();
-	if (preferences::show_standing_animations()&& !incapacitated()) {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "standing"),
-			with_bars,  "", 0, STATE_STANDING);
-	} else {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_"),
-			with_bars,  "", 0, STATE_STANDING);
-	}
-}
-
-void unit::set_ghosted(bool with_bars)
-{
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, loc_, "ghosted"),
-			with_bars);
-}
-
-void unit::set_disabled_ghosted(bool with_bars)
-{
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, loc_, "disabled_ghosted"),
-			with_bars);
-}
-
-void unit::set_idling()
-{
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, loc_, "idling"),
-		true, "", 0, STATE_FORGET);
-}
-
-void unit::set_selecting()
-{
-	const display *disp =  display::get_singleton();
-	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "selected"),
-			true, "", 0, STATE_FORGET);
-	} else {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_selected_"),
-			true, "", 0, STATE_FORGET);
-	}
-}
-
-void unit::start_animation(int start_time, const unit_animation *animation,
-	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
-{
-	const display * disp =  display::get_singleton();
-	if (!animation) {
-		if (state == STATE_STANDING)
-			state_ = state;
-		if (!anim_ && state_ != STATE_STANDING)
-			set_standing(with_bars);
-		return ;
-	}
-	state_ = state;
-	// everything except standing select and idle
-	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
-	draw_bars_ =  with_bars;
-	delete anim_;
-	anim_ = new unit_animation(*animation);
-	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
-	anim_->start_animation(real_start_time, loc_, loc_.get_direction(facing_),
-		 text, text_color, accelerate);
-	frame_begin_time_ = anim_->get_begin_time() -1;
-	if (disp->idle_anim()) {
-		next_idling_ = get_current_animation_tick()
-			+ static_cast<int>((20000 + rand() % 20000) * disp->idle_anim_rate());
-	} else {
-		next_idling_ = INT_MAX;
-	}
-}
-
-
-void unit::set_facing(map_location::DIRECTION dir) {
+void unit::set_facing(map_location::DIRECTION dir) const {
 	if(dir != map_location::NDIRECTIONS) {
 		facing_ = dir;
 	}
 	// Else look at yourself (not available so continue to face the same direction)
-}
-
-void unit::redraw_unit()
-{
-	display &disp = *display::get_singleton();
-	const gamemap &map = disp.get_map();
-
-	if ( hidden_ || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],disp.show_everything(),map) )
-	{
-		clear_haloes();
-		if(anim_) {
-			anim_->update_last_draw_time();
-		}
-		return;
-	}
-
-	if (!anim_) {
-		set_standing();
-		if (!anim_) return;
-	}
-
-	if (refreshing_) return;
-	refreshing_ = true;
-
-	anim_->update_last_draw_time();
-	frame_parameters params;
-	const t_translation::t_terrain terrain = map.get_terrain(loc_);
-	const terrain_type& terrain_info = map.get_terrain_info(terrain);
-	// do not set to 0 so we can distinguish the flying from the "not on submerge terrain"
-	// instead use -1.0 (as in "negative depth", it will be ignored by rendering)
-	params.submerge= is_flying() ? -1.0 : terrain_info.unit_submerge();
-
-	if (invisible(loc_) &&
-			params.highlight_ratio > 0.5) {
-		params.highlight_ratio = 0.5;
-	}
-	if (loc_ == disp.selected_hex() && params.highlight_ratio == 1.0) {
-		params.highlight_ratio = 1.5;
-	}
-	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
-	if (is_flying() && height_adjust < 0) {
-		height_adjust = 0;
-	}
-	params.y -= height_adjust;
-	params.halo_y -= height_adjust;
-
-	int red = 0,green = 0,blue = 0,tints = 0;
-	double blend_ratio = 0;
-	// Add future colored states here
-	if(get_state(STATE_POISONED)) {
-		green += 255;
-		blend_ratio += 0.25;
-		tints += 1;
-	}
-	if(get_state(STATE_SLOWED)) {
-		red += 191;
-		green += 191;
-		blue += 255;
-		blend_ratio += 0.25;
-		tints += 1;
-	}
-	if(tints > 0) {
-		params.blend_with = disp.rgb((red/tints),(green/tints),(blue/tints));
-		params.blend_ratio = ((blend_ratio/tints));
-	}
-
-	//hackish : see unit_frame::merge_parameters
-	// we use image_mod on the primary image
-	// and halo_mod on secondary images and all haloes
-	params.image_mod = image_mods();
-	params.halo_mod = TC_image_mods();
-	params.image= absolute_image();
-
-
-	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
-	params.primary_frame = t_true;
-
-	const frame_parameters adjusted_params = anim_->get_current_params(params);
-
-
-
-	const map_location dst = loc_.get_direction(facing_);
-	const int xsrc = disp.get_location_x(loc_);
-	const int ysrc = disp.get_location_y(loc_);
-	const int xdst = disp.get_location_x(dst);
-	const int ydst = disp.get_location_y(dst);
-	int d2 = disp.hex_size() / 2;
-
-
-
-
-	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + d2;
-	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + d2;
-
-
-	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
-		unit_halo_ = halo::add(0, 0, image_halo()+TC_image_mods(), map_location(-1, -1));
-	}
-	if(unit_halo_ != halo::NO_HALO && image_halo().empty()) {
-		halo::remove(unit_halo_);
-		unit_halo_ = halo::NO_HALO;
-	} else if(unit_halo_ != halo::NO_HALO) {
-		halo::set_location(unit_halo_, x, y - height_adjust);
-	}
-
-
-
-	// We draw bars only if wanted, visible on the map view
-	bool draw_bars = draw_bars_ ;
-	if (draw_bars) {
-		const int d = disp.hex_size();
-		SDL_Rect unit_rect = create_rect(xsrc, ysrc +adjusted_params.y, d, d);
-		draw_bars = rects_overlap(unit_rect, disp.map_outside_area());
-	}
-
-	surface ellipse_front(NULL);
-	surface ellipse_back(NULL);
-	int ellipse_floating = 0;
-	if(draw_bars && preferences::show_side_colors()) {
-		if(adjusted_params.submerge > 0.0) {
-			// The division by 2 seems to have no real meaning,
-			// It just works fine with the current center of ellipse
-			// and prevent a too large adjust if submerge = 1.0
-			ellipse_floating = static_cast<int>(adjusted_params.submerge * disp.hex_size() / 2);
-		}
-
-		std::string ellipse=image_ellipse();
-		if(ellipse.empty()){
-			ellipse="misc/ellipse";
-		}
-
-		const char* const selected = disp.selected_hex() == loc_ ? "selected-" : "";
-
-		// Load the ellipse parts recolored to match team color
-		char buf[100];
-		std::string tc=team::get_side_color_index(side_);
-
-		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),selected,tc.c_str());
-		ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
-		snprintf(buf,sizeof(buf),"%s-%sbottom.png~RC(ellipse_red>%s)",ellipse.c_str(),selected,tc.c_str());
-		ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
-	}
-
-	if (ellipse_back != NULL) {
-		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
-			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
-	}
-
-	if (ellipse_front != NULL) {
-		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
-			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
-	}
-	if(draw_bars) {
-		const image::locator* orb_img = NULL;
-		static const image::locator enemy_orb(game_config::images::enemy_orb);
-		static const image::locator ally_orb(game_config::images::ally_orb);
-		static const image::locator moved_orb(game_config::images::moved_orb);
-		static const image::locator unmoved_orb(game_config::images::unmoved_orb);
-		static const image::locator partmoved_orb(game_config::images::partmoved_orb);
-
-		const std::string* energy_file = &game_config::images::energy;
-
-		if(size_t(side()) != disp.viewing_team()+1) {
-			if(disp.team_valid() &&
-			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				orb_img = &enemy_orb;
-			} else {
-				orb_img = &ally_orb;
-			}
-		} else {
-			orb_img = &moved_orb;
-			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
-				if (movement_left() == total_movement()) {
-					orb_img = &unmoved_orb;
-				} else if ( actions::unit_can_move(*this) ) {
-					orb_img = &partmoved_orb;
-				}
-			}
-		}
-
-		assert(orb_img != NULL);
-		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
-		if (orb != NULL) {
-			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc_, xsrc, ysrc +adjusted_params.y, orb);
-		}
-
-		double unit_energy = 0.0;
-		if(max_hitpoints() > 0) {
-			unit_energy = double(hitpoints())/double(max_hitpoints());
-		}
-		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
-		const int hp_bar_height = static_cast<int>(max_hitpoints()*game_config::hp_bar_scaling);
-
-		const fixed_t bar_alpha = (loc_ == disp.mouseover_hex() || loc_ == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
-
-		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc +adjusted_params.y,
-			loc_, hp_bar_height, unit_energy,hp_color(), bar_alpha);
-
-		if(experience() > 0 && can_advance()) {
-			const double filled = double(experience())/double(max_experience());
-
-			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / std::max<int>(level_,1));
-
-			SDL_Color color=xp_color();
-			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
-				loc_, xp_bar_height, filled, color, bar_alpha);
-		}
-
-		if (can_recruit()) {
-			surface crown(image::get_image("misc/leader-crown.png",image::SCALED_TO_ZOOM));
-			if(!crown.null()) {
-				//if(bar_alpha != ftofxp(1.0)) {
-				//	crown = adjust_surface_alpha(crown, bar_alpha);
-				//}
-				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, xsrc, ysrc +adjusted_params.y, crown);
-			}
-		}
-
-		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
-			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
-			if(ov_img != NULL) {
-				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, xsrc, ysrc +adjusted_params.y, ov_img);
-			}
-		}
-	}
-
-	anim_->redraw(params);
-	refreshing_ = false;
-}
-
-void unit::clear_haloes()
-{
-	if(unit_halo_ != halo::NO_HALO) {
-		halo::remove(unit_halo_);
-		unit_halo_ = halo::NO_HALO;
-	}
-	if(anim_ ) anim_->clear_haloes();
-}
-bool unit::invalidate(const map_location &loc)
-{
-	bool result = false;
-
-	// Very early calls, anim not initialized yet
-	if(get_animation()) {
-		frame_parameters params;
-		const display * disp =  display::get_singleton();
-		const gamemap & map = disp->get_map();
-		const t_translation::t_terrain terrain = map.get_terrain(loc);
-		const terrain_type& terrain_info = map.get_terrain_info(terrain);
-
-		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp->get_zoom_factor());
-		if (is_flying() && height_adjust < 0) {
-			height_adjust = 0;
-		}
-		params.y -= height_adjust;
-		params.halo_y -= height_adjust;
-		params.image_mod = image_mods();
-		params.halo_mod = TC_image_mods();
-		params.image= absolute_image();
-
-		result |= get_animation()->invalidate(params);
-	}
-
-	return result;
-
 }
 
 int unit::upkeep() const
@@ -2151,7 +1474,7 @@ int unit::defense_modifier(const t_translation::t_terrain & terrain) const
 
 bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
 {
-	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
+	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
 		return false;
 	}
 	const std::string& apply_to = cfg["apply_to"];
@@ -2228,7 +1551,7 @@ std::map<std::string,std::string> unit::advancement_icons() const
 std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 {
 	std::vector<std::pair<std::string,std::string> > temp;
-	std::pair<std::string,std::string> icon; //<image,tooltip>
+	std::pair<std::string,std::string> icon; // <image,tooltip>
 
 	BOOST_FOREACH(const config &adv, get_modification_advances())
 	{
@@ -2281,6 +1604,15 @@ std::vector<config> unit::get_modification_advances() const
 	return res;
 }
 
+void unit::set_advancements(std::vector<config> advancements)
+{
+	cfg_.clear_children("advancement");
+	BOOST_FOREACH(config& advancement, advancements)
+	{
+		cfg_.add_child("advancement").swap(advancement);
+	}
+}
+
 size_t unit::modification_count(const std::string& mod_type, const std::string& id) const
 {
 	size_t res = 0;
@@ -2295,12 +1627,7 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
-	//some trait activate specific flags
-	if ( mod_type == "trait" ) {
-		const std::string& id = mod["id"];
-		is_fearless_ = is_fearless_ || id == "fearless";
-		is_healthy_ = is_healthy_ || id == "healthy";
-	}
+	bool generate_description = mod["generate_description"].to_bool(true);
 
 	config *new_child = NULL;
 	if(no_add == false) {
@@ -2313,7 +1640,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	{
 		// Apply SUF.
 		if (const config &afilter = effect.child("filter"))
-			if (!matches_filter(vconfig(afilter), loc_)) continue;
+			if (!unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) continue;
 
 		const std::string &apply_to = effect["apply_to"];
 		const std::string &apply_times = effect["times"];
@@ -2330,7 +1657,16 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
 					set_poisoned = false;
 					last_effect = effect;
-				} else if(apply_to == "profile") {
+				}
+				else if(apply_to == "fearless")
+				{
+					is_fearless_ = effect["set"].to_bool(true);
+				}
+				else if(apply_to == "healthy")
+				{
+					is_healthy_ = effect["set"].to_bool(true);
+				} 
+				else if(apply_to == "profile") {
 					if (const config::attribute_value *v = effect.get("portrait")) {
 						std::string big = *v, small = effect["small_portrait"];
 						adjust_profile(small, big, "");
@@ -2549,21 +1885,12 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					game_config::add_color_info(effect);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					if(effect["id"].empty()) {
-						unit_animation::add_anims(animations_, effect);
-					} else {
-						std::vector<unit_animation> &built = resources::controller->animation_cache[effect["id"]];
-						if(built.empty()) {
-							unit_animation::add_anims(built, effect);
-						}
-						animations_.insert(animations_.end(),built.begin(),built.end());
-					}
-
+					anim_comp_->apply_new_animation_effect(effect);
 				} else if (apply_to == "ellipse") {
 					cfg_["ellipse"] = effect["ellipse"];
 
 				} else if (apply_to == "halo") {
-					clear_haloes();
+					anim_comp_->clear_haloes();
 					cfg_["halo"] = effect["halo"];
 
 				} else if (apply_to == "overlay") {
@@ -2653,11 +1980,11 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					heal_all();
 				}
 			} else {
-				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring\n";
+				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
 			}
 		}
 		if ( set_poisoned )
-			// An effect explictly set the poisoned state, and this
+			// An effect explicitly set the poisoned state, and this
 			// should override the unit being immune to poison.
 			set_state(STATE_POISONED, true);
 	}
@@ -2671,7 +1998,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 	// Punctuation should be translatable: not all languages use Latin punctuation.
 	// (However, there maybe is a better way to do it)
-	if(effects_description.empty() == false) {
+	if(effects_description.empty() == false && generate_description == true) {
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
 			description += *i;
@@ -2708,30 +2035,9 @@ std::string unit::absolute_image() const {
 	return cfg_["image_icon"].empty() ? cfg_["image"] : cfg_["image_icon"];
 }
 
-const unit_animation* unit::choose_animation(const display& disp, const map_location& loc,const std::string& event,
-		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
-		const attack_type* attack, const attack_type* second_attack, int swing_num) const
-{
-	// Select one of the matching animations at random
-	std::vector<const unit_animation*> options;
-	int max_val = unit_animation::MATCH_FAIL;
-	for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,second_loc,this,event,value,hit,attack,second_attack,swing_num);
-		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.clear();
-			options.push_back(&*i);
-		}
-	}
-
-	if(max_val == unit_animation::MATCH_FAIL) {
-		return NULL;
-	}
-	return options[rand()%options.size()];
+std::string unit::default_anim_image() const {
+	return cfg_["image"].empty() ? cfg_["image_icon"] : cfg_["image"];
 }
-
 
 void unit::apply_modifications()
 {
@@ -2746,12 +2052,21 @@ void unit::apply_modifications()
 	}
 
 	//apply the experience acceleration last
-	int exp_accel = unit_type::experience_accelerator::get_acceleration();
+	int exp_accel = unit_experience_accelerator::get_acceleration();
 	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
 bool unit::invisible(const map_location& loc, bool see_all) const
 {
+	if (loc != get_location()) {
+		DBG_UT << "unit::invisible called: id = " << id() << " loc = " << loc << " get_loc = " << get_location() << std::endl;
+	}
+
+	// This is a quick condition to check, and it does not depend on the
+	// location (so might as well bypass the location-based cache).
+	if ( get_state(STATE_UNCOVERED) )
+		return false;
+
 	// Fetch from cache
 	/**
 	 * @todo FIXME: We use the cache only when using the default see_all=true
@@ -2766,25 +2081,9 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = !get_state(STATE_UNCOVERED) && get_ability_bool(hides,loc);
+	bool is_inv = get_ability_bool(hides,loc);
 	if(is_inv){
-		const std::vector<team>& teams = *resources::teams;
-		BOOST_FOREACH(const unit &u, *resources::units)
-		{
-			const map_location &u_loc = u.get_location();
-			if (teams[side_-1].is_enemy(u.side()) && !u.incapacitated() && tiles_adjacent(loc, u_loc)) {
-				// Enemy spotted in adjacent tiles, check if we can see him.
-				// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
-				if(see_all) {
-					is_inv = false;
-					break;
-				} else if (!teams[side_-1].fogged(u_loc)
-				&& !u.invisible(u_loc, true)) {
-					is_inv = false;
-					break;
-				}
-			}
-		}
+		is_inv = (resources::gameboard ? !resources::gameboard->would_be_discovered(loc, side_,see_all) : true);
 	}
 
 	if(see_all) {
@@ -2799,7 +2098,7 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 }
 
 
-bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap const& map) const
+bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const see_all) const
 {
 	map_location const& loc = get_location();
 	if (!map.on_board(loc))
@@ -2808,21 +2107,26 @@ bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap cons
 		return true;
 	if (team.is_enemy(side()) && invisible(loc))
 		return false;
-	if (team.is_enemy(side()) && team.fogged(loc))
+	// allied planned moves are also visible under fog. (we assume that fake units on the map are always whiteboard markers)
+	if (!team.is_enemy(side()) && underlying_id_.is_fake())
+		return true;
+	if (team.fogged(loc))
 		return false;
-	if (team.fogged(loc)  && !(*resources::teams)[side() - 1].share_view())
-		return false;
-
 	return true;
 }
 
 void unit::set_underlying_id() {
-	if(underlying_id_ == 0){
-		underlying_id_ = n_unit::id_manager::instance().next_id();
+	if(underlying_id_.value == 0) {
+		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
+			underlying_id_ = n_unit::id_manager::instance().next_id();
+		}
+		else {
+			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+		}
 	}
-	if (id_.empty()) {
+	if (id_.empty() /*&& !underlying_id_.is_fake()*/) {
 		std::stringstream ss;
-		ss << (type_id().empty() ? "Unit" : type_id()) << "-" << underlying_id_;
+		ss << (type_id().empty() ? "Unit" : type_id()) << "-" << underlying_id_.value;
 		id_ = ss.str();
 	}
 }
@@ -2832,12 +2136,17 @@ unit& unit::clone(bool is_temporary)
 	if(is_temporary) {
 		underlying_id_ = n_unit::id_manager::instance().next_fake_id();
 	} else {
-		underlying_id_ = n_unit::id_manager::instance().next_id();
+		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
+			underlying_id_ = n_unit::id_manager::instance().next_id();
+		}
+		else {
+			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+		}
 		std::string::size_type pos = id_.find_last_of('-');
 		if(pos != std::string::npos && pos+1 < id_.size()
 		&& id_.find_first_not_of("0123456789", pos+1) == std::string::npos) {
 			// this appears to be a duplicate of a generic unit, so give it a new id
-			WRN_UT << "assigning new id to clone of generic unit " << id_ << "\n";
+			WRN_UT << "assigning new id to clone of generic unit " << id_ << std::endl;
 			id_.clear();
 			set_underlying_id();
 		}
@@ -2857,6 +2166,7 @@ unit_movement_resetter::unit_movement_resetter(unit &u, bool operate) :
 unit_movement_resetter::~unit_movement_resetter()
 {
 	assert(resources::units);
+	try {
 
 	if(!resources::units->has_unit(&u_)) {
 		/*
@@ -2866,210 +2176,15 @@ unit_movement_resetter::~unit_movement_resetter()
 		DBG_UT << "The unit to be removed is not in the unit map.\n";
 	}
 	u_.set_movement(moves_);
+
+	} catch (...) {}
 }
 
 bool unit::matches_id(const std::string& unit_id) const
 {
-        return id_ == unit_id;
+	return id_ == unit_id;
 }
 
-/**
- * Used to find units in vectors by their ID. (Convenience wrapper)
- * @returns what std::find_if() returns.
- */
-std::vector<unit>::iterator find_if_matches_id(
-		std::vector<unit> &unit_list, // Not const so we can get a non-const iterator to return.
-		const std::string &unit_id)
-{
-	return std::find_if(unit_list.begin(), unit_list.end(),
-	                    boost::bind(&unit::matches_id, _1, unit_id));
-}
-
-/**
- * Used to find units in vectors by their ID. (Convenience wrapper; const version)
- * @returns what std::find_if() returns.
- */
-std::vector<unit>::const_iterator find_if_matches_id(
-		const std::vector<unit> &unit_list,
-		const std::string &unit_id)
-{
-	return std::find_if(unit_list.begin(), unit_list.end(),
-	                    boost::bind(&unit::matches_id, _1, unit_id));
-}
-
-/**
- * Used to erase units from vectors by their ID. (Convenience wrapper)
- * @returns what std::vector<>::erase() returns.
- */
-std::vector<unit>::iterator erase_if_matches_id(
-		std::vector<unit> &unit_list,
-		const std::string &unit_id)
-{
-	return unit_list.erase(std::remove_if(unit_list.begin(), unit_list.end(),
-	                                      boost::bind(&unit::matches_id, _1, unit_id)),
-	                       unit_list.end());
-}
-
-int side_units(int side)
-{
-	int res = 0;
-	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.side() == side) ++res;
-	}
-	return res;
-}
-
-int side_units_cost(int side)
-{
-	int res = 0;
-	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.side() == side) res += u.cost();
-	}
-	return res;
-}
-
-int side_upkeep(int side)
-{
-	int res = 0;
-	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.side() == side) res += u.upkeep();
-	}
-	return res;
-}
-
-unit_map::iterator find_visible_unit(const map_location &loc,
-	const team& current_team, bool see_all)
-{
-	unit_map& units = *resources::units;
-	if (!resources::game_map->on_board(loc)) return units.end();
-	unit_map::iterator u = units.find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, see_all))
-		return units.end();
-	return u;
-}
-
-unit *get_visible_unit(const map_location &loc,
-	const team &current_team, bool see_all)
-{
-	unit_map::iterator ui = find_visible_unit(loc,
-		current_team, see_all);
-	if (ui == resources::units->end()) return NULL;
-	return &*ui;
-}
-
-void unit::refresh()
-{
-	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
-	{
-		set_standing();
-		return;
-	}
-	display &disp = *display::get_singleton();
-	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
-	    !disp.tile_nearly_on_screen(loc_) || incapacitated())
-	{
-		return;
-	}
-	if (get_current_animation_tick() > next_idling_ + 1000)
-	{
-		// prevent all units animating at the same time
-		if (disp.idle_anim()) {
-			next_idling_ = get_current_animation_tick()
-				+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
-		} else {
-			next_idling_ = INT_MAX;
-		}
-	} else {
-		set_idling();
-	}
-}
-
-team_data calculate_team_data(const team& tm, int side)
-{
-	team_data res;
-	res.units = side_units(side);
-	res.upkeep = side_upkeep(side);
-	res.villages = tm.villages().size();
-	res.expenses = std::max<int>(0,res.upkeep - tm.support());
-	res.net_income = tm.total_income() - res.expenses;
-	res.gold = tm.gold();
-	res.teamname = tm.user_team_name();
-	return res;
-}
-
-temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
-	: m_(m), loc_(loc), temp_(m.extract(loc))
-{
-	u.clone();
-	m.add(loc, u);
-}
-
-temporary_unit_placer::~temporary_unit_placer()
-{
-	m_.erase(loc_);
-	if(temp_) {
-		m_.insert(temp_);
-	}
-}
-
-temporary_unit_remover::temporary_unit_remover(unit_map& m, const map_location& loc)
-	: m_(m), loc_(loc), temp_(m.extract(loc))
-{
-}
-
-temporary_unit_remover::~temporary_unit_remover()
-{
-	if(temp_) {
-		m_.insert(temp_);
-	}
-}
-
-/**
- * Constructor
- * This version will change the unit's current movement to @a new_moves while
- * the unit is moved (and restored to its previous value upon this object's
- * destruction).
- */
-temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
-                                           const map_location& dst, int new_moves)
-	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? NULL : m.extract(dst))
-{
-	std::pair<unit_map::iterator, bool> move_result = m.move(src_, dst_);
-
-	// Set the movement.
-	if ( move_result.second )
-	{
-		old_moves_ = move_result.first->movement_left(true);
-		move_result.first->set_movement(new_moves);
-	}
-}
-
-/**
- * Constructor
- * This version does not change (nor restore) the unit's movement.
- */
-temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
-                                           const map_location& dst)
-	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? NULL : m.extract(dst))
-{
-	m.move(src_, dst_);
-}
-
-temporary_unit_mover::~temporary_unit_mover()
-{
-	std::pair<unit_map::iterator, bool> move_result = m_.move(dst_, src_);
-
-	// Restore the movement?
-	if ( move_result.second  &&  old_moves_ >= 0 )
-		move_result.first->set_movement(old_moves_);
-
-	// Restore the extracted unit?
-	if(temp_) {
-		m_.insert(temp_);
-	}
-}
 
 std::string unit::TC_image_mods() const{
 	std::stringstream modifier;
@@ -3091,20 +2206,6 @@ const std::string& unit::effect_image_mods() const{
 	return image_mods_;
 }
 
-const tportrait* unit::portrait(
-		const unsigned size, const tportrait::tside side) const
-{
-	BOOST_FOREACH(const tportrait& portrait, type().portraits() ) {
-		if(portrait.size == size
-				&& (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
-
-			return &portrait;
-		}
-	}
-
-	return NULL;
-}
-
 void unit::remove_attacks_ai()
 {
 	if (attacks_left_ == max_attacks_) {
@@ -3112,7 +2213,6 @@ void unit::remove_attacks_ai()
 	}
 	set_attacks(0);
 }
-
 
 void unit::remove_movement_ai()
 {
@@ -3123,11 +2223,11 @@ void unit::remove_movement_ai()
 }
 
 
-void unit::set_hidden(bool state) {
+void unit::set_hidden(bool state) const {
 	hidden_ = state;
 	if(!state) return;
 	// We need to get rid of haloes immediately to avoid display glitches
-	clear_haloes();
+	anim_comp_->clear_haloes();
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of
@@ -3146,6 +2246,7 @@ std::string get_checksum(const unit& u) {
 		"ignore_race_traits",
 		"ignore_global_traits",
 		"level",
+		"recall_cost",
 		"max_attacks",
 		"max_experience",
 		"max_hitpoints",

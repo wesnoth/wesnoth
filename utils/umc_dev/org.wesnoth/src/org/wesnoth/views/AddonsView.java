@@ -293,124 +293,134 @@ public class AddonsView extends ViewPart
         }
 
         if( cmbAddonServer_.getSelectionIndex( ) == - 1 ) {
-            return;
+            currentPort_ = cmbAddonServer_.getText( );
+        }
+        else {
+            currentPort_ = ports_.get( cmbAddonServer_.getSelectionIndex( ) );
         }
 
-        currentPort_ = ports_.get( cmbAddonServer_.getSelectionIndex( ) );
         if( StringUtils.isNullOrEmpty( currentPort_ ) ) {
             return;
         }
+
+        int portNumber;
+        try {
+            portNumber = Integer.parseInt( currentPort_ );
+        } catch( NumberFormatException e ) {
+            GUIUtils.showInfoMessageBox( "Invalid port: " + currentPort_ );
+            return;
+        }
+
+        currentPort_ = String.valueOf( portNumber );
 
         loading_ = true;
         tableAddons_.setItemCount( 0 );
         tableAddons_.clearAll( );
 
-        if( ! StringUtils.isNullOrEmpty( currentPort_ ) ) {
-            WorkspaceJob loadAddons = new WorkspaceJob( "Retrieving list..." ) {
+        WorkspaceJob loadAddons = new WorkspaceJob( "Retrieving list..." ) {
 
-                @Override
-                public IStatus runInWorkspace( IProgressMonitor monitor )
-                    throws CoreException
-                {
-                    monitor.beginTask( "Retrieving list...", 100 );
-                    monitor.worked( 10 );
+            @Override
+            public IStatus runInWorkspace( IProgressMonitor monitor )
+                throws CoreException
+            {
+                monitor.beginTask( "Retrieving list...", 100 );
+                monitor.worked( 10 );
 
-                    String installName = Preferences.getDefaultInstallName( );
+                String installName = Preferences.getDefaultInstallName( );
 
-                    OutputStream stderr = GUIUtils.createConsole(
-                        "Wesnoth Addon Manager", null, false )
-                        .newOutputStream( );
+                OutputStream stderr = GUIUtils.createConsole(
+                    "Wesnoth Addon Manager", null, false )
+                    .newOutputStream( );
 
-                    ExternalToolInvoker tool = WMLTools.runWesnothAddonManager(
-                        installName, null, currentPort_,
-                        Arrays.asList( "-w", "-l" ), // list addons in raw
-                                                     // mode
-                        null, new OutputStream[] { stderr } );
-                    tool.waitForTool( );
+                ExternalToolInvoker tool = WMLTools.runWesnothAddonManager(
+                    installName, null, currentPort_,
+                    Arrays.asList( "-w", "-l" ), // list addons in raw
+                                                 // mode
+                    null, new OutputStream[] { stderr } );
+                tool.waitForTool( );
 
-                    /**
-                     * parse the contents columns = [[" 0 - type", "1 - name",
-                     * "2 - title", "3 - author", "4 - version", "uploads",
-                     * "5 - downloads", "size", "timestamp", "translate"]]
-                     */
-                    final String[] lines = StringUtils.getLines( tool
-                        .getOutputContent( ) );
-                    final List< String[] > addons = new ArrayList< String[] >( );
+                /**
+                 * parse the contents columns = [[" 0 - type", "1 - name",
+                 * "2 - title", "3 - author", "4 - version", "uploads",
+                 * "5 - downloads", "size", "timestamp", "translate"]]
+                 */
+                final String[] lines = StringUtils.getLines( tool
+                    .getOutputContent( ) );
+                final List< String[] > addons = new ArrayList< String[] >( );
 
-                    String[] tmpColumns = null;
-                    int index = - 1;
+                String[] tmpColumns = null;
+                int index = - 1;
 
-                    for( String line: lines ) {
-                        index = - 1;
+                for( String line: lines ) {
+                    index = - 1;
 
-                        if( line.startsWith( "\\ campaign" ) ) {
-                            if( tmpColumns != null ) {
-                                addons.add( tmpColumns );
-                            }
-                            tmpColumns = new String[6];
+                    if( line.startsWith( "\\ campaign" ) ) {
+                        if( tmpColumns != null ) {
+                            addons.add( tmpColumns );
                         }
-                        else if( line.startsWith( "  \\ type" ) ) {
-                            index = 0;
-                        }
-                        else if( line.startsWith( "  \\ name" ) ) {
-                            index = 1;
-                        }
-                        else if( line.startsWith( "  \\ title" ) ) {
-                            index = 2;
-                        }
-                        else if( line.startsWith( "  \\ author" ) ) {
-                            index = 3;
-                        }
-                        else if( line.startsWith( "  \\ version" ) ) {
-                            index = 4;
-                        }
-                        else if( line.startsWith( "  \\ downloads" ) ) {
-                            index = 5;
-                        }
-
-                        // got something interesting? parse it
-                        if( tmpColumns != null && index != - 1 ) {
-                            int firstIndex = line.indexOf( '\'' ) + 1;
-                            int lastIndex = line.lastIndexOf( '\'' );
-
-                            if( lastIndex < firstIndex ) {
-                                lastIndex = line.length( );
-                            }
-
-                            tmpColumns[index] = line.substring(
-                                firstIndex,
-                                lastIndex ).trim( );
-                        }
+                        tmpColumns = new String[6];
+                    }
+                    else if( line.startsWith( "  \\ type" ) ) {
+                        index = 0;
+                    }
+                    else if( line.startsWith( "  \\ name" ) ) {
+                        index = 1;
+                    }
+                    else if( line.startsWith( "  \\ title" ) ) {
+                        index = 2;
+                    }
+                    else if( line.startsWith( "  \\ author" ) ) {
+                        index = 3;
+                    }
+                    else if( line.startsWith( "  \\ version" ) ) {
+                        index = 4;
+                    }
+                    else if( line.startsWith( "  \\ downloads" ) ) {
+                        index = 5;
                     }
 
-                    // need GUI Thread access
-                    Display.getDefault( ).syncExec( new Runnable( ) {
-                        @Override
-                        public void run( )
-                        {
-                            // skipp 1st line since it's just the header
-                            for( String[] addon: addons ) {
+                    // got something interesting? parse it
+                    if( tmpColumns != null && index != - 1 ) {
+                        int firstIndex = line.indexOf( '\'' ) + 1;
+                        int lastIndex = line.lastIndexOf( '\'' );
 
-                                TableItem tableItem = new TableItem(
-                                    tableAddons_, SWT.NONE );
-                                tableItem.setText( new String[] { addon[0],
-                                    addon[1], addon[2], addon[3], addon[4],
-                                    addon[5] } );
-
-                            }
-
-                            tableAddons_.forceFocus( );
+                        if( lastIndex < firstIndex ) {
+                            lastIndex = line.length( );
                         }
-                    } );
-                    loading_ = false;
 
-                    monitor.worked( 100 );
-                    monitor.done( );
-                    return Status.OK_STATUS;
+                        tmpColumns[index] = line.substring(
+                            firstIndex,
+                            lastIndex ).trim( );
+                    }
                 }
-            };
-            loadAddons.schedule( );
-        }
+
+                // need GUI Thread access
+                Display.getDefault( ).syncExec( new Runnable( ) {
+                    @Override
+                    public void run( )
+                    {
+                        // skipp 1st line since it's just the header
+                        for( String[] addon: addons ) {
+
+                            TableItem tableItem = new TableItem(
+                                tableAddons_, SWT.NONE );
+                            tableItem.setText( new String[] { addon[0],
+                                addon[1], addon[2], addon[3], addon[4],
+                                addon[5] } );
+
+                        }
+
+                        tableAddons_.forceFocus( );
+                    }
+                } );
+                loading_ = false;
+
+                monitor.worked( 100 );
+                monitor.done( );
+                return Status.OK_STATUS;
+            }
+        };
+        loadAddons.schedule( );
     }
 
     @Override

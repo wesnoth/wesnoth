@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -112,28 +112,28 @@ void enable_connection_through_proxy();
 /**
  * Set the address of the proxy. Default: "localhost".
  *
- * @param address: Network address where the proxy server should be running.
+ * @param address Network address where the proxy server should be running.
  */
 void set_proxy_address ( const std::string& address  );
 
 /**
  * Set the port of the proxy. Default: "3128".
  *
- * @param port: Network port where the proxy server should be listening.
+ * @param port Network port where the proxy server should be listening.
  */
 void set_proxy_port    ( const std::string& port     );
 
 /**
  * Set the user to authenticate with the proxy. Default: "".
  *
- * @param user: User name to use for authentication purposes.
+ * @param user User name to use for authentication purposes.
  */
 void set_proxy_user    ( const std::string& user     );
 
 /**
  * Set the password to authenticate with the proxy. Default: "".
  *
- * @param password: Password to use for authentication purposes.
+ * @param password Password to use for authentication purposes.
  */
 void set_proxy_password( const std::string& password );
 //@}
@@ -304,6 +304,7 @@ statistics get_receive_stats(connection handle);
 extern unsigned int ping_timeout;
 /** Minimum interval between pings. */
 const int ping_interval = 30;
+
 } // network namespace
 
 

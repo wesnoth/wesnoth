@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2012 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -56,6 +56,8 @@ struct addon_tracking_info
 	version_info installed_version;
 };
 
+typedef std::map<std::string, addon_tracking_info> addons_tracking_list;
+
 /**
  * Get information about an add-on comparing its local state with the add-ons server entry.
  *
@@ -80,6 +82,23 @@ enum ADDON_STATUS_FILTER {
 	FILTER_UPGRADABLE,
 	FILTER_NOT_INSTALLED,
 	FILTER_COUNT
+};
+
+/**
+ * Add-on fallback/default sorting criteria for the user interface.
+ */
+enum ADDON_SORT {
+	SORT_NAMES,			/**< Sort by add-on name. */
+	SORT_UPDATED,		/**< Sort by last upload time. */
+	SORT_CREATED		/**< Sort by creation time. */
+};
+
+/**
+ * Add-on fallback/default sorting direction.
+ */
+enum ADDON_SORT_DIRECTION {
+	DIRECTION_ASCENDING,		/**< Ascending sort. */
+	DIRECTION_DESCENDING		/**< Descending sort. */
 };
 
 #endif

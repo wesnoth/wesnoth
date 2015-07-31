@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,9 +23,10 @@
 #include "gui/widgets/window.hpp"
 
 static lg::log_domain log_config("config");
-#define ERR_CFG LOG_STREAM(warn , log_config)
+#define ERR_CFG LOG_STREAM(warn, log_config)
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -64,16 +65,10 @@ REGISTER_WINDOW(tooltip_large)
  * * tooltip
  * * helptip
  */
-class ttip
-	: public tpopup
+class ttip : public tpopup
 {
 public:
-
-	ttip()
-		: tpopup()
-		, window_id_()
-		, message_()
-		, mouse_(tpoint(0, 0))
+	ttip() : tpopup(), window_id_(), message_(), mouse_(tpoint(0, 0))
 	{
 	}
 
@@ -93,7 +88,6 @@ public:
 	}
 
 private:
-
 	/** The id of the window to use to show the tip. */
 	std::string window_id_;
 
@@ -108,7 +102,6 @@ private:
 
 	/** Inherited from tpopup. */
 	void pre_show(CVideo& video, twindow& window);
-
 };
 
 void ttip::pre_show(CVideo& /*video*/, twindow& window)
@@ -124,22 +117,23 @@ const std::string& ttip::window_id() const
 	return window_id_;
 }
 
-namespace tip {
+namespace tip
+{
 
 static ttip& tip()
 {
 	/*
 	 * Allocating a static tip object causes a segmentation fault when Wesnoth
-	 * termines. So instead create an object on the heap and never free it.
+	 * terminates. So instead create an object on the heap and never free it.
 	 */
-	static ttip *t = new ttip();
+	static ttip* t = new ttip();
 	return *t;
 }
 
-void show(CVideo& video
-		, const std::string& window_id
-		, const t_string& message
-		, const tpoint& mouse)
+void show(CVideo& video,
+		  const std::string& window_id,
+		  const t_string& message,
+		  const tpoint& mouse)
 {
 	/*
 	 * For now allow invalid tip names, might turn them to invalid wml messages
@@ -149,16 +143,23 @@ void show(CVideo& video
 	t.set_window_id(window_id);
 	t.set_message(message);
 	t.set_mouse(mouse);
-	try {
+	try
+	{
 		t.show(video);
-	} catch(twindow_builder_invalid_id&) {
+	}
+	catch(twindow_builder_invalid_id&)
+	{
 		ERR_CFG << "Tip with the requested id '" << window_id
 				<< "' doesn't exist, fall back to the default.\n";
 		t.set_window_id("tooltip_large");
-		try {
+		try
+		{
 			t.show(video);
-		} catch(twindow_builder_invalid_id&) {
-			ERR_CFG << "Default tooltip doesn't exist, no message shown.\n";
+		}
+		catch(twindow_builder_invalid_id&)
+		{
+			ERR_CFG << "Default tooltip doesn't exist, no message shown."
+					<< std::endl;
 		}
 	}
 }
@@ -171,4 +172,3 @@ void remove()
 } // namespace tip
 
 } // namespace gui2
-

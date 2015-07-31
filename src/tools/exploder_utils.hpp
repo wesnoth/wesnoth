@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2015 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 #ifndef EXPLODER_UTILS_HPP_INCLUDED
 #define EXPLODER_UTILS_HPP_INCLUDED
 
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 #include <string>
 
 struct exploder_failure
@@ -28,8 +28,8 @@ struct exploder_failure
 
 struct exploder_point
 {
-	exploder_point() : x(0), y(0) {};
-	exploder_point(int x, int y) : x(x), y(y) {};
+	exploder_point() : x(0), y(0) {}
+	exploder_point(int x, int y) : x(x), y(y) {}
 	exploder_point(const std::string &s);
 
 	int x;
@@ -38,8 +38,8 @@ struct exploder_point
 
 struct exploder_rect
 {
-	exploder_rect() : x(0), y(0), w(0), h(0) {};
-	exploder_rect(int x,int y, int w, int h) : x(x), y(y), w(w), h(h) {};
+	exploder_rect() : x(0), y(0), w(0), h(0) {}
+	exploder_rect(int x,int y, int w, int h) : x(x), y(y), w(w), h(h) {}
 	exploder_rect(const std::string &s);
 
 	int x;

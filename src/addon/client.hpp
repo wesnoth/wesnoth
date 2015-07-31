@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+                 2008 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,6 +46,11 @@ public:
 
 	~addons_client();
 
+	/**
+	 * Try to establish a connection to the add-ons server.
+	 */
+	void connect();
+
 	/** Returns the last error message sent by the server, or an empty string. */
 	const std::string& get_last_server_error() const { return last_error_; }
 
@@ -55,7 +60,7 @@ public:
 	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
 	 *
 	 * @param cfg A config object whose contents are replaced with
-	 *            the server's list.
+	 *            the server's list if available, cleared otherwise.
 	 */
 	bool request_addons_list(config& cfg);
 
@@ -78,8 +83,10 @@ public:
 	 * @param id          Add-on id.
 	 * @param title       Add-on title, used for status display.
 	 * @param archive_cfg Config object to hold the downloaded add-on archive data.
+	 * @param increase_downloads Whether to request the server to increase the add-on's
+	 *                           download count or not (e.g. when upgrading).
 	 */
-	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title);
+	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads = true);
 
 	/**
 	 * Installs the specified add-on using an archive received from the server.
@@ -109,8 +116,9 @@ public:
 	 *
 	 * @param id               Id. of the add-on to upload.
 	 * @param response_message The server response message on success, such as "add-on accepted".
+	 * @param cfg              The pbl config of the add-on with the specified id.
 	 */
-	bool upload_addon(const std::string& id, std::string& response_message);
+	bool upload_addon(const std::string& id, std::string& response_message, config& cfg);
 
 	/**
 	 * Requests the specified add-on to be removed from the server.

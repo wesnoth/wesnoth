@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,7 @@
  *
  * FLOATING_POINT_EMULATION_USE_SCALED_INT
  * When this macro is defined the @ref tfloat is defined as the 32-bit scaled
- * integer. If not the @tfloat is defined as a @c double, whether or not the
+ * integer. If not the @ref tfloat is defined as a @c double, whether or not the
  * value is shifted depends on @c FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK.
  *
  * FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
@@ -53,7 +53,7 @@
  * FLOATING_POINT_EMULATION_TRACER_ENABLE
  * This macro allows to place trace markers in the code. When using the markers
  * it's possible to gather statistics regarding the code paths being executed.
- * This can be used to analyse execution and add branch prediction markers.
+ * This can be used to analyze execution and add branch prediction markers.
  */
 
 #ifndef FLOATING_POINT_EMULATION_HPP_INCLUDED
@@ -351,9 +351,9 @@ struct tidiv<T, 8>
 };
 
 /**
- * An optimised version of the division operator.
+ * An optimized version of the division operator.
  *
- * This version is optimised to maintain the highest numeric stability when
+ * This version is optimized to maintain the highest numeric stability when
  * dividing.
  *
  * As documented at operator/():
@@ -401,7 +401,7 @@ struct tidiv<T, 8>
  * * divide.
  * * shift the result up by the required number of bits.
  *
- * The code has some other optimisations as well. On a 2-complement system
+ * The code has some other optimizations as well. On a 2-complement system
  * there are additional tests required for negative and positive values, to
  * remove these branches, the code uses a temporary value which contains the
  * positive value.
@@ -434,7 +434,7 @@ tidiv<T, 8>::idiv(tfloat<T, 8>& lhs, tfloat<T, 8> rhs)
 	 * value is also quite likely to happen, so the case is optimized.
 	 */
 
-	Uint32 lhs_value = abs(lhs.value_);
+	Uint32 lhs_value = std::abs(lhs.value_);
 	if(LIKELY(lhs_value <= 0x007FFFFFu)) {
 		FLOATING_POINT_EMULATION_TRACER_COUNT("lhs_value <= 0x007FFFFFu");
 		sal(lhs.value_, 8);
@@ -508,7 +508,7 @@ tidiv<T, 8>::idiv(tfloat<T, 8>& lhs, tfloat<T, 8> rhs)
 		 * number of positions.
 		 */
 
-		Uint32 rhs_value = abs(rhs.value_);
+		Uint32 rhs_value = std::abs(rhs.value_);
 
 		/*
 		 * Will contain the offset from bit 0 of the LSB set. Since we're only
@@ -737,7 +737,7 @@ public:
 		value_ *= rhs.value_;
 
 		/*
-		 * There is no need to check the range at this point. The specialised
+		 * There is no need to check the range at this point. The specialized
 		 * version makes a short trip to 64-bit value, so overflowing is not
 		 * possible.
 		 */
@@ -790,7 +790,7 @@ public:
 	 * ---- = --------- = ---- = result
 	 *  RHS    rhs * sf    rhs
 	 *
-	 * Thus in order to get RESULT there needs to be mulitplied by sf:
+	 * Thus in order to get RESULT there needs to be multiplied by sf:
 	 *
 	 *          THIS
 	 * RESULT = ---- * sf
@@ -975,7 +975,7 @@ operator!=(const double lhs, const tfloat<T, S> rhs)
 /**
  * Multiply
  *
- * Specialised for the Sint32 with a shift of 8.
+ * Specialized for the Sint32 with a shift of 8.
  *
  * Instead of figuring out the optimal shift before multiplying simply multiply
  * as a 64-bit value and then perform the shift. This is rather cheap on the

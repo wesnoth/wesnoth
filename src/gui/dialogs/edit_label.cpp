@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -50,6 +51,4 @@ tedit_label::tedit_label(std::string& label, bool& team_only)
 	register_text("label", true, label, true);
 	register_bool("team_only_toggle", true, team_only);
 }
-
 }
-

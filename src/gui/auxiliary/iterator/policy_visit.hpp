@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,13 +19,17 @@
 
 #include <cstring>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
-namespace policy {
+namespace policy
+{
 
-namespace visit {
+namespace visit
+{
 
 /**
  * This policy skips the current level.
@@ -33,21 +37,29 @@ namespace visit {
 class tskip
 {
 public:
-
 	/**
 	 * Acts like @ref twalker_::next for the level where the policy is used.
 	 */
-	twalker_::tstate next(twalker_&) { return twalker_::fail; }
+	twalker_::tstate next(twalker_&)
+	{
+		return twalker_::fail;
+	}
 
 	/**
 	 * Acts like @ref twalker_::at_end for the level where the policy is used.
 	 */
-	bool at_end(const twalker_&) const { return true; }
+	bool at_end(const twalker_&) const
+	{
+		return true;
+	}
 
 	/**
 	 * Acts like @ref twalker_::get for the level where the policy is used.
 	 */
-	gui2::twidget* get(twalker_&) { return NULL; }
+	gui2::twidget* get(twalker_&)
+	{
+		return NULL;
+	}
 };
 
 /**
@@ -55,11 +67,10 @@ public:
  *
  * @tparam level                  The level to visit.
  */
-template<twalker_::tlevel level>
+template <twalker_::tlevel level>
 class tvisit
 {
 public:
-
 	/**
 	 * Acts like @ref twalker_::next for the level where the policy is used.
 	 */
@@ -92,22 +103,20 @@ public:
  *
  * @tparam level                  The level to determine the policy for.
  */
-template<bool, twalker_::tlevel level>
+template <bool, twalker_::tlevel level>
 class tvisit
 {
 };
 
 /** Specialized to select the @ref visit::tskip policy. */
-template<twalker_::tlevel level>
-class tvisit<false, level>
-	: public visit::tskip
+template <twalker_::tlevel level>
+class tvisit<false, level> : public visit::tskip
 {
 };
 
 /** Specialized to select the @ref visit::tvisit policy. */
-template<twalker_::tlevel level>
-class tvisit<true, level>
-	: public visit::tvisit<level>
+template <twalker_::tlevel level>
+class tvisit<true, level> : public visit::tvisit<level>
 {
 };
 
@@ -118,5 +127,3 @@ class tvisit<true, level>
 } // namespace gui2
 
 #endif
-
-

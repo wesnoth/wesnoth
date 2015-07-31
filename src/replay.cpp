@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,28 +20,30 @@
  */
 
 #include "global.hpp"
+#include "replay.hpp"
 
-#include "actions/attack.hpp"
-#include "actions/create.hpp"
-#include "actions/move.hpp"
 #include "actions/undo.hpp"
+#include "config_assign.hpp"
 #include "dialogs.hpp"
+#include "display_chat_manager.hpp"
 #include "game_display.hpp"
-#include "game_end_exceptions.hpp"
-#include "game_events.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
 #include "map_location.hpp"
 #include "play_controller.hpp"
-#include "replay.hpp"
+#include "synced_context.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "statistics.hpp"
+#include "unit.hpp"
 #include "whiteboard/manager.hpp"
+#include "replay_recorder_base.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/lexical_cast.hpp>
+#include <set>
+#include <map>
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
@@ -70,7 +72,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		std::set<map_location> locs;
 		BOOST_FOREACH(const config &u, cfg.child_range("unit"))
 		{
-			const map_location loc(u, resources::gamedata);
+			const map_location loc(u);
 			locs.insert(loc);
 
 			if(units.count(loc) == 0) {
@@ -91,7 +93,7 @@ static void verify(const unit_map& units, const config& cfg) {
 
 	BOOST_FOREACH(const config &un, cfg.child_range("unit"))
 	{
-		const map_location loc(un, resources::gamedata);
+		const map_location loc(un);
 		const unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
@@ -141,11 +143,6 @@ static time_t get_time(const config &speak)
 	return time;
 }
 
-// FIXME: this one now has to be assigned with set_random_generator
-// from play_level or similar.  We should surely hunt direct
-// references to it from this very file and move it out of here.
-replay recorder;
-
 chat_msg::chat_msg(const config &cfg)
 	: color_()
 	, nick_()
@@ -182,355 +179,154 @@ chat_msg::~chat_msg()
 {
 }
 
-replay::replay() :
-	cfg_(),
-	pos_(0),
-	current_(NULL),
-	skip_(false),
-	message_locations(),
-	expected_advancements_()
+replay::replay(replay_recorder_base& base)
+	: base_(&base)
+	, message_locations()
 {}
+/*
+	TODO: there should be different types of OOS messages:
+		1)the normal OOS message
+		2) the 'is guarenteed you'll get an assertion error after this and therefore you cannot continur' OOS message
+		3) the 'do you want to overwrite calculated data with the data stored in replay' OOS error message.
 
-replay::replay(const config& cfg) :
-	cfg_(cfg),
-	pos_(0),
-	current_(NULL),
-	skip_(false),
-	message_locations(),
-	expected_advancements_()
-{}
-
-void replay::append(const config& cfg)
-{
-	cfg_.append(cfg);
-}
-
+*/
 void replay::process_error(const std::string& msg)
 {
-	ERR_REPLAY << msg;
+	ERR_REPLAY << msg << std::flush;
 
-	resources::controller->process_oos(msg); // might throw end_level_exception(QUIT)
+	resources::controller->process_oos(msg); // might throw quit_game_exception()
 }
 
-void replay::set_skip(bool skip)
-{
-	skip_ = skip;
-}
-
-bool replay::is_skipping() const
-{
-	return skip_;
-}
-
-void replay::add_unit_checksum(const map_location& loc,config* const cfg)
+void replay::add_unit_checksum(const map_location& loc,config& cfg)
 {
 	if(! game_config::mp_debug) {
 		return;
 	}
-	config& cc = cfg->add_child("checksum");
+	config& cc = cfg.add_child("checksum");
 	loc.write(cc);
 	unit_map::const_iterator u = resources::units->find(loc);
 	assert(u.valid());
 	cc["value"] = get_checksum(*u);
 }
 
+
+void replay::init_side()
+{
+	config& cmd = add_command();
+	config init_side;
+	init_side["side_number"] = resources::controller->current_side();
+	cmd.add_child("init_side", init_side);
+}
+
 void replay::add_start()
 {
-	config* const cmd = add_command(true);
-	cmd->add_child("start");
-}
-
-void replay::add_recruit(const std::string& type_id, const map_location& loc, const map_location& from)
-{
-	config* const cmd = add_command();
-
-	config val;
-	val["type"] = type_id;
-	loc.write(val);
-	config& leader_position = val.add_child("from");
-	from.write(leader_position);
-
-	cmd->add_child("recruit",val);
-}
-
-void replay::add_recall(const std::string& unit_id, const map_location& loc, const map_location& from)
-{
-	config* const cmd = add_command();
-
-	config val;
-	val["value"] = unit_id;
-	loc.write(val);
-	config& leader_position = val.add_child("from");
-	from.write(leader_position);
-
-	cmd->add_child("recall",val);
-}
-
-void replay::add_disband(const std::string& unit_id)
-{
-	config* const cmd = add_command();
-
-	config val;
-
-	val["value"] = unit_id;
-
-	cmd->add_child("disband",val);
+	config& cmd = add_command();
+	cmd["sent"] = true;
+	cmd.add_child("start");
 }
 
 void replay::add_countdown_update(int value, int team)
 {
-	config* const cmd = add_command();
+	config& cmd = add_command();
 	config val;
 	val["value"] = value;
 	val["team"] = team;
-	cmd->add_child("countdown_update",val);
+	cmd.add_child("countdown_update",val);
+}
+void replay::add_synced_command(const std::string& name, const config& command)
+{
+	config& cmd = add_command();
+	cmd.add_child(name,command);
+	cmd["from_side"] = resources::controller->current_side();
+	LOG_REPLAY << "add_synced_command: \n" << cmd.debug() << "\n";
 }
 
 
-/**
- * Records a move that follows the provided @a steps.
- * This should be the steps to be taken this turn, ending in an
- * apparently-unoccupied (from the moving team's perspective) hex.
- */
-void replay::add_movement(const std::vector<map_location>& steps)
+
+void replay::user_input(const std::string &name, const config &input, int from_side)
 {
-	if(steps.empty()) { // no move, nothing to record
-		return;
-	}
-
-	config* const cmd = add_command();
-
-	config move;
-	write_locations(steps, move);
-
-	cmd->add_child("move",move);
-}
-
-/**
- * Modifies the most recently recorded move to indicate that it
- * stopped early (due to unforseen circumstances, such as an ambush).
- * This will be ineffective if @a early_stop is not in the recorded path.
- */
-void replay::limit_movement(const map_location& early_stop)
-{
-	// Find the most recently recorded move.
-	for (int cmd = ncommands() - 1; cmd >= 0; --cmd)
+	config& cmd = add_command();
+	cmd["dependent"] = true;
+	if(from_side == -1)
 	{
-		config &cfg = command(cmd);
-		if ( config &child = cfg.child("move") )
-		{
-			if ( early_stop.valid() )
-			{
-				// Record this limitation.
-				child["stop_x"] = early_stop.x + 1;
-				child["stop_y"] = early_stop.y + 1;
-			}
-			// else, we could erase the current stop_x and stop_y, but
-			// doing so currently does not have a use.
-
-			// Done.
-			return;
-		}
+		cmd["from_side"] = "server";
 	}
-
-	// If we made it out of the loop, there is no move to modify.
-	ERR_REPLAY << "Trying to limit movement, but no movement recorded.";
-}
-
-
-void replay::add_attack(const map_location& a, const map_location& b,
-	int att_weapon, int def_weapon, const std::string& attacker_type_id,
-	const std::string& defender_type_id, int attacker_lvl,
-	int defender_lvl, const size_t turn, const time_of_day &t)
-{
-	add_pos("attack",a,b);
-	config &cfg = current_->child("attack");
-
-	cfg["weapon"] = att_weapon;
-	cfg["defender_weapon"] = def_weapon;
-	cfg["attacker_type"] = attacker_type_id;
-	cfg["defender_type"] = defender_type_id;
-	cfg["attacker_lvl"] = attacker_lvl;
-	cfg["defender_lvl"] = defender_lvl;
-	cfg["turn"] = int(turn);
-	cfg["tod"] = t.id;
-	add_unit_checksum(a,current_);
-	add_unit_checksum(b,current_);
-}
-
-/**
- * Records that the player has toggled automatic shroud updates.
- */
-void replay::add_auto_shroud(bool turned_on)
-{
-	config* cmd = add_command(false);
-	config& child = cmd->add_child("auto_shroud");
-	child["active"] = turned_on;
-}
-
-/**
- * Records that the player has manually updated fog/shroud.
- */
-void replay::update_shroud()
-{
-	config* cmd = add_command(false);
-	cmd->add_child("update_shroud");
-}
-
-void replay::add_seed(const char* child_name, int seed)
-{
-	LOG_REPLAY << "Setting seed for child type " << child_name << ": " << seed << "\n";
-	random()->child(child_name)["seed"] = seed;
-}
-
-void replay::add_pos(const std::string& type,
-                     const map_location& a, const map_location& b)
-{
-	config* const cmd = add_command();
-
-	config move, src, dst;
-	a.write(src);
-	b.write(dst);
-
-	move.add_child("source",src);
-	move.add_child("destination",dst);
-	cmd->add_child(type,move);
-}
-
-void replay::user_input(const std::string &name, const config &input)
-{
-	add_command()->add_child(name, input);
+	else
+	{
+		cmd["from_side"] = from_side;
+	}
+	cmd.add_child(name, input);
 }
 
 void replay::add_label(const terrain_label* label)
 {
 	assert(label);
-	config* const cmd = add_command(false);
-
-	(*cmd)["undo"] = false;
-
+	config& cmd = add_nonundoable_command();
 	config val;
 
 	label->write(val);
 
-	cmd->add_child("label",val);
+	cmd.add_child("label",val);
 }
 
 void replay::clear_labels(const std::string& team_name, bool force)
 {
-	config* const cmd = add_command(false);
+	config& cmd = add_nonundoable_command();
 
-	(*cmd)["undo"] = false;
 	config val;
 	val["team_name"] = team_name;
 	val["force"] = force;
-	cmd->add_child("clear_labels",val);
+	cmd.add_child("clear_labels",val);
 }
 
 void replay::add_rename(const std::string& name, const map_location& loc)
 {
-	config* const cmd = add_command(false);
-	(*cmd)["async"] = true; // Not undoable, but depends on moves/recruits that are
+	config& cmd = add_command();
+	cmd["async"] = true; // Not undoable, but depends on moves/recruits that are
 	config val;
 	loc.write(val);
 	val["name"] = name;
-	cmd->add_child("rename", val);
+	cmd.add_child("rename", val);
 }
 
-void replay::init_side()
-{
-	config* const cmd = add_command();
-	config init_side;
-	if(!lg::debug.dont_log("network")) init_side["side_number"] = resources::controller->current_side();
-	cmd->add_child("init_side", init_side);
-}
 
 void replay::end_turn()
 {
-	config* const cmd = add_command();
-	cmd->add_child("end_turn");
+	config& cmd = add_command();
+	cmd.add_child("end_turn");
 }
 
-void replay::add_event(const std::string& name, const map_location& loc)
-{
-	config* const cmd = add_command();
-	config& ev = cmd->add_child("fire_event");
-	ev["raise"] = name;
-	if(loc.valid()) {
-		config& source = ev.add_child("source");
-		loc.write(source);
-	}
-	(*cmd)["undo"] = false;
-}
 
 void replay::add_log_data(const std::string &key, const std::string &var)
 {
-	config& ulog = cfg_.child_or_add("upload_log");
+	config& ulog = base_->get_upload_log();
 	ulog[key] = var;
 }
 
 void replay::add_log_data(const std::string &category, const std::string &key, const std::string &var)
 {
-	config& ulog = cfg_.child_or_add("upload_log");
+	config& ulog = base_->get_upload_log();
 	config& cat = ulog.child_or_add(category);
 	cat[key] = var;
 }
 
 void replay::add_log_data(const std::string &category, const std::string &key, const config &c)
 {
-	config& ulog = cfg_.child_or_add("upload_log");
+	config& ulog = base_->get_upload_log();
 	config& cat = ulog.child_or_add(category);
 	cat.add_child(key,c);
 }
 
-void replay::add_checksum_check(const map_location& loc)
-{
-	if(! game_config::mp_debug || ! (resources::units->find(loc).valid()) ) {
-		return;
-	}
-	config* const cmd = add_command();
-	add_unit_checksum(loc,cmd);
-}
-
-void replay::add_expected_advancement(const map_location& loc)
-{
-	expected_advancements_.push_back(loc);
-}
-
-const std::deque<map_location>& replay::expected_advancements() const
-{
-	return expected_advancements_;
-}
-
-void replay::pop_expected_advancement()
-{
-	expected_advancements_.pop_front();
-}
-
-void replay::add_advancement(const map_location& loc)
-{
-	config* const cmd = add_command(false);
-
-	config val;
-	(*cmd)["undo"] = false;
-	loc.write(val);
-	cmd->add_child("advance_unit",val);
-	DBG_REPLAY << "added an explicit advance\n";
-}
-
 void replay::add_chat_message_location()
 {
-	message_locations.push_back(pos_-1);
+	message_locations.push_back(base_->get_pos() - 1);
 }
 
 void replay::speak(const config& cfg)
 {
-	config* const cmd = add_command(false);
-	if(cmd != NULL) {
-		cmd->add_child("speak",cfg);
-		(*cmd)["undo"] = false;
-		add_chat_message_location();
-	}
+	config& cmd = add_nonundoable_command();
+	cmd.add_child("speak",cfg);
+	add_chat_message_location();
 }
 
 void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg> > &i) const
@@ -544,7 +340,7 @@ void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std
 
 void replay::remove_command(int index)
 {
-	cfg_.remove_child("command", index);
+	base_->remove_command(index);
 	std::vector<int>::reverse_iterator loc_it;
 	for (loc_it = message_locations.rbegin(); loc_it != message_locations.rend() && index < *loc_it;++loc_it)
 	{
@@ -553,7 +349,7 @@ void replay::remove_command(int index)
 }
 
 // cached message log
-std::vector< chat_msg > message_log;
+static std::vector< chat_msg > message_log;
 
 
 const std::vector<chat_msg>& replay::build_chat_log()
@@ -564,7 +360,9 @@ const std::vector<chat_msg>& replay::build_chat_log()
 	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
 	{
 		last_location = *loc_it;
+
 		const config &speak = command(last_location).child("speak");
+		assert(speak);
 		add_chat_log_entry(speak, chat_log_appender);
 
 	}
@@ -579,7 +377,9 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 	for (int cmd = cmd_start; cmd < cmd_end; ++cmd)
 	{
 		config &c = command(cmd);
-		if ((data_type == ALL_DATA || c["undo"] == "no") && c["sent"] != "yes")
+		//prevent creating 'blank' attribute values during checks
+		const config &cc = c;
+		if ((data_type == ALL_DATA || !cc["undo"].to_bool(true)) && !cc["sent"].to_bool(false))
 		{
 			res.add_child("command", c);
 			if (data_type == NON_UNDO_DATA) c["sent"] = true;
@@ -589,61 +389,59 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 	return res;
 }
 
-struct async_cmd
+void replay::redo(const config& cfg)
 {
-	config *cfg;
-	int num;
-};
-
-void replay::undo()
-{
-	std::vector<async_cmd> async_cmds;
-	// Remember commands not yet synced and skip over them.
-	// We assume that all already sent (sent=yes) data isn't undoable
-	// even if not marked explicitly with undo=no.
-
-	/**
-	 * @todo Change undo= to default to "no" and explicitly mark all
-	 * undoable commands with yes.
-	 */
-
-	int cmd;
-	for (cmd = ncommands() - 1; cmd >= 0; --cmd)
+	assert(base_->get_pos() == ncommands());
+	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
 	{
-		config &c = command(cmd);
-		if (c["undo"] != "no" && c["async"] != "yes" && c["sent"] != "yes") break;
-		if (c["async"] == "yes") {
-			async_cmd ac = { &c, cmd };
-			async_cmds.push_back(ac);
-		}
+		base_->add_child() = cmd;
 	}
+	base_->set_to_end();
 
-	if (cmd < 0) return;
-	config &c = command(cmd);
+}
 
+
+
+config& replay::get_last_real_command()
+{
+	for (int cmd_num = base_->get_pos() - 1; cmd_num >= 0; --cmd_num)
+	{
+		config &c = command(cmd_num);
+		const config &cc = c;
+		if (cc["dependent"].to_bool(false) || !cc["undo"].to_bool(true) || cc["async"].to_bool(false))
+		{
+			continue;
+		}
+		return c;
+	}
+	ERR_REPLAY << "replay::get_last_real_command called with no existent command." << std::endl;
+	assert(false && "replay::get_last_real_command called with no existent command.");
+	throw "replay::get_last_real_command called with no existent command.";
+}
+/// fixes a rename command when undoing a earlier command.
+/// @return: true if the command should be removed.
+static bool fix_rename_command(const config& c, config& async_child)
+{
 	if (const config &child = c.child("move"))
 	{
 		// A unit's move is being undone.
 		// Repair unsynced cmds whose locations depend on that unit's location.
-		const std::vector<map_location> steps =
-			parse_location_range(child["x"], child["y"]);
+		std::vector<map_location> steps;
+
+		try {
+			read_locations(child,steps);
+		} catch (bad_lexical_cast &) {
+			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+		}
 
 		if (steps.empty()) {
 			ERR_REPLAY << "trying to undo a move using an empty path";
 		}
 		else {
-			const map_location early_stop(child["stop_x"].to_int(-999) - 1,
-			                              child["stop_y"].to_int(-999) - 1);
 			const map_location &src = steps.front();
-			const map_location &dst = early_stop.valid() ? early_stop : steps.back();
-
-			BOOST_FOREACH(const async_cmd &ac, async_cmds)
-			{
-				if (config &async_child = ac.cfg->child("rename")) {
-					map_location aloc(async_child, resources::gamedata);
-					if (dst == aloc) src.write(async_child);
-				}
-			}
+			const map_location &dst = steps.back();
+			map_location aloc(async_child);
+			if (dst == aloc) src.write(async_child);
 		}
 	}
 	else
@@ -653,102 +451,160 @@ void replay::undo()
 		if (*chld) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			map_location src(*chld, resources::gamedata);
-			BOOST_FOREACH(const async_cmd &ac, async_cmds)
+			map_location src(*chld);
+			map_location aloc(async_child);
+			if (src == aloc) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+void replay::undo_cut(config& dst)
+{
+	assert(dst.empty());
+	//assert that we are not undoing a command which we didn't execute yet.
+	assert(at_end());
+
+	//calculate the index of the last synced user action (which we want to undo).
+	int cmd_index = ncommands() - 1;
+	for (; cmd_index >= 0; --cmd_index)
+	{
+		//"undo"=no means speak/label/remove_label, especialy attack, recruits etc. have "undo"=yes
+		//"async"=yes means rename_unit
+		//"dependent"=true means user input
+		const config &c = command(cmd_index);
+		
+		if(c["undo"].to_bool(true) && !c["async"].to_bool(false) && !c["dependent"].to_bool(false))
+		{
+			if(c["sent"].to_bool(false))
 			{
-				if (config &async_child = ac.cfg->child("rename"))
-				{
-					map_location aloc(async_child, resources::gamedata);
-					if (src == aloc) remove_command(ac.num);
-				}
+				ERR_REPLAY << "trying to undo a command that was already sent.\n";
+				return;
+			}
+			else
+			{
+				break;
 			}
 		}
 	}
 
-	remove_command(cmd);
-	current_ = NULL;
-	set_random(NULL);
+	if (cmd_index < 0)
+	{
+		ERR_REPLAY << "trying to undo a command but no command was found.\n";		
+		return;
+	}
+	//Fix the [command]s after the undone action. This includes dependent commands for that user actions and async user action.
+	for(int i = ncommands() - 1; i >= cmd_index; --i)
+	{
+		config &c = command(i);
+		const config &cc = c;
+		if(!cc["undo"].to_bool(true))
+		{
+			//Leave these commands on the replay.
+		}
+		else if(cc["async"].to_bool(false))
+		{
+			if(config& rename = c.child("rename"))
+			{
+				if(fix_rename_command(command(cmd_index), rename))
+				{
+					//remove the command from the replay if fix_rename_command requested it.
+					remove_command(i);
+				}
+			}
+		}
+		else if(cc["dependent"].to_bool(false) || i == cmd_index)
+		{
+			//we loop backwars so we must insert new insert at beginning to preserve order.
+			dst.add_child_at("command", config(), 0).swap(c);
+			remove_command(i);
+		}
+		else
+		{
+			ERR_REPLAY << "Coudn't handle command:\n" << cc << "\nwhen undoing.\n";
+		}
+	}
+	set_to_end();
+}
+
+void replay::undo()
+{
+	config dummy;
+	undo_cut(dummy);
 }
 
 config &replay::command(int n)
 {
-	return cfg_.child("command", n);
+	config & retv = base_->get_command_at(n);
+	assert(retv);
+	return retv;
 }
 
 int replay::ncommands() const
 {
-	return cfg_.child_count("command");
+	return base_->size();
 }
 
-config* replay::add_command(bool update_random_context)
+config& replay::add_command()
 {
-	pos_ = ncommands()+1;
-	current_ = &cfg_.add_child("command");
-	if(update_random_context)
-		set_random(current_);
+	//if we werent at teh end of teh replay we sould skip one or mutiple commands.
+	assert(at_end());
+	config& retv = base_->add_child();
+	set_to_end();
+	return retv;
+}
 
-	return current_;
+config& replay::add_nonundoable_command()
+{
+	config& r = base_->insert_command(base_->get_pos());
+	r["undo"] = false;
+	base_->set_pos(base_->get_pos() + 1);
+	return r;
 }
 
 void replay::start_replay()
 {
-	pos_ = 0;
+	base_->set_pos(0);
 }
 
 void replay::revert_action()
 {
-	if (pos_ > 0)
-		--pos_;
+
+	if (base_->get_pos() > 0)
+		base_->set_pos(base_->get_pos() - 1);
 }
 
 config* replay::get_next_action()
 {
-	if (pos_ >= ncommands())
+	if (at_end())
 		return NULL;
 
-	LOG_REPLAY << "up to replay action " << pos_ + 1 << '/' << ncommands() << '\n';
+	LOG_REPLAY << "up to replay action " << base_->get_pos() + 1 << '/' << ncommands() << '\n';
 
-	current_ = &command(pos_);
-	set_random(current_);
-	++pos_;
-	return current_;
+	config* retv = &command(base_->get_pos());
+	base_->set_pos(base_->get_pos() + 1);
+	return retv;
 }
 
-void replay::pre_replay()
-{
-	if (rng::random() == NULL && ncommands() > 0) {
-		if (at_end())
-		{
-			add_command(true);
-		}
-		else
-		{
-			set_random(&command(pos_));
-		}
-	}
-}
 
 bool replay::at_end() const
 {
-	return pos_ >= ncommands();
+	assert(base_->get_pos() <= ncommands());
+	return base_->get_pos() == ncommands();
 }
 
 void replay::set_to_end()
 {
-	pos_ = ncommands();
-	current_ = NULL;
-	set_random(NULL);
+	base_->set_to_end();
 }
 
 void replay::clear()
 {
 	message_locations.clear();
 	message_log.clear();
-	cfg_ = config();
-	pos_ = 0;
-	current_ = NULL;
-	set_random(NULL);
-	skip_ = false;
+	//FIXME
 }
 
 bool replay::empty()
@@ -760,188 +616,83 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 {
 	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
 	{
-		config &cfg = cfg_.add_child("command", cmd);
-		if (cfg.child("speak"))
-		{
-			pos_ = ncommands();
-			add_chat_message_location();
-		}
+		config &cfg = base_->insert_command(base_->size());
+		cfg = cmd;
 		if(mark == MARK_AS_SENT) {
 			cfg["sent"] = true;
 		}
 	}
 }
-
-namespace {
-
-replay* replay_src = NULL;
-
-struct replay_source_manager
+bool replay::add_start_if_not_there_yet()
 {
-	replay_source_manager(replay* o) : old_(replay_src)
+	//this method would confuse the value of 'pos' otherwise
+	assert(base_->get_pos() == 0);
+	//since pos is 0, at_end() is equivalent to empty()
+	if(at_end() || !base_->get_command_at(0).has_child("start"))
 	{
-		replay_src = o;
+		base_->insert_command(0) = config_of("start", config())("sent", true);
+		return true;
 	}
-
-	~replay_source_manager()
+	else
 	{
-		replay_src = old_;
+		return false;
 	}
-
-private:
-	replay* const old_;
-};
-
 }
 
-replay& get_replay_source()
+static void show_oos_error_error_function(const std::string& message, bool /*heavy*/)
 {
-	if(replay_src != NULL) {
-		return *replay_src;
-	} else {
-		return recorder;
-	}
+	replay::process_error(message);
 }
 
-
-/**
- * Converts a recruit index to a type_id.
- * This is a legacy support function to allow showing replays saved before 1.11.2.
- */
-static std::string type_by_index(int index, int side_num, const map_location & loc)
-{
-	if ( index < 0 ) {
-		std::stringstream errbuf;
-		errbuf << "Recruitment index is illegal: " << index
-		       << " is negative.\n";
-		replay::process_error(errbuf.str());
-		return std::string();
-	}
-
-	// Get the set of recruits.
-	std::set<std::string> recruits = actions::get_recruits(side_num, loc);
-	if ( static_cast<size_t>(index) >= recruits.size() ) {
-		std::stringstream errbuf;
-		errbuf << "Recruitment index is illegal: " << (index+1)
-		       << " is larger than the " << recruits.size()
-		       << " unit types available for recruitment.\n";
-		replay::process_error(errbuf.str());
-		return std::string();
-	}
-
-	std::set<std::string>::const_iterator itor = recruits.begin();
-	std::advance(itor, index);
-	return *itor;
-}
-
-static void check_checksums(const config &cfg)
-{
-	if(! game_config::mp_debug) {
-		return;
-	}
-	BOOST_FOREACH(const config &ch, cfg.child_range("checksum"))
-	{
-		map_location loc(ch, resources::gamedata);
-		unit_map::const_iterator u = resources::units->find(loc);
-		if (!u.valid()) {
-			std::stringstream message;
-			message << "non existent unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
-					events::chat_handler::MESSAGE_PRIVATE, false);
-			continue;
-		}
-		if (get_checksum(*u) != ch["value"]) {
-			std::stringstream message;
-			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
-					events::chat_handler::MESSAGE_PRIVATE, false);
-		}
-	}
-}
-
-bool do_replay(int side_num, replay *obj)
+REPLAY_RETURN do_replay(bool one_move)
 {
 	log_scope("do replay");
 
-	const replay_source_manager replaymanager(obj);
-
-//	replay& replayer = (obj != NULL) ? *obj : recorder;
-
-	if (!get_replay_source().is_skipping()){
+	if (!resources::controller->is_skipping_replay()) {
 		resources::screen->recalculate_minimap();
 	}
 
-	const rand_rng::set_random_generator generator_setter(&get_replay_source());
-
-	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
-	return do_replay_handle(side_num, "");
+	update_locker lock_update(resources::screen->video(), resources::controller->is_skipping_replay());
+	return do_replay_handle(one_move);
 }
-
-bool do_replay_handle(int side_num, const std::string &do_untill)
+/**
+	@returns:
+		if we expect a user choice and found something that prevents us from moving on we return REPLAY_FOUND_DEPENDENT (even if it is not a dependent command)
+		else if we found an [end_turn] we return REPLAY_FOUND_END_TURN
+		else if we found a player action and one_move=true we return REPLAY_FOUND_END_MOVE
+		else (<=> we reached the end of the replay) we return REPLAY_RETURN_AT_END
+*/
+REPLAY_RETURN do_replay_handle(bool one_move)
 {
-	//a list of units that have promoted from the last attack
-	std::deque<map_location> advancing_units;
 
-	team &current_team = (*resources::teams)[side_num - 1];
+	//team &current_team = (*resources::teams)[side_num - 1];
 
+	const int side_num = resources::controller->current_side();
+	while(true)
+	{
+		const config *cfg = resources::recorder->get_next_action();
+		const bool is_synced = synced_context::is_synced();
 
-	for(;;) {
-		const config *cfg = get_replay_source().get_next_action();
+		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "\n";
 
-		if (cfg)
+		if (cfg != NULL)
 		{
 			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
 		}
 		else
 		{
 			DBG_REPLAY << "Replay data at end\n";
+			return REPLAY_RETURN_AT_END;
 		}
 
-		//if there is nothing more in the records
-		if(cfg == NULL) {
-			//replayer.set_skip(false);
-			return false;
-		}
 
-		//if we are expecting promotions here`
-		if (!get_replay_source().expected_advancements().empty()) {
-			//if there is a promotion, we process it and go onto the next command
-			//but if this isn't a promotion, we just keep waiting for the promotion
-			//command -- it may have been mixed up with other commands such as messages
-			if (const config &child = cfg->child("choose")) {
-				int val = child["value"];
-				map_location loc = get_replay_source().expected_advancements().front();
-				dialogs::animate_unit_advancement(loc, val);
-				get_replay_source().pop_expected_advancement();
-
-				DBG_REPLAY << "advanced unit " << val << " at " << loc << '\n';
-
-				//if there are no more advancing units, then we check for victory,
-				//in case the battle that led to advancement caused the end of scenario
-				if(advancing_units.empty()) {
-					resources::controller->check_victory();
-				}
-
-				if (do_untill == "choose") {
-					get_replay_source().revert_action();
-					return false;
-				}
-
-				continue;
-			}
-		}
-
-		// We return if caller wants it for this tag
-		if (!do_untill.empty() && cfg->child(do_untill))
+		const config::all_children_itors ch_itors = cfg->all_children_range();
+		//if there is an empty command tag or a start tag
+		if (ch_itors.first == ch_itors.second || cfg->has_child("start"))
 		{
-			get_replay_source().revert_action();
-			return false;
-		}
-
-		config::all_children_itors ch_itors = cfg->all_children_range();
-		//if there is an empty command tag, create by pre_replay() or a start tag
-		if (ch_itors.first == ch_itors.second || cfg->child("start"))
-		{
+			//this shouldn't happen anymore because replaycontroller now moves over the [start] with get_next_action
+			//also we removed the the "add empty replay entry at scenario reload" behavior.
+			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
 			//do nothing
 		}
 		else if (const config &child = cfg->child("speak"))
@@ -951,10 +702,10 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			const std::string &message = child["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
-			get_replay_source().add_chat_message_location();
-			if (!get_replay_source().is_skipping() || is_whisper) {
+			resources::recorder->add_chat_message_location();
+			if (!resources::controller->is_skipping_replay() || is_whisper) {
 				int side = child["side"];
-				resources::screen->add_chat_message(get_time(child), speaker_name, side, message,
+				resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
@@ -975,142 +726,55 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("rename"))
 		{
-			const map_location loc(child, resources::gamedata);
+			const map_location loc(child);
 			const std::string &name = child["name"];
 
 			unit_map::iterator u = resources::units->find(loc);
-			if (u.valid()) {
-				if (u->unrenamable()) {
-					std::stringstream errbuf;
-					errbuf << "renaming unrenamable unit " << u->id() << '\n';
-					replay::process_error(errbuf.str());
-					continue;
-				}
+			if (u.valid() && !u->unrenamable()) {
 				u->rename(name);
 			} else {
-				// Users can rename units while it's being killed at another machine.
+				// Users can rename units while it's being killed or at another machine.
 				// This since the player can rename units when it's not his/her turn.
 				// There's not a simple way to prevent that so in that case ignore the
 				// rename instead of throwing an OOS.
+				// The same way it is possible that an unrenamable unit moves to a
+				// hex where previously a renamable unit was.
 				WRN_REPLAY << "attempt to rename unit at location: "
-				   << loc << ", where none exists (anymore).\n";
+				   << loc << (u.valid() ? ", which is unrenamable" : ", where none exists (anymore)") << "\n";
 			}
 		}
 
 		else if (cfg->child("init_side"))
 		{
-			resources::controller->do_init_side(side_num - 1, true);
+
+			if(is_synced)
+			{
+				replay::process_error("found side initialization in replay expecting a user choice\n" );
+				resources::recorder->revert_action();
+				return REPLAY_FOUND_DEPENDENT;
+			}
+			else
+			{
+				resources::controller->do_init_side();
+			}
 		}
 
 		//if there is an end turn directive
 		else if (cfg->child("end_turn"))
 		{
-			// During the original game, the undo stack would have been
-			// committed at this point.
-			resources::undo_stack->clear();
-
-			if (const config &child = cfg->child("verify")) {
-				verify(*resources::units, child);
+			if(is_synced)
+			{
+				replay::process_error("found turn end in replay while expecting a user choice\n" );
+				resources::recorder->revert_action();
+				return REPLAY_FOUND_DEPENDENT;
 			}
-
-			return true;
-		}
-
-		else if (const config &child = cfg->child("recruit"))
-		{
-			map_location loc(child, resources::gamedata);
-			map_location from(child.child_or_empty("from"), resources::gamedata);
-			// Validate "from".
-			if ( !from.valid() ) {
-				// This will be the case for AI recruits in replays saved
-				// before 1.11.2, so it is not more severe than a warning.
-				WRN_REPLAY << "Missing leader location for recruitment.\n";
-			}
-			else if ( resources::units->find(from) == resources::units->end() ) {
-				// Sync problem?
-				std::stringstream errbuf;
-				errbuf << "Recruiting leader not found at " << from << ".\n";
-				replay::process_error(errbuf.str());
-				// Can still try to proceed I guess.
-			}
-
-			// Get the unit_type ID.
-			std::string type_id = child["type"];
-			if ( type_id.empty() ) {
-				// Legacy support: before 1.11.2, replays used a numerical
-				// "value" instead of a string "type".
-				const config::attribute_value & value = child["value"];
-				if ( !value.blank() ) {
-					type_id = type_by_index(value, side_num, loc);
-					if ( type_id.empty() )
-						// A replay error was reported by type_by_index().
-						continue;
+			else
+			{
+				if (const config &child = cfg->child("verify")) {
+					verify(*resources::units, child);
 				}
-				else {
-					replay::process_error("Corrupt replay: recruitment is missing a unit type.");
-					continue;
-				}
-			}
 
-			const unit_type *u_type = unit_types.find(type_id);
-			if (!u_type) {
-				std::stringstream errbuf;
-				errbuf << "Recruiting illegal unit: '" << type_id << "'.\n";
-				replay::process_error(errbuf.str());
-				continue;
-			}
-
-			const std::string res = actions::find_recruit_location(side_num, loc, from, type_id);
-			const int beginning_gold = current_team.gold();
-
-			if (res.empty()) {
-				actions::recruit_unit(*u_type, side_num, loc, from,
-				                      !get_replay_source().is_skipping(), true,
-				                      false);
-			} else {
-				std::stringstream errbuf;
-				errbuf << "cannot recruit unit: " << res << "\n";
-				replay::process_error(errbuf.str());
-				// Keep the bookkeeping right.
-				current_team.spend_gold(u_type->cost());
-				statistics::recruit_unit(unit(*u_type, side_num, true));
-			}
-
-			if ( u_type->cost() > beginning_gold ) {
-				std::stringstream errbuf;
-				errbuf << "unit '" << type_id << "' is too expensive to recruit: "
-					<< u_type->cost() << "/" << beginning_gold << "\n";
-				replay::process_error(errbuf.str());
-			}
-			LOG_REPLAY << "recruit: team=" << side_num << " '" << type_id << "' at (" << loc
-			           << ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
-			           << "-> " << current_team.gold() << "\n";
-
-			check_checksums(*cfg);
-		}
-
-		else if (const config &child = cfg->child("recall"))
-		{
-			const std::string& unit_id = child["value"];
-			map_location loc(child, resources::gamedata);
-			map_location from(child.child_or_empty("from"), resources::gamedata);
-
-			if ( !actions::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping(), true, false) ) {
-				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
-			}
-			check_checksums(*cfg);
-		}
-
-		else if (const config &child = cfg->child("disband"))
-		{
-			const std::string& unit_id = child["value"];
-			std::vector<unit>::iterator disband_unit =
-				find_if_matches_id(current_team.recall_list(), unit_id);
-
-			if(disband_unit != current_team.recall_list().end()) {
-				current_team.recall_list().erase(disband_unit);
-			} else {
-				replay::process_error("illegal disband\n");
+				return REPLAY_FOUND_END_TURN;
 			}
 		}
 		else if (const config &child = cfg->child("countdown_update"))
@@ -1128,198 +792,57 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				(*resources::teams)[tval - 1].set_countdown_time(val);
 			}
 		}
-		else if (const config &child = cfg->child("move"))
+		else if ((*cfg)["dependent"].to_bool(false))
 		{
-			const std::string& x = child["x"];
-			const std::string& y = child["y"];
-			const std::vector<map_location> steps = parse_location_range(x,y);
-
-			if(steps.empty()) {
-				WRN_REPLAY << "Warning: Missing path data found in [move]\n";
+			if(!is_synced)
+			{
+				replay::process_error("found dependent command in replay while is_synced=false\n" );
+				//ignore this command
 				continue;
 			}
-
-			const map_location& src = steps.front();
-			const map_location& dst = steps.back();
-
-			if (src == dst) {
-				WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...\n";
-				continue;
-			}
-
-			map_location early_stop(child["stop_x"].to_int(-999) - 1,
-			                        child["stop_y"].to_int(-999) - 1);
-			if ( !early_stop.valid() )
-				early_stop = dst; // Not really "early", but we need a valid stopping point.
-
-			// The nominal destination should appear to be unoccupied.
-			unit_map::iterator u = find_visible_unit(dst, current_team);
-			if ( u.valid() ) {
-				WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied.\n";
-				// We'll still proceed with this movement, though, since
-				// an event might intervene.
-			}
-
-			u = resources::units->find(src);
-			if (!u.valid()) {
-				std::stringstream errbuf;
-				errbuf << "unfound location for source of movement: "
-				       << src << " -> " << dst << '\n';
-				replay::process_error(errbuf.str());
-				continue;
-			}
-
-			bool show_move = !get_replay_source().is_skipping();
-			if ( current_team.is_ai() || current_team.is_network_ai() )
-				show_move = show_move && preferences::show_ai_moves();
-			const int num_steps =
-				actions::move_unit(steps, NULL, resources::undo_stack, true,
-				                   show_move, NULL, NULL, &early_stop);
-
-			// Verify our destination.
-			const map_location& actual_stop = steps[num_steps];
-			if ( actual_stop != early_stop ) {
-				std::stringstream errbuf;
-				errbuf << "Failed to complete movement to "
-				       << early_stop << ".\n";
-				replay::process_error(errbuf.str());
-				continue;
-			}
-		}
-
-		else if (const config &child = cfg->child("attack"))
-		{
-			const config &destination = child.child("destination");
-			const config &source = child.child("source");
-			check_checksums(*cfg);
-
-			if (!destination || !source) {
-				replay::process_error("no destination/source found in attack\n");
-				continue;
-			}
-
-			//we must get locations by value instead of by references, because the iterators
-			//may become invalidated later
-			const map_location src(source, resources::gamedata);
-			const map_location dst(destination, resources::gamedata);
-
-			int weapon_num = child["weapon"];
-			int def_weapon_num = child["defender_weapon"].to_int(-2);
-			if (def_weapon_num == -2) {
-				// Let's not gratuitously destroy backwards compatibility.
-				WRN_REPLAY << "Old data, having to guess weapon\n";
-				def_weapon_num = -1;
-			}
-
-			unit_map::iterator u = resources::units->find(src);
-			if (!u.valid()) {
-				replay::process_error("unfound location for source of attack\n");
-				continue;
-			}
-
-			const std::string &att_type_id = child["attacker_type"];
-			if (u->type_id() != att_type_id) {
-				WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game_state gives: " << u->type_id() << ")\n";
-			}
-
-			if (size_t(weapon_num) >= u->attacks().size()) {
-				replay::process_error("illegal weapon type in attack\n");
-				continue;
-			}
-
-			unit_map::const_iterator tgt = resources::units->find(dst);
-
-			if (!tgt.valid()) {
-				std::stringstream errbuf;
-				errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
-				replay::process_error(errbuf.str());
-				continue;
-			}
-
-			const std::string &def_type_id = child["defender_type"];
-			if (tgt->type_id() != def_type_id) {
-				WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game_state gives: " << tgt->type_id() << ")\n";
-			}
-
-			if (def_weapon_num >= static_cast<int>(tgt->attacks().size())) {
-
-				replay::process_error("illegal defender weapon type in attack\n");
-				continue;
-			}
-
-			int seed = child["seed"];
-			rand_rng::set_seed(child["seed"]);
-			LOG_REPLAY << "Replaying attack with seed " << seed << "\n";
-
-			DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
-
-			attack_unit(src, dst, weapon_num, def_weapon_num, !get_replay_source().is_skipping());
-
-			u = resources::units->find(src);
-			tgt = resources::units->find(dst);
-
-			if(u.valid()){
-				DBG_REPLAY << "Attacker XP (after attack): " << u->experience() << "\n";
-				if (u->advances()) {
-					get_replay_source().add_expected_advancement(u->get_location());
-				}
-			}
-
-			DBG_REPLAY << "expected_advancements.size: " << get_replay_source().expected_advancements().size() << "\n";
-			if (tgt.valid() && tgt->advances()) {
-				get_replay_source().add_expected_advancement(tgt->get_location());
-			}
-
-			//check victory now if we don't have any advancements. If we do have advancements,
-			//we don't check until the advancements are processed.
-			if(get_replay_source().expected_advancements().empty()) {
-				resources::controller->check_victory();
-			}
-		}
-		else if (const config &child = cfg->child("fire_event"))
-		{
-			BOOST_FOREACH(const config &v, child.child_range("set_variable")) {
-				resources::gamedata->set_variable(v["name"], v["value"]);
-			}
-			const std::string &event = child["raise"];
-			if (const config &source = child.child("source")) {
-				game_events::fire(event, map_location(source, resources::gamedata));
-			} else {
-				game_events::fire(event);
-			}
-
-		}
-		else if (const config &child = cfg->child("advance_unit"))
-		{
-			const map_location loc(child, resources::gamedata);
-			get_replay_source().add_expected_advancement(loc);
-			DBG_REPLAY << "got an explicit advance\n";
-
-		}
-		else if (cfg->child("global_variable"))
-		{
-		}
-		else if (const config &child = cfg->child("auto_shroud"))
-		{
-			bool active = child["active"].to_bool();
-			// Turning on automatic shroud causes vision to be updated.
-			if ( active )
-				resources::undo_stack->commit_vision(true);
- 
-			current_team.set_auto_shroud_updates(active);
-		}
-		else if ( cfg->child("update_shroud") )
-		{
-			resources::undo_stack->commit_vision(true);
-		}
-		else  if ( cfg->child("checksum") )
-		{
-			check_checksums(*cfg);
+			//this means user choice.
+			// it never makes sense to try to execute a user choice.
+			// but we are called from
+			// the only other option for "dependent" command is checksum wich is already checked.
+			assert(cfg->all_children_count() == 1);
+			std::string child_name = cfg->all_children_range().first->key;
+			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
+			resources::recorder->revert_action();
+			return REPLAY_FOUND_DEPENDENT;
 		}
 		else
 		{
-			// End of the if-else chain: unrecognized action.
-			replay::process_error("unrecognized action:\n" + cfg->debug());
+			//we checked for empty commands at the beginning.
+			const std::string & commandname = cfg->ordered_begin()->key;
+			config data = cfg->ordered_begin()->cfg;
+
+			if(is_synced)
+			{
+				replay::process_error("found [" + commandname + "] command in replay expecting a user choice\n" );
+				resources::recorder->revert_action();
+				return REPLAY_FOUND_DEPENDENT;
+			}
+			else
+			{
+				LOG_REPLAY << "found commandname " << commandname << "in replay";
+				
+				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
+					ERR_REPLAY << "recieved a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";
+				}
+				else if((*cfg)["side_invalid"].to_bool(false)) {
+					ERR_REPLAY << "recieved a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sended from wrong client.\n";
+				}
+				/*
+					we need to use the undo stack during replays in order to make delayed shroud updated work.
+				*/
+				synced_context::run(commandname, data, true, !resources::controller->is_skipping_replay(), show_oos_error_error_function);
+				if(resources::controller->is_regular_game_end()) {
+					return REPLAY_FOUND_END_LEVEL;
+				}
+				if (one_move) {
+					return REPLAY_FOUND_END_MOVE;
+				}
+			}
 		}
 
 		if (const config &child = cfg->child("verify")) {
@@ -1334,7 +857,9 @@ replay_network_sender::replay_network_sender(replay& obj) : obj_(obj), upto_(obj
 
 replay_network_sender::~replay_network_sender()
 {
+	try {
 	commit_and_sync();
+	} catch (...) {}
 }
 
 void replay_network_sender::sync_non_undoable()
@@ -1357,6 +882,7 @@ void replay_network_sender::commit_and_sync()
 
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
+
 		if(data.empty() == false) {
 			network::send_data(cfg, 0);
 		}
@@ -1365,73 +891,256 @@ void replay_network_sender::commit_and_sync()
 	}
 }
 
-config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
-	int side, bool force_sp)
-{
-	if (force_sp && network::nconnections() != 0 &&
-	    resources::gamedata->phase() != game_data::PLAY)
-	{
-		/* We are in a multiplayer game, during an early event which
-		   prevents synchronization, and the WML is not interested
-		   in a random result. We cannot silently ignore the issue,
-		   since it would lead to a broken replay. To be sure that
-		   the WML does not catch the error and keep the game going,
-		   we use a sticky exception to forcefully quit. */
-		ERR_REPLAY << "MP synchronization does not work during prestart and start events.";
-		throw end_level_exception(QUIT);
-	}
-	if (resources::gamedata->phase() == game_data::PLAY || force_sp)
-	{
-		/* We have to communicate with the player and store the
-		   choices in the replay. So a decision will be made on
-		   one host and shared amongst all of them. */
 
-		/* process the side parameter and ensure it is within boundaries */
-		const int max_side = static_cast<int>(resources::teams->size());
-		if ( side < 1  ||  max_side < side )
-			side = resources::controller->current_side();
+static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
+{
+	const int max_side  = static_cast<int>(resources::teams->size());
+
+	BOOST_FOREACH(int side, sides)
+	{
+		//the caller has to ensure this.
 		assert(1 <= side && side <= max_side);
-		// There is a chance of having a null-controlled team at this point
-		// (in the start event, with side 1 being null-controlled).
-		if ( (*resources::teams)[side-1].is_empty() )
+		assert(!(*resources::teams)[side-1].is_empty());
+	}
+
+
+	//this should never change during the execution of this function.
+	const int current_side = resources::controller->current_side();
+	const bool is_mp_game = network::nconnections() != 0;
+	// whether sides contains a side that is not the currently active side.
+	const bool contains_other_side = !sides.empty() && (sides.size() != 1 || sides.find(current_side) == sides.end());
+	if(contains_other_side)
+	{
+		synced_context::set_is_simultaneously();
+	}
+	std::map<int,config> retv;
+	/*
+		when we got all our answers we stop.
+	*/
+	while(retv.size() != sides.size())
+	{
+		/*
+			there might be speak or similar commands in the replay before the user input.
+		*/
+		do_replay_handle();
+
+		/*
+			these value might change due to player left/reassign during pull_remote_user_input
+		*/
+		//equals to any side in sides that is local, 0 if no such side exists.
+		int local_side = 0;
+		//if for any side from which we need an answer
+		BOOST_FOREACH(int side, sides)
 		{
-			// Shift the side to the first controlled side.
-			side = 1;
-			while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
-				side++;
-			assert(side <= max_side);
+			//and we havent already received our answer from that side
+			if(retv.find(side) == retv.end())
+			{
+				//and it is local
+				if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
+				{
+					//then we have to make a local choice.
+					local_side = side;
+					break;
+				}
+			}
 		}
 
-		if ((*resources::teams)[side-1].is_local() &&
-		    get_replay_source().at_end())
+		bool has_local_side = local_side != 0;
+		bool is_replay_end = resources::recorder->at_end();
+
+		if (is_replay_end && has_local_side)
 		{
-			/* The decision is ours, and it will be inserted
+			leave_synced_context sync;
+			/* At least one of the decisions is ours, and it will be inserted
 			   into the replay. */
 			DBG_REPLAY << "MP synchronization: local choice\n";
-			config cfg = uch.query_user();
-			recorder.user_input(name, cfg);
-			return cfg;
+			config cfg = uch.query_user(local_side);
 
-		} else {
-			/* The decision has already been made, and must
-			   be extracted from the replay. */
-			DBG_REPLAY << "MP synchronization: remote choice\n";
-			do_replay_handle(side, name);
-			const config *action = get_replay_source().get_next_action();
-			if (!action || !*(action = &action->child(name))) {
-				replay::process_error("[" + name + "] expected but none found\n");
-				return config();
+			resources::recorder->user_input(name, cfg, local_side);
+			retv[local_side]= cfg;
+
+			//send data to others.
+			//but if there wasn't any data sended during this turn, we don't want to bein wth that now.
+			if(synced_context::is_simultaneously() || current_side != local_side)
+			{
+				synced_context::send_user_choice();
 			}
-			return *action;
+			continue;
+
+		}
+		else if(is_replay_end && !has_local_side)
+		{
+			//we are in a mp game, and the data has not been recieved yet.
+			DBG_REPLAY << "MP synchronization: waiting for remote choice\n";
+
+			assert(is_mp_game);
+			synced_context::pull_remote_user_input();
+
+			SDL_Delay(10);
+			continue;
+		}
+		else if(!is_replay_end)
+		{
+			DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_side << "\n";
+
+			const config *action = resources::recorder->get_next_action();
+			assert(action); //action cannot be null because resources::recorder->at_end() returned false.
+			if( !action->has_child(name) || !(*action)["dependent"].to_bool())
+			{
+				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
+				//We save this action for later
+				resources::recorder->revert_action();
+				//and let the user try to get the intended result.
+				BOOST_FOREACH(int side, sides)
+				{
+					if(retv.find(side) == retv.end())
+					{
+						retv[side] = uch.query_user(side);
+					}
+				}
+				return retv;
+			}
+			int from_side = (*action)["from_side"].to_int(0);
+			if ((*action)["side_invalid"].to_bool(false) == true)
+			{
+				//since this 'cheat' can have a quite heavy effect especialy in umc content we give an oos error .
+				replay::process_error("MP synchronization: side_invalid in replay data, this could mean someone wants to cheat.\n");
+			}
+			if (sides.find(from_side) == sides.end())
+			{
+				replay::process_error("MP synchronization: we got an answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + name + "] which is not was we expected\n");
+				continue;
+			}
+			if(retv.find(from_side) != retv.end())
+			{
+				replay::process_error("MP synchronization: we got already our answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + name + "] now we have it twice.\n");
+			}
+			retv[from_side] = action->child(name);
+			continue;
+		}
+	}//while
+	return retv;
+}
+
+std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &name, const mp_sync::user_choice &uch,
+	std::set<int> sides)
+{
+	//pass sides by copy because we need a copy.
+	const bool is_synced = synced_context::is_synced();
+	const int max_side  = static_cast<int>(resources::teams->size());
+	//we currently don't check for too early because luas sync choice doesn't necessarily show screen dialogs.
+	//It (currently) in the responsibility of the user of sync choice to not use dialogs during prestart events..
+	if(!is_synced)
+	{
+		//we got called from inside luas wesnoth.synchronize_choice or from a select event.
+		replay::process_error("MP synchronization only works in a synced context (for example Select or preload events are no synced context).\n");
+		return std::map<int,config>();
+	}
+
+	/*
+		for empty sides we want to use random choice instead.
+	*/
+	std::set<int> empty_sides;
+	BOOST_FOREACH(int side, sides)
+	{
+		assert(1 <= side && side <= max_side);
+		if( (*resources::teams)[side-1].is_empty())
+		{
+			empty_sides.insert(side);
 		}
 	}
-	else
+
+	BOOST_FOREACH(int side, empty_sides)
 	{
-		/* Neither the user nor a replay can be consulted, so a
-		   decision will be made at all hosts simultaneously.
-		   The result is not stored in the replay, since the
-		   other clients have already taken the same decision. */
-		DBG_REPLAY << "MP synchronization: synchronized choice\n";
-		return uch.random_choice(resources::gamedata->rng());
+		sides.erase(side);
 	}
+
+	std::map<int,config> retv =  get_user_choice_internal(name, uch, sides);
+
+	BOOST_FOREACH(int side, empty_sides)
+	{
+		retv[side] = uch.random_choice(side);
+	}
+	return retv;
+
+}
+
+/*
+	fixes some rare cases and calls get_user_choice_internal if we are in a synced context.
+*/
+config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_choice &uch,
+	int side)
+{
+	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
+	const bool is_synced = synced_context::is_synced();
+	const bool is_mp_game = network::nconnections() != 0;//Only used in debugging output below
+	const int max_side  = static_cast<int>(resources::teams->size());
+	bool is_side_null_controlled;
+
+	if(!is_synced)
+	{
+		//we got called from inside luas wesnoth.synchronize_choice or from a select event (or maybe a preload event?).
+		//This doesn't cause problems and someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice which could be useful,
+		//so just give a warning.
+		LOG_REPLAY << "MP synchronization called during an unsynced context.\n";
+		return uch.query_user(side);
+	}
+	if(is_too_early && uch.is_visible())
+	{
+		//We are in a prestart event or even earlier.
+		//Although we are able to sync them, we cannot use query_user,
+		//because we cannot (or shouldn't) put things on the screen inside a prestart event, this is true for SP and MP games.
+		//Quotation form event wiki: "For things displayed on-screen such as character dialog, use start instead"
+		return uch.random_choice(side);
+	}
+	//in start events it's unclear to decide on which side the function should be executed (default= side1 still).
+	//But for advancements we can just decide on the side that owns the unit and that's in the responsibility of advance_unit_at.
+	//For [message][option] and luas sync_choice the scenario designer is responsible for that.
+	//For [get_global_variable] side is never null.
+
+	/*
+		side = 0 should default to the currently active side per definition.
+	*/
+	if ( side < 1  ||  max_side < side )
+	{
+		if(side != 0)
+		{
+			ERR_REPLAY << "Invalid parameter for side in get_user_choice." << std::endl;
+		}
+		side = resources::controller->current_side();
+		LOG_REPLAY << " side changed to " << side << "\n";
+	}
+	is_side_null_controlled = (*resources::teams)[side-1].is_empty();
+
+	LOG_REPLAY << "get_user_choice_called with"
+			<< " name=" << name
+			<< " is_synced=" << is_synced
+			<< " is_mp_game=" << is_mp_game
+			<< " is_side_null_controlled=" << is_side_null_controlled << "\n";
+
+	if (is_side_null_controlled)
+	{
+		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.\n";
+		//most likely we are in a start event with an empty side 1
+		//but calling [set_global_variable] to an empty side might also cause this.
+		//i think in that case we should better use uch.random_choice(),
+		//which could return something like config_of("invalid", true);
+		side = 1;
+		while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
+			side++;
+		assert(side <= max_side);
+	}
+
+
+	assert(1 <= side && side <= max_side);
+
+	std::set<int> sides;
+	sides.insert(side);
+	std::map<int, config> retv = get_user_choice_internal(name, uch, sides);
+	if(retv.find(side) == retv.end())
+	{
+		//An error occured, get_user_choice_internal should have given an oos error message
+		return config();
+	}
+	return retv[side];
 }

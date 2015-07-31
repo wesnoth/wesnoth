@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,12 +17,19 @@
 #include "global.hpp"
 #include "unit_display.hpp"
 
+#include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
+#include "game_board.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
-#include "game_events.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
+#include "unit_filter.hpp"
+#include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -40,7 +47,7 @@ static std::string number_and_text(int number, const std::string & text)
 	if ( number == 0 )
 		return text;
 
- 	std::ostringstream result;
+	std::ostringstream result;
 
 	if ( text.empty() )
 		result << number;
@@ -88,7 +95,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 		animator.wait_for_end();
 	}
 
-	temp_unit.set_standing();
+	temp_unit.anim_comp().set_standing();
 	disp.update_display();
 	events::pump();
 }
@@ -110,7 +117,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
  *           INT_MIN indicates that no animation is pending.
  */
 static int move_unit_between(const map_location& a, const map_location& b,
-                             unit& temp_unit, unsigned int step_num,
+                             unit_ptr temp_unit, unsigned int step_num,
                              unsigned int step_left, unit_animator & animator,
                              display& disp)
 {
@@ -118,10 +125,10 @@ static int move_unit_between(const map_location& a, const map_location& b,
 		return INT_MIN;
 	}
 
-	temp_unit.set_location(a);
+	temp_unit->set_location(a);
 	disp.invalidate(a);
-	temp_unit.set_facing(a.get_relative_dir(b));
-	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
+	temp_unit->set_facing(a.get_relative_dir(b));
+	animator.replace_anim_if_invalid(temp_unit.get(),"movement",a,b,step_num,
 			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
 	animator.pause_animation();
@@ -134,7 +141,7 @@ static int move_unit_between(const map_location& a, const map_location& b,
 	int target_time = animator.get_animation_time_potential();
 		// target_time must be short to avoid jumpy move
 		// std::cout << "target time: " << target_time << "\n";
-	// we round it to the next multile of 200
+	// we round it to the next multiple of 200
 	target_time += 200;
 	target_time -= target_time%200;
 
@@ -151,17 +158,18 @@ namespace unit_display
 /**
  * The path must remain unchanged for the life of this object.
  */
-unit_mover::unit_mover(const std::vector<map_location>& path, bool animate) :
+unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool force_scroll) :
 	disp_(game_display::get_singleton()),
 	can_draw_(disp_  &&  !disp_->video().update_locked()  &&
 	          !disp_->video().faked()  &&  path.size() > 1),
 	animate_(animate),
+	force_scroll_(force_scroll),
 	animator_(),
 	wait_until_(INT_MIN),
-	shown_unit_(NULL),
+	shown_unit_(),
 	path_(path),
 	current_(0),
-	temp_unit_ptr_(NULL),
+	temp_unit_ptr_(),
 	// Somewhat arbitrary default values.
 	was_hidden_(false),
 	is_enemy_(true)
@@ -180,8 +188,6 @@ unit_mover::~unit_mover()
 	update_shown_unit();
 	// For safety, clear the animator before deleting the temp unit.
 	animator_.clear();
-	// The temp unit's destructor will remove it from the display.
-	delete temp_unit_ptr_;
 }
 
 
@@ -195,28 +201,24 @@ unit_mover::~unit_mover()
 /* Note: Hide the unit in its current location; do not actually remove it.
  * Otherwise the status displays will be wrong during the movement.
  */
-void unit_mover::replace_temporary(unit & u)
+void unit_mover::replace_temporary(unit_ptr u)
 {
 	if ( disp_ == NULL )
 		// No point in creating a temp unit with no way to display it.
 		return;
 
 	// Save the hidden state of the unit.
-	was_hidden_ = u.get_hidden();
+	was_hidden_ = u->get_hidden();
 
 	// Make our temporary unit mostly match u...
-	if ( temp_unit_ptr_ == NULL ) {
-		temp_unit_ptr_ = new game_display::fake_unit(u);
-		temp_unit_ptr_->place_on_game_display(disp_);
-	}
-	else
-		*temp_unit_ptr_ = u;
+	temp_unit_ptr_ = fake_unit_ptr(unit_ptr(new unit(*u)), resources::fake_units);
+
 	// ... but keep the temporary unhidden and hide the original.
 	temp_unit_ptr_->set_hidden(false);
-	u.set_hidden(true);
+	u->set_hidden(true);
 
 	// Update cached data.
-	is_enemy_ =	(*resources::teams)[u.side()-1].is_enemy(disp_->viewing_side());
+	is_enemy_ =	(*resources::teams)[u->side()-1].is_enemy(disp_->viewing_side());
 }
 
 
@@ -227,11 +229,11 @@ void unit_mover::replace_temporary(unit & u)
  */
 void unit_mover::update_shown_unit()
 {
-	if ( shown_unit_ != NULL ) {
+	if ( shown_unit_ ) {
 		// Switch the display back to the real unit.
 		shown_unit_->set_hidden(was_hidden_);
 		temp_unit_ptr_->set_hidden(true);
-		shown_unit_ = NULL;
+		shown_unit_.reset();
 	}
 }
 
@@ -240,11 +242,17 @@ void unit_mover::update_shown_unit()
  * Initiates the display of movement for the supplied unit.
  * This should be called before attempting to display moving to a new hex.
  */
-void unit_mover::start(unit& u)
+void unit_mover::start(unit_ptr u)
 {
 	// Nothing to do here if there is nothing to animate.
-	if ( !can_draw_  || !animate_ )
+	if ( !can_draw_ )
 		return;
+	// If no animation then hide unit until end of movement
+	if ( !animate_ ) {
+		was_hidden_ = u->get_hidden();
+		u->set_hidden(true);
+		return;
+	}
 
 	// This normally does nothing, but just in case...
 	wait_for_anims();
@@ -256,7 +264,7 @@ void unit_mover::start(unit& u)
 	// Initialize our temporary unit for the move.
 	temp_unit_ptr_->set_location(path_[0]);
 	temp_unit_ptr_->set_facing(path_[0].get_relative_dir(path_[1]));
-	temp_unit_ptr_->set_standing(false);
+	temp_unit_ptr_->anim_comp().set_standing(false);
 	disp_->invalidate(path_[0]);
 
 	// If the unit can be seen here by the viewing side:
@@ -281,15 +289,15 @@ void unit_mover::start(unit& u)
 	disp_->draw(true);
 
 	// extra immobile movement animation for take-off
-	animator_.add_animation(temp_unit_ptr_, "pre_movement", path_[0], path_[1]);
+	animator_.add_animation(temp_unit_ptr_.get(), "pre_movement", path_[0], path_[1]);
 	animator_.start_animations();
 	animator_.wait_for_end();
 	animator_.clear();
 
 	// Switch the display back to the real unit.
-	u.set_facing(temp_unit_ptr_->facing());
-	u.set_standing(false);	// Need to reset u's animation so the new facing takes effect.
-	u.set_hidden(was_hidden_);
+	u->set_facing(temp_unit_ptr_->facing());
+	u->anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u->set_hidden(was_hidden_);
 	temp_unit_ptr_->set_hidden(true);
 }
 
@@ -305,23 +313,23 @@ void unit_mover::start(unit& u)
  * wait (another call to proceed_to() or finish() will implicitly wait). The
  * unit must remain valid until the wait is finished.
  */
-void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
+void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wait)
 {
-	// Nothing to do here if animations can/should not be shown.
-	if ( !can_draw_  || !animate_ )
+	// Nothing to do here if animations cannot be shown.
+	if ( !can_draw_ || !animate_ )
 		return;
 
 	// Handle pending visibility issues before introducing new ones.
 	wait_for_anims();
 
-	if ( update  ||  temp_unit_ptr_ == NULL )
+	if ( update  ||  !temp_unit_ptr_ )
 		// Replace the temp unit (which also hides u and shows our temporary).
 		replace_temporary(u);
 	else
 	{
 		// Just switch the display from the real unit to our fake one.
 		temp_unit_ptr_->set_hidden(false);
-		u.set_hidden(true);
+		u->set_hidden(true);
 	}
 
 	// Safety check.
@@ -342,19 +350,19 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 				temp_unit_ptr_->set_location(path_[current_]);
 				disp_->invalidate(path_[current_]);
 				// scroll in as much of the remaining path as possible
-				if ( temp_unit_ptr_->get_animation() )
-					temp_unit_ptr_->get_animation()->pause_animation();
+				if ( temp_unit_ptr_->anim_comp().get_animation() )
+					temp_unit_ptr_->anim_comp().get_animation()->pause_animation();
 				disp_->scroll_to_tiles(path_.begin() + current_,
 				                       path_.end(), game_display::ONSCREEN,
-				                       true, false, 0.0, false);
-				if ( temp_unit_ptr_->get_animation() )
-					temp_unit_ptr_->get_animation()->restart_animation();
+				                       true, false, 0.0, force_scroll_);
+				if ( temp_unit_ptr_->anim_comp().get_animation() )
+					temp_unit_ptr_->anim_comp().get_animation()->restart_animation();
 			}
 
 			if ( tiles_adjacent(path_[current_], path_[current_+1]) )
 				wait_until_ =
 					move_unit_between(path_[current_], path_[current_+1],
-					                  *temp_unit_ptr_, current_,
+					                  temp_unit_ptr_.get_unit_ptr(), current_,
 					                  path_.size() - (current_+2), animator_,
 					                  *disp_);
 			else if ( path_[current_] != path_[current_+1] )
@@ -363,10 +371,10 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 		}
 
 	// Update the unit's facing.
-	u.set_facing(temp_unit_ptr_->facing());
-	u.set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u->set_facing(temp_unit_ptr_->facing());
+	u->anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
 	// Remember the unit to unhide when the animation finishes.
-	shown_unit_ = &u;
+	shown_unit_ = u;
 	if ( wait )
 		wait_for_anims();
 }
@@ -387,20 +395,6 @@ void unit_mover::wait_for_anims()
 		animator_.wait_until(wait_until_);
 		// debug code, see unit_frame::redraw()
 		// std::cout << "   end\n";
-
-		/// @todo Are these invalidations really (or still) necessary?
-		/// A quick check suggested they are not needed, but that was
-		/// not comprehensive.
-		if ( disp_ ) { // Should always be true if we get here.
-			// Invalidate the hexes around the move that prompted this wait.
-			map_location arr[6];
-			get_adjacent_tiles(path_[current_-1], arr);
-			for ( unsigned i = 0; i < 6; ++i )
-				disp_->invalidate(arr[i]);
-			get_adjacent_tiles(path_[current_], arr);
-			for ( unsigned i = 0; i < 6; ++i )
-				disp_->invalidate(arr[i]);
-		}
 	}
 
 	// Reset data.
@@ -418,11 +412,16 @@ void unit_mover::wait_for_anims()
  * If @a dir is not supplied, the final direction will be determined by (the
  * last two traversed hexes of) the path.
  */
-void unit_mover::finish(unit &u, map_location::DIRECTION dir)
+void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 {
 	// Nothing to do here if the display is not valid.
-	if ( !can_draw_ )
+	if ( !can_draw_ ) {
+		// Make sure to reset the unit's animation to deal with a quirk in the
+		// action engine where it leaves it to us to reenable bars even if the
+		// display is initially locked.
+		u->anim_comp().set_standing(true);
 		return;
+	}
 
 	const map_location & end_loc = path_[current_];
 	const map_location::DIRECTION final_dir = current_ == 0 ?
@@ -439,13 +438,13 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 		temp_unit_ptr_->set_facing(final_dir);
 
 		// Animation
-		animator_.add_animation(temp_unit_ptr_, "post_movement", end_loc);
+		animator_.add_animation(temp_unit_ptr_.get(), "post_movement", end_loc);
 		animator_.start_animations();
 		animator_.wait_for_end();
 		animator_.clear();
 
 		// Switch the display back to the real unit.
-		u.set_hidden(was_hidden_);
+		u->set_hidden(was_hidden_);
 		temp_unit_ptr_->set_hidden(true);
 
 		events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
@@ -453,10 +452,15 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 			mousehandler->invalidate_reachmap();
 		}
 	}
+	else
+	{
+		// Show the unit at end of skipped animation
+		u->set_hidden(was_hidden_);
+	}
 
 	// Facing gets set even when not animating.
-	u.set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
-	u.set_standing(true);	// Need to reset u's animation so the new facing takes effect.
+	u->set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
+	u->anim_comp().set_standing(true);	// Need to reset u's animation so the new facing takes effect.
 
 	// Redraw path ends (even if not animating).
 	disp_->invalidate(path_.front());
@@ -480,10 +484,11 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
  * so that while the unit is moving status etc.
  * will still display the correct number of units.
  */
-void move_unit(const std::vector<map_location>& path, unit& u,
-               bool animate, map_location::DIRECTION dir)
+void move_unit(const std::vector<map_location>& path, unit_ptr u,
+               bool animate, map_location::DIRECTION dir,
+               bool force_scroll)
 {
-	unit_mover mover(path, animate);
+	unit_mover mover(path, animate, force_scroll);
 
 	mover.start(u);
 	mover.proceed_to(u, path.size());
@@ -501,6 +506,8 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 		return;
 	}
 	unit_animator animator;
+	attacker.set_facing(loc.get_relative_dir(defender_loc));
+	defender->set_facing(defender_loc.get_relative_dir(loc));
 	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,"",0,unit_animation::HIT,attack,secondary_attack,0);
 	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,"",0,unit_animation::MISS,secondary_attack,attack,0);
 	animator.start_animations();
@@ -529,10 +536,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 		animator.wait_for_end();
 	}
 	if(primary_unit) {
-		primary_unit->set_standing();
+		primary_unit->anim_comp().set_standing();
 	}
 	if(secondary_unit) {
-		secondary_unit->set_standing();
+		secondary_unit->anim_comp().set_standing();
 	}
 	reset_helpers(primary_unit,secondary_unit);
 
@@ -563,30 +570,29 @@ void unit_die(const map_location& loc, unit& loser,
 }
 
 
-void unit_attack(
+void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
-		  int swing,std::string hit_text,int drain_amount,std::string att_text)
+                 int swing,std::string hit_text,int drain_amount,std::string att_text)
 {
-	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
 		return;
 	}
-	unit_map& units = disp->get_units();
-	disp->select_hex(map_location::null_location);
+	//const unit_map& units = disp->get_units();
+	disp->select_hex(map_location::null_location());
 
 	// scroll such that there is at least half a hex spacing around fighters
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5,false);
 
 	log_scope("unit_attack");
 
-	const unit_map::iterator att = units.find(a);
-	assert(att != units.end());
-	unit& attacker = *att;
+	const unit_map::const_iterator att = board.units().find(a);
+	assert(att.valid());
+	const unit& attacker = *att;
 
-	const unit_map::iterator def = units.find(b);
-	assert(def != units.end());
+	const unit_map::iterator def = board.find_unit(b);
+	assert(def.valid());
 	unit &defender = *def;
 	int def_hitpoints = defender.hitpoints();
 
@@ -616,7 +622,7 @@ void unit_attack(
 		hit_type, &attack, secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
-	const unit_animation *defender_anim = def->choose_animation(*disp,
+	const unit_animation *defender_anim = def->anim_comp().choose_animation(*disp,
 		def->get_location(), "defend", att->get_location(), damage,
 		hit_type, &attack, secondary_attack, swing);
 	animator.add_animation(&defender, defender_anim, def->get_location(),
@@ -625,8 +631,8 @@ void unit_attack(
 	BOOST_FOREACH (const unit_ability & ability, leaders) {
 		if(ability.second == a) continue;
 		if(ability.second == b) continue;
-		unit_map::iterator leader = units.find(ability.second);
-		assert(leader != units.end());
+		unit_map::const_iterator leader = board.units().find(ability.second);
+		assert(leader.valid());
 		leader->set_facing(ability.second.get_relative_dir(a));
 		animator.add_animation(&*leader, "leading", ability.second,
 			att->get_location(), damage, true,  "", 0,
@@ -635,8 +641,8 @@ void unit_attack(
 	BOOST_FOREACH (const unit_ability & ability, helpers) {
 		if(ability.second == a) continue;
 		if(ability.second == b) continue;
-		unit_map::iterator helper = units.find(ability.second);
-		assert(helper != units.end());
+		unit_map::const_iterator helper = board.units().find(ability.second);
+		assert(helper.valid());
 		helper->set_facing(ability.second.get_relative_dir(b));
 		animator.add_animation(&*helper, "resistance", ability.second,
 			def->get_location(), damage, true,  "", 0,
@@ -658,7 +664,7 @@ void unit_attack(
 	}
 	animator.wait_for_end();
 	// pass the animation back to the real unit
-	def->start_animation(animator.get_end_time(), defender_anim, true);
+	def->anim_comp().start_animation(animator.get_end_time(), defender_anim, true);
 	reset_helpers(&*att, &*def);
 	def->set_hitpoints(def_hitpoints);
 }
@@ -667,22 +673,22 @@ void unit_attack(
 void reset_helpers(const unit *attacker,const unit *defender)
 {
 	display* disp = display::get_singleton();
-	unit_map& units = disp->get_units();
+	const unit_map& units = disp->get_units();
 	if(attacker) {
 		unit_ability_list leaders = attacker->get_abilities("leadership");
 		BOOST_FOREACH (const unit_ability & ability, leaders) {
-			unit_map::iterator leader = units.find(ability.second);
+			unit_map::const_iterator leader = units.find(ability.second);
 			assert(leader != units.end());
-			leader->set_standing();
+			leader->anim_comp().set_standing();
 		}
 	}
 
 	if(defender) {
 		unit_ability_list helpers = defender->get_abilities("resistance");
 		BOOST_FOREACH (const unit_ability & ability, helpers) {
-			unit_map::iterator helper = units.find(ability.second);
+			unit_map::const_iterator helper = units.find(ability.second);
 			assert(helper != units.end());
-			helper->set_standing();
+			helper->anim_comp().set_standing();
 		}
 	}
 }
@@ -691,13 +697,13 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() ||disp->fogged(loc)) return;
-	unit_map::iterator u = disp->get_units().find(loc);
+	unit_map::const_iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 	u->set_hidden(true);
 
 	unit_animator animator;
-	if(leader_loc != map_location::null_location) {
-		unit_map::iterator leader = disp->get_units().find(leader_loc);
+	if(leader_loc != map_location::null_location()) {
+		unit_map::const_iterator leader = disp->get_units().find(leader_loc);
 		if(leader == disp->get_units().end()) return;
 		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
 		leader->set_facing(leader_loc.get_relative_dir(loc));
@@ -735,17 +741,17 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 
 	if (healing < 0) {
 		animator.add_animation(&healed, "poisoned", healed_loc,
-		                       map_location::null_location, -healing, false,
+		                       map_location::null_location(), -healing, false,
 		                       number_and_text(-healing, extra_text),
 		                       display::rgb(255,0,0));
 	} else if ( healing > 0 ) {
 		animator.add_animation(&healed, "healed", healed_loc,
-		                       map_location::null_location, healing, false,
+		                       map_location::null_location(), healing, false,
 		                       number_and_text(healing, extra_text),
 		                       display::rgb(0,255,0));
 	} else {
 		animator.add_animation(&healed, "healed", healed_loc,
-		                       map_location::null_location, 0, false,
+		                       map_location::null_location(), 0, false,
 		                       extra_text, display::rgb(0,255,0));
 	}
 	animator.start_animations();
@@ -753,7 +759,7 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 	animator.set_all_standing();
 }
 
-void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location = map_location::null_location);
+void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location = map_location::null_location());
 
 void wml_animation(const vconfig &cfg, const map_location &default_location)
 {
@@ -768,20 +774,23 @@ void wml_animation(const vconfig &cfg, const map_location &default_location)
 
 void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location)
 {
-	unit_map::iterator u = resources::units->find(default_location);
+	unit_const_ptr u;
+
+	unit_map::const_iterator u_it = resources::units->find(default_location);
+	if (u_it.valid()) {
+		u = u_it.get_shared_ptr();
+	}
 
 	// Search for a valid unit filter,
 	// and if we have one, look for the matching unit
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
-		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if (game_events::unit_matches_filter(*u, filter))
-				break;
-		}
+		const unit_filter ufilt(filter, resources::filter_con);
+		u = ufilt.first_match_on_map();
 	}
 
 	// We have found a unit that matches the filter
-	if (u.valid() && !resources::screen->fogged(u->get_location()))
+	if (u && !resources::screen->fogged(u->get_location()))
 	{
 		attack_type *primary = NULL;
 		attack_type *secondary = NULL;
@@ -789,23 +798,45 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		unit_animation::hit_type hits=  unit_animation::INVALID;
 		std::vector<attack_type> attacks = u->attacks();
 		std::vector<attack_type>::iterator itor;
+		boost::scoped_ptr<attack_type> dummy_primary;
+		boost::scoped_ptr<attack_type> dummy_secondary;
 
-		filter = cfg.child("primary_attack");
-		if(!filter.null()) {
-			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-				if(itor->matches_filter(filter.get_parsed_config())) {
-					primary = &*itor;
-					break;
-				}
+		// death and victory animations are handled here because usually
+		// the code iterates through all the unit's attacks
+		// but in these two specific cases we need to create dummy attacks
+		// to fire correctly certain animations
+		// this is especially evident with the Wose's death animations
+		if (cfg["flag"] == "death" || cfg["flag"] == "victory") {
+			filter = cfg.child("primary_attack");
+			if(!filter.null()) {
+				dummy_primary.reset(new attack_type(filter.get_config()));
+				primary = dummy_primary.get();
+			}
+			filter = cfg.child("secondary_attack");
+			if(!filter.null()) {
+				dummy_secondary.reset(new attack_type(filter.get_config()));
+				secondary = dummy_secondary.get();
 			}
 		}
 
-		filter = cfg.child("secondary_attack");
-		if(!filter.null()) {
-			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-				if(itor->matches_filter(filter.get_parsed_config())) {
-					secondary = &*itor;
-					break;
+		else {
+			filter = cfg.child("primary_attack");
+			if(!filter.null()) {
+				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
+					if(itor->matches_filter(filter.get_parsed_config())) {
+						primary = &*itor;
+						break;
+					}
+				}
+			}
+
+			filter = cfg.child("secondary_attack");
+			if(!filter.null()) {
+				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
+					if(itor->matches_filter(filter.get_parsed_config())) {
+						secondary = &*itor;
+						break;
+					}
 				}
 			}
 		}
@@ -826,9 +857,9 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		}
 		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
 		vconfig t_filter = cfg.child("facing");
-		map_location secondary_loc = map_location::null_location;
+		map_location secondary_loc = map_location::null_location();
 		if(!t_filter.empty()) {
-			terrain_filter filter(t_filter, *resources::units);
+			terrain_filter filter(t_filter, resources::filter_con);
 			std::set<map_location> locs;
 			filter.get_locations(locs);
 			if (!locs.empty() && u->get_location() != *locs.begin()) {

@@ -64,17 +64,11 @@ megadva, akkor megjelenik a nehézségválasztó menü.
 A megadott hadjáraton belüli küldetés azonosítója. Alapértelmezetten az első
 küldetés.
 .TP 
-\fB\-\-config\-dir\fP\fI\ név\fP
-a felhasználói beállítások könyvtárát \fInév\fP\-re állítja a $HOME könyvtárban
-vagy Windows alatt a "Dokumentumok\eJátékok" könyvtárban. Abszolút útvonal
-is megadható.
-.TP 
-\fB\-\-config\-path\fP
-kiírja a játék felhasználói beállításait tartalmazó könyvtár nevét, majd
-kilép.
-.TP 
 \fB\-\-data\-dir <könyvtár>\fP
 a megadott könyvtárra módosítja az alapértelmezett adatkönyvtárat.
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 kibővített parancssori beállításokat tesz lehetővé a játékban (további
@@ -192,6 +186,25 @@ az érvényességi hibákat végzetes hibaként kezeli.
 \fB\-t, \-\-test\fP
 elindítja a játékot és betölt egy kis teszthadjáratot.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+kiírja a játék felhasználói beállításait tartalmazó könyvtár nevét, majd
+kilép.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 feltételezi, hogy a gyorsítótár érvényes. (veszélyes)
 .TP 
@@ -235,6 +248,10 @@ kívánná meg. Ez szkriptelt teljesítménymérés esetén lehet hasznos.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 a játékot grafikus felhasználói felület nélkül indítja el. A

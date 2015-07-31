@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -37,9 +37,13 @@ static lg::log_domain log_whiteboard("whiteboard");
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-#include "game_display.hpp"
+#include "../fake_unit_ptr.hpp"
+#include "../unit_ptr.hpp"
 
 class arrow;
+class config;
+class fake_unit_manager;
+class game_board;
 struct map_location; //not used in the typedefs, saves a few forward declarations
 class unit;
 class unit_map; //not used in the typedefs, saves a few forward declarations
@@ -62,7 +66,6 @@ class side_actions;
 typedef boost::shared_ptr<bool> whiteboard_lock;
 
 typedef boost::shared_ptr<arrow> arrow_ptr;
-typedef boost::shared_ptr<game_display::fake_unit> fake_unit_ptr;
 
 typedef boost::shared_ptr<action> action_ptr;
 typedef boost::shared_ptr<action const> action_const_ptr;

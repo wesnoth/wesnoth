@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,9 +30,11 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace {
+namespace
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -59,11 +61,14 @@ namespace {
 class tmp_server_list : public tdialog
 {
 public:
-	tmp_server_list() :
-		host_name_()
-	{}
+	tmp_server_list() : host_name_()
+	{
+	}
 
-	const std::string& host_name() const { return host_name_; }
+	const std::string& host_name() const
+	{
+		return host_name_;
+	}
 
 private:
 	std::string host_name_;
@@ -86,10 +91,11 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 
 	window.keyboard_capture(&list);
 
-	const std::vector<game_config::server_info>&
-		pref_servers = preferences::server_list();
+	const std::vector<game_config::server_info>& pref_servers
+			= preferences::server_list();
 
-	FOREACH(const AUTO& server, pref_servers) {
+	FOREACH(const AUTO & server, pref_servers)
+	{
 
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -108,8 +114,8 @@ void tmp_server_list::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 
-		const tlistbox& list = find_widget<const tlistbox>(
-				&window, "server_list", false);
+		const tlistbox& list
+				= find_widget<const tlistbox>(&window, "server_list", false);
 
 		const tgrid* row = list.get_row_grid(list.get_selected_row());
 		assert(row);
@@ -141,10 +147,8 @@ void tmp_server_list::post_show(twindow& window)
 
 REGISTER_DIALOG(mp_connect)
 
-static void show_server_list(
-		  CVideo& video
-		, twindow& window
-		, tfield_text* host_name)
+static void
+show_server_list(CVideo& video, twindow& window, tfield_text* host_name)
 {
 	assert(host_name);
 
@@ -157,11 +161,11 @@ static void show_server_list(
 }
 
 tmp_connect::tmp_connect()
-	: host_name_(register_text("host_name"
-			, true
-			, preferences::network_host
-			, preferences::set_network_host
-			, true))
+	: host_name_(register_text("host_name",
+							   true,
+							   preferences::network_host,
+							   preferences::set_network_host,
+							   true))
 {
 }
 
@@ -172,13 +176,12 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 	// Set view list callback button.
 	if(tbutton* button = find_widget<tbutton>(&window, "list", false, false)) {
 
-		connect_signal_mouse_left_click(*button, boost::bind(
-				  show_server_list
-				, boost::ref(video)
-				, boost::ref(window)
-				, host_name_));
+		connect_signal_mouse_left_click(*button,
+										boost::bind(show_server_list,
+													boost::ref(video),
+													boost::ref(window),
+													host_name_));
 	}
-
 }
 
 tdialog* tmp_connect::mp_server_list_for_unit_test()
@@ -187,4 +190,3 @@ tdialog* tmp_connect::mp_server_list_for_unit_test()
 }
 
 } // namespace gui2
-

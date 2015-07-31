@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 #include "storyscreen/controller.hpp"
 
 #include "display.hpp"
-#include "game_events.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "language.hpp"
@@ -34,9 +33,6 @@
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
-
-// TODO: remove when completed
-#include "stub.hpp"
 
 void show_story(display &disp, const std::string &scenario_name,
 	const config::const_child_itors &story)
@@ -70,16 +66,4 @@ void show_story(display &disp, const std::string &scenario_name,
 		}
 	}
 	return;
-}
-
-void show_endscreen(display& /*disp*/, const t_string& /*text*/, unsigned int /*duration*/)
-{
-	STUB();
-	LOG_NG << "show_endscreen() invoked...\n";
-
-	config story_cfg;
-
-	// FIXME: stub!
-
-	LOG_NG << "show_endscreen() completed...\n";
 }

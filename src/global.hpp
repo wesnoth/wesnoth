@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,6 @@
 #pragma warning(disable: 4345)
 #pragma warning(disable: 4250)
 #pragma warning(disable: 4355)
-#pragma warning(disable: 4800)
 #pragma warning(disable: 4351)
 
 #endif //_MSC_VER
@@ -58,6 +57,16 @@
 #else
 #define FINAL
 #define OVERRIDE
+#endif
+
+#ifdef NDEBUG
+/*
+ * Wesnoth uses asserts to avoid undefined behaviour. For example, to make sure
+ * pointers are not NULL before deferring them, or collections are not empty
+ * before accessing their elements. Therefore Wesnoth should not be compiled
+ * with assertions disabled.
+ */
+#error "Compilation with NDEBUG defined isn't supported, Wesnoth depends on asserts."
 #endif
 
 #endif //GLOBAL_HPP_INCLUDED

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,8 @@
 #include <string>
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
 class tunit_create : public tdialog
 {
@@ -29,18 +30,27 @@ public:
 	tunit_create();
 
 	/** Unit type choice from the user. */
-	const std::string& choice() const { return choice_; }
+	const std::string& choice() const
+	{
+		return choice_;
+	}
 
 	/** Whether the user actually chose a unit type or not. */
-	bool no_choice() const { return choice_.empty(); }
+	bool no_choice() const
+	{
+		return choice_.empty();
+	}
 
 	/** Gender choice from the user. */
-	unit_race::GENDER gender() { return gender_; }
+	unit_race::GENDER gender()
+	{
+		return gender_;
+	}
 
 private:
-	unit_race::GENDER        gender_;
+	unit_race::GENDER gender_;
 
-	std::string              choice_;
+	std::string choice_;
 	std::vector<std::string> type_ids_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -54,7 +64,6 @@ private:
 
 	void gender_toggle_callback(twindow& window);
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED */

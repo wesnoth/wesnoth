@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,16 +19,19 @@
 
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_stacked_widget
-	: public tbuilder_control
+struct tbuilder_stacked_widget : public tbuilder_control
 {
 	explicit tbuilder_stacked_widget(const config& cfg);
 
-	twidget* build () const;
+	using tbuilder_control::build;
+
+	twidget* build() const;
 
 	/** The builders for all layers of the stack .*/
 	std::vector<tbuilder_grid_const_ptr> stack;
@@ -39,4 +42,3 @@ struct tbuilder_stacked_widget
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -18,16 +18,23 @@
 #include "dialogs.hpp"
 
 #include "actions/undo.hpp"
+#include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
+#include "hotkey_handler_mp.hpp"
 #include "log.hpp"
+#include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "formula_string_utils.hpp"
+#include "unit_animation.hpp"
 #include "whiteboard/manager.hpp"
+#include "countdown_clock.hpp"
+#include "synced_context.hpp"
+#include "replay_helper.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -37,44 +44,37 @@ static lg::log_domain log_engine("engine");
 unsigned int playmp_controller::replay_last_turn_ = 0;
 
 playmp_controller::playmp_controller(const config& level,
-		game_state& state_of_game, const int ticks,
-		const int num_turns, const config& game_config, CVideo& video,
-		bool skip_replay, bool is_host) :
-	playsingle_controller(level, state_of_game, ticks, num_turns,
-		game_config, video, skip_replay),
-	turn_data_(NULL),
-	beep_warning_time_(0),
-	network_processing_stopped_(false)
+		saved_game& state_of_game, const int ticks, const config& game_config, 
+		const tdata_cache & tdata, CVideo& video,
+		bool skip_replay, bool blindfold_replay_, bool is_host)
+	: playsingle_controller(level, state_of_game, ticks,
+		game_config, tdata, video, skip_replay || blindfold_replay_) //this || means that if blindfold is enabled, quick replays will be on.
+	, network_processing_stopped_(false)
+	, blindfold_(*gui_,blindfold_replay_)
 {
-	is_host_ = is_host;
+	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the mp (network enabled) version
+
+	turn_data_.set_host(is_host);
+	turn_data_.host_transfer().attach_handler(this);
 	// We stop quick replay if play isn't yet past turn 1
 	if ( replay_last_turn_ <= 1)
 	{
 		skip_replay_ = false;
 	}
+	if (blindfold_replay_) {
+		LOG_NG << "Putting on the blindfold now " << std::endl;
+	}
 }
 
 playmp_controller::~playmp_controller() {
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
-		sound::stop_bell();
-	}
+	try {
+		turn_data_.host_transfer().detach_handler(this);
+	} catch (...) {}
 }
 
 void playmp_controller::set_replay_last_turn(unsigned int turn){
 	 replay_last_turn_ = turn;
-}
-
-void playmp_controller::speak(){
-	menu_handler_.speak();
-}
-
-void playmp_controller::whisper(){
-	menu_handler_.whisper();
-}
-
-void playmp_controller::shout(){
-	menu_handler_.shout();
 }
 
 void playmp_controller::start_network(){
@@ -87,173 +87,141 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side(const unsigned int side_number, bool save)
+void playmp_controller::play_side()
 {
-	utils::string_map player;
-	player["name"] = current_team().current_player();
-	std::string turn_notification_msg = _("$name has taken control");
-	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
-	gui_->send_notification(_("Turn changed"), turn_notification_msg);
-
+	mp_ui_alerts::turn_changed(current_team().current_player());
 	// Proceed with the parent function.
-	playsingle_controller::play_side(side_number, save);
+	return playsingle_controller::play_side();
 }
 
-void playmp_controller::before_human_turn(bool save){
-	LOG_NG << "playmp::before_human_turn...\n";
-	playsingle_controller::before_human_turn(save);
-
-	init_turn_data();
+void playmp_controller::on_not_observer() {
+	remove_blindfold();
 }
 
-bool playmp_controller::counting_down() {
-	return beep_warning_time_ > 0;
-}
-
-namespace {
-	const int WARNTIME = 20000; //start beeping when 20 seconds are left (20,000ms)
-	unsigned timer_refresh = 0;
-	const unsigned timer_refresh_rate = 50; // prevents calling SDL_GetTicks() too frequently
-}
-
-//make sure we think about countdown even while dialogs are open
-void playmp_controller::process(events::pump_info &info) {
-	if(playmp_controller::counting_down()) {
-		if(info.ticks(&timer_refresh, timer_refresh_rate)) {
-			playmp_controller::think_about_countdown(info.ticks());
-		}
+void playmp_controller::remove_blindfold() {
+	if (gui_->is_blindfolded()) {
+		blindfold_.unblind();
+		LOG_NG << "Taking off the blindfold now " << std::endl;
+		gui_->redraw_everything();
 	}
 }
 
-void playmp_controller::reset_countdown()
+void playmp_controller::play_linger_turn()
 {
-	if (beep_warning_time_ < 0)
-		sound::stop_bell();
-	beep_warning_time_ = 0;
-}
-
-
-//check if it is time to start playing the timer warning
-void playmp_controller::think_about_countdown(int ticks) {
-	if(ticks >= beep_warning_time_) {
-		const bool bell_on = preferences::turn_bell();
-		if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
-			const int loop_ticks = WARNTIME - (ticks - beep_warning_time_);
-			const int fadein_ticks = (loop_ticks > WARNTIME / 2) ? loop_ticks - WARNTIME / 2 : 0;
-			sound::play_timer(game_config::sounds::timer_bell, loop_ticks, fadein_ticks);
-			beep_warning_time_ = -1;
+	if (is_host()) {
+		end_turn_enable(true);
+	}
+	
+	while(end_turn_ == END_TURN_NONE) {
+		config cfg;
+		if(network_reader_.read(cfg)) {
+			if(turn_data_.process_network_data(cfg) == turn_info::PROCESS_END_LINGER)
+			{
+				end_turn();
+			}
 		}
+		play_slice();
+		gui_->draw();
 	}
 }
 
-namespace {
-	struct command_disabled_resetter
-	{
-		command_disabled_resetter() : val_(events::commands_disabled) {}
-		~command_disabled_resetter() { events::commands_disabled = val_; }
-	private:
-		int val_;
-	};
-}
-
-void playmp_controller::play_human_turn(){
+void playmp_controller::play_human_turn()
+{
 	LOG_NG << "playmp::play_human_turn...\n";
-	command_disabled_resetter reset_commands;
-	int cur_ticks = SDL_GetTicks();
+	assert(!linger_);
+	remove_blindfold();
+	boost::scoped_ptr<countdown_clock> timer;
+	if(saved_game_.mp_settings().mp_countdown) {
+		timer.reset(new countdown_clock(current_team()));
+	}
 	show_turn_dialog();
-	execute_gotos();
+	if(undo_stack_->can_undo()) {
+		// If we reload a networked mp game we cannot undo moves made before the save
+		// Becasue other players already received them
+		if(!current_team().auto_shroud_updates()) {
+			synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
+		}
+		undo_stack_->clear();
+	}
+	if (!preferences::disable_auto_moves()) {
+		execute_gotos();
+	}
 
-	if ((!linger_) || (is_host_))
-		gui_->enable_menu("endturn", true);
-	while(!end_turn_) {
-
+	end_turn_enable(true);
+	while(!should_return_to_play_side()) {
 		try {
-			config cfg;
-			const network::connection res = network::receive_data(cfg);
-			std::deque<config> backlog;
-
-			if(res != network::null_connection) {
-				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+			process_network_data();
+			if (player_type_changed_)
+			{
+				// Clean undo stack if turn has to be restarted (losing control)
+				if ( undo_stack_->can_undo() )
 				{
-					// Clean undo stack if turn has to be restarted (losing control)
-					if ( undo_stack_->can_undo() )
-					{
-						font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
+					font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
-						SDL_Color color = {255,255,255,255};
-						flabel.set_color(color);
-						SDL_Rect rect = gui_->map_area();
-						flabel.set_position(rect.w/2, rect.h/2);
-						flabel.set_lifetime(150);
-						flabel.set_clip_rect(rect);
+					SDL_Color color = {255,255,255,255};
+					flabel.set_color(color);
+					SDL_Rect rect = gui_->map_area();
+					flabel.set_position(rect.w/2, rect.h/2);
+					flabel.set_lifetime(150);
+					flabel.set_clip_rect(rect);
 
-						font::add_floating_label(flabel);
-					}
+					font::add_floating_label(flabel);
+				}
 
-					while( undo_stack_->can_undo() )
-						undo_stack_->undo();
-					throw end_turn_exception(gui_->playing_side());
+				while( undo_stack_->can_undo() )
+					undo_stack_->undo();
+
+			}
+			check_objectives();
+			play_slice_catch();
+			if(timer)
+			{
+				bool time_left = timer->update();
+				if(!time_left)
+				{
+					end_turn_ = END_TURN_REQUIRED;
 				}
 			}
-
-			play_slice();
-			check_end_level();
-			// give a chance to the whiteboard to continue an execute_all_actions
-			resources::whiteboard->continue_execute_all();
-		} catch(const end_level_exception&) {
-			turn_data_->send_data();
+		}
+		catch(...)
+		{
+			turn_data_.send_data();
 			throw;
 		}
-
-		if (!linger_ && (current_team().countdown_time() > 0) && gamestate_.mp_settings().mp_countdown) {
-			SDL_Delay(1);
-			const int ticks = SDL_GetTicks();
-			int new_time = current_team().countdown_time()-std::max<int>(1,(ticks - cur_ticks));
-			if (new_time > 0 ){
-				current_team().set_countdown_time(new_time);
-				cur_ticks = ticks;
-				if(current_team().is_human() && !beep_warning_time_) {
-					beep_warning_time_ = new_time - WARNTIME + ticks;
-				}
-				if(counting_down()) {
-					think_about_countdown(ticks);
-				}
-			} else {
-				// Clock time ended
-				// If no turn bonus or action bonus -> defeat
-				const int action_increment = gamestate_.mp_settings().mp_countdown_action_bonus;
-				if ( (gamestate_.mp_settings().mp_countdown_turn_bonus == 0 )
-					&& (action_increment == 0 || current_team().action_bonus_count() == 0)) {
-					// Not possible to end level in MP with throw end_level_exception(DEFEAT);
-					// because remote players only notice network disconnection
-					// Current solution end remaining turns automatically
-					current_team().set_countdown_time(10);
-				} else {
-					const int maxtime = gamestate_.mp_settings().mp_countdown_reservoir_time;
-					int secs = gamestate_.mp_settings().mp_countdown_turn_bonus;
-					secs += action_increment  * current_team().action_bonus_count();
-					current_team().set_action_bonus_count(0);
-					secs = (secs > maxtime) ? maxtime : secs;
-					current_team().set_countdown_time(1000 * secs);
-				}
-				turn_data_->send_data();
-
-				if (!rand_rng::has_new_seed_callback()) {
-					throw end_turn_exception();
-				}
-			}
-		}
+		turn_data_.send_data();
 
 		gui_->draw();
+	}
+}
 
-		turn_data_->send_data();
+void playmp_controller::play_idle_loop()
+{
+	LOG_NG << "playmp::play_human_turn...\n";
+
+	remove_blindfold();
+
+	while (!should_return_to_play_side())
+	{
+		try
+		{
+			process_network_data();
+			play_slice_catch();
+			SDL_Delay(1);
+			gui_->draw();
+		}
+		catch(...)
+		{
+			turn_data_.send_data();
+			throw;
+		}
+		turn_data_.send_data();
 	}
 }
 
 void playmp_controller::set_end_scenario_button()
 {
 	// Modify the end-turn button
-	if (! is_host_) {
+	if (! is_host()) {
 		gui::button* btn_end = gui_->find_action_button("button-endturn");
 		btn_end->enable(false);
 	}
@@ -274,26 +242,15 @@ void playmp_controller::reset_end_scenario_button()
 void playmp_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
-	browse_ = true;
 	linger_ = true;
 	// If we need to set the status depending on the completion state
 	// we're needed here.
 	gui_->set_game_mode(game_display::LINGER_MP);
-
-	// this is actually for after linger mode is over -- we don't want to
-	// stay stuck in linger state when the *next* scenario is over.
-	gamestate_.classification().completion = "running";
 	// End all unit moves
-	BOOST_FOREACH(unit &u, units_) {
-		u.set_user_end_turn(true);
-	}
-	//current_team().set_countdown_time(0);
-	//halt and cancel the countdown timer
-	reset_countdown();
+	gamestate_.board_.set_all_units_user_end_turn();
 
 	set_end_scenario_button();
-	set_button_state(*gui_);
-
+	assert(is_regular_game_end());
 	if ( get_end_level_data_const().transient.reveal_map ) {
 		// Change the view of all players and observers
 		// to see the whole map regardless of shroud and fog.
@@ -304,30 +261,15 @@ void playmp_controller::linger()
 		quit = true;
 		try {
 			// reimplement parts of play_side()
-			player_number_ = first_player_;
-			init_turn_data();
-
-			end_turn_ = false;
-			play_human_turn();
-			turn_over_ = true;  // We don't want to linger mode to add end_turn to replay
+			turn_data_.send_data();
+			end_turn_ = END_TURN_NONE;
+			play_linger_turn();
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
 		} catch (game::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
 			throw;
-		} catch (end_level_exception&) {
-			// thrown if the host ends the scenario and let us advance
-			// to the next level
-			LOG_NG << "caught end-level-exception" << std::endl;
-			reset_end_scenario_button();
-			throw;
-		} catch (end_turn_exception&) {
-			// thrown if the host leaves the game (sends [leave_game]), we need
-			// to stay in this loop to stay in linger mode, otherwise the game
-			// gets aborted
-			LOG_NG << "caught end-turn-exception" << std::endl;
-			quit = false;
 		} catch (network::error&) {
 			LOG_NG << "caught network-error-exception" << std::endl;
 			quit = false;
@@ -343,137 +285,82 @@ void playmp_controller::wait_for_upload()
 {
 	// If the host is here we'll never leave since we wait for the host to
 	// upload the next scenario.
-	assert(!is_host_);
+	assert(!is_host());
 
-	const bool set_turn_data = (turn_data_ == NULL);
-	if(set_turn_data) {
-		init_turn_data();
-	}
-
+	config cfg;
+	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			config cfg;
 			const network::connection res = dialogs::network_receive_dialog(
 				*gui_, _("Waiting for next scenario..."), cfg);
 
-			std::deque<config> backlog;
 			if(res != network::null_connection) {
-				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_)
-						== turn_info::PROCESS_END_LINGER) {
+				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
 					break;
 				}
 			}
+			else
+			{
+				throw_quit_game_exception();
+			}
 
-		} catch(const end_level_exception&) {
-			turn_data_->send_data();
+		} catch(const quit_game_exception&) {
+			network_reader_.set_source(playturn_network_adapter::read_network);
+			turn_data_.send_data();
 			throw;
 		}
 	}
-
-	if(set_turn_data) {
-		delete turn_data_;
-		turn_data_ = NULL;
-	}
+	network_reader_.set_source(playturn_network_adapter::read_network);
 }
 
 void playmp_controller::after_human_turn(){
-	if ( gamestate_.mp_settings().mp_countdown ){
-		const int action_increment = gamestate_.mp_settings().mp_countdown_action_bonus;
-		const int maxtime = gamestate_.mp_settings().mp_countdown_reservoir_time;
-		int secs = (current_team().countdown_time() / 1000) + gamestate_.mp_settings().mp_countdown_turn_bonus;
-		secs += action_increment  * current_team().action_bonus_count();
+	if(saved_game_.mp_settings().mp_countdown)
+	{
+		//time_left + turn_bonus + (action_bouns * number of actions done)
+		const int new_time_in_secs = (current_team().countdown_time() / 1000) 
+			+ saved_game_.mp_settings().mp_countdown_turn_bonus
+			+ saved_game_.mp_settings().mp_countdown_action_bonus * current_team().action_bonus_count();
+		const int new_time = 1000 * std::min<int>(new_time_in_secs, saved_game_.mp_settings().mp_countdown_reservoir_time);
+
 		current_team().set_action_bonus_count(0);
-		secs = (secs > maxtime) ? maxtime : secs;
-		current_team().set_countdown_time(1000 * secs);
-		recorder.add_countdown_update(current_team().countdown_time(),player_number_);
+		current_team().set_countdown_time(new_time);
+		resources::recorder->add_countdown_update(new_time, player_number_);
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
-
-	//ensure that turn_data_ is constructed before it is used.
-	if (turn_data_ == NULL) init_turn_data();
 
 	// Normal post-processing for human turns (clear undos, end the turn, etc.)
 	playsingle_controller::after_human_turn();
 	//send one more time to make sure network is up-to-date.
-	turn_data_->send_data();
+	turn_data_.send_data();
 
-	// Release turn_data_.
-	turn_data_->host_transfer().detach_handler(this);
-	delete turn_data_;
-	turn_data_ = NULL;
-}
-
-void playmp_controller::finish_side_turn(){
-	play_controller::finish_side_turn();
-
-	//just in case due to an exception turn_data_ has not been deleted in after_human_turn
-	delete turn_data_;
-	turn_data_ = NULL;
-
-	//halt and cancel the countdown timer
-	reset_countdown();
-
-	// avoid callback getting called in the wrong turn
-	rand_rng::clear_new_seed_callback();
 }
 
 void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
-	gui_->enable_menu("endturn", false);
-	turn_info turn_data(player_number_, replay_sender_);
-	turn_data.host_transfer().attach_handler(this);
+	end_turn_enable(false);
+	turn_data_.send_data();
 
-	for(;;) {
-
-		if (!network_processing_stopped_){
-			bool have_data = false;
-			config cfg;
-
-			network::connection from = network::null_connection;
-
-			if(data_backlog_.empty() == false) {
-				have_data = true;
-				cfg = data_backlog_.front();
-				data_backlog_.pop_front();
-			} else {
-				from = network::receive_data(cfg);
-				have_data = from != network::null_connection;
-			}
-
-			if(have_data) {
-				if (skip_replay_ && replay_last_turn_ <= turn()){
-						skip_replay_ = false;
-				}
-				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
-				if (result == turn_info::PROCESS_RESTART_TURN) {
-					player_type_changed_ = true;
-					return;
-				} else if (result == turn_info::PROCESS_END_TURN) {
-					break;
-				}
+	while(end_turn_ != END_TURN_SYNCED && !is_regular_game_end() && !player_type_changed_)
+	{
+		if (!network_processing_stopped_) {
+			process_network_data();
+			if (replay_last_turn_ <= turn()) {
+				skip_replay_ = false;
 			}
 		}
 
-		play_slice();
-		check_end_level();
-
+		play_slice_catch();
 		if (!network_processing_stopped_){
-			turn_data.send_data();
+			turn_data_.send_data();
 		}
 
 		gui_->draw();
 	}
 
-	turn_data.host_transfer().detach_handler(this);
 	LOG_NG << "finished networked...\n";
-	return;
 }
 
-void playmp_controller::init_turn_data() {
-	turn_data_ = new turn_info(player_number_, replay_sender_);
-	turn_data_->host_transfer().attach_handler(this);
-}
 
 void playmp_controller::process_oos(const std::string& err_msg) const {
 	// Notify the server of the oos error.
@@ -494,55 +381,101 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		}
 		temp_buf << " \n";
 	}
-
-	savegame::oos_savegame save(to_config());
-	save.save_game_interactive(resources::screen->video(), temp_buf.str(), gui::YES_NO);
+	update_savegame_snapshot();
+	savegame::oos_savegame save(saved_game_, *gui_);
+	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
-	turn_info turn_data(player_number_, replay_sender_);
+	turn_data_.send_data();
 
-	if (name == "ai_user_interact"){
+	if (name == "ai_user_interact")
+	{
 		playsingle_controller::handle_generic_event(name);
-		turn_data.send_data();
+		turn_data_.send_data();
 	}
-	else if ((name == "ai_gamestate_changed") || (name == "ai_sync_network")){
-		turn_data.sync_network();
+	else if (name == "ai_gamestate_changed")
+	{
+		turn_data_.send_data();
 	}
 	else if (name == "host_transfer"){
-		is_host_ = true;
 		if (linger_){
-			gui::button* btn_end = gui_->find_action_button("button-endturn");
-			btn_end->enable(true);
+			end_turn_enable(true);
 			gui_->invalidate_theme();
 		}
 	}
-	if (end_turn_) {
-		throw end_turn_exception();
+}
+
+void playmp_controller::do_idle_notification()
+{
+	gui_->get_chat_manager().add_chat_message(time(NULL), "", 0,
+		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
+		events::chat_handler::MESSAGE_PUBLIC, false);
+}
+
+void playmp_controller::maybe_linger()
+{
+	// mouse_handler expects at least one team for linger mode to work.
+	assert(is_regular_game_end());
+	if (!get_end_level_data_const().transient.linger_mode || gamestate_.board_.teams().empty()) {
+		if(!is_host()) {
+			// If we continue without lingering we need to
+			// make sure the host uploads the next scenario
+			// before we attempt to download it.
+			wait_for_upload();
+		}
+	} else {
+		linger();
 	}
 }
 
-bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
+void playmp_controller::pull_remote_choice()
 {
-	bool res = true;
-	switch (command){
-		case hotkey::HOTKEY_SPEAK:
-		case hotkey::HOTKEY_SPEAK_ALLY:
-		case hotkey::HOTKEY_SPEAK_ALL:
-			res = network::nconnections() > 0;
-			break;
-		case hotkey::HOTKEY_START_NETWORK:
-		case hotkey::HOTKEY_STOP_NETWORK:
-			res = is_observer();
-			break;
-		case hotkey::HOTKEY_STOP_REPLAY:
-			if (is_observer()){
-				network_processing_stopped_ = true;
-				LOG_NG << "network processing stopped";
-			}
-			break;
-	    default:
-			return playsingle_controller::can_execute_command(command, index);
+	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
+	// Also turn_data_.sync_network() (which calls turn_data_.send_data()) won't work if the undo stack isn't empty because undoable moves won't be sended
+	// Also undo_stack_->clear() must be called synced so we cannot do that here.
+	assert(!undo_stack_->can_undo());
+	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
+	assert(res != turn_info::PROCESS_END_LINGER);
+	assert(res != turn_info::PROCESS_END_TURN);
+	if(res == turn_info::PROCESS_RESTART_TURN)
+	{
+		player_type_changed_ = true;
 	}
-	return res;
+}
+
+void playmp_controller::send_user_choice()
+{
+	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
+	// Also turn_data_.send_data() won't work if the undo stack isn't empty because undoable moves won't be sended
+	// Also undo_stack_->clear() must be called synced so we cannot do that here.
+	assert(!undo_stack_->can_undo());
+	turn_data_.send_data();
+}
+
+void playmp_controller::process_network_data()
+{
+	if(end_turn_ == END_TURN_SYNCED || is_regular_game_end() || player_type_changed_) {
+		return;
+	}
+	turn_info::PROCESS_DATA_RESULT res = turn_info::PROCESS_CONTINUE;
+	config cfg;
+	if(!resources::recorder->at_end()) {
+		res = turn_info::replay_to_process_data_result(do_replay()); 
+	}
+	else if(network_reader_.read(cfg)) {
+		res = turn_data_.process_network_data(cfg);
+	}
+
+	if (res == turn_info::PROCESS_RESTART_TURN) {
+		player_type_changed_ = true;
+	}
+	else if (res == turn_info::PROCESS_END_TURN) {
+		end_turn_ = END_TURN_SYNCED;
+	}
+	else if (res == turn_info::PROCESS_END_LEVEL) {
+	}
+	else if (res == turn_info::PROCESS_END_LINGER) {
+		replay::process_error("Received unexpected next_scenario during the game");
+	}
 }

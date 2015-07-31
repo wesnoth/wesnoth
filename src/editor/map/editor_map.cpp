@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,19 +18,22 @@
 #include "formula_string_utils.hpp"
 
 #include "../../display.hpp"
-#include "../../filesystem.hpp"
 #include "../../gettext.hpp"
 #include "../../map_exception.hpp"
 #include "../../map_label.hpp"
 #include "../../wml_exception.hpp"
 
+#include "terrain_type_data.hpp"
+
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
+#include <boost/shared_ptr.hpp>
 
 namespace editor {
 
 editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
 {
-	WRN_ED << type << " error in load map " << filename << ": " << e_msg << "\n";
+	WRN_ED << type << " error in load map " << filename << ": " << e_msg << std::endl;
 	utils::string_map symbols;
 	symbols["type"] = type;
 	const char* error_msg = "There was an error ($type) while loading the file:";
@@ -41,13 +44,13 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 }
 
 editor_map::editor_map(const config& terrain_cfg)
-	: gamemap(terrain_cfg, gamemap::default_map_header)
+	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), gamemap::default_map_header)
 	, selection_()
 {
 }
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
-	: gamemap(terrain_cfg, data)
+	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), data)
 	, selection_()
 {
 	sanity_check();
@@ -67,7 +70,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::t_terrain & filler)
-	: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
+	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), gamemap::default_map_header + t_translation::write_game_map(
 		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
 {
@@ -89,30 +92,30 @@ void editor_map::sanity_check()
 {
 	int errors = 0;
 	if (total_width() != static_cast<int>(tiles_.size())) {
-		ERR_ED << "total_width is " << total_width() << " but tiles_.size() is " << tiles_.size() << "\n";
+		ERR_ED << "total_width is " << total_width() << " but tiles_.size() is " << tiles_.size() << std::endl;
 		++errors;
 	}
 	if (total_height() != static_cast<int>(tiles_[0].size())) {
-		ERR_ED << "total_height is " << total_height() << " but tiles_[0].size() is " << tiles_.size() << "\n";
+		ERR_ED << "total_height is " << total_height() << " but tiles_[0].size() is " << tiles_.size() << std::endl;
 		++errors;
 	}
 	if (w() + 2 * border_size() != total_width()) {
-		ERR_ED << "h is " << h_ << " and border_size is " << border_size() << " but total_width is " << total_width() << "\n";
+		ERR_ED << "h is " << h_ << " and border_size is " << border_size() << " but total_width is " << total_width() << std::endl;
 		++errors;
 	}
 	if (h() + 2 * border_size() != total_height()) {
-		ERR_ED << "w is " << w_ << " and border_size is " << border_size() << " but total_height is " << total_height() << "\n";
+		ERR_ED << "w is " << w_ << " and border_size is " << border_size() << " but total_height is " << total_height() << std::endl;
 		++errors;
 	}
 	for (size_t i = 1; i < tiles_.size(); ++i) {
 		if (tiles_[i].size() != tiles_[0].size()) {
-			ERR_ED << "tiles_[ " << i << "] has size() " << tiles_[i].size() << " but tiles[0] has size() " << tiles_[0].size() << "\n";
+			ERR_ED << "tiles_[ " << i << "] has size() " << tiles_[i].size() << " but tiles[0] has size() " << tiles_[0].size() << std::endl;
 			++errors;
 		}
 	}
 	BOOST_FOREACH(const map_location& loc, selection_) {
 		if (!on_board_with_border(loc)) {
-			ERR_ED << "Off-map tile in selection: " << loc << "\n";
+			ERR_ED << "Off-map tile in selection: " << loc << std::endl;
 		}
 	}
 	if (errors) {

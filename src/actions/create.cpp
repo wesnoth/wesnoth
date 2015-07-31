@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,19 +24,30 @@
 #include "vision.hpp"
 
 #include "../config.hpp"
+#include "../config_assign.hpp"
+#include "../filter_context.hpp"
+#include "../game_board.hpp"
 #include "../game_display.hpp"
-#include "../game_events.hpp"
+#include "../game_events/manager.hpp"
+#include "../game_events/pump.hpp"
+#include "game_state.hpp"
 #include "../game_preferences.hpp"
+#include "../game_data.hpp"
 #include "../gettext.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../pathfind/pathfind.hpp"
-#include "../random.hpp"
+#include "../recall_list_manager.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
+#include "../synced_checkup.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
+#include "../unit.hpp"
 #include "../unit_display.hpp"
+#include "../unit_filter.hpp"
 #include "../variable.hpp"
 #include "../whiteboard/manager.hpp"
 
@@ -47,35 +58,6 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
-
-
-namespace {
-	struct castle_cost_calculator : pathfind::cost_calculator
-	{
-		castle_cost_calculator(const gamemap& map, const team & view_team) :
-			map_(map),
-			viewer_(view_team),
-			use_shroud_(view_team.uses_shroud())
-		{}
-
-		virtual double cost(const map_location& loc, const double) const
-		{
-			if(!map_.is_castle(loc))
-				return 10000;
-
-			if ( use_shroud_ && viewer_.shrouded(loc) )
-				return 10000;
-
-			return 1;
-		}
-
-	private:
-		const gamemap& map_;
-		const team& viewer_;
-		const bool use_shroud_; // Allows faster checks when shroud is disabled.
-	};
-}//anonymous namespace
-
 
 unit_creator::unit_creator(team &tm, const map_location &start_pos)
   : add_to_recall_(false),discover_(false),get_village_(false),invalidate_(false), rename_side_(false), show_(false), start_pos_(start_pos), team_(tm)
@@ -134,12 +116,11 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	BOOST_FOREACH(std::string place, placements) {
+	BOOST_FOREACH(const std::string& place, placements) {
 		map_location loc;
-		bool pass((place == "leader_passable") || (place == "map_passable"));
 
 		if ( place == "recall" ) {
-			return map_location::null_location;
+			return map_location::null_location();
 		}
 
 		else if ( place == "leader"  ||  place == "leader_passable" ) {
@@ -157,18 +138,19 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 			loc = map_location(cfg,resources::gamedata);
 		}
 
-		if(loc.valid() && resources::game_map->on_board(loc)) {
+		if(loc.valid() && resources::gameboard->map().on_board(loc)) {
+			const bool pass((place == "leader_passable") || (place == "map_passable"));
 			if ( place != "map_overwrite" ) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : NULL);
 			}
-			if(loc.valid() && resources::game_map->on_board(loc)) {
+			if(loc.valid() && resources::gameboard->map().on_board(loc)) {
 				return loc;
 			}
 		}
 	}
 
-	return map_location::null_location;
+	return map_location::null_location();
 
 }
 
@@ -184,36 +166,33 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	bool animate = temp_cfg["animate"].to_bool();
 	temp_cfg.remove_attribute("animate");
 
-	std::vector<unit> &recall_list = team_.recall_list();
-	std::vector<unit>::iterator recall_list_element = find_if_matches_id(recall_list, id);
+	unit_ptr recall_list_element = team_.recall_list().find_if_matches_id(id);
 
-	if ( recall_list_element == recall_list.end() ) {
-		//make a temporary unit
-		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game, vcfg));
-		map_location loc = find_location(temp_cfg, temp_unit.get());
+	if ( !recall_list_element ) {
+		//make the new unit
+		unit_ptr new_unit(new unit(temp_cfg, true, vcfg));
+		map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
-			unit *new_unit = temp_unit.get();
-			//add temporary unit to map
+			//add the new unit to map
 			resources::units->replace(loc, *new_unit);
 			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 		}
 		else if ( add_to_recall_ ) {
 			//add to recall list
-			unit *new_unit = temp_unit.get();
-			recall_list.push_back(*new_unit);
+			team_.recall_list().add(new_unit);
 			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side() << "\n";
 			preferences::encountered_units().insert(new_unit->type_id());
 		}
 	} else {
 		//get unit from recall list
-		map_location loc = find_location(temp_cfg, &(*recall_list_element));
+		map_location loc = find_location(temp_cfg, recall_list_element.get());
 		if ( loc.valid() ) {
 			resources::units->replace(loc, *recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list
-			erase_if_matches_id(recall_list, id);
+			team_.recall_list().erase_if_matches_id( id);
 		}
 		else if ( add_to_recall_ ) {
 			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id<<"\n";
@@ -234,7 +213,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 	bool animate = show && anim;
 
 	if (get_village_) {
-		if (resources::game_map->is_village(loc)) {
+		if (resources::gameboard->map().is_village(loc)) {
 			actions::get_village(loc, new_unit.side());
 		}
 	}
@@ -254,76 +233,6 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 }
 
 
-/**
- * Checks to see if a leader at @a leader_loc could recruit somewhere.
- * This takes into account terrain, shroud (for side @a side), and the presence
- * of visible units.
- * The behavior for an invalid @a side is subject to change for future needs.
- */
-bool can_recruit_from(const map_location& leader_loc, int side)
-{
-	const gamemap& map = *resources::game_map;
-
-	if( !map.is_keep(leader_loc) )
-		return false;
-
-	if ( side < 1  ||  resources::teams == NULL  ||
-	     resources::teams->size() < static_cast<size_t>(side) ) {
-		// Invalid side specified.
-		// Currently this cannot happen, but it could conceivably be used in
-		// the future to request that shroud and visibility be ignored. Until
-		// that comes to pass, just return.
- 		return false;
-	}
-
-	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, NULL,
-	                                  &(*resources::teams)[side-1])
-	       != map_location::null_location;
-}
-
-/**
- * Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
- * This takes into account terrain, shroud (for side @a side), and whether or
- * not there is already a visible unit at recruit_loc.
- * The behavior for an invalid @a side is subject to change for future needs.
- */
-bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side)
-{
-	const gamemap& map = *resources::game_map;
-
-	if( !map.is_castle(recruit_loc) )
-		return false;
-
-	if( !map.is_keep(leader_loc) )
-		return false;
-
-	if ( side < 1  ||  resources::teams == NULL  ||
-	     resources::teams->size() < static_cast<size_t>(side) ) {
-		// Invalid side specified.
-		// Currently this cannot happen, but it could conceivably be used in
-		// the future to request that shroud and visibility be ignored. Until
-		// that comes to pass, just return.
- 		return false;
-	}
-	const team & view_team = (*resources::teams)[side-1];
-
-	if ( view_team.shrouded(recruit_loc) )
-		return false;
-
-	if ( get_visible_unit(recruit_loc, view_team) != NULL )
-		return false;
-
-	castle_cost_calculator calc(map, view_team);
-	// The limit computed in the third argument is more than enough for
-	// any convex castle on the map. Strictly speaking it could be
-	// reduced to sqrt(map.w()**2 + map.h()**2).
-	pathfind::plain_route rt =
-		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), &calc,
-		                        map.w(), map.h());
-	return !rt.steps.empty();
-}
-
-
 namespace actions {
 
 
@@ -339,7 +248,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 			u_end = resources::units->end();
 
 	bool leader_in_place = false;
-	bool allow_local = resources::game_map->is_castle(recruit_loc);
+	bool allow_local = resources::gameboard->map().is_castle(recruit_loc);
 
 
 	// Check for a leader at recruit_loc (means we are recruiting from there,
@@ -347,7 +256,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 	unit_map::const_iterator find_it = resources::units->find(recruit_loc);
 	if ( find_it != u_end ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
-		     resources::game_map->is_keep(recruit_loc) )
+		     resources::gameboard->map().is_keep(recruit_loc) )
 		{
 			// We have been requested to get the recruit list for this
 			// particular leader.
@@ -355,7 +264,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 			local_result.insert(find_it->recruits().begin(),
 			                    find_it->recruits().end());
 		}
-		else if ( find_it->is_visible_to_team(current_team, false) )
+		else if ( find_it->is_visible_to_team(current_team, resources::gameboard->map(), false) )
 		{
 			// This hex is visibly occupied, so we cannot recruit here.
 			allow_local = false;
@@ -370,7 +279,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( allow_local && can_recruit_on(*u, recruit_loc) ) {
+			if ( allow_local && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*u, recruit_loc) ) {
 				leader_in_place= true;
 				local_result.insert(u->recruits().begin(), u->recruits().end());
 			}
@@ -397,26 +306,28 @@ namespace { // Helpers for get_recalls()
 	 * that can be skipped (because they are already in @a result), and the
 	 * underlying ID of units added to @a result will be added to @a already_added.
 	 */
-	void add_leader_filtered_recalls(const unit & leader,
-	                                 std::vector<const unit*> & result,
+	void add_leader_filtered_recalls(const unit_const_ptr leader,
+	                                 std::vector< unit_const_ptr > & result,
 	                                 std::set<size_t> * already_added = NULL)
 	{
-		const team& leader_team = (*resources::teams)[leader.side()-1];
-		const std::vector<unit>& recall_list = leader_team.recall_list();
+		const team& leader_team = (*resources::teams)[leader->side()-1];
 		const std::string& save_id = leader_team.save_id();
 
-		BOOST_FOREACH(const unit& recall_unit, recall_list)
+		const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
+
+		BOOST_FOREACH(const unit_const_ptr & recall_unit_ptr, leader_team.recall_list())
 		{
+			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.
 			size_t underlying_id = recall_unit.underlying_id();
 			if ( !already_added  ||  already_added->count(underlying_id) == 0 )
 			{
 				// Only units that match the leader's recall filter are valid.
-				scoped_recall_unit this_unit("this_unit", save_id, &recall_unit - &recall_list[0]);
+				scoped_recall_unit this_unit("this_unit", save_id, leader_team.recall_list().find_index(recall_unit.id()));
 
-				if ( recall_unit.matches_filter(vconfig(leader.recall_filter()), map_location::null_location) )
+				if ( ufilt(recall_unit, map_location::null_location()) )
 				{
-					result.push_back(&recall_unit);
+					result.push_back(recall_unit_ptr);
 					if ( already_added != NULL )
 						already_added->insert(underlying_id);
 				}
@@ -425,11 +336,11 @@ namespace { // Helpers for get_recalls()
 	}
 }// anonymous namespace
 
-const std::vector<const unit*> get_recalls(int side, const map_location &recall_loc)
+std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc)
 {
 	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
 
-	std::vector<const unit*> result;
+	std::vector<unit_const_ptr > result;
 
 	/*
 	 * We have three use cases:
@@ -439,22 +350,22 @@ const std::vector<const unit*> get_recalls(int side, const map_location &recall_
 	 */
 
 	bool leader_in_place = false;
-	bool allow_local = resources::game_map->is_castle(recall_loc);
+	bool allow_local = resources::gameboard->map().is_castle(recall_loc);
 
 
 	// Check for a leader at recall_loc (means we are recalling from there,
 	// rather than to there).
-	unit_map::const_iterator find_it = resources::units->find(recall_loc);
+	const unit_map::const_iterator find_it = resources::units->find(recall_loc);
 	if ( find_it != resources::units->end() ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
-		     resources::game_map->is_keep(recall_loc) )
+		     resources::gameboard->map().is_keep(recall_loc) )
 		{
 			// We have been requested to get the recalls for this
 			// particular leader.
-			add_leader_filtered_recalls(*find_it, result);
+			add_leader_filtered_recalls(find_it.get_shared_ptr(), result);
 			return result;
 		}
-		else if ( find_it->is_visible_to_team((*resources::teams)[side-1], false) )
+		else if ( find_it->is_visible_to_team((*resources::teams)[side-1], resources::gameboard->map(), false) )
 		{
 			// This hex is visibly occupied, so we cannot recall here.
 			allow_local = false;
@@ -473,21 +384,20 @@ const std::vector<const unit*> get_recalls(int side, const map_location &recall_
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( !can_recruit_on(*u, recall_loc) )
+			if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*u, recall_loc) )
 				continue;
 			leader_in_place= true;
 
-			add_leader_filtered_recalls(*u, result, &valid_local_recalls);
+			add_leader_filtered_recalls(u.get_shared_ptr(), result, &valid_local_recalls);
 		}
 	}
 
 	if ( !leader_in_place )
 	{
 		// Return the full recall list.
-		const std::vector<unit>& recall_list = (*resources::teams)[side-1].recall_list();
-		BOOST_FOREACH(const unit &recall, recall_list)
+		BOOST_FOREACH(const unit_const_ptr & recall, (*resources::teams)[side-1].recall_list())
 		{
-			result.push_back(&recall);
+			result.push_back(recall);
 		}
 	}
 
@@ -510,15 +420,16 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_LEADER;
 
 		// Make sure the recalling unit can recall this specific unit.
-		const team& recall_team = (*resources::teams)[recaller.side()-1];
+		team& recall_team = (*resources::teams)[recaller.side()-1];
 		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
-		                             &recall_unit - &recall_team.recall_list()[0]);
-		if ( !recall_unit.matches_filter(vconfig(recaller.recall_filter()),
-		                                 map_location::null_location) )
+						recall_team.recall_list().find_index(recall_unit.id()));
+
+		const unit_filter ufilt(vconfig(recaller.recall_filter()), resources::filter_con);
+		if ( !ufilt(recall_unit, map_location::null_location()) )
 			return RECRUIT_NO_ABLE_LEADER;
 
 		// Make sure the unit is on a keep.
-		if ( !resources::game_map->is_keep(recaller.get_location()) )
+		if ( !resources::gameboard->map().is_keep(recaller.get_location()) )
 			return RECRUIT_NO_KEEP_LEADER;
 
 		// Make sure there is a permissible location to which to recruit.
@@ -527,7 +438,7 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_VACANCY;
 
 		// See if the preferred location cannot be used.
-		if ( !can_recruit_on(recaller, preferred) ) {
+		if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(recaller, preferred) ) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -550,7 +461,7 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
 
 	// If the specified location is occupied, proceed as if no location was specified.
 	if ( resources::units->count(recall_location) != 0 )
-		check_location = map_location::null_location;
+		check_location = map_location::null_location();
 
 	// If the check location is not valid, we will never get an "OK" result.
 	RECRUIT_CHECK const goal_result = check_location.valid() ? RECRUIT_OK :
@@ -621,7 +532,7 @@ std::string find_recall_location(const int side, map_location& recall_location, 
 
 	// We should never get down to here. But just in case someone decides to
 	// mess with the enum without updating this function:
-	ERR_NG << "Unrecognized enum in find_recall_location()\n";
+	ERR_NG << "Unrecognized enum in find_recall_location()" << std::endl;
 	return _("An unrecognized error has occurred.");
 }
 
@@ -648,7 +559,7 @@ namespace { // Helpers for check_recruit_location()
 		}
 
 		// Make sure the unit is on a keep.
-		if ( !resources::game_map->is_keep(recruiter.get_location()) )
+		if ( !resources::gameboard->map().is_keep(recruiter.get_location()) )
 			return RECRUIT_NO_KEEP_LEADER;
 
 		// Make sure there is a permissible location to which to recruit.
@@ -657,7 +568,7 @@ namespace { // Helpers for check_recruit_location()
 			return RECRUIT_NO_VACANCY;
 
 		// See if the preferred location cannot be used.
-		if ( !can_recruit_on(recruiter, preferred) ) {
+		if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(recruiter, preferred) ) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -681,7 +592,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 	// If the specified location is occupied, proceed as if no location was specified.
 	if ( resources::units->count(recruit_location) != 0 )
-		check_location = map_location::null_location;
+		check_location = map_location::null_location();
 
 	// If the specified unit type is in the team's recruit list, there is no
 	// need to check each leader's list.
@@ -757,7 +668,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 
 	// We should never get down to here. But just in case someone decides to
 	// mess with the enum without updating this function:
-	ERR_NG << "Unrecognized enum in find_recruit_location()\n";
+	ERR_NG << "Unrecognized enum in find_recruit_location()" << std::endl;
 	return _("An unrecognized error has occurred.");
 }
 
@@ -768,30 +679,29 @@ namespace { // Helpers for place_recruit()
 	 */
 	void recruit_checksums(const unit &new_unit, bool wml_triggered)
 	{
-		const config* ran_results = get_random_results();
-		if ( ran_results != NULL ) {
-			// When recalling from WML there should be no random results, if we
-			// use random we might get the replay out of sync.
-			assert(!wml_triggered);
-			const std::string checksum = get_checksum(new_unit);
-			const std::string rc = (*ran_results)["checksum"];
-			if ( rc != checksum ) {
-				std::stringstream error_msg;
-				error_msg << "SYNC: In recruit " << new_unit.type_id() <<
-					": has checksum " << checksum <<
-					" while datasource has checksum " << rc << "\n";
-				ERR_NG << error_msg.str();
+		if(wml_triggered)
+		{
+			return;
+		}
+		const std::string checksum = get_checksum(new_unit);
+		config original_checksum_config;
 
-				config cfg_unit1;
-				new_unit.write(cfg_unit1);
-				DBG_NG << cfg_unit1;
-				replay::process_error(error_msg.str());
+		bool checksum_equals = checkup_instance->local_checkup(config_of("checksum", checksum),original_checksum_config);
+		if(!checksum_equals)
+		{
+			const std::string old_checksum = original_checksum_config["checksum"];
+			std::stringstream error_msg;
+			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
+				": has checksum " << checksum <<
+				" while datasource has checksum " << old_checksum << "\n";
+			if(old_checksum.empty()) 
+			{
+				error_msg << "Original result is \n" << original_checksum_config << "\n";
 			}
-
-		} else if ( wml_triggered == false ) {
-			config cfg;
-			cfg["checksum"] = get_checksum(new_unit);
-			set_random_results(cfg);
+			config cfg_unit1;
+			new_unit.write(cfg_unit1);
+			DBG_NG << cfg_unit1;
+			replay::process_error(error_msg.str());
 		}
 	}
 
@@ -807,17 +717,17 @@ namespace { // Helpers for place_recruit()
 		// See if the preferred location is an option.
 		unit_map::const_iterator leader = units.find(recruited_from);
 		if ( leader != units.end()  &&  leader->can_recruit()  &&
-			 leader->side() == side &&  can_recruit_on(*leader, recruit_location) )
+			 leader->side() == side && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, recruit_location) )
 			return leader->get_location();
 
 		// Check all units.
 		for ( leader = units.begin(); leader != units.end(); ++leader )
 			if ( leader->can_recruit()  &&  leader->side() == side  &&
-				 can_recruit_on(*leader, recruit_location) )
+				 dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, recruit_location) )
 				return leader->get_location();
 
 		// No usable leader found.
-		return map_location::null_location;
+		return map_location::null_location();
 	}
 
 	/**
@@ -837,6 +747,39 @@ namespace { // Helpers for place_recruit()
 		}
 		current_loc = un_it->get_location();
 		return true;
+	}
+
+	void set_recruit_facing(unit_map::iterator &new_unit_itor, const unit &new_unit,
+		const map_location &recruit_loc, const map_location &leader_loc)
+	{
+		// Find closest enemy and turn towards it (level 2s count more than level 1s, etc.)
+		const gamemap *map = & resources::gameboard->map();
+		const unit_map & units = *resources::units;
+		unit_map::const_iterator unit_itor;
+		map_location min_loc;
+		int min_dist = INT_MAX;
+
+		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
+			if ((*resources::teams)[unit_itor->side()-1].is_enemy(new_unit.side()) &&
+				unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], *map, false)) {
+				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
+				if (dist < min_dist) {
+					min_dist = dist;
+					min_loc = unit_itor->get_location();
+				}
+			}
+		}
+		if (min_dist < INT_MAX) {
+			// Face towards closest enemy
+			new_unit_itor->set_facing(recruit_loc.get_relative_dir(min_loc));
+		} else if (leader_loc != map_location::null_location()) {
+			// Face away from leader
+			new_unit_itor->set_facing(map_location::get_opposite_dir(recruit_loc.get_relative_dir(leader_loc)));
+		} else {
+			// Face towards center of map
+			const map_location center(map->w()/2, map->h()/2);
+			new_unit_itor->set_facing(recruit_loc.get_relative_dir(center));
+		}
 	}
 }// anonymous namespace
 
@@ -858,7 +801,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	new_unit.set_hidden(true);
 
 	// Get the leader location before adding the unit to the board.
-	const map_location leader_loc = !show ? map_location::null_location :
+	const map_location leader_loc = !show ? map_location::null_location() :
 			find_recruit_leader(new_unit.side(), recruit_location, recruited_from);
 
 	// Add the unit to the board.
@@ -868,6 +811,8 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	unit_map::iterator & new_unit_itor = add_result.first;
 	map_location current_loc = recruit_location;
 
+	set_recruit_facing(new_unit_itor, new_unit, recruit_location, leader_loc);
+
 	// Do some bookkeeping.
 	recruit_checksums(new_unit, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
@@ -876,7 +821,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			mutated |= game_events::fire(event_name, current_loc, recruited_from);
+			mutated |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
@@ -896,7 +841,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	}
 
 	// Village capturing.
-	if ( resources::game_map->is_village(current_loc) ) {
+	if ( resources::gameboard->map().is_village(current_loc) ) {
 		mutated |= actions::get_village(current_loc, new_unit_itor->side());
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
@@ -905,13 +850,13 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	// Fog clearing.
 	actions::shroud_clearer clearer;
 	if ( !wml_triggered ) // To preserve current WML behavior.
-		mutated |= clearer.clear_unit(current_loc, *new_unit_itor, true);
+		mutated |= clearer.clear_unit(current_loc, *new_unit_itor);
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			mutated |= game_events::fire(event_name, current_loc, recruited_from);
+			mutated |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 	}
 
@@ -928,18 +873,14 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
  * Recruits a unit of the given type for the given side.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show, bool use_undo,
-                  bool use_recorder)
+                  const map_location & from, bool show, bool use_undo)
 {
-	const unit new_unit(u_type, side_num, true);
+	const unit_ptr new_unit = unit_ptr( new unit(u_type, side_num, true));
 
-	// Record this before actually recruiting.
-	if ( use_recorder )
-		recorder.add_recruit(u_type.id(), loc, from);
 
 	// Place the recruit.
-	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
-	statistics::recruit_unit(new_unit);
+	bool mutated = place_recruit(*new_unit, loc, from, u_type.cost(), false, show);
+	statistics::recruit_unit(*new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
@@ -947,8 +888,8 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( use_undo ) {
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
-		if ( mutated  ||  u_type.genders().size() > 1  ||
-		     new_unit.type().has_random_traits() ) {
+
+		if ( mutated  || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -957,10 +898,6 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( resources::screen != NULL )
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
-
-	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
 }
 
 
@@ -969,36 +906,37 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show, bool use_undo, bool use_recorder)
+                 bool show, bool use_undo)
 {
-	std::vector<unit> & recall_list = current_team.recall_list();
+	unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
 
-	// Find the unit to recall.
-	std::vector<unit>::iterator recall_it = find_if_matches_id(recall_list, id);
-	if ( recall_it == recall_list.end() )
+	if ( !recall )
 		return false;
 
-	// Record this before actually recalling.
-	if ( use_recorder )
-		recorder.add_recall(id, loc, from);
 
-	// Make a copy of the unit before erasing it from the list.
-	unit recall(*recall_it);
-	recall_list.erase(recall_it);
 	// ** IMPORTANT: id might become invalid at this point!
 	// (Use recall.id() instead, if needed.)
 
 	// Place the recall.
-	bool mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
+	// We also check to see if a custom unit level recall has been set if not,
+	// we use the team's recall cost otherwise the unit's.
+	bool mutated;
+	if (recall->recall_cost() < 0) {
+		mutated = place_recruit(*recall, loc, from, current_team.recall_cost(),
 	                             true, show);
-	statistics::recall_unit(recall);
+	}
+	else {
+		mutated = place_recruit(*recall, loc, from, recall->recall_cost(),
+	                             true, show);
+	}
+	statistics::recall_unit(*recall);
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
 		resources::undo_stack->add_recall(recall, loc, from);
-		if ( mutated ) {
+		if ( mutated || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -1007,10 +945,6 @@ bool recall_unit(const std::string & id, team & current_team,
 	if ( resources::screen != NULL )
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
-
-	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
 
 	return true;
 }

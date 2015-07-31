@@ -2,7 +2,6 @@
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
 # David Martínez Moreno <ender@debian.org>, 2004-2006.
 # Pío Sierra <pio@piosierra.com>, 2005.
 # Terpor <terpor@gmail.com>, 2005.
@@ -15,20 +14,21 @@
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
-#
+# Pepe <donpepe1963@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2012-02-11 00:15+0100\n"
-"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
-"Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"PO-Revision-Date: 2014-10-25 13:24+0100\n"
+"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -36,17 +36,93 @@ msgid "User Map"
 msgstr "Mapa del usuario"
 
 #. [multiplayer_side]: id=Random
-#: data/multiplayer/eras.cfg:5
+#: data/multiplayer/eras.cfg:6
 msgid "Random"
 msgstr "Aleatorio"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:116
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:54
+msgid "Default"
+msgstr "Predeterminada"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:132
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:55
+msgid ""
+"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"generally balanced."
+msgstr ""
+"La era estándar para multijugador en Wesnoth. Consiste en seis facciones que "
+"se consideran equilibradas."
+
+#. [era]: id=era_heroes
+#: data/multiplayer/eras.cfg:76
+msgid "Age of Heroes"
+msgstr "La era de los héroes"
+
+#. [era]: id=era_heroes
+#: data/multiplayer/eras.cfg:77
+msgid ""
+"An era with higher level units: level three leaders, with level one and two "
+"units available for recruit. Consists of six factions. Not considered "
+"balanced."
+msgstr ""
+"Una era con unidades de nivel más alto: líderes de nivel 3 que pueden "
+"reclutar unidades de nivel 1 y 2. Consta de seis facciones. No se considera "
+"equilibrada."
+
+#. [era]: id=era_khalifate
+#: data/multiplayer/eras.cfg:84
+msgid "Default + Khalifate"
+msgstr "Predeterminada + Califato"
+
+#. [era]: id=era_khalifate
+#: data/multiplayer/eras.cfg:85
+msgid ""
+"An era featuring an additional faction besides the six factions from Default "
+"Era. Khalifate units use no magic, but instead rely on careful use of "
+"terrain and coordinated strikes around dusk or dawn.\n"
+"\n"
+"This era is still under development, so please be sure to report any "
+"problems that arise."
+msgstr ""
+"Una era que nos proporciona una facción adicional además de las otras seis "
+"de la era predeterminada. Las unidades del Califato no utilizan magia, en "
+"cambio requieren hacer un uso cuidadoso del tipo de terreno y coordinar sus "
+"ataques para cuando amanece o anochece.\n"
+"\n"
+"Esta era aún está en desarrollo, así que, por favor, informe de cualquier "
+"problema que pueda surgir."
+
+#. [era]: id=era_khalifate_heroes
+#: data/multiplayer/eras.cfg:95
+msgid "Age of Heroes + Khalifate"
+msgstr "La era de los héroes + Califato"
+
+#. [era]: id=era_khalifate_heroes
+#: data/multiplayer/eras.cfg:96
+msgid ""
+"An era featuring an additional faction besides the six factions from Age of "
+"Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
+"terrain and coordinated strikes around dusk or dawn.\n"
+"\n"
+"This era is still under development, so please be sure to report any "
+"problems that arise."
+msgstr ""
+"Una era que nos proporciona una facción adicional además de las otras seis "
+"de la era de los héroes. Las unidades del Califato no utilizan magia, en "
+"cambio requieren hacer un uso cuidadoso del tipo de terreno y coordinar sus "
+"ataques para cuando amanece o anochece.\n"
+"\n"
+"Esta era aún está en desarrollo, así que, por favor, informe de cualquier "
+"problema que pueda surgir."
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:65
+msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Bando %d</span>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -54,25 +130,15 @@ msgstr ""
 "<span foreground='#%02x%02x%02x'>Bando %d</span>:  Puntuación de ingresos = "
 "%d  Puntuación de unidades = %d  Oro = %d"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:132
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
 msgid "Grand total: <b>%d</b>"
 msgstr "Resultado total: <b>%d</b>"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:142
+#. [lua]: f
+#: data/multiplayer/eras.lua:91
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "El <span foreground='%s'>bando %d</span> tiene la ventaja."
-
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:166
-msgid "Default"
-msgstr "Por defecto"
-
-#. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:186
-msgid "Age of Heroes"
-msgstr "La era de los héroes"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -80,11 +146,57 @@ msgstr "La era de los héroes"
 msgid "Drakes"
 msgstr "Dracos"
 
+#. [multiplayer_side]: id=Drakes, type=random
+#: data/multiplayer/factions/drakes-aoh.cfg:15
+#: data/multiplayer/factions/drakes-default.cfg:15
+msgid ""
+"The <bold>text='Drakes'</bold> are a faction of dragon-like "
+"<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
+"<ref>text='Saurian' dst='..race_lizard'</ref> allies. Drakes are descendants "
+"of dragons, but smaller in size. Saurians are considerably smaller than "
+"Drakes and from different ancestry. Together, the Drake faction has high "
+"mobility but low defense, leading to unusual tactics for a "
+"<ref>text='Default Era' dst='..era_era_default'</ref> faction."
+msgstr ""
+
+#. [multiplayer_side]: id=Khalifate, type=random
+#: data/multiplayer/factions/khalifate-aoh.cfg:4
+#: data/multiplayer/factions/khalifate-default.cfg:4
+msgid "Khalifate"
+msgstr "Califato"
+
+#. [multiplayer_side]: id=Khalifate, type=random
+#: data/multiplayer/factions/khalifate-aoh.cfg:15
+#: data/multiplayer/factions/khalifate-default.cfg:15
+msgid ""
+"The <bold>text='Khalifate'</bold> are a faction of humans from the deserts "
+"and hills of the southern lands. Lacking magic users, the Khalifate instead "
+"specialize in using terrain features to coordinate attacks at dawn or dusk. "
+"Their ranks boast lawful and liminal units, healers, high-accuracy melee "
+"fighters, and fearsome horse-mounted archers. While Khalifate units tend to "
+"be more expensive than those of the Loyalist faction, they make up for this "
+"with high mobility — especially on hilly terrains."
+msgstr ""
+
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Alianza de Knalga"
+
+#. [multiplayer_side]: id=Knalgan Alliance, type=random
+#: data/multiplayer/factions/knalgans-aoh.cfg:14
+#: data/multiplayer/factions/knalgans-default.cfg:14
+msgid ""
+"The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
+"dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' dst='.."
+"race_human'</ref> allies. Dwarves are an old race who live underground and "
+"have tough, but short, warriors. The outlaws are humans who are not socially "
+"acceptable among others of their race, but have become allies of the dwarves "
+"due to common enemies. This leads to a combination of tough and defensive "
+"dwarves who are only good on certain terrain and humans who can cover ground "
+"that dwarves are not good at fighting in."
+msgstr ""
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
@@ -92,11 +204,36 @@ msgstr "Alianza de Knalga"
 msgid "Loyalists"
 msgstr "Leales"
 
-#. [multiplayer_side]: id=Northerners, type=random
+#. [multiplayer_side]: id=Loyalists, type=random
+#: data/multiplayer/factions/loyalists-aoh.cfg:15
+#: data/multiplayer/factions/loyalists-default.cfg:15
+msgid ""
+"The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' dst='.."
+"race_human'</ref> who are loyal to the throne of Wesnoth. Humans are a "
+"versatile race who specialize in many different areas. Similarly, the "
+"Loyalist faction is a very versatile melee-oriented faction with important "
+"ranged support from bowmen and mages."
+msgstr ""
+
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Norteños"
+
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#: data/multiplayer/factions/northerners-aoh.cfg:17
+#: data/multiplayer/factions/northerners-default.cfg:16
+msgid ""
+"The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' dst='.."
+"race_orc'</ref> and their allies who live in the north of the Great "
+"Continent, thus their name. Northerners consist of the warrior orcs race, "
+"the enslaved <ref>text='goblins' dst='..race_goblin'</ref>, "
+"<ref>text='trolls' dst='..race_troll'</ref> who are tricked into combat by "
+"the orcs, and the serpentine <ref>text='naga' dst='..race_naga'</ref>. The "
+"Northerners play best by taking advantage of having many low-cost and high "
+"HP soldiers."
+msgstr ""
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -104,11 +241,42 @@ msgstr "Norteños"
 msgid "Rebels"
 msgstr "Rebeldes"
 
+#. [multiplayer_side]: id=Rebels, type=random
+#: data/multiplayer/factions/rebels-aoh.cfg:15
+#: data/multiplayer/factions/rebels-default.cfg:15
+msgid ""
+"The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' dst='.."
+"race_elf'</ref> and their various forest-dwelling allies. They get their "
+"human name, Rebels, from the time of Heir to the Throne, when they started "
+"the rebellion against the evil Queen Asheviere. Elves are a magical race "
+"that are masters of the bow and are capable of living many years longer than "
+"humans. In harmony with nature, the elves find allies with the "
+"<ref>text='human' dst='..race_human'</ref> mages, certain "
+"<ref>text='merfolk' dst='..race_merman'</ref>, and tree creatures called "
+"<ref>text='Woses' dst='..race_wose'</ref>. Rebels are best played taking "
+"advantage of their high forest defense, mastery of ranged attacks, and the "
+"elves’ neutral alignment."
+msgstr ""
+
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "No muertos"
+
+#. [multiplayer_side]: id=Undead, type=random
+#: data/multiplayer/factions/undead-aoh.cfg:15
+#: data/multiplayer/factions/undead-default.cfg:15
+msgid ""
+"The <bold>text='Undead'</bold> are a faction of <ref>text='undead' dst='.."
+"race_undead'</ref> creatures and <ref>text='human' dst='..race_human'</ref> "
+"practitioners of dark arts that usually accompany them. Often, these “Dark "
+"Adepts” are the units that do the most damage for the faction, but they have "
+"a major vulnerability — their practicing of this forbidden, evil magic has "
+"consumed all their energy and so they have no melee attack at all. The "
+"Undead are a very aggressive faction and the most powerful "
+"<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
+msgstr ""
 
 # Sustituír aethermaw
 # Darkmage: Yo propongo algo por el estilo de "entrañas del éter"; quizá «entérañas» (mezclando ambas palabras)
@@ -175,9 +343,9 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:32
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:44
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:80
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:26
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:74
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:122
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:21
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:69
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:117
 msgid "teamname^North"
 msgstr "Norte"
 
@@ -212,7 +380,7 @@ msgstr "Sur"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr "Énterañas — Diseñado por Doc Paterson."
+msgstr "Énterañas — Diseñado por Doc Paterson"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -305,7 +473,7 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:38
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:33
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
@@ -335,7 +503,7 @@ msgstr "Este"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:27
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:22
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
@@ -454,21 +622,21 @@ msgid ""
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
 "Xikkrisx de Syrsszk era un poderoso guerrero Saurio, enviado a esta región "
-"por los ancianos del Clan Rysssrylosszkk (traducción:''Los Enemigos-"
-"Cazadores-de-los-Ríos-que-Hierven\"). Los ancianos se estaban preparando "
-"para la guerra en un puesto de avanzada humano, y estaban muy necesitados de "
-"la poderosa magia de  Oxsrrsk, un Saurio Místico que fue visto por última "
-"vez yendo hacia el lago Ruaskkolin. Xikkrisx encontró el cuerpo petrificado "
-"de Oxsrrsk, junto con un pergamino atado cuidadosamente que se había sido "
+"por los ancianos del Clan Rysssrylosszkk (traducción: «Los Enemigos-"
+"Cazadores-de-los-Ríos-que-Hierven»). Los ancianos se estaban preparando para "
+"la guerra en un puesto de avanzada humano, y estaban muy necesitados de la "
+"poderosa magia de  Oxsrrsk, un Saurio Místico que fue visto por última vez "
+"yendo hacia el lago Ruaskkolin. Xikkrisx encontró el cuerpo petrificado de "
+"Oxsrrsk, junto con un pergamino atado cuidadosamente que se había sido "
 "aparentemente depositado en una pequeña grieta en el suelo de la cueva. "
-"Abrió el pergamino y leyó un breve pasaje de la mitad del texto:''Después de "
+"Abrió el pergamino y leyó un breve pasaje de la mitad del texto: «Después de "
 "estar atado y emitido desde el Mundo Superior, El espíritu enfurecido de "
-"Chak'kso buscó la liberación, y fue capaz de ejercer una influencia "
+"Chak’kso buscó la liberación, y fue capaz de ejercer una influencia "
 "corruptora sobre determinadas regiones del Mundo Superior, canalizada a "
-"través de \"senderos de piedra\" que se extienden desde la superficie a las "
+"través de «senderos de piedra» que se extienden desde la superficie a las "
 "profundidades de los Destinos Profundos. Esta rabia alteró los huevos de los "
-"grandes lagartos, dando forma a los cuerpos y espíritus hacia lass "
-"necesidades del odio de Chak'kso. Confundido, Xikkrisx fijó su atención en "
+"grandes lagartos, dando forma a los cuerpos y espíritus hacia las "
+"necesidades del odio de Chak’kso». Confundido, Xikkrisx fijó su atención en "
 "la tarea a realizar. Pensando que tal vez los ancianos podrían encontrar "
 "alguna forma de restaurar a Oxsrrsk, comenzó la larga y ardua tarea de "
 "transportar la estatua de nuevo a los dominios del Clan de Rysssrylosszkk. "
@@ -507,13 +675,13 @@ msgstr ""
 "Oxsrrsk es un poderoso Oráculo Saurio, que en una incursión contra el clan "
 "rival Xraxss, había adquirido (de la cámara acorazada del ahora muerto "
 "Oráculo Hesx-Rzzak) el más fascinante de los pergaminos. El pergamino se "
-"titulaba ''Ney'yks el de la Mirada de Granito,'' y trataba de una criatura "
-"conocida como ''Chak'kso Ney'yks'', un nombre que, en una antigua lengua "
-"sauria, significaba '' El niño más mayor de Chak'kso.'' Chak'kso se creía "
-"que había sido un poderoso semidiós de los Destinos Profundos, descrito como "
-"un''gran demonio de la tierra'' en las Historias Élficas. De acuerdo con "
-"estas historias, Chak'kso una vez había tratado de transformar toda la vida "
-"del planeta en piedra; tan grande fue su odio por las criaturas de carne y "
+"titulaba «Ney’yks el de la Mirada de Granito», y trataba de una criatura "
+"conocida como «Chak’kso Ney’yks», un nombre que, en una antigua lengua "
+"sauria, significaba «El niño más mayor de Chak’kso». Chak’kso se creía que "
+"había sido un poderoso semidiós de los Destinos Profundos, descrito como un "
+"«gran demonio de la tierra» en las Historias Élficas. De acuerdo con estas "
+"historias, Chak’kso una vez había tratado de transformar toda la vida del "
+"planeta en piedra; tan grande fue su odio por las criaturas de carne y "
 "hueso. Fue finalmente derrotado y sometido por poderosa magia, pero en los "
 "siglos posteriores a su destierro (hacia un reino muy por debajo de la "
 "superficie del mundo), una nueva raza de criaturas comenzó a aparecer en las "
@@ -522,9 +690,9 @@ msgstr ""
 "conocidos) provocaron estragos en el mundo de los vivos, convirtiendo a "
 "miles de ellos en piedra. Uno por uno, y con grandes sacrificios, los "
 "Basiliscos fueron derrotados. Todos, al parecer, excepto uno; el Basilisco "
-"conocido como ''Ney'yks,'' o ''El Niño más mayor,'' en la lengua moderna. "
+"conocido como «Ney’yks», o «El Niño más mayor», en la lengua moderna. "
 "Sumamente convencido de su capacidad para localizar y someter a esta "
-"poderosa criatura para su servicio, Oxsrrsk se puso en camino en su viaje ..."
+"poderosa criatura para su servicio, Oxsrrsk se puso en camino en su viaje..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
@@ -705,7 +873,7 @@ msgstr ""
 "Sin embargo, no mucho más tarde, la comunidad local de woses oyó del "
 "acercamiento de un horrible monstruo, tan poderoso como para destruir con "
 "facilidad a los pocos woses que vivían en la zona. Se alejaron rápidamente "
-"(rápido para los woses, de todos modos), pero  a Bramwythl le dejaron atrás. "
+"(rápido para los woses, de todos modos), pero a Bramwythl le dejaron atrás. "
 "En su precipitación, nadie se acordó de buscarle y avisarle del peligro.\n"
 "Fue pillado por sorpresa por el Basilisco, y convertido en piedra antes de "
 "que siquiera reconociera a la bestia. Su forma petrificada aún permanece "
@@ -726,7 +894,7 @@ msgid ""
 msgstr ""
 "El general Talael Ryndoc vino a este lugar para luchar en un duelo contra el "
 "Gran Mariscal Aethec Corryn, pero los dos hombres nunca se encontraron cara "
-"a cara."
+"a cara. "
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
@@ -743,13 +911,13 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
-"Las últimas palabras pronunciadas por el Gran Mariscal Aethec "
-"Corryn:''¡Talael Ryndoc! Estoy buscándote! ¡Voy a hacer mi camino de regreso "
-"hasta la mansión de Haldric, y a informar al tribunal de que fuiste "
-"demasiado cobarde para asistir a nuestro duelo! Tu desgracia será más "
-"angustiosa que la muerte que yo te habría dado!''\n"
+"Las últimas palabras pronunciadas por el Gran Mariscal Aethec Corryn: "
+"«¡Talael Ryndoc! Estoy buscándote! ¡Voy a hacer mi camino de regreso hasta "
+"la mansión de Haldric, y a informar al tribunal de que fuiste demasiado "
+"cobarde para asistir a nuestro duelo! Tu desgracia será más angustiosa que "
+"la muerte que yo te habría dado!»\n"
 " \n"
-" Quizás no debería haber gritado tan fuerte...."
+"Quizás no debería haber gritado tan fuerte.... "
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
@@ -831,7 +999,7 @@ msgid ""
 "the necromancers from these lands in 961 YW."
 msgstr ""
 "La Provincia Cynsaun fue nombrada en honor a la reina guerrera Cynsaun "
-"Primera, quien expulsó a los nigromantes de estas tierras en el año 961 DW."
+"Primera, quien expulsó a los nigromantes de estas tierras en el año 961 AñW."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
@@ -859,7 +1027,7 @@ msgstr ""
 "escenario funcione correctamente."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:369
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:371
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -871,7 +1039,7 @@ msgstr ""
 "estabilidad, finalmente."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:701
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:703
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -880,32 +1048,32 @@ msgstr ""
 "Siento que si podemos acabar con ellas a tiempo, venceremos."
 
 #. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:868
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:870
 msgid "Heavy Snowfall"
 msgstr "Fuerte nevada"
 
 #. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:878
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:880
 msgid "Snowfall"
 msgstr "Nevada"
 
 #. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:894
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:896
 msgid "Heavy Rains"
 msgstr "Fuertes lluvias"
 
 #. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:904
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:906
 msgid "Drought"
 msgstr "Sequía"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:913
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:915
 msgid "Clear Weather"
 msgstr "Despejado"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1012
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1042
 msgid "teamname^Revolt"
 msgstr "Revuelta"
@@ -917,12 +1085,12 @@ msgid "teamname^Human"
 msgstr "Humanos"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1232
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1233
 msgid "Death of your leader"
-msgstr "Muerte de su líder."
+msgstr "Muerte de su líder"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1233
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1234
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -931,12 +1099,12 @@ msgstr ""
 "fuerza reducida."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1236
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1237
 msgid "Death of both of your team’s leaders"
-msgstr "Muerte de ambos líderes de su equipo."
+msgstr "Muerte de ambos líderes de su equipo"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1237
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1238
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
@@ -944,18 +1112,18 @@ msgstr ""
 "fuerza completa."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1258
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1259
 msgid "Survive and defeat all enemy waves"
-msgstr "Sobrevive a todos los ataques enemigos."
+msgstr "Sobrevive a todos los ataques enemigos"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1278
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1279
 msgid "Dark Forecast — a random survival scenario"
-msgstr "Pronóstico oscuro — un escenario de supervivencia aleatorio."
+msgstr "Pronóstico oscuro — un escenario de supervivencia aleatorio"
 
 # Suena raro decir que un archienemigo sea "final", ya que los archienemigos son (incluso en la elaboración de historias) únicos, con su propio caracter. Supuse que el final significaba que "venían" al final.
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1283
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1284
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -978,24 +1146,21 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
-"Su objetivo es sobrevivir las oleadas enemigas y derrotar al final a sus "
-"archienemigos.\n"
+"Su objetivo es sobrevivir las oleadas enemigas y derrotar a los "
+"archienemigos finales.\n"
 "\n"
 "Las oleadas enviadas son generadas aleatoriamente y serán diferentes cada "
 "vez que se juegue a Pronóstico oscuro.\n"
-"\n"
 "\n"
 "Aparecen a lo largo del norte, sur y oeste de los límites del mapa, aunque "
 "es más probable que aparezcan por el borde oeste. Las oleadas generadas "
 "aparecen a intervalos parcialmente regulares.\n"
 "\n"
-"\n"
 "La meteorología también cambiará aleatoriamente, afectando el diseño del "
 "mapa.\n"
 "\n"
 "\n"
-"\n"
-"<span color='red'>Pronóstico oscuro fue realizado por:</span>\n"
+"<b>Pronóstico oscuro fue realizado por:</b>\n"
 "\n"
 "<span color='green'>jb</span>\n"
 "— diseño del mapa, generación de oleadas y concepto del escenario\n"
@@ -1004,12 +1169,12 @@ msgstr ""
 "— implementación WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1303
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1304
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Así que este es el valle maldito — una tierra libre para tomarla."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1307
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1308
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1020,7 +1185,7 @@ msgstr ""
 "las sorpresas en esta tierra."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1311
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1312
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1029,7 +1194,7 @@ msgstr ""
 "nuestra demanda."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1348
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1349
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -1038,7 +1203,7 @@ msgstr ""
 "me han abandonado..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1362
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1363
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1047,7 +1212,7 @@ msgstr ""
 "hacia la muerte... su alegría llena tus últimos momentos con puro odio."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1384
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1385
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1092,8 +1257,8 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
-"Pelea a travéz de corredores y jardines, y domina el patio este de lo que "
-"solía ser laa gloriosa ciudad de Elensefar."
+"Pelea a través de corredores y jardines, y domina el patio este de lo que "
+"solía ser la gloriosa ciudad de Elensefar."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
@@ -1129,12 +1294,12 @@ msgstr ""
 "en un campo de batalla sutilmente dividido. Diseñado por Doc Paterson."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
 msgstr "2 jug. — La isla de los tiburones cornudos"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:28
 msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
@@ -1145,101 +1310,101 @@ msgstr ""
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:101
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:181
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:222
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:297
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:351
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:487
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:182
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:223
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:298
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:352
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:488
 msgid "Big Baby Bo"
 msgstr "El niño grande Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:115
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:116
 msgid "Rawffus the Dim"
 msgstr "Rawfuss el Obtuso"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:168
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:169
 msgid "Kolbur"
 msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:195
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:196
 msgid "Vilhelm Viskitynnyri"
 msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:257
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:269
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:717
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:729
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:258
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:270
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:718
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:730
 msgid "Clockwork Boy"
 msgstr "El chico mecánico"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:322
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:323
 msgid "Neki the Brutal"
 msgstr "Neki el brutal"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:365
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:366
 msgid "Drowsk Calbeht"
 msgstr "Drowsk Calbeht"
 
 # Hum, tomamos un juego de palabras para mantener el mensaje de la cadena lo mejor posible. (Gracias, Espreon)
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:428
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:429
 msgid "Rzrrt the Dauntless"
 msgstr "Rzrrt de Dauntless"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:469
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:470
 msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, mano izquierda de la Muerte"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:561
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:641
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:682
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:757
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:811
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:947
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:562
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:642
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:683
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:758
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:812
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:948
 msgid "Big Baby Dro"
 msgstr "El niño grande Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:575
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:576
 msgid "Gawffus the Dim"
 msgstr "Gawffus el Obtuso"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:629
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:655
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:656
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:782
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:783
 msgid "Neki the Brute"
 msgstr "Neki el basto"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:825
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:826
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:888
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:889
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn de Dauntless"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:929
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:930
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, mano derecha de la Muerte"
 
@@ -1402,7 +1567,7 @@ msgstr "2 jug. — Guarnición de mil aguijones"
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Un lugar extraño. Diseñado por Doc Paterson."
+msgstr "Un lugar extraño. Diseñado por Doc Paterson"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1663,9 +1828,9 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:40
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:73
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:50
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:62
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:110
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:45
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:57
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:105
 msgid "teamname^Southwest"
 msgstr "Equipo sudoeste"
 
@@ -1708,21 +1873,21 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:37
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:48
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:32
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:43
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:46
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:38
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:86
-#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:98
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:33
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:81
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:93
 msgid "teamname^Southeast"
 msgstr "Equipo sudoeste"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:26
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:59
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:21
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:54
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
@@ -1823,7 +1988,7 @@ msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
-"Un mapa de 28X28 y 2 contra 2, con torreones auxiliares y una gran y caótica "
+"Un mapa de 24X28 y 2 contra 2, con torreones auxiliares y una gran y caótica "
 "batalla en el centro común."
 
 #. [multiplayer]: id=multiplayer_Auction-X
@@ -1909,89 +2074,89 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Juego de 2 contra 2 o 3 contra 3 equipos."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:319
 msgid "6p — Team Survival"
 msgstr "6 jug. — Supervivencia en equipo"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:319
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:321
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Un escenario donde el objetivo es sobrevivir el mayor tiempo posible."
 
 #. [side]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:329
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:334
 msgid "Attacker"
 msgstr "Atacante"
 
 #. [side]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:346
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:398
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:411
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:351
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:364
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:377
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:403
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:416
 msgid "Defender"
 msgstr "Defensor"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:434
 msgid "Survive all enemy attacks"
-msgstr "Sobrevive a todos los ataques enemigos."
+msgstr "Sobrevive a todos los ataques enemigos"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:434
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:440
 msgid "Death of your team leaders"
-msgstr "Muerte de los líderes de su equipo."
+msgstr "Muerte de los líderes de su equipo"
 
 #. [note]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:439
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:445
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Pista: Aprender dónde recluta el enemigo sus unidades y de que tipo son "
 "puede serle de mucha ayuda."
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:445
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:451
 msgid "Turn 2: Loyalists"
 msgstr "Turno 2: Leales"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:450
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:456
 msgid "Turn 5: Knalgans"
 msgstr "Turno 5: Knalganos"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:455
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:461
 msgid "Turn 8: Rebels"
 msgstr "Turno 8: Rebeldes"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:460
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:466
 msgid "Turn 11: Northerners"
 msgstr "Turno 11: Norteños"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:465
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:471
 msgid "Turn 14: Drakes"
 msgstr "Turno 14: Dracos"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:470
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:476
 msgid "Turn 17: Undead"
 msgstr "Turno 17: No muertos"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:475
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:481
 msgid "Tower of Doom"
 msgstr "Torre de la Perdición"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:582
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:588
 msgid "Faery"
 msgstr "Feérico"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:583
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:589
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
@@ -2002,12 +2167,12 @@ msgstr ""
 "envíame la repetición por correo electrónico a: roze@roze.mine.nu. ¡Gracias!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:597
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:603
 msgid "Death"
 msgstr "Muerte"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:599
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:605
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
@@ -2065,7 +2230,7 @@ msgstr ""
 "Un mapa de 40x30 y 3 contra 3. Es necesaria una coordinación flexible de su "
 "alianza para evitar ser superado en número. Los equipos se establecen con "
 "los jugadores 1, 4 y 5 contra 2, 3 y 6 (norte contra sur), pero también "
-"puede ser interesante establecer un equipo con los jugadores 1, 4 y 6 ó 1, 3 "
+"puede ser interesante establecer un equipo con los jugadores 1, 4 y 6 o 1, 3 "
 "y 6. Diseñado para 150 piezas de oro iniciales, tiene 44 aldeas."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
@@ -2229,6 +2394,12 @@ msgid ""
 msgstr ""
 "Una prueba de rendimiento de wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Random map by YAMG"
+#~ msgstr "Mapa aleatorio por YAMG"
+
+#~ msgid "Custom"
+#~ msgstr "Personalizada"
 
 #~ msgid "4p — Lagoon"
 #~ msgstr "4 jug. — Laguna"

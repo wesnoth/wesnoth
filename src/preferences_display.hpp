@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -38,7 +38,7 @@ namespace preferences {
 	 * Detect a good resolution.
 	 *
 	 * @param video               The video 'holding' the framebuffer.
-	 * @param resolution          Any good resultion is returned through this reference.
+	 * @param resolution          Any good resolution is returned through this reference.
 	 * @param bpp                 A reference through which the best bpp is returned.
 	 * @param video_flags         A reference through which the video flags for setting the video mode are returned.
 	 *
@@ -77,6 +77,9 @@ namespace preferences {
 	void show_preferences_dialog(display& disp, const config& game_cfg);
 	bool show_video_mode_dialog(display& disp);
 	bool show_theme_dialog(display& disp);
+	void show_paths_dialog(display& disp);
+	void show_mp_alerts_dialog(display& disp);
+	void show_advanced_graphics_dialog(display & disp);
 
 	// If prefs is non-null, save the hotkeys in that config
 	// instead of the default.

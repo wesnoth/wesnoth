@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 
 #include <iostream>
 
-namespace gui2 {
+namespace gui2
+{
 
 tpoint& tpoint::operator+=(const tpoint& point)
 {
@@ -34,7 +35,7 @@ tpoint& tpoint::operator-=(const tpoint& point)
 	return *this;
 }
 
-std::ostream &operator<<(std::ostream &stream, const tpoint& point)
+std::ostream& operator<<(std::ostream& stream, const tpoint& point)
 {
 	stream << point.x << ',' << point.y;
 	return stream;

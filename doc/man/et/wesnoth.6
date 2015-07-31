@@ -61,16 +61,11 @@ avatakse raskusastme valik.
 \fB\-\-campaign\-scenario <id_scenario>\fP
 Valitud sõjakäigu stsenaariumi number. Vaikimisi on see 1.
 .TP 
-\fB\-\-config\-dir\fP\fI\ nimi\fP
-määrab kasutajasätete kataloogiks  \fInimi\fP kataloogi $HOME või "My
-Documents\eMy Games" Windowsi puhul. Võid ka määrata mujal asuva
-sätetekataloogi absoluutse kataloogitee.
-.TP 
-\fB\-\-config\-path\fP
-kirjutab ekraaanile kasutajasätete kataloogi nime ja väljub programmist.
-.TP 
 \fB\-\-data\-dir <directory>\fP
 määrab selle kataloogi andmekataloogiks
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 võimaldab mängu sees kasutada täiendavaid käsureaparameetreid (vt wikit
@@ -183,6 +178,24 @@ valideerimisvigasid loetakse kriitilisteks.
 \fB\-t, \-\-test\fP
 käivitab mängu ja väikese testistsenaariumi.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+kirjutab ekraaanile kasutajasätete kataloogi nime ja väljub programmist.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 eeldab, et puhver on töökorras. (ohtlik)
 .TP 
@@ -222,6 +235,10 @@ testide läbiviimisel.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 käivitab mängu ilma graafilise liideseta. Peab asuma eespool kui

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 #include "../../resources.hpp"
 #include "../lua/core.hpp"
 #include "../lua/lua_object.hpp"
-#include "../../scripting/lua.hpp"
+#include "../../scripting/game_lua_kernel.hpp"
 #include "../../util.hpp"
 #include "../../unit.hpp"
 #include "../../unit_map.hpp"
@@ -128,7 +128,7 @@ private:
 class lua_candidate_action_wrapper_external : public lua_candidate_action_wrapper_base {
 public:
 	lua_candidate_action_wrapper_external(rca_context& context, const config& cfg, lua_ai_context &lua_ai_ctx)
-		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"])
+		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"]), eval_parms_(cfg["eval_parms"]), exec_parms_(cfg["exec_parms"])
 	{
 		std::string eval_code;
 		std::string exec_code;
@@ -144,16 +144,20 @@ public:
 	{
 		config cfg = lua_candidate_action_wrapper_base::to_config();
 		cfg["location"] = location_;
+		cfg["eval_parms"] = eval_parms_;
+		cfg["exec_parms"] = exec_parms_;
 		return cfg;
 	}
 
 private:
 	std::string location_;
+	std::string eval_parms_;
+	std::string exec_parms_;
 
 	void generate_code(std::string& eval, std::string& exec) {
 		std::string code = "wesnoth.require(\"" + location_ + "\")";
-		eval = "return " + code + ":eval((...):get_ai())";
-		exec = code + ":exec((...):get_ai())";
+		eval = "return " + code + ":evaluation((...):get_ai(), {" + eval_parms_ + "}, (...))";
+		exec = code + ":execution((...):get_ai(), {" + exec_parms_ + "}, (...))";
 	}
 };
 
@@ -164,7 +168,7 @@ public:
 		, bound_unit_()
 	{
 		map_location loc(cfg["unit_x"] - 1, cfg["unit_y"] - 1); // lua and c++ coords differ by one
-		bound_unit_ = boost::shared_ptr<unit>(new unit(*resources::units->find(loc)));
+		bound_unit_ = unit_ptr(new unit(*resources::units->find(loc)));
 	}
 
 	virtual double evaluate()
@@ -186,7 +190,7 @@ public:
 		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 	}
 private:
-	boost::shared_ptr<unit> bound_unit_;
+	unit_ptr bound_unit_;
 
 };
 
@@ -234,7 +238,7 @@ private:
  */
 engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
-	, code_(cfg["code"])
+	, code_(get_engine_code(cfg))
 	, lua_ai_context_(resources::lua_kernel->create_lua_ai_context(
 		get_engine_code(cfg).c_str(), this))
 {
@@ -252,7 +256,7 @@ std::string engine_lua::get_engine_code(const config &cfg) const
 		return cfg["code"].str();
 	}
 	// If there is no engine defined we create a dummy engine
-	std::string code = "local ai = ... local m_ai = wesnoth.require(\"ai/lua/dummy_engine_lua.lua\") return m_ai.get_ai(ai)";
+	std::string code = "local ai = ... return wesnoth.require(\"ai/lua/dummy_engine_lua.lua\").get_ai(ai)";
 	return code;
 }
 
@@ -269,7 +273,7 @@ void engine_lua::push_ai_table()
 {
 	if (game_config::debug)
 	{
-		lua_ai_context_->load();
+		lua_ai_context_->load_and_inject_ai_table(this);
 	}
 }
 

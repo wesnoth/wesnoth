@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "network.hpp"
@@ -65,19 +64,23 @@ lobby_info::~lobby_info()
 
 void lobby_info::delete_games()
 {
-	FOREACH(const AUTO& v, games_by_id_) {
+	FOREACH(const AUTO & v, games_by_id_)
+	{
 		delete v.second;
 	}
 }
 
-namespace {
+namespace
+{
 
 std::string dump_games_map(const lobby_info::game_info_map& games)
 {
 	std::stringstream ss;
-	FOREACH(const AUTO& v, games) {
+	FOREACH(const AUTO & v, games)
+	{
 		const game_info& game = *v.second;
-		ss << "G" << game.id << "(" << game.name << ") " << game.display_status_string() << " ";
+		ss << "G" << game.id << "(" << game.name << ") "
+		   << game.display_status_string() << " ";
 	}
 	ss << "\n";
 	return ss.str();
@@ -86,23 +89,26 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 std::string dump_games_config(const config& gamelist)
 {
 	std::stringstream ss;
-	FOREACH(const AUTO& c, gamelist.child_range("game")) {
-		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
+	FOREACH(const AUTO & c, gamelist.child_range("game"))
+	{
+		ss << "g" << c["id"] << "(" << c["name"] << ") "
+		   << c[config::diff_track_attribute] << " ";
 	}
 	ss << "\n";
 	return ss.str();
 }
 
-} //end anonymous namespace
+} // end anonymous namespace
 
-void lobby_info::process_gamelist(const config &data)
+void lobby_info::process_gamelist(const config& data)
 {
 	SCOPE_LB;
 	gamelist_ = data;
 	gamelist_initialized_ = true;
 	delete_games();
 	games_by_id_.clear();
-	FOREACH(const AUTO& c, gamelist_.child("gamelist").child_range("game")) {
+	FOREACH(const AUTO & c, gamelist_.child("gamelist").child_range("game"))
+	{
 		game_info* game = new game_info(c, game_config_);
 		games_by_id_[game->id] = game;
 	}
@@ -112,48 +118,56 @@ void lobby_info::process_gamelist(const config &data)
 }
 
 
-bool lobby_info::process_gamelist_diff(const config &data)
+bool lobby_info::process_gamelist_diff(const config& data)
 {
 	SCOPE_LB;
-	if (!gamelist_initialized_) return false;
+	if(!gamelist_initialized_)
+		return false;
 	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));
-	try {
+	try
+	{
 		gamelist_.apply_diff(data, true);
-	} catch(config::error& e) {
-		ERR_LB << "Error while applying the gamelist diff: '"
-			<< e.message << "' Getting a new gamelist.\n";
+	}
+	catch(config::error& e)
+	{
+		ERR_LB << "Error while applying the gamelist diff: '" << e.message
+			   << "' Getting a new gamelist.\n";
 		network::send_data(config("refresh_lobby"), 0);
 		return false;
 	}
 	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
 	DBG_LB << dump_games_map(games_by_id_);
 	config::child_itors range = gamelist_.child("gamelist").child_range("game");
-	for (config::child_iterator i = range.first; i != range.second; ++i) {
+	for(config::child_iterator i = range.first; i != range.second; ++i) {
 		config& c = *i;
-		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
+		DBG_LB << "data process: " << c["id"] << " ("
+			   << c[config::diff_track_attribute] << ")\n";
 		int game_id = c["id"];
-		if (game_id == 0) {
-			ERR_LB << "game with id 0 in gamelist config\n";
+		if(game_id == 0) {
+			ERR_LB << "game with id 0 in gamelist config" << std::endl;
 			network::send_data(config("refresh_lobby"), 0);
 			return false;
 		}
 		game_info_map::iterator current_i = games_by_id_.find(game_id);
 		const std::string& diff_result = c[config::diff_track_attribute];
-		if (diff_result == "new" || diff_result == "modified") {
-			if (current_i == games_by_id_.end()) {
-				games_by_id_.insert(std::make_pair(game_id, new game_info(c, game_config_)));
+		if(diff_result == "new" || diff_result == "modified") {
+			if(current_i == games_by_id_.end()) {
+				games_by_id_.insert(std::make_pair(
+						game_id, new game_info(c, game_config_)));
 			} else {
-				//had a game with that id, so update it and mark it as such
+				// had a game with that id, so update it and mark it as such
 				*(current_i->second) = game_info(c, game_config_);
 				current_i->second->display_status = game_info::UPDATED;
 			}
-		} else if (diff_result == "deleted") {
-			if (current_i == games_by_id_.end()) {
-				WRN_LB << "Would have to delete a game that I don't have: " << game_id << "\n";
+		} else if(diff_result == "deleted") {
+			if(current_i == games_by_id_.end()) {
+				WRN_LB << "Would have to delete a game that I don't have: "
+					   << game_id << "\n";
 			} else {
-				if (current_i->second->display_status == game_info::NEW) {
-					//this means the game never made it through to the user interface
-					//so just deleting it is fine
+				if(current_i->second->display_status == game_info::NEW) {
+					// this means the game never made it through to the user
+					// interface
+					// so just deleting it is fine
 					games_by_id_.erase(current_i);
 				} else {
 					current_i->second->display_status = game_info::DELETED;
@@ -162,11 +176,14 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		}
 	}
 	DBG_LB << dump_games_map(games_by_id_);
-	try {
+	try
+	{
 		gamelist_.clear_diff_track(data);
-	} catch(config::error& e) {
-		ERR_LB << "Error while applying the gamelist diff (2): '"
-			<< e.message << "' Getting a new gamelist.\n";
+	}
+	catch(config::error& e)
+	{
+		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message
+			   << "' Getting a new gamelist.\n";
 		network::send_data(config("refresh_lobby"), 0);
 		return false;
 	}
@@ -179,16 +196,19 @@ void lobby_info::process_userlist()
 {
 	SCOPE_LB;
 	users_.clear();
-	FOREACH(const AUTO& c, gamelist_.child_range("user")) {
+	FOREACH(const AUTO & c, gamelist_.child_range("user"))
+	{
 		users_.push_back(user_info(c));
 	}
-	FOREACH(AUTO& ui, users_) {
-		if (ui.game_id != 0) {
+	FOREACH(AUTO & ui, users_)
+	{
+		if(ui.game_id != 0) {
 			game_info* g = get_game_by_id(ui.game_id);
-			if (g == NULL) {
-				WRN_NG << "User " << ui.name << " has unknown game_id: " << ui.game_id << "\n";
+			if(g == NULL) {
+				WRN_NG << "User " << ui.name
+					   << " has unknown game_id: " << ui.game_id << "\n";
 			} else {
-				switch (ui.relation) {
+				switch(ui.relation) {
 					case user_info::FRIEND:
 						g->has_friends = true;
 						break;
@@ -208,8 +228,8 @@ void lobby_info::sync_games_display_status()
 	DBG_LB << "lobby_info::sync_games_display_status";
 	DBG_LB << "games_by_id_ size: " << games_by_id_.size();
 	game_info_map::iterator i = games_by_id_.begin();
-	while (i != games_by_id_.end()) {
-		if (i->second->display_status == game_info::DELETED) {
+	while(i != games_by_id_.end()) {
+		if(i->second->display_status == game_info::DELETED) {
 			games_by_id_.erase(i++);
 		} else {
 			i->second->display_status = game_info::CLEAN;
@@ -232,45 +252,49 @@ const game_info* lobby_info::get_game_by_id(int id) const
 	return i == games_by_id_.end() ? NULL : i->second;
 }
 
-room_info* lobby_info::get_room(const std::string &name)
+room_info* lobby_info::get_room(const std::string& name)
 {
-	FOREACH(AUTO& r, rooms_) {
-		if (r.name() == name) return &r;
+	FOREACH(AUTO & r, rooms_)
+	{
+		if(r.name() == name)
+			return &r;
 	}
 	return NULL;
 }
 
-const room_info* lobby_info::get_room(const std::string &name) const
+const room_info* lobby_info::get_room(const std::string& name) const
 {
-	FOREACH(const AUTO& r, rooms_) {
-		if (r.name() == name) return &r;
+	FOREACH(const AUTO & r, rooms_)
+	{
+		if(r.name() == name)
+			return &r;
 	}
 	return NULL;
 }
 
-bool lobby_info::has_room(const std::string &name) const
+bool lobby_info::has_room(const std::string& name) const
 {
 	return get_room(name) != NULL;
 }
 
-chat_log& lobby_info::get_whisper_log(const std::string &name)
+chat_log& lobby_info::get_whisper_log(const std::string& name)
 {
 	return whispers_[name];
 }
 
-void lobby_info::open_room(const std::string &name)
+void lobby_info::open_room(const std::string& name)
 {
-	if (!has_room(name)) {
+	if(!has_room(name)) {
 		rooms_.push_back(room_info(name));
 	}
 }
 
-void lobby_info::close_room(const std::string &name)
+void lobby_info::close_room(const std::string& name)
 {
 	room_info* r = get_room(name);
-	DBG_LB << "lobby info: closing room " << name
-			<< " " << static_cast<void*>(r) << "\n";
-	if (r) {
+	DBG_LB << "lobby info: closing room " << name << " "
+		   << static_cast<void*>(r) << "\n";
+	if(r) {
 		rooms_.erase(rooms_.begin() + (r - &rooms_[0]));
 	}
 }
@@ -280,7 +304,7 @@ const std::vector<game_info*>& lobby_info::games_filtered() const
 	return games_filtered_;
 }
 
-void lobby_info::add_game_filter(game_filter_base *f)
+void lobby_info::add_game_filter(game_filter_base* f)
 {
 	game_filter_.append(f);
 }
@@ -300,7 +324,8 @@ void lobby_info::make_games_vector()
 	games_filtered_.clear();
 	games_visibility_.clear();
 	games_.clear();
-	FOREACH(const AUTO& v, games_by_id_) {
+	FOREACH(const AUTO & v, games_by_id_)
+	{
 		games_.push_back(v.second);
 	}
 }
@@ -309,22 +334,24 @@ void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
 	games_visibility_.clear();
-	FOREACH(AUTO g, games_) {
+	FOREACH(AUTO g, games_)
+	{
 		game_info& gi = *g;
 		bool show = game_filter_.match(gi);
-		if (game_filter_invert_) {
+		if(game_filter_invert_) {
 			show = !show;
 		}
 		games_visibility_.push_back(show);
-		if (show) {
+		if(show) {
 			games_filtered_.push_back(&gi);
 		}
 	}
 }
 
-void lobby_info::update_user_statuses(int game_id, const room_info *room)
+void lobby_info::update_user_statuses(int game_id, const room_info* room)
 {
-	FOREACH(AUTO& user, users_) {
+	FOREACH(AUTO & user, users_)
+	{
 		user.update_state(game_id, room);
 	}
 }
@@ -332,31 +359,37 @@ void lobby_info::update_user_statuses(int game_id, const room_info *room)
 
 struct user_sorter_name
 {
-	bool operator()(const user_info& u1, const user_info& u2) {
+	bool operator()(const user_info& u1, const user_info& u2)
+	{
 		return u1.name < u2.name;
 	}
-	bool operator()(const user_info* u1, const user_info* u2) {
+	bool operator()(const user_info* u1, const user_info* u2)
+	{
 		return operator()(*u1, *u2);
 	}
 };
 
 struct user_sorter_relation
 {
-	bool operator()(const user_info& u1, const user_info& u2) {
+	bool operator()(const user_info& u1, const user_info& u2)
+	{
 		return static_cast<int>(u1.relation) < static_cast<int>(u2.relation);
 	}
-	bool operator()(const user_info* u1, const user_info* u2) {
+	bool operator()(const user_info* u1, const user_info* u2)
+	{
 		return operator()(*u1, *u2);
 	}
 };
 
 struct user_sorter_relation_name
 {
-	bool operator()(const user_info& u1, const user_info& u2) {
+	bool operator()(const user_info& u1, const user_info& u2)
+	{
 		return static_cast<int>(u1.relation) < static_cast<int>(u2.relation)
-			|| (u1.relation == u2.relation && u1.name < u2.name);
+			   || (u1.relation == u2.relation && u1.name < u2.name);
 	}
-	bool operator()(const user_info* u1, const user_info* u2) {
+	bool operator()(const user_info* u1, const user_info* u2)
+	{
 		return operator()(*u1, *u2);
 	}
 };
@@ -364,17 +397,24 @@ struct user_sorter_relation_name
 void lobby_info::sort_users(bool by_name, bool by_relation)
 {
 	users_sorted_.clear();
-	FOREACH(AUTO& u, users_) {
+	FOREACH(AUTO & u, users_)
+	{
 		users_sorted_.push_back(&u);
 	}
-	if (by_name) {
-		if (by_relation) {
-			std::sort(users_sorted_.begin(), users_sorted_.end(), user_sorter_relation_name());
+	if(by_name) {
+		if(by_relation) {
+			std::sort(users_sorted_.begin(),
+					  users_sorted_.end(),
+					  user_sorter_relation_name());
 		} else {
-			std::sort(users_sorted_.begin(), users_sorted_.end(), user_sorter_name());
+			std::sort(users_sorted_.begin(),
+					  users_sorted_.end(),
+					  user_sorter_name());
 		}
-	} else if (by_relation) {
-		std::sort(users_sorted_.begin(), users_sorted_.end(), user_sorter_relation());
+	} else if(by_relation) {
+		std::sort(users_sorted_.begin(),
+				  users_sorted_.end(),
+				  user_sorter_relation());
 	}
 }
 

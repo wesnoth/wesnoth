@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2006 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -93,8 +93,6 @@ namespace t_translation {
 	 * @param terrain               The terrain number to convert.
 	 * @param start_position        The starting position, if smaller than 0
 	 *                              it's ignored else it's written.
-	 * @param min_size              Padds the results with spaces if required,
-	 *                              until the result has a length of min_size.
 	 *
 	 * @return                      The converted string, if no starting
 	 *                              position given it's padded to 4 chars else
@@ -301,7 +299,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		if(starting_position != -1) {
 			if(starting_positions.find(starting_position) != starting_positions.end()) {
 				// Redefine existion position
-				WRN_G << "Starting position " << starting_position << " is redefined.\n";
+				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
 				starting_positions[starting_position].x = x;
 				starting_positions[starting_position].y = y;
 			} else {
@@ -334,11 +332,11 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				width = x + 1;
 			} else {
 				if((x + 1) != width ) {
-					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << "\n";
+					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << std::endl;
 					throw error("Map not a rectangle.");
 				}
 				if (y > max_map_size()) {
-					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")\n";
+					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")" << std::endl;
 					throw error("Map height limit exceeded.");
 				}
 			}
@@ -364,7 +362,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 			++x;
 			offset = pos_separator + 1;
 			if (x > max_map_size()) {
-				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")\n";
+				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")" << std::endl;
 				throw error("Map width limit exceeded.");
 			}
 		}
@@ -372,7 +370,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	}
 
 	if(x != 0 && (x + 1) != width) {
-		ERR_G << "Map not a rectangle error occurred at the end\n";
+		ERR_G << "Map not a rectangle error occurred at the end" << std::endl;
 		throw error("Map not a rectangle.");
 	}
 
@@ -789,9 +787,9 @@ static std::string number_to_string_(t_terrain terrain, const int start_position
 	}
 
 	/*
-	 * The initialisation of tcode is done to make gcc-4.7 happy. Otherwise it
-	 * some uninitialised fields might be used. Its analysis are wrong, but
-	 * initialise to keep it happy.
+	 * The initialization of tcode is done to make gcc-4.7 happy. Otherwise it
+	 * some uninitialized fields might be used. Its analysis are wrong, but
+	 * Initialize to keep it happy.
 	 */
 	unsigned char tcode[9] = {0};
 	// Insert the terrain tcode

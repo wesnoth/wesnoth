@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,19 @@
 class variable_set;
 
 namespace utils {
+
+/**
+ * Determines if a string might contain variables to interpolate.
+ * This can allow one to skip future interpolations (plural -- if there is only
+ * one interpolation, the savings are not worth this check). In this spirit,
+ * precision is sacrificed in the name of efficiency; the check is quick and
+ * allows false positives, but there are no false negatives. (A false negative
+ * would lead to incorrect behavior, whereas a false positive leads to merely
+ * inefficient behavior.) In practice, false positives should be uncommon enough
+ * to not worry about.
+ */
+inline bool might_contain_variables(const std::string &str)
+{ return str.find('$') != std::string::npos; }
 
 /**
  * Function which will interpolate variables, starting with '$' in the string

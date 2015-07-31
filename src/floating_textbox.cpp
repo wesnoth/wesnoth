@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -14,8 +14,10 @@
 */
 
 #include "global.hpp"
-
 #include "floating_textbox.hpp"
+
+#include "display_chat_manager.hpp"
+#include "floating_label.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
@@ -87,7 +89,7 @@ namespace gui{
 
 		if(box_ != NULL) {
 			box_->set_volatile(true);
-			const SDL_Rect rect = create_rect(
+			const SDL_Rect rect = sdl::create_rect(
 				  area.x + label_area.w + border_size * 2
 				, ypos
 				, textbox_width
@@ -116,7 +118,7 @@ namespace gui{
 		}
 
 
-		box_.assign(new gui::textbox(gui.video(),100,"",true,256,0.8,0.6));
+		box_.assign(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
 
 		update_location(gui);
 	}
@@ -136,7 +138,7 @@ namespace gui{
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
 			std::string completion_list = utils::join(matches, " ");
-			resources::screen->add_chat_message(time(NULL), "", 0, completion_list,
+			resources::screen->get_chat_manager().add_chat_message(time(NULL), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);

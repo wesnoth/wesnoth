@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,11 +21,12 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "help.hpp"
+#include "help/help.hpp"
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -40,20 +41,22 @@ namespace gui2 {
  *         This text contains the name of the server to connect to. $
  *
  * show_help & & button & m &
- *         Thus button shows the in-game help about add-ons maangement when triggered. $
+ *         Thus button shows the in-game help about add-ons management when
+ *         triggered. $
  *
  * & 2 & button & o &
- *         This button closes the dialog to display a dialog for removing installed add-ons. $
+ *         This button closes the dialog to display a dialog for removing
+ *         installed add-ons. $
  *
  * @end{table}
  */
 
 REGISTER_DIALOG(addon_connect)
 
-taddon_connect::taddon_connect(std::string& host_name
-		, const bool allow_remove, display* disp)
-	: allow_remove_(allow_remove)
-	, disp_(disp)
+taddon_connect::taddon_connect(std::string& host_name,
+							   const bool allow_remove,
+							   display* disp)
+	: allow_remove_(allow_remove), disp_(disp)
 {
 	register_text("host_name", false, host_name, true);
 }
@@ -71,15 +74,17 @@ void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 			.set_active(allow_remove_);
 
 	connect_signal_mouse_left_click(
-		find_widget<tbutton>(&window, "show_help", false),
-			boost::bind(&taddon_connect::help_button_callback, this, boost::ref(window)));
+			find_widget<tbutton>(&window, "show_help", false),
+			boost::bind(&taddon_connect::help_button_callback,
+						this,
+						boost::ref(window)));
 }
 
 void taddon_connect::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		ttext_box& host_widget =
-				find_widget<ttext_box>(&window, "host_name", false);
+		ttext_box& host_widget
+				= find_widget<ttext_box>(&window, "host_name", false);
 
 		host_widget.save_to_history();
 	}

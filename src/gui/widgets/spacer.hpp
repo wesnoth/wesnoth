@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include "gui/widgets/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * An empty widget.
@@ -31,9 +32,7 @@ namespace gui2 {
 class tspacer : public tcontrol
 {
 public:
-	tspacer() :
-		tcontrol(0),
-		best_size_(0, 0)
+	tspacer() : tcontrol(0), best_size_(0, 0)
 	{
 	}
 
@@ -42,8 +41,8 @@ public:
 private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
-public:
 
+public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
@@ -60,10 +59,12 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
+	void set_best_size(const tpoint& best_size)
+	{
+		best_size_ = best_size;
+	}
 
 private:
-
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
 
@@ -71,10 +72,9 @@ private:
 	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_background(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
@@ -84,5 +84,3 @@ private:
 } // namespace gui2
 
 #endif
-
-

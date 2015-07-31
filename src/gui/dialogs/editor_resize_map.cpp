@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,8 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -87,11 +88,10 @@ namespace gui2 {
 
 REGISTER_DIALOG(editor_resize_map)
 
-teditor_resize_map::teditor_resize_map(
-			  int& width
-			, int& height
-			, EXPAND_DIRECTION& expand_direction
-			, bool& copy_edge_terrain)
+teditor_resize_map::teditor_resize_map(int& width,
+									   int& height,
+									   EXPAND_DIRECTION& expand_direction,
+									   bool& copy_edge_terrain)
 	: width_(register_integer("width", true, width))
 	, height_(register_integer("height", true, height))
 	, old_width_(width)
@@ -107,28 +107,28 @@ teditor_resize_map::teditor_resize_map(
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tslider& height = find_widget<tslider>(&window, "height", false);
-	connect_signal_notify_modified(height
-			, boost::bind(
-				  &teditor_resize_map::update_expand_direction
-				, this
-				, boost::ref(window)));
+	connect_signal_notify_modified(
+			height,
+			boost::bind(&teditor_resize_map::update_expand_direction,
+						this,
+						boost::ref(window)));
 
 	tslider& width = find_widget<tslider>(&window, "width", false);
-	connect_signal_notify_modified(width
-			, boost::bind(
-				  &teditor_resize_map::update_expand_direction
-				, this
-				, boost::ref(window)));
+	connect_signal_notify_modified(
+			width,
+			boost::bind(&teditor_resize_map::update_expand_direction,
+						this,
+						boost::ref(window)));
 
 	std::string name_prefix = "expand";
-	for (int i = 0; i < 9; ++i) {
+	for(int i = 0; i < 9; ++i) {
 		std::string name = name_prefix + lexical_cast<std::string>(i);
-		direction_buttons_[i] = find_widget<ttoggle_button>(
-				&window, name, false, true);
+		direction_buttons_[i]
+				= find_widget<ttoggle_button>(&window, name, false, true);
 
 		direction_buttons_[i]->set_callback_state_change(
-				dialog_callback<teditor_resize_map
-					, &teditor_resize_map::update_expand_direction>);
+				dialog_callback<teditor_resize_map,
+								&teditor_resize_map::update_expand_direction>);
 	}
 	direction_buttons_[0]->set_value(true);
 	update_expand_direction(window);
@@ -140,7 +140,7 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
  */
 static int resize_grid_xy_to_idx(const int x, const int y)
 {
-	if (x < 0 || x > 2 || y < 0 || y > 2) {
+	if(x < 0 || x > 2 || y < 0 || y > 2) {
 		return 9;
 	} else {
 		return y * 3 + x;
@@ -149,64 +149,66 @@ static int resize_grid_xy_to_idx(const int x, const int y)
 
 void teditor_resize_map::set_direction_icon(int index, std::string icon)
 {
-	if (index < 9) {
-		direction_buttons_[index]->set_icon_name(
-				"buttons/resize-direction-" + icon + ".png");
+	if(index < 9) {
+		direction_buttons_[index]->set_icon_name("icons/arrows/arrows_blank_"
+												 + icon + "_30.png");
 	}
 }
 
 void teditor_resize_map::update_expand_direction(twindow& window)
 {
-	for (int i = 0; i < 9; ++i) {
-		if (direction_buttons_[i]->get_value()
-					&& static_cast<int>(expand_direction_) != i) {
+	for(int i = 0; i < 9; ++i) {
+		if(direction_buttons_[i]->get_value()
+		   && static_cast<int>(expand_direction_) != i) {
 
 			expand_direction_ = static_cast<EXPAND_DIRECTION>(i);
 			break;
 		}
 	}
-	for (int i = 0; i < static_cast<int>(expand_direction_); ++i) {
+	for(int i = 0; i < static_cast<int>(expand_direction_); ++i) {
 		direction_buttons_[i]->set_value(false);
 		set_direction_icon(i, "none");
 	}
 	direction_buttons_[expand_direction_]->set_value(true);
-	for (int i = expand_direction_ + 1; i < 9; ++i) {
+	for(int i = expand_direction_ + 1; i < 9; ++i) {
 		direction_buttons_[i]->set_value(false);
 		set_direction_icon(i, "none");
 	}
 
-	int xdiff = width_->get_widget_value(window) - old_width_ ;
-	int ydiff = height_->get_widget_value(window) - old_height_ ;
+	int xdiff = width_->get_widget_value(window) - old_width_;
+	int ydiff = height_->get_widget_value(window) - old_height_;
 	int x = static_cast<int>(expand_direction_) % 3;
 	int y = static_cast<int>(expand_direction_) / 3;
 	set_direction_icon(expand_direction_, "center");
-	if (xdiff != 0) {
+	if(xdiff != 0) {
 		int left = resize_grid_xy_to_idx(x - 1, y);
 		int right = resize_grid_xy_to_idx(x + 1, y);
-		if (xdiff < 0) std::swap(left, right);
+		if(xdiff < 0)
+			std::swap(left, right);
 		set_direction_icon(left, "left");
 		set_direction_icon(right, "right");
 	}
-	if (ydiff != 0) {
+	if(ydiff != 0) {
 		int top = resize_grid_xy_to_idx(x, y - 1);
 		int bottom = resize_grid_xy_to_idx(x, y + 1);
-		if (ydiff < 0) std::swap(top, bottom);
-		set_direction_icon(top, "top");
-		set_direction_icon(bottom, "bottom");
+		if(ydiff < 0)
+			std::swap(top, bottom);
+		set_direction_icon(top, "up");
+		set_direction_icon(bottom, "down");
 	}
-	if (xdiff < 0 || ydiff < 0 || (xdiff > 0 && ydiff > 0)) {
+	if(xdiff < 0 || ydiff < 0 || (xdiff > 0 && ydiff > 0)) {
 		int nw = resize_grid_xy_to_idx(x - 1, y - 1);
 		int ne = resize_grid_xy_to_idx(x + 1, y - 1);
 		int sw = resize_grid_xy_to_idx(x - 1, y + 1);
 		int se = resize_grid_xy_to_idx(x + 1, y + 1);
-		if (xdiff < 0 || ydiff < 0) {
+		if(xdiff < 0 || ydiff < 0) {
 			std::swap(nw, se);
 			std::swap(ne, sw);
 		}
-		set_direction_icon(nw, "top-left");
-		set_direction_icon(ne, "top-right");
-		set_direction_icon(sw, "bottom-left");
-		set_direction_icon(se, "bottom-right");
+		set_direction_icon(nw, "topleft");
+		set_direction_icon(ne, "topright");
+		set_direction_icon(sw, "bottomleft");
+		set_direction_icon(se, "bottomright");
 	}
 }
 

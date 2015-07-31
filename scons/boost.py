@@ -1,12 +1,13 @@
 # vi: syntax=python:et:ts=4
-from config_check_utils import *
+from config_check_utils import find_include
 from os.path import join, dirname, basename
 from glob import glob
 import re
 
 def find_boost(env):
     prefixes = [env["prefix"], "C:\\Boost"]
-    include = find_include(prefixes, "boost/config.hpp", "", not env["host"])
+    crosscompile = env["host"]
+    include = find_include(prefixes, "boost/config.hpp", default_prefixes=not crosscompile)
     if include:
         prefix, includefile = include[0]
         env["boostdir"] = join(prefix, "include")
@@ -20,7 +21,8 @@ def find_boost(env):
             else:
                 env["boost_suffix"] = ""
         return
-    includes = find_include(prefixes, "boost/config.hpp", "boost-*")
+
+    includes = find_include(prefixes, "boost/config.hpp", include_subdir="include/boost-*")
     if includes:
         versions = []
         for prefix, includefile in includes:
@@ -58,7 +60,10 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
 
     boost_headers = { "regex" : "regex/config.hpp",
                       "iostreams" : "iostreams/constants.hpp",
+                      "locale" : "locale/info.hpp",
                       "unit_test_framework" : "test/unit_test.hpp",
+                      "filesystem" : "filesystem/operations.hpp",
+                      "random" : "random/random_number_generator.hpp",
                       "system" : "system/error_code.hpp"}
 
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
@@ -155,7 +160,10 @@ def CheckBoostIostreamsBZip2(context):
         }
         \n"""
 
-    for libbz2 in ["", "bz2"]:
+    # bzip2 library name when it's statically compiled into Boost
+    boostname = "boost_bzip2" + env.get("boost_suffix", "")
+
+    for libbz2 in ["", "bz2", boostname]:
         env.Append(LIBS = [libbz2])
         comment = ""
         if libbz2:

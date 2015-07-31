@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2012 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,12 +46,10 @@ namespace {
 
 		BOOST_FOREACH(const std::string& dep, base_deps) {
 			if(base_id == dep) {
-				// TODO: make it possible to report this to the UI so it can be fixed by the add-on maintainer
-				ERR_AC << dep << " depends upon itself; breaking circular dependency\n";
+				LOG_AC << dep << " depends upon itself; breaking circular dependency\n";
 				continue;
 			} else if(dest.find(dep) != dest.end()) {
-				// TODO: make it possible to report this to the UI so it can be fixed by the add-on maintainer
-				ERR_AC << dep << " already in dependency tree; breaking circular dependency\n";
+				LOG_AC << dep << " already in dependency tree; breaking circular dependency\n";
 				continue;
 			}
 
@@ -81,7 +79,12 @@ void addon_info::read(const config& cfg)
 		this->locales.push_back(locale["language"].str());
 	}
 
+	this->core = cfg["core"].str();
 	this->depends = utils::split(cfg["dependencies"].str());
+	this->feedback_url = cfg["feedback_url"].str();
+
+	this->updated = cfg["timestamp"].to_time_t();
+	this->created = cfg["original_timestamp"].to_time_t();
 }
 
 void addon_info::write(config& cfg) const
@@ -101,7 +104,12 @@ void addon_info::write(config& cfg) const
 		cfg.add_child("translation")["language"] = locale_id;
 	}
 
+	cfg["core"] = this->core;
 	cfg["dependencies"] = utils::join(this->depends);
+	cfg["feedback_url"] = this->feedback_url;
+
+	cfg["timestamp"] = this->updated;
+	cfg["original_timestamp"] = this->created;
 }
 
 void addon_info::write_minimal(config& cfg) const
@@ -109,6 +117,9 @@ void addon_info::write_minimal(config& cfg) const
 	cfg["version"] = this->version.str();
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
+	cfg["title"] = this->title;
+	cfg["dependencies"] = utils::join(this->depends);
+	cfg["core"] = this->core;
 }
 
 std::string addon_info::display_title() const
@@ -125,11 +136,11 @@ std::string addon_info::display_icon() const
 	std::string ret = icon;
 
 	if(ret.empty()) {
-		ERR_AC << "add-on '" << id << "' doesn't have an icon path set\n";
+		ERR_AC << "add-on '" << id << "' doesn't have an icon path set" << std::endl;
 		ret = fallback_addon_icon;
 	}
 	else if(!image::exists(ret)) {
-		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'\n";
+		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'" << std::endl;
 		ret = game_config::debug ? game_config::images::missing : fallback_addon_icon;
 	}
 	else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
@@ -148,6 +159,8 @@ std::string addon_info::display_type() const
 		return _("addon_type^Campaign");
 	case ADDON_SP_SCENARIO:
 		return _("addon_type^Scenario");
+	case ADDON_SP_MP_CAMPAIGN:
+		return _("addon_type^SP/MP Campaign");
 	case ADDON_MP_ERA:
 		return _("addon_type^MP era");
 	case ADDON_MP_FACTION:
@@ -160,6 +173,8 @@ std::string addon_info::display_type() const
 		return _("addon_type^MP campaign");
 	case ADDON_MP_MOD:
 		return _("addon_type^MP modification");
+	case ADDON_CORE:
+		return _("addon_type^Core");
 	case ADDON_MEDIA:
 		return _("addon_type^Resources");
 	case ADDON_OTHER:
@@ -175,8 +190,7 @@ std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons
 	resolve_deps_recursive(addons, this->id, deps);
 
 	if(deps.find(this->id) != deps.end()) {
-		// TODO: make it possible to report this to the UI so it can be fixed by the add-on maintainer
-		ERR_AC << this->id << " depends upon itself; breaking circular dependency\n";
+		LOG_AC << this->id << " depends upon itself; breaking circular dependency\n";
 		deps.erase(this->id);
 	}
 
@@ -187,15 +201,18 @@ void read_addons_list(const config& cfg, addons_list& dest)
 {
 	dest.clear();
 
+	unsigned order = 0;
+
 	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
 	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
 	BOOST_FOREACH(const config& addon_cfg, addon_cfgs) {
 		const std::string& id = addon_cfg["name"].str();
 		if(dest.find(id) != dest.end()) {
-			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them\n";
+			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them" << std::endl;
 			continue;
 		}
 		dest[id].read(addon_cfg);
+		dest[id].order = order++;
 	}
 }
 

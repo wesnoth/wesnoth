@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,8 @@
 
 #include "gui/widgets/window.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -42,15 +43,15 @@ struct twindow_implementation
 	 *
 	 * This part handles the actual layouting of the window.
 	 *
-	 * @see layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param window              The window to operate upon.
 	 * @param maximum_width       The maximum width of the window.
 	 * @param maximum_height      The maximum height of the window.
 	 */
 	static void layout(twindow& window,
-			const unsigned maximum_width, const unsigned maximum_height);
-
+					   const unsigned maximum_width,
+					   const unsigned maximum_height);
 };
 
 } // namespace gui2

@@ -17,7 +17,7 @@ def print_indent(string, depth, char=' '):
 
 class Validator:
     """
-    The class that takes a wmlgrammer object to validate wml trees with
+    The class that takes a wmlgrammar object to validate wml trees with
     """
     def __init__(self, schema, verbosity=0):
         self.schema = wmlgrammar.Grammar(schema)
@@ -84,78 +84,80 @@ class Validator:
                 self.validate(element, depth+1)
 
 if __name__ == '__main__':
-    import optparse, subprocess, os, codecs, sys
+    import argparse, subprocess, os, codecs, sys
 
     # Ugly hack to force the output of UTF-8.
     # This prevents us from crashing when we're being verbose
     #  and encounter a non-ascii character.
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 
-    op = optparse.OptionParser()
-    op.set_usage("Usage: %prog [options] [filename]")
-    op.add_option("-p", "--path",
+    ap = argparse.ArgumentParser("Usage: %(prog)s [options]")
+    ap.add_argument("-p", "--path",
         help = "Specify Wesnoth's data dir",
         dest = "path")
-    op.add_option("-u", "--userpath",
+    ap.add_argument("-u", "--userpath",
         help = "Specify user data dir",
         dest = "userpath")
-    op.add_option("-s", "--schema",
+    ap.add_argument("-s", "--schema",
         help = "Specify WML schema",
         dest = "schema")
-    op.add_option("-v", "--verbose",
+    ap.add_argument("-v", "--verbose",
         action = "count",
         dest = "verbose",
         help = "Increase verbosity, 4 is the maximum.")
-    op.add_option("-D", "--define",
+    ap.add_argument("-D", "--define",
         action = "append",
         dest = "defines",
         default = [],
         help = "Define (empty) preprocessor macros, for campaign/multiplayer inclusion.")
-    (options, args) = op.parse_args()
+    ap.add_argument("filename",
+        nargs = "*",
+        help = "Files to validate")
+    args = ap.parse_args()
 
-    if not options.path:
+    if not args.path:
         try:
             p = subprocess.Popen(["wesnoth", "--path"], stdout = subprocess.PIPE)
             path = p.stdout.read().strip()
-            options.path = os.path.join(path, "data")
-            sys.stderr.write("No Wesnoth path given.\nAutomatically found '%s'\n" % (options.path, ) )
+            args.path = os.path.join(path, "data")
+            sys.stderr.write("No Wesnoth path given.\nAutomatically found '%s'\n" % (args.path, ) )
         except OSError:
-            options.path = '.'
-            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (options.path, ) )
+            args.path = '.'
+            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (args.path, ) )
 
-    if len(args) < 1:
-        args.append(os.path.join(options.path, '_main.cfg'))
+    if len(args.filename) < 1:
+        args.filename.append(os.path.join(args.path, '_main.cfg'))
 
-    if options.verbose > 1:
-        print "Options: %s\nArgs: %s\n"% (options, args)
+    if args.verbose > 1:
+        print "Args: %s\n"% (args, )
 
-    if not options.schema:
-        options.schema = os.path.join(options.path, 'schema.cfg')
+    if not args.schema:
+        args.schema = os.path.join(args.path, 'schema.cfg')
 
     # Parse the schema
-    parser = wmlparser.Parser(options.path)
+    parser = wmlparser.Parser(args.path)
 
-    if options.verbose > 3:
+    if args.verbose > 3:
         parser.verbose = True
-    parser.parse_file(options.schema)
+    parser.parse_file(args.schema)
 
     schema = wmldata.DataSub("schema")
     parser.parse_top(schema)
 
     # Construct the validator
-    validator = Validator(schema, options.verbose)
+    validator = Validator(schema, args.verbose)
 
     # Parse the WML
-    parser = wmlparser.Parser(options.path, options.userpath)
+    parser = wmlparser.Parser(args.path, args.userpath)
 
-    if options.verbose > 3:
+    if args.verbose > 3:
         parser.verbose = True
 
-    if options.userpath:
+    if args.userpath:
         parser.parse_text("{~add-ons}")
-    for file in args:
+    for file in args.filename:
         parser.parse_file(file)
-    for macro in options.defines:
+    for macro in args.defines:
         parser.parse_text("#define %s \n#enddef" % (macro, ) )
 
     data = wmldata.DataSub("root")

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 
 #include <boost/bind.hpp>
 
-#include "sdl_utils.hpp"
+#include "sdl/rect.hpp"
+#include "sdl/utils.hpp"
 #include "widgets/drop_target.hpp"
 
 BOOST_AUTO_TEST_SUITE( test_drop_target )
@@ -38,7 +39,7 @@ BOOST_AUTO_TEST_SUITE( test_drop_target )
 		}
 		static bool empty() {
 			return gui::drop_target::empty();
-		};
+		}
 	};
 
 BOOST_AUTO_TEST_CASE( test_create_group )
@@ -79,12 +80,12 @@ BOOST_AUTO_TEST_CASE( test_create_drop_targets )
 	location_store locations;
 
 	// Create rectangles for drop targets
-	locations.push_back(create_rect(50,50,20,20));
-	locations.push_back(create_rect(50,100,20,20));
-	locations.push_back(create_rect(50,150,20,20));
-	locations.push_back(create_rect(50,200,20,20));
-	locations.push_back(create_rect(50,250,20,20));
-	locations.push_back(create_rect(50,300,20,20));
+	locations.push_back(sdl::create_rect(50,50,20,20));
+	locations.push_back(sdl::create_rect(50,100,20,20));
+	locations.push_back(sdl::create_rect(50,150,20,20));
+	locations.push_back(sdl::create_rect(50,200,20,20));
+	locations.push_back(sdl::create_rect(50,250,20,20));
+	locations.push_back(sdl::create_rect(50,300,20,20));
 
 	target_store targets;
 
@@ -122,19 +123,19 @@ BOOST_AUTO_TEST_CASE( test_multiple_drop_groups )
 	location_store locations2;
 
 	// Create rectangles for drop targets
-	locations.push_back(create_rect(50,50,20,20));
-	locations.push_back(create_rect(50,100,20,20));
-	locations.push_back(create_rect(50,150,20,20));
-	locations.push_back(create_rect(50,200,20,20));
-	locations.push_back(create_rect(50,250,20,20));
-	locations.push_back(create_rect(50,300,20,20));
+	locations.push_back(sdl::create_rect(50,50,20,20));
+	locations.push_back(sdl::create_rect(50,100,20,20));
+	locations.push_back(sdl::create_rect(50,150,20,20));
+	locations.push_back(sdl::create_rect(50,200,20,20));
+	locations.push_back(sdl::create_rect(50,250,20,20));
+	locations.push_back(sdl::create_rect(50,300,20,20));
 
-	locations2.push_back(create_rect(50,50,20,20));
-	locations2.push_back(create_rect(100,50,20,20));
-	locations2.push_back(create_rect(150,50,20,20));
-	locations2.push_back(create_rect(200,50,20,20));
-	locations2.push_back(create_rect(250,50,20,20));
-	locations2.push_back(create_rect(300,50,20,20));
+	locations2.push_back(sdl::create_rect(50,50,20,20));
+	locations2.push_back(sdl::create_rect(100,50,20,20));
+	locations2.push_back(sdl::create_rect(150,50,20,20));
+	locations2.push_back(sdl::create_rect(200,50,20,20));
+	locations2.push_back(sdl::create_rect(250,50,20,20));
+	locations2.push_back(sdl::create_rect(300,50,20,20));
 
 
 	target_store targets;

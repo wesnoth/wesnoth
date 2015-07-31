@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2015 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 namespace {
 class widget_finder {
 public:
-	widget_finder(gui::widget* w) : w_(w) {};
+	widget_finder(gui::widget* w) : w_(w) {}
 
 	bool operator()(const std::pair<int, gui::scrollpane::scrollpane_widget>& p)
 	{

@@ -1,6 +1,6 @@
 
 /*
-   Copyright (C) 2008 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ public:
 private:
 	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const = 0;
 	const char* name_;
-        friend class formula_debugger;
+	friend class formula_debugger;
 };
 
 typedef boost::shared_ptr<formula_expression> expression_ptr;

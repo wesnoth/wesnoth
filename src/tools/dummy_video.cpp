@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2015 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 /** @file */
 
 #include "../video.hpp"
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 
 static surface dummy_screen_surface(NULL);
 

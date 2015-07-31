@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Daniel Franke.
+   Copyright (C) 2009 - 2015 by Daniel Franke.
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,6 +13,8 @@
 */
 
 #include "save_blocker.hpp"
+#include <exception>
+#include <iostream>
 
 play_controller* save_blocker::controller_ = NULL;
 void (play_controller::*save_blocker::callback_)() = NULL;
@@ -23,11 +25,15 @@ save_blocker::save_blocker() {
 }
 
 save_blocker::~save_blocker() {
+	try {
 	unblock();
 	if(controller_ && callback_) {
 		(controller_->*callback_)();
 		controller_ = NULL;
 		callback_ = NULL;
+	}
+	} catch (std::exception & e) {
+		std::cerr << "Save blocker dtor swallowing an exception: " << e.what() << "\n";
 	}
 }
 

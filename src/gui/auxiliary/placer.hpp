@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,8 @@
 
 #include "global.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 struct tpoint;
 
@@ -50,21 +51,18 @@ struct tpoint;
 class tplacer_
 {
 public:
-
 	/***** ***** Types. ***** *****/
 
 	/** The direction the placer should grow towards. */
-	enum tgrow_direction
-	{
-		  horizontal
-		, vertical
+	enum tgrow_direction {
+		horizontal,
+		vertical
 	};
 
 
 	/***** ***** Constructor, destructor, assignment. ***** *****/
 
 public:
-
 	/**
 	 * Builder function.
 	 *
@@ -78,9 +76,8 @@ public:
 	 *                            only horizontally or vertically placed items
 	 *                            the value should be 1.
 	 */
-	static tplacer_* build(
-			  const tgrow_direction grow_direction
-			, const unsigned parallel_items);
+	static tplacer_* build(const tgrow_direction grow_direction,
+						   const unsigned parallel_items);
 
 	virtual ~tplacer_();
 
@@ -126,7 +123,8 @@ public:
 
 #include "utils/enumerate.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 ENUM_DECLARE_STREAM_OPERATORS(::gui2::tplacer_::tgrow_direction)
 

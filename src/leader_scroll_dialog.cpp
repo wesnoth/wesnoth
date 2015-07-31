@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,9 @@
 //#include "display.hpp"
 //#include "gettext.hpp"
 #include "marked-up_text.hpp"
+#include "resources.hpp"
+#include "unit.hpp"
+
 //
 //#include <boost/foreach.hpp>
 
@@ -59,7 +62,7 @@ void status_table(display& gui, int selected)
 	items.push_back(heading.str());
 
 	const gamemap& map = gui.get_map();
-	const unit_map& units = gui.get_const_units();
+	const unit_map& units = gui.get_units();
 	assert(&gui.get_teams() == resources::teams);
 	const std::vector<team>& teams = gui.get_teams();
 
@@ -85,7 +88,7 @@ void status_table(display& gui, int selected)
 
 		std::stringstream str;
 
-		const team_data data = calculate_team_data(teams[n],n+1);
+		const team_data data = gui.get_disp_context().calculate_team_data(teams[n],n+1);
 
 		unit_map::const_iterator leader = units.find_leader(n + 1);
 		std::string leader_name;
@@ -104,7 +107,7 @@ void status_table(display& gui, int selected)
 				leader_bools.push_back(false);
 				leader_name = "Unknown";
 			}
-	//	if (gamestate_.classification().campaign_type == "multiplayer")
+	//	if (gamestate_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)
 	//			leader_name = teams[n].current_player();
 
 #ifndef LOW_MEM
@@ -133,9 +136,9 @@ void status_table(display& gui, int selected)
 			str << utils::half_signed_value(data.gold) << COLUMN_SEPARATOR;
 		}
 		str << data.villages;
-                if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
-                        str << "/" << map.villages().size();
-                }
+		if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
+			str << "/" << map.villages().size();
+		}
 		str << COLUMN_SEPARATOR
 			<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
 			<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << utils::signed_value(data.net_income);
@@ -201,7 +204,7 @@ void scenario_settings_table(display& gui, int selected)
 	items.push_back(heading.str());
 
 	//const gamemap& map = gui.get_map();
-	const unit_map& units = gui.get_const_units();
+	const unit_map& units = gui.get_units();
 	const std::vector<team>& teams = gui.get_teams();
 
 	const team& viewing_team = teams[gui.viewing_team()];

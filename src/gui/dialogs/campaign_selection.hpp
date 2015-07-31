@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,31 +18,41 @@
 #include "gui/dialogs/dialog.hpp"
 
 #include "config.hpp"
+#include "game_initialization/create_engine.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-class tcampaign_selection
-	: public tdialog
+class tcampaign_selection : public tdialog
 {
 public:
-	explicit tcampaign_selection(const std::vector<config>& campaigns)
-		: campaigns_(campaigns)
-		, choice_(-1)
-
+	explicit tcampaign_selection(ng::create_engine& eng) :
+		engine_(eng),
+		choice_(-1),
+		deterministic_(false)
 	{
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	int get_choice() const { return choice_; }
+	int get_choice() const
+	{
+		return choice_;
+	}
+
+	bool get_deterministic() const
+	{
+		return deterministic_;
+	}
 
 private:
-
 	/** Called when another campaign is selected. */
 	void campaign_selected(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
+
+	void show_settings(CVideo& video);
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
@@ -50,11 +60,16 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	/** Contains the config objects for all campaigns. */
-	const std::vector<config> &campaigns_;
+
+	void mod_toggled(int id, twidget &);
+
+	ng::create_engine& engine_;
 
 	/** The chosen campaign. */
 	int choice_;
+
+	/** whether the player checked the "Deterministic" checkbox. */
+	bool deterministic_;
 };
 
 } // namespace gui2

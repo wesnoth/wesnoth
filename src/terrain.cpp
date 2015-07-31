@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -38,8 +38,10 @@ terrain_type::terrain_type() :
 		name_(),
 		editor_name_(),
 		description_(),
+		help_topic_text_(),
 		number_(t_translation::VOID_TERRAIN),
 		mvt_type_(1, t_translation::VOID_TERRAIN),
+		vision_type_(1, t_translation::VOID_TERRAIN),
 		def_type_(1, t_translation::VOID_TERRAIN),
 		union_type_(1, t_translation::VOID_TERRAIN),
 		height_adjust_(0),
@@ -61,19 +63,23 @@ terrain_type::terrain_type() :
 		overlay_(false),
 		combined_(false),
 		editor_default_base_(t_translation::VOID_TERRAIN),
+		hide_help_(false),
 		hide_in_editor_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg) :
+		icon_image_(cfg["icon_image"]),
 		minimap_image_(cfg["symbol_image"]),
 		minimap_image_overlay_(),
-		editor_image_(cfg["editor_image"]),
+		editor_image_(cfg["editor_image"].empty() ? "terrain/" + minimap_image_ + ".png" : "terrain/" + cfg["editor_image"].str() + ".png"),
 		id_(cfg["id"]),
 		name_(cfg["name"].t_str()),
 		editor_name_(cfg["editor_name"].t_str()),
 		description_(cfg["description"].t_str()),
+		help_topic_text_(cfg["help_topic_text"].t_str()),
 		number_(t_translation::read_terrain_code(cfg["string"])),
 		mvt_type_(),
+		vision_type_(),
 		def_type_(),
 		union_type_(),
 		height_adjust_(cfg["unit_height_adjust"]),
@@ -95,6 +101,7 @@ terrain_type::terrain_type(const config& cfg) :
 		overlay_(number_.base == t_translation::NO_LAYER),
 		combined_(false),
 		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"])),
+		hide_help_(cfg["hide_help"].to_bool(false)),
 		hide_in_editor_(cfg["hidden"].to_bool(false))
 {
 /**
@@ -115,14 +122,21 @@ terrain_type::terrain_type(const config& cfg) :
 #endif
 
 	if(editor_image_.empty()) {
-		editor_image_ = minimap_image_;
+		editor_image_ = "terrain/" + minimap_image_ + ".png";
+	}
+
+	if(hide_in_editor_) {
+		editor_image_ = "";
 	}
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
+	vision_type_.push_back(number_);
+
 	const t_translation::t_list& alias = t_translation::read_list(cfg["aliasof"]);
 	if(!alias.empty()) {
 		mvt_type_ = alias;
+		vision_type_ = alias;
 		def_type_ = alias;
 	}
 
@@ -135,8 +149,15 @@ terrain_type::terrain_type(const config& cfg) :
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}
+
+	const t_translation::t_list& vision_alias = t_translation::read_list(cfg["vision_alias"]);
+	if(!vision_alias.empty()) {
+		vision_type_ = vision_alias;
+	}
+
 	union_type_ = mvt_type_;
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
+	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
 	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
@@ -176,15 +197,18 @@ terrain_type::terrain_type(const config& cfg) :
 }
 
 terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay) :
+	icon_image_(),
 	minimap_image_(base.minimap_image_),
 	minimap_image_overlay_(overlay.minimap_image_),
-	editor_image_(overlay.editor_image_),
+	editor_image_(base.editor_image_ + "~BLIT(" + overlay.editor_image_ +")"),
 	id_(base.id_+"^"+overlay.id_),
 	name_(overlay.name_),
-	editor_name_(overlay.editor_name_),
+	editor_name_(base.editor_name_ + " / " + overlay.editor_name_),
 	description_(overlay.description()),
+	help_topic_text_(),
 	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
 	mvt_type_(overlay.mvt_type_),
+	vision_type_(overlay.vision_type_),
 	def_type_(overlay.def_type_),
 	union_type_(),
 	height_adjust_(base.height_adjust_),
@@ -206,6 +230,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	overlay_(false),
 	combined_(true),
 	editor_default_base_(),
+	hide_help_(base.hide_help_ || overlay.hide_help_),
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 {
 	if(description_.empty()) {
@@ -224,9 +249,11 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 
 	merge_alias_lists(mvt_type_, base.mvt_type_);
 	merge_alias_lists(def_type_, base.def_type_);
+	merge_alias_lists(vision_type_, base.vision_type_);
 
 	union_type_ = mvt_type_;
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
+	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
 	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
@@ -284,7 +311,8 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& castle_                == other.castle_
 		&& keep_                  == other.keep_
 		&& editor_default_base_   == other.editor_default_base_
-		&& hide_in_editor_        == other.hide_in_editor_;
+		&& hide_in_editor_        == other.hide_in_editor_
+		&& hide_help_             == other.hide_help_;
 }
 
 void create_terrain_maps(const config::const_child_itors &cfgs,
@@ -318,19 +346,17 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 				if(clean_merge) {
 					LOG_G << "Editor groups merged to: " << joined << "\n";
 				} else {
-					ERR_G << "Merged terrain " << terrain.number()
+					LOG_G << "Merged terrain " << terrain.number()
 					<< ": " << terrain.id() << " (" << terrain.name() << ") "
 					<< "with duplicate editor groups [" << terrain.editor_group() << "] "
 					<< "and [" << curr.editor_group() << "]\n";
 				}
 			} else {
-				ERR_G << "Duplicate terrain code definition found for " << terrain.number() << "\n";
-				ERR_G << "Failed to add terrain "
-					<< terrain.id() << " (" << terrain.name() << ") "
-					<< "[" << terrain.editor_group() << "]" << "\n";
-				ERR_G << "which conflicts with  "
-					<< curr.id() << " (" << curr.name() << ") "
-					<< "[" << curr.editor_group() << "]" << "\n";
+				ERR_G << "Duplicate terrain code definition found for " << terrain.number() << "\n"
+					<< "Failed to add terrain " << terrain.id() << " (" << terrain.name() << ") "
+					<< "[" << terrain.editor_group() << "]" << "\n"
+					<< "which conflicts with  " << curr.id() << " (" << curr.name() << ") "
+					<< "[" << curr.editor_group() << "]" << "\n\n";
 			}
 		} else {
 			terrain_list.push_back(terrain.number());

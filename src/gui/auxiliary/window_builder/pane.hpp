@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,12 +18,13 @@
 #include "gui/auxiliary/placer.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_pane
-	: public tbuilder_widget
+struct tbuilder_pane : public tbuilder_widget
 {
 	explicit tbuilder_pane(const config& cfg);
 

@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,9 +16,10 @@
 #ifndef CALLABLE_OBJECTS_HPP_INCLUDED
 #define CALLABLE_OBJECTS_HPP_INCLUDED
 
-
+#include "formula_callable.hpp"
 #include "map.hpp"
 #include "team.hpp"
+#include "unit.hpp"
 
 #define CALLABLE_WRAPPER_START(klass) \
 class klass##_callable : public game_logic::formula_callable { \
@@ -44,12 +46,12 @@ public: \
 		return variant(object_.VAR); \
 	} else
 
-#define CALLABLE_WRAPPER_FN(VAR) \
+#define CALLABLE_WRAPPER_FN2(VAR, FN) \
 	if(key == #VAR) { \
-		return variant(object_.VAR()); \
+		return variant(object_.FN()); \
 	} else
 
-
+#define CALLABLE_WRAPPER_FN(VAR) CALLABLE_WRAPPER_FN2(VAR, VAR)
 
 #define CALLABLE_WRAPPER_END \
 		{ return variant(); } \
@@ -73,7 +75,7 @@ public:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
-        int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
 private:
 	const location loc_;
 	const terrain_type &t_;
@@ -143,8 +145,8 @@ private:
 class unit_callable : public game_logic::formula_callable {
 public:
 	typedef map_location location;
-	unit_callable(const std::pair<location, unit>& pair)
-	  : loc_(pair.first), u_(pair.second)
+	unit_callable(const location& loc, const unit& u)
+		: loc_(loc), u_(u)
 	{
 		type_ = UNIT_C;
 	}
@@ -204,8 +206,8 @@ CALLABLE_WRAPPER_FN(base_income)
 CALLABLE_WRAPPER_FN(village_gold)
 CALLABLE_WRAPPER_FN(village_support)
 CALLABLE_WRAPPER_FN(name)
-CALLABLE_WRAPPER_FN(is_human)
-CALLABLE_WRAPPER_FN(is_ai)
+CALLABLE_WRAPPER_FN2(is_human, is_local_human)
+CALLABLE_WRAPPER_FN2(is_ai, is_local_ai)
 CALLABLE_WRAPPER_FN(is_network)
 CALLABLE_WRAPPER_END
 

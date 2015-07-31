@@ -49,15 +49,11 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制的奇幻策略
 \fB\-\-campaign\-scenario <id_scenario>\fP
 指定战役中的场景ID。默认为第一个场景。
 .TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-设置用户配置目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
-Games）”下的\fIname\fP目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME或者“My Documents\eMy Games”之外。
-.TP 
-\fB\-\-config\-path\fP
-输出用户配置目录的路径并退出。
-.TP 
 \fB\-\-data\-dir <directory>\fP
 使用指定的目录作为数据目录
+.TP 
+\fB\-\-data\-path\fP
+打印游戏数据目录的路径并退出。
 .TP 
 \fB\-d, \-\-debug\fP
 在游戏中启用附加的命令模式选项。（关于命令模式的更多信息请参阅wiki页面：http://www.wesnoth.org/wiki/CommandMode）
@@ -112,20 +108,13 @@ Games）”下的\fIname\fP目录。也可以为配置目录指定一条绝对�
 显示游戏数据目录的名称并退出。
 .TP 
 \fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
-http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
+预处理所指定的文件/文件夹。这些文件将被写入所指定的目标目录：包括一个普通的cfg文件和一个处理过的cfg文件。如果指定的是个文件夹，那么将根据已知的预处理器规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处理。例如：
+\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
+有关预处理器的详情请见：http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
 \fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+由逗号分隔的定义列表，用于“\-\-preprocess”指令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
 .TP 
 \fB\-\-preprocess\-input\-macros <source file>\fP
 仅供“\-\-preprocess“命令使用。用于指定一个包含了[preproce_defines]区块的文件，其中的定义将在预处理开始前生效。
@@ -140,18 +129,32 @@ preprocessed.
 如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例如：\fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+在连接服务器时使用<username>，忽略其他首选项。
 .TP 
 \fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+在连接服务器时使用<password>，忽略其他首选项。不安全。
 .TP 
 \fB\-\-strict\-validation\fP
 将验证错误视为致命错误。
 .TP 
 \fB\-t, \-\-test\fP
 使用一个小测试场景启动游戏。
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+设置用户配置目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
+Games）”下的\fIname\fP目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME或者“My Documents\eMy
+Games”之外。在X11下，配置目录默认为$XDG_CONFIG_HOME或者$HOME/.config/wesnoth。在其他系统上，配置目录默认为用户数据目录。
+.TP 
+\fB\-\-userconfig\-path\fP
+输出用户配置目录的路径并退出。
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+打印用户数据目录的路径并退出。
 .TP 
 \fB\-\-validcache\fP
 假定缓存是有效的。（因此不进行缓存验证，危险）
@@ -185,7 +188,10 @@ preferences. Unsafe.
 当场景结束时直接退出游戏而不显示需要用户点击“确认”按钮的胜利/失败对话框。这个选项也可以用来进行脚本化的性能基准测试。
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+不使用地图设置，而使用默认值。
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+重复进行多人游戏\fIvalue\fP次。最好与\fB\-\-nogui\fP同用于可脚本化的性能测试。
 .TP 
 \fB\-\-nogui\fP
 启动游戏，但不启用图形用户界面（GUI）。此选项必须在\fB\-\-multiplayer\fP之前使用才有效。
@@ -220,7 +226,7 @@ Soliton <soliton.de@gmail.com> 编辑。
 .
 .SH 版权
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2013 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

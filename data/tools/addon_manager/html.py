@@ -1,5 +1,5 @@
 # encoding: utf8
-import time, os, glob, sys
+import time, os, glob, sys, re
 from subprocess import Popen
 
 def output(path, url, data):
@@ -13,7 +13,9 @@ def output(path, url, data):
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">""")
+    w("<title>Add-ons for Wesnoth %s</title>" % os.path.basename(path))
+    w("""\
 <link rel=stylesheet href="style.css" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="tablesorter.js"></script>
@@ -76,6 +78,7 @@ Select the add-on you want to install from the list and click "OK". The download
             icon = icon.strip()
             tilde = icon.find("~")
             if tilde >= 0: icon = icon[:tilde]
+            if "\\" in icon: icon = icon.replace("\\", "/")
             try: os.mkdir(path + "/icons")
             except OSError: pass
             if "." not in icon: icon += ".png"
@@ -105,6 +108,10 @@ After install the scenario will show up in the list you get when choosing "Campa
             w("""\
 <td>Campaign<div class="type"><b>single player campaign</b><br/>
 After install the campaign will show up in the list you get when choosing "Campaign" in the main menu.</div></td>""")
+        elif type == "campaign_sp_mp":
+            w("""\
+<td>SP/SP Campaign<div class="type"><b>single/multi player campaign</b><br />
+After install the campaign will show up both in the list you get when choosing "Campaign" in the main menu, and in the map list in the multiplayer "Create Game" dialog.</div></td>""")
         elif type == "campaign_mp":
             w("""\
 <td>MP Campaign<div class="type"><b>multiplayer campaign</b><br/>
@@ -125,15 +132,23 @@ After install the included era(s) will be available in the multiplayer "Create G
             w("""\
 <td>MP faction<div class="type"><b>multiplayer faction</b><br/>
 Usually comes with an era or is dependency of another add-on.</div></td>""")
+        elif type == "mod_mp":
+            w("""\
+<td>MP modification<div class="type"><b>multiplayer modification</b><br />
+After install the included MP gameplay modification(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
         elif type == "media":
             w("""\
 <td>Resources<div class="type"><b>miscellaneous content/media</b><br/>
-unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div></td>""")
+Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div></td>""")
         else: w(('<td>%s</td>') % type)
         w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
             ) % (icon, imgurl))
-        w('<div class="desc"><b>%s</b><br/>%s</div></td>' % (
-            name, v("description", "(no description)")))
+        described = v("description", "(no description)")
+        if described != "(no description)":
+            described = re.sub(r'(?<![">])http://([\w/=%~-]|[.?&]\w)+', r'<a href="\g<0>">\g<0></a>', described)
+            described = re.sub(r'(?<![\w>"/])(forums?|r|R|wiki)\.wesnoth\.org([\w/=%~-]|[.?&]\w)*', r'<a href="http://\g<0>">\g<0></a>', described)
+        w('<div class="desc"><b>%s</b><pre>%s</pre></div></td>' % (
+            name, described))
         w("<td><b>%s</b><br/>" % name)
         w("Version: %s<br/>" % v("version", "unknown"))
         w("Author: %s</td>" % v("author", "unknown"))
@@ -160,7 +175,7 @@ unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
 </div>
 <div id="footer">
 <p><a href="http://www.wesnoth.org/wiki/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2013 The Battle for Wesnoth</p>
+<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003&#8211;2015 The Battle for Wesnoth</p>
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
 </div>
 </body></html>""")

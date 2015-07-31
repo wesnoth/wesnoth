@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Bartosz Waresiak <dragonking@o2.pl>
+   Copyright (C) 2009 - 2015 by Bartosz Waresiak <dragonking@o2.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,6 +14,7 @@
 
 #include "ai.hpp"
 #include "../../attack_prediction.hpp"
+#include "../../game_board.hpp"
 #include "callable_objects.hpp"
 #include "../../resources.hpp"
 
@@ -200,7 +201,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 
 	for(int n = 0; n != 6; ++n) {
 		/* if adjacent tile is outside the board */
-		if (! resources::game_map->on_board(adj[n]))
+		if (! resources::gameboard->map().on_board(adj[n]))
 			continue;
 		unit_map::const_iterator unit = units_.find(adj[n]);
 		/* if tile is empty */

@@ -15,6 +15,8 @@
  * strict type-checking.. See the
  * "unnecessary" pointer comparison.
  */
+
+//NOTE: cppcheck reports memory leaks in this program
 #define max(x,y) ({ \
 	typeof(x) _x = (x);	\
 	typeof(y) _y = (y);	\

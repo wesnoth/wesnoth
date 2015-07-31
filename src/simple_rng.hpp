@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Yann Dirson <ydirson@altern.org>
+   Copyright (C) 2005 - 2015 by Yann Dirson <ydirson@altern.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -56,7 +56,7 @@ private:
 	int random_seed_;
 
 	/** State for the random pool (modulo arithmetic). */
-	unsigned random_pool_;
+	unsigned long random_pool_;
 
 	/** Number of time a random number is generated. */
 	unsigned random_calls_;

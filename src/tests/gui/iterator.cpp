@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -269,7 +269,7 @@ BOOST_AUTO_TEST_CASE(test_gui2_iterator)
 	cache.add_define("EDITOR");
 	cache.add_define("MULTIPLAYER");
 
-	lg::set_log_domain_severity("gui/iterator", 3); // FIXME get_severity or something like it
+	lg::set_log_domain_severity("gui/iterator", lg::debug);
 	lg::timestamps(false);
 
 	std::stringstream sstr;

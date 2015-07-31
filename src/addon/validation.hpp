@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+                 2008 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,8 +40,10 @@ extern const unsigned short default_campaignd_port;
  */
 enum ADDON_TYPE {
 	ADDON_UNKNOWN,		/**< a.k.a. anything. */
+	ADDON_CORE,			/**< Total Conversion Core. */
 	ADDON_SP_CAMPAIGN,	/**< Single-player campaign. */
 	ADDON_SP_SCENARIO,	/**< Single-player scenario. */
+	ADDON_SP_MP_CAMPAIGN, /**< Hybrid campaign. */
 	ADDON_MP_CAMPAIGN,	/**< Multiplayer campaign. */
 	ADDON_MP_SCENARIO,	/**< Multiplayer scenario. */
 	ADDON_MP_MAPS,		/**< Multiplayer plain (no WML) map pack. */
@@ -58,8 +60,10 @@ enum ADDON_TYPE {
 ADDON_TYPE get_addon_type(const std::string& str);
 std::string get_addon_type_string(ADDON_TYPE type);
 
-/** Checks whether an add-on name is legal or not. */
+/** Checks whether an add-on id/name is legal or not. */
 bool addon_name_legal(const std::string& name);
+/** Checks whether an add-on file name is legal or not. */
+bool addon_filename_legal(const std::string& name);
 /** Probes an add-on archive for illegal names. */
 bool check_names_legal(const config& dir);
 

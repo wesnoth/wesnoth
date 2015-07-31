@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #define WB_RECALL_HPP_
 
 #include "action.hpp"
+#include "map_location.hpp"
 
 namespace wb
 {
@@ -61,7 +62,7 @@ public:
 	virtual map_location get_numbering_hex() const { return recall_hex_; }
 
 	/** @return pointer to a copy of the recall unit. */
-	virtual unit* get_unit() const { return temp_unit_.get(); }
+	virtual unit_ptr get_unit() const { return temp_unit_; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -81,7 +82,7 @@ private:
 	virtual void do_hide();
 	virtual void do_show();
 
-	std::auto_ptr<unit> temp_unit_;
+	unit_ptr temp_unit_;
 	map_location recall_hex_;
 	fake_unit_ptr fake_unit_;
 };

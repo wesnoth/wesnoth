@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,17 +31,17 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
-#include "hotkeys.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/math/common_factor_rt.hpp>
 
 namespace preferences {
 
-display* disp = NULL;
+static display* disp = NULL;
 
 display_manager::display_manager(display* d)
 {
@@ -68,25 +68,31 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 	resolution = preferences::resolution();
 
 	int DefaultBPP = 24;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	/* This needs to be fixed properly. */
 	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
 	if(video_info != NULL && video_info->vfmt != NULL) {
 		DefaultBPP = video_info->vfmt->BitsPerPixel;
 	}
+#endif
 
 	std::cerr << "Checking video mode: " << resolution.first << 'x'
 		<< resolution.second << 'x' << DefaultBPP << "...\n";
 
 	typedef std::pair<int, int> res_t;
-	std::vector<res_t> res_list;
-	res_list.push_back(res_t(1024, 768));
-	res_list.push_back(res_t(1024, 600));
-	res_list.push_back(res_t(800, 600));
-	res_list.push_back(res_t(800, 480));
+	std::vector<res_t> res_list = video.get_available_resolutions();
+	if (res_list.empty()) {
+		res_list.push_back(res_t(800, 480));
+		res_list.push_back(res_t(800, 600));
+		res_list.push_back(res_t(1024, 600));
+		res_list.push_back(res_t(1024, 768));
+		res_list.push_back(res_t(1920, 1080));
+	}
 
 	bpp = video.modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags, true);
 
-	BOOST_FOREACH(const res_t &res, res_list)
+	BOOST_REVERSE_FOREACH(const res_t &res, res_list)
 	{
 		if (bpp != 0) break;
 		std::cerr << "Video mode " << resolution.first << 'x'
@@ -134,10 +140,11 @@ void set_fullscreen(CVideo& video, const bool ison)
 
 void set_fullscreen(bool ison)
 {
-	_set_fullscreen(ison);
-
 	if(disp != NULL) {
 		set_fullscreen(disp->video(), ison);
+	} else {
+		// Only change the config value.
+		_set_fullscreen(ison);
 	}
 }
 
@@ -150,12 +157,9 @@ void set_resolution(const std::pair<int,int>& resolution)
 	if(disp) {
 		set_resolution(disp->video(), resolution.first, resolution.second);
 	} else {
-		/* This part is needed when wesnoth is started with the -r parameter. */
-		const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-		preferences::set(
-				'x' + postfix, lexical_cast<std::string>(resolution.first));
-		preferences::set(
-				'y' + postfix, lexical_cast<std::string>(resolution.second));
+		// Only change the config value. This part is needed when wesnoth is
+		// started with the -r parameter.
+		_set_resolution(resolution);
 	}
 }
 
@@ -164,7 +168,7 @@ bool set_resolution(CVideo& video
 {
 	SDL_Rect rect;
 	SDL_GetClipRect(video.getSurface(), &rect);
-	if(rect.w == width && rect.h == height) {
+	if(static_cast<unsigned int> (rect.w) == width && static_cast<unsigned int>(rect.h) == height) {
 		return true;
 	}
 
@@ -184,9 +188,7 @@ bool set_resolution(CVideo& video
 		return false;
 	}
 
-	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-	preferences::set('x' + postfix, lexical_cast<std::string>(width));
-	preferences::set('y' + postfix, lexical_cast<std::string>(height));
+	_set_resolution(std::make_pair(width, height));
 
 	return true;
 }
@@ -245,7 +247,7 @@ void set_idle_anim_rate(int rate) {
 }
 
 namespace {
-class escape_handler : public events::handler {
+class escape_handler : public events::sdl_handler {
 public:
 	escape_handler() : escape_pressed_(false) {}
 	bool escape_pressed() const { return escape_pressed_; }
@@ -258,99 +260,42 @@ private:
 } // end anonymous namespace
 
 
-bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs)
-{
-	return lhs.first*lhs.second < rhs.first*rhs.second;
-}
-
 bool show_video_mode_dialog(display& disp)
 {
 	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
-	CVideo& video = disp.video();
+	std::vector<std::pair<int,int> > resolutions
+			= disp.video().get_available_resolutions();
 
-	SDL_PixelFormat format = *video.getSurface()->format;
-	format.BitsPerPixel = video.getBpp();
+	if(resolutions.empty()) {
+		gui2::show_transient_message(
+				disp.video()
+				, ""
+				, _("There are no alternative video modes available"));
 
-	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
-
-	// The SDL documentation says that a return value of -1
-	// means that all dimensions are supported/possible.
-	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
-		std::cerr << "Can support any video mode\n";
-		// SDL says that all modes are possible, so it's OK to use a
-		// hardcoded list here. Include tiny and small gui since they
-		// will be filtered out later if not needed.
-		static const SDL_Rect scr_modes[] = {
-			{ 0, 0,  800, 480  },	// small-gui (EeePC resolution)
-			{ 0, 0,  800, 600  },
-			{ 0, 0, 1024, 600  },	// used on many netbooks
-			{ 0, 0, 1024, 768  },
-			{ 0, 0, 1280, 960  },
-			{ 0, 0, 1280, 1024 },
-			{ 0, 0, 1366, 768  },	// 16:9 notebooks
-			{ 0, 0, 1440, 900  },
-			{ 0, 0, 1440, 1200 },
-			{ 0, 0, 1600, 1200 },
-			{ 0, 0, 1680, 1050 },
-			{ 0, 0, 1920, 1080 },
-			{ 0, 0, 1920, 1200 },
-			{ 0, 0, 2560, 1600 }
-		};
-		static const SDL_Rect * const scr_modes_list[] = {
-			&scr_modes[0],
-			&scr_modes[1],
-			&scr_modes[2],
-			&scr_modes[3],
-			&scr_modes[4],
-			&scr_modes[5],
-			&scr_modes[6],
-			&scr_modes[7],
-			&scr_modes[8],
-			&scr_modes[9],
-			&scr_modes[10],
-			&scr_modes[11],
-			&scr_modes[12],
-			&scr_modes[13],
-			NULL
-		};
-
-		modes = scr_modes_list;
-	} else if(modes == NULL) {
-		std::cerr << "No modes supported\n";
-		gui2::show_transient_message(disp.video(),"",_("There are no alternative video modes available"));
 		return false;
 	}
 
-	std::vector<std::pair<int,int> > resolutions;
-
-	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= min_allowed_width() && modes[i]->h >= min_allowed_height()) {
-			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));
-		}
-	}
-
-	const std::pair<int,int> current_res(video.getSurface()->w,video.getSurface()->h);
-	resolutions.push_back(current_res);
-
-	std::sort(resolutions.begin(),resolutions.end(),compare_resolutions);
-	resolutions.erase(std::unique(resolutions.begin(),resolutions.end()),resolutions.end());
+	const std::pair<int,int> current_res(
+			  disp.video().getSurface()->w
+			, disp.video().getSurface()->h);
 
 	std::vector<std::string> options;
 	unsigned current_choice = 0;
 
 	for(size_t k = 0; k < resolutions.size(); ++k) {
 		std::pair<int, int> const& res = resolutions[k];
-		std::ostringstream option;
 
 		if (res == current_res)
 			current_choice = static_cast<unsigned>(k);
 
+		std::ostringstream option;
 		option << res.first << utils::unicode_multiplication_sign << res.second;
-		/*widescreen threshold is 16:10*/
-		if (static_cast<double>(res.first)/res.second >= 16.0/10.0)
-		  option << _(" (widescreen)");
+		const int div = boost::math::gcd(res.first, res.second);
+		const int ratio[2] = {res.first/div, res.second/div};
+		if (ratio[0] <= 10 || ratio[1] <= 10)
+			option << " (" << ratio[0] << ':' << ratio[1] << ')';
 		options.push_back(option.str());
 	}
 

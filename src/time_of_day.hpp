@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@ class config;
 /** Small struct to store and manipulate ToD colors */
 
 struct tod_color{
-	tod_color(int red = 0, int green = 0, int blue = 0) : r(red), g(green), b(blue) {}
+	explicit tod_color(int red = 0, int green = 0, int blue = 0) : r(red), g(green), b(blue) {}
 	bool operator==(const tod_color& o) const { return r == o.r && g == o.g && b == o.b; }
 	bool is_zero() const { return r == 0 && g == 0 && b == 0; }
 	bool operator!=(const tod_color& o) const { return !operator==(o); }
@@ -53,7 +53,7 @@ struct time_of_day
 	 * getters for properties that would emit a warning when such an object
 	 * is actually used, but it does not seem necessary at the moment.
 	 */
-	explicit time_of_day();
+	time_of_day();
 
 	/** Construct a time of day from config */
 	explicit time_of_day(const config& cfg);
@@ -73,6 +73,7 @@ struct time_of_day
 	/** The image to be displayed in the game status. */
 	std::string image;
 	t_string name;
+	t_string description;
 	std::string id;
 
 	/**

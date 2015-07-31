@@ -1,6 +1,6 @@
 /*
 
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 
 #include "widgets/widget.hpp"
 #include "video.hpp"
+#include "sdl/rect.hpp"
 #include "tooltips.hpp"
 
 #include <cassert>
@@ -32,7 +33,7 @@ namespace gui {
 bool widget::mouse_lock_ = false;
 
 widget::widget(const widget &o)
-	: events::handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
+	: events::sdl_handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
 	   needs_restore_(o.needs_restore_), state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
 	  help_text_(o.help_text_), tooltip_text_(o.tooltip_text_), help_string_(o.help_string_), id_(o.id_), mouse_lock_local_(o.mouse_lock_local_)
@@ -40,7 +41,7 @@ widget::widget(const widget &o)
 }
 
 widget::widget(CVideo& video, const bool auto_join)
-	: handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
+	: sdl_handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
 	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
 	  clip_rect_(EmptyRect), volatile_(false), help_string_(0), mouse_lock_local_(false)
 {
@@ -112,22 +113,22 @@ void widget::bg_register(SDL_Rect const &rect)
 
 void widget::set_location(int x, int y)
 {
-	set_location(create_rect(x, y, rect_.w, rect_.h));
+	set_location(sdl::create_rect(x, y, rect_.w, rect_.h));
 }
 
 void widget::set_width(unsigned w)
 {
-	set_location(create_rect(rect_.x, rect_.y, w, rect_.h));
+	set_location(sdl::create_rect(rect_.x, rect_.y, w, rect_.h));
 }
 
 void widget::set_height(unsigned h)
 {
-	set_location(create_rect(rect_.x, rect_.y, rect_.w, h));
+	set_location(sdl::create_rect(rect_.x, rect_.y, rect_.w, h));
 }
 
 void widget::set_measurements(unsigned w, unsigned h)
 {
-	set_location(create_rect(rect_.x, rect_.y, w, h));
+	set_location(sdl::create_rect(rect_.x, rect_.y, w, h));
 }
 
 unsigned widget::width() const
@@ -197,7 +198,7 @@ void widget::set_clip_rect(const SDL_Rect& rect)
 bool widget::hidden() const
 {
 	return (state_ == HIDDEN || hidden_override_ || state_ == UNINIT
-		|| (clip_ && !rects_overlap(clip_rect_, rect_)));
+		|| (clip_ && !sdl::rects_overlap(clip_rect_, rect_)));
 }
 
 void widget::enable(bool new_val)
@@ -322,7 +323,7 @@ void widget::set_tooltip_string(const std::string& str)
 
 void widget::process_help_string(int mousex, int mousey)
 {
-	if (!hidden() && point_in_rect(mousex, mousey, rect_)) {
+	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
 		if(help_string_ == 0 && help_text_ != "") {
 			//std::cerr << "setting help string to '" << help_text_ << "'\n";
 			help_string_ = video().set_help_string(help_text_);
@@ -335,7 +336,7 @@ void widget::process_help_string(int mousex, int mousey)
 
 void widget::process_tooltip_string(int mousex, int mousey)
 {
-	if (!hidden() && point_in_rect(mousex, mousey, rect_)) {
+	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
 		if (!tooltip_text_.empty())
 			tooltips::add_tooltip(rect_, tooltip_text_ );
 	}

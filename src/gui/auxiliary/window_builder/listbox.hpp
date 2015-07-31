@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,16 +19,19 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_listbox
-	: public tbuilder_control
+struct tbuilder_listbox : public tbuilder_control
 {
 	explicit tbuilder_listbox(const config& cfg);
 
-	twidget* build () const;
+	using tbuilder_control::build;
+
+	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
@@ -45,6 +48,8 @@ struct tbuilder_listbox
 	 * serialize the data in the config, so the config is no longer required.
 	 */
 	std::vector<string_map> list_data;
+
+	bool has_minimum_, has_maximum_;
 };
 
 } // namespace implementation
@@ -52,4 +57,3 @@ struct tbuilder_listbox
 } // namespace gui2
 
 #endif
-

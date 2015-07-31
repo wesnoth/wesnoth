@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "formula_function.hpp"
+#include "log.hpp"
 
 #include <cmath>
 
@@ -34,11 +35,14 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 				.evaluate().as_string()
 			, "world");
 
+	lg::set_log_domain_severity("scripting/formula", lg::err);
+
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 11)")
 				.evaluate().as_string()
 			, "");
 
+	lg::set_log_domain_severity("scripting/formula", lg::debug);
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', -1)")
@@ -55,21 +59,28 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 				.evaluate().as_string()
 			, "hello world");
 
+	lg::set_log_domain_severity("scripting/formula", lg::err);
+
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', -12)")
 				.evaluate().as_string()
 			, "hello world");
 
+	lg::set_log_domain_severity("scripting/formula", lg::debug);
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 0, 0)")
 				.evaluate().as_string()
 			, "");
 
+	lg::set_log_domain_severity("scripting/formula", lg::err.get_severity() - 1); // Don't log anything
+
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 0, -1)")
 				.evaluate().as_string()
 			, "");
+
+	lg::set_log_domain_severity("scripting/formula", lg::debug);
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 5, 1)")

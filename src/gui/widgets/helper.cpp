@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,18 +18,22 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/settings.hpp"
+#include "sdl/rect.hpp"
 
 #include "formula_string_utils.hpp"
 
 #include "SDL_ttf.h"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace {
-	static bool initialized_ = false;
+namespace
+{
+static bool initialized_ = false;
 }
 
-bool init() {
+bool init()
+{
 	if(initialized_) {
 		return true;
 	}
@@ -43,7 +47,7 @@ bool init() {
 
 SDL_Rect create_rect(const tpoint& origin, const tpoint& size)
 {
-	return ::create_rect(origin.x, origin.y, size.x, size.y);
+	return sdl::create_rect(origin.x, origin.y, size.x, size.y);
 }
 
 unsigned decode_font_style(const std::string& style)
@@ -58,19 +62,21 @@ unsigned decode_font_style(const std::string& style)
 		return TTF_STYLE_NORMAL;
 	}
 
-	ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead.\n";
+	ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead."
+			  << std::endl;
 
 	return TTF_STYLE_NORMAL;
 }
 
-Uint32 decode_color(const std::string& color)
+boost::uint32_t decode_color(const std::string& color)
 {
 	std::vector<std::string> fields = utils::split(color);
 
 	// make sure we have four fields
-	while(fields.size() < 4) fields.push_back("0");
+	while(fields.size() < 4)
+		fields.push_back("0");
 
-	Uint32 result = 0;
+	boost::uint32_t result = 0;
 	for(int i = 0; i < 4; ++i) {
 		// shift the previous value before adding, since it's a nop on the
 		// first run there's no need for an if.
@@ -89,8 +95,8 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 		return PANGO_ALIGN_RIGHT;
 	} else {
 		if(!alignment.empty() && alignment != "left") {
-			ERR_GUI_E << "Invalid text alignment '"
-					<< alignment << "' falling back to 'left'.\n";
+			ERR_GUI_E << "Invalid text alignment '" << alignment
+					  << "' falling back to 'left'.\n";
 		}
 		return PANGO_ALIGN_LEFT;
 	}
@@ -99,12 +105,16 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 std::string encode_text_alignment(const PangoAlignment alignment)
 {
 	switch(alignment) {
-		case PANGO_ALIGN_LEFT:   return "left";
-		case PANGO_ALIGN_RIGHT:  return "right";
-		case PANGO_ALIGN_CENTER: return "center";
+		case PANGO_ALIGN_LEFT:
+			return "left";
+		case PANGO_ALIGN_RIGHT:
+			return "right";
+		case PANGO_ALIGN_CENTER:
+			return "center";
 	}
 	assert(false);
-	//FIXME: without this "control reaches end of non-void function" in release mode
+	// FIXME: without this "control reaches end of non-void function" in release
+	// mode
 	throw "Control should not reach this point.";
 }
 
@@ -113,7 +123,8 @@ t_string missing_widget(const std::string& id)
 	utils::string_map symbols;
 	symbols["id"] = id;
 
-	return t_string(vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
+	return t_string(
+			vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
 }
 
 void get_screen_size_variables(game_logic::map_formula_callable& variable)
@@ -147,4 +158,3 @@ std::string debug_truncate(const std::string& text)
 }
 
 } // namespace gui2
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,7 +33,8 @@
 
 #include <boost/static_assert.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Abstract base class for the fields.
@@ -45,7 +46,6 @@ namespace gui2 {
 class tfield_
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -54,13 +54,13 @@ public:
 	 * @param mandatory           Is the widget mandatory
 	 */
 	tfield_(const std::string& id, const bool mandatory)
-		: id_(id)
-		, mandatory_(mandatory)
-		, widget_(NULL)
+		: id_(id), mandatory_(mandatory), widget_(NULL)
 	{
 	}
 
-	virtual ~tfield_() {}
+	virtual ~tfield_()
+	{
+	}
 
 	/**
 	 * Attaches the field to a window.
@@ -131,8 +131,6 @@ public:
 	 * Detaches the field from a window.
 	 *
 	 * @pre widget_ != NULL || !mandatory_
-	 *
-	 * @param window               The window to be attached to.
 	 */
 	void detach_from_window()
 	{
@@ -165,7 +163,8 @@ public:
 	 * Enables a widget.
 	 *
 	 * @param window              The window containing the widget.
-	 * @param enable              If true enables the widget, disables otherwise.
+	 * @param enable              If true enables the widget, disables
+	 *                            otherwise.
 	 * @param sync                If the state is changed do we need to
 	 *                            synchronize. Upon disabling, write the value
 	 *                            of the widget in the variable value_. Upon
@@ -174,14 +173,13 @@ public:
 	 */
 	void widget_set_enabled(twindow& window, const bool enable, const bool sync)
 	{
-		tcontrol* widget =
-			dynamic_cast<tcontrol*>(window.find(id(), false));
+		tcontrol* widget = dynamic_cast<tcontrol*>(window.find(id(), false));
 
 		if(!widget) {
 			return;
 		}
 
-		const bool widget_state =  widget->get_active();
+		const bool widget_state = widget->get_active();
 		if(widget_state == enable) {
 			return;
 		}
@@ -199,9 +197,15 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	const std::string& id() const { return id_; }
+	const std::string& id() const
+	{
+		return id_;
+	}
 
-	bool is_mandatory() const { return mandatory_; }
+	bool is_mandatory() const
+	{
+		return mandatory_;
+	}
 
 	tcontrol* widget()
 	{
@@ -227,23 +231,27 @@ private:
 	virtual void init_generic(twindow& window) = 0;
 
 	/** See widget_init. */
-	virtual void init_specialized(twindow& /*window*/) {}
+	virtual void init_specialized(twindow& /*window*/)
+	{
+	}
 
 
 	/** See widget_finalize. */
 	virtual void finalize_generic(twindow& window) = 0;
 
 	/** See widget_finalize. */
-	virtual void finalize_specialized(twindow& /*window*/) {}
+	virtual void finalize_specialized(twindow& /*window*/)
+	{
+	}
 };
 
 /**
  * Template class to implement the generic field implementation.
  *
- * @param T                       The type of the item to show in the widget.
- * @param W                       The type of widget to show, this is not a
+ * @tparam T                      The type of the item to show in the widget.
+ * @tparam W                      The type of widget to show, this is not a
  *                                widget class but a behavior class.
- * @param CT                      The type tp be used in the
+ * @tparam CT                     The type tp be used in the
  *                                callback_save_value callback. Normally this
  *                                is const T but for example with strings it
  *                                can be const T&. Note the const needs to be
@@ -251,10 +259,10 @@ private:
  *                                GCC-4.3 fails (not sure whether compiler bug
  *                                or not).
  */
-template<class T, class W, class CT> class tfield : public tfield_
+template <class T, class W, class CT>
+class tfield : public tfield_
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -272,14 +280,14 @@ public:
 	 *                            is closed with OK.
 	 */
 	tfield(const std::string& id,
-			const bool mandatory,
-			const boost::function<T ()>& callback_load_value,
-			const boost::function<void (CT)>& callback_save_value) :
-		tfield_(id, mandatory),
-		value_(T()),
-		link_(value_),
-		callback_load_value_(callback_load_value),
-		callback_save_value_(callback_save_value)
+		   const bool mandatory,
+		   const boost::function<T()>& callback_load_value,
+		   const boost::function<void(CT)>& callback_save_value)
+		: tfield_(id, mandatory)
+		, value_(T())
+		, link_(value_)
+		, callback_load_value_(callback_load_value)
+		, callback_save_value_(callback_save_value)
 	{
 		BOOST_STATIC_ASSERT((!boost::is_same<tcontrol, W>::value));
 	}
@@ -298,14 +306,12 @@ public:
 	 *                                the widget.
 	 *                              * else, its value is undefined.
 	 */
-	tfield(const std::string& id
-			, const bool mandatory
-			, T& linked_variable)
+	tfield(const std::string& id, const bool mandatory, T& linked_variable)
 		: tfield_(id, mandatory)
 		, value_(T())
 		, link_(linked_variable)
-		, callback_load_value_(boost::function<T ()>())
-		, callback_save_value_(boost::function<void (CT)>())
+		, callback_load_value_(boost::function<T()>())
+		, callback_save_value_(boost::function<void(CT)>())
 	{
 		BOOST_STATIC_ASSERT((!boost::is_same<tcontrol, W>::value));
 	}
@@ -327,14 +333,12 @@ public:
 	 *                            A widget can only be connected once.
 	 * @param value               The value of the widget.
 	 */
-	tfield(const std::string& id
-			, const bool mandatory
-			, const T& value)
+	tfield(const std::string& id, const bool mandatory, const T& value)
 		: tfield_(id, mandatory)
 		, value_(value)
 		, link_(value_)
-		, callback_load_value_(boost::function<T ()>())
-		, callback_save_value_(boost::function<void (CT)>())
+		, callback_load_value_(boost::function<T()>())
+		, callback_save_value_(boost::function<void(CT)>())
 	{
 		BOOST_STATIC_ASSERT((boost::is_same<tcontrol, W>::value));
 	}
@@ -400,7 +404,6 @@ public:
 	}
 
 private:
-
 	/**
 	 * The value_ of the widget, this value is also available once the widget
 	 * is destroyed.
@@ -420,7 +423,7 @@ private:
 	 *
 	 * This is used to load the initial value of the widget, if defined.
 	 */
-	boost::function<T ()> callback_load_value_;
+	boost::function<T()> callback_load_value_;
 
 	/** Inherited from tfield_. */
 	void init_generic(twindow& window)
@@ -454,7 +457,7 @@ private:
 	 * Once the dialog has been successful this function is used to store the
 	 * result of this widget.
 	 */
-	boost::function<void (CT)> callback_save_value_;
+	boost::function<void(CT)> callback_save_value_;
 
 	/**
 	 * Test whether the widget exists if the widget is mandatory.
@@ -473,7 +476,8 @@ private:
 	 * Stores the value in the widget in the interval value_.
 	 *
 	 * @param window              The window containing the widget.
-	 * @param must_be_active      If true only active widgets will store their value.
+	 * @param must_be_active      If true only active widgets will store their
+	 *value.
 	 */
 	void save(twindow& window, const bool must_be_active);
 
@@ -483,34 +487,32 @@ private:
 	 * @param window              The window containing the widget.
 	 */
 	void restore(twindow& window);
-
 };
 
-template<class T, class W, class CT>
+template <class T, class W, class CT>
 void tfield<T, W, CT>::save(twindow& window, const bool must_be_active)
 {
-	const W* widget =
-			find_widget<const W>(&window, id(), must_be_active, false);
+	const W* widget
+			= find_widget<const W>(&window, id(), must_be_active, false);
 
 	if(widget) {
 		value_ = widget->get_value();
 	}
 }
 
-template<>
+template <>
 inline void tfield<std::string, tcontrol, const std::string&>::save(
-		  twindow& window
-		, const bool must_be_active)
+		twindow& window, const bool must_be_active)
 {
-	const tcontrol* control =
-			find_widget<const tcontrol>(&window, id(), must_be_active, false);
+	const tcontrol* control
+			= find_widget<const tcontrol>(&window, id(), must_be_active, false);
 
 	if(control) {
 		value_ = control->label();
 	}
 }
 
-template<class T, class W, class CT>
+template <class T, class W, class CT>
 void tfield<T, W, CT>::restore(twindow& window)
 {
 	W* widget = find_widget<W>(&window, id(), false, false);
@@ -520,9 +522,9 @@ void tfield<T, W, CT>::restore(twindow& window)
 	}
 }
 
-template<>
-inline void tfield<std::string, tcontrol, const std::string&>::restore(
-		  twindow& window)
+template <>
+inline void
+tfield<std::string, tcontrol, const std::string&>::restore(twindow& window)
 {
 	tcontrol* control = find_widget<tcontrol>(&window, id(), false, false);
 
@@ -536,33 +538,32 @@ class tfield_bool : public tfield<bool, tselectable_>
 {
 public:
 	tfield_bool(const std::string& id,
-			const bool mandatory,
-			const boost::function<bool ()>& callback_load_value,
-			const boost::function<void (const bool)>& callback_save_value,
-			const boost::function<void (twidget*)>& callback_change)
-		: tfield<bool, gui2::tselectable_>
-			(id, mandatory, callback_load_value, callback_save_value)
+				const bool mandatory,
+				const boost::function<bool()>& callback_load_value,
+				const boost::function<void(const bool)>& callback_save_value,
+				const boost::function<void(twidget&)>& callback_change)
+		: tfield<bool, gui2::tselectable_>(
+				  id, mandatory, callback_load_value, callback_save_value)
 		, callback_change_(callback_change)
-		{
-		}
+	{
+	}
 
-	tfield_bool(const std::string& id
-			, const bool mandatory
-			, bool& linked_variable
-			, const boost::function<void (twidget*)>& callback_change)
+	tfield_bool(const std::string& id,
+				const bool mandatory,
+				bool& linked_variable,
+				const boost::function<void(twidget&)>& callback_change)
 		: tfield<bool, gui2::tselectable_>(id, mandatory, linked_variable)
 		, callback_change_(callback_change)
 	{
 	}
 
 private:
-
 	/** Overridden from tfield_. */
 	void init_specialized(twindow& window)
 	{
 		if(callback_change_) {
-			tselectable_* widget =
-				dynamic_cast<tselectable_*>(window.find(id(), false));
+			tselectable_* widget
+					= dynamic_cast<tselectable_*>(window.find(id(), false));
 
 			if(widget) {
 				widget->set_callback_state_change(callback_change_);
@@ -570,30 +571,28 @@ private:
 		}
 	}
 
-	boost::function<void (twidget*)> callback_change_;
+	boost::function<void(twidget&)> callback_change_;
 };
 
 /** Specialized field class for text. */
-class tfield_text : public tfield<std::string, ttext_, const std::string& >
+class tfield_text : public tfield<std::string, ttext_, const std::string&>
 {
 public:
 	tfield_text(const std::string& id,
-			const bool mandatory,
-			const boost::function<std::string ()>& callback_load_value,
-			const boost::function<void (const std::string&)>&
-				callback_save_value) :
-		tfield<std::string, ttext_, const std::string& >
-			(id, mandatory, callback_load_value, callback_save_value)
-		{
-		}
-
-	tfield_text(const std::string& id
-			, const bool mandatory
-			, std::string& linked_variable)
+				const bool mandatory,
+				const boost::function<std::string()>& callback_load_value,
+				const boost::function<void(const std::string&)>&
+						callback_save_value)
 		: tfield<std::string, ttext_, const std::string&>(
-				id
-				, mandatory
-				, linked_variable)
+				  id, mandatory, callback_load_value, callback_save_value)
+	{
+	}
+
+	tfield_text(const std::string& id,
+				const bool mandatory,
+				std::string& linked_variable)
+		: tfield<std::string, ttext_, const std::string&>(
+				  id, mandatory, linked_variable)
 	{
 	}
 
@@ -613,21 +612,17 @@ private:
 class tfield_label : public tfield<std::string, tcontrol, const std::string&>
 {
 public:
-	tfield_label(const std::string& id
-			, const bool mandatory
-			, const std::string& text
-			, const bool use_markup)
-		: tfield<std::string, tcontrol, const std::string&>(
-				id
-				, mandatory
-				, text)
+	tfield_label(const std::string& id,
+				 const bool mandatory,
+				 const std::string& text,
+				 const bool use_markup)
+		: tfield<std::string, tcontrol, const std::string&>(id, mandatory, text)
 		, use_markup_(use_markup)
 
-		{
-		}
+	{
+	}
 
 private:
-
 	/** Whether or not the label uses markup. */
 	bool use_markup_;
 
@@ -641,4 +636,3 @@ private:
 } // namespace gui2
 
 #endif
-

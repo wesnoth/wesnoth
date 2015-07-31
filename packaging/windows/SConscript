@@ -4,12 +4,12 @@ from glob import glob
 import SCons.Node
 Import("env")
 
-binaries = ["wesnoth"]
+binaries = ["wesnoth", "wesnothd"]
 for bin in binaries:
     #icon = env.Command(bin + "-icon.ico", join("../../icons", bin + "-icon.png"), "$IM_CONVERT $SOURCE $TARGET")
     try:
         env["RCCOM"] = '$RC $_CPPDEFFLAGS $RCINCFLAGS ${RCINCPREFIX} ${SOURCE.dir} $RCFLAGS -i $SOURCE -o $TARGET'
-        res = [env.RES(bin + ".rc", CPPPATH=[])]
+        res = [env.RES(bin + ".rc", CPPPATH=["#/"])]
         #env.Depends(res, icon)
     except AttributeError:
         res = []

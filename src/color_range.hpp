@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,7 +45,7 @@ bool string2rgb(const std::string& s, std::vector<Uint32>& result);
  *      (default: white)
  *   3) The minimum shadow shade of a unit's team-color portions
  *      (default: black)
- *   4) A plain high-contrast color, used for the markers on the mini-ma
+ *   4) A plain high-contrast color, used for the markers on the mini-map
  *      (default: same as the provided average shade, or gray #808080)
  *
  * The first three reference colors are used for converting a source palette
@@ -61,7 +61,7 @@ public:
   * @param min Minimum color shade
   * @param rep High-contrast reference color
   */
-  color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){};
+  color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){}
 
   /**
    * Constructor, which expects four reference RGB colors.
@@ -73,19 +73,19 @@ public:
       min_(v.size() > 2 ? v[2] : 0x00000000),
       rep_(v.size() > 3 ? v[3] : mid_)
   {
-  };
+  }
 
   /** Default constructor. */
-  color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {};
+  color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {}
 
   /** Average color shade. */
-  Uint32 mid() const{return(mid_);};
+  Uint32 mid() const{return(mid_);}
   /** Maximum color shade. */
-  Uint32 max() const{return(max_);};
+  Uint32 max() const{return(max_);}
   /** Minimum color shade. */
-  Uint32 min() const{return(min_);};
+  Uint32 min() const{return(min_);}
   /** High-contrast shade, intended for the minimap markers. */
-  Uint32 rep() const{return(rep_);};
+  Uint32 rep() const{return(rep_);}
 
   bool operator<(const color_range& b) const
   {
@@ -101,6 +101,9 @@ public:
   }
 
   int index() const; // the default team index for this color, or 0 for none
+
+  /** Return a string describing the color range for debug output. */
+  std::string debug() const;
 
 private:
   Uint32 mid_ , max_ , min_ , rep_;

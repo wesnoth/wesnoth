@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,11 +23,13 @@
 #include "../composite/engine.hpp"
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
-#include "../../gamestatus.hpp"
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
+#include "../../unit_types.hpp"
 #include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
 
@@ -44,6 +46,10 @@
 namespace ai {
 
 namespace testing_ai_default {
+
+static lg::log_domain log_aitesting("aitesting");
+#define LOG_AIT LOG_STREAM(info, log_aitesting)
+//If necessary, this define can be replaced with `#define LOG_AIT std::cout` to restore previous behavior
 
 static lg::log_domain log_ai_ca_testing_recruitment("ai/ca/testing_recruitment");
 #define DBG_AI LOG_STREAM(debug, log_ai_ca_testing_recruitment)
@@ -69,7 +75,7 @@ double testing_recruitment_phase::evaluate()
    if(leader == resources::units->end()) {
       return BAD_SCORE;
    }
-   if (!resources::game_map->is_keep(leader->get_location())) {
+   if (!resources::gameboard->map().is_keep(leader->get_location())) {
       return BAD_SCORE;
    }
 
@@ -140,6 +146,7 @@ class potential_recruit_converter
       potential_recruit operator()(const std::string &id)
       {
          const unit_type *type = unit_types.find(id);
+			assert(type);
          return potential_recruit(type->cost(),max_qty_,0,side_,type);
       }
    private:
@@ -250,7 +257,7 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
 {
    int weighting_sum = 0, defense = 0;
    const std::map<t_translation::t_terrain, size_t>& terrain =
-      resources::game_map->get_weighted_terrain_frequencies();
+      resources::gameboard->map().get_weighted_terrain_frequencies();
 
    for (std::map<t_translation::t_terrain, size_t>::const_iterator j = terrain.begin(),
          j_end = terrain.end(); j != j_end; ++j)
@@ -763,14 +770,14 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
             double tmpscore =(compare_unit_types(defender, pair->enemy) / ((defender_enemies != 0) ? defender_enemies : 1 ));
             if(tmpscore > 0){
                pair->score += tmpscore;
-               std::cout << defender->type_name() << " resistance against " << pair->enemy->type_name() << " is: " << tmpscore << ", new score = " << pair->score << std::endl;
+               LOG_AIT << defender->type_name() << " resistance against " << pair->enemy->type_name() << " is: " << tmpscore << ", new score = " << pair->score << std::endl;
             }
          }
          if(pair->score > max_score)
             max_score = pair->score;
          if(pair->score < min_score)
             min_score = pair->score;
-         std::cout << pair->enemy->id << " resistance = " << pair->score << std::endl;
+         LOG_AIT << pair->enemy->id << " resistance = " << pair->score << std::endl;
       //}
    }
    double score = 0;
@@ -1013,9 +1020,8 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 
 void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double quality_factor)
 {
-   std::vector<fake_team> tmp_fake_teams;
+   std::vector<fake_team> tmp_fake_teams (resources::teams->begin(), resources::teams->end());
    std::vector<fake_team> fake_teams;
-   std::copy(resources::teams->begin(), resources::teams->end(), std::back_inserter(tmp_fake_teams));
    fake_team *ai_t = 0;
    for(int i = get_side() - 1
 		   ; static_cast<unsigned int>(i) < tmp_fake_teams.size()
@@ -1086,11 +1092,11 @@ void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double qual
       std::vector<potential_recruit> recruit_result = ai_choose_best_recruits(*ai_t, 1, quality_factor,false);
       if(recruit_result.empty())
       {
-         std::cout << "recruit_result = empty" << std::endl;
+         LOG_AIT << "recruit_result = empty" << std::endl;
          break;
       }
       const potential_recruit &recruit_unit = recruit_result[0];
-      std::cout << "recruit: " << recruit_unit.id() << std::endl;
+      LOG_AIT << "recruit: " << recruit_unit.id() << std::endl;
       if(ai_t->gold() >= recruit_unit.cost())
       {
          recruit_result_ptr recruit_action = check_recruit_action(recruit_unit.id());
@@ -1106,7 +1112,7 @@ void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double qual
       }
       else
       {
-         std::cout << "gold not ok" << std::endl;
+         LOG_AIT << "gold not ok" << std::endl;
       }
    }
 }
@@ -1136,7 +1142,7 @@ return 0;
 
 void testing_recruitment_phase::execute()
 {
-   std::cout << "execute floris' recruitment algorithm" << std::endl;
+   LOG_AIT << "execute floris' recruitment algorithm" << std::endl;
    int max_units_to_recruit = 1;
    double quality_factor = 1.0;
    do_recruit(max_units_to_recruit, quality_factor);

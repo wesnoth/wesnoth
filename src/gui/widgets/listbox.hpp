@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,20 +20,22 @@
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
-	struct tbuilder_listbox;
-	struct tbuilder_horizontal_listbox;
+namespace implementation
+{
+struct tbuilder_listbox;
+struct tbuilder_horizontal_listbox;
 }
 
 /** The listbox class. */
-class tlistbox
-		: public tscrollbar_container
+class tlistbox : public tscrollbar_container
 {
 	friend struct implementation::tbuilder_listbox;
 	friend struct implementation::tbuilder_horizontal_listbox;
 	friend class tdebug_layout_graph;
+
 public:
 	/**
 	 * Constructor.
@@ -46,8 +48,10 @@ public:
 	 * @param select              Select an item when selected, if false it
 	 *                            changes the visible state instead.
 	 */
-	tlistbox(const bool has_minimum, const bool has_maximum,
-			const tgenerator_::tplacement placement, const bool select);
+	tlistbox(const bool has_minimum,
+			 const bool has_maximum,
+			 const tgenerator_::tplacement placement,
+			 const bool select);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 	/**
@@ -79,9 +83,8 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(
-			  const std::map<std::string /* widget id */, string_map>& data
-			, const int index = -1);
+	void add_row(const std::map<std::string /* widget id */, string_map>& data,
+				 const int index = -1);
 
 	/**
 	 * Removes a row in the listbox.
@@ -171,7 +174,7 @@ public:
 	int get_selected_row() const;
 
 	/** Function to call after the user clicked on a row. */
-	void list_item_clicked(twidget* caller);
+	void list_item_clicked(twidget& caller);
 
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) OVERRIDE;
@@ -201,20 +204,29 @@ public:
 	virtual void layout_children() OVERRIDE;
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE;
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
+	void
+	set_callback_item_change(const boost::function<void(size_t)>& callback)
+	{
+		callback_item_changed_ = callback;
+	}
 
-	void set_callback_value_change(const boost::function<void (twidget*)>& callback)
-		{ callback_value_changed_ = callback; }
+	void
+	set_callback_value_change(const boost::function<void(twidget&)>& callback)
+	{
+		callback_value_changed_ = callback;
+	}
 
 	void set_list_builder(tbuilder_grid_ptr list_builder)
-		{ list_builder_ = list_builder; }
+	{
+		list_builder_ = list_builder;
+	}
 
 protected:
-
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tscrollbar_container. */
@@ -230,10 +242,9 @@ protected:
 	void handle_key_right_arrow(SDLMod modifier, bool& handled);
 
 private:
-
 	/**
 	 * @todo A listbox must have the following config parameters in the
-	 * instanciation:
+	 * instantiation:
 	 * - fixed row height?
 	 * - fixed column width?
 	 * and if so the following ways to set them
@@ -253,10 +264,9 @@ private:
 	 * @param footer              Builder for the footer.
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
-	void finalize(
-			tbuilder_grid_const_ptr header,
-			tbuilder_grid_const_ptr footer,
-			const std::vector<string_map>& list_data);
+	void finalize(tbuilder_grid_const_ptr header,
+				  tbuilder_grid_const_ptr footer,
+				  const std::vector<string_map>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
@@ -270,13 +280,20 @@ private:
 	tbuilder_grid_const_ptr list_builder_;
 
 	/**
+	 * This callback is called when a list item is clicked (toggled).
+	 *
+	 * The function is passed the index of the toggled item.
+	 */
+	boost::function<void(size_t)> callback_item_changed_;
+
+	/**
 	 * This callback is called when the value in the listbox changes.
 	 *
 	 * @todo the implementation of the callback hasn't been tested a lot and
 	 * there might be too many calls. That might happen if an arrow up didn't
 	 * change the selected item.
 	 */
-	boost::function<void (twidget*)> callback_value_changed_;
+	boost::function<void(twidget&)> callback_value_changed_;
 
 	bool need_layout_;
 
@@ -295,9 +312,17 @@ private:
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
 	 */
-	void resize_content(
-			  const int width_modification
-			, const int height_modification);
+	void resize_content(const int width_modification,
+						const int height_modification);
+
+	/**
+	 * Resizes the content.
+	 *
+	 * The resize happens when a new row is added to the contents.
+	 *
+	 * @param row                 The new row added to the listbox.
+	 */
+	void resize_content(const twidget& row);
 
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
@@ -313,4 +338,3 @@ private:
 
 #endif
 #endif
-

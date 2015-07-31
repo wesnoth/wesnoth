@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
+#include "sdl/alpha.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/foreach.hpp>
@@ -191,13 +192,42 @@ surface rotate_modification::operator()(const surface& src) const
 		case 360: return src;
 	}
 
-	// Other values are not supported. Ignore them.
-	return src;
+	return rotate_any_surface(src, normalized, zoom_, offset_);
 }
 
 surface gs_modification::operator()(const surface& src) const
 {
 	return greyscale_image(src);
+}
+
+surface bw_modification::operator()(const surface& src) const
+{
+	return monochrome_image(src, threshold_);
+}
+
+surface sepia_modification::operator()(const surface &src) const
+{
+	return sepia_image(src);
+}
+
+surface negative_modification::operator()(const surface &src) const
+{
+	return negative_image(src, red_, green_, blue_);
+}
+
+surface plot_alpha_modification::operator()(const surface& src) const
+{
+	return alpha_to_greyscale(src);
+}
+
+surface wipe_alpha_modification::operator()(const surface& src) const
+{
+	return wipe_alpha(src);
+}
+
+surface adjust_alpha_modification::operator()(const surface & src) const
+{
+	return adjust_surface_alpha(src, amount_);
 }
 
 surface crop_modification::operator()(const surface& src) const
@@ -209,15 +239,17 @@ surface crop_modification::operator()(const surface& src) const
 	if(area.h == 0) {
 		area.h = src->h;
 	}
-	if(area.x < 0) {
-		ERR_DP << "start X coordinate of SECTION modification is negative - truncating to zero\n";
-		area.x = 0;
-	}
-	if(area.y < 0) {
-		ERR_DP << "start Y coordinate of SECTION modification is negative - truncating to zero\n";
-		area.y = 0;
-	}
-	return cut_surface(src, area);
+
+	/*
+	 * Unlike other image functions cut_surface does not convert the input
+	 * surface to a neutral surface, nor does it convert its return surface
+	 * to an optimised surface.
+	 *
+	 * Since it seems to work for most cases, rather change this caller instead
+	 * of the function signature. (The issue was discovered in bug #20876).
+	 */
+	return create_optimized_surface(
+			cut_surface(make_neutral_surface(src), area));
 }
 
 const SDL_Rect& crop_modification::get_slice() const
@@ -266,7 +298,7 @@ surface blit_modification::operator()(const surface& src) const
 	//blit_surface want neutral surfaces
 	surface nsrc = make_neutral_surface(src);
 	surface nsurf = make_neutral_surface(surf_);
-	SDL_Rect r = create_rect(x_, y_, 0, 0);
+	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
 	blit_surface(nsurf, NULL, nsrc, &r);
 	return nsrc;
 }
@@ -290,7 +322,7 @@ surface mask_modification::operator()(const surface& src) const
 {
 	if(src->w == mask_->w &&  src->h == mask_->h && x_ == 0 && y_ == 0)
 		return mask_surface(src, mask_);
-	SDL_Rect r = create_rect(x_, y_, 0, 0);
+	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
 	surface new_mask = create_neutral_surface(src->w, src->h);
 	blit_surface(mask_, NULL, new_mask, &r);
 	return mask_surface(src, new_mask);
@@ -337,13 +369,13 @@ surface scale_modification::operator()(const surface& src) const
 
 	if(w <= 0) {
 		if(w < 0) {
-			ERR_DP << "width of SCALE is negative - resetting to original width\n";
+			ERR_DP << "width of SCALE is negative - resetting to original width" << std::endl;
 		}
 		w = old_w;
 	}
 	if(h <= 0) {
 		if(h < 0) {
-			ERR_DP << "height of SCALE is negative - resetting to original height\n";
+			ERR_DP << "height of SCALE is negative - resetting to original height" << std::endl;
 		}
 		h = old_h;
 	}
@@ -359,6 +391,48 @@ int scale_modification::get_w() const
 int scale_modification::get_h() const
 {
 	return h_;
+}
+
+surface scale_sharp_modification::operator()(const surface& src) const
+{
+	const int old_w = src->w;
+	const int old_h = src->h;
+	int w = w_;
+	int h = h_;
+
+	if(w <= 0) {
+		if(w < 0) {
+			ERR_DP << "width of SCALE_SHARP is negative - resetting to original width" << std::endl;
+		}
+		w = old_w;
+	}
+	if(h <= 0) {
+		if(h < 0) {
+			ERR_DP << "height of SCALE_SHARP is negative - resetting to original height" << std::endl;
+		}
+		h = old_h;
+	}
+
+	return scale_surface_sharp(src, w, h);
+}
+
+int scale_sharp_modification::get_w() const
+{
+	return w_;
+}
+
+int scale_sharp_modification::get_h() const
+{
+	return h_;
+}
+
+surface xbrz_modification::operator()(const surface& src) const
+{
+	if (z_ == 1) {
+		return src;
+	}
+
+	return scale_surface_xbrz(src, z_);
 }
 
 surface o_modification::operator()(const surface& src) const
@@ -452,10 +526,15 @@ surface darken_modification::operator()(const surface &src) const
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
+					    color_.b, color_.a));
+#else
 	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.unused));
+#endif
 	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-	SDL_BlitSurface(src, NULL, ret, NULL);
+	blit_surface(src, NULL, ret, NULL);
 	return ret;
 }
 
@@ -464,7 +543,20 @@ const SDL_Color& background_modification::get_color() const
 	return color_;
 }
 
+surface swap_modification::operator()(const surface &src) const
+{
+	return swap_channels_image(src, red_, green_, blue_, alpha_);
+}
+
 namespace {
+
+struct parse_mod_registration
+{
+	parse_mod_registration(const char* name, mod_parser parser)
+	{
+		mod_parsers[name] = parser;
+	}
+};
 
 /** A macro for automatic modification parser registration
  *
@@ -475,16 +567,10 @@ namespace {
  * @param type The modification type to be registered (unquoted)
  * @param args_var The name for the string argument provided
  */
-#define REGISTER_MOD_PARSER(type, args_var)     	               \
-	modification* parse_##type##_mod(const std::string&);          \
-	struct parse_##type##_mod_registration                         \
-	{                                                              \
-	        parse_##type##_mod_registration()                      \
-	        {                                                      \
-			mod_parsers[#type] = &parse_##type##_mod;      \
-                }                                                      \
-        } parse_##type##_mod_registration_aux;                         \
-        modification* parse_##type##_mod(const std::string& args_var)
+#define REGISTER_MOD_PARSER(type, args_var)                                                           \
+    static modification* parse_##type##_mod(const std::string&);                                      \
+    static parse_mod_registration parse_##type##_mod_registration_aux(#type, &parse_##type##_mod);    \
+    static modification* parse_##type##_mod(const std::string& args_var)                              \
 
 // Color-range-based recoloring
 REGISTER_MOD_PARSER(TC, args)
@@ -492,7 +578,7 @@ REGISTER_MOD_PARSER(TC, args)
 	std::vector<std::string> params = utils::split(args,',');
 
 	if(params.size() < 2) {
-		ERR_DP << "too few arguments passed to the ~TC() function\n";
+		ERR_DP << "too few arguments passed to the ~TC() function" << std::endl;
 
 		return NULL;
 	}
@@ -512,7 +598,7 @@ REGISTER_MOD_PARSER(TC, args)
 		try {
 			team_color = lexical_cast<std::string>(side_n);
 		} catch(bad_lexical_cast const&) {
-			ERR_DP << "bad things happen\n";
+			ERR_DP << "bad things happen" << std::endl;
 
 			return NULL;
 		}
@@ -580,12 +666,6 @@ REGISTER_MOD_PARSER(RC, args)
 
 		return new rc_modification(rc_map);
 	}
-	else {
-		///@Deprecated 1.6 palette switch syntax
-		if(args.find('=') != std::string::npos) {
-			lg::wml_error << "the ~RC() image function cannot be used for palette switch (A=B) in 1.7.x; use ~PAL(A>B) instead\n";
-		}
-	}
 
 	return NULL;
 }
@@ -640,13 +720,156 @@ REGISTER_MOD_PARSER(FL, args)
 // Rotations
 REGISTER_MOD_PARSER(ROTATE, args)
 {
-	return new rotate_modification(lexical_cast_default<int>(args, 90));
+	std::vector<std::string> const& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const size_t s = slice_params.size();
+
+	switch (s) {
+		case 0:
+			return new rotate_modification();
+			break;
+		case 1:
+			return new rotate_modification(
+					lexical_cast_default<int>(slice_params[0]));
+			break;
+		case 2:
+			return new rotate_modification(
+					lexical_cast_default<int>(slice_params[0]),
+					lexical_cast_default<int>(slice_params[1]));
+			break;
+		case 3:
+			return new rotate_modification(
+					lexical_cast_default<int>(slice_params[0]),
+					lexical_cast_default<int>(slice_params[1]),
+					lexical_cast_default<int>(slice_params[2]));
+			break;
+	}
+	return NULL;
 }
 
 // Grayscale
 REGISTER_MOD_PARSER(GS, )
 {
 	return new gs_modification;
+}
+
+// Black and white
+REGISTER_MOD_PARSER(BW, args)
+{
+	const std::vector<std::string>& params = utils::split(args, ',');
+	if (params.size() == 1) {
+		try {
+			int threshold = lexical_cast<int>(params[0]);
+			if (threshold < 0 || threshold > 255) {
+				ERR_DP << "~BW() argument out of range 0 - 255" << std::endl;
+				return NULL;
+			}
+			else {
+				return new bw_modification(threshold);
+			}
+		}
+		catch (bad_lexical_cast) {
+			ERR_DP << "unsupported argument in ~BW() function" << std::endl;
+			return NULL;
+		}
+	}
+	else {
+		ERR_DP << "~BW() requires  exactly one argument" << std::endl;
+		return NULL;
+	}
+}
+
+// Sepia
+REGISTER_MOD_PARSER(SEPIA, )
+{
+	return new sepia_modification;
+}
+
+// Negative
+REGISTER_MOD_PARSER(NEG, args)
+{
+	const std::vector<std::string>& params = utils::split(args, ',');
+
+	switch (params.size()) {
+		case 0:
+			// apparently -1 may be a magic number
+			// but this is the threshold value required
+			// to fully invert a channel
+			return new negative_modification(-1,-1,-1);
+			break;
+		case 1:
+			try {
+				int threshold = lexical_cast<int>(params[0]);
+				if (threshold < -1 || threshold > 255) {
+					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+					return NULL;
+				}
+				else {
+					return new negative_modification(threshold, threshold, threshold);
+				}
+			}
+			catch (bad_lexical_cast) {
+				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+				return NULL;
+			}
+			break;
+		case 3:
+			try {
+				int thresholdRed = lexical_cast<int>(params[0]);
+				int thresholdGreen = lexical_cast<int>(params[1]);
+				int thresholdBlue = lexical_cast<int>(params[2]);
+				if (thresholdRed < -1 || thresholdRed > 255 || thresholdGreen < -1 || thresholdGreen > 255 || thresholdBlue < -1 || thresholdBlue > 255) {
+					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+					return NULL;
+				}
+				else {
+					return new negative_modification(thresholdRed, thresholdGreen, thresholdBlue);
+				}
+			}
+			catch (bad_lexical_cast) {
+				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+				return NULL;
+			}
+			break;
+		default:
+			ERR_DP << "~NEG() requires 0, 1 or 3 arguments" << std::endl;
+			return NULL;
+	}
+
+	return NULL;
+}
+
+// Plot Alpha
+REGISTER_MOD_PARSER(PLOT_ALPHA, )
+{
+	return new plot_alpha_modification;
+}
+
+// Wipe Alpha
+REGISTER_MOD_PARSER(WIPE_ALPHA, )
+{
+	return new wipe_alpha_modification;
+}
+
+// Adjust Alpha
+REGISTER_MOD_PARSER(ADJUST_ALPHA, args)
+{
+	const std::vector<std::string>& params = utils::split(args, ',');
+
+	if(params.size() != 1) {
+		ERR_DP << "~ADJUST_ALPHA() requires exactly 1 arguments" << std::endl;
+		return NULL;
+	}
+
+	std::string opacity_str = params.at(0);
+
+	const size_t p100_pos = opacity_str.find('%');
+
+	if (p100_pos == std::string::npos) {
+		return new adjust_alpha_modification(lexical_cast_default<fixed_t> (opacity_str));
+	} else {
+		float opacity = lexical_cast_default<float>(opacity_str.substr(0,p100_pos)) / 100.0f;
+		return new adjust_alpha_modification(static_cast<fixed_t> (255 * opacity));
+	}
 }
 
 // Color-shift
@@ -656,7 +879,7 @@ REGISTER_MOD_PARSER(CS, args)
 	const size_t s = factors.size();
 
 	if(s == 0) {
-		ERR_DP << "no arguments passed to the ~CS() function\n";
+		ERR_DP << "no arguments passed to the ~CS() function" << std::endl;
 		return NULL;
 	}
 
@@ -680,7 +903,7 @@ REGISTER_MOD_PARSER(BLEND, args)
 	const std::vector<std::string>& params = utils::split(args, ',');
 
 	if(params.size() != 4) {
-		ERR_DP << "~BLEND() requires exactly 4 arguments\n";
+		ERR_DP << "~BLEND() requires exactly 4 arguments" << std::endl;
 		return NULL;
 	}
 
@@ -711,7 +934,7 @@ REGISTER_MOD_PARSER(CROP, args)
 	const size_t s = slice_params.size();
 
 	if(s == 0 || (s == 1 && slice_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~CROP() function\n";
+		ERR_DP << "no arguments passed to the ~CROP() function" << std::endl;
 		return NULL;
 	}
 
@@ -747,7 +970,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	const size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
-		ERR_DP << "no arguments passed to the ~BLIT() function\n";
+		ERR_DP << "no arguments passed to the ~BLIT() function" << std::endl;
 		return NULL;
 	}
 
@@ -759,7 +982,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	}
 
 	if(x < 0 || y < 0) { //required by blit_surface
-		ERR_DP << "negative position arguments in ~BLIT() function\n";
+		ERR_DP << "negative position arguments in ~BLIT() function" << std::endl;
 		return NULL;
 	}
 
@@ -780,7 +1003,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	const size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
-		ERR_DP << "no arguments passed to the ~MASK() function\n";
+		ERR_DP << "no arguments passed to the ~MASK() function" << std::endl;
 		return NULL;
 	}
 
@@ -792,7 +1015,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	}
 
 	if(x < 0 || y < 0) { //required by blit_surface
-		ERR_DP << "negative position arguments in ~MASK() function\n";
+		ERR_DP << "negative position arguments in ~MASK() function" << std::endl;
 		return NULL;
 	}
 
@@ -810,7 +1033,7 @@ REGISTER_MOD_PARSER(MASK, args)
 REGISTER_MOD_PARSER(L, args)
 {
 	if(args.empty()){
-		ERR_DP << "no arguments passed to the ~L() function\n";
+		ERR_DP << "no arguments passed to the ~L() function" << std::endl;
 		return NULL;
 	}
 
@@ -826,7 +1049,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 	const size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE() function\n";
+		ERR_DP << "no arguments passed to the ~SCALE() function" << std::endl;
 		return NULL;
 	}
 
@@ -840,6 +1063,41 @@ REGISTER_MOD_PARSER(SCALE, args)
 
 	return new scale_modification(w, h);
 }
+
+REGISTER_MOD_PARSER(SCALE_SHARP, args)
+{
+	std::vector<std::string> const& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const size_t s = scale_params.size();
+
+	if(s == 0 || (s == 1 && scale_params[0].empty())) {
+		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function" << std::endl;
+		return NULL;
+	}
+
+	int w = 0, h = 0;
+
+	w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+
+	if(s > 1) {
+		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+	}
+
+	return new scale_sharp_modification(w, h);
+}
+
+
+// xBRZ
+REGISTER_MOD_PARSER(XBRZ, args)
+{
+	int z = lexical_cast_default<int, const std::string &>(args);
+	if (z < 1 || z > 5) {
+		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
+	}
+
+	return new xbrz_modification(z);
+}
+
+// scale
 
 // Gaussian-like blur
 REGISTER_MOD_PARSER(BL, args)
@@ -867,7 +1125,7 @@ REGISTER_MOD_PARSER(O, args)
 }
 
 //
-// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntatic sugar.
+// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntactic sugar.
 // Hence they are at the end of the evaluation.
 //
 // Red component color-shift
@@ -929,6 +1187,82 @@ REGISTER_MOD_PARSER(BG, args)
 	}
 
 	return new background_modification(create_color(c[0], c[1], c[2], c[3]));
+}
+
+// Channel swap
+REGISTER_MOD_PARSER(SWAP, args)
+{
+	std::vector<std::string> params = utils::split(args, ',', utils::STRIP_SPACES);
+
+	// accept 3 arguments (rgb) or 4 (rgba)
+	if (params.size() != 3 && params.size() != 4) {
+		ERR_DP << "incorrect number of arguments in ~SWAP() function, they must be 3 or 4" << std::endl;
+		return NULL;
+	}
+
+	channel redValue, greenValue, blueValue, alphaValue;
+	// compare the parameter's value with the constants defined in the channels enum
+	if (params[0] == "red") {
+		redValue = RED;
+	} else if (params[0] == "green") {
+		redValue = GREEN;
+	} else if (params[0] == "blue") {
+		redValue = BLUE;
+	} else if (params[0] == "alpha") {
+		redValue = ALPHA;
+	} else {
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		return NULL;
+	}
+
+	// wash, rinse and repeat for the other three channels
+	if (params[1] == "red") {
+		greenValue = RED;
+	} else if (params[1] == "green") {
+		greenValue = GREEN;
+	} else if (params[1] == "blue") {
+		greenValue = BLUE;
+	} else if (params[1] == "alpha") {
+		greenValue = ALPHA;
+	} else {
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		return NULL;
+	}
+
+	if (params[2] == "red") {
+		blueValue = RED;
+	} else if (params[2] == "green") {
+		blueValue = GREEN;
+	} else if (params[2] == "blue") {
+		blueValue = BLUE;
+	} else if (params[2] == "alpha") {
+		blueValue = ALPHA;
+	} else {
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		return NULL;
+	}
+
+	// additional check: the params vector may not have a fourth elementh
+	// if so, default to the same channel
+	if (params.size() == 3) {
+		alphaValue = ALPHA;
+	}
+	else {
+		if (params[3] == "red") {
+			alphaValue = RED;
+		} else if (params[3] == "green") {
+			alphaValue = GREEN;
+		} else if (params[3] == "blue") {
+			alphaValue = BLUE;
+		} else if (params[3] == "alpha") {
+			alphaValue = ALPHA;
+		} else {
+			ERR_DP << "unsupported argument value in ~SWAP() function: " << params[3] << std::endl;
+			return NULL;
+		}
+	}
+
+	return new swap_modification(redValue, greenValue, blueValue, alphaValue);
 }
 
 } // end anon namespace

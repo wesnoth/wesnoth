@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,22 +30,22 @@ public:
 
 	empty_palette(display& gui) :
 		common_palette(gui),
-		gui_(gui), empty_() {};
+		gui_(gui), empty_() {}
 
 	//event handling
-	virtual bool mouse_click() { return false;};
+	virtual bool mouse_click() { return false;}
 
-	virtual bool scroll_up() { return false;};
-	virtual bool can_scroll_up() { return false;};
-	virtual bool scroll_down() { return false;};
-	virtual bool can_scroll_down() { return false;};
+	virtual bool scroll_up() { return false;}
+	virtual bool can_scroll_up() { return false;}
+	virtual bool scroll_down() { return false;}
+	virtual bool can_scroll_down() { return false;}
 
-	virtual void select_fg_item(const std::string& /*item_id*/) {};
-	virtual void select_bg_item(const std::string& /*item_id*/) {};
+	virtual void select_fg_item(const std::string& /*item_id*/) {}
+	virtual void select_bg_item(const std::string& /*item_id*/) {}
 
 	//drawing
-	virtual void adjust_size(const SDL_Rect& /*target*/) {};
-	virtual void draw() {};
+	virtual void adjust_size(const SDL_Rect& /*target*/) {}
+	virtual void draw() {}
 
 	void hide(bool hidden) {
 		if (!hidden) {
@@ -66,25 +66,25 @@ public:
 		}
 	}
 
-	std::vector<gui::widget>* get_widgets() { return NULL; };
+	std::vector<gui::widget>* get_widgets() { return NULL; }
 
 	//group
-	virtual void set_group(size_t /*index*/) {};
-	virtual void next_group() {};
-	virtual void prev_group() {};
-	virtual const config active_group_report() { return config();};
-	virtual const std::vector<item_group>& get_groups() const { return empty_; };
+	virtual void set_group(size_t /*index*/) {}
+	virtual void next_group() {}
+	virtual void prev_group() {}
+	virtual const config active_group_report() { return config();}
+	virtual const std::vector<item_group>& get_groups() const { return empty_; }
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/) {};
-	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) {};
+	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/) {}
+	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) {}
 
     //item
-	virtual size_t num_items() {return 0;};
-	virtual size_t start_num() {return 0;};
-	virtual void set_start_item(size_t /*index*/) {};
+	virtual size_t num_items() {return 0;}
+	virtual size_t start_num() {return 0;}
+	virtual void set_start_item(size_t /*index*/) {}
 	virtual bool supports_swap() { return false; }
-	virtual void swap() {};
+	virtual void swap() {}
 
 private:
 	display& gui_;

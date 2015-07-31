@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -111,6 +111,46 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 }
 
+void try_send_random_seed ( const std::string seed_str, const unsigned int random_calls)
+{
+	config cfg_send;
+	config& child = cfg_send.add_child("command");
+
+	child["random_seed"] = seed_str;
+	child["random_calls"] = random_calls;
+
+	network::send_data(cfg_send, client_client1);
+
+	network::connection receive_from;
+	config received;
+
+	receive_from = receive(received);
+
+	BOOST_CHECK_MESSAGE( receive_from == server_client1, "Received data is not from test client 1" );
+
+	BOOST_CHECK_EQUAL(cfg_send, received);
+
+	config rec_command = received.child("command");
+
+	std::string rec_seed_str = rec_command["random_seed"].str();
+	unsigned int rec_calls = rec_command["random_calls"];
+
+	BOOST_CHECK_EQUAL(seed_str, rec_seed_str);
+	BOOST_CHECK_EQUAL(random_calls, rec_calls);
+}
+
+BOOST_AUTO_TEST_CASE( test_send_random_seed )
+{
+	try_send_random_seed("0000badd",0);
+	try_send_random_seed("00001234",1);
+	try_send_random_seed("deadbeef",2);
+	try_send_random_seed("12345678",3);
+	try_send_random_seed("00009999",4);
+	try_send_random_seed("ffffaaaa",5);
+	try_send_random_seed("11110000",6);
+	try_send_random_seed("10101010",7);
+	try_send_random_seed("aaaa0000",8);
+}
 
 class connect_aborter : public threading::waiter
 {
@@ -188,7 +228,7 @@ static std::string create_random_sendfile(size_t size)
 	int *begin = reinterpret_cast<int*>(&buffer[0]);
 	int *end = begin + sizeof(buffer)/sizeof(int);
 	std::string filename = "sendfile.tmp";
-	scoped_ostream file = ostream_file(filename);
+	filesystem::scoped_ostream file = filesystem::ostream_file(filename);
 	std::generate(begin,end,std::rand);
 	while( size > 0
 		&& !file->bad())
@@ -201,7 +241,7 @@ static std::string create_random_sendfile(size_t size)
 
 static void delete_random_sendfile(const std::string& file)
 {
-	delete_directory(file);
+	filesystem::delete_file(file);
 }
 
 template<class T>
@@ -244,12 +284,12 @@ WESNOTH_PARAMETERIZED_TEST_CASE( test_multi_sendfile, sendfile_param, sendfile_s
 	std::vector<char> data;
 
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
-	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(filesystem::file_size(file)));
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
-	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(filesystem::file_size(file)));
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
 
-	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(filesystem::file_size(file)));
 
 	network::disconnect(cl_client1);
 	network::disconnect(cl_client2);

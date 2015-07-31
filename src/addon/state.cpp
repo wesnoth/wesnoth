@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2012 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -32,32 +32,27 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 	t.installed_version = version_info(0, 0, 0, false);
 
 	if(is_addon_installed(id)) {
-		try {
-			if(t.can_publish) {
-				// Try to obtain the version number from the .pbl first.
-				config pbl;
-				get_addon_pbl_info(id, pbl);
+		if(t.can_publish) {
+			// Try to obtain the version number from the .pbl first.
+			config pbl;
+			get_addon_pbl_info(id, pbl);
 
-				if(pbl.has_attribute("version")) {
-					t.installed_version = pbl["version"].str();
-				}
-			} else {
-				// We normally use the _info.cfg version instead.
-				t.installed_version = get_addon_version_info(id);
+			if(pbl.has_attribute("version")) {
+				t.installed_version = pbl["version"].str();
 			}
+		} else {
+			// We normally use the _info.cfg version instead.
+			t.installed_version = get_addon_version_info(id);
+		}
 
-			const version_info& remote_version = addon.version;
+		const version_info& remote_version = addon.version;
 
-			if(remote_version == t.installed_version) {
-				t.state = ADDON_INSTALLED;
-			} else if(remote_version > t.installed_version) {
-				t.state = ADDON_INSTALLED_UPGRADABLE;
-			} else /* if(remote_version < t.installed_version) */ {
-				t.state = ADDON_INSTALLED_OUTDATED;
-			}
-		} catch(version_info::not_sane_exception const&) {
-			LOG_AC << "local add-on " << id << " has invalid or missing version info, skipping from updates check...\n";
-			t.state = ADDON_NOT_TRACKED;
+		if(remote_version == t.installed_version) {
+			t.state = ADDON_INSTALLED;
+		} else if(remote_version > t.installed_version) {
+			t.state = ADDON_INSTALLED_UPGRADABLE;
+		} else /* if(remote_version < t.installed_version) */ {
+			t.state = ADDON_INSTALLED_OUTDATED;
 		}
 	} else {
 		t.state = ADDON_NONE;

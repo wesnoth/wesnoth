@@ -1,5 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CodeLite_Project Name="wesnoth" InternalType="">
+  <VirtualDirectory Name="website">
+    <VirtualDirectory Name="stats.wesnoth.org">
+      <VirtualDirectory Name="apache">
+        <File Name="../../website/stats.wesnoth.org/apache/wesstats"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="wesstats.egg-info">
+        <File Name="../../website/stats.wesnoth.org/wesstats.egg-info/not-zip-safe"/>
+        <File Name="../../website/stats.wesnoth.org/wesstats.egg-info/PKG-INFO"/>
+      </VirtualDirectory>
+      <File Name="../../website/stats.wesnoth.org/TODO"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="start">
+      <VirtualDirectory Name="1.6">
+        <File Name="../../website/start/1.6/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="1.10">
+        <File Name="../../website/start/1.10/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="1.4">
+        <File Name="../../website/start/1.4/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="1.8">
+        <File Name="../../website/start/1.8/Makefile"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="gettext.wesnoth.org">
+      <VirtualDirectory Name="bin">
+        <File Name="../../website/gettext.wesnoth.org/bin/update-gettext-stats"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="frontpage">
+      <VirtualDirectory Name="portrait-rotation">
+        <File Name="../../website/frontpage/portrait-rotation/README"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="tests.wesnoth.org">
+      <File Name="../../website/tests.wesnoth.org/INSTALL"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="resources">
+    <VirtualDirectory Name="portraits">
+      <VirtualDirectory Name="Kitty">
+        <File Name="../../resources/portraits/Kitty/README"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Alex_Jarocha-Ernst">
+        <File Name="../../resources/portraits/Alex_Jarocha-Ernst/README"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="image-localization">
+      <VirtualDirectory Name="templates">
+        <VirtualDirectory Name="lobby-icons">
+          <File Name="../../resources/image-localization/templates/lobby-icons/references"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="en@shaw">
+        <File Name="../../resources/image-localization/en@shaw/notes"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="cartography-tools">
+      <File Name="../../resources/cartography-tools/COPYING"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="CMakeFiles">
+    <VirtualDirectory Name="CompilerIdCXX">
+      <File Name="../../CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="CompilerIdC">
+      <File Name="../../CMakeFiles/CompilerIdC/CMakeCCompilerId.c"/>
+    </VirtualDirectory>
+    <File Name="../../CMakeFiles/Makefile2"/>
+  </VirtualDirectory>
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00010001N0005Debug000000000000]]>
@@ -1683,6 +1754,11 @@
     <File Name="../../po/LINGUAS"/>
     <File Name="../../po/SConscript"/>
     <File Name="../../po/Makefile"/>
+    <VirtualDirectory Name="wesnoth-ai">
+      <File Name="../../po/wesnoth-ai/LINGUAS"/>
+      <File Name="../../po/wesnoth-ai/Makevars"/>
+      <File Name="../../po/wesnoth-ai/FINDCFG"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="build">
     <VirtualDirectory Name="sconf_temp">
@@ -3087,6 +3163,7 @@
       </VirtualDirectory>
       <VirtualDirectory Name="unit_tree">
         <File Name="../../data/tools/unit_tree/TeamColorizer"/>
+        <File Name="../../data/tools/unit_tree/update-wmlunits"/>
       </VirtualDirectory>
       <VirtualDirectory Name="wesnoth">
         <File Name="../../data/tools/wesnoth/README"/>
@@ -3220,6 +3297,27 @@
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="src">
+    <VirtualDirectory Name="generators">
+      <VirtualDirectory Name="yamg">
+        <File Name="../../src/generators/yamg/yamg_hex.cpp"/>
+        <File Name="../../src/generators/yamg/yamg_decls.hpp"/>
+        <File Name="../../src/generators/yamg/yamg_hexheap.cpp"/>
+        <File Name="../../src/generators/yamg/yamg_hex.hpp"/>
+        <File Name="../../src/generators/yamg/yamg_params.hpp"/>
+        <File Name="../../src/generators/yamg/ya_mapgen.hpp"/>
+        <File Name="../../src/generators/yamg/yamg_params.cpp"/>
+        <File Name="../../src/generators/yamg/yamg_hexheap.hpp"/>
+        <File Name="../../src/generators/yamg/ya_mapgen.cpp"/>
+      </VirtualDirectory>
+      <File Name="../../src/generators/mapgen.cpp"/>
+      <File Name="../../src/generators/mapgen_dialog.hpp"/>
+      <File Name="../../src/generators/mapgen_dialog.cpp"/>
+      <File Name="../../src/generators/map_create.hpp"/>
+      <File Name="../../src/generators/cavegen.cpp"/>
+      <File Name="../../src/generators/mapgen.hpp"/>
+      <File Name="../../src/generators/map_create.cpp"/>
+      <File Name="../../src/generators/cavegen.hpp"/>
+    </VirtualDirectory>
     <VirtualDirectory Name="ana">
       <VirtualDirectory Name="apps">
         <VirtualDirectory Name="chat">
@@ -3276,25 +3374,28 @@
         <File Name="../../src/tests/utils/predicate.hpp"/>
         <File Name="../../src/tests/utils/play_scenario.cpp"/>
       </VirtualDirectory>
-      <File Name="../../src/tests/test_version.cpp"/>
-      <File Name="../../src/tests/test_sdl_utils.hpp"/>
+      <File Name="../../src/tests/floating_point_emulation.cpp"/>
+      <File Name="../../src/tests/test_addons.cpp"/>
       <File Name="../../src/tests/test_commandline_options.cpp"/>
       <File Name="../../src/tests/test_formula_function.cpp"/>
       <File Name="../../src/tests/test_formula_ai.cpp"/>
       <File Name="../../src/tests/test_image_modifications.cpp"/>
-      <File Name="../../src/tests/test_addons.cpp"/>
-      <File Name="../../src/tests/test_sdl_utils.cpp"/>
-      <File Name="../../src/tests/create_images.cpp"/>
-      <File Name="../../src/tests/test_whiteboard_side_actions.cpp"/>
-      <File Name="../../src/tests/test_network_worker.cpp"/>
-      <File Name="../../src/tests/test_unit_map.cpp"/>
       <File Name="../../src/tests/main.cpp"/>
-      <File Name="../../src/tests/floating_point_emulation.cpp"/>
-      <File Name="../../src/tests/test_serialization.cpp"/>
+      <File Name="../../src/tests/test_config.cpp"/>
       <File Name="../../src/tests/test_config_cache.cpp"/>
-      <File Name="../../src/tests/test_team.cpp"/>
-      <File Name="../../src/tests/test_util.cpp"/>
       <File Name="../../src/tests/test_lexical_cast.cpp"/>
+      <File Name="../../src/tests/test_make_enum.cpp"/>
+      <File Name="../../src/tests/test_map_location.cpp"/>
+      <File Name="../../src/tests/test_mp_connect.cpp"/>
+      <File Name="../../src/tests/test_network_worker.cpp"/>
+      <File Name="../../src/tests/test_sdl_utils.hpp"/>
+      <File Name="../../src/tests/test_sdl_utils.cpp"/>
+      <File Name="../../src/tests/test_serialization.cpp"/>
+      <File Name="../../src/tests/test_team.cpp"/>
+      <File Name="../../src/tests/test_unit_map.cpp"/>
+      <File Name="../../src/tests/test_util.cpp"/>
+      <File Name="../../src/tests/test_version.cpp"/>
+      <File Name="../../src/tests/test_whiteboard_side_actions.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="ai">
       <VirtualDirectory Name="testing">
@@ -3369,6 +3470,8 @@
         <File Name="../../src/ai/lua/core.hpp"/>
         <File Name="../../src/ai/lua/lua_object.hpp"/>
         <File Name="../../src/ai/lua/core.cpp"/>
+        <File Name="../../src/ai/lua/unit_advancements_aspect.cpp"/>
+        <File Name="../../src/ai/lua/unit_advancements_aspect.hpp"/>
       </VirtualDirectory>
       <File Name="../../src/ai/actions.hpp"/>
       <File Name="../../src/ai/registry.cpp"/>
@@ -3389,6 +3492,22 @@
       <File Name="../../src/ai/interface.hpp"/>
       <File Name="../../src/ai/configuration.hpp"/>
       <File Name="../../src/ai/testing.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="game_events">
+      <File Name="../../src/game_events/action_wml.cpp"/>
+      <File Name="../../src/game_events/action_wml.hpp"/>
+      <File Name="../../src/game_events/conditional_wml.cpp"/>
+      <File Name="../../src/game_events/conditional_wml.hpp"/>
+      <File Name="../../src/game_events/entity_location.cpp"/>
+      <File Name="../../src/game_events/entity_location.hpp"/>
+      <File Name="../../src/game_events/handlers.cpp"/>
+      <File Name="../../src/game_events/handlers.hpp"/>
+      <File Name="../../src/game_events/menu_item.cpp"/>
+      <File Name="../../src/game_events/menu_item.hpp"/>
+      <File Name="../../src/game_events/pump.cpp"/>
+      <File Name="../../src/game_events/pump.hpp"/>
+      <File Name="../../src/game_events/wmi_container.cpp"/>
+      <File Name="../../src/game_events/wmi_container.hpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="gui">
       <VirtualDirectory Name="lib">
@@ -3560,6 +3679,8 @@
         <VirtualDirectory Name="editor">
           <File Name="../../src/gui/dialogs/editor/editor_edit_label.cpp"/>
           <File Name="../../src/gui/dialogs/editor/editor_edit_label.hpp"/>
+          <File Name="../../src/gui/dialogs/editor/custom_tod.hpp"/>
+          <File Name="../../src/gui/dialogs/editor/custom_tod.cpp"/>
         </VirtualDirectory>
         <VirtualDirectory Name="lobby">
           <File Name="../../src/gui/dialogs/lobby/lobby_info.hpp"/>
@@ -3666,6 +3787,8 @@
         <File Name="../../src/gui/dialogs/editor_new_map.hpp"/>
         <File Name="../../src/gui/dialogs/title_screen.hpp"/>
         <File Name="../../src/gui/dialogs/mp_method_selection.cpp"/>
+        <File Name="../../src/gui/dialogs/edit_text.hpp"/>
+        <File Name="../../src/gui/dialogs/edit_text.cpp"/>
       </VirtualDirectory>
       <VirtualDirectory Name="widgets">
         <File Name="../../src/gui/widgets/minimap.hpp"/>
@@ -3791,6 +3914,10 @@
           <File Name="../../src/editor/action/mouse/mouse_action.cpp"/>
           <File Name="../../src/editor/action/mouse/mouse_action_map_label.hpp"/>
           <File Name="../../src/editor/action/mouse/mouse_action.hpp"/>
+          <File Name="../../src/editor/action/mouse/mouse_action_select.cpp"/>
+          <File Name="../../src/editor/action/mouse/mouse_action_item.cpp"/>
+          <File Name="../../src/editor/action/mouse/mouse_action_select.hpp"/>
+          <File Name="../../src/editor/action/mouse/mouse_action_item.hpp"/>
         </VirtualDirectory>
         <File Name="../../src/editor/action/action_label.hpp"/>
         <File Name="../../src/editor/action/action_village.cpp"/>
@@ -3801,6 +3928,10 @@
         <File Name="../../src/editor/action/action.cpp"/>
         <File Name="../../src/editor/action/action_unit.cpp"/>
         <File Name="../../src/editor/action/action.hpp"/>
+        <File Name="../../src/editor/action/action_select.hpp"/>
+        <File Name="../../src/editor/action/action_select.cpp"/>
+        <File Name="../../src/editor/action/action_item.hpp"/>
+        <File Name="../../src/editor/action/action_item.cpp"/>
       </VirtualDirectory>
       <VirtualDirectory Name="toolkit">
         <File Name="../../src/editor/toolkit/brush_bar.hpp"/>
@@ -3831,6 +3962,10 @@
         <File Name="../../src/editor/palette/palette_manager.hpp"/>
         <File Name="../../src/editor/palette/terrain_palettes.cpp"/>
         <File Name="../../src/editor/palette/palette_manager.cpp"/>
+        <File Name="../../src/editor/palette/tristate_button.hpp"/>
+        <File Name="../../src/editor/palette/item_palette.cpp"/>
+        <File Name="../../src/editor/palette/item_palette.hpp"/>
+        <File Name="../../src/editor/palette/tristate_button.cpp"/>
       </VirtualDirectory>
       <File Name="../../src/editor/editor_preferences.cpp"/>
       <File Name="../../src/editor/editor_main.cpp"/>
@@ -3877,6 +4012,8 @@
       <File Name="../../src/serialization/binary_or_text.hpp"/>
       <File Name="../../src/serialization/schema_validator.hpp"/>
       <File Name="../../src/serialization/tokenizer.cpp"/>
+      <File Name="../../src/serialization/unicode.cpp"/>
+      <File Name="../../src/serialization/unicode.hpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="nacl">
       <File Name="../../src/nacl/file_list.h"/>
@@ -4020,67 +4157,67 @@
       <File Name="../../src/actions/move.hpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="lua">
-      <File Name="../../src/lua/ldump.c"/>
+      <File Name="../../src/lua/ldump.cpp"/>
       <File Name="../../src/lua/README"/>
       <File Name="../../src/lua/lobject.h"/>
       <File Name="../../src/lua/lgc.h"/>
-      <File Name="../../src/lua/loadlib.c"/>
+      <File Name="../../src/lua/loadlib.cpp"/>
       <File Name="../../src/lua/lauxlib.h"/>
-      <File Name="../../src/lua/ltablib.c"/>
-      <File Name="../../src/lua/lstring.c"/>
+      <File Name="../../src/lua/ltablib.cpp"/>
+      <File Name="../../src/lua/lstring.cpp"/>
       <File Name="../../src/lua/lopcodes.h"/>
       <File Name="../../src/lua/lvm.h"/>
-      <File Name="../../src/lua/lgc.c"/>
-      <File Name="../../src/lua/lopcodes.c"/>
+      <File Name="../../src/lua/lgc.cpp"/>
+      <File Name="../../src/lua/lopcodes.cpp"/>
       <File Name="../../src/lua/lmem.h"/>
-      <File Name="../../src/lua/ltable.c"/>
+      <File Name="../../src/lua/ltable.cpp"/>
       <File Name="../../src/lua/llimits.h"/>
       <File Name="../../src/lua/lstate.h"/>
-      <File Name="../../src/lua/lapi.c"/>
-      <File Name="../../src/lua/lstrlib.c"/>
+      <File Name="../../src/lua/lapi.cpp"/>
+      <File Name="../../src/lua/lstrlib.cpp"/>
       <File Name="../../src/lua/ldebug.h"/>
       <File Name="../../src/lua/SConscript"/>
-      <File Name="../../src/lua/lstate.c"/>
+      <File Name="../../src/lua/lstate.cpp"/>
       <File Name="../../src/lua/lstring.h"/>
-      <File Name="../../src/lua/lundump.c"/>
-      <File Name="../../src/lua/luac.c"/>
-      <File Name="../../src/lua/lua.c"/>
+      <File Name="../../src/lua/lundump.cpp"/>
+      <File Name="../../src/lua/luac.cpp"/>
+      <File Name="../../src/lua/lua.cpp"/>
       <File Name="../../src/lua/ltm.h"/>
-      <File Name="../../src/lua/lparser.c"/>
-      <File Name="../../src/lua/ltm.c"/>
+      <File Name="../../src/lua/lparser.cpp"/>
+      <File Name="../../src/lua/ltm.cpp"/>
       <File Name="../../src/lua/lualib.h"/>
-      <File Name="../../src/lua/lzio.c"/>
+      <File Name="../../src/lua/lzio.cpp"/>
       <File Name="../../src/lua/lparser.h"/>
-      <File Name="../../src/lua/lbaselib.c"/>
-      <File Name="../../src/lua/loslib.c"/>
-      <File Name="../../src/lua/lfunc.c"/>
-      <File Name="../../src/lua/lbitlib.c"/>
-      <File Name="../../src/lua/liolib.c"/>
+      <File Name="../../src/lua/lbaselib.cpp"/>
+      <File Name="../../src/lua/loslib.cpp"/>
+      <File Name="../../src/lua/lfunc.cpp"/>
+      <File Name="../../src/lua/lbitlib.cpp"/>
+      <File Name="../../src/lua/liolib.cpp"/>
       <File Name="../../src/lua/lapi.h"/>
       <File Name="../../src/lua/lfunc.h"/>
       <File Name="../../src/lua/COPYRIGHT"/>
       <File Name="../../src/lua/lcode.h"/>
       <File Name="../../src/lua/ltable.h"/>
-      <File Name="../../src/lua/lauxlib.c"/>
+      <File Name="../../src/lua/lauxlib.cpp"/>
       <File Name="../../src/lua/lundump.h"/>
-      <File Name="../../src/lua/lmathlib.c"/>
-      <File Name="../../src/lua/ldebug.c"/>
+      <File Name="../../src/lua/lmathlib.cpp"/>
+      <File Name="../../src/lua/ldebug.cpp"/>
       <File Name="../../src/lua/lua.hpp"/>
       <File Name="../../src/lua/ldo.h"/>
-      <File Name="../../src/lua/lobject.c"/>
+      <File Name="../../src/lua/lobject.cpp"/>
       <File Name="../../src/lua/lctype.h"/>
       <File Name="../../src/lua/lzio.h"/>
       <File Name="../../src/lua/llex.h"/>
-      <File Name="../../src/lua/ldo.c"/>
-      <File Name="../../src/lua/linit.c"/>
+      <File Name="../../src/lua/ldo.cpp"/>
+      <File Name="../../src/lua/linit.cpp"/>
       <File Name="../../src/lua/lua.h"/>
-      <File Name="../../src/lua/lctype.c"/>
-      <File Name="../../src/lua/lvm.c"/>
-      <File Name="../../src/lua/llex.c"/>
-      <File Name="../../src/lua/lcode.c"/>
-      <File Name="../../src/lua/lmem.c"/>
-      <File Name="../../src/lua/lcorolib.c"/>
-      <File Name="../../src/lua/ldblib.c"/>
+      <File Name="../../src/lua/lctype.cpp"/>
+      <File Name="../../src/lua/lvm.cpp"/>
+      <File Name="../../src/lua/llex.cpp"/>
+      <File Name="../../src/lua/lcode.cpp"/>
+      <File Name="../../src/lua/lmem.cpp"/>
+      <File Name="../../src/lua/lcorolib.cpp"/>
+      <File Name="../../src/lua/ldblib.cpp"/>
       <File Name="../../src/lua/luaconf.h"/>
     </VirtualDirectory>
     <File Name="../../src/show_dialog.hpp"/>
@@ -4148,6 +4285,8 @@
     <File Name="../../src/tooltips.cpp"/>
     <File Name="../../src/race.hpp"/>
     <File Name="../../src/halo.cpp"/>
+    <File Name="../../src/game_board.cpp"/>
+    <File Name="../../src/game_board.hpp"/>
     <File Name="../../src/play_controller.cpp"/>
     <File Name="../../src/multiplayer_connect.cpp"/>
     <File Name="../../src/game_preferences_display.cpp"/>
@@ -4218,7 +4357,7 @@
     <File Name="../../src/hotkey_preferences_display.cpp"/>
     <File Name="../../src/sdl_utils.cpp"/>
     <File Name="../../src/key.hpp"/>
-    <File Name="../../src/builder.cpp"/>
+    <File Name="../../src/terrain_builder.cpp"/>
     <File Name="../../src/neon.hpp"/>
     <File Name="../../src/log.hpp"/>
     <File Name="../../src/formula_fwd.hpp"/>
@@ -4227,7 +4366,6 @@
     <File Name="../../src/playsingle_controller.hpp"/>
     <File Name="../../src/color_range.cpp"/>
     <File Name="../../src/log.cpp"/>
-    <File Name="../../src/game_events.hpp"/>
     <File Name="../../src/joystick.hpp"/>
     <File Name="../../src/font.cpp"/>
     <File Name="../../src/marked-up_text.cpp"/>
@@ -4289,9 +4427,9 @@
     <File Name="../../src/terrain_translation.hpp"/>
     <File Name="../../src/game_errors.hpp"/>
     <File Name="../../src/cavegen.cpp"/>
+    <File Name="../../src/make_enum.hpp"/>
     <File Name="../../src/map.cpp"/>
     <File Name="../../src/preferences_display.hpp"/>
-    <File Name="../../src/savegame_config.cpp"/>
     <File Name="../../src/statistics_dialog.hpp"/>
     <File Name="../../src/formula_function.cpp"/>
     <File Name="../../src/game_display.hpp"/>
@@ -4339,7 +4477,6 @@
     <File Name="../../src/mp_game_settings.cpp"/>
     <File Name="../../src/side_filter.hpp"/>
     <File Name="../../src/formula_string_utils.hpp"/>
-    <File Name="../../src/stub.hpp"/>
     <File Name="../../src/save_blocker.hpp"/>
     <File Name="../../src/map.hpp"/>
     <File Name="../../src/video.hpp"/>
@@ -4380,7 +4517,6 @@
     <File Name="../../src/color_range.hpp"/>
     <File Name="../../src/config_cache.cpp"/>
     <File Name="../../src/wml_separators.hpp"/>
-    <File Name="../../src/game_events.cpp"/>
     <File Name="../../src/network.cpp"/>
     <File Name="../../src/playmp_controller.cpp"/>
     <File Name="../../src/Makefile"/>
@@ -4398,6 +4534,16 @@
     <File Name="../../src/arrow.hpp"/>
     <File Name="../../src/multiplayer_lobby.cpp"/>
     <File Name="../../src/map_create.cpp"/>
+    <File Name="../../src/windows_tray_notification.hpp"/>
+    <File Name="../../src/movetype.cpp"/>
+    <File Name="../../src/game_config_manager.cpp"/>
+    <File Name="../../src/windows_tray_notification.cpp"/>
+    <File Name="../../src/revision.h"/>
+    <File Name="../../src/game_config_manager.hpp"/>
+    <File Name="../../src/movetype.hpp"/>
+    <File Name="../../src/leader_scroll_dialog.cpp"/>
+    <File Name="../../src/overlay.hpp"/>
+    <File Name="../../src/leader_scroll_dialog.hpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="utils">
     <VirtualDirectory Name="umc_dev">
@@ -4466,6 +4612,7 @@
     <File Name="../../utils/sanity_check"/>
     <File Name="../../utils/codecomp"/>
     <File Name="../../utils/change_textdomain"/>
+    <File Name="../../utils/autorevision"/>
   </VirtualDirectory>
   <VirtualDirectory Name="attic">
     <VirtualDirectory Name="maps">
@@ -4526,11 +4673,12 @@
       </Compiler>
       <Linker Options="" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="" IntermediateDirectory="./Debug" Command="exec ../../wesnoth" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)/../../" PauseExecWhenProcTerminates="yes"/>
+      <General OutputFile="" IntermediateDirectory="./Debug" Command="../../wesnoth" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)/../../" PauseExecWhenProcTerminates="yes"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>
       </Environment>
       <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <DebuggerSearchPaths/>
         <PostConnectCommands/>
         <StartupCommands/>
       </Debugger>
@@ -4571,6 +4719,7 @@
       ]]>
       </Environment>
       <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <DebuggerSearchPaths/>
         <PostConnectCommands/>
         <StartupCommands/>
       </Debugger>

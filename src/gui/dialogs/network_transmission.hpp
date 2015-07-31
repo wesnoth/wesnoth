@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2015 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,10 @@
 #include "gui/widgets/control.hpp"
 #include "network_asio.hpp"
 #include <boost/optional.hpp>
+#include "events.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tnetwork_transmission;
 
@@ -41,25 +43,26 @@ class tnetwork_transmission : public tdialog
 		network_asio::connection& connection_;
 		bool& track_upload_;
 		virtual void process(events::pump_info&);
-		public:
+
+	public:
 		pump_monitor(network_asio::connection& connection, bool& track_upload)
-			: connection_(connection)
-			, track_upload_(track_upload)
-			, window_()
+			: connection_(connection), track_upload_(track_upload), window_()
 		{
 		}
 
 		boost::optional<twindow&> window_;
 	} pump_monitor_;
-public:
 
-	tnetwork_transmission(
-		  network_asio::connection& connection
-		, const std::string& title
-		, const std::string& subtitle);
+public:
+	tnetwork_transmission(network_asio::connection& connection,
+						  const std::string& title,
+						  const std::string& subtitle);
 
 	void set_subtitle(const std::string&);
-	void set_track_upload(bool track_upload) { track_upload_ = track_upload; }
+	void set_track_upload(bool track_upload)
+	{
+		track_upload_ = track_upload;
+	}
 
 protected:
 	/** Inherited from tdialog. */
@@ -72,7 +75,7 @@ private:
 	/**
 	 * The subtitle for the dialog.
 	 *
-	 * This field commenly shows the action in progress eg connecting,
+	 * This field commonly shows the action in progress eg connecting,
 	 * uploading, downloading etc..
 	 */
 	std::string subtitle_;
@@ -84,4 +87,3 @@ private:
 } // namespace gui2
 
 #endif
-

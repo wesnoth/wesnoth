@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,15 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "show_dialog.hpp"
+
+#include "construct_dialog.hpp"
 #include "display.hpp"
+#include "floating_label.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"
-#include "help.hpp"
+#include "help/help.hpp"
+#include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 
@@ -41,7 +46,7 @@ const int ButtonVPadding = 10;
 //note: style names are directly related to the panel image file names
 const dialog_frame::style dialog_frame::default_style("opaque", 0);
 const dialog_frame::style dialog_frame::message_style("translucent65", 3);
-const dialog_frame::style dialog_frame::preview_style("../misc/selection", 0);
+const dialog_frame::style dialog_frame::preview_style("../dialogs/selection", 0);
 const dialog_frame::style dialog_frame::titlescreen_style("translucent54", 1);
 
 const int dialog_frame::title_border_w = 10;
@@ -85,6 +90,18 @@ dialog_frame::dialog_frame(CVideo &video, const std::string& title,
 	restorer_(NULL),
 	auto_restore_(auto_restore),
 	dim_(),
+#ifdef SDL_GPU
+	top_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-top.png")),
+	bot_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-bottom.png")),
+	left_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-left.png")),
+	right_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-right.png")),
+	top_left_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-topleft.png")),
+	bot_left_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-botleft.png")),
+	top_right_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-topright.png")),
+	bot_right_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-botright.png")),
+	bg_(image::get_texture("dialogs/" + dialog_style_.panel + "-background.png")),
+	have_border_(!top_.null() && !bot_.null() && !left_.null() && !right_.null())
+#else
 	top_(image::get_image("dialogs/" + dialog_style_.panel + "-border-top.png")),
 	bot_(image::get_image("dialogs/" + dialog_style_.panel + "-border-bottom.png")),
 	left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-left.png")),
@@ -95,6 +112,7 @@ dialog_frame::dialog_frame(CVideo &video, const std::string& title,
 	bot_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botright.png")),
 	bg_(image::get_image("dialogs/" + dialog_style_.panel + "-background.png")),
 	have_border_(top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL)
+#endif
 {
 }
 
@@ -104,7 +122,7 @@ dialog_frame::~dialog_frame()
 }
 
 dialog_frame::dimension_measurements::dimension_measurements() :
-	interior(empty_rect), exterior(empty_rect), title(empty_rect), button_row(empty_rect)
+	interior(sdl::empty_rect), exterior(sdl::empty_rect), title(sdl::empty_rect), button_row(sdl::empty_rect)
 {}
 
 dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) {
@@ -114,7 +132,11 @@ dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) 
 int dialog_frame::top_padding() const {
 	int padding = 0;
 	if(have_border_) {
+#ifdef SDL_GPU
+		padding += top_.height();
+#else
 		padding += top_->h;
+#endif
 	}
 	if(!title_.empty()) {
 		padding += font::get_max_height(font::SIZE_LARGE) + 2*dialog_frame::title_border_h;
@@ -130,7 +152,11 @@ int dialog_frame::bottom_padding() const {
 		}
 	}
 	if(have_border_) {
+#ifdef SDL_GPU
+		padding += bot_.height();
+#else
 		padding += bot_->h;
+#endif
 	}
 	return padding;
 }
@@ -167,10 +193,17 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 
 	SDL_Rect bounds = screen_area();
 	if(have_border_) {
+#ifdef SDL_GPU
+		bounds.x += left_.width();
+		bounds.y += top_.height();
+		bounds.w -= left_.width();
+		bounds.h -= top_.height();
+#else
 		bounds.x += left_->w;
 		bounds.y += top_->h;
 		bounds.w -= left_->w;
 		bounds.h -= top_->h;
+#endif
 	}
 	if(x < bounds.x) {
 		w += x;
@@ -195,10 +228,17 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	dim_.interior.w = w;
 	dim_.interior.h = h;
 	if(have_border_) {
+#ifdef SDL_GPU
+		dim_.exterior.x = dim_.interior.x - left_.width();
+		dim_.exterior.y = dim_.interior.y - top_.height();
+		dim_.exterior.w = dim_.interior.w + left_.width() + right_.width();
+		dim_.exterior.h = dim_.interior.h + top_.height() + bot_.height();
+#else
 		dim_.exterior.x = dim_.interior.x - left_->w;
 		dim_.exterior.y = dim_.interior.y - top_->h;
 		dim_.exterior.w = dim_.interior.w + left_->w + right_->w;
 		dim_.exterior.h = dim_.interior.h + top_->h + bot_->h;
+#endif
 	} else {
 		dim_.exterior = dim_.interior;
 	}
@@ -213,6 +253,28 @@ void dialog_frame::draw_border()
 		return;
 	}
 
+#ifdef SDL_GPU
+	top_.set_hscale(float(dim_.interior.w )/ top_.base_width());
+	video_.draw_texture(top_, dim_.interior.x, dim_.exterior.y);
+
+	bot_.set_hscale(float(dim_.interior.w) / bot_.base_width());
+	video_.draw_texture(bot_, dim_.interior.x, dim_.interior.y + dim_.interior.h);
+
+	left_.set_vscale(float(dim_.interior.h) / left_.base_height());
+	video_.draw_texture(left_, dim_.exterior.x, dim_.interior.y);
+
+	right_.set_vscale(float(dim_.interior.h) / right_.base_height());
+	video_.draw_texture(right_, dim_.interior.x + dim_.interior.w, dim_.interior.y);
+
+	if(top_left_.null() || bot_left_.null() || top_right_.null() || bot_right_.null()) {
+		return;
+	}
+
+	video_.draw_texture(top_left_, dim_.interior.x - left_.width(), dim_.interior.y - top_.height());
+	video_.draw_texture(bot_left_, dim_.interior.x - left_.width(), dim_.interior.y + dim_.interior.h + bot_.height() - bot_left_.height());
+	video_.draw_texture(top_right_, dim_.interior.x + dim_.interior.w + right_.width() - top_right_.width(), dim_.interior.y - top_.height());
+	video_.draw_texture(bot_right_, dim_.interior.x + dim_.interior.w + right_.width() - bot_right_.width(), dim_.interior.y + dim_.interior.h + bot_.height() - bot_right_.height());
+#else
 	surface top_image(scale_surface(top_, dim_.interior.w, top_->h));
 
 	if(top_image != NULL) {
@@ -247,6 +309,7 @@ void dialog_frame::draw_border()
 	video_.blit_surface(dim_.interior.x - left_->w, dim_.interior.y + dim_.interior.h + bot_->h - bot_left_->h, bot_left_);
 	video_.blit_surface(dim_.interior.x + dim_.interior.w + right_->w - top_right_->w, dim_.interior.y - top_->h, top_right_);
 	video_.blit_surface(dim_.interior.x + dim_.interior.w + right_->w - bot_right_->w, dim_.interior.y + dim_.interior.h + bot_->h - bot_right_->h, bot_right_);
+#endif
 }
 
 void dialog_frame::clear_background()
@@ -268,8 +331,26 @@ void dialog_frame::draw_background()
 		sdl_blit(surf, NULL, video_.getSurface(), &dim_.exterior);
 	}
 
+#ifdef SDL_GPU
+	if(bg_.null()) {
+		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'" << std::endl;
+		return;
+	}
+	for(int i = 0; i < dim_.interior.w; i += bg_.width()) {
+		for(int j = 0; j < dim_.interior.h; j += bg_.height()) {
+			SDL_Rect src = {0,0,0,0};
+			src.w = std::min(dim_.interior.w - i, bg_.width());
+			src.h = std::min(dim_.interior.h - j, bg_.height());
+			SDL_Rect dst = src;
+			dst.x = dim_.interior.x + i;
+			dst.y = dim_.interior.y + j;
+			bg_.set_clip(src);
+			video_.draw_texture(bg_, dst.x, dst.y);
+		}
+	}
+#else
 	if(bg_ == NULL) {
-		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'\n";
+		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'" << std::endl;
 		return;
 	}
 	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
@@ -283,12 +364,12 @@ void dialog_frame::draw_background()
 			sdl_blit(bg_, &src, video_.getSurface(), &dst);
 		}
 	}
+#endif
 }
 
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
-	SDL_Rect rect = {0, 0, 10000, 10000};
-	rect = screen_area();
+	SDL_Rect rect = screen_area();
 	return font::draw_text(video, rect, font::SIZE_LARGE, font::TITLE_COLOR,
 	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_BOLD);
 }
@@ -340,9 +421,10 @@ private:
 		}
 	}
 
-	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int /*index*/) const
+	bool can_execute_command(const hotkey::hotkey_command& cmd, int /*index*/) const
 	{
-		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
+		hotkey::HOTKEY_COMMAND command = cmd.id;
+		return (topic_.empty() == false && command == hotkey::HOTKEY_HELP) || command == hotkey::HOTKEY_SCREENSHOT;
 	}
 
 	display& disp_;

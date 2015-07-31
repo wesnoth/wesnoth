@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,12 +24,13 @@
 
 #include "utils/foreach.tpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include <string>
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
 struct tgui_definition;
 class ttip;
@@ -79,12 +80,11 @@ class tunit_test_access_only
  * @param id                      The id of the widget to register.
  * @param functor                 The function to load the definitions.
  */
-void register_widget(const std::string& id
-		, boost::function<void(
-			  tgui_definition& gui_definition
-			, const std::string& definition_type
-			, const config& cfg
-			, const char *key)> functor);
+void register_widget(const std::string& id,
+					 boost::function<void(tgui_definition& gui_definition,
+										  const std::string& definition_type,
+										  const config& cfg,
+										  const char* key)> functor);
 
 /**
  * Loads the definitions of a widget.
@@ -97,9 +97,9 @@ void register_widget(const std::string& id
  *                                object.
  */
 void load_widget_definitions(
-	  tgui_definition& gui_definition
-	, const std::string& definition_type
-	, const std::vector<tcontrol_definition_ptr>& definitions);
+		tgui_definition& gui_definition,
+		const std::string& definition_type,
+		const std::vector<tcontrol_definition_ptr>& definitions);
 
 /**
  * Loads the definitions of a widget.
@@ -112,21 +112,21 @@ void load_widget_definitions(
  *                                belongs to.
  * @param definition_type         The type of the widget whose definitions are
  *                                to be loaded.
- * @param config                  The config to serialiaze the definitions
+ * @param cfg                     The config to serialise the definitions
  *                                from.
  * @param key                     Optional id of the definition to load.
  */
-template<class T>
-void load_widget_definitions(
-	  tgui_definition& gui_definition
-	, const std::string& definition_type
-	, const config& cfg
-	, const char *key)
+template <class T>
+void load_widget_definitions(tgui_definition& gui_definition,
+							 const std::string& definition_type,
+							 const config& cfg,
+							 const char* key)
 {
 	std::vector<tcontrol_definition_ptr> definitions;
 
-	FOREACH(const AUTO& definition
-			, cfg.child_range(key ? key : definition_type + "_definition")) {
+	FOREACH(const AUTO & definition,
+			cfg.child_range(key ? key : definition_type + "_definition"))
+	{
 
 		definitions.push_back(new T(definition));
 	}
@@ -135,74 +135,76 @@ void load_widget_definitions(
 }
 
 
-	tresolution_definition_ptr get_control(
-		const std::string& control_type, const std::string& definition);
+tresolution_definition_ptr get_control(const std::string& control_type,
+									   const std::string& definition);
 
-	/** Helper struct to signal that get_window_builder failed. */
-	struct twindow_builder_invalid_id {};
+/** Helper struct to signal that get_window_builder failed. */
+struct twindow_builder_invalid_id
+{
+};
 
-	/**
-	 * Returns an interator to the requested builder.
-	 *
-	 * The builder is determined by the @p type and the current screen
-	 * resolution.
-	 *
-	 * @pre                       There is a valid builder for @p type at the
-	 *                            current resolution.
-	 *
-	 * @throw twindow_builder_invalid_id
-	 *                            When the precondition is violated.
-	 *
-	 * @param type                The type of builder window to get.
-	 *
-	 * @returns                   An iterator to the requested builder.
-	 */
-	std::vector<twindow_builder::tresolution>::const_iterator
-		get_window_builder(const std::string& type);
+/**
+ * Returns an interator to the requested builder.
+ *
+ * The builder is determined by the @p type and the current screen
+ * resolution.
+ *
+ * @pre                       There is a valid builder for @p type at the
+ *                            current resolution.
+ *
+ * @throw twindow_builder_invalid_id
+ *                            When the precondition is violated.
+ *
+ * @param type                The type of builder window to get.
+ *
+ * @returns                   An iterator to the requested builder.
+ */
+std::vector<twindow_builder::tresolution>::const_iterator
+get_window_builder(const std::string& type);
 
-	/** Loads the setting for the theme. */
-	void load_settings();
+/** Loads the setting for the theme. */
+void load_settings();
 
-	/** This namespace contains the 'global' settings. */
-	namespace settings {
+/** This namespace contains the 'global' settings. */
+namespace settings
+{
 
-		/**
-		 * The screen resolution should be available for all widgets since
-		 * their drawing method will depend on it.
-		 */
-		extern unsigned screen_width;
-		extern unsigned screen_height;
+/**
+ * The screen resolution should be available for all widgets since
+ * their drawing method will depend on it.
+ */
+extern unsigned screen_width;
+extern unsigned screen_height;
 
-		/**
-		 * The offset between the left edge of the screen and the gamemap.
-		 */
-		extern unsigned gamemap_x_offset;
+/**
+ * The offset between the left edge of the screen and the gamemap.
+ */
+extern unsigned gamemap_x_offset;
 
-		/**
-		 * The size of the map area, if not available equal to the screen
-		 * size.
-		 */
-		extern unsigned gamemap_width;
-		extern unsigned gamemap_height;
+/**
+ * The size of the map area, if not available equal to the screen
+ * size.
+ */
+extern unsigned gamemap_width;
+extern unsigned gamemap_height;
 
-		/** These are copied from the active gui. */
-		extern unsigned popup_show_delay;
-		extern unsigned popup_show_time;
-		extern unsigned help_show_time;
-		extern unsigned double_click_time;
-		extern unsigned repeat_button_repeat_time;
+/** These are copied from the active gui. */
+extern unsigned popup_show_delay;
+extern unsigned popup_show_time;
+extern unsigned help_show_time;
+extern unsigned double_click_time;
+extern unsigned repeat_button_repeat_time;
 
-		extern std::string sound_button_click;
-		extern std::string sound_toggle_button_click;
-		extern std::string sound_toggle_panel_click;
-		extern std::string sound_slider_adjust;
+extern std::string sound_button_click;
+extern std::string sound_toggle_button_click;
+extern std::string sound_toggle_panel_click;
+extern std::string sound_slider_adjust;
 
-		extern t_string has_helptip_message;
+extern t_string has_helptip_message;
 
-		std::vector<ttip> get_tips();
-	}
+std::vector<ttip> get_tips();
+}
 
 } // namespace gui2
 
 #endif
-

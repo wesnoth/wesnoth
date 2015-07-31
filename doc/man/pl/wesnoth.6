@@ -65,17 +65,11 @@ trudności kampanii.
 Identyfikator scenariusza ze wskazanej kampanii. Domyślnie wczytywany jest
 pierwszy scenariusz.
 .TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-ustawia katalog konfiguracyjny użytkownika na \fIname\fP w ramach katalogu
-$HOME lub (w przypadku systemów Windows) "My Documents\eMy Games". Można też
-podać ścieżkę bezwzględną katalogu konfiguracyjnego poza katalogiem $HOME
-lub "My Documents\eMy Games".
-.TP 
-\fB\-\-config\-path\fP
-wyświetla ścieżkę katalogu konfiguracyjnego użytkownika i kończy działanie.
-.TP 
 \fB\-\-data\-dir <katalog>\fP
 używa podanego katalogu danych zamiast domyślnego.
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 aktywuje dodatkowe opcje trybu poleceń w grze (więcej informacji o trybie
@@ -193,6 +187,24 @@ błędy sprawdzenie poprawności są traktowane jako błędy krytyczne.
 \fB\-t, \-\-test\fP
 uruchamia grę z małym scenariuszem testowym.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+wyświetla ścieżkę katalogu konfiguracyjnego użytkownika i kończy działanie.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 przyjmuje, że zawartość pamięci podręcznej jest poprawna (niebezpieczne).
 .TP 
@@ -237,6 +249,10 @@ skryptów.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 uruchamia grę bez graficznego interfejsu użytkownika (GUI). Aby osiągnać

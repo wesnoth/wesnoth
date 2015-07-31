@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,11 +18,9 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
-
-twindow_definition::twindow_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+namespace gui2
 {
+
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_window
@@ -42,18 +40,19 @@ twindow_definition::twindow_definition(const config& cfg)
  * @end{tag}{name="window_definition"}
  * @end{parent}{name="gui/"}
  */
-
+twindow_definition::twindow_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
 	DBG_GUI_P << "Parsing window " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
 twindow_definition::tresolution::tresolution(const config& cfg)
-	: tpanel_definition::tresolution(cfg)
-	, grid(NULL)
+	: tpanel_definition::tresolution(cfg), grid(NULL)
 {
-	const config &child = cfg.child("grid");
-//	VALIDATE(child, _("No grid defined."));
+	const config& child = cfg.child("grid");
+	// VALIDATE(child, _("No grid defined."));
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
@@ -62,4 +61,3 @@ twindow_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Dominic Bolin <dominic.bolin@exong.net>
+   Copyright (C) 2006 - 2015 by Dominic Bolin <dominic.bolin@exong.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,7 @@ enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(NULL),
-		loc(map_location::null_location) {};
+		loc(map_location::null_location()) {}
 	void set(value_modifier t, int val, const config *abil,const map_location &l);
 	value_modifier type;
 	int value;

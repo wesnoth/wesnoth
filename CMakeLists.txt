@@ -22,12 +22,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(SDL 1.2.7 REQUIRED)
 find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system)
+find_package(Boost 1.40 REQUIRED COMPONENTS random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
-# yes, libintl is *required* even when NLS is deactivated (this is to compile
-# src/gettext.cpp since it includes libintl.h)
-find_package(Libintl REQUIRED)
 
 find_package(X11)
 
@@ -36,14 +34,17 @@ if(NOT MSVC)
 	set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
 	exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
 	add_definitions(${SDL_CFLAGS})
+endif(NOT MSVC)
 
+if(NOT WIN32)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 	add_definitions(-DLUA_USE_POSIX)
-endif(NOT MSVC)
+endif(NOT WIN32)
 
 if(MSVC)
 	add_definitions(-D_SCL_SECURE_NO_WARNINGS)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+	add_definitions(-DNOMINMAX)
 endif(MSVC)
 
 #check for some compiler/arch specific things and export defines accordingly...
@@ -77,10 +78,23 @@ option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
 option(ENABLE_SERVER "Enable compilation of server" ON)
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
+option(ENABLE_SDL2_TOOLS "Enable building and installation of tools for testing with SDL2" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
+option(ENABLE_PANDORA "Add support for the OpenPandora by adding support for the resolution of 800x480 and switching to a special theme" OFF)
+option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental)" OFF)
+option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
+option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
+option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
+
+# if no build type is specified, it can happen that the game is built without
+# optimization (c.f. bug #23445), work around this by enforcing "release" type
+# if nothing was selected
+if(NOT CMAKE_BUILD_TYPE)
+	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
@@ -130,10 +144,9 @@ if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 
-option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
+option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
 option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
-option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
 
 #misc options
@@ -228,7 +241,10 @@ endif(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 set(CXX_FLAGS_PROJECT)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-std=c++98" HAS_COMPILER_FLAG_STD)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-W" HAS_COMPILER_FLAG_W)
+# MSVC's -Wall is not like gcc's, it really enables *all* warnings which include zillions for system headers and doesn't make sense.
+if(NOT MSVC)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-Wall" HAS_COMPILER_FLAG_WALL)
+endif(NOT MSVC)
 
 
 ### Set strict compiler flags.
@@ -280,9 +296,16 @@ check_compiler_has_flag(
 	"-Wno-mismatched-tags"
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wnull-conversion"
+	HAS_COMPILER_FLAG_WNULL_CONVERSION
+	"-Wno-null-conversion"
+)
+
 if(NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Silences warnings about overloaded virtuals.
-	# (GCC doesn't complain Clang does.)
+	# (GCC doesn't complain Clang 3.2 does. Clang 3.4 no longer does.)
 	check_compiler_has_flag(
 		CXX_FLAGS_STRICT_COMPILATION
 		"-Woverloaded-virtual"
@@ -290,6 +313,19 @@ if(NOT CMAKE_COMPILER_IS_GNUCXX)
 		"-Wno-overloaded-virtual"
 	)
 endif(NOT CMAKE_COMPILER_IS_GNUCXX)
+
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wold-style-cast"
+	HAS_COMPILER_FLAG_WOLD_STYLE_CAST
+)
+
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wdeprecated-register"
+	HAS_COMPILER_FLAG_WDEPRECATED_REGISTER
+	"-Wno-deprecated-register"
+)
 
 
 ### Set pedantic compiler flags.
@@ -373,6 +409,24 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WDOCUMENTATION
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wdocumentation-deprecated-sync"
+	HAS_COMPILER_FLAG_WDOCUMENTATION
+	"-Wno-documentation-deprecated-sync"
+)
+
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wextra-semi"
+	HAS_COMPILER_FLAG_WEXTRA_SEMI
+)
+
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wconditional-uninitialized"
+	HAS_COMPILER_FLAG_WCONDITIONAL_INITIALIZED
+)
 
 ### Set the final compiler flags.
 
@@ -417,6 +471,40 @@ endif(X11_FOUND)
 
 add_definitions(-DLOCALEDIR=\\\"${LOCALEDIR}\\\")
 
+# -NDEBUG is automatically added to all release build types, so manually remove
+# this define from the related variables
+MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELEASE")
+separate_arguments(CMAKE_CXX_FLAGS_RELEASE)
+list(REMOVE_ITEM CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_RELEASE")
+separate_arguments(CMAKE_C_FLAGS_RELEASE)
+list(REMOVE_ITEM CMAKE_C_FLAGS_RELEASE "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELWITHDEBINFO")
+separate_arguments(CMAKE_CXX_FLAGS_RELWITHDEBINFO)
+list(REMOVE_ITEM CMAKE_CXX_FLAGS_RELWITHDEBINFO "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_RELWITHDEBINFO")
+separate_arguments(CMAKE_C_FLAGS_RELWITHDEBINFO)
+list(REMOVE_ITEM CMAKE_C_FLAGS_RELWITHDEBINFO "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+set(CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_MINSIZEREL")
+separate_arguments(CMAKE_CXX_FLAGS_MINSIZEREL)
+list(REMOVE_ITEM CMAKE_CXX_FLAGS_MINSIZEREL "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}")
+set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_MINSIZEREL")
+separate_arguments(CMAKE_C_FLAGS_MINSIZEREL)
+list(REMOVE_ITEM CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
+set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
+
+
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
 if(LOCALEDIR MATCHES "^/")
@@ -436,7 +524,7 @@ endif(PREFERENCES_DIR)
 
 if(DEFAULT_PREFS_FILE)
 	add_definitions(-DDEFAULT_PREFS_PATH=\\\"${DEFAULT_PREFS_FILE}\\\")
-	
+
 	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
 	endif(NOT DEFAULT_PREFS_FILE MATCHES "^/")
@@ -445,6 +533,10 @@ endif(DEFAULT_PREFS_FILE)
 if(ENABLE_LOW_MEM)
 	add_definitions(-DLOW_MEM)
 endif(ENABLE_LOW_MEM)
+
+if(ENABLE_PANDORA)
+	add_definitions(-DPANDORA)
+endif(ENABLE_PANDORA)
 
 if(ENABLE_OMP)
 	find_package(OpenMP REQUIRED)
@@ -464,12 +556,13 @@ if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL_image 1.2 REQUIRED )
 endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
-	find_package( SDL_mixer 1.2 REQUIRED )
+	find_package( SDL_mixer 1.2.12 REQUIRED )
 	find_package( SDL_ttf 2.0.8 REQUIRED )
 
 	if(NOT MSVC)
+		find_package(VorbisFile REQUIRED)
 		find_package( PkgConfig REQUIRED )
-		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.24.4 )
+		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
         pkg_check_modules( SYSTEMD systemd )
 	endif(NOT MSVC)
@@ -485,13 +578,16 @@ endif(ENABLE_TOOLS)
 if(ENABLE_TESTS)
 	find_package( Boost 1.36 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
+
 if(ENABLE_GAME)
-	find_package( FriBiDi )
-	if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
-		add_definitions(-DHAVE_FRIBIDI)
-	elseif(ENABLE_FRIBIDI AND NOT FRIBIDI_LIBRARIES)
-		message("Could not find FriBiDi. Disabling FriBiDi support.")
-	endif()
+	if(ENABLE_FRIBIDI)
+		PKG_CHECK_MODULES(FRIBIDI fribidi>=0.10.9)
+		if(FRIBIDI_FOUND)
+			add_definitions(-DHAVE_FRIBIDI)
+		elseif(NOT FRIBIDI_FOUND)
+			message("Could not find FriBiDi. Disabling FriBiDi support.")
+		endif(FRIBIDI_FOUND)
+	endif(ENABLE_FRIBIDI)
 
 	if(ENABLE_NOTIFICATIONS)
 		pkg_check_modules(LIBDBUS dbus-1)
@@ -500,9 +596,38 @@ if(ENABLE_GAME)
 		else(LIBDBUS_FOUND)
 			message("Could not find dbus-1, Disabling notification support.")
 		endif(LIBDBUS_FOUND)
-	endif(ENABLE_NOTIFICATIONS)
+	else()
+		unset(LIBDBUS_FOUND CACHE)
+	endif()
 
+	find_package( PNG )
+	if(ENABLE_LIBPNG AND PNG_FOUND)
+		add_definitions(-DHAVE_LIBPNG)
+	else(ENABLE_LIBPNG AND PNG_FOUND)
+		message("Could not find lib PNG. Disabling support for writing PNG images.")	
+	endif(ENABLE_LIBPNG AND PNG_FOUND)
+
+	find_package( History )
+	if(ENABLE_HISTORY AND HISTORY_FOUND)
+		add_definitions(-DHAVE_HISTORY)
+	else(ENABLE_HISTORY AND HISTORY_FOUND)
+		message("Could not find GNU history. Disabling support for command history in lua console.")
+	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
+
+if(ENABLE_GAME OR ENABLE_SERVER)
+	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
+
+	if(NOT ENABLE_LIBINTL)
+		find_package( Boost 1.48 REQUIRED COMPONENTS locale )
+	else()
+		find_package( Libintl REQUIRED )
+		if(WIN32)
+			# CMake 2.6 doesn't do message(WARNING ...)
+			message("Warning: Using libintl on Windows instead of Boost.Locale may result in issues with translations and Unicode file paths!")
+		endif()
+	endif()
+endif(ENABLE_GAME OR ENABLE_SERVER)
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)
@@ -548,15 +673,6 @@ if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
 	install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
 	install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
-
-	# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-	#    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
-	#    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
-	#    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
-	# install the generated .desktop file
-	#    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
-	install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
-	install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 

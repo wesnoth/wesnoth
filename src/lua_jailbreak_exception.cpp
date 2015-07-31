@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ void tlua_jailbreak_exception::rethrow()
 	/*
 	 * We need to call tlua_jailbreak_exception::clear() after the exception
 	 * is thrown. The most straightforward approach would be a small helper
-	 * class calling clear in its destructor, but alas g++ then compains about
+	 * class calling clear in its destructor, but alas g++ then complains about
 	 * an unused variable. Since we're sure there will be something thrown use
 	 * that fact to make sure the the function is called.
 	 */

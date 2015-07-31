@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,22 +30,28 @@
 
 #include "global.hpp"
 
-#include <map>
+#include <ctime>
 #include <iosfwd>
+#include <iterator>
+#include <map>
+#include <string>
+#include <utility>
 #include <vector>
 
 #include <boost/exception/exception.hpp>
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/variant.hpp>
 
-#include "game_errors.hpp"
+#include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/add_const.hpp>
+#include <boost/type_traits/is_base_of.hpp>
+
+#include "exceptions.hpp"
 #include "tstring.hpp"
-#include "wesconfig.h"
 
 class config;
-struct tconfig_implementation;
-class vconfig;
-struct lua_State;
+class enum_tag;
 
 bool operator==(const config &, const config &);
 inline bool operator!=(const config &a, const config &b) { return !operator==(a, b); }
@@ -115,11 +121,12 @@ public:
 	struct child_iterator
 	{
 		typedef config value_type;
-		typedef std::forward_iterator_tag iterator_category;
+		typedef std::random_access_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef config *pointer;
 		typedef config &reference;
 		typedef child_list::iterator Itor;
+		typedef child_iterator this_type;
 		explicit child_iterator(const Itor &i): i_(i) {}
 
 		child_iterator &operator++() { ++i_; return *this; }
@@ -133,6 +140,19 @@ public:
 		bool operator==(const child_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const child_iterator &i) const { return i_ != i.i_; }
 
+		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
+		friend bool operator>=(const this_type& a, const this_type& b) { return a.i_ >= b.i_; }
+		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+
+		this_type& operator+=(Itor::difference_type n) { i_ += n; return *this; }
+		this_type& operator-=(Itor::difference_type n) { i_ -= n; return *this; }
+
+		config &operator[](Itor::difference_type n) const { return *i_[n]; }
+		friend Itor::difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
+		friend this_type operator-(const this_type& a, Itor::difference_type n) { return this_type(a.i_ - n); }
+		friend this_type operator+(const this_type& a, Itor::difference_type n) { return this_type(a.i_ + n); }
+		friend this_type operator+(Itor::difference_type n, const this_type& a) { return this_type(a.i_ + n); }
 	private:
 		Itor i_;
 		friend struct const_child_iterator;
@@ -141,11 +161,12 @@ public:
 	struct const_child_iterator
 	{
 		typedef config value_type;
-		typedef std::forward_iterator_tag iterator_category;
+		typedef std::random_access_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef const config *pointer;
 		typedef const config &reference;
 		typedef child_list::const_iterator Itor;
+		typedef const_child_iterator this_type;
 		explicit const_child_iterator(const Itor &i): i_(i) {}
 		const_child_iterator(const child_iterator &i): i_(i.i_) {}
 
@@ -159,6 +180,20 @@ public:
 
 		bool operator==(const const_child_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const const_child_iterator &i) const { return i_ != i.i_; }
+
+		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
+		friend bool operator>=(const this_type& a, const this_type& b) { return a.i_ >= b.i_; }
+		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+
+		this_type& operator+=(Itor::difference_type n) { i_ += n; return *this; }
+		this_type& operator-=(Itor::difference_type n) { i_ -= n; return *this; }
+
+		const config &operator[](Itor::difference_type n) const { return *i_[n]; }
+		friend Itor::difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
+		friend this_type operator-(const this_type& a, Itor::difference_type n) { return this_type(a.i_ - n); }
+		friend this_type operator+(const this_type& a, Itor::difference_type n) { return this_type(a.i_ + n); }
+		friend this_type operator+(Itor::difference_type n, const this_type& a) { return this_type(a.i_ + n); }
 
 	private:
 		Itor i_;
@@ -178,6 +213,7 @@ public:
 	{
 		/// A wrapper for bool to get the correct streaming ("true"/"false").
 		/// Most visitors can simply treat this as bool.
+	public:
 		class true_false
 		{
 			bool value_;
@@ -205,7 +241,9 @@ public:
 			                  config::attribute_value::s_no; }
 		};
 		friend std::ostream& operator<<(std::ostream &os, const yes_no &v);
-
+	private:
+		/// Visitor for checking equality.
+		class equality_visitor;
 		/// Visitor for converting a variant to a string.
 		class string_visitor;
 
@@ -251,7 +289,11 @@ public:
 		attribute_value &operator=(const char *v)   { return operator=(std::string(v)); }
 		attribute_value &operator=(const std::string &v);
 		attribute_value &operator=(const t_string &v);
-
+		template<typename T>
+		typename boost::enable_if<boost::is_base_of<enum_tag, T>, attribute_value &>::type operator=(const T &v)
+		{
+			return operator=(T::enum_to_string(v));
+		}
 		// Extracting as a specific type:
 		bool to_bool(bool def = false) const;
 		int to_int(int def = 0) const;
@@ -262,6 +304,16 @@ public:
 		double to_double(double def = 0.) const;
 		std::string str() const;
 		t_string t_str() const;
+		/**
+			@param T a type created with MAKE_ENUM macro
+			NOTE: since T::VALUE constants is not of type T but of the underlying enum type you must specify the template parameter explicitly
+			TODO: Fix this in c++11 using constexpr types.
+		*/
+		template<typename T>
+		typename boost::enable_if<boost::is_base_of<enum_tag, T>, T>::type to_enum(const T &v) const
+		{
+			return T::string_to_enum(this->str(), v);
+		}
 
 		// Implicit conversions:
 		operator int() const { return to_int(); }
@@ -278,6 +330,31 @@ public:
 		bool operator==(const attribute_value &other) const;
 		bool operator!=(const attribute_value &other) const
 		{ return !operator==(other); }
+
+		bool equals(const std::string& str) const;
+		// These function prevent t_string creation in case of c["a"] == "b" comparisons.
+		// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
+		template<typename T>
+		typename boost::enable_if<boost::is_same<const std::string, typename boost::add_const<T>::type>, bool>::type
+		friend operator==(const attribute_value &val, const T &str)
+		{ return val.equals(str); }
+
+		template<typename T>
+		typename boost::enable_if<boost::is_same<const char*, T>, bool>::type
+		friend operator==(const attribute_value &val, T str)
+		{ return val.equals(std::string(str)); }
+
+		template<typename T>
+		bool friend operator==(const T &str, const attribute_value &val)
+		{ return val == str; }
+
+		template<typename T>
+		bool friend operator!=(const attribute_value &val, const T &str)
+		{ return !(val == str); }
+
+		template<typename T>
+		bool friend operator!=(const T &str, const attribute_value &val)
+		{ return !(val == str); }
 
 		// Streaming:
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
@@ -325,6 +402,7 @@ public:
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
 	unsigned child_count(const std::string &key) const;
+	unsigned all_children_count() const;
 
 	/**
 	 * Determine whether a config has a child or not.
@@ -336,9 +414,9 @@ public:
 	bool has_child(const std::string& key) const;
 
 	/**
-	 * Copies the first child with the given @a key, or an empty config if there is none.
+	 * Returns the first child with the given @a key, or an empty config if there is none.
 	 */
-	config child_or_empty(const std::string &key) const;
+	const config & child_or_empty(const std::string &key) const;
 
 	/**
 	 * Returns the nth child with the given @a key, or

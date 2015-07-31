@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,22 +17,27 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tmp_method_selection : public tdialog
 {
 public:
-	tmp_method_selection() :
-		user_name_(),
-		choice_(-1)
-	{}
+	tmp_method_selection() : user_name_(), choice_(-1)
+	{
+	}
 
-	const std::string& user_name() const { return user_name_; }
+	const std::string& user_name() const
+	{
+		return user_name_;
+	}
 
-	int get_choice() const { return choice_; }
+	int get_choice() const
+	{
+		return choice_;
+	}
 
 private:
-
 	/** The name to use on the MP server. */
 	std::string user_name_;
 

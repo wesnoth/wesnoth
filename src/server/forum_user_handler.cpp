@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2015 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -88,7 +88,7 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 
 std::string fuh::create_pepper(const std::string& name) {
 
-	// Some doulbe security, this should never be neeeded
+	// Some double security, this should never be needed
 	if(!(user_exists(name))) {
 		return "";
 	}
@@ -115,7 +115,8 @@ bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return mysql_fetch_row(db_query("SELECT username FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')"));
+		mysql_result res = db_query("SELECT username FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
+		return mysql_fetch_row(res.get());
 	} catch (error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
@@ -203,7 +204,7 @@ std::string fuh::get_hash(const std::string& user) {
 		return get_detail_for_user(user, "user_password");
 	} catch (error& e) {
 		ERR_UH << "Could not retrieve password for user '" << user << "' :" << e.message << std::endl;
-		return time_t(0);
+		return "";
 	}
 }
 
@@ -212,7 +213,7 @@ std::string fuh::get_mail(const std::string& user) {
 		return get_detail_for_user(user, "user_email");
 	} catch (error& e) {
 		ERR_UH << "Could not retrieve email for user '" << user << "' :" << e.message << std::endl;
-		return time_t(0);
+		return "";
 	}
 }
 
@@ -248,7 +249,13 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 	}
 }
 
-MYSQL_RES* fuh::db_query(const std::string& sql) {
+struct result_deleter {
+	void operator()(MYSQL_RES *result) {
+		mysql_free_result(result);
+	}
+};
+
+fuh::mysql_result fuh::db_query(const std::string& sql) {
 	if(mysql_query(conn, sql.c_str())) {
 		WRN_UH << "not connected to database, reconnecting..." << std::endl;
 		//Try to reconnect and execute query again
@@ -258,11 +265,12 @@ MYSQL_RES* fuh::db_query(const std::string& sql) {
 			throw error("Error querying database.");
 		}
 	}
-	return mysql_store_result(conn);
+	return mysql_result(mysql_store_result(conn), result_deleter());
 }
 
 std::string fuh::db_query_to_string(const std::string& sql) {
-	return std::string(mysql_fetch_row(db_query(sql))[0]);
+	mysql_result res = db_query(sql);
+	return std::string(mysql_fetch_row(res.get())[0]);
 }
 
 
@@ -292,7 +300,8 @@ bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return mysql_fetch_row(db_query("SELECT username FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')"));
+		mysql_result res = db_query("SELECT username FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
+		return mysql_fetch_row(res.get());
 	} catch (error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;

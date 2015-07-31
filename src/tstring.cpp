@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,12 @@
 #include "tstring.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "utils/shared_object.hpp"
 #include <boost/functional/hash.hpp>
+
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/hashed_index.hpp>
+#include <boost/multi_index/member.hpp>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
@@ -39,7 +44,6 @@ namespace {
 	const char UNTRANSLATABLE_PART = 0x02;
 	const char TEXTDOMAIN_SEPARATOR = 0x03;
 	const char ID_TRANSLATABLE_PART = 0x04;
-	const char UNTRANSLATABLE_STRING = 0x05;
 
 	std::vector<std::string> id_to_textdomain;
 	std::map<std::string, unsigned int> textdomain_to_id;
@@ -81,7 +85,7 @@ void t_string_base::walker::update()
 			string_.find(TEXTDOMAIN_SEPARATOR, begin_ + 1);
 
 		if(textdomain_end == std::string::npos || textdomain_end >= string_.size() - 1) {
-			ERR_CF << "Error: invalid string: " << string_ << "\n";
+			ERR_CF << "Error: invalid string: " << string_ << std::endl;
 			begin_ = string_.size();
 			return;
 		}
@@ -98,7 +102,7 @@ void t_string_base::walker::update()
 	}
 	case ID_TRANSLATABLE_PART:
 		if(begin_ + 3 >= string_.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << "\n";
+			ERR_CF << "Error: invalid string: " << string_ << std::endl;
 			begin_ = string_.size();
 			return;
 		}
@@ -108,7 +112,7 @@ void t_string_base::walker::update()
 
 		id = string_[begin_ + 1] + string_[begin_ + 2] * 256;
 		if(id >= id_to_textdomain.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << "\n";
+			ERR_CF << "Error: invalid string: " << string_ << std::endl;
 			begin_ = string_.size();
 			return;
 		}
@@ -124,7 +128,7 @@ void t_string_base::walker::update()
 			end_ = string_.size();
 
 		if(end_ <= begin_ + 1) {
-			ERR_CF << "Error: invalid string: " << string_ << "\n";
+			ERR_CF << "Error: invalid string: " << string_ << std::endl;
 			begin_ = string_.size();
 			return;
 		}
@@ -439,7 +443,7 @@ const std::string& t_string_base::str() const
 		std::string part(w.begin(), w.end());
 
 		if(w.translatable()) {
-			translated_value_ += dsgettext(w.textdomain().c_str(), part.c_str());
+			translated_value_ += translation::dsgettext(w.textdomain().c_str(), part.c_str());
 		} else {
 			translated_value_ += part;
 		}
@@ -494,8 +498,7 @@ void t_string::add_textdomain(const std::string &name, const std::string &path)
 	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";
 
 	// Register and (re-)bind this textdomain
-	bindtextdomain(name.c_str(), path.c_str());
-	bind_textdomain_codeset(name.c_str(), "UTF-8");
+	translation::bind_textdomain(name.c_str(), path.c_str(), "UTF-8");
 }
 
 void t_string::reset_translations()
@@ -509,3 +512,37 @@ std::ostream& operator<<(std::ostream& stream, const t_string_base& string)
 	return stream;
 }
 
+/**
+ * shared_object<tstring_base> implementation of hash database
+ */
+
+template <typename T, typename node = shared_node<T> >
+struct types {
+typedef boost::multi_index_container<
+	node,
+	boost::multi_index::indexed_by<
+		boost::multi_index::hashed_unique<
+			BOOST_MULTI_INDEX_MEMBER(node, T, val)
+		>
+	>
+> hash_map;
+
+typedef typename hash_map::template nth_index<0>::type hash_index;
+};
+
+static types<t_string_base>::hash_map& map() { static types<t_string_base>::hash_map* map = new types<t_string_base>::hash_map; return *map; }
+static types<t_string_base>::hash_index& index() { return map().get<0>(); }
+
+typedef shared_node<t_string_base> node;
+
+template<>
+const node* shared_object<t_string_base>::insert_into_index(const node & n)
+{
+	return &*index().insert(n).first;
+}
+
+template<>
+void shared_object<t_string_base>::erase_from_index(const node * ptr)
+{
+	index().erase(index().find(ptr->val));
+}

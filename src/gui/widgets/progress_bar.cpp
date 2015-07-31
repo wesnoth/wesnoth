@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(progress_bar)
 
@@ -47,18 +48,19 @@ unsigned tprogress_bar::get_state() const
 	return ENABLED;
 }
 
-void tprogress_bar::set_percentage(const unsigned percentage)
+void tprogress_bar::set_percentage(unsigned percentage)
 {
-	assert(percentage <= 100);
+	percentage = std::min<unsigned>(percentage, 100);
 
 	if(percentage_ != percentage) {
 		percentage_ = percentage;
 
-		FOREACH(AUTO& c, canvas()) {
+		FOREACH(AUTO & c, canvas())
+		{
 			c.set_variable("percentage", variant(percentage));
 		}
 
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -74,4 +76,3 @@ const std::string& tprogress_bar::get_control_type() const
 }
 
 } // namespace gui2
-

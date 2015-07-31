@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,9 +18,10 @@
 #include "gui/auxiliary/notifier.hpp"
 #include "gui/widgets/control.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Base class for a scroll bar.
@@ -41,8 +42,8 @@ class tscrollbar_ : public tcontrol
 {
 	/** @todo Abstract the code so this friend is no longer needed. */
 	friend class tslider;
-public:
 
+public:
 	tscrollbar_();
 
 	/**
@@ -52,14 +53,16 @@ public:
 	 * parameters for these amounts.
 	 */
 	enum tscroll {
-		BEGIN,               /**< Go to begin position. */
-		ITEM_BACKWARDS,      /**< Go one item towards the begin. */
-		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin. */
-		JUMP_BACKWARDS,      /**< Go the visibile items towards the begin. */
-		END,                 /**< Go to the end position. */
-		ITEM_FORWARD,        /**< Go one item towards the end. */
-		HALF_JUMP_FORWARD,   /**< Go half the visible items towards the end. */
-		JUMP_FORWARD };      /**< Go the visible items towards the end. */
+		BEGIN,				 /**< Go to begin position. */
+		ITEM_BACKWARDS,		 /**< Go one item towards the begin. */
+		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin.
+								*/
+		JUMP_BACKWARDS,	/**< Go the visibile items towards the begin. */
+		END,			   /**< Go to the end position. */
+		ITEM_FORWARD,	  /**< Go one item towards the end. */
+		HALF_JUMP_FORWARD, /**< Go half the visible items towards the end. */
+		JUMP_FORWARD
+	}; /**< Go the visible items towards the end. */
 
 	/**
 	 * Sets the item position.
@@ -71,7 +74,10 @@ public:
 	void scroll(const tscroll scroll);
 
 	/** Is the positioner at the beginning of the scrollbar? */
-	bool at_begin() const { return item_position_ == 0; }
+	bool at_begin() const
+	{
+		return item_position_ == 0;
+	}
 
 	/**
 	 * Is the positioner at the and of the scrollbar?
@@ -79,10 +85,15 @@ public:
 	 * Note both begin and end might be true at the same time.
 	 */
 	bool at_end() const
-		{ return item_position_ + visible_items_ >= item_count_; }
+	{
+		return item_position_ + visible_items_ >= item_count_;
+	}
 
 	/** Are all items visible? */
-	bool all_items_visible() const { return visible_items_ >= item_count_; }
+	bool all_items_visible() const
+	{
+		return visible_items_ >= item_count_;
+	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -103,28 +114,55 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_item_count(const unsigned item_count)
-		{ item_count_ = item_count; recalculate(); }
-	unsigned get_item_count() const { return item_count_; }
+	{
+		item_count_ = item_count;
+		recalculate();
+	}
+	unsigned get_item_count() const
+	{
+		return item_count_;
+	}
 
 	/**
 	 * Note the position isn't guaranteed to be the wanted position
 	 * the step size is honored. The value will be rouded down.
 	 */
 	void set_item_position(const unsigned item_position);
-	unsigned get_item_position() const { return item_position_; }
+	unsigned get_item_position() const
+	{
+		return item_position_;
+	}
 
-	unsigned get_visible_items() const { return visible_items_; }
+	unsigned get_visible_items() const
+	{
+		return visible_items_;
+	}
 	void set_visible_items(const unsigned visible_items)
-		{ visible_items_ = visible_items; recalculate(); }
+	{
+		visible_items_ = visible_items;
+		recalculate();
+	}
 
-	unsigned get_step_size() const { return step_size_; }
+	unsigned get_step_size() const
+	{
+		return step_size_;
+	}
 	void set_step_size(const unsigned step_size)
-		{ step_size_ = step_size; recalculate(); }
+	{
+		step_size_ = step_size;
+		recalculate();
+	}
 
 protected:
-	unsigned get_positioner_offset() const { return positioner_offset_; }
+	unsigned get_positioner_offset() const
+	{
+		return positioner_offset_;
+	}
 
-	unsigned get_positioner_length() const { return positioner_length_; }
+	unsigned get_positioner_length() const
+	{
+		return positioner_length_;
+	}
 
 	/**
 	 * See @ref tcontrol::update_canvas.
@@ -140,15 +178,23 @@ protected:
 	 * callback slot mechanism. See whether we can implement a generic way to
 	 * attach callback which would remove quite some extra code.
 	 */
-	virtual void child_callback_positioner_moved() {}
-private:
+	virtual void child_callback_positioner_moved()
+	{
+	}
 
+private:
 	/**
 	 * Possible states of the widget.
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		PRESSED,
+		FOCUSSED,
+		COUNT
+	};
 
 	void set_state(const tstate state);
 	/**
@@ -263,8 +309,8 @@ private:
 	 * This function is used to determine how much the positioner needs to  be
 	 * moved.
 	 */
-	virtual int get_length_difference(
-		const tpoint& original, const tpoint& current) const = 0;
+	virtual int get_length_difference(const tpoint& original,
+									  const tpoint& current) const = 0;
 
 	/***** ***** ***** ***** Private functions ***** ***** ***** *****/
 
@@ -297,26 +343,24 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(
-			const event::tevent event, bool& handled, bool& halt);
+	void signal_handler_mouse_enter(const event::tevent event,
+									bool& handled,
+									bool& halt);
 
-	void signal_handler_mouse_motion(
-			  const event::tevent event
-			, bool& handled
-			, bool& halt
-			, const tpoint& coordinate);
+	void signal_handler_mouse_motion(const event::tevent event,
+									 bool& handled,
+									 bool& halt,
+									 const tpoint& coordinate);
 
 	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 
-	void signal_handler_left_button_down(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_down(const event::tevent event,
+										 bool& handled);
 
-	void signal_handler_left_button_up(
-			const event::tevent event, bool& handled);
-
+	void signal_handler_left_button_up(const event::tevent event,
+									   bool& handled);
 };
 
 } // namespace gui2
 
 #endif
-

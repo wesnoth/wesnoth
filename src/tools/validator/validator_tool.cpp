@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Sytyi Nick <nsytyi@gmail.com>
+   Copyright (C) 2011 - 2015 by Sytyi Nick <nsytyi@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]){
 	try {
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(input,
+		filesystem::scoped_istream stream = preprocess_file(input,
 												&preproc);
 		read(cfg, *stream, &validator);
 	} catch(config::error & t) {

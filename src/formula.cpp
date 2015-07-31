@@ -27,12 +27,11 @@ namespace game_logic
 
 void formula_callable::set_value(const std::string& key, const variant& /*value*/)
 {
-	std::cerr << "ERROR: cannot set key '" << key << "' on object\n";
+	std::cerr << "ERROR: cannot set key '" << key << "' on object" << std::endl;
 }
 
 
-map_formula_callable::map_formula_callable(
-    	const formula_callable* fallback) :
+map_formula_callable::map_formula_callable(const formula_callable* fallback) :
 	formula_callable(false),
 	values_(),
 	fallback_(fallback)
@@ -249,16 +248,16 @@ private:
 	const formula_callable& global_, &local_;
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
-            return local_.get_inputs(inputs);
+		return local_.get_inputs(inputs);
 	}
 
 	variant get_value(const std::string& key) const {
-            variant v = local_.query_value(key);
+		variant v = local_.query_value(key);
 
-            if ( v == variant() )
-		return global_.query_value(key);
-            else
-                return v;
+		if ( v == variant() )
+			return global_.query_value(key);
+		else
+			return v;
 	}
 };
 
@@ -278,17 +277,17 @@ private:
 		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left."));
 		if(!left.is_callable()) {
 			if(left.is_list()) {
-                                list_callable list_call(left);
-                                dot_callable callable(variables, list_call);
+				list_callable list_call(left);
+				dot_callable callable(variables, list_call);
 				return right_->evaluate(callable,fdb);
 			}
 
 			return left;
 		}
 
-                dot_callable callable(variables, *left.as_callable());
-                return right_->evaluate(callable,add_debug_info(fdb,1,".right"));
-        }
+		dot_callable callable(variables, *left.as_callable());
+		return right_->evaluate(callable,add_debug_info(fdb,1,".right"));
+	}
 
 	expression_ptr left_, right_;
 };
@@ -503,7 +502,7 @@ private:
 
 class null_expression : public formula_expression {
 public:
-	explicit null_expression() {};
+	explicit null_expression() {}
 	std::string str() const {
 		return "";
 	}
@@ -634,7 +633,7 @@ int operator_precedence(const token& t)
 		precedence_map["+"]     = ++n;
 		precedence_map["-"]     = n;
 		precedence_map["*"]     = ++n;
-		precedence_map["/"]     = ++n;
+		precedence_map["/"]     = n;
 		precedence_map["%"]     = ++n;
 		precedence_map["^"]     = ++n;
 		precedence_map["d"]     = ++n;
@@ -852,7 +851,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 							 operator_precedence(*i)) ) {
 				op = i;
 			}
-                        operator_group = true;
+			operator_group = true;
 		} else {
 			operator_group = false;
 		}
@@ -864,15 +863,15 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
 				const token* tok = i2-2;
 				int square_parens = 0;
-                                bool is_map = false;
+				bool is_map = false;
 				while ( (tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
 						if (tok->type == TOKEN_RSQUARE) {
 							square_parens++;
 						} else if(tok->type == TOKEN_LSQUARE) {
 							square_parens--;
 						} else if( (tok->type == TOKEN_POINTER) && !square_parens ) {
-                                                    is_map = true;
-                                                }
+							is_map = true;
+						}
 						--tok;
 				}
 				if (tok->type == TOKEN_LSQUARE) {
@@ -1033,7 +1032,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 
 			tokens.push_back( get_token(i1,i2) );
 
-			TOKEN_TYPE current_type = tokens.back().type;
+			formula_tokenizer::TOKEN_TYPE current_type = tokens.back().type;
 
 			if(current_type == TOKEN_WHITESPACE)  {
 				tokens.pop_back();

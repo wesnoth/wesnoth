@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by mark de wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by mark de wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

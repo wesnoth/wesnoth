@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 #include "global.hpp"
 
 #include "widgets/scrollarea.hpp"
+#include "sdl/rect.hpp"
 
 
 namespace gui {
@@ -36,9 +37,9 @@ bool scrollarea::has_scrollbar() const
 	return shown_size_ < full_size_ && scrollbar_.is_valid_height(location().h);
 }
 
-handler_vector scrollarea::handler_members()
+sdl_handler_vector scrollarea::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&scrollbar_);
 	return h;
 }
@@ -149,17 +150,36 @@ unsigned scrollarea::scrollbar_width() const
 
 void scrollarea::handle_event(const SDL_Event& event)
 {
-	if (mouse_locked() || hidden() || event.type != SDL_MOUSEBUTTONDOWN)
+	if (mouse_locked() || hidden())
+		return;
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
+	if (event.type != SDL_MOUSEBUTTONDOWN)
 		return;
 
 	SDL_MouseButtonEvent const &e = event.button;
-	if (point_in_rect(e.x, e.y, inner_location())) {
+	if (sdl::point_in_rect(e.x, e.y, inner_location())) {
 		if (e.button == SDL_BUTTON_WHEELDOWN) {
 			scrollbar_.scroll_down();
 		} else if (e.button == SDL_BUTTON_WHEELUP) {
 			scrollbar_.scroll_up();
 		}
 	}
+#else
+	if (event.type != SDL_MOUSEWHEEL)
+		return;
+
+	const SDL_MouseWheelEvent &ev = event.wheel;
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	if (sdl::point_in_rect(x, y, inner_location())) {
+		if (ev.y > 0) {
+			scrollbar_.scroll_up();
+		} else if (ev.y < 0) {
+			scrollbar_.scroll_down();
+		}
+	}
+#endif
 }
 
 } // end namespace gui

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,10 +20,12 @@
 
 #include "contexts.hpp"
 
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 #include "../composite/goal.hpp"
 #include "../../pathfind/pathfind.hpp"
 
@@ -59,10 +61,6 @@ void default_ai_context_proxy::init_default_ai_context_proxy(default_ai_context 
 	target_= &target.get_default_ai_context();
 }
 
-
-const int max_positions = 10000;
-
-
 default_ai_context_impl::~default_ai_context_impl()
 {
 }
@@ -78,7 +76,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 		if (checked_hexes.find(adj[n]) != checked_hexes.end())
 			continue;
 		checked_hexes.insert(adj[n]);
-		if (resources::game_map->is_castle(adj[n])) {
+		if (resources::gameboard->map().is_castle(adj[n])) {
 			const unit_map::const_iterator u = units_.find(adj[n]);
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()
@@ -101,7 +99,7 @@ default_ai_context& default_ai_context_impl::get_default_ai_context(){
 
 int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc) const
 {
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
@@ -116,7 +114,7 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = village_owner(loc) + 1;
+		int owner = resources::gameboard->village_owner(loc) + 1;
 
 		if(owner == get_side()) {
 			rating += friendly_village_value;
@@ -136,7 +134,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	log_scope2(log_ai, "finding targets...");
 	unit_map &units_ = *resources::units;
 	unit_map::iterator leader = units_.find_leader(get_side());
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> teams_ = *resources::teams;
 	const bool has_leader = leader != units_.end();
 
@@ -179,7 +177,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 		}
 	}
 
-	double corner_distance = distance_between(map_location(0,0), map_location(map_.w(),map_.h()));
+	double corner_distance = distance_between(map_location::ZERO(), map_location(map_.w(),map_.h()));
 	double village_value = get_village_value();
 	if(has_leader && village_value > 0.0) {
 		std::map<map_location,pathfind::paths> friends_possible_moves;

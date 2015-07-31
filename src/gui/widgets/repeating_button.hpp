@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,11 +18,10 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/clickable.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-class trepeating_button
-	: public tcontrol
-	, public tclickable_
+class trepeating_button : public tcontrol, public tclickable_
 {
 public:
 	trepeating_button();
@@ -44,8 +43,8 @@ public:
 	 * @param signal              The signal to disconnect (should be the same
 	 *                            as send to the connect call.
 	 */
-	void disconnect_signal_mouse_left_down(
-			const event::tsignal_function& signal);
+	void
+	disconnect_signal_mouse_left_down(const event::tsignal_function& signal);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -76,7 +75,13 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		PRESSED,
+		FOCUSSED,
+		COUNT
+	};
 
 	void set_state(const tstate state);
 	/**
@@ -99,15 +104,14 @@ private:
 
 	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 
-	void signal_handler_left_button_down(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_down(const event::tevent event,
+										 bool& handled);
 
-	void signal_handler_left_button_up(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_up(const event::tevent event,
+									   bool& handled);
 };
 
 
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2011 - 2013 by Tommy Schmitz
+ Copyright (C) 2011 - 2015 by Tommy Schmitz
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,7 @@ public:
 	virtual ~suppose_dead();
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() const;
+	virtual unit_ptr get_unit() const;
 	/** @return null pointer */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_ptr(); }
 	/** Return the location at which this action was planned. */

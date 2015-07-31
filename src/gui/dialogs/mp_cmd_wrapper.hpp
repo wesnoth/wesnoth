@@ -1,5 +1,6 @@
 /*
-   Copyright (C) 2009 - 2013 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2009 - 2015 by Thomas Baumhauer
+   <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,12 +19,12 @@
 #include "gui/dialogs/dialog.hpp"
 #include "tstring.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tmp_cmd_wrapper : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -33,12 +34,20 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	const std::string& message() const { return message_; }
-	const std::string& reason() const { return reason_; }
-	const std::string& time() const { return time_; }
+	const std::string& message() const
+	{
+		return message_;
+	}
+	const std::string& reason() const
+	{
+		return reason_;
+	}
+	const std::string& time() const
+	{
+		return time_;
+	}
 
 private:
-
 	/** The message to send to another user. */
 	std::string message_;
 
@@ -58,4 +67,3 @@ private:
 } // namespace gui2
 
 #endif // GUI_DIALOGS_MP_CMD_WRAPPER_HPP_INCLUDED
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,9 @@
 #include "gettext.hpp"
 
 #include "map_location.hpp"
+#include "sdl/rect.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 
 namespace editor {
 
@@ -55,9 +58,12 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			rect.h = disp.hex_size();
 			rect.w = disp.hex_size();
 			std::stringstream str;
-			str << N_("ID: ")   << unit_it->id()   << "\n"
-				<< N_("Name: ") << unit_it->name() << "\n"
-				<< N_("Type: ") << unit_it->type_name();
+			str << N_("Identifier: ") << unit_it->id()     << "\n"
+				<< N_("Name: ")    << unit_it->name()      << "\n"
+				<< N_("Type: ")    << unit_it->type_name() << "\n"
+				<< N_("Level: ")   << unit_it->level()     << "\n"
+				<< N_("Cost: ")    << unit_it->cost()      << "\n"
+				<< N_("Recruit: ") << utils::join(unit_it->recruits()) << "\n";
 			tooltips::clear_tooltips();
 			tooltips::add_tooltip(rect, str.str());
 		}
@@ -108,7 +114,7 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 	const unit_type *new_unit_type = unit_types.find(type_id);
 	if (!new_unit_type) {
 		//TODO rewrite the error message.
-		ERR_ED << "create unit dialog returned inexistent or unusable unit_type id '" << type_id << "'\n";
+		ERR_ED << "create unit dialog returned inexistent or unusable unit_type id '" << type_id << "'" << std::endl;
 		return NULL;
 	}
 

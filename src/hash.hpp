@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2015 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,13 @@
 
 namespace util {
 
+/**
+ * Returns the MD5 digest for the specified input.
+ *
+ * @note The returned value points to a fixed-size 16 bytes array representing
+ *       the raw MD5 value, not a null-terminated string. Use encode_hash if
+ *       you need the text representation instead.
+ */
 unsigned char* md5(const std::string& input);
 int get_iteration_count(const std::string& hash);
 std::string get_salt(const std::string& hash);

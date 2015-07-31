@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,17 +25,19 @@
 #include "gui/widgets/window.hpp"
 #include "game_preferences.hpp"
 #include "utils/foreach.tpp"
-
+#include "serialization/unicode.hpp"
 #include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(text_box)
 
-ttext_history ttext_history::get_history(const std::string& id, const bool enabled)
+ttext_history ttext_history::get_history(const std::string& id,
+										 const bool enabled)
 {
 	std::vector<std::string>* vec = preferences::get_history(id);
 	return ttext_history(vec, enabled);
@@ -43,10 +45,10 @@ ttext_history ttext_history::get_history(const std::string& id, const bool enabl
 
 void ttext_history::push(const std::string& text)
 {
-	if (!enabled_) {
+	if(!enabled_) {
 		return;
 	} else {
-		if (!text.empty() && (history_->empty() || text != history_->back())) {
+		if(!text.empty() && (history_->empty() || text != history_->back())) {
 			history_->push_back(text);
 		}
 
@@ -57,15 +59,15 @@ void ttext_history::push(const std::string& text)
 std::string ttext_history::up(const std::string& text)
 {
 
-	if (!enabled_) {
+	if(!enabled_) {
 		return "";
-	} else if (pos_ == history_->size()) {
+	} else if(pos_ == history_->size()) {
 		unsigned curr = pos_;
 		push(text);
 		pos_ = curr;
 	}
 
-	if (pos_ != 0) {
+	if(pos_ != 0) {
 		--pos_;
 	}
 
@@ -74,9 +76,9 @@ std::string ttext_history::up(const std::string& text)
 
 std::string ttext_history::down(const std::string& text)
 {
-	if (!enabled_) {
+	if(!enabled_) {
 		return "";
-	} else if (pos_ == history_->size()) {
+	} else if(pos_ == history_->size()) {
 		push(text);
 	} else {
 		pos_++;
@@ -87,7 +89,7 @@ std::string ttext_history::down(const std::string& text)
 
 std::string ttext_history::get_value() const
 {
-	if (!enabled_ || pos_ == history_->size()) {
+	if(!enabled_ || pos_ == history_->size()) {
 		return "";
 	} else {
 		return history_->at(pos_);
@@ -105,13 +107,13 @@ ttext_box::ttext_box()
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_MOTION>(boost::bind(
-				&ttext_box::signal_handler_mouse_motion, this, _2, _3, _5));
+			&ttext_box::signal_handler_mouse_motion, this, _2, _3, _5));
 	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
-				&ttext_box::signal_handler_left_button_down, this, _2, _3));
+			&ttext_box::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
-				&ttext_box::signal_handler_left_button_up, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(&ttext_box
-				::signal_handler_left_button_double_click, this, _2, _3));
+			&ttext_box::signal_handler_left_button_up, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
+			&ttext_box::signal_handler_left_button_double_click, this, _2, _3));
 }
 
 void ttext_box::place(const tpoint& origin, const tpoint& size)
@@ -162,7 +164,8 @@ void ttext_box::update_canvas()
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
 
-	FOREACH(AUTO& tmp, canvas()) {
+	FOREACH(AUTO & tmp, canvas())
+	{
 
 		tmp.set_variable("text", variant(get_value()));
 		tmp.set_variable("text_x_offset", variant(text_x_offset_));
@@ -171,10 +174,10 @@ void ttext_box::update_canvas()
 		tmp.set_variable("text_maximum_height", variant(max_height));
 
 		tmp.set_variable("cursor_offset",
-			variant(get_cursor_position(start + length).x));
+						 variant(get_cursor_position(start + length).x));
 
 		tmp.set_variable("selection_offset", variant(start_offset));
-		tmp.set_variable("selection_width", variant(end_offset  - start_offset ));
+		tmp.set_variable("selection_width", variant(end_offset - start_offset));
 		tmp.set_variable("text_wrap_mode", variant(ellipse_mode));
 	}
 }
@@ -199,17 +202,14 @@ void ttext_box::delete_selection()
 	// If we have a negative range change it to a positive range.
 	// This makes the rest of the algoritms easier.
 	int len = get_selection_length();
-	unsigned  start = get_selection_start();
+	unsigned start = get_selection_start();
 	if(len < 0) {
-		len = - len;
+		len = -len;
 		start -= len;
 	}
 
-	// Update the text, we need to assume it's a wide string.
-	wide_string tmp = utils::string_to_wstring(get_value());
-	tmp.erase(tmp.begin() + start, tmp.begin() + start + len);
-	const std::string& text = utils::wstring_to_string(tmp);
-	set_value(text);
+	utf8::string tmp = get_value();
+	set_value(utf8::erase(tmp, start, len));
 	set_cursor(start, false);
 }
 
@@ -218,14 +218,14 @@ void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 	// FIXME we don't test for overflow in width
-	if(mouse.x < static_cast<int>(text_x_offset_) ||
-	   mouse.y < static_cast<int>(text_y_offset_) ||
-	   mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
+	if(mouse.x < static_cast<int>(text_x_offset_)
+	   || mouse.y < static_cast<int>(text_y_offset_)
+	   || mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
 		return;
 	}
 
-	int offset = get_column_line(tpoint(
-		mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
+	int offset = get_column_line(tpoint(mouse.x - text_x_offset_,
+										mouse.y - text_y_offset_)).x;
 
 	if(offset < 0) {
 		return;
@@ -234,7 +234,7 @@ void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
 
 	set_cursor(offset, !start_selection);
 	update_canvas();
-	set_dirty(true);
+	set_is_dirty(true);
 	dragging_ |= start_selection;
 }
 
@@ -242,9 +242,9 @@ void ttext_box::update_offsets()
 {
 	assert(config());
 
-	boost::intrusive_ptr<const ttext_box_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const ttext_box_definition::tresolution>(config());
+	boost::intrusive_ptr<const ttext_box_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const ttext_box_definition::tresolution>(
+			config());
 
 	assert(conf);
 
@@ -260,7 +260,8 @@ void ttext_box::update_offsets()
 
 	// Since this variable doesn't change set it here instead of in
 	// update_canvas().
-	FOREACH(AUTO& tmp, canvas()) {
+	FOREACH(AUTO & tmp, canvas())
+	{
 		tmp.set_variable("text_font_height", variant(text_height_));
 	}
 
@@ -294,11 +295,13 @@ bool ttext_box::history_down()
 	return true;
 }
 
-void ttext_box::handle_key_default(
-		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
+void ttext_box::handle_key_default(bool& handled,
+								   SDLKey key,
+								   SDLMod modifier,
+								   const utf8::string& unicode)
 {
 	if(key == SDLK_TAB && (modifier & KMOD_CTRL)) {
-		if(!(modifier& KMOD_SHIFT)) {
+		if(!(modifier & KMOD_SHIFT)) {
 			handled = history_up();
 		} else {
 			handled = history_down();
@@ -322,9 +325,9 @@ void ttext_box::load_config_extra()
 {
 	assert(config());
 
-	boost::intrusive_ptr<const ttext_box_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const ttext_box_definition::tresolution>(config());
+	boost::intrusive_ptr<const ttext_box_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const ttext_box_definition::tresolution>(
+			config());
 
 	assert(conf);
 
@@ -340,8 +343,9 @@ const std::string& ttext_box::get_control_type() const
 	return type;
 }
 
-void ttext_box::signal_handler_mouse_motion(
-		const event::tevent event, bool& handled, const tpoint& coordinate)
+void ttext_box::signal_handler_mouse_motion(const event::tevent event,
+											bool& handled,
+											const tpoint& coordinate)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
@@ -352,8 +356,8 @@ void ttext_box::signal_handler_mouse_motion(
 	handled = true;
 }
 
-void ttext_box::signal_handler_left_button_down(
-		const event::tevent event, bool& handled)
+void ttext_box::signal_handler_left_button_down(const event::tevent event,
+												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -369,8 +373,8 @@ void ttext_box::signal_handler_left_button_down(
 	handled = true;
 }
 
-void ttext_box::signal_handler_left_button_up(
-		const event::tevent event, bool& handled)
+void ttext_box::signal_handler_left_button_up(const event::tevent event,
+											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -378,8 +382,9 @@ void ttext_box::signal_handler_left_button_up(
 	handled = true;
 }
 
-void ttext_box::signal_handler_left_button_double_click(
-		const event::tevent event, bool& handled)
+void
+ttext_box::signal_handler_left_button_double_click(const event::tevent event,
+												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -387,5 +392,4 @@ void ttext_box::signal_handler_left_button_double_click(
 	handled = true;
 }
 
-} //namespace gui2
-
+} // namespace gui2

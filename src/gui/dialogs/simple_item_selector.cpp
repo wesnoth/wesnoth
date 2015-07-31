@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,15 +20,16 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	#include "gui/widgets/list.hpp"
+#include "gui/widgets/list.hpp"
 #else
-	#include "gui/widgets/listbox.hpp"
+#include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -63,7 +64,11 @@ namespace gui2 {
 
 REGISTER_DIALOG(simple_item_selector)
 
-tsimple_item_selector::tsimple_item_selector(const std::string& title, const std::string& message, list_type const& items, bool title_uses_markup, bool message_uses_markup)
+tsimple_item_selector::tsimple_item_selector(const std::string& title,
+											 const std::string& message,
+											 list_type const& items,
+											 bool title_uses_markup,
+											 bool message_uses_markup)
 	: index_(-1)
 	, single_button_(false)
 	, items_(items)
@@ -79,7 +84,8 @@ void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
-	FOREACH(const AUTO& it, items_) {
+	FOREACH(const AUTO & it, items_)
+	{
 		std::map<std::string, string_map> data;
 		string_map column;
 
@@ -120,5 +126,4 @@ void tsimple_item_selector::post_show(twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	index_ = list.get_selected_row();
 }
-
 }

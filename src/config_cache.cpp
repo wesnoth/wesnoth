@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,13 +22,14 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
-#include "sha1.hpp"
+#include "utils/sha1.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 
 static lg::log_domain log_cache("cache");
 #define ERR_CACHE LOG_STREAM(err, log_cache)
@@ -47,8 +48,15 @@ namespace game_config {
 		force_valid_cache_(false),
 		use_cache_(true),
 		fake_invalid_cache_(false),
-		defines_map_()
+		defines_map_(),
+		cache_file_prefix_()
 	{
+		cache_file_prefix_
+				= "cache-v" +
+				  boost::algorithm::replace_all_copy(game_config::revision,
+													 ":", "_") +
+				  "-";
+
 		// To set-up initial defines map correctly
 		clear_defines();
 	}
@@ -56,7 +64,7 @@ namespace game_config {
 	struct output {
 		void operator()(const preproc_map::value_type& def)
 		{
-			DBG_CACHE << "key: " << def.first << " " << def.second << "\n";
+			DBG_CACHE << "key: " << def.first << " " << def.second << std::endl;
 		}
 	};
 	const preproc_map& config_cache::get_preproc_map() const
@@ -66,7 +74,7 @@ namespace game_config {
 
 	void config_cache::clear_defines()
 	{
-		LOG_CACHE << "Clearing defines map!\n";
+		LOG_CACHE << "Clearing defines map!" << std::endl;
 		defines_map_.clear();
 		// set-up default defines map
 
@@ -89,7 +97,7 @@ namespace game_config {
 
 	void config_cache::write_file(std::string path, const config& cfg)
 	{
-		scoped_ostream stream = ostream_file(path);
+		filesystem::scoped_ostream stream = filesystem::ostream_file(path);
 		const bool gzip = true;
 		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 		writer.write(cfg);
@@ -98,13 +106,13 @@ namespace game_config {
 	{
 		if (defines_map.empty())
 		{
-			if (file_exists(path))
+			if (filesystem::file_exists(path))
 			{
-				delete_directory(path);
+				filesystem::delete_directory(path);
 			}
 			return;
 		}
-		scoped_ostream stream = ostream_file(path);
+		filesystem::scoped_ostream stream = filesystem::ostream_file(path);
 		const bool gzip = true;
 		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 
@@ -116,7 +124,7 @@ namespace game_config {
 
 	void config_cache::read_file(const std::string& path, config& cfg)
 	{
-		scoped_istream stream = istream_file(path);
+		filesystem::scoped_istream stream = filesystem::istream_file(path);
 		read_gz(cfg, *stream);
 	}
 
@@ -146,7 +154,7 @@ namespace game_config {
 	void config_cache::read_configs(const std::string& path, config& cfg, preproc_map& defines_map)
 	{
 		//read the file and then write to the cache
-		scoped_istream stream = preprocess_file(path, &defines_map);
+		filesystem::scoped_istream stream = preprocess_file(path, &defines_map);
 		read(cfg, *stream);
 	}
 
@@ -162,7 +170,7 @@ namespace game_config {
 				// it should be safe to rely on caches containing it.
 				if(i->first != "WESNOTH_VERSION") {
 					is_valid = false;
-					ERR_CACHE << "Preprocessor define not valid\n";
+					ERR_CACHE << "Preprocessor define not valid" << std::endl;
 					break;
 				}
 			}
@@ -173,28 +181,27 @@ namespace game_config {
 		// Do cache check only if  define map is valid and
 		// caching is allowed
 		if(is_valid) {
-			const std::string& cache = get_cache_dir();
+			const std::string& cache = filesystem::get_cache_dir();
 			if(cache != "") {
 				sha1_hash sha(defines_string.str()); // use a hash for a shorter display of the defines
-				const std::string fname = cache + "/cache-v" +
-					boost::algorithm::replace_all_copy(game_config::revision, ":", "_") +
-					"-" + sha.display();
+				const std::string fname = cache + "/" +
+										  cache_file_prefix_ + sha.display();
 				const std::string fname_checksum = fname + ".checksum" + extension;
 
-				file_tree_checksum dir_checksum;
+				filesystem::file_tree_checksum dir_checksum;
 
 				if(!force_valid_cache_ && !fake_invalid_cache_) {
 					try {
-						if(file_exists(fname_checksum)) {
+						if(filesystem::file_exists(fname_checksum)) {
 							DBG_CACHE << "Reading checksum: " << fname_checksum << "\n";
 							config checksum_cfg;
 							read_file(fname_checksum, checksum_cfg);
-							dir_checksum = file_tree_checksum(checksum_cfg);
+							dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
 						}
 					} catch(config::error&) {
-						ERR_CACHE << "cache checksum is corrupt\n";
-					} catch(io_exception&) {
-						ERR_CACHE << "error reading cache checksum\n";
+						ERR_CACHE << "cache checksum is corrupt" << std::endl;
+					} catch(filesystem::io_exception&) {
+						ERR_CACHE << "error reading cache checksum" << std::endl;
 					}
 				}
 
@@ -202,21 +209,24 @@ namespace game_config {
 					LOG_CACHE << "skipping cache validation (forced)\n";
 				}
 
-				if(file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == data_tree_checksum()))) {
+				if(filesystem::file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == filesystem::data_tree_checksum()))) {
 					LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str() << "\n";
 					log_scope("read cache");
 					try {
 						read_file(fname + extension,cfg);
 						const std::string define_file = fname + ".define" + extension;
-						if (file_exists(define_file))
+						if (filesystem::file_exists(define_file))
 						{
 							config_cache_transaction::instance().add_define_file(define_file);
 						}
 						return;
 					} catch(config::error& e) {
-						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<<"\n";
-					} catch(io_exception&) {
-						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files\n";
+						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<< std::endl;
+					} catch(filesystem::io_exception&) {
+						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
+					} catch (boost::iostreams::gzip_error& e) {
+						//read_file -> ... -> read_gz can throw this exception.
+						ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << std::endl;
 					}
 				}
 
@@ -234,10 +244,10 @@ namespace game_config {
 					write_file(fname + extension, cfg);
 					write_file(fname + ".define" + extension, copy_map);
 					config checksum_cfg;
-					data_tree_checksum().write(checksum_cfg);
+					filesystem::data_tree_checksum().write(checksum_cfg);
 					write_file(fname_checksum, checksum_cfg);
-				} catch(io_exception&) {
-					ERR_CACHE << "could not write to cache '" << fname << "'\n";
+				} catch(filesystem::io_exception&) {
+					ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
 				}
 				return;
 			}
@@ -303,7 +313,7 @@ namespace game_config {
 
 	void config_cache::recheck_filetree_checksum()
 	{
-		data_tree_checksum(true);
+		filesystem::data_tree_checksum(true);
 	}
 
 	void config_cache::add_define(const std::string& define)
@@ -328,6 +338,72 @@ namespace game_config {
 			// we have to remove this from active map too
 			config_cache_transaction::instance().get_active_map(defines_map_).erase(define);
 		}
+	}
+
+	bool config_cache::clean_cache()
+	{
+		std::vector<std::string> files, dirs;
+		filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::ENTIRE_FILE_PATH);
+
+		LOG_CACHE << "clean_cache(): " << files.size() << " files, "
+				  << dirs.size() << " dirs to check\n";
+
+		const std::string& exclude_current = cache_file_prefix_ + "*";
+
+		bool status = true;
+
+		status &= delete_cache_files(files, exclude_current);
+		status &= delete_cache_files(dirs, exclude_current);
+
+		LOG_CACHE << "clean_cache(): done\n";
+
+		return status;
+	}
+
+	bool config_cache::purge_cache()
+	{
+		std::vector<std::string> files, dirs;
+		filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::ENTIRE_FILE_PATH);
+
+		LOG_CACHE << "purge_cache(): deleting " << files.size() << " files, "
+				  << dirs.size() << " dirs\n";
+
+		bool status = true;
+
+		status &= delete_cache_files(files);
+		status &= delete_cache_files(dirs);
+
+		LOG_CACHE << "purge_cache(): done\n";
+		return status;
+	}
+
+	bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
+										  const std::string& exclude_pattern)
+	{
+		const bool delete_everything = exclude_pattern.empty();
+		bool status = true;
+
+		BOOST_FOREACH(const std::string& path, paths)
+		{
+			if(!delete_everything) {
+				const std::string& fn = filesystem::base_name(path);
+
+				if(utils::wildcard_string_match(fn, exclude_pattern)) {
+					LOG_CACHE << "delete_cache_files(): skipping " << path
+							  << " excluded by '" << exclude_pattern << "'\n";
+					continue;
+				}
+			}
+
+			LOG_CACHE << "delete_cache_files(): deleting " << path << '\n';
+			if(!filesystem::delete_directory(path)) {
+				ERR_CACHE << "delete_cache_files(): could not delete "
+						  << path << '\n';
+				status = false;
+			}
+		}
+
+		return status;
 	}
 
 	config_cache_transaction::state config_cache_transaction::state_ = FREE;
@@ -367,9 +443,7 @@ namespace game_config {
 	{
 		if(active_map_.empty())
 		{
-			std::copy(defines_map.begin(),
-					defines_map.end(),
-					std::insert_iterator<preproc_map>(active_map_, active_map_.begin()));
+			active_map_.insert(defines_map.begin(), defines_map.end());
 			if ( get_state() == NEW)
 				state_ = ACTIVE;
 		 }

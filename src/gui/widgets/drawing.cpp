@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,15 +23,15 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(drawing)
 
 tpoint tdrawing::calculate_best_size() const
 {
-	return best_size_ != tpoint(0, 0)
-			? best_size_
-			: tcontrol::calculate_best_size();
+	return best_size_ != tpoint(0, 0) ? best_size_
+									  : tcontrol::calculate_best_size();
 }
 
 void tdrawing::set_active(const bool /*active*/)
@@ -61,4 +61,3 @@ const std::string& tdrawing::get_control_type() const
 }
 
 } // namespace gui2
-

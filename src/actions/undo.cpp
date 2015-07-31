@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,23 +18,53 @@
  */
 
 #include "undo.hpp"
+#include "global.hpp"
 
-#include "create.hpp"
-#include "move.hpp"
+#include "../construct_dialog.hpp"
+#include "../game_board.hpp"               // for game_board
+#include "../game_display.hpp"          // for game_display
+#include "../log.hpp"                   // for LOG_STREAM, logger, etc
+#include "../map.hpp"                      // for gamemap
+#include "../map_location.hpp"  // for map_location, operator<<, etc
+#include "../mouse_handler_base.hpp"       // for command_disabler
+#include "../recall_list_manager.hpp"   // for recall_list_manager
+#include "../replay.hpp"                // for recorder, replay
+#include "../replay_helper.hpp"         // for replay_helper
+#include "../resources.hpp"             // for screen, teams, units, etc
+#include "../statistics.hpp"               // for un_recall_unit, etc
+#include "../synced_context.hpp"        // for set_scontext_synced
+#include "../team.hpp"                  // for team
+#include "../unit.hpp"                  // for unit
+#include "../unit_animation_component.hpp"
+#include "../unit_display.hpp"          // for move_unit
+#include "../unit_id.hpp"
+#include "../unit_map.hpp"              // for unit_map, etc
+#include "../unit_ptr.hpp"      // for unit_const_ptr, unit_ptr
+#include "../unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "../util.hpp"                     // for bad_lexical_cast (ptr only), etc
+#include "../whiteboard/manager.hpp"    // for manager
 
-#include "../game_display.hpp"
-#include "../game_events.hpp"
-#include "../log.hpp"
-#include "../play_controller.hpp"
-#include "../replay.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-#include "../unit_display.hpp"
-#include "../unit_map.hpp"
-#include "../whiteboard/manager.hpp"
+#include "create.hpp"                   // for find_recall_location, etc
+#include "move.hpp"                   // for get_village
+#include "vision.hpp"           // for clearer_info, etc
+#include "shroud_clearing_action.hpp"
+#include "undo_dismiss_action.hpp"
+#include "undo_move_action.hpp"
+#include "undo_recall_action.hpp"
+#include "undo_recruit_action.hpp"
+#include "undo_update_shroud_action.hpp"
 
-#include <boost/foreach.hpp>
+#include <algorithm>                    // for reverse
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/ptr_container/detail/static_move_ptr.hpp>
+#include <boost/ptr_container/detail/void_ptr_iterator.hpp>
+#include <boost/ptr_container/ptr_sequence_adapter.hpp>
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                      // for assert
+#include <cstddef>                     // for NULL
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <set>                          // for set
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -44,311 +74,60 @@ static lg::log_domain log_engine("engine");
 namespace actions {
 
 
-/**
- * Virtual destructor
- */
-undo_list::undo_action::~undo_action()
-{
-	delete view_info;
-}
-
-
-struct undo_list::dismiss_action : undo_list::undo_action {
-	unit dismissed_unit;
-
-
-	explicit dismiss_action(const unit& dismissed) : undo_action(),
-		dismissed_unit(dismissed)
-	{}
-	explicit dismiss_action(const config & unit_cfg) : undo_action(),
-		dismissed_unit(unit_cfg)
-	{}
-	virtual ~dismiss_action();
-
-	/// Writes this into the provided config.
-	virtual void write(config & cfg) const;
-
-	/// Undoes this action.
-	virtual bool undo(int side, undo_list & undos);
-	/// Redoes this action.
-	virtual bool redo(int side);
-};
-undo_list::dismiss_action::~dismiss_action()
-{}
-
-struct undo_list::move_action : undo_list::undo_action {
-	int starting_moves;
-	int original_village_owner;
-	int countdown_time_bonus;
-	map_location::DIRECTION starting_dir;
-	map_location goto_hex;
-
-
-	move_action(const unit& moved,
-	            const std::vector<map_location>::const_iterator & begin,
-	            const std::vector<map_location>::const_iterator & end,
-	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
-		undo_action(moved, begin, end),
-		starting_moves(sm),
-		original_village_owner(orig),
-		countdown_time_bonus(timebonus),
-		starting_dir(dir == map_location::NDIRECTIONS ? moved.facing() : dir),
-		goto_hex(moved.get_goto())
-	{}
-	move_action(const config & unit_cfg, const config & route_cfg,
-	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
-		undo_action(unit_cfg),
-		starting_moves(sm),
-		original_village_owner(orig),
-		countdown_time_bonus(timebonus),
-		starting_dir(dir),
-		goto_hex(unit_cfg["goto_x"].to_int(-999) - 1,
-		         unit_cfg["goto_y"].to_int(-999) - 1)
-	{
-		read_locations(route_cfg, route);
-	}
-	virtual ~move_action();
-
-	/// Writes this into the provided config.
-	virtual void write(config & cfg) const;
-
-	/// Undoes this action.
-	virtual bool undo(int side, undo_list & undos);
-	/// Redoes this action.
-	virtual bool redo(int side);
-};
-undo_list::move_action::~move_action()
-{}
-
-struct undo_list::recall_action : undo_list::undo_action {
-	std::string id;
-	map_location recall_from;
-
-
-	recall_action(const unit& recalled, const map_location& loc,
-	              const map_location& from) :
-		undo_action(recalled, loc),
-		id(recalled.id()),
-		recall_from(from)
-	{}
-	recall_action(const config & unit_cfg, const map_location & loc,
-		          const map_location & from) :
-		undo_action(unit_cfg, loc),
-		id(unit_cfg["id"]),
-		recall_from(from)
-	{}
-	virtual ~recall_action();
-
-	/// Writes this into the provided config.
-	virtual void write(config & cfg) const;
-
-	/// Undoes this action.
-	virtual bool undo(int side, undo_list & undos);
-	/// Redoes this action.
-	virtual bool redo(int side);
-};
-undo_list::recall_action::~recall_action()
-{}
-
-struct undo_list::recruit_action : undo_list::undo_action {
-	const unit_type & u_type;
-	map_location recruit_from;
-
-
-	recruit_action(const unit& recruited, const map_location& loc,
-	               const map_location& from) :
-		undo_action(recruited, loc),
-		u_type(recruited.type()),
-		recruit_from(from)
-	{}
-	recruit_action(const config & unit_cfg, const unit_type & type,
-	               const map_location& loc, const map_location& from) :
-		undo_action(unit_cfg, loc),
-		u_type(type),
-		recruit_from(from)
-	{}
-	virtual ~recruit_action();
-
-	/// Writes this into the provided config.
-	virtual void write(config & cfg) const;
-
-	/// Undoes this action.
-	virtual bool undo(int side, undo_list & undos);
-	/// Redoes this action.
-	virtual bool redo(int side);
-};
-undo_list::recruit_action::~recruit_action()
-{}
-
-struct undo_list::auto_shroud_action : undo_list::undo_action {
-	bool active;
-
-
-	explicit auto_shroud_action(bool turned_on) :
-		undo_action(),
-		active(turned_on)
-	{}
-	virtual ~auto_shroud_action();
-
-	/// Writes this into the provided config.
-	virtual void write(config & cfg) const;
-
-	/// Undoes this action.
-	virtual bool undo(int side, undo_list & undos);
-	/// Redoes this action.
-	virtual bool redo(int side);
-};
-undo_list::auto_shroud_action::~auto_shroud_action()
-{}
-
-struct undo_list::update_shroud_action : undo_list::undo_action {
-	// No additional data.
-
-	update_shroud_action() : undo_action() {}
-	virtual ~update_shroud_action();
-
-	/// Writes this into the provided config.
-	virtual void write(config & cfg) const;
-
-	/// Undoes this action.
-	virtual bool undo(int side, undo_list & undos);
-	/// Redoes this action.
-	virtual bool redo(int side);
-};
-undo_list::update_shroud_action::~update_shroud_action()
-{}
-
 
 /**
  * Creates an undo_action based on a config.
- * @param  tag  is the tag of this config, which is used for error reporting.
- *              It should be enclosed in square brackets.
- * @return a pointer that must be deleted, or NULL if the @cfg could not be parsed.
+ * @return a pointer that must be deleted, or NULL if the @a cfg could not be parsed.
  */
-undo_list::undo_action *
-undo_list::undo_action::create(const config & cfg, const std::string & tag)
+undo_action_base * undo_list::create_action(const config & cfg)
 {
 	const std::string str = cfg["type"];
-
+	undo_action_base * res = NULL;
 	// The general division of labor in this function is that the various
 	// constructors will parse the "unit" child config, while this function
 	// parses everything else.
 
-	if ( str == "move" )
-		return new move_action(cfg.child("unit", tag), cfg,
+	if ( str == "move" ) {
+		res = new undo::move_action(cfg, cfg.child_or_empty("unit"),
 		                       cfg["starting_moves"],
 		                       cfg["time_bonus"],
 		                       cfg["village_owner"],
 		                       map_location::parse_direction(cfg["starting_direction"]));
+	}
 
-	if ( str == "recruit" ) {
+	else if ( str == "recruit" ) {
 		// Validate the unit type.
-		const config & child = cfg.child("unit", tag);
+		const config & child = cfg.child("unit");
 		const unit_type * u_type = unit_types.find(child["type"]);
 
 		if ( !u_type ) {
 			// Bad data.
-			ERR_NG << "Invalid recruit found in " << tag << "; unit type '"
+			ERR_NG << "Invalid recruit found in [undo] or [redo]; unit type '"
 			       << child["type"] << "' was not found.\n";
 			return NULL;
 		}
-		return new recruit_action(child, *u_type,
-		                          map_location(cfg, NULL),
-		                          map_location(cfg.child_or_empty("leader"), NULL));
+		res = new undo::recruit_action(cfg, *u_type, map_location(cfg.child_or_empty("leader"), NULL));
 	}
 
-	if ( str == "recall" )
-		return new recall_action(cfg.child("unit", tag),
-		                         map_location(cfg, NULL),
-		                         map_location(cfg.child_or_empty("leader"), NULL));
+	else if ( str == "recall" )
+		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), NULL));
 
-	if ( str == "dismiss" )
-		return new dismiss_action(cfg.child("unit", tag));
+	else if ( str == "dismiss" )
+		res =  new undo::dismiss_action(cfg, cfg.child("unit"));
 
-	if ( str == "auto_shroud" )
-		return new auto_shroud_action(cfg["active"].to_bool());
+	else if ( str == "auto_shroud" )
+		res =  new undo::auto_shroud_action(cfg["active"].to_bool());
 
-	if ( str == "update_shroud" )
-		return new update_shroud_action;
-
-	// Unrecognized type.
-	ERR_NG << "Unrecognized undo action type: " << str << ".\n";
-	return NULL;
+	else if ( str == "update_shroud" )
+		res =  new undo::update_shroud_action();
+	else
+	{
+		// Unrecognized type.
+		ERR_NG << "Unrecognized undo action type: " << str << "." << std::endl;
+		return NULL;
+	}
+	return res;
 }
-
-
-/**
- * Writes this into the provided config.
- */
-void undo_list::dismiss_action::write(config & cfg) const
-{
-	cfg["type"] = "dismiss";
-	dismissed_unit.write(cfg.add_child("unit"));
-}
-
-/**
- * Writes this into the provided config.
- */
-void undo_list::recall_action::write(config & cfg) const
-{
-	cfg["type"] = "recall";
-	route.front().write(cfg);
-	recall_from.write(cfg.add_child("leader"));
-
-	config & child = cfg.add_child("unit");
-	view_info->write(child);
-	child["id"] = id;
-}
-
-/**
- * Writes this into the provided config.
- */
-void undo_list::recruit_action::write(config & cfg) const
-{
-	cfg["type"] = "recruit";
-	route.front().write(cfg);
-	recruit_from.write(cfg.add_child("leader"));
-
-	config & child = cfg.add_child("unit");
-	view_info->write(child);
-	child["type"] = u_type.base_id();
-}
-
-/**
- * Writes this into the provided config.
- */
-void undo_list::move_action::write(config & cfg) const
-{
-	cfg["type"] = "move";
-	cfg["starting_direction"] = map_location::write_direction(starting_dir);
-	cfg["starting_moves"] = starting_moves;
-	cfg["time_bonus"] = countdown_time_bonus;
-	cfg["village_owner"] = original_village_owner;
-	write_locations(route, cfg);
-
-	config & child = cfg.add_child("unit");
-	view_info->write(child);
-	child["goto_x"] = goto_hex.x + 1;
-	child["goto_y"] = goto_hex.y + 1;
-}
-
-/**
- * Writes this into the provided config.
- */
-void undo_list::auto_shroud_action::write(config & cfg) const
-{
-	cfg["type"] = "auto_shroud";
-	cfg["active"] = active;
-}
-
-/**
- * Writes this into the provided config.
- */
-void undo_list::update_shroud_action::write(config & cfg) const
-{
-	cfg["type"] = "update_shroud";
-}
-
 
 
 /**
@@ -380,58 +159,65 @@ void undo_list::add_auto_shroud(bool turned_on)
 	/// @todo: Consecutive shroud actions can be collapsed into one.
 
 	// Do not call add(), as this should not clear the redo stack.
-	undos_.push_back(new auto_shroud_action(turned_on));
+	add(new undo::auto_shroud_action(turned_on));
+}
+
+void undo_list::add_dummy()
+{
+	/// @todo: Consecutive shroud actions can be collapsed into one.
+
+	// Do not call add(), as this should not clear the redo stack.
+	add(new undo_dummy_action());
 }
 
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dismissal(const unit & u)
+void undo_list::add_dismissal(const unit_const_ptr u)
 {
-	add(new dismiss_action(u));
+	add(new undo::dismiss_action(u));
 }
 
 /**
  * Adds a move to the undo stack.
  */
-void undo_list::add_move(const unit& u,
+void undo_list::add_move(const unit_const_ptr u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves, int timebonus, int village_owner,
                          const map_location::DIRECTION dir)
 {
-	add(new move_action(u, begin, end, start_moves, timebonus, village_owner, dir));
+	add(new undo::move_action(u, begin, end, start_moves, timebonus, village_owner, dir));
 }
 
 /**
  * Adds a recall to the undo stack.
  */
-void undo_list::add_recall(const unit& u, const map_location& loc,
+void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
                            const map_location& from)
 {
-	add(new recall_action(u, loc, from));
+	add(new undo::recall_action(u, loc, from));
 }
 
 /**
  * Adds a recruit to the undo stack.
  */
-void undo_list::add_recruit(const unit& u, const map_location& loc,
+void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
                             const map_location& from)
 {
-	add(new recruit_action(u, loc, from));
+	add(new undo::recruit_action(u, loc, from));
 }
 
 /**
  * Adds a shroud update to the undo stack.
  * This is called from within commit_vision(), so there should be no need
- * for this to be publically visible.
+ * for this to be publicly visible.
  */
 void undo_list::add_update_shroud()
 {
 	/// @todo: Consecutive shroud actions can be collapsed into one.
 
-	// Do not call add(), as this should not clear the redo stack.
-	undos_.push_back(new update_shroud_action());
+	add(new undo::update_shroud_action());
 }
 
 
@@ -465,24 +251,18 @@ void undo_list::clear()
  * This may fire events and change the game state.
  * @param[in]  is_replay  Set to true when this is called during a replay.
  */
-void undo_list::commit_vision(bool is_replay)
+void undo_list::commit_vision()
 {
-	if ( !is_replay )
-		// Record this.
-		recorder.update_shroud();
-
 	// Update fog/shroud.
-	size_t erase_to = apply_shroud_changes();
+	bool cleared_something = apply_shroud_changes();
 
-	if ( erase_to != 0 ) {
+	if (cleared_something) {
 		// The actions that led to information being revealed can no longer
 		// be undone.
-		undos_.erase(undos_.begin(), undos_.begin() + erase_to);
+		undos_.clear();
+		//undos_.erase(undos_.begin(), undos_.begin() + erase_to);
 		committed_actions_ = true;
 	}
-
-	// Record that vision was updated.
-	add_update_shroud();
 }
 
 
@@ -494,13 +274,13 @@ void undo_list::new_side_turn(int side)
 {
 	// Error checks.
 	if ( !undos_.empty() ) {
-		ERR_NG << "Undo stack not empty in new_side_turn().\n";
+		ERR_NG << "Undo stack not empty in new_side_turn()." << std::endl;
 		// At worst, someone missed some sighted events, so try to recover.
 		undos_.clear();
 		redos_.clear();
 	}
 	else if ( !redos_.empty() ) {
-		ERR_NG << "Redo stack not empty in new_side_turn().\n";
+		ERR_NG << "Redo stack not empty in new_side_turn()." << std::endl;
 		// Sloppy tracking somewhere, but not critically so.
 		redos_.clear();
 	}
@@ -524,16 +304,38 @@ void undo_list::read(const config & cfg)
 
 	// Build the undo stack.
 	BOOST_FOREACH( const config & child, cfg.child_range("undo") ) {
-		undo_action * action = undo_action::create(child, "[undo]");
-		if ( action )
-			undos_.push_back(action);
+		try {
+			undo_action_base * action = create_action(child);
+			if ( action ) {
+				undos_.push_back(action);
+			}
+		} catch (bad_lexical_cast &) {
+			ERR_NG << "Error when parsing undo list from config: bad lexical cast." << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this undo action..." << std::endl;
+		} catch (config::error& e) {
+			ERR_NG << "Error when parsing undo list from config: " << e.what() << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this undo action..." << std::endl;
+		}
 	}
 
 	// Build the redo stack.
 	BOOST_FOREACH( const config & child, cfg.child_range("redo") ) {
-		undo_action * action = undo_action::create(child, "[redo]");
-		if ( action )
-			redos_.push_back(action);
+		try {
+			undo_action_base * action = create_action(child);
+			if ( undo_action* undoable_action = dynamic_cast<undo_action*>(action)) {
+				redos_.push_back(undoable_action);
+			}
+		} catch (bad_lexical_cast &) {
+			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this redo action..." << std::endl;
+		} catch (config::error& e) {
+			ERR_NG << "Error when parsing redo list from config: " << e.what() << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this redo action..." << std::endl;
+		}
 	}
 }
 
@@ -549,7 +351,7 @@ void undo_list::write(config & cfg) const
 	for ( action_list::const_iterator it = undos_.begin(); it != undos_.end(); ++it )
 		it->write(cfg.add_child("undo"));
 
-	for ( action_list::const_iterator it = redos_.begin(); it != redos_.end(); ++it )
+	for ( redos_list::const_iterator it = redos_.begin(); it != redos_.end(); ++it )
 		it->write(cfg.add_child("redo"));
 }
 
@@ -569,189 +371,40 @@ void undo_list::undo()
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	action_list::auto_type action = undos_.pop_back();
-
-	if ( !action->undo(side_, *this) )
-		return;
-
-	// Bookkeeping.
-	recorder.undo();
-	redos_.push_back(action.release());
-	resources::whiteboard->on_gamestate_change();
-
-	// Screen updates.
-	gui.invalidate_unit();
-	gui.invalidate_game_status();
-	gui.redraw_minimap();
-	gui.draw();
-}
-
-/**
- * Undoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::dismiss_action::undo(int side, undo_list & /*undos*/)
-{
-	team &current_team = (*resources::teams)[side-1];
-
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to undo a dismissal for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
-
-	current_team.recall_list().push_back(dismissed_unit);
-	return true;
-}
-
-/**
- * Undoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
-{
-	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
-
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to undo a recall for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
-
-	const map_location & recall_loc = route.front();
-	unit_map::iterator un_it = units.find(recall_loc);
-	if ( un_it == units.end() ) {
-		return false;
-	}
-
-	const unit &un = *un_it;
-	statistics::un_recall_unit(un);
-	current_team.spend_gold(-current_team.recall_cost());
-
-	current_team.recall_list().push_back(un);
-	// invalidate before erasing allow us
-	// to also do the overlapped hexes
-	gui.invalidate(recall_loc);
-	units.erase(recall_loc);
-	return true;
-}
-
-/**
- * Undoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::recruit_action::undo(int side, undo_list & /*undos*/)
-{
-	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
-
-	const map_location & recruit_loc = route.front();
-	unit_map::iterator un_it = units.find(recruit_loc);
-	if ( un_it == units.end() ) {
-		return false;
-	}
-
-	const unit &un = *un_it;
-	statistics::un_recruit_unit(un);
-	current_team.spend_gold(-un.type().cost());
-
-	//MP_COUNTDOWN take away recruit bonus
-	current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
-
-	// invalidate before erasing allow us
-	// to also do the ovelerlapped hexes
-	gui.invalidate(recruit_loc);
-	units.erase(recruit_loc);
-	return true;
-}
-
-/**
- * Undoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
-{
-	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
-
-	// Copy some of our stored data.
-	const int saved_moves = starting_moves;
-	std::vector<map_location> rev_route = route;
-	std::reverse(rev_route.begin(), rev_route.end());
-
-	// Check units.
-	unit_map::iterator u = units.find(rev_route.front());
-	const unit_map::iterator u_end = units.find(rev_route.back());
-	if ( u == units.end()  ||  u_end != units.end() ) {
-		//this can actually happen if the scenario designer has abused the [allow_undo] command
-		ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
-		return false;
-	}
-
-	if ( resources::game_map->is_village(rev_route.front()) ) {
-		get_village(rev_route.front(), original_village_owner + 1);
-		//MP_COUNTDOWN take away capture bonus
-		if ( countdown_time_bonus )
-		{
-			current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
+	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.ptr()))
+	{
+		int last_unit_id = n_unit::id_manager::instance().get_save_id();
+		if ( !undoable_action->undo(side_) ) {
+			return;
 		}
+		if(last_unit_id - undoable_action->unit_id_diff < 0) {
+			ERR_NG << "Next unit id is below 0 after undoing" << std::endl;
+		}
+		n_unit::id_manager::instance().set_save_id(last_unit_id - undoable_action->unit_id_diff);
+
+		// Bookkeeping.
+		resources::recorder->undo_cut(undoable_action->replay_data);
+		//we can do a static cast here because we alreeady checked with the dynamic cast above.
+		redos_.push_back(static_cast<undo_action*>(action.release()));
+		resources::whiteboard->on_gamestate_change();
+
+		// Screen updates.
+		gui.invalidate_unit();
+		gui.invalidate_game_status();
+		gui.redraw_minimap();
+		gui.draw();
 	}
-
-	// Record the unit's current state so it can be redone.
-	starting_moves = u->movement_left();
-	goto_hex = u->get_goto();
-
-	// Move the unit.
-	unit_display::move_unit(rev_route, *u, true, starting_dir);
-	units.move(u->get_location(), rev_route.back());
-	unit::clear_status_caches();
-
-	// Restore the unit's old state.
-	u = units.find(rev_route.back());
-	u->set_goto(map_location());
-	u->set_movement(saved_moves, true);
-	u->set_standing();
-
-	gui.invalidate_unit_after_move(rev_route.front(), rev_route.back());
-	return true;
+	else
+	{
+		//ignore this action, and undo the previous one.
+		config replay_data;
+		resources::recorder->undo_cut(replay_data);
+		undo();
+		resources::recorder->redo(replay_data);
+		undos_.push_back(action.release());
+	}
 }
 
-/**
- * Undoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::auto_shroud_action::undo(int /*side*/, undo_list & undos)
-{
-	// This does not count as an undoable action, so undo the next
-	// action instead.
-	recorder.undo();
-	undos.undo();
-	// Now keep the auto-shroud toggle at the top of the undo stack.
-	recorder.add_auto_shroud(active);
-	undos.add_auto_shroud(active);
-	// Shroud actions never get moved to the redo stack, so claim an error.
-	return false;
-}
-
-/**
- * Undoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::update_shroud_action::undo(int /*side*/, undo_list & undos)
-{
-	// This does not count as an undoable action, so undo the next
-	// action instead.
-	recorder.undo();
-	undos.undo();
-	// Now keep the shroud update at the top of the undo stack.
-	recorder.update_shroud();
-	undos.add_update_shroud();
-	// Shroud actions never get moved to the redo stack, so claim an error.
-	return false;
-}
 
 
 /**
@@ -768,10 +421,15 @@ void undo_list::redo()
 
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
-	action_list::auto_type action = redos_.pop_back();
-
-	if ( !action->redo(side_) )
+	redos_list::auto_type action = redos_.pop_back();
+	int last_unit_id = n_unit::id_manager::instance().get_save_id();
+	if ( !action->redo(side_) ) {
 		return;
+	}
+	if(last_unit_id + action->unit_id_diff < static_cast<int>(n_unit::id_manager::instance().get_save_id())) {
+		ERR_NG << "Too many units were generated during redoing." << std::endl;
+	}
+	n_unit::id_manager::instance().set_save_id(last_unit_id + action->unit_id_diff);
 
 	// Bookkeeping.
 	undos_.push_back(action.release());
@@ -784,238 +442,58 @@ void undo_list::redo()
 	gui.draw();
 }
 
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::dismiss_action::redo(int side)
-{
-	team &current_team = (*resources::teams)[side-1];
 
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to redo a dismissal for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
 
-	recorder.add_disband(dismissed_unit.id());
-	std::vector<unit>::iterator unit_it =
-		find_if_matches_id(current_team.recall_list(), dismissed_unit.id());
-	current_team.recall_list().erase(unit_it);
-	return true;
-}
-
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::recall_action::redo(int side)
-{
-	game_display & gui = *resources::screen;
-	team &current_team = (*resources::teams)[side-1];
-
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to redo a recall for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
-
-	map_location loc = route.front();
-	map_location from = recall_from;
-
-	const std::vector<unit> & recalls = current_team.recall_list();
-	std::vector<unit>::const_iterator unit_it = find_if_matches_id(recalls, id);
-	if ( unit_it == recalls.end() ) {
-		ERR_NG << "Trying to redo a recall of '" << id
-		       << "', but that unit is not in the recall list.";
-		return false;
-	}
-
-	const std::string &msg = find_recall_location(side, loc, from, *unit_it);
-	if ( msg.empty() ) {
-		recall_unit(id, current_team, loc, from, true, false);
-
-		// Quick error check. (Abuse of [allow_undo]?)
-		if ( loc != route.front() ) {
-			ERR_NG << "When redoing a recall at " << route.front()
-			       << ", the location was moved to " << loc << ".\n";
-			// Not really fatal, I suppose. Just update the action so
-			// undoing this works.
-			route.front() = loc;
-		}
-	} else {
-		gui::dialog(gui, "", msg, gui::OK_ONLY).show();
-		return false;
-	}
-
-	return true;
-}
-
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::recruit_action::redo(int side)
-{
-	game_display & gui = *resources::screen;
-	team &current_team = (*resources::teams)[side-1];
-
-	map_location loc = route.front();
-	map_location from = recruit_from;
-	const std::string & name = u_type.base_id();
-
-	//search for the unit to be recruited in recruits
-	if ( !util::contains(get_recruits(side, loc), name) ) {
-		ERR_NG << "Trying to redo a recruit for side " << side
-			<< ", which does not recruit type \"" << name << "\"\n";
-		assert(false);
-		return false;
-	}
-
-	current_team.last_recruit(name);
-	const std::string &msg = find_recruit_location(side, loc, from, name);
-	if ( msg.empty() ) {
-		//MP_COUNTDOWN: restore recruitment bonus
-		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
-
-		recruit_unit(u_type, side, loc, from, true, false);
-
-		// Quick error check. (Abuse of [allow_undo]?)
-		if ( loc != route.front() ) {
-			ERR_NG << "When redoing a recruit at " << route.front()
-			       << ", the location was moved to " << loc << ".\n";
-			// Not really fatal, I suppose. Just update the action so
-			// undoing this works.
-			route.front() = loc;
-		}
-	} else {
-		gui::dialog(gui, "", msg, gui::OK_ONLY).show();
-		return false;
-	}
-
-	return true;
-}
-
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::move_action::redo(int side)
-{
-	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
-
-	// Check units.
-	unit_map::iterator u = units.find(route.front());
-	if ( u == units.end() ) {
-		ERR_NG << "Illegal movement 'redo'.\n";
-		assert(false);
-		return false;
-	}
-
-	// Adjust starting moves.
-	const int saved_moves = starting_moves;
-	starting_moves = u->movement_left();
-
-	// Move the unit.
-	unit_display::move_unit(route, *u);
-	units.move(u->get_location(), route.back());
-	u = units.find(route.back());
-	unit::clear_status_caches();
-
-	// Set the unit's state.
-	u->set_goto(goto_hex);
-	u->set_movement(saved_moves, true);
-	u->set_standing();
-
-	if ( resources::game_map->is_village(route.back()) ) {
-		get_village(route.back(), u->side());
-		//MP_COUNTDOWN restore capture bonus
-		if ( countdown_time_bonus )
-		{
-			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
-		}
-	}
-
-	gui.invalidate_unit_after_move(route.front(), route.back());
-	recorder.add_movement(route);
-	return true;
-}
-
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::auto_shroud_action::redo(int /*side*/)
-{
-	// This should never happen.
-	ERR_NG << "Attempt to redo an auto shroud toggle.\n";
-	assert(false);
-	return false;
-}
-
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool undo_list::update_shroud_action::redo(int /*side*/)
-{
-	// This should never happen.
-	ERR_NG << "Attempt to redo a shroud update.\n";
-	assert(false);
-	return false;
-}
 
 
 /**
  * Applies the pending fog/shroud changes from the undo stack.
  * Does nothing if the the current side does not use fog or shroud.
- * @returns  an index (into undos_) pointing to the first undoable action
- *           that can be kept (or undos_.size() if none can be kept).
+ * @returns  true if shroud  or fog was cleared.
  */
-size_t undo_list::apply_shroud_changes() const
+bool undo_list::apply_shroud_changes() const
 {
 	game_display &disp = *resources::screen;
 	team &tm = (*resources::teams)[side_ - 1];
 	// No need to do clearing if fog/shroud has been kept up-to-date.
-	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() )
-		return 0;
-
-
+	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
+		return false;
+	}
+	// If we clear fog or shroud outside a synced context we get OOS
+	assert(synced_context::is_synced());
 	shroud_clearer clearer;
-	bool cleared_shroud = false;  // for optimization
-	size_t erase_to = 0;
-	size_t list_size = undos_.size();
+	bool cleared_shroud = false;
+	const size_t list_size = undos_.size();
 
 
 	// Loop through the list of undo_actions.
 	for( size_t i = 0; i != list_size; ++i ) {
-		const undo_action & action = undos_[i];
-		// Only actions with vision data are relevant.
-		if ( !action.view_info )
-			continue;
-		LOG_NG << "Turning an undo...\n";
+		if (const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(&undos_[i])) {
+			LOG_NG << "Turning an undo...\n";
 
-		// Clear the hexes this unit can see from each hex occupied during
-		// the action.
-		std::vector<map_location>::const_iterator step;
-		for (step = action.route.begin(); step != action.route.end(); ++step) {
-			// Clear the shroud, collecting new sighted events.
-			// (This can be made gradual by changing "true" to "false".)
-			if ( clearer.clear_unit(*step, tm, *action.view_info, true) ) {
-				cleared_shroud = true;
-				erase_to = i + 1;
+			// Clear the hexes this unit can see from each hex occupied during
+			// the action.
+			std::vector<map_location>::const_iterator step;
+			for (step = action->route.begin(); step != action->route.end(); ++step) {
+				// Clear the shroud, collecting new sighted events.
+				// (This can be made gradual by changing "true" to "false".)
+				if ( clearer.clear_unit(*step, tm, action->view_info, true) ) {
+					cleared_shroud = true;
+				}
 			}
 		}
 	}
 
-	// Optimization: if nothing was cleared, then there is nothing to redraw.
-	if ( cleared_shroud ) {
-		// Update the display before pumping events.
-		clearer.invalidate_after_clear();
-		disp.draw();
+	if (!cleared_shroud) {
+		return false;
 	}
+	// The entire stack needs to be cleared in order to preserve replays.
+	// (The events that fired might depend on current unit positions.)
+	// (Also the events that did not fire might depend on unit positions (they whould have fired if the unit would have standed on different positions, for example this can happen if they have a [have_unit] in [filter_condition]))
+
+	// Update the display before pumping events.
+	clearer.invalidate_after_clear();
+	disp.draw();
 
 	// Fire sighted events
 	if ( clearer.fire_events() ) {
@@ -1023,12 +501,9 @@ size_t undo_list::apply_shroud_changes() const
 		clear_shroud(side_);
 		disp.invalidate_unit();
 		disp.draw();
-		// The entire stack needs to be cleared in order to preserve replays.
-		// (The events that fired might depend on current unit positions.)
-		erase_to = list_size;
 	}
 
-	return erase_to;
+	return true;
 }
 
 

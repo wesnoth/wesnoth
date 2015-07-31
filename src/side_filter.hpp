@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2010 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,12 +17,17 @@
 
 #include "variable.hpp"
 
+#include <boost/scoped_ptr.hpp>
+#include <set>
+#include <string>
+#include <vector>
+
 class config;
+class filter_context;
 class unit;
+class unit_filter;
 class unit_map;
 class team;
-
-#include <set>
 
 //side_filter: a class that implements the Standard Side Filter
 class side_filter {
@@ -34,9 +39,10 @@ public:
 	// other compilers don't need it.
 	side_filter();
 #endif
+	~side_filter();
 
-	side_filter(const std::string &side_string, bool flat_tod = false);
-	side_filter(const vconfig &cfg, bool flat_tod = false);
+	side_filter(const std::string &side_string, const filter_context * fc, bool flat_tod = false);
+	side_filter(const vconfig &cfg, const filter_context * fc, bool flat_tod = false);
 
 	//match: returns true if and only if the given team matches this filter
 	bool match(const team& t) const;
@@ -54,6 +60,13 @@ private:
 	bool flat_;
 	std::string side_string_;
 
+	const filter_context * fc_; //!< The filter context for this filter. It should be a pointer because otherwise the default ctor doesn't work
+
+	mutable boost::scoped_ptr<unit_filter> ufilter_;
+	mutable boost::scoped_ptr<side_filter> allied_filter_;
+	mutable boost::scoped_ptr<side_filter> enemy_filter_;
+	mutable boost::scoped_ptr<side_filter> has_ally_filter_;
+	mutable boost::scoped_ptr<side_filter> has_enemy_filter_;
 };
 
 #endif

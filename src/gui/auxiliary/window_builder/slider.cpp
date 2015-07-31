@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,9 +23,11 @@
 #include "utils/foreach.tpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_slider::tbuilder_slider(const config& cfg)
 	: implementation::tbuilder_control(cfg)
@@ -43,7 +45,8 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 		return;
 	}
 
-	FOREACH(const AUTO& label, labels.child_range("value")) {
+	FOREACH(const AUTO & label, labels.child_range("value"))
+	{
 		value_labels_.push_back(label["label"]);
 	}
 }
@@ -61,8 +64,8 @@ twidget* tbuilder_slider::build() const
 	widget->set_value(value_);
 
 	if(!value_labels_.empty()) {
-		VALIDATE(value_labels_.size() == widget->get_item_count()
-				, _("The number of value_labels and values don't match."));
+		VALIDATE(value_labels_.size() == widget->get_item_count(),
+				 _("The number of value_labels and values don't match."));
 
 		widget->set_value_labels(value_labels_);
 
@@ -71,9 +74,8 @@ twidget* tbuilder_slider::build() const
 		widget->set_maximum_value_label(maximum_value_label_);
 	}
 
-	DBG_GUI_G << "Window builder: placed slider '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed slider '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
@@ -132,4 +134,3 @@ twidget* tbuilder_slider::build() const
  * @end{tag}{name="slider"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

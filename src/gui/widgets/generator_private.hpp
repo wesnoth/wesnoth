@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,21 +24,23 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "utils/foreach.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Contains the policies for the tgenerator class.
  */
-namespace policy {
+namespace policy
+{
 
 /***** ***** ***** ***** Minimum selection ***** ***** ***** *****/
 
 /** Contains the policy for the minimum number of selected items. */
-namespace minimum_selection {
+namespace minimum_selection
+{
 
 /** Must select at least one item. */
-struct tone
-	: public virtual tgenerator_
+struct tone : public virtual tgenerator_
 {
 	/**
 	 * Called when an item is shown or hidden.
@@ -54,6 +56,9 @@ struct tone
 	 * @param index               The index of the new item.
 	 */
 	void create_item(const unsigned index);
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/**
 	 * Called when the users wants to deselect an item.
@@ -84,15 +89,19 @@ struct tone
 };
 
 /** No minimum selection. */
-struct tnone
-	: public virtual tgenerator_
+struct tnone : public virtual tgenerator_
 {
 
 	/** See @ref minimum_selection::tone::set_item_shown(). */
 	void set_item_shown(const unsigned index, const bool show);
 
 	/** See @ref minimum_selection::tone::create_item() */
-	void create_item(const unsigned /*index*/) {}
+	void create_item(const unsigned /*index*/)
+	{
+	}
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref minimum_selection::tone::deselect_item() */
 	bool deselect_item(const unsigned index)
@@ -115,11 +124,11 @@ struct tnone
 /***** ***** ***** ***** Maximum selection ***** ***** ***** *****/
 
 /** Contains the policy for the maximum number of selected items. */
-namespace maximum_selection {
+namespace maximum_selection
+{
 
 /** May select only one item. */
-struct tone
-	: public virtual tgenerator_
+struct tone : public virtual tgenerator_
 {
 	/**
 	 * Called when an item is selected.
@@ -128,10 +137,17 @@ struct tone
 	 * function should always call do_select_item() so the new item does get
 	 * selected.
 	 *
+	 * Since this funcion controls the maximum selection count it should only
+	 * be used to select items, not to deselect them.
+	 *
+	 * @pre                       @p select == @c true
+	 *
 	 * @param index               The item to select.
 	 */
-	void select_item(const unsigned index)
+	void select_item(const unsigned index, const bool select) OVERRIDE
 	{
+		assert(select);
+
 		if(get_selected_item_count() == 1) {
 			// deselect current.
 			do_deselect_item(get_selected_item());
@@ -142,12 +158,13 @@ struct tone
 };
 
 /** No maximum amount of items to select. */
-struct tinfinite
-	: public virtual tgenerator_
+struct tinfinite : public virtual tgenerator_
 {
 	/** See tone::select_item(). */
-	void select_item(const unsigned index)
+	void select_item(const unsigned index, const bool select) OVERRIDE
 	{
+		assert(select);
+
 		do_select_item(index);
 	}
 };
@@ -157,11 +174,11 @@ struct tinfinite
 /***** ***** ***** ***** Placement ***** ***** ***** *****/
 
 /** Controls how new items are placed. */
-namespace placement {
+namespace placement
+{
 
 /** Places the items in a horizontal row. */
-struct thorizontal_list
-	: public virtual tgenerator_
+struct thorizontal_list : public virtual tgenerator_
 {
 	thorizontal_list();
 
@@ -174,6 +191,9 @@ struct thorizontal_list
 	 */
 	void create_item(const unsigned index);
 
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
+
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) OVERRIDE
 	{
@@ -181,8 +201,8 @@ struct thorizontal_list
 	}
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(
-			const unsigned /*maximum_height*/) OVERRIDE
+	virtual void request_reduce_height(const unsigned /*maximum_height*/)
+			OVERRIDE
 	{
 		/* DO NOTHING */
 	}
@@ -204,14 +224,12 @@ struct thorizontal_list
 	void set_visible_rectangle(const SDL_Rect& rectangle);
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -245,13 +263,15 @@ private:
 };
 
 /** Places the items in a vertical column. */
-struct tvertical_list
-	: public virtual tgenerator_
+struct tvertical_list : public virtual tgenerator_
 {
 	tvertical_list();
 
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned index);
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) OVERRIDE
@@ -260,8 +280,8 @@ struct tvertical_list
 	}
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(
-			const unsigned /*maximum_height*/) OVERRIDE
+	virtual void request_reduce_height(const unsigned /*maximum_height*/)
+			OVERRIDE
 	{
 		/* DO NOTHING */
 	}
@@ -279,14 +299,12 @@ struct tvertical_list
 	void set_visible_rectangle(const SDL_Rect& rectangle);
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -298,11 +316,13 @@ struct tvertical_list
 
 	/** Inherited from tgenerator_. */
 	void handle_key_left_arrow(SDLMod /*modifier*/, bool& /*handled*/)
-		{ /* do nothing */ }
+	{ /* do nothing */
+	}
 
 	/** Inherited from tgenerator_. */
 	void handle_key_right_arrow(SDLMod /*modifier*/, bool& /*handled*/)
-		{ /* do nothing */ }
+	{ /* do nothing */
+	}
 
 	// FIXME we need a delete handler as well,
 	// when deleting the last item we need to remove the placed flag.
@@ -328,11 +348,16 @@ private:
  *
  * @todo Implement.
  */
-struct tmatrix
-	: public virtual tgenerator_
+struct tmatrix : public virtual tgenerator_
 {
 	/** See thorizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
+	void create_item(const unsigned /*index*/)
+	{
+		ERROR_LOG(false);
+	}
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) OVERRIDE
@@ -341,8 +366,8 @@ struct tmatrix
 	}
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(
-			const unsigned /*maximum_height*/) OVERRIDE
+	virtual void request_reduce_height(const unsigned /*maximum_height*/)
+			OVERRIDE
 	{
 		/* DO NOTHING */
 	}
@@ -354,9 +379,9 @@ struct tmatrix
 	}
 
 	/** See @ref twidget::place. */
-	virtual void place(
-			  const tpoint& /*origin*/
-			, const tpoint& /*size*/) OVERRIDE
+	virtual void place(const tpoint& /*origin*/
+					   ,
+					   const tpoint& /*size*/) OVERRIDE
 	{
 		ERROR_LOG(false);
 	}
@@ -368,21 +393,23 @@ struct tmatrix
 	}
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& /*rectangle*/ )
-		{ ERROR_LOG(false); }
-
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& /*coordinate*/
-			, const bool /*must_be_active*/) OVERRIDE
+	void set_visible_rectangle(const SDL_Rect& /*rectangle*/)
 	{
 		ERROR_LOG(false);
 	}
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& /*coordinate*/
-			, const bool /*must_be_active*/) const OVERRIDE
+	virtual twidget* find_at(const tpoint& /*coordinate*/
+							 ,
+							 const bool /*must_be_active*/) OVERRIDE
+	{
+		ERROR_LOG(false);
+	}
+
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(const tpoint& /*coordinate*/
+								   ,
+								   const bool /*must_be_active*/) const OVERRIDE
 	{
 		ERROR_LOG(false);
 	}
@@ -391,36 +418,46 @@ struct tmatrix
 
 	/** Inherited from tgenerator_. */
 	void handle_key_up_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		ERROR_LOG(false);
+	}
 
 	/** Inherited from tgenerator_. */
 	void handle_key_down_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		ERROR_LOG(false);
+	}
 
 	/** Inherited from tgenerator_. */
 	void handle_key_left_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		ERROR_LOG(false);
+	}
 
 	/** Inherited from tgenerator_. */
 	void handle_key_right_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		ERROR_LOG(false);
+	}
 };
 
 /**
- * Places the items independent of eachother.
+ * Places the items independent of each other.
  *
  * This is mainly meant for when only one item is shown at the same time.
  *
  * @todo Implement.
  */
-struct tindependent
-	: public virtual tgenerator_
+struct tindependent : public virtual tgenerator_
 {
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/)
 	{
 		/* DO NOTHING */
 	}
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
@@ -441,22 +478,19 @@ struct tindependent
 	void set_visible_rectangle(const SDL_Rect& rectangle);
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -493,11 +527,11 @@ struct tindependent
  * Contains the policy for which action to take when an item is selected or
  * deselected.
  */
-namespace select_action {
+namespace select_action
+{
 
 /** Select the item, this requires the grid to contain a tselectable_. */
-struct tselect
-	: public virtual tgenerator_
+struct tselect : public virtual tgenerator_
 {
 	void select(tgrid& grid, const bool select);
 
@@ -510,21 +544,18 @@ struct tselect
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(tgrid* grid
-			, const std::map<std::string /* widget id */, string_map>& data
-			, const boost::function<void (twidget*)>& callback);
-
+	void init(tgrid* grid,
+			  const std::map<std::string /* widget id */, string_map>& data,
+			  const boost::function<void(twidget&)>& callback);
 };
 
 /** Show the item. */
-struct tshow
-	: public virtual tgenerator_
+struct tshow : public virtual tgenerator_
 {
 	void select(tgrid& grid, const bool show)
 	{
-		grid.set_visible(show
-				? twidget::tvisible::visible
-				: twidget::tvisible::hidden);
+		grid.set_visible(show ? twidget::tvisible::visible
+							  : twidget::tvisible::hidden);
 	}
 
 	/**
@@ -537,14 +568,15 @@ struct tshow
 	 * @param callback            The callback function is not used and
 	 *                            should be NULL.
 	 */
-	void init(tgrid* grid
-			, const std::map<std::string /* widget id */, string_map>& data
-			, const boost::function<void (twidget*)>& callback);
+	void init(tgrid* grid,
+			  const std::map<std::string /* widget id */, string_map>& data,
+			  const boost::function<void(twidget&)>& callback);
 };
 
 } // namespace select_action
 
 } // namespace policy
+
 /***** ***** ***** ***** tgenerator ***** ***** ***** *****/
 
 /**
@@ -552,20 +584,16 @@ struct tshow
  *
  * The class is policy based so the behavior can be selected.
  */
-template
-	    < class minimum_selection
-		, class maximum_selection
-		, class placement
-		, class select_action
-		>
-class tgenerator
-		: public minimum_selection
-		, public maximum_selection
-		, public placement
-		, public select_action
+template <class minimum_selection,
+		  class maximum_selection,
+		  class placement,
+		  class select_action>
+class tgenerator : public minimum_selection,
+				   public maximum_selection,
+				   public placement,
+				   public select_action
 {
 public:
-
 	tgenerator()
 		: minimum_selection()
 		, maximum_selection()
@@ -605,20 +633,20 @@ public:
 	/** Inherited from tgenerator_. */
 	void clear()
 	{
-		FOREACH(AUTO item, items_) {
+		FOREACH(AUTO item, items_)
+		{
 			delete item;
 		}
 		selected_item_count_ = 0;
 	}
 
 	/** Inherited from tgenerator_. */
-	void select_item(const unsigned index,
-			const bool select = true)
+	void select_item(const unsigned index, const bool select = true)
 	{
 		assert(index < items_.size());
 
 		if(select && !is_selected(index)) {
-			maximum_selection::select_item(index);
+			maximum_selection::select_item(index, true);
 			last_selected_item_ = index;
 		} else if(is_selected(index)) {
 			if(!minimum_selection::deselect_item(index)) {
@@ -644,9 +672,9 @@ public:
 
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
-			items_[index]->grid.set_visible(show
-					? twidget::tvisible::visible
-					: twidget::tvisible::invisible);
+			items_[index]
+					->grid.set_visible(show ? twidget::tvisible::visible
+											: twidget::tvisible::invisible);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);
@@ -680,8 +708,8 @@ public:
 		if(selected_item_count_ == 0) {
 			return -1;
 		} else if(last_selected_item_ != -1
-				&& last_selected_item_ < static_cast<int>(items_.size())
-				&& (*items_[last_selected_item_]).selected) {
+				  && last_selected_item_ < static_cast<int>(items_.size())
+				  && (*items_[last_selected_item_]).selected) {
 
 			return last_selected_item_;
 
@@ -712,9 +740,9 @@ public:
 
 	/** Inherited from tgenerator_. */
 	tgrid& create_item(const int index,
-			tbuilder_grid_const_ptr list_builder,
-			const string_map& item_data,
-			const boost::function<void (twidget*)>& callback)
+					   tbuilder_grid_const_ptr list_builder,
+					   const string_map& item_data,
+					   const boost::function<void(twidget&)>& callback)
 	{
 		std::map<std::string, string_map> data;
 
@@ -723,11 +751,11 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	tgrid& create_item(const int index,
+	tgrid& create_item(
+			const int index,
 			tbuilder_grid_const_ptr list_builder,
-			const std::map<std::string /* widget id */,
-			string_map>& item_data,
-			const boost::function<void (twidget*)>& callback)
+			const std::map<std::string /* widget id */, string_map>& item_data,
+			const boost::function<void(twidget&)>& callback)
 	{
 		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
@@ -736,9 +764,7 @@ public:
 		list_builder->build(&item->grid);
 		init(&item->grid, item_data, callback);
 
-		const unsigned item_index = index == -1
-				? items_.size()
-				: index;
+		const unsigned item_index = index == -1 ? items_.size() : index;
 
 		items_.insert(items_.begin() + item_index, item);
 		minimum_selection::create_item(item_index);
@@ -750,20 +776,21 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	virtual void create_items(const int index,
+	virtual void create_items(
+			const int index,
 			tbuilder_grid_const_ptr list_builder,
-			const std::vector<std::map<std::string /*widget id*/,
-			string_map> >& data,
-			const boost::function<void (twidget*)>& callback)
+			const std::vector<std::map<std::string /*widget id*/, string_map> >&
+					data,
+			const boost::function<void(twidget&)>& callback)
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
 
 	/** Inherited from tgenerator_. */
 	virtual void create_items(const int index,
-			tbuilder_grid_const_ptr list_builder,
-			const std::vector<string_map>& data,
-			const boost::function<void (twidget*)>& callback)
+							  tbuilder_grid_const_ptr list_builder,
+							  const std::vector<string_map>& data,
+							  const boost::function<void(twidget&)>& callback)
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -771,9 +798,10 @@ public:
 	/** See @ref twidget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE
 	{
-		FOREACH(AUTO item, items_) {
+		FOREACH(AUTO item, items_)
+		{
 			if(item->grid.get_visible() != twidget::tvisible::invisible
-						&& item->shown) {
+			   && item->shown) {
 
 				item->grid.layout_initialise(full_initialisation);
 			}
@@ -827,9 +855,10 @@ public:
 	{
 		assert(this->get_visible() == twidget::tvisible::visible);
 
-		FOREACH(AUTO item, items_) {
+		FOREACH(AUTO item, items_)
+		{
 			if(item->grid.get_visible() == twidget::tvisible::visible
-					&& item->shown) {
+			   && item->shown) {
 
 				item->grid.draw_children(frame_buffer);
 			}
@@ -837,16 +866,16 @@ public:
 	}
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE
+	virtual void impl_draw_children(surface& frame_buffer,
+									int x_offset,
+									int y_offset) OVERRIDE
 	{
 		assert(this->get_visible() == twidget::tvisible::visible);
 
-		FOREACH(AUTO item, items_) {
+		FOREACH(AUTO item, items_)
+		{
 			if(item->grid.get_visible() == twidget::tvisible::visible
-					&& item->shown) {
+			   && item->shown) {
 
 				item->grid.draw_children(frame_buffer, x_offset, y_offset);
 			}
@@ -854,28 +883,27 @@ public:
 	}
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE
 	{
-		FOREACH(AUTO item, items_) {
+		FOREACH(AUTO item, items_)
+		{
 			std::vector<twidget*> child_call_stack = call_stack;
 			item->grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE
 	{
 		return placement::find_at(coordinate, must_be_active);
 	}
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE
 	{
 		return placement::find_at(coordinate, must_be_active);
 	}
@@ -883,7 +911,8 @@ public:
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE
 	{
-		FOREACH(AUTO item, items_) {
+		FOREACH(AUTO item, items_)
+		{
 			if(item->grid.disable_click_dismiss()) {
 				return true;
 			}
@@ -896,7 +925,10 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() OVERRIDE { return NULL; }
+	virtual iterator::twalker_* create_walker() OVERRIDE
+	{
+		return NULL;
+	}
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -925,9 +957,8 @@ public:
 	}
 
 protected:
-
 	/** Inherited from tgenerator_. */
-	void do_select_item(const unsigned index) //fixme rename to impl
+	void do_select_item(const unsigned index) // fixme rename to impl
 	{
 		assert(index < items_.size());
 
@@ -945,14 +976,11 @@ protected:
 	}
 
 private:
-
 	/** Definition of an item. */
-	struct titem {
+	struct titem
+	{
 
-		titem()
-			: grid()
-			, selected(false)
-			, shown(true)
+		titem() : grid(), selected(false), shown(true)
 		{
 		}
 
@@ -1012,14 +1040,15 @@ private:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	template<class T>
+	template <class T>
 	void impl_create_items(const int index,
-			tbuilder_grid_const_ptr list_builder,
-			const std::vector<T>& data,
-			const boost::function<void (twidget*)>& callback)
+						   tbuilder_grid_const_ptr list_builder,
+						   const std::vector<T>& data,
+						   const boost::function<void(twidget&)>& callback)
 	{
 		int i = index;
-		FOREACH(const AUTO& item_data, data) {
+		FOREACH(const AUTO & item_data, data)
+		{
 			create_item(i, list_builder, item_data, callback);
 			if(i != -1) {
 				++i;
@@ -1040,8 +1069,8 @@ private:
 	 *                            in the grid is (de)selected.
 	 */
 	void init(tgrid* grid,
-			const std::map<std::string /* widget id */, string_map>& data,
-			const boost::function<void (twidget*)>& callback)
+			  const std::map<std::string /* widget id */, string_map>& data,
+			  const boost::function<void(twidget&)>& callback)
 	{
 		assert(grid);
 		grid->set_parent(this);
@@ -1053,4 +1082,3 @@ private:
 } // namespace gui2
 
 #endif
-

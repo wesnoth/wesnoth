@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,17 +16,36 @@
 #define SCRIPTING_LUA_API_HPP
 
 #include <cstddef>
+#include <string>
+#include "config.hpp" // forward declaration of the nested type config::attribute_value is not possible
+#include "lua_types.hpp" // the luatype typedef
+#include "unit_ptr.hpp"
 
 struct lua_State;
-class config;
-class vconfig;
-class unit;
 
-bool luaW_pcall(lua_State *L , int nArgs, int nRets, bool allow_wml_error = false);
-unit *luaW_tounit(lua_State *L, int index, bool only_on_map = false);
-void luaW_pushconfig(lua_State *L, config const &cfg);
-bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta = 0);
-bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
+/**
+ * Converts a Lua value to a unit pointer.
+ */
+unit_ptr luaW_tounit(lua_State *L, int index, bool only_on_map = false);
+
+/**
+ * Displays a message in the chat window.
+ */
+void chat_message(std::string const &caption, std::string const &msg);
+
+/**
+ * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
+ * @param nRets LUA_MULTRET for unbounded return values.
+ * @return true if the call was successful and @a nRets return values are available.
+ */
+bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);
+
+/**
+ * Converts a Lua value to a unit pointer.
+ */
+unit_ptr luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
+
+struct map_location;
 
 /**
  * Storage for a unit, either owned by the Lua code (#ptr != 0), on a
@@ -36,18 +55,21 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
 class lua_unit
 {
 	size_t uid;
-	unit *ptr;
+	unit_ptr ptr;
 	int side;
 	lua_unit(lua_unit const &);
 
 public:
-	lua_unit(size_t u): uid(u), ptr(NULL), side(0) {}
-	lua_unit(unit *u): uid(0), ptr(u), side(0) {}
-	lua_unit(int s, size_t u): uid(u), ptr(NULL), side(s) {}
+	lua_unit(size_t u): uid(u), ptr(), side(0) {}
+	lua_unit(unit_ptr u): uid(0), ptr(u), side(0) {}
+	lua_unit(int s, size_t u): uid(u), ptr(), side(s) {}
 	~lua_unit();
 	bool on_map() const { return !ptr && side == 0; }
 	int on_recall_list() const { return side; }
-	unit *get();
+	unit_ptr get();
+
+	// Clobbers loc
+	bool put_map(const map_location &loc);
 };
 
 #endif

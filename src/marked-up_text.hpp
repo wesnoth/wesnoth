@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,11 @@ class CVideo;
 struct surface;
 #include <SDL_video.h>
 #include <string>
+#include "serialization/unicode_types.hpp"
+
+#ifdef SDL_GPU
+#include "sdl/image.hpp"
+#endif
 
 namespace font {
 
@@ -80,6 +85,13 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
+#ifdef SDL_GPU
+sdl::timage draw_text_to_texture(const SDL_Rect& area, int size,
+								 const SDL_Color& color,
+								 const std::string& text,
+								 bool use_tooltips = false, int style = 0);
+#endif
+
 /** Calculate the size of a text (in pixels) if it were to be drawn. */
 SDL_Rect text_area(const std::string& text, int size, int style=0);
 
@@ -95,12 +107,12 @@ std::string del_tags(const std::string& text);
 bool is_format_char(char c);
 
 /**
- * Determine if a wchar_t is a CJK character
+ * Determine if a ucs4::char_t is a CJK character
  *
  * @retval true                   Input-char is a CJK char
  * @retval false                  Input-char is a not CJK char.
  */
-bool is_cjk_char(const wchar_t ch);
+bool is_cjk_char(const ucs4::char_t ch);
 
 /** Create string of color-markup, such as "<255,255,0>" for yellow. */
 std::string color2markup(const SDL_Color &color);
@@ -110,14 +122,14 @@ std::string color2hexa(const SDL_Color &color);
 
 /**
  * Creates pango markup of a color.
- * Don't forget to close it with a </span>
+ * Don't forget to close it with a @c \</span\>.
  */
 std::string span_color(const SDL_Color &color);
 
 /**
  * Wrap text.
  *
- * - If the text exceedes the specified max width, wrap it on a word basis.
+ * - If the text exceeds the specified max width, wrap it on a word basis.
  * - If this is not possible, e.g. the word is too big to fit, wrap it on a
  * - char basis.
  */
@@ -128,7 +140,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
  * Draw text on the screen, fit text to maximum width, no markup, no tooltips.
  *
  * This method makes sure that the text fits within a given maximum width.
- * If a line exceedes this width, it will be wrapped
+ * If a line exceeds this width, it will be wrapped
  * on a word basis if possible, otherwise on a char basis.
  * This method is otherwise similar to the draw_text method,
  * but it doesn't support special markup or tooltips.

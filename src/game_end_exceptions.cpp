@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -23,15 +23,13 @@ transient_end_level::transient_end_level()
 	, linger_mode(true)
 	, custom_endlevel_music()
 	, reveal_map(true)
-	, disabled(false)
 {}
 
 end_level_data::end_level_data()
 	: prescenario_save(true)
 	, replay_save(true)
-	, gold_bonus(true)
-	, carryover_percentage(game_config::gold_carryover_percentage)
-	, carryover_add(false)
+	, proceed_to_next_level(false)
+	, is_victory(true)
 	, transient()
 {
 }
@@ -40,16 +38,14 @@ void end_level_data::write(config& cfg) const
 {
 	cfg["prescenario_save"] = prescenario_save;
 	cfg["replay_save"] = replay_save;
-	cfg["bonus"] = gold_bonus;
-	cfg["carryover_percentage"] = carryover_percentage;
-	cfg["carryover_add"] = carryover_add;
+	cfg["proceed_to_next_level"] = proceed_to_next_level;
+	cfg["is_victory"] = is_victory;
 }
 
 void end_level_data::read(const config& cfg)
 {
 	prescenario_save = cfg["prescenario_save"].to_bool(true);
 	replay_save = cfg["replay_save"].to_bool(true);
-	gold_bonus = cfg["bonus"].to_bool(true);
-	carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
-	carryover_add = cfg["carryover_add"].to_bool(false);
+	proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
+	is_victory = cfg["is_victory"].to_bool(true);
 }

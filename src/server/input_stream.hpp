@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,6 +26,11 @@ public:
 
 	bool read_line(std::string& str);
 	void stop();
+
+	const std::string& path() const
+	{
+		return path_;
+	}
 
 private:
 	input_stream(const input_stream&);

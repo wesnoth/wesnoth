@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Bartosz Waresiak <dragonking@o2.pl>
+   Copyright (C) 2009 - 2015 by Bartosz Waresiak <dragonking@o2.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -56,7 +56,7 @@ candidate_action_ptr candidate_action_manager::load_candidate_action_from_config
 		} else if( type == "attack") {
 			new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
 		} else {
-			ERR_AI << "Unknown candidate action type: " << type << "\n";
+			ERR_AI << "Unknown candidate action type: " << type << std::endl;
 		}
 	} catch(formula_error& e) {
 		ai->handle_exception(e, "Error while registering candidate action '" + name + "'");
@@ -102,7 +102,7 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 		res = 0;
 	} catch(type_error& e) {
 		res = 0;
-		ERR_AI << "formula type error while evaluating candidate action: " << e.message << "\n";
+		ERR_AI << "formula type error while evaluating candidate action: " << e.message << std::endl;
 	}
 
 	return res;
@@ -259,7 +259,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	for(variant_iterator i = filtered_my_units.begin() ; i != filtered_my_units.end() ; ++i) {
 		const unit_callable* u_callable = dynamic_cast<const unit_callable*>( (*i).as_callable() );
 		if(u_callable == NULL) {
-			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units\n";
+			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
 		}
 		my_units_flt.push_back(u_callable);
@@ -268,7 +268,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	for(variant_iterator i = filtered_enemy_units.begin() ; i != filtered_enemy_units.end() ; ++i) {
 		const unit_callable* u_callable = dynamic_cast<const unit_callable*>( (*i).as_callable() );
 		if(u_callable == NULL) {
-			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units\n";
+			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
 		}
 		enemy_units_flt.push_back(u_callable);

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #define WB_MOVE_HPP_
 
 #include "action.hpp"
+#include "../game_errors.hpp"
 
 struct temporary_unit_mover;
 
@@ -35,7 +36,7 @@ public:
 	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(config const&, bool hidden); // For deserialization
-	virtual ~move(){}
+	virtual ~move();
 
 	virtual std::ostream& print(std::ostream& s) const;
 
@@ -52,7 +53,7 @@ public:
 	virtual error check_validity() const;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() const;
+	virtual unit_ptr get_unit() const;
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 

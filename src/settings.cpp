@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,9 +39,9 @@ int get_turns(const std::string& value)
 		(value, turns_default, turns_min, turns_max);
 }
 
-int get_village_gold(const std::string& value)
+int get_village_gold(const std::string& value, const game_classification* classification)
 {
-	return lexical_cast_in_range<int>(value, 2, 1, 5);
+	return lexical_cast_in_range<int>(value, ((classification && !classification->is_normal_mp_game()) ? 1 : 2), 1, 5);
 }
 
 int get_village_support(const std::string& value)

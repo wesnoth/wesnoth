@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,39 +20,40 @@
 class CVideo;
 class t_string;
 
-namespace gui2 {
+namespace gui2
+{
 
 struct tpoint;
 
-namespace tip {
+namespace tip
+{
 
-	/**
-	 * Shows a tip.
-	 *
-	 * The tip is a tooltip or a helptip. One type of tip is shown at the same
-	 * time, opening a second tip closes the first.
-	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
-	 * @param window_id           The id of the window used to show the tip.
-	 * @param message             The message to show in the tip.
-	 * @param mouse               The position of the mouse.
-	 */
-	void show(CVideo& video
-			, const std::string& window_id
-			, const t_string& message
-			, const tpoint& mouse);
+/**
+ * Shows a tip.
+ *
+ * The tip is a tooltip or a helptip. One type of tip is shown at the same
+ * time, opening a second tip closes the first.
+ *
+ * @param video               The video which contains the surface to draw
+ *                            upon.
+ * @param window_id           The id of the window used to show the tip.
+ * @param message             The message to show in the tip.
+ * @param mouse               The position of the mouse.
+ */
+void show(CVideo& video,
+		  const std::string& window_id,
+		  const t_string& message,
+		  const tpoint& mouse);
 
-	/**
-	 * Removes a tip.
-	 *
-	 * It is safe to call this function when no tip is shown.
-	 * */
-	void remove();
+/**
+ * Removes a tip.
+ *
+ * It is safe to call this function when no tip is shown.
+ * */
+void remove();
 
 } // namespace tip
 
 } // namespace gui2
 
 #endif
-

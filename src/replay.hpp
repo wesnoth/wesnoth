@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,10 +22,11 @@
 
 #include "config.hpp"
 #include "map_location.hpp"
-#include "rng.hpp"
 
 #include <deque>
-
+#include <map>
+#include <set>
+class replay_recorder_base;
 class game_display;
 class terrain_label;
 class unit_map;
@@ -47,68 +48,36 @@ private:
 	time_t time_;
 };
 
-class replay: public rand_rng::rng
+class replay
 {
 public:
-	replay();
-	explicit replay(const config& cfg);
+	explicit replay(replay_recorder_base& base);
 
-	void append(const config& cfg);
-
-	void set_skip(bool skip);
-	bool is_skipping() const;
-
+	
 	void add_start();
-	void add_recruit(const std::string& type_id, const map_location& loc, const map_location& from);
-	void add_recall(const std::string& unit_id, const map_location& loc, const map_location& from);
-	void add_disband(const std::string& unit_id);
 	void add_countdown_update(int value,int team);
-	/// Records a move that follows the provided @a steps.
-	void add_movement(const std::vector<map_location>& steps);
-	/// Modifies the most recently recorded move to indicate that it
-	/// stopped early (due to unforseen circumstances, such as an ambush).
-	void limit_movement(const map_location& early_stop);
-	void add_attack(const map_location& a, const map_location& b,
-		int att_weapon, int def_weapon, const std::string& attacker_type_id,
-		const std::string& defender_type_id, int attacker_lvl,
-		int defender_lvl, const size_t turn, const time_of_day &t);
-	void add_auto_shroud(bool turned_on);
-	void update_shroud();
-	void add_seed(const char* child_name, int seed);
-	void user_input(const std::string &, const config &);
+
+	void add_synced_command(const std::string& name, const config& command);
+	void init_side();
+	/*
+		returns a reference to the newest config that us not dependent or has undo =no
+
+	*/
+	config& get_last_real_command();
+	/**
+		adds a user_input to the replay
+		@param from_side the side that had to make the decision, -1 for 'server'
+	*/
+	void user_input(const std::string &, const config &, int from_side);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
-	void init_side();
 	void end_turn();
-	void add_event(const std::string& name,
-		const map_location& loc=map_location::null_location);
-	void add_unit_checksum(const map_location& loc,config* const cfg);
-	void add_checksum_check(const map_location& loc);
+	void add_unit_checksum(const map_location& loc,config& cfg);
 	void add_log_data(const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const config& c);
 
-	/**
-	 * Mark an expected advancement adding it to the queue
-	 */
-	void add_expected_advancement(const map_location& loc);
-
-	/**
-	 * Access to the expected advancements queue.
-	 */
-	const std::deque<map_location>& expected_advancements() const;
-
-	/**
-	 * Remove the front expected advancement from the queue
-	 */
-	void pop_expected_advancement();
-
-	/**
-	 * Adds an advancement to the replay, the following option command
-	 * determines which advancement option has been chosen
-	 */
-	void add_advancement(const map_location& loc);
 
 	void add_chat_message_location();
 	void speak(const config& cfg);
@@ -123,15 +92,22 @@ public:
 	//ignored by the undo system.
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
 	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
-	config get_last_turn(int num_turns=1);
-	const config& get_replay_data() const { return cfg_; }
 
 	void undo();
+	/*
+		undoes the last move and puts it into given config to be reone with redo
+		The retuned config also contains the depended commands for that user action.
+		This is needed be becasue we also want to readd those dependent commands to the replay when redoing the command.
+	*/
+	void undo_cut(config& dst);
+	/*
+		puts the given config which was cut with undo_cut back in the replay.
+	*/
+	void redo(const config& dst);
 
 	void start_replay();
 	void revert_action();
 	config* get_next_action();
-	void pre_replay();
 
 	bool at_end() const;
 	void set_to_end();
@@ -145,53 +121,45 @@ public:
 	int ncommands() const;
 
 	static void process_error(const std::string& msg);
-
+	/*
+		adds a [start] at the begnning of the replay if there is none.
+		returns true if a [start] was added.
+	*/
+	bool add_start_if_not_there_yet();
 private:
-	//generic for add_movement and add_attack
-	void add_pos(const std::string& type,
-	             const map_location& a, const map_location& b);
 
 	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg> > &i) const;
 
 	config &command(int);
 	void remove_command(int);
-	/** Adds a new empty command to the command list.
+	/** Adds a new empty command to the command list at the end.
 	 *
-	 * @param update_random_context  If set to false, do not update the
-	 *           random context variables: all random generation will take
-	 *           place in the previous random context. Used for commands
-	 *           for which "random context" is pointless, and which can be
-	 *           issued while some other commands are still taking place,
-	 *           like, for example, messages during combats.
-	 *
-	 * @return a pointer to the added command
+	 * @return a reference to the added command
 	 */
-	config* add_command(bool update_random_context=true);
-	config cfg_;
-	int pos_;
-
-	config* current_;
-
-	bool skip_;
-
-	std::vector<int> message_locations;
-
+	config& add_command();
 	/**
-	 * A queue of units (locations) that are supposed to advance but the
-	 * relevant advance (choice) message has not yet been received
+	 * adds a new command to the command list at the current position.
+	 *
+	 * @return a reference to the added command
 	 */
-	std::deque<map_location> expected_advancements_;
+	config& add_nonundoable_command();
+	replay_recorder_base* base_;
+	std::vector<int> message_locations;
 };
 
-replay& get_replay_source();
-
-extern replay recorder;
-
+enum REPLAY_RETURN
+{
+	REPLAY_RETURN_AT_END,
+	REPLAY_FOUND_DEPENDENT,
+	REPLAY_FOUND_END_TURN,
+	REPLAY_FOUND_END_MOVE,
+	REPLAY_FOUND_END_LEVEL
+};
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
-bool do_replay(int side_num, replay *obj = NULL);
+REPLAY_RETURN do_replay(bool one_move = false);
 
-bool do_replay_handle(int side_num, const std::string &do_untill);
+REPLAY_RETURN do_replay_handle(bool one_move = false);
 
 class replay_network_sender
 {
@@ -210,14 +178,16 @@ namespace mp_sync {
 
 /**
  * Interface for querying local choices.
- * It has to support querying the user and making a random choice from a
- * preseeded random generator.
+ * It has to support querying the user and making a random choice
  */
 struct user_choice
 {
 	virtual ~user_choice() {}
-	virtual config query_user() const = 0;
-	virtual config random_choice(rand_rng::simple_rng &) const = 0;
+	virtual config query_user(int side) const = 0;
+	virtual config random_choice(int side) const = 0;
+	///whether the choice is visible for the user like an advacement choice
+	///a non-visible choice is for example get_global_variable
+	virtual bool is_visible() const { return true; }
 };
 
 /**
@@ -226,28 +196,30 @@ struct user_choice
  * The choice is synchronized across all the multiplayer clients and
  * stored into the replay. The function object is called if the local
  * client is responsible for making the choice.
+ * otherwise this function waits for a remote choice and returns it when it is received.
+ * information about the choice made is saved in replay with dependent=true
+ *
  * @param name Tag used for storing the choice into the replay.
  * @param side The number of the side responsible for making the choice.
  *             If zero, it defaults to the currently active side.
- * @param force_sp If true, user choice will happen in prestart and start
- *                 events too. But if used for these events in multiplayer,
- *                 an exception will be thrown instead.
  *
  * @note In order to prevent issues with sync, crash, or infinite loop, a
  *       number of precautions must be taken when getting a choice from a
  *       specific side.
- *       - The calling function must enter a loop to wait for network sync
- *         if the side is non-local. This loop must end when a response is
- *         received in the replay.
  *       - The server must recognize @name replay commands as legal from
  *         non-active players. Preferably the server should be notified
  *         about which player the data is expected from, and discard data
  *         from unexpected players.
- *       - do_replay_handle must ignore the @name replay command when the
- *         originating player's turn is reached.
  */
 config get_user_choice(const std::string &name, const user_choice &uch,
-	int side = 0, bool force_sp = false);
+	int side = 0);
+/**
+ * Performs a choice for mutiple sides for WML events.
+ * uch is called on all sies specified in sides, this in done simulaniously on all those sides (or one after another if one client controlls mutiple sides)
+ * and after all calls are executed the results are returned.
+ */
+std::map<int, config> get_user_choice_multiple_sides(const std::string &name, const user_choice &uch,
+	std::set<int> sides);
 
 }
 

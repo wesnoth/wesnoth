@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2004 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+                 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 
 #include "widgets/scrollbar.hpp"
 #include "image.hpp"
+#include "sdl/rect.hpp"
 #include "video.hpp"
 
 #include <iostream>
@@ -34,6 +35,10 @@ namespace {
 	const std::string scrollbar_bottom_hl = "buttons/scrollbottom-active.png";
 	const std::string scrollbar_mid_hl = "buttons/scrollmid-active.png";
 
+	const std::string scrollbar_top_pressed = "buttons/scrolltop-pressed.png";
+	const std::string scrollbar_bottom_pressed = "buttons/scrollbottom-pressed.png";
+	const std::string scrollbar_mid_pressed = "buttons/scrollmid-pressed.png";
+
 	const std::string groove_top = "buttons/scrollgroove-top.png";
 	const std::string groove_mid = "buttons/scrollgroove-mid.png";
 	const std::string groove_bottom = "buttons/scrollgroove-bottom.png";
@@ -46,8 +51,10 @@ scrollbar::scrollbar(CVideo &video)
 	: widget(video)
 	, mid_scaled_(NULL)
 	, groove_scaled_(NULL)
-	, uparrow_(video, "", button::TYPE_TURBO, "uparrow-button")
-	, downarrow_(video, "", button::TYPE_TURBO, "downarrow-button")
+	, uparrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
+			, gui::button::DEFAULT_SPACE, true,"icons/arrows/arrows_ornate_up_25")
+	, downarrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
+			, gui::button::DEFAULT_SPACE, true,"icons/arrows/arrows_ornate_down_25")
 	, state_(NORMAL)
 	, minimum_grip_height_(0)
 	, mousey_on_grip_(0)
@@ -56,6 +63,9 @@ scrollbar::scrollbar(CVideo &video)
 	, full_height_(0)
 	, scroll_rate_(1)
 {
+	uparrow_.enable(false);
+	downarrow_.enable(false);
+
 	static const surface img(image::get_image(scrollbar_mid));
 
 	if (img != NULL) {
@@ -65,9 +75,9 @@ scrollbar::scrollbar(CVideo &video)
 	}
 }
 
-handler_vector scrollbar::handler_members()
+sdl_handler_vector scrollbar::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&uparrow_);
 	h.push_back(&downarrow_);
 	return h;
@@ -83,6 +93,7 @@ void scrollbar::update_location(SDL_Rect const &rect)
 	r.h -= uh + dh;
 
 	widget::update_location(r);
+	//TODO comment or remove
 	//bg_register(r);
 }
 
@@ -218,17 +229,39 @@ SDL_Rect scrollbar::grip_area() const
 	if (h < minimum_grip_height_)
 		h = minimum_grip_height_;
 	int y = loc.y + (static_cast<int>(loc.h) - h) * grip_position_ / (full_height_ - grip_height_);
-	return create_rect(loc.x, y, loc.w, h);
+	return sdl::create_rect(loc.x, y, loc.w, h);
 }
 
 void scrollbar::draw_contents()
 {
-	const surface mid_img(image::get_image(state_ != NORMAL ?
-					scrollbar_mid_hl : scrollbar_mid));
-	const surface bottom_img(image::get_image(state_ != NORMAL ?
-					scrollbar_bottom_hl : scrollbar_bottom));
-	const surface top_img(image::get_image(state_ != NORMAL ?
-					scrollbar_top_hl : scrollbar_top));
+	surface mid_img;
+	surface bottom_img;
+	surface top_img;
+
+	switch (state_) {
+
+	case NORMAL:
+		top_img.assign(image::get_image(scrollbar_top));
+		mid_img.assign(image::get_image(scrollbar_mid));
+		bottom_img.assign(image::get_image(scrollbar_bottom));
+		break;
+
+	case ACTIVE:
+		top_img.assign(image::get_image(scrollbar_top_hl));
+		mid_img.assign(image::get_image(scrollbar_mid_hl));
+		bottom_img.assign(image::get_image(scrollbar_bottom_hl));
+		break;
+
+	case DRAGGED:
+		top_img.assign(image::get_image(scrollbar_top_pressed));
+		mid_img.assign(image::get_image(scrollbar_mid_pressed));
+		bottom_img.assign(image::get_image(scrollbar_bottom_pressed));
+		break;
+
+	case UNINIT:
+	default:
+		break;
+	}
 
 	const surface top_grv(image::get_image(groove_top));
 	const surface mid_grv(image::get_image(groove_mid));
@@ -302,20 +335,23 @@ void scrollbar::handle_event(const SDL_Event& event)
 	case SDL_MOUSEBUTTONUP:
 	{
 		SDL_MouseButtonEvent const &e = event.button;
-		bool on_grip = point_in_rect(e.x, e.y, grip);
+		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 		new_state = on_grip ? ACTIVE : NORMAL;
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
 	{
 		SDL_MouseButtonEvent const &e = event.button;
-		bool on_grip = point_in_rect(e.x, e.y, grip);
-		bool on_groove = point_in_rect(e.x, e.y, groove);
+		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
+		bool on_groove = sdl::point_in_rect(e.x, e.y, groove);
+#if !SDL_VERSION_ATLEAST(2,0,0)
 		if (on_groove && e.button == SDL_BUTTON_WHEELDOWN) {
 			move_position(scroll_rate_);
 		} else if (on_groove && e.button == SDL_BUTTON_WHEELUP) {
 			move_position(-scroll_rate_);
-		} else if (on_grip && e.button == SDL_BUTTON_LEFT) {
+		} else
+#endif
+		if (on_grip && e.button == SDL_BUTTON_LEFT) {
 			mousey_on_grip_ = e.y - grip.y;
 			new_state = DRAGGED;
 		} else if (on_groove && e.button == SDL_BUTTON_LEFT && groove.h != grip.h) {
@@ -334,7 +370,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	{
 		SDL_MouseMotionEvent const &e = event.motion;
 		if (state_ == NORMAL || state_ == ACTIVE) {
-			bool on_grip = point_in_rect(e.x, e.y, grip);
+			bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 			new_state = on_grip ? ACTIVE : NORMAL;
 		} else if (state_ == DRAGGED && groove.h != grip.h) {
 			int y_dep = e.y - grip.y - mousey_on_grip_;
@@ -343,15 +379,31 @@ void scrollbar::handle_event(const SDL_Event& event)
 		}
 		break;
 	}
+#if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_MOUSEWHEEL:
+	{
+		const SDL_MouseWheelEvent& e = event.wheel;
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		bool on_groove = sdl::point_in_rect(x, y, groove);
+		if (on_groove && e.y < 0) {
+			move_position(scroll_rate_);
+		} else if (on_groove && e.y > 0) {
+			move_position(-scroll_rate_);
+		}
+		break;
+	}
+#endif
 	default:
 		break;
 	}
 
-	if ((new_state == NORMAL) ^ (state_ == NORMAL)) {
+
+	if (new_state != state_) {
 		set_dirty();
 		mid_scaled_.assign(NULL);
+		state_ = new_state;
 	}
-	state_ = new_state;
 }
 
 } // end namespace gui

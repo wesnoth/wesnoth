@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,6 +13,8 @@
 */
 
 #include "callable_objects.hpp"
+#include "unit.hpp"
+#include "unit_formula_manager.hpp"
 
 template <typename T, typename K>
 variant convert_map( const std::map<T, K>& input_map ) {
@@ -139,19 +142,19 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 variant unit_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
-		if (loc_==map_location::null_location) {
+		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
 			return variant(loc_.x+1);
 		}
 	} else if(key == "y") {
-		if (loc_==map_location::null_location) {
+		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
 			return variant(loc_.y+1);
 		}
 	} else if(key == "loc") {
-		if (loc_==map_location::null_location) {
+		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
 			return variant(new location_callable(loc_));
@@ -224,8 +227,8 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "cost") {
 		return variant(u_.cost());
 	} else if(key == "vars") {
-		if(u_.formula_vars()) {
-			return variant(u_.formula_vars().get());
+		if(u_.formula_manager().formula_vars()) {
+			return variant(u_.formula_manager().formula_vars().get());
 		} else {
 			return variant();
 		}
@@ -280,7 +283,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "type") {
 		return variant(u_.type_name());
 	} else if(key == "alignment") {
-		return variant(u_.alignment_id(u_.alignment()));
+		return variant(lexical_cast<std::string>(u_.alignment()));
 	} else if(key == "abilities") {
 		std::vector<std::string> abilities = u_.get_ability_list();
 		std::vector<variant> res;

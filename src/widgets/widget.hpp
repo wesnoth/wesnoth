@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,13 +16,13 @@
 #define WIDGET_HPP_INCLUDED
 
 #include "../events.hpp"
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 
 class CVideo;
 
 namespace gui {
 
-class widget : public events::handler
+class widget : public events::sdl_handler
 {
 public:
 	SDL_Rect const &location() const;
@@ -80,14 +80,14 @@ protected:
 	void bg_update();
 	void bg_cancel();
 
-	CVideo& video() const { return *video_; };
+	CVideo& video() const { return *video_; }
 
 	virtual void draw();
-	virtual void draw_contents() {};
+	virtual void draw_contents() {}
 	virtual void update_location(SDL_Rect const &rect);
 
 	const SDL_Rect* clip_rect() const;
-	virtual handler_vector member_handlers() { return handler::handler_members(); }
+	virtual sdl_handler_vector member_handlers() { return sdl_handler::handler_members(); }
 
 	virtual void handle_event(SDL_Event const &/*event*/) {}
 	bool focus_;		// Should user input be ignored?

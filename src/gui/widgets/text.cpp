@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,16 +16,18 @@
 
 #include "gui/widgets/text.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 ttext_::ttext_()
 	: tcontrol(COUNT)
@@ -36,7 +38,7 @@ ttext_::ttext_()
 	, text_changed_callback_()
 {
 #ifdef __unix__
-		// pastes on UNIX systems.
+	// pastes on UNIX systems.
 	connect_signal<event::MIDDLE_BUTTON_CLICK>(boost::bind(
 			&ttext_::signal_handler_middle_button_click, this, _2, _3));
 
@@ -47,8 +49,8 @@ ttext_::ttext_()
 
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(boost::bind(
 			&ttext_::signal_handler_receive_keyboard_focus, this, _2));
-	connect_signal<event::LOSE_KEYBOARD_FOCUS>(boost::bind(
-			&ttext_::signal_handler_lose_keyboard_focus, this, _2));
+	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
+			boost::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
 }
 
 void ttext_::set_active(const bool active)
@@ -82,7 +84,7 @@ void ttext_::set_maximum_length(const size_t maximum_length)
 			selection_length_ = maximum_length - selection_start_;
 		}
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -95,7 +97,7 @@ void ttext_::set_value(const std::string& text)
 		selection_start_ = text_.get_length();
 		selection_length_ = 0;
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -106,7 +108,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		if(selection_start_ == offset) {
 			selection_length_ = 0;
 		} else {
-			selection_length_ = - static_cast<int>(selection_start_ - offset);
+			selection_length_ = -static_cast<int>(selection_start_ - offset);
 		}
 
 #ifdef __unix__
@@ -114,7 +116,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		copy_selection(true);
 #endif
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 
 	} else {
 		assert(offset <= text_.get_length());
@@ -122,47 +124,46 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		selection_length_ = 0;
 
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
-void ttext_::insert_char(const Uint16 unicode)
+void ttext_::insert_char(const utf8::string& unicode)
 {
 	delete_selection();
 
-	if(text_.insert_unicode(selection_start_, unicode)) {
+	if(text_.insert_text(selection_start_, unicode)) {
 
 		// Update status
 		set_cursor(selection_start_ + 1, false);
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
 void ttext_::copy_selection(const bool mouse)
 {
-	int length = selection_length_;
-	unsigned start = selection_start_;
-
-	if(length == 0) {
+	if(selection_length_ == 0) {
 		return;
 	}
 
-	if(length < 0) {
-		length = - length;
-		start -= length;
+	unsigned end, start = selection_start_;
+	const utf8::string txt = text_.text();
+
+	if(selection_length_ > 0) {
+		end = utf8::index(txt, start + selection_length_);
+		start = utf8::index(txt, start);
+	} else {
+		// inverse selection: selection_start_ is in fact the end
+		end = utf8::index(txt, start);
+		start = utf8::index(txt, start + selection_length_);
 	}
-
-	const wide_string& wtext = utils::string_to_wstring(text_.text());
-	const std::string& text = utils::wstring_to_string(
-		wide_string(wtext.begin() + start, wtext.begin() + start + length));
-
-	copy_to_clipboard(text, mouse);
+	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start), mouse);
 }
 
 void ttext_::paste_selection(const bool mouse)
 {
-	const std::string& text = copy_from_clipboard(mouse);
+	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
 	if(text.empty()) {
 		return;
 	}
@@ -172,15 +173,15 @@ void ttext_::paste_selection(const bool mouse)
 	selection_start_ += text_.insert_text(selection_start_, text);
 
 	update_canvas();
-	set_dirty(true);
+	set_is_dirty(true);
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
-void  ttext_::set_selection_start(const size_t selection_start)
+void ttext_::set_selection_start(const size_t selection_start)
 {
 	if(selection_start != selection_start_) {
 		selection_start_ = selection_start;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -188,7 +189,7 @@ void ttext_::set_selection_length(const int selection_length)
 {
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -196,7 +197,7 @@ void ttext_::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -255,7 +256,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	handled = true;
 	if(selection_length_ != 0) {
 		delete_selection();
-	} else if(selection_start_){
+	} else if(selection_start_) {
 		delete_char(true);
 	}
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
@@ -268,26 +269,28 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 	handled = true;
 	if(selection_length_ != 0) {
 		delete_selection();
-	} else if (selection_start_ < text_.get_length()) {
+	} else if(selection_start_ < text_.get_length()) {
 		delete_char(false);
 	}
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
-void ttext_::handle_key_default(
-		bool& handled, SDLKey /*key*/, SDLMod /*modifier*/, Uint16 unicode)
+void ttext_::handle_key_default(bool& handled,
+								SDLKey /*key*/,
+								SDLMod /*modifier*/,
+								const utf8::string& unicode)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
-	if(unicode >= 32 && unicode != 127) {
+	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
 		insert_char(unicode);
 		fire(event::NOTIFY_MODIFIED, *this, NULL);
 	}
 }
 
-void ttext_::signal_handler_middle_button_click(
-			const event::tevent event, bool& handled)
+void ttext_::signal_handler_middle_button_click(const event::tevent event,
+												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -296,11 +299,11 @@ void ttext_::signal_handler_middle_button_click(
 	handled = true;
 }
 
-void ttext_::signal_handler_sdl_key_down(const event::tevent event
-		, bool& handled
-		, const SDLKey key
-		, SDLMod modifier
-		, const Uint16 unicode)
+void ttext_::signal_handler_sdl_key_down(const event::tevent event,
+										 bool& handled,
+										 const SDLKey key,
+										 SDLMod modifier,
+										 const utf8::string& unicode)
 {
 
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -316,63 +319,63 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 
 	switch(key) {
 
-		case SDLK_LEFT :
+		case SDLK_LEFT:
 			handle_key_left_arrow(modifier, handled);
 			break;
 
-		case SDLK_RIGHT :
+		case SDLK_RIGHT:
 			handle_key_right_arrow(modifier, handled);
 			break;
 
-		case SDLK_UP :
+		case SDLK_UP:
 			handle_key_up_arrow(modifier, handled);
 			break;
 
-		case SDLK_DOWN :
+		case SDLK_DOWN:
 			handle_key_down_arrow(modifier, handled);
 			break;
 
-		case SDLK_PAGEUP :
+		case SDLK_PAGEUP:
 			handle_key_page_up(modifier, handled);
 			break;
 
-		case SDLK_PAGEDOWN :
+		case SDLK_PAGEDOWN:
 			handle_key_page_down(modifier, handled);
 			break;
 
-		case SDLK_a :
+		case SDLK_a:
 			if(!(modifier & KMOD_CTRL)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
 
 			// If ctrl-a is used for home drop the control modifier
-			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
-			/* FALL DOWN */
+			modifier = static_cast<SDLMod>(modifier & ~KMOD_CTRL);
+		/* FALL DOWN */
 
-		case SDLK_HOME :
+		case SDLK_HOME:
 			handle_key_home(modifier, handled);
 			break;
 
-		case SDLK_e :
+		case SDLK_e:
 			if(!(modifier & KMOD_CTRL)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
 
 			// If ctrl-e is used for end drop the control modifier
-			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
-			/* FALL DOWN */
+			modifier = static_cast<SDLMod>(modifier & ~KMOD_CTRL);
+		/* FALL DOWN */
 
-		case SDLK_END :
+		case SDLK_END:
 			handle_key_end(modifier, handled);
 			break;
 
-		case SDLK_BACKSPACE :
+		case SDLK_BACKSPACE:
 			handle_key_backspace(modifier, handled);
 			break;
 
-		case SDLK_u :
+		case SDLK_u:
 			if(modifier & KMOD_CTRL) {
 				handle_key_clear_line(modifier, handled);
 			} else {
@@ -380,11 +383,11 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 			}
 			break;
 
-		case SDLK_DELETE :
+		case SDLK_DELETE:
 			handle_key_delete(modifier, handled);
 			break;
 
-		case SDLK_c :
+		case SDLK_c:
 			if(!(modifier & copypaste_modifier)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
@@ -396,7 +399,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 			handled = true;
 			break;
 
-		case SDLK_x :
+		case SDLK_x:
 			if(!(modifier & copypaste_modifier)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
@@ -407,7 +410,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 			handled = true;
 			break;
 
-		case SDLK_v :
+		case SDLK_v:
 			if(!(modifier & copypaste_modifier)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
@@ -417,15 +420,13 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event
 			handled = true;
 			break;
 
-		default :
+		default:
 			handle_key_default(handled, key, modifier, unicode);
-
 	}
 
 	if(text_changed_callback_) {
 		text_changed_callback_(this, this->text());
 	}
-
 }
 
 void ttext_::signal_handler_receive_keyboard_focus(const event::tevent event)
@@ -443,4 +444,3 @@ void ttext_::signal_handler_lose_keyboard_focus(const event::tevent event)
 }
 
 } // namespace gui2
-

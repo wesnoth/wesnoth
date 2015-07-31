@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2011 - 2013 by Sytyi Nick <nsytyi@gmail.com>
+  Copyright (C) 2011 - 2015 by Sytyi Nick <nsytyi@gmail.com>
   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
@@ -100,15 +100,15 @@ int main(int argc, char *argv[]){
 		input_dir = "./src";
 	}
 
-	if (! file_exists(input_dir)){
+	if (! filesystem::file_exists(input_dir)){
 		return 2;
 	}
 
 	std::vector<std::string> files;
 	std::vector<std::string> dirs;
 
-	if (is_directory(input_dir)){
-		get_files_in_dir(input_dir, &files, &dirs, ENTIRE_FILE_PATH);
+	if (filesystem::is_directory(input_dir)){
+		filesystem::get_files_in_dir(input_dir, &files, &dirs, filesystem::ENTIRE_FILE_PATH);
 
 		if (files.empty() && dirs.empty()){
 			std::cout << "Some problem with input directory "
@@ -120,7 +120,7 @@ int main(int argc, char *argv[]){
 		while (!dirs.empty()){
 			std::string temp_dir = dirs.back();
 			dirs.pop_back();
-			get_files_in_dir(temp_dir, &files, &dirs, ENTIRE_FILE_PATH);
+			filesystem::get_files_in_dir(temp_dir, &files, &dirs, filesystem::ENTIRE_FILE_PATH);
 		}
 	}else{
 		files.push_back(input_dir);
@@ -132,13 +132,13 @@ int main(int argc, char *argv[]){
 
 	for (;i != files.end(); ++i){
 		bool ok = false;
-		if (file_name((*i)).find(".cpp")!=std::string::npos){
+		if (filesystem::base_name((*i)).find(".cpp")!=std::string::npos){
 			ok = true;
 		} else
-				if (file_name((*i)).find(".hpp")!=std::string::npos){
+				if (filesystem::base_name((*i)).find(".hpp")!=std::string::npos){
 			ok = true;
 		} else
-			if (file_name((*i)).find(".schema")!=std::string::npos){
+			if (filesystem::base_name((*i)).find(".schema")!=std::string::npos){
 			ok = true;
 		}
 		if (ok){

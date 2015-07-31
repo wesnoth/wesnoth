@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,12 +34,9 @@ public:
 
 	enum PRESSED_STATE { LEFT, RIGHT, BOTH, NONE };
 
-	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
-
 	tristate_button(CVideo& video,
 			editor::common_palette* palette,
 			std::string button_image="",
-			SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
 			const bool auto_join=true);
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
@@ -108,8 +105,6 @@ private:
 	STATE state_;
 
 	bool pressed_;
-
-	SPACE_CONSUMPTION spacing_;
 
 	int base_height_, base_width_;
 

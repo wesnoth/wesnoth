@@ -106,6 +106,8 @@ def main(folder):
                 error_kind = "wml error"
             elif "<PARSE ERROR>" in text:
                 error_kind = "parse error"
+            elif "<TIMEOUT ERROR>" in text:
+                error_kind = "timeout"
                 
             source = []
             
@@ -144,9 +146,9 @@ def main(folder):
             lines_count = 0
             for line in text.splitlines():
                 line = line.strip()
-                if line in ["<INTERNAL ERROR>", "<WML ERROR>", "<PARSE ERROR>"]:
+                if line in ["<INTERNAL ERROR>", "<WML ERROR>", "<PARSE ERROR>", "<TIMEOUT ERROR>"]:
                     htmlerr.write("<p>")
-                elif line in ["</INTERNAL ERROR>", "</WML ERROR>", "</PARSE ERROR>"]:
+                elif line in ["</INTERNAL ERROR>", "</WML ERROR>", "</PARSE ERROR>", "</TIMEOUT ERROR>"]:
                     htmlerr.write("</p>")
                 else:
                     err_html = postprocess(line)

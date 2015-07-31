@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,7 +29,8 @@
 #define LOG_SCOPE_HEADER "tpane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -46,13 +47,9 @@ struct tpane_implementation
 	 *
 	 * @tparam W                  A pointer to the pane.
 	 */
-	template<class W>
+	template <class W>
 	static typename utils::tconst_clone<twidget, W>::pointer
-	find_at(
-			  W pane
-			, tpoint coordinate
-			, const bool must_be_active
-			)
+	find_at(W pane, tpoint coordinate, const bool must_be_active)
 	{
 
 		/*
@@ -63,7 +60,8 @@ struct tpane_implementation
 		}
 
 		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
-		BOOST_FOREACH(thack item, pane->items_) {
+		BOOST_FOREACH(thack item, pane->items_)
+		{
 
 			if(item.grid->get_visible() == twidget::tvisible::invisible) {
 				continue;
@@ -74,11 +72,9 @@ struct tpane_implementation
 			 * resolve the coordinate.
 			 */
 			const SDL_Rect rect = item.grid->get_rectangle();
-			if(
-					   coordinate.x >= rect.x
-					&& coordinate.y >= rect.y
-					&& coordinate.x < rect.x + rect.w
-					&& coordinate.y < rect.y + rect.h) {
+			if(coordinate.x >= rect.x && coordinate.y >= rect.y
+			   && coordinate.x < rect.x + rect.w
+			   && coordinate.y < rect.y + rect.h) {
 
 				return item.grid->find_at(coordinate, must_be_active);
 			}
@@ -93,12 +89,13 @@ struct tpane_implementation
 	 *
 	 * @tparam W                  A pointer to the pane.
 	 */
-	template<class W>
+	template <class W>
 	static typename utils::tconst_clone<tgrid, W>::pointer
 	grid(W pane, const unsigned id)
 	{
 		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
-		BOOST_FOREACH(thack item, pane->items_) {
+		BOOST_FOREACH(thack item, pane->items_)
+		{
 
 			if(item.id == id) {
 				return item.grid;
@@ -117,13 +114,9 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	, placer_(tplacer_::build(tplacer_::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			  boost::bind(
-				  &tpane::signal_handler_request_placement
-				, this
-				, _1
-				, _2
-				, _3)
-			, event::tdispatcher::back_pre_child);
+			boost::bind(
+					&tpane::signal_handler_request_placement, this, _1, _2, _3),
+			event::tdispatcher::back_pre_child);
 }
 
 tpane::tpane(const implementation::tbuilder_pane& builder)
@@ -131,18 +124,12 @@ tpane::tpane(const implementation::tbuilder_pane& builder)
 	, items_()
 	, item_builder_(builder.item_definition)
 	, item_id_generator_(0)
-	, placer_(tplacer_::build(
-			  builder.grow_direction
-			, builder.parallel_items))
+	, placer_(tplacer_::build(builder.grow_direction, builder.parallel_items))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			  boost::bind(
-				  &tpane::signal_handler_request_placement
-				, this
-				, _1
-				, _2
-				, _3)
-			, event::tdispatcher::back_pre_child);
+			boost::bind(
+					&tpane::signal_handler_request_placement, this, _1, _2, _3),
+			event::tdispatcher::back_pre_child);
 }
 
 tpane* tpane::build(const implementation::tbuilder_pane& builder)
@@ -150,20 +137,17 @@ tpane* tpane::build(const implementation::tbuilder_pane& builder)
 	return new tpane(builder);
 }
 
-unsigned tpane::create_item(
-		  const std::map<std::string, string_map>& item_data
-		, const std::map<std::string, std::string>& tags)
+unsigned tpane::create_item(const std::map<std::string, string_map>& item_data,
+							const std::map<std::string, std::string>& tags)
 {
 	titem item = { item_id_generator_++, tags, item_builder_->build() };
 
 	item.grid->set_parent(this);
 
-	FOREACH(const AUTO& data, item_data) {
-		tcontrol* control = find_widget<tcontrol>(
-				  item.grid
-				, data.first
-				, false
-				, false);
+	FOREACH(const AUTO & data, item_data)
+	{
+		tcontrol* control
+				= find_widget<tcontrol>(item.grid, data.first, false, false);
 
 		if(control) {
 			control->set_members(data.second);
@@ -195,21 +179,21 @@ void tpane::layout_initialise(const bool full_initialisation)
 
 	twidget::layout_initialise(full_initialisation);
 
-	FOREACH(AUTO& item, items_) {
+	FOREACH(AUTO & item, items_)
+	{
 		if(item.grid->get_visible() != twidget::tvisible::invisible) {
 			item.grid->layout_initialise(full_initialisation);
 		}
 	}
 }
 
-void tpane::impl_draw_children(
-		  surface& frame_buffer
-		, int x_offset
-		, int y_offset)
+void
+tpane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	FOREACH(AUTO& item, items_) {
+	FOREACH(AUTO & item, items_)
+	{
 		if(item.grid->get_visible() != twidget::tvisible::invisible) {
 			item.grid->draw_children(frame_buffer, x_offset, y_offset);
 		}
@@ -217,9 +201,10 @@ void tpane::impl_draw_children(
 }
 
 void tpane::child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack)
+									  const std::vector<twidget*>& call_stack)
 {
-	FOREACH(AUTO& item, items_) {
+	FOREACH(AUTO & item, items_)
+	{
 		std::vector<twidget*> child_call_stack = call_stack;
 		item.grid->populate_dirty_list(caller, child_call_stack);
 	}
@@ -234,11 +219,11 @@ void tpane::sort(const tcompare_functor& compare_functor)
 
 void tpane::filter(const tfilter_functor& filter_functor)
 {
-	FOREACH(AUTO& item, items_) {
-		item.grid->set_visible(
-				filter_functor(item)
-					? twidget::tvisible::visible
-					: twidget::tvisible::invisible);
+	FOREACH(AUTO & item, items_)
+	{
+		item.grid->set_visible(filter_functor(item)
+									   ? twidget::tvisible::visible
+									   : twidget::tvisible::invisible);
 	}
 
 	set_origin_children();
@@ -248,24 +233,15 @@ void tpane::request_reduce_width(const unsigned /*maximum_width*/)
 {
 }
 
-twidget* tpane::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active)
+twidget* tpane::find_at(const tpoint& coordinate, const bool must_be_active)
 {
-	return tpane_implementation::find_at(
-			  this
-			, coordinate
-			, must_be_active);
+	return tpane_implementation::find_at(this, coordinate, must_be_active);
 }
 
-const twidget* tpane::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active) const
+const twidget* tpane::find_at(const tpoint& coordinate,
+							  const bool must_be_active) const
 {
-	return tpane_implementation::find_at(
-			  this
-			, coordinate
-			, must_be_active);
+	return tpane_implementation::find_at(this, coordinate, must_be_active);
 }
 
 tpoint tpane::calculate_best_size() const
@@ -301,7 +277,8 @@ void tpane::place_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO& item, items_) {
+	FOREACH(AUTO & item, items_)
+	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
@@ -316,7 +293,8 @@ void tpane::set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO& item, items_) {
+	FOREACH(AUTO & item, items_)
+	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
@@ -331,7 +309,8 @@ void tpane::place_or_set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO& item, items_) {
+	FOREACH(AUTO & item, items_)
+	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
@@ -351,7 +330,8 @@ void tpane::prepare_placement() const
 	assert(placer_.get());
 	placer_->initialise();
 
-	FOREACH(const AUTO& item, items_) {
+	FOREACH(const AUTO & item, items_)
+	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
@@ -360,17 +340,17 @@ void tpane::prepare_placement() const
 	}
 }
 
-void tpane::signal_handler_request_placement(
-		  tdispatcher& dispatcher
-		, const event::tevent event
-		, bool& handled)
+void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
+											 const event::tevent event,
+											 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	twidget* widget = dynamic_cast<twidget*>(&dispatcher);
 	if(widget) {
-		FOREACH(AUTO& item, items_) {
-			if(item.grid->has_widget(widget)) {
+		FOREACH(AUTO & item, items_)
+		{
+			if(item.grid->has_widget(*widget)) {
 				if(item.grid->get_visible() != twidget::tvisible::invisible) {
 
 					/*

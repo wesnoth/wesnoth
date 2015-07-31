@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -224,7 +224,7 @@ class editor_action_area : public editor_action_extendable
 class editor_action_paste : public editor_action_extendable
 {
 	public:
-		editor_action_paste(const map_fragment& paste, const map_location& offset = map_location(0,0))
+		editor_action_paste(const map_fragment& paste, const map_location& offset = map_location::ZERO())
 		: offset_(offset), paste_(paste)
 		{
 		}
@@ -296,67 +296,6 @@ class editor_action_starting_position : public editor_action_location
 };
 
 
-/**
- * Select the given locations
- */
-class editor_action_select : public editor_action_area
-{
-	public:
-		editor_action_select(const std::set<map_location>& area)
-		: editor_action_area(area)
-		{
-		}
-		editor_action_select* clone() const;
-		void extend(const editor_map& map, const std::set<map_location>& locs);
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select"; }
-};
-
-/**
- * Select the entire map
- */
-class editor_action_select_all : public editor_action
-{
-	public:
-		editor_action_select_all()
-		{
-		}
-		editor_action_select_all* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_all"; }
-};
-
-/**
- * Clear selection
- */
-class editor_action_select_none : public editor_action
-{
-	public:
-		editor_action_select_none()
-		{
-		}
-		editor_action_select_none* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_none"; }
-};
-
-/**
- * Invert the selection
- */
-class editor_action_select_inverse : public editor_action
-{
-	public:
-		editor_action_select_inverse()
-		{
-		}
-		editor_action_select_inverse* clone() const;
-		editor_action_select_inverse* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_inverse"; }
-};
 
 /**
  * Resize the map. The offsets specify, indirectly, the direction of expanding/shrinking,

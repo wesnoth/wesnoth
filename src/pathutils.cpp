@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -110,7 +110,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		const int radius_i = static_cast<int>(radius);
 
 		BOOST_FOREACH (const map_location &loc, locs)
-			if ( loc != map_location::null_location )
+			if ( loc != map_location::null_location() )
 			{
 				// Calculate the circle of hexes around this one.
 				size_t height = radius;

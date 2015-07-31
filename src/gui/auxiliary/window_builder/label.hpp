@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,16 +19,19 @@
 
 #include <pango/pango-layout.h>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_label
-	: public tbuilder_control
+struct tbuilder_label : public tbuilder_control
 {
 	tbuilder_label(const config& cfg);
 
-	twidget* build () const;
+	using tbuilder_control::build;
+
+	twidget* build() const;
 
 	bool wrap;
 
@@ -42,5 +45,3 @@ struct tbuilder_label
 } // namespace gui2
 
 #endif
-
-

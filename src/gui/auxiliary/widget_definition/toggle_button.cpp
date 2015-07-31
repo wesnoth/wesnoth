@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -28,9 +29,6 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-ttoggle_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_toggle_button
@@ -66,7 +64,9 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="toggle_button_definition"}
  * @end{parent}{name="gui/"}
  */
-
+ttoggle_button_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	// Note the order should be the same as the enum tstate in
 	// toggle_button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -79,4 +79,3 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

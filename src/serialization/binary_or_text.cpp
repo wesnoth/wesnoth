@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,7 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
 config_writer::config_writer(
-	std::ostream &out, compressor compress) :
+	std::ostream &out, compression::format compress) :
 		filter_(),
 		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
 		out_(*out_ptr_), //now MSVC will allow binding to the reference member
@@ -42,11 +42,11 @@ config_writer::config_writer(
 		level_(0),
 		textdomain_(PACKAGE)
 {
-	if(compress_ == GZIP) {
+	if(compress_ == compression::GZIP) {
 		filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(9)));
 		filter_.push(out);
 
-	} else if(compress_ == BZIP2) {
+	} else if(compress_ == compression::BZIP2) {
 		filter_.push(boost::iostreams::bzip2_compressor(boost::iostreams::bzip2_params()));
 		filter_.push(out);
 	}
@@ -56,7 +56,7 @@ config_writer::config_writer(
 		filter_(),
 		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
 		out_(*out_ptr_), //now MSVC will allow binding to the reference member
-		compress_(compress ? GZIP : NONE),
+		compress_(compress ? compression::GZIP : compression::NONE),
 		level_(0),
 		textdomain_(PACKAGE)
 {
@@ -72,6 +72,12 @@ config_writer::config_writer(
 
 config_writer::~config_writer()
 {
+	//we only need this for gzip but we also do it for bz2 for unification.
+	if(compress_ == compression::GZIP || compress_ == compression::BZIP2)
+	{
+		// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
+		out_ << "\n";
+	}
 }
 
 void config_writer::write(const config &cfg)

@@ -1,300 +1,271 @@
-Contents:
+Contents
+========
+
   1. Prerequisites
-  2. Common Instructions
+  2. Build Environment
   3. SCons Build
   4. CMake Build
+  5. Build Options
 
 
-1. Prerequisites:
+1. Prerequisites
+================
 
-You'll need to have these libraries and their development headers to build Wesnoth:
+You'll need to have these libraries and their development headers installed in
+order to build Wesnoth:
 
- boost_iostreams >= 1.36.0
- boost_regex >= 1.36.0
- boost_serialization >= 1.36.0
- boost_asio >= 1.36.0
- boost_program_options >= 1.36.0
- boost_system >= 1.36.0
- boost_thread >= 1.36.0
- libfontconfig >= 2.4.1
- libpango (with cairo backend) >= 1.24.4
- libsdl >= 1.2.7
- libsdl-image >= 1.2 (with png support)
- libsdl-mixer >= 1.2 (with Vorbis support)
- vorbisfile
- libsdl-net
- libsdl-ttf >= 2.0.8
- libz
+ * Boost libraries:
+   * Filesystem                >= 1.44.0
+   * Locale                    >= 1.48.0
+   * Iostreams                 >= 1.36.0
+   * Multi-index               >= 1.36.0 (header only)
+   * Random                    >= 1.48.0
+   * Regex                     >= 1.36.0
+   * Serialization             >= 1.36.0 (header only)
+   * Asio                      >= 1.36.0 (header only)
+   * Program Options           >= 1.36.0
+   * System                    >= 1.36.0
+ * SDL libraries:
+   * SDL                       >= 1.2.10
+   * SDL_image                 >= 1.2.0  (with PNG and JPEG support)
+   * SDL_mixer                 >= 1.2.12 (with Ogg Vorbis support)
+   * SDL_ttf                   >= 2.0.8
+   * SDL_net
+ * Fontconfig                  >= 2.4.1
+ * Pango                       >= 1.21.3 (with Cairo backend)
+ * Vorbisfile
+ * libbz2
+ * libz
 
-Note that problems with SDL 1.2.14 have been reported, thus we advise you to use SDL
-1.2.13 for now.
+The following libraries are optional dependencies that enable additional
+features:
 
-These libraries are optional dependencies that enable additional features:
+ * libpng:
+   PNG screenshots, otherwise only BMP is supported.
 
- libdbus-1 (used for desktop notifications)
+ * D-Bus (libdbus-1):
+   Desktop notifications on Linux, *BSD, etc.
 
-There are currently two ways to build wesnoth:
- * scons >= 0.98.3
- * cmake >= 2.6.0
+ * GNU history (libreadline):
+   Command history and history expansion in the built-in Lua console.
 
-2. Common Steps:
+ * FriBiDi >= 0.10.9:
+   Bidirectional text support for RTL languages (Hebrew, etc.) in some parts
+   of the user interface.
 
-The old autotools build system has been removed, thus you now have to use
-either SCons or CMake. Both systems should work nicely and get all
-common tasks, that are required for building Wesnoth, done nicely.
+Note that although different Boost version requirements are listed, individual
+libraries from different releases are generally incompatible with each other
+and you should not mix and match.
 
-SDL libraries can be found at: http://www.libsdl.org
-libfreetype can be found at: http://www.freetype.org
-Python can be found at: http://www.python.org
-Pango can be found at: http://www.pango.org/
-The Boost libraries can be found at: http://www.boost.org
+Also note that SDL 1.2.14 is known to have problems on Windows, so we advise
+you to use SDL 1.2.15 instead.
+
+Although not recommended, you may use libintl on platforms other than Windows
+instead of Boost.Locale. For scons, set the `libintl` option to `true`.
+
+
+2. Build Environment
+====================
+
+You can obtain the source code tarball for the latest version from
+<http://www.wesnoth.org/downloads>.
+
+Before building, make sure to untar the package and change into the newly
+created directory:
+
+    $ tar xvjf wesnoth-<version>.tar.bz2
+    $ cd wesnoth-<version>
+
+Or:
+
+    $ tar xvzf wesnoth-<version>.tar.gz
+    $ cd wesnoth-<version>
+
+The following build systems are fully supported for compiling Wesnoth on Linux,
+*BSD, and other Unix-like platforms:
+
+ * SCons >= 0.98.3
+ * CMake >= 2.6.0
 
 You will also need to have a working installation of GNU gettext to build the
 translations.
 
-Note: It has been reported that using gcc 3.3.6 and under with optimizations
-will result in a build that is incapable of using multiplayer.
-See https://gna.org/bugs/index.php?10326 for further details. We recommend using
-gcc 4 to build Wesnoth.
+While Wesnoth may be easily installed system-wide using SCons or CMake, it is
+also possible to run it directly from the source directory after building. This
+may be useful in situations where you don't have root access or need to
+rebuild Wesnoth frequently (i.e. for development and testing).
 
-Source Code:
-
-You can get the source code from: http://www.wesnoth.org/downloads
-
-
-Compiling:
-
-First, untar the package:
-
- $ tar xfjv wesnoth-x.y.z.tar.bz2
-
-then
-
- $ cd wesnoth-x.y.z
+NOTE: It has been reported that using GCC 3.3.6 and earlier versions with
+optimizations enabled will result in a build that is incapable of using
+multiplayer. See <https://gna.org/bugs/?10326> for further details. We
+recommend using GCC 4.x to build Wesnoth.
 
 
 3. SCons Build
+==============
 
-SCons can be found at: http://www.scons.org/ .
+Unlike CMake or the classic "autotools" build-system (configure && make),
+configuration and building are done in the same step with SCons.
 
-Simply type 'scons' in the top-level directory to build the game with the
-server. It is possible to select individual targets by naming
-them as arguments, including wesnothd (the Wesnoth multiplayer server)
-and campaignd (the campaign server).
+Simply type `scons` in the top-level directory to build the game client and
+MP server:
 
-SCons takes a prefix= argument that says where to install the game
-and its data. The prefix defaults to /usr/local; for production builds,
-you may wish to set prefix=/usr.
+    $ scons
 
-The target 'all' is equivalent to 'wesnoth cutter exploder wesnothd campaignd'.
+It is possible to select individual targets to build by naming them in the
+command line separated by spaces.
 
-So, for example, this builds the game and the server:
+To build the game client only:
 
-    scons
+    $ scons wesnoth
 
-This installs binaries that were built before:
+Building the MP server only:
 
-    scons install
+    $ scons wesnothd
 
-This builds the game and the campaign server while enabling debugging:
+The `install` target will install any binaries that were previously compiled
+(use su or sudo if necessary to write files into the installation prefix):
 
-    scons build=debug wesnoth campaignd 
+    # scons install
 
-To build wesnothd:
+SCons takes a `prefix=` argument that specifies where to install the game and
+its resource files. The prefix defaults to `/usr/local`; for production builds,
+you may wish to use `/usr` instead:
 
-   scons server_uid=<user> server_group=<group> wesnothd
-
-where <user> and <group> are valid on your system. A wesnothd
-subdirectory will be created under /var/run owned by
-<user>:<group>. This is relevant if you wish to be able to communicate
-with wesnothd through a FIFO or named socket. You have to run
-wesnothd with the user specified while configuring in order for it to
-work. You can also specify the FIFO directory directly by using
-fifodir=<directory>.
-
-If you wish to install several versions of wesnoth, you should use the
-prefsdir= parameter to get distinct preferences directories. The
-default is '.wesnoth'.
-
-Installation productions 'install',
-'install-wesnothd', and 'install-campaignd' are available.
-
-A plain 'install' installs all binary executables that exist -- so
-'scons install' after a plain 'scons' installs game and server, but
-after 'scons all', it will install all binaries.
-
-Notes on SCons for autotools users:
-
-The scons build process works in a different way than configure. The scons
-build process runs in one step, checking your configuration and building,
-rather than generating makefiles to be run later. Not all autotools
-options have exact SCons equivalents.  
-
-Here is a translation key. Autotools configure options are on the left, and
-scons commandline options are on the right. Defaults are given in square
-brackets and are the same as those for corresponding configure options.  
-Configure options with no scons equivalents are marked with 'N/A'.
-
-Configuration:
-  -h, --help              --help
-      --help=short        N/A
-      --help=recursive    N/A
-  -V, --version           -v, --version
-  -q, --quiet, --silent   -Q
-      --cache-file=FILE   N/A
-  -C, --config-cache      N/A
-  -n, --no-create         -n, --no-create, --just-print, --dry-run, --recon
-      --srcdir=DIR        N/A
-
-Installation directories:
-  --prefix=PREFIX         prefix=PREFIX  [/usr/local]
-  --exec-prefix=EPREFIX   N/A
-
-Fine tuning of the installation directories:
-  --bindir=DIR           bindir=DIR [bin]
-  --sbindir=DIR          N/A
-  --libexecdir=DIR       N/A
-  --sysconfdir=DIR       N/A
-  --sharedstatedir=DIR   N/A
-  --localstatedir=DIR    N/A
-  --libdir=DIR           libdir=DIR [lib]
-  --includedir=DIR       N/A
-  --oldincludedir=DIR    N/A
-  --datarootdir=DIR      datarootdir=DIR [share]
-  --datadir=DIR          datadir=DIR [$datarootdir/$datadirname]
-  --infodir=DIR          N/A
-  --localedir=DIR        localedir=DIR [$datarootdir/locale]
-  --mandir=DIR           mandir=DIR [$datarootdir/man]
-  --docdir=DIR           docdir=DIR [$datarootdir/doc/wesnoth]
-  --htmldir=DIR          N/A
-  --dvidir=DIR           N/A
-  --pdfdir=DIR           N/A
-  --psdir=DIR            N/A
-
-Program names:
-  --program-prefix=PREFIX            N/A
-  --program-suffix=SUFFIX            program_suffix=SUFFIX
-  --program-transform-name=PROGRAM   N/A
-
-X features:
-  --x-includes=DIR    N/A
-  --x-libraries=DIR   N/A
-
-System types:
-  --build=BUILD     N/A
-  --host=HOST       N/A
-  --target=TARGET   N/A
-
-Optional Features:
-  --disable-FEATURE         N/A (but see instances below)
-  --enable-FEATURE[=ARG]    N/A (but see instances below)
-  --disable-nls             nls=no
-  --disable-dependency-tracking  N/A
-  --enable-dependency-tracking   N/A
-  --disable-rpath           N/A
-  --enable-debug            build=debug
-  --enable-profile          build=profile
-  --enable-tests            (See --help documentation on choice of targets)
-  --enable-static           static=yes
-  --enable-python-install   N/A
-  --enable-lite             N/A
-  --enable-optipng          N/A
-  --enable-lowmem           lowmem=yes
-  --disable-game            (See --help documentation on choice of targets)
-  --enable-server           (See --help documentation on choice of targets)
-  --enable-campaign-server  (See --help documentation on choice of targets)
-  --enable-tools            (See --help documentation on choice of targets)
-  --enable-internal-data    internal_data=yes
-  --enable-raw-sockets      raw_sockets=yes
-  --disable-desktop-entry   desktop_entry=no
-  --disable-sdltest         N/A
-
-Optional Packages:
-  --with-PACKAGE[=ARG]            N/A
-  --without-PACKAGE               N/A
-  --with-gnu-ld                   N/A
-  --with-libiconv-prefix[=DIR]    N/A
-  --without-libiconv-prefix       N/A
-  --with-libintl-prefix[=DIR]     N/A
-  --without-libintl-prefix        N/A
-  --with-datadir-name[=DIR]       datadirname=DIR
-  --with-localedir[=DIR]          localedir=DIR
-  --with-fifodir                  fifodir=DIR
-  --with-server-uid               server_uid=ID
-  --with-server-gid               server_gid=ID
-  --without-fribidi               fribidi=no
-  --with-preferences-dir          prefsdir=DIR
-  --with-icondir[=DIR]            icondir=DIR
-  --with-desktopdir[=DIR]         desktopdir=DIR
-  --with-x                        N/A
-  --with-freetype-prefix=PFX      N/A
-  --with-freetype-exec-prefix=PFX N/A
-  --with-boost=DIR                boostdir=DIR boostlibdir=DIR boost_suffix=suffix(e.g. -gcc41-mt-1_35)
+    $ scons prefix=/usr
 
 
 4. CMake Build
+==============
 
-To build with CMake, you need cmake >= 2.6 . You can get cmake at http://www.cmake.org .
+Unlike SCons, CMake has separate configuration and build steps. Configuration
+is done using CMake itself, and the actual build is done using `make`.
 
-There are two ways to build wesnoth with CMake: inside the source tree or
-outside of it. Out-of-source builds have the advantage that you can have builds with
-different options from one source directory.
+There are two ways to build Wesnoth with CMake: inside the source tree or
+outside of it. Out-of-source builds have the advantage that you can have
+multiple builds with different options from one source directory.
 
-To build wesnoth out of source:
+To build Wesnoth out of source:
 
- $ mkdir build && cd build
- $ cmake ..
- $ make
- $ make install
+    $ mkdir build && cd build
+    $ cmake .. -DCMAKE_BUILD_TYPE=Release
+    $ make
 
-To build wesnoth in the source directory:
+To build Wesnoth in the source directory:
 
- $ cmake .
- $ make
- $ make install
+    $ cmake . -DCMAKE_BUILD_TYPE=Release
+    $ make
 
-To change build options, you can either pass the options on the commandline:
+To install Wesnoth after building (as root using su or sudo if necessary):
 
- $ cmake .. -DOPTION=value
+    # make install
 
-or use the ccmake frontend which displays all options with their cached values.
+To change build options, you can either pass the options on the command line:
 
- $ ccmake ..
+    $ cmake .. -DOPTION_NAME=option_value
 
-Another possibility is to use a question-based interface, which can be
-more convenient for some cases:
+Or use either the `ccmake` or `cmake-gui` front-ends, which display all options
+and their cached values on a console and graphical UI, respectively.
 
- $ cmake -i ..
+    $ ccmake ..
+    $ cmake-gui ..
 
-Build options:
 
-!TODO!
-Use "ccmake .." to view a list of all build options with help texts.
+5. Build Options
+================
 
-Debug builds:
-Set CMAKE_BUILD_TYPE to "debug"
+A full list of options supported by SCons along with their descriptions and
+defaults is available by running `scons --help` from the Wesnoth source. For
+CMake, you may either run the `ccmake` or `cmake-gui` front-ends, or run
+`cmake` and open the generated CMakeCache.txt from the build directory in a
+text editor.
 
-Compiler flags:
-CMake determines the compiler flags by combining CMAKE_CXX_FLAGS and
-CMAKE_CXX_FLAGS_<CMAKE_BUILD_TYPE>. If no CMAKE_BUILD_TYPE is specified only the
-CMAKE_CXX_FLAGS are used.
+    $ scons option_name1=option_value1 [option_name2=option_value2 [...]]
+    $ cmake -DOPTION_NAME1=option_value1 [-DOPTION_NAME2=option_value2 [...]]
 
-The CMAKE_CXX_FLAGS are controlled by CMake and should not be set by the user.
-They are generated by the following parts:
-- CXX_FLAGS_MSVC These flags are determined by CMake when using MSVC. They are
-  stored so the can be preserved.
-- CXX_FLAGS_PROJECT The default flags for all programs in the Wesnoth. These
-  flags are determined by the Wesnoth developers.
-- CXX_FLAGS_STRICT_COMPILATION The flags used for strict compilation. Whether
-  these flags are used depends on the configuration option
-  ENABLE_STRICT_COMPILATION.  When this option is changed the CMAKE_CXX_FLAGS
-  will be changed to reflect the change. (Starting from Wesnoth 1.11.0 the flag
-  can be changed after the initial generation.) What flags are set when choosing
-  this option is determined by the Wesnoth developers.
-- CXX_FLAGS_PEDANTIC_COMPILATION The flags used for pedantic compilation.
-  Whether these flags are used depends on the configuration option
-  ENABLE_PEDANTIC_COMPILATION.
-- CXX_FLAGS_USER These flags set when configuring Wesnoth. The initial value of
-  this variable depends on the CXXFLAGS in the environment or defined by
-  -DCXX_FLAGS_USER. These flags are stored and can be changed later by running
-  ccmake and changing the value of CXX_FLAGS_USER.
+With SCons, boolean options take `yes` or `true` for a true value, and `no` or
+`false` for a false value. CMake uses `ON` for a true value, and `OFF` for a
+false value.
+
+Some of the most important options follow.
+
+ * build=<build type>                          (SCons)
+   CMAKE_BUILD_TYPE=<build type>               (CMake)
+
+   Selects a specific build configuration when compiling. `release` produces
+   the default, optimized (-O2) build for regular use. `debug` produces a
+   slower and larger unoptimized (-O0) build with full debug symbols, which is
+   often needed for obtaining detailed backtraces when reporting bugs.
+
+   NOTE: By default, CMake will produce `debug` builds unless a different
+   configuration option is passed in the command line.
+
+ * ENABLE_GAME=<boolean>                       (CMake)
+
+   Whether to build the game client binary. Use command line target selection
+   selection with SCons instead.
+
+ * ENABLE_SERVER=<boolean>                     (CMake)
+
+   Whether to build the MP server binary. Use command line target selection
+   selection with SCons instead.
+
+ * prefix=<full path>                          (SCons)
+   CMAKE_INSTALL_PREFIX=<full path>            (CMake)
+
+   Installation prefix for binaries, resources, and documentation files.
+
+ * nls=<boolean>                               (SCons)
+   ENABLE_NLS=<boolean>                        (CMake)
+
+   Whether to compile and install translations.
+
+ * strict=<boolean>                            (SCons)
+   ENABLE_STRICT_COMPILATION=<boolean>         (CMake)
+
+   Whether to treat compiler warnings as errors or not. Primarily intended for
+   developers.
+
+ * prefsdir=<directory name>                   (SCons)
+   PREFERENCES_DIR=<directory name>            (CMake)
+
+   Hardcoded user preferences and user data directory. The default is to leave
+   this unspecified so that Wesnoth will use separate XDG paths such as
+   .config/wesnoth and .local/share/wesnoth/<version> for its user preferences
+   and data, respectively.
+
+ * cxxtool=<program>                           (SCons)
+   CMAKE_CXX_COMPILER=<program>                (CMake)
+
+   Specifies which C++ compiler to use. By default, the system's default C++
+   compiler will be automatically selected during configuration.
+
+ * ccache=<boolean>                            (SCons)
+
+   Whether to run the compiler through ccache first. Useful if the compiler
+   executable is not a symbolic link to ccache. Requires ccache to be
+   installed first.
+
+   If using CMake, use CMAKE_CXX_COMPILER instead.
+
+ * extra_flags_<buildtype>=<flags>             (SCons)
+   extra_flags_config=<flags>                  (SCons)
+   CXX_FLAGS_USER=<flags>                      (CMake)
+
+   Additional compiler flags to use when compiling a specific build type
+   (SCons-only). To apply the same flags to all builds, use extra_flags_config
+   (SCons) or CXX_FLAGS_USER (CMake) without a build type suffix.
+
+   Alternatively, you may specify your flags in the CXXFLAGS environment
+   variable.
+
+ * fifodir=<full path>                         (SCons)
+   FIFO_DIR=<full path>                        (CMake)
+
+   server_uid=<UID> server_gid=<GID>           (SCons)
+   SERVER_UID=<UID> SERVER_GID=<GID>           (CMake)
+
+   Directory and owner id for the wesnothd control FIFO file. This is relevant
+   only if you wish to be able to communicate with a local wesnothd instance
+   through a named pipe. You must run wesnothd with the same UID specified at
+   build time for this to work.

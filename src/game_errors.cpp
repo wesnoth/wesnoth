@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by mark de wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by mark de wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,3 +19,4 @@ bool game::load_game_exception::show_replay;
 bool game::load_game_exception::cancel_orders;
 bool game::load_game_exception::select_difficulty;
 std::string game::load_game_exception::difficulty;
+bool game::load_game_exception::skip_version_check;

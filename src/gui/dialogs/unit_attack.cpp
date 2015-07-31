@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,8 @@
 #include "unit.hpp"
 #include "utils/foreach.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -39,16 +40,18 @@ namespace gui2 {
  * This shows the dialog for attacking units.
  *
  * @begin{table}{dialog_widgets}
- * attacker_portrait & & image   & o & Shows the portrait of the attacking unit. $
+ * attacker_portrait & & image   & o & Shows the portrait of the attacking unit.
+ *                                     $
  * attacker_icon     & & image   & o & Shows the icon of the attacking unit. $
  * attacker_name     & & control & o & Shows the name of the attacking unit. $
  *
- * defender_portrait & & image   & o & Shows the portrait of the defending unit. $
+ * defender_portrait & & image   & o & Shows the portrait of the defending unit.
+ *                                     $
  * defender_icon     & & image   & o & Shows the icon of the defending unit. $
  * defender_name     & & control & o & Shows the name of the defending unit. $
  *
  *
- * weapon_list       & & listbox & m & The list with weapons to choos from. $
+ * weapon_list       & & listbox & m & The list with weapons to choose from. $
  * -attacker_weapon  & & control & o & The weapon for the attacker to use. $
  * -defender_weapon  & & control & o & The weapon for the defender to use. $
  *
@@ -57,11 +60,10 @@ namespace gui2 {
 
 REGISTER_DIALOG(unit_attack)
 
-tunit_attack::tunit_attack(
-		  const unit_map::iterator& attacker_itor
-		, const unit_map::iterator& defender_itor
-		, const std::vector<battle_context>& weapons
-		, const int best_weapon)
+tunit_attack::tunit_attack(const unit_map::iterator& attacker_itor,
+						   const unit_map::iterator& defender_itor,
+						   const std::vector<battle_context>& weapons,
+						   const int best_weapon)
 	: selected_weapon_(-1)
 	, attacker_itor_(attacker_itor)
 	, defender_itor_(defender_itor)
@@ -70,11 +72,9 @@ tunit_attack::tunit_attack(
 {
 }
 
-template<class T>
-static void set_label(
-		  twindow& window
-		, const std::string& id
-		, const std::string& label)
+template <class T>
+static void
+set_label(twindow& window, const std::string& id, const std::string& label)
 {
 	T* widget = find_widget<T>(&window, id, false, false);
 	if(widget) {
@@ -96,27 +96,26 @@ static void set_defender_info(twindow& w, unit& u)
 	set_label<tcontrol>(w, "defender_name", u.name());
 }
 
-static void set_weapon_info(twindow& window
-		, const std::vector<battle_context>& weapons
-		, const int best_weapon)
+static void set_weapon_info(twindow& window,
+							const std::vector<battle_context>& weapons,
+							const int best_weapon)
 {
-	tlistbox& weapon_list =
-			find_widget<tlistbox>(&window, "weapon_list", false);
+	tlistbox& weapon_list
+			= find_widget<tlistbox>(&window, "weapon_list", false);
 	window.keyboard_capture(&weapon_list);
 
 	const config empty;
 	const attack_type no_weapon(empty);
 
-	FOREACH(const AUTO& weapon, weapons) {
-		const battle_context_unit_stats& attacker =
-				weapon.get_attacker_stats();
+	FOREACH(const AUTO & weapon, weapons)
+	{
+		const battle_context_unit_stats& attacker = weapon.get_attacker_stats();
 
-		const battle_context_unit_stats& defender =
-				weapon.get_defender_stats();
+		const battle_context_unit_stats& defender = weapon.get_defender_stats();
 
 		const attack_type& attacker_weapon = *attacker.weapon;
-		const attack_type& defender_weapon =
-				defender.weapon ? *defender.weapon : no_weapon;
+		const attack_type& defender_weapon = defender.weapon ? *defender.weapon
+															 : no_weapon;
 
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -128,7 +127,6 @@ static void set_weapon_info(twindow& window
 		data.insert(std::make_pair("defender_weapon", item));
 
 		weapon_list.add_row(data);
-
 	}
 
 	assert(best_weapon < static_cast<int>(weapon_list.get_item_count()));
@@ -148,9 +146,8 @@ void tunit_attack::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 		selected_weapon_ = find_widget<tlistbox>(&window, "weapon_list", false)
-				.get_selected_row();
+								   .get_selected_row();
 	}
 }
 
 } // namespace gui2
-

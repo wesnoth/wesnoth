@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #define WB_HIGHLIGHTER_HPP_
 
 #include "visitor.hpp"
+#include "map_location.hpp"
 
 static lg::log_domain log_whiteboard_highlight("whiteboard/highlight");
 #define ERR_WB_H LOG_STREAM(err, log_whiteboard_highlight)
@@ -50,7 +51,7 @@ public:
 	action_ptr get_execute_target();
 	action_ptr get_delete_target();
 	action_ptr get_bump_target();
-	unit* get_selection_target();
+	unit_ptr get_selection_target();
 
 	/// @return the action that currently receives the highlight focus
 	weak_action_ptr get_main_highlight() { return main_highlight_; }
@@ -79,8 +80,8 @@ private:
 
 	map_location mouseover_hex_;
 	std::set<map_location> exclusive_display_hexes_;
-	unit* owner_unit_;
-	unit* selection_candidate_;
+	unit_ptr owner_unit_;
+	unit_ptr selection_candidate_;
 
 	weak_action_ptr selected_action_;
 	weak_action_ptr main_highlight_;

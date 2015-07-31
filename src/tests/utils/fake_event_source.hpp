@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,9 @@
 #include "SDL.h"
 
 #include "events.hpp"
+#include "sdl/compat.hpp"
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 
 
@@ -177,4 +179,5 @@ namespace test_utils {
 			void process(events::pump_info& /*info*/);
 	};
 }
+#endif
 #endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 #ifndef TEXTBOX_HPP_INCLUDED
 #define TEXTBOX_HPP_INCLUDED
 
-#include "../serialization/string_utils.hpp"
+#include "../serialization/unicode.hpp"
 #include "font.hpp"
 
 #include "scrollarea.hpp"
@@ -25,7 +25,7 @@ namespace gui {
 class textbox : public scrollarea
 {
 public:
-	textbox(CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2, const bool auto_join = true);
+	textbox(CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, int font_size = font::SIZE_PLUS, double alpha = 0.4, double alpha_focus = 0.2, const bool auto_join = true);
 	virtual ~textbox();
 
 	const std::string text() const;
@@ -33,8 +33,14 @@ public:
 	void append_text(const std::string& text,bool auto_scroll = false, const SDL_Color& color =font::NORMAL_COLOR);
 	void clear();
 
+	void set_selection(const int selstart, const int selend);
+	void set_cursor_pos(const int cursor_pos);
+
 	void set_editable(bool value);
 	bool editable() const;
+
+	int font_size() const;
+	void set_font_size(int fs);
 
 	void scroll_to_bottom();
 
@@ -44,15 +50,18 @@ public:
 
 protected:
 	virtual void draw_contents();
+	virtual void update_location(SDL_Rect const &rect);
 	virtual void set_inner_location(SDL_Rect const &);
 	virtual void scroll(unsigned int pos);
 
 private:
-	virtual void handle_text_changed(const wide_string&) {}
+	virtual void handle_text_changed(const ucs4::string&) {}
 
 	size_t max_size_;
 
-	wide_string text_;
+	int font_size_;
+
+	ucs4::string text_;
 
 	// mutable unsigned int firstOnScreen_;
 	int cursor_;
@@ -91,7 +100,7 @@ private:
 
 	void draw_cursor(int pos, CVideo &video) const;
 	void update_text_cache(bool reset = false, const SDL_Color& color =font::NORMAL_COLOR);
-	surface add_text_line(const wide_string& text, const SDL_Color& color =font::NORMAL_COLOR);
+	surface add_text_line(const ucs4::string& text, const SDL_Color& color =font::NORMAL_COLOR);
 	bool is_selection();
 	void erase_selection();
 

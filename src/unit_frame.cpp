@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2015 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,10 +27,22 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 	input_(data)
 {
 		const std::vector<std::string> first_pass = utils::square_parenthetical_split(data);
-		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
-
+		int time_chunk = std::max<int>(duration, 1);
 		std::vector<std::string>::const_iterator tmp;
-		for(tmp=first_pass.begin();tmp != first_pass.end() ; ++tmp) {
+
+		if (duration > 1 && first_pass.size() > 0) {
+			// If duration specified, divide evenly the time for items with unspecified times
+			int total_specified_time = 0;
+			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
+				std::vector<std::string> second_pass = utils::split(*tmp,':');
+				if(second_pass.size() > 1) {
+					total_specified_time += atoi(second_pass[1].c_str());
+				}
+			}
+			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
+		}
+
+		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
 				data_.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
@@ -54,10 +66,22 @@ progressive_image::progressive_image(const std::string & data,int duration) :
 	input_(data)
 {
 		const std::vector<std::string> first_pass = utils::square_parenthetical_split(data);
-		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
-
+		int time_chunk = std::max<int>(duration, 1);
 		std::vector<std::string>::const_iterator tmp;
-		for(tmp=first_pass.begin();tmp != first_pass.end() ; ++tmp) {
+
+		if (duration > 1 && first_pass.size() > 0) {
+			// If duration specified, divide evenly the time for images with unspecified times
+			int total_specified_time = 0;
+			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
+				std::vector<std::string> second_pass = utils::split(*tmp,':');
+				if(second_pass.size() > 1) {
+					total_specified_time += atoi(second_pass[1].c_str());
+				}
+			}
+			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
+		}
+
+		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
 				data_.push_back(std::pair<image::locator,int>(second_pass[0],atoi(second_pass[1].c_str())));
@@ -180,6 +204,21 @@ return data_.empty() ||
 template class progressive_<int>;
 template class progressive_<double>;
 
+bool tristate_to_bool(tristate tri, bool def)
+{
+	switch(tri)
+	{
+	case(t_false):
+		return false;
+	case(t_true):
+		return true;
+	case(t_unset):
+		return def;
+	default:
+		throw "found unexpected tristate";
+	}
+}
+
 frame_parameters::frame_parameters() :
 	duration(0),
 	image(),
@@ -294,7 +333,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 		int image_duration = (progressive_image(image_,1)).duration();
 		int image_diagonal_duration = (progressive_image(image_diagonal_,1)).duration();
 		duration(std::max(std::max(image_duration,image_diagonal_duration),halo_duration));
-		
+
 	} else {
 		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
 	}
@@ -408,11 +447,10 @@ frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 	return *this;
 }
 
-
 frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, int duration) :
 	duration_(duration ? duration :builder.duration_),
-	image_(builder.image_,duration),
-	image_diagonal_(builder.image_diagonal_,duration),
+	image_(builder.image_,duration_),
+	image_diagonal_(builder.image_diagonal_,duration_),
 	image_mod_(builder.image_mod_),
 	halo_(builder.halo_,duration_),
 	halo_x_(builder.halo_x_,duration_),
@@ -552,9 +590,44 @@ void frame_parsed_parameters::override( int duration
 		duration_ = duration;
 	}
 }
+std::vector<std::string> frame_parsed_parameters::debug_strings() const {
+	std::vector<std::string> v;
+	if (duration_>0) v.push_back("duration="+utils::half_signed_value(duration_));
+	if (!image_.get_original().empty()) v.push_back("image="+image_.get_original());
+	if (!image_diagonal_.get_original().empty()) v.push_back("image_diagonal="+image_diagonal_.get_original());
+	if (!image_mod_.empty()) v.push_back("image_mod="+image_mod_);
+	if (!halo_.get_original().empty()) v.push_back("halo="+halo_.get_original());
+	if (!halo_x_.get_original().empty()) v.push_back("halo_x="+halo_x_.get_original());
+	if (!halo_y_.get_original().empty()) v.push_back("halo_y="+halo_y_.get_original());
+	if (!halo_mod_.empty()) v.push_back("halo_mod="+halo_mod_);
+	if (!sound_.empty()) v.push_back("sound="+sound_);
+	if (!text_.empty()) {
+		v.push_back("text="+text_);
+		v.push_back("text_color="+str_cast<Uint32>(text_color_));
+	}
+	if (!blend_ratio_.get_original().empty()) {
+		v.push_back("blend_ratio="+blend_ratio_.get_original());
+		v.push_back("blend_with="+str_cast<Uint32>(blend_with_));
+	}
+	if (!highlight_ratio_.get_original().empty()) v.push_back("highlight_ratio="+highlight_ratio_.get_original());
+	if (!offset_.get_original().empty()) v.push_back("offset="+offset_.get_original());
+	if (!submerge_.get_original().empty()) v.push_back("submerge="+submerge_.get_original());
+	if (!x_.get_original().empty()) v.push_back("x="+x_.get_original());
+	if (!y_.get_original().empty()) v.push_back("y="+y_.get_original());
+	if (!directional_x_.get_original().empty()) v.push_back("directional_x="+directional_x_.get_original());
+	if (!directional_y_.get_original().empty()) v.push_back("directional_y="+directional_y_.get_original());
+	if (auto_vflip_ == t_true) v.push_back("auto_vflip=true");
+	if (auto_vflip_ == t_false) v.push_back("auto_vflip=false");
+	if (auto_hflip_ == t_true) v.push_back("auto_hflip=true");
+	if (auto_hflip_ == t_false) v.push_back("auto_hflip=false");
+	if (primary_frame_ == t_true) v.push_back("primary_frame=true");
+	if (primary_frame_ == t_false) v.push_back("primary_frame=false");
+	if (!drawing_layer_.get_original().empty()) v.push_back("drawing_layer="+drawing_layer_.get_original());
+	return v;
+}
 
 
-void unit_frame::redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
+void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,halo::handle & halo_id,halo::manager & halo_man, const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -570,8 +643,8 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		// if (tmp_offset) std::cout << (int)(tmp_offset*100) << ",";
 
 	int d2 = display::get_singleton()->hex_size() / 2;
-	if(first_time ) {
-		// stuff sthat should be done only once per frame
+	if(on_start_time ) {
+		// stuff that should be done only once per frame
 		if(!current_data.sound.empty()  ) {
 			sound::play_sound(current_data.sound);
 		}
@@ -621,11 +694,15 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		game_display::get_singleton()->render_image( my_x,my_y,
 			       	static_cast<display::tdrawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
 			       	src, image, facing_west, false,
-				ftofxp(current_data.highlight_ratio), current_data.blend_with,
+			        ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
-	halo::remove(*halo_id);
-	*halo_id = halo::NO_HALO;
+	halo_id = halo::handle(); //halo::NO_HALO;
+
+	if (!in_scope_of_frame) { //check after frame as first/last frame image used in defense/attack anims
+		return;
+	}
+
 	if(!current_data.halo.empty()) {
 		halo::ORIENTATION orientation;
 		switch(direction)
@@ -657,15 +734,15 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				orientation = halo::NORMAL;
 				break;
 		}
-		
+
 		if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
-			*halo_id = halo::add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			halo_id = halo_man.add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),
 					orientation);
 		} else {
-			*halo_id = halo::add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			halo_id = halo_man.add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),
@@ -758,10 +835,10 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 				my_y -= current_data.directional_y;
 			}
 
-			const SDL_Rect r = create_rect(my_x, my_y, w, h);
+			const SDL_Rect r = sdl::create_rect(my_x, my_y, w, h);
 			// check if our underlying hexes are invalidated
 			// if we need to update ourselves because we changed, invalidate our hexes
-			// and return whether or not our hexs was invalidated
+			// and return whether or not our hexes was invalidated
 			// invalidate ourself to be called at redraw time
 			result.insert(src);
 			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
@@ -796,7 +873,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.primary_frame = engine_val.primary_frame;
 	if(animation_val.primary_frame != t_unset) result.primary_frame = animation_val.primary_frame;
 	if(current_val.primary_frame != t_unset) result.primary_frame = current_val.primary_frame;
-	const bool primary = result.primary_frame;
+	const bool primary = tristate_to_bool(result.primary_frame, true);
 
 	/** engine provides a default image to use for the unit when none is available */
 	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;
@@ -813,12 +890,12 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	/** engine provides a string for "petrified" and "team color" modifications
           note that image_mod is the complete modification and halo_mod is only the TC part
           see unit.cpp, we know that and use it*/
-		result.image_mod = current_val.image_mod +animation_val.image_mod;
+	result.image_mod = current_val.image_mod +animation_val.image_mod;
 	if(primary) {
-                result.image_mod += engine_val.image_mod;
-        } else {
-                result.image_mod += engine_val.halo_mod;
-        }
+		result.image_mod += engine_val.image_mod;
+	} else {
+		result.image_mod += engine_val.halo_mod;
+	}
 
 	assert(engine_val.halo.empty());
 	result.halo = current_val.halo.empty()?animation_val.halo:current_val.halo;

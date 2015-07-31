@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,12 +15,15 @@
 
 #include "tooltips.hpp"
 
+#include "floating_label.hpp"
 #include "font.hpp"
 #include "game_display.hpp"
-#include "help.hpp"
+#include "help/help.hpp"
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "video.hpp"
+
+#include "SDL.h" // Travis doesn't like this, although it works on my machine -> '#include "SDL_sound.h"
 
 #include <boost/foreach.hpp>
 
@@ -33,19 +36,21 @@ static const int text_width = 400;
 
 struct tooltip
 {
-	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "", bool use_markup = false)
-	: rect(r), message(msg), action(act), markup(use_markup)
+	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "", bool use_markup = false, const surface& fg = surface())
+	: rect(r), message(msg), action(act), markup(use_markup), foreground(fg)
 	{}
 	SDL_Rect rect;
 	std::string message;
 	std::string action;
 	bool markup;
+	surface foreground;
 };
 
-std::vector<tooltip> tips;
-std::vector<tooltip>::const_iterator current_tooltip = tips.end();
+std::map<int, tooltip> tips;
+std::map<int, tooltip>::const_iterator current_tooltip = tips.end();
 
 int tooltip_handle = 0;
+int tooltip_id = 0;
 
 surface current_background = NULL;
 
@@ -72,7 +77,7 @@ static void show_tooltip(const tooltip& tip)
 
 	unsigned int border = 10;
 
-	font::floating_label flabel(tip.message);
+	font::floating_label flabel(tip.message, tip.foreground);
 	flabel.use_markup(tip.markup);
 	flabel.set_font_size(font_size);
 	flabel.set_color(font::NORMAL_COLOR);
@@ -113,7 +118,9 @@ manager::manager(CVideo& video)
 
 manager::~manager()
 {
+	try {
 	clear_tooltips();
+	} catch (...) {}
 	video_ = NULL;
 }
 
@@ -126,12 +133,12 @@ void clear_tooltips()
 
 void clear_tooltips(const SDL_Rect& rect)
 {
-	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
-		if(rects_overlap(i->rect,rect)) {
+	for(std::map<int,tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
+		if(sdl::rects_overlap(i->second.rect,rect)) {
 			if (i==current_tooltip) {
 				clear_tooltip();
 			}
-			i = tips.erase(i);
+			tips.erase(i++);
 			current_tooltip = tips.end();
 		} else {
 			++i;
@@ -139,26 +146,64 @@ void clear_tooltips(const SDL_Rect& rect)
 	}
 }
 
-void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action, bool use_markup)
+
+
+bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
+		const std::string& action, bool use_markup)
 {
-	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(rects_overlap(i->rect,rect)) {
-			*i = tooltip(rect, message, action);
-			return;
+	std::map<int, tooltip>::iterator it = tips.find(id);
+	if (it == tips.end() ) return false;
+	it->second.action = action;
+	it->second.markup = use_markup;
+	it->second.message = message;
+	it->second.rect = rect;
+	return true;
+}
+
+bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
+		const std::string& action, bool use_markup, const surface& foreground)
+{
+	std::map<int, tooltip>::iterator it = tips.find(id);
+	if (it == tips.end() ) return false;
+	it->second.action = action;
+	it->second.foreground = foreground;
+	it->second.markup = use_markup;
+	it->second.message = message;
+	it->second.rect = rect;
+	return true;
+}
+
+void remove_tooltip(int id)
+{
+	tips.erase(id);
+	clear_tooltip();
+}
+
+int add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action, bool use_markup, const surface& foreground)
+{
+	for(std::map<int, tooltip>::iterator it = tips.begin(); it != tips.end();) {
+		if(sdl::rects_overlap(it->second.rect,rect)) {
+			tips.erase(it++);
+		} else {
+			++it;
 		}
 	}
 
-	tips.push_back(tooltip(rect, message, action, use_markup));
+	int id = tooltip_id++;
+
+	tips.insert(std::make_pair(id, tooltip(rect, message, action, use_markup, foreground) ));
+
 	current_tooltip = tips.end();
+	return id;
 }
 
 void process(int mousex, int mousey)
 {
-	for(std::vector<tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(mousex > i->rect.x && mousey > i->rect.y &&
-		   mousex < i->rect.x + i->rect.w && mousey < i->rect.y + i->rect.h) {
+	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
+		if(mousex > i->second.rect.x && mousey > i->second.rect.y &&
+		   mousex < i->second.rect.x + i->second.rect.w && mousey < i->second.rect.y + i->second.rect.h) {
 			if(current_tooltip != i) {
-				show_tooltip(*i);
+				show_tooltip(i->second);
 				current_tooltip = i;
 			}
 
@@ -172,10 +217,10 @@ void process(int mousex, int mousey)
 
 bool click(int mousex, int mousey)
 {
-	BOOST_FOREACH(tooltip tip, tips) {
-		if(!tip.action.empty() && point_in_rect(mousex, mousey, tip.rect)) {
+	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
+		if(!i->second.action.empty() && sdl::point_in_rect(mousex, mousey, i->second.rect)) {
 			display* disp = resources::screen;
-			help::show_help(*disp, tip.action);
+			help::show_help(*disp, i->second.action);
 			return true;
 		}
 	}

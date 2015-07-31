@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@ namespace about
 
 void show_about(display &disp, const std::string &campaign = std::string());
 void set_about(const config& cfg);
-std::vector<std::string> get_text(const std::string &campaign = std::string());
+std::vector<std::string> get_text(const std::string &campaign = std::string(), bool split_multiline_headers = false);
 
 }
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,54 +28,58 @@
 #include "utils/foreach.tpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 	: tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
-			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
-			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, list_builder(NULL)
 	, list_data()
 {
-	const config &l = cfg.child("list_definition");
+	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 	list_builder = new tbuilder_grid(l);
 	assert(list_builder);
-	VALIDATE(list_builder->rows == 1
-			, _("A 'list_definition' should contain one row."));
+	VALIDATE(list_builder->rows == 1,
+			 _("A 'list_definition' should contain one row."));
 
-	const config &data = cfg.child("list_data");
-	if (!data) return;
+	const config& data = cfg.child("list_data");
+	if(!data)
+		return;
 
-	FOREACH(const AUTO& row, data.child_range("row")) {
+	FOREACH(const AUTO & row, data.child_range("row"))
+	{
 		unsigned col = 0;
 
-		FOREACH(const AUTO& c, row.child_range("column")) {
+		FOREACH(const AUTO & c, row.child_range("column"))
+		{
 			list_data.push_back(string_map());
-			FOREACH(const AUTO& i, c.attribute_range()) {
+			FOREACH(const AUTO & i, c.attribute_range())
+			{
 				list_data.back()[i.first] = i.second;
 			}
 			++col;
 		}
 
-		VALIDATE(col == list_builder->cols, _("'list_data' must have "
-			"the same number of columns as the 'list_definition'."));
+		VALIDATE(col == list_builder->cols,
+				 _("'list_data' must have "
+				   "the same number of columns as the 'list_definition'."));
 	}
 }
 
 twidget* tbuilder_horizontal_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	tlist *widget = new tlist(true
-			, true
-			, tgenerator_::horizontal_list
-			, true
-			, list_builder);
+	tlist* widget = new tlist(
+			true, true, tgenerator_::horizontal_list, true, list_builder);
 
 	init_control(widget);
 	if(!list_data.empty()) {
@@ -83,8 +87,8 @@ twidget* tbuilder_horizontal_listbox::build() const
 	}
 	return widget;
 #else
-	tlistbox *widget = new tlistbox(
-			true, true, tgenerator_::horizontal_list, true);
+	tlistbox* widget
+			= new tlistbox(true, true, tgenerator_::horizontal_list, true);
 
 	init_control(widget);
 
@@ -93,13 +97,12 @@ twidget* tbuilder_horizontal_listbox::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed listbox '"
-		<< id << "' with definition '"
-		<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed listbox '" << id
+			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
-			boost::dynamic_pointer_cast
-				<const tlistbox_definition::tresolution>(widget->config());
+	boost::intrusive_ptr<const tlistbox_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(
+			widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -172,4 +175,3 @@ twidget* tbuilder_horizontal_listbox::build() const
  * @end{tag}{name="horizontal_listbox"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

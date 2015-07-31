@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,8 @@ class display;
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #endif
-namespace gui2 {
+namespace gui2
+{
 
 class tgrid;
 class tlabel;
@@ -55,7 +56,7 @@ struct tplayer_list;
 struct tsub_player_list
 {
 	void init(twindow& w, const std::string& id);
-	void show_toggle_callback(twidget* widget);
+	void show_toggle_callback(twidget& widget);
 	void auto_hide();
 	tlabel* label;
 	tlabel* count;
@@ -90,7 +91,7 @@ public:
 	/**
 	 * Set the callback used to show the preferences.
 	 */
-	void set_preferences_callback(boost::function<void ()> f);
+	void set_preferences_callback(boost::function<void()> f);
 
 	void update_gamelist();
 
@@ -106,12 +107,20 @@ protected:
 	void adjust_game_row_contents(const game_info& game, int idx, tgrid* grid);
 
 public:
-
 	void update_playerlist();
 
-	enum legacy_result { QUIT, JOIN, OBSERVE, CREATE, PREFERENCES };
+	enum legacy_result {
+		QUIT,
+		JOIN,
+		OBSERVE,
+		CREATE,
+		PREFERENCES
+	};
 
-	legacy_result get_legacy_result() const { return legacy_result_; }
+	legacy_result get_legacy_result() const
+	{
+		return legacy_result_;
+	}
 
 	enum t_notify_mode {
 		NOTIFY_NONE,
@@ -127,31 +136,41 @@ public:
 		NOTIFY_COUNT
 	};
 
-	void do_notify(t_notify_mode mode);
+	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
+	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message);
 
 protected:
 	/** inherited form chat_handler */
-	virtual void send_chat_message(const std::string& message, bool /*allies_only*/);
+	virtual void send_chat_message(const std::string& message,
+								   bool /*allies_only*/);
 
 	virtual void user_relation_changed(const std::string& name);
 
 	/** inherited form chat_handler */
-	virtual void add_chat_message(const time_t& time, const std::string& speaker,
-		int side, const std::string& message,
-		events::chat_handler::MESSAGE_TYPE type = events::chat_handler::MESSAGE_PRIVATE);
+	virtual void add_chat_message(const time_t& time,
+								  const std::string& speaker,
+								  int side,
+								  const std::string& message,
+								  events::chat_handler::MESSAGE_TYPE type
+								  = events::chat_handler::MESSAGE_PRIVATE);
 
 	/** inherited form chat_handler */
-	virtual void add_whisper_sent(const std::string& receiver, const std::string& message);
+	virtual void add_whisper_sent(const std::string& receiver,
+								  const std::string& message);
 
 	/** inherited form chat_handler */
-	virtual void add_whisper_received(const std::string& sender, const std::string& message);
+	virtual void add_whisper_received(const std::string& sender,
+									  const std::string& message);
 
 	/** inherited form chat_handler */
-	virtual void add_chat_room_message_sent(const std::string& room, const std::string& message);
+	virtual void add_chat_room_message_sent(const std::string& room,
+											const std::string& message);
 
 	/** inherited form chat_handler */
 	virtual void add_chat_room_message_received(const std::string& room,
-		const std::string& speaker, const std::string& message);
+												const std::string& speaker,
+												const std::string& message);
+
 private:
 	void update_selected_game();
 
@@ -181,19 +200,22 @@ private:
 	 * then it will be created if not found.
 	 * @return valid ptr if the window was found or added, null otherwise
 	 */
-	tlobby_chat_window* room_window_open(const std::string& room, bool open_new);
+	tlobby_chat_window* room_window_open(const std::string& room,
+										 bool open_new);
 
 	/**
 	 * Check if a whisper window for user "name" is open, if open_new is true
 	 * then it will be created if not found.
 	 * @return valid ptr if the window was found or added, null otherwise
 	 */
-	tlobby_chat_window* whisper_window_open(const std::string& name, bool open_new);
+	tlobby_chat_window* whisper_window_open(const std::string& name,
+											bool open_new);
 
 	/**
 	 * Helper function to find and open a new window, used by *_window_open
 	 */
-	tlobby_chat_window* search_create_window(const std::string& name, bool whisper, bool open_new);
+	tlobby_chat_window*
+	search_create_window(const std::string& name, bool whisper, bool open_new);
 
 	/**
 	 * @return true if the whisper window for "name" is the active window
@@ -218,23 +240,29 @@ private:
 	/**
 	 * Add a whisper message to the whisper window
 	 */
-	void add_whisper_window_whisper(const std::string& sender, const std::string& message);
+	void add_whisper_window_whisper(const std::string& sender,
+									const std::string& message);
 
 	/**
-	 * Add a whisper message to the current window which is not the whisper window
+	 * Add a whisper message to the current window which is not the whisper
+	 * window
 	 * for "name".
 	 */
-	void add_active_window_whisper(const std::string& sender, const std::string& message);
+	void add_active_window_whisper(const std::string& sender,
+								   const std::string& message);
 
 	/**
 	 * Add a message to the window for room "room"
 	 */
-	void add_room_window_message(const std::string& room, const std::string& sender, const std::string& message);
+	void add_room_window_message(const std::string& room,
+								 const std::string& sender,
+								 const std::string& message);
 
 	/**
 	 * Add a message to the window for room "room"
 	 */
-	void add_active_window_message(const std::string& sender, const std::string& message);
+	void add_active_window_message(const std::string& sender,
+								   const std::string& message);
 
 	/**
 	 * Switch to the window given by a valid pointer (e.g. received from a call
@@ -283,7 +311,7 @@ private:
 	/**
 	 * Assemble and send a game join request. Ask for password if the game
 	 * requires one.
-	 * @return true iif the request was actually sent, false if not for some
+	 * @return true iff the request was actually sent, false if not for some
 	 *         reason like user canceled the password dialog or idx was invalid.
 	 */
 	bool do_game_join(int idx, bool observe);
@@ -304,25 +332,24 @@ private:
 
 	void room_switch_callback(twindow& window);
 
-	void chat_input_keypress_callback(
-			  bool& handled
-			, bool& halt
-			, const SDLKey key
-			, twindow& window);
+	void chat_input_keypress_callback(bool& handled,
+									  bool& halt,
+									  const SDLKey key,
+									  twindow& window);
 
 	void game_filter_reload();
 
-	void game_filter_change_callback(twidget* widget);
+	void game_filter_change_callback(twidget& widget);
 
 	void game_filter_keypress_callback(const SDLKey key);
 
 	void gamelist_change_callback(twindow& window);
 
-	void player_filter_callback(twidget* widget);
+	void player_filter_callback(twidget& widget);
 
 	void user_dialog_callback(user_info* info);
 
-	void skip_replay_changed_callback(twidget* w);
+	void skip_replay_changed_callback(twidget& w);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -352,7 +379,7 @@ private:
 
 	lobby_info& lobby_info_;
 
-	boost::function<void ()> preferences_callback_;
+	boost::function<void()> preferences_callback_;
 
 	/**
 	 * This represents the open chat windows (rooms and whispers at the moment)
@@ -404,4 +431,3 @@ private:
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,9 @@
 #ifndef TEXT_HPP_INCLUDED
 #define TEXT_HPP_INCLUDED
 
-#include "sdl_utils.hpp"
+#include "font_options.hpp"
+#include "sdl/utils.hpp"
+#include "serialization/unicode_types.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -23,6 +25,15 @@
 #include <pango/pangocairo.h>
 
 #include <string>
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/image.hpp"
+#endif
+
+#ifdef SDL_GPU
+#include "sdl/gpu.hpp"
+#include "sdl/image.hpp"
+#endif
 
 struct language_def;
 
@@ -33,10 +44,11 @@ namespace gui2 {
 namespace font {
 
 /**
- * Escapses the markup characters in a text.
+ * Escapes the markup characters in a text.
  *
  * The markups escaped are the ones used in the pango markup. The special
- * characters are @code <>'"&@endcode. They escaping is the same as for HTML.
+ * characters are: @verbatim <>'"& @endverbatim
+ * The escaping is the same as for HTML.
  *
  * @param text                    The text to escape.
  *
@@ -70,6 +82,16 @@ public:
 	 */
 	surface render() const;
 
+#ifdef SDL_GPU
+	/**
+	 * Returns the rendered text as a texture.
+	 *
+	 * Before rendering it tests whether a redraw is needed and if so it first
+	 * redraws the texture before returning it.
+	 */
+	sdl::timage render_as_texture() const;
+#endif
+
 	/** Returns the width needed for the text. */
 	int get_width() const;
 
@@ -83,10 +105,10 @@ public:
 	bool is_truncated() const;
 
 	/**
-	 * Inserts utf 8 text.
+	 * Inserts UTF-8 text.
 	 *
 	 * @param offset              The position to insert the text.
-	 * @param text                The utf-8 text to insert.
+	 * @param text                The UTF-8 text to insert.
 	 *
 	 * @returns                   The number of characters inserted.
 	 */
@@ -100,7 +122,7 @@ public:
 	 *
 	 * @returns                   True upon success, false otherwise.
 	 */
-	bool insert_unicode(const unsigned offset, const wchar_t unicode);
+	bool insert_unicode(const unsigned offset, ucs4::char_t unicode);
 
 	/**
 	 * Inserts unicode text.
@@ -111,7 +133,7 @@ public:
 	 * @returns                   The number of characters inserted.
 	 */
 	unsigned insert_unicode(
-		const unsigned offset, const std::vector<wchar_t>& unicode);
+		const unsigned offset, const ucs4::string& unicode);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
@@ -142,6 +164,27 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
+	 * Gets the largest collection of characters, including the token at position,
+	 * and not including any characters from the delimiters set.
+	 *
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   The token containing position, and none of the
+	 * 			      delimiter characters. If position is out of bounds,
+	 *			      it returns the empty string.
+	 */
+	std::string get_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
+
+	/**
+	 * Checks if position points to a character in a link in the text, returns it
+	 * if so, empty string otherwise. Link-awareness must be enabled to get results.
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   The link if one is found, the empty string otherwise.
+	 */
+	std::string get_link(const gui2::tpoint & position) const;
+
+	/**
 	 * Gets the column of line of the character at the position.
 	 *
 	 * @param position            The pixel position in the text area.
@@ -155,7 +198,7 @@ public:
 	/**
 	 * Gets the length of the text in characters.
 	 *
-	 * The text set is utf-8 so the length of the string might not be the length
+	 * The text set is UTF-8 so the length of the string might not be the length
 	 * of the text.
 	 */
 	size_t get_length() const { return length_; }
@@ -178,11 +221,15 @@ public:
 
 	const std::string& text() const { return text_; }
 
+	ttext& set_family_class(font::family_class fclass);
+
 	ttext& set_font_size(const unsigned font_size);
 
 	ttext& set_font_style(const unsigned font_style);
 
 	ttext& set_foreground_color(const Uint32 color);
+
+	ttext& set_foreground_color(const SDL_Color color);
 
 	ttext& set_maximum_width(int width);
 
@@ -196,6 +243,11 @@ public:
 
 	ttext& set_maximum_length(const size_t maximum_length);
 
+	bool link_aware() const { return link_aware_; }
+
+	ttext& set_link_aware(bool b);
+
+	ttext& set_link_color(const std::string & color);
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -206,11 +258,29 @@ private:
 	/** The surface to render upon used as a cache. */
 	mutable surface surface_;
 
-	/** The text to draw (stored as utf-8). */
+#if SDL_VERSION_ATLEAST(2,0,0)
+	/** The texture to render upon used as a cache. */
+	mutable sdl::ttexture texture_;
+#else
+#ifdef SDL_GPU
+	mutable sdl::timage texture_;
+#endif
+#endif
+
+	/** The text to draw (stored as UTF-8). */
 	std::string text_;
 
 	/** Is the text markedup if so the markedup render routines need to be used. */
 	bool markedup_text_;
+
+	/** Are hyperlinks in the text marked-up, and will get_link return them. */
+	bool link_aware_;
+
+	/** The color to render links in. */
+	std::string link_color_;
+
+	/** The font family class used. */
+	font::family_class font_class_;
 
 	/** The font size to draw. */
 	unsigned font_size_;
@@ -227,7 +297,7 @@ private:
 	 * Values less or equal to 0 mean no maximum and are internally stored as
 	 * -1, since that's the value pango uses for it.
 	 *
-	 * @see @ref characters_per_line_.
+	 * See @ref characters_per_line_.
 	 */
 	int maximum_width_;
 
@@ -260,7 +330,7 @@ private:
 	/** The way too long text is shown depends on this mode. */
 	PangoEllipsizeMode ellipse_mode_;
 
-	/** The alinment of the text. */
+	/** The alignment of the text. */
 	PangoAlignment alignment_;
 
 	/** The maximum length of the text. */
@@ -337,6 +407,9 @@ private:
 	 */
 	bool set_markup(const std::string& text);
 
+	bool set_markup_helper(const std::string & text);
+
+	std::string handle_token(const std::string & token) const;
 };
 
 } // namespace font

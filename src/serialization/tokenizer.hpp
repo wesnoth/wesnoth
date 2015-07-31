@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2004 - 2009 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2010 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,8 @@
 
 #ifndef TOKENIZER_H_INCLUDED
 #define TOKENIZER_H_INCLUDED
+
+//#define DEBUG_TOKENIZER
 
 #include "buffered_istream.hpp"
 
@@ -66,7 +68,7 @@ public:
 		return token_;
 	}
 
-#ifdef DEBUG
+#ifdef DEBUG_TOKENIZER
 	const token &previous_token() const
 	{
 		return previous_token_;
@@ -132,6 +134,7 @@ private:
 
 	enum
 	{
+		TOK_NONE = 0,
 		TOK_SPACE = 1,
 		TOK_NUMERIC = 2,
 		TOK_ALPHA = 4
@@ -144,17 +147,17 @@ private:
 
 	bool is_space(int c) const
 	{
-		return char_type(c) & TOK_SPACE;
+		return (char_type(c) & TOK_SPACE) == TOK_SPACE;
 	}
 
 	bool is_num(int c) const
 	{
-		return char_type(c) & TOK_NUMERIC;
+		return (char_type(c) & TOK_NUMERIC) == TOK_NUMERIC;
 	}
 
 	bool is_alnum(int c) const
 	{
-		return char_type(c) & (TOK_ALPHA | TOK_NUMERIC);
+		return (char_type(c) & (TOK_ALPHA | TOK_NUMERIC)) != TOK_NONE;
 	}
 
 	void skip_comment();
@@ -168,7 +171,7 @@ private:
 	std::string textdomain_;
 	std::string file_;
 	token token_;
-#ifdef DEBUG
+#ifdef DEBUG_TOKENIZER
 	token previous_token_;
 #endif
 	buffered_istream in_;

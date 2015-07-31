@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,8 @@
 #define IMAGE_HPP_INCLUDED
 
 #include "map_location.hpp"
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
+#include "sdl/image.hpp"
 #include "terrain_translation.hpp"
 #include "game_config.hpp"
 
@@ -27,8 +28,6 @@
 ///the surface corresponding to that image.
 //
 namespace image {
-	const int tile_size = game_config::tile_size;
-
 	template<typename T>
 	class cache_type;
 
@@ -89,7 +88,7 @@ namespace image {
 		int get_center_x() const { return val_.center_x_; }
 		int get_center_y() const { return val_.center_y_; }
 		const std::string& get_modifications() const {return val_.modifications_;}
-		type get_type() const { return val_.type_; };
+		type get_type() const { return val_.type_; }
 		// const int get_index() const { return index_; };
 
 		// returns true if the locator does not correspond to any
@@ -108,9 +107,6 @@ namespace image {
 		 */
 		bool file_exists() const;
 
-		// loads the image it is pointing to from the disk
-		surface load_from_disk() const;
-
 		template <typename T>
 		bool in_cache(cache_type<T> &cache) const;
 		template <typename T>
@@ -122,22 +118,29 @@ namespace image {
 
 	private:
 
-		surface load_image_file() const;
-		surface load_image_sub_file() const;
-
 		int index_;
 		value val_;
 	};
+
+	surface load_from_disk(const locator &loc);
+
+#ifdef SDL_GPU
+	sdl::timage load_texture(const locator &loc);
+#endif
 
 	size_t hash_value(const locator::value&);
 
 
 	typedef cache_type<surface> image_cache;
+#ifdef SDL_GPU
+	typedef cache_type<sdl::timage> texture_cache;
+#endif
 	typedef cache_type<bool> bool_cache;
 
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
+	extern mini_terrain_cache_map mini_highlighted_terrain_cache;
 
 	///light_string store colors info of central and adjacent hexes.
 	///The structure is one or several 4 chars blocks (L,R,G,B)
@@ -151,6 +154,10 @@ namespace image {
 	typedef std::map<light_string, surface> lit_variants;
 	// lighted variants for each locator
 	typedef cache_type<lit_variants> lit_cache;
+#ifdef SDL_GPU
+	typedef std::map<light_string, sdl::timage> lit_texture_variants;
+	typedef cache_type<lit_texture_variants> lit_texture_cache;
+#endif
 
 	void flush_cache();
 
@@ -201,13 +208,17 @@ namespace image {
 	enum TYPE { UNSCALED, SCALED_TO_ZOOM, HEXED, SCALED_TO_HEX, TOD_COLORED, BRIGHTENED};
 
 	///function to get the surface corresponding to an image.
-	///note that this surface must be freed by the user by calling
-	///SDL_FreeSurface()
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
+#ifdef SDL_GPU
+	sdl::timage get_texture(const locator &loc, TYPE type=UNSCALED);
+#endif
 
 	///function to get the surface corresponding to an image.
 	///after applying the lightmap encoded in ls
 	///type should be HEXED or SCALED_TO_HEX
+#ifdef SDL_GPU
+	sdl::timage get_lighted_texture(const image::locator& i_locator, const light_string& ls, TYPE type);
+#endif
 	surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
 
 	///function to get the standard hex mask
@@ -223,7 +234,6 @@ namespace image {
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()
-	///and must be freed using SDL_FreeSurface()
 	surface reverse_image(const surface &surf);
 
 	///returns true if the given image actually exists, without loading it.
@@ -232,6 +242,12 @@ namespace image {
 	/// precache the existence of files in the subdir (ex: "terrain/")
 	void precache_file_existence(const std::string& subdir = "");
 	bool precached_file_exists(const std::string& file);
+
+	/// initialize any private data, e.g. algorithm choices from preferences
+	bool update_from_preferences();
+
+	bool save_image(const locator& i_locator, const std::string& outfile);
+	bool save_image(const surface& surf, const std::string& outfile);
 }
 
 #endif

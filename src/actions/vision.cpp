@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,8 @@
 
 #include "../config.hpp"
 #include "../game_display.hpp"
-#include "../game_events.hpp"
+#include "game_events/manager.hpp"
+#include "../game_events/pump.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../map_label.hpp"
@@ -35,6 +36,8 @@
 #include "../unit.hpp"
 
 #include <boost/foreach.hpp>
+
+class unit_animation;
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -172,13 +175,13 @@ shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(NULL)
 
 /**
  * Destructor.
- * The purpose of explictly defining this is so we can log an error if the
+ * The purpose of explicitly defining this is so we can log an error if the
  * sighted events were neither fired nor explicitly ignored.
  */
 shroud_clearer::~shroud_clearer()
 {
 	if ( !sightings_.empty() ) {
-		ERR_NG << sightings_.size() << " sighted events were ignored.\n";
+		ERR_NG << sightings_.size() << " sighted events were ignored." << std::endl;
 	}
 }
 
@@ -230,7 +233,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
                                size_t &enemy_count, size_t &friend_count,
                                move_unit_spectator * spectator)
 {
-	gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	// This counts as clearing a tile for the return value if it is on the
 	// board and currently fogged under shared vision. (No need to explicitly
 	// check for shrouded since shrouded implies fogged.)
@@ -284,7 +287,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 	// Check for units?
 	if ( result  &&  check_units  &&  loc != event_non_loc ) {
 		// Uncovered a unit?
-		unit_map::const_iterator sight_it = find_visible_unit(loc, tm);
+		unit_map::const_iterator sight_it = resources::gameboard->find_visible_unit(loc, tm);
 		if ( sight_it.valid() ) {
 			record_sighting(*sight_it, loc, viewer_id, view_loc);
 
@@ -322,7 +325,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
  * @param friend_count     Incremented for each friend uncovered (excluding known_units).
  * @param spectator        Will be told of uncovered units (excluding known_units).
- * @param instant          If true, then drawing delays (used to make animations look better) are suppressed.
+ * @param instant          If false, then drawing delays (used to make movement look better) are allowed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -393,7 +396,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
  * @param friend_count     Incremented for each friend uncovered (excluding known_units).
  * @param spectator        Will be told of uncovered units (excluding known_units).
- * @param instant          If true, then drawing delays (used to make animations look better) are suppressed.
+ * @param instant          If false, then drawing delays (used to make movement look better) are allowed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -405,7 +408,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
                                 move_unit_spectator * spectator, bool instant)
 {
 	// This is just a translation to the more general interface. It is
-	// mot inlined so that vision.hpp does not have to include unit.hpp.
+	// not inlined so that vision.hpp does not have to include unit.hpp.
 	return clear_unit(view_loc, view_team, viewer.underlying_id(),
 	                  viewer.vision(), viewer.get_state(unit::STATE_SLOWED),
 	                  viewer.movement_type().get_vision(), viewer.get_location(),
@@ -422,7 +425,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
  * This should only be called if delayed shroud updates is off.
  * It is wasteful to call this if view_team uses neither fog nor shroud.
  *
- * @param instant          If true, then drawing delays (used to make animations look better) are suppressed.
+ * @param instant          If false, then drawing delays (used to make movement look better) are allowed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -433,7 +436,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	// Locate the unit in question.
 	unit_map::const_iterator find_it = resources::units->find(viewer.underlying_id);
 	const map_location & real_loc = find_it == resources::units->end() ?
-		                                map_location::null_location :
+		                                map_location::null_location() :
 		                                find_it->get_location();
 
 	return clear_unit(view_loc, view_team, viewer.underlying_id,
@@ -452,8 +455,8 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
  * for the caller to check these.)
  * In addition, if @a invalidate is left as true, invalidate_after_clear()
  * will be called.
- * Setting @a instant to true suppresses some drawing delays that are used to
- * make animations look better.
+ * Setting @a instant to false allows some drawing delays that are used to
+ * make movement look better.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -559,18 +562,17 @@ bool shroud_clearer::fire_events()
 		// Try to locate the sighting unit.
 		unit_map::const_iterator find_it = units.find(event.sighter_id);
 		const map_location & sight_loc =
-			find_it == units.end() ? map_location::null_location :
+			find_it == units.end() ? map_location::null_location() :
 			                         find_it->get_location();
 
 		{	// Raise the event based on the latest data.
-			using namespace game_events;
-			raise(sighted_str,
-			      entity_location(event.seen_loc, event.seen_id),
-			      entity_location(sight_loc, event.sighter_id, event.sighter_loc));
+			resources::game_events->pump().raise(sighted_str,
+			      game_events::entity_location(event.seen_loc, event.seen_id),
+			      game_events::entity_location(sight_loc, event.sighter_id, event.sighter_loc));
 		}
 	}
 
-	return game_events::pump();
+	return resources::game_events->pump()();
 }
 
 
@@ -600,7 +602,7 @@ std::vector<int> get_sides_not_seeing(const unit & target)
 
 	size_t team_size = teams.size();
 	for ( size_t i = 0; i != team_size; ++i)
-		if ( !target.is_visible_to_team(teams[i], false) )
+		if ( !target.is_visible_to_team(teams[i], resources::gameboard->map(), false) )
 			// not_see contains side numbers; i is a team index, so add 1.
 			not_seeing.push_back(i+1);
 
@@ -646,7 +648,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	needs_event[target.side()-1] = false;
 	// Exclude those teams that cannot see the target.
 	for ( size_t i = 0; i != teams_size; ++i )
-		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], false);
+		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], resources::gameboard->map(), false);
 
 	// Cache "jamming".
 	std::vector< std::map<map_location, int> > jamming_cache(teams_size);
@@ -682,12 +684,11 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	const game_events::entity_location target_entity(target);
 	for ( size_t i = 0; i != teams_size; ++i )
 		if ( second_units[i] != NULL ) {
-			using namespace game_events;
-			raise(sighted_str, target_entity, entity_location(*second_units[i]));
+			resources::game_events->pump().raise(sighted_str, target_entity, game_events::entity_location(*second_units[i]));
 		}
 
 	// Fire the events and return.
-	return game_events::pump();
+	return resources::game_events->pump()();
 }
 
 
@@ -728,8 +729,7 @@ void recalculate_fog(int side)
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
-			clearer.clear_unit(u.get_location(), u, tm, &visible_locs, NULL,
-			                   NULL, NULL, true);
+			clearer.clear_unit(u.get_location(), u, tm, &visible_locs);
 	}
 	// Update the screen.
 	clearer.invalidate_after_clear();
@@ -765,7 +765,7 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
-			result |= clearer.clear_unit(u.get_location(), u, tm, true);
+			result |= clearer.clear_unit(u.get_location(), u, tm);
 	}
 	// Update the screen.
 	if ( result )

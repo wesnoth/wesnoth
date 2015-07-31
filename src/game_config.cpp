@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,6 +31,7 @@
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace game_config
@@ -48,6 +49,7 @@ namespace game_config
 	const int gold_carryover_percentage = 80;
 	const std::string version = VERSION;
 	std::string default_terrain;
+	bool spmp_hotfix = false;
 #ifdef REVISION
 	const std::string revision = VERSION " (" REVISION ")";
 #elif defined(VCS_SHORT_HASH) && defined(VCS_WC_MODIFIED)
@@ -58,27 +60,32 @@ namespace game_config
 	const std::string revision = VERSION;
 #endif
 	std::string wesnoth_program_dir;
-	bool debug = false, debug_lua = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, new_syntax = false, no_delay = false, disable_autosave = false;
+	bool debug = false, debug_lua = false, editor = false,
+		ignore_replay_errors = false, mp_debug = false, exit_at_end = false,
+		no_delay = false, disable_autosave = false, no_addons = false;
 
 	int cache_compression_level = 6;
-
-	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
-	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
 
 	std::string title_music,
 			lobby_music,
 			default_victory_music,
 			default_defeat_music;
 
+	namespace colors {
+	std::string moved_orb_color,
+			unmoved_orb_color,
+			partial_orb_color,
+			enemy_orb_color,
+			ally_orb_color;
+	}
+
+	bool show_ally_orb, show_enemy_orb, show_moved_orb, show_partial_orb, show_unmoved_orb;
+
 	namespace images {
 	std::string game_title,
-            game_title_background,
+			game_title_background,
 			// orbs and hp/xp bar
-			moved_orb,
-			unmoved_orb,
-			partmoved_orb,
-			enemy_orb,
-			ally_orb,
+			orb,
 			energy,
 			// flags
 			flag,
@@ -98,13 +105,15 @@ namespace game_config
 			tod_dark,
 			///@todo de-hardcode this
 			selected_menu = "buttons/radiobox-pressed.png",
-		    deselected_menu = "buttons/radiobox.png",
+			deselected_menu = "buttons/radiobox.png",
 			checked_menu = "buttons/checkbox-pressed.png",
 			unchecked_menu = "buttons/checkbox.png",
 			wml_menu = "buttons/WML-custom.png",
 			level,
 			ellipsis,
-			missing;
+			missing,
+			// notifications icon
+			app_icon = "images/icons/icon-game.png";
 	} //images
 
 	std::string shroud_prefix, fog_prefix;
@@ -113,8 +122,8 @@ namespace game_config
 	std::vector<Uint32> red_green_scale;
 	std::vector<Uint32> red_green_scale_text;
 
-	std::vector<Uint32> blue_white_scale;
-	std::vector<Uint32> blue_white_scale_text;
+	static std::vector<Uint32> blue_white_scale;
+	static std::vector<Uint32> blue_white_scale_text;
 
 	double hp_bar_scaling = 0.666;
 	double xp_bar_scaling = 0.5;
@@ -132,23 +141,25 @@ namespace game_config
 
 	const version_info wesnoth_version(VERSION);
 	const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
-	const std::string  test_version("test");
+	const version_info test_version("test");
 
 	const std::string observer_team_name = "observer";
 
 	const size_t max_loop = 65536;
 
 	namespace sounds {
-		const std::string turn_bell = "bell.wav",
+		std::string turn_bell = "bell.wav",
 		timer_bell = "timer.wav",
-		receive_message = "chat-[1~3].ogg",
-		receive_message_highlight = "chat-highlight.ogg",
-		receive_message_friend = "chat-friend.ogg",
-		receive_message_server = "receive.wav",
-		user_arrive = "arrive.wav",
-		user_leave = "leave.wav",
+		public_message = "chat-[1~3].ogg",
+		private_message = "chat-highlight.ogg",
+		friend_message = "chat-friend.ogg",
+		server_message = "receive.wav",
+		player_joins = "arrive.wav",
+		player_leaves = "leave.wav",
 		game_user_arrive = "join.wav",
-		game_user_leave = "leave.wav";
+		game_user_leave = "leave.wav",
+		ready_for_start = "bell.wav",
+		game_has_begun = "gamestart.ogg";
 
 		const std::string button_press = "button.wav",
 		checkbox_release = "checkbox.wav",
@@ -158,16 +169,10 @@ namespace game_config
 		menu_select = "select.wav";
 	}
 
-
-
-#ifdef __AMIGAOS4__
-	std::string path = "PROGDIR:";
-#else
 #ifdef WESNOTH_PATH
 	std::string path = WESNOTH_PATH;
 #else
 	std::string path = "";
-#endif
 #endif
 
 #ifdef DEFAULT_PREFS_PATH
@@ -175,8 +180,6 @@ namespace game_config
 #else
 	std::string default_preferences_path = "";
 #endif
-
-	std::string preferences_dir = "";
 
 	std::vector<server_info> server_list;
 
@@ -198,16 +201,27 @@ namespace game_config
 		default_victory_music = v["default_victory_music"].str();
 		default_defeat_music = v["default_defeat_music"].str();
 
+		if(const config &i = v.child("colors")){
+			using namespace game_config::colors;
+			moved_orb_color = i["moved_orb_color"].str();
+			unmoved_orb_color = i["unmoved_orb_color"].str();
+			partial_orb_color = i["partial_orb_color"].str();
+			enemy_orb_color = i["enemy_orb_color"].str();
+			ally_orb_color = i["ally_orb_color"].str();
+		} // colors
+
+		show_ally_orb = v["show_ally_orb"].to_bool(true);
+		show_enemy_orb = v["show_enemy_orb"].to_bool(false);
+		show_moved_orb = v["show_moved_orb"].to_bool(true);
+		show_partial_orb  = v["show_partly_orb"].to_bool(true);
+		show_unmoved_orb = v["show_unmoved_orb"].to_bool(true);
+
 		if(const config &i = v.child("images")){
 			using namespace game_config::images;
 			game_title = i["game_title"].str();
-            game_title_background = i["game_title_background"].str();
+			game_title_background = i["game_title_background"].str();
 
-			moved_orb = i["moved_orb"].str();
-			unmoved_orb = i["unmoved_orb"].str();
-			partmoved_orb = i["partmoved_orb"].str();
-			enemy_orb = i["enemy_orb"].str();
-			ally_orb = i["ally_orb"].str();
+			orb = i["orb"].str();
 			energy = i["energy"].str();
 
 			flag = i["flag"].str();
@@ -243,12 +257,13 @@ namespace game_config
 
 		add_color_info(v);
 
-		if (const config::attribute_value *a = v.get("flag_rgb"))
+		if (const config::attribute_value *a = v.get("flag_rgb")) {
 			flag_rgb = a->str();
+		}
 
 		std::string color_string = v["red_green_scale"].str();
 		if(!string2rgb(color_string, red_green_scale)) {
-			ERR_NG << "can't parse color string red_green_scale, ignoring: " << color_string << "\n";
+			ERR_NG << "can't parse color string red_green_scale, ignoring: " << color_string << std::endl;
 		}
 		if (red_green_scale.empty()) {
 			red_green_scale.push_back(0x00FFFF00);
@@ -256,7 +271,7 @@ namespace game_config
 
 		color_string = v["red_green_scale_text"].str();
 		if(!string2rgb(color_string, red_green_scale_text)) {
-			ERR_NG << "can't parse color string red_green_scale_text, ignoring: " << color_string << "\n";
+			ERR_NG << "can't parse color string red_green_scale_text, ignoring: " << color_string << std::endl;
 		}
 		if (red_green_scale_text.empty()) {
 			red_green_scale_text.push_back(0x00FFFF00);
@@ -264,7 +279,7 @@ namespace game_config
 
 		color_string = v["blue_white_scale"].str();
 		if(!string2rgb(color_string, blue_white_scale)) {
-			ERR_NG << "can't parse color string blue_white_scale, ignoring: " << color_string << "\n";
+			ERR_NG << "can't parse color string blue_white_scale, ignoring: " << color_string << std::endl;
 		}
 		if (blue_white_scale.empty()) {
 			blue_white_scale.push_back(0x00FFFFFF);
@@ -272,7 +287,7 @@ namespace game_config
 
 		color_string = v["blue_white_scale_text"].str();
 		if(!string2rgb(color_string, blue_white_scale_text)) {
-			ERR_NG << "can't parse color string blue_white_scale_text, ignoring: " << color_string << "\n";
+			ERR_NG << "can't parse color string blue_white_scale_text, ignoring: " << color_string << std::endl;
 		}
 		if (blue_white_scale_text.empty()) {
 			blue_white_scale_text.push_back(0x00FFFFFF);
@@ -286,6 +301,22 @@ namespace game_config
 			sinf.address = server["address"].str();
 			server_list.push_back(sinf);
 		}
+
+		if(const config & s = v.child("sounds")) {
+			using namespace game_config::sounds;
+			if (s.has_attribute("turn_bell")) 		turn_bell = 			s["turn_bell"].str();
+			if (s.has_attribute("timer_bell")) 		timer_bell = 			s["timer_bell"].str();
+			if (s.has_attribute("public_message")) 		public_message = 		s["public_message"].str();
+			if (s.has_attribute("private_message")) 	private_message = 		s["private_message"].str();
+			if (s.has_attribute("friend_message")) 		friend_message = 		s["friend_message"].str();
+			if (s.has_attribute("server_message")) 		server_message = 		s["server_message"].str();
+			if (s.has_attribute("player_joins")) 		player_joins = 			s["player_joins"].str();
+			if (s.has_attribute("player_leaves")) 		player_leaves = 		s["player_leaves"].str();
+			if (s.has_attribute("game_user_arrive"))	game_user_arrive = 		s["game_user_arrive"].str();
+			if (s.has_attribute("game_user_leave")) 	game_user_leave = 		s["game_user_leave"].str();
+			if (s.has_attribute("ready_for_start")) 	ready_for_start = 		s["ready_for_start"].str();
+			if (s.has_attribute("game_has_begun")) 		game_has_begun = 		s["game_has_begun"].str();
+		}
 	}
 
 	void add_color_info(const config &v)
@@ -294,7 +325,9 @@ namespace game_config
 		{
 			const config::attribute_value *a1 = teamC.get("id"),
 				*a2 = teamC.get("rgb");
-			if (!a1 || !a2) continue;
+			if (!a1 || !a2) {
+				continue;
+			}
 			std::string id = *a1;
 			std::vector<Uint32> temp;
 			if(!string2rgb(*a2, temp)) {
@@ -304,24 +337,15 @@ namespace game_config
 			}
 			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
 			team_rgb_name[id] = teamC["name"];
+
+			LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug() << '\n';
+
 			//generate palette of same name;
 			std::vector<Uint32> tp = palette(team_rgb_range[id]);
-			if (tp.empty()) continue;
-			team_rgb_colors.insert(std::make_pair(id,tp));
-			//if this is being used, output log of palette for artists use.
-			DBG_NG << "color palette creation:\n";
-			std::ostringstream str;
-			str << id << " = ";
-			for (std::vector<Uint32>::const_iterator r = tp.begin(),
-			     r_end = tp.end(), r_beg = r; r != r_end; ++r)
-			{
-				int red = ((*r) & 0x00FF0000) >> 16;
-				int green = ((*r) & 0x0000FF00) >> 8;
-				int blue = ((*r) & 0x000000FF);
-				if (r != r_beg) str << ',';
-				str << red << ',' << green << ',' << blue;
+			if (tp.empty()) {
+				continue;
 			}
-			DBG_NG << str.str() << '\n';
+			team_rgb_colors.insert(std::make_pair(id,tp));
 		}
 
 		BOOST_FOREACH(const config &cp, v.child_range("color_palette"))
@@ -330,9 +354,10 @@ namespace game_config
 			{
 				std::vector<Uint32> temp;
 				if(!string2rgb(rgb.second, temp)) {
-					ERR_NG << "Invalid team color: " << rgb.second << "\n";
+					ERR_NG << "Invalid color palette: " << rgb.second << std::endl;
 				}
 				team_rgb_colors.insert(std::make_pair(rgb.first, temp));
+				LOG_NG << "registered color palette: " << rgb.first << '\n';
 			}
 		}
 	}
@@ -342,8 +367,9 @@ namespace game_config
 		std::map<std::string, color_range>::const_iterator i = team_rgb_range.find(name);
 		if(i == team_rgb_range.end()) {
 			std::vector<Uint32> temp;
-			if(!string2rgb(name, temp))
+			if(!string2rgb(name, temp)) {
 				throw config::error(_("Invalid color range: ") + name);
+			}
 			team_rgb_range.insert(std::make_pair(name,color_range(temp)));
 			return color_info(name);
 		}
@@ -357,7 +383,7 @@ namespace game_config
 			std::vector<Uint32> temp;
 			if(!string2rgb(name, temp)) {
 				static std::vector<Uint32> stv;
-				ERR_NG << "Invalid team color: " << name << "\n";
+				ERR_NG << "Invalid color palette: " << name << std::endl;
 				return stv;
 			}
 			team_rgb_colors.insert(std::make_pair(name,temp));

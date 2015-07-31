@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2011 - 2013 by Tommy Schmitz
+ Copyright (C) 2011 - 2015 by Tommy Schmitz
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -96,13 +96,13 @@ suppose_dead::~suppose_dead()
 		resources::screen->invalidate(loc_);
 }
 
-unit* suppose_dead::get_unit() const
+unit_ptr suppose_dead::get_unit() const
 {
 	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
 	if (itor.valid())
-		return &*itor;
+		return itor.get_shared_ptr();
 	else
-		return NULL;
+		return unit_ptr();
 }
 
 void suppose_dead::accept(visitor& v)
@@ -116,12 +116,12 @@ void suppose_dead::execute(bool& success, bool& complete)
 void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 {
 	// Remove the unit
-	unit const* removed_unit = unit_map.extract(loc_);
+	const unit_const_ptr removed_unit = unit_map.extract(loc_);
 	DBG_WB << "Suppose dead: Temporarily removing unit " << removed_unit->name() << " [" << removed_unit->id()
 			<< "] from (" << loc_ << ")\n";
 
 	// Just check to make sure we removed the unit we expected to remove
-	assert(get_unit() == removed_unit);
+	assert(get_unit().get() == removed_unit.get());
 }
 
 void suppose_dead::remove_temp_modifier(unit_map& unit_map)
@@ -143,9 +143,13 @@ void suppose_dead::draw_hex(const map_location& hex)
 
 		int xpos = resources::screen->get_location_x(loc_);
 		int ypos = resources::screen->get_location_y(loc_);
-
+#ifdef SDL_GPU
+		resources::screen->drawing_buffer_add(layer, loc_, xpos, ypos,
+				image::get_texture("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
+#else
 		resources::screen->drawing_buffer_add(layer, loc_, xpos, ypos,
 				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
+#endif
 	}
 }
 

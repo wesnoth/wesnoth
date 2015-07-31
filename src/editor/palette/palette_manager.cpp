@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,10 +31,12 @@ palette_manager::palette_manager(editor_display& gui, const config& cfg
 		  mouse_action_(active_mouse_action),
 		  terrain_palette_(new terrain_palette(gui, cfg, active_mouse_action)),
 		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
-		  empty_palette_(new empty_palette(gui))
+		  empty_palette_(new empty_palette(gui)),
+		  item_palette_(new item_palette(gui, cfg, active_mouse_action))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
+	item_palette_->setup(cfg);
 }
 
 void palette_manager::set_group(size_t index)
@@ -139,7 +141,7 @@ void palette_manager::draw_contents()
 //	set_dirty(false);
 }
 
-handler_vector palette_manager::handler_members()
+sdl_handler_vector palette_manager::handler_members()
 {
 	//handler_vector h;
 //	BOOST_FOREACH(gui::widget& b, active_palette().get_widgets()) {
@@ -153,7 +155,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 
 	if (event.type == SDL_MOUSEMOTION) {
 		// If the mouse is inside the palette, give it focus.
-		if (point_in_rect(event.button.x, event.button.y, location())) {
+		if (sdl::point_in_rect(event.button.x, event.button.y, location())) {
 			if (!focus(&event)) set_focus(true);
 		}
 		// If the mouse is outside, remove focus.
@@ -163,7 +165,9 @@ void palette_manager::handle_event(const SDL_Event& event) {
 		return;
 	}
 
-	const SDL_MouseButtonEvent mouse_button_event = event.button;
+	const SDL_MouseButtonEvent &mouse_button_event = event.button;
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
 		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
 			scroll_up();
@@ -181,6 +185,25 @@ void palette_manager::handle_event(const SDL_Event& event) {
 		}
 		//set_dirty(true);
 	}
+#endif
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+	if (event.type == SDL_MOUSEWHEEL) {
+		if (event.wheel.y > 0) {
+			scroll_up();
+		} else if (event.wheel.y < 0) {
+			scroll_down();
+		}
+
+		if (event.wheel.x < 0) {
+			active_palette().prev_group();
+			scroll_top();
+		} else if (event.wheel.x > 0) {
+			active_palette().next_group();
+			scroll_top();
+		}
+	}
+#endif
 
 	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
 		//set_dirty(true);

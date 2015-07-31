@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,14 +23,12 @@
 
 #include <map>
 
-namespace gui2 {
+namespace gui2
+{
 
 struct ttimer
 {
-	ttimer()
-		: sdl_id(0)
-		, interval(0)
-		, callback()
+	ttimer() : sdl_id(0), interval(0), callback()
 	{
 	}
 
@@ -39,17 +37,17 @@ struct ttimer
 	boost::function<void(size_t id)> callback;
 };
 
-	/** Ids for the timers. */
-	static size_t id = 0;
+/** Ids for the timers. */
+static size_t id = 0;
 
-	/** The active timers. */
-	static std::map<size_t, ttimer> timers;
+/** The active timers. */
+static std::map<size_t, ttimer> timers;
 
-	/** The id of the event being executed, 0 if none. */
-	static size_t executing_id = 0;
+/** The id of the event being executed, 0 if none. */
+static size_t executing_id = 0;
 
-	/** Did somebody try to remove the timer during its execution? */
-	static bool executing_id_removed = false;
+/** Did somebody try to remove the timer during its execution? */
+static bool executing_id_removed = false;
 
 /**
  * Helper to make removing a timer in a callback safe.
@@ -71,7 +69,6 @@ public:
 	{
 		executing_id = id;
 		executing_id_removed = false;
-
 	}
 
 	~texecutor()
@@ -90,8 +87,8 @@ static Uint32 timer_callback(Uint32, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
 
-	std::map<size_t, ttimer>::iterator itor =
-			timers.find(reinterpret_cast<size_t>(id));
+	std::map<size_t, ttimer>::iterator itor
+			= timers.find(reinterpret_cast<size_t>(id));
 	if(itor == timers.end()) {
 		return 0;
 	}
@@ -114,10 +111,9 @@ static Uint32 timer_callback(Uint32, void* id)
 
 } // extern "C"
 
-size_t
-add_timer(const Uint32 interval
-		, const boost::function<void(size_t id)>& callback
-		, const bool repeat)
+size_t add_timer(const Uint32 interval,
+				 const boost::function<void(size_t id)>& callback,
+				 const bool repeat)
 {
 	BOOST_STATIC_ASSERT(sizeof(size_t) == sizeof(void*));
 
@@ -131,7 +127,7 @@ add_timer(const Uint32 interval
 	timer.sdl_id = SDL_AddTimer(
 			interval, timer_callback, reinterpret_cast<void*>(id));
 	if(timer.sdl_id == 0) {
-		WRN_GUI_E << "Failed to create an sdl timer.\n";
+		WRN_GUI_E << "Failed to create an sdl timer." << std::endl;
 		return 0;
 	}
 
@@ -147,8 +143,7 @@ add_timer(const Uint32 interval
 	return id;
 }
 
-bool
-remove_timer(const size_t id)
+bool remove_timer(const size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
@@ -179,8 +174,7 @@ remove_timer(const size_t id)
 	return true;
 }
 
-bool
-execute_timer(const size_t id)
+bool execute_timer(const size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".\n";
 
@@ -201,5 +195,4 @@ execute_timer(const size_t id)
 	return true;
 }
 
-} //namespace gui2
-
+} // namespace gui2

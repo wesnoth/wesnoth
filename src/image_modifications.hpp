@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 #ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
 #define IMAGE_MODIFICATIONS_HPP_INCLUDED
 
-#include "sdl_utils.hpp"
+#include "lua_jailbreak_exception.hpp"
+#include "sdl/utils.hpp"
 #include <queue>
 
 namespace image {
@@ -184,12 +185,22 @@ class rotate_modification : public modification
 public:
 	/**
 	 * Constructor.
+	 * @pre @zoom >= @offset   Otherwise the result will have empty pixels.
+     * @pre @offset > 0        Otherwise the procedure will not return.
+	 *
 	 * @param degrees Amount of rotation (in degrees).
 	 *                Positive values are clockwise; negative are counter-clockwise.
-	 *                Only multiples of 90 are supported.
+	 * @param zoom    The zoom level to calculate the rotation from.
+	 *                Greater values result in better results and increased runtime.
+	 *                This parameter will be ignored if @degrees is a multiple of 90.
+	 * @param offset  Determines the step size of the scanning of the zoomed source.
+	 *                Different offsets can produce better results, try them out.
+	 *                Greater values result in decreased runtime.
+	 *                This parameter will be ignored if @degrees is a multiple of 90.
+	 *                If @offset is greater than @zoom the result will have empty pixels.
 	 */
-	rotate_modification(int degrees = 90)
-		: degrees_(degrees)
+	rotate_modification(int degrees = 90, int zoom = 16, int offset = 8)
+		: degrees_(degrees), zoom_(zoom), offset_(offset)
 	{}
 	virtual surface operator()(const surface& src) const;
 
@@ -197,6 +208,8 @@ public:
 
 private:
 	int degrees_;
+	int zoom_;
+	int offset_;
 };
 
 /**
@@ -206,6 +219,72 @@ class gs_modification : public modification
 {
 public:
 	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Black and white (BW) modification.
+ */
+class bw_modification : public modification
+{
+public:
+	bw_modification(int threshold): threshold_(threshold) {}
+	virtual surface operator()(const surface& src) const;
+private:
+	int threshold_;
+};
+
+/**
+ * Give to the image a sepia tint (SEPIA)
+ */
+struct sepia_modification : modification
+{
+	virtual surface operator()(const surface &src) const;
+};
+
+/**
+ * Make an image negative (NEG)
+ */
+class negative_modification : public modification
+{
+	public:
+		negative_modification(int r, int g, int b): red_(r), green_(g), blue_(b) {}
+		virtual surface operator()(const surface &src) const;
+	private:
+		int red_, green_, blue_;
+};
+
+/**
+ * Plot Alpha (Alpha) modification
+ */
+class plot_alpha_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Wipe Alpha (Wipe_Alpha) modification
+ */
+class wipe_alpha_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Adjust Alpha (ADJUST_ALPHA) modification
+ */
+class adjust_alpha_modification : public modification
+{
+public:
+	adjust_alpha_modification(fixed_t amount)
+		: amount_(amount)
+	{}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	fixed_t amount_;
 };
 
 /**
@@ -288,7 +367,7 @@ private:
 };
 
 /**
- * Scale (SCALE) modification.
+ * Scale (SCALE) modification. (Uses bilinear interpolation.)
  */
 class scale_modification : public modification
 {
@@ -302,6 +381,40 @@ public:
 
 private:
 	int w_, h_;
+};
+
+/**
+ * Scale sharp (SCALE_SHARP) modification. (Uses nearest neighbor.)
+ */
+class scale_sharp_modification : public modification
+{
+public:
+	scale_sharp_modification(int width, int height)
+		: w_(width), h_(height)
+	{}
+	virtual surface operator()(const surface& src) const;
+	int get_w() const;
+	int get_h() const;
+
+private:
+	int w_, h_;
+};
+
+
+/**
+ * xBRZ scale (xBRZ) modification
+ */
+class xbrz_modification : public modification
+{
+public:
+	xbrz_modification(int z)
+		: z_(z)
+	{}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	int z_;
 };
 
 /**
@@ -401,6 +514,21 @@ struct background_modification : modification
 
 private:
 	SDL_Color color_;
+};
+
+/**
+ * Channel swap (SWAP).
+ */
+class swap_modification : public modification
+{
+public:
+	swap_modification(channel r, channel g, channel b, channel a): red_(r), green_(g), blue_(b), alpha_(a) {}
+	virtual surface operator()(const surface& src) const;
+private:
+	channel red_;
+	channel green_;
+	channel blue_;
+	channel alpha_;
 };
 
 } /* end namespace image */

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,8 @@
 #include "preferences.hpp"
 #include "utils/foreach.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -65,7 +66,8 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
-	FOREACH(const AUTO& lang, languages) {
+	FOREACH(const AUTO & lang, languages)
+	{
 		string_map item;
 		item.insert(std::make_pair("label", lang.language));
 
@@ -80,7 +82,7 @@ void tlanguage_selection::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 		const int res = find_widget<tlistbox>(&window, "language_list", false)
-				.get_selected_row();
+								.get_selected_row();
 
 		assert(res != -1);
 

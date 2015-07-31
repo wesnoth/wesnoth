@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Karol Nowak <grywacz@gmail.com>
+   Copyright (C) 2007 - 2015 by Karol Nowak <grywacz@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -66,8 +66,8 @@ struct wesnoth_global_fixture {
 		assert( reporter.is_open() );
 
 		boost::unit_test::results_reporter::set_stream(reporter);
-//		lg::set_log_domain_severity("all",3);
-		game_config::path = get_cwd();
+//		lg::set_log_domain_severity("all",lg::debug);
+		game_config::path = filesystem::get_cwd();
 
 
 		// Initialize unit tests

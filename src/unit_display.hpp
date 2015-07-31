@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,14 +20,16 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
+#include "fake_unit_ptr.hpp"
+#include "map_location.hpp"
 #include "unit_animation.hpp"
-#include "unit_map.hpp"
-#include "gamestatus.hpp"
-#include "game_display.hpp"
 
 class attack_type;
-class team;
+class fake_unit_manager;
+class game_board;
+class game_display;
 class unit;
+class vconfig;
 
 /**
  *  Contains a number of free functions which display units
@@ -44,28 +46,29 @@ namespace unit_display
  */
 class unit_mover : public boost::noncopyable {
 public:
-	explicit unit_mover(const std::vector<map_location>& path, bool animate=true);
+	explicit unit_mover(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
 	~unit_mover();
 
-	void start(unit& u);
-	void proceed_to(unit& u, size_t path_index, bool update=false, bool wait=true);
+	void start(unit_ptr u);
+	void proceed_to(unit_ptr u, size_t path_index, bool update=false, bool wait=true);
 	void wait_for_anims();
-	void finish(unit &u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
+	void finish(unit_ptr u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
 
 private: // functions
-	void replace_temporary(unit & u);
+	void replace_temporary(unit_ptr u);
 	void update_shown_unit();
 
 private: // data
 	game_display * const disp_;
 	const bool can_draw_;
 	const bool animate_;
+	const bool force_scroll_;
 	unit_animator animator_;
 	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
-	unit * shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
+	unit_ptr shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
 	const std::vector<map_location>& path_;
 	size_t current_;
-	game_display::fake_unit * temp_unit_ptr_;
+	fake_unit_ptr temp_unit_ptr_;
 	bool was_hidden_;
 	bool is_enemy_;
 };
@@ -74,21 +77,22 @@ private: // data
 /**
  * Display a unit moving along a given path.
  */
-void move_unit(const std::vector<map_location>& path, unit& u,
+void move_unit(const std::vector<map_location>& path, unit_ptr u,
 	bool animate=true,
-	map_location::DIRECTION dir=map_location::NDIRECTIONS);
+	map_location::DIRECTION dir=map_location::NDIRECTIONS,
+	bool force_scroll=false);
 
 /**
  * Play a pre-fight animation
  * First unit is the attacker, second unit the defender
  */
-void unit_draw_weapon( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location, unit * defender=NULL);
+void unit_draw_weapon( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location(), unit * defender=NULL);
 
 /**
  * Play a post-fight animation
  * Both unit can be set to null, only valid units will play their animation
  */
-void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location, unit * defender=NULL);
+void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location(), unit * defender=NULL);
 
 /**
  * Show a unit fading out.
@@ -96,9 +100,9 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
  void unit_die( const map_location& loc, unit& u,
- 	const attack_type* attack=NULL, const attack_type* secondary_attack=NULL,
- 	const map_location& winner_loc=map_location::null_location,
- 	unit* winner=NULL);
+	const attack_type* attack=NULL, const attack_type* secondary_attack=NULL,
+	const map_location& winner_loc=map_location::null_location(),
+	unit* winner=NULL);
 
 
 /**
@@ -110,13 +114,14 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  *  @retval	true                  if the defending unit is dead, should be
  *                                removed from the playing field.
  */
-void unit_attack(const map_location& a, const map_location& b, int damage,
+void unit_attack(display * disp, game_board & board, //TODO: Would be nice if this could be purely a display function and defer damage dealing to its caller
+	const map_location& a, const map_location& b, int damage,
 	const attack_type& attack, const attack_type* secondary_attack,
 	int swing, std::string hit_text, int drain_amount, std::string att_text);
 
 
 void unit_recruited(const map_location& loc,
-	const map_location& leader_loc=map_location::null_location);
+	const map_location& leader_loc=map_location::null_location());
 
 /**
  * This will use a poisoning anim if healing<0.
@@ -130,10 +135,10 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
  * Returns once animation is played.
  *
  * This is used for the animate_unit action, but can easily be generalized if
- * other wml-decribed animations are needed.
+ * other wml-described animations are needed.
  */
 void wml_animation(const vconfig &cfg,
-	const map_location& default_location=map_location::null_location);
+	const map_location& default_location=map_location::null_location());
 
 }
 

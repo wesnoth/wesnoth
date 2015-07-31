@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,10 +21,12 @@
 
 #include "../composite/ai.hpp"
 #include "../actions.hpp"
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../pathfind/pathfind.hpp"
 
@@ -87,7 +89,7 @@ private:
 class remove_wrong_targets {
 public:
 	remove_wrong_targets(const readonly_context &context)
-		:avoid_(context.get_avoid()), map_(*resources::game_map)
+		:avoid_(context.get_avoid()), map_(resources::gameboard->map())
 	{
 	}
 
@@ -161,15 +163,15 @@ void testing_move_to_targets_phase::execute()
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
 				ittg != targets.end(); ++ittg) {
-			assert(resources::game_map->on_board(ittg->loc));
+			assert(resources::gameboard->map().on_board(ittg->loc));
 		}
 
 		if(move.first.valid() == false || move.second.valid() == false) {
 			break;
 		}
 
-		assert (resources::game_map->on_board(move.first)
-			&& resources::game_map->on_board(move.second));
+		assert (resources::gameboard->map().on_board(move.first)
+			&& resources::gameboard->map().on_board(move.second));
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
@@ -187,7 +189,7 @@ void testing_move_to_targets_phase::execute()
 
 // structure storing the maximal possible rating of a target
 struct rated_target{
-	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {};
+	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {}
 	std::vector<target>::iterator tg;
 	double max_rating;
 };
@@ -273,7 +275,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 
 	raise_user_interact();
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	unit_map::iterator u;
 
@@ -620,7 +622,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 void testing_move_to_targets_phase::access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out)
 {
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const unit_map::const_iterator u_it = units_.find(u);
 	if(u_it == units_.end()) {
 		return;
@@ -711,7 +713,7 @@ map_location testing_move_to_targets_phase::form_group(const std::vector<map_loc
 bool testing_move_to_targets_phase::move_group(const map_location& dst, const std::vector<map_location>& route, const std::set<map_location>& units)
 {
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	const std::vector<map_location>::const_iterator itor = std::find(route.begin(),route.end(),dst);
 	if(itor == route.end()) {
@@ -813,7 +815,7 @@ bool testing_move_to_targets_phase::move_group(const map_location& dst, const st
 double testing_move_to_targets_phase::rate_group(const std::set<map_location>& group, const std::vector<map_location>& battlefield) const
 {
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	double strength = 0.0;
 	for(std::set<map_location>::const_iterator i = group.begin(); i != group.end(); ++i) {
@@ -858,7 +860,7 @@ bool testing_move_to_targets_phase::should_retreat(const map_location& loc, cons
 	double optimal_terrain = best_defensive_position(un->get_location(), dstsrc,
 			srcdst, enemy_dstsrc).chance_to_hit/100.0;
 	const double proposed_terrain =
-		un->defense_modifier(resources::game_map->get_terrain(loc))/100.0;
+		un->defense_modifier(resources::gameboard->map().get_terrain(loc))/100.0;
 
 	// The 'exposure' is the additional % chance to hit
 	// this unit receives from being on a sub-optimal defensive terrain.

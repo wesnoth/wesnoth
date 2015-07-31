@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,16 +18,15 @@
 #include "gui/auxiliary/widget_definition.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-struct ttree_view_definition
-	: public tcontrol_definition
+struct ttree_view_definition : public tcontrol_definition
 {
 
 	explicit ttree_view_definition(const config& cfg);
 
-	struct tresolution
-		: public tresolution_definition_
+	struct tresolution : public tresolution_definition_
 	{
 		explicit tresolution(const config& cfg);
 
@@ -38,4 +37,3 @@ struct ttree_view_definition
 } // namespace gui2
 
 #endif
-

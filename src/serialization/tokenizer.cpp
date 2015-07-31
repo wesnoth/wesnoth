@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2004 - 2009 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2010 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -54,7 +54,7 @@ tokenizer::~tokenizer()
 
 const token &tokenizer::next_token()
 {
-#if DEBUG
+#if DEBUG_TOKENIZER
 	previous_token_ = token_;
 #endif
 	token_.value.clear();

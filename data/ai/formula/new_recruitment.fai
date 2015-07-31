@@ -4,16 +4,15 @@ fai 'new_recruitment.fai'
 {ai/formula/lib/util.fai}
 {ai/formula/lib/recruitment.fai}
 
+# Returns a list of terrain types of the input list locations #
 def get_terrain_types(ai*, locations)
 	map( locations, 'l', fast_map[l].id ) where fast_map = location_to_terrain_map(ai);
 
-
+# Returns a List of important vilages which are inside locations_map #
 def get_villages_on_terrain_map( ai*, locations_map )
 	filter( villages, locations_map[self] );
 
-#
-for now important locations are villages only
-#
+# Returns location_map with the area around important villages set to 1000 (radius 1) #
 def mark_important_locations(ai*, location_map )
 	map( location_map, 
 		if( tmp_villages[key], 
@@ -23,6 +22,8 @@ def mark_important_locations(ai*, location_map )
 	)
 	where	tmp_villages = tomap( get_locations_surroundings( ai,  get_villages_on_terrain_map( ai, location_map ), 1 ) );
 
+
+# Returns a list of ALL keys(locs) of side_terrain #
 def get_important_locations(ai* )
 	keys(
 		map( ai.vars.side_terrain, 
@@ -30,6 +31,7 @@ def get_important_locations(ai* )
 		)
 	);
 
+# Returns a list of all enemy leaders #
 def enemy_leaders( ai* )
 	sum(
 		map( enemies, 'enemy',
@@ -37,6 +39,9 @@ def enemy_leaders( ai* )
 		)
 	);
 
+# Returns a Map #
+# Key is a ememy leader #
+# Value is the summed distace to all important hexes #
 def find_enemies_part( ai*, locations_map)
 	tomap(
 		enemy_leaders,
@@ -50,13 +55,14 @@ def find_enemies_part( ai*, locations_map)
 	)
 	where enemy_leaders = enemy_leaders( ai );
 
+# Returns a List of those enemy leaders wich are near to the important locations #
 def find_enemies( ai*, locations_map)
 	filter( keys(enemies_part), 'leader',
 		enemies_part[leader] <= average( values( enemies_part ) )
 	)
 	where enemies_part = find_enemies_part( ai, locations_map );
 
-
+# Returns a List of all units of direct_enemies. #
 def direct_enemies_units( ai* )
 	sum(
 		map( vars.direct_enemies, 'enemy',
@@ -64,6 +70,7 @@ def direct_enemies_units( ai* )
 		)
 	);
 
+# Returns a list of all recruits of direct_enemies. #
 def direct_enemies_recruits( ai* )
 	sum(
 		map( vars.direct_enemies, 'enemy',
@@ -71,14 +78,13 @@ def direct_enemies_recruits( ai* )
 		)
 	);
 
-#
-returns map of important locations and number of their occurences on a gamemap
-for example: [ 'forest' -> 10 ]
-#
+# returns map of important locations and number of their occurences on a gamemap #
+# for example: [ 'forest' -> 10 ] #
+# all terrains inside side_terrain are considered. #
 def important_locations_map(ai*)
 	tomap(get_terrain_types(ai, get_important_locations(ai)));
 
-
+# Returns a map. Key is unit-id of my_recruits. Value is sum of all defenses in all important_locs. #
 def my_recruits_defense(ai*)
 	tomap( map(my_recruits, id),
 		map( my_recruits, 'recruit',
@@ -90,6 +96,7 @@ def my_recruits_defense(ai*)
 	where	important_locs = important_locations_map(ai),
 		id_translator = id_to_location_map(ai);
 
+# Returns a map. Key is unit-id of my_recruits. Value is sum of all movent_costs in all important_locs. #
 def my_recruits_movement_cost(ai*)
 	tomap( map(my_recruits, id),
 		map( my_recruits, 'recruit',
@@ -101,66 +108,66 @@ def my_recruits_movement_cost(ai*)
 	where	important_locs = important_locations_map(ai),
 		id_translator = id_to_location_map(ai);
 
+# Highest Value is set to 100. All others below 100 according to ratio #
 def locally_normalize_to_highest( input_map )
 	map( input_map, if(max=0,100,(value * 100)/max) )
 	where max = highest_value(input_map);
 
+# Lowest value is set to 100. All others over 100 according to ratio #
 def locally_normalize_to_lowest( input_map )
 	map( input_map, if(min=0,100,(value * 100)/min) )
 	where min = lowest_value(input_map);
 
 
 
-# look for who we fight against #
+# Returns a List of all enemy leaders #
+# (for some reason this function is defined twice) #
 def enemy_leaders(ai*)
 	map( enemies, 'enemy_side', find(units_of_side[enemy_side], leader ) );
 
-
+# UNUSED FUNCTION #
+# Returns a Map. #
+# Key is a enemy #
+# Value is the distance between my leader and enemies leader #
 def distance_to_enemies(ai*)
 	tomap( enemies, map( enemy_leaders(ai), distance_between( my_leader.loc, loc ) ));
 
-# not used anymore
-def find_important_opponents(ai*)
-	keys(filter( dist_en, value<avg ))
-	where	avg = (average(values(distance_to_enemies(ai)))*11)/10,
-		dist_en = distance_to_enemies(ai);
-
-
-def current_enemies_units(ai*)
-	sum(map( find_important_opponents(ai), 'enemy_side',
-		units_of_side[ enemy_side ] ));
-
-def current_enemies_recruits(ai*)
-	sum(map( find_important_opponents(ai), 'enemy_side',
-		recruits_of_side[ enemy_side ] ));
-#
-
+# Returns a list of enemy-units #
+# If number of units on the map is below 5 #
+# It'll return the recruits #
 def current_enemies(ai*)
 	if( en_units.size > 5, en_units, en_recruis )
 	where	en_units = direct_enemies_units(ai),
 		en_recruis = direct_enemies_recruits(ai);
 
 
+# Returns a integer. #
+# Returns the sum of 12 times the maximum attack damage for all enemy_units #
 def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
 	sum( 
 		map( 
 			enemy_units, 'enemy_unit', 
-			sum(
+			sum( # sum over all 4 elements (which are the same). 3 * 4 = 12. #
 				map(
 					[
 						max_possible_damage_with_retaliation( unit, enemy_unit )
+						# gives [ <attacker_melee>, <attacker_ranged>, <defender_melee>, <defender_ranged> ] #
 					],
 					max(
 						[
 							self[0],
 							self[1]
 						]
-					)*3
+					)*3 # Replaces all 4 elements in the list with 3 times the maximum of self[0] and self[1]. #
 				) 
 			)
 		)
 	);
 
+# Returns a integer. #
+# Returns the sum of 20 times the maximum attack damage that all enemie_units give unit. #
+# This time the atacker can defend himself. The defender will chose the attack with the best #
+# damage difference #
 def evaluate_defender_against_opponents(ai*, unit, enemy_units)
 	sum( 
 		map( 
@@ -181,16 +188,22 @@ def evaluate_defender_against_opponents(ai*, unit, enemy_units)
 		)
 	);
 
+
+# Returns a List with the attacker damages of all recruits #
+# The higher the better #
 def evaluate_recruits_offensive_combat(ai*, recruits, enemy_units)
 	map( recruits, 'recruit',
 		evaluate_attacker_against_opponents( ai, recruit, enemy_units )
 	);
 
+#Returns a List with the defender damages for all recruits #
+# The lower the better #
 def evaluate_recruits_defensive_combat(ai*, recruits, enemy_units)
 	map( recruits, 'recruit',
 		evaluate_defender_against_opponents( ai, recruit, enemy_units )
 	);
 
+# Some helper functions for map calculations #
 def combine_maps_mul( map_A, map_B )
 	map( map_A, value * map_B[key] );
 
@@ -203,18 +216,17 @@ def combine_maps_add( map_A, map_B )
 def combine_maps_div( map_A, map_B )
 	map( map_A, value / map_B[key] );
 
-#
-[ locally_normalize_to_highest(my_recruits_defense(self)),
-tomap(map(my_recruits, id),map(my_recruits, hitpoints) ),
- locally_normalize_to_lowest(my_recruits_movement_cost(self)),
-tomap(map(my_recruits, id),map(my_recruits, total_movement))]
-#
-
+# Returns a map. #
+# Key is unit_id #
+# Value is (costs - avarage costs) * 80 + offset (offset is there so everything is positive) #
+# High Value means high cost compared to the avarage cost of own units #
 def consider_unit_cost(ai*)
 	make_positive_only(map( cost_map, (value - average(values(cost_map))) * 80))
 	where cost_map = tomap(map(my_recruits, id),map(my_recruits, cost ));
 
-
+# Returns a Map. Key is unit_id of my_recruits. #
+# Value is the summed defense on important terrain multiplied by hp * 15. #
+# Normalized so the maximum is 100. #
 def defense_hp_eval(ai*, recruits_id_map)
 	locally_normalize_to_highest(
 		debug_print('combined hp and defense ',combine_maps_mul(
@@ -226,6 +238,9 @@ def defense_hp_eval(ai*, recruits_id_map)
 		))
 	);
 
+# Returns a Map. Key is unit_id of my_recruits. #
+# Value is how fast a unit can move through the important terrain. #
+# Normalized so the maximum is 100. #
 def movement_eval(ai*, recruits_id_map)
 	locally_normalize_to_highest(
 		make_positive_only(
@@ -243,6 +258,10 @@ def movement_eval(ai*, recruits_id_map)
 		)
 	);
 
+# Returns a Map. #
+# key is Unit id of my_recruits #
+# Value is how good is the unit against all other units currently on the map. #
+# The higher the better #
 def fighting_eval(ai*, recruits_id_map)
 	make_positive_only(
 		combine_maps_sub(
@@ -252,6 +271,9 @@ def fighting_eval(ai*, recruits_id_map)
 	)
 	where current_enemies = current_enemies(ai);
 
+# Returns a map #
+# Key is unit_id #
+# Value is 40 if unit is level 0 #
 def level_zero_malus(ai*)
 	map( lvl_map,
 		if(value = 0, 40, 0)
@@ -261,12 +283,16 @@ def level_zero_malus(ai*)
 				map(my_recruits, level )
 			);
 
-#tmp function #
+# UNUSED FUNCTION #
 def filter_out( input_map, comparable_map )
 	filter( input_map, comparable_map[key] > comp_val)
 	where comp_val = average(values(comparable_map))/2;
 
-
+# CENTRAL EVALUATION FUNCTION #
+# calls several subroutines to calculate a final score map of my_recruits #
+# Normalizes then so the scores add up do 100 (%). #
+# Note that fighting_eval is multiplied by 5 and gets a massive weight #
+# Returns a Map with unit_id as key and score in % as value. #
 def calculate_recruits(ai*)
 	change_numbers_to_percents(
 		combine_maps_sub(
@@ -285,7 +311,7 @@ def calculate_recruits(ai*)
 				debug_print('level_zero_malus ', level_zero_malus(ai) )
 			)
 		)
-	) where recruits_id_map = map(my_recruits, id);
+	) where recruits_id_map = map(my_recruits, id); #recruits_id_map is a list of all recruit-ids#
 
 def do_recruitment( ai* )
 	if( unit_to_recruit,
@@ -297,6 +323,7 @@ def do_recruitment( ai* )
 	)
 	where unit_to_recruit = recruit_army(self, vars.recruits_map);
 
+# 'MAIN FUNCTION' #
 if( vars.side_terrain,
 	if(vars.direct_enemies,
 		if(vars.turn_initialized = turn,
@@ -308,7 +335,7 @@ if( vars.side_terrain,
 			set_var(debug_print('recruits_map'), debug_print( 'RECRUITS ', calculate_recruits(self)) )
 			]
 			+
-			if( turn = 0,
+			if( 1,
 				[
 					null(
 						sum(

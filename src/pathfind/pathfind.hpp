@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 class gamemap;
 class team;
 class unit;
+class unit_type;
 
 #include "map_location.hpp"
 #include "movetype.hpp"
@@ -256,6 +257,50 @@ struct dummy_path_calculator : cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const;
 };
 
+/**
+ * Structure which uses find_routes() to build a cost map
+ * This maps each hex to a the movements a unit will need to reach
+ * this hex.
+ * Can be used commutative by calling add_unit() multiple times.
+ */
+struct full_cost_map
+{
+	// "normal" constructor
+	full_cost_map(const unit& u, bool force_ignore_zoc,
+			bool allow_teleport, const team &viewing_team,
+			bool see_all=true, bool ignore_units=true);
+
+	// constructor for work with add_unit()
+	// same as "normal" constructor. Just without unit
+	full_cost_map(bool force_ignore_zoc,
+			bool allow_teleport, const team &viewing_team,
+			bool see_all=true, bool ignore_units=true);
+
+	void add_unit(const unit& u, bool use_max_moves=true);
+	void add_unit(const map_location& origin, const unit_type* const unit_type, int side);
+	int get_cost_at(int x, int y) const;
+	std::pair<int, int> get_pair_at(int x, int y) const;
+	double get_average_cost_at(int x, int y) const;
+	virtual ~full_cost_map()
+	{
+	}
+
+	// This is a vector of pairs
+	// Every hex has an entry.
+	// The first int is the accumulated cost for one or multiple units
+	// It is -1 when no unit can reach this hex.
+	// The second int is how many units can reach this hex.
+	// (For some units some hexes or even a whole regions are unreachable)
+	// To calculate a *average cost map* it is recommended to divide first/second.
+	std::vector<std::pair<int, int> > cost_map;
+
+private:
+	const bool force_ignore_zoc_;
+	const bool allow_teleport_;
+	const team &viewing_team_;
+	const bool see_all_;
+	const bool ignore_units_;
+};
 }
 
 #endif

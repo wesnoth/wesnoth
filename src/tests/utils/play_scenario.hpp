@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,10 +20,12 @@
 #include "map_location.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 class config;
+class terrain_type_data;
 
-
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 
 	class end_position_collector;
@@ -71,6 +73,7 @@ namespace test_utils {
 		const std::string id_;
 		fake_event_source source_;
 		const config& game_config_;
+		const boost::shared_ptr<terrain_type_data> tdata_;
 		timing current_time_;
 		event_node_ptr end_pos_;
 
@@ -90,4 +93,5 @@ namespace test_utils {
 	};
 }
 
+#endif
 #endif

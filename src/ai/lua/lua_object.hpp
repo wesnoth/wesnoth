@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Dmitry Kovalenko <nephro.wes@gmail.com>
+   Copyright (C) 2011 - 2015 by Dmitry Kovalenko <nephro.wes@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,16 +21,22 @@
 #ifndef LUA_OBJECT_HPP_INCLUDED
 #define LUA_OBJECT_HPP_INCLUDED
 
+#include "../../config.hpp"
+#include "../../lua/lua.h"
+#include "../../map_location.hpp"
+#include "../../resources.hpp"
+#include "../../scripting/lua_api.hpp"
+#include "../../scripting/lua_common.hpp"
+#include "../../terrain_filter.hpp"
+#include "../../variable.hpp"
+#include "../default/contexts.hpp"
+#include "unit_advancements_aspect.hpp"
+
+#include <boost/shared_ptr.hpp>
+#include <iterator>
 #include <string>
 #include <vector>
-#include <boost/shared_ptr.hpp>
 
-#include "lua/lualib.h"
-#include "../../scripting/lua_api.hpp"
-#include "config.hpp"
-#include "../default/contexts.hpp"
-#include "terrain_filter.hpp"
-#include "resources.hpp"
 
 namespace ai {
 
@@ -92,16 +98,7 @@ inline boost::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State
 template <>
 inline boost::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
 {
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable : 4800)
-#endif
-
-	return boost::shared_ptr<bool>(new bool(lua_toboolean(L, n)));
-
-#ifdef _MSC_VER
-#pragma warning (pop)
-#endif
+	return boost::shared_ptr<bool>(new bool(luaW_toboolean(L, n)));
 }
 
 template <>
@@ -142,7 +139,7 @@ inline boost::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua
 	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
 	boost::shared_ptr<vconfig> vcfg = boost::shared_ptr<vconfig>(new vconfig(*cfg));
 	luaW_tovconfig(L, n, *vcfg);
-	boost::shared_ptr<terrain_filter> tf = boost::shared_ptr<terrain_filter>(new terrain_filter(*vcfg, *resources::units));
+	boost::shared_ptr<terrain_filter> tf = boost::shared_ptr<terrain_filter>(new terrain_filter(*vcfg, resources::filter_con));
 	return tf;
 }
 
@@ -190,6 +187,12 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 	return targets;
 }
 
+template <>
+inline boost::shared_ptr<unit_advancements_aspect> lua_object<unit_advancements_aspect>::to_type(lua_State *L, int n)
+{
+	boost::shared_ptr<unit_advancements_aspect> uaa = boost::shared_ptr<unit_advancements_aspect>(new unit_advancements_aspect(L, n));
+	return uaa;
+}
 } // end of namespace ai
 
 

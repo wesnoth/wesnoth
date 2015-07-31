@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,9 @@
 #include <map>
 #include <vector>
 
+#include "../mt_rng.hpp"
+
+#include <boost/ptr_container/ptr_vector.hpp>
 //class player;
 
 namespace wesnothd {
@@ -51,12 +54,39 @@ public:
 
 	/** Checks whether the connection's ip address is banned. */
 	bool player_is_banned(const network::connection player) const;
-	bool level_init() const { return level_.child("side") != NULL; }
+	bool level_init() const { return level_.child("snapshot") || level_.child("scenario"); }
+	static simple_wml::node* starting_pos(simple_wml::node& data)
+	{
+		if(simple_wml::node* scenario = data.child("scenario"))
+			return scenario;
+		else if(simple_wml::node* snapshot = data.child("snapshot"))
+			return snapshot;
+		else
+			return &data;
+	}
+	static const simple_wml::node* starting_pos(const simple_wml::node& data)
+	{
+		if(const simple_wml::node* scenario = data.child("scenario"))
+			return scenario;
+		else if(const simple_wml::node* snapshot = data.child("snapshot"))
+			return snapshot;
+		else
+			return &data;
+	}
+	const simple_wml::node::child_list & get_sides_list() const
+	{
+		return starting_pos( level_.root())->children("side");
+	}
 	bool started() const { return started_; }
 
 	size_t nplayers() const { return players_.size(); }
 	size_t nobservers() const { return observers_.size(); }
 	size_t current_turn() const { return (nsides_ ? end_turn_ / nsides_ + 1 : 0); }
+	void set_current_turn(int turn)
+	{
+		int current_side = end_turn_ % nsides_;
+		end_turn_ = current_side + nsides_ * ( turn - 1);
+	}
 
 	void mute_all_observers();
 
@@ -108,9 +138,16 @@ public:
 	const user_vector all_game_users() const;
 
 	void start_game(const player_map::const_iterator starter);
+	//this is performed just before starting and before [start_game] signal
+	//send scenario_diff's specific to each client so that they locally
+	//control their human sides
+	void perform_controller_tweaks();
+
+	void update_game();
 
 	/** A user (player only?) asks for the next scenario to advance to. */
-	void load_next_scenario(const player_map::const_iterator user) const;
+	void load_next_scenario(const player_map::const_iterator user); //const
+	// iceiceice: I unmarked this const because I want to send and record server messages when I fail to tweak sides properly
 
 	/** Resets the side configuration according to the scenario data. */
 	void update_side_data();
@@ -133,6 +170,10 @@ public:
 
 	/** Handles incoming [whiteboard] data. */
 	void process_whiteboard(simple_wml::document& data, const player_map::const_iterator user);
+	/** Handles incoming [change_controller_wml] data. */
+	void process_change_controller_wml(simple_wml::document& data, const player_map::const_iterator user);
+	/** Handles incoming [change_turns_wml] data. */
+	void process_change_turns_wml(simple_wml::document& data, const player_map::const_iterator user);
 
 	/**
 	 * Set the description to the number of available slots.
@@ -189,8 +230,19 @@ public:
 
 	void set_termination_reason(const std::string& reason);
 
-	void allow_global(const simple_wml::document &data);
+	void require_random(const simple_wml::document &data, const player_map::iterator user);
 
+	void handle_choice(const simple_wml::node& data, const player_map::iterator user);
+
+	void handle_random_choice(const simple_wml::node& data);
+
+	void handle_controller_choice(const simple_wml::node& data);
+
+	void reset_last_synced_context_id() { last_choice_request_id_ = -1; }
+	/**
+	 * Function which returns true iff 'player' controls any of the sides spcified in 'sides'.
+	 */
+	bool controls_side(const std::vector<int>& sides, const network::connection player) const;
 private:
 	//forbidden operations
 	game(const game&);
@@ -228,7 +280,10 @@ private:
 			const std::string& controller = "");
 	void transfer_ai_sides(const network::connection player);
 	void send_leave_game(network::connection user) const;
-	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
+	/**
+		@param sides: a comma sperated list of side numbers to which the package should be sent,
+	*/
+	void send_data_sides(simple_wml::document& data, const simple_wml::string_span& sides,
 			const network::connection exclude=0, std::string packet_type = "") const;
 	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
 
@@ -248,13 +303,8 @@ private:
 
 	bool observers_can_label() const { return false; }
 	bool observers_can_chat() const { return true; }
-	bool is_legal_command(const simple_wml::node& command, bool is_player);
+	bool is_legal_command(const simple_wml::node& command, const player_map::const_iterator user);
 
-	/**
-	 * Function which returns true iff 'player' is on 'team'.
-	 * AI controlled sides are not considered on a team.
-	 */
-	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
 	/**
 	 * Checks whether a user has the same IP as members of this game.
 	 * If observer is true it only checks against players.
@@ -286,8 +336,12 @@ private:
 	/** Function to log when we don't find a connection in player_info_. */
 	void missing_user(network::connection socket, const std::string& func) const;
 
+	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
+	void reset_sides();
 	/** Helps debugging player and observer lists. */
 	std::string debug_player_info() const;
+	/** Helps debugging controller tweaks. */
+	std::string debug_sides_info() const;
 
 	player_map* player_info_;
 
@@ -323,17 +377,33 @@ private:
 	int nsides_;
 	bool started_;
 
-	/** The current scenario data. */
+	/** 
+		The current scenario data.´ 
+		WRONG! This contains the initial state or the state from which 
+		the game was loaded from.
+		Using this to make assumptions about the current gamestate is 
+		extremely dangerous and should especially not be done for anything 
+		that can be nodified by wml (especially by [modify_side]),
+		like team_name, controller ... in [side].
+		FIXME: move every code here that uses this object to query those
+		information to the clients. But note that there are some checks 
+		(like controller == null) that are definitely needed by the server and
+		in this case we should try to modify the client to inform the server if 
+		a change of those properties occur. Ofc we shouldn't update level_ 
+		then, but rather store that information in a seperate object 
+		(like in side_controllers_).
+	*/
 	simple_wml::document level_;
 
 	/** Replay data. */
-	mutable std::vector<simple_wml::document*> history_;
+	typedef boost::ptr_vector<simple_wml::document> t_history;
+	mutable t_history history_;
 
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
 
 	int end_turn_;
-
+	int num_turns_;
 	bool all_observers_muted_;
 
 	std::vector<std::string> bans_;
@@ -343,21 +413,22 @@ private:
 	bool save_replays_;
 	std::string replay_save_path_;
 
-	/** The side from which global variable data is expected*/
-	int global_wait_side_;
+	/** A wrapper for mersenne twister rng which generates randomness for this game */
+	rand_rng::mt_rng rng_;
+	int last_choice_request_id_;
 };
 
 struct game_is_member {
-	game_is_member(network::connection sock) : sock_(sock) {};
-	bool operator()(const game* g) const { return g->is_owner(sock_) || g->is_member(sock_); }
+	game_is_member(network::connection sock) : sock_(sock) {}
+	bool operator()(const game& g) const { return g.is_owner(sock_) || g.is_member(sock_); }
 
 private:
 	network::connection sock_;
 };
 
 struct game_id_matches {
-	game_id_matches(int id) : id_(id) {};
-	bool operator()(const game* g) const { return g->id() == id_; }
+	game_id_matches(int id) : id_(id) {}
+	bool operator()(const game& g) const { return g.id() == id_; }
 
 private:
 	int id_;

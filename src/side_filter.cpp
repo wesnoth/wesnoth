@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2010 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,13 +17,19 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "display_context.hpp"
+#include "filter_context.hpp"
 #include "log.hpp"
-#include "resources.hpp"
+#include "recall_list_manager.hpp"
 #include "side_filter.hpp"
 #include "variable.hpp"
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
 #include "network.hpp"
+#include "unit.hpp"
+#include "unit_filter.hpp"
+#include "unit_map.hpp"
+#include "variable.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -35,34 +41,38 @@ static lg::log_domain log_engine_sf("engine/side_filter");
 // and so we don't care about the warnings this quick fix generates
 #pragma warning(push)
 #pragma warning(disable:4413)
-side_filter::side_filter():
-	cfg_(vconfig::unconstructed_vconfig()),
-	flat_(),
-	side_string_()
+side_filter::side_filter()
+	: cfg_(vconfig::unconstructed_vconfig())
+	, flat_()
+	, side_string_()
+	, fc_(NULL)
 {
 	assert(false);
 }
 #pragma warning(pop)
 #endif
 
+side_filter::~side_filter() {}
 
-side_filter::side_filter(const vconfig& cfg, bool flat_tod) :
-	cfg_(cfg),
-	flat_(flat_tod),
-	side_string_()
+side_filter::side_filter(const vconfig& cfg, const filter_context * fc,  bool flat_tod)
+	: cfg_(cfg)
+	, flat_(flat_tod)
+	, side_string_()
+	, fc_(fc)
 {
 }
 
-side_filter::side_filter(const std::string &side_string, bool flat_tod)
-	: cfg_(vconfig::empty_vconfig()), flat_(flat_tod), side_string_(side_string)
+side_filter::side_filter(const std::string &side_string, const filter_context * fc, bool flat_tod)
+	: cfg_(vconfig::empty_vconfig()), flat_(flat_tod), side_string_(side_string), fc_(fc)
 {
 }
 
 std::vector<int> side_filter::get_teams() const
 {
+	assert(fc_);
 	//@todo: replace with better implementation
 	std::vector<int> result;
-	BOOST_FOREACH(const team &t, *resources::teams) {
+	BOOST_FOREACH(const team &t, fc_->get_disp_context().teams()) {
 		if (match(t)) {
 			result.push_back(t.side());
 		}
@@ -86,6 +96,8 @@ static bool check_side_number(const team &t, const std::string &str)
 
 bool side_filter::match_internal(const team &t) const
 {
+	assert(fc_);
+
 	if (cfg_.has_attribute("side_in")) {
 		if (!check_side_number(t,cfg_["side_in"])) {
 			return false;
@@ -125,22 +137,23 @@ bool side_filter::match_internal(const team &t) const
 
 	//Allow filtering on units
 	if(cfg_.has_child("has_unit")) {
-		const vconfig& unit_filter = cfg_.child("has_unit");
+		const vconfig & ufilt_cfg = cfg_.child("has_unit");
+		if (!ufilter_)
+			ufilter_.reset(new unit_filter(ufilt_cfg, fc_, flat_));
 		bool found = false;
-		BOOST_FOREACH(unit &u, *resources::units) {
+		BOOST_FOREACH(const unit &u, fc_->get_disp_context().units()) {
 			if (u.side() != t.side()) {
 				continue;
 			}
-			if (u.matches_filter(unit_filter, u.get_location(), flat_)) {
+			if (ufilter_->matches(u)) {
 				found = true;
 				break;
 			}
 		}
-		if(!found && unit_filter["search_recall_list"].to_bool(false)) {
-			const std::vector<unit>& recall_list = t.recall_list();
-			BOOST_FOREACH(const unit& u, recall_list) {
-				scoped_recall_unit this_unit("this_unit", t.save_id(), &u - &recall_list[0]);
-				if(u.matches_filter(unit_filter, u.get_location(), flat_)) {
+		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
+			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
+				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
+				if(ufilter_->matches(*u)) {
 					found = true;
 					break;
 				}
@@ -153,35 +166,69 @@ bool side_filter::match_internal(const team &t) const
 
 	const vconfig& enemy_of = cfg_.child("enemy_of");
 	if(!enemy_of.null()) {
-		side_filter s_filter(enemy_of);
-		const std::vector<int>& teams = s_filter.get_teams();
+		if (!enemy_filter_)
+			enemy_filter_.reset(new side_filter(enemy_of, fc_));
+		const std::vector<int>& teams = enemy_filter_->get_teams();
 		if(teams.empty()) return false;
 		BOOST_FOREACH(const int side, teams) {
-			if(!(*resources::teams)[side - 1].is_enemy(t.side()))
+			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
 				return false;
 		}
 	}
 
 	const vconfig& allied_with = cfg_.child("allied_with");
 	if(!allied_with.null()) {
-		side_filter s_filter(allied_with);
-		const std::vector<int>& teams = s_filter.get_teams();
+		if (!allied_filter_)
+			allied_filter_.reset(new side_filter(allied_with, fc_));
+		const std::vector<int>& teams = allied_filter_->get_teams();
 		if(teams.empty()) return false;
 		BOOST_FOREACH(const int side, teams) {
-			if((*resources::teams)[side - 1].is_enemy(t.side()))
+			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
 				return false;
 		}
 	}
+
+	const vconfig& has_enemy = cfg_.child("has_enemy");
+	if(!has_enemy.null()) {
+		if (!has_enemy_filter_)
+			has_enemy_filter_.reset(new side_filter(has_enemy, fc_));
+		const std::vector<int>& teams = has_enemy_filter_->get_teams();
+		bool found = false;
+		BOOST_FOREACH(const int side, teams) {
+			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found) return false;
+	}
+
+	const vconfig& has_ally = cfg_.child("has_ally");
+	if(!has_ally.null()) {
+		if (!has_ally_filter_)
+			has_ally_filter_.reset(new side_filter(has_ally, fc_));
+		const std::vector<int>& teams = has_ally_filter_->get_teams();
+		bool found = false;
+		BOOST_FOREACH(const int side, teams) {
+			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found) return false;
+	}
+
 
 	const config::attribute_value cfg_controller = cfg_["controller"];
 	if (!cfg_controller.blank())
 	{
 		if (network::nconnections() > 0)
-			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors\n";
+			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors" << std::endl;
 		else
 		{
-			const std::string& controller = cfg_controller;
-			if(strcmp(controller.c_str(), t.controller_string()) != 0)
+			if(cfg_controller.str() != t.controller().to_string())
 				return false;
 		}
 	}
@@ -191,7 +238,8 @@ bool side_filter::match_internal(const team &t) const
 
 bool side_filter::match(int side) const
 {
-	return this->match((*resources::teams)[side-1]);
+	assert(fc_);
+	return this->match((fc_->get_disp_context().teams())[side-1]);
 }
 
 bool side_filter::match(const team& t) const
@@ -208,17 +256,17 @@ bool side_filter::match(const team& t) const
 		//handle [and]
 		if(cond_name == "and")
 		{
-			matches = matches && side_filter(cond_cfg, flat_).match(t);
+			matches = matches && side_filter(cond_cfg, fc_, flat_).match(t);
 		}
 		//handle [or]
 		else if(cond_name == "or")
 		{
-			matches = matches || side_filter(cond_cfg, flat_).match(t);
+			matches = matches || side_filter(cond_cfg, fc_, flat_).match(t);
 		}
 		//handle [not]
 		else if(cond_name == "not")
 		{
-			matches = matches && !side_filter(cond_cfg, flat_).match(t);
+			matches = matches && !side_filter(cond_cfg, fc_, flat_).match(t);
 		}
 			++cond;
 	}

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Sytyi Nick <nsytyi@gmail.com>
+   Copyright (C) 2011 - 2015 by Sytyi Nick <nsytyi@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,7 @@ static lg::log_domain log_validation("validation");
 static std::string at(const std::string & file, int line){
 	std::ostringstream ss;
 	ss << line << " " << file;
-	return ::lineno_string(ss.str());
+	return "at " + ::lineno_string(ss.str());
 }
 
 static void print_output(const std::string & message,bool flag_exception = false ){
@@ -55,8 +55,9 @@ static void extra_tag_error(const std::string & file, int line,
 							const std::string & name,int n,
 							const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
-	ss 	 <<at(file,line) << ": extra tag [" << name << "]; there may only be "
-			<< n << " ["<< name <<"] in [" << parent <<"]\n";
+	ss << "Extra tag [" << name << "]; there may only be "
+	   << n << " [" << name << "] in [" << parent << "]\n"
+	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -64,8 +65,9 @@ static void wrong_tag_error(const std::string & file, int line,
 							const std::string & name,const std::string & parent,
 							bool flag_exception){
 	std::ostringstream ss;
-	ss 	 <<at(file,line) << ": tag [" << name << "] may not be used in [" <<
-			parent <<"]\n";
+	ss << "Tag [" << name << "] may not be used in ["
+	   << parent << "]\n"
+	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -73,8 +75,9 @@ static void missing_tag_error(const std::string & file, int line,
 							  const std::string & name,int n,
 							  const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
-	ss 	 <<at(file,line) << ": missing tag [" << name << "]; there must be "
-			<< n << " ["<<  name  <<"]s in [" << parent <<"]\n";
+	ss << "Missing tag [" << name << "]; there must be "
+	   << n << " [" <<  name  << "]s in [" << parent << "]\n"
+	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -82,8 +85,9 @@ static void extra_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 bool flag_exception){
 	std::ostringstream ss;
-	ss << at(file,line) << ": Invalid key '"<< key <<"=' in tag ["<< tag
-			<< "] on line " << line  << "\n";
+	ss << "Invalid key '" << key << "=' in tag [" << tag
+	   << "]\n"
+	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -91,8 +95,9 @@ static void missing_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 bool flag_exception){
 	std::ostringstream ss;
-	ss << at(file,line) << ": In tag "<< tag
-			<< " which begins here, " << " missing key "<< key << "\n";
+	ss << "Missing key '" << key << "=' in tag [" << tag
+	   << "]\n"
+	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -100,8 +105,9 @@ static void wrong_value_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 const std::string & value,bool flag_exception){
 	std::ostringstream ss;
-	ss << at(file,line) << ": Invalid value '"<< value << "' in key '" << key <<
-			"=' in tag ["<< tag <<"] on line " << line << "'\n";
+	ss << "Invalid value '" << value << "' in key '" << key
+	   << "=' in tag [" << tag << "]\n"
+	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -119,7 +125,7 @@ schema_validator::schema_validator(const std::string & config_file_name)
 	, types_()
 {
 	if ( !read_config_file(config_file_name) ) {
-		ERR_VL << "Schema file "<< config_file_name << " was not read.\n";
+		ERR_VL << "Schema file "<< config_file_name << " was not read." << std::endl;
 		throw abstract_validator::error("Schema file "+ config_file_name
 										+ " was not read.\n");
 	}else{
@@ -137,7 +143,7 @@ bool schema_validator::read_config_file(const std::string &filename){
 	try {
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(filename, &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
 		read(cfg, *stream);
 	} catch(config::error&) {
 		return false;

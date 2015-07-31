@@ -1,6 +1,6 @@
 
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,21 +18,29 @@
  */
 
 #include "goal.hpp"
-#include "../lua/core.hpp"
-#include "../manager.hpp"
-#include "../../log.hpp"
-#include "../lua/lua_object.hpp"
-#include "../../gamestatus.hpp"
-#include "../../resources.hpp"
-#include "../../scripting/lua.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../unit.hpp"
-#include "../../unit_map.hpp"
-#include "../../team.hpp"
-#include "../../variable.hpp"
+#include "global.hpp"
+
+#include "ai/default/contexts.hpp"
+#include "ai/lua/core.hpp"
+#include "ai/lua/lua_object.hpp"
+#include "ai/manager.hpp"
+#include "filter_context.hpp"
+#include "game_board.hpp"
+#include "log.hpp"
+#include "map_location.hpp"
+#include "resources.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "team.hpp"
+#include "terrain_filter.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
+#include "unit_filter.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
+#include <set>
+#include <sstream>
 
 namespace ai {
 
@@ -127,8 +135,9 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	if (!criteria) return;
 
 	//find the enemy leaders and explicit targets
+	const unit_filter ufilt(vconfig(criteria), resources::filter_con);
 	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.matches_filter(vconfig(criteria), u.get_location())) {
+		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::EXPLICIT);
 		}
@@ -158,7 +167,7 @@ void target_location_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),*resources::units));
+		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 }
 
@@ -214,7 +223,7 @@ void protect_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),*resources::units));
+		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 
 
@@ -251,13 +260,14 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 
 	std::set<map_location> items;
 	if (protect_unit_) {
+		const unit_filter ufilt(vconfig(criteria), resources::filter_con);
 		BOOST_FOREACH(const unit &u, units)
 		{
 			if (protect_only_own_unit_ && u.side() != get_side()) {
 				continue;
 			}
 			//TODO: we will protect hidden units, by not testing for invisibility to current side
-			if (u.matches_filter(vconfig(criteria), u.get_location())) {
+			if (ufilt(u)) {
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
 				items.insert(u.get_location());
 			}
@@ -295,6 +305,9 @@ protect_goal::protect_goal(readonly_context &context, const config &cfg, bool pr
 	, radius_(20) //this default radius is taken from old code
 	, value_(1.0) //this default value taken from old code
 {
+	if(protect_only_own_unit_) {
+		lg::wml_error << deprecate_wml_key_warning("protect_my_unit", "1.13.0") << "\n";
+	}
 }
 
 lua_goal::lua_goal(readonly_context &context, const config &cfg)

@@ -1,9 +1,10 @@
 #encoding: utf8
 
 import os, gettext, time, copy, sys, re
-
+import traceback
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser2 as wmlparser2
+
 
 pics_location = "../../pics"
 
@@ -34,7 +35,7 @@ html_footer = '''
 <div id="footer">
 <p>%(generation_note)s</p>
 <p><a href="http://wiki.wesnoth.org/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2013 The Battle for Wesnoth</p>
+<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003&#8211;2015 The Battle for Wesnoth</p>
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
 </div>
 </div>
@@ -243,9 +244,9 @@ class HTMLOutput:
         rows_count = breadth + len(thelist)
         # Create empty grid.
         rows = []
-        for j in range(rows_count):
+        for j in xrange(rows_count):
             column = []
-            for i in range(6):
+            for i in xrange(6):
                 column.append((1, 1, None))
             rows.append(column)
 
@@ -265,7 +266,7 @@ class HTMLOutput:
                 if level < 0: level = 0
                 if level > 5: level = 5
                 rows[x][level] = (1, node.breadth, node)
-                for i in range(1, node.breadth):
+                for i in xrange(1, node.breadth):
                     rows[x + i][level] = (0, 0, node)
                 grid_place(node.children, x)
                 x += node.breadth
@@ -277,7 +278,7 @@ class HTMLOutput:
             node.name = grouper.group_name(group)
 
             rows[x][0] = (6, 1, node)
-            for i in range(1, 6):
+            for i in xrange(1, 6):
                 rows[x][i] = (0, 0, None)
             nodes = groups[group]
             x += 1
@@ -309,7 +310,7 @@ class HTMLOutput:
         def abbrev(name):
             abbrev = name[0]
             word_seperators = [" ", "_", "+", "(", ")"]
-            for i in range(1, len(name)):
+            for i in xrange(1, len(name)):
                 if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
                     abbrev += name[i]
             return abbrev
@@ -340,7 +341,12 @@ class HTMLOutput:
 
         # Races / Factions
 
+        target = self.target
+        if self.campaign == "units":
+            target = "mainline.html"
+
         if not self.is_era:
+            
             x = self.translate("Race", "wesnoth-lib")
             add_menu("races_menu", x)
 
@@ -367,7 +373,7 @@ class HTMLOutput:
                     write(" -<br/>")
                 else:
                     write(" <a href=\"%s#%s\">%s</a><br/>" % (
-                        self.target, racename, racename))
+                        target, racename, racename))
 
             write("</div></li>\n")
         else:
@@ -375,7 +381,7 @@ class HTMLOutput:
             add_menu("races_menu", x)
 
             for row in self.unitgrid:
-                for column in range(6):
+                for column in xrange(6):
                     hspan, vspan, un = row[column]
                     if not un: continue
                     if isinstance(un, helpers.GroupNode):
@@ -414,7 +420,7 @@ class HTMLOutput:
                 c = self.campaign
                 if c == "units": c = "mainline"
                 write("<a href=\"%s#%s\">%s</a><br/>" % (
-                    self.target, r, r))
+                    target, r, r))
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
                     if un.hidden: continue
@@ -550,7 +556,7 @@ class HTMLOutput:
         rows = self.unitgrid
         write("<table class=\"units\">\n")
         write("<colgroup>")
-        for i in range(6):
+        for i in xrange(6):
             write("<col class=\"col%d\" />" % i)
         write("</colgroup>")
 
@@ -558,9 +564,9 @@ class HTMLOutput:
             "../../../images/misc/leader-crown.png", no_tc=True)
         crownimage = os.path.join(pics_location, pic)
         ms = None
-        for row in range(len(rows)):
+        for row in xrange(len(rows)):
             write("<tr>\n")
-            for column in range(6):
+            for column in xrange(6):
                 hspan, vspan, un = rows[row][column]
                 if vspan:
                     attributes = ""
@@ -774,6 +780,8 @@ class HTMLOutput:
         hp = uval("hitpoints")
         mp = uval("movement")
         xp = uval("experience")
+        vision = uval("vision")
+        jamming = uval("jamming")
         level = uval("level")
         alignment = uval("alignment")
 
@@ -820,14 +828,17 @@ class HTMLOutput:
             ("cost", _("Cost: ", "wesnoth-help")),
             ("hitpoints", _("HP: ")),
             ("movement", _("Movement", "wesnoth-help") + ": "),
+            ("vision", _("Vision", "wesnoth-help") + ": "),
+            ("jamming", _("Jamming", "wesnoth-help") + ":"),
             ("experience", _("XP: ")),
             ("level", _("Level") + ": "),
             ("alignment", _("Alignment: ")),
             ("id", "ID")]:
+            x = uval(val)
+            if not x and val in ("jamming", "vision"): continue
+            if val == "alignment": x = _(x)
             write("<tr>\n")
             write("<td>%s</td>" % text)
-            x = uval(val)
-            if val == "alignment": x = _(x)
             write("<td class=\"val\">%s</td>" % x)
             write("</tr>\n")
 
@@ -938,7 +949,7 @@ class HTMLOutput:
         write('</div>')
         write('<div class="unit-column-right">')
 
-        for si in range(2):
+        for si in xrange(2):
             if si and not female: break
             if si:
                 sportrait = fportrait
@@ -977,12 +988,32 @@ class HTMLOutput:
             already[tid] = 1
             name = T(t, "name")
             ticon = t.get_text_val("symbol_image")
-            if tid == "flat": ticon = "grass/green-symbol"
-            elif tid == "frozen": ticon = "frozen/ice"
-            elif tid == "unwalkable": ticon = "unwalkable/lava"
-            elif tid == "village": ticon = "village/human-tile"
+            if not ticon:
+                ticon = t.get_text_val("icon_image")
+
+            # Use nice images for known mainline terrain types
+            if tid == "fungus": ticon = "forest/mushrooms-tile"
+            elif tid == "cave": ticon = "cave/floor6"
+            elif tid == "sand": ticon = "sand/beach"
+            elif tid == "reef": ticon = "water/reef-tropical-tile"
+            elif tid == "hills": ticon = "hills/regular"
+            elif tid == "swamp_water": ticon = "swamp/water-tile"
+            elif tid == "shallow_water": ticon = "water/coast-tile"
+            elif tid == "castle": ticon = "castle/castle-tile"
+            elif tid == "mountains": ticon = "mountains/snow-tile"
+            elif tid == "deep_water": ticon = "water/ocean-tile"
+            elif tid == "flat": ticon = "grass/green-symbol"
             elif tid == "forest": ticon = "forest/pine-tile"
-            terrainlist.append((name, tid, ticon))
+            elif tid == "frozen": ticon = "frozen/ice"
+            elif tid == "village": ticon = "village/human-tile"
+            elif tid == "impassable": ticon = "void/void"
+            elif tid == "unwalkable": ticon = "unwalkable/lava"
+            elif tid == "rails": ticon = "misc/rails-ne-sw"
+            
+            if ticon:
+                terrainlist.append((name, tid, ticon))
+            else:
+                error_message("Terrain " + tid + " has no symbol_image\n")
         terrainlist.sort()
 
         for tname, tid, ticon in terrainlist:
@@ -1088,14 +1119,22 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     for uid, unit in wesnoth.unit_lookup.items():
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
-        filename = os.path.join(path, "%s.html" % uid)
+        
+        try:
+            htmlname = u"%s.html" % uid
+            filename = os.path.join(path, htmlname).encode("utf8")
 
-        # We probably can come up with something better.
-        if os.path.exists(filename):
-            age = time.time() - os.path.getmtime(filename)
-            # was modified in the last 12 hours - we should be ok
-            if age < 3600 * 12: continue
-
+            # We probably can come up with something better.
+            if os.path.exists(filename):
+                age = time.time() - os.path.getmtime(filename)
+                # was modified in the last 12 hours - we should be ok
+                if age < 3600 * 12: continue
+        except (UnicodeDecodeError, UnicodeEncodeError) as e:
+            traceback.print_exc()
+            error_message("Unicode problem: " + repr(path) + " + " + repr(uid) + "\n")
+            error_message(str(e) + "\n")
+            continue
+        
         output = MyFile(filename, "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
@@ -1103,7 +1142,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         
 def html_postprocess_file(filename, isocode, batchlist):
 
-    print("postprocessing " + filename)
+    print(u"postprocessing " + repr(filename))
     
     chtml = u""
     ehtml = u""
@@ -1122,7 +1161,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             else:
                 cids[1].append(c)
 
-    for i in range(2):
+    for i in xrange(2):
         
         campaigns = cids[i]
         campaigns.sort(key = lambda x: "A" if x[1] == "mainline" else "B" + x[2])
@@ -1149,8 +1188,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             else:
                 eids[1].append(e)
             
-            
-    for i in range(2):
+    for i in xrange(2):
         eras = eids[i]
         eras.sort(key = lambda x: x[2])
 

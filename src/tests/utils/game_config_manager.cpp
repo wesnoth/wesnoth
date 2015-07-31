@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,18 +13,21 @@
 */
 
 #define GETTEXT_DOMAIN "wesnoth-test"
+//#include <libintl.h>
 
 #include "tests/utils/game_config_manager.hpp"
 
 #include "config.hpp"
 #include "config_cache.hpp"
+#include "display.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_manager.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "language.hpp"
-#include "playcampaign.hpp"
 #include "unit_types.hpp"
 
 #include "gui/widgets/helper.hpp"
@@ -40,7 +43,7 @@ namespace test_utils {
 
 	class game_config_manager {
 		config cfg_;
-		binary_paths_manager paths_manager_;
+		filesystem::binary_paths_manager paths_manager_;
 		const hotkey::manager hotkey_manager_;
 		font::manager font_manager_;
 
@@ -62,14 +65,12 @@ namespace test_utils {
 			setlocale(LC_ALL, "English");
 #else
 			std::setlocale(LC_ALL, "C");
-			std::setlocale(LC_MESSAGES, "");
+			translation::init();
 #endif
-			const std::string& intl_dir = get_intl_dir();
-			bindtextdomain ("wesnoth", intl_dir.c_str());
-			bind_textdomain_codeset ("wesnoth", "UTF-8");
-			bindtextdomain ("wesnoth-lib", intl_dir.c_str());
-			bind_textdomain_codeset ("wesnoth-lib", "UTF-8");
-			textdomain ("wesnoth");
+			const std::string& intl_dir = filesystem::get_intl_dir();
+			translation::bind_textdomain("wesnoth", intl_dir.c_str(), "UTF-8");
+			translation::bind_textdomain("wesnoth-lib", intl_dir.c_str(), "UTF-8");
+			translation::set_default_textdomain("wesnoth");
 
 
 			font::load_font_config();
@@ -92,7 +93,6 @@ namespace test_utils {
 
 			game_config::load_config(cfg_.child("game_config"));
 			hotkey::deactivate_all_scopes();
-			hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 			hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
 			hotkey::load_hotkeys(cfg_);

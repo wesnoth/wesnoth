@@ -19,7 +19,7 @@ class Error(Exception):
 
     def __init__(self, parser, text):
         self.text = "%s:%d: %s" % (parser.filename, parser.line, text)
-        for i in range(len(parser.texts)):
+        for i in xrange(len(parser.texts)):
             parent = parser.texts[-1 - i]
             self.text += "\n " + " " * i + "from %s:%d" % (parent.filename, parent.line)
 
@@ -377,7 +377,7 @@ class Parser:
         # file.
         elif macro[0] == ".":
             dirpath = self.current_path + macro[1:]
-        # Otherwise, try to interprete the macro as a filename in the data dir.
+        # Otherwise, try to interpret the macro as a filename in the data dir.
         elif self.data_dir != None:
             dirpath = self.data_dir + "/" + macro
         else:
@@ -491,7 +491,7 @@ class Parser:
         if name in self.macros:
             macro = self.macros[name]
             text = macro.text
-            for i in range(len(macro.params)):
+            for i, j in enumerate(macro.params):
                 if 1 + i >= len(params):
                     raise Error(self, "Not enough parameters for macro %s. " % name +
                         "%d given but %d needed %s." % (len(params) - 1,
@@ -505,10 +505,10 @@ class Parser:
                     rep = self.gettext(self.textdomain, rep[q + 1:qe])
                     rep = '"' + rep + '"'
                 if self.verbose:
-                    #s = "Replacing {%s} with %s\n" % (macro.params[i], rep)
+                    #s = "Replacing {%s} with %s\n" % (j, rep)
                     ##sys.stderr.write(s.encode("utf8"))
                     pass
-                text = text.replace("{%s}" % macro.params[i], rep)
+                text = text.replace("{%s}" % j, rep)
 
             if text:
                 self.push_text(name, text, initial_textdomain = macro.textdomain)
@@ -644,7 +644,7 @@ class Parser:
         values += [value]
 
         data = []
-        for i in range(len(variables)):
+        for i in xrange(len(variables)):
             try:
                 key = wmldata.DataText(variables[i], values[i], translatable)
                 key.set_meta(filename, line)
@@ -861,7 +861,7 @@ def xmlify(tree, verbose=False, depth=0):
             escape(child.get_value())  + '</' + child.name + '>'
 
 if __name__ == "__main__":
-    import optparse, subprocess
+    import argparse, subprocess
     try: import psyco
     except ImportError: pass
     else: psyco.full()
@@ -869,27 +869,28 @@ if __name__ == "__main__":
     # Hack to make us not crash when we encounter characters that aren't ASCII
     sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
 
-    optionparser = optparse.OptionParser()
-    optionparser.set_usage("usage: %prog [options] [filename]")
-    optionparser.add_option("-p", "--path",  help = "specify wesnoth data path")
-    optionparser.add_option("-C", "--color", action = "store_true",
+    argumentparser = argparse.ArgumentParser("usage: %(prog)s [options]")
+    argumentparser.add_argument("-p", "--path",  help = "specify wesnoth data path")
+    argumentparser.add_argument("-C", "--color", action = "store_true",
         help = "use colored output")
-    optionparser.add_option("-u", "--userpath",  help = "specify userdata path")
-    optionparser.add_option("-e", "--execute",  help = "execute given WML")
-    optionparser.add_option("-v", "--verbose", action = "store_true",
+    argumentparser.add_argument("-u", "--userpath",  help = "specify userdata path")
+    argumentparser.add_argument("-e", "--execute",  help = "execute given WML")
+    argumentparser.add_argument("-v", "--verbose", action = "store_true",
         help = "make the parser very verbose")
-    optionparser.add_option("-n", "--no-macros", action = "store_true",
+    argumentparser.add_argument("-n", "--no-macros", action = "store_true",
         help = "do not expand any macros")
-    optionparser.add_option("-c", "--contents", action = "store_true",
+    argumentparser.add_argument("-c", "--contents", action = "store_true",
         help = "display contents of every tag")
-    optionparser.add_option("-j", "--to-json", action = "store_true",
+    argumentparser.add_argument("-j", "--to-json", action = "store_true",
         help = "output JSON version of tree")
-    optionparser.add_option("-x", "--to-xml", action = "store_true",
+    argumentparser.add_argument("-x", "--to-xml", action = "store_true",
         help = "output XML version of tree")
-    options, args = optionparser.parse_args()
+    argumentparser.add_argument("filename", nargs = "?",
+        help = "file to parse")
+    args = argumentparser.parse_args()
 
-    if options.path:
-        path = options.path
+    if args.path:
+        path = args.path
     else:
         try:
             p = subprocess.Popen(["wesnoth", "--path"], stdout = subprocess.PIPE)
@@ -899,11 +900,11 @@ if __name__ == "__main__":
             sys.stderr.write("Could not determine Wesnoth path.\n")
             path = None
 
-    wmlparser = Parser(path, options.userpath)
-    if options.no_macros:
+    wmlparser = Parser(path, args.userpath)
+    if args.no_macros:
         wmlparser.no_macros = True
 
-    if options.verbose:
+    if args.verbose:
         wmlparser.verbose = True
         def gt(domain, x):
             print "gettext: '%s' '%s'" % (domain, x)
@@ -912,19 +913,19 @@ if __name__ == "__main__":
 
     wmlparser.do_preprocessor_logic = True
 
-    if options.execute:
-        wmlparser.parse_text(options.execute)
-    elif args:
-        wmlparser.parse_file(args[0])
+    if args.execute:
+        wmlparser.parse_text(args.execute)
+    elif args.filename:
+        wmlparser.parse_file(args.filename)
     else:
         wmlparser.parse_stream(sys.stdin)
 
     data = wmldata.DataSub("WML")
     wmlparser.parse_top(data)
 
-    if options.to_json:
+    if args.to_json:
         jsonify(data, True) # For more readable results
-    elif options.to_xml:
+    elif args.to_xml:
         xmlify(data, True)
     else:
-        data.debug(show_contents = options.contents, use_color = options.color)
+        data.debug(show_contents = args.contents, use_color = args.color)

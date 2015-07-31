@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,53 +21,84 @@
 
 #include "gui/widgets/window_private.hpp"
 
+#include "config.hpp"
+#include "cursor.hpp"
+#include "display.hpp"
+#include "events.hpp"
+#include "floating_label.hpp"
+#include "formula_callable.hpp"
 #include "font.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/event/distributor.hpp"
+#include "gui/auxiliary/event/handler.hpp"
 #include "gui/auxiliary/event/message.hpp"
+#include "gui/auxiliary/formula.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
+#include "gui/auxiliary/widget_definition/window.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
+#include "gui/lib/types/point.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/container.hpp"
 #include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/helper.hpp"
+#include "gui/widgets/panel.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/widget.hpp"
+#include "gui/widgets/window.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
 #include "preferences.hpp"
 #include "preferences_display.hpp"
+#include "reference_counted_object.hpp"
+#include "sdl/rect.hpp"
+#include "sdl/utils.hpp"
+#include "tstring.hpp"
 #include "utils/foreach.tpp"
+#include "variant.hpp"
 #include "video.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
+
+namespace game_logic { class function_symbol_table; }
+namespace gui2 { class tbutton; }
+
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-#define LOG_IMPL_SCOPE_HEADER window.get_control_type() \
-		+ " [" + window.id() + "] " + __func__
+#define LOG_IMPL_SCOPE_HEADER                                                  \
+	window.get_control_type() + " [" + window.id() + "] " + __func__
 #define LOG_IMPL_HEADER LOG_IMPL_SCOPE_HEADER + ':'
 
-namespace gui2{
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 /** @todo See whether this hack can be removed. */
 // Needed to fix a compiler error in REGISTER_WIDGET.
-class tbuilder_window
-	: public tbuilder_control
+class tbuilder_window : public tbuilder_control
 {
 public:
-	tbuilder_window(const config& cfg)
-		: tbuilder_control(cfg)
+	tbuilder_window(const config& cfg) : tbuilder_control(cfg)
 	{
 	}
 
-	twidget* build() const { return NULL; }
+	using tbuilder_control::build;
+
+	twidget* build() const
+	{
+		return NULL;
+	}
 };
 
 } // namespace implementation
@@ -75,16 +106,15 @@ REGISTER_WIDGET(window)
 
 unsigned twindow::sunset_ = 0;
 
-namespace {
+namespace
+{
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	const unsigned MANUAL = tdebug_layout_graph::MANUAL;
-	const unsigned SHOW = tdebug_layout_graph::SHOW;
-	const unsigned LAYOUT = tdebug_layout_graph::LAYOUT;
+const unsigned SHOW = tdebug_layout_graph::SHOW;
+const unsigned LAYOUT = tdebug_layout_graph::LAYOUT;
 #else
-	// values are irrelavant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
-	const unsigned MANUAL = 0;
-	const unsigned SHOW = 0;
-	const unsigned LAYOUT = 0;
+// values are irrelavant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
+const unsigned SHOW = 0;
+const unsigned LAYOUT = 0;
 #endif
 
 /**
@@ -105,7 +135,7 @@ static int draw_interval = 0;
  */
 static Uint32 draw_timer(Uint32, void*)
 {
-//	DBG_GUI_E << "Pushing draw event in queue.\n";
+	//	DBG_GUI_E << "Pushing draw event in queue.\n";
 
 	SDL_Event event;
 	SDL_UserEvent data;
@@ -183,8 +213,8 @@ static bool helptip()
 class tmanager
 {
 	tmanager();
-public:
 
+public:
 	static tmanager& instance();
 
 	void add(twindow& window);
@@ -196,14 +226,12 @@ public:
 	twindow* window(const unsigned id);
 
 private:
-
 	// The number of active window should be rather small
 	// so keep it simple and don't add a reverse lookup map.
 	std::map<unsigned, twindow*> windows_;
 };
 
-tmanager::tmanager()
-	: windows_()
+tmanager::tmanager() : windows_()
 {
 }
 
@@ -223,7 +251,8 @@ void tmanager::add(twindow& window)
 void tmanager::remove(twindow& window)
 {
 	for(std::map<unsigned, twindow*>::iterator itor = windows_.begin();
-			itor != windows_.end(); ++itor) {
+		itor != windows_.end();
+		++itor) {
 
 		if(itor->second == &window) {
 			windows_.erase(itor);
@@ -236,7 +265,8 @@ void tmanager::remove(twindow& window)
 unsigned tmanager::get_id(twindow& window)
 {
 	for(std::map<unsigned, twindow*>::iterator itor = windows_.begin();
-			itor != windows_.end(); ++itor) {
+		itor != windows_.end();
+		++itor) {
 
 		if(itor->second == &window) {
 			return itor->first;
@@ -261,18 +291,20 @@ twindow* tmanager::window(const unsigned id)
 } // namespace
 
 twindow::twindow(CVideo& video,
-		tformula<unsigned>x,
-		tformula<unsigned>y,
-		tformula<unsigned>w,
-		tformula<unsigned>h,
-		const bool automatic_placement,
-		const unsigned horizontal_placement,
-		const unsigned vertical_placement,
-		const unsigned maximum_width,
-		const unsigned maximum_height,
-		const std::string& definition,
-		const twindow_builder::tresolution::ttip& tooltip,
-		const twindow_builder::tresolution::ttip& helptip)
+				 tformula<unsigned> x,
+				 tformula<unsigned> y,
+				 tformula<unsigned> w,
+				 tformula<unsigned> h,
+				 tformula<bool> reevaluate_best_size,
+				 const game_logic::function_symbol_table& functions,
+				 const bool automatic_placement,
+				 const unsigned horizontal_placement,
+				 const unsigned vertical_placement,
+				 const unsigned maximum_width,
+				 const unsigned maximum_height,
+				 const std::string& definition,
+				 const twindow_builder::tresolution::ttip& tooltip,
+				 const twindow_builder::tresolution::ttip& helptip)
 	: tpanel()
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
@@ -294,6 +326,8 @@ twindow::twindow(CVideo& video,
 	, y_(y)
 	, w_(w)
 	, h_(h)
+	, reevaluate_best_size_(reevaluate_best_size)
+	, functions_(functions)
 	, tooltip_(tooltip)
 	, helptip_(helptip)
 	, click_dismiss_(false)
@@ -305,8 +339,8 @@ twindow::twindow(CVideo& video,
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
 #endif
-	, event_distributor_(new event::tdistributor(
-			*this, event::tdispatcher::front_child))
+	, event_distributor_(
+			  new event::tdistributor(*this, event::tdispatcher::front_child))
 {
 	// We load the config in here as exception.
 	// Our caller did update the screen size so no need for us to do that again.
@@ -319,75 +353,64 @@ twindow::twindow(CVideo& video,
 
 	connect_signal<event::DRAW>(boost::bind(&twindow::draw, this));
 
-	connect_signal<event::SDL_VIDEO_RESIZE>(
-			  boost::bind(&twindow::signal_handler_sdl_video_resize
-				  , this, _2, _3, _5));
+	connect_signal<event::SDL_VIDEO_RESIZE>(boost::bind(
+			&twindow::signal_handler_sdl_video_resize, this, _2, _3, _5));
 
-	connect_signal<event::SDL_ACTIVATE>(
-			  boost::bind(&event::tdistributor::initialize_state
-				  , event_distributor_));
+	connect_signal<event::SDL_ACTIVATE>(boost::bind(
+			&event::tdistributor::initialize_state, event_distributor_));
 
 	connect_signal<event::SDL_LEFT_BUTTON_UP>(
-			  boost::bind(
-				    &twindow::signal_handler_click_dismiss
-				  , this
-				  , _2
-				  , _3
-				  , _4
-				  , SDL_BUTTON_LMASK)
-			, event::tdispatcher::front_child);
+			boost::bind(&twindow::signal_handler_click_dismiss,
+						this,
+						_2,
+						_3,
+						_4,
+						SDL_BUTTON_LMASK),
+			event::tdispatcher::front_child);
 	connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
-			  boost::bind(
-				    &twindow::signal_handler_click_dismiss
-				  , this
-				  , _2
-				  , _3
-				  , _4
-				  , SDL_BUTTON_MMASK)
-			, event::tdispatcher::front_child);
+			boost::bind(&twindow::signal_handler_click_dismiss,
+						this,
+						_2,
+						_3,
+						_4,
+						SDL_BUTTON_MMASK),
+			event::tdispatcher::front_child);
 	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
-			  boost::bind(
-				    &twindow::signal_handler_click_dismiss
-				  , this
-				  , _2
-				  , _3
-				  , _4
-				  , SDL_BUTTON_RMASK)
-			, event::tdispatcher::front_child);
+			boost::bind(&twindow::signal_handler_click_dismiss,
+						this,
+						_2,
+						_3,
+						_4,
+						SDL_BUTTON_RMASK),
+			event::tdispatcher::front_child);
 
 	connect_signal<event::SDL_KEY_DOWN>(
-			  boost::bind(&twindow::signal_handler_sdl_key_down
-				  , this, _2, _3, _5)
-			, event::tdispatcher::back_pre_child);
-	connect_signal<event::SDL_KEY_DOWN>(
-			  boost::bind(&twindow::signal_handler_sdl_key_down
-				  , this, _2, _3, _5));
+			boost::bind(
+					&twindow::signal_handler_sdl_key_down, this, _2, _3, _5),
+			event::tdispatcher::back_pre_child);
+	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+			&twindow::signal_handler_sdl_key_down, this, _2, _3, _5));
 
 	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
-			  boost::bind(
-				  &twindow::signal_handler_message_show_tooltip
-				, this
-				, _2
-				, _3
-				, _5)
-			, event::tdispatcher::back_pre_child);
+			boost::bind(&twindow::signal_handler_message_show_tooltip,
+						this,
+						_2,
+						_3,
+						_5),
+			event::tdispatcher::back_pre_child);
 
 	connect_signal<event::MESSAGE_SHOW_HELPTIP>(
-			  boost::bind(
-				  &twindow::signal_handler_message_show_helptip
-				, this
-				, _2
-				, _3
-				, _5)
-			, event::tdispatcher::back_pre_child);
+			boost::bind(&twindow::signal_handler_message_show_helptip,
+						this,
+						_2,
+						_3,
+						_5),
+			event::tdispatcher::back_pre_child);
 
 	connect_signal<event::REQUEST_PLACEMENT>(
-			  boost::bind(
-				  &twindow::signal_handler_request_placement
-				, this
-				, _2
-				, _3)
-			, event::tdispatcher::back_pre_child);
+			boost::bind(
+					&twindow::signal_handler_request_placement, this, _2, _3),
+			event::tdispatcher::back_pre_child);
 
 	register_hotkey(hotkey::GLOBAL__HELPTIP, boost::bind(gui2::helptip));
 }
@@ -458,8 +481,6 @@ void twindow::update_screen_size()
 	}
 }
 
-twindow::tretval twindow::get_retval_by_id(const std::string& id)
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 3_widget_window_2
@@ -469,6 +490,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
  * * cancel cancels the dialog.
  *
  */
+twindow::tretval twindow::get_retval_by_id(const std::string& id)
+{
 	// Note it might change to a map later depending on the number
 	// of items.
 	if(id == "ok") {
@@ -476,13 +499,14 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	} else if(id == "cancel") {
 		return CANCEL;
 
-	/**
-	 * The ones for the title screen.
-	 *
-	 * This is a kind of hack, but the values are hardcoded in the titlescreen
-	 * and don't want to change them at the moment. It would be a good idea to
-	 * add some namespaces to avoid names clashing.
-	 */
+		/**
+		 * The ones for the title screen.
+		 *
+		 * This is a kind of hack, but the values are hardcoded in the
+		 * titlescreen and don't want to change them at the moment. It would be
+		 * a good idea to
+		 * add some namespaces to avoid names clashing.
+		 */
 	} else if(id == "tutorial") {
 		return static_cast<tretval>(ttitle_screen::TUTORIAL);
 	} else if(id == "editor") {
@@ -492,11 +516,11 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	} else if(id == "quit") {
 		return static_cast<tretval>(ttitle_screen::QUIT_GAME);
 
-	/**
-	 * The hacks which are here so the old engine can handle the event. The new
-	 * engine can't handle all dialogs yet, so it needs to fall back to the old
-	 * engine to make certain things happen.
-	 */
+		/**
+		 * The hacks which are here so the old engine can handle the event. The
+		 * new engine can't handle all dialogs yet, so it needs to fall back to
+		 * the old engine to make certain things happen.
+		 */
 	} else if(id == "help") {
 		return static_cast<tretval>(ttitle_screen::SHOW_HELP);
 	} else if(id == "campaign") {
@@ -507,12 +531,14 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 		return static_cast<tretval>(ttitle_screen::LOAD_GAME);
 	} else if(id == "addons") {
 		return static_cast<tretval>(ttitle_screen::GET_ADDONS);
+	} else if(id == "cores") {
+		return static_cast<tretval>(ttitle_screen::CORES);
 	} else if(id == "language") {
 		return static_cast<tretval>(ttitle_screen::CHANGE_LANGUAGE);
 	} else if(id == "preferences") {
 		return static_cast<tretval>(ttitle_screen::EDIT_PREFERENCES);
 
-	// default if nothing matched
+		// default if nothing matched
 	} else {
 		return NONE;
 	}
@@ -580,8 +606,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	class tdraw_interval_setter
 	{
 	public:
-		tdraw_interval_setter()
-			: interval_(draw_interval)
+		tdraw_interval_setter() : interval_(draw_interval)
 		{
 			if(interval_ == 0) {
 				draw_interval = 30;
@@ -590,7 +615,6 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 				// There might be some time between creation and showing so
 				// reupdate the sizes.
 				update_screen_size();
-
 			}
 		}
 
@@ -598,8 +622,8 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		{
 			draw_interval = interval_;
 		}
-	private:
 
+	private:
 		int interval_;
 	};
 
@@ -639,22 +663,24 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	}
 
 
-	try {
+	try
+	{
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialised = false;
-		for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
-			// process installed callback if valid, to allow e.g. network polling
+		for(status_ = SHOWING; status_ != REQUEST_CLOSE;) {
+			// process installed callback if valid, to allow e.g. network
+			// polling
 			events::pump();
 
 			if(!mouse_button_state_initialised) {
 				/*
-				 * The state must be initialise when showing the dialogue.
-				 * However when initialised before this point there were random
+				 * The state must be initialize when showing the dialogue.
+				 * However when initialized before this point there were random
 				 * errors. This only happened when the 'click' was done fast; a
 				 * slower click worked properly.
 				 *
 				 * So it seems the events need to be processed before SDL can
-				 * return the proper button state. When initialising here all
+				 * return the proper button state. When initializing here all
 				 * works fine.
 				 */
 				mouse_button_state_ = SDL_GetMouseState(NULL, NULL);
@@ -664,7 +690,9 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 			// Add a delay so we don't keep spinning if there's no event.
 			SDL_Delay(10);
 		}
-	} catch(...) {
+	}
+	catch(...)
+	{
 		/**
 		 * @todo Clean up the code duplication.
 		 *
@@ -678,7 +706,11 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 			update_rect(get_rectangle());
+#ifdef SDL_GPU
+			font::undraw_floating_labels(video_);
+#else
 			font::undraw_floating_labels(video_.getSurface());
+#endif
 		}
 		throw;
 	}
@@ -690,7 +722,11 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rectangle());
+#ifdef SDL_GPU
+		font::undraw_floating_labels(video_);
+#else
 		font::undraw_floating_labels(video_.getSurface());
+#endif
 	}
 
 	return retval_;
@@ -725,7 +761,11 @@ void twindow::draw()
 		SDL_Rect rect = get_rectangle();
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
+#ifdef SDL_GPU
+		font::draw_floating_labels(video_);
+#else
 		font::draw_floating_labels(frame_buffer);
+#endif
 		restorer_ = get_surface_portion(frame_buffer, rect);
 
 		// Need full redraw so only set ourselves dirty.
@@ -755,11 +795,12 @@ void twindow::draw()
 				/** @todo should probably be moved to event::thandler::draw. */
 				static unsigned i = 0;
 				if(++i % sunset_ == 0) {
-					SDL_Rect r = ::create_rect(0, 0, frame_buffer->w, frame_buffer->h);
-					const Uint32 color =
-							SDL_MapRGBA(frame_buffer->format,0,0,0,255);
+					SDL_Rect r = sdl::create_rect(
+							0, 0, frame_buffer->w, frame_buffer->h);
+					const Uint32 color
+							= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, 255);
 
-					fill_rect_alpha(r, color, 1, frame_buffer);
+					sdl::fill_rect_alpha(r, color, 1, frame_buffer);
 					update_rect(r);
 				}
 			}
@@ -767,13 +808,14 @@ void twindow::draw()
 		return;
 	}
 
-	FOREACH(AUTO& item, dirty_list_) {
+	FOREACH(AUTO & item, dirty_list_)
+	{
 
 		assert(!item.empty());
 
-		const SDL_Rect dirty_rect = new_widgets
-				? screen_area()
-				: item.back()->get_dirty_rectangle();
+		const SDL_Rect dirty_rect
+				= new_widgets ? screen_area()
+							  : item.back()->get_dirty_rectangle();
 
 // For testing we disable the clipping rect and force the entire screen to
 // update. This way an item rendered at the wrong place is directly visible.
@@ -807,16 +849,18 @@ void twindow::draw()
 		 */
 
 		for(std::vector<twidget*>::iterator itor = item.begin();
-				itor != item.end(); ++itor) {
+			itor != item.end();
+			++itor) {
 
 			if((**itor).get_visible() != twidget::tvisible::visible
-					|| (**itor).get_drawing_action()
-						== twidget::tredraw_action::none) {
+			   || (**itor).get_drawing_action()
+				  == twidget::tredraw_action::none) {
 
 				for(std::vector<twidget*>::iterator citor = itor;
-						citor != item.end(); ++citor) {
+					citor != item.end();
+					++citor) {
 
-					(**citor).set_dirty(false);
+					(**citor).set_is_dirty(false);
 				}
 
 				item.erase(itor, item.end());
@@ -828,13 +872,13 @@ void twindow::draw()
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, frame_buffer, &rect);
 
-		/**
-		 * @todo Remove the if an always use the true branch.
-		 *
-		 * When removing that code the draw functions with only a frame_buffer
-		 * as parameter should also be removed since they will be unused from
-		 * that moment.
-		 */
+/**
+ * @todo Remove the if an always use the true branch.
+ *
+ * When removing that code the draw functions with only a frame_buffer
+ * as parameter should also be removed since they will be unused from
+ * that moment.
+ */
 #if 0
 		if(new_widgets)
 #else
@@ -843,7 +887,8 @@ void twindow::draw()
 		{
 			// Background.
 			for(std::vector<twidget*>::iterator itor = item.begin();
-					itor != item.end(); ++itor) {
+				itor != item.end();
+				++itor) {
 
 				(**itor).draw_background(frame_buffer, 0, 0);
 			}
@@ -855,15 +900,19 @@ void twindow::draw()
 
 			// Foreground.
 			for(std::vector<twidget*>::reverse_iterator ritor = item.rbegin();
-					ritor != item.rend(); ++ritor) {
+				ritor != item.rend();
+				++ritor) {
 
 				(**ritor).draw_foreground(frame_buffer, 0, 0);
-				(**ritor).set_dirty(false);
+				(**ritor).set_is_dirty(false);
 			}
-		} else {
+		}
+		else
+		{
 			// Background.
 			for(std::vector<twidget*>::iterator itor = item.begin();
-					itor != item.end(); ++itor) {
+				itor != item.end();
+				++itor) {
 
 				(**itor).draw_background(frame_buffer);
 			}
@@ -875,10 +924,11 @@ void twindow::draw()
 
 			// Foreground.
 			for(std::vector<twidget*>::reverse_iterator ritor = item.rbegin();
-					ritor != item.rend(); ++ritor) {
+				ritor != item.rend();
+				++ritor) {
 
 				(**ritor).draw_foreground(frame_buffer);
-				(**ritor).set_dirty(false);
+				(**ritor).set_is_dirty(false);
 			}
 		}
 
@@ -930,9 +980,8 @@ twidget* twindow::find_at(const tpoint& coordinate, const bool must_be_active)
 	return tpanel::find_at(coordinate, must_be_active);
 }
 
-const twidget* twindow::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active) const
+const twidget* twindow::find_at(const tpoint& coordinate,
+								const bool must_be_active) const
 {
 	return tpanel::find_at(coordinate, must_be_active);
 }
@@ -942,15 +991,15 @@ twidget* twindow::find(const std::string& id, const bool must_be_active)
 	return tcontainer_::find(id, must_be_active);
 }
 
-const twidget* twindow::find(
-		  const std::string& id
-		, const bool must_be_active) const
+const twidget* twindow::find(const std::string& id, const bool must_be_active)
+		const
 {
 	return tcontainer_::find(id, must_be_active);
 }
 
 void twindow::init_linked_size_group(const std::string& id,
-		const bool fixed_width, const bool fixed_height)
+									 const bool fixed_width,
+									 const bool fixed_height)
 {
 	assert(fixed_width || fixed_height);
 	assert(!has_linked_size_group(id));
@@ -974,16 +1023,15 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 	}
 }
 
-void twindow::remove_linked_widget(const std::string& id
-		, const twidget* widget)
+void twindow::remove_linked_widget(const std::string& id, const twidget* widget)
 {
 	assert(widget);
 	assert(has_linked_size_group(id));
 
 	std::vector<twidget*>& widgets = linked_size_[id].widgets;
 
-	std::vector<twidget*>::iterator itor =
-			std::find(widgets.begin(), widgets.end(), widget);
+	std::vector<twidget*>::iterator itor
+			= std::find(widgets.begin(), widgets.end(), widget);
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);
@@ -997,31 +1045,35 @@ void twindow::layout()
 {
 	/***** Initialize. *****/
 
-	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const twindow_definition::tresolution>
-		(config());
+	boost::intrusive_ptr<const twindow_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const twindow_definition::tresolution>(
+			config());
 	assert(conf);
 
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
+	const tpoint mouse = get_mouse_position();
+	variables_.add("mouse_x", variant(mouse.x));
+	variables_.add("mouse_y", variant(mouse.y));
+	variables_.add("window_width", variant(0));
+	variables_.add("window_height", variant(0));
+	variables_.add("size_request_mode", variant("maximum"));
 	get_screen_size_variables(variables_);
 
-	const int maximum_width = automatic_placement_
-			?  maximum_width_
-				? std::min(maximum_width_, settings::screen_width)
-				: settings::screen_width
-			: w_(variables_);
+	const int maximum_width = automatic_placement_ ? maximum_width_
+			? std::min(maximum_width_, settings::screen_width)
+			: settings::screen_width
+			: w_(variables_, &functions_);
 
-	const int maximum_height = automatic_placement_
-			? maximum_height_
-				? std::min(maximum_height_, settings::screen_height)
-				: settings::screen_height
-			: h_(variables_);
+	const int maximum_height = automatic_placement_ ? maximum_height_
+			? std::min(maximum_height_, settings::screen_height)
+			: settings::screen_height
+			: h_(variables_, &functions_);
 
 	/***** Handle click dismiss status. *****/
 	tbutton* click_dismiss_button = NULL;
 	if((click_dismiss_button
-			= find_widget<tbutton>(this, "click_dismiss", false, false))) {
+		= find_widget<tbutton>(this, "click_dismiss", false, false))) {
 
 		click_dismiss_button->set_visible(twidget::tvisible::invisible);
 	}
@@ -1031,8 +1083,8 @@ void twindow::layout()
 			button->set_visible(twidget::tvisible::invisible);
 			click_dismiss_button = button;
 		}
-		VALIDATE(click_dismiss_button
-				, _("Click dismiss needs a 'click_dismiss' or 'ok' button."));
+		VALIDATE(click_dismiss_button,
+				 _("Click dismiss needs a 'click_dismiss' or 'ok' button."));
 	}
 
 	/***** Layout. *****/
@@ -1041,24 +1093,25 @@ void twindow::layout()
 
 	layout_linked_widgets();
 
-	try {
+	try
+	{
 		twindow_implementation::layout(*this, maximum_width, maximum_height);
-	} catch(tlayout_exception_resize_failed&) {
+	}
+	catch(tlayout_exception_resize_failed&)
+	{
 
 		/** @todo implement the scrollbars on the window. */
 
 		std::stringstream sstr;
 		sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-				<< "' found the following problem: Failed to size window;"
-				<< " wanted size " << get_best_size()
-				<< " available size "
-				<< maximum_width << ',' << maximum_height
-				<< " screen size "
-				<< settings::screen_width << ',' << settings::screen_height
-				<< '.';
+			 << "' found the following problem: Failed to size window;"
+			 << " wanted size " << get_best_size() << " available size "
+			 << maximum_width << ',' << maximum_height << " screen size "
+			 << settings::screen_width << ',' << settings::screen_height << '.';
 
 		throw twml_exception(_("Failed to show a dialog, "
-				"which doesn't fit on the screen."), sstr.str());
+							   "which doesn't fit on the screen."),
+							 sstr.str());
 	}
 
 	/****** Validate click dismiss status. *****/
@@ -1067,38 +1120,35 @@ void twindow::layout()
 		click_dismiss_button->set_visible(twidget::tvisible::visible);
 
 		connect_signal_mouse_left_click(
-				  *click_dismiss_button
-				, boost::bind(
-					  &twindow::set_retval
-					, this
-					, OK
-					, true));
+				*click_dismiss_button,
+				boost::bind(&twindow::set_retval, this, OK, true));
 
 		layout_initialise(true);
 		generate_dot_file("layout_initialise", LAYOUT);
 
 		layout_linked_widgets();
 
-		try {
+		try
+		{
 			twindow_implementation::layout(
 					*this, maximum_width, maximum_height);
-
-		} catch(tlayout_exception_resize_failed&) {
+		}
+		catch(tlayout_exception_resize_failed&)
+		{
 
 			/** @todo implement the scrollbars on the window. */
 
 			std::stringstream sstr;
 			sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-				<< "' found the following problem: Failed to size window;"
-				<< " wanted size " << get_best_size()
-				<< " available size "
-				<< maximum_width << ',' << maximum_height
-				<< " screen size "
-				<< settings::screen_width << ',' << settings::screen_height
-				<< '.';
+				 << "' found the following problem: Failed to size window;"
+				 << " wanted size " << get_best_size() << " available size "
+				 << maximum_width << ',' << maximum_height << " screen size "
+				 << settings::screen_width << ',' << settings::screen_height
+				 << '.';
 
 			throw twml_exception(_("Failed to show a dialog, "
-						"which doesn't fit on the screen."), sstr.str());
+								   "which doesn't fit on the screen."),
+								 sstr.str());
 		}
 	}
 
@@ -1112,37 +1162,55 @@ void twindow::layout()
 	if(automatic_placement_) {
 
 		switch(horizontal_placement_) {
-			case tgrid::HORIZONTAL_ALIGN_LEFT :
+			case tgrid::HORIZONTAL_ALIGN_LEFT:
 				// Do nothing
 				break;
-			case tgrid::HORIZONTAL_ALIGN_CENTER :
+			case tgrid::HORIZONTAL_ALIGN_CENTER:
 				origin.x = (settings::screen_width - size.x) / 2;
 				break;
-			case tgrid::HORIZONTAL_ALIGN_RIGHT :
+			case tgrid::HORIZONTAL_ALIGN_RIGHT:
 				origin.x = settings::screen_width - size.x;
 				break;
-			default :
+			default:
 				assert(false);
 		}
 		switch(vertical_placement_) {
-			case tgrid::VERTICAL_ALIGN_TOP :
+			case tgrid::VERTICAL_ALIGN_TOP:
 				// Do nothing
 				break;
-			case tgrid::VERTICAL_ALIGN_CENTER :
+			case tgrid::VERTICAL_ALIGN_CENTER:
 				origin.y = (settings::screen_height - size.y) / 2;
 				break;
-			case tgrid::VERTICAL_ALIGN_BOTTOM :
+			case tgrid::VERTICAL_ALIGN_BOTTOM:
 				origin.y = settings::screen_height - size.y;
 				break;
-			default :
+			default:
 				assert(false);
 		}
 	} else {
-		origin.x = x_(variables_);
-		origin.y = y_(variables_);
 
-		size.x = w_(variables_);
-		size.y = h_(variables_);
+		variables_.add("window_width", variant(size.x));
+		variables_.add("window_height", variant(size.y));
+
+		while(reevaluate_best_size_(variables_, &functions_)) {
+			layout_initialise(true);
+
+			twindow_implementation::layout(*this,
+										   w_(variables_, &functions_),
+										   h_(variables_, &functions_));
+
+			size = get_best_size();
+			variables_.add("window_width", variant(size.x));
+			variables_.add("window_height", variant(size.y));
+		}
+
+		variables_.add("size_request_mode", variant("size"));
+
+		origin.x = x_(variables_, &functions_);
+		origin.y = y_(variables_, &functions_);
+
+		size.x = w_(variables_, &functions_);
+		size.y = h_(variables_, &functions_);
 	}
 
 	/***** Set the window size *****/
@@ -1157,12 +1225,14 @@ void twindow::layout()
 void twindow::layout_linked_widgets()
 {
 	// evaluate the group sizes
-	FOREACH(AUTO& linked_size, linked_size_) {
+	FOREACH(AUTO & linked_size, linked_size_)
+	{
 
 		tpoint max_size(0, 0);
 
 		// Determine the maximum size.
-		FOREACH(AUTO widget, linked_size.second.widgets) {
+		FOREACH(AUTO widget, linked_size.second.widgets)
+		{
 
 			const tpoint size = widget->get_best_size();
 
@@ -1175,7 +1245,8 @@ void twindow::layout_linked_widgets()
 		}
 
 		// Set the maximum size.
-		FOREACH(AUTO widget, linked_size.second.widgets) {
+		FOREACH(AUTO widget, linked_size.second.widgets)
+		{
 
 			tpoint size = widget->get_best_size();
 
@@ -1210,18 +1281,22 @@ const std::string& twindow::get_control_type() const
 	return type;
 }
 
-void twindow::draw(surface& /*surf*/, const bool /*force*/,
-		const bool /*invalidate_background*/)
+void twindow::draw(surface& /*surf*/,
+				   const bool /*force*/,
+				   const bool /*invalidate_background*/)
 {
 	assert(false);
 }
 
-namespace {
+namespace
+{
 
 /**
  * Swaps an item in a grid for another one.*/
 void swap_grid(tgrid* grid,
-		tgrid* content_grid, twidget* widget, const std::string& id)
+			   tgrid* content_grid,
+			   twidget* widget,
+			   const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
@@ -1241,7 +1316,7 @@ void swap_grid(tgrid* grid,
 	if(tgrid* g = dynamic_cast<tgrid*>(parent_grid->parent())) {
 		widget = g->swap_child(id, widget, false);
 	} else if(tcontainer_* c
-			= dynamic_cast<tcontainer_*>(parent_grid->parent())) {
+			  = dynamic_cast<tcontainer_*>(parent_grid->parent())) {
 
 		widget = c->grid().swap_child(id, widget, true);
 	} else {
@@ -1263,14 +1338,15 @@ void twindow::finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid)
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
 void twindow::generate_dot_file(const std::string& generator,
-		const unsigned domain)
+								const unsigned domain)
 {
 	debug_layout_->generate_dot_file(generator, domain);
 }
 #endif
 
 void twindow_implementation::layout(twindow& window,
-		const unsigned maximum_width, const unsigned maximum_height)
+									const unsigned maximum_width,
+									const unsigned maximum_height)
 {
 	log_scope2(log_gui_layout, LOG_IMPL_SCOPE_HEADER);
 
@@ -1280,15 +1356,15 @@ void twindow_implementation::layout(twindow& window,
 	 * the algorithm page.
 	 */
 
-	try {
+	try
+	{
 		tpoint size = window.get_best_size();
 
-		DBG_GUI_L << LOG_IMPL_HEADER
-				<< " best size : " << size
-				<< " maximum size : " << maximum_width << ',' << maximum_height
-				<< ".\n";
+		DBG_GUI_L << LOG_IMPL_HEADER << " best size : " << size
+				  << " maximum size : " << maximum_width << ','
+				  << maximum_height << ".\n";
 		if(size.x <= static_cast<int>(maximum_width)
-				&& size.y <= static_cast<int>(maximum_height)) {
+		   && size.y <= static_cast<int>(maximum_height)) {
 
 			DBG_GUI_L << LOG_IMPL_HEADER << " Result: Fits, nothing to do.\n";
 			return;
@@ -1299,15 +1375,13 @@ void twindow_implementation::layout(twindow& window,
 
 			size = window.get_best_size();
 			if(size.x > static_cast<int>(maximum_width)) {
-				DBG_GUI_L << LOG_IMPL_HEADER
-						<< " Result: Resize width failed."
-						<< " Wanted width " << maximum_width
-						<< " resulting width " << size.x
-						<< ".\n";
+				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize width failed."
+						  << " Wanted width " << maximum_width
+						  << " resulting width " << size.x << ".\n";
 				throw tlayout_exception_width_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
-					<< " Status: Resize width succeeded.\n";
+					  << " Status: Resize width succeeded.\n";
 		}
 
 		if(size.y > static_cast<int>(maximum_height)) {
@@ -1316,25 +1390,25 @@ void twindow_implementation::layout(twindow& window,
 			size = window.get_best_size();
 			if(size.y > static_cast<int>(maximum_height)) {
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize height failed."
-					<< " Wanted height " << maximum_height
-					<< " resulting height " << size.y
-					<< ".\n";
+						  << " Wanted height " << maximum_height
+						  << " resulting height " << size.y << ".\n";
 				throw tlayout_exception_height_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
-					<< " Status: Resize height succeeded.\n";
+					  << " Status: Resize height succeeded.\n";
 		}
 
 		assert(size.x <= static_cast<int>(maximum_width)
-				&& size.y <= static_cast<int>(maximum_height));
+			   && size.y <= static_cast<int>(maximum_height));
 
 
 		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.\n";
 		return;
-
-	} catch (tlayout_exception_width_modified&) {
+	}
+	catch(tlayout_exception_width_modified&)
+	{
 		DBG_GUI_L << LOG_IMPL_HEADER
-				<< " Status: Width has been modified, rerun.\n";
+				  << " Status: Width has been modified, rerun.\n";
 
 		window.layout_initialise(false);
 		window.layout_linked_widgets();
@@ -1367,35 +1441,35 @@ void twindow::remove_from_keyboard_chain(twidget* widget)
 	event_distributor_->keyboard_remove_from_chain(widget);
 }
 
-void twindow::signal_handler_sdl_video_resize(
-			const event::tevent event, bool& handled, const tpoint& new_size)
+void twindow::signal_handler_sdl_video_resize(const event::tevent event,
+											  bool& handled,
+											  const tpoint& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(new_size.x < preferences::min_allowed_width()
-			|| new_size.y < preferences::min_allowed_height()) {
+	   || new_size.y < preferences::min_allowed_height()) {
 
 		DBG_GUI_E << LOG_HEADER << " resize aborted, too small.\n";
 		return;
 	}
 
 	if(new_size.x == static_cast<int>(settings::screen_width)
-			&& new_size.y == static_cast<int>(settings::screen_height)) {
+	   && new_size.y == static_cast<int>(settings::screen_height)) {
 
 		DBG_GUI_E << LOG_HEADER << " resize not needed.\n";
 		handled = true;
 		return;
 	}
 
-	if(!preferences::set_resolution(video_ , new_size.x, new_size.y)) {
+	if(!preferences::set_resolution(video_, new_size.x, new_size.y)) {
 
-		LOG_GUI_E << LOG_HEADER
-				<< " resize aborted, resize failed.\n";
+		LOG_GUI_E << LOG_HEADER << " resize aborted, resize failed.\n";
 		return;
 	}
 
-	settings::gamemap_width += new_size.x - settings::screen_width ;
-	settings::gamemap_height += new_size.y - settings::screen_height ;
+	settings::gamemap_width += new_size.x - settings::screen_width;
+	settings::gamemap_height += new_size.y - settings::screen_height;
 	settings::screen_width = new_size.x;
 	settings::screen_height = new_size.y;
 	invalidate_layout();
@@ -1403,21 +1477,20 @@ void twindow::signal_handler_sdl_video_resize(
 	handled = true;
 }
 
-void twindow::signal_handler_click_dismiss(
-		  const event::tevent event
-		, bool& handled
-		, bool& halt
-		, const Uint8 mouse_button_mask)
+void twindow::signal_handler_click_dismiss(const event::tevent event,
+										   bool& handled,
+										   bool& halt,
+										   const Uint8 mouse_button_mask)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event
-			<< " mouse_button_mask " << static_cast<unsigned>(mouse_button_mask)
-			<< ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << " mouse_button_mask "
+			  << static_cast<unsigned>(mouse_button_mask) << ".\n";
 
 	handled = halt = click_dismiss(mouse_button_mask);
 }
 
-void twindow::signal_handler_sdl_key_down(
-		const event::tevent event, bool& handled, SDLKey key)
+void twindow::signal_handler_sdl_key_down(const event::tevent event,
+										  bool& handled,
+										  SDLKey key)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -1432,46 +1505,42 @@ void twindow::signal_handler_sdl_key_down(
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(key == SDLK_F12) {
-		debug_layout_->generate_dot_file(
-				"manual", tdebug_layout_graph::MANUAL);
+		debug_layout_->generate_dot_file("manual", tdebug_layout_graph::MANUAL);
 		handled = true;
 	}
 #endif
 }
 
-void twindow::signal_handler_message_show_tooltip(
-		  const event::tevent event
-		, bool& handled
-		, event::tmessage& message)
+void twindow::signal_handler_message_show_tooltip(const event::tevent event,
+												  bool& handled,
+												  event::tmessage& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::tmessage_show_tooltip& request =
-			dynamic_cast<event::tmessage_show_tooltip&>(message);
+	event::tmessage_show_tooltip& request
+			= dynamic_cast<event::tmessage_show_tooltip&>(message);
 
 	tip::show(video_, tooltip_.id, request.message, request.location);
 
 	handled = true;
 }
 
-void twindow::signal_handler_message_show_helptip(
-		  const event::tevent event
-		, bool& handled
-		, event::tmessage& message)
+void twindow::signal_handler_message_show_helptip(const event::tevent event,
+												  bool& handled,
+												  event::tmessage& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::tmessage_show_helptip& request =
-			dynamic_cast<event::tmessage_show_helptip&>(message);
+	event::tmessage_show_helptip& request
+			= dynamic_cast<event::tmessage_show_helptip&>(message);
 
 	tip::show(video_, helptip_.id, request.message, request.location);
 
 	handled = true;
 }
 
-void twindow::signal_handler_request_placement(
-		  const event::tevent event
-		, bool& handled)
+void twindow::signal_handler_request_placement(const event::tevent event,
+											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

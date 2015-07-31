@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@ class CVideo;
 class display;
 
 #include "cursor.hpp"
+#include "floating_label.hpp"
 #include "font.hpp"
 #include "tooltips.hpp"
 
@@ -105,7 +106,11 @@ private:
 	surface_restorer* restorer_;
 	bool auto_restore_;
 	dimension_measurements dim_;
+#ifdef SDL_GPU
+	sdl::timage top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+#else
 	surface top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+#endif
 	bool have_border_;
 };
 
@@ -170,7 +175,7 @@ public:
 	virtual bool show_above() const { return false; }
 	virtual bool left_side() const = 0;
 	virtual void set_selection(int index) = 0;
-	virtual handler_vector handler_members() { return widget::handler_members(); }
+	virtual sdl_handler_vector handler_members() { return widget::handler_members(); }
 };
 
 //if a menu is given, then returns -1 if the dialog was canceled, and the

@@ -61,16 +61,11 @@ campaign difficulty selection widget will appear.
 The id of the scenario from the specified campaign. The default is the first
 scenario.
 .TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
-.TP 
-\fB\-\-config\-path\fP
-prints the path of the user configuration directory and exits.
-.TP 
 \fB\-\-data\-dir <directory>\fP
 overrides the data directory with the one specified
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 enables additional command mode options in\-game (see the wiki page at
@@ -186,6 +181,24 @@ validation errors are treated as fatal errors.
 \fB\-t, \-\-test\fP
 runs the game in a small test scenario.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+prints the path of the user configuration directory and exits.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 assumes that the cache is valid. (dangerous)
 .TP 
@@ -226,6 +239,10 @@ benchmarking.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 runs the game without the GUI. Must appear before \fB\-\-multiplayer\fP to have

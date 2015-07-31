@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by David White <dave.net>
+   Copyright (C) 2007 - 2015 by David White <dave.net>
    Part of the Silver Tree Project
 
    This program is free software; you can redistribute it and/or modify
@@ -51,7 +51,7 @@ token get_token(iterator& i1, iterator i2) {
 			TOKEN_TYPE t = TOKEN_IDENTIFIER;
 
 			//check if this string matches any keyword or an operator
-			//possible opearators and keywords:
+			//possible operators and keywords:
 			// d, or, def, and, not, fai, where, faiend, functions
 			if( diff == 1 ) {
 				if( *it == 'd' )
@@ -125,7 +125,7 @@ token get_token(iterator& i1, iterator i2) {
 					if( *i1 >= '0' && *i1 <= '9' ) {
 						//do nothing
 					} else {
-						//look for '.' in case of decimal numer
+						//look for '.' in case of decimal number
 						if( *i1 == '.' ) {
 							//allow only one dot in such expression
 							if( !dot )
@@ -145,7 +145,7 @@ token get_token(iterator& i1, iterator i2) {
 
 			} else {
 				//current character is between ':' and '@'
-				//possible tokens at this point that we are intersted with:
+				//possible tokens at this point that we are interested in:
 				// ; < = > <= >=
 
 				if( *i1 == ';' ) {

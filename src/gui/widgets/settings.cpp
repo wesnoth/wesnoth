@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,38 +35,40 @@
 #include "utils/foreach.tpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 bool new_widgets = false;
 
-namespace settings {
-	unsigned screen_width = 0;
-	unsigned screen_height = 0;
+namespace settings
+{
+unsigned screen_width = 0;
+unsigned screen_height = 0;
 
-	unsigned gamemap_x_offset = 0;
+unsigned gamemap_x_offset = 0;
 
-	unsigned gamemap_width = 0;
-	unsigned gamemap_height = 0;
+unsigned gamemap_width = 0;
+unsigned gamemap_height = 0;
 
-	unsigned popup_show_delay = 0;
-	unsigned popup_show_time = 0;
-	unsigned help_show_time = 0;
-	unsigned double_click_time = 0;
-	unsigned repeat_button_repeat_time = 0;
+unsigned popup_show_delay = 0;
+unsigned popup_show_time = 0;
+unsigned help_show_time = 0;
+unsigned double_click_time = 0;
+unsigned repeat_button_repeat_time = 0;
 
-	std::string sound_button_click = "";
-	std::string sound_toggle_button_click = "";
-	std::string sound_toggle_panel_click = "";
-	std::string sound_slider_adjust = "";
+std::string sound_button_click = "";
+std::string sound_toggle_button_click = "";
+std::string sound_toggle_panel_click = "";
+std::string sound_slider_adjust = "";
 
-	t_string has_helptip_message;
+t_string has_helptip_message;
 
-	std::vector<ttip> tips;
+static std::vector<ttip> tips;
 
-	std::vector<ttip> get_tips()
-	{
-		return tips::shuffle(tips);
-	}
+std::vector<ttip> get_tips()
+{
+	return tips::shuffle(tips);
+}
 
 } // namespace settings
 
@@ -81,13 +83,12 @@ static std::vector<std::string>& registered_window_types()
 	return result;
 }
 
-typedef std::map<
-		  std::string
-		, boost::function<void(
-			  tgui_definition&
-			  , const std::string&
-			  , const config&
-			  , const char *key)> > tregistered_widget_type;
+typedef std::map<std::string,
+				 boost::function<void(tgui_definition&,
+									  const std::string&,
+									  const config&,
+									  const char* key)> >
+tregistered_widget_type;
 
 static tregistered_widget_type& registred_widget_type()
 {
@@ -125,9 +126,9 @@ struct tgui_definition
 	/** Activates a gui. */
 	void activate() const;
 
-	typedef std::map <std::string /*control type*/,
-		std::map<std::string /*id*/, tcontrol_definition_ptr> >
-		tcontrol_definition_map;
+	typedef std::map<std::string /*control type*/,
+					 std::map<std::string /*id*/, tcontrol_definition_ptr> >
+	tcontrol_definition_map;
 
 	tcontrol_definition_map control_definition;
 
@@ -136,10 +137,10 @@ struct tgui_definition
 	std::map<std::string, twindow_builder> window_types;
 
 	void load_widget_definitions(
-			  const std::string& definition_type
-			, const std::vector<tcontrol_definition_ptr>& definitions);
-private:
+			const std::string& definition_type,
+			const std::vector<tcontrol_definition_ptr>& definitions);
 
+private:
 	unsigned popup_show_delay_;
 	unsigned popup_show_time_;
 	unsigned help_show_time_;
@@ -156,8 +157,6 @@ private:
 	std::vector<ttip> tips_;
 };
 
-const std::string& tgui_definition::read(const config& cfg)
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1
@@ -209,6 +208,8 @@ const std::string& tgui_definition::read(const config& cfg)
  * Minimap &                      @macro = minimap_description $
  * Multi_page &                   @macro = multi_page_description $
  * Panel &                        @macro = panel_description $
+ * Password_box &                 A text box masking it's content by asterisks.
+ *                                $
  * Repeating_button &             @macro = repeating_button_description $
  * Scroll_label &                 @macro = scroll_label_description $
  * Slider &                       @macro = slider_description $
@@ -236,76 +237,43 @@ const std::string& tgui_definition::read(const config& cfg)
  *
  * <span id="window_list"></span>List of available windows:
  * @begin{table}{window_overview}
- *     Addon_connect &                The dialog to connect to the addon server
+ *     Addon_connect &               The dialog to connect to the addon server
  *                                   and maintain locally installed addons. $
- *     Addon_list &                   Shows the list of the addons to install or
+ *     Addon_list &                  Shows the list of the addons to install or
  *                                   update. $
- *     Campaign_selection &           Shows the list of campaigns, to select one
+ *     Campaign_selection &          Shows the list of campaigns, to select one
  *                                   to play. $
- *     Language_selection &           The dialog to select the primairy language. $
- *     WML_message_left &             The ingame message dialog with a portrait
- *                                   on the left side. (Used for the WML messages.) $
- *     WML_message_right &            The ingame message dialog with a portrait
+ *     Language_selection &          The dialog to select the primary language.
+ *                                   $
+ *     WML_message_left &            The ingame message dialog with a portrait
+ *                                   on the left side. (Used for the WML
+ *                                   messages.) $
+ *     WML_message_right &           The ingame message dialog with a portrait
  *                                   on the right side. (Used for the WML
  *                                   messages.) $
- *     Message &                      A generic message dialog. $
- *     MP_connect &                   The dialog to connect to the MP server. $
- *     MP_method_selection &          The dialog to select the kind of MP game
+ *     Message &                     A generic message dialog. $
+ *     MP_connect &                  The dialog to connect to the MP server. $
+ *     MP_method_selection &         The dialog to select the kind of MP game
  *                                   to play. Official server, local etc. $
- *     MP_server_list &               List of the 'official' MP servers. $
- *     MP_login &                     The dialog to provide a password for registered
- *                                   usernames, request a password reminder or
- *                                   choose a different username. $
- *     MP_cmd_wrapper &               Perform various actions on the selected user
- *                                   (e.g. whispering or kicking). $
- *     MP_create_game &               The dialog to select and create an MP game. $
- *     Title_screen &                 The title screen. $
- *     Editor_new_map &               Creates a new map in the editor. $
- *     Editor_generate_map &          Generates a random map in the editor. $
- *     Editor_resize_map &            Resizes a map in the editor. $
- *     Editor_settings &              The settings specific for the editor. $
+ *     MP_server_list &              List of the 'official' MP servers. $
+ *     MP_login &                    The dialog to provide a password for
+ *                                   registered usernames, request a password
+ *                                   reminder or choose a different username. $
+ *     MP_cmd_wrapper &              Perform various actions on the selected
+ *                                   user (e.g. whispering or kicking). $
+ *     MP_create_game &              The dialog to select and create an MP
+ *                                   game. $
+ *     Title_screen &                The title screen. $
+ *     Editor_new_map &              Creates a new map in the editor. $
+ *     Editor_generate_map &         Generates a random map in the editor. $
+ *     Editor_resize_map &           Resizes a map in the editor. $
+ *     Editor_custom_tod &           Creates new ToD schedules for the editor.
+ *                                   $
  * @end{table}
  * @end{tag}{name=gui}
  * @end{parent}{name="/"}
  */
-	id = cfg["id"].str();
-	description = cfg["description"];
 
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
-
-	DBG_GUI_P << "Parsing gui " << id << '\n';
-
-	/***** Control definitions *****/
-
-	FOREACH(AUTO& widget_type, registred_widget_type()) {
-		widget_type.second(*this, widget_type.first, cfg, NULL);
-	}
-
-	/***** Window types *****/
-	FOREACH(const AUTO& w, cfg.child_range("window")) {
-		std::pair<std::string, twindow_builder> child;
-		child.first = child.second.read(w);
-		window_types.insert(child);
-	}
-
-	if(id == "default") {
-		// The default gui needs to define all window types since we're the
-		// fallback in case another gui doesn't define the window type.
-		for(std::vector<std::string>::const_iterator itor
-				= registered_window_types().begin()
-				; itor != registered_window_types().end()
-				; ++itor) {
-
-            const std::string error_msg("Window not defined in WML: '" +
-                                         *itor +
-                                         "'. Perhaps a mismatch between data and source versions."
-                                         " Try --data-dir <trunk-dir>" );
-			VALIDATE(window_types.find(*itor) != window_types.end(), error_msg );
-		}
-	}
-
-	/***** settings *****/
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1
@@ -317,14 +285,16 @@ const std::string& tgui_definition::read(const config& cfg)
  *     popup_show_delay & unsigned & 0 & The time it take before the popup shows
  *                                     if the mouse moves over the widget. 0
  *                                     means show directly. $
- *     popup_show_time & unsigned & 0 &  The time a shown popup remains visible.
+ *     popup_show_time & unsigned & 0 &
+ *                                     The time a shown popup remains visible.
  *                                     0 means until the mouse leaves the
  *                                     widget. $
- *     help_show_time & unsigned & 0 &   The time a shown help remains visible.
+ *     help_show_time & unsigned & 0 & The time a shown help remains visible.
  *                                     0 means until the mouse leaves the
  *                                     widget. $
- *     double_click_time & unsigned & &   The time between two clicks to still be a
- *                                     double click. $
+ *     double_click_time & unsigned & &
+ *                                     The time between two clicks to still be
+ *                                     a double click. $
  *     repeat_button_repeat_time & unsigned & 0 &
  *                                     The time a repeating button waits before
  *                                     the next event is issued if the button
@@ -364,16 +334,60 @@ const std::string& tgui_definition::read(const config& cfg)
  * @end{tag}{name="tip"}
  * @end{parent}{name="gui/"}
 */
+const std::string& tgui_definition::read(const config& cfg)
+{
+	id = cfg["id"].str();
+	description = cfg["description"];
 
-/**
- * @todo Regarding sounds:
- * Need to evaluate but probably we want the widget definition be able to:
- * - Override the default (and clear it). This will allow toggle buttons in a
- *   listbox to sound like a toggle panel.
- * - Override the default and above per instance of the widget, some buttons
- *   can give a different sound.
- */
-	const config &settings = cfg.child("settings");
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty(),
+			 missing_mandatory_wml_key("gui", "description"));
+
+	DBG_GUI_P << "Parsing gui " << id << '\n';
+
+	/***** Control definitions *****/
+
+	FOREACH(AUTO & widget_type, registred_widget_type())
+	{
+		widget_type.second(*this, widget_type.first, cfg, NULL);
+	}
+
+	/***** Window types *****/
+	FOREACH(const AUTO & w, cfg.child_range("window"))
+	{
+		std::pair<std::string, twindow_builder> child;
+		child.first = child.second.read(w);
+		window_types.insert(child);
+	}
+
+	if(id == "default") {
+		// The default gui needs to define all window types since we're the
+		// fallback in case another gui doesn't define the window type.
+		for(std::vector<std::string>::const_iterator itor
+			= registered_window_types().begin();
+			itor != registered_window_types().end();
+			++itor) {
+
+			const std::string error_msg(
+					"Window not defined in WML: '" + *itor
+					+ "'. Perhaps a mismatch between data and source versions."
+					  " Try --data-dir <trunk-dir>");
+			VALIDATE(window_types.find(*itor) != window_types.end(), error_msg);
+		}
+	}
+
+	/***** settings *****/
+
+	/**
+	 * @todo Regarding sounds:
+	 * Need to evaluate but probably we want the widget definition be able to:
+	 * - Override the default (and clear it). This will allow toggle buttons in
+	 * a
+	 *   listbox to sound like a toggle panel.
+	 * - Override the default and above per instance of the widget, some buttons
+	 *   can give a different sound.
+	 */
+	const config& settings = cfg.child("settings");
 
 	popup_show_delay_ = settings["popup_show_delay"];
 	popup_show_time_ = settings["popup_show_time"];
@@ -382,7 +396,8 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"];
 
-	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
+	VALIDATE(double_click_time_,
+			 missing_mandatory_wml_key("settings", "double_click_time"));
 
 	sound_button_click_ = settings["sound_button_click"].str();
 	sound_toggle_button_click_ = settings["sound_toggle_button_click"].str();
@@ -392,7 +407,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	has_helptip_message_ = settings["has_helptip_message"];
 
 	VALIDATE(!has_helptip_message_.empty(),
-			missing_mandatory_wml_key("[settings]", "has_helptip_message"));
+			 missing_mandatory_wml_key("[settings]", "has_helptip_message"));
 
 	tips_ = tips::load(cfg);
 
@@ -415,14 +430,15 @@ void tgui_definition::activate() const
 }
 
 void tgui_definition::load_widget_definitions(
-		  const std::string& definition_type
-		, const std::vector<tcontrol_definition_ptr>& definitions)
+		const std::string& definition_type,
+		const std::vector<tcontrol_definition_ptr>& definitions)
 {
-	FOREACH(const AUTO& def, definitions) {
+	FOREACH(const AUTO & def, definitions)
+	{
 
 		// We assume all definitions are unique if not we would leak memory.
 		assert(control_definition[definition_type].find(def->id)
-				== control_definition[definition_type].end());
+			   == control_definition[definition_type].end());
 
 		control_definition[definition_type]
 				.insert(std::make_pair(def->id, def));
@@ -431,31 +447,30 @@ void tgui_definition::load_widget_definitions(
 	utils::string_map symbols;
 	symbols["definition"] = definition_type;
 	symbols["id"] = "default";
-	t_string msg(vgettext(
-			  "Widget definition '$definition' "
-			  "doesn't contain the definition for '$id'."
-			, symbols));
+	t_string msg(vgettext("Widget definition '$definition' "
+						  "doesn't contain the definition for '$id'.",
+						  symbols));
 
 	VALIDATE(control_definition[definition_type].find("default")
-			!= control_definition[definition_type].end(), msg);
-
+			 != control_definition[definition_type].end(),
+			 msg);
 }
 
-	/** Map with all known windows, (the builder class builds a window). */
-	std::map<std::string, twindow_builder> windows;
+/** Map with all known windows, (the builder class builds a window). */
+static std::map<std::string, twindow_builder> windows;
 
-	/** Map with all known guis. */
-	std::map<std::string, tgui_definition> guis;
+/** Map with all known guis. */
+static std::map<std::string, tgui_definition> guis;
 
-	/** Points to the current gui. */
-	std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
+/** Points to the current gui. */
+static std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
 
 void register_window(const std::string& id)
 {
-	const std::vector<std::string>::iterator itor = std::find(
-			  registered_window_types().begin()
-			, registered_window_types().end()
-			, id);
+	const std::vector<std::string>::iterator itor
+			= std::find(registered_window_types().begin(),
+						registered_window_types().end(),
+						id);
 
 	if(itor == registered_window_types().end()) {
 		registered_window_types().push_back(id);
@@ -476,38 +491,43 @@ void load_settings()
 
 	// Read file.
 	config cfg;
-	try {
-		schema_validation::schema_validator
-				validator (get_wml_location("gui/schema.cfg"));
+	try
+	{
+		schema_validation::schema_validator validator(
+				filesystem::get_wml_location("gui/schema.cfg"));
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
+		filesystem::scoped_istream stream = preprocess_file(
+				filesystem::get_wml_location("gui/default.cfg"), &preproc);
 
 		read(cfg, *stream, &validator);
-	} catch(config::error& e) {
-		ERR_GUI_P << e.what() << '\n';
-		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
-	catch(const abstract_validator::error& e){
-			ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'.\n";
-			ERR_GUI_P << e.message;
+	catch(config::error& e)
+	{
+		ERR_GUI_P << e.what() << '\n';
+		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'."
+				  << std::endl;
+	}
+	catch(const abstract_validator::error& e)
+	{
+		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'."
+				  << std::endl;
+		ERR_GUI_P << e.message;
 	}
 	// Parse guis
-	FOREACH(const AUTO& g, cfg.child_range("gui")) {
+	FOREACH(const AUTO & g, cfg.child_range("gui"))
+	{
 		std::pair<std::string, tgui_definition> child;
 		child.first = child.second.read(g);
 		guis.insert(child);
 	}
 
-	VALIDATE(guis.find("default") != guis.end(), _ ("No default gui defined."));
+	VALIDATE(guis.find("default") != guis.end(), _("No default gui defined."));
 
 	current_gui = guis.find("default");
 	current_gui->second.activate();
 }
 
-tstate_definition::tstate_definition(const config &cfg) :
-	canvas()
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_widget
@@ -520,76 +540,80 @@ tstate_definition::tstate_definition(const config &cfg) :
  * Atm this is rather focussed on the drawing part, might change later.
  * Keys:
  * @begin{table}{config}
- *     draw & section & &                 Section with drawing directions for a canvas. $
+ *     draw & section & &                 Section with drawing directions for a
+ *canvas. $
  * @end{table}
  * @end{tag}{name="state"}
  * @end{parent}{name="generic/"}
  *
  */
-
-	const config &draw = *(cfg ? &cfg.child("draw") : &cfg);
+tstate_definition::tstate_definition(const config& cfg) : canvas()
+{
+	const config& draw = *(cfg ? &cfg.child("draw") : &cfg);
 
 	VALIDATE(draw, _("No state or draw section defined."));
 
 	canvas.set_cfg(draw);
 }
 
-void register_widget(const std::string& id
-		, boost::function<void(
-			  tgui_definition& gui_definition
-			, const std::string& definition_type
-			, const config& cfg
-			, const char *key)> functor)
+void register_widget(const std::string& id,
+					 boost::function<void(tgui_definition& gui_definition,
+										  const std::string& definition_type,
+										  const config& cfg,
+										  const char* key)> functor)
 {
 	registred_widget_type().insert(std::make_pair(id, functor));
 }
 
-void load_widget_definitions(
-	  tgui_definition& gui_definition
-	, const std::string& definition_type
-	, const std::vector<tcontrol_definition_ptr>& definitions)
+void
+load_widget_definitions(tgui_definition& gui_definition,
+						const std::string& definition_type,
+						const std::vector<tcontrol_definition_ptr>& definitions)
 {
 	DBG_GUI_P << "Load definition '" << definition_type << "'.\n";
 	gui_definition.load_widget_definitions(definition_type, definitions);
 }
 
-tresolution_definition_ptr get_control(
-		const std::string& control_type, const std::string& definition)
+tresolution_definition_ptr get_control(const std::string& control_type,
+									   const std::string& definition)
 {
 	const tgui_definition::tcontrol_definition_map::const_iterator
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-		control_definition = (control_type == "list")
-				? current_gui->second.control_definition.find("listbox")
-				: current_gui->second.control_definition.find(control_type);
+	control_definition
+			= (control_type == "list")
+					  ? current_gui->second.control_definition.find("listbox")
+					  : current_gui->second.control_definition.find(
+								control_type);
 #else
-		control_definition =
-				current_gui->second.control_definition.find(control_type);
+	control_definition
+			= current_gui->second.control_definition.find(control_type);
 #endif
 
-	ASSERT_LOG(control_definition != current_gui->second.control_definition.end(),
-			"Type '" << control_type << "' is unknown.");
+	ASSERT_LOG(control_definition
+			   != current_gui->second.control_definition.end(),
+			   "Type '" << control_type << "' is unknown.");
 
-	std::map<std::string, tcontrol_definition_ptr>::const_iterator
-		control = control_definition->second.find(definition);
+	std::map<std::string, tcontrol_definition_ptr>::const_iterator control
+			= control_definition->second.find(definition);
 
 	if(control == control_definition->second.end()) {
 		LOG_GUI_G << "Control: type '" << control_type << "' definition '"
-			<< definition << "' not found, falling back to 'default'.\n";
+				  << definition << "' not found, falling back to 'default'.\n";
 		control = control_definition->second.find("default");
 		assert(control != control_definition->second.end());
 	}
 
-	for(std::vector<tresolution_definition_ptr>::const_iterator
-			itor = (*control->second).resolutions.begin(),
-			end = (*control->second).resolutions.end();
-			itor != end;
-			++itor) {
+	for(std::vector<tresolution_definition_ptr>::const_iterator itor
+		= (*control->second).resolutions.begin(),
+		end = (*control->second).resolutions.end();
+		itor != end;
+		++itor) {
 
-		if(settings::screen_width <= (**itor).window_width &&
-				settings::screen_height <= (**itor).window_height) {
+		if(settings::screen_width <= (**itor).window_width
+		   && settings::screen_height <= (**itor).window_height) {
 
 			return *itor;
-		} else if (itor == end - 1) {
+		} else if(itor == end - 1) {
 			return *itor;
 		}
 	}
@@ -597,13 +621,13 @@ tresolution_definition_ptr get_control(
 	ERROR_LOG(false);
 }
 
-std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(
-		const std::string& type)
+std::vector<twindow_builder::tresolution>::const_iterator
+get_window_builder(const std::string& type)
 {
 	twindow::update_screen_size();
 
-	std::map<std::string, twindow_builder>::const_iterator
-		window = current_gui->second.window_types.find(type);
+	std::map<std::string, twindow_builder>::const_iterator window
+			= current_gui->second.window_types.find(type);
 
 	if(true) { // FIXME Test for default gui.
 		if(window == current_gui->second.window_types.end()) {
@@ -613,17 +637,17 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(
 		// FIXME Get the definition in the default gui and do an assertion test.
 	}
 
-	for(std::vector<twindow_builder::tresolution>::const_iterator
-			itor = window->second.resolutions.begin(),
-			end = window->second.resolutions.end();
-			itor != end;
-			++itor) {
+	for(std::vector<twindow_builder::tresolution>::const_iterator itor
+		= window->second.resolutions.begin(),
+		end = window->second.resolutions.end();
+		itor != end;
+		++itor) {
 
-		if(settings::screen_width <= itor->window_width &&
-				settings::screen_height <= itor->window_height) {
+		if(settings::screen_width <= itor->window_width
+		   && settings::screen_height <= itor->window_height) {
 
 			return itor;
-		} else if (itor == end - 1) {
+		} else if(itor == end - 1) {
 			return itor;
 		}
 	}

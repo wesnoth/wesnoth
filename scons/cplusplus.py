@@ -1,6 +1,4 @@
 # vi: syntax=python:et:ts=4
-from config_check_utils import *
-
 def CheckCPlusPlus(context, gcc_version = None):
     message = "Checking whether C++ compiler works "
     test_program = """

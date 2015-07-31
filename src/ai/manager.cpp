@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,24 +17,46 @@
  * @file
  */
 
-#include "composite/ai.hpp"
-#include "configuration.hpp"
-#include "contexts.hpp"
-#include "default/ai.hpp"
 #include "manager.hpp"
-#include "formula/ai.hpp"
-#include "registry.hpp"
-#include "../game_events.hpp"
+
+#include "../config.hpp"             // for config, etc
+#include "game_events/manager.hpp"
+#include "../game_events/pump.hpp"
+#include "../generic_event.hpp"      // for generic_event, etc
 #include "../log.hpp"
+#include "../map_location.hpp"       // for map_location
+#include "../resources.hpp"
 #include "../serialization/string_utils.hpp"
-#include "composite/component.hpp"
 
-#include <boost/foreach.hpp>
+#include "composite/ai.hpp"             // for ai_composite
+#include "composite/component.hpp"      // for component_manager
+#include "composite/engine.hpp"         // for engine
+#include "configuration.hpp"            // for configuration
+#include "contexts.hpp"                 // for readonly_context, etc
+#include "default/contexts.hpp"  // for default_ai_context, etc
+#include "game_end_exceptions.hpp" // for ai_end_turn_exception
+#include "game_info.hpp"             // for side_number, engine_ptr, etc
+#include "game_config.hpp"              // for debug
+#include "game_errors.hpp"              // for game_error
+#include "interface.hpp"  // for ai_factory, etc
+#include "lua/unit_advancements_aspect.hpp"
+#include "registry.hpp"                 // for init
+#include "util.hpp"                     // for lexical_cast
 
-#include <map>
-#include <stack>
-#include <vector>
-#include "composite/engine.hpp"
+
+#include <algorithm>                    // for min
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <cassert>                     // for assert
+#include <cstddef>                     // for NULL
+#include <iterator>                     // for reverse_iterator, etc
+#include <map>                          // for _Rb_tree_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <set>                          // for set
+#include <stack>                        // for stack
+#include <utility>                      // for pair, make_pair
+#include <vector>                       // for vector, allocator, etc
+
+#include "SDL_timer.h"
 
 namespace ai {
 
@@ -108,9 +130,11 @@ void holder::init( side_number side )
 
 holder::~holder()
 {
+	try {
 	if (this->ai_) {
 		LOG_AI_MANAGER << describe_ai() << "Managed AI will be deleted" << std::endl;
 	}
+	} catch (...) {}
 	delete this->default_ai_context_;
 	delete this->readwrite_context_;
 	delete this->readonly_context_;
@@ -234,6 +258,7 @@ const std::string holder::get_ai_overview()
 		get_ai_ref();
 	}
 	std::stringstream s;
+	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
 	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
 	s << "attack_depth:  " << this->ai_->get_attack_depth() << std::endl;
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
@@ -244,21 +269,22 @@ const std::string holder::get_ai_overview()
 	s << "number_of_possible_recruits_to_force_recruit:  " << this->ai_->get_number_of_possible_recruits_to_force_recruit() << std::endl;
 	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
 	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
+	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
 	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
 	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
-//	s << "recruitment_pattern:  ";
-//	for(std::vector<std::string>::const_iterator i =  this->ai_->get_recruitment_pattern().begin(); i !=  this->ai_->get_recruitment_pattern().end(); ++i) {
-//		if(i != this->ai_->get_recruitment_pattern().begin())
-//			s << ",";
-//
-//		s << *i;
-//	}
-//	s << std::endl;
+	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
+	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;
+	s << "recruitment_more:  " << utils::join(this->ai_->get_recruitment_more()) << std::endl;
+	s << "recruitment_pattern:  " << utils::join(this->ai_->get_recruitment_pattern()) << std::endl;
+	s << "recruitment_randomness:  " << this->ai_->get_recruitment_randomness() << std::endl;
+	s << "recruitment_save_gold:  " << std::endl << "----config begin----" << std::endl;
+	s << this->ai_->get_recruitment_save_gold() << "-----config end-----" << std::endl;
 	s << "scout_village_targeting:  " << this->ai_->get_scout_village_targeting() << std::endl;
 	s << "simple_targeting:  " << this->ai_->get_simple_targeting() << std::endl;
 	s << "support_villages:  " << this->ai_->get_support_villages() << std::endl;
 	s << "village_value:  " << this->ai_->get_village_value() << std::endl;
 	s << "villages_per_scout:  " << this->ai_->get_villages_per_scout() << std::endl;
+
 	return s.str();
 }
 
@@ -286,6 +312,11 @@ component* holder::get_component(component *root, const std::string &path) {
 
 	if (root == NULL) // Return root component(ai_)
 	{
+		if (!this->ai_) {
+			this->init(this->side_);
+		}
+		assert(this->ai_);
+
 		return &*this->ai_;
 	}
 
@@ -392,16 +423,20 @@ void manager::remove_turn_started_observer( events::observer* event_observer )
 }
 
 void manager::raise_user_interact() {
-        const int interact_time = 30;
-        const int time_since_interact = SDL_GetTicks() - last_interact_;
-        if(time_since_interact < interact_time) {
-                return;
-        }
+	if(resources::simulation_){
+		return;
+	}
+
+	const int interact_time = 30;
+	const int time_since_interact = SDL_GetTicks() - last_interact_;
+	if(time_since_interact < interact_time) {
+		return;
+	}
 
 	++num_interact_;
-        user_interact_.notify_observers();
+	user_interact_.notify_observers();
 
-        last_interact_ = SDL_GetTicks();
+	last_interact_ = SDL_GetTicks();
 
 }
 
@@ -755,7 +790,7 @@ void manager::play_turn( side_number side ){
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
 	interface& ai_obj = get_active_ai_for_side(side);
-	game_events::fire("ai turn");
+	resources::game_events->pump().fire("ai turn");
 	raise_turn_started();
 	ai_obj.new_turn();
 	ai_obj.play_turn();

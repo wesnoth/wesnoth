@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -83,8 +83,10 @@ map_location map_fragment::center_of_mass() const
 	BOOST_FOREACH(const tile_info& ti, items_) {
 		sum.vector_sum_assign(ti.offset);
 	}
-	sum.x /= static_cast<int>(items_.size());
-	sum.y /= static_cast<int>(items_.size());
+	if (items_.size() > 0) {
+		sum.x /= static_cast<int>(items_.size());
+		sum.y /= static_cast<int>(items_.size());
+	}
 	return sum;
 }
 
@@ -101,7 +103,7 @@ void map_fragment::rotate_60_cw()
 {
 	area_.clear();
 	BOOST_FOREACH(tile_info& ti, items_) {
-		map_location l(0,0);
+		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
 		// rotate the X-Y axes to SOUTH/SOUTH_EAST - SOUTH_WEST axes
@@ -121,7 +123,7 @@ void map_fragment::rotate_60_ccw()
 {
 	area_.clear();
 	BOOST_FOREACH(tile_info& ti, items_) {
-		map_location l(0,0);
+		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
 		// rotate the X-Y axes to NORTH/NORTH_EAST - SOUTH_EAST axes'

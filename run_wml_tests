@@ -1,0 +1,325 @@
+#!/bin/bash
+#This script runs a sequence of wml unit test scenarios.
+#Use -h to get help with usage.
+
+usage()
+{
+  echo "Usage:" $0 "[OPTIONS] [EXTRA-ARGS]"
+  echo "Executes a series of wml unit test scenarios found in a file."
+  echo
+  echo -e "Options:"
+  echo -e "\t-h\tShows this help."
+  echo -e "\t-v\tVerbose mode."
+  echo -e "\t-w\tVery verbose mode. (Debug script.)"
+  echo -e "\t-c\tClean mode. (Don't load any add-ons. Used for mainline tests.)"
+  echo -e "\t-a arg\tAdditional arguments to go to wesnoth."
+  echo -e "\t-t arg\tNew timer value to use, instead of 10s as default."
+  echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
+  echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
+  echo -e "\t-d\tRun wesnoth-debug binary instead of wesnoth."
+  echo -e "\t-g\tIf we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option."
+  echo -e "\t-p arg\tPath to wesnoth binary. By default assume it is with this script."
+  echo -e "\t-l arg\tLoads list of tests from the given file."
+  echo -e "\t  \tBy default, the file is wml_test_schedule."
+  echo
+  echo "Each line in the list of tests should be formatted:"
+  echo -e "\n\t<expected return code> <name of unit test scenario>\n"
+  echo "Lines beginning # are treated as comments."
+  echo "Expected return codes:"
+  for i in `seq 0 4`;
+  do
+    get_code_string $i
+    echo -e "\t" $i "-" $CodeString
+  done
+  echo
+  echo "Extra arguments besides these options are saved and passed on to wesnoth."
+}
+
+get_code_string()
+{
+  case ${1} in
+  0)
+    CodeString="PASS"
+    ;;
+  1) 
+    CodeString="FAIL"
+    ;;
+  2)
+    CodeString="FAIL (TIMEOUT)"
+    ;;
+  3)
+    CodeString="FAIL (INVALID REPLAY)"
+    ;;
+  4)
+    CodeString="FAIL (ERRORED REPLAY)"
+    ;;
+  124)
+    CodeString="FAIL (TIMEOUT, by TERM signal)"
+    ;;
+  137)
+    CodeString="FAIL (TIMEOUT, by KILL signal)"
+    ;;
+  134)
+    CodeString="FAIL (ASSERTION FAILURE ? ? ?)"
+    ;;
+  139)
+    CodeString="FAIL (SEGFAULT ? ? ?)"
+    ;;
+  *)
+    CodeString="FAIL (? ? ?)"
+    ;;
+  esac
+}
+
+check_errs()
+{
+  # Argument 1 is the name of the test.
+  # Argument 2 is the wesnoth error code for the test. 
+  # Argument 3 is the expected error code.
+  if [ "${2}" -eq 124 -a "${3}" -eq 2 ]; then
+    if [ "$Verbose" -ge 2 ]; then
+      echo "Caught return code 124 from timeout"
+      echo "This signal means that the unix timeout utility killed wesnoth with TERM."
+      echo "Since we expected timeout, the test passes."
+    fi
+    return 0
+  elif [ "${2}" -eq 137 -a "${3}" -eq 2 ]; then
+    if [ "$Verbose" -ge 2 ]; then
+      echo "Caught return code 137 from timeout"
+      echo "This signal means that the unix timeout utility killed wesnoth with KILL."
+      echo "Since we expected timeout, the test passes."
+    fi
+    return 0
+  elif [ "${2}" -ne "${3}" ]; then
+    echo "${1}" ":" 
+    get_code_string ${2}
+    printf '%-55s %3d - %s\n' "  Observed result :" "${2}" "$CodeString"
+    get_code_string ${3}
+    printf '%-55s %3d - %s\n' "  Expected result :" "${3}" "$CodeString"
+    if [ "$Verbose" -ge 2 -a -f "error.log" ]; then
+      echo ""
+      echo "Found error.log:"
+      cat error.log
+    fi
+    return 1
+  fi
+  return 0
+}
+
+handle_error_log()
+{
+  if [ -f "error.log" ]; then
+    if [ "${1}" -ne 0 ]; then
+      if [ -f "errors.log" ]; then
+        echo -e "\n--- next unit test ---\n" >> errors.log
+        cat error.log >> errors.log
+      else
+        cp error.log errors.log
+      fi
+    fi
+
+    rm error.log
+  fi
+}
+
+run_test()
+{
+  # Argument 1 is the expected error code
+  # Argument 2 is the name of the test scenario
+
+  preopts=""
+  binary="$BinPath"
+  opts="-u $2 "
+
+  timer=$basetimer
+
+  if [ "$DebugMode" -eq 1 ]; then
+    binary+="wesnoth-debug "
+  else
+    binary+="wesnoth "
+  fi
+  
+  # Use validcache on tests that aren't the first test.
+  if [ "$FirstTest" -eq 1 ]; then
+    ((timer *= 2))
+  else
+    opts+="--validcache "
+  fi
+
+  # Add a timeout using unix timeout utility
+  timer1=$((timer+1))
+  preopts+="timeout --kill-after=$timer1 $timer "
+
+  # If running strict, then set strict level to "warning"
+  if [ "$StrictMode" -eq 1 ]; then
+    opts+="--log-strict=warning "
+  fi
+
+  # If running clean mode, then pass "--noaddons"
+  if [ "$CleanMode" -eq 1 ]; then
+    opts+="--noaddons "
+  fi
+
+  # Assemble command
+  command="$preopts"
+  command+="$binary"
+  command+="$opts"
+  command+="$extra_opts"
+  if [ "$Verbose" -eq 1 ]; then
+    echo "$command"
+  elif [ "$Verbose" -eq 2 ]; then
+    echo "$command" "2> error.log"
+  fi
+  $command 2> error.log
+  error_code="$?"
+  if check_errs $2 $error_code $1; then
+    FirstTest=0 #Only start using validcache flag when at least one test has passed without error
+    handle_error_log 0
+    return 0
+  else
+    # If we got a code of value at least 128, and it wasn't KILL timeout, it means we segfaulted / failed assertion etc. most likely, so run gdb to get a backtrace
+    if [ "$GdbBacktraceMode" -eq 1 -a "$error_code" -ge 128 -a "$error_code" -ne 137 ]; then
+        echo -e "\n* Launching gdb for a backtrace...\n" >>error.log
+        gdb -q -batch -ex start -ex continue -ex bt -ex quit --args $binary $opts $extra_opts >>error.log
+    fi
+
+    handle_error_log 1
+    return 1
+  fi
+}
+
+
+### Main Script Starts Here ###
+
+Verbose=0
+UnixTimeout=0
+CleanMode=0
+LoadFile="wml_test_schedule"
+BinPath="./"
+StrictMode=1
+DebugMode=0
+GdbBacktraceMode=0
+extra_opts=""
+basetimer=10
+export OMP_WAIT_POLICY=PASSIVE
+
+while getopts ":hvwcusdgp:l:a:t:" Option
+do
+  case $Option in
+    h )
+      usage
+      exit 0;
+      ;;
+    v ) 
+      if [ "$Verbose" -lt 1 ]; then 
+        Verbose=1
+      fi
+      ;;
+    w )
+      if [ "$Verbose" -lt 2 ]; then 
+        Verbose=2
+      fi
+      ;;
+    c )
+      CleanMode=1
+      ;;
+    u )
+      UnixTimeout=1
+      ;;
+    s )
+      StrictMode=0
+      ;;
+    d )
+      DebugMode=1
+      ;;
+    g )
+      GdbBacktraceMode=1
+      ;;
+    p )
+      BinPath="$OPTARG"
+      ;;
+    l )
+      LoadFile="$OPTARG"
+      ;;
+    a )
+      extra_opts+="$OPTARG"
+      ;;
+    t )
+      echo "Replacing default timer of 10 with" "$OPTARG" "seconds."
+      basetimer="$OPTARG"
+      ;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+extra_opts+="$*"
+
+if [ "$Verbose" -ge 2 ]; then
+  if [ "${#extra_opts}" -ge 0 ]; then
+    echo "Found additional arguments to wesnoth: " "$extra_opts" 
+  fi
+  if [ "$UnixTimeout" -eq 1 ]; then
+    echo "Wesnoth built-in timeout was disabled. This script was updated, and -u is now unnecessary and has no effect."
+  fi
+fi
+
+echo "Getting tests from" "$LoadFile" "..."
+
+old_IFS=$IFS
+IFS=$'\n'
+schedule=($(cat $LoadFile)) # array
+IFS=$old_IFS
+
+NumTests=0
+NumComments=0
+
+for line in "${schedule[@]}"
+do
+    if [[ "$line" =~ \#.* ]]; then
+      NumComments=$((NumComments+1))
+    else
+      NumTests=$((NumTests+1))
+    fi
+done
+
+echo "Running" $NumTests "test scenarios."
+
+if [ -f "errors.log" ]; then
+  rm errors.log
+fi
+
+AllPassed=1
+FirstTest=1
+TotalPassed=0
+
+for line in "${schedule[@]}"
+do
+    if [[ "$line" =~ \#.* ]]; then
+      if [ "$Verbose" -ge 2 ]; then
+        echo "comment:" $line
+      fi
+    else
+      if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
+        if [ "$Verbose" -ge 2 ]; then
+          echo "good"
+        fi
+        TotalPassed=$((TotalPassed+1))
+      else
+        AllPassed=0
+      fi
+    fi
+done
+
+if [ "$AllPassed" -eq 0 ]; then
+  if [ "$StrictMode" -eq 1 ]; then
+    echo "$TotalPassed" "out of" "$NumTests" "tests were correct."
+  else
+    echo "$TotalPassed" "out of" "$NumTests" "tests were correct. (However, some tests may expect to be running in strict mode, and not fail as expected otherwise.)"
+  fi
+  echo "Not all tests gave the correct result."
+  echo "Check errors.log for error reports."
+  exit 2
+else
+  echo "All tests gave the correct result."
+  exit 0
+fi

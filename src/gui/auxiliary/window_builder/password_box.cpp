@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,13 +21,14 @@
 #include "gui/widgets/password_box.hpp"
 
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_password_box::tbuilder_password_box(const config& cfg)
-	: tbuilder_control(cfg)
-	, history_(cfg["history"])
+	: tbuilder_control(cfg), history_(cfg["history"])
 {
 }
 
@@ -41,9 +42,8 @@ twidget* tbuilder_password_box::build() const
 	// It also has no history.
 	widget->set_value(label);
 
-	DBG_GUI_G << "Window builder: placed password box '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed password box '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
@@ -61,9 +61,8 @@ twidget* tbuilder_password_box::build() const
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
  * @begin{tag}{name="password_box"}{min=0}{max=-1}{super="generic/widget_instance"}
  * @begin{table}{config}
- *     label & t_string & "" &            The initial text of the password box. $
+ *     label & t_string & "" &         The initial text of the password box. $
  * @end{table}
  * @end{tag}{name="password_box"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

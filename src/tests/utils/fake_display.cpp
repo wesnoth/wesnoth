@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,17 @@
 
 #include "fake_display.hpp"
 
+#include "game_board.hpp"
 #include "game_display.hpp"
+#include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
-#include "map.hpp"
-#include "unit_map.hpp"
+#include "reports.hpp"
+
+#include <boost/make_shared.hpp>
+
+namespace wb {
+	class manager;
+}
 
 namespace test_utils {
 
@@ -27,11 +34,11 @@ namespace test_utils {
 		static fake_display_manager* manager_;
 
 		CVideo video_;
-		unit_map dummy_umap_;
 		config dummy_cfg_;
-		gamemap dummy_map_;
+		config dummy_cfg2_;
+		game_board dummy_board_;
 		tod_manager dummy_tod_;
-		std::vector<team> dummy_teams_;
+		reports dummy_reports;
 		const events::event_context main_event_context_;
 
 
@@ -58,14 +65,13 @@ namespace test_utils {
 
 	fake_display_manager::fake_display_manager() :
 	   	video_(CVideo::FAKE_TEST),
-		dummy_umap_(),
 		dummy_cfg_(),
-		dummy_map_(dummy_cfg_,""),
-		dummy_tod_(dummy_cfg_, 0),
-		dummy_teams_(),
+		dummy_cfg2_(),
+		dummy_board_(boost::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
+		dummy_tod_(dummy_cfg_),
 		main_event_context_(),
-		disp_(dummy_umap_, video_, dummy_map_, dummy_tod_,
-				dummy_teams_, dummy_cfg_, dummy_cfg_)
+		disp_(dummy_board_, video_, boost::shared_ptr<wb::manager> (), dummy_reports, dummy_tod_,
+				dummy_cfg_, dummy_cfg_)
 	{
 	}
 

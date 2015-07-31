@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,28 +21,16 @@ class game_display;
 class unit;
 class unit_map;
 class unit_type;
+class terrain_type;
 
 #include "map_location.hpp"
 #include "construct_dialog.hpp"
 #include "network.hpp"
+#include "unit_ptr.hpp"
+#include "ai/lua/unit_advancements_aspect.hpp"
 
 namespace dialogs {
 
-/**
- * Function to handle an advancing unit. If there is only one choice to advance
- * to, the unit will be automatically advanced. If there is a choice, and
- * 'random_choice' is true, then a unit will be selected at random. Otherwise,
- * a dialog will be displayed asking the user what to advance to.
- *
- * Note that 'loc' is not a reference, because deleting an item from the units
- * map (when replacing the unit that is being advanced) will possibly
- * invalidate the reference.
- *
- * The game only expects an advancement to be triggered by a fight, if the
- * cause for advancement is different (eg unstore_unit) this routine
- * should _not_ be used.
- */
-void advance_unit(const map_location &loc, bool random_choice = false, bool add_replay_event = false);
 
 /**
  * Lets the user to select a unit advancement. This should always be used
@@ -58,7 +46,7 @@ int advance_unit_dialog(const map_location &loc);
  */
 bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event = true, const bool animate = true);
 
-void show_objectives(const config &level, const std::string &objectives);
+void show_objectives(const std::string& scenarioname, const std::string &objectives);
 
 void show_unit_list(display& gui);
 
@@ -68,11 +56,11 @@ void show_unit_list(display& gui);
  * the game in show_replay. If show_replay is NULL, then the user will not be
  * asked if they want to show a replay.
  */
-std::string load_game_dialog(display& disp, const config& terrain_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders);
+std::string load_game_dialog(display& disp, const config& game_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders);
 
 int recruit_dialog(display& disp, std::vector<const unit_type*>& units, const std::vector<std::string>& items, int side, const std::string& title_suffix);
 
-int recall_dialog(display& disp, std::vector<const unit*>& units, int side, const std::string& title_suffix);
+int recall_dialog(display& disp, const boost::shared_ptr<std::vector<unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost);
 
 /** Show unit-stats in a side-pane to unit-list, recall-list, etc. */
 class unit_preview_pane : public gui::preview_pane
@@ -82,7 +70,11 @@ public:
 	struct details {
 		details();
 
+#ifdef SDL_GPU
+		sdl::timage image;
+#else
 		surface image;
+#endif
 	  	std::string name, type_name, race;
 		int level;
 		std::string alignment, traits;
@@ -92,6 +84,7 @@ public:
 		std::string hp_color, xp_color;
 		int movement_left, total_movement;
 		std::vector<attack_type> attacks;
+		std::vector<std::string> overlays;
 	};
 
 	unit_preview_pane(const gui::filter_textbox *filter = NULL,
@@ -101,7 +94,7 @@ public:
 	bool left_side() const;
 	void set_selection(int index);
 
-	handler_vector handler_members();
+	sdl_handler_vector handler_members();
 
 protected:
 	int index_;
@@ -122,11 +115,8 @@ private:
 class units_list_preview_pane : public dialogs::unit_preview_pane
 {
 public:
-	units_list_preview_pane(const unit *u, TYPE type = SHOW_ALL, bool left_side = true);
-	units_list_preview_pane(const std::vector<const unit *> &units,
-		const gui::filter_textbox *filter = NULL,
-		TYPE type = SHOW_ALL, bool left_side = true);
-	units_list_preview_pane(const std::vector<unit> &units,
+	units_list_preview_pane(unit_const_ptr u, TYPE type = SHOW_ALL, bool left_side = true);
+	units_list_preview_pane(const boost::shared_ptr<const std::vector<unit_const_ptr > > & units,
 		const gui::filter_textbox *filter = NULL,
 		TYPE type = SHOW_ALL, bool left_side = true);
 
@@ -135,7 +125,7 @@ private:
 	const details get_details() const;
 	void process_event();
 
-	std::vector<const unit *> units_;
+	boost::shared_ptr<const std::vector<unit_const_ptr > > units_;
 };
 
 
@@ -154,10 +144,6 @@ private:
 	std::vector<const unit_type*>* unit_types_;
 	int side_;
 };
-
-
-void show_unit_description(const unit_type &t);
-void show_unit_description(const unit &u);
 
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

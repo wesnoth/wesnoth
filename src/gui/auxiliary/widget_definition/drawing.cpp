@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tdrawing_definition::tdrawing_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -28,9 +29,6 @@ tdrawing_definition::tdrawing_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tdrawing_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_drawing
@@ -55,6 +53,9 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="drawing_definition"}
  * @end{parent}{name="gui/"}
  */
+tdrawing_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	/*
 	 * Note the order should be the same as the enum tstate in drawing.hpp.
 	 * Normally the [draw] section is in the config, but for this widget the
@@ -65,4 +66,3 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

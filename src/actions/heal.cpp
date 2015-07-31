@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,11 +19,12 @@
 
 #include "heal.hpp"
 
+#include "../game_board.hpp"
 #include "../game_display.hpp"
 #include "../gettext.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
-#include "../replay.hpp"
+#include "../play_controller.hpp"
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
@@ -93,7 +94,7 @@ namespace {
 		if ( patient.side() == side )
 		{
 			// Village healing?
-			if ( resources::game_map->gives_healing(patient.get_location()) )
+			if ( resources::gameboard->map().gives_healing(patient.get_location()) )
 				return POISON_CURE;
 
 			// Regeneration?
@@ -154,6 +155,28 @@ namespace {
 
 
 	/**
+	 * Updates the current healing and harming amounts based on a new value.
+	 * This is a helper function for heal_amount().
+	 * @returns true if an amount was updated.
+	 */
+	inline bool update_healing(int & healing, int & harming, int value)
+	{
+		// If the new value magnifies the healing, update and return true.
+		if ( value > healing ) {
+			healing = value;
+			return true;
+		}
+
+		// If the new value magnifies the harming, update and return true.
+		if ( value < harming ) {
+			harming = value;
+			return true;
+		}
+
+		// Keeping the same values as before.
+		return false;
+	}
+	/**
 	 * Calculate how much @patient heals this turn.
 	 * If healed by units, those units are added to @a healers.
 	 */
@@ -162,17 +185,19 @@ namespace {
 		unit_map &units = *resources::units;
 
 		int healing = 0;
+		int harming = 0;
 
 
 		if ( patient.side() == side )
 		{
 			// Village healing?
-			healing = resources::game_map->gives_healing(patient.get_location());
+			update_healing(healing, harming,
+			               resources::gameboard->map().gives_healing(patient.get_location()));
 
 			// Regeneration?
 			unit_ability_list regen_list = patient.get_abilities("regenerate");
 			unit_abilities::effect regen_effect(regen_list, 0, false);
-			healing = std::max(healing, regen_effect.get_composite_value());
+			update_healing(healing, harming, regen_effect.get_composite_value());
 		}
 
 		// Check healing from other units.
@@ -191,10 +216,8 @@ namespace {
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0, false);
-		int unit_heal = heal_effect.get_composite_value();
-		if ( unit_heal > healing )
+		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
 		{
-			healing = unit_heal;
 			// Collect the healers involved.
 			BOOST_FOREACH (const unit_abilities::individual_effect & heal, heal_effect)
 				healers.push_back(&*units.find(heal.loc));
@@ -204,7 +227,7 @@ namespace {
 			}
 		}
 
-		return healing;
+		return healing + harming;
 	}
 
 
@@ -329,8 +352,8 @@ void calculate_healing(int side, bool update_display)
 
 		const team & viewing_team =
 			(*resources::teams)[resources::screen->viewing_team()];
-		if (!recorder.is_skipping() && update_display &&
-		    patient.is_visible_to_team(viewing_team, false) )
+		if (!resources::controller->is_skipping_replay() && update_display &&
+		    patient.is_visible_to_team(viewing_team, resources::gameboard->map(), false) )
 		{
 			unit_list.push_front(heal_unit(patient, healers, healing, curing == POISON_CURE));
 		}

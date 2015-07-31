@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2010 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -62,6 +62,8 @@ editor_action* editor_action_label_delete::perform(map_context& mc) const
 	std::auto_ptr<editor_action> undo;
 
 	const terrain_label* deleted = mc.get_labels().get_label(loc_);
+
+	if (!deleted) return NULL;
 
 	undo.reset(new editor_action_label(loc_, deleted->text(), deleted->team_name()
 			, deleted->color(), deleted->visible_in_fog(), deleted->visible_in_shroud(), deleted->immutable()));

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -79,17 +79,17 @@ public:
 	                const map_location & real_loc,
 	  	            const std::set<map_location>* known_units = NULL,
 	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
-	                move_unit_spectator * spectator = NULL, bool instant = false);
+	                move_unit_spectator * spectator = NULL, bool instant = true);
 	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// as if @a viewer was standing there.
 	bool clear_unit(const map_location &view_loc,
 	                const unit &viewer, team &view_team,
 	                const std::set<map_location>* known_units = NULL,
 	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
-	                move_unit_spectator * spectator = NULL, bool instant = false);
+	                move_unit_spectator * spectator = NULL, bool instant = true);
 	/// Clears shroud (and fog) around the provided location for @a view_team
-	/// as if @a viewer was standing there. Setting @a instant to true
-	/// suppresses some drawing delays that are used to make animations look better.
+	/// as if @a viewer was standing there. Setting @a instant to false
+	/// allows some drawing delays that are used to make movement look better.
 	bool clear_unit(const map_location &view_loc, const unit &viewer,
 	                team &view_team, bool instant)
 	{ return clear_unit(view_loc, viewer, view_team, NULL, NULL, NULL, NULL, instant); }
@@ -101,7 +101,7 @@ public:
 	/// was standing there.
 	bool clear_unit(const map_location &view_loc, const unit &viewer,
 	                bool can_delay = false, bool invalidate = true,
-	                bool instant = false);
+	                bool instant = true);
 
 	/// Clears shroud (and fog) at the provided location and its immediate neighbors.
 	bool clear_dest(const map_location &dest, const unit &viewer);

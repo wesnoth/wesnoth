@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,9 +22,9 @@
 #include "race.hpp"
 
 #include "log.hpp"
-#include "random.hpp"
-#include "simple_rng.hpp"
-
+#include "serialization/string_utils.hpp"
+#include "serialization/unicode_cast.hpp"
+#include "random_new.hpp"
 
 /// Dummy race used when a race is not yet known.
 const unit_race unit_race::null_race;
@@ -44,12 +44,12 @@ static const config &empty_topics() {
 		return cfg;
 }
 
-static void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
+static void add_prefixes(const ucs4::string& str, size_t length, markov_prefix_map& res)
 {
 	for(size_t i = 0; i <= str.size(); ++i) {
 		const size_t start = i > length ? i - length : 0;
-		const wide_string key(str.begin() + start, str.begin() + i);
-		const wchar_t c = i != str.size() ? str[i] : 0;
+		const ucs4::string key(str.begin() + start, str.begin() + i);
+		const ucs4::char_t c = i != str.size() ? str[i] : 0;
 		res[key].push_back(c);
 	}
 }
@@ -59,19 +59,20 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	markov_prefix_map res;
 
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(utils::string_to_wstring(*i),length,res);
+		add_prefixes(unicode_cast<ucs4::string>(*i),length,res);
 	}
 
 	return res;
 }
 
-static wide_string markov_generate_name(const markov_prefix_map& prefixes,
-	size_t chain_size, size_t max_len, rand_rng::simple_rng* rng)
+static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
+	size_t chain_size, size_t max_len)
 {
-	if(chain_size == 0)
-		return wide_string();
+	if(prefixes.empty() || chain_size == 0) {
+		return ucs4::string();
+	}
 
-	wide_string prefix, res;
+	ucs4::string prefix, res;
 
 	// Since this function is called in the name description in a MP game it
 	// uses the local locale. The locale between players can be different and
@@ -86,7 +87,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) {
-		random[j] = rng ? rng->get_next_random() : get_random_nocheck();
+		random[j] = random_new::generator->next_random();
 	}
 
 	j = 0;
@@ -96,7 +97,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 			return res;
 		}
 
-		const wchar_t c = i->second[random[j++]%i->second.size()];
+		const ucs4::char_t c = i->second[random[j++]%i->second.size()];
 		if(c == 0) {
 			return res;
 		}
@@ -119,17 +120,16 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 	// name has end-of-string as a possible next character in the
 	// markov prefix map. If no valid ending is found, use the
 	// originally generated name.
-	wide_string originalRes = res;
-	int prefixLen;
+	ucs4::string originalRes = res;
 	while(!res.empty()) {
-		prefixLen = chain_size < res.size() ? chain_size : res.size();
-		prefix = wide_string(res.end() - prefixLen, res.end());
+		const int prefixLen = chain_size < res.size() ? chain_size : res.size();
+		prefix = ucs4::string(res.end() - prefixLen, res.end());
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
 		if (i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
-		if (std::find(i->second.begin(), i->second.end(), static_cast<wchar_t>(0))
+		if (std::find(i->second.begin(), i->second.end(), static_cast<ucs4::char_t>(0))
 				!= i->second.end()) {
 			// This ending is valid.
 			return res;
@@ -200,10 +200,10 @@ unit_race::unit_race(const config& cfg) :
 }
 
 std::string unit_race::generate_name(
-		unit_race::GENDER gender, rand_rng::simple_rng* rng) const
+		unit_race::GENDER gender) const
 {
-	return utils::wstring_to_string(
-		markov_generate_name(next_[gender], chain_size_, 12, rng));
+	return unicode_cast<utf8::string>(
+		markov_generate_name(next_[gender], chain_size_, 12));
 }
 
 bool unit_race::uses_global_traits() const

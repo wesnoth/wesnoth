@@ -1,107 +1,195 @@
 #!/bin/sh
-# FIXME-GIT: this file will need to be updated
+#
+# Builds a new campaignd or wesnothd binary from source.
+#
+# Usage:
+#    update_server [-c] <server version> [<revision>]
+#
+#    -c    Builds campaignd instead of wesnothd
+#
+# SCons is used to build the source code from SOURCE_ROOT (no write access
+# required) onto INT_ROOT. The resulting binary and ancillary files are stored
+# in DEST_ROOT in a subdir specific to that build's version and revision (e.g.
+# 'wesnothd-trunk-git-<revision id>', where <revision id> corresponds to the
+# output of `git describe`).
+#
+# Additionally, the symbolic link ~/bin/wesnothd-<version> or
+# ~/bin/campaignd-<version> (depending on the -c switch) is updated to point
+# to the newest binary for that version.
+#
 
 die() { echo >&2 "$@"; exit 1; }
+
 [ $# -gt 0 ] && [ $# -lt 4 ] || die "Syntax: $(basename $0) [-c] <server version> [<revision>]"
+
 set -o errexit
 
-VERSION="$1"
-case "$VERSION" in
--c)    shift
-       BASE=campaignd
-       TYPE=campaignd ;;
-*)     BASE=servers # should be moved to wesnothd at some point. (several other scripts depend on the position though!)
-       TYPE=wesnothd ;;
+case "$1" in
+  -c)
+	shift
+	TYPE=campaignd
+	BASE=campaignd
+	;;
+  *)
+	TYPE=wesnothd
+	# Should be moved to wesnothd at some point. (Several other scripts depend
+	# on the location though!)
+	BASE=servers
+	;;
 esac
-echo "building $TYPE..."
 
-SERVERBASE="$HOME/$BASE/$VERSION"
-SOCKET="$SERVERBASE/build/var/run/socket"
-SOURCE="$HOME/source"
+VERSION=$(readlink "$HOME/$BASE/$1" || true)
+VERSION="${VERSION:=$1}"
 
-[ -d "$SERVERBASE" ] || die "Server base dir '$SERVERBASE' not found!"
-[ -d "$SOURCE" ]     || die "Source dir '$SOURCE' not found!"
+echo "Building $TYPE-$VERSION..."
 
-SCONS=yes
+# Parent for the $VERSION source trees, never written to.
+SOURCE_ROOT="$HOME/source"
+# Parent for the $VERSION intermediate build dir.
+INT_ROOT="$HOME/builds-int"
+# Parent for the $BUILD_ID output dir.
+DEST_ROOT="$HOME/builds"
+# Location of the server instance files.
+SERVER_BASE="$HOME/$BASE/$VERSION"
+
+SOCKET="$SERVER_BASE/build/var/run/socket"
+
+[ -d "$SERVER_BASE" ] || die "Server base dir '$SERVER_BASE' not found!"
+[ -d "$SOURCE_ROOT" ] || die "Source base dir '$SOURCE_ROOT' not found!"
+
+SOURCE_VERSION="$VERSION"
+
 CXXFLAGS="$CXXFLAGS"
 LDFLAGS="$LDFLAGS"
+
 case "$VERSION" in
-1.2)   CXXFLAGS="$CXXFLAGS -ggdb3"
-       SCONS=no
-       cd "$SOURCE"/1.2 ;;
-1.4)   CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-       SCONS=no
-       cd "$SOURCE"/1.4 ;;
-1.6)   CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-       cd "$SOURCE"/1.6 ;;
-trunk) CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
-       cd "$SOURCE"/trunk ;;
-*)     CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-       cd "$SOURCE"/trunk ;;
+  1.6|1.8|1.10|1.12)
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	;;
+  1.9)
+	[ "$TYPE" = "campaignd" ] || die "1.9 is currently a special case for the 1.10 campaignd only"
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	SOURCE_VERSION="1.10"
+	;;
+  1.11)
+	# Same flags as 1.12, but we need to build from 1.12 because there is no
+	# 1.11 branch. This is really only used for wesnothd.
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	SOURCE_VERSION="1.12"
+	;;
+  trunk|master)
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
+	SOURCE_VERSION="master"
+	;;
+  *)
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	echo "Unrecognized version, building from 'master'..."
+	SOURCE_VERSION="master"
+	;;
 esac
 
 if [ $TYPE = campaignd ]; then
-	CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
-	LDFLAGS="$LDFLAGS -pg"
-	[ "$VERSION" = "1.4" ] && SCONS=no
+	case "$VERSION" in
+	  1.8|trunk)
+		CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
+		LDFLAGS="$LDFLAGS -pg"
+		;;
+	esac
 fi
+
 set -o nounset
 
-printf 'svn update... '
-REVISION="${2:+-r $2}"
-svn up $REVISION > /dev/null
-REVISION=$(svnversion -cn src/ | cut -d: -f2)
-echo "to $REVISION"
-[ "$REVISION" != "" ] || die "No revision information found. Odd, exiting..."
+SOURCE="$SOURCE_ROOT/$SOURCE_VERSION"
+[ -d "$SOURCE" ] || die "Source directory '$SOURCE' not found!"
 
-# reminder for local changes
-#svn status
-BUILD="builds/$TYPE-svn-${REVISION}_$VERSION"
-BUILD_DIR="$HOME/$BUILD"
+COMMIT=`( cd "$SOURCE" && git describe --long )`
+[ -n "$COMMIT" ] || die "No revision information found. Odd, exiting..."
 
-set -x
-mkdir -p "$BUILD_DIR"
+BUILD_ID="$TYPE-$VERSION-git-$COMMIT"
 
-BUILD_FLAGS=
-if [ $SCONS = yes ]; then
-	if [ $TYPE = wesnothd ]; then
-		BUILD_FLAGS="fifodir=$BUILD_DIR/var/run raw_sockets=1 forum_user_handler=1"
-		case $(hostname) in
-		gonzo.dicp.de) BUILD_FLAGS="fifodir=$BUILD_DIR/var/run raw_sockets=1 boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt" ;;
-		basilic)       BUILD_FLAGS="fifodir=$BUILD_DIR/var/run raw_sockets=1" ;;
-		esac
-	fi
-	mkdir -p "$BUILD_DIR"/var/run
-	# need to remove .scons-option-cache when parameters get removed!
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix="$BUILD_DIR" program_suffix=-"$VERSION" $BUILD_FLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > "$BUILD_DIR"/scons.log
-else
-	if [ $TYPE = wesnothd ]; then
-		BUILD_FLAGS="--enable-server --enable-raw-sockets --with-fifodir=$BUILD_DIR/var/run --with-boost=$HOME/tools"
-	else
-		BUILD_FLAGS="--enable-campaign-server"
-	fi
-	#echo 'autogen.sh and configure...'
-	./autogen.sh > "$BUILD_DIR"/autogen.log
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix="$BUILD_DIR" --program-suffix=-"$VERSION" $BUILD_FLAGS --disable-game --disable-nls --enable-lite > "$BUILD_DIR"/configure.log
-	make clean > /dev/null
-	#echo 'make...'
-	make > "$BUILD_DIR"/make.log
-	#echo 'make install...'
-	make install > "$BUILD_DIR"/install.log
+DEST="$DEST_ROOT/$BUILD_ID"
+INT="$INT_ROOT/$SOURCE_VERSION"
+SCONS_LOG="$DEST/scons.log"
+CONF_LOG="$INT/build/config.log"
+
+mkdir -p "$DEST" "$INT"
+
+BUILD_OPTIONS=
+if [ $TYPE = wesnothd ]; then
+	BUILD_OPTIONS="fifodir=$DEST/var/run raw_sockets=1 forum_user_handler=1"
+	case $(hostname) in
+	  gonzo.dicp.de)
+		BUILD_OPTIONS="fifodir=$DEST/var/run raw_sockets=1 boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib"
+		;;
+	  basilic)
+		BUILD_OPTIONS="fifodir=$DEST/var/run raw_sockets=1"
+		;;
+	esac
 fi
 
-# remove the man pages
-rm -rf "$BUILD_DIR"/share/
+mkdir -p "$DEST"/var/run
 
-cd "$SERVERBASE"
+echo "            Version: $VERSION"
+echo "         Source dir: $SOURCE"
+echo "   Intermediate dir: $INT"
+echo "    Destination dir: $DEST"
+echo "   SCons output log: $SCONS_LOG"
+echo "   SCons config log: $CONF_LOG"
+
+set -x
+
+#
+# Peform the build.
+#
+
+cd "$INT"
+
+# HACK: help scons find autorevision from the source dir.
+mkdir -p utils/; ln -sf $SOURCE/utils/autorevision utils/
+
+CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" \
+scons \
+	-Y "$SOURCE" \
+	--option-cache="$INT/.scons-option-cache" \
+		install-$TYPE \
+		prefix="$DEST" \
+		program_suffix="-$VERSION" \
+		use_network_ana=false \
+		profile=0 \
+		fribidi=0 \
+		python=0 \
+		localedir= \
+		prefsdir= \
+		$BUILD_OPTIONS \
+> "$SCONS_LOG"
+
+# Discard the man pages.
+rm -rf "$DEST"/share/
+
+#
+# Update the server instance directory.
+#
+
+cd "$SERVER_BASE"
+
+test -L build &&
 if [ -p "$SOCKET" ] || [ $TYPE = campaignd ]; then
 	rm -f oldbuild
 	mv build oldbuild
-else #the server under build has never been started, keep the oldbuild link to the (currently) running server
+else
+	# The server under build/ has never been started, keep the oldbuild link
+	# to the (currently) running server.
 	rm -f build
 fi
-ln -s ../../"$BUILD" build
+ln -s "$DEST" build
+
+#
+# Update symlink in ~/bin/.
+#
 
 cd "$HOME"/bin || exit 1
-ln -sf "../$BUILD/bin/$TYPE-$VERSION" "$TYPE-$VERSION"
+ln -sf "$DEST/bin/$TYPE-$VERSION" "$TYPE-$VERSION"
+
 set +x
+
+echo "Build $BUILD_ID finished and installed as $TYPE-$VERSION."

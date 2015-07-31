@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013
+   Copyright (C) 2008 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
+#include <boost/iostreams/filter/counter.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "simple_wml.hpp"
@@ -98,13 +99,6 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 	}
 }
 
-class charbuf : public std::stringbuf {
-public:
-	charbuf(char *buffer, int len) {
-		this->setbuf(buffer, len);
-	}
-};
-
 char* compress_buffer(const char* input, string_span* span, bool bzip2)
 {
 	int nalloc = strlen(input);
@@ -124,14 +118,14 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 		state = 4;
 		nalloc = in.size()*2 + 80;
 		std::vector<char> buf(nalloc);
-		charbuf wrapped_buffer(&buf[0], buf.size());
-		std::ostream out(&wrapped_buffer);
+		boost::iostreams::array_sink out(&buf[0], buf.size());
+		filter.push(boost::iostreams::counter());
 		filter.push(out);
 
 		state = 5;
 
 		boost::iostreams::copy(istream, filter, buf.size());
-		const int len = out.tellp();
+		const int len = filter.component<boost::iostreams::counter>(1)->characters();
 		assert(len < 128*1024*1024);
 		if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
 			throw error("failed to compress");
@@ -200,7 +194,7 @@ char* string_span::duplicate() const
 error::error(const char* msg)
   : game::error(msg)
 {
-	ERR_SWML << "ERROR: '" << msg << "'\n";
+	ERR_SWML << "ERROR: '" << msg << "'" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& o, const string_span& s)
@@ -283,7 +277,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 		default: {
 			const char* end = strchr(s, '=');
 			if(end == NULL) {
-				ERR_SWML << "attribute: " << s << "\n";
+				ERR_SWML << "attribute: " << s << std::endl;
 				throw error("did not find '=' after attribute");
 			}
 
@@ -299,7 +293,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			if (*s != '"') {
 				end = strchr(s, '\n');
 				if (!end) {
-					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))\n";
+					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))" << std::endl;
 					throw error("did not find end of attribute");
 				}
 				if (memchr(s, '"', end - s))
@@ -351,7 +345,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			read_attribute:
 			string_span value(s, end - s);
 			if(attr_.empty() == false && !(attr_.back().first < name)) {
-				ERR_SWML << "attributes: '" << attr_.back().first << "' < '" << name << "'\n";
+				ERR_SWML << "attributes: '" << attr_.back().first << "' < '" << name << "'" << std::endl;
 				throw error("attributes not in order");
 			}
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,18 +20,30 @@
 #include "team.hpp"
 
 #include "ai/manager.hpp"
-#include "game_events.hpp"
-#include "gamestatus.hpp"
+#include "formula_string_utils.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
+#include "game_data.hpp"
+#include "map.hpp"
 #include "resources.hpp"
+#include "play_controller.hpp"
 #include "game_preferences.hpp"
+#include "sdl/utils.hpp" // Only needed for int_to_color (!)
+#include "unit_types.hpp"
+#include "synced_context.hpp"
 #include "whiteboard/side_actions.hpp"
+#include "network.hpp"
+#include "config_assign.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
+#define ERR_NG LOG_STREAM(warn, log_engine)
 
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_NGE LOG_STREAM(debug, log_engine_enemies)
@@ -46,35 +58,26 @@ const int team::default_team_gold_ = 100;
 
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
-const char * const team::attributes[] = {
-	"ai_config", "color", "controller", "current_player", "flag",
-	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
-	"no_leader", "objectives", "objectives_changed", "persistent",
-	"recall_cost", "recruit", "save_id", "scroll_to_leader",
-	"share_maps", "share_view", "shroud", "shroud_data", "start_gold",
-	"suppress_end_turn_confirmation",
-	"team_name", "user_team_name", "village_gold", "village_support",
+const boost::container::flat_set<std::string> team::attributes = boost::assign::list_of<std::string>("ai_config")
+	("carryover_add")("carryover_percentage")("color")("controller")("current_player")("defeat_condition")("flag")
+	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")
+	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
+	("recall_cost")("recruit")("save_id")("scroll_to_leader")
+	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
+	("suppress_end_turn_confirmation")
+	("team_name")("user_team_name")("village_gold")("village_support")
 	// Multiplayer attributes.
-	"action_bonus_count", "allow_changes", "allow_player", "color_lock",
-	"countdown_time", "disallow_observers", "faction",
-	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
-	"leader", "random_leader", "team_lock", "terrain_liked",
-	"user_description",
-	// Terminate the list with NULL.
-	NULL };
-
-
-const std::vector<team>& teams_manager::get_teams()
-{
-	assert(teams);
-	return *teams;
-}
+	("action_bonus_count")("allow_changes")("allow_player")("color_lock")
+	("countdown_time")("disallow_observers")("faction")
+	("faction_from_recruit")("faction_name")("gold_lock")("income_lock")
+	("leader")("random_leader")("team_lock")("terrain_liked")
+	("user_description")("default_recruit")("controller_lock")("chose_random")
+	("disallow_shuffle")("description").convert_to_container<boost::container::flat_set<std::string> >();
 
 team::team_info::team_info() :
 	name(),
 	gold(0),
 	start_gold(0),
-	gold_add(false),
 	income(0),
 	income_per_village(0),
 	support_per_village(1),
@@ -94,16 +97,23 @@ team::team_info::team_info() :
 	objectives(),
 	objectives_changed(false),
 	controller(),
-	share_maps(false),
-	share_view(false),
+	defeat_condition(team::DEFEAT_CONDITION::NO_LEADER),
+	proxy_controller(team::PROXY_CONTROLLER::PROXY_HUMAN),
+	share_vision(team::SHARE_VISION::ALL),
 	disallow_observers(false),
 	allow_player(false),
+	chose_random(false),
 	no_leader(true),
 	hidden(true),
 	no_turn_confirmation(false),
 	color(),
 	side(0),
-	persistent(false)
+	persistent(false),
+	lost(false),
+	carryover_percentage(game_config::gold_carryover_percentage),
+	carryover_add(false),
+	carryover_bonus(false),
+	carryover_gold(0)
 {
 }
 
@@ -126,10 +136,17 @@ void team::team_info::read(const config &cfg)
 	objectives_changed = cfg["objectives_changed"].to_bool();
 	disallow_observers = cfg["disallow_observers"].to_bool();
 	allow_player = cfg["allow_player"].to_bool(true);
+	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
+	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"].str(), team::DEFEAT_CONDITION::NO_LEADER);
+	lost = cfg["lost"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
+	carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
+	carryover_add = cfg["carryover_add"].to_bool(false);
+	carryover_bonus = cfg["carryover_bonus"].to_bool(false);
+	carryover_gold = cfg["carryover_gold"].to_int(0);
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
@@ -137,7 +154,7 @@ void team::team_info::read(const config &cfg)
 		color = cfg["side"].str();
 	}
 
-	// If arel starting new scenario overide settings from [ai] tags
+	// If arel starting new scenario override settings from [ai] tags
 	if (!user_team_name.translatable())
 		user_team_name = t_string::from_serialized(user_team_name);
 
@@ -148,9 +165,7 @@ void team::team_info::read(const config &cfg)
 	}
 
 	std::vector<std::string> recruits = utils::split(cfg["recruit"]);
-	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		can_recruit.insert(*i);
-	}
+	can_recruit.insert(recruits.begin(), recruits.end());
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
@@ -181,62 +196,46 @@ void team::team_info::read(const config &cfg)
 	else
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
-	std::string control = cfg["controller"];
-	//by default, persistence of a team is set depending on the controller
-	persistent = true;
-	if (control == "human")
-		controller = HUMAN;
-	else if (control == "human_ai")
-		controller = HUMAN_AI;
-	else if (control == "network")
-		controller = NETWORK;
-	else if (control == "network_ai")
-		controller = NETWORK_AI;
-	else if (control == "null")
-	{
-		disallow_observers = cfg["disallow_observers"].to_bool(true);
-		controller = EMPTY;
-		persistent = false;
-	}
-	else
-	{
-		controller = AI;
-		persistent = false;
-	}
+	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::CONTROLLER::AI);
 
+	//TODO: Why do we read disallow observers differently when controller is empty?
+	if (controller == CONTROLLER::EMPTY) {
+		disallow_observers = cfg["disallow_observers"].to_bool(true);
+	}
 	//override persistence flag if it is explicitly defined in the config
-	persistent = cfg["persistent"].to_bool(persistent);
+	//by default, persistence of a team is set depending on the controller
+	persistent = cfg["persistent"].to_bool(this->controller == CONTROLLER::HUMAN || this->controller == CONTROLLER::NETWORK);
 
 	//========================================================
 	//END OF MESSY CODE
 
 	// Share_view and share_maps can't both be enabled,
 	// so share_view overrides share_maps.
-	share_view = cfg["share_view"].to_bool();
-	share_maps = !share_view && cfg["share_maps"].to_bool(true);
-
+	share_vision = cfg["share_vision"].to_enum<team::SHARE_VISION>(team::SHARE_VISION::ALL);
+	handle_legacy_share_vision(cfg);
 	LOG_NG << "team_info::team_info(...): team_name: " << team_name
-	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
+	       << ", share_vision: " << share_vision << ".\n";
 }
 
-char const *team::team_info::controller_string() const
+void team::team_info::handle_legacy_share_vision(const config& cfg)
 {
-	switch(controller) {
-	case AI: return "ai";
-	case HUMAN: return "human";
-	case HUMAN_AI: return "human_ai";
-	case NETWORK: return "network";
-	case NETWORK_AI: return "network_ai";
-	case EMPTY: return "null";
-	default: assert(false); return NULL;
+	if(cfg.has_attribute("share_view") || cfg.has_attribute("share_maps"))
+	{
+		if(cfg["share_view"].to_bool()) {
+			share_vision = team::SHARE_VISION::ALL;
+		}
+		else if(cfg["share_maps"].to_bool(true)) {
+			share_vision = team::SHARE_VISION::SHROUD;
+		}
+		else {
+			share_vision = team::SHARE_VISION::NONE;
+		}
 	}
 }
-
 void team::team_info::write(config& cfg) const
 {
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
-	cfg["gold_add"] = gold_add;
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
@@ -255,30 +254,25 @@ void team::team_info::write(config& cfg) const
 	cfg["recall_cost"] = recall_cost;
 	cfg["disallow_observers"] = disallow_observers;
 	cfg["allow_player"] = allow_player;
+	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
+	cfg["defeat_condition"] = defeat_condition;
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = controller_string();
-
-	std::stringstream can_recruit_str;
-	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
-		if(cr != can_recruit.begin())
-			can_recruit_str << ",";
-
-		can_recruit_str << *cr;
-	}
-
-	cfg["recruit"] = can_recruit_str.str();
-
-	cfg["share_maps"] = share_maps;
-	cfg["share_view"] = share_view;
+	cfg["controller"] = controller;
+	cfg["recruit"] = utils::join(can_recruit);
+	cfg["share_vision"] = share_vision;
 
 	cfg["color"] = color;
-
 	cfg["persistent"] = persistent;
+	cfg["lost"] = lost;
+	cfg["carryover_percentage"] = carryover_percentage;
+	cfg["carryover_add"] = carryover_add;
+	cfg["carryover_bonus"] = carryover_bonus;
+	cfg["carryover_gold"] = carryover_gold;
 
-	cfg.add_child("ai",ai::manager::to_config(side));
+	cfg.add_child("ai", ai::manager::to_config(side));
 }
 
 team::team() :
@@ -323,7 +317,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	const config &fog_override = cfg.child("fog_override");
 	if ( fog_override ) {
 		const std::vector<map_location> fog_vector =
-			parse_location_range(fog_override["x"], fog_override["y"], true);
+			map.parse_location_range(fog_override["x"], fog_override["y"], true);
 		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
 	}
 
@@ -339,11 +333,11 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	// Load in the villages the side controls at the start
 	BOOST_FOREACH(const config &v, cfg.child_range("village"))
 	{
-		map_location loc(v, resources::gamedata);
+		map_location loc(v);
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
-			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << "\n";
+			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << std::endl;
 		}
 	}
 
@@ -376,17 +370,22 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
-bool team::get_village(const map_location& loc, const int owner_side, const bool fire_event)
+bool team::get_village(const map_location& loc, const int owner_side, game_data * gamedata)
 {
 	villages_.insert(loc);
 	bool gamestate_changed = false;
-	if(fire_event) {
-		config::attribute_value& var = resources::gamedata->get_variable("owner_side");
+	if(gamedata) {
+		config::attribute_value& var = gamedata->get_variable("owner_side");
 		const config::attribute_value old_value = var;
 		var = owner_side;
-		gamestate_changed = game_events::fire("capture",loc);
+
+		// During team building, game_events pump is not guaranteed to exist yet. (At current revision.) We skip capture events in this case.
+		if (resources::game_events) {
+			gamestate_changed = resources::game_events->pump().fire("capture",loc);
+		}
+
 		if(old_value.blank())
-			resources::gamedata->clear_variable("owner_side");
+			gamedata->clear_variable("owner_side");
 		else
 			var = old_value;
 	}
@@ -473,34 +472,69 @@ bool team::calculate_is_enemy(size_t index) const
 	return true;
 }
 
-void team::set_share_maps( bool share_maps ){
-	// Share_view and share_maps can't both be enabled,
-	// so share_view overrides share_maps.
-	// If you want to change them, be sure to change share_view FIRST
-	info_.share_maps = !info_.share_view && share_maps;
-}
-
-void team::set_share_view( bool share_view ){
-	info_.share_view = share_view;
-}
-
-void team::change_controller(const std::string& controller)
+namespace 
 {
-	team::team_info::CONTROLLER cid;
-	if (controller == "human")
-		cid = team::team_info::HUMAN;
-	else if (controller == "human_ai")
-		cid = team::team_info::HUMAN_AI;
-	else if (controller == "network")
-		cid = team::team_info::NETWORK;
-	else if (controller == "network_ai")
-		cid = team::team_info::NETWORK_AI;
-	else if (controller == "null")
-		cid = team::team_info::EMPTY;
-	else
-		cid = team::team_info::AI;
+	team::CONTROLLER unified_controller(team::CONTROLLER c)
+	{
+		if(c == team::CONTROLLER::NETWORK)
+			return team::CONTROLLER::HUMAN;
+		if(c == team::CONTROLLER::NETWORK_AI)
+			return team::CONTROLLER::AI;
+		return c;
+	}
+	class controller_server_choice : public synced_context::server_choice
+	{
+	public:
+		controller_server_choice(team::CONTROLLER new_controller, const team& team)
+			: new_controller_(new_controller)
+			, team_(team)
+		{
+		}
+		/// We are in a game with no mp server and need to do this choice locally
+		virtual config local_choice() const
+		{
+			return config_of("controller", new_controller_);
+		}
+		/// the request which is sended to the mp server.
+		virtual config request() const
+		{
+			return config_of
+				("new_controller", new_controller_)
+				("old_controller", unified_controller(team_.controller()))
+				("side", team_.side());
+		}
+		virtual const char* name() const
+		{
+			return "change_controller_wml";
+		}
+	private:
+		team::CONTROLLER new_controller_;
+		const team& team_;
+	};
+}
 
-	info_.controller = cid;
+void team::change_controller_by_wml(const std::string& new_controller_string)
+{
+	try
+	{
+		CONTROLLER new_controller = lexical_cast<CONTROLLER> (new_controller_string);
+		if(new_controller == CONTROLLER::NETWORK || new_controller == CONTROLLER::NETWORK_AI) {
+			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
+		}
+		if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
+			//We dont allow changing the currently active side to "null" controlled.
+			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below 
+		}
+		config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
+		if(!new_controller.parse(choice["controller"])) {
+			ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
+		}
+		change_controller(new_controller);
+	}
+	catch(const bad_enum_cast&)
+	{
+		ERR_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
+	}
 }
 
 void team::change_team(const std::string &name, const t_string &user_name)
@@ -609,14 +643,6 @@ bool team::knows_about_team(size_t index, bool is_multiplayer) const
 	return false;
 }
 
-bool team::copy_ally_shroud()
-{
-	if(!teams || !share_maps())
-		return false;
-
-	return shroud_.copy_from(ally_shroud(*teams));
-}
-
 /**
  * Removes the record of hexes that were cleared of fog via WML.
  * @param[in] hexes	The hexes to no longer keep clear.
@@ -632,30 +658,6 @@ void team::remove_fog_override(const std::set<map_location> &hexes)
 	// Put the result into fog_clearer_.
 	fog_clearer_.clear();
 	fog_clearer_.insert(result.begin(), result_end);
-}
-
-
-int team::nteams()
-{
-	if(teams == NULL) {
-		return 0;
-	} else {
-		return teams->size();
-	}
-}
-
-bool is_observer()
-{
-	if(teams == NULL) {
-		return true;
-	}
-
-	BOOST_FOREACH(const team &t, *teams) {
-		if (t.is_human() || t.is_human_ai())
-			return false;
-	}
-
-	return true;
 }
 
 void validate_side(int side)
@@ -817,15 +819,16 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	return cleared;
 }
 
-const color_range team::get_side_color_range(int side){
-  std::string index = get_side_color_index(side);
-  std::map<std::string, color_range>::iterator gp=game_config::team_rgb_range.find(index);
+const color_range team::get_side_color_range(int side)
+{
+	std::string index = get_side_color_index(side);
+	std::map<std::string, color_range>::iterator gp=game_config::team_rgb_range.find(index);
 
-  if(gp != game_config::team_rgb_range.end()){
-    return(gp->second);
-  }
+	if(gp != game_config::team_rgb_range.end()){
+		return(gp->second);
+	}
 
-  return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
+	return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
 SDL_Color team::get_side_color(int side)
@@ -863,7 +866,7 @@ std::string team::get_side_highlight_pango(int side)
 	return rgb2highlight_pango(get_side_color_range(side+1).mid());
 }
 
-void team::log_recruitable(){
+void team::log_recruitable() const {
 	LOG_NG << "Adding recruitable units: \n";
 	for (std::set<std::string>::const_iterator it = info_.can_recruit.begin();
 		 it != info_.can_recruit.end(); ++it) {
@@ -880,19 +883,14 @@ config team::to_config() const
 	return result;
 }
 
-/**
- * Given the location of a village, will return the 0-based index
- * of the team that currently owns it, and -1 if it is unowned.
- */
-int village_owner(const map_location& loc)
+std::string team::allied_human_teams() const
 {
-	if(! teams) {
-		return -1;
+	std::vector<int> res;
+	BOOST_FOREACH(const team& t, *teams)
+	{
+		if(!t.is_enemy(this->side()) && t.is_human()) {
+			res.push_back(t.side());
+		}
 	}
-	for(size_t i = 0; i != teams->size(); ++i) {
-		if((*teams)[i].owns_village(loc))
-			return i;
-	}
-	return -1;
+	return utils::join(res);
 }
-

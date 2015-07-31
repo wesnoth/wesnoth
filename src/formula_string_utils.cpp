@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,7 @@ namespace utils {
 class string_map_variable_set : public variable_set
 {
 public:
-	string_map_variable_set(const string_map& map) : map_(map) {};
+	string_map_variable_set(const string_map& map) : map_(map) {}
 
 	virtual config::attribute_value get_variable_const(const std::string &key) const
 	{
@@ -226,7 +226,7 @@ std::string vgettext(const char *domain
 		, const char *msgid
 		, const utils::string_map& symbols)
 {
-	const std::string orig(dgettext(domain, msgid));
+	const std::string orig(translation::dgettext(domain, msgid));
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }

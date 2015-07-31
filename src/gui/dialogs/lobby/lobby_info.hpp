@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -36,20 +36,23 @@ public:
 	/**
 	 * Process a full gamelist. Current info is discarded.
 	 */
-	void process_gamelist(const config &data);
+	void process_gamelist(const config& data);
 
 	/**
 	 * Process a gamelist diff.
 	 * @return true on success, false on failure (e.g. when the
 	 * diff did not apply correctly)
 	 */
-	bool process_gamelist_diff(const config &data);
+	bool process_gamelist_diff(const config& data);
 
 	void sync_games_display_status();
 
 	void make_games_vector();
 
-	const config& gamelist() const { return gamelist_; }
+	const config& gamelist() const
+	{
+		return gamelist_;
+	}
 
 	void clear_game_filter();
 	void add_game_filter(game_filter_base* f);
@@ -73,12 +76,25 @@ public:
 
 	void update_user_statuses(int game_id, const room_info* room);
 
-	const std::vector<room_info>& rooms() const { return rooms_; }
-	const std::vector<game_info*>& games() const { return games_; }
-	const std::vector<bool>& games_visibility() const { return games_visibility_; }
+	const std::vector<room_info>& rooms() const
+	{
+		return rooms_;
+	}
+	const std::vector<game_info*>& games() const
+	{
+		return games_;
+	}
+	const std::vector<bool>& games_visibility() const
+	{
+		return games_visibility_;
+	}
 	const std::vector<game_info*>& games_filtered() const;
-	const std::vector<user_info>& users() const { return users_; }
+	const std::vector<user_info>& users() const
+	{
+		return users_;
+	}
 	const std::vector<user_info*>& users_sorted() const;
+
 private:
 	void process_userlist();
 

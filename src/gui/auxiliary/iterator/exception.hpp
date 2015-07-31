@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,18 +25,18 @@
 #include <stdexcept>
 #include <string>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
 /**
  * Thrown when deferring an invalid iterator.
  *
  * Invalid means the initial state at_end() == true.
  */
-class tlogic_error
-	: public std::logic_error
-	, public tlua_jailbreak_exception
+class tlogic_error : public std::logic_error, public tlua_jailbreak_exception
 {
 public:
 	explicit tlogic_error(const std::string& message)
@@ -46,7 +46,6 @@ public:
 	}
 
 private:
-
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(tlogic_error)
 };
 
@@ -55,9 +54,7 @@ private:
  *
  * Invalid means the initial state at_end() == true.
  */
-class trange_error
-	: public std::range_error
-	, public tlua_jailbreak_exception
+class trange_error : public std::range_error, public tlua_jailbreak_exception
 {
 public:
 	explicit trange_error(const std::string& message)
@@ -67,7 +64,6 @@ public:
 	}
 
 private:
-
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(trange_error)
 };
 
@@ -76,4 +72,3 @@ private:
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,11 @@
 #include <cassert>
 #include <numeric>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tplacer_vertical_list::tplacer_vertical_list(const unsigned maximum_columns)
 	: maximum_columns_(maximum_columns)
@@ -76,9 +78,10 @@ tpoint tplacer_vertical_list::get_origin(const unsigned index) const
 	const unsigned row = index / maximum_columns_;
 	const unsigned column = index % maximum_columns_;
 
-	const int width = column == 0
-			? 0
-			: std::accumulate(columns_.begin(), columns_.begin() + column, 0);
+	const int width = column == 0 ? 0
+								  : std::accumulate(columns_.begin(),
+													columns_.begin() + column,
+													0);
 
 	return tpoint(width, rows_[row].first);
 }

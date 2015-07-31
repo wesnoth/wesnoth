@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2005 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2015 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -300,3 +300,4 @@ float lexical_cast_default<float, const char*>(const char* a, float def)
 		return res;
 	}
 }
+

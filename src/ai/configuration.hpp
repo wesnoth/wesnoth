@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -51,7 +51,7 @@ public:
 	{
 	}
 
-	std::string text;
+	t_string text;
 	std::string id;
 	config cfg;
 };
@@ -65,6 +65,7 @@ public:
 	 */
 	static void init(const config &game_config);
 	static void add_era_ai_from_config(const config &game_config);
+	static void add_mod_ai_from_config(config::const_child_itors configs);
 
 
 	/**
@@ -143,7 +144,6 @@ private:
 	/**
 	 * Upgrade side config from version 1.7.2 to version 1.7.3
 	 * @param[in] cfg the config to be read
-	 * @param[out] parsed_cfg parsed config
 	 * @return was all ok?
 	 * @retval true success, cfg is guaranteed to be valid
 	 * @retval false failure
@@ -153,6 +153,7 @@ private:
 	typedef std::map<std::string, description> description_map;
 	static description_map ai_configurations_;
 	static description_map era_ai_configurations_;
+	static description_map mod_ai_configurations_;
 	static config default_config_;
 
 };

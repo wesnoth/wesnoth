@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,13 @@
 #include "variable.hpp"
 
 class config;
+class filter_context;
 class unit;
+class unit_filter;
 class unit_map;
 class team;
+
+#include <boost/scoped_ptr.hpp> //to memoize unit_filter
 
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {
@@ -37,7 +41,7 @@ public:
 #endif
 
 	terrain_filter(const vconfig& cfg,
-		const unit_map& units, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
+		const filter_context * fc, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~terrain_filter();
@@ -66,15 +70,10 @@ private:
 	bool match_internal(const map_location& loc, const bool ignore_xy) const;
 
 	const vconfig cfg_; //config contains WML for a Standard Location Filter
-	const unit_map& units_;
+	const filter_context * fc_;
 
 	struct terrain_filter_cache {
-		terrain_filter_cache() :
-			parsed_terrain(NULL),
-			adjacent_matches(NULL),
-			adjacent_match_cache()
-		{
-		}
+		terrain_filter_cache();
 
 		~terrain_filter_cache();
 
@@ -86,6 +85,8 @@ private:
 
 		//adjacent_match_cache: optimize handling of [filter_adjacent_location] for match()
 		std::vector< std::pair<terrain_filter, std::map<map_location,bool> > > adjacent_match_cache;
+
+		boost::scoped_ptr<unit_filter> ufilter_;
 	};
 
 	mutable terrain_filter_cache cache_;

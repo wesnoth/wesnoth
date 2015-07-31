@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -99,6 +99,7 @@ namespace statistics
 	void recall_unit(const unit& u);
 	void un_recall_unit(const unit& u);
 	void un_recruit_unit(const unit& u);
+	int un_recall_unit_cost(const unit& u);
 
 	void advance_unit(const unit& u);
 

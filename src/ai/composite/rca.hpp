@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,12 +40,6 @@ public:
 	//this is a score guaranteed to be very high, higher than any 'normal' candidate action score
 	static const double HIGH_SCORE;
 
-	/**
-	 * Constructor
-	 * @param ai context of the candidate action
-	 * @param name name of the action (for debug purposes)
-	 * @param type type of the action (for debug purposes)
-	 */
 	candidate_action( rca_context &context, const config &cfg );
 
 	/**

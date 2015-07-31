@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,11 +31,5 @@ class display;
  *                 be displayed on screen.
  */
 void the_end(display &disp, std::string text, unsigned int duration);
-
-/**
- * Enables/disables the new (work in progress) story screen
- * code.
- */
-void set_new_storyscreen(bool enabled);
 
 #endif /* ! INTRO_HPP_INCLUDED */

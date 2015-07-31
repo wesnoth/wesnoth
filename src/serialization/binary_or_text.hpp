@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 
 #include "config.hpp"
 #include "preprocessor.hpp"
+#include "serialization/compression.hpp"
 #include "serialization/parser.hpp"
 
 #include <boost/iostreams/filtering_stream.hpp>
@@ -28,8 +29,7 @@
 class config_writer
 {
 public:
-	enum compressor { NONE, GZIP, BZIP2 };
-	config_writer(std::ostream &out, compressor compress);
+	config_writer(std::ostream &out, compression::format compress);
 	config_writer(std::ostream &out, bool compress, int level = -1);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~config_writer();
@@ -55,7 +55,7 @@ private:
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
 	std::ostream *out_ptr_;
 	std::ostream &out_;
-	compressor compress_;
+	compression::format compress_;
 	unsigned int level_;
 	std::string textdomain_;
 };

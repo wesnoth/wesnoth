@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,8 @@
 #include "game_info.hpp"
 
 #include "../actions/move.hpp"
+#include "lua/unit_advancements_aspect.hpp"
+#include "../unit_ptr.hpp"
 
 namespace pathfind {
 struct plain_route;
@@ -36,6 +38,8 @@ class gamemap;
 namespace ai {
 
 class action_result {
+friend void sim_gamestate_changed(action_result *result, bool gamestate_changed);	// Manage gamestate changed in simulated actions.
+
 public:
 
 	enum tresult {
@@ -130,7 +134,8 @@ public:
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		int attacker_weapon,
-		double aggression );
+		double aggression,
+		const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
 	enum tresult {
 		E_EMPTY_ATTACKER = 1001,
@@ -156,6 +161,7 @@ private:
 	const map_location& defender_loc_;
 	int attacker_weapon_;
 	double aggression_;
+	const unit_advancements_aspect& advancements_;
 };
 
 class move_result : public action_result {
@@ -188,12 +194,13 @@ private:
 	const unit *get_unit();
 	bool test_route(const unit &un);
 	const map_location from_;
-	::actions::move_unit_spectator move_spectator_;
 	const map_location to_;
 	bool remove_movement_;
 	boost::shared_ptr<pathfind::plain_route> route_;
 	map_location unit_location_;
 	bool unreach_is_ok_;
+	bool has_ambusher_;
+	bool has_interrupted_teleport_;
 };
 
 
@@ -216,7 +223,7 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	const unit * get_recall_unit(
+	unit_const_ptr get_recall_unit(
 		const team& my_team);
 	bool test_enough_gold(
 		const team& my_team);
@@ -287,6 +294,23 @@ private:
 	const bool remove_attacks_;
 };
 
+class synced_command_result : public action_result {
+public:
+	synced_command_result( side_number side,
+		const std::string& lua_code,
+		const map_location& location );
+
+	virtual std::string do_describe() const;
+protected:
+	virtual void do_check_before();
+	virtual void do_check_after();
+	virtual void do_execute();
+	virtual void do_init_for_execution();
+private:
+	const std::string& lua_code_;
+	const map_location& location_;
+};
+
 
 class actions {
 
@@ -314,7 +338,8 @@ static attack_result_ptr execute_attack_action( side_number side,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
 	int attacker_weapon,
-	double aggression );
+	double aggression,
+	const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
 
 /**
@@ -396,6 +421,22 @@ static stopunit_result_ptr execute_stopunit_action( side_number side,
 
 
 /**
+ * Ask the game to run Lua code
+ * @param side the side which tries to execute the move
+ * @param execute should move be actually executed or not
+ * @param lua_code the code to be run
+ * @param location location to be passed to the code as x1/y1
+ * @retval possible result: ok
+ * @retval possible_result: something wrong
+ * @retval possible_result: nothing to do
+ */
+static synced_command_result_ptr execute_synced_command_action( side_number side,
+	bool execute,
+	const std::string& lua_code,
+	const map_location& location );
+
+
+/**
  * get human-readable name of the error by code.
  * @param error_code error code.
  * @retval result the name of the error.
@@ -419,5 +460,6 @@ std::ostream &operator<<(std::ostream &s, ai::move_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::recall_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r);
+std::ostream &operator<<(std::ostream &s, ai::synced_command_result const &r);
 
 #endif

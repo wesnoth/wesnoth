@@ -14,27 +14,19 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="New dependency on vorbisfile"]
-The library "vorbisfile" is a new dependency to build Wesnoth.
-It is used to display track titles in the editor's playlist manager.
-[/section]
+[rasection="Example section title"]
+Example contents.
+[/rasection]
 
-[section="A Change"]
-Text
-[/section]
-
-[section="Another Change"]
-Text
-[/section]
-
-[section="Yet another Change"]
-Text
-[/section]
+[rasection="New game version dialog"]
+Describe how awesome the new game version dialog is and how it replaces the old game paths dialog from 1.12.x
+[/rasection]
 
 ==========
 KNOWN BUGS
 ==========
 
-[list][*] Text for entry1.
+[list]
+[*] The mp server has trouble with "Local" player types in campaigns. We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of wesnoth. https://gna.org/bugs/?21965
 [*] Text for entry2.
 [/list]

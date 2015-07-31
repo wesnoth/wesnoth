@@ -145,7 +145,7 @@ def convert_color(color, hex=False):
                 sys.exit(1)
         else:
             new[c] = color['mid'][c]
-        if new[c] not in range(0,256):
+        if new[c] not in xrange(256):
             sys.stderr.write("Value %s='%s' is out-of-range! Color values "\
                              "should be in the range [0, 255].\n" % (c, new[c]))
             sys.exit(1)

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2015 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 bool user_handler::send_mail(const std::string& to_user,
 		const std::string& /*subject*/, const std::string& /*message*/) {
 
-	//If this user is registerd at all
+	//If this user is registered at all
 	if(!user_exists(to_user)) {
 		throw error("Could not send email. No user with the name '" + to_user + "' exists.");
 	}

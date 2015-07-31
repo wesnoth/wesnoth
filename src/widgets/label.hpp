@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2015 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #include "../font.hpp"
 #include "widget.hpp"
 #include <string>
+#include "sdl/image.hpp"
 
 namespace gui {
 
@@ -35,7 +36,11 @@ public:
 	virtual void draw_contents();
 private:
 	void update_label_size();
+#ifdef SDL_GPU
+	void render_text();
 
+	sdl::timage text_image_;
+#endif
 	std::string text_;
 	int size_;
 	SDL_Color color_;

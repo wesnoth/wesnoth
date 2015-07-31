@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tpopup;
 
@@ -45,33 +46,42 @@ public:
 	 * @todo Evaluate the best place for these items.
 	 */
 	enum tresult {
-			  TUTORIAL = 1        /**< Start special campaign 'tutorial' */
-			, NEW_CAMPAIGN        /**< Let user select a campaign to play */
-			, MULTIPLAYER         /**<
-			                       * Play single scenario against humans or AI
-			                       */
-			, LOAD_GAME
-			, GET_ADDONS
-			, START_MAP_EDITOR
-			, CHANGE_LANGUAGE
-			, EDIT_PREFERENCES
-			, SHOW_ABOUT          /**< Show credits */
-			, QUIT_GAME
-			, TIP_PREVIOUS        /**< Show previous tip-of-the-day */
-			, TIP_NEXT            /**< Show next tip-of-the-day */
-			, SHOW_HELP
-			, REDRAW_BACKGROUND   /**<
-			                       * Used after an action needing a redraw (ex:
-			                       * fullscreen)
-			                       */
-			, RELOAD_GAME_DATA    /**< Used to reload all game data */
-			, NOTHING             /**<
-			                       * Default, nothing done, no redraw needed
-			                       */
-			};
+		TUTORIAL = 1 /**< Start special campaign 'tutorial' */
+		,
+		NEW_CAMPAIGN /**< Let user select a campaign to play */
+		,
+		DOWNLOAD_CAMPAIGN,
+		MULTIPLAYER /**<
+					 * Play single scenario against humans or AI
+					 */
+		,
+		LOAD_GAME,
+		GET_ADDONS,
+		CORES,
+		START_MAP_EDITOR,
+		CHANGE_LANGUAGE,
+		EDIT_PREFERENCES,
+		SHOW_ABOUT /**< Show credits */
+		,
+		QUIT_GAME,
+		TIP_PREVIOUS /**< Show previous tip-of-the-day */
+		,
+		TIP_NEXT /**< Show next tip-of-the-day */
+		,
+		SHOW_HELP,
+		REDRAW_BACKGROUND /**<
+						   * Used after an action needing a redraw (ex:
+						   * fullscreen)
+						   */
+		,
+		RELOAD_GAME_DATA /**< Used to reload all game data */
+		,
+		NOTHING /**<
+				 * Default, nothing done, no redraw needed
+				 */
+	};
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 

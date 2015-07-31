@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,13 +19,15 @@
 #include "gui/widgets/container.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tspacer;
 
-namespace implementation {
-	struct tbuilder_scroll_label;
-	struct tbuilder_scrollbar_panel;
+namespace implementation
+{
+struct tbuilder_scroll_label;
+struct tbuilder_scrollbar_panel;
 }
 
 /**
@@ -36,8 +38,7 @@ namespace implementation {
  *
  * @todo events are not yet send to the content grid.
  */
-class tscrollbar_container
-	: public tcontainer_
+class tscrollbar_container : public tcontainer_
 {
 	friend class tdebug_layout_graph;
 
@@ -50,36 +51,38 @@ class tscrollbar_container
 	friend struct tscrollbar_container_implementation;
 
 public:
-
 	explicit tscrollbar_container(const unsigned canvas_count);
 
-	~tscrollbar_container() { delete content_grid_; }
+	~tscrollbar_container()
+	{
+		delete content_grid_;
+	}
 
 	/** The way to handle the showing or hiding of the scrollbar. */
 	enum tscrollbar_mode {
-		always_visible,           /**<
-		                           * The scrollbar is always shown, whether
-		                           * needed or not.
-		                           */
-		always_invisible,         /**<
-		                           * The scrollbar is never shown even not
-		                           * when needed. There's also no space
-		                           * reserved for the scrollbar.
-		                           */
-		auto_visible,             /**<
-		                           * The scrollbar is shown when the number of
-		                           * items is larger as the visible items. The
-		                           * space for the scrollbar is always
-		                           * reserved, just in case it's needed after
-		                           * the initial sizing (due to adding items).
-		                           */
-		auto_visible_first_run    /**<
-		                           * Like auto_visible, but when not needed
-		                           * upon the initial layout phase, the bars
-		                           * are not shown and no space is reserved
-		                           * for them. (The algorithm hides them by
-		                           * default.
-		                           */
+		always_visible, /**<
+						 * The scrollbar is always shown, whether
+						 * needed or not.
+						 */
+		always_invisible, /**<
+						   * The scrollbar is never shown even not
+						   * when needed. There's also no space
+						   * reserved for the scrollbar.
+						   */
+		auto_visible, /**<
+					   * The scrollbar is shown when the number of
+					   * items is larger as the visible items. The
+					   * space for the scrollbar is always
+					   * reserved, just in case it's needed after
+					   * the initial sizing (due to adding items).
+					   */
+		auto_visible_first_run /**<
+								* Like auto_visible, but when not needed
+								* upon the initial layout phase, the bars
+								* are not shown and no space is reserved
+								* for them. (The algorithm hides them by
+								* default.
+								*/
 	};
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -103,8 +106,8 @@ public:
 private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
-public:
 
+public:
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
@@ -123,22 +126,19 @@ public:
 	virtual unsigned get_state() const OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;
@@ -148,18 +148,30 @@ public:
 	/** @note shouldn't be called after being shown in a dialog. */
 	void set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
 	tscrollbar_mode get_vertical_scrollbar_mode() const
-		{ return vertical_scrollbar_mode_; }
+	{
+		return vertical_scrollbar_mode_;
+	}
 
 	/** @note shouldn't be called after being shown in a dialog. */
 	void set_horizontal_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
 	tscrollbar_mode get_horizontal_scrollbar_mode() const
-		{ return horizontal_scrollbar_mode_; }
+	{
+		return horizontal_scrollbar_mode_;
+	}
 
-	tgrid *content_grid() { return content_grid_; }
-	const tgrid *content_grid() const { return content_grid_; }
+	tgrid* content_grid()
+	{
+		return content_grid_;
+	}
+	const tgrid* content_grid() const
+	{
+		return content_grid_;
+	}
 
 	const SDL_Rect& content_visible_area() const
-		{ return content_visible_area_; }
+	{
+		return content_visible_area_;
+	}
 
 	/***** ***** ***** scrollbar helpers ***** ****** *****/
 
@@ -182,13 +194,16 @@ public:
 	 * Maybe also make protected or private and add a friend.
 	 */
 	void vertical_scrollbar_moved()
-		{ scrollbar_moved(); }
+	{
+		scrollbar_moved();
+	}
 
 	void horizontal_scrollbar_moved()
-		{ scrollbar_moved(); }
+	{
+		scrollbar_moved();
+	}
 
 protected:
-
 	/**
 	 * Shows a certain part of the content.
 	 *
@@ -272,12 +287,10 @@ protected:
 	 * @returns                   True is wanted modification is accepted false
 	 *                            otherwise.
 	 */
-	bool content_resize_request(
-			  const int width_modification
-			, const int height_modification);
+	bool content_resize_request(const int width_modification,
+								const int height_modification);
 
 private:
-
 	/**
 	 * Helper for @ref content_resize_request.
 	 *
@@ -293,7 +306,6 @@ private:
 	bool content_resize_height(const int height_modification);
 
 protected:
-
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/**
@@ -392,14 +404,18 @@ protected:
 	 *                            changing.
 	 */
 	virtual void handle_key_right_arrow(SDLMod modifier, bool& handled);
-private:
 
+private:
 	/**
 	 * Possible states of the widget.
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, DISABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		COUNT
+	};
 
 	/**
 	 * Current state of the widget.
@@ -415,25 +431,19 @@ private:
 	 * This value should only be modified before showing, doing it while
 	 * showing results in UB.
 	 */
-	tscrollbar_mode
-		vertical_scrollbar_mode_,
-		horizontal_scrollbar_mode_;
+	tscrollbar_mode vertical_scrollbar_mode_, horizontal_scrollbar_mode_;
 
 	/** These are valid after finalize_setup(). */
-	tgrid
-		*vertical_scrollbar_grid_,
-		*horizontal_scrollbar_grid_;
+	tgrid* vertical_scrollbar_grid_, *horizontal_scrollbar_grid_;
 
 	/** These are valid after finalize_setup(). */
-	tscrollbar_
-		*vertical_scrollbar_,
-		*horizontal_scrollbar_;
+	tscrollbar_* vertical_scrollbar_, *horizontal_scrollbar_;
 
 	/** The grid that holds the content. */
-	tgrid *content_grid_;
+	tgrid* content_grid_;
 
 	/** Dummy spacer to hold the contents location. */
-	tspacer *content_;
+	tspacer* content_;
 
 	/**
 	 * Cache for the visible area for the content.
@@ -450,7 +460,9 @@ private:
 	 *
 	 * This function is called at the end of finalize_setup().
 	 */
-	virtual void finalize_subclass() {}
+	virtual void finalize_subclass()
+	{
+	}
 
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;
@@ -459,15 +471,14 @@ private:
 	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_children(surface& frame_buffer,
+									int x_offset,
+									int y_offset) OVERRIDE;
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE;
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/**
 	 * Sets the size of the content grid.
@@ -488,22 +499,20 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_key_down(const event::tevent event
-			, bool& handled
-			, const SDLKey key
-			, SDLMod modifier);
+	void signal_handler_sdl_key_down(const event::tevent event,
+									 bool& handled,
+									 const SDLKey key,
+									 SDLMod modifier);
 
-	void signal_handler_sdl_wheel_up(const event::tevent event
-			, bool& handled);
-	void signal_handler_sdl_wheel_down(const event::tevent event
-			, bool& handled);
-	void signal_handler_sdl_wheel_left(const event::tevent event
-			, bool& handled);
-	void signal_handler_sdl_wheel_right(const event::tevent event
-			, bool& handled);
+	void signal_handler_sdl_wheel_up(const event::tevent event, bool& handled);
+	void signal_handler_sdl_wheel_down(const event::tevent event,
+									   bool& handled);
+	void signal_handler_sdl_wheel_left(const event::tevent event,
+									   bool& handled);
+	void signal_handler_sdl_wheel_right(const event::tevent event,
+										bool& handled);
 };
 
 } // namespace gui2
 
 #endif
-

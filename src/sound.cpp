@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,22 +24,31 @@
 #include "util.hpp"
 
 #include "SDL_mixer.h"
+#include "SDL.h" // Travis doesn't like this, although it works on my machine -> '#include "SDL_sound.h"
 
 #include <boost/foreach.hpp>
 
 #include <list>
+#include <string>
+#include <sstream>
 
 static lg::log_domain log_audio("audio");
+#define DBG_AUDIO LOG_STREAM(debug, log_audio)
 #define LOG_AUDIO LOG_STREAM(info, log_audio)
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
 
+
+#if (MIX_MAJOR_VERSION < 1) || (MIX_MAJOR_VERSION == 1) && ((MIX_MINOR_VERSION < 2) || (MIX_MINOR_VERSION == 2) && (MIX_PATCHLEVEL <= 11))
+#error "Please upgrade to SDL mixer version >= 1.2.12, we don't support older versions anymore."
+#endif
+
 namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk
-std::vector<Mix_Chunk*> channel_chunks;
+static std::vector<Mix_Chunk*> channel_chunks;
 
 // Channel-id mapping for use with sound sources (to check if given source
 // is playing on a channel for fading/panning)
-std::vector<int> channel_ids;
+static std::vector<int> channel_ids;
 
 static void play_sound_internal(const std::string& files, channel_group group, unsigned int repeats=0,
 				 unsigned int distance=0, int id=-1, int loop_ticks=0, int fadein_ticks=0);
@@ -56,18 +65,20 @@ int fadingout_time=5000;
 bool no_fading = false;
 
 // number of allocated channels,
-const size_t n_of_channels = 16;
+const size_t n_of_channels = 32;
 
 // we need 2 channels, because we it for timer as well
 const size_t bell_channel = 0;
 const size_t timer_channel = 1;
 
 // number of channels reserved for sound sources
-const size_t source_channels = n_of_channels - 8;
+const size_t source_channels = 8;
 const size_t source_channel_start = timer_channel + 1;
 const size_t source_channel_last = source_channel_start + source_channels - 1;
-const size_t UI_sound_channel = source_channel_last + 1;
-const size_t n_reserved_channels = UI_sound_channel + 1; // sources, bell, timer and UI
+const size_t UI_sound_channels = 2;
+const size_t UI_sound_channel_start = source_channel_last + 1;
+const size_t UI_sound_channel_last = UI_sound_channel_start + UI_sound_channels - 1;
+const size_t n_reserved_channels = UI_sound_channel_last + 1; // sources, bell, timer and UI
 
 // Max number of sound chunks that we want to cache
 // Keep this above number of available channels to avoid busy-looping
@@ -158,6 +169,7 @@ std::vector<std::string> played_before;
 std::vector<sound::music_track> current_track_list;
 sound::music_track current_track;
 sound::music_track last_track;
+unsigned int current_track_index = 0;
 
 }
 
@@ -222,17 +234,25 @@ static const sound::music_track &choose_track()
 {
 	assert(!current_track_list.empty());
 
-	unsigned int track = 0;
+	if (current_track_index >= current_track_list.size()) {
+		current_track_index = 0;
+	}
 
-	if (current_track_list.size() > 1) {
-		do {
-			track = rand()%current_track_list.size();
-		} while (!track_ok( current_track_list[track].file_path() ));
+	if (current_track_list[current_track_index].shuffle()) {
+		unsigned int track = 0;
+
+		if (current_track_list.size() > 1) {
+			do {
+				track = rand()%current_track_list.size();
+			} while (!track_ok( current_track_list[track].file_path() ));
+		}
+
+		current_track_index = track;
 	}
 
 	//LOG_AUDIO << "Next track will be " << current_track_list[track].file_path() << "\n";
-	played_before.push_back( current_track_list[track].file_path() );
-	return current_track_list[track];
+	played_before.push_back( current_track_list[current_track_index].file_path() );
+	return current_track_list[current_track_index++];
 }
 
 static std::string pick_one(const std::string &files)
@@ -302,7 +322,7 @@ bool init_sound() {
 	if(!mix_ok) {
 		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
 			mix_ok = false;
-			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << std::endl;
 			return false;
 		}
 
@@ -317,7 +337,7 @@ bool init_sound() {
 		Mix_GroupChannel(bell_channel, SOUND_BELL);
 		Mix_GroupChannel(timer_channel, SOUND_TIMER);
 		Mix_GroupChannels(source_channel_start, source_channel_last, SOUND_SOURCES);
-		Mix_GroupChannel(UI_sound_channel, SOUND_UI);
+		Mix_GroupChannels(UI_sound_channel_start, UI_sound_channel_last, SOUND_UI);
 		Mix_GroupChannels(n_reserved_channels, n_of_channels - 1, SOUND_FX);
 
 		set_sound_volume(preferences::sound_volume());
@@ -328,6 +348,13 @@ bool init_sound() {
 		Mix_ChannelFinished(channel_finished_hook);
 
 		LOG_AUDIO << "Audio initialized.\n";
+
+		DBG_AUDIO << "Channel layout: " << n_of_channels << " channels (" << n_reserved_channels << " reserved)\n"
+				  << "    " << bell_channel << " - bell\n"
+				  << "    " << timer_channel << " - timer\n"
+				  << "    " << source_channel_start << ".." << source_channel_last << " - sound sources\n"
+				  << "    " << UI_sound_channel_start << ".." << UI_sound_channel_last << " - UI\n"
+				  << "    " << UI_sound_channel_last + 1 << ".." << n_of_channels - 1 << " - sound effects\n";
 
 		play_music();
 	}
@@ -348,7 +375,7 @@ void close_sound() {
 
 		int numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
 		if(numtimesopened == 0) {
-			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << std::endl;
 		}
 		while (numtimesopened) {
 			Mix_CloseAudio();
@@ -370,7 +397,7 @@ void reset_sound() {
 	if (music || sound || bell || UI_sound) {
 		sound::close_sound();
 		if (!sound::init_sound()) {
-			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << std::endl;
 		}
 		if (!music)
 			sound::stop_music();
@@ -479,7 +506,10 @@ static void play_new_music()
 	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
-		Mix_Music* const music = Mix_LoadMUS(filename.c_str());
+
+		SDL_RWops *rwops = filesystem::load_RWops(filename);
+		Mix_Music* const music = Mix_LoadMUSType_RW(rwops, MUS_NONE, true); // SDL takes ownership of rwops
+
 		if(music == NULL) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': "
 					  << Mix_GetError() << "\n";
@@ -499,7 +529,7 @@ static void play_new_music()
 	const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
 	if(res < 0)
 	{
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename <<" \n";
+		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename <<" " << std::endl;
 	}
 
 	want_new_music=false;
@@ -524,6 +554,10 @@ void play_music_repeatedly(const std::string &id)
 void play_music_config(const config &music_node)
 {
 	music_track track( music_node );
+
+	if (!track.valid() && !track.id().empty()) {
+		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist." << std::endl;
+	}
 
 	// If they say play once, we don't alter playlist.
 	if (track.play_once()) {
@@ -550,17 +584,16 @@ void play_music_config(const config &music_node)
 		if(itor == current_track_list.end()) {
 			current_track_list.push_back(track);
 		} else {
-			ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'\n";
+			ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'" << std::endl;
 		}
-	}
-	else if(track.id().empty() == false) {
-		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.\n";
 	}
 
 	// They can tell us to start playing this list immediately.
 	if (track.immediate()) {
 		current_track = track;
 		play_music();
+	} else if (!track.append()) { // Make sure the current track is finished
+		current_track.set_play_once(true);
 	}
 }
 
@@ -627,7 +660,17 @@ void reposition_sound(int id, unsigned int distance)
 	{
 		if (channel_ids[ch] != id) continue;
 		if (distance >= DISTANCE_SILENT) {
-			Mix_FadeOutChannel(ch, 100);
+			// Don't call Mix_FadeOutChannel if the channel's volume is set to
+			// zero. It doesn't do anything in that case and the channel will
+			// resume playing as soon as its volume is reset to a non-zero
+			// value, which results in issues like sound sources deleted while
+			// their volume is zero coming back to life and escaping Wesnoth's
+			// sound source management code.
+			if (Mix_Volume(ch, -1) == 0) {
+				Mix_HaltChannel(ch);
+			} else {
+				Mix_FadeOutChannel(ch, 100);
+			}
 		} else {
 			Mix_SetDistance(ch, distance);
 		}
@@ -687,12 +730,13 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 			throw chunk_load_exception();
 		}
 		temp_chunk.group = group;
-		std::string const &filename = get_binary_file_location("sounds", file);
+		std::string const &filename = filesystem::get_binary_file_location("sounds", file);
 
 		if (!filename.empty()) {
-			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
+			SDL_RWops *rwops = filesystem::load_RWops(filename);
+			temp_chunk.set_data(Mix_LoadWAV_RW(rwops, true)); // SDL takes ownership of rwops
 		} else {
-			ERR_AUDIO << "Could not load sound file '" << file << "'.\n";
+			ERR_AUDIO << "Could not load sound file '" << file << "'." << std::endl;
 			throw chunk_load_exception();
 		}
 
@@ -762,7 +806,7 @@ void play_sound_internal(const std::string& files, channel_group group, unsigned
 	}
 
 	if(res < 0) {
-		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
+		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << std::endl;
 		//still keep it in the sound cache, in case we want to try again later
 		return;
 	}
@@ -822,7 +866,9 @@ void set_sound_volume(int vol)
 
 		// Bell, timer and UI have separate channels which we can't set up from this
 		for (unsigned i = 0; i < n_of_channels; ++i){
-			if(i != UI_sound_channel && i != bell_channel && i != timer_channel) {
+			if(!(i >= UI_sound_channel_start && i <= UI_sound_channel_last)
+			   && i != bell_channel && i != timer_channel)
+			{
 				Mix_Volume(i, vol);
 			}
 		}
@@ -849,7 +895,9 @@ void set_UI_volume(int vol)
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
 
-		Mix_Volume(UI_sound_channel, vol);
+		for (unsigned i = UI_sound_channel_start; i <= UI_sound_channel_last; ++i) {
+			Mix_Volume(i, vol);
+		}
 	}
 }
 

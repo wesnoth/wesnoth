@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013
+   Copyright (C) 2009 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -27,9 +27,10 @@
 #include "player_connection.hpp"
 #include "rooms.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_array.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 class server
 {
@@ -131,7 +132,8 @@ private:
 
 	PlayerMap player_connections_;
 
-	std::vector<wesnothd::game*> games_;
+	typedef boost::ptr_vector<wesnothd::game> t_games;
+	t_games games_;
 	std::set<network::connection> not_logged_in_;
 
 	wesnothd::room_manager rooms_;
@@ -139,6 +141,7 @@ private:
 
 	/** server socket/fifo. */
 	boost::scoped_ptr<input_stream> input_;
+	std::string input_path_;
 
 	const std::string config_file_;
 	config cfg_;
@@ -214,9 +217,9 @@ private:
 	                        simple_wml::document& data);
 	void process_data_game(const network::connection sock,
 	                       simple_wml::document& data);
-	void delete_game(std::vector<wesnothd::game*>::iterator game_it);
+	void delete_game(t_games::iterator game_it);
 
-	void update_game_in_lobby(const wesnothd::game* g, network::connection exclude=0);
+	void update_game_in_lobby(const wesnothd::game& g, network::connection exclude=0);
 
 	void start_new_server();
 

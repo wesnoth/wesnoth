@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -82,6 +82,9 @@ bool input_stream::read_line(std::string& str)
 	char block[block_size];
 
 	const size_t nbytes = read(fd_,block,block_size);
+	if (nbytes == static_cast<size_t>(-1)) {
+		return false;
+	}
 	std::copy(block,block+nbytes,std::back_inserter(data_));
 
 	const std::deque<char>::iterator itor = std::find(data_.begin(),data_.end(),'\n');

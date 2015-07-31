@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,13 +18,14 @@
 
 #include "font.hpp"
 #include "gettext.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "theme.hpp"
+#include "utils/foreach.tpp"
 #include "wml_exception.hpp"
-
-#include <boost/foreach.hpp>
+#include "sdl/rect.hpp"
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
@@ -36,7 +37,7 @@ namespace {
 	const int YDim = 768;
 
 	const size_t DefaultFontSize = font::SIZE_NORMAL;
-        const Uint32 DefaultFontRGB = 0x00C8C8C8;
+	const Uint32 DefaultFontRGB = 0x00C8C8C8;
 
 	_rect ref_rect = { 0, 0, 0, 0 };
 }
@@ -157,60 +158,86 @@ namespace {
 
 #endif
 
-static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
+/**
+ * Returns a copy of the wanted resolution.
+ *
+ * The function returns a copy since our caller uses a copy of this resolution
+ * as base to expand a partial resolution.
+ *
+ * @param resolutions             A config object containing the expanded
+ *                                resolutions.
+ * @param id                      The id of the resolution to return.
+ *
+ * @throw config::error           If the @p id is not found.
+ *
+ * @returns                       A copy of the resolution config.
+ */
+static config get_resolution(const config& resolutions, const std::string& id)
 {
-	std::vector<config> res_cfgs_;
-	// resolve all the partialresolutions
-	BOOST_FOREACH(const config &part, top_cfg.child_range("partialresolution"))
-	{
-		// follow the inheritance hierarchy and push all the nodes on the stack
-		std::vector<const config*> parent_stack(1, &part);
-		const config *parent;
-		std::string parent_id = part["inherits"];
-		while (!*(parent = &top_cfg.find_child("resolution", "id", parent_id)))
-		{
-			parent = &top_cfg.find_child("partialresolution", "id", parent_id);
-			if (!*parent)
-				throw config::error("[partialresolution] refers to non-existent [resolution] " + parent_id);
-			parent_stack.push_back(parent);
-			parent_id = (*parent)["inherits"].str();
-		}
-
-		// Add the parent resolution and apply all the modifications of its children
-		res_cfgs_.push_back(*parent);
-		while (!parent_stack.empty()) {
-			//override attributes
-			res_cfgs_.back().merge_attributes(*parent_stack.back());
-			BOOST_FOREACH(const config &rm, parent_stack.back()->child_range("remove")) {
-				find_ref(rm["id"], res_cfgs_.back(), true);
-			}
-
-			BOOST_FOREACH(const config &chg, parent_stack.back()->child_range("change"))
-			{
-				config &target = find_ref(chg["id"], res_cfgs_.back());
-				target.merge_attributes(chg);
-			}
-
-			// cannot add [status] sub-elements, but who cares
-			if (const config &c = parent_stack.back()->child("add"))
-			{
-				BOOST_FOREACH(const config::any_child &j, c.all_children_range()) {
-					res_cfgs_.back().add_child(j.key, j.cfg);
-				}
-			}
-
-			parent_stack.pop_back();
+	FOREACH(const AUTO& resolution, resolutions.child_range("resolution")) {
+		if(resolution["id"] == id) {
+			return resolution;
 		}
 	}
+
+	throw config::error(
+			  "[partialresolution] refers to non-existent [resolution] " + id);
+}
+
+/**
+ * Returns a config with all partial resolutions of a theme expanded.
+ *
+ * @param theme                   The original object, whose objects need to be
+ *                                expanded.
+ *
+ * @returns                       A new object with the expanded resolutions in
+ *                                a theme. This object no longer contains
+ *                                partial resolutions.
+ */
+static config expand_partialresolution(const config& theme)
+{
+	config result;
+
 	// Add all the resolutions
-	BOOST_FOREACH(const config &res, top_cfg.child_range("resolution")) {
-		dst_cfg.add_child("resolution", res);
+	FOREACH(const AUTO& resolution, theme.child_range("resolution")) {
+		result.add_child("resolution", resolution);
 	}
-	// Add all the resolved resolutions
-	for(std::vector<config>::const_iterator k = res_cfgs_.begin(); k != res_cfgs_.end(); ++k) {
-		dst_cfg.add_child("resolution", (*k));
+
+	// Resolve all the partialresolutions
+	FOREACH(const AUTO& part, theme.child_range("partialresolution")) {
+		config resolution = get_resolution(result, part["inherits"]);
+		resolution.merge_attributes(part);
+
+		FOREACH(const AUTO& remove, part.child_range("remove")) {
+			VALIDATE(!remove["id"].empty()
+					, missing_mandatory_wml_key(
+						  "[theme][partialresolution][remove]"
+						, "id"));
+
+			find_ref(remove["id"], resolution, true);
+		}
+
+		FOREACH(const AUTO& change, part.child_range("change")) {
+			VALIDATE(!change["id"].empty()
+					, missing_mandatory_wml_key(
+						  "[theme][partialresolution][change]"
+						, "id"));
+
+			config& target = find_ref(change["id"], resolution, false);
+			target.merge_attributes(change);
+		}
+
+		// cannot add [status] sub-elements, but who cares
+		FOREACH(const AUTO& add, part.child_range("add")) {
+			FOREACH(const AUTO& child, add.all_children_range()) {
+				resolution.add_child(child.key, child.cfg);
+			}
+		}
+
+		result.add_child("resolution", resolution);
 	}
-	return;
+
+	return result;
 }
 
 static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
@@ -228,13 +255,13 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		// override default reference rect with "ref" parameter if any
 		if (!cfg["ref"].empty()) {
 			if (resol_cfg == NULL) {
-				ERR_DP << "Use of ref= outside a [resolution] block\n";
+				ERR_DP << "Use of ref= outside a [resolution] block" << std::endl;
 			} else {
 				//DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
-				const config ref = find_ref (cfg["ref"], *resol_cfg);
+				const config& ref = find_ref (cfg["ref"], *resol_cfg);
 
 				if (ref["id"].empty()) {
-					ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";
+					ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"" << std::endl;
 				} else if (ref["rect"].empty()) {
 					ERR_DP << "Reference to id \"" << cfg["ref"] <<
 						"\" which does not have a \"rect\"\n";
@@ -252,9 +279,9 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 theme::object::object() :
 	location_modified_(false),
 	id_(),
-	loc_(empty_rect),
-	relative_loc_(empty_rect),
-	last_screen_(empty_rect),
+	loc_(sdl::empty_rect),
+	relative_loc_(sdl::empty_rect),
+	last_screen_(sdl::empty_rect),
 	xanchor_(object::FIXED),
 	yanchor_(object::FIXED)
 {
@@ -262,7 +289,7 @@ theme::object::object() :
 
 theme::object::object(const config& cfg) :
 		location_modified_(false), id_(cfg["id"]), loc_(read_sdl_rect(cfg)),
-		relative_loc_(empty_rect), last_screen_(empty_rect),
+		relative_loc_(sdl::empty_rect), last_screen_(sdl::empty_rect),
 		xanchor_(read_anchor(cfg["xanchor"])), yanchor_(read_anchor(cfg["yanchor"]))
 {
 }
@@ -374,7 +401,7 @@ theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 {
 	static const std::string top_anchor = "top", left_anchor = "left",
 	                         bot_anchor = "bottom", right_anchor = "right",
-							 fixed_anchor = "fixed", proportional_anchor = "proportional";
+							 proportional_anchor = "proportional";
 	if(str == top_anchor || str == left_anchor)
 		return TOP_ANCHORED;
 	else if(str == bot_anchor || str == right_anchor)
@@ -432,26 +459,26 @@ theme::label::label(const config& cfg) :
 
 	if (cfg.has_attribute("font_rgb"))
 	{
-	std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
-	  if(3 <= rgb_vec.size()){
-	    std::vector<std::string>::iterator c=rgb_vec.begin();
-	    int r,g,b;
-	    r = (atoi(c->c_str()));
-	    ++c;
-	    if(c != rgb_vec.end()){
-	      g = (atoi(c->c_str()));
-	    }else{
-	      g=0;
-	    }
-	    ++c;
-	    if(c != rgb_vec.end()){
-	      b=(atoi(c->c_str()));
-	    }else{
-	      b=0;
-	    }
-	    font_rgb_ = (((r<<16) & 0x00FF0000) + ((g<<8) & 0x0000FF00) + ((b) & 0x000000FF));
-	    font_rgb_set_=true;
-	  }
+		std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
+		if (3 <= rgb_vec.size()) {
+			std::vector<std::string>::iterator c=rgb_vec.begin();
+			int r,g,b;
+			r = (atoi(c->c_str()));
+			++c;
+			if (c != rgb_vec.end()) {
+				g = (atoi(c->c_str()));
+				++c;
+			} else {
+				g=0;
+			}
+			if (c != rgb_vec.end()) {
+				b=(atoi(c->c_str()));
+			} else {
+				b=0;
+			}
+			font_rgb_ = (((r<<16) & 0x00FF0000) + ((g<<8) & 0x0000FF00) + ((b) & 0x000000FF));
+			font_rgb_set_=true;
+		}
 	}
 }
 
@@ -481,10 +508,10 @@ theme::status_item::status_item(const config& cfg) :
 	    ++c;
 	    if(c != rgb_vec.end()){
 	      g = (atoi(c->c_str()));
+	      ++c;
 	    }else{
 	      g=0;
 	    }
-	    ++c;
 	    if(c != rgb_vec.end()){
 	      b=(atoi(c->c_str()));
 	    }else{
@@ -545,6 +572,8 @@ theme::menu::menu(const config &cfg):
 theme::action::action() :
 	object(),
 	context_(false),
+	auto_tooltip_(false),
+	tooltip_name_prepend_(false),
 	title_(),
 	tooltip_(),
 	image_(),
@@ -568,13 +597,15 @@ const std::string theme::action::tooltip(size_t index) const {
 	if (auto_tooltip_ && tooltip_.empty() && items_.size() > index) {
 		result << hotkey::get_description(items_[index]);
 		if (!hotkey::get_names(items_[index]).empty())
-			result << "\n" << N_("Hotkey(s): ") << hotkey::get_names(items_[index]);
+			result << "\n" << _("Hotkey(s): ") << hotkey::get_names(items_[index]);
 		result << "\n" << hotkey::get_tooltip(items_[index]);
 	} else if (tooltip_name_prepend_ && items_.size() == 1) {
 		result << hotkey::get_description(items_[index]);
 		if (!hotkey::get_names(items_[index]).empty())
-			result << "\n" << N_("Hotkey(s): ") << hotkey::get_names(items_[index]);
-	    result << "\n" << tooltip_;
+			result << "\n" << _("Hotkey(s): ") << hotkey::get_names(items_[index]);
+		result << "\n" << tooltip_;
+	} else {
+		result << tooltip_;
 	}
 
 	return result.str();
@@ -596,9 +627,7 @@ theme::theme(const config& cfg, const SDL_Rect& screen) :
 	palette_(),
 	border_()
 {
-	config tmp;
-	expand_partialresolution(tmp, cfg);
-	do_resolve_rects(tmp, cfg_);
+	do_resolve_rects(expand_partialresolution(cfg), cfg_);
 	set_resolution(screen);
 }
 
@@ -629,7 +658,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	if (!current) {
 		if (cfg_.child_count("resolution")) {
-			ERR_DP << "No valid resolution found\n";
+			ERR_DP << "No valid resolution found" << std::endl;
 		}
 		return false;
 	}
@@ -878,7 +907,9 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 		return NULL;
 }
 
-std::map<std::string, config> theme::known_themes;
+typedef std::map<std::string, config> known_themes_map;
+known_themes_map theme::known_themes;
+
 void theme::set_known_themes(const config* cfg)
 {
 	known_themes.clear();
@@ -887,20 +918,29 @@ void theme::set_known_themes(const config* cfg)
 
 	BOOST_FOREACH(const config &thm, cfg->child_range("theme"))
 	{
-		std::string thm_name = thm["name"];
-		if (!thm["hidden"].to_bool(false))
-			known_themes[thm_name] = thm;
+		std::string thm_id = thm["id"];
+
+		if (!thm["hidden"].to_bool(false)) {
+			known_themes[thm_id] = thm;
+		}
 	}
 }
 
-std::vector<std::string> theme::get_known_themes(){
-    std::vector<std::string> names;
+std::vector<theme_info> theme::get_known_themes()
+{
+    std::vector<theme_info> res;
 
+	for(known_themes_map::const_iterator i = known_themes.begin();
+		i != known_themes.end();
+		++i)
+	{
+		res.push_back(theme_info());
+		res.back().id = i->first;
+		res.back().name = i->second["name"].t_str();
+		res.back().description = i->second["description"].t_str();
+	}
 
-    for(std::map<std::string, config>::iterator p_thm=known_themes.begin();p_thm!=known_themes.end();++p_thm){
-        names.push_back(p_thm->first);
-    }
-    return(names);
+	return res;
 }
 
 const theme::menu *theme::get_menu_item(const std::string &key) const

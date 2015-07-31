@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,14 +20,22 @@
 
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
+#include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/settings.hpp"
-#include "mapgen.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "generators/map_generator.hpp"
+#include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -39,15 +47,15 @@ namespace gui2 {
  * should be used to generate a map.
  *
  * @begin{table}{dialog_widgets}
- * current_generator & & label & m &
- *         The label displaying the name of the currently selected generator. $
+ *
+ * generators_list & & listbox & m &
+ *         Listbox displaying known map generators. $
  *
  * settings & & button & m &
  *         When clicked this button opens the generator settings dialog. $
  *
- * next_generator & & button & m &
- *         Selects the next generator in the list, this list wraps at the
- *         end. $
+ * seed_textbox & & text_box & m &
+ *         Allows entering a seed for the map generator. $
  *
  * @end{table}
  */
@@ -56,44 +64,43 @@ REGISTER_DIALOG(editor_generate_map)
 
 teditor_generate_map::teditor_generate_map()
 	: map_generators_()
+	, last_map_generator_(NULL)
 	, current_map_generator_(0)
-	, current_generator_label_(NULL)
+	, random_seed_()
 	, gui_(NULL)
 {
 }
 
-void teditor_generate_map::do_settings(twindow& /*window*/)
+void teditor_generate_map::do_generator_selected(twindow& window)
 {
-	map_generator* mg = get_selected_map_generator();
-	if (mg->allow_user_config()) {
-		mg->user_config(*gui_);
+	tlistbox& list = find_widget<tlistbox>(&window, "generators_list", false);
+	const int current = list.get_selected_row();
+
+	if(current == -1 || unsigned(current) > map_generators_.size()) {
+		return; // shouldn't happen!
 	}
+
+	tbutton& settings = find_widget<tbutton>(&window, "settings", false);
+	settings.set_active(map_generators_[current]->allow_user_config());
+
+	current_map_generator_ = current;
 }
 
-void teditor_generate_map::do_next_generator(twindow& window)
+void teditor_generate_map::do_settings(twindow&)
 {
-	current_map_generator_++;
-	current_map_generator_ %= map_generators_.size();
-	update_current_generator_label(window);
+	get_selected_map_generator()->user_config(*gui_);
 }
 
 map_generator* teditor_generate_map::get_selected_map_generator()
 {
-	assert(static_cast<size_t>(current_map_generator_) < map_generators_.size());
+	assert(static_cast<size_t>(current_map_generator_)
+		   < map_generators_.size());
 	return map_generators_[current_map_generator_];
 }
 
-void teditor_generate_map::update_current_generator_label(twindow& window)
+void teditor_generate_map::select_map_generator(map_generator* mg)
 {
-	std::stringstream ss;
-	ss << lexical_cast<std::string>(current_map_generator_ + 1)
-			<< "/" << lexical_cast<std::string>(map_generators_.size())
-			<< ": " << get_selected_map_generator()->name()
-			<< ", " << get_selected_map_generator()->config_name();
-
-	current_generator_label_->set_label(ss.str());
-
-	window.invalidate_layout();
+	last_map_generator_ = mg;
 }
 
 void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
@@ -101,25 +108,51 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 	assert(!map_generators_.empty());
 	assert(gui_);
 
-	current_generator_label_ =
-			&find_widget<tlabel>(&window, "current_generator", false);
+	register_text("seed_textbox", false, random_seed_, false);
 
-	tbutton& settings_button =
-			find_widget<tbutton>(&window, "settings", false);
-	connect_signal_mouse_left_click(settings_button, boost::bind(
-			  &teditor_generate_map::do_settings
-			, this
-			, boost::ref(window)));
+	tlistbox& list = find_widget<tlistbox>(&window, "generators_list", false);
+	window.keyboard_capture(&list);
 
-	tbutton& next_generator_button =
-			find_widget<tbutton>(&window, "next_generator", false);
-	connect_signal_mouse_left_click(next_generator_button, boost::bind(
-			  &teditor_generate_map::do_next_generator
-			, this
-			, boost::ref(window)));
+	std::map<std::string, string_map> lrow;
+	FOREACH(const AUTO & gen, map_generators_)
+	{
+		assert(gen);
+		lrow["generator_name"]["label"] = gen->config_name();
+		// lrow["generator_id"]["label"] = gen->name();
 
-	update_current_generator_label(window);
+		list.add_row(lrow);
+
+		if(gen == last_map_generator_) {
+			list.select_row(list.get_item_count() - 1);
+		}
+	}
+
+	if (last_map_generator_ != NULL) {
+		// We need to call this manually because it won't be called by
+		// list.select_row() even if we set the callback before
+		// calling it
+		this->do_generator_selected(window);
+	}
+
+	list.set_callback_item_change(
+			boost::bind(&teditor_generate_map::do_generator_selected, this, boost::ref(window)));
+
+	tbutton& settings_button = find_widget<tbutton>(&window, "settings", false);
+	connect_signal_mouse_left_click(
+			settings_button,
+			boost::bind(&teditor_generate_map::do_settings,
+						this,
+						boost::ref(window)));
+}
+
+boost::optional<boost::uint32_t> teditor_generate_map::get_seed()
+{
+	try {
+		return lexical_cast<boost::uint32_t>(random_seed_);
+	}
+	catch(const bad_lexical_cast& ) {
+		return boost::none;
+	}
 }
 
 } // namespace gui2
-

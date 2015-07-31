@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,13 +28,13 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(matrix)
 
 
-tstate_default::tstate_default()
-	: state_(ENABLED)
+tstate_default::tstate_default() : state_(ENABLED)
 {
 }
 void tstate_default::set_active(const bool active)
@@ -55,13 +55,11 @@ unsigned tstate_default::get_state() const
 }
 
 tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
-	: tbase(builder, get_control_type())
-	, content_()
-	, pane_(NULL)
+	: tbase(builder, get_control_type()), content_(), pane_(NULL)
 {
-	boost::intrusive_ptr<const tmatrix_definition::tresolution> cfg =
-			boost::dynamic_pointer_cast<
-				const tmatrix_definition::tresolution>(config());
+	boost::intrusive_ptr<const tmatrix_definition::tresolution>
+	cfg = boost::dynamic_pointer_cast<const tmatrix_definition::tresolution>(
+			config());
 
 	tbuilder_widget::treplacements replacements;
 	replacements.insert(std::make_pair("_main", builder.builder_main));
@@ -93,9 +91,9 @@ tmatrix* tmatrix::build(const implementation::tbuilder_matrix& builder)
 	return new tmatrix(builder);
 }
 
-unsigned tmatrix::create_item(
-		  const std::map<std::string, string_map>& item_data
-		, const std::map<std::string, std::string>& tags)
+unsigned
+tmatrix::create_item(const std::map<std::string, string_map>& item_data,
+					 const std::map<std::string, std::string>& tags)
 {
 	return pane_->create_item(item_data, tags);
 }
@@ -112,10 +110,8 @@ void tmatrix::layout_initialise(const bool full_initialisation)
 	content_.layout_initialise(full_initialisation);
 }
 
-void tmatrix::impl_draw_children(
-		  surface& frame_buffer
-		, int x_offset
-		, int y_offset)
+void
+tmatrix::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	content_.draw_children(frame_buffer, x_offset, y_offset);
 }
@@ -126,7 +122,7 @@ void tmatrix::layout_children()
 }
 
 void tmatrix::child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack)
+										const std::vector<twidget*>& call_stack)
 {
 	std::vector<twidget*> child_call_stack = call_stack;
 	content_.populate_dirty_list(caller, child_call_stack);
@@ -141,9 +137,8 @@ twidget* tmatrix::find_at(const tpoint& coordinate, const bool must_be_active)
 	return content_.find_at(coordinate, must_be_active);
 }
 
-const twidget* tmatrix::find_at(
-			const tpoint& coordinate,
-			const bool must_be_active) const
+const twidget* tmatrix::find_at(const tpoint& coordinate,
+								const bool must_be_active) const
 {
 	return content_.find_at(coordinate, must_be_active);
 }
@@ -157,9 +152,8 @@ twidget* tmatrix::find(const std::string& id, const bool must_be_active)
 	}
 }
 
-const twidget* tmatrix::find(
-		  const std::string& id
-		, const bool must_be_active) const
+const twidget* tmatrix::find(const std::string& id, const bool must_be_active)
+		const
 {
 	if(const twidget* result = twidget::find(id, must_be_active)) {
 		return result;

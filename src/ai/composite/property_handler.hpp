@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #ifndef AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
 #define AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 #include <boost/foreach.hpp>
 
 #include "config.hpp"

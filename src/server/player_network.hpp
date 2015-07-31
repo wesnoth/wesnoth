@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,8 +20,10 @@
 #include "player.hpp"
 #include "simple_wml.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
+#include "../log.hpp"
 
+extern lg::log_domain log_config_pn;
 namespace wesnothd {
 
 namespace chat_message {
@@ -67,11 +69,36 @@ void send_to_many(simple_wml::document& data,
  * @param exclude     if nonzero, do not send to this player
  * @param packet_type the packet type, if empty the root node name is used
  */
+/*
 void send_to_many(simple_wml::document& data,
 				  const connection_vector& vec,
 				  boost::function<bool (network::connection)> pred,
 				  const network::connection exclude = 0,
 				  std::string packet_type = "");
+*/
+
+template<typename TFilter>
+void send_to_many(simple_wml::document& data,
+				  const connection_vector& vec,
+				  const TFilter& pred,
+				  const network::connection exclude = 0,
+				  std::string packet_type = "")
+{
+	if (packet_type.empty()) {
+		packet_type = data.root().first_child().to_string();
+	}
+	try {
+		simple_wml::string_span s = data.output_compressed();
+		for(connection_vector::const_iterator i = vec.begin(); i != vec.end(); ++i) {
+			if ((*i != exclude) && pred(*i)) {
+				network::send_raw_data(s.begin(), s.size(), *i, packet_type);
+			}
+		}
+	} catch (simple_wml::error& e) {
+		LOG_STREAM(warn, log_config_pn) << __func__ << ": simple_wml error: " << e.message << std::endl;
+	}
+}
+
 } //end namespace wesnothd
 
 #endif

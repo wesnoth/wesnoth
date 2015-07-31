@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,13 +17,14 @@
  */
 
 #ifndef PALETTE_MANAGER_H_INCLUDED
-#define PALETTE_MANAGER H_INCLUDED
+#define PALETTE_MANAGER_H_INCLUDED
 
 #include "common_palette.hpp"
 
 #include "empty_palette.hpp"
 #include "terrain_palettes.hpp"
 #include "unit_palette.hpp"
+#include "item_palette.hpp"
 
 namespace editor {
 
@@ -53,7 +54,7 @@ public:
 
 	void adjust_size();
 
-	handler_vector handler_members();
+	sdl_handler_vector handler_members();
 	virtual void handle_event(const SDL_Event& event);
 
 	/**
@@ -80,7 +81,7 @@ public:
 	boost::scoped_ptr<terrain_palette> terrain_palette_;
 	boost::scoped_ptr<unit_palette>    unit_palette_;
 	boost::scoped_ptr<empty_palette>   empty_palette_;
-
+	boost::scoped_ptr<item_palette>    item_palette_;
 };
 
 }

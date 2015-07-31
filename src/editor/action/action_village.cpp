@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -58,7 +58,7 @@ void editor_action_village::perform_without_undo(map_context& mc) const
 	}
 
 	//TODO 0 is a bad argument
-	teams[side_number_].get_village(loc_, 0, false);
+	teams[side_number_].get_village(loc_, 0, NULL);
 }
 
 

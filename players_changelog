@@ -1,19 +1,594 @@
 This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
-changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
+changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
-Version 1.11.4+dev:
+Version 1.13.1+dev:
  * Campaigns:
-   * Legend of Wesmere:
-     * Scenario 05: Elvish Horse Archers can now carry the treasure
-     * Scenario 09: the player's loyal units stay in the recall list, instead of
-       being stored and then unstored in scenario 14
+   * Delfador's Memoirs:
+     * Added defeat condition for death of the last undead veteran in
+       'Showdown in the Northern Swamp' (bug #23668)
+   * Under the Burning Suns:
+     * Gave Garak a new ability called Teaching (at the start of every turn,
+       his experience points are transferred to adjacent units on the same side)
+
+ * Graphics:
+   * New animated water.
+
  * Language and i18n:
-   * Updated translations:
+   * Updated translations: Galician.
+
+ * Music and sound effects:
+   * New dwarf hit and die sounds.
+
  * User interface:
-   * Added notification support for Windows
+   * Added a version dialog button to the title screen, replacing the Paths
+     option previously found in Preferences -> General.
+
+
+Version 1.13.1:
+ * Security fixes:
+   * Disallowed inclusion of .pbl files from WML, independent of extension
+     case (CVE-2015-5069, CVE-2015-5070, bug #23504).
+
+ * Campaigns:
+   * Dead Water:
+     * The Stun effect now expires at the stunned unit's side turn end
+   * Under the Burning Suns:
+     * The Stun effect now expires at the stunned unit's side turn end
+
+ * Editor:
+   * Fixed memory corruption bug in the Side Setup dialog.
+
+ * Graphics:
+   * New generic portraits for the Walking Corpse and Soulless
+
+ * Language and i18n:
+   * Updated translations: Galician, Scottish Gaelic, Russian.
+
+ * Multiplayer:
+   * A New Land:
+     * Removed the ability to select individual factions when using map
+       settings as this breaks player recruit lists (bug #23593).
+   * Removed the Silver Mage from the available leaders for the Rebels faction
+     in Age of Heroes.
+   * Fixed "Accept whispers from friends only" not working with the default
+     lobby UI, and added a warning every 5 minutes for individual rejected
+     senders.
+   * MP campaigns now behave more like single-player campaigns.
+   * Various fixes in the MP game setup screens (bugs #23641, #23509, #23496,
+     #23462).
+
+ * Units:
+   * Fixed the Shuja not having the default AMLA.
+
+ * User interface:
+   * Fixed minimap buttons appearing without contents or in the wrong state
+     during WML start events until they are interacted with or control is given
+     to the player for the first time or some other unspecified thing happens.
+   * Force uniform font rendering settings across X11 and Apple OS X, avoiding
+     color glitches resulting from incorrect applications of subpixel hinting
+     (bug #20337).
+   * Fixed unit bars, ellipses, and orbs disappearing for individual units in
+     replay mode when using Skip Animations/Quick Replays if they moved without
+     attacking or otherwise switching to a new animation.
+   * Chat Log dialog now starts on the last log page when there are multiple
+     pages.
+   * Started showing on which difficulty levels a campaign was completed.
+   * Modifications for single-player campaigns are now selectable directly in
+     the single-player Campaigns menu.
+   * The game now automatically detects whether to show the game setup screen
+     in single-player mode.
+
+ * Miscellaneous and bug fixes:
+   * Fixed a segfault in [move_units_fake].
+   * Fixed unbound memory read in the MP map selection screen that could lead
+     to a segmentation fault or other abnormal behavior (bug #23606).
+   * Made silence.ogg larger to work around a crash involving the multiplayer
+     lobby with music and sound enabled (bug #23633, bug #23599) with libvorbis
+     builds affected by Debian bug #782831.
+   * Moved [role] tag to Lua (fix for bug #23630)
+   * Removed some config reloads, especially when leaving games or entering
+     the single-player Campaigns menu.
+
+
+Version 1.13.0:
+ * Security fixes:
+   * Fixed arbitrary file read from WML/Lua API (CVE-2015-0844, bug #23440).
+
+ * Add-ons client:
+   * The Update All button is now displayed on all Add-on Manager views instead
+     of just the Upgradable filter view, and enabled only when there is at
+     least one add-on that may be upgraded.
+
+ * Campaigns:
+   * Use the new bigmaps for A Tale of Two Brothers, Delfadors Memoirs, The
+     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of
+     Wesmere.
+   * Descent into Darkness:
+     * Fixed various issues with player and enemy gold and income in
+       'Descent into Darkness'.
+     * Fixed Darken Volk's ellipse in scenarios 'A Small Favor part 3' and
+       'Alone at Last'.
+     * Fixed Darken Volk being completely passive in 'Alone at Last'.
+     * 'Return to Parthyn' now has variable content depending on whether
+        necromancy was used in 'Saving Parthyn'.
+   * Eastern Invasion:
+     * In 'Captured', stolen gold won't be mentioned if the player had no
+       carryover gold.
+     * Updated maps for scenario 14, 16 and 17b.
+     * New animation for Ravanal's shadow wave.
+     * Added the Skeleton Rider line.
+     * New map for 'Mal-Ravanal's Capital', as well as updated
+       maps for scenario 2 and 4b.
+     * Tweaked and rebalanced all scenarios up to 'Two Paths'.
+   * Heir to the Throne:
+     * Tweaked and expanded music playlists for all scenarios.
+     * Hide unit variations that should not be listed in the help browser.
+   * Liberty:
+     * Fixed possibility of no viable routes around guards in 'Hide and Seek'.
+     * Tweaked resistances for the Skeleton Rider line.
+   * Northern Rebirth:
+     * Fixed Sister Thera and Father Morvin respawning into the recall list if
+       the other is on the north or west map edges.
+     * Sister Threa and Father Morvin will no longer speak dialog on their death
+       after 'The Pursuit'.
+     * The maps for 'Infested Caves', 'Clearing the Mines', and 'The Pursuit'
+       have been completely redone.
+     * All scenarios up to 'Old Friend' have been significantly tweaked and
+       rebalanced.
+   * Son of the Black Eye:
+     * S2: adjusted starting villages; scenario now ends if Kapou'e is already
+       on the signpost when the messenger comes back
+     * S3: make objectives consistent between before and after trolls appear
+     * S6: remove AI controller.  It doesn't work with sides without a leader
+     * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
+     * Made allied leaders less likely to get themselves killed.
+     * Minor changes to objectives and messages in scenarios 7, 8 and 14
+   * The Hammer of Thursagan:
+     * Fixed missing objective in 'The Court of Karrag'.
+     * Rebalanced scenarios 'Invaders', 'Mages and Drakes' and 'Fear'.
+     * Fixed some messages not being shown in custom events in 'The Underlevels'
+     * 'The Court of Karrag' and 'Epilogue' feature a new map.
+   * The Rise of Wesnoth:
+     * Hide unit variations that should not be listed in the help browser.
+   * Tutorial:
+     * Rewritten with an eye to being less constricting and more informative.
+   * Under the Burning Suns:
+     * Fixed recruited Desert Archers being always male.
+     * Fixed malformed rand range errors during AI turns on medium difficulty
+       in 'A Stirring in the Night'.
+     * Fixed 100 vs. 99 movement cost warnings caused by the Desert Shyde and
+       Star unit types
+     * Fixed bug #22800: Cloaked Figure appears in strange location.
+     * Fixed bug #22799: No allies killed by enemy reinforcements.
+     * Fixed bug #22790: Various problems with dehydration.
+     * Hide unit variations that should not be listed in the help browser.
+
+ * Graphics:
+   * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
+   * Align unit overlays to the sprite rather than the occupied hex.
+   * New beach waves terrain animation.
+
+ * Help browser:
+   * Several sections have been rewritten or had their layout improved
+   * Added Defense Cap column to the Terrain Modifiers table in unit help pages
+     for units with a defense cap on at least one terrain type, which also now
+     include a note to this effect in their special notes.
+   * Autogenerated Time of Day Schedule section
+   * Unit types that do not include any visible (hide_help=no) variations no
+     longer generate topic sections.
+
+ * Language and i18n:
+   * Updated translations: Chinese (Simplified), Chinese (Traditional), Czech,
+     French, Galician, German, Greek, Hungarian, Italian, Lithuanian, Polish,
+     Portuguese, Russian, Scottish Gaelic, Slovak, Spanish, Vietnamese.
+
+ * Multiplayer:
+   * Fixed the Set Password option during game creation not having an effect
+     due to a misplaced WML attribute in the client's command for the server
+     (bug #23015).
+   * Added "no mirror" and "no ally mirror" options to the MP configure screen.
+   * Missing content for games hosted in the mp server may now be retrieved
+     automatically by clicking on these games in the mp lobby.
+
+ * Music:
+   * Change main menu track to Journey's End.
+
+ * Replays:
+   * Added a button that allows playing a single move in replay mode.
+
+ * Units:
+   * Increased the experience requirement for the Rami from 32 to 39.
+   * Increased the experience requirement for the Saree from 56 to 64.
+   * Add 'elemental' trait to Mudcrawler line.
+   * Assigned capitalized translatable names to Walking Corpse and Soulless
+     variations (bug #22902).
+
+ * User interface:
+   * Added a context menu option for command mode.
+   * Added a Classic theme which restores the 1.10 UI.
+   * Made orb and minimap colors configurable in Preferences.
+   * Added a button to copy the in-game Chat Log dialog contents to clipboard.
+   * Fixed most of the minimap buttons and the End Turn button appearing
+     without contents or in the wrong state during WML start events until they
+     are interacted with or control is given to the player for the first time.
+   * Added a new subdialog in Preferences to clean or purge the WML cache.
+   * OS X: Fixed mouse tracking issue for retina displays.
+   * Added a new "Alerts" configuration screen under Preferences > Multiplayer,
+     refactored all of the mp alerts / desktop notifications for customizability
+   * Added support for hyperlinks. In particular, in chat / addon descriptions.
+   * Added a "Disable automatic moves" preference to disable automatic movements
+     at the beginning of a turn.
+
+ * WML engine:
+   * Added support for a shuffle key in the [music] music to allow selecting
+     between random and non-random music play (bug #19653)
+
+ * Miscellaneous and bug fixes:
+   * Dropped support for AmigaOS, BeOS, and OS/2.
+   * Fixed halos glitching through locations that become shrouded after the
+     halo is rendered for the first time.
+   * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.13
+   * Fix bug #3856: The turn dialog used in hotseat MP play now applies
+     a blindfold for the duration of the dialog.
+   * Use a dropdown menu for both "skip replay" and "enter blindfold".
+     This fixes the mp lobby in width <= 800 resolutions. (Fix #21888.)
+   * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
+     performance on retina devices.
+   * Corrected behavior of "game is ready" bell. (this fixes #21910)
+   * Deliver desktop notifications in tandem with "game is ready" bell and
+     also the "game has begun" bell.
+   * The replay viewer now proceeds through sides with empty controllers when
+     using the "play_side" button, thus matching the behavior of the rest of
+     wesnoth. Bug fix #21025.
+   * Fix bug stopping drag+drop for unit movements
+   * Revert premoved units selection to Wesnoth 1.10 behavior (#21448)
+   * Fix unit move continuation if enemy discovered (#21372)
+   * Support for total conversions, so called "cores".
+   * Partial moves now able to be continued properly in whiteboard (#22231)
+   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for 
+     the default lobby.
+   * Fix bug wherein dbus notifications did not have a wesnoth icon
+   * Fix bug wherein chat history synopses weren't working right in the dbus 
+     notifications
+   * Default to classic minimap unit/village color coding (colored by side).
+   * Default to classic minimap terrain representation (satellite view).
+   * Added trait list with links to the help page for units
+   * In the help page for a units, if a unit has "terrain defense caps" (like 
+     cavalry on forests), a "Defense Capped" column is added to the terrain 
+     modifiers table, showing which terrains have a cap in place. A link to an
+     explanation of this behavior elsewhere in the help is given.
+   * When using the terrain description feature with a mixed terrain type, the 
+     game will autogenerate a formatted explanation of its best/worst
+     movement/defense properties.
+   * Autogenerate help pages for all eras and factions.
+   * Help pages for a faction autogenerates a list of races and alignments that 
+     appear in that faction.
+   * Make nice help descriptions for the default factions (using content from 
+     the wiki).
+   * Fix bug wherein hotkeys for changing tips in titlescreen aren't working.
+
+
+Version 1.11.11:
+ * Campaigns:
+   * Eastern Invasion:
+     * Updated maps for scenario 8, 11, 12, 14, 16 and 17a.
+   * Under the Burning Suns:
+     * Fixed broken unit type appearing in The Final Confrontation.
+
+ * Language and i18n:
+   * Updated translations: German, Italian, Slovak.
+
+ * User interface:
+   * Non-team labels no longer remove team labels that were present in the
+     same hex.
+
+ * Miscellaneous and bug fixes:
+   * Units can no longer be moved in linger mode (bug #21450).
+   * Labels are now removed when shroud/fog is removed, rather than waiting
+     for a new turn (bug #21434).
+   * Percent signs show when describing traits that increase damage or attacks
+     by a percentage (bug #21577).
+
+
+Version 1.11.10:
+ * Campaigns:
+   * Eastern Invasion:
+     * New world map.
+     * Rewrote scenario 'Training the Ogres' and renamed it to
+       'Capturing the Ogres'.
+     * Rewrote scenario 'Captured'.
+   * Heir to the Throne:
+     * Fixed Delfador clobbering whichever unit happens to be standing on
+       31,11 at the end of The Bay of Pearls, causing it to disappear
+       forever.
+     * S15 (The Lost General): fix bug of sighted events firing too early
+   * Legend of Wesmere:
+     * Fixed missing journey map background in story screens.
+   * Son of the Black Eye:
+     * Rebalancing of the campaign is now complete
+
+ * Language and i18n:
+   * Updated translations: Scottish Gaelic
+
+ * Multiplayer:
+   * Fix for bug #21405, in a series of features:
+     * The abort option presented to the host when a player disconnects
+       from a networked game is now a "save and abort" option.
+     * New Idle controller status: Sides may now be set in an "idle" state
+       by the host when a player disconnects from a network game. This does
+       not give any player control or vision. To proceed with the game, the
+       host must reassign the side's controller using :control, :droid, or
+       :give_control as usual. (give_control existed but was not documented)
+       Related to this, there are new commands :controller which query the
+       controller status, and :idle which toggles the idle status.
+     * New "Blindfold Replays" option: Observers may check a box in the
+       lobby so that if they join a game, they will be "blindfolded" and see
+       only a black screen until they are given control of a side.
+
+ * Units:
+   * New baseframes for Jundi, Muharib, Batal, Qatif-al-nar, Qudafi, Rasikh.
+
+ * User interface:
+   * New UI for displaying errors detected during the core and add-on WML
+     loading process (parser and preprocessor errors), including the
+     ability to copy the report to clipboard.
+   * New UI for displaying the notification that a screenshot or map
+     screenshot was successfully saved to disk, including options to open it
+     in an external application, copy the path to clipboard, or browse the
+     screenshots folder.
+   * Force grayscale antialiasing for text rendered using Cairo/Pango (e.g. by
+     GUI2) on Windows to work around ClearType-induced glitches (bug #21648).
+   * Added descriptions to the options in Preferences -> Display -> Themes.
+
+ * Miscellaneous and bug fixes:
+   * Users now get a warning if they start a multiplayer scenario through the
+     title screen load button, as this may cause eras and modifications not
+     to work correctly in subsequent scenarios of an mp campaign.
+
+
+Version 1.11.9:
+ * AI:
+   * Default AI: Gold saving is turned off by default again.
+
+ * Campaigns:
+   * Heir to the Throne:
+     * Gave Li'sar a new ability "initiative" (grants adjacent allies first
+       strike in melee).
+   * Son of the Black Eye:
+     * Rebalancing of the campaign continues and is done for Scenarios 1 (End
+       of Peace) through 8 (Giving Some Back).
+
+ * Language and i18n:
+   * Updated translations: Dutch, Portuguese, Scottish Gaelic.
+
+ * Units:
+   * Decreased the strikes of the Dwarvish Lord's hatchet attack from 2 to 1.
+   * Fixed subtle magenta TC for the Giant Mudcrawler sprites not being
+     enabled in-game.
+
+ * User interface:
+   * Corrected most of the issues left with the new default theme.
+     * Reintroduced the alignment, race and side being shown in the sidebar.
+     * Adjusted the theme to the size and shape of the new minimap frame images.
+     * Certain changes to the used text colors, sizes and alignment.
+   * Restored the old controll scheme as the default
+   * Fixed hidden variations of unit types (hide_help=yes) being listed in the
+     help browser when they shouldn't.
+   * Truncate long Advanced Preferences entries with ellipses to avoid
+     situations where the listbox is wider than the Preferences dialog frame.
+   * Team color is now applied on the Unknown unit icon in the game Status
+     Table regardless of whether the side's leader unit supports team color.
+
+ * Miscellaneous and bug fixes:
+   * Fixed possible invalid memory access issue in the MP sides configuration
+     code causing crashes for some users (bug #21449).
+   * Fixed broken image references in the Gameplay -> Time of Day help topic.
+
+
+Version 1.11.8:
+ * Add-ons client:
+   * Introduced new add-on type "SP/MP Campaign".
+   * Redesigned Add-ons Description dialog, including support for displaying
+     add-on feedback page URLs.
+
+ * Campaigns:
+   * Dead Water:
+     * New world map.
+   * Delfador's Memoirs:
+     * Updated sprite and animations for the Wose Shaman.
+   * Eastern Invasion:
+     * Made Dacyn use teal TC and Mal-Ravanal blue TC, to make them fit the
+       portraits more.
+     * Updated maps for scenario 1-7.
+   * Heir To The Throne:
+     * Increased Li'sar's lvl3 hitpoints from 52 to 62.
+     * Implemented the portrait variations for Delfador and Asheviere.
+     * Changed Kaylan's portrait and gave him teal team coloring.
+     * Changed the flaming sword so it's now a 25% increase to damage, instead
+       of changing the damage to 15-4.
+     * Added a new mechanic to Sceptre of Fire. By standing still for a turn,
+       Delfador can now tell the player the shortest path to the Sceptre.
+     * Fixed Konrad's level 1's attack animation giving an 'image not found'
+       error.
+   * Liberty:
+     * New world map.
+   * The Rise of Wesnoth:
+     * New world maps.
+     * Redesigned scenario 'A New Land'.
+   * Son of the Black Eye:
+     * Rebalancing of the campaign continues and is mostly done for Scenarios 1
+       (End of Peace) through 8 (Silent Forest).
+     * Updated sprites and animations for the Orcish Shamans.
+
+ * Graphics:
+   * New and updated animations for the Loyalist Horseman.
+
+ * Language and i18n:
+   * Updated translations: Catalan, Chinese (Traditional), Dutch, Galician,
+     Japanese, Latin.
+
+ * Multiplayer:
+   * Unit names and genders are now synced in MP games.
+   * New eras: the Default+Khalifate and Age of Heroes+Khalifate eras are now
+     available.
+
+ * Replays:
+   * Replays include the prestart and start events again.
+   * Unit names and genders are now synced between games and replays.
+   * Play/stop buttons are disabled again at the end of a replay.
+   * The 'reset replay' button works correctly and does not cause OOS
+     errors any more.
+
+ * User interface:
+   * Removed the possibility to undo unit recruits because it caused oos.
+   * Added a party full bell to the MP game configuration screen, played once
+     all human player slots have been taken.
+   * Change layout for advertized games in the MP lobby and add map icon.
+   * The "Compressed saves" and "Compress savegames using bzip2" options in
+     Preferences -> Advanced have been replaced by a single option,
+     "Compressed saved games", that lets the user pick between gzip (default),
+     bzip2, and no compression. Users who previously enabled bzip2 compression
+     will need to do so again.
+   * Added possibility to hide eras menu for campaigns in MP Create.
+   * Introduced side's name in MP Connect.
+   * Middle click scrolling is now based on distance from initial click instead
+     of the centre of the screen.
+   * Make sliders able to be scrolled with the mouse wheel
+   * Allow advanced preference booleans and mp modifications to be toggled
+     via double click
+
+
+Version 1.11.7:
+ * Add-ons client:
+   * Add-ons downloaded with clients from this version onwards are shown
+     in the Remove Add-ons with their original titles from the add-ons
+     server now, instead of artificially generating titles by replacing
+     underscores from file names.
+   * Fixed color key disparities between the Add-ons Manager dialog and the
+     add-on Description dialog.
+   * It is now possible to choose the neutral/fallback add-on sorting in
+     the Add-ons Manager dialog used when no columns have been sorted by
+     the user.
+   * Report errors caused by faulty local .pbl files properly instead of
+     presenting them as network errors.
+   * Fixed regression from 1.11.0 resulting in memory leaks and/or
+     crash-to-desktop situations when failing to connect to an add-ons
+     server.
+
+ * AI:
+   * The AI uses now a new recruitment engine. Some scenarios may be
+     not balanced yet.
+   * It is possible to choose a stronger AI in multiplayer games
+     ('Strong AI (RCA)'). For now it affects the recruitment CA only.
+
+ * Campaigns:
+   * Heir to the Throne:
+     * Gave Moremirmu a matching holy sword attack icon (bug #21248).
+   * Liberty:
+     * Gave the Death Squire the submerge ability.
+     * Increased the Death Squire's blade resistance from 10% to 40%,
+       pierce resistance from 30% to 60% and lowered its impact resistance
+       from -10% to -20%.
+     * Greatly decreased the Death Squire's HP from 66 to 44.
+   * Son of the Black Eye:
+     * We are currently in the process of rebalancing the campaign, making it
+       more difficult in accordance with its status as an expert level campaign.
+       Play testing and feedback by others would be extremely helpful.
+       Rebalancing has so far only been done for Scenarios 1 to 3.
+     * A number of other changes and fixes have also been made. See the complete
+       changelog for details.
+   * Under the Burning Suns
+     * Fixed several bugs with missing/incorrect dialog.
+     * Azkotep now correctly possesses Garak if only his champion is killed.
+
+ * Engine:
+   * CampaignWML support for multiplayer. Game will reload a config during
+     the creation of multiplayer game and possibly, after a player joins a game.
+   * Sides in a multiplayer campaign can be configured after each scenario.
+
+ * Graphics:
+   * Full animations for the dwarven thunderer line.
+   * New standing animation for the Dwarvish Berserker.
+   * New north-facing standing and attack animations for the Loyalist Spearman.
+   * New ranged attack animations for the Dark Adept line.
+
+ * Language and i18n:
+   * Updated translations: British English, German, Greek, Indonesian, Italian,
+     Korean, Lithuanian, Portuguese, Vietnamese.
+
+ * Multiplayer:
+   * Legend of Wesmere campaign is available to play in multiplayer.
+
+ * Unit changes and balancing:
+   * Gave the Death Knight the submerge ability.
+   * Increased the Death Knight's blade resistance from 10% to 40%,
+     pierce resistance from 30% to 60% and lowered its impact resistance
+     from -10% to -20%.
+   * Lowered the Death Knight's HP from 66 to 63.
+   * Lowered the Chocobone's hills defense from 50% to 40%,
+     mountain defense from 60% to 50%, fungus defense from 60% to 40%,
+     forest defense from 50% to 30%, and village defense from 60% to 40%.
+   * Increased the Chocobone's melee damage from 9-2 to 11-2.
+   * Increased the Chocobone's blade resistance from 10% to 20%.
+
+ * User Interface:
+   * Players can now assign hotkeys to wml menu items in the preferences menu.
+   * Revamped multiplayer "Create" screen and separated part of it to a new
+     "Configure" screen.
+   * MP lobby shows the campaign's name along the scenario's name
+     (CampaignWML only).
+   * Fixed potential misbehavior (including invalid memory access) from the
+     tray notifications code on Windows.
+   * New Game Paths dialog displaying filesystem locations used by the game
+     to read or write data, accessed from Preferences -> General.
+   * In-game Chat Log dialog now supports text search on timestamps, nicks,
+     and messages.
+
+
+Version 1.11.6:
+ * Add-ons client:
+   * The Description popup displays the selected add-on's dependencies now,
+     using color-keyed statuses.
+
+ * Campaigns:
+   * An Orcish Incursion:
+     * New world map.
+   * Descent Into Darkness:
+     * New world map.
+   * The South Guard:
+     * Fixed double "lich found" event in Choice in the Fog.
+
+ * Language and i18n:
+   * Updated translations: Galician, Japanese, Lithuanian, Russian, Scottish
+     Gaelic.
+
+ * Units:
+   * Added description for the Wose race.
+
+ * User interface:
+   * Unit ellipses are now automatically updated if a unit gains or loses its
+     ZoC.
+
+
+Version 1.11.5:
+ * Campaigns:
+   * Heir to the Throne:
+     * Updated Li'sar's movetype and resistances to match her armor.
+   * Legend of Wesmere:
+     * Scenario 05: Elvish Horse Archers can now carry the treasure.
+     * Scenario 09: the player's loyal units stay in the recall list, instead of
+       being stored and then unstored in scenario 14.
+
+ * Language and i18n:
+   * Updated translations: French, Galician, Latin, Lithuanian, Old English,
+     Portuguese, Portuguese (Brazil).
+
+ * User interface:
+   * Added notification support for Windows.
    * Made it so that the "Back to Turn X" and "Back to Start" menu items work
-     with .bz2 saves
+     with .bz2 saves.
+   * Removed Dfool and Experimental themes.
 
 
 Version 1.11.4:

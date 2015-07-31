@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -52,6 +52,7 @@
 
 #include "global.hpp"
 
+#include <cstdlib>
 #include <string>
 #include <sstream>
 #include <boost/mpl/set.hpp>
@@ -95,7 +96,7 @@ inline To lexical_cast(From value)
 }
 
 /** Thrown when a lexical_cast fails. */
-struct bad_lexical_cast {};
+struct bad_lexical_cast : std::exception {};
 
 namespace implementation {
 
@@ -137,7 +138,7 @@ struct tlexical_cast
  * Specialized conversion class.
  *
  * Specialized for returning strings from an integral type or a pointer to an
- * intergral type.
+ * integral type.
  */
 template <typename From>
 struct tlexical_cast<

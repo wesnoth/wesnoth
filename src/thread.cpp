@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,9 +19,15 @@
 #include "log.hpp"
 #include "thread.hpp"
 
+#include "SDL_mutex.h"
+#include "SDL_thread.h"
+#include "SDL_version.h"
 
 #define ERR_G LOG_STREAM(err, lg::general)
 
+boost::uint32_t threading::thread::get_id() { return SDL_GetThreadID(thread_); }
+
+boost::uint32_t threading::get_current_thread_id() { return SDL_ThreadID(); }
 
 static int run_async_operation(void* data)
 {
@@ -115,7 +121,7 @@ condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned 
 		case 0: return WAIT_OK;
 		case SDL_MUTEX_TIMEDOUT: return WAIT_TIMED_OUT;
 		default:
-			ERR_G << "SDL_CondWaitTimeout: " << SDL_GetError() << "\n";
+			ERR_G << "SDL_CondWaitTimeout: " << SDL_GetError() << std::endl;
 			return WAIT_ERROR;
 	}
 }
@@ -123,7 +129,7 @@ condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned 
 bool condition::notify_one()
 {
 	if(SDL_CondSignal(cond_) < 0) {
-		ERR_G << "SDL_CondSignal: " << SDL_GetError() << "\n";
+		ERR_G << "SDL_CondSignal: " << SDL_GetError() << std::endl;
 		return false;
 	}
 
@@ -133,7 +139,7 @@ bool condition::notify_one()
 bool condition::notify_all()
 {
 	if(SDL_CondBroadcast(cond_) < 0) {
-		ERR_G << "SDL_CondBroadcast: " << SDL_GetError() << "\n";
+		ERR_G << "SDL_CondBroadcast: " << SDL_GetError() << std::endl;
 		return false;
 	}
 	return true;
@@ -166,12 +172,9 @@ async_operation::RESULT async_operation::execute(async_operation_ptr this_ptr, w
 			if(res == condition::WAIT_OK || finishedVar_) {
 				completed = true;
 				break;
-			}
-#ifndef __BEOS__
-			else if(res == condition::WAIT_ERROR) {
+			} else if(res == condition::WAIT_ERROR) {
 				break;
 			}
-#endif
 		}
 
 		if(!completed) {

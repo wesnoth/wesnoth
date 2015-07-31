@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,13 +20,14 @@
 #include "game_config.hpp"
 #include "font.hpp"
 #include "image.hpp"
+#include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 
 
 namespace {
 	const std::string slider_image   = ".png";
-	const std::string disabled_image = "-disabled.png";
+	const std::string disabled_image = ".png~GS()";
 	const std::string pressed_image  = "-pressed.png";
 	const std::string active_image   = "-active.png";
 }
@@ -132,7 +133,7 @@ SDL_Rect slider::slider_area() const
 		return default_value;
 
 	int xpos = loc.x + (value_ - min_) * (loc.w - image_->w) / (max_ - min_);
-	return create_rect(xpos, loc.y, image_->w, image_->h);
+	return sdl::create_rect(xpos, loc.y, image_->w, image_->h);
 }
 
 void slider::draw_contents()
@@ -165,12 +166,12 @@ void slider::draw_contents()
 
 	surface screen = video().getSurface();
 
-	SDL_Rect line_rect = create_rect(loc.x + image->w / 2
+	SDL_Rect line_rect = sdl::create_rect(loc.x + image->w / 2
 			, loc.y + loc.h / 2
 			, loc.w - image->w
 			, 1);
 
-	sdl_fill_rect(screen, &line_rect, SDL_MapRGB(screen->format,
+	sdl::fill_rect(screen, &line_rect, SDL_MapRGB(screen->format,
 		line_color.r, line_color.g, line_color.b));
 
 	SDL_Rect const &slider = slider_area();
@@ -192,7 +193,7 @@ void slider::set_slider_position(int x)
 void slider::mouse_motion(const SDL_MouseMotionEvent& event)
 {
 	if (state_ == NORMAL || state_ == ACTIVE) {
-		bool on = point_in_rect(event.x, event.y, location());
+		bool on = sdl::point_in_rect(event.x, event.y, location());
 		state_ = on ? ACTIVE : NORMAL;
 	} else if (state_ == CLICKED || state_ == DRAGGED) {
 		state_ = DRAGGED;
@@ -209,16 +210,43 @@ void slider::mouse_motion(const SDL_MouseMotionEvent& event)
 
 void slider::mouse_down(const SDL_MouseButtonEvent& event)
 {
-	if (event.button != SDL_BUTTON_LEFT || !point_in_rect(event.x, event.y, location()))
+	bool prev_change = value_change_;
+
+	if (!sdl::point_in_rect(event.x, event.y, location()))
+		return;
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
+	if (event.button == SDL_BUTTON_WHEELUP || event.button == SDL_BUTTON_WHEELRIGHT) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ + increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+	if (event.button == SDL_BUTTON_WHEELDOWN || event.button == SDL_BUTTON_WHEELLEFT) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ - increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+#endif
+
+	if (event.button != SDL_BUTTON_LEFT)
 		return;
 
 	state_ = CLICKED;
-	if (point_in_rect(event.x, event.y, slider_area())) {
+	set_focus(true);
+	if (sdl::point_in_rect(event.x, event.y, slider_area())) {
 		sound::play_UI_sound(game_config::sounds::button_press);
 	} else {
-		bool prev_change = value_change_;
 		value_change_ = false;
-		set_focus(true);
 		set_slider_position(event.x);
 		if(value_change_) {
 			sound::play_UI_sound(game_config::sounds::slider_adjust);
@@ -227,6 +255,38 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 		}
 	}
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+void slider::mouse_wheel(const SDL_MouseWheelEvent& event) {
+	bool prev_change = value_change_;
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	if (!sdl::point_in_rect(x, y, location()))
+		return;
+
+	if (event.y > 0 || event.x > 0) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ + increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+	if (event.y < 0 || event.x < 0) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ - increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+}
+#endif
 
 bool slider::requires_event_focus(const SDL_Event* event) const
 {
@@ -262,7 +322,7 @@ void slider::handle_event(const SDL_Event& event)
 	switch(event.type) {
 	case SDL_MOUSEBUTTONUP:
 		if (!mouse_locked()) {
-			bool on = point_in_rect(event.button.x, event.button.y, slider_area());
+			bool on = sdl::point_in_rect(event.button.x, event.button.y, slider_area());
 			state_ = on ? ACTIVE : NORMAL;
 		}
 		break;
@@ -275,7 +335,7 @@ void slider::handle_event(const SDL_Event& event)
 			mouse_motion(event.motion);
 		break;
 	case SDL_KEYDOWN:
-		if(focus(&event)) {
+		if(focus(&event) && allow_key_events()) { //allow_key_events is used by zoom_sliders to disable left-right key press, which is buggy for them
 			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 			const int c = key.sym;
 			if(c == SDLK_LEFT) {
@@ -287,6 +347,12 @@ void slider::handle_event(const SDL_Event& event)
 			}
 		}
 		break;
+#if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_MOUSEWHEEL:
+		if (!mouse_locked())
+			mouse_wheel(event.wheel);
+		break;
+#endif
 	default:
 		return;
 	}
@@ -352,5 +418,16 @@ void list_slider<T>::set_items(const std::vector<T> &items)
 template class list_slider< double >;
 template class list_slider< int >;
 template class list_slider< std::string >;
+
+/***
+*
+* Zoom Slider
+*
+***/
+
+zoom_slider::zoom_slider(CVideo &video, const std::string& image, bool black)
+	: slider(video, image, black)
+{
+}
 
 } //end namespace gui

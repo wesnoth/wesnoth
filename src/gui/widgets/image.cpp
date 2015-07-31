@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(image)
 
@@ -62,9 +63,7 @@ tpoint timage::calculate_best_size() const
 		result.y = maximum.y;
 	}
 
-	DBG_GUI_L << LOG_HEADER
-		<< " result " << result
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
@@ -95,4 +94,3 @@ const std::string& timage::get_control_type() const
 }
 
 } // namespace gui2
-

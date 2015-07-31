@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include "editor/map/context_manager.hpp"
 #include "editor/palette/palette_manager.hpp"
 #include "editor/toolkit/brush.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_command.hpp"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -47,7 +47,7 @@ private:
 	void init_brushes(const config& game_config);
 
 	/** init the mouse actions (tools) */
-	void init_mouse_actions(const config& game_config, context_manager& c_manager);
+	void init_mouse_actions(context_manager& c_manager);
 
 public:
 	void set_mouseover_overlay();
@@ -65,7 +65,7 @@ public:
 
 
 	/** Get the current mouse action */
- 	mouse_action* get_mouse_action() { return mouse_action_; };
+	mouse_action* get_mouse_action() { return mouse_action_; }
 
 // Brush related methods
 
@@ -76,9 +76,9 @@ public:
 	void set_brush(std::string id);
 
 	/** TODO */
-	bool is_active_brush(std::string id) const { return brush_->id() == id; };
+	bool is_active_brush(std::string id) const { return brush_->id() == id; }
 
-	palette_manager* get_palette_manager() { return palette_manager_.get(); };
+	palette_manager* get_palette_manager() { return palette_manager_.get(); }
 
 private:
 
@@ -96,10 +96,6 @@ private:
 	/** The mouse actions */
 	typedef std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_action_map;
 	mouse_action_map mouse_actions_;
-
-	/** Usage tips for mouse actions */
-	typedef std::map<hotkey::HOTKEY_COMMAND, std::string> mouse_action_string_map;
-	mouse_action_string_map mouse_action_hints_;
 
 //Brush members
 

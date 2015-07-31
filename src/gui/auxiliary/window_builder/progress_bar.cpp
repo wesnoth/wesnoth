@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,9 +20,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/progress_bar.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_progress_bar::tbuilder_progress_bar(const config& cfg)
 	: tbuilder_control(cfg)
@@ -35,9 +37,8 @@ twidget* tbuilder_progress_bar::build() const
 
 	init_control(widget);
 
-	DBG_GUI_G << "Window builder: placed progress bar '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed progress bar '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
@@ -66,4 +67,3 @@ twidget* tbuilder_progress_bar::build() const
  * @end{tag}{name="progress_bar"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

@@ -267,7 +267,7 @@ class DataSub(Data):
         bytes = ""
         for r in result:
             if r != None:
-                # For networking, we need actual bytesteam here, not unicode.
+                # For networking, we need actual bytestream here, not unicode.
                 if type(r) is unicode: r = r.encode("utf8")
                 bytes += str(r)
 
@@ -360,7 +360,7 @@ class DataSub(Data):
 
     def compare(self, other):
         if len(self.data) != len(other.data): return False
-        for i in range(self.data):
+        for i in xrange(self.data):
             if not self.data[i].compare(other.data[i]): return False
         return True
 
@@ -583,7 +583,7 @@ class DataSub(Data):
         value = str(value)
         # read existing values
         q = []
-        for d in range(3):
+        for d in xrange(3):
             q += [self.get_quantity(name, d, value)]
         q[difficulty] = value
 
@@ -596,7 +596,7 @@ class DataSub(Data):
         if q[0] == q[1] == q[2]:
             self.set_text_val(name, value)
         else:
-            for d in range(3):
+            for d in xrange(3):
                 ifdef = self.get_or_create_ifdef(["EASY", "NORMAL", "HARD"][d])
                 ifdef.set_text_val(name, q[d])
 

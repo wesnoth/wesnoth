@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,15 +17,14 @@
 
 #include "gui/auxiliary/widget_definition.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-struct tvertical_scrollbar_definition
-	: public tcontrol_definition
+struct tvertical_scrollbar_definition : public tcontrol_definition
 {
 	explicit tvertical_scrollbar_definition(const config& cfg);
 
-	struct tresolution
-		: public tresolution_definition_
+	struct tresolution : public tresolution_definition_
 	{
 		explicit tresolution(const config& cfg);
 
@@ -40,4 +39,3 @@ struct tvertical_scrollbar_definition
 } // namespace gui2
 
 #endif
-

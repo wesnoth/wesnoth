@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 
 #include "../manager.hpp"
 #include "../../actions/attack.hpp"
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"
@@ -28,6 +29,7 @@
 #include "../../resources.hpp"
 #include "../../unit.hpp"
 #include "../../pathfind/pathfind.hpp"
+#include "../../unit_filter.hpp"
 
 namespace ai {
 
@@ -72,9 +74,10 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		unit_map& units_ = *resources::units;
 
 		std::vector<map_location> unit_locs;
+		const unit_filter filt_own(vconfig(filter_own_), resources::filter_con);
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->side() == get_side() && i->attacks_left() && !(i->can_recruit() && get_passive_leader())) {
-				if (!i->matches_filter(vconfig(filter_own_), i->get_location())) {
+				if (!filt_own(*i)) {
 					continue;
 				}
 				unit_locs.push_back(i->get_location());
@@ -90,25 +93,26 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 
 		unit_stats_cache().clear();
 
+		const unit_filter filt_en(vconfig(filter_enemy_), resources::filter_con);
 		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
-		// Attack anyone who is on the enemy side,
-		// and who is not invisible or petrified.
-		if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
-		    !j->invisible(j->get_location()))
-		{
-			if (!j->matches_filter(vconfig(filter_enemy_), j->get_location())) {
-				continue;
-			}
-			map_location adjacent[6];
-			get_adjacent_tiles(j->get_location(), adjacent);
-			attack_analysis analysis;
-			analysis.target = j->get_location();
-			analysis.vulnerability = 0.0;
-			analysis.support = 0.0;
-			do_attack_analysis(j->get_location(), srcdst, dstsrc,
-				fullmove_srcdst, fullmove_dstsrc, enemy_srcdst, enemy_dstsrc,
-				adjacent,used_locations,unit_locs,*res,analysis, current_team());
+			// Attack anyone who is on the enemy side,
+			// and who is not invisible or petrified.
+			if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
+			    !j->invisible(j->get_location()))
+			{
+				if (!filt_en( *j)) {
+					continue;
+				}
+				map_location adjacent[6];
+				get_adjacent_tiles(j->get_location(), adjacent);
+				attack_analysis analysis;
+				analysis.target = j->get_location();
+				analysis.vulnerability = 0.0;
+				analysis.support = 0.0;
+				do_attack_analysis(j->get_location(), srcdst, dstsrc,
+					fullmove_srcdst, fullmove_dstsrc, enemy_srcdst, enemy_dstsrc,
+					adjacent,used_locations,unit_locs,*res,analysis, current_team());
 		}
 	}
 	return res;
@@ -136,7 +140,7 @@ void aspect_attacks::do_attack_analysis(
 		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << get_attack_depth() << "\n";
 		return;
 	}
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	unit_map &units_ = *resources::units;
 	std::vector<team> &teams_ = *resources::teams;
 
@@ -359,7 +363,7 @@ void aspect_attacks::do_attack_analysis(
 
 int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
 {
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
@@ -374,7 +378,7 @@ int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = village_owner(loc) + 1;
+		int owner = resources::gameboard->village_owner(loc) + 1;
 
 		if(owner == u.side()) {
 			rating += friendly_village_value;

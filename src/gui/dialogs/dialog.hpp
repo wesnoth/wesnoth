@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,14 +17,15 @@
 
 #include "gui/dialogs/field-fwd.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include <string>
 #include <vector>
 
 class CVideo;
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Registers a window.
@@ -39,22 +40,24 @@ namespace gui2 {
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_WINDOW(                                                   \
-		  id)                                                              \
-namespace {                                                                \
-                                                                           \
-	namespace ns_##id {                                                    \
-                                                                           \
-		struct tregister_helper {                                          \
-			tregister_helper()                                             \
-			{                                                              \
-				register_window(#id);                                      \
-			}                                                              \
-		};                                                                 \
-                                                                           \
-		tregister_helper register_helper;                                  \
-	}                                                                      \
-}
+#define REGISTER_WINDOW(id)                                                    \
+	namespace                                                                  \
+	{                                                                          \
+                                                                               \
+	namespace ns_##id                                                          \
+	{                                                                          \
+                                                                               \
+		struct tregister_helper                                                \
+		{                                                                      \
+			tregister_helper()                                                 \
+			{                                                                  \
+				register_window(#id);                                          \
+			}                                                                  \
+		};                                                                     \
+                                                                               \
+		tregister_helper register_helper;                                      \
+	}                                                                          \
+	}
 
 /**
  * Registers a window for a dialog.
@@ -75,18 +78,12 @@ namespace {                                                                \
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_DIALOG2(                                                  \
-		  type                                                             \
-		, id)                                                              \
-                                                                           \
-REGISTER_WINDOW(id)                                                        \
-                                                                           \
-const std::string&                                                         \
-type::window_id() const                                                    \
-{                                                                          \
-	static const std::string result(#id);                                  \
-	return result;                                                         \
-}
+#define REGISTER_DIALOG2(type, id)                                             \
+	REGISTER_WINDOW(id) const std::string& type::window_id() const             \
+	{                                                                          \
+		static const std::string result(#id);                                  \
+		return result;                                                         \
+	}
 
 /**
  * Wrapper for REGISTER_DIALOG2.
@@ -132,13 +129,14 @@ class tdialog
 	friend std::string unit_test_mark_as_tested(const tdialog& dialog);
 
 public:
-	tdialog() :
-		retval_(0),
-		always_save_fields_(false),
-		fields_(),
-		focus_(),
-		restore_(true)
-	{}
+	tdialog()
+		: retval_(0)
+		, always_save_fields_(false)
+		, fields_()
+		, focus_()
+		, restore_(true)
+	{
+	}
 
 	virtual ~tdialog();
 
@@ -150,7 +148,7 @@ public:
 	 * @param auto_close_time     The time in ms after which the dialog will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
-	 *                            there's no quarantee about how fast it closes
+	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 *
 	 * @returns                   Whether the final retval_ == twindow::OK
@@ -160,17 +158,22 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	int get_retval() const { return retval_; }
+	int get_retval() const
+	{
+		return retval_;
+	}
 
 	void set_always_save_fields(const bool always_save_fields)
 	{
 		always_save_fields_ = always_save_fields;
 	}
 
-	void set_restore(const bool restore) { restore_ = restore; }
+	void set_restore(const bool restore)
+	{
+		restore_ = restore;
+	}
 
 protected:
-
 	/**
 	 * Creates a new boolean field.
 	 *
@@ -190,14 +193,15 @@ protected:
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool* register_bool(const std::string& id
-			, const bool mandatory
-			, const boost::function<bool ()>& callback_load_value
-				= boost::function<bool ()>()
-			, const boost::function<void (const bool)>& callback_save_value
-				= boost::function<void (const bool)>()
-			, const boost::function<void (twidget*)>& callback_change
-				= boost::function<void (twidget*)>());
+	tfield_bool*
+	register_bool(const std::string& id,
+				  const bool mandatory,
+				  const boost::function<bool()>& callback_load_value
+				  = boost::function<bool()>(),
+				  const boost::function<void(const bool)>& callback_save_value
+				  = boost::function<void(const bool)>(),
+				  const boost::function<void(twidget&)>& callback_change
+				  = boost::function<void(twidget&)>());
 
 	/**
 	 * Creates a new boolean field.
@@ -214,55 +218,57 @@ protected:
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool* register_bool(const std::string& id
-			, const bool mandatory
-			, bool& linked_variable
-			, const boost::function<void (twidget*)>& callback_change
-				= boost::function<void (twidget*)>());
+	tfield_bool*
+	register_bool(const std::string& id,
+				  const bool mandatory,
+				  bool& linked_variable,
+				  const boost::function<void(twidget&)>& callback_change
+				  = boost::function<void(twidget&)>());
 
 	/**
 	 * Creates a new integer field.
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_integer* register_integer(const std::string& id
-			, const bool mandatory
-			, const boost::function<int ()>& callback_load_value
-				= boost::function<int ()>()
-			, const boost::function<void (const int)>& callback_save_value
-				= boost::function<void (const int)>());
+	tfield_integer*
+	register_integer(const std::string& id,
+					 const bool mandatory,
+					 const boost::function<int()>& callback_load_value
+					 = boost::function<int()>(),
+					 const boost::function<void(const int)>& callback_save_value
+					 = boost::function<void(const int)>());
 
 	/**
 	 * Creates a new integer field.
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_integer* register_integer(const std::string& id
-			, const bool mandatory
-			, int& linked_variable);
+	tfield_integer* register_integer(const std::string& id,
+									 const bool mandatory,
+									 int& linked_variable);
 	/**
 	 * Creates a new text field.
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_text* register_text(const std::string& id
-			, const bool mandatory
-			, const boost::function<std::string ()>& callback_load_value
-				= boost::function<std::string ()>()
-			, const boost::function<void (const std::string&)>&
-				callback_save_value
-				= boost::function<void (const std::string&)>()
-			, const bool capture_focus = false);
+	tfield_text* register_text(
+			const std::string& id,
+			const bool mandatory,
+			const boost::function<std::string()>& callback_load_value
+			= boost::function<std::string()>(),
+			const boost::function<void(const std::string&)>& callback_save_value
+			= boost::function<void(const std::string&)>(),
+			const bool capture_focus = false);
 
 	/**
 	 * Creates a new text field.
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_text* register_text(const std::string& id
-			, const bool mandatory
-			, std::string& linked_variable
-			, const bool capture_focus = false);
+	tfield_text* register_text(const std::string& id,
+							   const bool mandatory,
+							   std::string& linked_variable,
+							   const bool capture_focus = false);
 
 	/**
 	 * Registers a new control as a label.
@@ -272,8 +278,8 @@ protected:
 	 * there this sets the filename. (The @p use_markup makes no sense in an
 	 * image but that's a detail.)
 	 *
-	 * @note In general it's prefered a widget sets its markup flag in WML, but
-	 * some generice windows (like messages) may need different versions
+	 * @note In general it's preferred a widget sets its markup flag in WML, but
+	 * some generic windows (like messages) may need different versions
 	 * depending on where used.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
@@ -281,15 +287,15 @@ protected:
 	 * @param text                The text for the label.
 	 * @param use_markup          Whether or not use markup for the label.
 	 */
-	tfield_label* register_label(const std::string& id
-			, const bool mandatory
-			, const std::string& text
-			, const bool use_markup = false);
+	tfield_label* register_label(const std::string& id,
+								 const bool mandatory,
+								 const std::string& text,
+								 const bool use_markup = false);
 
 	/** Registers a new control as image. */
-	tfield_label* register_image(const std::string& id
-			, const bool mandatory
-			, const std::string& filename)
+	tfield_label* register_image(const std::string& id,
+								 const bool mandatory,
+								 const std::string& filename)
 	{
 		return register_label(id, mandatory, filename);
 	}
@@ -355,7 +361,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(CVideo& /*video*/, twindow& /*window*/) {}
+	virtual void post_build(CVideo& video, twindow& window);
 
 	/**
 	 * Actions to be taken before showing the window.
@@ -367,7 +373,7 @@ private:
 	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(CVideo& /*video*/, twindow& /*window*/) {}
+	virtual void pre_show(CVideo& video, twindow& window);
 
 	/**
 	 * Actions to be taken after the window has been shown.
@@ -377,7 +383,7 @@ private:
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void post_show(twindow& /*window*/) {}
+	virtual void post_show(twindow& window);
 
 	/**
 	 * Initializes all fields in the dialog and set the keyboard focus.
@@ -400,4 +406,3 @@ private:
 } // namespace gui2
 
 #endif
-

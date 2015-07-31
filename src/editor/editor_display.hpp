@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,11 +20,14 @@
 
 namespace editor {
 
+const display_context * get_dummy_display_context();
+
 class editor_display : public display
 {
 public:
-	editor_display(unit_map* units, CVideo& video, const editor_map* map,
-			const std::vector<team>* t, const config& theme_cfg, const config& level);
+	editor_display(const display_context * dc, CVideo& video,
+			reports & reports_object,
+			const config& theme_cfg, const config& level);
 
 	bool in_editor() const { return true; }
 
@@ -34,9 +37,8 @@ public:
 	void remove_brush_loc(const map_location& hex);
 	const editor_map& map() const { return static_cast<const editor_map&>(get_map()); }
 	void rebuild_terrain(const map_location &loc);
-	void set_toolbar_hint(const std::string& value) { toolbar_hint_ = value; }
 
-	void set_palette_report(const config& palette_report) {palette_report_ = palette_report;};
+	void set_palette_report(const config& palette_report) {palette_report_ = palette_report;}
 
 protected:
 	void pre_draw();
@@ -51,7 +53,6 @@ protected:
 	void draw_sidebar();
 
 	std::set<map_location> brush_locations_;
-	std::string toolbar_hint_;
 
 private:
 	config palette_report_;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,6 +34,9 @@ ai_context_proxy::~ai_context_proxy()
 }
 
 
+bool rca_context::is_offense_ = false;
+bool rca_context::is_defense_ = false;
+bool rca_context::strategy_set_ = false;
 rca_context::rca_context()
 {
 }

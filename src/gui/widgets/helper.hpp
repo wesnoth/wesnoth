@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,23 +17,33 @@
 
 #include "global.hpp"
 
-#include "SDL.h"
-
 #include <pango/pango-layout.h>
 
+#include <boost/cstdint.hpp>
 #include <boost/type_traits.hpp>
 #include <boost/utility/enable_if.hpp>
 
 #include <string>
 
+#if defined(_MSC_VER) && _MSC_VER <= 1600
+/*
+	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
+	And will create corrupt binaries without giving a warning / error.
+*/
+#include <SDL_video.h>
+#else
+struct SDL_Rect;
+#endif
 struct surface;
 class t_string;
 
-namespace game_logic {
+namespace game_logic
+{
 class map_formula_callable;
 } // namespace game_logic
 
-namespace gui2 {
+namespace gui2
+{
 
 struct tpoint;
 
@@ -64,7 +74,7 @@ SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
  *
  * @returns                       The color.
  */
-Uint32 decode_color(const std::string& color);
+boost::uint32_t decode_color(const std::string& color);
 
 /**
  * Converts a text alignment string to a text alignment.
@@ -146,7 +156,7 @@ std::string debug_truncate(const std::string& text);
 /**
  * Helper for function wrappers.
  *
- * For boost bind the a function sometimes needs to return a value althought
+ * For boost bind the a function sometimes needs to return a value although
  * the function called doesn't return one. This wrapper function can return a
  * fixed result for a certain functor.
  *
@@ -158,7 +168,7 @@ std::string debug_truncate(const std::string& text);
  *
  * @returns                       result.
  */
-template<class R, class F>
+template <class R, class F>
 R function_wrapper(const R result, const F& function)
 {
 	function();

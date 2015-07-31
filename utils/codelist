@@ -39,5 +39,5 @@ def printbyrange(lst):
             out += "%d-%d," % tuple(elt)
     return out[:-1]
 
-codepoints = map(lambda x: int(x.strip()), sys.stdin.readlines())
+codepoints = [int(x.strip) for x in sys.stdin.readlines()]
 print printbyrange(rangeify(codepoints))

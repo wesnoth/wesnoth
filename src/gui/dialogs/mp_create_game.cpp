@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,9 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/mp_create_game.hpp"
+
+#include <boost/multi_index_container.hpp>
+// ^ This is apparently unnecessary, but if removed it doesn't compile...
 
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -35,47 +38,42 @@
 #include <boost/bind.hpp>
 #endif
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_DIALOG(mp_create_game)
 
-tmp_create_game::tmp_create_game(const config& cfg) :
-	cfg_(cfg),
-	scenario_(NULL),
-	use_map_settings_(register_bool("use_map_settings",
-		true,
-		preferences::use_map_settings,
-		preferences::set_use_map_settings,
-		dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>)),
-	fog_(register_bool("fog",
-			true,
-			preferences::fog,
-			preferences::set_fog)),
-	shroud_(register_bool("shroud",
-			true,
-			preferences::shroud,
-			preferences::set_shroud)),
-	start_time_(register_bool("random_start_time",
-			true,
-			preferences::random_start_time,
-			preferences::set_random_start_time)),
-
-	turns_(register_integer("turn_count",
-		true,
-		preferences::turns ,
-		preferences::set_turns)),
-	gold_(register_integer("village_gold",
-		true,
-		preferences::village_gold ,
-		preferences::set_village_gold)),
-	support_(register_integer("village_support",
-		false,
-		preferences::village_support ,
-		preferences::set_village_support)),
-	experience_(register_integer("experience_modifier",
-		true,
-		preferences::xp_modifier ,
-		preferences::set_xp_modifier))
+tmp_create_game::tmp_create_game(const config& cfg)
+	: cfg_(cfg)
+	, scenario_(NULL)
+	, use_map_settings_(register_bool(
+			  "use_map_settings",
+			  true,
+			  preferences::use_map_settings,
+			  preferences::set_use_map_settings,
+			  dialog_callback<tmp_create_game,
+							  &tmp_create_game::update_map_settings>))
+	, fog_(register_bool("fog", true, preferences::fog, preferences::set_fog))
+	, shroud_(register_bool(
+			  "shroud", true, preferences::shroud, preferences::set_shroud))
+	, start_time_(register_bool("random_start_time",
+								true,
+								preferences::random_start_time,
+								preferences::set_random_start_time))
+	, turns_(register_integer(
+			  "turn_count", true, preferences::turns, preferences::set_turns))
+	, gold_(register_integer("village_gold",
+							 true,
+							 preferences::village_gold,
+							 preferences::set_village_gold))
+	, support_(register_integer("village_support",
+								false,
+								preferences::village_support,
+								preferences::set_village_support))
+	, experience_(register_integer("experience_modifier",
+								   true,
+								   preferences::xp_modifier,
+								   preferences::set_xp_modifier))
 {
 }
 
@@ -85,10 +83,10 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 
 	tlistbox& list = find_widget<tlistbox>(&window, "map_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(list, boost::bind(
-				  &tmp_create_game::update_map
-				, *this
-				, boost::ref(window)));
+	connect_signal_notify_modified(list,
+								   boost::bind(&tmp_create_game::update_map,
+											   *this,
+											   boost::ref(window)));
 #else
 	list.set_callback_value_change(
 			dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
@@ -101,22 +99,23 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	list.add_row(item);
 
 	// User maps
-/*	FIXME implement user maps
-	std::vector<std::string> maps;
-	get_files_in_dir(get_user_data_dir() + "/editor/maps", &maps, NULL, FILE_NAME_ONLY);
+	/*	FIXME implement user maps
+		std::vector<std::string> maps;
+		filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &maps, NULL,
+	   filesystem::FILE_NAME_ONLY);
 
-	FOREACH(const AUTO& map, maps) {
-		std::map<std::string, t_string> item;
-		item.insert(std::make_pair("label", map));
-		list->add_row(item);
-	}
-*/
+		FOREACH(const AUTO& map, maps) {
+			std::map<std::string, t_string> item;
+			item.insert(std::make_pair("label", map));
+			list->add_row(item);
+		}
+	*/
 
 	// Standard maps
 	int i = 0;
-	FOREACH(const AUTO& map, cfg_.child_range("multiplayer"))
+	FOREACH(const AUTO & map, cfg_.child_range("multiplayer"))
 	{
-		if (map["allow_new_game"].to_bool(true)) {
+		if(map["allow_new_game"].to_bool(true)) {
 			string_map item;
 			item.insert(std::make_pair("label", map["name"].str()));
 			item.insert(std::make_pair("tooltip", map["name"].str()));
@@ -144,8 +143,8 @@ void tmp_create_game::update_map(twindow& window)
 {
 	tminimap& minimap = find_widget<tminimap>(&window, "minimap", false);
 
-	const int index = find_widget<tlistbox>(
-			&window, "map_list", false).get_selected_row() - 1;
+	const int index = find_widget<tlistbox>(&window, "map_list", false)
+							  .get_selected_row() - 1;
 
 	if(index >= 0) {
 		config::const_child_itors children = cfg_.child_range("multiplayer");
@@ -175,16 +174,24 @@ void tmp_create_game::update_map_settings(twindow& window)
 
 	if(use_map_settings) {
 		if(scenario_) {
-			const config &side = scenario_->child("side");
+			const config& side = scenario_->child("side");
 
 			fog_->set_widget_value(window, side["fog"].to_bool(true));
 			shroud_->set_widget_value(window, side["shroud"].to_bool(false));
-			start_time_->set_widget_value(window, (*scenario_)["random_start_time"].to_bool(true));
+			start_time_->set_widget_value(
+					window, (*scenario_)["random_start_time"].to_bool(true));
 
-			turns_->set_widget_value(window, ::settings::get_turns((*scenario_)["turns"]));
-			gold_->set_widget_value(window, ::settings::get_village_gold(side["village_gold"]));
-			support_->set_widget_value(window, ::settings::get_village_support(side["village_support"]));
-			experience_->set_widget_value(window, ::settings::get_xp_modifier((*scenario_)["experience_modifier"]));
+			turns_->set_widget_value(
+					window, ::settings::get_turns((*scenario_)["turns"].str()));
+			gold_->set_widget_value(
+					window, ::settings::get_village_gold(side["village_gold"].str()));
+			support_->set_widget_value(
+					window,
+					::settings::get_village_support(side["village_support"].str()));
+			experience_->set_widget_value(
+					window,
+					::settings::get_xp_modifier(
+							(*scenario_)["experience_modifier"].str()));
 		}
 		// No scenario selected just leave the state unchanged for now.
 
@@ -203,4 +210,3 @@ void tmp_create_game::update_map_settings(twindow& window)
 }
 
 } // namespace gui2
-

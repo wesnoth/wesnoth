@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 #include "../../util.hpp"
 #include "../../serialization/string_utils.hpp"
 #include "../../resources.hpp"
+#include "../lua/unit_advancements_aspect.hpp"
 
 namespace ai {
 
@@ -178,10 +179,10 @@ public:
 	static terrain_filter cfg_to_value(const config &cfg)
 	{
 		if (const config &v = cfg.child("value")) {
-			return terrain_filter(vconfig(v), *resources::units);
+			return terrain_filter(vconfig(v), resources::filter_con);
 		}
 		static config c("not");
-		return terrain_filter(vconfig(c),*resources::units);
+		return terrain_filter(vconfig(c),resources::filter_con);
 	}
 
 	static void cfg_to_value(const config &cfg, terrain_filter &value)
@@ -201,6 +202,35 @@ public:
 		return cfg;
 	}
 };
+
+template<>
+class config_value_translator<unit_advancements_aspect> {
+public:
+
+	static unit_advancements_aspect cfg_to_value(const config &cfg)
+	{
+		return unit_advancements_aspect(cfg["value"]);
+	}
+
+	static void cfg_to_value(const config &cfg, unit_advancements_aspect &value)
+	{
+		value = cfg_to_value(cfg);
+	}
+
+	static void value_to_cfg(const unit_advancements_aspect &value, config &cfg)
+	{
+		cfg["value"] = value.get_value();
+
+	}
+
+	static config value_to_cfg(const unit_advancements_aspect &value)
+	{
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
+	}
+};
+
 
 
 // variant value translator
@@ -412,7 +442,7 @@ public:
 	static terrain_filter variant_to_value(const variant &var)
 	{
 		static config c("not");
-		terrain_filter value(vconfig(c),*resources::units);
+		terrain_filter value(vconfig(c),resources::filter_con);
 		variant_to_value(var,value);
 		return value;
 	}

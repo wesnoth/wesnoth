@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,6 +35,7 @@
 
 // Linker workarounds end here
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test {
 
 	struct save_dialog_fixture {
@@ -93,7 +94,7 @@ namespace test {
 			source.release_key(13, keyid);
 
 			std::string fname("test_save");
-			write_file(get_saves_dir() + "/" + fname +".gz", "böö");
+			filesystem::write_file(filesystem::get_saves_dir() + "/" + fname +".gz", "böö");
 			// Start test (set ticks start time)
 
 			// Activated enter press
@@ -122,8 +123,9 @@ namespace test {
 			BOOST_CHECK_MESSAGE(press_return_after->is_fired(), "get_save_name returned before 2nd enter event was sent");
 			BOOST_CHECK_MESSAGE(!release_return_after->is_fired(), "get_save_name returned after 2nd release event was sent");
 			*/
-			remove((get_saves_dir() + "/" + fname + ".gz").c_str());
+			filesystem::delete_file(filesystem::get_saves_dir() + "/" + fname + ".gz");
 		}
 
 	BOOST_AUTO_TEST_SUITE_END()
 }
+#endif

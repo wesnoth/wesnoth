@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,8 +27,10 @@ struct map_location;
 class  team;
 class  unit;
 class  unit_map;
+class  gamemap;
 
 #include "../unit_types.hpp"
+#include "../ai/lua/unit_advancements_aspect.hpp"
 
 #include <vector>
 
@@ -62,6 +64,7 @@ struct battle_context_unit_stats
 		                         */
 	bool swarm;				/**< Attack has swarm special. */
 	bool firststrike;		/**< Attack has firststrike special. */
+	bool disable;           /**< Attack has disable special. */
 	unsigned int experience, max_experience;
 	unsigned int level;
 
@@ -84,6 +87,14 @@ struct battle_context_unit_stats
 		   const unit &opp, const map_location& opp_loc,
 		   const attack_type *opp_weapon,
 		   const unit_map& units);
+
+	/** Used by AI for combat analysis */
+	battle_context_unit_stats(const unit_type* u_type,
+		   const attack_type* att_weapon, bool attacking,
+		   const unit_type* opp_type, const attack_type* opp_weapon,
+		   unsigned int opp_terrain_defense,
+		   int lawful_bonus = 0);
+
 	~battle_context_unit_stats()
 	{}
 
@@ -101,7 +112,7 @@ struct battle_context_unit_stats
 		weapon(NULL), attack_num(0), is_attacker(true), // These are not used in attack prediction.
 		is_poisoned(false), is_slowed(slowed),
 		slows(slows), drains(drain), petrifies(false), plagues(false),
-		poisons(false), backstab_pos(false), swarm(do_swarm), firststrike(first),
+		poisons(false), backstab_pos(false), swarm(do_swarm), firststrike(first), disable(false),
 		experience(0), max_experience(50), level(1), // No units should advance in the attack prediction tests.
 		rounds(berserk ? 30 : 1),
 		hp(std::max<int>(0, hitpoints)), max_hp(std::max<int>(1, maximum_hp)),
@@ -157,11 +168,11 @@ public:
 
 	/** Given this harm_weight, is this attack better than that? */
 	bool better_attack(class battle_context &that, double harm_weight);
+	static bool better_combat(const combatant &us_a, const combatant &them_a,
+						   const combatant &us_b, const combatant &them_b,
+						   double harm_weight);
 
 private:
-	bool better_combat(const combatant &us_a, const combatant &them_a,
-					   const combatant &us_b, const combatant &them_b,
-					   double harm_weight);
 
 	int choose_attacker_weapon(const unit &attacker, const unit &defender,
 	                           const unit_map& units,
@@ -186,15 +197,45 @@ private:
 void attack_unit(const map_location &attacker, const map_location &defender,
                  int attack_with, int defend_with, bool update_display = true);
 
+/** Performs an attack, and advanced the units afterwards */
+void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
+                 int attack_with, int defend_with, bool update_display = true,
+				 const ai::unit_advancements_aspect& ai_advancement = ai::unit_advancements_aspect());
+
+/**
+	advances the unit at loc if it has enough experience, maximum 20 times.
+	if the unit is on the currently active side, and that side is controlled by a human, a dialog pops up.
+	if we are in a non mp game, and the side is controlled by a human then a dialog is shown too.
+	if the side is controlled by an ai, and if ai_advancement is passed, then ai_advancement will be used.
+	otherwise a random decision will be taken.
+
+	this method is currently not used by unstore_unit, if we want to do that we'd need to allow more arguments (animate, fire_events).
+*/
+struct advance_unit_params
+{
+	advance_unit_params(const map_location& loc) : loc_(loc), ai_advancements_(NULL), force_dialog_(false), fire_events_(true), animate_(true) {}
+	advance_unit_params& ai_advancements(const ai::unit_advancements_aspect& value) {ai_advancements_ = &value; return *this;}
+	advance_unit_params& force_dialog(bool value) {force_dialog_ = value; return *this;}
+	advance_unit_params& fire_events(bool value) {fire_events_ = value; return *this;}
+	advance_unit_params& animate(bool value) {animate_ = value; return *this;}
+	friend void advance_unit_at(const advance_unit_params&);
+private:
+	const map_location& loc_;
+	const ai::unit_advancements_aspect* ai_advancements_;
+	bool force_dialog_;
+	bool fire_events_;
+	bool animate_;
+};
+void advance_unit_at(const advance_unit_params& params);
 /**
  * Returns the advanced version of a unit (with traits and items retained).
  */
-unit get_advanced_unit(const unit &u, const std::string &advance_to);
+unit_ptr get_advanced_unit(const unit &u, const std::string &advance_to);
 
 /**
  * Returns the AMLA-advanced version of a unit (with traits and items retained).
  */
-unit get_amla_unit(const unit &u, const config &mod_option);
+unit_ptr get_amla_unit(const unit &u, const config &mod_option);
 
 /**
  * Function which will advance the unit at @a loc to 'advance_to'.
@@ -210,7 +251,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
  * function which tests if the unit at loc is currently affected by leadership.
  * (i.e. has a higher-level 'leadership' unit next to it).
  * If it does, then the location of the leader unit will be returned,
- * Otherwise map_location::null_location will be returned.
+ * Otherwise map_location::null_location() will be returned.
  * If 'bonus' is not NULL, the % bonus will be stored in it.
  */
 map_location under_leadership(const unit_map& units, const map_location& loc,
@@ -220,9 +261,15 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */
-int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
+int combat_modifier(const unit_map & units, const gamemap & map, const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless);
 
+/**
+ * Returns the amount that a unit's damage should be multiplied by
+ * due to a given lawful_bonus.
+ */
+int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment,
+                            bool is_fearless);
 /**
  * Function to check if an attack will satisfy the requirements for backstab.
  * Input:

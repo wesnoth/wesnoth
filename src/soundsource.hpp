@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
+   Copyright (C) 2006 - 2015 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,7 @@ class manager;
 /*
  * Sound source is an object on a map (a location) which has one or more
  * sounds effects associated with it, which are played randomly and with
- * appropriate delays, when sound emiting object is visible on screen.
+ * appropriate delays, when sound emitting object is visible on screen.
  */
 class positional_source {
 	unsigned int last_played_;
@@ -100,7 +100,7 @@ public:
 
 	/**
 	 * Serializes information into cfg as new children of key
-	 * "sound_source", appendend to existing content.
+	 * "sound_source", appended to existing content.
 	 */
 	void write_sourcespecs(config& cfg) const;
 

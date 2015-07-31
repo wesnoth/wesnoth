@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -87,10 +87,10 @@ void room_manager::load_config(const config& cfg)
 
 void room_manager::read_rooms()
 {
-	if (!filename_.empty() && file_exists(filename_)) {
+	if (!filename_.empty() && filesystem::file_exists(filename_)) {
 		LOG_LOBBY << "Reading rooms from " <<  filename_ << "\n";
 		config cfg;
-		scoped_istream file = istream_file(filename_);
+		filesystem::scoped_istream file = filesystem::istream_file(filename_);
 		if (compress_stored_rooms_) {
 			read_gz(cfg, *file);
 		} else {
@@ -130,7 +130,7 @@ void room_manager::write_rooms()
 		}
 	}
 
-	scoped_ostream file = ostream_file(filename_);
+	filesystem::scoped_ostream file = filesystem::ostream_file(filename_);
 	config_writer writer(*file, compress_stored_rooms_);
 	writer.write(cfg);
 	dirty_ = false;
@@ -532,7 +532,7 @@ void room_manager::fill_room_list(simple_wml::node& root)
 		const room& r = *tr.second;
 		simple_wml::node& room = rooms.add_child("room");
 		room.set_attr_dup("name", r.name().c_str());
-		room.set_attr_dup("size", lexical_cast<std::string>(r.members().size()).c_str());
+		room.set_attr_dup("size", lexical_cast_default<std::string>(r.members().size()).c_str());
 	}
 }
 

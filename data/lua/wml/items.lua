@@ -81,7 +81,7 @@ end
 
 function wml_actions.store_items(cfg)
 	local variable = cfg.variable or "items"
-	variable = tostring(variable) or helper.wml_error("invalid variable= in [store_items]")
+	variable = tostring(variable or helper.wml_error("invalid variable= in [store_items]"))
 	wesnoth.set_variable(variable)
 	local index = 0
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do

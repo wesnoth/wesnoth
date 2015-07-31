@@ -61,16 +61,11 @@ annettu, näytetään vaikeustason valikko.
 Skenaarion tunniste annetussa kampanjassa. Oletusarvo on ensimmäinen
 kampanja.
 .TP 
-\fB\-\-config\-dir\fP\fI\ nimi\fP
-Asettaa käyttäjän asetushakemiston \fInimi\fP hakemistossa $HOME tai windowsin
-kansiossa ”Omat tiedostot\eMy Games”. Voit myös määrittää asetushakemiston
-tiedostopolun muualle, kuin $HOME tai "Omat tiedostot\eMy Games"
-.TP 
-\fB\-\-config\-path\fP
-Näyttää käyttäjän asetushakemiston polun ja lopettaa.
-.TP 
 \fB\-\-data\-dir <hakemisto>\fP
 korvaa datahakemiston annetulla polulla
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 Mahdollistaa ylimääräisiä komentotila\-asetuksia pelissä. (Katso wiki\-sivulta
@@ -184,6 +179,24 @@ kelpoisuusvirheitä käsitellään vakavina virheinä.
 \fB\-t, \-\-test\fP
 Käynnistää pelin pienessä testiskenaariossa.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+Näyttää käyttäjän asetushakemiston polun ja lopettaa.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 Olettaa, että välimuisti on validi. (Vaarallista.)
 .TP 
@@ -224,6 +237,10 @@ suorituskykytestauksessa.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 Käynnistää pelin ilman graafista käyttöliittymää. Toimiakseen tämän täytyy

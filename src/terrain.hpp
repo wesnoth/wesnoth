@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,14 +26,17 @@ public:
 	terrain_type(const config& cfg);
 	terrain_type(const terrain_type& base, const terrain_type& overlay);
 
+	const std::string& icon_image() const { return icon_image_; }
 	const std::string& minimap_image() const { return minimap_image_; }
 	const std::string& minimap_image_overlay() const { return minimap_image_overlay_; }
 	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
 	const t_string& editor_name() const { return editor_name_.empty() ? description() : editor_name_; }
 	const t_string& description() const { return description_.empty() ? name_ : description_; }
+	const t_string& help_topic_text() const { return help_topic_text_; }
 	const std::string& id() const { return id_; }
 
+	bool hide_help() const { return hide_help_; }
 	bool hide_in_editor() const { return hide_in_editor_; }
 
 	//the character representing this terrain
@@ -42,6 +45,7 @@ public:
 	//the underlying type of the terrain
 	const t_translation::t_list& mvt_type() const { return mvt_type_; }
 	const t_translation::t_list& def_type() const { return def_type_; }
+	const t_translation::t_list& vision_type() const { return vision_type_; }
 	const t_translation::t_list& union_type() const { return union_type_; }
 
 	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
@@ -77,12 +81,16 @@ public:
 
 	bool operator==(const terrain_type& other) const;
 private:
+
+	/** The image used as symbol icon */
+	std::string icon_image_;
+
 	/** The image used in the minimap */
 	std::string minimap_image_;
 	std::string minimap_image_overlay_;
 
 	/**
-	 *  The image used in the editor pallete if not defined in WML it will be
+	 *  The image used in the editor palette if not defined in WML it will be
 	 *  initialized with the value of minimap_image_
 	 */
 	std::string editor_image_;
@@ -90,6 +98,7 @@ private:
 	t_string name_;
 	t_string editor_name_;
 	t_string description_;
+	t_string help_topic_text_;
 
 	//the 'number' is the number that represents this
 	//terrain type. The 'type' is a list of the 'underlying types'
@@ -97,6 +106,7 @@ private:
 	//This is the internal number used, WML still uses character strings.
 	t_translation::t_terrain number_;
 	t_translation::t_list mvt_type_;
+	t_translation::t_list vision_type_;
 	t_translation::t_list def_type_;
 	t_translation::t_list union_type_;
 
@@ -122,7 +132,7 @@ private:
 
 	bool overlay_, combined_;
 	t_translation::t_terrain editor_default_base_;
-	bool hide_in_editor_;
+	bool hide_help_, hide_in_editor_;
 };
 
 void create_terrain_maps(const config::const_child_itors &cfgs,

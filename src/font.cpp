@@ -1,6 +1,6 @@
 /* vim:set encoding=utf-8: */
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,15 +26,20 @@
 #include "text.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
+#include "sdl/alpha.hpp"
+#include "sdl/rect.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/optional.hpp>
 
 #include <list>
 #include <set>
 #include <stack>
+#include <sstream>
 
 #include <cairo-features.h>
 
@@ -60,24 +65,41 @@ static lg::log_domain log_font("font");
 // Signed int. Negative values mean "no subset".
 typedef int subset_id;
 
+// Used as a key in the font table, which caches the get_font results.
 struct font_id
 {
-	font_id(subset_id subset, int size) : subset(subset), size(size) {};
+	font_id(subset_id subset, int size) : subset(subset), size(size), style(TTF_STYLE_NORMAL) {}
+	font_id(subset_id subset, int size, int style) : subset(subset), size(size), style(style) {}
 	bool operator==(const font_id& o) const
 	{
-		return subset == o.subset && size == o.size;
-	};
+		return subset == o.subset && size == o.size && style == o.style;
+	}
 	bool operator<(const font_id& o) const
 	{
-		return subset < o.subset || (subset == o.subset && size < o.size);
-	};
+		return subset < o.subset || (subset == o.subset && size < o.size) || (subset == o.subset && size == o.size && style < o.style);
+	}
 
 	subset_id subset;
 	int size;
+	int style;
 };
 
-static std::map<font_id, TTF_Font*> font_table;
+// Record stored in the font table.
+// If the record for font_id (FOO, Bold + Underline) is a record (BAR, Bold),
+// it means that BAR is a Bold-styled version of FOO which we shipped with the
+// game, and now SDL_TTF should be used to style BAR as underline for the final results.
+struct ttf_record
+{
+	TTF_Font* font;
+	int style;
+};
+
+typedef std::map<font_id, ttf_record> tfont_table;
+
+static tfont_table font_table;
 static std::vector<std::string> font_names;
+static std::vector<std::string> bold_names;
+static std::vector<std::string> italic_names;
 
 struct text_chunk
 {
@@ -128,7 +150,7 @@ struct char_block_map
 	}
 	/**
 	 * Compresses map by merging consecutive ranges with the same font, even
-	 * if there is some unassociated ranges inbetween.
+	 * if there is some unassociated ranges in-between.
 	 */
 	void compress()
 	{
@@ -176,10 +198,10 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 		return chunks;
 
 	try {
-		utils::utf8_iterator ch(utf8_text);
+		utf8::iterator ch(utf8_text);
 		int sub = char_blocks.get_id(*ch);
 		if (sub >= 0) current_chunk.subset = sub;
-		for(utils::utf8_iterator end = utils::utf8_iterator::end(utf8_text); ch != end; ++ch)
+		for(utf8::iterator end = utf8::iterator::end(utf8_text); ch != end; ++ch)
 		{
 			sub = char_blocks.get_id(*ch);
 			if (sub >= 0 && sub != current_chunk.subset) {
@@ -193,23 +215,43 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 			chunks.push_back(current_chunk);
 		}
 	}
-	catch(utils::invalid_utf8_exception&) {
-		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"\n";
+	catch(utf8::invalid_utf8_exception&) {
+		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"" << std::endl;
 	}
 	return chunks;
 }
 
+typedef std::map<std::pair<std::string, int>, TTF_Font*> topen_font_cache;
+topen_font_cache open_fonts;
+
+static TTF_Font* open_font_impl(const std::string & , int);
+
+// A wrapper which caches the results of open_font_impl.
+// Note that clear_fonts() is responsible to clean up all of these font pointers,
+// so to avoid memory leaks fonts should only be opened from this function.
 static TTF_Font* open_font(const std::string& fname, int size)
 {
+	const std::pair<std::string, int> key = std::make_pair(fname, size);
+	const topen_font_cache::iterator it = open_fonts.find(key);
+	if (it != open_fonts.end()) {
+		return it->second;
+	}
+
+	TTF_Font* result = open_font_impl(fname, size);
+	open_fonts.insert(std::make_pair(key, result));
+	return result;
+}
+
+static TTF_Font* open_font_impl(const std::string & fname, int size) {
 	std::string name;
 	if(!game_config::path.empty()) {
 		name = game_config::path + "/fonts/" + fname;
-		if(!file_exists(name)) {
+		if(!filesystem::file_exists(name)) {
 			name = "fonts/" + fname;
-			if(!file_exists(name)) {
+			if(!filesystem::file_exists(name)) {
 				name = fname;
-				if(!file_exists(name)) {
-					ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
+				if(!filesystem::file_exists(name)) {
+					ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
 					return NULL;
 				}
 			}
@@ -217,101 +259,101 @@ static TTF_Font* open_font(const std::string& fname, int size)
 
 	} else {
 		name = "fonts/" + fname;
-		if(!file_exists(name)) {
-			if(!file_exists(fname)) {
-				ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
+		if(!filesystem::file_exists(name)) {
+			if(!filesystem::file_exists(fname)) {
+				ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
 				return NULL;
 			}
 			name = fname;
 		}
 	}
 
-	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
+	SDL_RWops *rwops = filesystem::load_RWops(name);
+	TTF_Font* font = TTF_OpenFontRW(rwops, true, size); // SDL takes ownership of rwops
 	if(font == NULL) {
-		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << "\n";
+		ERR_FT << "Failed opening font: '" <<  fname << "'\n";
+		ERR_FT << "TTF_OpenFont: " << TTF_GetError() << std::endl;
 		return NULL;
 	}
+
+	DBG_FT << "Opened a font: " << fname << std::endl;
 
 	return font;
 }
 
+// Gets an appropriately configured TTF Font, for this font size and style.
+// Loads fonts if necessary. For styled fonts, we search for a ``shipped''
+// version of the font which is prestyled. If this fails we find the closest
+// thing which we did ship, and store a record of this, which allows to
+// rapidly correct the remaining styling using SDL_TTF.
+//
+// Uses the font table for caching.
 static TTF_Font* get_font(font_id id)
 {
-	const std::map<font_id, TTF_Font*>::iterator it = font_table.find(id);
-	if(it != font_table.end())
-		return it->second;
+	const std::map<font_id, ttf_record>::iterator it = font_table.find(id);
+	if(it != font_table.end()) {
+		if (it->second.font != NULL) {
+			// If we found a valid record, use SDL_TTF to add in the difference 
+			// between its intrinsic style and the desired style.
+			TTF_SetFontStyle(it->second.font, it->second.style ^ id.style);
+		}
+		return it->second.font;
+	}
 
-	if(id.subset < 0 || size_t(id.subset) >= font_names.size())
+	// There's no record, so we need to try to find a solution for this font
+	// and make a record of it. If the indices are out of bounds don't bother though.
+	if(id.subset < 0 || size_t(id.subset) >= font_names.size()) {
 		return NULL;
+	}
 
-	TTF_Font* font = open_font(font_names[id.subset], id.size);
+	// Favor to use the shipped Italic font over bold if both are present and are needed.
+	if ((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
+		if (TTF_Font* font = open_font(italic_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_ITALIC};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
+	}
 
-	if(font == NULL)
-		return NULL;
+	// Now see if the shipped Bold font is useful and available.
+	if ((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
+		if (TTF_Font* font = open_font(bold_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_BOLD};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
+	}
 
-	TTF_SetFontStyle(font,TTF_STYLE_NORMAL);
+	// Try just to use the basic version of the font then.
+	if (font_names[id.subset].size()) {
+		if(TTF_Font* font = open_font(font_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_NORMAL};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
+	}
 
-	LOG_FT << "Inserting font...\n";
-	font_table.insert(std::pair<font_id,TTF_Font*>(id, font));
-	return font;
+	// Failed to find a font.
+	ttf_record rec = {NULL, TTF_STYLE_NORMAL};
+	font_table.insert(std::make_pair(id, rec));
+	return NULL;
 }
 
 static void clear_fonts()
 {
-	for(std::map<font_id,TTF_Font*>::iterator i = font_table.begin(); i != font_table.end(); ++i) {
+	for(topen_font_cache::iterator i = open_fonts.begin(); i != open_fonts.end(); ++i) {
 		TTF_CloseFont(i->second);
 	}
+	open_fonts.clear();
 
 	font_table.clear();
+
 	font_names.clear();
+	bold_names.clear();
+	italic_names.clear();
+
 	char_blocks.cbmap.clear();
 	line_size_cache.clear();
-}
-
-namespace {
-
-struct font_style_setter
-{
-	font_style_setter(TTF_Font* font, int style) : font_(font), old_style_(0)
-	{
-		if(style == 0) {
-			style = TTF_STYLE_NORMAL;
-		}
-
-		old_style_ = TTF_GetFontStyle(font_);
-
-		// I thought I had killed this. Now that we ship SDL_TTF, we
-		// should fix the bug directly in SDL_ttf instead of disabling
-		// features. -- Ayin 25/2/2005
-#if 0
-		//according to the SDL_ttf documentation, combinations of
-		//styles may cause SDL_ttf to segfault. We work around this
-		//here by disallowing combinations of styles
-
-		if((style&TTF_STYLE_UNDERLINE) != 0) {
-			//style = TTF_STYLE_NORMAL; //TTF_STYLE_UNDERLINE;
-			style = TTF_STYLE_UNDERLINE;
-		} else if((style&TTF_STYLE_BOLD) != 0) {
-			style = TTF_STYLE_BOLD;
-		} else if((style&TTF_STYLE_ITALIC) != 0) {
-			//style = TTF_STYLE_NORMAL; //TTF_STYLE_ITALIC;
-			style = TTF_STYLE_ITALIC;
-		}
-#endif
-
-		TTF_SetFontStyle(font_, style);
-	}
-
-	~font_style_setter()
-	{
-		TTF_SetFontStyle(font_,old_style_);
-	}
-
-private:
-	TTF_Font* font_;
-	int old_style_;
-};
-
 }
 
 namespace font {
@@ -320,7 +362,7 @@ manager::manager()
 {
 	const int res = TTF_Init();
 	if(res == -1) {
-		ERR_FT << "Could not initialize true type fonts\n";
+		ERR_FT << "Could not initialize true type fonts" << std::endl;
 		throw error();
 	} else {
 		LOG_FT << "Initialized true type fonts\n";
@@ -349,18 +391,35 @@ void manager::init() const
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>((game_config::path + "/fonts").c_str())))
 	{
-		ERR_FT << "Could not load the true type fonts\n";
+		ERR_FT << "Could not load the true type fonts" << std::endl;
 		throw error();
+	}
+
+	if(!FcConfigParseAndLoad(FcConfigGetCurrent(),
+							 reinterpret_cast<const FcChar8*>((game_config::path + "/fonts/fonts.conf").c_str()),
+							 FcFalse))
+	{
+		ERR_FT << "Could not load local font configuration\n";
+	}
+	else
+	{
+		LOG_FT << "Local font configuration loaded\n";
 	}
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, get_binary_paths("fonts")) {
+	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
-		BOOST_FOREACH(const std::string& file, files)
+		if(filesystem::is_directory(path)) {
+			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
+		}
+		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
-				AddFontResource(file.c_str());
+			{
+				const std::wstring wfile = unicode_cast<std::wstring>(file);
+				AddFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
+			}
+		}
 	}
 #endif
 }
@@ -372,12 +431,17 @@ void manager::deinit() const
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, get_binary_paths("fonts")) {
+	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
-		BOOST_FOREACH(const std::string& file, files)
+		if(filesystem::is_directory(path))
+			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
+		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
-				RemoveFontResource(file.c_str());
+			{
+				const std::wstring wfile = unicode_cast<std::wstring>(file);
+				RemoveFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
+			}
+		}
 	}
 #endif
 }
@@ -392,10 +456,66 @@ struct subset_descriptor
 	{
 	}
 
+	subset_descriptor(const config &);
+
 	std::string name;
+	boost::optional<std::string> bold_name; //If we are using another font for styled characters in this font, rather than SDL TTF method
+	boost::optional<std::string> italic_name;
+
 	typedef std::pair<int, int> range;
 	std::vector<range> present_codepoints;
 };
+
+font::subset_descriptor::subset_descriptor(const config & font)
+	: name(font["name"].str())
+	, bold_name()
+	, italic_name()
+	, present_codepoints()
+{
+	if (font.has_attribute("bold_name")) {
+		bold_name = font["bold_name"].str();
+	}
+
+	if (font.has_attribute("italic_name")) {
+		italic_name = font["italic_name"].str();
+	}
+
+	std::vector<std::string> ranges = utils::split(font["codepoints"]);
+
+	BOOST_FOREACH(const std::string & i, ranges) {
+		std::vector<std::string> r = utils::split(i, '-');
+		if(r.size() == 1) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
+		} else if(r.size() == 2) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			size_t r2 = lexical_cast_default<size_t>(r[1], 0);
+
+			present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
+		}
+	}
+}
+
+static bool check_font_file(std::string name) {
+	if(game_config::path.empty() == false) {
+		if(!filesystem::file_exists(game_config::path + "/fonts/" + name)) {
+			if(!filesystem::file_exists("fonts/" + name)) {
+				if(!filesystem::file_exists(name)) {
+				WRN_FT << "Failed opening font file '" << name << "': No such file or directory" << std::endl;
+				return false;
+				}
+			}
+		}
+	} else {
+		if(!filesystem::file_exists("fonts/" + name)) {
+			if(!filesystem::file_exists(name)) {
+				WRN_FT << "Failed opening font file '" << name << "': No such file or directory" << std::endl;
+				return false;
+			}
+		}
+	}
+	return true;
+}
 
 //sets the font list to be used.
 static void set_font_list(const std::vector<subset_descriptor>& fontlist)
@@ -404,32 +524,37 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 
 	std::vector<subset_descriptor>::const_iterator itor;
 	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
+		if (!check_font_file(itor->name)) continue;
 		// Insert fonts only if the font file exists
-		if(game_config::path.empty() == false) {
-			if(!file_exists(game_config::path + "/fonts/" + itor->name)) {
-				if(!file_exists("fonts/" + itor->name)) {
-					if(!file_exists(itor->name)) {
-					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
-					continue;
-					}
-				}
-			}
-		} else {
-			if(!file_exists("fonts/" + itor->name)) {
-				if(!file_exists(itor->name)) {
-					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
-					continue;
-				}
-			}
-		}
 		const subset_id subset = font_names.size();
 		font_names.push_back(itor->name);
+
+		if (itor->bold_name && check_font_file(*itor->bold_name)) {
+			bold_names.push_back(*itor->bold_name);
+		} else {
+			bold_names.push_back("");
+		}
+
+		if (itor->italic_name && check_font_file(*itor->italic_name)) {
+			italic_names.push_back(*itor->italic_name);
+		} else {
+			italic_names.push_back("");
+		}
 
 		BOOST_FOREACH(const subset_descriptor::range &cp_range, itor->present_codepoints) {
 			char_blocks.insert(cp_range.first, cp_range.second, subset);
 		}
 	}
 	char_blocks.compress();
+
+	assert(font_names.size() == bold_names.size());
+	assert(font_names.size() == italic_names.size());
+
+	DBG_FT << "Set the font list. The styled font families are:\n";
+
+	for (size_t i = 0; i < font_names.size(); ++i) {
+		DBG_FT << "[" << i << "]:\t\tbase:\t'" << font_names[i] << "'\tbold:\t'" << bold_names[i] << "'\titalic:\t'" << italic_names[i] << "'\n";
+	}
 }
 
 const SDL_Color NORMAL_COLOR = {0xDD,0xDD,0xDD,0},
@@ -499,17 +624,10 @@ void text_surface::bidi_cvt()
 	FriBidiStrIndex n;
 
 
-#ifdef	OLD_FRIBIDI
-	n = fribidi_utf8_to_unicode (c_str, len, bidi_logical);
-#else
 	n = fribidi_charset_to_unicode(FRIBIDI_CHAR_SET_UTF8, c_str, len, bidi_logical);
-#endif
 	fribidi_log2vis(bidi_logical, n, &base_dir, bidi_visual, NULL, NULL, NULL);
-#ifdef	OLD_FRIBIDI
-	fribidi_unicode_to_utf8 (bidi_visual, n, utf8str);
-#else
+
 	fribidi_unicode_to_charset(FRIBIDI_CHAR_SET_UTF8, bidi_visual, n, utf8str);
-#endif
 	is_rtl_ = base_dir == FRIBIDI_TYPE_RTL;
 	str_ = std::string(utf8str);
 	delete[] bidi_logical;
@@ -584,10 +702,10 @@ void text_surface::measure() const
 
 	BOOST_FOREACH(text_chunk const &chunk, chunks_)
 	{
-		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
-		if(ttfont == NULL)
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
+		if(ttfont == NULL) {
 			continue;
-		font_style_setter const style_setter(ttfont, style_);
+		}
 
 		int w, h;
 		TTF_SizeUTF8(ttfont, chunk.text.c_str(), &w, &h);
@@ -630,10 +748,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 
 	BOOST_FOREACH(text_chunk const &chunk, chunks_)
 	{
-		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
-		if (ttfont == NULL)
-			continue;
-		font_style_setter const style_setter(ttfont, style_);
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
 
 		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_));
 		if(!s.null())
@@ -751,7 +866,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 			for(std::vector<surface>::const_iterator j = i->begin(),
 					j_end = i->end(); j != j_end; ++j) {
 				SDL_SetAlpha(*j, 0, 0); // direct blit without alpha blending
-				SDL_Rect dstrect = create_rect(xpos, ypos, 0, 0);
+				SDL_Rect dstrect = sdl::create_rect(xpos, ypos, 0, 0);
 				sdl_blit(*j, NULL, res, &dstrect);
 				xpos += (*j)->w;
 				height = std::max<size_t>((*j)->h, height);
@@ -776,11 +891,11 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 {
 	if (gui_surface.null()) {
 		text_surface const &u = text_cache::find(text_surface(text, size, color, style));
-		return create_rect(0, 0, u.width(), u.height());
+		return sdl::create_rect(0, 0, u.width(), u.height());
 	}
 
 	if(area.w == 0) {  // no place to draw
-		return create_rect(0, 0, 0, 0);
+		return sdl::create_rect(0, 0, 0, 0);
 	}
 
 	const std::string etext = make_text_ellipsis(text, size, area.w);
@@ -788,7 +903,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	// for the main current use, we already parsed markup
 	surface surface(render_text(etext,size,color,style,false));
 	if(surface == NULL) {
-		return create_rect(0, 0, 0, 0);
+		return sdl::create_rect(0, 0, 0, 0);
 	}
 
 	SDL_Rect dest;
@@ -885,9 +1000,9 @@ std::string make_text_ellipsis(const std::string &text, int font_size,
 
 	std::string current_substring;
 
-	utils::utf8_iterator itor(text);
+	utf8::iterator itor(text);
 
-	for(; itor != utils::utf8_iterator::end(text); ++itor) {
+	for(; itor != utf8::iterator::end(text); ++itor) {
 		std::string tmp = current_substring;
 		tmp.append(itor.substr().first, itor.substr().second);
 
@@ -903,343 +1018,26 @@ std::string make_text_ellipsis(const std::string &text, int font_size,
 
 }
 
-namespace {
 
-typedef std::map<int, font::floating_label> label_map;
-label_map labels;
-int label_id = 1;
-
-std::stack<std::set<int> > label_contexts;
-}
-
-
-namespace font {
-
-floating_label::floating_label(const std::string& text)
-		: surf_(NULL), buf_(NULL), text_(text),
-		font_size_(SIZE_NORMAL),
-		color_(NORMAL_COLOR),	bgcolor_(), bgalpha_(0),
-		xpos_(0), ypos_(0),
-		xmove_(0), ymove_(0), lifetime_(-1),
-		width_(-1), height_(-1),
-		clip_rect_(screen_area()),
-		alpha_change_(0), visible_(true), align_(CENTER_ALIGN),
-		border_(0), scroll_(ANCHOR_LABEL_SCREEN), use_markup_(true)
-{}
-
-void floating_label::move(double xmove, double ymove)
-{
-	xpos_ += xmove;
-	ypos_ += ymove;
-}
-
-int floating_label::xpos(size_t width) const
-{
-	int xpos = int(xpos_);
-	if(align_ == font::CENTER_ALIGN) {
-		xpos -= width/2;
-	} else if(align_ == font::RIGHT_ALIGN) {
-		xpos -= width;
-	}
-
-	return xpos;
-}
-
-surface floating_label::create_surface()
-{
-	if (surf_.null()) {
-		font::ttext text;
-		text.set_foreground_color((color_.r << 24) | (color_.g << 16) | (color_.b << 8) | 255);
-		text.set_font_size(font_size_);
-		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
-		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
-
-		//ignore last '\n'
-		if(!text_.empty() && *(text_.rbegin()) == '\n'){
-			text.set_text(std::string(text_.begin(), text_.end()-1), use_markup_);
-		} else {
-			text.set_text(text_, use_markup_);
-		}
-
-		surface foreground = text.render();
-
-		if(foreground == NULL) {
-			ERR_FT << "could not create floating label's text" << std::endl;
-			return NULL;
-		}
-
-		// combine foreground text with its background
-		if(bgalpha_ != 0) {
-			// background is a dark tootlip box
-			surface background = create_neutral_surface(foreground->w + border_*2, foreground->h + border_*2);
-
-			if (background == NULL) {
-				ERR_FT << "could not create tooltip box" << std::endl;
-				surf_ = create_optimized_surface(foreground);
-				return surf_;
-			}
-
-			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl_fill_rect(background,NULL, color);
-
-			// we make the text less transparent, because the blitting on the
-			// dark background will darken the anti-aliased part.
-			// This 1.13 value seems to restore the brightness of version 1.4
-			// (where the text was blitted directly on screen)
-			foreground = adjust_surface_alpha(foreground, ftofxp(1.13), false);
-
-			SDL_Rect r = create_rect( border_, border_, 0, 0);
-			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, NULL, background, &r);
-
-			surf_ = create_optimized_surface(background);
-			// RLE compression seems less efficient for big semi-transparent area
-			// so, remove it for this case, but keep the optimized display format
-			SDL_SetAlpha(surf_,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-		}
-		else {
-			// background is blurred shadow of the text
-			surface background = create_neutral_surface
-				(foreground->w + 4, foreground->h + 4);
-			sdl_fill_rect(background, NULL, 0);
-			SDL_Rect r = { 2, 2, 0, 0 };
-			blit_surface(foreground, NULL, background, &r);
-			background = shadow_image(background, false);
-
-			if (background == NULL) {
-				ERR_FT << "could not create floating label's shadow" << std::endl;
-				surf_ = create_optimized_surface(foreground);
-				return surf_;
-			}
-			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, NULL, background, &r);
-			surf_ = create_optimized_surface(background);
-		}
-	}
-
-	return surf_;
-}
-
-void floating_label::draw(surface screen)
-{
-	if(!visible_) {
-		buf_.assign(NULL);
-		return;
-	}
-
-	create_surface();
-	if(surf_ == NULL) {
-		return;
-	}
-
-	if(buf_ == NULL) {
-		buf_.assign(create_compatible_surface(screen, surf_->w, surf_->h));
-		if(buf_ == NULL) {
-			return;
-		}
-	}
-
-	if(screen == NULL) {
-		return;
-	}
-
-	SDL_Rect rect = create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
-	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_blit(screen,&rect,buf_,NULL);
-	sdl_blit(surf_,NULL,screen,&rect);
-
-	update_rect(rect);
-}
-
-void floating_label::undraw(surface screen)
-{
-	if(screen == NULL || buf_ == NULL) {
-		return;
-	}
-
-	SDL_Rect rect = create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
-	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_blit(buf_,NULL,screen,&rect);
-
-	update_rect(rect);
-
-	move(xmove_,ymove_);
-	if(lifetime_ > 0) {
-		--lifetime_;
-		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0) && surf_ != NULL) {
-			// fade out moving floating labels
-			// note that we don't optimize these surfaces since they will always change
-			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_,false));
-		}
-	}
-}
-
-int add_floating_label(const floating_label& flabel)
-{
-	if(label_contexts.empty()) {
-		return 0;
-	}
-
-	++label_id;
-	labels.insert(std::pair<int, floating_label>(label_id, flabel));
-	label_contexts.top().insert(label_id);
-	return label_id;
-}
-
-void move_floating_label(int handle, double xmove, double ymove)
-{
-	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
-		i->second.move(xmove,ymove);
-	}
-}
-
-void scroll_floating_labels(double xmove, double ymove)
-{
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(i->second.scroll() == ANCHOR_LABEL_MAP) {
-			i->second.move(xmove,ymove);
-		}
-	}
-}
-
-void remove_floating_label(int handle)
-{
-	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
-		if(label_contexts.empty() == false) {
-			label_contexts.top().erase(i->first);
-		}
-
-		labels.erase(i);
-	}
-}
-
-void show_floating_label(int handle, bool value)
-{
-	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
-		i->second.show(value);
-	}
-}
-
-SDL_Rect get_floating_label_rect(int handle)
-{
-	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
-		const surface surf = i->second.create_surface();
-		if(surf != NULL) {
-			return create_rect(0, 0, surf->w, surf->h);
-		}
-	}
-
-	return empty_rect;
-}
-
-floating_label_context::floating_label_context()
-{
-	surface const screen = SDL_GetVideoSurface();
-	if(screen != NULL) {
-		draw_floating_labels(screen);
-	}
-
-	label_contexts.push(std::set<int>());
-}
-
-floating_label_context::~floating_label_context()
-{
-	const std::set<int>& labels = label_contexts.top();
-	for(std::set<int>::const_iterator i = labels.begin(); i != labels.end(); ) {
-		remove_floating_label(*i++);
-	}
-
-	label_contexts.pop();
-
-	surface const screen = SDL_GetVideoSurface();
-	if(screen != NULL) {
-		undraw_floating_labels(screen);
-	}
-}
-
-void draw_floating_labels(surface screen)
-{
-	if(label_contexts.empty()) {
-		return;
-	}
-
-	const std::set<int>& context = label_contexts.top();
-
-	//draw the labels in the order they were added, so later added labels (likely to be tooltips)
-	//are displayed over earlier added labels.
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(context.count(i->first) > 0) {
-			i->second.draw(screen);
-		}
-	}
-}
-
-void undraw_floating_labels(surface screen)
-{
-	if(label_contexts.empty()) {
-		return;
-	}
-
-	std::set<int>& context = label_contexts.top();
-
-	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
-	//into the exact state it started in.
-	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
-		if(context.count(i->first) > 0) {
-			i->second.undraw(screen);
-		}
-	}
-
-	//remove expired labels
-	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(j->first) > 0 && j->second.expired()) {
-			context.erase(j->first);
-			labels.erase(j++);
-		} else {
-			++j;
-		}
-	}
-}
-
-}
-
-static bool add_font_to_fontlist(config &fonts_config,
+static bool add_font_to_fontlist(const config &fonts_config,
 	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 {
-	config &font = fonts_config.find_child("font", "name", name);
-	if (!font)
+	const config &font = fonts_config.find_child("font", "name", name);
+	if (!font) {
 		return false;
-
-		fontlist.push_back(font::subset_descriptor());
-		fontlist.back().name = name;
-		std::vector<std::string> ranges = utils::split(font["codepoints"]);
-
-		for(std::vector<std::string>::const_iterator itor = ranges.begin();
-				itor != ranges.end(); ++itor) {
-
-			std::vector<std::string> r = utils::split(*itor, '-');
-			if(r.size() == 1) {
-				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
-			} else if(r.size() == 2) {
-				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				size_t r2 = lexical_cast_default<size_t>(r[1], 0);
-
-				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
-			}
-		}
-
-		return true;
 	}
+	//DBG_FT << "Adding a font record: " << font.debug() << std::endl;
+
+	fontlist.push_back(font::subset_descriptor(font));
+
+	return true;
+}
 
 namespace font {
 
 namespace {
-	t_string family_order;
+	t_string family_order_sans;
+	t_string family_order_mono;
 } // namespace
 
 bool load_font_config()
@@ -1248,7 +1046,13 @@ bool load_font_config()
 	//config when changing languages
 	config cfg;
 	try {
-		scoped_istream stream = preprocess_file(get_wml_location("hardwired/fonts.cfg"));
+		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
+		if(cfg_path.empty()) {
+			ERR_FT << "could not resolve path to fonts.cfg, file not found\n";
+			return false;
+		}
+
+		filesystem::scoped_istream stream = preprocess_file(cfg_path);
 		read(cfg, *stream);
 	} catch(config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n"
@@ -1256,16 +1060,29 @@ bool load_font_config()
 		return false;
 	}
 
-	config &fonts_config = cfg.child("fonts");
+	const config &fonts_config = cfg.child("fonts");
 	if (!fonts_config)
 		return false;
 
 	std::set<std::string> known_fonts;
 	BOOST_FOREACH(const config &font, fonts_config.child_range("font")) {
 		known_fonts.insert(font["name"]);
+		if (font.has_attribute("bold_name")) {
+			known_fonts.insert(font["bold_name"]);
+		}
+		if (font.has_attribute("italic_name")) {
+			known_fonts.insert(font["italic_name"]);
+		}
 	}
 
-	family_order = fonts_config["family_order"];
+	family_order_sans = fonts_config["family_order"];
+	family_order_mono = fonts_config["family_order_monospace"];
+
+	if(family_order_mono.empty()) {
+		ERR_FT << "No monospace font family order defined, falling back to sans serif order\n";
+		family_order_mono = family_order_sans;
+	}
+
 	const std::vector<std::string> font_order = utils::split(fonts_config["order"]);
 	std::vector<font::subset_descriptor> fontlist;
 	std::vector<std::string>::const_iterator font;
@@ -1285,9 +1102,14 @@ bool load_font_config()
 	return true;
 }
 
-const t_string& get_font_families()
+const t_string& get_font_families(family_class fclass)
 {
-	return family_order;
+	switch(fclass) {
+	case FONT_MONOSPACE:
+		return family_order_mono;
+	default:
+		return family_order_sans;
+	}
 }
 
 void cache_mode(CACHE mode)

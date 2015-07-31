@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,10 +27,11 @@
 #include "../../map_label.hpp"
 #include "../../replay.hpp"
 #include "../../resources.hpp"
-#include "../../sdl_utils.hpp"
+#include "../../sdl/utils.hpp"
 #include "../../team.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
+#include "../../unit.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -57,8 +58,8 @@ static void display_label(int /*side*/, const map_location& location, const std:
 
 	const terrain_label *res;
 	res = gui->labels().set_label(location, text, team_name, color);
-	if (res)
-		recorder.add_label(res);
+	if (res && resources::recorder)
+		resources::recorder->add_label(res);
 }
 
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
  * Call this function to register a widget. Use this macro in the
  * implementation, inside the gui2 namespace.
  *
- * @see @ref gui2::load_widget_definitions for more information.
+ * See @ref gui2::load_widget_definitions for more information.
  *
  * @note When the type is tfoo_definition, the id "foo" and no special key best
  * use RESISTER_WIDGET(foo) instead.
@@ -30,33 +30,35 @@
  * @param id                      Id of the widget
  * @param key                     The id to load if differs from id.
  */
-#define REGISTER_WIDGET3(                                                  \
-		  type                                                             \
-		, id                                                               \
-		, key)                                                             \
-namespace {                                                                \
-                                                                           \
-	namespace ns_##type {                                                  \
-                                                                           \
-		struct tregister_helper {                                          \
-			tregister_helper()                                             \
-			{                                                              \
-				register_widget(#id, boost::bind(                          \
-						  load_widget_definitions<type>                    \
-						, _1                                               \
-						, _2                                               \
-						, _3                                               \
-						, key));                                           \
-                                                                           \
-				register_builder_widget(#id, boost::bind(                  \
-							  build_widget<implementation::tbuilder_##id>  \
-							, _1));                                        \
-			}                                                              \
-		};                                                                 \
-                                                                           \
-		static tregister_helper register_helper;                           \
-	}                                                                      \
-}
+#define REGISTER_WIDGET3(type, id, key)                                        \
+	namespace                                                                  \
+	{                                                                          \
+                                                                               \
+	namespace ns_##type                                                        \
+	{                                                                          \
+                                                                               \
+		struct tregister_helper                                                \
+		{                                                                      \
+			tregister_helper()                                                 \
+			{                                                                  \
+				register_widget(#id,                                           \
+								boost::bind(load_widget_definitions<type>,     \
+											_1,                                \
+											_2,                                \
+											_3,                                \
+											key));                             \
+                                                                               \
+				register_builder_widget(                                       \
+						#id,                                                   \
+						boost::bind(                                           \
+								build_widget<implementation::tbuilder_##id>,   \
+								_1));                                          \
+			}                                                                  \
+		};                                                                     \
+                                                                               \
+		static tregister_helper register_helper;                               \
+	}                                                                          \
+	}
 
 /**
  * Wrapper for REGISTER_WIDGET3.

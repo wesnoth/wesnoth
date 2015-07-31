@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,11 @@
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/toggle_button.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_toggle_button::tbuilder_toggle_button(const config& cfg)
 	: tbuilder_control(cfg)
@@ -35,16 +37,15 @@ tbuilder_toggle_button::tbuilder_toggle_button(const config& cfg)
 
 twidget* tbuilder_toggle_button::build() const
 {
-	ttoggle_button *widget = new ttoggle_button();
+	ttoggle_button* widget = new ttoggle_button();
 
 	init_control(widget);
 
 	widget->set_icon_name(icon_name_);
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI_G << "Window builder: placed toggle button '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed toggle button '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
@@ -72,4 +73,3 @@ twidget* tbuilder_toggle_button::build() const
  * @end{tag}{name="toggle_button"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

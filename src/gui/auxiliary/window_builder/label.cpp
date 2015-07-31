@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,9 +20,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/label.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_label::tbuilder_label(const config& cfg)
 	: tbuilder_control(cfg)
@@ -42,9 +44,8 @@ twidget* tbuilder_label::build() const
 	label->set_characters_per_line(characters_per_line);
 	label->set_text_alignment(text_alignment);
 
-	DBG_GUI_G << "Window builder: placed label '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
+			  << definition << "'.\n";
 
 	return label;
 }
@@ -89,4 +90,3 @@ twidget* tbuilder_label::build() const
  * @end{tag}{name="label"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

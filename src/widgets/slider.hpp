@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 
 #include "SDL.h"
 
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 
 #include "widget.hpp"
 
@@ -51,10 +51,14 @@ protected:
 	bool requires_event_focus(const SDL_Event *event=NULL) const;
 	virtual void handle_event(const SDL_Event& event);
 	virtual void draw_contents();
+	virtual bool allow_key_events() { return true; }
 
 private:
 	void mouse_motion(const SDL_MouseMotionEvent& event);
 	void mouse_down(const SDL_MouseButtonEvent& event);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	void mouse_wheel(const SDL_MouseWheelEvent& event);
+#endif
 	void set_slider_position(int x);
 	SDL_Rect slider_area() const;
 	surface image_, pressedImage_, activeImage_, disabledImage_;
@@ -83,6 +87,14 @@ class list_slider : public slider
 		const T& item_selected() const; //use item_selected() instead of value()
 	private:
 		std::vector<T> items_;
+};
+
+// This is a different style of slider, which doesn't implement key left/right responses
+class zoom_slider : public slider
+{
+public:
+	zoom_slider(CVideo &video, const std::string& image = "buttons/sliders/slider", bool black = false);
+	virtual bool allow_key_events() { return false; }
 };
 
 }

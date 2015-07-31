@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,11 +30,12 @@
 #ifndef GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include <SDL_types.h>
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Adds a new timer.
@@ -49,10 +50,9 @@ namespace gui2 {
  * @returns                       The id of the timer.
  * @retval [0]                    Failed to create a timer.
  */
-size_t
-add_timer(const Uint32 interval
-		, const boost::function<void(size_t id)>& callback
-		, const bool repeat = false);
+size_t add_timer(const Uint32 interval,
+				 const boost::function<void(size_t id)>& callback,
+				 const bool repeat = false);
 
 /**
  * Removes a timer.
@@ -67,8 +67,7 @@ add_timer(const Uint32 interval
  * @returns                       Status, false if the timer couldn't be
  *                                removed.
  */
-bool
-remove_timer(const size_t id);
+bool remove_timer(const size_t id);
 
 /**
  * Executes a timer.
@@ -82,10 +81,8 @@ remove_timer(const size_t id);
  * @returns                       Status, false if the timer couldn't be
  *                                executed.
  */
-bool
-execute_timer(const size_t id);
+bool execute_timer(const size_t id);
 
-} //namespace gui2
+} // namespace gui2
 
 #endif
-

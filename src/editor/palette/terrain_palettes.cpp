@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 #include "terrain_palettes.hpp"
 
 #include "../../gettext.hpp"
+#include "../../formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -39,8 +40,8 @@ const t_translation::t_terrain& get_selected_fg_terrain() {
 	return fg_terrain;
 }
 
-const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; };
-const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; };
+const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; }
+const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; }
 
 
 static bool is_valid_terrain(const t_translation::t_terrain & c) {
@@ -78,16 +79,16 @@ void terrain_palette::setup(const config& cfg)
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
-	BOOST_FOREACH(const config &g, cfg.child_range("editor_group"))
+	BOOST_FOREACH(const config &group, cfg.child_range("editor_group"))
 	{
-		if (group_names.find(g["id"]) == group_names.end()) {
+		if (group_names.find(group["id"]) == group_names.end()) {
 
 			config cfg;
-			cfg["id"] = g["id"];
-			cfg["name"] = g["name"];
+			cfg["id"] = group["id"];
+			cfg["name"] = group["name"];
 
-			cfg["icon"] = "icons/terrain/terrain_" + g["icon"].str();
-			cfg["core"] = g["core"];
+			cfg["icon"] = "icons/terrain/terrain_" + group["icon"].str();
+			cfg["core"] = group["core"];
 			groups_.push_back(item_group(cfg));
 
 			group_names.insert(groups_.back().id);
@@ -143,17 +144,15 @@ void terrain_palette::setup(const config& cfg)
 	}
 
 	// Set the default terrain
-	select_fg_item("mountains");
+	select_fg_item("regular_mountains");
 	select_bg_item("grassland");
 
 	// Set the default group
 	set_group("all");
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found.\n";
+		ERR_ED << "No items found." << std::endl;
 	}
-
-//	update_report();
 }
 
 void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
@@ -164,15 +163,15 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 
 	//Draw default base for overlay terrains
 	if(base_terrain != t_translation::NONE_TERRAIN) {
-		const std::string base_filename = "terrain/" + map().get_terrain_info(base_terrain).editor_image() + ".png";
+		const std::string base_filename = map().get_terrain_info(base_terrain).editor_image();
 		surface base_image(image::get_image(base_filename));
 
 		if(base_image == NULL) {
 			tooltip_text << "BASE IMAGE NOT FOUND\n";
-			ERR_ED << "image for terrain : '" << base_filename << "' not found\n";
+			ERR_ED << "image for terrain : '" << base_filename << "' not found" << std::endl;
 			base_image = image::get_image(game_config::images::missing);
 			if (base_image == NULL) {
-				ERR_ED << "Placeholder image not found\n";
+				ERR_ED << "Placeholder image not found" << std::endl;
 				return;
 			}
 		}
@@ -183,14 +182,14 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 		}
 	}
 
-	const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
-	image = surface(image::get_image(filename));
+	const std::string filename = map().get_terrain_info(terrain).editor_image();
+	image = image::get_image(filename);
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for terrain: '" << filename << "' not found\n";
+		ERR_ED << "image for terrain: '" << filename << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
 		if (image == NULL) {
-			ERR_ED << "Placeholder image not found\n";
+			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
 	}

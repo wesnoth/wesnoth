@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,20 +24,20 @@
 
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 /**
  * The placement class for a vertical list.
  *
- * @see @ref tplacer_ for more information.
+ * See @ref tplacer_ for more information.
  */
-class tplacer_vertical_list
-	: public tplacer_
+class tplacer_vertical_list : public tplacer_
 {
 public:
-
 	/***** ***** Constructor, destructor, assignment. ***** *****/
 
 	explicit tplacer_vertical_list(const unsigned maximum_columns);
@@ -57,9 +57,8 @@ public:
 	/***** ***** Members. ***** *****/
 
 private:
-
 	/**
-	 * The maximum number of colums to use.
+	 * The maximum number of columns to use.
 	 *
 	 * This value is determined by the @p parallel_items parameter of
 	 * @ref tplacer_::build).

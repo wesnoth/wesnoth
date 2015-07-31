@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -85,7 +85,7 @@ brush::brush(const config& cfg)
 		add_relative_location(x, y);
 	}
 	if (relative_tiles_.empty()) {
-		WRN_ED << "Empty brush definition, name=" << name_ << "\n";
+		WRN_ED << "Empty brush definition, name=" << name_ << std::endl;
 	}
 }
 

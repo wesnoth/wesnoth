@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,14 +21,21 @@
 
 struct map_location;
 
-namespace gui2 {
+namespace gui2
+{
 
 class teditor_set_starting_position : public tdialog
 {
 public:
-	teditor_set_starting_position(unsigned current_player, unsigned maximum_players, const std::vector<map_location>& starting_positions);
+	teditor_set_starting_position(
+			unsigned current_player,
+			unsigned maximum_players,
+			const std::vector<map_location>& starting_positions);
 
-	unsigned result() const { return selection_; }
+	unsigned result() const
+	{
+		return selection_;
+	}
 
 private:
 	unsigned selection_;
@@ -43,7 +50,6 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_EDITOR_SET_STARTING_POSITION_HPP_INCLUDED */

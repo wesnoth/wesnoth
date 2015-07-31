@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Fabian Mueller
+   Copyright (C) 2011 - 2015 by Fabian Mueller
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,12 +12,12 @@
    See the COPYING file for more details.
 */
 
-#include <vector>
-#include "sdl_utils.hpp"
-#include "map.hpp"
-
 #ifndef JOYSTICK_HPP_
 #define JOYSTICK_HPP_
+
+#include <vector>
+#include "sdl/utils.hpp"
+#include "map.hpp"
 
 class joystick_manager {
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,27 +29,24 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(button)
 
-tbutton::tbutton()
-	: tcontrol(COUNT)
-	, tclickable_()
-	, state_(ENABLED)
-	, retval_(0)
+tbutton::tbutton() : tcontrol(COUNT), tclickable_(), state_(ENABLED), retval_(0)
 {
-	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&tbutton::signal_handler_mouse_enter, this, _2, _3));
-	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&tbutton::signal_handler_mouse_leave, this, _2, _3));
+	connect_signal<event::MOUSE_ENTER>(
+			boost::bind(&tbutton::signal_handler_mouse_enter, this, _2, _3));
+	connect_signal<event::MOUSE_LEAVE>(
+			boost::bind(&tbutton::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
-				&tbutton::signal_handler_left_button_down, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
-				&tbutton::signal_handler_left_button_up, this, _2, _3));
+			&tbutton::signal_handler_left_button_down, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_UP>(
+			boost::bind(&tbutton::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
-				&tbutton::signal_handler_left_button_click, this, _2, _3));
+			&tbutton::signal_handler_left_button_click, this, _2, _3));
 }
 
 void tbutton::set_active(const bool active)
@@ -73,7 +70,7 @@ void tbutton::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -83,8 +80,8 @@ const std::string& tbutton::get_control_type() const
 	return type;
 }
 
-void tbutton::signal_handler_mouse_enter(
-		const event::tevent event, bool& handled)
+void tbutton::signal_handler_mouse_enter(const event::tevent event,
+										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -92,8 +89,8 @@ void tbutton::signal_handler_mouse_enter(
 	handled = true;
 }
 
-void tbutton::signal_handler_mouse_leave(
-		const event::tevent event, bool& handled)
+void tbutton::signal_handler_mouse_leave(const event::tevent event,
+										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -101,8 +98,8 @@ void tbutton::signal_handler_mouse_leave(
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_down(
-		const event::tevent event, bool& handled)
+void tbutton::signal_handler_left_button_down(const event::tevent event,
+											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -115,8 +112,8 @@ void tbutton::signal_handler_left_button_down(
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_up(
-		const event::tevent event, bool& handled)
+void tbutton::signal_handler_left_button_up(const event::tevent event,
+											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -124,8 +121,8 @@ void tbutton::signal_handler_left_button_up(
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_click(
-		const event::tevent event, bool& handled)
+void tbutton::signal_handler_left_button_click(const event::tevent event,
+											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

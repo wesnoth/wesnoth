@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include "gui/auxiliary/event/dispatcher.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Small concept class.
@@ -38,7 +39,9 @@ namespace gui2 {
 class tclickable_
 {
 public:
-	virtual ~tclickable_() {}
+	virtual ~tclickable_()
+	{
+	}
 
 	/**
 	 * Connects a signal handler for a 'click' event.
@@ -47,8 +50,8 @@ public:
 	 *
 	 * @param signal              The signal to connect.
 	 */
-	virtual void connect_click_handler(
-			const event::tsignal_function& signal) = 0;
+	virtual void connect_click_handler(const event::tsignal_function& signal)
+			= 0;
 
 	/**
 	 * Disconnects a signal handler for a 'click' event.
@@ -58,8 +61,8 @@ public:
 	 * @param signal              The signal to disconnect (should be the same
 	 *                            as send to the connect call.
 	 */
-	virtual void disconnect_click_handler(
-			const event::tsignal_function& signal) = 0;
+	virtual void disconnect_click_handler(const event::tsignal_function& signal)
+			= 0;
 };
 
 } // namespace gui2

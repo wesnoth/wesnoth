@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,35 +24,36 @@
 #include "utils/foreach.tpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
-	: tbuilder_control(cfg)
-	, stack()
+	: tbuilder_control(cfg), stack()
 {
-	const config &s = cfg.child("stack");
+	const config& s = cfg.child("stack");
 	VALIDATE(s, _("No stack defined."));
-	FOREACH(const AUTO& layer, s.child_range("layer")) {
+	FOREACH(const AUTO & layer, s.child_range("layer"))
+	{
 		stack.push_back(new tbuilder_grid(layer));
 	}
 }
 
 twidget* tbuilder_stacked_widget::build() const
 {
-	tstacked_widget *widget = new tstacked_widget();
+	tstacked_widget* widget = new tstacked_widget();
 
 	init_control(widget);
 
-	DBG_GUI_G << "Window builder: placed stacked widget '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed stacked widget '" << id
+			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tstacked_widget_definition::tresolution> conf =
-			boost::dynamic_pointer_cast
-				<const tstacked_widget_definition::tresolution>(
-						widget->config());
+	boost::intrusive_ptr<const tstacked_widget_definition::tresolution>
+	conf = boost::
+			dynamic_pointer_cast<const tstacked_widget_definition::tresolution>(
+					widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -87,4 +88,3 @@ twidget* tbuilder_stacked_widget::build() const
  * @end{tag}{name="stacked_widget"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

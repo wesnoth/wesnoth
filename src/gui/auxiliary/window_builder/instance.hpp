@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,12 +19,13 @@
 
 #include "config.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_instance
-	: public tbuilder_widget
+struct tbuilder_instance : public tbuilder_widget
 {
 	explicit tbuilder_instance(const config& cfg);
 
@@ -36,7 +37,7 @@ struct tbuilder_instance
 	 * Holds a copy of the cfg parameter in the constructor.
 	 *
 	 * This is used when instantiating a spacer, it can still use the
-	 * parameters orginally sent.
+	 * parameters originally sent.
 	 */
 	config configuration;
 };

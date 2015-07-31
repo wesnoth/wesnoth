@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,16 +15,23 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "desktop/notifications.hpp" //needed to check if notifications are not available
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "filechooser.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/advanced_graphics_options.hpp"
+#include "gui/dialogs/game_cache_options.hpp"
+#include "gui/dialogs/mp_alerts_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "lobby_preferences.hpp"
+#include "marked-up_text.hpp"
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
+#include "widgets/combo.hpp"
 #include "widgets/slider.hpp"
 #include "formula_string_utils.hpp"
 
@@ -90,7 +97,7 @@ public:
 		TYPE type;
 	};
 
-	virtual handler_vector handler_members();
+	virtual sdl_handler_vector handler_members();
 private:
 
 	void process_event();
@@ -102,12 +109,12 @@ private:
 	void sort_advanced_preferences();
 	void set_friends_menu();
 	std::vector<std::string> friends_names_;
+	std::vector<std::string> color_ids_;
 
-//
-	// change
 	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_,
-	            scroll_slider_, chat_lines_slider_,
-	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_, advanced_slider_;
+	            scroll_slider_, chat_lines_slider_, buffer_size_slider_,
+	            idle_anim_slider_, autosavemax_slider_, advanced_slider_;
+
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 			interrupt_when_ally_sighted_button_,
@@ -122,22 +129,44 @@ private:
 			friends_remove_button_, show_floating_labels_button_,
 			turn_dialog_button_, whiteboard_on_start_button_,
 			hide_whiteboard_button_, turn_bell_button_, show_team_colors_button_,
-			show_color_cursors_button_, show_haloing_button_, video_mode_button_,
-			theme_button_, hotkeys_button_,
+			show_haloing_button_, video_mode_button_,
+			theme_button_,
+			hotkeys_button_, colors_button_,
+			cache_button_,
 			advanced_button_, sound_button_,
 			music_button_, chat_timestamp_button_,
 			advanced_sound_button_, normal_sound_button_,
+			display_button_,
 			UI_sound_button_, sample_rate_button1_,
 			sample_rate_button2_, sample_rate_button3_,
 			confirm_sound_button_, idle_anim_button_,
 			standing_anim_button_,
-			animate_map_button_;
+			animate_map_button_,
+			disable_auto_move_button_,
+			mp_alerts_options_button_,
+			advanced_graphics_options_button_,
+
+			// color tab
+			orb_colors_defaults_,
+			orb_colors_enemy_toggle_,
+			orb_colors_ally_toggle_,
+			orb_colors_unmoved_toggle_,
+			orb_colors_partial_toggle_,
+			orb_colors_moved_toggle_;
+
+	std::vector<gui::button> orb_colors_ally_buttons_;
+	std::vector<gui::button> orb_colors_enemy_buttons_;
+	std::vector<gui::button> orb_colors_moved_buttons_;
+	std::vector<gui::button> orb_colors_partial_buttons_;
+	std::vector<gui::button> orb_colors_unmoved_buttons_;
+
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
 			   idle_anim_slider_label_, autosavemax_slider_label_,
-			   advanced_slider_label_;
+			   advanced_option_label_;
 	gui::textbox sample_rate_input_, friends_input_;
+	gui::combo advanced_combo_;
 
 	unsigned slider_label_width_;
 
@@ -146,7 +175,7 @@ private:
 
 	enum TAB {	GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
 				/*extra tab*/
-				ADVANCED_SOUND_TAB, FRIENDS_TAB};
+				COLOR_TAB, ADVANCED_SOUND_TAB, FRIENDS_TAB};
 	TAB tab_;
 	display &disp_;
 	const config& game_cfg_;
@@ -159,6 +188,7 @@ public:
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
 	  friends_names_(),
+	  color_ids_(),
 	  music_slider_(disp.video()), sound_slider_(disp.video()),
 	  UI_sound_slider_(disp.video()), bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()),
@@ -193,26 +223,47 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  hide_whiteboard_button_(disp.video(), _("Hide allies’ plans by default"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn bell"), gui::button::TYPE_CHECK),
 	  show_team_colors_button_(disp.video(), _("Show team colors"), gui::button::TYPE_CHECK),
-	  show_color_cursors_button_(disp.video(), _("Show color cursors"), gui::button::TYPE_CHECK),
 	  show_haloing_button_(disp.video(), _("Show haloing effects"), gui::button::TYPE_CHECK),
 	  video_mode_button_(disp.video(), _("Change Resolution")),
 	  theme_button_(disp.video(), _("Theme")),
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
+	  colors_button_(disp.video(), _("Colors")),
+	  cache_button_(disp.video(), _("Cache")),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
 	  chat_timestamp_button_(disp.video(), _("Chat timestamping"), gui::button::TYPE_CHECK),
 	  advanced_sound_button_(disp.video(), _("sound^Advanced Options")),
 	  normal_sound_button_(disp.video(), _("sound^Standard Options")),
+	  display_button_(disp.video(), _("colors^Display")),
 	  UI_sound_button_(disp.video(), _("User interface sounds"), gui::button::TYPE_CHECK),
-	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_CHECK),
-	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_CHECK),
-	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_CHECK),
+	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_RADIO),
+	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_RADIO),
+	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_RADIO),
 	  confirm_sound_button_(disp.video(), _("Apply")),
 	  idle_anim_button_(disp.video(), _("Show unit idle animations"), gui::button::TYPE_CHECK),
 	  standing_anim_button_(disp.video(), _("Show unit standing animations"), gui::button::TYPE_CHECK),
 	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
+	  disable_auto_move_button_(disp.video(), _("Disable automatic moves"), gui::button::TYPE_CHECK),
+	  mp_alerts_options_button_(disp.video(), _("Alerts")),
+	  advanced_graphics_options_button_(disp.video(), _("Advanced")),
 
+	  // Colors tab buttons
+	  orb_colors_defaults_(disp.video(), _("Defaults")),
+	  orb_colors_enemy_toggle_(disp.video(), _("Show enemy orb"), gui::button::TYPE_CHECK),
+	  orb_colors_ally_toggle_(disp.video(), _("Show ally orb"), gui::button::TYPE_CHECK),
+	  orb_colors_unmoved_toggle_(disp.video(), _("Show unmoved orb"), gui::button::TYPE_CHECK),
+	  orb_colors_partial_toggle_(disp.video(), _("Show partial moved orb"), gui::button::TYPE_CHECK),
+	  orb_colors_moved_toggle_(disp.video(), _("Show moved orb"), gui::button::TYPE_CHECK),
+
+	  //colors tab buttons
+	  orb_colors_ally_buttons_(),
+	  orb_colors_enemy_buttons_(),
+	  orb_colors_moved_buttons_(),
+	  orb_colors_partial_buttons_(),
+	  orb_colors_unmoved_buttons_(),
+
+	  // Sound tab labels
 	  music_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
 	  sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
 	  UI_sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
@@ -224,10 +275,12 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sample_rate_label_(disp.video(), _("Sample rate (Hz):")), buffer_size_label_(disp.video(), ""),
 	  idle_anim_slider_label_(disp.video(), _("Frequency:"), font::SIZE_SMALL ),
 	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
-	  advanced_slider_label_(disp.video(), "", font::SIZE_SMALL),
+	  advanced_option_label_(disp.video(), "", font::SIZE_SMALL),
 
 	  sample_rate_input_(disp.video(), 70),
 	  friends_input_(disp.video(), 170),
+
+	  advanced_combo_(disp, std::vector<std::string>()),
 
 	  slider_label_width_(0),
 	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
@@ -257,6 +310,48 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	music_slider_.set_value(music_volume());
 	music_slider_.set_help_string(_("Change the music volume"));
 
+	orb_colors_ally_toggle_.set_check(preferences::show_allied_orb());
+	orb_colors_enemy_toggle_.set_check(preferences::show_enemy_orb());
+	orb_colors_moved_toggle_.set_check(preferences::show_moved_orb());
+	orb_colors_partial_toggle_.set_check(preferences::show_partial_orb());
+	orb_colors_unmoved_toggle_.set_check(preferences::show_unmoved_orb());
+
+	const std::map<std::string, t_string>& colors = game_config::team_rgb_name;
+	std::map<std::string, t_string>::const_iterator colors_it;
+	for (colors_it = colors.begin(); colors_it != colors.end(); ++colors_it) {
+
+		const std::string& color_id = colors_it->first;
+		const t_string& color_name  = colors_it->second;
+
+		if (color_id.substr(0,4) != "orb_")
+			continue;
+
+		color_ids_.push_back(color_id);
+
+		std::string image_path = "misc/orb"; //game_config::images::orb;
+		std::string image_path_suffix = "~RC(magenta>" + color_id + ")";
+
+		gui::button color_radio_button(disp.video(), "", gui::button::TYPE_IMAGE, image_path, gui::button::MINIMUM_SPACE);
+		color_radio_button.set_tooltip_string(color_name);
+		color_radio_button.set_help_string(color_name);
+		color_radio_button.set_image_path_suffix(image_path_suffix);
+
+		color_radio_button.set_check(color_id == preferences::allied_color());
+		orb_colors_ally_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::enemy_color());
+		orb_colors_enemy_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::moved_color());
+		orb_colors_moved_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::partial_color());
+		orb_colors_partial_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::unmoved_color());
+		orb_colors_unmoved_buttons_.push_back(color_radio_button);
+	}
+
 	// bell volume slider
 	bell_slider_.set_min(0);
 	bell_slider_.set_max(128);
@@ -280,6 +375,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 		sample_rate_button3_.set_check(true);
 	sample_rate_input_.set_text(rate);
 	sample_rate_input_.set_help_string(_("User defined sample rate"));
+	sample_rate_input_.enable(sample_rate_button3_.checked());
 	confirm_sound_button_.enable(sample_rate_button3_.checked());
 
 	buffer_size_slider_.set_min(0);
@@ -349,7 +445,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	idle_anim_slider_.set_value(idle_anim_rate());
 	idle_anim_slider_.set_help_string(_("Set the frequency of unit idle animations"));
 
-	autosavemax_slider_.set_min(1); //at least one autosave is stored
+	autosavemax_slider_.set_min(0);
 	autosavemax_slider_.set_max(preferences::INFINITE_AUTO_SAVES);
 	autosavemax_slider_.set_value(autosavemax());
 	autosavemax_slider_.set_help_string(_("Set maximum number of automatic saves to be retained"));
@@ -417,21 +513,26 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_team_colors_button_.set_check(show_side_colors());
 	show_team_colors_button_.set_help_string(_("Show a colored circle around the base of each unit to show which side it is on"));
 
-	show_color_cursors_button_.set_check(use_color_cursors());
-	show_color_cursors_button_.set_help_string(_("Use colored mouse cursors (may be slower)"));
-
 	show_haloing_button_.set_check(show_haloes());
 	show_haloing_button_.set_help_string(_("Use graphical special effects (may be slower)"));
 
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
+	colors_button_.set_help_string(_("Adjust orb colors"));
+	cache_button_.set_help_string(_("Manage the game WML cache"));
+
+	disable_auto_move_button_.set_check(disable_auto_moves());
+	disable_auto_move_button_.set_help_string(_("Do not allow automatic movements at the begining of a turn"));
+
+	//mp_alerts_options_button_.set_help_string(_("Configure the sounds played in the mp lobby and setup screens"));
+	//^ The gui 1 tooltips don't play nice with gui 2 tool tips so we have to comment this out.
 
 	set_advanced_menu();
 	set_friends_menu();
 }
 
-handler_vector preferences_dialog::handler_members()
+sdl_handler_vector preferences_dialog::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&music_slider_);
 	h.push_back(&sound_slider_);
 	h.push_back(&bell_slider_);
@@ -466,6 +567,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&friends_add_ignore_button_);
 	h.push_back(&friends_remove_button_);
 	h.push_back(&friends_input_);
+	h.push_back(&advanced_combo_);
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
 	h.push_back(&whiteboard_on_start_button_);
@@ -473,11 +575,12 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turn_bell_button_);
 	h.push_back(&UI_sound_button_);
 	h.push_back(&show_team_colors_button_);
-	h.push_back(&show_color_cursors_button_);
 	h.push_back(&show_haloing_button_);
 	h.push_back(&video_mode_button_);
 	h.push_back(&theme_button_);
 	h.push_back(&hotkeys_button_);
+	h.push_back(&colors_button_);
+	h.push_back(&cache_button_);
 	h.push_back(&advanced_button_);
 	h.push_back(&sound_button_);
 	h.push_back(&music_button_);
@@ -496,13 +599,34 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turbo_slider_label_);
 	h.push_back(&idle_anim_slider_label_);
 	h.push_back(&autosavemax_slider_label_);
-	h.push_back(&advanced_slider_label_);
+	h.push_back(&advanced_option_label_);
 	h.push_back(&chat_lines_label_);
 	h.push_back(&sample_rate_label_);
 	h.push_back(&buffer_size_label_);
 	h.push_back(&sample_rate_input_);
 	h.push_back(&advanced_);
 	h.push_back(&friends_);
+	h.push_back(&disable_auto_move_button_);
+	h.push_back(&mp_alerts_options_button_);
+	h.push_back(&advanced_graphics_options_button_);
+
+	// Colors tab
+	for (unsigned i = 0; i < color_ids_.size(); i++) {
+		h.push_back(&orb_colors_ally_buttons_[i]);
+		h.push_back(&orb_colors_enemy_buttons_[i]);
+		h.push_back(&orb_colors_moved_buttons_[i]);
+		h.push_back(&orb_colors_partial_buttons_[i]);
+		h.push_back(&orb_colors_unmoved_buttons_[i]);
+	}
+
+	h.push_back(&orb_colors_ally_toggle_);
+	h.push_back(&orb_colors_enemy_toggle_);
+	h.push_back(&orb_colors_moved_toggle_);
+	h.push_back(&orb_colors_partial_toggle_);
+	h.push_back(&orb_colors_unmoved_toggle_);
+	h.push_back(&orb_colors_defaults_);
+	h.push_back(&display_button_);
+
 	return h;
 }
 
@@ -523,7 +647,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	// General tab
 	int ypos = rect.y + top_border;
 	scroll_label_.set_location(rect.x, ypos);
-	SDL_Rect scroll_rect = create_rect(rect.x + scroll_label_.width()
+	SDL_Rect scroll_rect = sdl::create_rect(rect.x + scroll_label_.width()
 			, ypos
 			, rect.w - scroll_label_.width() - right_border
 			, 0);
@@ -532,13 +656,14 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; turbo_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turbo_slider_label_.set_location(rect.x + horizontal_padding, ypos);
 	ypos += short_interline;
-	SDL_Rect turbo_rect = create_rect(rect.x + horizontal_padding
+	SDL_Rect turbo_rect = sdl::create_rect(rect.x + horizontal_padding
 			, ypos
 			, rect.w - horizontal_padding - right_border
 			, 0);
 
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
+	ypos += short_interline; disable_auto_move_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
 	ypos += short_interline; whiteboard_on_start_button_.set_location(rect.x, ypos);
 	ypos += short_interline; hide_whiteboard_button_.set_location(rect.x, ypos);
@@ -546,19 +671,19 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
 	ypos += short_interline; delete_saves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; autosavemax_slider_label_.set_location(rect.x + horizontal_padding, ypos);
-	SDL_Rect autosavemax_rect = create_rect(rect.x + horizontal_padding
+	SDL_Rect autosavemax_rect = sdl::create_rect(rect.x + horizontal_padding
 			, ypos + short_interline
 			, rect.w - horizontal_padding - right_border
 			, 0);
 
 	autosavemax_slider_.set_location(autosavemax_rect);
 	hotkeys_button_.set_location(rect.x, bottom_row_y - hotkeys_button_.height());
+	cache_button_.set_location(rect.x + hotkeys_button_.width() + 10, bottom_row_y - cache_button_.height());
 
 	// Display tab
 	ypos = rect.y + top_border;
 	fullscreen_button_.set_location(rect.x, ypos);
 
-	ypos += item_interline; show_color_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colors_button_.set_location(rect.x, ypos);
@@ -569,7 +694,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += short_interline; idle_anim_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	idle_anim_slider_label_.set_location(rect.x + horizontal_padding, ypos);
-	SDL_Rect idle_anim_rect = create_rect(rect.x + horizontal_padding + idle_anim_slider_label_.width()
+	SDL_Rect idle_anim_rect = sdl::create_rect(rect.x + horizontal_padding + idle_anim_slider_label_.width()
 			, ypos
 			, rect.w - horizontal_padding - idle_anim_slider_label_.width() - right_border
 			, 0);
@@ -578,6 +703,74 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	video_mode_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height());
 	theme_button_.set_location(rect.x + video_mode_button_.width() + 10,
 	                           bottom_row_y - theme_button_.height());
+	colors_button_.set_location(rect.x + video_mode_button_.width() + theme_button_.width() + 20, bottom_row_y - colors_button_.height());
+
+	advanced_graphics_options_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height() - advanced_graphics_options_button_.height() - 10);
+
+	// Color tab
+	const int width = 28; // orb_colors_ally_buttons_[0].width();
+	const unsigned color_number = color_ids_.size();
+	const unsigned number = std::max(color_number, 2u);
+
+	const int orb_x_offset = ( (rect.w - width*number) / number ) * 2;
+
+	int xpos = rect.x;
+	ypos = rect.y + top_border;
+	orb_colors_unmoved_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_unmoved_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_partial_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_partial_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_moved_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_moved_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_ally_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_ally_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_enemy_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_enemy_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	display_button_.set_location(rect.x, bottom_row_y - display_button_.height());
+	orb_colors_defaults_.set_location(rect.x + display_button_.width() + 10, bottom_row_y - orb_colors_defaults_.height());
 
 	// Sound tab
 	slider_label_width_ = std::max<unsigned>(music_label_.width(), sound_label_.width());
@@ -588,7 +781,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	ypos += short_interline;
 	sound_label_.set_location(rect.x + horizontal_padding, ypos);
-	const SDL_Rect sound_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
+	const SDL_Rect sound_rect = sdl::create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
 			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
@@ -599,7 +792,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	ypos += short_interline;
 	music_label_.set_location(rect.x + horizontal_padding, ypos);
-	const SDL_Rect music_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
+	const SDL_Rect music_rect = sdl::create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
 			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
@@ -609,7 +802,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	turn_bell_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	bell_label_.set_location(rect.x + horizontal_padding, ypos);
-	const SDL_Rect bell_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
+	const SDL_Rect bell_rect = sdl::create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
 			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
@@ -619,7 +812,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	UI_sound_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	UI_sound_label_.set_location(rect.x + horizontal_padding, ypos);
-	const SDL_Rect UI_sound_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
+	const SDL_Rect UI_sound_rect = sdl::create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
 			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
@@ -645,7 +838,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	buffer_size_label_.set_location(rect.x, ypos);
 	ypos += short_interline;
-	SDL_Rect buffer_rect = create_rect(rect.x + horizontal_padding
+	SDL_Rect buffer_rect = sdl::create_rect(rect.x + horizontal_padding
 			, ypos
 			, rect.w - horizontal_padding - right_border
 			, 0);
@@ -658,7 +851,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos = rect.y + top_border;
 	chat_lines_label_.set_location(rect.x, ypos);
 	ypos += short_interline;
-	SDL_Rect chat_lines_rect = create_rect(rect.x + horizontal_padding
+	SDL_Rect chat_lines_rect = sdl::create_rect(rect.x + horizontal_padding
 			, ypos
 			, rect.w - horizontal_padding - right_border
 			, 0);
@@ -675,6 +868,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
 
 	mp_server_search_button_.set_location(rect.x + 10 + friends_list_button_.width(), bottom_row_y - mp_server_search_button_.height());
+	mp_alerts_options_button_.set_location(mp_server_search_button_.location().x + mp_server_search_button_.width() + 10, bottom_row_y - mp_alerts_options_button_.height());
 
 	//Friends tab
 	ypos = rect.y + top_border;
@@ -705,12 +899,13 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += advanced_.height() + font::relative_size(14);
 
 	advanced_button_.set_location(rect.x,ypos);
-	advanced_slider_label_.set_location(rect.x,ypos);
-	const SDL_Rect advanced_slider_rect = create_rect(rect.x
+	advanced_option_label_.set_location(rect.x,ypos);
+	const SDL_Rect advanced_slider_rect = sdl::create_rect(rect.x
 			, ypos + short_interline
 			, rect.w - right_border
 			, 0);
 	advanced_slider_.set_location(advanced_slider_rect);
+	advanced_combo_.set_location(rect.x,ypos + short_interline);
 
 	set_selection(tab_);
 }
@@ -725,6 +920,8 @@ void preferences_dialog::process_event()
 		}
 		if (show_ai_moves_button_.pressed())
 			set_show_ai_moves(!show_ai_moves_button_.checked());
+		if (disable_auto_move_button_.pressed())
+			set_disable_auto_moves(disable_auto_move_button_.checked());
 		if (interrupt_when_ally_sighted_button_.pressed())
 			set_interrupt_when_ally_sighted(interrupt_when_ally_sighted_button_.checked());
 		if (save_replays_button_.pressed())
@@ -739,6 +936,10 @@ void preferences_dialog::process_event()
 			set_hide_whiteboard(hide_whiteboard_button_.checked());
 		if (hotkeys_button_.pressed()) {
 			show_hotkeys_preferences_dialog(disp_);
+			parent->clear_buttons();
+		}
+		if (cache_button_.pressed()) {
+			gui2::tgame_cache_options::display(disp_.video());
 			parent->clear_buttons();
 		}
 
@@ -765,15 +966,14 @@ void preferences_dialog::process_event()
 			set_show_floating_labels(show_floating_labels_button_.checked());
 		if (video_mode_button_.pressed())
 			throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
-		if (theme_button_.pressed())
+		if (theme_button_.pressed()) {
 			show_theme_dialog(disp_);
 			parent->clear_buttons();
+		}
 		if (fullscreen_button_.pressed())
 			throw video_mode_change_exception(fullscreen_button_.checked()
 											? video_mode_change_exception::MAKE_FULLSCREEN
 											: video_mode_change_exception::MAKE_WINDOWED);
-		if (show_color_cursors_button_.pressed())
-			set_color_cursors(show_color_cursors_button_.checked());
 		if (show_haloing_button_.pressed())
 			set_show_haloes(show_haloing_button_.checked());
 		if (show_team_colors_button_.pressed())
@@ -795,9 +995,87 @@ void preferences_dialog::process_event()
 
 		set_idle_anim_rate(idle_anim_slider_.value());
 
+		if (colors_button_.pressed())
+				set_selection(COLOR_TAB);
+
+		if (advanced_graphics_options_button_.pressed())
+			show_advanced_graphics_dialog(disp_);
+
 		return;
 	}
 
+	if (tab_ == COLOR_TAB) {
+
+		if (display_button_.pressed()) {
+			set_selection(DISPLAY_TAB);
+			return;
+		}
+
+		if (orb_colors_defaults_.pressed()) {
+			preferences::set_show_allied_orb(game_config::show_ally_orb);
+			preferences::set_show_enemy_orb(game_config::show_enemy_orb);
+			preferences::set_show_moved_orb(game_config::show_moved_orb);
+			preferences::set_show_partial_orb(game_config::show_partial_orb);
+			preferences::set_show_unmoved_orb(game_config::show_unmoved_orb);
+			orb_colors_ally_toggle_.set_check(preferences::show_allied_orb());
+			orb_colors_enemy_toggle_.set_check(preferences::show_enemy_orb());
+			orb_colors_moved_toggle_.set_check(preferences::show_moved_orb());
+			orb_colors_partial_toggle_.set_check(preferences::show_partial_orb());
+			orb_colors_unmoved_toggle_.set_check(preferences::show_unmoved_orb());
+			preferences::set_allied_color(game_config::colors::ally_orb_color);
+			preferences::set_enemy_color(game_config::colors::enemy_orb_color);
+			preferences::set_moved_color(game_config::colors::moved_orb_color);
+			preferences::set_unmoved_color(game_config::colors::unmoved_orb_color);
+			preferences::set_partial_color(game_config::colors::partial_orb_color);
+		}
+
+		if (orb_colors_ally_toggle_.pressed()) {
+			preferences::set_show_allied_orb(orb_colors_ally_toggle_.checked());
+			return;
+		}
+		if (orb_colors_enemy_toggle_.pressed()) {
+			preferences::set_show_enemy_orb(orb_colors_enemy_toggle_.checked());
+			return;
+		}
+		if (orb_colors_moved_toggle_.pressed()) {
+			preferences::set_show_moved_orb(orb_colors_moved_toggle_.checked());
+			return;
+		}
+		if (orb_colors_partial_toggle_.pressed()) {
+			preferences::set_show_partial_orb(orb_colors_partial_toggle_.checked());
+			return;
+		}
+		if (orb_colors_unmoved_toggle_.pressed()) {
+			preferences::set_show_unmoved_orb(orb_colors_unmoved_toggle_.checked());
+			return;
+		}
+
+		for (unsigned i = 0; i < color_ids_.size(); i++) {
+			if (orb_colors_ally_buttons_[i].pressed())
+				preferences::set_allied_color(color_ids_[i]);
+			if (orb_colors_enemy_buttons_[i].pressed())
+				preferences::set_enemy_color(color_ids_[i]);
+			if (orb_colors_moved_buttons_[i].pressed())
+				preferences::set_moved_color(color_ids_[i]);
+			if (orb_colors_unmoved_buttons_[i].pressed())
+				preferences::set_unmoved_color(color_ids_[i]);
+			if (orb_colors_partial_buttons_[i].pressed())
+				preferences::set_partial_color(color_ids_[i]);
+
+			orb_colors_ally_buttons_[i].set_check(
+					preferences::allied_color() == color_ids_[i]);
+			orb_colors_enemy_buttons_[i].set_check(
+					preferences::enemy_color() == color_ids_[i]);
+			orb_colors_moved_buttons_[i].set_check(
+					preferences::moved_color() == color_ids_[i]);
+			orb_colors_partial_buttons_[i].set_check(
+					preferences::partial_color() == color_ids_[i]);
+			orb_colors_unmoved_buttons_[i].set_check(
+					preferences::unmoved_color() == color_ids_[i]);
+		}
+
+		return;
+	}
 
 	if (tab_ == SOUND_TAB) {
 		if (turn_bell_button_.pressed()) {
@@ -844,6 +1122,7 @@ void preferences_dialog::process_event()
 			if (sample_rate_button1_.checked()) {
 				sample_rate_button2_.set_check(false);
 				sample_rate_button3_.set_check(false);
+				sample_rate_input_.enable(false);
 				confirm_sound_button_.enable(false);
 				apply = true;
 				rate = "22050";
@@ -854,6 +1133,7 @@ void preferences_dialog::process_event()
 			if (sample_rate_button2_.checked()) {
 				sample_rate_button1_.set_check(false);
 				sample_rate_button3_.set_check(false);
+				sample_rate_input_.enable(false);
 				confirm_sound_button_.enable(false);
 				apply = true;
 				rate = "44100";
@@ -864,6 +1144,7 @@ void preferences_dialog::process_event()
 			if (sample_rate_button3_.checked()) {
 				sample_rate_button1_.set_check(false);
 				sample_rate_button2_.set_check(false);
+				sample_rate_input_.enable(true);
 				confirm_sound_button_.enable(true);
 			} else
 				sample_rate_button3_.set_check(true);
@@ -931,6 +1212,10 @@ void preferences_dialog::process_event()
 			parent->clear_buttons();
 		}
 
+		if (mp_alerts_options_button_.pressed()) {
+			show_mp_alerts_dialog(disp_);
+		}
+
 		set_chat_lines(chat_lines_slider_.value());
 
 		//display currently select amount of chat lines
@@ -953,7 +1238,7 @@ void preferences_dialog::process_event()
 			set_selection(MULTIPLAYER_TAB);
 
 		if (friends_add_friend_button_.pressed()) {
-			std::string notes = "";
+			std::string notes;
 			std::string username = friends_input_.text();
 			size_t pos = username.find_first_of(' ');
 
@@ -970,7 +1255,7 @@ void preferences_dialog::process_event()
 			}
 		}
 		if (friends_add_ignore_button_.pressed()) {
-			std::string reason = "";
+			std::string reason;
 			std::string username = friends_input_.text();
 			size_t pos = username.find_first_of(' ');
 
@@ -1007,12 +1292,38 @@ void preferences_dialog::process_event()
 			const config* const adv = get_advanced_pref();
 			if(adv != NULL) {
 				const config& pref = *adv;
-				const std::string description = pref["description"];
+
+				std::string description = pref["description"];
+				if(description.empty()) {
+					description = pref["name"].str();
+				}
+
 				std::string value = preferences::get(pref["field"]);
-				advanced_button_.hide(pref["type"] != "boolean");
-				const bool hide_int = pref["type"] != "int";
-				advanced_slider_.hide(hide_int);
-				advanced_slider_label_.hide(hide_int);
+
+				// Hide all advanced preference controls before unhiding the
+				// ones needed for the selection, otherwise we may end up with
+				// a "ghost" of a previously visible control glitching through
+				// the current one when traversing the list item by item (e.g.
+				// with the keyboard.)
+				advanced_combo_.hide(true);
+				advanced_button_.hide(true);
+				advanced_slider_.hide(true);
+				advanced_option_label_.hide(true);
+
+				if(pref["type"] == "boolean") {
+					advanced_button_.hide(false);
+				}
+
+				if(pref["type"] == "int") {
+					advanced_option_label_.hide(false);
+					advanced_slider_.hide(false);
+				}
+
+				if(pref["type"] == "combo") {
+					advanced_option_label_.hide(false);
+					advanced_combo_.hide(false);
+				}
+
 				if(value.empty()) {
 					value = pref["default"].str();
 				}
@@ -1024,24 +1335,73 @@ void preferences_dialog::process_event()
 				} else if (pref["type"] == "int") {
 					std::stringstream ss;
 					ss << pref["name"] << ": " << value;
-					advanced_slider_label_.set_text(ss.str());
-					advanced_slider_label_.set_help_string(description);
+					advanced_option_label_.set_text(ss.str());
+					advanced_option_label_.set_help_string(description);
 					advanced_slider_.set_min(pref["min"].to_int());
 					advanced_slider_.set_max(pref["max"].to_int());
 					advanced_slider_.set_increment(pref["step"].to_int(1));
 					advanced_slider_.set_value(lexical_cast<int>(value));
 					advanced_slider_.set_help_string(description);
+				} else if (pref["type"] == "combo") {
+					std::vector<std::string> adv_combo_items;
+					int adv_combo_choice = 0;
+					BOOST_FOREACH(const config& adv_combo_option, pref.child_range("option"))
+					{
+						if(adv_combo_option.has_attribute("description")) {
+							// The longer description is supposed to be used in the combo
+							// box only as a workaround for the main listbox's layout
+							// limitations.
+							std::ostringstream ss;
+							ss << adv_combo_option["name"] << COLUMN_SEPARATOR
+							   << adv_combo_option["description"];
+							adv_combo_items.push_back(ss.str());
+						} else {
+							adv_combo_items.push_back(adv_combo_option["name"]);
+						}
+
+						if(value == adv_combo_option["id"]) {
+							adv_combo_choice = adv_combo_items.size() - 1;
+						}
+					}
+					advanced_combo_.set_items(adv_combo_items);
+					advanced_combo_.set_selected(adv_combo_choice);
+					advanced_combo_.set_help_string(description);
+					advanced_option_label_.set_text(pref["name"].str() + ":");
+					advanced_option_label_.set_help_string(description);
 				}
 			}
 		}
 
 		const config* const adv = get_advanced_pref();
-		if(advanced_button_.pressed()) {
+		const bool double_click_toggle_boolean = adv
+				? advanced_.double_clicked() && (*adv)["type"] == "boolean"
+				: false;
+
+		if(advanced_button_.pressed() || double_click_toggle_boolean) {
+			bool advanced_button_check = advanced_button_.checked();
+			if (double_click_toggle_boolean) {
+				if (advanced_button_.checked()) {
+					advanced_button_check = false;
+				}
+				else {
+					advanced_button_check = true;
+				}
+				advanced_button_.set_check(advanced_button_check);
+			}
 			if(adv != NULL) {
 				const config& pref = *adv;
-				preferences::set(pref["field"],
-						advanced_button_.checked());
+				preferences::set(pref["field"], advanced_button_check);
 				set_advanced_menu();
+
+				if(pref["field"] == "color_cursors") {
+					set_color_cursors(advanced_button_.checked());
+				}
+
+				if(pref["field"] == "disable_notifications" && !advanced_button_check && !desktop::notifications::available()) {
+					gui2::show_transient_message(disp_.video(),
+												 _("Desktop Notifications Unavailable"),
+												 _("This build of Wesnoth does not include support for desktop notifications. Check with the packager for your platform, or if compiling yourself, make sure that you have the appropriate dependencies installed."));
+				}
 			}
 		}
 
@@ -1053,7 +1413,31 @@ void preferences_dialog::process_event()
 				set_advanced_menu();
 				std::stringstream ss;
 				ss << pref["name"] << ": " << advanced_slider_.value();
-				advanced_slider_label_.set_text(ss.str());
+				advanced_option_label_.set_text(ss.str());
+			}
+		}
+
+		if(advanced_combo_.changed()) {
+			if(adv != NULL) {
+				const config& pref = *adv;
+				config::const_child_itors options = pref.child_range("option");
+
+				const config* option = NULL;
+				int k = 0;
+
+				BOOST_FOREACH(const config& o, options)
+				{
+					if(advanced_combo_.selected() == k) {
+						option = &o;
+						break;
+					}
+					++k;
+				}
+
+				if(option) {
+					preferences::set(pref["field"], (*option)["id"].str());
+					set_advanced_menu();
+				}
 			}
 		}
 
@@ -1084,13 +1468,44 @@ void preferences_dialog::set_advanced_menu()
 			field = adv["default"].str();
 		}
 
-		if(field == "yes") {
+		if(adv["type"] == "combo") {
+			BOOST_FOREACH(const config& optdef, adv.child_range("option"))
+			{
+				if(field == optdef["id"]) {
+					if(optdef.has_attribute("name_short")) {
+						field = optdef["name_short"].str();
+					} else {
+						field = optdef["name"].str();
+					}
+					break;
+				}
+			}
+		} else if(field == "yes") {
 			field = _("yes");
 		} else if(field == "no") {
 			field = _("no");
 		}
 
-		str << adv["name"] << COLUMN_SEPARATOR << field;
+		const std::string& label = adv["description"];
+
+		std::string display_label = adv["name"];
+		std::string display_field = field;
+
+		// NOTE:
+		// The character count limits below only really work with the basic
+		// ASCII character set. Some Unicode characters may be rendered wider.
+		// Furthermore, the Preferences page selection list may container
+		// longer entries that push this listbox further to the right, closer
+		// to the dialog's right edge.
+		utils::ellipsis_truncate(display_label, 46);
+		utils::ellipsis_truncate(display_field, 8);
+
+		// We need the tooltip twice because individual columns have
+		// individual tooltips.
+
+		str << display_label << HELP_STRING_SEPARATOR << label
+		    << COLUMN_SEPARATOR
+		    << display_field << HELP_STRING_SEPARATOR << label;
 		advanced_items.push_back(str.str());
 	}
 
@@ -1159,11 +1574,13 @@ void preferences_dialog::set_selection(int index)
 	turbo_slider_label_.enable(turbo());
 	turbo_slider_.enable(turbo());
 	show_ai_moves_button_.hide(hide_general);
+	disable_auto_move_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
 	whiteboard_on_start_button_.hide(hide_general);
 	hide_whiteboard_button_.hide(hide_general);
 	interrupt_when_ally_sighted_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
+	cache_button_.hide(hide_general);
 	save_replays_button_.hide(hide_general);
 	delete_saves_button_.hide(hide_general);
 	autosavemax_slider_label_.hide(hide_general);
@@ -1173,7 +1590,6 @@ void preferences_dialog::set_selection(int index)
 
 	const bool hide_display = tab_ != DISPLAY_TAB;
 	show_floating_labels_button_.hide(hide_display);
-	show_color_cursors_button_.hide(hide_display);
 	show_haloing_button_.hide(hide_display);
 	fullscreen_button_.hide(hide_display);
 	idle_anim_button_.hide(hide_display);
@@ -1187,6 +1603,26 @@ void preferences_dialog::set_selection(int index)
 	theme_button_.hide(hide_display);
 	show_team_colors_button_.hide(hide_display);
 	show_grid_button_.hide(hide_display);
+	colors_button_.hide(hide_display);
+	advanced_graphics_options_button_.hide(hide_display);
+
+	const bool hide_colors = tab_ != COLOR_TAB;
+	orb_colors_ally_toggle_.hide(hide_colors);
+	orb_colors_enemy_toggle_.hide(hide_colors);
+	orb_colors_moved_toggle_.hide(hide_colors);
+	orb_colors_partial_toggle_.hide(hide_colors);
+	orb_colors_unmoved_toggle_.hide(hide_colors);
+	for (unsigned i = 0; i < color_ids_.size(); i++) {
+		orb_colors_ally_buttons_[i].hide(hide_colors);
+		orb_colors_enemy_buttons_[i].hide(hide_colors);
+		orb_colors_moved_buttons_[i].hide(hide_colors);
+		orb_colors_partial_buttons_[i].hide(hide_colors);
+		orb_colors_unmoved_buttons_[i].hide(hide_colors);
+	}
+	display_button_.hide(hide_colors);
+	display_button_.enable(!hide_colors);
+	orb_colors_defaults_.hide(hide_colors);
+	orb_colors_defaults_.enable(!hide_colors);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
 	music_button_.hide(hide_sound);
@@ -1234,6 +1670,7 @@ void preferences_dialog::set_selection(int index)
 	show_lobby_joins_button3_.hide(hide_multiplayer);
 	friends_list_button_.hide(hide_multiplayer);
 	mp_server_search_button_.hide(hide_multiplayer);
+	mp_alerts_options_button_.hide(hide_multiplayer);
 
 	const bool hide_friends = tab_ != FRIENDS_TAB;
 	friends_.hide(hide_friends);
@@ -1248,12 +1685,14 @@ void preferences_dialog::set_selection(int index)
 	std::string adv_type = get_advanced_pref() != NULL ? (*get_advanced_pref())["type"].str() : "";
 	const bool hide_advanced_bool = hide_advanced || adv_type != "boolean";
 	const bool hide_advanced_int = hide_advanced || adv_type != "int";
+	const bool hide_advanced_combo = hide_advanced || adv_type != "combo";
 	advanced_button_.hide(hide_advanced_bool);
-	advanced_slider_label_.hide(hide_advanced_int);
 	advanced_slider_.hide(hide_advanced_int);
+	advanced_combo_.hide(hide_advanced_combo);
+	advanced_option_label_.hide(hide_advanced_int && hide_advanced_combo);
 }
 
-}
+} //end anonymous namespace
 
 void show_preferences_dialog(display& disp, const config& game_cfg)
 {
@@ -1261,11 +1700,11 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
 	char const sep = COLUMN_SEPARATOR;
-	items.push_back(pre + "general.png" + sep + sgettext("Prefs section^General"));
-	items.push_back(pre + "display.png" + sep + sgettext("Prefs section^Display"));
-	items.push_back(pre + "music.png" + sep + sgettext("Prefs section^Sound"));
-	items.push_back(pre + "multiplayer.png" + sep + sgettext("Prefs section^Multiplayer"));
-	items.push_back(pre + "advanced.png" + sep + sgettext("Advanced section^Advanced"));
+	items.push_back(pre + "general.png" + sep + translation::sgettext("Prefs section^General"));
+	items.push_back(pre + "display.png" + sep + translation::sgettext("Prefs section^Display"));
+	items.push_back(pre + "music.png" + sep + translation::sgettext("Prefs section^Sound"));
+	items.push_back(pre + "multiplayer.png" + sep + translation::sgettext("Prefs section^Multiplayer"));
+	items.push_back(pre + "advanced.png" + sep + translation::sgettext("Advanced section^Advanced"));
 
 	for(;;) {
 		try {
@@ -1297,12 +1736,13 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 bool show_theme_dialog(display& disp)
 {
-	std::vector<std::string> options = disp.get_theme().get_known_themes();
-	if(!options.empty()){
-		gui2::tsimple_item_selector dlg(_("Choose Theme"), "", options);
+	std::vector<theme_info> themes = disp.get_theme().get_known_themes();
 
-		for(size_t k = 0; k < options.size(); ++k) {
-			if(options[k] == preferences::theme()) {
+	if(!themes.empty()){
+		gui2::ttheme_list dlg(themes);
+
+		for(size_t k = 0; k < themes.size(); ++k) {
+			if(themes[k].id == preferences::theme()) {
 				dlg.set_selected_index(static_cast<int>(k));
 			}
 		}
@@ -1311,16 +1751,26 @@ bool show_theme_dialog(display& disp)
 		const int action = dlg.selected_index();
 
 		if(action >= 0){
-		preferences::set_theme(options[action]);
-		//it would be preferable for the new theme to take effect
-		//immediately, however, this will have to do for now.
-		gui2::show_transient_message(disp.video(),"",_("New theme will take effect on next new or loaded game."));
-		return(1);
+			preferences::set_theme(themes[action].id);
+			// FIXME: it would be preferable for the new theme to take effect
+			//        immediately.
+			return 1;
 		}
-	}else{
+	} else {
 		gui2::show_transient_message(disp.video(),"",_("No known themes. Try changing from within an existing game."));
 	}
-	return(0);
+
+	return 0;
+}
+
+void show_mp_alerts_dialog(display & disp)
+{
+	gui2::tmp_alerts_options::display(disp.video());
+}
+
+void show_advanced_graphics_dialog(display & disp)
+{
+	gui2::tadvanced_graphics_options::display(disp.video());
 }
 
 std::string show_wesnothd_server_search(display& disp)
@@ -1334,7 +1784,7 @@ std::string show_wesnothd_server_search(display& disp)
 	}
 	else
 	{
-		old_path = "";
+		old_path.clear();
 	}
 #ifndef _WIN32
 
@@ -1343,15 +1793,15 @@ std::string show_wesnothd_server_search(display& disp)
 #endif
 	const std::string filename = "wesnothd";
 	std::string path = WESNOTH_PREFIX + std::string("/bin");
-	if (!is_directory(path))
-		path = get_cwd();
+	if (!filesystem::is_directory(path))
+		path = filesystem::get_cwd();
 
 #else
 	const std::string filename = "wesnothd.exe";
-	std::string path = get_cwd();
+	std::string path = filesystem::get_cwd();
 #endif
 	if (!old_path.empty()
-			&& is_directory(old_path))
+			&& filesystem::is_directory(old_path))
 	{
 		path = old_path;
 	}
@@ -1372,4 +1822,4 @@ std::string show_wesnothd_server_search(display& disp)
 }
 
 
-}
+} // end namespace preferences

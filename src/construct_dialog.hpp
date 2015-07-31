@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Patrick Parker <patrick_x99@hotmail.com>
+   Copyright (C) 2006 - 2015 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth widget Copyright (C) 2003-5 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -80,8 +80,8 @@ public:
 	label *caption() const { return caption_; }
 	void draw_contents();
 
-	handler_vector handler_members() {
-		handler_vector h;
+	sdl_handler_vector handler_members() {
+		sdl_handler_vector h;
 		if(caption_) h.push_back(caption_);
 		return h;
 	}
@@ -93,16 +93,16 @@ private:
 
 class dialog_textbox : public textbox {
 public:
-	dialog_textbox(label *const label_widget, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2)
-		: textbox(video, width, text, editable, max_size, alpha, alpha_focus, false),
+	dialog_textbox(label *const label_widget, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, int font_size = font::SIZE_PLUS, double alpha = 0.4, double alpha_focus = 0.2)
+		: textbox(video, width, text, editable, max_size, font_size, alpha, alpha_focus, false),
 		label_(label_widget)
 	{}
 	virtual ~dialog_textbox();
 
 	label *get_label() const { return label_; }
 
-	handler_vector handler_members() {
-		handler_vector h = textbox::handler_members();
+	sdl_handler_vector handler_members() {
+		sdl_handler_vector h = textbox::handler_members();
 		if(label_) h.push_back(label_);
 		return h;
 	}
@@ -145,7 +145,7 @@ private:
 	std::vector<std::string> last_words;
 	size_t header_row_;
 	gui::dialog& dialog_;
-	virtual void handle_text_changed(const wide_string& text);
+	virtual void handle_text_changed(const ucs4::string& text);
 };
 
 class dialog_button : public button {
@@ -223,7 +223,7 @@ public:
 
 	//Constructor & destructor
 	//dialog - throws button::error() if standard buttons fail to initialize
-	//         throws utils::invalid_utf8_exception() if message is invalid
+	//         throws utf8::invalid_utf8_exception() if message is invalid
 	dialog(display &disp,
 	       const std::string& title="",
 	       const std::string& message="",
@@ -282,7 +282,7 @@ public:
 	/// Explicit freeing of class static resources.
 	/// Must not be called if any instances of this class exist.
 	/// Should be called if the display goes out of scope.
-	/// (Currently called by ~game_controller.)
+	/// (Currently called by ~game_launcher.)
 	static void delete_empty_menu()  { delete empty_menu; empty_menu = NULL; }
 
 protected:

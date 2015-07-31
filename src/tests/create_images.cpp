@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -118,19 +118,19 @@ main(int argc, char* argv[])
 		return EXIT_SUCCESS;
 	}
 
-	if(!is_directory(root)) {
-		if(file_exists(root)) {
+	if(!filesystem::is_directory(root)) {
+		if(filesystem::file_exists(root)) {
 			std::cerr << "";
 			return EXIT_FAILURE;
 		}
-		if(!make_directory(root)) {
+		if(!filesystem::make_directory(root)) {
 			std::cerr << "";
 			return EXIT_FAILURE;
 		}
 	}
 
 	BOOST_FOREACH(const tcreator& creator, creators) {
-		if(!make_directory(root + creator.first)) {
+		if(!filesystem::make_directory(root + creator.first)) {
 			std::cerr << "";
 			return EXIT_FAILURE;
 		}

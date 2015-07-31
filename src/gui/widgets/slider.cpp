@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(slider)
 
@@ -41,24 +42,23 @@ static int distance(const int a, const int b)
 	 * @todo once this works properly the assert can be removed and the code
 	 * inlined.
 	 */
-	int result =  b - a;
+	int result = b - a;
 	assert(result >= 0);
 	return result;
 }
 
-tslider::tslider():
-		tscrollbar_(),
-		best_slider_length_(0),
-		minimum_value_(0),
-		minimum_value_label_(),
-		maximum_value_label_(),
-		value_labels_()
+tslider::tslider()
+	: tscrollbar_()
+	, best_slider_length_(0)
+	, minimum_value_(0)
+	, minimum_value_label_()
+	, maximum_value_label_()
+	, value_labels_()
 {
 	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
-		&tslider::signal_handler_sdl_key_down, this, _2, _3, _5));
-	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
-		&tslider::signal_handler_left_button_up, this, _2, _3));
-
+			&tslider::signal_handler_sdl_key_down, this, _2, _3, _5));
+	connect_signal<event::LEFT_BUTTON_UP>(
+			boost::bind(&tslider::signal_handler_left_button_up, this, _2, _3));
 }
 
 tpoint tslider::calculate_best_size() const
@@ -70,21 +70,18 @@ tpoint tslider::calculate_best_size() const
 	if(best_slider_length_ != 0) {
 
 		// Override length.
-		boost::intrusive_ptr<const tslider_definition::tresolution> conf =
-			boost::dynamic_pointer_cast<const tslider_definition::tresolution>
-			(config());
+		boost::intrusive_ptr<const tslider_definition::tresolution> conf
+				= boost::dynamic_pointer_cast<const tslider_definition::
+													  tresolution>(config());
 
 		assert(conf);
 
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
 
-	DBG_GUI_L << LOG_HEADER
-		<< " best_slider_length " << best_slider_length_
-		<< " result " << result
-		<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " best_slider_length " << best_slider_length_
+			  << " result " << result << ".\n";
 	return result;
-
 }
 
 void tslider::set_value(const int value)
@@ -115,7 +112,8 @@ void tslider::set_minimum_value(const int minimum_value)
 	const int maximum_value = get_maximum_value();
 	minimum_value_ = minimum_value;
 
-	// The number of items needs to include the begin and end so distance step size.
+	// The number of items needs to include the begin and end so distance step
+	// size.
 	set_item_count(distance(minimum_value_, maximum_value) + get_step_size());
 
 	if(value < minimum_value_) {
@@ -136,7 +134,8 @@ void tslider::set_maximum_value(const int maximum_value)
 
 	const int value = get_value();
 
-	// The number of items needs to include the begin and end so distance + step size.
+	// The number of items needs to include the begin and end so distance + step
+	// size.
 	set_item_count(distance(minimum_value_, maximum_value) + get_step_size());
 
 	if(value > maximum_value) {
@@ -151,11 +150,11 @@ t_string tslider::get_value_label() const
 	if(!value_labels_.empty()) {
 		assert(value_labels_.size() == get_item_count());
 		return value_labels_[get_item_position()];
-	} else if(!minimum_value_label_.empty()
-			&& get_value() == get_minimum_value()) {
+	} else if(!minimum_value_label_.empty() && get_value()
+											   == get_minimum_value()) {
 		return minimum_value_label_;
-	} else if(!maximum_value_label_.empty()
-			&& get_value() == get_maximum_value()) {
+	} else if(!maximum_value_label_.empty() && get_value()
+											   == get_maximum_value()) {
 		return maximum_value_label_;
 	} else {
 		return t_string((formatter() << get_value()).str());
@@ -169,32 +168,36 @@ void tslider::child_callback_positioner_moved()
 
 unsigned tslider::minimum_positioner_length() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+			config());
 	assert(conf);
 	return conf->minimum_positioner_length;
 }
 
 unsigned tslider::maximum_positioner_length() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+			config());
 	assert(conf);
 	return conf->maximum_positioner_length;
 }
 
 unsigned tslider::offset_before() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+			config());
 	assert(conf);
 	return conf->left_offset;
 }
 
 unsigned tslider::offset_after() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+			config());
 	assert(conf);
 	return conf->right_offset;
 }
@@ -203,23 +206,24 @@ bool tslider::on_positioner(const tpoint& coordinate) const
 {
 	// Note we assume the positioner is over the entire height of the widget.
 	return coordinate.x >= static_cast<int>(get_positioner_offset())
-		&& coordinate.x < static_cast<int>(get_positioner_offset() + get_positioner_length())
-		&& coordinate.y > 0
-		&& coordinate.y < static_cast<int>(get_height());
+		   && coordinate.x < static_cast<int>(get_positioner_offset()
+											  + get_positioner_length())
+		   && coordinate.y > 0 && coordinate.y < static_cast<int>(get_height());
 }
 
 int tslider::on_bar(const tpoint& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<size_t>(coordinate.x) > get_width()
-			|| static_cast<size_t>(coordinate.y) > get_height()) {
+	   || static_cast<size_t>(coordinate.y) > get_height()) {
 		return 0;
 	}
 
 	// we also assume the bar is over the entire height of the widget.
 	if(static_cast<size_t>(coordinate.x) < get_positioner_offset()) {
 		return -1;
-	} else if(static_cast<size_t>(coordinate.x) >get_positioner_offset() + get_positioner_length()) {
+	} else if(static_cast<size_t>(coordinate.x) > get_positioner_offset()
+												  + get_positioner_length()) {
 		return 1;
 	} else {
 		return 0;
@@ -232,7 +236,8 @@ void tslider::update_canvas()
 	// Inherited.
 	tscrollbar_::update_canvas();
 
-	FOREACH(AUTO& tmp, canvas()) {
+	FOREACH(AUTO & tmp, canvas())
+	{
 		tmp.set_variable("text", variant(get_value_label()));
 	}
 }
@@ -261,24 +266,24 @@ void tslider::handle_key_increase(bool& handled)
 	scroll(tscrollbar_::ITEM_FORWARD);
 }
 
-void tslider::signal_handler_sdl_key_down(const event::tevent event
-		, bool& handled
-		, const SDLKey key)
+void tslider::signal_handler_sdl_key_down(const event::tevent event,
+										  bool& handled,
+										  const SDLKey key)
 {
 
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	if (key == SDLK_DOWN || key == SDLK_LEFT) {
+	if(key == SDLK_DOWN || key == SDLK_LEFT) {
 		handle_key_decrease(handled);
-	} else if (key == SDLK_UP || key == SDLK_RIGHT) {
+	} else if(key == SDLK_UP || key == SDLK_RIGHT) {
 		handle_key_increase(handled);
 	} else {
 		// Do nothing. Ignore other keys.
 	}
 }
 
-void tslider::signal_handler_left_button_up(
-		const event::tevent event, bool& handled)
+void tslider::signal_handler_left_button_up(const event::tevent event,
+											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -288,4 +293,3 @@ void tslider::signal_handler_left_button_up(
 }
 
 } // namespace gui2
-

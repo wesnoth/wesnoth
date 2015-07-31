@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,14 +20,37 @@
 
 #include <boost/utility.hpp>
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/window.hpp"
+#endif
+
 struct surface;
+#ifdef SDL_GPU
+#include "sdl/shader.hpp"
+#include "sdl/utils.hpp"
+
+namespace sdl
+{
+class timage;
+}
+#endif
 
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+#define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
+#define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
+#define SDL_APPACTIVE		0x04		/**< The application is active */
+#endif
+
+struct GPU_Target;
+GPU_Target *get_render_target();
+
 surface display_format_alpha(surface surf);
 surface get_video_surface();
 SDL_Rect screen_area();
+
 
 bool non_interactive();
 
@@ -61,6 +84,18 @@ class CVideo : private boost::noncopyable {
 
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
+#ifdef SDL_GPU
+	GPU_Target *render_target() const;
+
+	void draw_texture(sdl::timage &texture, int x, int y);
+	void set_texture_color_modulation(int r, int g, int b, int a);
+	void set_texture_submerge(float f);
+	void set_texture_effects(int effects);
+
+	void blit_to_overlay(surface surf, int x, int y);
+	void clear_overlay_area(SDL_Rect area);
+	void clear_overlay();
+#endif
 	void flip();
 
 	surface& getSurface();
@@ -118,9 +153,43 @@ class CVideo : private boost::noncopyable {
 	void lock_updates(bool value);
 	bool update_locked() const;
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	/**
+	 * Wrapper for SDL_GetAppState.
+	 */
+	static Uint8 window_state();
+
+	/**
+	 * Sets the title of the main window.
+	 *
+	 * @param title               The new title for the window.
+	 */
+	static void set_window_title(const std::string& title);
+
+	/**
+	 * Sets the icon of the main window.
+	 *
+	 * @param icon                The new icon for the window.
+	 */
+	static void set_window_icon(surface& icon);
+
+	static sdl::twindow *get_window();
+#endif
+
+	/**
+	 * Returns the list of available screen resolutions.
+	 */
+	std::vector<std::pair<int, int> > get_available_resolutions();
+
 private:
 
 	void initSDL();
+#ifdef SDL_GPU
+	void update_overlay(SDL_Rect *rect = NULL);
+
+	sdl::shader_program shader_; 
+	surface overlay_;
+#endif
 
 	bool mode_changed_;
 

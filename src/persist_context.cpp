@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Jody Northup
+   Copyright (C) 2010 - 2015 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,20 +30,19 @@ config pack_scalar(const std::string &name, const t_string &val)
 }
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
-	return (get_dir(get_user_data_dir() + "/persist/") + name_space + ".cfg");
+	return (filesystem::get_dir(filesystem::get_user_data_dir() + "/persist/") + name_space + ".cfg");
 }
 
-void persist_file_context::load() {
-	std::string cfg_dir = get_dir(get_user_data_dir() + "/persist");
-
+void persist_file_context::load()
+{
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
-	if (file_exists(cfg_name) && !is_directory(cfg_name)) {
-		scoped_istream file_stream = istream_file(cfg_name);
+	if (filesystem::file_exists(cfg_name) && !filesystem::is_directory(cfg_name)) {
+		filesystem::scoped_istream file_stream = filesystem::istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {
 				read(cfg_,*file_stream);
 			} catch (config::error &err) {
-				LOG_PERSIST << err.message;
+				LOG_PERSIST << err.message << std::endl;
 			}
 		}
 	}
@@ -139,9 +138,17 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 			ret = exists;
 		}
 	}
-	while ((active->empty()) && (!namespace_.lineage_.empty())) {
+
+	// TODO: figure out when this is the case and adjust the next loop
+	//       condition accordingly. -- shadowm
+	assert(active);
+
+	while (active && active->empty() && !namespace_.lineage_.empty()) {
 		name_space prev = namespace_.prev();
 		active = get_node(cfg_, prev);
+		if (active == NULL) {
+			break;
+		}
 		active->clear_children(namespace_.node_);
 		if (active->has_child("variables") && active->child("variables").empty()) {
 			active->clear_children("variables");
@@ -176,9 +183,9 @@ bool persist_file_context::save_context() {
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
 	if (!cfg_name.empty()) {
 		if (cfg_.empty()) {
-			success = delete_directory(cfg_name);
+			success = filesystem::delete_file(cfg_name);
 		} else {
-			scoped_ostream out = ostream_file(cfg_name);
+			filesystem::scoped_ostream out = filesystem::ostream_file(cfg_name);
 			if (!out->fail())
 			{
 				config_writer writer(*out,false);
@@ -186,7 +193,7 @@ bool persist_file_context::save_context() {
 					writer.write(cfg_);
 					success = true;
 				} catch(config::error &err) {
-					LOG_PERSIST << err.message;
+					LOG_PERSIST << err.message << std::endl;
 					success = false;
 				}
 			}

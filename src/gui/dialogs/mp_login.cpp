@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,8 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -64,34 +65,35 @@ REGISTER_DIALOG(mp_login)
 tmp_login::tmp_login(const std::string& label, const bool focus_password)
 {
 	register_label("login_label", false, label);
-	register_text("user_name"
-			, true
-			, &preferences::login
-			, &preferences::set_login
-			, !focus_password);
+	register_text("user_name",
+				  true,
+				  &preferences::login,
+				  &preferences::set_login,
+				  !focus_password);
 
-	register_text("password"
-			, true
-			, &preferences::password
-			, NULL /* The password box returns '*' as value. */
-			, focus_password);
+	register_text("password",
+				  true,
+				  &preferences::password,
+				  NULL /* The password box returns '*' as value. */
+				  ,
+				  focus_password);
 
-	register_bool("remember_password"
-			, false
-			, &preferences::remember_password
-			, &preferences::set_remember_password);
+	register_bool("remember_password",
+				  false,
+				  &preferences::remember_password,
+				  &preferences::set_remember_password);
 }
 
 void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 {
-	if(tbutton* button = find_widget<tbutton>(
-			&window, "password_reminder", false, false)) {
+	if(tbutton* button
+	   = find_widget<tbutton>(&window, "password_reminder", false, false)) {
 
 		button->set_retval(1);
 	}
 
-	if(tbutton* button = find_widget<tbutton>(
-			&window, "change_username", false, false)) {
+	if(tbutton* button
+	   = find_widget<tbutton>(&window, "change_username", false, false)) {
 
 		button->set_retval(2);
 	}
@@ -100,10 +102,10 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 void tmp_login::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		preferences::set_password(find_widget<tpassword_box>(
-				&window, "password", false).get_real_value());
+		preferences::set_password(
+				find_widget<tpassword_box>(&window, "password", false)
+						.get_real_value());
 	}
 }
 
 } // namespace gui2
-

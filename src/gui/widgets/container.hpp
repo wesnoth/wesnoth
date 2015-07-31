@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,8 @@
 #include "gui/widgets/control.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * A generic container base class.
@@ -31,10 +32,10 @@ namespace gui2 {
 class tcontainer_ : public tcontrol
 {
 	friend class tdebug_layout_graph;
+
 public:
-	explicit tcontainer_(const unsigned canvas_count) :
-		tcontrol(canvas_count),
-		grid_()
+	explicit tcontainer_(const unsigned canvas_count)
+		: tcontrol(canvas_count), grid_()
 	{
 		grid_.set_parent(this);
 	}
@@ -57,7 +58,7 @@ public:
 	/**
 	 * Tries to reduce the width of a container.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
@@ -72,7 +73,7 @@ public:
 	/**
 	 * Tries to reduce the height of a container.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
@@ -87,8 +88,8 @@ public:
 private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
-public:
 
+public:
 	/** See @ref twidget::can_wrap. */
 	virtual bool can_wrap() const OVERRIDE;
 
@@ -98,7 +99,7 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref twidget::has_widget. */
-	virtual bool has_widget(const twidget* widget) const OVERRIDE;
+	virtual bool has_widget(const twidget& widget) const OVERRIDE;
 
 	/** See @ref twidget::set_origin. */
 	virtual void set_origin(const tpoint& origin) OVERRIDE;
@@ -110,40 +111,34 @@ public:
 	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_children(surface& frame_buffer,
+									int x_offset,
+									int y_offset) OVERRIDE;
 
 protected:
-
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE;
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 public:
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
-
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) OVERRIDE;
@@ -156,7 +151,10 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() OVERRIDE { return NULL; }
+	virtual iterator::twalker_* create_walker() OVERRIDE
+	{
+		return NULL;
+	}
 
 	/**
 	 * Initializes and builds the grid.
@@ -170,41 +168,77 @@ public:
 
 	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 
-	tgrid::iterator begin() { return grid_.begin(); }
-	tgrid::iterator end() { return grid_.end(); }
+	tgrid::iterator begin()
+	{
+		return grid_.begin();
+	}
+	tgrid::iterator end()
+	{
+		return grid_.end();
+	}
 
 	unsigned add_row(const unsigned count = 1)
-		{ return grid_.add_row(count); }
+	{
+		return grid_.add_row(count);
+	}
 
-	void set_rows(const unsigned rows) { grid_.set_rows(rows); }
-	unsigned int get_rows() const { return grid_.get_rows(); }
+	void set_rows(const unsigned rows)
+	{
+		grid_.set_rows(rows);
+	}
+	unsigned int get_rows() const
+	{
+		return grid_.get_rows();
+	}
 
-	void set_cols(const unsigned cols) { grid_.set_cols(cols); }
-	unsigned int get_cols() const { return grid_.get_cols(); }
+	void set_cols(const unsigned cols)
+	{
+		grid_.set_cols(cols);
+	}
+	unsigned int get_cols() const
+	{
+		return grid_.get_cols();
+	}
 
 	void set_rows_cols(const unsigned rows, const unsigned cols)
-		{ grid_.set_rows_cols(rows, cols); }
+	{
+		grid_.set_rows_cols(rows, cols);
+	}
 
-	void set_child(twidget* widget, const unsigned row,
-		const unsigned col, const unsigned flags, const unsigned border_size)
-		{ grid_.set_child(widget, row, col, flags, border_size); }
+	void set_child(twidget* widget,
+				   const unsigned row,
+				   const unsigned col,
+				   const unsigned flags,
+				   const unsigned border_size)
+	{
+		grid_.set_child(widget, row, col, flags, border_size);
+	}
 
 	void set_row_grow_factor(const unsigned row, const unsigned factor)
-		{ grid_.set_row_grow_factor(row, factor); }
+	{
+		grid_.set_row_grow_factor(row, factor);
+	}
 
 	void set_column_grow_factor(const unsigned column, const unsigned factor)
-		{ grid_.set_column_grow_factor(column, factor); }
+	{
+		grid_.set_column_grow_factor(column, factor);
+	}
 
 public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	// Public due to the fact that window needs to be able to swap the
 	// children, might be protected again later.
-	const tgrid& grid() const { return grid_; }
-	tgrid& grid() { return grid_; }
+	const tgrid& grid() const
+	{
+		return grid_;
+	}
+	tgrid& grid()
+	{
+		return grid_;
+	}
 
 private:
-
 	/** The grid which holds the child objects. */
 	tgrid grid_;
 
@@ -213,7 +247,10 @@ private:
 	 *
 	 * @todo Evaluate whether this function is overridden if not remove.
 	 */
-	virtual tgrid& initial_grid() { return grid_; }
+	virtual tgrid& initial_grid()
+	{
+		return grid_;
+	}
 
 	/** Returns the space used by the border. */
 	virtual tpoint border_space() const;
@@ -231,4 +268,3 @@ private:
 } // namespace gui2
 
 #endif
-

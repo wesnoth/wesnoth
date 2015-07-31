@@ -53,23 +53,18 @@ identifikátor nebol zadaný, zobrazí sa menu s ponukou. \fBPoznámka:\fP Ak je
 použitý tento parameter, je potrebné zadať aj cestu k adresáru s údajmi ako
 posledný parameter. Inak bude hra považovať id_výpravy za adresár s údajmi.
 .TP 
-\fB\-\-campaign\-difficulty [<difficulty>]\fP
+\fB\-\-campaign\-difficulty [<obtiažnosť>]\fP
 Obtiažnosť vybranej výpravy (od 1 do maxima). Ak nie je uvedená, zobrazí sa
 ponuka na výber obtiažnosti.
 .TP 
 \fB\-\-campaign\-scenario <id_scény>\fP
 Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna.
 .TP 
-\fB\-\-config\-dir\fP\fI\ názov\fP
-nastaví adresár s používateľskými nastaveniami na \fImeno\fP pod $HOME alebo
-"My Documents\eMy Games" vo Windows. Je možné zadať aj absolútnu cestu pre
-adresáre mimo $HOME alebo "My Documents\eMy Games"
-.TP 
-\fB\-\-config\-path\fP
-vypíše názov adresára s používateľskými nastaveniami a skončí.
-.TP 
 \fB\-\-data\-dir <adresár>\fP
 nastaví adresár s údajmi
+.TP 
+\fB\-\-data\-path\fP
+vypíše cestu k dátovému adresáru hry a skončí.
 .TP 
 \fB\-d, \-\-debug\fP
 zapne ďalšie možnosti príkazového režimu hry (ďalšie informácie o príkazovom
@@ -135,21 +130,20 @@ spustí hru bez zvukov a hudby.
 \fB\-\-path\fP
 vypíše názov dátového adresára hry a skončí.
 .TP 
-\fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+\fB\-p, \-\-preprocess <zdrojový súbor/adresár> <cieľový adresár>\fP
+spracuje preprocesorom zadaný súbor/adresár. Pre každý súbor bude do
+cieľového adresára zapísaný základný .cfg súbor a spracovaný .cfg súbor. Ak
+je zadaný adresár, bude spracovaný rekurzívne podľa pravidiel
+preprocesora. Spoločné makrá z adresára "data/core/macros" budú spracované
+pred zadanými zdrojmi (resources). Príklad: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result\fP. Pre detailné informácie o
+preprocesore navštívte
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
-\fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+\fB\-\-preprocess\-defines=DEFINE1,DEFINE2,atď\fP
+čiarkou oddelený zoznam definícié pre príkaz '\-\-preprocess'. Ak je v zozname
+\fBSKIP_CORE\fP potom nebude adresár "data/core" spracovaný preprocesorom.
 .TP 
 \fB\-\-preprocess\-input\-macros <zdrojový súbor>\fP
 použitý len s príkazom '\-\-preprocess'.  Určuje súbor, ktorý obsahuje
@@ -169,19 +163,36 @@ nastaví rozlíšenie obrazovky. Napríklad: \fB\-r 800x600\fP
 pripojí sa na server, ak je zadaný, inak na prvý server uvedený v
 nastaveniach. Príklad: \fB\-\-server server.wesnoth.org\fP
 .TP 
-\fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+\fB\-\-username\fP\fI<meno>\fP
+použije <meno> pri pripojení na server, bez ohľadu na predvoľby.
 .TP 
-\fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+\fB\-\-password\fP\fI<heslo>\fP
+použije <heslo> pri pripojení na server, bez ohľadu na
+predvoľby. Nie je bezpečné.
 .TP 
 \fB\-\-strict\-validation\fP
 chyby pri kontrole dát budú považované za kritické chyby.
 .TP 
 \fB\-t, \-\-test\fP
 spustí hru s malou testovacou scénou.
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+nastaví adresár s používateľskými nastaveniami na \fImeno\fP pod $HOME alebo
+"My Documents\eMy Games" vo Windows. Je možné zadať aj absolútnu cestu pre
+adresáre mimo $HOME alebo "My Documents\eMy Games". V systéme X11 je
+predvolenou cestou $XDG_CONFIG_HOME alebo $HOME/.config/wesnoth, na iných
+systémoch je to cesta nastavená cez "userdata\-path".
+.TP 
+\fB\-\-userconfig\-path\fP
+vypíše názov adresára s používateľskými nastaveniami a skončí.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ názov\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+vypíše cestu k adresáru s používateľskými údajmi a skončí.
 .TP 
 \fB\-\-validcache\fP
 predpokladá, že vyrovnávacia pamäť je platná. (nebezpečné)
@@ -222,7 +233,11 @@ porážke, ktorý by od používateľa vyžadoval kliknutie OK. Toto sa tiež
 používa na automatizované meranie rýchlosti.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+nepoužije nastavenia mapy, namiestno nich použije štandardné hodnoty.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIpočet\fP
+zopakuje hru viacerých hráčov \fIpočet\fP ráz. Vhodné použiť s voľbou
+\fB\-\-nogui\fP pre testovanie výkonu.
 .TP 
 \fB\-\-nogui\fP
 spustí hru bez grafického užívateľského rozhrania. Musí byť uvedené pred

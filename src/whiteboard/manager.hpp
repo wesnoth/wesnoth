@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,8 @@
 #define WB_MANAGER_HPP_
 
 #include "side_actions.hpp"
+
+#include "../unit_map.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -88,7 +90,7 @@ public:
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
 	void on_viewer_change(size_t team_index);
-	void on_change_controller(int side, team& t);
+	void on_change_controller(int side, const team& t);
 	/** Handles various cleanup right before removing an action from the queue */
 	void pre_delete_action(action_ptr action);
 	/** Handles various cleanup right after removing an action from the queue */
@@ -157,9 +159,6 @@ public:
 	/** Executes all actions for the current turn in sequence
 	 *  @return true if the there are no more actions left for this turn when the method returns */
 	bool execute_all_actions();
-	/** Called by the game controller to let the whiteboard continue executing all actions
-	 *  if it stopped to wait for an attack to complete on reception of its random seed from server */
-	void continue_execute_all();
 	/** Deletes last action in the queue for current side */
 	void contextual_delete();
 	/** Moves the action determined by the UI toward the beginning of the queue  */
@@ -252,6 +251,17 @@ struct future_map
 	future_map();
 	~future_map();
 	bool initial_planned_unit_map_;
+};
+
+struct future_map_if
+{
+	/** @param cond: If true, applies the planned unit map for the duration of the struct's life and reverts to real unit map on destruction.
+			No effect if cond == false.
+	*/
+	boost::scoped_ptr<future_map> future_map_;
+	future_map_if(bool cond)
+		: future_map_(cond ? new future_map() : NULL)
+	{}
 };
 
 /** ONLY IF whiteboard is currently active, applies the planned unit map for the duration of the struct's life.

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -19,12 +19,16 @@
 #ifndef WB_MAPBUILDER_HPP_
 #define WB_MAPBUILDER_HPP_
 
-#include <boost/ptr_container/ptr_vector.hpp>
-
 #include "side_actions.hpp"
+
+#include <boost/ptr_container/ptr_vector.hpp>
+#include <list>
+
 #include "utility.hpp"
 
 struct unit_movement_resetter;
+
+struct temporary_unit_remover;
 
 namespace wb
 {
@@ -42,9 +46,7 @@ public:
 
 	/**
 	 * Builds every team's actions as far into the future as possible, in the correct order.
-	 *
-	 * @return whether all the actions were valid.
-	 * */
+	 */
 	void build_map();
 
 private:

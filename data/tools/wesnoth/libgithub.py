@@ -21,7 +21,7 @@ import urllib2
 
 #TODO: document and log where missing
 
-class Error(Exception):
+class Error(StandardError):
     """Base class for exceptions in this module."""
     pass
 
@@ -182,7 +182,7 @@ class Addon(object):
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
         out, err, ret = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
-        statusline = filter(lambda x: "refs/heads/master" in x, out.splitlines())
+        statusline = [x for x in out.splitlines() if "refs/heads/master" in x]
         if not statusline:
             raise AddonError(self.name, "No statusline produced by git push")
         else:
@@ -192,15 +192,15 @@ class Addon(object):
                 # Fast forward
                 pass
             elif status == "*":
-                # Freshly inited repository
+                # Freshly initiated repository
                 pass
             elif status == "=":
                 # Up to date?
-                logging.warn("Commit to add-on {0} with message {1} has not made any changes".format(self.name, message))
+                logging.warn("Commit to add-on {0} with message '{1}' has not made any changes".format(self.name, message))
             elif status == "!":
-                raise AddonError(self.name, "Commit with message {0} failed for reason {1}".format(message, summary))
+                raise AddonError(self.name, "Commit with message '{0}' failed for reason {1}".format(message, summary))
             else:
-                raise AddonError(self.name, "Commit with message {0} has done something unexpected: {1}".format(message, statusline[0]))
+                raise AddonError(self.name, "Commit with message '{0}' has done something unexpected: {1}".format(message, statusline[0]))
 
     def get_dir(self):
         """Return the directory this add-on's checkout is in.
@@ -258,15 +258,15 @@ class Addon(object):
                 else:
                     shutil.copy2(srcname, dstname)
                 # XXX What about devices, sockets etc.?
-            except (IOError, os.error), why:
+            except (IOError, os.error) as why:
                 errors.append((srcname, dstname, str(why)))
             # catch the Error from the recursive copytree so that we can
             # continue with other files
-            except Error, err:
+            except Error as err:
                 errors.extend(err.args[0])
         try:
             shutil.copystat(src, dst)
-        except OSError, why:
+        except OSError as why:
             if shutil.WindowsError is not None and isinstance(why, shutil.WindowsError):
                 # Copying file access times may fail on Windows
                 pass
@@ -332,7 +332,7 @@ class GitHub(object):
         if not os.path.isdir(self._absolute_path(name)):
             logging.debug("Add-on {0} not found locally, checking github.".format(name))
             github_list = self._github_repos_list(readonly=readonly)
-            matches = filter(lambda x: x[0] == name, github_list)
+            matches = [x for x in github_list if x[0] == name]
             if matches:
                 repo = matches[0]
                 self._clone(repo[0], repo[1])
@@ -585,8 +585,14 @@ def _gen(possible_dirs):
         realish_github = GitHub(tempfile.mkdtemp(),"system")
         build_system = realish_github.addon("build", readonly=True)
         return build_system, True
-    bs, fresh = _get_build_system(possible_dirs)
-    bs.update()
+    try:
+        bs, fresh = _get_build_system(possible_dirs)
+        bs.update()
+    except Error as e:
+        # Exception to make sure nobody catches it
+        # Use raise ... from syntax in python3
+        import sys
+        raise Exception(str(e)), None, sys.exc_info()[2]
     # Add references to shutil and os to ensure we're destructed before they are
     stored_shutil = shutil
     stored_os = os

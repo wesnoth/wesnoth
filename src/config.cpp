@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,20 +18,25 @@
  * Routines related to configuration-files / WML.
  */
 
+#include "config.hpp"
+
 #include "global.hpp"
 
-#include "config.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "utils/const_clone.tpp"
 
 #include <cstdlib>
 #include <cstring>
 #include <deque>
+#include <istream>
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
-#include <boost/variant.hpp>
+#include <boost/variant/apply_visitor.hpp>
+#include <boost/variant/get.hpp>
+#include <boost/variant/static_visitor.hpp>
+#include <boost/variant/variant.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -135,7 +140,7 @@ config::attribute_value &config::attribute_value::operator=(long long v)
 		// We can store this as an int.
 		return *this = static_cast<int>(v);
 
-	// Getting to this point should be rare. (Currently, geting here means
+	// Getting to this point should be rare. (Currently, getting here means
 	// something like there was so much draining in a campaign that the
 	// total damage taken is not only negative, but so negative that an
 	// int cannot hold the value.) So rare that it is not worth precise
@@ -178,8 +183,8 @@ config::attribute_value &config::attribute_value::operator=(double v)
 namespace {
 	/**
 	 * Attempts to convert @a source to the template type.
-	 * This is to avoid "overzealous reinterpretation of certain WML strings as
-	 * numeric tpyes" (c.f. bug #19201).
+	 * This is to avoid "overzealous reinterpretations of certain WML strings as
+	 * numeric types" (c.f. bug #19201).
 	 * @returns true if the conversion was successful and the source string
 	 *          can be reobtained by streaming the result.
 	 */
@@ -344,7 +349,7 @@ t_string config::attribute_value::t_str() const
  */
 bool config::attribute_value::blank() const
 {
-	return boost::get<const boost::blank>(&value_);
+	return boost::get<const boost::blank>(&value_) != NULL;
 }
 
 /**
@@ -358,14 +363,49 @@ bool config::attribute_value::empty() const
 }
 
 
+/// Visitor handling equality checks.
+class config::attribute_value::equality_visitor
+	: public boost::static_visitor<bool>
+{
+public:
+	// Most generic: not equal.
+	template <typename T, typename U>
+	bool operator()(const T &, const U &) const { return false; }
+
+	// Same types are comparable and might be equal.
+	template <typename T>
+	bool operator()(const T & lhs, const T & rhs) const { return lhs == rhs; }
+
+	// Boolean values can be compared.
+	bool operator()(const true_false & lhs, const yes_no & rhs) const { return bool(lhs) == bool(rhs); }
+	bool operator()(const yes_no & lhs, const true_false & rhs) const { return bool(lhs) == bool(rhs); }
+};
+
 /**
  * Checks for equality of the attribute values when viewed as strings.
- * One exception: blanks only equal other blanks, even though their string
- * representation is "".
+ * Exception: Boolean synonyms can be equal ("yes" == "true").
+ * Note: Blanks have no string representation, so do not equal "" (an empty string).
  */
 bool config::attribute_value::operator==(const config::attribute_value &other) const
 {
-	return value_ == other.value_;
+	return boost::apply_visitor(equality_visitor(), value_, other.value_);
+}
+
+/**
+ * Checks for equality of the attribute values when viewed as strings.
+ * Exception: Boolean synonyms can be equal ("yes" == "true").
+ * Note: Blanks have no string representation, so do not equal "" (an empty string).
+ * Also note that translatable string are never equal to non translatable strings.
+ */
+bool config::attribute_value::equals(const std::string &str) const
+{
+	attribute_value v;
+	v = str;
+	return *this == v;
+	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" beeing false
+	// because a["a"] is '1' and not '"1"'.
+	// return boost::apply_visitor(boost::bind( equality_visitor(), _1, boost::cref(str) ), value_);
+	// that's why we don't use it.
 }
 
 std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
@@ -419,10 +459,8 @@ config& config::operator=(const config& cfg)
 	if(this == &cfg) {
 		return *this;
 	}
-
-	clear();
-	append_children(cfg);
-	values.insert(cfg.values.begin(), cfg.values.end());
+	config tmp(cfg);
+	swap(tmp);
 	return *this;
 }
 
@@ -557,6 +595,11 @@ unsigned config::child_count(const std::string &key) const
 	return 0;
 }
 
+unsigned config::all_children_count() const
+{
+	return ordered_children.size();
+}
+
 bool config::has_child(const std::string &key) const
 {
 	check_valid();
@@ -600,15 +643,16 @@ const config& config::child(
 	return tconfig_implementation::child(this, key, parent);
 }
 
-config config::child_or_empty(const std::string& key) const
+const config & config::child_or_empty(const std::string& key) const
 {
+	static const config empty_cfg;
 	check_valid();
 
 	child_map::const_iterator i = children.find(key);
 	if (i != children.end() && !i->second.empty())
 		return *i->second.front();
 
-	return config();
+	return empty_cfg;
 }
 
 config &config::child_or_add(const std::string &key)
@@ -959,7 +1003,7 @@ void config::clear()
 				}
 			} else {
 				//reached end of child map for this element - all child nodes
-				//have beed deleted, so it's safe to clear the map, delete the
+				//have been deleted, so it's safe to clear the map, delete the
 				//node and move up one level
 				state.c->children.clear();
 				if (state.c != this) delete state.c;
@@ -1019,8 +1063,9 @@ void config::get_diff(const config& c, config& res) const
 
 	attribute_map::const_iterator i;
 	for(i = values.begin(); i != values.end(); ++i) {
+		if(i->second.blank()) continue;
 		const attribute_map::const_iterator j = c.values.find(i->first);
-		if(j == c.values.end() || (i->second != j->second && i->second != "")) {
+		if(j == c.values.end() || (i->second != j->second && !i->second.blank() )) {
 			if(inserts == NULL) {
 				inserts = &res.add_child("insert");
 			}
@@ -1032,8 +1077,9 @@ void config::get_diff(const config& c, config& res) const
 	config* deletes = NULL;
 
 	for(i = c.values.begin(); i != c.values.end(); ++i) {
+		if(i->second.blank()) continue;
 		const attribute_map::const_iterator itor = values.find(i->first);
-		if(itor == values.end() || itor->second == "") {
+		if(itor == values.end() || itor->second.blank()) {
 			if(deletes == NULL) {
 				deletes = &res.add_child("delete");
 			}
@@ -1219,6 +1265,7 @@ void config::merge_with(const config& c)
 {
 	check_valid(c);
 
+	std::vector<child_pos> to_remove;
 	std::map<std::string, unsigned> visitations;
 
 	// Merge attributes first
@@ -1228,11 +1275,17 @@ void config::merge_with(const config& c)
 	all_children_iterator::Itor i, i_end = ordered_children.end();
 	for(i = ordered_children.begin(); i != i_end; ++i) {
 		const std::string& tag = i->pos->first;
-		child_map::const_iterator j = c.children.find(tag);
+		const child_map::const_iterator j = c.children.find(tag);
 		if (j != c.children.end()) {
 			unsigned &visits = visitations[tag];
 			if(visits < j->second.size()) {
-				(i->pos->second[i->index])->merge_with(*j->second[visits++]);
+				// Get a const config so we do not add attributes.
+				const config & merge_child = *j->second[visits++];
+
+				if ( merge_child["__remove"].to_bool() ) {
+					to_remove.push_back(*i);
+				} else
+					(i->pos->second[i->index])->merge_with(merge_child);
 			}
 		}
 	}
@@ -1245,6 +1298,15 @@ void config::merge_with(const config& c)
 			add_child(tag, *j->second[visits++]);
 		}
 	}
+
+	// Remove those marked so
+	std::map<std::string, unsigned> removals;
+	BOOST_FOREACH(const child_pos& pos, to_remove) {
+		const std::string& tag = pos.pos->first;
+		unsigned &removes = removals[tag];
+		remove_child(tag, pos.index - removes++);
+	}
+
 }
 
 /**
@@ -1301,6 +1363,7 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg)
 	static int i = 0;
 	i++;
 	BOOST_FOREACH(const config::attribute &val, cfg.attribute_range()) {
+		if(val.second.blank()) continue;
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}

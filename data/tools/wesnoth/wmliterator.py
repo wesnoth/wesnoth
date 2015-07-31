@@ -49,14 +49,13 @@ def wmlfindin(element, scopeElement, wmlItor):
                 return itor
     return None
 
+
 def isDirective(elem):
     "Identify things that shouldn't be indented."
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    for prefix in ("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef"):
-        if elem.startswith(prefix):
-            return True
-    return False
+    return elem.startswith(("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef"))
+
 
 def isCloser(elem):
     "Are we looking at a closing tag?"
@@ -75,6 +74,12 @@ def isOpener(elem):
     if isinstance(elem, WmlIterator):
         elem = elem.element
     return type(elem) == type("") and elem.startswith("[") and not isCloser(elem)
+
+def isExtender(elem):
+    "Are we looking at an extender tag?"
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
+    return type(elem) == type("") and elem.startswith("[+")
 
 def isMacroOpener(elem):
     "Are we looking at a macro opener?"
@@ -96,12 +101,12 @@ class WmlIterator(object):
     empty and the filename is specified, lines will be read from the file.
 
     Note: if changes are made to lines while iterating, this may produce
-    unexpected results. In such case, seek() to the linenumber of a
+    unexpected results. In such case, seek() to the line number of a
     scope behind where changes were made.
 Important Attributes:
     lines - this is an internal list of all the physical lines
     scopes - this is an internal list of all open scopes (as iterators)
-             note: when retreiving an iterator from this list, always
+             note: when retrieving an iterator from this list, always
              use a copy to perform seek() or next(), and not the original
     element - the wml tag, key, or macro name for this logical line
               (in complex cases, this may be a tuple of elements...
@@ -235,8 +240,8 @@ Important Attributes:
         # first remove any lua strings
         beginquote = text.find('<<')
         while beginquote >= 0:
-            endquote = text.find('>>')
-            if endquote < -1:
+            endquote = text.find('>>', beginquote+2)
+            if endquote < 0:
                 text = text[:beginquote]
                 beginquote = -1 #terminate loop
             else:
@@ -361,7 +366,7 @@ Important Attributes:
 
     def ancestors(self):
         """Return a list of tags enclosing this location, outermost first."""
-        return tuple(map(lambda x: x.element, self.scopes))
+        return tuple([x.element for x in self.scopes])
 
     def hasNext(self):
         """Some loops may wish to check this method instead of calling next()
@@ -420,6 +425,9 @@ Important Attributes:
 
     def isCloser(self):
         return isCloser(self)
+
+    def isExtender(self):
+        return isExtender(self)
 
     def isMacroOpener(self):
         return isMacroOpener(self)

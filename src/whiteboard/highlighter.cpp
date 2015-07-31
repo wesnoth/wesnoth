@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -34,8 +34,15 @@
 #include "utility.hpp"
 
 #include "arrow.hpp"
+#include "config.hpp"
+#include "fake_unit_ptr.hpp"
+#include "game_board.hpp"
+#include "game_display.hpp"
+#include "game_errors.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -47,8 +54,8 @@ highlighter::highlighter(unit_map& unit_map, side_actions_ptr side_actions)
 	: unit_map_(unit_map)
 	, mouseover_hex_()
 	, exclusive_display_hexes_()
-	, owner_unit_(NULL)
-	, selection_candidate_(NULL)
+	, owner_unit_()
+	, selection_candidate_()
 	, selected_action_()
 	, main_highlight_()
 	, secondary_highlights_()
@@ -58,9 +65,11 @@ highlighter::highlighter(unit_map& unit_map, side_actions_ptr side_actions)
 
 highlighter::~highlighter()
 {
+	try {
 	if(resources::screen && owner_unit_) {
 		unhighlight();
 	}
+	} catch (...) {}
 }
 
 void highlighter::set_mouseover_hex(const map_location& hex)
@@ -76,10 +85,10 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::iterator it = unit_map_.find(hex);
 	if(it != unit_map_.end()) {
-		selection_candidate_ = &(*it);
+		selection_candidate_ = it.get_shared_ptr();
 
 		if(resources::teams->at(it->side()-1).get_side_actions()->unit_has_actions(*it)) {
-			owner_unit_ = &(*it);
+			owner_unit_ = it.get_shared_ptr();
 		}
 
 		//commented code below is to also select the first action of this unit as
@@ -118,7 +127,7 @@ void highlighter::clear()
 {
 	unhighlight();
 	main_highlight_.reset();
-	owner_unit_ = NULL;
+	owner_unit_.reset();
 	secondary_highlights_.clear();
 	selected_action_.reset();
 }
@@ -190,7 +199,7 @@ void highlighter::last_action_redraw(move_ptr move)
 		bool this_is_second_to_last_action = (second_to_last_action != sa.end() && move == *second_to_last_action);
 
 		if(this_is_last_action || (this_is_second_to_last_action && !last_action_has_fake_unit)) {
-			move->get_fake_unit()->set_standing(true);
+			move->get_fake_unit()->anim_comp().set_standing(true);
 		}
 	}
 }
@@ -252,7 +261,7 @@ action_ptr highlighter::get_bump_target()
 	return selected_action_.lock();
 }
 
-unit* highlighter::get_selection_target()
+unit_ptr highlighter::get_selection_target()
 {
 	if(owner_unit_) {
 		return owner_unit_;
@@ -268,7 +277,7 @@ void highlighter::highlight_main_visitor::visit(move_ptr move)
 	}
 	if(move->get_fake_unit()) {
 		///@todo find some highlight animation
-		move->get_fake_unit()->set_ghosted(true);
+		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
 		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
@@ -300,7 +309,7 @@ void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 		move->set_arrow_brightness(move::ARROW_BRIGHTNESS_HIGHLIGHTED);
 	}
 	if(move->get_fake_unit()) {
-		move->get_fake_unit()->set_ghosted(true);
+		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
 		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
@@ -320,7 +329,7 @@ void highlighter::unhighlight_visitor::visit(move_ptr move)
 		move->set_arrow_brightness(move::ARROW_BRIGHTNESS_STANDARD);
 	}
 	if(move->get_fake_unit()) {
-		move->get_fake_unit()->set_disabled_ghosted(false);
+		move->get_fake_unit()->anim_comp().set_disabled_ghosted(false);
 
 		highlighter_.last_action_redraw(move);
 	}

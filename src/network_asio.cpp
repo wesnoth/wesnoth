@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2015 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -82,7 +82,7 @@ void connection::handle_connect(
 			ec.message() << '\n';
 		socket_.close();
 		if(++iterator == resolver::iterator()) {
-			ERR_NW << "Tried all IPs. Giving up\n";
+			ERR_NW << "Tried all IPs. Giving up" << std::endl;
 			throw system_error(ec);
 		} else
 			connect(iterator);
@@ -143,7 +143,7 @@ void connection::cancel()
 		boost::system::error_code ec;
 		socket_.cancel(ec);
 		if(ec) {
-			WRN_NW << "Failed to cancel network operations: " << ec.message() << "\n";
+			WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
 		}
 	}
 }
@@ -190,6 +190,9 @@ std::size_t connection::is_read_complete(
 			union { char binary[4]; boost::uint32_t num; } data_size;
 			is.read(data_size.binary, 4);
 			bytes_to_read_ = ntohl(data_size.num) + 4;
+			//Close immediately if we receive an invalid length
+			if (bytes_to_read_ < 4)
+				bytes_to_read_ = bytes_transferred;
 		}
 #if BOOST_VERSION >= 103700
 		return bytes_to_read_ - bytes_transferred;

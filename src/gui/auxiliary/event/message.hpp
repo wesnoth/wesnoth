@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,9 +24,11 @@
 
 #include "gui/widgets/helper.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace event {
+namespace event
+{
 
 /**
  * The message callbacks hold a reference to a message.
@@ -42,18 +44,16 @@ namespace event {
  */
 struct tmessage
 {
-	virtual ~tmessage() {}
+	virtual ~tmessage()
+	{
+	}
 };
 
 /** The message for MESSAGE_SHOW_TOOLTIP. */
-struct tmessage_show_tooltip
-	: public tmessage
+struct tmessage_show_tooltip : public tmessage
 {
-	tmessage_show_tooltip(
-			  const std::string& message_
-			, const tpoint& location_)
-		: message(message_)
-		, location(location_)
+	tmessage_show_tooltip(const std::string& message_, const tpoint& location_)
+		: message(message_), location(location_)
 	{
 	}
 
@@ -65,14 +65,10 @@ struct tmessage_show_tooltip
 };
 
 /** The message for MESSAGE_SHOW_HELPTIP. */
-struct tmessage_show_helptip
-	: public tmessage
+struct tmessage_show_helptip : public tmessage
 {
-	tmessage_show_helptip(
-			  const std::string& message_
-			, const tpoint& location_)
-		: message(message_)
-		, location(location_)
+	tmessage_show_helptip(const std::string& message_, const tpoint& location_)
+		: message(message_), location(location_)
 	{
 	}
 
@@ -88,4 +84,3 @@ struct tmessage_show_helptip
 } // namespace gui2
 
 #endif
-

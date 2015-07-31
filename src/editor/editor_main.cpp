@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,7 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor_controller.hpp"
+#include "controller/editor_controller.hpp"
 
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
@@ -33,11 +33,10 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 	try {
 		hotkey::scope_changer h_;
 		hotkey::deactivate_all_scopes();
-		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 		editor_controller editor(game_conf, video);
 		if (!filename.empty()) {
-			if (is_directory(filename)) {
+			if (filesystem::is_directory(filename)) {
 				editor.context_manager_->set_default_dir(filename);
 				editor.context_manager_->load_map_dialog(true);
 			} else {
@@ -51,11 +50,11 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 			e = editor.main_loop();
 		}
 	} catch (editor_exception& e) {
-		ERR_ED << "Editor exception in editor::start: " << e.what() << "\n";
+		ERR_ED << "Editor exception in editor::start: " << e.what() << std::endl;
 		throw;
 	}
 	if (editor_action::get_instance_count() != 0) {
-		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects\n";
+		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects" << std::endl;
 	}
 
 	return e;

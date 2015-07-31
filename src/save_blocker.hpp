@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Daniel Franke.
+   Copyright (C) 2009 - 2015 by Daniel Franke.
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,6 +27,21 @@ class play_controller;
  *  then be reinvoked from this class's destructor.  If multiple save attempts
  *  are performed, only the last will be carried out.
  */
+
+/**
+ * NOTE: This class is broken and you probably shouldn't use it. Calling a save
+ * game dialog from the destructor of a class is a bad idea, because those
+ * functions throw exceptions. For example if the user decides to quit the game,
+ * or there is a filesystem erorr. If the destructor throws exceptions, it will
+ * cause memory leaks and crashes. 
+ * http://wiki.wesnoth.org/CodingStandards#Destructors_must_not_throw_exceptions
+ *
+ * As a temporary fix the destructor has been changed to swallow all exceptions.
+ * However this means that if the user attempts to quit the game from the savegame
+ * dialog, or any filesystem error occurs, it will be suppressed instead of being
+ * handled normally. So you should avoid using this class and it may be removed.
+ */
+
 class save_blocker {
 public:
 	save_blocker();

@@ -12,20 +12,65 @@ MINOR_V=${STABLE#*.}
 OLDSTABLE=$MAJOR_V.$(($MINOR_V-2))
 DEV=$MAJOR_V.$(($MINOR_V+1))
 PREV=$DEV-prev
+echo "oldstable = $OLDSTABLE; stable = $STABLE; dev = $DEV; prev = $PREV"
 
+set -x
 cd "$HOME/servers"
-ln -sf $OLDSTABLE oldstable
-ln -sf $STABLE stable
-ln -sf $DEV dev
-ln -sf $PREV prev
+ln -nfs $OLDSTABLE oldstable
+ln -nfs $STABLE stable
+ln -nfs $DEV dev
+ln -nfs $PREV prev
 
 cd "$HOME"
-ln -sf servers/oldstable/current.log  oldstable.log
-ln -sf servers/stable/current.log     stable.log
-ln -sf servers/dev/current.log        dev.log
-ln -sf servers/prev/current.log       prev.log
-ln -sf servers/$OLDSTABLE/current.log $OLDSTABLE.log
-ln -sf servers/$STABLE/current.log    $STABLE.log
-ln -sf servers/$DEV/current.log       $DEV.log
-ln -sf servers/$PREV/current.log      $PREV.log
+ln -nfs servers/oldstable/current.log  oldstable.log
+ln -nfs servers/stable/current.log     stable.log
+ln -nfs servers/dev/current.log        dev.log
+ln -nfs servers/prev/current.log       prev.log
+ln -nfs servers/$OLDSTABLE/current.log $OLDSTABLE.log
+ln -nfs servers/$STABLE/current.log    $STABLE.log
+ln -nfs servers/$DEV/current.log       $DEV.log
+ln -nfs servers/$PREV/current.log      $PREV.log
+
+# make sure the correct redirect includes are available
+rm -f $HOME/servers/$OLDSTABLE/*-redirect.cfg
+rm -f $HOME/servers/$STABLE/*-redirect.cfg
+rm -f $HOME/servers/$DEV/*-redirect.cfg
+rm -f $HOME/servers/$PREV/*-redirect.cfg
+
+mkdir -p $HOME/servers/$OLDSTABLE
+cd $HOME/servers/$OLDSTABLE
+ln -nfs ../wesnothd-common.cfg     common.cfg
+ln -nfs ../$STABLE/redirect.cfg    $STABLE-redirect.cfg
+ln -nfs ../$DEV/redirect.cfg       $DEV-redirect.cfg
+ln -nfs ../trunk/redirect.cfg      trunk-redirect.cfg
+
+mkdir -p $HOME/servers/$STABLE
+cd $HOME/servers/$STABLE
+ln -nfs ../wesnothd-common.cfg     common.cfg
+ln -nfs ../$OLDSTABLE/redirect.cfg $OLDSTABLE-redirect.cfg
+ln -nfs ../$DEV/redirect.cfg       $DEV-redirect.cfg
+ln -nfs ../trunk/redirect.cfg      trunk-redirect.cfg
+
+mkdir -p $HOME/servers/$DEV
+cd $HOME/servers/$DEV
+ln -nfs ../wesnothd-common.cfg     common.cfg
+ln -nfs ../$OLDSTABLE/redirect.cfg $OLDSTABLE-redirect.cfg
+ln -nfs ../$STABLE/redirect.cfg    $STABLE-redirect.cfg
+ln -nfs ../$PREV/redirect.cfg      $PREV-redirect.cfg
+ln -nfs ../trunk/redirect.cfg      trunk-redirect.cfg
+
+mkdir -p $HOME/servers/$PREV
+cd $HOME/servers/$PREV
+ln -nfs ../wesnothd-common.cfg     common.cfg
+ln -nfs ../$OLDSTABLE/redirect.cfg $OLDSTABLE-redirect.cfg
+ln -nfs ../$STABLE/redirect.cfg    $STABLE-redirect.cfg
+ln -nfs ../$DEV/redirect.cfg       $DEV-redirect.cfg
+ln -nfs ../trunk/redirect.cfg      trunk-redirect.cfg
+
+mkdir -p $HOME/servers/trunk
+cd $HOME/servers/trunk
+ln -nfs ../wesnothd-common.cfg     common.cfg
+ln -nfs ../$OLDSTABLE/redirect.cfg oldstable-redirect.cfg
+ln -nfs ../$STABLE/redirect.cfg    stable-redirect.cfg
+ln -nfs ../$DEV/redirect.cfg       dev-redirect.cfg
 

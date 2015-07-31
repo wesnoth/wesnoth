@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)
@@ -36,9 +37,9 @@ static lg::log_domain log_ai("ai/attack");
 namespace ai {
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
-				  const readonly_context& ai_obj,
-                                  const move_map& dstsrc, const move_map& srcdst,
-                                  const move_map& enemy_dstsrc, double aggression)
+                              const readonly_context& ai_obj,
+                              const move_map& dstsrc, const move_map& srcdst,
+                              const move_map& enemy_dstsrc, double aggression)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	assert(defend_it != units.end());
@@ -96,7 +97,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
-		unit *up = units.extract(m->first);
+		unit_ptr up = units.extract(m->first);
 		up->set_location(m->second);
 		units.insert(up);
 		double m_aggression = aggression;
@@ -308,7 +309,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
                }
         }
 
-	if(!leader_threat && vulnerability*terrain_quality > 0.0) {
+	if(!leader_threat && vulnerability*terrain_quality > 0.0  && !is_surrounded) {
 		value *= support/(vulnerability*terrain_quality);
 	}
 

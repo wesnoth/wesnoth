@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+                 2008 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -58,97 +58,92 @@ static lg::log_domain log_network("network");
 namespace {
 	std::string get_pbl_file_path(const std::string& addon_name)
 	{
-		const std::string& parentd = get_addon_campaigns_dir();
-		// Cope with old-style or new-style file organization
+		const std::string& parentd = filesystem::get_addons_dir();
+		// Allow .pbl files directly in the addon dir
 		const std::string exterior = parentd + "/" + addon_name + ".pbl";
 		const std::string interior = parentd + "/" + addon_name + "/_server.pbl";
-		return file_exists(exterior) ? exterior : interior;
+		return filesystem::file_exists(exterior) ? exterior : interior;
 	}
 
 	inline std::string get_info_file_path(const std::string& addon_name)
 	{
-		return get_addon_campaigns_dir() + "/" + addon_name + "/_info.cfg";
+		return filesystem::get_addons_dir() + "/" + addon_name + "/_info.cfg";
 	}
 }
 
 bool have_addon_in_vcs_tree(const std::string& addon_name)
 {
-	static const std::string parentd = get_addon_campaigns_dir();
+	static const std::string parentd = filesystem::get_addons_dir();
 	return
-		file_exists(parentd+"/"+addon_name+"/.svn") ||
-		file_exists(parentd+"/"+addon_name+"/.git") ||
-		file_exists(parentd+"/"+addon_name+"/.hg");
+		filesystem::file_exists(parentd+"/"+addon_name+"/.svn") ||
+		filesystem::file_exists(parentd+"/"+addon_name+"/.git") ||
+		filesystem::file_exists(parentd+"/"+addon_name+"/.hg");
 }
 
 bool have_addon_pbl_info(const std::string& addon_name)
 {
-	static const std::string parentd = get_addon_campaigns_dir();
-	return
-		file_exists(parentd+"/"+addon_name+".pbl") ||
-		file_exists(parentd+"/"+addon_name+"/_server.pbl");
+	return filesystem::file_exists(get_pbl_file_path(addon_name));
 }
 
 void get_addon_pbl_info(const std::string& addon_name, config& cfg)
 {
-	scoped_istream stream = istream_file(get_pbl_file_path(addon_name));
-	read(cfg, *stream);
+	const std::string& pbl_path = get_pbl_file_path(addon_name);
+	try {
+		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
+		read(cfg, *stream);
+	} catch(const config::error& e) {
+		throw invalid_pbl_exception(pbl_path, e.message);
+	}
 }
 
 void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
 {
-	scoped_ostream stream = ostream_file(get_pbl_file_path(addon_name));
+	filesystem::scoped_ostream stream = filesystem::ostream_file(get_pbl_file_path(addon_name));
 	write(*stream, cfg);
+}
+
+bool have_addon_install_info(const std::string& addon_name)
+{
+	return filesystem::file_exists(get_info_file_path(addon_name));
+}
+
+void get_addon_install_info(const std::string& addon_name, config& cfg)
+{
+	const std::string& info_path = get_info_file_path(addon_name);
+	filesystem::scoped_istream stream = filesystem::istream_file(info_path);
+	try {
+		read(cfg, *stream);
+	} catch(const config::error& e) {
+		ERR_CFG << "Failed to read add-on installation information for '"
+				<< addon_name << "' from " << info_path << ":\n"
+				<< e.message << std::endl;
+	}
 }
 
 bool remove_local_addon(const std::string& addon)
 {
-	bool ret = true;
-	const std::string addon_dir = get_addon_campaigns_dir() + "/" + addon;
+	const std::string addon_dir = filesystem::get_addons_dir() + "/" + addon;
 
 	LOG_CFG << "removing local add-on: " << addon << '\n';
 
-	if(file_exists(addon_dir) && !delete_directory(addon_dir, true)) {
+	if(filesystem::file_exists(addon_dir) && !filesystem::delete_directory(addon_dir, true)) {
 		ERR_CFG << "Failed to delete directory/file: " << addon_dir << '\n';
-		ret = false;
+		ERR_CFG << "removal of add-on " << addon << " failed!" << std::endl;
+		return false;
 	}
-
-	if(file_exists(addon_dir + ".cfg") && !delete_directory(addon_dir + ".cfg", true)) {
-		ERR_CFG << "Failed to delete directory/file: " << addon_dir << ".cfg\n";
-		ret = false;
-	}
-
-	if(!ret) {
-		ERR_CFG << "removal of add-on " << addon << " failed!\n";
-	}
-
-	return ret;
+	return true;
 }
 
 std::vector<std::string> available_addons()
 {
 	std::vector<std::string> res;
 	std::vector<std::string> files, dirs;
-	const std::string parentd = get_addon_campaigns_dir();
-	get_files_in_dir(parentd,&files,&dirs);
+	const std::string parentd = filesystem::get_addons_dir();
+	filesystem::get_files_in_dir(parentd,&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		const std::string external_cfg_file = *i + ".cfg";
-		const std::string internal_cfg_file = *i + "/_main.cfg";
-		const std::string external_pbl_file = *i + ".pbl";
-		const std::string internal_pbl_file = *i + "/_server.pbl";
-		if((std::find(files.begin(),files.end(),external_cfg_file) != files.end() || file_exists(parentd + "/" + internal_cfg_file)) &&
-		   (std::find(files.begin(),files.end(),external_pbl_file) != files.end() || (file_exists(parentd + "/" + internal_pbl_file)))) {
+		if (filesystem::file_exists(parentd + "/" + *i + "/_main.cfg") && have_addon_pbl_info(*i)) {
 			res.push_back(*i);
-		}
-	}
-	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-		const size_t length = i->size() - 4;
-		if (i->rfind(".cfg", length) != length) continue;
-		const std::string name = i->substr(0, length);
-		// Continue if there is a dir (which we already processed).
-		if (std::find(dirs.begin(), dirs.end(), name) != dirs.end()) continue;
-		if (std::find(files.begin(), files.end(), name + ".pbl") != files.end()) {
-			res.push_back(name);
 		}
 	}
 
@@ -158,14 +153,12 @@ std::vector<std::string> available_addons()
 std::vector<std::string> installed_addons()
 {
 	std::vector<std::string> res;
-	const std::string parentd = get_addon_campaigns_dir();
+	const std::string parentd = filesystem::get_addons_dir();
 	std::vector<std::string> files, dirs;
-	get_files_in_dir(parentd,&files,&dirs);
+	filesystem::get_files_in_dir(parentd,&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		const std::string external_cfg_file = *i + ".cfg";
-		const std::string internal_cfg_file = *i + "/_main.cfg";
-		if(std::find(files.begin(),files.end(),external_cfg_file) != files.end() || file_exists(parentd + "/" + internal_cfg_file)) {
+		if(filesystem::file_exists(parentd + "/" + *i + "/_main.cfg")) {
 			res.push_back(*i);
 		}
 	}
@@ -175,9 +168,8 @@ std::vector<std::string> installed_addons()
 
 bool is_addon_installed(const std::string& addon_name)
 {
-	const std::string namestem = get_addon_campaigns_dir() + "/" + addon_name;
-
-	return file_exists(namestem + ".cfg") || file_exists(namestem + "/_main.cfg");
+	const std::string namestem = filesystem::get_addons_dir() + "/" + addon_name;
+	return filesystem::file_exists(namestem + "/_main.cfg");
 }
 
 static inline bool IsCR(const char& c)
@@ -233,29 +225,25 @@ namespace {
 
 static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignore_patterns(const std::string& addon_name)
 {
-	const std::string parentd = get_addon_campaigns_dir();
-	const std::string exterior = parentd + "/" + addon_name + ".ign";
-	const std::string interior = parentd + "/" + addon_name + "/_server.ign";
+	const std::string parentd = filesystem::get_addons_dir();
+	const std::string ign_file = parentd + "/" + addon_name + "/_server.ign";
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > patterns;
-	std::string ign_file;
 	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
-	if (file_exists(interior)) {
-		ign_file = interior;
-	} else if (file_exists(exterior)) {
-		ign_file = exterior;
-	} else {
+	if (!filesystem::file_exists(ign_file)) {
 		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
 		        << "inserting default ignore patterns...\n";
 		append_default_ignore_patterns(patterns);
 		return patterns; // just default patterns
 	}
 	LOG_CFG << "found .ign file: " << ign_file << '\n';
-	std::istream *stream = istream_file(ign_file);
+	std::istream *stream = filesystem::istream_file(ign_file);
 	std::string line;
 	while (std::getline(*stream, line)) {
 		utils::strip(line);
 		const size_t l = line.size();
+		// .gitignore & WML like comments
+		if (l == 0 || !line.compare(0,2,"# ")) continue;
 		if (line[l - 1] == '/') { // directory; we strip the last /
 			patterns.second.push_back(line.substr(0, l - 1));
 		} else { // file
@@ -269,7 +257,7 @@ static void archive_file(const std::string& path, const std::string& fname, conf
 {
 	cfg["name"] = fname;
 	const bool is_cfg = (fname.size() > 4 ? (fname.substr(fname.size() - 4) == ".cfg") : false);
-	cfg["contents"] = encode_binary(strip_cr(read_file(path + '/' + fname),is_cfg));
+	cfg["contents"] = encode_binary(strip_cr(filesystem::read_file(path + '/' + fname),is_cfg));
 }
 
 static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, std::pair<std::vector<std::string>, std::vector<std::string> >& ignore_patterns)
@@ -278,9 +266,9 @@ static void archive_dir(const std::string& path, const std::string& dirname, con
 	const std::string dir = path + '/' + dirname;
 
 	std::vector<std::string> files, dirs;
-	get_files_in_dir(dir,&files,&dirs);
+	filesystem::get_files_in_dir(dir,&files,&dirs);
 	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-		bool valid = !looks_like_pbl(*i);
+		bool valid = !filesystem::looks_like_pbl(*i);
 		for(std::vector<std::string>::const_iterator p = ignore_patterns.first.begin(); p != ignore_patterns.first.end(); ++p) {
 			if (utils::wildcard_string_match(*i, *p)) {
 				valid = false;
@@ -308,21 +296,16 @@ static void archive_dir(const std::string& path, const std::string& dirname, con
 
 void archive_addon(const std::string& addon_name, config& cfg)
 {
-	const std::string parentd = get_addon_campaigns_dir();
+	const std::string parentd = filesystem::get_addons_dir();
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > ignore_patterns;
-	// External .cfg may not exist; newer campaigns have a _main.cfg
-	const std::string external_cfg = addon_name + ".cfg";
-	if (file_exists(parentd + "/" + external_cfg)) {
-		archive_file(parentd, external_cfg, cfg.add_child("file"));
-	}
 	ignore_patterns = read_ignore_patterns(addon_name);
 	archive_dir(parentd, addon_name, cfg.add_child("dir"), ignore_patterns);
 }
 
 static void unarchive_file(const std::string& path, const config& cfg)
 {
-	write_file(path + '/' + cfg["name"].str(), unencode_binary(cfg["contents"]));
+	filesystem::write_file(path + '/' + cfg["name"].str(), unencode_binary(cfg["contents"]));
 }
 
 static void unarchive_dir(const std::string& path, const config& cfg)
@@ -333,7 +316,7 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 	else
 		dir = path + '/' + cfg["name"].str();
 
-	make_directory(dir);
+	filesystem::make_directory(dir);
 
 	BOOST_FOREACH(const config &d, cfg.child_range("dir")) {
 		unarchive_dir(dir, d);
@@ -346,7 +329,7 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 
 void unarchive_addon(const config& cfg)
 {
-	const std::string parentd = get_addon_campaigns_dir();
+	const std::string parentd = filesystem::get_addons_dir();
 	unarchive_dir(parentd, cfg);
 }
 
@@ -376,11 +359,9 @@ void refresh_addon_version_info_cache()
 		const std::string& addon = addons[i];
 		const std::string& info_file = addon_info_files[i];
 
-		if(file_exists(info_file)) {
-			scoped_istream stream = istream_file(info_file);
-
+		if(filesystem::file_exists(info_file)) {
 			config cfg;
-			read(cfg, *stream);
+			get_addon_install_info(addon, cfg);
 
 			const config& info_cfg = cfg.child("info");
 			if(!info_cfg) {
@@ -393,7 +374,7 @@ void refresh_addon_version_info_cache()
 			version_info_cache[addon] = version;
 		} else if (!have_addon_pbl_info(addon) && !have_addon_in_vcs_tree(addon)) {
 			// Don't print the warning if the user is clearly the author
-			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
+			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info" << std::endl;
 		}
 	}
 }

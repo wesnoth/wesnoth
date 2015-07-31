@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,6 +41,7 @@ namespace game_config
 	extern const std::string version;
 	extern const std::string revision;
 	extern std::string default_terrain;
+	extern bool spmp_hotfix;
 
 	inline int kill_xp(int level)
 	{
@@ -52,12 +53,12 @@ namespace game_config
 	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
-	extern bool debug, debug_lua, editor, ignore_replay_errors, mp_debug, exit_at_end, new_syntax, no_delay, disable_autosave;
+	extern bool debug, debug_lua, editor, ignore_replay_errors, mp_debug,
+		exit_at_end, no_delay, disable_autosave, no_addons;
 
 	extern int cache_compression_level;
 
 	extern std::string path;
-	extern std::string preferences_dir;
 	extern std::string default_preferences_path;
 
 	struct server_info {
@@ -72,15 +73,21 @@ namespace game_config
 			default_victory_music,
 			default_defeat_music;
 
+	namespace colors {
+	extern std::string unmoved_orb_color,
+			partial_orb_color,
+			enemy_orb_color,
+			ally_orb_color,
+			moved_orb_color;
+	} // colors
+
+	extern bool show_ally_orb, show_enemy_orb, show_moved_orb, show_partial_orb, show_unmoved_orb;
+
 	namespace images {
 	extern std::string game_title,
-            game_title_background,
+			game_title_background,
 			// orbs and hp/xp bar
-			moved_orb,
-			unmoved_orb,
-			partmoved_orb,
-			enemy_orb,
-			ally_orb,
+			orb,
 			energy,
 			// flags
 			flag,
@@ -105,7 +112,9 @@ namespace game_config
 			wml_menu,
 			level,
 			ellipsis,
-			missing;
+			missing,
+			// notifications icon
+			app_icon;
 	} //images
 
 
@@ -137,10 +146,11 @@ namespace game_config
 	extern const size_t max_loop;
 
 	namespace sounds {
-		extern const std::string turn_bell, timer_bell, receive_message,
-				receive_message_highlight, receive_message_friend,
-				receive_message_server, user_arrive, user_leave,
-				game_user_arrive, game_user_leave;
+		extern std::string turn_bell, timer_bell, public_message,
+				private_message, friend_message,
+				server_message, player_joins, player_leaves,
+				game_user_arrive, game_user_leave, ready_for_start,
+				game_has_begun;
 		extern const std::string button_press, checkbox_release, slider_adjust,
 				menu_expand, menu_contract, menu_select;
 	}
@@ -163,7 +173,7 @@ namespace game_config
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
-	extern const std::string  test_version;
+	extern const version_info test_version;
 }
 
 #endif

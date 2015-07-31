@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,24 +24,23 @@
 #include "map_utils.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 template <class T>
-inline bool sort(
-		  const tpane::titem& lhs
-		, const tpane::titem& rhs
-		, const std::string& tag
-		, const bool ascending)
+inline bool sort(const tpane::titem& lhs,
+				 const tpane::titem& rhs,
+				 const std::string& tag,
+				 const bool ascending)
 {
 	if(ascending) {
-		return
-			  lexical_cast<T>(at(lhs.tags, tag))
-			< lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(at(lhs.tags, tag))
+			   < lexical_cast<T>(at(rhs.tags, tag));
 	} else {
-		return
-			  lexical_cast<T>(at(lhs.tags, tag))
-			> lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(at(lhs.tags, tag))
+			   > lexical_cast<T>(at(rhs.tags, tag));
 	}
 }
 
@@ -64,13 +63,12 @@ inline bool sort(
  *
  * @returns                       Whether or not the comparison found a match.
  */
-inline bool contains(
-		  const tpane::titem& item
-		, const std::string& tag
-		, const ttext_box& text_box)
+inline bool contains(const tpane::titem& item,
+					 const std::string& tag,
+					 const ttext_box& text_box)
 {
-	return at(item.tags, tag)
-			.find(utils::lowercase(text_box.text())) != std::string::npos;
+	return at(item.tags, tag).find(utf8::lowercase(text_box.text()))
+		   != std::string::npos;
 }
 
 } // namespace gui2

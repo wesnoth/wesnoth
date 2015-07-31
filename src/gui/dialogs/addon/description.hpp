@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,31 +20,50 @@
 #include "addon/info.hpp"
 #include "addon/state.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class taddon_description : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
-	 * @param addon               The information about the addon to show.
+	 * @param addon_id            The requested add-on's id.
+	 * @param addons_list         Complete list of add-ons including the
+	 *                            requested add-on and its dependencies.
+	 * @param addon_states        Local installation status of the add-ons in
+	 *                            @a addons_list.
 	 */
-	taddon_description(const addon_info& addon, const addon_tracking_info& state);
+	taddon_description(const std::string& addon_id,
+					   const addons_list& addons_list,
+					   const addons_tracking_list& addon_states);
 
-	/** The display function see @ref tdialog for more information. */
-	static void display(const addon_info& addon, const addon_tracking_info& state, CVideo& video)
+	/**
+	 * The display function.
+	 *
+	 * See @ref tdialog for more information.
+	 */
+	static void display(const std::string& addon_id,
+						const addons_list& addons_list,
+						const addons_tracking_list& addon_states,
+						CVideo& video)
 	{
-		taddon_description(addon, state).show(video);
+		taddon_description(addon_id, addons_list, addon_states).show(video);
 	}
 
 private:
+	std::string feedback_url_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-};
 
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
+	void browse_url_callback();
+	void copy_url_callback();
+};
 }
 
 #endif

@@ -3,7 +3,9 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
+import collections
 import sys, os, re, sre_constants, hashlib, glob, gzip
+import string
 
 map_extensions   = ("map", "mask")
 image_extensions = ("png", "jpg", "jpeg")
@@ -11,7 +13,7 @@ sound_extensions = ("ogg", "wav")
 vc_directories = (".git", ".svn")
 l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
-image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
+image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpe?g)(?=(~.*)?)"
 
 def is_root(dirname):
     "Is the specified path the filesystem root?"
@@ -52,6 +54,24 @@ def attr_strip(value):
     value = value.strip()
     return string_strip(value)
 
+def comma_split(csstring, list=None, strip="r"):
+    "Split a comma-separated string, and append the entries to a list if specified."
+    vallist = [x.lstrip() for x in csstring.split(",") if x.lstrip()]
+    # strip=: utils::split will remove trailing whitespace from items in comma-
+    # separated lists but the wml-tags.lua split function only removes leading
+    # whitespace. So two flags are offered to change default behavior: one to
+    # lstrip() only, the other to warn about trailing whitespace.
+    if 'w' in strip:
+        for item in vallist:
+            if re.search('\s$', item):
+                print 'Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring)
+    if 'l' not in strip:
+        vallist = [x.rstrip() for x in vallist]
+    if list is not None:
+        list.extend(vallist)
+    else:
+        return vallist
+
 def parse_attribute(line):
     "Parse a WML key-value pair from a line."
     if '=' not in line or line.find("#") > -1 and line.find("#") < line.find("="):
@@ -60,13 +80,10 @@ def parse_attribute(line):
     leader = line[:where]
     after = line[where+1:]
     after = after.lstrip()
-    if "#" in after:
-        where = after.find("#")
-        where -= 1
-        while after[where] in (" ", "\t"):
-            where -= 1
-        value = after[:where+1]
-        comment = after[where+1:]
+    if re.search("\s#", after):
+        where = len(re.split("\s+#", after)[0])
+        value = after[:where]
+        comment = after[where:]
     else:
         value = after.rstrip()
         comment = ""
@@ -80,24 +97,63 @@ class Forest:
         "Get the names of all files under dirpath, ignoring version-control directories."
         self.forest = []
         self.dirpath = dirpath
+        roots = ["campaigns", "add-ons"]
         for dir in dirpath:
             subtree = []
+            rooted = False
             if os.path.isdir(dir):	# So we skip .cfgs in a UMC mirror
-                os.path.walk(dir,
-                         lambda arg, dir, names: subtree.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
-                         None)
+                oldmain = os.path.join(os.path.dirname(dir), os.path.basename(dir) + '.cfg')
+                if os.path.isfile(oldmain):
+                    subtree.append(oldmain)
+                base = os.path.basename(os.path.dirname(os.path.abspath(dir)))
+                if base in roots or base == "core":
+                    rooted = True
+                for root, dirs, files in os.walk(dir):
+                    dirs.sort()
+                    dirlist = [x for x in dirs]
+                    # Split out individual campaigns/add-ons into their own subtrees
+                    if not rooted:
+                        if os.path.basename(root) == "core":
+                            rooted = True
+                        elif os.path.basename(root) in roots:
+                            for subdir in dirlist:
+                                if subdir + '.cfg' in files:
+                                    files.remove(subdir + '.cfg')
+                                dirs.remove(subdir)
+                                dirpath.append(os.path.join(root, subdir))
+                            rooted = True
+                        elif "_info.cfg" in files or "info.cfg" in files:
+                            rooted = True
+                            roots.append(os.path.basename(os.path.dirname(os.path.abspath(root))))
+                        else:
+                            stop = min(len(dirs), 5)
+                            count = 0
+                            for subdir in dirlist[:stop]:
+                                if os.path.isfile(os.path.join(root, subdir, '_info.cfg')):
+                                    count += 1
+                                elif os.path.isfile(os.path.join(root, subdir, 'info.cfg')):
+                                    if os.path.isfile(os.path.join(root, subdir, 'COPYING.txt')):
+                                        count += 1
+                            if count >= (stop / 2):
+                                roots.append(os.path.basename(root))
+                                for subdir in dirlist:
+                                    if subdir + '.cfg' in files:
+                                        files.remove(subdir + '.cfg')
+                                    dirs.remove(subdir)
+                                    dirpath.append(os.path.join(root, subdir))
+                    subtree.extend([os.path.normpath(os.path.join(root, x)) for x in files])
             # Always look at _main.cfg first
             subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
             self.forest.append(subtree)
-        for i in range(len(self.forest)):
+        for i in self.forest:
             # Ignore version-control subdirectories and Emacs tempfiles
             for dirkind in vc_directories + l10n_directories:
-                self.forest[i] = filter(lambda x: dirkind not in x, self.forest[i])
-            self.forest[i] = filter(lambda x: '.#' not in x, self.forest[i])
-            self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
+                i = [x for x in i if dirkind not in x]
+            i = [x for x in i if '.#' not in x]
+            i = [x for x in i if not os.path.isdir(x)]
             if exclude:
-                self.forest[i] = filter(lambda x: not re.search(exclude, x), self.forest[i])
-            self.forest[i] = filter(lambda x: not x.endswith("-bak"), self.forest[i])
+                i = [x for x in i if not re.search(exclude, x)]
+            i = [x for x in i if not x.endswith("-bak")]
         # Compute cliques (will be used later for visibility checks)
         self.clique = {}
         counter = 0
@@ -141,6 +197,52 @@ def isresource(filename):
     "Is the specified name a resource?"
     (root, ext) = os.path.splitext(filename)
     return ext and ext[1:] in resource_extensions
+
+def parse_macroref(start, line):
+    brackdepth = parendepth = 0
+    instring = False
+    args = []
+    arg = ""
+    for i in xrange(start, len(line)):
+        if instring:
+            if line[i] == '"':
+                instring = False
+            arg += line[i]
+        elif line[i] == '"':
+            instring = not instring
+            arg += line[i]
+        elif line[i] == "{":
+            if brackdepth > 0:
+                arg += line[i]
+            brackdepth += 1
+        elif line[i] == "}":
+            brackdepth -= 1
+            if brackdepth == 0:
+                if not line[i-1].isspace():
+                    arg = arg.strip()
+                    if arg.startswith('"') and arg.endswith('"'):
+                        arg = arg[1:-1].strip()
+                    args.append(arg)
+                    arg = ""
+                break
+            else:
+                arg += line[i]
+        elif line[i] == "(":
+            parendepth += 1
+        elif line[i] == ")":
+            parendepth -= 1
+        elif not line[i-1].isspace() and \
+             line[i].isspace() and \
+             brackdepth == 1 and \
+             parendepth == 0:
+            arg = arg.strip()
+            if arg.startswith('"') and arg.endswith('"'):
+                arg = arg[1:-1].strip()
+            args.append(arg)
+            arg = ""
+        elif not line[i].isspace() or parendepth > 0:
+            arg += line[i]
+    return (args, brackdepth, parendepth)
 
 def formaltype(f):
     # Deduce the expected type of the formal
@@ -215,7 +317,7 @@ def actualtype(a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
-    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a[1] not in "abcdefghijklmnopqrstuvwxyz"):
+    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a[1] not in string.ascii_lowercase):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
@@ -277,16 +379,17 @@ class Reference:
         self.lineno = lineno
         self.docstring = docstring
         self.args = args
-        self.references = {}
+        self.references = collections.defaultdict(list)
         self.undef = None
+
     def append(self, fn, n, a=None):
-        if fn not in self.references:
-            self.references[fn] = []
         self.references[fn].append((n, a))
+
     def dump_references(self):
         "Dump all known references to this definition."
         for (file, refs) in self.references.items():
-            print "    %s: %s" % (file, repr(map(lambda x: x[0], refs))[1:-1])
+            print "    %s: %s" % (file, repr([x[0] for x in refs])[1:-1])
+
     def __cmp__(self, other):
         "Compare two documentation objects for place in the sort order."
         # Major sort by file, minor by line number.  This presumes that the
@@ -301,7 +404,7 @@ class Reference:
         copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args)
         copy.undef = self.undef
         for filename in self.references:
-            mis = filter(lambda (ln, a): a is not None and not argmatch(self.args, a), self.references[filename])
+            mis = [(ln,a) for (ln,a) in self.references[filename] if a is not None and not argmatch(self.args, a)]
             if mis:
                 copy.references[filename] = mis
         return copy
@@ -335,9 +438,9 @@ class CrossRef:
         return key
     def visible_from(self, defn, fn, n):
         "Is specified definition visible from the specified file and line?"
-        if type(defn) == type(""):
+        if isinstance(defn, basestring):
             defn = self.fileref[defn]
-        if defn.undef != None:
+        if defn.undef is not None:
             # Local macros are only visible in the file where they were defined
             return defn.filename == fn and n >= defn.lineno and n <= defn.undef
         if self.exports(defn.namespace):
@@ -488,7 +591,7 @@ class CrossRef:
     def __init__(self, dirpath=[], exclude="", warnlevel=0, progress=False):
         "Build cross-reference object from the specified filelist."
         self.filelist = Forest(dirpath, exclude)
-        self.dirpath = filter(lambda x: not re.search(exclude, x), dirpath)
+        self.dirpath = [x for x in dirpath if not re.search(exclude, x)]
         self.warnlevel = warnlevel
         self.xref = {}
         self.fileref = {}
@@ -563,7 +666,7 @@ class CrossRef:
                     # Find references to macros
                     for match in re.finditer(CrossRef.macro_reference, line):
                         name = match.group(1)
-                        candidates = 0
+                        candidates = []
                         if self.warnlevel >=2:
                             print '"%s", line %d: seeking definition of %s' \
                                   % (fn, n+1, name)
@@ -573,43 +676,7 @@ class CrossRef:
                             # Count the number of actual arguments.
                             # Set args to None if the call doesn't
                             # close on this line
-                            brackdepth = parendepth = 0
-                            instring = False
-                            args = []
-                            arg = ""
-                            for i in range(match.start(0), len(line)):
-                                if instring:
-                                    if line[i] == '"':
-                                        instring = False
-                                    else:
-                                        arg += line[i]
-                                elif line[i] == '"':
-                                    instring = not instring
-                                elif line[i] == "{":
-                                    if brackdepth > 0:
-                                        arg += line[i]
-                                    brackdepth += 1
-                                elif line[i] == "}":
-                                    brackdepth -= 1
-                                    if brackdepth == 0:
-                                        if not line[i-1].isspace():
-                                            args.append(arg)
-                                            arg = ""
-                                        break
-                                    else:
-                                        arg += line[i]
-                                elif line[i] == "(":
-                                    parendepth += 1
-                                elif line[i] == ")":
-                                    parendepth -= 1
-                                elif not line[i-1].isspace() and \
-                                     line[i].isspace() and \
-                                     brackdepth == 1 and \
-                                     parendepth == 0:
-                                    args.append(arg)
-                                    arg = ""
-                                elif not line[i].isspace():
-                                    arg += line[i]
+                            (args, brackdepth, parendepth) = parse_macroref(match.start(0), line)
                             if brackdepth > 0 or parendepth > 0:
                                 args = None
                             else:
@@ -620,12 +687,12 @@ class CrossRef:
                             # Figure out which macros might resolve this
                             for defn in self.xref[name]:
                                 if self.visible_from(defn, fn, n+1):
-                                    candidates += 1
                                     defn.append(fn, n+1, args)
-                            if candidates > 1:
-                                print "%s: more than one definition of %s is visible here." % (Reference(ns, fn, n), name)
-                        if candidates == 0:
-                            self.unresolved.append((name,Reference(ns,fn,n+1,args=args)))
+                                    candidates.append(str(defn))
+                            if len(candidates) > 1:
+                                print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates))
+                        if len(candidates) == 0:
+                            self.unresolved.append((name,Reference(ns,fn,n+1)))
                     # Don't be fooled by HTML image references in help strings.
                     if "<img>" in line:
                         continue
@@ -718,7 +785,7 @@ class CrossRef:
 #
 # String translations from po files.  The advantage of this code is that it
 # does not require the gettext binary message catalogs to have been compiled.
-# The disavantage is that it eats lots of core!
+# The disadvantage is that it eats lots of core!
 #
 
 
@@ -794,7 +861,7 @@ class Translations:
         if not t in self.translations:
             try:
                 self.translations[t] = Translation(textdomain, isocode, self.topdir)
-            except TranslationError, e:
+            except TranslationError as e:
                 sys.stderr.write(str(e))
                 self.translations[t] = Translation(textdomain, "C", self.topdir)
         result = self.translations[t].get(key, default)
@@ -832,7 +899,7 @@ def directory_namespace(path):
 def namespace_member(path, namespace):
     "Is a path in a specified namespace?"
     ns = directory_namespace(path)
-    return ns != None and ns == namespace
+    return ns is not None and ns == namespace
 
 def resolve_unit_cfg(namespace, utype, resource=None):
     "Get the location of a specified unit in a specified scope."

@@ -23,11 +23,11 @@ for filename in sys.argv[1:]:
         print "imgcheck: %s has no color table" % filename
     #img.close()
 
-# Perform cxolor table subtraction
+# Perform color table subtraction
 basecolors = map(lambda (n, rgb): rgb, colortables[0][1])
 basecolors.sort()
 subtracted = []
-for i in range(1, len(colortables)):
+for i in xrange(1, len(colortables)):
     exiguous = []
     for (n, rgb) in colortables[i][1]:
         if rgb not in basecolors:

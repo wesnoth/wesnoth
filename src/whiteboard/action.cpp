@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,8 @@
 #include "recall.hpp"
 #include "suppose_dead.hpp"
 
+#include "config.hpp"
+#include "game_board.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
@@ -115,7 +117,7 @@ action::~action()
 
 size_t action::get_unit_id() const
 {
-	unit *ret = get_unit();
+	unit_ptr ret = get_unit();
 	return ret ? ret->underlying_id() : 0;
 }
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,14 +19,16 @@
 #include "asserts.hpp"
 #include "gui/widgets/widget.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
-namespace walker {
+namespace walker
+{
 
-twidget::twidget(gui2::twidget& widget)
-	: widget_(&widget)
+twidget::twidget(gui2::twidget& widget) : widget_(&widget)
 {
 }
 
@@ -44,7 +46,7 @@ twalker_::tstate twidget::next(const tlevel level)
 			} else {
 				/* FALL DOWN */
 			}
-		case grid: /* FALL DOWN */
+		case grid:  /* FALL DOWN */
 		case child: /* FALL DOWN */
 			;
 	}
@@ -86,5 +88,3 @@ gui2::twidget* twidget::get(const tlevel level)
 } // namespace iterator
 
 } // namespace gui2
-
-

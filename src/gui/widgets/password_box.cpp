@@ -1,6 +1,7 @@
 /*
-   Copyright (C) 2009 - 2013 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2015 by Thomas Baumhauer
+   <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2009 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,44 +24,51 @@
 #include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET3(ttext_box_definition, password_box, "text_box_definition")
 
-namespace {
+namespace
+{
 
 size_t get_text_length(const std::string& str)
 {
-	return utils::string_to_wstring(str).size();
+	return utf8::size(str);
 }
 
 } // namespace
 
-void tpassword_box::set_value(const std::string& text) {
+void tpassword_box::set_value(const std::string& text)
+{
 	ttext_box::set_value(text);
 	real_value_ = get_value();
 	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
 }
 
-void tpassword_box::insert_char(const Uint16 unicode) {
+void tpassword_box::insert_char(const utf8::string& unicode)
+{
 	pre_function();
 	ttext_box::insert_char(unicode);
 	post_function();
 }
 
-void tpassword_box::delete_char(const bool before_cursor) {
+void tpassword_box::delete_char(const bool before_cursor)
+{
 	pre_function();
 	ttext_box::delete_char(before_cursor);
 	post_function();
 }
 
-void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled) {
+void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
+{
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_backspace()
@@ -69,14 +77,15 @@ void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled) {
 	handled = true;
 	if(get_selection_length() != 0) {
 		delete_selection();
-	} else if(get_selection_start()){
+	} else if(get_selection_start()) {
 		delete_char(true);
 	}
 
 	post_function();
 }
 
-void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled) {
+void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled)
+{
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_delete()
@@ -85,20 +94,22 @@ void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled) {
 	handled = true;
 	if(get_selection_length() != 0) {
 		delete_selection();
-	} else if (get_selection_start() < get_text_length(text())) {
+	} else if(get_selection_start() < get_text_length(text())) {
 		delete_char(false);
 	}
 
 	post_function();
 }
 
-void tpassword_box::paste_selection(const bool mouse) {
+void tpassword_box::paste_selection(const bool mouse)
+{
 	pre_function();
 	ttext_box::paste_selection(mouse);
 	post_function();
 }
 
-void tpassword_box::pre_function() {
+void tpassword_box::pre_function()
+{
 	// ttext_box::set_value() will reset the selection,
 	// we therefore have to remember it
 	size_t selection_start = get_selection_start();
@@ -112,7 +123,8 @@ void tpassword_box::pre_function() {
 	set_selection_length(selection_length);
 }
 
-void tpassword_box::post_function() {
+void tpassword_box::post_function()
+{
 	// See above
 	size_t selection_start = get_selection_start();
 	size_t selection_length = get_selection_length();
@@ -128,7 +140,7 @@ void tpassword_box::post_function() {
 	// Why do the selection functions not update
 	// the canvas?
 	update_canvas();
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 const std::string& tpassword_box::get_control_type() const
@@ -137,5 +149,4 @@ const std::string& tpassword_box::get_control_type() const
 	return type;
 }
 
-} //namespace gui2
-
+} // namespace gui2

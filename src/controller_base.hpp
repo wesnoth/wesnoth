@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,46 +13,57 @@
    See the COPYING file for more details.
 */
 
+/**
+ * @file
+ * controller_base framework:
+ * controller_base is roughly analogous to a "dialog" class in a GUI toolkit
+ * which is appropriate for deriving wesnoth game modes, e.g. single player
+ * mode, multiplayer mode, replay mode, editor mode.
+ *
+ * It provides implementation details for:
+ * - play_slice, which is essentially one pass of the "main loop" of
+ *   the application, pumping and dispatching SDL events, raising draw
+ *   events, handling scrolling, sound sources, and some joystick issues
+ *   It also handles displaying menus (Menu, Action).
+ *
+ * - showing context menus (much is delegated to command executor though)
+ *
+ * Other than this it functions as an abstract interface, enforcing that
+ * controllers derive from events::sdl_handler, hotkey_command_executor,
+ * and provide some accessors needed for event handling.
+ */
+
 #ifndef CONTROLLER_BASE_H_INCLUDED
 #define CONTROLLER_BASE_H_INCLUDED
 
 #include "global.hpp"
 
-#include "hotkeys.hpp"
+#include "events.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "joystick.hpp"
 #include "key.hpp"
 
-#include "joystick.hpp"
-
-#include "map.hpp"
-
 class CVideo;
+class display;
+class plugins_context;
 
-namespace events {
-class mouse_handler_base;
-}
+namespace events { class mouse_handler_base; }
 
-class controller_base : public hotkey::command_executor, public events::handler
+namespace hotkey { class command_executor; }
+
+namespace soundsource { class manager; }
+
+class controller_base : public events::sdl_handler
 {
 public:
-	controller_base(const int ticks, const config& game_config, CVideo& video);
+	controller_base(const config& game_config, CVideo& video);
 	virtual ~controller_base();
 
 	void play_slice(bool is_delay_enabled = true);
 
-	int get_ticks();
-
 protected:
-	/**
-	 * Called by play_slice after events:: calls, but before processing scroll
-	 * and other things like menu.
-	 */
-	virtual void slice_before_scroll();
-
-	/**
-	 * Called at the very end of play_slice
-	 */
-	virtual void slice_end();
-
+	virtual bool is_browsing() const
+	{ return false; }
 	/**
 	 * Get a reference to a mouse handler member a derived class uses
 	 */
@@ -62,6 +73,20 @@ protected:
 	 */
 	virtual display& get_display() = 0;
 
+	/**
+	 * Get (optionally) a soundsources manager a derived class uses
+	 */
+	virtual soundsource::manager * get_soundsource_man() { return NULL; }
+
+	/**
+	 * Get (optionally) a plugins context a derived class uses
+	 */
+	virtual plugins_context * get_plugins_context() { return NULL; }
+
+	/**
+	 * Get (optionally) a command executor to handle context menu events
+	 */
+	virtual hotkey::command_executor * get_hotkey_command_executor() { return NULL; }
 
 	/**
 	 * Derived classes should override this to return false when arrow keys
@@ -108,14 +133,11 @@ protected:
 
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
-	const config &get_theme(const config& game_config, std::string theme_name);
+	static const config &get_theme(const config& game_config, std::string theme_name);
 	const config& game_config_;
-	const int ticks_;
 	CKey key_;
-	bool browse_;
 	bool scrolling_;
 	joystick_manager joystick_manager_;
-
 };
 
 

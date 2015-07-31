@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 #include "mouse_handler_base.hpp"
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 	/**
 	 * Base class for all event nodes to be used to fire fake input events
@@ -137,7 +138,9 @@ namespace test_utils {
 		event.key.keysym.sym = key;
 		event.key.keysym.scancode = static_cast<Uint8>(key); //
 		event.key.keysym.mod = mod;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 		event.key.keysym.unicode = static_cast<Uint16>(key); //
+#endif
 		return event;
 	}
 
@@ -223,3 +226,4 @@ namespace test_utils {
 		}
 	}
 }
+#endif

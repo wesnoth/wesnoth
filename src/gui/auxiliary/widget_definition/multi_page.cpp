@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tmulti_page_definition::tmulti_page_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -30,10 +31,6 @@ tmulti_page_definition::tmulti_page_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tmulti_page_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_multi_page
@@ -55,12 +52,13 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg)
  * @end{parent}{name="gui/"}
  * A multipage has no states.
  */
-
-	const config &child = cfg.child("grid");
+tmulti_page_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid(NULL)
+{
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

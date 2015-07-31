@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,10 @@
 #include "widget.hpp"
 
 #include "../exceptions.hpp"
+
+#ifdef SDL_GPU
+#include "sdl/image.hpp"
+#endif
 
 namespace gui {
 
@@ -47,6 +51,7 @@ public:
 	void set_label(const std::string& val);
 	void set_image(const std::string& image_file_base);
 	void set_overlay(const std::string& image_file_base);
+	void set_image_path_suffix(const std::string& suffix) { button_image_path_suffix_ = suffix; load_images(); }
 
 	bool pressed();
 	bool hit(int x, int y) const;
@@ -68,11 +73,20 @@ private:
 
 	void calculate_size();
 
-	std::string label_;
+	std::string label_text_;
+
+#ifdef SDL_GPU
+	sdl::timage label_image_;
+	sdl::timage image_, pressedImage_, activeImage_, pressedActiveImage_,
+		touchedImage_, disabledImage_, pressedDisabledImage_,
+		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
+		overlayActiveImage_;
+#else
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,
 		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
 		overlayActiveImage_;
+#endif
 	SDL_Rect textRect_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE, TOUCHED_NORMAL, TOUCHED_PRESSED };
@@ -86,6 +100,7 @@ private:
 
 	std::string button_image_name_;
 	std::string button_overlay_image_name_;
+	std::string button_image_path_suffix_;
 
 }; //end class button
 

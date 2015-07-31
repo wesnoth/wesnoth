@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -149,14 +150,12 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 }
 
 std::string del_tags(const std::string& text){
-	int ignore_int;
-	SDL_Color ignore_color;
 	std::vector<std::string> lines = utils::split(text, '\n', 0);
 	std::vector<std::string>::iterator line;
 	for(line = lines.begin(); line != lines.end(); ++line) {
 		std::string::const_iterator i1 = line->begin(),
 			i2 = line->end();
-		*line = std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
+		*line = std::string(parse_markup(i1,i2,NULL,NULL,NULL),i2);
 	}
 	return utils::join(lines, "\n");
 }
@@ -263,7 +262,7 @@ bool is_format_char(char c)
 	}
 }
 
-bool is_cjk_char(const wchar_t c)
+bool is_cjk_char(const ucs4::char_t ch)
 {
 	/**
 	 * You can check these range at http://unicode.org/charts/
@@ -272,12 +271,9 @@ bool is_cjk_char(const wchar_t c)
 	 * Below are characters that I guess may be used in wesnoth translations.
 	 */
 
-	// cast to silence a windows warning (uses only 16bit for wchar_t)
-	const unsigned int ch = static_cast<unsigned int>(c);
-
 	//FIXME add range from Japanese-specific and Korean-specific section if you know the characters are used today.
 
-	if (ch < 0x2e80) return false; // shorcut for common non-CJK
+	if (ch < 0x2e80) return false; // shortcut for common non-CJK
 
 	return
 		//Han Ideographs: all except Supplement
@@ -323,10 +319,10 @@ bool is_cjk_char(const wchar_t c)
 static void cut_word(std::string& line, std::string& word, int font_size, int style, int max_width)
 {
 	std::string tmp = line;
-	utils::utf8_iterator tc(word);
+	utf8::iterator tc(word);
 	bool first = true;
 
-	for(;tc != utils::utf8_iterator::end(word); ++tc) {
+	for(;tc != utf8::iterator::end(word); ++tc) {
 		tmp.append(tc.substr().first, tc.substr().second);
 		SDL_Rect tsize = line_size(tmp, font_size, style);
 		if(tsize.w > max_width) {
@@ -361,7 +357,7 @@ namespace {
  *   CJK 标点符号 (CJK punctuations)
  *   http://www.unicode.org/charts/PDF/U3000.pdf
  */
-inline bool no_break_after(const wchar_t ch)
+inline bool no_break_after(const ucs4::char_t ch)
 {
 	return
 		/**
@@ -382,7 +378,7 @@ inline bool no_break_after(const wchar_t ch)
 		ch == 0x3016 || ch == 0x301a || ch == 0x301d;
 }
 
-inline bool no_break_before(const wchar_t ch)
+inline bool no_break_before(const ucs4::char_t ch)
 {
 	return
 		/**
@@ -419,7 +415,7 @@ inline bool no_break_before(const wchar_t ch)
 		ch == 0x301b || ch == 0x301e;
 }
 
-inline bool break_before(const wchar_t ch)
+inline bool break_before(const ucs4::char_t ch)
 {
 	if(no_break_before(ch))
 		return false;
@@ -427,7 +423,7 @@ inline bool break_before(const wchar_t ch)
 	return is_cjk_char(ch);
 }
 
-inline bool break_after(const wchar_t ch)
+inline bool break_after(const ucs4::char_t ch)
 {
 	if(no_break_after(ch))
 		return false;
@@ -442,7 +438,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 {
 	VALIDATE(max_width > 0, _("The maximum text width is less than 1."));
 
-	utils::utf8_iterator ch(unwrapped_text);
+	utf8::iterator ch(unwrapped_text);
 	std::string current_word;
 	std::string current_line;
 	size_t line_width = 0;
@@ -455,13 +451,13 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	SDL_Color color;
 	int font_sz = font_size;
 	int style = TTF_STYLE_NORMAL;
-	utils::utf8_iterator end = utils::utf8_iterator::end(unwrapped_text);
+	utf8::iterator end = utf8::iterator::end(unwrapped_text);
 
 	while(1) {
 		if(start_of_line) {
 			line_width = 0;
 			format_string.clear();
-			while(ch != end && *ch < static_cast<wchar_t>(0x100)
+			while(ch != end && *ch < static_cast<ucs4::char_t>(0x100)
 					&& is_format_char(*ch) && !ch.next_is_end()) {
 
 				format_string.append(ch.substr().first, ch.substr().second);
@@ -484,8 +480,8 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 				current_word = *ch;
 				++ch;
 			} else {
-				wchar_t previous = 0;
-				for(;ch != utils::utf8_iterator::end(unwrapped_text) &&
+				ucs4::char_t previous = 0;
+				for(;ch != utf8::iterator::end(unwrapped_text) &&
 						*ch != ' ' && *ch != '\n'; ++ch) {
 
 					if(!current_word.empty() &&
@@ -561,6 +557,22 @@ SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 	std::string wrapped_text = word_wrap_text(text, font_size, max_width);
 	return font::draw_text(gui, area, font_size, color, wrapped_text, x, y, false);
 }
+
+#ifdef SDL_GPU
+sdl::timage draw_text_to_texture(const SDL_Rect &area, int size, const SDL_Color &color, const std::string &text, bool use_tooltips, int style)
+{
+	SDL_Rect rect = text_area(text, size, style);
+	surface surf = SDL_CreateRGBSurface(SDL_SWSURFACE, rect.w, rect.h, 32,
+										0xff000000,
+										0x00ff0000,
+										0x0000ff00,
+										0x000000ff);
+	SDL_FillRect(surf, NULL, 0x000000ff);
+	draw_text(surf, area, size, color, text, 0, 0, use_tooltips, style);
+
+	return sdl::timage(surf);
+}
+#endif
 
 } // end namespace font
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,7 @@ public:
 	virtual void hide(bool value = true);
 
 protected:
-	virtual handler_vector handler_members();
+	virtual sdl_handler_vector handler_members();
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tlistbox_definition::tlistbox_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -30,10 +31,6 @@ tlistbox_definition::tlistbox_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tlistbox_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_listbox
@@ -48,33 +45,39 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * The resolution for a listbox also contains the following keys:
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
  * @begin{table}{config}
- *     scrollbar & section & &            A grid containing the widgets for the
+ *     scrollbar & section & &         A grid containing the widgets for the
  *                                     scrollbar. The scrollbar has some special
  *                                     widgets so it can make default behavior
  *                                     for certain widgets. $
  * @end{table}
  * @begin{table}{dialog_widgets}
- *     _begin & & clickable & o &           Moves the position to the beginning of
- *                                     the list. $
- *     _line_up & & clickable & o &         Move the position one item up. (NOTE if
- *                                     too many items to move per item it might
- *                                     be more items.) $
- *     _half_page_up & & clickable & o &    Move the position half the number of the
- *                                     visible items up. (See note at _line_up.) $
- *     _page_up & & clickable & o &         Move the position the number of visible
- *                                     items up. (See note at _line_up.) $
+ *     _begin & & clickable & o &      Moves the position to the beginning
+ *                                     of the list. $
+ *     _line_up & & clickable & o &    Move the position one item up. (NOTE
+ *                                     if too many items to move per item it
+ *                                     might be more items.) $
+ *     _half_page_up & & clickable & o &
+ *                                     Move the position half the number of the
+ *                                     visible items up. (See note at
+ *                                     _line_up.) $
+ *     _page_up & & clickable & o &    Move the position the number of
+ *                                     visible items up. (See note at
+ *                                     _line_up.) $
  *
- *     _end & & clickable & o &             Moves the position to the end of the
+ *     _end & & clickable & o &        Moves the position to the end of the
  *                                     list. $
- *     _line_down & & clickable & o &       Move the position one item down.(See note
- *                                     at _line_up.) $
- *     _half_page_down & & clickable & o &  Move the position half the number of the
+ *     _line_down & & clickable & o &  Move the position one item down.(See
+ *                                     note at _line_up.) $
+ *     _half_page_down & & clickable & o &
+ *                                     Move the position half the number of the
  *                                     visible items down. (See note at
  *                                     _line_up.) $
- *     _page_down & & clickable & o &       Move the position the number of visible
- *                                     items down. (See note at _line_up.) $
+ *     _page_down & & clickable & o &  Move the position the number of
+ *                                     visible items down. (See note at
+ *                                     _line_up.) $
  *
- *     _scrollbar & & vertical_scrollbar & m & This is the scrollbar so the user can
+ *     _scrollbar & & vertical_scrollbar & m &
+ *                                     This is the scrollbar so the user can
  *                                     scroll through the list. $
  * @end{table}
  * A clickable is one of:
@@ -107,15 +110,17 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * @macro = horizontal_listbox_description
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
+tlistbox_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid(NULL)
+{
 	// Note the order should be the same as the enum tstate in listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

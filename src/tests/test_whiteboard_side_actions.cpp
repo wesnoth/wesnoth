@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Étienne Simon <etienne.jl.simon@gmail.com>
+   Copyright (C) 2012 - 2015 by Étienne Simon <etienne.jl.simon@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,7 @@ struct dummy_action: action{
 	void remove_temp_modifier(unit_map&){}
 	void draw_hex(const map_location&){}
 	map_location get_numbering_hex() const { return map_location(); }
-	unit* get_unit() const { return 0; }
+	unit_ptr get_unit() const { return unit_ptr(); }
 	fake_unit_ptr get_fake_unit(){ return fake_unit_ptr(); }
 	error check_validity() const { return OK; }
 };

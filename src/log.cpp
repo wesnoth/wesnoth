@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2004 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+                 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,13 +19,15 @@
  * See also the command line switches --logdomains and --log-@<level@>="domain".
  */
 
+#include "game_errors.hpp"
 #include "global.hpp"
 
-#include "SDL.h"
+#include "SDL_timer.h"
 
 #include "log.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/date_time.hpp>
 
 #include <map>
 #include <sstream>
@@ -45,7 +47,9 @@ public:
 static std::ostream null_ostream(new null_streambuf);
 static int indent = 0;
 static bool timestamp = true;
+static bool precise_timestamp = false;
 
+static boost::posix_time::time_facet facet("%Y%m%d %H:%M:%S%F ");
 static std::ostream *output_stream = NULL;
 
 static std::ostream& output()
@@ -71,7 +75,9 @@ tredirect_output_setter::~tredirect_output_setter()
 
 typedef std::map<std::string, int> domain_map;
 static domain_map *domains;
+static int strict_level_ = -1;
 void timestamps(bool t) { timestamp = t; }
+void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
 logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
 log_domain general("general");
@@ -104,6 +110,9 @@ bool set_log_domain_severity(std::string const &name, int severity)
 	}
 	return true;
 }
+bool set_log_domain_severity(std::string const &name, const logger &lg) {
+	return set_log_domain_severity(name, lg.get_severity());
+}
 
 std::string list_logdomains(const std::string& filter)
 {
@@ -113,6 +122,20 @@ std::string list_logdomains(const std::string& filter)
 			res << l.first << "\n";
 	}
 	return res.str();
+}
+
+void set_strict_severity(int severity) {
+	strict_level_ = severity;
+}
+
+void set_strict_severity(const logger &lg) {
+	set_strict_severity(lg.get_severity());
+}
+
+static bool strict_threw_ = false;
+
+bool broke_strict() {
+	return strict_threw_;
 }
 
 std::string get_timestamp(const time_t& t, const std::string& format) {
@@ -140,18 +163,37 @@ std::string get_timespan(const time_t& t) {
 	return buf;
 }
 
+static void print_precise_timestamp(std::ostream & out)
+{
+	facet.put(
+		std::ostreambuf_iterator<char>(out),
+		out,
+		' ',
+		boost::posix_time::microsec_clock::local_time());
+}
+
 std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
 {
-	if (severity_ > domain.domain_->second)
+	if (severity_ > domain.domain_->second) {
 		return null_ostream;
-	else {
+	} else {
+		if (!strict_threw_ && (severity_ <= strict_level_)) {
+			std::stringstream ss;
+			ss << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first;
+			std::cerr << ss.str() << std::endl;
+			strict_threw_ = true;
+		}
 		std::ostream& stream = output();
 		if(do_indent) {
 			for(int i = 0; i != indent; ++i)
 				stream << "  ";
 			}
 		if (timestamp) {
-			stream << get_timestamp(time(NULL));
+			if(precise_timestamp) {
+				print_precise_timestamp(stream);
+			} else {
+				stream << get_timestamp(time(NULL));
+			}
 		}
 		if (show_names) {
 			stream << name_ << ' ' << domain.domain_->first << ": ";

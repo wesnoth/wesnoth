@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,7 @@
 #include <vector>
 #include <deque>
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include "typedefs.hpp"
 
@@ -47,7 +47,7 @@ side_actions_ptr current_side_actions();
  * For a given leader on a keep, find another leader on another keep in the same castle.
  * @retval NULL if no such leader has been found
  */
-unit const* find_backup_leader(unit const& leader);
+unit_const_ptr find_backup_leader(unit const& leader);
 
 /**
  * @return a leader from the specified team who can recruit on the specified hex
