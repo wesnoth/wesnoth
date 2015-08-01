@@ -1032,7 +1032,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if key == "email" and " " in value:
             print errlead + 'space in email name'
     # Check for various things that shouldn't be outside an [ai] tag
-    if not in_definition and not in_call and not "[ai]" in nav.ancestors() and not ignored:
+    if not in_definition and not in_call and "[ai]" not in nav.ancestors() and not ignored:
         if key in ("number_of_possible_recruits_to_force_recruit",
                    "recruitment_ignore_bad_movement",
                    "recruitment_ignore_bad_combat",
@@ -1044,7 +1044,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if parent in ("[allow_recruit]", "[disallow_recruit]") and key == "recruit":
         print errlead + "recruit= should be type="
     # Check [binary_path] and [textdomain] paths
-    if parent == '[textdomain]' and key == 'path' and not '/translations' in value:
+    if parent == '[textdomain]' and key == 'path' and '/translations' not in value:
         print errlead + 'no reference to "/translations" directory in textdomain path'
     if parent == '[binary_path]' and key == 'path':
         if '/external' in value or '/public' in value:
@@ -1117,7 +1117,7 @@ def global_sanity_check(filename, lines):
                 if notecheck and not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
                          % (filename, in_unit_type, unit_id)
-                if not "[theme]" in nav.ancestors() and not "[base_unit]" in nav.ancestors() and not unit_race:
+                if "[theme]" not in nav.ancestors() and "[base_unit]" not in nav.ancestors() and not unit_race:
                     print '"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id)
             in_unit_type = None
@@ -1127,13 +1127,13 @@ def global_sanity_check(filename, lines):
             base_unit = ""
             has_special_notes = False
             unit_race = None
-        if '[unit_type]' in nav.ancestors() and not "[filter_attack]" in nav.ancestors():
+        if '[unit_type]' in nav.ancestors() and "[filter_attack]" not in nav.ancestors():
             try:
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 if key == "id":
                     if value[0] == "_":
                         value = value[1:].strip()
-                    if not unit_id and not "[base_unit]" in nav.ancestors():
+                    if not unit_id and "[base_unit]" not in nav.ancestors():
                         unit_id = value
                         unit_types.append(unit_id)
                     if not base_unit and "[base_unit]" in nav.ancestors():
@@ -1234,8 +1234,7 @@ def global_sanity_check(filename, lines):
     sidecount = 0
     recruitment_pattern = {}
     ifdef_stack = [None]
-    for i in xrange(len(lines)):
-        line = lines[i].strip()
+    for num, line in enumerate((l.strip() for l in lines), start=1):
         if line.startswith("#ifdef") or line.startswith("#ifhave") or line.startswith("#ifver"):
             ifdef_stack.append(line.split()[1])
             continue
@@ -1251,54 +1250,54 @@ def global_sanity_check(filename, lines):
         if line.startswith("#endif"):
             ifdef_stack.pop()
             continue
-        if "[generator]" in lines[i]:
+        if "[generator]" in line:
             in_generator = True
             continue
-        elif "[/generator]" in lines[i]:
+        elif "[/generator]" in line:
             in_generator = False
             continue
-        elif "[side]" in lines[i]:
+        elif "[side]" in line:
             in_side = True
             sidecount += 1
             continue
-        elif "[/side]" in lines[i]:
+        elif "[/side]" in line:
             if recruit or recruitment_pattern:
                 sides.append((filename, recruit, recruitment_pattern))
             in_side = False
             recruit = {}
             recruitment_pattern = {}
             continue
-        elif in_side and "[ai]" in lines[i]:
+        elif in_side and "[ai]" in line:
             in_ai = True
             continue
-        elif in_side and "[unit]" in lines[i]:
+        elif in_side and "[unit]" in line:
             in_subunit = True
             continue
-        elif in_side and "[/ai]" in lines[i]:
+        elif in_side and "[/ai]" in line:
             in_ai = False
             continue
-        elif in_side and "[/unit]" in lines[i]:
+        elif in_side and "[/unit]" in line:
             in_subunit = False
             continue
-        if "wmllint: skip-side" in lines[i]:
+        if "wmllint: skip-side" in line:
             sidecount += 1
-        if not in_side or in_subunit or '=' not in lines[i]:
+        if not in_side or in_subunit or '=' not in line:
             continue
         try:
-            (key, prefix, value, comment) = parse_attribute(lines[i])
+            (key, prefix, value, comment) = parse_attribute(line)
             if key in ("recruit", "extra_recruit") and value:
-                recruit[ifdef_stack[-1]] = (i+1, [x.strip() for x in value.split(",")])
+                recruit[ifdef_stack[-1]] = (num, [x.strip() for x in value.split(",")])
             elif key == "recruitment_pattern" and value:
                 if not in_ai:
                     print '"%s", line %d: recruitment_pattern outside [ai]' \
-                              % (filename, i+1)
+                              % (filename, num)
                 else:
-                    recruitment_pattern[ifdef_stack[-1]] = (i+1, [x.strip() for x in value.split(",")])
+                    recruitment_pattern[ifdef_stack[-1]] = (num, [x.strip() for x in value.split(",")])
             elif key == "side" and not in_ai:
                 try:
                     if not in_generator and sidecount != int(value):
                         print '"%s", line %d: side number %s is out of sequence (%d expected)' \
-                              % (filename, i+1, value, sidecount)
+                              % (filename, num, value, sidecount)
                 except ValueError:
                     pass	# Ignore ill-formed integer literals
         except TypeError:
@@ -1314,64 +1313,64 @@ def global_sanity_check(filename, lines):
     in_unit = False
     in_side = False
     in_unit_type = False
-    for i in xrange(len(lines)):
-        if "[effect]" in lines[i]:
+    for num, line in enumerate(lines, start=1):
+        if "[effect]" in line:
             in_effect = True
-        elif "[/effect]" in lines[i]:
+        elif "[/effect]" in line:
             in_effect = False
-        elif "[unit]" in lines[i]:
+        elif "[unit]" in line:
             in_unit = True
-        elif "[/unit]" in lines[i]:
+        elif "[/unit]" in line:
             in_unit = False
-        elif "[side]" in lines[i]:
+        elif "[side]" in line:
             in_side = True
-        elif "[/side]" in lines[i]:
+        elif "[/side]" in line:
             in_side = False
-        elif "[unit_type]" in lines[i]:
+        elif "[unit_type]" in line:
             in_unit_type = True
-        elif "[/unit_type]" in lines[i]:
+        elif "[/unit_type]" in line:
             in_unit_type = False
         # ellipsecheck magic comment allows to deactivate the ellipse sanity check
-        if "wmllint: no ellipsecheck" not in lines[i]:
+        if "wmllint: no ellipsecheck" not in line:
             if in_effect:
                 try:
-                    (key, prefix, value, comment) = parse_attribute(lines[i])
-                    if key == "ellipse" and value in ("misc/ellipse-nozoc","misc/ellipse-leader"):
-                        print '"%s", line %d: [effect] apply_to=ellipse needs to be removed' % (filename, i+1)
-                    elif key == "ellipse" and value not in ("none","misc/ellipse","misc/ellipse-hero"):
-                        print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, i+1, value)
+                    (key, prefix, value, comment) = parse_attribute(line)
+                    if key == "ellipse" and value in ("misc/ellipse-nozoc", "misc/ellipse-leader"):
+                        print '"%s", line %d: [effect] apply_to=ellipse needs to be removed' % (filename, num)
+                    elif key == "ellipse" and value not in ("none", "misc/ellipse", "misc/ellipse-hero"):
+                        print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, num, value)
                 except TypeError: # this is needed to handle tags, that parse_attribute cannot split
                     pass
             elif in_unit or in_side or in_unit_type:
                 try:
-                    (key, prefix, value, comment) = parse_attribute(lines[i])
+                    (key, prefix, value, comment) = parse_attribute(line)
                     if key == "ellipse" and value in ("misc/ellipse-nozoc","misc/ellipse-leader"):
-                        print '"%s", line %d: %s=%s needs to be removed' % (filename, i+1, key, value)
+                        print '"%s", line %d: %s=%s needs to be removed' % (filename, num, key, value)
                     elif key == "ellipse" and value not in ("none","misc/ellipse","misc/ellipse-hero"):
-                        print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, i+1, value)
+                        print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, num, value)
                 except TypeError: # this is needed to handle tags, that parse_attribute cannot split
                     pass
     # Interpret various magic comments
-    for i in xrange(len(lines)):
+    for line in lines:
         # Interpret magic comments for setting the usage pattern of units.
         # This coped with some wacky UtBS units that were defined with
         # variant-spawning macros.  The prototype comment looks like this:
         #wmllint: usage of "Desert Fighter" is fighter
-        m = re.search('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
+        m = re.search('# *wmllint: usage of "([^"]*)" is +(.*)', line)
         if m:
             usage[m.group(1)] = m.group(2).strip()
             unit_types.append(m.group(1))
         # Magic comment for adding non-standard usage types
-        m = re.search('# *wmllint: usagetypes? +(.*)', lines[i])
+        m = re.search('# *wmllint: usagetypes? +(.*)', line)
         if m:
             for newusage in m.group(1).split(","):
                 usage_types.append(newusage.strip())
         # Accumulate global spelling exceptions
-        words = re.search("wmllint: general spellings? (.*)", lines[i])
+        words = re.search("wmllint: general spellings? (.*)", line)
         if words:
             for word in words.group(1).split():
                 declared_spellings["GLOBAL"].append(word.lower())
-        words = re.search("wmllint: directory spellings? (.*)", lines[i])
+        words = re.search("wmllint: directory spellings? (.*)", line)
         if words:
             fdir = os.path.dirname(filename)
             if fdir not in declared_spellings:
@@ -1683,11 +1682,11 @@ def global_sanity_check(filename, lines):
                     print '"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key)
             elif translatables.search(key):
-                if markcheck and has_tr_mark and lines[i].find("\"\"")>-1:
+                if markcheck and has_tr_mark and '""' in line:
                     print '"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key)
                     lines[i] = lines[i].replace("=_","=")
-                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and lines[i].find("\"\"")==-1 and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and '""' not in line and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
                     lines[i] = lines[i].replace('=', "=_ ")
@@ -1731,9 +1730,9 @@ def global_sanity_check(filename, lines):
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
     no_text = False
-    for i in xrange(len(lines)):
-        if "#textdomain" in lines[i]:
-            textdomains.append(i+1)
+    for num, line in enumerate(lines, start=1):
+        if "#textdomain" in line:
+            textdomains.append(num)
         elif "wmllint: no translatables":
             no_text = True
     if not no_text:
@@ -1771,9 +1770,7 @@ def condition_match(p, q):
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
-    derivedlist = [x[2] for x in derived_units]
-    baselist = [x[3] for x in derived_units]
-    derivations = dict(zip(derivedlist, baselist))
+    derivations = {u[2]: u[3] for u in derived_units}
     for (filename, recruitdict, patterndict) in sides:
         for (rdifficulty, (rl, recruit)) in recruitdict.items():
             utypes = []
@@ -1785,7 +1782,7 @@ def consistency_check():
                         print '"%s", line %d: %s is not a known unit type' % (filename, rl, rtype)
                     continue
                 elif rtype not in usage:
-                    if rtype in derivedlist:
+                    if rtype in derivations.keys():
                         base = derivations[rtype]
                     else:
                         print '"%s", line %d: %s has no usage type' % \
@@ -1845,7 +1842,8 @@ def consistency_check():
     # Check that all advancements are known units
     for (unit_id, filename, lineno, advancements) in advances:
         advancements = map(string.strip, advancements.split(","))
-        bad_advancements = [x for x in advancements if x not in (unit_types+derivedlist)]
+        known_units = unit_types + list(derivations.keys())
+        bad_advancements = [x for x in advancements if x not in known_units]
         if bad_advancements:
             print '"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements)
@@ -1988,7 +1986,7 @@ def hack_syntax(filename, lines):
         elif lines[i].count("'") % 2 == 1:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
-                if  "'" in value and value[0].isalpha() and value[-1].isalpha() and not '"'+value+'"' in lines[i]:
+                if "'" in value and value[0].isalpha() and value[-1].isalpha() and '"'+value+'"' not in lines[i]:
                     newtext = prefix + '"' + value + '"' + comment + "\n"
                     if lines[i] != newtext:
                         lines[i] = newtext
@@ -2106,8 +2104,8 @@ def hack_syntax(filename, lines):
                     outside_of_theme_wml = True
             if outside_of_theme_wml:
                 if not in_side_one_tag:
-                    for j in range(len(side_one_tags_allowing_filter_side)):
-                        if "[" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
+                    for tag in side_one_tags_allowing_filter_side:
+                        if "[" + tag + "]" in precomment:
                             in_side_one_tag = True
                 else:
                     if side_one_tag_needs_side_one:
@@ -2115,11 +2113,11 @@ def hack_syntax(filename, lines):
                             side_one_tag_needs_side_one = False
                         if "[filter_side]" in precomment:
                             side_one_tag_needs_side_one = False
-                    for j in range(len(side_one_tags_allowing_filter_side)):
-                        if "[/" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
+                    for tag in side_one_tags_allowing_filter_side:
+                        if "[/" + tag + "]" in precomment:
                             if side_one_tag_needs_side_one:
                                 if verbose:
-                                    print '"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, side_one_tags_allowing_filter_side[j])
+                                    print '"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, tag)
                                 #lines.insert(i, leader(precomment) + baseindent + "side=1\n")
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
@@ -2208,7 +2206,7 @@ def translator(filename, mapxforms, textxform):
                 sys.stdout.write(line + terminator)
             lineno += 1
         # Check for one certain error condition
-        if line.count("{") and line.count("}"):
+        if "{" in line and "}" in line:
             refname = line[line.find("{"):line.rfind("}")]
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
@@ -2224,9 +2222,9 @@ def translator(filename, mapxforms, textxform):
         # refer to map files which will be checked separately.
         if map_only or (("map_data=" in line or "mask=" in line)
                         and line.count('"') in (1, 2)
-                        and line.count('""') == 0
-                        and line.count("{") == 0
-                        and line.count("}") == 0
+                        and '""' not in line
+                        and "{" not in line
+                        and "}" not in line
                         and not within('time')):
             outmap = []
             have_header = have_delimiter = False
@@ -2303,7 +2301,7 @@ def translator(filename, mapxforms, textxform):
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
                 newdata.append("\"" + terminator)
-        elif "map_data=" in line and (line.count("{") or line.count("}")):
+        elif "map_data=" in line and ("{" in line or "}" in line):
             newline = line
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
@@ -2331,7 +2329,6 @@ def translator(filename, mapxforms, textxform):
             if not unbalanced:
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
-                    attributes = []
                     closer = instance.group(0)[1] == '/'
                     if not closer:
                         tagstack.append((tag, {}))
@@ -2346,8 +2343,7 @@ def translator(filename, mapxforms, textxform):
                             tagstack.pop()
                 if tagstack:
                     for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(.*)', trimmed):
-                        attribute = instance.group(1)
-                        value = instance.group(2)
+                        attribute, value = instance.groups()
                         if '#' in value:
                             value = value.split("#")[0]
                         tagstack[-1][1][attribute] = value.strip()
@@ -2392,9 +2388,7 @@ def translator(filename, mapxforms, textxform):
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
     # Simple check for unbalanced macro calls
-    unclosed = None
     linecount = 1
-    startline = None
     quotecount = 0
     display_state = False
     singleline = False
@@ -2433,31 +2427,37 @@ def inner_spellcheck(nav, value, spelldict):
     # Strip off string quotes
     value = string_strip(value)
     # Discard extraneous stuff
-    value = value.replace("...", " ")
-    value = value.replace("\"", " ")
-    value = value.replace("\\n", " ")
-    value = value.replace("/", " ")
-    value = value.replace("@", " ")
-    value = value.replace(")", " ")
-    value = value.replace("(", " ")
-    value = value.replace("\xe2\x80\xa6", " ")	# UTF-8 ellipsis
-    value = value.replace("\xe2\x80\x94", " ")	# UTF-8 em dash
-    value = value.replace("\xe2\x80\x93", " ")	# UTF-8 en dash
-    value = value.replace("\xe2\x80\x95", " ")	# UTF-8 horizontal dash
-    value = value.replace("\xe2\x88\x92", " ")  # UTF-8 minus sign
-    value = value.replace("\xe2\x80\x99", "'")	# UTF-8 right single quote
-    value = value.replace("\xe2\x80\x98", "'")	# UTF-8 left single quote
-    value = value.replace("\xe2\x80\x9d", " ")	# UTF-8 right double quote
-    value = value.replace("\xe2\x80\x9c", " ")	# UTF-8 left double quote
-    value = value.replace("\xe2\x80\xa2", " ")	# UTF-8 bullet
-    value = value.replace("◦", "")              # Why is this necessary?
-    value = value.replace("''", "")
-    value = value.replace("female^", " ")
-    value = value.replace("male^", " ")
-    value = value.replace("teamname^", " ")
-    value = value.replace("team_name^", " ")
-    value = value.replace("UI^", " ")
-    value = value.replace("^", " ")
+    replacements = (
+        ("...", " "),
+        ("\"", " "),
+        ("\\n", " "),
+        ("/", " "),
+        ("@", " "),
+        (")", " "),
+        ("(", " "),
+        ("\xe2\x80\xa6", " "),  # UTF-8 ellipsis
+        ("\xe2\x80\x94", " "),  # UTF-8 em dash
+        ("\xe2\x80\x93", " "),  # UTF-8 en dash
+        ("\xe2\x80\x95", " "),  # UTF-8 horizontal dash
+        ("\xe2\x88\x92", " "),  # UTF-8 minus sign
+        ("\xe2\x80\x99", "'"),  # UTF-8 right single quote
+        ("\xe2\x80\x98", "'"),  # UTF-8 left single quote
+        ("\xe2\x80\x9d", " "),  # UTF-8 right double quote
+        ("\xe2\x80\x9c", " "),  # UTF-8 left double quote
+        ("\xe2\x80\xa2", " "),  # UTF-8 bullet
+        ("◦", ""),              # Why is this necessary?
+        ("''", ""),
+        ("female^", " "),
+        ("male^", " "),
+        ("teamname^", " "),
+        ("team_name^", " "),
+        ("UI^", " "),
+        ("^", " "),
+    )
+
+    for old, new in replacements:
+        value = value.replace(old, new)
+
     if '<' in value:
         value = re.sub("<ref>.*< ref>", "", value)
         value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
@@ -2513,8 +2513,6 @@ def inner_spellcheck(nav, value, spelldict):
         if re.match("(mu)?ha(ha)*", lowered):
             continue
         if re.match("ah+", lowered):
-            continue
-        if re.match("no+", lowered):
             continue
         if re.match("no+", lowered):
             continue
@@ -2760,7 +2758,7 @@ if __name__ == '__main__':
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.
-        if tagstack and ((under("unit") and not "units" in filename) or \
+        if tagstack and ((under("unit") and "units" not in filename) or \
                standard_unit_filter() or \
                under("side") or \
                re.search("{[A-Z]+.*description=.*}", line)):
@@ -2806,12 +2804,12 @@ if __name__ == '__main__':
             wildcard = False
             ugly = False
             newargs = []
-            for i,arg in enumerate(arguments):
+            for i, arg in enumerate(arguments):
                 if not wildcard and '*' in arg:
                     wildcard = True
                     from glob import glob
                 if '"' in arg:
-                    if len(arguments)-i > 1:
+                    if len(arguments) - i > 1:
                         ugly = True
                         break
                     test = arg.split('"', 1)
@@ -2835,7 +2833,7 @@ if __name__ == '__main__':
 """ % re.sub(r'"', '-->>"<<--', arg)
 
                 moreugly = raw_input('Press "H" if you need more help, or Enter to exit: ')
-                if moreugly.startswith(('h', 'H')):
+                if moreugly.lower().startswith('h'):
                     print >>sys.stderr, """
         Explanation:
 
