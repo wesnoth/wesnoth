@@ -942,12 +942,9 @@ def pangoize(message, filename, line):
             message = message[:amper] + "&amp;" + message[amper+1:]
     rgb = re.search("(?:<|&lt;)([0-9]+),([0-9]+),([0-9]+)(?:>|&gt;)", message)
     if rgb:
-        r, g, b = (int(c) for c in rgb.groups())
-        if max(r, g, b) > 255:
-            print '"%s", line %d: RGB color value over 255 requires manual fix (%s).' % (filename, line, rgb.group())
-        else:
-            hexed = '%02x%02x%02x' % (r, g, b)
-            print '"%s", line %d: color spec (%s) requires manual fix (<span color=\'#%s\'>, </span>).' % (filename, line, rgb.group(), hexed)
+        r, g, b = (min(255, int(c)) for c in rgb.groups())
+        hexed = '%02x%02x%02x' % (r, g, b)
+        print '"%s", line %d: color spec (%s) requires manual fix (<span color=\'#%s\'>, </span>).' % (filename, line, rgb.group(), hexed)
     # Hack old-style Wesnoth markup
     for (oldstyle, newstart, newend) in pango_conversions:
         if oldstyle not in message:
