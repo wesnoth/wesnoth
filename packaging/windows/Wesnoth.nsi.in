@@ -276,6 +276,7 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\$StartMenuFolder\Manual.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk"
+  Delete "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth (with console).lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk"
   RMDir "$SMPROGRAMS\$StartMenuFolder"
 

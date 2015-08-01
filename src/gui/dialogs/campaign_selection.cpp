@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "game_preferences.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
@@ -189,7 +190,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 				VALIDATE(checkbox, missing_widget("checkb"));
 				checkbox->set_value(active);
 				checkbox->set_label(mod->name);
-				checkbox->set_callback_state_change(boost::bind(&tcampaign_selection::mod_toggeled, this, id, _1));
+				checkbox->set_callback_state_change(boost::bind(&tcampaign_selection::mod_toggled, this, id, _1));
 				++id;
 			}
 		}
@@ -284,6 +285,8 @@ void tcampaign_selection::post_show(twindow& window)
 		deterministic_ = find_widget<ttoggle_button>(&window,
 													 "checkbox_deterministic",
 													 false).get_value();
+
+		preferences::set_modifications(engine_.active_mods(), false);
 	} else {
 		choice_ = find_widget<tlistbox>(&window, "campaign_list", false)
 						  .get_selected_row();
@@ -293,7 +296,7 @@ void tcampaign_selection::post_show(twindow& window)
 	}
 }
 
-void tcampaign_selection::mod_toggeled(int id, twidget&)
+void tcampaign_selection::mod_toggled(int id, twidget &)
 {
 	engine_.set_current_mod_index(id);
 	engine_.toggle_current_mod();

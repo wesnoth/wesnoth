@@ -383,12 +383,17 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 {
 	std::string server_msg;
 
-	if(!client.request_distribution_terms(server_msg)) {
+	config cfg;
+	get_addon_pbl_info(addon_id, cfg);
+
+	if(!image::exists(cfg["icon"].str())) {
+		gui2::show_error_message(video, _("Invalid icon path. Please make sure the path points to a valid image."));
+	} else if(!client.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(video,
 			std::string(_("The server responded with an error:")) + "\n" +
 			client.get_last_server_error());
 	} else if(gui2::show_message(video, _("Terms"), server_msg, gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK) {
-		if(!client.upload_addon(addon_id, server_msg)) {
+		if(!client.upload_addon(addon_id, server_msg, cfg)) {
 			gui2::show_error_message(video,
 				std::string(_("The server responded with an error:")) + "\n" +
 				client.get_last_server_error());
@@ -767,7 +772,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		BOOST_FOREACH(const std::string& pub_id, can_publish_ids) {
 			i18n_syms["addon_title"] = make_addon_title(pub_id);
 
-			static const std::string publish_icon = "icons/icon-addon-publish.png";
+			static const std::string publish_icon = "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)";
 			const std::string& text = vgettext("Publish: $addon_title", i18n_syms);
 
 			options.push_back(IMAGE_PREFIX + publish_icon + COLUMN_SEPARATOR + font::GOOD_TEXT + text);
@@ -776,7 +781,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		BOOST_FOREACH(const std::string& del_id, can_delete_ids) {
 			i18n_syms["addon_title"] = make_addon_title(del_id);
 
-			static const std::string delete_icon = "icons/icon-addon-delete.png";
+			static const std::string delete_icon = "icons/icon-game.png~BLIT(icons/icon-addon-delete.png)";
 			const std::string& text = vgettext("Delete: $addon_title", i18n_syms);
 
 			options.push_back(IMAGE_PREFIX + delete_icon + COLUMN_SEPARATOR + font::BAD_TEXT + text);

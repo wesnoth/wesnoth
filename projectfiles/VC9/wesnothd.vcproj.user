@@ -9,14 +9,28 @@
 			Name="Debug|Win32"
 			>
 			<DebugSettings
-				WorkingDirectory="..\.."
+				WorkingDirectory="$(SolutionDir)..\..\"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			>
 			<DebugSettings
-				WorkingDirectory="..\.."
+				WorkingDirectory="$(SolutionDir)..\..\"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug_with_VLD|Win32"
+			>
+			<DebugSettings
+				WorkingDirectory="$(SolutionDir)..\..\"
+			/>
+		</Configuration>
+		<Configuration
+			Name="ReleaseDEBUG|Win32"
+			>
+			<DebugSettings
+				WorkingDirectory="$(SolutionDir)..\..\"
 			/>
 		</Configuration>
 	</Configurations>

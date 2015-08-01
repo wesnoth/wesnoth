@@ -11,7 +11,7 @@ set OMP_WAIT_POLICY=PASSIVE
 cd ..\..\
 set LoadFile=wml_test_schedule
 set binary=%~f1%wesnoth.exe
-set opt=--log-strict=warning
+set opt=--log-strict=warning --noaddons
 
 echo running WML tests:
 set tSTART=%time%

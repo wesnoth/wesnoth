@@ -46,13 +46,13 @@
 			<Add library="SDL" />
 			<Add library="SDL_net" />
 			<Add library="ws2_32" />
-			<Add library="libboost_iostreams-mgw45-mt-1_57.a" />
-			<Add library="libboost_zlib-mgw45-mt-1_57.a" />
-			<Add library="libboost_bzip2-mgw45-mt-1_57.a" />
-			<Add library="libboost_random-mgw45-mt-1_57.a" />
-			<Add library="libboost_system-mgw45-mt-1_57.a" />
-			<Add library="libboost_filesystem-mgw45-mt-1_57.a" />
-			<Add library="libboost_locale-mgw45-mt-1_57.a" />
+			<Add library="libboost_iostreams-mgw51-mt-1_58.a" />
+			<Add library="libboost_bzip2-mgw51-mt-1_58.a" />
+			<Add library="libboost_filesystem-mgw51-mt-1_58.a" />
+			<Add library="libboost_locale-mgw51-mt-1_58.a" />
+			<Add library="libboost_random-mgw51-mt-1_58.a" />
+			<Add library="libboost_system-mgw51-mt-1_58.a" />
+			<Add library="libboost_zlib-mgw51-mt-1_58.a" />
 		</Linker>
 		<Unit filename="../../packaging/windows/wesnothd.rc">
 			<Option compilerVar="WINDRES" />
