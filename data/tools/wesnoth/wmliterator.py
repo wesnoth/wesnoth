@@ -20,7 +20,7 @@ Limitations:
  enough for now.
 """
 
-from __future__ import unicode_literals
+from __future__ import print_function, unicode_literals
 
 import sys, re, copy, codecs
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
@@ -452,15 +452,15 @@ Important Attributes:
         if nav.fname:
             silenceValue = ' '.join(map(str, misc))
             if nav.fname not in silenceErrors:
-                print >>sys.stderr, nav.fname
+                print(nav.fname, file=sys.stderr)
                 silenceErrors[nav.fname] = set()
             elif silenceValue in silenceErrors[nav.fname]:
                 return # do not print a duplicate error for this file
             silenceErrors[nav.fname].add(silenceValue)
-        print >>sys.stderr, 'wmliterator:',
+        print('wmliterator:', end=" ", file=sys.stderr)
         for item in misc:
-            print >>sys.stderr, item,
-        print >>sys.stderr #terminate line
+            print(item, end=" ", file=sys.stderr)
+        print("", file=sys.stderr) #terminate line
 
 if __name__ == '__main__':
     """Perform a test run on a file or directory"""
@@ -468,7 +468,7 @@ if __name__ == '__main__':
     didSomething = False
     flist = sys.argv[1:]
     if not flist:
-        print 'Current directory is', os.getcwd()
+        print('Current directory is', os.getcwd())
         flist = glob.glob(os.path.join(os.getcwd(), raw_input('Which file(s) would you like to test?\n')))
     while flist:
         fname = flist.pop()
@@ -477,15 +477,15 @@ if __name__ == '__main__':
             continue
         if not os.path.isfile(fname) or os.path.splitext(fname)[1] != '.cfg':
             continue
-        print 'Reading', fname+'...'
+        print('Reading', fname+'...')
         didSomething = True
         with codecs.open(fname, "r", "utf8") as f:
             itor = WmlIterator(f.readlines())
             for i in itor:
                 pass
-        print itor.lineno + itor.span, 'lines read.'
+        print(itor.lineno + itor.span, 'lines read.')
     if not didSomething:
-        print 'That is not a valid .cfg file'
+        print('That is not a valid .cfg file')
     if os.name == 'nt' and os.path.splitext(__file__)[0].endswith('wmliterator') and not sys.argv[1:]:
         os.system('pause')
 
