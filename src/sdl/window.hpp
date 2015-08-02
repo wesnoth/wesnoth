@@ -38,7 +38,9 @@ struct SDL_Renderer;
 namespace sdl
 {
 
+#if TTEXTURE
 class ttexture;
+#endif
 
 /**
  * The wrapper class for the @ref SDL_Window class.
@@ -131,6 +133,7 @@ public:
 	 */
 	void set_icon(const surface& icon);
 
+#if TTEXTURE
 	/**
 	 * Creates a texture for the renderer of this object.
 	 *
@@ -179,7 +182,7 @@ public:
 	 * @param y                   Forwarded to @ref ttexture::draw.
 	 */
 	void draw(ttexture& texture, const int x, const int y);
-
+#endif
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 

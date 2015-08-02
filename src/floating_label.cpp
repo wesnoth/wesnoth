@@ -23,6 +23,10 @@
 #include <set>
 #include <stack>
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/alpha.hpp"
+#endif
+
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
 #define LOG_FT LOG_STREAM(info, log_font)

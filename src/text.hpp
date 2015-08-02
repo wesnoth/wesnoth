@@ -258,13 +258,8 @@ private:
 	/** The surface to render upon used as a cache. */
 	mutable surface surface_;
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-	/** The texture to render upon used as a cache. */
-	mutable sdl::ttexture texture_;
-#else
 #ifdef SDL_GPU
 	mutable sdl::timage texture_;
-#endif
 #endif
 
 	/** The text to draw (stored as UTF-8). */

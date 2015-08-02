@@ -315,6 +315,12 @@ void part_ui::prepare_floating_images()
 void part_ui::render_background()
 {
 #if SDL_VERSION_ATLEAST(2,0,0)
+	sdl::draw_solid_tinted_rectangle(
+			0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
+			video_.getSurface()
+	);
+	sdl_blit(background_, NULL, video_.getSurface(), NULL);
+#if 0
 	sdl::twindow *wnd = CVideo::get_window();
 	wnd->fill(0, 0, 0);
 	for (size_t i = 0; i<background_images_.size(); i++) {
@@ -323,6 +329,7 @@ void part_ui::render_background()
 
 		wnd->draw(background_images_[i], x, y);
 	}
+#endif
 #else
 #ifdef SDL_GPU
 	GPU_Target *target = get_render_target();

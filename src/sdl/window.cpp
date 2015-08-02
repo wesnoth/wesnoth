@@ -99,6 +99,7 @@ void twindow::set_icon(const surface& icon)
 	SDL_SetWindowIcon(window_, icon);
 }
 
+#if TTEXTURE
 ttexture twindow::create_texture(const int access, const int w, const int h)
 {
 	return ttexture(*SDL_GetRenderer(window_), pixel_format_, access, w, h);
@@ -119,6 +120,7 @@ void twindow::draw(ttexture& texture, const int x, const int y)
 {
 	texture.draw(*SDL_GetRenderer(window_), x, y);
 }
+#endif
 
 twindow::operator SDL_Window*()
 {
