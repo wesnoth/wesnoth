@@ -3,7 +3,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
-from __future__ import unicode_literals
+from __future__ import print_function, unicode_literals
 
 import collections, codecs
 import sys, os, re, sre_constants, hashlib, glob, gzip
@@ -32,8 +32,8 @@ def pop_to_top(whoami):
         else:
             os.chdir("..")
     else:
-        sys.stderr.write(whoami + ": must be run from within a Battle "
-                         "for Wesnoth source tree.\n")
+        print(whoami + ": must be run from within a Battle "
+                         "for Wesnoth source tree.", file=sys.stderr)
         sys.exit(1)
 
 def string_strip(value):
@@ -66,7 +66,7 @@ def comma_split(csstring, list=None, strip="r"):
     if 'w' in strip:
         for item in vallist:
             if re.search('\s$', item):
-                print 'Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring)
+                print('Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring))
     if 'l' not in strip:
         vallist = [x.rstrip() for x in vallist]
     if list is not None:
@@ -392,7 +392,7 @@ class Reference:
     def dump_references(self):
         "Dump all known references to this definition."
         for (file, refs) in self.references.items():
-            print "    %s: %s" % (file, repr([x[0] for x in refs])[1:-1])
+            print("    %s: %s" % (file, repr([x[0] for x in refs])[1:-1]))
 
     def __cmp__(self, other):
         "Compare two documentation objects for place in the sort order."
@@ -432,7 +432,7 @@ class CrossRef:
         try:
             pattern = re.compile(pattern)
         except sre_constants.error:
-            print >>sys.stderr, "wmlscope: confused by %s" % pattern
+            print("wmlscope: confused by %s" % pattern, file=sys.stderr)
             return None
         key = None
         for trial in self.fileref:
@@ -471,14 +471,14 @@ class CrossRef:
             latch_unit = in_base_unit = in_theme = False
             for (n, line) in enumerate(dfp):
                 if self.warnlevel > 1:
-                    print repr(line)[1:-1]
+                    print(repr(line)[1:-1])
                 if line.strip().startswith("#textdomain"):
                     continue
                 m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)
                 if m:
                     self.warnlevel = int(m.group(1))
-                    print '"%s", line %d: warnlevel set to %d (definition-gathering pass)' \
-                         % (filename, n+1, self.warnlevel)
+                    print('"%s", line %d: warnlevel set to %d (definition-gathering pass)' \
+                         % (filename, n+1, self.warnlevel))
                     continue
                 m = re.search("# *wmlscope: set *([^=]*)=(.*)", line)
                 if m:
@@ -491,41 +491,40 @@ class CrossRef:
                 if m:
                     name = m.group(1)
                     if self.warnlevel >= 2:
-                        print '"%s", line %d: pruning definitions of %s' \
-                              % (filename, n+1, name )
+                        print('"%s", line %d: pruning definitions of %s' \
+                              % (filename, n+1, name ))
                     if name not in self.xref:
-                        print >>sys.stderr, "wmlscope: can't prune undefined macro %s" % name
+                        print("wmlscope: can't prune undefined macro %s" % name, file=sys.stderr)
                     else:
                         self.xref[name] = self.xref[name][:1]
                     continue
                 if "# wmlscope: start conditionals" in line:
                     if self.warnlevel > 1:
-                        print '"%s", line %d: starting conditionals' \
-                              % (filename, n+1)
+                        print('"%s", line %d: starting conditionals' \
+                              % (filename, n+1))
                     conditionalsflag = True
                 elif "# wmlscope: stop conditionals" in line:
                     if self.warnlevel > 1:
-                        print '"%s", line %d: stopping conditionals' \
-                              % (filename, n+1)
+                        print('"%s", line %d: stopping conditionals' \
+                              % (filename, n+1))
                     conditionalsflag = False
                 if "# wmlscope: start ignoring" in line:
                     if self.warnlevel > 1:
-                        print '"%s", line %d: starting ignoring (definition pass)' \
-                              % (filename, n+1)
+                        print('"%s", line %d: starting ignoring (definition pass)' \
+                              % (filename, n+1))
                     ignoreflag = True
                 elif "# wmlscope: stop ignoring" in line:
                     if self.warnlevel > 1:
-                        print '"%s", line %d: stopping ignoring (definition pass)' \
-                              % (filename, n+1)
+                        print('"%s", line %d: stopping ignoring (definition pass)' \
+                              % (filename, n+1))
                     ignoreflag = False
                 elif ignoreflag:
                     continue
                 if line.strip().startswith("#define"):
                     tokens = line.split()
                     if len(tokens) < 2:
-                        print >>sys.stderr, \
-                              '"%s", line %d: malformed #define' \
-                              % (filename, n+1)
+                        print('"%s", line %d: malformed #define' \
+                              % (filename, n+1), file=sys.stderr)
                     else:
                         name = tokens[1]
                         here = Reference(namespace, filename, n+1, line, args=tokens[2:])
@@ -543,13 +542,11 @@ class CrossRef:
                             elif conditionalsflag:
                                 continue
                             elif defn.hash != here.hash:
-                                print >>sys.stderr, \
-                                        "%s: overrides different %s definition at %s" \
-                                        % (here, name, defn)
+                                print("%s: overrides different %s definition at %s" \
+                                        % (here, name, defn), file=sys.stderr)
                             elif self.warnlevel > 0:
-                                print >>sys.stderr, \
-                                        "%s: duplicates %s definition at %s" \
-                                        % (here, name, defn)
+                                print("%s: duplicates %s definition at %s" \
+                                        % (here, name, defn), file=sys.stderr)
                     if name not in self.xref:
                         self.xref[name] = []
                     self.xref[name].append(here)
@@ -568,8 +565,8 @@ class CrossRef:
                     if name in self.xref and self.xref[name]:
                         self.xref[name][-1].undef = n+1
                     else:
-                        print "%s: unbalanced #undef on %s" \
-                              % (Reference(namespace, filename, n+1), name)
+                        print("%s: unbalanced #undef on %s" \
+                              % (Reference(namespace, filename, n+1), name))
                 if state == 'outside':
                     if '[unit_type]' in line:
                         latch_unit = True
@@ -603,13 +600,13 @@ class CrossRef:
         self.unit_ids = {}
         all_in = []
         if self.warnlevel >=2 or progress:
-            print "*** Beginning definition-gathering pass..."
+            print("*** Beginning definition-gathering pass...")
         for (namespace, filename) in self.filelist.generator():
             all_in.append((namespace, filename))
             if self.warnlevel > 1:
-                print filename + ":"
+                print(filename + ":")
             if progress:
-                print filename
+                print(filename)
             if isresource(filename):
                 self.fileref[filename] = Reference(namespace, filename)
             elif iswml(filename):
@@ -627,10 +624,10 @@ class CrossRef:
         formals = []
         state = "outside"
         if self.warnlevel >=2 or progress:
-            print "*** Beginning reference-gathering pass..."
+            print("*** Beginning reference-gathering pass...")
         for (ns, fn) in all_in:
             if progress:
-                print filename
+                print(filename)
             if iswml(fn):
                 with codecs.open(fn, "r", "utf8") as rfp:
                     attack_name = None
@@ -645,19 +642,19 @@ class CrossRef:
                         if '#' in line:
                             if "# wmlscope: start ignoring" in line:
                                 if self.warnlevel > 1:
-                                    print '"%s", line %d: starting ignoring (reference pass)' \
-                                          % (fn, n+1)
+                                    print('"%s", line %d: starting ignoring (reference pass)' \
+                                          % (fn, n+1))
                                 ignoreflag = True
                             elif "# wmlscope: stop ignoring" in line:
                                 if self.warnlevel > 1:
-                                    print '"%s", line %d: stopping ignoring (reference pass)' \
-                                          % (fn, n+1)
+                                    print('"%s", line %d: stopping ignoring (reference pass)' \
+                                          % (fn, n+1))
                                 ignoreflag = False
                             m = re.search("# *wmlscope: self.warnlevel ([0-9]*)", line)
                             if m:
                                 self.warnlevel = int(m.group(1))
-                                print '"%s", line %d: self.warnlevel set to %d (reference-gathering pass)' \
-                                     % (fn, n+1, self.warnlevel)
+                                print('"%s", line %d: self.warnlevel set to %d (reference-gathering pass)' \
+                                     % (fn, n+1, self.warnlevel))
                                 continue
                             fields = line.split('#')
                             line = fields[0]
@@ -670,8 +667,8 @@ class CrossRef:
                             name = match.group(1)
                             candidates = []
                             if self.warnlevel >=2:
-                                print '"%s", line %d: seeking definition of %s' \
-                                      % (fn, n+1, name)
+                                print('"%s", line %d: seeking definition of %s' \
+                                      % (fn, n+1, name))
                             if name in formals:
                                 continue
                             elif name in self.xref:
@@ -684,15 +681,15 @@ class CrossRef:
                                 else:
                                     args.pop(0)
                                 #if args:
-                                #    print '"%s", line %d: args of %s is %s' \
-                                #          % (fn, n+1, name, args)
+                                #    print('"%s", line %d: args of %s is %s' \
+                                #          % (fn, n+1, name, args))
                                 # Figure out which macros might resolve this
                                 for defn in self.xref[name]:
                                     if self.visible_from(defn, fn, n+1):
                                         defn.append(fn, n+1, args)
                                         candidates.append(str(defn))
                                 if len(candidates) > 1:
-                                    print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates))
+                                    print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates)))
                             if len(candidates) == 0:
                                 self.unresolved.append((name,Reference(ns,fn,n+1)))
                         # Don't be fooled by HTML image references in help strings.
@@ -727,7 +724,7 @@ class CrossRef:
                                         self.fileref[trial].append(fn, n+1)
                                         candidates.append(trial)
                                 if len(candidates) > 1:
-                                    print "%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
+                                    print("%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
                             if not key:
                                 self.missing.append((name, Reference(ns,fn,n+1)))
                         # Notice implicit references through attacks
@@ -751,7 +748,7 @@ class CrossRef:
                                             self.fileref[trial].append(fn, n+1)
                                             candidates.append(trial)
                                     if len(candidates) > 1:
-                                        print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
+                                        print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
                                 if not key:
                                     self.missing.append((default_icon, Reference(ns,fn,n+1)))
                             elif line.strip().startswith("[/"):
@@ -761,7 +758,7 @@ class CrossRef:
         # Check whether each namespace has a defined export property
         for namespace in self.dirpath:
             if namespace not in self.properties or "export" not in self.properties[namespace]:
-                print "warning: %s has no export property" % namespace
+                print("warning: %s has no export property" % namespace)
     def exports(self, namespace):
         return namespace in self.properties and self.properties[namespace].get("export") == "yes"
     def subtract(self, filelist):
@@ -863,7 +860,7 @@ class Translations:
             try:
                 self.translations[t] = Translation(textdomain, isocode, self.topdir)
             except TranslationError as e:
-                sys.stderr.write(str(e))
+                print(str(e), file=sys.stderr)
                 self.translations[t] = Translation(textdomain, "C", self.topdir)
         result = self.translations[t].get(key, default)
         return result
