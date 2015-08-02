@@ -181,9 +181,9 @@
 # code.
 #
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
-import sys, os, re, getopt, string, copy, difflib, time, gzip
+import sys, os, re, getopt, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
 
@@ -2175,9 +2175,11 @@ def translator(filename, mapxforms, textxform):
     global tagstack
     gzipped = filename.endswith(".gz")
     if gzipped:
-        unmodified = gzip.open(filename).readlines()
+        with gzip.open(filename) as content:
+            unmodified = content.readlines()
     else:
-        unmodified = file(filename).readlines()
+        with codecs.open(filename, "r", "utf8") as content:
+            unmodified = content.readlines()
     # Pull file into an array of lines, CR-stripping as needed
     mfile = []
     map_only = filename.endswith(".map")
@@ -2433,16 +2435,16 @@ def inner_spellcheck(nav, value, spelldict):
         ("@", " "),
         (")", " "),
         ("(", " "),
-        ("\xe2\x80\xa6", " "),  # UTF-8 ellipsis
-        ("\xe2\x80\x94", " "),  # UTF-8 em dash
-        ("\xe2\x80\x93", " "),  # UTF-8 en dash
-        ("\xe2\x80\x95", " "),  # UTF-8 horizontal dash
-        ("\xe2\x88\x92", " "),  # UTF-8 minus sign
-        ("\xe2\x80\x99", "'"),  # UTF-8 right single quote
-        ("\xe2\x80\x98", "'"),  # UTF-8 left single quote
-        ("\xe2\x80\x9d", " "),  # UTF-8 right double quote
-        ("\xe2\x80\x9c", " "),  # UTF-8 left double quote
-        ("\xe2\x80\xa2", " "),  # UTF-8 bullet
+        ("…", " "),  # UTF-8 ellipsis
+        ("—", " "),  # UTF-8 em dash
+        ("–", " "),  # UTF-8 en dash
+        ("―", " "),  # UTF-8 horizontal dash
+        ("−", " "),  # UTF-8 minus sign
+        ("’", "'"),  # UTF-8 right single quote
+        ("‘", "'"),  # UTF-8 left single quote
+        ("”", " "),  # UTF-8 right double quote
+        ("“", " "),  # UTF-8 left double quote
+        ("•", " "),  # UTF-8 bullet
         ("◦", ""),              # Why is this necessary?
         ("''", ""),
         ("female^", " "),
@@ -2913,10 +2915,11 @@ In your case, your system interprets your arguments as:
                     if os.path.exists(backup):
                         fromdate = time.ctime(os.stat(backup).st_mtime)
                         todate = time.ctime(os.stat(fn).st_mtime)
-                        fromlines = open(backup, 'U').readlines()
-                        tolines = open(fn, 'U').readlines()
-                        diff = difflib.unified_diff(fromlines, tolines,
-                                             backup, fn, fromdate, todate, n=3)
+                        with codecs.open(backup, "r", "utf8") as fromlines, \
+                             codecs.open(fn, "r", "utf8") as tolines:
+                            diff = difflib.unified_diff(fromlines.readlines(),
+                                                        tolines.readlines(),
+                                                        backup, fn, fromdate, todate, n=3)
                         sys.stdout.writelines(diff)
                 else:
                     if "~" in fn:
@@ -2935,7 +2938,7 @@ In your case, your system interprets your arguments as:
                                     with gzip.open(fn, "w") as ofp:
                                         ofp.write(changed)
                                 else:
-                                    with open(fn, "w") as ofp:
+                                    with codecs.open(fn, "w", "utf8") as ofp:
                                         ofp.write(changed)
                     #except maptransform_error, e:
                     #    print("wmllint: " + `e`, file=sys.stderr)

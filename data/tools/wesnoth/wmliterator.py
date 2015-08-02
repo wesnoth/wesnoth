@@ -20,7 +20,9 @@ Limitations:
  enough for now.
 """
 
-import sys, re, copy
+from __future__ import unicode_literals
+
+import sys, re, copy, codecs
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(^|(?<![\w|}]))(\[/?\+?[a-z _]+\])')
@@ -125,9 +127,8 @@ Important Attributes:
             lines = []
             if filename:
                 try:
-                    ifp = open(self.fname)
-                    lines = ifp.readlines()
-                    ifp.close()
+                    with codecs.open(self.fname, "r", "utf8") as ifp:
+                        lines = ifp.readlines()
                 except Exception:
                     self.printError('error opening file')
         self.lines = lines
@@ -478,11 +479,10 @@ if __name__ == '__main__':
             continue
         print 'Reading', fname+'...'
         didSomething = True
-        f = open(fname)
-        itor = WmlIterator(f.readlines())
-        for i in itor:
-            pass
-        f.close()
+        with codecs.open(fname, "r", "utf8") as f:
+            itor = WmlIterator(f.readlines())
+            for i in itor:
+                pass
         print itor.lineno + itor.span, 'lines read.'
     if not didSomething:
         print 'That is not a valid .cfg file'
