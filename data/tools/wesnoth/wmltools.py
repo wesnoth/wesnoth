@@ -533,7 +533,7 @@ class CrossRef:
                         state = "macro_header"
                     continue
                 elif state != 'outside' and line.strip().endswith("#enddef"):
-                    here.hash.update(line)
+                    here.hash.update(line.encode("utf8"))
                     here.hash = here.hash.digest()
                     if name in self.xref:
                         for defn in self.xref[name]:
@@ -558,7 +558,7 @@ class CrossRef:
                     if "wmlscope" not in line and "wmllint:" not in line:
                         here.docstring += line.lstrip()[1:]
                 if state in ("macro_header", "macro_body"):
-                    here.hash.update(line)
+                    here.hash.update(line.encode("utf8"))
                 elif line.strip().startswith("#undef"):
                     tokens = line.split()
                     name = tokens[1]
