@@ -197,9 +197,9 @@ public:
 	/// True if --strict-validation was given on the command line. Makes Wesnoth trust validation errors as fatal WML errors and create WML exception, if so.
 	bool strict_validation;
 	/// Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified.
-	boost::optional<std::string> test;
+	bool test;
 	/// Non-empty if --unit was given on the command line. Goes directly into unit test mode, into a scenario, if specified.
-	boost::optional<std::string> unit_test;
+	bool unit_test;
 	/// True if --unit is used and --showgui is not present.
 	bool headless_unit_test;
 	/// Non-empty if --timeout was given on the command line. Dependent on --unit.

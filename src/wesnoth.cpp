@@ -676,7 +676,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
 				<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
 				<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
-				<< ": "<<*cmdline_opts.unit_test << std::endl;
+				<< ": " << "unit" << std::endl;
 			return worker_result;
 		}
 

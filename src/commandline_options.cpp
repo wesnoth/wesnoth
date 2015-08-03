@@ -135,8 +135,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	screenshot_output_file(),
 	script_unsafe_mode(false),
 	strict_validation(false),
-	test(),
-	unit_test(),
+	test(false),
+	unit_test(false),
 	headless_unit_test(false),
 	noreplaycheck(false),
 	mptest(false),
@@ -456,10 +456,10 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("side"))
 		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string> >());
 	if (vm.count("test"))
-		test = vm["test"].as<std::string>();
+		test = true;
 	if (vm.count("unit"))
 	{
-		unit_test = vm["unit"].as<std::string>();
+		unit_test = true;
 		headless_unit_test = true;
 	}
 	if (vm.count("showgui"))

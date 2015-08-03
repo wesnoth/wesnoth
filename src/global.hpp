@@ -17,8 +17,12 @@
 
 #ifdef _MSC_VER
 
+#if _MSC_VER>=1900
+#define STDC99
+#else
 #undef snprintf
 #define snprintf _snprintf
+#endif
 
 // Disable warning about source encoding not in current code page.
 #pragma warning(disable: 4819)

@@ -280,15 +280,14 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	}
 	if (cmdline_opts_.test)
 	{
-		if (!cmdline_opts_.test->empty())
-			test_scenario_ = *cmdline_opts_.test;
+		if (!cmdline_opts_.test)
+			test_scenario_ = "test";
 	}
 	if (cmdline_opts_.unit_test)
 	{
-		if (!cmdline_opts_.unit_test->empty()) {
-			test_scenario_ = *cmdline_opts_.unit_test;
+		if (!cmdline_opts_.unit_test) {
+			test_scenario_ = "unit";
 		}
-
 	}
 	if (cmdline_opts_.windowed)
 		preferences::set_fullscreen(false);
