@@ -1008,6 +1008,34 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 	return 0;
 }
 
+/**
+ * Returns a random numer, same interface as math.random.
+ */
+int game_lua_kernel::intf_random(lua_State *L)
+{
+	if(lua_isnoneornil(L, 1)) {
+		double r = (double)random_new::generator->next_random();
+		double r_max = (double)std::numeric_limits<uint32_t>::max();
+		lua_push(L, r / (r_max + 1));
+		return 1;
+	}
+	else if(lua_isnumber(L, 1)) {
+		int32_t min;
+		int32_t max;
+		if(lua_isnumber(L, 2)) {
+			min = lua_check<int32_t>(L, 1);
+			max = lua_check<int32_t>(L, 2);
+		}
+		else {
+			min = 1;
+			max = lua_check<int32_t>(L, 1);
+		}
+		lua_push(L, random_new::generator->get_random_int(min, max));
+		return 1;
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
 {
 	game_state_.get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2), game_state_.events_manager_.get());
@@ -4098,6 +4126,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "put_recall_unit",           &dispatch<&game_lua_kernel::intf_put_recall_unit            >        },
 		{ "put_unit",                  &dispatch<&game_lua_kernel::intf_put_unit                   >        },
+		{ "random",                    &dispatch<&game_lua_kernel::intf_random                     >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
 		{ "remove_tile_overlay",       &dispatch<&game_lua_kernel::intf_remove_tile_overlay        >        },
