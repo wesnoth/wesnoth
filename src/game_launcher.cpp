@@ -295,12 +295,13 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.with_replay)
 		game::load_game_exception::show_replay = true;
 
-	std::cerr << '\n';
-	std::cerr << "Data directory: " << game_config::path
+	std::cerr
+		<< "\nData directory:               " << game_config::path
 		<< "\nUser configuration directory: " << filesystem::get_user_config_dir()
-		<< "\nUser data directory: " << filesystem::get_user_data_dir()
-		<< "\nCache directory: " << filesystem::get_cache_dir()
+		<< "\nUser data directory:          " << filesystem::get_user_data_dir()
+		<< "\nCache directory:              " << filesystem::get_cache_dir()
 		<< '\n';
+	std::cerr << '\n';
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||
@@ -432,11 +433,11 @@ bool game_launcher::init_video()
 		return false;
 	}
 
-	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
+	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
 	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
 	video_.setBpp(bpp);
 	if(res == 0) {
-		std::cerr << "required video mode, " << resolution.first << "x"
+		std::cerr << "Required video mode, " << resolution.first << "x"
 		          << resolution.second << "x" << bpp << " is not supported\n";
 		return false;
 	}
@@ -455,7 +456,7 @@ bool game_launcher::init_lua_script()
 {
 	bool error = false;
 
-	std::cerr << "checking lua scripts... ";
+	std::cerr << "Checking lua scripts... ";
 
 	if (cmdline_opts_.script_unsafe_mode) {
 		plugins_manager::get()->get_kernel_base()->load_package(); //load the "package" package, so that scripts can get what packages they want
