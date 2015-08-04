@@ -73,6 +73,7 @@ version_table_manager::version_table_manager()
 	SDL_version sdl_version;
 	const SDL_version* sdl_rt_version = NULL;
 
+
 	//
 	// SDL
 	//
@@ -80,10 +81,15 @@ version_table_manager::version_table_manager()
 	SDL_VERSION(&sdl_version);
 	compiled[LIB_SDL] = format_version(sdl_version);
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_GetVersion(&sdl_version);
+	linked[LIB_SDL] = format_version(sdl_version);
+#else
 	sdl_rt_version = SDL_Linked_Version();
 	if(sdl_rt_version) {
 		linked[LIB_SDL] = format_version(*sdl_rt_version);
 	}
+#endif
 
 	names[LIB_SDL] = "SDL";
 
