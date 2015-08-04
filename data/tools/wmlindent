@@ -217,14 +217,14 @@ def reindent(name, infp, outfp):
     if indent != "" and seen_wml:
         print('wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines), file=sys.stderr)
 
-def allwmlfiles(dir):
+def allwmlfiles(directory):
     "Get names of all WML files under dir, or dir itself if not a directory."
     datafiles = []
-    if not os.path.isdir(dir):
-        if dir.endswith(".cfg"):
-            datafiles.append(dir)
+    if not os.path.isdir(directory):
+        if directory.endswith(".cfg"):
+            datafiles.append(directory)
     else:
-        for root, dirs, files in os.walk(dir):
+        for root, dirs, files in os.walk(directory):
             if wmltools.vcdir in dirs:
                 dirs.remove(wmltools.vcdir)
             for name in files:

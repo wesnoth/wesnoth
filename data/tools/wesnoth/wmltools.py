@@ -100,17 +100,17 @@ class Forest:
         self.forest = []
         self.dirpath = dirpath
         roots = ["campaigns", "add-ons"]
-        for dir in dirpath:
+        for directory in dirpath:
             subtree = []
             rooted = False
-            if os.path.isdir(dir):	# So we skip .cfgs in a UMC mirror
-                oldmain = os.path.join(os.path.dirname(dir), os.path.basename(dir) + '.cfg')
+            if os.path.isdir(directory):	# So we skip .cfgs in a UMC mirror
+                oldmain = os.path.join(os.path.dirname(directory), os.path.basename(directory) + '.cfg')
                 if os.path.isfile(oldmain):
                     subtree.append(oldmain)
-                base = os.path.basename(os.path.dirname(os.path.abspath(dir)))
+                base = os.path.basename(os.path.dirname(os.path.abspath(directory)))
                 if base in roots or base == "core":
                     rooted = True
-                for root, dirs, files in os.walk(dir):
+                for root, dirs, files in os.walk(directory):
                     dirs.sort()
                     dirlist = [x for x in dirs]
                     # Split out individual campaigns/add-ons into their own subtrees
@@ -177,9 +177,9 @@ class Forest:
         return allfiles
     def generator(self):
         "Return a generator that walks through all files."
-        for (dir, tree) in zip(self.dirpath, self.forest):
+        for (directory, tree) in zip(self.dirpath, self.forest):
             for filename in tree:
-                yield (dir, filename)
+                yield (directory, filename)
 
 def iswml(filename):
     "Is the specified filename WML?"

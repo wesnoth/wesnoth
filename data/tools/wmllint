@@ -2599,17 +2599,17 @@ def interesting(fn):
     "Is a file interesting for conversion purposes?"
     return fn.endswith(".cfg") or is_map(fn) or issave(fn)
 
-def allcfgfiles(dir):
-    "Get the names of all interesting files under dir."
+def allcfgfiles(directory):
+    "Get the names of all interesting files under directory."
     datafiles = []
-    if not os.path.isdir(dir):
-        if interesting(dir):
-            if not os.path.exists(dir):
-                print("wmllint: %s does not exist" % dir, file=sys.stderr)
+    if not os.path.isdir(directory):
+        if interesting(directory):
+            if not os.path.exists(directory):
+                print("wmllint: %s does not exist" % directory, file=sys.stderr)
             else:
-                datafiles.append(dir)
+                datafiles.append(directory)
     else:
-        for root, dirs, files in os.walk(dir):
+        for root, dirs, files in os.walk(directory):
             for vcsubdir in vctypes:
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)
@@ -2891,9 +2891,9 @@ In your case, your system interprets your arguments as:
         if not arguments:
             arguments = ["."]
 
-        for dir in arguments:
+        for directory in arguments:
             ofp = None
-            for fn in allcfgfiles(dir):
+            for fn in allcfgfiles(directory):
                 if verbose >= 2:
                     print(fn + ":")
                 backup = fn + "-bak"
@@ -2961,9 +2961,9 @@ In your case, your system interprets your arguments as:
                     print("# Spell-checking with", checker)
                     for word in declared_spellings["GLOBAL"]:
                         d.add_to_session(word.lower())
-                    for dir in arguments:
+                    for directory in arguments:
                         ofp = None
-                        for fn in allcfgfiles(dir):
+                        for fn in allcfgfiles(directory):
                             if verbose >= 2:
                                 print(fn + ":")
                             spellcheck(fn, d)
