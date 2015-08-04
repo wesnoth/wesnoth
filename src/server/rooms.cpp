@@ -17,7 +17,6 @@
 #include "log.hpp"
 
 #include <boost/foreach.hpp>
-#define foreach BOOST_FOREACH
 
 static lg::log_domain log_server("server");
 #define ERR_SERVER LOG_STREAM(err, log_server)
@@ -73,7 +72,7 @@ void RoomList::enter_room(const std::string& room_name, socket_ptr socket)
 void RoomList::fill_member_list(const std::string room_name, simple_wml::node& root)
 {
 	simple_wml::node& members = root.add_child("members");
-	foreach(const RoomMap::right_value_type& value, room_map_.right.equal_range(room_name)) {
+	BOOST_FOREACH(const RoomMap::right_value_type& value, room_map_.right.equal_range(room_name)) {
 		simple_wml::node& member = members.add_child("member");
 		member.set_attr_dup("name", player_connections_.left.at(value.second).c_str());
 	}
@@ -92,7 +91,7 @@ void RoomList::remove_player(socket_ptr socket)
 
 void RoomList::send_to_room(const std::string& room_name, simple_wml::document& doc, socket_ptr exclude) const
 {
-	foreach(const RoomMap::right_value_type& value, room_map_.right.equal_range(room_name)) {
+	BOOST_FOREACH(const RoomMap::right_value_type& value, room_map_.right.equal_range(room_name)) {
 		socket_ptr recipient = value.second;
 		if(recipient != exclude)
 			send_to_player(recipient, doc);
