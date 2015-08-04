@@ -46,6 +46,7 @@ class RoomList : public boost::noncopyable
 		boost::bimaps::with_info<room_ptr>
 	> RoomMap;
 	RoomMap room_map_;
+	RoomMap stored_room_map_; // remember rooms of players that are in game
 	PlayerMap& player_connections_;
 
 	room_ptr make_room(const std::string& room_name);
@@ -58,6 +59,8 @@ class RoomList : public boost::noncopyable
 
 	void send_to_room(const std::string& room_name, simple_wml::document& doc, socket_ptr exclude = socket_ptr()) const;
 	void send_server_message(const std::string& room_name, const std::string& message, socket_ptr exclude = socket_ptr()) const;
+
+	void exit_lobby(socket_ptr socket);
 
 	Room& room(const std::string& room_name);
 

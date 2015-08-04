@@ -108,6 +108,16 @@ void RoomList::send_server_message(const std::string& room_name, const std::stri
 	send_to_room(room_name, server_message, exclude);
 }
 
+void RoomList::exit_lobby(socket_ptr socket)
+{
+	RoomMap::left_iterator iter, iter_end;
+	boost::tie(iter, iter_end) = room_map_.left.equal_range(socket);
+	for(; iter != iter_end; iter++) {
+		stored_room_map_.insert(*(room_map_.project_up(iter)));
+		room_map_.left.erase(iter);
+	}
+}
+
 Room& RoomList::room(const std::string& room_name)
 {
 	RoomMap::right_iterator iter = room_map_.right.find(room_name);

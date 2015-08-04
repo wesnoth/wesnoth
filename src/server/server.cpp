@@ -1165,6 +1165,10 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 	if(simple_wml::node* room_query = doc->child("room_query")) {
 		handle_room_query(socket, *room_query);
 	}
+	
+	if(simple_wml::node* create_game = doc->child("create_game")) {
+		handle_create_game(socket, *create_game);
+	}
 }
 
 void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
@@ -1311,6 +1315,37 @@ void server::handle_room_query(socket_ptr socket, simple_wml::node& room_query)
 		return;
 	}
 	send_server_message(socket, "Unknown room query type");
+}
+
+void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game)
+{
+	if (graceful_restart) {
+			static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
+			send_to_player(socket, leave_game_doc);
+			send_server_message(socket, "This server is shutting down. You aren't allowed to make new games. Please reconnect to the new server.");
+			send_to_player(socket, games_and_users_list_);
+			return;
+	}
+	const std::string game_name = create_game["name"].to_string();
+	const std::string game_password = create_game["password"].to_string();
+	DBG_SERVER << client_address(socket) << "\t" << player_connections_.left.find(socket)->info.name()
+		<< "\tcreates a new game: \"" << game_name << "\".\n";
+	// Create the new game, remove the player from the lobby
+	// and set the player as the host/owner.
+	// PORT:: games_.push_back(new wesnothd::game(players_, socket, game_name, save_replays_, replay_save_path_));
+	wesnothd::game& g = games_.back();
+	if(game_password.empty() == false) {
+		g.set_password(game_password);
+	}
+
+	create_game.copy_into(g.level().root());
+	room_list_.exit_lobby(socket);
+	simple_wml::document diff;
+	if(make_change_diff(games_and_users_list_.root(), NULL,
+	                    "user", player_connections_.left.find(socket)->info.config_address(), diff)) {
+		rooms_.lobby().send_data(diff);
+	}
+	return;
 }
 
 typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;
