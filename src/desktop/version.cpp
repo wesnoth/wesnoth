@@ -65,7 +65,7 @@ bool on_wine()
 		return false;
 	}
 
-	return GetProcAddress(ntdll, "wine_get_version");
+	return GetProcAddress(ntdll, "wine_get_version") != NULL;
 }
 
 } // end anonymous namespace
