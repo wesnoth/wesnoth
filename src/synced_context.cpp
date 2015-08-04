@@ -503,15 +503,14 @@ int set_scontext_synced::get_random_calls()
 
 
 leave_synced_context::leave_synced_context()
-	: new_rng_()
-	, old_rng_(random_new::generator)
+	: old_rng_(random_new::generator)
 {
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
 	//calling the synced rng form inside a local_choice would cause oos.
 	//TODO: should we also reset the synced checkup?
-	random_new::generator = &new_rng_;
+	random_new::generator = &random_new::rng::default_instance();
 }
 
 leave_synced_context::~leave_synced_context()

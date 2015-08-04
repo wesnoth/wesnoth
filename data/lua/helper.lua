@@ -380,13 +380,14 @@ function helper.round( number )
 	return number
 end
 
-function helper.shuffle( t )
+function helper.shuffle( t, random_func)
+	random_func = random_func or wesnoth.random
 	-- since tables are passed by reference, this is an in-place shuffle
 	-- it uses the Fisher-Yates algorithm, also known as Knuth shuffle
 	assert( type( t ) == "table", string.format( "helper.shuffle expects a table as parameter, got %s instead", type( t ) ) )
 	local length = #t
 	for index = length, 2, -1 do
-		local random = math.random( 1, index )
+		local random = random_func( 1, index )
 		t[index], t[random] = t[random], t[index]
 	end
 end

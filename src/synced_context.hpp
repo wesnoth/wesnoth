@@ -206,7 +206,6 @@ public:
 	leave_synced_context();
 	~leave_synced_context();
 private:
-	random_new::rng new_rng_;
 	random_new::rng* old_rng_;
 };
 

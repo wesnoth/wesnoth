@@ -49,9 +49,9 @@ namespace random_new
 		 */
 		int get_random_int(int min, int max) 
 		{ return min + get_random_int_in_range_zero_to(max - min); }
-
+		static rng& default_instance();
 	protected:
-		virtual uint32_t next_random_impl();
+		virtual uint32_t next_random_impl() = 0;
 		unsigned int random_calls_;
 
 	private:
@@ -68,6 +68,5 @@ namespace random_new
 		Outside a synced context this has the same effect as rand()
 	*/
 	extern rng* generator;
-
 }
 #endif
