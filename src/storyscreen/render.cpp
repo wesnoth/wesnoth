@@ -320,16 +320,6 @@ void part_ui::render_background()
 			video_.getSurface()
 	);
 	sdl_blit(background_, NULL, video_.getSurface(), NULL);
-#if 0
-	sdl::twindow *wnd = CVideo::get_window();
-	wnd->fill(0, 0, 0);
-	for (size_t i = 0; i<background_images_.size(); i++) {
-		const int x = background_positions_[i].first;
-		const int y = background_positions_[i].second;
-
-		wnd->draw(background_images_[i], x, y);
-	}
-#endif
 #else
 #ifdef SDL_GPU
 	GPU_Target *target = get_render_target();
