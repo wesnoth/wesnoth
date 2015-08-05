@@ -451,17 +451,18 @@ Usage: wmlscope [options] dirpath
                 with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
                     collisions.append(hashlib.md5(ifp.read()).hexdigest()) # hexdigest can be easily printed, unlike digest
             collisions = zip(xref.filelist.flatten(), collisions)
-            hashcounts = {}
-            for (n, h) in collisions:
-                hashcounts[h] = hashcounts.get(h, 0) + 1
-            collisions = [(n,h) for (n,h) in collisions if hashcounts[h] > 1]
-            collisions.sort(lambda (n1, h1), (n2, h2): cmp(h1, h2))
-            lasthash = None
-            for (n, h) in collisions:
-                if h != lasthash:
-                    print("%%")
-                    lasthash = h
-                print(n)
+            hashes = {}
+            # hash in Py3 is a builtin function, hence the underscore after the variable name
+            for (filename, hash_) in zip(xref.filelist.flatten(), collisions):
+                if hash_ in hashes:
+                    hashes[hash_].append(filename)
+                else:
+                    hashes[hash_]=[filename]
+            for (hash_, files) in hashes.items(): # items in Py3 is equivalent to iteritems in Py2
+                if len(files) > 1:
+                    print("%%\nCollisions between the following files with MD5 hash", hash_)
+                    for fn in files:
+                        print("->", fn)
             xref.duplicates(exportonly=False)
         elif typelist:
             xref.typelist(typelist)
