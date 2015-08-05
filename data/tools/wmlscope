@@ -446,7 +446,7 @@ Usage: wmlscope [options] dirpath
         if collisions:
             collisions = []
             for (namespace, filename) in xref.filelist.generator():
-                with codecs.open(filename, "r", "utf8") as ifp:
+                with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
                     collisions.append(hashlib.md5(ifp.read()).digest())
             collisions = zip(xref.filelist.flatten(), collisions)
             hashcounts = {}
