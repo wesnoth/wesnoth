@@ -260,7 +260,8 @@ class CrossRefLister(CrossRef):
                      unresolvedcount,
                      callcount,
                      int((100 * unresolvedcount) / callcount)))
-            unchecked.sort(lambda a, b: cmp(a[1], b[1]))
+            # sort by checking the 2nd element in the tuple
+            unchecked.sort(key=lambda element: element[1])
             for (name, defn) in unchecked:
                 print("%s: %s(%s)" % (defn, name, ", ".join(defn.args)))
 
@@ -269,7 +270,7 @@ class CrossRefLister(CrossRef):
         # Bug: finds only the first definition of each macro in scope.
         doclist = self.xref.keys()
         doclist = [x for x in doclist if self.xref[x][0].docstring.count("\n") > 1]
-        doclist.sort(lambda x, y: cmp(self.xref[x][0], self.xref[y][0]))
+        doclist.sort(key=lambda element: self.xref[element][0])
         outstr = ""
         filename = None
         filenamelist = []

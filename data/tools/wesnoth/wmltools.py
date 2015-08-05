@@ -146,7 +146,11 @@ class Forest:
                                     dirpath.append(os.path.join(root, subdir))
                     subtree.extend([os.path.normpath(os.path.join(root, x)) for x in files])
             # Always look at _main.cfg first
-            subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
+            maincfgs = [elem for elem in subtree if elem.endswith("_main.cfg")]
+            rest = [elem for elem in subtree if not elem.endswith("_main.cfg")]
+            maincfgs.sort()
+            rest.sort()
+            subtree = maincfgs + rest
             self.forest.append(subtree)
         for i in self.forest:
             # Ignore version-control subdirectories and Emacs tempfiles
