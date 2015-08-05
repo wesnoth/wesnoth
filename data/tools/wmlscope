@@ -450,7 +450,6 @@ Usage: wmlscope [options] dirpath
             for (namespace, filename) in xref.filelist.generator():
                 with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
                     collisions.append(hashlib.md5(ifp.read()).hexdigest()) # hexdigest can be easily printed, unlike digest
-            collisions = zip(xref.filelist.flatten(), collisions)
             hashes = {}
             # hash in Py3 is a builtin function, hence the underscore after the variable name
             for (filename, hash_) in zip(xref.filelist.flatten(), collisions):
