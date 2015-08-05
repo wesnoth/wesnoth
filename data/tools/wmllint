@@ -182,6 +182,7 @@
 #
 
 from __future__ import print_function, unicode_literals
+from future_builtins import filter, map, zip
 
 import sys, os, re, getopt, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools import *

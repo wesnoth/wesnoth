@@ -94,6 +94,7 @@
 # sets the warning level.
 
 from __future__ import print_function, unicode_literals
+from future_builtins import filter, map, zip
 
 import sys, os, time, re, getopt, hashlib, glob, codecs
 from wesnoth.wmltools import *
@@ -448,7 +449,7 @@ Usage: wmlscope [options] dirpath
             collisions = []
             for (namespace, filename) in xref.filelist.generator():
                 with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
-                    collisions.append(hashlib.md5(ifp.read()).digest())
+                    collisions.append(hashlib.md5(ifp.read()).hexdigest()) # hexdigest can be easily printed, unlike digest
             collisions = zip(xref.filelist.flatten(), collisions)
             hashcounts = {}
             for (n, h) in collisions:

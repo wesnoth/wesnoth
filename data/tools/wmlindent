@@ -62,6 +62,7 @@ indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
 from __future__ import print_function, unicode_literals
+from future_builtins import filter, map, zip
 
 import sys, os, getopt, filecmp, re, codecs
 from wesnoth import wmltools

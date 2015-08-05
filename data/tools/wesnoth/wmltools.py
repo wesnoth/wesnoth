@@ -4,6 +4,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 """
 
 from __future__ import print_function, unicode_literals
+from future_builtins import filter, map, zip
 
 from functools import total_ordering
 import collections, codecs

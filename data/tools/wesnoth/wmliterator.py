@@ -21,6 +21,7 @@ Limitations:
 """
 
 from __future__ import print_function, unicode_literals
+from future_builtins import filter, map, zip
 
 from functools import total_ordering
 import sys, re, copy, codecs
