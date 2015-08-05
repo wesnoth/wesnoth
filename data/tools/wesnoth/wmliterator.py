@@ -22,6 +22,7 @@ Limitations:
 
 from __future__ import print_function, unicode_literals
 
+from functools import total_ordering
 import sys, re, copy, codecs
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
@@ -97,6 +98,10 @@ def isAttribute(elem):
         elem = elem[0]
     return type(elem) == type("") and elem.endswith("=")
 
+# the total_ordering decorator from functools allows to define only two comparison
+# methods, and Python generates the remaining methods
+# it comes with a speed penalty, but the alternative is defining six methods by hand...
+@total_ordering
 class WmlIterator(object):
     """Return an iterable WML navigation object.
     Initialize with a list of lines or a file; if the the line list is
@@ -330,10 +335,13 @@ Important Attributes:
         """The magic iterator method"""
         return self
 
-    def __cmp__(self, other):
-        """Compare two iterators"""
-        return cmp((self.fname, self.lineno, self.element),
-                   (other.fname, other.lineno, other.element))
+    def __eq__(self, other):
+        return (self.fname, self.lineno, self.element) == \
+               (other.fname, other.lineno, other.element)
+
+    def __gt__(self, other):
+        return (self.fname, self.lineno, self.element) > \
+               (other.fname, other.lineno, other.element)
 
     def reset(self):
         """Reset any line tracking information to defaults"""

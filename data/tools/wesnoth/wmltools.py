@@ -5,6 +5,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 from __future__ import print_function, unicode_literals
 
+from functools import total_ordering
 import collections, codecs
 import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
@@ -375,6 +376,10 @@ def argmatch(formals, actuals):
             return False
     return True
 
+# the total_ordering decorator from functools allows to define only two comparison
+# methods, and Python generates the remaining methods
+# it comes with a speed penalty, but the alternative is defining six methods by hand...
+@total_ordering
 class Reference:
     "Describes a location by file and line."
     def __init__(self, namespace, filename, lineno=None, docstring=None, args=None):
@@ -394,16 +399,18 @@ class Reference:
         for (file, refs) in self.references.items():
             print("    %s: %s" % (file, repr([x[0] for x in refs])[1:-1]))
 
-    def __cmp__(self, other):
-        "Compare two documentation objects for place in the sort order."
+    def __eq__(self, other):
+        return self.filename == other.filename and self.lineno == other.lineno
+
+    def __gt__(self, other):
         # Major sort by file, minor by line number.  This presumes that the
         # files correspond to coherent topics and gives us control of the
         # sequence.
-        byfile = cmp(self.filename, other.filename)
-        if byfile:
-            return byfile
+        if self.filename == other.filename:
+            return self.lineno > other.lineno
         else:
-            return cmp(self.lineno, other.lineno)
+            return self.filename > other.filename
+
     def mismatches(self):
         copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args)
         copy.undef = self.undef
