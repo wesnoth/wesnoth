@@ -786,7 +786,7 @@ class CrossRef:
     def refcount(self, name):
         "Return a reference count for the specified resource."
         try:
-            return len(self.fileref[name].references.keys())
+            return len(self.fileref[name].references)
         except KeyError:
             return 0
 
@@ -857,7 +857,7 @@ class Translation(dict):
         if self.isocode == "C":
             return True
         else:
-            return key in self.gettext.keys()
+            return key in self.gettext
 
 class Translations:
     "Wraps around Translation to support multiple languages and domains."

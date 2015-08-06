@@ -165,7 +165,7 @@ class CrossRefLister(CrossRef):
         if len(self.unresolved) == 0 and len(self.missing) == 0:
             print("# No unresolved references")
         else:
-            #print(self.fileref.keys())
+            #print(list(self.fileref.keys()))
             for (name, reference) in self.unresolved + self.missing:
                 print("%s: Unresolved reference -> %s" % (reference, name))
         mismatched = []
@@ -269,8 +269,7 @@ class CrossRefLister(CrossRef):
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
-        doclist = self.xref.keys()
-        doclist = [x for x in doclist if self.xref[x][0].docstring.count("\n") > 1]
+        doclist = [x for x in self.xref.keys() if self.xref[x][0].docstring.count("\n") > 1]
         doclist.sort(key=lambda element: self.xref[element][0])
         outstr = ""
         filename = None
