@@ -119,7 +119,7 @@ public:
 	/**
 	 * Leaving the room
 	 */
-	void remove_player(network::connection player);
+	//void remove_player(network::connection player);
 
 	/**
 	 * Chat message processing

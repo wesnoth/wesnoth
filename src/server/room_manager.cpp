@@ -209,24 +209,26 @@ void room_manager::enter_lobby(network::connection player)
 	unstore_player_rooms(player);
 }
 
+/*
 void room_manager::enter_lobby(const wesnothd::game &game)
 {
 	BOOST_FOREACH(network::connection player, game.all_game_users()) {
 		enter_lobby(player);
 	}
 }
+*/
 
 void room_manager::exit_lobby(network::connection player)
 {
 	// No messages are sent to the rooms the player is in because other members
 	// will receive the "player-entered-game" message (or similar) anyway, and
 	// will be able to deduce that he or she is no longer in any rooms
-	lobby_->remove_player(player);
+	//lobby_->remove_player(player);
 	store_player_rooms(player);
 	t_rooms_by_player_::iterator i = rooms_by_player_.find(player);
 	if (i != rooms_by_player_.end()) {
 		BOOST_FOREACH(room* r, i->second) {
-			r->remove_player(player);
+			//r->remove_player(player);
 		}
 	}
 	rooms_by_player_.erase(player);
@@ -237,6 +239,7 @@ bool room_manager::in_lobby(network::connection player) const
 	return lobby_->is_member(player);
 }
 
+/*
 void room_manager::remove_player(network::connection player)
 {
 	// No messages are sent since a player-quit message is sent to everyone
@@ -251,6 +254,7 @@ void room_manager::remove_player(network::connection player)
 	rooms_by_player_.erase(player);
 	player_stored_rooms_.erase(player);
 }
+*/
 
 room* room_manager::require_room(const std::string& room_name,
                                    const player_map::iterator user,
@@ -299,7 +303,7 @@ bool room_manager::player_enters_room(network::connection player, wesnothd::room
 
 void room_manager::player_exits_room(network::connection player, wesnothd::room *room)
 {
-	room->remove_player(player);
+	//room->remove_player(player);
 	rooms_by_player_[player].erase(room);
 }
 

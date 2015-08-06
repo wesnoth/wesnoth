@@ -111,10 +111,10 @@ void RoomList::exit_lobby(socket_ptr socket)
 {
 	RoomMap::left_iterator iter, iter_end;
 	boost::tie(iter, iter_end) = room_map_.left.equal_range(socket);
-	for(; iter != iter_end; iter++) {
+	for(; iter != iter_end; ++iter) {
 		stored_room_map_.insert(*(room_map_.project_up(iter)));
-		room_map_.left.erase(iter);
 	}
+	room_map_.left.erase(socket);
 }
 
 Room& RoomList::room(const std::string& room_name)

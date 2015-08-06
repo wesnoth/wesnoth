@@ -150,6 +150,16 @@ static void exit_sigterm(int signal) {
 
 void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "");
 
+std::string client_address(socket_ptr socket)
+{
+	boost::system::error_code error;
+	std::string result = socket->remote_endpoint(error).address().to_string();
+	if(error)
+		return "<unknown address>";
+	else
+		return result;
+}
+
 namespace {
 
 // we take profiling info on every n requests
@@ -165,16 +175,6 @@ void send_doc(simple_wml::document& doc, network::connection connection, std::st
 	} catch (simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
-}
-
-std::string client_address(socket_ptr socket)
-{
-	boost::system::error_code error;
-	std::string result = socket->remote_endpoint(error).address().to_string();
-	if(error)
-		return "<unknown address>";
-	else
-		return result;
 }
 
 bool check_error(const boost::system::error_code& error, socket_ptr socket)
@@ -1332,7 +1332,7 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 		<< "\tcreates a new game: \"" << game_name << "\".\n";
 	// Create the new game, remove the player from the lobby
 	// and set the player as the host/owner.
-	// PORT:: games_.push_back(new wesnothd::game(players_, socket, game_name, save_replays_, replay_save_path_));
+	games_.push_back(new wesnothd::game(player_connections_, socket, game_name, save_replays_, replay_save_path_));
 	wesnothd::game& g = games_.back();
 	if(game_password.empty() == false) {
 		g.set_password(game_password);
@@ -1342,7 +1342,7 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 	room_list_.exit_lobby(socket);
 	simple_wml::document diff;
 	if(make_change_diff(games_and_users_list_.root(), NULL,
-	                    "user", player_connections_.left.find(socket)->info.config_address(), diff)) {
+	                    "user", player_connections_.left.info_at(socket).config_address(), diff)) {
 		rooms_.lobby().send_data(diff);
 	}
 	return;
@@ -1700,6 +1700,7 @@ void server::run() {
 	*/
 }
 
+/*
 void server::process_data(const network::connection sock,
                           simple_wml::document& data) {
 	if (proxy::is_proxy(sock)) {
@@ -1741,7 +1742,7 @@ void server::process_data(const network::connection sock,
 	}
 }
 
-
+*/
 
 void server::process_login(const network::connection sock,
                            simple_wml::document& data) {
@@ -2965,6 +2966,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	}
 }
 
+/*
 void server::process_whisper(const network::connection sock,
                              simple_wml::node& whisper) const {
 	if ((whisper["receiver"] == "") || (whisper["message"] == "")) {
@@ -3045,7 +3047,7 @@ void server::process_data_lobby(const network::connection sock,
 			<< "\tcreates a new game: \"" << game_name << "\".\n";
 		// Create the new game, remove the player from the lobby
 		// and set the player as the host/owner.
-		games_.push_back(new wesnothd::game(players_, sock, game_name, save_replays_, replay_save_path_));
+		// games_.push_back(new wesnothd::game(players_, sock, game_name, save_replays_, replay_save_path_));
 		wesnothd::game& g = games_.back();
 		if(game_password.empty() == false) {
 			g.set_password(game_password);
@@ -3166,9 +3168,12 @@ void server::process_data_lobby(const network::connection sock,
 	}
 }
 
+*/
+
 /**
  * Process data sent from a member of a game.
  */
+/*
 void server::process_data_game(const network::connection sock,
                                simple_wml::document& data) {
 	DBG_SERVER << "in process_data_game...\n";
@@ -3274,8 +3279,9 @@ void server::process_data_game(const network::connection sock,
 		simple_wml::document diff;
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
 		rooms_.lobby().send_data(diff);
-
+*/
 		/** @todo FIXME: Why not save the level data in the history_? */
+/*
 		return;
 // Everything below should only be processed if the game is already intialized.
 	} else if (!g.level_init()) {
@@ -3396,10 +3402,10 @@ void server::process_data_game(const network::connection sock,
 		g.level().root().apply_diff(*diff);
 		const simple_wml::node* cfg_change = diff->child("change_child");
 		if (cfg_change
-			/*&& cfg_change->child("side") it is very likeley that
+			**&& cfg_change->child("side") it is very likeley that
 			the diff changes a side so this check isn't that important.
 			Note that [side] is not at toplevel but inside
-			[scenario] or [snapshot] */) {
+			[scenario] or [snapshot] **) {
 			g.update_side_data();
 		}
 		if (g.describe_slots()) {
@@ -3574,6 +3580,8 @@ void server::delete_game(t_games::iterator game_it) {
 
 	games_.erase(game_it);
 }
+
+*/
 
 void server::update_game_in_lobby(const wesnothd::game& g, network::connection exclude)
 {

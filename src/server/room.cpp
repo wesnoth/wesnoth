@@ -99,6 +99,7 @@ bool room::add_player(network::connection player)
 	return true;
 }
 
+/*
 void room::remove_player(network::connection player)
 {
 	const user_vector::iterator itor =
@@ -110,7 +111,7 @@ void room::remove_player(network::connection player)
 			<< player << ")\n";
 	}
 }
-
+*/
 
 void room::send_data(simple_wml::document& data,
 					 const network::connection exclude,

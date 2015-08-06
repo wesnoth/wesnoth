@@ -122,7 +122,7 @@ public:
 	/**
 	 * Remove info abut given player from all rooms
 	 */
-	void remove_player(network::connection player);
+	//void remove_player(network::connection player);
 
 	/**
 	 * Check if the room exists, log failures.
