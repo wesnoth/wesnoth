@@ -3,7 +3,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function, unicode_literals, division
 from future_builtins import filter, map, zip
 
 from functools import total_ordering
@@ -138,7 +138,7 @@ class Forest:
                                 elif os.path.isfile(os.path.join(root, subdir, 'info.cfg')):
                                     if os.path.isfile(os.path.join(root, subdir, 'COPYING.txt')):
                                         count += 1
-                            if count >= (stop / 2):
+                            if count >= (stop // 2):
                                 roots.append(os.path.basename(root))
                                 for subdir in dirlist:
                                     if subdir + '.cfg' in files:

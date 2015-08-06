@@ -61,7 +61,7 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function, unicode_literals, division
 from future_builtins import filter, map, zip
 
 import sys, os, getopt, filecmp, re, codecs

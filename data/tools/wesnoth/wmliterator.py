@@ -20,7 +20,7 @@ Limitations:
  enough for now.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function, unicode_literals, division
 from future_builtins import filter, map, zip
 
 from functools import total_ordering
