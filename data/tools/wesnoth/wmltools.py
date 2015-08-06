@@ -149,9 +149,7 @@ class Forest:
             # Always look at _main.cfg first
             maincfgs = [elem for elem in subtree if elem.endswith("_main.cfg")]
             rest = [elem for elem in subtree if not elem.endswith("_main.cfg")]
-            maincfgs.sort()
-            rest.sort()
-            subtree = maincfgs + rest
+            subtree = sorted(maincfgs) + sorted(rest)
             self.forest.append(subtree)
         for i in self.forest:
             # Ignore version-control subdirectories and Emacs tempfiles
