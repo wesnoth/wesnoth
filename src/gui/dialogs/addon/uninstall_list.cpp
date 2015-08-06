@@ -94,7 +94,7 @@ void taddon_uninstall_list::post_show(twindow& window)
 		tgrid const* g = list.get_row_grid(k);
 		const ttoggle_button& checkbox
 				= find_widget<const ttoggle_button>(g, "checkbox", false);
-		this->selections_[this->ids_[k]] = checkbox.get_value();
+		this->selections_[this->ids_[k]] = checkbox.get_value_bool();
 	}
 }
 

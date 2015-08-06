@@ -50,13 +50,14 @@ public:
 	void update_canvas();
 
 	/** Inherited from tselectable_ */
-	bool get_value() const
+	unsigned get_value() const OVERRIDE
 	{
-		return state_ >= ENABLED_SELECTED;
+		return state_num_;
 	}
-
 	/** Inherited from tselectable_ */
-	void set_value(const bool selected);
+	unsigned num_states() const OVERRIDE;
+	/** Inherited from tselectable_ */
+	void set_value(const unsigned selected);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -91,9 +92,6 @@ private:
 		ENABLED,
 		DISABLED,
 		FOCUSSED,
-		ENABLED_SELECTED,
-		DISABLED_SELECTED,
-		FOCUSSED_SELECTED,
 		COUNT
 	};
 
@@ -106,7 +104,10 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
-
+	/**
+	 *	Usually 1 for selected and 0 for not selected, can also have higher values in tristate buttons.
+	 */
+	unsigned state_num_;
 	/**
 	 * The return value of the button.
 	 *

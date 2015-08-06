@@ -86,13 +86,12 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
 	, right_border(cfg["right_border"])
 {
 	// Note the order should be the same as the enum tstate in toggle_panel.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_focussed")));
-
-	state.push_back(tstate_definition(cfg.child("state_enabled_selected")));
-	state.push_back(tstate_definition(cfg.child("state_disabled_selected")));
-	state.push_back(tstate_definition(cfg.child("state_focussed_selected")));
+	FOREACH(const AUTO& c, cfg.child_range("state"))
+	{
+		state.push_back(tstate_definition(c.child("enabled")));
+		state.push_back(tstate_definition(c.child("disabled")));
+		state.push_back(tstate_definition(c.child("focussed")));
+	}
 }
 
 } // namespace gui2

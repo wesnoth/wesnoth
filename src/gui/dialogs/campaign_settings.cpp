@@ -174,7 +174,7 @@ void tcampaign_settings::pre_show(CVideo&, twindow& window)
 void tcampaign_settings::post_show(twindow& window)
 {
 	engine_.get_state().mp_settings().show_connect =
-		find_widget<ttoggle_button>(&window, "mp_connect", false).get_value();
+		find_widget<ttoggle_button>(&window, "mp_connect", false).get_value_bool();
 }
 
 } // end namespace gui2

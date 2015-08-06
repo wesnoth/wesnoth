@@ -16,6 +16,7 @@
 #define GUI_WIDGETS_SELECTABLE_HPP_INCLUDED
 
 #include "utils/boost_function_guarded.hpp"
+#include <cassert>
 
 namespace gui2
 {
@@ -36,11 +37,25 @@ public:
 	}
 
 	/** Is the control selected? */
-	virtual bool get_value() const = 0;
+	virtual unsigned get_value() const = 0;
 
 	/** Select the control. */
-	virtual void set_value(const bool) = 0;
+	virtual void set_value(const unsigned) = 0;
 
+	/** The number of states, that is 2 for normal buttons, 3 for tristate buttons. */
+	virtual unsigned num_states() const = 0;
+	
+	bool get_value_bool() const
+	{
+		assert(num_states() == 2);
+		return get_value() != 0;
+	}
+
+	void set_value_bool(const bool value)
+	{
+		assert(num_states() == 2);
+		return set_value(value);
+	}
 	/**
 	 * When the user does something to change the widget state this event is
 	 * fired. Most of the time it will be a left click on the widget.
