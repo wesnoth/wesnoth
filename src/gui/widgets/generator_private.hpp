@@ -602,6 +602,9 @@ public:
 		, selected_item_count_(0)
 		, last_selected_item_(-1)
 		, items_()
+		, order_()
+		, order_dirty_(true)
+		, order_func_()
 	{
 	}
 
@@ -628,6 +631,7 @@ public:
 
 		delete items_[index];
 		items_.erase(items_.begin() + index);
+		order_dirty_ = true;
 	}
 
 	/** Inherited from tgenerator_. */
@@ -637,6 +641,7 @@ public:
 		{
 			delete item;
 		}
+		order_dirty_ = true;
 		selected_item_count_ = 0;
 	}
 
@@ -737,6 +742,22 @@ public:
 		return items_[index]->grid;
 	}
 
+	/** Inherited from tgenerator_. */
+	tgrid& item_ordered(const unsigned index)
+	{
+		calculate_order();
+		assert(index < items_.size());
+		return items_[order_[index]]->grid;
+	}
+
+	/** Inherited from tgenerator_. */
+	const tgrid& item_ordered(const unsigned index) const
+	{
+		calculate_order();
+		assert(index < items_.size());
+		return items_[order_[index]]->grid;
+	}
+
 
 	/** Inherited from tgenerator_. */
 	tgrid& create_item(const int index,
@@ -767,6 +788,7 @@ public:
 		const unsigned item_index = index == -1 ? items_.size() : index;
 
 		items_.insert(items_.begin() + item_index, item);
+		order_dirty_ = true;
 		minimum_selection::create_item(item_index);
 		placement::create_item(item_index);
 		if(!is_selected(item_index)) {
@@ -855,8 +877,10 @@ public:
 	{
 		assert(this->get_visible() == twidget::tvisible::visible);
 
-		FOREACH(AUTO item, items_)
+		calculate_order();
+		FOREACH(AUTO index, order_)
 		{
+			titem* item = items_[index];
 			if(item->grid.get_visible() == twidget::tvisible::visible
 			   && item->shown) {
 
@@ -871,9 +895,10 @@ public:
 									int y_offset) OVERRIDE
 	{
 		assert(this->get_visible() == twidget::tvisible::visible);
-
-		FOREACH(AUTO item, items_)
+		calculate_order();
+		FOREACH(AUTO index, order_)
 		{
+			titem* item = items_[index];
 			if(item->grid.get_visible() == twidget::tvisible::visible
 			   && item->shown) {
 
@@ -980,7 +1005,7 @@ private:
 	struct titem
 	{
 
-		titem() : grid(), selected(false), shown(true)
+		titem() : grid(), selected(false), shown(true), ordered_index(0)
 		{
 		}
 
@@ -1000,6 +1025,8 @@ private:
 		 * polishing.
 		 */
 		bool shown;
+
+		size_t ordered_index;
 	};
 
 	/** The number of selected items. */
@@ -1009,8 +1036,78 @@ private:
 	int last_selected_item_;
 
 	/** The items in the generator. */
-	std::vector<titem*> items_;
+	typedef std::vector<titem*> titems;
+	titems items_;
 
+	/** the elements of order_ are indexes to items_ */
+	mutable std::vector<size_t> order_;
+	/** whether need to recalculate order_dirty_ */
+	mutable bool order_dirty_;
+
+	typedef boost::function<bool (unsigned, unsigned)> torder_func;
+	torder_func order_func_;
+
+	
+	virtual void set_order(const torder_func& order) OVERRIDE
+	{
+		order_func_ = order;
+		order_dirty_ = true;
+		this->set_is_dirty(true);
+	}
+
+	struct calculate_order_helper
+	{
+		const torder_func& order_func_;
+		const titems& items_;
+
+		calculate_order_helper(const torder_func& order_func, const titems& items)
+			: order_func_(order_func)
+			, items_(items)
+		{
+		}
+
+		bool operator()(size_t a, size_t b)
+		{
+			return order_func_(a, b);
+		}
+	};
+	
+	virtual unsigned get_ordered_index(unsigned index) const
+	{
+		assert(index < items_.size());
+		calculate_order();
+		return items_[index]->ordered_index;
+	}
+
+	virtual unsigned get_item_at_ordered(unsigned index_ordered) const
+	{
+		assert(index_ordered < items_.size());
+		calculate_order();
+		return order_[index_ordered];
+	}
+
+	void calculate_order() const
+	{
+		if(order_dirty_) {
+			if(order_.size() != items_.size()) {
+				order_.resize(items_.size());
+				for(size_t i = 0; i < items_.size(); ++i) {
+					order_[i] = i;
+				}
+			}
+			if(!order_func_.empty()) {
+				std::stable_sort(order_.begin(), order_.end(), calculate_order_helper(order_func_, items_));
+			}
+			for(size_t i = 0; i < order_.size(); ++i) {
+				items_[order_[i]]->ordered_index = i;
+			}
+			
+			order_dirty_ = false;
+		}
+		else {
+			assert(order_.size() == items_.size());
+		}
+	}
 	/**
 	 * Sets the selected state of an item.
 	 *
