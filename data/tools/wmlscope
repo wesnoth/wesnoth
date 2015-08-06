@@ -257,13 +257,13 @@ sudo apt-get install python-pil""", file=sys.stderr)
                     unchecked.append((name, defn))
                     unresolvedcount += len(defn.references)
         if unchecked:
-            print("# %d of %d (%d%%) macro definitions and %d of %d calls (%d%%) have untyped formals:" \
+            print("# %d of %d (%.02f%%) macro definitions and %d of %d calls (%.02f%%) have untyped formals:" \
                   % (len(unchecked),
                      defcount,
-                     int((100 * len(unchecked)) / defcount),
+                     ((100 * len(unchecked)) / defcount),
                      unresolvedcount,
                      callcount,
-                     int((100 * unresolvedcount) / callcount)))
+                     ((100 * unresolvedcount) / callcount)))
             # sort by checking the 2nd element in the tuple
             unchecked.sort(key=lambda element: element[1])
             for (name, defn) in unchecked:
