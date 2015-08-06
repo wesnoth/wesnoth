@@ -1553,12 +1553,12 @@ def global_sanity_check(filename, lines):
                     del whopairs[string_strip(unmac).strip('{}')]
                 except KeyError:
                     print('%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
-                          % (filename, i+1, unmac, str(whopairs.keys())[1:-1]), file=sys.stderr)
+                          % (filename, i+1, unmac, ", ".join(whopairs.keys())), file=sys.stderr)
         elif 'wmllint: whofield' in lines[i]:
             fields = re.search(r'wmllint: whofield\s+([^\s]+)(\s+is)?\s*([^\s]*)', lines[i])
             if fields:
                 if fields.group(1).startswith('clear'):
-                    if fields.group(3) in whomacros.keys():
+                    if fields.group(3) in whomacros:
                         del whomacros[fields.group(3)]
                     else:
                         whomacros.clear()
@@ -1577,7 +1577,7 @@ def global_sanity_check(filename, lines):
             macname = leadmac.group()[1:-1]
             # Recognize macro pairings from "wmllint: who" magic
             # comments.
-            if macname in whopairs.keys():
+            if macname in whopairs:
                 for who in whopairs[macname].split(","):
                     if who.strip().startswith("--"):
                         try:
@@ -1614,9 +1614,9 @@ def global_sanity_check(filename, lines):
                 elif macname == 'CLEAR_VARIABLE':
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     for arg in [x.lstrip() for x in args[1].split(',')]:
-                        if arg in storedids.keys():
+                        if arg in storedids:
                             del storedids[arg]
-                elif macname in whomacros.keys():
+                elif macname in whomacros:
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
@@ -1645,14 +1645,14 @@ def global_sanity_check(filename, lines):
             elif in_unstore:
                 if key == 'variable':
                     value = value.split("[$")[0]
-                    if value in storedids.keys():
+                    if value in storedids:
                         for unit_id in storedids[value].split(','):
                             present.append(unit_id.lstrip())
                         del storedids[value]
             elif key == 'name' and in_clear:
                 for val in value.split(','):
                     val = val.lstrip()
-                    if val in storedids.keys():
+                    if val in storedids:
                         del storedids[val]
             has_tr_mark = translation_mark.search(value)
             if key == 'role':
@@ -1782,7 +1782,7 @@ def consistency_check():
                         print('"%s", line %d: %s is not a known unit type' % (filename, rl, rtype))
                     continue
                 elif rtype not in usage:
-                    if rtype in derivations.keys():
+                    if rtype in derivations:
                         base = derivations[rtype]
                     else:
                         print('"%s", line %d: %s has no usage type' % \
