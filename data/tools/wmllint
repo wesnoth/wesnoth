@@ -2543,7 +2543,8 @@ def spellcheck(fn, d):
     local_spellings = [w for w in local_spellings if not d.check(w)]
     #if local_spellings:
     #    print("%s: inherited local spellings: %s" % (fn, local_spellings))
-    map(d.add_to_session, local_spellings)
+    for word in local_spellings:
+        d.add_to_session(word)
 
     # Process this individual file
     for nav in WmllintIterator(filename=fn):
