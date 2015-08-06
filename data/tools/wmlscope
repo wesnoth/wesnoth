@@ -197,7 +197,10 @@ class CrossRefLister(CrossRef):
                     except IOError:
                         print("%s: PIL internal error" % filename, file=sys.stderr)
         except ImportError:
-            print("Install Python Imaging Library to enable size check.", file=sys.stderr)
+            print("""Please install the Python Pillow Library to enable image size check.
+You can download it from https://pypi.python.org/pypi/Pillow
+On Debian and Ubuntu you can also type in a Terminal
+sudo apt-get install python-pil""", file=sys.stderr)
     def duplicates(self, exportonly):
         "Dump duplicate unit IDs."
         duplicate_latch = False
@@ -481,7 +484,7 @@ Usage: wmlscope [options] dirpath
             if definitions:
                 xref.deflist(predicate)
             if unresolved:
-                #xref.undersized()
+                xref.undersized()
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
     except KeyboardInterrupt:
