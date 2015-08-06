@@ -459,7 +459,7 @@ Usage: wmlscope [options] dirpath
                     hashes[hash_]=[filename]
             for (hash_, files) in hashes.items(): # items in Py3 is equivalent to iteritems in Py2
                 if len(files) > 1:
-                    print("%%\nCollisions between the following files with MD5 hash", hash_)
+                    print("%%\nPossible duplicated files with MD5 hash", hash_)
                     for fn in files:
                         print("->", fn)
             xref.duplicates(exportonly=False)
