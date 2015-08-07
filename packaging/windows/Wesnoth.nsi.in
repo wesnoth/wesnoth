@@ -54,7 +54,6 @@
 
   !insertmacro MUI_PAGE_WELCOME
   !insertmacro MUI_PAGE_LICENSE "COPYING"
-  !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MULTIUSER_PAGE_INSTALLMODE
   !insertmacro MUI_PAGE_DIRECTORY
 
@@ -243,17 +242,6 @@ Function UserdataPageLeave
 
 FunctionEnd
 
-;--------------------------------
-;Descriptions
-
-  ;USE A LANGUAGE STRING IF YOU WANT YOUR DESCRIPTIONS TO BE LANGAUGE SPECIFIC
-
-  ;Assign descriptions to sections
-  !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-    !insertmacro MUI_DESCRIPTION_TEXT ${BfWSection} "Battle for wesnoth executable and data."
-  !insertmacro MUI_FUNCTION_DESCRIPTION_END
-
- 
 ;--------------------------------
 ;Uninstaller Section
 
