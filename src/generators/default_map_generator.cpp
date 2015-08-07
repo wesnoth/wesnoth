@@ -456,6 +456,7 @@ config default_map_generator::create_scenario(boost::optional<boost::uint32_t> r
 
 			config& label = res.add_child("label");
 			label["text"] = i->second;
+			label["category"] = "villages";
 			i->first.write(label);
 		}
 	}
