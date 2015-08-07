@@ -43,7 +43,7 @@ inline bool is_fogged(const display& disp, const map_location& loc)
 }
 
 map_labels::map_labels(const display &disp, const team *team) :
-	disp_(disp), team_(team), labels_(), enabled_(true)
+	disp_(disp), team_(team), labels_(), enabled_(true), categories_dirty(true)
 {
 }
 
@@ -139,6 +139,7 @@ void map_labels::set_team(const team* team)
 	if ( team_ != team )
 	{
 		team_ = team;
+		categories_dirty = true;
 	}
 }
 
@@ -205,12 +206,14 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		if ( global_label != NULL )
 			global_label->recalculate();
 	}
+	categories_dirty = true;
 	return res;
 }
 
 void map_labels::add_label(const map_location &loc, terrain_label *new_label)
 {
 	labels_[new_label->team_name()][loc] = new_label;
+	categories_dirty = true;
 }
 
 void map_labels::clear(const std::string& team_name, bool force)
@@ -226,6 +229,7 @@ void map_labels::clear(const std::string& team_name, bool force)
 	{
 		clear_map(i->second, force);
 	}
+	categories_dirty = true;
 }
 
 void map_labels::clear_map(label_map &m, bool force)
@@ -238,6 +242,7 @@ void map_labels::clear_map(label_map &m, bool force)
 			m.erase(i++);
 		} else ++i;
 	}
+	categories_dirty = true;
 }
 
 void map_labels::clear_all()
@@ -288,6 +293,26 @@ void map_labels::recalculate_shroud()
 			l.second->calculate_shroud();
 		}
 	}
+}
+
+const std::vector<std::string>& map_labels::all_categories() const {
+	if(categories_dirty) {
+		categories_dirty = false;
+		categories.clear();
+		categories.push_back("team");
+		for(size_t i = 1; i <= resources::teams->size(); i++) {
+			categories.push_back("side:" + str_cast(i));
+		}
+		std::set<std::string> unique_cats;
+		BOOST_FOREACH(const team_label_map::value_type& m, labels_) {
+			BOOST_FOREACH(const label_map::value_type& l, m.second) {
+				if(l.second->category().empty()) continue;
+				unique_cats.insert("cat:" + l.second->category());
+			}
+		}
+		std::copy(unique_cats.begin(), unique_cats.end(), std::back_inserter(categories));
+	}
+	return categories;
 }
 
 
@@ -576,6 +601,18 @@ void terrain_label::draw()
  */
 bool terrain_label::hidden() const
 {
+	// Respect user's label preferences
+	std::string category = "cat:" + category_;
+	std::string creator = "side:" + str_cast(creator_ + 1);
+	const std::vector<std::string>& hidden_categories = parent_->disp().get_disp_context().hidden_label_categories();
+	
+	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end())
+		return true;
+	if(creator_ >= 0 && std::find(hidden_categories.begin(), hidden_categories.end(), creator) != hidden_categories.end())
+		return true;
+	if(!team_name().empty() && std::find(hidden_categories.begin(), hidden_categories.end(), "team") != hidden_categories.end())
+		return true;
+	
 	// Fog can hide some labels.
 	if ( !visible_in_fog_ && is_fogged(parent_->disp(), loc_) )
 		return true;

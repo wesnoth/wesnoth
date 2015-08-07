@@ -54,6 +54,7 @@ public:
 	virtual void kill_unit();
 	virtual void label_terrain(bool);
 	virtual void clear_labels();
+	virtual void label_settings();
 	virtual void continue_move();
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();

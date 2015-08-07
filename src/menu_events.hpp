@@ -77,6 +77,7 @@ public:
 	void kill_unit(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
 	void clear_labels();
+	void label_settings();
 	void continue_move(mouse_handler &mousehandler, int side_num);
 	void execute_gotos(mouse_handler &mousehandler, int side_num);
 	void toggle_ellipses();

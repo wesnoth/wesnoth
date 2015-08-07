@@ -123,6 +123,10 @@ void playsingle_controller::hotkey_handler::clear_messages(){
 	menu_handler_.clear_messages();
 }
 
+void playsingle_controller::hotkey_handler::label_settings(){
+	menu_handler_.label_settings();
+}
+
 void playsingle_controller::hotkey_handler::whiteboard_toggle() {
 	whiteboard_manager_->set_active(!whiteboard_manager_->is_active());
 

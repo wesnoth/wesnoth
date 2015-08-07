@@ -50,6 +50,7 @@ bool replay_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 	case hotkey::HOTKEY_SAVE_GAME:
 	case hotkey::HOTKEY_SAVE_REPLAY:
+	case hotkey::HOTKEY_LABEL_SETTINGS:
 	case hotkey::HOTKEY_CHAT_LOG:
 		return true;
 

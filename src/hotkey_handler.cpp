@@ -298,6 +298,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
 	case hotkey::HOTKEY_NULL:
 	case hotkey::HOTKEY_SAVE_REPLAY:
+	case hotkey::HOTKEY_LABEL_SETTINGS:
 	case hotkey::LUA_CONSOLE:
 		return true;
 

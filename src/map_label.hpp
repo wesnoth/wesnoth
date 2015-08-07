@@ -71,6 +71,7 @@ public:
 	const display& disp() const;
 
 	const std::string& team_name() const;
+	const std::vector<std::string>& all_categories() const;
 
 	void set_team(const team*);
 
@@ -93,6 +94,9 @@ private:
 
 	team_label_map labels_;
 	bool enabled_;
+	
+	mutable std::vector<std::string> categories;
+	mutable bool categories_dirty;
 };
 
 /// To store label data
