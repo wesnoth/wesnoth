@@ -34,6 +34,10 @@ Version 1.13.1+dev:
  * WML engine:
    * Added support for mod_x,mod_y= in [terrain_graphics].
    * Added support for has_flag= in terrain graphics [variant].
+   * Added category= to [label] - allows grouping labels so that players can
+     show/hide them
+ * Editor:
+   * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
    * Fixed Generate Map dialog bug that caused last choice of map
      generator to not be actually selected (bug #23711).
