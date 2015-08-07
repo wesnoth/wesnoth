@@ -29,6 +29,7 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
@@ -72,28 +73,153 @@ namespace gui2
 
 REGISTER_DIALOG(addon_list)
 
-void taddon_list::collapse(tgrid& grid)
+struct filter_transform
 {
-	find_widget<ttoggle_button>(&grid, "expand", false)
-			.set_visible(twidget::tvisible::visible);
+	filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
+	bool operator()(const config& cfg) const
+	{
+			FOREACH(const AUTO& filter, filtertext_)
+			{			
+				bool found = false;
+				FOREACH(const AUTO& attribute, cfg.attribute_range())
+				{
+					std::string val = attribute.second.str();
+					if(std::search(val.begin(),
+						val.end(),
+						filter.begin(),
+						filter.end(),
+						chars_equal_insensitive)
+						!= val.end())
+					{
+						found = true;
+						break;
+					}
+				}
+				if(!found)
+				{
+					return false;
+				}
+			}
+			return true;
+	}
+	const std::vector<std::string> filtertext_;
+};
 
-	find_widget<ttoggle_button>(&grid, "collapse", false)
-			.set_visible(twidget::tvisible::invisible);
-
-	find_widget<tlabel>(&grid, "description", false)
-			.set_visible(twidget::tvisible::invisible);
+void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text)
+{
+	tlistbox& listbox = find_widget<tlistbox>(textbox->get_window(), "addons", true);
+	filter_transform filter(utils::split(text, ' '));
+	std::vector<bool> res;
+	res.reserve(cfg_.child_count("campaign"));
+	FOREACH(const AUTO& child, cfg_.child_range("campaign"))
+	{
+		res.push_back(filter(child));
+	}
+	listbox.set_row_shown(res);
 }
 
-void taddon_list::expand(tgrid& grid)
+void taddon_list::on_order_button_click(twindow& window, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down, twidget& w)
 {
-	find_widget<ttoggle_button>(&grid, "expand", false)
-			.set_visible(twidget::tvisible::hidden);
+	tselectable_& selectable = dynamic_cast<tselectable_&>(w);
+	FOREACH(AUTO& other, orders_)
+	{
+		if(other != &selectable) {
+			other->set_value(0);
+		}
+	}
+	tlistbox& listbox = find_widget<tlistbox>(&window, "addons", true);
+	switch(selectable.get_value())
+	{
+	case 0:
+		listbox.order_by(std::less<unsigned>());
+		break;
+	case 1:
+		listbox.order_by(up);
+		break;
+	case 2:
+		listbox.order_by(down);
+		break;
+	}
+}
 
-	find_widget<ttoggle_button>(&grid, "collapse", false)
-			.set_visible(twidget::tvisible::visible);
+void taddon_list::register_sort_button(twindow& window, const std::string& id, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down)
+{
+	tselectable_& selectable = find_widget<tselectable_>(&window, id, true);
+	orders_.push_back(&selectable);
+	selectable.set_callback_state_change(boost::bind(&taddon_list::on_order_button_click, this, boost::ref(window), up, down, _1));
+}
+namespace {
+	/// TODO: it would be better if we didnt have to parse the config every time.
+	bool str_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
+	{
+		return cfg->child("campaign", i1)[prop_id].str() < cfg->child("campaign", i2)[prop_id].str();
+	}
+	bool str_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
+	{
+		return cfg->child("campaign", i1)[prop_id].str() > cfg->child("campaign", i2)[prop_id].str();
+	}
+	bool num_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
+	{
+		return cfg->child("campaign", i1)[prop_id].to_int() < cfg->child("campaign", i2)[prop_id].to_int();
+	}
+	bool num_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
+	{
+		return cfg->child("campaign", i1)[prop_id].to_int() > cfg->child("campaign", i2)[prop_id].to_int();
+	}
 
-	find_widget<tlabel>(&grid, "description", false)
+	void show_desc_impl(unsigned index, tlistbox& list, tgrid &lower_grid,twidget& w)
+	{
+		// showing teh description ona  seperate multipage woudo be better specially on large screens.
+		tselectable_& selectable = dynamic_cast<tselectable_ &>(w);
+		list.select_row(index);
+		lower_grid.set_visible(!selectable.get_value_bool() ? twidget::tvisible::invisible : twidget::tvisible::visible);
+	}
+
+}
+void taddon_list::register_sort_button_alphabetical(twindow& window, const std::string& id, const std::string& prop_id)
+{
+	register_sort_button(window, id, boost::bind(&str_up, &cfg_, prop_id, _1, _2), boost::bind(&str_down, &cfg_, prop_id, _1, _2));
+}
+
+void taddon_list::register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id)
+{
+	
+	register_sort_button(window, id, boost::bind(&num_up, &cfg_, prop_id, _1, _2), boost::bind(&num_down, &cfg_, prop_id, _1, _2));
+}
+
+
+void taddon_list::expand(tgrid& grid, twidget& w)
+{
+	tselectable_& selectable = dynamic_cast<tselectable_&>(w);
+	if(selectable.get_value_bool())
+	{
+		find_widget<tlabel>(&grid, "description", false)
 			.set_visible(twidget::tvisible::visible);
+	}
+	else
+	{
+		find_widget<tlabel>(&grid, "description", false)
+			.set_visible(twidget::tvisible::invisible);
+	}
+}
+
+namespace {
+	bool default_sort(const tpane::titem& i1, const tpane::titem& i2)
+	{
+		return i1.id < i2.id;
+	}
+
+	template<typename T>
+	void sort_callback(twidget& w, tpane* pane, const std::string& name_prop)
+	{
+		tselectable_& selectable = dynamic_cast<tselectable_&>(w);
+		if(selectable.get_value() == 0) {
+			pane->sort(&default_sort);
+		}
+		else {
+			pane->sort(boost::bind(&sort<T>,  _1, _2, name_prop, (selectable.get_value() == 1)));
+		}
+	}
 }
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
@@ -104,35 +230,9 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 		tpane& pane = find_widget<tpane>(&window, "addons", false);
 
+		find_widget<tselectable_>(&window, "sort_name", false).set_callback_state_change(boost::bind(&sort_callback<std::string>, _1, &pane, "name"));
+		find_widget<tselectable_>(&window, "sort_size", false).set_callback_state_change(boost::bind(&sort_callback<std::string>, _1, &pane, "size"));
 
-		tpane::tcompare_functor ascending_name_functor
-				= boost::bind(&sort<std::string>, _1, _2, "name", true);
-
-		tpane::tcompare_functor descending_name_functor
-				= boost::bind(&sort<std::string>, _1, _2, "name", false);
-
-		tpane::tcompare_functor ascending_size_functor
-				= boost::bind(&sort<int>, _1, _2, "size", true);
-
-		tpane::tcompare_functor descending_size_functor
-				= boost::bind(&sort<int>, _1, _2, "size", false);
-
-
-		connect_signal_mouse_left_click(
-				find_widget<tbutton>(&window, "sort_name_ascending", false),
-				boost::bind(&tpane::sort, &pane, ascending_name_functor));
-
-		connect_signal_mouse_left_click(
-				find_widget<tbutton>(&window, "sort_name_descending", false),
-				boost::bind(&tpane::sort, &pane, descending_name_functor));
-
-		connect_signal_mouse_left_click(
-				find_widget<tbutton>(&window, "sort_size_ascending", false),
-				boost::bind(&tpane::sort, &pane, ascending_size_functor));
-
-		connect_signal_mouse_left_click(
-				find_widget<tbutton>(&window, "sort_size_descending", false),
-				boost::bind(&tpane::sort, &pane, descending_size_functor));
 
 		/***** ***** Init the filter text box. ***** *****/
 
@@ -194,8 +294,26 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 			item["label"] = c["size"];
 			data.insert(std::make_pair("size", item));
 
+			item["label"] = c["description"];
+			data.insert(std::make_pair("description", item));
+
 			list.add_row(data);
+			unsigned index = list.get_item_count() - 1;
+			ttoggle_button& button = find_widget<ttoggle_button>(list.get_row_grid(list.get_item_count() - 1), "expand", true);
+			tgrid& lower_grid = find_widget<tgrid>(list.get_row_grid(list.get_item_count() - 1), "description_grid", false);
+			lower_grid.set_visible(twidget::tvisible::invisible);
+			button.set_callback_state_change(boost::bind(show_desc_impl, index, boost::ref(list), boost::ref(lower_grid), _1));
 		}
+		register_sort_button_alphabetical(window, "sort_name", "name");
+		register_sort_button_alphabetical(window, "sort_author", "author");
+		register_sort_button_numeric(window, "sort_downloads", "downloads");
+		register_sort_button_numeric(window, "sort_size", "size");
+
+		ttext_box& filter_box
+				= find_widget<ttext_box>(&window, "filter", false);
+
+		filter_box.set_text_changed_callback(
+			boost::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
 	}
 }
 
@@ -250,18 +368,12 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 	tgrid* grid = pane.grid(id);
 	assert(grid);
 
-	ttoggle_button* collapse
-			= find_widget<ttoggle_button>(grid, "collapse", false, false);
+	ttoggle_button* expand
+			= find_widget<ttoggle_button>(grid, "expand", false, false);
 
-	if(collapse) {
-		collapse->set_visible(twidget::tvisible::invisible);
-		collapse->set_callback_state_change(
-				boost::bind(&taddon_list::collapse, this, boost::ref(*grid)));
-
-		find_widget<ttoggle_button>(grid, "expand", false)
-				.set_callback_state_change(boost::bind(
-						 &taddon_list::expand, this, boost::ref(*grid)));
-
+	if(expand) {
+		expand->set_callback_state_change(
+				boost::bind(&taddon_list::expand, this, boost::ref(*grid), _1));
 		find_widget<tlabel>(grid, "description", false)
 				.set_visible(twidget::tvisible::invisible);
 	}
@@ -269,7 +381,7 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 
 void taddon_list::load(tpane& pane)
 {
-	if(cfg_iterators_.first != cfg_iterators_.second) {
+	while(cfg_iterators_.first != cfg_iterators_.second) {
 		create_campaign(pane, *cfg_iterators_.first);
 		++cfg_iterators_.first;
 	}
