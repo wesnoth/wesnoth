@@ -38,8 +38,8 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 	
 	for(size_t i = 0; i < all_categories.size(); i++) {
 		all_labels[all_categories[i]] = true;
-		if(all_categories[i].substr(4) == "cat:")
-			labels_display[all_categories[i]] = all_categories[i].substr(0,5);
+		if(all_categories[i].substr(0,4) == "cat:")
+			labels_display[all_categories[i]] = all_categories[i].substr(4);
 		else if(all_categories[i] == "team")
 			labels_display[all_categories[i]] = _("Team Labels");
 		// TODO: Translatable names for categories?
@@ -59,7 +59,16 @@ void tlabel_settings::pre_show(CVideo& /*video*/, twindow& window) {
 		const std::string& category = label_entry.first;
 		const bool& visible = label_entry.second;
 		
-		list_data["cat_name"]["label"] = labels_display[category];
+		std::string name = labels_display[category];
+		if(category.substr(0,5) == "side:") {
+			int team = lexical_cast<int>(category.substr(5)) - 1;
+			Uint32 which_color = game_config::tc_info(viewer.teams()[team].color())[0];
+			std::ostringstream sout;
+			sout << "<span color='#" << std::hex << which_color << "'>" << name << "</span>";
+			name = sout.str();
+		}
+		
+		list_data["cat_name"]["label"] = name;
 		cats_listbox.add_row(list_data);
 		
 		tgrid* grid = cats_listbox.get_row_grid(cats_listbox.get_item_count() - 1);
@@ -67,7 +76,10 @@ void tlabel_settings::pre_show(CVideo& /*video*/, twindow& window) {
 		status.set_value(visible);
 		status.set_callback_state_change(boost::bind(&tlabel_settings::toggle_category, this, _1, category));
 		
-		// TODO: Colour player names
+		if(category.substr(0,5) == "side:") {
+			tlabel& label = find_widget<tlabel>(grid, "cat_name", false);
+			label.set_use_markup(true);
+		}
 	}
 }
 
