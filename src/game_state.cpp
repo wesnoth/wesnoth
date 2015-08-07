@@ -175,6 +175,13 @@ void game_state::init(const int ticks, play_controller & pc)
 		{
 			build_team_stage_two(tb_ptr);
 		}
+		for(size_t i = 0; i < board_.teams_.size(); i++) {
+			// Labels from players in your ignore list default to hidden
+			if(preferences::is_ignored(board_.teams_[i].current_player())) {
+				std::string label_cat = "side:" + str_cast(i + 1);
+				board_.hidden_label_categories_ref().push_back(label_cat);
+			}
+		}
 	}
 
 	pathfind_manager_.reset(new pathfind::manager(level_));
