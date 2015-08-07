@@ -38,6 +38,7 @@ REGISTER_WIDGET(toggle_button)
 ttoggle_button::ttoggle_button()
 	: tcontrol(COUNT)
 	, state_(ENABLED)
+	, state_num_(0)
 	, retval_(0)
 	, callback_state_change_()
 	, icon_name_()
@@ -56,6 +57,14 @@ ttoggle_button::ttoggle_button()
 			_3));
 }
 
+unsigned ttoggle_button::num_states() const
+{
+	std::div_t res = std::div(this->config()->state.size(), COUNT);
+	assert(res.rem == 0);
+	assert(res.quot > 0);
+	return res.quot;
+}
+
 void ttoggle_button::set_members(const string_map& data)
 {
 	// Inherit
@@ -70,28 +79,20 @@ void ttoggle_button::set_members(const string_map& data)
 void ttoggle_button::set_active(const bool active)
 {
 	if(active) {
-		if(get_value()) {
-			set_state(ENABLED_SELECTED);
-		} else {
-			set_state(ENABLED);
-		}
+		set_state(ENABLED);
 	} else {
-		if(get_value()) {
-			set_state(DISABLED_SELECTED);
-		} else {
-			set_state(DISABLED);
-		}
+		set_state(DISABLED);
 	}
 }
 
 bool ttoggle_button::get_active() const
 {
-	return state_ != DISABLED && state_ != DISABLED_SELECTED;
+	return state_ != DISABLED;
 }
 
 unsigned ttoggle_button::get_state() const
 {
-	return state_;
+	return state_ +  COUNT * state_num_;
 }
 
 void ttoggle_button::update_canvas()
@@ -109,17 +110,14 @@ void ttoggle_button::update_canvas()
 	set_is_dirty(true);
 }
 
-void ttoggle_button::set_value(const bool selected)
+void ttoggle_button::set_value(const unsigned selected)
 {
 	if(selected == get_value()) {
 		return;
 	}
+	state_num_ = selected % num_states();
+	set_is_dirty(true);
 
-	if(selected) {
-		set_state(static_cast<tstate>(state_ + ENABLED_SELECTED));
-	} else {
-		set_state(static_cast<tstate>(state_ - ENABLED_SELECTED));
-	}
 }
 
 void ttoggle_button::set_retval(const int retval)
@@ -150,12 +148,7 @@ void ttoggle_button::signal_handler_mouse_enter(const event::tevent event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-
-	if(get_value()) {
-		set_state(FOCUSSED_SELECTED);
-	} else {
-		set_state(FOCUSSED);
-	}
+	set_state(FOCUSSED);
 	handled = true;
 }
 
@@ -163,12 +156,7 @@ void ttoggle_button::signal_handler_mouse_leave(const event::tevent event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-
-	if(get_value()) {
-		set_state(ENABLED_SELECTED);
-	} else {
-		set_state(ENABLED);
-	}
+	set_state(ENABLED);
 	handled = true;
 }
 
@@ -179,11 +167,7 @@ void ttoggle_button::signal_handler_left_button_click(const event::tevent event,
 
 	sound::play_UI_sound(settings::sound_toggle_button_click);
 
-	if(get_value()) {
-		set_state(ENABLED);
-	} else {
-		set_state(ENABLED_SELECTED);
-	}
+	set_value(get_value() + 1);
 
 	if(callback_state_change_) {
 		callback_state_change_(*this);
