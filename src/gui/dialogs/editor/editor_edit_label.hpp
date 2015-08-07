@@ -36,16 +36,18 @@ public:
 	teditor_edit_label(std::string& text,
 					   bool& immutable,
 					   bool& visible_fog,
-					   bool& visible_shroud);
+					   bool& visible_shroud,
+					   std::string& category);
 
 	/** The execute function see @ref tdialog for more information. */
 	static bool execute(std::string& text,
 						bool& immutable,
 						bool& visible_fog,
 						bool& visible_shroud,
+						std::string& category,
 						CVideo& video)
 	{
-		return teditor_edit_label(text, immutable, visible_fog, visible_shroud)
+		return teditor_edit_label(text, immutable, visible_fog, visible_shroud, /*color,*/ category)
 				.show(video);
 	}
 

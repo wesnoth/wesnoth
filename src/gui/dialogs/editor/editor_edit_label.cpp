@@ -49,7 +49,8 @@ REGISTER_DIALOG(editor_edit_label)
 teditor_edit_label::teditor_edit_label(std::string& text,
 									   bool& immutable,
 									   bool& visible_fog,
-									   bool& visible_shroud)
+									   bool& visible_shroud,
+									   std::string& category)
 {
 	// std::string text = label.text();
 	// bool immutable = label.immutable();
@@ -65,6 +66,7 @@ teditor_edit_label::teditor_edit_label(std::string& text,
 	// true;
 
 	register_text("label", true, text, true);
+	register_text("category", true, category, false);
 	register_bool("immutable_toggle", true, immutable);
 	register_bool("visible_fog_toggle", true, visible_fog);
 	register_bool("visible_shroud_toggle", true, visible_shroud);

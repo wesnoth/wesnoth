@@ -54,6 +54,7 @@ namespace events {
 class game_board : public display_context {
 
 	std::vector<team> teams_;
+	std::vector<std::string> labels_;
 
 	boost::scoped_ptr<gamemap> map_;
 	unit_map units_;
@@ -93,6 +94,7 @@ class game_board : public display_context {
 	virtual const std::vector<team> & teams() const { return teams_; }
 	virtual const gamemap & map() const { return *map_; }
 	virtual const unit_map & units() const { return units_; }
+	virtual const std::vector<std::string> & hidden_label_categories() const { return labels_; }
 
 	// Copy and swap idiom, because we have a scoped pointer.
 

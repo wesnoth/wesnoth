@@ -1367,7 +1367,7 @@ private:
 		SDL_Color color = int_to_color(team::get_side_rgb(ai_.get_side()));
 
 		const terrain_label *res;
-		res = gui->labels().set_label(location, text, team_name, color);
+		res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_name, color);
 		if (res && resources::recorder)
 			resources::recorder->add_label(res);
         }

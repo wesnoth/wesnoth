@@ -57,7 +57,7 @@ static void display_label(int /*side*/, const map_location& location, const std:
 	SDL_Color color = int_to_color(team::get_side_rgb(surrounded ? 2 : 1 ) );//@fixme: for tests
 
 	const terrain_label *res;
-	res = gui->labels().set_label(location, text, team_name, color);
+	res = gui->labels().set_label(location, text, surrounded, team_name, color);
 	if (res && resources::recorder)
 		resources::recorder->add_label(res);
 }
