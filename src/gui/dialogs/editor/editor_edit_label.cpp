@@ -18,6 +18,9 @@
 
 #include "gui/widgets/settings.hpp"
 
+#include <SDL_video.h>
+#include <boost/bind.hpp>
+
 namespace gui2
 {
 
@@ -50,7 +53,9 @@ teditor_edit_label::teditor_edit_label(std::string& text,
 									   bool& immutable,
 									   bool& visible_fog,
 									   bool& visible_shroud,
+									   SDL_Color& color,
 									   std::string& category)
+	: color_store(color)
 {
 	// std::string text = label.text();
 	// bool immutable = label.immutable();
@@ -70,5 +75,22 @@ teditor_edit_label::teditor_edit_label(std::string& text,
 	register_bool("immutable_toggle", true, immutable);
 	register_bool("visible_fog_toggle", true, visible_fog);
 	register_bool("visible_shroud_toggle", true, visible_shroud);
+	register_color_component("slider_red", &SDL_Color::r);
+	register_color_component("slider_green", &SDL_Color::g);
+	register_color_component("slider_blue", &SDL_Color::b);
+}
+
+void teditor_edit_label::register_color_component(std::string widget_id, Uint8 SDL_Color::* component) {
+	register_integer(widget_id, true,
+					 boost::bind(&teditor_edit_label::load_color_component, this, component),
+					 boost::bind(&teditor_edit_label::save_color_component, this, component, _1));
+}
+
+int teditor_edit_label::load_color_component(Uint8 SDL_Color::* component) {
+	return color_store.*component;
+}
+
+void teditor_edit_label::save_color_component(Uint8 SDL_Color::* component, const int value) {
+	color_store.*component = value;
 }
 }

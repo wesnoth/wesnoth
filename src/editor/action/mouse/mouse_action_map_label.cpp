@@ -76,12 +76,13 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 	bool visible_shroud   = old_label ? old_label->visible_in_shroud() : false;
 	bool visible_fog      = old_label ? old_label->visible_in_fog()    : true;
 	bool immutable        = old_label ? old_label->immutable()         : true;
+	SDL_Color color       = old_label ? old_label->color()             : font::NORMAL_COLOR;
 
-	gui2::teditor_edit_label d(label, immutable, visible_fog, visible_shroud, category);
+	gui2::teditor_edit_label d(label, immutable, visible_fog, visible_shroud, color, category);
 
 	editor_action* a = NULL;
 	if(d.show(disp.video())) {
-		a = new editor_action_label(hex, label, team_name, font::NORMAL_COLOR
+		a = new editor_action_label(hex, label, team_name, color
 				, visible_fog, visible_shroud, immutable, category);
 		update_brush_highlights(disp, hex);
 	}

@@ -37,6 +37,7 @@ public:
 					   bool& immutable,
 					   bool& visible_fog,
 					   bool& visible_shroud,
+					   SDL_Color& color,
 					   std::string& category);
 
 	/** The execute function see @ref tdialog for more information. */
@@ -44,14 +45,19 @@ public:
 						bool& immutable,
 						bool& visible_fog,
 						bool& visible_shroud,
+						SDL_Color& color,
 						std::string& category,
 						CVideo& video)
 	{
-		return teditor_edit_label(text, immutable, visible_fog, visible_shroud, /*color,*/ category)
+		return teditor_edit_label(text, immutable, visible_fog, visible_shroud, color, category)
 				.show(video);
 	}
 
 private:
+	SDL_Color& color_store;
+	int load_color_component(Uint8 SDL_Color::* component);
+	void save_color_component(Uint8 SDL_Color::* component, const int value);
+	void register_color_component(std::string widget_id, Uint8 SDL_Color::* component);
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
