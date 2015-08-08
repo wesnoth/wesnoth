@@ -1,3 +1,4 @@
+  Unicode true
   SetCompressor /SOLID lzma
 
   !define MULTIUSER_EXECUTIONLEVEL Highest
@@ -73,7 +74,7 @@
   !insertmacro MUI_PAGE_INSTFILES
 
   !insertmacro MUI_PAGE_FINISH
-  
+
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
 
@@ -83,13 +84,13 @@
 
 ;--------------------------------
 ;Reserve Files
-  
+
   ;If you are using solid compression, files that are required before
   ;the actual installation should be stored first in the data block,
   ;because this will make your installer start faster.
-  
+
   !insertmacro MUI_RESERVEFILE_LANGDLL
-  ReserveFile "${NSISDIR}\Plugins\*.dll"
+  ReserveFile /plugin "${NSISDIR}\Plugins\x86-unicode\*.dll"
 
 ;--------------------------------
 ;Installer Sections
@@ -115,13 +116,13 @@ Section "Battle for Wesnoth" BfWSection
   %NSIS_INSTALL_FILES
 
   SetOutPath "$INSTDIR"
-  
+
   ;Store installation folder
   WriteRegStr SHCTX "Software\Battle for Wesnoth\%version" "" $INSTDIR
-  
+
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-  
+
   ;Add uninstall information
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayName" "Battle for Wesnoth %version" 
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayIcon" "$\"$INSTDIR\wesnoth.exe$\""
@@ -194,8 +195,15 @@ Function StartMenuShortcuts
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk" "$INSTDIR\players_changelog.txt"
   ${EndIf}
 
-  ; Add translations to desktop.ini
   StrCpy $0 "$SMPROGRAMS\$StartMenuFolder\desktop.ini"
+  ; Create desktop.ini file (allows to display localized start menu entries)
+  ${IfNot} ${FileExists} $0
+    FileOpen $9 $0 w
+      FileWriteUTF16LE $9 ${U+FEFF} ; UTF16 BOM to enforce encoding
+    FileClose $9
+  ${EndIf}
+
+  ; Add translations to desktop.ini
   ${If} $StartMenuFolder == "Battle for Wesnoth %version"
     WriteIniStr $0 ".ShellClassInfo" "LocalizedResourceName" "$(LWesnoth) %version"
   ${EndIf}
@@ -238,6 +246,15 @@ Section "Uninstall"
 
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
 
+; If we created desktop.ini it'll start with a blank line
+  FileOpen $9 "$SMPROGRAMS\$StartMenuFolder\desktop.ini" r
+    FileReadUTF16LE $9 $1
+  FileClose $9
+  DetailPrint $1
+  ${If} $1 == "$\r$\n"
+    Delete "$SMPROGRAMS\$StartMenuFolder\desktop.ini"
+  ${EndIf}
+
   Delete "$SMPROGRAMS\$StartMenuFolder\License.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk"
@@ -261,5 +278,5 @@ Function un.onInit
 
   !insertmacro MULTIUSER_UNINIT
   !insertmacro MUI_UNGETLANGUAGE
-  
+
 FunctionEnd
