@@ -874,6 +874,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/game_save.cpp
 	gui/dialogs/game_version.cpp
 	gui/dialogs/gamestate_inspector.cpp
+	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
 	gui/dialogs/lobby/lobby_data.cpp
 	gui/dialogs/lobby/lobby_info.cpp

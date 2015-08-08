@@ -49,6 +49,7 @@
 #include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/lobby_player_info.hpp"
