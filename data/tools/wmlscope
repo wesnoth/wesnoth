@@ -183,19 +183,41 @@ class CrossRefLister(CrossRef):
                     for (ln, args) in refs:
                         print('"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)])))
 
-    def undersized(self):
-        "Report undersized images that cannot be safely overlaid on a hex."
+    def incorrectlysized(self):
+        "Report incorrectly sized images that cannot be safely used for their intended purpose"
         try:
             from PIL import Image
             for (namespace, filename) in xref.filelist.generator():
                 if filename.endswith(".png"):
+                    fn_list = filename.split(os.sep)
                     try:
-                        with Image.open(filename) as im:
-                            (x, y) = im.size
-                        if x <= 60 or y <= 60:
-                            print("%s: %d by %d" % (filename, x, y))
+                        im = Image.open(filename) # Pillow doesn't support, nor need, the with statement
+                        (x, y) = im.size
+                        # these checks rely on add-ons that place files following mainline conventions
+                        # I'm aware that this may not always be the case
+                        # but the alternative will be implementing a more sophisticated check in wmllint
+                        if "images" in fn_list:
+                            expected_size = None
+                            if "attacks" in fn_list or "icons" in fn_list:
+                                # images used in attack dialogs should be 60x60
+                                if x != 60 or y != 60:
+                                    expected_size = (60,60)
+                            elif "flags" in fn_list:
+                                # flags should be 72x72, but their icons should be 24 x 16
+                                if "icon" in os.path.split(filename)[1]:
+                                    if x != 24 or y != 16:
+                                        expected_size = (24,16)
+                                else:
+                                    if x != 72 or y != 72:
+                                        expected_size = (72,72)
+                            elif "items" in fn_list:
+                                # items should be 72x72
+                                if x != 72 or y != 72:
+                                    expected_size = (72,72)
+                            if expected_size:
+                                print("%s: image is %d x %d, expected %d x %d" % (filename, x, y, expected_size[0], expected_size[1]))
                     except IOError:
-                        print("%s: PIL internal error" % filename, file=sys.stderr)
+                        print("%s: unable to read file" % filename, file=sys.stderr)
         except ImportError:
             print("""Please install the Python Pillow Library to enable image size check.
 You can download it from https://pypi.python.org/pypi/Pillow
@@ -484,7 +506,7 @@ Usage: wmlscope [options] dirpath
             if definitions:
                 xref.deflist(predicate)
             if unresolved:
-                xref.undersized()
+                xref.incorrectlysized()
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
     except KeyboardInterrupt:
