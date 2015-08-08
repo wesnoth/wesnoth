@@ -12,12 +12,13 @@
   !include "MUI2.nsh"
   !include "nsDialogs.nsh"
   !include "LogicLib.nsh"
+  !include "WinVer.nsh"
 
 ;--------------------------------
 ;General
 
   ;Name and file
-  Name "Battle for Wesnoth"
+  Name $(LWesnoth)
   OutFile "wesnoth-%version-win32.exe"
 
 ;--------------------------------
@@ -40,6 +41,8 @@
 
   !define MUI_WELCOMEFINISHPAGE_BITMAP packaging\windows\WindowsInstallerGraphic.bmp
   !define MUI_ABORTWARNING
+  !define MUI_WELCOMEPAGE_TITLE_3LINES
+  !define MUI_FINISHPAGE_TITLE_3LINES
 
 ;--------------------------------
 ;Language Selection Dialog Settings
@@ -122,26 +125,8 @@ Section "Battle for Wesnoth" BfWSection
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayVersion" "%version"
   WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoModify" 1
   WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoRepair" 1
-  
-  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
-    
-  ${If} $UserdataMyDocumentsRadioButtonState == ${BST_CHECKED}
-    StrCpy $UserdataFlags "--config-dir ${UserdataDir}"
-  ${Else}
-    StrCpy $UserdataFlags ""
-  ${EndIf}
-    ;Create shortcuts
-    CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe" $UserdataFlags
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e $UserdataFlags" "$INSTDIR\wesnoth_editor-icon.ico"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk" "$INSTDIR\wesnothd.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.en.html"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk" "$INSTDIR\changelog.txt"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk" "$INSTDIR\players_changelog.txt"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\License.lnk" "$INSTDIR\COPYING.txt"
-  
-  !insertmacro MUI_STARTMENU_WRITE_END
+
+  Call StartMenuShortcuts
 
 SectionEnd
 
@@ -176,6 +161,46 @@ Function UserdataPage
 	${NSD_SetState} $UserdataInstalldirRadioButton $UserdataInstalldirRadioButtonState
 
 	nsDialogs::Show
+
+FunctionEnd
+
+Function StartMenuShortcuts
+
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+
+  ${If} $UserdataMyDocumentsRadioButtonState == ${BST_CHECKED}
+    StrCpy $UserdataFlags "--config-dir ${UserdataDir}"
+  ${Else}
+    StrCpy $UserdataFlags ""
+  ${EndIf}
+
+  ; Create shortcuts
+  CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
+  CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe" $UserdataFlags
+  CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.$(LCode).html"
+
+  ${If} ${IsNT}
+  ${AndIf} ${AtMostWin7}
+  ; Win7 or lower has collapsed start menu folders, activate additional shortcuts.
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e $UserdataFlags" "$INSTDIR\wesnoth_editor-icon.ico"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk" "$INSTDIR\changelog.txt"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk" "$INSTDIR\players_changelog.txt"
+  ${EndIf}
+
+  ; Add translations to desktop.ini
+  StrCpy $0 "$SMPROGRAMS\$StartMenuFolder\desktop.ini"
+  ${If} $StartMenuFolder == "Battle for Wesnoth %version"
+    WriteIniStr $0 ".ShellClassInfo" "LocalizedResourceName" "$(LWesnoth) %version"
+  ${EndIf}
+  WriteIniStr $0 "LocalizedFileNames" "Battle for Wesnoth.lnk" "$(LWesnoth)"
+  WriteIniStr $0 "LocalizedFileNames" "Manual.lnk" "$(LManual)"
+  WriteIniStr $0 "LocalizedFileNames" "Map editor.lnk" "$(LEditor)"
+
+  SetFileAttributes "$SMPROGRAMS\$StartMenuFolder" SYSTEM
+  SetFileAttributes $0 HIDDEN|SYSTEM
+
+  !insertmacro MUI_STARTMENU_WRITE_END
 
 FunctionEnd
 
