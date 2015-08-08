@@ -672,12 +672,10 @@ env.Alias('data-dist', data_tarball)
 # Windows installer
 #
 
-text_builder = Builder(action = Copy("$TARGET", "$SOURCE"), single_source = True, suffix = ".txt")
 env.WindowsInstaller([
     wesnoth, wesnothd,
     Dir(installable_subs), env["nls"] and Dir("translations") or [],
-    glob("*.dll"),
-    text_builder(env, source = Split("README.md copyright COPYING changelog players_changelog"))
+    glob("*.dll")
     ])
 
 #

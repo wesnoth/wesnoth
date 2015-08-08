@@ -105,7 +105,13 @@ Section "Battle for Wesnoth" BfWSection
 
   SetOutPath "$INSTDIR"
   File packaging\windows\wesnoth_editor-icon.ico
-  
+
+  File "/oname=README.txt" README.md
+  File "/oname=copyright.txt" copyright
+  File "/oname=COPYING.txt" COPYING
+  File "/oname=changelog.txt" changelog
+  File "/oname=players_changelog.txt" players_changelog
+
   %NSIS_INSTALL_FILES
 
   SetOutPath "$INSTDIR"
@@ -219,6 +225,12 @@ Section "Uninstall"
   %NSIS_UNINSTALL_FILES
   Delete "$INSTDIR\wesnoth_editor-icon.ico"
   RMDir /r "$INSTDIR\manual"
+  Delete $INSTDIR\std*.txt
+  Delete $INSTDIR\README.txt
+  Delete $INSTDIR\copyright.txt
+  Delete $INSTDIR\COPYING.txt
+  Delete $INSTDIR\changelog.txt
+  Delete $INSTDIR\players_changelog.txt
 
   Delete "$INSTDIR\Uninstall.exe"
 
