@@ -458,6 +458,15 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 			std::remove(list.begin(), list.end(), "lua_interpreter")
 			, list.end());
 
+	/*
+	 * Disable label settings dialog test because we need a display_context
+	 * object, which we don't have, and it's a lot of work to produce a dummy
+	 * one.
+	 */
+	list.erase(
+			std::remove(list.begin(), list.end(), "label_settings")
+			, list.end());
+
 	//Window 'addon_description' registered but not tested.
 	//Window 'addon_filter_options' registered but not tested.
 	//Window 'addon_uninstall_list' registered but not tested.
