@@ -22,6 +22,8 @@ Limitations:
 
 from __future__ import print_function, unicode_literals, division
 from future_builtins import filter, map, zip
+input = raw_input
+range = xrange
 
 from functools import total_ordering
 import sys, re, copy, codecs
@@ -478,7 +480,7 @@ if __name__ == '__main__':
     flist = sys.argv[1:]
     if not flist:
         print('Current directory is', os.getcwd())
-        flist = glob.glob(os.path.join(os.getcwd(), raw_input('Which file(s) would you like to test?\n')))
+        flist = glob.glob(os.path.join(os.getcwd(), input('Which file(s) would you like to test?\n')))
     while flist:
         fname = flist.pop()
         if os.path.isdir(fname):

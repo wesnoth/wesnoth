@@ -183,6 +183,8 @@
 
 from __future__ import print_function, unicode_literals, division
 from future_builtins import filter, map, zip
+input = raw_input
+range = xrange
 
 import sys, os, re, getopt, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools import *
@@ -1415,7 +1417,7 @@ def global_sanity_check(filename, lines):
     capitalization_error = re.compile("(?<=[.!?])  +[a-z]")
     markcheck = True
     translation_mark = re.compile(r'_ *"')
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if '[' in lines[i]:
             preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
@@ -1709,14 +1711,14 @@ def global_sanity_check(filename, lines):
                         continue
                     elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not in_clear_menu_item and not directly_in_event[-1] and not in_time_area:
                         ids = value.split(",")
-                        for j in xrange(len(ids)):
+                        for id_ in ids:
                             # removal of leading whitespace of items in comma-separated lists
                             # is usually supported in the mainline wesnoth lua scripts
                             # not sure about trailing one
                             # also, do not complain about ids if they're referred to a menu item being cleared
-                            if ids[j].lstrip() not in present:
+                            if id_.lstrip() not in present:
                                 print('"%s", line %d: unknown \'%s\' referred to by id' \
-                                      % (filename, i+1, ids[j]))
+                                      % (filename, i+1, id_))
                 if (in_scenario or in_multiplayer) and key == "speaker":
                     if value not in present and value not in ("narrator", "unit", "second_unit") and value[0] not in ("$", "{"):
                         print('"%s", line %d: unknown speaker \'%s\' of [message]' \
@@ -1874,7 +1876,7 @@ def hack_syntax(filename, lines):
     #
     # Deal with a few Windows-specific problems for the sake of cross-
     # platform harmony. First, the use of backslashes in file paths.
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         if lines[i].lstrip().startswith("#"):
@@ -1898,7 +1900,7 @@ def hack_syntax(filename, lines):
                       % (filename, i+1, userdata.group(), userdata.group(1)))
         lines[i] = precomment + comment
     # Ensure that every attack has a translatable description.
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
 
             break
@@ -1933,7 +1935,7 @@ def hack_syntax(filename, lines):
     # Ensure that every speaker=narrator block without an image uses
     # wesnoth-icon.png as an image.
     need_image = in_message = False
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         precomment = lines[i].split("#")[0]
@@ -1952,7 +1954,7 @@ def hack_syntax(filename, lines):
             need_image = in_message = False
     # Hack tracking-map macros from 1.4 and earlier.  The idea is to lose
     # all assumptions about colors in the names
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         if lines[i].lstrip().startswith("#"):
@@ -1981,7 +1983,7 @@ def hack_syntax(filename, lines):
                 y = int(m.group(3)) + 5
                 lines[i] = lines[i][:m.start(0)] +("{%s %d %d}" % (n, x, y)) + lines[i][m.end(0):]
     # Fix bare strings containing single quotes; these confuse wesnoth-mode.el
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         elif lines[i].count("'") % 2 == 1:
@@ -1996,7 +1998,7 @@ def hack_syntax(filename, lines):
             except TypeError:
                 pass
     # Palette transformation for 1.7:
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         if lines[i].lstrip().startswith("#"):
@@ -2006,7 +2008,7 @@ def hack_syntax(filename, lines):
             lines[i] = re.sub(r"~RC\(([^=\)]*)=([^)]*)\)",r"~PAL(\1>\2)",lines[i])
     # Rename the terrain definition tag
     in_standing_anim = False
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         if lines[i].lstrip().startswith("#"):
@@ -2022,7 +2024,7 @@ def hack_syntax(filename, lines):
             lines[i] = re.sub(r"terrain([^_])", r"terrain_type\1", lines[i])
     # Rename two attributes in [set_variable]
     in_set_variable = False
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         if lines[i].lstrip().startswith("#"):
@@ -2036,7 +2038,7 @@ def hack_syntax(filename, lines):
             lines[i] = re.sub(r"random(?=\s*=)", r"rand", lines[i])
     # campaigns directory becomes add-ons
     in_binary_path = in_textdomain = False
-    for i in xrange(len(lines)):
+    for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         if lines[i].lstrip().startswith("#"):
@@ -2128,7 +2130,7 @@ def hack_syntax(filename, lines):
 
 def maptransform(filename, baseline, inmap, y):
     # Transform lines in maps
-    for i in xrange(len(inmap[y])):
+    for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
 
@@ -2163,11 +2165,11 @@ tagstack = []	# For tracking tag nesting
 def outermap(func, inmap):
     "Apply a transformation based on neighborhood to the outermost ring."
     # Top and bottom rows
-    for i in xrange(len(inmap[0])):
+    for i in range(len(inmap[0])):
         inmap[0][i] = func(inmap[0][i])
         inmap[len(inmap)-1][i] = func(inmap[len(inmap)-1][i])
     # Leftmost and rightmost columns excluding top and bottom rows
-    for i in xrange(1, len(inmap)-1):
+    for i in range(1, len(inmap)-1):
         inmap[i][0] = func(inmap[i][0])
         inmap[i][len(inmap[0])-1] = func(inmap[i][len(inmap[0])-1])
 
@@ -2292,12 +2294,12 @@ def translator(filename, mapxforms, textxform):
                     newdata.append(leadws + "mask=\"")
             original = copy.deepcopy(outmap)
             for transform in mapxforms:
-                for y in xrange(len(outmap)):
+                for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
             newdata += savedheaders
             if have_header and not have_delimiter:
                 newdata.append(terminator)
-            for y in xrange(len(outmap)):
+            for y in range(len(outmap)):
                 newdata.append(",".join(outmap[y]) + terminator)
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
@@ -2393,7 +2395,7 @@ def translator(filename, mapxforms, textxform):
     quotecount = 0
     display_state = False
     singleline = False
-    for i in xrange(len(transformed)):
+    for i in range(len(transformed)):
         if transformed[i] == '\n':
             if singleline:
                 singleline = False
@@ -2839,7 +2841,7 @@ is not necessary; also, frontslashes will also be recognized as directory separa
     After exiting this message: hit the up arrow key, edit your command, and press Enter.
 """ % re.sub(r'"', '-->>"<<--', arg), file=sys.stderr)
 
-                moreugly = raw_input('Press "H" if you need more help, or Enter to exit: ')
+                moreugly = input('Press "H" if you need more help, or Enter to exit: ')
                 if moreugly.lower().startswith('h'):
                     print("""
         Explanation:
