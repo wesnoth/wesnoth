@@ -3585,8 +3585,8 @@ int game_lua_kernel::intf_label(lua_State *L)
 
 		terrain_label label(screen.labels(), cfg.get_config());
 
-		screen.labels().set_label(label.location(), label.text(), label.team_name(), label.color(),
-				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.tooltip());
+		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_name(), label.color(),
+				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.category(), label.tooltip());
 	}
 	return 0;
 }

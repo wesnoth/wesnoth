@@ -47,11 +47,13 @@ public:
 	const terrain_label* get_label(const map_location& loc) const;
 	const terrain_label* set_label(const map_location& loc,
 							   const t_string& text,
+							   const int creator = -1,
 							   const std::string& team = "",
 							   const SDL_Color color = font::NORMAL_COLOR,
 							   const bool visible_in_fog = true,
 							   const bool visible_in_shroud = false,
 							   const bool immutable = false,
+							   const std::string& category = "",
 							   const t_string& tooltip = "" );
 
 	bool enabled() const { return enabled_; }
@@ -69,6 +71,7 @@ public:
 	const display& disp() const;
 
 	const std::string& team_name() const;
+	const std::vector<std::string>& all_categories() const;
 
 	void set_team(const team*);
 
@@ -91,6 +94,9 @@ private:
 
 	team_label_map labels_;
 	bool enabled_;
+	
+	mutable std::vector<std::string> categories;
+	mutable bool categories_dirty;
 };
 
 /// To store label data
@@ -99,6 +105,7 @@ class terrain_label
 {
 public:
 	terrain_label(const t_string& text,
+			const int creator,
 			const std::string& team_name,
 			const map_location& loc,
 			const map_labels& parent,
@@ -106,6 +113,7 @@ public:
 			const bool visible_in_fog = true,
 			const bool visible_in_shroud = false,
 			const bool immutable = false,
+			const std::string& category = "",
 			const t_string& tooltip = "" );
 
 	terrain_label(const map_labels &, const config &);
@@ -117,7 +125,9 @@ public:
 
 	const t_string& text() const;
 	const t_string& tooltip() const;
+	int creator() const;
 	const std::string& team_name() const;
+	const std::string& category() const;
 	bool visible_in_fog() const;
 	bool visible_in_shroud() const;
 	bool immutable() const;
@@ -127,17 +137,20 @@ public:
 	void set_text(const t_string&);
 
 	void update_info(const t_string&,
+					 const int creator,
 					 const t_string&,
 					 const std::string&,
 					 const SDL_Color);
 
 	void update_info(const t_string& text,
+			const int creator,
 			const t_string& tooltip,
 			const std::string& team_name,
 			const SDL_Color color,
 			const bool visible_in_fog,
 			const bool visible_in_shroud,
-			const bool immutable);
+			const bool immutable,
+			const std::string& category);
 
 	void recalculate();
 	void calculate_shroud();
@@ -156,10 +169,12 @@ private:
 
 	t_string text_;
 	t_string tooltip_;
+	std::string category_;
 	std::string team_name_;
 	bool visible_in_fog_;
 	bool visible_in_shroud_;
 	bool immutable_;
+	int creator_;
 
 	SDL_Color	color_;
 

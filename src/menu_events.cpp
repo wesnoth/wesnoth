@@ -42,6 +42,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/edit_label.hpp"
+#include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
@@ -1180,7 +1181,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if (res)
 			resources::recorder->add_label(res);
 	}
@@ -1194,6 +1195,12 @@ void menu_handler::clear_labels()
 		gui_->labels().clear(gui_->current_team_name(), false);
 		resources::recorder->clear_labels(gui_->current_team_name(), false);
 	}
+}
+	
+void menu_handler::label_settings() {
+	// TODO: I think redraw_everything might be a bit too much? It causes a flicker.
+	if(gui2::tlabel_settings::execute(board(), gui_->video()))
+		gui_->redraw_everything();
 }
 
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)

@@ -136,6 +136,9 @@ public:
 	virtual const gamemap & map() const {
 		return map_;
 	}
+	virtual const std::vector<std::string>& hidden_label_categories() const {
+		return lbl_categories_;
+	}
 
 	/**
 	 * Replace the [time]s of the currently active area.
@@ -478,6 +481,7 @@ private:
 	map_labels labels_;
 	unit_map units_;
 	std::vector<team> teams_;
+	std::vector<std::string> lbl_categories_;
 	boost::scoped_ptr<tod_manager> tod_manager_;
 	mp_game_settings mp_settings_;
 	game_classification game_classification_;

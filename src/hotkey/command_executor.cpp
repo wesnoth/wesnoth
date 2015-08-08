@@ -108,6 +108,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_RECALL:
 			recall();
 			break;
+		case HOTKEY_LABEL_SETTINGS:
+			label_settings();
+			break;
 		case HOTKEY_RECRUIT:
 			recruit();
 			break;

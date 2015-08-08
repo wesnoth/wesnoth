@@ -717,6 +717,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 			resources::screen->labels().set_label(label.location(),
 						label.text(),
+						label.creator(),
 						label.team_name(),
 						label.color());
 		}

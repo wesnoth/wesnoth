@@ -67,6 +67,7 @@ public:
 	virtual void start_network() {}
 	virtual void label_terrain(bool /*team_only*/) {}
 	virtual void clear_labels() {}
+	virtual void label_settings() {}
 	virtual void show_enemy_moves(bool /*ignore_units*/) {}
 	virtual void toggle_shroud_updates() {}
 	virtual void update_shroud_now() {}

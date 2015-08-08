@@ -70,6 +70,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_RECRUIT, "recruit", N_("Recruit"), false, scope_game, "" },
 	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false, scope_game, "" },
 	{ hotkey::HOTKEY_RECALL, "recall", N_("Recall"), false, scope_game, "" },
+	{ hotkey::HOTKEY_LABEL_SETTINGS, "label_settings", N_("Show/Hide Labels"), false, scope_game, "" },
 	{ hotkey::HOTKEY_ENDTURN, "endturn", N_("End Turn"), false, scope_game, "" },
 	//TODO: why has HOTKEY_TOGGLE_ELLIPSES more than scope_game ?
 	{ hotkey::HOTKEY_TOGGLE_ELLIPSES, "toggleellipses", N_("Toggle Ellipses"), false, scope_game | scope_editor | scope_main, "" },
