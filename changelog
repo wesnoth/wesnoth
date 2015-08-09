@@ -48,6 +48,8 @@ Version 1.13.1+dev:
      and stderr.txt.
    * Remember last selected modifications separately for single and multiplayer.
    * Fixed SDL2 compilation issues.
+   * Fixed RECRUIT_UNIT_VARIATIONS core WML macro leaking an internal temporary
+     variable ($recruited_unit_random_variation).
 
 Version 1.13.1:
  * Security fixes:
