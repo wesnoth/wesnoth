@@ -1844,7 +1844,7 @@ def consistency_check():
                   % (filename, line, unit_type, base_unit))
     # Check that all advancements are known units
     for (unit_id, filename, lineno, advancements) in advances:
-        advancements = map(string.strip, advancements.split(","))
+        advancements = [elem.strip() for elem in advancements.split(",")]
         known_units = unit_types + list(derivations.keys())
         bad_advancements = [x for x in advancements if x not in known_units]
         if bad_advancements:
