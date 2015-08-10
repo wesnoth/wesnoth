@@ -1076,7 +1076,7 @@ def global_sanity_check(filename, lines):
             continue
         elif "wmllint: notecheck on" in nav.text:
             notecheck = True
-        #print("Element = %s, text = %s" % (nav.element, `nav.text`))
+        #print("Element = %s, text = %s" % (nav.element, repr(nav.text)))
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
@@ -2550,7 +2550,7 @@ def spellcheck(fn, d):
 
     # Process this individual file
     for nav in WmllintIterator(filename=fn):
-        #print("element=%s, text=%s" % (nav.element, `nav.text`))
+        #print("element=%s, text=%s" % (nav.element, repr(nav.text)))
         # Recognize local spelling exceptions
         if not nav.element and "#" in nav.text:
             comment = nav.text[nav.text.index("#"):]
@@ -2945,7 +2945,7 @@ In your case, your system interprets your arguments as:
                                     with codecs.open(fn, "w", "utf8") as ofp:
                                         ofp.write(changed)
                     #except maptransform_error, e:
-                    #    print("wmllint: " + `e`, file=sys.stderr)
+                    #    print("wmllint: " + repr(e), file=sys.stderr)
                     except:
                         print("wmllint: internal error on %s" % fn, file=sys.stderr)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
