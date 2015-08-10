@@ -589,7 +589,7 @@ linechanges = (
         ("flat/grass-r3", "flat/grass3"),
         ("flat/grass-r2", "flat/grass2"),
         ("flat/grass-r1", "flat/grass1"),
-        ("second_value=", "value_second="),	# Correct earlier wmllint error
+        ("second_value=", "value_second="), # Correct earlier wmllint error
         (".stones", ".petrifies"),
         ("stones=", "petrifies="),
         # Changes just before 1.9.1
@@ -625,7 +625,7 @@ linechanges = (
         ('FLAG_VARIANT ragged','FLAG_VARIANT6 ragged'),
         ('FLAG_VARIANT "ragged"','FLAG_VARIANT6 ragged'),
 
-	# Changed in 1.11.15.
+        # Changed in 1.11.15.
         ("fight_on_without_leader=yes","defeat_condition=no_units_left"),
         ("fight_on_without_leader=no","defeat_condition=no_leader_left"),
         ("remove_from_carryover_on_leaders_loss=yes","remove_from_carryover_on_defeat=yes"),
@@ -693,7 +693,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
-    if type(tag) == type(()):	# Can take a list.
+    if type(tag) == type(()): # Can take a list.
         for t in tag:
             if within(t):
                 return True
@@ -704,7 +704,7 @@ def within(tag):
 
 def under(tag):
     "Did the specified tag lead the latest context?"
-    if type(tag) == type(()):	# Can take a list.
+    if type(tag) == type(()): # Can take a list.
         for t in tag:
             if within(t):
                 return True
@@ -754,7 +754,7 @@ notepairs = [
     ("{ABILITY_FEEDING}", "{SPECIAL_NOTES_FEEDING}"),
     ("{WEAPON_SPECIAL_BERSERK}", "{SPECIAL_NOTES_BERSERK}"),
     ("{WEAPON_SPECIAL_BACKSTAB}", "{SPECIAL_NOTES_BACKSTAB}"),
-    ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"),	# No } deliberately
+    ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"), # No } deliberately
     ("{WEAPON_SPECIAL_SLOW}", "{SPECIAL_NOTES_SLOW}"),
     ("{WEAPON_SPECIAL_PETRIFY}", "{SPECIAL_NOTES_PETRIFY}"),
     ("{WEAPON_SPECIAL_MARKSMAN}", "{SPECIAL_NOTES_MARKSMAN}"),
@@ -955,7 +955,7 @@ def pangoize(message, filename, line):
         if oldstyle not in message:
             continue
         where = message.find(oldstyle)
-        if message[where - 1] != '"':	# Start of string only
+        if message[where - 1] != '"': # Start of string only
             continue
         if message.strip()[-1] != '"':
             print('"%s", line %d: %s highlight at start of multiline string requires manual fix.' % (filename, line, oldstyle))
@@ -971,7 +971,7 @@ def pangoize(message, filename, line):
     if "<" in message or ">" in message:
         reduced = pangostrip(message)
         if "<" in reduced or ">" in reduced:
-            if message == reduced:	# No pango markup
+            if message == reduced: # No pango markup
                 here = message.find('<')
                 if message[here:here+4] != "&lt;":
                     message = message[:here] + "&lt;" + message[here+1:]
@@ -1301,7 +1301,7 @@ def global_sanity_check(filename, lines):
                         print('"%s", line %d: side number %s is out of sequence (%d expected)' \
                               % (filename, num, value, sidecount))
                 except ValueError:
-                    pass	# Ignore ill-formed integer literals
+                    pass # Ignore ill-formed integer literals
         except TypeError:
             pass
     # Sanity check ellipses
@@ -1671,13 +1671,13 @@ def global_sanity_check(filename, lines):
                 #    print('"%s", line %d: extraneous space in translatable string'\
                 #          % (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("#"):	# FIXME: parse_attribute is confused.
+            if key.startswith("#"): # FIXME: parse_attribute is confused.
                 pass
             elif key.startswith("{"):
                 pass
-            elif key == 'letter':	# May be led with _s for void
+            elif key == 'letter': # May be led with _s for void
                 pass
-            elif key in ('name', 'male_name', 'female_name', 'value'):		# FIXME: check this someday
+            elif key in ('name', 'male_name', 'female_name', 'value'): # FIXME: check this someday
                 pass
             elif key == "variation_name":
                 if markcheck and not has_tr_mark:
@@ -1740,7 +1740,7 @@ def global_sanity_check(filename, lines):
     if not no_text:
         if not textdomains:
             print('"%s", line 1: no textdomain string' % filename)
-        elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
+        elif textdomains[0] == 1: # Multiples are OK if first is on line 1
             pass
         elif len(textdomains) > 1:
             print('"%s", line %d: multiple textdomain strings on lines %s' % \
@@ -2140,7 +2140,7 @@ def is_map(filename):
     "Is this file a map?"
     return filename.endswith(".map")
 
-if 0:	# Not used, as there are currently no defined map transforms
+if 0: # Not used, as there are currently no defined map transforms
     class maptransform_error:
         "Error object to be thrown by maptransform."
         def __init__(self, infile, inline, type):
@@ -2160,7 +2160,7 @@ if 0:	# Not used, as there are currently no defined map transforms
         raise maptransform_error(filename, baseline+y+1,
                              "unrecognized map element at line %d" % (y,))
 
-tagstack = []	# For tracking tag nesting
+tagstack = [] # For tracking tag nesting
 
 def outermap(func, inmap):
     "Apply a transformation based on neighborhood to the outermost ring."
@@ -2324,7 +2324,7 @@ def translator(filename, mapxforms, textxform):
             newdata.append(newline + terminator)
             fields = newline.split("#")
             trimmed = fields[0]
-            destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
+            destringed = re.sub('"[^"]*"', '', trimmed) # Ignore string literals
             comment = ""
             if len(fields) > 1:
                 comment = fields[1]
@@ -2399,7 +2399,7 @@ def translator(filename, mapxforms, textxform):
         if transformed[i] == '\n':
             if singleline:
                 singleline = False
-		if not display_state and quotecount % 2 and transformed[i:i+2] != "\n\n" and transformed[i-1:i+1] != "\n\n":
+                if not display_state and quotecount % 2 and transformed[i:i+2] != "\n\n" and transformed[i-1:i+1] != "\n\n":
                     print('"%s", line %d: nonstandard word-wrap style within message' % (filename, linecount))
             linecount += 1
         elif transformed[i-7:i] == "message" and transformed[i] == '=':
@@ -2620,7 +2620,7 @@ def allcfgfiles(directory):
             for name in files:
                 if interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
-    datafiles.sort()	# So diffs for same campaigns will cluster in reports
+    datafiles.sort() # So diffs for same campaigns will cluster in reports
     return map(os.path.normpath, datafiles)
 
 def help():

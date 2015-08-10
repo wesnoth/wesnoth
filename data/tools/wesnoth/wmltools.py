@@ -107,7 +107,7 @@ class Forest:
         for directory in dirpath:
             subtree = []
             rooted = False
-            if os.path.isdir(directory):	# So we skip .cfgs in a UMC mirror
+            if os.path.isdir(directory): # So we skip .cfgs in a UMC mirror
                 oldmain = os.path.join(os.path.dirname(directory), os.path.basename(directory) + '.cfg')
                 if os.path.isfile(oldmain):
                     subtree.append(oldmain)
@@ -320,7 +320,7 @@ def actualtype(a):
     elif a in ("lawful", "neutral", "chaotic", "liminal"):
         atype = "alignment"
     elif a.startswith("{") or a.endswith("}") or a.startswith("$"):
-        atype = None	# Can't tell -- it's a macro expansion
+        atype = None # Can't tell -- it's a macro expansion
     elif re.match(image_reference, a) or a == "unit_image":
         atype = "image"
     elif re.match(r"(\*|[A-Z][a-z]+)\^([A-Z][a-z\\|/]+\Z)?", a):
@@ -541,7 +541,7 @@ class CrossRef:
                         name = tokens[1]
                         here = Reference(namespace, filename, n+1, line, args=tokens[2:])
                         here.hash = hashlib.md5()
-                        here.docstring = line.lstrip()[8:]	# Strip off #define_
+                        here.docstring = line.lstrip()[8:] # Strip off #define_
                         state = "macro_header"
                     continue
                 elif state != 'outside' and line.strip().endswith("#enddef"):
@@ -947,9 +947,9 @@ def vcunmove(src, dst):
     "Revert the result of a previous move (before commit)."
     (path, base) = os.path.split(src)
     if os.path.exists(os.path.join(path, ".git")):
-        return "git checkout %s" % dst	# Revert the add at the destination
-        return "git rm " + dst		# Remove the moved copy
-        return "git checkout %s" % src	# Revert the deletion
+        return "git checkout %s" % dst # Revert the add at the destination
+        return "git rm " + dst # Remove the moved copy
+        return "git checkout %s" % src # Revert the deletion
     else:
         return "echo 'cannot unmove %s from %s, .git is missing'" % (src, dst)
 
@@ -965,7 +965,7 @@ def vcundelete(src):
     "Revert the result of a previous delete (before commit)."
     (path, base) = os.path.split(src)
     if os.path.exists(os.path.join(path, ".git")):
-        return "git checkout %s" % src	# Revert the deletion
+        return "git checkout %s" % src # Revert the deletion
     else:
         return "echo 'cannot undelete %s, .git is missing'" % src
 

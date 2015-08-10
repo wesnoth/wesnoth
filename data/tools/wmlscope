@@ -330,9 +330,9 @@ sudo apt-get install python-pil""", file=sys.stderr)
             if entry.docstring:
                 lines = entry.docstring.split("\n")
                 header = lines.pop(0).split()
-                if lines and not lines[-1]:	# Ignore trailing blank lines
+                if lines and not lines[-1]: # Ignore trailing blank lines
                     lines.pop()
-                if not lines:	# Ignore definitions without a docstring
+                if not lines: # Ignore definitions without a docstring
                     continue
                 outstr += "\n<dt id='" + header[0] + "'>\n"
                 outstr += "<em class='macro_name'>" + header[0] + "</em>"

@@ -420,7 +420,7 @@ Important Attributes:
         self.element, nextScopes = self.parseElements(self.text)
         self.nextScopes = []
         for elem in nextScopes:
-	    # remember scopes by storing a copy of the iterator
+        # remember scopes by storing a copy of the iterator
             copyItor = self.copy()
             copyItor.element = elem
             self.nextScopes.append(copyItor)

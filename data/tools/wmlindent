@@ -115,7 +115,7 @@ def reindent(name, infp, outfp):
     lasttag = ""
     countlines = 0
     countblanks = 0
-    multitag = re.compile(r"\[a-z]].*\[[a-z]")	# Avoid triggering on arrays
+    multitag = re.compile(r"\[a-z]].*\[[a-z]") # Avoid triggering on arrays
     for line in infp:
         countlines += 1
         # User may declare indentation exceptions
@@ -265,7 +265,7 @@ def convertor(linefilter, arglist, exclude):
                             if dryrun:
                                 os.remove(filename + ".out")
                             else:
-                                os.remove(filename)	# For Windows portability
+                                os.remove(filename) # For Windows portability
                                 # There's a tiny window open if you keyboard-
                                 # interrupt here. It's unavoidable, because
                                 # there's no known way to do an atomic rename
