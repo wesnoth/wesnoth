@@ -280,6 +280,7 @@ wml_actions.command = utils.handle_event_commands
 -- since if and while are Lua keywords, we can't create functions with such names
 -- instead, we store the following anonymous functions directly into
 -- the table, using the [] operator, rather than by using the point syntax
+-- the same is true of for and repeat
 
 wml_actions["if"] = function(cfg)
 	if not (helper.get_child(cfg, 'then') or helper.get_child(cfg, 'elseif') or helper.get_child(cfg, 'else')) then
@@ -316,6 +317,40 @@ wml_actions["while"] = function( cfg )
 				utils.handle_event_commands( do_child )
 			end
 		else return end
+	end
+end
+
+wesnoth.wml_actions["for"] = function(cfg)
+	local first, last, step
+	if cfg.array then
+		first = 0
+		last = wesnoth.get_variable(cfg.array .. ".length") - 1
+		step = 1
+		if cfg.reverse == "yes" then
+			first, last = last, first
+			step = -1
+		end
+	else
+		first = cfg.start or 0
+		last = cfg["end"] or first
+		step = cfg.step or ((last - first) / math.abs(last - first))
+	end
+	local i_var = cfg.variable or "i"
+	local save_i = start_var_scope(i_var)
+	wesnoth.set_variable(i_var, first)
+	while wesnoth.get_variable(i_var) <= last do
+		for do_child in helper.child_range( cfg, "do" ) do
+			handle_event_commands( do_child )
+		end
+		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
+	end
+	end_var_scope(i_var, save_i)
+end
+
+wml_actions["repeat"] = function(cfg)
+	local times = cfg.times or 1
+	for i = 1, times do
+		handle_event_commands(cfg)
 	end
 end
 
