@@ -1907,6 +1907,28 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					else if (!replace.empty()) {
 						overlays_ = utils::parenthetical_split(replace, ',');
 					}
+				} else if (apply_to == "advances_to") {
+					const std::string &add = effect["add"];
+					const std::string &remove = effect["remove"];
+					const std::string &replace = effect["replace"];
+					
+					if (!add.empty()) {
+						std::vector<std::string> temp_advances = utils::parenthetical_split(add, ',');
+						std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
+					}
+					else if (!remove.empty()) {
+						std::vector<std::string> temp_advances = utils::parenthetical_split(remove, ',');
+						std::vector<std::string>::iterator iter;
+						BOOST_FOREACH(const std::string& unit, temp_advances) {
+							iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
+							if(iter != advances_to_.end()) {
+								advances_to_.erase(iter);
+							}
+						}
+					}
+					else if (!replace.empty()) {
+						advances_to_ = utils::parenthetical_split(add, ',');
+					}
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
