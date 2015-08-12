@@ -44,6 +44,8 @@
   !define MUI_ABORTWARNING
   !define MUI_WELCOMEPAGE_TITLE_3LINES
   !define MUI_FINISHPAGE_TITLE_3LINES
+  !define MUI_LICENSEPAGE_TEXT_BOTTOM " "
+  !define MUI_LICENSEPAGE_BUTTON $(^NextBtn)
 
 ;--------------------------------
 ;Language Selection Dialog Settings
