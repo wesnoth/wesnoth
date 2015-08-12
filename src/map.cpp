@@ -152,7 +152,7 @@ gamemap::gamemap(const tdata_cache& tdata, const config& level):
 			total_height_ = 0;
 		}
 	} else {
-		read(map_child["data"], true, map_child["border_size"], map_child["usage"]);
+		read(map_child["data"], true);
 	}
 }
 

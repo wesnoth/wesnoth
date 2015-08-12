@@ -980,7 +980,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	try {
 		if (cfg["map"].empty()) {
 			const vconfig& map_cfg = cfg.child("map");
-			map.read(map_cfg["data"], false, map_cfg["border_size"].to_int(), map_cfg["usage"].str());
+			map.read(map_cfg["data"], false);
 		}
 		else map.read(cfg["map"], false);
 	} catch(incorrect_map_format_error&) {
@@ -1558,17 +1558,12 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 
 	//config level;
 	std::string mask = cfg["mask"];
-	std::string usage = "mask";
-	int border_size = 0;
-
 	if (mask.empty()) {
-		usage = cfg["usage"].str();
-		border_size = cfg["border_size"];
 		mask = cfg["data"].str();
 	}
 
 	try {
-		mask_map.read(mask, false, border_size, usage);
+		mask_map.read(mask, false);
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
@@ -1576,6 +1571,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		e.show(*resources::screen);
 		return;
 	}
+
 	bool border = cfg["border"].to_bool();
 	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc, border);
 	resources::screen->needs_rebuild(true);
