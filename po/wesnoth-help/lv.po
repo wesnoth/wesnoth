@@ -9,17 +9,16 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2011-11-23 16:51+0300\n"
-"Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
+"PO-Revision-Date: 2015-08-08 15:21+0300\n"
+"Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: lv_LV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Poedit-Language: Latvian\n"
-"X-Poedit-Country: LATVIA\n"
+"X-Generator: Poedit 1.8.2\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
@@ -36,19 +35,12 @@ msgstr "cīņasspars"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
 #: data/core/macros/abilities.cfg:541
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Cīņasspars:\n"
-"Vienalga vai šis uzbrukums tiek lietots uzbrukumā vai aizsardzībā, cīņa "
-"turpināsies līdz viena no vienībām uzvarēs vai tiks veikti 30 uzbrukumi."
+"Gan uzbrūkot, gan aizstāvoties cīnītājs ar dusmās veic līdz 30 sitienu. "
+"Parasti šādas saķeršanās beidzas ar to ka kādam ir jāmirst."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
@@ -59,40 +51,25 @@ msgstr "maģija"
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
 #: data/core/macros/abilities.cfg:620
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Maģisks:\n"
-"Šim uzbrukumam vienmēr ir 70% iespēja trāpīt neatkarīgi no aizsargājošās "
-"vienības aizsardzības spējas."
+"Šim uzbrukumam vienmēr ir 70% iespēja trāpīt, nerēķinoties ar pretinieka "
+"aizsardzību. "
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
 #: data/core/macros/abilities.cfg:664
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
-msgstr "pirmais sitiens"
+msgstr "pirmais trieciens"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
 #: data/core/macros/abilities.cfg:665
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Pirmais sitiens:\n"
-"Šī vienība vienmēr iesit pirmā, pat ja tā aizstāvas."
+msgstr "Šī vienība vienmēr iesit pirmā, pat ja tā aizstāvas."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -109,16 +86,6 @@ msgstr "dziedē +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -127,20 +94,18 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Dziedē +4:\n"
-"Ļauj vienībai dziedēt tai blakus esošās sabiedroto vienības mūsu gājiena "
-"sākumā.\n"
+"Gājiena sākumā vienība dziedēs savus sabiedrotos.\n"
 "\n"
 "Vienība, par kuru rūpējas šis dziednieks var atveseļoties līdz pat 4 "
 "veselības punktiem gājienā, vai apturēt indes ietekmi tajā gājienā.\n"
-"Dziednieks nevar izārstēt saindētu vienību no indes, tai jāmeklē aprūpe "
-"ciemā vai pie vienības, kura spēj ārstēt."
+"Dziednieks nevar izārstēt saindētu vienību no indes, ja vēlies izārstēt indi "
+"- cīnītājs ir jāsūta uz ciematu, vai pie vienības kurai ir pretinde."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
 #: data/core/macros/abilities.cfg:28
 msgid "heals +8"
-msgstr "dziedē"
+msgstr "dziedē +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -151,16 +116,6 @@ msgstr "dziedē +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
 #: data/core/macros/abilities.cfg:30
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -170,14 +125,13 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Dziedē +8:\n"
-"Šī vienība apvieno augu ārstniecības līdzekļus un maģiju, lai dziedētu "
-"vienības ātrāk kā tas parasti iespējams kaujas laukā.\n"
+"Šis dziednieks apvieno augu ārstniecības līdzekļus un maģiju, lai dziedētu "
+"cīnītājus ātrāk kā parasti.\n"
 "\n"
-"Vienība, par kuru rūpējas šis dziednieks var atveseļoties līdz pat 8 "
+"Cīnītājs, par kuru rūpējas šis dziednieks var atveseļoties līdz pat 8 "
 "veselības punktiem gājienā, vai apturēt indes ietekmi tajā gājienā.\n"
-"Dziednieks nevar izārstēt saindētu vienību no indes, tai jāmeklē aprūpe "
-"ciemā vai pie vienības, kura spēj ārstēt."
+"Dziednieks nevar izārstēt indi, cīnītājam jāmeklē aprūpe ciematā, vai pie "
+"vienības kurai ir pretinde."
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -438,7 +392,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -446,7 +400,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Iespējamība trāpīt'</header>"
+"<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:186
@@ -499,7 +453,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -507,7 +461,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Iespējamība trāpīt'</header>"
+"<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:201
@@ -1010,7 +964,6 @@ msgstr "Ziemeļzemes"
 #| "\n"
 #| "    • Notable cities:\n"
 #| "          ◦ Glamdrol: An Orcish tribal capital\n"
-#| "          ◦ Romyr: Another Orcish tribal capital\n"
 #| "          ◦ Wesmere: The location of the Ka’lian — the Elvish Council\n"
 #| "          ◦ Dwarven Doors: A mixed human/dwarven town in the region of "
 #| "Knalga in the southern Heart Mountains. A major trade center.\n"
@@ -1205,24 +1158,23 @@ msgstr "Tālie ziemeļi"
 #| "          ◦ Barag Gor, a city home to the Orcish Council\n"
 #| "          ◦ Bitok\n"
 #| "          ◦ Borstep\n"
-#| "          ◦ Castelfrang\n"
 #| "          ◦ Farzi\n"
-#| "          ◦ Festog\n"
-#| "          ◦ Grisbi\n"
 #| "          ◦ Lmarig\n"
 #| "          ◦ Melmog\n"
 #| "          ◦ Prestim\n"
 #| "          ◦ Tirigaz\n"
+#| "          ◦ Dorest, the northernmost human city\n"
 #| "    • Notable land features:\n"
-#| "          ◦ Swamp of Desolation\n"
+#| "          ◦ Black Marshes\n"
 #| "          ◦ Mountains of Dorth\n"
 #| "          ◦ Mountains of Haag\n"
-#| "          ◦ Green Forest\n"
+#| "          ◦ Greenwood\n"
 #| "          ◦ Silent Forest\n"
 #| "          ◦ Forest of Thelien\n"
 #| "          ◦ River Oumph\n"
 #| "          ◦ River Bork\n"
-#| "          ◦ Wild Steppe"
+#| "          ◦ Frosty Wastes\n"
+#| "          ◦ Barren Plains"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1347,7 +1299,7 @@ msgstr "Apvidi"
 #. [topic]: id=..addons
 #: data/core/help.cfg:80 data/core/help.cfg:583
 msgid "Add-ons"
-msgstr ""
+msgstr "Pielikumi"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1384,10 +1336,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Cīņa par Vesnotu'</italic> ir fantāzijas spēle, kurā darbība "
+"<italic>text='Kauja par Vesnotu'</italic> ir fantāzijas spēle, kurā darbība "
 "norisinās gājienu pēc gājiena, kas ir mazliet neparasti starp modernajām "
 "stratēģijas spēlēm. Kamēr citas spēles tiecas uz sarežģītību, "
-"<italic>text='Cīņa par Vesnotu'</italic> cenšas saglabāt vienkāršību gan "
+"<italic>text='Kauja par Vesnotu'</italic> cenšas saglabāt vienkāršību gan "
 "noteikumos, gan spēles gaitā. Tomēr tas nenozīmē, ka spēle ir vienkārša. No "
 "šiem vienkāršajiem noteikumiem veidojas bagātīgs stratēģiju klāsts, līdz ar "
 "to spēle ir viegli apgūstama, taču sasniegt meistarību ir izaicinājums."
@@ -1430,6 +1382,11 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"Šajā sadaļā tu iepazīsies ar visām vienībām kas mitinās Vesnotas pasaulē.Kad "
+"tu ieraugi kādu jaunu radijumu Kampaņā vai Daudzspēlētāju režīmā, vari "
+"aplūkot tā aprakstu jebkurā laikā. Aprakstā ietverts vispārējs apraksts, "
+"statistika, uzbrukums, aizsardzība, kā arī ātrums.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:130
@@ -1450,12 +1407,6 @@ msgstr ""
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:141
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1479,6 +1430,11 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Dažiem ieročiem ir īpašas tehnikas, kas palielina uzbrukuma efektivitāti. "
+"Kad tu ieraugi jaunu ieroci Kampaņā vai Daudzspēlētāju režīmā, tā aprakstu "
+"vari aplūkot jebkurā laikā. Uz katras lapas tiks paskaidrots - kādas ir dotā "
+"ieroča funkcijas un kādi cīnītāji to lieto.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:159
@@ -1572,8 +1528,8 @@ msgstr ""
 "\n"
 "Pēc uzvaras scenārijā karte kļūs pelēka un poga <bold>text='Beigt gājienu'</"
 "bold> kļūs par <bold>text='Beigt scenāriju'</bold>. Tagad vari izmainīt "
-"saglabāšanas iestatījumus vai (ja esi daudzspēlētāju spēlē) parunāt ar "
-"pārējiem spēlētājiem pirms nospiest šo pogu, lai turpinātu spēli."
+"saglabāšanas iestatījumus. Ja esi Daudzspēlētāju spēlē, vari parunāt ar "
+"pārējiem, tad nospiest šo pogu lai turpinātu."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
@@ -1595,28 +1551,19 @@ msgid ""
 "ally, solving a puzzle, or holding out against a siege until a certain "
 "number of turns have elapsed."
 msgstr ""
-"Uzmanīgi izlasi <bold>text='Mērķu'</bold> logu katra scenārija sākumā. "
-"Parasti uzvarēt var nogalinot visus pretinieku līderus un zaudēt tikai, ja "
-"nogalina tavu līderi. Taču scenārijos var būt citi uzvaras nosacījumi — "
-"nogādāt savu līderi noteiktā punktā, kādu izglābt, atrisināt mīklu vai "
-"izturēt aplenkumu noteiktu gājienu skaitu u.c."
+"Uzmanīgi izlasi <bold>text='Misijas Mērķa'</bold> logu, katra scenārija "
+"sākumā. Parasti uzvarēt var nogalinot visus pretinieku līderus, un zaudēt "
+"tikai ja nogalina tavu līderi. Taču scenārijos var būt citi uzvaras "
+"nosacījumi — nogādāt savu līderi noteiktā punktā, kādu izglābt, atrisināt "
+"mīklu, vai izturēt aplenkumu noteiktu gājienu skaitu u.c."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:199
 msgid "Recruiting and Recalling"
-msgstr "Iesaukšana un atskaukšana"
+msgstr "Iesaukšana un Atskaukšana"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1627,10 +1574,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ja iesauci vienību, klikšķinot ar labo peles taustiņu pils šūnā, tad tā "
-"parādīsies attiecīgajā šūnā. Pretējā gadījumā brīvā lauciņā galvenā torņa "
-"tuvumā. Vari iesaukt tikai tik daudz vienību, cik ir brīvu lauciņu tavā "
-"pilī, un nevari iesaukšanai iztērēt vairāk zelta nekā tev ir."
+"Ja gribi iesaukt vienību, klikšķinot ar labo peles taustiņu pils šūnā - "
+"parādīsies izvēlne ar iespēju «Iesaukt». Vari iesaukt tikai tik daudz "
+"vienību, cik ir brīvu lauciņu tavā pilī, un nevar iesaucot iztērēt vairāk "
+"zelta nekā tev ir."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -1640,7 +1587,7 @@ msgstr ""
 #| "battle, and at times during it, you will need to recruit <ref>dst='.."
 #| "units' text='units'</ref> into your army. To recruit, you must have your "
 #| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
+#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
 #| "text='castle'</ref>. Then you may recruit by either choosing "
 #| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
 #| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
@@ -1659,16 +1606,17 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the OK button to recruit it."
 msgstr ""
-"Katra puse sāk ar vienu līderi galvenajā tornī. Katras kaujas sākumā, un "
-"reizēm arī tās laikā, tev būs jāiesauc <ref>dst='..units' text='vienības'</"
-"ref> savā armijā. Lai iesauktu, tavam līderim (piemēram, Konrādam kampaņā "
+"Katra puse sāk ar vienu līderi galvenajā Tornī. Katras kaujas sākumā, un "
+"reizēm tās laikā, tev būs jāiesauc <ref>dst='..units' text='vienības'</ref> "
+"savā armijā. Lai iesauktu, tavam līderim (piemēram, Konrādam kampaņā "
 "<italic>text='Troņa mantinieks'</italic>) jāatrodas tavas "
-"<ref>dst='terrain_castle' text='pils'</ref> galvenajā tornī. Tad vari "
-"iesaukt izvēloties punktu <bold>text='Iesaukt'</bold> no komandu izvēlnes "
-"vai klikšķinot labo peles pogu uz attiecīgās pils šūnas un izvēloties "
-"<bold>text='Iesaukt'</bold>. Tas atvērs iesaukšanas izvēlni, kur uzskaitītas "
-"pieejamās vienības un to izmaksas. Klikšķini uz vienības, lai redzētu tās "
-"statistiskos rādītājus, pēc tam spied iesaukšanas pogu, lai iesauktu vienību."
+"<ref>dst='terrain_castle' text='pils'</ref> galvenajā Tornī. Tad vari "
+"iesaukt izvēloties <bold>text='Iesaukt'</bold>, no komandu izvēlnes, vai "
+"klikšķinot labo peles pogu uz attiecīgās pils šūnas un izvēloties "
+"<bold>text='Iesaukt'</bold>. Atvērsies «iesaukšanas izvēlne», kurā piedāvās "
+"pieejamās vienības - un to izmaksas. Klikšķini uz vienības, lai redzētu tās "
+"statistiskos rādītājumus, pēc tam spied iesaukšanas pogu, lai iesauktu "
+"vienību."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
@@ -1694,9 +1642,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vēlākos scenārijos varēsi arī atsaukt iepriekšējās kaujās izdzīvojušās "
-"vienības. Atsaukšana izmaksā 20 zelta gabalus un ļauj izvēlēties no visām "
-"iepriekšējos scenārijos izdzīvojušajām vienībām."
+"Vēlākos scenārijos varēsi arī «Atsaukt» iepriekšējās misijas veterānus. "
+"Atsaukšana izmaksā 20 zelta gabalus. Izvēlēties veterānus var no visām "
+"iepriekšējām misijām, ja tie ir palikuši starp dzīvajiem."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
@@ -1733,10 +1681,9 @@ msgstr ""
 "\n"
 "\n"
 "Ar ienākumiem ir vienkārši. Tev ir pamata ienākumi 2 zelta gabalu apmērā "
-"katrā gājienā. Par katru pārvaldīto ciemu, tu gūsti papildus zelta gabalu "
-"katrā gājienā, Tādējādi, ja tev ir desmit ciemi, parasti iegūsi 12 zelta "
-"gabalus gājienā. Tavas uzturēšanas izmaksas tiek atņemtas no šiem "
-"ienākumiem, kā aprakstīts zemāk."
+"katrā gājienā. Par katru ciematu, tu gūsti papildus zelta gabalu katrā "
+"gājienā. Tādejādi - ja tev ir desmit ciemi, parasti iegūsi 12 zelta gabalus "
+"gājienā. Bet tev ir arī uzturēšanas izmaksas, kas būs aprakstītas zemāk."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
@@ -1771,7 +1718,7 @@ msgstr ""
 "vienības, cik tev ir ciemu, nemaksājot nekādus uzturēšanas izdevumus. Taču "
 "par katru vienības līmeni virs piederošo ciemu skaita, jāmaksā viens zelta "
 "gabals gājienā. Piemēram, ja tev ir divpadsmit pirmā līmeņa vienības un "
-"desmit ciemu, tad jāmaksā divi zelta gabali gājienā par uzturēšanu."
+"desmit ciemu, tad jāmaksā divi zelta gabali gājienā."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
@@ -1802,12 +1749,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ir divi nozīmīgi uzturēšanas izņēmumi: vienības ar lojāluma iezīmi un līderi "
-"nekad neprasa uzturēšanu. Vienībām, ar kurām sāc scenāriju (piem., "
+"Ir divi nozīmīgi uzturēšanas izņēmumi: vienības ar «lojāluma» iezīmi un "
+"«līderi» nekad neprasa uzturēšanu. Vienībām, ar kurām sāc scenāriju (piem., "
 "Delfadors) vai vienībām, kuras tev pievienojas scenārija laikā (piemēram, "
-"jātnieks otrajā <italic>text='Troņa manitinieka'</italic> scenārijā), "
-"parasti būs <italic>text='lojāluma'</italic> iezīme. Tā vienība, ar kuru "
-"spēlē (piem., Konrāds), tik pat kā vienmēr būs līderis."
+"jātnieks otrajā <italic>text='Troņa mantinieka'</italic> scenārijā), parasti "
+"būs <italic>text='lojāli'</italic>. Tā vienība, ar kuru spēlē (piem., "
+"Konrāds), tik pat kā vienmēr būs līderis."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:231
@@ -1880,7 +1827,7 @@ msgstr ""
 "Vienībām ir nepieciešams noteikts pieredzes apjoms, lai attīstītos "
 "(inteliģentām vienībām tas ir par 20% mazāks). Kad tās sasniedz šo apjomu, "
 "tās nekavējotes pāriet nākamajā līmenī, un tiek pilnīgi izdziedētas procesā. "
-"Dažos gadījumos tiks dota iespēja izvēlēties no attīstīšanās iespējām."
+"Dažos gadījumos tiks dota iespēja izvēlēties no attīstīšanās iespējas."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:246
@@ -1921,8 +1868,8 @@ msgstr ""
 "efekts ir vienības maksimālo veselības punktu paaugstināšana par 3 un tās "
 "pilnīga izdziedēšana. Pirmā PMLA parasti tiek sasniegta, kad iegūti 150 "
 "pieredzes punkti (120 inteliģentām vienībām). Taču PMLA iegūšana kļūst "
-"aizvien grūtāka katrai nākamajai PMLA, ko vienība sasniedz, tādēļ parasti "
-"daudz noderīgāk ir mēģināt attīstīt savas zemāko līmeņu vienības."
+"aizvien grūtāka katrai nākamajai PMLA, tādēļ parasti daudz noderīgāk ir "
+"mēģinātattīstīt zemāko līmeņu vienības."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:257
@@ -1947,15 +1894,14 @@ msgstr ""
 "\n"
 "\n"
 "Katrai vienībai ir noteikts skaits pārvietošanās punktu, kuri tiek izmantoti "
-"pārvietojoties uz jaunu lauciņu atkarībā no apvidus tipa uz konkrētā "
-"lauciņa. Piemēram, ieiešana pļavā gandrīz vienmēr izmaksā 1 pārvietošanās "
-"punktu. Tieši, cik punkti tiek patērēti ieejot lauciņā, ir atkarīgs no "
-"vienības tipa — mežos elfi patērē tikai 1 pārvietošanās punktu, vairums "
-"cilvēku un orku patērē 2, kamēr jātnieki patērē 3 punktus. Vari noskaidrot, "
-"cik pārvietošanās punkti vienībai nepieciešami, lai ieietu noteiktā apvidus "
-"tipā, klikšķinot ar labo peles taustiņu uz tās un izvēloties "
-"<bold>text='Vienības aprakstu'</bold>, un tad skatoties pie "
-"<bold>text='Apvidus apstākļiem'</bold>."
+"pārvietojoties uz jaunu lauciņu, atkarībā no apvidus tipa Piemēram, ieiešana "
+"pļavā gandrīz vienmēr izmaksā 1 pārvietošanās punktu. Tieši, cik punkti tiek "
+"patērēti ieejot lauciņā, ir atkarīgs no vienības tipa — mežos elfi patērē "
+"tikai 1 pārvietošanās punktu, vairums cilvēku un orku patērē 2, kamēr "
+"jātnieki patērē 3 punktus. Vari noskaidrot, cik pārvietošanās punkti "
+"vienībai nepieciešami, lai ieietu noteiktā apvidus tipā, klikšķinot ar labo "
+"peles taustiņu uz tās un izvēloties <bold>text='Vienības apraksts'</bold>, "
+"un tad skatoties pie <bold>text='apvidus apstākļiem'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:258
@@ -1975,17 +1921,17 @@ msgid ""
 msgstr ""
 "Pārvietošanās <italic>text='Kaujā par Vesnotu'</italic> ir vienkārša. Lai "
 "izvēlētos vienību, kuru gribi pārvietot, klikšķini uz tās, tad klikšķini uz "
-"lauciņu, uz kuru vēlieties to pārvietot. Kad vienība ir izvēlēta, visi "
-"lauciņi, kurus tā var sasniegt šajā gājienā, būs izgaismoti, un visi pārējie "
-"lauciņi kartē tiks ieēnoti. Novietojot peles kursoru uz izgaismotā lauciņa, "
-"tiks parādīts vienības aizsardzības līmenis uz tā lauciņa. Novietojot peles "
-"kursoru uz ieēnotā lauciņa, papildus vēl tiks parādīts, cik gājieni "
-"nepieciešami tā sasniegšanai, un, uzklikšķinot uz tā, vienība pārvietosies "
-"pa ātrāko ceļu tā virzienā šajā un nākamajos gājienos. Ja, pirmo reizi "
-"pārvietojot vienību, neizmanto visu tās gājienu, vari to pārvietot atkal. "
-"Tas noder apmainot divas vienības vietām. Uzbrūkot ar vienību, tiks "
-"izmantots viss tās gājiens. Beidzot gājienu ciemā, kurš tev vēl nepieder, "
-"arī tiks izmantots viss vienības gājiens, bet tā joprojām varēs uzbrukt."
+"lauciņu, uz kuru pārvietot. Kad vienība ir izvēlēta, visi lauciņi, kurus tā "
+"var sasniegt šajā gājienā, būs izgaismoti, un visi pārējie lauciņi kartē "
+"tiks ieēnoti. Novietojot peles kursoru uz izgaismotā lauciņa, tiks parādīts "
+"vienības aizsardzības līmenis lauciņā. Novietojot peles kursoru uz ieēnotā "
+"lauciņa, papildus vēl tiks parādīts, cik gājieni nepieciešami tā "
+"sasniegšanai, un uzklikšķinot uz tā - vienība pārvietosies pa ātrāko ceļu "
+"(šajā un nākamajos gājienos). Ja, pirmo reizi pārvietojot vienību, "
+"neizmantoji visu tās gājienu, vari to pārvietot atkal. Tas noder apmainot "
+"divas vienības vietām. Uzbrūkot ar vienību, tiks izmantoti visi viņas "
+"gājienu punkti. Beidzot gājienu ciemā (kurš tev vēl nepieder), arī tiks "
+"izmantots visi gājieni, bet tā joprojām varēs uzbrukt."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:260
@@ -2058,21 +2004,20 @@ msgstr ""
 "tikt lietoti atsevišķi vai kopā. <italic>text='Plīvurs'</italic> slēpj gan "
 "apvidu, gan jebkuru vienību tajā vietā. Tomēr, kad vienreiz tas ir ticis "
 "noņemts, tā vieta visu laiku ir redzama. <italic>text='Kara migla'</italic> "
-"slēpj tikai vienības un ciemu piederību (citu, kas nav tavi vai sabiedroto). "
-"Kara migla izklīst tikai uz laiku, kad tavas vienības ir tuvumā, bet "
-"atgriežas, kad tās aiziet. Gan plīvurs, gan kara migla tiek noņemti ar "
-"vienībām. Katra vienība attīra tai viena gājiena attālumā apkārt esošos "
-"lauciņus (neņemot vērā kontroles zonas un ienaidnieka vienības).\n"
+"slēpj tikai vienības un ciemu piederību (pretinieka vai sabiedroto). Kara "
+"migla izklīst tikai uz laiku, kad tavas vienības ir tuvumā, bet atgriežas, "
+"kad tās aiziet. Gan plīvurs, gan kara migla tiek noņemti ar vienībām. Katra "
+"vienība attīra gājiena attālumā apkārt esošos lauciņus (neņemot vērā "
+"kontroles zonas un ienaidnieka vienības).\n"
 "\n"
-"Parasti vienību gājienus var atdarīt, kamēr vien nav bijis notikums ar "
+"Parasti vienību gājienus var atcelt, kamēr vien nav bijis notikums ar "
 "nejaušu rezultātu, piemēram, cīņa vai iesaukšana (jo vairums vienību "
 "īpašības saņem nejaušības kārtā, kad tās tiek iesauktas). Apslēpta apvidus "
-"izpētīšana, attīrot to no plīvura vai kara miglas, arī liegs iespēju atdarīt "
-"darbības. Iespējams vēlies aktivizēt <bold>text='atlikto plīvura "
-"atjaunināšanu'</bold> darbību izvēlnē. Tas pasargās no plīvura vai kara "
-"miglas noņemšanas līdz nākamajam nejaušajam notikumam vai manuālai "
-"atjaunināšanai ar <bold>text='atjaunināt plīvuru tagad'</bold> (vai gājiena "
-"beigām) un līdz ar to saglabās iespēju atdarīt pārvietošanos."
+"izpētīšana, arī liegs iespēju atcelt darbības. Iespējams aktivizēt "
+"<bold>text='Vilcināt plīvura atjaunināšanu'</bold>. Tas pasargās no plīvura "
+"vai kara miglas noņemšanas līdz nākamajam notikumam vai līdz brīdim kad "
+"izvēlēsies <bold>text='Atjaunināt plīvuru tagad'</bold>. (vai līdz gājiena "
+"beigām)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:281
@@ -2110,11 +2055,11 @@ msgstr ""
 "ienaidnieka vienības virzienā, un, kad tās būs viena otrai blakus, sāksies "
 "cīņa. Uzbrucējs un upuris apmainīsies sitieniem līdz katra vienība būs "
 "veikusi tai doto sitienu skaitu. Uzbrucējs izvēlas vienu no saviem uzbrukuma "
-"veidiem, un upuris atspēlējas ar kādu no saviem tā paša tipa uzbrukumiem. Ir "
-"divu tipu uzbrukumi: <italic>text='tuvcīņas'</italic>, kas parasti saistīti "
-"ar tādiem ieročiem kā zobeni, cirvji vai ilkņi, un <italic>text='lādiņa'</"
-"italic> uzbrukumi, kas parasti saistīti ar tādiem ieročiem kā lokiem, "
-"šķēpiem un uguns bumbām."
+"veidiem, un upuris atspēlējas ar kādu no saviem uzbrukumiem. Ir divu tipu "
+"uzbrukumi: <italic>text='tuvcīņas'</italic>, kas parasti saistīti ar tādiem "
+"ieročiem kā zobeni, cirvji vai durkļi, un <italic>text='lādiņu'</italic> - "
+"uzbrukumi, kas parasti saistīti ar tādiem ieročiem kā loki, šķēpi un uguns "
+"bumbas."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:284
@@ -2133,7 +2078,7 @@ msgstr ""
 "\n"
 "Uzbrucējam tiek pirmais sitiens, pēc tam upuris atspēlējas. Katrs sitiens "
 "vai nu trāpa, nodarot noteiktu bojājumu apjomu, vai netrāpa, nenodarot "
-"nekādus bojājumus. Sitieni tiek apmainīti līdz kamēr katra vienība ir "
+"nekādu bojājumu. Sitieni tiek apmainīti līdz kamēr katra vienība ir "
 "izmantojusi visus tās sitienus. Vienības sitienu skaits ir mainīgs, "
 "piemēram, elfu cīnītājs ar 5-4 uzbrukumu var sist 4 reizes, ar katru "
 "veiksmīgu sitienu atņemot 5 punktus, kamēr orku kājnieks ar 9-2 uzbrukumu "
@@ -2168,7 +2113,7 @@ msgstr ""
 "Katrai vienībai pastāv iespējamība, ka tai trāpīs, ko nosaka "
 "<italic>text='apvidus tips'</italic>, kurā tā atrodas. Tā ir parādīta "
 "statusa panelī, un var arī tikt atrasta, klikškinot ar labo peles taustiņu "
-"uz vienību, un izvēloties <bold>text='Vienības aprakstu'</bold>, un tad "
+"uz vienības, un izvēloties <bold>text='Vienības aprakstu'</bold>, un tad "
 "skatoties pie <bold>text='Apvidus modifikatoriem'</bold>. Piemēram, daudziem "
 "elfiem aizsardzības līmenis mežā ir 70%, tātad uzbrūkošajai vienībai ir "
 "tikai 30% iespējamība trāpīt. Savukārt elfu iespējas trāpīt uzbrucējam ir "
@@ -2189,9 +2134,9 @@ msgstr ""
 "\n"
 "Šim likumam ir divi izņēmumi: <ref>dst='weaponspecial_magical' "
 "text='maģiskie uzbrukumi'</ref> un <ref>dst='weaponspecial_marksman' "
-"text='mērķīšāvēji'</ref>. Maģiskajiem uzbrukumiem vienmēr ir 70% iespējamība "
-"trāpīt neatkarīgi no apvidus, un, kad izmantots uzbrukumā, mērķīšāvējam "
-"vienmēr ir vismaz 60% iespējamība trāpīt neatkarīgi no apvidus."
+"text='snaiperi'</ref>. Maģiskajiem uzbrukumiem vienmēr ir 70% iespējamība "
+"trāpīt neatkarīgi no apvidus, un, kad uzbrūk snaipers vienmēr ir vismaz 60% "
+"iespējamība trāpīt neatkarīgi no apvidus."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2240,9 +2185,8 @@ msgstr ""
 "\n"
 "Dažām vienībām ir īpašas <ref>dst='..abilities_section' text='spējas'</ref>, "
 "kas ietekmē nodarīto bojājumu apjomu kaujā. Visizplatītākā no tām ir "
-"<ref>dst='weaponspecial_charge' text='triecienuzbrukums'</ref>, kas dubulto "
-"gan uzbrucēja, gan upura saņemto bojājumu apjomu, kad uzbrūk vienība ar "
-"triecienuzbrukuma spēju."
+"<ref>dst='weaponspecial_charge' text='lādiņš'</ref>, kas dubulto gan "
+"uzbrucēja, gan upura saņemto bojājumu apjomu."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:304
@@ -2278,12 +2222,11 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
-"<italic>text='Kaujā par Vesnotu'</italic> ir trīs fizisko uzbrukumu nodarīto "
-"bojājumu veidi: <italic>text='griešanas, caurduršanas un trieciena "
-"bojājumi'</italic>. Turklāt ir vēl trīs citi bojājumu veidi, kas parasti "
-"saistīti ar maģiskiem uzbrukumiem: <italic>text='uguns, aukstums un mistikas "
-"uzbrukumi'</italic>. Dažādu vienību izturība maina to saņemto bojājumu "
-"apjomu no noteikta tipa uzbrukumiem."
+"<italic>text='Kaujā par Vesnotu'</italic> ir trīs fizisko uzbrukumu veidi: "
+"<italic>text='griešana, duršana un trieciens'</italic>. Turklāt ir vēl trīs "
+"citi bojājumu veidi, kas parasti saistīti ar maģiskiem uzbrukumiem: "
+"<italic>text='uguns, aukstums un mistiskais'</italic>. Dažādu vienību "
+"izturība maina to saņemto bojājumu apjomu."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:307
@@ -2297,8 +2240,8 @@ msgstr ""
 "\n"
 "\n"
 "Piemēram, skeleti ir īpaši izturīgi pret griešanu un caurduršanu, bet "
-"ievainojami pret triecieniem un uguni, kā arī ārkārtīgi ievainojami pret "
-"mistikas uzbrukumiem."
+"ievainojami ar triecieniem un uguni, kā arī ārkārtīgi ievainojami ar "
+"mistiksko uzbrukumu."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:309
@@ -2331,38 +2274,38 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:320
 msgid " green if it hasn’t moved this turn,"
-msgstr " zaļa, ja tā šajā gājienā nav pārvietojusies,"
+msgstr " zaļa, ja vienība gājienā nav pārvietojusies,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:321
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-" dzeltena, ja tā ir pārvietojusies, bet vēl varētu pārvietoties tālāk vai "
+" dzeltena, ja vienība pārvietojusies, bet varētu pārvietoties tālāk, vai "
 "uzbrukt,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:322
 #, fuzzy
 #| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
+#| " black if it can no longer move or attack, or the user ended the unit’s "
 #| "turn."
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-" sarkana, ja tā vairs nevar pārvietoties vai uzbrukt, vai arī esi beidzis "
+" melna, ja vienība vairs nevar pārvietoties un uzbrukt, vai arī esi beidzis "
 "vienības gājienu,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:323
 msgid " blue if the unit is an ally you do not control."
-msgstr " zila, ja tā ir sabiedrotā vienība, kuru tu nekontrolē."
+msgstr " zila, ja vienība ir sabiedrotais, kuru tu nekontrolē."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:324
 #, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
+#| msgid " Enemy units have a red orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr " Pretinieku vienībām virs veselības stabiņa nav lodes."
+msgstr " Pretinieku vienībām virs veselības stabiņa ir sarkana lode."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:331
@@ -2394,7 +2337,7 @@ msgstr ""
 "laikā.\n"
 " Haotiskās vienības saņem +25% spēka naktī un −25% dienas laikā.\n"
 " Neitrālās vienības netiek ietekmētas.\n"
-" Liminālās vienības saņem −25% spēka gan dienas, gan nakts laikā."
+" Ēnotās vienības saņem −25% spēka gan dienas, gan nakts laikā."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:337
@@ -2415,9 +2358,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pašreizējais diennakts laiks redzams zem minikartes statusa panelī. Parastā "
-"diennakts ciklā rīts un pēcpusdiena skaitās kā diena, bet pirmā un otrā "
-"sardze skaitās kā nakts:\n"
+"Pašreizējais diennakts laiks redzams zem minikartes. Parastā diennakts ciklā "
+"rīts un pēcpusdiena skaitās kā diena, bet pirmā un otrā sardze skaitās kā "
+"nakts:\n"
 
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
@@ -2503,8 +2446,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Atpūšanās'</italic>: Vienība, kura ne pārvietojas, ne uzbrūk "
-"un kurai arī netiek uzbrukts, tiks dziedēta par 2 veselības punktiem tās "
+"<italic>text='Atpūšanās'</italic>: Vienība, kura nepārvietojas un neuzbrūk, "
+"un kurai arī netiek uzbrukts, tiks dziedēta par 2 veselības punktiem "
 "nākamajā gājienā."
 
 #. [topic]: id=healing
@@ -2524,12 +2467,12 @@ msgid ""
 "Wesnoth offers several other ways for your units to heal, all of which take "
 "place at the beginning of your turn, before you take action."
 msgstr ""
-"Tavas vienības kaujā neizbēgami gūs ievainojumus. Kad vienība "
+"Tavas vienības kaujā neizbēgami saņem bojājumus. Kad cīnītājs "
 "<ref>dst='experience_and_advancement' text='pāriet nākamajā līmenī'</ref>, "
-"tā tiek dziedēta pilnībā. Tas var notikt, kad beidz cīnīties ar ienaidnieku, "
-"neatkarīgi no tā vai tas ir tavs gājiens vai nē. <italic>text='Kauja par "
-"Vesnotu'</italic> piedāvā vairākus citus ceļus, kā vienības var tikt "
-"dziedētas, bet tie visi notiek tava gājiena sākumā pirms darbību veikšanas."
+"tas tiek dziedēts pilnībā. Piemēram tas var notikt, kad beidz cīnīties ar "
+"ienaidnieku, neatkarīgi no tā vai tas ir tavs gājiens, vai nē. "
+"<italic>text='Kauja par Vesnotu'</italic> piedāvā vairākus citus ceļus, kā "
+"vienības var tikt ārstētas, bet tas notiek tikai tava gājiena sākumā."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:362
@@ -2539,7 +2482,7 @@ msgid ""
 "will heal 8HP."
 msgstr ""
 "\n"
-"<italic>text='Ciemi'</italic>: Vienība, kura sāk gājienu ciemā, tiks "
+"<italic>text='Ciemi'</italic>: Vienība, kura sāk gājienu ciematā, tiks "
 "dziedēta par 8 veselības punktiem."
 
 #. [topic]: id=healing
@@ -2550,8 +2493,8 @@ msgid ""
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst='ability_regenerates' text='Reģenerācija'</ref>: Notiektas vienības "
-"(piemēram, troļļi) tiks dziedētas automātiski katrā gājienā par 8 veselības "
+"<ref>dst='ability_regenerates' text='Reģenerācija'</ref>: Noteiktas vienības "
+"(piemēram, troļļi) ārstējas automātiski katrā gājienā par 8 veselības "
 "punktiem."
 
 #. [topic]: id=healing
@@ -2565,11 +2508,11 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"<italic>text='Dziedējošas vienības'</italic>: Vienības ar "
-"<ref>dst='ability_heals +4' text='dziedēšanas'</ref> spēju dziedēs katru "
-"blakus esošo sabiedroto vienību, parasti par <ref>dst='ability_heals +4' "
-"text='4 VP'</ref> vai <ref>dst='ability_heals +8' text='8 VP'</ref> gājienā, "
-"vai arī neļaus indei nodarīt bojājumus tai vienībai."
+"<italic>text='Dziednieki'</italic>: Vienības ar <ref>dst='ability_heals +4' "
+"text='dziedēšanas'</ref> spēju. Tie dziedēs katru blakus esošo sabiedroto "
+"vienību, parasti par <ref>dst='ability_heals +4' text='4 VP'</ref> vai "
+"<ref>dst='ability_heals +8' text='8 VP'</ref> gājienā, vai arī neļaus indei "
+"turpināt novārdzināt kareivi."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:365
@@ -2583,7 +2526,7 @@ msgstr ""
 "\n"
 "<italic>text='Ārstējošas vienības'</italic>: Vienības ar "
 "<ref>dst='ability_cures' text='ārstēšanas'</ref> spēju izārstēs visas blakus "
-"esošās sabiedroto vienības no indes (dodot priekšroku dziedēšanai, ja tai "
+"esošās sabiedroto vienības no indes. (dodot priekšroku dziedēšanai, ja tai "
 "piemīt arī šī spēja)."
 
 #. [topic]: id=healing
@@ -2684,21 +2627,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Iezīmes, kuras pieejamas visām dzīvo vienībām ir "
-"<ref>dst='traits_intelligent' text='inteliģence'</ref>, "
-"<ref>dst='traits_quick' text='ātrums'</ref>, <ref>dst='traits_resilient' "
-"text='izturība'</ref> un <ref>dst='traits_strong' text='spēks'</ref>."
+"Iezīmes, kuras pieejamas visām vienībām ir <ref>dst='traits_intelligent' "
+"text='inteliģence'</ref>, <ref>dst='traits_quick' text='ātrums'</ref>, "
+"<ref>dst='traits_resilient' text='izturība'</ref> un "
+"<ref>dst='traits_strong' text='spēks'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:399
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#| "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
-#| "<ref>dst='traits_undead' text='undead'</ref>.\n"
-#| "\n"
 msgid ""
 "\n"
 "\n"
@@ -2710,12 +2645,6 @@ msgid ""
 "<ref>dst='traits_undead' text='undead'</ref>.\n"
 "\n"
 msgstr ""
-"\n"
-"\n"
-"Vēl vienībām var tikt piešķirtas šādas iezīmes: <ref>dst='traits_dextrous' "
-"text='veiklums'</ref>, <ref>dst='traits_loyal' text='lojalitāte'</ref> un "
-"<ref>dst='traits_undead' text='nedzīvais'</ref>.\n"
-"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:409
@@ -2807,9 +2736,8 @@ msgstr ""
 "\n"
 "\n"
 "Izturīgās vienības var būt noderīgas visās kampaņas daļās, un tā ir noderīga "
-"iezīme visām vienībām. Izturības iezīme bieži ir visnoderīgākā, kad tā "
-"piemīt vienībai ar kādu kombināciju no maza maksimālā veselības līmeņa, "
-"labas aizsardzības vai augstas pretestības. Izturīgas vienības ir īpaši "
+"iezīme visām vienībām. Izturības iezīme bieži ir visnoderīgākā, cīnītājam ar "
+"mazu veselības līmeni, un labu aizsardzību. Izturīgas vienības ir īpaši "
 "noderīgas stratēģisko pozīciju noturēšanā."
 
 #. [topic]: id=traits_resilient
@@ -2842,10 +2770,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Lai gan noderīgs jebkurai tuvcīņas vienībai, spēks visnoderīgākais ir "
-"vienībām ar augstu sitienu skaitu, piemēram, elfu cīnītājiem. Spēcīgās "
-"vienibas var būt ļoti noderīgas, kad niecīgs papildus bojājumu apjoms ir "
-"viss, kas nepieciešams, lai pārvērstu ievainojošu sitienu nāvējošā."
+"Spēks visnoderīgākais ir vienībām ar augstu sitienu skaitu, piemēram, elfu "
+"cīnītājiem. Spēcīgās vienibas var būt ļoti noderīgas, kad papildus bojājumu "
+"apjoms ir viss, kas nepieciešams lai pārvērstu sitienu nāvējošā."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:434
@@ -2858,7 +2785,7 @@ msgid ""
 "strike in melee combat, and have 1 additional hitpoint."
 msgstr ""
 "<italic>text='Spēcīgās'</italic> vienības nodara par 1 punktu lielākus "
-"bojājumus katrā veiksmīgā sitienā tuvcīņas laikā, un tām ir par 1 punktu "
+"bojājumus katrā veiksmīgā sitienā (tuvcīņas laikā), un tām ir par 1 punktu "
 "augstāks maksimālais veselības līmenis."
 
 #. [topic]: id=traits_fearless
@@ -2874,7 +2801,7 @@ msgstr "Nepatika pret gaišo un tumšo nekādi neietekmē šos drosminiekus."
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:447
 msgid "Feral"
-msgstr "Savvaļas"
+msgstr "Savvaļa"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:448
@@ -2884,10 +2811,10 @@ msgid ""
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
-"Saprātīgo radījumu mājokļi nav īsti piemēroti izmantošanai par aizsegu "
-"mežonīgajiem radījumiem ar zemu inteliģenci. Tā rezultātā "
-"<italic>text='savvaļas'</italic> vienības saņem augstākais 50% aizsardzību "
-"jebkurā sauszemes ciemā, neskatoties uz tā apvidus."
+"Saprātīgo mājokļi nav īsti piemēroti aizsegam mežonīgajiem radījumiem, ar "
+"zemu inteliģenci. Tā rezultātā <italic>text='savvaļas'</italic> vienības "
+"saņem (augstākais) 50% aizsardzības, jebkurā sauszemes ciemā, neskatoties uz "
+"tā apvidu."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:453
@@ -2908,12 +2835,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kampaņu laikā zināmas vienības var izvēlēties pievienoties spēlētāja spēkiem "
-"pēc to pašu brīvas gribas. Šīm vienībām piemīt lojāluma iezīme. Lai gan to "
-"atsaukšana var maksāt, tām nav nekādu uzturēšanas izmaksu. Tas var padarīt "
-"šīs vienības nenovertējamas garu kampaņu laikā, kad zelta krājumi ir mazi. "
-"Šī iezīme nekad netiek dota iesauktajām vienībām, tāpēc varētu būt muļķīgi "
-"tās atbrīvot vai sūtīt bezjēdzīgā nāvē."
+"Kampaņu laikā zināmas vienības var izvēlēties pievienoties spēlētāja "
+"spēkiem, pēc to pašu brīvas gribas. Šīm vienībām piemīt lojāluma iezīme. Lai "
+"gan to atsaukšana maksā, tām nav nekādu uzturēšanas izmaksu. Tas padara šīs "
+"vienības nenovertējamas kampaņu laikā, kad zelta krājumi var izsīkt. Šī "
+"iezīme nekad netiek dota iesauktajām vienībām, tāpēc būt muļķīgi tās "
+"atbrīvot vai sūtīt bezjēdzīgā nāvē."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:454
@@ -2923,13 +2850,13 @@ msgid ""
 "units do not incur this cost."
 msgstr ""
 "<italic>text='Lojālas'</italic> vienības neprasa uzturēšanas maksu. Vairums "
-"vienību prasa uzturēšanas maksu katra gājiena beigās, kas ir vienāda ar tās "
-"līmeni. Lojālas vienības neprasa šo maksu."
+"vienību prasa uzturēšanas maksu, katra gājiena beigās (kas ir vienāda ar tās "
+"līmeni). Lojālas vienības neprasa šo maksu."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:461
 msgid "trait^Undead"
-msgstr "Nedzīvība"
+msgstr "Nedzīvs"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:462
@@ -2943,10 +2870,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nedzīvajām vienībām parasti vienīgā iezīme ir 'nedzīvais'. Tā kā nedzīvās "
-"vienības ir mirušo ķermeņi, kas celti, lai atkal cīnītos, indei uz tiem nav "
+"Nedzīvajām vienībām parasti vienīgā iezīme ir «nedzīvais». Tā kā nedzīvās "
+"vienības ir mirušo ķermeņi, kas celti lai atkal cīnītos, indei uz tiem nav "
 "nekādas iedarbības. Tas var padarīt šīs vienības nenovērtējamas cīņā pret "
-"ienaidniekiem, kuri izmanto indi kopā ar to uzbrukumiem."
+"ienaidniekiem, kuri izmanto indi kopā ar uzbrukumu."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:462
@@ -2972,7 +2899,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mehānisko vienību vienībā iezīme parasti ir 'mehānisks'. Tā kā mehāniskās "
+"Mehānisko radijumu vienībā iezīme parasti ir «mehānisks». Tā kā mehāniskās "
 "vienības nav dzīvas, izsūkšana, inde un sērga uz tām neatstāj nekādu ietekmi."
 
 #. [topic]: id=traits_mechanical
@@ -3000,7 +2927,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pirmatnējo vienību vienīgā iezīme parasti ir 'pirmatnēja'. Tā kā pirmatnējās "
+"Pirmatnējo vienību vienīgā iezīme parasti ir «pirmatnēja». Tā kā pirmatnējās "
 "vienības ir enerģijas dzīvības formas, izsūkšana, inde un sērga uz tām "
 "neatstāj nekādu ietekmi."
 
@@ -3042,7 +2969,7 @@ msgid ""
 "strike in ranged combat."
 msgstr ""
 "<italic>text='Veiklas'</italic> vienības nodara par 1 bojājuma punktu vairāk "
-"katrā veiksmīgā sitienā cīņā no attāluma."
+"katrā veiksmīgā šāvienā no attāluma."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:493
@@ -3178,18 +3105,12 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:531
-#, fuzzy
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 "Spēles kartēs ir dažādi apvidi, kas ietekmē gan vienību pārvietošanos, gan "
-"vienības aizsardzības spējas kaujā.\n"
-"\n"
+"vienības aizsardzības spējas."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:533
@@ -3197,7 +3118,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3205,7 +3126,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Iespējamība trāpīt'</header>"
+"<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:535
@@ -3234,7 +3155,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3242,7 +3163,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Iespējamība trāpīt'</header>"
+"<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:543
@@ -3322,7 +3243,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3330,7 +3251,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Iespējamība trāpīt'</header>"
+"<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:565
@@ -3368,7 +3289,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3377,7 +3298,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Iespējamība trāpīt'</header>"
+"<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:584
@@ -3387,19 +3308,16 @@ msgid ""
 "more beyond what is offered in the official content bundled with the game.\n"
 "\n"
 msgstr ""
+"Spēles dzinēja elastība ļauj lietotājiem radīt savu saturu, tai skaitā "
+"Scenārijus, Kampaņas, utt.. paplašinot jau esošās spēles materiālus.\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:594
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Papildinājumu lietošana"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:595
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3407,7 +3325,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Bojājumi'</header>"
+"<header>text='Kampaņas un Scenāriji'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:595
@@ -3415,6 +3333,7 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Spēle atbalsta dažāda tipa pielikumus. Ne visi ir pieejami dažādos režīmos."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:597
@@ -3426,16 +3345,21 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"\n"
+"Vienspēlētāju kampaņas ir scenāriju kopa, kas pastāsta kādu stāstu. "
+"Scenārijus un kampaņas var paņemt <italic>text='Kampaņas'</italic>."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:599
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Vienības ar šo speciālo uzbrukumu'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Daudzspēlētāju kampaņas, scenāriji un kartes'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:601
@@ -3446,14 +3370,14 @@ msgid ""
 "scripted scenarios or even specially designed campaigns. There are also "
 "packs providing sets of individual multiplayer scenarios."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Daudzspēlētāju'</italic> spēles var spēlēt brīvā režīmā, ar "
+"modificētu scenāriju vai kampaņu. Ir arī komplekti, kas satur individuālu "
+"Daudzspēlētāja modifikāciju."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:603
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3461,7 +3385,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sitienu secība un skaits'</header>"
+"<header>text='Daudzspēlētāju ēras un Frakcijas'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:605
@@ -3477,6 +3401,15 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"Spēlē iespējams, ka dažādas radības pasaulē sadarboties, caur frakcijām. "
+"Frakcijas ir sagrupēti, sabalansēti komplekti ar kopīgu tēmu, piemēram: "
+"galvenās frakcijas Wesnotā var atrast Noklusētajā Erā.\n"
+"\n"
+"<italic>text='Daudzspēlētājā'</italic> jūs varat izvēlēties ēru pirms "
+"izveidojat spēli, un spēlētāji varēs izvēlēties frakcijas, kā arī veidot "
+"savas puses un komandas."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:609
@@ -3489,11 +3422,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:611
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3501,7 +3429,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sitienu secība un skaits'</header>"
+"<header>text='Daudzspēlētāju modifikācijas'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:613
@@ -3513,14 +3441,14 @@ msgid ""
 "in various ways. You can choose and configure modifications when creating a "
 "new game."
 msgstr ""
+"\n"
+"\n"
+"Modifikācijas ir papildus skripti, neatkarīgi no scenārijiem un ērām. "
+"<italic>text='Daudzspēlētājā'</italic> tie var mainīt ierasto noteikumu "
+"kopu. Izvēlēties modifikācijas (un iestatīt) var pirms spēles izveidošanas."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:615
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3528,7 +3456,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Iespējamība trāpīt'</header>"
+"<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:617
@@ -3541,11 +3469,17 @@ msgid ""
 "other playable add-ons may depend on them and suggest or require their "
 "installation during download."
 msgstr ""
+"\n"
+"\n"
+"Satura veidotāji resursu pakas var iegūt 'papildinājumu serverī', tur var "
+"bagātināt savu materiālu ar: bildēm, mūziku un kodiem. Tie parasti nav "
+"paredzēti tiešai izmantošanai spēlē, tomēr citi papildinājumitos var "
+"piedāvāt ielādēt, vai pat pieprasīt."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:626
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Uzstādīt pielikumus"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:627
@@ -3572,11 +3506,31 @@ msgid ""
 "about the add-on, such as its full description, installation status, and "
 "available languages."
 msgstr ""
+"Lietotāja pielikumus var iegūt un atjaunot spēles galvenajā izvēlnē, "
+"nospiežot pogu <italic>text='Papildinājumi'</italic>. Pēc pieslēgšanās "
+"'papildinājumu serverim' (<italic>text='add-ons.wesnoth.org'</italic>) tev "
+"piedāvās sarakstu ar pielikumiem ko ielādēt.\n"
+"\n"
+"Zem katra papildinājuma būs redzams statuss. Tiem kam būs pieejams "
+"<italic>text='atjauninājums'</italic> vai ir <italic>text='novecojuši'</"
+"italic> uz servera, to uzstādīšanas un publicētās versijas būs redzamas "
+"sadaļā <italic>text='Versijas'</italic>.\n"
+"\n"
+"Lai meklētu pielikumus pēc atslēgvārdiem, ierakstiet textu (jebkurā secībā) "
+"<bold>text='Filtri'</bold> sadaļā, atdalot ar 'atstarpi'. Jūs varat arī "
+"kārtot pielikumus sarakstā, noklikšķinot galvenajā kolonnā uz kritēriju "
+"sadaļām. Tāpat ir iespējams parādīt tikai vēlamo 'pielikumus' kategoriju, "
+"noklikšķinot uz <bold>text='Options'</bold> pogas (augšējā labajā stūrī).\n"
+"\n"
+"Lai uzstādītu papildinājumu - izvēlies to sarakstā un nospied "
+"<bold>text='Labi'</bold>, divreiz noklikšķini sarakstā. Nospiežot "
+"<bold>text='Apraksta'</bold> pogu iegūsi smalkāku informāciju par konkrēto "
+"pielikumu."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:640
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Noņemt Papildinājumu"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:641
@@ -3591,13 +3545,21 @@ msgid ""
 "information files or the add-ons themselves using a file manager provided by "
 "your platform."
 msgstr ""
+"Lai noņemtu pielikumu - izvēlies <bold>text='Noņemt Papildinājumus'</bold> "
+"(servera pielikuma logā). Tev tiks piedāvātas iespējas smalki izvēlēties "
+"kurus pielikumus noņemt.\n"
+"\n"
+"Nevar noņemt pielikumu kam klāt piesaistīts fails ar publikācijas "
+"informāciju (<italic>text='.pbl'</italic>), lai nepieļautu tā nejaušu "
+"pazaudēšanu. Ja nepieciešams - informācijas un pielikuma faili tev būs "
+"jāizdzēš manuāli (caur savu faila menedžeri)."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:656
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
-msgstr "Vispārējas darbības"
+msgstr "Vispārējas komandas"
 
 #. [topic]: id=debug_commands
 #. [topic]: id=general_commands
@@ -3609,6 +3571,9 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
+"Šīs komandas var ievadīt 'komandu rindā', ievadot ':', vai arī - to var "
+"izdarīt čatā ievadot '/'. Lai aktivizētu čatu nospied 'm'.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:660
@@ -3648,7 +3613,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Iestatīt vai pārslēgt spēlētāju starp cilvēka un datora spēlētāju. "
+"Iestatīt vai pārslēgt spēlētāju starp cilvēku un datora spēlētāju. "
 "Spēlētājam/klientam, kurš kontrolē to pusi, jāpalaiž šī komanda. Ja netiek "
 "dots otrais parametrs, tad pārslēdz starp cilvēku un datoru. Ja tas ir "
 "'ieslēgts', iestata datora kontroli. Ja tas ir 'izslēgts', tad iestata "
@@ -3663,6 +3628,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"Rāda puses kontroles statusu.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:673
@@ -3672,7 +3640,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Ieslēgt/izslēgt pašreizējo kadru frekvences attēlošanu.\n"
+"Ieslēgt/atslēgt pašreizējo kadru frekvences attēlošanu.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3744,7 +3712,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
-msgstr "Daudzspēlētāju darbības"
+msgstr "Daudzspēlētāju komandas"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:703
@@ -3757,7 +3725,7 @@ msgid ""
 msgstr ""
 "\n"
 "Uzliek pieejas aizliegumu lietotājam daudzspēlētāju spēlē, pēc IP adreses, "
-"ko lieto šis spēlētājs, un izsviež viņu. Var tikt izmantots pret "
+"ko lieto šis spēlētājs, un izsviež viņu. Var arī tikt izmantots pret "
 "lietotājiem, kuri nav spēlē, bet ir pieslēgušies serverim. (Protams, tad "
 "viņi netiks izsviesti.)\n"
 "\n"
@@ -3791,6 +3759,10 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"Parāda dialogu, lai palīdzētu uzturētājam samainīt cilvēkus kas kontrolē "
+"puses.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:712
@@ -3800,6 +3772,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"Pārslēdz pusēm iesaldēšanas statusu. Uzturētājs var iesaldēt puses, ja "
+"gadijumā savienojums pazudis.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:715
@@ -3827,7 +3803,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sūta privātu ziņu lietotājam. Spēles laikā nevar sūtīt ziņas spēlētājiem, "
-"kuri tajā pat laikā kontrolē kādu no pusēm tajā pašā spēlē, kur esi tu.\n"
+"kuri tajā pat laikā kontrolē kādu no pusēm - tajā pašā spēlē, kur esi tu.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3864,7 +3840,8 @@ msgid ""
 msgstr ""
 "\n"
 "Noņemt aizliegumu ienākt lietotājam daudzspēlētāju spēlē, izmantojot tā IP "
-"adresi. Var tikt izmantots lietotājiem, kuri nav spēlē, bet ir uz servera.\n"
+"adresi. Var arī tikt izmantots lietotājiem, kuri nav spēlē, bet ir uz "
+"servera.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3906,7 +3883,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Izveidot norādītā tipa cienību uz izvēlētā lauciņa.\n"
+"Izveidot cīnītāju no norādītā veida, izvēlētajā lauciņā.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3994,7 +3971,7 @@ msgid ""
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 "\n"
-"Liek izvēlētajai vienībai attīstīties N reizes. Piemērs: :unit advances=2"
+"Pacelt izvēlētajai vienībai līmeni N reizes. Piemērs: :unit advances=2"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:47
@@ -4008,17 +3985,11 @@ msgstr "ārstē"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:49
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Ārstē:\n"
-"Ārstētājs spēj izārstēt vienību no indes, lai gan tā vienība nesaņems nekādu "
+"Ārsts spēj izārstēt vienību no indes, lai gan tā vienība nesaņems nekādu "
 "papildus dziedēšanu tajā gājienā."
 
 #. [regenerate]: id=regenerates
@@ -4033,41 +4004,29 @@ msgstr "atjaunojas"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Reģenerējas:\n"
 "Vienība dziedēs sevi par 8 VP gājienā. Ja tā ir saindēta, tad dziedēšanas "
 "vietā tā izņems indi."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:91
 msgid "steadfast"
-msgstr "nelokās"
+msgstr "izturīgs"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:92
 msgid "female^steadfast"
-msgstr "nelokās"
+msgstr "izturīga"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Nelokāms:\n"
 "Aizsargājoties šīs vienības izturība tiek dubultota, maksimāli līdz 50%. "
 "Ievainojamības paliek nemainīgas."
 
@@ -4076,29 +4035,19 @@ msgstr ""
 #: data/core/macros/abilities.cfg:159 data/core/macros/abilities.cfg:202
 #: data/core/macros/abilities.cfg:256
 msgid "leadership"
-msgstr "vada"
+msgstr "vadītājs"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:107 data/core/macros/abilities.cfg:128
 #: data/core/macros/abilities.cfg:160 data/core/macros/abilities.cfg:203
 #: data/core/macros/abilities.cfg:257
 msgid "female^leadership"
-msgstr "vada"
+msgstr "vadītāja"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:108 data/core/macros/abilities.cfg:129
 #: data/core/macros/abilities.cfg:161 data/core/macros/abilities.cfg:204
 #: data/core/macros/abilities.cfg:258
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -4108,60 +4057,44 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Vada:\n"
-"Šī vienība spēj vadīt mūsu pašu vienības, kas tai ir blakus, ļaujot tām "
-"cīnīties labāk.\n"
+"Šī vienība spēj vadīt vienības, kas tai ir blakus, motivējot tām cīnīties "
+"labāk.\n"
 "\n"
 "Blakus esošās mūsu vienības ar zemāku līmeni nodarīs lielākus bojājumus "
-"cīņā. Kad vienībai ar vadīšanas iezīmi blakus esoša tās pašas puses vienība "
-"ar zemāku līmeni iesaistās kaujā, tās uzbrukumi nodara par 25% reiz to "
-"līmeņu starpība lielākus bojājumus."
+"cīņā. Kad vienībai ar mazāku līmeni blakus stāv vadītājs tās uzbrukumi "
+"nodara par 25% lielākus bojājumus."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:319
 msgid "skirmisher"
-msgstr "strēlnieks"
+msgstr "nenotverams"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:320
 msgid "female^skirmisher"
-msgstr "strēlniece"
+msgstr "nenotverama"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:321
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Strēlnieks:\n"
-"Šī vienība ir prasmīga ātrā paiešanā garām ienaidniekam, un tā ignorē visas "
-"ienaidnieku kontroles zonas."
+"Šī vienība prasmīgi paiet garām ienaidniekam, un tā ignorē visas ienaidnieku "
+"'kontroles zonas'."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:334
 msgid "illuminates"
-msgstr "izgaismo"
+msgstr "izgaismotājs"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:335
 msgid "female^illuminates"
-msgstr "izgaismo"
+msgstr "izgaismotāja"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:336
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4169,7 +4102,6 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Izgaismo:\n"
 "Šī vienība izgaismo savu apkārtni, ļaujot likumpaklausīgajām vienībām labāk "
 "cīnīties, un liekot haotiskajām vienībām cīnīties sliktāk.\n"
 "\n"
@@ -4179,48 +4111,34 @@ msgstr ""
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:348
 msgid "teleport"
-msgstr "teleportējas"
+msgstr "teleportētājs"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:349
 msgid "female^teleport"
-msgstr "teleportējas"
+msgstr "teleportētāja"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:350
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teleportējas:\n"
-"Šī vienība, izmantojot vienu no tās gājieniem, spēj teleportēties starp "
-"jebkuriem diviem tukšiem ciemiem, kuri pieder tās pusei."
+"Šī vienība, izmantojot vienu no tās gājieniem spēj teleportēties starp "
+"jebkuriem diviem tukšiem ciematiem (kuri pieder tev)."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:386 data/core/macros/abilities.cfg:388
 msgid "ambush"
-msgstr "uzbrūk no slēpņa"
+msgstr "ložņa"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:387 data/core/macros/abilities.cfg:389
 msgid "female^ambush"
-msgstr "uzbrūk no slēpņa"
+msgstr "ložņa"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:393
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4228,29 +4146,21 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Uzbrūk no slēpņa:\n"
-"Šī vienība spēj slēpties mežos un palikt nemanāma tās ienaidniekiem.\n"
+"Ložņa spēj slēpties mežos un palikt nemanāma tās ienaidniekiem.\n"
 "\n"
-"Ienaidnieka vienības nevar redzēt šo vienību, kamēr tā ir mežā, izņemot ja "
-"viņiem ir vienības tieši blakus šai vienībai. Jebkura ienaidnieka vienība, "
-"kura pirmā atklāj, nekavējoties zaudē visu tās atlikušo gājienu."
+"Ienaidnieka vienības nevar redzēt šo vienību, kamēr tā ir mežā, vienīgais "
+"veids kā ložņu ieraudzīt ir uzdurties blakus tās lauciņam. Jebkura "
+"ienaidnieka vienība, kura pirmā atklāj ložņu, nekavējoties zaudē visus "
+"atlikušos gājienu punktus."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:410 data/core/macros/abilities.cfg:411
 #: data/core/macros/abilities.cfg:415
 msgid "nightstalk"
-msgstr "slēpjas tumsā"
+msgstr "nakts ložņa"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:412 data/core/macros/abilities.cfg:417
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4258,17 +4168,16 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Slēpjas tumsā:\n"
-"Nakts laikā vienība kļūst neredzama.\n"
+"Nakts laikā nakts ložņa kļūst neredzama.\n"
 "\n"
-"Ienaidnieka vienības nevar redzēt šo vienību nakts laikā, izņemot ja kāda "
-"viņu vienība ir tieši blakus tai. Jebkura ienaidnieka vienība, kura pirmā "
-"atklāj šo vienību, nekavējoties zaudē visu tās atlikušo gājienu."
+"Ienaidnieka vienības nevar redzēt šo vienību nakts laikā, izņemot ja kāds "
+"neuzgrūžās tai tieši virsū. Jebkura ienaidnieka vienība, kura pirmā atklāj "
+"nakts ložņu, nekavējoties zaudē visus atlikušos gājienu punktus."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:416
 msgid "female^nightstalk"
-msgstr "slēpjas tumsā"
+msgstr "nakts ložņa"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:434 data/core/macros/abilities.cfg:439
@@ -4282,16 +4191,6 @@ msgstr "maskējas"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:436 data/core/macros/abilities.cfg:441
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4300,34 +4199,25 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Maskēšanās:\n"
-"Šī vienība spēj paslēpties ciemos (izņemot ūdens ciemus), un palikt nemanāma "
-"tās ienaidniekiem, izņemot tos, kuri stāv tai blakus.\n"
+"Šī vienība spēj paslēpties ciematos (izņemot ūdens ciemus), un palikt "
+"nemanāma tās ienaidniekiem, izņemot tos, kuri stāv tai blakus.\n"
 "\n"
-"Ienaidnieka vienības neredz šo vienību kamēr tā ir ciemā, izņemot ja kāda "
-"viņu vienība ir tai blakus. Jebkura ienaidnieka vienība, kura pirmā atklāj "
-"šo vienību, nekavējoties zaudē visu atlikušo tās gājienu."
+"Ienaidnieka vienības neredz šo vienību kamēr tā ir ciematā, To var pamanīt "
+"tikai ja pienāks klāt ciematam. Pretinieks kurš pirmais atklāj šo vienību, "
+"nekavējoties zaudē visus atlikušos gājienu punktus."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:458 data/core/macros/abilities.cfg:463
 msgid "submerge"
-msgstr "nirst"
+msgstr "nirējs"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:459 data/core/macros/abilities.cfg:464
 msgid "female^submerge"
-msgstr "nirst"
+msgstr "nirēja"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:460 data/core/macros/abilities.cfg:465
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4335,35 +4225,30 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Nirst:\n"
-"Šī vienība spēj slēpties dziļā ūdenī un palikt nemanāma tās ienaidniekiem.\n"
+"Šī vienība spēj slēpties dziļā ūdenī.\n"
 "\n"
-"Ienaidnieka vienības neredz šo vienību kamēr tā ir dziļā ūdenī, izņemot ja "
-"kāda viņu vienība ir tai blakus. Jebkura ienaidnieka vienība, kura pirmā "
-"atklāj šo vienību, zaudē visu tās atlikušo gājienu."
+"Ienaidnieks neredz šo vienību kamēr tā ir dziļā ūdenī, izņemot ja kāds tai "
+"ir blakus. Jebkura ienaidnieka vienība, kura pirmā atklāj nirēju, zaudē "
+"visus tās atlikušos gājienu punktus."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:485
 msgid "feeding"
-msgstr "barošanās"
+msgstr "sūcējs"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:486
 msgid "female^feeding"
-msgstr "barošanās"
+msgstr "sūcēja"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:487
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
-" Šī vienība gūst 1 veselības punktu pie tās maksimuma ikreiz, kad tā "
-"nogalina dzīvojošu vienību."
+"Šī vienība palielina maksimālo veselību par 1 katru reizi, kad nogalina kādu "
+"ienaidnieku (izņemot tos, kuriem ir imuinitāte)."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:509
@@ -4373,62 +4258,42 @@ msgstr "+1 maksimālajiem veselības punktiem"
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:551
 msgid "backstab"
-msgstr "dūriens mugurā"
+msgstr "uzbrūk no muguras"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:552
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Iedur mugurā:\n"
-"Uzbrūkot šis uzbrukums nodara dubultus bojājumus, ja aiz mērķa pretējā pusē "
-"ir ienaidnieks, un tas nav atbruņots (pārakmeņots vai kā citādi paralizēts)."
+"Uzbrūkot no muguras šis uzbrukums nodara dubultus bojājumus, lai to izdarītu "
+"- jāpielavās no muguras, un uzbrukuma brīdī mērķim jācīnās ar kādu "
+"pretinieku no priekšpuses (kurš nav pārakmeņots vai kā citādi paralizēts)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:564 data/core/macros/abilities.cfg:575
 msgid "plague"
-msgstr "inficēšana"
+msgstr "mēris"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:565
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Sērga:\n"
 "Kad vienību nogalina sērga, tā tiek aizstāta ar identisku vienību, kas ir "
 "uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:576
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Sērga:\n"
 "Kad vienību nogalina sērga, tā tiek aizstāta ar staigājošu līķi, kas ir "
 "uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
@@ -4439,20 +4304,12 @@ msgstr "sapīšana"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:587
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Sapīšana:\n"
 "Šis uzbrukums palēlina mērķi līdz tas pabeidz gājienu. Sapīšana uz pusi "
 "samazina uzbrukumu spēku un pārvietošanās izmaksa sapītajai vienībai ir "
 "dubultota. Vienībai, kura ir sapīta, informācijas joslā būs redzama gliemeža "
@@ -4461,40 +4318,27 @@ msgstr ""
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:596
 msgid "petrifies"
-msgstr "pārakmeņo"
+msgstr "pārakmeņot"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:597
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Pārakmeņo:\n"
 "Šis uzbrukums pārakmeņo mērķi. Pārakmeņotās vienības nespēj ne pārvietoties, "
 "ne uzbrukt."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:606
 msgid "marksman"
-msgstr "precizitāte"
+msgstr "snaipers"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:607
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Mērķī šaušana:\n"
-"Uzbrukumā šim uzbrukumam vienmēr ir vismaz 60% iespējamība trāpīt."
+msgstr "Šim uzbrukumam vienmēr ir vismaz 60% iespējamība trāpīt."
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:631
@@ -4503,20 +4347,12 @@ msgstr "spiets"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:632
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Spiets:\n"
 "Šī uzbrukuma sitienu skaits samazinās, kad vienība ir ievainota. Sitienu "
 "skaits ir proporcionāls vienības procentuālajam veselības daudzumam no tās "
 "maksimālās veselības. Piemēram, vienībai ar 3/4 no tās maksimālajiem "
@@ -4525,23 +4361,16 @@ msgstr ""
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:641
 msgid "charge"
-msgstr "triecienuzbrukums"
+msgstr "lādiņš"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Lādiņš:\n"
-"Kad izmantots uzbrukumā, šis uzbrukums nodara dubultus bojājumus mērķim. Tas "
-"arī izraisa dubultus bojājumus no mērķa pretuzbrukumiem šai vienībai."
+"Kad izmantots uzbrukumā, lādiņš nodara dubultus bojājumus mērķim. Tas arī "
+"izraisa dubultus bojājumus no mērķa pretuzbrukumiem."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:654
@@ -4550,16 +4379,10 @@ msgstr "izsūkšana"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:655
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Izsūkšana:\n"
 "Šī vienība izsūc veselību no dzīvām vienībām, tā dziedējot sevi ar pusi no "
 "izsūktās veselības daudzuma (noapaļojot uz leju)."
 
@@ -4570,21 +4393,14 @@ msgstr "inde"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:675
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
-"Inde:\n"
 "Šis uzbrukums saindē dzīvos mērķus. Saindētās vienības zaudē 6 VP katrā "
 "gājienā līdz kamēr tās tiek izārstētas vai to veselība tiek samazināta līdz "
-"1 punktam. Inde vien nespēj nogalināt vienību."
+"1 punktam. Inde nespēj nogalināt vienību."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -4715,98 +4531,78 @@ msgstr "Pirmā sardze — ceturtā stunda"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:478
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "Pirmā sardze"
+msgstr "Pirmais saullēkts"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:488
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "Otrā sardze"
+msgstr "Otrais saullēkts"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:498
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Rīts"
+msgstr "Pirmais Rīts"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:507
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Rīts"
+msgstr "Otrais Rīts"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:516
-#, fuzzy
-#| msgid "Midday"
 msgid "First Midday"
-msgstr "Pusdienlaiks"
+msgstr "Pirmā Dienas daļa"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "Otrā sardze"
+msgstr "Otrā Dienas daļa"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:534
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "Pēcpusdiena"
+msgstr "Pirmā Pēcpusdiena"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:543
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Pēcpusdiena"
+msgstr "Otrā Pēcpusdiena"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:552
-#, fuzzy
-#| msgid "firststrike"
 msgid "First Dusk"
-msgstr "pirmais sitiens"
+msgstr "pirmā krēsla"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:562
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "Otrā sardze"
+msgstr "Otrā krēsla"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:572
 msgid "The Short Dark"
-msgstr ""
+msgstr "Īsa tumsa"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:584
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "Gara tumsa (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:596
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "Gara tumsa (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:610
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "Gara tumsa (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:622
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "Gara tumsa (4)"
 
 #: data/core/macros/special-notes.cfg:3
 msgid ""
@@ -4824,15 +4620,15 @@ msgid ""
 "open water."
 msgstr ""
 " Gariem ir ļoti neparasta izturība pret uzbrukumiem, un tie pārvietojas ļoti "
-"lēni pār atklātu ūdeni."
+"lēni pāri ūdeņiem."
 
 #: data/core/macros/special-notes.cfg:11
 msgid ""
 " This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Šīs vienības mistikas uzbrukums rada satriecošus bojājumus maģiskajiem "
-"radījumiem, un kaut kādus arī pasaulīgajiem radījumiem."
+" Šīs vienības mistiskais uzbrukums rada milzīgus bojājumus maģiskiem "
+"radījumiem."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
@@ -4845,22 +4641,19 @@ msgstr " Šī vienība ir spējīga veikt ātru dziedināšanu."
 #: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
-" Šī vienība ir spējīga dziedēt tai apkārtesošos, un izārstēt tos no indes."
+msgstr " Šī vienība ir spējīga dziedēt un izārstēt no indes."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr " Šī vienība ir spējīga neitralizēt indes efektu apkārtesošajos."
+msgstr " Šī vienība ir spējīga neitralizēt indi."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
-msgstr ""
-" Šī vienība reģenerējas, kas tai ļauj atveseļoties tā, it kā tā vienmēr "
-"atrastos ciemā."
+msgstr " Šī vienība katrā gājienā reģenerējas."
 
 #: data/core/macros/special-notes.cfg:29
 msgid ""
@@ -4868,28 +4661,27 @@ msgid ""
 "while defending."
 msgstr ""
 " Šīs vienības nosvērtība samazina dažu uzbrukumu radītos bojājumus, bet "
-"tikai kamēr tā aizsargājas."
+"tikai aizstāvoties."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Šīs vienības vadības spējas ļauj blakus esošajām tās pašas puses vienībām "
-"nodarīt lielākus bojājumus kaujā, bet tas attiecas tikai uz zemāku līmeņu "
-"vienībām."
+" Šīs vienības līdera prasmes ļauj blakus esošām vienībām nodarīt lielākus "
+"bojājumus, bet tas attiecās tikai uz zemāka līmeņa vienībām."
 
 #: data/core/macros/special-notes.cfg:35
 msgid ""
 " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Šīs vienības strēlnieka prasmes ļauj tai ignorēt ienaidnieka kontroles "
-"zonas un netraucēti pārvietoties tām apkārt."
+" Šīs vienības veiklība ļauj ignorēt ienaidnieka kontroles zonas un "
+"netraucēti pārvietoties tām cauri."
 
 #: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr " Izgaismošana palielina apgaismojuma līmeni blakus esošajos apgabalos."
+msgstr " Izgaismošana palielina redzamību."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4897,51 +4689,47 @@ msgid ""
 "controlled by its side."
 msgstr ""
 " Šī vienība var izmantot vienu gājienu, lai teleportētos starp jebkuriem "
-"diviem tukšiem ciemiem, kurus kontrolē tā puse."
+"diviem (pārvaldītiem) ciemiem."
 
 #: data/core/macros/special-notes.cfg:44
 msgid ""
 " In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" Mežos šīs vienības maskēšanās spējas padara tās neredzamas ienaidniekiem, "
-"ja vien tā nav tieši blakus vai ir atklājusi sevi uzbrūkot."
+" Mežos šī vienība ir neredzama ienaidniekam; ja vien tā nav tieši blakus."
 
 #: data/core/macros/special-notes.cfg:47
 msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
-" Šī vienība spēj slēpties naktī, neatstājot nekādas pēdas par tās klātbūtni."
+msgstr " Šī vienība spēj slēpties naktī."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" Šī vienība spēj slēpties ciemos (izņemot ūdens ciemus), un palikt nemanīta "
-"tās ienaidniekiem, izņemot tos, kuri stāv tieši blakus."
+" Šī vienība spēj slēpties ciematos (izņemot ūdens ciemus), un palikt "
+"nemanīta ienaidniekam; ja vien pretinieks nestāv blakus."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
-msgstr ""
-" Šī vienība spēj pārvietoties neredzēta dziļos ūdeņos, un tai nav "
-"nepieciešams gaiss no virspuses."
+msgstr " Šī vienība spēj pārvietoties dziļos ūdeņos."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Šī vienība gūst 1 veselības punktu pie tās maksimuma ikreiz, kad tā "
-"nogalina dzīvojošu vienību."
+" Šī vienība gūst 1 veselības punktu pie maksimuma ikreiz, kad tā nogalina "
+"dzīvo vienību."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Vienmēr, kad tiek lietots šīs vienības neprāta uzbrukums, tā turpina "
-"uzbrukumu līdz tā vai pretinieks guļ miris."
+" Vienmēr, kad tiek lietots 'dusmu izvirdums', cīņa turpinās kamēr kāds no "
+"cīnītājiem mirst."
 
 #: data/core/macros/special-notes.cfg:62
 msgid ""
@@ -4949,53 +4737,50 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Ja mērķa pretējā pusē  uzbrukuma laikā ir ienaidnieks, šī vienība var "
-"iedurt mugurā, radot divkāršus bojājumus aizlienot aiz tā ienaidnieka."
+" Ja upurim pretējā pusē  ir ienaidnieks - šī vienība var iedurt mugurā, "
+"radot divkāršus bojājumus."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Pretinieki, kuri zaudē dzīvību sērgai, celsies atkal nedzīvē, ja vien tie "
-"nestāv ciemā."
+" Pretinieki, kuri zaudē dzīvību no nedzīvo sērgas, pēc nāves pārtop zombijos "
+"(ja vien tie nestāv ciemā)."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Šī vienība spēj palēlināt tās ienaidniekus, samazinot uz pusi to "
-"pārvietošanās ātrumu un uzbrukuma spēku līdz gājiena beigām."
+" Šī vienība spēj palēnināt ienaidnieku, samazinot uz pusi to pārvietošanās "
+"ātrumu un uzbrukuma spēku (līdz gājiena beigām)."
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
-msgstr " Spēja pārvērst dzīvos akmenī padara šo vienību ārkārtīgi bīstamu."
+msgstr " Spēj pārvērst dzīvus radijumus akmenī."
 
 #: data/core/macros/special-notes.cfg:74
 msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-" Šīs vienības mērķīšaušanas prasme dod tai lielas iespējas trāpīt "
-"pretiniekiem, bet tikai uzbrūkot."
+" Šīs vienības precizitāte piešķir lielas iespējas trāpīt pretiniekam (bet "
+"tikai uzbrūkot)."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
-msgstr ""
-" Šai vienībai ir maģiski uzbrukumi, kuriem vienmēr ir liela trāpīšanas "
-"iespējamība."
+msgstr " Šai vienībai ir maģiski uzbrukumi, kas vienmēr palielina precizitāti."
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Šīs vienības spietošanas uzbrukumi kļūst mazāk nāvējoši vienmēr, kad tā "
-"biedri ir ievainoti."
+" Šīs vienības uzbrukumi kļūst mazāk nāvējoši, kad tās biedri ir ievainoti."
 
 #: data/core/macros/special-notes.cfg:83
 msgid ""
@@ -5017,17 +4802,15 @@ msgstr ""
 msgid ""
 " The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
-msgstr ""
-" Šīs vienības ieroča garums ļauj tai tuvcīņā iesist pirmajai, pat "
-"aizsargājoties."
+msgstr " Ieroča garums ļauj aizstāvoties iesist pirmajam."
 
 #: data/core/macros/special-notes.cfg:92
 msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Šīs vienības indes upuris nepārtraukti saņems bojājumus līdz to var tikt "
-"izārstēt ciemā vai vienība, kura spēj ārstēt."
+" Šī radijuma inde nodarīs upurim bojājumus, kamēr tas netiks izārstēts "
+"ciematā, vai ar ārsta palīdzību."
 
 #: data/core/macros/special-notes.cfg:95
 msgid ""
@@ -5261,7 +5044,7 @@ msgstr "Dreiks"
 #. [race]: id=drake
 #: data/core/units.cfg:56
 msgid "race+female^Drake"
-msgstr "Dreice"
+msgstr "Dreika"
 
 #. [race]: id=drake
 #: data/core/units.cfg:57
@@ -5292,7 +5075,7 @@ msgstr "Dreiki"
 #| "it makes them extremely vulnerable to cold attacks. Despite their magical "
 #| "nature, drakes are incapable of channeling magic in a controlled manner. "
 #| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over its functions of this "
+#| "gives it life, they have no willful control over the functions of this "
 #| "magic.\n"
 #| "\n"
 #| "<header>text='Society'</header>\n"
@@ -5313,12 +5096,12 @@ msgstr "Dreiki"
 #| "already occupied by the other major races. Instead, they settle in "
 #| "unpopulated areas to establish their own territory there. They primarily "
 #| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain of "
-#| "moss and fungi they cultivate deep in their caverns. The only technology "
-#| "drakes value is armor- and weapon-smithing, and neither know or need "
-#| "other science and culture besides this. However the few implements they "
-#| "do fashion are almost unrivaled in quality, only matched by those "
-#| "produced in the finest Dwarvish foundries.\n"
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. The only "
+#| "technology drakes value is armor- and weapon-smithing, and neither know "
+#| "or need other science and culture besides this. However the few "
+#| "implements they do fashion are almost unrivaled in quality, only matched "
+#| "by those produced in the finest Dwarvish foundries.\n"
 #| "\n"
 #| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
 #| "years. Death in battle is the most preferred way for a drake to leave "
@@ -5585,7 +5368,7 @@ msgstr "Elfs"
 #. [race]: id=elf
 #: data/core/units.cfg:112
 msgid "race+female^Elf"
-msgstr "Elfa"
+msgstr "Elfiete"
 
 #. [race]: id=elf
 #: data/core/units.cfg:113
@@ -5668,24 +5451,18 @@ msgstr ""
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:132
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Cilvēks"
+msgstr "Piekūns"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:133
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Cilvēks"
+msgstr "Piekūniete"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:134
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Cilvēki"
+msgstr "Piekūni"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:145
@@ -5695,7 +5472,7 @@ msgstr "Goblins"
 #. [race]: id=goblin
 #: data/core/units.cfg:146
 msgid "race+female^Goblin"
-msgstr "Gobline"
+msgstr "Gobliniete"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:147
@@ -5748,7 +5525,7 @@ msgstr "Grifs"
 #. [race]: id=gryphon
 #: data/core/units.cfg:164
 msgid "race+female^Gryphon"
-msgstr "Grifene"
+msgstr "Grifiene"
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:165
@@ -5771,12 +5548,12 @@ msgstr ""
 #. [race]: id=human
 #: data/core/units.cfg:184
 msgid "race^Human"
-msgstr "Cilvēks"
+msgstr "Vīrietis"
 
 #. [race]: id=human
 #: data/core/units.cfg:185
 msgid "race+female^Human"
-msgstr "Cilvēks"
+msgstr "Sieviete"
 
 #. [race]: id=human
 #: data/core/units.cfg:186
@@ -5827,64 +5604,53 @@ msgstr ""
 "Cilvēku rase ir ārkārtīgi daudzveidīga. Sākotnēji cēlušies Vecajā "
 "kontinentā, cilvēki ir izplatījušies pa visu pasauli un sadalījušies daudzās "
 "dažādās kultūrās un rasēs. Lai gan viņi nav apdāvināti ar maģiju, kā citas "
-"radības, cilvēki spēj iemācīties to kontrolēt, turklāt spēj apgūt vairāk "
-"veidu, kā lielākā daļa citu. Tiem nav nekādu papildu spēju izņemtot to "
-"daudzpusību un sparu. Lai gan bieži tie ir nesaskaņās ar citām rasēm, reizēm "
-"tie spēj veidot aliances ar tādām mazāk agresīvām rasēm kā elfi un rūķi. "
-"Mazāk sīkumainie nekavējas nolīgt arī orku algotņus. Tiem nav dabisko "
-"ienaidnieku, lai gan vairumam cilvēku, tā pat kā lielākajai daļai no visām "
+"radības, cilvēki spēj tās iemācīties, turklāt spēj apgūt vairāk veidu, kā "
+"citi. Tiem nav nekādu papildus spēju. Lai gan bieži tie ir nesaskaņās ar "
+"citām rasēm, reizēm tie spēj veidot aliances ar tādām mazāk agresīvām rasēm "
+"kā elfi un rūķi. Vairumam cilvēku, tā pat kā lielākajai daļai no visām "
 "sugām, ir instinktīva nepatika pret nedzīvajiem. Cilvēki ir īsāki par "
 "elfiem, bet garāki par rūķiem. To ādas krāsa var būt dažāda, no praktiski "
 "baltas, līdz tumši brūnai.\n"
 "\n"
 "<header>text='Troņa pavalstnieki'</header>\n"
 "Pastāv daudzas, dažādas cilvēku grupas, bet lielākā daļa no tiem Dižajā "
-"kontinentā dzīvo zem Vesnotas Troņa. Cilvēki pirmoreiz Dižajā kontinentā "
-"parādījās no salas tālu aiz okeāna rietumos, Zaļās salas, un ātri nodibināja "
-"savu galvaspilsētu iekšzemes pilsētā Veldūnā. Sekojošajos gadsimtos viņi ir "
-"uzbūvējuši vairākas pilsētas visā kontinentā. Vesnotas Troņa kareivji sargā "
-"valsti, veidojot visorganizētāko militāro spēku zināmajā pasaulē. Tā "
-"kareivji nāk no galvenajām provincēm, kur visi vīri tiek iesaukti jau agrā "
-"jaunībā.\n"
+"kontinentā dzīvo zem Vesnotas likumiem. Cilvēki pirmo reizi Dižajā "
+"kontinentā parādījās no Zaļās salas, tālu aiz okeāna, un ātri nodibināja "
+"savu galvaspilsētu Veldūnā. Sekojošajos gadsimtos viņi ir uzbūvējuši "
+"vairākas pilsētas visā kontinentā. Vesnotas kareivji sargā valsti, veidojot "
+"organizētāko militāro spēku zināmajā pasaulē.\n"
 "\n"
 "<header>text='Klana locekļi'</header>\n"
-"Vesnotas austrumu provincēs, kas pazīstamas kā Klana mājas zemes, ir vairāk "
-"atklātu līdzenumu un viļņainu pauguru, kā vairāk civilizētajās rietumu "
-"provincēs. Tās ir Zirgu klanu mājas, kuras ir sabiedrotās ar Vesnotas Troni, "
-"bet darbojas neatkarīgi un saglabā paši savu identitāti. Daži to uzskata par "
-"nodevu maksātāju pavalsti, kas sūta pārtiku un kareivjus Tronim apmaiņā pret "
-"aizsardzību. Citi saka, ka tie ir vienlīdzīgi ar Vesnotas rietumu pusi. "
-"Jebkurā gadījumā, austrumu provincēm nav tādas obligātās armijas kā rietumu "
-"Vesnotai. Trenēšanās kaujām ir klanu dzīvesveida sastāvdaļa, vecāki jau no "
-"mazotnes bērniem māca jāt ar zirgiem, cīnīties un šaut ar loku. Kopumā, "
-"Klana kareivji ir mazāk organizēti kā civilizētie karavīri, un abu šo grupu "
-"spēki un vājības papildina viens otru."
+"Vesnotas austrumu provincēs, kas pazīstamas kā Klanu zemes, ir vairāk "
+"atklātu līdzenumu un viļņainu pauguru. Tā ir dažādu klanu mājvieta, kas ir "
+"savienībā ar Vesnotas Troni, bet darbojas neatkarīgi un saglabā savu "
+"identitāti. Daži to uzskata par nodevu maksātāju pavalsti, kas apmaiņā pret "
+"aizsardzību sūta pārtiku un kareivjus Tronim. Citi saka, ka tie ir "
+"vienlīdzīgi ar Vesnotas rietumu pusi. Jebkurā gadījumā, austrumu provincēm "
+"nav tādas obligātās armijas, kā rietumos. Trenēšanās kaujām ir klanu "
+"dzīvesveida sastāvdaļa, vecāki jau no mazotnes bērniem māca jāt ar zirgiem, "
+"cīnīties un šaut ar loku. Kopumā, Klana kareivji ir mazāk organizēti kā "
+"valsts karavīri."
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:203
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Khalifate Human"
-msgstr "Cilvēks"
+msgstr "Kalifāta Vīrietis"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:204
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Khalifate Human"
-msgstr "Cilvēks"
+msgstr "Kalifāta Sieviete"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:205
-#, fuzzy
-#| msgid "race+plural^Mechanical"
 msgid "race+plural^Khalifate"
-msgstr "Mehānismi"
+msgstr "Kalifāti"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:206
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "Šai rasei vēl nav apraksta."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:217
@@ -5904,7 +5670,7 @@ msgstr "Rāpuļi"
 #. [race]: id=mechanical
 #: data/core/units.cfg:229
 msgid "race^Mechanical"
-msgstr "Mehānims"
+msgstr "Mehānisms"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:230
@@ -6051,22 +5817,6 @@ msgstr "Cilvēkēdāji"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:276
-#, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6105,7 +5855,7 @@ msgstr "Orks"
 #. [race]: id=orc
 #: data/core/units.cfg:285
 msgid "race+female^Orc"
-msgstr "Orka"
+msgstr "Orkiete"
 
 #. [race]: id=orc
 #: data/core/units.cfg:286
@@ -6390,32 +6140,6 @@ msgstr "Nedzīvie"
 
 #. [race]: id=undead
 #: data/core/units.cfg:329
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of it’s master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and mermen tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6485,12 +6209,12 @@ msgstr "Vilki"
 #. [race]: id=wose
 #: data/core/units.cfg:354
 msgid "race^Wose"
-msgstr "Voss"
+msgstr "Vose"
 
 #. [race]: id=wose
 #: data/core/units.cfg:355
 msgid "race^Woses"
-msgstr "Vosi"
+msgstr "Voses"
 
 #. [race]: id=wose
 #: data/core/units.cfg:356
@@ -6534,6 +6258,36 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+"Varenie voses dzīvo dziļākajos mežos, visā zināmajā pasaulē. Pavirši uzmetot "
+"aci, vose atgādinās neko vairāk kā dīvainas formas koku. Kā meža sargus, "
+"voses izveidojuši dziļākas saites ar mežu nekā ar elfiem. Tie ir miermīlīgas "
+"dabas radijumi, bet necieš ja senais mežs tiek traucēts. Pārsvarā sava "
+"gausuma dēļ voses nekur nepārvietojas, tie ir spējīgi nodzīvot vienā vietā "
+"(nekustīgi) desmitiem gadu.\n"
+"\n"
+"Lai gan paši ar burvestībām nenodarbojas, tie tomēr ir saistīti ar maģisko "
+"pasauli. Par šo seno rasi varam uzzināt tikai pateicoties elfu zinātniekiem, "
+"kuri uzzskata, ka pati daba vosēm piešķīra mistiskas spējas. Tikai elfu "
+"gudrākie meisteri ir spējuši novērot un studēt šīs mistiskās meža radības. "
+"Lai gan voses ir līdzīgi kokiem, tiem nav kopīgu senču. Tiek uzskatīts ka "
+"tie ir paši senākie radijumi uz šīs pasaules, iespējams pat senāki kā mežs. "
+"Un izskatās ka daba tiem ir devusi mūžīgu uzdevumu sargāt mežus.\n"
+"\n"
+"Voses slikti pielāgoti kaujas apstākļiem, bet tie izmanto spēku lai "
+"aizstāvētu savu meža platību. Ārpus meža robežām tie ir neaizsargāti un ļoti "
+"lēni. Tākā tie ir saistīti ar mistisko pasauli, šī tipa uzbrukumi voses "
+"traumē visvairāk. Ar savu cieto apvalku tie praktiski nejūt fiziskus "
+"bojājumus. Toties no uguns tie ļoti baidās. Saņēmuši bojājumus tie spēj sevi "
+"dziedēt, tāpēc voses parasti pietiekami ilgi noturās, lai varētu atbildēt ar "
+"savu spēcīgo prettriecienu. Savā meža biezoknī vose var nomaskēties tā, ka "
+"pat labi apmācīts elfu izlūks to nepamanīs.\n"
+"\n"
+"Neviens nezin cik ilgi dzīvo voses. Daži senākie īpatņi nodzīvojuši simtiem "
+"gadu un ir sasnieguši neredzētus apmērus. Tiek uzskatīts, ja vose nekrīt "
+"kaujas apstākļos tad nāves apskāvieni to negaida nekad. Savas dzīves tie "
+"pavada simtiem gadu - mežā, un nemaz neintresējas, kas notiek civilizētajā "
+"pasaules daļā. No sava miega pamostās tikai priekš meža aizstāvēšanas, kuru "
+"tie sauc par mājām."
 
 #: src/help/help.cpp:184
 msgid "Close"
@@ -6547,216 +6301,8 @@ msgstr "Kaujas par Vesnotu palīdzība"
 msgid "Parse error when parsing help text: "
 msgstr "Parsēšanas kļūda palīdzības tekstā: "
 
-#~ msgid "Factions"
-#~ msgstr "Frakcijas"
-
-#~ msgid "Overview"
-#~ msgstr "Pārskats"
-
-#~ msgid "Fundamentals of Gameplay"
-#~ msgstr "Spēles pamati"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "To begin with, it’s best to click the <bold>text='Tutorial'</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text='Campaign'</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on easy."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Vislabāk spēles pamatus iespējams apgūt izmantojot <bold>text='Apmācību'</"
-#~ "bold>, kas pieejama no  galvenās izvēlnes. Tā ir interaktīva apmācība, "
-#~ "kas tevi iepazīstinās ar Vesnotas pamatiem. Pēc tam ieteicams spēlēt "
-#~ "kampaņu \"Troņa mantinieks\" — galvenajā izvēlnē izvēlies "
-#~ "<bold>text='Kampaņa'</bold> pēc tam <italic>text='Troņa mantinieks'</"
-#~ "italic>. Tā kā <italic>text='Cīņa par Vesnotu'</italic> var būt diezgan "
-#~ "izaicinoša, iespējams gribēsi sākt ar vieglo grūtības pakāpi."
-
-#~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
-#~ msgstr ""
-#~ "Šīs lapaspuses satur visu, ko nepieciešams zināt, lai spēlētu "
-#~ "<italic>text='Kauju par Vesnotu'</italic>, tai skaitā — kā spēlēt un "
-#~ "pamata spēles mehāniku. Spēlējot tās tiks papildinātas ar jaunu "
-#~ "informāciju, kad saskarsies ar jauniem spēles elementiem. Detalizētākiem "
-#~ "īpašu situāciju un izņēmumu aprakstiem lūdzu seko iekļautajām saitēm."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Campaigns'</italic> consist of multiple scenarios that "
-#~ "follow on from each other, telling a story. In a campaign, you often need "
-#~ "to play more carefully, preserving your best troops so that they can be "
-#~ "used again in later scenarios in the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Kampaņas'</italic> sastāv no vairākiem scenārijiem, kuri "
-#~ "seko cits citam, veidojot kopēju stāstu. Kampaņa bieži jāspēlē uzmanīgāk, "
-#~ "saglabājot savus labākos kareivjus tā, lai tos varētu likt lietā "
-#~ "sekojošajos kampaņas scenārijos."
-
-#~ msgid ""
-#~ "The game takes place over a series of battles, called "
-#~ "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
-#~ "the troops of one or more adversaries. You can play against the computer, "
-#~ "or with friends who each take turns sitting at the computer (hotseat "
-#~ "play). If your computer is connected to a computer network, you can also "
-#~ "play against other people connected to that network. If your computer has "
-#~ "a connection to the Internet, you can play against other people across "
-#~ "the Internet."
-#~ msgstr ""
-#~ "Spēles darbība norisinās virknē kauju, kuras sauc par "
-#~ "<italic>text='scenārijiem'</italic>. Katrā scenārijā tavi kareivji cīnās "
-#~ "pret viena vai vairāku pretinieku kareivjiem. Vari spēlēt pret datoru vai "
-#~ "ar draugiem, katrs no kuriem pēc kārtas sēžas pie datora (karstā krēsla "
-#~ "spēle). Ja tavs dators ir pievienots tīklam, vari spēlēt arī ar citiem "
-#~ "cilvēkiem tajā tīklā. Ja datoram ir interneta pieslēgums, vari spēlēt ar "
-#~ "citiem cilvēkiem internetā."
-
-#~ msgid "Experience and Advancement"
-#~ msgstr "Pieredze un attīstība"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Healthy'</italic> units have 1 HP plus 1 HP per level more "
-#~ "than usual and rest heal the usual 2 HP after each turn they did not "
-#~ "fight. They also suffer a quarter less damage from poison."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Veselīgām'</italic> vienībām ir par 1 VP un vēl par 1 VP "
-#~ "par katru līmeni vairāk kā parasti, un atpūtas dziedēšana 2 VP pēc katra "
-#~ "gājiena, kurā tie necīnās. Tā pat inde tiem nodara par ceturtdaļu mazākus "
-#~ "bojājumus."
-
-#~ msgid "Help"
-#~ msgstr "Palīdzība"
-
-#~ msgid "<header>text='Units having this special attack'</header>"
-#~ msgstr "<header>text='Vienības ar šo speciālo uzbrukumu'</header>"
-
-#~ msgid "<header>text='Units having this ability'</header>"
-#~ msgstr "<header>text='Vienības ar šo spēju'</header>"
-
-#~ msgid "Leaders:"
-#~ msgstr "Līderi:"
-
-#~ msgid "Recruits:"
-#~ msgstr "Iesauktie:"
-
-#~ msgid "Era:"
-#~ msgstr "Ēra:"
-
-#~ msgid "Factions:"
-#~ msgstr "Frakcijas:"
-
-#~ msgid "Factions are only used in multiplayer"
-#~ msgstr "Frakcijas tiek izmantotas tikai daudzspēlētāju spēlē."
-
-#, fuzzy
-#~| msgid "Terrain"
-#~ msgid "Base Terrain: "
-#~ msgstr "Apvidus"
-
-#~ msgid "level"
-#~ msgstr "pakāpe"
-
-#~ msgid "Advances from: "
-#~ msgstr "Attīstās no: "
-
-#, fuzzy
-#~| msgid "Factions:"
-#~ msgid "Variations: "
-#~ msgstr "Frakcijas:"
-
-#~ msgid "race^Miscellaneous"
-#~ msgstr "Dažādi"
-
-#~ msgid "Race: "
-#~ msgstr "Rase: "
-
-#~ msgid "Abilities: "
-#~ msgstr "Spējas: "
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "Spēju uzlabojumi:"
-
-#~ msgid "HP: "
-#~ msgstr "Veselība: "
-
-#~ msgid "Moves: "
-#~ msgstr "Gājieni: "
-
-#~ msgid "Cost: "
-#~ msgstr "Izmaksas: "
-
-#~ msgid "Alignment: "
-#~ msgstr "Īpašība: "
-
-#~ msgid "Required XP: "
-#~ msgstr "Nepieciešamie PP: "
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "Uzbrukumi"
-
-#~ msgid "unit help^Name"
-#~ msgstr "Nosaukums"
-
-#~ msgid "Type"
-#~ msgstr "Tips"
-
-#~ msgid "Strikes"
-#~ msgstr "Sitieni"
-
-#~ msgid "Range"
-#~ msgstr "Diapazons"
-
-#~ msgid "Special"
-#~ msgstr "Īpašība"
-
-#~ msgid "Resistances"
-#~ msgstr "Izturība"
-
-#~ msgid "Attack Type"
-#~ msgstr "Uzbrukuma tips"
-
-#~ msgid "Resistance"
-#~ msgstr "Izturība"
-
-#~ msgid "Terrain"
-#~ msgstr "Apvidus"
-
-#~ msgid "Defense"
-#~ msgstr "Aizsardzība"
-
-#~ msgid "Movement Cost"
-#~ msgstr "Pārvietošanās izmaksas"
-
-#~ msgid " < Back"
-#~ msgstr " < Atpakaļ"
-
-#~ msgid "Forward >"
-#~ msgstr "Uz priekšu >"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Atsauce uz nezināmu tematu: "
-
-#~ msgid "corrupted original file"
-#~ msgstr "sabojāts oriģinālais fails"
-
 #~ msgid "Caste"
-#~ msgstr "Pils"
+#~ msgstr "Kasta"
 
 #~ msgid ""
 #~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
@@ -6787,9 +6333,9 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
 #~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
 #~ msgstr ""
-#~ "Tā <ref>dst='aerie' text='ligzdas'</ref> daļa, kur nesaprātīgie "
-#~ "<ref>dst='breeder' text='audzētāji'</ref> dzīvo zem <ref>dst='dominant' "
-#~ "text='dominanta'</ref> acīm."
+#~ "<ref>dst='aerie' text='Ligzdas'</ref> daļa, kurā nesaprātīgās "
+#~ "<ref>dst='breeder' text='vairotājas'</ref> ir zem <ref>dst='dominant' "
+#~ "text='Dominanta'</ref> pieskata."
 
 #~ msgid "Breeding Cycle"
 #~ msgstr "Vairošanās cikls"
@@ -6810,7 +6356,7 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
 #~ "deadly waterfall."
 #~ msgstr ""
-#~ "Pasaules okeāns ir nosaukums atklātai jūrai, kas ieskauj "
+#~ "Pasaules okeāns ir nosaukums daudzajām jūrām, kas ieskauj "
 #~ "<ref>dst='morogor' text='Morogora'</ref> arhipelāgu. Dreiki tic, ka tas "
 #~ "beidzas ar <ref>dst='abyss' text='Bezdibeni'</ref> — plašu un nāvējošu "
 #~ "ūdenskritumu."
@@ -6818,17 +6364,12 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ msgid "New Continent"
 #~ msgstr "Jaunais kontinents"
 
-#, fuzzy
-#~| msgid ""
-#~| "New Continent -- The great continent to the east of <ref>dst='morogor' "
-#~| "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
-#~| "flight of Galun."
 #~ msgid ""
 #~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
 #~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
 #~ msgstr ""
-#~ "Jaunais kontinents — dižais kontinents austrumos no <ref>dst='morogor' "
-#~ "text='Morogoras'</ref>. Dreiki par tā esamību nezin līdz Galuna lidojumam."
+#~ "Dižais kontinents austrumos no <ref>dst='morogor' text='Morogoras'</ref>. "
+#~ "Dreiki par tā esamību neko nezin, tikai līdz Galuna lidojuma robežām."
 
 #~ msgid "Abyss"
 #~ msgstr "Bezdibenis"
@@ -6864,7 +6405,7 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "<ref>dst='spiral_path' text='Spirāles ceļa'</ref> biedri."
 
 #~ msgid "Dominant"
-#~ msgstr "Dominējošs"
+#~ msgstr "Dominants"
 
 #~ msgid ""
 #~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
@@ -6874,11 +6415,11 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ msgstr ""
 #~ "<ref>dst='aspirant' text='Kandidāts'</ref>, kurš kļūst par dreiku vadoni, "
 #~ "vienīgais cilts dreiks, kuram ir ļauts pāroties ar <ref>dst='breeder' "
-#~ "text='audzētājiem'</ref>. Retos gadījumos viņš var dot citiem pārošanās "
+#~ "text='vairotājām'</ref>. Retos gadījumos viņš var dot citiem pārošanās "
 #~ "tiesības."
 
 #~ msgid "Vulcaniad"
-#~ msgstr "Vulkaniāds"
+#~ msgstr "Vulkaniāda"
 
 #~ msgid ""
 #~ "The (irregular) period between consecutive eruptions of "
@@ -6938,7 +6479,7 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "sāk <ref>dst='swarming' text='spietot'</ref>."
 
 #~ msgid "Breeder"
-#~ msgstr "Audzētājs"
+#~ msgstr "Vairotāja"
 
 #~ msgid ""
 #~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
@@ -6948,12 +6489,11 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "breeders become fertile after the next <ref>dst='hatching' "
 #~ "text='hatching'</ref>."
 #~ msgstr ""
-#~ "Sieviešu dzimtas dreiks (dreicene). Tās ir retums, jo <ref>dst='egg' "
-#~ "text='olas'</ref>, kuras kļūst par audzētājiem prasa īpašu uzmanību. Tā "
-#~ "pat audzētāju skaits ir ierobežots un atkarīgs no apkārt esošo "
-#~ "neaudzētāju skaita, jo audzētāji nespēj sagādāt sev barību perēšanas "
-#~ "laikā. Dreiku audzētāji kļūst auglīgi pēc nākamās <ref>dst='hatching' "
-#~ "text='izšķilšanās'</ref>."
+#~ "Sieviešu dzimtas dreiks. Viņas ir retums, jo <ref>dst='egg' text='olas'</"
+#~ "ref>, kuras kļūst par vairotājām prasa īpašu uzmanību. Tā pat vairotājas "
+#~ "skaits ir ierobežots un atkarīgs no apkārt esošo tēviņu skaita, jo "
+#~ "vairotājas nespēj sagādāt sev barību perēšanas laikā. Dreiku vairotājas "
+#~ "kļūst auglīgas pēc <ref>dst='hatching' text='izšķilšanās'</ref>."
 
 #~ msgid "Egg, Drake"
 #~ msgstr "Dreika ola"
@@ -6988,13 +6528,12 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "secretion of the hormone is caused by hunt and combat actions in which "
 #~ "the drake is involved."
 #~ msgstr ""
-#~ "Dreiku tēviņš, kurš ir izgājis caur hormonālai metamorfozei, kas padara "
-#~ "to spējīgu pāroties ar <ref>dst='breeder' text='audzētājiem'</ref>. "
-#~ "Hormona sekrēciju izraisa medību un cīņu darbības, kurās dreiks ir "
-#~ "iesaistīts."
+#~ "Dreiku tēviņš, kurš ir izgājis cauri hormonālai metamorfozei, kas padara "
+#~ "to spējīgu pāroties ar <ref>dst='breeder' text='vairotājām'</ref>. "
+#~ "Nobriešana notiek pateicoties hormoniem kas izdalās cīņu un medību laikā."
 
 #~ msgid "Ascendant"
-#~ msgstr "Valdošs"
+#~ msgstr "Sencis"
 
 #~ msgid ""
 #~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
@@ -7016,7 +6555,7 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "text='pretendentu'</ref> leitnantiem. Tradicionāli viņam ir viens no "
 #~ "katras <ref>dst=caste text='kastas'</ref>, ja neskaita viņa paša. Turklāt "
 #~ "dažreiz īpašiem uzdevumiem tiek iecelti 'intendanti'. Tiem ir vislielākā "
-#~ "iespējamība tikt pie pārošanās tiesībām, īpaši pēc atzinīgas kalpošanas."
+#~ "iespējamība tikt pie pārošanās tiesībām, īpaši pēc uzticīgas kalpošanas."
 
 #~ msgid "Swarm"
 #~ msgstr "Spiets"
@@ -7064,8 +6603,8 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
 #~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 #~ msgstr ""
-#~ "Dreiku kalendārs, kas veidots uz <ref>dst='vulcaniad' text='vulkaniādu'</"
-#~ "ref> un <ref>dst=breeding_cycle text='vairošanās ciklu'</ref> pamata."
+#~ "Dreiku kalendārs, kas veidots uz <ref>dst='vulcaniad' text='vulkaniāda'</"
+#~ "ref> un <ref>dst=breeding_cycle text='vairošanās cikla'</ref> pamata."
 
 #~ msgid "Long Pig"
 #~ msgstr "Garā cūka"
@@ -7097,8 +6636,8 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 #~ "text='Recorder'</ref> vocation."
 #~ msgstr ""
-#~ "Dreiku rakstītā valoda. <ref>dst='recorder' text='Rakstnieku'</ref> aroda "
-#~ "pārstāvji to glabā uz <ref>dst='ceramic' text='māla'</ref> plāksnēm."
+#~ "Dreiku valodas rakstība. <ref>dst='recorder' text='Rakstnieku'</ref> "
+#~ "aroda pārstāvji to glabā uz <ref>dst='ceramic' text='māla'</ref> plāksnēm."
 
 #~ msgid "Drakish, language"
 #~ msgstr "Dreiku valoda"
@@ -7106,589 +6645,240 @@ msgstr "Parsēšanas kļūda palīdzības tekstā: "
 #~ msgid "The language spoken by the drakes."
 #~ msgstr "Valoda, kurā runā dreiki."
 
-#~ msgid "Flat"
-#~ msgstr "Līdzenums"
+#~ msgid "Factions"
+#~ msgstr "Frakcijas"
+
+#~ msgid "Overview"
+#~ msgstr "Pārskats"
+
+#~ msgid "Fundamentals of Gameplay"
+#~ msgstr "Spēles pamati"
 
 #~ msgid ""
-#~ "<italic>text='Grassland'</italic> represents open plains, whether "
-#~ "cultivated, cut back for grazing, or wild. Being open ground, grassland "
-#~ "is both very easy to move across, but is also difficult to defend oneself "
-#~ "in. Typically, those units that perform best on grassland are either "
-#~ "cavalry, or very agile units which take advantage of the open space.\n"
 #~ "\n"
-#~ "Most units have defense of 30 to 40% on grassland."
+#~ "\n"
+#~ "To begin with, it’s best to click the <bold>text='Tutorial'</bold> button "
+#~ "at the main menu. This will take you to the interactive tutorial, which "
+#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
+#~ "you play the Heir to the Throne campaign first — click "
+#~ "<bold>text='Campaign'</bold> then <italic>text='Heir to the Throne'</"
+#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
+#~ "challenging, you may wish to start on easy."
 #~ msgstr ""
-#~ "<italic>text='Līdzenumi'</italic> parasti ir plašas pļavas, kas tiek "
-#~ "kultivētas (pļautas) vai ir mežonīgas. Tā kā tā ir atklāta zeme, "
-#~ "līdzenumos ir viegli pārvietoties, bet grūti aizstāvēties. Parasti tur "
-#~ "visspēcīgākie ir jātnieki vai ļoti žiglas vienības, kuras izmanto plašumu "
-#~ "savā labā.\n"
 #~ "\n"
-#~ "Vairumam vienību aizsardzība līdzenumā ir no 30 līdz 40%."
-
-#~ msgid "Road"
-#~ msgstr "Ceļš"
+#~ "\n"
+#~ "Vislabāk spēles pamatus iespējams apgūt izmantojot <bold>text='Apmācību'</"
+#~ "bold>, kas pieejama no  galvenās izvēlnes. Tā ir interaktīva apmācība, "
+#~ "kas tevi iepazīstinās ar Vesnotas pamatiem. Pēc tam ieteicams spēlēt "
+#~ "kampaņu \"Troņa mantinieks\" — galvenajā izvēlnē izvēlies "
+#~ "<bold>text='Kampaņa'</bold> pēc tam <italic>text='Troņa mantinieks'</"
+#~ "italic>. Tā kā <italic>text='Kauja par Vesnotu'</italic> var būt diezgan "
+#~ "izaicinoša, iespējams gribēsi sākt ar vieglo grūtības pakāpi."
 
 #~ msgid ""
-#~ "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
-#~ "travelers passing over them. As far as gameplay is concerned, roads "
-#~ "behave as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
-#~ "\n"
+#~ "These pages outline all you need to know to play <italic>text='Battle for "
+#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
+#~ "the game. As you play the game, new information is added to these pages "
+#~ "as you come across new aspects of the game. For more detailed information "
+#~ "on special situations and exceptions, please follow the links included."
 #~ msgstr ""
-#~ "<italic>text='Ceļi'</italic> ir nobradātas dubļu takas, kas veidojušies "
-#~ "daudziem ceļotājiem ejot pāri. Spēlē ceļi uzvedas kā "
-#~ "<ref>dst='terrain_flat' text='līdzens'</ref> apvidus.\n"
-#~ "\n"
-
-#~ msgid "Forest"
-#~ msgstr "Mežs"
+#~ "Šīs lapas satur visu, ko nepieciešams zināt, lai spēlētu "
+#~ "<italic>text='Kauja par Vesnotu'</italic>, tai skaitā — kā spēlēt, un "
+#~ "pamata spēles mehāniku. Spēlējot tās tiks papildinātas ar jaunu "
+#~ "informāciju, kad saskarsies ar jauniem spēles elementiem. Detalizētāku "
+#~ "situāciju un izņēmumu aprakstiem lūdzu seko iekļautajās saitēs."
 
 #~ msgid ""
-#~ "<italic>text='Forests'</italic> represent any woodland with significant "
-#~ "undergrowth, enough to hinder passage. Though they slow nearly everyone "
-#~ "down, forests do offer better defense to most units than open ground. "
-#~ "Cavalry, however, have so much trouble navigating them that any benefit "
-#~ "gained by stealth is negated. Elves are an exception to this general rule "
-#~ "for forests. Not only do they possess full movement in forests, but they "
-#~ "also gain a considerable defensive bonus. Dwarves are another exception "
-#~ "to this rule; though they are able to plow through the forests without "
-#~ "much loss of speed, their utter unfamiliarity with the terrain causes "
-#~ "them to receive no defensive bonus.\n"
 #~ "\n"
-#~ "Most units have 50% defense in forests, but cavalry are limited to 30%. "
-#~ "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted "
-#~ "units. Dwarves generally receive only 30% defense in forests.\n"
 #~ "\n"
+#~ "<italic>text='Campaigns'</italic> consist of multiple scenarios that "
+#~ "follow on from each other, telling a story. In a campaign, you often need "
+#~ "to play more carefully, preserving your best troops so that they can be "
+#~ "used again in later scenarios in the campaign."
 #~ msgstr ""
-#~ "<italic>text='Meži'</italic> ir jebkura koku audze ar vērā ņemamu pamežu, "
-#~ "pietiekamu, lai apgrūtinātu pārvietošanos. Lai gan tie kavē gandrīz "
-#~ "visus, meži dod labāku aizsardzību kā atklātās vietas vairumam vienību. "
-#~ "Tomēr kavalērijai ir tādas grūtības pārvietoties caur tiem, ka jebkurš "
-#~ "aizsega ieguvums tiek zaudēts. Izņēmums šim mežu vispārējam likumam ir "
-#~ "elfi. Ne vien tie brīvi pārvietojas mežā, bet arī to aizsardzības "
-#~ "pieaugums ir nozīmīgs. Vēl viens izņēmums ir rūķi, lai gan tie spēj "
-#~ "griezt cauri mežam īpaši nezaudējot ātrumu, tie ir pilnīgi nepazīstami ar "
-#~ "šo vidi, kas liedz tiem saņemt papildus aizsardzību.\n"
 #~ "\n"
-#~ "Vairumam vienību ir 50% aizsardzība mežos, bet kavalēristiem tā ir "
-#~ "ierobežota līdz 30%. Turpretim elfi izbauda 60 līdz 70% aizsardzības "
-#~ "līmeni, pat to jātnieku vienības. Rūķi parasti saņem tikai 30% "
-#~ "aizsardzību mežos.\n"
 #~ "\n"
-
-#~ msgid "Hills"
-#~ msgstr "Pauguri"
+#~ "<italic>text='Kampaņas'</italic> sastāv no vairākiem scenārijiem, kuri "
+#~ "seko cits citam, veidojot kopēju stāstu. Kampaņa bieži jāspēlē uzmanīgāk, "
+#~ "saglabājot savus labākos kareivjus tā, lai tos varētu likt lietā "
+#~ "nākamajās misijās."
 
 #~ msgid ""
-#~ "<italic>text='Hills'</italic> represent any reasonably rough terrain, "
-#~ "with enough dips and rises in the ground to provide some cover. Hills are "
-#~ "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#~ "enough familiarity with the terrain that they can pass through it without "
-#~ "being slowed down. Cavalry have enough trouble navigating the terrain "
-#~ "that any defensive aid lent by cover is negated.\n"
-#~ "\n"
-#~ "Most units have about 50% defense in hills, whereas cavalry are limited "
-#~ "to 40%. Dwarves enjoy 60% defense in hills.\n"
-#~ "\n"
+#~ "The game takes place over a series of battles, called "
+#~ "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
+#~ "the troops of one or more adversaries. You can play against the computer, "
+#~ "or with friends who each take turns sitting at the computer (hotseat "
+#~ "play). If your computer is connected to a computer network, you can also "
+#~ "play against other people connected to that network. If your computer has "
+#~ "a connection to the Internet, you can play against other people across "
+#~ "the Internet."
 #~ msgstr ""
-#~ "<italic>text='Pauguri'</italic> ir samērā nelīdzens apvidus ar pietiekamu "
-#~ "skaitu zemes ieplaku un pacēlumu, lai dotu kaut kādu aizsegu. Paugurainē "
-#~ "vairumam vienību ir grūtības pārvietoties. Rūķi, troļļi un orki ir "
-#~ "pietiekami pazīstami ar apvidu, lai varētu to šķērsot nesamazinot ātrumu. "
-#~ "Kavalēristiem ir tik lielas problēmas pārvietoties, ka tiek atsvērts "
-#~ "jebkurš apvidus dotais aizsegs.\n"
-#~ "\n"
-#~ "Vairumam vienību ir 50% aizsardzība pauguros, kamēr kavalēristiem tā ir "
-#~ "ierobežota līdz 40%. Rūķi tur izbauda 60% aizsardzību.\n"
-#~ "\n"
+#~ "Spēles darbība norisinās kauju virknē, kuras sauc par "
+#~ "<italic>text='scenārijiem'</italic>. Katrā scenārijā tavi kareivji cīnās "
+#~ "pret viena vai vairāku pretinieku kareivjiem. Vari spēlēt pret datoru, "
+#~ "vai ar draugiem. Katrs no draugiem pēc kārtas sēžas pie datora (karstā "
+#~ "krēsla spēle). Ja tavs dators ir pievienots lokālam tīklam, vari spēlēt "
+#~ "arī ar citiem cilvēkiem tīklā. Ja datoram ir interneta pieslēgums, vari "
+#~ "spēlēt ar citiem cilvēkiem internetā."
 
-#~ msgid "Mountains"
-#~ msgstr "Kalni"
+#~ msgid "Experience and Advancement"
+#~ msgstr "Pieredze un attīstība"
 
 #~ msgid ""
-#~ "<italic>text='Mountains'</italic> are steep enough that units often have "
-#~ "to climb over obstacles to move. By this nature, they provide a "
-#~ "considerable defensive bonus for most troops, but they also severely "
-#~ "impede any passage through them. Most cavalry simply cannot enter "
-#~ "mountainous terrain; however, elvish cavalry is an exception to this, as "
-#~ "are the goblin wolf riders. Both dwarves and trolls are native to "
-#~ "mountainous terrain, and have a very easy time getting around.\n"
 #~ "\n"
-#~ "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#~ "70%."
+#~ "\n"
+#~ "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
+#~ "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
+#~ "<ref>dst='traits_undead' text='undead'</ref>.\n"
+#~ "\n"
 #~ msgstr ""
-#~ "<italic>text='Kalni'</italic> ir pietiekami stāvi, lai vienībām bieži "
-#~ "nāktos rāpties pāri šķēršļiem, lai pārvietotos. Tie dod dabīgu "
-#~ "aizsardzības papildinājumu lielākajai daļai vienību, bet tie arī spēcīgi "
-#~ "apgrūtina jebkuru pāriešanu tiem pāri. Lielākā daļa kavalēristu vispār "
-#~ "nespēj ieiet kalnainā apvidū, lai gan elfu jātnieki ir izņēmums, tā pat "
-#~ "kā goblinu vilku jātnieki. Gan rūķi, gan troļļi ir kalnu dabīgie "
-#~ "iemītnieki, un tiem ir ļoti viegli tur pārvietoties.\n"
 #~ "\n"
-#~ "Vairums vienību kalnos saņem aptuveni 60% aizsardzību, bet rūķi izbauda "
-#~ "70% aizsardzību."
-
-#~ msgid "Swamp"
-#~ msgstr "Purvs"
+#~ "\n"
+#~ "Vēl vienībām var tikt piešķirtas šādas iezīmes: "
+#~ "<ref>dst='traits_dextrous' text='veiklums'</ref>, <ref>dst='traits_loyal' "
+#~ "text='lojalitāte'</ref> un <ref>dst='traits_undead' text='nedzīvais'</"
+#~ "ref>.\n"
+#~ "\n"
 
 #~ msgid ""
-#~ "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps "
-#~ "slow down nearly everyone, and inhibit their ability to defend "
-#~ "themselves. An exception to this is any race bodily skilled in navigating "
-#~ "water; these receive both full movement and a defensive bonus. Those that "
-#~ "make their living in the wetlands are also adept at using this terrain "
-#~ "for cover.\n"
 #~ "\n"
-#~ "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
-#~ "all generally enjoy 60%."
+#~ "\n"
+#~ "<italic>text='Healthy'</italic> units have 1 HP plus 1 HP per level more "
+#~ "than usual and rest heal the usual 2 HP after each turn they did not "
+#~ "fight. They also suffer a quarter less damage from poison."
 #~ msgstr ""
-#~ "<italic>text='Purvi'</italic> pārstāv jebkura veida slapjās zemes. Purvi "
-#~ "palēlina gandrīz visus, un apgrūtina to spēju aizsargāties. Izņēmums ir "
-#~ "jebkura suga, kuras ķermenis ir piemērots kustībai ūdenī, tās var gan "
-#~ "netraucēti pārvietoties, gan arī tām ir priekšrocības aizsargājoties. "
-#~ "Tie, kuri dzīvo šajās slapjajās zemēs, arī ir lietpratēji šī apvidus "
-#~ "izmantošanā aizsegam.\n"
 #~ "\n"
-#~ "Lielākajai daļai vienību ir jāiztiek ar 30% aizsardzību purvos, bet "
-#~ "nāras, nāgas un rāpuļi parasti izbauda 60% aizsardzību."
-
-#~ msgid "Shallow Water"
-#~ msgstr "Sekls ūdens"
-
-#~ msgid ""
-#~ "<italic>text='Shallow water'</italic> represents any body of water deep "
-#~ "enough to come up to roughly a man’s waist. This is enough to slow down "
-#~ "nearly anyone and leave them wide open to attack. Dwarves, given that the "
-#~ "water reaches up almost to their heads, have an extremely hard time of "
-#~ "this. The exception is any race whose bodies naturally lend themselves to "
-#~ "swimming, for which they receive a considerable defensive bonus and full "
-#~ "movement.\n"
 #~ "\n"
-#~ "Most units make do with 20 to 30% defense in shallow water, whereas both "
-#~ "naga and mermen enjoy 60%."
-#~ msgstr ""
-#~ "Par <italic>text='seklu ūdeni'</italic> tiek uzskatīta jebkura "
-#~ "ūdenskrātuves daļa, kas ir pietiekami dziļa, lai sasniegtu cilvēka "
-#~ "vidukli. Tas ir pietiekami, lai palēlinātu tik pat kā visus, un atstātu "
-#~ "tos atklātus uzbrukumam. Rūķiem, ņemot vērā, ka ūdens tiem sniedzas "
-#~ "gandrīz līdz kaklam, ir īpaši grūti šādā situācijā. Izņēmums ir rases, "
-#~ "kuru ķermeņi ir dabīgi piemēroti peldēšanai, tādēļ tie saņem ievērojamu "
-#~ "aizsardzības pieaugumu un var pārvietoties netraucēti.\n"
-#~ "\n"
-#~ "Lielākā daļa vienību iztiek ar 20% līdz 30% aizsardzību ūdenī, kamēr gan "
-#~ "nāgas, gan nāras izbauda 60%."
+#~ "<italic>text='Veselīgām'</italic> vienībām ir par 1 VP un vēl par 1 VP "
+#~ "par katru līmeni vairāk kā parasti, un atpūtas dziedēšana 2 VP pēc katra "
+#~ "gājiena, kurā tie necīnās. Tā pat inde tiem nodara par ceturtdaļu mazākus "
+#~ "bojājumus."
 
-#~ msgid "Deep Water"
-#~ msgstr "Dzelme"
+#~ msgid "Help"
+#~ msgstr "Palīdzība"
 
-#~ msgid ""
-#~ "<italic>text='Deep water'</italic> represents any body of water deep "
-#~ "enough to cover a man’s head. Most units cannot enter deep water: it is "
-#~ "the domain of units which can either fly, or are exceptionally strong "
-#~ "swimmers.\n"
-#~ "\n"
-#~ "Mermen and naga both receive 50% defense in deep water, with full "
-#~ "movement."
-#~ msgstr ""
-#~ "<italic>text='Dziļš ūdens'</italic> ir jebkurā ūdenstilpnes daļā, kur tas "
-#~ "ir pāri cilvēka galvai. Lielākā daļa vienību nevar ieiet dziļā ūdenī: "
-#~ "tajā valda vienības, kuras spēj vai nu lidot, vai ir ārkārtīgi labi "
-#~ "peldētāji.\n"
-#~ "\n"
-#~ "Nārām un nāgām ir 50% aizsardzība dziļā ūdenī, un netraucēta "
-#~ "pārvietošanās."
+#~ msgid "<header>text='Units having this special attack'</header>"
+#~ msgstr "<header>text='Vienības ar šo speciālo uzbrukumu'</header>"
 
-#~ msgid "Frozen"
-#~ msgstr "Sasalums"
+#~ msgid "<header>text='Units having this ability'</header>"
+#~ msgstr "<header>text='Vienības ar šo spēju'</header>"
 
-#~ msgid ""
-#~ "<italic>text='Frozen'</italic> terrain represents any flat area that is "
-#~ "covered by snow or ice. Most units are slowed down on it, and have a "
-#~ "harder time defending themselves. Note that swimming units, even those "
-#~ "who can breathe underwater, cannot swim underneath ice.\n"
-#~ "\n"
-#~ "Most units have 20 to 40% defense in frozen terrain."
-#~ msgstr ""
-#~ "<italic>text='Sasaluma'</italic> apvidus ir jebkurš līdzens apgabals, kas "
-#~ "klāts ar sniegu un ledu. Lielākā daļa vienību tajā pārvietojas lēnāk, un "
-#~ "tām ir grūtāk aizstāvēties. Ņem vērā, ka peldošās vienības (pat tās, "
-#~ "kuras spēj elpot zem ūdens) nevar peldēt zem ledus.\n"
-#~ "\n"
-#~ "Vairumam vienību ir 20 līdz 40% aizsardzība sasaluma apvidū."
+#~ msgid "Leaders:"
+#~ msgstr "Līderi:"
 
-#~ msgid "Castle"
-#~ msgstr "Pils"
+#~ msgid "Recruits:"
+#~ msgstr "Iesauktie:"
 
-#, fuzzy
-#~| msgid ""
-#~| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#~| "Nearly all units receive a considerable bonus to their defense by being "
-#~| "stationed in a castle, and all units receive full movement in a castle. "
-#~| "Stationing units in a castle represents its defensive capability. "
-#~| "Without a unit in each wall hex, an enemy can simply sneak into the "
-#~| "castle unchallenged, gaining the same defensive bonus as everyone "
-#~| "inside.\n"
-#~| "\n"
-#~| "Most units have about 60% defense in a castle.\n"
-#~| "\n"
-#~ msgid ""
-#~ "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#~ "Nearly all units receive a considerable bonus to their defense by being "
-#~ "stationed in a castle, and most units receive full movement in a castle. "
-#~ "Stationing units in a castle represents its defensive capability. Without "
-#~ "a unit in each wall hex, an enemy can simply sneak into the castle "
-#~ "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#~ "\n"
-#~ "Most units have about 60% defense in a castle.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Par <italic>text='pilīm'</italic> tiek uzskatīti jebkuri pastāvīgi "
-#~ "nocietinājumi. Gandrīz visas vienības saņem ievērojamu aizsardzības "
-#~ "papildinājumu, ja tās novietotas pilī, un visas vienības spēj tur brīvi "
-#~ "pārvietoties. Pils aizsardzības spējas pārstāv tajā novietotās vienības. "
-#~ "Bez vienības katrā pils lauciņā, pretinieka vienība var ielavīties pilī "
-#~ "netraucēta un iegūt to pašu aizsardzības pieaugumu, kā visiem tur "
-#~ "esošajiem.\n"
-#~ "\n"
-#~ "Vairumam vienību pilī ir 60% aizsardzība.\n"
-#~ "\n"
+#~ msgid "Era:"
+#~ msgstr "Ēra:"
 
-#~ msgid "Sand"
-#~ msgstr "Smiltis"
+#~ msgid "Factions:"
+#~ msgstr "Frakcijas:"
 
-#~ msgid ""
-#~ "The instability of <italic>text='sand'</italic> makes it harder for most "
-#~ "units to cross, and leaves them wide open to attack. In contrast, the "
-#~ "wide feet or snakelike bodies of the reptilian races make sand much "
-#~ "easier for them to navigate.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in sand."
-#~ msgstr ""
-#~ "<italic>text='Smilšu'</italic> nestabilitāte apgrūtina gandrīz visu "
-#~ "vienību pārvietošanos, un atstāj tās atklātas uzbrukumam. Te izceļas "
-#~ "rāpuļveidīgās sugas, kuru platās pēdas vai čūskveidīgie ķermeņi padara to "
-#~ "pārvietošanos pa smiltīm krietni vieglāku.\n"
-#~ "\n"
-#~ "Lielākajai daļai vienību smiltīs ir 20 līdz 40% aizsardzība."
+#~ msgid "Factions are only used in multiplayer"
+#~ msgstr "Frakcijas tiek izmantotas tikai daudzspēlētāju spēlē."
 
-#~ msgid "Desert"
-#~ msgstr "Tuksnesis"
+#~ msgid "Base Terrain: "
+#~ msgstr "Bāzes Apvidus: "
 
-#~ msgid ""
-#~ "<italic>text='Deserts'</italic> have a somewhat different composition "
-#~ "than small sand pits or beaches, however for gameplay purposes they are "
-#~ "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
-#~ msgstr ""
-#~ "<italic>text='Tuksnešiem'</italic> ir mazliet savādāks sastāvs, kā mazām "
-#~ "smilšu bedrēm vai pludmalēm, taču spēles ziņā tie ir identiski. Sk. "
-#~ "<ref>dst='terrain_sand' text='smiltis'</ref>."
+#~ msgid "level"
+#~ msgstr "līmenis"
 
-#~ msgid "Cave"
-#~ msgstr "Ala"
+#~ msgid "Advances from: "
+#~ msgstr "Attīstās no: "
 
-#~ msgid ""
-#~ "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#~ "with enough room for a unit to pass. Most units are wholly unfamiliar "
-#~ "with the terrain, and thus are both slowed down and hindered in defense. "
-#~ "Dwarves and trolls, who make their homes in caves, both have a relatively "
-#~ "easy time navigating this terrain, especially dwarves, who by dint of "
-#~ "their small size can navigate many obstacles that other races cannot. "
-#~ "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#~ "text='illuminated'</ref>.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
-#~ msgstr ""
-#~ "<italic>text='Alu'</italic> apvidus ir jebkurai vienības cauriešanai "
-#~ "pietiekami lielā pazemes alā. Vairums vienību kopumā nav pazīstamas ar šo "
-#~ "apvidu, tādēļ tās tiek palēlinātas un to aizsardzība ir apgrūtināta. "
-#~ "Rūķiem un troļļiem, kuri dzīvo alās, ir salīdzinoši viegli tajās "
-#~ "pārvietoties. Īpaši rūķi, sava mazā auguma dēļ, spēj apiet daudzus "
-#~ "šķēršļus, kurus citas rases nespēj. Reizēm alas ir "
-#~ "<ref>dst='terrain_illuminated_cave' text='izgaismotas'</ref>.\n"
-#~ "\n"
-#~ "Lielākajai daļai vienību alās ir 20 līdz 40% aizsardzība, kamēr rūķiem ir "
-#~ "50%."
+#~ msgid "Base unit: "
+#~ msgstr "Bāzes vienība: "
 
-#~ msgid "Rockbound Cave"
-#~ msgstr "Klinšu ala"
+#~ msgid "Base units: "
+#~ msgstr "Bāzes vienības: "
 
-#~ msgid ""
-#~ "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#~ "water and wind, carrying erosive particles that carve the rock. It "
-#~ "resembles a scraggy underground cavern which reduces efficiency of most "
-#~ "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#~ "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#~ "who by dint of their small size have the full advantage of navigation in "
-#~ "such topography. Occasionally caves are "
-#~ "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#~ "\n"
-#~ "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#~ "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
-#~ msgstr ""
-#~ "<italic>text='Klinšu alu'</italic> apvidus ir veidojies ūdens un vēja "
-#~ "iedarbībā. Tie nes abrazīvas daļiņas, kuras izgrebj klinti. Tas atgādina "
-#~ "izdēdējušu pazemes alu, kura samazina praktiski visu vienību "
-#~ "efektivitāti, bet dod aizsardzību. Rūķiem un troļļiem, kas ir galvenie "
-#~ "alu apdzīvotāji, ir samērā viegli pārvietoties šajā apvidū. Rūķiem, "
-#~ "pateicoties to mazajiem augumiem, ir vislielākās priekšrocības "
-#~ "pārvietojoties šādā reljefā. Reizēm alas ir "
-#~ "<ref>dst='terrain_illuminated_cave' text='Illuminated'</ref>\n"
-#~ "\n"
-#~ "Lielākajai daļai vienību ir aptuveni 50% aizsardzība akmeņainajās alās, "
-#~ "kur kavalērija ir ierobežota līdz 40%. Rūķi izbauda 60% aizsardzību "
-#~ "klinšu alās."
+#~ msgid "Variations: "
+#~ msgstr "Variācijas: "
 
-#~ msgid "Illuminated Cave"
-#~ msgstr "Apgaismota ala"
+#~ msgid "race^Miscellaneous"
+#~ msgstr "Dažādi"
 
-#~ msgid ""
-#~ "Rare patches of the underground world are illuminated by light from the "
-#~ "surface shining down into the gloomy darkness. This provides an attack "
-#~ "bonus for lawful units and removes the attack bonus from chaotic units. "
-#~ "In all other regards this terrain is functionally identical to normal "
-#~ "<ref>dst='terrain_cave' text='cave terrains'</ref>."
-#~ msgstr ""
-#~ "Reti pazemes pasaules pleķi ir izgaismoti iespīdot gaismai no virspuses "
-#~ "drūmajā tumsā. Tas dod uzbrukuma priekšrocības likumpaklausīgajām "
-#~ "vienībām un noņem uzbrukuma priekšrocības haotiskajām vienībām. Visādā "
-#~ "citādā ziņā šis apvidus ir identisks parastam <ref>dst='terrain_cave' "
-#~ "text='alu apvidum'</ref>."
+#~ msgid "Race: "
+#~ msgstr "Rase: "
 
-#~ msgid "Mushroom Grove"
-#~ msgstr "Sēņu birzs"
+#~ msgid "Abilities: "
+#~ msgstr "Spējas: "
 
-#~ msgid ""
-#~ "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#~ "giant mushrooms, which thrive in the damp darkness. Most units have "
-#~ "trouble negotiating the spongy floor of smaller fungi, but they have "
-#~ "plenty of cover behind the larger stalks. Mounted units, however, become "
-#~ "completely mired and lack proper freedom of movement in combat. Undead "
-#~ "units have a natural affinity for decay and function quite well in "
-#~ "mushroom forests.\n"
-#~ "\n"
-#~ "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#~ "receive only 20%."
-#~ msgstr ""
-#~ "<italic>text='Sēņu birzis'</italic> ir plaši pazemes gigantisko sēņu "
-#~ "meži, kas zeļ drēgnajā tumsā. Lielākajai daļai vienību ir grūtības "
-#~ "pārvarēt mazāko sēņu veidoto mīksto grīdu, bet tiem netrūkst aizsega aiz "
-#~ "lielākajām kājiņām. Tomēr jātnieku vienības iestieg pilnībā un tām trūkst "
-#~ "vajadzīgā kustību brīvība kaujā. Nedzīvo vienībām ir dabīga tieksme pret "
-#~ "pūšanu un sēņu audzēs tās funkcionē diezgan labi.\n"
-#~ "\n"
-#~ "Lielākajai daļai vienību sēņu birzīs ir 50% līdz 60% aizsardzība, kamēr "
-#~ "kavalēristiem tikai 20%."
+#~ msgid "Ability Upgrades: "
+#~ msgstr "Spēju uzlabojumi:"
 
-#~ msgid "Village"
-#~ msgstr "Ciems"
+#~ msgid "HP: "
+#~ msgstr "Veselība: "
 
-#~ msgid ""
-#~ "<italic>text='Villages'</italic> represent any group of buildings, human "
-#~ "or otherwise. Almost all units, even cavalry, have an easy time "
-#~ "navigating villages, and most units gain a defensive bonus from being "
-#~ "stationed in a village. Villages allow units the resources to clean and "
-#~ "tend to their wounds, which allows any unit stationed therein to heal "
-#~ "eight hitpoints each turn, or to be cured of poison.\n"
-#~ "\n"
-#~ "Most units have 50 to 60% defense in villages, whereas cavalry receive "
-#~ "only 40%.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "<italic>text='Ciemi'</italic> ir jebkura ēku grupa, vienalga vai cilvēku "
-#~ "vai ne. Praktiski visas vienības, pat kavalēristi, spēj viegli "
-#~ "pārvietoties ciemos, un vairums vienību iegūst papildus aizsardzību, kad "
-#~ "novietotas ciemā. Ciemi dod vienībām resursus tīrīšanai un apkopj viņu "
-#~ "brūces, kas ļauj tur novietotai vienībai atveseļoties par astoņiem "
-#~ "veselības punktiem, vai arī tikt izārstētām no indes.\n"
-#~ "\n"
-#~ "Lielākajai daļai vienību ir 50 līdz 60% aizsardzība ciemos, bet "
-#~ "kavalēristiem tikai 40%.\n"
-#~ "\n"
+#~ msgid "Moves: "
+#~ msgstr "Gājieni: "
 
-#~ msgid "Submerged Village"
-#~ msgstr "Zemūdens ciems"
+#~ msgid "Vision: "
+#~ msgstr "Vīzija: "
 
-#~ msgid ""
-#~ "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
-#~ "nagas. While water-dwelling creatures are at home here, land-dwellers "
-#~ "have a hard time navigating and defending these villages. However, like "
-#~ "any village, the facilites are available to all creatures which allow "
-#~ "units to tend to their wounds. Any unit stationed in a village can heal "
-#~ "eight hitpoints each turn, or be cured of poison.\n"
-#~ "\n"
-#~ "Merfolk and nagas have 60% defense in submerged villages, whereas land "
-#~ "based units usually have a low defense."
-#~ msgstr ""
-#~ "<italic>text='Zemūdens ciemi'</italic> ir nāru un nāgu mājvieta. Kamēr "
-#~ "ūdens radījumi tur ir mājās, sauszemes iemītniekiem ir lielas grūtības "
-#~ "pārvietoties un aizsargāties šajos ciemos. Tomēr, kā visos ciemos, "
-#~ "iekārtojums ir pieejams visām radībām, kuras ļauj vienībām apkopt to "
-#~ "brūces. Jebkura ciemā novietotā vienība var tikt dziedēta par astoņiem "
-#~ "veselības punktiem katrā gājienā, vai arī tā var tikt izārstēta no "
-#~ "indes.\n"
-#~ "\n"
-#~ "Nārām un nāgām zemūdens ciemos ir 60% aizsardzība, kamēr sauszemes "
-#~ "vienībām parasti ir zema aizsardzība."
+#~ msgid "Jamming: "
+#~ msgstr "Traucējums: "
 
-#~ msgid "Unwalkable"
-#~ msgstr "Necaurejams"
+#~ msgid "Cost: "
+#~ msgstr "Izmaksas: "
 
-#~ msgid ""
-#~ "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge "
-#~ "which, as the name implies, cannot be crossed simply by walking. Chasms "
-#~ "are noted for sheer walls which would take days to traverse. As far as "
-#~ "gameplay is concerned, only units capable of flying can cross this "
-#~ "terrain."
-#~ msgstr ""
-#~ "<italic>text='Nepārejams apvidus'</italic> ir jebkurā plaisā vai aizā, "
-#~ "kas, kā jau nosaukums pasaka priekšā, nevar tikt šķērsots ejot kājām. "
-#~ "Plaisas izceļas ar stāvajām sienām, kuru pārvarēšana varētu prasīt "
-#~ "dienas. Spēlē tikai lidojošās vienības spēj šķērsot šo apvidu."
+#~ msgid "Alignment: "
+#~ msgstr "Īpašība: "
 
-#~ msgid "Lava"
-#~ msgstr "Lava"
+#~ msgid "Required XP: "
+#~ msgstr "Nepieciešamie PP: "
 
-#~ msgid ""
-#~ "The dangers inherent in trying to walk on <italic>text='lava'</italic> "
-#~ "are fairly obvious. As far as movement is concerned, lava is equivalent "
-#~ "to <ref>dst='terrain_unwalkable' text='unwalkable'</ref> terrain, and can "
-#~ "only be crossed by those units capable of flying a considerable distance "
-#~ "above it. The molten magma also produces a substantial glow, illuminating "
-#~ "the area immediately above it. This provides an attack bonus for lawful "
-#~ "units and removes the attack bonus from chaotic units."
-#~ msgstr ""
-#~ "Briesmas, kas saistītas ar mēģināšanu staigāt pa <italic>text='lavu'</"
-#~ "italic>, ir diezgan acīmredzamas. Pārvietošanās ziņā lava ir "
-#~ "<ref>dst='terrain_unwalkable' text='nepārejams'</ref> apvidus, un to spēj "
-#~ "šķērsot tikai lidojošās vienības, kuras spēj lidot vērā ņemamā augstumā "
-#~ "virs tās. Izkususī magma izstaro vērā ņemamu gaismu, kas apgaismo tieši "
-#~ "virs tās esošo apgabalu. Tas dod papildus uzbrukuma spēku "
-#~ "likumpaklausīgajām vienībām, un noņem to haotiskajām vienībām."
+#~ msgid "unit help^Attacks"
+#~ msgstr "Uzbrukumi"
 
-#~ msgid "River Ford"
-#~ msgstr "Brasls"
+#~ msgid "unit help^Name"
+#~ msgstr "Nosaukums"
 
-#~ msgid ""
-#~ "When a river happens to be extremely shallow, passing over it is a "
-#~ "trivial matter for land based units. Moreover, any creature best adapted "
-#~ "to swimming has full mobility even at such places in the river. As far as "
-#~ "gameplay is concerned, a river ford is treated as either grassland or "
-#~ "shallow water, choosing whichever one offers the best defensive and "
-#~ "movement bonuses for the unit on it."
-#~ msgstr ""
-#~ "Ja upe ir ārkārtīgi sekla, tad tās šķērsošana sauszemes vienībām "
-#~ "problēmas nesagādā. Vēl jo vairāk, jebkurš radījums, kurš vislabāk "
-#~ "pielāgojies peldēšanai, var netraucēts pārvietoties pat šādās upēs. "
-#~ "Spēles upes krasts darbojas kā līdzenums vai sekls ūdens, atkarībā no tā, "
-#~ "kurš dod labāko aizsardzības un pārvietošanās papildinājumus vienībai uz "
-#~ "tā."
+#~ msgid "Type"
+#~ msgstr "Tips"
 
-#~ msgid "Coastal Reef"
-#~ msgstr "Piekrastes rifs"
+#~ msgid "Strikes"
+#~ msgstr "Sitieni"
 
-#~ msgid ""
-#~ "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
-#~ "and sand. This provides most land units with a more steady footing and "
-#~ "defensive positions than wading in shallow water normally would and also "
-#~ "grants most water-dwelling races an exceptionally high defense.\n"
-#~ "\n"
-#~ "Mermen and Naga both receive 70% defense on coastal reefs."
-#~ msgstr ""
-#~ "<italic>text='Piekrastes rifi'</italic> ir sekls ūdens, ko veido akmeņi, "
-#~ "koraļļi un smiltis. Vairumam sausdzemes vienību tie dod stabilāku "
-#~ "pārvietošanos un aizsardzības pozīcijas kā parasti dod brišana seklā "
-#~ "ūdenī, un tie dod arī neparasti augstu aizsardzību ūdens sugām.\n"
-#~ "\n"
-#~ "Nārām un nāgām ir 70% aizsardzība piekrastes rifos."
+#~ msgid "Range"
+#~ msgstr "Diapazons"
 
-#~ msgid "Bridge"
-#~ msgstr "Tilts"
+#~ msgid "Special"
+#~ msgstr "Paņēmiens"
 
-#~ msgid ""
-#~ "To those capable of building one, the ability to lay a "
-#~ "<italic>text='bridge'</italic> offers a liberation from the fickle nature "
-#~ "of waterways, whose fords come and go with the rise and fall of the "
-#~ "waterline. This is to say nothing of the luxury of dry feet, the loss of "
-#~ "which is no laughing matter in the cold months of the year.\n"
-#~ "\n"
-#~ "For those who go by land or sea, a bridge is the best of both worlds — "
-#~ "for gameplay purposes, it is treated either as grassland or the "
-#~ "underlying water, whichever offers the best movement and defensive "
-#~ "bonuses for the unit occupying the bridge hex. Note that a swimming unit "
-#~ "and a land unit are not capable of occupying a bridge hex at the same "
-#~ "time."
-#~ msgstr ""
-#~ "Tiem, kuriem piemīt spēja būvēt <italic>text='tiltus'</italic>, tas dod "
-#~ "patvērumu no ūdens ceļu mainības, kuru brasli nāk un iet reizē ar ūdens "
-#~ "līnijas celšanos un krišanu. Nemaz jau nerunājot par sausu kāju greznību, "
-#~ "kā zaudēšana nav nekāda joka lieta, it īpaši jau aukstajos ziemas "
-#~ "mēnešos.\n"
-#~ "\n"
-#~ "Tiem, kuri iet pa sauszemi vai jūru, tilts ir labākais no abām pasaulēm — "
-#~ "spēlē tas darbojas vai nu kā līdzenums, vai kā apakšā esošais ūdens, "
-#~ "atkarībā no tā kurš dod labākos pārvietošanās un aizsardzības "
-#~ "papildinājumus vienībai uz tilta. Ņem vērā, ka ūdens un sauszemes vienība "
-#~ "nevar vienlaicīgi aizņemt tilta lauciņu."
+#~ msgid "Resistances"
+#~ msgstr "Izturība"
 
-#~ msgid "Impassable"
-#~ msgstr "Nepārejams"
+#~ msgid "Attack Type"
+#~ msgstr "Uzbrukuma tips"
 
-#~ msgid ""
-#~ "Obstacles that not even the most determined traveler may overcome include "
-#~ "solid walls of stone and mountains so tall and steep that they are "
-#~ "constantly wreathed in cloud. Even flying creatures cannot navigate the "
-#~ "jagged peaks at such rarified heights, and not even the fiercest troll "
-#~ "can smash through thick walls of stone."
-#~ msgstr ""
-#~ "Starp šķēršļiem, kurus nevarētu pārvarēt pat visapņēmīgākais ceļotājs, ir "
-#~ "masīvas akmens sienas un kalni, tik augsti un stāvi, ka tie ir pastāvīgi "
-#~ "ietīti mākoņos. Pat lidojošās vienības nespēj pārvarēt robotās virsotnes "
-#~ "tik retinātā augstumā, un pat visnegantākais trollis nespēj izsisties "
-#~ "cauri biezajām akmens sienām."
+#~ msgid "Resistance"
+#~ msgstr "Izturība"
 
-#~ msgid ""
-#~ "Berserk:\n"
-#~ "Whether used offensively or defensively, this attack presses the "
-#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#~ "have occurred."
-#~ msgstr ""
-#~ "Cīņasspars:\n"
-#~ "Vienalga vai šis uzbrukums tiek lietots uzbrukumā vai aizsardzībā, cīņa "
-#~ "turpināsies līdz viena no vienībām uzvarēs vai tiks veikti 30 uzbrukumi."
+#~ msgid "Terrain"
+#~ msgstr "Apvidus"
 
-#~ msgid ""
-#~ "Magical:\n"
-#~ "This attack always has a 70% chance to hit regardless of the defensive "
-#~ "ability of the unit being attacked."
-#~ msgstr ""
-#~ "Maģisks:\n"
-#~ "Šim uzbrukumam vienmēr ir 70% iespēja trāpīt neatkarīgi no aizsargājošās "
-#~ "vienības aizsardzības spējas."
+#~ msgid "Defense"
+#~ msgstr "Aizsardzība"
 
-#~ msgid "firststrike"
-#~ msgstr "pirmais sitiens"
+#~ msgid "Movement Cost"
+#~ msgstr "Pārvietošanās izmaksas"
 
-#~ msgid ""
-#~ "First Strike:\n"
-#~ "This unit always strikes first with this attack, even if they are "
-#~ "defending."
-#~ msgstr ""
-#~ "Pirmais sitiens:\n"
-#~ "Šī vienība vienmēr iesit pirmā, pat ja tā aizstāvas."
+#~ msgid "Vision Cost"
+#~ msgstr "Vīzijas cena"
 
-#~ msgid ""
-#~ "Feeding:\n"
-#~ "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#~ "living unit."
-#~ msgstr ""
-#~ "Barošanās:\n"
-#~ "Šīs vienības maksimālais veselības līmenis paaugstinās par vienu ikreiz, "
-#~ "kad tā nogalina dzīvu vienību."
+#~ msgid "Jamming Cost"
+#~ msgstr "Traucējuma cena"
 
-#~ msgid ""
-#~ "Some weapons have special features that increase the effectiveness of "
-#~ "attacking with them.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Dažiem ieročiem ir īpašības, kas palielina to uzbrukuma efektivitāti.\n"
-#~ "\n"
+#~ msgid " < Back"
+#~ msgstr " < Atpakaļ"
+
+#~ msgid "Forward >"
+#~ msgstr "Uz priekšu >"
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Atsauce uz nezināmu tematu: "
+
+#~ msgid "corrupted original file"
+#~ msgstr "sabojāts oriģinālais fails"

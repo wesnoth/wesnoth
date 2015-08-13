@@ -9,17 +9,16 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2011-11-13 01:09+0300\n"
+"PO-Revision-Date: 2015-02-15 14:48+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
-"Language-Team: none\n"
-"Language: \n"
+"Language-Team: none <>\n"
+"Language: lv_LV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Poedit-Language: Latvian\n"
-"X-Poedit-Country: LATVIA\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -44,9 +43,9 @@ msgstr "Šūnas līnija ZR-DA"
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 #, fuzzy
-#| msgid "Hex Line NW-SE"
+#| msgid "Hex Line SE-NW"
 msgid "Hex Line SW-NE"
-msgstr "Šūnas līnija ZR-DA"
+msgstr "Šūnas līnija DA-ZR"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -81,12 +80,12 @@ msgstr "mežs"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "rudens"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
-msgstr "sasalis"
+msgstr "sasalums"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
@@ -106,7 +105,7 @@ msgstr "šķērslis"
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
 msgid "village"
-msgstr "ciems"
+msgstr "ciemats"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:94
@@ -126,59 +125,57 @@ msgstr "īpašs"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr ""
+msgstr "Neviens"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "Tests"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "Noklusēts"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "Vasara"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "Ziema"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "Pazeme"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "Dziļa pazeme"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "Iekštelpas"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24 stundu grafiks"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "Pēc rudens"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Iziet no redaktora"
+msgstr "Redaktors"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -198,7 +195,7 @@ msgstr ""
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:96
 msgid "Transition Update"
-msgstr ""
+msgstr "Pārejas atjaunojums"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:103
@@ -208,71 +205,71 @@ msgstr "Logs"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:112
 msgid "Areas"
-msgstr ""
+msgstr "Platības"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:120
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Iestatīt vietējo laiku"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:126
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Iestatīt vietējā laika grafiku"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:134
 msgid "Side"
-msgstr ""
+msgstr "Puse"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:152
 msgid "villages"
-msgstr "ciemi"
+msgstr "ciemati"
 
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:169
 msgid "units"
-msgstr ""
+msgstr "vienības"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:448
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Laika grafika izvēlne"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:459
 msgid "Playlist"
-msgstr ""
+msgstr "Spēlējamais saraksts"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:465
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Norīkot laika grafiku"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
-msgstr ""
+msgstr "Identificētājs: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Name: "
-msgstr ""
+msgstr "Vārds: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Type: "
-msgstr ""
+msgstr "Tips: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Level: "
-msgstr ""
+msgstr "Līmenis: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Cost: "
-msgstr ""
+msgstr "Cena: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Recruit: "
-msgstr ""
+msgstr "Iesaucamais: "
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -308,19 +305,19 @@ msgstr "Netika atrasts redaktora diennakts laiks."
 
 #: src/editor/controller/editor_controller.cpp:1101
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Mainīt vienības ID"
 
 #: src/editor/controller/editor_controller.cpp:1102
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/controller/editor_controller.cpp:1118
 msgid "Rename Unit"
-msgstr ""
+msgstr "Pārsaukt vienību"
 
 #: src/editor/controller/editor_controller.cpp:1119
 msgid "Name:"
-msgstr ""
+msgstr "Vārds:"
 
 #: src/editor/map/context_manager.cpp:128
 #: src/editor/map/context_manager.cpp:290
@@ -328,28 +325,20 @@ msgid "(New Map)"
 msgstr "(Jauna karte)"
 
 #: src/editor/map/context_manager.cpp:186
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
-msgstr "Izvēlieties, kuru karti atvērt"
+msgstr "Atvērt failu"
 
 #: src/editor/map/context_manager.cpp:292
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Scenario)"
-msgstr "(Jauna karte)"
+msgstr "(Jauns Scenārijs)"
 
 #: src/editor/map/context_manager.cpp:326
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(Unnamed Area)"
-msgstr "(Jauna karte)"
+msgstr "(Nenosaukta platība)"
 
 #: src/editor/map/context_manager.cpp:354
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "(Jauna karte)"
+msgstr "(Jauna puse)"
 
 #: src/editor/map/context_manager.cpp:420
 msgid "Choose a Mask to Apply"
@@ -361,11 +350,11 @@ msgstr "Kļūda ielādējot masku"
 
 #: src/editor/map/context_manager.cpp:446
 msgid "Identifier:"
-msgstr ""
+msgstr "Identificētājs:"
 
 #: src/editor/map/context_manager.cpp:446
 msgid "Rename Area"
-msgstr ""
+msgstr "Pārsaukt laukumu"
 
 #: src/editor/map/context_manager.cpp:457
 msgid "Choose Target Map"
@@ -386,10 +375,8 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Fails jau eksistē. Vai pārrakstīt?"
 
 #: src/editor/map/context_manager.cpp:609
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "Saglabāt karti kā"
+msgstr "Saglabāt scenāriju kā"
 
 #: src/editor/map/context_manager.cpp:648
 msgid "No random map generators found."
@@ -414,10 +401,8 @@ msgstr ""
 "Vai vēlaties izmest visas izmaiņas, ko veicāt kopš pēdējās saglabāšanas?"
 
 #: src/editor/map/context_manager.cpp:777
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Šī karte jau ir atvērta."
+msgstr "Šis scenārijs jau ir atvērta."
 
 #: src/editor/map/context_manager.cpp:799
 #: src/editor/map/context_manager.cpp:854
@@ -425,10 +410,8 @@ msgid "This map is already open."
 msgstr "Šī karte jau ir atvērta."
 
 #: src/editor/map/context_manager.cpp:820
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Karte saglabāta."
+msgstr "Scenārijs saglabāts."
 
 #: src/editor/map/context_manager.cpp:834
 msgid "Map saved."
@@ -464,10 +447,8 @@ msgid "File not found"
 msgstr "Fails netika atrasts"
 
 #: src/editor/map/map_context.cpp:138
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Tukšs kartes fails"
+msgstr "Tukšs fails"
 
 #: src/editor/map/map_context.cpp:184
 msgid ""
@@ -478,10 +459,8 @@ msgstr ""
 "eksistējošu failu"
 
 #: src/editor/map/map_context.cpp:524
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Neizdevās saglabāt karti: $msg"
+msgstr "Neizdevās saglabāt Scenāriju: $msg"
 
 #: src/editor/map/map_context.cpp:551
 msgid "Could not save into scenario"
@@ -494,7 +473,7 @@ msgstr "Neizdevās saglabāt karti: $msg"
 #: src/editor/palette/editor_palettes.cpp:60
 #: src/editor/palette/editor_palettes.cpp:115
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Nezināma grupa)"
 
 #: src/editor/palette/editor_palettes.cpp:384
 msgid "(non-core)"
@@ -514,7 +493,7 @@ msgstr "Fons:"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:129
 msgid "Choose File"
-msgstr ""
+msgstr "Izvēlies failu"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:87
 msgid "player^None"
@@ -523,65 +502,3 @@ msgstr "Neviens"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Spēlētājs $player_number"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "Izmantojiet kreiso/labo peles taustiņu, lai zīmētu priekšplāna/fona "
-#~ "apvidu. Turiet Shift, lai krāsotu tikai pamata slāni. Ctrl+klikšķis, lai "
-#~ "izvēlētos apvidu zem kursora."
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "Kreisais peles taustiņš iezīmē, labais atceļ iezīmējumu. Turiet Shift, "
-#~ "lai ar burvju nūjiņu iezīmētu šūnas ar vienādu apvidu."
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "Kreisais peles taustiņš attēlo lietotāju izvēli, labais to notīra. Ciparu "
-#~ "taustiņi ritina uz sākuma pozīciju, Alt+cipars iestata attiecīgo sākuma "
-#~ "pozīciju zem kursora, Delete notīra."
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "Klikšķis ievieto, tāliniet, lai iegūtu labāku precizitāti ievietojot "
-#~ "lielus apgabalus. Lietojiet rediģēšanas izvēlni, lai transformētu "
-#~ "starpliktuvi (rotācija, spoguļattēls)."
-
-#~ msgid "Empty map file"
-#~ msgstr "Tukšs kartes fails"
-
-#~ msgid "Custom setting"
-#~ msgstr "Pielāgoti iestatījumi"
-
-#~ msgid "Edit"
-#~ msgstr "Rediģēt"
-
-#~ msgid "Undo"
-#~ msgstr "Atsaukt"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Nevar atsaukt"
-
-#~ msgid "Redo"
-#~ msgstr "Pārdarīt"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Nevar pārdarīt"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Automātiski atjaunināt apvidus pārejas: Jā"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Automātiski atjaunināt apvidus pārejas: Daļēji"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Automātiski atjaunināt apvidus pārejas: Nē"
