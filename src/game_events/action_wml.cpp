@@ -855,7 +855,10 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		command_type = "else";
 	}
 
-	if (!cfg["silent"].to_bool())
+	// Default to silent if object has no description
+	const bool silent = cfg.has_attribute("silent") ? cfg["silent"].to_bool() : !cfg.has_attribute("description");
+
+	if (!silent)
 	{
 		// Redraw the unit, with its new stats
 		resources::screen->draw();
