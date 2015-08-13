@@ -8,18 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-05 21:33-0300\n"
-"PO-Revision-Date: 2011-11-14 17:54+0300\n"
+"POT-Creation-Date: 2015-06-12 18:03-0300\n"
+"PO-Revision-Date: 2015-02-15 14:45+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: lv_LV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Poedit-Language: Latvian\n"
-"X-Poedit-Country: LATVIA\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -84,14 +83,17 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Tur kur upe ir sekla, kājnieki to samērā labi šķērsos. Ūdens radijumi "
+"jūtīsies pat lieliski un nepazaudēs savu izveicību. Šādas vietas arī var "
+"uzskatīt vienkārši par apūdeņotām pļavām, atkarībā kādus bonusus vēlamies "
+"izcelt no radijuma, kuru tur novietos."
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
 #. [terrain_type]: id=reef
 #. [terrain_type]: id=tropical_reef
-#: data/core/terrain.cfg:96 data/core/terrain.cfg:107
-#: data/core/terrain.cfg:118 data/core/terrain.cfg:2266
-#: data/core/terrain.cfg:2267
+#: data/core/terrain.cfg:96 data/core/terrain.cfg:107 data/core/terrain.cfg:118
+#: data/core/terrain.cfg:2266 data/core/terrain.cfg:2267
 msgid "Coastal Reef"
 msgstr "Piekrastes rifs"
 
@@ -102,10 +104,8 @@ msgstr "Pelēks piekrastes rifs"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:108
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
-msgstr "Piekrastes rifs"
+msgstr "Mērens piekrastes rifs"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:119
@@ -122,10 +122,8 @@ msgstr "Purvs"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:132
-#, fuzzy
-#| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
-msgstr "Purva cilvēku pils tornis"
+msgstr "Purva niedres"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:143
@@ -207,6 +205,9 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"<italic>text='Ceļi'</italic> ir iemīti dubļi vai grants. Daudzi gājuši pa "
+"to. Pēc spēles likumiem ceļš ir tas pats - līdzenums. Stāvot uz ceļa "
+"darbojas tie paši likumi kas līdzenumā."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:246
@@ -245,6 +246,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"<italic>text='Tuksneši'</italic>  ir mazliet savādāki nekā mazi smilšu lauki "
+"vai pludmales. Bet tas ir tikai vizuāli, spēles likumi uz visām šīm virsmām "
+"ir vienādi. Skatīt <ref>dst='terrain_sand' text='Smiltis'</ref>."
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
@@ -268,6 +272,10 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"<italic>text='Smiltis'</italic> nogurdina karavīrus. Tiem ir grūti "
+"pārvietoties un aizstāvēties. Bet plato kāju īpašniekiem un ložņām smiltis "
+"problēmas nesagādā.\n"
+"Daudziem pretošanās smiltīs ir 20 līdz 40%"
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:315
@@ -326,10 +334,8 @@ msgstr "Vējdzirnavas"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:423
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Kampaņa"
+msgstr "Ugunskurs"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:432
@@ -354,12 +360,12 @@ msgstr "Ziedošas ūdensrozes"
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:471
 msgid "Trash"
-msgstr ""
+msgstr "Atkritumi"
 
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:480
 msgid "Remains"
-msgstr ""
+msgstr "Pārpalikumi"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -408,59 +414,53 @@ msgstr "Tropu mežs"
 
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:530
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Rainforest"
-msgstr "Priežu mežs"
+msgstr "Lietus mežs"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:542
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Priežu mežs"
+msgstr "Palmu mežs"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:554
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Dense Palm Forest"
-msgstr "Priežu mežs"
+msgstr "Blīvs palmu mežs"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:566
 msgid "Savanna"
-msgstr ""
+msgstr "Savanna"
 
 #. [terrain_type]: id=pine_forest
 #: data/core/terrain.cfg:578
 msgid "Pine Forest"
-msgstr "Priežu mežs"
+msgstr "Skujukoku mežs"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:590
 msgid "Snowy Pine Forest"
-msgstr "Piesnidzis priežu mežs"
+msgstr "Piesnidzis skujukoku mežs"
 
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:602
 msgid "Summer Deciduous Forest"
-msgstr "Vasaras lapu koku mežs"
+msgstr "Vasaras lapukoku mežs"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:614
 msgid "Fall Deciduous Forest"
-msgstr "Rudens lapu koku mežs"
+msgstr "Rudens lapukoku mežs"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:626
 msgid "Winter Deciduous Forest"
-msgstr "Ziemas lapu koku mēžs"
+msgstr "Ziemas lapukoku mēžs"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:638
 msgid "Snowy Deciduous Forest"
-msgstr "Piesnidzis lapu koku mežs"
+msgstr "Piesnidzis lapukoku mežs"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:650
@@ -528,10 +528,8 @@ msgstr "Kalni"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:747
-#, fuzzy
-#| msgid "Regular Impassable Mountains"
 msgid "Regular Mountains"
-msgstr "Parasti nepārejami kalni"
+msgstr "Parasti kalni"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:757
@@ -556,7 +554,7 @@ msgstr "Pamata koka grīda"
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:794
 msgid "Lit"
-msgstr "Apgaismots"
+msgstr "Apgaismojums"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:795
@@ -579,12 +577,12 @@ msgstr "Alas grīda"
 #. [terrain_type]: id=cave_earthy
 #: data/core/terrain.cfg:816
 msgid "Earthy Cave Floor"
-msgstr "Alas grīda"
+msgstr "Alas grīda bez seguma"
 
 #. [terrain_type]: id=flagstones_dark
 #: data/core/terrain.cfg:826
 msgid "Dark Flagstones"
-msgstr "Tumša akmens plāksnes"
+msgstr "Tumšas plāksnes"
 
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:836
@@ -623,6 +621,13 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"<italic>text='Klinšu ala'</italic> veidojas ūdens un laikapstākļu iespaidā. "
+"Šādā apvidū vairumam cīnītāju samazinās efektivitāte, bet Rūķi un Troļļi te "
+"jūtās kā mājās. Viņi te labi pārvietojas un ir ļoti bīstami. Dažas alas var "
+"būt <ref>dst='terrain_illuminated_cave' text='izgaismotas'</ref>\n"
+"\n"
+"Pārsvarā visiem aizstāvēšanās sarūk līdz (50%) Jātnieki jūtās visnedrošāk - "
+"(40%) Rūķi bauda šādas vietas - (60%)"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -677,6 +682,11 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"Katrs sapratīs ka staigāt pa <italic>text='lavu'</italic> ir diezgan "
+"bīstami. Lavas lauciņš ir <ref>dst='terrain_unwalkable' text='nepārejams "
+"segums'</ref> To var šķērsot tikai lidojoši radijumi. Lavas magma izgaismo "
+"savu teritoriju, tas dod bonusu kārtīgajiem cīnītājiem, un attiecīgi "
+"haotiskie cīnītāji izjūt šī bonusa trūkumu."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:986
@@ -720,12 +730,12 @@ msgstr "Izgrebta alas siena"
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1056
 msgid "Natural Earthy Cave Wall"
-msgstr "Dabīga zemes alas siena"
+msgstr "Alas siena no zemes"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1067
 msgid "Reinforced Earthy Cave Wall"
-msgstr "Nostiprināta zemes alas siena"
+msgstr "Alas siena ar nostiprinātu zemi"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -741,12 +751,10 @@ msgstr "Gaiša akmens siena"
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1097
 msgid "Impassable Overlay"
-msgstr "Nepārejams segums"
+msgstr "Nepieejams segums"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1110
-#, fuzzy
-#| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
 msgstr "Nepārejams segums"
 
@@ -810,7 +818,7 @@ msgstr "Ciems"
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1139
 msgid "Adobe Village"
-msgstr "Nededzinātu ķieģeļu ciems"
+msgstr "Ķieģeļu ciems"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1152
@@ -880,17 +888,17 @@ msgstr "Sagruvusi cilvēku pilsēta"
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1327
 msgid "Hill Stone Village"
-msgstr "Pauguru akmens ciems"
+msgstr "Akmens ciems"
 
 #. [terrain_type]: id=snow-hill_village
 #: data/core/terrain.cfg:1340
 msgid "Snowy Hill Stone Village"
-msgstr "Sniegots pauguru akmens ciems"
+msgstr "Sniegots akmens ciems"
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1353
 msgid "Ruined Hill Stone Village"
-msgstr "Sagruvis pakalnu akmens ciems"
+msgstr "Sagruvis akmens ciems"
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1366
@@ -920,7 +928,7 @@ msgstr "Būda"
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1433
 msgid "Snowy Hut"
-msgstr "Sniegota būda"
+msgstr "Apsnigusi būda"
 
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1446
@@ -930,7 +938,7 @@ msgstr "Koka būda"
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:1459
 msgid "Snowy Log Cabin"
-msgstr "Sniegota koka būda"
+msgstr "Apsnigusi koka būda"
 
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1472
@@ -940,7 +948,7 @@ msgstr "Igla"
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1487
 msgid "Swamp Village"
-msgstr "Purvu ciems"
+msgstr "Purva ciems"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1500
@@ -960,6 +968,12 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"<italic>text='Iegremdēti ciemi'</italic> ir mājvieta visādiem ūdens "
+"radijumiem. Šādās vietās sauszemes radijumiem ir apgrūtināta pārvietošanās "
+"un cīnīšanās. Un tāpat kā citos ciemos - šeit arī var ārstēt ievainotās un "
+"saindētās vienības.\n"
+"Ūdens radijumi šeit iegūst 60% aizstāvēšanās prasmes. Turpretī sauszemes "
+"pārstāvji cieš lielus zaudējumus."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1518
@@ -976,7 +990,7 @@ msgstr "Apmetne"
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1547
 msgid "Snowy Encampment"
-msgstr "Sniegota apmetne"
+msgstr "Apsnigusi nometne"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
@@ -1017,10 +1031,8 @@ msgstr "Sniegota cilvēku pils"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1606
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
-msgstr "Elfu pils tornis"
+msgstr "Elfu pils"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1618
@@ -1044,12 +1056,12 @@ msgstr "Sagruvusi cilvēku pils"
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1642
 msgid "Sunken Human Ruin"
-msgstr "Zemūdens cilvēku drupas"
+msgstr "Noslīcinātas cilvēku gruveši"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1655
 msgid "Swamp Human Ruin"
-msgstr "Purva cilvēku drupas"
+msgstr "Purva cilvēku gruveši"
 
 #. [terrain_type]: id=sand_castle
 #: data/core/terrain.cfg:1668
@@ -1067,17 +1079,17 @@ msgstr "Sagruvusi tuksneša pils"
 #: data/core/terrain.cfg:1695 data/core/terrain.cfg:1707
 #: data/core/terrain.cfg:1720
 msgid "Encampment Keep"
-msgstr "Apmetnes tornis"
+msgstr "Apmetnes Tornis"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1708
 msgid "Tall Encampment Keep"
-msgstr "Augsts apmetnes tornis"
+msgstr "Augsts apmetnes Tornis"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1721
 msgid "Snowy Encampment Keep"
-msgstr "Sniegots apmetnes tornis"
+msgstr "Sniegots apmetnes Tornis"
 
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=dwarven_keep
@@ -1097,32 +1109,32 @@ msgstr "Tornis"
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:1734
 msgid "Orcish Keep"
-msgstr "Orku tornis"
+msgstr "Orku Tornis"
 
 #. [terrain_type]: id=snow_orcish_keep
 #: data/core/terrain.cfg:1747
 msgid "Snowy Orcish Keep"
-msgstr "Sniegots orku tornis"
+msgstr "Sniegots orku Tornis"
 
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:1760
 msgid "Human Castle Keep"
-msgstr "Cilvēku pils tornis"
+msgstr "Cilvēku pils Tornis"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1773
 msgid "Snowy Human Castle Keep"
-msgstr "Sniegots cilvēku pils tornis"
+msgstr "Sniegots cilvēku pils Tornis"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1786
 msgid "Elven Castle Keep"
-msgstr "Elfu pils tornis"
+msgstr "Elfu pils Tornis"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1799
 msgid "Dwarven Castle Keep"
-msgstr "Rūķu pils tornis"
+msgstr "Rūķu pils Tornis"
 
 #. [terrain_type]: id=desert_keep_ruined
 #. [terrain_type]: id=ruined_keep
@@ -1131,32 +1143,32 @@ msgstr "Rūķu pils tornis"
 #: data/core/terrain.cfg:1811 data/core/terrain.cfg:1824
 #: data/core/terrain.cfg:1837 data/core/terrain.cfg:1863
 msgid "Ruined Keep"
-msgstr "Sagruvis tornis"
+msgstr "Sagruvis Tornis"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1812
 msgid "Ruined Human Castle Keep"
-msgstr "Sagruvis cilvēku pils tornis"
+msgstr "Sagruvis cilvēku pils Tornis"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1825
 msgid "Sunken Human Castle Keep"
-msgstr "Nogrimis cilvēku pils tornis"
+msgstr "Nogrimis cilvēku pils Tornis"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1838
 msgid "Swamp Human Castle Keep"
-msgstr "Purva cilvēku pils tornis"
+msgstr "Purva pils - cilvēku Tornis"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1851
 msgid "Desert Keep"
-msgstr "Tuksneša tornis"
+msgstr "Tuksneša Tornis"
 
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1864
 msgid "Ruined Desert Keep"
-msgstr "Sagruvis tuksneša tornis"
+msgstr "Sagruvis tuksneša Tornis"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1878
@@ -1212,6 +1224,13 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Uzbūvētais <italic>text='tilts'</italic> vienībām piedāvā izvairīties no "
+"nepatīkamiem apstākļiem ūdenī - no ūdens straumēm un citām neērtībām. Sausas "
+"kājas cīņā ir neaizstājama vērtība. Īpaši aukstā laikā.\n"
+"\n"
+"Spēles uzbūvē tilts ir samērā noderīgs abiem cīnītāju tipiem. Gan peldošie, "
+"gan sauszemes cīnītāji māk to izmantot savās vajadzībās. Sauszemes vienībām "
+"tilts būs kā parasts lauks, bet peldošie mācēs izmantot tilta apakšu."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1227,7 +1246,7 @@ msgstr "Pūstošs tilts"
 #: data/core/terrain.cfg:1991 data/core/terrain.cfg:2003
 #: data/core/terrain.cfg:2016
 msgid "Basic Stone Bridge"
-msgstr "Pamata akmens tilts"
+msgstr "Vienkāršs akmens tilts"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -1235,37 +1254,31 @@ msgstr "Pamata akmens tilts"
 #: data/core/terrain.cfg:2031 data/core/terrain.cfg:2042
 #: data/core/terrain.cfg:2055
 msgid "Cave Chasm Bridge"
-msgstr "Alas aizas tilts"
+msgstr "Tilts pāri aizai"
 
 #. [terrain_type]: id=hangingbridge
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2070 data/core/terrain.cfg:2082
 #: data/core/terrain.cfg:2094
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Pūstošs tilts"
+msgstr "Iekārts tilts"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #: data/core/terrain.cfg:2107 data/core/terrain.cfg:2118
 #: data/core/terrain.cfg:2129
-#, fuzzy
-#| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
-msgstr "Alas aizas tilts"
+msgstr "Akmens tilts pāri aizai"
 
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #: data/core/terrain.cfg:2141 data/core/terrain.cfg:2152
 #: data/core/terrain.cfg:2163
-#, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
-msgstr "Tilts"
+msgstr "Dēļu Tilts"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2179
@@ -1275,7 +1288,7 @@ msgstr "Ne uz kartes"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2190
 msgid "Experimental Fake Map Edge"
-msgstr "Eksperimentāla mākslīga kartes mala"
+msgstr "Eksperimentāli mākslīga kartes mala"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1292,7 +1305,7 @@ msgstr "Migla"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2225 data/core/terrain.cfg:2226
 msgid "Fungus"
-msgstr ""
+msgstr "Sēnes"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2229
@@ -1308,6 +1321,15 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"<italic>text='Sēņu audzes'</italic> ir plašas mežu audzes ar gigantiskām "
+"sēnēm.\n"
+"Tās pieņemās augumā tikai pilnīgā tumsā. Daudziem ir problēmas pārvietoties "
+"pa pumpainu, nelīdzenu virsmu. Bet aiz sēņu stumbriem var sekmīgi "
+"paslēpties. Smagas vienības šādā zemē iestieg un nevar brīvi cīnīties. "
+"Nemirstīgo vienības izrāda savu simpātiju šādām vietām, tākā tiem jau ir "
+"dabīga tieksme uz pūšanu.\n"
+"Parasti vienībām šādā apvidū ir 50 līdz 60% aizsardzība, jātniekiem tikai "
+"20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2241
@@ -1329,13 +1351,24 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"<italic>text='Alu'</italic> apvidū ir daudz vietu, kur kāda maza vienība "
+"varētu paslēpties.\n"
+"Daudzas vienības nepazīst šādus apstākļus. Tām samazinās pārvietošanās "
+"spējas un aizsardzība. Rūķiem un Troļļiem šāds apvidus ir kā radīts, rūķi "
+"pat ierīko mitekļus šādos apgabalos. Viņu mazais augums atļauj iespraugties "
+"tur kur citiem tas nav lemts. Ir arī <ref>dst='terrain_illuminated_cave' "
+"text='izgaismotas'</ref> alas.\n"
+"\n"
+"Šad tad pazemes pasaule tiek apgaismota no augšas. Tas ļauj kārtīgiem "
+"cīnītājiem saņemt bonusu, bet haosa pārstāvjiem zūd savi bonusi. Pārējām "
+"vienībām nav nekādu izmaiņu. <ref>dst='terrain_cave' text='Alas'</ref>.\n"
+"\n"
+"Pārsvarā visiem būs 20 līdz 40% aizsardzīva. Rūķiem šeit ir 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2254
-#, fuzzy
-#| msgid "Sand"
 msgid "Sands"
-msgstr "Smiltis"
+msgstr "Smilts"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2271
@@ -1348,6 +1381,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"<italic>text='Piekraster rifi'</italic> ir seklas, koraļļiem bagātas vietas. "
+"Kā ari ūdens virspusē var būt pa kādam klints gabalam.\n"
+"Tas sauszemes vienībām nodrošina stabilāku pamatu zem kājām. Peldošie "
+"radijumi ūdenī iegūst ārkārtīgi augstas aizsardzības spējas.\n"
+"\n"
+"Nāras un Nagas šeit iegūst 70% aizsardzības."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2285
@@ -1362,6 +1401,13 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Par <italic>text='pakalniem'</italic> var uzskatīt teritorijas ar "
+"ievērojamiem zemes pacēlumiem, aiz kuriem pat var šad tad piesegties. Rūķi, "
+"Troļļi un Orki ir vienīgie kas māk pārvietoties vislabāk šādās teritorijās. "
+"Jātniekus šādās pozīcijās labāk nesūtīt, te tos gaida lieli zaudējumi.\n"
+"\n"
+"Vidēji visiem pakalnos ir 50% aizsardzība, bet jātniekiem būs tikai 40%. "
+"Rūķi te baudīs 60%."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2300
@@ -1376,6 +1422,12 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"<italic>text='Purvi'</italic> bagātīgi piedāvā visāda veida slapjumus.\n"
+"Šeit ieguvēju praktiski nav. Visiem būs grūti pārvietoties un aizstāvēties. "
+"Priekšrocības būs tikai ūdens pasaules cīnītājiem.\n"
+"\n"
+"Kamēr visi mocīsies ar 30% aizsardzības... Nāras, Nagas un Sauriāni te "
+"diktēs savus noteikumus ar 60%."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2313
@@ -1391,6 +1443,13 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"Faktiski katra vienība <italic>text='seklā ūdenī'</italic> jūtās samērā "
+"neierasti. Brienot daudz nepārvietosies un uzbrukuma gadijumā - būs grūti "
+"aizstāvēties. Rūķiem šī ir problēmu pilna vieta, ūdens ir tādā līmenī, ka "
+"var pat padzerties cīņas laikā. Bet peldošās vienības te būs neapturamas.\n"
+"\n"
+"Sauszemes radijumu aizsardzība te būs 20 līdz 30%. Nāras un Nagas te varēs "
+"izpausties ar 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2328
@@ -1404,6 +1463,12 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"<italic>text='Pils'</italic> cietokšņi ir dažādi.\n"
+"Šādās pozīcijās jebkura vienība saņem ievērojumus bonusus. Un pils "
+"teritorijā pārvietoties var bez problēmām. Ja pils šūna ir tukša, tajā var "
+"iezagties pretinieks un saņemt visus tos pašus bonusus.\n"
+"\n"
+"Daudzām vienībām pils šūnā aizsardzība ir 60%."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2342
@@ -1418,6 +1483,13 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"<italic>text='Kalni'</italic> ir pietiekami slīpi, un to apvidū ir daudz "
+"šķēršļu, kas jāpārvar vienībām.\n"
+"Savukārt slēpņu te netrūkst, lieliska vieta aizstāvēties. Ar jātniekiem te "
+"būs problēma - tie kalnos nevar pārvietoties. Izņēmums ir tikai Elfu "
+"jātnieki un Vilku jātnieki. Bet šādā teritorijā īpaši labi jūtās Rūķi un "
+"Troļļi.\n"
+"Pārsvarā cīnītāji kalnos saņem 60% aizsardzības, bet Rūķiem būs 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2354
@@ -1429,6 +1501,10 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"<italic>text='Dziļie ūdeņi'</italic> jau nav šķērsojami kuram katram.\n"
+"Šie reģioni ir pieejami tikai peldošiem vai lidojošiem radijumiem.\n"
+"\n"
+"Nāras un Nagas aizstāvēsies ar 50%."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2365 data/core/terrain.cfg:2366
@@ -1447,6 +1523,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='Pļava'</italic> reprezentē atvērtu platību.\n"
+"Tākā pļavā nav šķēršļu - vienībām ir viegli to šķērsot. Bet šeit nebūs "
+"patīkami aizstāvēties. Priekšrocības ir tikai jātniekiem un ļoti elastīgām "
+"vienībām.\n"
+"\n"
+"Pārsvarā vienībām būs 30 līdz 40% aizsardzība."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2380
@@ -1466,11 +1548,19 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"<italic>text='Meži'</italic> ir pilni ar ktiteņiem un pamežiem, kas "
+"ievērojami mazina pārvietošanās spējas gandrīz ikvienam. Bet mežs piedāvā "
+"labāku aizstāvēšanos, nekā atklāts lauks. Jātnieku kavalērijas šeit nebūs "
+"vilcējspēks, tām te ir visgrūtāk pārvietoties. Elfi mežos ir prasmīgākie "
+"karotāji, tie māk prasmīgi pārvietoties un slēpties.\n"
+"\n"
+"Pārsvarā visiem būs 50% aizsardzības, jātniekiem 30%, bet Elfi sasniedz 60 "
+"līdz 70%. Rūķi mežos nav prasmīgi - tiem tikai 30%."
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2390 data/core/terrain.cfg:2391
 msgid "Frozen"
-msgstr "Sasalis"
+msgstr "Sasalums"
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2393
@@ -1483,6 +1573,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"<italic>text='Sasalums'</italic> nozīmē: Laukumi kas ir pārklāti ar sniegu "
+"vai ledu.\n"
+"Daudzas vienības sasalumā tiek bremzētas un to aizstāvēšanās spējas ir visai "
+"vājas. Arī peldošie radijumi te nev cīnītāji.\n"
+"\n"
+"Aizsardzība sasalumā būs 20 līdz 40%."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2406
@@ -1498,11 +1594,19 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"<italic>text='Ciemati'</italic> reprezentē būves.\n"
+"Kaujas laukā nekas nevar būt labāks par kādu tuvējo ciemu. Tur var saņemt "
+"ārstēšanos - pēc katra gājiena 8 dzīvibas punktus. Kā arī - saindētie "
+"cīnītāji var atgūt veselību. Ciematu galvenais uzdevums ir apgādāt savu "
+"īpašnieku ar zeltu.\n"
+"\n"
+"Ciematā vienības saņem 50 līdz 60% aizsardzības. Jātnieku kavalērija tikai "
+"40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2416 data/core/terrain.cfg:2417
 msgid "Impassable"
-msgstr "Nepārejams"
+msgstr "Nepieejams"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2419
@@ -1513,6 +1617,8 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Ir tādas vietas pasaulē ko neviens nevar ne ieņemt, ne caurstaigāt, ne pie "
+"tām piekļūt."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2426 data/core/terrain.cfg:2427
@@ -1527,17 +1633,20 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"<italic>text='Necaurejams'</italic> apgabals ietver sevī jebkuru bezdibeni "
+"vai aizu, kas nav šķērsojams kājām. Šīs vietas ir pieejamas tikai lidojošiem "
+"radijumiem."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2436 data/core/terrain.cfg:2437
 msgid "Rails"
-msgstr ""
+msgstr "Sliedes"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2439
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
-msgstr ""
+msgstr "Pa <italic>text='sliedēm'</italic> pārvieto rūdu."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1568,7 +1677,7 @@ msgstr "Pieslēgties serverim"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:59
 msgid "You will now connect to a server to download add-ons."
-msgstr "Tagad jūs pieslēgsieties serverim, lai lejupielādētu papildinājumus."
+msgstr "Tagad jūs pieslēgsieties serverim, lai ielādētu papildinājumus."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:89
@@ -1644,15 +1753,11 @@ msgstr "Atcelt"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
 msgstr "Tips"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:115
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
 msgstr "Statuss"
 
@@ -1675,17 +1780,17 @@ msgstr "Autors:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:228
 msgid "Downloads:"
-msgstr ""
+msgstr "Lejupielādes:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:258
 msgid "date^Last updated:"
-msgstr ""
+msgstr "Pēdējo reizi atjaunots:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:284
 msgid "date^First uploaded:"
-msgstr ""
+msgstr "Pirmā augšupielāde:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:329
@@ -1701,46 +1806,42 @@ msgstr "Apraksts nav pieejams."
 #. [label]
 #: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
-msgstr ""
+msgstr "Mājaslapa:"
 
 #. [label]: id=url_none
 #: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
-msgstr ""
+msgstr "Nav"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:435
-#, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
 msgstr "Kopēt"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:436
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
-msgstr "Izvēlies ielādējamo spēli"
+msgstr "Kopēt šo URL starpliktuvē"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
-msgstr ""
+msgstr "Aizvest"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
-msgstr ""
+msgstr "Skatīt šo URL ar web pārlūku"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
-msgstr ""
+msgstr "Atkarīgs no:"
 
 #. [scroll_label]: id=dependencies
 #: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
-msgstr ""
+msgstr "Nav"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:510
@@ -1750,130 +1851,122 @@ msgstr "Tulkojumi:"
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:524
 msgid "translations^None"
-msgstr "Neviens"
+msgstr "Nav"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:49
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "Kampaņas"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:50
 msgid "addons_of_type^MP eras"
-msgstr ""
+msgstr "DS Ēras"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:53
 msgid "addons_of_type^Scenarios"
-msgstr ""
+msgstr "Scenāriji"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:54
 msgid "addons_of_type^MP factions"
-msgstr ""
+msgstr "DS Frakcijas"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
 msgid "addons_of_type^SP/MP campaigns"
-msgstr ""
+msgstr "DS Kampaņas"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:58
 msgid "addons_of_type^MP campaigns"
-msgstr ""
+msgstr "DS Kampaņas"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:61
 msgid "addons_of_type^Resources"
-msgstr ""
+msgstr "Resursi"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:62
 msgid "addons_of_type^MP scenarios"
-msgstr ""
+msgstr "DS Scenāriji"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:66
 msgid "addons_of_type^Other"
-msgstr ""
+msgstr "Cits"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:67
 msgid "addons_of_type^MP map-packs"
-msgstr ""
+msgstr "DS kartes-pakas"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:70
 msgid "addons_of_type^Unknown"
-msgstr ""
+msgstr "Nezināms"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:71
 msgid "addons_of_type^MP modifications"
-msgstr ""
+msgstr "DS modifikācijas"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
-#, fuzzy
-#| msgid "Actions"
 msgid "Options"
-msgstr "Darbības"
+msgstr "Iespējas"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:184
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr ""
+msgstr "Pilikumi atbilst šādiem kritērijiem, tiks parādīts."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:221
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Tulkojumi:"
+msgstr "Uzstādīšanas statuss:"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:264
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Papildinājumi"
+msgstr "Papildinājumu tipi"
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:277
-#, fuzzy
-#| msgid "Toggle Ellipses"
 msgid "Toggle All"
-msgstr "Izlēgt/ieslēgt daudzpunktes"
+msgstr "Pārslēgt visu"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:321
 msgid "Add-ons will be sorted as follows when no column is selected:"
-msgstr ""
+msgstr "Ja nav izvēlētas ailes, pielikumi tiks sarindoti šādi:"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:351
 msgid "sort^By name"
-msgstr ""
+msgstr "Pēc nosaukuma"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:356
 msgid "sort^By last updated"
-msgstr ""
+msgstr "Pēc pēdējā atjauninājuma"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:361
 msgid "sort^By first upload"
-msgstr ""
+msgstr "Pēc pirmās augšupielādes"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:377
 msgid "sort^Ascending"
-msgstr ""
+msgstr "Augošā secībā"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:382
 msgid "sort^Descending"
-msgstr ""
+msgstr "Dilstošā secībā"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1891,8 +1984,6 @@ msgstr "Izņemt"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Spēlēt kampaņu"
 
@@ -1945,26 +2036,22 @@ msgstr "Grūtība"
 #. [scroll_label]: id=message
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
-msgstr "Izvēlies sarežģītības līmeni:"
+msgstr "Izvēlies grūtības līmeni:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
-#| msgid "View Chat Log"
 msgid "Chat Log"
-msgstr "Skatīt čata reģistru"
+msgstr "Čata vēsture"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:59
-#, fuzzy
-#| msgid "Message:"
 msgid "Page:"
-msgstr "Ziņa:"
+msgstr "Lappuse:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:74
 msgid "Last"
-msgstr ""
+msgstr "Pēdējais"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
@@ -1973,14 +2060,12 @@ msgstr ""
 #: data/gui/default/window/custom_tod.cfg:326
 #: data/gui/default/window/title_screen.cfg:195
 msgid "Previous"
-msgstr "Iepriekšējais"
+msgstr "Atpakaļ"
 
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:99
-#, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
-msgstr "Iepriekšējais"
+msgstr "Iepriekšējā lappuse"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
@@ -1993,10 +2078,8 @@ msgstr "Nākamais"
 
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:107
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next page"
-msgstr "Nākamā puse"
+msgstr "Nākamā lappuse"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:125
@@ -2009,12 +2092,12 @@ msgstr "Filtrs:"
 #: data/gui/default/window/gamestate_inspector.cfg:238
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "Kopēt"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
 msgid "Custom Time of Day Schedule"
-msgstr ""
+msgstr "Izvēlēts dienas grafiks"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:67
@@ -2030,37 +2113,37 @@ msgstr "Vārds:"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:100
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:133
 msgid "Metadata:"
-msgstr ""
+msgstr "Metadati:"
 
 #. [button]: id=image_button
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
-msgstr ""
+msgstr "Attēls"
 
 #. [button]: id=mask_button
 #: data/gui/default/window/custom_tod.cfg:157
 msgid "Mask"
-msgstr ""
+msgstr "Maska"
 
 #. [button]: id=sound_button
 #: data/gui/default/window/custom_tod.cfg:167
 msgid "Sound"
-msgstr ""
+msgstr "Skaņa"
 
 #. [label]: id=current_sound
 #: data/gui/default/window/custom_tod.cfg:180
 msgid "long size text"
-msgstr ""
+msgstr "garš teksts"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:201
 msgid "Lawful Bonus:"
-msgstr ""
+msgstr "Bonuss kārtīgajiem:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:228
@@ -2080,19 +2163,17 @@ msgstr "Zils:"
 #. [label]: id=tod_number
 #: data/gui/default/window/custom_tod.cfg:337
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. [button]: id=new
 #: data/gui/default/window/custom_tod.cfg:359
 msgid "New ToD"
-msgstr ""
+msgstr "Jaun diennakts režīms"
 
 #. [button]: id=delete
 #: data/gui/default/window/custom_tod.cfg:369
-#, fuzzy
-#| msgid "Delete"
 msgid "Delete ToD"
-msgstr "Izdzēst"
+msgstr "Nodzēst diennakts režīmu"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -2103,7 +2184,7 @@ msgstr "Pārvaldīt datus"
 #: data/gui/default/window/data_manage.cfg:89
 #: data/gui/default/window/game_load.cfg:189
 msgid "Choose the game to load"
-msgstr "Izvēlies ielādējamo spēli"
+msgstr "Izvēlies spēli ko ielādēt"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/data_manage.cfg:113
@@ -2147,13 +2228,13 @@ msgstr "Saglabāt rezerves kopiju"
 #: data/gui/default/window/edit_label.cfg:42
 #: data/gui/default/window/editor_edit_label.cfg:42
 msgid "Place Label"
-msgstr "Iestatīt iezīmi"
+msgstr "Uzlikt piezīmi"
 
 #. [label]
 #: data/gui/default/window/edit_label.cfg:72
 #: data/gui/default/window/editor_edit_label.cfg:72
 msgid "Label:"
-msgstr "Iezīme:"
+msgstr "Piezīme:"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:112
@@ -2162,98 +2243,78 @@ msgstr "Tikai komanda"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
-#, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
-msgstr "Nepārejams"
+msgstr "Nepieejams"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr ""
+msgstr "Redzams miglā"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr ""
+msgstr "Redzams zem plīvura"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
-msgstr "Redaktora iestatījumi"
+msgstr "Rediģēt Scenārija konfigurācijas"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifikators:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
-msgstr "Pieredzes modifikators"
+msgstr "Pieredzes modifikators:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
-#, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
-msgstr "Gājiens"
+msgstr "Gājieni:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/default/window/editor_edit_scenario.cfg:244
 msgid "Declare victory once all enemies are defeated"
-msgstr ""
+msgstr "Pasludināt uzvaru kad visi pretinieki pieveikti"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
 msgstr "Nejaušs sākuma laiks"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
-#, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
-msgstr "Puse $side"
+msgstr "Iestatīt Puses"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number:"
-msgstr "Pauguru skaits:"
+msgstr "Skaits:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:105
 msgid "Team identifier:"
-msgstr ""
+msgstr "Komandas identifikators:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
-#, fuzzy
-#| msgid "Team only"
 msgid "Team name:"
-msgstr "Tikai komanda"
+msgstr "Komandas nosaukums:"
 
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
-#, fuzzy
-#| msgid "Animate map"
 msgid "Share map"
-msgstr "Animēt karti"
+msgstr "Kopēja karte"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
-#, fuzzy
-#| msgid "Leader"
 msgid "No leader"
-msgstr "Līderis"
+msgstr "Bez līdera"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/editor_edit_side.cfg:216
@@ -2264,63 +2325,57 @@ msgstr "Kara migla"
 #. [toggle_button]: id=share_view
 #: data/gui/default/window/editor_edit_side.cfg:228
 msgid "Share view"
-msgstr ""
+msgstr "Kopējs skats"
 
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
-#, fuzzy
-#| msgid "Status Table"
 msgid "Hide in status table"
-msgstr "Statusa tabula"
+msgstr "Slēpt statusa panelī"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:269
 msgid "Gold:"
-msgstr ""
+msgstr "Zelts:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "Zelts uz ciemu"
+msgstr "Zelts no ciemata:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:325
 msgid "Income:"
-msgstr ""
+msgstr "Ienākums:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
-msgstr "Zelts uz ciemu"
+msgstr "Atbalsts no ciemata:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:383
 msgid "Controller:"
-msgstr ""
+msgstr "Pārvaldītājs:"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:400
 msgid "controller^Human"
-msgstr ""
+msgstr "Spēlētājs"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:402
 msgid "controller^AI only"
-msgstr ""
+msgstr "Tikai CPU"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^None"
-msgstr ""
+msgstr "Neviens"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:421
 msgid "controller^Player number:"
-msgstr ""
+msgstr "Spēlētājs Nr:"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -2367,10 +2422,8 @@ msgstr "Augstums:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "Izveidot spēli"
+msgstr "Izveidot"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2401,10 +2454,8 @@ msgstr "Vecais augstums:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
-#, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
-msgstr "Izvērst / samazināt virzienu"
+msgstr "Izvērst/samazināt virzienu:"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:253
@@ -2413,10 +2464,8 @@ msgstr "Kopēt malas apvidu"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
-msgstr "Mainīt kartes izmēru"
+msgstr "Mainīt izmēru"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -2472,7 +2521,7 @@ msgstr "Nākamā darbība"
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:150
 msgid "Step out"
-msgstr "Izkāpt"
+msgstr "Izlaist soli"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:161
@@ -2482,7 +2531,7 @@ msgstr "Turpināt"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:178
 msgid "Execution trace"
-msgstr "Izpildīšanas izsekošana"
+msgstr "Izsekot darbību"
 
 #. [button]: id=cancel
 #. [button]: id=quit
@@ -2507,10 +2556,8 @@ msgstr "Vai tiešām vēlaties izdzēst šo spēli?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
-#, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "Nerādīt priekšnama pieslēgšanās"
+msgstr "Vairāk šo nerādīt"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -2551,19 +2598,17 @@ msgstr "Ielādēt spēli"
 #: data/gui/default/window/game_load.cfg:364
 #: data/gui/default/window/game_load.cfg:365
 msgid "Delete"
-msgstr "Izdzēst"
+msgstr "Dzēst"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Grūtība"
+msgstr "Mainīt grūtību"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Mainīt kampaņas grūtību pirms ielādes"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
@@ -2573,84 +2618,76 @@ msgstr "Parādīt atkārtojumu"
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Nospēlēt atkārtojumu no saglabātās spēles (ja iespējams)"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:422
 msgid "Cancel orders"
-msgstr "Atcelt komandas"
+msgstr "Atcelt pavēles"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:423
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "Atcelt visus ieplānotos gājienus saglabātā spēlē"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:47
 #: data/gui/default/window/screenshot_notification.cfg:34
 msgid "filesystem^Copy"
-msgstr ""
+msgstr "Kopēt"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
-msgstr "Izvēlies ielādējamo spēli"
+msgstr "Kopēt šo ceļu uz starpliktuvi"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:63
 msgid "filesystem^Browse"
-msgstr ""
+msgstr "Norādīt"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:64
 msgid "Browse this location using a file manager"
-msgstr ""
+msgstr "Norādi šo lokāciju faila menedžerī"
 
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
-#, fuzzy
-#| msgid "Cave Path"
 msgid "Game Paths"
-msgstr "Alas taka"
+msgstr "Spēles katalogi"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:127
 msgid "Game data:"
-msgstr ""
+msgstr "Spēles dati:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:129
 msgid "Configuration:"
-msgstr ""
+msgstr "Konfigurācija:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:131
 msgid "User data:"
-msgstr ""
+msgstr "Lietotāja dati:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved games:"
-msgstr "Saglabāt spēli"
+msgstr "Saglabātās spēles:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons:"
 msgstr "Papildinājumi"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:137
 msgid "Cache:"
-msgstr ""
+msgstr "Krātuve:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2698,12 +2735,10 @@ msgstr "Tips"
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:164
 msgid "Items"
-msgstr ""
+msgstr "Priekšmeti"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:226
-#, fuzzy
-#| msgid "Content"
 msgid "Contents"
 msgstr "Saturs"
 
@@ -2754,7 +2789,7 @@ msgstr "Nezināma ēra"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:182
 msgid "Gold per village"
-msgstr "Zelts uz ciemu"
+msgstr "Zelts no ciemata"
 
 #. [label]
 #. [row]
@@ -2898,12 +2933,12 @@ msgstr "Sūtīt privātu ziņu"
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
 msgid "Add to Friends"
-msgstr "Pievienot draugiem"
+msgstr "Pievienot pie draugiem"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
 msgid "Add to Ignores"
-msgstr "Pievienot ignorētajiem"
+msgstr "Pievienot pie ignorētiem"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
@@ -2923,7 +2958,7 @@ msgstr "Pārbaudīt statusu"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:155
 msgid "Kick / ban reason:"
-msgstr "Izsviešanas / izraidīšanas iemesls:"
+msgstr "Izsviešanas / aizlieguma iemesls:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
@@ -2934,12 +2969,12 @@ msgstr "Izsviest"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:175
 msgid "Ban time:"
-msgstr "Izraidīšanas laiks:"
+msgstr "Aizlieguma laiks:"
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:188
 msgid "Kick/ban"
-msgstr "Izsviest/izraidīt"
+msgstr "Izsviest/aizliegt"
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
@@ -3009,18 +3044,18 @@ msgstr "Statuss"
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
-msgstr "Izraidīt"
+msgstr "Aizliegt"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:60
 #: data/gui/default/window/mp_server_list.cfg:69
 msgid "You will now connect to the multiplayer server."
-msgstr "Tagad jūs pieslēgsieties daudzlietotāju serverim."
+msgstr "Tagad jūs pieslēgsieties serverim."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:133
 msgid "View List"
-msgstr "Skatīt sarakstu"
+msgstr "Aplūkot sarakstu"
 
 #. [label]
 #. [text_box]: id=game_name
@@ -3074,7 +3109,7 @@ msgstr "Neierobežots"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:380
 msgid "Village gold"
-msgstr "Ciema zelts"
+msgstr "Ciemata zelts"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:501
@@ -3083,23 +3118,19 @@ msgstr "Nejaušs sākuma laiks"
 
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
-msgstr "Izvēlies izšķirtspēju"
+msgstr "Izvēlies modifikāciju"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
-msgstr ""
+msgstr "Aktivizē modifikācijas kurām jābūt spēlē."
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
-msgstr ""
-"Uzstādīt paroli, kuru cilvēkiem, kas gribēs pievienoties tavai spēlei, būs "
-"jāievada."
+msgstr "Uzstādi paroli, kas aizsargās tavu spēli."
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
@@ -3110,33 +3141,29 @@ msgstr "Parole:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "Apstiprināt"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
-msgstr ""
+msgstr "Vēlies piemērot izmaiņas?"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User Interaction Required"
-msgstr "Lietotāja saskarnes skaņas"
+msgstr "Nepieciešama lietotāja iejaukšanās"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
-msgstr "Lietotāja saskarnes skaņas"
+msgstr "Nepieciešama lietotāja iejaukšanās"
 
 #. [column]
 #. [label]
 #: data/gui/default/window/mp_host_game_prompt.cfg:40
 #: data/gui/default/window/mp_method_selection.cfg:166
 msgid "Host Networked Game"
-msgstr "Izmitināt tīkla spēli"
+msgstr "Uzturēt tīkla spēli"
 
 #. [label]
 #: data/gui/default/window/mp_host_game_prompt.cfg:58
@@ -3145,6 +3172,8 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"Lai uzturētu tīkla spēli nepieciešams palaist lokālo tīklu. Serveris strādās "
+"aizmugures režīmā, kamēr visi spēlētāji atslēgsies. Vai turpināt?"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -3193,21 +3222,20 @@ msgid ""
 msgstr ""
 "Jūs varat autorizēties oficiālajā daudzspēlētāju serverī ar jūsu foruma "
 "lietotājvārdu un paroli.\n"
-"Ņemiet vērā, ka reģistrācija nav nepieciešama, lai pieslēgtos serverim, "
-"parole nepieciešama tikai tad, ja vēlaties izmantot reģistrētu "
-"lietotājvārdu.\n"
+"Lai pieslēgtos serverim: Reģistrācija nav nepieciešama. Parole nepieciešama "
+"tikai tad, ja vēlaties izmantot reģistrētu lietotājvārdu.\n"
 "\n"
-"\"Battle for Wesnoth\" forums ir atrodams šeit: http://forums.wesnoth.org/"
+"The Battle for Wesnoth forums ir atrodams šeit: http://forums.wesnoth.org/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
 msgid "Join Official Server"
-msgstr "Pieslēgties oficiālajam serverim"
+msgstr "Pievienoties oficiālajam serverim"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:147
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Autorizēties oficiālajā Vesnotas daudzspēlētāju serverī"
+msgstr "Ienākt oficiālajā Wesnoth daudzspēlētāju serverī"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:157
@@ -3217,18 +3245,17 @@ msgstr "Pieslēgties citam serverim"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:167
 msgid "Host a game using dedicated server ‘wesnothd’"
-msgstr "Izmitināt tīkla spēli izmantojot īpašserveri 'wesnothd'"
+msgstr "Uzturēt tīkla spēli ar speciālu serveri 'wesnothd'"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:176
 msgid "Local Game"
-msgstr "Vietēja spēle"
+msgstr "Lokāla spēle"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:177
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
-"Spēlēt daudzspēlētāju spēli ar datoru vai cilvēkiem, izmantojot vienu datoru"
+msgstr "Spēlēt daudzspēlētāju režīmā pie viena datora"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:124
@@ -3243,48 +3270,42 @@ msgstr "Izvēlēties"
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
 msgid "filesystem^Open"
-msgstr ""
+msgstr "Atvērt"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Atvērt failu ar citu aplikāciju"
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot done"
 msgid "Screenshot Saved"
-msgstr "Ekrānattēls iegūts"
+msgstr "Ekrānšāviņš iegūts"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Ekrānattēls"
+msgstr "Ekrānšāviņi..."
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
-msgstr ""
+msgstr "Aplūkot ekrānšāviņu mapi izmantojot faila menedžeri"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:51
 msgid "Choose Theme"
-msgstr "Izvēlies motīvu"
+msgstr "Izvēlies Tēmu"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
-msgstr "Jaunais motīvs sāks darboties ar nākamo jauno vai ielādēto spēli."
+msgstr "Jaunā tēma aktivizēsies ielādējot vai izveidojot jaunu spēli."
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
 msgid "Show Battle for Wesnoth help"
-msgstr "Parādīt Kaujas par Vesnotu palīdzību"
+msgstr "Parādīt palīdzību"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:196
@@ -3365,7 +3386,7 @@ msgstr "Mainīt valodu"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:263
 msgid "Configure the game’s settings"
-msgstr "Iestatīt spēles iestatījumus"
+msgstr "Mainīt spēles iestatījumus"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:264
@@ -3406,7 +3427,7 @@ msgstr "Dzimums:"
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:77
 msgid "Male"
-msgstr "Vīriešu"
+msgstr "Vīrietis"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:87
@@ -3429,14 +3450,12 @@ msgstr "Kļūda"
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
 msgid "Details:"
-msgstr ""
+msgstr "Detaļas:"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this report to clipboard"
-msgstr "Izvēlies ielādējamo spēli"
+msgstr "Kopēt šo ziņojumu uz starpliktuvi"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -3472,7 +3491,7 @@ msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:177
 msgid "Full screen"
-msgstr "Pilnekrāna"
+msgstr "Pilns ekrāns"
 
 #: src/game_preferences_display.cpp:178
 msgid "Accelerated speed"
@@ -3492,31 +3511,31 @@ msgstr "Rādīt režģi"
 
 #: src/game_preferences_display.cpp:182
 msgid "Save replays at the end of scenarios"
-msgstr ""
+msgstr "Scenāriju beigās saglabāt atkārtojumus"
 
 #: src/game_preferences_display.cpp:183
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "Dzēst auto-saglabājumus scenārija beigās"
 
 #: src/game_preferences_display.cpp:184
 msgid "Do not show lobby joins"
-msgstr "Nerādīt priekšnama pieslēgšanās"
+msgstr "Nerādīt pieslēgšanos priekšnamā"
 
 #: src/game_preferences_display.cpp:185
 msgid "Show lobby joins of friends only"
-msgstr "Rādīt tikai draugu priekšnama pieslēgšanās"
+msgstr "Rādīt tikai draugu pieslēgšanos priekšnamā"
 
 #: src/game_preferences_display.cpp:186
 msgid "Show all lobby joins"
-msgstr "Rādīt visas priekšnama pieslēgšanās"
+msgstr "Rādīt visus pieslēgumus priekšnamā"
 
 #: src/game_preferences_display.cpp:187
 msgid "Sort lobby list"
-msgstr "Kārtot priekšnamu sarakstu"
+msgstr "Kārtot priekšnama sarakstu"
 
 #: src/game_preferences_display.cpp:188
 msgid "Iconize lobby list"
-msgstr "IIkonizēt priekšnamu sarakstu"
+msgstr "Ikonas priekšnama sarakstā"
 
 #: src/game_preferences_display.cpp:189
 msgid "Save password to preferences (plain text)"
@@ -3544,7 +3563,7 @@ msgstr "Pievienot kā ignorēto"
 
 #: src/game_preferences_display.cpp:196
 msgid "Show floating labels"
-msgstr "Rādīt peldošas iezīmes"
+msgstr "Rādīt peldošas piezīmes"
 
 #: src/game_preferences_display.cpp:197
 msgid "Turn dialog"
@@ -3552,7 +3571,7 @@ msgstr "Gājiena sākuma dialogs"
 
 #: src/game_preferences_display.cpp:198
 msgid "Enable planning mode on start"
-msgstr "Iespējot plānošanas režīmu sākot"
+msgstr "Ieslēgt plānošanas režīmu spēles sākumā"
 
 #: src/game_preferences_display.cpp:199
 msgid "Hide allies’ plans by default"
@@ -3576,7 +3595,7 @@ msgstr "Mainīt izšķirtspēju"
 
 #: src/game_preferences_display.cpp:204
 msgid "Theme"
-msgstr "Motīvs"
+msgstr "Tēma"
 
 #: src/game_preferences_display.cpp:205
 msgid "Hotkeys"
@@ -3584,7 +3603,7 @@ msgstr "Karstie taustiņi"
 
 #: src/game_preferences_display.cpp:206
 msgid "Paths"
-msgstr ""
+msgstr "Ceļi"
 
 #: src/game_preferences_display.cpp:208
 msgid "Sound effects"
@@ -3596,11 +3615,11 @@ msgstr "Mūzika"
 
 #: src/game_preferences_display.cpp:210
 msgid "Chat timestamping"
-msgstr "Čata laikspiedols"
+msgstr "Laika atzīme čatā"
 
 #: src/game_preferences_display.cpp:211
 msgid "sound^Advanced Options"
-msgstr "Paplašināti iestatījumi"
+msgstr "Paplašināti"
 
 #: src/game_preferences_display.cpp:212
 msgid "sound^Standard Options"
@@ -3608,7 +3627,7 @@ msgstr "Pamatiestatījumi"
 
 #: src/game_preferences_display.cpp:213
 msgid "User interface sounds"
-msgstr "Lietotāja saskarnes skaņas"
+msgstr "Interfeisa skaņas"
 
 #: src/game_preferences_display.cpp:216
 msgid "Custom"
@@ -3620,11 +3639,11 @@ msgstr "Pielietot"
 
 #: src/game_preferences_display.cpp:218
 msgid "Show unit idle animations"
-msgstr "Radīt dīku vienību kustības"
+msgstr "Rādīt vienību dīkstāves animācijas"
 
 #: src/game_preferences_display.cpp:219
 msgid "Show unit standing animations"
-msgstr "Radīt nepārtrauktas dīku vienību kustības"
+msgstr "Rādīt stāvošo vienību animācijas"
 
 #: src/game_preferences_display.cpp:220
 msgid "Animate map"
@@ -3641,7 +3660,7 @@ msgstr "Ritināšanas ātrums:"
 
 #: src/game_preferences_display.cpp:230
 msgid "Sample rate (Hz):"
-msgstr "Diskretizācijas solis (Hz):"
+msgstr "Skaņas kvalitāte (Hz):"
 
 #: src/game_preferences_display.cpp:231
 msgid "Frequency:"
@@ -3653,7 +3672,7 @@ msgstr "Skaņas efekti ieslēgti/izslēgti"
 
 #: src/game_preferences_display.cpp:259
 msgid "Change the sound effects volume"
-msgstr "Mainīt skaņas efektu skaļumu"
+msgstr "Mainīt efektu skaļumu"
 
 #: src/game_preferences_display.cpp:262
 msgid "Music on/off"
@@ -3665,23 +3684,23 @@ msgstr "Mainīt mūzikas skaļumu"
 
 #: src/game_preferences_display.cpp:272
 msgid "Change the bell volume"
-msgstr "Mainīt gājiena sākuma signāla skaļumu"
+msgstr "Mainīt gājiena signāla skaļumu"
 
 #: src/game_preferences_display.cpp:275
 msgid "Turn menu and button sounds on/off"
-msgstr "Izvēļņu un pogu skaņas ieslēgtas/izslēgtas"
+msgstr "Izvēlņu un Pogu skaņas ieslēgtas/izslēgtas"
 
 #: src/game_preferences_display.cpp:279
 msgid "Change the sound volume for button clicks, etc."
-msgstr "Mainīt pogu klikšķu, u.c. elementu skaļumu"
+msgstr "Mainīt pogu u.c. elementu skaļumu"
 
 #: src/game_preferences_display.cpp:281
 msgid "Change the sample rate"
-msgstr "Mainīt diskretizācijas soli"
+msgstr "Mainīt skaņas kvalitāti"
 
 #: src/game_preferences_display.cpp:290
 msgid "User defined sample rate"
-msgstr "Lietotāja noteikts diskretizācijas solis"
+msgstr "Lietotāja noteikta skaņas kvalitāte"
 
 #: src/game_preferences_display.cpp:300 src/game_preferences_display.cpp:304
 msgid "Change the buffer size"
@@ -3697,11 +3716,11 @@ msgstr "Mainīt kartes ritināšanas ātrumu"
 
 #: src/game_preferences_display.cpp:314 src/game_preferences_display.cpp:316
 msgid "Set the amount of chat lines shown"
-msgstr "Iestatīt rādīto čata rindu skaitu"
+msgstr "Iestatīt rindu skaitu čatam"
 
 #: src/game_preferences_display.cpp:319
 msgid "Add a timestamp to chat messages"
-msgstr "Pievienot laikspiedolu čata ziņām"
+msgstr "Pievienot laiku čata ziņām"
 
 #: src/game_preferences_display.cpp:322
 msgid "Choose whether the game should run full screen or in a window"
@@ -3709,19 +3728,19 @@ msgstr "Izvēlēties vai spēle izmantos visu ekrānu vai tikai logu"
 
 #: src/game_preferences_display.cpp:325
 msgid "Make units move and fight faster"
-msgstr "Likt vienībām kustēties un cīnīties ātrāk"
+msgstr "Likt vienībām staigāt un cīnīties ātrāk"
 
 #: src/game_preferences_display.cpp:344
 msgid "Units move and fight speed"
-msgstr "Vienību kustības un cīņas ātrums"
+msgstr "Vienību staigāšanas un cīņas ātrums"
 
 #: src/game_preferences_display.cpp:347
 msgid "Play short random animations for idle units"
-msgstr "Spēlēt īsas, nejaušas kustības dīkajām vienībām"
+msgstr "Rādīt īsas, nejaušas kustības - dīkstāves vienībām"
 
 #: src/game_preferences_display.cpp:350
 msgid "Continuously animate standing units in the battlefield"
-msgstr "Nepārtraukti animēt stāvošās vienības uz kaujas lauka"
+msgstr "Nepārtraukti animēt stāvošās vienības"
 
 #: src/game_preferences_display.cpp:353
 msgid "Display animated terrain graphics"
@@ -3729,7 +3748,7 @@ msgstr "Rādīt kustīgus apvidus"
 
 #: src/game_preferences_display.cpp:359
 msgid "Set the frequency of unit idle animations"
-msgstr "Izvēlēties cik bieži radīt stāvošu vienību kustības"
+msgstr "Izvēlēties cik bieži rādīt vienību dīkstāves kustības"
 
 #: src/game_preferences_display.cpp:364
 msgid "Set maximum number of automatic saves to be retained"
@@ -3741,19 +3760,18 @@ msgstr "Nerādīt datora vienību kustības"
 
 #: src/game_preferences_display.cpp:371
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr "Sabiedroto vienības atklāšana aptur tavas vienības pārvietošanos"
+msgstr "Atklājot sabiedroto vienības tavas vienības apstāsies"
 
 #: src/game_preferences_display.cpp:374
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
-msgstr ""
+msgstr "Saglabā atkārtojumus uzvarām visos režīmos, un zaudējumus DS režīmā"
 
 #: src/game_preferences_display.cpp:377
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Izdzēst automātiski saglabātās spēles minētajos gadījumos"
+msgstr ""
+"Uzvaras gadijumā dzēst auto-saglabājumus visos režīmos, un zaudējot DS režīmā"
 
 #: src/game_preferences_display.cpp:379
 msgid "Overlay a grid onto the map"
@@ -3764,32 +3782,26 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr "Sakārtot spēlētāju sarakstu priekšnamā pēc spēlētāju grupām"
 
 #: src/game_preferences_display.cpp:385
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
-msgstr "Rādīt ikonas pie spēlētāju vārdiem priekšnamā."
+msgstr "Rādīt spēlētāju priekšnamā ikonas"
 
 #: src/game_preferences_display.cpp:388
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr "Izņemiet ķeksi, lai dzēstu saglabāto paroli (izejot)."
 
 #: src/game_preferences_display.cpp:392
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Nerādt ziņojumus par spēlētāju pieslēgšanos daudzspēlētāju priekšnamam"
+msgstr "Nerādīt ziņojumus par spēlētāju pieslēgšanos priekšnamam"
 
 #: src/game_preferences_display.cpp:394
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Rādīt ziņojumus par draugu pieslēgšanos daudzspēlētāju priekšnamam"
+msgstr "Rādīt ziņojumus par draugu pieslēgšanos priekšnamam"
 
 #: src/game_preferences_display.cpp:396
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Rādīt ziņojumus par visiem spēlētājiem, kas pieslēdzas priekšnamam"
 
 #: src/game_preferences_display.cpp:398
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr "Atrast un iestatīt ceļu pie DS servera, uz kura mitinās LAN spēles."
 
@@ -3806,12 +3818,16 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"Pievienot šo lietotāju savam draugu sarakstam, un pievienot piezīmi: "
+"'player_name: piezīme par draugu'"
 
 #: src/game_preferences_display.cpp:402
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"Pievienot šo lietotāju ignorēto sarakstam, un pievienot piezīmi: "
+"'player_name: ignorēšanas iemesls'"
 
 #: src/game_preferences_display.cpp:403
 msgid "Remove this username from your list"
@@ -3823,8 +3839,7 @@ msgstr "Ievietot lietotājvārdu"
 
 #: src/game_preferences_display.cpp:409
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-"Rādīt tekstu virs vienības, kad tai trāpa lai parādītu radītos bojājumus"
+msgstr "Vienībai rādīt bojājumus, kad tai trāpa"
 
 #: src/game_preferences_display.cpp:411
 msgid "Change the resolution the game runs at"
@@ -3832,7 +3847,7 @@ msgstr "Mainīt spēles izšķirštspēju"
 
 #: src/game_preferences_display.cpp:412
 msgid "Change the theme the game runs with"
-msgstr "Mainīt spēles motīvu"
+msgstr "Mainīt spēles tēmu"
 
 #: src/game_preferences_display.cpp:415
 msgid "Display a dialog at the beginning of your turn"
@@ -3844,7 +3859,7 @@ msgstr "Aktivizē plānošanas režīmu sākoties spēlei"
 
 #: src/game_preferences_display.cpp:421
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
-msgstr "Slēpj sabiedroto plānošanas režīma plānus daudzspēlētāju spēlēs"
+msgstr "Slēpj sabiedroto Plānošanas Režīma plānus - daudzspēlētāju spēlēs"
 
 #: src/game_preferences_display.cpp:424
 msgid "Play a bell sound at the beginning of your turn"
@@ -3866,7 +3881,7 @@ msgstr "Apskatīt un mainīt karstos taustiņus"
 
 #: src/game_preferences_display.cpp:434
 msgid "View game file paths"
-msgstr ""
+msgstr "Apskatīt spēles faila ceļus"
 
 #: src/game_preferences_display.cpp:764
 msgid "Speed: "
@@ -3902,7 +3917,7 @@ msgstr "draugs"
 
 #: src/game_preferences_display.cpp:1266
 msgid "ignored"
-msgstr "ignorētais"
+msgstr "ignorēts"
 
 #: src/game_preferences_display.cpp:1280
 msgid "(empty list)"
@@ -3915,7 +3930,7 @@ msgstr "Vispārējie"
 
 #: src/game_preferences_display.cpp:1407
 msgid "Prefs section^Display"
-msgstr "Ekrāna"
+msgstr "Ekrāns"
 
 #: src/game_preferences_display.cpp:1408
 msgid "Prefs section^Sound"
@@ -3931,15 +3946,15 @@ msgstr "Paplašinātie"
 
 #: src/game_preferences_display.cpp:1463
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Nav zināmu motīvu. Mēģiniet nomainīt to pēc spēles palaišanas."
+msgstr "Nepazīstama tēma. Mēģiniet nomainīt to spēlē."
 
 #: src/game_preferences_display.cpp:1512
 msgid "Find $filename server binary to host networked games"
-msgstr "Atrast $filename servera bināro failu, ar ko mitināt tīkla spēles"
+msgstr "Meklēt $filename servera bināro failu, ar ko uzturēt tīkla spēles"
 
 #: src/generators/mapgen_dialog.cpp:113
 msgid "Map Generator"
-msgstr "Karšu ģenerators"
+msgstr "Kartes ģenerators"
 
 #: src/generators/mapgen_dialog.cpp:120
 msgid "Players:"
@@ -3955,7 +3970,7 @@ msgstr "Maksimālais paugura izmērs:"
 
 #: src/generators/mapgen_dialog.cpp:125
 msgid "Villages:"
-msgstr "Ciemi:"
+msgstr "Ciemati:"
 
 #: src/generators/mapgen_dialog.cpp:126
 msgid "Castle size:"
@@ -3963,17 +3978,15 @@ msgstr "Pils izmērs:"
 
 #: src/generators/mapgen_dialog.cpp:127
 msgid "Landform:"
-msgstr "Zemes forma:"
+msgstr "Laukuma forma:"
 
 #: src/generators/mapgen_dialog.cpp:249
 msgid "Roads between castles"
 msgstr "Ceļi starp pilīm"
 
 #: src/generators/mapgen_dialog.cpp:256
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show labels"
-msgstr "Rādīt peldošas iezīmes"
+msgstr "Rādīt peldošas piezīmes"
 
 #: src/generators/mapgen_dialog.cpp:314
 msgid "/1000 tiles"
@@ -4032,7 +4045,7 @@ msgstr "Izšķirtspēja nav iestatīta."
 #: src/gui/auxiliary/window_builder/panel.cpp:36
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:40
 msgid "No grid defined."
-msgstr "Tīkls nav definēts."
+msgstr "Režģis nav definēts."
 
 #: src/gui/auxiliary/window_builder.cpp:103
 msgid "Linked '$id' group has multiple definitions."
@@ -4054,7 +4067,7 @@ msgstr "Kolonnu skaits atšķiras."
 
 #: src/gui/auxiliary/window_builder/control.cpp:46
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr "Atrada logrīku ar padomu, bet bez rīka padoma"
+msgstr "Atrada rīku ar padomu, bet bez rīka padoma"
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
 #: src/gui/auxiliary/window_builder/listbox.cpp:62
@@ -4080,7 +4093,7 @@ msgstr "Neviena lapa nav definēta."
 
 #: src/gui/auxiliary/window_builder/pane.cpp:37
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Vajadzīgs vismaz 1 paralēls rīks"
 
 #: src/gui/auxiliary/window_builder/slider.cpp:68
 msgid "The number of value_labels and values don't match."
@@ -4088,15 +4101,15 @@ msgstr "'value_labels' skaits un vērtību skaits nesaskan."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
 msgid "No stack defined."
-msgstr "Neviena kaudze nav definēta."
+msgstr "Neviena grupa nav definēta."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:48
 msgid "No nodes defined for a tree view."
-msgstr "Neviens mezgls nav definēts priekš koka skata."
+msgstr "Izvērstā skatā nav definēts mezgls."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:87
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr "[node]id 'root' ir rezervēts iekšējai lietošanai."
+msgstr "[mezgla]id 'root' ir rezervēts iekšējai lietošanai."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:91
 msgid "No node defined."
@@ -4104,73 +4117,71 @@ msgstr "Neviens mezgls nav definēts."
 
 #: src/gui/dialogs/addon/description.cpp:109
 msgid "addon_state^Not installed"
-msgstr ""
+msgstr "Nav uzstādīts"
 
 #: src/gui/dialogs/addon/description.cpp:111
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Publicēts, nav uzstādīts"
 
 #: src/gui/dialogs/addon/description.cpp:116
 msgid "addon_state^Installed"
-msgstr ""
+msgstr "Uzstādīts"
 
 #: src/gui/dialogs/addon/description.cpp:118
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Publicēts"
 
 #: src/gui/dialogs/addon/description.cpp:123
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "Uzstādīts, netiek izsekota lokālā versija"
 
 #: src/gui/dialogs/addon/description.cpp:127
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "Publicēts, netiek izsekota lokālā versija"
 
 #: src/gui/dialogs/addon/description.cpp:133
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "Uzstādīts, ($local_version|), atļauts atjaunot"
 
 #: src/gui/dialogs/addon/description.cpp:135
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "Publicēts, (uzstādīts $local_version|), atļauts atjaunot"
 
 #: src/gui/dialogs/addon/description.cpp:142
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "Uzstādīts ($local_version|), uz servera ir vecāka"
 
 #: src/gui/dialogs/addon/description.cpp:144
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
+msgstr "Publicēts, (uzstādīts $local_version|), uz servera ir vecāka"
 
 #: src/gui/dialogs/addon/description.cpp:150
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "Ustādīts, sabojāts"
 
 #: src/gui/dialogs/addon/description.cpp:152
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Publicēts, sabojāts"
 
 #: src/gui/dialogs/addon/description.cpp:156
 msgid "addon_state^Unknown"
-msgstr ""
+msgstr "Nezināms"
 
 #: src/gui/dialogs/addon/filter_options.cpp:294
 msgid "addons_view^Not Installed"
-msgstr ""
+msgstr "Nav uzstādīts"
 
 #: src/gui/dialogs/addon/filter_options.cpp:296
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "Atjaunojams"
 
 #: src/gui/dialogs/addon/filter_options.cpp:298
 msgid "addons_view^Installed"
-msgstr ""
+msgstr "Uzstādīts"
 
 #: src/gui/dialogs/addon/filter_options.cpp:300
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Atinstalēt papildinājumus"
+msgstr "Visi pielikumi"
 
 #: src/gui/dialogs/addon_list.cpp:227
 #: src/gui/dialogs/network_transmission.cpp:56
@@ -4233,7 +4244,7 @@ msgid ""
 "from this user, type /ignore $name\n"
 msgstr ""
 "Čukstēšanas sesija ar $name sākta. Ja nevēlaties saņemt ziņas no šī "
-"lietotāja, ierakstiet \"/ignore $name\"\n"
+"lietotāja, ierakstiet /ignore $name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:1160
 msgid "Room $name joined"
@@ -4249,7 +4260,7 @@ msgstr "$player izgāja no istabas"
 
 #: src/gui/dialogs/lobby_main.cpp:1644
 msgid "Password Required"
-msgstr "Parole obligāta"
+msgstr "Nepieciešama Parole"
 
 #: src/gui/dialogs/lobby_main.cpp:1645
 msgid "Joining this game requires a password."
@@ -4269,29 +4280,35 @@ msgstr "Ielādē spēli..."
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:64
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester pieprasa aktivizēt šādas modifikācijas:"
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:68
 msgid "$requester requires the following modifications to be disabled:"
-msgstr ""
+msgstr "$requester pieprasa atslēgt šādas modifikācijas:"
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:67
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Paņemtais scenārijs neatbalsta tavus iestatijumus.\n"
+"Izvēlies scenāriju kas atbalsta."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:72
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Paņemtā ēra neatbalsta tavus iestatijumus.\n"
+"Izvēlies ēru kas atbalsta."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:78
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Paņemtā modifikācija neatbalsta tavus iestatijumus.\n"
+"Izvēlies modifikāciju kas atbalsta."
 
 #: src/gui/dialogs/title_screen.cpp:293
 msgid "Version "
@@ -4308,19 +4325,19 @@ msgstr "Obligātais sīkrīks '$id' nav definēts."
 #: src/gui/widgets/settings.cpp:448
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr "Sīkrīka definīcija '$definition' nesatur '$id' definīciju."
+msgstr "Sīkrīka definīcija '$definition' nesatur '$id' aprakstu."
 
 #: src/gui/widgets/settings.cpp:519
 msgid "No default gui defined."
-msgstr "Noklusētā grafiskā lietotāja saskarne nav definēta."
+msgstr "Noklusētais GUI nav definēta."
 
 #: src/gui/widgets/settings.cpp:548
 msgid "No state or draw section defined."
-msgstr "Nav definēta stāvokļa vai zīmējuma sadaļa."
+msgstr "Nav definēts stāvoklis vai zīmējšanas sadaļa."
 
 #: src/gui/widgets/tree_view_node.cpp:110
 msgid "Unknown builder id for tree view node."
-msgstr "Nezināms būvētāja identifikators koka skata mezglam."
+msgstr "Nezināms būvētāja ID izvērstā skata mezglam."
 
 #: src/gui/widgets/window.cpp:1047
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -4329,35 +4346,27 @@ msgstr "Klikšķa atbrīvošanai nepieciešama 'click_dismiss' vai 'ok' poga."
 #: src/gui/widgets/window.cpp:1072 src/gui/widgets/window.cpp:1109
 #: src/tests/gui/test_gui2.cpp:452
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr "Neizdevās parādīt dialogu, kas neietilpst ekrānā."
+msgstr "Nevar parādīt dialogu, tas neietilpst ekrānā."
 
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
-msgstr "Atcelt"
+msgstr "atcelt"
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "Izvēlēties neko"
+msgstr "Izvēlēties šūnu"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
-msgstr "Izvēlēties neko"
+msgstr "Noņemt izvēli no šūnas"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
-msgstr "Uzbrukums"
+msgstr "Iet/Uzbrukt"
 
 #: src/hotkey/hotkey_command.cpp:42
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Izvēle/iet/uzbrukt"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "Animate Map"
@@ -4380,18 +4389,16 @@ msgid "End Unit Turn"
 msgstr "Beigt vienības gājienu"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader"
 msgstr "Līderis"
 
 #: src/hotkey/hotkey_command.cpp:49
 msgid "Undo"
-msgstr "Atdarīt"
+msgstr "Atlikt"
 
 #: src/hotkey/hotkey_command.cpp:50
 msgid "Redo"
-msgstr "Pārdarīt"
+msgstr "Atkārtot"
 
 #: src/hotkey/hotkey_command.cpp:51
 msgid "Zoom In"
@@ -4407,25 +4414,23 @@ msgstr "Pamatizmērs"
 
 #: src/hotkey/hotkey_command.cpp:54
 msgid "Toggle Full Screen"
-msgstr "Visa ekrāna režīms"
+msgstr "Pārslēgt režīmu - pilns ekrāns"
 
 #: src/hotkey/hotkey_command.cpp:55
 msgid "Screenshot"
-msgstr "Ekrānattēls"
+msgstr "Ekrānšāviņš"
 
 #: src/hotkey/hotkey_command.cpp:56
 msgid "Map Screenshot"
-msgstr "Kartes ekrānattēls"
+msgstr "Kartes ekrānšāviņš"
 
 #: src/hotkey/hotkey_command.cpp:57
 msgid "Accelerated"
 msgstr "Paātrināts"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "Vienības apraksts"
+msgstr "Laukuma apraksts"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Unit Description"
@@ -4436,10 +4441,8 @@ msgid "Rename Unit"
 msgstr "Pārsaukt vienību"
 
 #: src/hotkey/hotkey_command.cpp:61
-#, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
-msgstr "Dzēst failu"
+msgstr "Dzēst vienību"
 
 #: src/hotkey/hotkey_command.cpp:64
 msgid "Save Replay"
@@ -4455,7 +4458,7 @@ msgstr "Iesaukt"
 
 #: src/hotkey/hotkey_command.cpp:68
 msgid "Repeat Recruit"
-msgstr "Atkārtot iesaukšanu"
+msgstr "Atkārtot iesaukumu"
 
 #: src/hotkey/hotkey_command.cpp:69
 msgid "Recall"
@@ -4467,7 +4470,7 @@ msgstr "Beigt gājienu"
 
 #: src/hotkey/hotkey_command.cpp:71
 msgid "Toggle Ellipses"
-msgstr "Izlēgt/ieslēgt daudzpunktes"
+msgstr "Ieslēgt/izslēgt daudzpunktes"
 
 #: src/hotkey/hotkey_command.cpp:72
 msgid "Toggle Grid"
@@ -4478,10 +4481,8 @@ msgid "Mouse Scrolling"
 msgstr "Ritināt ar peli"
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "Statuss"
+msgstr "Statusa panelis"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
@@ -4496,10 +4497,8 @@ msgid "Change Side (Debug!)"
 msgstr "Mainīt pusi (Atkļūdot!)"
 
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "Izveidot vienību (Atkļūdot!)"
+msgstr "Iznīcināt vienību (Atkļūdot!)"
 
 #: src/hotkey/hotkey_command.cpp:81
 msgid "Scenario Objectives"
@@ -4515,37 +4514,35 @@ msgstr "Statistika"
 
 #: src/hotkey/hotkey_command.cpp:84
 msgid "Pause Network Game"
-msgstr "Apturēt tīkla spēli"
+msgstr "Pauze tīkla spēlē"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Continue Network Game"
 msgstr "Turpināt tīkla spēli"
 
 #: src/hotkey/hotkey_command.cpp:87
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "Palaist redaktoru"
+msgstr "Aizvērt redaktoru"
 
 #: src/hotkey/hotkey_command.cpp:88
 msgid "Set Team Label"
-msgstr "Iestatīt komandas iezīmi"
+msgstr "Uzlikt komandas piezīmi"
 
 #: src/hotkey/hotkey_command.cpp:89
 msgid "Set Label"
-msgstr "Iestatīt iezīmi"
+msgstr "Uzlikt piezīmi"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Clear Labels"
-msgstr "Notīrīt iezīmes"
+msgstr "Notīrīt piezīmes"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Show Enemy Moves"
-msgstr "Iespējamie ienaidnieka gājieni"
+msgstr "Rādīt ienaidnieka gājienus"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Best Possible Enemy Moves"
-msgstr "Labākie iespējamie ienaidnieka gājieni"
+msgstr "Iespējamie ienaidnieka gājieni"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Play Replay"
@@ -4553,11 +4550,11 @@ msgstr "Spēlēt atkārtojumu"
 
 #: src/hotkey/hotkey_command.cpp:95
 msgid "Reset Replay"
-msgstr "Atiestatīt atkārtojumu"
+msgstr "Vēlreiz atkārtot"
 
 #: src/hotkey/hotkey_command.cpp:96
 msgid "Stop Replay"
-msgstr "Pārtraukt atkārtojumu"
+msgstr "Apturēt atkārtojumu"
 
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Next Turn"
@@ -4585,52 +4582,38 @@ msgstr "Izlaist animāciju"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:105
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "Ieslēgt/izslēgt plānošanas režīmu"
+msgstr "Plānošanas režīms"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:107
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Izpildīt visas darbības"
+msgstr "Izpildīt darbību"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:109
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "Izpildīt visas darbības"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:111
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Delete Action"
-msgstr "Izpildīt visas darbības"
+msgstr "Dzēst darbību"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:113
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
-msgstr "Pārvietot darbību uz priekšu rindā"
+msgstr "Pārvietot darbību uz augšu"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:115
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
-msgstr "Pārvietot darbību uz aizmuguri rindā"
+msgstr "Pārvietot darbību uz leju"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:117
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
-msgstr "Pieņemt par mirušu"
+msgstr "Pieņemt ka miris"
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Quit to Desktop"
@@ -4641,10 +4624,8 @@ msgid "Close Map"
 msgstr "Aizvērt karti"
 
 #: src/hotkey/hotkey_command.cpp:124
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr "Pārslēgt karti"
+msgstr "Mainīt diennakti"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Switch Map"
@@ -4652,21 +4633,19 @@ msgstr "Pārslēgt karti"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Nozīmēt vietējo laiku"
 
 #: src/hotkey/hotkey_command.cpp:129
 msgid "Custom Time of Day Creator"
-msgstr ""
+msgstr "Veidot diennakti"
 
 #: src/hotkey/hotkey_command.cpp:130
 msgid "Partial Undo"
-msgstr "Daļēja atdarīšana"
+msgstr "Daļēja atlikšana"
 
 #: src/hotkey/hotkey_command.cpp:132
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "Testēt scenāriju"
+msgstr "Jauns scenārijs"
 
 #: src/hotkey/hotkey_command.cpp:133
 msgid "Load Map"
@@ -4674,13 +4653,11 @@ msgstr "Ielādēt karti"
 
 #: src/hotkey/hotkey_command.cpp:135
 msgid "Save Map As"
-msgstr "Saglabāt karti kā"
+msgstr "Saglabāt karti kā.."
 
 #: src/hotkey/hotkey_command.cpp:136
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "Scenārija sākums"
+msgstr "Saglabāt scenāriju kā.."
 
 #: src/hotkey/hotkey_command.cpp:137
 msgid "Save All Maps"
@@ -4695,34 +4672,28 @@ msgid "Map Information"
 msgstr "Kartes informācija"
 
 #: src/hotkey/hotkey_command.cpp:141
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "Izvēlētā spēle"
+msgstr "Notīrīt izvēlētos rīkus"
 
 #: src/hotkey/hotkey_command.cpp:142
-#, fuzzy
-#| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
-msgstr "Apmainīt priekšplāna un fona apvidu"
+msgstr "Samainīt vietām priekšplāna un fona paleti"
 
 #: src/hotkey/hotkey_command.cpp:143
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Mainīt paletes grupu"
 
 #: src/hotkey/hotkey_command.cpp:144
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Rullēt paleti pa kreisi"
 
 #: src/hotkey/hotkey_command.cpp:145
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Rullēt paleti pa labi"
 
 #: src/hotkey/hotkey_command.cpp:147
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Nākamā puse"
+msgstr "Pievienot jaunas puses"
 
 #: src/hotkey/hotkey_command.cpp:149
 msgid "Next Tool"
@@ -4730,13 +4701,16 @@ msgstr "Nākamais rīks"
 
 #: src/hotkey/hotkey_command.cpp:151
 msgid "Paint Tool"
-msgstr "Krāsu rīks"
+msgstr "Zīmēšanas rīks"
 
 #: src/hotkey/hotkey_command.cpp:151 src/hotkey/hotkey_command.cpp:152
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Imanto kreiso/labo peles pogu lai zīmētu priekšējo/fona laukumu. Pieturi "
+"Shift lai zīmētu tikai pamata kārtu. Ctrl+klikšķis lai iegūtu parauglauku "
+"zem kursora."
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid "Fill Tool"
@@ -4747,6 +4721,8 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"Ctrl + peles kreisā poga - pievienot vai atvieno, labā poga parādīs "
+"konteksta izvēlni. Turiet Shift lai paņemtu laukumu ar vienādu reljefu."
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid "Selection Tool"
@@ -4758,126 +4734,121 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Ar kreiso peles poga parāta izvēlēto spēlētāju, ar labo - notīra. Ciparu "
+"taustiņi atgriežas sākuma stāvoklī, Alt + skaitlis nosaka attiecīgo sākuma "
+"stāvokli zem kursora, dzēst notīrītos."
 
 #: src/hotkey/hotkey_command.cpp:154
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
-msgstr "Sākuma pozīcijas iestatīšanas rīks"
+msgstr "Sākuma pozīcijas rīks"
 
 #: src/hotkey/hotkey_command.cpp:155
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Pildīšanas rīks"
+msgstr "Piezīmes rīks"
 
 #: src/hotkey/hotkey_command.cpp:155
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
+msgstr "Ar kreiso peles pogu iestāda vai pārvieto 'piezīmi', ar labo - notīta."
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"Ar peles kreiso pogu, iestāda vai pārceļas jaunu vienību , ar lab0 - parādīs "
+"konteksta izvēlni. Needs definētu pusē."
 
 #: src/hotkey/hotkey_command.cpp:156
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Krāsu rīks"
+msgstr "Vienību rīks"
 
 #: src/hotkey/hotkey_command.cpp:157
-#, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "Nākamais rīks"
+msgstr "Rīks"
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"Ar peles kreiso pogu, iestāda vai pārvieto jaunu objektu, ar labo - notīra. "
+"Vēl nav īstenots."
 
 #: src/hotkey/hotkey_command.cpp:158
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"Ar kreiso peles pogu iestāda vai velk skaņas avotu, ar labo - notīra. Vēl "
+"nav īstenots."
 
 #: src/hotkey/hotkey_command.cpp:158
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "Skaņas avota rīks"
 
 #: src/hotkey/hotkey_command.cpp:159
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"Ar peles kreiso pogu, kādai pusei nosaka ciemata īpašumtiesības, ar labo - "
+"notīra. Nepieciešams definētu pusi."
 
 #: src/hotkey/hotkey_command.cpp:159
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Ciema zelts"
+msgstr "Ciemata rīks"
 
 #: src/hotkey/hotkey_command.cpp:161
-#, fuzzy
-#| msgid "Recruit"
 msgid "Can Recruit"
-msgstr "Iesaukt"
+msgstr "Atļauts Iesaukt"
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Pārslēgt iesaucamo atribūtus."
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Can be Renamed"
-msgstr ""
+msgstr "Atļauts pārsaukt"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Atļaut/Neatļaut vienības pārsaukšanu."
 
 #: src/hotkey/hotkey_command.cpp:163
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Piešķirt iesaucamo sarakstu"
 
 #: src/hotkey/hotkey_command.cpp:163
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
+msgstr "Norīkot vienību uz iesaucamo sarakstu"
 
 #: src/hotkey/hotkey_command.cpp:165
-#, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
-msgstr "Mainīt kontroli"
+msgstr "Mainīt vienības ID"
 
 #: src/hotkey/hotkey_command.cpp:166
 msgid "Loyal"
-msgstr ""
+msgstr "Uzticams"
 
 #: src/hotkey/hotkey_command.cpp:168
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Pārslēgt minikartes vienību kodēšanu"
 
 #: src/hotkey/hotkey_command.cpp:169
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Pārlēgt minikartes laukuma kodēšanu"
 
 #: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "Pārslēgt minikartes vienību zīmēšanu"
 
 #: src/hotkey/hotkey_command.cpp:172
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "Pārslēgt minikartes ciemata zīmēšanu"
 
 #: src/hotkey/hotkey_command.cpp:173
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Atjaunināt apvidus pārejas"
+msgstr "Pārslēgt minikarte laukuma zīmēšanu"
 
 #: src/hotkey/hotkey_command.cpp:175
 msgid "Next Brush"
@@ -4889,31 +4860,29 @@ msgstr "Noklusētā ota"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Single Tile"
-msgstr ""
+msgstr "Viena palete"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Radius One"
-msgstr ""
+msgstr "Rādiuss 1"
 
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Radius Two"
-msgstr ""
+msgstr "Rādiuss 2"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Ota ZR-DA"
 
 #: src/hotkey/hotkey_command.cpp:181
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Ota DR-ZA"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Cut"
 msgstr "Izgriezt"
 
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
-#| msgid "Copy"
 msgid "Copy"
 msgstr "Kopēt"
 
@@ -4921,6 +4890,8 @@ msgstr "Kopēt"
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"Ar kreiso peles pogu ielikt no starpliktuves, labā poga - parādīs konteksta "
+"izvēlni."
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Paste"
@@ -4936,7 +4907,7 @@ msgstr "Iezīmēt visu"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Select Inverse"
-msgstr "Iezīmēt reverso"
+msgstr "Invertēt iezīmēto"
 
 #: src/hotkey/hotkey_command.cpp:189
 msgid "Select None"
@@ -4971,16 +4942,12 @@ msgid "Fill Selection"
 msgstr "Pildīt izvēlēto"
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
-#| msgid "Generate Tiles In Selection"
 msgid "Generate Tiles in Selection"
-msgstr "Ģenerēt šūnas izvēlētajā"
+msgstr "Ģenerēt iezīmētajā šūnā"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
-#| msgid "Randomize Tiles In Selection"
 msgid "Randomize Tiles in Selection"
-msgstr "Sajaukt šūnas izvēlētajā"
+msgstr "Sajaukt šūnas"
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid "Rotate Map"
@@ -5007,30 +4974,24 @@ msgid "Update Terrain Transitions"
 msgstr "Atjaunināt apvidus pārejas"
 
 #: src/hotkey/hotkey_command.cpp:209
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Atjaunināt apvidus pārejas"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Auto-update Terrain Transitions"
-msgstr "Automātiski atjaunināt apvidus pārejas"
+msgstr "Automātiski atjaunot apvidus pārejas"
 
 #: src/hotkey/hotkey_command.cpp:212
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Automātiski atjaunināt apvidus pārejas"
+msgstr "Automātiski atjaunot apvidus pārejas: Nr"
 
 #: src/hotkey/hotkey_command.cpp:213
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Automātiski atjaunināt apvidus pārejas"
+msgstr "Laukuma pārejas auto-atjaunošana : Daļēja"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Refresh Image Cache"
-msgstr "Atsvaidzināt attēlu kešatmiņu"
+msgstr "Atsvaidzināt attēla kešatmiņu"
 
 #: src/hotkey/hotkey_command.cpp:216
 msgid "Draw Hex Coordinates"
@@ -5041,46 +5002,32 @@ msgid "Draw Terrain Codes"
 msgstr "Zīmēt apvidus kodus"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "Rotēt izvēlēto"
+msgstr "Paņemto saglabāt laukumā"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
-msgstr "Izvēlētā spēle"
+msgstr "Pārsaukt paņemto laukumu"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
-msgstr "Izvēlētā spēle"
+msgstr "Aizvākt paņemto laukumu"
 
 #: src/hotkey/hotkey_command.cpp:222
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Area"
-msgstr "Nākamā puse"
+msgstr "Pievienot jaunu laukumu"
 
 #: src/hotkey/hotkey_command.cpp:224
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario"
-msgstr "Redaktora iestatījumi"
+msgstr "Rediģēt scenāriju"
 
 #: src/hotkey/hotkey_command.cpp:225
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Edit Side"
-msgstr "Pārslēgt karti"
+msgstr "Rediģēt pusi"
 
 #: src/hotkey/hotkey_command.cpp:226
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "Izņemt"
+msgstr "Noņemt pusi"
 
 #: src/hotkey/hotkey_command.cpp:228
 msgid "Delay Shroud Updates"
@@ -5092,11 +5039,11 @@ msgstr "Atjaunināt plīvuru tagad"
 
 #: src/hotkey/hotkey_command.cpp:230
 msgid "Continue Move"
-msgstr "Turpināt gājienu"
+msgstr "Turpināt iet"
 
 #: src/hotkey/hotkey_command.cpp:231
 msgid "Find Label or Unit"
-msgstr "Atrast iezīmi vai vienību"
+msgstr "Atrast piezīmi vai vienību"
 
 #: src/hotkey/hotkey_command.cpp:232
 msgid "Speak to Ally"
@@ -5108,7 +5055,7 @@ msgstr "Runāt ar visiem"
 
 #: src/hotkey/hotkey_command.cpp:235
 msgid "View Chat Log"
-msgstr "Skatīt čata reģistru"
+msgstr "Skatīt čata vēsturi"
 
 #: src/hotkey/hotkey_command.cpp:236
 msgid "Enter User Command"
@@ -5172,67 +5119,61 @@ msgstr "Parādīt palīdzības padomu"
 
 #: src/hotkey/hotkey_command.cpp:255
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Nesaprotama komanda"
 
 #: src/hotkey/hotkey_item.cpp:406 src/hotkey/hotkey_item.cpp:409
 msgid "Button"
-msgstr ""
+msgstr "Poga"
 
 #: src/hotkey/hotkey_item.cpp:406
 msgid "Mouse"
-msgstr ""
+msgstr "Pele"
 
 #: src/hotkey/hotkey_item.cpp:409 src/hotkey/hotkey_item.cpp:445
 msgid "Joystick"
-msgstr ""
+msgstr "Joystick"
 
 #: src/hotkey/hotkey_item.cpp:415
 msgid "Centered"
-msgstr ""
+msgstr "Centrēts"
 
 #: src/hotkey/hotkey_item.cpp:418
 msgid "Up"
-msgstr ""
+msgstr "Uz Augšu"
 
 #: src/hotkey/hotkey_item.cpp:421
-#, fuzzy
-#| msgid "Height:"
 msgid "Right"
-msgstr "Augstums:"
+msgstr "Pa labi"
 
 #: src/hotkey/hotkey_item.cpp:424
 msgid "Down"
-msgstr ""
+msgstr "Uz leju"
 
 #: src/hotkey/hotkey_item.cpp:427
 msgid "Left"
-msgstr ""
+msgstr "Pa kreisi"
 
 #: src/hotkey/hotkey_item.cpp:430
 msgid "RightUp"
-msgstr ""
+msgstr "Pa labi, uz augšu"
 
 #: src/hotkey/hotkey_item.cpp:433
 msgid "RightDown"
-msgstr ""
+msgstr "Pa labi, uz leju"
 
 #: src/hotkey/hotkey_item.cpp:436
 msgid "LeftUp"
-msgstr ""
+msgstr "Pa kreisi, uz augšu"
 
 #: src/hotkey/hotkey_item.cpp:439
 msgid "LeftDown"
-msgstr ""
+msgstr "Pa kreisi, uz leju"
 
 #: src/hotkey/hotkey_item.cpp:442
-#, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
-msgstr "Nezināma ēra"
+msgstr "Nezināms"
 
 #: src/hotkey/hotkey_item.cpp:445
-#, fuzzy
-#| msgid "Hut"
 msgid "Hat"
 msgstr "Būda"
 
@@ -5245,56 +5186,44 @@ msgid "Clears the current bindings for \"$hotkey_description|\""
 msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys Reset"
-msgstr "Karstie taustiņi"
+msgstr "Atiestatīt karstos taustiņus"
 
 #: src/hotkey/hotkey_preferences_display.cpp:151
 msgid "All hotkeys have been reset to their default values."
-msgstr ""
+msgstr "Visi karstie taustiņi tika atgriesti noklusētajā stāvoklī."
 
 #: src/hotkey/hotkey_preferences_display.cpp:167
 msgid "Hotkey Settings"
 msgstr "Karsto taustiņu iestatījumi"
 
 #: src/hotkey/hotkey_preferences_display.cpp:172
-#, fuzzy
-#| msgid "Default"
 msgid "Defaults"
 msgstr "Noklusētais"
 
 #: src/hotkey/hotkey_preferences_display.cpp:175
 msgid "Reset all bindings to the default values"
-msgstr ""
+msgstr "Atjaunot visas saistības uz noklusētām vērtībām"
 
 #: src/hotkey/hotkey_preferences_display.cpp:219
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Title Screen"
-msgstr "Skaņas"
+msgstr "Nosaukums"
 
 #: src/hotkey/hotkey_preferences_display.cpp:221
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
-msgstr "Vispārējie"
+msgstr "Spēle"
 
 #: src/hotkey/hotkey_preferences_display.cpp:223
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "Skaņas"
+msgstr "Redaktors"
 
 #: src/hotkey/hotkey_preferences_display.cpp:250
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Add Hotkey"
-msgstr "Karstie taustiņi"
+msgstr "Pievienot karsto taustiņu"
 
 #: src/hotkey/hotkey_preferences_display.cpp:251
 msgid "Clear Hotkey"
-msgstr "Notīrīt piesaisti"
+msgstr "Notīrīt karsto taustiņu"
 
 #: src/hotkey/hotkey_preferences_display.cpp:257
 msgid "Action"
@@ -5306,19 +5235,19 @@ msgstr "Piesaiste"
 
 #: src/hotkey/hotkey_preferences_display.cpp:577
 msgid "Press desired hotkey (Esc cancels)"
-msgstr "Nospiediet vēlamo karsto taustiņu/-iņus (Esc atceļ)"
+msgstr "Nospied vēlamo karsto taustiņu (Esc atceļ)"
 
 #: src/hotkey/hotkey_preferences_display.cpp:704
 msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
 msgstr ""
+"\"$hotkey_sequence|\" tiek lietots ar \"$old_hotkey_action|\".Vai tu gribi "
+"mainīt uz \"$new_hotkey_action|\"?"
 
 #: src/hotkey/hotkey_preferences_display.cpp:709
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Reassign Hotkey"
-msgstr "Karstie taustiņi"
+msgstr "Pārlikt karsto taustiņu"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -5360,7 +5289,7 @@ msgstr "Izvēlies izšķirtspēju"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr "Atrasts apvidus ar virkni garāku par 4 zīmēm, atbilstošais apvidus ir:"
+msgstr "Atrasts apvidus ar garāku tekstu par 4 zīmēm, atbilstošais apvidus ir:"
 
 #: src/text.cpp:745
 msgid "The text contains invalid markup: "
@@ -5371,7 +5300,7 @@ msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Kļūda, iespējams dēļ nedpareiza WML\n"
+"Kļūda, iespējams dēļ nepareiza WML\n"
 "Kļūdas ziņojums ir:"
 
 #: src/wml_exception.cpp:66
@@ -5405,200 +5334,3 @@ msgid ""
 msgstr ""
 "Atslēga '$deprecated_key' ir tikusi pārsaukta par '$key'. Atslēgas "
 "'$deprecated_key' atbalsts tiks noņemts versijā $removal_version."
-
-#~ msgid "Elvish Castle"
-#~ msgstr "Elfu pils"
-
-#~ msgid "Forested Hills"
-#~ msgstr "Pauguraini meži"
-
-#~ msgid "Forested Snow Hills"
-#~ msgstr "Apsniguši pauguraini meži"
-
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "Pauguraini vasaras lapu koku meži"
-
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "Pauguraini rudens lapu koku meži"
-
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "Pauguraini ziemas lapu koku meži"
-
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "Pauguraini apsniguši lapu koku meži"
-
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "Pauguraini vasaras jauktu koku meži"
-
-#~ msgid "Fall Mixed Forested Hills"
-#~ msgstr "Pauguraini rudens jauktu koku meži"
-
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "Pauguraini ziemas jauktu koku meži"
-
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "Pauguraini apsniguši jauktu koku meži"
-
-#, fuzzy
-#~| msgid "Tropical Forest"
-#~ msgid "Tropical Forested Hills"
-#~ msgstr "Tropu mežs"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Palm Forested Hills"
-#~ msgstr "Pauguraini meži"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Dense Palm Forested Hills"
-#~ msgstr "Pauguraini meži"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Savanna Forested Hills"
-#~ msgstr "Pauguraini meži"
-
-#~ msgid "Show color cursors"
-#~ msgstr "Izmantot krāsainus kursorus"
-
-#~ msgid "Use colored mouse cursors (may be slower)"
-#~ msgstr "Izmantot krāsainus peles kursorus (var palēnināt spēli)"
-
-#~ msgid "Warning"
-#~ msgstr "Brīdinājums"
-
-#~ msgid ""
-#~ "Screenshot hotkeys should be combined with the Control, Alt or Meta "
-#~ "modifiers to avoid problems."
-#~ msgstr ""
-#~ "Ekrānattēlu karstos taustiņus vajadzētu kombinēti ar Control, Alt vai "
-#~ "Meta taustiņiem, lai izvairītos no problēmām."
-
-#~ msgid "Left Mouse Click"
-#~ msgstr "Kreisais peles klikšis"
-
-#~ msgid "Right Mouse Click"
-#~ msgstr "Labais peles klikšķis"
-
-#, fuzzy
-#~| msgid "Switch Map"
-#~ msgid "Switch Area"
-#~ msgstr "Pārslēgt karti"
-
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Vai tiešām pamest?"
-
-#~ msgid "Map-Screenshot"
-#~ msgstr "Kartes ekrānattēls"
-
-#~ msgid " (widescreen)"
-#~ msgstr " (platekrāna)"
-
-#, fuzzy
-#~| msgid "Multiplayer Options"
-#~ msgid "Filter Options"
-#~ msgstr "Daudzspēlētāju iespējas"
-
-#~ msgid "Uninstall Add-ons"
-#~ msgstr "Atinstalēt papildinājumus"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Horizontally"
-#~ msgid "Scroll Viewport Horizontally"
-#~ msgstr "Apmest starpliktuvi horizontāli"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Vertically"
-#~ msgid "Scroll Viewport Vertically"
-#~ msgstr "Apmest starpliktuvi vertikāli"
-
-#~ msgid "Time of day lighting preset:"
-#~ msgstr "Diennakts laika apgaismojums:"
-
-#~ msgid "Custom lighting settings"
-#~ msgstr "Pielāgoti izgaismojuma iestatījumi"
-
-#~ msgid "Automatically update map view"
-#~ msgstr "Automātiski atjaunināt kartes skatu"
-
-#~ msgid "Allow multiple maps to be open simultaneously"
-#~ msgstr "Atļaut turēt atvērtas vairākas mapes vienlaicīgi"
-
-#~ msgid "Add this username to your friends list"
-#~ msgstr "Pievienot šo lietotāju draugu sarakstam"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "Pievienot šo lietotāju ignorēto sarakstam"
-
-#, fuzzy
-#~| msgid "Auto-update Terrain Transitions"
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Automātiski atjaunināt apvidus pārejas"
-
-#~ msgid "Types"
-#~ msgstr "Tipi"
-
-#~ msgid "Inspection window"
-#~ msgstr "Inspektora logs"
-
-#~ msgid "Variable"
-#~ msgstr "Mainīgais"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "Izmantot jauno priekšnama interfeisu"
-
-#~ msgid "Use New Lobby Interface"
-#~ msgstr "Izmantot jauno priekšnama interfeisu"
-
-#, fuzzy
-#~| msgid "Default"
-#~ msgid "Reset Defaults"
-#~ msgstr "Noklusētais"
-
-#~ msgid "Change Hotkey"
-#~ msgstr "Mainīt karsto taustiņu"
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "Iezīmēt visu"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "Šis karstais taustiņš jau tiek lietots."
-
-#~ msgid "Update Add-ons"
-#~ msgstr "Atjaunināt papildinājumus"
-
-#~ msgid "Create New Map"
-#~ msgstr "Izveidot jaunu mapi"
-
-#~ msgid "Don’t ask me again!"
-#~ msgstr "Turpmāk vairs nejautāt!"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "OOS error"
-#~ msgstr "OSS kļūda"
-
-#~ msgid "Create game"
-#~ msgstr "Izveidot spēli"
-
-#~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "Saglabāt atkārtojumu VS/DS uzvaras un DS zaudes gadījumos"
-
-#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "Saglabāt atkārtojumu VS/DS uzvaras un DS zaudes gadījumos"
-
-#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-#~ msgstr "Izdzēst automātiski saglabātās spēles minētajos gadījumos"
-
-#~ msgid "Execute Planned Action"
-#~ msgstr "Izpildīt plānoto darbību"
-
-#~ msgid "Delete Planned Action"
-#~ msgstr "Dzēst plānoto darbību"
-
-#~ msgid "Resize map"
-#~ msgstr "Mainīt kartes izmēru"
