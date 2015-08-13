@@ -339,7 +339,7 @@ function wml_actions.music(cfg)
 	wesnoth.set_music(cfg)
 end
 
-local function handle_event_commands(cfg)
+local function handle_event_commands(cfg, context_type)
 	-- The WML might be modifying the currently executed WML by mixing
 	-- [insert_tag] with [set_variables] and [clear_variable], so we
 	-- have to be careful not to get confused by tags vanishing during
@@ -365,6 +365,16 @@ local function handle_event_commands(cfg)
 			end
 			arg = wesnoth.tovconfig(arg)
 		end
+		-- Interruption tags need special treatment, so they're hardcoded here
+		if cmd == "continue_if" then
+			if context_type ~= "loop" then
+				helper.wml_error("[continue] appeared outside of a loop", cmd)
+			elseif wesnoth.eval_conditional(arg) then
+				return "continue"
+			end
+		elseif cmd == "break_if" and wesnoth.eval_conditional(arg) then
+			return "break"
+		end
 		if not string.find(cmd, "^filter") then
 			cmd = wml_actions[cmd] or
 				helper.wml_error(string.format("[%s] not supported", cmd))
@@ -383,9 +393,17 @@ local function handle_event_commands(cfg)
 	end
 	-- Apply music alterations once all the commands have been processed.
 	wesnoth.set_music()
+	return "step"
 end
 
-wml_actions.command = handle_event_commands
+-- We'll also add the special control tags as no-ops
+-- This saves us writing extra logic for when the condition is false
+function wml_actions.break_if(cfg) end
+function wml_actions.continue_if(cfg) end
+
+function wml_actions.command(cfg)
+	handle_event_commands(cfg, "command")
+end
 
 -- since if and while are Lua keywords, we can't create functions with such names
 -- instead, we store the following anonymous functions directly into
@@ -399,7 +417,7 @@ wml_actions["if"] = function(cfg)
 
 	if wesnoth.eval_conditional(cfg) then -- evaluate [if] tag
 		for then_child in helper.child_range(cfg, "then") do
-			handle_event_commands(then_child)
+			handle_event_commands(then_child, "command")
 		end
 		return -- stop after executing [then] tags
 	end
@@ -407,7 +425,7 @@ wml_actions["if"] = function(cfg)
 	for elseif_child in helper.child_range(cfg, "elseif") do
 		if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
 			for then_tag in helper.child_range(elseif_child, "then") do
-				handle_event_commands(then_tag)
+				handle_event_commands(then_tag, "command")
 			end
 			return -- stop on first matched condition
 		end
@@ -415,7 +433,7 @@ wml_actions["if"] = function(cfg)
 
 	-- no matched condition, try the [else] tags
 	for else_child in helper.child_range(cfg, "else") do
-		handle_event_commands(else_child)
+		handle_event_commands(else_child, "command")
 	end
 end
 
@@ -424,7 +442,8 @@ wml_actions["while"] = function( cfg )
 	for i = 1, 65536 do
 		if wesnoth.eval_conditional( cfg ) then
 			for do_child in helper.child_range( cfg, "do" ) do
-				handle_event_commands( do_child )
+				local action = handle_event_commands(do_child, "loop")
+				if action == "break" or action == "return" then return end
 			end
 		else return end
 	end
@@ -473,7 +492,7 @@ function wml_actions.switch(cfg)
 	for v in helper.child_range(cfg, "case") do
 		for w in split(v.value) do
 			if w == tostring(var_value) then 
-				handle_event_commands(v)
+				handle_event_commands(v, "switch")
 				found = true
 				break 
 			end
@@ -483,7 +502,7 @@ function wml_actions.switch(cfg)
 	-- Otherwise execute [else] statements.
 	if not found then
 		for v in helper.child_range(cfg, "else") do
-			handle_event_commands(v)
+			handle_event_commands(v, "switch")
 		end
 	end
 end
