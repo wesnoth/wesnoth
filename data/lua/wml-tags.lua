@@ -469,7 +469,8 @@ wesnoth.wml_actions["for"] = function(cfg)
 	wesnoth.set_variable(i_var, first)
 	while wesnoth.get_variable(i_var) <= last do
 		for do_child in helper.child_range( cfg, "do" ) do
-			handle_event_commands( do_child )
+			local action = handle_event_commands(do_child, "loop")
+			if action == "break" or action == "return" then return end
 		end
 		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
 	end
@@ -480,7 +481,8 @@ wml_actions["repeat"] = function(cfg)
 	local times = cfg.times or 65536
 	local i
 	for i = 1, times do
-		handle_event_commands(cfg)
+		local action = handle_event_commands(cfg, "loop")
+		if action == "break" or action == "return" then return end
 	end
 end
 
