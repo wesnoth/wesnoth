@@ -94,7 +94,7 @@ public:
 
 	virtual ~gamemap();
 
-	void read(const std::string& data, const bool allow_invalid = true, const int border_size = gamemap::default_border);
+	void read(const std::string& data, const bool allow_invalid = true);
 
 	std::string write() const;
 

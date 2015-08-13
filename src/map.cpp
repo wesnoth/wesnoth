@@ -157,9 +157,8 @@ gamemap::~gamemap()
 {
 }
 
-void gamemap::read(const std::string& data, const bool allow_invalid, int border_size) {
+void gamemap::read(const std::string& data, const bool allow_invalid) {
 	// Initial stuff
-	border_size_ = border_size;
 	tiles_.clear();
 	villages_.clear();
 	std::fill(startingPositions_, startingPositions_ +
