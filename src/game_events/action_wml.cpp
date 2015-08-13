@@ -1572,7 +1572,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		return;
 	}
 
-	bool border = cfg["border"].to_bool();
+	const bool border = cfg["border"].to_bool(false);
 	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc, border);
 	resources::screen->needs_rebuild(true);
 }
