@@ -444,7 +444,6 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 
 static path user_data_dir, user_config_dir, cache_dir;
 
-#ifndef _WIN32
 static const std::string& get_version_path_suffix()
 {
 	static std::string suffix;
@@ -461,7 +460,6 @@ static const std::string& get_version_path_suffix()
 
 	return suffix;
 }
-#endif
 
 static void setup_user_data_dir()
 {
@@ -483,12 +481,14 @@ static void setup_user_data_dir()
 void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
-	if(newprefdir.empty()) {
-		user_data_dir = get_cwd() + "/userdata";
-	} else if(newprefdir.size() > 2 && newprefdir[1] == ':') {
+	if(newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
 		user_data_dir = newprefdir;
 	} else {
+		if(newprefdir.empty()) {
+			newprefdir = "Wesnoth" + get_version_path_suffix();
+		}
+
 		//
 		// TODO: we no longer need to use LoadLibrary since versions <
 		//       Windows XP are no longer supported so the required
