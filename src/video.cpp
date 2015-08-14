@@ -263,7 +263,7 @@ surface display_format_alpha(surface surf)
 		return SDL_ConvertSurface(surf,frameBuffer->format,0);
 	else
 #else
-		(void)(surf);
+		UNUSED(surf);
 #endif
 		return NULL;
 }
@@ -508,10 +508,10 @@ int CVideo::bppForMode( int x, int y, int flags)
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal )
 {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-	(void)(x);
-	(void)(y);
-	(void)(flags);
-	(void)(current_screen_optimal);
+	UNUSED(x);
+	UNUSED(y);
+	UNUSED(flags);
+	UNUSED(current_screen_optimal);
 
 	return bits_per_pixel;
 #else
