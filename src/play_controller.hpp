@@ -222,6 +222,7 @@ protected:
 	void process_focus_keydown_event(const SDL_Event& event);
 	void process_keydown_event(const SDL_Event& event);
 	void process_keyup_event(const SDL_Event& event);
+	void process_quit_request();
 
 	void init_managers();
 	///preload events cannot be synced
