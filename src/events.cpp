@@ -415,7 +415,7 @@ void pump()
 #endif
 
 			case SDL_QUIT: {
-				throw CVideo::quit();
+				break; // Nothing to do anymore
 			}
 		}
 
