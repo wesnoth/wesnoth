@@ -796,48 +796,20 @@ nextrefs = []
 scenario_to_filename = {}
 
 # Attributes that should have translation marks
-translatables = re.compile( \
-               "^abbrev$|" \
-               "^cannot_use_message$|" \
-               "^caption$|" \
-               "^current_player$|" \
-               "^currently_doing_description$|" \
-               "^description$|" \
-               "^description_inactive$|" \
-               "^editor_name$|" \
-               "^end_text$|" \
-               "^difficulty_descriptions$|" \
-               "^female_name_inactive$|" \
-               "^female_names$|" \
-               "^help_topic_text$|" \
-               "^label$|" \
-               "^male_names$|" \
-               "^message$|" \
-               "^name$|" \
-               "^name_inactive$|" \
-               "^new_game_title$|" \
-               "^note$|" \
-               "^option_description$|" \
-               "^option_name$|" \
-               "^order$|" \
-               "^plural_name$|" \
-               "^prefix$|" \
-               "^set_description$|" \
-               "^source$|" \
-               "^story$|" \
-               "^summary$|" \
-               "^victory_string$|" \
-               "^defeat_string$|" \
-               "^gold_carryover_string$|" \
-               "^notes_string$|" \
-               "^text$|" \
-               "^title$|" \
-               "^title2$|" \
-               "^tooltip$|" \
-               "^translator_comment$|" \
-               "^user_team_name$|" \
-               "^type_.[a-z]*$|" \
-               "^range_[a-z]*$")
+def is_translatable(key):
+    translatables = (
+        "abbrev", "cannot_use_message", "caption", "current_player",
+        "currently_doing_description", "description", "description_inactive",
+        "editor_name", "end_text", "difficulty_descriptions",
+        "female_name_inactive", "female_names", "help_topic_text", "label",
+        "male_names", "message", "name", "name_inactive", "new_game_title",
+        "note", "option_description", "option_name", "order", "plural_name",
+        "prefix", "set_description", "source", "story", "summary",
+        "victory_string", "defeat_string", "gold_carryover_string",
+        "notes_string", "text", "title", "title2", "tooltip",
+        "translator_comment", "user_team_name"
+        )
+    return key in translatables or key.startswith(("type_", "range_"))
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
@@ -1683,7 +1655,7 @@ def global_sanity_check(filename, lines):
                 if markcheck and not has_tr_mark:
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
-            elif translatables.search(key):
+            elif is_translatable(key):
                 if markcheck and has_tr_mark and '""' in line:
                     print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key))
