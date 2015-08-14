@@ -1579,14 +1579,30 @@ std::vector<config> unit::get_modification_advances() const
 			continue;
 
 		std::vector<std::string> temp = utils::split(adv["require_amla"]);
-		if (temp.empty()) {
+		std::vector<std::string> temp2 = utils::split(adv["exclude_amla"]);
+		if (temp.empty() && temp2.empty()) {
 			res.push_back(adv);
 			continue;
 		}
 
 		std::sort(temp.begin(), temp.end());
-		std::vector<std::string> uniq;
+		std::sort(temp2.begin(), temp2.end());
+		std::vector<std::string> uniq, uniq2;
 		std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
+		std::unique_copy(temp2.begin(), temp2.end(), std::back_inserter(uniq2));
+		
+		bool exclusion_found = false;
+		BOOST_FOREACH(const std::string &s, uniq2)
+		{
+			int mod_num = modification_count("advancement", s);
+			if (mod_num > 0) {
+				exclusion_found = true;
+				break;
+			}
+		}
+		if (exclusion_found) {
+			continue;
+		}
 
 		bool requirements_done = true;
 		BOOST_FOREACH(const std::string &s, uniq)
@@ -1598,8 +1614,9 @@ std::vector<config> unit::get_modification_advances() const
 				break;
 			}
 		}
-		if (requirements_done)
+		if (requirements_done) {
 			res.push_back(adv);
+		}
 	}
 
 	return res;
