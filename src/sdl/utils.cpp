@@ -1726,13 +1726,13 @@ surface blur_surface(const surface &surf, int depth, bool optimize)
 	return optimize ? create_optimized_surface(res) : res;
 }
 
-void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
+void blur_surface(surface& surf, SDL_Rect rect, int depth)
 {
 	if(surf == NULL) {
 		return;
 	}
 
-	const unsigned max_blur = 256;
+	const int max_blur = 256;
 	if(depth > max_blur) {
 		depth = max_blur;
 	}
@@ -1745,12 +1745,12 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 	const unsigned pixel_offset = rect.y * surf->w + rect.x;
 
 	surface_lock lock(surf);
-	for(unsigned y = 0; y < rect.h; ++y) {
+	for(int y = 0; y < rect.h; ++y) {
 		const Uint32* front = &queue[0];
 		Uint32* back = &queue[0];
 		Uint32 red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + pixel_offset + y * surf->w;
-		for(unsigned x = 0; x <= depth && x < rect.w; ++x, ++p) {
+		for(int x = 0; x <= depth && x < rect.w; ++x, ++p) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += (*p)&0xFF;
@@ -1762,7 +1762,7 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 		}
 
 		p = lock.pixels() + pixel_offset + y * surf->w;
-		for(unsigned x = 0; x < rect.w; ++x, ++p) {
+		for(int x = 0; x < rect.w; ++x, ++p) {
 			*p = 0xFF000000
 					| (std::min(red/avg,ff) << 16)
 					| (std::min(green/avg,ff) << 8)
@@ -1793,12 +1793,12 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 		}
 	}
 
-	for(unsigned x = 0; x < rect.w; ++x) {
+	for(int x = 0; x < rect.w; ++x) {
 		const Uint32* front = &queue[0];
 		Uint32* back = &queue[0];
 		Uint32 red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + pixel_offset + x;
-		for(unsigned y = 0; y <= depth && y < rect.h; ++y, p += surf->w) {
+		for(int y = 0; y <= depth && y < rect.h; ++y, p += surf->w) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += *p&0xFF;
@@ -1810,7 +1810,7 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 		}
 
 		p = lock.pixels() + pixel_offset + x;
-		for(unsigned y = 0; y < rect.h; ++y, p += surf->w) {
+		for(int y = 0; y < rect.h; ++y, p += surf->w) {
 			*p = 0xFF000000
 					| (std::min(red/avg,ff) << 16)
 					| (std::min(green/avg,ff) << 8)
