@@ -436,6 +436,9 @@ void thandler::handle_event(const SDL_Event& event)
 		case SDL_KEYUP:
 		case DOUBLE_CLICK_EVENT:
 			break;
+			
+		case SDL_QUIT:
+			throw CVideo::quit();
 
 		default:
 			WRN_GUI_E << "Unhandled event " << static_cast<Uint32>(event.type)
