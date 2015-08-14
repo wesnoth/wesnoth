@@ -2239,15 +2239,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 #endif
 	}
 
-//This is necessary to avoid a crash in some SDL versions on some systems
-//see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=462794
-//FIXME remove this once the latest stable SDL release doesn't crash as 1.2.13 does
-#ifdef _MSC_VER
-    __asm{cld};
-#elif defined(__GNUG__) && (defined(__i386__) || defined(__x86_64__))
-    asm("cld");
-#endif
-
 	// Invalidate locations in the newly visible rects
 
 	if (dy != 0) {
