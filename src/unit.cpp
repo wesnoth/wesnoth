@@ -88,7 +88,8 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 namespace {
-	const std::string ModificationTypes[] = { "advance", "trait", "object" };
+	// "advance" only kept around for backwards compatibility; only "advancement" should be used
+	const std::string ModificationTypes[] = { "advancement", "advance", "trait", "object" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
 										sizeof(*ModificationTypes);
 
@@ -1558,7 +1559,7 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 		icon.first = adv["icon"].str();
 		icon.second = adv["description"].str();
 
-		for (unsigned j = 0, j_count = modification_count("advance", adv["id"]);
+		for (unsigned j = 0, j_count = modification_count("advancement", adv["id"]);
 		     j < j_count; ++j)
 		{
 			temp.push_back(icon);
@@ -1574,7 +1575,7 @@ std::vector<config> unit::get_modification_advances() const
 	{
 		if (adv["strict_amla"].to_bool() && !advances_to_.empty())
 			continue;
-		if (modification_count("advance", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
+		if (modification_count("advancement", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
 			continue;
 
 		std::vector<std::string> temp = utils::split(adv["require_amla"]);
@@ -1591,7 +1592,7 @@ std::vector<config> unit::get_modification_advances() const
 		BOOST_FOREACH(const std::string &s, uniq)
 		{
 			int required_num = std::count(temp.begin(), temp.end(), s);
-			int mod_num = modification_count("advance", s);
+			int mod_num = modification_count("advancement", s);
 			if (required_num > mod_num) {
 				requirements_done = false;
 				break;
@@ -1620,6 +1621,11 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 		if (item["id"] == id) {
 			++res;
 		}
+	}
+	
+	// For backwards compatibility, if asked for "advancement", also count "advance"
+	if (mod_type == "advancement") {
+		res += modification_count("advance", id);
 	}
 
 	return res;
