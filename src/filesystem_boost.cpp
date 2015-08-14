@@ -484,29 +484,43 @@ void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
 	if(newprefdir.empty()) {
-		user_data_dir = path(get_cwd()) / "userdata";
-	} else if (newprefdir.size() > 2 && newprefdir[1] == ':') {
+		user_data_dir = get_cwd() + "/userdata";
+	} else if(newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
 		user_data_dir = newprefdir;
 	} else {
-		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPWSTR, int, BOOL);
-		SHGSFPAddress SHGetSpecialFolderPathW;
+		//
+		// TODO: we no longer need to use LoadLibrary since versions <
+		//       Windows XP are no longer supported so the required
+		//       functionality is guaranteed to be available.
+		//
+
 		HMODULE module = LoadLibraryA("shell32");
-		SHGetSpecialFolderPathW = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathW"));
-		if(SHGetSpecialFolderPathW) {
-			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
-			wchar_t my_documents_path[MAX_PATH];
-			if(SHGetSpecialFolderPathW(NULL, my_documents_path, 5, 1)) {
-				path mygames_path = path(my_documents_path) / "My Games";
-				create_directory_if_missing(mygames_path);
-				user_data_dir = mygames_path / newprefdir;
-			} else {
-				WRN_FS << "SHGetSpecialFolderPath failed\n";
-				user_data_dir = path(get_cwd()) / newprefdir;
-			}
-		} else {
-			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
+
+		// CSIDL_MYDOCUMENTS
+		const int docs_csidl = 5;
+
+		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPWSTR, int, BOOL);
+		SHGSFPAddress SHGetSpecialFolderPathW
+				= reinterpret_cast<SHGSFPAddress>(
+						GetProcAddress(module, "SHGetSpecialFolderPathW"));
+
+		wchar_t docs_path[MAX_PATH];
+
+		if(!SHGetSpecialFolderPathW ||
+		   !SHGetSpecialFolderPathW(NULL, docs_path, docs_csidl, TRUE)) {
+			//
+			// Crummy fallback path full of pain and suffering.
+			//
+			ERR_FS << "Could not determine path to user's Documents folder! "
+					  "User config/data directories may be unavailable for "
+					  "this session. Please report this as a bug.\n";
 			user_data_dir = path(get_cwd()) / newprefdir;
+		} else {
+			path games_path = path(docs_path) / "My Games";
+			create_directory_if_missing(games_path);
+
+			user_data_dir = games_path / newprefdir;
 		}
 	}
 
