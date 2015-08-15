@@ -298,8 +298,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 
 	const int xstart = -std::min<int>(actual_border, xpos + actual_border);
 	const int ystart = -std::min<int>(actual_border, ypos + actual_border + ((xpos & 1) ? 1 : 0));
-	const int xend = std::min<int>(m.w() + actual_border, w() + actual_border - xpos);
-	const int yend = std::min<int>(m.h() + actual_border, h() + actual_border - ypos);
+	const int xend = std::min<int>(m.w() + actual_border, w() + border_size() - xpos);
+	const int yend = std::min<int>(m.h() + actual_border, h() + border_size() - ypos);
 	for(int x1 = xstart; x1 < xend; ++x1) {
 		for(int y1 = ystart; y1 < yend; ++y1) {
 			const int x2 = x1 + xpos;
