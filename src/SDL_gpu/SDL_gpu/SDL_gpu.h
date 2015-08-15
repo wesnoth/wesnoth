@@ -800,9 +800,9 @@ struct GPU_Renderer
 
 // Setup calls
 
-// Visual C does not support static inline
-#ifdef _MSC_VER
-static SDL_version GPU_GetCompiledVersion(void)
+// static inline only supported in Visual C++ from version 2015 but can use static __inline instead for older versions
+#if _MSC_VER < 1900
+static __inline SDL_version GPU_GetCompiledVersion(void)
 #else
 static inline SDL_version GPU_GetCompiledVersion(void)
 #endif
