@@ -306,8 +306,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			const int y2 = y1 + ypos +
 				((xpos & 1) && (x1 & 1) ? 1 : 0);
 
-			const t_translation::t_terrain t = m[x1][y1 + m.border_size_];
-			const t_translation::t_terrain current = (*this)[x2][y2 + border_size_];
+			const t_translation::t_terrain t = m[x1][y1 + actual_border];
+			const t_translation::t_terrain current = (*this)[x2][y2 + border_size()];
 
 			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
 				continue;
