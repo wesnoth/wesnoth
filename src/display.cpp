@@ -2226,6 +2226,13 @@ bool display::scroll(int xmove, int ymove, bool force)
 	srcrect.y -= dy;
 	if (!screen_.update_locked()) {
 
+		/* TODO: This is a workaround for a SDL2 bug when blitting on overlapping surfaces.
+		 * The bug only strikes during scrolling, but will then duplicate textures across
+		 * the entire map. */
+#if SDL_VERSION_ATLEAST(2,0,0)
+		surface screen_copy = make_neutral_surface(screen);
+		SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
+#else
 // Hack to workaround bug #17573
 #if defined(__GLIBC__)
 		if (do_reverse_memcpy_workaround_) {
@@ -2236,6 +2243,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 		}
 #else
 		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+#endif
 #endif
 	}
 
