@@ -20,6 +20,10 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+#include "video.hpp"		// CVideo class holds the twindow -> SDL_Window object which contains the handle of the main window
+#endif
+
 NOTIFYICONDATA* windows_tray_notification::nid = NULL;
 bool windows_tray_notification::message_reset = false;
 
@@ -40,14 +44,26 @@ void windows_tray_notification::destroy_tray_icon()
 
 void windows_tray_notification::handle_system_event(const SDL_Event& event)
 {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if (event.syswm.msg->msg != WM_TRAYNOTIFY) {
+#else
+	if (event.syswm.msg->msg.win.msg != WM_TRAYNOTIFY) {
+#endif
 		return;
 	}
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if (event.syswm.msg->lParam == NIN_BALLOONUSERCLICK) {
+#else
+	if (event.syswm.msg->msg.win.lParam == NIN_BALLOONUSERCLICK) {
+#endif
 		switch_to_wesnoth_window();
 		destroy_tray_icon();
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	} else if (event.syswm.msg->lParam == NIN_BALLOONTIMEOUT) {
+#else
+	} else if (event.syswm.msg->msg.win.lParam == NIN_BALLOONTIMEOUT) {
+#endif
 		destroy_tray_icon();
 	}
 }
@@ -157,11 +173,20 @@ HWND windows_tray_notification::get_window_handle()
 {
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if (SDL_GetWMInfo(&wmInfo) != 1) {
+#else
+	// SDL 1.2 keeps track of window handles internally whereas SDL 2.0 allows the caller control over which window to use
+	if (SDL_GetWindowWMInfo (static_cast<SDL_Window *> (*CVideo::get_window()), &wmInfo) != SDL_TRUE) {
+#endif
 		return NULL;
 	}
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	return wmInfo.window;
+#else
+	return wmInfo.info.win.window;
+#endif
 }
 
 void windows_tray_notification::switch_to_wesnoth_window()
