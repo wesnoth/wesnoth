@@ -1782,6 +1782,19 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 					if(movement_ > max_movement_)
 						movement_ = max_movement_;
+				} else if(apply_to == "vision") {
+					const std::string &increase = effect["increase"];
+
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " " +
+								t_string(N_("vision"), "wesnoth");
+						}
+
+						vision_ = utils::apply_modifier(vision_, increase, 1);
+					}
+
+					vision_ = effect["set"].to_int(vision_);
 				} else if(apply_to == "experience") {
 					const std::string &increase = effect["increase"];
 					const std::string &set = effect["set"];
@@ -2017,6 +2030,12 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 				if(increase.empty() == false) {
 					description += utils::print_modifier(increase) + t_string(N_(" move"), "wesnoth");
+				}
+			} else if(apply_to == "vision") {
+				const std::string &increase = effect["increase"];
+
+				if(increase.empty() == false) {
+					description += utils::print_modifier(increase) + t_string(N_(" see"), "wesnoth");
 				}
 			} else if(apply_to == "max_experience") {
 				const std::string &increase = effect["increase"];
