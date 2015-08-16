@@ -1795,6 +1795,19 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 
 					vision_ = effect["set"].to_int(vision_);
+				} else if(apply_to == "jamming") {
+					const std::string &increase = effect["increase"];
+
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " " +
+								t_string(N_("jamming"), "wesnoth");
+						}
+
+						jamming_ = utils::apply_modifier(jamming_, increase, 1);
+					}
+
+					jamming_ = effect["set"].to_int(jamming_);
 				} else if(apply_to == "experience") {
 					const std::string &increase = effect["increase"];
 					const std::string &set = effect["set"];
@@ -2035,7 +2048,13 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				const std::string &increase = effect["increase"];
 
 				if(increase.empty() == false) {
-					description += utils::print_modifier(increase) + t_string(N_(" see"), "wesnoth");
+					description += utils::print_modifier(increase) + t_string(N_(" vision"), "wesnoth");
+				}
+			} else if(apply_to == "jamming") {
+				const std::string &increase = effect["increase"];
+
+				if(increase.empty() == false) {
+					description += utils::print_modifier(increase) + t_string(N_(" jamming"), "wesnoth");
 				}
 			} else if(apply_to == "max_experience") {
 				const std::string &increase = effect["increase"];
