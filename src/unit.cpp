@@ -1934,6 +1934,37 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					if(new_align.parse(effect["set"])) {
 						alignment_ = new_align;
 					}
+				} else if (apply_to == "attacks_left") {
+					const std::string &increase = effect["increase"];
+					const std::string &set = effect["set"];
+					
+					if(set.empty() == false) {
+						if(set[set.size()-1] == '%') {
+							attacks_left_ = lexical_cast_default<int>(set)*max_attacks_/100;
+						} else {
+							attacks_left_ = lexical_cast_default<int>(set);
+						}
+					}
+					
+					if(increase.empty() == false) {
+						attacks_left_ = utils::apply_modifier(attacks_left_, increase, 1);
+					}
+				} else if (apply_to == "max_attacks") {
+					const std::string &increase = effect["increase"];
+					
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " ";
+							const char* const singular = N_("attack per turn");
+							const char* const plural = N_("attacks per turn");
+							if (increase[increase.size()-1] == '%' || abs(lexical_cast<int>(increase)) != 1) {
+								description += t_string(plural, "wesnoth");
+							} else {
+								description += t_string(singular, "wesnoth");
+							}
+						}
+						max_attacks_ = utils::apply_modifier(max_attacks_, increase, 1);
+					}
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
