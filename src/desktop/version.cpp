@@ -16,9 +16,11 @@
 
 #include "desktop/version.hpp"
 
+#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "scoped_resource.hpp"
 #include "serialization/unicode.hpp"
 
 #include <cstring>
@@ -48,10 +50,10 @@ static lg::log_domain log_desktop("desktop");
 namespace desktop
 {
 
-#ifdef _WIN32
 namespace
 {
 
+#ifdef _WIN32
 /**
  * Detects whether we are running on Wine or not.
  *
@@ -67,13 +69,43 @@ bool on_wine()
 
 	return GetProcAddress(ntdll, "wine_get_version") != NULL;
 }
+#endif
+
+#if defined(_X11) || defined(__APPLE__)
+struct posix_pipe_release_policy
+{
+	void operator()(std::FILE* f) const { if(f != NULL) { pclose(f); } }
+};
+
+typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posix_pipe;
+#endif
 
 } // end anonymous namespace
-#endif
 
 std::string os_version()
 {
 #if defined(_X11) || defined(__APPLE__)
+	static const std::string lsb_release_bin = "/usr/bin/lsb_release";
+
+	if(filesystem::file_exists(lsb_release_bin)) {
+		scoped_posix_pipe p(popen((lsb_release_bin + " -s -d").c_str(), "r"));
+
+		if(p.get()) {
+			std::string ver;
+			int c;
+
+			ver.reserve(64);
+
+			// We only want the first line.
+			while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
+				ver.push_back(static_cast<char>(c));
+			}
+
+			if(!ver.empty()) {
+				return ver;
+			}
+		}
+	}
 
 	utsname u;
 
