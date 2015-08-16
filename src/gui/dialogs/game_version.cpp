@@ -50,8 +50,8 @@
 namespace
 {
 
-const std::string img_feature_on = "buttons/checkbox-pressed.png";
-const std::string img_feature_off = "buttons/checkbox.png";
+const std::string text_feature_on =  "<span color='#0f0'>&#10003;</span>";
+const std::string text_feature_off = "<span color='#f00'>&#10005;</span>";
 
 } // end anonymous namespace
 
@@ -244,10 +244,11 @@ void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
 		list_data["opt_name"]["label"] = opt.name;
 
 		if(opt.enabled) {
-			list_data["opt_status"]["label"] = img_feature_on;
+			list_data["opt_status"]["label"] = text_feature_on;
 		} else {
-			list_data["opt_status"]["label"] = img_feature_off;
+			list_data["opt_status"]["label"] = text_feature_off;
 		}
+		list_data["opt_status"]["use_markup"] = "true";
 
 		opts_listbox.add_row(list_data);
 	}
