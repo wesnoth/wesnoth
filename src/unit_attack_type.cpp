@@ -180,6 +180,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const std::string& set_defense_weight = cfg["defense_weight"];
 	const std::string& increase_accuracy = cfg["increase_accuracy"];
 	const std::string& increase_parry = cfg["increase_parry"];
+	const std::string& increase_movement = cfg["increase_movement"];
 
 	std::stringstream desc;
 
@@ -267,6 +268,16 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			int inc_parry = lexical_cast<int>(increase_parry);
 			// xgettext:no-c-format
 			desc << utils::signed_value(inc_parry) << _("% parry");
+		}
+	}
+
+	if(increase_movement.empty() == false) {
+		movement_used_ = utils::apply_modifier(movement_used_, increase_movement, 1);
+
+		if(description != NULL) {
+			add_and(desc);
+			int inc_move = lexical_cast<int>(increase_movement);
+			desc << increase_movement << " " << _n("movement point","movement points",inc_move);
 		}
 	}
 
