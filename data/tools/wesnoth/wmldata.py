@@ -38,7 +38,9 @@ class Data:
         pos = indent * "  "
         result = pos + "\ " + magenta + self.name + off + " (" + self.__class__.__name__ + ")"
         if show_contents:
-            result += "'" + self.get_value() + "'"
+            if self.is_translatable() == True:
+                result += " _"
+            result += " '" + self.get_value() + "'"
         if write:
             # The input usually is utf8, but it also may be not - for example
             # if a .png image is transmitted over WML. As this is only for
@@ -60,6 +62,9 @@ class Data:
 
     def get_value(self):
         return ""
+
+    def is_translatable(self):
+        return False
 
     def get_type(self):
         return self.__class__.__name__
@@ -86,6 +91,9 @@ class DataText(Data):
 
     def set_value(self, data):
         self.data = data
+
+    def is_translatable(self):
+        return self.translatable
 
 class DataBinary(Data):
     """A binary chunk of WML."""

@@ -47,6 +47,7 @@ class Validator:
 
         # TODO: the blocks below probably need to be rewritten
 
+        # TODO: Retorno deve ser mostrado em mensagens mais organizadas, como numa tabela
         # Validate the attributes
         for attribute in schema.get_attributes():
             matches = node.get_texts(attribute.name)
@@ -60,6 +61,10 @@ class Validator:
             for match in matches:
                 if not attribute.validate(match.data):
                     print "(%s:%d) Attribute '[%s] %s's value should be %s, found: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, match.data)
+                if 'translatable' in attribute.optionals and match.is_translatable() == False:
+                    print "(%s:%d) Attribute '[%s] %s's value is translatable, but haven't _ at the beginning" % (node.file, node.line, verbosename, attribute.name)
+                elif 'translatable' not in attribute.optionals and match.is_translatable() == True:
+                    print "(%s:%d) Attribute '[%s] %s's value isn't translatable, but have a _ at the beginning" % (node.file, node.line, verbosename, attribute.name)
                 node.remove(match) # Get rid of these so we can see what's left
         for attribute in node.get_all_text():
             print "(%s:%d) Attribute '[%s] %s' found, which has no meaning there" % (node.file, node.line, verbosename, attribute.name)
