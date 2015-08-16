@@ -61,7 +61,7 @@ void handle_system_event(const SDL_Event& /*event*/)
 
 bool available()
 {
-	return false;
+	return true;
 }
 
 } // end namespace clipboard
