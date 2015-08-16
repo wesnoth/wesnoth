@@ -78,6 +78,20 @@ struct posix_pipe_release_policy
 };
 
 typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posix_pipe;
+
+std::string read_version(scoped_posix_pipe& p) {
+	std::string ver;
+	int c;
+	
+	ver.reserve(64);
+	
+	// We only want the first line.
+	while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
+		ver.push_back(static_cast<char>(c));
+	}
+	
+	return ver;
+}
 #endif
 
 } // end anonymous namespace
@@ -85,6 +99,28 @@ typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posi
 std::string os_version()
 {
 #if defined(_X11) || defined(__APPLE__)
+	
+#ifdef __APPLE__
+	//
+	// Standard Mac OSX version
+	//
+	
+	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
+	static const std::string defaults_bin = "/usr/bin/defaults";
+	
+	if(filesystem::file_exists(defaults_bin) && filesystem::file_exists(version_plist)) {
+		static const std::string cmd_line = defaults_bin + " read " + version_plist + " ProductUserVisibleVersion";
+		scoped_posix_pipe p(popen(cmd_line.c_str(), "r"));
+		
+		if(p.get()) {
+			const std::string& ver = read_version(p);
+			
+			if(!ver.empty()) {
+				return "Mac OS X " + ver;
+			}
+		}
+	}
+#endif
 
 	//
 	// Linux Standard Base version.
@@ -96,16 +132,8 @@ std::string os_version()
 		scoped_posix_pipe p(popen((lsb_release_bin + " -s -d").c_str(), "r"));
 
 		if(p.get()) {
-			std::string ver;
-			int c;
-
-			ver.reserve(64);
-
-			// We only want the first line.
-			while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
-				ver.push_back(static_cast<char>(c));
-			}
-
+			const std::string& ver = read_version(p);
+			
 			if(!ver.empty()) {
 				return ver;
 			}
