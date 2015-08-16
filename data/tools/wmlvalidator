@@ -59,12 +59,20 @@ class Validator:
             elif attribute.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
                 print "(%s:%d) Attribute '[%s] %s' should not appear. It appears %d times" % (node.file, node.line, verbosename, attribute.name, nummatches)
             for match in matches:
-                if not attribute.validate(match.data):
-                    print "(%s:%d) Attribute '[%s] %s's value should be %s, found: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, match.data)
                 if 'translatable' in attribute.optionals and match.is_translatable() == False:
                     print "(%s:%d) Attribute '[%s] %s's value is translatable, but haven't _ at the beginning" % (node.file, node.line, verbosename, attribute.name)
                 elif 'translatable' not in attribute.optionals and match.is_translatable() == True:
                     print "(%s:%d) Attribute '[%s] %s's value isn't translatable, but have a _ at the beginning" % (node.file, node.line, verbosename, attribute.name)
+                if 'list' in attribute.optionals:
+                    pos = 1
+                    for i in match.data.split(","):
+                        if i[0] == ' ': i = i[1:]
+                        if not attribute.validate(i):
+                            print "(%s:%d) Attribute '[%s] %s's value in list should be %s, found at position %d: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, pos, i)
+                        pos += 1
+                else:
+                    if not attribute.validate(match.data):
+                        print "(%s:%d) Attribute '[%s] %s's value should be %s, found: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, match.data)
                 node.remove(match) # Get rid of these so we can see what's left
         for attribute in node.get_all_text():
             print "(%s:%d) Attribute '[%s] %s' found, which has no meaning there" % (node.file, node.line, verbosename, attribute.name)
