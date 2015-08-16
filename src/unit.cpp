@@ -1965,6 +1965,25 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						}
 						max_attacks_ = utils::apply_modifier(max_attacks_, increase, 1);
 					}
+				} else if (apply_to == "recall_cost") {
+					const std::string &increase = effect["increase"];
+					const std::string &set = effect["set"];
+					
+					if(set.empty() == false) {
+						if(set[set.size()-1] == '%') {
+							recall_cost_ = lexical_cast_default<int>(set)*recall_cost_/100;
+						} else {
+							recall_cost_ = lexical_cast_default<int>(set);
+						}
+					}
+					
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " " +
+								t_string(N_("cost to recall"), "wesnoth");
+						}
+						recall_cost_ = utils::apply_modifier(recall_cost_, increase, 1);
+					}
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
