@@ -13,13 +13,7 @@ FORBIDDEN = 4
 class Grammar(object):
     def __init__(self, schema):
         schema = schema.get_first("schema")
-        self.datatypes = {
-            "boolean": re.compile("^(yes|no|true|false|on|off)$"),
-            # "character" : re.compile("^.$"),
-            "float": re.compile("^(\\+|-)?[0-9]+(\.[0-9]*)?$"),
-            "integer": re.compile("^(\\+|-)?[0-9]+$"),
-            "string": re.compile(".*"),
-        }
+        self.datatypes = {}
         self.elements = {}
         self.categories = collections.defaultdict(list)
         for type in schema.get_all_text():
