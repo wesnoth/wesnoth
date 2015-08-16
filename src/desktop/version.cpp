@@ -136,7 +136,7 @@ std::string os_version()
 		const std::string& ver = read_pipe_line(p);
 
 		if(!ver.empty()) {
-			return "Mac OS X " + ver;
+			return "Apple OS X " + ver;
 		}
 	}
 
