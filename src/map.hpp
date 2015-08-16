@@ -69,6 +69,16 @@ public:
 	/* Get the underlying terrain_type_data object. */
 	const tdata_cache & tdata() const { return tdata_; }
 
+	enum tborder {
+		NO_BORDER = 0,
+		SINGLE_TILE_BORDER
+		};
+
+	enum tusage {
+		IS_MAP,
+		IS_MASK
+		};
+
 	/**
 	 * Loads a map, with the given terrain configuration.
 	 *
@@ -94,7 +104,7 @@ public:
 
 	virtual ~gamemap();
 
-	void read(const std::string& data, const bool allow_invalid = true);
+	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1, const std::string usage = "map");
 
 	std::string write() const;
 
@@ -129,6 +139,7 @@ public:
 
 	/** Writes the terrain at loc to cfg. */
 	void write_terrain(const map_location &loc, config& cfg) const;
+
 
 	/** Manipulate starting positions of the different sides. */
 	const map_location& starting_position(int side) const;
@@ -190,8 +201,17 @@ public:
 	 */
 	enum { MAX_PLAYERS = 9 };
 
+	/** Returns the usage of the map. */
+	tusage get_usage() const { return usage_; }
+
+	/**
+	 * The default map header, needed for maps created with
+	 * terrain_translation::write_game_map().
+	 */
+	static const std::string default_map_header;
+
 	/** The default border style for a map. */
-	static const int default_border;
+	static const tborder default_border;
 
 	/** Parses ranges of locations into a vector of locations, using this map's dimensions as bounds. */
 	std::vector<map_location> parse_location_range(const std::string& xvals,
@@ -213,6 +233,8 @@ protected:
 	void clear_border_cache() { borderCache_.clear(); }
 
 private:
+
+	void set_usage(const std::string& usage);
 
 	/**
 	 * Reads the header of a map which is saved in the deprecated map_data format.
@@ -247,6 +269,9 @@ protected:
 private:
 	/** The size of the border around the map. */
 	int border_size_;
+
+	/** The kind of map is being loaded. */
+	tusage usage_;
 };
 
 #endif
