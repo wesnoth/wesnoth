@@ -85,6 +85,11 @@ typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posi
 std::string os_version()
 {
 #if defined(_X11) || defined(__APPLE__)
+
+	//
+	// Linux Standard Base version.
+	//
+
 	static const std::string lsb_release_bin = "/usr/bin/lsb_release";
 
 	if(filesystem::file_exists(lsb_release_bin)) {
@@ -107,6 +112,10 @@ std::string os_version()
 		}
 	}
 
+	//
+	// POSIX uname version.
+	//
+
 	utsname u;
 
 	if(uname(&u) != 0) {
@@ -119,6 +128,11 @@ std::string os_version()
 						<< u.machine).str();
 
 #elif defined(_WIN32)
+
+	//
+	// Windows version.
+	//
+
 	static const std::string base
 			= !on_wine() ? "Microsoft Windows" : "Wine/Microsoft Windows";
 
@@ -200,6 +214,10 @@ std::string os_version()
 	return base + " " + version;
 
 #else
+
+	//
+	// "I don't know where I am" version.
+	//
 
 	ERR_DU << "os_version(): unsupported platform\n";
 	return _("operating_system^<unknown>");
