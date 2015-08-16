@@ -19,7 +19,6 @@ class Grammar(object):
             "float": re.compile("^(\\+|-)?[0-9]+(\.[0-9]*)?$"),
             "integer": re.compile("^(\\+|-)?[0-9]+$"),
             "string": re.compile(".*"),
-            "tstring": re.compile(".*"),
         }
         self.elements = {}
         self.categories = collections.defaultdict(list)
@@ -113,13 +112,14 @@ class ExtElement(Element):
 
 class Attribute(object):
     def __init__(self, schema, datatypes):
-        first, second = schema.data.split(" ", 1)
-        if second not in datatypes:
-            raise Exception("Unknown datatype '%s'" % second)
+        parts = schema.data.split(" ")
+        if parts[1] not in datatypes:
+            raise Exception("Unknown datatype '%s'" % parts[1])
         self.name = schema.name
-        self.freq = parse_frequency(first)
-        self.type = second
-        self.re = datatypes[second]
+        self.freq = parse_frequency(parts[0])
+        self.type = parts[1]
+        self.optionals = parts[2:]
+        self.re = datatypes[parts[1]]
 
     def match(self, name):
         return self.name == name
