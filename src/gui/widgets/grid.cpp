@@ -1109,8 +1109,7 @@ void set_single_child(tgrid& grid, twidget* widget)
  *
  * * determine the extra size
  * * determine the sum of the grow factors
- * * if this sum is 0 set the grow factor for every item to 1 and sum to sum of
- *   items.
+ * * if this sum is 0 set the grow factor for every item to 1 and sum to sum of items.
  * * divide the extra size with the sum of grow factors
  * * for every item multiply the grow factor with the division value
  *
