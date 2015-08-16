@@ -1929,6 +1929,11 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					else if (!replace.empty()) {
 						advances_to_ = utils::parenthetical_split(add, ',');
 					}
+				} else if (apply_to == "alignment") {
+					unit_type::ALIGNMENT new_align;
+					if(new_align.parse(effect["set"])) {
+						alignment_ = new_align;
+					}
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
