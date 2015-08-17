@@ -15,26 +15,56 @@ else(MSVC)
 endif(MSVC)
 
 
-include_directories(SYSTEM ${SDL_INCLUDE_DIR} )
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
 include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
-#optional dependencies
-if(SDLIMAGE_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLIMAGE_INCLUDE_DIR} )
-endif()
-if(SDLMIXER_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLMIXER_INCLUDE_DIR} )
-endif()
-if(SDLNET_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLNET_INCLUDE_DIR} )
-endif()
-if(SDLTTF_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLTTF_INCLUDE_DIR} )
-endif()
+if(ENABLE_SDL2)
+	include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
+	set(sdl-lib ${SDL2_LIBRARY})
+	set(sdlmain-lib ${SDL2MAIN_LIBRARY})
+	#optional dependencies
+	if(SDL2IMAGE_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR} )
+		set(sdl_image-lib ${SDL2_IMAGE_LIBRARY})
+	endif()
+	if(SDL2MIXER_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR} )
+		set(sdl_mixer-lib ${SDL2_MIXER_LIBRARY})
+	endif()
+	if(SDL2NET_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2NET_INCLUDE_DIR} )
+		set(sdl_net-lib ${SDL2_NET_LIBRARY})
+	endif()
+	if(SDL2TTF_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2TTF_INCLUDE_DIR} )
+		set(sdl_ttf-lib ${SDL2_TTF_LIBRARY})
+	endif()
+else(ENABLE_SDL2)
+	include_directories(SYSTEM ${SDL_INCLUDE_DIR} )
+	set(sdl-lib ${SDL_LIBRARY})
+	set(sdlmain-lib ${SDLMAIN_LIBRARY})
+	#optional dependencies
+	if(SDLIMAGE_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLIMAGE_INCLUDE_DIR} )
+		set(sdl_image-lib ${SDLIMAGE_LIBRARY})
+	endif()
+	if(SDLMIXER_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLMIXER_INCLUDE_DIR} )
+		set(sdl_mixer-lib ${SDLMIXER_LIBRARY})
+	endif()
+	if(SDLNET_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLNET_INCLUDE_DIR} )
+		set(sdl_net-lib ${SDLNET_LIBRARY})
+	endif()
+	if(SDLTTF_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLTTF_INCLUDE_DIR} )
+		set(sdl_ttf-lib ${SDLTTF_LIBRARY})
+	endif()
+endif(ENABLE_SDL2)
+
 if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
 endif()
@@ -65,14 +95,14 @@ if(MSVC)
 	# Since MSVC does autolinking of boost adding those files will duplicate
 	# the includes and cause build errors.
 	set(common-external-libs
-		${SDL_LIBRARY}
-		${SDLMAIN_LIBRARY}
+		${sdl-lib}
+		${sdlmain-lib}
 		ws2_32.lib
 		${sdl_gpu-lib-vc}
 	)
 else(MSVC)
 	set(common-external-libs
-		${SDL_LIBRARY}
+		${sdl-lib}
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
@@ -101,9 +131,9 @@ set(game-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
-	${SDLIMAGE_LIBRARY}
-	${SDLMIXER_LIBRARY}
-	${SDLTTF_LIBRARY}
+	${sdl_image-lib}
+	${sdl_mixer-lib}
+	${sdl_ttf-lib}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
@@ -136,18 +166,18 @@ endif(MSVC)
 
 set(server-external-libs
 	${common-external-libs}
-	${SDLNET_LIBRARY}
+	${sdl_net-lib}
 	${Boost_SYSTEM_LIBRARIES}
 )
 
 set(game-external-libs
 	${game-external-libs}
-	${SDLNET_LIBRARY}
+	${sdl_net-lib}
 )
 
 set(tools-external-libs
 	${common-external-libs}
-	${SDLIMAGE_LIBRARY}
+	${sdl_image-lib}
 	${Boost_FILESYSTEM_LIBRARY}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
@@ -432,8 +462,8 @@ add_library(wesnoth-sdl
 )
 
 target_link_libraries(wesnoth-sdl
-	${SDL_LIBRARY}
-	${SDLIMAGE_LIBRARY}
+	${sdl-lib}
+	${sdl_image-lib}
 )
 
 # The main library is rather huge especially in debug mode, causing quite a bit
