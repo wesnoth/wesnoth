@@ -1375,7 +1375,33 @@ R0lGODlhEAAQAKUZAAAAAIeJhIiKhYqMh4uNiIGXr4KYsLS1s7W2s7W2tKi+1qm/16rA2KvB2azC
 8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8CH5BAEKAD8ALAAAAAAQABAAAAaWwN9B
 QCwaiYjfL0AqlUik0UgkCoVAA6WApFgsGIyGWPwhaEuLgrrgWDvKWhJjXXjY7fDfdr5+QP4WeQIj
 DXQQahEXgiMODn4RERKSGIuOEJCSExMZgiJtdGoUGh5meiKPkgAUABUbpFohqBOrHB0dr3ogDwa8
-BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
+BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs='''),
+           "window_icon":PhotoImage(data=b'''
+R0lGODlhIAAgAOcqAAAAAAEBAQICAgMDAwQEBAUFBQYGBgcHBwgICAkJCQoKCgsLCwwMDA0NDQ4O
+Dg8PDxAQEBERERISEhMTExQUFBUVFRYWFhcXFxgYGBkZGRoaGhsbGxwcHB0dHR4eHh8fHyAgICEh
+ISIiIiMjIyQkJCUlJSYmJicnJygoKCkpKSoqKisrKywsLC0tLS4uLi8vLzAwMDExMTIyMjMzMzQ0
+NDU1NTY2Njc3Nzg4ODk5OTo6Ojs7Ozw8PD09PT4+Pj8/P0BAQEFBQUJCQkNDQ0REREVFRUZGRkdH
+R0hISElJSUpKSktLS0xMTE1NTU5OTk9PT1BQUFFRUVJSUlNTU1RUVFVVVVZWVldXV1hYWFlZWVpa
+WltbW1xcXF1dXV5eXl9fX2BgYGFhYWJiYmNjY2RkZGVlZWZmZmdnZ2hoaGlpaWpqamtra2xsbG1t
+bW5ubm9vb3BwcHFxcXJycnNzc3R0dHV1dXZ2dnd3d3h4eHl5eXp6ent7e3x8fH19fX5+fn9/f4CA
+gIGBgYKCgoODg4SEhIWFhYaGhoeHh4iIiImJiYqKiouLi4yMjI2NjY6Ojo+Pj5CQkJGRkZKSkpOT
+k5SUlJWVlZaWlpeXl5iYmJmZmZqampubm5ycnJ2dnZ6enp+fn6CgoKGhoaKioqOjo6SkpKWlpaam
+pqenp6ioqKmpqaqqqqurq6ysrK2tra6urq+vr7CwsLGxsbKysrOzs7S0tLW1tba2tre3t7i4uLm5
+ubq6uru7u7y8vL29vb6+vr+/v8DAwMHBwcLCwsPDw8TExMXFxcbGxsfHx8jIyMnJycrKysvLy8zM
+zM3Nzc7Ozs/Pz9DQ0NHR0dLS0tPT09TU1NXV1dbW1tfX19jY2NnZ2dra2tvb29zc3N3d3d7e3t/f
+3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy
+8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///yH5BAEKAP8ALAAAAAAgACAA
+AAj+AP8JHEiwoMGDBll9QsjwIChWBXswaUjxH5MeB4tcEViuWMVi5QRaIcJwSSlRLSYOnAVq0CGC
+TVqIKrWkIZ1dzghOe8bnRQk2xZYRfKaLTsNPRQ6V8qULURcnSoDESPHBhhxSqTQZMgKKITaBaqwA
+cSKmyhUoQGykMGHiBAgRTNIIvIbwjkBFOZhkEXPGy5M9bUiIQFHCRIkUfATiociph5QwaETlSvft
+WzhSYUaUKKGiT0WBnoRAUTNNWjp15bSN88ZMFgzOhD7/00TEShxs6t6dW+WsGrpuw2CYQBFINqQg
+V+IsQxdu2TVzvsB9Q9aChAo/shkBmSJG2bhs0+7+Wes2zRsxzSs8f14U5EkVYObSUUOmSjU2Wxw4
+F/+caEeSKqxs8w041LDijTXOKBLCCSskIpskLRwBRSXQYIPNNbNUM00ucrCFQiSyFfIDEEysgUsy
+yVDTyi6qdNJDCSgAIYhsZFyBgxBHVLLJKLxYwsggi4RwmBdiyDZDIS/w8EMbiTQyiSaSYBLFCSSg
+4EgNsv0jCQsz6LADIpVI0oknmqCgGQyUZPlPFnis8MILS4wySimvLLGZCW9IoaYoqrCggplyqNKK
+HiEY5kIipWSJDSlcYBICCoQFYogIJZAAAiNPkELXR6pU8Q8jX7R1ggorGEZCGIb8U4UqHjGm5z9F
+IMQCBAoniFpCEKqEIJAUnFAEihME0UDLDYYZdsMpNxDkRFdqJlWDCSPc4IcLajJUwyJJKOGIDdU2
+pAIWWaTQ7bjklhsQADs=''')
            }
     ROOT_W,ROOT_H=800,480
     # the following string may be confusing, so here there's an explanation
@@ -1389,6 +1415,10 @@ BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
     root.title("Maintenance tools GUI")
     root.rowconfigure(0,weight=1)
     root.columnconfigure(0,weight=1)
+    # set the window icon
+    # for now, it's just a grayscale Wesnoth icon
+    # also, this line shouldn't have effect on Mac OS
+    root.tk.call("wm", "iconphoto", root, "-default", ICONS["window_icon"])
     # use a better style on X11 systems instead of the Motif-like one
     style=Style()
     if root.tk.call('tk', 'windowingsystem') == "x11" and "clam" in style.theme_names():
