@@ -1791,7 +1791,8 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 								t_string(N_("vision"), "wesnoth");
 						}
 
-						vision_ = utils::apply_modifier(vision_, increase, 1);
+						const int current_vision = vision_ < 0 ? max_movement_ : vision_;
+						vision_ = utils::apply_modifier(current_vision, increase, 1);
 					}
 
 					vision_ = effect["set"].to_int(vision_);
