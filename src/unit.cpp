@@ -1579,14 +1579,29 @@ std::vector<config> unit::get_modification_advances() const
 			continue;
 
 		std::vector<std::string> temp = utils::split(adv["require_amla"]);
-		if (temp.empty()) {
+		std::vector<std::string> temp2 = utils::split(adv["exclude_amla"]);
+		if (temp.empty() && temp2.empty()) {
 			res.push_back(adv);
 			continue;
 		}
 
 		std::sort(temp.begin(), temp.end());
-		std::vector<std::string> uniq;
+		std::sort(temp2.begin(), temp2.end());
+		std::vector<std::string> uniq, uniq2;
 		std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
+		std::unique_copy(temp2.begin(), temp2.end(), std::back_inserter(uniq2));
+		
+		bool exclusion_found = false;
+		BOOST_FOREACH(const std::string &s, uniq2)
+		{
+			int mod_num = modification_count("advancement", s);
+			if (mod_num > 0) {
+				exclusion_found = true;
+				break;
+			}
+		}
+		if (exclusion_found)
+			continue;
 
 		bool requirements_done = true;
 		BOOST_FOREACH(const std::string &s, uniq)
@@ -1912,6 +1927,28 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 					else if (!replace.empty()) {
 						overlays_ = utils::parenthetical_split(replace, ',');
+					}
+				} else if (apply_to == "advances_to") {
+					const std::string &add = effect["add"];
+					const std::string &remove = effect["remove"];
+					const std::string &replace = effect["replace"];
+					
+					if (!add.empty()) {
+						std::vector<std::string> temp_advances = utils::parenthetical_split(add, ',');
+						std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
+					}
+					else if (!remove.empty()) {
+						std::vector<std::string> temp_advances = utils::parenthetical_split(remove, ',');
+						std::vector<std::string>::iterator iter;
+						BOOST_FOREACH(const std::string& unit, temp_advances) {
+							iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
+							if(iter != advances_to_.end()) {
+								advances_to_.erase(iter);
+							}
+						}
+					}
+					else if (!replace.empty()) {
+						advances_to_ = utils::parenthetical_split(add, ',');
 					}
 				}
 			} // end while
