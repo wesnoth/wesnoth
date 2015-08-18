@@ -2735,4 +2735,3 @@ std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
 	s << rect.x << ',' << rect.y << " x "  << rect.w << ',' << rect.h;
 	return s;
 }
-

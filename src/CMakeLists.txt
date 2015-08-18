@@ -443,6 +443,7 @@ set(wesnoth-sdl_SRC
 	sdl/window.cpp
 	sdl/utils.cpp
 	sdl/shader.cpp
+	sdl/keyboard.cpp
 	xBRZ/xbrz.cpp
 )
 

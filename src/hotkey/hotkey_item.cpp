@@ -24,8 +24,17 @@
 
 #include <boost/foreach.hpp>
 #include <boost/algorithm/string/join.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/bind.hpp>
 
 #include "key.hpp"
+
+#include "SDL.h"
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+#include "sdl/keyboard.hpp"
+#endif
 
 static lg::log_domain log_config("config");
 #define ERR_G  LOG_STREAM(err,   lg::general)
@@ -33,234 +42,329 @@ static lg::log_domain log_config("config");
 #define DBG_G  LOG_STREAM(debug, lg::general)
 #define ERR_CF LOG_STREAM(err,   log_config)
 
-namespace {
-
-std::vector<hotkey::hotkey_item> hotkeys_;
-config default_hotkey_cfg_;
-
-hotkey::hotkey_item null_hotkey_("null");
-
-hotkey::hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
-		bool shift, bool ctrl, bool cmd, bool alt)
-{
-	std::vector<hotkey::hotkey_item>::iterator itor;
-
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-
-		if ( !( hotkey::is_scope_active(hotkey::get_hotkey_command(itor->get_command()).scope) && itor->active() ) ) {
-			continue;
-		}
-
-		if ( itor->get_shift() != shift || itor->get_ctrl() != ctrl
-				|| itor->get_cmd() != cmd || itor->get_alt() != alt ) {
-			continue;
-		}
-
-		if ( itor->get_joystick() == joystick && itor->get_button() == button
-				&& itor->get_hat() == hat && itor->get_value() == value
-				&& itor->get_mouse() == mouse ) {
-			return *itor;
-		}
-	}
-
-	return null_hotkey_;
-}
-
-hotkey::hotkey_item& get_hotkey(int character, int keycode,
-		bool shift, bool ctrl,	bool cmd, bool alt)
-{
-	std::vector<hotkey::hotkey_item>::iterator itor;
-
-	DBG_G << "getting hotkey: char=" << lexical_cast<std::string>(character)
-		<< " keycode="  << lexical_cast<std::string>(keycode) << " "
-		<< (shift ? "shift," : "")
-		<< (ctrl  ? "ctrl,"  : "")
-		<< (cmd   ? "cmd,"   : "")
-		<< (alt   ? "alt,"   : "")
-		<< "\n";
-
-	// Sometimes control modifies by -64, ie ^A == 1.
-	if (0 < character && character < 64 && ctrl) {
-		if (shift) {
-			character += 64;
-		} else {
-			character += 96;
-		}
-		/// @todo
-		DBG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
-	}
-
-	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
-	if (cmd && character > 96 && character < 123 && shift) {
-		character -= 32; }
-
-	bool found = false;
-
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		// Special case for Ctrl+Return/Enter keys, which gets resolved to Ctrl-j and Ctrl-m characters (LF and CR respectively).
-		// In such cases, do not match by character but go straight to key code.
-		if (itor->get_character() != -1 &&
-			!(tolower(character) == 'j' && keycode != SDLK_j) &&
-			!(tolower(character) == 'm' && keycode != SDLK_m)) {
-			if (character == itor->get_character()) {
-				if (ctrl == itor->get_ctrl()
-						&& cmd == itor->get_cmd()
-						&& alt == itor->get_alt()) {
-					if (hotkey::is_scope_active(hotkey::get_hotkey_command(itor->get_command()).scope) && itor->active()) {
-						DBG_G << "Could match by character..." << "yes\n";
-						found = true;
-						break;
-					} else {
-						DBG_G << "Could match by character..." << "yes, but scope is inactive\n";
-					}
-				}
-				DBG_G << "Could match by character..." << "but modifiers different\n";
-			}
-		} else if (itor->get_keycode() != -1) {
-			if (keycode == itor->get_keycode()) {
-				if (shift == itor->get_shift()
-						&& ctrl == itor->get_ctrl()
-						&& cmd  == itor->get_cmd()
-						&& alt  == itor->get_alt()) {
-					if (hotkey::is_scope_active(hotkey::get_hotkey_command(itor->get_command()).scope) && itor->active()) {
-						DBG_G << "Could match by keycode..." << "yes\n";
-						found = true;
-						break;
-					} else {
-						DBG_G << "Could match by keycode..." << "yes, but scope is inactive\n";
-					}
-				}
-				DBG_G << "Could match by keycode..." << "but modifiers different\n";
-			}
-		}
-		if (found) { break; }
-	}
-
-	if (!found) {
-		return null_hotkey_; }
-
-	return *itor;
-}
-
-
-}
-
 namespace hotkey {
 
+hotkey_list hotkeys_;
+config default_hotkey_cfg_;
 
-const hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
+static unsigned int sdl_get_mods()
 {
-	CKey keystate;
-	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
-	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
-	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+	unsigned int mods;
+	mods = SDL_GetModState();
 
-	return get_hotkey(-1, event.which, event.button, -1, -1, shift, ctrl, cmd, alt);
-}
+	mods &= ~KMOD_NUM;
+	mods &= ~KMOD_CAPS;
+	mods &= ~KMOD_MODE;
 
-const hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
-{
-	CKey keystate;
-	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
-	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
-	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+	// save the matching for checking right vs left keys
+	if (mods & KMOD_SHIFT)
+		mods |= KMOD_SHIFT;
 
-	return get_hotkey(-1, event.which, -1, event.hat, event.value, shift, ctrl, cmd, alt);
-}
+	if (mods & KMOD_CTRL)
+		mods |= KMOD_CTRL;
 
+	if (mods & KMOD_ALT)
+		mods |= KMOD_ALT;
 
-const hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
-{
-	CKey keystate;
-	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
-	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
-	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
-
-	return get_hotkey(event.which, -1, event.button, -1, -1, shift, ctrl, cmd, alt);
-}
-
-
-const hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
-{
-	return get_hotkey(
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-			event.keysym.scancode,
+#if SDL_VERSION_ATLEAST(2,0,0)
+	if (mods & KMOD_GUI)
+		mods |= KMOD_GUI;
 #else
-			event.keysym.unicode,
+	if (mods & KMOD_META)
+		mods |= KMOD_META;
 #endif
-			event.keysym.sym,
-			(event.keysym.mod & KMOD_SHIFT) != 0,
-			(event.keysym.mod & KMOD_CTRL)  != 0,
-			(event.keysym.mod & KMOD_META)  != 0,
-			(event.keysym.mod & KMOD_ALT)   != 0
-			);
+
+	return mods;
+}
+
+const std::string hotkey_base::get_name() const
+{
+	std::string ret = "";
+
+	if (mod_ & KMOD_CTRL)
+		ret += "ctrl";
+
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+	if (mod_ & KMOD_ALT)
+			ret += "alt";
+
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+	if (mod_ & KMOD_SHIFT)
+		ret += "shift";
+
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	if (mod_ & KMOD_GUI)
+#else
+	if (mod_ & KMOD_META)
+#endif
+#ifdef __APPLE__
+		ret += "cmd";
+#else
+		ret += "win";
+#endif
+
+
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+	return ret += get_name_helper();
+}
+
+bool hotkey_base::bindings_equal(hotkey_ptr other)
+{
+	bool ret;
+
+	if (other == hotkey_ptr())
+		return false;
+
+	ret = mod_ == other->mod_ && bindings_equal_helper(other);
+
+	if (hotkey::get_hotkey_command(get_command()).scope !=
+			hotkey::get_hotkey_command(other->get_command()).scope)
+		return false;
+
+	return ret;
 }
 
 
+bool hotkey_base::matches(const SDL_Event &event) const
+{
+	unsigned int mods = sdl_get_mods();
 
-std::string get_names(std::string id) {
+	if (!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) || !active())
+		return false;
 
-	std::vector<std::string> names;
-	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkeys_) {
-		if (item.get_command() == id && (!item.null()) ) {
-			names.push_back(item.get_name());
-		}
+	if((mods != mod_))
+		return false;
+
+	return matches_helper(event);
+}
+
+void hotkey_base::save(config& item) const
+{
+	item["command"] = get_command();
+
+	item["shift"] = !!(mod_ & KMOD_SHIFT);
+	item["ctrl"] = !!(mod_ & KMOD_CTRL);
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	item["cmd"] = !!(mod_ & KMOD_GUI);
+#else
+	item["cmd"] = !!(mod_ & KMOD_META);
+#endif
+	item["alt"] = !!(mod_ & KMOD_ALT);
+
+	save_helper(item);
+}
+
+
+hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
+{
+	hotkey_ptr base = hotkey_ptr(new hotkey_void);
+
+	switch(event.type) {
+	case SDL_KEYDOWN:
+	case SDL_KEYUP:
+	{
+		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
+		keyboard->set_keycode(event.key.keysym.sym);
+		break;
+	}
+	case SDL_MOUSEBUTTONDOWN:
+	case SDL_MOUSEBUTTONUP:
+	{
+		hotkey_mouse_ptr mouse(new hotkey_mouse());
+		base = boost::dynamic_pointer_cast<hotkey_base>(mouse);
+		mouse->set_button(event.button.button);
+		break;
+	}
+	default:
+		ERR_G << "Trying to bind an unknown event type:" << event.type << "\n";
+		break;
 	}
 
-	return boost::algorithm::join(names, ", ");
+	base->set_command(id);
+	base->unset_default();
+
+	return base;
 }
 
-const hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
-		bool shift, bool ctrl, bool cmd, bool alt)
+hotkey_ptr load_from_config(const config& cfg)
 {
-	return ::get_hotkey(mouse, joystick, button, hat, value,
-			shift, ctrl, cmd, alt);
+	hotkey_ptr base = hotkey_ptr();
+
+	const std::string& mouse_cfg = cfg["mouse"];
+	if (!mouse_cfg.empty()) {
+		hotkey_mouse_ptr mouse(new hotkey_mouse());
+		base = boost::dynamic_pointer_cast<hotkey_base>(mouse);
+		mouse->set_button(cfg["button"].to_int());
+	}
+	// TODO: add joystick support back
+#if 0
+	const std::string& joystick_cfg = cfg["joystick"];
+	if (!joystick_cfg.empty()) {
+		joystick_ = cfg["joystick"].to_int();
+	}
+	const std::string& hat = cfg["hat"];
+	if (!hat.empty()) {
+		hat_ = cfg["hat"].to_int();
+		value_ = cfg["value"].to_int();
+	}
+
+	const std::string& button = cfg["button"];
+	if (!button.empty()) {
+		button_ = cfg["button"].to_int();
+	}
+#endif
+
+	const std::string& key_cfg = cfg["key"];
+	if (!key_cfg.empty()) {
+		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
+		if (keycode == SDLK_UNKNOWN) {
+			ERR_G << "Unknown key: " << key_cfg << "\n";
+		}
+#else
+		SDLKey keycode = SDL_GetKeyFromName(key_cfg.c_str());
+		if (keycode == SDLK_UNKNOWN) {
+			ERR_G << "Unknown key: " << key_cfg << "\n";
+		}
+#endif
+		keyboard->set_keycode(keycode);
+	}
+
+	if (base == hotkey_ptr())
+		return base;
+
+	unsigned int mods = 0;
+
+	if(cfg["shift"].to_bool())
+		mods |= KMOD_SHIFT;
+	if(cfg["ctrl"].to_bool())
+		mods |= KMOD_CTRL;
+	if(cfg["cmd"].to_bool())
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		mods |= KMOD_GUI;
+#else
+		mods |= KMOD_META;
+#endif
+	if (cfg["alt"].to_bool())
+		mods |=  KMOD_ALT;
+
+
+	base->set_mods(mods);
+	base->set_command(cfg["command"].str());
+
+	return base;
 }
 
-const hotkey::hotkey_item& get_hotkey(int character, int keycode,
-		bool shift, bool ctrl,	bool cmd, bool alt)
+bool hotkey_mouse::matches_helper(const SDL_Event &event) const
 {
-	return ::get_hotkey(character, keycode,
-			shift, ctrl, cmd, alt);
+	if (event.type != SDL_MOUSEBUTTONUP &&
+			event.type != SDL_MOUSEBUTTONDOWN)
+		return false;
+
+	if (event.button.button != button_)
+		return false;
+
+	return true;
+}
+
+const std::string hotkey_mouse::get_name_helper() const
+{
+	return "mouse " + boost::lexical_cast<std::string>(button_);
+}
+
+void hotkey_mouse::save_helper(config &item) const
+{
+	item["mouse"] = 0;
+	if (button_ != 0) item["button"] = button_;
+}
+
+const std::string hotkey_keyboard::get_name_helper() const
+{
+	std::string ret = std::string(SDL_GetKeyName(keycode_));
+	if (ret.size() == 1)
+		boost::algorithm::to_lower(ret);
+	return ret;
+}
+
+bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
+{
+	if (event.type != SDL_KEYDOWN &&
+			event.type != SDL_KEYUP)
+		return false;
+
+	if (event.key.keysym.sym != keycode_)
+		return false;
+
+	return true;
+}
+
+bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
+{
+	hotkey_mouse_ptr other_m = boost::dynamic_pointer_cast<hotkey_mouse>(other);
+	if (other_m == hotkey_mouse_ptr())
+		return false;
+	return button_ == other_m->button_;
+}
+
+void hotkey_keyboard::save_helper(config &item) const
+{
+	if (keycode_ != SDLK_UNKNOWN) item["key"] = SDL_GetKeyName(keycode_);
 }
 
 bool has_hotkey_item(const std::string& command)
 {
-	BOOST_FOREACH(hotkey_item& item, hotkeys_)
+	BOOST_FOREACH(hotkey_ptr item, hotkeys_)
 	{
-		if(item.get_command() == command)
+		if(item->get_command() == command)
 			return true;
 	}
 	return false;
 }
 
-void add_hotkey(const hotkey_item& item) {
+bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
+{
+	hotkey_keyboard_ptr other_k = boost::dynamic_pointer_cast<hotkey_keyboard>(other);
+	if (other_k == hotkey_keyboard_ptr())
+		return false;
+
+	return keycode_ == other_k->keycode_;
+}
+
+void del_hotkey(hotkey_ptr item) {
+	if (hotkeys_.size() > 0)
+		hotkeys_.erase(std::remove(hotkeys_.begin(), hotkeys_.end(), item));
+}
+
+void add_hotkey(const hotkey_ptr item) {
+
+	if (item == hotkey_ptr())
+		return;
 
 	scope_changer scope_ch;
-	set_active_scopes(hotkey::get_hotkey_command(item.get_command()).scope);
+	set_active_scopes(hotkey::get_hotkey_command(item->get_command()).scope);
 
-	hotkey_item& old_hk = (item.get_mouse() != -1 || item.get_joystick() != -1) ?
-			::get_hotkey(item.get_mouse(), item.get_joystick(), item.get_button(), item.get_hat()
-					, item.get_value(), item.get_shift(), item.get_ctrl(), item.get_cmd(), item.get_alt()) :
-					::get_hotkey(item.get_character(), item.get_keycode(),
-							item.get_shift(), item.get_ctrl(), item.get_cmd(), item.get_alt());
+	if (hotkeys_.size() > 0) {
 
-	if (old_hk.active()) {
-		old_hk.set_command(item.get_command());
-		old_hk.unset_default();
+		hotkeys_.erase(std::remove_if(hotkeys_.begin(), hotkeys_.end(),
+					boost::bind(&hotkey_base::bindings_equal, _1, (item))), hotkeys_.end());
 	}
-	else
-		hotkeys_.push_back(item);
+
+	hotkeys_.push_back(item);
+
 }
+
 
 void clear_hotkeys(const std::string& command)
 {
-	BOOST_FOREACH(hotkey::hotkey_item& item, hotkeys_) {
-		if (item.get_command() == command) {
-			item.clear(); }
+	BOOST_FOREACH(hotkey::hotkey_ptr item, hotkeys_) {
+		if (item->get_command() == command) {
+			item->clear();
+		}
 	}
 }
 
@@ -269,11 +373,25 @@ void clear_hotkeys()
 	hotkeys_.clear();
 }
 
+const hotkey_ptr get_hotkey(const SDL_Event &event)
+{
+	BOOST_FOREACH(hotkey_ptr item, hotkeys_)
+	{
+		if(item->matches(event))
+			return item;
+	}
+	return hotkey_ptr(new hotkey_void());
+}
+
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
 	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey")) {
-		hotkey_item item = hotkey_item(hk, set_as_default);
-		if(!item.null()){
+
+		hotkey_ptr item = load_from_config(hk);
+		if(!set_as_default)
+			item->unset_default();
+
+		if(!item->null()){
 			add_hotkey(item);
 		}
 	}
@@ -294,7 +412,7 @@ void reset_default_hotkeys()
 	}
 }
 
-const std::vector<hotkey_item>& get_hotkeys()
+const hotkey_list& get_hotkeys()
 {
 	return hotkeys_;
 }
@@ -303,258 +421,23 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin();
-			i != hotkeys_.end(); ++i)
-	{
-		if (!i->is_default())
-			i->save(cfg.add_child("hotkey"));
+	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
+		if (!item->is_default())
+			item->save(cfg.add_child("hotkey"));
 	}
 }
 
-bool hotkey_item::active() const
-{
-	return !(command_  == "null");
-}
 
-bool hotkey_item::valid() const
-{
-	return (character_ | keycode_ | joystick_ | mouse_ | button_ | hat_ | value_) != 0;
-}
+std::string get_names(std::string id) {
 
-// There are two kinds of "key" values.
-// One refers to actual keys, like F1 or SPACE.
-// The other refers to characters produced, eg 'M' or ':'.
-// For the latter, specifying shift+; doesn't make sense,
-// because ; is already shifted on French keyboards, for example.
-// You really want to say ':', however that is typed.
-// However, when you say shift+SPACE,
-// you're really referring to the space bar,
-// as shift+SPACE usually just produces a SPACE character.
-void hotkey_item::load_from_config(const config& cfg)
-{
-	command_ = cfg["command"].str();
-
-	const std::string& mouse = cfg["mouse"];
-	if (!mouse.empty()) {
-			mouse_ = cfg["mouse"].to_int();
-			button_ = cfg["button"].to_int();
-	}
-	const std::string& joystick = cfg["joystick"];
-	if (!joystick.empty()) {
-		joystick_ = cfg["joystick"].to_int();
-	}
-	const std::string& hat = cfg["hat"];
-	if (!hat.empty()) {
-		hat_ = cfg["hat"].to_int();
-		value_ = cfg["value"].to_int();
-	}
-
-	const std::string& button = cfg["button"];
-	if (!button.empty()) {
-		button_ = cfg["button"].to_int();
-	}
-
-	shift_ = cfg["shift"].to_bool();
-	ctrl_  = cfg["ctrl"].to_bool();
-	cmd_   = cfg["cmd"].to_bool();
-	alt_   = cfg["alt"].to_bool();
-
-	const std::string& key = cfg["key"];
-	if (key.empty()) {
-		return;
-	}
-
-	ucs4::string wkey = unicode_cast<ucs4::string>(key);
-
-	// They may really want a specific key on the keyboard:
-	// we assume that any single character keyname is a character.
-	if (wkey.size() > 1) {
-
-		keycode_ = sdl_keysym_from_name(key);
-		if (keycode_ == SDLK_UNKNOWN) {
-			if (tolower(key[0]) != 'f') {
-				ERR_CF << "hotkey key '" << key << "' invalid" << std::endl;
-			} else {
-				int num = lexical_cast_default<int>(key.c_str() + 1);
-				keycode_ = num + SDLK_F1 - 1;
-			}
+	std::vector<std::string> names;
+	BOOST_FOREACH(const hotkey::hotkey_ptr item, hotkeys_) {
+		if (item->get_command() == id && (!item->null()) ) {
+			names.push_back(item->get_name());
 		}
-	} else if (key == " " || shift_
-#ifdef __APPLE__
-		|| alt_
-#endif
-		) {
-		// Space must be treated as a key because shift-space
-		// isn't a different character from space,
-		// and control key makes it go weird.
-		// shift=yes should never be specified on single characters
-		// (eg. key=m, shift=yes would be key=M),
-		// but we don't want to break old preferences files.
-		keycode_ = wkey[0];
-	} else {
-		character_ = wkey[0];
-	}
-}
-
-void hotkey_item::set_command(const std::string& command) {
-	command_ = command;
-}
-
-std::string hotkey_item::get_name() const
-{
-	std::stringstream str;
-
-	if (shift_) { str << "shift+"; }
-	if (ctrl_)  { str << "ctrl+";  }
-	if (cmd_)   { str << "cmd+";   }
-	if (alt_)   { str << "alt+";   }
-
-	if (mouse_     >=  0) { str << _("Mouse") << mouse_ << _("Button") << button_; }
-	if (character_ != -1) { str << static_cast<char>(character_); }
-	if (keycode_   != -1) { str << SDL_GetKeyName(SDLKey(keycode_)); }
-	if (joystick_  >=  0) { str << _("Joystick") << joystick_ << _("Button") << button_; }
-
-	if (value_ >= 0) {
-		std::string direction;
-		switch (value_) {
-			case SDL_HAT_CENTERED:
-				direction = _("Centered");
-				break;
-			case SDL_HAT_UP:
-				direction = _("Up");
-				break;
-			case SDL_HAT_RIGHT:
-				direction = _("Right");
-				break;
-			case SDL_HAT_DOWN:
-				direction = _("Down");
-				break;
-			case SDL_HAT_LEFT:
-				direction = _("Left");
-				break;
-			case SDL_HAT_RIGHTUP:
-				direction = _("RightUp");
-				break;
-			case SDL_HAT_RIGHTDOWN:
-				direction = _("RightDown");
-				break;
-			case SDL_HAT_LEFTUP:
-				direction = _("LeftUp");
-				break;
-			case SDL_HAT_LEFTDOWN:
-				direction = _("LeftDown");
-				break;
-			default:
-				direction = _("Unknown");
-				break;
-		}
-		str << _("Joystick") << joystick_ << _("Hat") << button_ << direction;
 	}
 
-	return str.str();
-}
-
-void hotkey_item::clear()
-{
-	command_ = "null";
-}
-
-void hotkey_item::save(config& item) const
-{
-	if (get_button()    >= 0) item["button"]   = get_button();
-	if (get_joystick()  >= 0) item["joystick"] = get_joystick();
-	if (get_hat()       >= 0) item["hat"]      = get_hat();
-	if (get_value()     >= 0) item["value"]    = get_value();
-	if (get_keycode()   >= 0) item["key"]      = SDL_GetKeyName(SDLKey(get_keycode()));
-	if (get_character() >= 0) item["key"]      = unicode_cast<utf8::string>(static_cast<ucs4::char_t>(get_character()));
-	if (get_mouse()     >= 0) item["mouse"]    = get_mouse();
-	if (get_button()    >= 0) item["button"]   = get_button();
-
-	item["command"] = get_command();
-	if (get_shift()) item["shift"] = get_shift();
-	if (get_ctrl() ) item["ctrl"]  = get_ctrl();
-	if (get_cmd()  ) item["cmd"]   = get_cmd();
-	if (get_alt()  ) item["alt"]   = get_alt();
-}
-
-void hotkey_item::set_jbutton(int joystick, int button,
-		bool shift, bool ctrl, bool cmd, bool alt)
-{
-	joystick_ = joystick;
-	button_   = button;
-	shift_    = shift;
-	ctrl_     = ctrl;
-	cmd_      = cmd;
-	alt_      = alt;
-}
-
-void hotkey_item::set_jhat(int joystick, int hat, int value,
-		bool shift, bool ctrl, bool cmd, bool alt)
-{
-	joystick_ = joystick;
-	hat_      = hat;
-	value_    = value;
-	shift_    = shift;
-	ctrl_     = ctrl;
-	cmd_      = cmd;
-	alt_      = alt;
-}
-
-void hotkey_item::set_mbutton(int mouse, int button,
-		bool shift, bool ctrl, bool cmd, bool alt)
-{
-	mouse_  = mouse;
-	button_ = button;
-	shift_  = shift;
-	ctrl_   = ctrl;
-	cmd_    = cmd;
-	alt_    = alt;
-}
-
-void hotkey_item::set_key(int character, int keycode,
-		bool shift, bool ctrl, bool cmd, bool alt)
-{
-	LOG_G << "setting hotkey: char=" << lexical_cast<std::string>(character)
-		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
-		   << (shift ? "shift," : "")
-		   << (ctrl  ? "ctrl,"  : "")
-		   << (cmd   ? "cmd,"   : "")
-		   << (alt   ? "alt,"   : "")
-		   << "\n";
-
-	// Sometimes control modifies by -64, ie ^A == 1.
-	if (character < 64 && ctrl) {
-		if (shift) {
-			character += 64; }
-		else {
-			character += 96; }
-		LOG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
-	}
-
-	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
-	if (cmd && character > 96 && character < 123 && shift) {
-		character -= 32; }
-
-	// We handle simple cases by character, others by the actual key.
-	// @ and ` are exceptions related to the space character. Without these, combinations involving Ctrl or Ctrl+Shift often resolve the character value to null (or @ and `).
-	// j and m exceptions are to catch Ctrl+Return/Enter, which is interpreted as Ctrl+j and Ctrl+m characters (LF and CR respectively).
-	if (isprint(character) && !isspace(character) &&
-		character != '@' && character != '`' &&
-		!(tolower(character) == 'j' && keycode != SDLK_j) &&
-		!(tolower(character) == 'm' && keycode != SDLK_m)) {
-		character_ = character;
-		ctrl_      = ctrl;
-		cmd_       = cmd;
-		alt_       = alt;
-		LOG_G << "type = BY_CHARACTER\n";
-	} else {
-		keycode_ = keycode;
-		shift_   = shift;
-		ctrl_    = ctrl;
-		cmd_     = cmd;
-		alt_     = alt;
-		LOG_G << "type = BY_KEYCODE\n";
-	}
+	return boost::algorithm::join(names, ", ");
 }
 
 }
