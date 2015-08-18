@@ -1934,27 +1934,47 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					else if (!replace.empty()) {
 						overlays_ = utils::parenthetical_split(replace, ',');
 					}
-				} else if (apply_to == "advances_to") {
-					const std::string &add = effect["add"];
-					const std::string &remove = effect["remove"];
-					const std::string &replace = effect["replace"];
+				} else if (apply_to == "new_advancement") {
+					const std::string &types = effect["types"];
+					const bool replace = effect["replace"].to_bool(false);
 					
-					if (!add.empty()) {
-						std::vector<std::string> temp_advances = utils::parenthetical_split(add, ',');
-						std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
-					}
-					else if (!remove.empty()) {
-						std::vector<std::string> temp_advances = utils::parenthetical_split(remove, ',');
-						std::vector<std::string>::iterator iter;
-						BOOST_FOREACH(const std::string& unit, temp_advances) {
-							iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
-							if(iter != advances_to_.end()) {
-								advances_to_.erase(iter);
-							}
+					if (!types.empty()) {
+						if (replace) {
+							advances_to_ = utils::parenthetical_split(types, ',');
+						} else {
+							std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
+							std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
 						}
 					}
-					else if (!replace.empty()) {
-						advances_to_ = utils::parenthetical_split(add, ',');
+					else {
+						// Possible TODO: Honour replace=yes
+						cfg_.add_child("advancement", effect);
+					}
+				} else if (apply_to == "remove_advancement") {
+					const std::string &types = effect["types"];
+					const std::string &amlas = effect["amlas"];
+					
+					std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
+					std::vector<std::string>::iterator iter;
+					BOOST_FOREACH(const std::string& unit, temp_advances) {
+						iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
+						if (iter != advances_to_.end()) {
+							advances_to_.erase(iter);
+						}
+					}
+					
+					temp_advances = utils::parenthetical_split(amlas, ',');
+					std::vector<size_t> remove_indices;
+					size_t remove_index = 0;
+					BOOST_FOREACH(const config &adv, modification_advancements()) {
+						iter = std::find(temp_advances.begin(), temp_advances.end(), adv["id"]);
+						if (iter != temp_advances.end()) {
+							remove_indices.push_back(remove_index);
+						}
+						remove_index++;
+					}
+					for (size_t i = remove_indices.size(); i > 0; i--) {
+						cfg_.remove_child("advancement", i - 1);
 					}
 				} else if (apply_to == "alignment") {
 					unit_type::ALIGNMENT new_align;
