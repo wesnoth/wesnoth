@@ -72,12 +72,45 @@ bool on_wine()
 #endif
 
 #if defined(_X11) || defined(__APPLE__)
+/**
+ * Release policy for POSIX pipe streams opened with popen(3).
+ */
 struct posix_pipe_release_policy
 {
 	void operator()(std::FILE* f) const { if(f != NULL) { pclose(f); } }
 };
 
+/**
+ * Scoped POSIX pipe stream.
+ *
+ * The stream object type is the same as a regular file stream, but the release
+ * policy is different, as required by popen(3).
+ */
 typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posix_pipe;
+
+/**
+ * Read a single line from the specified pipe.
+ *
+ * @returns An empty string if the pipe is invalid or nothing could be read.
+ */
+std::string read_pipe_line(scoped_posix_pipe& p)
+{
+	if(!p.get()) {
+		return "";
+	}
+
+	std::string ver;
+	int c;
+	
+	ver.reserve(64);
+	
+	// We only want the first line.
+	while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
+		ver.push_back(static_cast<char>(c));
+	}
+	
+	return ver;
+}
 #endif
 
 } // end anonymous namespace
@@ -85,6 +118,29 @@ typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posi
 std::string os_version()
 {
 #if defined(_X11) || defined(__APPLE__)
+	
+#ifdef __APPLE__
+
+	//
+	// Standard Mac OSX version
+	//
+	
+	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
+	static const std::string defaults_bin = "/usr/bin/defaults";
+	
+	if(filesystem::file_exists(defaults_bin) && filesystem::file_exists(version_plist)) {
+		static const std::string cmdline
+				= defaults_bin + " read " + version_plist + " ProductUserVisibleVersion";
+
+		scoped_posix_pipe p(popen(cmdline.c_str(), "r"));
+		const std::string& ver = read_pipe_line(p);
+
+		if(!ver.empty()) {
+			return "Apple OS X " + ver;
+		}
+	}
+
+#else
 
 	//
 	// Linux Standard Base version.
@@ -93,24 +149,16 @@ std::string os_version()
 	static const std::string lsb_release_bin = "/usr/bin/lsb_release";
 
 	if(filesystem::file_exists(lsb_release_bin)) {
-		scoped_posix_pipe p(popen((lsb_release_bin + " -s -d").c_str(), "r"));
+		static const std::string cmdline = lsb_release_bin + " -s -d";
 
-		if(p.get()) {
-			std::string ver;
-			int c;
+		scoped_posix_pipe p(popen(cmdline.c_str(), "r"));
+		const std::string& ver = read_pipe_line(p);
 
-			ver.reserve(64);
-
-			// We only want the first line.
-			while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
-				ver.push_back(static_cast<char>(c));
-			}
-
-			if(!ver.empty()) {
-				return ver;
-			}
+		if(!ver.empty()) {
+			return ver;
 		}
 	}
+#endif
 
 	//
 	// POSIX uname version.
