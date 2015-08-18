@@ -886,6 +886,21 @@ bool preprocessor_data::get_chunk()
 				target_.error("Unterminated preprocessor definition", linenum_);
 			}
 			if (!skipping_) {
+				preproc_map::const_iterator old_i = target_.defines_->find(symbol);
+				if (old_i != target_.defines_->end()) {
+					std::ostringstream new_pos, old_pos;
+					const preproc_define& old_d = old_i->second;
+
+					new_pos << linenum << ' ' << target_.location_;
+					old_pos << old_d.linenum << ' ' << old_d.location;
+
+					WRN_PREPROC << "Redefining macro " << symbol
+								<< " without explicit #undef at "
+								<< lineno_string(new_pos.str()) << '\n'
+								<< "previously defined at "
+								<< lineno_string(old_pos.str()) << '\n';
+				}
+
 				buffer.erase(buffer.end() - 7, buffer.end());
 				(*target_.defines_)[symbol] = preproc_define(buffer, items, target_.textdomain_,
 					                       linenum + 1, target_.location_);
