@@ -903,7 +903,7 @@ bool preprocessor_data::get_chunk()
 
 				buffer.erase(buffer.end() - 7, buffer.end());
 				(*target_.defines_)[symbol] = preproc_define(buffer, items, target_.textdomain_,
-					                       linenum + 1, target_.location_);
+					                       linenum, target_.location_);
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
 			}
 		} else if (command == "ifdef") {

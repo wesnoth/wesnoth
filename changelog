@@ -38,6 +38,8 @@ Version 1.13.1+dev:
      show/hide them
    * The WML preprocessor now writes warnings to stderr for macros redefined
      without #undef, to help detect unintentional name clashes.
+   * Fix macro definition line numbers being offset by 1 in WML preprocessor
+     messages involving macros.
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
