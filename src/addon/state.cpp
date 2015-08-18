@@ -29,7 +29,7 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 	t.can_publish = have_addon_pbl_info(id);
 	t.in_version_control = have_addon_in_vcs_tree(id);
-	t.installed_version = version_info(0, 0, 0, false);
+	//t.installed_version = version_info();
 
 	if(is_addon_installed(id)) {
 		if(t.can_publish) {
