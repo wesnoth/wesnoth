@@ -47,7 +47,7 @@ class Validator:
 
         # TODO: the blocks below probably need to be rewritten
 
-        # TODO: Retorno deve ser mostrado em mensagens mais organizadas, como numa tabela
+        # TODO: Return should be shown in more organized, for example, a table
         # Validate the attributes
         for attribute in schema.get_attributes():
             matches = node.get_texts(attribute.name)
