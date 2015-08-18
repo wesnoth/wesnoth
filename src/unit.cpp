@@ -1995,10 +1995,11 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				} else if (apply_to == "recall_cost") {
 					const std::string &increase = effect["increase"];
 					const std::string &set = effect["set"];
+					const int recall_cost = recall_cost_ < 0 ? resources::teams->at(side_).recall_cost() : recall_cost_;
 					
 					if(set.empty() == false) {
 						if(set[set.size()-1] == '%') {
-							recall_cost_ = lexical_cast_default<int>(set)*recall_cost_/100;
+							recall_cost_ = lexical_cast_default<int>(set)*recall_cost/100;
 						} else {
 							recall_cost_ = lexical_cast_default<int>(set);
 						}
@@ -2009,7 +2010,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 							description += utils::print_modifier(increase) + " " +
 								t_string(N_("cost to recall"), "wesnoth");
 						}
-						recall_cost_ = utils::apply_modifier(recall_cost_, increase, 1);
+						recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
 					}
 				}
 			} // end while
