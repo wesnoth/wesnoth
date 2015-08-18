@@ -1684,7 +1684,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			resources::units->erase(loc);
 			resources::units->add(loc, *u);
 
-			config::attribute_value text = cfg["gender"].str() == "female" ? cfg["female_text"] : cfg["text"];
+			config::attribute_value text = var["gender"].str() == "female" ? cfg["female_text"] : cfg["male_text"];
 			if(text.blank()) {
 				text = cfg["text"];
 			}

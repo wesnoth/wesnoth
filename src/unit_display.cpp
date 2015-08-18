@@ -868,11 +868,10 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 				secondary_loc = u->get_location().get_direction(dir);
 			}
 		}
-		config::attribute_value text = u->gender() == unit_race::FEMALE ? cfg["female_text"] : cfg["text"];
+		config::attribute_value text = u->gender() == unit_race::FEMALE ? cfg["female_text"] : cfg["male_text"];
 		if(text.blank()) {
 			text = cfg["text"];
 		}
-		const std::string text_key = u->gender() == unit_race::FEMALE ? "female_text" : "text";
 		animator.add_animation(&*u, cfg["flag"], u->get_location(),
 			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(),
 			text.str(), text_color, hits, primary, secondary,
