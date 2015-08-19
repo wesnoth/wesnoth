@@ -36,6 +36,7 @@ Version 1.13.1+dev:
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
      show/hide them
+   * Add female_text= to [animate_unit] and [unstore_unit] for easier translating
    * The WML preprocessor now writes warnings to stderr for macros redefined
      without #undef, to help detect unintentional name clashes.
    * Fix macro definition line numbers being offset by 1 in WML preprocessor

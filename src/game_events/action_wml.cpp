@@ -1684,7 +1684,10 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			resources::units->erase(loc);
 			resources::units->add(loc, *u);
 
-			std::string text = cfg["text"];
+			config::attribute_value text = var["gender"].str() == "female" ? cfg["female_text"] : cfg["male_text"];
+			if(text.blank()) {
+				text = cfg["text"];
+			}
 			play_controller *controller = resources::controller;
 			if(!text.empty() && !controller->is_skipping_replay())
 			{
