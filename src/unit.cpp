@@ -2304,7 +2304,7 @@ std::string get_checksum(const unit& u) {
 		child.recursive_clear_value("name");
 	}
 
-	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "vision_costs", "jamming_costs" "resistance", ""};
+	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "vision_costs", "jamming_costs", "resistance", ""};
 
 	for (int i = 0; !child_keys[i].empty(); ++i)
 	{
