@@ -20,6 +20,8 @@ Version 1.12.4+dev:
      specially-crafted input.
    * Fixed RECRUIT_UNIT_VARIATIONS core WML macro leaking an internal temporary
      variable ($recruited_unit_random_variation).
+   * Fixed unit [resistance] and [jamming_costs] not being considered for sync
+     check.
 
 Version 1.12.4:
  * Security fixes:
