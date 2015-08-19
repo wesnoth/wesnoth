@@ -753,6 +753,8 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
+	assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
+
 	std::string map_data = summary["map_data"];
 	if(map_data.empty()) {
 		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
@@ -773,8 +775,6 @@ void save_preview_pane::draw_contents()
 	if(map_data.empty() == false) {
 		LOG_DP << "When parsing save summary " << ((*info_)[index_]).name() << std::endl
 			<< "Did not find a map_data field. Looking in game config for a child [" << summary["campaign_type"] << "] with id " << summary["scenario"] << std::endl;
-
-		assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
 
 		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
 		if(itor != map_cache_.end()) {

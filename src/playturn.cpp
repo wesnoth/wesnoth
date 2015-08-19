@@ -178,12 +178,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = side - 1;
 
+		assert(resources::gameboard);
+
 		if(index >= resources::gameboard->teams().size()) {
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 			return PROCESS_CONTINUE;
 		}
 
-		assert(resources::gameboard);
 		const team & tm = resources::gameboard->teams().at(index);
 		const std::string &player = change["player"];
 		const bool was_local = tm.is_local();
