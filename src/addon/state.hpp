@@ -47,6 +47,7 @@ struct addon_tracking_info
 		, can_publish(false)
 		, in_version_control(false)
 		, installed_version()
+		, remote_version()
 	{
 	}
 
@@ -54,6 +55,7 @@ struct addon_tracking_info
 	bool can_publish;
 	bool in_version_control;
 	version_info installed_version;
+	version_info remote_version;
 };
 
 typedef std::map<std::string, addon_tracking_info> addons_tracking_list;
