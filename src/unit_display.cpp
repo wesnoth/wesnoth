@@ -868,9 +868,13 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 				secondary_loc = u->get_location().get_direction(dir);
 			}
 		}
+		config::attribute_value text = u->gender() == unit_race::FEMALE ? cfg["female_text"] : cfg["male_text"];
+		if(text.blank()) {
+			text = cfg["text"];
+		}
 		animator.add_animation(&*u, cfg["flag"], u->get_location(),
 			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(),
-			cfg["text"], text_color, hits, primary, secondary,
+			text.str(), text_color, hits, primary, secondary,
 			cfg["value_second"]);
 	}
 	const vconfig::child_list sub_anims = cfg.get_children("animate");

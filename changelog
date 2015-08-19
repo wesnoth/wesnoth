@@ -1,4 +1,7 @@
 Version 1.13.1+dev:
+ * Add-ons client:
+   * Warn user if attempting to upload an addon with a version lesser than or
+     equal to a published version.
  * Campaigns:
    * Delfador's Memoirs:
      * Added defeat condition for death of the last undead veteran in
@@ -36,6 +39,11 @@ Version 1.13.1+dev:
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
      show/hide them
+   * Add female_text= to [animate_unit] and [unstore_unit] for easier translating
+   * The WML preprocessor now writes warnings to stderr for macros redefined
+     without #undef, to help detect unintentional name clashes.
+   * Fix macro definition line numbers being offset by 1 in WML preprocessor
+     messages involving macros.
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:

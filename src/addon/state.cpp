@@ -29,7 +29,7 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 	t.can_publish = have_addon_pbl_info(id);
 	t.in_version_control = have_addon_in_vcs_tree(id);
-	t.installed_version = version_info(0, 0, 0, false);
+	//t.installed_version = version_info();
 
 	if(is_addon_installed(id)) {
 		if(t.can_publish) {
@@ -45,11 +45,11 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 			t.installed_version = get_addon_version_info(id);
 		}
 
-		const version_info& remote_version = addon.version;
+		t.remote_version = addon.version;
 
-		if(remote_version == t.installed_version) {
+		if(t.remote_version == t.installed_version) {
 			t.state = ADDON_INSTALLED;
-		} else if(remote_version > t.installed_version) {
+		} else if(t.remote_version > t.installed_version) {
 			t.state = ADDON_INSTALLED_UPGRADABLE;
 		} else /* if(remote_version < t.installed_version) */ {
 			t.state = ADDON_INSTALLED_OUTDATED;

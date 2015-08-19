@@ -145,7 +145,7 @@ struct addon_op_result
 	bool wml_changed;
 };
 
-/** Warns the user about unresolved dependencies and installs them if they choose to do so. 
+/** Warns the user about unresolved dependencies and installs them if they choose to do so.
  * Returns: outcome: ABORT in case the user chose to abort because of an issue
  *                   SUCCESS otherwise
  *          wml_change: indicates if new wml content was installed
@@ -379,12 +379,24 @@ void do_remote_addon_delete(CVideo& video, addons_client& client, const std::str
 }
 
 /** Performs all backend and UI actions for publishing the specified add-on. */
-void do_remote_addon_publish(CVideo& video, addons_client& client, const std::string& addon_id)
+void do_remote_addon_publish(CVideo& video, addons_client& client, const std::string& addon_id, const version_info& remote_version)
 {
 	std::string server_msg;
 
 	config cfg;
 	get_addon_pbl_info(addon_id, cfg);
+
+	const version_info& version_to_publish = cfg["version"].str();
+
+	if(version_to_publish <= remote_version) {
+		const int res = gui2::show_message(video, _("Warning"),
+			_("The remote version of this add-on is greater or equal to the version being uploaded. Do you really wish to continue?"),
+			gui2::tmessage::yes_no_buttons);
+
+		if(res != gui2::twindow::OK) {
+			return;
+		}
+	}
 
 	if(!image::exists(cfg["icon"].str())) {
 		gui2::show_error_message(video, _("Invalid icon path. Please make sure the path points to a valid image."));
@@ -908,7 +920,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		} else if(result >= int(option_ids.size())) {
 			// Handle remote publishing.
 			const std::string& id = can_publish_ids[result - int(option_ids.size())];
-			do_remote_addon_publish(disp.video(), client, id);
+			do_remote_addon_publish(disp.video(), client, id, tracking[id].remote_version);
 			return;
 		}
 	}
