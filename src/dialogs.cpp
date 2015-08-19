@@ -1356,8 +1356,8 @@ void unit_preview_pane::draw_contents()
 	}
 
 	// we don't remove empty lines, so all fields stay at the same place
-	const std::vector<std::string> lines = utils::split(text.str(), '\n',
-		utils::STRIP_SPACES);
+	const std::vector<std::string> lines
+			= utils::split(text.str(), '\n', utils::STRIP_SPACES);
 
 
 	int ypos = area.y;
