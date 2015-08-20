@@ -500,23 +500,23 @@ if __name__ == "__main__":
         try:
             addons = list_addons(server, args.list_translatable)
         except libgithub.AddonError as e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+            print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
             sys.exit(1)
         except libgithub.Error as e:
-            print "[ERROR github] " + str(e)
+            print("[ERROR github] " + str(e))
             sys.exit(1)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
         except IOError as e:
-            print "Unexpected error occured: " + str(e)
+            print("Unexpected error occured: " + str(e))
             sys.exit(e[0])
 
-        for k, v in addons.iteritems():
+        for k, v in addons.items():
             if(v):
-                print k + " translatable"
+                print(k + " translatable")
             else:
-                print k
+                print(k)
 
     # Upload an addon to wescamp.
     elif(args.upload != None):
@@ -529,16 +529,16 @@ if __name__ == "__main__":
         try:
             upload(server, args.upload, target, wescamp, build_sys_dir)
         except libgithub.AddonError as e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+            print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
             sys.exit(1)
         except libgithub.Error as e:
-            print "[ERROR github] " + str(e)
+            print("[ERROR github] " + str(e))
             sys.exit(1)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
         except IOError as e:
-            print "Unexpected error occured: " + str(e)
+            print("Unexpected error occured: " + str(e))
             sys.exit(e[0])
 
     # Upload all addons from wescamp.
@@ -553,25 +553,25 @@ if __name__ == "__main__":
         try:
             addons = list_addons(server, True)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
-        for k, v in addons.iteritems():
+        for k, v in addons.items():
             try:
                 logging.info("Processing addon '%s'", k)
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp, build_sys_dir)
             except libgithub.AddonError as e:
-                print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+                print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
                 error = True
             except libgithub.Error as e:
-                print "[ERROR github] in addon '{0}' {1}".format(k, str(e))
+                print("[ERROR github] in addon '{0}' {1}".format(k, str(e)))
                 error = True
             except socket.error as e:
-                print "Socket error: " + str(e)
+                print("Socket error: " + str(e))
                 error = True
             except IOError as e:
-                print "Unexpected error occured: " + str(e)
+                print("Unexpected error occured: " + str(e))
                 error = True
 
         if(error):
@@ -587,16 +587,16 @@ if __name__ == "__main__":
         try:
             checkout(wescamp, auth=git_auth, readonly=(args.checkout_readonly))
         except libgithub.AddonError as e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+            print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
             sys.exit(1)
         except libgithub.Error as e:
-            print "[ERROR github] " + str(e)
+            print("[ERROR github] " + str(e))
             sys.exit(1)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
         except IOError as e:
-            print "Unexpected error occured: " + str(e)
+            print("Unexpected error occured: " + str(e))
             sys.exit(e[0])
 
     else:

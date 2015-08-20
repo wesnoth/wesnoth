@@ -22,10 +22,10 @@ class Grammar(object):
         for element in schema.get_all_subs():
             node = Node(element, self.datatypes)
             self.elements.update({node.name: node})
-        for element in [el for el in self.elements.values() if el.parent]:
+        for element in [el for el in list(self.elements.values()) if el.parent]:
             element.inherit(self.elements[element.parent])
         # categories
-        for element in [el for el in self.elements.values() if el.category]:
+        for element in [el for el in list(self.elements.values()) if el.category]:
             self.categories[element.category].append(element)
 
     def get_element(self, name):
@@ -54,7 +54,7 @@ class Node(object):
                 self.attributes.add(Attribute(item, datatypes))
         for item in schema.get_all_subs():
             if item.name == "element":
-                print "[element] found in schema, not parsing yet"
+                print("[element] found in schema, not parsing yet")
                 # self.ext_elements...
             elif item.name == "description":
                 self.description = item.get_text("text")
