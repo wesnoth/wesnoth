@@ -1578,23 +1578,23 @@ std::vector<config> unit::get_modification_advances() const
 		if (modification_count("advancement", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
 			continue;
 
-		std::vector<std::string> temp = utils::split(adv["require_amla"]);
-		std::vector<std::string> temp2 = utils::split(adv["exclude_amla"]);
-		if (temp.empty() && temp2.empty()) {
+		std::vector<std::string> temp_require = utils::split(adv["require_amla"]);
+		std::vector<std::string> temp_exclude = utils::split(adv["exclude_amla"]);
+		if (temp_require.empty() && temp_exclude.empty()) {
 			res.push_back(adv);
 			continue;
 		}
 
-		std::sort(temp.begin(), temp.end());
-		std::sort(temp2.begin(), temp2.end());
-		std::vector<std::string> uniq, uniq2;
-		std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
-		std::unique_copy(temp2.begin(), temp2.end(), std::back_inserter(uniq2));
+		std::sort(temp_require.begin(), temp_require.end());
+		std::sort(temp_exclude.begin(), temp_exclude.end());
+		std::vector<std::string> uniq_require, uniq_exclude;
+		std::unique_copy(temp_require.begin(), temp_require.end(), std::back_inserter(uniq_require));
+		std::unique_copy(temp_exclude.begin(), temp_exclude.end(), std::back_inserter(uniq_exclude));
 		
 		bool exclusion_found = false;
-		BOOST_FOREACH(const std::string &s, uniq2)
+		BOOST_FOREACH(const std::string &s, uniq_exclude)
 		{
-			int max_num = std::count(temp2.begin(), temp2.end(), s);
+			int max_num = std::count(temp_exclude.begin(), temp_exclude.end(), s);
 			int mod_num = modification_count("advancement", s);
 			if (mod_num >= max_num) {
 				exclusion_found = true;
@@ -1606,9 +1606,9 @@ std::vector<config> unit::get_modification_advances() const
 		}
 
 		bool requirements_done = true;
-		BOOST_FOREACH(const std::string &s, uniq)
+		BOOST_FOREACH(const std::string &s, uniq_require)
 		{
-			int required_num = std::count(temp.begin(), temp.end(), s);
+			int required_num = std::count(temp_require.begin(), temp_require.end(), s);
 			int mod_num = modification_count("advancement", s);
 			if (required_num > mod_num) {
 				requirements_done = false;
