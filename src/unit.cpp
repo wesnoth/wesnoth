@@ -1594,8 +1594,9 @@ std::vector<config> unit::get_modification_advances() const
 		bool exclusion_found = false;
 		BOOST_FOREACH(const std::string &s, uniq2)
 		{
+			int max_num = std::count(temp2.begin(), temp2.end(), s);
 			int mod_num = modification_count("advancement", s);
-			if (mod_num > 0) {
+			if (mod_num >= max_num) {
 				exclusion_found = true;
 				break;
 			}
