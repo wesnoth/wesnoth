@@ -26,6 +26,9 @@ Version 1.12.4+dev:
    * Force uniform font rendering settings across X11 and Apple OS X, avoiding
      color glitches resulting from incorrect applications of subpixel hinting
      (bug #20337).
+ * WML engine:
+   * Added WML menu item and event handler views to the Gamestate Inspector
+     dialog.
  * Miscellaneous and bug fixes:
    * Default to non-strict compilation with CMake.
    * Fixed strict compilation with clang 3.5 and 3.6.
