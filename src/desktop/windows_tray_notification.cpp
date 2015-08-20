@@ -66,6 +66,23 @@ void windows_tray_notification::handle_system_event(const SDL_Event& event)
 #endif
 		destroy_tray_icon();
 	}
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	// Scenario: More than one notification arrives before the time-out triggers the tray icon destruction.
+	// Problem: Events seem to be triggered differently in SDL 2.0. For the example of two notifications arriving at once:
+	//	1. Balloon created for first notification
+	//	2. Balloon created for second notification (message_reset set to true because of first notification already present)
+	//	3. Balloon time-out for first notification (destroy_tray_icon skips tray icon destruction because of message_reset flag)
+	//	4.	SDL 1.2: Balloon time-out for second notification (destroy_tray_icon destroys tray icon)
+	//		SDL 2.0: Balloon time-out for second notification event is never received (tray icon remains indefinitely)
+	// This results in the tray icon being 'stuck' until the user quits Wesnoth *and* hovers over the tray icon (and is only then killed off by the OS).
+	// As a less-than-ideal-but-better-than-nothing-solution, call destroy_tray_icon when the user hovers mouse cursor over the tray icon. At least then the tray is 'reset'.
+	// I could not find the matching definition for 0x0200 in the headers, but this message value is received when the mouse cursor is over the tray icon.
+	// Drawback: The tray icon can still get 'stuck' if the user does not move the mouse cursor over the tray icon.
+	//	Also, accidental destruction of the tray icon can occur if the user moves the mouse cursor over the tray icon before the balloon for a single notification has expired.
+	else if (event.syswm.msg->msg.win.lParam == 0x0200 && !message_reset) {
+		destroy_tray_icon();
+	}
+#endif
 }
 
 bool windows_tray_notification::create_tray_icon()
