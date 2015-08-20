@@ -36,6 +36,11 @@ Version 1.13.1+dev:
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
      show/hide them
+   * AMLAs in [modifications] now use [advancement] tags instead of [advance] tags.
+     This means you can add an AMLA to placed unit by simply using its definition macro,
+     for example {AMLA_DEFAULT}.
+   * Add exclude_amla= key in [advancement] which disables the advancment if the unit
+     has already taken certain other advancements.
    * The WML preprocessor now writes warnings to stderr for macros redefined
      without #undef, to help detect unintentional name clashes.
    * Fix macro definition line numbers being offset by 1 in WML preprocessor
