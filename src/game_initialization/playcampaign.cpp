@@ -60,7 +60,10 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-static void show_carryover_message(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
+static void show_carryover_message(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res)
+{
+	assert(resources::teams);
+
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
 	//maybe this can be the case for scenario that only contain a story and end during the prestart event ?
@@ -83,7 +86,6 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 		report <<  _("You have been defeated!") << "\n";
 	}
 
-	assert(resources::teams);
 	//We need to write the carryover amount to the team thats why we need non const
 	std::vector<team>& teams = *resources::teams;
 	int persistent_teams = 0;

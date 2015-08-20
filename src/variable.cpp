@@ -411,6 +411,8 @@ config &scoped_wml_variable::store(const config &var_value)
 
 scoped_wml_variable::~scoped_wml_variable()
 {
+	assert(resources::gamedata);
+
 	if(activated_) {
 		resources::gamedata->clear_variable_cfg(var_name_);
 		BOOST_FOREACH(const config &i, previous_val_.child_range(var_name_))
@@ -425,10 +427,9 @@ scoped_wml_variable::~scoped_wml_variable()
 		}
 		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
 	}
-	if (resources::gamedata) {
-		assert(resources::gamedata->scoped_variables.back() == this);
-		resources::gamedata->scoped_variables.pop_back();
-	}
+
+	assert(resources::gamedata->scoped_variables.back() == this);
+	resources::gamedata->scoped_variables.pop_back();
 }
 
 void scoped_xy_unit::activate()

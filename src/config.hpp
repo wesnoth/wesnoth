@@ -143,7 +143,7 @@ public:
 		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
 		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
 		friend bool operator>=(const this_type& a, const this_type& b) { return a.i_ >= b.i_; }
-		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ > b.i_; }
 
 		this_type& operator+=(Itor::difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(Itor::difference_type n) { i_ -= n; return *this; }
@@ -184,7 +184,7 @@ public:
 		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
 		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
 		friend bool operator>=(const this_type& a, const this_type& b) { return a.i_ >= b.i_; }
-		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ > b.i_; }
 
 		this_type& operator+=(Itor::difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(Itor::difference_type n) { i_ -= n; return *this; }
