@@ -73,6 +73,8 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 
+from __future__ import print_function
+
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
@@ -482,7 +484,7 @@ def maptransform2(filename, baseline, inmap, y):
         if "_K" in inmap[y][x]:
             adj = map(string.strip, neighborhood(x, y, inmap))
 
-            # print "adjacent: %s" % adj
+            # print("adjacent: %s" % adj)
             hexcount = {}
             # Intentionally skipping 0 as it is original hex
             for i in range(1, len(adj)):
@@ -500,7 +502,7 @@ def maptransform2(filename, baseline, inmap, y):
                 if hexcount[k] > maxc:
                     maxc = hexcount[k]
                     maxk = k
-            #print "Dominated by %s" % maxk
+            #print("Dominated by %s" % maxk)
             inmap[y][x] = inmap[y][x].replace("_K", "K" + maxk)
             # There's only one kind of underground keep at present.
             inmap[y][x] = inmap[y][x].replace("Ku", "Kud")
@@ -508,23 +510,23 @@ def maptransform2(filename, baseline, inmap, y):
 def validate_stack(stack, filename, lineno):
     "Check the stack for deprecated WML syntax."
     if verbose >= 3:
-        print '"%s", line %d: %s' % (filename, lineno+1, stack)
+        print('"%s", line %d: %s' % (filename, lineno+1, stack))
     if stack:
         (tag, attributes) = tagstack[-1]
         ancestors = map(lambda x: x[0], tagstack)
         #if tag == "sound" and "attack" in ancestors:
-        #    print '"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1)
+        #    print('"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1))
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
     (tag, attributes) = tagstack[-1]
     ancestors = map(lambda x: x[0], tagstack)
     if verbose >= 3:
-        print '"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes)
+        print('"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes))
     # Detect a malformation that will cause the game to barf while attempting
     # to deserialize an empty unit.
     if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
-        print '"%s", line %d: [side] without type attribute' % (filename, lineno)
+        print('"%s", line %d: [side] without type attribute' % (filename, lineno))
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
@@ -640,8 +642,8 @@ def sanity_check(filename, lines):
             in_unit = i+1
             continue
         elif "[/unit]" in lines[i]:
-            #print '"%s", %d: unit has traits %s and notes %s' \
-            #      % (filename, in_unit, traits, notes)
+            #print('"%s", %d: unit has traits %s and notes %s' %
+            #      (filename, in_unit, traits, notes))
             if unit_id and not derived_unit:
                 missing_notes = []
                 for trait in traits:
@@ -656,14 +658,14 @@ def sanity_check(filename, lines):
                 if (notes or traits) and not has_special_notes:
                     missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
                 if missing_notes:
-                    print '"%s", line %d: unit %s is missing notes +%s' \
-                          % (filename, in_unit, unit_id, "+".join(missing_notes))
+                    print('"%s", line %d: unit %s is missing notes +%s' %
+                          (filename, in_unit, unit_id, "+".join(missing_notes)))
                 if missing_traits:
-                    print '"%s", line %d: unit %s is missing traits %s' \
-                          % (filename, in_unit, unit_id, "+".join(missing_traits))
+                    print('"%s", line %d: unit %s is missing traits %s' %
+                          (filename, in_unit, unit_id, "+".join(missing_traits)))
                 if not (notes or traits) and has_special_notes:
-                    print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
-                          % (filename, in_unit, unit_id)
+                    print('"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' %
+                          (filename, in_unit, unit_id))
             in_unit = None
             traits = []
             notes = []
@@ -774,13 +776,13 @@ def sanity_check(filename, lines):
                 recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
                 for utype in recruitment_pattern[1]:
                     if not utype in usage_types:
-                        print '"%s", line %d: unknown usage class %s' \
-                              % (filename, i+1, utype)
+                        print('"%s", line %d: unknown usage class %s' %
+                              (filename, i+1, utype))
             elif key == "side":
                 try:
                     if not in_generator and sidecount != int(value):
-                        print '"%s", line %d: side number %s is out of sequence' \
-                              % (filename, i+1, value)
+                        print('"%s", line %d: side number %s is out of sequence' %
+                              (filename, i+1, value))
                 except ValueError:
                     pass	# Ignore ill-formed integer literals
         except TypeError:
@@ -833,11 +835,11 @@ def sanity_check(filename, lines):
                 present.append(value)
             if has_tr_mark:
                 if '{' in value:
-                    print '"%s", line %d: macro reference in translatable string'\
-                          % (filename, i+1)
+                    print('"%s", line %d: macro reference in translatable string' %
+                          (filename, i+1))
                 if future and re.search("[.,!?]  ", lines[i]):
-                    print '"%s", line %d: extraneous space in translatable string'\
-                          % (filename, i+1)
+                    print('"%s", line %d: extraneous space in translatable string' %
+                          (filename, i+1))
             # Check correctness of translation marks and descriptions
             if key.startswith("#"):	# FIXME: parse_attribute is confused.
                 pass
@@ -847,19 +849,19 @@ def sanity_check(filename, lines):
                 pass
             elif key in ("message", "user_description", "story", "note", "text", "summary", "caption", "label", "unit_description") and not value.startswith("$"):
                 if not has_tr_mark:
-                    print '"%s", line %d: %s needs translation mark' \
-                          % (filename, i+1, key)
+                    print('"%s", line %d: %s needs translation mark' %
+                          (filename, i+1, key))
                     value = "_ " + value
                     modified = True
             elif  key == "description":
                 if (in_trait or in_objective) and not has_tr_mark:
-                    print '"%s", line %d: description in [objectives] needs translation mark' \
-                          % (filename, i+1)
+                    print('"%s", line %d: description in [objectives] needs translation mark' %
+                          (filename, i+1))
                     value = "_ " + value
                     modified = True
                 elif not (in_trait or in_objective) and has_tr_mark:
-                    print '"%s", line %d: description should not have translation mark' \
-                          % (filename, i+1)
+                    print('"%s", line %d: description should not have translation mark' %
+                          (filename, i+1))
                     value = value.replace("_", "", 1)
                     modified = True
                 if in_person:
@@ -867,11 +869,11 @@ def sanity_check(filename, lines):
                 elif value in ('narrator', 'unit', 'second_unit') or value[0] in ("$", "{"):
                     continue
                 elif not in_objective and value not in present:
-                    print '"%s", line %d: unknown \'%s\' referred to by description' \
-                          % (filename, i+1, value)
+                    print('"%s", line %d: unknown \'%s\' referred to by description' %
+                          (filename, i+1, value))
             elif has_tr_mark:
-                print '"%s", line %d: %s should not have a translation mark' \
-                          % (filename, i+1, key)                
+                print('"%s", line %d: %s should not have a translation mark' %
+                      (filename, i+1, key))
                 value = value.replace("_", "", 1)
                 modified = True
         except TypeError:
@@ -893,16 +895,16 @@ def sanity_check(filename, lines):
         if "#textdomain" in lines[i]:
             textdomains.append(i+1)
     if not textdomains:
-        print '"%s", line 1: no textdomain string' % filename
+        print('"%s", line 1: no textdomain string' % filename)
     elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
         pass
     elif len(textdomains) > 1:
-        print '"%s", line %d: multiple textdomain strings on lines %s' % \
-              (filename, textdomains[0], ", ".join(map(str, textdomains)))
+        print('"%s", line %d: multiple textdomain strings on lines %s' %
+              (filename, textdomains[0], ", ".join(map(str, textdomains))))
     else:
         w = textdomains[0]
-        print '"%s", line %d: single textdomain declaration not on line 1.' % \
-              (filename, w)
+        print('"%s", line %d: single textdomain declaration not on line 1.' %
+              (filename, w))
         lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
         modified = True
     return (lines, modified)
@@ -911,28 +913,30 @@ def consistency_check():
     "Consistency-check state information picked up by sanity_check"
     utypes = []
     for (filename, (rl, recruit), (pl, recruitment_pattern)) in sides:
-        #print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
+        #print("%s: %d=%s, %d=%s" % (filename, rl, recruit, pl, recruitment_pattern))
         for rtype in recruit:
             if rtype not in usage:
-                print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
+                print('"%s", line %d: %s has no usage type' % (filename, rl, rtype))
                 continue
             utype = usage[rtype]
             if utype not in recruitment_pattern:
-                print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
+                print('"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' %
+                      (filename, rl, rtype, utype, ", ".join(recruitment_pattern)))
             utypes.append(utype)
         for utype in recruitment_pattern:
             if utype not in utypes:
-                print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, rl, utype)
+                print('"%s", line %d: %s doesn\'t match a recruitable type for its side' %
+                      (filename, rl, utype))
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
-                print '"%s", line %d: %s has unknown movement type' \
-                      % (filename, line, unit_id)
+                print('"%s", line %d: %s has unknown movement type' %
+                      (filename, line, unit_id))
     if races:
         for (unit_id, filename, line, race) in unit_races:
             if race not in races:
-                print '"%s", line %d: %s has unknown race' \
-                      % (filename, line, unit_id)
+                print('"%s", line %d: %s has unknown race' %
+                      (filename, line, unit_id))
 
 # Syntax transformations
 
@@ -986,7 +990,7 @@ def hack_syntax(filename, lines):
                         if "no-icon" not in comment:
                             new_line = leader(lines[j]) + "description=_"+description+'\n'
                             if verbose:
-                                print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
+                                print('"%s", line %d: inserting %s' % (filename, i+1, `new_line`))
                             lines.insert(j+1, new_line)
                             j += 1
                             modcount += 1
@@ -1006,7 +1010,7 @@ def hack_syntax(filename, lines):
             if need_image:
                 # This line presumes the code has been through wmlindent
                 if verbose:
-                    print 'wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
+                    print('wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1))
                 lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
                 modcount += 1        
             need_image = False
@@ -1030,34 +1034,35 @@ def hack_syntax(filename, lines):
         elif "[/unit]" in lines[i]:
             if has_defense_anim:
                 if get_hit_sound:
-                    print 'wmllint: "%s", lines %d, %d: unit%s has both deprecated get_hit_sound key and a DEFENSE_ANIM'%(filename, get_hit_sound+1, has_defense_anim+1, unit_id)
+                    print('wmllint: "%s", lines %d, %d: unit%s has both deprecated get_hit_sound key and a DEFENSE_ANIM' %
+                          (filename, get_hit_sound+1, has_defense_anim+1, unit_id))
                 if image_defensive:
                     if re.search('{DEFENSE_ANIM[A-Z_]* +["(]*' + defend_image, lines[has_defense_anim]):
                         image_done.append(image_defensive)
                     else:
-                        print 'wmllint: "%s", lines %d, %d: unit%s has both outdated image_defensive key and a DEFENSE_ANIM' \
-                                % (filename, image_defensive+1, has_defense_anim+1, unit_id)
+                        print('wmllint: "%s", lines %d, %d: unit%s has both outdated image_defensive key and a DEFENSE_ANIM' %
+                              (filename, image_defensive+1, has_defense_anim+1, unit_id))
                 if defend_frame:
-                    print 'wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' \
-                          % (filename, defend_frame+1, has_defense_anim+1, unit_id)
+                    print('wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' %
+                          (filename, defend_frame+1, has_defense_anim+1, unit_id))
             elif unit_id and get_hit_sound:
                 if not defend_image:
                     defend_image = unit_image
                 new_anim = "{DEFENSE_ANIM %s %s %s}" % \
                            (defend_image, unit_image, unit_sound)
                 (key, prefix, val, comment) = parse_attribute(lines[get_hit_sound])
-                print 'wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound+1, unit_id, new_anim)
+                print('wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound+1, unit_id, new_anim))
                 lines[get_hit_sound] = leader(lines[get_hit_sound]) \
                                        + new_anim + comment + "\n"
                 modcount += 1
                 if image_defensive:
                     image_done.append(image_defensive)
                 if defend_frame:
-                    print 'wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' \
-                          % (filename, defend_frame+1, get_hit_sound+1, unit_id)
+                    print('wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' %
+                          (filename, defend_frame+1, get_hit_sound+1, unit_id))
             elif image_defensive:
-                print 'wmllint: "%s", line %d: unit%s has outdated image_defensive key' \
-                      % (filename, image_defensive+1, unit_id)
+                print('wmllint: "%s", line %d: unit%s has outdated image_defensive key' %
+                      (filename, image_defensive+1, unit_id))
             in_unit = None
             unit_id = ""
             unit_image = None
@@ -1101,8 +1106,8 @@ def hack_syntax(filename, lines):
     # If image_defensive is the same image as the one in DEFENSE_ANIM, it is safe to discard
     image_done.reverse()
     for bye in image_done:
-        print 'wmllint: "%s", line %d: removing outdated attribute (%s)' \
-              % (filename, bye+1, lines[bye].strip())
+        print('wmllint: "%s", line %d: removing outdated attribute (%s)' %
+              (filename, bye+1, lines[bye].strip()))
         del lines[bye]
         modcount += 1
     # Boucman's transformation of animation syntax.
@@ -1148,8 +1153,8 @@ def hack_syntax(filename, lines):
                     female_attack_index += 1
             elif "[animation]" in lines[i] and in_attack:
                 #if verbose:
-                #    print '"%s", line %d: [animation] within [attack]' \
-                #          % (filename, i+1)
+                #    print('"%s", line %d: [animation] within [attack]' %
+                #          (filename, i+1))
                 # This weird piece of code is because attacks for female
                 # variants don't have names.  Instead, they're supposed
                 # to pick up the name of the corresponding male attack,
@@ -1159,7 +1164,7 @@ def hack_syntax(filename, lines):
                 if attackname == None and in_female:
                     attackname = animations[male_attack_start + female_attack_index].name
                 if not attackname:
-                    print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
+                    print('"%s", line %d: cannot deduce attack name'%(filename, i+1))
                 if in_variation:
                     variation = variation_index
                 else:
@@ -1171,12 +1176,12 @@ def hack_syntax(filename, lines):
                 if animations and animations[-1].animstart != None and animations[-1].animend == None:
                     animations[-1].animend = i
                 else:
-                    print '"%s", line %d: [animation] ending here may be ill-formed'%(filename, i+1)
+                    print('"%s", line %d: [animation] ending here may be ill-formed'%(filename, i+1))
             elif "[/attack]" in lines[i]:
                 inattack = False;
                 attackname = None
                 if animations and (animations[-1].attackstart == None or animations[-1].attackend != None):
-                    print '"%s", line %d: [attack] ending here may be ill-formed'%(filename, i+1)
+                    print('"%s", line %d: [attack] ending here may be ill-formed'%(filename, i+1))
                 elif animations:
                     # This loop is needed because a single attack tag may
                     # enclose both hit and miss animations.
@@ -1189,7 +1194,7 @@ def hack_syntax(filename, lines):
             # Only pick up the *first* name field in an attack block;
             # by convention, it will be right after the opening [attack] tag
             elif in_attack and not in_animation and not attackname:
-                #print filename + ":" + `i+1` + ";" + `lines[i]` 
+                #print(filename + ":" + `i+1` + ";" + `lines[i]`)
                 fields = lines[i].strip().split('#')
                 syntactic = fields[0]
                 comment = ""
@@ -1206,7 +1211,8 @@ def hack_syntax(filename, lines):
         animations.reverse()
         for aframe in animations:
             if verbose:
-                print '"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' % (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1)
+                print('"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' %
+                      (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1))
             # Make a copy of the animation block, change its enclosing tags,
             # outdent it, and add the needed filter clause.
             animation = lines[aframe.animstart:aframe.animend+1]
@@ -1287,7 +1293,7 @@ def hack_syntax(filename, lines):
         elif "[/effect]" in lines[i]:
             converting = in_effect = False
         elif in_effect and not attackname:
-            #print filename + ":" + `i+1` + ";" + `lines[i]` 
+            #print(filename + ":" + `i+1` + ";" + `lines[i]`)
             fields = lines[i].strip().split('#')
             syntactic = fields[0]
             comment = ""
@@ -1296,7 +1302,7 @@ def hack_syntax(filename, lines):
             if syntactic.strip().startswith("name"):
                 attackname = syntactic.split("=")[1].strip()
         elif converting and "[animation]" in lines[i]:
-            print '"%s", line %d: converting [animation] in [effect] '%(filename, i+1)
+            print('"%s", line %d: converting [animation] in [effect] '%(filename, i+1))
             ws = leader(lines[i])
             outer = outdent(ws)
             assert attackname != None
@@ -1328,7 +1334,7 @@ def hack_syntax(filename, lines):
         elif "[/attack]" in lines[i]:
             if specials:
                 if verbose:
-                    print "Lifting obsolete specials:", " ".join(specials)
+                    print("Lifting obsolete specials:", " ".join(specials))
                 ws = leader(lines[i])
                 insertion = ws + baseindent + "[specials]\n"
                 for special in specials:
@@ -1339,20 +1345,20 @@ def hack_syntax(filename, lines):
                                      "poison", "slow", "stone", "swarm",):
                         insertion += ws + baseindent*2 + "{WEAPON_SPECIAL_" + special.upper() + "}\n"
                     else:
-                        print "Don't know how to convert '%s'" % special
+                        print("Don't know how to convert '%s'" % special)
                 insertion += ws + baseindent + "[/specials]\n"
                 lines[lastspecial] = insertion
                 modcount += 1
         elif "[/unit]" in lines[i]:
             if abilities:
                 if verbose:
-                    print "Lifting obsolete abilities:", " ".join(abilities)
+                    print("Lifting obsolete abilities:", " ".join(abilities))
                 ws = leader(lines[i])
                 insertion = ws + baseindent + "[abilities]\n"
                 for ability in abilities:
                     if ability == "leadership":
                         if level is None:
-                            print "warning: can't convert ancient leadership ability"
+                            print("warning: can't convert ancient leadership ability")
                         else:
                             insertion += ws + baseindent*2 + "{ABILITY_LEADERSHIP_LEVEL_"+level+"}\n"
                     elif ability in ("cures", "heals", "nightstalk", "regenerates",
@@ -1360,7 +1366,7 @@ def hack_syntax(filename, lines):
                                      "teleport", "ambush",):
                         insertion += ws + baseindent*2 + "{ABILITY_" + ability.upper() + "}\n"
                     else:
-                        print "Don't know how to convert '%s'" % ability
+                        print("Don't know how to convert '%s'" % ability)
                 insertion += ws + baseindent + "[/abilities]\n"
                 lines[lastability] = insertion
                 modcount += 1
@@ -1397,14 +1403,14 @@ def hack_syntax(filename, lines):
             if converting:
                 assert attackname != None
                 lines[i] = lines[i].replace("/attack", "/attack_anim")
-                print '"%s", line %d: converting frame in [attack]'%(filename, converting+1)
+                print('"%s", line %d: converting frame in [attack]'%(filename, converting+1))
                 ws = leader(lines[converting])
                 outer = outdent(ws)
                 if soundpath:
                     if misspath:
                         if not soundtime:
                             soundtime = "-100"
-                            print '"%s", line %d: inserting "-100" for missing time value in SOUND:HIT_AND_MISS' % (filename, converting+1)
+                            print('"%s", line %d: inserting "-100" for missing time value in SOUND:HIT_AND_MISS' % (filename, converting+1))
                         lines[converting] = ws + "{SOUND:HIT_AND_MISS %s %s %s}\n" \
                                             % (soundpath, misspath, soundtime) + lines[converting]
                     else:
@@ -1415,7 +1421,8 @@ def hack_syntax(filename, lines):
                             continue
                         else:
                             lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
-                            print '"%s", line %d: no match found for [sound] time (%s), placing sound path in first frame' % (filename, where+1, soundtime)
+                            print('"%s", line %d: no match found for [sound] time (%s), placing sound path in first frame' %
+                                  (filename, where+1, soundtime))
                 insertion = outer + "[/attack]\n" \
                             + outer + "[attack_anim]\n" \
                             + ws + "[attack_filter]\n" \
@@ -1457,7 +1464,8 @@ def hack_syntax(filename, lines):
                 begins.append((syntactic.split("=")[1].strip(), i))
             # Ignore sound tags, and their contents, within [attack]
             if "[sound]" in lines[i]:
-                print '"%s", line %d: [sound] within [attack] discarded (path will be saved)' % (filename, i+1)
+                print('"%s", line %d: [sound] within [attack] discarded (path will be saved)' %
+                      (filename, i+1))
                 in_sound = True
                 modcount += 1
             if "[/sound]" in lines[i]:
@@ -1525,7 +1533,7 @@ def hack_syntax(filename, lines):
                 in_death_commented = lines[i].strip().startswith("#")
             elif "[/death]" in lines[i]:
                 if frame_start is None:
-                    print >>sys.stderr, '"%s", %d: [death] with no frames' % (filename, i)
+                    print('"%s", %d: [death] with no frames' % (filename, i), file=sys.stderr)
                     continue
                 # Find the image tag
                 for inside in range(frame_start, frame_end):
@@ -1533,8 +1541,8 @@ def hack_syntax(filename, lines):
                         image = lines[inside].strip().split("=")[1]
                         break
                 else:
-                    print >>sys.stderr,'"%s", line %d: no image in last frame'\
-                          % (filename, i)
+                    print('"%s", line %d: no image in last frame' %
+                          (filename, i), file=sys.stderr)
                     continue
                 # Modify the death wrapper
                 lines[i] = lines[i].replace("death", "animation")
@@ -1580,9 +1588,9 @@ def hack_syntax(filename, lines):
             name_pos = wmlfind("name=", name_pos)
         for (key, linenos) in duplist.items():
             if len(linenos) > 1:
-                print >>sys.stderr, 'warning: duplicated attack %s at:' % key
+                print('warning: duplicated attack %s at:' % key, file=sys.stderr)
                 for dup in linenos:
-                    print >>sys.stderr, '"%s", %d: %s' % (filename, dup, key)
+                    print('"%s", %d: %s' % (filename, dup, key), file=sys.stderr)
     # Lift obsolete image_short and image_long tags
     expanded = """\
 [attack_anim]
@@ -1630,9 +1638,9 @@ start_time=-150
             (new, num) = re.subn(r'{UNIT +(\([^)]*\)|"[^"]*"|[^(" ][^ ]*) +(\([^)]*\)|"[^"]*"|[^(" ][^ ]*) +(\([^)]*\)|_? *"[^"]*"|_? *[^(" ][^ ]*) +([0-9]+) +([0-9]+|[^ ]*\$[^ ]*x[^ ]*|\(?{[A-Z0-9_]*X[A-Z0-9_]*}\)?) +([0-9]+|[^ ]*\$[^ ]*y[^ ]*|\(?{[A-Z0-9_]*Y[A-Z0-9_]*}\)?)}', r'{LOYAL_UNIT \4 \1 \5 \6 \2 \3}', lines[i])
             if num > 0:
                 lines[i] = new
-                print '"%s", line %d: %s -> %s' % (filename, i+1, old, new.strip())
+                print('"%s", line %d: %s -> %s' % (filename, i+1, old, new.strip()))
             if num == 0:
-                print '"%s", line %d: UNIT macro not converted to LOYAL_UNIT (%s)' % (filename, i+1, old)
+                print('"%s", line %d: UNIT macro not converted to LOYAL_UNIT (%s)' % (filename, i+1, old))
     # More syntax transformations would go here.
     return (lines, modcount)
 
@@ -1715,7 +1723,7 @@ def translator(filename, mapxforms, textxform, versions):
         if not map_only:
             line = mfile.pop(0)
             if verbose >= 3:
-                sys.stdout.write(line + terminator)
+                print(line, end=terminator)
             lineno += 1
         # Check for one certain error condition
         if line.count("{") and line.count("}"):
@@ -1724,9 +1732,8 @@ def translator(filename, mapxforms, textxform, versions):
             if refname == refname.upper():
                 refname = None
             if 'mask=' in line and refname and not refname.endswith(".mask"):
-                print >>sys.stderr, \
-                      '"%s", line %d: fatal error, mask file without .mask extension (%s)' \
-                      % (filename, lineno+1, refname)
+                print('"%s", line %d: fatal error, mask file without .mask extension (%s)' %
+                      (filename, lineno+1, refname), file=sys.stderr)
                 sys.exit(1)
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
@@ -1756,7 +1763,7 @@ def translator(filename, mapxforms, textxform, versions):
             baseline = 0
             cont = True
             if verbose >= 3:
-                print "*** Entering map mode."
+                print("*** Entering map mode.")
             if not map_only:
                 fields = line.split('"')
                 if fields[1].strip():
@@ -1767,7 +1774,7 @@ def translator(filename, mapxforms, textxform, versions):
             while cont and mfile:
                 line = mfile.pop(0)
                 if verbose >= 3:
-                    sys.stdout.write(line + terminator)
+                    print(line, end=terminator)
                 lineno += 1
                 # This code supports ignoring comments and header lines
                 if len(line) == 0 or line[0] == '#' or '=' in line:
@@ -1781,10 +1788,10 @@ def translator(filename, mapxforms, textxform, versions):
                         if usage == 'mask':
                             add_border = False
                             if filename.endswith(".map"):
-                                print "warning: usage=mask in file with .map extension"
+                                print("warning: usage=mask in file with .map extension")
                         elif usage == 'map':
                             if filename.endswith(".mask"):
-                                print "warning: usage=map in file with .mask extension"
+                                print("warning: usage=map in file with .mask extension")
                     if len(line) == 0:
                         have_delimiter = True
                     newdata.append(line + terminator)
@@ -1792,7 +1799,7 @@ def translator(filename, mapxforms, textxform, versions):
                 if '"' in line:
                     cont = False
                     if verbose >= 3:
-                        print "*** Exiting map mode."
+                        print("*** Exiting map mode.")
                     line = line.split('"')[0]
                 if line:
                     if ',' in line:
@@ -1801,9 +1808,8 @@ def translator(filename, mapxforms, textxform, versions):
                         fields = map(lambda x: x, line)
                     outmap.append(fields)
                     if not maskwarn and maptype == 'map' and "_s" in line:
-                        print >>sys.stderr, \
-                              '"%s", line %d: warning, fog in map file' \
-                              % (filename, lineno+1)
+                        print('"%s", line %d: warning, fog in map file' %
+                              (filename, lineno+1), file=sys.stderr)
                         maskwarn = True
             # Checking the outmap length here is a bit of a crock;
             # the one-line map we don't want to mess with is in the
@@ -1824,7 +1830,7 @@ def translator(filename, mapxforms, textxform, versions):
                 add_border = False
             if add_border:
                 if verbose:
-                    print "adding border..."
+                    print("adding border...")
                 newdata.append("border_size=1" + terminator)
                 have_header = True
                 # Start by duplicating the current outermost ring
@@ -1865,9 +1871,11 @@ def translator(filename, mapxforms, textxform, versions):
             if newline != line:
                 modified = True
                 if verbose > 0:
-                    print >>sys.stderr, 'wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
+                    print('wmllint: "%s", line %d: %s -> %s.' %
+                          (filename, lineno, line, newline), file=sys.stderr)
         elif "map_data=" in line and line.count('"') > 1:
-            print >>sys.stderr, 'wmllint: "%s", line %d: one-line map.' % (filename, lineno)
+            print('wmllint: "%s", line %d: one-line map.' %
+                  (filename, lineno), file.sys.stderr)
             newdata.append(line + terminator)
         else:
             # Handle text (non-map) lines
@@ -1891,9 +1899,11 @@ def translator(filename, mapxforms, textxform, versions):
                         tagstack.append((tag, {}))
                     else:
                         if len(tagstack) == 0:
-                            print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
+                            print('"%s", line %d: closer [/%s] with tag stack empty.' %
+                                  (filename, lineno+1, tag))
                         elif tagstack[-1][0] != tag:
-                            print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1][0], tag)
+                            print('"%s", line %d: unbalanced [%s] closed with [/%s].' %
+                                  (filename, lineno+1, tagstack[-1][0], tag))
                         else:
                             if validate:
                                 validate_on_pop(tagstack, tag, filename, lineno)
@@ -1915,7 +1925,8 @@ def translator(filename, mapxforms, textxform, versions):
                 unbalanced = False
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
-        print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
+        print('"%s", line %d: tag stack nonempty (%s) at end of file.' %
+              (filename, lineno, tagstack), file=sys.stderr)
     tagstack = []
     if iswml(filename):
         # Perform semantic sanity checks
@@ -1955,9 +1966,11 @@ def translator(filename, mapxforms, textxform, versions):
             if depth == 0:
                 unclosed = None
                 if quotecount % 2:
-                    print >>sys.stderr, '"%s", line %d: unbalanced quote.' % (filename, startline)
+                    print('"%s", line %d: unbalanced quote.' %
+                          (filename, startline), file=sys.stderr)
     if unclosed:
-        print >>sys.stderr, '"%s", line %d: unbalanced {.' % (filename, unclosed)
+        print('"%s", line %d: unbalanced {.' %
+              (filename, unclosed), file=sys.stderr)
     # Return None if the transformation functions made no changes.
     if modified:
         return transformed
@@ -1978,7 +1991,7 @@ def allcfgfiles(dir):
     if not os.path.isdir(dir):
         if interesting(dir):
             if not os.path.exists(dir):
-                sys.stderr.write("wmllint: %s does not exist\n" % dir)
+                print("wmllint: %s does not exist" % dir, file=sys.stderr)
             else:
                 datafiles.append(dir)
     else:
@@ -1992,7 +2005,7 @@ def allcfgfiles(dir):
     return map(os.path.normpath, datafiles)
 
 def help():
-        sys.stderr.write("""\
+        print("""\
 Usage: wmllint [options] [dir]
     Included because wmllint has dropped support for pre-1.4 Wesnoth WML.
     Use it to convert 1.0 and 1.2 material to "1.4", then use regular wmllint
@@ -2019,8 +2032,7 @@ Usage: wmllint [options] [dir]
                                defaulting to universal newlines support there.
     --future                   Enable experimental WML conversions.
     More about wmllint can be found in the introduction in the file itself, and
-    at http://wiki.wesnoth.org/Maintenance_tools.
-""")
+    at http://wiki.wesnoth.org/Maintenance_tools.""", file=sys.stderr)
 
 if __name__ == '__main__':
     global versions
@@ -2073,7 +2085,7 @@ if __name__ == '__main__':
         elif switch in ('-v', '--verbose'):
             verbose += 1
     if clean and revert:
-        sys.stderr.write("wmllint: can't do clean and revert together.\n")
+        print("wmllint: can't do clean and revert together.", file=sys.stderr)
         sys.exit(1)
 
     # Compute the series of version upgrades to perform, and describe it.
@@ -2084,13 +2096,13 @@ if __name__ == '__main__':
     if oldversion in versions:
         versions = versions[versions.index(oldversion):]
     else:
-        print >>sys.stderr, "wmllint: unrecognized version."
+        print("wmllint: unrecognized version.", file=sys.stderr)
         sys.exit(1)
     if not dryrun and not clean and not revert and not diffs and len(versions) > 1:
         explain = "Upgrades for:"
         for i in range(len(versions)-1):
             explain += " %s -> %s," % (versions[i],  versions[i+1])
-        sys.stdout.write(explain[:-1] + ".\n")
+        print(explain[:-1] + ".")
     fileconversions = map(lambda x: filemoves[x], versions[:-1])
 
     def hasdigit(str):
@@ -2143,8 +2155,8 @@ if __name__ == '__main__':
             newstyle = newstyle or lock_terrain_coding == "newstyle"
             # Maybe we lose...
             if not oldstyle and not newstyle:
-                print '"%s", line %d: leaving ambiguous terrain value %s alone.' \
-                      % (filename, lineno, value)
+                print('"%s", line %d: leaving ambiguous terrain value %s alone.' %
+                      (filename, lineno, value))
             else:
                 if oldstyle and not lock_terrain_coding == "newstyle":
                     # 1.2.x to 1.3.2 conversions
@@ -2162,8 +2174,8 @@ if __name__ == '__main__':
                             elif c in conversion1:
                                 newterrains += conversion1[c] + ","
                             else:
-                                print "%s, line %d: custom terrain %s ignored." \
-                                  % (filename, lineno+1, c)
+                                print("%s, line %d: custom terrain %s ignored." %
+                                      (filename, lineno+1, c))
                         else: # inmacro == True
                             if c == '}':
                                 inmacro = False
@@ -2182,7 +2194,7 @@ if __name__ == '__main__':
             if m and not m.group(1):
                 msg = '"%s", line %d: translatability mark before non-string' % \
                       (filename, lineno)
-                print >>sys.stderr, msg
+                print(msg, file=sys.stderr)
         # Perform unconditional line changes
         for (old, new) in linechanges:
             transformed = transformed.replace(old, new)
@@ -2190,7 +2202,7 @@ if __name__ == '__main__':
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
                   (filename, lineno, line.strip(), transformed.strip())
-            print msg
+            print(msg)
         return transformed
 
     if upconvert and "1.3.1" in versions and "older" not in versions:
@@ -2227,17 +2239,17 @@ if __name__ == '__main__':
             lock_terrain_coding = "newstyle"
         for fn in allcfgfiles(dir):
             if verbose >= 2:
-                print fn + ":"
+                print(fn + ":")
             backup = fn + "-bak"
             if clean or revert:
                 # Do housekeeping
                 if os.path.exists(backup):
                     if clean:
-                        print "wmllint: removing %s" % backup
+                        print("wmllint: removing %s" % backup)
                         if not dryrun:
                             os.remove(backup)
                     elif revert:
-                        print "wmllint: reverting %s" % backup
+                        print("wmllint: reverting %s" % backup)
                         if not dryrun:
                             if sys.platform == 'win32':
                                 os.remove(fn)
@@ -2257,7 +2269,7 @@ if __name__ == '__main__':
                 try:
                     changed = translator(fn, maptransforms, texttransform, versions)
                     if changed:
-                        print "wmllint: converting", fn
+                        print("wmllint: converting", fn)
                         if not dryrun:
                             if sys.platform == 'win32' and os.path.exists(backup):
                                 os.remove(backup)
@@ -2266,9 +2278,9 @@ if __name__ == '__main__':
                             ofp.write(changed)
                             ofp.close()
                 except maptransform_error, e:
-                    sys.stderr.write("wmllint: " + `e` + "\n")
+                    print("wmllint: " + `e`, file=sys.stderr)
                 except:
-                    sys.stderr.write("wmllint: internal error on %s\n" % fn)
+                    print("wmllint: internal error on %s" % fn, file=sys.stderr)
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
                     raise exc_type, exc_value, exc_traceback
             # Time for map and main file renames
@@ -2276,15 +2288,15 @@ if __name__ == '__main__':
             if not revert and not diffs:
                 if not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
                     mover = vcmove(fn, fn + ".map")
-                    print mover
+                    print(mover)
                     if not dryrun:
                         os.system(mover)
                 elif fn in is_main and os.path.isdir(fn.replace('.cfg', '')):
                     main = fn.replace('.cfg', '/_main.cfg')
                     if os.path.exists(main):
-                        print 'wmllint: both "%s" and "%s" topfiles exist' % (fn, main)
+                        print('wmllint: both "%s" and "%s" topfiles exist' % (fn, main))
                     else:
-                        print 'wmllint: renaming "%s" to "%s"' % (fn, main)
+                        print('wmllint: renaming "%s" to "%s"' % (fn, main))
                         if not dryrun:
                             os.rename(fn, main)
                             if os.path.exists(backup):
