@@ -21,6 +21,10 @@
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+#include "sdl/keyboard.hpp"
+#endif
+
 namespace hotkey {
 
 /* forward declarations */
@@ -187,39 +191,27 @@ class hotkey_keyboard: public hotkey_base {
 		/**
 		 * Initialise new instance of this class that has no key associated with is.
 		 */
-		hotkey_keyboard() : hotkey_base(), keycode_(SDLK_UNKNOWN) {}
+		hotkey_keyboard() : hotkey_base(), scancode_(SDL_SCANCODE_UNKNOWN) {}
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		/**
-		 * Set the keycode associated with this class.
-		 * @param keycode The SDL_Keycode that this hotkey should be associated with
+		 * Set the scancode associated with this class.
+		 * @param scancode The SDL_Scancode that this hotkey should be associated with
 		 */
-		void set_keycode(SDL_Keycode keycode) {keycode_ = keycode;}
-#else
-		/**
-		 * Set the keycode associated with this class.
-		 * @param keycode The SDLKey that this hotkey should be associated with
-		 */
-	void set_keycode(SDLKey keycode) {keycode_ = keycode;}
-#endif
+		void set_scancode(SDL_Scancode scancode) {scancode_ = scancode;}
 
-	/**
-	 * Checks whether this hotkey has been set to a sensible value.
-	 * @ return true if it is a known key
-	 */
-	virtual bool valid() const {return keycode_ != SDLK_UNKNOWN;}
+		/**
+		 * Checks whether this hotkey has been set to a sensible value.
+		 * @ return true if it is a known key
+		 */
+		virtual bool valid() const {return scancode_ != SDL_SCANCODE_UNKNOWN;}
 
 	protected:
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	SDL_Keycode keycode_;
-#else
-	SDLKey keycode_;
-#endif
+		SDL_Scancode scancode_;
 
-	virtual void save_helper(config& cfg) const;
-	virtual const std::string get_name_helper() const;
-	virtual bool matches_helper(const SDL_Event &event) const;
-	virtual bool bindings_equal_helper (hotkey_ptr other) const;
+		virtual void save_helper(config& cfg) const;
+		virtual const std::string get_name_helper() const;
+		virtual bool matches_helper(const SDL_Event &event) const;
+		virtual bool bindings_equal_helper (hotkey_ptr other) const;
 };
 
 

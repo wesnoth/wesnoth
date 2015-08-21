@@ -32,9 +32,8 @@
 #include "key.hpp"
 
 #include "SDL.h"
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
+
 #include "sdl/keyboard.hpp"
-#endif
 
 static lg::log_domain log_config("config");
 #define ERR_G  LOG_STREAM(err,   lg::general)
@@ -166,7 +165,13 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 	{
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
-		keyboard->set_keycode(event.key.keysym.sym);
+		SDL_Scancode code;
+#if  SDL_VERSION_ATLEAST(2, 0, 0)
+		code = event.key.keysym.scancode;
+#else
+		code = SDL_GetScancodeFromKey(event.key.keysym.sym);
+#endif
+		keyboard->set_scancode(code);
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
@@ -221,18 +226,11 @@ hotkey_ptr load_from_config(const config& cfg)
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
-		if (keycode == SDLK_UNKNOWN) {
+		SDL_Scancode scancode = SDL_GetScancodeFromName(key_cfg.c_str());
+		if (scancode == SDL_SCANCODE_UNKNOWN) {
 			ERR_G << "Unknown key: " << key_cfg << "\n";
 		}
-#else
-		SDLKey keycode = SDL_GetKeyFromName(key_cfg.c_str());
-		if (keycode == SDLK_UNKNOWN) {
-			ERR_G << "Unknown key: " << key_cfg << "\n";
-		}
-#endif
-		keyboard->set_keycode(keycode);
+		keyboard->set_scancode(scancode);
 	}
 
 	if (base == hotkey_ptr())
@@ -285,7 +283,7 @@ void hotkey_mouse::save_helper(config &item) const
 
 const std::string hotkey_keyboard::get_name_helper() const
 {
-	std::string ret = std::string(SDL_GetKeyName(keycode_));
+	std::string ret = std::string(SDL_GetScancodeName(scancode_));
 	if (ret.size() == 1)
 		boost::algorithm::to_lower(ret);
 	return ret;
@@ -297,7 +295,14 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 			event.type != SDL_KEYUP)
 		return false;
 
-	if (event.key.keysym.sym != keycode_)
+	SDL_Scancode code;
+#if  SDL_VERSION_ATLEAST(2, 0, 0)
+	code = event.key.keysym.scancode;
+#else
+	code = SDL_GetScancodeFromKey(event.key.keysym.sym);
+#endif
+
+	if (code != scancode_)
 		return false;
 
 	return true;
@@ -313,7 +318,7 @@ bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 
 void hotkey_keyboard::save_helper(config &item) const
 {
-	if (keycode_ != SDLK_UNKNOWN) item["key"] = SDL_GetKeyName(keycode_);
+	if (scancode_ != SDL_SCANCODE_UNKNOWN) item["key"] = SDL_GetScancodeName(scancode_);
 }
 
 bool has_hotkey_item(const std::string& command)
@@ -332,7 +337,7 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 	if (other_k == hotkey_keyboard_ptr())
 		return false;
 
-	return keycode_ == other_k->keycode_;
+	return scancode_ == other_k->scancode_;
 }
 
 void del_hotkey(hotkey_ptr item) {
