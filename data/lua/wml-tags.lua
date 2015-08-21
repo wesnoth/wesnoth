@@ -354,6 +354,33 @@ wml_actions["repeat"] = function(cfg)
 	end
 end
 
+function wml_actions.foreach(cfg)
+	local array_name = cfg.variable or helper.wml_error "[foreach] missing required variable= attribute"
+	local array = helper.get_variable_array(array_name)
+	if #array == 0 then return end -- empty and scalars unwanted
+	local item_name = cfg.item_var or "this_item"
+	local this_item = start_var_scope(item_name) -- if this_item is already set
+	local i_name = cfg.index_var or "i"
+	local i = start_var_scope(i_name) -- if i is already set
+	
+	for index, value in ipairs(array) do
+		wesnoth.set_variable(item_name, value)
+		-- set index variable
+		wesnoth.set_variable(i_name, index-1) -- here -1, because of WML array
+		-- perform actions
+		for do_child in helper.child_range(cfg, "do") do
+			handle_event_commands(do_child, "loop")
+		end
+	end
+	
+	-- house cleaning
+	wesnoth.set_variable(item_name)
+	wesnoth.set_variable(i)
+	
+	-- restore the array
+	helper.set_variable_array(array_name, array)
+end
+
 function wml_actions.switch(cfg)
 	local var_value = wesnoth.get_variable(cfg.variable)
 	local found = false
