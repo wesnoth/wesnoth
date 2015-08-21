@@ -98,11 +98,9 @@ hotkey::hotkey_item& get_hotkey(int character, int keycode,
 	bool found = false;
 
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		// Special case for Ctrl+Return/Enter keys, which gets resolved to Ctrl-j and Ctrl-m characters (LF and CR respectively).
-		// In such cases, do not match by character but go straight to key code.
-		if (itor->get_character() != -1 &&
-			!(tolower(character) == 'j' && keycode != SDLK_j) &&
-			!(tolower(character) == 'm' && keycode != SDLK_m)) {
+		// If character is a letter, make sure it can match its key code. Otherwise combinations like Ctrl+Return/Enter can be mistaken for Ctrl+j or Ctrl+m (CR and LF respectively).
+		// Other printing characters that aren't alphabetic will be handled by key code matching below.
+		if (itor->get_character() != -1 && isalpha(character) && character == keycode) {
 			if (character == itor->get_character()) {
 				if (ctrl == itor->get_ctrl()
 						&& cmd == itor->get_cmd()
@@ -535,11 +533,9 @@ void hotkey_item::set_key(int character, int keycode,
 
 	// We handle simple cases by character, others by the actual key.
 	// @ and ` are exceptions related to the space character. Without these, combinations involving Ctrl or Ctrl+Shift often resolve the character value to null (or @ and `).
-	// j and m exceptions are to catch Ctrl+Return/Enter, which is interpreted as Ctrl+j and Ctrl+m characters (LF and CR respectively).
-	if (isprint(character) && !isspace(character) &&
-		character != '@' && character != '`' &&
-		!(tolower(character) == 'j' && keycode != SDLK_j) &&
-		!(tolower(character) == 'm' && keycode != SDLK_m)) {
+	// If character is read as a letter, only treat it as a letter if its key code matches that character. This covers cases such as Ctrl+Return/Enter, which would otherwise be mis-read as Ctrl+j or Ctrl+m (CR and LF respectively). 
+	if (character != '@' && character != '`' &&
+		( (isalpha(character) && islower(character) == keycode) || (!isalpha(character) && isprint(character) && !isspace(character)) )) {
 		character_ = character;
 		ctrl_      = ctrl;
 		cmd_       = cmd;
