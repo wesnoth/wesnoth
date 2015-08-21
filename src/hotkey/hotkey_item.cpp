@@ -196,7 +196,7 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 
 hotkey_ptr load_from_config(const config& cfg)
 {
-	hotkey_ptr base = hotkey_ptr();
+	hotkey_ptr base = hotkey_ptr(new hotkey_void());
 
 	const std::string& mouse_cfg = cfg["mouse"];
 	if (!mouse_cfg.empty()) {
