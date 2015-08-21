@@ -83,15 +83,15 @@ const std::string hotkey_base::get_name() const
 	if (mod_ & KMOD_CTRL)
 		ret += "ctrl";
 
-	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 	if (mod_ & KMOD_ALT)
 			ret += "alt";
 
-	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 	if (mod_ & KMOD_SHIFT)
 		ret += "shift";
 
-	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (mod_ & KMOD_GUI)
 #else
@@ -104,12 +104,13 @@ const std::string hotkey_base::get_name() const
 #endif
 
 
-	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+")? "+" : "");
+	ret += (ret.size() != 0  && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 	return ret += get_name_helper();
 }
 
 bool hotkey_base::bindings_equal(hotkey_ptr other)
 {
+
 	bool ret;
 
 	if (other == hotkey_ptr())
@@ -341,7 +342,7 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 }
 
 void del_hotkey(hotkey_ptr item) {
-	if (hotkeys_.size() > 0)
+	if (!hotkeys_.empty())
 		hotkeys_.erase(std::remove(hotkeys_.begin(), hotkeys_.end(), item));
 }
 
@@ -353,8 +354,7 @@ void add_hotkey(const hotkey_ptr item) {
 	scope_changer scope_ch;
 	set_active_scopes(hotkey::get_hotkey_command(item->get_command()).scope);
 
-	if (hotkeys_.size() > 0) {
-
+	if (!hotkeys_.empty()) {
 		hotkeys_.erase(std::remove_if(hotkeys_.begin(), hotkeys_.end(),
 					boost::bind(&hotkey_base::bindings_equal, _1, (item))), hotkeys_.end());
 	}
