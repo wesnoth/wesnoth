@@ -1771,9 +1771,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					const std::string &increase = effect["increase"];
 
 					if(increase.empty() == false) {
-						if (!times)
+						if (!times) {
 							description += utils::print_modifier(increase) + " " +
 								t_string(N_("moves"), "wesnoth");
+						}
 
 						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
 					}
