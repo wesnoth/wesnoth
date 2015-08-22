@@ -663,7 +663,6 @@ Control, Alt or Meta modifiers to avoid problems.")); */
 				}
 			}
 		} else {
-			std::cout << "adding existing hotkey" << "\n";
 			hotkey::add_hotkey(newhk);
 			set_hotkey_menu(true);
 		}

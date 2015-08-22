@@ -1,16 +1,16 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+ Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+ Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
-*/
+ See the COPYING file for more details.
+ */
 
 #ifndef HOTKEY_ITEM_HPP_INCLUDED
 #define HOTKEY_ITEM_HPP_INCLUDED
@@ -27,23 +27,22 @@
 
 namespace hotkey {
 
-/* forward declarations */
-class hotkey_base;
-class hotkey_mouse;
-class hotkey_keyboard;
-typedef boost::shared_ptr<hotkey_base> hotkey_ptr;
-typedef boost::shared_ptr<hotkey_mouse> hotkey_mouse_ptr;
-typedef boost::shared_ptr<hotkey_keyboard> hotkey_keyboard_ptr;
+	/* forward declarations */
+	class hotkey_base;
+	class hotkey_mouse;
+	class hotkey_keyboard;
+	typedef boost::shared_ptr<hotkey_base> hotkey_ptr;
+	typedef boost::shared_ptr<hotkey_mouse> hotkey_mouse_ptr;
+	typedef boost::shared_ptr<hotkey_keyboard> hotkey_keyboard_ptr;
 
-typedef std::vector<hotkey::hotkey_ptr> hotkey_list;
-typedef std::vector<hotkey::hotkey_ptr>::iterator hotkey_list_iter;
+	typedef std::vector<hotkey::hotkey_ptr> hotkey_list;
+	typedef std::vector<hotkey::hotkey_ptr>::iterator hotkey_list_iter;
 
-
-/**
- * This is the base class for hotkey event matching.
- */
-class hotkey_base {
-	public:
+	/**
+	 * This is the base class for hotkey event matching.
+	 */
+	class hotkey_base {
+		public:
 		/**
 		 * Initialises a new empty hotkey that will be disabled
 		 */
@@ -57,13 +56,13 @@ class hotkey_base {
 		 * Set keyboard modifiers.
 		 * @param mods Bitmask of SDLMod.
 		 */
-		void set_mods(unsigned int mods) { mod_ = mods;};
+		void set_mods(unsigned int mods) {mod_ = mods;};
 
 		/**
 		 *  Returns the string name of the HOTKEY_COMMAND
 		 *  @return The unique string for a hotkey command.
 		 **/
-		const std::string get_command() const { return command_; }
+		const std::string get_command() const {return command_;}
 		/**
 		 * Returns the translated description
 		 * @return internationalised description of the command.
@@ -80,7 +79,7 @@ class hotkey_base {
 		 * from the user preferences.
 		 * @return true if from the default configurations, false otherwise
 		 */
-		bool is_default() const { return is_default_; }
+		bool is_default() const {return is_default_;}
 
 		/**
 		 * Used to indicate that a hotkey is overriden and should be treated as
@@ -99,7 +98,7 @@ class hotkey_base {
 		 * Returns whether this hotkey points to the null-command
 		 * @return true if it points to the null-command, false otherwise.
 		 */
-		bool null() const { return command_  == "null"; }
+		bool null() const {return command_ == "null";}
 
 		/*
 		 * Returns whether there is a associated hotkey_command.
@@ -107,7 +106,7 @@ class hotkey_base {
 		 * @param get_hotkey_command will return the hotkey_command::null_command().
 		 * @return true if the hotkey is not bound to the null-command.
 		 */
-		bool active() const { return command_ != "null";}
+		bool active() const {return command_ != "null";}
 
 		/**
 		 * Evaluates whether the hotkey bindings are valid.
@@ -145,7 +144,7 @@ class hotkey_base {
 
 		virtual ~hotkey_base() {}
 
-	protected:
+		protected:
 		/**
 		 *  This is invoked by hotkey_base::get_name and must be implemented by subclasses.
 		 *  Keyboard modifiers are handled in this class, other hotkeys in the respective classes
@@ -181,13 +180,13 @@ class hotkey_base {
 		 *
 		 */
 		unsigned int mod_;
-};
+	};
 
-/**
- * This class is responsible for handling keys, not modifiers.
- */
-class hotkey_keyboard: public hotkey_base {
-	public:
+	/**
+	 * This class is responsible for handling keys, not modifiers.
+	 */
+	class hotkey_keyboard: public hotkey_base {
+		public:
 		/**
 		 * Initialise new instance of this class that has no key associated with is.
 		 */
@@ -205,36 +204,35 @@ class hotkey_keyboard: public hotkey_base {
 		 */
 		virtual bool valid() const {return scancode_ != SDL_SCANCODE_UNKNOWN;}
 
-	protected:
+		protected:
 		SDL_Scancode scancode_;
 
 		virtual void save_helper(config& cfg) const;
 		virtual const std::string get_name_helper() const;
 		virtual bool matches_helper(const SDL_Event &event) const;
 		virtual bool bindings_equal_helper (hotkey_ptr other) const;
-};
+	};
 
+	/**
+	 * This class is used to return non-valid results in order to save
+	 * other people from null checks.
+	 */
+	class hotkey_void: public hotkey_base {
+		public:
+		hotkey_void() : hotkey_base() {}
+		virtual bool valid() const {return false;}
+		protected:
+		virtual void save_helper(config& cfg) const {UNUSED(cfg);};
+		virtual const std::string get_name_helper() const {return "";}
+		virtual bool matches_helper(const SDL_Event &event) const {UNUSED(event); return false;}
+		virtual bool bindings_equal_helper(hotkey_ptr other) const {UNUSED(other); return false;}
+	};
 
-/**
- * This class is used to return non-valid results in order to save
- * other people from null checks.
- */
-class hotkey_void: public hotkey_base {
-public:
-	hotkey_void() : hotkey_base() {}
-	virtual bool valid() const {return false;}
-protected:
-	virtual void save_helper(config& cfg) const {UNUSED(cfg);};
-	virtual const std::string get_name_helper() const { return ""; }
-	virtual bool matches_helper(const SDL_Event &event) const {UNUSED(event); return false; }
-	virtual bool bindings_equal_helper(hotkey_ptr other) const { UNUSED(other); return false; }
-};
-
-/**
- * This class is responsible for handling mouse button presses.
- */
-class hotkey_mouse: public hotkey_base {
-	public:
+	/**
+	 * This class is responsible for handling mouse button presses.
+	 */
+	class hotkey_mouse: public hotkey_base {
+		public:
 		/**
 		 * Initialise new instance of this class that has no button associated with is.
 		 */
@@ -248,108 +246,106 @@ class hotkey_mouse: public hotkey_base {
 
 		/* new functionality for this class */
 		void set_button(int button) {button_ = button;}
-	protected:
+		protected:
 		int button_;
 
 		virtual void save_helper(config& cfg) const;
 		virtual const std::string get_name_helper() const;
 		virtual bool matches_helper(const SDL_Event &event) const;
 		virtual bool bindings_equal_helper (hotkey_ptr other) const;
-};
+	};
 
-/**
- * @todo not implemented
- */
-class hotkey_joystic: public hotkey_base {
-protected:
-	int button;
-};
+	/**
+	 * @todo not implemented
+	 */
+	class hotkey_joystic: public hotkey_base {
+		protected:
+		int button;
+	};
 
+	/**
+	 * Create and instantiate a hotkey from a config element.
+	 * @param cfg The config element to read for data.
+	 * @return The new instance of the hotkey item.
+	 */
+	hotkey_ptr load_from_config(const config& cfg);
 
-/**
- * Create and instantiate a hotkey from a config element.
- * @param cfg The config element to read for data.
- * @return The new instance of the hotkey item.
- */
-hotkey_ptr load_from_config(const config& cfg);
+	/*
+	 * Scans the list of hotkeys to see if one has been bound to the command.
+	 * @param command The command that is searched for
+	 * @return true if there is a hotkey item that has the command bound.
+	 */
+	bool has_hotkey_item(const std::string& command);
 
-/*
- * Scans the list of hotkeys to see if one has been bound to the command.
- * @param command The command that is searched for
- * @return true if there is a hotkey item that has the command bound.
- */
-bool has_hotkey_item(const std::string& command);
+	/**
+	 * Add a hotkey to the list of hotkeys.
+	 * @param item The item to add.
+	 */
+	void add_hotkey(const hotkey_ptr item);
 
-/**
- * Add a hotkey to the list of hotkeys.
- * @param item The item to add.
- */
-void add_hotkey(const hotkey_ptr item);
+	/**
+	 * Remove a hotkey from the list of hotkeys
+	 * @todo unusued?
+	 */
+	void del_hotkey(const hotkey_ptr item);
 
-/**
- * Remove a hotkey from the list of hotkeys
- * @todo unusued?
- */
-void del_hotkey(const hotkey_ptr item);
+	/**
+	 * Create a new hotkey item for a command from an SDL_Event.
+	 * @param id The command to bind to.
+	 * @param event The SDL_Event to base the creation on.
+	 */
+	hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event);
 
-/**
- * Create a new hotkey item for a command from an SDL_Event.
- * @param id The command to bind to.
- * @param event The SDL_Event to base the creation on.
- */
-hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event);
+	/**
+	 * Iterate through the list of hotkeys and return a hotkey that matches
+	 * the SDL_Event and the current keyboard modifier state.
+	 * @param event The SDL_Event to use as a template.
+	 * @return The newly created hotkey item.
+	 */
+	const hotkey_ptr get_hotkey(const SDL_Event &event);
 
-/**
- * Iterate through the list of hotkeys and return a hotkey that matches
- * the SDL_Event and the current keyboard modifier state.
- * @param event The SDL_Event to use as a template.
- * @return The newly created hotkey item.
- */
-const hotkey_ptr get_hotkey(const SDL_Event &event);
+	/**
+	 * Iterates through all hotkeys present in the config struct and creates and adds
+	 * them to the hotkey list.
+	 * @param cfg The config struct to load from.
+	 * @param set_as_default Indicates whether the config struct should be treated as the
+	 * default game settings.
+	 */
+	void load_hotkeys(const config& cfg, bool set_as_default = false);
 
-/**
- * Iterates through all hotkeys present in the config struct and creates and adds
- * them to the hotkey list.
- * @param cfg The config struct to load from.
- * @param set_as_default Indicates whether the config struct should be treated as the
- * default game settings.
- */
-void load_hotkeys(const config& cfg, bool set_as_default = false);
+	/**
+	 * Reset all hotkeys to the defaults.
+	 */
+	void reset_default_hotkeys();
 
-/**
- * Reset all hotkeys to the defaults.
- */
-void reset_default_hotkeys();
+	/**
+	 * Returns the list of hotkeys.
+	 */
+	const hotkey_list& get_hotkeys();
 
-/**
- * Returns the list of hotkeys.
- */
-const hotkey_list& get_hotkeys();
+	/**
+	 * Unset the command bindings for all hotkeys matching the command.
+	 * @command The binding to be unset
+	 */
+	void clear_hotkeys(const std::string& command);
 
-/**
- * Unset the command bindings for all hotkeys matching the command.
- * @command The binding to be unset
- */
-void clear_hotkeys(const std::string& command);
+	/**
+	 * Unset the bindings for all hotkeys.
+	 */
+	void clear_hotkeys();
 
-/**
- * Unset the bindings for all hotkeys.
- */
-void clear_hotkeys();
+	/**
+	 * Returns a comma-separated string of hotkey names. A hotkey name is in the form of
+	 * "ctrl+l" or "n" or "mouse 1". The comman separated string is of the form "ctrl+l,n,mouse 1".
+	 * @return The comma separated string of hotkey names.
+	 */
+	std::string get_names(std::string id);
 
-
-/**
- * Returns a comma-separated string of hotkey names. A hotkey name is in the form of
- * "ctrl+l" or "n" or "mouse 1". The comman separated string is of the form "ctrl+l,n,mouse 1".
- * @return The comma separated string of hotkey names.
- */
-std::string get_names(std::string id);
-
-/**
- * Save the non-default hotkeys to the config.
- * @param cfg The config to save to.
- */
-void save_hotkeys(config& cfg);
+	/**
+	 * Save the non-default hotkeys to the config.
+	 * @param cfg The config to save to.
+	 */
+	void save_hotkeys(config& cfg);
 
 }
 
