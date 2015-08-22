@@ -1982,21 +1982,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					if(new_align.parse(effect["set"])) {
 						alignment_ = new_align;
 					}
-				} else if (apply_to == "attacks_left") {
-					const std::string &increase = effect["increase"];
-					const std::string &set = effect["set"];
-					
-					if(set.empty() == false) {
-						if(set[set.size()-1] == '%') {
-							attacks_left_ = lexical_cast_default<int>(set)*max_attacks_/100;
-						} else {
-							attacks_left_ = lexical_cast_default<int>(set);
-						}
-					}
-					
-					if(increase.empty() == false) {
-						attacks_left_ = utils::apply_modifier(attacks_left_, increase, 1);
-					}
 				} else if (apply_to == "max_attacks") {
 					const std::string &increase = effect["increase"];
 					
