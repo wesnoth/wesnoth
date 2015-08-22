@@ -35,6 +35,7 @@
 #include "campaign_server/control.hpp"
 #include "version.hpp"
 #include "util.hpp"
+#include "hash.hpp"
 
 #include <csignal>
 #include <ctime>
@@ -42,6 +43,8 @@
 #include <boost/foreach.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/exception/get_error_info.hpp>
+#include <boost/random.hpp>
+#include <boost/generator_iterator.hpp>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -102,6 +105,34 @@ time_t monotonic_clock()
 #endif
 }
 
+/* Secure password storage functions */
+bool authenticate(config& campaign, const config::attribute_value& passphrase)
+{
+	return util::create_hash(passphrase, campaign["passsalt"]) == campaign["passhash"];
+}
+
+std::string generate_salt(size_t len)
+{
+	static const std::string itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	boost::mt19937 mt(time(0));
+	std::string salt = std::string(len, '0');
+	boost::uniform_int<> from_str(0, itoa64.length() - 1);
+	boost::variate_generator< boost::mt19937, boost::uniform_int<> > get_char(mt, from_str);
+
+	for(size_t i = 0; i < len; i++) {
+		salt[i] = itoa64[get_char()];
+	}
+
+	return salt;
+}
+
+void set_passphrase(config& campaign, std::string passphrase)
+{
+	std::string salt = generate_salt(16);
+	campaign["passsalt"] = salt;
+	campaign["passhash"] = util::create_hash(passphrase, salt);
+}
+
 } // end anonymous namespace
 
 namespace campaignd {
@@ -129,6 +160,21 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 
 	LOG_CS << "Port: " << port_ << "  Worker threads min/max: " << min_threads
 		   << '/' << max_threads << '\n';
+
+	// Ensure all campaigns to use secure hash passphrase storage
+	if(!read_only_) {
+		BOOST_FOREACH(config& campaign, campaigns().child_range("campaign")) {
+			// Campaign already has a hashed password
+			if (campaign["passphrase"].empty()) {
+				continue;
+			}
+
+			LOG_CS << "Campaign '" << campaign["title"] << "' uses unhashed passphrase. Fixing.\n";
+			set_passphrase(campaign, campaign["passphrase"]);
+			campaign["passphrase"] = "";
+		}
+		write_config();
+	}
 
 	register_handlers();
 }
@@ -343,9 +389,8 @@ void server::run()
 							// Shouldn't happen!
 							ERR_CS << "Add-on passphrases may not be empty!\n";
 						} else {
-							campaign["passphrase"] = newpass;
+							set_passphrase(campaign, newpass);
 							write_config();
-
 							LOG_CS << "New passphrase set for '" << addon_id << "'\n";
 						}
 					}
@@ -506,6 +551,8 @@ void server::handle_request_campaign_list(const server::request& req)
 	BOOST_FOREACH(config& j, campaign_list.child_range("campaign"))
 	{
 		j["passphrase"] = "";
+		j["passhash"] = "";
+		j["passsalt"] = "";
 		j["upload_ip"] = "";
 		j["email"] = "";
 		j["feedback_url"] = "";
@@ -647,7 +694,7 @@ void server::handle_upload(const server::request& req)
 		send_error("Add-on rejected: The add-on contains an illegal file or directory name."
 				   " File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
 				   req.sock);
-	} else if(campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
+	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
 	} else {
@@ -684,7 +731,6 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["title"] = upload["title"];
 		(*campaign)["name"] = upload["name"];
 		(*campaign)["filename"] = "data/" + upload["name"].str();
-		(*campaign)["passphrase"] = upload["passphrase"];
 		(*campaign)["author"] = upload["author"];
 		(*campaign)["description"] = upload["description"];
 		(*campaign)["version"] = upload["version"];
@@ -752,14 +798,14 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
 
-	const config& campaign = get_campaign(erase["name"]);
+	config& campaign = get_campaign(erase["name"]);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
 		return;
 	}
 
-	if(campaign["passphrase"] != erase["passphrase"]
+	if(!authenticate(campaign, erase["passphrase"])
 	   && (campaigns()["master_password"].empty()
 	   || campaigns()["master_password"] != erase["passphrase"]))
 	{
@@ -806,15 +852,13 @@ void server::handle_change_passphrase(const server::request& req)
 
 	if(!campaign) {
 		send_error("No add-on with that name exists.", req.sock);
-	} else if(campaign["passphrase"] != cpass["passphrase"]) {
+	} else if(!authenticate(campaign, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
 	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
-		campaign["passphrase"] = cpass["new_passphrase"];
-
+		set_passphrase(campaign, cpass["new_passphrase"]);
 		write_config();
-
 		send_message("Passphrase changed.", req.sock);
 	}
 }
