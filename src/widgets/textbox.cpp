@@ -442,6 +442,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 {
+	widget::handle_event(event);
 	if(!enabled())
 		return;
 

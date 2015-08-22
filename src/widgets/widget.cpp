@@ -342,5 +342,11 @@ void widget::process_tooltip_string(int mousex, int mousey)
 	}
 }
 
+void widget::handle_event(SDL_Event const &event) {
+	if (event.type == SDL_QUIT) {
+		throw CVideo::quit();
+	}
+}
+
 
 }
