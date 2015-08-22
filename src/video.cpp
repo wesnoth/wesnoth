@@ -543,7 +543,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	fullScreen = (flags & FULL_SCREEN) != 0;
 
 	if(!window) {
-		window = new sdl::twindow("", 0, 0, x, y, flags, SDL_RENDERER_SOFTWARE);
+		// SDL_WINDOWPOS_UNDEFINED allows SDL to centre the window in the display instead of using a fixed initial position.
+		// Note that x and y in this particular case refer to width and height of the window, not co-ordinates.
+		window = new sdl::twindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, flags, SDL_RENDERER_SOFTWARE);
 	} else {
 		if(fullScreen) {
 			window->full_screen();
