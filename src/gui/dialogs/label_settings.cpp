@@ -98,6 +98,6 @@ bool tlabel_settings::execute(display_context& dc, CVideo& video) {
 }
 
 void tlabel_settings::toggle_category(twidget& box, std::string category) {
-	all_labels[category] = static_cast<ttoggle_button&>(box).get_value();
+	all_labels[category] = (static_cast<ttoggle_button&>(box).get_value() != 0);
 }
 }
