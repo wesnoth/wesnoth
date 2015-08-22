@@ -184,8 +184,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const std::string& set_accuracy = cfg["set_accuracy"];
 	const std::string& increase_parry = cfg["increase_parry"];
 	const std::string& set_parry = cfg["set_parry"];
-	const std::string& increase_movement = cfg["increase_movement"];
-	const std::string& set_movement = cfg["set_movement"];
+	const std::string& increase_movement = cfg["increase_movement_used"];
+	const std::string& set_movement = cfg["set_movement_used"];
 
 	std::stringstream desc;
 
