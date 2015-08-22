@@ -20,7 +20,7 @@ Limitations:
  enough for now.
 """
 
-
+from __future__ import print_function, unicode_literals, division
 from future_builtins import filter, map, zip
 input = raw_input
 range = xrange
@@ -373,7 +373,7 @@ Important Attributes:
                 # moving backwards past all scopes forces a reset
                 self.reset()
         while self.lineno + self.span - 1 < lineno:
-            next(self)
+            self.next()
         return self
 
     def ancestors(self):
@@ -407,7 +407,7 @@ Important Attributes:
         """Return a very basic string representation"""
         return 'WmlIterator<' + repr(self.element) +', line %d>'%(self.lineno+1)
 
-    def __next__(self):
+    def next(self):
         """Move the iterator to the next line number
         note: May raise StopIteration"""
         if not self.hasNext():
@@ -480,7 +480,7 @@ if __name__ == '__main__':
     flist = sys.argv[1:]
     if not flist:
         print('Current directory is', os.getcwd())
-        flist = glob.glob(os.path.join(os.getcwd(), eval(input('Which file(s) would you like to test?\n'))))
+        flist = glob.glob(os.path.join(os.getcwd(), input('Which file(s) would you like to test?\n')))
     while flist:
         fname = flist.pop()
         if os.path.isdir(fname):

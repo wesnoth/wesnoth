@@ -16,12 +16,12 @@ except ImportError:
 import shutil
 import subprocess
 import tempfile
-import urllib.request, urllib.error, urllib.parse
+import urllib2
 
 
 #TODO: document and log where missing
 
-class Error(Exception):
+class Error(StandardError):
     """Base class for exceptions in this module."""
     pass
 
@@ -468,7 +468,7 @@ class GitHub(object):
     def _github_api_request(self, url, data=None, method=None, authenticate=False):
         logging.debug("Making github API request {0}".format(url))
 
-        request = urllib.request.Request(url)
+        request = urllib2.Request(url)
         if method:
             request.get_method = lambda: method
 
@@ -493,7 +493,7 @@ class GitHub(object):
                 request.add_header("Authorization", "Bearer {0}".format(auth))
 
         try:
-            response = urllib.request.urlopen(request)
+            response = urllib2.urlopen(request)
         except IOError as e:
             raise Error("GitHub API failure: " + str(e))
         if response.code == 204:
@@ -592,7 +592,7 @@ def _gen(possible_dirs):
         # Exception to make sure nobody catches it
         # Use raise ... from syntax in python3
         import sys
-        raise Exception(str(e)).with_traceback(sys.exc_info()[2])
+        raise Exception(str(e)), None, sys.exc_info()[2]
     # Add references to shutil and os to ensure we're destructed before they are
     stored_shutil = shutil
     stored_os = os
@@ -616,4 +616,4 @@ def get_build_system(possible_dirs=[]):
     global _g
     if _g == None:
         _g = _gen(possible_dirs)
-    return next(_g)
+    return _g.next()

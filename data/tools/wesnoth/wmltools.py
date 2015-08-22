@@ -3,7 +3,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
-
+from __future__ import print_function, unicode_literals, division
 from future_builtins import filter, map, zip
 input = raw_input
 range = xrange
@@ -401,7 +401,7 @@ class Reference:
 
     def dump_references(self):
         "Dump all known references to this definition."
-        for (file, refs) in list(self.references.items()):
+        for (file, refs) in self.references.items():
             print("    %s: %s" % (file, repr([x[0] for x in refs])[1:-1]))
 
     def __eq__(self, other):
@@ -454,7 +454,7 @@ class CrossRef:
         return key
     def visible_from(self, defn, fn, n):
         "Is specified definition visible from the specified file and line?"
-        if isinstance(defn, str):
+        if isinstance(defn, basestring):
             defn = self.fileref[defn]
         if defn.undef is not None:
             # Local macros are only visible in the file where they were defined
@@ -778,7 +778,7 @@ class CrossRef:
         "Transplant file references in files from filelist to a new CrossRef."
         smallref = CrossRef()
         for filename in self.fileref:
-            for (referrer, referlines) in list(self.fileref[filename].references.items()):
+            for (referrer, referlines) in self.fileref[filename].references.items():
                 if referrer in filelist:
                     if filename not in smallref.fileref:
                         smallref.fileref[filename] = Reference(None, filename)

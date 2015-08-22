@@ -68,7 +68,7 @@ class AttributeNode:
             [v.debug() for v in self.value])
 
     def get_text(self, translation=None):
-        r = ""
+        r = u""
         for s in self.value:
             ustr = s.data.decode("utf8", "ignore")
             if translation:
@@ -138,7 +138,7 @@ class TagNode:
         r = []
         for sub in self.data:
             ok = True
-            for k, v in list(kw.items()):
+            for k, v in kw.items():
                 if k == "tag":
                     if not isinstance(sub, TagNode): ok = False
                     elif v != "" and sub.name != v: ok = False
@@ -252,12 +252,12 @@ class Parser:
         if defines:
             commandline += ["--preprocess-defines", defines]
         if self.verbose:
-            print((" ".join(commandline)))
+            print(" ".join(commandline))
         p = subprocess.Popen(commandline,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = p.communicate()
         if self.verbose:
-            print((out + err))
+            print(out + err)
         self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
         if not os.path.exists(self.preprocessed):
@@ -472,7 +472,7 @@ class Parser:
 
         if self.keep_temp_dir is None and self.temp_dir:
             if self.verbose:
-                print(("removing " + self.temp_dir))
+                print("removing " + self.temp_dir)
             shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def handle_command(self, com):
@@ -500,21 +500,21 @@ Convert a DataSub into JSON
 
 If verbose, insert a linebreak after every brace and comma (put every item on its own line), otherwise, condense everything into a single line.
 """
-    print("{", end=' ')
+    print "{",
     first = True
     sdepth1 = "\n" + " " * depth
     sdepth2 = sdepth1 + " "
-    for pair in tree.speedy_tags.items():
+    for pair in tree.speedy_tags.iteritems():
         if first:
             first = False
         else:
             sys.stdout.write(",")
         if verbose:
             sys.stdout.write(sdepth2)
-        print('"%s":' % pair[0], end=' ')
+        print '"%s":' % pair[0],
         if verbose:
             sys.stdout.write(sdepth1)
-        print('[', end=' ')
+        print '[',
         first_tag = True
         for tag in pair[1]:
             if first_tag:
@@ -536,8 +536,8 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
             sys.stdout.write(",")
         if verbose:
             sys.stdout.write(sdepth2)
-        print('"%s":' % child.name, end=' ')
-        print(json.dumps(child.get_text()), end=' ')
+        print '"%s":' % child.name,
+        print json.dumps(child.get_text()),
     if verbose:
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")
@@ -549,16 +549,16 @@ def xmlify(tree, verbose=False, depth=0):
         sdepth = "  " * depth
     for child in tree.data:
         if isinstance(child, TagNode):
-            print('%s<%s>' % (sdepth, child.name))
+            print '%s<%s>' % (sdepth, child.name)
             xmlify(child, verbose, depth + 1)
-            print('%s</%s>' % (sdepth, child.name))
+            print '%s</%s>' % (sdepth, child.name)
         else:
             if "\n" in child.get_text() or "\r" in child.get_text():
-                print(sdepth + '<' + child.name + '>' + \
-            '<![CDATA[' + child.get_text() + ']]>' + '</' + child.name + '>')
+                print sdepth + '<' + child.name + '>' + \
+            '<![CDATA[' + child.get_text() + ']]>' + '</' + child.name + '>'
             else:
-                print(sdepth + '<' + child.name + '>' + \
-            escape(child.get_text()) + '</' + child.name + '>')
+                print sdepth + '<' + child.name + '>' + \
+            escape(child.get_text()) + '</' + child.name + '>'
 
 if __name__ == "__main__":
     # Hack to make us not crash when we encounter characters that aren't ASCII
@@ -604,7 +604,7 @@ if __name__ == "__main__":
             output = function(p).strip()
             if output != expected:
                 print("__________")
-                print(("FAILED " + note))
+                print("FAILED " + note)
                 print("INPUT:")
                 print(input)
                 print("OUTPUT:")
@@ -613,7 +613,7 @@ if __name__ == "__main__":
                 print(expected)
                 print("__________")
             else:
-                print(("PASSED " + note))
+                print("PASSED " + note)
 
         def test(input, expected, note):
             test2(input, expected, note, lambda p: p.root.debug())
@@ -790,11 +790,11 @@ foo='bar' .. 'baz'
     elif args.text: p.parse_text(args.text, args.defines)
     if args.to_json:
         jsonify(p.root, True)
-        print()
+        print
     elif args.to_xml:
-        print('<?xml version="1.0" encoding="UTF-8" ?>')
-        print('<root>')
+        print '<?xml version="1.0" encoding="UTF-8" ?>'
+        print '<root>'
         xmlify(p.root, True, 1)
-        print('</root>')
+        print '</root>'
     else:
-        print((p.root.debug()))
+        print(p.root.debug())

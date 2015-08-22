@@ -1,6 +1,7 @@
-import gzip, zlib, io
+import gzip, zlib, StringIO
 import socket, struct, glob, sys, shutil, threading, os, fnmatch
 import wesnoth.wmldata as wmldata
+import wesnoth.wmlparser as wmlparser
 
 # See the following files (among others):
 # src/addon/*
@@ -103,11 +104,11 @@ class CampaignClient:
         Send binary data to the server.
         """
         # Compress the packet before we send it
-        iostring = io.StringIO()
-        z = gzip.GzipFile(mode = "w", fileobj = iostring)
+        io = StringIO.StringIO()
+        z = gzip.GzipFile(mode = "w", fileobj = io)
         z.write(packet)
         z.close()
-        zdata = iostring.getvalue()
+        zdata = io.getvalue()
 
         zpacket = struct.pack("!I", len(zdata)) + zdata
         self.sock.sendall(zpacket)
@@ -146,7 +147,8 @@ class CampaignClient:
         if packet.startswith("\x1F\x8B"):
             if self.verbose:
                 sys.stderr.write("GZIP compression found...\n")
-            z = gzip.GzipFile(fileobj = io.StringIO(packet))
+            io = StringIO.StringIO(packet)
+            z = gzip.GzipFile(fileobj = io)
             unzip = z.read()
             z.close()
             packet = unzip
@@ -180,7 +182,7 @@ class CampaignClient:
         return data2
 
     def decode_WML(self, data):
-        p = wmldata.Parser( None, no_macros_in_string=True )
+        p = wmlparser.Parser( None, no_macros_in_string=True )
         p.verbose = False
         p.do_preprocessor_logic = True
         p.no_macros = True
@@ -331,7 +333,7 @@ class CampaignClient:
         def put_file(name, f):
             for ig in ign:
                 if ig and ig[-1] != "/" and fnmatch.fnmatch(name, ig):
-                    print(("Ignored file", name))
+                    print("Ignored file", name)
                     return None
             fileNode = wmldata.DataSub("file")
 
@@ -351,7 +353,7 @@ class CampaignClient:
         def put_dir(name, path):
             for ig in ign:
                 if ig and ig[-1] == "/" and fnmatch.fnmatch(name, ig[:-1]):
-                    print(("Ignored dir", name))
+                    print("Ignored dir", name)
                     return None
 
             dataNode = wmldata.DataSub("dir")
@@ -367,7 +369,7 @@ class CampaignClient:
         # Only used if it's an old-style campaign directory
         # with an external config.
         if cfgfile:
-            data.insert(put_file(name + ".cfg", open(cfgfile)))
+            data.insert(put_file(name + ".cfg", file(cfgfile)))
 
         if not self.quiet:
             sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
@@ -461,7 +463,7 @@ class CampaignClient:
             if verbose:
                 sys.stderr.write(i * " " + name + " (" +
                       str(len(contents)) + ")\n")
-            save = open( os.path.join(path, name), "wb")
+            save = file( os.path.join(path, name), "wb")
 
             # We MUST un-escape our data
             # Order we apply escape sequences matter here
