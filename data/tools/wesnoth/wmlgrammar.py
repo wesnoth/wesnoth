@@ -1,6 +1,7 @@
 """
 wmlgrammar -- parses a given schema into a more usable form
 """
+from __future__ import print_function
 import collections
 import re
 
@@ -54,7 +55,7 @@ class Node(object):
                 self.attributes.add(Attribute(item, datatypes))
         for item in schema.get_all_subs():
             if item.name == "element":
-                print "[element] found in schema, not parsing yet"
+                print("[element] found in schema, not parsing yet")
                 # self.ext_elements...
             elif item.name == "description":
                 self.description = item.get_text("text")

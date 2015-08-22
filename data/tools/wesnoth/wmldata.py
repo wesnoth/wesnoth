@@ -15,6 +15,7 @@ textdomain stuff in here is therefore only useful to CampGen, as that does
 not allow composed strings like above.
 """
 
+from __future__ import print_function
 import re, sys
 import wmlparser
 import codecs
@@ -157,7 +158,7 @@ class WMLException(Exception):
     def __init__(self, text):
         super( WMLException, self ).__init__()
         self.text = text
-        print text
+        print(text)
     def __str__(self):
         return self.text
 
@@ -182,7 +183,7 @@ class DataSub(Data):
                 item.clean_empty_ifdefs()
         while rem:
             item = rem.pop()
-            print "Removing empty #ifdef %s" % item.name
+            print("Removing empty #ifdef %s" % item.name)
             self.remove(item)
 
     def write_file(self, f, indent=0, textdomain=""):
