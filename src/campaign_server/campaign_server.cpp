@@ -721,6 +721,8 @@ void server::handle_upload(const server::request& req)
 			return;
 		}
 
+		const bool existing_upload = campaign != NULL;
+
 		std::string message = "Add-on accepted.";
 
 		if(campaign == NULL) {
@@ -740,6 +742,10 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["upload_ip"] = req.addr;
 		(*campaign)["type"] = upload["type"];
 		(*campaign)["email"] = upload["email"];
+
+		if(!existing_upload) {
+			set_passphrase(*campaign, upload["passphrase"]);
+		}
 
 		if((*campaign)["downloads"].empty()) {
 			(*campaign)["downloads"] = 0;
