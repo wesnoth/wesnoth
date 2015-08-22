@@ -87,6 +87,7 @@ private:
 	void handle_room_part(socket_ptr socket, simple_wml::node& room_join);
 	void handle_room_query(socket_ptr socket, simple_wml::node& room_query);
 	void handle_create_game(socket_ptr socket, simple_wml::node& create_game);
+	void handle_join_game(socket_ptr socket, simple_wml::node& join);
 	void remove_player(socket_ptr socket);
 
 	const network::manager net_manager_;

@@ -1169,6 +1169,10 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 	if(simple_wml::node* create_game = doc->child("create_game")) {
 		handle_create_game(socket, *create_game);
 	}
+
+	if(simple_wml::node* join = doc->child("join")) {
+		handle_join_game(socket, *join);
+	}
 }
 
 void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
@@ -1346,6 +1350,74 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 		rooms_.lobby().send_data(diff);
 	}
 	return;
+}
+
+void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
+{
+	const bool observer = join.attr("observe").to_bool();
+	const std::string& password = join["password"].to_string();
+	int game_id = join["id"].to_int();
+
+	const t_games::iterator g =
+		std::find_if(games_.begin(), games_.end(), wesnothd::game_id_matches(game_id));
+
+	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
+	if (g == games_.end()) {
+		WRN_SERVER << client_address(socket) << "\t" << player_connections_.left.info_at(socket).name()
+			<< "\tattempted to join unknown game:\t" << game_id << ".\n";
+		async_send_doc(socket, leave_game_doc);
+		room_list_.send_server_message("lobby", "Attempt to join unknown game.", socket);
+		async_send_doc(socket, games_and_users_list_);
+		return;
+	} else if (!g->level_init()) {
+		WRN_SERVER << client_address(socket) << "\t" << player_connections_.left.info_at(socket).name()
+			<< "\tattempted to join uninitialized game:\t\"" << g->name()
+			<< "\" (" << game_id << ").\n";
+		async_send_doc(socket, leave_game_doc);
+		room_list_.send_server_message("lobby", "Attempt to join an uninitialized game.", socket);
+		async_send_doc(socket, games_and_users_list_);
+		return;
+	} else if (player_connections_.left.info_at(socket).is_moderator()) {
+		// Admins are always allowed to join.
+	} else if (g->player_is_banned(socket)) {
+		DBG_SERVER << client_address(socket) << "\tReject banned player: "
+			<< player_connections_.left.info_at(socket).name() << "\tfrom game:\t\"" << g->name()
+			<< "\" (" << game_id << ").\n";
+		async_send_doc(socket, leave_game_doc);
+		room_list_.send_server_message("lobby", "You are banned from this game.", socket);
+		async_send_doc(socket, games_and_users_list_);
+		return;
+	} else if(!observer && !g->password_matches(password)) {
+		WRN_SERVER << client_address(socket) << "\t" << player_connections_.left.info_at(socket).name()
+			<< "\tattempted to join game:\t\"" << g->name() << "\" ("
+			<< game_id << ") with bad password\n";
+		async_send_doc(socket, leave_game_doc);
+		room_list_.send_server_message("lobby", "Incorrect password.", socket);
+		async_send_doc(socket, games_and_users_list_);
+		return;
+	}
+	bool joined = g->add_player(socket, observer);
+	if (!joined) {
+		WRN_SERVER << client_address(socket) << "\t" << player_connections_.left.info_at(socket).name()
+			<< "\tattempted to observe game:\t\"" << g->name() << "\" ("
+			<< game_id << ") which doesn't allow observers.\n";
+		async_send_doc(socket, leave_game_doc);
+		room_list_.send_server_message("lobby", "Attempt to observe a game that doesn't allow observers. (You probably joined the game shortly after it filled up.)", socket);
+		async_send_doc(socket, games_and_users_list_);
+		return;
+	}
+	room_list_.exit_lobby(socket);
+	g->describe_slots();
+
+	//send notification of changes to the game and user
+	simple_wml::document diff;
+	bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"),
+					  "gamelist", "game", g->description(), diff);
+	bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
+					  "user", player_connections_.left.info_at(socket).config_address(), diff);
+	if (diff1 || diff2) {
+		rooms_.lobby().send_data(diff);
+	}
 }
 
 typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;
