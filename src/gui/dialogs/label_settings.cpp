@@ -62,6 +62,9 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 		if(team_name.empty()) {
 			team_name = team.user_team_name();
 		}
+		if(team_name.empty()) {
+			team_name = _("Unknown");
+		}
 		string_map subst;
 		subst["side_number"] = str_cast(i + 1);
 		subst["name"] = team_name;
