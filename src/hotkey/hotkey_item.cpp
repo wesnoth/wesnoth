@@ -86,19 +86,19 @@ const std::string hotkey_base::get_name() const
 		ret += "ctrl";
 
 	ret +=
-			(ret.size() != 0 && !boost::algorithm::ends_with(ret, "+") ?
+			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
 					"+" : "");
 	if (mod_ & KMOD_ALT)
 		ret += "alt";
 
 	ret +=
-			(ret.size() != 0 && !boost::algorithm::ends_with(ret, "+") ?
+			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
 					"+" : "");
 	if (mod_ & KMOD_SHIFT)
 		ret += "shift";
 
 	ret +=
-			(ret.size() != 0 && !boost::algorithm::ends_with(ret, "+") ?
+			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
 					"+" : "");
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (mod_ & KMOD_GUI)
@@ -112,7 +112,7 @@ const std::string hotkey_base::get_name() const
 #endif
 
 	ret +=
-			(ret.size() != 0 && !boost::algorithm::ends_with(ret, "+") ?
+			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
 					"+" : "");
 	return ret += get_name_helper();
 }
