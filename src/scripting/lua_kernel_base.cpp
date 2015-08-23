@@ -249,6 +249,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
+		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
 		{ "set_dialog_markup",        &lua_gui2::intf_set_dialog_markup		},
 		{ "set_dialog_value",         &lua_gui2::intf_set_dialog_value		},
 		{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },

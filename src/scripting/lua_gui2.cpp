@@ -528,6 +528,17 @@ int intf_set_dialog_canvas(lua_State *L)
 }
 
 /**
+ * Sets a widget to have the focus
+ * - Args 1..n: path of strings and integers.
+ */
+int intf_set_dialog_focus(lua_State *L)
+{
+	gui2::twidget *w = find_widget(L, 1, true);
+	scoped_dialog::current->window->keyboard_capture(w);
+	return 0;
+}
+
+/**
  * Sets a widget's state to active or inactive
  * - Arg 1: boolean.
  * - Args 2..n: path of strings and integers.

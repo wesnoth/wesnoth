@@ -27,6 +27,7 @@ int intf_get_dialog_value(lua_State *L);
 int intf_set_dialog_callback(lua_State *L);
 int intf_set_dialog_markup(lua_State *L);
 int intf_set_dialog_canvas(lua_State *L);
+int intf_set_dialog_focus(lua_State *L);
 int intf_set_dialog_active(lua_State *L);
 int intf_add_dialog_tree_node(lua_State *L);
 int show_dialog(lua_State *L, CVideo & video);
