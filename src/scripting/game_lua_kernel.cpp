@@ -1014,8 +1014,8 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 int game_lua_kernel::intf_random(lua_State *L)
 {
 	if(lua_isnoneornil(L, 1)) {
-		double r = (double)random_new::generator->next_random();
-		double r_max = (double)std::numeric_limits<uint32_t>::max();
+		double r = double (random_new::generator->next_random());
+		double r_max = double (std::numeric_limits<uint32_t>::max());
 		lua_push(L, r / (r_max + 1));
 		return 1;
 	}
