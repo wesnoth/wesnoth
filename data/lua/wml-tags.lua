@@ -362,8 +362,14 @@ function wml_actions.foreach(cfg)
 	local this_item = start_var_scope(item_name) -- if this_item is already set
 	local i_name = cfg.index_var or "i"
 	local i = start_var_scope(i_name) -- if i is already set
+	local array_length = wesnoth.get_variable(array_name .. ".length")
 	
 	for index, value in ipairs(array) do
+		-- Some protection against external modification
+		-- It's not perfect, though - it'd be nice if *any* change could be detected
+		if array_length ~= wesnoth.get_variable(array_name .. ".length") then
+			helper.wml_error("WML array length changed during [foreach] iteration")
+		end
 		wesnoth.set_variable(item_name, value)
 		-- set index variable
 		wesnoth.set_variable(i_name, index-1) -- here -1, because of WML array
