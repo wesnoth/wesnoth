@@ -46,6 +46,18 @@ Version 1.13.1+dev:
      messages involving macros.
    * Added WML menu item and event handler views to the Gamestate Inspector
      dialog.
+   * Added new possibilities for [effect]:
+     * apply_to=alignment - change a unit's alignment
+     * apply_to=attacks_left - change a unit's attacks per turn
+     * apply_to=recall_cost - change a unit's recall cost
+     * apply_to=vision, apply_to=jamming - change a unit's vision/jamming points
+     * apply_to=new_advancement - add new advancement possibilities (either units
+       or AMLAs)
+     * apply_to=remove_advancement - remove advancement possibilities (either units
+       or AMLAs)
+     * apply_to=attack - add set_ versions of all existing increase_ keys
+     * apply_to=attack - add increase_movement_used and set_movement_used to change the
+       number of movement points the attack consumes
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:

@@ -1771,9 +1771,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					const std::string &increase = effect["increase"];
 
 					if(increase.empty() == false) {
-						if (!times)
+						if (!times) {
 							description += utils::print_modifier(increase) + " " +
 								t_string(N_("moves"), "wesnoth");
+						}
 
 						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
 					}
@@ -1782,6 +1783,33 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 					if(movement_ > max_movement_)
 						movement_ = max_movement_;
+				} else if(apply_to == "vision") {
+					const std::string &increase = effect["increase"];
+
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " " +
+								t_string(N_("vision"), "wesnoth");
+						}
+
+						const int current_vision = vision_ < 0 ? max_movement_ : vision_;
+						vision_ = utils::apply_modifier(current_vision, increase, 1);
+					}
+
+					vision_ = effect["set"].to_int(vision_);
+				} else if(apply_to == "jamming") {
+					const std::string &increase = effect["increase"];
+
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " " +
+								t_string(N_("jamming"), "wesnoth");
+						}
+
+						jamming_ = utils::apply_modifier(jamming_, increase, 1);
+					}
+
+					jamming_ = effect["set"].to_int(jamming_);
 				} else if(apply_to == "experience") {
 					const std::string &increase = effect["increase"];
 					const std::string &set = effect["set"];
@@ -1907,6 +1935,89 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					else if (!replace.empty()) {
 						overlays_ = utils::parenthetical_split(replace, ',');
 					}
+				} else if (apply_to == "new_advancement") {
+					const std::string &types = effect["types"];
+					const bool replace = effect["replace"].to_bool(false);
+					
+					if (!types.empty()) {
+						if (replace) {
+							advances_to_ = utils::parenthetical_split(types, ',');
+						} else {
+							std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
+							std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
+						}
+					}
+					else {
+						// Possible TODO: Honour replace=yes
+						cfg_.add_child("advancement", effect);
+					}
+				} else if (apply_to == "remove_advancement") {
+					const std::string &types = effect["types"];
+					const std::string &amlas = effect["amlas"];
+					
+					std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
+					std::vector<std::string>::iterator iter;
+					BOOST_FOREACH(const std::string& unit, temp_advances) {
+						iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
+						if (iter != advances_to_.end()) {
+							advances_to_.erase(iter);
+						}
+					}
+					
+					temp_advances = utils::parenthetical_split(amlas, ',');
+					std::vector<size_t> remove_indices;
+					size_t remove_index = 0;
+					BOOST_FOREACH(const config &adv, modification_advancements()) {
+						iter = std::find(temp_advances.begin(), temp_advances.end(), adv["id"]);
+						if (iter != temp_advances.end()) {
+							remove_indices.push_back(remove_index);
+						}
+						remove_index++;
+					}
+					for (size_t i = remove_indices.size(); i > 0; i--) {
+						cfg_.remove_child("advancement", i - 1);
+					}
+				} else if (apply_to == "alignment") {
+					unit_type::ALIGNMENT new_align;
+					if(new_align.parse(effect["set"])) {
+						alignment_ = new_align;
+					}
+				} else if (apply_to == "max_attacks") {
+					const std::string &increase = effect["increase"];
+					
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " ";
+							const char* const singular = N_("attack per turn");
+							const char* const plural = N_("attacks per turn");
+							if (increase[increase.size()-1] == '%' || abs(lexical_cast<int>(increase)) != 1) {
+								description += t_string(plural, "wesnoth");
+							} else {
+								description += t_string(singular, "wesnoth");
+							}
+						}
+						max_attacks_ = utils::apply_modifier(max_attacks_, increase, 1);
+					}
+				} else if (apply_to == "recall_cost") {
+					const std::string &increase = effect["increase"];
+					const std::string &set = effect["set"];
+					const int recall_cost = recall_cost_ < 0 ? resources::teams->at(side_).recall_cost() : recall_cost_;
+					
+					if(set.empty() == false) {
+						if(set[set.size()-1] == '%') {
+							recall_cost_ = lexical_cast_default<int>(set)*recall_cost/100;
+						} else {
+							recall_cost_ = lexical_cast_default<int>(set);
+						}
+					}
+					
+					if(increase.empty() == false) {
+						if (!times) {
+							description += utils::print_modifier(increase) + " " +
+								t_string(N_("cost to recall"), "wesnoth");
+						}
+						recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
+					}
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -1940,6 +2051,18 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 				if(increase.empty() == false) {
 					description += utils::print_modifier(increase) + t_string(N_(" move"), "wesnoth");
+				}
+			} else if(apply_to == "vision") {
+				const std::string &increase = effect["increase"];
+
+				if(increase.empty() == false) {
+					description += utils::print_modifier(increase) + t_string(N_(" vision"), "wesnoth");
+				}
+			} else if(apply_to == "jamming") {
+				const std::string &increase = effect["increase"];
+
+				if(increase.empty() == false) {
+					description += utils::print_modifier(increase) + t_string(N_(" jamming"), "wesnoth");
 				}
 			} else if(apply_to == "max_experience") {
 				const std::string &increase = effect["increase"];
