@@ -2069,6 +2069,9 @@ void unit::apply_modifications()
 
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
+		if(mod == "advance" && modifications_.has_child(mod)) {
+			lg::wml_error << "[modifications][advance] is deprecated, use [advancement] instead\n";
+		}
 		BOOST_FOREACH(const config &m, modifications_.child_range(mod)) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i], m, true);
