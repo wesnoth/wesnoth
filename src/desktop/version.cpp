@@ -152,8 +152,14 @@ std::string os_version()
 		static const std::string cmdline = lsb_release_bin + " -s -d";
 
 		scoped_posix_pipe p(popen(cmdline.c_str(), "r"));
-		const std::string& ver = read_pipe_line(p);
+		std::string ver = read_pipe_line(p);
 
+		if(ver.length() >= 2 && ver[0] == '"' && ver[ver.length() - 1] == '"') {
+			ver.erase(ver.length() - 1, 1);
+			ver.erase(0, 1);
+		}
+
+		// Check this again in case we got "" above for some weird reason.
 		if(!ver.empty()) {
 			return ver;
 		}
