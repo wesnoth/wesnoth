@@ -136,8 +136,14 @@ if __name__ == '__main__':
         help = "Define (empty) preprocessor macros, for campaign/multiplayer inclusion.")
     ap.add_argument("filename",
         nargs = "*",
-        help = "Files to validate")
+        help = "Files to validate or directory. If it is a directory, get all the cfg files from directory")
     args = ap.parse_args()
+    if args.path:
+        args.path = os.path.expanduser(args.path)
+    if args.userpath:
+        args.userpath = os.path.expanduser(args.userpath)
+    if args.filename:
+        args.filename = [os.path.expanduser(i) for i in args.filename]
 
     if not args.path:
         try:
@@ -149,8 +155,16 @@ if __name__ == '__main__':
             args.path = '.'
             sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (args.path, ) )
 
+    list_files_analyze = []
     if len(args.filename) < 1:
-        args.filename.append(os.path.join(args.path, '_main.cfg'))
+        list_files_analyze.append(os.path.join(args.path, '_main.cfg'))
+
+    for i in args.filename:
+        if os.path.isdir(i):
+            if i[-1] != '/':
+                i += '/'
+            cfg_from_dir = [i + cfg for cfg in os.listdir(i) if cfg[-3:] == 'cfg']
+            list_files_analyze += cfg_from_dir
 
     if args.verbose > 1:
         print("Args: %s\n"% (args, ))
@@ -179,7 +193,7 @@ if __name__ == '__main__':
 
     if args.userpath:
         parser.parse_text("{~add-ons}")
-    for file in args.filename:
+    for file in list_files_analyze:
         parser.parse_file(file)
     for macro in args.defines:
         parser.parse_text("#define %s \n#enddef" % (macro, ) )
