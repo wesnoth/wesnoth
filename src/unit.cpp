@@ -1947,9 +1947,13 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 							std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
 						}
 					}
-					else {
-						// Possible TODO: Honour replace=yes
-						cfg_.add_child("advancement", effect);
+					
+					if (effect.has_child("advancement")) {
+						if (replace) {
+							cfg_.clear_children("advancement");
+						}
+						config temp = effect;
+						cfg_.splice_children(temp, "advancement");
 					}
 				} else if (apply_to == "remove_advancement") {
 					const std::string &types = effect["types"];
