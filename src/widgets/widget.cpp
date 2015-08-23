@@ -22,6 +22,9 @@
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
 
+#include "resources.hpp" // for screen
+#include "game_display.hpp"
+
 #include <cassert>
 
 namespace {
@@ -344,7 +347,12 @@ void widget::process_tooltip_string(int mousex, int mousey)
 
 void widget::handle_event(SDL_Event const &event) {
 	if (event.type == SDL_QUIT) {
-		throw CVideo::quit();
+		if(resources::screen && resources::screen->in_game()) {
+			// TODO: Show confirmation dialog
+		} else {
+			// Either there's no screen or we're not in a game, so just quit now
+			throw CVideo::quit();
+		}
 	}
 }
 
