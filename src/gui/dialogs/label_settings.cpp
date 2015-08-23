@@ -28,6 +28,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/label.hpp"
+#include "formula_string_utils.hpp"
 
 namespace gui2 {
 REGISTER_DIALOG(label_settings);
@@ -48,7 +49,23 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 		all_labels[hidden_categories[i]] = false;
 	}
 	for(size_t i = 0; i < dc.teams().size(); i++) {
-		labels_display["side:" + str_cast(i + 1)] = dc.teams()[i].name();
+		const team& team = dc.teams()[i];
+		const std::string label_cat_key = "side:" + str_cast(i + 1);
+		if(team.hidden()) {
+			labels_display[label_cat_key] = "";
+			continue;
+		}
+		std::string team_name = team.name();
+		if(team_name.empty()) {
+			team_name = team.current_player();
+		}
+		if(team_name.empty()) {
+			team_name = team.user_team_name();
+		}
+		string_map subst;
+		subst["side_number"] = str_cast(i + 1);
+		subst["name"] = team_name;
+		labels_display[label_cat_key] = vgettext("Side $side_number ($name)", subst);
 	}
 }
 
@@ -61,6 +78,10 @@ void tlabel_settings::pre_show(CVideo& /*video*/, twindow& window) {
 		
 		std::string name = labels_display[category];
 		if(category.substr(0,5) == "side:") {
+			if(name.empty()) {
+				// This means it's a hidden side, so don't show it.
+				continue;
+			}
 			int team = lexical_cast<int>(category.substr(5)) - 1;
 			Uint32 which_color = game_config::tc_info(viewer.teams()[team].color())[0];
 			std::ostringstream sout;
