@@ -371,6 +371,10 @@ function wml_actions.foreach(cfg)
 		for do_child in helper.child_range(cfg, "do") do
 			handle_event_commands(do_child, "loop")
 		end
+		-- set back the content, in case the author made some modifications
+		if not cfg.readonly then
+			array[index] = wesnoth.get_variable(item_name)
+		end
 	end
 	
 	-- house cleaning
