@@ -554,6 +554,56 @@ int intf_set_dialog_active(lua_State *L)
 	return 0;
 }
 
+/**
+ * Sets the visiblity of a widget in the current dialog.
+ * - Arg 1: boolean.
+ * - Args 2..n: path of strings and integers.
+ */
+int intf_set_dialog_visible(lua_State *L)
+{
+	typedef gui2::tcontrol::tvisible tvisible;
+
+	tvisible::scoped_enum flag = tvisible::visible;
+
+	switch (lua_type(L, 1)) {
+		case LUA_TBOOLEAN:
+			flag = bool(lua_toboolean(L, 1))
+					? tvisible::visible
+					: tvisible::invisible;
+			break;
+		case LUA_TSTRING:
+			{
+				const std::string& str = lua_tostring(L, 1);
+				if(str == "visible") {
+					flag = tvisible::visible;
+				} else if(str == "hidden") {
+					flag = tvisible::hidden;
+				} else if(str == "invisible") {
+					flag = tvisible::invisible;
+				} else {
+					return luaL_argerror(L, 1, "string must be one of: visible, hidden, invisible");
+				}
+			}
+			break;
+		default:
+			return luaL_typerror(L, 1, "boolean or string");
+	}
+
+	gui2::twidget *w = find_widget(L, 2, true);
+	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+
+	c->set_visible(flag);
+
+	if(flag == tvisible::hidden) {
+		// HACK: this is needed to force the widget to be repainted immediately
+		//       to get rid of its ghost image.
+		scoped_dialog::current->window->invalidate_layout();
+	}
+
+	return 0;
+}
+
 int show_lua_console(lua_State * /*L*/, CVideo & video, lua_kernel_base * lk)
 {
 	gui2::tlua_interpreter::display(video, lk);
