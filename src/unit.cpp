@@ -88,7 +88,8 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 namespace {
-	const std::string ModificationTypes[] = { "advance", "trait", "object" };
+	// "advance" only kept around for backwards compatibility; only "advancement" should be used
+	const std::string ModificationTypes[] = { "advancement", "advance", "trait", "object" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
 										sizeof(*ModificationTypes);
 
@@ -1558,7 +1559,7 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 		icon.first = adv["icon"].str();
 		icon.second = adv["description"].str();
 
-		for (unsigned j = 0, j_count = modification_count("advance", adv["id"]);
+		for (unsigned j = 0, j_count = modification_count("advancement", adv["id"]);
 		     j < j_count; ++j)
 		{
 			temp.push_back(icon);
@@ -1574,24 +1575,39 @@ std::vector<config> unit::get_modification_advances() const
 	{
 		if (adv["strict_amla"].to_bool() && !advances_to_.empty())
 			continue;
-		if (modification_count("advance", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
+		if (modification_count("advancement", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
 			continue;
 
 		std::vector<std::string> temp = utils::split(adv["require_amla"]);
-		if (temp.empty()) {
+		std::vector<std::string> temp2 = utils::split(adv["exclude_amla"]);
+		if (temp.empty() && temp2.empty()) {
 			res.push_back(adv);
 			continue;
 		}
 
 		std::sort(temp.begin(), temp.end());
-		std::vector<std::string> uniq;
+		std::sort(temp2.begin(), temp2.end());
+		std::vector<std::string> uniq, uniq2;
 		std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
+		std::unique_copy(temp2.begin(), temp2.end(), std::back_inserter(uniq2));
+		
+		bool exclusion_found = false;
+		BOOST_FOREACH(const std::string &s, uniq2)
+		{
+			int mod_num = modification_count("advancement", s);
+			if (mod_num > 0) {
+				exclusion_found = true;
+				break;
+			}
+		}
+		if (exclusion_found)
+			continue;
 
 		bool requirements_done = true;
 		BOOST_FOREACH(const std::string &s, uniq)
 		{
 			int required_num = std::count(temp.begin(), temp.end(), s);
-			int mod_num = modification_count("advance", s);
+			int mod_num = modification_count("advancement", s);
 			if (required_num > mod_num) {
 				requirements_done = false;
 				break;
@@ -1620,6 +1636,11 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 		if (item["id"] == id) {
 			++res;
 		}
+	}
+	
+	// For backwards compatibility, if asked for "advancement", also count "advance"
+	if (mod_type == "advancement") {
+		res += modification_count("advance", id);
 	}
 
 	return res;
@@ -1906,6 +1927,28 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 					else if (!replace.empty()) {
 						overlays_ = utils::parenthetical_split(replace, ',');
+					}
+				} else if (apply_to == "advances_to") {
+					const std::string &add = effect["add"];
+					const std::string &remove = effect["remove"];
+					const std::string &replace = effect["replace"];
+					
+					if (!add.empty()) {
+						std::vector<std::string> temp_advances = utils::parenthetical_split(add, ',');
+						std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
+					}
+					else if (!remove.empty()) {
+						std::vector<std::string> temp_advances = utils::parenthetical_split(remove, ',');
+						std::vector<std::string>::iterator iter;
+						BOOST_FOREACH(const std::string& unit, temp_advances) {
+							iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
+							if(iter != advances_to_.end()) {
+								advances_to_.erase(iter);
+							}
+						}
+					}
+					else if (!replace.empty()) {
+						advances_to_ = utils::parenthetical_split(add, ',');
 					}
 				}
 			} // end while

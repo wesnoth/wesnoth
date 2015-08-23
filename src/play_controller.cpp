@@ -38,6 +38,8 @@
 #include "map_label.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/widgets/window.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
 #include "loadscreen.hpp"
@@ -708,6 +710,16 @@ void play_controller::process_focus_keydown_event(const SDL_Event& event)
 		tab();
 	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
 		enter_textbox();
+	}
+}
+
+void play_controller::process_quit_request() {
+	if (gui_->in_game()) {
+		const int res = gui2::show_message(gui_->video(), _("Quit"),
+					_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
+		if (res != gui2::twindow::CANCEL) {
+			controller_base::process_quit_request();
+		}
 	}
 }
 

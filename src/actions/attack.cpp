@@ -1538,7 +1538,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 {
 	unit_ptr amla_unit(new unit(u));
 	amla_unit->set_experience(amla_unit->experience() - amla_unit->max_experience());
-	amla_unit->add_modification("advance", mod_option);
+	amla_unit->add_modification("advancement", mod_option);
 	return amla_unit;
 }
 
