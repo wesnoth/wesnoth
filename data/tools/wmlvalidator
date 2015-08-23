@@ -23,6 +23,22 @@ class Validator:
     def __init__(self, schema, verbosity=0):
         self.schema = wmlgrammar.Grammar(schema)
         self.verbosity = verbosity
+        self.validate_result = {}
+
+    def validate_result_add(self, from_file, line, origin, message):
+        if not from_file in self.validate_result:
+            self.validate_result[from_file] = []
+
+        self.validate_result[from_file].append({'line': line, 'origin': origin, 'message': message})
+
+    def validate_result_print(self):
+        normal = '\033[0m'
+        bold = '\033[1m'
+        underline = '\033[4m'
+        for k, v in self.validate_result.iteritems():
+            print("%s%s%s" % (bold, k, normal))
+            for i in v:
+                print("%s#%d: %s%s %s" % (underline, i['line'], i['origin'], normal, i['message']))
 
     def validate(self, node, depth=0, name=None):
         """
@@ -47,55 +63,49 @@ class Validator:
 
 
         # TODO: the blocks below probably need to be rewritten
-
-        # TODO: Return should be shown in more organized, for example, a table
         # Validate the attributes
         for attribute in schema.get_attributes():
             matches = node.get_texts(attribute.name)
             nummatches = len(matches)
             if attribute.freq == wmlgrammar.REQUIRED and nummatches != 1:
-                print("(%s:%d) Attribute '[%s] %s' should appear exactly once, not %d times" % (node.file, node.line, verbosename, attribute.name, nummatches))
+                self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should appear exactly once, not %d times" % nummatches)
             elif attribute.freq == wmlgrammar.OPTIONAL and nummatches > 1:
-                print("(%s:%d) Attribute '[%s] %s' should appear at most once, not %d times" % (node.file, node.line, verbosename, attribute.name, nummatches))
+                self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should appear at most once, not %d times" % nummatches)
             elif attribute.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
-                print("(%s:%d) Attribute '[%s] %s' should not appear. It appears %d times" % (node.file, node.line, verbosename, attribute.name, nummatches))
+                self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should not appear. It appears %d times" % nummatches)
             for match in matches:
                 if 'translatable' in attribute.optionals and match.is_translatable() == False:
-                    print("(%s:%d) Attribute '[%s] %s's value is translatable, but haven't _ at the beginning" % (node.file, node.line, verbosename, attribute.name))
+                    self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value is translatable, but haven't _ at the beginning")
                 elif 'translatable' not in attribute.optionals and match.is_translatable() == True:
-                    print("(%s:%d) Attribute '[%s] %s's value isn't translatable, but have a _ at the beginning" % (node.file, node.line, verbosename, attribute.name))
+                    self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value isn't translatable, but have a _ at the beginning")
                 if 'list' in attribute.optionals:
                     pos = 1
                     for i in match.data.split(","):
                         if i[0] == ' ': i = i[1:]
                         if not attribute.validate(i):
-                            print("(%s:%d) Attribute '[%s] %s's value in list should be %s, found at position %d: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, pos, i))
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value in list should be %s, found at position %d: %s" % (attribute.type, pos, i))
                         pos += 1
                 else:
                     if not attribute.validate(match.data):
-                        print("(%s:%d) Attribute '[%s] %s's value should be %s, found: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, match.data))
+                        self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value should be %s, found: %s" % (attribute.type, match.data))
                 node.remove(match) # Get rid of these so we can see what's left
         for attribute in node.get_all_text():
-            print("(%s:%d) Attribute '[%s] %s' found, which has no meaning there" % (node.file, node.line, verbosename, attribute.name))
+            self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Found, which has no meaning there")
 
         # Validate the elements
         for element in schema.get_elements():
             matches = node.get_subs(element.name)
             nummatches = len(matches)
             if element.freq == wmlgrammar.REQUIRED and nummatches != 1:
-                print("(%s:%d) Element '[%s] [%s]' should appear exactly once, not %d times" % (node.file, node.line, verbosename, element.name, nummatches))
+                self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear exactly once, not %d times" % nummatches)
             elif element.freq == wmlgrammar.OPTIONAL and nummatches > 1:
-                print("(%s:%d) Element '[%s] [%s]' should appear at most once, not %d times" % (node.file, node.line, verbosename, element.name, nummatches))
+                self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear at most once, not %d times" % nummatches)
             for match in matches:
                 self.validate(match, depth+1, element.subname)
                 node.remove(match)
 
         for element in node.get_all_subs():
-            print("(%s:%d) Element '[%s] [%s]' found, which has no meaning there" % (node.file, node.line, verbosename, element.name))
-            # Do we want to do this?
-            if False:
-                print("Attempting to validate [%s] anyway" % element.name)
-                self.validate(element, depth+1)
+            self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Found, which has no meaning there")
 
 if __name__ == '__main__':
     import argparse, subprocess, os, codecs, sys
@@ -179,5 +189,6 @@ if __name__ == '__main__':
 
     # Validate
     validator.validate(data)
+    validator.validate_result_print()
 
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
