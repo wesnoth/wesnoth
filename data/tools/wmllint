@@ -629,7 +629,10 @@ linechanges = (
         ("fight_on_without_leader=yes","defeat_condition=no_units_left"),
         ("fight_on_without_leader=no","defeat_condition=no_leader_left"),
         ("remove_from_carryover_on_leaders_loss=yes","remove_from_carryover_on_defeat=yes"),
-        ("remove_from_carryover_on_leaders_loss=no","remove_from_carryover_on_defeat=no")
+        ("remove_from_carryover_on_leaders_loss=no","remove_from_carryover_on_defeat=no"),
+
+        # Changed in 1.13.2.
+        ("[advance]","[advancement]")
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
