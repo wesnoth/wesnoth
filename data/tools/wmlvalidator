@@ -61,11 +61,11 @@ class Validator:
             print("No valid schema found for %s" % verbosename)
             return
 
-
-        # TODO: the blocks below probably need to be rewritten
         # Validate the attributes
         for attribute in schema.get_attributes():
             matches = node.get_texts(attribute.name)
+
+            # Check frequency
             nummatches = len(matches)
             if attribute.freq == wmlgrammar.REQUIRED and nummatches != 1:
                 self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should appear exactly once, not %d times" % nummatches)
@@ -73,11 +73,14 @@ class Validator:
                 self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should appear at most once, not %d times" % nummatches)
             elif attribute.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
                 self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should not appear. It appears %d times" % nummatches)
+
+            # Check use
             for match in matches:
                 if 'translatable' in attribute.optionals and match.is_translatable() == False:
                     self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value is translatable, but haven't _ at the beginning")
                 elif 'translatable' not in attribute.optionals and match.is_translatable() == True:
                     self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value isn't translatable, but have a _ at the beginning")
+
                 if 'list' in attribute.optionals:
                     pos = 1
                     for i in match.data.split(","):
@@ -95,15 +98,18 @@ class Validator:
         # Validate the elements
         for element in schema.get_elements():
             matches = node.get_subs(element.name)
+
+            # Check frequency
             nummatches = len(matches)
             if element.freq == wmlgrammar.REQUIRED and nummatches != 1:
                 self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear exactly once, not %d times" % nummatches)
             elif element.freq == wmlgrammar.OPTIONAL and nummatches > 1:
                 self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear at most once, not %d times" % nummatches)
+
+            # Check sub
             for match in matches:
                 self.validate(match, depth+1, element.subname)
                 node.remove(match)
-
         for element in node.get_all_subs():
             self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Found, which has no meaning there")
 
