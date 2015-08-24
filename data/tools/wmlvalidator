@@ -78,7 +78,7 @@ class Validator:
             for match in matches:
                 if 'translatable' in attribute.optionals and match.is_translatable() == False:
                     self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value is translatable, but haven't _ at the beginning")
-                elif 'translatable' not in attribute.optionals and match.is_translatable() == True:
+                elif 'translatable' not in attribute.optionals and 'optional-translatable' not in attribute.optionals and match.is_translatable() == True:
                     self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value isn't translatable, but have a _ at the beginning")
 
                 if 'list' in attribute.optionals:
