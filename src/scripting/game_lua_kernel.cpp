@@ -3276,8 +3276,13 @@ static int intf_add_modification(lua_State *L)
 	unit_ptr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	std::string sm = m;
-	if (sm != "advance" && sm != "object" && sm != "trait")
+	if (sm == "advance") { // Maintain backwards compatibility
+		sm = "advancement";
+		lg::wml_error << "(Lua) Modifications of type \"advance\" are deprecated, use \"advancement\" instead\n";
+	}
+	if (sm != "advancement" && sm != "object" && sm != "trait") {
 		return luaL_argerror(L, 2, "unknown modification type");
+	}
 
 	config cfg = luaW_checkconfig(L, 3);
 	u->add_modification(sm, cfg);
