@@ -2231,6 +2231,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 		 * the entire map. */
 #if SDL_VERSION_ATLEAST(2,0,0)
 		surface screen_copy = make_neutral_surface(screen);
+		SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
 		SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
 #else
 // Hack to workaround bug #17573
