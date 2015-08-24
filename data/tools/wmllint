@@ -632,7 +632,8 @@ linechanges = (
         ("remove_from_carryover_on_leaders_loss=no","remove_from_carryover_on_defeat=no"),
 
         # Changed in 1.13.2.
-        ("[advance]","[advancement]")
+        ("[advance]","[advancement]"),
+        ("[/advance]","[/advancement]")
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
