@@ -292,6 +292,11 @@ void undraw(surface screen)
 		return;
 	}
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+	// Colour cursors leave behind a trail in SDL2, particularly noticeable when the cursor gets locked during reading a new hot-key.
+	// Disabling blending for the undraw appears to resolve the issue.
+	SDL_SetSurfaceBlendMode (cursor_buf, SDL_BLENDMODE_NONE);
+#endif
 	SDL_Rect area = sdl::create_rect(cursor_x - shift_x[current_cursor]
 			, cursor_y - shift_y[current_cursor]
 			, cursor_buf->w
