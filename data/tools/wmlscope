@@ -185,44 +185,60 @@ class CrossRefLister(CrossRef):
 
     def incorrectlysized(self):
         "Report incorrectly sized images that cannot be safely used for their intended purpose"
-        try:
-            from PIL import Image
-            for (namespace, filename) in xref.filelist.generator():
-                if filename.endswith(".png"):
-                    fn_list = filename.split(os.sep)
-                    try:
-                        im = Image.open(filename) # Pillow doesn't support, nor need, the with statement
-                        (x, y) = im.size
-                        # these checks rely on add-ons that place files following mainline conventions
-                        # I'm aware that this may not always be the case
-                        # but the alternative will be implementing a more sophisticated check in wmllint
-                        if "images" in fn_list:
-                            expected_size = None
-                            if "attacks" in fn_list or "icons" in fn_list:
-                                # images used in attack dialogs should be 60x60
-                                if x != 60 or y != 60:
-                                    expected_size = (60,60)
-                            elif "flags" in fn_list:
-                                # flags should be 72x72, but their icons should be 24 x 16
-                                if "icon" in os.path.split(filename)[1]:
-                                    if x != 24 or y != 16:
-                                        expected_size = (24,16)
-                                else:
-                                    if x != 72 or y != 72:
-                                        expected_size = (72,72)
-                            elif "items" in fn_list:
-                                # items should be 72x72
+        for (namespace, filename) in xref.filelist.generator():
+            if filename.endswith(".png"):
+                fn_list = filename.split(os.sep)
+                try:
+                    with open(filename, mode="rb") as image:
+                        png_header = image.read(16)
+                        w = image.read(4)
+                        h = image.read(4)
+                    # some explanations for those that don't want to read the PNG documentation
+                    # all valid PNG files always start with the same 16 bytes
+                    # the first 8 are the 'magic number', which is 89 50 4E 47 0D 0A 1A 0A
+                    # notice that '50 4E 47' is 'PNG' in ASCII
+                    # the next 4 are the chunk size, then the next 4 are the chunk type
+                    # the IHDR chunk is always the first one in any PNG file
+                    # and has always a length of 13 bytes (0D == 13)
+                    if png_header != b"\x89PNG\r\n\x1a\n\x00\x00\x00\x0dIHDR":
+                        print("%s is not a valid PNG file" % filename, file=sys.stderr)
+                        continue
+                    # after the common part to all PNG files,
+                    # the next 4 bytes are the image width, and the next 4 are the image height
+                    # said bytes are placed in big-endian order (most significant bytes come first)
+                    # we need to use some bitwise operations to convert them as a single integer
+                    # also we don't need the remaining 5 bytes of the IHDR chunk
+                    # WARNING: for Python 3 ord() MUST be removed
+                    # this because Py2 reads the file as a string
+                    # while Py3 reads it as bytes, and each byte is already an int
+                    x = ord(w[0]) << 24 | ord(w[1]) << 16 | ord(w[2]) << 8 | ord(w[3])
+                    y = ord(h[0]) << 24 | ord(h[1]) << 16 | ord(h[2]) << 8 | ord(h[3])
+                    # these checks rely on add-ons that place files following mainline conventions
+                    # I'm aware that this may not always be the case
+                    # but the alternative will be implementing a more sophisticated check in wmllint
+                    if "images" in fn_list:
+                        expected_size = None
+                        if "attacks" in fn_list or "icons" in fn_list:
+                            # images used in attack dialogs should be 60x60
+                            if x != 60 or y != 60:
+                                expected_size = (60,60)
+                        elif "flags" in fn_list:
+                            # flags should be 72x72, but their icons should be 24 x 16
+                            if "icon" in os.path.split(filename)[1]:
+                                if x != 24 or y != 16:
+                                    expected_size = (24,16)
+                            else:
                                 if x != 72 or y != 72:
                                     expected_size = (72,72)
-                            if expected_size:
-                                print("%s: image is %d x %d, expected %d x %d" % (filename, x, y, expected_size[0], expected_size[1]))
-                    except IOError:
-                        print("%s: unable to read file" % filename, file=sys.stderr)
-        except ImportError:
-            print("""Please install the Python Pillow Library to enable image size check.
-You can download it from https://pypi.python.org/pypi/Pillow
-On Debian and Ubuntu you can also type in a Terminal
-sudo apt-get install python-pil""", file=sys.stderr)
+                        elif "items" in fn_list:
+                            # items should be 72x72
+                            if x != 72 or y != 72:
+                                expected_size = (72,72)
+                        if expected_size:
+                            print("%s: image is %d x %d, expected %d x %d" % (filename, x, y, expected_size[0], expected_size[1]))
+                except IOError:
+                    print("%s: unable to read file" % filename, file=sys.stderr)
+
     def duplicates(self, exportonly):
         "Dump duplicate unit IDs."
         duplicate_latch = False
