@@ -208,6 +208,23 @@ void show_error_message(CVideo& video,
 						const std::string& message,
 						bool message_use_markup = false);
 
+///**
+// * Shows a message asking the player if they really want to quit.
+// * Returns if they chose "No", throws if they chose "Yes".
+// *
+// * @tparam Except  The exception to throw if the player selects "Yes".
+// *
+// * @param video    The video which contains the surface to draw upon.
+// * @param except   The exception instance to throw.
+// */
+//template<typename Except>
+//void show_quit_confirm(CVideo& video, Except except = Except()) {
+//	const int res = show_message(video(), _("Quit"), _("Do you really want to quit?"), tmessage::yes_no_buttons);
+//	if (res != twindow::CANCEL) {
+//		throw except;
+//	}
+//}
+
 } // namespace gui2
 
 #endif
