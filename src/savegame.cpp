@@ -846,6 +846,24 @@ static void convert_old_saves_1_13_1(config& cfg)
 			multiplayer["mp_era"] = "era_default";
 		}
 	}
+	//This currently only fixes start-of-scenario saves.
+	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
+	{
+		BOOST_FOREACH(config& side, carryover_sides_start.child_range("side"))
+		{
+			BOOST_FOREACH(config& unit, side.child_range("unit"))
+			{
+				if(config& modifications = unit.child("modifications"))
+				{
+					BOOST_FOREACH(config& advancement, modifications.child_range("advancement"))
+					{
+						modifications.add_child("advance", advancement);
+					}	
+					modifications.clear_children("advancement");
+				}
+			}	
+		}
+	}
 }
 
 void convert_old_saves(config& cfg)
