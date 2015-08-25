@@ -21,7 +21,6 @@
 #include "save_index.hpp"
 #include "carryover.hpp"
 #include "config_assign.hpp"
-#include "game_initialization/configure_engine.hpp"
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "format_time_summary.hpp"
 #include "formula_string_utils.hpp"
@@ -827,7 +826,6 @@ static void convert_old_saves_1_13_0(config& cfg)
 	{
 		cfg.clear_children("carryover_sides");
 	}
-#if 1
 	//This code is needed because for example otherwise it won't find the (empty) era
 	if(!cfg.has_child("multiplayer")) {
 		cfg.add_child("multiplayer", config_of
@@ -837,19 +835,6 @@ static void convert_old_saves_1_13_0(config& cfg)
 			("mp_use_map_settings", true)
 		);
 	}
-	//the alternative code down below doesn’t work replay saves or start of scenario saves
-	//because those don't contain a snapshot. If the code below works with we can enable that code
-	//If it turns out that this code works well we can delete that code.
-#else
-
-	if(!cfg.has_child("multiplayer") && cfg["campaign_type"] == "scenario") {
-		saved_game tmp(cfg);
-		ng::configure_engine eng(tmp);
-		eng.set_default_values();
-		tmp.mp_settings().mp_era = "era_blank";
-		cfg.add_child("multiplayer", tmp.mp_settings().to_config());
-	}
-#endif
 }
 
 
