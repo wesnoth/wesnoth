@@ -852,6 +852,17 @@ static void convert_old_saves_1_13_0(config& cfg)
 #endif
 }
 
+
+//changes done during 1.13.0+dev
+static void convert_old_saves_1_13_1(config& cfg)
+{
+	if(config& multiplayer = cfg.child("multiplayer")) {
+		if(multiplayer["mp_era"] == "era_blank") {
+			multiplayer["mp_era"] = "era_default";
+		}
+	}
+}
+
 void convert_old_saves(config& cfg)
 {
 	version_info loaded_version(cfg["version"]);
@@ -864,6 +875,10 @@ void convert_old_saves(config& cfg)
 	if(loaded_version < version_info("1.13.1"))
 	{
 		convert_old_saves_1_13_0(cfg);
+	}
+	if(loaded_version <= version_info("1.13.1"))
+	{
+		convert_old_saves_1_13_1(cfg);
 	}
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
