@@ -199,8 +199,12 @@ def issave(filename):
         with gzip.open(filename) as content:
             firstline = content.readline()
     else:
-        with codecs.open(filename, "r", "utf8") as content:
-            firstline = content.readline()
+        try:
+            with codecs.open(filename, "r", "utf8") as content:
+                firstline = content.readline()
+        except UnicodeDecodeError:
+            # our saves are in UTF-8, so this file shouldn't be one
+            return False
     return firstline.startswith("label=")
 
 def isresource(filename):
