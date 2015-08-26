@@ -1023,6 +1023,20 @@ void unit_type_data::set_config(config &cfg)
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
 		loadscreen::increment_progress();
 	}
+	
+	BOOST_FOREACH(const config &r, cfg.child_range("damage"))
+	{
+		const std::string& dmg_type = r["type"];
+		config temp_cfg;
+		BOOST_FOREACH(const config::attribute &attr, cfg.attribute_range()) {
+			const std::string &mt = attr.first;
+			if (mt == "type" || movement_types_.find(mt) == movement_types_.end()) {
+				continue;
+			}
+			temp_cfg[dmg_type] = attr.second;
+			movement_types_[mt].get_resistances().merge(temp_cfg, false);
+		}
+	}
 
 	// Apply base units.
 	BOOST_FOREACH(config &ut, cfg.child_range("unit_type"))
