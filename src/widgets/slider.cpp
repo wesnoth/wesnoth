@@ -314,6 +314,7 @@ bool slider::requires_event_focus(const SDL_Event* event) const
 
 void slider::handle_event(const SDL_Event& event)
 {
+	widget::handle_event(event);
 	if (!enabled() || hidden())
 		return;
 

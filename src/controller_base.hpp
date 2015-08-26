@@ -127,6 +127,12 @@ protected:
 	 * Overridden in derived classes
 	 */
 	virtual void process_keyup_event(const SDL_Event& event);
+	
+	/**
+	 * Process quit request.
+	 * Overridden in derived classes
+	 */
+	virtual void process_quit_request();
 
 	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);

@@ -37,6 +37,7 @@ namespace gui {
 	}
 
 	void multimenu::handle_event(const SDL_Event &event) {
+		widget::handle_event(event);
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			int hit_box = hit_checkbox(event.button.x, event.button.y);
 			if (hit_box != -1) {

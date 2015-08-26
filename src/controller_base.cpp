@@ -99,6 +99,9 @@ void controller_base::handle_event(const SDL_Event& event)
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
+	case SDL_QUIT:
+		process_quit_request();
+		break;
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	case SDL_ACTIVEEVENT:
 		if (event.active.state == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
@@ -128,6 +131,10 @@ void controller_base::handle_event(const SDL_Event& event)
 bool controller_base::have_keyboard_focus()
 {
 	return true;
+}
+
+void controller_base::process_quit_request() {
+	throw CVideo::quit();
 }
 
 void controller_base::process_focus_keydown_event(const SDL_Event& /*event*/) {

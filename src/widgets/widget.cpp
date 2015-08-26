@@ -22,6 +22,14 @@
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
 
+#include "resources.hpp" // for screen
+#include "game_display.hpp"
+
+// For quit confirmation dialog
+#include "gettext.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/widgets/window.hpp"
+
 #include <cassert>
 
 namespace {
@@ -339,6 +347,23 @@ void widget::process_tooltip_string(int mousex, int mousey)
 	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
 		if (!tooltip_text_.empty())
 			tooltips::add_tooltip(rect_, tooltip_text_ );
+	}
+}
+//Okay shadowm, some questions regarding PR467. 1) How do you suppose I should determine whether to show a confirmation dialog from the GUI2 event handling code? Should I use the same test of resources::screen that I used in the GUI1 handling code, or do you have better ideas? 2) The exact same code to show a confirmation dialog is now duplicated in three places. I'd like to break it out into a function, but have no idea where would be a good place to store it. Any suggestions? 3) This still doesn't show a quit confirmation in the map editor. Would you like me to poke around and figure out how to add one there?
+void widget::handle_event(SDL_Event const &event) {
+	if (event.type == SDL_QUIT) {
+		if(resources::screen && resources::screen->in_game()) {
+			leave();
+			const int res = gui2::show_message(video(), _("Quit"),
+							_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
+			if (res != gui2::twindow::CANCEL) {
+				throw CVideo::quit();
+			}
+			join();
+		} else {
+			// Either there's no screen or we're not in a game, so just quit now
+			throw CVideo::quit();
+		}
 	}
 }
 
