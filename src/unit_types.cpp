@@ -1027,14 +1027,22 @@ void unit_type_data::set_config(config &cfg)
 	BOOST_FOREACH(const config &r, cfg.child_range("damage"))
 	{
 		const std::string& dmg_type = r["type"];
-		config temp_cfg;
+		config temp_cfg, default_cfg;
 		BOOST_FOREACH(const config::attribute &attr, cfg.attribute_range()) {
 			const std::string &mt = attr.first;
+			if (mt == "default") {
+				default_cfg[dmg_type] = attr.second;
+			}
 			if (mt == "type" || movement_types_.find(mt) == movement_types_.end()) {
 				continue;
 			}
 			temp_cfg[dmg_type] = attr.second;
 			movement_types_[mt].get_resistances().merge(temp_cfg, false);
+		}
+		if (!default_cfg[dmg_type].empty()) {
+			BOOST_FOREACH(movement_type_map::value_type &mt, movement_types_) {
+				mt.second.get_resistances().merge(default_cfg, false);
+			}
 		}
 	}
 
