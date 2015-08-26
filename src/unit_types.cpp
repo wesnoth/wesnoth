@@ -31,6 +31,9 @@
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 #include "unit_animation.hpp"
+#include "util.hpp"
+
+#include "gui/auxiliary/formula.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/static_assert.hpp>
@@ -1036,7 +1039,13 @@ void unit_type_data::set_config(config &cfg)
 			if (mt == "type" || movement_types_.find(mt) == movement_types_.end()) {
 				continue;
 			}
-			temp_cfg[dmg_type] = attr.second;
+			gui2::tformula<int> formula(attr.second);
+			game_logic::map_formula_callable original;
+			BOOST_FOREACH(const utils::string_map::value_type& p, movement_types_[mt].damage_table()) {
+				variant val(lexical_cast<int>(p.second));
+				original.add(p.first, val);
+			}
+			temp_cfg[dmg_type] = formula(original);
 			movement_types_[mt].get_resistances().merge(temp_cfg, false);
 		}
 		if (!default_cfg[dmg_type].empty()) {
