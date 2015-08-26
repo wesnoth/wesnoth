@@ -517,17 +517,6 @@ void jhat_event(display& disp, const SDL_Event& event, command_executor* executo
 void key_event(display& disp, const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
-	if(event.key.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
-		LOG_G << "escape pressed..showing quit\n";
-		const int res = gui2::show_message(disp.video(), _("Quit"),
-				_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
-		if(res != gui2::twindow::CANCEL) {
-			throw_quit_game_exception();
-		} else {
-			return;
-		}
-	}
-
 	event_execute(disp, event,executor);
 }
 

@@ -88,7 +88,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_STATISTICS, "statistics", N_("Statistics"), false, scope_game, "" },
 	{ hotkey::HOTKEY_STOP_NETWORK, "stopnetwork", N_("Pause Network Game"), false, scope_game, "" },
 	{ hotkey::HOTKEY_START_NETWORK, "startnetwork", N_("Continue Network Game"), false, scope_game, "" },
-	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit to Titlescreen"), false, scope_game | scope_editor | scope_main, "" },
+	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit to Titlescreen"), false, scope_game | scope_editor, "" },
 	{ hotkey::HOTKEY_LABEL_TEAM_TERRAIN, "labelteamterrain", N_("Set Team Label"), false, scope_game, "" },
 	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false, scope_game, "" },
 	{ hotkey::HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false, scope_game, "" },
