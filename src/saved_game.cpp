@@ -240,6 +240,8 @@ void saved_game::expand_mp_events()
 			, std::back_inserter(mods) );
 		if(mp_settings_.mp_era != "") //We don't want the error message below if there is no era (= if this is a sp game)
 		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
+		if(classification_.campaign != "")
+		{ mods.push_back(modevents_entry("campaign", classification_.campaign)); }
 
 		BOOST_FOREACH(modevents_entry& mod, mods)
 		{
