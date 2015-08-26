@@ -855,11 +855,11 @@ static void convert_old_saves_1_13_1(config& cfg)
 			{
 				if(config& modifications = unit.child("modifications"))
 				{
-					BOOST_FOREACH(config& advancement, modifications.child_range("advancement"))
+					BOOST_FOREACH(config& advancement, modifications.child_range("advance"))
 					{
-						modifications.add_child("advance", advancement);
+						modifications.add_child("advancement", advancement);
 					}	
-					modifications.clear_children("advancement");
+					modifications.clear_children("advance");
 				}
 			}	
 		}
