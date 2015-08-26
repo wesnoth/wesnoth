@@ -267,7 +267,7 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 			hotkey::TITLE_SCREEN__CREDITS,
 			boost::bind(&hotkey, boost::ref(window), SHOW_ABOUT));
 
-	window.register_hotkey(hotkey::HOTKEY_QUIT_GAME,
+	window.register_hotkey(hotkey::HOTKEY_QUIT_TO_DESKTOP,
 						   boost::bind(&hotkey, boost::ref(window), QUIT_GAME));
 
 	window.register_hotkey(

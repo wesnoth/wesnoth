@@ -643,13 +643,18 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 				}
 			}
 			break;
+		case HOTKEY_QUIT_TO_DESKTOP:
 		case HOTKEY_QUIT_GAME: {
 			if (disp.in_game()) {
 				DBG_G << "is in game -- showing quit message\n";
 				const int res = gui2::show_message(disp.video(), _("Quit"),
 						_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
 				if (res != gui2::twindow::CANCEL) {
-					throw_quit_game_exception();
+					if (command.id == HOTKEY_QUIT_TO_DESKTOP) {
+						throw CVideo::quit();
+					} else {
+						throw_quit_game_exception();
+					}
 				}
 			}
 			break;

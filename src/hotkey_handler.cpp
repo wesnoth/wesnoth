@@ -281,6 +281,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_UNIT_LIST:
 	case hotkey::HOTKEY_STATISTICS:
 	case hotkey::HOTKEY_QUIT_GAME:
+	case hotkey::HOTKEY_QUIT_TO_DESKTOP:
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:

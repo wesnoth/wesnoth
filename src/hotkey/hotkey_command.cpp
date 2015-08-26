@@ -121,7 +121,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	// TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, scope_game, "" },
 
-	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, scope_editor, "" },
+	{ hotkey::HOTKEY_QUIT_TO_DESKTOP, "quit-to-desktop", N_("Quit to Desktop"), false, scope_game | scope_editor | scope_main, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_CLOSE, "editor-close-map", N_("Close Map"), false, scope_editor, "" },
 
 	// These are not really hotkey items but menu entries to get expanded.
