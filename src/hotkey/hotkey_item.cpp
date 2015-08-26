@@ -476,6 +476,16 @@ std::string get_names(std::string id)
 			names.push_back(item->get_name());
 		}
 	}
+	
+	// These are hard-coded, non-rebindable hotkeys
+	if (id == "quit") {
+		names.push_back("escape");
+	}
+#ifdef __APPLE__
+	else if (id == "quit-to-desktop") {
+		names.push_back("cmd+q");
+	}
+#endif
 
 	return boost::algorithm::join(names, ", ");
 }
