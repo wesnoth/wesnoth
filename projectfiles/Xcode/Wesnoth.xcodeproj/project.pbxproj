@@ -4290,6 +4290,7 @@
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				B5599E8F0EC64D18008DD061 /* CopyFiles */,
 				B5BB6CFC0F8948FB00444FBF /* CopyFiles */,
+				91C2A6EB1B843AA900346948 /* Copy Translations (if present) */,
 			);
 			buildRules = (
 			);
@@ -4385,6 +4386,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Translations (if present)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SOURCE_ROOT/../..\"\nif [ -e \"./translations\" ]; then\nrsync -rv --delete \"./translations\" \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/\";\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
