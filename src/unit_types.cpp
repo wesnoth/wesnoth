@@ -1031,7 +1031,7 @@ void unit_type_data::set_config(config &cfg)
 	{
 		const std::string& dmg_type = r["type"];
 		config temp_cfg;
-		BOOST_FOREACH(const config::attribute &attr, cfg.attribute_range()) {
+		BOOST_FOREACH(const config::attribute &attr, r.attribute_range()) {
 			const std::string &mt = attr.first;
 			if (mt == "type" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
 				continue;
@@ -1043,18 +1043,21 @@ void unit_type_data::set_config(config &cfg)
 				original.add(p.first, val);
 			}
 			temp_cfg[dmg_type] = formula(original);
-			movement_types_[mt].get_resistances().merge(temp_cfg, false);
+			movement_types_[mt].get_resistances().merge(temp_cfg, true);
 		}
-		if (cfg.has_attribute("default")) {
-			gui2::tformula<int> formula(cfg["default"]);
+		if (r.has_attribute("default")) {
+			gui2::tformula<int> formula(r["default"]);
 			game_logic::map_formula_callable original;
 			BOOST_FOREACH(movement_type_map::value_type &mt, movement_types_) {
+				if (r.has_attribute(mt.first)) {
+					continue;
+				}
 				BOOST_FOREACH(const utils::string_map::value_type& p,mt.second.damage_table()) {
 					variant val(lexical_cast<int>(p.second));
 					original.add(p.first, val);
 				}
 				temp_cfg[dmg_type] = formula(original);
-				mt.second.get_resistances().merge(temp_cfg, false);
+				mt.second.get_resistances().merge(temp_cfg, true);
 			}
 		}
 	}
