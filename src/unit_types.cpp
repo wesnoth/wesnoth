@@ -37,6 +37,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/regex.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -1000,6 +1001,24 @@ namespace { // Helpers for set_config()
 		// Restore the variations.
 		ut_cfg.splice_children(variations, "variation");
 	}
+	
+	const boost::regex fai_identifier("[a-zA-Z_]+");
+	
+	template<typename MoveT>
+	void patch_movetype(MoveT& mt, const std::string& new_key, const std::string& formula_str, int default_val) {
+		config temp_cfg, original_cfg;
+		gui2::tformula<int> formula(formula_str);
+		game_logic::map_formula_callable original;
+		mt.write(original_cfg);
+		boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
+		BOOST_FOREACH(const boost::sregex_iterator::value_type& p, std::make_pair(m, boost::sregex_iterator())) {
+			const std::string var_name = p.str();
+			variant val(original_cfg[var_name].to_int(default_val));
+			original.add(var_name, val);
+		}
+		temp_cfg[new_key] = formula(original);
+		mt.merge(temp_cfg, true);
+	}
 }// unnamed namespace
 
 /**
@@ -1027,6 +1046,7 @@ void unit_type_data::set_config(config &cfg)
 		loadscreen::increment_progress();
 	}
 	
+	// Movetype resistance patching
 	BOOST_FOREACH(const config &r, cfg.child_range("damage"))
 	{
 		const std::string& dmg_type = r["type"];
@@ -1036,28 +1056,14 @@ void unit_type_data::set_config(config &cfg)
 			if (mt == "type" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
 				continue;
 			}
-			gui2::tformula<int> formula(attr.second);
-			game_logic::map_formula_callable original;
-			BOOST_FOREACH(const utils::string_map::value_type& p, movement_types_[mt].damage_table()) {
-				variant val(lexical_cast<int>(p.second));
-				original.add(p.first, val);
-			}
-			temp_cfg[dmg_type] = formula(original);
-			movement_types_[mt].get_resistances().merge(temp_cfg, true);
+			patch_movetype(movement_types_[mt].get_resistances(), dmg_type, attr.second, 100);
 		}
 		if (r.has_attribute("default")) {
-			gui2::tformula<int> formula(r["default"]);
-			game_logic::map_formula_callable original;
 			BOOST_FOREACH(movement_type_map::value_type &mt, movement_types_) {
 				if (r.has_attribute(mt.first)) {
 					continue;
 				}
-				BOOST_FOREACH(const utils::string_map::value_type& p,mt.second.damage_table()) {
-					variant val(lexical_cast<int>(p.second));
-					original.add(p.first, val);
-				}
-				temp_cfg[dmg_type] = formula(original);
-				mt.second.get_resistances().merge(temp_cfg, true);
+				patch_movetype(mt.second.get_resistances(), dmg_type, r["default"], 100);
 			}
 		}
 	}
