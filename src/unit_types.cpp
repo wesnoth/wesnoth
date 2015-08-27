@@ -1067,6 +1067,51 @@ void unit_type_data::set_config(config &cfg)
 			}
 		}
 	}
+	
+	// Movetype move/defend patching
+	BOOST_FOREACH(const config &terrain, cfg.child_range("terrain"))
+	{
+		const std::string& ter_type = terrain["type"];
+		config temp_cfg;
+		static const std::string terrain_info_tags[] = {"movement", "vision", "jamming", "defense"};
+		BOOST_FOREACH(const std::string &tag, terrain_info_tags) {
+			if (!terrain.has_child(tag)) {
+				continue;
+			}
+			const config& info = terrain.child(tag);
+			BOOST_FOREACH(const config::attribute &attr, info.attribute_range()) {
+				const std::string &mt = attr.first;
+				if (mt == "type" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
+					continue;
+				}
+				if (tag == "defense") {
+					patch_movetype(movement_types_[mt].get_defense(), ter_type, attr.second, 100);
+				} else if (tag == "vision") {
+					patch_movetype(movement_types_[mt].get_vision(), ter_type, attr.second, 99);
+				} else if (tag == "movement") {
+					patch_movetype(movement_types_[mt].get_movement(), ter_type, attr.second, 99);
+				} else if (tag == "jamming") {
+					patch_movetype(movement_types_[mt].get_jamming(), ter_type, attr.second, 99);
+				}
+			}
+			if (info.has_attribute("default")) {
+				BOOST_FOREACH(movement_type_map::value_type &mt, movement_types_) {
+					if (info.has_attribute(mt.first)) {
+						continue;
+					}
+					if (tag == "defense") {
+						patch_movetype(mt.second.get_defense(), ter_type, info["default"], 100);
+					} else if (tag == "vision") {
+						patch_movetype(mt.second.get_vision(), ter_type, info["default"], 99);
+					} else if (tag == "movement") {
+						patch_movetype(mt.second.get_movement(), ter_type, info["default"], 99);
+					} else if (tag == "jamming") {
+						patch_movetype(mt.second.get_jamming(), ter_type, info["default"], 99);
+					}
+				}
+			}
+		}
+	}
 
 	// Apply base units.
 	BOOST_FOREACH(config &ut, cfg.child_range("unit_type"))
