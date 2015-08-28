@@ -152,6 +152,9 @@ namespace game_config
 				game_has_begun;
 		extern const std::string button_press, checkbox_release, slider_adjust,
 				menu_expand, menu_contract, menu_select;
+		namespace status {
+			extern std::string poisoned, slowed, petrified;
+		}
 	}
 
 	void load_config(const config &cfg);

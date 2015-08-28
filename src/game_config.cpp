@@ -166,6 +166,12 @@ namespace game_config
 		menu_expand = "expand.wav",
 		menu_contract = "contract.wav",
 		menu_select = "select.wav";
+
+		namespace status {
+			std::string poisoned = "poison.ogg",
+			slowed = "slowed.wav",
+			petrified = "petrified.ogg";
+		}
 	}
 
 #ifdef WESNOTH_PATH
@@ -315,6 +321,13 @@ namespace game_config
 			if (s.has_attribute("game_user_leave")) 	game_user_leave = 		s["game_user_leave"].str();
 			if (s.has_attribute("ready_for_start")) 	ready_for_start = 		s["ready_for_start"].str();
 			if (s.has_attribute("game_has_begun")) 		game_has_begun = 		s["game_has_begun"].str();
+
+			if(const config & ss = s.child("status")) {
+				using namespace game_config::sounds::status;
+				if (ss.has_attribute("poisoned")) 		poisoned = 		s["poisoned"].str();
+				if (ss.has_attribute("slowed")) 		slowed = 		s["slowed"].str();
+				if (ss.has_attribute("petrified")) 		petrified = 		s["petrified"].str();
+			}
 		}
 	}
 
