@@ -324,9 +324,9 @@ namespace game_config
 
 			if(const config & ss = s.child("status")) {
 				using namespace game_config::sounds::status;
-				if (ss.has_attribute("poisoned")) 		poisoned = 		s["poisoned"].str();
-				if (ss.has_attribute("slowed")) 		slowed = 		s["slowed"].str();
-				if (ss.has_attribute("petrified")) 		petrified = 		s["petrified"].str();
+				if (ss.has_attribute("poisoned")) 		poisoned = 		ss["poisoned"].str();
+				if (ss.has_attribute("slowed")) 		slowed = 		ss["slowed"].str();
+				if (ss.has_attribute("petrified")) 		petrified = 		ss["petrified"].str();
 			}
 		}
 	}
