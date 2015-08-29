@@ -1,21 +1,23 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# #-#-#-#-#  wesnoth-multiplayer.cpp.pot (Battle for Wesnoth 1.12.4)  #-#-#-#-#
 # Japanese translations for Battle for Wesnoth package.
-# Copyright (C) 2005-2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
+#
+# Translators:
+# Automatically generated, 2005
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
-#
+# RatArmy <broadbarredfirefish@gmail.com>, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.10-dev\n"
+"Project-Id-Version: Battle for Wesnoth 1.12.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-07-12 20:06+0200\n"
-"PO-Revision-Date: 2012-06-04 02:55+0900\n"
-"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
-"Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
-"Language: Japanese\n"
+"POT-Creation-Date: 2015-06-12 18:03-0300\n"
+"PO-Revision-Date: 2015-08-18 08:14+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
+"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
+"wesnoth112/language/ja_JP/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +31,7 @@ msgstr "ユーザーマップ"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "カスタム"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -39,7 +41,7 @@ msgstr "ランダム"
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:125
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>陣営 %d</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:141
@@ -47,16 +49,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>陣営 %d</span>:  収入スコア = %d  ユニットス"
+"コア = %d  ゴールド = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:141
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "合計: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:151
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>陣営 %d</span>が有利です。"
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:176
@@ -69,6 +73,7 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"マルチプレイヤー用の標準の時代。6つの党派があり、バランスがとれています。"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -82,11 +87,13 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"高レベルユニットが使用できる時代です。リーダーはレベル3で、レベル1と2のユニッ"
+"トを雇用できます。バランスは考慮されていません。"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "デフォルト + カリフェイト"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -98,13 +105,15 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"デフォルトの時代の6つの党派に、さらにもう1つの党派を付け加えたものです。カリ"
+"フェイトは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦います。\n"
+"\n"
+"この時代はまだ開発中であり、何か問題があれば報告してください。"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "英雄の時代"
+msgstr "英雄の時代 + カリフェイト"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -116,18 +125,22 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"英雄の時代の6つの党派に、さらにもう1つの党派を付け加えたものです。カリフェイ"
+"トは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦います。\n"
+"\n"
+"この時代はまだ開発中であり、何か問題があれば報告してください。"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
-msgstr "ドレーク族"
+msgstr "ドレーク"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "カリフェイト"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -162,7 +175,7 @@ msgstr "アンデッド"
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
 msgid "2p — Aethermaw"
-msgstr ""
+msgstr "2p — エーテルの奈落"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -180,6 +193,16 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"遠い昔、大魔術師Sullaは「エーテルの奈落」に閉じ込められた。ここには神秘的なエ"
+"ネルギーの繋がりがあり、その混沌とした性質がSullaの脱出を妨げていた。しかし、"
+"何世紀にも渡って、彼女は徐々に自分の力を混沌の渦であるエーテルの奈落に馴染ま"
+"せていった。そして、今や物理平面へその力によって影響を与え始めている。大地の"
+"全域に何百もの時間さえも異なる現実の世界を描き、実験を行っているのだ。彼女は"
+"それら宇宙の断片を操り、併合し、エーテルの奈落と元の世界を行き来させている。"
+"おそらく、Sullaによるエーテルの奈落の支配が進めば、いつかは彼女はここを出て自"
+"由になるだろう。その時が来るまで、不幸にもエーテルの奈落に引き込まれた死すべ"
+"き宿命の者たちの戦いを操り、彼女は楽しむつもりなのだ。\n"
+"Designed by Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -244,7 +267,7 @@ msgstr "南軍"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr ""
+msgstr "エーテルの奈落 — Doc Paterson作"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -264,17 +287,31 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"大魔術師Sullaによってあなたの軍勢は奇怪な場所に転送されました。彼女を戦いに"
+"よって楽しませなければなりません。\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>メモ:</span>\n"
+"\n"
+"<span color='green'>石塚のあるヘクスにユニットを移動させることはできないで"
+"しょう。しかし、ヘクスにユニットを雇い、そこから移動させることは可能です。</"
+"span>\n"
+"\n"
+"<span color='green'>ターン4から、大魔術師Sullaが2つに分かれた戦場を結合させま"
+"す。結合は、ターン6の終わりに完了します。</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "エーテルの奈落がうなっている。"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr ""
+msgstr "2p — アーケンクレーブの砦"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -298,6 +335,17 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"遠い昔、Haldricの時代よりも遥かな過去、Lintanirの森の東端の遥か向こうで、恐ろ"
+"しい大戦争があった。記録によると、優れた戦術家でもあり秘術を身につけた強力な"
+"バトルメイジがおり、部下たちから「Dauntless」と呼ばれていた。アーケンクレーブ"
+"の戦いにおいて、Dauntlessとその軍勢はKah Ruukとして知られる魔術を操る残忍な悪"
+"魔族と戦った。何万ものKah Ruukに囲まれたため、Dauntlessは魔術によって強力な大"
+"地の精霊（何故かはわからないが、Dauntlessに借りがあったようだ）を呼び出した。"
+"精霊は巨大な岩石を大地の底から持ち上げ、変形させ、一瞬の内に巨大な要塞となっ"
+"た。何千ものKah Ruukがアーケンクレーブの要塞を越えようとして倒れ、Dauntlessの"
+"軍勢は勝利した。その後、この土地は軍の要塞となった。大魔術師Dauntlessの勢力が"
+"遺したアーティファクトや遺物があると噂されており、それらが花崗岩や黒曜石の壁"
+"の中に隠されているらしい。 Designed by Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -372,7 +420,7 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
-"これらの洞窟は、かつて伝説的な老バジリスク、Chak'kso Ney'yks の巣であった。そ"
+"これらの洞窟は、かつて伝説的な老バジリスク、Chak'kso Ney'yksの巣であった。そ"
 "の残忍な力の記念碑として、彼の犠牲者の石化した姿が残されている。"
 
 #. [unit]
@@ -418,7 +466,7 @@ msgstr ""
 "何年もが過ぎ、その日々は過去のものとなった。\n"
 "ここにそのドレークが立っている。彼は勇敢にも、\n"
 "故郷を捨てバシリスクのゴールドを奪おうとした。\n"
-"（炎の兵士がここに記す）"
+"（Flametrooperがここに記す）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:104
@@ -568,7 +616,7 @@ msgstr ""
 "まった。彼は狼を振り返らせて逃げようとしたが、狼は動かなかった。モンスターが"
 "彼に向かってきたとき、彼は最後の言葉を叫んだ。「有能な犬の神よ、おまえの足は"
 "石でできているのか？！？」\n"
-"（エルフの略奪者がここに記す）"
+"（Elvish Pillagerがここに記す）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:142
@@ -622,6 +670,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"この勇敢なクモを知る者は誰もいないようだ。\n"
+"（WinnerAがここに記す）"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
@@ -629,6 +679,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"この不運な辻強盗の話はまだ語られたことは無い。\n"
+"（WinnerBがここに記す）"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
@@ -686,7 +738,7 @@ msgstr ""
 "彼はほとんど気がつかないうちにバジリスクに捕らえられ、その獣に気づく前に石に"
 "変えられてしまった。彼の石化した姿はここに今も立っていて、太陽の光で暖められ"
 "ている。雲ひとつない空の下で。彼の偉大な願望はかなったのだ。\n"
-"（エルフの略奪者がここに記す）"
+"（Elvish Pillagerがここに記す）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
@@ -820,12 +872,13 @@ msgid ""
 "Note: You need to use the default map settings for the scenario to work "
 "right."
 msgstr ""
-"暗黒の前兆は一人用、あるいは 2 プレイヤーのチームプレイで、ランダムに発生す"
-"る AI ユニットと戦うサバイバルシナリオである。すべての敵の波から生き残り、退"
-"けることで勝利を得ることができる。ゲームプレイの過程で、ランダムの気候の効果"
-"により地形が変化していくだろう。\n"
+"暗黒の前兆はランダムに発生するAIユニットと戦うサバイバルシナリオで、1人でも、"
+"2人でのチームプレイでも遊ぶことができる。すべての敵の波から生き残り、退けるこ"
+"とが勝利条件だ。ゲームプレイの過程で、ランダムの気候の効果により地形が変化し"
+"ていく。\n"
 "\n"
-"注意: シナリオが正しく動作するようマップの初期設定を使用する必要があります。"
+"メモ: シナリオを正しく動作させるためには、マップの初期設定を使用する必要があ"
+"る。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:369
@@ -834,9 +887,9 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
-"最後の反逆者から血のしたたる剣を抜くと、叫び声と慈悲を求める嘆願はついに静か"
-"になった。この地方のくずどもからはもう抵抗する者はいないだろう。あなたの治世"
-"はようやく安定したのだ。"
+"最後の反逆者から血のしたたる剣を抜くと、叫び声と慈悲を求める嘆願が止み、静寂"
+"が訪れた。この地方のくずどもにはもう抵抗する者はいないだろう。あなたの治世は"
+"ようやく安定したのだ。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:701
@@ -882,7 +935,7 @@ msgstr "暴徒"
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1056
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1073
 msgid "teamname^Human"
-msgstr "人間軍"
+msgstr "人間"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1227
@@ -895,22 +948,23 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"あなたのチームにはリーダーが1人しかいないため、敵の軍勢は弱体化します。"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1231
 msgid "Death of both of your team’s leaders"
-msgstr "どちらかのチームリーダーの死。"
+msgstr "両方のチームリーダーの死。"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1232
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr ""
+msgstr "あなたのチームにはリーダーが2人いるため、敵の軍勢は強化されます。"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1253
 msgid "Survive and defeat all enemy waves"
-msgstr "すべての敵の攻撃から生き残り、敵を退けろ。"
+msgstr "生き延び、敵を退けろ。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1273
@@ -919,7 +973,6 @@ msgstr "暗黒の前兆 - ランダムのサバイバルシナリオ"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1278
-#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -942,33 +995,28 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
-"あなたの目的は次々に発生する敵の波から生き延び、最後の大物を倒すことです。\n"
-"       \n"
-"発生する敵の波はランダムに生成されるため、暗黒の前兆をプレイする度に異なるで"
-"しょう。\n"
+"押し寄せる敵軍から生き延び、最後の強敵を倒すことがあなたの目標です。\n"
+"\n"
+"敵軍はランダムに生成され、暗黒の前兆を遊ぶたびに変化します。\n"
+"\n"
+"敵は北、南、西のマップ端から出現しますが、西から来ることが最も多いです。ま"
+"た、敵は規則的な間隔で現れます。\n"
+"\n"
+"天候がランダムに変化し、マップのレイアウトに影響を与えます。\n"
 "\n"
 "\n"
-"彼らは北、南、西のマップのへりから現れます。しかしながら、西のへりから発生す"
-"ることが最も多いです。発生する敵の波はある一定の間隔で現れます。\n"
+"<b>暗黒の前兆の製作者:</b>\n"
 "\n"
+"<span color='green'>jb:</span>\n"
+"• マップデザイン、出現ユニットのパターン、シナリオのコンセプト\n"
 "\n"
-"天候もランダムで変わります。これはマップのレイアウトに影響を与えます。\n"
-"\n"
-"\n"
-"\n"
-"#暗黒の前兆の作成者:\n"
-"\n"
-"@jb\n"
-"- マップデザイン、発生する敵のグループ、シナリオのコンセプト\n"
-"\n"
-"@Rhuvaen\n"
-"- WML の実装"
+"<span color='green'>Rhuvaen:</span>\n"
+"• WMLの実装"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1298
-#, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
-msgstr "そうか。ここが呪われた谷―我々が手に入れようとしている土地か。"
+msgstr "ここが呪われた谷…我々が手に入れようとしている土地か。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1302
@@ -977,8 +1025,8 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
-"住んでいるのは人間と獣による奇妙な同盟軍だという噂で、我々の要求に反対しない"
-"わけはないだろう。この地では奇襲を受ける覚悟をしておかなければならない。"
+"住んでいるのは人間と獣による奇妙な同盟軍だそうだ。我々の要求に反対しないわけ"
+"はないだろうな。この地では奇襲を受ける覚悟をしておかなければならない。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1306
@@ -994,8 +1042,8 @@ msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
-"うわ！ これはどういうことだ？ 単なる野蛮人どもに敗れるとは！ 私は神に見捨てら"
-"れた……"
+"うわ！これはどういうことだ？野蛮人どもに敗れるとは！神よ、私を見捨てたのです"
+"か……"
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1357
@@ -1034,15 +1082,14 @@ msgid ""
 "creators."
 msgstr ""
 "この最も異常な洞窟はかつて笑う悪魔の部屋として知られており、Kah Ruuk 鬼族の内"
-"部拠点であった。Kah Ruuk は邪悪で狡猾な人食い悪魔の種族で、Irdya に跡形も無く"
-"消されるまで、400 年近く東側の土地の人々を脅かしてきた。以来、その創造者の奇"
-"怪で神秘的な魔法の開錠を望んで、多くの党派が「鬼の巣窟」の支配権を競ってき"
-"た。"
+"部拠点であった。Kah Ruuk は邪悪で狡猾な人食い悪魔の種族で、Irdyaから跡形も無"
+"く消されるまで、400 年近く東側の土地の人々を脅かしてきた。以来、その創造者の"
+"奇怪で神秘的な魔法を望んで、多くの党派が「鬼の巣窟」の支配権を競ってきた。"
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
 msgid "2p — Elensefar Courtyard"
-msgstr ""
+msgstr "2p — Elensefarの中庭"
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
@@ -1050,11 +1097,13 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
+"廊下や庭を通して戦い、かつては栄光あるElensefarのものであった、東部の中庭を支"
+"配しろ。"
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
 msgid "Underground"
-msgstr ""
+msgstr "地下"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
@@ -1079,8 +1128,8 @@ msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
-"戦争が、平和な地域の農村を巧妙に区画された戦地へと変えてしまう。(Doc Paterson"
-"によるデザイン)"
+"戦争が、平和な地域の農村を巧妙に区画された戦地へと変えてしまう。Designed by "
+"Doc Paterson."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
@@ -1093,6 +1142,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"この異常な島で生き延びるために、プレイヤーは地元の住人と奇妙な同盟軍を築かね"
+"ばならない。Designed by Doc Paterson."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1103,22 +1154,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:346
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:482
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "大きな赤子 Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:110
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "おぼろげなRawffus"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:163
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:190
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:252
@@ -1126,27 +1177,27 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:712
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:724
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "機械仕掛けの少年"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:317
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "冷酷なるNeki"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:360
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:423
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "恐れ知らずのRzrrt"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:464
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "死に選ばれしSorrek"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:556
@@ -1156,42 +1207,42 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:806
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:942
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "大きな赤子 Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "おぼろげなGawffus"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:623
 msgid "Rublok"
-msgstr ""
+msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:777
 msgid "Neki the Brute"
-msgstr ""
+msgstr "粗暴なるNeki"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:820
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:883
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "恐れ知らずのTyxrrn"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:924
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "死に選ばれしRukhos"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1236,7 +1287,7 @@ msgstr ""
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:76
 msgid "evil eye"
-msgstr ""
+msgstr "邪悪な瞳"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -1342,12 +1393,12 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr ""
+msgstr "2p — 千刺の要塞"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr ""
+msgstr "奇妙な場所だ。Designed by Doc Paterson"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1967,7 +2018,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
 msgid "6p — Volcano"
-msgstr ""
+msgstr "6p — 火山"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -1975,6 +2026,8 @@ msgid ""
 "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
+"遠い昔に火山の噴火によって滅びた王国の遺跡を支配するために、3対3で戦うのだ。"
+"36の村が存在している。"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -2149,175 +2202,3 @@ msgid ""
 msgstr ""
 "Wesnoth のベンチマークです。以下のオプションを使用します。--no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end"
-
-#, fuzzy
-#~| msgid "Random map"
-#~ msgid "Random map by YAMG"
-#~ msgstr "ランダムマップ"
-
-#~ msgid "4p — Lagoon"
-#~ msgstr "4p — ラグーン"
-
-#~ msgid "Four factions contend for dominance over this watery settlement."
-#~ msgstr "4 つの党派がこの水がちな居留地の支配を求めて争う。"
-
-#~ msgid "Single player mode — uses the reduced strength spawns."
-#~ msgstr "シングルプレイヤーモード - 発生する敵の力は弱められている。"
-
-#~ msgid "Two player mode — uses the full strength spawns."
-#~ msgstr "2 プレイヤーモード - 発生する敵の力は完全である。"
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "押し寄せる敵から生き延び、彼らを倒せ"
-
-#~ msgid "Defeat all waves"
-#~ msgstr "押し寄せるすべての敵を倒せ"
-
-#~ msgid "Lose all your team’s leaders"
-#~ msgstr "あなたのチームのすべてのリーダーの死"
-
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "プレイヤーはこの小さいが地形的に密集した島の分散した地形を進まなければなら"
-#~ "ない。"
-
-#~ msgid "teamname^South-West"
-#~ msgstr "南西軍"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "北東軍"
-
-#~ msgid "teamname^South-East"
-#~ msgstr "南東軍"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "北西軍"
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "32 ターン生き残れ。"
-
-#~ msgid "2p - Fast To Madness"
-#~ msgstr "2p - Fast To Madness"
-
-#~ msgid " Recommended setting of 3 gold per village."
-#~ msgstr " 村あたり 3 ゴールドの設定を推奨。"
-
-#~ msgid "4p - Mines of Mallorod"
-#~ msgstr "4p - Mallorod の鉱山"
-
-#~ msgid "Great War"
-#~ msgstr "「大いなる戦い」"
-
-#~ msgid "Alliance of Darkness"
-#~ msgstr "闇の同盟"
-
-#~ msgid "Alliance of Light"
-#~ msgstr "光の同盟"
-
-#~ msgid ""
-#~ "Players must maneuver their units through the divisive terrain of this "
-#~ "long-feared region, once the home of a legendary Elder Basilisk. The "
-#~ "caves and the stark wilderness surrounding them are filled with the "
-#~ "petrified forms of some of Wesnoth's greatest heroes."
-#~ msgstr ""
-#~ "プレイヤーはこの長い間恐れられているこの地域の分裂した地形を通るにあたり、"
-#~ "ユニットを動かす戦略を練らなければならない。 この地はかつて、伝説のバジリ"
-#~ "スクの長老の本拠地であった。 彼らを取り囲む洞くつと不毛の荒野は、幾人かの "
-#~ "Wesnoth の偉大なヒーローたちの石化した姿で満たされている。"
-
-#~ msgid " Recommended settings of 150 gold and 2 gold per village."
-#~ msgstr " 150 ゴールドと村あたり 2 ゴールドの設定を推奨。"
-
-#~ msgid ""
-#~ "There is much to explore in this vast battlefront, designed for players "
-#~ "who favor epic, large-scale duel matches."
-#~ msgstr ""
-#~ "この広大な前線には征服すべきところがたくさんある。 最高に大規模な決闘が好"
-#~ "きなプレイヤーのためにデザインされている。"
-
-#~ msgid ""
-#~ "Danger lurks around every corner in this underground battlefield, a duel "
-#~ "map where players must find the balance between force and subterfuge."
-#~ msgstr ""
-#~ "この地下戦場では各コーナーに危険が潜む。部隊と策略とのバランスを見いださな"
-#~ "ければならない決闘マップ。"
-
-#~ msgid "A duel map for super fast play."
-#~ msgstr "特に早いプレー用の決闘マップ。"
-
-#~ msgid "2p - Wesbowl"
-#~ msgstr "2p - ウェスボウル"
-
-#~ msgid ""
-#~ "In Wesbowl, a player has to get any of the balls to the other player's "
-#~ "end zone as often as possible. However, the other player can attack your "
-#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
-#~ "when units are killed, they return to that player's end zone with an "
-#~ "injury."
-#~ msgstr ""
-#~ "ウェスボウルでは、プレイヤーは他のプレイヤーの最終ゾーンにボールのどれかを"
-#~ "できるだけたくさん入れなければならない。 しかしながら、他のプレイヤーはあ"
-#~ "なたのユニットを攻撃することもできる。 ウェスボウルは鈍った武器を手にして"
-#~ "プレイされる。 回復者が待機しているので、ユニットが殺された時は、そのプレ"
-#~ "イヤーの最終ゾーンに負傷して戻って来る。"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move either ball to your opponent's end zone more times than they move a "
-#~ "ball to yours.\n"
-#~ "Defeat:\n"
-#~ "#Opponent moves the balls to your end zone more times than you move them "
-#~ "to the opponent's end zone"
-#~ msgstr ""
-#~ "\n"
-#~ "勝利：\n"
-#~ "@敵がボールをあなたの最終ゾーンに持ち込むよりも多くの回数で、どちらかの"
-#~ "ボールを敵の最終ゾーンに 持ち込む。敗北:\n"
-#~ "#あなたがボールを敵の最終ゾーンに持ち込むよりも多くの回数で、敵がボールを"
-#~ "あなたの最終ゾーンに 持ち込む。"
-
-#~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr "赤の得点！ 現在のスコアは $redscore-$bluescore"
-
-#~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr "青の得点！ 現在のスコアは $redscore-$bluescore"
-
-#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-#~ msgstr "そのボールを $passto.type ($xloc,$yloc) にパスしてよいですか？"
-
-#~ msgid "Yes!"
-#~ msgstr "そう！"
-
-#~ msgid "No"
-#~ msgstr "いいえ"
-
-#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "青の勝利！ 最終スコアは $redscore-$bluescore"
-
-#~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "赤の勝利！ 最終スコアは $redscore-$bluescore"
-
-#~ msgid "Draw! Final score: $redscore-$bluescore"
-#~ msgstr "引き分け！ 最終スコアは $redscore-$bluescore"
-
-#~ msgid "Monsters"
-#~ msgstr "モンスター"
-
-#~ msgid "6p - Amohsad Caldera"
-#~ msgstr "6p - Amohsad のカルデラ"
-
-#~ msgid ""
-#~ "Only a true tactician will survive in this deadly and confining "
-#~ "battlefield, where six boxed-in armies come to a head."
-#~ msgstr ""
-#~ "6つの箱詰めにされた軍隊が危機に直面するこの死の狭い戦地では、真の戦略家の"
-#~ "みが生き残るであろう。"
-
-#~ msgid "teamname^east"
-#~ msgstr "東軍"
-
-#~ msgid "teamname^west"
-#~ msgstr "西軍"
