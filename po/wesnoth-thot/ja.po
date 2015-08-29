@@ -1,29 +1,27 @@
-# #-#-#-#-#  ja.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Japanese translations for Battle for Wesnoth package
+# #-#-#-#-#  wesnoth-thot.cpp.pot (Battle for Wesnoth 1.12.4)  #-#-#-#-#
+# Japanese translations for Battle for Wesnoth package.
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators:
 # <P2295417919104729@hotmail.co.jp>, 2010.
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2011.
 # sahara <le.sahara@gmail.com>, 2010.
 # yma <yma9yma@gmail.com>, 2011.
-#
-#   確認用SJIS範囲外UNICODE文字「 • 」 かぎかっこの中身が中点的なものとして表示されていれば、
-#   あなたの編集環境はSJIS範囲外UNICODEを正常に扱えています。
-#   そうでない場合はwesnoth日本語wiki(http://wikiwiki.jp/wesnoth/)にリンクがある2ch本スレなどでご質問ください。
-#
+# OOTA, Masato(oo), 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth dev trunk\n"
+"Project-Id-Version: Battle  for Wesnoth 1.12.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2011-11-11 04:21+0900\n"
-"Last-Translator: yma <yma9yma@gmail.com>\n"
-"Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
-"Language: Japanese\n"
+"PO-Revision-Date: 2015-08-16 13:59+0000\n"
+"Last-Translator: OOTA, Masato(oo)\n"
+"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
+"wesnoth112/language/ja_JP/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Language: Japanese\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -1074,39 +1072,27 @@ msgstr "我らの雛に斧を持つ者を近づけさせるわけにはいかな
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:194
-#, fuzzy
-#| msgid ""
-#| "We’re grateful for your assistance. And I’d like to send at least one of "
-#| "our senior apprentices with you to the east. It has come time for them to "
-#| "be journeymen... and I sense something being born to the east that I do "
-#| "not like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send a couple of our "
 "senior apprentices with you to the east. It has come time for them to be "
 "journeymen... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
-"ご助力感謝致します。何人か力のある者をあなた方と東へ向かわせせましょう。彼ら"
-"も独り立ちした魔術師となる時が来ました……それに好ましくない何かが東に生まれた"
-"感じがするのです。"
+"ご助力感謝致します。力のある者を2人、あなた方と東へ向かわせせましょう。彼らも"
+"独り立ちした魔術師となる時が来ました……それに好ましくない何かが東に生まれた感"
+"じがするのです。\""
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
-#, fuzzy
-#| msgid ""
-#| "We’re grateful for your assistance. And I’d like to send at least one of "
-#| "our senior apprentices with you to the east. It has come time for them to "
-#| "be journeymen... and I sense something being born to the east that I do "
-#| "not like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send one of our senior "
 "apprentices with you to the east. It has come time for him to be "
 "journeyman... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
-"ご助力感謝致します。何人か力のある者をあなた方と東へ向かわせせましょう。彼ら"
-"も独り立ちした魔術師となる時が来ました……それに好ましくない何かが東に生まれた"
-"感じがするのです。"
+"ご助力感謝致します。力のある者を1人、あなた方と東へ向かわせせましょう。彼らも"
+"独り立ちした魔術師となる時が来ました……それに好ましくない何かが東に生まれた感"
+"じがするのです。\""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:205
@@ -2540,7 +2526,6 @@ msgstr "感銘"
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:83
 #, fuzzy
 #| msgid ""
-#| "Inspire:\n"
 #| "This unit can inspire own L0 or L1 units that are next to it, making them "
 #| "fight better. Adjacent own units of L1 will do 25% more damage; L0 units "
 #| "will do 50% more."
@@ -2549,7 +2534,6 @@ msgid ""
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
-"感銘:\n"
 "このユニットは隣接する L0 または L1 のユニットに感銘を与え、より上手く戦わせ"
 "ることができます。隣接する L1 ユニットは 25%、L0 ユニットは 50% ダメージが上"
 "昇します。"
@@ -2638,64 +2622,21 @@ msgstr "アァァァァグゥ！ 私が死んでも、正義の炎がお前達�
 #~ msgid "Evil"
 #~ msgstr "悪の勢力"
 
-#, fuzzy
-#~| msgid ""
-#~| "Inspire:\n"
-#~| "This unit can inspire own L0, L1, or L2 units that are next to it, "
-#~| "making them fight better. Adjacent own units of L2 will do more 25% more "
-#~| "damage; L1 units will do 50% more, and L0 will do 75% more."
 #~ msgid ""
 #~ "This unit can inspire own L0, L1, or L2 units that are next to it, making "
 #~ "them fight better. Adjacent own units of L2 will do more 25% more damage; "
 #~ "L1 units will do 50% more, and L0 will do 75% more."
 #~ msgstr ""
-#~ "感銘:\n"
 #~ "このユニットは隣接する L0、L1、L2 のユニットに感銘を与え、より上手く戦わせ"
 #~ "ることができます。隣接する L2 ユニットは 25%、L1 ユニットは 50%、L0 ユニッ"
 #~ "トは 75% ダメージが上昇します。"
 
-#, fuzzy
-#~| msgid ""
-#~| "Inspire:\n"
-#~| "This unit can inspire own L0, L1, L2, or L3 units that are next to it, "
-#~| "making them fight better. Adjacent own units of L3 will do more 25% more "
-#~| "damage; L2 units will do 50% more, L1 will do 75% more, and L0 units "
-#~| "will do 100% more."
 #~ msgid ""
 #~ "This unit can inspire own L0, L1, L2, or L3 units that are next to it, "
 #~ "making them fight better. Adjacent own units of L3 will do more 25% more "
 #~ "damage; L2 units will do 50% more, L1 will do 75% more, and L0 units will "
 #~ "do 100% more."
 #~ msgstr ""
-#~ "感銘:\n"
 #~ "このユニットは隣接する L0、L1、L2、L3 のユニットに感銘を与え、より上手く戦"
 #~ "わせることができます。隣接する L3 ユニットは 25%、L2 ユニットは 50%、L1 ユ"
 #~ "ニットは 75%、L0 ユニットは 100% ダメージが上昇します。"
-
-#~ msgid "You retrieve $amount_gold pieces of gold."
-#~ msgstr "$amount_gold ゴールドを手に入れました。"
-
-#~ msgid "Dwarvish Runemaster"
-#~ msgstr "ドワーフのルーンマスター"
-
-#~ msgid ""
-#~ "Except for those with almost supernatural skill, the highest rank a "
-#~ "runecrafter can rise to is that of the Dwarvish Runemaster. Striking "
-#~ "blows nearly as powerful as those of the best warriors, they would be "
-#~ "fearsome without their craft, but with it they are also nigh on "
-#~ "invincible, since their runes cause the physical blows of their enemies "
-#~ "to deal less damage than would be expected."
-#~ msgstr ""
-#~ "ほとんど超自然的とも言える能力を持った者を除いて、ルーン工芸師の到達可能な"
-#~ "最高の位階はドワーフのルーンマスターです。最高の戦士に近い威力の一撃を放"
-#~ "ち、工芸術が無くても凄まじいのに、ルーンが敵からの物理的な打撃のダメージを"
-#~ "想定より抑えるので、工芸術があればほぼ無敵と化します。"
-
-#~ msgid "hammer"
-#~ msgstr "ハンマー"
-
-#~ msgid "chill tempest"
-#~ msgstr "冷気の大嵐"
-
-#~ msgid "Time runs out"
-#~ msgstr "時間切れ"
