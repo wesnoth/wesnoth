@@ -180,6 +180,8 @@ if __name__ == '__main__':
                 i += '/'
             cfg_from_dir = [i + cfg for cfg in os.listdir(i) if cfg[-3:] == 'cfg']
             list_files_analyze += cfg_from_dir
+        else:
+            list_files_analyze.append(i)
 
     if args.verbose > 1:
         print("Args: %s\n"% (args, ))
