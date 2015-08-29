@@ -41,7 +41,6 @@ namespace game_config
 	extern const std::string version;
 	extern const std::string revision;
 	extern std::string default_terrain;
-	extern bool spmp_hotfix;
 
 	inline int kill_xp(int level)
 	{

@@ -116,6 +116,8 @@ endif()
 set(SDL2_NET_LIBRARIES ${SDL2_NET_LIBRARY})
 set(SDL2_NET_INCLUDE_DIRS ${SDL2_NET_INCLUDE_DIR})
 
+include(FindPackageHandleStandardArgs)
+
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(SDL2_net
                                   REQUIRED_VARS SDL2_NET_LIBRARIES SDL2_NET_INCLUDE_DIRS
                                   VERSION_VAR SDL2_NET_VERSION_STRING)

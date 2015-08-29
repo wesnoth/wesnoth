@@ -20,13 +20,21 @@ Version 1.13.1+dev:
    * New standing animation for the Dwarvish Runesmith
    * New generic portraits for the Troll and Troll Whelp
  * Language and i18n:
-   * Updated translations: French, Galician, Latvian
+   * Updated translations: French, Galician, Japanese, Latvian
  * Lua API:
    * Added support for unit.level field (read only)
    * Added wesnoth.set_dialog_focus function
    * Added wesnoth.set_dialog_visible function
+   * Added wesnoth.random function
  * Music and sound effects:
    * New dwarf hit and die sounds.
+ * Terrains:
+   * Removed unit elevation from N-S hanging bridges
+   * Added unit elevation to NW-SE and SW-NE stone chasm bridges
+   * Added unit elevation to NW-SE and SW-NE plank bridges
+   * Hanging, stone chasm, and plank bridges are now displayed in-game simply
+     as "Bridge", retaining their descriptive names in the editor as per
+     convention.
  * User interface:
    * GUI2:
      * stacked_widget can optionally display a single layer at a time. This
@@ -42,6 +50,11 @@ Version 1.13.1+dev:
    * Added category= to [label] - allows grouping labels so that players can
      show/hide them
    * Add female_text= to [animate_unit] and [unstore_unit] for easier translating
+   * AMLAs in [modifications] now use [advancement] tags instead of [advance] tags.
+     This means you can add an AMLA to placed unit by simply using its definition macro,
+     for example {AMLA_DEFAULT}.
+   * Add exclude_amla= key in [advancement] which disables the advancment if the unit
+     has already taken certain other advancements.
    * The WML preprocessor now writes warnings to stderr for macros redefined
      without #undef, to help detect unintentional name clashes.
    * Fix macro definition line numbers being offset by 1 in WML preprocessor

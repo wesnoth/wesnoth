@@ -1,74 +1,77 @@
-# #-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
-# Japanese translations for PACKAGE package.
-# Copyright (C) 2013 Wesnoth development team
-# This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2013.
+# #-#-#-#-#  wesnoth-ai.cpp.pot (Battle for Wesnoth 1.12.4)  #-#-#-#-#
+# Japanese translations for Battle for Wesnoth package.
+# Copyright (C) YEAR Wesnoth development team
+# This file is distributed under the same license as the Battle for Wenoth package.
 #
+# Translators:
+# Automatically generated, 2013
+# RatArmy <broadbarredfirefish@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Battle for Wesnoth 1.12.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"PO-Revision-Date: 2015-08-16 21:41+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
+"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
+"wesnoth112/language/ja_JP/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Default AI (RCA)"
 
 #. [ai]: id=ai_default_rca_strong
 #: data/ai/ais/ai_default_rca_strong.cfg:10
 msgid "Multiplayer_AI^Strong AI (RCA)"
-msgstr ""
+msgstr "Strong AI (RCA)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic_rush.cfg:10
 msgid "Multiplayer_AI^Experimental AI"
-msgstr ""
+msgstr "Experimental AI"
 
 #. [ai]: id=ai_old_recruitment
 #: data/ai/dev/ai_old_recruitment.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
-msgstr ""
+msgstr "Dev AI: Default + Old Recruitment"
 
 #. [ai]: id=ai_sf_with_rca
 #: data/ai/dev/ai_sf_with_rca.cfg:9
+#, fuzzy
+#| msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgid "Multiplayer_AI^Dev AI: Strategy formulation with RCA "
-msgstr ""
+msgstr "Dev AI: Default + Poisoning (Formula AI)"
 
 #. [ai]: id=ai_akihara
 #: data/ai/dev/akihara_recruitment.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++ Akihara)"
-msgstr ""
+msgstr "Dev AI: Default + Experimental Recruitment (C++ Akihara)"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
+msgstr "Dev AI: Default + Experimental Recruitment (Formula AI)"
 
 #. [ai]: id=default_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr ""
+msgstr "Dev AI: Default + Poisoning (Formula AI)"
 
 #. [ai]: id=ai_idle
 #: data/ai/dev/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr ""
+msgstr "Dev AI: Idle AI"
 
 #. [ai]: id=testing_ai_recruitment
 #: data/ai/dev/testing_recruiting.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++)"
-msgstr ""
+msgstr "Dev AI: Default + Experimental Recruitment (C++)"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -2680,6 +2683,3 @@ msgstr ""
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:60
 msgid "Idle AI"
 msgstr ""
-
-#~ msgid "End scenario"
-#~ msgstr "シナリオ終了"

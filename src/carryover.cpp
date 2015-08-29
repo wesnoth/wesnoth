@@ -198,7 +198,8 @@ void carryover_info::transfer_all_to(config& side_cfg){
 	}
 }
 
-void carryover_info::transfer_to(config& level){
+void carryover_info::transfer_to(config& level)
+{
 	if(!level.has_attribute("next_underlying_unit_id"))
 	{
 		level["next_underlying_unit_id"] = next_underlying_unit_id_;
@@ -220,6 +221,8 @@ void carryover_info::transfer_to(config& level){
 	}
 
 	next_scenario_ = "";
+	variables_ = config();
+	wml_menu_items_ = game_events::wmi_container();
 
 }
 

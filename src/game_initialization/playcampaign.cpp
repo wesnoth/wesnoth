@@ -365,7 +365,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			// Retrieve next scenario data.
 			gamestate.expand_scenario();
 
-			if (gamestate.valid() && (game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER || !game_config::spmp_hotfix)) {
+			if (gamestate.valid()) {
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = gamestate.get_starting_pos();
 

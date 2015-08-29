@@ -88,7 +88,8 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 namespace {
-	const std::string ModificationTypes[] = { "advance", "trait", "object" };
+	// "advance" only kept around for backwards compatibility; only "advancement" should be used
+	const std::string ModificationTypes[] = { "advancement", "advance", "trait", "object" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
 										sizeof(*ModificationTypes);
 
@@ -1558,7 +1559,7 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 		icon.first = adv["icon"].str();
 		icon.second = adv["description"].str();
 
-		for (unsigned j = 0, j_count = modification_count("advance", adv["id"]);
+		for (unsigned j = 0, j_count = modification_count("advancement", adv["id"]);
 		     j < j_count; ++j)
 		{
 			temp.push_back(icon);
@@ -1574,31 +1575,49 @@ std::vector<config> unit::get_modification_advances() const
 	{
 		if (adv["strict_amla"].to_bool() && !advances_to_.empty())
 			continue;
-		if (modification_count("advance", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
+		if (modification_count("advancement", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
 			continue;
 
-		std::vector<std::string> temp = utils::split(adv["require_amla"]);
-		if (temp.empty()) {
+		std::vector<std::string> temp_require = utils::split(adv["require_amla"]);
+		std::vector<std::string> temp_exclude = utils::split(adv["exclude_amla"]);
+		if (temp_require.empty() && temp_exclude.empty()) {
 			res.push_back(adv);
 			continue;
 		}
 
-		std::sort(temp.begin(), temp.end());
-		std::vector<std::string> uniq;
-		std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
+		std::sort(temp_require.begin(), temp_require.end());
+		std::sort(temp_exclude.begin(), temp_exclude.end());
+		std::vector<std::string> uniq_require, uniq_exclude;
+		std::unique_copy(temp_require.begin(), temp_require.end(), std::back_inserter(uniq_require));
+		std::unique_copy(temp_exclude.begin(), temp_exclude.end(), std::back_inserter(uniq_exclude));
+		
+		bool exclusion_found = false;
+		BOOST_FOREACH(const std::string &s, uniq_exclude)
+		{
+			int max_num = std::count(temp_exclude.begin(), temp_exclude.end(), s);
+			int mod_num = modification_count("advancement", s);
+			if (mod_num >= max_num) {
+				exclusion_found = true;
+				break;
+			}
+		}
+		if (exclusion_found) {
+			continue;
+		}
 
 		bool requirements_done = true;
-		BOOST_FOREACH(const std::string &s, uniq)
+		BOOST_FOREACH(const std::string &s, uniq_require)
 		{
-			int required_num = std::count(temp.begin(), temp.end(), s);
-			int mod_num = modification_count("advance", s);
+			int required_num = std::count(temp_require.begin(), temp_require.end(), s);
+			int mod_num = modification_count("advancement", s);
 			if (required_num > mod_num) {
 				requirements_done = false;
 				break;
 			}
 		}
-		if (requirements_done)
+		if (requirements_done) {
 			res.push_back(adv);
+		}
 	}
 
 	return res;
@@ -1620,6 +1639,11 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 		if (item["id"] == id) {
 			++res;
 		}
+	}
+	
+	// For backwards compatibility, if asked for "advancement", also count "advance"
+	if (mod_type == "advancement") {
+		res += modification_count("advance", id);
 	}
 
 	return res;
@@ -2172,6 +2196,9 @@ void unit::apply_modifications()
 
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
+		if(mod == "advance" && modifications_.has_child(mod)) {
+			lg::wml_error << "[modifications][advance] is deprecated, use [advancement] instead\n";
+		}
 		BOOST_FOREACH(const config &m, modifications_.child_range(mod)) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i], m, true);

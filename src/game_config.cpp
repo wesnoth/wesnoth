@@ -49,7 +49,6 @@ namespace game_config
 	const int gold_carryover_percentage = 80;
 	const std::string version = VERSION;
 	std::string default_terrain;
-	bool spmp_hotfix = false;
 #ifdef REVISION
 	const std::string revision = VERSION " (" REVISION ")";
 #elif defined(VCS_SHORT_HASH) && defined(VCS_WC_MODIFIED)
