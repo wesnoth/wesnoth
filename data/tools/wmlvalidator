@@ -114,6 +114,8 @@ class Validator:
                 self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear exactly once, not %d times" % nummatches)
             elif element.freq == wmlgrammar.OPTIONAL and nummatches > 1:
                 self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear at most once, not %d times" % nummatches)
+            elif element.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
+                self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should not appear. It appears %d times" % nummatches)
 
             # Check sub
             for match in matches:
