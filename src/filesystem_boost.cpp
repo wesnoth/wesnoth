@@ -645,17 +645,21 @@ std::string get_cwd()
 }
 std::string get_exe_dir()
 {
-#ifndef _WIN32
-	path self_exe("/proc/self/exe");
-	error_code ec;
-	path exe = bfs::read_symlink(self_exe, ec);
-	if (ec) {
-		return std::string();
-	}
-
-	return exe.parent_path().string();
+#ifdef _WIN32
+    return get_cwd();
 #else
-	return get_cwd();
+    if (bfs::exists("/proc/")) {
+        path self_exe("/proc/self/exe");
+        error_code ec;
+        path exe = bfs::read_symlink(self_exe, ec);
+        if (ec) {
+            return std::string();
+        }
+
+        return exe.parent_path().string();
+    } else {
+        return get_cwd();
+    }
 #endif
 }
 
