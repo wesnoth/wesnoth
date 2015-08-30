@@ -388,26 +388,26 @@ conversion1 = {
 max_len = max(len(elem) for elem in conversion1.values())
 width = max_len+2
 
-def neighborhood(x, y, map):
+def neighborhood(x, y, map_):
     "Returns list of original location+adjacent locations from a hex map"
     odd = (x) % 2
-    adj = [map[y][x]];
+    adj = [map_[y][x]];
     if x > 0:
-	adj.append(map[y][x-1])
-    if x < len(map[y])-1:
-	adj.append(map[y][x+1])
+	adj.append(map_[y][x-1])
+    if x < len(map_[y])-1:
+	adj.append(map_[y][x+1])
     if y > 0:
-	adj.append(map[y-1][x])
-    if y < len(map)-1:
-	adj.append(map[y+1][x])
+	adj.append(map_[y-1][x])
+    if y < len(map_)-1:
+	adj.append(map_[y+1][x])
     if x > 0 and y > 0 and not odd:
-	adj.append(map[y-1][x-1])
-    if x < len(map[y])-1 and y > 0 and not odd:
-	adj.append(map[y-1][x+1])
-    if x > 0 and y < len(map)-1 and odd:
-	adj.append(map[y+1][x-1])
-    if x < len(map[y])-1 and y < len(map)-1 and odd:
-	adj.append(map[y+1][x+1])
+	adj.append(map_[y-1][x-1])
+    if x < len(map_[y])-1 and y > 0 and not odd:
+	adj.append(map_[y-1][x+1])
+    if x > 0 and y < len(map_)-1 and odd:
+	adj.append(map_[y+1][x-1])
+    if x < len(map_[y])-1 and y < len(map_)-1 and odd:
+	adj.append(map_[y+1][x+1])
     return adj
 
 def maptransform1(filename, baseline, inmap, y):
@@ -584,13 +584,13 @@ def string_strip(value):
             value = value[:-1]
     return value
 
-def parse_attribute(str):
+def parse_attribute(str_):
     "Parse a WML key-value pair from a line."
-    if '=' not in str:
+    if '=' not in str_:
         return None
-    where = str.find("=")
-    leader = str[:where]
-    after = str[where+1:]
+    where = str_.find("=")
+    leader = str_[:where]
+    after = str_[where+1:]
     after = after.lstrip()
     if "#" in after:
         where = after.find("#")
@@ -1986,17 +1986,17 @@ def interesting(fn):
         or ("maps" in fn and fn[-4:] not in ignore) \
         or is_map(fn)
 
-def allcfgfiles(dir):
+def allcfgfiles(dir_):
     "Get the names of all interesting files under dir."
     datafiles = []
-    if not os.path.isdir(dir):
-        if interesting(dir):
-            if not os.path.exists(dir):
-                print("wmllint: %s does not exist" % dir, file=sys.stderr)
+    if not os.path.isdir(dir_):
+        if interesting(dir_):
+            if not os.path.exists(dir_):
+                print("wmllint: %s does not exist" % dir_, file=sys.stderr)
             else:
-                datafiles.append(dir)
+                datafiles.append(dir_)
     else:
-        for root, dirs, files in os.walk(dir):
+        for root, dirs, files in os.walk(dir_):
             if vcdir in dirs:
                 dirs.remove(vcdir)
             for name in files:
@@ -2105,8 +2105,8 @@ if __name__ == '__main__':
         print(explain[:-1] + ".")
     fileconversions = [filemoves[x] for x in versions[:-1]]
 
-    def hasdigit(str):
-        for c in str:
+    def hasdigit(str_):
+        for c in str_:
             if c in "0123456789":
                 return True
         return False
@@ -2231,13 +2231,13 @@ if __name__ == '__main__':
     if not arguments:
         arguments = ["."]
 
-    for dir in arguments:
+    for dir_ in arguments:
         ofp = None
         if "older" in versions:
             lock_terrain_coding = None
         else:
             lock_terrain_coding = "newstyle"
-        for fn in allcfgfiles(dir):
+        for fn in allcfgfiles(dir_):
             if verbose >= 2:
                 print(fn + ":")
             backup = fn + "-bak"
