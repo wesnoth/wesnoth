@@ -74,6 +74,7 @@
 # of lines they enclose.
 
 from __future__ import print_function
+from future_builtins import filter, map, zip
 
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
@@ -313,7 +314,7 @@ filemoves = {
 # regexp-substitution pairs, forbidding the match from being preceded
 # by a dash.  This prevents, e.g., "miss.ogg" false-matching on "big-miss.ogg".
 for (key, value) in filemoves.items():
-    filemoves[key] = map(lambda (old, new): (re.compile("(?<!-)"+old), new), value)
+    filemoves[key] = [(re.compile("(?<!-)"+old), new) for (old, new) in value]
 
 # 1.2.x to 1.3.2 terrain conversion
 conversion1 = {
@@ -384,7 +385,7 @@ conversion1 = {
     "|" : "Ww^Bw|",
     "~" : "_f",
 }
-max_len = max(*map(len, conversion1.values()))
+max_len = max(len(elem) for elem in conversion1.values())
 width = max_len+2
 
 def neighborhood(x, y, map):
@@ -482,7 +483,7 @@ def maptransform2(filename, baseline, inmap, y):
             inmap[y][x] = old.sub(new, inmap[y][x])
         # Convert keeps according to adjacent hexes
         if "_K" in inmap[y][x]:
-            adj = map(string.strip, neighborhood(x, y, inmap))
+            adj = [elem.strip() for elem in neighborhood(x, y, inmap)]
 
             # print("adjacent: %s" % adj)
             hexcount = {}
@@ -513,14 +514,14 @@ def validate_stack(stack, filename, lineno):
         print('"%s", line %d: %s' % (filename, lineno+1, stack))
     if stack:
         (tag, attributes) = tagstack[-1]
-        ancestors = map(lambda x: x[0], tagstack)
+        ancestors = [elem[0] for elem in tagstack]
         #if tag == "sound" and "attack" in ancestors:
         #    print('"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1))
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
     (tag, attributes) = tagstack[-1]
-    ancestors = map(lambda x: x[0], tagstack)
+    ancestors = [elem[0] for elem in tagstack]
     if verbose >= 3:
         print('"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes))
     # Detect a malformation that will cause the game to barf while attempting
@@ -530,7 +531,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
-    return tag in map(lambda x: x[0], tagstack)
+    return tag in [elem[0] for elem in tagstack]
 
 # Sanity checking
 
@@ -771,9 +772,9 @@ def sanity_check(filename, lines):
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
             if key == "recruit" and value:
-                recruit = (i+1, map(lambda x: x.strip(), value.split(",")))
+                recruit = (i+1, [elem.strip() for elem in value.split(",")])
             elif key == "recruitment_pattern" and value:
-                recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
+                recruitment_pattern = (i+1, [elem.strip() for elem in value.split(",")])
                 for utype in recruitment_pattern[1]:
                     if not utype in usage_types:
                         print('"%s", line %d: unknown usage class %s' %
@@ -1230,7 +1231,7 @@ def hack_syntax(filename, lines):
             modcount += 1
             boucmanized = True
         # Insert non-variation attacks where they belong
-        female_attacks = filter(lambda a: a.female and a.variation == None, animations)
+        female_attacks = [a for a in animations if a.female and a.variation == None]
         female_attacks.reverse()
         if female_attacks:
             female_end = -1
@@ -1241,7 +1242,7 @@ def hack_syntax(filename, lines):
             assert female_end != -1
             female_wml = "".join(map(lambda x: x.wml, female_attacks))
             lines = lines[:female_end] + [female_wml] + lines[female_end:]
-        male_attacks = filter(lambda a: not a.female and a.variation == None, animations)
+        male_attacks = [a for a in animations if not a.female and a.variation == None]
         male_attacks.reverse()
         if male_attacks:
             male_end = -1
@@ -1579,7 +1580,7 @@ def hack_syntax(filename, lines):
         duplist = {}
         while name_pos is not None:
             key = lines[name_pos.lineno].strip()
-            context = map(lambda x: x.element, name_pos.scopes)
+            context = [x.element for x in name_pos.scopes]
             if '[attack]' in context:
                 if key not in duplist:
                     duplist[key] = []
@@ -1805,7 +1806,7 @@ def translator(filename, mapxforms, textxform, versions):
                     if ',' in line:
                         fields = line.split(",")
                     else:
-                        fields = map(lambda x: x, line)
+                        fields = [x for x in line]
                     outmap.append(fields)
                     if not maskwarn and maptype == 'map' and "_s" in line:
                         print('"%s", line %d: warning, fog in map file' %
@@ -2002,7 +2003,7 @@ def allcfgfiles(dir):
                 if interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
     datafiles.sort()	# So diffs for same campaigns will cluster in reports
-    return map(os.path.normpath, datafiles)
+    return [os.path.normpath(elem) for elem in datafiles]
 
 def help():
         print("""\
@@ -2089,8 +2090,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # Compute the series of version upgrades to perform, and describe it.
-    versions = filemoves.keys()
-    versions.sort()
+    versions = sorted([key for key in filemoves.keys()])
     # Relies on 'older' sorting before trunk
     versions = [versions[-2]] + versions[:-2] + [versions[-1]]	# Move 'older' to front
     if oldversion in versions:
@@ -2103,7 +2103,7 @@ if __name__ == '__main__':
         for i in range(len(versions)-1):
             explain += " %s -> %s," % (versions[i],  versions[i+1])
         print(explain[:-1] + ".")
-    fileconversions = map(lambda x: filemoves[x], versions[:-1])
+    fileconversions = [filemoves[x] for x in versions[:-1]]
 
     def hasdigit(str):
         for c in str:
