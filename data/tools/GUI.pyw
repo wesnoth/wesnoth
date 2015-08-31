@@ -883,7 +883,7 @@ class MainFrame(Frame):
                                 text="Exit",
                                 image=ICONS['exit'],
                                 compound=LEFT,
-                                command=parent.destroy)
+                                command=self.on_quit)
         self.exit_button.pack(side=RIGHT,
                               padx=5,
                               pady=5)
@@ -954,6 +954,9 @@ class MainFrame(Frame):
         # this allows using the mouse wheel even on the disabled Text widget
         # without the need to clic on said widget
         self.tk_focusFollowsMouse()
+
+        parent.protocol("WM_DELETE_WINDOW",
+                        self.on_quit)
 
     def tab_callback(self,event):
         # we check the ID of the active tab and ask its position
@@ -1151,6 +1154,8 @@ Error code: {1}""".format(queue_item[0],queue_item[1]))
             try:
                 with codecs.open(fn,"w","utf-8") as out:
                     out.write(self.text.get(1.0,END)[:-1]) # exclude the double endline at the end
+                # the output is saved, if we close we don't lose anything
+                self.text.edit_modified(False)
             except IOError as error: # in case that we attempt to write without permissions
                 showerror("Error","""Error while writing to:
 {0}
@@ -1163,6 +1168,10 @@ Error code: {1}
         self.text.configure(state=NORMAL)
         self.text.delete(1.0,END)
         self.text.configure(state=DISABLED)
+        # the edit_modified flag is set to True every time that the content
+        # of the text widget is altered
+        # since there's nothing useful inside of it, set it to False
+        self.text.edit_modified(False)
 
     def on_about(self):
         showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014-2015
@@ -1170,6 +1179,18 @@ Error code: {1}
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
 Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
+
+    def on_quit(self):
+        # check if the text widget contains something
+        # and ask for a confirmation if so
+        if self.text.edit_modified():
+            answer = askyesno("Exit confirmation",
+                              "Do you really want to quit?",
+                              icon = WARNING)
+            if answer:
+                self.parent.destroy()
+        else:
+            self.parent.destroy()
 
 root=Tk()
 
