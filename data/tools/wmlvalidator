@@ -92,13 +92,30 @@ class Validator:
                         self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value should be %s, found: %s" % (attribute.type, value))
 
                     regex_limit = re.compile(ur'^limit\((\d+.\d+|\d+),(\d+.\d+|\d+)\)$')
-                    checklimit = [i for i in attribute.optionals if regex_limit.search(i)]
-                    if len(checklimit):
-                        checklimit = checklimit[0]
-                        number_min, number_max = regex_limit.search(checklimit).groups()
+                    check_limit = [i for i in attribute.optionals if regex_limit.search(i)]
+                    if len(check_limit):
+                        check_limit = check_limit[0]
+                        number_min, number_max = regex_limit.search(check_limit).groups()
 
                         if float(value) > float(number_max) or float(value) < float(number_min):
                             self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value must be between %s and %s, found : %s" % (number_min, number_max, value))
+
+                    regex_file_exist = re.compile(ur'^need-file-in\(([\w.\-\/]+)\)$')
+                    check_file_exist = [i for i in attribute.optionals if regex_file_exist.search(i)]
+                    if len(check_file_exist):
+                        check_file_exist = check_file_exist[0]
+                        directory = regex_file_exist.search(check_file_exist).group(1)
+
+                        import glob
+                        if directory == '.':
+                            sub_directory = os.path.dirname(node.file) + '/'
+                        else:
+                            sub_directory = os.path.dirname(node.file) + '/' + directory + '/'
+
+                        files_from_sub_directory = glob.glob(sub_directory + '*')
+                        files_from_sub_directory = [re.sub(re.compile(r'^.*\/(.*)\..*'), r'\1', i) for i in files_from_sub_directory]
+                        if not value in files_from_sub_directory:
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "The file %s not exist in directory %s" % (value, sub_directory))
 
                 if 'list' in attribute.optionals:
                     pos = 1
