@@ -81,25 +81,33 @@ class Validator:
                 elif 'translatable' not in attribute.optionals and 'optional-translatable' not in attribute.optionals and match.is_translatable() == True:
                     self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value isn't translatable, but have a _ at the beginning")
 
-                regex_limit = re.compile(ur'^limit\((\d+.\d+|\d+),(\d+.\d+|\d+)\)$')
-                checklimit = [i for i in attribute.optionals if regex_limit.search(i)]
-                if len(checklimit):
-                    checklimit = checklimit[0]
-                    number_min, number_max = regex_limit.search(checklimit).groups()
+                def check_attribute_value(value, pos=None):
+                    def gerate_message_with_pos():
+                        if pos is None:
+                            return ""
+                        else:
+                            return " (At position %d)" % pos
 
-                    if float(match.data) > float(number_max) or float(match.data) < float(number_min):
-                        self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value must be between %s and %s, found : %s" % (number_min, number_max, match.data))
+                    if not attribute.validate(value):
+                        self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value should be %s, found: %s" % (attribute.type, value))
+
+                    regex_limit = re.compile(ur'^limit\((\d+.\d+|\d+),(\d+.\d+|\d+)\)$')
+                    checklimit = [i for i in attribute.optionals if regex_limit.search(i)]
+                    if len(checklimit):
+                        checklimit = checklimit[0]
+                        number_min, number_max = regex_limit.search(checklimit).groups()
+
+                        if float(value) > float(number_max) or float(value) < float(number_min):
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value must be between %s and %s, found : %s" % (number_min, number_max, value))
 
                 if 'list' in attribute.optionals:
                     pos = 1
                     for i in match.data.split(","):
                         if i[0] == ' ': i = i[1:]
-                        if not attribute.validate(i):
-                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value in list should be %s, found at position %d: %s" % (attribute.type, pos, i))
+                        check_attribute_value(i, pos=pos)
                         pos += 1
                 else:
-                    if not attribute.validate(match.data):
-                        self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value should be %s, found: %s" % (attribute.type, match.data))
+                    check_attribute_value(match.data)
                 node.remove(match) # Get rid of these so we can see what's left
         for attribute in node.get_all_text():
             self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Found, which has no meaning there")
