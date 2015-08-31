@@ -19,6 +19,7 @@
 #include "events.hpp"
 #include "log.hpp"
 #include "sound.hpp"
+#include "quit_confirmation.hpp"
 #include "video.hpp"
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
@@ -415,7 +416,7 @@ void pump()
 #endif
 
 			case SDL_QUIT: {
-				throw CVideo::quit();
+				quit_confirmation::quit();
 			}
 		}
 

@@ -229,6 +229,8 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	, do_reverse_memcpy_workaround_(false)
 #endif
 {
+	//The following assertion fails when starting a campaign
+	//assert(singleton_ == NULL);
 	singleton_ = this;
 
 	resources::fake_units = fake_unit_man_.get();
