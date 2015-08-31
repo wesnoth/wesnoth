@@ -66,7 +66,7 @@
   LangString		LEditor			${LANG_FINNISH}			"Kenttäeditori"
   LangString		LManual			${LANG_FINNISH}			"käyttäjän opas"
   LangString		LWesnoth		${LANG_FINNISH}			"Taistelu Wesnothista"
-  LangString		LUserdata		${LANG_FINNISH}			"Käyttäjän tieto"
+  LangString		LUserdata		${LANG_FINNISH}			"Käyttäjän tiedot"
 
   !insertmacro		MUI_LANGUAGE	"French"
   LicenseLangString	MUILicense		${LANG_FRENCH}			"packaging\windows\gpl-3.fr.txt"
