@@ -872,6 +872,11 @@ static std::vector<std::string> parse_commandline_arguments(std::string input)
 }
 #endif
 
+#ifndef _WIN32
+static void wesnoth_terminate_handler(int) {
+	exit(0);
+}
+#endif
 
 #ifdef __native_client__
 int wesnoth_main(int argc, char** argv)
@@ -938,6 +943,14 @@ int main(int argc, char** argv)
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
 	}
+	
+#ifndef _WIN32
+	struct sigaction terminate_handler;
+	terminate_handler.sa_handler = wesnoth_terminate_handler;
+	terminate_handler.sa_flags = 0;
+	sigemptyset(&terminate_handler.sa_mask);
+	sigaction(SIGTERM, &terminate_handler, NULL);
+#endif
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
