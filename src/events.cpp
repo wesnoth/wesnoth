@@ -417,6 +417,7 @@ void pump()
 
 			case SDL_QUIT: {
 				quit_confirmation::quit();
+				continue; //this event is already handled.
 			}
 		}
 
