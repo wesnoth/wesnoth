@@ -232,11 +232,11 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	return msgval;
 }
 
-void bind_textdomain(const char* domain, const char* direcory, const char* /*encoding*/)
+void bind_textdomain(const char* domain, const char* directory, const char* /*encoding*/)
 {
-	LOG_G << "adding textdomain '" << domain << "' in directory '" << direcory << "'\n";
+	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'\n";
 	get_manager().add_messages_domain(domain);
-	get_manager().add_messages_path(direcory);
+	get_manager().add_messages_path(directory);
 	get_manager().update_locale();
 }
 
