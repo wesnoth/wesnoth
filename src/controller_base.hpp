@@ -42,6 +42,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "joystick.hpp"
 #include "key.hpp"
+#include "quit_confirmation.hpp"
 
 class CVideo;
 class display;
@@ -53,7 +54,7 @@ namespace hotkey { class command_executor; }
 
 namespace soundsource { class manager; }
 
-class controller_base : public events::sdl_handler
+class controller_base : public events::sdl_handler, quit_confirmation
 {
 public:
 	controller_base(const config& game_config, CVideo& video);
