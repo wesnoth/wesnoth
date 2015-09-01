@@ -102,10 +102,10 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	return msgval;
 }
 
-void bind_textdomain(const char* domain, const char* direcory, const char* encoding)
+void bind_textdomain(const char* domain, const char* directory, const char* encoding)
 {
-	if(direcory != NULL)
-		bindtextdomain(domain, direcory);
+	if(directory != NULL)
+		bindtextdomain(domain, directory);
 	if(encoding != NULL)
 		bind_textdomain_codeset(domain, encoding);
 }
