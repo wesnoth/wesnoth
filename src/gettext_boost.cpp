@@ -155,7 +155,7 @@ namespace
 		{
 			try
 			{
-				LOG_G << "attemptng to generate locale by name '" << current_language_ << "'\n";
+				LOG_G << "attempting to generate locale by name '" << current_language_ << "'\n";
 				current_locale_ = generator_.generate(current_language_);
 				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
 				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ( "
