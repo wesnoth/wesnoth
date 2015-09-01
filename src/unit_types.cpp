@@ -1047,13 +1047,13 @@ void unit_type_data::set_config(config &cfg)
 	}
 	
 	// Movetype resistance patching
-	BOOST_FOREACH(const config &r, cfg.child_range("damage"))
+	BOOST_FOREACH(const config &r, cfg.child_range("resistance_defaults"))
 	{
-		const std::string& dmg_type = r["type"];
+		const std::string& dmg_type = r["id"];
 		config temp_cfg;
 		BOOST_FOREACH(const config::attribute &attr, r.attribute_range()) {
 			const std::string &mt = attr.first;
-			if (mt == "type" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
+			if (mt == "id" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
 				continue;
 			}
 			patch_movetype(movement_types_[mt].get_resistances(), dmg_type, attr.second, 100);
@@ -1069,9 +1069,9 @@ void unit_type_data::set_config(config &cfg)
 	}
 	
 	// Movetype move/defend patching
-	BOOST_FOREACH(const config &terrain, cfg.child_range("terrain"))
+	BOOST_FOREACH(const config &terrain, cfg.child_range("terrain_defaults"))
 	{
-		const std::string& ter_type = terrain["type"];
+		const std::string& ter_type = terrain["id"];
 		config temp_cfg;
 		static const std::string terrain_info_tags[] = {"movement", "vision", "jamming", "defense"};
 		BOOST_FOREACH(const std::string &tag, terrain_info_tags) {
@@ -1081,7 +1081,7 @@ void unit_type_data::set_config(config &cfg)
 			const config& info = terrain.child(tag);
 			BOOST_FOREACH(const config::attribute &attr, info.attribute_range()) {
 				const std::string &mt = attr.first;
-				if (mt == "type" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
+				if (mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
 					continue;
 				}
 				if (tag == "defense") {
