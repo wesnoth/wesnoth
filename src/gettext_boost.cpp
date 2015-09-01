@@ -96,6 +96,18 @@ namespace
 			{
 				return;
 			}
+
+			if(domain.find('/') != std::string::npos)
+			{
+				// Forward slash has a specific meaning in Boost.Locale domain
+				// names, specifying the encoding. We use UTF-8 for everything
+				// so we can't possibly support that, and odds are it's a user
+				// mistake (as in bug #23839).
+				ERR_G << "illegal textdomain name '" << domain
+					  << "', skipping textdomain\n";
+				return;
+			}
+
 			generator_.add_messages_domain(domain);
 			loaded_domains_.insert(domain);
 		}

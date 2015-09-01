@@ -104,6 +104,14 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 
 void bind_textdomain(const char* domain, const char* directory, const char* encoding)
 {
+	if(domain != NULL && strchr(domain, '/') != NULL) {
+		// For compatibility with Boost.Locale implementation, which interprets
+		// slashes in domain names in a special fashion.
+		ERR_G << "illegal textdomain name '" << domain
+			  << "', skipping textdomain\n";
+		return;
+	}
+
 	if(directory != NULL)
 		bindtextdomain(domain, directory);
 	if(encoding != NULL)
