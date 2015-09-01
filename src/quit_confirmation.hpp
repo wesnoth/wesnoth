@@ -11,7 +11,10 @@
 
    See the COPYING file for more details.
 */
-#pragma once
+
+#ifndef QUIT_CONFIRMATION_HPP_INCLUDED
+#define QUIT_CONFIRMATION_HPP_INCLUDED
+
 class CVideo;
 
 #include <cassert>
@@ -30,3 +33,5 @@ private:
 	static int count_;
 	static bool open_;
 };
+
+#endif
