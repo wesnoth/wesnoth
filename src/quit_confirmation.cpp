@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2015 - 2015 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2015 by the Battle for Wesnoth Project
+   <http://www.wesnoth.org/>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
 
 int quit_confirmation::count_ = 0;
 bool quit_confirmation::open_ = false;
+
 void quit_confirmation::quit()
 {
 	if(count_ != 0 && display::get_singleton() && !open_)
