@@ -136,6 +136,63 @@ def attach_select_all(widget,function):
     elif windowingsystem == "x11":
         widget.bind("<Control-KeyRelease-a>", function)
 
+class Tooltip(Toplevel):
+    def __init__(self,widget,text):
+        """A tooltip, or balloon. Displays the specified help text when the
+mouse pointer stays on the widget for more than 500 ms."""
+        # the master attribute retrieves the window where our "parent" widget is
+        Toplevel.__init__(self,widget.master)
+        self.widget=widget
+        self.preshow_id=None
+        self.show_id=None
+        self.label=Label(self,
+                         text=text,
+                         background="#ffffe1", # background color used on Windows
+                         borderwidth=1,
+                         relief=SOLID,
+                         padding=1)
+        self.label.pack()
+        self.overrideredirect(True)
+        self.widget.bind("<Enter>",self.preshow)
+        self.widget.bind("<Leave>",self.hide)
+        self.bind_all("<Button>",self.hide)
+        self.withdraw()
+    def preshow(self,event=None):
+        self.after_cleanup()
+        # 500 ms and 5000 ms are the default values used on Windows
+        self.preshow_id=self.after(500,self.show)
+    def show(self):
+        self.after_cleanup()
+        # check if the tooltip will end up out of the screen
+        # and handle this case if so
+        screen_width = self.winfo_screenwidth()
+        tooltip_width = self.winfo_reqwidth()
+        if tooltip_width + self.winfo_pointerx() > screen_width:
+            # unfortunately, it seems like Tkinter doesn't have a way to check the pointer's size
+            # so I'm using a value of 20px, which is enough for the usual 16px pointers
+            self.geometry("+%d+%d" % (screen_width-tooltip_width,self.winfo_pointery()+20))
+        else:
+            self.geometry("+%d+%d" % (self.winfo_pointerx(),self.winfo_pointery()+20))
+        # update_idletasks forces a geometry update
+        self.update_idletasks()
+        self.state("normal")
+        self.lift()
+        self.show_id=self.after(5000, self.hide)
+    def hide(self,event=None):
+        self.after_cleanup()
+        self.withdraw()
+    def after_cleanup(self):
+        # each event should cleanup after itself,
+        # to avoid having two .after() calls conflicting
+        # for example, one previously scheduled .after() may
+        # try to hide the tooltip before five seconds are passed
+        if self.show_id:
+            self.after_cancel(self.show_id)
+            self.show_id=None
+        if self.preshow_id:
+            self.after_cancel(self.preshow_id)
+            self.preshow_id=None
+
 class Popup(Toplevel):
     def __init__(self,parent,tool,thread):
         """Creates a popup that informs the user that the desired tool is running.
@@ -386,38 +443,48 @@ class WmllintTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
         self.radio_clean=Radiobutton(self.mode_frame,
-                                     text="Clean\nDelete *.bak files",
+                                     text="Clean",
                                      variable=self.mode_variable,
                                      value=2)
         self.radio_clean.grid(row=2,
                               column=0,
                               sticky=W,
                               padx=10)
+        self.tooltip_clean=Tooltip(self.radio_clean,
+                                   "Delete *.bak files")
         self.radio_diff=Radiobutton(self.mode_frame,
-                                    text="Diff\nShow differences in converted files",
+                                    text="Diff",
                                     variable=self.mode_variable,
                                     value=3)
         self.radio_diff.grid(row=3,
                              column=0,
                              sticky=W,
                              padx=10)
+        self.tooltip_diff=Tooltip(self.radio_diff,
+                                  "Show differences in converted files")
         self.radio_revert=Radiobutton(self.mode_frame,
-                                      text="Revert\nRevert conversions using *.bak files",
+                                      text="Revert",
                                       variable=self.mode_variable,
                                       value=4)
         self.radio_revert.grid(row=4,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_revert=Tooltip(self.radio_revert,
+                                    "Revert conversions using *.bak files")
         self.verbosity_frame=LabelFrame(self,
                                         text="Verbosity level")
         self.verbosity_frame.grid(row=0,
