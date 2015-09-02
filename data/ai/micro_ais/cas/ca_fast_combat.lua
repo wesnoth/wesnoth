@@ -1,14 +1,13 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
 local ca_fast_combat = {}
 
 function ca_fast_combat:evaluation(ai, cfg, self)
-    if (not self.data.fast_cache) or (self.data.fast_cache.turn ~= wesnoth.current.turn) then
-        self.data.fast_cache = { turn = wesnoth.current.turn }
-    end
+    self.data.move_cache = { turn = wesnoth.current.turn }
+    self.data.gamedata = FAU.gamedata_setup()
 
     if (not self.data.fast_combat_units) or (not self.data.fast_combat_units[1]) then
         self.data.fast_combat_units = wesnoth.get_units { side = wesnoth.current.side }
@@ -37,9 +36,12 @@ function ca_fast_combat:evaluation(ai, cfg, self)
 
     local aggression = ai.get_aggression()
     if (aggression > 1) then aggression = 1 end
+    local own_value_weight = 1. - aggression
 
     for i = #self.data.fast_combat_units,1,-1 do
         local unit = self.data.fast_combat_units[i]
+        local unit_info = FAU.get_unit_info(unit, self.data.gamedata)
+        local unit_copy = FAU.get_unit_copy(unit.id, self.data.gamedata)
 
         if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
             local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes })
@@ -49,14 +51,25 @@ function ca_fast_combat:evaluation(ai, cfg, self)
                 for _,attack in ipairs(attacks) do
                     if (not excluded_enemies_map:get(attack.target.x, attack.target.y)) then
                         local target = wesnoth.get_unit(attack.target.x, attack.target.y)
-                        local rating = BC.attack_rating(
-                            unit, target, { attack.dst.x, attack.dst.y },
-                            { own_value_weight = 1.0 - aggression },
-                            self.data.fast_cache
-                        )
-                        --print(unit.id, target.id, rating)
+                        local target_info = FAU.get_unit_info(target, self.data.gamedata)
 
-                        if (rating > 0) and (rating > max_rating) then
+                        local att_stat, def_stat = FAU.battle_outcome(
+                            unit_copy, target, { attack.dst.x, attack.dst.y },
+                            unit_info, target_info, self.data.gamedata, self.data.move_cache
+                        )
+
+                        local rating, attacker_rating, defender_rating, extra_rating = FAU.attack_rating(
+                            { unit_info }, target_info, { { attack.dst.x, attack.dst.y } },
+                            { att_stat }, def_stat, self.data.gamedata,
+                            { own_value_weight = own_value_weight }
+                        )
+
+                        local acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, own_value_weight)
+
+                        --print(unit.id, target.id, rating, attacker_rating, defender_rating, extra_rating)
+                        --print('   -->' , own_value_weight, defender_rating/attacker_rating, acceptable_attack)
+
+                        if acceptable_attack and (rating > max_rating) then
                             max_rating, best_target, best_dst = rating, target, attack.dst
                         end
                     end
