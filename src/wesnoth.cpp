@@ -66,6 +66,10 @@
 #include "desktop/windows_console.hpp"
 #endif // _WIN32
 
+#ifndef _WIN32
+#include <signal.h>
+#endif
+
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/iostreams/categories.hpp>  // for input, output
