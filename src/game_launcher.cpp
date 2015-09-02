@@ -559,6 +559,9 @@ bool game_launcher::play_test()
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 	state_.classification().campaign_define = "TEST";
 
+	state_.mp_settings().mp_era = "era_default";
+	state_.mp_settings().show_connect = false;
+
 	state_.set_carryover_sides_start(
 		config_of("next_scenario", test_scenario_)
 	);
