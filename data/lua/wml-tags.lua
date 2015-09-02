@@ -711,7 +711,7 @@ function wml_actions.modify_unit(cfg)
 			local current_tag = current_table[1]
 			if current_tag == "filter" then
 				-- nothing
-			elseif current_tag == "object" or current_tag == "trait" then
+			elseif current_tag == "object" or current_tag == "trait" or current_tag == "advancement" then
 				local unit = wesnoth.get_variable(unit_path)
 				unit = wesnoth.create_unit(unit)
 				wesnoth.add_modification(unit, current_tag, current_table[2])
