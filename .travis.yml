@@ -1,4 +1,31 @@
 language: cpp
+sudo:     9000
+
+addons:
+  apt:
+    sources:
+    - boost-latest
+    packages:
+    - libboost-filesystem1.55-dev
+    - libboost-iostreams1.55-dev
+    - libboost-locale1.55-dev
+    - libboost-program-options1.55-dev
+    - libboost-random1.55-dev
+    - libboost-regex1.55-dev
+    - libboost-system1.55-dev
+    - libboost-test1.55-dev
+    - libcairo2-dev
+    - libfribidi-dev
+    - libpango1.0-dev
+    - libsdl-image1.2-dev
+    - libsdl-mixer1.2-dev
+    - libsdl-net1.2-dev
+    - libsdl-ttf2.0-dev
+    - gdb
+    - moreutils
+    - scons
+    - xvfb
+    - gettext
 
 compiler:
     - gcc
@@ -47,18 +74,6 @@ before_install:
     - if [ "$BUILD" == "translations" ]; then export PLAY_TEST=false; fi
     - if [ "$BUILD" == "translations" ]; then export MP_TEST=false; fi
 
-install:
-    - sudo add-apt-repository -y "deb http://old-releases.ubuntu.com/ubuntu/ saucy main universe"
-    - travis_wait sudo apt-get update -qq
-    - travis_wait sudo apt-get install -qq libboost-filesystem-dev libboost-iostreams-dev libboost-random-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libboost-locale-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev gdb moreutils
-    - if [ "$CXX" = "g++" ]; then travis_wait sudo apt-get -qq install g++-4.8; fi
-    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
-#    - if [ "$CPP_TESTS" = true ]; then sudo update-alternatives --remove postmaster.1.gz /usr/share/postgresql/9.1/man/man1/postmaster.1.gz; fi
-#    - if [ "$CPP_TESTS" = true ]; then sudo apt-get -f; fi
-#    - if [ "$CPP_TESTS" = true ]; then sudo apt-get install --reinstall postgresql-9.1; fi
-#    - if [ "$CPP_TESTS" = true ]; then sudo apt-get -o Dpkg::Options::='--force-confold' --force-yes -fuy upgrade; fi
-    - $CXX -v
-
 script: 
     - ./utils/travis/check_utf8.sh
     - ./utils/travis/utf8_bom_dog.sh
@@ -66,7 +81,7 @@ script:
     - echo "*Params* --- " "cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS jobs=2"
     - scons cxxtool=$CXX --debug=time build=release extra_flags_config="$EXTRA_FLAGS_ALL" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS jobs=2
     - "export DISPLAY=:99.0"
-    - "sh -e /etc/init.d/xvfb start"
+    - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24"
     - if [ "$CPP_TESTS" = true ]; then ./utils/travis/test_wrapper.sh; fi
     - if [ "$WML_TESTS" = true ]; then ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"; fi
     - if [ "$PLAY_TEST" = true ]; then ./utils/travis/play_test_executor.sh; fi
