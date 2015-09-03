@@ -99,7 +99,7 @@ def CheckOgg(context):
     }
 \n
 '''
-    test_program1 = context.env.Clone(TESTFILE = File("data/core/music/main_menu.ogg").rfile().abspath).subst(test_program)
+    test_program1 = context.env.Clone(TESTFILE = "data/core/music/main_menu.ogg").subst(test_program)
     #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
     if context.env["host"]:
