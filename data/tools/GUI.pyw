@@ -1018,9 +1018,6 @@ class MainFrame(Frame):
         self.columnconfigure(0,weight=1)
         self.rowconfigure(3,weight=1)
         self.notebook.bind("<<NotebookTabChanged>>",self.tab_callback)
-        # this allows using the mouse wheel even on the disabled Text widget
-        # without the need to clic on said widget
-        self.tk_focusFollowsMouse()
 
         parent.protocol("WM_DELETE_WINDOW",
                         self.on_quit)
