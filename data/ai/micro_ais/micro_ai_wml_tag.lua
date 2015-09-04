@@ -461,7 +461,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'fast_ai') then
         optional_keys = {
             "attack_hidden_enemies", "dungeon_mode", "filter", "filter_second",
-            "include_occupied_attack_hexes", "move_cost_factor",
+            "include_occupied_attack_hexes", "leader_weight", "move_cost_factor",
             "weak_units_first", "skip_combat_ca", "skip_move_ca"
         }
         CA_parms = {

@@ -77,7 +77,10 @@ function ca_fast_combat:evaluation(ai, cfg, self)
                         local rating, attacker_rating, defender_rating, extra_rating = FAU.attack_rating(
                             { unit_info }, target_info, { { attack.dst.x, attack.dst.y } },
                             { att_stat }, def_stat, self.data.gamedata,
-                            { own_value_weight = own_value_weight }
+                            {
+                                own_value_weight = own_value_weight,
+                                leader_weight = cfg.leader_weight
+                            }
                         )
 
                         local acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, own_value_weight)
