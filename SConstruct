@@ -395,15 +395,16 @@ if env["prereqs"]:
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other() & \
+        conf.CheckLib("vorbisfile") & \
+        conf.CheckOgg() & \
+        conf.CheckPNG() & \
+        conf.CheckJPG() & \
         CheckAsio(conf) & \
         conf.CheckPango("cairo", require_version = "1.21.3") & \
         conf.CheckPKG("fontconfig") & \
         conf.CheckBoost("program_options", require_version="1.35.0") & \
-        conf.CheckBoost("regex", require_version = "1.35.0") & \
-        conf.CheckLib("vorbisfile") & \
-        conf.CheckOgg() & \
-        conf.CheckPNG() & \
-        conf.CheckJPG() or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
+        conf.CheckBoost("regex", require_version = "1.35.0") \
+            or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
 
     have_X = False
     if have_client_prereqs:
