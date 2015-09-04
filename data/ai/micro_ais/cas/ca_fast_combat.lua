@@ -10,7 +10,10 @@ function ca_fast_combat:evaluation(ai, cfg, self)
     self.data.gamedata = FAU.gamedata_setup()
 
     if (not self.data.fast_combat_units) or (not self.data.fast_combat_units[1]) then
-        self.data.fast_combat_units = wesnoth.get_units { side = wesnoth.current.side }
+        self.data.fast_combat_units = wesnoth.get_units {
+            side = wesnoth.current.side,
+            { "and", cfg.filter }
+        }
         if (not self.data.fast_combat_units[1]) then return 0 end
 
         -- For speed reasons, we'll go through the arrays from the end, so they are sorted backwards
@@ -21,8 +24,21 @@ function ca_fast_combat:evaluation(ai, cfg, self)
         end
     end
 
-    -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
     local excluded_enemies_map = LS.create()
+
+    -- Exclude enemies not matching [filter_second]
+    if (cfg.filter_second) then
+        local excluded_enemies = wesnoth.get_units {
+            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+            { "not", cfg.filter_second }
+        }
+
+        for _,e in ipairs(excluded_enemies) do
+            excluded_enemies_map:insert(e.x, e.y)
+        end
+    end
+
+    -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
     if (not cfg.attack_hidden_enemies) then
         local hidden_enemies = wesnoth.get_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
