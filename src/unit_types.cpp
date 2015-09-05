@@ -31,9 +31,13 @@
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 #include "unit_animation.hpp"
+#include "util.hpp"
+
+#include "gui/auxiliary/formula.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/regex.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -997,6 +1001,24 @@ namespace { // Helpers for set_config()
 		// Restore the variations.
 		ut_cfg.splice_children(variations, "variation");
 	}
+	
+	const boost::regex fai_identifier("[a-zA-Z_]+");
+	
+	template<typename MoveT>
+	void patch_movetype(MoveT& mt, const std::string& new_key, const std::string& formula_str, int default_val) {
+		config temp_cfg, original_cfg;
+		gui2::tformula<int> formula(formula_str);
+		game_logic::map_formula_callable original;
+		mt.write(original_cfg);
+		boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
+		BOOST_FOREACH(const boost::sregex_iterator::value_type& p, std::make_pair(m, boost::sregex_iterator())) {
+			const std::string var_name = p.str();
+			variant val(original_cfg[var_name].to_int(default_val));
+			original.add(var_name, val);
+		}
+		temp_cfg[new_key] = formula(original);
+		mt.merge(temp_cfg, true);
+	}
 }// unnamed namespace
 
 /**
@@ -1022,6 +1044,73 @@ void unit_type_data::set_config(config &cfg)
 		const unit_race race(r);
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
 		loadscreen::increment_progress();
+	}
+	
+	// Movetype resistance patching
+	BOOST_FOREACH(const config &r, cfg.child_range("resistance_defaults"))
+	{
+		const std::string& dmg_type = r["id"];
+		config temp_cfg;
+		BOOST_FOREACH(const config::attribute &attr, r.attribute_range()) {
+			const std::string &mt = attr.first;
+			if (mt == "id" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
+				continue;
+			}
+			patch_movetype(movement_types_[mt].get_resistances(), dmg_type, attr.second, 100);
+		}
+		if (r.has_attribute("default")) {
+			BOOST_FOREACH(movement_type_map::value_type &mt, movement_types_) {
+				if (r.has_attribute(mt.first)) {
+					continue;
+				}
+				patch_movetype(mt.second.get_resistances(), dmg_type, r["default"], 100);
+			}
+		}
+	}
+	
+	// Movetype move/defend patching
+	BOOST_FOREACH(const config &terrain, cfg.child_range("terrain_defaults"))
+	{
+		const std::string& ter_type = terrain["id"];
+		config temp_cfg;
+		static const std::string terrain_info_tags[] = {"movement", "vision", "jamming", "defense"};
+		BOOST_FOREACH(const std::string &tag, terrain_info_tags) {
+			if (!terrain.has_child(tag)) {
+				continue;
+			}
+			const config& info = terrain.child(tag);
+			BOOST_FOREACH(const config::attribute &attr, info.attribute_range()) {
+				const std::string &mt = attr.first;
+				if (mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
+					continue;
+				}
+				if (tag == "defense") {
+					patch_movetype(movement_types_[mt].get_defense(), ter_type, attr.second, 100);
+				} else if (tag == "vision") {
+					patch_movetype(movement_types_[mt].get_vision(), ter_type, attr.second, 99);
+				} else if (tag == "movement") {
+					patch_movetype(movement_types_[mt].get_movement(), ter_type, attr.second, 99);
+				} else if (tag == "jamming") {
+					patch_movetype(movement_types_[mt].get_jamming(), ter_type, attr.second, 99);
+				}
+			}
+			if (info.has_attribute("default")) {
+				BOOST_FOREACH(movement_type_map::value_type &mt, movement_types_) {
+					if (info.has_attribute(mt.first)) {
+						continue;
+					}
+					if (tag == "defense") {
+						patch_movetype(mt.second.get_defense(), ter_type, info["default"], 100);
+					} else if (tag == "vision") {
+						patch_movetype(mt.second.get_vision(), ter_type, info["default"], 99);
+					} else if (tag == "movement") {
+						patch_movetype(mt.second.get_movement(), ter_type, info["default"], 99);
+					} else if (tag == "jamming") {
+						patch_movetype(mt.second.get_jamming(), ter_type, info["default"], 99);
+					}
+				}
+			}
+		}
 	}
 
 	// Apply base units.
