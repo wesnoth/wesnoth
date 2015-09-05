@@ -5,12 +5,13 @@
 # Automatically generated, 2006.
 # PJR <pjr@britishlibrary.net>, 2006.
 # Steven Panek <Majora700@gmail.com>, 2011.
+# Wedge009 <wedge009@wedge009.net>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2012-09-02 23:24-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"PO-Revision-Date: 2015-08-26 09:19+1000\n"
+"Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
 "Language: en_GB\n"
@@ -18,6 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.4\n"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -29,7 +31,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2013"
-msgstr ""
+msgstr "2013"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -179,17 +181,14 @@ msgstr "overrides the data directory with the one specified"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
-msgstr "prints the name of the game data directory and exits."
+msgstr "prints the path of the data directory and exits."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:66
@@ -592,19 +591,12 @@ msgstr "runs the game in a small test scenario."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userconfig-dir>I<\\ name>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -615,14 +607,14 @@ msgstr ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
-"Games\""
+"Games\".  Under X11 this is set to $XDG_CONFIG_HOME or $HOME/.config/wesnoth "
+"by default, on other systems to the userdata path."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:210
@@ -631,42 +623,31 @@ msgstr "prints the path of the user configuration directory and exits."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userdata-dir>I<\\ name>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
-"sets the user configuration directory to I<name> under $HOME or \"My "
-"Documents\\eMy Games\" for windows.  You can also specify an absolute path "
-"for the configuration directory outside the $HOME or \"My Documents\\eMy "
-"Games\""
+"sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
+"Games\" for windows.  You can also specify an absolute path for the userdata "
+"directory outside the $HOME or \"My Documents\\eMy Games\"."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr "prints the path of the user configuration directory and exits."
+msgstr "prints the path of the userdata directory and exits."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:220
@@ -801,26 +782,25 @@ msgid ""
 "benchmarking."
 msgstr ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
-"which requires the user to click OK.  This is also used for scriptable "
+"which requires the user to click OK.  This is also used for script-based "
 "benchmarking."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:272
 msgid "do not use map settings, use default values instead."
-msgstr ""
+msgstr "do not use map settings, use default values instead."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:272
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<value>"
+msgstr "B<--multiplayer-repeat=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:279
@@ -828,6 +808,8 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
+"script-based benchmarking."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:279
@@ -962,12 +944,9 @@ msgstr "COPYRIGHT"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:324 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:327 ../../doc/man/wesnothd.6:283
@@ -1235,7 +1214,7 @@ msgid ""
 "compressed form. Defaults to B<yes>."
 msgstr ""
 "Determines whether the rooms file should be read and written to in "
-"compressed form. Defaults to B<yes>."
+"compressed form. Default value is B<yes>."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -1266,9 +1245,9 @@ msgid ""
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
-"patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
+"Names/nicks that are not accepted by the server. B<*> and B<?> from wild-"
+"card patterns are supported. See B<glob>(7)  for more details.  Default "
+"values (used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 
 #. type: TP
@@ -1407,7 +1386,7 @@ msgid ""
 "loaded and not saved."
 msgstr ""
 "Path to a file where the room info should be stored. This file is read on "
-"server startup and written to later. If empty or not set, rooms are not "
+"server start-up and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 
 #. type: TP
@@ -1439,7 +1418,7 @@ msgid ""
 "corresponding wesnoth version)"
 msgstr ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
-"and B<?> from wildcard patterns are supported.  (defaults to the "
+"and B<?> from wild-card patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 
 #. type: Plain text
@@ -1518,7 +1497,7 @@ msgid ""
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
 "A comma separated list of versions to redirect. Behaves the same way as "
-"B<versions_accepted> in regard to wildcard patterns."
+"B<versions_accepted> in regard to wild-card patterns."
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:195
@@ -1737,7 +1716,7 @@ msgstr "B<from_address>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:261
 msgid "The reply-to address of you mail."
-msgstr "The reply-to address of you mail."
+msgstr "The reply-to address of your mail."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:261
