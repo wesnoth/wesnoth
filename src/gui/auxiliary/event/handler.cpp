@@ -220,7 +220,7 @@ private:
 	 *
 	 * @param event                  The SDL joystick hat event triggered.
 	 */
-	void hat_motion(const SDL_JoyHatEvent& event);
+	void hat_motion(const SDL_Event& event);
 
 
 	/**
@@ -228,7 +228,7 @@ private:
 	 *
 	 * @param event                  The SDL joystick button event triggered.
 	 */
-	void button_down(const SDL_JoyButtonEvent& event);
+	void button_down(const SDL_Event& event);
 
 
 	/**
@@ -236,7 +236,7 @@ private:
 	 *
 	 * @param event                  The SDL keyboard event triggered.
 	 */
-	void key_down(const SDL_KeyboardEvent& event);
+	void key_down(const SDL_Event& event);
 
 	/**
 	 * Handles the pressing of a hotkey.
@@ -245,7 +245,7 @@ private:
 	 *
 	 * @returns                   True if the hotkey is handled false otherwise.
 	 */
-	bool hotkey_pressed(const hotkey::hotkey_item& key);
+	bool hotkey_pressed(const hotkey::hotkey_ptr key);
 
 	/**
 	 * Fires a key down event.
@@ -372,7 +372,7 @@ void thandler::handle_event(const SDL_Event& event)
 		} break;
 
 		case SDL_JOYBUTTONDOWN:
-			button_down(event.jbutton);
+			button_down(event);
 			break;
 
 		case SDL_JOYBUTTONUP:
@@ -382,11 +382,11 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_JOYHATMOTION:
-			hat_motion(event.jhat);
+			hat_motion(event);
 			break;
 
 		case SDL_KEYDOWN:
-			key_down(event.key);
+			key_down(event);
 			break;
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
@@ -689,11 +689,11 @@ tdispatcher* thandler::keyboard_dispatcher()
 	return NULL;
 }
 
-void thandler::hat_motion(const SDL_JoyHatEvent& event)
+void thandler::hat_motion(const SDL_Event& event)
 {
-	const hotkey::hotkey_item& hk = hotkey::get_hotkey(event);
+	const hotkey::hotkey_ptr& hk = hotkey::get_hotkey(event);
 	bool done = false;
-	if(!hk.null()) {
+	if(!hk->null()) {
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
@@ -702,11 +702,11 @@ void thandler::hat_motion(const SDL_JoyHatEvent& event)
 	}
 }
 
-void thandler::button_down(const SDL_JoyButtonEvent& event)
+void thandler::button_down(const SDL_Event& event)
 {
-	const hotkey::hotkey_item& hk = hotkey::get_hotkey(event);
+	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
-	if(!hk.null()) {
+	if(!hk->null()) {
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
@@ -715,22 +715,22 @@ void thandler::button_down(const SDL_JoyButtonEvent& event)
 	}
 }
 
-void thandler::key_down(const SDL_KeyboardEvent& event)
+void thandler::key_down(const SDL_Event& event)
 {
-	const hotkey::hotkey_item& hk = hotkey::get_hotkey(event);
+	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
-	if(!hk.null()) {
+	if(!hk->null()) {
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		key_down(event.keysym.sym,
-				 static_cast<const SDL_Keymod>(event.keysym.mod),
+		key_down(event.key.keysym.sym,
+				 static_cast<const SDL_Keymod>(event.key.keysym.mod),
 				 "");
 #else
-		key_down(event.keysym.sym,
-				 event.keysym.mod,
-				 unicode_cast<std::string>(static_cast<ucs4::char_t>(event.keysym.unicode)));
+		key_down(event.key.keysym.sym,
+				 event.key.keysym.mod,
+				 unicode_cast<std::string>(static_cast<ucs4::char_t>(event.key.keysym.unicode)));
 #endif
 	}
 }
@@ -740,7 +740,7 @@ void thandler::text_input(const std::string& unicode)
 	key_down(static_cast<SDLKey>(0), static_cast<SDLMod>(0), unicode);
 }
 
-bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
+bool thandler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
 	tdispatcher* dispatcher = keyboard_dispatcher();
 
@@ -748,7 +748,7 @@ bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
 		return false;
 	}
 
-	return dispatcher->execute_hotkey(hotkey::get_id(key.get_command()));
+	return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
 }
 
 void thandler::key_down(const SDLKey key,

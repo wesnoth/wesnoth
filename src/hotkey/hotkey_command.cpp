@@ -389,9 +389,9 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 
 		if(!default_hotkey.empty() && !has_hotkey_item(id))
 		{
-			hotkey_item new_item(default_hotkey, true);
-			new_item.set_command(id);
-			if(new_item.valid())
+			hotkey::hotkey_ptr new_item = hotkey::load_from_config(default_hotkey);
+			new_item->set_command(id);
+			if(new_item->valid())
 			{
 				DBG_G << "added default description for the wml hotkey with id=" + id;
 				add_hotkey(new_item);
