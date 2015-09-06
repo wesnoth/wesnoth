@@ -196,6 +196,9 @@ mouse pointer stays on the widget for more than 500 ms."""
         if self.preshow_id:
             self.after_cancel(self.preshow_id)
             self.preshow_id=None
+    def set_text(self,text):
+        self.label.configure(text=text)
+        self.update_idletasks()
 
 class Popup(Toplevel):
     def __init__(self,parent,tool,thread):
