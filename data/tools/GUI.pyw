@@ -29,6 +29,7 @@ if sys.version_info.major >= 3:
 else: # we are on Python 2
     import Queue
     # tkinter modules
+    import tkFont as font # in Py3 it's tkinter.font
     from Tkinter import *
     from tkMessageBox import *
     from tkFileDialog import *
@@ -150,7 +151,10 @@ mouse pointer stays on the widget for more than 500 ms."""
                          background="#ffffe1", # background color used on Windows
                          borderwidth=1,
                          relief=SOLID,
-                         padding=1)
+                         padding=1,
+                         # Tk has a bunch of predefined fonts
+                         # use the one specific for tooltips
+                         font=font.nametofont("TkTooltipFont"))
         self.label.pack()
         self.overrideredirect(True)
         self.widget.bind("<Enter>",self.preshow)
