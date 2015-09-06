@@ -136,7 +136,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, replay_(new replay(state_of_game.get_replay()))
 	, loading_game_(!level["playing_team"].empty())
 	, player_number_(level["playing_team"].to_int() + 1)
-	, start_turn_(gamestate_.tod_manager_.turn()) // gamestate_.tod_manager_ constructed above
 	, skip_replay_(skip_replay)
 	, linger_(false)
 	, it_is_a_new_turn_(level["it_is_a_new_turn"].to_bool(true))
@@ -305,8 +304,7 @@ void play_controller::fire_prestart()
 	gamestate_.gamedata_.set_phase(game_data::PRESTART);
 	pump().fire("prestart");
 	// prestart event may modify start turn with WML, reflect any changes.
-	start_turn_ = turn();
-	gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
+	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
 }
 
 void play_controller::fire_start()
@@ -314,8 +312,7 @@ void play_controller::fire_start()
 	gamestate_.gamedata_.set_phase(game_data::START);
 	pump().fire("start");
 	// start event may modify start turn with WML, reflect any changes.
-	start_turn_ = turn();
-	gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
+	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
 	check_objectives();
 	// prestart and start events may modify the initial gold amount,
 	// reflect any changes.
