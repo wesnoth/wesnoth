@@ -54,6 +54,9 @@ function ca_fast_combat:evaluation(ai, cfg, self)
     if (aggression > 1) then aggression = 1 end
     local own_value_weight = 1. - aggression
 
+    -- Get the locations to be avoided
+    local avoid_map = FAU.get_avoid_map(cfg)
+
     for i = #self.data.fast_combat_units,1,-1 do
         local unit = self.data.fast_combat_units[i]
         local unit_info = FAU.get_unit_info(unit, self.data.gamedata)
@@ -65,7 +68,9 @@ function ca_fast_combat:evaluation(ai, cfg, self)
             if (#attacks > 0) then
                 local max_rating, best_target, best_dst = -9e99
                 for _,attack in ipairs(attacks) do
-                    if (not excluded_enemies_map:get(attack.target.x, attack.target.y)) then
+                    if (not excluded_enemies_map:get(attack.target.x, attack.target.y))
+                        and (not avoid_map:get(attack.dst.x, attack.dst.y))
+                    then
                         local target = wesnoth.get_unit(attack.target.x, attack.target.y)
                         local target_info = FAU.get_unit_info(target, self.data.gamedata)
 
