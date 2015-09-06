@@ -180,6 +180,10 @@ class tod_manager : public savegame::savegame_config
 		 * @returns                   True if time has not expired.
 		 */
 		bool is_time_left();
+		bool has_turn_event_fired()
+		{ return has_turn_event_fired_; }
+		void turn_event_fired()
+		{ has_turn_event_fired_ = true; }
 	private:
 
 		/**
@@ -234,6 +238,8 @@ class tod_manager : public savegame::savegame_config
 		int turn_;
 		//turn limit
 		int num_turns_;
+		//Whether the "turn X" and the "new turn" events were already fired this turn.
+		bool has_turn_event_fired_;
 		//
 		config::attribute_value random_tod_;
 };

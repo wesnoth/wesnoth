@@ -711,7 +711,6 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 
 void playsingle_controller::check_time_over(){
 	bool time_left = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
-	it_is_a_new_turn_ = true;
 	if(!time_left) {
 		LOG_NG << "firing time over event...\n";
 		set_scontext_synced_base sync;

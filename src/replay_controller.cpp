@@ -305,7 +305,6 @@ void replay_controller::reset_replay()
 	gui_->get_chat_manager().clear_chat_messages();
 	is_playing_ = false;
 	player_number_ = level_["playing_team"].to_int() + 1;
-	it_is_a_new_turn_ = level_["it_is_a_new_turn"].to_bool(true);
 	init_side_done_ = level_["init_side_done"].to_bool(false);
 	skip_replay_ = false;
 	gamestate_.tod_manager_= tod_manager_start_;
@@ -537,7 +536,6 @@ void replay_controller::play_move_or_side(bool one_move) {
 			set_scontext_synced_base sync;
 			pump().fire("time over");
 		}
-		it_is_a_new_turn_ = true;
 		player_number_ = 1;
 		gui_->new_turn();
 	}

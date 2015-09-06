@@ -138,7 +138,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, player_number_(level["playing_team"].to_int() + 1)
 	, skip_replay_(skip_replay)
 	, linger_(false)
-	, it_is_a_new_turn_(level["it_is_a_new_turn"].to_bool(true))
 	, init_side_done_(level["init_side_done"].to_bool(false))
 	, init_side_done_now_(false)
 	, ticks_(ticks)
@@ -380,11 +379,12 @@ void play_controller::do_init_side()
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
 
-	if(it_is_a_new_turn_)
+	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
+	if(!gamestate().tod_manager_.has_turn_event_fired())
 	{
 		pump().fire("turn " + turn_num);
 		pump().fire("new turn");
-		it_is_a_new_turn_ = false;
+		gamestate().tod_manager_.turn_event_fired();
 	}
 
 	pump().fire("side turn");
@@ -449,7 +449,6 @@ config play_controller::to_config() const
 
 	cfg.merge_attributes(level_);
 	cfg["init_side_done"] = init_side_done_;
-	cfg["it_is_a_new_turn"] = it_is_a_new_turn_;
 
 	gamestate_.write(cfg);
 

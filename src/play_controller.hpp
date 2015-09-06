@@ -282,7 +282,6 @@ protected:
 	int player_number_;
 	bool skip_replay_;
 	bool linger_;
-	bool it_is_a_new_turn_;
 	bool init_side_done_;
 	/// whether we did init side in this session ( false = we did init side before we reloaded the game).
 	bool init_side_done_now_;
