@@ -9,10 +9,25 @@ function ca_fast_combat:evaluation(ai, cfg, self)
     self.data.move_cache = { turn = wesnoth.current.turn }
     self.data.gamedata = FAU.gamedata_setup()
 
+    local filter_own = cfg.filter
+    local filter_enemy = cfg.filter_second
+    if (not filter_own) and (not filter_enemy) then
+        local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
+        for aspect in H.child_range(ai_tag, 'aspect') do
+            if (aspect.id == 'attacks') then
+                local facet = H.get_child(aspect, 'facet')
+                if facet then
+                    filter_own = H.get_child(facet, 'filter_own')
+                    filter_enemy = H.get_child(facet, 'filter_enemy')
+                end
+            end
+        end
+    end
+
     if (not self.data.fast_combat_units) or (not self.data.fast_combat_units[1]) then
         self.data.fast_combat_units = wesnoth.get_units {
             side = wesnoth.current.side,
-            { "and", cfg.filter }
+            { "and", filter_own }
         }
         if (not self.data.fast_combat_units[1]) then return 0 end
 
@@ -26,11 +41,11 @@ function ca_fast_combat:evaluation(ai, cfg, self)
 
     local excluded_enemies_map = LS.create()
 
-    -- Exclude enemies not matching [filter_second]
-    if (cfg.filter_second) then
+    -- Exclude enemies not matching [filter_enemy]
+    if filter_enemy then
         local excluded_enemies = wesnoth.get_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            { "not", cfg.filter_second }
+            { "not", filter_enemy }
         }
 
         for _,e in ipairs(excluded_enemies) do
