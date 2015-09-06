@@ -84,8 +84,9 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
 {
 	// Does this item exist?
 	const_iterator iter = find(id);
-	if ( iter == end() )
+	if ( iter == end() ) {
 		return false;
+	}
 	const wml_menu_item & wmi = **iter;
 
 	// Prepare for can show().
@@ -94,9 +95,9 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
 	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units);
 
 	// Can this item be shown?
-	if ( wmi.can_show(hex, gamedata, fc) )
+	if ( wmi.can_show(hex, gamedata, fc) ) {
 		wmi.fire_event(hex, gamedata);
-
+	}
 	return true;
 }
 
@@ -110,10 +111,10 @@ std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi
 	game_data & gamedata, filter_context & fc, unit_map & units, const_iterator start, const_iterator finish) const
 {
 	std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > ret;
-	if ( empty() )
+	if ( empty() ) {
 		// Nothing to do (skip setting game variables).
 		return ret;
-
+	}
 	// Prepare for can show().
 	gamedata.get_variable("x1") = hex.x + 1;
 	gamedata.get_variable("y1") = hex.y + 1;
@@ -164,8 +165,10 @@ void wmi_container::to_config(config& cfg) const
 {
 	// Loop through our items.
 	BOOST_FOREACH( const item_ptr & item, *this )
+	{
 		// Add this item as a child of cfg.
 		item->to_config(cfg.add_child("menu_item"));
+	}
 }
 
 /**
