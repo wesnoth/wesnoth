@@ -43,10 +43,7 @@ static lg::log_domain log_config("config");
 
 namespace hotkey {
 
-static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
-static void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
-static void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
-static void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
+static void event_execute(display& disp, const SDL_Event& event, command_executor* executor);
 
 bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/)
 {
@@ -480,47 +477,47 @@ void basic_handler::handle_event(const SDL_Event& event)
 		// handled by the executor.
 		// If we're not in a dialog we can call the regular key event handler.
 		if (!gui::in_dialog()) {
-			key_event(*disp_, event.key,exec_);
+			key_event(*disp_, event,exec_);
 		} else if (exec_ != NULL) {
-			key_event_execute(*disp_, event.key,exec_);
+			event_execute(*disp_, event,exec_);
 		}
 		break;
 	case SDL_JOYBUTTONDOWN:
 		if (!gui::in_dialog()) {
-			jbutton_event(*disp_, event.jbutton,exec_);
+			jbutton_event(*disp_, event,exec_);
 		} else if (exec_ != NULL) {
-			jbutton_event_execute(*disp_, event.jbutton,exec_);
+			event_execute(*disp_, event,exec_);
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (!gui::in_dialog()) {
-			mbutton_event(*disp_, event.button,exec_);
+			mbutton_event(*disp_, event,exec_);
 		} else if (exec_ != NULL) {
-			mbutton_event_execute(*disp_, event.button,exec_);
+			event_execute(*disp_, event,exec_);
 		}
 		break;
 	}
 }
 
-void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
+void mbutton_event(display& disp, const SDL_Event& event, command_executor* executor)
 {
-	mbutton_event_execute(disp, event, executor);
+	event_execute(disp, event, executor);
 }
 
-void jbutton_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
+void jbutton_event(display& disp, const SDL_Event& event, command_executor* executor)
 {
-	jbutton_event_execute(disp, event, executor);
+	event_execute(disp, event, executor);
 }
 
-void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
+void jhat_event(display& disp, const SDL_Event& event, command_executor* executor)
 {
-	jhat_event_execute(disp, event, executor);
+	event_execute(disp, event, executor);
 }
 
-void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
+void key_event(display& disp, const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
-	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
+	if(event.key.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
 		LOG_G << "escape pressed..showing quit\n";
 		const int res = gui2::show_message(disp.video(), _("Quit"),
 				_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
@@ -531,13 +528,13 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 		}
 	}
 
-	key_event_execute(disp, event,executor);
+	event_execute(disp, event,executor);
 }
 
-void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
+static void event_execute(display& disp, const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
-	const hotkey_item* hk = &get_hotkey(event);
+	const hotkey_ptr hk = get_hotkey(event);
 	if (!hk->active()) {
 		return;
 	}
@@ -545,52 +542,6 @@ void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, com
 	execute_command(disp, hotkey::get_hotkey_command(hk->get_command()), executor);
 	executor->set_button_state(disp);
 }
-
-void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
-{
-	if (!executor) return;
-	const hotkey_item* hk = &get_hotkey(event);
-	if (!hk->active()) {
-		return;
-	}
-
-	execute_command(disp, get_hotkey_command(hk->get_command()), executor);
-	executor->set_button_state(disp);
-}
-
-void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
-{
-	if (!executor) return;
-	const hotkey_item* hk = &get_hotkey(event);
-	if (!hk->active()) {
-		return;
-	}
-
-	execute_command(disp, get_hotkey_command(hk->get_command()), executor);
-	executor->set_button_state(disp);
-}
-
-void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
-{
-	if (!executor) return;
-	const hotkey_item* hk = &get_hotkey(event);
-
-#if 0
-	// This is not generally possible without knowing keyboard layout.
-	if (hk->null()) {
-		//no matching hotkey was found, but try an in-exact match.
-		hk = &get_hotkey(event, true);
-	}
-#endif
-
-	if (!hk->active()) {
-		return;
-	}
-
-	execute_command(disp, get_hotkey_command(hk->get_command()), executor);
-	executor->set_button_state(disp);
-}
-
 
 void execute_command(display& disp, const hotkey_command& command, command_executor* executor, int index)
 {

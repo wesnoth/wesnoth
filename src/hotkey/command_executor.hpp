@@ -133,10 +133,11 @@ public:
  * Also handles some events in the function itself,
  * and so is still meaningful to call with executor=NULL
  */
-void jbutton_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
-void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
-void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
-void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
+void jbutton_event(display& disp, const SDL_Event& event, command_executor* executor);
+void jhat_event(display& disp, const SDL_Event& event, command_executor* executor);
+void key_event(display& disp, const SDL_Event& event, command_executor* executor);
+void mbutton_event(display& disp, const SDL_Event& event, command_executor* executor);
+
 
 //TODO
 void execute_command(display& disp, const hotkey_command& command, command_executor* executor, int index=-1);
