@@ -59,7 +59,7 @@ class game_lua_kernel : public lua_kernel_base
 	game_data & gamedata();
 	tod_manager & tod_man();
 
-	const config &level_;
+	config level_lua_;
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
@@ -162,15 +162,15 @@ class game_lua_kernel : public lua_kernel_base
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
-	game_lua_kernel(const config &, CVideo *, game_state &, play_controller &, reports &);
+	game_lua_kernel(CVideo *, game_state &, play_controller &, reports &);
 
 	void set_game_display(game_display * gd);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 
-	void initialize();
-	void save_game(config &);
-	void load_game();
+	void initialize(const config& level);
+	void save_game(config & level);
+	void load_game(const config& level);
 	bool run_event(game_events::queued_event const &);
 	void set_wml_action(std::string const &, game_events::wml_action::handler);
 	bool run_wml_action(std::string const &, vconfig const &,

@@ -278,7 +278,8 @@ void play_controller::init(CVideo& video){
 	plugins_context_->set_callback("quit", throw_end_level(), false);
 }
 
-void play_controller::init_managers(){
+void play_controller::init_managers()
+{
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
@@ -292,7 +293,7 @@ void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
 	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
-	gamestate_.lua_kernel_->initialize();
+	gamestate_.lua_kernel_->initialize(level_);
 	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
 	pump().fire("preload");
 }

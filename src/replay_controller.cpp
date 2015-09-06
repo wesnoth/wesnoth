@@ -329,7 +329,7 @@ void replay_controller::reset_replay()
 	resources::game_events=NULL;
 	gamestate_.lua_kernel_.reset();
 	resources::lua_kernel=NULL;
-	gamestate_.lua_kernel_.reset(new game_lua_kernel(level_, &gui_->video(), gamestate_, *this, *gamestate_.reports_));
+	gamestate_.lua_kernel_.reset(new game_lua_kernel(&gui_->video(), gamestate_, *this, *gamestate_.reports_));
 	gamestate_.lua_kernel_->set_game_display(gui_.get());
 	resources::lua_kernel=gamestate_.lua_kernel_.get();
 	gamestate_.game_events_resources_->lua_kernel = resources::lua_kernel;

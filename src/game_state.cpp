@@ -186,7 +186,7 @@ void game_state::init(const int ticks, play_controller & pc)
 
 	pathfind_manager_.reset(new pathfind::manager(level_));
 
-	lua_kernel_.reset(new game_lua_kernel(level_, NULL, *this, pc, *reports_));
+	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));
 
 	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
 
