@@ -537,7 +537,7 @@ SDL_GetKeyFromScancode(SDL_Scancode scancode)
           return SDLK_UNKNOWN;
     }
 
-    return (SDLKey) SDL_default_keymap[scancode];
+    return static_cast<SDLKey>(SDL_default_keymap[scancode]);
 }
 
 SDL_Scancode
@@ -546,7 +546,7 @@ SDL_GetScancodeFromKey(SDLKey key)
 	for (int scancode = SDL_SCANCODE_UNKNOWN; scancode < SDL_NUM_SCANCODES;
          ++scancode) {
         if (SDL_default_keymap[scancode] == key) {
-            return (SDL_Scancode) scancode;
+            return static_cast<SDL_Scancode>(scancode);
         }
     }
     return SDL_SCANCODE_UNKNOWN;
@@ -580,7 +580,7 @@ SDL_Scancode SDL_GetScancodeFromName(const char *name)
             continue;
         }
         if (SDL_strcasecmp(name, SDL_scancode_names[i]) == 0) {
-            return (SDL_Scancode)i;
+            return static_cast<SDL_Scancode>(i);
         }
     }
 
@@ -596,32 +596,32 @@ SDL_GetKeyFromName(const char *name)
         if (name == NULL) return SDLK_UNKNOWN;
 
     /* If it's a single UTF-8 character, then that's the keycode itself */
-    key = *(const unsigned char *)name;
+    key = *reinterpret_cast<const unsigned char *>(name);
     if (key >= 0xF0) {
         if (SDL_strlen(name) == 4) {
             int i = 0;
-            key  = (Uint16)(name[i]&0x07) << 18;
-            key |= (Uint16)(name[++i]&0x3F) << 12;
-            key |= (Uint16)(name[++i]&0x3F) << 6;
-            key |= (Uint16)(name[++i]&0x3F);
-            return (SDLKey) key;
+            key  = static_cast<Uint16>((name[i]&0x07) << 18);
+            key |= static_cast<Uint16>((name[++i]&0x3F) << 12);
+            key |= static_cast<Uint16>((name[++i]&0x3F) << 6);
+            key |= static_cast<Uint16>((name[++i]&0x3F));
+            return static_cast<SDLKey>(key);
         }
         return SDLK_UNKNOWN;
     } else if (key >= 0xE0) {
         if (SDL_strlen(name) == 3) {
             int i = 0;
-            key  = (Uint16)(name[i]&0x0F) << 12;
-            key |= (Uint16)(name[++i]&0x3F) << 6;
-            key |= (Uint16)(name[++i]&0x3F);
-            return (SDLKey) key;
+            key  = static_cast<Uint16>((name[i]&0x0F) << 12);
+            key |= static_cast<Uint16>((name[++i]&0x3F) << 6);
+            key |= static_cast<Uint16>((name[++i]&0x3F));
+            return static_cast<SDLKey>(key);
         }
         return SDLK_UNKNOWN;
     } else if (key >= 0xC0) {
         if (SDL_strlen(name) == 2) {
             int i = 0;
-            key  = (Uint16)(name[i]&0x1F) << 6;
-            key |= (Uint16)(name[++i]&0x3F);
-            return (SDLKey) key;
+            key  = static_cast<Uint16>((name[i]&0x1F) << 6);
+            key |= static_cast<Uint16>((name[++i]&0x3F));
+            return static_cast<SDLKey>(key);
         }
         return SDLK_UNKNOWN;
     } else {
@@ -629,11 +629,11 @@ SDL_GetKeyFromName(const char *name)
             if (key >= 'A' && key <= 'Z') {
                 key += 32;
             }
-            return (SDLKey) key;
+            return static_cast<SDLKey>(key);
         }
 
         /* Get the scancode for this name, and the associated keycode */
-        return (SDLKey) SDL_default_keymap[SDL_GetScancodeFromName(name)];
+        return static_cast<SDLKey>(SDL_default_keymap[SDL_GetScancodeFromName(name)]);
     }
 }
 #endif

@@ -1,16 +1,17 @@
 /*
- Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+   See the COPYING file for more details.
+*/
+
 
 #include "log.hpp"
 #include "hotkey_item.hpp"
@@ -26,7 +27,6 @@
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
 
 #include "key.hpp"
@@ -287,7 +287,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event &event) const
 
 const std::string hotkey_mouse::get_name_helper() const
 {
-	return "mouse " + boost::lexical_cast<std::string>(button_);
+	return "mouse " + lexical_cast<std::string>(button_);
 }
 
 void hotkey_mouse::save_helper(config &item) const
@@ -300,7 +300,7 @@ void hotkey_mouse::save_helper(config &item) const
 
 const std::string hotkey_keyboard::get_name_helper() const
 {
-	std::string ret = std::string(SDL_GetScancodeName(scancode_));
+	std::string ret = std::string(SDL_GetKeyName(SDL_GetKeyFromScancode(scancode_)));
 
 	if (ret.size() == 1) {
 		boost::algorithm::to_lower(ret);

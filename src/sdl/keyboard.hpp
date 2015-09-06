@@ -410,6 +410,8 @@ SDL_GetScancodeName(SDL_Scancode scancode);
 extern SDLKey SDL_GetKeyFromName(const char *name);
 
 
+extern SDLKey SDL_GetKeyFromScancode(SDL_Scancode scancode);
+
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus
 }
