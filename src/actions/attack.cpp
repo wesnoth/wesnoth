@@ -894,8 +894,6 @@ namespace {
 		int ran_num = random_new::generator->get_random_int(0,99);
 		bool hits = (ran_num < attacker.cth_);
 
-		std::vector<std::string> extra_hit_sounds;
-
 		int damage = 0;
 		if (hits) {
 			damage = attacker.damage_;
@@ -979,6 +977,7 @@ namespace {
 		if (update_display_)
 		{
 			std::ostringstream float_text;
+			std::vector<std::string> extra_hit_sounds;
 			if (hits)
 			{
 				const unit &defender_unit = defender.get_unit();
