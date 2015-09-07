@@ -466,11 +466,12 @@ config play_controller::to_config() const
 
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
+	
+	if(resources::gamedata->phase() == game_data::PLAY) {
+		cfg["playing_team"] = player_number_ - 1;
+	}
 
 	if(gui_.get() != NULL) {
-		if(resources::gamedata->phase() == game_data::PLAY) {
-			cfg["playing_team"] = gui_->playing_team();
-		}
 		gui_->labels().write(cfg);
 		sound::write_music_play_list(cfg);
 	}
