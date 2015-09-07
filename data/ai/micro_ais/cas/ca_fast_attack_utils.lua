@@ -1,5 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local LS = wesnoth.require "lua/location_set.lua"
 
 -- Functions to perform fast evaluation of attacks and attack combinations.
 -- The emphasis with all of this is on speed, not elegance.
@@ -13,6 +14,37 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 --   parts from the code.
 
 local ca_fast_attack_utils = {}
+
+function ca_fast_attack_utils.get_avoid_map(cfg)
+    -- Get map of locations to be avoided.
+    -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
+    -- If neither is given, return an empty location set.
+    -- Note that ai.get_avoid() cannot be used as it always returns an array,
+    -- even when the aspect is not set, and an empty array could also mean that
+    -- no hexes match the filter
+
+    local avoid_tag
+
+    if cfg.avoid then
+        avoid_tag = cfg.avoid
+    else
+        local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
+        for aspect in H.child_range(ai_tag, 'aspect') do
+            if (aspect.id == 'avoid') then
+                local facet = H.get_child(aspect, 'facet')
+                if facet then
+                    avoid_tag = H.get_child(facet, 'value')
+                end
+            end
+        end
+    end
+
+    if avoid_tag then
+        return LS.of_pairs(wesnoth.get_locations(avoid_tag))
+    else
+        return LS.create()
+    end
+end
 
 function ca_fast_attack_utils.gamedata_setup()
     -- Keep game data in a table for faster access.

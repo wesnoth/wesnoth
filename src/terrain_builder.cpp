@@ -878,13 +878,6 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			if (const config::attribute_value *v = tc.get("y")) {
 				loc.y = *v;
 			}
-			if (const config::attribute_value *v = tc.get("loc")) {
-				std::vector<std::string> sloc = utils::split(*v);
-				if(sloc.size() == 2) {
-					loc.x = atoi(sloc[0].c_str());
-					loc.y = atoi(sloc[1].c_str());
-				}
-			}
 			if(loc.valid()) {
 				add_constraints(pbr.constraints, loc, tc, br);
 			}
