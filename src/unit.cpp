@@ -577,7 +577,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	, race_(&unit_race::null_race)
 	, id_()
 	, name_()
-	, underlying_id_(real_unit? n_unit::unit_id(0) : n_unit::id_manager::instance().next_fake_id())
+	, underlying_id_(real_unit? n_unit::unit_id(0) : resources::gameboard->unit_id_manager().next_fake_id())
 	, undead_variation_()
 	, variation_(type_->default_variation())
 	, hit_points_(0)
@@ -2272,10 +2272,10 @@ bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const s
 void unit::set_underlying_id() {
 	if(underlying_id_.value == 0) {
 		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
-			underlying_id_ = n_unit::id_manager::instance().next_id();
+			underlying_id_ = resources::gameboard->unit_id_manager().next_id();
 		}
 		else {
-			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+			underlying_id_ = resources::gameboard->unit_id_manager().next_fake_id();
 		}
 	}
 	if (id_.empty() /*&& !underlying_id_.is_fake()*/) {
@@ -2288,13 +2288,13 @@ void unit::set_underlying_id() {
 unit& unit::clone(bool is_temporary)
 {
 	if(is_temporary) {
-		underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+		underlying_id_ = resources::gameboard->unit_id_manager().next_fake_id();
 	} else {
 		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
-			underlying_id_ = n_unit::id_manager::instance().next_id();
+			underlying_id_ = resources::gameboard->unit_id_manager().next_id();
 		}
 		else {
-			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+			underlying_id_ = resources::gameboard->unit_id_manager().next_fake_id();
 		}
 		std::string::size_type pos = id_.find_last_of('-');
 		if(pos != std::string::npos && pos+1 < id_.size()

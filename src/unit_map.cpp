@@ -159,11 +159,13 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 				   << " ("  << loc << ") over " << q->name()
 				   << " - " << q->id() << " - " << q->underlying_id()
 				   << " ("  << q->get_location()
-				   << "). The new unit will be assigned underlying_id="
-				   << (1 + n_unit::id_manager::instance().get_save_id())
-				   << " to prevent duplicate id conflicts.\n";
+				   << ").";
 
 			p->clone(false);
+			ERR_NG << "The new unit was assigned underlying_id="
+				   << p->underlying_id()
+				   << " to prevent duplicate id conflicts.\n";
+
 			uinsert = umap_.insert(std::make_pair(p->underlying_id(), upod ));
 			int guard(0);
 			while (!uinsert.second && (++guard < 1e6) ) {

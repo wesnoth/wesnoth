@@ -338,7 +338,6 @@ void replay_controller::reset_replay()
 	gui_->labels().read(level_);
 
 	*resources::gamedata = game_data(level_);
-	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
 	statistics::fresh_stats();
 
 	gui_->needs_rebuild(true);

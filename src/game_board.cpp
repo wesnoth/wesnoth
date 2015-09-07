@@ -36,9 +36,19 @@ static lg::log_domain log_engine("enginerefac");
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
-game_board::game_board(const tdata_cache & tdata, const config & level) : teams_(), map_(new gamemap(tdata, level)), units_() {}
+game_board::game_board(const tdata_cache & tdata, const config & level)
+	: teams_()
+	, map_(new gamemap(tdata, level))
+	, unit_id_manager_(level["next_underlying_unit_id"])
+	, units_()
+{
+}
 
-game_board::game_board(const game_board & other) : teams_(other.teams_), map_(new gamemap(*(other.map_))), units_(other.units_) {}
+game_board::game_board(const game_board & other)
+	: teams_(other.teams_)
+	, map_(new gamemap(*(other.map_)))
+	, unit_id_manager_(other.unit_id_manager_)
+	, units_(other.units_) {}
 
 game_board::~game_board() {}
 
@@ -49,6 +59,7 @@ game_board::~game_board() {}
 void swap(game_board & one, game_board & other) {
 	std::swap(one.teams_, other.teams_);
 	std::swap(one.units_, other.units_);
+	std::swap(one.unit_id_manager_, other.unit_id_manager_);
 	one.map_.swap(other.map_);
 }
 
@@ -328,7 +339,9 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 	return true;
 }
 
-void game_board::write_config(config & cfg) const {
+void game_board::write_config(config & cfg) const
+{
+	cfg["next_underlying_unit_id"] = unit_id_manager_.get_save_id();
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		int side_num = t - teams_.begin() + 1;
 

@@ -133,6 +133,7 @@ static void no_op() {}
 
 void game_state::init(const int ticks, play_controller & pc)
 {
+	int ticks1 = SDL_GetTicks();
 	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations();
@@ -183,6 +184,8 @@ void game_state::init(const int ticks, play_controller & pc)
 			}
 		}
 	}
+	
+	std::cerr << "Initilizing teams took " << SDL_GetTicks() - ticks1 << " ticks.\n";
 
 	pathfind_manager_.reset(new pathfind::manager(level_));
 
@@ -191,6 +194,10 @@ void game_state::init(const int ticks, play_controller & pc)
 	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
 
 	events_manager_.reset(new game_events::manager(level_, game_events_resources_));
+	
+	std::cerr << "Initilizing total took " << SDL_GetTicks() - ticks1 << " ticks.\n";
+
+
 }
 
 void game_state::bind(wb::manager * whiteboard, game_display * gd)
@@ -228,6 +235,7 @@ void game_state::write(config& cfg) const
 
 	//Write the game data, including wml vars
 	gamedata_.write_snapshot(cfg);
+
 }
 
 namespace {

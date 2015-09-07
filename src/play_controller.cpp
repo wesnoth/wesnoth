@@ -172,8 +172,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 		set_end_level_data(el_data);
 	}
 
-	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
-
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
 	set_defeat_music_list(level_["defeat_music"]);
@@ -477,7 +475,6 @@ config play_controller::to_config() const
 		sound::write_music_play_list(cfg);
 	}
 
-	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 	return cfg;
 }
 
@@ -508,7 +505,7 @@ void play_controller::finish_side_turn()
 	}
 
 	mouse_handler_.deselect_hex();
-	n_unit::id_manager::instance().reset_fake();
+	resources::gameboard->unit_id_manager().reset_fake();
 	init_side_done_ = false;
 }
 

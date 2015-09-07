@@ -108,7 +108,6 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	// 	unit_map.add(map_location(2,guard), orc1_side0_real);
 	// };
 
-	// n_unit::id_manager::instance().clear();
 	// std::cerr<<"BREAK\n;";
 	// unit_map.add(map_location(1,3), orc2_side0_fake);
 	// unit_map.add(map_location(1,4), orc2_side0_fake);
