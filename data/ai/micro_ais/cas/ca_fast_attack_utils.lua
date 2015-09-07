@@ -309,7 +309,6 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
     value = value * (1. + xp_bonus * xp_weight)
 
     local rating = fractional_damage * value
-    --print('damage, fractional_damage, value, rating', attacker_info.id, damage, fractional_damage, value, rating)
 
     return rating
 end
@@ -416,8 +415,6 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
     -- Finally add up and apply factor of own unit weight to defender unit weight
     -- This is a number equivalent to 'aggression' in the default AI (but not numerically equal)
     local rating = defender_rating - attacker_rating * own_value_weight + extra_rating
-
-    --print('rating, attacker_rating, defender_rating, extra_rating:', rating, attacker_rating, defender_rating, extra_rating)
 
     return rating, attacker_rating, defender_rating, extra_rating
 end

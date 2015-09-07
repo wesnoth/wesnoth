@@ -153,9 +153,6 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
 
                     acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, own_value_weight)
 
-                    --std_print(leader.id, target.id, rating, attacker_rating, defender_rating, extra_rating)
-                    --std_print('   -->' , own_value_weight, defender_rating/attacker_rating, acceptable_attack)
-
                     if acceptable_attack and (rating > max_rating) then
                         max_rating, best_target, best_dst = rating, target, attack.dst
                     end
