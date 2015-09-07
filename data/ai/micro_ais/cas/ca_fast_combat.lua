@@ -27,8 +27,10 @@ function ca_fast_combat:evaluation(ai, cfg, self)
     if (not self.data.fast_combat_units) or (not self.data.fast_combat_units[1]) then
         self.data.fast_combat_units = wesnoth.get_units {
             side = wesnoth.current.side,
+            canrecruit = 'no',
             { "and", filter_own }
         }
+
         if (not self.data.fast_combat_units[1]) then return 0 end
 
         -- For speed reasons, we'll go through the arrays from the end, so they are sorted backwards
