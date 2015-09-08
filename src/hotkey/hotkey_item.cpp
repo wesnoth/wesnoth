@@ -481,11 +481,13 @@ std::string get_names(std::string id)
 	if (id == "quit") {
 		names.push_back("escape");
 	}
-#ifdef __APPLE__
 	else if (id == "quit-to-desktop") {
+#ifdef __APPLE__
 		names.push_back("cmd+q");
-	}
+#else
+		names.push_back("alt+F4");
 #endif
+	}
 
 	return boost::algorithm::join(names, ", ");
 }

@@ -399,6 +399,16 @@ void pump()
 				}
 				break;
 			}
+			
+#ifndef __APPLE__
+			case SDL_KEYDOWN: {
+				if(event.key.keysym.sym == SDLK_F4 && (event.key.keysym.mod == KMOD_RALT || event.key.keysym.mod == KMOD_LALT)) {
+					quit_confirmation::quit();
+					continue; // this event is already handled
+				}
+				break;
+			}
+#endif
 
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
