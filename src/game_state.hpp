@@ -45,7 +45,6 @@ private:
 
 	friend class replay_controller;
 public:
-	const config& level_;
 	game_data gamedata_;
 	game_board board_;
 	tod_manager tod_manager_;
@@ -63,9 +62,9 @@ public:
 
 	~game_state();
 
-	void place_sides_in_preferred_locations();
+	void place_sides_in_preferred_locations(const config& level);
 
-	void init(int ticks, play_controller & );
+	void init(int ticks, play_controller &, const config& level);
 
 	void bind(wb::manager *, game_display *);
 

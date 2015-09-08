@@ -193,7 +193,8 @@ play_controller::~play_controller()
 	clear_resources();
 }
 struct throw_end_level { void operator()(const config&) { throw_quit_game_exception(); } };
-void play_controller::init(CVideo& video){
+void play_controller::init(CVideo& video)
+{
 	util::scoped_resource<loadscreen::global_loadscreen_manager*, util::delete_item> scoped_loadscreen_manager;
 	loadscreen::global_loadscreen_manager* loadscreen_manager = loadscreen::global_loadscreen_manager::get();
 	if (!loadscreen_manager)
@@ -205,7 +206,7 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("load level");
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate_.init(ticks_, *this);
+	gamestate_.init(ticks_, *this, level_);
 	resources::tunnels = gamestate_.pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;

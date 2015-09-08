@@ -45,10 +45,9 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 game_state::game_state(const config & level, const tdata_cache & tdata) :
-	level_(level),
-	gamedata_(level_),
-	board_(tdata,level_),
-	tod_manager_(level_),
+	gamedata_(level),
+	board_(tdata, level),
+	tod_manager_(level),
 	pathfind_manager_(),
 	reports_(new reports()),
 	lua_kernel_(),
@@ -94,14 +93,14 @@ struct placing_info {
 static bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
 
 
-void game_state::place_sides_in_preferred_locations()
+void game_state::place_sides_in_preferred_locations(const config& level)
 {
 	std::vector<placing_info> placings;
 
 	int num_pos = board_.map().num_valid_starting_positions();
 
 	int side_num = 1;
-	BOOST_FOREACH(const config &side, level_.child_range("side"))
+	BOOST_FOREACH(const config &side, level.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
 			const map_location& pos = board_.map().starting_position(p);
@@ -131,28 +130,28 @@ void game_state::place_sides_in_preferred_locations()
 
 static void no_op() {}
 
-void game_state::init(const int ticks, play_controller & pc)
+void game_state::init(const int ticks, play_controller & pc, const config& level)
 {
 	int ticks1 = SDL_GetTicks();
-	if (level_["modify_placing"].to_bool()) {
+	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
-		place_sides_in_preferred_locations();
+		place_sides_in_preferred_locations(level);
 	}
 
 	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - ticks) << std::endl;
-	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
+	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks) << std::endl;
 	loadscreen::start_stage("init teams");
 
-	board_.teams_.resize(level_.child_count("side"));
+	board_.teams_.resize(level.child_count("side"));
 
 	std::vector<team_builder_ptr> team_builders;
 
 	int team_num = 0;
-	BOOST_FOREACH(const config &side, level_.child_range("side"))
+	BOOST_FOREACH(const config &side, level.child_range("side"))
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
@@ -161,7 +160,7 @@ void game_state::init(const int ticks, play_controller & pc)
 			}
 		}
 		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams_, level_, *board_.map_);
+			board_.teams_, level, *board_.map_);
 		++team_num;
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -187,13 +186,13 @@ void game_state::init(const int ticks, play_controller & pc)
 	
 	std::cerr << "Initilizing teams took " << SDL_GetTicks() - ticks1 << " ticks.\n";
 
-	pathfind_manager_.reset(new pathfind::manager(level_));
+	pathfind_manager_.reset(new pathfind::manager(level));
 
 	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));
 
 	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
 
-	events_manager_.reset(new game_events::manager(level_, game_events_resources_));
+	events_manager_.reset(new game_events::manager(level, game_events_resources_));
 	
 	std::cerr << "Initilizing total took " << SDL_GetTicks() - ticks1 << " ticks.\n";
 
