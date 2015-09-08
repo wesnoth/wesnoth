@@ -977,29 +977,36 @@ namespace {
 		if (update_display_)
 		{
 			std::ostringstream float_text;
+			std::vector<std::string> extra_hit_sounds;
 			if (hits)
 			{
 				const unit &defender_unit = defender.get_unit();
 				if (attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
 					float_text << (defender_unit.gender() == unit_race::FEMALE ?
 						_("female^poisoned") : _("poisoned")) << '\n';
+
+					extra_hit_sounds.push_back(game_config::sounds::status::poisoned);
 				}
 
 				if (attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
 					float_text << (defender_unit.gender() == unit_race::FEMALE ?
 						_("female^slowed") : _("slowed")) << '\n';
+
+					extra_hit_sounds.push_back(game_config::sounds::status::slowed);
 				}
 
 				if (attacker_stats->petrifies) {
 					float_text << (defender_unit.gender() == unit_race::FEMALE ?
 						_("female^petrified") : _("petrified")) << '\n';
+
+					extra_hit_sounds.push_back(game_config::sounds::status::petrified);
 				}
 			}
 
 			unit_display::unit_attack(game_display::get_singleton(), *resources::gameboard,
 				attacker.loc_, defender.loc_, damage,
 				*attacker_stats->weapon, defender_stats->weapon,
-				abs_n, float_text.str(), drains_damage, "");
+				abs_n, float_text.str(), drains_damage, "", &extra_hit_sounds);
 		}
 
 		bool dies = defender.get_unit().take_hit(damage);
