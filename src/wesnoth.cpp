@@ -954,6 +954,7 @@ int main(int argc, char** argv)
 	terminate_handler.sa_flags = 0;
 	sigemptyset(&terminate_handler.sa_mask);
 	sigaction(SIGTERM, &terminate_handler, NULL);
+	sigaction(SIGINT, &terminate_handler, NULL);
 #endif
 
 	try {
