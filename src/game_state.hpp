@@ -52,6 +52,8 @@ public:
 	boost::scoped_ptr<reports> reports_;
 	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
+	int player_number_;
+
 	bool init_side_done_;
 	bool& init_side_done() { return init_side_done_; }
 

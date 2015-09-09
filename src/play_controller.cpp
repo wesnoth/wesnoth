@@ -159,7 +159,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
 	, replay_(new replay(state_of_game.get_replay()))
 	, loading_game_(!level["playing_team"].empty())
-	, player_number_(level["playing_team"].to_int() + 1)
 	, skip_replay_(skip_replay)
 	, linger_(false)
 	, init_side_done_now_(false)
@@ -358,16 +357,16 @@ void play_controller::init_gui()
 
 void play_controller::init_side_begin()
 {
-	mouse_handler_.set_side(player_number_);
+	mouse_handler_.set_side(current_side());
 
 	// If we are observers we move to watch next team if it is allowed
 	if ((is_observer() && !current_team().get_disallow_observers())
 		|| (current_team().is_local_human() && !this->is_replay())) 
 	{
-		update_gui_to_player(player_number_ - 1);
+		update_gui_to_player(current_side() - 1);
 	}
 
-	gui_->set_playing_team(size_t(player_number_ - 1));
+	gui_->set_playing_team(size_t(current_side() - 1));
 
 	gamestate().gamedata_.last_selected = map_location::null_location();
 }
@@ -403,9 +402,9 @@ void play_controller::do_init_side()
 	init_side_done_now_ = true;
 
 	const std::string turn_num = str_cast(turn());
-	const std::string side_num = str_cast(player_number_);
+	const std::string side_num = str_cast(current_side());
 
-	gamestate().gamedata_.get_variable("side_number") = player_number_;
+	gamestate().gamedata_.get_variable("side_number") = current_side();
 
 	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
 	if(!gamestate().tod_manager_.has_turn_event_fired())
@@ -425,23 +424,23 @@ void play_controller::do_init_side()
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
 	if (turn() > 1) {
-		gamestate().board_.new_turn(player_number_);
+		gamestate().board_.new_turn(current_side());
 		current_team().new_turn();
 
 		// If the expense is less than the number of villages owned
 		// times the village support capacity,
 		// then we don't have to pay anything at all
-		int expense = gamestate().board_.side_upkeep(player_number_) -
+		int expense = gamestate().board_.side_upkeep(current_side()) -
 			current_team().support();
 		if(expense > 0) {
 			current_team().spend_gold(expense);
 		}
 
-		calculate_healing(player_number_, !is_skipping_replay());
+		calculate_healing(current_side(), !is_skipping_replay());
 	}
 
 	// Prepare the undo stack.
-	undo_stack_->new_side_turn(player_number_);
+	undo_stack_->new_side_turn(current_side());
 
 	pump().fire("turn refresh");
 	pump().fire("side " + side_num + " turn refresh");
@@ -449,7 +448,7 @@ void play_controller::do_init_side()
 	pump().fire("side " + side_num + " turn " + turn_num + " refresh");
 
 	// Make sure vision is accurate.
-	actions::clear_shroud(player_number_, true);
+	actions::clear_shroud(current_side(), true);
 	init_side_end();
 	check_victory();
 	sync.do_final_checkup();
@@ -458,7 +457,7 @@ void play_controller::init_side_end()
 {
 	const time_of_day &tod = gamestate().tod_manager_.get_time_of_day();
 
-	if (player_number_ == 1 || !init_side_done_now_)
+	if (current_side() == 1 || !init_side_done_now_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!is_skipping_replay()){
@@ -466,7 +465,7 @@ void play_controller::init_side_end()
 	}
 
 	if (!is_skipping_replay() && current_team().get_scroll_to_leader()){
-		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(current_side(), game_display::ONSCREEN,false);
 	}
 	whiteboard_manager_->on_init_side();
 }
@@ -496,10 +495,6 @@ config play_controller::to_config() const
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
 	
-	if(resources::gamedata->phase() == game_data::PLAY) {
-		cfg["playing_team"] = player_number_ - 1;
-	}
-
 	if(gui_.get() != NULL) {
 		gui_->labels().write(cfg);
 		sound::write_music_play_list(cfg);
@@ -511,25 +506,25 @@ config play_controller::to_config() const
 void play_controller::finish_side_turn()
 {
 
-	whiteboard_manager_->on_finish_side_turn(player_number_);
+	whiteboard_manager_->on_finish_side_turn(current_side());
 
 	{ //Block for set_scontext_synced
 		set_scontext_synced sync(1);
 		// Ending the turn commits all moves.
 		undo_stack_->clear();
-		gamestate().board_.end_turn(player_number_);
+		gamestate().board_.end_turn(current_side());
 		const std::string turn_num = str_cast(turn());
-		const std::string side_num = str_cast(player_number_);
+		const std::string side_num = str_cast(current_side());
 
 		// Clear shroud, in case units had been slowed for the turn.
-		actions::clear_shroud(player_number_);
+		actions::clear_shroud(current_side());
 
 		pump().fire("side turn end");
 		pump().fire("side "+ side_num + " turn end");
 		pump().fire("side turn " + turn_num + " end");
 		pump().fire("side " + side_num + " turn " + turn_num + " end");
 		// This is where we refog, after all of a side's events are done.
-		actions::recalculate_fog(player_number_);
+		actions::recalculate_fog(current_side());
 		check_victory();	
 		sync.do_final_checkup();
 	}
@@ -572,7 +567,7 @@ void play_controller::enter_textbox()
 	}
 
 	const std::string str = menu_handler_.get_textbox().box()->text();
-	const unsigned int team_num = player_number_;
+	const unsigned int team_num = current_side();
 	events::mouse_handler& mousehandler = mouse_handler_;
 
 	switch(menu_handler_.get_textbox().mode()) {
@@ -648,14 +643,14 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
-	assert(player_number_ > 0 && player_number_ <= int(gamestate().board_.teams().size()));
-	return gamestate().board_.teams_[player_number_-1];
+	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
+	return gamestate().board_.teams_[current_side() - 1];
 }
 
 const team& play_controller::current_team() const
 {
-	assert(player_number_ > 0 && player_number_ <= int(gamestate().board_.teams().size()));
-	return gamestate().board_.teams()[player_number_-1];
+	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
+	return gamestate().board_.teams()[current_side() - 1];
 }
 
 /// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
@@ -686,12 +681,12 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 
 int play_controller::find_last_visible_team() const
 {
-	assert(player_number_ <= int(gamestate().board_.teams().size()));
+	assert(current_side() <= int(gamestate().board_.teams().size()));
 	const int num_teams = gamestate().board_.teams().size();
 	const bool is_observer = this->is_observer();
 
 	for(int i = 0; i < num_teams; i++) {
-		const int team_num = modulo(player_number_ - i, num_teams, 1);
+		const int team_num = modulo(current_side() - i, num_teams, 1);
 		if(is_team_visible(team_num, is_observer)) {
 			return team_num;
 		}
@@ -755,7 +750,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 
 			if(u.valid()) {
 				// if it's not the unit's turn, we reset its moves
-				unit_movement_resetter move_reset(*u, u->side() != player_number_);
+				unit_movement_resetter move_reset(*u, u->side() != current_side());
 
 				mouse_handler_.set_current_paths(pathfind::paths(*u, false,
 				                       true, gamestate().board_.teams_[gui_->viewing_team()],
@@ -1107,7 +1102,7 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate().board_.teams()[player_number_ - 1].save_id());
+		statistics::reset_turn_stats(gamestate().board_.teams()[current_side() - 1].save_id());
 
 		play_side_impl();
 
@@ -1135,7 +1130,7 @@ void play_controller::play_turn()
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
-	for (; player_number_ <= int(gamestate().board_.teams().size()); ++player_number_)
+	for (; gamestate_->player_number_ <= int(gamestate().board_.teams().size()); ++gamestate_->player_number_)
 	{
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) {
@@ -1147,7 +1142,7 @@ void play_controller::play_turn()
 			init_side_end();
 		}
 
-		ai_testing::log_turn_start(player_number_);
+		ai_testing::log_turn_start(current_side());
 		play_side();
 		if(is_regular_game_end()) {
 			return;
@@ -1157,14 +1152,14 @@ void play_controller::play_turn()
 			return;
 		}
 		if(non_interactive()) {
-			LOG_AIT << " Player " << player_number_ << ": " <<
+			LOG_AIT << " Player " << current_side() << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
-			ai_testing::log_turn_end(player_number_);
+			ai_testing::log_turn_end(current_side());
 		}
 	}
 	//If the loop exits due to the last team having been processed,
-	player_number_ = gamestate().board_.teams().size();
+	gamestate_->player_number_ = gamestate().board_.teams().size();
 
 	finish_turn();
 

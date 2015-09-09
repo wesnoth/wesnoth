@@ -52,6 +52,7 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 	reports_(new reports()),
 	lua_kernel_(),
 	events_manager_(),
+	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
@@ -221,6 +222,9 @@ void game_state::set_game_display(game_display * gd)
 void game_state::write(config& cfg) const
 {
 	cfg["init_side_done"] = init_side_done_;
+	if(gamedata_.phase() == game_data::PLAY) {
+		cfg["playing_team"] = player_number_ - 1;
+	}
 
 	//Call the lua save_game functions
 	lua_kernel_->save_game(cfg);

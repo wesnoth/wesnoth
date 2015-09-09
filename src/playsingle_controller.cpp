@@ -228,7 +228,7 @@ void playsingle_controller::play_scenario_main_loop()
 		if (is_regular_game_end()) {
 			return;
 		}
-		player_number_ = 1;
+		gamestate_->player_number_ = 1;
 	} //end for loop
 }
 
@@ -387,7 +387,7 @@ void playsingle_controller::play_side_impl()
 		LOG_NG << "is human...\n";
 		// If a side is dead end the turn, but play at least side=1's
 		// turn in case all sides are dead
-		if (gamestate().board_.side_units(player_number_) == 0 && !(gamestate().board_.units().size() == 0 && player_number_ == 1)) {
+		if (gamestate().board_.side_units(current_side()) == 0 && !(gamestate().board_.units().size() == 0 && current_side() == 1)) {
 			end_turn_ = END_TURN_REQUIRED;
 		}
 
@@ -444,7 +444,7 @@ void playsingle_controller::show_turn_dialog(){
 		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
-		symbols["name"] = gamestate().board_.teams()[player_number_ - 1].current_player();
+		symbols["name"] = gamestate().board_.teams()[current_side() - 1].current_player();
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_transient_message(gui_->video(), "", message);
 	}
@@ -458,7 +458,7 @@ void playsingle_controller::execute_gotos()
 	}
 	try
 	{
-		menu_handler_.execute_gotos(mouse_handler_, player_number_);
+		menu_handler_.execute_gotos(mouse_handler_, current_side());
 	}
 	catch (const return_to_play_side_exception&)
 	{
@@ -560,7 +560,7 @@ void playsingle_controller::play_ai_turn()
 	turn_data_.send_data();
 	try {
 		try {
-			ai::manager::play_turn(player_number_);
+			ai::manager::play_turn(current_side());
 		}
 		catch (return_to_play_side_exception&) {
 		}
@@ -616,7 +616,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 void playsingle_controller::end_turn(){
 	if (linger_)
 		end_turn_ = END_TURN_REQUIRED;
-	else if (!is_browsing() && menu_handler_.end_turn(player_number_)){
+	else if (!is_browsing() && menu_handler_.end_turn(current_side())){
 		end_turn_ = END_TURN_REQUIRED;
 	}
 }

@@ -169,7 +169,7 @@ public:
 	size_t turn() const {return gamestate().tod_manager_.turn();}
 
 	/** Returns the number of the side whose turn it is. Numbering starts at one. */
-	int current_side() const { return player_number_; }
+	int current_side() const { return gamestate_->player_number_; }
 
 	config to_config() const;
 
@@ -293,7 +293,6 @@ protected:
 	/// if a team is specified whose turn it is, it means we're loading a game instead of starting a fresh one.
 	bool loading_game_;
 
-	int player_number_;
 	bool skip_replay_;
 	bool linger_;
 	/// whether we did init side in this session ( false = we did init side before we reloaded the game).

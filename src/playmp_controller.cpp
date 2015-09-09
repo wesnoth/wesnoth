@@ -324,7 +324,7 @@ void playmp_controller::after_human_turn(){
 
 		current_team().set_action_bonus_count(0);
 		current_team().set_countdown_time(new_time);
-		resources::recorder->add_countdown_update(new_time, player_number_);
+		resources::recorder->add_countdown_update(new_time, current_side());
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
 

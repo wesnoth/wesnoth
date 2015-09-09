@@ -142,7 +142,7 @@ void replay_controller::main_loop(bool is_unit_test)
 				if (is_regular_game_end()) {
 					return;
 				}
-				player_number_ = 1;
+				gamestate_->player_number_ = 1;
 			}
 			while(true) {
 				//lingering
@@ -201,7 +201,7 @@ void replay_controller::init_gui()
 	play_controller::init_gui();
 
 	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate().first_human_team_ : 0, vision_ == SHOW_ALL);
-	gui_->scroll_to_leader(player_number_, display::WARP);
+	gui_->scroll_to_leader(current_side(), display::WARP);
 	update_locker lock_display((*gui_).video(),false);
 	BOOST_FOREACH(const team & t, gamestate().board_.teams()) {
 		t.reset_objectives_changed();
@@ -359,7 +359,7 @@ void replay_controller::reset_replay_impl()
 	DBG_REPLAY << "replay_controller::reset_replay\n";
 
 	gui_->get_chat_manager().clear_chat_messages();
-	player_number_ = level_["playing_team"].to_int() + 1;
+	gamestate_->player_number_ = level_["playing_team"].to_int() + 1;
 	gamestate_->init_side_done() = level_["init_side_done"].to_bool(false);
 	skip_replay_ = false;
 	gamestate().tod_manager_= tod_manager_start_;
@@ -417,7 +417,7 @@ void replay_controller::replay_next_turn()
 
 void replay_controller::replay_next_side()
 {
-	stop_condition_.reset(new replay_play_side(gamestate().tod_manager_.turn(), player_number_));
+	stop_condition_.reset(new replay_play_side(gamestate().tod_manager_.turn(), current_side()));
 }
 
 void replay_controller::replay_next_move()
@@ -479,7 +479,7 @@ void replay_controller::play_replay()
 
 void replay_controller::update_teams()
 {
-	int next_team = player_number_;
+	int next_team = current_side();
 	if(static_cast<size_t>(next_team) > gamestate().board_.teams().size()) {
 		next_team = 1;
 	}
@@ -522,7 +522,7 @@ bool replay_controller::recorder_at_end() {
 void replay_controller::play_side_impl()
 {
 	update_teams();
-	stop_condition_->new_side_turn(player_number_, gamestate().tod_manager_.turn());
+	stop_condition_->new_side_turn(current_side(), gamestate().tod_manager_.turn());
 	while(true)
 	{
 		if(!stop_condition_->should_stop())
