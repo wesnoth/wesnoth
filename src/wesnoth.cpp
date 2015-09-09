@@ -883,6 +883,7 @@ static void wesnoth_terminate_handler(int) {
 #endif
 
 #if defined(__native_client__) || (defined(__APPLE__) && SDL_VERSION_ATLEAST(2, 0, 0))
+extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
 int main(int argc, char** argv)

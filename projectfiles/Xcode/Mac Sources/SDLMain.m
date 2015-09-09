@@ -79,7 +79,7 @@ static char  **gArgv;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	status = wesnoth_main (gArgc, gArgv);
 #else
-	status = wesnoth_main (gArgc, gArgv);
+	status = SDL_main (gArgc, gArgv);
 #endif
 
 	/* We're done, thank you for playing */
