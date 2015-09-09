@@ -57,6 +57,7 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	start_event_fired_(!level["playing_team"].empty()),
+	server_request_number_(level["server_request_number"].to_int()),
 	first_human_team_(-1)
 {
 	init(pc.ticks(), pc, level);
@@ -246,7 +247,7 @@ void game_state::write(config& cfg) const
 	if(gamedata_.phase() == game_data::PLAY) {
 		cfg["playing_team"] = player_number_ - 1;
 	}
-
+	cfg["server_request_number"] = server_request_number_;
 	//Call the lua save_game functions
 	lua_kernel_->save_game(cfg);
 

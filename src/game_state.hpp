@@ -56,6 +56,8 @@ public:
 
 	bool init_side_done_;
 	bool start_event_fired_;
+	// used to sync with the mpserver
+	int server_request_number_;
 	bool& init_side_done() { return init_side_done_; }
 
 

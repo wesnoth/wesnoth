@@ -185,8 +185,8 @@ public:
 	boost::shared_ptr<wb::manager> get_whiteboard();
 	const mp_game_settings& get_mp_settings();
 	const game_classification & get_classification();
-	int get_server_request_number() const { return server_request_number_; }
-	void increase_server_request_number() { ++server_request_number_; }
+	int get_server_request_number() const { return gamestate().server_request_number_; }
+	void increase_server_request_number() { ++gamestate().server_request_number_; }
 
 	game_events::t_pump & pump();
 
@@ -320,8 +320,6 @@ private:
 	std::vector<std::string> defeat_music_;
 
 	hotkey::scope_changer scope_;
-	// used to sync with the mpserver, not persistent in savefiles.
-	int server_request_number_;
 protected:
 	bool player_type_changed_;
 	
