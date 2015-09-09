@@ -342,7 +342,6 @@ void play_controller::init_side_begin(bool is_replay)
 
 	gui_->set_playing_team(size_t(player_number_ - 1));
 
-	gamestate_.gamedata_.get_variable("side_number") = player_number_;
 	gamestate_.gamedata_.last_selected = map_location::null_location();
 }
 
@@ -378,6 +377,8 @@ void play_controller::do_init_side()
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
+
+	gamestate_.gamedata_.get_variable("side_number") = player_number_;
 
 	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
 	if(!gamestate().tod_manager_.has_turn_event_fired())
