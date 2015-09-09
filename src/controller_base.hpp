@@ -62,6 +62,7 @@ public:
 
 	void play_slice(bool is_delay_enabled = true);
 
+	static const config &get_theme(const config& game_config, std::string theme_name);
 protected:
 	virtual bool is_browsing() const
 	{ return false; }
@@ -134,7 +135,6 @@ protected:
 
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
-	static const config &get_theme(const config& game_config, std::string theme_name);
 	const config& game_config_;
 	CKey key_;
 	bool scrolling_;

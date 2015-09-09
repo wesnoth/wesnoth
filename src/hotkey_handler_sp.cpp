@@ -273,8 +273,40 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			return false;
 		}
 
+		case hotkey::HOTKEY_REPLAY_STOP:
+		case hotkey::HOTKEY_REPLAY_PLAY:
+		case hotkey::HOTKEY_REPLAY_NEXT_TURN:
+		case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
+		case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
+			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd, index);
 		default: return play_controller::hotkey_handler::can_execute_command(cmd, index);
 	}
 	return res;
+}
+#include "network.hpp"
+#include "save_index.hpp"
+#include "gui/dialogs/message.hpp"
+
+void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
+{
+	if(network::nconnections() > 0)
+	{
+		config savegame;
+		std::string error_log;
+		savegame::read_save_file(filename, savegame, &error_log);
+
+		if(!error_log.empty() || savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
+			gui2::show_error_message(play_controller_.get_display().video(),
+				_("The file you have tried to load is corrupt: '") +
+				error_log);
+			return;
+		}
+		boost::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
+		throw reset_gamestate_exception(res);
+	}
+	else
+	{
+		play_controller::hotkey_handler::load_autosave(filename);
+	}
 }
 

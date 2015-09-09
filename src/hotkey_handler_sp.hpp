@@ -71,6 +71,24 @@ public:
 	virtual void whiteboard_bump_down_action();
 	virtual void whiteboard_suppose_dead();
 
+	//replay
+	mp_replay_controller& get_replay_controller()
+	{ 
+		assert(playsingle_controller_.get_replay_controller()); 
+		return *playsingle_controller_.get_replay_controller();
+	}
+	virtual void stop_replay() OVERRIDE
+	{ return get_replay_controller().stop_replay(); }
+	virtual void play_replay() OVERRIDE
+	{ return get_replay_controller().play_replay(); }
+	virtual void replay_next_turn() OVERRIDE
+	{ return get_replay_controller().replay_next_turn(); }
+	virtual void replay_next_side() OVERRIDE
+	{ return get_replay_controller().replay_next_side(); }
+	virtual void replay_next_move() OVERRIDE
+	{ return get_replay_controller().replay_next_move(); }
+
+	virtual void load_autosave(const std::string& filename);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 };
 

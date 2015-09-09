@@ -577,7 +577,7 @@ void manager::on_mouseover_change(const map_location& hex)
 	{
 		if (!highlighter_)
 		{
-			highlighter_.reset(new highlighter(*resources::units, viewer_actions()));
+			highlighter_.reset(new highlighter(viewer_actions()));
 		}
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();

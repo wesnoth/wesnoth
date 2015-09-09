@@ -19,7 +19,6 @@
 #include "controller_base.hpp"
 #include "floating_label.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_state.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "menu_events.hpp"
@@ -27,6 +26,7 @@
 #include "persist_manager.hpp"
 #include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
+#include "game_state.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
@@ -107,7 +107,7 @@ public:
 	void save_replay_auto(const std::string & filename);
 	void save_map();
 
-	void init_side_begin(bool is_replay);
+	void init_side_begin();
 	void maybe_do_init_side();
 	void do_init_side();
 	void init_side_end();
@@ -135,26 +135,29 @@ public:
 		return *end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
-		return gamestate_.board_.teams_;
+		return gamestate().board_.teams_;
 	}
 
 	const unit_map & get_units_const() const {
-		return gamestate_.board_.units();
+		return gamestate().board_.units();
 	}
 
 	const gamemap& get_map_const() const{
-		return gamestate_.board_.map();
+		return gamestate().board_.map();
 	}
 	const tod_manager& get_tod_manager_const() const{
-			return gamestate_.tod_manager_;
+			return gamestate().tod_manager_;
 		}
 
 	bool is_observer() const {
-		return gamestate_.board_.is_observer();
+		return gamestate().board_.is_observer();
 	}
 
 	game_state & gamestate() {
-		return gamestate_;
+		return *gamestate_;
+	}
+	const game_state & gamestate() const {
+		return *gamestate_;
 	}
 
 	/**
@@ -163,10 +166,10 @@ public:
 	 */
 	void check_victory();
 
-	size_t turn() const {return gamestate_.tod_manager_.turn();}
+	size_t turn() const {return gamestate().tod_manager_.turn();}
 
 	/** Returns the number of the side whose turn it is. Numbering starts at one. */
-	int current_side() const { return player_number_; }
+	int current_side() const { return gamestate_->player_number_; }
 
 	config to_config() const;
 
@@ -204,20 +207,31 @@ public:
 	{ return level_["name"].t_str(); }
 	bool get_disallow_recall()
 	{ return level_["disallow_recall"].to_bool(); }
+	std::string theme()
+	{ return level_["theme"].str(); }
 	void update_savegame_snapshot() const;
 	virtual bool should_return_to_play_side()
 	{ return is_regular_game_end(); }
 	void maybe_throw_return_to_play_side()
 	{ if(should_return_to_play_side() && !linger_ ) { throw return_to_play_side_exception(); } }
-
+	virtual void play_side_impl() {}
+	void play_side();
 	team& current_team();
 	const team& current_team() const;
 
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
-protected:
-	void play_slice_catch();
+	int ticks() const { return ticks_; }
 	game_display& get_display();
+protected:
+	struct scoped_savegame_snapshot
+	{
+		scoped_savegame_snapshot(const play_controller& controller);
+		~scoped_savegame_snapshot();
+		const play_controller& controller_;
+	};
+	friend struct scoped_savegame_snapshot;
+	void play_slice_catch();
 	bool have_keyboard_focus();
 	void process_focus_keydown_event(const SDL_Event& event);
 	void process_keydown_event(const SDL_Event& event);
@@ -225,10 +239,10 @@ protected:
 
 	void init_managers();
 	///preload events cannot be synced
-	void fire_preload();
+	void fire_preload(const config& level);
 	void fire_prestart();
 	void fire_start();
-	void start_game();
+	void start_game(const config& level);
 	virtual void init_gui();
 	void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
@@ -241,10 +255,13 @@ protected:
 	bool is_team_visible(int team_num, bool observer) const;
 	/// returns 0 if no such team was found.
 	int find_last_visible_team() const;
-
+private:
+	const int ticks_;
+protected:
 	//gamestate
-	game_state gamestate_;
-	const config & level_;
+	const tdata_cache & tdata_;
+	boost::scoped_ptr<game_state> gamestate_;
+	config level_;
 	saved_game & saved_game_;
 
 	//managers
@@ -276,16 +293,10 @@ protected:
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
 	boost::scoped_ptr<replay> replay_;
 
-	/// if a team is specified whose turn it is, it means we're loading a game instead of starting a fresh one.
-	bool loading_game_;
-
-	int player_number_;
 	bool skip_replay_;
 	bool linger_;
-	bool init_side_done_;
 	/// whether we did init side in this session ( false = we did init side before we reloaded the game).
 	bool init_side_done_now_;
-	const int ticks_;
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
 	void set_victory_music_list(const std::string& list);
@@ -296,9 +307,10 @@ protected:
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
 
+	void reset_gamestate(const config& level, int replay_pos);
 private:
 
-	void init(CVideo &video);
+	void init(CVideo &video, const config& level);
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
@@ -310,6 +322,13 @@ private:
 	hotkey::scope_changer scope_;
 	// used to sync with the mpserver, not persistent in savefiles.
 	int server_request_number_;
+protected:
+	bool player_type_changed_;
+	
+	virtual void sync_end_turn() {};
+	virtual void check_time_over();
+	virtual void update_viewing_player() = 0;
+	void play_turn();
 };
 
 

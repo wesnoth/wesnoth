@@ -52,13 +52,20 @@ public:
 	boost::scoped_ptr<reports> reports_;
 	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
+	int player_number_;
+
+	bool init_side_done_;
+	bool start_event_fired_;
+	bool& init_side_done() { return init_side_done_; }
 
 
 	game_events::wmi_container& get_wml_menu_items();
 	const game_events::wmi_container& get_wml_menu_items() const;
 	int first_human_team_; //needed to initialize the viewpoint during setup
 
-	game_state(const config & level, const tdata_cache & tdata);
+	game_state(const config & level, play_controller &, const tdata_cache & tdata);
+	/// The third parameter is an optimisation.
+	game_state(const config & level, play_controller &, game_board& board);
 
 	~game_state();
 

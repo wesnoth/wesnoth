@@ -46,7 +46,7 @@ protected:
 	void start_network();
 	void stop_network();
 
-	virtual void play_side();
+	virtual void play_side_impl();
 	virtual void play_human_turn();
 	virtual void play_linger_turn();
 	virtual void after_human_turn();

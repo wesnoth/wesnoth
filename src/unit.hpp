@@ -98,7 +98,8 @@ public:
 	explicit unit(
 			  const config& cfg
 			, bool use_traits = false
-			, const vconfig* vcfg = NULL);
+			, const vconfig* vcfg = NULL
+			, n_unit::id_manager* id_manager = NULL);
 
 	/**
 	  * Initializes a unit from a unit type
@@ -406,7 +407,7 @@ private:
 	/** register a trait's name and its description for UI's use*/
 	void add_trait_description(const config& trait, const t_string& description);
 
-	void set_underlying_id();
+	void set_underlying_id(n_unit::id_manager& id_manager);
 
 	config cfg_;
 private:
