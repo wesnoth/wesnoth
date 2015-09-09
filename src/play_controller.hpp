@@ -19,7 +19,6 @@
 #include "controller_base.hpp"
 #include "floating_label.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_state.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "menu_events.hpp"
@@ -27,6 +26,7 @@
 #include "persist_manager.hpp"
 #include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
+#include "game_state.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
@@ -219,6 +219,7 @@ public:
 
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
+	int ticks() const { return ticks_; }
 protected:
 	struct scoped_savegame_snapshot
 	{
@@ -252,8 +253,11 @@ protected:
 	bool is_team_visible(int team_num, bool observer) const;
 	/// returns 0 if no such team was found.
 	int find_last_visible_team() const;
-
+private:
+	const int ticks_;
+protected:
 	//gamestate
+	const tdata_cache & tdata_;
 	boost::scoped_ptr<game_state> gamestate_;
 	saved_game & saved_game_;
 
@@ -295,7 +299,6 @@ protected:
 	bool init_side_done_;
 	/// whether we did init side in this session ( false = we did init side before we reloaded the game).
 	bool init_side_done_now_;
-	const int ticks_;
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
 	void set_victory_music_list(const std::string& list);

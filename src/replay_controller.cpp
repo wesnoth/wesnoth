@@ -197,7 +197,7 @@ void replay_controller::init()
 
 void replay_controller::init_gui()
 {
-	DBG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
+	DBG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks()) << "\n";
 	play_controller::init_gui();
 
 	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate().first_human_team_ : 0, vision_ == SHOW_ALL);
@@ -211,12 +211,12 @@ void replay_controller::init_gui()
 }
 
 void replay_controller::init_replay_display(){
-	DBG_REPLAY << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+	DBG_REPLAY << "initializing replay-display... " << (SDL_GetTicks() - ticks()) << "\n";
 
 	rebuild_replay_theme();
 	gui_->get_theme().theme_reset_event().attach_handler(this);
 	gui_->complete_redraw_event().attach_handler(this);
-	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks()) << "\n";
 }
 
 void replay_controller::rebuild_replay_theme()

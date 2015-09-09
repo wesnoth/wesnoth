@@ -739,6 +739,7 @@ set(wesnoth-main_SRC
 	actions/undo_recall_action.cpp
 	actions/undo_recruit_action.cpp
 	actions/undo_update_shroud_action.cpp
+	actions/unit_creator.cpp
 	actions/vision.cpp
 	addon/client.cpp
 	addon/info.cpp

@@ -97,6 +97,7 @@ public:
 	virtual const std::vector<team> & teams() const { return teams_; }
 	virtual const gamemap & map() const { return *map_; }
 	virtual const unit_map & units() const { return units_; }
+	unit_map & units() { return units_; }
 	virtual const std::vector<std::string> & hidden_label_categories() const { return labels_; }
 
 	// Copy and swap idiom, because we have a scoped pointer.

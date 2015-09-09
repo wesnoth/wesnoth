@@ -33,6 +33,7 @@
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
+#include "game_state.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey_handler.hpp"
 #include "map_label.hpp"
@@ -137,7 +138,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	: controller_base(game_config, video)
 	, observer()
 	, savegame_config()
-	, gamestate_(new game_state(level, tdata))
+	, tdata_(tdata)
+	, gamestate_()
 	, level_()
 	, saved_game_(state_of_game)
 	, prefs_disp_manager_()
@@ -173,16 +175,11 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, player_type_changed_(false)
 {
 	copy_persistent(level, level_);
+	
 	resources::controller = this;
-	resources::gameboard = &gamestate().board_;
-	resources::gamedata = &gamestate().gamedata_;
 	resources::persist = &persist_;
-	resources::teams = &gamestate().board_.teams_;
-	resources::tod_manager = &gamestate().tod_manager_;
 	resources::undo_stack = undo_stack_.get();
 	resources::recorder = replay_.get();
-	resources::units = &gamestate().board_.units_;
-	resources::filter_con = &gamestate();
 
 	resources::classification = &saved_game_.classification();
 	resources::mp_settings = &saved_game_.mp_settings();
@@ -204,7 +201,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 	try {
-		init(video, level_);
+		init(video, level);
 	} catch (...) {
 		clear_resources();
 		throw;
@@ -229,23 +226,31 @@ void play_controller::init(CVideo& video, const config& level)
 
 	loadscreen::start_stage("load level");
 
-	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate().init(ticks_, *this, level);
+	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
+	gamestate_.reset(new game_state(level, *this, tdata_));
+	
+	resources::gameboard = &gamestate().board_;
+	resources::gamedata = &gamestate().gamedata_;
+	resources::teams = &gamestate().board_.teams_;
+	resources::tod_manager = &gamestate().tod_manager_;
+	resources::units = &gamestate().board_.units_;
+	resources::filter_con = &gamestate();
+
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
-	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
 	whiteboard_manager_.reset(new wb::manager());
 	resources::whiteboard = whiteboard_manager_;
 
-	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks()) << std::endl;
 	loadscreen::start_stage("load units");
 	preferences::encounter_all_content(gamestate().board_);
 
-	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
 	loadscreen::start_stage("init theme");
 	const config &theme_cfg = controller_base::get_theme(game_config_, level["theme"]);
 
-	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 	loadscreen::start_stage("build terrain");
 	gui_.reset(new game_display(gamestate().board_, video, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
 	if (!gui_->video().faked()) {
@@ -260,9 +265,9 @@ void play_controller::init(CVideo& video, const config& level)
 	menu_handler_.set_gui(gui_.get());
 	resources::screen = gui_.get();
 
-	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks()) << std::endl;
 
-	LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks()) << std::endl;
 	//loadscreen::start_stage("build events manager & lua");
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
@@ -301,13 +306,13 @@ void play_controller::init(CVideo& video, const config& level)
 
 void play_controller::init_managers()
 {
-	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
 	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
-	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
 }
 
 void play_controller::fire_preload(const config& level)

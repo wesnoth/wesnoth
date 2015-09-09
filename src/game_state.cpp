@@ -44,7 +44,7 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_state::game_state(const config & level, const tdata_cache & tdata) :
+game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata) :
 	gamedata_(level),
 	board_(tdata, level),
 	tod_manager_(level),
@@ -53,7 +53,9 @@ game_state::game_state(const config & level, const tdata_cache & tdata) :
 	lua_kernel_(),
 	events_manager_(),
 	first_human_team_(-1)
-{}
+{
+	init(pc.ticks(), pc, level);
+}
 
 game_state::~game_state() {}
 
@@ -160,7 +162,7 @@ void game_state::init(const int ticks, play_controller & pc, const config& level
 			}
 		}
 		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams_, level, *board_.map_);
+			board_.teams_, level, board_);
 		++team_num;
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);

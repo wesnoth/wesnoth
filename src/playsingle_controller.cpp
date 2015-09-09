@@ -117,7 +117,7 @@ playsingle_controller::~playsingle_controller()
 }
 
 void playsingle_controller::init_gui(){
-	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks()) << "\n";
 	play_controller::init_gui();
 
 	if(gamestate().first_human_team_ != -1) {
@@ -211,8 +211,9 @@ void playsingle_controller::play_scenario_init(const config& level) {
 	return;
 }
 
-void playsingle_controller::play_scenario_main_loop() {
-	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
+void playsingle_controller::play_scenario_main_loop()
+{
+	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks()) << "\n";
 
 
 	// Avoid autosaving after loading, but still
@@ -259,7 +260,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			ERR_NG << "Skipping this sound source..." << std::endl;
 		}
 	}
-	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks()) << "\n";
 	try {
 		play_scenario_init(level);
 		// clears level config;

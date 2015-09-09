@@ -249,7 +249,7 @@ unit::unit(const unit& o)
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
+unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_manager* id_manager)
 	: ref_count_(0)
 	, cfg_()
 	, loc_(cfg["x"] - 1, cfg["y"] - 1)
@@ -321,7 +321,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 
 	validate_side(side_);
 	underlying_id_ = n_unit::unit_id::create_real(cfg["underlying_id"].to_int());
-	set_underlying_id();
+	set_underlying_id(id_manager ? *id_manager : resources::gameboard->unit_id_manager());
 
 	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
 	if(overlays_.size() == 1 && overlays_.front() == "") {
@@ -639,7 +639,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	if(real_unit) {
 		generate_name();
 	}
-	set_underlying_id();
+	set_underlying_id(resources::gameboard->unit_id_manager());
 
 	// Set these after traits and modifications have set the maximums.
 	movement_ = max_movement_;
@@ -2269,13 +2269,15 @@ bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const s
 	return true;
 }
 
-void unit::set_underlying_id() {
+void unit::set_underlying_id(n_unit::id_manager& id_manager)
+{
 	if(underlying_id_.value == 0) {
+
 		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
-			underlying_id_ = resources::gameboard->unit_id_manager().next_id();
+			underlying_id_ = id_manager.next_id();
 		}
 		else {
-			underlying_id_ = resources::gameboard->unit_id_manager().next_fake_id();
+			underlying_id_ = id_manager.next_fake_id();
 		}
 	}
 	if (id_.empty() /*&& !underlying_id_.is_fake()*/) {
@@ -2302,7 +2304,7 @@ unit& unit::clone(bool is_temporary)
 			// this appears to be a duplicate of a generic unit, so give it a new id
 			WRN_UT << "assigning new id to clone of generic unit " << id_ << std::endl;
 			id_.clear();
-			set_underlying_id();
+			set_underlying_id(resources::gameboard->unit_id_manager());
 		}
 	}
 	return *this;
