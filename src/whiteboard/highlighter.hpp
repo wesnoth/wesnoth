@@ -39,7 +39,7 @@ class highlighter
 {
 
 public:
-	highlighter(unit_map& unit_map, side_actions_ptr side_actions);
+	highlighter(side_actions_ptr side_actions);
 	virtual ~highlighter();
 
 	void set_mouseover_hex(const map_location& hex);
@@ -60,6 +60,7 @@ public:
 	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
 
 private:
+	unit_map& get_unit_map();
 	/** Unhighlight a given action (main or secondary). */
 	class unhighlight_visitor;
 
@@ -75,8 +76,6 @@ private:
 
 	/** Redraw the given move action when needed. */
 	void last_action_redraw(move_ptr);
-
-	unit_map& unit_map_;
 
 	map_location mouseover_hex_;
 	std::set<map_location> exclusive_display_hexes_;
