@@ -381,7 +381,7 @@ void play_controller::place_sides_in_preferred_locations()
 		++side_num;
 	}
 
-	std::sort(placings.begin(),placings.end());
+	std::stable_sort(placings.begin(),placings.end());
 	std::set<int> placed;
 	std::set<map_location> positions_taken;
 
