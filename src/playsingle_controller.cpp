@@ -233,6 +233,14 @@ void playsingle_controller::play_scenario_main_loop()
 			gamestate_->player_number_ = 1;
 		}
 		catch(const reset_gamestate_exception& ex) {
+			/**
+				@TODO: The mp replay feature still doesnt work properly (casues OOS) becasue:
+					1) The undo stack is not reset along with the gamestate
+					2) The server_request_number_ is not reset along with the gamestate (fixed).
+					3) chat and other unsynced actions are inserted in the middle of the replay bringing the replay_pos in unorder.
+					4) untracked changes in side controllers are lost when resetting gamestate
+					5) The game shoudl have a stricter check for whether the loaded game is actually a parent of this game.
+			*/
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
 			play_scenario_init(*ex.level);
 			mp_replay_.reset(new mp_replay_controller(*this));
