@@ -294,7 +294,7 @@ def list_contents():
 
     for i, addon in enumerate(addons):
         if not os.path.isdir(options.addons + "/" + addon): continue
-        mem = "? KB")
+        mem = "? KB"
         try:
             mem = dict([x.split("\t", 1) for x in open("/proc/self/status").read().split("\n") if x])["VmRSS:"]
         except:
