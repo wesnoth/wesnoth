@@ -408,7 +408,7 @@ void play_controller::maybe_do_init_side()
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
-	if (gamestate_->init_side_done() || !current_team().is_local() || gamestate().gamedata_.phase() != game_data::PLAY || is_replay()) {
+	if (gamestate_->init_side_done() || !current_team().is_local() || gamestate().gamedata_.phase() != game_data::PLAY || is_replay() || !replay_->at_end()) {
 		return;
 	}
 

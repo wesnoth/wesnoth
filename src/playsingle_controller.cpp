@@ -82,6 +82,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
 	, skip_next_turn_(false)
+	, mp_replay_()
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 
@@ -224,11 +225,19 @@ void playsingle_controller::play_scenario_main_loop()
 		ERR_NG << "Playing game with 0 teams." << std::endl;
 	}
 	while(true) {
-		play_turn();
-		if (is_regular_game_end()) {
-			return;
+		try {
+			play_turn();
+			if (is_regular_game_end()) {
+				return;
+			}
+			gamestate_->player_number_ = 1;
 		}
-		gamestate_->player_number_ = 1;
+		catch(const reset_gamestate_exception& ex) {
+			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
+			play_scenario_init(*ex.level);
+			mp_replay_.reset(new mp_replay_controller(*this));
+			mp_replay_->play_replay();
+		}
 	} //end for loop
 }
 
@@ -383,7 +392,16 @@ void playsingle_controller::play_side_impl()
 	if (!skip_next_turn_) {
 		end_turn_ = END_TURN_NONE;
 	}
-	if((current_team().is_local_human() && current_team().is_proxy_human())) {
+	if(mp_replay_.get() != NULL) {
+		REPLAY_RETURN res = mp_replay_->play_side_impl();
+		if(res == REPLAY_FOUND_END_TURN) {
+			end_turn_ = END_TURN_SYNCED;
+		}
+		if (replay_->at_end()) {
+			mp_replay_.reset();
+			player_type_changed_ = true;
+		}
+	} else if((current_team().is_local_human() && current_team().is_proxy_human())) {
 		LOG_NG << "is human...\n";
 		// If a side is dead end the turn, but play at least side=1's
 		// turn in case all sides are dead

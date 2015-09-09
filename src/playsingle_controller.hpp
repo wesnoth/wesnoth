@@ -23,7 +23,15 @@
 #include "playturn.hpp"
 #include "replay.hpp"
 #include "saved_game.hpp"
+#include "mp_replay_controller.hpp"
+
 class team;
+
+struct reset_gamestate_exception
+{
+	reset_gamestate_exception(boost::shared_ptr<config> l) : level(l) {}
+	boost::shared_ptr<config> level;
+};
 
 class playsingle_controller : public play_controller
 {
@@ -55,6 +63,8 @@ public:
 	void set_player_type_changed() { player_type_changed_ = true; }
 	virtual bool should_return_to_play_side()
 	{ return player_type_changed_ || end_turn_ != END_TURN_NONE || is_regular_game_end(); }
+	mp_replay_controller * get_replay_controller()
+	{ return mp_replay_.get(); }
 protected:
 	virtual void play_side_impl();
 	void before_human_turn();
@@ -88,6 +98,7 @@ protected:
 	};
 	END_TURN_STATE end_turn_;
 	bool skip_next_turn_;
+	boost::scoped_ptr<mp_replay_controller> mp_replay_;
 	void linger();
 	void sync_end_turn();
 	void update_viewing_player();
