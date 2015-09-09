@@ -359,11 +359,13 @@ void replay_controller::reset_replay_impl()
 	DBG_REPLAY << "replay_controller::reset_replay\n";
 
 	gui_->get_chat_manager().clear_chat_messages();
+	reset_gamestate(level_);
+	resources::recorder->start_replay();
+#if 0
 	gamestate_->player_number_ = level_["playing_team"].to_int() + 1;
 	gamestate_->init_side_done() = level_["init_side_done"].to_bool(false);
 	skip_replay_ = false;
 	gamestate().tod_manager_= tod_manager_start_;
-	resources::recorder->start_replay();
 	gamestate().board_ = gameboard_start_;
 	gui_->change_display_context(&gamestate().board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
 						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
@@ -389,10 +391,10 @@ void replay_controller::reset_replay_impl()
 	gamestate().game_events_resources_->lua_kernel = resources::lua_kernel;
 	gamestate().events_manager_.reset(new game_events::manager(level_, gamestate().game_events_resources_));
 	resources::game_events = gamestate().events_manager_.get();
-
+	*resources::gamedata = game_data(level_);
+#endif
 	gui_->labels().read(level_);
 
-	*resources::gamedata = game_data(level_);
 	statistics::fresh_stats();
 
 	gui_->needs_rebuild(true);

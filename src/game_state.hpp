@@ -63,6 +63,8 @@ public:
 	int first_human_team_; //needed to initialize the viewpoint during setup
 
 	game_state(const config & level, play_controller &, const tdata_cache & tdata);
+	/// The third parameter is an optimisation.
+	game_state(const config & level, play_controller &, const tdata_cache & tdata, game_board& board);
 
 	~game_state();
 

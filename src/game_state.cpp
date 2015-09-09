@@ -44,6 +44,8 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
+static void no_op() {}
+
 game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata) :
 	gamedata_(level),
 	board_(tdata, level),
@@ -58,6 +60,26 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 {
 	init(pc.ticks(), pc, level);
 }
+game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata, game_board& board) :
+	gamedata_(level),
+	board_(board),
+	tod_manager_(level),
+	pathfind_manager_(new pathfind::manager(level)),
+	reports_(new reports()),
+	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
+	events_manager_(),
+	player_number_(level["playing_team"].to_int() + 1),
+	init_side_done_(level["init_side_done"].to_bool(false)),
+	first_human_team_(-1)
+{
+	init(pc.ticks(), pc, level);
+
+	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
+
+	events_manager_.reset(new game_events::manager(level, game_events_resources_));
+
+}
+
 
 game_state::~game_state() {}
 
@@ -132,8 +154,6 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 	}
 }
 
-static void no_op() {}
-
 void game_state::init(const int ticks, play_controller & pc, const config& level)
 {
 	int ticks1 = SDL_GetTicks();
@@ -148,7 +168,7 @@ void game_state::init(const int ticks, play_controller & pc, const config& level
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks) << std::endl;
-	loadscreen::start_stage("init teams");
+	//loadscreen::start_stage("init teams");
 
 	board_.teams_.resize(level.child_count("side"));
 
