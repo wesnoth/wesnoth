@@ -109,6 +109,7 @@ private:
 
 	REPLAY_VISION vision_;
 	boost::scoped_ptr<replay_stop_condition> stop_condition_;
+	const config& level_;
 };
 
 

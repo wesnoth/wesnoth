@@ -66,6 +66,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -83,6 +84,27 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
+
+static void copy_persistent(const config& src, config& dst)
+{
+	typedef boost::container::flat_set<std::string> stringset;
+	static stringset attrs = boost::assign::list_of
+		("theme")("next_scenario")("description")("name")("defeat_music")
+		("victory_music")("victory_when_enemies_defeated")("remove_from_carryover_on_defeat")("disallow_recall")("experience_modifier")("require_scenario")
+		.convert_to_container<stringset>();
+	static stringset tags = boost::assign::list_of
+		("terrain_graphics")
+		.convert_to_container<stringset>();
+	BOOST_FOREACH(const std::string& attr, attrs)
+	{
+		dst[attr] = src[attr];
+	}
+	BOOST_FOREACH(const std::string& tag, tags)
+	{
+		dst.append_children(src, tag);
+	}
+}
+
 
 static void clear_resources()
 {
@@ -116,7 +138,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, observer()
 	, savegame_config()
 	, gamestate_(level, tdata)
-	, level_(level)
+	, level_()
 	, saved_game_(state_of_game)
 	, prefs_disp_manager_()
 	, tooltips_manager_()
@@ -150,6 +172,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, server_request_number_(0)
 	, player_type_changed_(false)
 {
+	copy_persistent(level, level_);
 	resources::controller = this;
 	resources::gameboard = &gamestate_.board_;
 	resources::gamedata = &gamestate_.gamedata_;
@@ -181,7 +204,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 	try {
-		init(video);
+		init(video, level_);
 	} catch (...) {
 		clear_resources();
 		throw;
@@ -194,7 +217,7 @@ play_controller::~play_controller()
 	clear_resources();
 }
 struct throw_end_level { void operator()(const config&) { throw_quit_game_exception(); } };
-void play_controller::init(CVideo& video)
+void play_controller::init(CVideo& video, const config& level)
 {
 	util::scoped_resource<loadscreen::global_loadscreen_manager*, util::delete_item> scoped_loadscreen_manager;
 	loadscreen::global_loadscreen_manager* loadscreen_manager = loadscreen::global_loadscreen_manager::get();
@@ -207,7 +230,7 @@ void play_controller::init(CVideo& video)
 	loadscreen::start_stage("load level");
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate_.init(ticks_, *this, level_);
+	gamestate_.init(ticks_, *this, level);
 	resources::tunnels = gamestate_.pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
@@ -220,11 +243,11 @@ void play_controller::init(CVideo& video)
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("init theme");
-	const config &theme_cfg = controller_base::get_theme(game_config_, level_["theme"]);
+	const config &theme_cfg = controller_base::get_theme(game_config_, level["theme"]);
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, *gamestate_.reports_, gamestate_.tod_manager_, theme_cfg, level_));
+	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, *gamestate_.reports_, gamestate_.tod_manager_, theme_cfg, level));
 	if (!gui_->video().faked()) {
 		if (saved_game_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -287,11 +310,11 @@ void play_controller::init_managers()
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 }
 
-void play_controller::fire_preload()
+void play_controller::fire_preload(const config& level)
 {
 	// Run initialization scripts, even if loading from a snapshot.
 	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
-	gamestate_.lua_kernel_->initialize(level_);
+	gamestate_.lua_kernel_->initialize(level);
 	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
 	pump().fire("preload");
 }
@@ -752,7 +775,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		update_savegame_snapshot();
+		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
@@ -764,7 +787,7 @@ void play_controller::save_game_auto(const std::string & filename) {
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 
-		update_savegame_snapshot();
+		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.save_game_automatic(gui_->video(), false, filename);
 	}
@@ -918,7 +941,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << _("The game is out of sync. It might not make much sense to continue. Do you want to save your game?");
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
-	update_savegame_snapshot();
+	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_);
 	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw quit_game_exception
 }
@@ -933,7 +956,7 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 
 void play_controller::do_autosave()
 {
-	update_savegame_snapshot();
+	scoped_savegame_snapshot snapshot(*this);
 	savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 }
@@ -941,7 +964,7 @@ void play_controller::do_autosave()
 
 void play_controller::do_consolesave(const std::string& filename)
 {
-	update_savegame_snapshot();
+	scoped_savegame_snapshot snapshot(*this);
 	savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 	save.save_game_automatic(gui_->video(), true, filename);
 }
@@ -996,9 +1019,9 @@ void play_controller::play_slice_catch()
 	}
 }
 
-void play_controller::start_game()
+void play_controller::start_game(const config& level)
 {
-	fire_preload();
+	fire_preload(level);
 
 	if(!loading_game_)
 	{
@@ -1172,4 +1195,13 @@ void play_controller::check_time_over(){
 		e.is_victory = false;
 		set_end_level_data(e);
 	}
+}
+play_controller::scoped_savegame_snapshot::scoped_savegame_snapshot(const play_controller& controller)
+	: controller_(controller)
+{
+	controller_.update_savegame_snapshot();
+}
+play_controller::scoped_savegame_snapshot::~scoped_savegame_snapshot()
+{
+	controller_.saved_game_.remove_snapshot();
 }

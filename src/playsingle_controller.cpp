@@ -193,12 +193,12 @@ void playsingle_controller::report_victory(
 	report << "\n" << goldmsg;
 }
 
-void playsingle_controller::play_scenario_init() {
+void playsingle_controller::play_scenario_init(const config& level) {
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
 	}
-	start_game();
+	start_game(level);
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
@@ -232,12 +232,12 @@ void playsingle_controller::play_scenario_main_loop() {
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(
-	const config::const_child_itors &story)
+	const config::const_child_itors &story, const config& level)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
 	// Start music.
-	BOOST_FOREACH(const config &m, level_.child_range("music")) {
+	BOOST_FOREACH(const config &m, level.child_range("music")) {
 		sound::play_music_config(m);
 	}
 	sound::commit_music_changes();
@@ -245,11 +245,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	if(!this->is_skipping_replay()) {
 		show_story(*gui_, get_scenario_name(), story);
 	}
-	gui_->labels().read(level_);
+	gui_->labels().read(level);
 
 	// Read sound sources
 	assert(soundsources_manager_ != NULL);
-	BOOST_FOREACH(const config &s, level_.child_range("sound_source")) {
+	BOOST_FOREACH(const config &s, level.child_range("sound_source")) {
 		try {
 			soundsource::sourcespec spec(s);
 			soundsources_manager_->add(spec);
@@ -259,10 +259,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			ERR_NG << "Skipping this sound source..." << std::endl;
 		}
 	}
-
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
-		play_scenario_init();
+		play_scenario_init(level);
+		// clears level config;
+		this->saved_game_.remove_snapshot();
+
 		if (!is_regular_game_end() && !linger_) {
 			play_scenario_main_loop();
 		}
@@ -353,7 +355,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			disconnect = true;
 		}
 
-		update_savegame_snapshot();
+		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
@@ -424,7 +426,7 @@ void playsingle_controller::before_human_turn()
 	}
 
 	if(init_side_done_now_) {
-		update_savegame_snapshot();
+		scoped_savegame_snapshot snapshot(*this);
 		savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}

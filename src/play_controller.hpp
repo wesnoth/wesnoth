@@ -217,6 +217,13 @@ public:
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
 protected:
+	struct scoped_savegame_snapshot
+	{
+		scoped_savegame_snapshot(const play_controller& controller);
+		~scoped_savegame_snapshot();
+		const play_controller& controller_;
+	};
+	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
 	game_display& get_display();
 	bool have_keyboard_focus();
@@ -226,10 +233,10 @@ protected:
 
 	void init_managers();
 	///preload events cannot be synced
-	void fire_preload();
+	void fire_preload(const config& level);
 	void fire_prestart();
 	void fire_start();
-	void start_game();
+	void start_game(const config& level);
 	virtual void init_gui();
 	void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
@@ -245,7 +252,6 @@ protected:
 
 	//gamestate
 	game_state gamestate_;
-	const config & level_;
 	saved_game & saved_game_;
 
 	//managers
@@ -299,7 +305,7 @@ protected:
 
 private:
 
-	void init(CVideo &video);
+	void init(CVideo &video, const config& level);
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
@@ -308,6 +314,7 @@ private:
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
+	config level_;
 	hotkey::scope_changer scope_;
 	// used to sync with the mpserver, not persistent in savefiles.
 	int server_request_number_;

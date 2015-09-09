@@ -165,6 +165,7 @@ replay_controller::replay_controller(const config& level,
 	, tod_manager_start_(level)
 	, vision_(state_of_game.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER ? CURRENT_TEAM : HUMAN_TEAM)
 	, stop_condition_(new replay_stop_condition())
+	, level_(level)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 
@@ -398,7 +399,7 @@ void replay_controller::reset_replay_impl()
 	gui_->maybe_rebuild();
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
-	start_game();
+	start_game(level_);
 	update_gui();
 
 	reset_replay_ui();
@@ -438,7 +439,7 @@ void replay_controller::process_oos(const std::string& msg) const
 	if (non_interactive()) {
 		throw game::game_error(message.str());
 	} else {
-		update_savegame_snapshot();
+		scoped_savegame_snapshot snapshot(*this);
 		savegame::oos_savegame save(saved_game_, *gui_);
 		save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 	}
