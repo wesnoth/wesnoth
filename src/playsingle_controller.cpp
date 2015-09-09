@@ -468,37 +468,30 @@ void playsingle_controller::play_side()
 			if (end_turn_ == END_TURN_NONE) {
 				play_human_turn();
 			}
-			if(is_regular_game_end()) {
-				return;
-			}
-			if ( !player_type_changed_ ) {
+			if ( !player_type_changed_ && !is_regular_game_end()) {
 				after_human_turn();
 			}
 			LOG_NG << "human finished turn...\n";
 
 		} else if(current_team().is_local_ai() || (current_team().is_local_human() && current_team().is_droid())) {
 			play_ai_turn();
-			if(is_regular_game_end()) {
-				return;
-			}
 		} else if(current_team().is_network()) {
 			play_network_turn();
-			if(is_regular_game_end()) {
-				return;
-			}
 		} else if(current_team().is_local_human() && current_team().is_idle()) {
 			end_turn_enable(false);
 			do_idle_notification();
 			before_human_turn();
 			if (end_turn_ == END_TURN_NONE) {
 				play_idle_loop();
-				if(is_regular_game_end()) {
-					return;
-				}
 			}
 		}
 		else {
-			assert(current_team().is_empty()); // Do nothing.
+			// we should have skipped over empty controllers before so this shouldn't be possible
+			ERR_NG << "Found invalid side controller " << current_team().controller().to_string() << " (" << current_team().proxy_controller().to_string() << ") for side " << current_team().side() << "\n";
+		}
+
+		if(is_regular_game_end()) {
+			return;
 		}
 
 	} while (player_type_changed_);
