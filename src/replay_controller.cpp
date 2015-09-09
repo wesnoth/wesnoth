@@ -366,8 +366,7 @@ void replay_controller::reset_replay_impl()
 	DBG_REPLAY << "replay_controller::reset_replay\n";
 
 	gui_->get_chat_manager().clear_chat_messages();
-	reset_gamestate(level_);
-	resources::recorder->start_replay();
+	reset_gamestate(level_, 0);
 #if 0
 	gamestate_->player_number_ = level_["playing_team"].to_int() + 1;
 	gamestate_->init_side_done() = level_["init_side_done"].to_bool(false);

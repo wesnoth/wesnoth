@@ -302,7 +302,7 @@ void play_controller::init(CVideo& video, const config& level)
 	plugins_context_->set_callback("quit", throw_end_level(), false);
 }
 
-void play_controller::reset_gamestate(const config& level)
+void play_controller::reset_gamestate(const config& level, int replay_pos)
 {
 	resources::gameboard = NULL;
 	resources::gamedata = NULL;
@@ -327,6 +327,7 @@ void play_controller::reset_gamestate(const config& level)
 	gui_->reset_tod_manager(gamestate().tod_manager_);
 	gui_->reset_reports(*gamestate().reports_);
 	gui_->change_display_context(&gamestate().board_);
+	saved_game_.get_replay().set_pos(replay_pos);
 }
 
 void play_controller::init_managers()
@@ -502,7 +503,7 @@ config play_controller::to_config() const
 	config cfg;
 
 	cfg.merge_attributes(level_);
-
+	cfg["replay_pos"] = saved_game_.get_replay().get_pos();
 	gamestate().write(cfg);
 
 	if(end_level_data_.get_ptr() != NULL) {

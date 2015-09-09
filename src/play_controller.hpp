@@ -307,7 +307,7 @@ protected:
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
 
-	void reset_gamestate(const config& level);
+	void reset_gamestate(const config& level, int replay_pos);
 private:
 
 	void init(CVideo &video, const config& level);
