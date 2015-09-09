@@ -957,6 +957,7 @@ set(wesnoth-main_SRC
 	mouse_handler_base.cpp
 	movetype.cpp
 	mp_game_settings.cpp
+	mp_replay_controller.cpp
 	game_initialization/mp_game_utils.cpp
 	game_initialization/mp_options.cpp
 	mp_ui_alerts.cpp

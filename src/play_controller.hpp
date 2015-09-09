@@ -207,6 +207,8 @@ public:
 	{ return level_["name"].t_str(); }
 	bool get_disallow_recall()
 	{ return level_["disallow_recall"].to_bool(); }
+	std::string theme()
+	{ return level_["theme"].str(); }
 	void update_savegame_snapshot() const;
 	virtual bool should_return_to_play_side()
 	{ return is_regular_game_end(); }
@@ -220,6 +222,7 @@ public:
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
 	int ticks() const { return ticks_; }
+	game_display& get_display();
 protected:
 	struct scoped_savegame_snapshot
 	{
@@ -229,7 +232,6 @@ protected:
 	};
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
-	game_display& get_display();
 	bool have_keyboard_focus();
 	void process_focus_keydown_event(const SDL_Event& event);
 	void process_keydown_event(const SDL_Event& event);
