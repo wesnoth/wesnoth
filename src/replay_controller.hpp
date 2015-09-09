@@ -28,10 +28,24 @@ class video;
 class replay_controller : public play_controller
 {
 public:
+	class replay_stop_condition
+	{
+	public:
+		virtual void move_done() {}
+		virtual void new_side_turn(int , int ) {}
+		virtual bool should_stop() { return true; }
+		virtual ~replay_stop_condition(){}
+	};
+
+	class reset_replay_exception : public std::exception
+	{
+	};
+
 	replay_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, const tdata_cache & tdata, CVideo& video);
 	virtual ~replay_controller();
 
+	void main_loop(bool is_unit_test);
 	void play_replay();
 	void reset_replay();
 	void stop_replay();
@@ -44,12 +58,10 @@ public:
 	void replay_show_each();
 	void replay_show_team1();
 	void replay_skip_animation();
-
+	virtual void play_side_impl();
 	virtual void force_end_turn() {}
 	virtual void check_objectives() {}
 	virtual void on_not_observer() {}
-
-	void try_run_to_completion();
 
 	bool recorder_at_end();
 
@@ -66,18 +78,13 @@ private:
 		CURRENT_TEAM,
 		SHOW_ALL,
 	};
+	void reset_replay_impl();
 	void init();
-	void play_turn();
-	void play_move_or_side(bool one_move = false);
-	void play_side();
-	void play_move();
 	void update_teams();
 	void update_gui();
 	void init_replay_display();
 	void rebuild_replay_theme();
 	void handle_generic_event(const std::string& /*name*/);
-
-	void play_replay_main_loop();
 
 	void reset_replay_ui();
 	void update_replay_ui();
@@ -100,8 +107,8 @@ private:
 	tod_manager tod_manager_start_;
 	unsigned int last_replay_action;
 
-	bool is_playing_;
 	REPLAY_VISION vision_;
+	boost::scoped_ptr<replay_stop_condition> stop_condition_;
 };
 
 

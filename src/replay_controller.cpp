@@ -69,7 +69,7 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
 
 	//replay event-loop
-	play_replay_level_main_loop(*rc, is_unit_test);
+	rc->main_loop(is_unit_test);
 	if(rc->is_regular_game_end())
 	{
 	//	return rc->get_end_level_data_const().is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
@@ -83,28 +83,77 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 	}
 }
 
-void play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test) {
-	if (is_unit_test) {
-		return replaycontroller.try_run_to_completion();
-	}
+struct replay_play_nostop : public replay_controller::replay_stop_condition
+{
+	replay_play_nostop() {}
+	virtual bool should_stop() { return false; }
+};
 
-	for (;;) {
-		//Quits by quit_level_exception
-		replaycontroller.play_slice();
-	}
-}
+struct replay_play_moves_base : public replay_controller::replay_stop_condition
+{
+	int moves_todo_;
+	bool started_;
+	replay_play_moves_base(int moves_todo, bool started = true) : moves_todo_(moves_todo), started_(started) {}
+	virtual void move_done() { if(started_) { --moves_todo_; } }
+	virtual bool should_stop() { return moves_todo_ == 0; }
+	void start() { started_ = true; }
+};
 
-void replay_controller::try_run_to_completion() {
-	for (;;) {
-		play_slice();
-		if (resources::recorder->at_end()) {
-			return;
-		} else {
-			if (!is_playing_) {
-				play_replay();
-			}
+struct replay_play_moves : public replay_play_moves_base
+{
+	replay_play_moves(int moves_todo) : replay_play_moves_base(moves_todo, true) {}
+};
+
+struct replay_play_turn : public replay_play_moves_base
+{
+	int turn_begin_;
+	replay_play_turn(int turn_begin) : replay_play_moves_base(1, false), turn_begin_(turn_begin) {}
+	virtual void new_side_turn(int , int turn)
+	{ 
+		if (turn != turn_begin_) {
+			start();
 		}
 	}
+};
+
+struct replay_play_side : public replay_play_moves_base
+{
+	int turn_begin_;
+	int side_begin_;
+	replay_play_side(int turn_begin, int side_begin) : replay_play_moves_base(1, false), turn_begin_(turn_begin), side_begin_(side_begin) {}
+	virtual void new_side_turn(int side , int turn)
+	{ 
+		if (turn != turn_begin_ || side != side_begin_) {
+			start();
+		}
+	}
+};
+void replay_controller::main_loop(bool is_unit_test)
+{
+	if (is_unit_test) {
+		//FIXME: return when at end.
+		stop_condition_.reset(new replay_play_nostop());
+	}
+	//Quits by quit_level_exception
+	for (;;) {
+		try {
+			while(true) {
+				play_turn();
+				if (is_regular_game_end()) {
+					return;
+				}
+				player_number_ = 1;
+			}
+			while(true) {
+				//lingering
+				play_slice();
+			}
+		}
+		catch(const reset_replay_exception&) {
+			reset_replay_impl();
+		}
+	}
+
 }
 
 replay_controller::replay_controller(const config& level,
@@ -114,8 +163,8 @@ replay_controller::replay_controller(const config& level,
 	: play_controller(level, state_of_game, ticks, game_config, tdata, video, false)
 	, gameboard_start_(gamestate_.board_)
 	, tod_manager_start_(level)
-	, is_playing_(false)
 	, vision_(state_of_game.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER ? CURRENT_TEAM : HUMAN_TEAM)
+	, stop_condition_(new replay_stop_condition())
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 
@@ -123,7 +172,7 @@ replay_controller::replay_controller(const config& level,
 	// we are not loading mid-game, so from here on, treat this as not loading
 	// a game. (Allows turn_1 et al. events to fire at the correct time.)
 	init();
-	reset_replay();
+	reset_replay_impl();
 }
 
 replay_controller::~replay_controller()
@@ -135,7 +184,8 @@ replay_controller::~replay_controller()
 	gui_->complete_redraw_event().detach_handler(this);
 }
 
-void replay_controller::init(){
+void replay_controller::init()
+{
 	DBG_REPLAY << "in replay_controller::init()...\n";
 	
 	last_replay_action = REPLAY_FOUND_END_MOVE;
@@ -144,7 +194,8 @@ void replay_controller::init(){
 	init_replay_display();
 }
 
-void replay_controller::init_gui(){
+void replay_controller::init_gui()
+{
 	DBG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
 
@@ -279,7 +330,7 @@ void replay_controller::replay_ui_playback_should_stop()
 		stop_button()->enable(false);
 	}
 
-	if(!is_playing_) {
+	if(stop_condition_->should_stop()) {
 		//user interrupted
 		stop_button()->release();
 	}
@@ -297,13 +348,16 @@ void replay_controller::reset_replay_ui()
 	play_side_button()->enable(true);
 }
 
-
 void replay_controller::reset_replay()
+{
+	throw reset_replay_exception();
+}
+
+void replay_controller::reset_replay_impl()
 {
 	DBG_REPLAY << "replay_controller::reset_replay\n";
 
 	gui_->get_chat_manager().clear_chat_messages();
-	is_playing_ = false;
 	player_number_ = level_["playing_team"].to_int() + 1;
 	init_side_done_ = level_["init_side_done"].to_bool(false);
 	skip_replay_ = false;
@@ -352,48 +406,22 @@ void replay_controller::reset_replay()
 
 void replay_controller::stop_replay()
 {
-	is_playing_ = false;
+	stop_condition_.reset(new replay_stop_condition());
 }
 
 void replay_controller::replay_next_turn()
 {
-	is_playing_ = true;
-	replay_ui_playback_should_start();
-
-	play_turn();
-
-	if (!is_skipping_replay() || !is_playing_) {
-		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
-	}
-
-	replay_ui_playback_should_stop();
-}
-
-void replay_controller::replay_next_move_or_side(bool one_move)
-{
-	is_playing_ = true;
-	replay_ui_playback_should_start();
-	
-	play_move_or_side(one_move);
-	while (current_team().is_empty()) {
-		play_move_or_side(one_move);
-	}
-
-	if ( (!is_skipping_replay() || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
-		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
-	}
-
-	replay_ui_playback_should_stop();
+	stop_condition_.reset(new replay_play_turn(gamestate_.tod_manager_.turn()));
 }
 
 void replay_controller::replay_next_side()
 {
-	return replay_next_move_or_side(false);
+	stop_condition_.reset(new replay_play_side(gamestate_.tod_manager_.turn(), player_number_));
 }
 
 void replay_controller::replay_next_move()
 {
-	return replay_next_move_or_side(true);
+	stop_condition_.reset(new replay_play_moves(1));
 }
 
 
@@ -444,108 +472,9 @@ void replay_controller::replay_skip_animation(){
 //move all sides till stop/end
 void replay_controller::play_replay()
 {
-
-	if (resources::recorder->at_end())
-	{
-	}
-
-	is_playing_ = true;
-	replay_ui_playback_should_start();
-
-	play_replay_main_loop();
-
-	if (!is_playing_) {
-		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
-	}
-
-	replay_ui_playback_should_stop();
+	stop_condition_.reset(new replay_play_nostop());
 }
 
-void replay_controller::play_replay_main_loop()
-{
-	DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-	while(!resources::recorder->at_end() && is_playing_) {
-		play_turn();
-	}
-}
-
-//make all sides move, then stop
-void replay_controller::play_turn()
-{
-
-	LOG_REPLAY << "turn: " << turn() << "\n";
-
-	gui_->new_turn();
-	gui_->invalidate_game_status();
-	events::raise_draw_event();
-
-	bool last_team = false;
-
-	while ( (!last_team) && (!resources::recorder->at_end()) && is_playing_ ){
-		last_team = static_cast<size_t>(player_number_) == gamestate_.board_.teams().size();
-		play_side();
-		play_slice();
-	}
-}
-
-
-void replay_controller::play_side() {
-	return play_move_or_side(false);
-}
-
-void replay_controller::play_move() {
-	return play_move_or_side(true);
-}
-
-//make only one side move
-void replay_controller::play_move_or_side(bool one_move) {
-	
-	DBG_REPLAY << "Status turn number: " << turn() << "\n";
-	DBG_REPLAY << "Player number: " << player_number_ << "\n";
-
-	// If a side is empty skip over it.
-	if (!current_team().is_empty()) {
-		statistics::reset_turn_stats(current_team().save_id());
-
-		if (last_replay_action == REPLAY_FOUND_END_TURN) {
-			play_controller::init_side_begin(true);
-		}
-
-		DBG_REPLAY << "doing replay " << player_number_ << "\n";
-		// if have reached the end we don't want to execute finish_side_turn and finish_turn
-		// because we might not have enough data to execute them (like advancements during turn_end for example)
-		
-		last_replay_action = do_replay(one_move);
-		if(last_replay_action != REPLAY_FOUND_END_TURN) {
-			//We reached the end of the replay without finding an end turn tag.
-			return;
-		}
-
-		finish_side_turn();
-	}
-
-	player_number_++;
-
-	if (static_cast<size_t>(player_number_) > gamestate_.board_.teams().size()) {
-		//during the orginal game player_number_ would also be gamestate_.board_.teams().size(),
-		player_number_ = gamestate_.board_.teams().size();
-		finish_turn();
-		bool is_time_left = gamestate_.tod_manager_.next_turn(*resources::gamedata);
-		if(!is_time_left) {
-			set_scontext_synced_base sync;
-			pump().fire("time over");
-		}
-		player_number_ = 1;
-		gui_->new_turn();
-	}
-
-	// This is necessary for replays in order to show possible movements.
-	// But it causes OOS with the original game since the units have wrong movement_left value during side turn events.
-	// gamestate_.board_.new_turn(player_number_);
-
-	update_teams();
-	update_gui();
-}
 
 void replay_controller::update_teams()
 {
@@ -586,4 +515,34 @@ void replay_controller::handle_generic_event(const std::string& name)
 
 bool replay_controller::recorder_at_end() {
 	return resources::recorder->at_end();
+}
+
+
+void replay_controller::play_side_impl()
+{
+	update_teams();
+	stop_condition_->new_side_turn(player_number_, this->gamestate_.tod_manager_.turn());
+	while(true)
+	{
+		if(!stop_condition_->should_stop())
+		{
+			last_replay_action = do_replay(true);
+			if(last_replay_action == REPLAY_FOUND_END_MOVE) {
+				stop_condition_->move_done();
+			}
+			if(last_replay_action == REPLAY_FOUND_END_TURN) {
+				return;
+			}
+			if(last_replay_action == REPLAY_RETURN_AT_END) {
+				replay_ui_playback_should_stop();
+			}
+			play_slice(false);
+		}
+		else
+		{
+			play_slice(true);
+			replay_ui_playback_should_stop();
+		}
+		
+	}
 }
