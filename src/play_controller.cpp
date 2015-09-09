@@ -148,6 +148,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, defeat_music_()
 	, scope_()
 	, server_request_number_(0)
+	, player_type_changed_(false)
 {
 	resources::controller = this;
 	resources::gameboard = &gamestate_.board_;
@@ -1056,4 +1057,39 @@ std::set<std::string> play_controller::all_players() const
 		}
 	}
 	return res;
+}
+
+void play_controller::play_side()
+{
+	//check for team-specific items in the scenario
+	gui_->parse_team_overlays();
+	{ 
+		save_blocker blocker;
+		maybe_do_init_side();
+		if(is_regular_game_end()) {
+			return;
+		}
+	}
+	do {
+		//Update viewing team in case it has changed during the loop.
+		if(int side_num = play_controller::find_last_visible_team()) {
+			if(side_num != this->gui_->viewing_side()) {
+				update_gui_to_player(side_num - 1);
+			}
+		}
+		// This flag can be set by derived classes (in overridden functions).
+		player_type_changed_ = false;
+
+		statistics::reset_turn_stats(gamestate_.board_.teams()[player_number_ - 1].save_id());
+
+		play_side_impl();
+
+		if(is_regular_game_end()) {
+			return;
+		}
+
+	} while (player_type_changed_);
+	// Keep looping if the type of a team (human/ai/networked)
+	// has changed mid-turn
+	sync_end_turn();
 }

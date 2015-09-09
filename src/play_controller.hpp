@@ -209,7 +209,8 @@ public:
 	{ return is_regular_game_end(); }
 	void maybe_throw_return_to_play_side()
 	{ if(should_return_to_play_side() && !linger_ ) { throw return_to_play_side_exception(); } }
-
+	virtual void play_side_impl() {}
+	void play_side();
 	team& current_team();
 	const team& current_team() const;
 
@@ -310,6 +311,10 @@ private:
 	hotkey::scope_changer scope_;
 	// used to sync with the mpserver, not persistent in savefiles.
 	int server_request_number_;
+protected:
+	bool player_type_changed_;
+	
+	virtual void sync_end_turn() {};
 };
 
 

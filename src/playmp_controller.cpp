@@ -87,11 +87,11 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side()
+void playmp_controller::play_side_impl()
 {
 	mp_ui_alerts::turn_changed(current_team().current_player());
 	// Proceed with the parent function.
-	return playsingle_controller::play_side();
+	return playsingle_controller::play_side_impl();
 }
 
 void playmp_controller::on_not_observer() {

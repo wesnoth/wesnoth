@@ -57,7 +57,7 @@ public:
 	{ return player_type_changed_ || end_turn_ != END_TURN_NONE || is_regular_game_end(); }
 protected:
 	void play_turn();
-	virtual void play_side();
+	virtual void play_side_impl();
 	void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
@@ -89,7 +89,6 @@ protected:
 		END_TURN_SYNCED,
 	};
 	END_TURN_STATE end_turn_;
-	bool player_type_changed_;
 	bool skip_next_turn_;
 	void linger();
 	void sync_end_turn();

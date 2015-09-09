@@ -81,7 +81,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	, network_reader_()
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
-	, player_type_changed_(false)
 	, skip_next_turn_(false)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
@@ -383,15 +382,13 @@ void playsingle_controller::play_turn()
 	for (; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
 	{
 		// If a side is empty skip over it.
-		if (current_team().is_empty()) continue;
-
-		{
-			save_blocker blocker;
-			init_side_begin(false);
-			if(init_side_done_) {
-				//This is the case in a reloaded game where teh side was initilizes before saving the game.
-				init_side_end();
-			}
+		if (current_team().is_empty()) {
+			continue;
+		}
+		init_side_begin(false);
+		if(init_side_done_) {
+			//This is the case in a reloaded game where teh side was initilizes before saving the game.
+			init_side_end();
 		}
 
 		ai_testing::log_turn_start(player_number_);
@@ -432,74 +429,44 @@ void playsingle_controller::play_idle_loop()
 	}
 }
 
-void playsingle_controller::play_side()
+void playsingle_controller::play_side_impl()
 {
-	//check for team-specific items in the scenario
-	gui_->parse_team_overlays();
-
-	maybe_do_init_side();
-	if(is_regular_game_end()) {
-		return;
+	if (!skip_next_turn_) {
+		end_turn_ = END_TURN_NONE;
 	}
-
-	do {
-		//Update viewing team in case it has changed during the loop.
-		if(int side_num = play_controller::find_last_visible_team()) {
-			if(side_num != this->gui_->viewing_side()) {
-				update_gui_to_player(side_num - 1);
-			}
-		}
-		// This flag can be set by derived classes (in overridden functions).
-		player_type_changed_ = false;
-		if (!skip_next_turn_)
-			end_turn_ = END_TURN_NONE;
-
-		statistics::reset_turn_stats(gamestate_.board_.teams()[player_number_ - 1].save_id());
-
-		if((current_team().is_local_human() && current_team().is_proxy_human())) {
-			LOG_NG << "is human...\n";
-			// If a side is dead end the turn, but play at least side=1's
-			// turn in case all sides are dead
-			if (gamestate_.board_.side_units(player_number_) == 0 && !(gamestate_.board_.units().size() == 0 && player_number_ == 1)) {
-				end_turn_ = END_TURN_REQUIRED;
-			}
-
-			before_human_turn();
-			if (end_turn_ == END_TURN_NONE) {
-				play_human_turn();
-			}
-			if ( !player_type_changed_ && !is_regular_game_end()) {
-				after_human_turn();
-			}
-			LOG_NG << "human finished turn...\n";
-
-		} else if(current_team().is_local_ai() || (current_team().is_local_human() && current_team().is_droid())) {
-			play_ai_turn();
-		} else if(current_team().is_network()) {
-			play_network_turn();
-		} else if(current_team().is_local_human() && current_team().is_idle()) {
-			end_turn_enable(false);
-			do_idle_notification();
-			before_human_turn();
-			if (end_turn_ == END_TURN_NONE) {
-				play_idle_loop();
-			}
-		}
-		else {
-			// we should have skipped over empty controllers before so this shouldn't be possible
-			ERR_NG << "Found invalid side controller " << current_team().controller().to_string() << " (" << current_team().proxy_controller().to_string() << ") for side " << current_team().side() << "\n";
+	if((current_team().is_local_human() && current_team().is_proxy_human())) {
+		LOG_NG << "is human...\n";
+		// If a side is dead end the turn, but play at least side=1's
+		// turn in case all sides are dead
+		if (gamestate_.board_.side_units(player_number_) == 0 && !(gamestate_.board_.units().size() == 0 && player_number_ == 1)) {
+			end_turn_ = END_TURN_REQUIRED;
 		}
 
-		if(is_regular_game_end()) {
-			return;
+		before_human_turn();
+		if (end_turn_ == END_TURN_NONE) {
+			play_human_turn();
 		}
+		if ( !player_type_changed_ && !is_regular_game_end()) {
+			after_human_turn();
+		}
+		LOG_NG << "human finished turn...\n";
 
-	} while (player_type_changed_);
-	// Keep looping if the type of a team (human/ai/networked)
-	// has changed mid-turn
-	sync_end_turn();
-	assert(end_turn_ == END_TURN_SYNCED);
-	skip_next_turn_ = false;
+	} else if(current_team().is_local_ai() || (current_team().is_local_human() && current_team().is_droid())) {
+		play_ai_turn();
+	} else if(current_team().is_network()) {
+		play_network_turn();
+	} else if(current_team().is_local_human() && current_team().is_idle()) {
+		end_turn_enable(false);
+		do_idle_notification();
+		before_human_turn();
+		if (end_turn_ == END_TURN_NONE) {
+			play_idle_loop();
+		}
+	}
+	else {
+		// we should have skipped over empty controllers before so this shouldn't be possible
+		ERR_NG << "Found invalid side controller " << current_team().controller().to_string() << " (" << current_team().proxy_controller().to_string() << ") for side " << current_team().side() << "\n";
+	}
 }
 
 void playsingle_controller::before_human_turn()
@@ -770,4 +737,7 @@ void playsingle_controller::sync_end_turn()
 		resources::recorder->end_turn();
 		end_turn_ = END_TURN_SYNCED;
 	}
+
+	assert(end_turn_ == END_TURN_SYNCED);
+	skip_next_turn_ = false;
 }
