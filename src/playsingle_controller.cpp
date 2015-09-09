@@ -442,8 +442,6 @@ void playsingle_controller::play_side()
 		return;
 	}
 
-	//flag used when we fallback from ai and give temporarily control to human
-	bool temporary_human = false;
 	do {
 		//Update viewing team in case it has changed during the loop.
 		if(int side_num = play_controller::find_last_visible_team()) {
@@ -458,9 +456,8 @@ void playsingle_controller::play_side()
 
 		statistics::reset_turn_stats(gamestate_.board_.teams()[player_number_ - 1].save_id());
 
-		if((current_team().is_local_human() && current_team().is_proxy_human()) || temporary_human) {
+		if((current_team().is_local_human() && current_team().is_proxy_human())) {
 			LOG_NG << "is human...\n";
-			temporary_human = false;
 			// If a side is dead end the turn, but play at least side=1's
 			// turn in case all sides are dead
 			if (gamestate_.board_.side_units(player_number_) == 0 && !(gamestate_.board_.units().size() == 0 && player_number_ == 1)) {
@@ -480,13 +477,7 @@ void playsingle_controller::play_side()
 			LOG_NG << "human finished turn...\n";
 
 		} else if(current_team().is_local_ai() || (current_team().is_local_human() && current_team().is_droid())) {
-			try {
-				play_ai_turn();
-			} catch(fallback_ai_to_human_exception&) {
-				// Give control to a human for this turn.
-				player_type_changed_ = true;
-				temporary_human = true;
-			}
+			play_ai_turn();
 			if(is_regular_game_end()) {
 				return;
 			}
@@ -665,6 +656,10 @@ void playsingle_controller::play_ai_turn()
 			ai::manager::play_turn(player_number_);
 		}
 		catch (return_to_play_side_exception&) {
+		}
+		catch (fallback_ai_to_human_exception&) {
+			current_team().make_human();
+			player_type_changed_ = true;
 		}
 	}
 	catch(...) {
