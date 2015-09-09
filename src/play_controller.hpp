@@ -261,6 +261,7 @@ protected:
 	//gamestate
 	const tdata_cache & tdata_;
 	boost::scoped_ptr<game_state> gamestate_;
+	config level_;
 	saved_game & saved_game_;
 
 	//managers
@@ -318,7 +319,6 @@ private:
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
-	config level_;
 	hotkey::scope_changer scope_;
 	// used to sync with the mpserver, not persistent in savefiles.
 	int server_request_number_;

@@ -65,7 +65,7 @@ public:
 
 	game_state(const config & level, play_controller &, const tdata_cache & tdata);
 	/// The third parameter is an optimisation.
-	game_state(const config & level, play_controller &, const tdata_cache & tdata, game_board& board);
+	game_state(const config & level, play_controller &, game_board& board);
 
 	~game_state();
 

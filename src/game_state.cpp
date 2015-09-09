@@ -61,7 +61,7 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 {
 	init(pc.ticks(), pc, level);
 }
-game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata, game_board& board) :
+game_state::game_state(const config & level, play_controller & pc, game_board& board) :
 	gamedata_(level),
 	board_(board),
 	tod_manager_(level),
