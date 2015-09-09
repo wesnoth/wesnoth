@@ -360,7 +360,7 @@ void replay_controller::reset_replay_impl()
 
 	gui_->get_chat_manager().clear_chat_messages();
 	player_number_ = level_["playing_team"].to_int() + 1;
-	init_side_done_ = level_["init_side_done"].to_bool(false);
+	gamestate_->init_side_done() = level_["init_side_done"].to_bool(false);
 	skip_replay_ = false;
 	gamestate().tod_manager_= tod_manager_start_;
 	resources::recorder->start_replay();

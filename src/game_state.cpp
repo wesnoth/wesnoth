@@ -52,6 +52,7 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 	reports_(new reports()),
 	lua_kernel_(),
 	events_manager_(),
+	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
 	init(pc.ticks(), pc, level);
@@ -219,6 +220,8 @@ void game_state::set_game_display(game_display * gd)
 
 void game_state::write(config& cfg) const
 {
+	cfg["init_side_done"] = init_side_done_;
+
 	//Call the lua save_game functions
 	lua_kernel_->save_game(cfg);
 

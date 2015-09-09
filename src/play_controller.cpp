@@ -162,7 +162,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, player_number_(level["playing_team"].to_int() + 1)
 	, skip_replay_(skip_replay)
 	, linger_(false)
-	, init_side_done_(level["init_side_done"].to_bool(false))
 	, init_side_done_now_(false)
 	, ticks_(ticks)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
@@ -347,7 +346,7 @@ void play_controller::fire_start()
 	{
 		tm.set_start_gold(tm.gold());
 	}
-	init_side_done_ = false;
+	gamestate_->init_side_done() = false;
 	gamestate().gamedata_.set_phase(game_data::PLAY);
 }
 
@@ -383,7 +382,7 @@ void play_controller::maybe_do_init_side()
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
-	if (init_side_done_ || !current_team().is_local() || gamestate().gamedata_.phase() != game_data::PLAY || is_replay()) {
+	if (gamestate_->init_side_done() || !current_team().is_local() || gamestate().gamedata_.phase() != game_data::PLAY || is_replay()) {
 		return;
 	}
 
@@ -400,7 +399,7 @@ void play_controller::do_init_side()
 	log_scope("player turn");
 	//In case we might end up calling sync:network during the side turn events,
 	//and we don't want do_init_side to be called when a player drops.
-	init_side_done_ = true;
+	gamestate_->init_side_done() = true;
 	init_side_done_now_ = true;
 
 	const std::string turn_num = str_cast(turn());
@@ -477,7 +476,6 @@ config play_controller::to_config() const
 	config cfg;
 
 	cfg.merge_attributes(level_);
-	cfg["init_side_done"] = init_side_done_;
 
 	gamestate().write(cfg);
 
@@ -538,7 +536,7 @@ void play_controller::finish_side_turn()
 
 	mouse_handler_.deselect_hex();
 	resources::gameboard->unit_id_manager().reset_fake();
-	init_side_done_ = false;
+	gamestate_->init_side_done() = false;
 }
 
 void play_controller::finish_turn()
@@ -1002,7 +1000,7 @@ hotkey::command_executor * play_controller::get_hotkey_command_executor() {
 
 bool play_controller::is_browsing() const
 {
-	if(linger_ || !init_side_done_ || gamestate().gamedata_.phase() != game_data::PLAY) {
+	if(linger_ || !gamestate_->init_side_done() || gamestate().gamedata_.phase() != game_data::PLAY) {
 		return true;
 	}
 	const team& t = current_team();
@@ -1144,7 +1142,7 @@ void play_controller::play_turn()
 			continue;
 		}
 		init_side_begin();
-		if(init_side_done_) {
+		if(gamestate_->init_side_done()) {
 			//This is the case in a reloaded game where teh side was initilizes before saving the game.
 			init_side_end();
 		}
