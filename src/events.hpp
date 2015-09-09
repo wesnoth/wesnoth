@@ -64,7 +64,9 @@ protected:
 	}
 
 private:
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	int unicode_;
+#endif
 	bool has_joined_;
 };
 

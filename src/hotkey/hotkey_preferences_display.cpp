@@ -590,8 +590,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 	disp_.update_display();
 	SDL_Event event;
 	event.type = 0;
-	int character = -1, keycode  = -1, mod    = -1;
-	int mouse     = -1, joystick = -1, button = -1, hat = -1, value = -1;
+	int keycode  = -1, mod    = -1;
 	const int any_mod = KMOD_CTRL | KMOD_META | KMOD_ALT;
 
 	while ( event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
@@ -605,27 +604,10 @@ void hotkey_preferences_dialog::show_binding_dialog(
 
 		case SDL_KEYDOWN:
 			keycode = event.key.keysym.sym;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-			character = event.key.keysym.scancode,
-#else
-			character = event.key.keysym.unicode;
-#endif
 			mod = event.key.keysym.mod;
 			break;
-		case SDL_JOYBUTTONDOWN:
-			joystick = event.jbutton.which;
-			button = event.jbutton.button;
-			break;
-		case SDL_JOYHATMOTION:
-			joystick = event.jhat.which;
-			hat = event.jhat.hat;
-			value = event.jhat.value;
-			break;
-		case SDL_MOUSEBUTTONDOWN:
-			mouse = event.button.which;
-			button = event.button.button;
-			break;
 		}
+
 
 		SDL_PollEvent(&event);
 		disp_.flip();
@@ -637,44 +619,16 @@ void hotkey_preferences_dialog::show_binding_dialog(
 	restorer.restore();
 	disp_.update_display();
 
-	// only if not canceled.
+	// only if not cancelled.
 	if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
 
-		hotkey::hotkey_item newhk(id);
-		const hotkey::hotkey_item* oldhk = NULL;
+		hotkey::hotkey_ptr newhk;
+		hotkey::hotkey_ptr oldhk;
 
-		CKey keystate;
-		bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-		bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
-		bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
-		bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+		oldhk = hotkey::get_hotkey(event);
+		newhk = hotkey::create_hotkey(id, event);
 
-		switch (event.type) {
-
-		case SDL_JOYHATMOTION:
-			oldhk = &hotkey::get_hotkey(mouse, joystick, button, hat, value,
-					shift, ctrl, cmd, alt);
-			newhk.set_jhat(joystick, hat, value, shift, ctrl, cmd, alt);
-			break;
-		case SDL_JOYBUTTONUP:
-			oldhk = &hotkey::get_hotkey(-1, joystick, button, -1, -1,
-					shift, ctrl, cmd, alt);
-			newhk.set_jbutton(joystick, button, shift, ctrl, cmd, alt);
-			break;
-		case SDL_MOUSEBUTTONUP:
-			oldhk = &hotkey::get_hotkey(mouse, -1, button, -1, -1,
-					shift, ctrl, cmd, alt);
-			newhk.set_mbutton(mouse, button, shift, ctrl, cmd, alt);
-			break;
-		case SDL_KEYUP:
-			oldhk =
-					&hotkey::get_hotkey( character, keycode,
-							(mod & KMOD_SHIFT) != 0, (mod & KMOD_CTRL) != 0,
-							(mod & KMOD_LMETA) != 0, (mod & KMOD_ALT)  != 0 );
-			newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
-					(mod & KMOD_CTRL) != 0, (mod & KMOD_LMETA) != 0,
-					(mod & KMOD_ALT) != 0);
-
+#if 0
 			//TODO
 //			if ( (hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_SCREENSHOT
 //					|| hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_MAP_SCREENSHOT)
@@ -685,6 +639,7 @@ Control, Alt or Meta modifiers to avoid problems.")); */
 //			}
 			break;
 		}
+#endif
 
 		if (oldhk && oldhk->active()) {
 			if (oldhk->get_command() != id) {
@@ -692,7 +647,7 @@ Control, Alt or Meta modifiers to avoid problems.")); */
 				utils::string_map symbols;
 				symbols["hotkey_sequence"]   = oldhk->get_name();
 				symbols["old_hotkey_action"] = hotkey::get_description(oldhk->get_command());
-				symbols["new_hotkey_action"] = hotkey::get_description(newhk.get_command());
+				symbols["new_hotkey_action"] = hotkey::get_description(newhk->get_command());
 
 				std::string text =
 						vgettext("\"$hotkey_sequence|\" is in use by \

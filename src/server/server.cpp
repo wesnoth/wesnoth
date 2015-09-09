@@ -124,7 +124,9 @@ static lg::log_domain log_config("config");
 #ifndef SIGHUP
 #define SIGHUP 20
 #endif
-/** @todo FIXME: should define SIGINT here too, but to what? */
+/**
+ @todo FIXME: should define SIGINT here too, but to what?
+ */
 
 static sig_atomic_t config_reload = 0;
 
