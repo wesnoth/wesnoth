@@ -294,7 +294,12 @@ def list_contents():
 
     for i, addon in enumerate(addons):
         if not os.path.isdir(options.addons + "/" + addon): continue
-        sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " ... ")
+        mem = "? KB"
+        try:
+            mem = dict([x.split("\t", 1) for x in open("/proc/self/status").read().split("\n") if x])["VmRSS:"]
+        except:
+            pass
+        sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " [" + mem + "] ... ")
         sys.stdout.flush()
         d = options.output + "/" + addon
         logname = d + "/error.log"

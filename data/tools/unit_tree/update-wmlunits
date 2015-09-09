@@ -25,6 +25,7 @@ BUILD=$DIR/build
 TOOLS=${TOOLS:-$SOURCES/master/data/tools}
 export TEMP=$DIR/temp
 
+rm -rf $CONFIG/data/add-ons
 mkdir -p $CONFIG/data/add-ons
 mkdir -p $ADDONS
 mkdir -p $LOG
