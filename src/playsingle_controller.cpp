@@ -409,10 +409,7 @@ void playsingle_controller::play_turn()
 		}
 	}
 	//If the loop exits due to the last team having been processed,
-	//player_number_ will be 1 too high
-	//TODO: Why else could the loop exit?
-	if(player_number_ > static_cast<int>(gamestate_.board_.teams().size()))
-		player_number_ = gamestate_.board_.teams().size();
+	player_number_ = gamestate_.board_.teams().size();
 
 	finish_turn();
 
