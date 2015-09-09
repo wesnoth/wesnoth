@@ -49,7 +49,6 @@ public:
 	void play_replay();
 	void reset_replay();
 	void stop_replay();
-	void replay_next_move_or_side(bool one_move);
 	void replay_next_turn();
 	void replay_next_side();
 	void replay_next_move();
