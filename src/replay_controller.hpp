@@ -42,10 +42,10 @@ public:
 	};
 
 	replay_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config, const tdata_cache & tdata, CVideo& video);
+		const int ticks, const config& game_config, const tdata_cache & tdata, CVideo& video, bool is_unit_test);
 	virtual ~replay_controller();
 
-	void main_loop(bool is_unit_test);
+	void main_loop();
 	void play_replay();
 	void reset_replay();
 	void stop_replay();
@@ -110,6 +110,7 @@ private:
 	REPLAY_VISION vision_;
 	boost::scoped_ptr<replay_stop_condition> stop_condition_;
 	const config& level_;
+	bool is_unit_test_;
 };
 
 

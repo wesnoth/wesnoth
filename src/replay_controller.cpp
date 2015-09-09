@@ -52,6 +52,8 @@ static lg::log_domain log_replay("replay");
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
+class replay_at_end_exception : public std::exception {};
+
 void play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test);
 
 LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & tdata,
@@ -65,11 +67,11 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 
 	const events::command_disabler disable_commands;
 
-	rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
+	rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video, is_unit_test));
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
 
 	//replay event-loop
-	rc->main_loop(is_unit_test);
+	rc->main_loop();
 	if(rc->is_regular_game_end())
 	{
 	//	return rc->get_end_level_data_const().is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
@@ -128,9 +130,9 @@ struct replay_play_side : public replay_play_moves_base
 		}
 	}
 };
-void replay_controller::main_loop(bool is_unit_test)
+void replay_controller::main_loop()
 {
-	if (is_unit_test) {
+	if (is_unit_test_) {
 		//FIXME: return when at end.
 		stop_condition_.reset(new replay_play_nostop());
 	}
@@ -152,6 +154,10 @@ void replay_controller::main_loop(bool is_unit_test)
 		catch(const reset_replay_exception&) {
 			reset_replay_impl();
 		}
+		catch(const replay_at_end_exception&) {
+			//For unit test
+			return;
+		}
 	}
 
 }
@@ -159,13 +165,14 @@ void replay_controller::main_loop(bool is_unit_test)
 replay_controller::replay_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
 		const config& game_config, 
-		const tdata_cache & tdata, CVideo& video)
+		const tdata_cache & tdata, CVideo& video, bool is_unit_test)
 	: play_controller(level, state_of_game, ticks, game_config, tdata, video, false)
 	, gameboard_start_(gamestate().board_)
 	, tod_manager_start_(level)
 	, vision_(state_of_game.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER ? CURRENT_TEAM : HUMAN_TEAM)
 	, stop_condition_(new replay_stop_condition())
 	, level_(level)
+	, is_unit_test_(is_unit_test)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 
@@ -538,6 +545,9 @@ void replay_controller::play_side_impl()
 			}
 			if(last_replay_action == REPLAY_RETURN_AT_END) {
 				replay_ui_playback_should_stop();
+				if(is_unit_test_) {
+					throw replay_at_end_exception();
+				}
 			}
 			play_slice(false);
 		}
