@@ -27,8 +27,10 @@ function ca_fast_combat:evaluation(ai, cfg, self)
     if (not self.data.fast_combat_units) or (not self.data.fast_combat_units[1]) then
         self.data.fast_combat_units = wesnoth.get_units {
             side = wesnoth.current.side,
+            canrecruit = 'no',
             { "and", filter_own }
         }
+
         if (not self.data.fast_combat_units[1]) then return 0 end
 
         -- For speed reasons, we'll go through the arrays from the end, so they are sorted backwards
@@ -104,9 +106,6 @@ function ca_fast_combat:evaluation(ai, cfg, self)
                         )
 
                         local acceptable_attack = FAU.is_acceptable_attack(attacker_rating, defender_rating, own_value_weight)
-
-                        --print(unit.id, target.id, rating, attacker_rating, defender_rating, extra_rating)
-                        --print('   -->' , own_value_weight, defender_rating/attacker_rating, acceptable_attack)
 
                         if acceptable_attack and (rating > max_rating) then
                             max_rating, best_target, best_dst = rating, target, attack.dst

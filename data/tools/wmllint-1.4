@@ -271,11 +271,11 @@ filemoves = {
         ("orc-small-hit.wav",       "orc-small-hit-1.ogg"),
     ),
     "1.3.3" : (
-    	("sounds/dragonstick-hit.ogg", "sounds/dragonstick-hit-1.ogg"),
-    	("sounds/dragonstick-miss.ogg", "sounds/dragonstick-miss.wav"),
+        ("sounds/dragonstick-hit.ogg", "sounds/dragonstick-hit-1.ogg"),
+        ("sounds/dragonstick-miss.ogg", "sounds/dragonstick-miss.wav"),
     ),
     "1.3.4" : (
-    	# This release changed from numeric to string palette IDs
+        # This release changed from numeric to string palette IDs
         ("RC(magenta>1)", "RC(magenta>red)"),
         ("RC(magenta>2)", "RC(magenta>blue)"),
         ("RC(magenta>3)", "RC(magenta>green)"),
@@ -297,14 +297,14 @@ filemoves = {
     ),
     # 1.35 was an aborted release
     "1.3.6" : (
-	("Soul Shooter", "Banebow"),
-	("Halbardier" , "Halberdier"),
+        ("Soul Shooter", "Banebow"),
+        ("Halbardier" , "Halberdier"),
     ),
     "1.3.9" : (
-	("Outlaw Ranger", "Ranger"),
+        ("Outlaw Ranger", "Ranger"),
     ),
     "1.3.14" : (
-	("{AMLA_TOUGH 3}", "{AMLA_DEFAULT}"),
+        ("{AMLA_TOUGH 3}", "{AMLA_DEFAULT}"),
     ),
     # An empty sentinel value at end is required.
     "trunk" : (),
@@ -393,21 +393,21 @@ def neighborhood(x, y, map_):
     odd = (x) % 2
     adj = [map_[y][x]];
     if x > 0:
-	adj.append(map_[y][x-1])
+        adj.append(map_[y][x-1])
     if x < len(map_[y])-1:
-	adj.append(map_[y][x+1])
+        adj.append(map_[y][x+1])
     if y > 0:
-	adj.append(map_[y-1][x])
+        adj.append(map_[y-1][x])
     if y < len(map_)-1:
-	adj.append(map_[y+1][x])
+        adj.append(map_[y+1][x])
     if x > 0 and y > 0 and not odd:
-	adj.append(map_[y-1][x-1])
+        adj.append(map_[y-1][x-1])
     if x < len(map_[y])-1 and y > 0 and not odd:
-	adj.append(map_[y-1][x+1])
+        adj.append(map_[y-1][x+1])
     if x > 0 and y < len(map_)-1 and odd:
-	adj.append(map_[y+1][x-1])
+        adj.append(map_[y+1][x-1])
     if x < len(map_[y])-1 and y < len(map_)-1 and odd:
-	adj.append(map_[y+1][x+1])
+        adj.append(map_[y+1][x+1])
     return adj
 
 def maptransform1(filename, baseline, inmap, y):
@@ -466,7 +466,7 @@ conversion2 = {
     re.compile(r"(?<!\^)Vs\b") : "Ss^Vhs",
     re.compile(r"(?<!\^)Vsm\b") : "Ss^Vm",
     re.compile(r"(?<!\^)Xm\b") : "Mm^Xm",
-    re.compile(r"\bGg\^Vwm\b") : "Gg^Vh",		# This is the 1.3.13 -> 1.3.14 one
+    re.compile(r"\bGg\^Vwm\b") : "Gg^Vh", # This is the 1.3.13 -> 1.3.14 one
     }
 
 # Global changes meant to be done on all lines
@@ -557,7 +557,7 @@ notepairs = (
     ("{ABILITY_FEEDING}", "{SPECIAL_NOTES_FEEDING}"),
     ("{WEAPON_SPECIAL_BERSERK}", "{SPECIAL_NOTES_BERSERK}"),
     ("{WEAPON_SPECIAL_BACKSTAB}", "{SPECIAL_NOTES_BACKSTAB}"),
-    ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"),	# No } deliberately
+    ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"), # No } deliberately
     ("{WEAPON_SPECIAL_SLOW}", "{SPECIAL_NOTES_SLOW}"),
     ("{WEAPON_SPECIAL_STONE}", "{SPECIAL_NOTES_STONE}"),
     ("{WEAPON_SPECIAL_MARKSMAN}", "{SPECIAL_NOTES_MARKSMAN}"),
@@ -785,7 +785,7 @@ def sanity_check(filename, lines):
                         print('"%s", line %d: side number %s is out of sequence' %
                               (filename, i+1, value))
                 except ValueError:
-                    pass	# Ignore ill-formed integer literals
+                    pass # Ignore ill-formed integer literals
         except TypeError:
             pass
     # Consistency-check the description attributes in [side], [unit], [recall],
@@ -842,11 +842,11 @@ def sanity_check(filename, lines):
                     print('"%s", line %d: extraneous space in translatable string' %
                           (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("#"):	# FIXME: parse_attribute is confused.
+            if key.startswith("#"): # FIXME: parse_attribute is confused.
                 pass
-            elif key == 'letter':	# May be led with _s for void 
+            elif key == 'letter': # May be led with _s for void 
                 pass
-            elif key == 'name':		# FIXME: check this someday
+            elif key == 'name': # FIXME: check this someday
                 pass
             elif key in ("message", "user_description", "story", "note", "text", "summary", "caption", "label", "unit_description") and not value.startswith("$"):
                 if not has_tr_mark:
@@ -897,7 +897,7 @@ def sanity_check(filename, lines):
             textdomains.append(i+1)
     if not textdomains:
         print('"%s", line 1: no textdomain string' % filename)
-    elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
+    elif textdomains[0] == 1: # Multiples are OK if first is on line 1
         pass
     elif len(textdomains) > 1:
         print('"%s", line %d: multiple textdomain strings on lines %s' %
@@ -1493,16 +1493,16 @@ def hack_syntax(filename, lines):
             radius_danger = False
             to_indent = []
             no_indent = []
-	    insideElem = 0
+            insideElem = 0
             for i in scopeIter:
                 elem = i.element
                 if elem in ("[and]", "[or]", "[not]"):
                     radius_danger = True
                     no_indent.extend(txt+'\n' for txt in i.text.splitlines())
-		    insideElem += 1
-		elif insideElem:
-		    if elem in ("[/and]", "[/or]", "[/not]"):
-		        insideElem -= 1
+                    insideElem += 1
+                elif insideElem:
+                    if elem in ("[/and]", "[/or]", "[/not]"):
+                        insideElem -= 1
                     no_indent.extend(txt+'\n' for txt in i.text.splitlines())
                 elif elem in ("variable=", "side=", "count=", "adjacent="):
                     no_indent.extend(txt+'\n' for txt in i.text.splitlines())
@@ -1513,7 +1513,7 @@ def hack_syntax(filename, lines):
             if radius_danger:
                 lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
                     wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
-		radius_pos.lines = lines
+                radius_pos.lines = lines
                 modcount += 1
                 #backup to rescan
                 radius_pos.seek(startline-1)
@@ -1684,7 +1684,7 @@ class maptransform_error:
     def __repr__(self):
         return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
 
-tagstack = []	# For tracking tag nesting
+tagstack = [] # For tracking tag nesting
 
 def outermap(func, inmap):
     "Apply a transformation based on neighborhood to the outermost ring."
@@ -1888,7 +1888,7 @@ def translator(filename, mapxforms, textxform, versions):
             if not unbalanced:
                 fields = newline.split("#")
                 trimmed = fields[0]
-                destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
+                destringed = re.sub('"[^"]*"', '', trimmed) # Ignore string literals
                 comment = ""
                 if len(fields) > 1:
                     comment = fields[1]
@@ -2002,7 +2002,7 @@ def allcfgfiles(dir_):
             for name in files:
                 if interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
-    datafiles.sort()	# So diffs for same campaigns will cluster in reports
+    datafiles.sort() # So diffs for same campaigns will cluster in reports
     return [os.path.normpath(elem) for elem in datafiles]
 
 def help():
@@ -2092,7 +2092,7 @@ if __name__ == '__main__':
     # Compute the series of version upgrades to perform, and describe it.
     versions = sorted([key for key in filemoves.keys()])
     # Relies on 'older' sorting before trunk
-    versions = [versions[-2]] + versions[:-2] + [versions[-1]]	# Move 'older' to front
+    versions = [versions[-2]] + versions[:-2] + [versions[-1]] # Move 'older' to front
     if oldversion in versions:
         versions = versions[versions.index(oldversion):]
     else:

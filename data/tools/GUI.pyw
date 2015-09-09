@@ -29,6 +29,7 @@ if sys.version_info.major >= 3:
 else: # we are on Python 2
     import Queue
     # tkinter modules
+    import tkFont as font # in Py3 it's tkinter.font
     from Tkinter import *
     from tkMessageBox import *
     from tkFileDialog import *
@@ -150,7 +151,10 @@ mouse pointer stays on the widget for more than 500 ms."""
                          background="#ffffe1", # background color used on Windows
                          borderwidth=1,
                          relief=SOLID,
-                         padding=1)
+                         padding=1,
+                         # Tk has a bunch of predefined fonts
+                         # use the one specific for tooltips
+                         font=font.nametofont("TkTooltipFont"))
         self.label.pack()
         self.overrideredirect(True)
         self.widget.bind("<Enter>",self.preshow)
@@ -192,6 +196,9 @@ mouse pointer stays on the widget for more than 500 ms."""
         if self.preshow_id:
             self.after_cancel(self.preshow_id)
             self.preshow_id=None
+    def set_text(self,text):
+        self.label.configure(text=text)
+        self.update_idletasks()
 
 class Popup(Toplevel):
     def __init__(self,parent,tool,thread):
@@ -820,14 +827,18 @@ class WmlindentTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
         self.verbosity_frame=LabelFrame(self,
                                         text="Verbosity level")
         self.verbosity_frame.grid(row=0,
@@ -914,46 +925,40 @@ class MainFrame(Frame):
                             column=0,
                             sticky=E+W)
         self.run_button=Button(self.buttonbox,
-                               text="Run wmllint",
                                image=ICONS['run'],
-                               compound=LEFT,
-                               width=15, # to avoid changing size when callback is called
                                command=self.on_run_wmllint)
         self.run_button.pack(side=LEFT,
                              padx=5,
                              pady=5)
+        self.run_tooltip=Tooltip(self.run_button,"Run wmllint")
         self.save_button=Button(self.buttonbox,
-                                text="Save as text...",
                                 image=ICONS['save'],
-                                compound=LEFT,
                                 command=self.on_save)
         self.save_button.pack(side=LEFT,
                               padx=5,
                               pady=5)
+        self.save_tooltip=Tooltip(self.save_button,"Save as text...")
         self.clear_button=Button(self.buttonbox,
-                                 text="Clear output",
                                  image=ICONS['clear'],
-                                 compound=LEFT,
                                  command=self.on_clear)
         self.clear_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.clear_tooltip=Tooltip(self.clear_button,"Clear output")
         self.about_button=Button(self.buttonbox,
-                                 text="About...",
                                  image=ICONS['about'],
-                                 compound=LEFT,
                                  command=self.on_about)
         self.about_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.about_tooltip=Tooltip(self.about_button,"About...")
         self.exit_button=Button(self.buttonbox,
-                                text="Exit",
                                 image=ICONS['exit'],
-                                compound=LEFT,
                                 command=self.on_quit)
         self.exit_button.pack(side=RIGHT,
                               padx=5,
                               pady=5)
+        self.exit_tooltip=Tooltip(self.exit_button,"Exit")
         self.dir_variable=StringVar()
         self.dir_frame=SelectDirectory(self,
                                        textvariable=self.dir_variable)
@@ -1027,11 +1032,14 @@ class MainFrame(Frame):
         # the order of the tabs is pretty obvious
         active_tab=self.notebook.index(self.notebook.select())
         if active_tab==0:
-            self.run_button.configure(text="Run wmllint",command=self.on_run_wmllint)
+            self.run_tooltip.set_text("Run wmllint")
+            self.run_button.configure(command=self.on_run_wmllint)
         elif active_tab==1:
-            self.run_button.configure(text="Run wmlscope",command=self.on_run_wmlscope)
+            self.run_tooltip.set_text("Run wmlscope")
+            self.run_button.configure(command=self.on_run_wmlscope)
         elif active_tab==2:
-            self.run_button.configure(text="Run wmlindent",command=self.on_run_wmlindent)
+            self.run_tooltip.set_text("Run wmlindent")
+            self.run_button.configure(command=self.on_run_wmlindent)
 
     def on_run_wmllint(self):
         # first of all, check if we have something to run wmllint on it

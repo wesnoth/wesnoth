@@ -93,6 +93,9 @@ Version 1.13.1+dev:
      variable ($recruited_unit_random_variation).
    * Fixed unit [resistance] and [jamming_costs] not being considered for sync
      check.
+   * Fixed problems with slow/poison/petrify sounds (bug #23024) and made the
+     sounds play automatically when the status is inflicted in combat, instead
+     of being played by attack animations.
 
 Version 1.13.1:
  * Security fixes:
