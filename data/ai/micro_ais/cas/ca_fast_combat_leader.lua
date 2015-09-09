@@ -13,7 +13,7 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
 
     leader_weight = (cfg and cfg.leader_weight) or 2
     leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
-    leader_additonal_threat = (cfg and cfg.leader_additonal_threat) or 1
+    leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
 
     self.data.move_cache = { turn = wesnoth.current.turn }
     self.data.gamedata = FAU.gamedata_setup()
@@ -141,10 +141,10 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
                     -- A threat is considered acceptable, if it is within the
                     -- limits given for HP and units, or if it is not more than the
                     -- threat on the leader at the current position times
-                    -- leader_additonal_threat (the latter only if
+                    -- leader_additional_threat (the latter only if
                     -- threatened_leader_fights=yes is set, otherwise
                     -- leader_current_threat is zero)
-                    if (enemy_power > leader_current_threat * leader_additonal_threat) then
+                    if (enemy_power > leader_current_threat * leader_additional_threat) then
                         if (enemy_power * leader_weight > leader.hitpoints)
                             or (enemy_number > leader_attack_max_units)
                         then
