@@ -64,7 +64,7 @@ public:
 	virtual void on_not_observer() {}
 
 	bool recorder_at_end();
-
+	bool should_stop() const { return stop_condition_->should_stop(); }
 	class hotkey_handler;
 	
 	virtual bool is_replay() OVERRIDE { return true; }

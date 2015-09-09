@@ -65,7 +65,7 @@ bool replay_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
 	case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
 		//we have one events_disabler when starting the replay_controller and a second when entering the synced context.
-		return (events::commands_disabled <= 1 ) && !replay_controller_.recorder_at_end();
+		return replay_controller_.should_stop() && (events::commands_disabled <= 1 ) && !replay_controller_.recorder_at_end();
 	default:
 		return result;
 	}

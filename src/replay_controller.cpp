@@ -213,7 +213,7 @@ void replay_controller::init_gui()
 	BOOST_FOREACH(const team & t, gamestate().board_.teams()) {
 		t.reset_objectives_changed();
 	}
-	get_hotkey_command_executor()->set_button_state(*gui_); 
+	get_hotkey_command_executor()->set_button_state(*gui_);
 	update_replay_ui();
 }
 
