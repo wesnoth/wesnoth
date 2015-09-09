@@ -506,19 +506,17 @@ void playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
 	assert(!linger_);
-	if(end_turn_ != END_TURN_NONE) {
+	if(end_turn_ != END_TURN_NONE || is_regular_game_end()) {
 		return;
 	}
-	//TODO: why do we need the next line?
-	ai::manager::raise_turn_started();
 
-	if(init_side_done_now_ && !is_regular_game_end()) {
+	if(init_side_done_now_) {
 		update_savegame_snapshot();
 		savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 
-	if(preferences::turn_bell() && !is_regular_game_end()) {
+	if(preferences::turn_bell()) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
 }
