@@ -161,7 +161,7 @@ replay_controller::replay_controller(const config& level,
 		const config& game_config, 
 		const tdata_cache & tdata, CVideo& video)
 	: play_controller(level, state_of_game, ticks, game_config, tdata, video, false)
-	, gameboard_start_(gamestate_.board_)
+	, gameboard_start_(gamestate().board_)
 	, tod_manager_start_(level)
 	, vision_(state_of_game.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER ? CURRENT_TEAM : HUMAN_TEAM)
 	, stop_condition_(new replay_stop_condition())
@@ -200,10 +200,10 @@ void replay_controller::init_gui()
 	DBG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
 
-	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate_.first_human_team_ : 0, vision_ == SHOW_ALL);
+	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate().first_human_team_ : 0, vision_ == SHOW_ALL);
 	gui_->scroll_to_leader(player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
-	BOOST_FOREACH(const team & t, gamestate_.board_.teams()) {
+	BOOST_FOREACH(const team & t, gamestate().board_.teams()) {
 		t.reset_objectives_changed();
 	}
 	get_hotkey_command_executor()->set_button_state(*gui_); 
@@ -362,10 +362,10 @@ void replay_controller::reset_replay_impl()
 	player_number_ = level_["playing_team"].to_int() + 1;
 	init_side_done_ = level_["init_side_done"].to_bool(false);
 	skip_replay_ = false;
-	gamestate_.tod_manager_= tod_manager_start_;
+	gamestate().tod_manager_= tod_manager_start_;
 	resources::recorder->start_replay();
-	gamestate_.board_ = gameboard_start_;
-	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
+	gamestate().board_ = gameboard_start_;
+	gui_->change_display_context(&gamestate().board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
 						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
 						   //of game_board changes in the future
 
@@ -379,16 +379,16 @@ void replay_controller::reset_replay_impl()
 		events_manager_.reset(new game_events::manager(level_));
 	}*/
 
-	gamestate_.events_manager_.reset();
-	resources::game_events=NULL;
-	gamestate_.lua_kernel_.reset();
-	resources::lua_kernel=NULL;
-	gamestate_.lua_kernel_.reset(new game_lua_kernel(&gui_->video(), gamestate_, *this, *gamestate_.reports_));
-	gamestate_.lua_kernel_->set_game_display(gui_.get());
-	resources::lua_kernel=gamestate_.lua_kernel_.get();
-	gamestate_.game_events_resources_->lua_kernel = resources::lua_kernel;
-	gamestate_.events_manager_.reset(new game_events::manager(level_, gamestate_.game_events_resources_));
-	resources::game_events=gamestate_.events_manager_.get();
+	gamestate().events_manager_.reset();
+	resources::game_events = NULL;
+	gamestate().lua_kernel_.reset();
+	resources::lua_kernel = NULL;
+	gamestate().lua_kernel_.reset(new game_lua_kernel(&gui_->video(), gamestate(), *this, *gamestate().reports_));
+	gamestate().lua_kernel_->set_game_display(gui_.get());
+	resources::lua_kernel = gamestate().lua_kernel_.get();
+	gamestate().game_events_resources_->lua_kernel = resources::lua_kernel;
+	gamestate().events_manager_.reset(new game_events::manager(level_, gamestate().game_events_resources_));
+	resources::game_events = gamestate().events_manager_.get();
 
 	gui_->labels().read(level_);
 
@@ -412,12 +412,12 @@ void replay_controller::stop_replay()
 
 void replay_controller::replay_next_turn()
 {
-	stop_condition_.reset(new replay_play_turn(gamestate_.tod_manager_.turn()));
+	stop_condition_.reset(new replay_play_turn(gamestate().tod_manager_.turn()));
 }
 
 void replay_controller::replay_next_side()
 {
-	stop_condition_.reset(new replay_play_side(gamestate_.tod_manager_.turn(), player_number_));
+	stop_condition_.reset(new replay_play_side(gamestate().tod_manager_.turn(), player_number_));
 }
 
 void replay_controller::replay_next_move()
@@ -480,11 +480,11 @@ void replay_controller::play_replay()
 void replay_controller::update_teams()
 {
 	int next_team = player_number_;
-	if(static_cast<size_t>(next_team) > gamestate_.board_.teams().size()) {
+	if(static_cast<size_t>(next_team) > gamestate().board_.teams().size()) {
 		next_team = 1;
 	}
 	
-	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate_.first_human_team_ : next_team - 1, vision_ == SHOW_ALL);
+	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate().first_human_team_ : next_team - 1, vision_ == SHOW_ALL);
 	
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();
@@ -522,7 +522,7 @@ bool replay_controller::recorder_at_end() {
 void replay_controller::play_side_impl()
 {
 	update_teams();
-	stop_condition_->new_side_turn(player_number_, this->gamestate_.tod_manager_.turn());
+	stop_condition_->new_side_turn(player_number_, gamestate().tod_manager_.turn());
 	while(true)
 	{
 		if(!stop_condition_->should_stop())

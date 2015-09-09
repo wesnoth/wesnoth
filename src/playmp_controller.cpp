@@ -247,7 +247,7 @@ void playmp_controller::linger()
 	// we're needed here.
 	gui_->set_game_mode(game_display::LINGER_MP);
 	// End all unit moves
-	gamestate_.board_.set_all_units_user_end_turn();
+	gamestate().board_.set_all_units_user_end_turn();
 
 	set_end_scenario_button();
 	assert(is_regular_game_end());
@@ -417,7 +417,7 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (!get_end_level_data_const().transient.linger_mode || gamestate_.board_.teams().empty()) {
+	if (!get_end_level_data_const().transient.linger_mode || gamestate().board_.teams().empty()) {
 		if(!is_host()) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario

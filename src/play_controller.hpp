@@ -135,26 +135,29 @@ public:
 		return *end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
-		return gamestate_.board_.teams_;
+		return gamestate().board_.teams_;
 	}
 
 	const unit_map & get_units_const() const {
-		return gamestate_.board_.units();
+		return gamestate().board_.units();
 	}
 
 	const gamemap& get_map_const() const{
-		return gamestate_.board_.map();
+		return gamestate().board_.map();
 	}
 	const tod_manager& get_tod_manager_const() const{
-			return gamestate_.tod_manager_;
+			return gamestate().tod_manager_;
 		}
 
 	bool is_observer() const {
-		return gamestate_.board_.is_observer();
+		return gamestate().board_.is_observer();
 	}
 
 	game_state & gamestate() {
-		return gamestate_;
+		return *gamestate_;
+	}
+	const game_state & gamestate() const {
+		return *gamestate_;
 	}
 
 	/**
@@ -163,7 +166,7 @@ public:
 	 */
 	void check_victory();
 
-	size_t turn() const {return gamestate_.tod_manager_.turn();}
+	size_t turn() const {return gamestate().tod_manager_.turn();}
 
 	/** Returns the number of the side whose turn it is. Numbering starts at one. */
 	int current_side() const { return player_number_; }
@@ -251,7 +254,7 @@ protected:
 	int find_last_visible_team() const;
 
 	//gamestate
-	game_state gamestate_;
+	boost::scoped_ptr<game_state> gamestate_;
 	saved_game & saved_game_;
 
 	//managers

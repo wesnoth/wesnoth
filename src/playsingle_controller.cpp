@@ -120,10 +120,10 @@ void playsingle_controller::init_gui(){
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
 
-	if(gamestate_.first_human_team_ != -1) {
-		gui_->scroll_to_tile(gamestate_.board_.map().starting_position(gamestate_.first_human_team_ + 1), game_display::WARP);
+	if(gamestate().first_human_team_ != -1) {
+		gui_->scroll_to_tile(gamestate().board_.map().starting_position(gamestate().first_human_team_ + 1), game_display::WARP);
 	}
-	gui_->scroll_to_tile(gamestate_.board_.map().starting_position(1), game_display::WARP);
+	gui_->scroll_to_tile(gamestate().board_.map().starting_position(1), game_display::WARP);
 
 	update_locker lock_display(gui_->video(), is_skipping_replay());
 	gui_->draw();
@@ -218,7 +218,7 @@ void playsingle_controller::play_scenario_main_loop() {
 	// Avoid autosaving after loading, but still
 	// allow the first turn to have an autosave.
 	ai_testing::log_game_start();
-	if(gamestate_.board_.teams().empty())
+	if(gamestate().board_.teams().empty())
 	{
 		ERR_NG << "Playing game with 0 teams." << std::endl;
 	}
@@ -273,7 +273,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 		const bool is_victory = get_end_level_data_const().is_victory;
 
-		if(this->gamestate_.gamedata_.phase() <= game_data::PRESTART) {
+		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
 			sdl::draw_solid_tinted_rectangle(
 				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
 				gui_->video().getSurface()
@@ -292,7 +292,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 		}
 
-		if (gamestate_.board_.teams().empty())
+		if (gamestate().board_.teams().empty())
 		{
 			//store persistent teams
 			saved_game_.set_snapshot(config());
@@ -314,7 +314,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			pump().fire("scenario_end");
 		}
 		if(end_level.proceed_to_next_level) {
-			gamestate_.board_.heal_all_survivors();
+			gamestate().board_.heal_all_survivors();
 		}
 		if(is_observer()) {
 			gui2::show_transient_message(gui_->video(), _("Game Over"), _("The game is over."));
@@ -386,7 +386,7 @@ void playsingle_controller::play_side_impl()
 		LOG_NG << "is human...\n";
 		// If a side is dead end the turn, but play at least side=1's
 		// turn in case all sides are dead
-		if (gamestate_.board_.side_units(player_number_) == 0 && !(gamestate_.board_.units().size() == 0 && player_number_ == 1)) {
+		if (gamestate().board_.side_units(player_number_) == 0 && !(gamestate().board_.units().size() == 0 && player_number_ == 1)) {
 			end_turn_ = END_TURN_REQUIRED;
 		}
 
@@ -443,7 +443,7 @@ void playsingle_controller::show_turn_dialog(){
 		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
-		symbols["name"] = gamestate_.board_.teams()[player_number_ - 1].current_player();
+		symbols["name"] = gamestate().board_.teams()[player_number_ - 1].current_player();
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_transient_message(gui_->video(), "", message);
 	}
@@ -495,7 +495,7 @@ void playsingle_controller::linger()
 	gui_->redraw_everything();
 
 	// End all unit moves
-	gamestate_.board_.set_all_units_user_end_turn();
+	gamestate().board_.set_all_units_user_end_turn();
 	try {
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn.
@@ -627,7 +627,7 @@ void playsingle_controller::force_end_turn(){
 
 void playsingle_controller::check_objectives()
 {
-	const team &t = gamestate_.board_.teams()[gui_->viewing_team()];
+	const team &t = gamestate().board_.teams()[gui_->viewing_team()];
 
 	if (!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
 		dialogs::show_objectives(get_scenario_name().str(), t.objectives());
@@ -645,7 +645,7 @@ void playsingle_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (get_end_level_data_const().transient.linger_mode && !gamestate_.board_.teams().empty()) {
+	if (get_end_level_data_const().transient.linger_mode && !gamestate().board_.teams().empty()) {
 		linger();
 	}
 }

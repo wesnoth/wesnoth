@@ -137,7 +137,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	: controller_base(game_config, video)
 	, observer()
 	, savegame_config()
-	, gamestate_(level, tdata)
+	, gamestate_(new game_state(level, tdata))
 	, level_()
 	, saved_game_(state_of_game)
 	, prefs_disp_manager_()
@@ -174,15 +174,15 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 {
 	copy_persistent(level, level_);
 	resources::controller = this;
-	resources::gameboard = &gamestate_.board_;
-	resources::gamedata = &gamestate_.gamedata_;
+	resources::gameboard = &gamestate().board_;
+	resources::gamedata = &gamestate().gamedata_;
 	resources::persist = &persist_;
-	resources::teams = &gamestate_.board_.teams_;
-	resources::tod_manager = &gamestate_.tod_manager_;
+	resources::teams = &gamestate().board_.teams_;
+	resources::tod_manager = &gamestate().tod_manager_;
 	resources::undo_stack = undo_stack_.get();
 	resources::recorder = replay_.get();
-	resources::units = &gamestate_.board_.units_;
-	resources::filter_con = &gamestate_;
+	resources::units = &gamestate().board_.units_;
+	resources::filter_con = &gamestate();
 
 	resources::classification = &saved_game_.classification();
 	resources::mp_settings = &saved_game_.mp_settings();
@@ -230,8 +230,8 @@ void play_controller::init(CVideo& video, const config& level)
 	loadscreen::start_stage("load level");
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate_.init(ticks_, *this, level);
-	resources::tunnels = gamestate_.pathfind_manager_.get();
+	gamestate().init(ticks_, *this, level);
+	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
 	whiteboard_manager_.reset(new wb::manager());
@@ -239,7 +239,7 @@ void play_controller::init(CVideo& video, const config& level)
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("load units");
-	preferences::encounter_all_content(gamestate_.board_);
+	preferences::encounter_all_content(gamestate().board_);
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("init theme");
@@ -247,7 +247,7 @@ void play_controller::init(CVideo& video, const config& level)
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, *gamestate_.reports_, gamestate_.tod_manager_, theme_cfg, level));
+	gui_.reset(new game_display(gamestate().board_, video, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
 	if (!gui_->video().faked()) {
 		if (saved_game_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -267,12 +267,12 @@ void play_controller::init(CVideo& video, const config& level)
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	gamestate_.bind(whiteboard_manager_.get(), gui_.get());
-	resources::lua_kernel=gamestate_.lua_kernel_.get();
-	resources::game_events=gamestate_.events_manager_.get();
+	gamestate().bind(whiteboard_manager_.get(), gui_.get());
+	resources::lua_kernel = gamestate().lua_kernel_.get();
+	resources::game_events = gamestate().events_manager_.get();
 
-	if(gamestate_.first_human_team_ != -1) {
-		gui_->set_team(gamestate_.first_human_team_);
+	if(gamestate().first_human_team_ != -1) {
+		gui_->set_team(gamestate().first_human_team_);
 	}
 	else if (is_observer())
 	{
@@ -280,9 +280,9 @@ void play_controller::init(CVideo& video, const config& level)
 		// If not set here observer would be without fog until
 		// the first turn of observable side
 		size_t i;
-		for (i=0;i < gamestate_.board_.teams().size();++i)
+		for (i=0;i < gamestate().board_.teams().size();++i)
 		{
-			if (!gamestate_.board_.teams()[i].get_disallow_observers())
+			if (!gamestate().board_.teams()[i].get_disallow_observers())
 			{
 				gui_->set_team(i);
 			}
@@ -313,9 +313,9 @@ void play_controller::init_managers()
 void play_controller::fire_preload(const config& level)
 {
 	// Run initialization scripts, even if loading from a snapshot.
-	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
-	gamestate_.lua_kernel_->initialize(level);
-	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
+	gamestate().gamedata_.set_phase(game_data::PRELOAD);
+	gamestate().lua_kernel_->initialize(level);
+	gamestate().gamedata_.get_variable("turn_number") = int(turn());
 	pump().fire("preload");
 }
 void play_controller::fire_prestart()
@@ -323,27 +323,27 @@ void play_controller::fire_prestart()
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
 	update_locker lock_display(gui_->video());
-	gamestate_.gamedata_.set_phase(game_data::PRESTART);
+	gamestate().gamedata_.set_phase(game_data::PRESTART);
 	pump().fire("prestart");
 	// prestart event may modify start turn with WML, reflect any changes.
-	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
+	gamestate().gamedata_.get_variable("turn_number") = int(turn());
 }
 
 void play_controller::fire_start()
 {
-	gamestate_.gamedata_.set_phase(game_data::START);
+	gamestate().gamedata_.set_phase(game_data::START);
 	pump().fire("start");
 	// start event may modify start turn with WML, reflect any changes.
-	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
+	gamestate().gamedata_.get_variable("turn_number") = int(turn());
 	check_objectives();
 	// prestart and start events may modify the initial gold amount,
 	// reflect any changes.
-	BOOST_FOREACH(team& tm, gamestate_.board_.teams_)
+	BOOST_FOREACH(team& tm, gamestate().board_.teams_)
 	{
 		tm.set_start_gold(tm.gold());
 	}
 	init_side_done_ = false;
-	gamestate_.gamedata_.set_phase(game_data::PLAY);
+	gamestate().gamedata_.set_phase(game_data::PLAY);
 }
 
 void play_controller::init_gui()
@@ -365,7 +365,7 @@ void play_controller::init_side_begin()
 
 	gui_->set_playing_team(size_t(player_number_ - 1));
 
-	gamestate_.gamedata_.last_selected = map_location::null_location();
+	gamestate().gamedata_.last_selected = map_location::null_location();
 }
 
 /**
@@ -378,7 +378,7 @@ void play_controller::maybe_do_init_side()
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
-	if (init_side_done_ || !current_team().is_local() || gamestate_.gamedata_.phase() != game_data::PLAY || is_replay()) {
+	if (init_side_done_ || !current_team().is_local() || gamestate().gamedata_.phase() != game_data::PLAY || is_replay()) {
 		return;
 	}
 
@@ -401,7 +401,7 @@ void play_controller::do_init_side()
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
 
-	gamestate_.gamedata_.get_variable("side_number") = player_number_;
+	gamestate().gamedata_.get_variable("side_number") = player_number_;
 
 	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
 	if(!gamestate().tod_manager_.has_turn_event_fired())
@@ -421,13 +421,13 @@ void play_controller::do_init_side()
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
 	if (turn() > 1) {
-		gamestate_.board_.new_turn(player_number_);
+		gamestate().board_.new_turn(player_number_);
 		current_team().new_turn();
 
 		// If the expense is less than the number of villages owned
 		// times the village support capacity,
 		// then we don't have to pay anything at all
-		int expense = gamestate_.board_.side_upkeep(player_number_) -
+		int expense = gamestate().board_.side_upkeep(player_number_) -
 			current_team().support();
 		if(expense > 0) {
 			current_team().spend_gold(expense);
@@ -452,7 +452,7 @@ void play_controller::do_init_side()
 }
 void play_controller::init_side_end()
 {
-	const time_of_day &tod = gamestate_.tod_manager_.get_time_of_day();
+	const time_of_day &tod = gamestate().tod_manager_.get_time_of_day();
 
 	if (player_number_ == 1 || !init_side_done_now_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
@@ -474,7 +474,7 @@ config play_controller::to_config() const
 	cfg.merge_attributes(level_);
 	cfg["init_side_done"] = init_side_done_;
 
-	gamestate_.write(cfg);
+	gamestate().write(cfg);
 
 	if(end_level_data_.get_ptr() != NULL) {
 		end_level_data_->write(cfg.add_child("end_level_data"));
@@ -514,7 +514,7 @@ void play_controller::finish_side_turn()
 		set_scontext_synced sync(1);
 		// Ending the turn commits all moves.
 		undo_stack_->clear();
-		gamestate_.board_.end_turn(player_number_);
+		gamestate().board_.end_turn(player_number_);
 		const std::string turn_num = str_cast(turn());
 		const std::string side_num = str_cast(player_number_);
 
@@ -552,7 +552,7 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	BOOST_FOREACH(const unit & u, gamestate_.board_.units()) {
+	BOOST_FOREACH(const unit & u, gamestate().board_.units()) {
 		if (current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
 			return true;
 		}
@@ -604,10 +604,10 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		BOOST_FOREACH(const unit &u, gamestate_.board_.units()){
+		BOOST_FOREACH(const unit &u, gamestate().board_.units()){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
-					!(gamestate_.board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
+					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
 				dictionary.insert(u.name());
 		}
 		//TODO List map labels
@@ -621,7 +621,7 @@ void play_controller::tab()
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
-		BOOST_FOREACH(const team& t, gamestate_.board_.teams()) {
+		BOOST_FOREACH(const team& t, gamestate().board_.teams()) {
 			if(!t.is_empty())
 				dictionary.insert(t.current_player());
 		}
@@ -645,14 +645,14 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
-	assert(player_number_ > 0 && player_number_ <= int(gamestate_.board_.teams().size()));
-	return gamestate_.board_.teams_[player_number_-1];
+	assert(player_number_ > 0 && player_number_ <= int(gamestate().board_.teams().size()));
+	return gamestate().board_.teams_[player_number_-1];
 }
 
 const team& play_controller::current_team() const
 {
-	assert(player_number_ > 0 && player_number_ <= int(gamestate_.board_.teams().size()));
-	return gamestate_.board_.teams()[player_number_-1];
+	assert(player_number_ > 0 && player_number_ <= int(gamestate().board_.teams().size()));
+	return gamestate().board_.teams()[player_number_-1];
 }
 
 /// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
@@ -672,7 +672,7 @@ static int modulo(int num, int mod, int min)
 
 bool play_controller::is_team_visible(int team_num, bool observer) const
 {
-	const team& t = gamestate_.board_.teams()[team_num - 1];
+	const team& t = gamestate().board_.teams()[team_num - 1];
 	if(observer) {
 		return !t.get_disallow_observers() && !t.is_empty();
 	}
@@ -683,8 +683,8 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 
 int play_controller::find_last_visible_team() const
 {
-	assert(player_number_ <= int(gamestate_.board_.teams().size()));
-	const int num_teams = gamestate_.board_.teams().size();
+	assert(player_number_ <= int(gamestate().board_.teams().size()));
+	const int num_teams = gamestate().board_.teams().size();
 	const bool is_observer = this->is_observer();
 
 	for(int i = 0; i < num_teams; i++) {
@@ -755,7 +755,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
 				mouse_handler_.set_current_paths(pathfind::paths(*u, false,
-				                       true, gamestate_.board_.teams_[gui_->viewing_team()],
+				                       true, gamestate().board_.teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
@@ -888,7 +888,7 @@ void play_controller::check_victory()
 	bool continue_level, found_player, found_network_player, invalidate_all;
 	std::set<unsigned> not_defeated;
 
-	gamestate_.board_.check_victory(continue_level, found_player, found_network_player, invalidate_all, not_defeated, remove_from_carryover_on_defeat_);
+	gamestate().board_.check_victory(continue_level, found_player, found_network_player, invalidate_all, not_defeated, remove_from_carryover_on_defeat_);
 
 	if (invalidate_all) {
 		gui_->invalidate_all();
@@ -976,7 +976,7 @@ void play_controller::update_savegame_snapshot() const
 }
 
 game_events::t_pump & play_controller::pump() {
-	return gamestate_.events_manager_->pump();
+	return gamestate().events_manager_->pump();
 }
 
 int play_controller::get_ticks() {
@@ -997,7 +997,7 @@ hotkey::command_executor * play_controller::get_hotkey_command_executor() {
 
 bool play_controller::is_browsing() const
 {
-	if(linger_ || !init_side_done_ || this->gamestate_.gamedata_.phase() != game_data::PLAY) {
+	if(linger_ || !init_side_done_ || gamestate().gamedata_.phase() != game_data::PLAY) {
 		return true;
 	}
 	const team& t = current_team();
@@ -1035,7 +1035,7 @@ void play_controller::start_game(const config& level)
 			return;
 		}
 
-		for ( int side = gamestate_.board_.teams().size(); side != 0; --side )
+		for ( int side = gamestate().board_.teams().size(); side != 0; --side )
 			actions::clear_shroud(side, false, false);
 		
 		init_gui();
@@ -1049,7 +1049,7 @@ void play_controller::start_game(const config& level)
 		sync.do_final_checkup();
 		gui_->recalculate_minimap();
 		// Initialize countdown clock.
-		BOOST_FOREACH(const team& t, gamestate_.board_.teams())
+		BOOST_FOREACH(const team& t, gamestate().board_.teams())
 		{
 			if (saved_game_.mp_settings().mp_countdown) {
 				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
@@ -1060,7 +1060,7 @@ void play_controller::start_game(const config& level)
 	{
 		init_gui();
 		events::raise_draw_event();
-		gamestate_.gamedata_.set_phase(game_data::PLAY);
+		gamestate().gamedata_.set_phase(game_data::PLAY);
 		gui_->recalculate_minimap();
 	}
 }
@@ -1104,7 +1104,7 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate_.board_.teams()[player_number_ - 1].save_id());
+		statistics::reset_turn_stats(gamestate().board_.teams()[player_number_ - 1].save_id());
 
 		play_side_impl();
 
@@ -1132,7 +1132,7 @@ void play_controller::play_turn()
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
-	for (; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
+	for (; player_number_ <= int(gamestate().board_.teams().size()); ++player_number_)
 	{
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) {
@@ -1161,7 +1161,7 @@ void play_controller::play_turn()
 		}
 	}
 	//If the loop exits due to the last team having been processed,
-	player_number_ = gamestate_.board_.teams().size();
+	player_number_ = gamestate().board_.teams().size();
 
 	finish_turn();
 
@@ -1170,14 +1170,14 @@ void play_controller::play_turn()
 }
 
 void play_controller::check_time_over(){
-	bool time_left = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
+	bool time_left = gamestate().tod_manager_.next_turn(gamestate().gamedata_);
 	if(!time_left) {
 		LOG_NG << "firing time over event...\n";
 		set_scontext_synced_base sync;
 		pump().fire("time over");
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event
-		if (gamestate_.tod_manager_.is_time_left()) {
+		if (gamestate().tod_manager_.is_time_left()) {
 			return;
 		}
 
