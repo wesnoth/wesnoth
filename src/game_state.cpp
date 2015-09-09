@@ -56,6 +56,7 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 	events_manager_(),
 	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
+	start_event_fired_(!level["playing_team"].empty()),
 	first_human_team_(-1)
 {
 	init(pc.ticks(), pc, level);

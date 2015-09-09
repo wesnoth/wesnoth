@@ -158,7 +158,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
 	, replay_(new replay(state_of_game.get_replay()))
-	, loading_game_(!level["playing_team"].empty())
 	, skip_replay_(skip_replay)
 	, linger_(false)
 	, init_side_done_now_(false)
@@ -1049,8 +1048,9 @@ void play_controller::start_game(const config& level)
 {
 	fire_preload(level);
 
-	if(!loading_game_)
+	if(!gamestate().start_event_fired_)
 	{
+		gamestate().start_event_fired_ = true;
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
 		

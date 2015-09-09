@@ -55,6 +55,7 @@ public:
 	int player_number_;
 
 	bool init_side_done_;
+	bool start_event_fired_;
 	bool& init_side_done() { return init_side_done_; }
 
 
