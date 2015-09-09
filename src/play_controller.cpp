@@ -329,7 +329,7 @@ void play_controller::init_gui()
 	gui_->update_tod();
 }
 
-void play_controller::init_side_begin(bool)
+void play_controller::init_side_begin()
 {
 	mouse_handler_.set_side(player_number_);
 
@@ -1115,7 +1115,7 @@ void play_controller::play_turn()
 		if (current_team().is_empty()) {
 			continue;
 		}
-		init_side_begin(false);
+		init_side_begin();
 		if(init_side_done_) {
 			//This is the case in a reloaded game where teh side was initilizes before saving the game.
 			init_side_end();
