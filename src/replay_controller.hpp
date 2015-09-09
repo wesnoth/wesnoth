@@ -70,7 +70,7 @@ public:
 	virtual bool is_replay() OVERRIDE { return true; }
 protected:
 	virtual void init_gui();
-
+	virtual void update_viewing_player();
 private:
 	enum REPLAY_VISION
 	{

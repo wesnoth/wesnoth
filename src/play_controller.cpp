@@ -1113,12 +1113,7 @@ void play_controller::play_side()
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 	do {
-		//Update viewing team in case it has changed during the loop.
-		if(int side_num = play_controller::find_last_visible_team()) {
-			if(side_num != this->gui_->viewing_side()) {
-				update_gui_to_player(side_num - 1);
-			}
-		}
+		update_viewing_player();
 		{ 
 			save_blocker blocker;
 			maybe_do_init_side();

@@ -665,3 +665,13 @@ void playsingle_controller::sync_end_turn()
 	assert(end_turn_ == END_TURN_SYNCED);
 	skip_next_turn_ = false;
 }
+
+void playsingle_controller::update_viewing_player()
+{
+	//Update viewing team in case it has changed during the loop.
+	if(int side_num = play_controller::find_last_visible_team()) {
+		if(side_num != this->gui_->viewing_side()) {
+			update_gui_to_player(side_num - 1);
+		}
+	}
+}

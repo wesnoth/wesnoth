@@ -90,6 +90,7 @@ protected:
 	bool skip_next_turn_;
 	void linger();
 	void sync_end_turn();
+	void update_viewing_player();
 };
 
 
