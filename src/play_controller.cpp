@@ -651,7 +651,7 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 {
 	const team& t = gamestate_.board_.teams()[team_num - 1];
 	if(observer) {
-		return !t.get_disallow_observers();
+		return !t.get_disallow_observers() && !t.is_empty();
 	}
 	else {
 		return t.is_local_human() && !t.is_idle();
@@ -1064,18 +1064,18 @@ void play_controller::play_side()
 {
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
-	{ 
-		save_blocker blocker;
-		maybe_do_init_side();
-		if(is_regular_game_end()) {
-			return;
-		}
-	}
 	do {
 		//Update viewing team in case it has changed during the loop.
 		if(int side_num = play_controller::find_last_visible_team()) {
 			if(side_num != this->gui_->viewing_side()) {
 				update_gui_to_player(side_num - 1);
+			}
+		}
+		{ 
+			save_blocker blocker;
+			maybe_do_init_side();
+			if(is_regular_game_end()) {
+				return;
 			}
 		}
 		// This flag can be set by derived classes (in overridden functions).
