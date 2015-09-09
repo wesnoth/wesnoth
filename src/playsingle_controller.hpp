@@ -56,7 +56,6 @@ public:
 	virtual bool should_return_to_play_side()
 	{ return player_type_changed_ || end_turn_ != END_TURN_NONE || is_regular_game_end(); }
 protected:
-	void play_turn();
 	virtual void play_side_impl();
 	void before_human_turn();
 	void show_turn_dialog();
@@ -69,7 +68,6 @@ protected:
 	virtual void do_idle_notification();
 	virtual void play_network_turn();
 	virtual void init_gui();
-	void check_time_over();
 	void store_recalls();
 	void store_gold(bool obs = false);
 

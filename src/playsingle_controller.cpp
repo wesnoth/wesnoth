@@ -366,57 +366,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	return LEVEL_RESULT::QUIT;
 }
 
-void playsingle_controller::play_turn()
-{
-	whiteboard_manager_->on_gamestate_change();
-	gui_->new_turn();
-	gui_->invalidate_game_status();
-	events::raise_draw_event();
-
-	LOG_NG << "turn: " << turn() << "\n";
-
-	if(non_interactive()) {
-		LOG_AIT << "Turn " << turn() << ":" << std::endl;
-	}
-
-	for (; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
-	{
-		// If a side is empty skip over it.
-		if (current_team().is_empty()) {
-			continue;
-		}
-		init_side_begin(false);
-		if(init_side_done_) {
-			//This is the case in a reloaded game where teh side was initilizes before saving the game.
-			init_side_end();
-		}
-
-		ai_testing::log_turn_start(player_number_);
-		play_side();
-		if(is_regular_game_end()) {
-			return;
-		}
-		finish_side_turn();
-		turn_data_.send_data();
-		if(is_regular_game_end()) {
-			return;
-		}
-		if(non_interactive()) {
-			LOG_AIT << " Player " << player_number_ << ": " <<
-				current_team().villages().size() << " Villages" <<
-				std::endl;
-			ai_testing::log_turn_end(player_number_);
-		}
-	}
-	//If the loop exits due to the last team having been processed,
-	player_number_ = gamestate_.board_.teams().size();
-
-	finish_turn();
-
-	// Time has run out
-	check_time_over();
-}
-
 void playsingle_controller::play_idle_loop()
 {
 	while(!should_return_to_play_side()) {
@@ -659,33 +608,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 	}
 }
 
-void playsingle_controller::check_time_over(){
-	bool time_left = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
-	if(!time_left) {
-		LOG_NG << "firing time over event...\n";
-		set_scontext_synced_base sync;
-		pump().fire("time over");
-		LOG_NG << "done firing time over event...\n";
-		//if turns are added while handling 'time over' event
-		if (gamestate_.tod_manager_.is_time_left()) {
-			return;
-		}
 
-		if(non_interactive()) {
-			LOG_AIT << "time over (draw)\n";
-			ai_testing::log_draw();
-		}
-
-		check_victory();
-		if (is_regular_game_end()) {
-			return;
-		}
-		end_level_data e;
-		e.proceed_to_next_level = false;
-		e.is_victory = false;
-		set_end_level_data(e);
-	}
-}
 
 void playsingle_controller::end_turn(){
 	if (linger_)
@@ -731,6 +654,7 @@ void playsingle_controller::sync_end_turn()
 	assert(synced_context::synced_state() == synced_context::UNSYNCED);
 	if(end_turn_ == END_TURN_REQUIRED && current_team().is_local())
 	{
+		//TODO: we shodul also send this immideateley.
 		resources::recorder->end_turn();
 		end_turn_ = END_TURN_SYNCED;
 	}

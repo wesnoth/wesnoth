@@ -329,13 +329,13 @@ void play_controller::init_gui()
 	gui_->update_tod();
 }
 
-void play_controller::init_side_begin(bool is_replay)
+void play_controller::init_side_begin(bool)
 {
 	mouse_handler_.set_side(player_number_);
 
 	// If we are observers we move to watch next team if it is allowed
 	if ((is_observer() && !current_team().get_disallow_observers())
-		|| (current_team().is_local_human() && !is_replay)) 
+		|| (current_team().is_local_human() && !this->is_replay())) 
 	{
 		update_gui_to_player(player_number_ - 1);
 	}
@@ -355,7 +355,7 @@ void play_controller::maybe_do_init_side()
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
-	if (init_side_done_ || !current_team().is_local() || gamestate_.gamedata_.phase() != game_data::PLAY) {
+	if (init_side_done_ || !current_team().is_local() || gamestate_.gamedata_.phase() != game_data::PLAY || is_replay()) {
 		return;
 	}
 
@@ -1093,4 +1093,83 @@ void play_controller::play_side()
 	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
 	sync_end_turn();
+}
+
+
+void play_controller::play_turn()
+{
+	whiteboard_manager_->on_gamestate_change();
+	gui_->new_turn();
+	gui_->invalidate_game_status();
+	events::raise_draw_event();
+
+	LOG_NG << "turn: " << turn() << "\n";
+
+	if(non_interactive()) {
+		LOG_AIT << "Turn " << turn() << ":" << std::endl;
+	}
+
+	for (; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
+	{
+		// If a side is empty skip over it.
+		if (current_team().is_empty()) {
+			continue;
+		}
+		init_side_begin(false);
+		if(init_side_done_) {
+			//This is the case in a reloaded game where teh side was initilizes before saving the game.
+			init_side_end();
+		}
+
+		ai_testing::log_turn_start(player_number_);
+		play_side();
+		if(is_regular_game_end()) {
+			return;
+		}
+		finish_side_turn();
+		if(is_regular_game_end()) {
+			return;
+		}
+		if(non_interactive()) {
+			LOG_AIT << " Player " << player_number_ << ": " <<
+				current_team().villages().size() << " Villages" <<
+				std::endl;
+			ai_testing::log_turn_end(player_number_);
+		}
+	}
+	//If the loop exits due to the last team having been processed,
+	player_number_ = gamestate_.board_.teams().size();
+
+	finish_turn();
+
+	// Time has run out
+	check_time_over();
+}
+
+void play_controller::check_time_over(){
+	bool time_left = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
+	if(!time_left) {
+		LOG_NG << "firing time over event...\n";
+		set_scontext_synced_base sync;
+		pump().fire("time over");
+		LOG_NG << "done firing time over event...\n";
+		//if turns are added while handling 'time over' event
+		if (gamestate_.tod_manager_.is_time_left()) {
+			return;
+		}
+
+		if(non_interactive()) {
+			LOG_AIT << "time over (draw)\n";
+			ai_testing::log_draw();
+		}
+
+		check_victory();
+		if (is_regular_game_end()) {
+			return;
+		}
+		end_level_data e;
+		e.proceed_to_next_level = false;
+		e.is_victory = false;
+		set_end_level_data(e);
+	}
 }
