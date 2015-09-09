@@ -488,14 +488,7 @@ void replay_controller::play_replay()
 
 void replay_controller::update_teams()
 {
-	int next_team = current_side();
-	if(static_cast<size_t>(next_team) > gamestate().board_.teams().size()) {
-		next_team = 1;
-	}
-	
-	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate().first_human_team_ : next_team - 1, vision_ == SHOW_ALL);
-	
-	gui_->set_playing_team(next_team - 1);
+	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate().first_human_team_ : current_side() - 1, vision_ == SHOW_ALL);
 	gui_->invalidate_all();
 }
 
