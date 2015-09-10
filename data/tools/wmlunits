@@ -355,7 +355,10 @@ def list_contents():
 def process_campaign_or_era(addon, cid, define, batchlist):
     n = 0
     
-    print((addon + ": " + cid + " " + define))
+    print(str(addon) + ": " + str(cid) + " " + str(define))
+
+    if not define:
+        define = ""
 
     wesnoth = helpers.WesnothList(
         options.wesnoth,

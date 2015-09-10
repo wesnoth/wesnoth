@@ -267,8 +267,8 @@ class Parser:
             raise WMLError(self, "Preprocessor error:\n" +
                 " ".join(commandline) + "\n" +
                 "First line: " + first_line + "\n" +
-                out +
-                err)
+                out.decode("utf8") +
+                err.decode("utf8"))
 
     def parse_line_without_commands(self, line):
         """

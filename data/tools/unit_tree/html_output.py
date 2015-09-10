@@ -359,7 +359,10 @@ class HTMLOutput:
                 if u:
                     m = 0
 
-                r[m][racename] = race.get_text_val("id") if race else "none"
+                rname = race.get_text_val("id") if race else "none"
+                if not rname:
+                    rname = "none"
+                r[m][racename] = rname
             racenames = sorted(r[0].items())
             if list(r[1].items()):
                 racenames += [("-", "-")] + sorted(r[1].items())
@@ -473,7 +476,7 @@ class HTMLOutput:
         if recursion >= 4:
             error_message(
                 "Warning: Cannot find image for unit %s(%s).\n" % (
-                u.get_text_val("id"), x.name))
+                u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
         image = self.wesnoth.get_unit_value(x, "image")
         portrait = x.get_all(tag="portrait")
@@ -493,7 +496,7 @@ class HTMLOutput:
                     return self.pic(u, u, recursion = recursion + 1)
             error_message(
                 "Warning: Missing image for unit %s(%s).\n" % (
-                u.get_text_val("id"), x.name))
+                u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
         icpic = image_collector.add_image_check(self.addon, image)
         if not icpic.ipath:
@@ -514,12 +517,16 @@ class HTMLOutput:
             try: c = abilities.get_all()
             except AttributeError: c = []
             for ability in c:
-                id = ability.get_text_val("id")
+                try:
+                    id = ability.get_text_val("id")
+                except AttributeError as e:
+                    error_message("Error: Ignoring ability " + ability.debug())
+                    continue
                 if id in already: continue
                 already[id] = True
                 name = T(ability, "name")
                 if not name: name = id
-                if not name: name = ability.name
+                if not name: name = ability.name.decode("utf8")
                 anames.append(name)
         return anames
 
@@ -897,7 +904,7 @@ class HTMLOutput:
                     else:
                         error_message(
                             "Warning: Weapon special %s has no name for %s.\n" % (
-                            special.name, uid))
+                            special.name.decode("utf8"), uid))
             s = "<br/>".join(s)
             write("<td>%s</td>" % s)
 
