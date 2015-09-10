@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #encoding: utf8
 """
 wmlunits -- tool to output information on all units in HTML
@@ -10,11 +10,11 @@ Run without arguments to see usage.
 try: import psyco; psyco.full()
 except ImportError: pass
   
-import sys, os, glob, shutil, urllib2, argparse, traceback
+import sys, os, glob, shutil, urllib.request, urllib.error, urllib.parse, argparse, traceback
 import subprocess, yaml
-import multiprocessing, Queue
+import multiprocessing, queue
 
-import wesnoth.wmlparser2 as wmlparser2
+import wesnoth.wmlparser3 as wmlparser3
 import unit_tree.helpers as helpers
 import unit_tree.animations as animations
 import unit_tree.html_output as html_output
@@ -36,9 +36,9 @@ def copy_images():
         "http://www.wesnoth.org/mw/skins/glamdrol/navbg.png"]:
         local = os.path.join(options.output, grab[grab.rfind("/") + 1:])
         if not os.path.exists(local):
-            print "Fetching", grab
-            url = urllib2.urlopen(grab)
-            file(local, "w").write(url.read())
+            print("Fetching", grab)
+            url = urllib.request.urlopen(grab)
+            open(local, "wb").write(url.read())
 
 def shell(com):
     #print(com)
@@ -77,13 +77,13 @@ def get_info(addon):
     try:
         path = options.addons + "/" + addon + "/_info.cfg"
         if os.path.exists(path):
-            parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
+            parser = wmlparser3.Parser(options.wesnoth, options.config_dir,
                 options.data_dir, no_preprocess = False)
             parser.parse_file(path)
             _info[addon] = parser
         else:
-            print("Cannot find " + path)
-    except wmlparser2.WMLError as e:
+            print(("Cannot find " + path))
+    except wmlparser3.WMLError as e:
         print(e)
     return _info[addon]
 
@@ -106,7 +106,7 @@ def get_dependencies(addon):
             if d in global_addons:
                 _deps[addon].append(d)
             else:
-                print("Missing dependency for " + addon + ": " + d)
+                print(("Missing dependency for " + addon + ": " + d))
     except Exception as e:
         print(e)
     return _deps[addon]
@@ -140,7 +140,7 @@ def sorted_by_dependencies(addons):
                 n += 1
                 continue
         if n == 0:
-             print("Cannot sort dependencies for these addons: " + str(unsorted))
+             print(("Cannot sort dependencies for these addons: " + str(unsorted)))
              sorted += unsorted
              break
     return sorted
@@ -238,7 +238,7 @@ def list_contents():
         p.start()
         try:
             s, local.wesnoth = q.get(timeout = TIMEOUT)
-        except Queue.Empty:
+        except queue.Empty:
             p.terminate()
             raise
         #print("local", s, local.wesnoth)
@@ -322,14 +322,14 @@ def list_contents():
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
             sys.stdout.write("ok\n")
-        except wmlparser2.WMLError as e:
+        except wmlparser3.WMLError as e:
             ef = open(logname, "w")
             ef.write("<PARSE ERROR>\n")
             ef.write(str(e))
             ef.write("</PARSE ERROR>\n")
             ef.close()
             sys.stdout.write("failed\n")
-        except Queue.Empty as e:
+        except queue.Empty as e:
             ef = open(logname, "w")
             ef.write("<TIMEOUT ERROR>\n")
             ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
@@ -355,7 +355,7 @@ def list_contents():
 def process_campaign_or_era(addon, cid, define, batchlist):
     n = 0
     
-    print(addon + ": " + cid + " " + define)
+    print((addon + ": " + cid + " " + define))
 
     wesnoth = helpers.WesnothList(
         options.wesnoth,
@@ -404,7 +404,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
         if addon != "mainline" and isocode != "en_US": continue
         
         if define == "MULTIPLAYER":
-            for era in wesnoth.era_lookup.values():
+            for era in list(wesnoth.era_lookup.values()):
                 if era.get_text_val("id") == cid:
                     n = html_output.generate_era_report(addon, isocode, era, wesnoth)
                     break
@@ -412,7 +412,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
             if cid == "mainline":
                 n = html_output.generate_campaign_report(addon, isocode, None, wesnoth)
 
-            for campaign in wesnoth.campaign_lookup.values():
+            for campaign in list(wesnoth.campaign_lookup.values()):
                 if campaign.get_text_val("id") == cid:
                     n = html_output.generate_campaign_report(addon, isocode, campaign, wesnoth)
                     break
@@ -453,7 +453,7 @@ def batch_process():
         
         try:
             if not worked:
-                print(name + " not found")
+                print((name + " not found"))
                 continue
             
             for era in addon.get("eras", []):
@@ -468,16 +468,16 @@ def batch_process():
                 n = process_campaign_or_era(name, cid, campaign["define"], batchlist)
                 campaign["units"] = n
             
-        except wmlparser2.WMLError as e:
+        except wmlparser3.WMLError as e:
             ef = open(logname, "a")
             ef.write("<WML ERROR>\n")
             ef.write(str(e))
             ef.write("</WML ERROR>\n")
             ef.close()
-            print("    " + name + " failed")
+            print(("    " + name + " failed"))
         except Exception as e:
             traceback.print_exc()
-            print("    " + name + " failed")
+            print(("    " + name + " failed"))
             ef = open(logname, "a")
             ef.write("<INTERNAL ERROR>\n")
             ef.write("please report as bug\n")
@@ -505,7 +505,7 @@ def batch_process():
 
 def write_unit_ids_UNUSED():
     # Write a list with all unit ids, just for fun.
-    uids = wesnoth.unit_lookup.keys()
+    uids = list(wesnoth.unit_lookup.keys())
     def by_race(u1, u2):
         r = cmp(wesnoth.unit_lookup[u1].rid,
             wesnoth.unit_lookup[u2].rid)
@@ -604,11 +604,11 @@ if __name__ == '__main__':
 
     if not options.data_dir:
         options.data_dir = shell_out([options.wesnoth, "--path"]).strip()
-        print("Using " + options.data_dir + " as data dir.")
+        print(("Using " + options.data_dir + " as data dir."))
 
     if not options.config_dir:
         options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip()
-        print("Using " + options.config_dir + " as config dir.")
+        print(("Using " + options.config_dir + " as config dir."))
 
     if not options.transdir:
         options.transdir = os.getcwd()
@@ -623,7 +623,7 @@ if __name__ == '__main__':
 
     if options.language == "all":
         languages = []
-        parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
+        parser = wmlparser3.Parser(options.wesnoth, options.config_dir,
             options.data_dir, no_preprocess = False)
         parser.parse_text("{languages}")
 
