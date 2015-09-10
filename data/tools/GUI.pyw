@@ -515,7 +515,7 @@ class WmllintTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Name files\nbefore processing",
+                                  text="Name files before processing",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
@@ -862,7 +862,7 @@ class WmlindentTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Also report\nunchanged files",
+                                  text="Report unchanged files",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
