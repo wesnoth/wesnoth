@@ -5517,7 +5517,6 @@
 					"LUA_USE_MACOSX=1",
 					"HAVE_LIBPNG=1",
 				);
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
@@ -5617,12 +5616,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ./lib;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-Wall";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 				);
 				PREBINDING = NO;
-				WARNING_CFLAGS = "-Wall";
+				WARNING_CFLAGS = (
+					"-Werror=format",
+					"-Werror=missing-braces",
+					"-Werror=return-type",
+					"-Werror=missing-field-initializers",
+					"-Werror=sign-compare",
+					"-Werror=unused",
+					"-Werror=switch",
+				);
 			};
 			name = Debug;
 		};
@@ -5658,6 +5666,15 @@
 					"-lbz2",
 				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				WARNING_CFLAGS = (
+					"-Werror=format",
+					"-Werror=missing-braces",
+					"-Werror=return-type",
+					"-Werror=missing-field-initializers",
+					"-Werror=sign-compare",
+					"-Werror=unused",
+					"-Werror=switch",
+				);
 			};
 			name = Release;
 		};
