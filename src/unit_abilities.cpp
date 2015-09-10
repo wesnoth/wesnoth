@@ -26,6 +26,7 @@
 #include "unit_abilities.hpp"
 #include "unit_filter.hpp"
 #include "unit_map.hpp"
+#include "filter_context.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -331,11 +332,11 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent"))
 	{
+		size_t count = 0;
 		const unit_filter ufilt(vconfig(i), resources::filter_con, illuminates);
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index =
-				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
@@ -343,23 +344,44 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 				return false;
 			if (!ufilt(*unit, *this))
 				return false;
+			if (i.has_attribute("is_enemy")) {
+				const display_context& dc = resources::filter_con->get_disp_context();
+				if (i["is_enemy"].to_bool() != dc.teams()[unit->side() - 1].is_enemy(side_)) {
+					continue;
+				}
+			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 
 	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent_location"))
 	{
+		size_t count = 0;
 		terrain_filter adj_filter(vconfig(i), resources::filter_con);
 		adj_filter.flatten(illuminates);
-
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index = map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 	return true;
@@ -895,32 +917,52 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	// Filter the adjacent units.
 	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent"))
 	{
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		size_t count = 0;
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index =
-				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if ( unit == units.end() ||
 			     !unit_filter(vconfig(i), resources::filter_con).matches(*unit, adjacent[index], *self)) //TODO: Should this filter get precomputed?
 				return false;
+			if (i.has_attribute("is_enemy")) {
+				const display_context& dc = resources::filter_con->get_disp_context();
+				if (i["is_enemy"].to_bool() != dc.teams()[unit->side() - 1].is_enemy(self->side())) {
+					continue;
+				}
+			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 
 	// Filter the adjacent locations.
 	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent_location"))
 	{
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		size_t count = 0;
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index =
-				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
 			terrain_filter adj_filter(vconfig(i), resources::filter_con);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 
