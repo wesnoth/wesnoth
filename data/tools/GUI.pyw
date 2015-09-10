@@ -138,7 +138,7 @@ def attach_select_all(widget,function):
         widget.bind("<Control-KeyRelease-a>", function)
 
 class Tooltip(Toplevel):
-    def __init__(self,widget,text):
+    def __init__(self,widget,text,tag=None):
         """A tooltip, or balloon. Displays the specified help text when the
 mouse pointer stays on the widget for more than 500 ms."""
         # the master attribute retrieves the window where our "parent" widget is
@@ -157,8 +157,16 @@ mouse pointer stays on the widget for more than 500 ms."""
                          font=font.nametofont("TkTooltipFont"))
         self.label.pack()
         self.overrideredirect(True)
-        self.widget.bind("<Enter>",self.preshow)
-        self.widget.bind("<Leave>",self.hide)
+        # allow binding the tooltips to tagged elements of a widget
+        # only Text, Canvas and Treeview support tags
+        # and as such, they have a tag_bind method
+        # if the widget doesn't support tags, bind directly to it
+        if tag and hasattr(widget, "tag_bind") and callable(widget.tag_bind):
+            self.widget.tag_bind(tag,"<Enter>",self.preshow)
+            self.widget.tag_bind(tag,"<Leave>",self.hide)
+        else:
+            self.widget.bind("<Enter>",self.preshow)
+            self.widget.bind("<Leave>",self.hide)
         self.bind_all("<Button>",self.hide)
         self.withdraw()
     def preshow(self,event=None):
