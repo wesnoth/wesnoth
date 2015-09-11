@@ -149,6 +149,12 @@ private:
 	 * @retval false failure
 	 */
 	static bool upgrade_side_config_from_1_07_02_to_1_07_03(side_number side, config &cfg);
+	
+	/**
+	 * Expand simplified aspects, similar to the change from 1.7.2 to 1.7.3
+	 * but with some additional syntax options.
+	 */
+	static void expand_simplified_aspects(side_number side, config &cfg);
 
 	typedef std::map<std::string, description> description_map;
 	static description_map ai_configurations_;
