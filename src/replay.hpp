@@ -115,7 +115,6 @@ public:
 	bool at_end() const;
 	void set_to_end();
 
-	void clear();
 	bool empty();
 
 	enum MARK_SENT { MARK_AS_UNSENT, MARK_AS_SENT };

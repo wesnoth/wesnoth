@@ -608,13 +608,6 @@ void replay::set_to_end()
 	base_->set_to_end();
 }
 
-void replay::clear()
-{
-	message_locations.clear();
-	message_log.clear();
-	//FIXME
-}
-
 bool replay::empty()
 {
 	return ncommands() == 0;
