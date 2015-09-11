@@ -86,11 +86,12 @@ static lg::log_domain log_enginerefac("enginerefac");
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
+/// copies [scenario] attributes/tags from src to dest that are not otherwise stored in c++ structs/clases.
 static void copy_persistent(const config& src, config& dst)
 {
 	typedef boost::container::flat_set<std::string> stringset;
 	static stringset attrs = boost::assign::list_of
-		("theme")("next_scenario")("description")("name")("defeat_music")
+		("id")("theme")("next_scenario")("description")("name")("defeat_music")
 		("victory_music")("victory_when_enemies_defeated")("remove_from_carryover_on_defeat")("disallow_recall")("experience_modifier")("require_scenario")
 		.convert_to_container<stringset>();
 	static stringset tags = boost::assign::list_of
