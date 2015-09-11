@@ -196,7 +196,7 @@ public:
 	virtual plugins_context * get_plugins_context();
 	hotkey::command_executor * get_hotkey_command_executor();
 
-	actions::undo_list & get_undo_stack() { return *undo_stack_; }
+	actions::undo_list & get_undo_stack() { return undo_stack(); }
 
 	bool is_browsing() const OVERRIDE;
 	bool is_lingering() const { return linger_; }
@@ -287,10 +287,8 @@ protected:
 	boost::scoped_ptr<game_display> gui_;
 	boost::scoped_ptr<unit_experience_accelerator> xp_mod_;
 	boost::scoped_ptr<const statistics::scenario_context> statistics_context_;
-	/// undo_stack_ is never NULL. It is implemented as a pointer so that
-	/// undo_list can be an incomplete type at this point (which reduces the
-	/// number of files that depend on actions/undo.hpp).
-	boost::scoped_ptr<actions::undo_list> undo_stack_;
+	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; };
+	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; };
 	boost::scoped_ptr<replay> replay_;
 
 	bool skip_replay_;
