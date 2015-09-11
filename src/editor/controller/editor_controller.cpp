@@ -323,7 +323,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return context_manager_->get_map_context().can_undo();
 		case TITLE_SCREEN__RELOAD_WML:
-		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
+		case HOTKEY_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
@@ -714,7 +714,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
 			return true;
-		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
+		case HOTKEY_QUIT_TO_DESKTOP:
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:

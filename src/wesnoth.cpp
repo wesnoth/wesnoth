@@ -66,6 +66,10 @@
 #include "desktop/windows_console.hpp"
 #endif // _WIN32
 
+#ifndef _WIN32
+#include <signal.h>
+#endif
+
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/iostreams/categories.hpp>  // for input, output
@@ -872,8 +876,14 @@ static std::vector<std::string> parse_commandline_arguments(std::string input)
 }
 #endif
 
+#ifndef _WIN32
+static void wesnoth_terminate_handler(int) {
+	exit(0);
+}
+#endif
 
-#ifdef __native_client__
+#if defined(__native_client__) || (defined(__APPLE__) && SDL_VERSION_ATLEAST(2, 0, 0))
+extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
 int main(int argc, char** argv)
@@ -938,6 +948,15 @@ int main(int argc, char** argv)
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
 	}
+	
+#ifndef _WIN32
+	struct sigaction terminate_handler;
+	terminate_handler.sa_handler = wesnoth_terminate_handler;
+	terminate_handler.sa_flags = 0;
+	sigemptyset(&terminate_handler.sa_mask);
+	sigaction(SIGTERM, &terminate_handler, NULL);
+	sigaction(SIGINT, &terminate_handler, NULL);
+#endif
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';

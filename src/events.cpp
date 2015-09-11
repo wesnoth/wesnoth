@@ -164,13 +164,11 @@ event_context::~event_context()
 	event_contexts.pop_back();
 }
 
-sdl_handler::sdl_handler(const bool auto_join)
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	: unicode_(1)
-#else
-	: unicode_(SDL_EnableUNICODE(1))
+	sdl_handler::sdl_handler(const bool auto_join) :
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	unicode_(SDL_EnableUNICODE(1)),
 #endif
-	, has_joined_(false)
+	has_joined_(false)
 {
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
@@ -399,6 +397,16 @@ void pump()
 				}
 				break;
 			}
+			
+#ifndef __APPLE__
+			case SDL_KEYDOWN: {
+				if(event.key.keysym.sym == SDLK_F4 && (event.key.keysym.mod == KMOD_RALT || event.key.keysym.mod == KMOD_LALT)) {
+					quit_confirmation::quit();
+					continue; // this event is already handled
+				}
+				break;
+			}
+#endif
 
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
