@@ -44,12 +44,22 @@ namespace actions {
 			: undo_action_base()
 			, replay_data()
 			, unit_id_diff(synced_context::get_unit_id_diff())
-		{ }
+			, umc_commands_undo()
+			, umc_commands_redo()
+		{
+			umc_commands_undo.swap(synced_context::get_undo_commands());
+			umc_commands_redo.swap(synced_context::get_redo_commands());
+		}
 		undo_action(const config& cfg)
 			: undo_action_base()
 			, replay_data(cfg.child_or_empty("replay_data"))
 			, unit_id_diff(cfg["unit_id_diff"])
-		{ }
+			, umc_commands_undo()
+			, umc_commands_redo()
+		{
+			read_tconfig_vector(umc_commands_undo, cfg, "undo_actions");
+			read_tconfig_vector(umc_commands_redo, cfg, "redo_actions");
+		}
 		// Virtual destructor to support derived classes.
 		virtual ~undo_action() {}
 
@@ -58,6 +68,8 @@ namespace actions {
 		{
 			cfg.add_child("replay_data", replay_data);
 			cfg["unit_id_diff"] = unit_id_diff;
+			write_tconfig_vector(umc_commands_undo, cfg, "undo_actions");
+			write_tconfig_vector(umc_commands_redo, cfg, "redo_actions");
 			undo_action_base::write(cfg);
 		}
 
@@ -71,8 +83,18 @@ namespace actions {
 		/// we need this because we don't recalculate the redos like they would be in real game,
 		/// but even undoable commands can have "dependent" (= user_input) commands, which we save here.
 		config replay_data;
-
+		/// the difference in the unit ids
+		/// TODO: does it really make sense to allow undoing if the unit id counter has changed?
 		int unit_id_diff;
+		/// actions wml (specified by wml) that should be executed when undoing this command.
+		typedef boost::ptr_vector<config> tconfig_vector;
+		tconfig_vector umc_commands_undo;
+		tconfig_vector umc_commands_redo;
+		void execute_undo_umc_wml();
+		void execute_redo_umc_wml();
+		
+		static void read_tconfig_vector(tconfig_vector& vec, const config& cfg, const std::string& tag);
+		static void write_tconfig_vector(const tconfig_vector& vec, config& cfg, const std::string& tag);
 	};
 
 	/// entry for player actions that do not need any special code to be performed when undoing such as right-click menu items.
