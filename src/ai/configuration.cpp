@@ -29,6 +29,7 @@
 #include <boost/foreach.hpp>
 
 #include <vector>
+#include <deque>
 
 namespace ai {
 
@@ -63,7 +64,7 @@ void configuration::init(const config &game_config)
 	well_known_aspects.push_back(well_known_aspect("advancements"));
 	well_known_aspects.push_back(well_known_aspect("aggression"));
 	well_known_aspects.push_back(well_known_aspect("attack_depth"));
-	well_known_aspects.push_back(well_known_aspect("attacks"));
+	well_known_aspects.push_back(well_known_aspect("attacks",false));
 	well_known_aspects.push_back(well_known_aspect("avoid",false));
 	well_known_aspects.push_back(well_known_aspect("caution"));
 	well_known_aspects.push_back(well_known_aspect("grouping"));
@@ -311,8 +312,12 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	}
 
 
-	if (version<10710) {
-		version = 10710;
+	if (version<11302) {
+		version = 11302;
+		// No upgrade method here, because the only new thing introduced was new simplified syntax.
+		// In other words, all old syntax is still valid.
+	} else {
+		expand_simplified_aspects(side, cfg);
 	}
 
 	//construct new-style integrated config
@@ -348,6 +353,93 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	cfg = parsed_cfg;
 	return true;
 
+}
+
+void configuration::expand_simplified_aspects(side_number side, config &cfg) {
+	std::string algorithm;
+	config base_config, parsed_config;
+	BOOST_FOREACH(const config &aiparam, cfg.child_range("ai")) {
+		std::string turns, time_of_day, engine = "cpp";
+		if (aiparam.has_attribute("turns")) {
+			turns = aiparam["turns"].str();
+		}
+		if (aiparam.has_attribute("time_of_day")) {
+			time_of_day = aiparam["time_of_day"].str();
+		}
+		if (aiparam.has_attribute("engine")) {
+			engine = aiparam["engine"].str();
+		}
+		if (aiparam.has_attribute("ai_algorithm")) {
+			if (algorithm.empty()) {
+				algorithm = aiparam["ai_algorithm"].str();
+				if (algorithm == "idle_ai") {
+					lg::wml_error() << "side " << side << " uses deprecated ai_algorithm=idle_ai; use ai_idle instead.\n";
+					algorithm = "ai_idle";
+				}
+				base_config = get_ai_config_for(algorithm);
+			} else {
+				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
+			}
+		}
+		std::deque<std::pair<std::string, config> > facet_configs;
+		BOOST_FOREACH(const config::attribute &attr, aiparam.attribute_range()) {
+			if (attr.first == "turns" || attr.first == "time_of_day" || attr.first == "engine" || attr.first == "ai_algorithm") {
+				continue;
+			}
+			config facet_config;
+			facet_config["engine"] = engine;
+			facet_config["name"] = "standard_aspect"; // I believe this can be omitted.
+			facet_config["turns"] = turns;
+			facet_config["time_of_day"] = time_of_day;
+			facet_config["value"] = attr.second;
+			facet_configs.push_back(std::make_pair(attr.first, facet_config));
+		}
+		BOOST_FOREACH(const config::any_child &child, aiparam.all_children_range()) {
+			if (child.key == "engine" || child.key == "stage" || child.key == "aspect" || child.key == "goal") {
+				// These aren't simplified, so just copy over unchanged.
+				parsed_config.add_child(child.key, child.cfg);
+				continue;
+			}
+			// Now there's two possibilities. If the tag is [attacks] or contains either value= or [value],
+			// then it can be copied verbatim as a [facet] tag.
+			// Otherwise, it needs to be placed as a [value] within a [facet] tag.
+			if (child.key == "attacks" || child.cfg.has_attribute("value") || child.cfg.has_child("value")) {
+				facet_configs.push_back(std::make_pair(child.key, child.cfg));
+			} else {
+				config facet_config;
+				facet_config["engine"] = engine;
+				facet_config["name"] = "standard_aspect"; // I believe this can be omitted.
+				facet_config["turns"] = turns;
+				facet_config["time_of_day"] = time_of_day;
+				facet_config.add_child("value", child.cfg);
+				if (child.key == "leader_goal") {
+					// Use id= attribute (if present) as the facet ID
+					facet_config["id"] = child.cfg["id"];
+				}
+				facet_configs.push_back(std::make_pair(child.key, facet_config));
+			}
+		}
+		std::map<std::string, config> aspect_configs;
+		while (!facet_configs.empty()) {
+			const std::string &aspect = facet_configs.front().first;
+			const config &facet_config = facet_configs.front().second;
+			aspect_configs[aspect]["id"] = aspect; // Will sometimes be redundant assignment
+			aspect_configs[aspect].add_child("facet", facet_config);
+			facet_configs.pop_front();
+		}
+		typedef std::map<std::string, config>::value_type aspect_pair;
+		BOOST_FOREACH(const aspect_pair& p, aspect_configs) {
+			parsed_config.add_child("aspect", p.second);
+		}
+	}
+	if (algorithm.empty()) {
+		base_config = get_ai_config_for("ai_default_rca");
+	}
+	BOOST_FOREACH(const config::any_child &child, parsed_config.all_children_range()) {
+		base_config.add_child(child.key, child.cfg);
+	}
+	cfg.clear_children("ai");
+	cfg.add_child("ai", base_config);
 }
 
 
@@ -460,7 +552,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 				transfer_turns_and_time_of_day_data(aiparam, updated_goal_config);
 				parsed_cfg.add_child("goal", updated_goal_config);
 			}
-                }
+		}
 	}
 	fallback_stage_cfg_ai.clear_children("aspect");
 
