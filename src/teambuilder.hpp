@@ -24,13 +24,13 @@
 class config;
 class gamemap;
 class team_builder;
-
+class game_board;
 typedef boost::shared_ptr<team_builder> team_builder_ptr;
 
 //create an object responsible for creating and populating a team from a config
 team_builder_ptr create_team_builder(const config& side_cfg,
 					 std::vector<team>& teams,
-					 const config& level, gamemap& map);
+					 const config& level, game_board& board);
 
 //do first stage of team initialization (everything except unit placement)
 void build_team_stage_one(team_builder_ptr tb_ptr);

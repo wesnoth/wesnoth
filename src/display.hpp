@@ -645,7 +645,10 @@ public:
 
 	/** Rebuild the flag list (not team colors) for a single side. */
 	void reinit_flags_for_side(size_t side);
-
+	void reset_reports(reports& reports_object)
+	{
+		reports_object_ = &reports_object;
+	}
 private:
 	void init_flags_for_side_internal(size_t side, const std::string& side_color);
 
@@ -781,7 +784,7 @@ protected:
 	bool turbo_;
 	bool invalidateGameStatus_;
 	boost::scoped_ptr<map_labels> map_labels_;
-	reports & reports_object_;
+	reports * reports_object_;
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;

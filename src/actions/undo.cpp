@@ -373,14 +373,14 @@ void undo_list::undo()
 	action_list::auto_type action = undos_.pop_back();
 	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.ptr()))
 	{
-		int last_unit_id = n_unit::id_manager::instance().get_save_id();
+		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
 		if ( !undoable_action->undo(side_) ) {
 			return;
 		}
 		if(last_unit_id - undoable_action->unit_id_diff < 0) {
 			ERR_NG << "Next unit id is below 0 after undoing" << std::endl;
 		}
-		n_unit::id_manager::instance().set_save_id(last_unit_id - undoable_action->unit_id_diff);
+		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
 
 		// Bookkeeping.
 		resources::recorder->undo_cut(undoable_action->replay_data);
@@ -422,14 +422,14 @@ void undo_list::redo()
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
 	redos_list::auto_type action = redos_.pop_back();
-	int last_unit_id = n_unit::id_manager::instance().get_save_id();
+	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
 	if ( !action->redo(side_) ) {
 		return;
 	}
-	if(last_unit_id + action->unit_id_diff < static_cast<int>(n_unit::id_manager::instance().get_save_id())) {
+	if(last_unit_id + action->unit_id_diff < static_cast<int>(resources::gameboard->unit_id_manager().get_save_id())) {
 		ERR_NG << "Too many units were generated during redoing." << std::endl;
 	}
-	n_unit::id_manager::instance().set_save_id(last_unit_id + action->unit_id_diff);
+	resources::gameboard->unit_id_manager().set_save_id(last_unit_id + action->unit_id_diff);
 
 	// Bookkeeping.
 	undos_.push_back(action.release());

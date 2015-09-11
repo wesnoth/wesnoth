@@ -195,7 +195,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks, game_config, tdata, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
-	LEVEL_RESULT res = playcontroller.play_scenario(story);
+	LEVEL_RESULT res = playcontroller.play_scenario(story, state_of_game.get_starting_pos());
 
 	if (res == LEVEL_RESULT::QUIT)
 	{
@@ -224,7 +224,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 
 	playmp_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks,
 		game_config, tdata, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
-	LEVEL_RESULT res = playcontroller.play_scenario(story);
+	LEVEL_RESULT res = playcontroller.play_scenario(story, state_of_game.get_starting_pos());
 
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())

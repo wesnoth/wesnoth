@@ -452,7 +452,6 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 
 	gamelist.clear();
 	statistics::fresh_stats();
-	n_unit::id_manager::instance().clear(); /* reset the unit underlying_id counter back to zero */
 
 	{
 		mp::wait ui(disp, game_config, state, gamechat, gamelist);

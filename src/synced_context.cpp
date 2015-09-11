@@ -27,6 +27,7 @@
 #include "resources.hpp"
 #include "synced_checkup.hpp"
 #include "game_data.hpp"
+#include "game_board.hpp"
 #include "network.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
@@ -239,7 +240,7 @@ int synced_context::get_unit_id_diff()
 {
 	//this method only works in a synced context.
 	assert(is_synced());
-	return n_unit::id_manager::instance().get_save_id() - last_unit_id_;
+	return resources::gameboard->unit_id_manager().get_save_id() - last_unit_id_;
 }
 
 namespace
@@ -396,7 +397,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneously();
-	synced_context::set_last_unit_id(n_unit::id_manager::instance().get_save_id());
+	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	old_rng_ = random_new::generator;
 	random_new::generator = new_rng_.get();
 }
@@ -452,7 +453,7 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 	config co;
 	config cn = config_of
 		("random_calls", new_rng_->get_random_calls())
-		("next_unit_id", n_unit::id_manager::instance().get_save_id() + 1);
+		("next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1);
 	if(checkup_instance->local_checkup(cn, co))
 	{
 		return;

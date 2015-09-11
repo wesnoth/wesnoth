@@ -3,7 +3,7 @@
 import os, gettext, time, copy, sys, re
 import traceback
 import unit_tree.helpers as helpers
-import wesnoth.wmlparser2 as wmlparser2
+import wesnoth.wmlparser3 as wmlparser3
 
 
 pics_location = "../../pics"
@@ -62,10 +62,9 @@ class MyFile:
     """
     def __init__(self, filename, mode):
         self.filename = filename
-        self.f = open(filename, mode)
+        self.f = open(filename, mode + "b")
     def write(self, x):
-        x = x.encode("utf8")
-        self.f.write(x)
+        self.f.write(x.encode("utf8"))
     def close(self):
         self.f.close()
 
@@ -76,7 +75,7 @@ class Translation:
         self.localedir = localedir
         self.langcode = langcode
         class Dummy:
-            def ugettext(self, x):
+            def gettext(self, x):
                 if not x: return ""
                 caret = x.find("^")
                 if caret < 0: return x
@@ -98,7 +97,7 @@ class Translation:
                 # gettext.translation call sometimes
                 self.catalog[textdomain] = self.dummy
 
-        r = self.catalog[textdomain].ugettext(string)
+        r = self.catalog[textdomain].gettext(string)
 
         return r
 
@@ -186,7 +185,7 @@ class HTMLOutput:
         # Build an advancement tree forest of all units.
         forest = self.forest = helpers.UnitForest()
         units_added = {}
-        for uid, u in self.wesnoth.unit_lookup.items():
+        for uid, u in list(self.wesnoth.unit_lookup.items()):
             if u.hidden: continue
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
@@ -197,7 +196,7 @@ class HTMLOutput:
         # Always add any child units, even if they have been filtered out..
         while units_added:
             new_units_added = {}
-            for uid, u in units_added.items():
+            for uid, u in list(units_added.items()):
                 for auid in u.advance:
                     if not auid in units_added:
                         try:
@@ -216,7 +215,7 @@ class HTMLOutput:
             added = True
             while added:
                 added = False
-                for uid, u in self.wesnoth.unit_lookup.items():
+                for uid, u in list(self.wesnoth.unit_lookup.items()):
                     if uid in forest.lookup: continue
                     for auid in u.advance:
                         if auid in forest.lookup:
@@ -230,7 +229,7 @@ class HTMLOutput:
         groups = {}
         breadth = 0
 
-        for tree in forest.trees.values():
+        for tree in list(forest.trees.values()):
             u = tree.unit
             ugroups = grouper.groups(u)
 
@@ -238,35 +237,32 @@ class HTMLOutput:
                 groups[group] = groups.get(group, []) + [tree]
                 breadth += tree.breadth
 
-        thelist = groups.keys()
+        thelist = list(groups.keys())
         thelist.sort(key = lambda x: grouper.group_name(x))
 
         rows_count = breadth + len(thelist)
         # Create empty grid.
         rows = []
-        for j in xrange(rows_count):
+        for j in range(rows_count):
             column = []
-            for i in xrange(6):
+            for i in range(6):
                 column.append((1, 1, None))
             rows.append(column)
 
         # Sort advancement trees by name of first unit and place into the grid.
-        def by_name(t1, t2):
-            u1 = t1.unit
-            u2 = t2.unit
-
-            u1name = T(u1, "name")
-            u2name = T(u2, "name")
-            return cmp(u1name, u2name)
+        def by_name(t):
+            x = T(t.unit, "name")
+            if x is None: return ""
+            return x
 
         def grid_place(nodes, x):
-            nodes.sort(by_name)
+            nodes.sort(key = by_name)
             for node in nodes:
                 level = node.unit.level
                 if level < 0: level = 0
                 if level > 5: level = 5
                 rows[x][level] = (1, node.breadth, node)
-                for i in xrange(1, node.breadth):
+                for i in range(1, node.breadth):
                     rows[x + i][level] = (0, 0, node)
                 grid_place(node.children, x)
                 x += node.breadth
@@ -278,7 +274,7 @@ class HTMLOutput:
             node.name = grouper.group_name(group)
 
             rows[x][0] = (6, 1, node)
-            for i in xrange(1, 6):
+            for i in range(1, 6):
                 rows[x][i] = (0, 0, None)
             nodes = groups[group]
             x += 1
@@ -294,7 +290,7 @@ class HTMLOutput:
         all_written_html_files.append((self.isocode, self.output.filename))
 
         languages = self.wesnoth.languages_found
-        langlist = languages.keys()
+        langlist = list(languages.keys())
         langlist.sort()
         
         write(top_bar % {"path" : "../../"})
@@ -310,7 +306,7 @@ class HTMLOutput:
         def abbrev(name):
             abbrev = name[0]
             word_seperators = [" ", "_", "+", "(", ")"]
-            for i in xrange(1, len(name)):
+            for i in range(1, len(name)):
                 if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
                     abbrev += name[i]
             return abbrev
@@ -354,7 +350,7 @@ class HTMLOutput:
                 self.translate("all", "wesnoth-editor")))
 
             r = {}, {}
-            for u in self.wesnoth.unit_lookup.values():
+            for u in list(self.wesnoth.unit_lookup.values()):
 
                 race = u.race
                 racename = T(race, "plural_name")
@@ -363,9 +359,12 @@ class HTMLOutput:
                 if u:
                     m = 0
 
-                r[m][racename] = race.get_text_val("id") if race else "none"
+                rname = race.get_text_val("id") if race else "none"
+                if not rname:
+                    rname = "none"
+                r[m][racename] = rname
             racenames = sorted(r[0].items())
-            if r[1].items():
+            if list(r[1].items()):
                 racenames += [("-", "-")] + sorted(r[1].items())
 
             for racename, rid in racenames:
@@ -381,7 +380,7 @@ class HTMLOutput:
             add_menu("races_menu", x)
 
             for row in self.unitgrid:
-                for column in xrange(6):
+                for column in range(6):
                     hspan, vspan, un = row[column]
                     if not un: continue
                     if isinstance(un, helpers.GroupNode):
@@ -397,7 +396,7 @@ class HTMLOutput:
             class Entry: pass
             races = {}
 
-            for uid, u in self.wesnoth.unit_lookup.items():
+            for uid, u in list(self.wesnoth.unit_lookup.items()):
                 if self.campaign != "units":
                     if self.campaign not in u.campaigns: continue
                 if u.race:
@@ -477,7 +476,7 @@ class HTMLOutput:
         if recursion >= 4:
             error_message(
                 "Warning: Cannot find image for unit %s(%s).\n" % (
-                u.get_text_val("id"), x.name))
+                u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
         image = self.wesnoth.get_unit_value(x, "image")
         portrait = x.get_all(tag="portrait")
@@ -488,7 +487,7 @@ class HTMLOutput:
         if portrait:
             portrait = portrait[0].get_text_val("image")
         if not image:
-            if x.name == "female":
+            if x.name == b"female":
                 baseunit = self.wesnoth.get_base_unit(u)
                 if baseunit:
                     female = baseunit.get_all(tag="female")
@@ -497,7 +496,7 @@ class HTMLOutput:
                     return self.pic(u, u, recursion = recursion + 1)
             error_message(
                 "Warning: Missing image for unit %s(%s).\n" % (
-                u.get_text_val("id"), x.name))
+                u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
         icpic = image_collector.add_image_check(self.addon, image)
         if not icpic.ipath:
@@ -518,12 +517,16 @@ class HTMLOutput:
             try: c = abilities.get_all()
             except AttributeError: c = []
             for ability in c:
-                id = ability.get_text_val("id")
+                try:
+                    id = ability.get_text_val("id")
+                except AttributeError as e:
+                    error_message("Error: Ignoring ability " + ability.debug())
+                    continue
                 if id in already: continue
                 already[id] = True
                 name = T(ability, "name")
                 if not name: name = id
-                if not name: name = ability.name
+                if not name: name = ability.name.decode("utf8")
                 anames.append(name)
         return anames
 
@@ -531,7 +534,7 @@ class HTMLOutput:
 
         def copy_attributes(copy_from, copy_to):
             for c in copy_from.data:
-                if isinstance(c, wmlparser2.AttributeNode):
+                if isinstance(c, wmlparser3.AttributeNode):
                     copy_to.data.append(c)
 
         # Use attacks of base_units as base, if we have one.
@@ -556,7 +559,7 @@ class HTMLOutput:
         rows = self.unitgrid
         write("<table class=\"units\">\n")
         write("<colgroup>")
-        for i in xrange(6):
+        for i in range(6):
             write("<col class=\"col%d\" />" % i)
         write("</colgroup>")
 
@@ -564,9 +567,9 @@ class HTMLOutput:
             "../../../images/misc/leader-crown.png", no_tc=True)
         crownimage = os.path.join(pics_location, pic)
         ms = None
-        for row in xrange(len(rows)):
+        for row in range(len(rows)):
             write("<tr>\n")
-            for column in xrange(6):
+            for column in range(6):
                 hspan, vspan, un = rows[row][column]
                 if vspan:
                     attributes = ""
@@ -613,15 +616,15 @@ class HTMLOutput:
                         crown = ""
                         if ms:
                             if un.id in ms.units:
-                                crown = u" ♟"
+                                crown = " ♟"
                             if un.id in ms.is_leader:
-                                crown = u" ♚"
+                                crown = " ♚"
 
                         uaddon = "mainline"
                         if "mainline" not in u.campaigns: uaddon = self.addon
                         link = "../../%s/%s/%s.html" % (uaddon, self.isocode, uid)
                         write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a>" % (
-                            link, uid, u"i"))
+                            link, uid, "i"))
                         write("</div>")
                         write("<div class=\"l\">L%s%s</div>" % (level, crown))
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
@@ -631,7 +634,7 @@ class HTMLOutput:
 
                         write('<a href=\"%s\">' % link)
 
-                        if crown == u" ♚":
+                        if crown == " ♚":
                             write('<div style="background: url(%s)">' % image)
                             write('<img src="%s" alt="(image)" />' % crownimage)
                             write("</div>")
@@ -901,7 +904,7 @@ class HTMLOutput:
                     else:
                         error_message(
                             "Warning: Weapon special %s has no name for %s.\n" % (
-                            special.name, uid))
+                            special.name.decode("utf8"), uid))
             s = "<br/>".join(s)
             write("<td>%s</td>" % s)
 
@@ -949,7 +952,7 @@ class HTMLOutput:
         write('</div>')
         write('<div class="unit-column-right">')
 
-        for si in xrange(2):
+        for si in range(2):
             if si and not female: break
             if si:
                 sportrait = fportrait
@@ -979,7 +982,7 @@ class HTMLOutput:
         terrains = self.wesnoth.terrain_lookup
         terrainlist = []
         already = {}
-        for tstring, t in terrains.items():
+        for tstring, t in list(terrains.items()):
             tid = t.get_text_val("id")
             if tid in ["off_map", "off_map2", "fog", "shroud", "impassable",
                 "void", "rails"]: continue
@@ -1064,7 +1067,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
         cid = "mainline"
     if not cid: cid = addon + "_" + campaign.get_text_val("define")
 
-    print("campaign " + addon + " " + cid + " " + isocode)
+    print(("campaign " + addon + " " + cid + " " + isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path): os.mkdir(path)
@@ -1089,7 +1092,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
 def generate_era_report(addon, isocode, era, wesnoth):
     eid = era.get_text_val("id")
     
-    print("era " + addon + " " + eid + " " + isocode)
+    print(("era " + addon + " " + eid + " " + isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path): os.mkdir(path)
@@ -1116,13 +1119,13 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     grouper = GroupByNothing()
     html.analyze_units(grouper, True)
 
-    for uid, unit in wesnoth.unit_lookup.items():
+    for uid, unit in list(wesnoth.unit_lookup.items()):
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
         
         try:
-            htmlname = u"%s.html" % uid
-            filename = os.path.join(path, htmlname).encode("utf8")
+            htmlname = "%s.html" % uid
+            filename = os.path.join(path, htmlname)
 
             # We probably can come up with something better.
             if os.path.exists(filename):
@@ -1142,10 +1145,10 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         
 def html_postprocess_file(filename, isocode, batchlist):
 
-    print(u"postprocessing " + repr(filename))
+    print(("postprocessing " + repr(filename)))
     
-    chtml = u""
-    ehtml = u""
+    chtml = ""
+    ehtml = ""
     
     cids = [[], []]
     for addon in batchlist:
@@ -1161,7 +1164,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             else:
                 cids[1].append(c)
 
-    for i in xrange(2):
+    for i in range(2):
         
         campaigns = cids[i]
         campaigns.sort(key = lambda x: "A" if x[1] == "mainline" else "B" + x[2])
@@ -1169,10 +1172,10 @@ def html_postprocess_file(filename, isocode, batchlist):
         for campaign in campaigns:
             addon, cname, campname, lang = campaign
 
-            chtml += u" <a title=\"%s\" href=\"../../%s/%s/%s.html\">%s</a><br/>\n" % (
+            chtml += " <a title=\"%s\" href=\"../../%s/%s/%s.html\">%s</a><br/>\n" % (
                 campname, addon, lang, cname, campname)
         if i == 0 and cids[1]:
-            chtml += u"-<br/>\n"
+            chtml += "-<br/>\n"
 
     eids = [[], []]
     for addon in batchlist:
@@ -1188,22 +1191,22 @@ def html_postprocess_file(filename, isocode, batchlist):
             else:
                 eids[1].append(e)
             
-    for i in xrange(2):
+    for i in range(2):
         eras = eids[i]
         eras.sort(key = lambda x: x[2])
 
         for era in eras:
             addon, eid, eraname, lang = era
 
-            ehtml += u" <a title=\"%s\" href=\"../../%s/%s/%s.html\">%s</a><br/>" % (
+            ehtml += " <a title=\"%s\" href=\"../../%s/%s/%s.html\">%s</a><br/>" % (
                 eraname, addon, lang, eid, eraname)
         if i == 0 and eids[1]:
-            ehtml += u"-<br/>\n"
+            ehtml += "-<br/>\n"
             
     f = open(filename, "r+b")
     html = f.read().decode("utf8")
-    html = html.replace(u"PLACE CAMPAIGNS HERE\n", chtml)
-    html = html.replace(u"PLACE ERAS HERE\n", ehtml)
+    html = html.replace("PLACE CAMPAIGNS HERE\n", chtml)
+    html = html.replace("PLACE ERAS HERE\n", ehtml)
     f.seek(0)
     f.write(html.encode("utf8"))
     f.close()

@@ -42,25 +42,26 @@ namespace n_unit {
 		friend bool operator >(unit_id a, unit_id b) { return a > b; }
 	};
 
-	class id_manager : private boost::noncopyable {
-		private:
-			size_t next_id_;
-			size_t fake_id_;
-			static id_manager manager_;
-			id_manager();
-		public:
-			static id_manager& instance();
-			/** returns id for unit that is created */
-			unit_id next_id();
+	class id_manager //: private boost::noncopyable
+	{
+	private:
+		size_t next_id_;
+		size_t fake_id_;
+		static id_manager manager_;
+		id_manager();
+	public:
+		id_manager(size_t next_id) : next_id_(next_id) , fake_id_(0) {}
+		/** returns id for unit that is created */
+		unit_id next_id();
 
-			unit_id next_fake_id();
+		unit_id next_fake_id();
 
-			/** Used for saving id to savegame */
-			size_t get_save_id();
-			void set_save_id(size_t);
-			/** Clears id counter after game */
-			void clear();
-			void reset_fake();
+		/** Used for saving id to savegame */
+		size_t get_save_id() const;
+		void set_save_id(size_t);
+		/** Clears id counter after game */
+		void clear();
+		void reset_fake();
 	};
 
 }

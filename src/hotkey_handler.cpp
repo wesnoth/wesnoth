@@ -224,7 +224,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		unsigned i = static_cast<unsigned>(index);
 		if(i < savenames_.size() && !savenames_[i].empty()) {
 			// Load the game by throwing load_game_exception
-			throw game::load_game_exception(savenames_[i],false,false,false,"",true);
+			load_autosave(savenames_[i]);
 
 		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
 			if (!wml_command_pager_->capture(*wml_commands_[i])) {
@@ -429,7 +429,8 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
 			// Autosave visibility is similar to LOAD_GAME hotkey
-			cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
+			
+			++i; continue; //cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
 		} else {
 			cmd = &hotkey::get_hotkey_command(*i);
 		}
@@ -511,3 +512,7 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(hotkey::H
 	}
 }
 
+void play_controller::hotkey_handler::load_autosave(const std::string& filename)
+{
+	throw game::load_game_exception(filename, false, false, false, "", true);
+}

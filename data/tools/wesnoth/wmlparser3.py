@@ -1,12 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf8
 
 """
 This parser uses the --preprocess option of wesnoth so a working
 wesnoth executable must be available at runtime.
-
-If you are using this you shold instead use wmlparser3.py and upgrade
-your code to Python 3.
 """
 
 import os, glob, sys, re, subprocess, argparse, tempfile, shutil
@@ -50,9 +47,10 @@ class StringNode:
 
     def debug(self):
         if self.textdomain:
-            return "_<%s>%s" % (self.textdomain, repr(self.data))
+            return "_<%s>'%s'" % (self.textdomain,
+                self.data.decode("utf8", "ignore"))
         else:
-            return repr(self.data)
+            return "'%s'" % self.data.decode("utf8", "ignore")
 
 class AttributeNode:
     """
@@ -67,11 +65,11 @@ class AttributeNode:
         self.value = [] # List of StringNode
 
     def debug(self):
-        return self.name + "=" + " .. ".join(
+        return self.name.decode("utf8") + "=" + " .. ".join(
             [v.debug() for v in self.value])
 
     def get_text(self, translation=None):
-        r = u""
+        r = ""
         for s in self.value:
             ustr = s.data.decode("utf8", "ignore")
             if translation:
@@ -97,11 +95,11 @@ class TagNode:
         self.speedy_tags = {}
 
     def debug(self):
-        s = "[%s]\n" % self.name
+        s = "[%s]\n" % self.name.decode("utf8")
         for sub in self.data:
             for subline in sub.debug().splitlines():
                 s += "    %s\n" % subline
-        s += "[/%s]\n" % self.name
+        s += "[/%s]\n" % self.name.decode("utf8")
         return s
 
     def get_all(self, **kw):
@@ -136,18 +134,19 @@ class TagNode:
         If no elements are found an empty list is returned.
         """
         if len(kw) == 1 and "tag" in kw and kw["tag"]:
-            return self.speedy_tags.get(kw["tag"], [])
+            return self.speedy_tags.get(kw["tag"].encode("utf8"), [])
 
         r = []
         for sub in self.data:
             ok = True
-            for k, v in kw.items():
+            for k, v in list(kw.items()):
+                v = v.encode("utf8")
                 if k == "tag":
                     if not isinstance(sub, TagNode): ok = False
-                    elif v != "" and sub.name != v: ok = False
+                    elif v != b"" and sub.name != v: ok = False
                 elif k == "att":
                     if not isinstance(sub, AttributeNode): ok = False
-                    elif v != "" and sub.name != v: ok = False
+                    elif v != b"" and sub.name != v: ok = False
             if ok:
                 r.append(sub)
         return r
@@ -224,7 +223,7 @@ class Parser:
     def parse_text(self, text, defines=""):
         temp = tempfile.NamedTemporaryFile(prefix="wmlparser_",
             suffix=".cfg")
-        temp.write(text)
+        temp.write(text.encode("utf8"))
         temp.flush()
         self.path = temp.name
         if not self.no_preprocess:
@@ -255,12 +254,12 @@ class Parser:
         if defines:
             commandline += ["--preprocess-defines", defines]
         if self.verbose:
-            print(" ".join(commandline))
+            print((" ".join(commandline)))
         p = subprocess.Popen(commandline,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = p.communicate()
         if self.verbose:
-            print(out + err)
+            print((out + err))
         self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
         if not os.path.exists(self.preprocessed):
@@ -268,8 +267,8 @@ class Parser:
             raise WMLError(self, "Preprocessor error:\n" +
                 " ".join(commandline) + "\n" +
                 "First line: " + first_line + "\n" +
-                out +
-                err)
+                out.decode("utf8") +
+                err.decode("utf8"))
 
     def parse_line_without_commands(self, line):
         """
@@ -286,12 +285,12 @@ class Parser:
             return
 
         if self.in_arrows:
-            arrows = line.find('>>')
+            arrows = line.find(b'>>')
             if arrows >= 0:
                 self.in_arrows = False
                 self.temp_string += line[:arrows]
                 self.temp_string_node = StringNode(self.temp_string)
-                self.temp_string = ""
+                self.temp_string = b""
                 self.temp_key_nodes[self.commas].value.append(
                     self.temp_string_node)
                 self.in_arrows = False
@@ -300,10 +299,10 @@ class Parser:
                 self.temp_string += line
             return
 
-        quote = line.find('"')
+        quote = line.find(b'"')
 
         if not self.in_string:
-            arrows = line.find('<<')
+            arrows = line.find(b'<<')
             if arrows >= 0 and (quote < 0 or quote > arrows):
                 self.parse_line_without_commands(line[:arrows])
                 self.in_arrows = True
@@ -313,7 +312,7 @@ class Parser:
         if quote >= 0:
             if self.in_string:
                 # double quote
-                if quote < len(line) - 1 and line[quote + 1] == '"':
+                if quote < len(line) - 1 and line[quote + 1] == b'"'[0]:
                     self.temp_string += line[:quote + 1]
                     self.parse_line_without_commands(line[quote + 2:])
                     return
@@ -322,7 +321,7 @@ class Parser:
                 if self.translatable:
                     self.temp_string_node.textdomain = self.textdomain
                     self.translatable = False
-                self.temp_string = ""
+                self.temp_string = b""
                 if not self.temp_key_nodes:
                     raise WMLError(self, "Unexpected string value.")
 
@@ -350,19 +349,19 @@ class Parser:
             line = line.lstrip()
             if not line: return
 
-            if line.startswith("#textdomain "):
-                self.textdomain = line[12:].strip()
+            if line.startswith(b"#textdomain "):
+                self.textdomain = line[12:].strip().decode("utf8")
                 return
 
             # Is it a tag?
-            if line[0] == "[":
+            if line.startswith(b"["):
                 self.handle_tag(line)
             # No tag, must be an attribute.
             else:
                 self.handle_attribute(line)
         else:
-            for i, segment in enumerate(line.split("+")):
-                segment = segment.lstrip(" ")
+            for i, segment in enumerate(line.split(b"+")):
+                segment = segment.lstrip(b" ")
 
                 if i > 0:
                     # If the last segment is empty (there was a plus sign
@@ -371,23 +370,23 @@ class Parser:
 
                 if not segment: continue
 
-                if segment[0] == "_":
+                if segment.startswith(b"_"):
                     self.translatable = True
-                    segment = segment[1:].lstrip(" ")
+                    segment = segment[1:].lstrip(b" ")
                     if not segment: continue
                 self.handle_value(segment)
 
 
     def handle_tag(self, line):
-        end = line.find("]")
+        end = line.find(b"]")
         if end < 0:
-            if line.endswith("\n"):
+            if line.endswith(b"\n"):
                 raise WMLError(self, "Expected closing bracket.")
             self.in_tag += line
             return
         tag = (self.in_tag + line[:end])[1:]
-        self.in_tag = ""
-        if tag[0] == "/":
+        self.in_tag = b""
+        if tag.startswith(b"/"):
             self.parent_node = self.parent_node[:-1]
         else:
             node = TagNode(tag, location=(self.line_in_file, self.chunk_start))
@@ -397,7 +396,7 @@ class Parser:
         self.parse_outside_strings(line[end + 1:])
 
     def handle_attribute(self, line):
-        assign = line.find("=")
+        assign = line.find(b"=")
         remainder = None
         if assign >= 0:
             remainder = line[assign + 1:]
@@ -405,7 +404,7 @@ class Parser:
 
         self.commas = 0
         self.temp_key_nodes = []
-        for att in line.split(","):
+        for att in line.split(b","):
             att = att.strip()
             node = AttributeNode(att, location=(self.line_in_file, self.chunk_start))
             self.temp_key_nodes.append(node)
@@ -422,10 +421,10 @@ class Parser:
             n = len(self.temp_key_nodes)
             maxsplit = n - self.commas - 1
             if maxsplit < 0: maxsplit = 0
-            for subsegment in segment.split(",", maxsplit):
+            for subsegment in segment.split(b",", maxsplit):
                 self.temp_string += subsegment.strip()
                 self.temp_string_node = StringNode(self.temp_string)
-                self.temp_string = ""
+                self.temp_string = b""
                 self.temp_key_nodes[self.commas].value.append(
                     self.temp_string_node)
                 if self.commas < n - 1:
@@ -434,7 +433,7 @@ class Parser:
         # Finish assignment on newline, except if there is a
         # plus sign before the newline.
         add_text(segment)
-        if segment[-1] == "\n" and not self.skip_newlines_after_plus:
+        if segment.endswith(b"\n") and not self.skip_newlines_after_plus:
             self.temp_key_nodes = []
 
     def parse(self):
@@ -443,7 +442,7 @@ class Parser:
         """
 
         # parsing state
-        self.temp_string = ""
+        self.temp_string = b""
         self.temp_string_node = None
         self.commas = 0
         self.temp_key_nodes = []
@@ -454,9 +453,9 @@ class Parser:
         self.root = RootNode()
         self.parent_node = [self.root]
         self.skip_newlines_after_plus = False
-        self.in_tag = ""
+        self.in_tag = b""
 
-        command_marker_byte = chr(254)
+        command_marker_byte = bytes([254])
 
         input = self.preprocessed
         if not input: input = self.path
@@ -475,17 +474,17 @@ class Parser:
 
         if self.keep_temp_dir is None and self.temp_dir:
             if self.verbose:
-                print("removing " + self.temp_dir)
+                print(("removing " + self.temp_dir))
             shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def handle_command(self, com):
-        if com.startswith("line "):
+        if com.startswith(b"line "):
             self.last_wml_line = com[5:]
-            _ = self.last_wml_line.split(" ")
+            _ = self.last_wml_line.split(b" ")
             self.chunk_start = [(_[i+1], int(_[i])) for i in range(0, len(_), 2)]
             self.line_in_file = self.chunk_start[0][1]
-        elif com.startswith("textdomain "):
-            self.textdomain = com[11:]
+        elif com.startswith(b"textdomain "):
+            self.textdomain = com[11:].decode("utf8")
         else:
             raise WMLError(self, "Unknown parser command: " + com)
 
@@ -503,21 +502,21 @@ Convert a DataSub into JSON
 
 If verbose, insert a linebreak after every brace and comma (put every item on its own line), otherwise, condense everything into a single line.
 """
-    print "{",
+    print("{", end=' ')
     first = True
     sdepth1 = "\n" + " " * depth
     sdepth2 = sdepth1 + " "
-    for pair in tree.speedy_tags.iteritems():
+    for pair in tree.speedy_tags.items():
         if first:
             first = False
         else:
             sys.stdout.write(",")
         if verbose:
             sys.stdout.write(sdepth2)
-        print '"%s":' % pair[0],
+        print('"%s":' % pair[0], end=' ')
         if verbose:
             sys.stdout.write(sdepth1)
-        print '[',
+        print('[', end=' ')
         first_tag = True
         for tag in pair[1]:
             if first_tag:
@@ -539,8 +538,8 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
             sys.stdout.write(",")
         if verbose:
             sys.stdout.write(sdepth2)
-        print '"%s":' % child.name,
-        print json.dumps(child.get_text()),
+        print('"%s":' % child.name, end=' ')
+        print(json.dumps(child.get_text()), end=' ')
     if verbose:
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")
@@ -552,20 +551,18 @@ def xmlify(tree, verbose=False, depth=0):
         sdepth = "  " * depth
     for child in tree.data:
         if isinstance(child, TagNode):
-            print '%s<%s>' % (sdepth, child.name)
+            print('%s<%s>' % (sdepth, child.name))
             xmlify(child, verbose, depth + 1)
-            print '%s</%s>' % (sdepth, child.name)
+            print('%s</%s>' % (sdepth, child.name))
         else:
             if "\n" in child.get_text() or "\r" in child.get_text():
-                print sdepth + '<' + child.name + '>' + \
-            '<![CDATA[' + child.get_text() + ']]>' + '</' + child.name + '>'
+                print(sdepth + '<' + child.name + '>' + \
+            '<![CDATA[' + child.get_text() + ']]>' + '</' + child.name + '>')
             else:
-                print sdepth + '<' + child.name + '>' + \
-            escape(child.get_text()) + '</' + child.name + '>'
+                print(sdepth + '<' + child.name + '>' + \
+            escape(child.get_text()) + '</' + child.name + '>')
 
 if __name__ == "__main__":
-    # Hack to make us not crash when we encounter characters that aren't ASCII
-    sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
     arg = argparse.ArgumentParser()
     arg.add_argument("-a", "--data-dir", help="directly passed on to wesnoth.exe")
     arg.add_argument("-c", "--config-dir", help="directly passed on to wesnoth.exe")
@@ -607,7 +604,7 @@ if __name__ == "__main__":
             output = function(p).strip()
             if output != expected:
                 print("__________")
-                print("FAILED " + note)
+                print(("FAILED " + note))
                 print("INPUT:")
                 print(input)
                 print("OUTPUT:")
@@ -616,7 +613,7 @@ if __name__ == "__main__":
                 print(expected)
                 print("__________")
             else:
-                print("PASSED " + note)
+                print(("PASSED " + note))
 
         def test(input, expected, note):
             test2(input, expected, note, lambda p: p.root.debug())
@@ -709,7 +706,10 @@ code = <<
 """,
 """
 [test]
-    code='\\n    "quotes" here\\n    ""blah""\\n'
+    code='
+        "quotes" here
+        ""blah""
+    '
 [/test]
 """, "quoted2")
 
@@ -793,11 +793,11 @@ foo='bar' .. 'baz'
     elif args.text: p.parse_text(args.text, args.defines)
     if args.to_json:
         jsonify(p.root, True)
-        print
+        print()
     elif args.to_xml:
-        print '<?xml version="1.0" encoding="UTF-8" ?>'
-        print '<root>'
+        print('<?xml version="1.0" encoding="UTF-8" ?>')
+        print('<root>')
         xmlify(p.root, True, 1)
-        print '</root>'
+        print('</root>')
     else:
-        print(p.root.debug())
+        print((p.root.debug()))

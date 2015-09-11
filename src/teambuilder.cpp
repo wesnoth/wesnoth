@@ -39,11 +39,11 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 class team_builder {
 public:
 	team_builder(const config& side_cfg, std::vector<team>& teams,
-		     const config& level, gamemap& map)
+		     const config& level, game_board& board)
 		: gold_info_ngold_(0)
 		, leader_configs_()
 		, level_(level)
-		, map_(map)
+		, board_(board)
 		, player_exists_(false)
 		, seen_ids_()
 		, side_(0)
@@ -96,7 +96,7 @@ protected:
 	std::deque<config> leader_configs_;
 	//only used for objectives
 	const config &level_;
-	gamemap &map_;
+	game_board &board_;
 	//only used for debug message
 	bool player_exists_;
 	std::set<std::string> seen_ids_;
@@ -134,7 +134,7 @@ protected:
 		//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
 		player_exists_ = false;
 
-		if(map_.empty()) {
+		if(board_.map().empty()) {
 			throw game::load_game_failed("Map not found");
 		}
 
@@ -159,7 +159,7 @@ protected:
 	void new_team()
 	{
 		log_step("new team");
-		t_->build(side_cfg_, map_, gold_info_ngold_);
+		t_->build(side_cfg_, board_.map(), gold_info_ngold_);
 	}
 
 
@@ -304,11 +304,11 @@ protected:
 	void place_units()
 	{
 		log_step("place units");
-		unit_creator uc(*t_,map_.starting_position(side_));
+		unit_creator uc(*t_, board_.map().starting_position(side_), &board_);
 		uc
 			.allow_add_to_recall(true)
 			.allow_discover(true)
-			.allow_get_village(true)
+			.allow_get_village(false)
 			.allow_invalidate(false)
 			.allow_rename_side(true)
 			.allow_show(false);
@@ -318,8 +318,8 @@ protected:
 		}
 
 		// Find the first leader and use its name as the player name.
-		unit_map::iterator u = resources::units->find_first_leader(t_->side());
-		if ((u != resources::units->end()) && t_->current_player().empty())
+		unit_map::iterator u = board_.units().find_first_leader(t_->side());
+		if ((u != board_.units().end()) && t_->current_player().empty())
 			t_->set_current_player(u->name());
 
 	}
@@ -328,9 +328,9 @@ protected:
 
 team_builder_ptr create_team_builder(const config& side_cfg,
 					 std::vector<team>& teams,
-					 const config& level, gamemap& map)
+					 const config& level, game_board& board)
 {
-	return team_builder_ptr(new team_builder(side_cfg, teams, level, map));
+	return team_builder_ptr(new team_builder(side_cfg, teams, level, board));
 }
 
 void build_team_stage_one(team_builder_ptr tb_ptr)

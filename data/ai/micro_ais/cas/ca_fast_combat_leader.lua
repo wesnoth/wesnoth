@@ -13,6 +13,7 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
 
     leader_weight = (cfg and cfg.leader_weight) or 2
     leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
+    leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
 
     self.data.move_cache = { turn = wesnoth.current.turn }
     self.data.gamedata = FAU.gamedata_setup()
@@ -110,6 +111,18 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
     local leader_info = FAU.get_unit_info(leader, self.data.gamedata)
     local leader_copy = FAU.get_unit_copy(leader.id, self.data.gamedata)
 
+    -- If threatened_leader_fights=yes, check out the current threat (power only,
+    -- not units) on the AI leader
+    local leader_current_threat = 0
+    if cfg and cfg.threatened_leader_fights then
+        for xa,ya in H.adjacent_tiles(leader.x, leader.y) do
+            local enemy_power = enemy_power_map:get(xa, ya) or 0
+            if (enemy_power > leader_current_threat) then
+                leader_current_threat = enemy_power
+            end
+        end
+    end
+
     local attacks = AH.get_attacks({ leader }, { include_occupied = cfg.include_occupied_attack_hexes })
 
     if (#attacks > 0) then
@@ -125,11 +138,19 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
                     local enemy_power = enemy_power_map:get(xa, ya) or 0
                     local enemy_number = enemy_number_map:get(xa, ya) or 0
 
-                    if (enemy_power * leader_weight > leader.hitpoints)
-                        or (enemy_number > leader_attack_max_units)
-                    then
-                        acceptable_attack = false
-                        break
+                    -- A threat is considered acceptable, if it is within the
+                    -- limits given for HP and units, or if it is not more than the
+                    -- threat on the leader at the current position times
+                    -- leader_additional_threat (the latter only if
+                    -- threatened_leader_fights=yes is set, otherwise
+                    -- leader_current_threat is zero)
+                    if (enemy_power > leader_current_threat * leader_additional_threat) then
+                        if (enemy_power * leader_weight > leader.hitpoints)
+                            or (enemy_number > leader_attack_max_units)
+                        then
+                            acceptable_attack = false
+                            break
+                        end
                     end
                 end
 

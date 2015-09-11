@@ -4037,13 +4037,13 @@ int dispatch2(lua_State *L) {
 }
 
 
-game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state & gs, play_controller & pc, reports & reports_object)
+game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controller & pc, reports & reports_object)
 	: lua_kernel_base(video)
 	, game_display_(NULL)
 	, game_state_(gs)
 	, play_controller_(pc)
 	, reports_(reports_object)
-	, level_(cfg)
+	, level_lua_()
 	, queued_events_()
 {
 	static game_events::queued_event default_queued_event("_from_lua", map_location(), map_location(), config());
@@ -4324,10 +4324,11 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	lua_settop(L, 0);
 }
 
-void game_lua_kernel::initialize()
+void game_lua_kernel::initialize(const config& level)
 {
 	lua_State *L = mState;
-
+	assert(level_lua_.empty());
+	level_lua_.append_children(level, "lua");
 	// Create the sides table.
 	// note:
 	// This table is redundant to the return value of wesnoth.get_sides({}).
@@ -4374,11 +4375,11 @@ void game_lua_kernel::initialize()
 	BOOST_FOREACH(const config &cfg, game_lua_kernel::preload_scripts) {
 		run(cfg["code"].str().c_str());
 	}
-	BOOST_FOREACH(const config &cfg, level_.child_range("lua")) {
+	BOOST_FOREACH(const config &cfg, level_lua_.child_range("lua")) {
 		run(cfg["code"].str().c_str());
 	}
 
-	load_game();
+	load_game(level);
 }
 
 void game_lua_kernel::set_game_display(game_display * gd) {
@@ -4411,7 +4412,7 @@ static bool is_handled_file_tag(const std::string &s)
  * Executes the game_events.on_load function and passes to it all the
  * scenario tags not yet handled.
  */
-void game_lua_kernel::load_game()
+void game_lua_kernel::load_game(const config& level)
 {
 	lua_State *L = mState;
 
@@ -4420,7 +4421,7 @@ void game_lua_kernel::load_game()
 
 	lua_newtable(L);
 	int k = 1;
-	BOOST_FOREACH(const config::any_child &v, level_.all_children_range())
+	BOOST_FOREACH(const config::any_child &v, level.all_children_range())
 	{
 		if (is_handled_file_tag(v.key)) continue;
 		lua_createtable(L, 2, 0);
@@ -4440,9 +4441,7 @@ void game_lua_kernel::load_game()
  */
 void game_lua_kernel::save_game(config &cfg)
 {
-	BOOST_FOREACH(const config &v, level_.child_range("lua")) {
-		cfg.add_child("lua", v);
-	}
+	cfg.append_children(cfg, "lua");
 
 	lua_State *L = mState;
 

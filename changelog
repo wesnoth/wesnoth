@@ -25,9 +25,12 @@ Version 1.13.1+dev:
      erroneous textdomain declarations (bug #23839).
  * Lua API:
    * Added support for unit.level field (read only)
+   * Added support for unit.advancements field (bug #23677)
+   * Added support for current.event_context.unit_x/y fields (bug #23507)
    * Added wesnoth.set_dialog_focus function
    * Added wesnoth.set_dialog_visible function
    * Added wesnoth.random function
+   * helper.shuffle is now synced
  * Music and sound effects:
    * New dwarf hit and die sounds.
  * Terrains:
@@ -44,6 +47,7 @@ Version 1.13.1+dev:
      * Widgets which are children of invisible or hidden parents can no longer
        be interacted with even if the children themselves are still internally
        visible.
+     * Added support for tristate buttons/toggle panels or more generally n-state buttons/toggle panels
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
  * WML engine:
@@ -55,6 +59,8 @@ Version 1.13.1+dev:
    * AMLAs in [modifications] now use [advancement] tags instead of [advance] tags.
      This means you can add an AMLA to placed unit by simply using its definition macro,
      for example {AMLA_DEFAULT}.
+   * [get/set_global_variable]'s side= attribute now defaults to "global" (bug #23686)
+   * [team] share_view=yes/no, share_maps=yes/no was replaced with share_vision=all/shroud/none
    * Add exclude_amla= key in [advancement] which disables the advancment if the unit
      has already taken certain other advancements.
    * The WML preprocessor now writes warnings to stderr for macros redefined
@@ -97,6 +103,10 @@ Version 1.13.1+dev:
      sounds play automatically when the status is inflicted in combat, instead
      of being played by attack animations.
    * Fixed OOS on random maps, where clients placed sides in different castles.
+   * Fixed some (not all) OOS caused by modifying a sides controller by wml.
+   * Fixed wml menu items becoming unsynced in later scenarios.
+   * The game now automatically detects whether to show the game connect screen
+     between scenarios.
 
 Version 1.13.1:
  * Security fixes:
