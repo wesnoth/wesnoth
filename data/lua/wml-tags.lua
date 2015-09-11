@@ -1505,3 +1505,9 @@ function wml_actions.role(cfg)
 
 	-- no matching unit found, fail silently
 end
+
+function wml_actions.unsynced(cfg)
+	wesnoth.unsynced(function ()
+		wml_actions.command(cfg)
+	end)
+end
