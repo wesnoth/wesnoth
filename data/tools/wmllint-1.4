@@ -73,10 +73,10 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 from future_builtins import filter, map, zip
 
-import sys, os, re, getopt, string, copy, difflib, time
+import sys, os, re, getopt, string, copy, difflib, time, codecs
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
 
@@ -1654,7 +1654,7 @@ def is_map(filename):
     if "map" in os.path.dirname(filename) or filename.endswith(".map"):
         return True
     try:
-        fp = open(filename)
+        fp = codecs.open(filename, "r", "utf8")
         lines = fp.readlines()
         fp.close()
         has_map_content = False
@@ -1669,6 +1669,8 @@ def is_map(filename):
                 break
         else:
             has_map_content = len(lines) > 1
+    except UnicodeDecodeError:
+        return False
     except OSError:
         has_map_content = False
     except IndexError:
@@ -1704,7 +1706,7 @@ def translator(filename, mapxforms, textxform, versions):
     mfile = []
     map_only = not filename.endswith(".cfg")
     terminator = "\n"
-    for line in open(filename):
+    for line in codecs.open(filename, "r", "utf8"):
         if line.endswith("\n"):
             line = line[:-1]
         if line.endswith("\r"):
@@ -2259,8 +2261,8 @@ if __name__ == '__main__':
                 if os.path.exists(backup):
                     fromdate = time.ctime(os.stat(backup).st_mtime)
                     todate = time.ctime(os.stat(fn).st_mtime)
-                    fromlines = open(backup, 'U').readlines()
-                    tolines = open(fn, 'U').readlines()
+                    fromlines = codecs.open(backup, 'U', "utf8").readlines()
+                    tolines = codecs.open(fn, 'U', "utf8").readlines()
                     diff = difflib.unified_diff(fromlines, tolines,
                                          backup, fn, fromdate, todate, n=3)
                     sys.stdout.writelines(diff)
@@ -2274,7 +2276,7 @@ if __name__ == '__main__':
                             if sys.platform == 'win32' and os.path.exists(backup):
                                 os.remove(backup)
                             os.rename(fn, backup)
-                            ofp = open(fn, "w")
+                            ofp = codecs.open(fn, "w", "utf8")
                             ofp.write(changed)
                             ofp.close()
                 except maptransform_error, e:
