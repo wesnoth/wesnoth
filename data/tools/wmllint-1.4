@@ -571,7 +571,7 @@ notepairs = (
     )
 
 trait_note = dict(notepairs)
-note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
+note_trait = {pair[1]: pair[0] for pair in notepairs}
 
 def string_strip(value):
     "String-strip the value"
