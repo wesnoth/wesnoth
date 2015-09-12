@@ -665,6 +665,7 @@ void context_manager::generate_map_dialog()
 		} else {
 			editor_map new_map(game_config_, map_string);
 			editor_action_whole_map a(new_map);
+			get_map_context().set_needs_labels_reset();		// Ensure Player Start labels are updated together with newly generated map
 			perform_refresh(a);
 		}
 		last_map_generator_ = map_generator;
