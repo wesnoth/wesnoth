@@ -1730,7 +1730,7 @@ def translator(filename, mapxforms, textxform, versions):
                 print(line, end=terminator)
             lineno += 1
         # Check for one certain error condition
-        if line.count("{") and line.count("}"):
+        if "{" in line and "}" in line:
             refname = line[line.find("{"):line.rfind("}")]            
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
@@ -1745,8 +1745,8 @@ def translator(filename, mapxforms, textxform, versions):
         # refer to map files which will be checked separately.
         if map_only or (("map_data=" in line or "mask=" in line)
                         and line.count('"') in (1, 2)
-                        and line.count("{") == 0
-                        and  line.count("}") == 0
+                        and "{" not in line
+                        and "}" not in line
                         and not within('time')):
             outmap = []
             add_border = True
@@ -1864,7 +1864,7 @@ def translator(filename, mapxforms, textxform, versions):
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
                 newdata.append("\"" + terminator)
-        elif "map_data=" in line and (line.count("{") or line.count("}")):
+        elif "map_data=" in line and ("{" in line or "}" in line):
             newline = line
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
