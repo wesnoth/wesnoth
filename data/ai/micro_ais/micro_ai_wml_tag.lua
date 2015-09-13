@@ -460,13 +460,16 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     elseif (cfg.ai_type == 'fast_ai') then
         optional_keys = {
-            "attack_hidden_enemies", "dungeon_mode", "include_occupied_attack_hexes", "move_cost_factor",
-            "weak_units_first", "skip_combat_ca", "skip_move_ca"
+            "attack_hidden_enemies", "avoid", "dungeon_mode",
+            "filter", "filter_second", "include_occupied_attack_hexes",
+            "leader_additional_threat", "leader_attack_max_units", "leader_weight", "move_cost_factor",
+            "weak_units_first", "skip_combat_ca", "skip_move_ca", "threatened_leader_fights"
         }
         CA_parms = {
             ai_id = 'mai_fast',
             { ca_id = 'combat', location = CA_path .. 'ca_fast_combat.lua', score = 100000 },
-            { ca_id = 'move', location = CA_path .. 'ca_fast_move.lua', score = 20000 }
+            { ca_id = 'move', location = CA_path .. 'ca_fast_move.lua', score = 20000 },
+            { ca_id = 'combat_leader', location = CA_path .. 'ca_fast_combat_leader.lua', score = 19900 }
         }
 
         -- Also need to delete/add some default CAs
@@ -532,9 +535,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
                 }
             else
                 for i,parm in ipairs(CA_parms) do
-                    if (parm.ca_id == 'combat') then
+                    if (parm.ca_id == 'combat') or (parm.ca_id == 'combat_leader') then
                         table.remove(CA_parms, i)
-                        break
                     end
                 end
             end

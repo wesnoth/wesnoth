@@ -213,8 +213,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::screen->recalculate_minimap();
 		}
 
-		resources::controller->maybe_do_init_side();
-
 		resources::whiteboard->on_change_controller(side,tm);
 
 		resources::screen->labels().recalculate_labels();
@@ -308,16 +306,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_AI);
 				change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
 
-				resources::controller->maybe_do_init_side();
-
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
 				resources::controller->on_not_observer();
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_HUMAN);
 				change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
-
-				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:

@@ -515,6 +515,15 @@ void config::append_children(const config &cfg)
 	}
 }
 
+void config::append_children(const config &cfg, const std::string& key)
+{
+	check_valid(cfg);
+
+	BOOST_FOREACH(const config &value, cfg.child_range(key)) {
+		add_child(key, value);
+	}
+}
+
 void config::append(const config &cfg)
 {
 	append_children(cfg);

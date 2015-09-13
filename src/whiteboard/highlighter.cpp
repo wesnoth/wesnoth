@@ -29,6 +29,7 @@
 #include "move.hpp"
 #include "recall.hpp"
 #include "recruit.hpp"
+#include "resources.hpp"
 #include "side_actions.hpp"
 #include "suppose_dead.hpp"
 #include "utility.hpp"
@@ -50,9 +51,8 @@
 namespace wb
 {
 
-highlighter::highlighter(unit_map& unit_map, side_actions_ptr side_actions)
-	: unit_map_(unit_map)
-	, mouseover_hex_()
+highlighter::highlighter(side_actions_ptr side_actions)
+	: mouseover_hex_()
 	, exclusive_display_hexes_()
 	, owner_unit_()
 	, selection_candidate_()
@@ -83,8 +83,8 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	real_map ensure_real_map;
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
-	unit_map::iterator it = unit_map_.find(hex);
-	if(it != unit_map_.end()) {
+	unit_map::iterator it = get_unit_map().find(hex);
+	if(it != get_unit_map().end()) {
 		selection_candidate_ = it.get_shared_ptr();
 
 		if(resources::teams->at(it->side()-1).get_side_actions()->unit_has_actions(*it)) {
@@ -349,6 +349,11 @@ void highlighter::unhighlight_visitor::visit(recall_ptr recall)
 		resources::screen->add_exclusive_draw(recall->get_fake_unit()->get_location(), *recall->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(recall->get_fake_unit()->get_location());
 	}
+}
+unit_map& highlighter::get_unit_map()
+{
+	assert(resources::units);
+	return *resources::units;
 }
 
 } // end namespace wb

@@ -4,6 +4,9 @@
 """
 This parser uses the --preprocess option of wesnoth so a working
 wesnoth executable must be available at runtime.
+
+If you are using this you shold instead use wmlparser3.py and upgrade
+your code to Python 3.
 """
 
 import os, glob, sys, re, subprocess, argparse, tempfile, shutil

@@ -87,11 +87,11 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side()
+void playmp_controller::play_side_impl()
 {
 	mp_ui_alerts::turn_changed(current_team().current_player());
 	// Proceed with the parent function.
-	return playsingle_controller::play_side();
+	return playsingle_controller::play_side_impl();
 }
 
 void playmp_controller::on_not_observer() {
@@ -135,13 +135,13 @@ void playmp_controller::play_human_turn()
 		timer.reset(new countdown_clock(current_team()));
 	}
 	show_turn_dialog();
-	if(undo_stack_->can_undo()) {
+	if(undo_stack().can_undo()) {
 		// If we reload a networked mp game we cannot undo moves made before the save
 		// Becasue other players already received them
 		if(!current_team().auto_shroud_updates()) {
 			synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
 		}
-		undo_stack_->clear();
+		undo_stack().clear();
 	}
 	if (!preferences::disable_auto_moves()) {
 		execute_gotos();
@@ -154,7 +154,7 @@ void playmp_controller::play_human_turn()
 			if (player_type_changed_)
 			{
 				// Clean undo stack if turn has to be restarted (losing control)
-				if ( undo_stack_->can_undo() )
+				if ( undo_stack().can_undo() )
 				{
 					font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
@@ -168,8 +168,8 @@ void playmp_controller::play_human_turn()
 					font::add_floating_label(flabel);
 				}
 
-				while( undo_stack_->can_undo() )
-					undo_stack_->undo();
+				while( undo_stack().can_undo() )
+					undo_stack().undo();
 
 			}
 			check_objectives();
@@ -247,7 +247,7 @@ void playmp_controller::linger()
 	// we're needed here.
 	gui_->set_game_mode(game_display::LINGER_MP);
 	// End all unit moves
-	gamestate_.board_.set_all_units_user_end_turn();
+	gamestate().board_.set_all_units_user_end_turn();
 
 	set_end_scenario_button();
 	assert(is_regular_game_end());
@@ -324,7 +324,7 @@ void playmp_controller::after_human_turn(){
 
 		current_team().set_action_bonus_count(0);
 		current_team().set_countdown_time(new_time);
-		resources::recorder->add_countdown_update(new_time, player_number_);
+		resources::recorder->add_countdown_update(new_time, current_side());
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
 
@@ -381,7 +381,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		}
 		temp_buf << " \n";
 	}
-	update_savegame_snapshot();
+	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_);
 	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
 }
@@ -417,7 +417,7 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (!get_end_level_data_const().transient.linger_mode || gamestate_.board_.teams().empty()) {
+	if (!get_end_level_data_const().transient.linger_mode || gamestate().board_.teams().empty()) {
 		if(!is_host()) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario
@@ -433,8 +433,8 @@ void playmp_controller::pull_remote_choice()
 {
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.sync_network() (which calls turn_data_.send_data()) won't work if the undo stack isn't empty because undoable moves won't be sended
-	// Also undo_stack_->clear() must be called synced so we cannot do that here.
-	assert(!undo_stack_->can_undo());
+	// Also undo_stack()clear() must be called synced so we cannot do that here.
+	assert(!undo_stack().can_undo());
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);
@@ -448,8 +448,8 @@ void playmp_controller::send_user_choice()
 {
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.send_data() won't work if the undo stack isn't empty because undoable moves won't be sended
-	// Also undo_stack_->clear() must be called synced so we cannot do that here.
-	assert(!undo_stack_->can_undo());
+	// Also undo_stack()clear() must be called synced so we cannot do that here.
+	assert(!undo_stack().can_undo());
 	turn_data_.send_data();
 }
 

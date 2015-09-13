@@ -15,7 +15,9 @@ Version 1.13.1+dev:
    * New animated water.
 
  * Language and i18n:
-   * Updated translations: French, Galician, Japanese, Latvian.
+   * Updated translations: British English, French, Galician, Japanese, Latvian.
+   * Fixed crashes during start-up on Windows resulting from add-ons containing
+     erroneous textdomain declarations (bug #23839).
 
  * Music and sound effects:
    * New dwarf hit and die sounds.
@@ -27,6 +29,9 @@ Version 1.13.1+dev:
      to certain categories (such as village names).
    * By default, labels placed by ignored players are hidden. You can override
      this using the above interface.
+
+ * Miscellaneous and bug fixes:
+   * Fixed OOS on random maps, where clients placed sides in different castles.
 
 
 Version 1.13.1:

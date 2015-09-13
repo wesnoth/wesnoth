@@ -78,8 +78,11 @@ public:
 	void add_log_data(const std::string &category, const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const config& c);
 
-
-	void add_chat_message_location();
+	/**
+		adds a chat message if it wasn't added yet.
+		@returns true if a message location was added
+	*/
+	bool add_chat_message_location();
 	void speak(const config& cfg);
 	const std::vector<chat_msg>& build_chat_log();
 
@@ -112,7 +115,6 @@ public:
 	bool at_end() const;
 	void set_to_end();
 
-	void clear();
 	bool empty();
 
 	enum MARK_SENT { MARK_AS_UNSENT, MARK_AS_SENT };

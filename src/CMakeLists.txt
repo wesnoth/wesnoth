@@ -739,6 +739,7 @@ set(wesnoth-main_SRC
 	actions/undo_recall_action.cpp
 	actions/undo_recruit_action.cpp
 	actions/undo_update_shroud_action.cpp
+	actions/unit_creator.cpp
 	actions/vision.cpp
 	addon/client.cpp
 	addon/info.cpp
@@ -956,6 +957,7 @@ set(wesnoth-main_SRC
 	mouse_handler_base.cpp
 	movetype.cpp
 	mp_game_settings.cpp
+	mp_replay_controller.cpp
 	game_initialization/mp_game_utils.cpp
 	game_initialization/mp_options.cpp
 	mp_ui_alerts.cpp
@@ -1104,6 +1106,7 @@ set(libwesnoth-game_STAT_SRC
 	preferences.cpp
 	preferences_display.cpp
 	race.cpp
+	quit_confirmation.cpp
 	reports.cpp
 	show_dialog.cpp
 	simple_rng.cpp

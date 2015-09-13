@@ -29,6 +29,7 @@ if sys.version_info.major >= 3:
 else: # we are on Python 2
     import Queue
     # tkinter modules
+    import tkFont as font # in Py3 it's tkinter.font
     from Tkinter import *
     from tkMessageBox import *
     from tkFileDialog import *
@@ -135,6 +136,77 @@ def attach_select_all(widget,function):
         widget.bind("<Command-KeyRelease-a>", function)
     elif windowingsystem == "x11":
         widget.bind("<Control-KeyRelease-a>", function)
+
+class Tooltip(Toplevel):
+    def __init__(self,widget,text,tag=None):
+        """A tooltip, or balloon. Displays the specified help text when the
+mouse pointer stays on the widget for more than 500 ms."""
+        # the master attribute retrieves the window where our "parent" widget is
+        Toplevel.__init__(self,widget.master)
+        self.widget=widget
+        self.preshow_id=None
+        self.show_id=None
+        self.label=Label(self,
+                         text=text,
+                         background="#ffffe1", # background color used on Windows
+                         borderwidth=1,
+                         relief=SOLID,
+                         padding=1,
+                         # Tk has a bunch of predefined fonts
+                         # use the one specific for tooltips
+                         font=font.nametofont("TkTooltipFont"))
+        self.label.pack()
+        self.overrideredirect(True)
+        # allow binding the tooltips to tagged elements of a widget
+        # only Text, Canvas and Treeview support tags
+        # and as such, they have a tag_bind method
+        # if the widget doesn't support tags, bind directly to it
+        if tag and hasattr(widget, "tag_bind") and callable(widget.tag_bind):
+            self.widget.tag_bind(tag,"<Enter>",self.preshow)
+            self.widget.tag_bind(tag,"<Leave>",self.hide)
+        else:
+            self.widget.bind("<Enter>",self.preshow)
+            self.widget.bind("<Leave>",self.hide)
+        self.bind_all("<Button>",self.hide)
+        self.withdraw()
+    def preshow(self,event=None):
+        self.after_cleanup()
+        # 500 ms and 5000 ms are the default values used on Windows
+        self.preshow_id=self.after(500,self.show)
+    def show(self):
+        self.after_cleanup()
+        # check if the tooltip will end up out of the screen
+        # and handle this case if so
+        screen_width = self.winfo_screenwidth()
+        tooltip_width = self.winfo_reqwidth()
+        if tooltip_width + self.winfo_pointerx() > screen_width:
+            # unfortunately, it seems like Tkinter doesn't have a way to check the pointer's size
+            # so I'm using a value of 20px, which is enough for the usual 16px pointers
+            self.geometry("+%d+%d" % (screen_width-tooltip_width,self.winfo_pointery()+20))
+        else:
+            self.geometry("+%d+%d" % (self.winfo_pointerx(),self.winfo_pointery()+20))
+        # update_idletasks forces a geometry update
+        self.update_idletasks()
+        self.state("normal")
+        self.lift()
+        self.show_id=self.after(5000, self.hide)
+    def hide(self,event=None):
+        self.after_cleanup()
+        self.withdraw()
+    def after_cleanup(self):
+        # each event should cleanup after itself,
+        # to avoid having two .after() calls conflicting
+        # for example, one previously scheduled .after() may
+        # try to hide the tooltip before five seconds are passed
+        if self.show_id:
+            self.after_cancel(self.show_id)
+            self.show_id=None
+        if self.preshow_id:
+            self.after_cancel(self.preshow_id)
+            self.preshow_id=None
+    def set_text(self,text):
+        self.label.configure(text=text)
+        self.update_idletasks()
 
 class Popup(Toplevel):
     def __init__(self,parent,tool,thread):
@@ -386,38 +458,48 @@ class WmllintTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
         self.radio_clean=Radiobutton(self.mode_frame,
-                                     text="Clean\nDelete *.bak files",
+                                     text="Clean",
                                      variable=self.mode_variable,
                                      value=2)
         self.radio_clean.grid(row=2,
                               column=0,
                               sticky=W,
                               padx=10)
+        self.tooltip_clean=Tooltip(self.radio_clean,
+                                   "Delete *.bak files")
         self.radio_diff=Radiobutton(self.mode_frame,
-                                    text="Diff\nShow differences in converted files",
+                                    text="Diff",
                                     variable=self.mode_variable,
                                     value=3)
         self.radio_diff.grid(row=3,
                              column=0,
                              sticky=W,
                              padx=10)
+        self.tooltip_diff=Tooltip(self.radio_diff,
+                                  "Show differences in converted files")
         self.radio_revert=Radiobutton(self.mode_frame,
-                                      text="Revert\nRevert conversions using *.bak files",
+                                      text="Revert",
                                       variable=self.mode_variable,
                                       value=4)
         self.radio_revert.grid(row=4,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_revert=Tooltip(self.radio_revert,
+                                    "Revert conversions using *.bak files")
         self.verbosity_frame=LabelFrame(self,
                                         text="Verbosity level")
         self.verbosity_frame.grid(row=0,
@@ -441,7 +523,7 @@ class WmllintTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Name files\nbefore processing",
+                                  text="Name files before processing",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
@@ -753,14 +835,18 @@ class WmlindentTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
         self.verbosity_frame=LabelFrame(self,
                                         text="Verbosity level")
         self.verbosity_frame.grid(row=0,
@@ -784,7 +870,7 @@ class WmlindentTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Also report\nunchanged files",
+                                  text="Report unchanged files",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
@@ -847,46 +933,40 @@ class MainFrame(Frame):
                             column=0,
                             sticky=E+W)
         self.run_button=Button(self.buttonbox,
-                               text="Run wmllint",
                                image=ICONS['run'],
-                               compound=LEFT,
-                               width=15, # to avoid changing size when callback is called
                                command=self.on_run_wmllint)
         self.run_button.pack(side=LEFT,
                              padx=5,
                              pady=5)
+        self.run_tooltip=Tooltip(self.run_button,"Run wmllint")
         self.save_button=Button(self.buttonbox,
-                                text="Save as text...",
                                 image=ICONS['save'],
-                                compound=LEFT,
                                 command=self.on_save)
         self.save_button.pack(side=LEFT,
                               padx=5,
                               pady=5)
+        self.save_tooltip=Tooltip(self.save_button,"Save as text...")
         self.clear_button=Button(self.buttonbox,
-                                 text="Clear output",
                                  image=ICONS['clear'],
-                                 compound=LEFT,
                                  command=self.on_clear)
         self.clear_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.clear_tooltip=Tooltip(self.clear_button,"Clear output")
         self.about_button=Button(self.buttonbox,
-                                 text="About...",
                                  image=ICONS['about'],
-                                 compound=LEFT,
                                  command=self.on_about)
         self.about_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.about_tooltip=Tooltip(self.about_button,"About...")
         self.exit_button=Button(self.buttonbox,
-                                text="Exit",
                                 image=ICONS['exit'],
-                                compound=LEFT,
-                                command=parent.destroy)
+                                command=self.on_quit)
         self.exit_button.pack(side=RIGHT,
                               padx=5,
                               pady=5)
+        self.exit_tooltip=Tooltip(self.exit_button,"Exit")
         self.dir_variable=StringVar()
         self.dir_frame=SelectDirectory(self,
                                        textvariable=self.dir_variable)
@@ -951,20 +1031,23 @@ class MainFrame(Frame):
         self.columnconfigure(0,weight=1)
         self.rowconfigure(3,weight=1)
         self.notebook.bind("<<NotebookTabChanged>>",self.tab_callback)
-        # this allows using the mouse wheel even on the disabled Text widget
-        # without the need to clic on said widget
-        self.tk_focusFollowsMouse()
+
+        parent.protocol("WM_DELETE_WINDOW",
+                        self.on_quit)
 
     def tab_callback(self,event):
         # we check the ID of the active tab and ask its position
         # the order of the tabs is pretty obvious
         active_tab=self.notebook.index(self.notebook.select())
         if active_tab==0:
-            self.run_button.configure(text="Run wmllint",command=self.on_run_wmllint)
+            self.run_tooltip.set_text("Run wmllint")
+            self.run_button.configure(command=self.on_run_wmllint)
         elif active_tab==1:
-            self.run_button.configure(text="Run wmlscope",command=self.on_run_wmlscope)
+            self.run_tooltip.set_text("Run wmlscope")
+            self.run_button.configure(command=self.on_run_wmlscope)
         elif active_tab==2:
-            self.run_button.configure(text="Run wmlindent",command=self.on_run_wmlindent)
+            self.run_tooltip.set_text("Run wmlindent")
+            self.run_button.configure(command=self.on_run_wmlindent)
 
     def on_run_wmllint(self):
         # first of all, check if we have something to run wmllint on it
@@ -1151,6 +1234,8 @@ Error code: {1}""".format(queue_item[0],queue_item[1]))
             try:
                 with codecs.open(fn,"w","utf-8") as out:
                     out.write(self.text.get(1.0,END)[:-1]) # exclude the double endline at the end
+                # the output is saved, if we close we don't lose anything
+                self.text.edit_modified(False)
             except IOError as error: # in case that we attempt to write without permissions
                 showerror("Error","""Error while writing to:
 {0}
@@ -1163,6 +1248,10 @@ Error code: {1}
         self.text.configure(state=NORMAL)
         self.text.delete(1.0,END)
         self.text.configure(state=DISABLED)
+        # the edit_modified flag is set to True every time that the content
+        # of the text widget is altered
+        # since there's nothing useful inside of it, set it to False
+        self.text.edit_modified(False)
 
     def on_about(self):
         showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014-2015
@@ -1170,6 +1259,18 @@ Error code: {1}
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
 Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
+
+    def on_quit(self):
+        # check if the text widget contains something
+        # and ask for a confirmation if so
+        if self.text.edit_modified():
+            answer = askyesno("Exit confirmation",
+                              "Do you really want to quit?",
+                              icon = WARNING)
+            if answer:
+                self.parent.destroy()
+        else:
+            self.parent.destroy()
 
 root=Tk()
 

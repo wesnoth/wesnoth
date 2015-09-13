@@ -9,14 +9,13 @@
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
 # yma <yma9yma@gmail.com>, 2011.
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2012.
-# RatArmy <broadbarredfirefish@gmail.com>, 2015
-#
+# RatArmy <broadbarredfirefish@gmail.com>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2015-08-18 08:01+0000\n"
+"PO-Revision-Date: 2015-08-30 00:34+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
 "wesnoth112/language/ja_JP/)\n"
@@ -844,8 +843,8 @@ msgstr ""
 "Aethenwood、そして南東は苦い湿地（Bitter湿地、大マップの右下）です。\n"
 "\n"
 "Fort Tahnを越えたAethen川(River Aethen)の南側はWesnothにおける開拓中の地域で"
-"す。その南端（マップ外）はAethenwoodの延長とも考えられるdenseの森(dense "
-"woods)です。\n"
+"す。その南端（マップ外）はAethenwoodの延長とも考えられる濃密な森となっていま"
+"す。\n"
 "\n"
 "    • 主要な都市\n"
 "          ◦ Weldyn: Wesnoth 王国の首都\n"
@@ -2113,7 +2112,7 @@ msgstr ""
 "\n"
 "このルールには二つの例外があります。<ref>dst='weaponspecial_magical' text='魔"
 "法'</ref>と<ref>dst='weaponspecial_marksman' text='射撃'</ref>による攻撃で"
-"す。魔法による攻撃は地形に関係なく常に命中率は 70% になり、射撃は攻撃時に限"
+"す。魔法による攻撃は地形に関係なく常に命中率は 70% になり、精密は攻撃時に限"
 "り、地形に関わらず常に最低でも 60% の命中率になります。"
 
 #. [topic]: id=combat
@@ -2142,9 +2141,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"各攻撃が命中することによる基本のダメージ量は、攻撃型に依存します。例えば、"
-"5-4 の剣を持つエルフの戦士は基本ダメージ 5 で攻撃します。通常、この値は二つの"
-"事柄、<ref>dst='damage_types_and_resistance' text='耐性'</ref>と"
+"各攻撃が命中することによる基本のダメージ量は、ダメージ型に依存します。例え"
+"ば、5-4 の剣を持つエルフの戦士は基本ダメージ 5 で攻撃します。通常、この値は二"
+"つの事柄、<ref>dst='damage_types_and_resistance' text='耐性'</ref>と"
 "<ref>dst='time_of_day' text='時刻'</ref>によって修正されます。基本ダメージが"
 "これらの状況によってどう修正されるかを見るには、攻撃選択メニューの"
 "<italic>text='ダメージ計算'</italic>を選択して下さい。"
@@ -2992,7 +2991,7 @@ msgstr ""
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:509
 msgid "Slow"
-msgstr "遅鈍"
+msgstr "鈍重"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:510
@@ -3017,7 +3016,7 @@ msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
 msgstr ""
-"遅鈍なユニットは移動力が 1 少なくなりますが、HP が通常より 5% 多くなります。"
+"鈍重なユニットは移動力が 1 少なくなりますが、HP が通常より 5% 多くなります。"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:517
@@ -4739,8 +4738,8 @@ msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-" このユニットの射撃能力のおかげで目標とされた敵に高い確率で命中します。しか"
-"し、攻撃側の場合だけです。"
+" このユニットの精密な攻撃は目標とされた敵に高い確率で命中します。しかし、攻撃"
+"側の場合だけです。"
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -5332,7 +5331,7 @@ msgstr "エルフ"
 #. [race]: id=elf
 #: data/core/units.cfg:112
 msgid "race+female^Elf"
-msgstr "エルフ族"
+msgstr "エルフ"
 
 #. [race]: id=elf
 #: data/core/units.cfg:113
@@ -5514,7 +5513,7 @@ msgstr "人間"
 #. [race]: id=human
 #: data/core/units.cfg:185
 msgid "race+female^Human"
-msgstr "人間族"
+msgstr "人間"
 
 #. [race]: id=human
 #: data/core/units.cfg:186
@@ -5603,7 +5602,7 @@ msgstr "カリフェイト"
 #. [race]: id=khalifate
 #: data/core/units.cfg:204
 msgid "race+female^Khalifate Human"
-msgstr "カリフェイト族"
+msgstr "カリフェイト"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:205
@@ -5623,7 +5622,7 @@ msgstr "トカゲ"
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:218
 msgid "race+female^Saurian"
-msgstr "トカゲ族"
+msgstr "トカゲ"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:219
@@ -6447,7 +6446,7 @@ msgstr "ヘルプ文書を解析中にエラー: "
 #~ msgstr "攻撃型"
 
 #~ msgid "Resistance"
-#~ msgstr "抵抗値"
+#~ msgstr "耐性"
 
 #~ msgid "Terrain"
 #~ msgstr "地形"

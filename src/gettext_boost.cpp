@@ -96,6 +96,18 @@ namespace
 			{
 				return;
 			}
+
+			if(domain.find('/') != std::string::npos)
+			{
+				// Forward slash has a specific meaning in Boost.Locale domain
+				// names, specifying the encoding. We use UTF-8 for everything
+				// so we can't possibly support that, and odds are it's a user
+				// mistake (as in bug #23839).
+				ERR_G << "illegal textdomain name '" << domain
+					  << "', skipping textdomain\n";
+				return;
+			}
+
 			generator_.add_messages_domain(domain);
 			loaded_domains_.insert(domain);
 		}
@@ -143,7 +155,7 @@ namespace
 		{
 			try
 			{
-				LOG_G << "attemptng to generate locale by name '" << current_language_ << "'\n";
+				LOG_G << "attempting to generate locale by name '" << current_language_ << "'\n";
 				current_locale_ = generator_.generate(current_language_);
 				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
 				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ( "
@@ -232,11 +244,11 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	return msgval;
 }
 
-void bind_textdomain(const char* domain, const char* direcory, const char* /*encoding*/)
+void bind_textdomain(const char* domain, const char* directory, const char* /*encoding*/)
 {
-	LOG_G << "adding textdomain '" << domain << "' in directory '" << direcory << "'\n";
+	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'\n";
 	get_manager().add_messages_domain(domain);
-	get_manager().add_messages_path(direcory);
+	get_manager().add_messages_path(directory);
 	get_manager().update_locale();
 }
 

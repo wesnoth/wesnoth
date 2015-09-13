@@ -112,6 +112,7 @@ public:
 	virtual void toggle_accelerated_speed();
 
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
+	virtual void load_autosave(const std::string& filename);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;

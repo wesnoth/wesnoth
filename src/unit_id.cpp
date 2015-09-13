@@ -20,16 +20,12 @@
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 
-namespace n_unit {
+namespace n_unit
+{
 	id_manager id_manager::manager_;
 
 	id_manager::id_manager() : next_id_(0), fake_id_(0)
 	{}
-
-	id_manager& id_manager::instance()
-	{
-		return manager_;
-	}
 
 	unit_id id_manager::next_id()
 	{
@@ -45,7 +41,7 @@ namespace n_unit {
 		return unit_id::create_fake(++fake_id_);
 	}
 
-	size_t id_manager::get_save_id()
+	size_t id_manager::get_save_id() const
 	{
 		return next_id_;
 	}

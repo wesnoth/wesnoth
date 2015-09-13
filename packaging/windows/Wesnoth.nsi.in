@@ -36,6 +36,7 @@
   !define MUI_FINISHPAGE_TITLE_3LINES
   !define MUI_LICENSEPAGE_TEXT_BOTTOM " "
   !define MUI_LICENSEPAGE_BUTTON $(^NextBtn)
+  !define MUI_COMPONENTSPAGE_NODESC
 
 ;--------------------------------
 ;Language Selection Dialog Settings
@@ -66,6 +67,7 @@
   !insertmacro MUI_PAGE_FINISH
 
   !insertmacro MUI_UNPAGE_CONFIRM
+  !insertmacro MUI_UNPAGE_COMPONENTS
   !insertmacro MUI_UNPAGE_INSTFILES
 
 ;--------------------------------
@@ -184,7 +186,8 @@ FunctionEnd
 ;--------------------------------
 ;Uninstaller Section
 
-Section "Uninstall"
+Section "un.$(LWesnoth)" un.BfW
+  SectionIn RO  # read only (mandatory)
 
   %NSIS_UNINSTALL_FILES
   Delete "$INSTDIR\wesnoth_editor-icon.ico"
@@ -227,6 +230,10 @@ Section "Uninstall"
   DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth\%version"
   DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth"
 
+SectionEnd
+
+Section /o "un.$(LUserdata)" un.Userdata # optional
+  RMDir /r "$DOCUMENTS\My Games\Wesnoth%version_major"
 SectionEnd
 
 ;--------------------------------

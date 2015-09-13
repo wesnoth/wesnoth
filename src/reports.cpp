@@ -1566,11 +1566,7 @@ REPORT_GENERATOR(report_countdown, rc)
 
 void reports::register_generator(const std::string &name, reports::generator *g)
 {
-	std::pair<dynamic_report_generators::iterator, bool> ib =
-		dynamic_generators_.insert(std::make_pair(name, boost::shared_ptr<reports::generator>(g)));
-	if (!ib.second) {
-		ib.first->second.reset(g);
-	}
+	dynamic_generators_[name] = boost::shared_ptr<reports::generator>(g);
 }
 
 config reports::generate_report(const std::string &name, reports::context & rc, bool only_static)

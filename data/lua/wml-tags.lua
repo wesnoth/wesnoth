@@ -711,7 +711,7 @@ function wml_actions.modify_unit(cfg)
 			local current_tag = current_table[1]
 			if current_tag == "filter" then
 				-- nothing
-			elseif current_tag == "object" or current_tag == "trait" then
+			elseif current_tag == "object" or current_tag == "trait" or current_tag == "advancement" then
 				local unit = wesnoth.get_variable(unit_path)
 				unit = wesnoth.create_unit(unit)
 				wesnoth.add_modification(unit, current_tag, current_table[2])
@@ -1504,4 +1504,10 @@ function wml_actions.role(cfg)
 	until #types == 0 or i > #types
 
 	-- no matching unit found, fail silently
+end
+
+function wml_actions.unsynced(cfg)
+	wesnoth.unsynced(function ()
+		wml_actions.command(cfg)
+	end)
 end

@@ -138,8 +138,10 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 		}
 		this->carryover_sides_.push_back(carryover(side));
 	}
-
-	wml_menu_items_.set_menu_items(cfg);
+	BOOST_FOREACH(const config& item, cfg.child_range("menu_item"))
+	{
+		wml_menu_items_.push_back(new config(item));
+	}
 }
 
 std::vector<carryover>& carryover_info::get_all_sides() {
@@ -217,12 +219,15 @@ void carryover_info::transfer_to(config& level)
 	}
 
 	if(!level.has_child("menu_item")){
-		wml_menu_items_.to_config(level);
+		BOOST_FOREACH(config& item , wml_menu_items_)
+		{
+			level.add_child("menu_item").swap(item);
+		}
 	}
 
 	next_scenario_ = "";
 	variables_ = config();
-	wml_menu_items_ = game_events::wmi_container();
+	wml_menu_items_.clear();
 
 }
 
@@ -240,9 +245,10 @@ const config carryover_info::to_config()
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);
-
-	wml_menu_items_.to_config(cfg);
-
+	BOOST_FOREACH(const config& item , wml_menu_items_)
+	{
+		cfg.add_child("menu_item", item);
+	}
 	return cfg;
 }
 

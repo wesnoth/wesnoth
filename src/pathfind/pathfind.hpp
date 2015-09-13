@@ -24,7 +24,7 @@ class gamemap;
 class team;
 class unit;
 class unit_type;
-
+class game_board;
 #include "map_location.hpp"
 #include "movetype.hpp"
 
@@ -43,7 +43,8 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 map_location find_vacant_tile(const map_location& loc,
                               VACANT_TILE_TYPE vacancy=VACANT_ANY,
                               const unit* pass_check=NULL,
-                              const team* shroud_check=NULL);
+                              const team* shroud_check=NULL,
+                              const game_board* board=NULL);
 /// Wrapper for find_vacant_tile() when looking for a vacant castle tile
 /// near a leader.
 map_location find_vacant_castle(const unit & leader);
