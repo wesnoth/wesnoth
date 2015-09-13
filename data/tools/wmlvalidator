@@ -109,6 +109,15 @@ class Validator:
                         if float(value) < float(number):
                             self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value needs to be at least %s, found : %s" % (number, value))
 
+                    regex_limit_max = re.compile(ur'^limit-max\((\d+.\d+|\d+)\)$')
+                    check_limit_max = [i for i in attribute.optionals if regex_limit_max.search(i)]
+                    if len(check_limit_max):
+                        check_limit_max = check_limit_max[0]
+                        number = regex_limit_max.search(check_limit_max).group(1)
+
+                        if float(value) > float(number):
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value needs to be at max %s, found : %s" % (number, value))
+
                     regex_file_exist = re.compile(ur'^need-file-in\(([\w.\-\/]+)\)$')
                     check_file_exist = [i for i in attribute.optionals if regex_file_exist.search(i)]
                     if len(check_file_exist):
