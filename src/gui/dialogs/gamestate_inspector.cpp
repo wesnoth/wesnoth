@@ -345,7 +345,13 @@ public:
 		model_.clear_stuff_list();
 		pages_.clear();
 		config events_config;
-		game_events::write_events(events_config);
+
+		if(handler_type_ == WMI_HANDLER) {
+			assert(resources::gamedata);
+			resources::gamedata->get_wml_menu_items().to_config(events_config);
+		} else {
+			game_events::write_events(events_config);
+		}
 
 		FOREACH(const AUTO & cfg, events_config.child_range(handler_key))
 		{
