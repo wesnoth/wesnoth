@@ -1655,9 +1655,8 @@ def is_map(filename):
     if "map" in os.path.dirname(filename) or filename.endswith(".map"):
         return True
     try:
-        fp = codecs.open(filename, "r", "utf8")
-        lines = fp.readlines()
-        fp.close()
+        with codecs.open(filename, "r", "utf8") as fp:
+            lines = fp.readlines()
         has_map_content = False
         for i in range(len(lines)):
             if lines[i].endswith("\n"):
@@ -1707,7 +1706,9 @@ def translator(filename, mapxforms, textxform, versions):
     mfile = []
     map_only = not filename.endswith(".cfg")
     terminator = "\n"
-    for line in codecs.open(filename, "r", "utf8"):
+    with codecs.open(filename, "r", "utf8") as content:
+        lines = content.readlines()
+    for line in lines:
         if line.endswith("\n"):
             line = line[:-1]
         if line.endswith("\r"):
@@ -2262,10 +2263,12 @@ if __name__ == '__main__':
                 if os.path.exists(backup):
                     fromdate = time.ctime(os.stat(backup).st_mtime)
                     todate = time.ctime(os.stat(fn).st_mtime)
-                    fromlines = codecs.open(backup, 'U', "utf8").readlines()
-                    tolines = codecs.open(fn, 'U', "utf8").readlines()
-                    diff = difflib.unified_diff(fromlines, tolines,
-                                         backup, fn, fromdate, todate, n=3)
+                    with codecs.open(backup, 'U', "utf8") as fromlines, \
+                         codecs.open(fn, 'U', "utf8") as tolines:
+                        diff = difflib.unified_diff(fromlines.readlines(),
+                                                    tolines.readlines(),
+                                                    backup, fn, fromdate,
+                                                    todate, n=3)
                     sys.stdout.writelines(diff)
             else:
                 # Do file conversions
@@ -2277,9 +2280,8 @@ if __name__ == '__main__':
                             if sys.platform == 'win32' and os.path.exists(backup):
                                 os.remove(backup)
                             os.rename(fn, backup)
-                            ofp = codecs.open(fn, "w", "utf8")
-                            ofp.write(changed)
-                            ofp.close()
+                            with codecs.open(fn, "w", "utf8") as ofp:
+                                ofp.write(changed)
                 except maptransform_error, e:
                     print("wmllint: " + repr(e), file=sys.stderr)
                 except:
