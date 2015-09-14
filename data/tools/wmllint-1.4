@@ -1610,15 +1610,15 @@ start_time=-150
     for i, line in enumerate(lines):
         if "no-syntax-rewrite" in line:
             break
-        m = re.search(r"(\s+)image_short=(.*)", line)
+        m = re.search(r"(\s+)image_short=(.*)", lines[i])
         if m:
             image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
             lines[i] = m.group(1) + image_block % (m.group(2), "melee")
             modcount += 1
-        m = re.search(r"(\s+)image_long=(.*)", line)
-        if m:
-            image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
-            lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
+        r = re.search(r"(\s+)image_long=(.*)", lines[i])
+        if r:
+            image_block = expanded.replace("\n", "\n" + r.group(1)) + "\n"
+            lines[i] = r.group(1) + image_block % (r.group(2), "ranged")
             modcount += 1
     # In [terrain], letter= to terrain=
     in_terrain = False
