@@ -1659,10 +1659,7 @@ def is_map(filename):
             lines = fp.readlines()
         has_map_content = False
         for i, line in enumerate(lines):
-            if line.endswith("\n"):
-                lines[i] = line[:-1]
-            if line.endswith("\r"):
-                lines[i] = line[:-1]
+            lines[i] = line.rstrip("\n\r")
         w = len(lines[0])
         for line in lines:
             if len(line) != w:
