@@ -1260,12 +1260,12 @@ def hack_syntax(filename, lines):
         for animation in animations:
             if animation.variation != None:
                 vcount = 0
-                for j, line in enumerate(lines):
+                for i, line in enumerate(lines):
                     if "[/variation]" in line:
                         vcount += 1
                     if vcount == animation.variation:
                         break
-                lines = lines[:j] + [animation.wml] + lines[j:]
+                lines = lines[:i] + [animation.wml] + lines[i:]
     except TypeError:
         pass
     # Garbage-collect any empty [attack] scopes left behind;
