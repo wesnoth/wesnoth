@@ -350,7 +350,9 @@ end
 wml_actions["repeat"] = function(cfg)
 	local times = cfg.times or 1
 	for i = 1, times do
-		handle_event_commands(cfg)
+		for do_child in helper.child_range( cfg, "do" ) do
+			handle_event_commands(do_child, "loop")
+		end
 	end
 end
 
