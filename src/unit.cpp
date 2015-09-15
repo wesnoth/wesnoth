@@ -1663,9 +1663,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	BOOST_FOREACH(const config &effect, mod.child_range("effect"))
 	{
 		// Apply SUF.
-		if (const config &afilter = effect.child("filter"))
-			if (!unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) continue;
-
+		if (const config &afilter = effect.child("filter")) {
+			// @FIXME: during gamesate construction resources::filter_con is not available
+			if (resources::filter_con && !unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) continue;
+		}
 		const std::string &apply_to = effect["apply_to"];
 		const std::string &apply_times = effect["times"];
 		int times = 1;

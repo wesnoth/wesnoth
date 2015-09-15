@@ -86,11 +86,12 @@ static lg::log_domain log_enginerefac("enginerefac");
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
+/// copies [scenario] attributes/tags from src to dest that are not otherwise stored in c++ structs/clases.
 static void copy_persistent(const config& src, config& dst)
 {
 	typedef boost::container::flat_set<std::string> stringset;
 	static stringset attrs = boost::assign::list_of
-		("theme")("next_scenario")("description")("name")("defeat_music")
+		("id")("theme")("next_scenario")("description")("name")("defeat_music")
 		("victory_music")("victory_when_enemies_defeated")("remove_from_carryover_on_defeat")("disallow_recall")("experience_modifier")("require_scenario")
 		.convert_to_container<stringset>();
 	static stringset tags = boost::assign::list_of
@@ -157,7 +158,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, gui_()
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
 	, statistics_context_(new statistics::scenario_context(level["name"]))
-	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
 	, linger_(false)
@@ -174,7 +174,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	
 	resources::controller = this;
 	resources::persist = &persist_;
-	resources::undo_stack = undo_stack_.get();
 	resources::recorder = replay_.get();
 
 	resources::classification = &saved_game_.classification();
@@ -231,7 +230,7 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::tod_manager = &gamestate().tod_manager_;
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
-
+	resources::undo_stack = &undo_stack();
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
@@ -311,6 +310,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::lua_kernel = NULL;
 	resources::game_events = NULL;
 	resources::tunnels = NULL;
+	resources::undo_stack = NULL;
 	gamestate_.reset(new game_state(level, *this, tdata_));
 	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::gameboard = &gamestate().board_;
@@ -322,6 +322,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::lua_kernel = gamestate().lua_kernel_.get();
 	resources::game_events = gamestate().events_manager_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
+	resources::undo_stack = &undo_stack();
 	gui_->reset_tod_manager(gamestate().tod_manager_);
 	gui_->reset_reports(*gamestate().reports_);
 	gui_->change_display_context(&gamestate().board_);
@@ -466,7 +467,7 @@ void play_controller::do_init_side()
 	}
 
 	// Prepare the undo stack.
-	undo_stack_->new_side_turn(current_side());
+	undo_stack().new_side_turn(current_side());
 
 	pump().fire("turn refresh");
 	pump().fire("side " + side_num + " turn refresh");
@@ -515,9 +516,6 @@ config play_controller::to_config() const
 
 	gui_->write(cfg.add_child("display"));
 
-	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
-	undo_stack_->write(cfg.add_child("undo_stack"));
-
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
 	
@@ -537,7 +535,7 @@ void play_controller::finish_side_turn()
 	{ //Block for set_scontext_synced
 		set_scontext_synced sync(1);
 		// Ending the turn commits all moves.
-		undo_stack_->clear();
+		undo_stack().clear();
 		gamestate().board_.end_turn(current_side());
 		const std::string turn_num = str_cast(turn());
 		const std::string side_num = str_cast(current_side());
@@ -851,20 +849,20 @@ void play_controller::load_game() {
 
 void play_controller::undo(){
 	mouse_handler_.deselect_hex();
-	undo_stack_->undo();
+	undo_stack().undo();
 }
 
 void play_controller::redo(){
 	mouse_handler_.deselect_hex();
-	undo_stack_->redo();
+	undo_stack().redo();
 }
 
 bool play_controller::can_undo() const {
-	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack_->can_undo();
+	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack().can_undo();
 }
 
 bool play_controller::can_redo() const {
-	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack_->can_redo();
+	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack().can_redo();
 }
 
 namespace {

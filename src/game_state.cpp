@@ -14,6 +14,7 @@
 
 #include "game_state.hpp"
 
+#include "actions/undo.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "game_events/manager.hpp"
@@ -54,6 +55,7 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 	reports_(new reports()),
 	lua_kernel_(),
 	events_manager_(),
+	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	start_event_fired_(!level["playing_team"].empty()),
@@ -266,6 +268,8 @@ void game_state::write(config& cfg) const
 	//Write the game data, including wml vars
 	gamedata_.write_snapshot(cfg);
 
+	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
+	undo_stack_->write(cfg.add_child("undo_stack"));
 }
 
 namespace {

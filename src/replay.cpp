@@ -317,14 +317,22 @@ void replay::add_log_data(const std::string &category, const std::string &key, c
 	cat.add_child(key,c);
 }
 
-void replay::add_chat_message_location()
+bool replay::add_chat_message_location()
 {
-	message_locations.push_back(base_->get_pos() - 1);
+	int pos = base_->get_pos() - 1;
+	if(std::find(message_locations.begin(), message_locations.end(), pos) == message_locations.end()) {
+		message_locations.push_back(base_->get_pos() - 1);
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 void replay::speak(const config& cfg)
 {
-	config& cmd = add_nonundoable_command();
+	config& cmd = base_->insert_command(base_->get_pos());
+	cmd["undo"] = false;
 	cmd.add_child("speak",cfg);
 	add_chat_message_location();
 }
@@ -354,6 +362,7 @@ static std::vector< chat_msg > message_log;
 
 const std::vector<chat_msg>& replay::build_chat_log()
 {
+	message_log.clear();
 	std::vector<int>::iterator loc_it;
 	int last_location = 0;
 	std::back_insert_iterator<std::vector < chat_msg > > chat_log_appender( back_inserter(message_log));
@@ -366,7 +375,6 @@ const std::vector<chat_msg>& replay::build_chat_log()
 		add_chat_log_entry(speak, chat_log_appender);
 
 	}
-	message_locations.clear();
 	return message_log;
 }
 
@@ -600,13 +608,6 @@ void replay::set_to_end()
 	base_->set_to_end();
 }
 
-void replay::clear()
-{
-	message_locations.clear();
-	message_log.clear();
-	//FIXME
-}
-
 bool replay::empty()
 {
 	return ncommands() == 0;
@@ -702,13 +703,15 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const std::string &message = child["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
-			resources::recorder->add_chat_message_location();
-			if (!resources::controller->is_skipping_replay() || is_whisper) {
-				int side = child["side"];
-				resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
+			if(resources::recorder->add_chat_message_location()) {
+				DBG_REPLAY << "tried to add a chat message twice.\n";
+				if (!resources::controller->is_skipping_replay() || is_whisper) {
+					int side = child["side"];
+					resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
+				}	
 			}
 		}
 		else if (const config &child = cfg->child("label"))

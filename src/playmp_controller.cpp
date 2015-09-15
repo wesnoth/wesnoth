@@ -135,13 +135,13 @@ void playmp_controller::play_human_turn()
 		timer.reset(new countdown_clock(current_team()));
 	}
 	show_turn_dialog();
-	if(undo_stack_->can_undo()) {
+	if(undo_stack().can_undo()) {
 		// If we reload a networked mp game we cannot undo moves made before the save
 		// Becasue other players already received them
 		if(!current_team().auto_shroud_updates()) {
 			synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
 		}
-		undo_stack_->clear();
+		undo_stack().clear();
 	}
 	if (!preferences::disable_auto_moves()) {
 		execute_gotos();
@@ -154,7 +154,7 @@ void playmp_controller::play_human_turn()
 			if (player_type_changed_)
 			{
 				// Clean undo stack if turn has to be restarted (losing control)
-				if ( undo_stack_->can_undo() )
+				if ( undo_stack().can_undo() )
 				{
 					font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
@@ -168,8 +168,8 @@ void playmp_controller::play_human_turn()
 					font::add_floating_label(flabel);
 				}
 
-				while( undo_stack_->can_undo() )
-					undo_stack_->undo();
+				while( undo_stack().can_undo() )
+					undo_stack().undo();
 
 			}
 			check_objectives();
@@ -433,8 +433,8 @@ void playmp_controller::pull_remote_choice()
 {
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.sync_network() (which calls turn_data_.send_data()) won't work if the undo stack isn't empty because undoable moves won't be sended
-	// Also undo_stack_->clear() must be called synced so we cannot do that here.
-	assert(!undo_stack_->can_undo());
+	// Also undo_stack()clear() must be called synced so we cannot do that here.
+	assert(!undo_stack().can_undo());
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);
@@ -448,8 +448,8 @@ void playmp_controller::send_user_choice()
 {
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.send_data() won't work if the undo stack isn't empty because undoable moves won't be sended
-	// Also undo_stack_->clear() must be called synced so we cannot do that here.
-	assert(!undo_stack_->can_undo());
+	// Also undo_stack()clear() must be called synced so we cannot do that here.
+	assert(!undo_stack().can_undo());
 	turn_data_.send_data();
 }
 

@@ -59,6 +59,7 @@ bool recruit_action::undo(int side)
 	// to also do the overlapped hexes
 	gui.invalidate(recruit_loc);
 	units.erase(recruit_loc);
+	execute_undo_umc_wml();
 	return true;
 }
 

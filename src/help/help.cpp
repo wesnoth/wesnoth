@@ -167,7 +167,7 @@ void show_help(display &disp, const section &toplevel_sec,
 	CVideo& screen = disp.video();
 	const surface& scr = screen.getSurface();
 
-	const int width  = std::min<int>(font::relative_size(900), scr->w - font::relative_size(20));
+	const int width  = std::min<int>(font::relative_size(1000), scr->w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(800), scr->h - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);

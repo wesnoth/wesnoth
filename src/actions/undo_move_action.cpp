@@ -88,6 +88,7 @@ bool move_action::undo(int side)
 	u->anim_comp().set_standing();
 
 	gui.invalidate_unit_after_move(rev_route.front(), rev_route.back());
+	execute_undo_umc_wml();
 	return true;
 }
 
@@ -136,6 +137,7 @@ bool move_action::redo(int side)
 	gui.invalidate_unit_after_move(route.front(), route.back());
 	resources::recorder->redo(replay_data);
 	replay_data.clear();
+	execute_redo_umc_wml();
 	return true;
 }
 

@@ -20,6 +20,45 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
+#
+# Options
+#
+
+#Path options
+set(BINDIR "bin" CACHE STRING "Where to install binaries")
+set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
+set(DOCDIR "${DATAROOTDIR}/doc/wesnoth" CACHE STRING "Sets the doc directory to a non-default location.")
+set(MANDIR "${DATAROOTDIR}/man" CACHE STRING "Where to install manpages")
+set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
+set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
+set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
+set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
+set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
+
+#Game options
+option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
+
+#server options
+set(SERVER_UID "" CACHE STRING "User id of the user who runs wesnothd")
+set(SERVER_GID "" CACHE STRING "Group id of the user who runs wesnothd")
+set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo socket file")
+
+#build options
+option(ENABLE_GAME "Enable compilation of the game" ON)
+option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
+option(ENABLE_SERVER "Enable compilation of server" ON)
+option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
+option(ENABLE_SDL2_TOOLS "Enable building and installation of tools for testing with SDL2" OFF)
+option(ENABLE_SDL2 "Enable building the game with SDL2" OFF)
+option(ENABLE_TESTS "Build unit tests")
+option(ENABLE_NLS "Enable building of translations" ON)
+option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
+option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
+option(ENABLE_PANDORA "Add support for the OpenPandora by adding support for the resolution of 800x480 and switching to a special theme" OFF)
+option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental)" OFF)
+option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
+option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
+option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(ENABLE_SDL2)
 	find_package(SDL2 2.0.0 REQUIRED)
@@ -62,46 +101,6 @@ endif(MSVC)
 
 #check for some compiler/arch specific things and export defines accordingly...
 include(SearchForStuff)
-
-#
-# Options
-#
-
-#Path options
-set(BINDIR "bin" CACHE STRING "Where to install binaries")
-set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
-set(DOCDIR "${DATAROOTDIR}/doc/wesnoth" CACHE STRING "Sets the doc directory to a non-default location.")
-set(MANDIR "${DATAROOTDIR}/man" CACHE STRING "Where to install manpages")
-set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
-set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
-set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
-set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
-
-#Game options
-option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
-
-#server options
-set(SERVER_UID "" CACHE STRING "User id of the user who runs wesnothd")
-set(SERVER_GID "" CACHE STRING "Group id of the user who runs wesnothd")
-set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo socket file")
-
-#build options
-option(ENABLE_GAME "Enable compilation of the game" ON)
-option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
-option(ENABLE_SERVER "Enable compilation of server" ON)
-option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
-option(ENABLE_SDL2_TOOLS "Enable building and installation of tools for testing with SDL2" OFF)
-option(ENABLE_SDL2 "Enable building the game with SDL2" OFF)
-option(ENABLE_TESTS "Build unit tests")
-option(ENABLE_NLS "Enable building of translations" ON)
-option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
-option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
-option(ENABLE_PANDORA "Add support for the OpenPandora by adding support for the resolution of 800x480 and switching to a special theme" OFF)
-option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental)" OFF)
-option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
-option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
-option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 # if no build type is specified, it can happen that the game is built without
 # optimization (c.f. bug #23445), work around this by enforcing "release" type

@@ -2938,6 +2938,19 @@ int game_lua_kernel::intf_synchronize_choice(lua_State *L)
 }
 
 /**
+ * Calls a function in an unsynced context (this specially means that all random calls used by that function will be unsynced).
+ * This is usualy used together with an unsynced if like 'if controller != network'
+ * - Arg 1: function that will be called during the unsynced context.
+ */
+static int intf_do_unsynced(lua_State *L)
+{
+	set_scontext_unsynced sync;
+	lua_pushvalue(L, 1);
+	luaW_pcall(L, 0, 0, false);
+	return 0;
+}
+
+/**
  * Gets all the locations matching a given filter.
  * - Arg 1: WML table.
  * - Ret 1: array of integer pairs.
@@ -4075,6 +4088,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
+		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
 		{ "add_tile_overlay",          &dispatch<&game_lua_kernel::intf_add_tile_overlay           >        },
 		{ "add_time_area",             &dispatch<&game_lua_kernel::intf_add_time_area              >        },

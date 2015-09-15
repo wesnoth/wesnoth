@@ -73,10 +73,11 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 from future_builtins import filter, map, zip
+range = xrange
 
-import sys, os, re, getopt, string, copy, difflib, time
+import sys, os, re, getopt, string, copy, difflib, time, codecs
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
 
@@ -570,7 +571,7 @@ notepairs = (
     )
 
 trait_note = dict(notepairs)
-note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
+note_trait = {pair[1]: pair[0] for pair in notepairs}
 
 def string_strip(value):
     "String-strip the value"
@@ -1654,7 +1655,7 @@ def is_map(filename):
     if "map" in os.path.dirname(filename) or filename.endswith(".map"):
         return True
     try:
-        fp = open(filename)
+        fp = codecs.open(filename, "r", "utf8")
         lines = fp.readlines()
         fp.close()
         has_map_content = False
@@ -1669,6 +1670,8 @@ def is_map(filename):
                 break
         else:
             has_map_content = len(lines) > 1
+    except UnicodeDecodeError:
+        return False
     except OSError:
         has_map_content = False
     except IndexError:
@@ -1704,7 +1707,7 @@ def translator(filename, mapxforms, textxform, versions):
     mfile = []
     map_only = not filename.endswith(".cfg")
     terminator = "\n"
-    for line in open(filename):
+    for line in codecs.open(filename, "r", "utf8"):
         if line.endswith("\n"):
             line = line[:-1]
         if line.endswith("\r"):
@@ -1727,7 +1730,7 @@ def translator(filename, mapxforms, textxform, versions):
                 print(line, end=terminator)
             lineno += 1
         # Check for one certain error condition
-        if line.count("{") and line.count("}"):
+        if "{" in line and "}" in line:
             refname = line[line.find("{"):line.rfind("}")]            
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
@@ -1742,8 +1745,8 @@ def translator(filename, mapxforms, textxform, versions):
         # refer to map files which will be checked separately.
         if map_only or (("map_data=" in line or "mask=" in line)
                         and line.count('"') in (1, 2)
-                        and line.count("{") == 0
-                        and  line.count("}") == 0
+                        and "{" not in line
+                        and "}" not in line
                         and not within('time')):
             outmap = []
             add_border = True
@@ -1861,7 +1864,7 @@ def translator(filename, mapxforms, textxform, versions):
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
                 newdata.append("\"" + terminator)
-        elif "map_data=" in line and (line.count("{") or line.count("}")):
+        elif "map_data=" in line and ("{" in line or "}" in line):
             newline = line
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
@@ -2259,8 +2262,8 @@ if __name__ == '__main__':
                 if os.path.exists(backup):
                     fromdate = time.ctime(os.stat(backup).st_mtime)
                     todate = time.ctime(os.stat(fn).st_mtime)
-                    fromlines = open(backup, 'U').readlines()
-                    tolines = open(fn, 'U').readlines()
+                    fromlines = codecs.open(backup, 'U', "utf8").readlines()
+                    tolines = codecs.open(fn, 'U', "utf8").readlines()
                     diff = difflib.unified_diff(fromlines, tolines,
                                          backup, fn, fromdate, todate, n=3)
                     sys.stdout.writelines(diff)
@@ -2274,7 +2277,7 @@ if __name__ == '__main__':
                             if sys.platform == 'win32' and os.path.exists(backup):
                                 os.remove(backup)
                             os.rename(fn, backup)
-                            ofp = open(fn, "w")
+                            ofp = codecs.open(fn, "w", "utf8")
                             ofp.write(changed)
                             ofp.close()
                 except maptransform_error, e:

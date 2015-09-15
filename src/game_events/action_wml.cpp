@@ -1792,5 +1792,15 @@ WML_HANDLER_FUNCTION(wml_message, /*event_info*/, cfg)
 	handle_wml_log_message( cfg.get_parsed_config() );
 }
 
+WML_HANDLER_FUNCTION(on_undo, /*event_info*/, cfg)
+{
+	synced_context::add_undo_commands(cfg.get_parsed_config());
+}
+
+WML_HANDLER_FUNCTION(on_redo, /*event_info*/, cfg)
+{
+	synced_context::add_redo_commands(cfg.get_parsed_config());
+}
+
 } // end namespace game_events
 
