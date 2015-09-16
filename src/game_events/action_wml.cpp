@@ -359,7 +359,7 @@ namespace { // Support functions
 			screen.highlight_hex(spl);
 			if(scroll) {
 				LOG_DP << "scrolling to speaker..\n";
-				screen.scroll_to_tile(map_location(spl.x, spl.y));
+				screen.scroll_to_tile(spl);
 			}
 			screen.highlight_hex(spl);
 		} else if(speaker_str == "narrator") {
