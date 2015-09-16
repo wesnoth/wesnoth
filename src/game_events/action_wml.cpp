@@ -437,8 +437,7 @@ namespace { // Support functions
 			screen.highlight_hex(spl);
 			if(scroll) {
 				LOG_DP << "scrolling to speaker..\n";
-				const int offset_from_center = std::max<int>(0, spl.y - 1);
-				screen.scroll_to_tile(map_location(spl.x, offset_from_center));
+				screen.scroll_to_tile(map_location(spl.x, spl.y));
 			}
 			screen.highlight_hex(spl);
 		} else if(speaker_str == "narrator") {
