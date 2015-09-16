@@ -366,7 +366,7 @@ namespace
 /**
  * Removes an entry from a list.
  * - Arg 1: number, index of the element to delete.
- * - Arg 2: number, number of teh elements to delete. (0 to delete all elements after index)
+ * - Arg 2: number, number of the elements to delete. (0 to delete all elements after index)
  * - Args 2..n: path of strings and integers.
  */
 int intf_remove_dialog_item(lua_State *L)
@@ -619,7 +619,7 @@ int show_gamestate_inspector(CVideo & video, const vconfig & cfg)
 
 /**
  * Sets a widget's state to active or inactive
- * - Arg 1: string, the type (id of [node_definition]) of teh new node.
+ * - Arg 1: string, the type (id of [node_definition]) of the new node.
  * - Arg 3: integer, where to insert the new node.
  * - Args 3..n: path of strings and integers.
  */

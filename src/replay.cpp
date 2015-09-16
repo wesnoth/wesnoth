@@ -557,7 +557,8 @@ int replay::ncommands() const
 
 config& replay::add_command()
 {
-	//if we werent at teh end of teh replay we sould skip one or mutiple commands.
+	// If we weren't at the end of the replay we should skip one or more
+	// commands.
 	assert(at_end());
 	config& retv = base_->add_child();
 	set_to_end();

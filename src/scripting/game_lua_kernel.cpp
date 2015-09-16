@@ -439,8 +439,8 @@ static int impl_unit_variables_get(lua_State *L)
 /**
  * Gets the attacks of a unit (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id.
- * - Arg 2: index (int) or id (string) identyfying teh units attack.
- * - Ret 1: the units attack.
+ * - Arg 2: index (int) or id (string) identifying a particular attack.
+ * - Ret 1: the unit's attacks.
  */
 static int impl_unit_attacks_get(lua_State *L)
 {
