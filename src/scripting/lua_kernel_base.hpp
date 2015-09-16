@@ -103,6 +103,9 @@ protected:
 
 	// Show a dialog to the currently connected video object (if available)
 	int intf_show_dialog(lua_State * L);
+	
+	// Show a message dialog, possibly with options
+	int intf_show_message_dialog(lua_State * L);
 
 	// Show the interactive lua console (for debugging purposes)
 	int intf_show_lua_console(lua_State * L);

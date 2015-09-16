@@ -18,6 +18,7 @@
 #include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
+#include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/clickable.hpp"    // for tclickable_
 #include "gui/widgets/control.hpp"      // for tcontrol
 #include "gui/widgets/multi_page.hpp"   // for tmulti_page
@@ -237,6 +238,61 @@ int show_dialog(lua_State *L, CVideo & video)
 
 	lua_pushinteger(L, v);
 	return 1;
+}
+
+/**
+ * Displays a message window
+ * - Arg 1: Table describing the window
+ * - Arg 2: List of options (nil or empty table - no options)
+ * - Arg 3: Text input specifications (nil or empty table - no text input)
+ * - Ret 1: option chosen (if no options: 0 if there's text input, -2 if escape pressed, else -1)
+ * - Ret 2: string entered (empty if none, nil if no text input)
+ */
+int show_message_dialog(lua_State *L, CVideo & video)
+{
+	config txt_cfg;
+	const bool has_input = !lua_isnoneornil(L, 3) && luaW_toconfig(L, 3, txt_cfg) && !txt_cfg.empty();
+	const std::string& input_caption = txt_cfg["label"];
+	std::string input_text = txt_cfg["text"].str();
+	unsigned int input_max_len = txt_cfg["max_length"].to_int(256);
+	
+	std::vector<std::string> options;
+	int chosen_option = -1;
+	if (!lua_isnoneornil(L, 2)) {
+		luaL_checktype(L, 2, LUA_TTABLE);
+		size_t n = lua_rawlen(L, 2);
+		for(size_t i = 1; i <= n; i++) {
+			lua_rawgeti(L, 2, i);
+			options.push_back(luaL_checkstring(L, -1));
+		}
+	}
+	
+	const config& def_cfg = luaW_checkconfig(L, 1);
+	const std::string& title = def_cfg["title"];
+	const std::string& message = def_cfg["message"];
+	const std::string& portrait = def_cfg["portrait"];
+	const bool left_side = def_cfg["left_side"].to_bool(true);
+	const bool mirror = def_cfg["mirror"].to_bool(false);
+	
+	int dlg_result = gui2::show_wml_message(
+		left_side, video, title, message, portrait, mirror,
+		has_input, input_caption, &input_text, input_max_len,
+		options, &chosen_option
+	);
+	
+	if (!has_input and options.empty()) {
+		lua_pushinteger(L, dlg_result);
+	} else {
+		lua_pushinteger(L, chosen_option + 1);
+	}
+	
+	if (has_input) {
+		lua_pushlstring(L, input_text.c_str(), input_text.length());
+	} else {
+		lua_pushnil(L);
+	}
+	
+	return 2;
 }
 
 /**
