@@ -85,7 +85,7 @@ class play_controller : public controller_base, public events::observer, public 
 public:
 	play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
-		const tdata_cache & tdata,
+		const tdata_cache& tdata,
 		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
 
@@ -102,22 +102,33 @@ public:
 	void load_game();
 
 	void save_game();
-	void save_game_auto(const std::string & filename);
+	void save_game_auto(const std::string& filename);
 	void save_replay();
-	void save_replay_auto(const std::string & filename);
+	void save_replay_auto(const std::string& filename);
 	void save_map();
 
 	void init_side_begin();
+
+	/**
+	 * Called by turn_info::process_network_data() or init_side() to call do_init_side() if necessary.
+	 */
 	void maybe_do_init_side();
+
+	/**
+	 * Called by replay handler or init_side() to do actual work for turn change.
+	 */
 	void do_init_side();
+
 	void init_side_end();
 
 	virtual void force_end_turn() = 0;
 	virtual void check_objectives() = 0;
 
 	virtual void on_not_observer() = 0;
+
 	/**
 	 * Asks the user whether to continue on an OOS error.
+	 *
 	 * @throw quit_game_exception If the user wants to abort.
 	 */
 	virtual void process_oos(const std::string& msg) const;
@@ -138,7 +149,7 @@ public:
 		return gamestate().board_.teams_;
 	}
 
-	const unit_map & get_units_const() const {
+	const unit_map& get_units_const() const {
 		return gamestate().board_.units();
 	}
 
@@ -153,24 +164,32 @@ public:
 		return gamestate().board_.is_observer();
 	}
 
-	game_state & gamestate() {
+	game_state& gamestate() {
 		return *gamestate_;
 	}
-	const game_state & gamestate() const {
+	const game_state& gamestate() const {
 		return *gamestate_;
 	}
 
 	/**
 	 * Checks to see if a side has won.
-	 * Will also remove control of villages from sides with dead leaders.
+	 *
+	 * This will also remove control of villages from sides with dead leaders.
 	 */
 	void check_victory();
 
 	size_t turn() const {return gamestate().tod_manager_.turn();}
 
-	/** Returns the number of the side whose turn it is. Numbering starts at one. */
+	/**
+	 * Returns the number of the side whose turn it is.
+	 *
+	 * Numbering starts at one.
+	 */
 	int current_side() const { return gamestate_->player_number_; }
 
+	/**
+	 * Builds the snapshot config from members and their respective configs.
+	 */
 	config to_config() const;
 
 	bool is_skipping_replay() const { return skip_replay_;}
@@ -184,38 +203,58 @@ public:
 
 	boost::shared_ptr<wb::manager> get_whiteboard();
 	const mp_game_settings& get_mp_settings();
-	const game_classification & get_classification();
+	const game_classification& get_classification();
 	int get_server_request_number() const { return gamestate().server_request_number_; }
 	void increase_server_request_number() { ++gamestate().server_request_number_; }
 
-	game_events::t_pump & pump();
+	game_events::t_pump& pump();
 
 	int get_ticks();
 
-	virtual soundsource::manager * get_soundsource_man();
-	virtual plugins_context * get_plugins_context();
-	hotkey::command_executor * get_hotkey_command_executor();
+	virtual soundsource::manager* get_soundsource_man();
+	virtual plugins_context* get_plugins_context();
+	hotkey::command_executor* get_hotkey_command_executor();
 
-	actions::undo_list & get_undo_stack() { return undo_stack(); }
+	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
 	bool is_browsing() const OVERRIDE;
 	bool is_lingering() const { return linger_; }
 
 	class hotkey_handler;
+
 	virtual bool is_replay() { return false; }
+
 	t_string get_scenario_name()
-	{ return level_["name"].t_str(); }
+	{
+		return level_["name"].t_str();
+	}
+
 	bool get_disallow_recall()
-	{ return level_["disallow_recall"].to_bool(); }
+	{
+		return level_["disallow_recall"].to_bool();
+	}
+
 	std::string theme()
-	{ return level_["theme"].str(); }
-	void update_savegame_snapshot() const;
+	{
+		return level_["theme"].str();
+	}
+
 	virtual bool should_return_to_play_side()
-	{ return is_regular_game_end(); }
+	{
+		return is_regular_game_end();
+	}
+
 	void maybe_throw_return_to_play_side()
-	{ if(should_return_to_play_side() && !linger_ ) { throw return_to_play_side_exception(); } }
+	{
+		if(should_return_to_play_side() && !linger_ ) {
+			throw return_to_play_side_exception();
+		}
+	}
+
 	virtual void play_side_impl() {}
+
 	void play_side();
+
 	team& current_team();
 	const team& current_team() const;
 
@@ -223,6 +262,9 @@ public:
 	std::set<std::string> all_players() const;
 	int ticks() const { return ticks_; }
 	game_display& get_display();
+
+	void update_savegame_snapshot() const;
+
 protected:
 	struct scoped_savegame_snapshot
 	{
@@ -255,14 +297,16 @@ protected:
 	bool is_team_visible(int team_num, bool observer) const;
 	/// returns 0 if no such team was found.
 	int find_last_visible_team() const;
+
 private:
 	const int ticks_;
+
 protected:
 	//gamestate
-	const tdata_cache & tdata_;
+	const tdata_cache& tdata_;
 	boost::scoped_ptr<game_state> gamestate_;
 	config level_;
-	saved_game & saved_game_;
+	saved_game& saved_game_;
 
 	//managers
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
@@ -293,22 +337,26 @@ protected:
 
 	bool skip_replay_;
 	bool linger_;
-	/// whether we did init side in this session ( false = we did init side before we reloaded the game).
+	/**
+	 * Whether we did init sides in this session
+	 * (false = we did init sides before we reloaded the game).
+	 */
 	bool init_side_done_now_;
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
 	void set_victory_music_list(const std::string& list);
 	void set_defeat_music_list(const std::string& list);
 
-	/*
+	/**
 	 * Changes the UI for this client to the passed side index.
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
 
 	void reset_gamestate(const config& level, int replay_pos);
+
 private:
 
-	void init(CVideo &video, const config& level);
+	void init(CVideo& video, const config& level);
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
@@ -318,6 +366,7 @@ private:
 	std::vector<std::string> defeat_music_;
 
 	hotkey::scope_changer scope_;
+
 protected:
 	bool player_type_changed_;
 	

@@ -86,27 +86,42 @@ static lg::log_domain log_enginerefac("enginerefac");
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
-/// copies [scenario] attributes/tags from src to dest that are not otherwise stored in c++ structs/clases.
+/**
+ * Copies [scenario] attributes/tags that are not otherwise stored in C++ structs/clases.
+ */
 static void copy_persistent(const config& src, config& dst)
 {
 	typedef boost::container::flat_set<std::string> stringset;
+
 	static stringset attrs = boost::assign::list_of
-		("id")("theme")("next_scenario")("description")("name")("defeat_music")
-		("victory_music")("victory_when_enemies_defeated")("remove_from_carryover_on_defeat")("disallow_recall")("experience_modifier")("require_scenario")
+			("id")
+			("theme")
+			("next_scenario")
+			("description")
+			("name")
+			("defeat_music")
+			("victory_music")
+			("victory_when_enemies_defeated")
+			("remove_from_carryover_on_defeat")
+			("disallow_recall")
+			("experience_modifier")
+			("require_scenario")
 		.convert_to_container<stringset>();
+
 	static stringset tags = boost::assign::list_of
-		("terrain_graphics")
+			("terrain_graphics")
 		.convert_to_container<stringset>();
+
 	BOOST_FOREACH(const std::string& attr, attrs)
 	{
 		dst[attr] = src[attr];
 	}
+
 	BOOST_FOREACH(const std::string& tag, tags)
 	{
 		dst.append_children(src, tag);
 	}
 }
-
 
 static void clear_resources()
 {
@@ -126,15 +141,12 @@ static void clear_resources()
 	resources::recorder = NULL;
 	resources::units = NULL;
 	resources::whiteboard.reset();
-
-
 	resources::classification = NULL;
 	resources::mp_settings = NULL;
-
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config, const tdata_cache & tdata,
+		const int ticks, const config& game_config, const tdata_cache& tdata,
 		CVideo& video, bool skip_replay)
 	: controller_base(game_config, video)
 	, observer()
@@ -208,7 +220,15 @@ play_controller::~play_controller()
 	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
-struct throw_end_level { void operator()(const config&) { throw_quit_game_exception(); } };
+
+struct throw_end_level
+{
+	void operator()(const config&)
+	{
+		throw_quit_game_exception();
+	}
+};
+
 void play_controller::init(CVideo& video, const config& level)
 {
 	util::scoped_resource<loadscreen::global_loadscreen_manager*, util::delete_item> scoped_loadscreen_manager;
@@ -243,7 +263,7 @@ void play_controller::init(CVideo& video, const config& level)
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
 	loadscreen::start_stage("init theme");
-	const config &theme_cfg = controller_base::get_theme(game_config_, level["theme"]);
+	const config& theme_cfg = controller_base::get_theme(game_config_, level["theme"]);
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 	loadscreen::start_stage("build terrain");
@@ -274,8 +294,7 @@ void play_controller::init(CVideo& video, const config& level)
 	if(gamestate().first_human_team_ != -1) {
 		gui_->set_team(gamestate().first_human_team_);
 	}
-	else if (is_observer())
-	{
+	else if(is_observer()) {
 		// Find first team that is allowed to be observed.
 		// If not set here observer would be without fog until
 		// the first turn of observable side
@@ -348,6 +367,7 @@ void play_controller::fire_preload(const config& level)
 	gamestate().gamedata_.get_variable("turn_number") = int(turn());
 	pump().fire("preload");
 }
+
 void play_controller::fire_prestart()
 {
 	// pre-start events must be executed before any GUI operation,
@@ -398,16 +418,13 @@ void play_controller::init_side_begin()
 	gamestate().gamedata_.last_selected = map_location::null_location();
 }
 
-/**
- * Called by turn_info::process_network_data() or init_side() to call do_init_side() if necessary.
- */
 void play_controller::maybe_do_init_side()
 {
-	/**
-	 * We do side init only if not done yet for a local side when we are not replaying.
-	 * For all other sides it is recorded in replay and replay handler has to handle
-	 * calling do_init_side() functions.
-	 **/
+	//
+	// We do side init only if not done yet for a local side when we are not replaying.
+	// For all other sides it is recorded in replay and replay handler has to handle
+	// calling do_init_side() functions.
+	//
 	if (gamestate_->init_side_done() || !current_team().is_local() || gamestate().gamedata_.phase() != game_data::PLAY || is_replay() || !replay_->at_end()) {
 		return;
 	}
@@ -416,15 +433,12 @@ void play_controller::maybe_do_init_side()
 	do_init_side();
 }
 
-/**
- * Called by replay handler or init_side() to do actual work for turn change.
- */
 void play_controller::do_init_side()
 {
 	set_scontext_synced sync;
 	log_scope("player turn");
-	//In case we might end up calling sync:network during the side turn events,
-	//and we don't want do_init_side to be called when a player drops.
+	// In case we might end up calling sync:network during the side turn events,
+	// and we don't want do_init_side to be called when a player drops.
 	gamestate_->init_side_done() = true;
 	init_side_done_now_ = true;
 
@@ -480,9 +494,10 @@ void play_controller::do_init_side()
 	check_victory();
 	sync.do_final_checkup();
 }
+
 void play_controller::init_side_end()
 {
-	const time_of_day &tod = gamestate().tod_manager_.get_time_of_day();
+	const time_of_day& tod = gamestate().tod_manager_.get_time_of_day();
 
 	if (current_side() == 1 || !init_side_done_now_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
@@ -496,7 +511,7 @@ void play_controller::init_side_end()
 	}
 	whiteboard_manager_->on_init_side();
 }
-//builds the snapshot config from its members and their configs respectively
+
 config play_controller::to_config() const
 {
 	config cfg;
@@ -510,7 +525,7 @@ config play_controller::to_config() const
 	}
 
 	// Write terrain_graphics data in snapshot, too
-	BOOST_FOREACH(const config &tg, level_.child_range("terrain_graphics")) {
+	BOOST_FOREACH(const config& tg, level_.child_range("terrain_graphics")) {
 		cfg.add_child("terrain_graphics", tg);
 	}
 
@@ -529,7 +544,6 @@ config play_controller::to_config() const
 
 void play_controller::finish_side_turn()
 {
-
 	whiteboard_manager_->on_finish_side_turn(current_side());
 
 	{ //Block for set_scontext_synced
@@ -574,7 +588,7 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	BOOST_FOREACH(const unit & u, gamestate().board_.units()) {
+	BOOST_FOREACH(const unit& u, gamestate().board_.units()) {
 		if (current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
 			return true;
 		}
@@ -582,7 +596,6 @@ bool play_controller::enemies_visible() const
 
 	return false;
 }
-
 
 void play_controller::enter_textbox()
 {
@@ -615,7 +628,6 @@ void play_controller::enter_textbox()
 		menu_handler_.get_textbox().close(*gui_);
 		ERR_DP << "unknown textbox mode" << std::endl;
 	}
-
 }
 
 void play_controller::tab()
@@ -626,7 +638,7 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		BOOST_FOREACH(const unit &u, gamestate().board_.units()){
+		BOOST_FOREACH(const unit& u, gamestate().board_.units()){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
 					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
@@ -687,7 +699,7 @@ static int modulo(int num, int mod, int min)
 	//n is now in [0, mod)
 	n = n + min;
 	return n;
-	// the folowing properties are easy to verfy:
+	// the folowing properties are easy to verify:
 	//  1) For all m: modulo(num, mod, min) == modulo(num + mod*m, mod, min)
 	//  2) For all 0 <= m < mod: modulo(min + m, mod, min) == min + m
 }
@@ -718,23 +730,28 @@ int play_controller::find_last_visible_team() const
 	return 0;
 }
 
-events::mouse_handler& play_controller::get_mouse_handler_base() {
+events::mouse_handler& play_controller::get_mouse_handler_base()
+{
 	return mouse_handler_;
 }
 
-boost::shared_ptr<wb::manager> play_controller::get_whiteboard() {
+boost::shared_ptr<wb::manager> play_controller::get_whiteboard()
+{
 	return whiteboard_manager_;
 }
 
-const mp_game_settings & play_controller::get_mp_settings() {
+const mp_game_settings& play_controller::get_mp_settings()
+{
 	return saved_game_.mp_settings();
 }
 
-const game_classification & play_controller::get_classification() {
+const game_classification& play_controller::get_classification()
+{
 	return saved_game_.classification();
 }
 
-game_display& play_controller::get_display() {
+game_display& play_controller::get_display()
+{
 	return *gui_;
 }
 
@@ -754,13 +771,15 @@ void play_controller::process_focus_keydown_event(const SDL_Event& event)
 	}
 }
 
-void play_controller::process_keydown_event(const SDL_Event& event) {
+void play_controller::process_keydown_event(const SDL_Event& event)
+{
 	if (event.key.keysym.sym == SDLK_TAB) {
 		whiteboard_manager_->set_invert_behavior(true);
 	}
 }
 
-void play_controller::process_keyup_event(const SDL_Event& event) {
+void play_controller::process_keyup_event(const SDL_Event& event)
+{
 	// If the user has pressed 1 through 9, we want to show
 	// how far the unit can move in that many turns
 	if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '7') {
@@ -794,7 +813,8 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 	}
 }
 
-void play_controller::save_game(){
+void play_controller::save_game()
+{
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		scoped_savegame_snapshot snapshot(*this);
@@ -805,7 +825,8 @@ void play_controller::save_game(){
 	}
 }
 
-void play_controller::save_game_auto(const std::string & filename) {
+void play_controller::save_game_auto(const std::string& filename)
+{
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 
@@ -815,7 +836,8 @@ void play_controller::save_game_auto(const std::string & filename) {
 	}
 }
 
-void play_controller::save_replay(){
+void play_controller::save_replay()
+{
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
@@ -825,7 +847,8 @@ void play_controller::save_replay(){
 	}
 }
 
-void play_controller::save_replay_auto(const std::string & filename) {
+void play_controller::save_replay_auto(const std::string& filename)
+{
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
@@ -833,7 +856,8 @@ void play_controller::save_replay_auto(const std::string & filename) {
 	}
 }
 
-void play_controller::save_map(){
+void play_controller::save_map()
+{
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		menu_handler_.save_map();
@@ -842,26 +866,31 @@ void play_controller::save_map(){
 	}
 }
 
-void play_controller::load_game() {
+void play_controller::load_game()
+{
 	savegame::loadgame load(*gui_, game_config_, saved_game_);
 	load.load_game();
 }
 
-void play_controller::undo(){
+void play_controller::undo()
+{
 	mouse_handler_.deselect_hex();
 	undo_stack().undo();
 }
 
-void play_controller::redo(){
+void play_controller::redo()
+{
 	mouse_handler_.deselect_hex();
 	undo_stack().redo();
 }
 
-bool play_controller::can_undo() const {
+bool play_controller::can_undo() const
+{
 	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack().can_undo();
 }
 
-bool play_controller::can_redo() const {
+bool play_controller::can_redo() const
+{
 	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack().can_redo();
 }
 
@@ -983,7 +1012,6 @@ void play_controller::do_autosave()
 	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 }
 
-
 void play_controller::do_consolesave(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
@@ -997,23 +1025,28 @@ void play_controller::update_savegame_snapshot() const
 	this->saved_game_.set_snapshot(to_config());
 }
 
-game_events::t_pump & play_controller::pump() {
+game_events::t_pump& play_controller::pump()
+{
 	return gamestate().events_manager_->pump();
 }
 
-int play_controller::get_ticks() {
+int play_controller::get_ticks()
+{
 	return ticks_;
 }
 
-soundsource::manager * play_controller::get_soundsource_man() {
+soundsource::manager* play_controller::get_soundsource_man()
+{
 	return soundsources_manager_.get();
 }
 
-plugins_context * play_controller::get_plugins_context() {
+plugins_context* play_controller::get_plugins_context()
+{
 	return plugins_context_.get();
 }
 
-hotkey::command_executor * play_controller::get_hotkey_command_executor() {
+hotkey::command_executor* play_controller::get_hotkey_command_executor()
+{
 	return hotkey_handler_.get();
 }
 
@@ -1136,7 +1169,6 @@ void play_controller::play_side()
 	sync_end_turn();
 }
 
-
 void play_controller::play_turn()
 {
 	whiteboard_manager_->on_gamestate_change();
@@ -1158,7 +1190,7 @@ void play_controller::play_turn()
 		}
 		init_side_begin();
 		if(gamestate_->init_side_done()) {
-			//This is the case in a reloaded game where teh side was initilizes before saving the game.
+			// This is the case in a reloaded game where the side was initialized before saving the game.
 			init_side_end();
 		}
 
@@ -1178,7 +1210,7 @@ void play_controller::play_turn()
 			ai_testing::log_turn_end(current_side());
 		}
 	}
-	//If the loop exits due to the last team having been processed,
+	// If the loop exits due to the last team having been processed.
 	gamestate_->player_number_ = gamestate().board_.teams().size();
 
 	finish_turn();
@@ -1187,14 +1219,16 @@ void play_controller::play_turn()
 	check_time_over();
 }
 
-void play_controller::check_time_over(){
-	bool time_left = gamestate().tod_manager_.next_turn(gamestate().gamedata_);
+void play_controller::check_time_over()
+{
+	const bool time_left = gamestate().tod_manager_.next_turn(gamestate().gamedata_);
+
 	if(!time_left) {
 		LOG_NG << "firing time over event...\n";
 		set_scontext_synced_base sync;
 		pump().fire("time over");
 		LOG_NG << "done firing time over event...\n";
-		//if turns are added while handling 'time over' event
+		// If turns are added while handling 'time over' event.
 		if (gamestate().tod_manager_.is_time_left()) {
 			return;
 		}
@@ -1214,11 +1248,13 @@ void play_controller::check_time_over(){
 		set_end_level_data(e);
 	}
 }
+
 play_controller::scoped_savegame_snapshot::scoped_savegame_snapshot(const play_controller& controller)
 	: controller_(controller)
 {
 	controller_.update_savegame_snapshot();
 }
+
 play_controller::scoped_savegame_snapshot::~scoped_savegame_snapshot()
 {
 	controller_.saved_game_.remove_snapshot();
