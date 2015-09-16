@@ -26,61 +26,73 @@
 #include <vector>
 
 /**
- * For win32 API.
- * On windows, wchar_t is defined as Uint16
- * Wide strings are expected to be UTF-16
+ * For Win32 API.
+ *
+ * On Windows, wchar_t is defined as Uint16.
+ * Wide strings are expected to be UTF-16.
  */
 namespace utf16 {
 	typedef ucs4::iterator_base<utf16::string, ucs4_convert_impl::convert_impl<char_t>::type> iterator;
 }
 
+/**
+ * Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
+ * back and forth.
+ */
 namespace utf8 {
-
-	/**
-	* Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
-	* back and forth.
-	*/
 	typedef ucs4::iterator_base<std::string, ucs4_convert_impl::convert_impl<char_t>::type> iterator;
 
 	/** Returns a lowercased version of the string. */
-	utf8::string lowercase(const utf8::string&);
+	utf8::string lowercase(const utf8::string& s);
 
 	/**
-	 * codepoint index corresponing to the ...th character in an UTF-8 encoded string
-	 * if there are less than index characters, return str.length()
+	 * Codepoint index corresponding to the nth character in a UTF-8 string.
+	 *
+	 * @return str.length() if there are less than @p index characters.
 	 */
 	size_t index(const utf8::string& str, const size_t index);
 
-	/** length in characters of an UTF-8 encoded string */
+	/** Length in characters of a UTF-8 string. */
 	size_t size(const utf8::string& str);
 
-	/** insert at position pos into an UTF-8 encoded string */
+	/** Insert a UTF-8 string at the specified position. */
 	utf8::string& insert(utf8::string& str, const size_t pos, const utf8::string& insert);
 
 	/**
-	 * erase len characters at position start from an UTF-8 encoded string
-	 * this implementation doesn't check for valid UTF-8, don't use for user input
+	 * Erases a portion of a UTF-8 string.
+	 *
+	 * @param str    UTF-8 encoded string.
+	 * @param start  Start position.
+	 * @param len    Number of characters to erase.
+	 *
+	 * @note This implementation does not check for valid UTF-8. Don't use it
+	 *       for user input.
 	 */
 	utf8::string& erase(utf8::string& str, const size_t start, const size_t len = std::string::npos);
 
 	/**
-	* truncate an UTF-8 encoded string after size characters
-	* this implementation doesn't check for valid UTF-8, don't use for user input
-	*/
+	 * Truncates a UTF-8 string to the specified number of characters.
+	 *
+	 * @param str   UTF-8 encoded string.
+	 * @param size  Size to truncate to.
+	 *
+	 * @note This implementation does not check for valid UTF-8. Don't use it
+	 *       for user input.
+	 */
 	utf8::string& truncate(utf8::string& str, const size_t size);
 
 	/**
-	 * Truncate a UTF-8 encoded string.
+	 * Truncates a UTF-8 string to the specified number of characters.
 	 *
-	 * If the string has more than @p size UTF-8 characters it will be truncated
-	 * to this size.
+	 * If the string has more than @p size UTF-8 characters it will be
+	 * truncated to this size.
+	 *
 	 * The output is guaranteed to be valid UTF-8.
 	 *
-	 * @param[in, out] str The parameter's usage is:
-	 *                     - Input: String encoded in UTF-8.
-	 *                     - Output: String encoded UTF-8 that contains at most @p size
-	 *                       codepoints.
-	 * @param size         The size to truncate at.
+	 * @param[in]  str   String encoded in UTF-8.
+	 * @param[out] str   String encoded UTF-8 that contains at most @p size
+	 *                   codepoints.
+	 * @param      size  The size to truncate to.
 	 */
 	void truncate_as_ucs4(utf8::string& str, const size_t size);
 } // end namespace utf8

@@ -29,14 +29,21 @@ namespace utf8 {
 	typedef char char_t;
 	typedef std::string string;
 	
-	/** also used for invalid utf16 or ucs4 strings */
+	/**
+	 * Thrown by operations encountering invalid UTF-8 data.
+	 *
+	 * Also used for invalid UTF-16 and UCS-4 data.
+	 *
+	 * @todo FIXME: This clearly needs a better name for that reason.
+	 */
 	class invalid_utf8_exception : public std::exception {};
 }
 
 /**
- * For win32 API.
- * On windows, wchar_t is defined as Uint16
- * Wide strings are expected to be UTF-16
+ * For Win32 API.
+ *
+ * On windows, wchar_t is defined as Uint16.
+ * Wide strings are expected to be UTF-16.
  */
 namespace utf16 {
 	typedef wchar_t char_t;
