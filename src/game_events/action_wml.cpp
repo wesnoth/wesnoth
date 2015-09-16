@@ -584,13 +584,11 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 
 	// Check if this message is for this side
+	// handeling of side_for for messages with input is done below in the get_user_choice call
 	std::string side_for_raw = cfg["side_for"];
-	if (!side_for_raw.empty())
-	{
-		/* Always ignore side_for when the message has some input
-		   boxes, but display the error message only if side_for is
-		   used for an inactive side. */
-		bool side_for_show = has_input;
+	if (!side_for_raw.empty() && !has_input)
+	{.
+		bool side_for_show = false;
 
 		std::vector<std::string> side_for =
 			utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
