@@ -1418,14 +1418,26 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	DBG_GAME << "****\n loading next scenario for a client. sides info = " << std::endl;
 	DBG_GAME << debug_sides_info() << std::endl;
 	DBG_GAME << "****" << std::endl;
-	// Change the controller to match that client.
-	// FIXME: This breaks scenario transitions with mp connect screen shown.
-	// FIXME: This casues bugs. esp if controller have changedsince teh beginning of the next scenario
-	//  There are currently 2 possible ideas to fix this issue 
-	//  1) When the scenario starts, we store the controllers at that point and use that date when a client load the the next scenario (here)
-	//  2) When a client loads teh next scenario we send him the observers starting point (meaning we don't change sides here)
-	//     And then we send that side a automaic change controller later.
 
+	//
+	// Change the controller to match that client.
+	//
+	// FIXME: This breaks scenario transitions with mp connect screen shown.
+	//
+	// FIXME: This causes bugs, esp if controller have changed since the
+	//        beginning of the next scenario
+	//
+	//        There are currently 2 possible ideas to fix this issue:
+	//
+	//          1) When the scenario starts, we store the controllers at that
+	//             point and use that data when a client loads the the next
+	//             scenario (here)
+	//
+	//          2) When a client loads the next scenario we send it the
+	//             observers' starting point (meaning we don't change sides
+	//             here), and then we send that side an automatic controller
+	//             change later.
+	//
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		if ((**s)["controller"] != "null") {
 			const size_t side_index = (**s)["side"].to_int() - 1;
