@@ -864,6 +864,16 @@ static void convert_old_saves_1_13_1(config& cfg)
 			}	
 		}
 	}
+	BOOST_FOREACH(config& snapshot, cfg.child_range("snapshot")) {
+		if (snapshot.has_attribute("used_items")) {
+			config used_items;
+			BOOST_FOREACH(const std::string& item, utils::split(snapshot["used_items"])) {
+				used_items[item] = true;
+			}
+			snapshot.remove_attribute("used_items");
+			snapshot.add_child("used_items", used_items);
+		}
+	}
 }
 
 void convert_old_saves(config& cfg)
