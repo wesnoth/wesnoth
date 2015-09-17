@@ -128,7 +128,7 @@ public:
 
 	// Manipulator from actionwml
 
-	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
+	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr& u);
 	boost::optional<std::string> replace_map (const gamemap & r);
 	void overlay_map (const gamemap & o, const config & cfg, map_location loc, bool border);
 

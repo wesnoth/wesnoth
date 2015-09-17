@@ -917,7 +917,7 @@ public:
 	 * submerged: the amount of the unit out of 1.0 that is submerged
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
-	void render_image(int x, int y, const display::tdrawing_layer drawing_layer,
+	void render_image(int x, int y, const display::tdrawing_layer& drawing_layer,
 			const map_location& loc, sdl::timage image,
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
@@ -934,7 +934,7 @@ public:
 	 * submerged: the amount of the unit out of 1.0 that is submerged
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
-	void render_image(int x, int y, const display::tdrawing_layer drawing_layer,
+	void render_image(int x, int y, const display::tdrawing_layer& drawing_layer,
 			const map_location& loc, surface image,
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,

@@ -322,7 +322,7 @@ terrain_label::terrain_label(const t_string& text,
 		const std::string& team_name,
 		const map_location& loc,
 		const map_labels& parent,
-		const SDL_Color color,
+		const SDL_Color& color,
 		const bool visible_in_fog,
 		const bool visible_in_shroud,
 		const bool immutable,
@@ -494,7 +494,7 @@ void terrain_label::update_info(const t_string& text,
 								const int creator,
 								const t_string& tooltip,
 								const std::string& team_name,
-								const SDL_Color color)
+								const SDL_Color& color)
 {
 	color_ = color;
 	text_ = text;
@@ -508,7 +508,7 @@ void terrain_label::update_info(const t_string& text,
 								const int creator,
 								const t_string& tooltip,
 								const std::string& team_name,
-								const SDL_Color color,
+								const SDL_Color& color,
 								const bool visible_in_fog,
 								const bool visible_in_shroud,
 								const bool immutable,

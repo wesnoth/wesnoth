@@ -78,7 +78,7 @@ create_image_base(const std::string& filename)
 static void
 create_image_blend_functor(
 		  const surface& dst
-		, const std::string root
+		, const std::string& root
 		, const Uint8 amount
 		, const Uint32 color)
 {

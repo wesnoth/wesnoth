@@ -1707,7 +1707,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 }
 
 #else
-void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
+void display::render_image(int x, int y, const display::tdrawing_layer& drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged, bool vreverse)

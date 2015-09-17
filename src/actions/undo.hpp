@@ -54,18 +54,18 @@ public:
 	/// Adds an auto-shroud toggle to the undo stack.
 	void add_dummy();
 	/// Adds a dismissal to the undo stack.
-	void add_dismissal(const unit_const_ptr u);
+	void add_dismissal(const unit_const_ptr& u);
 	/// Adds a move to the undo stack.
-	void add_move(const unit_const_ptr u,
+	void add_move(const unit_const_ptr& u,
 	              const std::vector<map_location>::const_iterator & begin,
 	              const std::vector<map_location>::const_iterator & end,
 	              int start_moves, int timebonus=0, int village_owner=-1,
 	              const map_location::DIRECTION dir=map_location::NDIRECTIONS);
 	/// Adds a recall to the undo stack.
-	void add_recall(const unit_const_ptr u, const map_location& loc,
+	void add_recall(const unit_const_ptr& u, const map_location& loc,
 	                const map_location& from);
 	/// Adds a recruit to the undo stack.
-	void add_recruit(const unit_const_ptr u, const map_location& loc,
+	void add_recruit(const unit_const_ptr& u, const map_location& loc,
 	                 const map_location& from);
 	/// Adds a shroud update to the undo stack.
 	void add_update_shroud();
