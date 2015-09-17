@@ -71,11 +71,34 @@ function utils.optional_side_filter(cfg, key_name, filter_name)
 	return false
 end
 
-function utils.handle_event_commands(cfg)
+local current_exit = "none"
+local scope_stack = {
+	push = table.insert,
+	pop = table.remove,
+}
+
+--[[ Possible exit types:
+	- none - ordinary execution
+	- break - exiting a loop scope
+	- return - immediate termination (exit all scopes)
+	- continue - jumping to the end of a loop scope
+]]
+function utils.set_exiting(exit_type)
+	current_exit = exit_type
+end
+
+--[[ Possible scope types:
+	- plain - ordinary scope, no special features; eg [command] or [event]
+	- conditional - scope that's executing because of a condition, eg [then] or [else]
+	- switch - scope that's part of a switch statement, eg [case] or [else]
+	- loop - scope that's part of a loop, eg [do]
+Currently, only "loop" has any special effects. ]]
+function utils.handle_event_commands(cfg, scope_type)
 	-- The WML might be modifying the currently executed WML by mixing
 	-- [insert_tag] with [set_variables] and [clear_variable], so we
 	-- have to be careful not to get confused by tags vanishing during
 	-- the execution, hence the manual handling of [insert_tag].
+	scope_stack:push(scope_type)
 	local cmds = helper.shallow_literal(cfg)
 	for i = 1,#cmds do
 		local v = cmds[i]
@@ -104,6 +127,7 @@ function utils.handle_event_commands(cfg)
 				local j = 0
 				repeat
 					cmd(arg)
+					if current_exit ~= "none" then break end
 					j = j + 1
 					if j >= wesnoth.get_variable(insert_from .. ".length") then break end
 					arg = wesnoth.tovconfig(wesnoth.get_variable(string.format("%s[%d]", insert_from, j)))
@@ -112,9 +136,18 @@ function utils.handle_event_commands(cfg)
 				cmd(arg)
 			end
 		end
+		if current_exit ~= "none" then break end
+	end
+	scope_stack:pop()
+	if #scope_stack == 0 then
+		if current_exit ==  "continue" and scope_type ~= "loop" then
+			helper.wml_error("[continue] found outside a loop scope!")
+		end
+		current_exit = "none"
 	end
 	-- Apply music alterations once all the commands have been processed.
 	wesnoth.set_music()
+	return current_exit
 end
 
 -- Splits the string argument on commas, excepting those commas that occur

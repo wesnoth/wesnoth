@@ -55,7 +55,8 @@ function wml_actions.object(cfg)
 	end
 	
 	for cmd in helper.child_range(cfg, command_type) do
-		utils.handle_event_commands(cmd)
+		local action = utils.handle_event_commands(cmd, "conditional")
+		if action ~= "none" then break end
 	end
 end
 

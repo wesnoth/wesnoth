@@ -275,9 +275,11 @@ function wml_actions.music(cfg)
 	wesnoth.set_music(cfg)
 end
 
-wml_actions.command = utils.handle_event_commands
+function wml_actions.command(cfg)
+	utils.handle_event_commands(cfg, "plain")
+end
 
--- since if and while are Lua keywords, we can't create functions with such names
+-- we can't create functions with names that are Lua keywords (eg if, while)
 -- instead, we store the following anonymous functions directly into
 -- the table, using the [] operator, rather than by using the point syntax
 
@@ -288,7 +290,8 @@ wml_actions["if"] = function(cfg)
 
 	if wesnoth.eval_conditional(cfg) then -- evaluate [if] tag
 		for then_child in helper.child_range(cfg, "then") do
-			utils.handle_event_commands(then_child)
+			local action = utils.handle_event_commands(then_child, "conditional")
+			if action ~= "none" then break end
 		end
 		return -- stop after executing [then] tags
 	end
@@ -296,15 +299,18 @@ wml_actions["if"] = function(cfg)
 	for elseif_child in helper.child_range(cfg, "elseif") do
 		if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
 			for then_tag in helper.child_range(elseif_child, "then") do
-				utils.handle_event_commands(then_tag)
+				local action = utils.handle_event_commands(then_tag, "conditional")
+				if action ~= "none" then goto exit end
 			end
 			return -- stop on first matched condition
 		end
 	end
+	::exit::
 
 	-- no matched condition, try the [else] tags
 	for else_child in helper.child_range(cfg, "else") do
-		utils.handle_event_commands(else_child)
+		local action = utils.handle_event_commands(else_child, "conditional")
+		if action ~= "none" then break end
 	end
 end
 
@@ -313,10 +319,32 @@ wml_actions["while"] = function( cfg )
 	for i = 1, 65536 do
 		if wesnoth.eval_conditional( cfg ) then
 			for do_child in helper.child_range( cfg, "do" ) do
-				utils.handle_event_commands( do_child )
+				local action = utils.handle_event_commands(do_child, "loop")
+				if action == "break" then
+					utils.set_exiting("none")
+					goto exit
+				elseif action == "continue" then
+					utils.set_exiting("none")
+					break
+				elseif action ~= "none" then
+					goto exit
+				end
 			end
 		else return end
 	end
+	::exit::
+end
+
+wml_actions["break"] = function(cfg)
+	utils.set_exiting("break")
+end
+
+wml_actions["return"] = function(cfg)
+	utils.set_exiting("return")
+end
+
+function wml_actions.continue(cfg)
+	utils.set_exiting("continue")
 end
 
 function wml_actions.switch(cfg)
@@ -327,17 +355,20 @@ function wml_actions.switch(cfg)
 	for v in helper.child_range(cfg, "case") do
 		for w in utils.split(v.value) do
 			if w == tostring(var_value) then 
-				utils.handle_event_commands(v)
+				local action = utils.handle_event_commands(v, "switch")
 				found = true
-				break 
+				if action ~= "none" then goto exit end
+				break
 			end
 		end
 	end
+	::exit::
 
 	-- Otherwise execute [else] statements.
 	if not found then
 		for v in helper.child_range(cfg, "else") do
-			utils.handle_event_commands(v)
+			local action = utils.handle_event_commands(v, "switch")
+			if action ~= "none" then break end
 		end
 	end
 end
