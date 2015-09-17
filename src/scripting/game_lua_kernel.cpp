@@ -2850,6 +2850,30 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
 	return 0;
 }
 
+/**
+ * Deselects any highlighted hex on the map.
+ * No arguments or return values
+ */
+int game_lua_kernel::intf_deselect_hex(lua_State*)
+{
+	const map_location loc;
+	play_controller_.get_mouse_handler_base().select_hex(
+		loc, false, false, false);
+	if (game_display_) {
+		game_display_->highlight_hex(loc);
+	}
+	return 0;
+}
+
+/**
+ * Return true if a replay is in progress but the player has chosen to skip it
+ */
+int game_lua_kernel::intf_skipping_replay(lua_State *L)
+{
+	lua_pushboolean(L, play_controller_.is_skipping_replay());
+	return 1;
+}
+
 namespace {
 	struct lua_synchronize : mp_sync::user_choice
 	{
@@ -4154,6 +4178,8 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "scroll",                    &dispatch<&game_lua_kernel::intf_scroll                     >        },
 		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
+		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
+		{ "skipping_replay",           &dispatch<&game_lua_kernel::intf_skipping_replay            >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "set_menu_item",             &dispatch<&game_lua_kernel::intf_set_menu_item              >        },

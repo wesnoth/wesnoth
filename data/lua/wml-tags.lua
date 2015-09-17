@@ -13,13 +13,12 @@ end
 
 wesnoth.require "lua/wml/objectives.lua"
 wesnoth.require "lua/wml/items.lua"
+wesnoth.require "lua/wml/message.lua"
 
 local helper = wesnoth.require "lua/helper.lua"
 local location_set = wesnoth.require "lua/location_set.lua"
 local utils = wesnoth.require "lua/wml-utils.lua"
 local wml_actions = wesnoth.wml_actions
-
-local engine_message = wml_actions.message
 
 function wml_actions.sync_variable(cfg)
 	local names = cfg.name or helper.wml_error "[sync_variable] missing required name= attribute."
@@ -56,13 +55,6 @@ function wml_actions.sync_variable(cfg)
 		else
 			wesnoth.set_variable(name, variable.value)
 		end
-	end
-end
-
-function wml_actions.message(cfg)
-	local show_if = helper.get_child(cfg, "show_if")
-	if not show_if or wesnoth.eval_conditional(show_if) then
-		engine_message(cfg)
 	end
 end
 

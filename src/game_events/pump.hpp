@@ -71,10 +71,6 @@ namespace game_events
 		bool context_mutated();
 		/// Sets whether or not we believe WML might have changed something.
 		void context_mutated(bool mutated);
-		/// Returns whether or not we are skipping messages.
-		bool context_skip_messages();
-		/// Sets whether or not we are skipping messages.
-		void context_skip_messages(bool skip);
 
 		/// Helper function which determines whether a wml_message text can
 		/// really be pushed into the wml_messages_stream, and does it.

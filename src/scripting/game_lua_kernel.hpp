@@ -129,6 +129,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
 	int intf_select_hex(lua_State *L);
+	int intf_deselect_hex(lua_State *L);
+	int intf_skipping_replay(lua_State *L);
 	int intf_synchronize_choice(lua_State *L);
 	int intf_get_locations(lua_State *L);
 	int intf_get_villages(lua_State *L);

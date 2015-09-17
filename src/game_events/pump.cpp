@@ -75,9 +75,8 @@ namespace context {
 	/// State when processing a particular flight of events or commands.
 	struct state {
 		bool mutated;
-		bool skip_messages;
 
-		explicit state(bool s, bool m = true) : mutated(m), skip_messages(s) {}
+		explicit state(bool m = true) : mutated(m) {}
 	};
 
 	class scoped {
@@ -417,8 +416,7 @@ context::scoped::scoped(std::stack<context::state> & contexts, bool m)
 	//The default context at least should always be on the stack
 	assert(contexts_.size() > 0);
 
-	bool skip_messages = (contexts_.size() > 1) && contexts_.top().skip_messages;
-	contexts_.push(context::state(skip_messages, m));
+	contexts_.push(context::state(m));
 }
 
 context::scoped::~scoped()
@@ -439,18 +437,6 @@ void t_pump::context_mutated(bool b)
 {
 	assert(impl_->contexts_.size() > 0);
 	impl_->contexts_.top().mutated = b;
-}
-
-bool t_pump::context_skip_messages()
-{
-	assert(impl_->contexts_.size() > 0);
-	return impl_->contexts_.top().skip_messages;
-}
-
-void t_pump::context_skip_messages(bool b)
-{
-	assert(impl_->contexts_.size() > 0);
-	impl_->contexts_.top().skip_messages = b;
 }
 
 /**
