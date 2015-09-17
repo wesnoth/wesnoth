@@ -10,7 +10,8 @@ function wml_actions.object(cfg)
 	local context = wesnoth.current.event_context
 	
 	-- If this item has already been used
-	if cfg.id and used_items[cfg.id] then return end
+	local obj_id = utils.check_key(cfg.id, "id", "object", true)
+	if obj_id and used_items[obj_id] then return end
 	
 	local unit
 	local filter = helper.get_child(cfg, "filter")
@@ -37,7 +38,7 @@ function wml_actions.object(cfg)
 		wesnoth.select_hex(unit.x, unit.y)
 		
 		-- Mark this item as used up
-		if cfg.id then used_items[cfg.id] = true end
+		if obj_id then used_items[obj_id] = true end
 	else
 		text = tostring(cfg.cannot_use_message or "")
 		command_type = "else"
@@ -80,5 +81,5 @@ function wesnoth.game_events.on_save()
 end
 
 function wesnoth.wml_conditionals.found_item(cfg)
-	return used_items[cfg.id]
+	return used_items[utils.check_key(cfg.id, "id", "found_item", true)]
 end

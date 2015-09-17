@@ -11,6 +11,17 @@ function utils.split(s)
 	return tostring(s):gmatch("[^%s,][^,]*")
 end
 
+function utils.check_key(val, key, tag, convert_spaces)
+	if not val then return nil end
+	if convert_spaces then
+		val = tostring(val):gsub(' ', '_')
+	end
+	if not val:match('^[a-zA-Z0-9_]+$') then
+		helper.wml_error("Invalid " .. key .. "= in [" .. tag .. "]")
+	end
+	return val
+end
+
 function utils.vwriter.init(cfg, default_variable)
 	local variable = cfg.variable or default_variable
 	local is_explicit_index = string.sub(variable, string.len(variable)) == "]"
