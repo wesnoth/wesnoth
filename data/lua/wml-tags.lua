@@ -14,6 +14,7 @@ end
 wesnoth.require "lua/wml/objectives.lua"
 wesnoth.require "lua/wml/items.lua"
 wesnoth.require "lua/wml/message.lua"
+wesnoth.require "lua/wml/object.lua"
 
 local helper = wesnoth.require "lua/helper.lua"
 local location_set = wesnoth.require "lua/location_set.lua"

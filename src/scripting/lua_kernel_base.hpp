@@ -106,6 +106,9 @@ protected:
 	
 	// Show a message dialog, possibly with options
 	int intf_show_message_dialog(lua_State * L);
+	
+	// Show a transient popup message
+	int intf_show_popup_dialog(lua_State * L);
 
 	// Show the interactive lua console (for debugging purposes)
 	int intf_show_lua_console(lua_State * L);

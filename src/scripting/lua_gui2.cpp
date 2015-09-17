@@ -19,6 +19,7 @@
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/clickable.hpp"    // for tclickable_
 #include "gui/widgets/control.hpp"      // for tcontrol
 #include "gui/widgets/multi_page.hpp"   // for tmulti_page
@@ -293,6 +294,21 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	}
 	
 	return 2;
+}
+	
+/**
+ * Displays a popup message
+ * - Arg 1: Title (allows Pango markup)
+ * - Arg 2: Message (allows Pango markup)
+ * - Arg 3: Image (optional)
+ */
+int show_popup_dialog(lua_State *L, CVideo & video) {
+	std::string title = luaL_checkstring(L, 1);
+	std::string msg = luaL_checkstring(L, 2);
+	std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
+	
+	gui2::show_transient_message(video, title, msg, image, true, true);
+	return 0;
 }
 
 /**

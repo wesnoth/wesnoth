@@ -130,6 +130,17 @@ int lua_kernel_base::intf_show_message_dialog(lua_State *L)
 	return lua_gui2::show_message_dialog(L, *video_);
 }
 
+int lua_kernel_base::intf_show_popup_dialog(lua_State *L)
+{
+	if (!video_) {
+		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
+		lua_error(L);
+		return 0;
+	}
+	
+	return lua_gui2::show_popup_dialog(L, *video_);
+}
+
 // The show lua console callback is similarly a method of lua kernel
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
@@ -269,6 +280,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "require", 		      &dispatch<&lua_kernel_base::intf_require>          },
 		{ "show_dialog",	      &dispatch<&lua_kernel_base::intf_show_dialog>      },
 		{ "show_message_dialog",     &dispatch<&lua_kernel_base::intf_show_message_dialog> },
+		{ "show_popup_dialog",       &dispatch<&lua_kernel_base::intf_show_popup_dialog>   },
 		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ NULL, NULL }
 	};

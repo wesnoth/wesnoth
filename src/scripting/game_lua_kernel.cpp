@@ -3307,6 +3307,7 @@ static int intf_get_traits(lua_State* L)
  * - Arg 1: unit.
  * - Arg 2: string.
  * - Arg 3: WML table.
+ * - Arg 4: (optional) Whether to add to [modifications] - default true
  */
 static int intf_add_modification(lua_State *L)
 {
@@ -3320,9 +3321,13 @@ static int intf_add_modification(lua_State *L)
 	if (sm != "advancement" && sm != "object" && sm != "trait") {
 		return luaL_argerror(L, 2, "unknown modification type");
 	}
+	bool write_to_mods = true;
+	if (!lua_isnone(L, 4)) {
+		write_to_mods = lua_toboolean(L, 4);
+	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	u->add_modification(sm, cfg);
+	u->add_modification(sm, cfg, !write_to_mods);
 	return 0;
 }
 

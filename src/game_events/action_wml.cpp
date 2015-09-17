@@ -248,11 +248,6 @@ namespace { // Support functions
 		resources::screen->recalculate_minimap();
 		resources::screen->invalidate_all();
 	}
-
-	void handle_event_commands(const queued_event& event_info, const vconfig &cfg) {
-		assert(resources::lua_kernel);
-		resources::lua_kernel->run_wml_action("command", cfg, event_info);
-	}
 } // end anonymous namespace (support functions)
 
 void handle_deprecated_message(const config& cfg)
@@ -490,81 +485,6 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	}
 
 	LOG_NG << "Units moved\n";
-}
-
-WML_HANDLER_FUNCTION(object, event_info, cfg)
-{
-	const vconfig & filter = cfg.child("filter");
-	boost::optional<unit_filter> ufilt;
-	if (!filter.null())
-		ufilt = unit_filter(filter, resources::filter_con);
-
-	std::string id = cfg["id"];
-
-	// If this item has already been used
-	assert(resources::game_events);
-	if ( resources::game_events->item_used(id) )
-		return;
-
-	std::string image = cfg["image"];
-	std::string caption = cfg["name"];
-	std::string text;
-
-	map_location loc;
-	if(ufilt) {
-		unit_const_ptr u_ptr = ufilt->first_match_on_map();
-		if (u_ptr) {
-			loc = u_ptr->get_location();
-		}
-	}
-
-	if(loc.valid() == false) {
-		loc = event_info.loc1;
-	}
-
-	const unit_map::iterator u = resources::units->find(loc);
-
-	std::string command_type = "then";
-
-	if ( u != resources::units->end()  &&  (!ufilt || ufilt->matches(*u)) )
-	{
-		text = cfg["description"].str();
-
-		const bool no_add = cfg["no_write"].to_bool(false);
-
-		if(cfg["delayed_variable_substitution"].to_bool(false))
-			u->add_modification("object", cfg.get_config(), no_add);
-		else
-			u->add_modification("object", cfg.get_parsed_config(), no_add);
-
-		resources::screen->select_hex(event_info.loc1);
-		resources::screen->invalidate_unit();
-
-		// Mark this item as used up.
-		resources::game_events->item_used(id, true);
-	} else {
-		text = cfg["cannot_use_message"].str();
-		command_type = "else";
-	}
-
-	// Default to silent if object has no description
-	const bool silent = cfg.has_attribute("silent") ? cfg["silent"].to_bool() : !cfg.has_attribute("description");
-
-	if (!silent)
-	{
-		// Redraw the unit, with its new stats
-		resources::screen->draw();
-
-		try {
-			gui2::show_transient_message(resources::screen->video(), caption, text, image, true);
-		} catch(utf8::invalid_utf8_exception&) {
-			// we already had a warning so do nothing.
-		}
-	}
-
-	BOOST_FOREACH(const vconfig &cmd, cfg.get_children(command_type)) {
-		handle_event_commands(event_info, cmd);
-	}
 }
 
 /// If we should recall units that match a certain description.
