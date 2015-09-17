@@ -78,3 +78,7 @@ function wesnoth.game_events.on_save()
 	table.insert(cfg, T.used_items(used_items) )
 	return cfg
 end
+
+function wesnoth.wml_conditionals.found_item(cfg)
+	return used_items[cfg.id]
+end
