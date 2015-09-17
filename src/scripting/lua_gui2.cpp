@@ -43,6 +43,7 @@
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
+#include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
 #include "video.hpp"
@@ -260,12 +261,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	std::vector<std::string> options;
 	int chosen_option = -1;
 	if (!lua_isnoneornil(L, 2)) {
-		luaL_checktype(L, 2, LUA_TTABLE);
-		size_t n = lua_rawlen(L, 2);
-		for(size_t i = 1; i <= n; i++) {
-			lua_rawgeti(L, 2, i);
-			options.push_back(luaL_checkstring(L, -1));
-		}
+		options = lua_check<std::vector<std::string> >(L, 2);
 	}
 	
 	const config& def_cfg = luaW_checkconfig(L, 1);
