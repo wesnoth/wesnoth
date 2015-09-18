@@ -32,7 +32,28 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-
+namespace {
+	class temporary_facing
+	{
+		map_location::DIRECTION save_dir_;
+		unit_map::const_iterator u_;
+	public:
+		temporary_facing(unit_map::const_iterator u, map_location::DIRECTION new_dir)
+			: save_dir_(u.valid() ? u->facing() : map_location::NDIRECTIONS)
+			, u_(u)
+		{
+			if (u_.valid()) {
+				u_->set_facing(new_dir);
+			}
+		}
+		~temporary_facing()
+		{
+			if (u_.valid()) {
+				u_->set_facing(save_dir_);
+			}
+		}
+	};
+}
 
 /*
  *
@@ -139,7 +160,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
 			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name,  j, i, loc))
+			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
 				return true;
 		}
 	}
@@ -182,7 +203,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
 			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name, j, i, loc))
+			    ability_affects_adjacent(tag_name, j, i, loc, *it))
 				res.push_back(unit_ability(&j, adjacent[i]));
 		}
 	}
@@ -320,7 +341,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if (unit == units.end())
 				return false;
-			if (!ufilt( *unit ))
+			if (!ufilt(*unit, *this))
 				return false;
 		}
 	}
@@ -348,23 +369,24 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
  * cfg: an ability WML structure
  *
  */
-bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc) const
+bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc,const unit& from) const
 {
 	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
-	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
+	map_location::DIRECTION direction = static_cast<map_location::DIRECTION>(dir);
 
 	BOOST_FOREACH(const config &i, cfg.child_range("affect_adjacent"))
 	{
 		if (i.has_attribute("adjacent")) { //key adjacent defined
-			std::vector<std::string> dirs = utils::split(i["adjacent"]);
-			if (std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) == dirs.end())
+			std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+			if (std::find(dirs.begin(), dirs.end(), direction) == dirs.end()) {
 				continue;
+			}
 		}
 		const config &filter = i.child("filter");
 		if (!filter || //filter tag given
-			unit_filter(vconfig(filter), resources::filter_con, illuminates).matches(*this, loc) ) {
+			unit_filter(vconfig(filter), resources::filter_con, illuminates).matches(*this, loc, from) ) {
 			return true;
 		}
 	}
@@ -767,12 +789,13 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  child_tag  The tag of the child filter to use.
 	 */
 	static bool special_unit_matches(const unit_map::const_iterator & un_it,
+									 const unit_map::const_iterator & u2,
 		                             const map_location & loc,
 		                             const attack_type * weapon,
 		                             const config & filter,
 		                             const std::string & child_tag)
 	{
-		if ( !loc.valid() )
+		if (!loc.valid() || !u2.valid())
 			// The special's context was set to ignore this unit, so assume we pass.
 			// (This is used by reports.cpp to show active specials when the
 			// opponent is not known. From a player's perspective, the special
@@ -786,7 +809,7 @@ namespace { // Helpers for attack_type::special_active()
 			return true;
 
 		// Check for a unit match.
-		if ( !un_it.valid() || !unit_filter(vconfig(filter_child), resources::filter_con).matches(*un_it, loc) )
+		if ( !un_it.valid() || !unit_filter(vconfig(filter_child), resources::filter_con).matches(*un_it, loc, *u2))
 			return false;
 
 		// Check for a weapon match.
@@ -843,6 +866,10 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	const unit_map & units = *resources::units;
 	unit_map::const_iterator self  = units.find(self_loc_);
 	unit_map::const_iterator other = units.find(other_loc_);
+	
+	// Make sure they're facing each other.
+	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
+	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 
 	// Translate our context into terms of "attacker" and "defender".
 	unit_map::const_iterator & att = is_attacker_ ? self : other;
@@ -853,13 +880,13 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	const attack_type * def_weapon = is_attacker_ ? other_attack_ : this;
 
 	// Filter the units involved.
-	if ( !special_unit_matches(self, self_loc_, this, special, "filter_self") )
+	if (!special_unit_matches(self, other, self_loc_, this, special, "filter_self"))
 		return false;
-	if ( !special_unit_matches(other, other_loc_, other_attack_, special, "filter_opponent") )
+	if (!special_unit_matches(other, self, other_loc_, other_attack_, special, "filter_opponent"))
 		return false;
-	if ( !special_unit_matches(att, att_loc, att_weapon, special, "filter_attacker") )
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, "filter_attacker"))
 		return false;
-	if ( !special_unit_matches(def, def_loc, def_weapon, special, "filter_defender") )
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, "filter_defender"))
 		return false;
 
 	map_location adjacent[6];
@@ -876,7 +903,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if ( unit == units.end() ||
-			     !unit_filter(vconfig(i), resources::filter_con).matches(*unit, adjacent[index]) ) //TODO: Should this filter get precomputed?
+			     !unit_filter(vconfig(i), resources::filter_con).matches(*unit, adjacent[index], *self)) //TODO: Should this filter get precomputed?
 				return false;
 		}
 	}

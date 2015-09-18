@@ -85,6 +85,13 @@ Version 1.13.1+dev:
        number of movement points the attack consumes
    * Ability to patch movetypes to account for custom terrains or damage types
    * Removed y offset by -1 from [message]'s scroll-to-unit logic.
+   * New auto-stored WML variable usable in the following contexts:
+     * [filter_adjacent] - refers to the $this_unit of the enclosing filter
+       (In weapon specials and unit abilities, the unit owning the ability.)
+     * [filter_self/opponent/attacker/defender] (weapon specials)
+       Refers to the other unit in the attack (eg in [filter_self], it's the opponent)
+     * [affect_adjacent][filter] (unit abilities)
+       Refers to the unit owning the ability
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:

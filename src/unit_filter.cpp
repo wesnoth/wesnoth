@@ -53,6 +53,14 @@ bool unit_filter::matches(const unit & u) const {
 	return matches (u, u.get_location());
 }
 
+bool unit_filter::matches(const unit & u, const map_location & loc, const unit & u2) const {
+	return impl_->matches(u,loc,&u2);
+}
+
+bool unit_filter::matches(const unit & u, const unit & u2) const {
+	return matches(u, u.get_location(), u2);
+}
+
 //bool unit_filter::matches(const unit & /*u*/, const map_location & /*loc*/) const {
 //	assert(false && "called match against a pure abstract unit_filter! this indicates a programmer error, this function must be overrided");
 //	return false;
@@ -66,7 +74,7 @@ static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vc
 class null_unit_filter_impl : public unit_filter_abstract_impl {
 public:
 	null_unit_filter_impl(const filter_context & fc) : fc_(fc) {}
-	virtual bool matches(const unit & /*u*/, const map_location & /*loc*/) const {
+	virtual bool matches(const unit & /*u*/, const map_location & /*loc*/, const unit *) const {
 		return true;
 	}
 	virtual std::vector<const unit *> all_matches_on_map() const {
@@ -145,7 +153,7 @@ public:
 		this->vcfg.make_safe();
 	}
 
-	virtual bool matches(const unit & u, const map_location & loc) const;
+	virtual bool matches(const unit & u, const map_location & loc, const unit * u2) const;
 	virtual std::vector<const unit *> all_matches_on_map() const;
 	virtual unit_const_ptr first_match_on_map() const;
 
@@ -188,13 +196,19 @@ unit_filter::unit_filter(const vconfig & vcfg, const filter_context * fc, bool f
 /** Begin implementations of filter impl's
  */
 
-bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc) const
+bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, const unit * u2) const
 {
 	bool matches = true;
 
 	if(loc.valid()) {
 		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, fc_.get_disp_context().units());
-		matches = internal_matches_filter(u, loc);
+		if (u2) {
+			const map_location& loc2 = u2->get_location();
+			scoped_xy_unit auto_store("other_unit", loc2.x, loc2.y, fc_.get_disp_context().units());
+			matches = internal_matches_filter(u, loc);
+		} else {
+			matches = internal_matches_filter(u, loc);
+		}
 	} else {
 		// If loc is invalid, then this is a recall list unit (already been scoped)
 		matches = internal_matches_filter(u, loc);
@@ -466,7 +480,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				unit_map::const_iterator unit_itor = units.find(adjacent[*j]);
-				if (unit_itor == units.end() || !filt(*unit_itor)) {
+				if (unit_itor == units.end() || !filt(*unit_itor, u)) {
 					continue;
 				}
 				boost::optional<bool> is_enemy;
@@ -529,7 +543,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map() const {
 	std::vector<const unit *> ret;
 	BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
-		if (matches(u, u.get_location())) {
+		if (matches(u, u.get_location(), NULL)) {
 			ret.push_back(&u);
 		}
 	}
@@ -539,7 +553,7 @@ std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map() const {
 unit_const_ptr basic_unit_filter_impl::first_match_on_map() const {
 	const unit_map & units = fc_.get_disp_context().units();
 	for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
-		if (matches(*u,u->get_location())) {
+		if (matches(*u,u->get_location(),NULL)) {
 			return u.get_shared_ptr();
 		}
 	}
