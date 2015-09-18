@@ -1502,8 +1502,8 @@ class map_command_handler
 			std::string help; //long help text
 			std::string usage; //only args info
 			std::string flags;
-			explicit command(command_handler h, const std::string help="",
-				const std::string& usage="", const std::string flags="")
+			explicit command(command_handler h, const std::string& help="",
+				const std::string& usage="", const std::string& flags="")
 			: handler(h), help(help), usage(usage), flags(flags)
 			{
 			}
