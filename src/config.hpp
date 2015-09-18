@@ -103,7 +103,9 @@ public:
 	explicit config(const std::string &child);
 
 	~config();
-
+	
+	// Verifies that the string can be used as an attribute or tag name
+	static bool valid_id(std::string);
 
 #ifdef HAVE_CXX11
 	explicit operator bool() const
