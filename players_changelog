@@ -33,6 +33,8 @@ Version 1.13.1+dev:
 
  * Miscellaneous and bug fixes:
    * Fixed OOS on random maps, where clients placed sides in different castles.
+   * Fixed possibility of corrupting saved games in certain instances,
+     eg if an add-on tries to set an invalid variable
 
 
 Version 1.13.1:

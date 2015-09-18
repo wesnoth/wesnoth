@@ -109,6 +109,8 @@ Version 1.13.1+dev:
    * Fixed wml menu items becoming unsynced in later scenarios.
    * The game now automatically detects whether to show the game connect screen
      between scenarios.
+   * Fixed possibility of corrupting saved games in certain instances,
+     eg if an add-on tries to set an invalid variable
 
 Version 1.13.1:
  * Security fixes:
