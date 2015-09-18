@@ -1308,15 +1308,13 @@ def hack_syntax(filename, lines):
             ws = leader(line)
             outer = outdent(ws)
             assert attackname != None
-            before = outer + "[/effect]\n" \
-                     + outer + "[effect]\n" \
-                     + ws + "apply_to=new_animation\n"
-            after = ws + baseindent + "[attack_filter]\n" \
-                    + ws + baseindent*2 + "name=" + attackname + "\n" \
-                    + ws + baseindent + "[/attack_filter]\n"
-            lines[i] = before \
-                       + line.replace("animation", "attack_anim") \
-                       + after
+            lines[i] = """{0}[/effect]
+{0}[effect]
+{1}apply_to=new_animation
+{2}{1}{3}[attack_filter]
+{1}{3}{3}name={4}
+{1}{3}[/attack_filter]
+""".format(outer, ws, line.replace("animation", "attack_anim"), baseindent, attackname) 
             modcount += 1
         elif converting and "[/animation]" in line:
             lines[i] = line.replace("animation", "attack_anim")
@@ -1425,11 +1423,12 @@ def hack_syntax(filename, lines):
                             lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
                             print('"%s", line %d: no match found for [sound] time (%s), placing sound path in first frame' %
                                   (filename, where+1, soundtime))
-                insertion = outer + "[/attack]\n" \
-                            + outer + "[attack_anim]\n" \
-                            + ws + "[attack_filter]\n" \
-                            + ws + baseindent + "name=" + attackname + "\n" \
-                            + ws + "[/attack_filter]\n"
+                insertion = """{0}[/attack]
+{0}[attack_anim]
+{1}[attack_filter]
+{1}{2}name={3}
+{1}[/attack_filter]
+""".format(outer, ws, baseindent, attackname)
                 lines[converting] = insertion + lines[converting]
                 postframe.reverse()
                 for preframe in postframe:
@@ -1552,7 +1551,7 @@ def hack_syntax(filename, lines):
                 if in_death_commented:
                     inner = "#" + inner
                 lines[in_death] = lines[in_death].replace("death", "animation") \
-                                  + inner + "apply_to=death" + "\n"
+                                  + "%sapply_to=death\n" % inner
                 # Add a new last frame to the death animation
                 outer = leader(lines[frame_start])
                 if frame_commented:
@@ -1560,12 +1559,13 @@ def hack_syntax(filename, lines):
                 inner = outer + baseindent
                 if frame_commented:
                     inner = "#" + inner
-                insertion = outer + "[frame]\n" + \
-                            inner + "duration=600\n" + \
-                            inner + "alpha=1~0\n" + \
-                            inner + "image=" + image + "\n" + \
-                            outer + "[/frame]\n"
-                lines[i] = insertion + line
+                insertion = """{0}[frame]
+{1}duration=600
+{1}alpha=1~0
+{1}image={2}
+{0}[/frame]
+""".format(outer, inner, image)
+                lines[i] = insertion + lines[i]
                 in_death = frame_start = frame_end = None
                 frame_commented = in_death_commented = False
                 modcount += 1
