@@ -160,7 +160,7 @@ gamemap::~gamemap()
 {
 }
 
-void gamemap::read(const std::string& data, const bool allow_invalid, int border_size, std::string usage) {
+void gamemap::read(const std::string& data, const bool allow_invalid, int border_size, const std::string& usage) {
 
 	// Initial stuff
 	border_size_ = border_size;
