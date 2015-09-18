@@ -73,8 +73,8 @@ protected:
 };
 
 struct candidate_action_compare {
-	bool operator() (const candidate_action_ptr& laction,
-			const candidate_action_ptr& raction) const
+	bool operator() (const candidate_action_ptr laction,
+			const candidate_action_ptr raction) const
 	{
 		return laction->get_score() > raction->get_score();
 	}

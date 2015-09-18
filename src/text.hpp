@@ -229,7 +229,7 @@ public:
 
 	ttext& set_foreground_color(const Uint32 color);
 
-	ttext& set_foreground_color(const SDL_Color& color);
+	ttext& set_foreground_color(const SDL_Color color);
 
 	ttext& set_maximum_width(int width);
 

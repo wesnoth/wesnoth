@@ -1691,7 +1691,7 @@ void display::draw_text_in_hex(const map_location& loc,
 
 //TODO: convert this to use sdl::ttexture
 #ifdef SDL_GPU
-void display::render_image(int x, int y, const display::tdrawing_layer& drawing_layer,
+void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 		const map_location& loc, sdl::timage image,
 		bool hreverse, bool greyscale, fixed_t /*alpha*/,
 		Uint32 /*blendto*/, double /*blend_ratio*/, double submerged, bool vreverse)
@@ -1707,7 +1707,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer& drawing_
 }
 
 #else
-void display::render_image(int x, int y, const display::tdrawing_layer& drawing_layer,
+void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged, bool vreverse)
