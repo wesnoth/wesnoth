@@ -64,28 +64,6 @@ void manager::add_event_handler(const config & handler, bool is_menu_item)
 	event_handlers_->add_event_handler(handler, *this, is_menu_item);
 }
 
-/**
- * Checks if an item has been used.
- * (An empty id will never be considered used.)
- */
-bool manager::item_used(const std::string & id)
-{
-	return !id.empty()  &&  used_items_.count(id) > 0;
-}
-
-/** Records if an item has been used. */
-void manager::item_used(const std::string & id, bool used)
-{
-	// Empty IDs are not tracked.
-	if ( id.empty() )
-		return;
-
-	if ( used )
-		used_items_.insert(id);
-	else
-		used_items_.erase(id);
-}
-
 /** Removes an event handler. */
 void manager::remove_event_handler(const std::string & id)
 {
@@ -98,7 +76,6 @@ void manager::remove_event_handler(const std::string & id)
 manager::manager(const config& cfg, const boost::shared_ptr<t_context> & res)
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
-	, used_items_()
 	, pump_(new game_events::t_pump(*this, res))
 	, resources_(res)
 	, wml_menu_items_()
@@ -120,14 +97,6 @@ manager::manager(const config& cfg, const boost::shared_ptr<t_context> & res)
 	wml_action::map::const_iterator action_cur = wml_action::begin();
 	for ( ; action_cur != action_end; ++action_cur ) {
 		resources_->lua_kernel->set_wml_action(action_cur->first, action_cur->second);
-	}
-
-	const std::string used = cfg["used_items"];
-	if(!used.empty()) {
-		const std::vector<std::string>& v = utils::split(used);
-		for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
-			item_used(*i, true);
-		}
 	}
 
 	// Create the event handlers for menu items.
@@ -238,7 +207,6 @@ void manager::write_events(config& cfg)
 		cfg.add_child("event", eh->get_config());
 	}
 
-	cfg["used_items"] = utils::join(used_items_);
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
 	wml_menu_items_.to_config(cfg);
 }

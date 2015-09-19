@@ -124,6 +124,10 @@
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 
+#include "resources.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
+
 class CVideo;
 
 #ifdef DEBUG_LUA
@@ -2850,6 +2854,48 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
 	return 0;
 }
 
+/**
+ * Deselects any highlighted hex on the map.
+ * No arguments or return values
+ */
+int game_lua_kernel::intf_deselect_hex(lua_State*)
+{
+	const map_location loc;
+	play_controller_.get_mouse_handler_base().select_hex(
+		loc, false, false, false);
+	if (game_display_) {
+		game_display_->highlight_hex(loc);
+	}
+	return 0;
+}
+
+/**
+ * Return true if a replay is in progress but the player has chosen to skip it
+ */
+int game_lua_kernel::intf_is_skipping_messages(lua_State *L)
+{
+	bool skipping = play_controller_.is_skipping_replay();
+	if (!skipping && resources::game_events) {
+		skipping = resources::game_events->pump().context_skip_messages();
+	}
+	lua_pushboolean(L, skipping);
+	return 1;
+}
+
+/**
+ * Set whether to skip messages
+ * Arg 1 (optional) - boolean
+ */
+int game_lua_kernel::intf_skip_messages(lua_State *L)
+{
+	bool skip = true;
+	if (!lua_isnone(L, 1)) {
+		skip = lua_toboolean(L, 1);
+	}
+	resources::game_events->pump().context_skip_messages(skip);
+	return 0;
+}
+
 namespace {
 	struct lua_synchronize : mp_sync::user_choice
 	{
@@ -3283,6 +3329,7 @@ static int intf_get_traits(lua_State* L)
  * - Arg 1: unit.
  * - Arg 2: string.
  * - Arg 3: WML table.
+ * - Arg 4: (optional) Whether to add to [modifications] - default true
  */
 static int intf_add_modification(lua_State *L)
 {
@@ -3296,9 +3343,13 @@ static int intf_add_modification(lua_State *L)
 	if (sm != "advancement" && sm != "object" && sm != "trait") {
 		return luaL_argerror(L, 2, "unknown modification type");
 	}
+	bool write_to_mods = true;
+	if (!lua_isnone(L, 4)) {
+		write_to_mods = lua_toboolean(L, 4);
+	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	u->add_modification(sm, cfg);
+	u->add_modification(sm, cfg, !write_to_mods);
 	return 0;
 }
 
@@ -4154,6 +4205,9 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "scroll",                    &dispatch<&game_lua_kernel::intf_scroll                     >        },
 		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
+		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
+		{ "skip_messages",             &dispatch<&game_lua_kernel::intf_skip_messages              >        },
+		{ "is_skipping_messages",      &dispatch<&game_lua_kernel::intf_is_skipping_messages       >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "set_menu_item",             &dispatch<&game_lua_kernel::intf_set_menu_item              >        },

@@ -30,6 +30,11 @@ Version 1.13.1+dev:
    * Added support for current.event_context.unit_x/y fields (bug #23507)
    * Added wesnoth.set_dialog_focus function
    * Added wesnoth.set_dialog_visible function
+   * Added wesnoth.show_message_dialog function
+   * Added wesnoth.show_popup_dialog function
+   * Added wesnoth.deselect_hex function
+   * Added wesnoth.is_skipping_messages and wesnoth.skip_messages functions
+   * New parameter write_to_mods in wesnoth.add_modification
    * Added wesnoth.random function
    * helper.shuffle is now synced
  * Music and sound effects:
@@ -85,6 +90,7 @@ Version 1.13.1+dev:
        number of movement points the attack consumes
    * Ability to patch movetypes to account for custom terrains or damage types
    * Removed y offset by -1 from [message]'s scroll-to-unit logic.
+   * Add [found_item] ConditionalWML to check if an [object]id= ActionWML has been taken
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
