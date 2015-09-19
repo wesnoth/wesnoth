@@ -20285,6 +20285,62 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\actions\unit_creator.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Actions\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Actions\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Actions\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Actions\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Actions\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Actions\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\actions\unit_creator.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\actions\vision.cpp"
 				>
 				<FileConfiguration
@@ -24206,6 +24262,14 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\mp_replay_controller.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\mp_replay_controller.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\mp_ui_alerts.cpp"
 			>
 		</File>
@@ -24347,6 +24411,14 @@
 		</File>
 		<File
 			RelativePath="..\..\src\preferences_display.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\quit_confirmation.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\quit_confirmation.hpp"
 			>
 		</File>
 		<File
