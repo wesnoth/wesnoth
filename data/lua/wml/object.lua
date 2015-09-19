@@ -15,7 +15,8 @@ function wml_actions.object(cfg)
 
 	local unit, command_type, text
 
-	if helper.get_child(cfg, "filter") then
+	local filter = helper.get_child(cfg, "filter")
+	if filter then
 		unit = wesnoth.get_units(filter)[1]
 	else
 		unit = wesnoth.get_unit(contxt.x, context.y)
