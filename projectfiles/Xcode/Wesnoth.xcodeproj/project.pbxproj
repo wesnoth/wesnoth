@@ -5531,9 +5531,18 @@
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
+					"-Wno-unused-local-typedefs",
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = "";
+				WARNING_CFLAGS = (
+					"-Werror=format",
+					"-Werror=missing-braces",
+					"-Werror=return-type",
+					"-Werror=missing-field-initializers",
+					"-Werror=sign-compare",
+					"-Werror=switch",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5571,6 +5580,14 @@
 					./Headers,
 				);
 				PRODUCT_NAME = Wesnoth;
+				WARNING_CFLAGS = (
+					"-Werror=format",
+					"-Werror=missing-braces",
+					"-Werror=return-type",
+					"-Werror=missing-field-initializers",
+					"-Werror=sign-compare",
+					"-Werror=switch",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
