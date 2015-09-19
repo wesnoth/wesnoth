@@ -4967,7 +4967,7 @@
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 				);
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
@@ -4984,6 +4984,14 @@
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = "";
+				WARNING_CFLAGS = (
+					"-Werror=format",
+					"-Werror=missing-braces",
+					"-Werror=return-type",
+					"-Werror=missing-field-initializers",
+					"-Werror=sign-compare",
+					"-Werror=switch",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5019,6 +5027,14 @@
 					./Headers,
 				);
 				PRODUCT_NAME = Wesnoth;
+				WARNING_CFLAGS = (
+					"-Werror=format",
+					"-Werror=missing-braces",
+					"-Werror=return-type",
+					"-Werror=missing-field-initializers",
+					"-Werror=sign-compare",
+					"-Werror=switch",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
