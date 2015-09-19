@@ -394,7 +394,7 @@ private:
 	 * cfg: an ability WML structure
 	 */
 	bool ability_active(const std::string& ability,const config& cfg,const map_location& loc) const;
-	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc) const;
+	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc,const unit& from) const;
 	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
