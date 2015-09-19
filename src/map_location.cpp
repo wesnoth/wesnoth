@@ -69,25 +69,61 @@ std::size_t hash_value(map_location  const & a){
 
 map_location::DIRECTION map_location::parse_direction(const std::string& str)
 {
-	if(!str.empty()) {
-		if(str == "n") {
-			return NORTH;
-		} else if(str == "ne") {
-			return NORTH_EAST;
-		} else if(str == "se") {
-			return SOUTH_EAST;
-		} else if(str == "s") {
-			return SOUTH;
-		} else if(str == "sw") {
-			return SOUTH_WEST;
-		} else if(str == "nw") {
-			return NORTH_WEST;
-		} else if(str[0] == '-' && str.length() <= 10) {
-			// A minus sign reverses the direction
-			return get_opposite_dir(parse_direction(str.substr(1)));
+	if(str.empty()) {
+		return NDIRECTIONS;
+	}
+	
+	// Syntax: [-] (n|ne|se|s|sw|nw) [.cw|.ccw]
+	// - means "take opposite direction" and has higher precedence
+	// .cw and .ccw mean "one step (counter-)clockwise"
+	// Parentheses can be used for grouping or to apply an operator more than once
+	
+	const size_t open = str.find_first_of('('), close = str.find_last_of(')');
+	if (open != std::string::npos && close != std::string::npos) {
+		std::string sub = str.substr(open + 1, close - open - 1);
+		map_location::DIRECTION dir = parse_direction(sub);
+		sub = str;
+		sub.replace(open, close - open + 1, write_direction(dir));
+		return parse_direction(sub);
+	}
+	
+	const size_t start = str[0] == '-' ? 1 : 0;
+	const size_t end = str.find_first_of('.');
+	const std::string& main_dir = str.substr(start, end - start);
+	map_location::DIRECTION dir;
+	
+	if (main_dir == "n") {
+		dir = NORTH;
+	} else if (main_dir == "ne") {
+		dir = NORTH_EAST;
+	} else if (main_dir == "se") {
+		dir = SOUTH_EAST;
+	} else if (main_dir == "s") {
+		dir = SOUTH;
+	} else if (main_dir == "sw") {
+		dir = SOUTH_WEST;
+	} else if (main_dir == "nw") {
+		dir = NORTH_WEST;
+	} else {
+		return NDIRECTIONS;
+	}
+	
+	if (start == 1) {
+		dir = get_opposite_dir(dir);
+	}
+	
+	if (end != std::string::npos) {
+		const std::string rel_dir = str.substr(end + 1);
+		if (rel_dir == "cw") {
+			dir = rotate_right(dir, 1);
+		} else if (rel_dir == "ccw") {
+			dir = rotate_right(dir, -1);
+		} else {
+			return NDIRECTIONS;
 		}
 	}
-	return NDIRECTIONS;
+	
+	return dir;
 }
 
 std::vector<map_location::DIRECTION> map_location::parse_directions(const std::string& str)

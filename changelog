@@ -92,6 +92,10 @@ Version 1.13.1+dev:
        Refers to the other unit in the attack (eg in [filter_self], it's the opponent)
      * [affect_adjacent][filter] (unit abilities)
        Refers to the unit owning the ability
+   * New rotate operators for directions: dir.cw and dir.ccw
+     (This is useful mostly in conjunction with variable substitution.)
+     These operator are applied after the existing - operator that takes the
+     opposite direction.
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
