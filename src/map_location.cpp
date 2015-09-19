@@ -73,9 +73,9 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 		return NDIRECTIONS;
 	}
 	
-	// Syntax: [-] (n|ne|se|s|sw|nw) [.cw|.ccw]
+	// Syntax: [-] (n|ne|se|s|sw|nw) [:cw|:ccw]
 	// - means "take opposite direction" and has higher precedence
-	// .cw and .ccw mean "one step (counter-)clockwise"
+	// :cw and :ccw mean "one step (counter-)clockwise"
 	// Parentheses can be used for grouping or to apply an operator more than once
 	
 	const size_t open = str.find_first_of('('), close = str.find_last_of(')');
@@ -88,7 +88,7 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 	}
 	
 	const size_t start = str[0] == '-' ? 1 : 0;
-	const size_t end = str.find_first_of('.');
+	const size_t end = str.find_first_of(':');
 	const std::string& main_dir = str.substr(start, end - start);
 	map_location::DIRECTION dir;
 	
