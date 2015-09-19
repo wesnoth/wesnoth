@@ -81,6 +81,7 @@ public:
 
 	typedef std::vector<vconfig> child_list;
 	child_list get_children(const std::string& key) const;
+	size_t count_children(const std::string& key) const;
 	vconfig child(const std::string& key) const;
 	bool has_child(const std::string& key) const;
 
