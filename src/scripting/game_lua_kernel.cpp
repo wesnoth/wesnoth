@@ -806,14 +806,27 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 
 	filter_context & fc = game_state_;
 	if (int side = lu->on_recall_list()) {
+		if (!lua_isnoneornil(L, 3)) {
+			WRN_LUA << "wesnoth.match_unit called with 3rd argument, but unit to match was on recall list. ";
+			WRN_LUA << "Thus the 3rd argument is ignored.\n";
+		}
 		team &t = (teams())[side - 1];
 		scoped_recall_unit auto_store("this_unit",
 			t.save_id(), t.recall_list().find_index(u->id()));
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
 		return 1;
 	}
-
-	lua_pushboolean(L, unit_filter(filter, &fc).matches(*u));
+	
+	if (!lua_isnoneornil(L, 3)) {
+		lua_unit *lu_adj = static_cast<lua_unit *>(lua_touserdata(L, 1));
+		unit_ptr u_adj = lu_adj->get();
+		if (!u_adj) {
+			return luaL_argerror(L, 3, "unit not found");
+		}
+		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, *u_adj));
+	} else {
+		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u));
+	}
 	return 1;
 }
 

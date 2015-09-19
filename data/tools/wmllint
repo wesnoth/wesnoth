@@ -634,6 +634,11 @@ linechanges = (
         # Changed in 1.13.2.
         ("[advance]","[advancement]"),
         ("[/advance]","[/advancement]"),
+        ("{ABILITY_LEADERSHIP_LEVEL_1}", "{ABILITY_LEADERSHIP}"),
+        ("{ABILITY_LEADERSHIP_LEVEL_2}", "{ABILITY_LEADERSHIP}"),
+        ("{ABILITY_LEADERSHIP_LEVEL_3}", "{ABILITY_LEADERSHIP}"),
+        ("{ABILITY_LEADERSHIP_LEVEL_4}", "{ABILITY_LEADERSHIP}"),
+        ("{ABILITY_LEADERSHIP_LEVEL_5}", "{ABILITY_LEADERSHIP}"),
         ("misc/icon-amla-tough.png","icons/amla-default.png")
         )
 
@@ -748,7 +753,7 @@ notepairs = [
     ("{ABILITY_CURES}", "{SPECIAL_NOTES_CURES}"),
     ("{ABILITY_REGENERATES}", "{SPECIAL_NOTES_REGENERATES}"),
     ("{ABILITY_STEADFAST}", "{SPECIAL_NOTES_STEADFAST}"),
-    ("{ABILITY_LEADERSHIP_LEVEL_", "{SPECIAL_NOTES_LEADERSHIP}"), # No } deliberately
+    ("{ABILITY_LEADERSHIP}", "{SPECIAL_NOTES_LEADERSHIP}"),
     ("{ABILITY_SKIRMISHER}", "{SPECIAL_NOTES_SKIRMISHER}"),
     ("{ABILITY_ILLUMINATES}", "{SPECIAL_NOTES_ILLUMINATES}"),
     ("{ABILITY_TELEPORT}", "{SPECIAL_NOTES_TELEPORT}"),
