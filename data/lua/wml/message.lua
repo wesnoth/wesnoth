@@ -2,7 +2,6 @@
 local helper = wesnoth.require "lua/helper.lua"
 local utils = wesnoth.require "lua/wml-utils.lua"
 local location_set = wesnoth.require "lua/location_set.lua"
-local skip_messages = false
 
 local function log(msg, level)
 	wesnoth.wml_actions.wml_message({
@@ -92,7 +91,7 @@ local function message_user_choice(cfg, speaker, options, text_input)
 		local option_chosen, ti_content = wesnoth.show_message_dialog(msg_cfg, options, text_input)
 			
 		if option_chosen == -2 then -- Pressed Escape (only if no input)
-			skip_messages = true
+			wesnoth.skip_messages()
 		end
 		
 		local result_cfg = {}
@@ -143,7 +142,7 @@ function wesnoth.wml_actions.message(cfg)
 	-- Check if there is any input to be made, if not the message may be skipped
 	local has_input = text_input ~= nil or #options > 0
 	
-	if not has_input and (wesnoth.skipping_replay() or skip_messages) then
+	if not has_input and wesnoth.is_skipping_messages() then
 		-- No input to get and the user is not interested either
 		log("Skipping [message] because user not interested", "debug")
 		return
@@ -220,8 +219,3 @@ function wesnoth.wml_actions.message(cfg)
 	end
 end
 
-local on_event = wesnoth.game_events.on_event
-function wesnoth.game_events.on_event(...)
-	if type(on_event) == "function" then on_event(...) end
-	skip_messages = false
-end

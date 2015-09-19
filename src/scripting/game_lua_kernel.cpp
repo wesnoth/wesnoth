@@ -124,6 +124,10 @@
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 
+#include "resources.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
+
 class CVideo;
 
 #ifdef DEBUG_LUA
@@ -2868,10 +2872,28 @@ int game_lua_kernel::intf_deselect_hex(lua_State*)
 /**
  * Return true if a replay is in progress but the player has chosen to skip it
  */
-int game_lua_kernel::intf_skipping_replay(lua_State *L)
+int game_lua_kernel::intf_is_skipping_messages(lua_State *L)
 {
-	lua_pushboolean(L, play_controller_.is_skipping_replay());
+	bool skipping = play_controller_.is_skipping_replay();
+	if (!skipping && resources::game_events) {
+		skipping = resources::game_events->pump().context_skip_messages();
+	}
+	lua_pushboolean(L, skipping);
 	return 1;
+}
+
+/**
+ * Set whether to skip messages
+ * Arg 1 (optional) - boolean
+ */
+int game_lua_kernel::intf_skip_messages(lua_State *L)
+{
+	bool skip = true;
+	if (!lua_isnone(L, 1)) {
+		skip = lua_toboolean(L, 1);
+	}
+	resources::game_events->pump().context_skip_messages(skip);
+	return 0;
 }
 
 namespace {
@@ -4184,7 +4206,8 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
-		{ "skipping_replay",           &dispatch<&game_lua_kernel::intf_skipping_replay            >        },
+		{ "skip_messages",             &dispatch<&game_lua_kernel::intf_skip_messages              >        },
+		{ "is_skipping_messages",      &dispatch<&game_lua_kernel::intf_is_skipping_messages       >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "set_menu_item",             &dispatch<&game_lua_kernel::intf_set_menu_item              >        },
