@@ -85,16 +85,17 @@ Version 1.13.1+dev:
        number of movement points the attack consumes
    * Ability to patch movetypes to account for custom terrains or damage types
    * Removed y offset by -1 from [message]'s scroll-to-unit logic.
-   * New auto-stored WML variable usable in the following contexts:
-     * [filter_adjacent] - refers to the $this_unit of the enclosing filter
+   * New auto-stored WML variable $other_unit usable in the following contexts:
+     * [filter_adjacent] - $other_unit refers to the $this_unit of the enclosing filter
        (In weapon specials and unit abilities, the unit owning the ability.)
      * [filter_self/opponent/attacker/defender] (weapon specials)
-       Refers to the other unit in the attack (eg in [filter_self], it's the opponent)
+       $other_unit refers to the other unit in the attack
+       (eg in [filter_self], it's the opponent)
      * [affect_adjacent][filter] (unit abilities)
-       Refers to the unit owning the ability
-   * New rotate operators for directions: dir.cw and dir.ccw
+       $other_unit refers to the unit owning the ability
+   * New rotate operators for directions: dir:cw and dir:ccw
      (This is useful mostly in conjunction with variable substitution.)
-     These operator are applied after the existing - operator that takes the
+     These operators are applied after the existing '-' operator that takes the
      opposite direction.
    * Adjacency filters in abilities and weapon specials now support count= and is_enemy=
  * Editor:
