@@ -282,7 +282,6 @@ end
 -- we can't create functions with names that are Lua keywords (eg if, while)
 -- instead, we store the following anonymous functions directly into
 -- the table, using the [] operator, rather than by using the point syntax
--- the same is true of for and repeat
 
 wml_actions["if"] = function(cfg)
 	if not (helper.get_child(cfg, 'then') or helper.get_child(cfg, 'elseif') or helper.get_child(cfg, 'else')) then
@@ -368,10 +367,20 @@ wesnoth.wml_actions["for"] = function(cfg)
 	wesnoth.set_variable(i_var, first)
 	while wesnoth.get_variable(i_var) <= last do
 		for do_child in helper.child_range( cfg, "do" ) do
-			handle_event_commands( do_child )
+			local action = utils.handle_event_commands(do_child, "loop")
+			if action == "break" then
+				utils.set_exiting("none")
+				goto exit
+			elseif action == "continue" then
+				utils.set_exiting("none")
+				break
+			elseif action ~= "none" then
+				goto exit
+			end
 		end
 		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
 	end
+	::exit::
 	end_var_scope(i_var, save_i)
 end
 
@@ -379,7 +388,16 @@ wml_actions["repeat"] = function(cfg)
 	local times = cfg.times or 1
 	for i = 1, times do
 		for do_child in helper.child_range( cfg, "do" ) do
-			handle_event_commands(do_child, "loop")
+			local action = utils.handle_event_commands(do_child, "loop")
+			if action == "break" then
+				utils.set_exiting("none")
+				return
+			elseif action == "continue" then
+				utils.set_exiting("none")
+				break
+			elseif action ~= "none" then
+				return
+			end
 		end
 	end
 end
@@ -405,13 +423,23 @@ function wml_actions.foreach(cfg)
 		wesnoth.set_variable(i_name, index-1) -- here -1, because of WML array
 		-- perform actions
 		for do_child in helper.child_range(cfg, "do") do
-			handle_event_commands(do_child, "loop")
+			local action = utils.handle_event_commands(do_child, "loop")
+			if action == "break" then
+				utils.set_exiting("none")
+				goto exit
+			elseif action == "continue" then
+				utils.set_exiting("none")
+				break
+			elseif action ~= "none" then
+				goto exit
+			end
 		end
 		-- set back the content, in case the author made some modifications
 		if not cfg.readonly then
 			array[index] = wesnoth.get_variable(item_name)
 		end
 	end
+	::exit::
 	
 	-- house cleaning
 	wesnoth.set_variable(item_name)
