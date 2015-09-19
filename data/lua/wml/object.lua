@@ -13,16 +13,15 @@ function wml_actions.object(cfg)
 	local obj_id = utils.check_key(cfg.id, "id", "object", true)
 	if obj_id and used_items[obj_id] then return end
 
-	local unit
-	local filter = helper.get_child(cfg, "filter")
-	if filter then
+	local unit, command_type, text
+
+	if helper.get_child(cfg, "filter") then
 		unit = wesnoth.get_units(filter)[1]
-	end
-	if not unit then
+	else
 		unit = wesnoth.get_unit(contxt.x, context.y)
 	end
 
-	local command_type, text
+	-- If a unit matches the filter, proceed
 	if unit then
 		text = tostring(cfg.description or "")
 		command_type = "then"
