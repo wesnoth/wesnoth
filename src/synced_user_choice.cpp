@@ -39,15 +39,7 @@ static lg::log_domain log_replay("replay");
 
 namespace
 {
-	class user_choice_notifer_base
-	{
-	public:
-		virtual void update_message(const std::string&) {}
-		virtual void update() {}
-		virtual ~user_choice_notifer_base() {}
-	};
-
-	class user_choice_notifer_ingame : public user_choice_notifer_base
+	class user_choice_notifer_ingame
 	{
 		//the handle for the label on the screen -1 if not shown yet.
 		int label_id_;
@@ -70,16 +62,12 @@ namespace
 			}
 		}
 
-		virtual void update()
+		void update(const std::string& message)
 		{
 			if(label_id_ == -1 && SDL_GetTicks() > start_show_)
 			{
 				start_show_label();
 			}
-		}
-
-		virtual void update_message(const std::string& message)
-		{
 			if(message == message_) {
 				return;
 			}
@@ -109,45 +97,6 @@ namespace
 			font::remove_floating_label(label_id_);
 			label_id_ = -1;
 		}
-	};
-
-	user_choice_notifer_base * create_user_choice_notifer()
-	{
-		const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
-		if(is_too_early) {
-			return new user_choice_notifer_base();
-		}
-		else {
-			return new user_choice_notifer_ingame();
-		}
-	}
-	struct notifer_ptr
-	{
-		boost::scoped_ptr<user_choice_notifer_base> m_;
-		notifer_ptr()
-			: m_()
-		{
-		}
-		void activate()
-		{
-			if(!m_) {
-				m_.reset(create_user_choice_notifer());
-			}
-		}
-		void deactivate()
-		{
-			if(m_) {
-				m_.reset();
-			}
-		}
-		void update(const std::string& message)
-		{
-			if(m_) {
-				m_->update_message(message);
-				m_->update();
-			}
-		}
-
 	};
 }
 
@@ -405,8 +354,7 @@ void user_choice_manager::fix_oos()
 
 static void wait_ingame(user_choice_manager& man)
 {
-	notifer_ptr notifer;
-	notifer.activate();
+	user_choice_notifer_ingame notifer;
 	while(!man.finished() && man.waiting())
 	{
 		if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
