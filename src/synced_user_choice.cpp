@@ -49,10 +49,10 @@ namespace
 
 	class user_choice_notifer_ingame : public user_choice_notifer_base
 	{
-		//the handle for the label on the screen -i if not shown yet.
+		//the handle for the label on the screen -1 if not shown yet.
 		int label_id_;
-		unsigned int start_show_;
 		std::string message_;
+		unsigned int start_show_;
 		
 	public:
 		user_choice_notifer_ingame()
