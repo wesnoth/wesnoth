@@ -25,7 +25,7 @@
 #include "synced_context.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-
+#include "gui/dialogs/synced_choice_wait.hpp"
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 #include <set>
@@ -296,10 +296,8 @@ void user_choice_manager::pull()
 	synced_context::pull_remote_user_input();
 	do_replay_handle();
 	update_local_choice();
-	bool is_replay_end = resources::recorder->at_end();
 	if(!resources::recorder->at_end())
 	{
-		changed_event_.notify_observers();
 		DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_choice() << "\n";
 
 		const config *action = resources::recorder->get_next_action();
@@ -311,6 +309,8 @@ void user_choice_manager::pull()
 			resources::recorder->revert_action();
 			// execute this local choice locally
 			oos_ = true;
+			changed_event_.notify_observers();
+			return;
 		}
 		int from_side = (*action)["from_side"].to_int(0);
 		if((*action)["side_invalid"].to_bool(false) == true)
@@ -327,6 +327,7 @@ void user_choice_manager::pull()
 			replay::process_error("MP synchronization: we got already our answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
 		}
 		res_[from_side] = action->child(tagname_);
+		changed_event_.notify_observers();
 	}
 }
 
@@ -421,14 +422,26 @@ static void wait_ingame(user_choice_manager& man)
 	}
 }
 
+static void wait_prestart(user_choice_manager& man)
+{
+	gui2::tsynced_choice_wait scw(man);
+	scw.show(resources::screen->video());
+}
+
 std::map<int, config> user_choice_manager::get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
 {
+	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	user_choice_manager man(name, uch, sides);
 	while(!man.finished())
 	{
 		if(man.waiting())
 		{
-			wait_ingame(man);
+			if(is_too_early) {
+				wait_prestart(man);
+			}
+			else {
+				wait_ingame(man);
+			}
 		}
 		else if(man.has_local_choice())
 		{

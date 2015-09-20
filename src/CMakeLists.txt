@@ -928,6 +928,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/screenshot_notification.cpp
 	gui/dialogs/simple_item_selector.cpp
+	gui/dialogs/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
