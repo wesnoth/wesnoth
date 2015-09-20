@@ -261,7 +261,8 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	std::vector<std::string> options;
 	int chosen_option = -1;
 	if (!lua_isnoneornil(L, 2)) {
-		options = lua_check<std::vector<std::string> >(L, 2);
+		std::vector<t_string> t_options = lua_check<std::vector<t_string> >(L, 2);
+		std::copy(t_options.begin(), t_options.end(), std::back_inserter(options));
 	}
 	
 	const config& def_cfg = luaW_checkconfig(L, 1);
