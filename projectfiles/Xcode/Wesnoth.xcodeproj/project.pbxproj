@@ -75,6 +75,7 @@
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
 		62E48250154D865E001DD4FC /* pane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62E4824E154D865E001DD4FC /* pane.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
 		91B6217C1B74E6D200B00E0F /* label_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B6217A1B74E6D100B00E0F /* label_settings.cpp */; };
 		91B6219F1B7673D800B00E0F /* portrait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B6219E1B7673D800B00E0F /* portrait.cpp */; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
@@ -1245,6 +1246,8 @@
 		62E4824F154D865E001DD4FC /* pane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pane.hpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wesnoth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		919B37F71BAF789D00E0094C /* synced_user_choice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_user_choice.cpp; sourceTree = "<group>"; };
+		919B37F91BAF78AB00E0094C /* synced_user_choice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_user_choice.hpp; sourceTree = "<group>"; };
 		91B6217A1B74E6D100B00E0F /* label_settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = label_settings.cpp; sourceTree = "<group>"; };
 		91B6217B1B74E6D100B00E0F /* label_settings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = label_settings.hpp; sourceTree = "<group>"; };
 		91B621801B766ED500B00E0F /* buffered_istream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buffered_istream.hpp; sourceTree = "<group>"; };
@@ -2856,6 +2859,8 @@
 				EC84246318F30D9100FC1EEF /* synced_commands.hpp */,
 				EC84246418F30D9100FC1EEF /* synced_context.cpp */,
 				EC84246518F30D9100FC1EEF /* synced_context.hpp */,
+				919B37F71BAF789D00E0094C /* synced_user_choice.cpp */,
+				919B37F91BAF78AB00E0094C /* synced_user_choice.hpp */,
 				ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */,
 				91B621981B7672E800B00E0F /* syncmp_handler.hpp */,
 				B55999970EC62181008DD061 /* team.cpp */,
@@ -5000,6 +5005,7 @@
 				91B621BA1B76B2C900B00E0F /* version.cpp in Sources */,
 				91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */,
 				91ECD5D51BA11A6400B25CF1 /* mp_replay_controller.cpp in Sources */,
+				919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
