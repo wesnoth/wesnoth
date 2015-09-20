@@ -41,6 +41,7 @@
 #include "../resources.hpp"
 #include "../statistics.hpp"
 #include "../synced_checkup.hpp"
+#include "../synced_user_choice.hpp"
 #include "../team.hpp"
 #include "../tod_manager.hpp"
 #include "../unit.hpp"

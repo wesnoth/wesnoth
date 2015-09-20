@@ -21,7 +21,7 @@
 #include "persist_manager.hpp"
 #include "persist_var.hpp"
 #include "play_controller.hpp"
-#include "replay.hpp"
+#include "synced_user_choice.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "util.hpp"

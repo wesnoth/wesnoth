@@ -32,7 +32,6 @@
 #include "dialogs.hpp"
 #include "unit_helper.hpp"
 #include "recall_list_manager.hpp"
-#include "replay.hpp" //user choice
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "formula_string_utils.hpp"

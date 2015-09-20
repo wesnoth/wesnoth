@@ -57,6 +57,7 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "synced_context.hpp"
+#include "synced_user_choice.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"

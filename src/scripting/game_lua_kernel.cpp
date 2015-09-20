@@ -83,6 +83,7 @@
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "synced_context.hpp"           // for synced_context, etc
+#include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
 #include "terrain.hpp"                  // for terrain_type
 #include "terrain_filter.hpp"           // for terrain_filter

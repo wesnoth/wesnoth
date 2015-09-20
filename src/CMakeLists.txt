@@ -1025,6 +1025,7 @@ set(wesnoth-main_SRC
 	synced_checkup.cpp
 	synced_context.cpp
 	synced_commands.cpp
+	synced_user_choice.cpp
 	syncmp_handler.cpp
 	team.cpp
 	teambuilder.cpp
