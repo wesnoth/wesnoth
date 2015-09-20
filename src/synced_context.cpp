@@ -260,15 +260,7 @@ namespace
 
 void synced_context::pull_remote_user_input()
 {
-	//code copied form persist_var, feels strange to call ai::.. functions for something where the ai isn't involved....
-	//note that ai::manager::raise_sync_network isn't called by the ai at all anymore (one more reason to put it somehwere else)
 	try{
-		if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
-		{
-			//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
-			//because that might result in crashs if someone clicks anywhere during screenlock.
-			ai::manager::raise_user_interact();
-		}
 		syncmp_registry::pull_remote_choice();
 	}
 	catch(network::error& err)

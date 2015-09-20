@@ -151,144 +151,6 @@ namespace
 	};
 }
 
-
-static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
-{
-	const int max_side  = static_cast<int>(resources::teams->size());
-
-	BOOST_FOREACH(int side, sides)
-	{
-		//the caller has to ensure this.
-		assert(1 <= side && side <= max_side);
-		assert(!(*resources::teams)[side-1].is_empty());
-	}
-
-
-	//this should never change during the execution of this function.
-	const int current_side = resources::controller->current_side();
-	const bool is_mp_game = network::nconnections() != 0;
-	// whether sides contains a side that is not the currently active side.
-	const bool contains_other_side = !sides.empty() && (sides.size() != 1 || sides.find(current_side) == sides.end());
-	if(contains_other_side)
-	{
-		synced_context::set_is_simultaneously();
-	}
-	std::map<int,config> retv;
-	notifer_ptr notifer;
-	/*
-		when we got all our answers we stop.
-	*/
-	while(retv.size() != sides.size())
-	{
-		/*
-			there might be speak or similar commands in the replay before the user input.
-		*/
-		do_replay_handle();
-
-		/*
-			these value might change due to player left/reassign during pull_remote_user_input
-		*/
-		//equals to any side in sides that is local, 0 if no such side exists.
-		int local_side = 0;
-		//if for any side from which we need an answer
-		std::string message;
-		BOOST_FOREACH(int side, sides)
-		{
-			//and we havent already received our answer from that side
-			if(retv.find(side) == retv.end())
-			{
-				message += " ";
-				message += lexical_cast<std::string>(side);
-				//and it is local
-				if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
-				{
-					//then we have to make a local choice.
-					local_side = side;
-					break;
-				}
-			}
-		}
-		message = "waiting for " + uch.description() + " from side(s)" + message;
-		bool has_local_side = local_side != 0;
-		bool is_replay_end = resources::recorder->at_end();
-
-		if (is_replay_end && has_local_side)
-		{
-			notifer.deactivate();
-			leave_synced_context sync;
-			/* At least one of the decisions is ours, and it will be inserted
-			   into the replay. */
-			DBG_REPLAY << "MP synchronization: local choice\n";
-			config cfg = uch.query_user(local_side);
-
-			resources::recorder->user_input(name, cfg, local_side);
-			retv[local_side]= cfg;
-
-			//send data to others.
-			//but if there wasn't any data sended during this turn, we don't want to bein wth that now.
-			//TODO: we should send user choices during nonundoable actions immideatley.
-			if(synced_context::is_simultaneously() || current_side != local_side)
-			{
-				synced_context::send_user_choice();
-			}
-			continue;
-
-		}
-		else if(is_replay_end && !has_local_side)
-		{
-			//we are in a mp game, and the data has not been recieved yet.
-			DBG_REPLAY << "MP synchronization: waiting for remote choice\n";
-
-			assert(is_mp_game);
-			synced_context::pull_remote_user_input();
-			notifer.activate();
-			notifer.update(message);
-			SDL_Delay(10);
-			continue;
-		}
-		else if(!is_replay_end)
-		{
-			DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_side << "\n";
-
-			const config *action = resources::recorder->get_next_action();
-			assert(action); //action cannot be null because resources::recorder->at_end() returned false.
-			if( !action->has_child(name) || !(*action)["dependent"].to_bool())
-			{
-				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
-				//We save this action for later
-				resources::recorder->revert_action();
-				//and let the user try to get the intended result.
-				BOOST_FOREACH(int side, sides)
-				{
-					if(retv.find(side) == retv.end())
-					{
-						retv[side] = uch.query_user(side);
-					}
-				}
-				return retv;
-			}
-			int from_side = (*action)["from_side"].to_int(0);
-			if ((*action)["side_invalid"].to_bool(false) == true)
-			{
-				//since this 'cheat' can have a quite heavy effect especialy in umc content we give an oos error .
-				replay::process_error("MP synchronization: side_invalid in replay data, this could mean someone wants to cheat.\n");
-			}
-			if (sides.find(from_side) == sides.end())
-			{
-				replay::process_error("MP synchronization: we got an answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + name + "] which is not was we expected\n");
-				continue;
-			}
-			if(retv.find(from_side) != retv.end())
-			{
-				replay::process_error("MP synchronization: we got already our answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + name + "] now we have it twice.\n");
-			}
-			retv[from_side] = action->child(name);
-			continue;
-		}
-	}//while
-	return retv;
-}
-
 std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &name, const mp_sync::user_choice &uch,
 	std::set<int> sides)
 {
@@ -322,7 +184,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 		sides.erase(side);
 	}
 
-	std::map<int,config> retv =  get_user_choice_internal(name, uch, sides);
+	std::map<int,config> retv =  user_choice_manager::get_user_choice_internal(name, uch, sides);
 
 	BOOST_FOREACH(int side, empty_sides)
 	{
@@ -403,7 +265,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 
 	std::set<int> sides;
 	sides.insert(side);
-	std::map<int, config> retv = get_user_choice_internal(name, uch, sides);
+	std::map<int, config> retv = user_choice_manager::get_user_choice_internal(name, uch, sides);
 	if(retv.find(side) == retv.end())
 	{
 		//An error occured, get_user_choice_internal should have given an oos error message
@@ -411,3 +273,181 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	}
 	return retv[side];
 }
+
+user_choice_manager::user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides)
+	: required_(sides)
+	, res_()
+	, local_choice_(0)
+	, wait_message_()
+	, oos_(false)
+	, uch_(uch)
+	, tagname_(name)
+	, current_side_(resources::controller->current_side())
+	, changed_event_("user_choice_update")
+{
+	update_local_choice();
+}
+
+void user_choice_manager::pull()
+{
+	assert(waiting());
+	// there might be speak or similar commands in the replay before the user input.
+	do_replay_handle();
+	synced_context::pull_remote_user_input();
+	do_replay_handle();
+	update_local_choice();
+	bool is_replay_end = resources::recorder->at_end();
+	if(!resources::recorder->at_end())
+	{
+		changed_event_.notify_observers();
+		DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_choice() << "\n";
+
+		const config *action = resources::recorder->get_next_action();
+		assert(action); //action cannot be null because resources::recorder->at_end() returned false.
+		if( !action->has_child(tagname_) || !(*action)["dependent"].to_bool())
+		{
+			replay::process_error("[" + tagname_ + "] expected but none found\n. found instead:\n" + action->debug());
+			//We save this action for later
+			resources::recorder->revert_action();
+			// execute this local choice locally
+			oos_ = true;
+		}
+		int from_side = (*action)["from_side"].to_int(0);
+		if((*action)["side_invalid"].to_bool(false) == true)
+		{
+			//since this 'cheat' can have a quite heavy effect especialy in umc content we give an oos error .
+			replay::process_error("MP synchronization: side_invalid in replay data, this could mean someone wants to cheat.\n");
+		}
+		if(required_.find(from_side) == required_.end())
+		{
+			replay::process_error("MP synchronization: we got an answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + tagname_ + "] which is not was we expected\n");
+		}
+		if(res_.find(from_side) != res_.end())
+		{
+			replay::process_error("MP synchronization: we got already our answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
+		}
+		res_[from_side] = action->child(tagname_);
+	}
+}
+
+void user_choice_manager::update_local_choice()
+{
+	int local_choice_prev = local_choice_;
+	//equals to any side in sides that is local, 0 if no such side exists.
+	local_choice_ = 0;
+	//if for any side from which we need an answer
+	wait_message_ = "";
+	BOOST_FOREACH(int side, required_)
+	{
+		//and we havent already received our answer from that side
+		if(res_.find(side) == res_.end())
+		{
+			wait_message_ += " ";
+			wait_message_ += lexical_cast<std::string>(side);
+			//and it is local
+			if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
+			{
+				//then we have to make a local choice.
+				local_choice_ = side;
+				break;
+			}
+		}
+	}
+	wait_message_ = "waiting for " + uch_.description() + " from side(s)" + wait_message_;
+	if(local_choice_prev != local_choice_) {
+		changed_event_.notify_observers();
+	}
+}
+
+void user_choice_manager::ask_local_choice()
+{
+	assert(local_choice_ != 0);
+
+	leave_synced_context sync;
+	/* At least one of the decisions is ours, and it will be inserted
+	into the replay. */
+	DBG_REPLAY << "MP synchronization: local choice\n";
+	config cfg = uch_.query_user(local_choice_);
+	if(res_.find(local_choice_) != res_.end()) {
+		// It might be possible that we this choice was already made by another client while we were in uch_.query_user
+		// becase our side might be ressigned while we made our choice.
+		WRN_REPLAY << "Discarding a local choice becasue we found it already on the replay";
+		return;
+	}
+	resources::recorder->user_input(tagname_, cfg, local_choice_);
+	res_[local_choice_] = cfg;
+
+	//send data to others.
+	//but if there wasn't any data sended during this turn, we don't want to bein wth that now.
+	//TODO: we should send user choices during nonundoable actions immideatley.
+	if(synced_context::is_simultaneously() || current_side_ != local_choice_)
+	{
+		synced_context::send_user_choice();
+	}
+	update_local_choice();
+}
+
+void user_choice_manager::fix_oos()
+{
+	assert(oos_);
+	ERR_REPLAY << "A sync error appeared while waiting for a synced user choice of type '" << uch_.description() << "' ([" + tagname_ + "]), doing the choice locally\n";
+	BOOST_FOREACH(int side, required_)
+	{
+		if(res_.find(side) == res_.end())
+		{
+			ERR_REPLAY << "Doing a local choice for side " << side << "\n";
+			res_[side] = uch_.query_user(side);
+		}
+	}
+	oos_ = false;
+}
+
+static void wait_ingame(user_choice_manager& man)
+{
+	notifer_ptr notifer;
+	notifer.activate();
+	while(!man.finished() && man.waiting())
+	{
+		if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
+		{
+			//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
+			//because that might result in crashs if someone clicks anywhere during screenlock.
+
+			// calls man.pull via events.cpp -> pump_monitor::process
+			resources::controller->play_slice();
+		}
+
+		notifer.update(man.wait_message());
+	}
+}
+
+std::map<int, config> user_choice_manager::get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
+{
+	user_choice_manager man(name, uch, sides);
+	while(!man.finished())
+	{
+		if(man.waiting())
+		{
+			wait_ingame(man);
+		}
+		else if(man.has_local_choice())
+		{
+			man.ask_local_choice();
+		}
+		else
+		{
+			man.fix_oos();
+		}
+	}
+	return man.res_;
+}
+
+void user_choice_manager::process(events::pump_info&)
+{
+	if(waiting())
+	{
+		pull();
+	}
+}
+
+

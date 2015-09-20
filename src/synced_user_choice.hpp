@@ -15,6 +15,8 @@
 
 #include "global.hpp"
 #include "config.hpp"
+#include "events.hpp"
+#include "generic_event.hpp"
 
 #include <map>
 #include <set>
@@ -69,3 +71,41 @@ std::map<int, config> get_user_choice_multiple_sides(const std::string &name, co
 	std::set<int> sides);
 
 }
+
+class user_choice_manager : events::pump_monitor
+{
+	// The sides which should execute this local choice
+	std::set<int> required_;
+	// The results
+	std::map<int, config> res_;
+	// The side for which we shoudl do a choice locally (0 if no suhc side exists)
+	// Note that even if there is currently no localy choice to do it is still possible that we need to do a local choice later becasue we took control over a side
+	int local_choice_;
+	// the message displayed for sides which currently don't have to do a choice.
+	std::string wait_message_;
+	// If we failed to read the remote choices this flag is when which indicated that we shoudl do all choices locally
+	bool oos_;
+
+	const mp_sync::user_choice& uch_;
+	const std::string& tagname_;
+	const int current_side_;
+	// private constructor
+	user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides);
+	~user_choice_manager() {}
+public:
+	void pull();
+	bool finished()
+	{ return required_.size() == res_.size(); }
+	bool has_local_choice()
+	{ return local_choice_ != 0; }
+	bool waiting()
+	{ return local_choice_ == 0 && !oos_; }
+	void update_local_choice();
+	void ask_local_choice();
+	void fix_oos();
+	const std::string& wait_message() { return wait_message_; }
+	static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
+	void process(events::pump_info&);
+	events::generic_event changed_event_;
+};
+
