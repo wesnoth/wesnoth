@@ -635,7 +635,7 @@ int intf_set_dialog_visible(lua_State *L)
 
 	switch (lua_type(L, 1)) {
 		case LUA_TBOOLEAN:
-			flag = bool(lua_toboolean(L, 1))
+			flag = luaW_toboolean(L, 1)
 					? tvisible::visible
 					: tvisible::invisible;
 			break;
