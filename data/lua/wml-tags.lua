@@ -445,7 +445,19 @@ function wml_actions.foreach(cfg)
 	utils.end_var_scope(item_name)
 	utils.end_var_scope(i)
 	
-	-- restore the array
+	--[[
+		This forces the readonly key to be taken literally.
+		
+		If readonly=yes, then this line guarantees that the array
+		is unchanged after the [foreach] loop ends.
+		
+		If readonly=no, then this line updates the array with any
+		changes the user has applied through the $this_item
+		variable (or whatever variable was given in item_var).
+		
+		Note that altering the array via indexing (with the index_var)
+		is not supported; any such changes will be reverted by this line.
+	]]
 	helper.set_variable_array(array_name, array)
 end
 
