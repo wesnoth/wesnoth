@@ -363,7 +363,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 		step = cfg.step or ((last - first) / math.abs(last - first))
 	end
 	local i_var = cfg.variable or "i"
-	local save_i = start_var_scope(i_var)
+	local save_i = utils.start_var_scope(i_var)
 	wesnoth.set_variable(i_var, first)
 	while wesnoth.get_variable(i_var) <= last do
 		for do_child in helper.child_range( cfg, "do" ) do
@@ -381,7 +381,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
 	end
 	::exit::
-	end_var_scope(i_var, save_i)
+	utils.end_var_scope(i_var, save_i)
 end
 
 wml_actions["repeat"] = function(cfg)
@@ -407,9 +407,9 @@ function wml_actions.foreach(cfg)
 	local array = helper.get_variable_array(array_name)
 	if #array == 0 then return end -- empty and scalars unwanted
 	local item_name = cfg.item_var or "this_item"
-	local this_item = start_var_scope(item_name) -- if this_item is already set
+	local this_item = utils.start_var_scope(item_name) -- if this_item is already set
 	local i_name = cfg.index_var or "i"
-	local i = start_var_scope(i_name) -- if i is already set
+	local i = utils.start_var_scope(i_name) -- if i is already set
 	local array_length = wesnoth.get_variable(array_name .. ".length")
 	
 	for index, value in ipairs(array) do
@@ -442,8 +442,8 @@ function wml_actions.foreach(cfg)
 	::exit::
 	
 	-- house cleaning
-	wesnoth.set_variable(item_name)
-	wesnoth.set_variable(i)
+	utils.end_var_scope(item_name)
+	utils.end_var_scope(i)
 	
 	-- restore the array
 	helper.set_variable_array(array_name, array)
