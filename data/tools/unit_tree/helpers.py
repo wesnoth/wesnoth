@@ -161,7 +161,7 @@ class WesnothList:
         self.era_lookup = {}
         self.campaign_lookup = {}
         self.parser = wmlparser3.Parser(wesnoth_exe, config_dir,
-            data_dir, no_preprocess = False)
+            data_dir)
 
 
     def add_terrains(self):
@@ -184,7 +184,7 @@ class WesnothList:
         self.languages_found = {}
 
         parser = wmlparser3.Parser(options.wesnoth, options.config_dir,
-            options.data_dir, no_preprocess = False)
+            options.data_dir)
         parser.parse_text("{languages}")
 
         for locale in parser.get_all(tag="locale"):

@@ -78,7 +78,7 @@ def get_info(addon):
         path = options.addons + "/" + addon + "/_info.cfg"
         if os.path.exists(path):
             parser = wmlparser3.Parser(options.wesnoth, options.config_dir,
-                options.data_dir, no_preprocess = False)
+                options.data_dir)
             parser.parse_file(path)
             _info[addon] = parser
         else:
@@ -627,7 +627,7 @@ if __name__ == '__main__':
     if options.language == "all":
         languages = []
         parser = wmlparser3.Parser(options.wesnoth, options.config_dir,
-            options.data_dir, no_preprocess = False)
+            options.data_dir)
         parser.parse_text("{languages}")
 
         for locale in parser.get_all(tag="locale"):
