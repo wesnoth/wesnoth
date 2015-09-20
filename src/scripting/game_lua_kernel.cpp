@@ -2904,7 +2904,7 @@ int game_lua_kernel::intf_skip_messages(lua_State *L)
 {
 	bool skip = true;
 	if (!lua_isnone(L, 1)) {
-		skip = lua_toboolean(L, 1);
+		skip = luaW_toboolean(L, 1);
 	}
 	resources::game_events->pump().context_skip_messages(skip);
 	return 0;
@@ -3391,7 +3391,7 @@ static int intf_add_modification(lua_State *L)
 	}
 	bool write_to_mods = true;
 	if (!lua_isnone(L, 4)) {
-		write_to_mods = lua_toboolean(L, 4);
+		write_to_mods = luaW_toboolean(L, 4);
 	}
 
 	config cfg = luaW_checkconfig(L, 3);
