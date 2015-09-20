@@ -277,7 +277,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 		options, &chosen_option
 	);
 	
-	if (!has_input and options.empty()) {
+	if (!has_input && options.empty()) {
 		lua_pushinteger(L, dlg_result);
 	} else {
 		lua_pushinteger(L, chosen_option + 1);
