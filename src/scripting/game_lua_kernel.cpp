@@ -2909,44 +2909,48 @@ int game_lua_kernel::intf_skip_messages(lua_State *L)
 	return 0;
 }
 
-namespace {
+namespace
+{
 	struct lua_synchronize : mp_sync::user_choice
 	{
-		typedef boost::function<void(std::string const &, std::string const &)> error_reporter;
 		lua_State *L;
-		const std::vector<team> & teams_;
-		error_reporter error_reporter_;
-		lua_synchronize(lua_State *l, const std::vector<team> & t, error_reporter & eh)
+		int user_choice_index;
+		int random_choice_index;
+		int ai_choice_index;
+
+		lua_synchronize(lua_State *l, int user_index, int random_index = 0, int ai_index = 0)
 			: L(l)
-			, teams_(t)
-			, error_reporter_(eh)
+			, user_choice_index(user_index)
+			, random_choice_index(random_index)
+			, ai_choice_index(ai_index != 0 ? ai_index : user_index)
 		{}
 
 		virtual config query_user(int side) const
 		{
+			bool is_local_ai = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).teams()[side - 1].is_local_ai();
 			config cfg;
-			int index = 1;
-			if (!lua_isnoneornil(L, 2)) {
-				if (teams_[side - 1].is_local_ai())
-					index = 2;
-			}
-			lua_pushvalue(L, index);
-			lua_pushnumber(L, side);
-			if (luaW_pcall(L, 1, 1, false)) {
-				if(!luaW_toconfig(L, -1, cfg)) {
-					std::string message = "function returned to wesnoth.synchronize_choice a table which was partially invalid";
-					if (game_config::debug) {
-						error_reporter_("Lua warning", message.c_str());
-					}
-					WRN_LUA << message << std::endl;
-				}
-			}
+			query_lua(side, is_local_ai ? ai_choice_index : user_choice_index, cfg);
 			return cfg;
 		}
 
-		virtual config random_choice(int /*side*/) const
+		virtual config random_choice(int side) const
 		{
-			return config();
+			config cfg;
+			if(random_choice_index != 0 && lua_isfunction(L, random_choice_index)) {
+				query_lua(side, random_choice_index, cfg);
+			}
+			return cfg;
+		}
+		void query_lua(int side, int function_index, config& cfg) const
+		{
+			assert(cfg.empty());
+			lua_pushvalue(L, function_index);
+			lua_pushnumber(L, side);
+			if (luaW_pcall(L, 1, 1, false)) {
+				if(!luaW_toconfig(L, -1, cfg)) {
+					lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).log_error("function returned to wesnoth.synchronize_choice a table which was partially invalid");
+				}
+			}
 		}
 		//Although luas sync_choice can show a dialog, (and will in most cases)
 		//we return false to enable other possible things that do not contain UI things.
@@ -2957,44 +2961,72 @@ namespace {
 
 /**
  * Ensures a value is synchronized among all the clients.
- * - Arg 1: function to compute the value, called if the client is the master.
- * - Arg 2: optional function, called instead of the first function if the user is not human.
- * - Arg 3: optional array of integers specifying, on which side the function should be evaluated.
+ * - Arg 1: optional string specifying the type id of the choice.
+ * - Arg 2: function to compute the value, called if the client is the master.
+ * - Arg 3: optional function, called instead of the first function if the user is not human.
+ * - Arg 4: optional integer  specifying, on which side the function should be evaluated.
  * - Ret 1: WML table returned by the function.
  */
-int game_lua_kernel::intf_synchronize_choice(lua_State *L)
+static int intf_synchronize_choice(lua_State *L)
 {
-	if(lua_istable(L, 3))
-	{
-		std::set<int> vals;
-		//read the third parameter
-		lua_pushnil(L);
-		while (lua_next(L, 3) != 0) {
-			/* uses 'key' (at index -2) and 'value' (at index -1) */
-			int val = luaL_checkint(L, -1);
-			vals.insert(val);
-			/* removes 'value'; keeps 'key' for next iteration */
-			lua_pop(L, 1);
-		}
-		typedef std::map<int,config> retv_t;
-		lua_synchronize::error_reporter er = boost::bind(&game_lua_kernel::lua_chat, this, _1, _2);
-		retv_t r = mp_sync::get_user_choice_multiple_sides("input", lua_synchronize(L, teams(), er), vals);
-		lua_newtable(L);
-		BOOST_FOREACH(retv_t::value_type& pair, r)
-		{
-			lua_pushinteger(L, pair.first);
-			luaW_pushconfig(L, pair.second);
-			lua_settable(L, -3);
-		}
+	std::string tagname = "input";
+	int human_func = 0;
+	int ai_func = 0;
+	int side_for;
+
+	int nextarg = 1;
+	if(!lua_isfunction(L, nextarg) && lua_isstring(L, nextarg) ) {
+		tagname = lua_check<std::string>(L, nextarg++);
 	}
-	else
-	{
-		lua_synchronize::error_reporter er = boost::bind(&game_lua_kernel::lua_chat, this, _1, _2);
-		config cfg = mp_sync::get_user_choice("input", lua_synchronize(L, teams(),  er));
-		luaW_pushconfig(L, cfg);
+	if(lua_isfunction(L, nextarg)) {
+		human_func = nextarg++;
 	}
+	else {
+		return luaL_argerror(L, nextarg, "expected a function");
+	}
+	if(lua_isfunction(L, nextarg)) {
+		ai_func = nextarg++;
+	}
+	side_for = lua_tointeger(L, nextarg);
+
+	config cfg = mp_sync::get_user_choice(tagname, lua_synchronize(L, human_func, 0, ai_func), side_for);
+	luaW_pushconfig(L, cfg);
 	return 1;
 }
+/**
+ * Ensures a value is synchronized among all the clients.
+ * - Arg 1: optional string the id of this type of user input, may only contain chracters a-z and '_'
+ * - Arg 2: function to compute the value, called if the client is the master.
+ * - Arg 3: an optional function to compute the value, if the side was null/empty controlled.
+ * - Arg 4: an array of integers specifying, on which side the function should be evaluated.
+ * - Ret 1: a map int -> WML tabls.
+ */
+static int intf_synchronize_choices(lua_State *L)
+{
+	std::string tagname = "input";
+	int human_func = 0;
+	int null_func = 0;
+	std::vector<int> sides_for;
+
+	int nextarg = 1;
+	if(!lua_isfunction(L, nextarg) && lua_isstring(L, nextarg) ) {
+		tagname = lua_check<std::string>(L, nextarg++);
+	}
+	if(lua_isfunction(L, nextarg)) {
+		human_func = nextarg++;
+	}
+	else {
+		return luaL_argerror(L, nextarg, "expected a function");
+	}
+	if(lua_isfunction(L, nextarg)) {
+		null_func = nextarg++;
+	};
+	sides_for = lua_check<std::vector<int> >(L, nextarg++);
+
+	lua_push(L, mp_sync::get_user_choice_multiple_sides(tagname, lua_synchronize(L, human_func, null_func), std::set<int>(sides_for.begin(), sides_for.end())));
+	return 1;
+}
+
 
 /**
  * Calls a function in an unsynced context (this specially means that all random calls used by that function will be unsynced).
@@ -4229,7 +4261,8 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
 		{ "set_village_owner",         &dispatch<&game_lua_kernel::intf_set_village_owner          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
-		{ "synchronize_choice",        &dispatch<&game_lua_kernel::intf_synchronize_choice         >        },
+		{ "synchronize_choice",        &intf_synchronize_choice                                             },
+		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "view_locked",               &dispatch<&game_lua_kernel::intf_view_locked                >        },
 		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
