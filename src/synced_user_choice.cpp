@@ -247,17 +247,14 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 			synced_context::set_is_simultaneously();
 		}
 	}
+	search_in_replay();
+
 }
 
-void user_choice_manager::pull()
+void user_choice_manager::search_in_replay()
 {
-	assert(waiting());
-	// there might be speak or similar commands in the replay before the user input.
 	do_replay_handle();
-	synced_context::pull_remote_user_input();
-	do_replay_handle();
-	update_local_choice();
-	if(!resources::recorder->at_end())
+	while(!resources::recorder->at_end())
 	{
 		DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_choice() << "\n";
 
@@ -289,7 +286,17 @@ void user_choice_manager::pull()
 		}
 		res_[from_side] = action->child(tagname_);
 		changed_event_.notify_observers();
+		do_replay_handle();
 	}
+}
+void user_choice_manager::pull()
+{
+	// there might be speak or similar commands in the replay before the user input.
+	do_replay_handle();
+	synced_context::pull_remote_user_input();
+	do_replay_handle();
+	update_local_choice();
+	search_in_replay();
 }
 
 void user_choice_manager::update_local_choice()

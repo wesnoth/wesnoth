@@ -92,6 +92,7 @@ class user_choice_manager : events::pump_monitor
 	// private constructor
 	user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides);
 	~user_choice_manager() {}
+	void search_in_replay();
 public:
 	void pull();
 	bool finished()
