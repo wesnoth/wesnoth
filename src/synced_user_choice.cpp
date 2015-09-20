@@ -235,6 +235,18 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 	, changed_event_("user_choice_update")
 {
 	update_local_choice();
+	const int max_side  = static_cast<int>(resources::teams->size());
+
+	BOOST_FOREACH(int side, required_)
+	{
+		assert(1 <= side && side <= max_side);
+		const team& t = (*resources::teams)[side-1];
+		assert(!t.is_empty());
+		if(!t.is_local())
+		{
+			synced_context::set_is_simultaneously();
+		}
+	}
 }
 
 void user_choice_manager::pull()
