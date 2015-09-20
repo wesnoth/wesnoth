@@ -19,7 +19,7 @@ function wml_actions.object(cfg)
 	if filter then
 		unit = wesnoth.get_units(filter)[1]
 	else
-		unit = wesnoth.get_unit(contxt.x, context.y)
+		unit = wesnoth.get_unit(context.x, context.y)
 	end
 
 	-- If a unit matches the filter, proceed
