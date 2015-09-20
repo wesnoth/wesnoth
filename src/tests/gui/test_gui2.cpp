@@ -475,6 +475,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "addon_filter_options"), list.end());	
 	list.erase(std::remove(list.begin(), list.end(), "addon_uninstall_list"), list.end());	
 	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());	
+	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());	
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
