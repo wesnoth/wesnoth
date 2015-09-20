@@ -53,6 +53,11 @@ struct persist_choice: mp_sync::user_choice {
 	virtual config random_choice(int /*side_for*/) const {
 		return config();
 	}
+	
+	virtual std::string description() const
+	{ 
+		return "a global variable"; 
+	}
 	virtual bool is_visible() const { return false; }
 };
 

@@ -1446,6 +1446,10 @@ namespace
 			retv["value"] = 0;
 			return retv;
 		}
+		virtual std::string description() const
+		{ 
+			return "an advancement choice"; 
+		}
 	private:
 		const map_location loc_;
 		int nb_options_;

@@ -26,6 +26,7 @@
 #include "config_assign.hpp"
 #include "dialogs.hpp"
 #include "display_chat_manager.hpp"
+#include "floating_label.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "game_data.hpp"
@@ -896,6 +897,120 @@ void replay_network_sender::commit_and_sync()
 	}
 }
 
+namespace
+{
+	class user_choice_notifer_base
+	{
+	public:
+		virtual void update_message(const std::string&) {}
+		virtual void update() {}
+		virtual ~user_choice_notifer_base() {}
+	};
+
+	class user_choice_notifer_ingame : public user_choice_notifer_base
+	{
+		//the handle for the label on the screen -i if not shown yet.
+		int label_id_;
+		unsigned int start_show_;
+		std::string message_;
+		
+	public:
+		user_choice_notifer_ingame()
+			: label_id_(-1)
+			, message_()
+			, start_show_(SDL_GetTicks() + 2000)
+		{
+
+		}
+
+		~user_choice_notifer_ingame()
+		{
+			if(label_id_ != -1) {
+				end_show_label();
+			}
+		}
+
+		virtual void update()
+		{
+			if(label_id_ == -1 && SDL_GetTicks() > start_show_)
+			{
+				start_show_label();
+			}
+		}
+
+		virtual void update_message(const std::string& message)
+		{
+			if(message == message_) {
+				return;
+			}
+			message_ = message;
+			if(label_id_ != -1) {
+				end_show_label();
+				start_show_label();
+			}
+		}
+
+		void start_show_label()
+		{
+			assert(label_id_ == -1);
+			SDL_Rect area = resources::screen->map_outside_area();
+			font::floating_label flabel(message_);
+			flabel.set_font_size(font::SIZE_XLARGE);
+			flabel.set_color(font::NORMAL_COLOR);
+			flabel.set_position(area.w/2, area.h/4);
+			flabel.set_lifetime(-1);
+			flabel.set_clip_rect(area);
+			label_id_ = font::add_floating_label(flabel);
+		}
+
+		void end_show_label()
+		{
+			assert(label_id_ != -1);
+			font::remove_floating_label(label_id_);
+			label_id_ = -1;
+		}
+	};
+
+	user_choice_notifer_base * create_user_choice_notifer()
+	{
+		const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
+		if(is_too_early) {
+			return new user_choice_notifer_base();
+		}
+		else {
+			return new user_choice_notifer_ingame();
+		}
+	}
+	struct notifer_ptr
+	{
+		boost::scoped_ptr<user_choice_notifer_base> m_;
+		notifer_ptr()
+			: m_()
+		{
+		}
+		void activate()
+		{
+			if(!m_) {
+				m_.reset(create_user_choice_notifer());
+			}
+		}
+		void deactivate()
+		{
+			if(m_) {
+				m_.reset();
+			}
+		}
+		void update(const std::string& message)
+		{
+			if(m_) {
+				m_->update_message(message);
+				m_->update();
+			}
+		}
+
+	};
+}
+
 
 static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
 {
@@ -919,6 +1034,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 		synced_context::set_is_simultaneously();
 	}
 	std::map<int,config> retv;
+	notifer_ptr notifer;
 	/*
 		when we got all our answers we stop.
 	*/
@@ -935,11 +1051,14 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 		//equals to any side in sides that is local, 0 if no such side exists.
 		int local_side = 0;
 		//if for any side from which we need an answer
+		std::string message;
 		BOOST_FOREACH(int side, sides)
 		{
 			//and we havent already received our answer from that side
 			if(retv.find(side) == retv.end())
 			{
+				message += " ";
+				message += lexical_cast<std::string>(side);
 				//and it is local
 				if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
 				{
@@ -949,12 +1068,13 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 				}
 			}
 		}
-
+		message = "waiting for " + uch.description() + " from side(s)" + message;
 		bool has_local_side = local_side != 0;
 		bool is_replay_end = resources::recorder->at_end();
 
 		if (is_replay_end && has_local_side)
 		{
+			notifer.deactivate();
 			leave_synced_context sync;
 			/* At least one of the decisions is ours, and it will be inserted
 			   into the replay. */
@@ -981,7 +1101,8 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 
 			assert(is_mp_game);
 			synced_context::pull_remote_user_input();
-
+			notifer.activate();
+			notifer.update(message);
 			SDL_Delay(10);
 			continue;
 		}
