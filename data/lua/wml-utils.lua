@@ -98,6 +98,7 @@ function utils.handle_event_commands(cfg, scope_type)
 	-- [insert_tag] with [set_variables] and [clear_variable], so we
 	-- have to be careful not to get confused by tags vanishing during
 	-- the execution, hence the manual handling of [insert_tag].
+	scope_type = scope_type or "plain"
 	scope_stack:push(scope_type)
 	local cmds = helper.shallow_literal(cfg)
 	for i = 1,#cmds do
