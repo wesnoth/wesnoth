@@ -2918,12 +2918,13 @@ namespace
 		int user_choice_index;
 		int random_choice_index;
 		int ai_choice_index;
-
-		lua_synchronize(lua_State *l, int user_index, int random_index = 0, int ai_index = 0)
+		std::string  desc;
+		lua_synchronize(lua_State *l, const std::string& descr, int user_index, int random_index = 0, int ai_index = 0)
 			: L(l)
 			, user_choice_index(user_index)
 			, random_choice_index(random_index)
 			, ai_choice_index(ai_index != 0 ? ai_index : user_index)
+			, desc(descr)
 		{}
 
 		virtual config query_user(int side) const
@@ -2942,6 +2943,12 @@ namespace
 			}
 			return cfg;
 		}
+
+		virtual std::string description() const OVERRIDE
+		{ 
+			return desc;
+		}
+
 		void query_lua(int side, int function_index, config& cfg) const
 		{
 			assert(cfg.empty());
@@ -2971,13 +2978,14 @@ namespace
 static int intf_synchronize_choice(lua_State *L)
 {
 	std::string tagname = "input";
+	t_string desc = _("input");
 	int human_func = 0;
 	int ai_func = 0;
 	int side_for;
 
 	int nextarg = 1;
-	if(!lua_isfunction(L, nextarg) && lua_isstring(L, nextarg) ) {
-		tagname = lua_check<std::string>(L, nextarg++);
+	if(!lua_isfunction(L, nextarg) && luaW_totstring(L, nextarg, desc) ) {
+		++nextarg;
 	}
 	if(lua_isfunction(L, nextarg)) {
 		human_func = nextarg++;
@@ -2990,7 +2998,7 @@ static int intf_synchronize_choice(lua_State *L)
 	}
 	side_for = lua_tointeger(L, nextarg);
 
-	config cfg = mp_sync::get_user_choice(tagname, lua_synchronize(L, human_func, 0, ai_func), side_for);
+	config cfg = mp_sync::get_user_choice(tagname, lua_synchronize(L, desc, human_func, 0, ai_func), side_for);
 	luaW_pushconfig(L, cfg);
 	return 1;
 }
@@ -3005,13 +3013,14 @@ static int intf_synchronize_choice(lua_State *L)
 static int intf_synchronize_choices(lua_State *L)
 {
 	std::string tagname = "input";
+	t_string desc = _("input");
 	int human_func = 0;
 	int null_func = 0;
 	std::vector<int> sides_for;
 
 	int nextarg = 1;
-	if(!lua_isfunction(L, nextarg) && lua_isstring(L, nextarg) ) {
-		tagname = lua_check<std::string>(L, nextarg++);
+	if(!lua_isfunction(L, nextarg) && luaW_totstring(L, nextarg, desc) ) {
+		++nextarg;
 	}
 	if(lua_isfunction(L, nextarg)) {
 		human_func = nextarg++;
@@ -3024,7 +3033,7 @@ static int intf_synchronize_choices(lua_State *L)
 	};
 	sides_for = lua_check<std::vector<int> >(L, nextarg++);
 
-	lua_push(L, mp_sync::get_user_choice_multiple_sides(tagname, lua_synchronize(L, human_func, null_func), std::set<int>(sides_for.begin(), sides_for.end())));
+	lua_push(L, mp_sync::get_user_choice_multiple_sides(tagname, lua_synchronize(L, desc, human_func, null_func), std::set<int>(sides_for.begin(), sides_for.end())));
 	return 1;
 }
 
