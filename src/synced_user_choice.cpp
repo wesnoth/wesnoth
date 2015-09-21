@@ -30,6 +30,7 @@
 #include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
+#include "formula_string_utils.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
@@ -310,14 +311,14 @@ void user_choice_manager::update_local_choice()
 	//equals to any side in sides that is local, 0 if no such side exists.
 	local_choice_ = 0;
 	//if for any side from which we need an answer
-	wait_message_ = "";
+	std::string sides_str;
 	BOOST_FOREACH(int side, required_)
 	{
 		//and we havent already received our answer from that side
 		if(res_.find(side) == res_.end())
 		{
-			wait_message_ += " ";
-			wait_message_ += lexical_cast<std::string>(side);
+			sides_str += " ";
+			sides_str += lexical_cast<std::string>(side);
 			//and it is local
 			if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
 			{
@@ -327,7 +328,7 @@ void user_choice_manager::update_local_choice()
 			}
 		}
 	}
-	wait_message_ = "waiting for " + uch_.description() + " from side(s)" + wait_message_;
+	wait_message_ = vgettext("waiting for $desc from side(s)$sides", string_map_of("desc", uch_.description())("sides", sides_str));
 	if(local_choice_prev != local_choice_) {
 		changed_event_.notify_observers();
 	}
