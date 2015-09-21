@@ -1308,8 +1308,11 @@ function wml_actions.role(cfg)
 	local filter = helper.shallow_literal(cfg)
 
 	local types = {}
-	for value in utils.split(cfg.type) do
-		table.insert(types, utils.trim(value))
+
+	if cfg.type then
+		for value in utils.split(cfg.type) do
+			table.insert(types, utils.trim(value))
+		end
 	end
 
 	filter.role, filter.type = nil, nil
@@ -1343,7 +1346,8 @@ function wml_actions.role(cfg)
 		i = i + 1
 	until #types == 0 or i > #types
 
-	-- no matching unit found, fail silently
+	-- no matching unit found, issue a warning
+	wesnoth.message("WML", "No matching units found in [role]")
 end
 
 function wml_actions.unsynced(cfg)
