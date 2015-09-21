@@ -2,6 +2,7 @@
 local helper = wesnoth.require "lua/helper.lua"
 local utils = wesnoth.require "lua/wml-utils.lua"
 local location_set = wesnoth.require "lua/location_set.lua"
+local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)
 	wesnoth.wml_actions.wml_message({
@@ -196,11 +197,12 @@ function wesnoth.wml_actions.message(cfg)
 		-- Always show the dialog if it has no input, whether we are replaying or not
 		msg_dlg()
 	else
+		local wait_description = cfg.wait_description or _("input")
 		if type(sides_for) ~= "number" then
 			-- 0 means currently playing side.
 			sides_for = 0
 		end
-		local choice = wesnoth.synchronize_choice(msg_dlg, sides_for)
+		local choice = wesnoth.synchronize_choice(wait_description, msg_dlg, sides_for)
 
 		option_chosen = tonumber(choice.value)
 
