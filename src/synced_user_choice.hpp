@@ -89,7 +89,7 @@ class user_choice_manager : events::pump_monitor
 	const mp_sync::user_choice& uch_;
 	const std::string& tagname_;
 	const int current_side_;
-	// private constructor
+	// private constructor, this object is only constructed by user_choice_manager::get_user_choice_internal
 	user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides);
 	~user_choice_manager() {}
 	void search_in_replay();
@@ -99,13 +99,17 @@ public:
 	{ return required_.size() == res_.size(); }
 	bool has_local_choice()
 	{ return local_choice_ != 0; }
+	/// Note: currently finished() does not imply !waiting() so you may need to check both.
 	bool waiting()
 	{ return local_choice_ == 0 && !oos_; }
 	void update_local_choice();
 	void ask_local_choice();
 	void fix_oos();
 	const std::string& wait_message() { return wait_message_; }
+	/// @param name: the tagname for this user choice in the replay
+	/// @param sides: an array of team numbers (beginning with 1). the specified sides may not have an empty controller.
 	static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
+	/// Inherited from events::pump_monitor
 	void process(events::pump_info&);
 	events::generic_event changed_event_;
 };
