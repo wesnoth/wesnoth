@@ -196,7 +196,11 @@ function wesnoth.wml_actions.message(cfg)
 		-- Always show the dialog if it has no input, whether we are replaying or not
 		msg_dlg()
 	else
-		local choice = wesnoth.synchronize_choice(msg_dlg)
+		if type(sides_for) ~= "number" then
+			-- 0 means currently playing side.
+			sides_for = 0
+		end
+		local choice = wesnoth.synchronize_choice(msg_dlg, sides_for)
 
 		option_chosen = tonumber(choice.value)
 
