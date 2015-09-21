@@ -20,7 +20,8 @@ Version 1.13.1+dev:
    * New standing animation for the Dwarvish Runesmith
    * New generic portraits for the Troll and Troll Whelp
  * Language and i18n:
-   * Updated translations: British English, French, Galician, Japanese, Latvian
+   * Updated translations: British English, French, Galician, Hungarian,
+     Japanese, Latvian
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
  * Lua API:
@@ -29,6 +30,11 @@ Version 1.13.1+dev:
    * Added support for current.event_context.unit_x/y fields (bug #23507)
    * Added wesnoth.set_dialog_focus function
    * Added wesnoth.set_dialog_visible function
+   * Added wesnoth.show_message_dialog function
+   * Added wesnoth.show_popup_dialog function
+   * Added wesnoth.deselect_hex function
+   * Added wesnoth.is_skipping_messages and wesnoth.skip_messages functions
+   * New parameter write_to_mods in wesnoth.add_modification
    * Added wesnoth.random function
    * helper.shuffle is now synced
  * Music and sound effects:
@@ -41,6 +47,7 @@ Version 1.13.1+dev:
      as "Bridge", retaining their descriptive names in the editor as per
      convention.
  * User interface:
+   * Add "unit status=..." command to debug console to add/remove unit statuses
    * GUI2:
      * stacked_widget can optionally display a single layer at a time. This
        may be used to implement dialogs with multiple pages or tabs.
@@ -82,6 +89,21 @@ Version 1.13.1+dev:
      * apply_to=attack - add increase_movement_used and set_movement_used to change the
        number of movement points the attack consumes
    * Ability to patch movetypes to account for custom terrains or damage types
+   * Removed y offset by -1 from [message]'s scroll-to-unit logic.
+   * Add [found_item] ConditionalWML to check if an [object]id= ActionWML has been taken
+   * New auto-stored WML variable $other_unit usable in the following contexts:
+     * [filter_adjacent] - $other_unit refers to the $this_unit of the enclosing filter
+       (In weapon specials and unit abilities, the unit owning the ability.)
+     * [filter_self/opponent/attacker/defender] (weapon specials)
+       $other_unit refers to the other unit in the attack
+       (eg in [filter_self], it's the opponent)
+     * [affect_adjacent][filter] (unit abilities)
+       $other_unit refers to the unit owning the ability
+   * New rotate operators for directions: dir:cw and dir:ccw
+     (This is useful mostly in conjunction with variable substitution.)
+     These operators are applied after the existing '-' operator that takes the
+     opposite direction.
+   * Adjacency filters in abilities and weapon specials now support count= and is_enemy=
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
@@ -107,6 +129,9 @@ Version 1.13.1+dev:
    * Fixed wml menu items becoming unsynced in later scenarios.
    * The game now automatically detects whether to show the game connect screen
      between scenarios.
+   * Fixed possibility of corrupting saved games in certain instances,
+     eg if an add-on tries to set an invalid variable
+   * Fixed bug 23060: unit stat tooltips do not show.
 
 Version 1.13.1:
  * Security fixes:

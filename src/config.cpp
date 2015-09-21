@@ -480,6 +480,19 @@ config &config::operator=(config &&cfg)
 }
 #endif
 
+bool config::valid_id(const std::string id)
+{
+	if (id.empty()) {
+		return false;
+	}
+	BOOST_FOREACH(char c, id) {
+		if (!isalnum(c) && c != '_') {
+			return false;
+		}
+	}
+	return true;
+}
+
 bool config::has_attribute(const std::string &key) const
 {
 	check_valid();

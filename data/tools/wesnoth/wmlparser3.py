@@ -3,7 +3,44 @@
 
 """
 This parser uses the --preprocess option of wesnoth so a working
-wesnoth executable must be available at runtime.
+wesnoth executable must be available at runtime if the WML to parse
+contains preprocessing directives.
+
+Pure WML can be parsed as is.
+
+For example:
+
+    wml = ""
+    [unit]
+        id=elve
+        name=Elve
+        [abilities]
+            [damage]
+                id=Ensnare
+            [/dama  ge]
+        [/abilities]
+    [/unit]
+    ""
+
+    p = Parser()
+    cfg = p.parse_text(wml)
+
+    for unit in cfg.get_all(tag = "unit"):
+        print(unit.get_text_val("id"))
+        print(unit.get_text_val("name"))
+        for abilities in unit.get_all(tag = "abilitities"):
+            for ability in abilities.get_all(tag = ""):
+                print(ability.get_name())
+                print(ability.get_text_val("id"))
+
+Because no preprocessing is required, we did not have to pass the
+location of the wesnoth executable to Parser.
+
+The get_all method always returns a list over matching tags or
+attributes.
+
+The get_name method can be used to get the name and the get_text_val
+method can be used to query the value of an attribute.
 """
 
 import os, glob, sys, re, subprocess, argparse, tempfile, shutil
@@ -38,12 +75,17 @@ class WMLError(Exception):
 class StringNode:
     """
     One part of an attribute's value. Because a single WML string
-    can be made from multiple translatable strings we need to model
-    it this way (as a list of several StringNode).
+    can be made from multiple translatable strings we model
+    it as a list of several StringNode each with its own text domain.
     """
-    def __init__(self, data):
+    def __init__(self, data : bytes):
         self.textdomain = None # non-translatable by default
         self.data = data
+
+    def wml(self) -> bytes:
+        if not self.data:
+            return b""
+        return self.data
 
     def debug(self):
         if self.textdomain:
@@ -64,11 +106,24 @@ class AttributeNode:
         self.location = location
         self.value = [] # List of StringNode
 
+    def wml(self) -> bytes:
+        s = self.name + b"=\""
+        for v in self.value:
+            s += v.wml().replace(b"\"", b"\"\"")
+        s += b"\""
+        return s
+    
     def debug(self):
         return self.name.decode("utf8") + "=" + " .. ".join(
             [v.debug() for v in self.value])
 
-    def get_text(self, translation=None):
+    def get_text(self, translation = None) -> str:
+        """
+        Returns a text representation of the node's value. The
+        translation callback, if provided, will be called on each
+        partial string with the string and its corresponding textdomain
+        and the returned translation will be used.
+        """
         r = ""
         for s in self.value:
             ustr = s.data.decode("utf8", "ignore")
@@ -77,6 +132,18 @@ class AttributeNode:
             else:
                 r += ustr
         return r
+
+    def get_binary(self):
+        """
+        Returns the unmodified binary representation of the value.
+        """
+        r = b""
+        for s in self.value:
+            r += s.data
+        return r
+
+    def get_name(self):
+        return self.name.decode("utf8")
 
 class TagNode:
     """
@@ -93,6 +160,20 @@ class TagNode:
         self.data = []
 
         self.speedy_tags = {}
+
+    def wml(self) -> bytes:
+        """
+        Returns a (binary) WML representation of the entire node.
+        All attribute values are enclosed in quotes and quotes are
+        escaped (as double quotes). Note that no other escaping is
+        performed (see the BinaryWML specification for additional
+        escaping you may require).
+        """
+        s = b"[" + self.name + b"]\n"
+        for sub in self.data:
+            s += sub.wml() + b"\n"
+        s += b"[/" + self.name + b"]\n"
+        return s
 
     def debug(self):
         s = "[%s]\n" % self.name.decode("utf8")
@@ -164,17 +245,34 @@ class TagNode:
         it to gettext.translation if you have the binary message
         catalogues loaded.
         """
-        x = self.get_all(att=name)
+        x = self.get_all(att = name)
         if not x: return default
         return x[val].get_text(translation)
 
+    def get_binary(self, name, default = None):
+        """
+        Returns the unmodified binary data for the first attribute
+        of the given name or the passed default value if it is not
+        found.
+        """
+        x = self.get_all(att = name)
+        if not x: return default
+        return x[0].get_binary()
+
     def append(self, node):
+        """
+        Appends a child node (must be either a TagNode or
+        AttributeNode).
+        """
         self.data.append(node)
 
         if isinstance(node, TagNode):
             if node.name not in self.speedy_tags:
                 self.speedy_tags[node.name] = []
             self.speedy_tags[node.name].append(node)
+
+    def get_name(self):
+        return self.name.decode("utf8")
 
 class RootNode(TagNode):
     """
@@ -191,12 +289,18 @@ class RootNode(TagNode):
         return s
 
 class Parser:
-    def __init__(self, wesnoth_exe, config_dir, data_dir,
-        no_preprocess):
+    def __init__(self, wesnoth_exe = None, config_dir = None,
+            data_dir = None):
         """
-        path - Path to the file to parse.
         wesnoth_exe - Wesnoth executable to use. This should have been
             configured to use the desired data and config directories.
+        config_dir - The Wesnoth configuration directory, can be
+            None to use the wesnoth default.
+        data_dir - The Wesnoth data  directory, can be None to use
+            the wesnoth default.
+
+        After parsing is done the root node of the result will be
+        in the root attribute.
         """
         self.wesnoth_exe = wesnoth_exe
         self.config_dir = None
@@ -205,7 +309,7 @@ class Parser:
         if data_dir: self.data_dir = os.path.abspath(data_dir)
         self.keep_temp_dir = None
         self.temp_dir = None
-        self.no_preprocess = no_preprocess
+        self.no_preprocess = (wesnoth_exe == None)
         self.preprocessed = None
         self.verbose = False
 
@@ -214,29 +318,39 @@ class Parser:
         self.line_in_file = 42424242
         self.chunk_start = "?"
 
-    def parse_file(self, path, defines=""):
+    def parse_file(self, path, defines = "") -> RootNode:
+        """
+        Parse the given file found under path.
+        """
         self.path = path
         if not self.no_preprocess:
             self.preprocess(defines)
-        self.parse()
+        return self.parse()
 
-    def parse_text(self, text, defines=""):
-        temp = tempfile.NamedTemporaryFile(prefix="wmlparser_",
+    def parse_binary(self, binary : bytes, defines = "") -> RootNode:
+        """
+        Parse a chunk of binary WML.
+        """
+        temp = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
             suffix=".cfg")
-        temp.write(text.encode("utf8"))
+        temp.write(binary)
         temp.flush()
         self.path = temp.name
         if not self.no_preprocess:
             self.preprocess(defines)
-        self.parse()
+        return self.parse()
+
+    def parse_text(self, text, defines = "") -> RootNode:
+        """
+        Parse a text string.
+        """
+        return self.parse_binary(text.encode("utf8"), defines)
 
     def preprocess(self, defines):
         """
-        Call wesnoth --preprocess to get preprocessed WML which we
-        can subsequently parse.
-
-        If this is not called then the .parse method will assume the
-        WML is already preprocessed.
+        This is called by the parse functions to preprocess the
+        input from a normal WML .cfg file into a preprocessed
+        .plain file.
         """
         if self.keep_temp_dir:
             output = self.keep_temp_dir
@@ -436,7 +550,7 @@ class Parser:
         if segment.endswith(b"\n") and not self.skip_newlines_after_plus:
             self.temp_key_nodes = []
 
-    def parse(self):
+    def parse(self) -> RootNode:
         """
         Parse preprocessed WML into a tree of tags and attributes.
         """
@@ -477,6 +591,8 @@ class Parser:
                 print(("removing " + self.temp_dir))
             shutil.rmtree(self.temp_dir, ignore_errors=True)
 
+        return self.root
+
     def handle_command(self, com):
         if com.startswith(b"line "):
             self.last_wml_line = com[5:]
@@ -494,73 +610,40 @@ class Parser:
     def get_text_val(self, name, default=None, translation=None):
         return self.root.get_text_val(name, default, translation)
 
-
-import json
-def jsonify(tree, verbose=False, depth=0):
+def jsonify(tree, verbose=False, depth=1):
     """
-Convert a DataSub into JSON
+Convert a Parser tree into JSON
 
-If verbose, insert a linebreak after every brace and comma (put every item on its own line), otherwise, condense everything into a single line.
+If verbose, insert a linebreak after every brace and comma (put every
+item on its own line), otherwise, condense everything into a single line.
 """
-    print("{", end=' ')
-    first = True
-    sdepth1 = "\n" + " " * depth
-    sdepth2 = sdepth1 + " "
-    for pair in tree.speedy_tags.items():
-        if first:
-            first = False
-        else:
-            sys.stdout.write(",")
-        if verbose:
-            sys.stdout.write(sdepth2)
-        print('"%s":' % pair[0], end=' ')
-        if verbose:
-            sys.stdout.write(sdepth1)
-        print('[', end=' ')
-        first_tag = True
-        for tag in pair[1]:
-            if first_tag:
-                first_tag = False
-            else:
-                sys.stdout.write(",")
-            if verbose:
-                sys.stdout.write(sdepth2)
-            jsonify(tag, verbose, depth + 2)
-        if verbose:
-            sys.stdout.write(sdepth2)
-        sys.stdout.write("]")
-    for child in tree.data:
-        if isinstance(child, TagNode):
-            continue
-        if first:
-            first = False
-        else:
-            sys.stdout.write(",")
-        if verbose:
-            sys.stdout.write(sdepth2)
-        print('"%s":' % child.name, end=' ')
-        print(json.dumps(child.get_text()), end=' ')
-    if verbose:
-        sys.stdout.write(sdepth1)
-    sys.stdout.write("}")
+    import json
+    def node_to_dict(n):
+        d = {}
+        tags = set(x.get_name() for x in n.get_all(tag = ""))
+        for tag in tags:
+            d[tag] = [node_to_dict(x) for x in n.get_all(tag = tag)]
+        for att in n.get_all(att = ""):
+            d[att.get_name()] = att.get_text()
+        return d
 
-from xml.sax.saxutils import escape
+    print(json.dumps(node_to_dict(tree), indent = depth if verbose else None))
+
 def xmlify(tree, verbose=False, depth=0):
-    sdepth = ""
-    if verbose:
-        sdepth = "  " * depth
-    for child in tree.data:
-        if isinstance(child, TagNode):
-            print('%s<%s>' % (sdepth, child.name))
-            xmlify(child, verbose, depth + 1)
-            print('%s</%s>' % (sdepth, child.name))
-        else:
-            if "\n" in child.get_text() or "\r" in child.get_text():
-                print(sdepth + '<' + child.name + '>' + \
-            '<![CDATA[' + child.get_text() + ']]>' + '</' + child.name + '>')
-            else:
-                print(sdepth + '<' + child.name + '>' + \
-            escape(child.get_text()) + '</' + child.name + '>')
+    import xml.etree.ElementTree as ET
+
+    def node_to_et(n):
+        et = ET.Element(n.get_name())
+        for att in n.get_all(att = ""):
+            attel = ET.Element(att.get_name())
+            attel.text = att.get_text()
+            et.append(attel)
+        for tag in n.get_all(tag = ""):
+            et.append(node_to_et(tag))
+        return et
+    
+    ET.ElementTree(node_to_et(tree.get_all()[0])).write(
+        sys.stdout, encoding = "unicode")
 
 if __name__ == "__main__":
     arg = argparse.ArgumentParser()
@@ -573,7 +656,6 @@ if __name__ == "__main__":
     arg.add_argument("-d", "--defines", help="comma separated list of WML defines")
     arg.add_argument("-T", "--test", action="store_true")
     arg.add_argument("-j", "--to-json", action="store_true")
-    arg.add_argument("-n", "--no-preprocess", action="store_true")
     arg.add_argument("-v", "--verbose", action="store_true")
     arg.add_argument("-x", "--to-xml", action="store_true")
     args = arg.parse_args()
@@ -582,15 +664,18 @@ if __name__ == "__main__":
         sys.stderr.write("No input given. Use -h for help.\n")
         sys.exit(1)
 
-    if not args.no_preprocess and (not args.wesnoth or not
-        os.path.exists(args.wesnoth)):
+    if (args.wesnoth and not os.path.exists(args.wesnoth)):
         sys.stderr.write("Wesnoth executable not found.\n")
         sys.exit(1)
+
+    if not args.wesnoth:
+        print("Warning: Without the -w option WML is not preprocessed!",
+            file = sys.stderr)
 
     if args.test:
         print("Running tests")
         p = Parser(args.wesnoth, args.config_dir,
-            args.data_dir, args.no_preprocess)
+            args.data_dir)
         if args.keep_temp:
             p.keep_temp_dir = args.keep_temp
         if args.verbose: p.verbose = True
@@ -784,8 +869,7 @@ foo='bar' .. 'baz'
 
         sys.exit(0)
 
-    p = Parser(args.wesnoth, args.config_dir, args.data_dir,
-        args.no_preprocess)
+    p = Parser(args.wesnoth, args.config_dir, args.data_dir)
     if args.keep_temp:
         p.keep_temp_dir = args.keep_temp
     if args.verbose: p.verbose = True

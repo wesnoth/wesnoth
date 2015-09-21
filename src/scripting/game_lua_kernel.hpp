@@ -55,7 +55,6 @@ class game_lua_kernel : public lua_kernel_base
 	game_board & board();
 	unit_map & units();
 	const gamemap & map();
-	std::vector<team> & teams();
 	game_data & gamedata();
 	tod_manager & tod_man();
 
@@ -129,7 +128,9 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
 	int intf_select_hex(lua_State *L);
-	int intf_synchronize_choice(lua_State *L);
+	int intf_deselect_hex(lua_State *L);
+	int intf_is_skipping_messages(lua_State *L);
+	int intf_skip_messages(lua_State *L);
 	int intf_get_locations(lua_State *L);
 	int intf_get_villages(lua_State *L);
 	int intf_match_location(lua_State *L);
@@ -162,6 +163,7 @@ class game_lua_kernel : public lua_kernel_base
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
+	std::vector<team> & teams();
 	game_lua_kernel(CVideo *, game_state &, play_controller &, reports &);
 
 	void set_game_display(game_display * gd);

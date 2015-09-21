@@ -160,7 +160,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 
 void game_state::init(const int ticks, play_controller & pc, const config& level)
 {
-	int ticks1 = SDL_GetTicks();
+	const int ticks1 = SDL_GetTicks();
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);
@@ -212,7 +212,7 @@ void game_state::init(const int ticks, play_controller & pc, const config& level
 		}
 	}
 	
-	std::cerr << "Initilizing teams took " << SDL_GetTicks() - ticks1 << " ticks.\n";
+	LOG_NG << "Initializing teams took " << SDL_GetTicks() - ticks1 << " ticks.\n";
 
 	pathfind_manager_.reset(new pathfind::manager(level));
 
@@ -222,7 +222,7 @@ void game_state::init(const int ticks, play_controller & pc, const config& level
 
 	events_manager_.reset(new game_events::manager(level, game_events_resources_));
 	
-	std::cerr << "Initilizing total took " << SDL_GetTicks() - ticks1 << " ticks.\n";
+	LOG_NG << "Initializing total took " << SDL_GetTicks() - ticks1 << " ticks.\n";
 
 
 }

@@ -83,6 +83,7 @@
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "synced_context.hpp"           // for synced_context, etc
+#include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
 #include "terrain.hpp"                  // for terrain_type
 #include "terrain_filter.hpp"           // for terrain_filter
@@ -123,6 +124,10 @@
 #include "SDL_video.h"                  // for SDL_Color, SDL_Surface
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
+
+#include "resources.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
 
 class CVideo;
 
@@ -439,8 +444,8 @@ static int impl_unit_variables_get(lua_State *L)
 /**
  * Gets the attacks of a unit (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id.
- * - Arg 2: index (int) or id (string) identyfying teh units attack.
- * - Ret 1: the units attack.
+ * - Arg 2: index (int) or id (string) identifying a particular attack.
+ * - Ret 1: the unit's attacks.
  */
 static int impl_unit_attacks_get(lua_State *L)
 {
@@ -802,14 +807,27 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 
 	filter_context & fc = game_state_;
 	if (int side = lu->on_recall_list()) {
+		if (!lua_isnoneornil(L, 3)) {
+			WRN_LUA << "wesnoth.match_unit called with 3rd argument, but unit to match was on recall list. ";
+			WRN_LUA << "Thus the 3rd argument is ignored.\n";
+		}
 		team &t = (teams())[side - 1];
 		scoped_recall_unit auto_store("this_unit",
 			t.save_id(), t.recall_list().find_index(u->id()));
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
 		return 1;
 	}
-
-	lua_pushboolean(L, unit_filter(filter, &fc).matches(*u));
+	
+	if (!lua_isnoneornil(L, 3)) {
+		lua_unit *lu_adj = static_cast<lua_unit *>(lua_touserdata(L, 1));
+		unit_ptr u_adj = lu_adj->get();
+		if (!u_adj) {
+			return luaL_argerror(L, 3, "unit not found");
+		}
+		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, *u_adj));
+	} else {
+		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u));
+	}
 	return 1;
 }
 
@@ -2850,44 +2868,97 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
 	return 0;
 }
 
-namespace {
+/**
+ * Deselects any highlighted hex on the map.
+ * No arguments or return values
+ */
+int game_lua_kernel::intf_deselect_hex(lua_State*)
+{
+	const map_location loc;
+	play_controller_.get_mouse_handler_base().select_hex(
+		loc, false, false, false);
+	if (game_display_) {
+		game_display_->highlight_hex(loc);
+	}
+	return 0;
+}
+
+/**
+ * Return true if a replay is in progress but the player has chosen to skip it
+ */
+int game_lua_kernel::intf_is_skipping_messages(lua_State *L)
+{
+	bool skipping = play_controller_.is_skipping_replay();
+	if (!skipping && resources::game_events) {
+		skipping = resources::game_events->pump().context_skip_messages();
+	}
+	lua_pushboolean(L, skipping);
+	return 1;
+}
+
+/**
+ * Set whether to skip messages
+ * Arg 1 (optional) - boolean
+ */
+int game_lua_kernel::intf_skip_messages(lua_State *L)
+{
+	bool skip = true;
+	if (!lua_isnone(L, 1)) {
+		skip = luaW_toboolean(L, 1);
+	}
+	resources::game_events->pump().context_skip_messages(skip);
+	return 0;
+}
+
+namespace
+{
 	struct lua_synchronize : mp_sync::user_choice
 	{
-		typedef boost::function<void(std::string const &, std::string const &)> error_reporter;
 		lua_State *L;
-		const std::vector<team> & teams_;
-		error_reporter error_reporter_;
-		lua_synchronize(lua_State *l, const std::vector<team> & t, error_reporter & eh)
+		int user_choice_index;
+		int random_choice_index;
+		int ai_choice_index;
+		std::string  desc;
+		lua_synchronize(lua_State *l, const std::string& descr, int user_index, int random_index = 0, int ai_index = 0)
 			: L(l)
-			, teams_(t)
-			, error_reporter_(eh)
+			, user_choice_index(user_index)
+			, random_choice_index(random_index)
+			, ai_choice_index(ai_index != 0 ? ai_index : user_index)
+			, desc(descr)
 		{}
 
 		virtual config query_user(int side) const
 		{
+			bool is_local_ai = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).teams()[side - 1].is_local_ai();
 			config cfg;
-			int index = 1;
-			if (!lua_isnoneornil(L, 2)) {
-				if (teams_[side - 1].is_local_ai())
-					index = 2;
-			}
-			lua_pushvalue(L, index);
-			lua_pushnumber(L, side);
-			if (luaW_pcall(L, 1, 1, false)) {
-				if(!luaW_toconfig(L, -1, cfg)) {
-					std::string message = "function returned to wesnoth.synchronize_choice a table which was partially invalid";
-					if (game_config::debug) {
-						error_reporter_("Lua warning", message.c_str());
-					}
-					WRN_LUA << message << std::endl;
-				}
+			query_lua(side, is_local_ai ? ai_choice_index : user_choice_index, cfg);
+			return cfg;
+		}
+
+		virtual config random_choice(int side) const
+		{
+			config cfg;
+			if(random_choice_index != 0 && lua_isfunction(L, random_choice_index)) {
+				query_lua(side, random_choice_index, cfg);
 			}
 			return cfg;
 		}
 
-		virtual config random_choice(int /*side*/) const
+		virtual std::string description() const OVERRIDE
+		{ 
+			return desc;
+		}
+
+		void query_lua(int side, int function_index, config& cfg) const
 		{
-			return config();
+			assert(cfg.empty());
+			lua_pushvalue(L, function_index);
+			lua_pushnumber(L, side);
+			if (luaW_pcall(L, 1, 1, false)) {
+				if(!luaW_toconfig(L, -1, cfg)) {
+					lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).log_error("function returned to wesnoth.synchronize_choice a table which was partially invalid");
+				}
+			}
 		}
 		//Although luas sync_choice can show a dialog, (and will in most cases)
 		//we return false to enable other possible things that do not contain UI things.
@@ -2898,44 +2969,74 @@ namespace {
 
 /**
  * Ensures a value is synchronized among all the clients.
- * - Arg 1: function to compute the value, called if the client is the master.
- * - Arg 2: optional function, called instead of the first function if the user is not human.
- * - Arg 3: optional array of integers specifying, on which side the function should be evaluated.
+ * - Arg 1: optional string specifying the type id of the choice.
+ * - Arg 2: function to compute the value, called if the client is the master.
+ * - Arg 3: optional function, called instead of the first function if the user is not human.
+ * - Arg 4: optional integer  specifying, on which side the function should be evaluated.
  * - Ret 1: WML table returned by the function.
  */
-int game_lua_kernel::intf_synchronize_choice(lua_State *L)
+static int intf_synchronize_choice(lua_State *L)
 {
-	if(lua_istable(L, 3))
-	{
-		std::set<int> vals;
-		//read the third parameter
-		lua_pushnil(L);
-		while (lua_next(L, 3) != 0) {
-			/* uses 'key' (at index -2) and 'value' (at index -1) */
-			int val = luaL_checkint(L, -1);
-			vals.insert(val);
-			/* removes 'value'; keeps 'key' for next iteration */
-			lua_pop(L, 1);
-		}
-		typedef std::map<int,config> retv_t;
-		lua_synchronize::error_reporter er = boost::bind(&game_lua_kernel::lua_chat, this, _1, _2);
-		retv_t r = mp_sync::get_user_choice_multiple_sides("input", lua_synchronize(L, teams(), er), vals);
-		lua_newtable(L);
-		BOOST_FOREACH(retv_t::value_type& pair, r)
-		{
-			lua_pushinteger(L, pair.first);
-			luaW_pushconfig(L, pair.second);
-			lua_settable(L, -3);
-		}
+	std::string tagname = "input";
+	t_string desc = _("input");
+	int human_func = 0;
+	int ai_func = 0;
+	int side_for;
+
+	int nextarg = 1;
+	if(!lua_isfunction(L, nextarg) && luaW_totstring(L, nextarg, desc) ) {
+		++nextarg;
 	}
-	else
-	{
-		lua_synchronize::error_reporter er = boost::bind(&game_lua_kernel::lua_chat, this, _1, _2);
-		config cfg = mp_sync::get_user_choice("input", lua_synchronize(L, teams(),  er));
-		luaW_pushconfig(L, cfg);
+	if(lua_isfunction(L, nextarg)) {
+		human_func = nextarg++;
 	}
+	else {
+		return luaL_argerror(L, nextarg, "expected a function");
+	}
+	if(lua_isfunction(L, nextarg)) {
+		ai_func = nextarg++;
+	}
+	side_for = lua_tointeger(L, nextarg);
+
+	config cfg = mp_sync::get_user_choice(tagname, lua_synchronize(L, desc, human_func, 0, ai_func), side_for);
+	luaW_pushconfig(L, cfg);
 	return 1;
 }
+/**
+ * Ensures a value is synchronized among all the clients.
+ * - Arg 1: optional string the id of this type of user input, may only contain chracters a-z and '_'
+ * - Arg 2: function to compute the value, called if the client is the master.
+ * - Arg 3: an optional function to compute the value, if the side was null/empty controlled.
+ * - Arg 4: an array of integers specifying, on which side the function should be evaluated.
+ * - Ret 1: a map int -> WML tabls.
+ */
+static int intf_synchronize_choices(lua_State *L)
+{
+	std::string tagname = "input";
+	t_string desc = _("input");
+	int human_func = 0;
+	int null_func = 0;
+	std::vector<int> sides_for;
+
+	int nextarg = 1;
+	if(!lua_isfunction(L, nextarg) && luaW_totstring(L, nextarg, desc) ) {
+		++nextarg;
+	}
+	if(lua_isfunction(L, nextarg)) {
+		human_func = nextarg++;
+	}
+	else {
+		return luaL_argerror(L, nextarg, "expected a function");
+	}
+	if(lua_isfunction(L, nextarg)) {
+		null_func = nextarg++;
+	};
+	sides_for = lua_check<std::vector<int> >(L, nextarg++);
+
+	lua_push(L, mp_sync::get_user_choice_multiple_sides(tagname, lua_synchronize(L, desc, human_func, null_func), std::set<int>(sides_for.begin(), sides_for.end())));
+	return 1;
+}
+
 
 /**
  * Calls a function in an unsynced context (this specially means that all random calls used by that function will be unsynced).
@@ -3283,6 +3384,7 @@ static int intf_get_traits(lua_State* L)
  * - Arg 1: unit.
  * - Arg 2: string.
  * - Arg 3: WML table.
+ * - Arg 4: (optional) Whether to add to [modifications] - default true
  */
 static int intf_add_modification(lua_State *L)
 {
@@ -3296,9 +3398,13 @@ static int intf_add_modification(lua_State *L)
 	if (sm != "advancement" && sm != "object" && sm != "trait") {
 		return luaL_argerror(L, 2, "unknown modification type");
 	}
+	bool write_to_mods = true;
+	if (!lua_isnone(L, 4)) {
+		write_to_mods = luaW_toboolean(L, 4);
+	}
 
 	config cfg = luaW_checkconfig(L, 3);
-	u->add_modification(sm, cfg);
+	u->add_modification(sm, cfg, !write_to_mods);
 	return 0;
 }
 
@@ -4154,6 +4260,9 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "scroll",                    &dispatch<&game_lua_kernel::intf_scroll                     >        },
 		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
+		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
+		{ "skip_messages",             &dispatch<&game_lua_kernel::intf_skip_messages              >        },
+		{ "is_skipping_messages",      &dispatch<&game_lua_kernel::intf_is_skipping_messages       >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "set_menu_item",             &dispatch<&game_lua_kernel::intf_set_menu_item              >        },
@@ -4162,7 +4271,8 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
 		{ "set_village_owner",         &dispatch<&game_lua_kernel::intf_set_village_owner          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
-		{ "synchronize_choice",        &dispatch<&game_lua_kernel::intf_synchronize_choice         >        },
+		{ "synchronize_choice",        &intf_synchronize_choice                                             },
+		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "view_locked",               &dispatch<&game_lua_kernel::intf_view_locked                >        },
 		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },

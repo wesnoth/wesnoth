@@ -22,7 +22,9 @@
 
 namespace ucs4_convert_impl
 {
-	//transforms an outputiterator to a writer for ucs4_convert_impl functions.
+	/**
+	 * Transforms an output iterator to a writer for ucs4_convert_impl functions.
+	 */
 	template<typename oitor_t>
 	struct iteratorwriter
 	{
@@ -48,12 +50,11 @@ namespace ucs4_convert_impl
 }
 
 /**
-	@tparam TD
-		output, a collection type.
-	@tparam TS
-		input, a collection type.
-	@return an instance of TD
-*/
+ * @tparam TD Output, a collection type.
+ * @tparam TS Input, a collection type.
+ *
+ * @return An instance of TD.
+ */
 template<typename TD , typename TS>
 typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_cast(const TS& source)
 //TD unicode_cast(const TS& source)
@@ -78,7 +79,7 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 	}
 	catch(utf8::invalid_utf8_exception&) 
 	{
-		///TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
+		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
 		std::cerr << "Failed to convert a string from " << t_impl_reader::get_name() << " to " << t_impl_writer::get_name() << "\n";
 		return res;
 	}
@@ -86,10 +87,10 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 }
 
 /**
-	@tparam TD
-		output, a collection type.
-	@return an instance of TD
-*/
+ * @tparam TD Output, a collection type.
+ *
+ * @return An instance of TD.
+ */
 template<typename TD>
 TD unicode_cast(ucs4::char_t onechar)
 {
@@ -107,7 +108,7 @@ TD unicode_cast(ucs4::char_t onechar)
 	}
 	catch(utf8::invalid_utf8_exception&) 
 	{
-		///TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
+		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
 		std::cerr << "Failed to convert a string from " << t_impl_reader::get_name() << " to " << t_impl_writer::get_name() << "\n";
 		return res;
 	}

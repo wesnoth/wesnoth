@@ -48,8 +48,8 @@ namespace ucs4_convert_impl
 				return 1;  // US-ASCII character, 1 byte
 			}
 			/* first bit set: character not in US-ASCII, multiple bytes
-			* number of set bits at the beginning = bytes per character
-			* e.g. 11110xxx indicates a 4-byte character */
+			 * number of set bits at the beginning = bytes per character
+			 * e.g. 11110xxx indicates a 4-byte character */
 			int count = count_leading_ones(ch);
 			if (count == 1 || count > 6) {		// count > 4 after RFC 3629
 				throw utf8::invalid_utf8_exception(); // Stop on invalid characters
@@ -58,12 +58,14 @@ namespace ucs4_convert_impl
 		}
 
 		/**
-			@param out an object to write utf8::char_t. required operations are:
-				1) push(utf8::char_t) to write a single character
-				2) can_push(size_t n) to check whether there is still enough space
-					for n characters.
-			@param ch the ucs4 chracter to write to the stream.
-		*/
+		 * Writes a UCS-4 character to a UTF-8 stream.
+		 *
+		 * @param out  An object to write utf8::char_t. Required operations:
+		 *             1) push(utf8::char_t) to write a single character
+		 *             2) can_push(size_t n) to check whether there is still
+		 *                enough space for n characters.
+		 * @param ch   The UCS-4 character to write to the stream.
+		 */
 		template<typename writer>
 		static inline void write(writer out, ucs4::char_t ch)
 		{
@@ -83,10 +85,13 @@ namespace ucs4_convert_impl
 			}
 		}	
 		/**
-			reads an ucs4 character from an utf8 stream
-			@param input an iterator pointing to the first character of a utf8 sequence to read
-			@param end an iterator poinint to the end of teh utf8 sequence to read.
-		*/
+		 * Reads a UCS-4 character from a UTF-8 stream
+		 *
+		 * @param input  An iterator pointing to the first character of a UTF-8
+		 *               sequence to read.
+		 * @param end    An iterator pointing to the end of the UTF-8 sequence
+		 *               to read.
+		 */
 		template<typename iitor_t>
 		static inline ucs4::char_t read(iitor_t& input, const iitor_t& end)
 		{

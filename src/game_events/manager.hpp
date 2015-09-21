@@ -112,7 +112,6 @@ namespace game_events {
 
 		boost::scoped_ptr<t_event_handlers> event_handlers_;
 		std::set<std::string> unit_wml_ids_;
-		std::set<std::string> used_items_;
 
 		boost::scoped_ptr<game_events::t_pump> pump_;
 		boost::shared_ptr<t_context> resources_;
@@ -127,10 +126,6 @@ namespace game_events {
 
 		/// Create an event handler.
 		void add_event_handler(const config & handler, bool is_menu_item=false);
-		/// Checks if an item has been used.
-		bool item_used(const std::string & id);
-		/// Records if an item has been used.
-		void item_used(const std::string & id, bool used);
 		/// Removes an event handler.
 		void remove_event_handler(const std::string & id);
 

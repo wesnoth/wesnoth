@@ -15,7 +15,8 @@ Version 1.13.1+dev:
    * New animated water.
 
  * Language and i18n:
-   * Updated translations: British English, French, Galician, Japanese, Latvian.
+   * Updated translations: British English, French, Galician, Hungarian,
+     Japanese, Latvian.
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
 
@@ -32,6 +33,8 @@ Version 1.13.1+dev:
 
  * Miscellaneous and bug fixes:
    * Fixed OOS on random maps, where clients placed sides in different castles.
+   * Fixed possibility of corrupting saved games in certain instances,
+     eg if an add-on tries to set an invalid variable
 
 
 Version 1.13.1:
