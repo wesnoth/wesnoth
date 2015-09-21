@@ -33,6 +33,7 @@ Version 1.12.4+dev:
  * Miscellaneous and bug fixes:
    * Default to non-strict compilation with CMake.
    * Fixed strict compilation with clang 3.5 and 3.6.
+   * Fixed strict compilation with gcc 5.
    * Fixed unbound memory read in internal time formatting code with
      specially-crafted input.
    * Fixed RECRUIT_UNIT_VARIATIONS core WML macro leaking an internal temporary
