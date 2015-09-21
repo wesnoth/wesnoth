@@ -336,7 +336,8 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
-	return 0;
+	
+	return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).return_unit_method(L, m);
 }
 
 /**
@@ -4504,6 +4505,31 @@ void game_lua_kernel::initialize(const config& level)
 	}
 
 	load_game(level);
+}
+
+int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
+	static luaL_Reg const methods[] = {
+		{"matches",               &dispatch<&game_lua_kernel::intf_match_unit>},
+		{"to_recall_list",        &dispatch<&game_lua_kernel::intf_put_recall_unit>},
+		{"clone",                 intf_copy_unit},
+		{"extract",               &dispatch<&game_lua_kernel::intf_extract_unit>},
+		{"advance",               intf_advance_unit},
+		{"add_modification",      intf_add_modification},
+		{"resistance_to",         intf_unit_resistance},
+		{"defense_on",            intf_unit_defense},
+		{"movement_on",           intf_unit_movement_cost},
+		{"under_ability",         intf_unit_ability},
+		{"transform_to",          intf_transform_unit},
+	};
+	
+	BOOST_FOREACH(const luaL_Reg& r, methods) {
+		if (strcmp(m, r.name) == 0) {
+			lua_pushcfunction(L, r.func);
+			return 1;
+		}
+	}
+	
+	return 0;
 }
 
 void game_lua_kernel::set_game_display(game_display * gd) {
