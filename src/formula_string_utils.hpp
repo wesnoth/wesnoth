@@ -59,7 +59,7 @@ boost::assign_detail::generic_list< std::pair
             typename boost::assign_detail::assign_decay<std::string>::type, 
             typename boost::assign_detail::assign_decay<std::string>::type
         > >
-string_map_of(const std::string& k, const std::string& v)
+static inline string_map_of(const std::string& k, const std::string& v)
 {
 	return boost::assign::map_list_of<std::string, std::string>(k, v);
 }
