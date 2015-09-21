@@ -255,8 +255,13 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 
 void user_choice_manager::search_in_replay()
 {
-	while(!resources::recorder->at_end() && !finished() && !oos_)
+	while(!finished() && !oos_)
 	{
+		do_replay_handle();
+		if(resources::recorder->at_end()) {
+			return;
+		}
+
 		DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_choice() << "\n";
 
 		const config *action = resources::recorder->get_next_action();
@@ -287,7 +292,6 @@ void user_choice_manager::search_in_replay()
 		}
 		res_[from_side] = action->child(tagname_);
 		changed_event_.notify_observers();
-		do_replay_handle();
 	}
 }
 void user_choice_manager::pull()
