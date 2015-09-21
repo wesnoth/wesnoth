@@ -247,14 +247,15 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 			synced_context::set_is_simultaneously();
 		}
 	}
+
+	do_replay_handle();
 	search_in_replay();
 
 }
 
 void user_choice_manager::search_in_replay()
 {
-	do_replay_handle();
-	while(!resources::recorder->at_end())
+	while(!resources::recorder->at_end() && !finished() && !oos_)
 	{
 		DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_choice() << "\n";
 
