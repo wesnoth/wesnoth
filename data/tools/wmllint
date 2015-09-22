@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # wmllint -- check WML for conformance to the most recent dialect
@@ -181,14 +181,9 @@
 # code.
 #
 
-from __future__ import print_function, unicode_literals, division
-from future_builtins import filter, map, zip
-input = raw_input
-range = xrange
-
 import sys, os, re, getopt, string, copy, difflib, time, gzip, codecs
-from wesnoth.wmltools import *
-from wesnoth.wmliterator import *
+from wesnoth.wmltools3 import *
+from wesnoth.wmliterator3 import *
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (
@@ -2931,7 +2926,7 @@ In your case, your system interprets your arguments as:
                     except:
                         print("wmllint: internal error on %s" % fn, file=sys.stderr)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
-                        raise exc_type, exc_value, exc_traceback
+                        raise exc_type(exc_value).with_traceback(exc_traceback)
         if not clean and not diffs and not revert:
             # Consistency-check everything we got from the file scans
             if not inconsistency:
