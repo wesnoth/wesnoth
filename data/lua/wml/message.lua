@@ -128,7 +128,7 @@ function wesnoth.wml_actions.message(cfg)
 
 	local options, option_events = {}, {}
 	for option in helper.child_range(cfg, "option") do
-		local condition = helper.get_child(cfg, "show_if") or {}
+		local condition = helper.get_child(option, "show_if") or {}
 
 		if wesnoth.eval_conditional(condition) then
 			table.insert(options, option.message)
