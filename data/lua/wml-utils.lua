@@ -141,7 +141,7 @@ function utils.handle_event_commands(cfg, scope_type)
 	end
 	scope_stack:pop()
 	if #scope_stack == 0 then
-		if current_exit ==  "continue" and scope_type ~= "loop" then
+		if current_exit == "continue" and scope_type ~= "loop" then
 			helper.wml_error("[continue] found outside a loop scope!")
 		end
 		current_exit = "none"

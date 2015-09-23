@@ -300,12 +300,11 @@ wml_actions["if"] = function(cfg)
 		if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
 			for then_tag in helper.child_range(elseif_child, "then") do
 				local action = utils.handle_event_commands(then_tag, "conditional")
-				if action ~= "none" then goto exit end
+				if action ~= "none" then break end
 			end
 			return -- stop on first matched condition
 		end
 	end
-	::exit::
 
 	-- no matched condition, try the [else] tags
 	for else_child in helper.child_range(cfg, "else") do
