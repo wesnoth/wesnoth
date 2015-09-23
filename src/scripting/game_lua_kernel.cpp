@@ -1634,12 +1634,12 @@ int game_lua_kernel::impl_current_get(lua_State *L)
  */
 int game_lua_kernel::intf_message(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	char const *h = m;
+	t_string m = luaW_checktstring(L, 1);
+	t_string h = m;
 	if (lua_isnone(L, 2)) {
 		h = "Lua";
 	} else {
-		m = luaL_checkstring(L, 2);
+		m = luaW_checktstring(L, 2);
 	}
 	lua_chat(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
