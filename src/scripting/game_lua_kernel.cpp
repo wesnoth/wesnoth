@@ -2663,6 +2663,36 @@ static int intf_unit_movement_cost(lua_State *L)
 }
 
 /**
+ * Returns unit vision cost on a given terrain.
+ * - Arg 1: unit userdata.
+ * - Arg 2: string containing the terrain type.
+ * - Ret 1: integer.
+ */
+static int intf_unit_vision_cost(lua_State *L)
+{
+	const unit_const_ptr u = luaW_checkunit(L, 1);
+	char const *m = luaL_checkstring(L, 2);
+	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	lua_pushinteger(L, u->vision_cost(t));
+	return 1;
+}
+
+/**
+ * Returns unit jamming cost on a given terrain.
+ * - Arg 1: unit userdata.
+ * - Arg 2: string containing the terrain type.
+ * - Ret 1: integer.
+ */
+static int intf_unit_jamming_cost(lua_State *L)
+{
+	const unit_const_ptr u = luaW_checkunit(L, 1);
+	char const *m = luaL_checkstring(L, 2);
+	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	lua_pushinteger(L, u->jamming_cost(t));
+	return 1;
+}
+
+/**
  * Returns unit defense on a given terrain.
  * - Arg 1: unit userdata.
  * - Arg 2: string containing the terrain type.
@@ -4219,6 +4249,8 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "unit_ability",             &intf_unit_ability             },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
+		{ "unit_vision_cost",         &intf_unit_vision_cost         },
+		{ "unit_jamming_cost",        &intf_unit_jamming_cost        },
 		{ "unit_resistance",          &intf_unit_resistance          },
 		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
@@ -4543,6 +4575,8 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"resistance",            intf_unit_resistance},
 		{"defense",               intf_unit_defense},
 		{"movement",              intf_unit_movement_cost},
+		{"vision",                intf_unit_movement_cost},
+		{"jamming",               intf_unit_movement_cost},
 		{"ability",               intf_unit_ability},
 		{"transform",             intf_transform_unit},
 	};
