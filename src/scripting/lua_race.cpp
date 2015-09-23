@@ -54,6 +54,24 @@ static int impl_race_get(lua_State* L)
 	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
 	return_string_attrib("undead_variation", race.undead_variation());
 	return_cfgref_attrib("__cfg", race.get_cfg());
+	if (strcmp(m, "traits") == 0) {
+		lua_newtable(L);
+		if (race.uses_global_traits()) {
+			BOOST_FOREACH(const config& trait, unit_types.traits()) {
+				const std::string& id = trait["id"];
+				lua_pushlstring(L, id.c_str(), id.length());
+				luaW_pushconfig(L, trait);
+				lua_rawset(L, -3);
+			}
+		}
+		BOOST_FOREACH(const config& trait, race.additional_traits()) {
+			const std::string& id = trait["id"];
+			lua_pushlstring(L, id.c_str(), id.length());
+			luaW_pushconfig(L, trait);
+			lua_rawset(L, -3);
+		}
+		return 1;
+	}
 
 	return 0;
 }
