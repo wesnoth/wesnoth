@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # By Elvish_Hunter, April 2014
@@ -10,31 +10,19 @@
 
 # threading and subprocess are needed to run wmllint without freezing the window
 # codecs is used to save files as UTF8
-# Queue (queue in Python3) is needed to exchange informations between threads
+# queue is needed to exchange informations between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 import sys,os,threading,subprocess,codecs
 
-# sys.version_info checks the interpreter version
-# this is used to have a script that can run on both Python2 and Python3
-# not that useful until the mainline tools are updated, but still...
-if sys.version_info.major >= 3:
-    import queue
-    # tkinter modules
-    from tkinter import *
-    from tkinter.messagebox import *
-    from tkinter.filedialog import *
-    # ttk must be called last
-    from tkinter.ttk import *
-else: # we are on Python 2
-    import Queue
-    # tkinter modules
-    import tkFont as font # in Py3 it's tkinter.font
-    from Tkinter import *
-    from tkMessageBox import *
-    from tkFileDialog import *
-    # ttk must be called last
-    from ttk import *
+import queue
+# tkinter modules
+from tkinter import *
+from tkinter.messagebox import *
+from tkinter.filedialog import *
+import tkinter.font as font
+# ttk must be called last
+from tkinter.ttk import *
 
 # we need to know in what series we are
 # so set it in a constant and change it for every new series
@@ -87,10 +75,10 @@ def run_tool(tool,queue,command):
         queue.put_nowait(' '.join(command)+"\n")
         try:
             output=subprocess.check_output(command,stderr=subprocess.STDOUT,env=env)
-            queue.put_nowait(output)
+            queue.put_nowait(str(output, "utf8"))
         except subprocess.CalledProcessError as error:
             # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,error.output))
+            queue.put_nowait((tool,error.returncode, str(error.output, "utf8")))
 
 def is_wesnoth_tools_path(path):
     """Checks if the supplied path may be a wesnoth/data/tools directory"""
@@ -142,7 +130,7 @@ class Tooltip(Toplevel):
         """A tooltip, or balloon. Displays the specified help text when the
 mouse pointer stays on the widget for more than 500 ms."""
         # the master attribute retrieves the window where our "parent" widget is
-        Toplevel.__init__(self,widget.master)
+        super().__init__(widget.master)
         self.widget=widget
         self.preshow_id=None
         self.show_id=None
@@ -213,10 +201,7 @@ class Popup(Toplevel):
         """Creates a popup that informs the user that the desired tool is running.
 Self destroys when the tool thread is over"""
         self.thread=thread
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Toplevel.__init__(self,parent)
+        super().__init__(parent)
         self.transient(parent)
         self.grab_set()
         self.protocol("WM_DELETE_WINDOW",
@@ -262,10 +247,7 @@ class ContextMenu(Menu):
     def __init__(self,x,y,widget):
         """A subclass of Menu, used to display a context menu in Text and Entry widgets
 If the widget isn't active, some options do not appear"""
-        if sys.version_info.major>=3:
-            super().__init__(None,tearoff=0) # otherwise Tk allows splitting it in a new window
-        else:
-            Menu.__init__(self,None,tearoff=0)
+        super().__init__(None,tearoff=0) # otherwise Tk allows splitting it in a new window
         self.widget=widget
         # MacOS uses a key called Command, instead of the usual Control used by Windows and Linux
         # so prepare the accelerator strings accordingly
@@ -314,10 +296,7 @@ class EntryContext(Entry):
     def __init__(self,parent,**kwargs):
         """An enhanced Entry widget that has a right-click menu
 Use like any other Entry widget"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,**kwargs)
-        else:
-            Entry.__init__(self,parent,**kwargs)
+        super().__init__(parent,**kwargs)
         attach_context_menu(self,self.on_context_menu)
         attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
@@ -330,10 +309,7 @@ class SpinboxContext(Spinbox):
     def __init__(self,parent,**kwargs):
         """An enhanced Spinbox widget that has a right-click menu
 Use like any other Spinbox widget"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,**kwargs)
-        else:
-            Spinbox.__init__(self,parent,**kwargs)
+        super().__init__(parent,**kwargs)
         attach_context_menu(self,self.on_context_menu)
         attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
@@ -346,10 +322,7 @@ class EnhancedText(Text):
     def __init__(self,*args,**kwargs):
         """A subclass of Text with a context menu
 Use it like any other Text widget"""
-        if sys.version_info.major>=3:
-            super().__init__(*args,**kwargs)
-        else:
-            Text.__init__(self,*args,**kwargs)
+        super().__init__(*args,**kwargs)
         attach_context_menu(self,self.on_context_menu)
         attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
@@ -363,10 +336,7 @@ class SelectDirectory(LabelFrame):
     def __init__(self,parent,textvariable=None,**kwargs):
         """A subclass of LabelFrame sporting a readonly Entry and a Button with a folder icon.
 It comes complete with a context menu and a directory selection screen"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,text="Directory",**kwargs)
-        else:
-            LabelFrame.__init__(self,parent,text="Directory",**kwargs)
+        super().__init__(parent,text="Directory",**kwargs)
         self.textvariable=textvariable
         self.dir_entry=EntryContext(self,
                                     width=40,
@@ -440,10 +410,7 @@ class WmllintTab(Frame):
     def __init__(self,parent):
         # it means super(WmllintTab,self), that in turn means
         # Frame.__init__(self,parent)
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
                                    text="wmllint mode")
@@ -607,10 +574,7 @@ class WmllintTab(Frame):
 
 class WmlscopeTab(Frame):
     def __init__(self,parent):
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.options_frame=LabelFrame(self,
                                       text="wmlscope options")
         self.options_frame.grid(row=0,
@@ -817,10 +781,7 @@ class WmlscopeTab(Frame):
 
 class WmlindentTab(Frame):
     def __init__(self,parent):
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
                                    text="wmlindent mode")
@@ -921,12 +882,8 @@ class WmlindentTab(Frame):
 class MainFrame(Frame):
     def __init__(self,parent):
         self.parent=parent
-        if sys.version_info.major>=3:
-            self.queue=queue.Queue()
-            super().__init__(parent)
-        else:
-            self.queue=Queue.Queue()
-            Frame.__init__(self,parent)
+        self.queue=queue.Queue()
+        super().__init__(parent)
         self.grid(sticky=N+E+S+W)
         self.buttonbox=Frame(self)
         self.buttonbox.grid(row=0,
