@@ -700,23 +700,48 @@ int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
 
 /**
  * Gets the unit at the given location or with the given id.
- * - Arg 1: integer.
+ * - Arg 1: table containing location either at indices 1,2 or at keys x,y.
+ * OR
+ * - Arg 1: string ID
+ * OR
  * - Args 1, 2: location.
  * - Ret 1: full userdata with __index pointing to impl_unit_get and
  *          __newindex pointing to impl_unit_set.
  */
 int game_lua_kernel::intf_get_unit(lua_State *L)
 {
-	int x = luaL_checkinteger(L, 1) - 1;
-	int y = luaL_optint(L, 2, 0) - 1;
-
-	unit_map::const_iterator ui;
-
+	int x, y;
 	if (lua_isnoneornil(L, 2)) {
-		ui = units().find(x + 1);
+		if (lua_istable(L, 1)) {
+			lua_rawgeti(L, 1, 1);
+			if (lua_isnoneornil(L, -1)) {
+				lua_getfield(L, 1, "x");
+				x = luaL_checkinteger(L, -1) - 1;
+				lua_getfield(L, 1, "y");
+				y = luaL_checkinteger(L, -1) - 1;
+			} else {
+				x = luaL_checkinteger(L, -1) - 1;
+				lua_rawgeti(L, 1, 2);
+				y = luaL_checkinteger(L, -1) - 1;
+			}
+		} else if(lua_isstring(L, 1)) {
+			// Forward to wesnoth.get_units and return the first result
+			luaW_getglobal(L, "wesnoth", "get_units", NULL);
+			lua_newtable(L);
+			lua_pushstring(L, "id");
+			lua_pushvalue(L, 1);
+			lua_rawset(L, -3);
+			lua_call(L, 1, 1);
+			lua_rawgeti(L, -1, 1);
+			return 1;
+		} else {
+			return luaL_argerror(L, 1, "expected string, location table, or integer");
+		}
 	} else {
-		ui = units().find(map_location(x, y));
+		x = luaL_checkinteger(L, 1) - 1;
+		y = luaL_checkinteger(L, 2) - 1;
 	}
+	unit_map::const_iterator ui = units().find(map_location(x, y));
 
 	if (!ui.valid()) return 0;
 
