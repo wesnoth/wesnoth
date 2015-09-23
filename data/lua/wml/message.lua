@@ -220,7 +220,8 @@ function wesnoth.wml_actions.message(cfg)
 		end
 
 		for i, cmd in ipairs(option_events[option_chosen]) do
-			utils.handle_event_commands(cmd)
+			local action = utils.handle_event_commands(cmd, "plain")
+			if action ~= "none" then break end
 		end
 	end
 end

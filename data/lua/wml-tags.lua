@@ -275,9 +275,11 @@ function wml_actions.music(cfg)
 	wesnoth.set_music(cfg)
 end
 
-wml_actions.command = utils.handle_event_commands
+function wml_actions.command(cfg)
+	utils.handle_event_commands(cfg, "plain")
+end
 
--- since if and while are Lua keywords, we can't create functions with such names
+-- we can't create functions with names that are Lua keywords (eg if, while)
 -- instead, we store the following anonymous functions directly into
 -- the table, using the [] operator, rather than by using the point syntax
 
@@ -288,7 +290,8 @@ wml_actions["if"] = function(cfg)
 
 	if wesnoth.eval_conditional(cfg) then -- evaluate [if] tag
 		for then_child in helper.child_range(cfg, "then") do
-			utils.handle_event_commands(then_child)
+			local action = utils.handle_event_commands(then_child, "conditional")
+			if action ~= "none" then break end
 		end
 		return -- stop after executing [then] tags
 	end
@@ -296,7 +299,8 @@ wml_actions["if"] = function(cfg)
 	for elseif_child in helper.child_range(cfg, "elseif") do
 		if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
 			for then_tag in helper.child_range(elseif_child, "then") do
-				utils.handle_event_commands(then_tag)
+				local action = utils.handle_event_commands(then_tag, "conditional")
+				if action ~= "none" then break end
 			end
 			return -- stop on first matched condition
 		end
@@ -304,7 +308,8 @@ wml_actions["if"] = function(cfg)
 
 	-- no matched condition, try the [else] tags
 	for else_child in helper.child_range(cfg, "else") do
-		utils.handle_event_commands(else_child)
+		local action = utils.handle_event_commands(else_child, "conditional")
+		if action ~= "none" then break end
 	end
 end
 
@@ -313,10 +318,146 @@ wml_actions["while"] = function( cfg )
 	for i = 1, 65536 do
 		if wesnoth.eval_conditional( cfg ) then
 			for do_child in helper.child_range( cfg, "do" ) do
-				utils.handle_event_commands( do_child )
+				local action = utils.handle_event_commands(do_child, "loop")
+				if action == "break" then
+					utils.set_exiting("none")
+					goto exit
+				elseif action == "continue" then
+					utils.set_exiting("none")
+					break
+				elseif action ~= "none" then
+					goto exit
+				end
 			end
 		else return end
 	end
+	::exit::
+end
+
+wml_actions["break"] = function(cfg)
+	utils.set_exiting("break")
+end
+
+wml_actions["return"] = function(cfg)
+	utils.set_exiting("return")
+end
+
+function wml_actions.continue(cfg)
+	utils.set_exiting("continue")
+end
+
+wesnoth.wml_actions["for"] = function(cfg)
+	local first, last, step
+	if cfg.array then
+		first = 0
+		last = wesnoth.get_variable(cfg.array .. ".length") - 1
+		step = 1
+		if cfg.reverse == "yes" then
+			first, last = last, first
+			step = -1
+		end
+	else
+		first = cfg.start or 0
+		last = cfg["end"] or first
+		step = cfg.step or ((last - first) / math.abs(last - first))
+	end
+	local i_var = cfg.variable or "i"
+	local save_i = utils.start_var_scope(i_var)
+	wesnoth.set_variable(i_var, first)
+	while wesnoth.get_variable(i_var) <= last do
+		for do_child in helper.child_range( cfg, "do" ) do
+			local action = utils.handle_event_commands(do_child, "loop")
+			if action == "break" then
+				utils.set_exiting("none")
+				goto exit
+			elseif action == "continue" then
+				utils.set_exiting("none")
+				break
+			elseif action ~= "none" then
+				goto exit
+			end
+		end
+		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
+	end
+	::exit::
+	utils.end_var_scope(i_var, save_i)
+end
+
+wml_actions["repeat"] = function(cfg)
+	local times = cfg.times or 1
+	for i = 1, times do
+		for do_child in helper.child_range( cfg, "do" ) do
+			local action = utils.handle_event_commands(do_child, "loop")
+			if action == "break" then
+				utils.set_exiting("none")
+				return
+			elseif action == "continue" then
+				utils.set_exiting("none")
+				break
+			elseif action ~= "none" then
+				return
+			end
+		end
+	end
+end
+
+function wml_actions.foreach(cfg)
+	local array_name = cfg.variable or helper.wml_error "[foreach] missing required variable= attribute"
+	local array = helper.get_variable_array(array_name)
+	if #array == 0 then return end -- empty and scalars unwanted
+	local item_name = cfg.item_var or "this_item"
+	local this_item = utils.start_var_scope(item_name) -- if this_item is already set
+	local i_name = cfg.index_var or "i"
+	local i = utils.start_var_scope(i_name) -- if i is already set
+	local array_length = wesnoth.get_variable(array_name .. ".length")
+	
+	for index, value in ipairs(array) do
+		-- Some protection against external modification
+		-- It's not perfect, though - it'd be nice if *any* change could be detected
+		if array_length ~= wesnoth.get_variable(array_name .. ".length") then
+			helper.wml_error("WML array length changed during [foreach] iteration")
+		end
+		wesnoth.set_variable(item_name, value)
+		-- set index variable
+		wesnoth.set_variable(i_name, index-1) -- here -1, because of WML array
+		-- perform actions
+		for do_child in helper.child_range(cfg, "do") do
+			local action = utils.handle_event_commands(do_child, "loop")
+			if action == "break" then
+				utils.set_exiting("none")
+				goto exit
+			elseif action == "continue" then
+				utils.set_exiting("none")
+				break
+			elseif action ~= "none" then
+				goto exit
+			end
+		end
+		-- set back the content, in case the author made some modifications
+		if not cfg.readonly then
+			array[index] = wesnoth.get_variable(item_name)
+		end
+	end
+	::exit::
+	
+	-- house cleaning
+	utils.end_var_scope(item_name)
+	utils.end_var_scope(i)
+	
+	--[[
+		This forces the readonly key to be taken literally.
+		
+		If readonly=yes, then this line guarantees that the array
+		is unchanged after the [foreach] loop ends.
+		
+		If readonly=no, then this line updates the array with any
+		changes the user has applied through the $this_item
+		variable (or whatever variable was given in item_var).
+		
+		Note that altering the array via indexing (with the index_var)
+		is not supported; any such changes will be reverted by this line.
+	]]
+	helper.set_variable_array(array_name, array)
 end
 
 function wml_actions.switch(cfg)
@@ -327,17 +468,20 @@ function wml_actions.switch(cfg)
 	for v in helper.child_range(cfg, "case") do
 		for w in utils.split(v.value) do
 			if w == tostring(var_value) then 
-				utils.handle_event_commands(v)
+				local action = utils.handle_event_commands(v, "switch")
 				found = true
-				break 
+				if action ~= "none" then goto exit end
+				break
 			end
 		end
 	end
+	::exit::
 
 	-- Otherwise execute [else] statements.
 	if not found then
 		for v in helper.child_range(cfg, "else") do
-			utils.handle_event_commands(v)
+			local action = utils.handle_event_commands(v, "switch")
+			if action ~= "none" then break end
 		end
 	end
 end
