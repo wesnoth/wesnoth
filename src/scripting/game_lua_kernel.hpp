@@ -115,6 +115,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_play_sound(lua_State *L);
 	int intf_print(lua_State *L);
 	int intf_put_unit(lua_State *L);
+	int intf_erase_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);

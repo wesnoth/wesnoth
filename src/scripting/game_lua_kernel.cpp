@@ -2410,7 +2410,10 @@ int game_lua_kernel::intf_print(lua_State *L) {
 /**
  * Places a unit on the map.
  * - Args 1,2: (optional) location.
- * - Arg 3: WML table describing a unit, or nothing/nil to delete.
+ * - Arg 3: Unit (WML table or proxy), or nothing/nil to delete.
+ * OR
+ * - Arg 1: Unit (WML table or proxy)
+ * - Args 2,3: (optional) location
  */
 int game_lua_kernel::intf_put_unit(lua_State *L)
 {
@@ -2423,8 +2426,15 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		unit_arg = 3;
 		loc.x = lua_tointeger(L, 1) - 1;
 		loc.y = luaL_checkinteger(L, 2) - 1;
-		if (!map().on_board(loc))
+		if (!map().on_board(loc)) {
 			return luaL_argerror(L, 1, "invalid location");
+		}
+	} else if (lua_isnumber(L, 2)) {
+		loc.x = lua_tointeger(L, 2) - 1;
+		loc.y = luaL_checkinteger(L, 3) - 1;
+		if (!map().on_board(loc)) {
+			return luaL_argerror(L, 1, "invalid location");
+		}
 	}
 
 	if (luaW_hasmetatable(L, unit_arg, getunitKey))
@@ -2435,10 +2445,12 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		if (lu->on_map() && (unit_arg == 1 || u->get_location() == loc)) {
 			return 0;
 		}
-		if (unit_arg == 1) {
+		if (!loc.valid()) {
 			loc = u->get_location();
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
+		} else {
+			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
 	}
 	else if (!lua_isnoneornil(L, unit_arg))
@@ -2449,6 +2461,8 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 			loc.y = cfg["y"] - 1;
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
+		} else {
+			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
 		u = unit_ptr (new unit(cfg, true));
 	}
@@ -2457,8 +2471,14 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		game_display_->invalidate(loc);
 	}
 
+	if (!u) {
+		if (unit_arg == 3) {
+			WRN_LUA << "wesnoth.put_unit(x, y) is deprecated. Use wesnoth.erase_unit(x, y) instead\n";
+			units().erase(loc);
+		}
+		return 0;
+	}
 	units().erase(loc);
-	if (!u) return 0;
 
 	if (lu) {
 		lu->put_map(loc);
@@ -2468,6 +2488,55 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		units().insert(u);
 	}
 
+	return 0;
+}
+
+/**
+ * Erases a unit from the map
+ * - Arg 1: Unit to erase
+ * OR
+ * - Args 1,2: Location to erase unit
+ */
+int game_lua_kernel::intf_erase_unit(lua_State *L)
+{
+	map_location loc;
+	
+	if (lua_isnumber(L, 1)) {
+		loc.x = lua_tointeger(L, 2) - 1;
+		loc.y = luaL_checkinteger(L, 3) - 1;
+		if (!map().on_board(loc)) {
+			return luaL_argerror(L, 1, "invalid location");
+		}
+	} else if (luaW_hasmetatable(L, 1, getunitKey)) {
+		lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
+		unit_ptr u = lu->get();
+		if (!lu->get()) {
+			return luaL_argerror(L, 1, "unit not found");
+		}
+		if (lu->on_map()) {
+			loc = u->get_location();
+			if (!map().on_board(loc)) {
+				return luaL_argerror(L, 1, "invalid location");
+			}
+		} else if (int side = lu->on_recall_list()) {
+			team &t = teams()[side - 1];
+			// Should it use underlying ID instead?
+			t.recall_list().erase_if_matches_id(u->id());
+		} else {
+			return luaL_argerror(L, 1, "can't erase private units");
+		}
+	} else if (!lua_isnoneornil(L, 1)) {
+		config cfg = luaW_checkconfig(L, 1);
+		loc.x = cfg["x"] - 1;
+		loc.y = cfg["y"] - 1;
+		if (!map().on_board(loc)) {
+			return luaL_argerror(L, 1, "invalid location");
+		}
+	} else {
+		return luaL_argerror(L, 1, "expected unit or integer");
+	}
+	
+	units().erase(loc);
 	return 0;
 }
 
@@ -4266,6 +4335,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "delay",                     &dispatch<&game_lua_kernel::intf_delay                      >        },
 		{ "end_turn",                  &dispatch<&game_lua_kernel::intf_end_turn                   >        },
 		{ "end_level",                 &dispatch<&game_lua_kernel::intf_end_level                  >        },
+		{ "erase_unit",                &dispatch<&game_lua_kernel::intf_erase_unit                 >        },
 		{ "extract_unit",              &dispatch<&game_lua_kernel::intf_extract_unit               >        },
 		{ "find_cost_map",             &dispatch<&game_lua_kernel::intf_find_cost_map              >        },
 		{ "find_path",                 &dispatch<&game_lua_kernel::intf_find_path                  >        },
@@ -4568,6 +4638,8 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 	static luaL_Reg const methods[] = {
 		{"matches",               &dispatch<&game_lua_kernel::intf_match_unit>},
 		{"to_recall",             &dispatch<&game_lua_kernel::intf_put_recall_unit>},
+		{"to_map",                &dispatch<&game_lua_kernel::intf_put_unit>},
+		{"erase",                 &dispatch<&game_lua_kernel::intf_erase_unit>},
 		{"clone",                 intf_copy_unit},
 		{"extract",               &dispatch<&game_lua_kernel::intf_extract_unit>},
 		{"advance",               intf_advance_unit},
