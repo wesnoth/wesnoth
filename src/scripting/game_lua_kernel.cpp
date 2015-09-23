@@ -4510,16 +4510,16 @@ void game_lua_kernel::initialize(const config& level)
 int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 	static luaL_Reg const methods[] = {
 		{"matches",               &dispatch<&game_lua_kernel::intf_match_unit>},
-		{"to_recall_list",        &dispatch<&game_lua_kernel::intf_put_recall_unit>},
+		{"to_recall",             &dispatch<&game_lua_kernel::intf_put_recall_unit>},
 		{"clone",                 intf_copy_unit},
 		{"extract",               &dispatch<&game_lua_kernel::intf_extract_unit>},
 		{"advance",               intf_advance_unit},
 		{"add_modification",      intf_add_modification},
-		{"resistance_to",         intf_unit_resistance},
-		{"defense_on",            intf_unit_defense},
-		{"movement_on",           intf_unit_movement_cost},
-		{"under_ability",         intf_unit_ability},
-		{"transform_to",          intf_transform_unit},
+		{"resistance",            intf_unit_resistance},
+		{"defense",               intf_unit_defense},
+		{"movement",              intf_unit_movement_cost},
+		{"ability",               intf_unit_ability},
+		{"transform",             intf_transform_unit},
 	};
 	
 	BOOST_FOREACH(const luaL_Reg& r, methods) {
