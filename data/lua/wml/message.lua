@@ -2,6 +2,7 @@
 local helper = wesnoth.require "lua/helper.lua"
 local utils = wesnoth.require "lua/wml-utils.lua"
 local location_set = wesnoth.require "lua/location_set.lua"
+local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)
 	wesnoth.wml_actions.wml_message({
@@ -127,7 +128,7 @@ function wesnoth.wml_actions.message(cfg)
 
 	local options, option_events = {}, {}
 	for option in helper.child_range(cfg, "option") do
-		local condition = helper.get_child(cfg, "show_if") or {}
+		local condition = helper.get_child(option, "show_if") or {}
 
 		if wesnoth.eval_conditional(condition) then
 			table.insert(options, option.message)
@@ -196,7 +197,12 @@ function wesnoth.wml_actions.message(cfg)
 		-- Always show the dialog if it has no input, whether we are replaying or not
 		msg_dlg()
 	else
-		local choice = wesnoth.synchronize_choice(msg_dlg)
+		local wait_description = cfg.wait_description or _("input")
+		if type(sides_for) ~= "number" then
+			-- 0 means currently playing side.
+			sides_for = 0
+		end
+		local choice = wesnoth.synchronize_choice(wait_description, msg_dlg, sides_for)
 
 		option_chosen = tonumber(choice.value)
 
@@ -214,7 +220,8 @@ function wesnoth.wml_actions.message(cfg)
 		end
 
 		for i, cmd in ipairs(option_events[option_chosen]) do
-			utils.handle_event_commands(cmd)
+			local action = utils.handle_event_commands(cmd, "plain")
+			if action ~= "none" then break end
 		end
 	end
 end

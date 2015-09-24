@@ -23,6 +23,14 @@ import sys, os.path, argparse, tempfile, shutil, logging, socket
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 
+print("""
+Note: campaignserver_client has since been moved to Python 3 - the
+easiest way to run this script is to use campaginserver_client from
+an earlier Wesnoth version. And then in the long run convert this
+script to Python 3 as well.
+""")
+sys.exit(1)
+
 #import CampaignClient as libwml
 import wesnoth.campaignserver_client as libwml
 

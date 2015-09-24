@@ -1,11 +1,25 @@
-import gzip, zlib, StringIO
+import gzip, zlib, io
 import socket, struct, glob, sys, shutil, threading, os, fnmatch
-import wesnoth.wmldata as wmldata
-import wesnoth.wmlparser as wmlparser
+import wesnoth.wmlparser3 as wmlparser
 
 # See the following files (among others):
 # src/addon/*
 # src/network.cpp
+
+def append_attributes(tag, **attributes):
+    for k, v in attributes.items():
+        if isinstance(k, str): k = k.encode("utf8")
+        if isinstance(v, str): v = v.encode("utf8")
+        kn = wmlparser.AttributeNode(k)
+        vn = wmlparser.StringNode(v)
+        kn.value.append(vn)
+        tag.append(kn)
+
+def append_tag(tag : wmlparser.TagNode, sub : str) -> wmlparser.TagNode:
+    subtag = wmlparser.TagNode(sub.encode("utf8"))
+    if tag:
+        tag.append(subtag)
+    return subtag
 
 dumpi = 0
 class CampaignClient:
@@ -95,20 +109,18 @@ class CampaignClient:
 
 
     def make_packet(self, doc):
-        root = wmldata.DataSub("WML")
-        root.insert(doc)
-        return root.make_string()
+        return doc.wml()
 
     def send_packet(self, packet):
         """
         Send binary data to the server.
         """
         # Compress the packet before we send it
-        io = StringIO.StringIO()
-        z = gzip.GzipFile(mode = "w", fileobj = io)
+        fio = io.BytesIO()
+        z = gzip.GzipFile(mode = "wb", fileobj = fio)
         z.write(packet)
         z.close()
-        zdata = io.getvalue()
+        zdata = fio.getvalue()
 
         zpacket = struct.pack("!I", len(zdata)) + zdata
         self.sock.sendall(zpacket)
@@ -117,7 +129,7 @@ class CampaignClient:
         """
         Read binary data from the server.
         """
-        packet = ""
+        packet = b""
         while len(packet) < 4 and not self.canceled:
             r = self.sock.recv(4 - len(packet))
             if not r:
@@ -131,7 +143,7 @@ class CampaignClient:
         if not self.quiet:
             sys.stderr.write("Receiving %d bytes.\n" % self.length)
 
-        packet = ""
+        packet = b""
         while len(packet) < l and not self.canceled:
             r = self.sock.recv(l - len(packet))
             if not r:
@@ -144,16 +156,16 @@ class CampaignClient:
         if not self.quiet:
             sys.stderr.write("Received %d bytes.\n" % len(packet))
 
-        if packet.startswith("\x1F\x8B"):
+        if packet.startswith(b"\x1F\x8B"):
             if self.verbose:
                 sys.stderr.write("GZIP compression found...\n")
-            io = StringIO.StringIO(packet)
-            z = gzip.GzipFile(fileobj = io)
+            bio = io.BytesIO(packet)
+            z = gzip.GzipFile("rb", fileobj = bio)
             unzip = z.read()
             z.close()
             packet = unzip
 
-        elif packet.startswith( '\x78\x9C' ):
+        elif packet.startswith(b'\x78\x9C' ):
             if self.verbose:
                 sys.stderr.write("ZLIB compression found...\n")
             packet = zlib.decompres( packet )
@@ -169,77 +181,22 @@ class CampaignClient:
 
     def unescape(self, data):
         # 01 is used as escape character
-        data2 = ""
+        data2 = b""
         escape = False
         for c in data:
             if escape:
-                data2 += chr(ord(c) - 1)
+                data2 += bytes([c - 1])
                 escape = False
-            elif c == "\01":
+            elif c == 1:
                 escape = True
             else:
-                data2 += c
+                data2 += bytes([c])
         return data2
 
     def decode_WML(self, data):
-        p = wmlparser.Parser( None, no_macros_in_string=True )
-        p.verbose = False
-        p.do_preprocessor_logic = True
-        p.no_macros = True
-        p.parse_text(data, binary=True)
-        doc = wmldata.DataSub( "WML" )
-        p.parse_top(doc)
-
-        return doc
-
-        def done():
-            return pos[0] >= len(data)
-
-        def next():
-            c = data[pos[0]]
-            pos[0] += 1
-            return c
-
-        def literal():
-            s = pos[0]
-            e = data.find("\00", s)
-
-            pack = data[s:e]
-
-            pack = pack.replace("\01\01", "\00")
-            pack = pack.replace("\01\02", "\01")
-
-            pos[0] = e + 1
-
-            return pack
-
-        while not done():
-            code = ord(next())
-            if code == 0: # open element (name code follows)
-                open_element = True
-            elif code == 1: # close current element
-                tag.pop()
-            elif code == 2: # add code
-                self.words[self.wordcount] = literal()
-                self.wordcount += 1
-            else:
-                if code == 3:
-                    word = literal() # literal word
-                else:
-                    word = self.words[code] # code
-                if open_element: # we handle opening an element
-                    element = wmldata.DataSub(word)
-                    tag[-1].insert(element) # add it to the current one
-                    tag.append(element) # put to our stack to keep track
-                elif word == "contents": # detect any binary attributes
-                    binary = wmldata.DataBinary(word, literal())
-                    tag[-1].insert(binary)
-                else: # others are text attributes
-                    text = wmldata.DataText(word, literal())
-                    tag[-1].insert(text)
-                open_element = False
-
-        return WML
+        p = wmlparser.Parser()
+        p.parse_binary(data)
+        return p.root
 
     def encode_WML( self, data ):
         """
@@ -259,9 +216,9 @@ class CampaignClient:
         """
         if self.error:
             return None
-        request = wmldata.DataSub("request_campaign_list")
+        request = append_tag(None, "request_campaign_list")
         if addon:
-            request.insert_text("name", addon)
+            append_attributes(request, name = addon)
         self.send_packet(self.make_packet(request))
 
         return self.decode(self.read_packet())
@@ -270,9 +227,9 @@ class CampaignClient:
         """
         Deletes the named campaign on the server.
         """
-        request = wmldata.DataSub("delete")
-        request.set_text_val("name", name)
-        request.set_text_val("passphrase", passphrase)
+        request = append_tag(None, "delete")
+        append_attributes(request, name = name,
+            passphrase = passphrase)
 
         self.send_packet(self.make_packet(request))
         return self.decode(self.read_packet())
@@ -281,10 +238,9 @@ class CampaignClient:
         """
         Changes the passphrase of a campaign on the server.
         """
-        request = wmldata.DataSub("change_passphrase")
-        request.set_text_val("name", name)
-        request.set_text_val("passphrase", old)
-        request.set_text_val("new_passphrase", new)
+        request = append_tag(None, "change_passphrase")
+        append_attributes(request, name = name,
+            passphrase = old, new_passphrase = new)
 
         self.send_packet(self.make_packet(request))
         return self.decode(self.read_packet())
@@ -293,8 +249,8 @@ class CampaignClient:
         """
         Downloads the named campaign and returns it as a raw binary WML packet.
         """
-        request = wmldata.DataSub("request_campaign")
-        request.insert(wmldata.DataText("name", name))
+        request = append_tag(None, "request_campaign")
+        append_attributes(request, name = name)
         self.send_packet(self.make_packet(request))
         raw_packet = self.read_packet()
 
@@ -323,47 +279,45 @@ class CampaignClient:
 
         The directory is the name of the campaign's directory.
         """
-        request = pbl.copy()
-        request.name = "upload"
-        request.set_text_val("name", name)
-
-        data = wmldata.DataSub("data")
-        request.insert(data)
+        request = pbl
+        request.name = b"upload"
+        append_attributes(request, name = name)
+        data = append_tag(request, "data")
 
         def put_file(name, f):
             for ig in ign:
                 if ig and ig[-1] != "/" and fnmatch.fnmatch(name, ig):
-                    print("Ignored file", name)
+                    print(("Ignored file", name))
                     return None
-            fileNode = wmldata.DataSub("file")
+            fileNode = append_tag(None, "file")
 
             # Order in which we apply escape sequences matters.
             contents = f.read()
-            contents = contents.replace("\x01", "\x01\x02" )
-            contents = contents.replace("\x00", "\x01\x01")
-            contents = contents.replace("\x0d", "\x01\x0e")
-            contents = contents.replace("\xfe", "\x01\xff")
+            contents = contents.replace(b"\x01", b"\x01\x02" )
+            contents = contents.replace(b"\x00", b"\x01\x01")
+            contents = contents.replace(b"\x0d", b"\x01\x0e")
+            contents = contents.replace(b"\xfe", b"\x01\xff")
 
-            fileContents = wmldata.DataText("contents", contents)
-            fileNode.insert(fileContents)
-            fileNode.set_text_val("name", name)
+            append_attributes(fileNode, name = name)
+            append_attributes(fileNode, contents = contents)
 
             return fileNode
 
         def put_dir(name, path):
             for ig in ign:
                 if ig and ig[-1] == "/" and fnmatch.fnmatch(name, ig[:-1]):
-                    print("Ignored dir", name)
+                    print(("Ignored dir", name))
                     return None
 
-            dataNode = wmldata.DataSub("dir")
-            dataNode.set_text_val("name", name)
+            dataNode = append_tag("dir")
+            append_attributes(dataNode, name = name)
             for fn in glob.glob(path + "/*"):
                 if os.path.isdir(fn):
                     sub = put_dir(os.path.basename(fn), fn)
                 else:
                     sub = put_file(os.path.basename(fn), open(fn, 'rb'))
-                if sub: dataNode.insert(sub)
+                if sub:
+                    dataNode.append(sub)
             return dataNode
 
         # Only used if it's an old-style campaign directory
@@ -373,13 +327,16 @@ class CampaignClient:
 
         if not self.quiet:
             sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
-        data.insert(put_dir(name, directory))
+        data.append(put_dir(name, directory))
 
         packet = self.make_packet(request)
         open("packet.dump", "wb").write(packet)
         self.send_packet(packet)
 
-        return self.decode(self.read_packet())
+        response = self.read_packet()
+        if not response:
+            response = b""
+        return self.decode(response)
 
     def get_campaign_raw_async(self, name):
         """
@@ -450,20 +407,18 @@ class CampaignClient:
             os.mkdir(path)
         except OSError:
             pass
-        for f in data.get_all("file"):
+        for f in data.get_all(tag = "file"):
             name = f.get_text_val("name", "?")
-            contents = f.get_text("contents")
+            contents = f.get_binary("contents")
             if not contents:
-                contents = ""
+                contents = b""
                 if not self.quiet:
                     sys.stderr.write("File %s is empty.\n" % name)
                     sys.stderr.write(f.debug(write = False) + "\n")
-            if contents:
-                contents = contents.get_value()
             if verbose:
                 sys.stderr.write(i * " " + name + " (" +
                       str(len(contents)) + ")\n")
-            save = file( os.path.join(path, name), "wb")
+            save = open( os.path.join(path, name), "wb")
 
             # We MUST un-escape our data
             # Order we apply escape sequences matter here
@@ -471,7 +426,7 @@ class CampaignClient:
             save.write(contents)
             save.close()
 
-        for dir in data.get_all("dir"):
+        for dir in data.get_all(tag = "dir"):
             name = dir.get_text_val("name", "?")
             shutil.rmtree(os.path.join(path, name), True)
             os.mkdir(os.path.join(path, name))

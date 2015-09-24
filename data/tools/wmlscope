@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # wmlscope -- generate reports on WML macro and resource usage
@@ -93,11 +93,8 @@
 #
 # sets the warning level.
 
-from __future__ import print_function, unicode_literals, division
-from future_builtins import filter, map, zip
-
 import sys, os, time, re, getopt, hashlib, glob, codecs
-from wesnoth.wmltools import *
+from wesnoth.wmltools3 import *
 
 def interpret(lines, css):
     "Interpret the ! convention for .cfg comments."
@@ -208,11 +205,10 @@ class CrossRefLister(CrossRef):
                     # said bytes are placed in big-endian order (most significant bytes come first)
                     # we need to use some bitwise operations to convert them as a single integer
                     # also we don't need the remaining 5 bytes of the IHDR chunk
-                    # WARNING: for Python 3 ord() MUST be removed
-                    # this because Py2 reads the file as a string
-                    # while Py3 reads it as bytes, and each byte is already an int
-                    x = ord(w[0]) << 24 | ord(w[1]) << 16 | ord(w[2]) << 8 | ord(w[3])
-                    y = ord(h[0]) << 24 | ord(h[1]) << 16 | ord(h[2]) << 8 | ord(h[3])
+                    # Py3 reads the file as bytes, and each byte is already an int
+                    # this is why, unlike Python 2, ord() isn't needed
+                    x = w[0] << 24 | w[1] << 16 | w[2] << 8 | w[3]
+                    y = h[0] << 24 | h[1] << 16 | h[2] << 8 | h[3]
                     # these checks rely on add-ons that place files following mainline conventions
                     # I'm aware that this may not always be the case
                     # but the alternative will be implementing a more sophisticated check in wmllint
