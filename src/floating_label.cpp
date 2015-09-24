@@ -260,6 +260,10 @@ void floating_label::draw(surface screen)
 		return;
 	}
 
+	if(screen == NULL) {
+		return;
+	}
+
 	create_surface();
 	if(surf_ == NULL) {
 		return;
@@ -272,13 +276,9 @@ void floating_label::draw(surface screen)
 		}
 	}
 
-	if(screen == NULL) {
-		return;
-	}
-
 	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_blit(screen,&rect,buf_,NULL);
+	sdl_copy_portion(screen,&rect,buf_,NULL);
 	sdl_blit(surf_,NULL,screen,&rect);
 
 	update_rect(rect);

@@ -2548,7 +2548,7 @@ surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_fo
 		return NULL;
 	}
 
-	sdl_blit(src, &area, dst, NULL);
+	sdl_copy_portion(src, &area, dst, NULL);
 
 	return optimize_format ? display_format_alpha(dst) : dst;
 }

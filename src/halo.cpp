@@ -240,7 +240,7 @@ bool halo_impl::effect::render()
 		buffer_.assign(get_surface_portion(screen,rect));
 	} else {
 		SDL_Rect rect = rect_;
-		sdl_blit(screen,&rect,buffer_,NULL);
+		sdl_copy_portion(screen,&rect,buffer_,NULL);
 	}
 
 	sdl_blit(surf_,NULL,screen,&rect);
