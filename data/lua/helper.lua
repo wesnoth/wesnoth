@@ -49,6 +49,31 @@ function helper.get_child(cfg, name, id)
 	end
 end
 
+--! Returns the nth subtag of @a cfg with the given @a name.
+--! (Indices start at 1, as always with Lua.)
+--! The function also returns the index of the subtag in the array.
+function helper.get_nth_child(cfg, name, n)
+	for i = 1, #cfg do
+		local v = cfg[i]
+		if v[1] == name then
+			n = n - 1
+			if n == 1 then return v[2], i end
+		end
+	end
+end
+
+--! Returns the number of subtags of @a with the given @a name.
+function helper.child_count(cfg, name)
+	local n = 0
+	for i = 1, #cfg do
+		local v = cfg[i]
+		if v[1] == name then
+			n = n + 1
+		end
+	end
+	return n
+end
+
 --! Returns an iterator over all the subtags of @a cfg with the given @a name.
 function helper.child_range(cfg, tag)
 	local function f(s)
@@ -62,6 +87,15 @@ function helper.child_range(cfg, tag)
 		return c[2]
 	end
 	return f, { i = 1 }
+end
+
+--! Returns an array from the subtags of @a cfg with the given @a name
+function helper.child_array(cfg, tag)
+	local result = {}
+	for val in helper.child_range(cfg, tag) do
+		table.insert(result, val)
+	end
+	return result
 end
 
 --! Modifies all the units satisfying the given @a filter.
