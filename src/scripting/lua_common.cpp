@@ -285,9 +285,12 @@ static int impl_vconfig_ipairs_iter(lua_State *L)
 	}
 	std::pair<std::string, vconfig> value = *range.first++;
 	lua_pushinteger(L, i + 1);
+	lua_createtable(L, 2, 0);
 	lua_pushlstring(L, value.first.c_str(), value.first.length());
+	lua_rawseti(L, -2, 1);
 	luaW_pushvconfig(L, value.second);
-	return 3;
+	lua_rawseti(L, -2, 2);
+	return 2;
 }
 
 /**
