@@ -42,6 +42,8 @@
 
 static const char * gettextKey = "gettext";
 static const char * vconfigKey = "vconfig";
+static const char * vconfigpairsKey = "vconfig pairs";
+static const char * vconfigipairsKey = "vconfig ipairs";
 const char * tstringKey = "translatable string";
 
 namespace lua_common {
@@ -231,19 +233,15 @@ static int impl_vconfig_collect(lua_State *L)
 	return 0;
 }
 
-static std::map<int, config::const_attr_itors> pairs_iter_closures;
-
 /**
  * Iterate through the attributes of a vconfig
  */
 static int impl_vconfig_pairs_iter(lua_State *L)
 {
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	int save_index = luaL_checkinteger(L, lua_upvalueindex(1));
-	std::map<int, config::const_attr_itors>::iterator iter = pairs_iter_closures.find(save_index);
-	config::const_attr_itors& range = iter->second;
+	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigpairsKey);
+	config::const_attr_itors& range = *static_cast<config::const_attr_itors*>(p);
 	if (range.first == range.second) {
-		pairs_iter_closures.erase(iter);
 		return 0;
 	}
 	config::attribute value = *range.first++;
@@ -253,21 +251,33 @@ static int impl_vconfig_pairs_iter(lua_State *L)
 }
 
 /**
+ * Destroy a vconfig pairs iterator
+ */
+static int impl_vconfig_pairs_collect(lua_State *L)
+{
+	typedef config::const_attr_itors const_attr_itors;
+	void* p = lua_touserdata(L, 1);
+	const_attr_itors* cai = static_cast<const_attr_itors*>(p);
+	cai->~const_attr_itors();
+	return 0;
+}
+
+/**
  * Construct an iterator to iterate through the attributes of a vconfig
  */
 static int impl_vconfig_pairs(lua_State *L)
 {
+	static const size_t sz = sizeof(config::const_attr_itors);
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	static int pairs_iter_index = 0;
-	pairs_iter_closures.insert(std::make_pair(pairs_iter_index, vcfg.get_config().attribute_range()));
-	lua_pushinteger(L, pairs_iter_index++);
+	new(lua_newuserdata(L, sz)) config::const_attr_itors(vcfg.get_config().attribute_range());
+	luaL_newmetatable(L, vconfigpairsKey);
+	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_pairs_iter, 1);
 	lua_pushvalue(L, 1);
 	return 2;
 }
 
 typedef std::pair<vconfig::all_children_iterator, vconfig::all_children_iterator> vconfig_child_range;
-static std::map<int, vconfig_child_range> ipairs_iter_closures;
 
 /**
  * Iterate through the subtags of a vconfig
@@ -276,11 +286,9 @@ static int impl_vconfig_ipairs_iter(lua_State *L)
 {
 	luaW_checkvconfig(L, 1);
 	int i = luaL_checkinteger(L, 2);
-	int save_index = luaL_checkinteger(L, lua_upvalueindex(1));
-	std::map<int, vconfig_child_range>::iterator iter = ipairs_iter_closures.find(save_index);
-	vconfig_child_range& range = iter->second;
+	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigipairsKey);
+	vconfig_child_range& range = *static_cast<vconfig_child_range*>(p);
 	if (range.first == range.second) {
-		ipairs_iter_closures.erase(iter);
 		return 0;
 	}
 	std::pair<std::string, vconfig> value = *range.first++;
@@ -294,15 +302,26 @@ static int impl_vconfig_ipairs_iter(lua_State *L)
 }
 
 /**
+ * Destroy a vconfig ipairs iterator
+ */
+static int impl_vconfig_ipairs_collect(lua_State *L)
+{
+	void* p = lua_touserdata(L, 1);
+	vconfig_child_range* vcr = static_cast<vconfig_child_range*>(p);
+	vcr->~vconfig_child_range();
+	return 0;
+}
+
+/**
  * Construct an iterator to iterate through the subtags of a vconfig
  */
 static int impl_vconfig_ipairs(lua_State *L)
 {
+	static const size_t sz = sizeof(vconfig_child_range);
 	vconfig cfg = luaW_checkvconfig(L, 1);
-	static int ipairs_iter_index = 0;
-	vconfig_child_range range = std::make_pair(cfg.ordered_begin(), cfg.ordered_end());
-	ipairs_iter_closures.insert(std::make_pair(ipairs_iter_index, range));
-	lua_pushinteger(L, ipairs_iter_index++);
+	new(lua_newuserdata(L, sz)) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
+	luaL_newmetatable(L, vconfigipairsKey);
+	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_ipairs_iter, 1);
 	lua_pushvalue(L, 1);
 	lua_pushinteger(L, 0);
@@ -380,6 +399,21 @@ std::string register_vconfig_metatable(lua_State *L)
 
 	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
+	
+	// Metatables for the iterator userdata
+	
+	// I don't bother setting __metatable because this
+	// userdata is only ever stored in the iterator's
+	// upvalues, so it's never visible to the user.
+	luaL_newmetatable(L, vconfigpairsKey);
+	lua_pushstring(L, "__gc");
+	lua_pushcfunction(L, &impl_vconfig_pairs_collect);
+	lua_rawset(L, -3);
+	
+	luaL_newmetatable(L, vconfigipairsKey);
+	lua_pushstring(L, "__gc");
+	lua_pushcfunction(L, &impl_vconfig_ipairs_collect);
+	lua_rawset(L, -3);
 
 	return "Adding vconfig metatable...\n";
 }
