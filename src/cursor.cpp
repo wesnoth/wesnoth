@@ -26,10 +26,15 @@
 #include "video.hpp"
 
 #include <iostream>
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include <boost/logic/tribool.hpp>
+using boost::logic::tribool;
+using boost::logic::indeterminate;
+#endif
 
 static bool use_color_cursors()
 {
-#ifdef __APPLE__
+#if defined(__APPLE__) && !SDL_VERSION_ATLEAST(2,0,0)
 	// Color cursors on OS X are known to be unusable, so don't use them ever.
 	// See bug #18112.
 	return false;
@@ -87,6 +92,12 @@ static SDL_Cursor* create_cursor(surface surf)
 namespace {
 
 SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+#if SDL_VERSION_ATLEAST(2,0,0)
+tribool cache_color[cursor::NUM_CURSORS] = {
+	indeterminate, indeterminate, indeterminate, indeterminate,
+	indeterminate, indeterminate, indeterminate, indeterminate,
+};
+#endif
 
 // This array must have members corresponding to cursor::CURSOR_TYPE enum members
 // Apple need 16x16 b&w cursors
@@ -99,25 +110,42 @@ const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "
 const std::string color_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
 
 // Position of the hotspot of the cursor, from the normal topleft
+// These are only for the color cursors
 const int shift_x[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 2, 3, 0};
 const int shift_y[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 20, 22, 0};
 
 cursor::CURSOR_TYPE current_cursor = cursor::NORMAL;
 
+#if !SDL_VERSION_ATLEAST(2,0,0)
 int cursor_x = -1, cursor_y = -1;
 surface cursor_buf = NULL;
-bool have_focus = true;
 bool color_ready = false;
+#endif
+bool have_focus = true;
 
 }
 
 static SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	bool is_color = use_color_cursors();
+	if(cache[type] == NULL || indeterminate(cache_color[type]) || cache_color[type] != is_color) {
+		const std::string prefix = is_color ? "cursors/" : "cursors-bw/";
+		const surface surf(image::get_image(prefix + (is_color ? color_images : bw_images)[type]));
+		if (is_color) {
+			cache[type] = SDL_CreateColorCursor(surf.get(), shift_x[type], shift_y[type]);
+		} else {
+			cache[type] = create_cursor(surf);
+		}
+		cache_color[type] = is_color;
+	}
+#else
 	if(cache[type] == NULL) {
 		static const std::string prefix = "cursors-bw/";
 		const surface surf(image::get_image(prefix + bw_images[type]));
 		cache[type] = create_cursor(surf);
 	}
+#endif
 
 	return cache[type];
 }
@@ -130,10 +158,11 @@ static void clear_cache()
 			cache[n] = NULL;
 		}
 	}
-
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	if(cursor_buf != NULL) {
 		cursor_buf = NULL;
 	}
+#endif
 }
 
 namespace cursor
@@ -162,9 +191,13 @@ void set(CURSOR_TYPE type)
 		current_cursor = NORMAL;
 	}
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_Cursor * cursor_image = get_cursor(current_cursor);
+#else
 	const CURSOR_TYPE new_cursor = use_color_cursors() && color_ready ? cursor::NO_CURSOR : current_cursor;
 
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
+#endif
 
 	// Causes problem on Mac:
 	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
@@ -202,7 +235,9 @@ void set_focus(bool focus)
 {
 	have_focus = focus;
 	if (focus==false) {
+#if !SDL_VERSION_ATLEAST(2,0,0)
 		color_ready = false;
+#endif
 		set();
 	}
 }
@@ -217,6 +252,7 @@ setter::~setter()
 	set(old_);
 }
 
+#if !SDL_VERSION_ATLEAST(2,0,0)
 void draw(surface screen)
 {
 	if(use_color_cursors() == false) {
@@ -240,7 +276,8 @@ void draw(surface screen)
 		set();
 	}
 
-	/** @todo FIXME: don't parse the file path every time */
+	/** @todo FIXME: don't parse the file path every time
+	 */
 	const surface surf(image::get_image("cursors/" + color_images[current_cursor]));
 	if(surf == NULL) {
 		// Fall back to b&w cursors
@@ -299,6 +336,7 @@ void undraw(surface screen)
 	sdl_blit(cursor_buf,NULL,screen,&area);
 	update_rect(area);
 }
+#endif
 
 } // end namespace cursor
 

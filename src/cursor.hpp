@@ -38,8 +38,11 @@ void set(CURSOR_TYPE type = NUM_CURSORS);
 void set_dragging(bool drag);
 CURSOR_TYPE get();
 
+// These aren't used, but leaving the prototypes doesn't hurt and allows avoiding an SDL include
+//#if !SDL_VERSION_ATLEAST(2,0,0)
 void draw(surface screen);
 void undraw(surface screen);
+//#endif
 
 void set_focus(bool focus);
 

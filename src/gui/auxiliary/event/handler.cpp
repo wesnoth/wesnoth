@@ -541,9 +541,13 @@ void thandler::draw(const bool force)
 
 		surface frame_buffer = video.getSurface();
 
+#if !SDL_VERSION_ATLEAST(2,0,0)
 		cursor::draw(frame_buffer);
+#endif
 		video.flip();
+#if !SDL_VERSION_ATLEAST(2,0,0)
 		cursor::undraw(frame_buffer);
+#endif
 	}
 }
 

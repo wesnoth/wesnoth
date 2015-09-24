@@ -1414,11 +1414,15 @@ void display::flip()
 	font::draw_floating_labels(frameBuffer);
 #endif
 	events::raise_volatile_draw_event();
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	cursor::draw(frameBuffer);
+#endif
 
 	video().flip();
 
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	cursor::undraw(frameBuffer);
+#endif
 	events::raise_volatile_undraw_event();
 #ifdef SDL_GPU
 	font::undraw_floating_labels(screen_);
