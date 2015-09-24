@@ -5543,7 +5543,10 @@
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
-					"-Wno-unused-local-typedefs",
+					"-isystem",
+					"./Headers/glib-2.0",
+					"-isystem",
+					./Headers/cairo,
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = "";
@@ -5590,6 +5593,10 @@
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
+					"-isystem",
+					"./Headers/glib-2.0",
+					"-isystem",
+					./Headers/cairo,
 				);
 				PRODUCT_NAME = Wesnoth;
 				WARNING_CFLAGS = (
@@ -5632,10 +5639,6 @@
 				HEADER_SEARCH_PATHS = (
 					../..,
 					../../src,
-					./Headers,
-					./Headers/lua_5.1.4,
-					"./Headers/glib-2.0",
-					./Headers/cairo,
 					./lib/SDL.framework/Headers,
 					./lib/SDL_ttf.framework/Headers,
 					./lib/SDL_image.framework/Headers,
@@ -5678,10 +5681,6 @@
 				HEADER_SEARCH_PATHS = (
 					../..,
 					../../src,
-					./Headers,
-					./Headers/lua_5.1.4,
-					"./Headers/glib-2.0",
-					./Headers/cairo,
 					./lib/SDL.framework/Headers,
 					./lib/SDL_ttf.framework/Headers,
 					./lib/SDL_image.framework/Headers,
