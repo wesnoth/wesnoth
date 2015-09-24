@@ -272,7 +272,7 @@ void draw(surface screen)
 			, cursor_y - shift_y[current_cursor]
 			, surf->w
 			, surf->h);
-	sdl_blit(screen,&area,cursor_buf,NULL);
+	sdl_copy_portion(screen,&area,cursor_buf,NULL);
 
 	// Blit the surface
 	sdl_blit(surf,NULL,screen,&area);
