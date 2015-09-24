@@ -57,7 +57,7 @@
 #include <cmath>
 
 // Includes for bug #17573
-#if defined(__GLIBC__)
+#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 #include <gnu/libc-version.h>
 #include <cstdio>
 #endif
@@ -225,7 +225,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	, update_panel_image_(true),
 	panel_image_()
 #endif
-#if defined(__GLIBC__)
+#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 	, do_reverse_memcpy_workaround_(false)
 #endif
 {
