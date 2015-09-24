@@ -231,6 +231,81 @@ static int impl_vconfig_collect(lua_State *L)
 	return 0;
 }
 
+static std::map<int, config::const_attr_itors> pairs_iter_closures;
+
+/**
+ * Iterate through the attributes of a vconfig
+ */
+static int impl_vconfig_pairs_iter(lua_State *L)
+{
+	vconfig vcfg = luaW_checkvconfig(L, 1);
+	int save_index = luaL_checkinteger(L, lua_upvalueindex(1));
+	std::map<int, config::const_attr_itors>::iterator iter = pairs_iter_closures.find(save_index);
+	config::const_attr_itors& range = iter->second;
+	if (range.first == range.second) {
+		pairs_iter_closures.erase(iter);
+		return 0;
+	}
+	config::attribute value = *range.first++;
+	lua_pushlstring(L, value.first.c_str(), value.first.length());
+	luaW_pushscalar(L, vcfg[value.first]);
+	return 2;
+}
+
+/**
+ * Construct an iterator to iterate through the attributes of a vconfig
+ */
+static int impl_vconfig_pairs(lua_State *L)
+{
+	vconfig vcfg = luaW_checkvconfig(L, 1);
+	static int pairs_iter_index = 0;
+	pairs_iter_closures.insert(std::make_pair(pairs_iter_index, vcfg.get_config().attribute_range()));
+	lua_pushinteger(L, pairs_iter_index++);
+	lua_pushcclosure(L, &impl_vconfig_pairs_iter, 1);
+	lua_pushvalue(L, 1);
+	return 2;
+}
+
+typedef std::pair<vconfig::all_children_iterator, vconfig::all_children_iterator> vconfig_child_range;
+static std::map<int, vconfig_child_range> ipairs_iter_closures;
+
+/**
+ * Iterate through the subtags of a vconfig
+ */
+static int impl_vconfig_ipairs_iter(lua_State *L)
+{
+	luaW_checkvconfig(L, 1);
+	int i = luaL_checkinteger(L, 2);
+	int save_index = luaL_checkinteger(L, lua_upvalueindex(1));
+	std::map<int, vconfig_child_range>::iterator iter = ipairs_iter_closures.find(save_index);
+	vconfig_child_range& range = iter->second;
+	if (range.first == range.second) {
+		ipairs_iter_closures.erase(iter);
+		return 0;
+	}
+	std::pair<std::string, vconfig> value = *range.first++;
+	lua_pushinteger(L, i + 1);
+	lua_pushlstring(L, value.first.c_str(), value.first.length());
+	luaW_pushvconfig(L, value.second);
+	return 3;
+}
+
+/**
+ * Construct an iterator to iterate through the subtags of a vconfig
+ */
+static int impl_vconfig_ipairs(lua_State *L)
+{
+	vconfig cfg = luaW_checkvconfig(L, 1);
+	static int ipairs_iter_index = 0;
+	vconfig_child_range range = std::make_pair(cfg.ordered_begin(), cfg.ordered_end());
+	ipairs_iter_closures.insert(std::make_pair(ipairs_iter_index, range));
+	lua_pushinteger(L, ipairs_iter_index++);
+	lua_pushcclosure(L, &impl_vconfig_ipairs_iter, 1);
+	lua_pushvalue(L, 1);
+	lua_pushinteger(L, 0);
+	return 3;
+}
+
 /**
  * Creates a vconfig containing the WML table.
  * - Arg 1: WML table.
@@ -294,6 +369,8 @@ std::string register_vconfig_metatable(lua_State *L)
 		{ "__gc",           &impl_vconfig_collect},
 		{ "__index",        &impl_vconfig_get},
 		{ "__len",          &impl_vconfig_size},
+		{ "__pairs",        &impl_vconfig_pairs},
+		{ "__ipairs",       &impl_vconfig_ipairs},
 		{ NULL, NULL }
 	};
 	luaL_setfuncs(L, callbacks, 0);
