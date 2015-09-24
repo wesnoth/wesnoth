@@ -6182,7 +6182,10 @@
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/lib\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-Wall";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wno-unused-local-typedefs",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
@@ -6230,7 +6233,8 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/lib\"";
-				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
+				OTHER_CFLAGS = "-Wno-unused-local-typedefs";
+				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
