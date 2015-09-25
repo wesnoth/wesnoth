@@ -64,7 +64,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
@@ -141,7 +141,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
@@ -221,7 +221,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
@@ -298,7 +298,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
