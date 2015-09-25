@@ -378,5 +378,6 @@ bool mp_replay_controller::can_execute_command(const hotkey::hotkey_command& cmd
 		return should_stop() && (events::commands_disabled <= 1 ) && !recorder_at_end();
 	default:
 		assert(false);
+		return false;
 	}
 }
