@@ -553,7 +553,7 @@ void create::draw_level_image()
 		engine_.current_level().create_image_surface(image_rect_));
 
 	if (!image.null()) {
-		SDL_Color back_color = {0,0,0,255};
+		SDL_Color back_color = {0,0,0,SDL_ALPHA_OPAQUE};
 		draw_centered_on_background(image, image_rect_, back_color,
 			video().getSurface());
 	} else {

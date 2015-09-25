@@ -50,14 +50,14 @@ const std::string weapon = "<245,230,193>",
 		race = "<166,146,117>";
 
 const SDL_Color
-	weapon_color = { 245, 230, 193, 255 },
-	good_dmg_color = { 130, 240, 50, 255 },
-	bad_dmg_color = { 250, 140, 80, 255 },
-	weapon_details_color = { 166, 146, 117, 255 },
-	inactive_details_color = { 146, 146, 146, 255 },
-	inactive_ability_color = { 146, 146, 146, 255 },
-	unit_type_color = { 245, 230, 193, 255 },
-	race_color = { 166, 146, 117, 255 };
+	weapon_color = { 245, 230, 193, SDL_ALPHA_OPAQUE },
+	good_dmg_color = { 130, 240, 50, SDL_ALPHA_OPAQUE },
+	bad_dmg_color = { 250, 140, 80, SDL_ALPHA_OPAQUE },
+	weapon_details_color = { 166, 146, 117, SDL_ALPHA_OPAQUE },
+	inactive_details_color = { 146, 146, 146, SDL_ALPHA_OPAQUE },
+	inactive_ability_color = { 146, 146, 146, SDL_ALPHA_OPAQUE },
+	unit_type_color = { 245, 230, 193, SDL_ALPHA_OPAQUE },
+	race_color = { 166, 146, 117, SDL_ALPHA_OPAQUE };
 
 const std::string weapon_numbers_sep = "–", weapon_details_sep = "–";
 

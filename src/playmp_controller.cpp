@@ -158,7 +158,7 @@ void playmp_controller::play_human_turn()
 				{
 					font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
-					SDL_Color color = {255,255,255,255};
+					SDL_Color color = {255,255,255,SDL_ALPHA_OPAQUE};
 					flabel.set_color(color);
 					SDL_Rect rect = gui_->map_area();
 					flabel.set_position(rect.w/2, rect.h/2);

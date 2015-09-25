@@ -435,9 +435,9 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 	SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
 
 	SDL_Rect clip_rect = sdl::create_rect(0, 0, width, height);
-	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, 255);
+	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, SDL_ALPHA_OPAQUE);
 
-	Uint32 background_color = SDL_MapRGBA(surf->format, 25, 25, 25, 255);
+	Uint32 background_color = SDL_MapRGBA(surf->format, 25, 25, 25, SDL_ALPHA_OPAQUE);
 	sdl::fill_rect(surf, &clip_rect, background_color);
 
 	// Draw the surrounding borders and separators.
@@ -471,7 +471,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 
 		// Death line is red.
 		if(hp == 0) {
-			SDL_Color color = {0xe5, 0, 0, 255};
+			SDL_Color color = {0xe5, 0, 0, SDL_ALPHA_OPAQUE};
 			row_color = color;
 		}
 
@@ -479,17 +479,17 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		else if(hp < static_cast<int>(stats.hp)) {
 			// Stone is grey.
 			if(opp_stats.petrifies) {
-				SDL_Color color = {0x9a, 0x9a, 0x9a, 255};
+				SDL_Color color = {0x9a, 0x9a, 0x9a, SDL_ALPHA_OPAQUE};
 				row_color = color;
 			} else {
-				SDL_Color color = {0xf4, 0xc9, 0, 255};
+				SDL_Color color = {0xf4, 0xc9, 0, SDL_ALPHA_OPAQUE};
 				row_color = color;
 			}
 		}
 
 		// Current hitpoints value and above is green.
 		else {
-			SDL_Color color = {0x08, 0xca, 0, 255};
+			SDL_Color color = {0x08, 0xca, 0, SDL_ALPHA_OPAQUE};
 			row_color = color;
 		}
 
