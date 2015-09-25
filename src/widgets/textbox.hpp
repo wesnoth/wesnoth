@@ -92,6 +92,14 @@ private:
 
 	textbox* edit_target_;
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	/* This boolean is used to filter out any TextInput events that are received without
+	 * the corresponding KeyPress events. This is needed to avoid a bug when creating a
+	 * textbox using a hotkey.
+	 * */
+	bool listening_;
+#endif
+
 	void handle_event(const SDL_Event& event, bool was_forwarded);
 
 	void handle_event(const SDL_Event& event);
@@ -109,6 +117,10 @@ private:
 	bool requires_event_focus(const SDL_Event *event=NULL) const;
 
 	bool show_scrollbar() const;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	bool handle_text_input(const SDL_Event& event);
+#endif
+	bool handle_key_down(const SDL_Event &event);
 };
 
 }
