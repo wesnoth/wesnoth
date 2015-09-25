@@ -1403,7 +1403,7 @@ void display::flip()
 	if (sunset_delay && ++sunset_timer > sunset_delay) {
 		sunset_timer = 0;
 		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
-		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
+		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,SDL_ALPHA_OPAQUE);
 		// Adjust the alpha if you want to balance cpu-cost / smooth sunset
 		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
 		update_rect(r);
@@ -2104,7 +2104,7 @@ void display::draw_minimap()
 	const surface& screen(screen_.getSurface());
 	clip_rect_setter clip_setter(screen, &area);
 
-	SDL_Color back_color = {31,31,23,255};
+	SDL_Color back_color = {31,31,23,SDL_ALPHA_OPAQUE};
 	draw_centered_on_background(minimap_, area, back_color, screen);
 
 	//update the minimap location for mouse and units functions

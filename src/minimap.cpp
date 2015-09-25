@@ -349,7 +349,7 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 					SDL_Color col;
 					std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_info.id());
 					if (it == game_config::team_rgb_range.end()) {
-						col = create_color(0,0,0,255);
+						col = create_color(0,0,0,SDL_ALPHA_OPAQUE);
 					} else
 						col = int_to_color(it->second.rep());
 

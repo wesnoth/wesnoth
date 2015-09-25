@@ -449,7 +449,7 @@ SDL_Color int_to_color(const Uint32 rgb);
 SDL_Color create_color(const unsigned char red
 		, unsigned char green
 		, unsigned char blue
-		, unsigned char alpha = 255);
+		, unsigned char alpha = SDL_ALPHA_OPAQUE);
 
 /**
  * Helper class for pinning SDL surfaces into memory.

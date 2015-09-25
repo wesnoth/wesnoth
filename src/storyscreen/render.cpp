@@ -741,7 +741,7 @@ void part_ui::render_story_box()
 	}
 
 	const SDL_Rect rect = sdl::create_rect(0, 0, video_.getx(), video_.gety());
-	sdl::fill_rect(video_, rect, 0, 0, 0, 255);
+	sdl::fill_rect(video_, rect, 0, 0, 0, SDL_ALPHA_OPAQUE);
 #else
 	LOG_NG << "ENTER part_ui()::render_story_box()\n";
 
