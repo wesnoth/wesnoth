@@ -241,7 +241,7 @@ bool non_interactive()
 	if (fake_interactive)
 		return false;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-	return false;
+	return window == NULL;
 #else
 	return SDL_GetVideoSurface() == NULL;
 #endif
