@@ -38,5 +38,12 @@ KNOWN BUGS
     [*]In some scenarios Human sides get too much or too few carryover gold. 
     [*]Bugs when using shuffle sides.
     [/list]
+[*] OOS can still happen in multiplayer games:
+    [list]
+    [*][bug] 23316 [/bug] if first a game is reloaded an multiplayer and then moves are undone that were made before saving the game OOS will appear.  then moves that were dibe .
+    [*][bug] 23903 [/bug] [allow_undo] in wml menu items causes OO.Shttps://gna.org/bugs/?23316
+    [*][bug] 23600 [/bug] It is possible to undo moves that were made before the last shroud update this can cause OOS if certain sighted events are involved.
+    [*][bug] 23695 [/bug] A capture event is fired when undoing moves that started from a village.
+    [/list]
 [*]Example issue 2 (bug [bug]98765[/bug]).
 [/list]
