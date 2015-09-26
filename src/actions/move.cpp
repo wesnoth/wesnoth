@@ -136,6 +136,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 }
 
 
+bool get_village(const map_location& loc, int side, int *action_timebonus);
 bool get_village(const map_location& loc, int side, int *action_timebonus)
 {
 	std::vector<team> &teams = *resources::teams;
@@ -175,6 +176,51 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 			resources::screen->invalidate(loc);
 		}
 		return t->get_village(loc, old_owner_side);
+	}
+
+	return false;
+}
+
+bool get_village(const map_location& loc, int side, int *action_timebonus, bool fire_event);
+bool get_village(const map_location& loc, int side, int *action_timebonus, bool fire_event)
+{
+	std::vector<team> &teams = *resources::teams;
+	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : NULL;
+	if (t && t->owns_village(loc)) {
+		return false;
+	}
+
+	bool has_leader = resources::units->find_leader(side).valid();
+	bool grants_timebonus = false;
+
+	int old_owner_side = 0;
+	// We strip the village off all other sides, unless it is held by an ally
+	// and we don't have a leader (and thus can't occupy it)
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+		int i_side = i - teams.begin() + 1;
+		if (!t || has_leader || t->is_enemy(i_side)) {
+			if(i->owns_village(loc)) {
+				old_owner_side = i_side;
+				i->lose_village(loc);
+			}
+			if (side != i_side && action_timebonus) {
+				grants_timebonus = true;
+			}
+		}
+	}
+
+	if (!t) return false;
+
+	if(grants_timebonus) {
+		t->set_action_bonus_count(1 + t->action_bonus_count());
+		*action_timebonus = 1;
+	}
+
+	if(has_leader) {
+		if (resources::screen != NULL) {
+			resources::screen->invalidate(loc);
+		}
+		return t->get_village(loc, old_owner_side, fire_event);
 	}
 
 	return false;
