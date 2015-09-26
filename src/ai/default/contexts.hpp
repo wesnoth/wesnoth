@@ -24,6 +24,10 @@
 #include "formula_callable.hpp"
 
 #ifdef _MSC_VER
+#if _MSC_VER < 1600
+// SDL2 uses [dfi]vec.h which used to define EXPLICIT
+#undef EXPLICIT
+#endif
 #pragma warning(push)
 //silence "inherits via dominance" warnings
 #pragma warning(disable:4250)
