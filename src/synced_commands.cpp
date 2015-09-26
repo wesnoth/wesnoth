@@ -301,7 +301,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, /*er
 	BOOST_FOREACH(const config &v, child.child_range("set_variable")) {
 		resources::gamedata->set_variable(v["name"], v["value"]);
 	}
-	bool undoable = true;
 
 	if(const config &last_select = child.child("last_select"))
 	{
@@ -310,12 +309,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, /*er
 	}
 	const std::string &event_name = child["raise"];
 	if (const config &source = child.child("source")) {
-		undoable = undoable & !game_events::fire(event_name, map_location(source, resources::gamedata));
+		game_events::fire(event_name, map_location(source, resources::gamedata));
 	} else {
-		undoable = undoable & !game_events::fire(event_name);
+		game_events::fire(event_name);
 	}
-	if ( !undoable)
-		resources::undo_stack->clear();
+	resources::undo_stack->clear();
 	return true;
 }
 
