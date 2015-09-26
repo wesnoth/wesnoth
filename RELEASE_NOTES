@@ -51,6 +51,7 @@ KNOWN BUGS
     [list]
     [*][bug] 23316 [/bug] if first a game is reloaded in multiplayer and then moves are undone that were made before saving the game OOS will appear.
     [*][bug] 23695 [/bug] A capture event is fired when undoing moves that started from a village.
+    [*] Putting units on the recall list with wml/lua causes OOS if that unit is recalled by the player in the same scenario where it was put to the recall list. This can be fixed by giving the unit an id manually in a synced way.
     [/list]
 [*]Example issue 2 (bug [bug]98765[/bug]).
 [/list]
