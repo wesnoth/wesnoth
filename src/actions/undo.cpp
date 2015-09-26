@@ -486,7 +486,7 @@ void undo_list::commit_vision()
 	if ( erase_to != 0 ) {
 		// The actions that led to information being revealed can no longer
 		// be undone.
-		undos_.erase(undos_.begin(), undos_.begin() + erase_to);
+		undos_.clear();
 		committed_actions_ = true;
 	}
 
