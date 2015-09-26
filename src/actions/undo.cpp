@@ -715,7 +715,7 @@ bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
 	}
 
 	if ( resources::game_map->is_village(rev_route.front()) ) {
-		get_village(rev_route.front(), original_village_owner + 1);
+		get_village(rev_route.front(), original_village_owner + 1, NULL, false);
 		//MP_COUNTDOWN take away capture bonus
 		if ( countdown_time_bonus )
 		{
@@ -959,7 +959,7 @@ bool undo_list::move_action::redo(int side)
 	u->set_standing();
 
 	if ( resources::game_map->is_village(route.back()) ) {
-		get_village(route.back(), u->side());
+		get_village(route.back(), u->side(), NULL, false);
 		//MP_COUNTDOWN restore capture bonus
 		if ( countdown_time_bonus )
 		{
