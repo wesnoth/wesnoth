@@ -136,6 +136,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 }
 
 
+bool get_village(const map_location& loc, int side, int *action_timebonus);
 bool get_village(const map_location& loc, int side, int *action_timebonus)
 {
 	std::vector<team> &teams = *resources::teams;
