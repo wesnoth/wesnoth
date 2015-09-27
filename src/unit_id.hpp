@@ -35,11 +35,11 @@ namespace n_unit {
 		static unit_id create_real(size_t val) { return unit_id(val); }
 		static unit_id create_fake(size_t val) { return unit_id(val + highest_bit); }
 
-		friend bool operator <(unit_id a, unit_id b) { return a < b; }
-		friend bool operator <=(unit_id a, unit_id b) { return a <= b; }
-		friend bool operator ==(unit_id a, unit_id b) { return a == b; }
-		friend bool operator >=(unit_id a, unit_id b) { return a >= b; }
-		friend bool operator >(unit_id a, unit_id b) { return a > b; }
+		friend bool operator <(unit_id a, unit_id b) { return a.value < b.value; }
+		friend bool operator <=(unit_id a, unit_id b) { return a.value <= b.value; }
+		friend bool operator ==(unit_id a, unit_id b) { return a.value == b.value; }
+		friend bool operator >=(unit_id a, unit_id b) { return a.value >= b.value; }
+		friend bool operator >(unit_id a, unit_id b) { return a.value > b.value; }
 	};
 
 	class id_manager //: private boost::noncopyable
