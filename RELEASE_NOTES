@@ -27,6 +27,7 @@ Some people experienced OOS errors on random maps due to sides being placed in d
 [*][bug] 23600 [/bug] It was possible to undo moves that were made before the last shroud update. This can cause OOS if certain sighted events are involved.
 [*][bug] 23903 [/bug] [allow_undo] in wml menu items caused OOS. Now [allow_undo] is ignored in wml menu items.
 [*][bug] 23454 [/bug] OOS happened to observers of mp campaigns.
+[*][bug] 23695 [/bug] A capture event was fired when undoing moves that started from a village.
 [/list]
 
 [/rasection]
@@ -50,7 +51,6 @@ KNOWN BUGS
 [*] OOS can still happen in multiplayer games:
     [list]
     [*][bug] 23316 [/bug] if first a game is reloaded in multiplayer and then moves are undone that were made before saving the game OOS will appear.
-    [*][bug] 23695 [/bug] A capture event is fired when undoing moves that started from a village.
     [*] Putting units on the recall list with wml/lua causes OOS if that unit is recalled by the player in the same scenario where it was put to the recall list. This can be fixed by giving the unit an id manually in a synced way.
     [/list]
 [*]Example issue 2 (bug [bug]98765[/bug]).
