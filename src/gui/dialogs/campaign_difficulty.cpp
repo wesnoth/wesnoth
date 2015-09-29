@@ -77,21 +77,21 @@ tcampaign_difficulty::tcampaign_difficulty(
 	// Populate local config with difficulty children
 	difficulties_.append_children(campaign, "difficulty");
 
-	std::vector<std::string> difficulty_list_ = utils::split(campaign["difficulties"]);
-	std::vector<std::string> difficulty_opts_ = utils::split(campaign["difficulty_descriptions"], ';');
+	std::vector<std::string> difficulty_list = utils::split(campaign["difficulties"]);
+	std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
 
 	// Convert legacy format to new-style config if latter not present
 	if(difficulties_.empty()) {
-		if(difficulty_opts_.size() != difficulty_list_.size()) {
-			difficulty_opts_ = difficulty_list_;
+		if(difficulty_opts.size() != difficulty_list.size()) {
+			difficulty_opts = difficulty_list;
 		}
 
-		for(std::size_t i = 0; i < difficulty_opts_.size(); i++)
+		for(std::size_t i = 0; i < difficulty_opts.size(); i++)
 		{
 			config temp;
-			gui2::tlegacy_menu_item parsed(difficulty_opts_[i]);
+			gui2::tlegacy_menu_item parsed(difficulty_opts[i]);
 
-			temp["define"] = difficulty_list_[i];
+			temp["define"] = difficulty_list[i];
 			temp["image"] = parsed.icon();
 			temp["label"] = parsed.label();
 			temp["description"] = parsed.description();
