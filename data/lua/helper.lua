@@ -72,17 +72,16 @@ end
 
 --! Returns an iterator over all the subtags of @a cfg with the given @a name.
 function helper.child_range(cfg, tag)
+	local iter, s, i = ipairs(cfg)
 	local function f(s)
-		local c
+		local i,c = s.i
 		repeat
-			local i = s.i
-			c = cfg[i]
+			i,c = iter(cfg,i)
 			if not c then return end
-			s.i = i + 1
 		until c[1] == tag
 		return c[2]
 	end
-	return f, { i = 1 }
+	return f, {i = 1}
 end
 
 --! Returns an array from the subtags of @a cfg with the given @a name

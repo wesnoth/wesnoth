@@ -229,7 +229,7 @@ static int impl_vconfig_size(lua_State *L)
 static int impl_vconfig_collect(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
-	v->vconfig::~vconfig();
+	v->~vconfig();
 	return 0;
 }
 
