@@ -14,6 +14,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "config.hpp"
+#include "game_preferences.hpp"
+#include "formula_string_utils.hpp"
+
 #include "gui/dialogs/campaign_difficulty.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
@@ -65,12 +69,37 @@ namespace gui2
 REGISTER_DIALOG(campaign_difficulty)
 
 tcampaign_difficulty::tcampaign_difficulty(
-		const std::vector<std::pair<std::string, bool> >& items)
-	: index_(-1), items_()
+		const config& campaign)
+	: difficulties_()
+	, campaign_id_(campaign["id"])
+	, selected_difficulty_()
 {
-	FOREACH(const AUTO & p, items)
-	{
-		items_.push_back(std::make_pair(tlegacy_menu_item(p.first), p.second));
+	// Populate local config with difficulty children
+	difficulties_.append_children(campaign, "difficulty");
+
+	std::vector<std::string> difficulty_list = utils::split(campaign["difficulties"]);
+	std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
+
+	// Convert legacy format to new-style config if latter not present
+	if(difficulties_.empty()) {
+		if(difficulty_opts.size() != difficulty_list.size()) {
+			difficulty_opts = difficulty_list;
+		}
+
+		for(std::size_t i = 0; i < difficulty_opts.size(); i++)
+		{
+			config temp;
+			gui2::tlegacy_menu_item parsed(difficulty_opts[i]);
+
+			temp["define"] = difficulty_list[i];
+			temp["image"] = parsed.icon();
+			temp["label"] = parsed.label();
+			temp["description"] = parsed.description();
+			temp["default"] = parsed.is_default();
+			temp["old_markup"] = true; // To prevent double parentheses in the dialog
+
+			difficulties_.add_child("difficulty", temp);
+		}
 	}
 }
 
@@ -81,42 +110,41 @@ void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::map<std::string, string_map> data;
 
-	FOREACH(const AUTO & item, items_)
+	BOOST_FOREACH(const config &d, difficulties_.child_range("difficulty"))
 	{
-		if(item.first.is_default()) {
-			index_ = list.get_item_count();
-		}
-
-		data["icon"]["label"] = item.first.icon();
-		data["label"]["label"] = item.first.label();
+		data["icon"]["label"] = d["image"];
+		data["label"]["label"] = d["label"];
 		data["label"]["use_markup"] = "true";
-		data["description"]["label"] = item.first.description();
+		data["description"]["label"] = d["old_markup"].to_bool() ? d["description"]
+			: std::string("(") + d["description"] + std::string(")");
 		data["description"]["use_markup"] = "true";
 
 		list.add_row(data);
 
-		tgrid* grid = list.get_row_grid(list.get_item_count() - 1);
+		const int this_row = list.get_item_count() - 1;
+
+		if(d["default"].to_bool(false)) {
+			list.select_row(this_row);
+		}
+
+		tgrid* grid = list.get_row_grid(this_row);
 		assert(grid);
 
 		twidget *widget = grid->find("victory", false);
-		if (widget && !item.second) {
+		if (widget && !preferences::is_campaign_completed(campaign_id_, d["define"])) {
 			widget->set_visible(twidget::tvisible::hidden);
 		}
-	}
-
-	if(index_ != -1) {
-		list.select_row(index_);
 	}
 }
 
 void tcampaign_difficulty::post_show(twindow& window)
 {
 	if(get_retval() != twindow::OK) {
-		index_ = -1;
+		selected_difficulty_ = "CANCEL";
 		return;
 	}
 
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
-	index_ = list.get_selected_row();
+	selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
 }
 }

@@ -572,70 +572,51 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
  *
  * Launches difficulty selection gui and returns selected difficulty name.
  *
- * The gui can be bypassed by supplying a number
- * from 1 to the number of difficulties available,
- * corresponding to a choice of difficulty.
+ * The gui can be bypassed by supplying a number from 1 to the number of 
+ * difficulties available, corresponding to a choice of difficulty.
  * This is useful for specifying difficulty via command line.
  *
  * @param	set_value Preselected difficulty number. The default -1 launches the gui.
  * @return	Selected difficulty. Returns "FAIL" if set_value is invalid,
- *	and "CANCEL" if the gui is cancelled.
+ *	        and "CANCEL" if the gui is cancelled.
  */
 std::string create_engine::select_campaign_difficulty(int set_value)
 {
-	const std::vector<std::string> difficulties =
-		utils::split(current_level().data()["difficulties"]);
+	// A specific difficulty value was passed
+	// Use a minimilistic interface to get the specified define
+	if(set_value != -1) {
+		std::vector<std::string> difficulties =
+			utils::split(current_level().data()["difficulties"]);
 
-	if(difficulties.empty()) return "";
-
-	int difficulty = 0;
-	if (set_value != -1)
-	{
-		// user-specified campaign to jump to. con
-		if (set_value
-				> static_cast<int>(difficulties.size()))
-		{
-			std::cerr << "incorrect difficulty number: [" <<
-				set_value << "]. maximum is [" <<
-				difficulties.size() << "].\n";
-			return "FAIL";
+		if(difficulties.empty()) {
+			BOOST_FOREACH(const config &d, current_level().data().child_range("difficulty"))
+			{
+				difficulties.push_back(d["define"]);
+			}
 		}
-		else if (set_value < 1)
-		{
+
+		if(difficulties.empty()) {
+			return "";
+		}
+
+		if (set_value > static_cast<int>(difficulties.size())) {
+			std::cerr << "incorrect difficulty number: [" <<
+				set_value << "]. maximum is [" << difficulties.size() << "].\n";
+			return "FAIL";
+		} else if (set_value < 1) {
 			std::cerr << "incorrect difficulty number: [" <<
 				set_value << "]. minimum is [1].\n";
 			return "FAIL";
-		}
-		else
-		{
-			difficulty = set_value - 1;
+		} else {
+			return difficulties[set_value - 1];
 		}
 	}
-	else
-	{
-		std::string campaign_id = current_level().data()["id"];
-		std::vector<std::string> difficulty_opts =
-			utils::split(current_level().data()["difficulty_descriptions"], ';');
-		if(difficulty_opts.size() != difficulties.size())
-		{
-			difficulty_opts = difficulties;
-		}
-		std::vector<std::pair<std::string, bool> > difficulty_options;
-		for (size_t i = 0; i < difficulties.size(); i++) {
-			difficulty_options.push_back(make_pair(difficulty_opts[i], preferences::is_campaign_completed(campaign_id, difficulties[i])));
-		}
 
-		// show gui
-		gui2::tcampaign_difficulty dlg(difficulty_options);
-		dlg.show(disp_.video());
+	// If not, let the user pick one from the prompt
+	gui2::tcampaign_difficulty dlg(current_level().data());
+	dlg.show(disp_.video());
 
-		if(dlg.selected_index() == -1)
-		{
-			return "CANCEL";
-		}
-		difficulty = dlg.selected_index();
-	}
-	return difficulties[difficulty];
+	return dlg.selected_difficulty();
 }
 
 void create_engine::prepare_for_saved_game()

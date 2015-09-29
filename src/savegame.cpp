@@ -127,49 +127,31 @@ void loadgame::show_difficulty_dialog()
 	const config& cfg_summary = info.summary();
 
 	if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
-		|| (!cfg_summary["turn"].empty()) )
+		|| (!cfg_summary["turn"].empty()) ) {
 		return;
+	}
 
 	std::string campaign_id = cfg_summary["campaign"];
-	const config::const_child_itors &campaigns = game_config_.child_range("campaign");
-	std::vector<std::string> difficulties;
-	std::vector<std::pair<std::string, bool> > difficulty_options;
-	BOOST_FOREACH(const config &campaign, campaigns)
+
+	BOOST_FOREACH(const config &campaign, game_config_.child_range("campaign"))
 	{
-		if (campaign["id"] == campaign_id) {
-			difficulties = utils::split(campaign["difficulties"], ',');
-			std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
-			if (difficulty_opts.size() != difficulties.size()) {
-				difficulty_opts = difficulties;
-			}
-			for (size_t i = 0; i < difficulties.size(); i++) {
-				difficulty_options.push_back(make_pair(difficulty_opts[i], preferences::is_campaign_completed(campaign_id, difficulties[i])));
-			}
-			break;
+		if(campaign["id"] != campaign_id) {
+			continue;
 		}
-	}
 
-	if (difficulty_options.empty())
-		return;
+		gui2::tcampaign_difficulty difficulty_dlg(campaign);
+		difficulty_dlg.show(gui_.video());
 
-#if 0
-	int default_difficulty = -1;
-	for (size_t i = 0; i < difficulties.size(); i++) {
-		if (difficulties[i] == cfg_summary["difficulty"]) {
-			default_difficulty = i;
-			break;
+		// Return if canceled, since otherwise difficulty_ will be set to 'CANCEL'
+		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
+			return;
 		}
+
+		difficulty_ = difficulty_dlg.selected_difficulty();
+
+		// Exit loop
+		break;
 	}
-#endif
-
-	gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
-	difficulty_dlg.show(gui_.video());
-
-	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
-		return;
-	}
-
-	difficulty_ = difficulties[difficulty_dlg.selected_index()];
 }
 
 // Called only by play_controller to handle in-game attempts to load. Instead of returning true,
@@ -308,7 +290,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 		symbols["version_number"] = save_version.str();
 		const int res = gui2::show_message(video, _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::tmessage::yes_no_buttons);
-		return res == gui2::twindow::OK; 
+		return res == gui2::twindow::OK;
 	}
 
 	return true;
@@ -399,7 +381,7 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 
 	const int res = show_save_dialog(video, message, dialog_type);
 
-	if (res == 2) { 
+	if (res == 2) {
 		throw_quit_game_exception(); //Quit game
 	}
 
@@ -444,7 +426,7 @@ bool savegame::check_overwrite(CVideo& video)
 	message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename_;
 	const int res = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
 	return res == gui2::twindow::OK;
-	
+
 }
 
 bool savegame::check_filename(const std::string& filename, CVideo& video)
@@ -540,7 +522,7 @@ void savegame::write_game(config_writer &out)
 	log_scope("write_game");
 
 	out.write_key_val("version", game_config::version);
-	
+
 	gamestate_.write_general_info(out);
 	out.open_child("statistics");
 	statistics::write_stats(out);
@@ -858,10 +840,10 @@ static void convert_old_saves_1_13_1(config& cfg)
 					BOOST_FOREACH(config& advancement, modifications.child_range("advance"))
 					{
 						modifications.add_child("advancement", advancement);
-					}	
+					}
 					modifications.clear_children("advance");
 				}
-			}	
+			}
 		}
 	}
 	BOOST_FOREACH(config& snapshot, cfg.child_range("snapshot")) {
