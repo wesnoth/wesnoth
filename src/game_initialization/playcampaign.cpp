@@ -59,6 +59,68 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
+static void report_victory(
+	std::ostringstream &report, team& t,
+	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
+{
+	report << "<small>" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
+
+	if(t.carryover_bonus()) {
+		if (turns_left > -1) {
+			report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
+				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
+				   << "<small>" << _("Total bonus: ") << finishing_bonus << "</small>\n";
+		}
+		report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
+	}
+	if (t.gold() > 0) {
+		report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
+	}
+	if(t.carryover_add()) {
+		report << "\n\n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
+	} else {
+		report << "\n\n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
+	}
+
+	std::string goldmsg;
+	utils::string_map symbols;
+
+	symbols["gold"] = lexical_cast_default<std::string>(t.carryover_gold());
+
+	// Note that both strings are the same in English, but some languages will
+	// want to translate them differently.
+	if(t.carryover_add()) {
+		if(t.carryover_gold() > 0) {
+			goldmsg = vngettext(
+					"You will start the next scenario with $gold "
+					"on top of the defined minimum starting gold.",
+					"You will start the next scenario with $gold "
+					"on top of the defined minimum starting gold.",
+					t.carryover_gold(), symbols);
+
+		} else {
+			goldmsg = vngettext(
+					"You will start the next scenario with "
+					"the defined minimum starting gold.",
+					"You will start the next scenario with "
+					"the defined minimum starting gold.",
+					t.carryover_gold(), symbols);
+		}
+	} else {
+		goldmsg = vngettext(
+			"You will start the next scenario with $gold "
+			"or its defined minimum starting gold, "
+			"whichever is higher.",
+			"You will start the next scenario with $gold "
+			"or its defined minimum starting gold, "
+			"whichever is higher.",
+			t.carryover_gold(), symbols);
+	}
+
+	// xgettext:no-c-format
+	report << "\n" << goldmsg;
+}
+
 static void show_carryover_message(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res)
 {
 	assert(resources::teams);
@@ -117,7 +179,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 				report << "\n<b>" << t.current_player() << "</b>\n";
 			}
 
-			playcontroller.report_victory(report, t, finishing_bonus_per_turn, turns_left, finishing_bonus);
+			report_victory(report, t, finishing_bonus_per_turn, turns_left, finishing_bonus);
 		}
 	}
 

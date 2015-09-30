@@ -47,8 +47,6 @@ public:
 	virtual void handle_generic_event(const std::string& name);
 
 	virtual void check_objectives();
-	void report_victory(std::ostringstream &report, team& t, int finishing_bonus_per_turn,
-			int turns_left, int finishing_bonus);
 	virtual void on_not_observer() {}
 	bool is_host() const ;
 	virtual void maybe_linger();

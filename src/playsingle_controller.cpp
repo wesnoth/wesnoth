@@ -132,67 +132,6 @@ void playsingle_controller::init_gui(){
 	events::raise_draw_event();
 }
 
-void playsingle_controller::report_victory(
-	std::ostringstream &report, team& t,
-	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
-{
-	report << "<small>" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
-
-	if(t.carryover_bonus()) {
-		if (turns_left > -1) {
-			report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
-				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
-				   << "<small>" << _("Total bonus: ") << finishing_bonus << "</small>\n";
-		}
-		report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
-	}
-	if (t.gold() > 0) {
-		report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
-	}
-	if(t.carryover_add()) {
-		report << "\n\n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-	} else {
-		report << "\n\n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-	}
-
-	std::string goldmsg;
-	utils::string_map symbols;
-
-	symbols["gold"] = lexical_cast_default<std::string>(t.carryover_gold());
-
-	// Note that both strings are the same in English, but some languages will
-	// want to translate them differently.
-	if(t.carryover_add()) {
-		if(t.carryover_gold() > 0) {
-			goldmsg = vngettext(
-					"You will start the next scenario with $gold "
-					"on top of the defined minimum starting gold.",
-					"You will start the next scenario with $gold "
-					"on top of the defined minimum starting gold.",
-					t.carryover_gold(), symbols);
-
-		} else {
-			goldmsg = vngettext(
-					"You will start the next scenario with "
-					"the defined minimum starting gold.",
-					"You will start the next scenario with "
-					"the defined minimum starting gold.",
-					t.carryover_gold(), symbols);
-		}
-	} else {
-		goldmsg = vngettext(
-			"You will start the next scenario with $gold "
-			"or its defined minimum starting gold, "
-			"whichever is higher.",
-			"You will start the next scenario with $gold "
-			"or its defined minimum starting gold, "
-			"whichever is higher.",
-			t.carryover_gold(), symbols);
-	}
-
-	// xgettext:no-c-format
-	report << "\n" << goldmsg;
-}
 
 void playsingle_controller::play_scenario_init(const config& level) {
 	// At the beginning of the scenario, save a snapshot as replay_start
