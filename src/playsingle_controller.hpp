@@ -40,7 +40,7 @@ public:
 		const config& game_config, const tdata_cache & tdata, CVideo& video, bool skip_replay);
 	virtual ~playsingle_controller();
 
-	LEVEL_RESULT play_scenario(const config::const_child_itors &story, const config& level);
+	LEVEL_RESULT play_scenario(const config& level);
 	void play_scenario_init(const config& level);
 	void play_scenario_main_loop();
 

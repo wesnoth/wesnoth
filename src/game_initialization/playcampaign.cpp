@@ -150,7 +150,7 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 			playsingle_controller playcontroller(gamestate.get_replay_starting_pos(), gamestate, game_config, tdata, disp.video(), false);
 			LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 			playcontroller.enable_replay(is_unit_test);
-			playcontroller.play_scenario(gamestate.get_replay_starting_pos().child_range("story"), gamestate.get_replay_starting_pos());
+			playcontroller.play_scenario(gamestate.get_replay_starting_pos());
 #endif
 		
 		}
@@ -196,13 +196,12 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const tdata_cache & tdata,
 		display& disp, saved_game& state_of_game,
-		const config::const_child_itors &story,
 		bool skip_replay, end_level_data &end_level)
 {
 	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, game_config, tdata, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
-	LEVEL_RESULT res = playcontroller.play_scenario(story, state_of_game.get_starting_pos());
+	LEVEL_RESULT res = playcontroller.play_scenario(state_of_game.get_starting_pos());
 
 	if (res == LEVEL_RESULT::QUIT)
 	{
@@ -224,12 +223,12 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		const tdata_cache & tdata,
 		display& disp, saved_game& state_of_game,
-		const config::const_child_itors &story, bool skip_replay,
+		bool skip_replay,
 		std::set<std::string>& mp_players, bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
 	playmp_controller playcontroller(state_of_game.get_starting_pos(), state_of_game,
 		game_config, tdata, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
-	LEVEL_RESULT res = playcontroller.play_scenario(story, state_of_game.get_starting_pos());
+	LEVEL_RESULT res = playcontroller.play_scenario(state_of_game.get_starting_pos());
 
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
@@ -285,15 +284,13 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			//expand_mp_options must be called after expand_carryover because expand_carryover will to set previous variables if there are already variables in the [scenario]
 			gamestate.expand_mp_options();
 
-			config::const_child_itors story = gamestate.get_starting_pos().child_range("story");
-
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
 			if (game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-				res = playsingle_scenario(game_config, tdata, disp, gamestate, story, skip_replay, end_level);
+				res = playsingle_scenario(game_config, tdata, disp, gamestate, skip_replay, end_level);
 			} else 
 #endif
 			{
-				res = playmp_scenario(game_config, tdata, disp, gamestate, story, skip_replay, mp_players, blindfold_replay, io_type, end_level);
+				res = playmp_scenario(game_config, tdata, disp, gamestate, skip_replay, mp_players, blindfold_replay, io_type, end_level);
 			}
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);

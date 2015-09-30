@@ -250,8 +250,7 @@ void playsingle_controller::play_scenario_main_loop()
 	} //end for loop
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(
-	const config::const_child_itors &story, const config& level)
+LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -262,7 +261,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	sound::commit_music_changes();
 
 	if(!this->is_skipping_replay()) {
-		show_story(*gui_, get_scenario_name(), story);
+		show_story(*gui_, get_scenario_name(), level.child_range("story"));
 	}
 	gui_->labels().read(level);
 
