@@ -81,7 +81,7 @@ public:
 
 	void place_sides_in_preferred_locations(const config& level);
 
-	void init(int ticks, play_controller &, const config& level);
+	void init(const config& level, play_controller &);
 
 	void bind(wb::manager *, game_display *);
 

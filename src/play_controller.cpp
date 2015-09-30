@@ -243,6 +243,8 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
+	
+	gamestate_->init(level, *this);
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
@@ -322,18 +324,22 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::game_events = NULL;
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
+
 	gamestate_.reset(new game_state(level, *this, tdata_));
-	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
 	resources::teams = &gamestate().board_.teams_;
 	resources::tod_manager = &gamestate().tod_manager_;
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
+	resources::undo_stack = &undo_stack();
+
+	gamestate_->init(level, *this);
+	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::lua_kernel = gamestate().lua_kernel_.get();
 	resources::game_events = gamestate().events_manager_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
-	resources::undo_stack = &undo_stack();
+
 	gui_->reset_tod_manager(gamestate().tod_manager_);
 	gui_->reset_reports(*gamestate().reports_);
 	gui_->change_display_context(&gamestate().board_);
