@@ -21,6 +21,8 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "config_assign.hpp"
+#include "playsingle_controller.hpp"
+
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 
@@ -80,34 +82,6 @@ struct replay_play_side : public replay_play_moves_base
 	}
 };
 }
-namespace
-{
-	config get_theme_removal_diff(const config& theme_cfg)
-	{
-		config res;
-		BOOST_FOREACH(const config::any_child& pair, theme_cfg.child_or_empty("replay").all_children_range())
-		{
-			if(pair.key == "add") {
-				BOOST_FOREACH(const config::any_child& inner, pair.cfg.all_children_range())
-				{
-					res.add_child("remove", config_of("id", inner.cfg["id"]));
-				}
-			}
-			if(pair.key == "change") {
-				std::string id = pair.cfg["id"];
-				BOOST_FOREACH(const config::any_child& inner, theme_cfg.all_children_range())
-				{
-					if(inner.cfg["id"] == id) {
-						
-						res.add_child("change", config_of("id", id)("rect", inner.cfg["rect"]));
-					}
-					break;
-				}
-			}
-		}
-		return res;
-	}
-}
 
 replay_controller::replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const boost::function<void()>& on_end_replay)
 	: controller_(controller)
@@ -123,7 +97,6 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
 	controller_.get_display().redraw_everything();
-	//add_replay_theme();
 }
 replay_controller::~replay_controller()
 {
@@ -132,7 +105,6 @@ replay_controller::~replay_controller()
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
 	controller_.get_display().redraw_everything();
-	//remove_replay_theme();
 }
 void replay_controller::add_replay_theme()
 {
@@ -141,19 +113,6 @@ void replay_controller::add_replay_theme()
 	{
 		if (const config &replay_theme_cfg = res.child("replay")) {
 			controller_.get_display().get_theme().modify(replay_theme_cfg);
-		}
-		//Make sure we get notified if the theme is redrawn completely. That way we have
-		//a chance to restore the replay controls of the theme as well.
-		controller_.get_display().invalidate_theme();
-	}
-}
-void replay_controller::remove_replay_theme()
-{
-	const config &theme_cfg = controller_.get_theme(game_config_manager::get()->game_config(), controller_.theme());
-	if (const config &res = theme_cfg.child("resolution"))
-	{
-		if (res.has_child("replay")) {
-			controller_.get_display().get_theme().modify(get_theme_removal_diff(res));
 		}
 		//Make sure we get notified if the theme is redrawn completely. That way we have
 		//a chance to restore the replay controls of the theme as well.
@@ -347,7 +306,6 @@ bool replay_controller::recorder_at_end() const
 	return resources::recorder->at_end();
 }
 
-#include "playsingle_controller.hpp"
 REPLAY_RETURN replay_controller::play_side_impl()
 {
 	stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());

@@ -59,7 +59,6 @@ public:
 	void update_viewing_player();
 private:
 	void add_replay_theme();
-	void remove_replay_theme();
 	void init();
 	void update_gui();
 	void rebuild_replay_theme();
