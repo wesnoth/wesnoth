@@ -73,10 +73,8 @@ end
 --! Returns an iterator over all the subtags of @a cfg with the given @a name.
 function helper.child_range(cfg, tag)
 	local iter, state, i = ipairs(cfg)
-	assert(state == cfg)
 	local function f(s)
 		local c
-		assert(s == cfg)
 		repeat
 			i,c = iter(s,i)
 			if not c then return end
