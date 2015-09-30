@@ -278,6 +278,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_REPLAY_NEXT_TURN:
 		case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
 		case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
+		case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd, index);
 		default: return play_controller::hotkey_handler::can_execute_command(cmd, index);
 	}

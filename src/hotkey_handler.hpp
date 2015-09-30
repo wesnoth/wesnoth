@@ -110,6 +110,8 @@ public:
 	virtual void toggle_grid();
 	virtual void search();
 	virtual void toggle_accelerated_speed();
+	virtual void replay_skip_animation() OVERRIDE
+	{ return play_controller_.toggle_skipping_replay(); }
 
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
 	virtual void load_autosave(const std::string& filename);

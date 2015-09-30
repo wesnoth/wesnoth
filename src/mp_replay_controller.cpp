@@ -327,6 +327,9 @@ void mp_replay_controller::handle_generic_event(const std::string& name)
 	} else {
 		add_replay_theme();
 	}
+	if(gui::button* skip_animation_button = controller_.get_display().find_action_button("skip-animation")) {
+		skip_animation_button->set_check(controller_.is_skipping_replay());
+	}
 }
 
 bool mp_replay_controller::recorder_at_end() const
@@ -367,6 +370,8 @@ bool mp_replay_controller::can_execute_command(const hotkey::hotkey_command& cmd
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 
 	switch(command) {
+	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
+		return true;
 	//commands we only can do before the end of the replay
 	case hotkey::HOTKEY_REPLAY_STOP:
 		return !recorder_at_end();

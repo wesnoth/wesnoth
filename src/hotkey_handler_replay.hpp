@@ -56,8 +56,6 @@ public:
 	{ return replay_controller_.replay_show_each(); }
 	virtual void replay_show_team1() OVERRIDE
 	{ return replay_controller_.replay_show_team1(); }
-	virtual void replay_skip_animation() OVERRIDE
-	{ return replay_controller_.replay_skip_animation(); }
 
 };
 

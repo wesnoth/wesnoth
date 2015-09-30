@@ -56,7 +56,6 @@ public:
 	void replay_show_everything();
 	void replay_show_each();
 	void replay_show_team1();
-	void replay_skip_animation();
 	virtual void play_side_impl();
 	virtual void force_end_turn() {}
 	virtual void check_objectives() {}

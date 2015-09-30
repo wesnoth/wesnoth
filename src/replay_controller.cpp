@@ -473,10 +473,6 @@ void replay_controller::replay_show_team1()
 	update_gui();
 }
 
-void replay_controller::replay_skip_animation(){
-	skip_replay_ = !skip_replay_;
-}
-
 //move all sides till stop/end
 void replay_controller::play_replay()
 {
