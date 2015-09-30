@@ -39,9 +39,7 @@ end
 --! If @a id is not nil, the "id" attribute of the subtag has to match too.
 --! The function also returns the index of the subtag in the array.
 function helper.get_child(cfg, name, id)
-	-- ipairs cannot be used on a vconfig object
-	for i = 1, #cfg do
-		local v = cfg[i]
+	for i,v in ipairs(cfg) do
 		if v[1] == name then
 			local w = v[2]
 			if not id or w.id == id then return w, i end
@@ -49,19 +47,50 @@ function helper.get_child(cfg, name, id)
 	end
 end
 
+--! Returns the nth subtag of @a cfg with the given @a name.
+--! (Indices start at 1, as always with Lua.)
+--! The function also returns the index of the subtag in the array.
+function helper.get_nth_child(cfg, name, n)
+	for i,v in ipairs(cfg) do
+		if v[1] == name then
+			n = n - 1
+			if n == 0 then return v[2], i end
+		end
+	end
+end
+
+--! Returns the number of subtags of @a with the given @a name.
+function helper.child_count(cfg, name)
+	local n = 0
+	for i,v in ipairs(cfg) do
+		if v[1] == name then
+			n = n + 1
+		end
+	end
+	return n
+end
+
 --! Returns an iterator over all the subtags of @a cfg with the given @a name.
 function helper.child_range(cfg, tag)
+	local iter, state, i = ipairs(cfg)
 	local function f(s)
 		local c
 		repeat
-			local i = s.i
-			c = cfg[i]
+			i,c = iter(s,i)
 			if not c then return end
-			s.i = i + 1
 		until c[1] == tag
 		return c[2]
 	end
-	return f, { i = 1 }
+	return f, state
+end
+
+--! Returns an array from the subtags of @a cfg with the given @a name
+function helper.child_array(cfg, tag)
+	local result = {}
+	for val in helper.child_range(cfg, tag) do
+		table.insert(result, val)
+	end
+	return result
 end
 
 --! Modifies all the units satisfying the given @a filter.

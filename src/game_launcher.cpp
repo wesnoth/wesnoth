@@ -572,7 +572,8 @@ bool game_launcher::play_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		ccontroller.play_game();
 	} catch (game::load_game_exception &) {
 		return true;
 	}
@@ -604,7 +605,8 @@ int game_launcher::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		LEVEL_RESULT res = play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), IO_SERVER, false, false, false, true);
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		LEVEL_RESULT res = ccontroller.play_game();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
 		}
@@ -639,8 +641,8 @@ int game_launcher::unit_test()
 	}
 
 	try {
-		//LEVEL_RESULT res = play_game(disp(), state_, game_config_manager::get()->game_config(), IO_SERVER, false,false,false,true);
-		LEVEL_RESULT res = ::play_replay(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
@@ -1090,8 +1092,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	}
 
 	try {
-		const LEVEL_RESULT result = play_game(disp(),state_,
-		    game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		LEVEL_RESULT result = ccontroller.play_game();
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
@@ -1113,8 +1115,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 void game_launcher::play_replay()
 {
 	try {
-		::play_replay(disp(),state_,game_config_manager::get()->game_config(),
-		    game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		ccontroller.play_replay();
 
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {

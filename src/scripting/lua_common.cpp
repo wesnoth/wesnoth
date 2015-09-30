@@ -42,6 +42,8 @@
 
 static const char * gettextKey = "gettext";
 static const char * vconfigKey = "vconfig";
+static const char * vconfigpairsKey = "vconfig pairs";
+static const char * vconfigipairsKey = "vconfig ipairs";
 const char * tstringKey = "translatable string";
 
 namespace lua_common {
@@ -227,8 +229,103 @@ static int impl_vconfig_size(lua_State *L)
 static int impl_vconfig_collect(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
-	v->vconfig::~vconfig();
+	v->~vconfig();
 	return 0;
+}
+
+/**
+ * Iterate through the attributes of a vconfig
+ */
+static int impl_vconfig_pairs_iter(lua_State *L)
+{
+	vconfig vcfg = luaW_checkvconfig(L, 1);
+	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigpairsKey);
+	config::const_attr_itors& range = *static_cast<config::const_attr_itors*>(p);
+	if (range.first == range.second) {
+		return 0;
+	}
+	config::attribute value = *range.first++;
+	lua_pushlstring(L, value.first.c_str(), value.first.length());
+	luaW_pushscalar(L, vcfg[value.first]);
+	return 2;
+}
+
+/**
+ * Destroy a vconfig pairs iterator
+ */
+static int impl_vconfig_pairs_collect(lua_State *L)
+{
+	typedef config::const_attr_itors const_attr_itors;
+	void* p = lua_touserdata(L, 1);
+	const_attr_itors* cai = static_cast<const_attr_itors*>(p);
+	cai->~const_attr_itors();
+	return 0;
+}
+
+/**
+ * Construct an iterator to iterate through the attributes of a vconfig
+ */
+static int impl_vconfig_pairs(lua_State *L)
+{
+	static const size_t sz = sizeof(config::const_attr_itors);
+	vconfig vcfg = luaW_checkvconfig(L, 1);
+	new(lua_newuserdata(L, sz)) config::const_attr_itors(vcfg.get_config().attribute_range());
+	luaL_newmetatable(L, vconfigpairsKey);
+	lua_setmetatable(L, -2);
+	lua_pushcclosure(L, &impl_vconfig_pairs_iter, 1);
+	lua_pushvalue(L, 1);
+	return 2;
+}
+
+typedef std::pair<vconfig::all_children_iterator, vconfig::all_children_iterator> vconfig_child_range;
+
+/**
+ * Iterate through the subtags of a vconfig
+ */
+static int impl_vconfig_ipairs_iter(lua_State *L)
+{
+	luaW_checkvconfig(L, 1);
+	int i = luaL_checkinteger(L, 2);
+	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigipairsKey);
+	vconfig_child_range& range = *static_cast<vconfig_child_range*>(p);
+	if (range.first == range.second) {
+		return 0;
+	}
+	std::pair<std::string, vconfig> value = *range.first++;
+	lua_pushinteger(L, i + 1);
+	lua_createtable(L, 2, 0);
+	lua_pushlstring(L, value.first.c_str(), value.first.length());
+	lua_rawseti(L, -2, 1);
+	luaW_pushvconfig(L, value.second);
+	lua_rawseti(L, -2, 2);
+	return 2;
+}
+
+/**
+ * Destroy a vconfig ipairs iterator
+ */
+static int impl_vconfig_ipairs_collect(lua_State *L)
+{
+	void* p = lua_touserdata(L, 1);
+	vconfig_child_range* vcr = static_cast<vconfig_child_range*>(p);
+	vcr->~vconfig_child_range();
+	return 0;
+}
+
+/**
+ * Construct an iterator to iterate through the subtags of a vconfig
+ */
+static int impl_vconfig_ipairs(lua_State *L)
+{
+	static const size_t sz = sizeof(vconfig_child_range);
+	vconfig cfg = luaW_checkvconfig(L, 1);
+	new(lua_newuserdata(L, sz)) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
+	luaL_newmetatable(L, vconfigipairsKey);
+	lua_setmetatable(L, -2);
+	lua_pushcclosure(L, &impl_vconfig_ipairs_iter, 1);
+	lua_pushvalue(L, 1);
+	lua_pushinteger(L, 0);
+	return 3;
 }
 
 /**
@@ -294,12 +391,29 @@ std::string register_vconfig_metatable(lua_State *L)
 		{ "__gc",           &impl_vconfig_collect},
 		{ "__index",        &impl_vconfig_get},
 		{ "__len",          &impl_vconfig_size},
+		{ "__pairs",        &impl_vconfig_pairs},
+		{ "__ipairs",       &impl_vconfig_ipairs},
 		{ NULL, NULL }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 
 	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
+	
+	// Metatables for the iterator userdata
+	
+	// I don't bother setting __metatable because this
+	// userdata is only ever stored in the iterator's
+	// upvalues, so it's never visible to the user.
+	luaL_newmetatable(L, vconfigpairsKey);
+	lua_pushstring(L, "__gc");
+	lua_pushcfunction(L, &impl_vconfig_pairs_collect);
+	lua_rawset(L, -3);
+	
+	luaL_newmetatable(L, vconfigipairsKey);
+	lua_pushstring(L, "__gc");
+	lua_pushcfunction(L, &impl_vconfig_ipairs_collect);
+	lua_rawset(L, -3);
 
 	return "Adding vconfig metatable...\n";
 }

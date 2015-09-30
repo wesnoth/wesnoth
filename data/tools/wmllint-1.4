@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # wmllint -- check WML for conformance to the most recent dialect
 #
@@ -73,13 +73,9 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 
-from __future__ import print_function, unicode_literals
-from future_builtins import filter, map, zip
-range = xrange
-
 import sys, os, re, getopt, string, copy, difflib, time, codecs
-from wesnoth.wmltools import *
-from wesnoth.wmliterator import *
+from wesnoth.wmltools3 import *
+from wesnoth.wmliterator3 import *
 
 filemoves = {
     # Older includes all previous to 1.3.1.
@@ -1674,14 +1670,10 @@ def is_map(filename):
         has_map_content = False
     return has_map_content
 
-class maptransform_error:
+class maptransform_error(Exception):
     "Error object to be thrown by maptransform."
-    def __init__(self, infile, inline, type):
-        self.infile = infile
-        self.inline = inline
-        self.type = type
-    def __repr__(self):
-        return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
+    def __init__(self, infile, inline, type_):
+        self.message = '"%s", line %d: %s' % (infile, inline, type_)
 
 tagstack = [] # For tracking tag nesting
 
@@ -2279,12 +2271,12 @@ if __name__ == '__main__':
                             os.rename(fn, backup)
                             with codecs.open(fn, "w", "utf8") as ofp:
                                 ofp.write(changed)
-                except maptransform_error, e:
-                    print("wmllint: " + repr(e), file=sys.stderr)
+                except maptransform_error as e:
+                    print("wmllint: " + e.message, file=sys.stderr)
                 except:
                     print("wmllint: internal error on %s" % fn, file=sys.stderr)
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
-                    raise exc_type, exc_value, exc_traceback
+                    raise exc_type(exc_value).with_traceback(exc_traceback)
             # Time for map and main file renames
             # FIXME: We should make some effort to rename mask files.
             if not revert and not diffs:

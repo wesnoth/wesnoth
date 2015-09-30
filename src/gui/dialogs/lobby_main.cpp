@@ -1652,7 +1652,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	}
 	network::send_data(response, 0);
 	if(observe && game.started) {
-		playmp_controller::set_replay_last_turn(game.current_turn);
+		// playmp_controller::set_replay_last_turn(game.current_turn);
 	}
 	return true;
 }

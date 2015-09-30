@@ -20,18 +20,15 @@
 #include "syncmp_handler.hpp"
 
 class turn_info;
-
+struct mp_campaign_info;
 class playmp_controller : public playsingle_controller, public syncmp_handler
 {
 public:
 	playmp_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config, 
+		const config& game_config, 
 		const tdata_cache & tdata, CVideo& video,
-		bool skip_replay, bool blindfold_replay, bool is_host);
+		mp_campaign_info* mp_info);
 	virtual ~playmp_controller();
-
-	static unsigned int replay_last_turn() { return replay_last_turn_; }
-	static void set_replay_last_turn(unsigned int turn);
 
 	void maybe_linger();
 	void process_oos(const std::string& err_msg) const;
@@ -61,6 +58,7 @@ protected:
 	mutable bool network_processing_stopped_;
 
 	virtual void on_not_observer();
+	bool is_host() const;
 	void remove_blindfold();
 
 	blindfold blindfold_;
@@ -68,7 +66,7 @@ private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();
 	void process_network_data();
-	static unsigned int replay_last_turn_;
+	mp_campaign_info* mp_info_;
 };
 
 #endif

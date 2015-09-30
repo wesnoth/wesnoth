@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2015-08-26 11:34+1000\n"
+"PO-Revision-Date: 2015-09-05 21:20+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land-based units. Moreover, any creature best adapted to swimming "
-"has full mobility even at such places in the river. As far as game-play is "
+"has full mobility even at such places in the river. As far as gameplay is "
 "concerned, a river ford is treated as either grassland or shallow water, "
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
@@ -207,7 +207,7 @@ msgid ""
 "as flat terrain."
 msgstr ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
-"travellers passing over them. As far as game-play is concerned, roads behave "
+"travellers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 
 #. [terrain_type]: id=road_clean
@@ -248,7 +248,7 @@ msgid ""
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
-"small sand pits or beaches, however for game-play purposes they are "
+"small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 
 #. [terrain_type]: id=sand
@@ -1253,7 +1253,7 @@ msgstr ""
 "laughing matter in the cold months of the year.\n"
 "\n"
 "For those who go by land or sea, a bridge is the best of both worlds — for "
-"game-play purposes, it is treated either as grassland or the underlying "
+"gameplay purposes, it is treated either as grassland or the underlying "
 "water, whichever offers the best movement and defensive bonuses for the unit "
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
@@ -1694,7 +1694,7 @@ msgid ""
 msgstr ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
-"for sheer walls which would take days to traverse. As far as game-play is "
+"for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 
 #. [terrain_type]: id=rails
@@ -2055,10 +2055,8 @@ msgid "Remove"
 msgstr "Remove"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
-#, fuzzy
-#| msgid "Bilinear intepolation scaling (legacy wesnoth option)"
 msgid "Bilinear interpolation scaling (legacy wesnoth option)"
-msgstr "Bilinear interpolation scaling (legacy Wesnoth option)"
+msgstr "Bilinear interpolation scaling (legacy wesnoth option)"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Linear (legacy)"
@@ -2089,8 +2087,6 @@ msgid "xBRZ followed by Nearest Neighbor (recommended)"
 msgstr "xBRZ followed by Nearest Neighbour (recommended)"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:46
-#, fuzzy
-#| msgid "Bilinear intepolation scaling (new implementation)"
 msgid "Bilinear interpolation scaling (new implementation)"
 msgstr "Bilinear interpolation scaling (new implementation)"
 
@@ -3353,8 +3349,6 @@ msgstr "Private message:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:179
-#, fuzzy
-#| msgid "When a private message is recieved"
 msgid "When a private message is received"
 msgstr "When a private message is received"
 
@@ -3365,8 +3359,6 @@ msgstr "Friend message:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:180
-#, fuzzy
-#| msgid "When a message from a friend is recieved"
 msgid "When a message from a friend is received"
 msgstr "When a message from a friend is received"
 
@@ -3377,8 +3369,6 @@ msgstr "Public message:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:181
-#, fuzzy
-#| msgid "When a public message is recieved"
 msgid "When a public message is received"
 msgstr "When a public message is received"
 
@@ -3389,8 +3379,6 @@ msgstr "Server message:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:182
-#, fuzzy
-#| msgid "When a server message is recieved"
 msgid "When a server message is received"
 msgstr "When a server message is received"
 
@@ -3669,7 +3657,7 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://forums.wesnoth.org/"
 msgstr ""
-"You may login to the official multiplayer server with your forum user name "
+"You may login to the official multiplayer server with your forum username "
 "and password.\n"
 "Note that registration is not required to join the server: you need to "
 "supply a password only if you wish to use a registered username.\n"
@@ -4058,7 +4046,7 @@ msgstr "Theme"
 
 #: src/game_preferences_display.cpp:230
 msgid "Hotkeys"
-msgstr "Hot-keys"
+msgstr "Hotkeys"
 
 #: src/game_preferences_display.cpp:231
 msgid "Paths"
@@ -4322,7 +4310,7 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
-"Add this user name to your friends list (add optional notes, e.g., "
+"Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 
 #: src/game_preferences_display.cpp:491
@@ -4330,7 +4318,7 @@ msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
-"Add this user name to your ignores list (add optional reason, e.g., "
+"Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 
 #: src/game_preferences_display.cpp:492
@@ -4419,7 +4407,7 @@ msgstr "Chat lines: "
 
 #: src/game_preferences_display.cpp:1263 src/game_preferences_display.cpp:1280
 msgid "Invalid username"
-msgstr "Invalid user name"
+msgstr "Invalid username"
 
 #: src/game_preferences_display.cpp:1411
 msgid "Desktop Notifications Unavailable"
@@ -5809,15 +5797,15 @@ msgstr "Clears the current bindings for \"$hotkey_description|\""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "Hotkeys Reset"
-msgstr "Hot-keys Reset"
+msgstr "Hotkeys Reset"
 
 #: src/hotkey/hotkey_preferences_display.cpp:151
 msgid "All hotkeys have been reset to their default values."
-msgstr "All hot-keys have been reset to their default values."
+msgstr "All hotkeys have been reset to their default values."
 
 #: src/hotkey/hotkey_preferences_display.cpp:167
 msgid "Hotkey Settings"
-msgstr "Hot-key Settings"
+msgstr "Hotkey Settings"
 
 #: src/hotkey/hotkey_preferences_display.cpp:175
 msgid "Reset all bindings to the default values"
@@ -5837,11 +5825,11 @@ msgstr "Editor"
 
 #: src/hotkey/hotkey_preferences_display.cpp:250
 msgid "Add Hotkey"
-msgstr "Add Hot-key"
+msgstr "Add Hotkey"
 
 #: src/hotkey/hotkey_preferences_display.cpp:251
 msgid "Clear Hotkey"
-msgstr "Clear Hot-key"
+msgstr "Clear Hotkey"
 
 #: src/hotkey/hotkey_preferences_display.cpp:257
 msgid "Action"
@@ -5853,7 +5841,7 @@ msgstr "Binding"
 
 #: src/hotkey/hotkey_preferences_display.cpp:567
 msgid "Press desired hotkey (Esc cancels)"
-msgstr "Press desired hot-key (Esc cancels)"
+msgstr "Press desired hotkey (Esc cancels)"
 
 #: src/hotkey/hotkey_preferences_display.cpp:698
 msgid ""
@@ -5865,7 +5853,7 @@ msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:703
 msgid "Reassign Hotkey"
-msgstr "Re-assign Hot-key"
+msgstr "Re-assign Hotkey"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,

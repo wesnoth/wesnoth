@@ -118,7 +118,9 @@ namespace test_utils {
 		state.set_carryover_sides_start(
 			config_of("next_scenario", id_)
 		);
-		play_game(get_fake_display(1024, 768), state, game_config_, tdata_);
+		campaign_controller controller(get_fake_display(1024, 768), state, game_config_, tdata_);
+
+		controller.play_game();
 	}
 
 	std::string play_scenario::get_unit_id(const map_location &loc)

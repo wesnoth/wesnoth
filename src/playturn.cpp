@@ -55,8 +55,7 @@ static lg::log_domain log_network("network");
 turn_info::turn_info(replay_network_sender &replay_sender,playturn_network_adapter &network_reader) :
 	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"),
-	network_reader_(network_reader),
-	is_host_(true)
+	network_reader_(network_reader)
 {
 }
 
@@ -366,7 +365,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	//If this client becomes the new host, notify the play_controller object about it
 	else if (const config &cfg_host_transfer = cfg.child("host_transfer")){
 		if (cfg_host_transfer["value"] == "1") {
-			is_host_ = true;
 			host_transfer_.notify_observers();
 		}
 	}

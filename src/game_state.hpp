@@ -60,6 +60,8 @@ public:
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
 	int player_number_;
 
+	typedef boost::optional<end_level_data> t_possible_end_level_data;
+	t_possible_end_level_data end_level_data_;
 	bool init_side_done_;
 	bool start_event_fired_;
 	// used to sync with the mpserver
@@ -79,7 +81,7 @@ public:
 
 	void place_sides_in_preferred_locations(const config& level);
 
-	void init(int ticks, play_controller &, const config& level);
+	void init(const config& level, play_controller &);
 
 	void bind(wb::manager *, game_display *);
 

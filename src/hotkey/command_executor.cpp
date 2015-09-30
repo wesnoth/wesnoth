@@ -231,6 +231,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_REPLAY_SKIP_ANIMATION:
 			replay_skip_animation();
 			break;
+		case HOTKEY_REPLAY_EXIT:
+			replay_exit();
+			break;
 		case HOTKEY_WB_TOGGLE:
 			whiteboard_toggle();
 			break;

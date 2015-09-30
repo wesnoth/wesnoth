@@ -40,7 +40,6 @@
 #include "multiplayer_wait.hpp"
 #include "multiplayer_lobby.hpp"
 #include "playcampaign.hpp"
-#include "playmp_controller.hpp"
 #include "settings.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
@@ -443,7 +442,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 // of those screen functions.
 
 static void enter_wait_mode(game_display& disp, const config& game_config,
-	saved_game& state, bool observe)
+	saved_game& state, bool observe, int current_turn = 0)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -452,6 +451,12 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 
 	gamelist.clear();
 	statistics::fresh_stats();
+	mp_campaign_info campaign_info;
+	campaign_info.is_host = false;
+	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
+		campaign_info.skip_replay_until_turn = current_turn;
+		campaign_info.skip_replay_blindfolded = preferences::blindfold_replay();
+	}
 
 	{
 		mp::wait ui(disp, game_config, state, gamechat, gamelist);
@@ -460,6 +465,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 
 		run_lobby_loop(disp, ui);
 		res = ui.get_result();
+		campaign_info.connected_players.insert(ui.user_list().begin(), ui.user_list().end());
 
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
@@ -474,10 +480,12 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 	}
 
 	switch (res) {
-	case mp::ui::PLAY:
-		play_game(disp, state, game_config, game_config_manager::get()->terrain_types(), IO_CLIENT,
-			preferences::skip_mp_replay() && observe, true, preferences::blindfold_replay() && observe);
+	case mp::ui::PLAY: {
+		campaign_controller controller(disp, state, game_config, game_config_manager::get()->terrain_types());
+		controller.set_mp_info(&campaign_info);
+		controller.play_game();
 		break;
+	}
 	case mp::ui::QUIT:
 	default:
 		break;
@@ -499,9 +507,15 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 
 	gamelist.clear();
 	statistics::fresh_stats();
+	boost::optional<mp_campaign_info> campaign_info;
+	if(!local_players_only) {
+		campaign_info = mp_campaign_info();
+		campaign_info->connected_players.insert(preferences::login());
+		campaign_info->is_host = true;
+	}
 
 	{
-		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, local_players_only, true));
+		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, campaign_info.get_ptr()));
 		mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist,
 			*connect_engine);
 		run_lobby_loop(disp, ui);
@@ -516,10 +530,12 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	} // end connect_engine_ptr scope
 
 	switch (res) {
-	case mp::ui::PLAY:
-		play_game(disp, state, game_config, game_config_manager::get()->terrain_types(), IO_SERVER, false,
-			!local_players_only);
+	case mp::ui::PLAY: {
+		campaign_controller controller(disp, state, game_config, game_config_manager::get()->terrain_types());
+		controller.set_mp_info(campaign_info.get_ptr());
+		controller.play_game();
 		break;
+	}
 	case mp::ui::CREATE:
 		enter_create_mode(disp, game_config, state, local_players_only);
 		break;
@@ -652,7 +668,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 	DBG_MP << "entering lobby mode" << std::endl;
 
 	mp::ui::result res;
-
+	int current_turn = 0;
 	while (true) {
 		const config &cfg = game_config.child("lobby_music");
 		if (cfg) {
@@ -699,12 +715,14 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 			mp::lobby ui(disp, game_config, gamechat, gamelist, installed_addons);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
+			current_turn = ui.current_turn;
 		}
 
 		switch (res) {
 		case mp::ui::JOIN:
+		case mp::ui::OBSERVE:
 			try {
-				enter_wait_mode(disp, game_config, state, false);
+				enter_wait_mode(disp, game_config, state, res == mp::ui::OBSERVE, current_turn);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
 					gui2::show_error_message(disp.video(), error.message);
@@ -712,18 +730,6 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 				//update lobby content
 				network::send_data(config("refresh_lobby"), 0);
 			}
-			break;
-		case mp::ui::OBSERVE:
-			try {
-				enter_wait_mode(disp, game_config, state, true);
-			} catch(config::error& error) {
-				if(!error.message.empty()) {
-					gui2::show_error_message(disp.video(), error.message);
-				}
-			}
-			// update lobby content unconditionally because we might have left only after the
-			// game ended in which case we ignored the gamelist and need to request it again
-			network::send_data(config("refresh_lobby"), 0);
 			break;
 		case mp::ui::CREATE:
 			try {
@@ -758,7 +764,6 @@ void start_local_game(game_display& disp, const config& game_config,
 	DBG_MP << "starting local game" << std::endl;
 	gamechat.clear_history();
 	gamelist.clear();
-	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
 	enter_create_mode(disp, game_config, state, true);
 }
@@ -773,7 +778,6 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	// needed in commandline mode, but they are required by the functions called.
 	gamechat.clear_history();
 	gamelist.clear();
-	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
 
 	DBG_MP << "entering create mode" << std::endl;
@@ -882,7 +886,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, true));
+		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, NULL));
 		mp::connect ui(disp, parameters.name, game_config, gamechat, gamelist,
 			*connect_engine);
 
@@ -898,7 +902,9 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		play_game(disp, state_copy, game_config, game_config_manager::get()->terrain_types(), IO_SERVER, false, false);
+		campaign_controller controller(disp, state_copy, game_config, game_config_manager::get()->terrain_types());
+		controller.play_game();
+		break;
 	}
 }
 
@@ -942,7 +948,6 @@ void start_client(game_display& disp, const config& game_config,
 		} while (re_enter);
 		break;
 	case SIMPLE_SERVER:
-		playmp_controller::set_replay_last_turn(0);
 		preferences::set_message_private(false);
 		enter_wait_mode(disp, *game_config_ptr, state, false);
 		break;

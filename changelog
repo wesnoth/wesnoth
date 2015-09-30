@@ -106,6 +106,7 @@ Version 1.13.1+dev:
    * Adjacency filters in abilities and weapon specials now support count= and is_enemy=
    * Add new looping tags: [for], [foreach], [repeat]
    * Add new flow control tags: [break], [continue], [return]
+   * Added a new [difficulty] tag for defining a campaign's difficulty level
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
@@ -134,6 +135,7 @@ Version 1.13.1+dev:
    * Fixed possibility of corrupting saved games in certain instances,
      eg if an add-on tries to set an invalid variable
    * Fixed bug 23060: unit stat tooltips do not show.
+   * wmllint, wmlscope, wmlindent and wmllint-1.4 now run on Python 3
 
 Version 1.13.1:
  * Security fixes:

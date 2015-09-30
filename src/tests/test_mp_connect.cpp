@@ -43,7 +43,7 @@ public:
 class test_connect_engine : public ng::connect_engine {
 public:
 	test_connect_engine(game_display& /*disp*/, saved_game& gamestate) :
-		ng::connect_engine(gamestate, true, true)
+		ng::connect_engine(gamestate, true, NULL)
 		{}
 };
 

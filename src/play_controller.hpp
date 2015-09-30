@@ -84,7 +84,7 @@ class play_controller : public controller_base, public events::observer, public 
 {
 public:
 	play_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config,
+		const config& game_config,
 		const tdata_cache& tdata,
 		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
@@ -134,16 +134,16 @@ public:
 	virtual void process_oos(const std::string& msg) const;
 
 	void set_end_level_data(const end_level_data& data) {
-		end_level_data_ = data;
+		gamestate().end_level_data_ = data;
 	}
 	void reset_end_level_data() {
-		end_level_data_ = boost::none_t();
+		gamestate().end_level_data_ = boost::none_t();
 	}
 	bool is_regular_game_end() const { 
-		return end_level_data_.get_ptr() != NULL;
+		return gamestate().end_level_data_.get_ptr() != NULL;
 	}
 	const end_level_data& get_end_level_data_const() const {
-		return *end_level_data_;
+		return *gamestate().end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
 		return gamestate().board_.teams_;
@@ -192,7 +192,8 @@ public:
 	 */
 	config to_config() const;
 
-	bool is_skipping_replay() const { return skip_replay_;}
+	bool is_skipping_replay() const { return skip_replay_; }
+	void toggle_skipping_replay() { skip_replay_ = !skip_replay_; }
 	bool is_linger_mode() const { return linger_; }
 	void do_autosave();
 
@@ -264,7 +265,10 @@ public:
 	game_display& get_display();
 
 	void update_savegame_snapshot() const;
-
+	/**
+	 * Changes the UI for this client to the passed side index.
+	 */
+	void update_gui_to_player(const int team_index, const bool observe = false);
 protected:
 	struct scoped_savegame_snapshot
 	{
@@ -347,11 +351,6 @@ protected:
 	void set_victory_music_list(const std::string& list);
 	void set_defeat_music_list(const std::string& list);
 
-	/**
-	 * Changes the UI for this client to the passed side index.
-	 */
-	void update_gui_to_player(const int team_index, const bool observe = false);
-
 	void reset_gamestate(const config& level, int replay_pos);
 
 private:
@@ -360,8 +359,6 @@ private:
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
-	typedef boost::optional<end_level_data> t_possible_end_level_data;
-	t_possible_end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
