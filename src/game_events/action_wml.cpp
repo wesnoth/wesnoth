@@ -37,7 +37,6 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "map.hpp"
