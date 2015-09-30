@@ -37,6 +37,8 @@ public:
 	void write(config_writer& out) const;
 
 	void write(config& out) const;
+
+	void delete_upcoming_commands();
 protected:
 	config upload_log_;
 	boost::ptr_vector<config> commands_;

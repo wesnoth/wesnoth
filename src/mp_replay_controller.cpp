@@ -109,17 +109,27 @@ namespace
 	}
 }
 
-mp_replay_controller::mp_replay_controller(play_controller& controller)
+mp_replay_controller::mp_replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const boost::function<void()>& on_end_replay)
 	: controller_(controller)
 	, stop_condition_(new replay_stop_condition())
 	, disabler_()
+	, vision_()
+	, reset_state_(reset_state)
+	, on_end_replay_(on_end_replay)
+	, return_to_play_side_(false)
 {
+	if(control_view) {
+		vision_ = HUMAN_TEAM;
+	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
 	controller_.get_display().redraw_everything();
 	//add_replay_theme();
 }
 mp_replay_controller::~mp_replay_controller()
 {
+	if(controller_.is_skipping_replay()) {
+		controller_.toggle_skipping_replay();
+	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
 	controller_.get_display().redraw_everything();
 	//remove_replay_theme();
@@ -337,23 +347,29 @@ bool mp_replay_controller::recorder_at_end() const
 	return resources::recorder->at_end();
 }
 
-
+#include "playsingle_controller.hpp"
 REPLAY_RETURN mp_replay_controller::play_side_impl()
 {
 	stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());
-	while(true)
+	while(!return_to_play_side_ && !static_cast<playsingle_controller&>(controller_).get_player_type_changed())
 	{
 		if(!stop_condition_->should_stop())
 		{
-			REPLAY_RETURN res = do_replay(true);
-			if(res == REPLAY_FOUND_END_MOVE) {
-				stop_condition_->move_done();
+			if(resources::recorder->at_end()) {
+				//Gather more replay data
+				on_end_replay_();
 			}
-			if(res == REPLAY_FOUND_END_TURN) {
-				return res;
-			}
-			if(res == REPLAY_RETURN_AT_END) {
-				return res;
+			else {
+				REPLAY_RETURN res = do_replay(true);
+				if(res == REPLAY_FOUND_END_MOVE) {
+					stop_condition_->move_done();
+				}
+				if(res == REPLAY_FOUND_END_TURN) {
+					return res;
+				}
+				if(res == REPLAY_RETURN_AT_END) {
+					new replay_stop_condition(); 
+				}
 			}
 			controller_.play_slice(false);
 		}
@@ -362,8 +378,8 @@ REPLAY_RETURN mp_replay_controller::play_side_impl()
 			controller_.play_slice(true);
 			replay_ui_playback_should_stop();
 		}
-		
 	}
+	return REPLAY_FOUND_END_MOVE;
 }
 bool mp_replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, int) const
 {
@@ -372,6 +388,10 @@ bool mp_replay_controller::can_execute_command(const hotkey::hotkey_command& cmd
 	switch(command) {
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 		return true;
+	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
+	case hotkey::HOTKEY_REPLAY_SHOW_EACH:
+	case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
+		return is_controlling_view();
 	//commands we only can do before the end of the replay
 	case hotkey::HOTKEY_REPLAY_STOP:
 		return !recorder_at_end();
@@ -381,8 +401,41 @@ bool mp_replay_controller::can_execute_command(const hotkey::hotkey_command& cmd
 	case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
 		//we have one events_disabler when starting the replay_controller and a second when entering the synced context.
 		return should_stop() && (events::commands_disabled <= 1 ) && !recorder_at_end();
+	case hotkey::HOTKEY_REPLAY_RESET:
+		return allow_reset_replay() && events::commands_disabled <= 1;
 	default:
 		assert(false);
 		return false;
 	}
+}
+
+void mp_replay_controller::replay_show_everything()
+{
+	vision_ = SHOW_ALL;
+	update_teams();
+}
+
+void mp_replay_controller::replay_show_each()
+{
+	vision_ = CURRENT_TEAM;
+	update_teams();
+}
+
+void mp_replay_controller::replay_show_team1()
+{
+	vision_ = HUMAN_TEAM;
+	update_teams();
+}
+
+void mp_replay_controller::update_teams()
+{
+	update_viewing_player();
+	controller_.get_display().invalidate_all();
+	update_gui();
+}
+
+void mp_replay_controller::update_viewing_player()
+{
+	assert(vision_);
+	controller_.update_gui_to_player(vision_ == HUMAN_TEAM ? controller_.gamestate().first_human_team_ : controller_.current_side() - 1, *vision_ == SHOW_ALL);
 }

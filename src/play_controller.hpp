@@ -265,7 +265,10 @@ public:
 	game_display& get_display();
 
 	void update_savegame_snapshot() const;
-
+	/**
+	 * Changes the UI for this client to the passed side index.
+	 */
+	void update_gui_to_player(const int team_index, const bool observe = false);
 protected:
 	struct scoped_savegame_snapshot
 	{
@@ -347,11 +350,6 @@ protected:
 	const std::string& select_defeat_music()  const;
 	void set_victory_music_list(const std::string& list);
 	void set_defeat_music_list(const std::string& list);
-
-	/**
-	 * Changes the UI for this client to the passed side index.
-	 */
-	void update_gui_to_player(const int team_index, const bool observe = false);
 
 	void reset_gamestate(const config& level, int replay_pos);
 

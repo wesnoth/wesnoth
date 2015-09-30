@@ -986,6 +986,9 @@ void play_controller::check_victory()
 
 void play_controller::process_oos(const std::string& msg) const
 {
+	if (non_interactive()) {
+		throw game::game_error(msg);
+	}
 	if (game_config::ignore_replay_errors) return;
 
 	std::stringstream message;

@@ -33,7 +33,6 @@
 #include "gui/widgets/window.hpp"
 #include "persist_manager.hpp"
 #include "playmp_controller.hpp"
-#include "replay_controller.hpp"
 #include "log.hpp"
 #include "map_exception.hpp"
 #include "mp_game_utils.hpp"
@@ -141,10 +140,21 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 			gamestate.classification().label = starting_pos["name"].str();
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
+		{
+#if 0
+			replay_controller rc(gamestate.get_replay_starting_pos(), gamestate, SDL_GetTicks(), game_config, tdata, disp.video(), is_unit_test);
+			//replay event-loop
+			rc.main_loop();
+#else
 
-		LEVEL_RESULT res = play_replay_level(game_config, tdata, disp.video(), gamestate, is_unit_test);
-
-		return res;
+			playsingle_controller playcontroller(gamestate.get_replay_starting_pos(), gamestate, SDL_GetTicks(), game_config, tdata, disp.video(), false);
+			LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
+			playcontroller.enable_replay(is_unit_test);
+			playcontroller.play_scenario(gamestate.get_replay_starting_pos().child_range("story"), gamestate.get_replay_starting_pos());
+#endif
+		
+		}
+		return LEVEL_RESULT::VICTORY;
 	} catch(game::load_game_failed& e) {
 		ERR_NG << std::string(_("The game could not be loaded: ")) + " (game::load_game_failed) " + e.message << std::endl;
 		if (is_unit_test) {

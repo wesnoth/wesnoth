@@ -61,10 +61,11 @@ public:
 	
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
-	virtual bool should_return_to_play_side()
-	{ return player_type_changed_ || end_turn_ != END_TURN_NONE || is_regular_game_end(); }
+	virtual bool should_return_to_play_side();
 	mp_replay_controller * get_replay_controller()
 	{ return mp_replay_.get(); }
+	void enable_replay(bool is_unit_test = false);
+	void on_replay_end(bool is_unit_test);
 protected:
 	virtual void play_side_impl();
 	void before_human_turn();
@@ -102,6 +103,7 @@ protected:
 	void linger();
 	void sync_end_turn();
 	void update_viewing_player();
+	void reset_replay();
 };
 
 

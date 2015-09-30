@@ -87,7 +87,15 @@ public:
 	{ return get_replay_controller().replay_next_side(); }
 	virtual void replay_next_move() OVERRIDE
 	{ return get_replay_controller().replay_next_move(); }
-
+	virtual void replay_show_everything() OVERRIDE
+	{ return get_replay_controller().replay_show_everything(); }
+	virtual void replay_show_each() OVERRIDE
+	{ return get_replay_controller().replay_show_each(); }
+	virtual void replay_show_team1() OVERRIDE
+	{ return get_replay_controller().replay_show_team1(); }
+	virtual void reset_replay() OVERRIDE
+	{ return playsingle_controller_.reset_replay(); }
+	virtual void replay_exit() OVERRIDE;
 	virtual void load_autosave(const std::string& filename);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 };
