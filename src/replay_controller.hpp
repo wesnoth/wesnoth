@@ -104,7 +104,6 @@ private:
 	}
 	game_board gameboard_start_;
 	tod_manager tod_manager_start_;
-	unsigned int last_replay_action;
 
 	REPLAY_VISION vision_;
 	boost::scoped_ptr<replay_stop_condition> stop_condition_;

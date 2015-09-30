@@ -195,8 +195,7 @@ replay_controller::~replay_controller()
 void replay_controller::init()
 {
 	DBG_REPLAY << "in replay_controller::init()...\n";
-	
-	last_replay_action = REPLAY_FOUND_END_MOVE;
+
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
 	init_replay_display();
@@ -527,14 +526,14 @@ void replay_controller::play_side_impl()
 	{
 		if(!stop_condition_->should_stop())
 		{
-			last_replay_action = do_replay(true);
-			if(last_replay_action == REPLAY_FOUND_END_MOVE) {
+			REPLAY_RETURN res = do_replay(true);
+			if(res == REPLAY_FOUND_END_MOVE) {
 				stop_condition_->move_done();
 			}
-			if(last_replay_action == REPLAY_FOUND_END_TURN) {
+			if(res == REPLAY_FOUND_END_TURN) {
 				return;
 			}
-			if(last_replay_action == REPLAY_RETURN_AT_END) {
+			if(res == REPLAY_RETURN_AT_END) {
 				replay_ui_playback_should_stop();
 				if(is_unit_test_) {
 					throw replay_at_end_exception();
