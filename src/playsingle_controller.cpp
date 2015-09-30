@@ -601,11 +601,6 @@ void playsingle_controller::check_objectives()
 }
 
 
-bool playsingle_controller::is_host() const
-{
-	return turn_data_.is_host();
-}
-
 void playsingle_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.

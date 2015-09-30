@@ -157,7 +157,7 @@ bool enter_configure_mode(game_display& disp, const config& game_config, saved_g
 bool enter_connect_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only) {
 
-	ng::connect_engine connect_eng(state, local_players_only, true);
+	ng::connect_engine connect_eng(state, true, NULL);
 
 	if (state.mp_settings().show_connect) {
 		mp::ui::result res;

@@ -34,11 +34,13 @@
 #include "gui/widgets/window.hpp" // for gui2::twindow::OK
 #include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
-#include "playmp_controller.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 #include "terrain_type_data.hpp"
+#include "version.hpp"
+#include "game_display.hpp"
+
 
 #include <cassert>
 #include <boost/algorithm/string/predicate.hpp>
@@ -1025,6 +1027,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
 	mp::ui(disp, _("Game Lobby"), cfg, c, gamelist),
 
+	current_turn(0),
 	game_vacant_slots_(),
 	game_observers_(),
 
@@ -1256,7 +1259,6 @@ void lobby::process_event_impl(const process_event_data & data)
 	preferences::set_skip_mp_replay(replay_options_.selected() == 1);
 	preferences::set_blindfold_replay(replay_options_.selected() == 2);
 
-	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
 
 	int selected_game = games_menu_.selection();
@@ -1298,9 +1300,7 @@ void lobby::process_event_impl(const process_event_data & data)
 			network::send_data(response, 0);
 
 			if(observe) {
-				if (game.started){
-					playmp_controller::set_replay_last_turn(game.current_turn);
-				}
+				this->current_turn = game.current_turn;
 				set_result(OBSERVE);
 			} else {
 				set_result(JOIN);

@@ -48,7 +48,6 @@ public:
 
 	virtual void check_objectives();
 	virtual void on_not_observer() {}
-	bool is_host() const ;
 	virtual void maybe_linger();
 
 	void end_turn();
