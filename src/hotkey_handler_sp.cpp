@@ -23,6 +23,9 @@
 #include "whiteboard/manager.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
+#include "network.hpp"
+#include "save_index.hpp"
+#include "gui/dialogs/message.hpp"
 
 #include "unit.hpp"
 
@@ -284,9 +287,6 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 	}
 	return res;
 }
-#include "network.hpp"
-#include "save_index.hpp"
-#include "gui/dialogs/message.hpp"
 
 void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
 {
