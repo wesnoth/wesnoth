@@ -44,10 +44,10 @@ static lg::log_domain log_engine("engine");
 unsigned int playmp_controller::replay_last_turn_ = 0;
 
 playmp_controller::playmp_controller(const config& level,
-		saved_game& state_of_game, const int ticks, const config& game_config, 
+		saved_game& state_of_game, const config& game_config, 
 		const tdata_cache & tdata, CVideo& video,
 		bool skip_replay, bool blindfold_replay_, bool is_host)
-	: playsingle_controller(level, state_of_game, ticks,
+	: playsingle_controller(level, state_of_game,
 		game_config, tdata, video, skip_replay || blindfold_replay_) //this || means that if blindfold is enabled, quick replays will be on.
 	, network_processing_stopped_(false)
 	, blindfold_(*gui_,blindfold_replay_)

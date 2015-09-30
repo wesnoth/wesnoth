@@ -147,7 +147,7 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 			rc.main_loop();
 #else
 
-			playsingle_controller playcontroller(gamestate.get_replay_starting_pos(), gamestate, SDL_GetTicks(), game_config, tdata, disp.video(), false);
+			playsingle_controller playcontroller(gamestate.get_replay_starting_pos(), gamestate, game_config, tdata, disp.video(), false);
 			LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 			playcontroller.enable_replay(is_unit_test);
 			playcontroller.play_scenario(gamestate.get_replay_starting_pos().child_range("story"), gamestate.get_replay_starting_pos());
@@ -199,10 +199,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const config::const_child_itors &story,
 		bool skip_replay, end_level_data &end_level)
 {
-	const int ticks = SDL_GetTicks();
-
-	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks, game_config, tdata, disp.video(), skip_replay);
+	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, game_config, tdata, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, state_of_game.get_starting_pos());
@@ -230,9 +227,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		const config::const_child_itors &story, bool skip_replay,
 		std::set<std::string>& mp_players, bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
-	const int ticks = SDL_GetTicks();
-
-	playmp_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks,
+	playmp_controller playcontroller(state_of_game.get_starting_pos(), state_of_game,
 		game_config, tdata, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, state_of_game.get_starting_pos());
 

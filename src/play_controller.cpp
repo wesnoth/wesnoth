@@ -146,12 +146,12 @@ static void clear_resources()
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config, const tdata_cache& tdata,
+		const config& game_config, const tdata_cache& tdata,
 		CVideo& video, bool skip_replay)
 	: controller_base(game_config, video)
 	, observer()
 	, savegame_config()
-	, ticks_(ticks)
+	, ticks_(SDL_GetTicks())
 	, tdata_(tdata)
 	, gamestate_()
 	, level_()
