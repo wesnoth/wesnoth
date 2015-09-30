@@ -188,88 +188,30 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 	}
 }
 
-LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
-		const tdata_cache & tdata, bool is_unit_test)
-{
-	gamestate.get_replay().set_pos(0);
-	// 'starting_pos' will contain the position we start the game from.
-	// this call also might expand [scenario] in case thatt there is no replay_start
-	const config& starting_pos = gamestate.get_replay_starting_pos();
-
-	try {
-		// Preserve old label eg. replay
-		if (gamestate.classification().label.empty())
-			gamestate.classification().label = starting_pos["name"].str();
-		//if (gamestate.abbrev.empty())
-		//	gamestate.abbrev = (*scenario)["abbrev"];
-		{
-#if 0
-			replay_controller rc(gamestate.get_replay_starting_pos(), gamestate, SDL_GetTicks(), game_config, tdata, disp.video(), is_unit_test);
-			//replay event-loop
-			rc.main_loop();
-#else
-
-			playsingle_controller playcontroller(gamestate.get_replay_starting_pos(), gamestate, game_config, tdata, disp.video(), false);
-			LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
-			playcontroller.enable_replay(is_unit_test);
-			playcontroller.play_scenario(gamestate.get_replay_starting_pos());
-#endif
-		
-		}
-		return LEVEL_RESULT::VICTORY;
-	} catch(game::load_game_failed& e) {
-		ERR_NG << std::string(_("The game could not be loaded: ")) + " (game::load_game_failed) " + e.message << std::endl;
-		if (is_unit_test) {
-			return LEVEL_RESULT::DEFEAT;
-		} else {
-			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
-		}
-	
-	} catch(quit_game_exception&) {
-		LOG_NG << "The replay was aborted\n";
-		return LEVEL_RESULT::QUIT;
-	} catch(game::game_error& e) {
-		ERR_NG << std::string(_("Error while playing the game: ")) + " (game::game_error) " + e.message << std::endl;
-		if (is_unit_test) {
-			return LEVEL_RESULT::DEFEAT;
-		} else {
-			gui2::show_error_message(disp.video(), std::string(_("Error while playing the game: ")) + e.message);
-		}
-	} catch(incorrect_map_format_error& e) {
-		ERR_NG << std::string(_("The game map could not be loaded: ")) + " (incorrect_map_format_error) " + e.message << std::endl;
-		if (is_unit_test) {
-			return LEVEL_RESULT::DEFEAT;
-		} else {
-			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
-		}
-	} catch(twml_exception& e) {
-		ERR_NG << std::string("WML Exception: ") + e.user_message << std::endl;
-		ERR_NG << std::string("Dev Message: ") + e.dev_message << std::endl;
-		if (is_unit_test) {
-			return LEVEL_RESULT::DEFEAT;
-		} else {
-			e.show(disp);
-		}
-	}
-	//TODO: when can this happen?
-	return LEVEL_RESULT::VICTORY;
-}
-
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const tdata_cache & tdata,
 		display& disp, saved_game& state_of_game,
-		bool skip_replay, end_level_data &end_level)
+		bool skip_replay, end_level_data &end_level, bool& is_replay, bool is_unit_test)
 {
-	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, game_config, tdata, disp.video(), skip_replay);
+	playsingle_controller playcontroller(is_replay ? state_of_game.get_replay_starting_pos() : state_of_game.get_starting_pos(), state_of_game, game_config, tdata, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
-
-	LEVEL_RESULT res = playcontroller.play_scenario(state_of_game.get_starting_pos());
+	if(is_replay) {
+		playcontroller.enable_replay(is_unit_test);
+	}
+	LEVEL_RESULT res = playcontroller.play_scenario(is_replay ? state_of_game.get_replay_starting_pos() : state_of_game.get_starting_pos());
 
 	if (res == LEVEL_RESULT::QUIT)
 	{
 		return LEVEL_RESULT::QUIT;
 	}
-
+	if(!is_unit_test)
+	{
+		is_replay = false;
+	}
+	if(is_replay)
+	{
+		return res;
+	}
 	end_level = playcontroller.get_end_level_data_const();
 
 	show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
@@ -321,10 +263,15 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	const config& game_config, const tdata_cache & tdata, 
 	io_type_t io_type, bool skip_replay,
-	bool network_game, bool blindfold_replay, bool is_unit_test)
+	bool network_game, bool blindfold_replay, bool is_unit_test, bool is_replay)
 {
-	gamestate.get_replay().set_to_end();
-
+	if(is_replay) {
+		gamestate.get_replay().set_pos(0);
+	}
+	else {
+		gamestate.get_replay().set_to_end();
+	}
+	
 	gamestate.expand_scenario();
 
 	game_classification::CAMPAIGN_TYPE game_type = gamestate.classification().campaign_type;
@@ -348,7 +295,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
 			if (game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-				res = playsingle_scenario(game_config, tdata, disp, gamestate, skip_replay, end_level);
+				res = playsingle_scenario(game_config, tdata, disp, gamestate, skip_replay, end_level, is_replay, is_unit_test);
+				if(is_replay) {
+					return res;
+				}
 			} else 
 #endif
 			{

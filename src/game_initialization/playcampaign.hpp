@@ -42,12 +42,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& state,
 		bool skip_replay = false,
 		bool network_game = false,
 		bool blindfold_replay = false,
-		bool is_unit_test = false);
-
-LEVEL_RESULT play_replay(display& disp, saved_game& state,
-		const config& game_config,
-		const tdata_cache & tdata,
-		bool is_unit_test = false);
-
+		bool is_unit_test = false,
+		bool is_replay = false);
 #endif // PLAYCAMPAIGN_H_INCLUDED
 
