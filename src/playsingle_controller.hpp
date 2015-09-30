@@ -23,7 +23,7 @@
 #include "playturn.hpp"
 #include "replay.hpp"
 #include "saved_game.hpp"
-#include "mp_replay_controller.hpp"
+#include "replay_controller.hpp"
 
 class team;
 
@@ -60,7 +60,7 @@ public:
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
 	virtual bool should_return_to_play_side();
-	mp_replay_controller * get_replay_controller()
+	replay_controller * get_replay_controller()
 	{ return mp_replay_.get(); }
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
@@ -97,7 +97,7 @@ protected:
 	};
 	END_TURN_STATE end_turn_;
 	bool skip_next_turn_;
-	boost::scoped_ptr<mp_replay_controller> mp_replay_;
+	boost::scoped_ptr<replay_controller> mp_replay_;
 	void linger();
 	void sync_end_turn();
 	void update_viewing_player();

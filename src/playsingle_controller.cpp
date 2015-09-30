@@ -183,7 +183,7 @@ void playsingle_controller::play_scenario_main_loop()
 			*/
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
 			play_scenario_init(*ex.level);
-			mp_replay_.reset(new mp_replay_controller(*this, false, ex.level));
+			mp_replay_.reset(new replay_controller(*this, false, ex.level));
 			mp_replay_->play_replay();
 		}
 	} //end for loop
@@ -656,7 +656,7 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	mp_replay_.reset(new mp_replay_controller(*this, true, boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	mp_replay_.reset(new replay_controller(*this, true, boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
 		mp_replay_->play_replay();
 	}

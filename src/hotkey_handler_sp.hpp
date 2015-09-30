@@ -72,7 +72,7 @@ public:
 	virtual void whiteboard_suppose_dead();
 
 	//replay
-	mp_replay_controller& get_replay_controller()
+	replay_controller& get_replay_controller()
 	{ 
 		assert(playsingle_controller_.get_replay_controller()); 
 		return *playsingle_controller_.get_replay_controller();
