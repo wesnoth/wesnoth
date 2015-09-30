@@ -21,6 +21,23 @@ namespace gui2
 {
 
 /**
+ *  Helper class for message options
+ */
+class twml_message_option {
+public:
+	explicit twml_message_option(std::string label, std::string description = "", std::string image = "")
+		: label_(label)
+		, description_(description)
+		, image_(image)
+	{}
+	std::string label() const {return label_;};
+	std::string description() const {return description_;};
+	std::string image() const {return image_;};
+private:
+	std::string label_, description_, image_;
+};
+
+/**
  * Base class for the wml generated messages.
  *
  * We have a separate sub class for left and right images.
@@ -50,15 +67,22 @@ public:
 	 * Sets the input text variables.
 	 *
 	 * @param caption             The caption for the label.
-	 * @param text                The initial text, after showing the final
+	 * @param [in,out] text       The initial text, after showing the final
 	 *                            text.
 	 * @param maximum_length      The maximum length of the text.
 	 */
 	void set_input(const std::string& caption,
 				   std::string* text,
 				   const unsigned maximum_length);
-
-	void set_option_list(const std::vector<std::string>& option_list,
+	/**
+	 * Sets the option list
+	 *
+	 * @param option_list            The list of options to display.
+	 * @param [in,out] chosen_option Pointer to the index of the initially
+	 *                               selected option; after showing, the
+	 *                               chosen option.
+	 */
+	void set_option_list(const std::vector<twml_message_option>& option_list,
 						 int* chosen_option);
 
 private:
@@ -93,7 +117,7 @@ private:
 	unsigned input_maximum_length_;
 
 	/** The list of options the user can choose. */
-	std::vector<std::string> option_list_;
+	std::vector<twml_message_option> option_list_;
 
 	/** The chosen option. */
 	int* chosen_option_;
@@ -161,7 +185,7 @@ private:
  *
  *  @param option_list            A list of options to select in the dialog.
  *  @param chosen_option          Pointer to the initially chosen option.
- *                                Will be set to the chosen_option when the
+ *                                Will be set to the chosen option when the
  *                                dialog closes.
  */
 int show_wml_message(const bool left_side,
@@ -174,7 +198,7 @@ int show_wml_message(const bool left_side,
 					 const std::string& input_caption,
 					 std::string* input_text,
 					 const unsigned maximum_length,
-					 const std::vector<std::string>& option_list,
+					 const std::vector<twml_message_option>& option_list,
 					 int* chosen_option);
 
 

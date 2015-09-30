@@ -45,7 +45,6 @@
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/data_manage.hpp"

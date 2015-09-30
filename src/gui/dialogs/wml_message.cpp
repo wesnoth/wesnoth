@@ -17,7 +17,6 @@
 #include "gui/dialogs/wml_message.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/old_markup.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -44,7 +43,7 @@ void twml_message_::set_input(const std::string& caption,
 	input_maximum_length_ = maximum_length;
 }
 
-void twml_message_::set_option_list(const std::vector<std::string>& option_list,
+void twml_message_::set_option_list(const std::vector<twml_message_option>& option_list,
 									int* chosen_option)
 {
 	assert(!option_list.empty());
@@ -100,21 +99,9 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
-		for(size_t i = 0; i < option_list_.size(); ++i) {
-			/**
-			 * @todo This syntax looks like a bad hack, it would be nice to
-			 * write a new syntax which doesn't use those hacks (also avoids
-			 * the problem with special meanings for certain characters.
-			 */
-			tlegacy_menu_item item(option_list_[i]);
-
-			if(item.is_default()) {
-				// Number of items hasn't been increased yet so i is ok.
-				*chosen_option_ = i;
-			}
-
+		BOOST_FOREACH(const twml_message_option& item, option_list_) {
 			// Add the data.
-			data["icon"]["label"] = item.icon();
+			data["icon"]["label"] = item.image();
 			data["label"]["label"] = item.label();
 			data["label"]["use_markup"] = "true";
 			data["description"]["label"] = item.description();
@@ -170,10 +157,10 @@ int show_wml_message(const bool left_side,
 					 const std::string& input_caption,
 					 std::string* input_text,
 					 const unsigned maximum_length,
-					 const std::vector<std::string>& option_list,
+					 const std::vector<twml_message_option>& option_list,
 					 int* chosen_option)
 {
-	std::auto_ptr<twml_message_> dlg;
+	boost::shared_ptr<twml_message_> dlg;
 	if(left_side) {
 		dlg.reset(new twml_message_left(title, message, portrait, mirror));
 	} else {
