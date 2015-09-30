@@ -176,7 +176,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, init_side_done_now_(false)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
-	, end_level_data_()
 	, victory_music_()
 	, defeat_music_()
 	, scope_()
@@ -192,13 +191,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::mp_settings = &saved_game_.mp_settings();
 
 	persist_.start_transaction();
-	
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
-		end_level_data el_data;
-		el_data.read(endlevel_cfg);
-		el_data.transient.carryover_report = false;
-		set_end_level_data(el_data);
-	}
 
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
@@ -519,10 +511,6 @@ config play_controller::to_config() const
 	cfg.merge_attributes(level_);
 	cfg["replay_pos"] = saved_game_.get_replay().get_pos();
 	gamestate().write(cfg);
-
-	if(end_level_data_.get_ptr() != NULL) {
-		end_level_data_->write(cfg.add_child("end_level_data"));
-	}
 
 	// Write terrain_graphics data in snapshot, too
 	BOOST_FOREACH(const config& tg, level_.child_range("terrain_graphics")) {

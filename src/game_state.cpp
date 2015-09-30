@@ -73,9 +73,17 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
 	events_manager_(),
 	player_number_(level["playing_team"].to_int() + 1),
+	end_level_data_(),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
+	if(const config& endlevel_cfg = level.child("end_level_data")) {
+		end_level_data el_data;
+		el_data.read(endlevel_cfg);
+		el_data.transient.carryover_report = false;
+		end_level_data_ = el_data;
+	}
+
 	init(pc.ticks(), pc, level);
 
 	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
@@ -270,6 +278,10 @@ void game_state::write(config& cfg) const
 
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
+
+	if(end_level_data_.get_ptr() != NULL) {
+		end_level_data_->write(cfg.add_child("end_level_data"));
+	}
 }
 
 namespace {

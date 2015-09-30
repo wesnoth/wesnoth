@@ -134,16 +134,16 @@ public:
 	virtual void process_oos(const std::string& msg) const;
 
 	void set_end_level_data(const end_level_data& data) {
-		end_level_data_ = data;
+		gamestate().end_level_data_ = data;
 	}
 	void reset_end_level_data() {
-		end_level_data_ = boost::none_t();
+		gamestate().end_level_data_ = boost::none_t();
 	}
 	bool is_regular_game_end() const { 
-		return end_level_data_.get_ptr() != NULL;
+		return gamestate().end_level_data_.get_ptr() != NULL;
 	}
 	const end_level_data& get_end_level_data_const() const {
-		return *end_level_data_;
+		return *gamestate().end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
 		return gamestate().board_.teams_;
@@ -359,8 +359,6 @@ private:
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
-	typedef boost::optional<end_level_data> t_possible_end_level_data;
-	t_possible_end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
