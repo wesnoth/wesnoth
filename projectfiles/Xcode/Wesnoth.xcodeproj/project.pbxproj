@@ -6185,6 +6185,7 @@
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-unused-local-typedefs",
+					"-Wno-unknown-warning-option",
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -6233,7 +6234,10 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/lib\"";
-				OTHER_CFLAGS = "-Wno-unused-local-typedefs";
+				OTHER_CFLAGS = (
+					"-Wno-unused-local-typedefs",
+					"-Wno-unknown-warning-option",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
