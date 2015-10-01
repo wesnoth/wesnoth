@@ -377,7 +377,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 				goto exit
 			end
 		end
-		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
+		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + step)
 	end
 	::exit::
 	utils.end_var_scope(i_var, save_i)
