@@ -364,7 +364,14 @@ wesnoth.wml_actions["for"] = function(cfg)
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
 	wesnoth.set_variable(i_var, first)
-	while wesnoth.get_variable(i_var) <= last do
+	local function loop_condition()
+		if first < last then
+			return wesnoth.get_variable(i_var) <= last
+		else
+			return wesnoth.get_variable(i_var) >= last
+		end
+	end
+	while loop_condition() do
 		for do_child in helper.child_range( cfg, "do" ) do
 			local action = utils.handle_event_commands(do_child, "loop")
 			if action == "break" then
