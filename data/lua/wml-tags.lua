@@ -361,6 +361,12 @@ wesnoth.wml_actions["for"] = function(cfg)
 		last = cfg["end"] or first
 		step = cfg.step or ((last - first) / math.abs(last - first))
 	end
+	if ((last - first) / math.abs(last - first)) ~= (step / math.abs(step)) then
+		-- Sanity check: If they specify something like start,end,step=1,4,-1
+		-- then we interpret it as start,end,step=4,1,-1
+		-- (The step takes precedence since it's optional.)
+		last, first = first, last
+	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
 	wesnoth.set_variable(i_var, first)
