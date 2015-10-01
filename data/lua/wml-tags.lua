@@ -352,7 +352,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 		first = 0
 		last = wesnoth.get_variable(cfg.array .. ".length") - 1
 		step = 1
-		if cfg.reverse == "yes" then
+		if cfg.reverse then
 			first, last = last, first
 			step = -1
 		end
