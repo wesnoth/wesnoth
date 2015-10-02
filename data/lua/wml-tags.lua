@@ -352,7 +352,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 		first = 0
 		last = wesnoth.get_variable(cfg.array .. ".length") - 1
 		step = 1
-		if cfg.reverse == "yes" then
+		if cfg.reverse then
 			first, last = last, first
 			step = -1
 		end
@@ -361,10 +361,23 @@ wesnoth.wml_actions["for"] = function(cfg)
 		last = cfg["end"] or first
 		step = cfg.step or ((last - first) / math.abs(last - first))
 	end
+	if ((last - first) / math.abs(last - first)) ~= (step / math.abs(step)) then
+		-- Sanity check: If they specify something like start,end,step=1,4,-1
+		-- then we interpret it as start,end,step=4,1,-1
+		-- (The step takes precedence since it's optional.)
+		last, first = first, last
+	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
 	wesnoth.set_variable(i_var, first)
-	while wesnoth.get_variable(i_var) <= last do
+	local function loop_condition()
+		if first < last then
+			return wesnoth.get_variable(i_var) <= last
+		else
+			return wesnoth.get_variable(i_var) >= last
+		end
+	end
+	while loop_condition() do
 		for do_child in helper.child_range( cfg, "do" ) do
 			local action = utils.handle_event_commands(do_child, "loop")
 			if action == "break" then
@@ -377,7 +390,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 				goto exit
 			end
 		end
-		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
+		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + step)
 	end
 	::exit::
 	utils.end_var_scope(i_var, save_i)
