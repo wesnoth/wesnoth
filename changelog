@@ -17,6 +17,9 @@ Version 1.8.6+svn:
    * Fix unhandled utils::invalid_utf8_exception when displaying tooltips
  * Miscellaneous and bug fixes:
    * Default to non-strict compilation with CMake.
+   * Fixed (non-strict) compilation with GCC 5.
+   * Fixed (non-strict) compilation with Boost 1.58 and several other previous
+     versions.
 
 Version 1.8.6:
  * Campaigns:
