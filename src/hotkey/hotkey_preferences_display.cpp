@@ -224,7 +224,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 
 	// determine the current scope, but skip general == 0
 	int scope;
-	for (scope = 0; scope != hotkey::SCOPE_COUNT; scope++) {
+	for (scope = 1; scope != hotkey::SCOPE_COUNT; scope++) {
 		if (hotkey::is_scope_active(static_cast<hotkey::scope>(scope))) {
 			break; }
 	}
@@ -237,7 +237,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	dialog.parent->set_menu(items);
 	dialog.parent->add_pane(&dialog);
 	// select the tab corresponding to the current scope.
-	dialog.parent->get_menu().move_selection(scope);
+	dialog.parent->get_menu().move_selection(scope - 1);
 	dialog.parent->show();
 	return;
 }
