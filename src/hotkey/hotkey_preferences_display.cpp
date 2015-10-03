@@ -224,7 +224,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 
 	// determine the current scope, but skip general == 0
 	int scope;
-	for (scope = 1; scope != hotkey::SCOPE_COUNT; scope++) {
+	for (scope = 0; scope != hotkey::SCOPE_COUNT; scope++) {
 		if (hotkey::is_scope_active(static_cast<hotkey::scope>(scope))) {
 			break; }
 	}
