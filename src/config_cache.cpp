@@ -119,7 +119,7 @@ namespace game_config {
 		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 
 		// write all defines to stream
-		foreach (const preproc_map::value_type &define, defines_map) {
+		BOOST_FOREACH (const preproc_map::value_type &define, defines_map) {
 			define.second.write(writer, define.first);
 		}
 	}
@@ -270,7 +270,7 @@ namespace game_config {
 
 		// use static preproc_define::read_pair(config) to make a object
 		// and pass that object config_cache_transaction::insert_to_active method
-		foreach (const config::any_child &value, cfg.all_children_range()) {
+		BOOST_FOREACH (const config::any_child &value, cfg.all_children_range()) {
 			config_cache_transaction::instance().insert_to_active(
 				preproc_define::read_pair(value.cfg));
 		}
@@ -279,7 +279,7 @@ namespace game_config {
 	void config_cache::read_defines_queue()
 	{
 		const config_cache_transaction::filenames& files = config_cache_transaction::instance().get_define_files();
-		foreach (const std::string &path, files) {
+		BOOST_FOREACH (const std::string &path, files) {
 			read_defines_file(path);
 		}
 	}
@@ -292,7 +292,7 @@ namespace game_config {
 		{
 			// activate path defines
 			scoped_preproc_define_list defines;
-			foreach (const path_define_map::value_type &define, path_defines_.equal_range(path)) {
+			BOOST_FOREACH (const path_define_map::value_type &define, path_defines_.equal_range(path)) {
 				scoped_preproc_define_ptr ptr(new scoped_preproc_define(define.second));
 				defines.push_back(ptr);
 			}
@@ -438,7 +438,7 @@ namespace game_config {
 					std::insert_iterator<preproc_map>(temp,temp.begin()),
 					&compare_define);
 
-			foreach (const preproc_map::value_type &def, temp) {
+			BOOST_FOREACH (const preproc_map::value_type &def, temp) {
 				insert_to_active(def);
 			}
 

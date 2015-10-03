@@ -122,7 +122,7 @@ public:
 		std::stringstream str;
 		LOG_CHAT_LOG << "entering tchat_log::model::add_row_to_chat_message_list\n";
 		if (first<last) {
-			foreach (const chat_msg &t, make_pair(chat_log_history.begin()+first,chat_log_history.begin()+last))
+			BOOST_FOREACH (const chat_msg &t, make_pair(chat_log_history.begin()+first,chat_log_history.begin()+last))
 			{
 				std::string prefix("/me");
 				bool me = false;

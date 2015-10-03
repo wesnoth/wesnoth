@@ -58,12 +58,12 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	const config &data = cfg.child("list_data");
 	if (!data) return;
 
-	foreach(const config &row, data.child_range("row")) {
+	BOOST_FOREACH(const config &row, data.child_range("row")) {
 		unsigned col = 0;
 
-		foreach(const config &c, row.child_range("column")) {
+		BOOST_FOREACH(const config &c, row.child_range("column")) {
 			list_data.push_back(string_map());
-			foreach (const config::attribute &i, c.attribute_range()) {
+			BOOST_FOREACH (const config::attribute &i, c.attribute_range()) {
 				list_data.back()[i.first] = i.second;
 			}
 			++col;

@@ -258,7 +258,7 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
 {
-	foreach (const config &t, cfgs)
+	BOOST_FOREACH (const config &t, cfgs)
 	{
 		terrain_type terrain(t);
 		DBG_G << "create_terrain_maps: " << terrain.number() << " "

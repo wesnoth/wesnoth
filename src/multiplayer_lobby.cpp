@@ -408,7 +408,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 
 	games_.clear();
 
-	foreach (const config &game, cfg.child("gamelist").child_range("game"))
+	BOOST_FOREACH (const config &game, cfg.child("gamelist").child_range("game"))
 	{
 		bool verified = true;
 		games_.push_back(game_item());
@@ -486,7 +486,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				if (map_hashes_ && !games_.back().reloaded) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					foreach (const config::attribute &i, map_hashes_.attribute_range()) {
+					BOOST_FOREACH (const config::attribute &i, map_hashes_.attribute_range()) {
 						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
@@ -622,7 +622,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg) {
 
     if(preferences::fi_friends_in_game()) {
         bool found_friend = false;
-        foreach(const config &user, cfg.child_range("user")) {
+        BOOST_FOREACH(const config &user, cfg.child_range("user")) {
             if(preferences::is_friend(user["name"]) && user["game_id"] == i.id) {
                 found_friend = true;
                 break;
@@ -633,7 +633,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg) {
 
     if(!preferences::fi_text().empty()) {
         bool found_match = true;
-        foreach(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
+        BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
             if(std::search(i.map_info.begin(), i.map_info.end(), search_string.begin(), search_string.end(), chars_equal_insensitive) == i.map_info.end() &&
                     std::search(i.name.begin(), i.name.end(), search_string.begin(), search_string.end(), chars_equal_insensitive) == i.name.end()) {
                 found_match = false;

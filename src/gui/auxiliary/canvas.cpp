@@ -1138,7 +1138,7 @@ void tcanvas::parse_cfg(const config& cfg)
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
-	foreach(const config::any_child& shape, cfg.all_children_range()) {
+	BOOST_FOREACH(const config::any_child& shape, cfg.all_children_range()) {
 		const std::string &type = shape.key;
 		const config &data = shape.cfg;
 
@@ -1155,7 +1155,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get splitted if more preprocessing is used. */
-			foreach(const config::any_child& function,
+			BOOST_FOREACH(const config::any_child& function,
 					data.all_children_range()) {
 
 				if(function.key == "blur") {

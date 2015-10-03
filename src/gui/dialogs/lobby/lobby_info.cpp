@@ -65,7 +65,7 @@ lobby_info::~lobby_info()
 
 void lobby_info::delete_games()
 {
-	foreach (const game_info_map::value_type& v, games_by_id_) {
+	BOOST_FOREACH (const game_info_map::value_type& v, games_by_id_) {
 		delete v.second;
 	}
 }
@@ -75,7 +75,7 @@ namespace {
 std::string dump_games_map(const lobby_info::game_info_map& games)
 {
 	std::stringstream ss;
-	foreach (const lobby_info::game_info_map::value_type& v, games) {
+	BOOST_FOREACH (const lobby_info::game_info_map::value_type& v, games) {
 		const game_info& game = *v.second;
 		ss << "G" << game.id << "(" << game.name << ") " << game.display_status_string() << " ";
 	}
@@ -86,7 +86,7 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 std::string dump_games_config(const config& gamelist)
 {
 	std::stringstream ss;
-	foreach (const config& c, gamelist.child_range("game")) {
+	BOOST_FOREACH (const config& c, gamelist.child_range("game")) {
 		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
 	}
 	ss << "\n";
@@ -102,7 +102,7 @@ void lobby_info::process_gamelist(const config &data)
 	gamelist_initialized_ = true;
 	delete_games();
 	games_by_id_.clear();
-	foreach (const config& c, gamelist_.child("gamelist").child_range("game")) {
+	BOOST_FOREACH (const config& c, gamelist_.child("gamelist").child_range("game")) {
 		game_info* game = new game_info(c, game_config_);
 		games_by_id_[game->id] = game;
 	}
@@ -179,10 +179,10 @@ void lobby_info::process_userlist()
 {
 	SCOPE_LB;
 	users_.clear();
-	foreach (const config& c, gamelist_.child_range("user")) {
+	BOOST_FOREACH (const config& c, gamelist_.child_range("user")) {
 		users_.push_back(user_info(c));
 	}
-	foreach (user_info& ui, users_) {
+	BOOST_FOREACH (user_info& ui, users_) {
 		if (ui.game_id != 0) {
 			game_info* g = get_game_by_id(ui.game_id);
 			if (g == NULL) {
@@ -234,7 +234,7 @@ const game_info* lobby_info::get_game_by_id(int id) const
 
 room_info* lobby_info::get_room(const std::string &name)
 {
-	foreach (room_info& r, rooms_) {
+	BOOST_FOREACH (room_info& r, rooms_) {
 		if (r.name() == name) return &r;
 	}
 	return NULL;
@@ -242,7 +242,7 @@ room_info* lobby_info::get_room(const std::string &name)
 
 const room_info* lobby_info::get_room(const std::string &name) const
 {
-	foreach (const room_info& r, rooms_) {
+	BOOST_FOREACH (const room_info& r, rooms_) {
 		if (r.name() == name) return &r;
 	}
 	return NULL;
@@ -304,7 +304,7 @@ void lobby_info::make_games_vector()
 	games_filtered_.clear();
 	games_visibility_.clear();
 	games_.clear();
-	foreach (const game_info_map::value_type& v, games_by_id_) {
+	BOOST_FOREACH (const game_info_map::value_type& v, games_by_id_) {
 		games_.push_back(v.second);
 	}
 }
@@ -313,7 +313,7 @@ void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
 	games_visibility_.clear();
-	foreach (game_info* g, games_) {
+	BOOST_FOREACH (game_info* g, games_) {
 		game_info& gi = *g;
 		bool show = game_filter_.match(gi);
 		if (game_filter_invert_) {
@@ -328,7 +328,7 @@ void lobby_info::apply_game_filter()
 
 void lobby_info::update_user_statuses(int game_id, const room_info *room)
 {
-	foreach (user_info& user, users_) {
+	BOOST_FOREACH (user_info& user, users_) {
 		user.update_state(game_id, room);
 	}
 }
@@ -368,7 +368,7 @@ struct user_sorter_relation_name
 void lobby_info::sort_users(bool by_name, bool by_relation)
 {
 	users_sorted_.clear();
-	foreach (user_info& u, users_) {
+	BOOST_FOREACH (user_info& u, users_) {
 		users_sorted_.push_back(&u);
 	}
 	if (by_name) {

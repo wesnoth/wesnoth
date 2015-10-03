@@ -226,7 +226,7 @@ void positional_source::write_config(config& cfg) const
 
 	cfg["x"] = cfg["y"] = "";
 	bool first_loc = true;
-	foreach(const map_location& loc, locations_) {
+	BOOST_FOREACH(const map_location& loc, locations_) {
 		if(!first_loc) {
 			cfg["x"] += ",";
 			cfg["y"] += ",";

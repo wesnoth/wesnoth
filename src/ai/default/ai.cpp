@@ -374,7 +374,7 @@ void ai_default_recruitment_stage::recruit_situation_change_observer::set_valid(
 
 void ai_default_recruitment_stage::on_create() {
 	stage::on_create();
-	foreach (const config &c, cfg_.child_range("limit")) {
+	BOOST_FOREACH (const config &c, cfg_.child_range("limit")) {
 		if (c.has_attribute("type") && c.has_attribute("max") ) {
 			maximum_counts_.insert(std::make_pair(c["type"],lexical_cast_default<int>(c["max"],0)));
 		}
@@ -423,7 +423,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 	bool found = false;
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
-	foreach (const std::string &name, current_team().recruits())
+	BOOST_FOREACH (const std::string &name, current_team().recruits())
 	{
 		const unit_type *ut = unit_types.find(name);
 		if (!ut) continue;
@@ -633,7 +633,7 @@ void ai_default::find_threats()
 	}
 
 	// Look for directions to protect a specific location.
-	foreach (const config &p, parms.child_range("protect_location"))
+	BOOST_FOREACH (const config &p, parms.child_range("protect_location"))
 	{
 		items.push_back(protected_item(
 					lexical_cast_default<double>(p["value"], 1.0),
@@ -642,7 +642,7 @@ void ai_default::find_threats()
 	}
 
 	// Look for directions to protect a unit.
-	foreach (const config &p, parms.child_range("protect_unit"))
+	BOOST_FOREACH (const config &p, parms.child_range("protect_unit"))
 	{
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 			if (game_events::unit_matches_filter(u, vconfig(p))) {
@@ -1368,7 +1368,7 @@ int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
 
 			team &enemy_team = get_info().teams[j->second.side()-1];
 			const std::set<std::string> &recruits = enemy_team.recruits();
-			foreach (const std::string &rec, recruits) {
+			BOOST_FOREACH (const std::string &rec, recruits) {
 				get_combat_score_vs(ut,rec,score,weighting,0,0);
 			}
 			continue;
@@ -1622,7 +1622,7 @@ public:
 		        double best_combat_score_of_advancement = 0;
 			bool best_combat_score_of_advancement_found = false;
 			int best_cost = recall_cost;
-			foreach (const std::string &i, u.advances_to()) {
+			BOOST_FOREACH (const std::string &i, u.advances_to()) {
 				const unit_type *ut = unit_types.find(i);
 				if (!ut) {
 					continue;
@@ -1887,7 +1887,7 @@ void ai_default::move_leader_to_goals()
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
 
 	map_location loc;
-	foreach (const map_location &l, route.steps)
+	BOOST_FOREACH (const map_location &l, route.steps)
 	{
 		if (leader_paths.destinations.contains(l) &&
 		    power_projection(l, get_enemy_dstsrc()) < double(leader->second.hitpoints() / 2))
@@ -1935,7 +1935,7 @@ void ai_default::move_leader_after_recruit()
 				int current_distance = distance_between(i->first,leader->first);
 				location current_loc;
 
-				foreach (const pathfind::paths::step &dest, leader_paths.destinations)
+				BOOST_FOREACH (const pathfind::paths::step &dest, leader_paths.destinations)
 				{
 					const int distance = distance_between(i->first, dest.curr);
 					if (distance < current_distance &&

@@ -79,7 +79,7 @@ struct tcontrol_definition
 	void load_resolutions(const config &cfg)
 	{
 		config::const_child_itors itors = cfg.child_range("resolution");
-		foreach (const config &r, itors) {
+		BOOST_FOREACH (const config &r, itors) {
 			resolutions.push_back(new T(r));
 		}
 	}

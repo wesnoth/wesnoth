@@ -64,7 +64,7 @@ void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */
 {
 	// typedef boost problem work around.
 	typedef std::pair<std::string, string_map> hack ;
-	foreach(const hack& item, data) {
+	BOOST_FOREACH(const hack& item, data) {
 		tcontrol* control = dynamic_cast<tcontrol*>(find(item.first, false));
 		if(control) {
 			control->set_members(item.second);

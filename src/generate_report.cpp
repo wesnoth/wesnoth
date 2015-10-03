@@ -253,7 +253,7 @@ report generate_report(TYPE type,
 			return res;
 		}
 
-		foreach (const attack_type &at, u->attacks())
+		BOOST_FOREACH (const attack_type &at, u->attacks())
 		{
 			at.set_specials_context(displayed_unit_hex, map_location(), *u);
 			std::string lang_type = gettext(at.type().c_str());

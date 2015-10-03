@@ -210,7 +210,7 @@ map_location unit_creator::find_location(const config &cfg)
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	foreach(std::string place, placements) {
+	BOOST_FOREACH(std::string place, placements) {
 		map_location loc;
 
 		if (place == "recall" ) {
@@ -2069,7 +2069,7 @@ namespace {
 		}
 
 		pathfind::paths p(*resources::game_map, *resources::units, loc, *resources::teams, true, false, tm, 0, false, true);
-		foreach (const pathfind::paths::step &dest, p.destinations) {
+		BOOST_FOREACH (const pathfind::paths::step &dest, p.destinations) {
 			clear_shroud_loc(tm, dest.curr, &cleared_locations);
 		}
 

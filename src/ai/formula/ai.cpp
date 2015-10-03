@@ -590,7 +590,7 @@ template<typename Container>
 variant villages_from_set(const Container& villages,
 				          const std::set<map_location>* exclude=NULL) {
 	std::vector<variant> vars;
-	foreach(const map_location& loc, villages) {
+	BOOST_FOREACH(const map_location& loc, villages) {
 		if(exclude && exclude->count(loc)) {
 			continue;
 		}
@@ -657,7 +657,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		const std::vector<std::string> &rp = get_recruitment_pattern();
 		std::vector<variant> vars;
-		foreach (const std::string &i, rp) {
+		BOOST_FOREACH (const std::string &i, rp) {
 			vars.push_back(variant(i));
 		}
 		return variant(&vars);
@@ -962,7 +962,7 @@ void formula_ai::on_create(){
 	//make sure we don't run out of refcount
 	vars_.add_ref();
 
-	foreach (const config &func, cfg_.child_range("function"))
+	BOOST_FOREACH (const config &func, cfg_.child_range("function"))
 	{
 		const t_string &name = func["name"];
 		const t_string &inputs = func["inputs"];
@@ -985,7 +985,7 @@ void formula_ai::on_create(){
 	if (const config &ai_vars = cfg_.child("vars"))
 	{
 		variant var;
-		foreach (const config::attribute &i, ai_vars.attribute_range()) {
+		BOOST_FOREACH (const config::attribute &i, ai_vars.attribute_range()) {
 			var.serialize_from_string(i.second);
 			vars_.add(i.first, var);
 		}

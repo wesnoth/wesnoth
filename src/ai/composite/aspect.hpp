@@ -265,7 +265,7 @@ public:
 		, facets_()
 		, default_()
 	{
-		foreach (const config &cfg_element, this->cfg_.child_range("facet") ){
+		BOOST_FOREACH (const config &cfg_element, this->cfg_.child_range("facet") ){
 			add_facet(-1,cfg_element);
 		}
 
@@ -291,7 +291,7 @@ public:
         {
 		std::vector<aspect_ptr> facets_base;
 		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets_base));
-		foreach (aspect_ptr a, facets_base ){
+		BOOST_FOREACH (aspect_ptr a, facets_base ){
 			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
 			facets.push_back(b);
 		}
@@ -301,7 +301,7 @@ public:
 	virtual void recalculate() const
 	{
 		//@todo 1.9 optimize in case of an aspect which returns variant
-		foreach (const typename aspect_type<T>::typesafe_ptr &f, make_pair(facets_.rbegin(),facets_.rend())) {
+		BOOST_FOREACH (const typename aspect_type<T>::typesafe_ptr &f, make_pair(facets_.rbegin(),facets_.rend())) {
 			if (f->active()) {
 				this->value_ = boost::shared_ptr<T>(f->get_ptr());
 				this->valid_ = true;
@@ -316,7 +316,7 @@ public:
 	virtual config to_config() const
 	{
 		config cfg = aspect::to_config();
-		foreach (const typename aspect_type<T>::typesafe_ptr f, facets_) {
+		BOOST_FOREACH (const typename aspect_type<T>::typesafe_ptr f, facets_) {
 			cfg.add_child("facet",f->to_config());
 		}
 		if (default_) {
@@ -334,7 +334,7 @@ public:
 		std::vector< aspect_ptr > facets;
 		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets));
 		int j=0;
-		foreach (aspect_ptr a, facets ){
+		BOOST_FOREACH (aspect_ptr a, facets ){
 			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
 			facets_.insert(facets_.begin()+pos+j,b);
 			j++;

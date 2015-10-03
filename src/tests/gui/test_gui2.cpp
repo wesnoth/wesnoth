@@ -79,7 +79,7 @@ namespace {
 	template<class T>
 	void test_resolutions(const tresolution_list& resolutions)
 	{
-		foreach(const tresolution& resolution, resolutions) {
+		BOOST_FOREACH(const tresolution& resolution, resolutions) {
 			video.make_test_fake(resolution.first, resolution.second);
 
 			std::auto_ptr<T> dlg(twrapper<T>::create());
@@ -306,7 +306,7 @@ struct twrapper<gui2::teditor_generate_map>
 		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
 
 		std::vector<map_generator*> map_generators;
-		foreach (const config &i, main_config.child_range("multiplayer")) {
+		BOOST_FOREACH (const config &i, main_config.child_range("multiplayer")) {
 			if(i["map_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
 				if (generator_cfg) {
@@ -338,7 +338,7 @@ struct twrapper<gui2::teditor_settings>
 		BOOST_REQUIRE_MESSAGE(cfg, "No editor time-of-day defined");
 
 		std::vector<time_of_day> tods;
-		foreach (const config &i, cfg.child_range("time")) {
+		BOOST_FOREACH (const config &i, cfg.child_range("time")) {
 			tods.push_back(time_of_day(i));
 		}
 		result->set_tods(tods);

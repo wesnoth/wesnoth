@@ -166,11 +166,11 @@ public:
 		model_.clear_stuff_list();
 
 		const config &vars = resources::state_of_game->get_variables();
-		foreach( const config::attribute &a, vars.attribute_range()) {
+		BOOST_FOREACH( const config::attribute &a, vars.attribute_range()) {
 			model_.add_row_to_stuff_list(a.first,a.first);
 		}
 
-		foreach( const config::any_child &c, vars.all_children_range()) {
+		BOOST_FOREACH( const config::any_child &c, vars.all_children_range()) {
 			model_.add_row_to_stuff_list("["+c.key+"]","["+c.key+"]");
 		}
 
@@ -189,7 +189,7 @@ public:
 		int i = 0;//@todo: replace with precached data
 		const config &vars = resources::state_of_game->get_variables();
 
-		foreach( const config::attribute &a, vars.attribute_range()) {
+		BOOST_FOREACH( const config::attribute &a, vars.attribute_range()) {
 			if (selected==i) {
 				model_.set_inspect_window_text(a.second);
 				return;
@@ -197,7 +197,7 @@ public:
 			i++;
 		}
 
-		foreach( const config::any_child &c, vars.all_children_range()) {
+		BOOST_FOREACH( const config::any_child &c, vars.all_children_range()) {
 			if (selected==i) {
 				model_.set_inspect_window_text(c.cfg.debug());
 				return;
@@ -235,7 +235,7 @@ public:
 			}
 
 			s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hp; ";
-				foreach (const std::string &str, i->second.get_traits_list() ) {
+				BOOST_FOREACH (const std::string &str, i->second.get_traits_list() ) {
 				s << str <<" ";
 			}
 
@@ -329,9 +329,9 @@ public:
 		if (selected==3) {
 			const std::vector<unit> recall_list = resources::teams->at(side_-1).recall_list();
 			std::stringstream s;
-			foreach (const unit &u, recall_list) {
+			BOOST_FOREACH (const unit &u, recall_list) {
 				s << "id=["<<u.id() << "] "<<u.type_id() << "; L"<<u.level()<<"; " << u.experience() <<"/" << u.max_experience()<< " xp "<< std::endl;
-				foreach (const std::string &str, u.get_traits_list() ) {
+				BOOST_FOREACH (const std::string &str, u.get_traits_list() ) {
 					s << "\t" << str<< std::endl;
 				}
 				s << std::endl << std::endl;
@@ -343,7 +343,7 @@ public:
 		if (selected==4) {
 			const std::vector<unit> recall_list = resources::teams->at(side_-1).recall_list();
 			config c;
-			foreach (const unit &u, recall_list) {
+			BOOST_FOREACH (const unit &u, recall_list) {
 				config c_unit;
 				u.write(c_unit);
 				c.add_child("unit",c_unit);
@@ -370,7 +370,7 @@ public:
 				}
 
 				s << "id=["<<i->second.id() << "] "<<i->second.type_id() << "; L"<<i->second.level()<<"; " << i->second.experience() <<"/" << i->second.max_experience()<< " xp; "<< i->second.hitpoints() <<"/"<<i->second.max_hitpoints()<<" hp." << std::endl;
-				foreach (const std::string &str, i->second.get_traits_list() ) {
+				BOOST_FOREACH (const std::string &str, i->second.get_traits_list() ) {
 					s << "\t" << str<< std::endl;
 				}
 				s << std::endl << std::endl;
@@ -403,7 +403,7 @@ public:
 				boost::shared_ptr<single_mode_controller>(new variable_mode_controller("variables",model_)));
 		sm_controllers_.push_back(
 				boost::shared_ptr<single_mode_controller>(new unit_mode_controller("units",model_)));
-		//foreach team
+		//BOOST_FOREACH team
 		int sides = static_cast<int>((*resources::teams).size());
 		for( int side = 1; side<=sides; ++side) {
 			std::string side_str = str_cast(side);
@@ -425,7 +425,7 @@ public:
 	void show_stuff_types_list()
 	{
 		model_.clear_stuff_types_list();
-		foreach (boost::shared_ptr<single_mode_controller> sm_controller, sm_controllers_ ) {
+		BOOST_FOREACH (boost::shared_ptr<single_mode_controller> sm_controller, sm_controllers_ ) {
 			model_.add_row_to_stuff_types_list(sm_controller->name(),sm_controller->name());
 		}
 	}

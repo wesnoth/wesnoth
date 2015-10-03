@@ -136,7 +136,7 @@ twindow* build(CVideo& video, const std::string& type)
 	assert(window);
 	window->set_id(type);
 
-	foreach(const twindow_builder::tresolution::tlinked_group& lg,
+	BOOST_FOREACH(const twindow_builder::tresolution::tlinked_group& lg,
 			definition->linked_groups) {
 
 		if(window->has_linked_size_group(lg.id)) {
@@ -202,7 +202,7 @@ const std::string& twindow_builder::read(const config& cfg)
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
-	foreach (const config &i, cfgs) {
+	BOOST_FOREACH (const config &i, cfgs) {
 		resolutions.push_back(tresolution(i));
 	}
 
@@ -326,7 +326,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 		definition = "default";
 	}
 
-	foreach (const config &lg, cfg.child_range("linked_group")) {
+	BOOST_FOREACH (const config &lg, cfg.child_range("linked_group")) {
 		tlinked_group linked_group;
 		linked_group.id = lg["id"];
 		linked_group.fixed_width = utils::string_bool(lg["fixed_width"]);
@@ -415,13 +415,13 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  */
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
-	foreach (const config &row, cfg.child_range("row"))
+	BOOST_FOREACH (const config &row, cfg.child_range("row"))
 	{
 		unsigned col = 0;
 
 		row_grow_factor.push_back(lexical_cast_default<unsigned>(row["grow_factor"]));
 
-		foreach (const config &c, row.child_range("column"))
+		BOOST_FOREACH (const config &c, row.child_range("column"))
 		{
 			flags.push_back(implementation::read_flags(c));
 			border_size.push_back(lexical_cast_default<unsigned>(c["border_size"]));

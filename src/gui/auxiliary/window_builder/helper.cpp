@@ -59,7 +59,7 @@ unsigned get_h_align(const std::string& h_align)
 unsigned get_border(const std::vector<std::string>& border)
 {
 	unsigned result = 0;
-	foreach (const std::string& s, border) {
+	BOOST_FOREACH (const std::string& s, border) {
 		if (s == "all") {
 			return tgrid::BORDER_ALL;
 		} else if (s == "top") {

@@ -3,6 +3,6 @@
 
 #include <boost/foreach.hpp>
 
-#define foreach BOOST_FOREACH
+// #define BOOST_FOREACH BOOST_FOREACH
 
 #endif

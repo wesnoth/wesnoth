@@ -54,7 +54,7 @@ void ai_composite::on_create()
 		cfg_["id"]<<"]"<<std::endl;
 
 	// init the composite ai stages
-	foreach(const config &cfg_element, cfg_.child_range("stage")){
+	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("stage")){
 		add_stage(cfg_element);
 	}
 
@@ -110,7 +110,7 @@ bool ai_composite::add_stage(const config &cfg)
 	std::vector< stage_ptr > stages;
 	create_stage(stages,cfg);
 	int j=0;
-	foreach (stage_ptr b, stages ){
+	BOOST_FOREACH (stage_ptr b, stages ){
 		stages_.push_back(b);
 		j++;
 	}
@@ -123,7 +123,7 @@ bool ai_composite::add_goal(const config &cfg)
 	std::vector< goal_ptr > goals;
 	create_goal(goals,cfg);
 	int j=0;
-	foreach (goal_ptr b, goals ){
+	BOOST_FOREACH (goal_ptr b, goals ){
 		get_goals().push_back(b);
 		j++;
 	}
@@ -132,7 +132,7 @@ bool ai_composite::add_goal(const config &cfg)
 
 
 void ai_composite::play_turn(){
-	foreach(stage_ptr &s, stages_){
+	BOOST_FOREACH(stage_ptr &s, stages_){
 		s->play_stage();
 	}
 }
@@ -201,7 +201,7 @@ config ai_composite::to_config() const
 	config cfg;
 
 	//serialize the composite ai stages
-	foreach(const stage_ptr &s, stages_){
+	BOOST_FOREACH(const stage_ptr &s, stages_){
 		cfg.add_child("stage",s->to_config());
 	}
 

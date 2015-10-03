@@ -86,9 +86,9 @@ manager::manager() :
 				message = foobar
 			[/line]
 */
-		foreach (const config::any_child &h, history.all_children_range())
+		BOOST_FOREACH (const config::any_child &h, history.all_children_range())
 		{
-			foreach (const config &l, h.cfg.child_range("line")) {
+			BOOST_FOREACH (const config &l, h.cfg.child_range("line")) {
 				history_map[h.key].push_back(l["message"]);
 			}
 		}
@@ -116,10 +116,10 @@ manager::~manager()
 */
 	config history;
 	typedef std::pair<std::string, std::vector<std::string> > hack;
-	foreach(const hack& history_id, history_map) {
+	BOOST_FOREACH(const hack& history_id, history_map) {
 
 		config history_id_cfg; // [history_id]
-		foreach(const std::string& line, history_id.second) {
+		BOOST_FOREACH(const std::string& line, history_id.second) {
 			config cfg; // [line]
 
 			cfg["message"] = line;
@@ -297,7 +297,7 @@ const std::vector<game_config::server_info>& server_list()
 		std::vector<game_config::server_info> &game_servers = game_config::server_list;
 		VALIDATE(!game_servers.empty(), _("No server has been defined."));
 		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
-		foreach (const config &server, get_prefs()->child_range("server")) {
+		BOOST_FOREACH (const config &server, get_prefs()->child_range("server")) {
 			game_config::server_info sinf;
 			sinf.name = server["name"];
 			sinf.address = server["address"];

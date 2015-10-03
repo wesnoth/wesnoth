@@ -55,7 +55,7 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 		std::set<map_location> tiles_checking;
 		tiles_checking.swap(pending_tiles_to_check);
 		//Iterate over all the hexes we need to check
-		foreach (const map_location &loc, tiles_checking)
+		BOOST_FOREACH (const map_location &loc, tiles_checking)
 		{
 			//If the unit cannot reach this area or it's not a castle but should, skip it.
 			if ((vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc))
@@ -67,7 +67,7 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 				return loc;
 			map_location adjs[6];
 			get_adjacent_tiles(loc,adjs);
-			foreach (const map_location &loc, adjs)
+			BOOST_FOREACH (const map_location &loc, adjs)
 			{
 				if (!map.on_board(loc)) continue;
 				// Add the tile to be checked if it hasn't already been and
@@ -112,7 +112,7 @@ std::set<map_location> pathfind::get_teleport_locations(const unit &u,
 
 	const team &current_team = (*resources::teams)[u.side() - 1];
 	const map_location &loc = u.get_location();
-	foreach (const map_location &l, current_team.villages())
+	BOOST_FOREACH (const map_location &l, current_team.villages())
 	{
 		// This must be a vacant village (or occupied by the unit)
 		// to be able to teleport.

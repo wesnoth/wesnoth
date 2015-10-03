@@ -288,7 +288,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<twindow_definition>("window", cfg);
 
 	/***** Window types *****/
-	foreach (const config &w, cfg.child_range("window")) {
+	BOOST_FOREACH (const config &w, cfg.child_range("window")) {
 		std::pair<std::string, twindow_builder> child;
 		child.first = child.second.read(w);
 		window_types.insert(child);
@@ -390,7 +390,7 @@ template<class T>
 void tgui_definition::load_definitions(
 	const std::string &definition_type, const config &cfg, const char *key)
 {
-	foreach (const config &d, cfg.child_range(key ? key : definition_type + "_definition"))
+	BOOST_FOREACH (const config &d, cfg.child_range(key ? key : definition_type + "_definition"))
 	{
 		T* def = new T(d);
 
@@ -487,7 +487,7 @@ void load_settings()
 	}
 
 	// Parse guis
-	foreach (const config &g, cfg.child_range("gui")) {
+	BOOST_FOREACH (const config &g, cfg.child_range("gui")) {
 		std::pair<std::string, tgui_definition> child;
 		child.first = child.second.read(g);
 		guis.insert(child);

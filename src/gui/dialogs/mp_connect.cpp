@@ -81,7 +81,7 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 	const std::vector<game_config::server_info>&
 		pref_servers = preferences::server_list();
 
-	foreach(const game_config::server_info& server, pref_servers) {
+	BOOST_FOREACH(const game_config::server_info& server, pref_servers) {
 
 		std::map<std::string, string_map> data;
 		string_map item;

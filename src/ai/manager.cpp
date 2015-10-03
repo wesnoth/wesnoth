@@ -88,7 +88,7 @@ void holder::init( side_number side )
 
 	if (this->ai_) {
 		ai_->on_create();
-		foreach (const config &mod_ai, cfg_.child_range("modify_ai")) {
+		BOOST_FOREACH (const config &mod_ai, cfg_.child_range("modify_ai")) {
 			modify_ai(mod_ai);
 		}
 		cfg_.clear_children("modify_ai");
@@ -139,8 +139,8 @@ void holder::modify_ai_config_old( const config::const_child_itors &ai_parameter
 		cfg_.merge_children_by_attribute("aspect","id");
 	} else {
 		// else run 'add_facet' command on each [aspect][facet]
-		foreach (const config &cfg_a, cfg.child_range("aspect")) {
-			foreach (const config &cfg_f, cfg_a.child_range("facet")) {
+		BOOST_FOREACH (const config &cfg_a, cfg.child_range("aspect")) {
+			BOOST_FOREACH (const config &cfg_f, cfg_a.child_range("facet")) {
 				readonly_context_->add_facet(cfg_a["id"],cfg_f);
 			}
 		}

@@ -162,7 +162,7 @@ void read_tips_of_day(config& tips_of_day)
 		std::vector<config> tips(itors.first, itors.second);
 		std::random_shuffle(tips.begin(), tips.end());
 		tips_of_day.clear();
-		foreach (const config &tip, tips) {
+		BOOST_FOREACH (const config &tip, tips) {
 			tips_of_day.add_child("tip", tip);
 		}
 	}
@@ -180,7 +180,7 @@ void next_tip_of_day(config& tips_of_day, bool reverse)
 			reverse ? tips.begin() + 1 : tips.end() - 1;
 		std::rotate(tips.begin(), direction, tips.end());
 		tips_of_day.clear();
-		foreach (const config &tip, tips) {
+		BOOST_FOREACH (const config &tip, tips) {
 			tips_of_day.add_child("tip", tip);
 		}
 	}

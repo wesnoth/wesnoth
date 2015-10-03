@@ -70,7 +70,7 @@ void time_of_day::write(config& cfg) const
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
-	foreach (const config &t, cfg.child_range("time")) {
+	BOOST_FOREACH (const config &t, cfg.child_range("time")) {
 		normal_times.push_back(time_of_day(t));
 	}
 

@@ -39,7 +39,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 	, nodes()
 {
 
-	foreach(const config &node, cfg.child_range("node")) {
+	BOOST_FOREACH(const config &node, cfg.child_range("node")) {
 		nodes.push_back(tnode(node));
 	}
 

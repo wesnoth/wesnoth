@@ -344,7 +344,7 @@ private:
 				if( scores[current_side][i] > 98 )
 					continue;
 
-				foreach( int side , enemies) {
+				BOOST_FOREACH( int side , enemies) {
 					int diff = scores[current_side][i] - scores[side][i];
 					if ( diff > enemy_tollerancy) {
 						valid = false;
@@ -354,7 +354,7 @@ private:
 				}
 
 				if( valid ) {
-					foreach( int side , allies) {
+					BOOST_FOREACH( int side , allies) {
 						if ( scores[current_side][i] - scores[side][i] > ally_tollerancy ) {
 							valid = false;
 							break;
@@ -552,7 +552,7 @@ private:
                     visited_locs.erase(starting_loc);
 
                 std::vector<variant> res;
-                foreach( const map_location& ml, visited_locs) {
+                BOOST_FOREACH( const map_location& ml, visited_locs) {
                     res.push_back( variant(new location_callable( ml ) ) );
                 }
 
@@ -828,7 +828,7 @@ private:
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		typedef std::pair<map_location, map_location> mv;
-		foreach (const mv &m, analysis->movements) {
+		BOOST_FOREACH (const mv &m, analysis->movements) {
 			units_with_moves.move(m.first, m.second);
 		}
 
@@ -1616,7 +1616,7 @@ private:
 
 		std::vector<attack_type> attacks = attacker.attacks();
 
-		foreach(const attack_type &attack, attacks) {
+		BOOST_FOREACH(const attack_type &attack, attacks) {
 			const int dmg = round_damage(attack.damage(), defender.damage_from(attack), 100) * attack.num_attacks();
 			if (attack.range() == "melee") {
 				highest_melee_damage = std::max(highest_melee_damage, dmg);

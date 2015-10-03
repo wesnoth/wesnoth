@@ -209,7 +209,7 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
 		return;
 
 	int k = 1;
-	foreach (const config::any_child &ch, cfg.all_children_range())
+	BOOST_FOREACH (const config::any_child &ch, cfg.all_children_range())
 	{
 		lua_createtable(L, 2, 0);
 		lua_pushstring(L, ch.key.c_str());
@@ -219,7 +219,7 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
-	foreach (const config::attribute &attr, cfg.attribute_range())
+	BOOST_FOREACH (const config::attribute &attr, cfg.attribute_range())
 	{
 		luaW_pushscalar(L, attr.second);
 		lua_setfield(L, -2, attr.first.c_str());
@@ -752,7 +752,7 @@ static int intf_get_unit_type_ids(lua_State *L)
 {
 	lua_newtable(L);
 	int i = 1;
-	foreach (const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
+	BOOST_FOREACH (const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
 	{
 		lua_pushstring(L, ut.first.c_str());
 		lua_rawseti(L, -2, i);
@@ -1297,7 +1297,7 @@ static int impl_side_get(lua_State *L)
 		std::set<std::string> const &recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
-		foreach (std::string const &r, t.recruits()) {
+		BOOST_FOREACH (std::string const &r, t.recruits()) {
 			lua_pushstring(L, r.c_str());
 			lua_rawseti(L, -2, i++);
 		}

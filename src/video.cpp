@@ -102,7 +102,7 @@ static void calc_rects()
 {
 	events.clear();
 
-	foreach (SDL_Rect const &rect, update_rects) {
+	BOOST_FOREACH (SDL_Rect const &rect, update_rects) {
 		events.push_back(event(rect, true));
 		events.push_back(event(rect, false));
 	}

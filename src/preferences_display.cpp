@@ -84,7 +84,7 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 	bpp = video.modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags);
 
-	foreach (const res_t &res, res_list)
+	BOOST_FOREACH (const res_t &res, res_list)
 	{
 		if (bpp != 0) break;
 		std::cerr << "Video mode " << resolution.first << 'x'

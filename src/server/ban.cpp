@@ -278,7 +278,7 @@ static lg::log_domain log_server("server");
 		scoped_istream ban_file = istream_file(filename_);
 		read_gz(cfg, *ban_file);
 
-		foreach (const config &b, cfg.child_range("ban"))
+		BOOST_FOREACH (const config &b, cfg.child_range("ban"))
 		{
 			try {
 				banned_ptr new_ban(new banned(b));
@@ -294,7 +294,7 @@ static lg::log_domain log_server("server");
 		// load deleted too
 		if (const config &cfg_del = cfg.child("deleted"))
 		{
-			foreach (const config &b, cfg_del.child_range("ban"))
+			BOOST_FOREACH (const config &b, cfg_del.child_range("ban"))
 			{
 				try {
 					banned_ptr new_ban(new banned(b));
@@ -698,7 +698,7 @@ static lg::log_domain log_server("server");
 	void ban_manager::load_config(const config& cfg)
 	{
 		ban_times_.clear();
-		foreach (const config &bt, cfg.child_range("ban_time")) {
+		BOOST_FOREACH (const config &bt, cfg.child_range("ban_time")) {
 			time_t duration = 0;
 			if (parse_time(bt["time"], &duration)) {
 				ban_times_.insert(default_ban_times::value_type(bt["name"], duration));

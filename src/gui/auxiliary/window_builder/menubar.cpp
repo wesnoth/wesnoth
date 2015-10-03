@@ -49,7 +49,7 @@ tbuilder_menubar::tbuilder_menubar(const config& cfg)
 	const config &data = cfg.child("data");
 	if (!data) return;
 
-	foreach (const config &cell, data.child_range("cell")) {
+	BOOST_FOREACH (const config &cell, data.child_range("cell")) {
 		cells_.push_back(tbuilder_gridcell(cell));
 	}
 }

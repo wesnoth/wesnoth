@@ -57,7 +57,7 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 	 * @todo do we really want to keep the length limit for the various
 	 * items?
 	 */
-	foreach(const config &c, cfg_.child_range("campaign")) {
+	BOOST_FOREACH(const config &c, cfg_.child_range("campaign")) {
 		std::map<std::string, string_map> data;
 		string_map item;
 

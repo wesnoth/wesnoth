@@ -157,7 +157,7 @@ void play_controller::init(CVideo& video){
 		place_sides_in_preferred_locations();
 	}
 
-	foreach (const config &t, level_.child_range("time_area")) {
+	BOOST_FOREACH (const config &t, level_.child_range("time_area")) {
 		add_time_area(t);
 	}
 
@@ -172,7 +172,7 @@ void play_controller::init(CVideo& video){
 	std::set<std::string> seen_save_ids;
 
 	int team_num = 0;
-	foreach (const config &side, level_.child_range("side"))
+	BOOST_FOREACH (const config &side, level_.child_range("side"))
 	{
 		std::string save_id = get_unique_saveid(side, seen_save_ids);
 		seen_save_ids.insert(save_id);
@@ -306,7 +306,7 @@ void play_controller::place_sides_in_preferred_locations()
 	int num_pos = map_.num_valid_starting_positions();
 
 	int side_num = 1;
-	foreach (const config &side, level_.child_range("side"))
+	BOOST_FOREACH (const config &side, level_.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
 			const map_location& pos = map_.starting_position(p);
@@ -1192,7 +1192,7 @@ void play_controller::check_victory()
 
 	if (non_interactive()) {
 		std::cout << "winner: ";
-		foreach (unsigned l, seen_leaders) {
+		BOOST_FOREACH (unsigned l, seen_leaders) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
 			if (ai.empty()) ai = "default ai";
 			std::cout << l << " (using " << ai << ") ";

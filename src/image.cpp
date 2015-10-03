@@ -300,7 +300,7 @@ static bool localized_file_uptodate (const std::string& loc_file)
 		std::string trackpath = get_binary_file_location("", "l10n-track");
 		std::string contents = read_file(trackpath);
 		std::vector<std::string> lines = utils::split(contents, '\n');
-		foreach (const std::string &line, lines) {
+		BOOST_FOREACH (const std::string &line, lines) {
 			size_t p1 = line.find(fsep);
 			if (p1 == std::string::npos)
 				continue;
@@ -347,7 +347,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 	// add en_US with lowest priority, since the message above will
 	// not have it when translated.
 	langs.push_back("en_US");
-	foreach (const std::string &lang, langs) {
+	BOOST_FOREACH (const std::string &lang, langs) {
 		std::string loc_file = dir + "l10n" + "/" + lang + "/" + loc_base;
 		if (file_exists(loc_file) && localized_file_uptodate(loc_file)) {
 			return loc_file;
@@ -452,7 +452,7 @@ surface locator::load_image_sub_file() const
 
 		const std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
 
-		foreach(const std::string& s, modlist) {
+		BOOST_FOREACH(const std::string& s, modlist) {
 			const std::vector<std::string> tmpmod = utils::paranthetical_split(s);
 			std::vector<std::string>::const_iterator j = tmpmod.begin();
 			while(j!= tmpmod.end()){
@@ -516,7 +516,7 @@ surface locator::load_image_sub_file() const
 							tmp_map.clear();
 						}
 
-						foreach(const rc_entry_type& rc_entry, tmp_map) {
+						BOOST_FOREACH(const rc_entry_type& rc_entry, tmp_map) {
 							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
@@ -554,7 +554,7 @@ surface locator::load_image_sub_file() const
 							tmp_map.clear();
 						}
 
-						foreach(const rc_entry_type& rc_entry, tmp_map) {
+						BOOST_FOREACH(const rc_entry_type& rc_entry, tmp_map) {
 							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
@@ -590,7 +590,7 @@ surface locator::load_image_sub_file() const
 							tmp_map.clear();
 						}
 
-						foreach(const rc_entry_type& rc_entry, tmp_map) {
+						BOOST_FOREACH(const rc_entry_type& rc_entry, tmp_map) {
 							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
@@ -733,7 +733,7 @@ surface locator::load_image_sub_file() const
 			surf = fl(surf);
 		}
 
-		foreach(function_base* f, functor_queue) {
+		BOOST_FOREACH(function_base* f, functor_queue) {
 			surf = (*f)(surf);
 			delete f;
 		}

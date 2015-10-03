@@ -43,10 +43,10 @@ bool addon_name_legal(const std::string& name)
 
 bool check_names_legal(const config& dir)
 {
-	foreach (const config &path, dir.child_range("file")) {
+	BOOST_FOREACH (const config &path, dir.child_range("file")) {
 		if (!addon_name_legal(path["name"])) return false;
 	}
-	foreach (const config &path, dir.child_range("dir")) {
+	BOOST_FOREACH (const config &path, dir.child_range("dir")) {
 		if (!addon_name_legal(path["name"])) return false;
 		if (!check_names_legal(path)) return false;
 	}
@@ -86,9 +86,9 @@ ADDON_TYPE get_addon_type(const std::string& str)
 void find_scripts(config &cfg, const std::string &extension,
                   std::vector<config *> &scripts)
 {
-	foreach (config &i, cfg.child_range("dir"))
+	BOOST_FOREACH (config &i, cfg.child_range("dir"))
 	{
-		foreach (config &j, cfg.child_range("file"))
+		BOOST_FOREACH (config &j, cfg.child_range("file"))
 		{
 			std::string filename = j["name"];
 			if (filename.length() > extension.length()) {

@@ -880,7 +880,7 @@ void savegame::extract_summary_data_from_save(config& out)
 	bool shrouded = false;
 
 	const config& snapshot = has_snapshot ? gamestate_.snapshot : gamestate_.starting_pos;
-	foreach (const config &side, snapshot.child_range("side"))
+	BOOST_FOREACH (const config &side, snapshot.child_range("side"))
 	{
 		if (side["controller"] != "human") {
 			continue;
@@ -889,7 +889,7 @@ void savegame::extract_summary_data_from_save(config& out)
 			shrouded = true;
 		}
 
-		foreach (const config &u, side.child_range("unit"))
+		BOOST_FOREACH (const config &u, side.child_range("unit"))
 		{
 			if (utils::string_bool(u["canrecruit"], false)) {
 				leader = u["id"];
@@ -927,7 +927,7 @@ void scenariostart_savegame::before_save()
 	// if there is no scenario information in the starting pos, add the (persistent) sides from the snapshot
 	// else do nothing, as persistence information was already added at the end of the previous scenario
 	if (gamestate().starting_pos["id"].empty()) {
-		foreach(const config* snapshot_side, gamestate().snapshot.get_children("side")) {
+		BOOST_FOREACH(const config* snapshot_side, gamestate().snapshot.get_children("side")) {
 			//add all side tags (assuming they only contain carryover information)
 			gamestate().starting_pos.add_child("side", *snapshot_side);
 		}

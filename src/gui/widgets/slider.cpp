@@ -210,7 +210,7 @@ void tslider::update_canvas()
 	// Inherited.
 	tscrollbar_::update_canvas();
 
-	foreach(tcanvas& tmp, canvas()) {
+	BOOST_FOREACH(tcanvas& tmp, canvas()) {
 		tmp.set_variable("text", variant(get_value_label()));
 	}
 }

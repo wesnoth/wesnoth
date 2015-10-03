@@ -75,7 +75,7 @@ void tstacked_widget::finalize(
 {
 	assert(generator_);
 	string_map empty_data;
-	foreach(const tbuilder_grid_const_ptr& builder, widget_builder) {
+	BOOST_FOREACH(const tbuilder_grid_const_ptr& builder, widget_builder) {
 		generator_->create_item(-1, builder, empty_data, NULL);
 	}
 	swap_grid(NULL, &grid(), generator_, "_content_grid");

@@ -774,7 +774,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::vector<terrain_height_mapper> height_conversion;
 
-	foreach (const config &h, cfg.child_range("height")) {
+	BOOST_FOREACH (const config &h, cfg.child_range("height")) {
 		height_conversion.push_back(terrain_height_mapper(h));
 	}
 
@@ -908,7 +908,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	std::vector<terrain_converter> converters;
-	foreach (const config &cv, cfg.child_range("convert")) {
+	BOOST_FOREACH (const config &cv, cfg.child_range("convert")) {
 		converters.push_back(terrain_converter(cv));
 	}
 

@@ -93,7 +93,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 	}
 
 	bool always_display = false;
-	foreach (const config &mod, u->second.get_modification_advances())
+	BOOST_FOREACH (const config &mod, u->second.get_modification_advances())
 	{
 		if (utils::string_bool(mod["always_display"])) always_display = true;
 		sample_units.push_back(::get_advanced_unit(u->second, u->second.type_id()));
@@ -937,7 +937,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	}
 
 	//FIXME: This probably must be move into a unit_type function
-	foreach (const config &tr, t->possible_traits())
+	BOOST_FOREACH (const config &tr, t->possible_traits())
 	{
 		if (tr["availability"] != "musthave") continue;
 		std::string gender_string = (!t->genders().empty() && t->genders().front()== unit_race::FEMALE) ? "female_name" : "male_name";
@@ -966,7 +966,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	// Check if AMLA color is needed
 	// FIXME: not sure if it's fully accurate (but not very important for unit_type)
 	// xp_color also need a simpler function for doing this
-	foreach (const config &adv, t->modification_advancements())
+	BOOST_FOREACH (const config &adv, t->modification_advancements())
 	{
 		if (!utils::string_bool(adv["strict_amla"]) || !t->can_advance()) {
 			det.xp_color = "<170,0,255>"; // from unit::xp_color()

@@ -117,7 +117,7 @@ void tdebug_layout_graph::set_level(const std::string& level)
 
 	std::vector<std::string> params = utils::split(level);
 
-	foreach(const std::string& param, params) {
+	BOOST_FOREACH(const std::string& param, params) {
 		if(param == "all") {
 			level_ = ALL;
 			// No need to look further eventhought invalid items are now
@@ -144,7 +144,7 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 
 	std::vector<std::string> params = utils::split(domain);
 
-	foreach(const std::string& param, params) {
+	BOOST_FOREACH(const std::string& param, params) {
 		if(param == "all") {
 			domain_ = ALL;
 			// No need to look further eventhought invalid items are now

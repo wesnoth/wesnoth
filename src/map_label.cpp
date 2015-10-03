@@ -63,7 +63,7 @@ void map_labels::read(const config &cfg)
 {
 	clear_all();
 
-	foreach (const config &i, cfg.child_range("label"))
+	BOOST_FOREACH (const config &i, cfg.child_range("label"))
 	{
 		const map_location loc(i, resources::state_of_game);
 		terrain_label *label = new terrain_label(*this, i);
@@ -218,7 +218,7 @@ void map_labels::clear(const std::string& team_name)
 
 void map_labels::clear_map(label_map &m)
 {
-	foreach (label_map::value_type &v, m)
+	BOOST_FOREACH (label_map::value_type &v, m)
 	{
 		delete v.second;
 	}
@@ -227,7 +227,7 @@ void map_labels::clear_map(label_map &m)
 
 void map_labels::clear_all()
 {
-	foreach (team_label_map::value_type &m, labels_)
+	BOOST_FOREACH (team_label_map::value_type &m, labels_)
 	{
 		clear_map(m.second);
 	}
@@ -247,9 +247,9 @@ void map_labels::scroll(double xmove, double ymove)
 
 void map_labels::recalculate_labels()
 {
-	foreach (team_label_map::value_type &m, labels_)
+	BOOST_FOREACH (team_label_map::value_type &m, labels_)
 	{
-		foreach (label_map::value_type &l, m.second)
+		BOOST_FOREACH (label_map::value_type &l, m.second)
 		{
 			l.second->recalculate();
 		}
@@ -265,9 +265,9 @@ bool map_labels::visible_global_label(const map_location& loc) const
 
 void map_labels::recalculate_shroud()
 {
-	foreach (team_label_map::value_type &m, labels_)
+	BOOST_FOREACH (team_label_map::value_type &m, labels_)
 	{
-		foreach (label_map::value_type &l, m.second)
+		BOOST_FOREACH (label_map::value_type &l, m.second)
 		{
 			l.second->calculate_shroud();
 		}

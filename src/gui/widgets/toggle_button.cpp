@@ -84,7 +84,7 @@ void ttoggle_button::update_canvas()
 
 	// set icon in canvases
 	std::vector<tcanvas>& canvases = tcontrol::canvas();
-	foreach(tcanvas& canvas, canvases) {
+	BOOST_FOREACH(tcanvas& canvas, canvases) {
 		canvas.set_variable("icon", variant(icon_name_));
 	}
 

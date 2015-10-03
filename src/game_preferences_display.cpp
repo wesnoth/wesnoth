@@ -1016,7 +1016,7 @@ const config* preferences_dialog::get_advanced_pref() const
 void preferences_dialog::set_advanced_menu()
 {
 	std::vector<std::string> advanced_items;
-	foreach (const config &adv, game_cfg_.child_range("advanced_preference"))
+	BOOST_FOREACH (const config &adv, game_cfg_.child_range("advanced_preference"))
 	{
 		std::ostringstream str;
 		std::string field = preferences::get(adv["field"]);

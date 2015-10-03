@@ -145,7 +145,7 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
 	if (!one_layer_only) {
 		terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
 	}
-	foreach (const map_location& loc, locs) {
+	BOOST_FOREACH (const map_location& loc, locs) {
 		draw_terrain_actual(terrain, loc, one_layer_only);
 	}
 }
@@ -373,7 +373,7 @@ void map_context::trim_stack(action_stack& stack)
 
 void map_context::clear_stack(action_stack& stack)
 {
-	foreach (editor_action* a, stack) {
+	BOOST_FOREACH (editor_action* a, stack) {
 		delete a;
 	}
 	stack.clear();

@@ -34,7 +34,7 @@ tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
 {
 	const config &s = cfg.child("stack");
 	VALIDATE(s, _("No stack defined."));
-	foreach(const config &layer, s.child_range("layer")) {
+	BOOST_FOREACH(const config &layer, s.child_range("layer")) {
 		stack.push_back(new tbuilder_grid(layer));
 	}
 }

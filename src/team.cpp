@@ -261,7 +261,7 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 	// Was it correct?
 
 	// Load in the villages the side controls at the start
-	foreach (const config &v, cfg.child_range("village"))
+	BOOST_FOREACH (const config &v, cfg.child_range("village"))
 	{
 		map_location loc(v, resources::state_of_game);
 		if (map.is_village(loc)) {
@@ -551,7 +551,7 @@ bool is_observer()
 		return true;
 	}
 
-	foreach (const team &t, *teams) {
+	BOOST_FOREACH (const team &t, *teams) {
 		if (t.is_human())
 			return false;
 	}

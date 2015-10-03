@@ -529,14 +529,14 @@ void add_tooltip_data(std::map<std::string, string_map>& map,
 void modify_grid_with_data(tgrid* grid, const std::map<std::string, string_map>& map)
 {
 	typedef std::map<std::string, string_map> strstrmap;
-	foreach (const strstrmap::value_type v, map) {
+	BOOST_FOREACH (const strstrmap::value_type v, map) {
 		const std::string& key = v.first;
 		const string_map& strmap = v.second;
 		twidget* w = grid->find(key, false);
 		if (w == NULL) continue;
 		tcontrol* c = dynamic_cast<tcontrol*>(w);
 		if (c == NULL) continue;
-		foreach (const string_map::value_type& vv, strmap) {
+		BOOST_FOREACH (const string_map::value_type& vv, strmap) {
 			if (vv.first == "label") {
 				c->set_label(vv.second);
 			} else if (vv.first == "tooltip") {
@@ -840,7 +840,7 @@ void tlobby_main::update_playerlist()
 		player_list_.other_rooms.tree->clear();
 	}
 
-	foreach (user_info* userptr, lobby_info_.users_sorted())
+	BOOST_FOREACH (user_info* userptr, lobby_info_.users_sorted())
 	{
 		user_info& user = *userptr;
 		tsub_player_list* target_list(NULL);
@@ -1063,7 +1063,7 @@ tlobby_chat_window* tlobby_main::whisper_window_open(const std::string& name, bo
 
 tlobby_chat_window* tlobby_main::search_create_window(const std::string& name, bool whisper, bool open_new)
 {
-	foreach (tlobby_chat_window& t, open_windows_) {
+	BOOST_FOREACH (tlobby_chat_window& t, open_windows_) {
 		if (t.name == name && t.whisper == whisper) return &t;
 	}
 	if (open_new) {
@@ -1457,7 +1457,7 @@ void tlobby_main::process_room_query_response(const config& data)
 			//TODO: this should really open a nice join room dialog instead
 			std::stringstream ss;
 			ss << "Rooms:";
-			foreach (const config& r, rooms.child_range("room")) {
+			BOOST_FOREACH (const config& r, rooms.child_range("room")) {
 				ss << " " << r["name"];
 			}
 			add_active_window_message("server", ss.str());
@@ -1652,7 +1652,7 @@ bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
 		const std::vector<user_info>& match_infos = lobby_info_.users();
 		std::vector<std::string> matches;
 
-		foreach(const user_info& ui, match_infos) {
+		BOOST_FOREACH(const user_info& ui, match_infos) {
 			if(ui.name != preferences::login()) {
 				matches.push_back(ui.name);
 			}
@@ -1677,7 +1677,7 @@ void tlobby_main::game_filter_reload()
 {
 	lobby_info_.clear_game_filter();
 
-	foreach (const std::string& s, utils::split(filter_text_->get_value(), ' ')) {
+	BOOST_FOREACH (const std::string& s, utils::split(filter_text_->get_value(), ' ')) {
 		lobby_info_.add_game_filter(new game_filter_general_string_part(s));
 	}
 	//TODO: make changing friend/ignore lists trigger a refresh

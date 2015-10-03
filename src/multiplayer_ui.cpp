@@ -161,9 +161,9 @@ void level_to_gamestate(config& level, game_state& state)
 			state.starting_pos.child_range("side");
 		config::const_child_itors level_sides = level.child_range("side");
 
-		foreach (config &side, saved_sides)
+		BOOST_FOREACH (config &side, saved_sides)
 		{
-			foreach (const config &lside, level_sides)
+			BOOST_FOREACH (const config &lside, level_sides)
 			{
 				if (side["side"] == lside["side"] &&
 						(side["current_player"] != lside["current_player"] ||
@@ -609,7 +609,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 		if (const config &ms = c.child("members")) {
 			std::stringstream ss;
 			ss << "Room " << c["room"] << " members: ";
-			foreach (const config& m, ms.child_range("member")) {
+			BOOST_FOREACH (const config& m, ms.child_range("member")) {
 				ss << m["name"] << " ";
 			}
 			chat_.add_message(time(NULL), "server", ss.str());
@@ -618,7 +618,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 		if (const config &rs = c.child("rooms")) {
 			std::stringstream ss;
 			ss << "Rooms: ";
-			foreach (const config& r, rs.child_range("room")) {
+			BOOST_FOREACH (const config& r, rs.child_range("room")) {
 				ss << r["name"] << "(" << r["size"] << ") ";
 			}
 			chat_.add_message(time(NULL), "server", ss.str());
@@ -724,7 +724,7 @@ void ui::gamelist_updated(bool silent)
 {
 	std::list<user_info> u_list;
 
-	foreach (const config &user, gamelist_.child_range("user"))
+	BOOST_FOREACH (const config &user, gamelist_.child_range("user"))
 	{
 		user_info u_elem;
 		u_elem.name = user["name"];

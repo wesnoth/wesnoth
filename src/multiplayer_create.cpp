@@ -118,7 +118,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 
 	// Standard maps
 	i = 0;
-	foreach (const config &j, cfg.child_range("multiplayer"))
+	BOOST_FOREACH (const config &j, cfg.child_range("multiplayer"))
 	{
 		if (utils::string_bool(j["allow_new_game"], true))
 		{
@@ -205,7 +205,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 
 	// The possible eras to play
 	std::vector<std::string> eras;
-	foreach (const config &er, cfg.child_range("era")) {
+	BOOST_FOREACH (const config &er, cfg.child_range("era")) {
 		eras.push_back(er["name"]);
 	}
 	if(eras.empty()) {
@@ -538,7 +538,7 @@ void create::process_event()
 #endif
 
 		int nsides = 0;
-		foreach (const config &k, parameters_.scenario_data.child_range("side")) {
+		BOOST_FOREACH (const config &k, parameters_.scenario_data.child_range("side")) {
 			if (utils::string_bool(k["allow_player"], true)) ++nsides;
 		}
 

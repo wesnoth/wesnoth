@@ -101,7 +101,7 @@ void config::append(const config& cfg)
 {
 	check_valid(cfg);
 
-	foreach (const any_child &value, cfg.all_children_range()) {
+	BOOST_FOREACH (const any_child &value, cfg.all_children_range()) {
 		add_child(value.key, value.cfg);
 	}
 
@@ -150,7 +150,7 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 
 	clear_children(key);
 	typedef std::map<std::string,config> config_map;
-	foreach (const config_map::value_type &i, merged_children_map) {
+	BOOST_FOREACH (const config_map::value_type &i, merged_children_map) {
 		add_child(key,i.second);
 	}
 }
@@ -343,7 +343,7 @@ void config::recursive_clear_value(const std::string& key)
 
 	values.erase(key);
 
-	foreach (const any_child &value, all_children_range()) {
+	BOOST_FOREACH (const any_child &value, all_children_range()) {
 		const_cast<config *>(&value.cfg)->recursive_clear_value(key);
 	}
 }
@@ -494,7 +494,7 @@ const config& config::find_child_recursive(const std::string& key,
 	if (res)
 		return res;
 
-	foreach (const any_child &child, all_children_range()) {
+	BOOST_FOREACH (const any_child &child, all_children_range()) {
 		const config& res2 = child.cfg.find_child_recursive(key, name, value);
 
 		if (res2)
@@ -729,21 +729,21 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	if (track) values[diff_track_attribute] = "modified";
 
 	if (const config &inserts = diff.child("insert")) {
-		foreach (const attribute &v, inserts.attribute_range()) {
+		BOOST_FOREACH (const attribute &v, inserts.attribute_range()) {
 			values[v.first] = v.second;
 		}
 	}
 
 	if (const config &deletes = diff.child("delete")) {
-		foreach (const attribute &v, deletes.attribute_range()) {
+		BOOST_FOREACH (const attribute &v, deletes.attribute_range()) {
 			values.erase(v.first);
 		}
 	}
 
-	foreach (const config &i, diff.child_range("change_child"))
+	BOOST_FOREACH (const config &i, diff.child_range("change_child"))
 	{
 		const size_t index = lexical_cast<size_t>(i["index"].str());
-		foreach (const any_child &item, i.all_children_range())
+		BOOST_FOREACH (const any_child &item, i.all_children_range())
 		{
 			if (item.key.empty()) {
 				continue;
@@ -758,19 +758,19 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 		}
 	}
 
-	foreach (const config &i, diff.child_range("insert_child"))
+	BOOST_FOREACH (const config &i, diff.child_range("insert_child"))
 	{
 		const size_t index = lexical_cast<size_t>(i["index"].str());
-		foreach (const any_child &item, i.all_children_range()) {
+		BOOST_FOREACH (const any_child &item, i.all_children_range()) {
 			config& inserted = add_child_at(item.key, item.cfg, index);
 			if (track) inserted[diff_track_attribute] = "new";
 		}
 	}
 
-	foreach (const config &i, diff.child_range("delete_child"))
+	BOOST_FOREACH (const config &i, diff.child_range("delete_child"))
 	{
 		const size_t index = lexical_cast<size_t>(i["index"].str());
-		foreach (const any_child &item, i.all_children_range()) {
+		BOOST_FOREACH (const any_child &item, i.all_children_range()) {
 			if (!track) {
 				remove_child(item.key, index);
 			} else {
@@ -787,18 +787,18 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 void config::clear_diff_track(const config& diff)
 {
 	remove_attribute(diff_track_attribute);
-	foreach (const config &i, diff.child_range("delete_child"))
+	BOOST_FOREACH (const config &i, diff.child_range("delete_child"))
 	{
 		const size_t index = lexical_cast<size_t>(i["index"].str());
-		foreach (const any_child &item, i.all_children_range()) {
+		BOOST_FOREACH (const any_child &item, i.all_children_range()) {
 			remove_child(item.key, index);
 		}
 	}
 
-	foreach (const config &i, diff.child_range("change_child"))
+	BOOST_FOREACH (const config &i, diff.child_range("change_child"))
 	{
 		const size_t index = lexical_cast<size_t>(i["index"].str());
-		foreach (const any_child &item, i.all_children_range())
+		BOOST_FOREACH (const any_child &item, i.all_children_range())
 		{
 			if (item.key.empty()) {
 				continue;
@@ -812,7 +812,7 @@ void config::clear_diff_track(const config& diff)
 			itor->second[index]->clear_diff_track(item.cfg);
 		}
 	}
-	foreach (const any_child &value, all_children_range()) {
+	BOOST_FOREACH (const any_child &value, all_children_range()) {
 		const_cast<config *>(&value.cfg)->remove_attribute(diff_track_attribute);
 	}
 }
@@ -877,11 +877,11 @@ bool config::matches(const config &filter) const
 	}
 
 	// Now, match the kids
-	foreach (const any_child &i, filter.all_children_range())
+	BOOST_FOREACH (const any_child &i, filter.all_children_range())
 	{
 		if (i.key == "not") continue;
 		bool found = false;
-		foreach (const config &j, child_range(i.key)) {
+		BOOST_FOREACH (const config &j, child_range(i.key)) {
 			if (j.matches(i.cfg)) {
 				found = true;
 				break;
@@ -926,11 +926,11 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg)
 {
 	static int i = 0;
 	i++;
-	foreach (const config::attribute &val, cfg.attribute_range()) {
+	BOOST_FOREACH (const config::attribute &val, cfg.attribute_range()) {
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}
-	foreach (const config::any_child &child, cfg.all_children_range())
+	BOOST_FOREACH (const config::any_child &child, cfg.all_children_range())
 	{
 		for (int j = 0; j < i - 1; ++j) outstream << char(9);
 		outstream << "[" << child.key << "]\n";

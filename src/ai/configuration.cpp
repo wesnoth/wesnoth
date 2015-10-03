@@ -92,7 +92,7 @@ void configuration::init(const config &game_config)
 	}
 
 
-	foreach (const config &ai_configuration, ais.child_range("ai")) {
+	BOOST_FOREACH (const config &ai_configuration, ais.child_range("ai")) {
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
@@ -160,7 +160,7 @@ bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(side_number /*
 	config aspect_config;
 	aspect_config["id"] = id;
 
-	foreach (const config &aiparam, cfg.child_range("ai")) {
+	BOOST_FOREACH (const config &aiparam, cfg.child_range("ai")) {
 		const config &_aspect = aiparam.find_child("aspect","id",id);
 		if (_aspect) {
 			aspect_config.append(_aspect);
@@ -180,7 +180,7 @@ bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(side_number /*
 		if (aspect_was_attribute) {
 			facet_config["value"] = aiparam[id];
 		} else {
-			foreach (const config &value, aiparam.child_range(id)) {
+			BOOST_FOREACH (const config &value, aiparam.child_range(id)) {
 				facet_config.add_child("value",value);
 			}
 		}
@@ -206,7 +206,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 
 	//leave only the [ai] children
 	cfg = config();
-	foreach (const config &aiparam, original_cfg.child_range("ai")) {
+	BOOST_FOREACH (const config &aiparam, original_cfg.child_range("ai")) {
 		cfg.add_child("ai",aiparam);
 	}
 
@@ -228,7 +228,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 
 	//find version
 	int version = 10600;
-	foreach (const config &aiparam, cfg.child_range("ai")) {
+	BOOST_FOREACH (const config &aiparam, cfg.child_range("ai")) {
 		if (aiparam.has_attribute("version")){
 			int v = lexical_cast_default<int>(aiparam["version"],version);
 			if (version<v) {
@@ -254,7 +254,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	config parsed_cfg = config();
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI configurations"<< std::endl;
-	foreach (const config &aiparam, cfg.child_range("ai")) {
+	BOOST_FOREACH (const config &aiparam, cfg.child_range("ai")) {
 		parsed_cfg.append(aiparam);
 	}
 
@@ -266,7 +266,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	parsed_cfg.merge_children_by_attribute("aspect","id");
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects"<< std::endl;
-	foreach (config &aspect_cfg, parsed_cfg.child_range("aspect")) {
+	BOOST_FOREACH (config &aspect_cfg, parsed_cfg.child_range("aspect")) {
 		if (!aspect_cfg.child("default")) {
 			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
 			continue;
@@ -305,7 +305,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 	if (cfg["ai_algorithm"]=="idle_ai") {
 		is_idle_ai = true;
 	} else {
-		foreach (config &aiparam, cfg.child_range("ai")) {
+		BOOST_FOREACH (config &aiparam, cfg.child_range("ai")) {
 			if (aiparam["ai_algorithm"]=="idle_ai") {
 				is_idle_ai = true;
 				break;
@@ -324,8 +324,8 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 	config fallback_stage_cfg_ai;
 
-	foreach (config &aiparam, cfg.child_range("ai")) {
-		foreach (const well_known_aspect &wka, well_known_aspects) {
+	BOOST_FOREACH (config &aiparam, cfg.child_range("ai")) {
+		BOOST_FOREACH (const well_known_aspect &wka, well_known_aspects) {
 			if (wka.was_an_attribute_) {
 				aiparam.remove_attribute(wka.name_);
 			} else {
@@ -334,7 +334,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 		}
 
 
-		foreach (const config &aitarget, aiparam.child_range("target")) {
+		BOOST_FOREACH (const config &aitarget, aiparam.child_range("target")) {
 			config aigoal;
 			transfer_turns_and_time_of_day_data(aiparam,aigoal);
 
@@ -352,14 +352,14 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 		aiparam.clear_children("target");
 
 
-		foreach (config &ai_protect_unit, aiparam.child_range("protect_unit")) {
+		BOOST_FOREACH (config &ai_protect_unit, aiparam.child_range("protect_unit")) {
 			transfer_turns_and_time_of_day_data(aiparam,ai_protect_unit);
 			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_unit,parsed_cfg,true);
 		}
 		aiparam.clear_children("protect_unit");
 
 
-		foreach (config &ai_protect_location, aiparam.child_range("protect_location")) {
+		BOOST_FOREACH (config &ai_protect_location, aiparam.child_range("protect_location")) {
 			transfer_turns_and_time_of_day_data(aiparam,ai_protect_location);
 			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_location,parsed_cfg,false);
 		}
@@ -387,19 +387,19 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 	fallback_stage_cfg_ai.clear_children("aspect");
 
 	//move [stage]s to root of the config
-	foreach (const config &aistage, fallback_stage_cfg_ai.child_range("stage")) {
+	BOOST_FOREACH (const config &aistage, fallback_stage_cfg_ai.child_range("stage")) {
 		parsed_cfg.add_child("stage",aistage);
 	}
 	fallback_stage_cfg_ai.clear_children("stage");
 
 	//move [goal]s to root of the config
-	foreach (const config &aigoal, fallback_stage_cfg_ai.child_range("goal")) {
+	BOOST_FOREACH (const config &aigoal, fallback_stage_cfg_ai.child_range("goal")) {
 		parsed_cfg.add_child("goal",aigoal);
 	}
 	fallback_stage_cfg_ai.clear_children("goal");
 
 	//move [modify_ai]'s to root of the config
-	foreach (const config &aimodifyai, fallback_stage_cfg_ai.child_range("modify_ai")) {
+	BOOST_FOREACH (const config &aimodifyai, fallback_stage_cfg_ai.child_range("modify_ai")) {
 		parsed_cfg.add_child("modify_ai",aimodifyai);
 	}
 	fallback_stage_cfg_ai.clear_children("modify_ai");
@@ -416,12 +416,12 @@ void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number s
 {
 	config cfg;
 
-	foreach (const config &aiparam, ai_parameters) {
+	BOOST_FOREACH (const config &aiparam, ai_parameters) {
 		cfg.add_child("ai",aiparam);
 	}
 
 	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2 to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
-	foreach (const well_known_aspect &wka, well_known_aspects) {
+	BOOST_FOREACH (const well_known_aspect &wka, well_known_aspects) {
 		upgrade_aspect_config_from_1_07_02_to_1_07_03(side, cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
 	}
 }

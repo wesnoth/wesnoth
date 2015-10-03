@@ -86,7 +86,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::vector< std::string > type_labels, race_labels;
 
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	BOOST_FOREACH (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		unit_types.find(i.first, unit_type::HELP_INDEX);
 

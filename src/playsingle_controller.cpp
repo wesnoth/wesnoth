@@ -287,20 +287,20 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
 	// Start music.
-	foreach (const config &m, level_.child_range("music")) {
+	BOOST_FOREACH (const config &m, level_.child_range("music")) {
 		sound::play_music_config(m);
 	}
 	sound::commit_music_changes();
 
 	if(!skip_replay) {
-		foreach (const config &s, story) {
+		BOOST_FOREACH (const config &s, story) {
 			show_storyscreen(*gui_, vconfig(s, true), level_["name"]);
 		}
 	}
 	gui_->labels().read(level_);
 
 	// Find a list of 'items' (i.e. overlays) on the level, and add them
-	foreach (const config &overlay, level_.child_range("item"))
+	BOOST_FOREACH (const config &overlay, level_.child_range("item"))
 	{
 		gui_->add_overlay(
 			map_location(overlay, resources::state_of_game),
@@ -310,7 +310,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	// Read sound sources
 	assert(soundsources_manager_ != NULL);
-	foreach (const config &s, level_.child_range("sound_source")) {
+	BOOST_FOREACH (const config &s, level_.child_range("sound_source")) {
 		soundsource::sourcespec spec(s);
 		soundsources_manager_->add(spec);
 	}
@@ -851,14 +851,14 @@ void playsingle_controller::store_recalls() {
 			new_side["previous_recruits"] = can_recruit_str;
 			LOG_NG << "stored side in snapshot:\n" << new_side["save_id"] << std::endl;
 			//add the units of the recall list
-			foreach(const unit& u, i->recall_list()) {
+			BOOST_FOREACH(const unit& u, i->recall_list()) {
 				config& new_unit = new_side.add_child("unit");
 				u.write(new_unit);
 			}
 		}
 	}
 	//add any players from starting_pos that do not have a team in the current scenario
-	foreach (const config* player_cfg, gamestate_.starting_pos.get_children("player")) {
+	BOOST_FOREACH (const config* player_cfg, gamestate_.starting_pos.get_children("player")) {
 		if (side_ids.count((*player_cfg)["save_id"]) == 0) {
 			LOG_NG << "stored inactive side in snapshot:\n" << (*player_cfg)["save_id"] << std::endl;
 			gamestate_.snapshot.add_child("side", (*player_cfg));
@@ -882,7 +882,7 @@ void playsingle_controller::store_gold(bool obs)
 	}
 
 	int persistent_teams = 0;
-	foreach (const team &t, teams_) {
+	BOOST_FOREACH (const team &t, teams_) {
 		if (t.persistent()) ++persistent_teams;
 	}
 
@@ -897,7 +897,7 @@ void playsingle_controller::store_gold(bool obs)
 		int turns_left = std::max<int>(0, number_of_turns() - turn());
 		int finishing_bonus = (end_level.gold_bonus && turns_left > -1) ?
 			finishing_bonus_per_turn * turns_left : 0;
-		foreach (const team &t, teams_)
+		BOOST_FOREACH (const team &t, teams_)
 		{
 			if (!t.persistent()) continue;
 			int carryover_gold = ((t.gold() + finishing_bonus) * end_level.carryover_percentage) / 100;

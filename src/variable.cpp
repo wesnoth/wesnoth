@@ -230,11 +230,11 @@ const config vconfig::get_parsed_config() const
 {
 	config res;
 
-	foreach (const config::attribute &i, cfg_->attribute_range()) {
+	BOOST_FOREACH (const config::attribute &i, cfg_->attribute_range()) {
 		res[i.first] = expand(i.first);
 	}
 
-	foreach (const config::any_child &child, cfg_->all_children_range())
+	BOOST_FOREACH (const config::any_child &child, cfg_->all_children_range())
 	{
 		if (child.key == "insert_tag") {
 			vconfig insert_cfg(child.cfg);
@@ -280,7 +280,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 {
 	vconfig::child_list res;
 
-	foreach (const config::any_child &child, cfg_->all_children_range())
+	BOOST_FOREACH (const config::any_child &child, cfg_->all_children_range())
 	{
 		if (child.key == key) {
 			res.push_back(vconfig(&child.cfg, cache_key_));
@@ -316,7 +316,7 @@ vconfig vconfig::child(const std::string& key) const
 	if (const config &natural = cfg_->child(key)) {
 		return vconfig(&natural, cache_key_);
 	}
-	foreach (const config &ins, cfg_->child_range("insert_tag"))
+	BOOST_FOREACH (const config &ins, cfg_->child_range("insert_tag"))
 	{
 		vconfig insert_cfg(ins);
 		if(insert_cfg["name"] == key) {
@@ -339,7 +339,7 @@ bool vconfig::has_child(const std::string& key) const
 	if (cfg_->child(key)) {
 		return true;
 	}
-	foreach (const config &ins, cfg_->child_range("insert_tag"))
+	BOOST_FOREACH (const config &ins, cfg_->child_range("insert_tag"))
 	{
 		vconfig insert_cfg(ins);
 		if(insert_cfg["name"] == key) {
@@ -474,7 +474,7 @@ scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 
 void scoped_wml_variable::store(const config& var_value)
 {
-	foreach (const config &i, repos->get_variables().child_range(var_name_)) {
+	BOOST_FOREACH (const config &i, repos->get_variables().child_range(var_name_)) {
 		previous_val_.add_child(var_name_, i);
 	}
 	repos->clear_variable_cfg(var_name_);
@@ -487,7 +487,7 @@ scoped_wml_variable::~scoped_wml_variable()
 {
 	if(activated_) {
 		repos->clear_variable_cfg(var_name_);
-		foreach (const config &i, previous_val_.child_range(var_name_)) {
+		BOOST_FOREACH (const config &i, previous_val_.child_range(var_name_)) {
 			repos->add_variable_cfg(var_name_, i);
 		}
 		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";

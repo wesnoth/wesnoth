@@ -38,7 +38,7 @@ std::string function_expression::str() const
 	s << get_name();
 	s << '(';
 	bool first_arg = true;
-	foreach(expression_ptr a , args()) {
+	BOOST_FOREACH(expression_ptr a , args()) {
 		if (!first_arg) {
 			s << ',';
 		} else {

@@ -152,7 +152,7 @@ public:
 	std::vector<component*> handle_get_children()
 	{
 		std::vector<component*> children;
-		foreach (t_ptr v, values_) {
+		BOOST_FOREACH (t_ptr v, values_) {
 			children.push_back(&*v);
 		}
 		return children;
@@ -167,7 +167,7 @@ private:
 		t_ptr_vector values;
 		factory_(values,cfg);
 		int j=0;
-		foreach (t_ptr b, values ){
+		BOOST_FOREACH (t_ptr b, values ){
 			values_.insert(values_.begin()+pos+j,b);
 			j++;
 		}
@@ -218,7 +218,7 @@ public:
 		//* is a special case - 'delete all facets'
 		if (child.id == "*") {
 			bool b = false;
-				foreach(typename aspect_map::value_type a, aspects_) {
+				BOOST_FOREACH(typename aspect_map::value_type a, aspects_) {
 				       	b |= a.second->delete_all_facets();
 				}
 			return b;
@@ -230,7 +230,7 @@ public:
 	std::vector<component*> handle_get_children()
 	{
 		std::vector<component*> children;
-		foreach(typename aspect_map::value_type a, aspects_) {
+		BOOST_FOREACH(typename aspect_map::value_type a, aspects_) {
 			children.push_back(&*a.second);
 		}
 		return children;

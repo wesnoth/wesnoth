@@ -196,7 +196,7 @@ namespace {
 
 	void find_translations(const config& cfg, config& campaign)
 	{
-		foreach (const config &dir, cfg.child_range("dir"))
+		BOOST_FOREACH (const config &dir, cfg.child_range("dir"))
 		{
 			if (dir["name"] == "LC_MESSAGES") {
 				config &language = campaign.add_child("translation");
@@ -226,11 +226,11 @@ namespace {
 		find_scripts(old_campaign, ".py", old_scripts);
 		std::string script_names;
 		// Go through all newly uploaded python scripts.
-		foreach (config *i, python_scripts)
+		BOOST_FOREACH (config *i, python_scripts)
 		{
 			bool already = false;
 			// Compare to existing, approved scripts.
-			foreach (const config *j, old_scripts)
+			BOOST_FOREACH (const config *j, old_scripts)
 			{
 				if ((*i)["contents"] != (*j)["contents"]) continue;
 				already = true;
@@ -257,7 +257,7 @@ namespace {
 		if (python_scripts.empty()) return std::string();
 		// Campaign contains unchecked python scripts.
 		std::string script_names;
-		foreach (config *i, python_scripts)
+		BOOST_FOREACH (config *i, python_scripts)
 		{
 			std::string name = (*i)["name"];
 			name.resize(name.length() - 10);
@@ -302,7 +302,7 @@ namespace {
 			LOG_CS << "Converting all stored addons to gzip format. Number of addons: "
 				<< std::distance(camps.first, camps.second) << '\n';
 
-			foreach (const config &cm, camps)
+			BOOST_FOREACH (const config &cm, camps)
 			{
 				LOG_CS << "Converting " << cm["name"] << '\n';
 				std::string filename = cm["filename"];
@@ -329,7 +329,7 @@ namespace {
 			LOG_CS << "Encoding all stored addons. Number of addons: "
 				<< std::distance(camps.first, camps.second) << '\n';
 
-			foreach (const config &cm, camps)
+			BOOST_FOREACH (const config &cm, camps)
 			{
 				LOG_CS << "Encoding " << cm["name"] << '\n';
 				std::string filename = cm["filename"], newfilename = filename + ".new";
@@ -426,7 +426,7 @@ namespace {
 						} catch(bad_lexical_cast) {}
 
 						std::string name = req["name"], lang = req["language"];
-						foreach (const config &i, campaigns().child_range("campaign"))
+						BOOST_FOREACH (const config &i, campaigns().child_range("campaign"))
 						{
 							if (!name.empty() && name != i["name"]) continue;
 							std::string tm = i["timestamp"];
@@ -434,7 +434,7 @@ namespace {
 							if (after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) continue;
 							if (!lang.empty()) {
 								bool found = false;
-								foreach (const config &j, i.child_range("translation")) {
+								BOOST_FOREACH (const config &j, i.child_range("translation")) {
 									if (j["language"] == lang) {
 										found = true;
 										break;
@@ -445,7 +445,7 @@ namespace {
 							campaign_list.add_child("campaign", i);
 						}
 
-						foreach (config &j, campaign_list.child_range("campaign")) {
+						BOOST_FOREACH (config &j, campaign_list.child_range("campaign")) {
 							j["passphrase"] = t_string();
 							j["upload_ip"] = t_string();
 							j["email"] = t_string();
@@ -493,7 +493,7 @@ namespace {
 						std::string lc_name(name.size(), ' ');
 						std::transform(name.begin(), name.end(), lc_name.begin(), tolower);
 						config *campaign = NULL;
-						foreach (config &c, campaigns().child_range("campaign")) {
+						BOOST_FOREACH (config &c, campaigns().child_range("campaign")) {
 							if (utils::lowercase(c["name"]) == lc_name) {
 								campaign = &c;
 								break;

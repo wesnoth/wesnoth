@@ -282,7 +282,7 @@ void game_display::pre_draw() {
 
 std::vector<map_location> game_display::get_invalidated_unit_locations() {
 	std::vector<map_location> unit_locations;
-	foreach (const map_location& loc, invalidated_) {
+	BOOST_FOREACH (const map_location& loc, invalidated_) {
 		if ((temp_unit_ && temp_unit_->get_location() == loc) ||
 		    units_.find(loc) != units_.end())
 		{
@@ -415,7 +415,7 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 {
 	// Units can overlap multiple hexes, so we need
 	// to redraw them last and in the good sequence.
-	foreach (map_location loc, invalidated_unit_locations) {
+	BOOST_FOREACH (map_location loc, invalidated_unit_locations) {
 		unit_map::iterator u_it = units_.find(loc);
 		if (u_it != units_.end()) {
 			u_it->second.redraw_unit();
@@ -750,7 +750,7 @@ void game_display::highlight_reach(const pathfind::paths &paths_list)
 void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 {
 	// Fold endpoints of routes into reachability map.
-	foreach (const pathfind::paths::step &dest, paths_list.destinations) {
+	BOOST_FOREACH (const pathfind::paths::step &dest, paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
 	reach_map_changed_ = true;
@@ -1011,7 +1011,7 @@ void game_display::parse_team_overlays()
 {
 	const team& curr_team = teams_[playing_team()];
 	const team& prev_team = teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1];
-	foreach (const game_display::overlay_map::value_type i, overlays_) {
+	BOOST_FOREACH (const game_display::overlay_map::value_type i, overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
 			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
@@ -1388,7 +1388,7 @@ void game_display::prune_chat_messages(bool remove_all)
 		chat_messages_.erase(chat_messages_.begin());
 	}
 
-	foreach (const chat_message &cm, chat_messages_) {
+	BOOST_FOREACH (const chat_message &cm, chat_messages_) {
 		font::move_floating_label(cm.speaker_handle, 0, - movement);
 		font::move_floating_label(cm.handle, 0, - movement);
 	}

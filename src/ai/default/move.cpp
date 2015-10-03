@@ -752,7 +752,7 @@ void ai_default::move_leader_to_keep()
 			// The leader can't move to his keep, try to move to the closest location
 			// to the keep where there are no enemies in range.
 			const int current_distance = distance_between(leader->first,keep);
-			foreach (const pathfind::paths::step &dest, leader_paths.destinations)
+			BOOST_FOREACH (const pathfind::paths::step &dest, leader_paths.destinations)
 			{
 				if (!units_.find(dest.curr).valid()){
 					const int new_distance = distance_between(dest.curr,keep);

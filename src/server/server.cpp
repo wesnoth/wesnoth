@@ -648,7 +648,7 @@ void server::run() {
 				simple_wml::document ping( strstr.str().c_str(),
 							   simple_wml::INIT_COMPRESSED );
 				simple_wml::string_span s = ping.output_compressed();
-				foreach (network::connection sock, ghost_players_) {
+				BOOST_FOREACH (network::connection sock, ghost_players_) {
 					if (!lg::debug.dont_log(log_server)) {
 						wesnothd::player_map::const_iterator i = players_.find(sock);
 						if (i != players_.end()) {
@@ -664,7 +664,7 @@ void server::run() {
  				// Only a single thread should be accessing this
 				// Erase before we copy - speeds inserts
 				ghost_players_.clear();
-				foreach (const wesnothd::player_map::value_type v, players_) {
+				BOOST_FOREACH (const wesnothd::player_map::value_type v, players_) {
 					ghost_players_.insert(v.first);
 				}
 				last_ping_ = now;

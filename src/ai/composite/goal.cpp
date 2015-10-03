@@ -231,7 +231,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	}
 	DBG_AI_GOAL << "seaching for threats in "+goal_type+" goal" << std::endl;
 	// Look for directions to protect a specific location or specific unit.
-	foreach (const map_location &loc, items)
+	BOOST_FOREACH (const map_location &loc, items)
 	{
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			const int distance = distance_between(u->first,loc);

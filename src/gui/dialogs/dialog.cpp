@@ -25,7 +25,7 @@ namespace gui2 {
 
 tdialog::~tdialog()
 {
-	foreach(tfield_* field, fields_) {
+	BOOST_FOREACH(tfield_* field, fields_) {
 		delete field;
 	}
 }
@@ -104,14 +104,14 @@ tfield_text* tdialog::register_text(const std::string& id, const bool optional,
 
 void tdialog::init_fields(twindow& window)
 {
-	foreach(tfield_* field, fields_) {
+	BOOST_FOREACH(tfield_* field, fields_) {
 		field->widget_init(window);
 	}
 }
 
 void tdialog::finalize_fields(twindow& window)
 {
-	foreach(tfield_* field, fields_) {
+	BOOST_FOREACH(tfield_* field, fields_) {
 		field->widget_finalize(window);
 	}
 }

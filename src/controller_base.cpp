@@ -136,7 +136,7 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	int dx = 0, dy = 0;
 	int scroll_threshold = (preferences::mouse_scroll_enabled())
 		? preferences::mouse_scroll_threshold() : 0;
-	foreach (const theme::menu& m, get_display().get_theme().menus()) {
+	BOOST_FOREACH (const theme::menu& m, get_display().get_theme().menus()) {
 		if (point_in_rect(mousex, mousey, m.get_location())) {
 			scroll_threshold = 0;
 		}

@@ -68,7 +68,7 @@ config unit_animation::prepare_animation(const config &cfg,const std::string& an
 	config expanded_animations;
 	std::vector<config> unexpanded_anims;
 	// store all the anims we have to analyze
-	foreach (const config &anim, cfg.child_range(animation_tag)) {
+	BOOST_FOREACH (const config &anim, cfg.child_range(animation_tag)) {
 		unexpanded_anims.push_back(anim);
 	}
 	while(!unexpanded_anims.empty()) {
@@ -102,7 +102,7 @@ config unit_animation::prepare_animation(const config &cfg,const std::string& an
 				}
 				// copy the end of the anim "as is" other if will be treated later
 				for (; child != children.second; ++child) {
-					foreach (config &c, to_add) {
+					BOOST_FOREACH (config &c, to_add) {
 						c.add_child(child->key, child->cfg);
 					}
 				}
@@ -166,7 +166,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	overlaped_hex_()
 {
 //	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
-	foreach (const config::any_child &fr, cfg.all_children_range())
+	BOOST_FOREACH (const config::any_child &fr, cfg.all_children_range())
 	{
 		if (fr.key == frame_string) continue;
 		if (fr.key.find("_frame", fr.key.size() - 6) == std::string::npos) continue;
@@ -180,11 +180,11 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		const map_location::DIRECTION d = map_location::parse_direction(*i);
 		directions_.push_back(d);
 	}
-	foreach (const config &filter, cfg.child_range("filter")) {
+	BOOST_FOREACH (const config &filter, cfg.child_range("filter")) {
 		unit_filter_.push_back(filter);
 	}
 
-	foreach (const config &filter, cfg.child_range("filter_second")) {
+	BOOST_FOREACH (const config &filter, cfg.child_range("filter_second")) {
 		secondary_unit_filter_.push_back(filter);
 	}
 	frequency_ = atoi(cfg["frequency"].c_str());
@@ -213,10 +213,10 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	for(value2=value2_str.begin() ; value2 != value2_str.end() ; ++value2) {
 		value2_.push_back(atoi(value2->c_str()));
 	}
-	foreach (const config &filter, cfg.child_range("filter_attack")) {
+	BOOST_FOREACH (const config &filter, cfg.child_range("filter_attack")) {
 		primary_attack_filter_.push_back(filter);
 	}
-	foreach (const config &filter, cfg.child_range("filter_second_attack")) {
+	BOOST_FOREACH (const config &filter, cfg.child_range("filter_second_attack")) {
 		secondary_attack_filter_.push_back(filter);
 	}
 	play_offscreen_=utils::string_bool(cfg["offscreen"],true);
@@ -440,7 +440,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	config expanded_cfg;
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
-	foreach (const config &anim, expanded_cfg.child_range("animation")) {
+	BOOST_FOREACH (const config &anim, expanded_cfg.child_range("animation")) {
 		animations.push_back(unit_animation(anim));
 	}
 
@@ -452,7 +452,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		(display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST);
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"resistance_anim");
-	foreach (config &anim, expanded_cfg.child_range("resistance_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("resistance_anim"))
 	{
 		anim["apply_to"] = "resistance";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -460,7 +460,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
-	foreach (config &anim, expanded_cfg.child_range("leading_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("leading_anim"))
 	{
 		anim["apply_to"] = "leading";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -468,7 +468,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"recruit_anim");
-	foreach (config &anim, expanded_cfg.child_range("recruit_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("recruit_anim"))
 	{
 		anim["apply_to"] = "recruited";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -476,7 +476,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"recruiting_anim");
-	foreach (config &anim, expanded_cfg.child_range("recruiting_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("recruiting_anim"))
 	{
 		anim["apply_to"] = "recruiting";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -484,7 +484,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
-	foreach (config &anim, expanded_cfg.child_range("standing_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("standing_anim"))
 	{
 		anim["apply_to"] = "standing,default";
 		if (anim["offscreen"].empty()) anim["offscreen"] = "no";
@@ -493,7 +493,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
-	foreach (config &anim, expanded_cfg.child_range("idle_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("idle_anim"))
 	{
 		anim["apply_to"] = "idling";
 		if (anim["offscreen"].empty()) anim["offscreen"] = "no";
@@ -502,7 +502,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
-	foreach (config &anim, expanded_cfg.child_range("levelin_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("levelin_anim"))
 	{
 		anim["apply_to"] = "levelin";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -510,7 +510,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
-	foreach (config &anim, expanded_cfg.child_range("levelout_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("levelout_anim"))
 	{
 		anim["apply_to"] = "levelout";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -518,7 +518,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
-	foreach (config &anim, expanded_cfg.child_range("healing_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("healing_anim"))
 	{
 		anim["apply_to"] = "healing";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -527,7 +527,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healed_anim");
-	foreach (config &anim, expanded_cfg.child_range("healed_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("healed_anim"))
 	{
 		anim["apply_to"] = "healed";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -539,7 +539,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
-	foreach (config &anim, expanded_cfg.child_range("poison_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("poison_anim"))
 	{
 		anim["apply_to"] ="poisoned";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -551,7 +551,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"pre_movement_anim");
-	foreach (config &anim, expanded_cfg.child_range("pre_movement_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("pre_movement_anim"))
 	{
 		anim["apply_to"] = "pre_movement";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
@@ -559,7 +559,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
-	foreach (config &anim, expanded_cfg.child_range("movement_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("movement_anim"))
 	{
 		if (anim["offset"].empty()) {
 			anim["offset"] = "0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,";
@@ -570,7 +570,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"post_movement_anim");
-	foreach (config &anim, expanded_cfg.child_range("post_movement_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("post_movement_anim"))
 	{
 		anim["apply_to"] = "post_movement";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
@@ -578,7 +578,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
-	foreach (config &anim, expanded_cfg.child_range("defend"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("defend"))
 	{
 		anim["apply_to"] = "defend";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -599,7 +599,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		else
 		{
 			std::vector<std::string> v = utils::split(anim["hits"]);
-			foreach (const std::string &hit_type, v)
+			BOOST_FOREACH (const std::string &hit_type, v)
 			{
 				config tmp = anim;
 				tmp["hits"] = hit_type;
@@ -615,7 +615,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"draw_weapon_anim");
-	foreach (config &anim, expanded_cfg.child_range("draw_weapon_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("draw_weapon_anim"))
 	{
 		anim["apply_to"] = "draw_weapon";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
@@ -625,7 +625,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"sheath_weapon_anim");
-	foreach (config &anim, expanded_cfg.child_range("sheath_weapon_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("sheath_weapon_anim"))
 	{
 		anim["apply_to"] = "sheath_weapon";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
@@ -634,7 +634,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
-	foreach (config &anim, expanded_cfg.child_range("attack_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("attack_anim"))
 	{
 		anim["apply_to"] = "attack";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
@@ -655,7 +655,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
-	foreach (config &anim, expanded_cfg.child_range("death"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("death"))
 	{
 		anim["apply_to"] = "death";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -670,7 +670,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
-	foreach (config &anim, expanded_cfg.child_range("victory_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("victory_anim"))
 	{
 		anim["apply_to"] = "victory";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -678,7 +678,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
-	foreach (config &anim, expanded_cfg.child_range("extra_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("extra_anim"))
 	{
 		anim["apply_to"] = anim["flag"];
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -686,7 +686,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
-	foreach (config &anim, expanded_cfg.child_range("teleport_anim"))
+	BOOST_FOREACH (config &anim, expanded_cfg.child_range("teleport_anim"))
 	{
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["apply_to"] = "pre_teleport";
@@ -745,14 +745,14 @@ unit_animation::particule::particule(
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
-		foreach (const config &frame, range) {
+		BOOST_FOREACH (const config &frame, range) {
 			starting_frame_time_ = std::min(starting_frame_time_, atoi(frame["begin"].c_str()));
 		}
 	} else {
 		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
 	}
 
-	foreach (const config &frame, range)
+	BOOST_FOREACH (const config &frame, range)
 	{
 		unit_frame tmp_frame(frame);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());

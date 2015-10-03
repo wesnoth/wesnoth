@@ -71,7 +71,7 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("linenum", lexical_cast<std::string>(linenum));
 	writer.write_key_val("location", location);
 
-	foreach (const std::string &arg, arguments)
+	BOOST_FOREACH (const std::string &arg, arguments)
 		write_argument(writer, arg);
 
 	writer.close_child(key);
@@ -89,7 +89,7 @@ void preproc_define::read(const config& cfg)
 	linenum = lexical_cast<int>(cfg["linenum"]);
 	location = cfg["location"];
 
-	foreach (const config &arg, cfg.child_range("argument"))
+	BOOST_FOREACH (const config &arg, cfg.child_range("argument"))
 		read_argument(arg);
 }
 

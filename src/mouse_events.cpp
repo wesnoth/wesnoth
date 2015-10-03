@@ -873,7 +873,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 
 	map_location adj[6];
 	get_adjacent_tiles(u->first, adj);
-	foreach (const map_location &loc, adj)
+	BOOST_FOREACH (const map_location &loc, adj)
 	{
 		if (!map_.on_board(loc)) continue;
 		unit_map::const_iterator i = units_.find(loc);

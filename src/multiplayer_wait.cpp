@@ -218,7 +218,7 @@ void wait::join_game(bool observe)
 		//available side.
 		const config *side_choice = NULL;
 		int side_num = -1, nb_sides = 0;
-		foreach (const config &sd, level_.child_range("side"))
+		BOOST_FOREACH (const config &sd, level_.child_range("side"))
 		{
 			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
 			{
@@ -273,7 +273,7 @@ void wait::join_game(bool observe)
 
 			std::vector<std::string> choices;
 			std::vector<const config *> leader_sides;
-			foreach (const config &side, possible_sides)
+			BOOST_FOREACH (const config &side, possible_sides)
 			{
 				const std::string &name = side["name"];
 				const std::string &icon = side["image"];
@@ -428,7 +428,7 @@ void wait::generate_menu()
 	std::vector<std::string> details;
 	std::vector<std::string> playerlist;
 
-	foreach (const config &sd, level_.child_range("side"))
+	BOOST_FOREACH (const config &sd, level_.child_range("side"))
 	{
 		if(sd["allow_player"] == "no") {
 			continue;
@@ -444,7 +444,7 @@ void wait::generate_menu()
 		// Hack: if there is a unit which can recruit, use it as a
 		// leader. Necessary to display leader information when loading
 		// saves.
-		foreach (const config &side_unit, sd.child_range("unit"))
+		BOOST_FOREACH (const config &side_unit, sd.child_range("unit"))
 		{
 			if (utils::string_bool(side_unit["canrecruit"], false)) {
 				leader_type = side_unit["type"];

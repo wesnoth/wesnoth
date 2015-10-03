@@ -94,7 +94,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmessage::post_show(twindow& /*window*/)
 {
-	foreach(tbutton_status& button_status, buttons_) {
+	BOOST_FOREACH(tbutton_status& button_status, buttons_) {
 		button_status.button = NULL;
 	}
 }

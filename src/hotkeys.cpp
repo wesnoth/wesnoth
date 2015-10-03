@@ -447,7 +447,7 @@ void set_hotkey_tag_name(const std::string& name)
 
 void load_hotkeys(const config& cfg)
 {
-	foreach (const config &hk, cfg.child_range(hotkey_tag_name))
+	BOOST_FOREACH (const config &hk, cfg.child_range(hotkey_tag_name))
 	{
 		hotkey_item& h = get_hotkey(hk["command"]);
 		if(h.get_id() != HOTKEY_NULL) {

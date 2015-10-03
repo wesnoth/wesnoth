@@ -56,7 +56,7 @@ scenario_stats::scenario_stats(const config& cfg) :
 	team_stats(),
 	scenario_name(cfg["scenario"])
 {
-	foreach (const config &team, cfg.child_range("team")) {
+	BOOST_FOREACH (const config &team, cfg.child_range("team")) {
 		team_stats[team["save_id"]] = stats(team);
 	}
 }
@@ -120,7 +120,7 @@ static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 static stats::str_int_map read_str_int_map(const config& cfg)
 {
 	stats::str_int_map m;
-	foreach (const config::attribute &i, cfg.attribute_range()) {
+	BOOST_FOREACH (const config::attribute &i, cfg.attribute_range()) {
 		m[i.first] = atoi(i.second.c_str());
 	}
 
@@ -158,7 +158,7 @@ static void write_battle_result_map(config_writer &out, const stats::battle_resu
 static stats::battle_result_map read_battle_result_map(const config& cfg)
 {
 	stats::battle_result_map m;
-	foreach (const config &i, cfg.child_range("sequence"))
+	BOOST_FOREACH (const config &i, cfg.child_range("sequence"))
 	{
 		config item = i;
 		const int key = atoi(item["_num"].c_str());
@@ -611,7 +611,7 @@ void read_stats(const config& cfg)
 	fresh_stats();
 	mid_scenario = (utils::string_bool(cfg["mid_scenario"]));
 
-	foreach (const config &s, cfg.child_range("scenario")) {
+	BOOST_FOREACH (const config &s, cfg.child_range("scenario")) {
 		master_stats.push_back(scenario_stats(s));
 	}
 }

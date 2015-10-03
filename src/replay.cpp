@@ -65,7 +65,7 @@ static void verify(const unit_map& units, const config& cfg) {
 			   << nunits << " according to data source. " << units.size() << " locally\n";
 
 		std::set<map_location> locs;
-		foreach (const config &u, cfg.child_range("unit"))
+		BOOST_FOREACH (const config &u, cfg.child_range("unit"))
 		{
 			const map_location loc(u, resources::state_of_game);
 			locs.insert(loc);
@@ -86,7 +86,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		errbuf.clear();
 	}
 
-	foreach (const config &un, cfg.child_range("unit"))
+	BOOST_FOREACH (const config &un, cfg.child_range("unit"))
 	{
 		const map_location loc(un, resources::state_of_game);
 		const unit_map::const_iterator u = units.find(loc);
@@ -716,7 +716,7 @@ bool replay::empty()
 
 void replay::add_config(const config& cfg, MARK_SENT mark)
 {
-	foreach (const config &cmd, cfg.child_range("command"))
+	BOOST_FOREACH (const config &cmd, cfg.child_range("command"))
 	{
 		config &cfg = cfg_.add_child("command", cmd);
 		if (cfg.child("speak"))
@@ -766,7 +766,7 @@ static void check_checksums(const config &cfg)
 	if(! game_config::mp_debug) {
 		return;
 	}
-	foreach (const config &ch, cfg.child_range("checksum"))
+	BOOST_FOREACH (const config &ch, cfg.child_range("checksum"))
 	{
 		map_location loc(ch, resources::state_of_game);
 		unit_map::const_iterator u = resources::units->find(loc);
@@ -1186,7 +1186,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("fire_event"))
 		{
-			foreach (const config &v, child.child_range("set_variable")) {
+			BOOST_FOREACH (const config &v, child.child_range("set_variable")) {
 				resources::state_of_game->set_variable(v["name"], v["value"]);
 			}
 			const std::string &event = child["raise"];

@@ -568,7 +568,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
-	foreach (const config &img, cfg.child_range("image"))
+	BOOST_FOREACH (const config &img, cfg.child_range("image"))
 	{
 		const std::string &name = img["name"];
 		const int layer = lexical_cast_default<int>(img["layer"], 0);
@@ -602,7 +602,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		images.back().variants.insert(std::pair<std::string, rule_image_variant>("", rule_image_variant(name,"")));
 
 		// Adds the other variants of the image
-		foreach (const config &variant, img.child_range("variant"))
+		BOOST_FOREACH (const config &variant, img.child_range("variant"))
 		{
 			const std::string &name = variant["name"];
 			const std::string &tod = variant["tod"];
@@ -731,7 +731,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 	log_scope("terrain_builder::parse_config");
 
 	// Parses the list of building rules (BRs)
-	foreach (const config &br, cfg.child_range("terrain_graphics"))
+	BOOST_FOREACH (const config &br, cfg.child_range("terrain_graphics"))
 	{
 		building_rule pbr; // Parsed Building rule
 		pbr.local = local;
@@ -751,7 +751,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		parse_mapstring(br["map"], pbr, anchors, br);
 
 		// Parses the terrain constraints (TCs)
-		foreach (const config &tc, br.child_range("tile"))
+		BOOST_FOREACH (const config &tc, br.child_range("tile"))
 		{
 			// Adds the terrain constraint to the current built terrain's list
 			// of terrain constraints, if it does not exist.

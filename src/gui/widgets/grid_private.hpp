@@ -55,7 +55,7 @@ struct tgrid_implementation
 			const tpoint& coordinate, const bool must_be_active)
 	{
 		typedef typename tconst_duplicator<W, tgrid::tchild>::type hack;
-		foreach(hack& child, grid.children_) {
+		BOOST_FOREACH(hack& child, grid.children_) {
 
 			W* widget = child.widget();
 			if(!widget) {
@@ -90,7 +90,7 @@ struct tgrid_implementation
 		}
 
 		typedef typename tconst_duplicator<W, tgrid::tchild>::type hack;
-		foreach(hack& child, grid.children_) {
+		BOOST_FOREACH(hack& child, grid.children_) {
 
 			widget = child.widget();
 			if(!widget) {

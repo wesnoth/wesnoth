@@ -293,7 +293,7 @@ bool recruitment_phase::recruit_usage(const std::string& usage)
 	bool found = false;
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
-	foreach (const std::string &name, current_team().recruits())
+	BOOST_FOREACH (const std::string &name, current_team().recruits())
 	{
 		const unit_type *ut = unit_types.find(name);
 		if (!ut) continue;
@@ -672,7 +672,7 @@ double move_leader_to_goals_phase::evaluate()
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->first,leader_paths));
 
 	map_location loc;
-	foreach (const map_location &l, route.steps)
+	BOOST_FOREACH (const map_location &l, route.steps)
 	{
 		if (leader_paths.destinations.contains(l) &&
 		    power_projection(l, get_enemy_dstsrc()) < double(leader->second.hitpoints())*max_risk)
@@ -760,7 +760,7 @@ double move_leader_to_keep_phase::evaluate()
 		// The leader can't move to his keep, try to move to the closest location
 		// to the keep where there are no enemies in range.
 		const int current_distance = distance_between(leader->first,keep);
-		foreach (const pathfind::paths::step &dest, leader_paths.destinations)
+		BOOST_FOREACH (const pathfind::paths::step &dest, leader_paths.destinations)
 		{
 			if (!units_.find(dest.curr).valid()){
 				const int new_distance = distance_between(dest.curr,keep);

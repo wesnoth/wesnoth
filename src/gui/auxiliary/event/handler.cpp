@@ -370,7 +370,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 	}
 
 	/***** Set proper state for the other dispatchers. *****/
-	foreach(tdispatcher* dispatcher, dispatchers_) {
+	BOOST_FOREACH(tdispatcher* dispatcher, dispatchers_) {
 		dynamic_cast<twidget&>(*dispatcher).set_dirty();
 	}
 
@@ -399,7 +399,7 @@ void thandler::draw()
 	 *
 	 * For now we use a hack, but would be nice to rewrite it for 1.9/1.11.
 	 */
-	foreach(tdispatcher* dispatcher, dispatchers_) {
+	BOOST_FOREACH(tdispatcher* dispatcher, dispatchers_) {
 		if(!first) {
 			/*
 			 * This leaves glitches on window borders if the window beneath it
@@ -430,7 +430,7 @@ void thandler::video_resize(const tpoint& new_size)
 {
 	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
 
-	foreach(tdispatcher* dispatcher, dispatchers_) {
+	BOOST_FOREACH(tdispatcher* dispatcher, dispatchers_) {
 		dispatcher->fire(SDL_VIDEO_RESIZE
 				, dynamic_cast<twidget&>(*dispatcher)
 				, new_size);

@@ -1894,7 +1894,7 @@ void display::redraw_everything()
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
-	foreach (boost::function<void(display&)> f, redraw_observers_) {
+	BOOST_FOREACH (boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);
 	}
 	
@@ -1982,7 +1982,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, clip_rect);
-	foreach (map_location loc, invalidated_) {
+	BOOST_FOREACH (map_location loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 		const bool on_map = get_map().on_board(loc);
@@ -2197,7 +2197,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 	std::ostringstream ellipsis_tooltip;
 	SDL_Rect ellipsis_area = rect;
 
-	foreach (const reports::element &e, report)
+	BOOST_FOREACH (const reports::element &e, report)
 	{
 		SDL_Rect area = { x, y, rect.w + rect.x - x, rect.h + rect.y - y };
 		if (area.h <= 0) break;
@@ -2312,7 +2312,7 @@ bool display::invalidate(const std::set<map_location>& locs)
 	if(invalidateAll_)
 		return false;
 	bool ret = false;
-	foreach (const map_location& loc, locs) {
+	BOOST_FOREACH (const map_location& loc, locs) {
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;
@@ -2352,7 +2352,7 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 		return false;
 
 	bool result = false;
-	foreach (const map_location &loc, hexes_under_rect(rect)) {
+	BOOST_FOREACH (const map_location &loc, hexes_under_rect(rect)) {
 		result |= invalidate(loc);
 	}
 	return result;
@@ -2364,7 +2364,7 @@ void display::invalidate_animations()
 		return;
 	}
 
-	foreach (const map_location &loc, get_visible_hexes())
+	BOOST_FOREACH (const map_location &loc, get_visible_hexes())
 	{
 		if (shrouded(loc)) continue;
 		if (builder_->update_animation(loc)) {

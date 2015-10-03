@@ -131,7 +131,7 @@ static void write_compressed_internal(std::ostream &out, config const &cfg, comp
 	if (level > max_recursion_levels)
 		throw config::error("Too many recursion levels in compressed config write");
 
-	foreach (const config::attribute &i, cfg.attribute_range()) {
+	BOOST_FOREACH (const config::attribute &i, cfg.attribute_range()) {
 		if (!i.second.empty()) {
 			// Output the name, using compression
 			compress_emit_word(out, i.first, schema);
@@ -141,7 +141,7 @@ static void write_compressed_internal(std::ostream &out, config const &cfg, comp
 		}
 	}
 
-	foreach (const config::any_child &item, cfg.all_children_range())
+	BOOST_FOREACH (const config::any_child &item, cfg.all_children_range())
 	{
 		out.put(compress_open_element);
 		compress_emit_word(out, item.key, schema);

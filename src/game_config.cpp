@@ -262,7 +262,7 @@ namespace game_config
 
 		const config::child_list& colors = v.get_children("color_palette");
 		for(config::child_list::const_iterator cp = colors.begin(); cp != colors.end(); ++cp) {
-			foreach (const config::attribute &rgb, (*cp)->attribute_range())
+			BOOST_FOREACH (const config::attribute &rgb, (*cp)->attribute_range())
 			{
 				try {
 					team_rgb_colors.insert(std::make_pair(rgb.first, string2rgb(rgb.second)));
