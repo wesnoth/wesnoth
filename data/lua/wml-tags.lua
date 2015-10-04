@@ -576,7 +576,7 @@ function wml_actions.store_unit(cfg)
 
 	for i,u in ipairs(units) do
 		utils.vwriter.write(writer, u.__cfg)
-		if kill_units then wesnoth.put_unit(u.x, u.y) end
+		if kill_units then wesnoth.erase_unit(u) end
 	end
 
 	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
@@ -585,7 +585,7 @@ function wml_actions.store_unit(cfg)
 			ucfg.x = "recall"
 			ucfg.y = "recall"
 			utils.vwriter.write(writer, ucfg)
-			if kill_units then wesnoth.extract_unit(u) end
+			if kill_units then wesnoth.erase_unit(u) end
 		end
 	end
 end
@@ -851,7 +851,7 @@ function wml_actions.petrify(cfg)
 		unit.status.petrified = true
 		-- Extract unit and put it back to update animation (not needed for recall units)
 		wesnoth.extract_unit(unit)
-		wesnoth.put_unit(unit, unit.x, unit.y)
+		wesnoth.put_unit(unit)
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
@@ -864,7 +864,7 @@ function wml_actions.unpetrify(cfg)
 		unit.status.petrified = false
 		-- Extract unit and put it back to update animation (not needed for recall units)
 		wesnoth.extract_unit(unit)
-		wesnoth.put_unit(unit, unit.x, unit.y)
+		wesnoth.put_unit(unit)
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
@@ -993,7 +993,7 @@ function wml_actions.harm_unit(cfg)
 
 			-- Extract unit and put it back to update animation if status was changed
 			wesnoth.extract_unit(unit_to_harm)
-			wesnoth.put_unit(unit_to_harm, unit_to_harm.x, unit_to_harm.y)
+			wesnoth.put_unit(unit_to_harm)
 
 			if add_tab then
 				text = string.format("%s%s", "\t", text)
@@ -1317,7 +1317,7 @@ function wml_actions.put_to_recall_list(cfg)
 			unit.status.slowed = false
 		end
 		wesnoth.put_recall_unit(unit, unit.side)
-		wesnoth.put_unit(unit.x, unit.y)
+		wesnoth.erase_unit(unit)
 	end
 end
 

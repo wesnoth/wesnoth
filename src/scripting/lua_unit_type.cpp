@@ -54,6 +54,16 @@ static int impl_unit_type_get(lua_State *L)
 	return_int_attrib("level", ut.level());
 	return_int_attrib("recall_cost", ut.recall_cost());
 	return_cfgref_attrib("__cfg", ut.get_cfg());
+	if (strcmp(m, "traits") == 0) {
+		lua_newtable(L);
+		BOOST_FOREACH(const config& trait, ut.possible_traits()) {
+			const std::string& id = trait["id"];
+			lua_pushlstring(L, id.c_str(), id.length());
+			luaW_pushconfig(L, trait);
+			lua_rawset(L, -3);
+		}
+		return 1;
+	}
 	return 0;
 }
 

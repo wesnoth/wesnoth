@@ -115,6 +115,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_play_sound(lua_State *L);
 	int intf_print(lua_State *L);
 	int intf_put_unit(lua_State *L);
+	int intf_erase_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
@@ -184,6 +185,7 @@ public:
 
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
+	int return_unit_method(lua_State *L, char const *m);
 };
 
 #endif
