@@ -171,6 +171,7 @@ public:
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 
+	void apply_effect(const std::string& name, unit& u, const config& cfg);
 	void initialize(const config& level);
 	void save_game(config & level);
 	void load_game(const config& level);

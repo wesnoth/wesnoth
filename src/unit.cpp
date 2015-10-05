@@ -2056,6 +2056,8 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						}
 						recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
 					}
+				} else if (resources::lua_kernel) {
+					resources::lua_kernel->apply_effect(apply_to, *this, effect);
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
