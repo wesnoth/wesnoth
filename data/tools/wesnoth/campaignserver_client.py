@@ -414,7 +414,7 @@ class CampaignClient:
                 contents = b""
                 if not self.quiet:
                     sys.stderr.write("File %s is empty.\n" % name)
-                    sys.stderr.write(f.debug(write = False) + "\n")
+                    sys.stderr.write(f.debug() + "\n")
             if verbose:
                 sys.stderr.write(i * " " + name + " (" +
                       str(len(contents)) + ")\n")
