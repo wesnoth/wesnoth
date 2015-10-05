@@ -145,6 +145,8 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		// Two dots in a row cannot be part of a valid variable name.
 		// That matters for random=, e.g. $x..$y
 		var_end = std::adjacent_find(var_name_begin, var_end, two_dots);
+		/// the default value is specified after ''?'
+		const std::string::iterator default_start = *var_end == '?' ? var_end + 1 : res.end();
 
 		// If the last character is '.', then it can't be a sub-variable.
 		// It's probably meant to be a period instead. Don't include it.
@@ -163,26 +165,44 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		}
 
 		const std::string var_name(var_name_begin, var_end);
+		if(default_start == res.end()) {
+			if(var_end != res.end() && *var_end == '|') {
+				// It's been used to end this variable name; now it has no more effect.
+				// This can allow use of things like "$$composite_var_name|.x"
+				// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
+				// If there should still be a '|' there afterwards to affect other variable names (unlikely),
+				// just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
+				++var_end;
+			}
 
-		if(var_end != res.end() && *var_end == '|') {
-			// It's been used to end this variable name; now it has no more effect.
-			// This can allow use of things like "$$composite_var_name|.x"
-			// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
-			// If there should still be a '|' there afterwards to affect other variable names (unlikely),
-			// just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
-			++var_end;
-		}
 
-
-		if (var_name == "") {
-			// Allow for a way to have $s in a string.
-			// $| will be replaced by $.
-			res.replace(var_begin, var_end, "$");
+			if (var_name == "") {
+				// Allow for a way to have $s in a string.
+				// $| will be replaced by $.
+				res.replace(var_begin, var_end, "$");
+			}
+			else {
+				// The variable is replaced with its value.
+				res.replace(var_begin, var_end,
+					set.get_variable_const(var_name));
+			}
 		}
 		else {
-			// The variable is replaced with its value.
-			res.replace(var_begin, var_end,
-			    set.get_variable_const(var_name));
+			var_end = default_start;
+			while(var_end != res.end() && *var_end != '|') {
+				++var_end;
+			}
+			const std::string::iterator default_end = var_end;
+			if(var_end != res.end()) {
+				++var_end;
+			}
+			const config::attribute_value& val = set.get_variable_const(var_name);
+			if(!val.blank()) {
+				res.replace(var_begin, var_end, val);
+			}
+			else {
+				res.replace(var_begin, var_end, std::string(default_start, default_end));
+			}
 		}
 	}
 
