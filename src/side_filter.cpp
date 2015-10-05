@@ -26,6 +26,7 @@
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
 #include "network.hpp"
+#include "synced_context.hpp"
 #include "unit.hpp"
 #include "unit_filter.hpp"
 #include "unit_map.hpp"
@@ -224,12 +225,20 @@ bool side_filter::match_internal(const team &t) const
 	const config::attribute_value cfg_controller = cfg_["controller"];
 	if (!cfg_controller.blank())
 	{
-		if (network::nconnections() > 0)
+		if (network::nconnections() > 0 && synced_context::is_synced()) {
 			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors" << std::endl;
-		else
-		{
-			if(cfg_controller.str() != t.controller().to_string())
+		}
+		else {
+			bool found = false;
+			BOOST_FOREACH(const std::string& controller, utils::split(cfg_controller))
+			{
+				if(t.controller().to_string() == controller) {
+					found = true;
+				}
+			}
+			if(!found) {
 				return false;
+			}
 		}
 	}
 
