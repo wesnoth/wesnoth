@@ -142,7 +142,7 @@ public:
 	/** The unit type name */
 	const t_string& type_name() const {return type_name_;}
 	const std::string& undead_variation() const {return undead_variation_;}
-	const std::string variation() const {return variation_; }
+	const std::string& variation() const {return variation_; }
 
 	/** The unit name for display */
 	const t_string &name() const { return name_; }
