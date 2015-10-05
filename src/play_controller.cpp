@@ -110,6 +110,7 @@ static void copy_persistent(const config& src, config& dst)
 
 	static stringset tags = boost::assign::list_of
 			("terrain_graphics")
+			("lua")
 		.convert_to_container<stringset>();
 
 	BOOST_FOREACH(const std::string& attr, attrs)
@@ -512,16 +513,10 @@ void play_controller::init_side_end()
 
 config play_controller::to_config() const
 {
-	config cfg;
+	config cfg = level_;
 
-	cfg.merge_attributes(level_);
 	cfg["replay_pos"] = saved_game_.get_replay().get_pos();
 	gamestate().write(cfg);
-
-	// Write terrain_graphics data in snapshot, too
-	BOOST_FOREACH(const config& tg, level_.child_range("terrain_graphics")) {
-		cfg.add_child("terrain_graphics", tg);
-	}
 
 	gui_->write(cfg.add_child("display"));
 

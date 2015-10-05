@@ -4733,8 +4733,6 @@ void game_lua_kernel::load_game(const config& level)
  */
 void game_lua_kernel::save_game(config &cfg)
 {
-	cfg.append_children(cfg, "lua");
-
 	lua_State *L = mState;
 
 	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_save", NULL))
