@@ -280,6 +280,7 @@ public:
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
+	const config::attribute_value& upkeep_raw() const { return cfg_["upkeep"]; }
 	bool loyal() const;
 
 	void set_hidden(bool state) const;

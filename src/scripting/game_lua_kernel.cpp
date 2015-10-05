@@ -292,6 +292,16 @@ static int impl_unit_get(lua_State *L)
 	return_vector_string_attrib("extra_recruit", u.recruits());
 	return_vector_string_attrib("advances_to", u.advances_to());
 
+	if (strcmp(m, "upkeep") == 0) {
+		const config::attribute_value& upkeep = u.upkeep_raw();
+		if(upkeep == "full"){
+			lua_pushstring(L, "full");
+		}
+		else {
+			lua_push(L, upkeep.to_int());
+		}
+		return 1;
+	}
 	if (strcmp(m, "advancements") == 0) {
 		lua_push(L, boost::iterator_range<config::const_child_iterator>(u.modification_advancements()));
 		return 1;
@@ -368,6 +378,7 @@ static int impl_unit_set(lua_State *L)
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_bool_attrib("hidden", u.set_hidden(value));
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
+	modify_bool_attrib("canrecruit", u.set_can_recurit(value));
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
