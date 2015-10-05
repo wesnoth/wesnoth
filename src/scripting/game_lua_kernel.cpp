@@ -1074,7 +1074,7 @@ int game_lua_kernel::intf_random(lua_State *L)
 		lua_push(L, r / (r_max + 1));
 		return 1;
 	}
-	else if(lua_isnumber(L, 1)) {
+	else {
 		int32_t min;
 		int32_t max;
 		if(lua_isnumber(L, 2)) {
@@ -1085,10 +1085,12 @@ int game_lua_kernel::intf_random(lua_State *L)
 			min = 1;
 			max = lua_check<int32_t>(L, 1);
 		}
+		if(min > max) {
+			return luaL_argerror(L, 1, "min > max");
+		}
 		lua_push(L, random_new::generator->get_random_int(min, max));
 		return 1;
 	}
-	return 0;
 }
 
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
