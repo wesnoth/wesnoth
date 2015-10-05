@@ -452,7 +452,7 @@ void playsingle_controller::linger()
 
 	// If we need to set the status depending on the completion state
 	// the key to it is here.
-	gui_->set_game_mode(game_display::LINGER_SP);
+	gui_->set_game_mode(game_display::LINGER);
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");

@@ -214,8 +214,7 @@ public:
 	 */
 	enum tgame_mode {
 		RUNNING,         /**< no linger overlay, show fog and shroud. */
-		LINGER_SP,       /**< linger overlay, show fog and shroud. */
-		LINGER_MP };     /**< linger overlay, show fog and shroud. */
+		LINGER };     /**< linger overlay, show fog and shroud. */
 
 	void set_game_mode(const tgame_mode game_mode);
 

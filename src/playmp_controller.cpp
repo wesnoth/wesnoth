@@ -238,7 +238,7 @@ void playmp_controller::linger()
 	linger_ = true;
 	// If we need to set the status depending on the completion state
 	// we're needed here.
-	gui_->set_game_mode(game_display::LINGER_MP);
+	gui_->set_game_mode(game_display::LINGER);
 	// End all unit moves
 	gamestate().board_.set_all_units_user_end_turn();
 
