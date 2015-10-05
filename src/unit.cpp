@@ -1852,6 +1852,15 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 				} else if(apply_to == "max_experience") {
 					const std::string &increase = effect["increase"];
+					const std::string &set = effect["set"];
+
+					if(set.empty() == false) {
+						if(set[set.size()-1] == '%') {
+							max_experience_ = lexical_cast_default<int>(set)*max_experience_/100;
+						} else {
+							max_experience_ = lexical_cast_default<int>(set);
+						}
+					}
 
 					if(increase.empty() == false) {
 						if (!times)
