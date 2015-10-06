@@ -535,16 +535,16 @@ function wml_actions.explain(cfg)
 				for k,v in pairs(this_cfg) do
 					if type(k) ~= "number" then
 						local format = "%s\n\t\t%s=%s"
-						local literal = helper.literal(this_cfg)[k]
+						local literal = tostring(helper.literal(this_cfg)[k])
 						if literal ~= v then
 							format = format + "=%s"
 						end
-						explanation = string.format(format, explanation, k, literal, v)
+						explanation = string.format(format, explanation, k, literal, tostring(v))
 					end
 				end
 				explanation = string.format("%s\n\t[/%s]", explanation, tag)
 				if tag == "variable" then
-					explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, wesnoth.get_variable(this_cfg.name))
+					explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, tostring(wesnoth.get_variable(this_cfg.name)))
 				end
 				wesnoth.wml_actions.wml_message{message = explanation, logger = logger}
 				return true
