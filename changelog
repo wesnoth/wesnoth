@@ -25,6 +25,8 @@ Version 1.13.1+dev:
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
  * Lua API:
+   * It is now possible to implement custom [effect]s with wesnoth.effects
+   * Changed interface for the wesnoth.synchronize_choice function
    * Added support for unit.level field (read only)
    * Added support for unit.advancements field (bug #23677)
    * Added support for current.event_context.unit_x/y fields (bug #23507)
@@ -65,6 +67,10 @@ Version 1.13.1+dev:
      as "Bridge", retaining their descriptive names in the editor as per
      convention.
  * User interface:
+   * It is now possible to switch from replay directly into normal play (bug #23833).
+   * The game now shows a notification on remote clients if a sides takes very long to do a local choice (bug #23297).
+   * It is now possible to replay a turn in mp games by loading autosaves.
+   * The game now asks for confirmation when attempting to quit during the game.
    * Add "unit status=..." command to debug console to add/remove unit statuses
    * GUI2:
      * stacked_widget can optionally display a single layer at a time. This
@@ -76,6 +82,14 @@ Version 1.13.1+dev:
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
  * WML engine:
+   * controller= in side filters can now be used in mp games for unsynced code
+   * Added [effect] apply_to=max_expereince set=<value>
+   * Added enable_if= to mod and era events 
+   * Added $varname?default_value| in variable substitution
+   * Fixed side_for= parameter in [message]s with input
+   * New actionwml tag [on_undo] contains actionswml that is executed when the current action is undone
+   * New actionwml tag [unsynced] executes its contents in an unsynced context where for example [set_variable]rand= will return unsynced results
+   * [campaign] now supports [event] subtags which are added to every scenario of the campaign similar to [modification] [event]s
    * Added support for mod_x,mod_y= in [terrain_graphics].
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
