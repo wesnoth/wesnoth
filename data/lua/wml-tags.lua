@@ -321,17 +321,16 @@ wml_actions["while"] = function( cfg )
 				local action = utils.handle_event_commands(do_child, "loop")
 				if action == "break" then
 					utils.set_exiting("none")
-					goto exit
+					return
 				elseif action == "continue" then
 					utils.set_exiting("none")
 					break
 				elseif action ~= "none" then
-					goto exit
+					return
 				end
 			end
 		else return end
 	end
-	::exit::
 end
 
 wml_actions["break"] = function(cfg)
@@ -348,7 +347,7 @@ end
 
 wesnoth.wml_actions["for"] = function(cfg)
 	local first, last, step
-	if cfg.array then
+	if cfg.array ~= nil then
 		first = 0
 		last = wesnoth.get_variable(cfg.array .. ".length") - 1
 		step = 1
@@ -359,22 +358,28 @@ wesnoth.wml_actions["for"] = function(cfg)
 	else
 		first = cfg.start or 0
 		last = cfg["end"] or first
-		step = cfg.step or ((last - first) / math.abs(last - first))
+		step = cfg.step
+		if not step then
+			if last < first then step = -1 else step = 1 end
+		end
 	end
-	if ((last - first) / math.abs(last - first)) ~= (step / math.abs(step)) then
+	if step == 0 then -- Sanity check
+		helper.wml_error("[for] has a step of 0!")
+	end
+	if (first < last and step < 0) or (first > last and step > 0) then
 		-- Sanity check: If they specify something like start,end,step=1,4,-1
-		-- then we interpret it as start,end,step=4,1,-1
-		-- (The step takes precedence since it's optional.)
-		last, first = first, last
+		-- then we do nothing
+		return
 	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
+	local sentinel = last + step
 	wesnoth.set_variable(i_var, first)
 	local function loop_condition()
-		if first < last then
-			return wesnoth.get_variable(i_var) <= last
+		if first < sentinel then
+			return wesnoth.get_variable(i_var) < sentinel
 		else
-			return wesnoth.get_variable(i_var) >= last
+			return wesnoth.get_variable(i_var) > sentinel
 		end
 	end
 	while loop_condition() do
@@ -497,6 +502,58 @@ function wml_actions.switch(cfg)
 			if action ~= "none" then break end
 		end
 	end
+end
+
+-- This is mainly for use in unit test macros, but maybe it can be useful elsewhere too
+function wml_actions.explain(cfg)
+	local logger = cfg.logger or "warning"
+	
+	-- This function returns true if it managed to explain the failure
+	local function explain(current_cfg, expect)
+		for i,t in ipairs(current_cfg) do
+			local tag, this_cfg = t[1], t[2]
+			-- Some special cases
+			if tag == "or" or tag == "and" then
+				if explain(current_cfg, expect) then
+					return true
+				end
+			elseif tag == "not" then
+				if explain(current_cfg, not expect) then
+					return true
+				end
+			elseif tag == "true" or tag == "false" then
+				-- We don't explain these ones.
+				return true
+			elseif wesnoth.eval_conditional{t} == expect then
+				local explanation = "The following conditional test %s:"
+				if expect then
+					explanation = explanation:format("passed")
+				else
+					explanation = explanation:format("failed")
+				end
+				explanation = string.format("%s\n\t[%s]", explanation, tag)
+				for k,v in pairs(this_cfg) do
+					if type(k) ~= "number" then
+						local format = "%s\n\t\t%s=%s"
+						local literal = helper.literal(this_cfg)[k]
+						if literal ~= v then
+							format = format + "=%s"
+						end
+						explanation = string.format(format, explanation, k, literal, v)
+					end
+				end
+				explanation = string.format("%s\n\t[/%s]", explanation, tag)
+				if tag == "variable" then
+					explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, wesnoth.get_variable(this_cfg.name))
+				end
+				wesnoth.wml_actions.wml_message{message = explanation, logger = logger}
+				return true
+			end
+		end
+	end
+	
+	-- Use not twice here to convert nil to false
+	explain(cfg, not not cfg.result)
 end
 
 function wml_actions.scroll_to(cfg)
