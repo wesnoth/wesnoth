@@ -248,7 +248,9 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 		playcontroller.maybe_linger();
 	}
 	playcontroller.update_savegame_snapshot();
-	mp_info_->connected_players = playcontroller.all_players();
+	if(mp_info_) {
+		mp_info_->connected_players = playcontroller.all_players();
+	}
 	return res;
 }
 
