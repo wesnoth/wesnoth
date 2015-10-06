@@ -31,6 +31,7 @@
 #include "ai/manager.hpp"
 #include "config_assign.hpp"
 #include "fake_unit_ptr.hpp"
+#include "filesystem.hpp"
 #include "game_classification.hpp"
 #include "game_display.hpp"
 #include "game_errors.hpp"
@@ -593,18 +594,29 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	gamemap map(*game_map);
 
 	try {
-		if (cfg["map"].empty()) {
+		if(!cfg["map_file"].empty()) {
+			const std::string& mapfile = filesystem::get_wml_location(cfg["map_file"].str());
+
+			if(filesystem::file_exists(mapfile)) {
+				map.read(filesystem::read_file(mapfile), false);
+			} else {
+				throw incorrect_map_format_error("Invalid file path");
+			}
+		} else if(cfg["map"].empty()) {
 			const vconfig& map_cfg = cfg.child("map");
 			map.read(map_cfg["data"], false, map_cfg["border_size"].to_int(), map_cfg["usage"].str());
+		} else {
+			map.read(cfg["map"], false);
 		}
-		else map.read(cfg["map"], false);
 	} catch(incorrect_map_format_error&) {
-		lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << std::endl;
+		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline");
+		lg::wml_error << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
 	} catch(twml_exception& e) {
 		e.show(*resources::screen);
 		return;
 	}
+
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
 		if (!cfg["expand"].to_bool()) {
@@ -612,6 +624,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 			return;
 		}
 	}
+
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
 		if (!cfg["shrink"].to_bool()) {
