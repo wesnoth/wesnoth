@@ -321,17 +321,16 @@ wml_actions["while"] = function( cfg )
 				local action = utils.handle_event_commands(do_child, "loop")
 				if action == "break" then
 					utils.set_exiting("none")
-					goto exit
+					return
 				elseif action == "continue" then
 					utils.set_exiting("none")
 					break
 				elseif action ~= "none" then
-					goto exit
+					return
 				end
 			end
 		else return end
 	end
-	::exit::
 end
 
 wml_actions["break"] = function(cfg)
