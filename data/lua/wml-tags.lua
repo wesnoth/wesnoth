@@ -505,7 +505,7 @@ function wml_actions.switch(cfg)
 end
 
 -- This is mainly for use in unit test macros, but maybe it can be useful elsewhere too
-function wml_actions.explain(cfg)
+function wml_actions.test_condition(cfg)
 	local logger = cfg.logger or "warning"
 	
 	-- This function returns true if it managed to explain the failure
