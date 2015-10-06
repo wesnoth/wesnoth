@@ -514,11 +514,11 @@ function wml_actions.test_condition(cfg)
 			local tag, this_cfg = t[1], t[2]
 			-- Some special cases
 			if tag == "or" or tag == "and" then
-				if explain(current_cfg, expect) then
+				if explain(this_cfg, expect) then
 					return true
 				end
 			elseif tag == "not" then
-				if explain(current_cfg, not expect) then
+				if explain(this_cfg, not expect) then
 					return true
 				end
 			elseif tag == "true" or tag == "false" then
@@ -537,7 +537,7 @@ function wml_actions.test_condition(cfg)
 						local format = "%s\n\t\t%s=%s"
 						local literal = tostring(helper.literal(this_cfg)[k])
 						if literal ~= v then
-							format = format + "=%s"
+							format = format .. "=%s"
 						end
 						explanation = string.format(format, explanation, k, literal, tostring(v))
 					end
