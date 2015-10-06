@@ -499,6 +499,58 @@ function wml_actions.switch(cfg)
 	end
 end
 
+-- This is mainly for use in unit test macros, but maybe it can be useful elsewhere too
+function wml_actions.explain(cfg)
+	local logger = cfg.logger or "warning"
+	
+	-- This function returns true if it managed to explain the failure
+	local function explain(current_cfg, expect)
+		for i,t in ipairs(current_cfg) do
+			local tag, this_cfg = t[1], t[2]
+			-- Some special cases
+			if tag == "or" or tag == "and" then
+				if explain(current_cfg, expect) then
+					return true
+				end
+			elseif tag == "not" then
+				if explain(current_cfg, not expect) then
+					return true
+				end
+			elseif tag == "true" or tag == "false" then
+				-- We don't explain these ones.
+				return true
+			elseif wesnoth.eval_conditional{t} == expect then
+				local explanation = "The following conditional test %s:"
+				if expect then
+					explanation = explanation:format("passed")
+				else
+					explanation = explanation:format("failed")
+				end
+				explanation = string.format("%s\n\t[%s]", explanation, tag)
+				for k,v in pairs(this_cfg) do
+					if type(k) ~= "number" then
+						local format = "%s\n\t\t%s=%s"
+						local literal = helper.literal(this_cfg)[k]
+						if literal ~= v then
+							format = format + "=%s"
+						end
+						explanation = string.format(format, explanation, k, literal, v)
+					end
+				end
+				explanation = string.format("%s\n\t[/%s]", explanation, tag)
+				if tag == "variable" then
+					explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, wesnoth.get_variable(this_cfg.name))
+				end
+				wesnoth.wml_actions.wml_message{message = explanation, logger = logger}
+				return true
+			end
+		end
+	end
+	
+	-- Use not twice here to convert nil to false
+	explain(cfg, not not cfg.result)
+end
+
 function wml_actions.scroll_to(cfg)
 	local loc = wesnoth.get_locations( cfg )[1]
 	if not loc then return end
