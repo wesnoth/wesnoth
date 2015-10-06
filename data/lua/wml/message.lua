@@ -70,6 +70,14 @@ local function message_user_choice(cfg, speaker, options, text_input)
 		message = cfg.message,
 		portrait = image,
 	}
+	
+	if speaker ~= nil then
+		if cfg.male_message ~= nil and speaker.gender == "male" then
+			msg_cfg.message = cfg.male_message
+		elseif cfg.female_message ~= nil and speaker.gender == "female" then
+			msg_cfg.message = cfg.female_message
+		end
+	end
 
 	-- Parse input text, if not available all fields are empty
 	if text_input then
