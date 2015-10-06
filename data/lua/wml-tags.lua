@@ -348,7 +348,7 @@ end
 
 wesnoth.wml_actions["for"] = function(cfg)
 	local first, last, step
-	if cfg.array then
+	if cfg.array ~= nil then
 		first = 0
 		last = wesnoth.get_variable(cfg.array .. ".length") - 1
 		step = 1
@@ -359,22 +359,28 @@ wesnoth.wml_actions["for"] = function(cfg)
 	else
 		first = cfg.start or 0
 		last = cfg["end"] or first
-		step = cfg.step or ((last - first) / math.abs(last - first))
+		step = cfg.step
+		if not step then
+			if last < first then step = -1 else step = 1 end
+		end
 	end
-	if ((last - first) / math.abs(last - first)) ~= (step / math.abs(step)) then
+	if step == 0 then -- Sanity check
+		helper.wml_error("[for] has a step of 0!")
+	end
+	if (first < last and step < 0) or (first > last and step > 0) then
 		-- Sanity check: If they specify something like start,end,step=1,4,-1
-		-- then we interpret it as start,end,step=4,1,-1
-		-- (The step takes precedence since it's optional.)
-		last, first = first, last
+		-- then we do nothing
+		return
 	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
+	local sentinel = last + step
 	wesnoth.set_variable(i_var, first)
 	local function loop_condition()
-		if first < last then
-			return wesnoth.get_variable(i_var) <= last
+		if first < sentinel then
+			return wesnoth.get_variable(i_var) < sentinel
 		else
-			return wesnoth.get_variable(i_var) >= last
+			return wesnoth.get_variable(i_var) > sentinel
 		end
 	end
 	while loop_condition() do
