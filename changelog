@@ -37,6 +37,24 @@ Version 1.13.1+dev:
    * New parameter write_to_mods in wesnoth.add_modification
    * Added wesnoth.random function
    * helper.shuffle is now synced
+   * Remove wesnoth.get_unit(underlying_id)
+   * Add wesnoth.get_unit(string_id)
+   * Change wesnoth.message so that it can display translatable strings
+   * Change wesnoth.put_unit so that the unit is passed as the first parameter
+   * Add wesnoth.erase_unit, which replaces wesnoth.put_unit when called without a unit
+   * Add wesnoth.unit_vision_cost
+   * Add wesnoth.unit_jamming_cost
+   * Add methods to proxy unit metatable:
+       matches, to_map, to_recall, clone, extract, advance, add_modification,
+       resistance, defense, movement, vision, jamming, ability, transform
+     All are equivalent to a similar wesnoth.* function, but are called as
+     unit:fcn_name(arguments) instead of as wesnoth.fcn_name(unit, arguments)
+   * Add wesnoth.races[race_id].traits
+   * Add wesnoth.unit_types[unit_type_id].traits
+   * pairs() and ipairs() now work on vconfig userdata objects
+   * Add helper.get_nth_child
+   * Add helper.child_count
+   * Add helper.child_array
  * Music and sound effects:
    * New dwarf hit and die sounds.
  * Terrains:
@@ -107,6 +125,8 @@ Version 1.13.1+dev:
    * Add new looping tags: [for], [foreach], [repeat]
    * Add new flow control tags: [break], [continue], [return]
    * Added a new [difficulty] tag for defining a campaign's difficulty level
+   * Add new syntax for [option], similar to the new difficulty syntax
+   * Add [explain] ActionWML that tells why a conditional failed (for debugging)
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
