@@ -306,6 +306,10 @@ static int impl_unit_get(lua_State *L)
 		lua_push(L, boost::iterator_range<config::const_child_iterator>(u.modification_advancements()));
 		return 1;
 	}
+	if (strcmp(m, "overlays") == 0) {
+		lua_push(L, u.overlays());
+		return 1;
+	}
 	if (strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
