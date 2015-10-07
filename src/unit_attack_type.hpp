@@ -55,8 +55,8 @@ public:
 	void set_range(const std::string& value) { range_ = value; }
 	// void set_min_range(int value) { min_range_ = value; }
 	// void set_max_range(int value) { max_range_ = value; }
-	// void set_accuracy(int value) { accuracy_ = value; }
-	// void set_parry(int value) { parry_ = value; }
+	void set_accuracy(int value) { accuracy_ = value; }
+	void set_parry(int value) { parry_ = value; }
 	void set_damage(int value) { damage_ = value; }
 	void set_num_attacks(int value) { num_attacks_ = value; }
 	void set_attack_weight(double value) { attack_weight_ = value; }

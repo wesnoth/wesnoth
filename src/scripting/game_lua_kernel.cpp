@@ -566,9 +566,9 @@ static int impl_unit_attack_get(lua_State *L)
 			return_int_attrib("number", attack.num_attacks());
 			return_int_attrib("attack_weight", attack.attack_weight());
 			return_int_attrib("defense_weight", attack.defense_weight());
-			//"accuracy"
+			return_int_attrib("accuracy", attack.accuracy());
 			return_int_attrib("movement_used", attack.movement_used());
-			// "parry"
+			return_int_attrib("parry", attack.parry());
 			return_cfgref_attrib("specials", attack.specials());
 			std::string err_msg = "unknown property of attack: ";
 			err_msg += m;
@@ -613,9 +613,9 @@ static int impl_unit_attack_set(lua_State *L)
 			modify_int_attrib("number", attack.set_num_attacks(value));
 			modify_int_attrib("attack_weight", attack.set_attack_weight(value));
 			modify_int_attrib("defense_weight", attack.set_defense_weight(value));
-			//"accuracy"
+			modify_int_attrib("accuracy", attack.set_accuracy(value));
 			modify_int_attrib("movement_used", attack.set_movement_used(value));
-			// "parry"
+			modify_int_attrib("parry", attack.set_parry(value));
 			
 			if (strcmp(m, "specials") == 0) { \
 				attack.set_specials(luaW_checkconfig(L, 3));
