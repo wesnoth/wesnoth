@@ -69,11 +69,6 @@ public:
 	/* Get the underlying terrain_type_data object. */
 	const tdata_cache & tdata() const { return tdata_; }
 
-	enum tborder {
-		NO_BORDER = 0,
-		SINGLE_TILE_BORDER
-		};
-
 	/**
 	 * Loads a map, with the given terrain configuration.
 	 *
@@ -196,14 +191,8 @@ public:
 	 */
 	enum { MAX_PLAYERS = 9 };
 
-	/**
-	 * The default map header, needed for maps created with
-	 * terrain_translation::write_game_map().
-	 */
-	static const std::string default_map_header;
-
 	/** The default border style for a map. */
-	static const tborder default_border;
+	static const int default_border = 1;
 
 	/** Parses ranges of locations into a vector of locations, using this map's dimensions as bounds. */
 	std::vector<map_location> parse_location_range(const std::string& xvals,

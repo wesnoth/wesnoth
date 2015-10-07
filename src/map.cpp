@@ -40,9 +40,6 @@ static lg::log_domain log_config("config");
 #define LOG_G LOG_STREAM(info, lg::general)
 #define DBG_G LOG_STREAM(debug, lg::general)
 
-const std::string gamemap::default_map_header = "border_size=1\n\n";
-const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
-
 /** Gets the list of terrains. */
 const t_translation::t_list& gamemap::get_terrain_list() const
 {
@@ -116,7 +113,7 @@ gamemap::gamemap(const tdata_cache& tdata, const std::string& data):
 		h_(-1),
 		total_width_(0),
 		total_height_(0),
-		border_size_(gamemap::SINGLE_TILE_BORDER)
+		border_size_(default_border)
 {
 	DBG_G << "loading map: '" << data << "'\n";
 
@@ -133,7 +130,7 @@ gamemap::gamemap(const tdata_cache& tdata, const config& level):
 		h_(-1),
 		total_width_(0),
 		total_height_(0),
-		border_size_(gamemap::SINGLE_TILE_BORDER)
+		border_size_(default_border)
 {
 	DBG_G << "loading map: '" << level.debug() << "'\n";
 
@@ -287,29 +284,6 @@ std::string gamemap::write() const
 		<< "\n";
 	return s.str();
 }
-
-/*
-void gamemap::write(config& cfg) const
-{
-	// Convert the starting positions to a map
-	std::map<int, t_translation::coordinate> starting_positions;
-	for (int i = 0; i < MAX_PLAYERS + 1; ++i)
-	{
-		if (!on_board(startingPositions_[i])) continue;
-		t_translation::coordinate position(
-				  startingPositions_[i].x + border_size_
-				, startingPositions_[i].y + border_size_);
-		starting_positions[i] = position;
-	}
-
-	cfg["border_size"] = border_size_;
-	cfg["usage"] = (usage_ == IS_MAP ? "map" : "mask");
-
-	std::ostringstream s;
-	s << t_translation::write_game_map(tiles_, starting_positions);
-	cfg["data"] = s.str();
-}
-*/
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
 {
