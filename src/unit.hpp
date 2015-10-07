@@ -194,7 +194,7 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
-	void set_can_recurit(bool canrecruit) { canrecruit_ = canrecruit; }
+	void set_can_recruit(bool canrecruit) { canrecruit_ = canrecruit; }
 	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
 	void set_recruits(const std::vector<std::string>& recruits);

@@ -779,7 +779,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			map_location loc = gui_->mouseover_hex();
 			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
 			bool canrecruit = un->can_recruit();
-			un->set_can_recurit(!canrecruit);
+			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
 		}
 		return true;
