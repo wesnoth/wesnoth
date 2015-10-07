@@ -609,7 +609,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 			map.read(cfg["map"], false);
 		}
 	} catch(incorrect_map_format_error&) {
-		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline");
+		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline data");
 		lg::wml_error << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
 	} catch(twml_exception& e) {
