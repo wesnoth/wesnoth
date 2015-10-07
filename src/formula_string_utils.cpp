@@ -193,15 +193,15 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 				++var_end;
 			}
 			const std::string::iterator default_end = var_end;
-			if(var_end != res.end()) {
-				++var_end;
-			}
 			const config::attribute_value& val = set.get_variable_const(var_name);
-			if(!val.blank()) {
-				res.replace(var_begin, var_end, val);
+			if(var_end == res.end()) {
+				res.replace(var_begin, default_start - 1, val);
+			}
+			else if(!val.blank()) {
+				res.replace(var_begin, var_end + 1, val);
 			}
 			else {
-				res.replace(var_begin, var_end, std::string(default_start, default_end));
+				res.replace(var_begin, var_end + 1, std::string(default_start, default_end));
 			}
 		}
 	}
