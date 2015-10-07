@@ -337,8 +337,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			config::const_child_iterator rule = rules.first;
 			for( ; rule != rules.second; ++rule)
 			{
-				static const std::string src_key = "old", src_not_key = "old_not",
-				                         dst_key = "new", dst_not_key = "new_not";
+				static const std::string src_key = "old", dst_key = "new";
 				const config &cfg = *rule;
 				const t_translation::t_list& src = t_translation::read_list(cfg[src_key]);
 
@@ -346,21 +345,9 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 					continue;
 				}
 
-				const t_translation::t_list& src_not = t_translation::read_list(cfg[src_not_key]);
-
-				if(!src_not.empty() && t_translation::terrain_matches(current, src_not)) {
-					continue;
-				}
-
 				const t_translation::t_list& dst = t_translation::read_list(cfg[dst_key]);
 
 				if(!dst.empty() && t_translation::terrain_matches(t, dst) == false) {
-					continue;
-				}
-
-				const t_translation::t_list& dst_not = t_translation::read_list(cfg[dst_not_key]);
-
-				if(!dst_not.empty() && t_translation::terrain_matches(t, dst_not)) {
 					continue;
 				}
 
