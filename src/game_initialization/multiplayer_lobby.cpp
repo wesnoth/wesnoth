@@ -602,7 +602,7 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 
 	item.map_data = game["map_data"].str();
 	if(item.map_data.empty()) {
-		item.map_data = filesystem::read_map(game["map"]);
+		item.map_data = filesystem::read_map(game["map_file"]);
 	}
 	if(! item.map_data.empty()) {
 		try {
