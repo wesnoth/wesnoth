@@ -76,7 +76,7 @@ size_t cave_map_generator::cave_map_generator_job::translate_y(size_t y) const
 std::string cave_map_generator::create_map(boost::optional<boost::uint32_t> randomseed)
 {
 	const config res = create_scenario(randomseed);
-	return res["data"];
+	return res["map_data"];
 }
 
 config cave_map_generator::create_scenario(boost::optional<boost::uint32_t> randomseed)
@@ -119,10 +119,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	}
 	LOG_NG << "outputting map....\n";
 
-	config& map = res_.add_child("map");
-	map["data"] = t_translation::write_game_map(map_, starting_positions_);
-	map["usage"] = "map";
-	map["border_size"] = gamemap::default_border;
+	res_["map_data"] = t_translation::write_game_map(map_, starting_positions_);
 }
 
 void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged)

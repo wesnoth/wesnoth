@@ -139,20 +139,14 @@ gamemap::gamemap(const tdata_cache& tdata, const config& level):
 {
 	DBG_G << "loading map: '" << level.debug() << "'\n";
 
-	const config& map_child = level.child_or_empty("map");
-
-	if (map_child.empty()) {
-		const std::string& map_data = level["map_data"];
-		if (!map_data.empty()) {
-			read(map_data);
-		} else {
-			w_ = 0;
-			h_ = 0;
-			total_width_ = 0;
-			total_height_ = 0;
-		}
+	const std::string& map_data = level["map_data"];
+	if (!map_data.empty()) {
+		read(map_data);
 	} else {
-		read(map_child["data"], true, map_child["border_size"], map_child["usage"]);
+		w_ = 0;
+		h_ = 0;
+		total_width_ = 0;
+		total_height_ = 0;
 	}
 }
 

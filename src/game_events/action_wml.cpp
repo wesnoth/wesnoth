@@ -602,9 +602,6 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 			} else {
 				throw incorrect_map_format_error("Invalid file path");
 			}
-		} else if(cfg["map"].empty()) {
-			const vconfig& map_cfg = cfg.child("map");
-			map.read(map_cfg["data"], false, map_cfg["border_size"].to_int(), map_cfg["usage"].str());
 		} else {
 			map.read(cfg["map"], false);
 		}
