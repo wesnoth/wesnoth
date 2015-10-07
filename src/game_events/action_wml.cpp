@@ -1183,17 +1183,15 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 
 	//config level;
 	std::string mask = cfg["mask"];
-	std::string usage = "mask";
 	int border_size = 0;
 
 	if (mask.empty()) {
-		usage = cfg["usage"].str();
 		border_size = cfg["border_size"];
 		mask = cfg["data"].str();
 	}
 
 	try {
-		mask_map.read(mask, false, border_size, usage);
+		mask_map.read(mask, false, border_size);
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;

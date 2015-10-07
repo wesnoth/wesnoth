@@ -74,11 +74,6 @@ public:
 		SINGLE_TILE_BORDER
 		};
 
-	enum tusage {
-		IS_MAP,
-		IS_MASK
-		};
-
 	/**
 	 * Loads a map, with the given terrain configuration.
 	 *
@@ -104,7 +99,7 @@ public:
 
 	virtual ~gamemap();
 
-	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1, const std::string usage = "map");
+	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1);
 
 	std::string write() const;
 
@@ -201,9 +196,6 @@ public:
 	 */
 	enum { MAX_PLAYERS = 9 };
 
-	/** Returns the usage of the map. */
-	tusage get_usage() const { return usage_; }
-
 	/**
 	 * The default map header, needed for maps created with
 	 * terrain_translation::write_game_map().
@@ -233,8 +225,6 @@ protected:
 	void clear_border_cache() { borderCache_.clear(); }
 
 private:
-
-	void set_usage(const std::string& usage);
 
 	/**
 	 * Reads the header of a map which is saved in the deprecated map_data format.
@@ -269,9 +259,6 @@ protected:
 private:
 	/** The size of the border around the map. */
 	int border_size_;
-
-	/** The kind of map is being loaded. */
-	tusage usage_;
 };
 
 #endif
