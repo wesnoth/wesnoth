@@ -1181,11 +1181,20 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 
 	gamemap mask_map(resources::gameboard->map());
 
-	std::string mask = cfg["mask"];
 	bool border = cfg["border"].to_bool(true);
 
 	try {
-		mask_map.read(mask, false, border);
+		if(!cfg["mask_file"].empty()) {
+			const std::string& maskfile = filesystem::get_wml_location(cfg["mask_file"].str());
+
+			if(filesystem::file_exists(maskfile)) {
+				mask_map.read(filesystem::read_file(maskfile), false, border);
+			} else {
+				throw incorrect_map_format_error("Invalid file path");
+			}
+		} else {
+			mask_map.read(cfg["mask"], false, border);
+		}
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
