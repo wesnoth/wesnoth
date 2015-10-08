@@ -901,11 +901,6 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 		return;
 	}
 
-
-	const vconfig::child_list values = cfg.get_children("value");
-	const vconfig::child_list literals = cfg.get_children("literal");
-	const vconfig::child_list split_elements = cfg.get_children("split");
-
 	std::vector<config> data;
 	if(cfg.has_attribute("to_variable"))
 	{
@@ -921,48 +916,47 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 		{
 			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug() << std::endl;
 		}
-	} else if(!values.empty()) {
-		for(vconfig::child_list::const_iterator i=values.begin(); i!=values.end(); ++i)
-		{
-			data.push_back((*i).get_parsed_config());
-		}
-	} else if(!literals.empty()) {
-		for(vconfig::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
-		{
-			data.push_back(i->get_config());
-		}
-	} else if(!split_elements.empty()) {
-		const vconfig & split_element = split_elements.front();
+	} else {
+		typedef std::pair<std::string, vconfig> vchild;
+		BOOST_FOREACH(const vchild& p, cfg.all_ordered()) {
+			if(p.first == "value") {
+				data.push_back(p.second.get_parsed_config());
+			} else if(p.first == "literal") {
+				data.push_back(p.second.get_config());
+			} else if(p.first == "split") {
+				const vconfig & split_element = p.second;
 
-		std::string split_string=split_element["list"];
-		std::string separator_string=split_element["separator"];
-		std::string key_name=split_element["key"];
-		if(key_name.empty())
-		{
-			key_name="value";
-		}
+				std::string split_string=split_element["list"];
+				std::string separator_string=split_element["separator"];
+				std::string key_name=split_element["key"];
+				if(key_name.empty())
+				{
+					key_name="value";
+				}
 
-		bool remove_empty = split_element["remove_empty"].to_bool();
+				bool remove_empty = split_element["remove_empty"].to_bool();
 
-		char* separator = separator_string.empty() ? NULL : &separator_string[0];
+				char* separator = separator_string.empty() ? NULL : &separator_string[0];
 
-		std::vector<std::string> split_vector;
+				std::vector<std::string> split_vector;
 
-		//if no separator is specified, explode the string
-		if(separator == NULL)
-		{
-			for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
-			{
-				split_vector.push_back(std::string(1, *i));
+				//if no separator is specified, explode the string
+				if(separator == NULL)
+				{
+					for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
+					{
+						split_vector.push_back(std::string(1, *i));
+					}
+				}
+				else {
+					split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
+				}
+
+				for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
+				{
+					data.push_back(config_of(key_name, *i));
+				}
 			}
-		}
-		else {
-			split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
-		}
-
-		for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
-		{
-			data.push_back(config_of(key_name, *i));
 		}
 	}
 	try

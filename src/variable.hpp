@@ -154,6 +154,9 @@ public:
 	/** In-order iteration over all children. */
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
+	std::pair<all_children_iterator,all_children_iterator> all_ordered() const {
+		return std::make_pair(ordered_begin(), ordered_end());
+	}
 
 private:
 	/// Returns true if *this has made a copy of its config.
