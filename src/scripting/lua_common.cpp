@@ -30,6 +30,7 @@
 #include "scripting/lua_types.hpp"      // for gettextKey, tstringKey, etc
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
+#include "log.hpp"
 
 #include <boost/foreach.hpp>
 #include <cstring>
@@ -45,6 +46,11 @@ static const char * vconfigKey = "vconfig";
 static const char * vconfigpairsKey = "vconfig pairs";
 static const char * vconfigipairsKey = "vconfig ipairs";
 const char * tstringKey = "translatable string";
+
+static lg::log_domain log_scripting_lua("scripting/lua");
+#define LOG_LUA LOG_STREAM(info, log_scripting_lua)
+#define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
+#define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 namespace lua_common {
 
@@ -696,4 +702,75 @@ bool luaW_getglobal(lua_State *L, ...)
 bool luaW_toboolean(lua_State *L, int n)
 {
 	return lua_toboolean(L,n) != 0;
+}
+
+bool LuaW_pushvariable(lua_State *L, variable_access_const& v)
+{
+	try
+	{
+		if(v.exists_as_attribute())
+		{
+			luaW_pushscalar(L, v.as_scalar());
+			return true;
+		}
+		else if(v.exists_as_container())
+		{
+			lua_newtable(L);
+			if (luaW_toboolean(L, 2))
+				luaW_filltable(L, v.as_container());
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (const invalid_variablename_exception&)
+	{
+		WRN_LUA << v.get_error_message();
+		return false;
+	}
+}
+
+bool LuaW_checkvariable(lua_State *L, variable_access_create& v, int n)
+{
+	int variabletype = lua_type(L, n);
+	try
+	{
+		switch (variabletype) {
+		case LUA_TBOOLEAN:
+			v.as_scalar() = luaW_toboolean(L, n);
+			return true;
+		case LUA_TNUMBER:
+			v.as_scalar() = lua_tonumber(L, n);
+			return true;
+		case LUA_TSTRING:
+			v.as_scalar() = lua_tostring(L, n);
+			return true;
+		case LUA_TUSERDATA:
+			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, n, tstringKey))) {
+				v.as_scalar() = *t_str;
+				return true;
+			}
+			goto default_explicit;
+		case LUA_TTABLE:
+			{
+				config &cfg = v.as_container();
+				cfg.clear();
+				if (luaW_toconfig(L, n, cfg)) {
+					return true;
+				}
+				// no break
+			}
+		default:
+		default_explicit:
+			return luaL_typerror(L, n, "WML table or scalar") != 0;
+			
+		}
+	}
+	catch (const invalid_variablename_exception&)
+	{
+		WRN_LUA << v.get_error_message() << " when attempting to write a '" << lua_typename(L, variabletype) << "'\n";
+		return false;
+	}
 }
