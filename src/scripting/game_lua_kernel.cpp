@@ -972,6 +972,43 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
 }
 
 /**
+ * Gets a side specific WML variable.
+ * - Arg 1: integer side number.
+ * - Arg 2: string containing the variable name.
+ * - Ret 1: value of the variable, if any.
+ */
+int game_lua_kernel::intf_get_side_variable(lua_State *L)
+{
+	
+	unsigned side_index = luaL_checkinteger(L, 1) - 1;
+	if(side_index >= teams().size()) {
+		return luaL_argerror(L, 1, "invalid side number");
+	}
+	char const *m = luaL_checkstring(L, 1);
+	variable_access_const v(m, teams()[side_index].variables());
+	return LuaW_pushvariable(L, v) ? 1 : 0;
+}
+
+/**
+ * Gets a side specific WML variable.
+ * - Arg 1: integer side number.
+ * - Arg 2: string containing the variable name.
+ * - Arg 3: boolean/integer/string/table containing the value.
+ */
+int game_lua_kernel::intf_set_side_variable(lua_State *L)
+{
+	unsigned side_index = luaL_checkinteger(L, 1) - 1;
+	if(side_index >= teams().size()) {
+		return luaL_argerror(L, 1, "invalid side number");
+	}
+	char const *m = luaL_checkstring(L, 1);
+	//TODO: maybe support removing values with an empty arg3.
+	variable_access_create v(m, teams()[side_index].variables());
+	LuaW_checkvariable(L, v, 2);
+	return 0;
+}
+
+/**
  * Sets a WML variable.
  * - Arg 1: string containing the variable name.
  * - Arg 2: boolean/integer/string/table containing the value.
@@ -4301,6 +4338,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "get_unit",                  &dispatch<&game_lua_kernel::intf_get_unit                   >        },
 		{ "get_units",                 &dispatch<&game_lua_kernel::intf_get_units                  >        },
 		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
+		{ "get_side_variable",         &dispatch<&game_lua_kernel::intf_get_side_variable          >        },
 		{ "get_villages",              &dispatch<&game_lua_kernel::intf_get_villages               >        },
 		{ "get_village_owner",         &dispatch<&game_lua_kernel::intf_get_village_owner          >        },
 		{ "get_displayed_unit",        &dispatch<&game_lua_kernel::intf_get_displayed_unit         >        },
@@ -4339,6 +4377,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
 		{ "set_terrain",               &dispatch<&game_lua_kernel::intf_set_terrain                >        },
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
+		{ "set_side_variable",         &dispatch<&game_lua_kernel::intf_set_side_variable          >        },
 		{ "set_village_owner",         &dispatch<&game_lua_kernel::intf_set_village_owner          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },

@@ -147,6 +147,7 @@ void team::team_info::read(const config &cfg)
 	carryover_add = cfg["carryover_add"].to_bool(false);
 	carryover_bonus = cfg["carryover_bonus"].to_bool(false);
 	carryover_gold = cfg["carryover_gold"].to_int(0);
+	variables = cfg.child_or_empty("variables");
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
@@ -272,6 +273,7 @@ void team::team_info::write(config& cfg) const
 	cfg["carryover_bonus"] = carryover_bonus;
 	cfg["carryover_gold"] = carryover_gold;
 
+	cfg.add_child("variables", variables);
 	cfg.add_child("ai", ai::manager::to_config(side));
 }
 

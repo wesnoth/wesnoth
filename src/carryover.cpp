@@ -30,6 +30,7 @@ carryover::carryover(const config& side)
 		, previous_recruits_(side.has_attribute("recruit") ? utils::set_split(side["recruit"]) :utils::set_split(side["previous_recruits"]))
 		, recall_list_()
 		, save_id_(side["save_id"])
+		, variables_(side.child_or_empty("variables"))
 {
 	BOOST_FOREACH(const config& u, side.child_range("unit")){
 		recall_list_.push_back(u);
@@ -49,6 +50,7 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, previous_recruits_(t.recruits())
 		, recall_list_()
 		, save_id_(t.save_id())
+		, variables_(t.variables())
 {
 	BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 		recall_list_.push_back(config());
@@ -73,7 +75,8 @@ void carryover::transfer_all_gold_to(config& side_cfg){
 	else if(gold_ > cfg_gold){
 		side_cfg["gold"] = gold_;
 	}
-
+	side_cfg.child_or_add("variables").swap(variables_);
+	variables_.clear();
 	gold_ = 0;
 }
 
