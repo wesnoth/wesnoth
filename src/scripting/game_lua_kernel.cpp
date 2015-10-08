@@ -454,8 +454,9 @@ static int impl_unit_variables_get(lua_State *L)
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	return_cfgref_attrib("__cfg", u->variables());
-	luaW_pushscalar(L, u->variables()[m]);
-	return 1;
+
+	variable_access_const v(m, u->variables());
+	return LuaW_pushvariable(L, v) ? 1 : 0;
 }
 /**
  * Gets the attacks of a unit (__index metamethod).
@@ -652,29 +653,8 @@ static int impl_unit_variables_set(lua_State *L)
 		u->variables() = luaW_checkconfig(L, 3);
 		return 0;
 	}
-	config::attribute_value &v = u->variables()[m];
-	switch (lua_type(L, 3)) {
-		case LUA_TNIL:
-			u->variables().remove_attribute(m);
-			break;
-		case LUA_TBOOLEAN:
-			v = luaW_toboolean(L, 3);
-			break;
-		case LUA_TNUMBER:
-			v = lua_tonumber(L, 3);
-			break;
-		case LUA_TSTRING:
-			v = lua_tostring(L, 3);
-			break;
-		case LUA_TUSERDATA:
-			if (t_string * t_str = static_cast<t_string *> (luaL_testudata(L, 3, tstringKey))) {
-				v = *t_str;
-				break;
-			}
-			// no break
-		default:
-			return luaL_typerror(L, 3, "WML scalar");
-	}
+	variable_access_create v(m, u->variables());
+	LuaW_checkvariable(L, v, 3);
 	return 0;
 }
 
@@ -988,30 +968,7 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	variable_access_const v = gamedata().get_variable_access_read(m);
-	try
-	{
-		if(v.exists_as_attribute())
-		{
-			luaW_pushscalar(L, v.as_scalar());
-			return 1;
-		}
-		else if(v.exists_as_container())
-		{
-			lua_newtable(L);
-			if (luaW_toboolean(L, 2))
-				luaW_filltable(L, v.as_container());
-			return 1;
-		}
-		else
-		{
-			return 0;
-		}
-	}
-	catch (const invalid_variablename_exception&)
-	{
-		//TODO: pop table
-		return 0;
-	}
+	return LuaW_pushvariable(L, v) ? 1 : 0;
 }
 
 /**
@@ -1027,43 +984,8 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 		gamedata().clear_variable(m);
 		return 0;
 	}
-	int variabletype = lua_type(L, 2);
-	try
-	{
-		variable_access_create v = gamedata().get_variable_access_write(m);
-		switch (variabletype) {
-		case LUA_TBOOLEAN:
-			v.as_scalar() = luaW_toboolean(L, 2);
-			break;
-		case LUA_TNUMBER:
-			v.as_scalar() = lua_tonumber(L, 2);
-			break;
-		case LUA_TSTRING:
-			v.as_scalar() = lua_tostring(L, 2);
-			break;
-		case LUA_TUSERDATA:
-			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, 2, tstringKey))) {
-				v.as_scalar() = *t_str;
-				break;
-			}
-			// no break
-		case LUA_TTABLE:
-			{
-				config &cfg = v.as_container();
-				cfg.clear();
-				if (luaW_toconfig(L, 2, cfg))
-					break;
-				// no break
-			}
-		default:
-			return luaL_typerror(L, 2, "WML table or scalar");
-		}
-	}
-	catch (const invalid_variablename_exception&)
-	{
-		std::string msg = "invalid variable name '" + m + "' for type '" + lua_typename(L, variabletype) + "'";
-		return luaL_argerror(L, 1, msg.c_str());
-	}
+	variable_access_create v = gamedata().get_variable_access_write(m);
+	LuaW_checkvariable(L, v, 2);
 	return 0;
 }
 
