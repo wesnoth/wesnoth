@@ -381,6 +381,12 @@ public:
 	bool share_view() const { return info_.share_vision == SHARE_VISION::ALL; }
 	SHARE_VISION share_vision() const { return info_.share_vision; }
 
+	void set_share_vision(const std::string& vision_status) {
+		info_.share_vision = lexical_cast_default<SHARE_VISION> (vision_status, SHARE_VISION::ALL);
+	}
+
+	void set_share_vision(SHARE_VISION vision_status) { info_.share_vision = vision_status; }
+
 	void handle_legacy_share_vision(const config& cfg)
 	{
 		info_.handle_legacy_share_vision(cfg);
