@@ -196,7 +196,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 
 void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
 		int gold, int income, int village_gold, int village_support,
-		bool fog, bool share_view, bool shroud, bool share_maps,
+		bool fog, bool shroud, team::SHARE_VISION share_vision,
 		team::CONTROLLER controller, bool hidden, bool no_leader)
 {
 	assert(teams_.size() > static_cast<unsigned int>(side));
@@ -211,11 +211,7 @@ void map_context::set_side_setup(int side, const std::string& team_name, const s
 	t.set_hidden(hidden);
 	t.set_fog(fog);
 	t.set_shroud(shroud);
-	//TODO: USE team::SHARE_VISION in editor too.
-	t.handle_legacy_share_vision(config_of
-		("share_maps", share_maps)
-		("share_view", share_view)
-	);
+	t.set_share_vision(share_vision);
 	t.set_village_gold(village_gold);
 	t.set_village_support(village_support);
 	actions_since_save_++;
@@ -474,9 +470,8 @@ config map_context::to_config()
 		// side["allow_player"] = "yes";
 
 		side["fog"] = t->uses_fog();
-		side["share_view"] = t->share_view();
 		side["shroud"] = t->uses_shroud();
-		side["share_maps"] = t->share_maps();
+		side["share_vision"] = t->share_vision();
 
 		side["gold"] = t->gold();
 		side["income"] = t->base_income();

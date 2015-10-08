@@ -208,21 +208,21 @@ void context_manager::edit_side_dialog(int side)
 
 	bool no_leader = t.no_leader();
 	bool hidden = t.hidden();
-	bool share_view = t.share_view();
-	bool share_maps = t.share_maps();
 	bool fog = t.uses_fog();
 	bool shroud = t.uses_shroud();
 
+	team::SHARE_VISION share_vision = t.share_vision();
+
 	bool ok = gui2::teditor_edit_side::execute(side +1, team_name, user_team_name,
 			gold, income, village_gold, village_support,
-			fog, share_view, shroud, share_maps,
+			fog, shroud, share_vision,
 			controller, no_leader, hidden,
 			gui_.video());
 
 	if (ok) {
 		get_map_context().set_side_setup(side, team_name, user_team_name,
 				gold, income, village_gold, village_support,
-				fog, share_view, shroud, share_maps, controller, hidden, no_leader);
+				fog, shroud, share_vision, controller, hidden, no_leader);
 	}
 }
 
