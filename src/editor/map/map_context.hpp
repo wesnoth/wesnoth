@@ -244,7 +244,7 @@ public:
 	 */
 	void set_side_setup(int side, const std::string& id, const std::string& name,
 			int gold, int income, int village_gold, int village_support,
-			bool fog, bool share_view, bool shroud, bool share_maps,
+			bool fog, bool shroud, team::SHARE_VISION share_vision,
 			team::CONTROLLER controller, bool hidden, bool no_leader);
 
 	/**
