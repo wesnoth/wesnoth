@@ -851,7 +851,9 @@ bool context_manager::check_switch_open_map(const std::string& fn)
 	size_t i = check_open_map(fn);
 	if (i < map_contexts_.size()) {
 		gui2::show_transient_message(gui_.video(), _("This map is already open."), fn);
-		switch_context(i);
+		if (i != static_cast<unsigned>(current_context_index_)) {
+			switch_context(i);
+		}
 		return true;
 	}
 	return false;
