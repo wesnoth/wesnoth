@@ -98,8 +98,11 @@ namespace editor {
 	}
 
 	namespace {
-		// TODO: make user-customizable in Advanced Preferences.
-		const size_t MAX_RECENT_FILES = 6;
+		size_t editor_mru_limit()
+		{
+			return std::max(size_t(1), lexical_cast_default<size_t>(
+					preferences::get("editor_max_recent_files"), 10));
+		}
 
 		//
 		// NOTE: The MRU read/save functions enforce the entry count limit in
@@ -124,7 +127,7 @@ namespace editor {
 				}
 			}
 
-			mru.resize(std::min(MAX_RECENT_FILES, mru.size()));
+			mru.resize(std::min(editor_mru_limit(), mru.size()));
 
 			return mru;
 		}
@@ -143,7 +146,7 @@ namespace editor {
 				config& child = cfg.add_child("entry");
 				child["path"] = entry;
 
-				if(++n >= MAX_RECENT_FILES) {
+				if(++n >= editor_mru_limit()) {
 					break;
 				}
 			}
@@ -170,7 +173,7 @@ namespace editor {
 		mru.erase(std::remove(mru.begin(), mru.end(), path), mru.end());
 
 		mru.insert(mru.begin(), path);
-		mru.resize(std::min(MAX_RECENT_FILES, mru.size()));
+		mru.resize(std::min(editor_mru_limit(), mru.size()));
 
 		do_commit_editor_mru(mru);
 	}
