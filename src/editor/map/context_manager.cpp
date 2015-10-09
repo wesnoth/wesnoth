@@ -187,6 +187,17 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 	}
 }
 
+void context_manager::load_mru_item(unsigned int index, bool force_same_context /* = false */)
+{
+	const std::vector<std::string>& mru = preferences::editor::recent_files();
+
+	if(mru.empty() || index >= mru.size()) {
+		return;
+	}
+
+	load_map(mru[index], !force_same_context);
+}
+
 void context_manager::edit_side_dialog(int side)
 {
 	team& t = get_map_context().get_teams()[side];
@@ -300,6 +311,36 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 			break;
 		}
 	}
+}
+
+void context_manager::expand_load_mru_menu(std::vector<std::string>& items)
+{
+	std::vector<std::string> mru = preferences::editor::recent_files();
+
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] != "EDITOR-LOAD-MRU-PLACEHOLDER") {
+			continue;
+		}
+
+		items.erase(items.begin() + i);
+
+		if(mru.empty()) {
+			items.insert(items.begin() + i, _("No Recent Files"));
+			continue;
+		}
+
+		BOOST_FOREACH(std::string& path, mru)
+		{
+			// TODO: add proper leading ellipsization instead, since otherwise
+			// it'll be impossible to tell apart files with identical names and
+			// different parent paths.
+			path = filesystem::base_name(path);
+		}
+
+		items.insert(items.begin() + i, mru.begin(), mru.end());
+		break;
+	}
+
 }
 
 void context_manager::expand_areas_menu(std::vector<std::string>& items)

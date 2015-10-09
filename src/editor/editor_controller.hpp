@@ -55,6 +55,7 @@ std::string get_left_button_function();
 
 enum menu_type {
 	MAP,
+	LOAD_MRU,
 	PALETTE,
 	AREA,
 	SIDE,
