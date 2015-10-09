@@ -16,6 +16,7 @@
 #define EDITOR_PREFERENCES_HPP_INCLUDED
 
 #include <string>
+#include <vector>
 
 namespace preferences {
 
@@ -55,6 +56,13 @@ namespace editor {
 	int tod_g();
 	/** Get editor blue tint level. */
 	int tod_b();
+
+	/** Retrieves the list of recently opened files. */
+	std::vector<std::string> recent_files();
+	/** Adds an entry to the recent files list. */
+	void add_recent_files_entry(const std::string& path);
+	/** Removes a single entry from the recent files list. */
+	void remove_recent_files_entry(const std::string& path);
 
 } //end namespace editor
 
