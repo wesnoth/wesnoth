@@ -391,8 +391,9 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	const hotkey::ACTION_STATE state = get_action_state(hk, index);
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
-	if (menu)
-		return "buttons/fold-arrow.png"; // TODO should not be hardcoded
+	if (menu) {
+		return "icons/arrows/short_arrow_right_25.png~CROP(3,3,18,18)"; // TODO should not be hardcoded
+	}
 
 	if (filesystem::file_exists(game_config::path + "/images/" + base_image_name)) {
 		switch (state) {
