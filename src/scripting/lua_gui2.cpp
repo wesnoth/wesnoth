@@ -291,6 +291,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 				chosen_option = i - 1;
 			}
 			options.push_back(option);
+			lua_pop(L, 1);
 		}
 		lua_getfield(L, 2, "default");
 		if(lua_isnumber(L, -1)) {
@@ -302,6 +303,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 			}
 			chosen_option = i - 1;
 		}
+		lua_pop(L, 1);
 	}
 	
 	const config& def_cfg = luaW_checkconfig(L, 1);
