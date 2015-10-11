@@ -462,71 +462,82 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 		return;
 	}
 
-	/***** GROW *****/
-	if(best_size.x <= size.x && best_size.y <= size.y) {
-
-		// expand it.
-		if(size.x > best_size.x) {
-			const unsigned w = size.x - best_size.x;
-			unsigned w_size = std::accumulate(
-					col_grow_factor_.begin(), col_grow_factor_.end(), 0);
-
-			DBG_GUI_L << LOG_HEADER << " extra width " << w
-					  << " will be divided amount " << w_size << " units in "
-					  << cols_ << " columns.\n";
-
-			if(w_size == 0) {
-				// If all sizes are 0 reset them to 1
-				FOREACH(AUTO & val, col_grow_factor_)
-				{
-					val = 1;
-				}
-				w_size = cols_;
-			}
-			// We might have a bit 'extra' if the division doesn't fix exactly
-			// but we ignore that part for now.
-			const unsigned w_normal = w / w_size;
-			for(unsigned i = 0; i < cols_; ++i) {
-				col_width_[i] += w_normal * col_grow_factor_[i];
-				DBG_GUI_L << LOG_HEADER << " column " << i
-						  << " with grow factor " << col_grow_factor_[i]
-						  << " set width to " << col_width_[i] << ".\n";
-			}
+	if(best_size.x > size.x || best_size.y > size.y) {
+		// The assertion below fails quite often so try to give as much information as possible.
+		std::stringstream out;
+		out << " Failed to place a grid, we have " << size << " space but we need " << best_size << " space.";
+		out << " This happened at a grid with the id '" << id() << "'";
+		twidget* pw = parent();
+		while(pw != NULL) {
+			out << " in a '" << typeid(*pw).name() << "' with the id '" << pw->id() << "'";
+			pw = pw->parent();
 		}
-
-		if(size.y > best_size.y) {
-			const unsigned h = size.y - best_size.y;
-			unsigned h_size = std::accumulate(
-					row_grow_factor_.begin(), row_grow_factor_.end(), 0);
-			DBG_GUI_L << LOG_HEADER << " extra height " << h
-					  << " will be divided amount " << h_size << " units in "
-					  << rows_ << " rows.\n";
-
-			if(h_size == 0) {
-				// If all sizes are 0 reset them to 1
-				FOREACH(AUTO & val, row_grow_factor_)
-				{
-					val = 1;
-				}
-				h_size = rows_;
-			}
-			// We might have a bit 'extra' if the division doesn't fix exactly
-			// but we ignore that part for now.
-			const unsigned h_normal = h / h_size;
-			for(unsigned i = 0; i < rows_; ++i) {
-				row_height_[i] += h_normal * row_grow_factor_[i];
-				DBG_GUI_L << LOG_HEADER << " row " << i << " with grow factor "
-						  << row_grow_factor_[i] << " set height to "
-						  << row_height_[i] << ".\n";
-			}
-		}
-
-		layout(origin);
+		ERR_GUI_L << LOG_HEADER << out.str() << ".\n";
+		// This shouldn't be possible...
+		assert(false);
 		return;
 	}
 
-	// This shouldn't be possible...
-	assert(false);
+	/***** GROW *****/
+
+	// expand it.
+	if(size.x > best_size.x) {
+		const unsigned w = size.x - best_size.x;
+		unsigned w_size = std::accumulate(
+			col_grow_factor_.begin(), col_grow_factor_.end(), 0);
+
+		DBG_GUI_L << LOG_HEADER << " extra width " << w
+			<< " will be divided amount " << w_size << " units in "
+			<< cols_ << " columns.\n";
+
+		if(w_size == 0) {
+			// If all sizes are 0 reset them to 1
+			FOREACH(AUTO & val, col_grow_factor_)
+			{
+				val = 1;
+			}
+			w_size = cols_;
+		}
+		// We might have a bit 'extra' if the division doesn't fix exactly
+		// but we ignore that part for now.
+		const unsigned w_normal = w / w_size;
+		for(unsigned i = 0; i < cols_; ++i) {
+			col_width_[i] += w_normal * col_grow_factor_[i];
+			DBG_GUI_L << LOG_HEADER << " column " << i
+				<< " with grow factor " << col_grow_factor_[i]
+			<< " set width to " << col_width_[i] << ".\n";
+		}
+	}
+
+	if(size.y > best_size.y) {
+		const unsigned h = size.y - best_size.y;
+		unsigned h_size = std::accumulate(
+			row_grow_factor_.begin(), row_grow_factor_.end(), 0);
+		DBG_GUI_L << LOG_HEADER << " extra height " << h
+			<< " will be divided amount " << h_size << " units in "
+			<< rows_ << " rows.\n";
+
+		if(h_size == 0) {
+			// If all sizes are 0 reset them to 1
+			FOREACH(AUTO & val, row_grow_factor_)
+			{
+				val = 1;
+			}
+			h_size = rows_;
+		}
+		// We might have a bit 'extra' if the division doesn't fix exactly
+		// but we ignore that part for now.
+		const unsigned h_normal = h / h_size;
+		for(unsigned i = 0; i < rows_; ++i) {
+			row_height_[i] += h_normal * row_grow_factor_[i];
+			DBG_GUI_L << LOG_HEADER << " row " << i << " with grow factor "
+				<< row_grow_factor_[i] << " set height to "
+				<< row_height_[i] << ".\n";
+		}
+	}
+
+	layout(origin);
+	return;
 }
 
 void tgrid::set_origin(const tpoint& origin)
@@ -1098,8 +1109,7 @@ void set_single_child(tgrid& grid, twidget* widget)
  *
  * * determine the extra size
  * * determine the sum of the grow factors
- * * if this sum is 0 set the grow factor for every item to 1 and sum to sum of
- *   items.
+ * * if this sum is 0 set the grow factor for every item to 1 and sum to sum of items.
  * * divide the extra size with the sum of grow factors
  * * for every item multiply the grow factor with the division value
  *

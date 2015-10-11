@@ -154,9 +154,9 @@ void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		tgrid& grid = item_ordered(i);
 		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		   || !get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -179,9 +179,9 @@ void thorizontal_list::set_origin(const tpoint& origin)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		tgrid& grid = item_ordered(i);
 		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		   || !get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -201,7 +201,7 @@ void thorizontal_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		tgrid& grid = item_ordered(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
@@ -261,13 +261,13 @@ void thorizontal_list::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(int i = get_selected_item() - 1; i >= 0; --i) {
+	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i, true);
+			select_item(get_item_at_ordered(i), true);
 			return;
 		}
 	}
@@ -283,19 +283,19 @@ void thorizontal_list::handle_key_right_arrow(SDLMod /*modifier*/,
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
+	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 
-		if(item(i).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(item(get_item_at_ordered(i)).get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i, true);
+			select_item(get_item_at_ordered(i), true);
 			return;
 		}
 	}
@@ -353,9 +353,9 @@ void tvertical_list::place(const tpoint& origin, const tpoint& size)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		tgrid& grid = item_ordered(i);
 		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		   || !get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -378,9 +378,9 @@ void tvertical_list::set_origin(const tpoint& origin)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		tgrid& grid = item_ordered(i);
 		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		   || !get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -461,13 +461,13 @@ void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(int i = get_selected_item() - 1; i >= 0; --i) {
+	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i, true);
+			select_item(get_item_at_ordered(i), true);
 			return;
 		}
 	}
@@ -482,19 +482,20 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
-
-		if(item(i).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
+		
+		// why do we do this check here but not in handle_key_up_arrow?
+		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
+		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i, true);
+			select_item(get_item_at_ordered(i), true);
 			return;
 		}
 	}

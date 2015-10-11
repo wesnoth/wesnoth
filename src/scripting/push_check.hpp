@@ -6,6 +6,7 @@
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/has_xxx.hpp>
+#include <boost/foreach.hpp>
 #include "tstring.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -199,7 +200,8 @@ namespace lua_check_impl
 	typename boost::enable_if<
 		typename boost::mpl::and_<
 			typename is_container<T>::type,
-			typename boost::mpl::not_<typename boost::is_same<T, std::string> >::type
+			typename boost::mpl::not_<typename boost::is_same<T, std::string> >::type,
+			typename boost::mpl::not_<typename is_map<T>::type >::type
 		>::type,
 		void
 	>::type
@@ -211,6 +213,24 @@ namespace lua_check_impl
 		for(size_t i = 0, size = static_cast<size_t>(list.size()); i < size; ++i) {
 			lua_check_impl::lua_push<typename remove_constref<typename T::value_type>::type>(L, list[i]);
 			lua_rawseti(L, -2, i + 1);
+		}
+	}	
+
+
+	//accepts std::map TODO: add a check function for that
+	template<typename T>
+	typename boost::enable_if<
+		typename is_map<T>::type,
+		void
+	>::type
+	lua_push(lua_State * L, const T& map )
+	{
+		lua_newtable(L);
+		BOOST_FOREACH(const typename T::value_type& pair, map)
+		{
+			lua_check_impl::lua_push<typename remove_constref<typename T::key_type>::type>(L, pair.first);
+			lua_check_impl::lua_push<typename remove_constref<typename T::mapped_type>::type>(L, pair.second);
+			lua_settable(L, -3);
 		}
 	}
 

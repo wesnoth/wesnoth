@@ -753,16 +753,18 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
+	assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
+
 	std::string map_data = summary["map_data"];
 	if(map_data.empty()) {
 		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
 		if (scenario && !scenario.find_child("side", "shroud", "yes")) {
 			map_data = scenario["map_data"].str();
-			if (map_data.empty() && scenario.has_attribute("map")) {
+			if (map_data.empty() && scenario.has_attribute("map_file")) {
 				try {
-					map_data = filesystem::read_map(scenario["map"]);
+					map_data = filesystem::read_map(scenario["map_file"]);
 				} catch(filesystem::io_exception& e) {
-					ERR_G << "could not read map '" << scenario["map"] << "': " << e.what() << '\n';
+					ERR_G << "could not read map '" << scenario["map_file"] << "': " << e.what() << '\n';
 				}
 			}
 		}
@@ -773,8 +775,6 @@ void save_preview_pane::draw_contents()
 	if(map_data.empty() == false) {
 		LOG_DP << "When parsing save summary " << ((*info_)[index_]).name() << std::endl
 			<< "Did not find a map_data field. Looking in game config for a child [" << summary["campaign_type"] << "] with id " << summary["scenario"] << std::endl;
-
-		assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
 
 		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
 		if(itor != map_cache_.end()) {
@@ -1356,8 +1356,8 @@ void unit_preview_pane::draw_contents()
 	}
 
 	// we don't remove empty lines, so all fields stay at the same place
-	const std::vector<std::string> lines = utils::split(text.str(), '\n',
-		utils::STRIP_SPACES & !utils::REMOVE_EMPTY);
+	const std::vector<std::string> lines
+			= utils::split(text.str(), '\n', utils::STRIP_SPACES);
 
 
 	int ypos = area.y;

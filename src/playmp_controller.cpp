@@ -26,6 +26,7 @@
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
+#include "game_initialization/playcampaign.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
@@ -41,28 +42,24 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-unsigned int playmp_controller::replay_last_turn_ = 0;
-
 playmp_controller::playmp_controller(const config& level,
-		saved_game& state_of_game, const int ticks, const config& game_config, 
+		saved_game& state_of_game, const config& game_config, 
 		const tdata_cache & tdata, CVideo& video,
-		bool skip_replay, bool blindfold_replay_, bool is_host)
-	: playsingle_controller(level, state_of_game, ticks,
-		game_config, tdata, video, skip_replay || blindfold_replay_) //this || means that if blindfold is enabled, quick replays will be on.
+		mp_campaign_info* mp_info)
+	: playsingle_controller(level, state_of_game,
+	game_config, tdata, video, mp_info && mp_info->skip_replay_until_turn != 0) //this || means that if blindfold is enabled, quick replays will be on.
 	, network_processing_stopped_(false)
-	, blindfold_(*gui_,blindfold_replay_)
+	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
+	, mp_info_(mp_info)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the mp (network enabled) version
 
-	turn_data_.set_host(is_host);
+	//turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
 	// We stop quick replay if play isn't yet past turn 1
-	if ( replay_last_turn_ <= 1)
+	if (!mp_info_ || mp_info_->skip_replay_until_turn > 0)
 	{
 		skip_replay_ = false;
-	}
-	if (blindfold_replay_) {
-		LOG_NG << "Putting on the blindfold now " << std::endl;
 	}
 }
 
@@ -71,10 +68,6 @@ playmp_controller::~playmp_controller() {
 	try {
 		turn_data_.host_transfer().detach_handler(this);
 	} catch (...) {}
-}
-
-void playmp_controller::set_replay_last_turn(unsigned int turn){
-	 replay_last_turn_ = turn;
 }
 
 void playmp_controller::start_network(){
@@ -87,11 +80,11 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side()
+void playmp_controller::play_side_impl()
 {
 	mp_ui_alerts::turn_changed(current_team().current_player());
 	// Proceed with the parent function.
-	return playsingle_controller::play_side();
+	return playsingle_controller::play_side_impl();
 }
 
 void playmp_controller::on_not_observer() {
@@ -135,13 +128,13 @@ void playmp_controller::play_human_turn()
 		timer.reset(new countdown_clock(current_team()));
 	}
 	show_turn_dialog();
-	if(undo_stack_->can_undo()) {
+	if(undo_stack().can_undo()) {
 		// If we reload a networked mp game we cannot undo moves made before the save
 		// Becasue other players already received them
 		if(!current_team().auto_shroud_updates()) {
 			synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
 		}
-		undo_stack_->clear();
+		undo_stack().clear();
 	}
 	if (!preferences::disable_auto_moves()) {
 		execute_gotos();
@@ -154,7 +147,7 @@ void playmp_controller::play_human_turn()
 			if (player_type_changed_)
 			{
 				// Clean undo stack if turn has to be restarted (losing control)
-				if ( undo_stack_->can_undo() )
+				if ( undo_stack().can_undo() )
 				{
 					font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
@@ -168,8 +161,8 @@ void playmp_controller::play_human_turn()
 					font::add_floating_label(flabel);
 				}
 
-				while( undo_stack_->can_undo() )
-					undo_stack_->undo();
+				while( undo_stack().can_undo() )
+					undo_stack().undo();
 
 			}
 			check_objectives();
@@ -245,9 +238,9 @@ void playmp_controller::linger()
 	linger_ = true;
 	// If we need to set the status depending on the completion state
 	// we're needed here.
-	gui_->set_game_mode(game_display::LINGER_MP);
+	gui_->set_game_mode(game_display::LINGER);
 	// End all unit moves
-	gamestate_.board_.set_all_units_user_end_turn();
+	gamestate().board_.set_all_units_user_end_turn();
 
 	set_end_scenario_button();
 	assert(is_regular_game_end());
@@ -324,7 +317,7 @@ void playmp_controller::after_human_turn(){
 
 		current_team().set_action_bonus_count(0);
 		current_team().set_countdown_time(new_time);
-		resources::recorder->add_countdown_update(new_time, player_number_);
+		resources::recorder->add_countdown_update(new_time, current_side());
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
 
@@ -345,7 +338,7 @@ void playmp_controller::play_network_turn(){
 	{
 		if (!network_processing_stopped_) {
 			process_network_data();
-			if (replay_last_turn_ <= turn()) {
+			if (!mp_info_ || mp_info_->skip_replay_until_turn > 0) {
 				skip_replay_ = false;
 			}
 		}
@@ -381,7 +374,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		}
 		temp_buf << " \n";
 	}
-	update_savegame_snapshot();
+	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_);
 	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
 }
@@ -399,11 +392,17 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		turn_data_.send_data();
 	}
 	else if (name == "host_transfer"){
+		assert(mp_info_);
+		mp_info_->is_host = true;
 		if (linger_){
 			end_turn_enable(true);
 			gui_->invalidate_theme();
 		}
 	}
+}
+bool playmp_controller::is_host() const
+{
+	return !mp_info_ || mp_info_->is_host;
 }
 
 void playmp_controller::do_idle_notification()
@@ -417,7 +416,7 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (!get_end_level_data_const().transient.linger_mode || gamestate_.board_.teams().empty()) {
+	if (!get_end_level_data_const().transient.linger_mode || gamestate().board_.teams().empty()) {
 		if(!is_host()) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario
@@ -433,8 +432,8 @@ void playmp_controller::pull_remote_choice()
 {
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.sync_network() (which calls turn_data_.send_data()) won't work if the undo stack isn't empty because undoable moves won't be sended
-	// Also undo_stack_->clear() must be called synced so we cannot do that here.
-	assert(!undo_stack_->can_undo());
+	// Also undo_stack()clear() must be called synced so we cannot do that here.
+	assert(!undo_stack().can_undo());
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);
@@ -448,8 +447,8 @@ void playmp_controller::send_user_choice()
 {
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.send_data() won't work if the undo stack isn't empty because undoable moves won't be sended
-	// Also undo_stack_->clear() must be called synced so we cannot do that here.
-	assert(!undo_stack_->can_undo());
+	// Also undo_stack()clear() must be called synced so we cannot do that here.
+	assert(!undo_stack().can_undo());
 	turn_data_.send_data();
 }
 

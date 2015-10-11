@@ -46,7 +46,8 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	times_(),
 	areas_(),
 	turn_(scenario_cfg["turn_at"].to_int(1)),
-	num_turns_(scenario_cfg["turns"].to_int(-1))
+	num_turns_(scenario_cfg["turns"].to_int(-1)),
+	has_turn_event_fired_(!scenario_cfg["it_is_a_new_turn"].to_bool(true))
 {
 	// ? : operator doesn't work in this case.
 	if (scenario_cfg["current_time"].to_int(-17403) == -17403)
@@ -117,7 +118,7 @@ config tod_manager::to_config() const
 	cfg["turns"] = num_turns_;
 	cfg["current_time"] = currentTime_;
 	cfg["random_start_time"] = random_tod_;
-
+	cfg["it_is_a_new_turn"] = !has_turn_event_fired_;
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
 		t->write(cfg.add_child("time"));
@@ -457,6 +458,7 @@ int tod_manager::calculate_current_time(
 bool tod_manager::next_turn(boost::optional<game_data&> vars)
 {
 	set_turn(turn_ + 1, vars, false);
+	has_turn_event_fired_ = false;
 	return is_time_left();
 }
 

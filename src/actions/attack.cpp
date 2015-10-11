@@ -41,6 +41,7 @@
 #include "../resources.hpp"
 #include "../statistics.hpp"
 #include "../synced_checkup.hpp"
+#include "../synced_user_choice.hpp"
 #include "../team.hpp"
 #include "../tod_manager.hpp"
 #include "../unit.hpp"
@@ -977,29 +978,36 @@ namespace {
 		if (update_display_)
 		{
 			std::ostringstream float_text;
+			std::vector<std::string> extra_hit_sounds;
 			if (hits)
 			{
 				const unit &defender_unit = defender.get_unit();
 				if (attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
 					float_text << (defender_unit.gender() == unit_race::FEMALE ?
 						_("female^poisoned") : _("poisoned")) << '\n';
+
+					extra_hit_sounds.push_back(game_config::sounds::status::poisoned);
 				}
 
 				if (attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
 					float_text << (defender_unit.gender() == unit_race::FEMALE ?
 						_("female^slowed") : _("slowed")) << '\n';
+
+					extra_hit_sounds.push_back(game_config::sounds::status::slowed);
 				}
 
 				if (attacker_stats->petrifies) {
 					float_text << (defender_unit.gender() == unit_race::FEMALE ?
 						_("female^petrified") : _("petrified")) << '\n';
+
+					extra_hit_sounds.push_back(game_config::sounds::status::petrified);
 				}
 			}
 
 			unit_display::unit_attack(game_display::get_singleton(), *resources::gameboard,
 				attacker.loc_, defender.loc_, damage,
 				*attacker_stats->weapon, defender_stats->weapon,
-				abs_n, float_text.str(), drains_damage, "");
+				abs_n, float_text.str(), drains_damage, "", &extra_hit_sounds);
 		}
 
 		bool dies = defender.get_unit().take_hit(damage);
@@ -1218,6 +1226,9 @@ namespace {
 			a_.get_unit().set_movement(-1, true);
 			return;
 		}
+		
+		a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
+		d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
 
 		a_.get_unit().set_attacks(a_.get_unit().attacks_left()-1);
 		VALIDATE(a_.weapon_ < static_cast<int>(a_.get_unit().attacks().size()),
@@ -1436,6 +1447,10 @@ namespace
 			retv["value"] = 0;
 			return retv;
 		}
+		virtual std::string description() const
+		{ 
+			return "an advancement choice"; 
+		}
 	private:
 		const map_location loc_;
 		int nb_options_;
@@ -1538,7 +1553,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 {
 	unit_ptr amla_unit(new unit(u));
 	amla_unit->set_experience(amla_unit->experience() - amla_unit->max_experience());
-	amla_unit->add_modification("advance", mod_option);
+	amla_unit->add_modification("advancement", mod_option);
 	return amla_unit;
 }
 

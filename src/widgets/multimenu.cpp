@@ -28,9 +28,9 @@ namespace gui {
 									   : "buttons/checkbox.png");
 		blit_surface(img, NULL, video().getSurface(), &rect);
 		SDL_Rect newrect = {
-				(Sint16) (rect.x + img->w + 2),
+				Sint16 (rect.x + img->w + 2),
 				rect.y,
-				(Uint16) (rect.w - img->w - 2),
+				Uint16 (rect.w - img->w - 2),
 				rect.h
 		};
 		menu::draw_row(row_index, newrect, type);

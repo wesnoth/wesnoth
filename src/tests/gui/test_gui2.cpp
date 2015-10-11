@@ -49,6 +49,7 @@
 #include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/lobby_player_info.hpp"
@@ -457,6 +458,15 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 			std::remove(list.begin(), list.end(), "lua_interpreter")
 			, list.end());
 
+	/*
+	 * Disable label settings dialog test because we need a display_context
+	 * object, which we don't have, and it's a lot of work to produce a dummy
+	 * one.
+	 */
+	list.erase(
+			std::remove(list.begin(), list.end(), "label_settings")
+			, list.end());
+
 	//Window 'addon_description' registered but not tested.
 	//Window 'addon_filter_options' registered but not tested.
 	//Window 'addon_uninstall_list' registered but not tested.
@@ -465,6 +475,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "addon_filter_options"), list.end());	
 	list.erase(std::remove(list.begin(), list.end(), "addon_uninstall_list"), list.end());	
 	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());	
+	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());	
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
@@ -517,7 +528,7 @@ struct twrapper<gui2::tcampaign_difficulty>
 {
 	static gui2::tcampaign_difficulty* create()
 	{
-		static std::vector<std::pair<std::string, bool> > items;
+		static const config items;
 
 		return new gui2::tcampaign_difficulty(items);
 	}

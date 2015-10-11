@@ -209,6 +209,33 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	return res;
 }
 
+size_t vconfig::count_children(const std::string& key) const
+{
+	size_t n = 0;
+	
+	BOOST_FOREACH(const config::any_child &child, cfg_->all_children_range())
+	{
+		if (child.key == key) {
+			n++;
+		} else if (child.key == "insert_tag") {
+			vconfig insert_cfg(child.cfg);
+			if(insert_cfg["name"] == key)
+			{
+				try
+				{
+					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
+					n += range.second - range.first;
+				}
+				catch(const invalid_variablename_exception&)
+				{
+					n++;
+				}
+			}
+		}
+	}
+	return n;
+}
+
 /**
  * Returns a child of *this whose key is @a key.
  * If no such child exists, returns an unconstructed vconfig (use null() to test
@@ -411,6 +438,8 @@ config &scoped_wml_variable::store(const config &var_value)
 
 scoped_wml_variable::~scoped_wml_variable()
 {
+	assert(resources::gamedata);
+
 	if(activated_) {
 		resources::gamedata->clear_variable_cfg(var_name_);
 		BOOST_FOREACH(const config &i, previous_val_.child_range(var_name_))
@@ -425,10 +454,9 @@ scoped_wml_variable::~scoped_wml_variable()
 		}
 		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
 	}
-	if (resources::gamedata) {
-		assert(resources::gamedata->scoped_variables.back() == this);
-		resources::gamedata->scoped_variables.pop_back();
-	}
+
+	assert(resources::gamedata->scoped_variables.back() == this);
+	resources::gamedata->scoped_variables.pop_back();
 }
 
 void scoped_xy_unit::activate()

@@ -23,6 +23,7 @@
 #include "multiplayer_ui.hpp"
 #include "mp_game_utils.hpp"
 #include "mt_rng.hpp"
+#include "playcampaign.hpp"
 #include "tod_manager.hpp"
 #include "multiplayer_ui.hpp" // For get_color_string
 #include <boost/foreach.hpp>
@@ -76,20 +77,19 @@ const std::string attributes_to_trim[] = {
 namespace ng {
 
 connect_engine::connect_engine(saved_game& state,
-	const bool local_players_only, const bool first_scenario, const std::set<std::string>& players) :
+		const bool first_scenario, mp_campaign_info* campaign_info) :
 	level_(),
 	state_(state),
 	params_(state.mp_settings()),
-	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
-	local_players_only_(local_players_only),
+	default_controller_(campaign_info ? CNTR_NETWORK : CNTR_LOCAL),
+	campaign_info_(campaign_info),
 	first_scenario_(first_scenario),
 	force_lock_settings_(),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
 	user_team_names_(),
-	player_teams_(),
-	connected_users_(players)
+	player_teams_()
 {
 	// Initial level config from the mp_game_settings.
 	level_ = mp::initial_level_config(state_);
@@ -227,8 +227,9 @@ void connect_engine::import_user(const config& data, const bool observer,
 {
 	const std::string& username = data["name"];
 	assert(!username.empty());
-
-	connected_users_.insert(username);
+	if(campaign_info_) {
+		connected_users_rw().insert(username);
+	}
 	update_side_controller_options();
 
 	if (observer) {
@@ -607,7 +608,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 			side_engine_ptr side_to_drop = side_engines_[side_drop];
 
 			// Remove user, whose side was dropped.
-			connected_users_.erase(side_to_drop->player_id());
+			connected_users_rw().erase(side_to_drop->player_id());
 			update_side_controller_options();
 
 			side_to_drop->reset();
@@ -634,7 +635,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 			return result;
 		}
 
-		if (connected_users_.find(name) != connected_users_.end()) {
+		if (connected_users().find(name) != connected_users().end()) {
 			 // TODO: Seems like a needless limitation
 			 // to only allow one side per player.
 			if (find_user_side_index_by_id(name) != -1) {
@@ -646,7 +647,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 				return result;
 			} else {
-				connected_users_.erase(name);
+				connected_users_rw().erase(name);
 				update_side_controller_options();
 				config observer_quit;
 				observer_quit.add_child("observer_quit")["name"] = name;
@@ -727,11 +728,10 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 	if (const config& observer = data.child("observer_quit")) {
 		const t_string& observer_name = observer["name"];
 		if (!observer_name.empty()) {
-			if ((connected_users_.find(observer_name) !=
-				connected_users_.end()) &&
+			if ((connected_users().find(observer_name) != connected_users().end()) &&
 				(find_user_side_index_by_id(observer_name) != -1)) {
 
-				connected_users_.erase(observer_name);
+				connected_users_rw().erase(observer_name);
 				update_side_controller_options();
 				update_and_send_diff();
 			}
@@ -823,7 +823,7 @@ void connect_engine::load_previous_sides_users()
 	//Do this in an extra loop to make sure we import each user only once.
 	BOOST_FOREACH(const std::string& name, names)
 	{
-		if (connected_users_.find(name) != connected_users_.end()) {
+		if (connected_users().find(name) != connected_users().end() || !campaign_info_) {
 			import_user(name, false);
 		}
 	}
@@ -834,6 +834,23 @@ void connect_engine::update_side_controller_options()
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		side->update_controller_options();
 	}
+}
+
+
+const std::set<std::string>& connect_engine::connected_users() const
+{
+	if(campaign_info_) {
+		return campaign_info_->connected_players;
+	}
+	else {
+		static std::set<std::string> empty;
+		return empty;
+	}
+}
+std::set<std::string>& connect_engine::connected_users_rw()
+{
+	assert(campaign_info_);
+	return campaign_info_->connected_players;
 }
 
 side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
@@ -1238,7 +1255,7 @@ void side_engine::update_controller_options()
 	controller_options_.clear();
 
 	// Default options.
-	if (!parent_.local_players_only_) {
+	if (parent_.campaign_info_) {
 		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
 	}
 	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
@@ -1251,7 +1268,7 @@ void side_engine::update_controller_options()
 
 	// Connected users.
 	add_controller_option(CNTR_LAST, _("--give--"), "human");
-	BOOST_FOREACH(const std::string& user, parent_.connected_users_) {
+	BOOST_FOREACH(const std::string& user, parent_.connected_users()) {
 		add_controller_option(parent_.default_controller_, user, "human");
 	}
 

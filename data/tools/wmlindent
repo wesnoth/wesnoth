@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """\
 wmlindent - re-indent WML in a uniform way.
@@ -61,10 +61,8 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-from __future__ import print_function, unicode_literals
-
 import sys, os, getopt, filecmp, re, codecs
-from wesnoth import wmltools
+from wesnoth import wmltools3 as wmltools
 
 closer_prefixes = ["{NEXT "]
 opener_prefixes = ["{FOREACH "]
@@ -114,7 +112,7 @@ def reindent(name, infp, outfp):
     lasttag = ""
     countlines = 0
     countblanks = 0
-    multitag = re.compile(r"\[a-z]].*\[[a-z]")	# Avoid triggering on arrays
+    multitag = re.compile(r"\[a-z]].*\[[a-z]") # Avoid triggering on arrays
     for line in infp:
         countlines += 1
         # User may declare indentation exceptions
@@ -217,14 +215,14 @@ def reindent(name, infp, outfp):
     if indent != "" and seen_wml:
         print('wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines), file=sys.stderr)
 
-def allwmlfiles(dir):
+def allwmlfiles(directory):
     "Get names of all WML files under dir, or dir itself if not a directory."
     datafiles = []
-    if not os.path.isdir(dir):
-        if dir.endswith(".cfg"):
-            datafiles.append(dir)
+    if not os.path.isdir(directory):
+        if directory.endswith(".cfg"):
+            datafiles.append(directory)
     else:
-        for root, dirs, files in os.walk(dir):
+        for root, dirs, files in os.walk(directory):
             if wmltools.vcdir in dirs:
                 dirs.remove(wmltools.vcdir)
             for name in files:
@@ -264,7 +262,7 @@ def convertor(linefilter, arglist, exclude):
                             if dryrun:
                                 os.remove(filename + ".out")
                             else:
-                                os.remove(filename)	# For Windows portability
+                                os.remove(filename) # For Windows portability
                                 # There's a tiny window open if you keyboard-
                                 # interrupt here. It's unavoidable, because
                                 # there's no known way to do an atomic rename

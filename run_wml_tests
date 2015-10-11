@@ -14,11 +14,15 @@ usage()
   echo -e "\t-c\tClean mode. (Don't load any add-ons. Used for mainline tests.)"
   echo -e "\t-a arg\tAdditional arguments to go to wesnoth."
   echo -e "\t-t arg\tNew timer value to use, instead of 10s as default."
+  echo -e "\t  \t0s means no timer, and also skips tests that expect timeout."
   echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
   echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
   echo -e "\t-d\tRun wesnoth-debug binary instead of wesnoth."
   echo -e "\t-g\tIf we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option."
   echo -e "\t-p arg\tPath to wesnoth binary. By default assume it is with this script."
+  if [ $(uname) = "Darwin" ]; then
+  	echo -e "\t  \tThe special value xcode searches in XCode's DerivedProducts directory."
+  fi
   echo -e "\t-l arg\tLoads list of tests from the given file."
   echo -e "\t  \tBy default, the file is wml_test_schedule."
   echo
@@ -147,8 +151,18 @@ run_test()
   fi
 
   # Add a timeout using unix timeout utility
-  timer1=$((timer+1))
-  preopts+="timeout --kill-after=$timer1 $timer "
+  if [ $timer -gt 0 ]; then
+    # Some versions might not support the --kill-after option
+    if timeout --kill-after=5 1 read 2> /dev/null; then
+      timer1=$((timer+1))
+      preopts+="timeout --kill-after=$timer1 $timer "
+    else
+      preopts+="timeout $timer "
+    fi
+  elif [ $1 -eq 2 ]; then
+    # If timeout is disabled, skip tests that expect it
+    return 100
+  fi
 
   # If running strict, then set strict level to "warning"
   if [ "$StrictMode" -eq 1 ]; then
@@ -236,13 +250,19 @@ do
       GdbBacktraceMode=1
       ;;
     p )
-      BinPath="$OPTARG"
+      if [ "$OPTARG" = "XCode" -o "$OPTARG" = "xcode" -o "$OPTARG" = "Xcode" ]; then
+        # Find it in XCode's build dir
+        path_list=( ~/Library/Developer/XCode/DerivedData/Wesnoth*/Build/Products/{Debug,Release}/Wesnoth.app/Contents/MacOS/ )
+        BinPath="${path_list[0]}"
+      else
+        BinPath="$OPTARG"
+      fi
       ;;
     l )
       LoadFile="$OPTARG"
       ;;
     a )
-      extra_opts+="$OPTARG"
+      extra_opts+=" $OPTARG"
       ;;
     t )
       echo "Replacing default timer of 10 with" "$OPTARG" "seconds."
@@ -261,6 +281,12 @@ if [ "$Verbose" -ge 2 ]; then
   if [ "$UnixTimeout" -eq 1 ]; then
     echo "Wesnoth built-in timeout was disabled. This script was updated, and -u is now unnecessary and has no effect."
   fi
+fi
+
+# Disable timeouts if the timeout utility is missing
+if [ ! $(which timeout) ]; then
+  echo 'timeout not found; skipping timeout tests'
+  basetimer=0
 fi
 
 echo "Getting tests from" "$LoadFile" "..."
@@ -299,16 +325,28 @@ do
         echo "comment:" $line
       fi
     else
+      if [ "$Verbose" -eq 0 ]; then
+        echo -n "."
+      fi
       if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
         if [ "$Verbose" -ge 2 ]; then
           echo "good"
+        elif [ "$Verbose" -eq 0 ]; then
+          echo -ne '\b:'
         fi
         TotalPassed=$((TotalPassed+1))
-      else
+      elif [ $? -ne 100 ]; then
+        if [ "$Verbose" -eq 0 ]; then
+          echo -ne '\b!'
+        fi
         AllPassed=0
       fi
     fi
 done
+
+if [ "$Verbose" -eq 0 ]; then
+  echo ''
+fi
 
 if [ "$AllPassed" -eq 0 ]; then
   if [ "$StrictMode" -eq 1 ]; then

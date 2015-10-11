@@ -117,6 +117,7 @@ libwesnoth_sources = Split("""
     pathutils.cpp
     preferences.cpp
     preferences_display.cpp
+    quit_confirmation.cpp
     race.cpp
     reports.cpp
     show_dialog.cpp
@@ -197,6 +198,7 @@ wesnoth_sources = Split("""
     actions/undo_recall_action.cpp
     actions/undo_recruit_action.cpp
     actions/undo_update_shroud_action.cpp
+    actions/unit_creator.cpp
     actions/vision.cpp
     addon/client.cpp
     addon/info.cpp
@@ -424,6 +426,7 @@ wesnoth_sources = Split("""
     gui/dialogs/game_save.cpp
     gui/dialogs/game_version.cpp
     gui/dialogs/gamestate_inspector.cpp
+    gui/dialogs/label_settings.cpp
     gui/dialogs/language_selection.cpp
     gui/dialogs/lobby/lobby_data.cpp
     gui/dialogs/lobby/lobby_info.cpp
@@ -446,6 +449,7 @@ wesnoth_sources = Split("""
     gui/dialogs/edit_text.cpp
     gui/dialogs/screenshot_notification.cpp
     gui/dialogs/simple_item_selector.cpp
+    gui/dialogs/synced_choice_wait.cpp
     gui/dialogs/theme_list.cpp
     gui/dialogs/tip.cpp
     gui/dialogs/title_screen.cpp
@@ -514,6 +518,7 @@ wesnoth_sources = Split("""
     mouse_handler_base.cpp
     movetype.cpp
     mp_game_settings.cpp
+    mp_replay_controller.cpp
     game_initialization/mp_game_utils.cpp
     game_initialization/mp_options.cpp
     mp_ui_alerts.cpp
@@ -581,6 +586,7 @@ wesnoth_sources = Split("""
     synced_checkup.cpp
     synced_context.cpp
     synced_commands.cpp
+    synced_user_choice.cpp
     syncmp_handler.cpp
     team.cpp
     teambuilder.cpp

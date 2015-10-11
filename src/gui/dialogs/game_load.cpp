@@ -147,6 +147,26 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	display_savegame(window);
 }
 
+bool tgame_load::compare_name(unsigned i1, unsigned i2) const
+{
+	return games_[i1].name() < games_[i2].name();
+}
+
+bool tgame_load::compare_date(unsigned i1, unsigned i2) const
+{
+	return games_[i1].modified() < games_[i2].modified();
+}
+
+bool tgame_load::compare_name_rev(unsigned i1, unsigned i2) const
+{
+	return games_[i1].name() > games_[i2].name();
+}
+
+bool tgame_load::compare_date_rev(unsigned i1, unsigned i2) const
+{
+	return games_[i1].modified() > games_[i2].modified();
+}
+
 void tgame_load::fill_game_list(twindow& window,
 								std::vector<savegame::save_info>& games)
 {
@@ -166,6 +186,13 @@ void tgame_load::fill_game_list(twindow& window,
 
 		list.add_row(data);
 	}
+	std::vector<tgenerator_::torder_func> order_funcs(2);
+	order_funcs[0] = boost::bind(&tgame_load::compare_name, this, _1, _2);
+	order_funcs[1] = boost::bind(&tgame_load::compare_name_rev, this, _1, _2);
+	list.set_column_order(0, order_funcs);
+	order_funcs[0] = boost::bind(&tgame_load::compare_date, this, _1, _2);
+	order_funcs[1] = boost::bind(&tgame_load::compare_date_rev, this, _1, _2);
+	list.set_column_order(1, order_funcs);
 }
 
 void tgame_load::list_item_clicked(twindow& window)

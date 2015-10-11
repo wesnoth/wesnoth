@@ -26,6 +26,7 @@ class vconfig;
 
 #include "config.hpp"
 #include "scripting/lua_types.hpp"
+#include "variable_info.hpp"
 
 namespace lua_common {
 	int intf_textdomain(lua_State *L);
@@ -116,6 +117,12 @@ vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = false);
 bool luaW_getglobal(lua_State *L, ...);
 
 bool luaW_toboolean(lua_State *L, int n);
+
+
+bool LuaW_pushvariable(lua_State *L, variable_access_const& v);
+
+bool LuaW_checkvariable(lua_State *L, variable_access_create& v, int n);
+
 
 #define return_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \

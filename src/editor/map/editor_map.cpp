@@ -44,7 +44,7 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 }
 
 editor_map::editor_map(const config& terrain_cfg)
-	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), gamemap::default_map_header)
+	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), "")
 	, selection_()
 {
 }
@@ -70,7 +70,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::t_terrain & filler)
-	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), gamemap::default_map_header + t_translation::write_game_map(
+	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), t_translation::write_game_map(
 		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
 {

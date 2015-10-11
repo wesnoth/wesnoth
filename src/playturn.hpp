@@ -59,9 +59,6 @@ public:
 
 	events::generic_event& host_transfer() { return host_transfer_; }
 
-
-	bool is_host() const { return is_host_; }
-	void set_host(bool val) { is_host_ = val; }
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 private:
 	static void change_controller(int side, const std::string& controller);
@@ -75,8 +72,6 @@ private:
 	events::generic_event host_transfer_;
 
 	playturn_network_adapter& network_reader_;
-
-	bool is_host_;
 };
 
 #endif

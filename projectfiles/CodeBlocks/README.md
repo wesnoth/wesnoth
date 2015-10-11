@@ -1,6 +1,6 @@
 ## Compiling Wesnoth on Windows using CodeBlocks
 
-(Last tested using Wesnoth 1.11.7+ on Code::Blocks 12.11.)
+(Last tested using Wesnoth 1.13.1+ on Code::Blocks 13.12)
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
@@ -9,19 +9,19 @@
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
-3.  Install tdm-gcc-4.5.2 from <http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/Previous/1.1006.0/>.
+3.  Install tdm-gcc-5.1.0 from <http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/>.
     Note that the project files in `wesnoth_root/projectfiles/CodeBlocks/` may
     contain a setting to compile with OpenMP support, so you should make sure
     that this option is enabled while installing the compiler (mark the
     checkbox for this when choosing components to install).
 
-    NOTE: The newest version of tdm-gcc will NOT work; you need the
-    aforementioned one. You must also make sure to download the 32-bit version
-    (tdm-gcc-4.5.2.exe), NOT the 64-bit version (tdm64-gcc-4.5.2.exe). Building
+    NOTE: Newer versions of tdm-gcc may not work. The above is the latest version 
+	confirmed to build. You must also make sure to download the 32-bit version
+    (tdm-gcc-5.1.0-3.exe), NOT the 64-bit version (tdm64-gcc-5.1.0-2.exe). Building
     a 64-bit Wesnoth executable on Windows is currently not supported and will
     fail with the SDK package provided in the next step.
 
-4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/unofficial/Windows%20Compile%20Stuff/>.
+4.  Download the latest `CodeBlocksWinSDK*.zip` package from <http://sourceforge.net/projects/wesnoth/files/SDK/>.
     The package contains the right version/build combination of source headers,
     build-time libraries (`*.a`) and run-time libraries (`*.dll`) needed to build
     and run Wesnoth. Older versions of the package may no longer be useful

@@ -32,7 +32,6 @@
 #include "dialogs.hpp"
 #include "unit_helper.hpp"
 #include "recall_list_manager.hpp"
-#include "replay.hpp" //user choice
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "formula_string_utils.hpp"
@@ -422,6 +421,24 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 				break;
 			}
 		}
+	} else if (name == "status" ) {
+		config cfg;
+		i->write(cfg);
+		resources::units->erase(loc);
+		config& statuses = cfg.child_or_add("status");
+		BOOST_FOREACH(std::string status, utils::split(value)) {
+			bool add = true;
+			if (status.length() >= 1 && status[0] == '-') {
+				add = false;
+				status = status.substr(1);
+			}
+			if (status.empty()) {
+				continue;
+			}
+			statuses[status] = add;
+		}
+		unit new_u(cfg, true);
+		resources::units->add(loc, new_u);
 	} else {
 		config cfg;
 		i->write(cfg);

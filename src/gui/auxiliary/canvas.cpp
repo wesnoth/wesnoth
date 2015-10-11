@@ -1301,6 +1301,7 @@ private:
  *     x & f_unsigned & 0 &            The x coordinate of the top left corner.
  *                                     $
  *     y & f_unsigned & 0 &            The y coordinate of the top left corner.
+ *                                     $
  *     w & f_unsigned & 0 &            The width of the text's bounding
  *                                     rectangle. $
  *     h & f_unsigned & 0 &            The height of the text's bounding

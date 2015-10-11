@@ -152,6 +152,7 @@ public:
 	game_item selected_game() { return games_[selected_]; }
 	void select_game(const std::string& id);
 	bool game_matches_filter(const game_item& i, const config& cfg);
+
 protected:
 	unsigned int row_height() const { return item_height_ + (2 * style_->get_thickness()); }
 private:
@@ -189,6 +190,7 @@ public:
 
 	virtual void process_event();
 
+	int current_turn;
 protected:
 	virtual void hide_children(bool hide=true);
 	virtual void layout_children(const SDL_Rect& rect);

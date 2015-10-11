@@ -27,18 +27,18 @@ configure_engine::configure_engine(saved_game& state) :
 	}
 
 	set_use_map_settings(use_map_settings_default());
+	if(state_.classification().get_tagname() == "scenario") {
+		BOOST_FOREACH(const config& scenario,
+			game_config_manager::get()->game_config().child_range(state_.classification().get_tagname())) {
 
-	BOOST_FOREACH(const config& scenario,
-		game_config_manager::get()->game_config().child_range(state_.classification().get_tagname())) {
+			if (scenario["allow_new_game"].to_bool(true) || game_config::debug) {
 
-		if (!scenario["campaign_id"].empty() &&
-			(scenario["allow_new_game"].to_bool(true) || game_config::debug)) {
+				const std::string& title = (!scenario["new_game_title"].empty()) ?
+					scenario["new_game_title"] : scenario["name"];
 
-			const std::string& title = (!scenario["new_game_title"].empty()) ?
-				scenario["new_game_title"] : scenario["name"];
-
-			entry_points_.push_back(&scenario);
-			entry_point_titles_.push_back(title);
+				entry_points_.push_back(&scenario);
+				entry_point_titles_.push_back(title);
+			}
 		}
 	}
 }

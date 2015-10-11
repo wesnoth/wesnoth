@@ -3,17 +3,16 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2010-03-15 16:32+0300\n"
-"Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
+"PO-Revision-Date: 2015-03-29 14:36+0300\n"
+"Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: lv_LV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Poedit-Language: Latvian\n"
-"X-Poedit-Country: LATVIA\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -36,6 +35,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"Standarta ēra daudzspēlētāja režīmā. Sastāv no sešām frakcijām un kopumā "
+"sabalansēts."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:76
@@ -49,11 +50,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Ēra ar stiprākām vienībām: līderi ir trešā līmeņa. Iespējams iesaukt "
+"vienības ar pirmo un otro līmeni. Sastāv no sešām frakcijām. Neskaitās "
+"nobalansēts."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:84
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Noklusēti + Kalifāts"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:85
@@ -65,13 +69,16 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Ēra ar papildus frakciju, esošajām sešām. Kalifāta vienības neizmanto "
+"maģiju, bet izmanto apkārtni un koordinē uzbrukumu saullēktā un norietā.\n"
+"\n"
+"Pie Ēras joprojām tiek strādāts, tāka nekautrējies paziņot par pamanītām "
+"problēmām."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Varoņu laikmets"
+msgstr "Varoņu laikmets + Kalifāts"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:96
@@ -83,11 +90,16 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Ēra ar papildus frakciju, esošajām sešām. Kalifāta vienības neizmanto "
+"maģiju, bet izmanto apkārtni un koordinē uzbrukumu saullēktā un norietā.\n"
+"\n"
+"Pie Ēras joprojām tiek strādāts, tāka nekautrējies paziņot par pamanītām "
+"problēmām."
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:65
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Puse %d</span>"
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:81
@@ -95,16 +107,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Puse %d</span>:  Ienākuma punkti = %d  "
+"Vienības punkti = %d  Zelts = %d"
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:81
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Summa: <b>%d</b>"
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:91
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>Pusei %d</span> ir priekšrocība."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -129,7 +143,7 @@ msgstr ""
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Kalifāts"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:15
@@ -148,7 +162,7 @@ msgstr ""
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
-msgstr "Knalganas Alianse"
+msgstr "Rūķi"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:14
@@ -168,7 +182,7 @@ msgstr ""
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
-msgstr "Lojālisti"
+msgstr "Cilvēki"
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:15
@@ -185,7 +199,7 @@ msgstr ""
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
-msgstr "Ziemeļnieki"
+msgstr "Orki"
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:17
@@ -205,7 +219,7 @@ msgstr ""
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
-msgstr "Dumpinieki"
+msgstr "Elfi"
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:15
@@ -247,7 +261,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
 msgid "2p — Aethermaw"
-msgstr ""
+msgstr "2s — Aterpūslis"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -265,6 +279,14 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Sen-senos laikos burve Sulla tika iesprostota Aterpūslī, kurā valda "
+"mistiska, haotiska enerģija. Pūslis viņai neļauj pamest šo vietu. Bet tomēr "
+"gadsimtiem ritot Sulla pakāpeniski pielāgoja savu spēku Aterpūšļa haosa "
+"straumēm, un sāka ietekmēt šo pasauli, tai skaitā ari simtiem citu pasauļu "
+"un laika periodu. Viņa eksperimentē ar šīm pasaules daļām, savienojot un "
+"atvienojot tās. Iespējams kādu dienu meisterībai augot Sulla spēs izrauties "
+"no Aterpūšļa. Bet kamēr tas notiks, viņa turpinās sevi izklaidēt, sarīkojot "
+"kaujas mirstīgajiem."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -297,7 +319,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:69
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:117
 msgid "teamname^North"
-msgstr ""
+msgstr "Ziemeļi"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:34
@@ -324,12 +346,12 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
 msgid "teamname^South"
-msgstr ""
+msgstr "Dienvidi"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr ""
+msgstr "Aterpūslis. Autors - Doc Paterson"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -349,17 +371,30 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"Varenā burve Sulla pārnesa jūsu armiju uz šo savādo vietu, un vēlās lai jūs "
+"viņu izklaidētu ar cīņu.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Piezīme:</span>\n"
+"\n"
+"<span color='green'>Cīnītāji nevar staigāt uz akmens blāķiem (pils šūnās), "
+"bet tajās vietās tos var iesaukt, un viņi var nokāpt no tiem.</span>\n"
+"\n"
+"<span color='green'>Ar ceturto gājienu varenā burve Sulla sāks savienot "
+"divus kaujas laukus. Sestā gājiena beigās viņa procesu pabeigs.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Aterpūslis noņurd."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr ""
+msgstr "2s — Arkanhlāva Citadele"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -383,6 +418,20 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Sen atpakaļ, daudzus gadsimtus pirms Haldrika laikiem, tālu prom no austrumu "
+"robežām, Lintaniras mežos bija liels un šausmīgs karš. Hronikas stāsta par "
+"varenu burvi, spožu taktiķi un mistiskās mākslas meisteru, kam tika dots "
+"vārds Bezbailīgais. Pēc kaujas Arkanhlāvā, Bezbailīgais un viņa armija tikās "
+"ar mežonīgas cilts dēmoniem, kas pazīstami kā Kah-ruuk. Ieskauts starp "
+"desmitiem tūkstošu Kah-ruuk cīnītāju, Bezbailīgais piesauca varenu zemes "
+"elementu (kas nezināma iemesla pēc - bija parādā Bezbailīgajam pakalpojumu). "
+"Zemes elements pacēla no pazemes dzīlēm dižakmeņus, un pēc dažiem mirkļiem, "
+"tapa sienas un milzīgs nocietinājums. Tūkstošiem Kah-ruuk krita, mēģinot "
+"veikt Arkanhlāva cietokšņa ieņemšanu. Tajā dienā Bezbailīgais un viņa vīri "
+"svinēja uzvaru! Pagāja vairāk nekā tūkstoš gadu, drosmīga karaliene Cinzauna "
+"vispirms izraidīja nedzīvos no Arkanhlāvas drupām, un gadiem ejot padarīja "
+"šo vietu par iespaidīgu cietoksni. Klīst baumas, ka dažas Bezbailīgā mantas "
+"joprojām paslēptas, kaut kur aiz granīta un obsidiana sienām."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -412,7 +461,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
 msgid "teamname^East"
-msgstr ""
+msgstr "Austrumi"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
@@ -443,12 +492,12 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
 msgid "teamname^West"
-msgstr ""
+msgstr "Rietumi"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 msgid "2p — Caves of the Basilisk"
-msgstr ""
+msgstr "2s — Bazilika alas"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
@@ -457,6 +506,8 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
+"Kādreiz šīs alas piederēja Čakso Neikam, leģendārajam Bazilikam. "
+"Pārakmeņotie upuri joprojām atgādina viņa iznīcinošo varu."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:82
@@ -482,11 +533,30 @@ msgid ""
 "His home to steal the Basilisk’s gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Pār tumšo debesi vēji pūta tik auksti,\n"
+"mēness bija virsotnē, nakts bija sirmumā,\n"
+"drosmīgs bija pīļtēviņš, jo uzdrošinājās pamest māju,\n"
+"lai zagtu Bazilika zeltu.\n"
+"Tumsā, debesis kā sakultas,\n"
+"Viņš neņem vērā to ko iemācījies,\n"
+"drosmīgs bet dumš, tik uz Bazilika alu,\n"
+"Viņš lidoja, un uguns viņā dega.\n"
+"\n"
+"Ak, uguns nedeg vairs par Baziliku,\n"
+"ar vienu varenu rūkoņu atdzesēti viņa kauli,\n"
+"un viņš pārvērtās par akmeni,\n"
+"tā Viņš tur stāv joprojām.\n"
+"\n"
+"Pār debesi vēji pūta tik auksti,\n"
+"gadi gāja, dienas laidās sirmumā,\n"
+"un tur stāv pīļtēviņš, kas uzdrošinājās pamest māju,\n"
+"lai zagtu Bazilika zeltu.\n"
+" (Flametrooper)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:104
 msgid "Xikkrisx"
-msgstr ""
+msgstr "Ksikriks"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:110
@@ -511,11 +581,27 @@ msgid ""
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
+"Ksikriks no Sirzas bija varens ķirzakveidīgais karotājs. Atsūtīts uz šo "
+"reģionu ar Russilossas vecaju lēmumu. Vecaji gatavojās cīņai ar cilvēkiem, "
+"un tam visam bija nepieciešama Oksirisa spēcīgā maģija. Viņu pēdējo reizi "
+"manija pārvietojamies uz Ruasskoli ezera pusi. Ksikriks pēc tam atrada "
+"pārakmeņoto Oksirisa ķermeni un blakām tam bija sarullēts tīstoklis, kas "
+"bija iekritis plaisā. Viņš atvēra tīstokli un pa vidu izlasija: «Pēc tam, "
+"kad viņš bija sasiets un izdzīsts no Augšējās Pasaules, sadusmotais Čakso "
+"gars meklēja iespēju atbrīvoties, un viņam izdevās izplatīt savu ietekmi "
+"dažos Augšējās pasaules reģionos, izmantojot 'akmens ceļus' kas stiepjas no "
+"virsotnes līdz nepieejamiem dziļumiem. šis naids izmainija cildeno ķirzaku "
+"olas. To forma un prāts iemiesoja visu Čakso naidu.» Samulsušais Ksikriks "
+"pievērsa uzmanību savam uzdevumam pie rokas. Pieļaudams iespēju, ka vecaji "
+"varētu izdomāt kā atgriest Oksirisu, viņš sāka ilgu un nogurdinošu uzdevumu "
+"- nogādāt akmens statuju Russilossā. Nopūlējies un nebūdams tālu no ezera, "
+"Ksikriks novietoja statuju nelielā alā, un likās pasnaust. Viņš tika "
+"iztrūcināts ar baisu troksni."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:113
 msgid "Oxsrrsk"
-msgstr ""
+msgstr "Oksiriss"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
@@ -540,6 +626,19 @@ msgid ""
 "ability to locate and bind this powerful creature into his service, Oxsrrsk "
 "set out on his journey..."
 msgstr ""
+"Oksiriss bija varens Surinas orākuls, kurš piedalijās reidā pret Ksraks "
+"klanu, un ieguva (no mirušā pareģa Hek-Rāka) interesantu tīstokli. Tīstokļa "
+"nosaukums bija «Neiks ar granīta skatienu», un tur bija stāsts par kādu "
+"radījumu vārdā Čakso Neiks, kas senajā Surinu mēlē nozīmē «Čakso vecākais "
+"dēls». Čakso bija kā pus-Dievs pazemes valstībā, elfu hronikās dēvēts kā "
+"varens pazemes dēmons. Pēc rakstiem Čakso bija nodomājis visu dzīvo virs "
+"zemes pārvērst akmenī. Viņu notvēra un sasēja ar stipru maģiju, bet "
+"gadsimtiem ejot, viņam trimdā (dziļi pazemē), vēstures liecībās sāka "
+"parādīties jauni radījumi, kas spēja miesu pārvērst akmenī. Bija laiki kad "
+"Baziliki (tā viņus dēvēja) postīja dzīvo pasauli. Vienu pēc otra, ar lielām "
+"pūlēm, Bazilikus piebeidza. Izņemot vienu - Neiks, jeb mūsdienu mēlē "
+"sauktais 'vecākais dēls'. Oksiriss būdams pārliecināts par savām spējām: "
+"atrast un pakļaukt šo radījumu.. devās ceļā..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
@@ -553,11 +652,19 @@ msgid ""
 "— Seven Stones — and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Slaids augums, talantīgas rokas\n"
+"— Septiņi akmeņi un vienpadsmit\n"
+"pamet viņa pretinieku sīka iespēja\n"
+"— Septiņi akmeņi un vienpadsmit\n"
+"Labs šāvējs pazīstams kā Dreiku-bans\n"
+"statujas šeit tika nopostīta\n"
+"— Septiņi akmeņi un viens elfs\n"
+"(Gauteamus)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:133
 msgid "Blum Duk"
-msgstr ""
+msgstr "Blumduks"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:135
@@ -577,11 +684,24 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blumduks bija slavens savā goblinu ciltī ar drosmi kalnos pieradināt "
+"mežonīgos vilkus. Viņa prasmes un līdera spējas deva iespēju gobliniem "
+"izdzīvot starp cilvēkiem un elfiem. Leģenda vēsta ka viņa briesmīgais vilks "
+"apkoda 50 cilvēkus un 100 elfus.\n"
+"Tad viņa cilts padzirdēja par kādu briesmoni, kam pretī nevar stāties "
+"neviens. Goblini vēlējās lai Blumduks nokauj šo radījumu, un atnes viņa "
+"atliekas uz svētkiem.\n"
+"Viņš ātri sasniedza to vietu kur mitinājās radījums. Kad Blumduks ieraudzīja "
+"Baziliku, viņu pārņēma bailes. Blumduks centā pagriest savu vilku lai "
+"laistos lapās, bet vilks pat nepakustējās. Kad briesmonis bij pavisam tuvu, "
+"Blumduka pēdējie vārdi bija: Sunīt, kas ta nu..? vai tev kājas no akmens "
+"veidotas?\n"
+"(Elvish Pillager)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:142
 msgid "Rah Ihn Mar"
-msgstr ""
+msgstr "Rah-in Mars"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:144
@@ -596,6 +716,11 @@ msgid ""
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
+"Rah-in Mars - čempions degošajos kalnos, veica visu ceļu līdz Ruasskoli "
+"ezeram vajājot elfu vadoni Terovlinu, starp elfiem pazīstamu kā Dreiku-bans. "
+"Klīda runas ka Terovlins uzveica Uguns Dreiku, kas postīja elfu ciematu, un "
+"pēc tam izplānoja pretuzbrukumu, kurā krita 37 Dreiki. Zinot ka šie Dreiki "
+"nebija vainīgi Rah-in Mars sāka medības uz Terovlinu."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:151
@@ -608,6 +733,11 @@ msgid ""
 "arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"Viņš te dzīvoja gadu pēc gada, ezera dzīlēs medīja zivis un vardes, kā ari "
+"jebkuru, kas iemaldijās viņa teritorijā. Ezers nebij no tiem lielajiem, bet "
+"tas bija viņa ezers. Tad ieradās Baziliks un ezeram uzradās jauns "
+"saimnieks.\n"
+"(Turin)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:159
@@ -615,6 +745,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"Neviens nezin ko te darīja šis zirneklis.\n"
+"(WinnerA)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
@@ -622,6 +754,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"Šī nelaimīgā stāsts vēl tiks pastāstīts.\n"
+"(WinnerB)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
@@ -634,11 +768,17 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Drosmīgs varonis no Vesnota zelta laikmeta. Šis lieliskais jātnieks un "
+"vadonis nokļuva šajā ļaunuma perēklī vajādams orkus. Pēkšņi pārsteigts no "
+"slēpņa viņš zaudēja daudz biedru, tomēr turpināja neatlaidīgi slaktēt orkus. "
+"Bet viltīgais Baziliks pārvērta viņu akmenī, tiklīdz tas bija pieveicis "
+"pēdējo orku.\n"
+"(Fynmiir)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:180
 msgid "Bramwythl"
-msgstr ""
+msgstr "Bramils"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:182
@@ -659,11 +799,19 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Bramils vienmēr bija mierīgs un lēnīgs vose. Viņam ļoti patika dzīvot "
+"vientulībā, sildoties saulītē, baudot skaidrās debesis.\n"
+"Lai nu kā, viņa kaimiņi padzirdēja ka šurp virzās nenormāls briesmonis, "
+"pietiekami spēcīgs, lai tiktu galā ar pāris vosēm bez īpašas piepūles. "
+"Steigā tie pameta šo vietu (cik nu voses var būt steidzīgi...) un lielajā "
+"kņadā aizmirsa par briesmām pabrīdināt savu biedru Bramilu.\n"
+"Bramilu pārvērta akmenī pat pirms viņš aptvēra, kas stāv viņa priekšā. Tā "
+"līdz šai dienai viņa akmens ķermenis sildās saulītē baudot skaidrās debesis."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
 msgid "Talael Ryndoc"
-msgstr ""
+msgstr "Talels Rindoks"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
@@ -671,11 +819,13 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
+"Ģenerālis Talels ieradās šeit uz dueli ar vecāko maršelu Ateku Korinu, bet "
+"viņi abi tā ari neatrada viens otru."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
 msgid "Aethec Corryn"
-msgstr ""
+msgstr "Ateks Korins"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:198
@@ -687,11 +837,17 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
+"Pēdējie maršela Ateka Korina vārdi bija: Talel! Es visur Tevi esmu "
+"izmeklējies, un tagad es došos atpakaļ uz Haldrika zāli, un tur visus "
+"informēšu, ka Tu esi gļēvulis, Tu neieradies uz dueli! Tavs kauns būs "
+"lielāks nekā ja tu būtu kritis no manas rokas!\n"
+"\n"
+"Iespējams viņam nevajadzēja to paziņot tik skaļi...."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
 msgid "Rilhon"
-msgstr ""
+msgstr "Rilons"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:206
@@ -708,6 +864,11 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Drosmīgs karotājs, labi pazīstams stap Nagām. Dzirdējis par dārgumiem kas "
+"atrodas šajās alās, un par šķēpu kas darināts no Čakso Neika zoba - Rilons "
+"ieradās šeit. Bet viņam par pārsteigumu Čakso Neiks bija pat ļoti dzīvs, un "
+"ar visiem zobiem mutē.\n"
+"(Paterson)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
@@ -728,11 +889,26 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Caur viļņiem un akmens kanāliem\n"
+"zils un balsts\n"
+"viņa grūstīja viļņus\n"
+"un mācīja zivis, kā runāt ar planētām\n"
+"sudrab-zaļš\n"
+"ar maģiju\n"
+"plūda no viņas gara uz brūnaļģem un gliemežiem\n"
+"sagriezusi savu asti un rokas\n"
+"viņa sūtja dziesmas divkājiem krastā\n"
+"un pēkšņi\n"
+"un pēkšņi iestājās pauze\n"
+"jau gadsimtiem\n"
+"viņa nevar pakustināt pat acis\n"
+"\n"
+"(MJQ)"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p — Cynsaun Battlefield"
-msgstr ""
+msgstr "2s — Cinzaunas kaujaslauks"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
@@ -740,11 +916,13 @@ msgid ""
 "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
 "the necromancers from these lands in 961 YW."
 msgstr ""
+"Cinzaunas province tika nosaukta par godu karalienei Cinzaunai I, kura "
+"patrieca nedzīvos no šīs vietas 961 gadā."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p — Dark Forecast (Survival)"
-msgstr ""
+msgstr "2s — Tumšā prognoze (Izdzīvošana)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
@@ -757,6 +935,13 @@ msgid ""
 "Note: You need to use the default map settings for the scenario to work "
 "right."
 msgstr ""
+"Tumšā prognoze ir izdzīvošanas scenārijs, vienam vai diviem spēlētājiem. "
+"Spēlējot divatā tā ir komandas spēle; pret dažādiem pretiniekiem (kas "
+"parādās uz kartes nejaušā kārtībā). Izcīnīt uzvaru var tikai atvairot visus "
+"pretinieka viļņus. Spēles laikā laikapstākļiem mainoties - mainīsies ari "
+"laukums.\n"
+"\n"
+"Piezīme: Scenārijs darbojas ja izmanto kartes noklusētos iestatījumus. "
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:371
@@ -765,6 +950,9 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"Kliedzieni un vaidi beidzot apklusa, tiklīdz tu izvilki savu asiņaino asmeni "
+"no dumpinieka kakla. Vairs neviens 'atkritums' neuzdrošinās buntoties. Tavā "
+"pārvaldījumā beidzot ir kārtība."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:703
@@ -772,48 +960,49 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"Mums tuvojas pēdējais vilnis! Ja mēs salauzīsim viņus - uzvara būs Mūsu!"
 
 #. [case]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:870
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "Sniegputenis"
 
 #. [case]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:880
 msgid "Snowfall"
-msgstr ""
+msgstr "Snieg"
 
 #. [case]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:896
 msgid "Heavy Rains"
-msgstr ""
+msgstr "Spēcīgi līst"
 
 #. [case]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:906
 msgid "Drought"
-msgstr ""
+msgstr "Sausums"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:915
 msgid "Clear Weather"
-msgstr ""
+msgstr "Skaidras debesis"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1042
 msgid "teamname^Revolt"
-msgstr ""
+msgstr "Ienaidnieks"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1061
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1078
 msgid "teamname^Human"
-msgstr ""
+msgstr "Spēlētājs"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1233
 msgid "Death of your leader"
-msgstr ""
+msgstr "Tava līdera nāve"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1234
@@ -821,27 +1010,28 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Tākā komandā ir tikai viens līderis, pretinieku uzbrukumi nebūs pilnā spēkā."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1237
 msgid "Death of both of your team’s leaders"
-msgstr ""
+msgstr "Mirst abi komanda līderi"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1238
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr ""
+msgstr "Tākā komandā ir divi līderi, pretinieku uzbrukumi būs pilnā spēkā."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1259
 msgid "Survive and defeat all enemy waves"
-msgstr ""
+msgstr "Izturi visus pretinieka uzbrukumus"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1279
 msgid "Dark Forecast — a random survival scenario"
-msgstr ""
+msgstr "Tumšā prognoze — nejaušs izdzīvošanas scenārijs"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1284
@@ -867,11 +1057,31 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
+"Tavs mērķis - izturēt pretinieka uzbrukumus, un beigās sakaut to līderus.\n"
+"\n"
+"Uzbrukuma viļņi veidojas nejauši, un būs savādāki katrā scenārija "
+"pārspēlēšanas reizē.\n"
+"\n"
+"Pretinieki parādās ziemeļos, dienvidos un rietumos - visbiežāk tie "
+"parādīsies rietumos. Pretinieku viļņi nāks gandrīz vienādos intervālos.\n"
+"\n"
+"\n"
+"Laikapstākļi mainīsies nejauši (mainīsies arī laukums).\n"
+"\n"
+"\n"
+"\n"
+"<b>Tumšo prognozi veidoja:</b>\n"
+"\n"
+"<span color='green'>jb</span>\n"
+"• kartes dizains, pretinieku grupas, scenārijs kopumā.\n"
+"\n"
+"<span color='green'>Rhuvaen</span>\n"
+"• WML realizācija"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1304
 msgid "So this is the accursed valley — a land ours for the taking."
-msgstr ""
+msgstr "Šī ir tā ieleja — tikai pastiep roku un būs kārtība."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1308
@@ -880,6 +1090,8 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
+"Vietējie saka ka te valda dīvaina savienība starp cilvēkiem un briesmoņiem, "
+"un mūsu klātbūtne te netiks akceptēta. Mums jābūt gataviem uz pārsteigumiem."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1312
@@ -887,20 +1099,21 @@ msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr ""
+"Tad uzmetīsim aci, kas te notiek... un parādīsim, kurš te ir saimnieks."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1349
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
-msgstr ""
+msgstr "ahh! Kā tas var būt? Barbari mani piebeidza! Dievi mani pameta..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1363
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
-msgstr ""
+msgstr "Ienaidnieku gaviles ir pēdējais ko Tu dzirdi, krītot nāves skavās..."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1385
@@ -909,11 +1122,13 @@ msgid ""
 "ghostly wisps drain away your will, you realize that your time in this land "
 "is over."
 msgstr ""
+"Ienaidnieks gavilē Tev tieši sejā, un Tu saproti ka tavas gaitas šajā saulē "
+"jau ir beigušās..."
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
-msgstr ""
+msgstr "2s — Onni midzenis"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
@@ -926,28 +1141,33 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
+"Pati neparastākā no alām bija - kādreiz pazīstamā: «Dēmonu Kambaris». tur "
+"bija Kah-Ruuk Onni citadele. Kah-Ruuk bija ļauna un viltīga dēmonu rase. "
+"Austrumos tie iedvesa cilvēkiem bailes gandrīz 400 gadu, kamēr pilnībā "
+"pazuda no Irdijas. Kopš tā laika daudzas ciltis plēsās par «Onni» ieleju, "
+"cerībā uzzināt un apgūt šīs vietas maģiskos noslēpumus."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
 msgid "2p — Elensefar Courtyard"
-msgstr ""
+msgstr "2s — Elenseras laukums"
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
 msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
-msgstr ""
+msgstr "Kādreiz šis dārzs piederēja Elenseras pilsētai."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
 msgid "Underground"
-msgstr ""
+msgstr "Pazeme"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 msgid "2p — Fallenstar Lake"
-msgstr ""
+msgstr "2s — Kritušās zvaigznes ezers"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
@@ -955,11 +1175,13 @@ msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
+"Sen-senos laikos, liela zvaigzne nokrita no debesīm, atstājot savu "
+"nospiedumu šajā apvidū."
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 msgid "2p — Hamlets"
-msgstr ""
+msgstr "2s — Ciemati"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
@@ -967,11 +1189,13 @@ msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
+"Patstāvīgās cīņas šo miermīlīgo zemes apgabalu pārveidoja par smalki "
+"nocietinātu kaujas lauku."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
-msgstr ""
+msgstr "2s — Ragu-Haizivs sala"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:28
@@ -979,6 +1203,7 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Lai izdzīvotu šajā dīvainajā salā - Tev jāsadarbojās ar vietējām nometnēm."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -989,22 +1214,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:352
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:488
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Mazulis Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:116
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Blāvais Rafs"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:169
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolburs"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:196
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelms Viskits"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:258
@@ -1012,27 +1237,27 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:718
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:730
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Pulksteņu meisters"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:323
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Brutālais Neki"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:366
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Droska Kalbets"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:429
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Traumētais Rzzz"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:470
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Soreks Mirstīgais"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:562
@@ -1042,47 +1267,47 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:812
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:948
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Mazulis Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:576
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gafs Pamuļķis"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:629
 msgid "Rublok"
-msgstr ""
+msgstr "Rublis"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:656
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulis mantu Juris"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:783
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Kamielis Neki"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:826
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Klaims Duhs"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:889
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Lēnais Trriks"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:930
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rufuss Mirstīgais"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p — Howling Ghost Badlands"
-msgstr ""
+msgstr "2s — Gaudojošo Spoku klajums"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -1090,50 +1315,52 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
+"Maz kas palicis no kādreiz bagātīgās kalnraču kolonijas, tagad šeit mitinās "
+"bandīti un zagļi."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p — Sablestone Delta"
-msgstr ""
+msgstr "2s — Tumšakmens Delta"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
-msgstr ""
+msgstr "Divas armijas karo uz šīs zemes."
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p — Silverhead Crossing"
-msgstr ""
+msgstr "2s — Sudraba šķerslis"
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
-msgstr ""
+msgstr "Spēlētājiem jāšķērso daudz, dažādi reģioni, lai tiktu pie uzvaras."
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:76
 msgid "evil eye"
-msgstr ""
+msgstr "ļaunā acs"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
 msgid "statue"
-msgstr ""
+msgstr "statuja"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:24
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Šī ir akmens skulptūra."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
 msgid "2p — Sulla’s Ruins"
-msgstr ""
+msgstr "2s — Sullas gruveši"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
@@ -1141,11 +1368,13 @@ msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
+"Sniegiem klāts un jūrai nopludināts rajons. no senās impērijas te palikuši "
+"tikai gruveši."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Sullas statuja"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
@@ -1154,51 +1383,53 @@ msgid ""
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
+"Akmens piemiņa varenajai Sullai, kura tika dēvēta arī kā Taisnīgā Sulla un "
+"Sulla Bargā."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Lundupa statuja"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Akmens piemiņa Sullas kalpam Lundupam."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Rinzena statuja"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:97
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Akmens piemiņa Sullas kalpam Rinzepam."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:99
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Tenzi statuja"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Akmens piemiņa Sullas kalpam Tenzi."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:103
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Lobana statuja"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:105
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Akmens piemiņa Sullas kalpam Lobanam."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
 msgid "2p — The Freelands"
-msgstr ""
+msgstr "2s — Brīvās zemes"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:8
@@ -1210,16 +1441,18 @@ msgid ""
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
 msgstr ""
+"Šajā austrumu zemē nav Karaļu un pavēlnieku, tā atrodas starp Kararota "
+"valdijumiem un savvaļas platībām."
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr ""
+msgstr "2s — Tūkstots Garisona kodieni"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr ""
+msgstr "Dīvaina vieta."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1289,24 +1522,24 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
 msgid "Statue"
-msgstr ""
+msgstr "Statuja"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p — Weldyn Channel"
-msgstr ""
+msgstr "2s — Valdina kanāls"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 msgid ""
 "This vital supply route has played a key role in many of Wesnoth’s greatest "
 "battles."
-msgstr ""
+msgstr "Vesnotas dižajās kaujās šis apgabals spēlēja apgādes ceļa lomu."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p — Alirok Marsh"
-msgstr ""
+msgstr "3s — Aliroka slīknājs"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_4p_Hamlets
@@ -1335,41 +1568,41 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
+msgstr " Ieteicams uzstādīt 2 zelta gabalus par ciemu."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr ""
+msgstr "Trīs spēlētāji cīnās ūdeņiem bagātā apvidū."
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p — Island of the Horatii"
-msgstr ""
+msgstr "3s — Haroti sala"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
-msgstr ""
+msgstr "Tas kurš pārvaldīs vidējo salu - iegūs lielākas izredzes uzvarēt."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p — Morituri"
-msgstr ""
+msgstr "3s — Moritori"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
-msgstr ""
+msgstr "Tikai viens spēlētājs izdzīvos šajā saspiestībā."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p — Blue Water Province"
-msgstr ""
+msgstr "4s — Zilo ūdeņu province"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
@@ -1379,6 +1612,8 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
+"Vēstures liecībās minēts - ka Zilo ūdeņu province tika nopostīta un atkal "
+"atjaunota 20 reizes."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -1391,7 +1626,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Morituri.cfg:73
 #: data/multiplayer/scenarios/8p_Morituri.cfg:84
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "Brigāde 1"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
@@ -1404,32 +1639,32 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Morituri.cfg:51
 #: data/multiplayer/scenarios/8p_Morituri.cfg:95
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "Brigāde 2"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p — Castle Hopping Isle"
-msgstr ""
+msgstr "4s — Peldošais cietoksnis"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
+msgstr "Cīņas laikā vari mainīt savu bāzes vietas kā zeķes."
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p — Clash"
-msgstr ""
+msgstr "4s — Sadursme"
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Cīņa 2 pret 2 ... .."
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p — Hamlets"
-msgstr ""
+msgstr "4s — Ciemati"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
@@ -1437,11 +1672,13 @@ msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
+"Patstāvīgās cīņas šo miermīlīgo zemes apgabalu pārveidoja par smalki "
+"nocietinātu kaujas lauku."
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p — Isar’s Cross"
-msgstr ""
+msgstr "4s — Isara krustojums"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
@@ -1451,6 +1688,8 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
+"Ļoti maza karte cīņai 2 pret 2. Tuvās pozīcijas prasīs regulāru karavīru "
+"maiņu. Komandas sadalītas: Ziemeļaustrumi pret Dienvidrietumi."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -1465,7 +1704,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:57
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:105
 msgid "teamname^Southwest"
-msgstr ""
+msgstr "Dienvidrietumi"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
@@ -1478,12 +1717,12 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
 msgid "teamname^Northeast"
-msgstr ""
+msgstr "Ziemeļaustrumi"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p — King of the Hill"
-msgstr ""
+msgstr "4s — Karalis kalnā"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
@@ -1491,6 +1730,8 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr ""
+" Ieteicams uzstādīt 2 zelta gabalus par ciemu, un starta kapitālā uzlikt 150 "
+"zelta."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
@@ -1498,6 +1739,8 @@ msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
+"Spēles režīmā 'katrs par sevi' ir ļoti izdevīgi kontrolēt kartes centrālo "
+"daļu."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -1510,7 +1753,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:81
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:93
 msgid "teamname^Southeast"
-msgstr ""
+msgstr "Dienvidaustrumi"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
@@ -1519,85 +1762,85 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
-msgstr ""
+msgstr "Ziemeļrietumi"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p — Loris River"
-msgstr ""
+msgstr "4s — Lorisa upe"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
-msgstr ""
+msgstr "Paredzēts vairāk 2 pret 2 režīmam."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p — Morituri"
-msgstr ""
+msgstr "4s — Moritori"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
+msgstr "Tikai viens spēlētājs izdzīvos šajā saspiestībā."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p — Paths of Daggers"
-msgstr ""
+msgstr "4s — Zobenu ceļš"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr ""
+msgstr " Ieteicams uzstādīt 2 zelta gabalus par ciemu."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
-msgstr ""
+msgstr "Kartē būs 28 ciemati, režīmā 2 pret 2 (Austrumi pret Rietumi)."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
 msgid "4p — Ruins of Terra-Dwelve"
-msgstr ""
+msgstr "4s — Teravelve drupas"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
 "Large multi-fronted 2vs2 set in a vast underground complex."
-msgstr ""
+msgstr "Liela karte, ar pazemes kompleksiem."
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p — Siege Castles"
-msgstr ""
+msgstr "4s — Aplemkums"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid ""
 "36X36 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
-msgstr ""
+msgstr "šajā kartē ir 45 ciemi."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p — Underworld"
-msgstr ""
+msgstr "4s — Pazemes pasaule"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
-msgstr ""
+msgstr "Dziļi pazemē notiek sava ikdienas rosība..."
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p — Xanthe Chaos"
-msgstr ""
+msgstr "4s — Hantes haoss"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
@@ -1605,11 +1848,12 @@ msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
+"Kaujas lauks ar papildus Torņiem, un iespēja riktīgi izplūkties centrā."
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p — Auction-X"
-msgstr ""
+msgstr "5s — Darbība-X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
@@ -1619,33 +1863,35 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
+"4 spēlētāji ir apkārt centrālajam spēlētājam. Domāts spēlēt kā: 4 pret 1 "
+"(izdzīvošanas stilā)."
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
 msgid "teamname^Center"
-msgstr ""
+msgstr "Centrs"
 
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p — Forest of Fear"
-msgstr ""
+msgstr "5s — Viltīgie meži"
 
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "Šajā pasaulē 5 armijas cīnās par vietu zem saules."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
 msgid "5p — The Wilderlands"
-msgstr ""
+msgstr "5s — Savvaļa"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
+msgstr " Ieteicams uzstādīt 1 zelta gabalus par ciemu."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
@@ -1653,11 +1899,13 @@ msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
+"Visapkārt valda savvaļas likumi. Karte piedāvā plašu spektru: alas, upes, "
+"mežus un smilšu klajumus."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p — Crusaders’ Field"
-msgstr ""
+msgstr "6s — Krustnešu laukums"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
@@ -1665,32 +1913,32 @@ msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
 "through the mountains, trees and rivers."
-msgstr ""
+msgstr "Šajā vietā jau atkal skan zobenu džinkstoņa..."
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p — Hexcake"
-msgstr ""
+msgstr "6s — Sešstūris"
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "Domāts '2 pret 2' vai '3 pret 3'"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:319
 msgid "6p — Team Survival"
-msgstr ""
+msgstr "6s — Izdzīvot komandā"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:321
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr ""
+msgstr "Uzdevums: izdzīvot šajā nežēlīgajā reidā."
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:334
 msgid "Attacker"
-msgstr ""
+msgstr "Ienaidnieks"
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:351
@@ -1700,62 +1948,64 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:403
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:416
 msgid "Defender"
-msgstr ""
+msgstr "Aizsardzība"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:434
 msgid "Survive all enemy attacks"
-msgstr ""
+msgstr "Izturēt visus ienaidnieka uzbrukumus"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:440
 msgid "Death of your team leaders"
-msgstr ""
+msgstr "Visu komandu līderu nāve"
 
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:445
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
+"Ieteikums: iegaumē ienaidnieka parādīšanās punktus, (katram tipam) tas "
+"noteikti palīdzēs."
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:451
 msgid "Turn 2: Loyalists"
-msgstr ""
+msgstr "Gājiens 2: Lojālisti"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:456
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "Gājiens 5: Kangari"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:461
 msgid "Turn 8: Rebels"
-msgstr ""
+msgstr "Gājiens 8: Dumpinieki"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:466
 msgid "Turn 11: Northerners"
-msgstr ""
+msgstr "Gājiens 11: Ziemeļnieki"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:471
 msgid "Turn 14: Drakes"
-msgstr ""
+msgstr "Gājiens 14: Dreiki"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:476
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "Gājiens 17: Nedzīvie"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:481
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Ļaunuma Tornis"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:588
 msgid "Faery"
-msgstr ""
+msgstr "Bailīgi"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:589
@@ -1764,11 +2014,14 @@ msgid ""
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Apsveicu ar uzvaru! Daudzi cilvēki atzina - ka šī karte nav caurejama. Es "
+"pat nezinu kā to izdarīt... tāpēc - būtu labi, ja tu atsūtītu šīs spēles "
+"ierakstu uz roze@roze.mine.nu"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:603
 msgid "Death"
-msgstr ""
+msgstr "Nāve"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:605
@@ -1776,11 +2029,13 @@ msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"Tu zaudēji! ..bet tu vari mēģināt vēlreiz un vēlreiz... ..un vēlreiz!! "
+"*Muahahaha*"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p — The Manzivan Traps"
-msgstr ""
+msgstr "6s — Maskētie slazdi"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
@@ -1789,12 +2044,12 @@ msgid ""
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
-msgstr ""
+msgstr "Domāts 3 pret 3 (Austrumi pret Rietumiem). Uz kartes 33 ciemati."
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
 msgid "6p — Volcano"
-msgstr ""
+msgstr "6s — Vulkāns"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -1802,11 +2057,12 @@ msgid ""
 "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
+"Cīņa par sen iznīcināto karaļvalsti (vulkāna izvirdumā). Uz kartes 36 ciemi."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p — Waterloo Sunset"
-msgstr ""
+msgstr "6s — Ūdenāja rītausma"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
@@ -1815,12 +2071,12 @@ msgid ""
 "avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
-msgstr ""
+msgstr "Ieteicams uzlikt sākuma kapitālu 150 zelta."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 msgid "8p — Mokena Prairie"
-msgstr ""
+msgstr "8s — Mokena Prērija"
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
@@ -1828,23 +2084,25 @@ msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
+"Episka kaujas scēna, kurā nepieciešama 2 komandu sadarbība (koordinēt "
+"uzbrukumu un aizsardzību)."
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p — Morituri"
-msgstr ""
+msgstr "8s — Moritori"
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
-msgstr ""
+msgstr "Tikai viens spēlētājs izdzīvos šajā saspiestībā."
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p — Merkwuerdigliebe"
-msgstr ""
+msgstr "9s — Merkurbele"
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
@@ -1854,13 +2112,15 @@ msgid ""
 "vs. southeast vs. southwest). There are very few villages per player, so 3 "
 "gold per villages is recommended."
 msgstr ""
+"Te ir samērā maz ciematu, tāpēc būtu ieteicams uzlikt 3 zelta gabalus par "
+"ciemu."
 
 #. [multiplayer]: id=multiplayer_Random_Map
 #. [scenario]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
-msgstr ""
+msgstr "Nejauša karte"
 
 #. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
@@ -1868,13 +2128,15 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
+"Nejauši ģenerētām kartēm nav sabalansēta apvida, bet tu vari mēģināt ģenerēt "
+"vēlreiz - kamēr esi apmierināts ar iznākumu."
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #. [scenario]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
-msgstr ""
+msgstr "Nejauša karte (Tuksnesis)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
@@ -1883,13 +2145,16 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Nejauši ģenerētām kartēm nav sabalansēta apvida, bet tu vari mēģināt ģenerēt "
+"vēlreiz - kamēr esi apmierināts ar iznākumu. (Šeit lielāko daļu kartes "
+"aizņems smiltis)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #. [scenario]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
-msgstr ""
+msgstr "Nejauša karte (Purvs)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
@@ -1898,13 +2163,16 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Nejauši ģenerētām kartēm nav sabalansēta apvida, bet tu vari mēģināt ģenerēt "
+"vēlreiz - kamēr esi apmierināts ar iznākumu. (Lielākā daļa kartes būs "
+"purvaina)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #. [scenario]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
-msgstr ""
+msgstr "Nejauša karte (Ziema)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
@@ -1913,11 +2181,14 @@ msgid ""
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"Nejauši ģenerētām kartēm nav sabalansēta apvida, bet tu vari mēģināt ģenerēt "
+"vēlreiz - kamēr esi apmierināts ar iznākumu. (Lielāko daļu kartes klās "
+"sniegs)"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Vesnotas izejas punkts: AI"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:10
@@ -1925,11 +2196,13 @@ msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Vesnotas izejas punkts izmanto --nogui --no-delay --multiplayer --"
+"scenario=wesbench_ai --exit-at-end."
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Vesnotas izejas punkts: Rullis"
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
@@ -1937,11 +2210,13 @@ msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Vesnotas izejas punkts izmanto --no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end."
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Vesnotas izejas punkts: Iet cauri plīvuram"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
@@ -1949,3 +2224,8 @@ msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Vesnotas izejas punkts izmanto --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Custom"
+#~ msgstr "pēc izvēles"

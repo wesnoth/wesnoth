@@ -115,7 +115,18 @@ lua_unit::~lua_unit()
 {
 }
 
-unit_ptr lua_unit::get()
+unit* lua_unit::get()
+{
+	if (ptr) return ptr.get();
+	if (c_ptr) return c_ptr;
+	if (side) {
+		return (*resources::teams)[side - 1].recall_list().find_if_matches_underlying_id(uid).get();
+	}
+	unit_map::unit_iterator ui = resources::units->find(uid);
+	if (!ui.valid()) return NULL;
+	return ui.get_shared_ptr().get(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
+}
+unit_ptr lua_unit::get_shared()
 {
 	if (ptr) return ptr;
 	if (side) {
@@ -170,18 +181,26 @@ bool lua_unit::put_map(const map_location &loc)
 	return true;
 }
 
-unit_ptr luaW_tounit(lua_State *L, int index, bool only_on_map)
+unit* luaW_tounit(lua_State *L, int index, bool only_on_map)
 {
-	if (!luaW_hasmetatable(L, index, getunitKey)) return unit_ptr();
+	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
-	if (only_on_map && !lu->on_map()) return unit_ptr();
+	if (only_on_map && !lu->on_map()) return NULL;
 	return lu->get();
 }
 
-unit_ptr luaW_checkunit(lua_State *L, int index, bool only_on_map)
+unit& luaW_checkunit(lua_State *L, int index, bool only_on_map)
 {
-	unit_ptr u = luaW_tounit(L, index, only_on_map);
+	unit* u = luaW_tounit(L, index, only_on_map);
 	if (!u) luaL_typerror(L, index, "unit");
-	return u;
+	return *u;
 }
 
+lua_unit* LuaW_pushlocalunit(lua_State *L, unit& u)
+{
+	lua_unit* res = new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
+	lua_pushlightuserdata(L, getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return res;
+}

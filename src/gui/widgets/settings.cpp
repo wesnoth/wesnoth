@@ -333,7 +333,7 @@ private:
  * @end{table}
  * @end{tag}{name="tip"}
  * @end{parent}{name="gui/"}
-*/
+ */
 const std::string& tgui_definition::read(const config& cfg)
 {
 	id = cfg["id"].str();

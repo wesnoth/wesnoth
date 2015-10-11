@@ -38,7 +38,7 @@ struct map_location;
 
 class unit_filter_abstract_impl {
 public:
-	virtual bool matches(const unit & u, const map_location & loc) const = 0;
+	virtual bool matches(const unit & u, const map_location & loc, const unit * u2 = NULL) const = 0;
 	virtual std::vector<const unit*> all_matches_on_map() const = 0;
 	virtual unit_const_ptr first_match_on_map() const = 0;
 	virtual ~unit_filter_abstract_impl() {}
@@ -68,6 +68,9 @@ public:
 	/// (Only use for units currently on the map; otherwise use the overload
 	/// that takes a location, possibly with a null location.)
 	bool matches(const unit & u) const;
+	
+	bool matches(const unit & u, const map_location & loc, const unit & u2) const;
+	bool matches(const unit & u, const unit & u2) const;
 
 	bool operator()(const unit & u, const map_location & loc) const {
 		return matches(u,loc);
@@ -75,6 +78,14 @@ public:
 
 	bool operator()(const unit & u) const {
 		return matches(u);
+	}
+
+	bool operator()(const unit & u, const map_location & loc, const unit & u2) const {
+		return matches(u,loc,u2);
+	}
+
+	bool operator()(const unit & u, const unit & u2) const {
+		return matches(u,u2);
 	}
 
 	std::vector<const unit *> all_matches_on_map() const {

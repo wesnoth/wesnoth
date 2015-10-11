@@ -1,3 +1,4 @@
+  Unicode true
   SetCompressor /SOLID lzma
 
   !define MULTIUSER_EXECUTIONLEVEL Highest
@@ -10,36 +11,32 @@
   !define MULTIUSER_INSTALLMODE_INSTDIR "Battle for Wesnoth %version"
   !include "MultiUser.nsh"
   !include "MUI2.nsh"
-  !include "nsDialogs.nsh"
   !include "LogicLib.nsh"
+  !include "WinVer.nsh"
 
 ;--------------------------------
 ;General
 
   ;Name and file
-  Name "Battle for Wesnoth"
+  Name $(LWesnoth)
   OutFile "wesnoth-%version-win32.exe"
 
 ;--------------------------------
 ;Variables
 
   Var StartMenuFolder
-  !define UserdataDir Wesnoth%version_major
-  Var UserdataFlags
-
-;Userdata page variables
-
-  Var Dialog
-  Var UserdataMyDocumentsRadioButton
-  Var UserdataMyDocumentsRadioButtonState
-  Var UserdataInstalldirRadioButton
-  Var UserdataInstalldirRadioButtonState
+  !define UserdataFlags "'--config-dir Wesnoth%version_major'"
 
 ;--------------------------------
 ;Interface Settings
 
   !define MUI_WELCOMEFINISHPAGE_BITMAP packaging\windows\WindowsInstallerGraphic.bmp
   !define MUI_ABORTWARNING
+  !define MUI_WELCOMEPAGE_TITLE_3LINES
+  !define MUI_FINISHPAGE_TITLE_3LINES
+  !define MUI_LICENSEPAGE_TEXT_BOTTOM " "
+  !define MUI_LICENSEPAGE_BUTTON $(^NextBtn)
+  !define MUI_COMPONENTSPAGE_NODESC
 
 ;--------------------------------
 ;Language Selection Dialog Settings
@@ -53,8 +50,7 @@
 ;Pages
 
   !insertmacro MUI_PAGE_WELCOME
-  !insertmacro MUI_PAGE_LICENSE "COPYING"
-  !insertmacro MUI_PAGE_COMPONENTS
+  !insertmacro MUI_PAGE_LICENSE $(MUILicense)
   !insertmacro MULTIUSER_PAGE_INSTALLMODE
   !insertmacro MUI_PAGE_DIRECTORY
 
@@ -63,86 +59,30 @@
   !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
   !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Battle for Wesnoth %version"
-  
-  !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 
-  Page custom UserdataPage UserdataPageLeave
+  !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 
   !insertmacro MUI_PAGE_INSTFILES
 
   !insertmacro MUI_PAGE_FINISH
-  
+
   !insertmacro MUI_UNPAGE_CONFIRM
+  !insertmacro MUI_UNPAGE_COMPONENTS
   !insertmacro MUI_UNPAGE_INSTFILES
 
 ;--------------------------------
 ;Languages
-
-  !insertmacro MUI_LANGUAGE "English" ;first language is the default language
-  !insertmacro MUI_LANGUAGE "French"
-  !insertmacro MUI_LANGUAGE "German"
-  !insertmacro MUI_LANGUAGE "Spanish"
-  !insertmacro MUI_LANGUAGE "SpanishInternational"
-  !insertmacro MUI_LANGUAGE "SimpChinese"
-  !insertmacro MUI_LANGUAGE "TradChinese"
-  !insertmacro MUI_LANGUAGE "Japanese"
-  !insertmacro MUI_LANGUAGE "Korean"
-  !insertmacro MUI_LANGUAGE "Italian"
-  !insertmacro MUI_LANGUAGE "Dutch"
-  !insertmacro MUI_LANGUAGE "Danish"
-  !insertmacro MUI_LANGUAGE "Swedish"
-  !insertmacro MUI_LANGUAGE "Norwegian"
-  !insertmacro MUI_LANGUAGE "NorwegianNynorsk"
-  !insertmacro MUI_LANGUAGE "Finnish"
-  !insertmacro MUI_LANGUAGE "Greek"
-  !insertmacro MUI_LANGUAGE "Russian"
-  !insertmacro MUI_LANGUAGE "Portuguese"
-  !insertmacro MUI_LANGUAGE "PortugueseBR"
-  !insertmacro MUI_LANGUAGE "Polish"
-  !insertmacro MUI_LANGUAGE "Ukrainian"
-  !insertmacro MUI_LANGUAGE "Czech"
-  !insertmacro MUI_LANGUAGE "Slovak"
-  !insertmacro MUI_LANGUAGE "Croatian"
-  !insertmacro MUI_LANGUAGE "Bulgarian"
-  !insertmacro MUI_LANGUAGE "Hungarian"
-  !insertmacro MUI_LANGUAGE "Thai"
-  !insertmacro MUI_LANGUAGE "Romanian"
-  !insertmacro MUI_LANGUAGE "Latvian"
-  !insertmacro MUI_LANGUAGE "Macedonian"
-  !insertmacro MUI_LANGUAGE "Estonian"
-  !insertmacro MUI_LANGUAGE "Turkish"
-  !insertmacro MUI_LANGUAGE "Lithuanian"
-  !insertmacro MUI_LANGUAGE "Slovenian"
-  !insertmacro MUI_LANGUAGE "Serbian"
-  !insertmacro MUI_LANGUAGE "SerbianLatin"
-  !insertmacro MUI_LANGUAGE "Arabic"
-  !insertmacro MUI_LANGUAGE "Farsi"
-  !insertmacro MUI_LANGUAGE "Hebrew"
-  !insertmacro MUI_LANGUAGE "Indonesian"
-  !insertmacro MUI_LANGUAGE "Mongolian"
-  !insertmacro MUI_LANGUAGE "Luxembourgish"
-  !insertmacro MUI_LANGUAGE "Albanian"
-  !insertmacro MUI_LANGUAGE "Breton"
-  !insertmacro MUI_LANGUAGE "Belarusian"
-  !insertmacro MUI_LANGUAGE "Icelandic"
-  !insertmacro MUI_LANGUAGE "Malay"
-  !insertmacro MUI_LANGUAGE "Bosnian"
-  !insertmacro MUI_LANGUAGE "Kurdish"
-  !insertmacro MUI_LANGUAGE "Irish"
-  !insertmacro MUI_LANGUAGE "Uzbek"
-  !insertmacro MUI_LANGUAGE "Galician"
-  !insertmacro MUI_LANGUAGE "Afrikaans"
-  !insertmacro MUI_LANGUAGE "Catalan"
+  !include "packaging\windows\translations.nsh"
 
 ;--------------------------------
 ;Reserve Files
-  
+
   ;If you are using solid compression, files that are required before
   ;the actual installation should be stored first in the data block,
   ;because this will make your installer start faster.
-  
+
   !insertmacro MUI_RESERVEFILE_LANGDLL
-  ReserveFile "${NSISDIR}\Plugins\*.dll"
+  ReserveFile /plugin "${NSISDIR}\Plugins\x86-unicode\*.dll"
 
 ;--------------------------------
 ;Installer Sections
@@ -158,17 +98,24 @@ Section "Battle for Wesnoth" BfWSection
 
   SetOutPath "$INSTDIR"
   File packaging\windows\wesnoth_editor-icon.ico
-  
+
+  File "/oname=README.txt" README.md
+  File "/oname=copyright.txt" copyright
+  File "/oname=COPYING.txt" COPYING
+  File "/oname=changelog.txt" changelog
+  File "/oname=players_changelog.txt" players_changelog
+  File cwesnoth.cmd
+
   %NSIS_INSTALL_FILES
 
   SetOutPath "$INSTDIR"
-  
+
   ;Store installation folder
   WriteRegStr SHCTX "Software\Battle for Wesnoth\%version" "" $INSTDIR
-  
+
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-  
+
   ;Add uninstall information
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayName" "Battle for Wesnoth %version" 
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayIcon" "$\"$INSTDIR\wesnoth.exe$\""
@@ -178,27 +125,8 @@ Section "Battle for Wesnoth" BfWSection
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayVersion" "%version"
   WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoModify" 1
   WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoRepair" 1
-  
-  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
-    
-  ${If} $UserdataMyDocumentsRadioButtonState == ${BST_CHECKED}
-    StrCpy $UserdataFlags "--config-dir ${UserdataDir}"
-  ${Else}
-    StrCpy $UserdataFlags ""
-  ${EndIf}
-    ;Create shortcuts
-    CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe" $UserdataFlags
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth (with console).lnk" "$INSTDIR\cwesnoth.cmd" $UserdataFlags "$INSTDIR\wesnoth_editor-icon.ico"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e $UserdataFlags" "$INSTDIR\wesnoth_editor-icon.ico"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk" "$INSTDIR\wesnothd.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.en.html"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk" "$INSTDIR\changelog.txt"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk" "$INSTDIR\players_changelog.txt"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\License.lnk" "$INSTDIR\COPYING.txt"
-  
-  !insertmacro MUI_STARTMENU_WRITE_END
+
+  Call StartMenuShortcuts
 
 SectionEnd
 
@@ -210,64 +138,82 @@ Function .onInit
   !insertmacro MULTIUSER_INIT
   !insertmacro MUI_LANGDLL_DISPLAY
 
-  StrCpy $UserdataMyDocumentsRadioButtonState ${BST_CHECKED}
+FunctionEnd
+
+Function StartMenuShortcuts
+
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+
+  ; Create shortcuts
+  CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
+  CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe" ${UserdataFlags}
+  CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth (with console).lnk" "$INSTDIR\cwesnoth.cmd" ${UserdataFlags} "$INSTDIR\wesnoth.exe"
+  CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.$(LCode).html"
+
+  ${If} ${IsNT}
+  ${AndIf} ${AtMostWin7}
+  ; Win7 or lower has collapsed start menu folders, activate additional shortcuts.
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e ${UserdataFlags}" "$INSTDIR\wesnoth_editor-icon.ico"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk" "$INSTDIR\changelog.txt"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk" "$INSTDIR\players_changelog.txt"
+  ${EndIf}
+
+  StrCpy $0 "$SMPROGRAMS\$StartMenuFolder\desktop.ini"
+  ; Create desktop.ini file (allows to display localized start menu entries)
+  ${IfNot} ${FileExists} $0
+    FileOpen $9 $0 w
+      FileWriteUTF16LE $9 ${U+FEFF} ; UTF16 BOM to enforce encoding
+    FileClose $9
+  ${EndIf}
+
+  ; Add translations to desktop.ini
+  ${If} $StartMenuFolder == "Battle for Wesnoth %version"
+    WriteIniStr $0 ".ShellClassInfo" "LocalizedResourceName" "$(LWesnoth) %version"
+  ${EndIf}
+  WriteIniStr $0 "LocalizedFileNames" "Battle for Wesnoth.lnk" "$(LWesnoth)"
+  WriteIniStr $0 "LocalizedFileNames" "Battle for Wesnoth (with console).lnk" "$(LWesnoth) (with console)"
+  WriteIniStr $0 "LocalizedFileNames" "Manual.lnk" "$(LManual)"
+  WriteIniStr $0 "LocalizedFileNames" "Map editor.lnk" "$(LEditor)"
+
+  SetFileAttributes "$SMPROGRAMS\$StartMenuFolder" SYSTEM
+  SetFileAttributes $0 HIDDEN|SYSTEM
+
+  !insertmacro MUI_STARTMENU_WRITE_END
 
 FunctionEnd
 
-Function UserdataPage
-
-        nsDialogs::Create /NOUNLOAD 1018
-        Pop $Dialog
-
-        ${If} $Dialog == error
-                Abort
-        ${EndIf}
-
-	${NSD_CreateRadioButton} 0 30u 100%% 10u "Store userdata (preferences, saved games..) in My Documents\My Games\${UserdataDir}"
-        Pop $UserdataMyDocumentsRadioButton
-
-	${NSD_CreateRadioButton} 0 50u 100%% 10u "Store userdata in the install location"
-        Pop $UserdataInstalldirRadioButton
-
-        ${NSD_SetState} $UserdataMyDocumentsRadioButton $UserdataMyDocumentsRadioButtonState
-	${NSD_SetState} $UserdataInstalldirRadioButton $UserdataInstalldirRadioButtonState
-
-	nsDialogs::Show
-
-FunctionEnd
-
-Function UserdataPageLeave
-
-        ${NSD_GetState} $UserdataMyDocumentsRadioButton $UserdataMyDocumentsRadioButtonState
-	${NSD_GetState} $UserdataInstalldirRadioButton $UserdataInstalldirRadioButtonState
-
-FunctionEnd
-
-;--------------------------------
-;Descriptions
-
-  ;USE A LANGUAGE STRING IF YOU WANT YOUR DESCRIPTIONS TO BE LANGAUGE SPECIFIC
-
-  ;Assign descriptions to sections
-  !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-    !insertmacro MUI_DESCRIPTION_TEXT ${BfWSection} "Battle for wesnoth executable and data."
-  !insertmacro MUI_FUNCTION_DESCRIPTION_END
-
- 
 ;--------------------------------
 ;Uninstaller Section
 
-Section "Uninstall"
+Section "un.$(LWesnoth)" un.BfW
+  SectionIn RO  # read only (mandatory)
 
   %NSIS_UNINSTALL_FILES
   Delete "$INSTDIR\wesnoth_editor-icon.ico"
   RMDir /r "$INSTDIR\manual"
+  Delete $INSTDIR\std*.txt
+  Delete $INSTDIR\README.txt
+  Delete $INSTDIR\copyright.txt
+  Delete $INSTDIR\COPYING.txt
+  Delete $INSTDIR\changelog.txt
+  Delete $INSTDIR\players_changelog.txt
+  Delete $INSTDIR\cwesnoth.cmd
 
   Delete "$INSTDIR\Uninstall.exe"
 
   RMDir "$INSTDIR"
 
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
+
+; If we created desktop.ini it'll start with a blank line
+  FileOpen $9 "$SMPROGRAMS\$StartMenuFolder\desktop.ini" r
+    FileReadUTF16LE $9 $1
+  FileClose $9
+  DetailPrint $1
+  ${If} $1 == "$\r$\n"
+    Delete "$SMPROGRAMS\$StartMenuFolder\desktop.ini"
+  ${EndIf}
 
   Delete "$SMPROGRAMS\$StartMenuFolder\License.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk"
@@ -286,6 +232,10 @@ Section "Uninstall"
 
 SectionEnd
 
+Section /o "un.$(LUserdata)" un.Userdata # optional
+  RMDir /r "$DOCUMENTS\My Games\Wesnoth%version_major"
+SectionEnd
+
 ;--------------------------------
 ;Uninstaller Functions
 
@@ -293,5 +243,5 @@ Function un.onInit
 
   !insertmacro MULTIUSER_UNINIT
   !insertmacro MUI_UNGETLANGUAGE
-  
+
 FunctionEnd

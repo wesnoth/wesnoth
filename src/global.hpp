@@ -74,4 +74,6 @@
 #error "Compilation with NDEBUG defined isn't supported, Wesnoth depends on asserts."
 #endif
 
+#define UNUSED(x)  ((void)(x))     /* to avoid warnings */
+
 #endif //GLOBAL_HPP_INCLUDED

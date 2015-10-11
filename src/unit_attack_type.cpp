@@ -175,11 +175,17 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const std::string& del_specials = cfg["remove_specials"];
 	const config &set_specials = cfg.child("set_specials");
 	const std::string& increase_damage = cfg["increase_damage"];
+	const std::string& set_damage = cfg["set_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
+	const std::string& set_attacks = cfg["set_attacks"];
 	const std::string& set_attack_weight = cfg["attack_weight"];
 	const std::string& set_defense_weight = cfg["defense_weight"];
 	const std::string& increase_accuracy = cfg["increase_accuracy"];
+	const std::string& set_accuracy = cfg["set_accuracy"];
 	const std::string& increase_parry = cfg["increase_parry"];
+	const std::string& set_parry = cfg["set_parry"];
+	const std::string& increase_movement = cfg["increase_movement_used"];
+	const std::string& set_movement = cfg["set_movement_used"];
 
 	std::stringstream desc;
 
@@ -222,6 +228,18 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		}
 	}
 
+	if(set_damage.empty() == false) {
+		damage_ = lexical_cast<int>(set_damage);
+		if (damage_ < 0) {
+			damage_ = 0;
+		}
+
+		if(description != NULL) {
+			add_and(desc);
+			desc << set_damage << " " << _n("damage","damage", damage_);
+		}
+	}
+
 	if(increase_damage.empty() == false) {
 		damage_ = utils::apply_modifier(damage_, increase_damage, 0);
 		if (damage_ < 0) {
@@ -236,6 +254,15 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		}
 	}
 
+	if(set_attacks.empty() == false) {
+		num_attacks_ = lexical_cast<int>(set_attacks);
+
+		if(description != NULL) {
+			add_and(desc);
+			desc << set_attacks << " " << _n("strike", "strikes", num_attacks_);
+		}
+	}
+
 	if(increase_attacks.empty() == false) {
 		num_attacks_ = utils::apply_modifier(num_attacks_, increase_attacks, 1);
 
@@ -244,6 +271,16 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			int inc_attacks = lexical_cast<int>(increase_attacks);
 			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
+		}
+	}
+
+	if(set_accuracy.empty() == false) {
+		accuracy_ = lexical_cast<int>(set_accuracy);
+
+		if(description != NULL) {
+			add_and(desc);
+			// xgettext:no-c-format
+			desc << accuracy_ << " " << _("% accuracy");
 		}
 	}
 
@@ -259,6 +296,15 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		}
 	}
 
+	if(set_parry.empty() == false) {
+		parry_ = lexical_cast<int>(set_parry);
+
+		if(description != NULL) {
+			add_and(desc);
+			desc << parry_ << _(" parry");
+		}
+	}
+
 	if(increase_parry.empty() == false) {
 		parry_ = utils::apply_modifier(parry_, increase_parry, 1);
 
@@ -267,6 +313,25 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			int inc_parry = lexical_cast<int>(increase_parry);
 			// xgettext:no-c-format
 			desc << utils::signed_value(inc_parry) << _("% parry");
+		}
+	}
+
+	if(set_movement.empty() == false) {
+		movement_used_ = lexical_cast<int>(set_movement);
+
+		if(description != NULL) {
+			add_and(desc);
+			desc << movement_used_ << " " << _n("movement point","movement points",movement_used_);
+		}
+	}
+
+	if(increase_movement.empty() == false) {
+		movement_used_ = utils::apply_modifier(movement_used_, increase_movement, 1);
+
+		if(description != NULL) {
+			add_and(desc);
+			int inc_move = lexical_cast<int>(increase_movement);
+			desc << increase_movement << " " << _n("movement point","movement points",inc_move);
 		}
 	}
 

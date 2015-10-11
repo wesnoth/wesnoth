@@ -14,6 +14,7 @@
 
 #include "game_state.hpp"
 
+#include "actions/undo.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "game_events/manager.hpp"
@@ -44,17 +45,53 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_state::game_state(const config & level, const tdata_cache & tdata) :
-	level_(level),
-	gamedata_(level_),
-	board_(tdata,level_),
-	tod_manager_(level_),
+static void no_op() {}
+
+game_state::game_state(const config & level, play_controller &, const tdata_cache & tdata) :
+	gamedata_(level),
+	board_(tdata, level),
+	tod_manager_(level),
 	pathfind_manager_(),
 	reports_(new reports()),
 	lua_kernel_(),
 	events_manager_(),
+	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
+	player_number_(level["playing_team"].to_int() + 1),
+	init_side_done_(level["init_side_done"].to_bool(false)),
+	start_event_fired_(!level["playing_team"].empty()),
+	server_request_number_(level["server_request_number"].to_int()),
 	first_human_team_(-1)
-{}
+{
+	//init(pc.ticks(), pc, level);
+}
+game_state::game_state(const config & level, play_controller & pc, game_board& board) :
+	gamedata_(level),
+	board_(board),
+	tod_manager_(level),
+	pathfind_manager_(new pathfind::manager(level)),
+	reports_(new reports()),
+	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
+	events_manager_(),
+	player_number_(level["playing_team"].to_int() + 1),
+	end_level_data_(),
+	init_side_done_(level["init_side_done"].to_bool(false)),
+	first_human_team_(-1)
+{
+	if(const config& endlevel_cfg = level.child("end_level_data")) {
+		end_level_data el_data;
+		el_data.read(endlevel_cfg);
+		el_data.transient.carryover_report = false;
+		end_level_data_ = el_data;
+	}
+
+	//init(pc.ticks(), pc, level);
+
+	//game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
+
+	//events_manager_.reset(new game_events::manager(level, game_events_resources_));
+
+}
+
 
 game_state::~game_state() {}
 
@@ -94,14 +131,14 @@ struct placing_info {
 static bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
 
 
-void game_state::place_sides_in_preferred_locations()
+void game_state::place_sides_in_preferred_locations(const config& level)
 {
 	std::vector<placing_info> placings;
 
 	int num_pos = board_.map().num_valid_starting_positions();
 
 	int side_num = 1;
-	BOOST_FOREACH(const config &side, level_.child_range("side"))
+	BOOST_FOREACH(const config &side, level.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
 			const map_location& pos = board_.map().starting_position(p);
@@ -115,7 +152,7 @@ void game_state::place_sides_in_preferred_locations()
 		++side_num;
 	}
 
-	std::sort(placings.begin(),placings.end());
+	std::stable_sort(placings.begin(),placings.end());
 	std::set<int> placed;
 	std::set<map_location> positions_taken;
 
@@ -129,29 +166,27 @@ void game_state::place_sides_in_preferred_locations()
 	}
 }
 
-static void no_op() {}
-
-void game_state::init(const int ticks, play_controller & pc)
+void game_state::init(const config& level, play_controller & pc)
 {
-	if (level_["modify_placing"].to_bool()) {
+	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
-		place_sides_in_preferred_locations();
+		place_sides_in_preferred_locations(level);
 	}
 
-	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - ticks) << std::endl;
-	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
+	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
+	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks) << std::endl;
-	loadscreen::start_stage("init teams");
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
+	//loadscreen::start_stage("init teams");
 
-	board_.teams_.resize(level_.child_count("side"));
+	board_.teams_.resize(level.child_count("side"));
 
 	std::vector<team_builder_ptr> team_builders;
 
 	int team_num = 0;
-	BOOST_FOREACH(const config &side, level_.child_range("side"))
+	BOOST_FOREACH(const config &side, level.child_range("side"))
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
@@ -160,7 +195,7 @@ void game_state::init(const int ticks, play_controller & pc)
 			}
 		}
 		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams_, level_, *board_.map_);
+			board_.teams_, level, board_);
 		++team_num;
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -175,15 +210,24 @@ void game_state::init(const int ticks, play_controller & pc)
 		{
 			build_team_stage_two(tb_ptr);
 		}
+		for(size_t i = 0; i < board_.teams_.size(); i++) {
+			// Labels from players in your ignore list default to hidden
+			if(preferences::is_ignored(board_.teams_[i].current_player())) {
+				std::string label_cat = "side:" + str_cast(i + 1);
+				board_.hidden_label_categories_ref().push_back(label_cat);
+			}
+		}
 	}
+	
+	pathfind_manager_.reset(new pathfind::manager(level));
 
-	pathfind_manager_.reset(new pathfind::manager(level_));
-
-	lua_kernel_.reset(new game_lua_kernel(level_, NULL, *this, pc, *reports_));
+	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));
 
 	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
 
-	events_manager_.reset(new game_events::manager(level_, game_events_resources_));
+	events_manager_.reset(new game_events::manager(level, game_events_resources_));
+
+
 }
 
 void game_state::bind(wb::manager * whiteboard, game_display * gd)
@@ -204,6 +248,11 @@ void game_state::set_game_display(game_display * gd)
 
 void game_state::write(config& cfg) const
 {
+	cfg["init_side_done"] = init_side_done_;
+	if(gamedata_.phase() == game_data::PLAY) {
+		cfg["playing_team"] = player_number_ - 1;
+	}
+	cfg["server_request_number"] = server_request_number_;
 	//Call the lua save_game functions
 	lua_kernel_->save_game(cfg);
 
@@ -221,6 +270,13 @@ void game_state::write(config& cfg) const
 
 	//Write the game data, including wml vars
 	gamedata_.write_snapshot(cfg);
+
+	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
+	undo_stack_->write(cfg.add_child("undo_stack"));
+
+	if(end_level_data_.get_ptr() != NULL) {
+		end_level_data_->write(cfg.add_child("end_level_data"));
+	}
 }
 
 namespace {

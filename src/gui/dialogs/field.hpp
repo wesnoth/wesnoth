@@ -501,6 +501,18 @@ void tfield<T, W, CT>::save(twindow& window, const bool must_be_active)
 }
 
 template <>
+inline void tfield<bool, tselectable_>::save(
+		twindow& window, const bool must_be_active)
+{
+	const tselectable_* selectable
+			= find_widget<const tselectable_>(&window, id(), must_be_active, false);
+
+	if(selectable) {
+		value_ = selectable->get_value_bool();
+	}
+}
+
+template <>
 inline void tfield<std::string, tcontrol, const std::string&>::save(
 		twindow& window, const bool must_be_active)
 {

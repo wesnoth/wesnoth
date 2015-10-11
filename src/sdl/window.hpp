@@ -38,10 +38,6 @@ struct SDL_Renderer;
 namespace sdl
 {
 
-#if TTEXTURE
-class ttexture;
-#endif
-
 /**
  * The wrapper class for the @ref SDL_Window class.
  *

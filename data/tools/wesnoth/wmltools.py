@@ -3,8 +3,12 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function, unicode_literals, division
+from future_builtins import filter, map, zip
+input = raw_input
+range = xrange
 
+from functools import total_ordering
 import collections, codecs
 import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
@@ -100,17 +104,17 @@ class Forest:
         self.forest = []
         self.dirpath = dirpath
         roots = ["campaigns", "add-ons"]
-        for dir in dirpath:
+        for directory in dirpath:
             subtree = []
             rooted = False
-            if os.path.isdir(dir):	# So we skip .cfgs in a UMC mirror
-                oldmain = os.path.join(os.path.dirname(dir), os.path.basename(dir) + '.cfg')
+            if os.path.isdir(directory): # So we skip .cfgs in a UMC mirror
+                oldmain = os.path.join(os.path.dirname(directory), os.path.basename(directory) + '.cfg')
                 if os.path.isfile(oldmain):
                     subtree.append(oldmain)
-                base = os.path.basename(os.path.dirname(os.path.abspath(dir)))
+                base = os.path.basename(os.path.dirname(os.path.abspath(directory)))
                 if base in roots or base == "core":
                     rooted = True
-                for root, dirs, files in os.walk(dir):
+                for root, dirs, files in os.walk(directory):
                     dirs.sort()
                     dirlist = [x for x in dirs]
                     # Split out individual campaigns/add-ons into their own subtrees
@@ -136,7 +140,7 @@ class Forest:
                                 elif os.path.isfile(os.path.join(root, subdir, 'info.cfg')):
                                     if os.path.isfile(os.path.join(root, subdir, 'COPYING.txt')):
                                         count += 1
-                            if count >= (stop / 2):
+                            if count >= (stop // 2):
                                 roots.append(os.path.basename(root))
                                 for subdir in dirlist:
                                     if subdir + '.cfg' in files:
@@ -145,7 +149,9 @@ class Forest:
                                     dirpath.append(os.path.join(root, subdir))
                     subtree.extend([os.path.normpath(os.path.join(root, x)) for x in files])
             # Always look at _main.cfg first
-            subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
+            maincfgs = [elem for elem in subtree if elem.endswith("_main.cfg")]
+            rest = [elem for elem in subtree if not elem.endswith("_main.cfg")]
+            subtree = sorted(maincfgs) + sorted(rest)
             self.forest.append(subtree)
         for i in self.forest:
             # Ignore version-control subdirectories and Emacs tempfiles
@@ -177,9 +183,9 @@ class Forest:
         return allfiles
     def generator(self):
         "Return a generator that walks through all files."
-        for (dir, tree) in zip(self.dirpath, self.forest):
+        for (directory, tree) in zip(self.dirpath, self.forest):
             for filename in tree:
-                yield (dir, filename)
+                yield (directory, filename)
 
 def iswml(filename):
     "Is the specified filename WML?"
@@ -193,8 +199,12 @@ def issave(filename):
         with gzip.open(filename) as content:
             firstline = content.readline()
     else:
-        with codecs.open(filename, "r", "utf8") as content:
-            firstline = content.readline()
+        try:
+            with codecs.open(filename, "r", "utf8") as content:
+                firstline = content.readline()
+        except UnicodeDecodeError:
+            # our saves are in UTF-8, so this file shouldn't be one
+            return False
     return firstline.startswith("label=")
 
 def isresource(filename):
@@ -207,7 +217,7 @@ def parse_macroref(start, line):
     instring = False
     args = []
     arg = ""
-    for i in xrange(start, len(line)):
+    for i in range(start, len(line)):
         if instring:
             if line[i] == '"':
                 instring = False
@@ -314,7 +324,7 @@ def actualtype(a):
     elif a in ("lawful", "neutral", "chaotic", "liminal"):
         atype = "alignment"
     elif a.startswith("{") or a.endswith("}") or a.startswith("$"):
-        atype = None	# Can't tell -- it's a macro expansion
+        atype = None # Can't tell -- it's a macro expansion
     elif re.match(image_reference, a) or a == "unit_image":
         atype = "image"
     elif re.match(r"(\*|[A-Z][a-z]+)\^([A-Z][a-z\\|/]+\Z)?", a):
@@ -375,6 +385,10 @@ def argmatch(formals, actuals):
             return False
     return True
 
+# the total_ordering decorator from functools allows to define only two comparison
+# methods, and Python generates the remaining methods
+# it comes with a speed penalty, but the alternative is defining six methods by hand...
+@total_ordering
 class Reference:
     "Describes a location by file and line."
     def __init__(self, namespace, filename, lineno=None, docstring=None, args=None):
@@ -394,16 +408,18 @@ class Reference:
         for (file, refs) in self.references.items():
             print("    %s: %s" % (file, repr([x[0] for x in refs])[1:-1]))
 
-    def __cmp__(self, other):
-        "Compare two documentation objects for place in the sort order."
+    def __eq__(self, other):
+        return self.filename == other.filename and self.lineno == other.lineno
+
+    def __gt__(self, other):
         # Major sort by file, minor by line number.  This presumes that the
         # files correspond to coherent topics and gives us control of the
         # sequence.
-        byfile = cmp(self.filename, other.filename)
-        if byfile:
-            return byfile
+        if self.filename == other.filename:
+            return self.lineno > other.lineno
         else:
-            return cmp(self.lineno, other.lineno)
+            return self.filename > other.filename
+
     def mismatches(self):
         copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args)
         copy.undef = self.undef
@@ -529,7 +545,7 @@ class CrossRef:
                         name = tokens[1]
                         here = Reference(namespace, filename, n+1, line, args=tokens[2:])
                         here.hash = hashlib.md5()
-                        here.docstring = line.lstrip()[8:]	# Strip off #define_
+                        here.docstring = line.lstrip()[8:] # Strip off #define_
                         state = "macro_header"
                     continue
                 elif state != 'outside' and line.strip().endswith("#enddef"):
@@ -776,7 +792,7 @@ class CrossRef:
     def refcount(self, name):
         "Return a reference count for the specified resource."
         try:
-            return len(self.fileref[name].references.keys())
+            return len(self.fileref[name].references)
         except KeyError:
             return 0
 
@@ -847,7 +863,7 @@ class Translation(dict):
         if self.isocode == "C":
             return True
         else:
-            return key in self.gettext.keys()
+            return key in self.gettext
 
 class Translations:
     "Wraps around Translation to support multiple languages and domains."
@@ -935,9 +951,9 @@ def vcunmove(src, dst):
     "Revert the result of a previous move (before commit)."
     (path, base) = os.path.split(src)
     if os.path.exists(os.path.join(path, ".git")):
-        return "git checkout %s" % dst	# Revert the add at the destination
-        return "git rm " + dst		# Remove the moved copy
-        return "git checkout %s" % src	# Revert the deletion
+        return "git checkout %s" % dst # Revert the add at the destination
+        return "git rm " + dst # Remove the moved copy
+        return "git checkout %s" % src # Revert the deletion
     else:
         return "echo 'cannot unmove %s from %s, .git is missing'" % (src, dst)
 
@@ -953,7 +969,7 @@ def vcundelete(src):
     "Revert the result of a previous delete (before commit)."
     (path, base) = os.path.split(src)
     if os.path.exists(os.path.join(path, ".git")):
-        return "git checkout %s" % src	# Revert the deletion
+        return "git checkout %s" % src # Revert the deletion
     else:
         return "echo 'cannot undelete %s, .git is missing'" % src
 

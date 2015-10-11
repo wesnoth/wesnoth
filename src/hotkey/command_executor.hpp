@@ -67,6 +67,7 @@ public:
 	virtual void start_network() {}
 	virtual void label_terrain(bool /*team_only*/) {}
 	virtual void clear_labels() {}
+	virtual void label_settings() {}
 	virtual void show_enemy_moves(bool /*ignore_units*/) {}
 	virtual void toggle_shroud_updates() {}
 	virtual void update_shroud_now() {}
@@ -89,6 +90,7 @@ public:
 	virtual void replay_show_each() {}
 	virtual void replay_show_team1() {}
 	virtual void replay_skip_animation() {}
+	virtual void replay_exit() {}
 	virtual void whiteboard_toggle() {}
 	virtual void whiteboard_execute_action() {}
 	virtual void whiteboard_execute_all_actions() {}

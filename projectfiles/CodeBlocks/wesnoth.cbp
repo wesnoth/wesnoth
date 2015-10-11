@@ -36,9 +36,7 @@
 			<Add option="-fopenmp" />
 			<Add option="-Wno-strict-aliasing" />
 			<Add option="-Wno-missing-braces" />
-			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DHAVE_LIBPNG" />
-			<Add option="-DUSE_GZIP" />
 			<Add option="-D_WIN32_WINDOWS" />
 			<Add option="-D_WIN32_WINNT=0x0501" />
 			<Add option="-DDWINVER=0x0501" />
@@ -107,6 +105,8 @@
 		<Unit filename="../../src/actions/undo_recruit_action.hpp" />
 		<Unit filename="../../src/actions/undo_update_shroud_action.cpp" />
 		<Unit filename="../../src/actions/undo_update_shroud_action.hpp" />
+		<Unit filename="../../src/actions/unit_creator.cpp" />
+		<Unit filename="../../src/actions/unit_creator.hpp" />
 		<Unit filename="../../src/actions/vision.cpp" />
 		<Unit filename="../../src/actions/vision.hpp" />
 		<Unit filename="../../src/addon/client.cpp" />
@@ -335,7 +335,6 @@
 		<Unit filename="../../src/filesystem.hpp" />
 		<Unit filename="../../src/filesystem_boost.cpp" />
 		<Unit filename="../../src/filesystem_common.cpp" />
-		<Unit filename="../../src/filesystem_win32.ii" />
 		<Unit filename="../../src/floating_label.cpp" />
 		<Unit filename="../../src/floating_label.hpp" />
 		<Unit filename="../../src/floating_point_emulation.hpp" />
@@ -668,6 +667,8 @@
 		<Unit filename="../../src/gui/dialogs/gamestate_inspector.cpp" />
 		<Unit filename="../../src/gui/dialogs/gamestate_inspector.hpp" />
 		<Unit filename="../../src/gui/dialogs/helper.hpp" />
+		<Unit filename="../../src/gui/dialogs/label_settings.cpp" />
+		<Unit filename="../../src/gui/dialogs/label_settings.hpp" />
 		<Unit filename="../../src/gui/dialogs/language_selection.cpp" />
 		<Unit filename="../../src/gui/dialogs/language_selection.hpp" />
 		<Unit filename="../../src/gui/dialogs/lobby/lobby_data.cpp" />
@@ -710,6 +711,8 @@
 		<Unit filename="../../src/gui/dialogs/screenshot_notification.hpp" />
 		<Unit filename="../../src/gui/dialogs/simple_item_selector.cpp" />
 		<Unit filename="../../src/gui/dialogs/simple_item_selector.hpp" />
+		<Unit filename="../../src/gui/dialogs/synced_choice_wait.cpp" />
+		<Unit filename="../../src/gui/dialogs/synced_choice_wait.hpp" />
 		<Unit filename="../../src/gui/dialogs/theme_list.cpp" />
 		<Unit filename="../../src/gui/dialogs/theme_list.hpp" />
 		<Unit filename="../../src/gui/dialogs/tip.cpp" />
@@ -922,6 +925,8 @@
 		<Unit filename="../../src/movetype.hpp" />
 		<Unit filename="../../src/mp_game_settings.cpp" />
 		<Unit filename="../../src/mp_game_settings.hpp" />
+		<Unit filename="../../src/mp_replay_controller.cpp" />
+		<Unit filename="../../src/mp_replay_controller.hpp" />
 		<Unit filename="../../src/mp_ui_alerts.cpp" />
 		<Unit filename="../../src/mp_ui_alerts.hpp" />
 		<Unit filename="../../src/mt_rng.cpp" />
@@ -964,6 +969,8 @@
 		<Unit filename="../../src/preferences.hpp" />
 		<Unit filename="../../src/preferences_display.cpp" />
 		<Unit filename="../../src/preferences_display.hpp" />
+		<Unit filename="../../src/quit_confirmation.cpp" />
+		<Unit filename="../../src/quit_confirmation.hpp" />
 		<Unit filename="../../src/race.cpp" />
 		<Unit filename="../../src/race.hpp" />
 		<Unit filename="../../src/random_new.cpp" />
@@ -1097,6 +1104,8 @@
 		<Unit filename="../../src/synced_commands.hpp" />
 		<Unit filename="../../src/synced_context.cpp" />
 		<Unit filename="../../src/synced_context.hpp" />
+		<Unit filename="../../src/synced_user_choice.cpp" />
+		<Unit filename="../../src/synced_user_choice.hpp" />
 		<Unit filename="../../src/syncmp_handler.cpp" />
 		<Unit filename="../../src/syncmp_handler.hpp" />
 		<Unit filename="../../src/team.cpp" />

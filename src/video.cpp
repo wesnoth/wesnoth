@@ -95,7 +95,7 @@ struct event {
 	bool in;
 	event(const SDL_Rect& rect, bool i) : x(i ? rect.x : rect.x + rect.w), y(rect.y), w(rect.w), h(rect.h), in(i) { }
 };
-#ifndef SDL_GPU
+#if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
 bool operator<(const event& a, const event& b) {
 	if (a.x != b.x) return a.x < b.x;
 	if (a.in != b.in) return a.in;
@@ -120,7 +120,7 @@ std::vector<SDL_Rect> update_rects;
 std::vector<event> events;
 std::map<int, segment> segments;
 
-#ifndef SDL_GPU
+#if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
 static void calc_rects()
 {
 	events.clear();
@@ -218,8 +218,7 @@ static void calc_rects()
 
 bool update_all = false;
 }
-
-#ifndef SDL_GPU
+#if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
 static void clear_updates()
 {
 	update_all = false;
@@ -231,6 +230,7 @@ namespace {
 
 surface frameBuffer = NULL;
 bool fake_interactive = false;
+
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 sdl::twindow* window = NULL;
 #endif
@@ -262,6 +262,8 @@ surface display_format_alpha(surface surf)
 	else if(frameBuffer != NULL)
 		return SDL_ConvertSurface(surf,frameBuffer->format,0);
 	else
+#else
+		UNUSED(surf);
 #endif
 		return NULL;
 }
@@ -506,6 +508,11 @@ int CVideo::bppForMode( int x, int y, int flags)
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal )
 {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+	UNUSED(x);
+	UNUSED(y);
+	UNUSED(flags);
+	UNUSED(current_screen_optimal);
+
 	return bits_per_pixel;
 #else
 	int bpp = SDL_VideoModeOK( x, y, bits_per_pixel, get_flags(flags) );
@@ -536,7 +543,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	fullScreen = (flags & FULL_SCREEN) != 0;
 
 	if(!window) {
-		window = new sdl::twindow("", 0, 0, x, y, flags, SDL_RENDERER_SOFTWARE);
+		// SDL_WINDOWPOS_UNDEFINED allows SDL to centre the window in the display instead of using a fixed initial position.
+		// Note that x and y in this particular case refer to width and height of the window, not co-ordinates.
+		window = new sdl::twindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, flags, SDL_RENDERER_SOFTWARE);
 	} else {
 		if(fullScreen) {
 			window->full_screen();

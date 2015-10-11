@@ -236,6 +236,9 @@ public:
 					data,
 			const boost::function<void(twidget&)>& callback) = 0;
 
+	typedef boost::function<bool (unsigned, unsigned)> torder_func;
+	virtual void set_order(const torder_func& order) = 0;
+
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/*
@@ -355,6 +358,15 @@ protected:
 	 * @param index               The index of a selected item.
 	 */
 	virtual void do_deselect_item(const unsigned index) = 0;
+
+	/** Gets the grid of an item. */
+	virtual tgrid& item_ordered(const unsigned index) = 0;
+
+	/** Gets the grid of an item. */
+	virtual const tgrid& item_ordered(const unsigned index) const = 0;
+	
+	virtual unsigned get_ordered_index(unsigned index) const = 0;
+	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;
 };
 
 } // namespace gui2

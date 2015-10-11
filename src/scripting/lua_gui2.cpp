@@ -16,8 +16,11 @@
 
 #include "gui/auxiliary/canvas.hpp"     // for tcanvas
 #include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
+#include "gui/dialogs/wml_message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/clickable.hpp"    // for tclickable_
 #include "gui/widgets/control.hpp"      // for tcontrol
 #include "gui/widgets/multi_page.hpp"   // for tmulti_page
@@ -240,6 +243,113 @@ int show_dialog(lua_State *L, CVideo & video)
 }
 
 /**
+ * Displays a message window
+ * - Arg 1: Table describing the window
+ * - Arg 2: List of options (nil or empty table - no options)
+ * - Arg 3: Text input specifications (nil or empty table - no text input)
+ * - Ret 1: option chosen (if no options: 0 if there's text input, -2 if escape pressed, else -1)
+ * - Ret 2: string entered (empty if none, nil if no text input)
+ */
+int show_message_dialog(lua_State *L, CVideo & video)
+{
+	config txt_cfg;
+	const bool has_input = !lua_isnoneornil(L, 3) && luaW_toconfig(L, 3, txt_cfg) && !txt_cfg.empty();
+	const std::string& input_caption = txt_cfg["label"];
+	std::string input_text = txt_cfg["text"].str();
+	unsigned int input_max_len = txt_cfg["max_length"].to_int(256);
+	
+	std::vector<gui2::twml_message_option> options;
+	int chosen_option = -1;
+	if (!lua_isnoneornil(L, 2)) {
+		luaL_checktype(L, 2, LUA_TTABLE);
+		size_t n = lua_rawlen(L, 2);
+		for(size_t i = 1; i <= n; i++) {
+			lua_rawgeti(L, 2, i);
+			t_string short_opt;
+			config opt;
+			if(luaW_totstring(L, -1, short_opt)) {
+				// Note: Although this currently uses the tlegacy_menu_item class
+				// for the deprecated syntax, this branch should still be retained
+				// when the deprecated syntax is removed, as a simpler method
+				// of specifying options when only a single string is needed.
+				gui2::tlegacy_menu_item item(short_opt);
+				opt["image"] = item.icon();
+				opt["label"] = item.label();
+				opt["description"] = item.description();
+				opt["default"] = item.is_default();
+				if(!opt["image"].blank() || !opt["description"].blank() || !opt["default"].blank()) {
+					ERR_LUA << "The &image=col1=col2 syntax is deprecated, use new DescriptionWML instead.\n";
+				}
+			} else if(!luaW_toconfig(L, -1, opt)) {
+				std::ostringstream error;
+				error << "expected array of config and/or translatable strings, but index ";
+				error << i << " was a " << lua_typename(L, lua_type(L, -1));
+				return luaL_argerror(L, 2, error.str().c_str());
+			}
+			gui2::twml_message_option option(opt["label"], opt["description"], opt["image"]);
+			if(opt["default"].to_bool(false)) {
+				chosen_option = i - 1;
+			}
+			options.push_back(option);
+			lua_pop(L, 1);
+		}
+		lua_getfield(L, 2, "default");
+		if(lua_isnumber(L, -1)) {
+			int i = lua_tointeger(L, -1);
+			if(i < 1 || size_t(i) > n) {
+				std::ostringstream error;
+				error << "default= key in options list is not a valid option index (1-" << n << ")";
+				return luaL_argerror(L, 2, error.str().c_str());
+			}
+			chosen_option = i - 1;
+		}
+		lua_pop(L, 1);
+	}
+	
+	const config& def_cfg = luaW_checkconfig(L, 1);
+	const std::string& title = def_cfg["title"];
+	const std::string& message = def_cfg["message"];
+	const std::string& portrait = def_cfg["portrait"];
+	const bool left_side = def_cfg["left_side"].to_bool(true);
+	const bool mirror = def_cfg["mirror"].to_bool(false);
+	
+	int dlg_result = gui2::show_wml_message(
+		left_side, video, title, message, portrait, mirror,
+		has_input, input_caption, &input_text, input_max_len,
+		options, &chosen_option
+	);
+	
+	if (!has_input && options.empty()) {
+		lua_pushinteger(L, dlg_result);
+	} else {
+		lua_pushinteger(L, chosen_option + 1);
+	}
+	
+	if (has_input) {
+		lua_pushlstring(L, input_text.c_str(), input_text.length());
+	} else {
+		lua_pushnil(L);
+	}
+	
+	return 2;
+}
+	
+/**
+ * Displays a popup message
+ * - Arg 1: Title (allows Pango markup)
+ * - Arg 2: Message (allows Pango markup)
+ * - Arg 3: Image (optional)
+ */
+int show_popup_dialog(lua_State *L, CVideo & video) {
+	std::string title = luaL_checkstring(L, 1);
+	std::string msg = luaL_checkstring(L, 2);
+	std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
+	
+	gui2::show_transient_message(video, title, msg, image, true, true);
+	return 0;
+}
+
+/**
  * Sets the value of a widget on the current dialog.
  * - Arg 1: scalar.
  * - Args 2..n: path of strings and integers.
@@ -366,7 +476,7 @@ namespace
 /**
  * Removes an entry from a list.
  * - Arg 1: number, index of the element to delete.
- * - Arg 2: number, number of teh elements to delete. (0 to delete all elements after index)
+ * - Arg 2: number, number of the elements to delete. (0 to delete all elements after index)
  * - Args 2..n: path of strings and integers.
  */
 int intf_remove_dialog_item(lua_State *L)
@@ -528,6 +638,17 @@ int intf_set_dialog_canvas(lua_State *L)
 }
 
 /**
+ * Sets a widget to have the focus
+ * - Args 1..n: path of strings and integers.
+ */
+int intf_set_dialog_focus(lua_State *L)
+{
+	gui2::twidget *w = find_widget(L, 1, true);
+	scoped_dialog::current->window->keyboard_capture(w);
+	return 0;
+}
+
+/**
  * Sets a widget's state to active or inactive
  * - Arg 1: boolean.
  * - Args 2..n: path of strings and integers.
@@ -540,6 +661,56 @@ int intf_set_dialog_active(lua_State *L)
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	c->set_active(b);
+	return 0;
+}
+
+/**
+ * Sets the visiblity of a widget in the current dialog.
+ * - Arg 1: boolean.
+ * - Args 2..n: path of strings and integers.
+ */
+int intf_set_dialog_visible(lua_State *L)
+{
+	typedef gui2::tcontrol::tvisible tvisible;
+
+	tvisible::scoped_enum flag = tvisible::visible;
+
+	switch (lua_type(L, 1)) {
+		case LUA_TBOOLEAN:
+			flag = luaW_toboolean(L, 1)
+					? tvisible::visible
+					: tvisible::invisible;
+			break;
+		case LUA_TSTRING:
+			{
+				const std::string& str = lua_tostring(L, 1);
+				if(str == "visible") {
+					flag = tvisible::visible;
+				} else if(str == "hidden") {
+					flag = tvisible::hidden;
+				} else if(str == "invisible") {
+					flag = tvisible::invisible;
+				} else {
+					return luaL_argerror(L, 1, "string must be one of: visible, hidden, invisible");
+				}
+			}
+			break;
+		default:
+			return luaL_typerror(L, 1, "boolean or string");
+	}
+
+	gui2::twidget *w = find_widget(L, 2, true);
+	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+
+	c->set_visible(flag);
+
+	if(flag == tvisible::hidden) {
+		// HACK: this is needed to force the widget to be repainted immediately
+		//       to get rid of its ghost image.
+		scoped_dialog::current->window->invalidate_layout();
+	}
+
 	return 0;
 }
 
@@ -558,7 +729,7 @@ int show_gamestate_inspector(CVideo & video, const vconfig & cfg)
 
 /**
  * Sets a widget's state to active or inactive
- * - Arg 1: string, the type (id of [node_definition]) of teh new node.
+ * - Arg 1: string, the type (id of [node_definition]) of the new node.
  * - Arg 3: integer, where to insert the new node.
  * - Args 3..n: path of strings and integers.
  */

@@ -126,3 +126,7 @@ void replay_recorder_base::write(config& out) const
 		out.add_child("command", commands_[i]);
 	}
 }
+void replay_recorder_base::delete_upcoming_commands()
+{
+	commands_.resize(pos_);
+}

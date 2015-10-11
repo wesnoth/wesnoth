@@ -189,6 +189,17 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 	}
 }
 
+void context_manager::load_mru_item(unsigned int index, bool force_same_context /* = false */)
+{
+	const std::vector<std::string>& mru = preferences::editor::recent_files();
+
+	if(mru.empty() || index >= mru.size()) {
+		return;
+	}
+
+	load_map(mru[index], !force_same_context);
+}
+
 void context_manager::edit_side_dialog(int side)
 {
 	team& t = get_map_context().get_teams()[side];
@@ -208,21 +219,21 @@ void context_manager::edit_side_dialog(int side)
 
 	bool no_leader = t.no_leader();
 	bool hidden = t.hidden();
-	bool share_view = t.share_view();
-	bool share_maps = t.share_maps();
 	bool fog = t.uses_fog();
 	bool shroud = t.uses_shroud();
 
+	team::SHARE_VISION share_vision = t.share_vision();
+
 	bool ok = gui2::teditor_edit_side::execute(side +1, team_name, user_team_name,
 			gold, income, village_gold, village_support,
-			fog, share_view, shroud, share_maps,
+			fog, shroud, share_vision,
 			controller, no_leader, hidden,
 			gui_.video());
 
 	if (ok) {
 		get_map_context().set_side_setup(side, team_name, user_team_name,
 				gold, income, village_gold, village_support,
-				fog, share_view, shroud, share_maps, controller, hidden, no_leader);
+				fog, shroud, share_vision, controller, hidden, no_leader);
 	}
 }
 
@@ -300,6 +311,36 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 			break;
 		}
 	}
+}
+
+void context_manager::expand_load_mru_menu(std::vector<std::string>& items)
+{
+	std::vector<std::string> mru = preferences::editor::recent_files();
+
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] != "EDITOR-LOAD-MRU-PLACEHOLDER") {
+			continue;
+		}
+
+		items.erase(items.begin() + i);
+
+		if(mru.empty()) {
+			items.insert(items.begin() + i, _("No Recent Files"));
+			continue;
+		}
+
+		BOOST_FOREACH(std::string& path, mru)
+		{
+			// TODO: add proper leading ellipsization instead, since otherwise
+			// it'll be impossible to tell apart files with identical names and
+			// different parent paths.
+			path = filesystem::base_name(path);
+		}
+
+		items.insert(items.begin() + i, mru.begin(), mru.end());
+		break;
+	}
+
 }
 
 void context_manager::expand_areas_menu(std::vector<std::string>& items)
@@ -665,6 +706,7 @@ void context_manager::generate_map_dialog()
 		} else {
 			editor_map new_map(game_config_, map_string);
 			editor_action_whole_map a(new_map);
+			get_map_context().set_needs_labels_reset();		// Ensure Player Start labels are updated together with newly generated map
 			perform_refresh(a);
 		}
 		last_map_generator_ = map_generator;
@@ -850,7 +892,9 @@ bool context_manager::check_switch_open_map(const std::string& fn)
 	size_t i = check_open_map(fn);
 	if (i < map_contexts_.size()) {
 		gui2::show_transient_message(gui_.video(), _("This map is already open."), fn);
-		switch_context(i);
+		if (i != static_cast<unsigned>(current_context_index_)) {
+			switch_context(i);
+		}
 		return true;
 	}
 	return false;

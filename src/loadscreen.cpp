@@ -71,9 +71,9 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 	screen_(screen),
 	textarea_(),
 #ifdef SDL_GPU
-	logo_image_(image::get_texture("misc/logo.png")),
+	logo_image_(image::get_texture("misc/logo-bg.png~BLIT(misc/logo.png)")),
 #else
-	logo_surface_(image::get_image("misc/logo.png")),
+	logo_surface_(image::get_image("misc/logo-bg.png~BLIT(misc/logo.png)")),
 #endif
 	logo_drawn_(false),
 	pby_offset_(0),

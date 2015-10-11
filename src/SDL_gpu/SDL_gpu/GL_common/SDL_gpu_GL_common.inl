@@ -2,10 +2,14 @@
 See a particular renderer's *.c file for specifics. */
 
 
-// Visual C does not support static inline
+// static inline only supported in Visual C++ from version 2015 but can use static __inline instead for older versions
 #ifndef static_inline
     #ifdef _MSC_VER
-		#define static_inline static
+        #if _MSC_VER < 1900
+            #define static_inline static __inline
+        #else
+            #define static_inline static inline
+        #endif
     #else
         #define static_inline static inline
     #endif

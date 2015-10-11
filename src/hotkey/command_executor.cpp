@@ -108,6 +108,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_RECALL:
 			recall();
 			break;
+		case HOTKEY_LABEL_SETTINGS:
+			label_settings();
+			break;
 		case HOTKEY_RECRUIT:
 			recruit();
 			break;
@@ -227,6 +230,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			break;
 		case HOTKEY_REPLAY_SKIP_ANIMATION:
 			replay_skip_animation();
+			break;
+		case HOTKEY_REPLAY_EXIT:
+			replay_exit();
 			break;
 		case HOTKEY_WB_TOGGLE:
 			whiteboard_toggle();
@@ -385,8 +391,9 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	const hotkey::ACTION_STATE state = get_action_state(hk, index);
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
-	if (menu)
-		return "buttons/fold-arrow.png"; // TODO should not be hardcoded
+	if (menu) {
+		return "icons/arrows/short_arrow_right_25.png~CROP(3,3,18,18)"; // TODO should not be hardcoded
+	}
 
 	if (filesystem::file_exists(game_config::path + "/images/" + base_image_name)) {
 		switch (state) {

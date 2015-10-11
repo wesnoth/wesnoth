@@ -263,7 +263,7 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		BOOST_FOREACH(const config& child, variable_access_const("tag1", nonempty).as_array())
 		{
 			//silences unused variable warning.
-			(void)(child);
+			UNUSED(child);
 			++count;
 		}
 		BOOST_CHECK_EQUAL (count, 3);
@@ -271,7 +271,7 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		BOOST_FOREACH(const config& child, variable_access_const("tag1.tag2", nonempty).as_array())
 		{
 			//silences unused variable warning.
-			(void)(child);
+			UNUSED(child);
 			++count;
 		}
 		BOOST_CHECK_EQUAL (count, 0);
@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		BOOST_FOREACH(const config& child, variable_access_const("tag1.tag2[5]", nonempty).as_array())
 		{
 			//silences unused variable warning.
-			(void)(child);
+			UNUSED(child);
 			++count;
 		}
 		BOOST_CHECK_EQUAL (count, 1);

@@ -68,6 +68,7 @@ public:
 		: um_()
 		, gm_(&dc.map())
 		, tm_(&dc.teams())
+		, lbls_(&dc.hidden_label_categories())
 	{
 		static unit_map empty_unit_map;
 		um_ = &empty_unit_map;
@@ -75,11 +76,13 @@ public:
 	const unit_map & units() const { return *um_; }
 	const gamemap & map() const { return *gm_; }
 	const std::vector<team> & teams() const { return *tm_; }
+	const std::vector<std::string> & hidden_label_categories() const { return *lbls_; }
 
 private:
 	const unit_map * um_;
 	const gamemap * gm_;
 	const std::vector<team> * tm_;
+	const std::vector<std::string> * lbls_;
 };
 
 class ignore_units_filter_context : public filter_context {

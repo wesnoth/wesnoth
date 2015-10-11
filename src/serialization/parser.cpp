@@ -581,11 +581,19 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 		throw config::error("Too many recursion levels in config write");
 
 	BOOST_FOREACH(const config::attribute &i, cfg.attribute_range()) {
+		if (!config::valid_id(i.first)) {
+			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...\n";
+			continue;
+		}
 		write_key_val(out, i.first, i.second, tab, textdomain);
 	}
 
 	BOOST_FOREACH(const config::any_child &item, cfg.all_children_range())
 	{
+		if (!config::valid_id(item.key)) {
+			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...\n";
+			continue;
+		}
 		write_open_child(out, item.key, tab);
 		write_internal(item.cfg, out, textdomain, tab + 1);
 		write_close_child(out, item.key, tab);

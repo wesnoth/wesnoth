@@ -834,8 +834,8 @@ void tlobby_main::update_playerlist()
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
-	lobby_info_.sort_users(player_list_.sort_by_name->get_value(),
-						   player_list_.sort_by_relation->get_value());
+	lobby_info_.sort_users(player_list_.sort_by_name->get_value_bool(),
+						   player_list_.sort_by_relation->get_value_bool());
 
 	bool lobby = false;
 	if(room_info* ri = active_window_room()) {
@@ -1652,7 +1652,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	}
 	network::send_data(response, 0);
 	if(observe && game.started) {
-		playmp_controller::set_replay_last_turn(game.current_turn);
+		// playmp_controller::set_replay_last_turn(game.current_turn);
 	}
 	return true;
 }
@@ -1786,7 +1786,7 @@ void tlobby_main::game_filter_reload()
 									  &game_info::vacant_slots,
 									  std::greater<size_t> >(0));
 	}
-	lobby_info_.set_game_filter_invert(filter_invert_->get_value());
+	lobby_info_.set_game_filter_invert(filter_invert_->get_value_bool());
 }
 
 void tlobby_main::game_filter_keypress_callback(const SDLKey key)
@@ -1812,9 +1812,9 @@ void tlobby_main::player_filter_callback(gui2::twidget& /*widget*/)
 {
 	player_list_.update_sort_icons();
 	preferences::set_playerlist_sort_relation(
-			player_list_.sort_by_relation->get_value());
+			player_list_.sort_by_relation->get_value_bool());
 	preferences::set_playerlist_sort_name(
-			player_list_.sort_by_name->get_value());
+			player_list_.sort_by_name->get_value_bool());
 	player_list_dirty_ = true;
 	// window_->invalidate_layout();
 }
@@ -1857,7 +1857,7 @@ void tlobby_main::user_dialog_callback(user_info* info)
 void tlobby_main::skip_replay_changed_callback(twidget& w)
 {
 	ttoggle_button& tb = dynamic_cast<ttoggle_button&>(w);
-	preferences::set_skip_mp_replay(tb.get_value());
+	preferences::set_skip_mp_replay(tb.get_value_bool());
 }
 
 } // namespace gui2

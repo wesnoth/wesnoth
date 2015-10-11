@@ -329,7 +329,7 @@ surface blur_surface(const surface &surf, int depth = 1, bool optimize=true);
  * @param rect                    The part of the surface to blur.
  * @param depth                   The depth of the blurring.
  */
-void blur_surface(surface& surf, SDL_Rect rect, unsigned depth = 1);
+void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
 
 /**
  * Cross-fades a surface with alpha channel.

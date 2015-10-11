@@ -42,9 +42,9 @@
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/edit_label.hpp"
+#include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/data_manage.hpp"
@@ -461,47 +461,6 @@ void menu_handler::save_map()
 			gui2::show_transient_message(gui_->video(), "", msg);
 		}
 	}
-
-	/*
-	std::string input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
-	int res = 0;
-	int overwrite = 1;
-	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
-		if (res == 0) {
-
-			if (filesystem::file_exists(input_name)) {
-				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
-				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
-			}
-			else
-				overwrite = 0;
-		}
-	} while (res == 0 && overwrite != 0);
-
-	// Try to save the map, if it fails we reset the filename.
-	if (res == 0) {
-		try {
-			config file;
-			config& map = file.add_child("map");
-			map().write(map);
-
-			std::stringstream str;
-			{
-				config_writer writer(str, false);
-				writer.write(file);
-			}
-			filesystem::write_file(input_name, str.str());
-
-			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
-		} catch (filesystem::io_exception& e) {
-			utils::string_map symbols;
-			symbols["msg"] = e.what();
-			const std::string msg = vgettext("Could not save the map: $msg",symbols);
-			gui2::show_transient_message(gui_->video(), "", msg);
-		}
-	}
-	*/
 }
 
 void menu_handler::preferences()
@@ -1180,7 +1139,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if (res)
 			resources::recorder->add_label(res);
 	}
@@ -1194,6 +1153,12 @@ void menu_handler::clear_labels()
 		gui_->labels().clear(gui_->current_team_name(), false);
 		resources::recorder->clear_labels(gui_->current_team_name(), false);
 	}
+}
+	
+void menu_handler::label_settings() {
+	// TODO: I think redraw_everything might be a bit too much? It causes a flicker.
+	if(gui2::tlabel_settings::execute(board(), gui_->video()))
+		gui_->redraw_everything();
 }
 
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)

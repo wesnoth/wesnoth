@@ -1,32 +1,29 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# #-#-#-#-#  wesnoth-help.cpp.pot (Battle for Wesnoth 1.12.4)  #-#-#-#-#
 # Japanese translations for Battle for Wesnoth package.
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
+#
+# Translators:
+# Automatically generated, 2005
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
 # yma <yma9yma@gmail.com>, 2011.
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2012.
-#
-#   確認用SJIS範囲外UNICODE文字「 • 」 かぎかっこの中身が中点的なものとして表示されていれば、
-#   あなたの編集環境はSJIS範囲外UNICODEを正常に扱えています。
-#   そうでない場合はwesnoth日本語wiki(http://wikiwiki.jp/wesnoth/)にリンクがある2ch本スレなどでご質問ください。
-#
+# RatArmy <broadbarredfirefish@gmail.com>, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth dev-trunk\n"
+"Project-Id-Version: Battle for Wesnoth 1.12.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2012-07-09 05:15+0900\n"
-"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
-"Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
+"PO-Revision-Date: 2015-08-30 00:34+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
+"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
+"wesnoth112/language/ja_JP/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.11.2\n"
-"X-Poedit-Language: Japanese\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
@@ -43,19 +40,12 @@ msgstr "狂戦"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
 #: data/core/macros/abilities.cfg:541
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"狂戦:\n"
-"攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘ユ"
-"ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
+"この攻撃が戦いで使われた場合、いずれかの戦闘ユニットが倒されるまで交戦をやめ"
+"ません。ただし、30 回の攻撃が行われた場合はその時点で交戦を終了します。"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
@@ -66,40 +56,24 @@ msgstr "魔法"
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
 #: data/core/macros/abilities.cfg:620
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"魔法:\n"
-"この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率が "
-"70% となります。"
+"この攻撃は攻撃されるユニットの地形防御を無視して常に命中率が 70% となります。"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
 #: data/core/macros/abilities.cfg:664
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "先制"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
 #: data/core/macros/abilities.cfg:665
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"先制:\n"
-"このユニットは、たとえ防御時であっても常にこの攻撃で先に攻撃します。"
+msgstr "このユニットは、防御時であってもこの武器で先に攻撃します。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -116,16 +90,6 @@ msgstr "回復 +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -134,11 +98,10 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"回復 +4:\n"
-"このユニットは隣接した友好的なユニットをターン開始時に回復させます。\n"
+"このユニットは隣接する友好的なユニットをターン開始時に回復させます。\n"
 "\n"
-"このユニットに治療されるユニットは 1 ターンに最大でHPが 4 回復します。もしく"
-"は、そのターンに毒の効果が発動しないようにします。\n"
+"このユニットに治療されるユニットは 1 ターンにHPが 4 回復します。もしくは、そ"
+"のターンに毒の効果が発動しないようにします。\n"
 "毒を受けているユニットの解毒を行うことはできません。村で回復させるか、治療ユ"
 "ニットを捜して下さい。"
 
@@ -157,16 +120,6 @@ msgstr "回復 +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
 #: data/core/macros/abilities.cfg:30
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -176,12 +129,11 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"回復 +8:\n"
 "このユニットは薬草と魔法を組み合わせて、戦場で通常可能であったよりも素早くユ"
 "ニットを回復します。\n"
 "\n"
-"このユニットに治癒されるユニットは 1 ターンに最大でHPが 8 回復します。もしく"
-"は、そのターンに毒の効果が発動しないようにします。\n"
+"このユニットに治癒されるユニットは 1 ターンにHPが 8 回復します。もしくは、そ"
+"のターンに毒の効果が発動しないようにします。\n"
 "毒を受けているユニットの解毒を行うことはできません。村で回復させるか、治療ユ"
 "ニットを捜して下さい。"
 
@@ -444,7 +396,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -452,7 +404,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='命中率'</header>"
+"<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:186
@@ -505,7 +457,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -513,7 +465,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='命中率'</header>"
+"<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:201
@@ -705,9 +657,9 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
-"多島海です。それは <ref>dst='green_isle' text='Green Isle （緑の島）'</ref>と"
+"<ref>dst='green_isle' text='Green Isle （緑の島）'</ref>と"
 "<ref>dst=old_continent text='旧大陸'</ref>の間の<ref>dst='great_ocean' "
-"text='大洋'</ref>のどこかにあります。\n"
+"text='大洋'</ref>のどこかに存在する島々です。\n"
 "大部分の島には<ref>dst='..race_drake' text='ドレーク'</ref>が居住していま"
 "す。\n"
 "多島海最大の島も「Morogor」と呼ばれます。"
@@ -715,7 +667,7 @@ msgstr ""
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
 msgid "Green Isle"
-msgstr "Green Isle （緑の島）"
+msgstr "緑の島(Green Isle)"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:47
@@ -726,7 +678,7 @@ msgstr "<ref>dst='great_ocean' text='大洋'</ref>に存在する大きな島で
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
 msgid "Old Continent"
-msgstr "旧大陸"
+msgstr "旧大陸(Old Continent)"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:53
@@ -740,7 +692,7 @@ msgstr ""
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
 msgid "Great Continent"
-msgstr "大陸"
+msgstr "大陸(Great Continent)"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:59
@@ -765,14 +717,14 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
-"<ref>dst='kingdom_wesnoth' text='Wesnoth 王国'</ref>がある世界全体の名前で"
-"す。しかしながら、この単語「Irdya」はこの時代には非常にまれにしか使用されず、"
-"通常人々は「世界」とだけ呼ぶか、詩的表現として「広い緑の世界」と言いました。"
+"<ref>dst='kingdom_wesnoth' text='Wesnoth王国'</ref>がある世界全体の名前です。"
+"しかしながら、この単語「Irdya」はこの時代には非常にまれにしか使用されず、通常"
+"人々は「世界」とだけ呼ぶか、詩的表現として「広い緑の世界」と言いました。"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:70
 msgid "Kingdom of Wesnoth"
-msgstr "Wesnoth 王国"
+msgstr "Wesnoth王国(Kingdom of Wesnoth)"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:71
@@ -885,14 +837,14 @@ msgid ""
 "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, located "
 "between Carcyn and Aldril and generally considered to be haunted."
 msgstr ""
-"Wesnoth 王国は<ref>dst='great_continent' text='大陸'</ref>の中央に位置しま"
-"す。キャンペーンの多くはこの国を中心に展開します。国境は、北は大いなる川、西"
-"は大洋に面した海岸、<ref>dst='southwest_elven_lands' text='南西'</ref>は "
-"Aethenwood の大森林の端、そして南東は Bitter 湿地（苦い湿地、大マップの右下）"
-"です。\n"
+"Wesnoth王国は<ref>dst='great_continent' text='大陸'</ref>の中央に位置します。"
+"キャンペーンの多くはこの国を中心に展開します。国境は、北は大いなる川、西は大"
+"洋に面した海岸、<ref>dst='southwest_elven_lands' text='南西'</ref>は"
+"Aethenwood、そして南東は苦い湿地（Bitter湿地、大マップの右下）です。\n"
 "\n"
-"Fort Tahn を越えた Aethen 川の南側は Wesnoth における開拓中の地域です。その南"
-"端（マップ外）は Aethenwood の大森林の延長とも考えられる dense の森です。\n"
+"Fort Tahnを越えたAethen川(River Aethen)の南側はWesnothにおける開拓中の地域で"
+"す。その南端（マップ外）はAethenwoodの延長とも考えられる濃密な森となっていま"
+"す。\n"
 "\n"
 "    • 主要な都市\n"
 "          ◦ Weldyn: Wesnoth 王国の首都\n"
@@ -913,7 +865,7 @@ msgstr ""
 "す。\n"
 "          ◦ Abezの浅瀬(Ford of Abez): 大いなる川の浅くなっている部分で、普段"
 "は Wesnoth軍の管理下にあります。\n"
-"          ◦ Weldyn 川(Weldyn River): 大いなる川から別れて南に流れます。\n"
+"          ◦ Weldyn川(Weldyn River): 大いなる川から別れて南に流れます。\n"
 "          ◦ 中央大平原(Great Central Plain): Weldyn、Dan'Tonk、そして Fort "
 "Tahn によって囲まれた地域で、この平原はWesnothのパン籠（穀倉地帯）であり、そ"
 "の人口の大部分が住んでいます。\n"
@@ -930,11 +882,11 @@ msgstr ""
 "ますが、その地域への王国の支配は不安定で略奪が横行しています。\n"
 "          ◦ Glyn の森(Glyn’s Forest): Haldric２世の息子の一人にちなんで名付け"
 "られた、王家の森として知られる森。\n"
-"          ◦ Gray Woods（灰色森）: Wesnoth の荒野の中心に位置する大きな森で、"
+"          ◦ 灰色森(Gray Woods): Wesnoth の荒野の中心に位置する大きな森で、"
 "Carcyn と Aldril の間に位置し、一般的に幽霊が出ると考えられています。\n"
-"          ◦ Green 湿地（緑の湿地、Green Swamp）: Aldril の南、Wesnoth の荒野"
-"の中心にある大きな湿地。その水は Brown 丘陵を水源とし、大いなる川に流れ込む。"
-"（流れ込む部分は大マップには表示されていません）"
+"          ◦ 緑の湿地(Green Swamp): Aldril の南、Wesnoth の荒野の中心にある大"
+"きな湿地。その水は Brown 丘陵を水源とし、大いなる川に流れ込む。（流れ込む部分"
+"は大マップには表示されていません）"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
@@ -996,7 +948,7 @@ msgstr ""
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:113
 msgid "Northlands"
-msgstr "北の土地"
+msgstr "北の大地(Northlands)"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:114
@@ -1010,7 +962,6 @@ msgstr "北の土地"
 #| "\n"
 #| "    • Notable cities:\n"
 #| "          ◦ Glamdrol: An Orcish tribal capital\n"
-#| "          ◦ Romyr: Another Orcish tribal capital\n"
 #| "          ◦ Wesmere: The location of the Ka’lian — the Elvish Council\n"
 #| "          ◦ Dwarven Doors: A mixed human/dwarven town in the region of "
 #| "Knalga in the southern Heart Mountains. A major trade center.\n"
@@ -1081,23 +1032,21 @@ msgid ""
 "    • Great River: The origin of this river is somewhere in the east of the "
 "northern lands."
 msgstr ""
-"北の土地を統一する政府はありません。オークやドワーフや野蛮人やエルフなどがそ"
-"れぞれ集団を作って住んでいます。北の土地から「さらに北」や東の境界線は不明瞭"
-"ですが、南は<ref>dst='great_river' text='大いなる川'</ref>、西は"
+"北の大地を統一する政府はありません。オークやドワーフ、野蛮人、エルフなどがそ"
+"れぞれ集団を作って住んでいます。北の土地から「極北」や東の境界線は不明瞭です"
+"が、南は<ref>dst='great_river' text='大いなる川'</ref>、西は"
 "<ref>dst='great_ocean' text='大洋'</ref>が境界線です。\n"
 "\n"
 "    • 主要な都市\n"
-"          ◦ Glamdrol: オークの有力部族の首都\n"
-"          ◦ Romyr: オークの別部族の首都\n"
-"          ◦ Wesmere: Ka’lian — エルフ評議会が開かれる場所\n"
-"          ◦ Dwarven Doors（ドワーフの扉）: 人間とドワーフが入り混じって居住し"
-"ている街で、中心山脈の南斜面にある Knalga 地域に位置します。交易の中心地で"
+"          ◦ Glamdrol: オークの一部族の首都\n"
+"          ◦ Wesmere: エルフの評議会、Ka’lianが開かれる場所\n"
+"          ◦ ドワーフの扉(Dwarven Doors): 人間とドワーフが入り混じって居住して"
+"いる街で、中心山脈の南斜面にある Knalga 地域に位置します。交易の中心地で"
 "す。\n"
-"          ◦ Dallben と Delwyn: 人間の村であり、最初は Wesnoth黄金時代の拡張期"
-"に大いなる川を渡った入植者によって建設されました。その後放棄され、Elensefar "
-"北東の森林地帯に戻っていましたが, これらの村は再び居住されるようになり新たに "
-"Annuvin 地方と名づけられましたが居住者は人間ではなく Wesmere のエルフでし"
-"た。\n"
+"          ◦ DallbenとDelwyn: 人間の村であり、最初は Wesnoth黄金時代の拡張期に"
+"大いなる川を渡った入植者によって建設されました。その後放棄され、Elensefar北東"
+"の森林地帯に戻っていましたが, これらの村は再び居住されるようになり新たに "
+"Annuvin地方と名づけられましたが居住者は人間ではなくWesmereのエルフでした。\n"
 "\n"
 "    • 主要な地形特徴\n"
 "          ◦ 中心山脈(Heart Mountains): 川沿いの地方と北部平原の間にあるほとん"
@@ -1107,22 +1056,22 @@ msgstr ""
 "けない危険な場所で、世捨て人と気が狂った連中と魔法使いだけがその住人です。\n"
 "          ◦ 恐怖の沼地(Swamp of Dread): 中心山脈と大いなる川の間にある広大な"
 "沼地です。悪名高い危険な場所です。\n"
-"          ◦ Vrug 湖: 周囲を山岳に囲まれた大きな湖でそこから流れ出す川は北部の"
-"山岳地帯に唯一の交通路を作っています。\n"
+"          ◦ Vrug湖(Lake Vrug): 周囲を山岳に囲まれた大きな湖でそこから流れ出す"
+"川は北部の山岳地帯に唯一の交通路を作っています。\n"
 "          ◦ Arkan-thoria: Vrug 湖から流れ出す川です。これはエルフの名称であ"
 "り、人間は Longlier と呼びます。\n"
-"          ◦ Listra 川: 大いなる川の北から南に流れる支流で Arkan-thoria の流れ"
-"を飲み込んでしまいます。\n"
-"          ◦ Lintanir の大森林(Lintanir Forest): 大北部森林地帯(Great "
-"Northern Forest)の一部を構成する大森林で、その東と北の境界線はエルフだけが"
-"知っています。彼らの首都である Elensiria に人間が入ることはめったにありませ"
-"ん。\n"
-"          ◦ 大いなる川: この川の源流は北の土地のどこかにあると思われます。"
+"          ◦ Listra川(River Listra): 大いなる川の北から南に流れる支流で Arkan-"
+"thoria の流れを飲み込んでしまいます。\n"
+"          ◦ Lintanirの森(Lintanir Forest): 大北部森林地帯(Great Northern "
+"Forest)の一部を構成する大森林で、その東と北の境界線はエルフだけが知っていま"
+"す。彼らの首都である Elensiria に人間が入ることはめったにありません。\n"
+"          ◦ 大いなる川(Great River): この川の源流は北の土地のどこかにあると思"
+"われます。"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr "南西のエルフ王国"
+msgstr "南西のエルフ王国(Southwest Elven Lands)"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:136
@@ -1158,20 +1107,20 @@ msgid ""
 "abandoned by the elves long ago."
 msgstr ""
 "南の森のエルフは北部の他の種族達とは隔絶した暮らしを営んでおり、よそ者との関"
-"係も良好だとは言えません。彼らの住む領域は、北東は Green 湿地（緑の湿地）、南"
-"は砂漠（表示されません）、西は<ref>dst='great_ocean' text='大洋'</ref>によっ"
-"て区切られています。\n"
+"係も良好だとは言えません。彼らの住む領域は、北東は緑の湿地(Green Swamp)、南は"
+"砂漠（表示されません）、西は<ref>dst='great_ocean' text='大洋'</ref>によって"
+"区切られています。\n"
 "\n"
 "    • 主要な都市\n"
 "          ◦ 不明\n"
 "    • 主要な地形特徴\n"
-"          ◦ Aethen の森(Aethen Forest): 南部で最大の森。地図に記されるよりも"
-"遠く南西の方角に広がる。<ref>dst='..race_elf' text='エルフ族'</ref>.の故郷。"
+"          ◦ Aethenの森(Aethen Forest): 南部で最大の森。地図に記されるよりも遠"
+"く南西の方角に広がる。<ref>dst='..race_elf' text='エルフ'</ref>.の故郷。"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:148
 msgid "Heart Mountains"
-msgstr "中心山脈"
+msgstr "中心山脈(Heart Mountains)"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:149
@@ -1187,7 +1136,7 @@ msgstr ""
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:154
 msgid "Far North"
-msgstr "さらに北の土地"
+msgstr "極北(Far North)"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:155
@@ -1207,24 +1156,23 @@ msgstr "さらに北の土地"
 #| "          ◦ Barag Gor, a city home to the Orcish Council\n"
 #| "          ◦ Bitok\n"
 #| "          ◦ Borstep\n"
-#| "          ◦ Castelfrang\n"
 #| "          ◦ Farzi\n"
-#| "          ◦ Festog\n"
-#| "          ◦ Grisbi\n"
 #| "          ◦ Lmarig\n"
 #| "          ◦ Melmog\n"
 #| "          ◦ Prestim\n"
 #| "          ◦ Tirigaz\n"
+#| "          ◦ Dorest, the northernmost human city\n"
 #| "    • Notable land features:\n"
-#| "          ◦ Swamp of Desolation\n"
+#| "          ◦ Black Marshes\n"
 #| "          ◦ Mountains of Dorth\n"
 #| "          ◦ Mountains of Haag\n"
-#| "          ◦ Green Forest\n"
+#| "          ◦ Greenwood\n"
 #| "          ◦ Silent Forest\n"
 #| "          ◦ Forest of Thelien\n"
 #| "          ◦ River Oumph\n"
 #| "          ◦ River Bork\n"
-#| "          ◦ Wild Steppe"
+#| "          ◦ Frosty Wastes\n"
+#| "          ◦ Barren Plains"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1258,36 +1206,35 @@ msgid ""
 "    • Frosty Wastes\n"
 "    • Barren Plains"
 msgstr ""
-"極めて寒く、交通の不便な土地ですが、「さらに北の土地」は昔オーク連合があった"
-"場所です。<ref>dst='heart_mountains' text='中心山脈'</ref>（オークは Haggid-"
-"Dargor と呼び何の利点もないのに所有権を主張しています）の北に広がっています。"
-"その東部にかけてはオーク連合から離れた未統一の各部族が荒野の平原に散在してい"
-"ます。彼らは人間の野蛮人と手を組み高地エルフ（人間界では北部エルフとして知ら"
-"れています）との間で北部平原を巡って衝突しています。高地エルフ自身ははるか東"
-"まで広がっており大王国を築いていると噂されています。\n"
+"極めて寒く、交通の不便な土地ですが、「極北」は昔オーク連合があった場所です。"
+"<ref>dst='heart_mountains' text='中心山脈'</ref>（オークは Haggid-Dargor と呼"
+"び何の利点もないのに所有権を主張しています）の北に広がっています。その東部に"
+"かけてはオーク連合から離れた未統一の各部族が荒野の平原に散在しています。彼ら"
+"は人間の野蛮人と手を組み高地エルフ（人間界では北部エルフとして知られていま"
+"す）との間で北部平原を巡って衝突しています。高地エルフ自身ははるか東まで広"
+"がっており大王国を築いていると噂されています。\n"
 "\n"
 "    • 主要な都市\n"
 "          ◦ Barag Gor: オーク評議会が開かれる都市です。\n"
 "          ◦ Bitok\n"
 "          ◦ Borstep\n"
-"          ◦ Castelfrang\n"
 "          ◦ Farzi\n"
-"          ◦ Festog\n"
-"          ◦ Grisbi\n"
 "          ◦ Lmarig\n"
 "          ◦ Melmog\n"
 "          ◦ Prestim\n"
 "          ◦ Tirigaz\n"
+"          ◦ Dorest: 最北の人間の都市\n"
 "    • Notable land features:\n"
-"          ◦ Swamp of Desolation\n"
-"          ◦ Mountains of Dorth\n"
-"          ◦ Mountains of Haag\n"
-"          ◦ Green Forest\n"
-"          ◦ Silent Forest\n"
-"          ◦ Forest of Thelien\n"
-"          ◦ River Oumph\n"
-"          ◦ River Bork\n"
-"          ◦ Wild Steppe"
+"          ◦ 黒い湿地帯(Black Marshes)\n"
+"          ◦ Dorth山脈(Mountains of Dorth)\n"
+"          ◦ Haag山脈(Mountains of Haag)\n"
+"          ◦ Greenwood\n"
+"          ◦ 静寂の森(Silent Forest)\n"
+"          ◦ Thelienの森(Forest of Thelien)\n"
+"          ◦ Oumph川(River Oumph)\n"
+"          ◦ Bork川(River Bork)\n"
+"          ◦ 凍てつく荒野(Frosty Wastes)\n"
+"          ◦ 不毛の平野(Barren Plains)"
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
@@ -1348,7 +1295,7 @@ msgstr "地形"
 #. [topic]: id=..addons
 #: data/core/help.cfg:80 data/core/help.cfg:583
 msgid "Add-ons"
-msgstr ""
+msgstr "アドオン"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1431,6 +1378,12 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"これはあなたがWesnothの世界を探索し、見つけたユニットの一覧です。キャンペーン"
+"やマルチプレイヤーシナリオで新しいユニットを見つけると、そのユニットが属する"
+"種族の項目に追加されます。それぞれのページにはユニットの説明やステータス、武"
+"器、耐性、移動力、地形防御が記録されていおり、それらのページはいつでも確認す"
+"ることができます。\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:130
@@ -1451,12 +1404,6 @@ msgstr ""
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:141
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1465,9 +1412,9 @@ msgid ""
 "have it.\n"
 "\n"
 msgstr ""
-"ある種のユニットは他のユニットに直接影響を与える能力があるか、あるいはそのユ"
-"ニットが他のユニットにどのように作用するかにおいてインパクトをもちます。これ"
-"らの能力は遭遇した時にこのトピックの下に一覧表示されます。\n"
+"ある種のユニットは他のユニットに直接影響を与える能力を持ちます。これらの能力"
+"は遭遇した時にこのトピックの下に一覧表示されます。それらのページには能力に関"
+"する説明や、その能力を持つ（発見済みの）ユニットの一覧が表示されます。\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -1480,6 +1427,11 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"一部の武器は特殊な能力を備えています。あなたがキャンペーンやマルチプレイヤー"
+"シナリオで新たな特殊武器に遭遇すると、このリストに追加され、いつでも確認でき"
+"るようになります。それぞれのページには特殊武器の説明と、それを持つ（発見済み"
+"の）ユニットの一覧が表示されます。\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:159
@@ -1610,7 +1562,6 @@ msgstr "雇用と召還"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1629,6 +1580,18 @@ msgstr ""
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
 #, fuzzy
+#| msgid ""
+#| "Each side begins with one leader in their keep. At the start of any "
+#| "battle, and at times during it, you will need to recruit <ref>dst='.."
+#| "units' text='units'</ref> into your army. To recruit, you must have your "
+#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
+#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
+#| "text='castle'</ref>. Then you may recruit by either choosing "
+#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
+#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
+#| "which lists units available for recruitment, along with their gold cost. "
+#| "Click on a unit to see its statistics, then press the recruit button to "
+#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1787,7 +1750,7 @@ msgstr ""
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:231
 msgid "Hitpoints and Experience"
-msgstr "ヒットポイントと経験"
+msgstr "ヒットポイントと経験値"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:232
@@ -1800,8 +1763,8 @@ msgid ""
 msgstr ""
 "各ユニットは何ポイントかのヒットポイント（HP）を持っています。ユニットのヒッ"
 "トポイントが 1 より小さくなると、ユニットは死んでしまいます。また各ユニットは"
-"何ポイントかの経験値（XP）も持っています。新しく雇用されたユニットには全く経"
-"験がありませんが、敵と戦うことで経験を得ます。"
+"何ポイントかの経験値（Exp、英語圏ではXP）も持っています。新しく雇用されたユ"
+"ニットには全く経験がありませんが、敵と戦うことで経験を得ます。"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:236
@@ -1829,15 +1792,15 @@ msgid ""
 msgstr ""
 "ヒットポイントは各ユニットの隣にある体力バーでも示され、緑や黄色や赤となりま"
 "す。1 ポイントでも経験値をもったユニットは、青色の経験バーが表示され、そのユ"
-"ニットが<ref>dst='experience_and_advancement' text='昇進'</ref>する頃には白に"
-"変わります。"
+"ニットが<ref>dst='experience_and_advancement' text='レベルアップ'</ref>する頃"
+"には白に変わります。"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:245
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advancement"
-msgstr "クラスチェンジ先: "
+msgstr "レベルアップ先: "
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:246
@@ -1851,10 +1814,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"ユニットは昇進に必要な経験値が決まっています（「知的」な特性を持つユニットな"
-"ら通常より 20% 少なくて済みます）。ユニットがこの値に達すると、そのユニットは"
-"直ちに次のレベルに上がり、HP が最大まで回復します。場合によっては、クラスチェ"
-"ンジ先の選択を行います。"
+"ユニットがレベルアップに必要な経験値は決まっています（「知的」な特性を持つユ"
+"ニットなら通常より 20% 少なくて済みます）。ユニットがこの値に達すると、そのユ"
+"ニットは直ちに次のレベルに上がり、HP が最大まで回復します。場合によっては、ク"
+"ラスチェンジ先の選択を行います。"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:246
@@ -2149,7 +2112,7 @@ msgstr ""
 "\n"
 "このルールには二つの例外があります。<ref>dst='weaponspecial_magical' text='魔"
 "法'</ref>と<ref>dst='weaponspecial_marksman' text='射撃'</ref>による攻撃で"
-"す。魔法による攻撃は地形に関係なく常に命中率は 70% になり、射撃は攻撃時に限"
+"す。魔法による攻撃は地形に関係なく常に命中率は 70% になり、精密は攻撃時に限"
 "り、地形に関わらず常に最低でも 60% の命中率になります。"
 
 #. [topic]: id=combat
@@ -2178,9 +2141,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"各攻撃が命中することによる基本のダメージ量は、攻撃型に依存します。例えば、"
-"5-4 の剣を持つエルフの戦士は基本ダメージ 5 で攻撃します。通常、この値は二つの"
-"事柄、<ref>dst='damage_types_and_resistance' text='抵抗力'</ref>と"
+"各攻撃が命中することによる基本のダメージ量は、ダメージ型に依存します。例え"
+"ば、5-4 の剣を持つエルフの戦士は基本ダメージ 5 で攻撃します。通常、この値は二"
+"つの事柄、<ref>dst='damage_types_and_resistance' text='耐性'</ref>と"
 "<ref>dst='time_of_day' text='時刻'</ref>によって修正されます。基本ダメージが"
 "これらの状況によってどう修正されるかを見るには、攻撃選択メニューの"
 "<italic>text='ダメージ計算'</italic>を選択して下さい。"
@@ -2205,7 +2168,7 @@ msgstr ""
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:304
 msgid "Damage Types and Resistance"
-msgstr "ダメージ型と抵抗値"
+msgstr "ダメージ型と耐性"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:305
@@ -2220,11 +2183,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"抵抗力は非常に単純に働きます。もしユニットがある攻撃型に対して 40% の抵抗力を"
+"耐性は非常に単純に働きます。もしユニットがあるダメージ型に対して 40% の耐性を"
 "持っているなら、その攻撃を受けたときにはダメージを 40% 軽減します。ユニットが"
-"ある攻撃型に弱点を持つこともあります。もしユニットがある攻撃型に対して −100% "
-"の抵抗力を持っているなら、その攻撃を受けたときにはダメージが 100% 増加しま"
-"す。"
+"あるダメージ型に弱点を持つこともあります。もしユニットがあるダメージ型に対し"
+"て −100% の耐性を持っているなら、その攻撃を受けたときにはダメージが 100% 増加"
+"します。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:305
@@ -2236,9 +2199,9 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
-"Wesnoth には物理的攻撃に関連する斬撃、貫通、打撃の三つのダメージ型がありま"
+"Wesnoth には物理的攻撃に関連する斬撃、刺突、打撃の三つのダメージ型がありま"
 "す。さらに、魔法的攻撃に関連する火炎、冷気、秘術の三つのダメージ型がありま"
-"す。ユニットごとにダメージ型によって、異なる抵抗力を持ちます。"
+"す。ユニットごとにダメージ型によって、異なる耐性を持ちます。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:307
@@ -2251,8 +2214,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"例えば、スケルトンは斬撃と貫通に対しては高い抵抗力を持ちます。しかし、打撃と"
-"火炎には弱く、さらに秘術に対しては非常に脆弱です。"
+"例えば、スケルトンは斬撃と刺突に対しては高い耐性を持ちます。しかし、打撃と火"
+"炎には弱く、さらに秘術に対しては非常に脆弱です。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:309
@@ -2297,11 +2260,13 @@ msgstr "移動したがまだ動いたり攻撃したりできるなら黄色、
 #: data/core/help.cfg:322
 #, fuzzy
 #| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
+#| " black if it can no longer move or attack, or the user ended the unit’s "
 #| "turn."
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
-msgstr "赤はそのターンでは移動も攻撃も終了したことを示します。"
+msgstr ""
+" 黒はそのユニットがもう移動や攻撃を行えないか、ユーザーがターンを終了した時に"
+"表示されます。"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:323
@@ -2311,9 +2276,9 @@ msgstr "あなたが操作できない同盟のユニットなら、宝珠は青
 #. [topic]: id=orbs
 #: data/core/help.cfg:324
 #, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
+#| msgid " Enemy units have a red orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "敵ユニットには、体力バーの上に宝珠がありません。"
+msgstr "敵ユニットには、体力バーの上に赤い宝珠を持ちます。"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:331
@@ -2478,10 +2443,11 @@ msgid ""
 "place at the beginning of your turn, before you take action."
 msgstr ""
 "戦闘において、ユニットがダメージを受けることは避けられないでしょう。ユニット"
-"は<ref>dst='experience_and_advancement' text='昇進'</ref>する時に、完全回復し"
-"ます。これは、あなたのターンであろうとなかろうと、敵との戦いが終了した時点で"
-"起こります。その他にも Wesnoth ではあなたのユニットを回復させるいくつかの方法"
-"があります。これらは全て、あなたのターン開始時に行動を起こす前に起こります。"
+"は<ref>dst='experience_and_advancement' text='レベルアップ'</ref>する時に、完"
+"全回復します。これは、あなたのターンであろうとなかろうと、敵との戦いが終了し"
+"た時点で起こります。その他にも Wesnoth ではあなたのユニットを回復させるいくつ"
+"かの方法があります。これらは全て、あなたのターン開始時に行動を起こす前に起こ"
+"ります。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:362
@@ -2637,31 +2603,17 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:399
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#| "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
-#| "<ref>dst='traits_undead' text='undead'</ref>.\n"
-#| "\n"
 msgid ""
 "\n"
 "\n"
 "Elves may also receive <ref>dst='traits_dextrous' text='dextrous'</ref>, and "
-"dwarves may recieve <ref>dst='traits_healthy' text='healthy'</ref>. Trolls "
-"and certain humans may recieve <ref>dst='traits_fearless' text='fearless'</"
+"dwarves may receive <ref>dst='traits_healthy' text='healthy'</ref>. Trolls "
+"and certain humans may receive <ref>dst='traits_fearless' text='fearless'</"
 "ref>. Other traits which may be assigned include <ref>dst='traits_loyal' "
 "text='loyal'</ref>, <ref>dst='traits_feral' text='feral'</ref> and "
 "<ref>dst='traits_undead' text='undead'</ref>.\n"
 "\n"
 msgstr ""
-"\n"
-"\n"
-"ユニットに割り振られる他の特性には、<ref>dst='traits_dextrous' text='器用'</"
-"ref>、<ref>dst='traits_loyal' text='忠義'</ref>、<ref>dst='traits_undead' "
-"text='アンデッド'</ref>があります。\n"
-"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:409
@@ -2927,7 +2879,7 @@ msgstr ""
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:477
 msgid "trait^Elemental"
-msgstr "超自然"
+msgstr "精霊"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:478
@@ -2940,9 +2892,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"超自然ユニットは基本的に唯一の特性として「<italic>text='超自然'</italic>」を"
-"持っています。超自然ユニットは超自然的な力による存在のため、生命吸収、毒、疫"
-"病は全く効きません。"
+"精霊ユニットは基本的に唯一の特性として「<italic>text='精霊'</italic>」を持っ"
+"ています。精霊ユニットはエネルギーから成る存在のため、生命吸収、毒、疫病は全"
+"く効きません。"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:478
@@ -2950,7 +2902,7 @@ msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"超自然ユニットは毒に免疫があります。同様に、生命吸収や疫病は彼らには効きませ"
+"精霊ユニットは毒に免疫があります。同様に、生命吸収や疫病は彼らには効きませ"
 "ん。"
 
 #. [topic]: id=traits_dextrous
@@ -3039,7 +2991,7 @@ msgstr ""
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:509
 msgid "Slow"
-msgstr "遅鈍"
+msgstr "鈍重"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:510
@@ -3064,7 +3016,7 @@ msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
 msgstr ""
-"遅鈍なユニットは移動力が 1 少なくなりますが、HP が通常より 5% 多くなります。"
+"鈍重なユニットは移動力が 1 少なくなりますが、HP が通常より 5% 多くなります。"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:517
@@ -3113,18 +3065,12 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:531
-#, fuzzy
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 "ゲームにおけるマップはさまざまな地形によって特徴づけられています。地形はユ"
-"ニットの移動と戦闘におけるユニットの防御能力の双方に影響します。\n"
-"\n"
+"ニットの移動と戦闘におけるユニットの防御能力の双方に影響します。"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:533
@@ -3132,7 +3078,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3140,7 +3086,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='命中率'</header>"
+"<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:535
@@ -3169,7 +3115,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3177,7 +3123,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='命中率'</header>"
+"<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:543
@@ -3257,7 +3203,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3265,7 +3211,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='命中率'</header>"
+"<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:565
@@ -3303,7 +3249,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3312,7 +3258,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='命中率'</header>"
+"<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:584
@@ -3322,19 +3268,17 @@ msgid ""
 "more beyond what is offered in the official content bundled with the game.\n"
 "\n"
 msgstr ""
+"Wesnothエンジンはカスタマイズ性を持ち、プレイヤー自らゲームコンテンツ（新しい"
+"シナリオやキャンペーン、他にもいろいろ）を作ることができる程です。\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:594
 msgid "Using Add-ons"
-msgstr ""
+msgstr "アドオンの使い方"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:595
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3342,7 +3286,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='ダメージ'</header>"
+"<header>text='キャンペーンとシナリオ'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:595
@@ -3350,6 +3294,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"このゲームは異なる種類のアドオンコンテンツをサポートしており、種類によってそ"
+"のアドオンを有効にできるゲームモードも異なります。"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:597
@@ -3361,16 +3307,22 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"\n"
+"SP(シングルプレイヤー)用のキャンペーンとは、物語に沿って複数のシナリオを集め"
+"たものです。独立したシナリオや通常のキャンペーンはタイトル画面の"
+"<italic>text='キャンペーン'</italic>メニューから遊ぶことができます。"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:599
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='この特別な攻撃が可能なユニット'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='MP(マルチプレイヤー) キャンペーン、シナリオ、マップ集'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:601
@@ -3381,14 +3333,14 @@ msgid ""
 "scripted scenarios or even specially designed campaigns. There are also "
 "packs providing sets of individual multiplayer scenarios."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='MP(マルチプレイヤー)'</italic> ゲームでは完全にカスタマイズさ"
+"れ、動作が記述されたシナリオや特別なデザインをされたキャンペーンを遊ぶことが"
+"できます。別々のMPシナリオをまとめたセットも存在します。"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:603
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3396,7 +3348,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='順序と攻撃回数'</header>"
+"<header>text='MPの時代(MP Era)、党派(MP Faction)'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:605
@@ -3412,6 +3364,15 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"ゲームの中では、様々な種族の生き物たちがお互いに協力し合い、「党派」を築いて"
+"います。党派は共通のテーマに沿ってバランス調整されたセットです。例を挙げれ"
+"ば、Wesnothの主な党派は「標準の時代」に含まれています。\n"
+"\n"
+"<italic>text='マルチプレイヤー'</italic>モードでは、ゲームを作るときに「時"
+"代」を選択することができ、その時代に含まれる党派をそれぞれの陣営に設定するこ"
+"とができます。"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:609
@@ -3424,11 +3385,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:611
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3436,7 +3392,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='順序と攻撃回数'</header>"
+"<header>text='MP Mod(Multiplayer Modifications)'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:613
@@ -3448,14 +3404,14 @@ msgid ""
 "in various ways. You can choose and configure modifications when creating a "
 "new game."
 msgstr ""
+"\n"
+"\n"
+"Modはシナリオのオプションや、時代に依存しないスクリプトであり、マルチプレイ"
+"ヤーゲームに様々な変更を加えることができます。ゲームの作成時にModを選択し、設"
+"定することができます。"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:615
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3463,7 +3419,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='命中率'</header>"
+"<header>text='クリエイター用の素材集'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:617
@@ -3476,11 +3432,17 @@ msgid ""
 "other playable add-ons may depend on them and suggest or require their "
 "installation during download."
 msgstr ""
+"\n"
+"\n"
+"コンテンツの製作者はアドオンサーバー上にある素材集を、自身のコンテンツの素材"
+"（画像や音楽、コードなど）として利用することができます。素材集はゲーム内で直"
+"接利用されることはありませんが、他のアドオンがそれらを利用しており、アドオン"
+"のインストール時に素材集も必要とされることがあります。"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:626
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "アドオンのインストール"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:627
@@ -3507,11 +3469,32 @@ msgid ""
 "about the add-on, such as its full description, installation status, and "
 "available languages."
 msgstr ""
+"ユーザ製のアドオンはメインメニューの<italic>text='アドオン'</italic>から取"
+"得・更新を行うことができます。\n"
+"アドオンサーバー (デフォルトでは<italic>text='add-ons.wesnoth.org'</italic>) "
+"に接続すると、サーバー上に存在するダウンロード可能なアドオンのリストが表示さ"
+"れます。\n"
+"\n"
+"アドオンのインストール状況はそれぞれのエントリに表示されます。サーバー上の"
+"<italic>text='更新有り'</italic>か<italic>text='旧バージョン'</italic>のアド"
+"オンは、インストール済みか公開済みのバージョンが<italic>text='バージョン'</"
+"italic>カラムに表示されます。\n"
+"\n"
+"アドオンをキーワードで検索したければ、<bold>text='フィルター'</bold>ボックス"
+"に適切な単語をスペースで区切って入力して下さい。また、カラムヘッダをクリック"
+"することでアドオンリストをソートすることもできます。特定のカテゴリのアドオン"
+"のみを表示したければ、右上の<bold>text='オプション'</bold>ボタンをクリックし"
+"て下さい。\n"
+"\n"
+"アドオンをインストールしたいなら、リストからそのアドオンを選択してから"
+"<bold>text='OK'</bold>ボタンを押すか、アドオンのタイトルをダブルクリックして"
+"下さい。<bold>text='解説'</bold>ボタンを押すとアドオンの情報 (解説、インス"
+"トール状況、利用できる言語) を詳しく見ることができます。"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:640
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "アドオンの削除"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:641
@@ -3526,6 +3509,14 @@ msgid ""
 "information files or the add-ons themselves using a file manager provided by "
 "your platform."
 msgstr ""
+"アドオンを削除するには、アドオンサーバへの接続ダイアログの中の<bold>text='ア"
+"ドオンの削除'</bold>を選択して下さい。インストール済みのアドオンを好きな数だ"
+"け削除することができます。\n"
+"\n"
+"アドオンに公開情報ファイル (<italic>text='.pbl'</italic> ファイル) が添付され"
+"ていた場合、それによってアドオンを削除できないことがあります。そのような場"
+"合、情報ファイルを削除するかアドオン自体を直接あなたのプラットフォームのファ"
+"イルマネージャで削除しなければなりません。"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:656
@@ -3544,6 +3535,8 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
+"これらのコマンドは「:」を押してコマンドラインを出すか、チャット欄に「/」を打"
+"つことで実行できます (チャット欄は「m」で開けます) 。\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:660
@@ -3600,6 +3593,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"陣営のコントローラーのステータスを表示する\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:673
@@ -3726,6 +3722,9 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"人間がコントロールする陣営をホストが変更するためのダイアログを表示します。\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:712
@@ -3735,6 +3734,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"陣営の待機状態を切り替えます。ネットワークが切断された場合、ホストは陣営を待"
+"機状態にする必要があるでしょう。\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:715
@@ -3944,16 +3947,10 @@ msgstr "治療"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:49
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"治療:\n"
 "治療者は、毒を受けたユニットを治療することができます。ただし、毒から治療され"
 "たそのターン内には、さらなる回復は受けられません。"
 
@@ -3969,16 +3966,10 @@ msgstr "再生"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"再生:\n"
 "このユニットはターンごとに自身の HP を 8 回復します。毒を受けているなら、回復"
 "する代わりに毒を取り除きます。"
 
@@ -3994,18 +3985,12 @@ msgstr "装甲"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"装甲:\n"
-"防御時、このユニットの抵抗力は最大で 50% まで倍増します。弱点には影響がありま"
-"せん。"
+"防御時、このユニットの耐性は最大で 50% まで倍増します。弱点には影響がありませ"
+"ん。"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:106 data/core/macros/abilities.cfg:127
@@ -4025,16 +4010,6 @@ msgstr "統率"
 #: data/core/macros/abilities.cfg:108 data/core/macros/abilities.cfg:129
 #: data/core/macros/abilities.cfg:161 data/core/macros/abilities.cfg:204
 #: data/core/macros/abilities.cfg:258
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -4044,13 +4019,12 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"統率:\n"
 "このユニットは隣接した自軍ユニットを指揮し、それらがうまく戦えるようにしま"
 "す。\n"
 "\n"
-"隣接している低レベルの自軍が所有するユニットは戦闘時により多くのダメージを与"
-"えるようになります。このユニットとのレベルの差に応じて、与えるダメージが 25% "
-"ずつ増加します。"
+"隣接している低レベルの自軍ユニットは戦闘時により多くのダメージを与えるように"
+"なります。このユニットとのレベルの差に応じて、与えるダメージが 25% ずつ増加し"
+"ます。"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:319
@@ -4064,18 +4038,12 @@ msgstr "散兵"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:321
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"散兵:\n"
 "このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配ゾー"
-"ンを無視できます。"
+"ン(ZoC)を無視できます。"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:334
@@ -4089,14 +4057,6 @@ msgstr "照明"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:336
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4104,12 +4064,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"照明:\n"
-"このユニットは周囲を明るくして、秩序ユニットを戦いやすく、混沌ユニットを戦い"
-"にくくします。\n"
+"このユニットは周囲を明るく照らし、秩序ユニットを有利に、混沌ユニットを不利に"
+"します。\n"
 "\n"
-"すべての隣接ユニットは、夜には夕方であるかのように、夕方には昼であるかのよう"
-"に戦うことになります。"
+"すべての隣接ユニットは、夜には夕方、夕方には昼であるかのように戦うことになり"
+"ます。"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:348
@@ -4123,16 +4082,10 @@ msgstr "瞬間移動"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:350
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"瞬間移動:\n"
 "このユニットは移動力を 1 使うことで、その陣営が所有する誰もいない 2 つの村の"
 "間を瞬間移動することができます。"
 
@@ -4148,14 +4101,6 @@ msgstr "伏兵"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:393
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4163,13 +4108,12 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"伏兵:\n"
 "このユニットは森に隠れることができます。そのため、森にいれば敵に見つかること"
 "はありません。\n"
 "\n"
-"このユニットが森にいるときは、敵のユニットはこのユニットの隣にいる場合以外"
-"は、このユニットを見つけることはできません。このユニットを初めて見つけた敵ユ"
-"ニットは、それ以上移動することはできません。"
+"このユニットが森にいるときは、このユニットを見つけることはできません。ただ"
+"し、敵ユニットが隣接している場合を除きます。伏兵中のユニットに遭遇した敵ユ"
+"ニットは、残りの移動力を全て失います。"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:410 data/core/macros/abilities.cfg:411
@@ -4179,14 +4123,6 @@ msgstr "隠密"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:412 data/core/macros/abilities.cfg:417
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4194,12 +4130,11 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"隠密:\n"
 "このユニットは夜間は見えなくなります。\n"
 "\n"
-"このユニットは夜には見つけることはできません。敵がこのユニットの隣にいる場合"
-"を除いて。このユニットを初めて見つけた敵ユニットはそれ以上移動することはでき"
-"ません。"
+"このユニットは夜には見つけることはできません。ただい、敵がこのユニットの隣に"
+"いる場合を除きます。隠密中のユニットに遭遇した敵ユニットは残りの移動力を全て"
+"失います。"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:416
@@ -4218,16 +4153,6 @@ msgstr "潜伏"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:436 data/core/macros/abilities.cfg:441
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4236,13 +4161,12 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"潜伏:\n"
 "このユニットは村に隠れることができ（水中の村は例外です）、敵に見つけられるこ"
-"とはありません。敵がこのユニットの隣にいる場合を除いて。\n"
+"とはありません。ただし、敵がこのユニットの隣にいる場合は除きます。\n"
 "\n"
-"このユニットが村にいるときは、このユニットを見つけることはできません。敵がこ"
-"のユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットはそ"
-"れ以上移動することはできません。"
+"このユニットが村にいるときは、このユニットを視認することはできません。ただ"
+"し、敵がこのユニットの隣にいる場合を除きます。潜伏中のユニットに遭遇した敵ユ"
+"ニットは残りの移動力を全て失います。"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:458 data/core/macros/abilities.cfg:463
@@ -4256,14 +4180,6 @@ msgstr "潜水"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:460 data/core/macros/abilities.cfg:465
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4271,12 +4187,11 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"潜水:\n"
 "このユニットは水中深くに隠れることができ、敵に見つからなくなります。\n"
 "\n"
-"このユニットが深い水中にいるときは、このユニットを見つけることはできません。"
-"敵がこのユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニッ"
-"トはそれ以上移動することはできません。"
+"このユニットが深い水中にいるときは、このユニットを視認することはできません。"
+"敵がこのユニットの隣にいる場合を除いて。潜水中のユニットと遭遇した敵ユニット"
+"は残りの移動力を全て失います。"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:485
@@ -4290,15 +4205,11 @@ msgstr "摂食"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:487
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
-" このユニットは生きているユニットを殺すことで最大ヒットポイントが 1 増加しま"
+"このユニットは生きているユニットを殺すことで最大ヒットポイントが 1 増加しま"
 "す。"
 
 #. [unstore_unit]
@@ -4313,21 +4224,14 @@ msgstr "奇襲"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:552
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"奇襲:\n"
-"攻撃時に使用された場合、もし攻撃対象の反対側にその対象の敵がいて、かつその反"
-"対側のユニットが能力を奪われて（例えば石化していたり麻痺しているなど）いない"
-"場合、この攻撃は倍のダメージとなります。"
+"攻撃時に限り、もし「攻撃対象」の反対側に「攻撃対象に敵対するユニット」が存在"
+"し、「攻撃対象に敵対するユニット」が能力を奪われて（石化や麻痺など）いない場"
+"合、この攻撃は倍のダメージとなります。"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
@@ -4337,39 +4241,25 @@ msgstr "疫病"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:565
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"疫病:\n"
 "疫病攻撃によってユニットが倒された場合は、そのユニットは攻撃ユニットと同じク"
 "ラスで同じ陣営のユニットに置き換えられます。この攻撃はアンデッドや村にいるユ"
 "ニットには効果がありません。"
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:576
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"疫病:\n"
 "疫病攻撃によってユニットが倒された場合は、そのユニットは攻撃ユニットと同じ陣"
-"営の歩く死体（これも疫病攻撃を持つ）に置き換えられます。この攻撃はアンデッド"
-"や村にいるユニットには効果がありません。"
+"営の歩く死体に置き換えられます。この攻撃はアンデッドや村にいるユニットには効"
+"果がありません。"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:586
@@ -4378,20 +4268,12 @@ msgstr "遅化"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:587
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"遅化:\n"
 "この攻撃は、ターンが終わるまでターゲットを遅くします。遅化は攻撃によるダメー"
 "ジを半減させ、遅化されたユニットの移動コストを倍にします。遅化を受けたユニッ"
 "トは、選択するとサイドバーの情報にカタツムリのアイコンが表示されます。"
@@ -4403,36 +4285,23 @@ msgstr "石化"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:597
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"石化:\n"
 "この攻撃は標的を石化させ、石へと変えます。石化したユニットは移動や攻撃はでき"
 "ません。"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:606
 msgid "marksman"
-msgstr "射撃"
+msgstr "精密"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:607
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"射撃:\n"
-"攻撃時に使用された場合、この攻撃は命中率が最低 60% はあるようになります。"
+msgstr "攻撃時に限り、この武器は命中率の最低値が60%になります。"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:631
@@ -4441,20 +4310,12 @@ msgstr "群れ"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:632
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"群れ:\n"
 "ユニットが傷ついているとこの攻撃の回数が減少します。攻撃回数はそのユニットが"
 "持つ HP と最大 HP の割合に比例します。例えばユニットの HP がその最大 HP の "
 "3/4 だった場合、攻撃回数も 3/4 になります。"
@@ -4466,19 +4327,12 @@ msgstr "突撃"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"突撃:\n"
-"攻撃時に使用された場合、この攻撃は標的への与えるダメージが倍となります。標的"
-"からの反撃によって受けるダメージも倍となります。"
+"攻撃時に限り、この武器は敵へ与えるダメージが倍となりますが、敵の反撃によって"
+"受けるダメージも倍となります。"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:654
@@ -4487,16 +4341,10 @@ msgstr "生命吸収"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:655
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"生命吸収:\n"
 "このユニットは生者から生命力を奪って、与えたダメージの半分（切り下げ）だけ自"
 "分の HP を回復させます。"
 
@@ -4507,18 +4355,11 @@ msgstr "毒"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:675
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
-"毒:\n"
 "この攻撃は生きている標的を毒状態にします。毒を受けているユニットは解毒するか "
 "HP が 1 になるまで、毎ターン HP が 8 減っていきます。毒そのものでは、ユニット"
 "が死ぬことはありません。"
@@ -4652,98 +4493,78 @@ msgstr "夜(4)"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:478
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "夜"
+msgstr "最初の夜明け"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:488
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "深夜"
+msgstr "二度目の夜明け"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:498
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "朝"
+msgstr "最初の朝"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:507
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "朝"
+msgstr "二度目の朝"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:516
-#, fuzzy
-#| msgid "Midday"
 msgid "First Midday"
-msgstr "昼の 12 時"
+msgstr "最初の昼"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "深夜"
+msgstr "二度目の昼"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:534
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "午後"
+msgstr "最初の午後"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:543
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "午後"
+msgstr "二度目の午後"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:552
-#, fuzzy
-#| msgid "firststrike"
 msgid "First Dusk"
-msgstr "先制"
+msgstr "最初の夕暮れ"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:562
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "深夜"
+msgstr "二度目の夕暮れ"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:572
 msgid "The Short Dark"
-msgstr ""
+msgstr "短い夜"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:584
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "長い夜(1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:596
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "長い夜(2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:610
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "長い夜(3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:622
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "長い夜(4)"
 
 #: data/core/macros/special-notes.cfg:3
 msgid ""
@@ -4917,8 +4738,8 @@ msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-" このユニットの射撃能力のおかげで目標とされた敵に高い確率で命中します。しか"
-"し、攻撃側の場合だけです。"
+" このユニットの精密な攻撃は目標とされた敵に高い確率で命中します。しかし、攻撃"
+"側の場合だけです。"
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -5018,12 +4839,12 @@ msgstr "機械"
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:68
 msgid "elemental"
-msgstr "超自然"
+msgstr "精霊"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:69
 msgid "female^elemental"
-msgstr "超自然"
+msgstr "精霊"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:90
@@ -5117,7 +4938,6 @@ msgstr "野生"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:225
-#, fuzzy
 msgid "Receives only 50% defense in land-based villages"
 msgstr "陸にある村では防御が 50% になってしまいます"
 
@@ -5194,7 +5014,7 @@ msgstr ""
 #. [race]: id=drake
 #: data/core/units.cfg:55
 msgid "race^Drake"
-msgstr "ドレーク族"
+msgstr "ドレーク"
 
 #. [race]: id=drake
 #: data/core/units.cfg:56
@@ -5204,7 +5024,7 @@ msgstr "ドレーク族"
 #. [race]: id=drake
 #: data/core/units.cfg:57
 msgid "race^Drakes"
-msgstr "ドレーク族"
+msgstr "ドレーク"
 
 #. [race]: id=drake
 #: data/core/units.cfg:58
@@ -5230,7 +5050,7 @@ msgstr "ドレーク族"
 #| "it makes them extremely vulnerable to cold attacks. Despite their magical "
 #| "nature, drakes are incapable of channeling magic in a controlled manner. "
 #| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over its functions of this "
+#| "gives it life, they have no willful control over the functions of this "
 #| "magic.\n"
 #| "\n"
 #| "<header>text='Society'</header>\n"
@@ -5251,12 +5071,12 @@ msgstr "ドレーク族"
 #| "already occupied by the other major races. Instead, they settle in "
 #| "unpopulated areas to establish their own territory there. They primarily "
 #| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain of "
-#| "moss and fungi they cultivate deep in their caverns. The only technology "
-#| "drakes value is armor- and weapon-smithing, and neither know or need "
-#| "other science and culture besides this. However the few implements they "
-#| "do fashion are almost unrivaled in quality, only matched by those "
-#| "produced in the finest Dwarvish foundries.\n"
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. The only "
+#| "technology drakes value is armor- and weapon-smithing, and neither know "
+#| "or need other science and culture besides this. However the few "
+#| "implements they do fashion are almost unrivaled in quality, only matched "
+#| "by those produced in the finest Dwarvish foundries.\n"
 #| "\n"
 #| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
 #| "years. Death in battle is the most preferred way for a drake to leave "
@@ -5345,7 +5165,7 @@ msgid ""
 msgstr ""
 "ドレーク族は大きく、羽があり火を吐く生物で、本物のドラゴンを連想させます。平"
 "均では、大人のドレークはおよそ 3 メートルの高さがあり、人間と馬をあわせた重量"
-"を有に上回ります。彼らの皮膚は硬い鱗でできており、貫通と冷気によるダメージを"
+"を有に上回ります。彼らの皮膚は硬い鱗でできており、刺突と冷気によるダメージを"
 "除くほとんどの物理的な攻撃に対して耐性があります。ドレーク族のほとんどは本当"
 "に飛ぶことができ、素早く長距離を移動することができます。しかしながら、彼らは"
 "本当に重く大きいため、彼らの飛行能力はいくらか制限され、空中では不格好になり"
@@ -5405,17 +5225,17 @@ msgstr ""
 #. [race]: id=dwarf
 #: data/core/units.cfg:91
 msgid "race^Dwarf"
-msgstr "ドワーフ族"
+msgstr "ドワーフ"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:92
 msgid "race+female^Dwarf"
-msgstr "ドワーフ族"
+msgstr "ドワーフ"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:93
 msgid "race^Dwarves"
-msgstr "ドワーフ族"
+msgstr "ドワーフ"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:94
@@ -5506,17 +5326,17 @@ msgstr ""
 #. [race]: id=elf
 #: data/core/units.cfg:111
 msgid "race^Elf"
-msgstr "エルフ族"
+msgstr "エルフ"
 
 #. [race]: id=elf
 #: data/core/units.cfg:112
 msgid "race+female^Elf"
-msgstr "エルフ族"
+msgstr "エルフ"
 
 #. [race]: id=elf
 #: data/core/units.cfg:113
 msgid "race^Elves"
-msgstr "エルフ族"
+msgstr "エルフ"
 
 #. [race]: id=elf
 #: data/core/units.cfg:115
@@ -5688,17 +5508,17 @@ msgstr ""
 #. [race]: id=human
 #: data/core/units.cfg:184
 msgid "race^Human"
-msgstr "人間族"
+msgstr "人間"
 
 #. [race]: id=human
 #: data/core/units.cfg:185
 msgid "race+female^Human"
-msgstr "人間族"
+msgstr "人間"
 
 #. [race]: id=human
 #: data/core/units.cfg:186
 msgid "race^Humans"
-msgstr "人間族"
+msgstr "人間"
 
 #. [race]: id=human
 #: data/core/units.cfg:187
@@ -5777,12 +5597,12 @@ msgstr ""
 #. [race]: id=khalifate
 #: data/core/units.cfg:203
 msgid "race^Khalifate Human"
-msgstr "カリフェイト族"
+msgstr "カリフェイト"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:204
 msgid "race+female^Khalifate Human"
-msgstr "カリフェイト族"
+msgstr "カリフェイト"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:205
@@ -5797,17 +5617,17 @@ msgstr "この一団の説明はまだありません。"
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:217
 msgid "race^Saurian"
-msgstr "トカゲ族"
+msgstr "トカゲ"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:218
 msgid "race+female^Saurian"
-msgstr "トカゲ族"
+msgstr "トカゲ"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:219
 msgid "race^Saurians"
-msgstr "トカゲ族"
+msgstr "トカゲ"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:229
@@ -5834,17 +5654,17 @@ msgstr ""
 #. [race]: id=merman
 #: data/core/units.cfg:240
 msgid "race^Merman"
-msgstr "マーマン族"
+msgstr "マーフォーク"
 
 #. [race]: id=merman
 #: data/core/units.cfg:241
 msgid "race^Mermaid"
-msgstr "マーマン族の女性（マーメイド）"
+msgstr "マーフォーク"
 
 #. [race]: id=merman
 #: data/core/units.cfg:242
 msgid "race^Mermen"
-msgstr "マーマン族"
+msgstr "マーフォーク"
 
 #. [race]: id=merman
 #: data/core/units.cfg:244
@@ -5859,14 +5679,14 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
-"人間と魚を合体させたような存在であるマーマン族は両者の特徴を兼備する謎の種族"
-"です。彼らは強力な尾を持ち、すべての水中または水上で高速な移動が可能です。一"
-"方、器用な手と知性を持ち高度な道具作りの技能も持ちます。生まれつき水の環境に"
-"よく適応しているので、マーマン族は水中でも空気中でも何の苦労もなく呼吸できま"
-"す。よって陸地でも生存自体はできますが、やはり彼らは水域で非常に敏捷かつ機敏"
-"なので、水域から遠く離れた陸地ではめったに見られません。彼らは乾燥した土地で"
-"は全体的に動きにくく不器用で、特に荒地や森を乗り越えるため非常に苦労するの"
-"で、典型的には、彼らは乾燥した土地を嫌います。"
+"人間と魚を合体させたような存在であるマーフォークは両者の特徴を兼備する謎の種"
+"族です。彼らは強力な尾を持ち、すべての水中または水上で高速な移動が可能です。"
+"一方、器用な手と知性を持ち高度な道具作りの技能も持ちます。生まれつき水の環境"
+"によく適応しているので、マーフォークは水中でも空気中でも何の苦労もなく呼吸で"
+"きます。よって陸地でも生存自体はできますが、やはり彼らは水域で非常に敏捷かつ"
+"機敏なので、水域から遠く離れた陸地ではめったに見られません。彼らは乾燥した土"
+"地では全体的に動きにくく不器用で、特に荒地や森を乗り越えるため非常に苦労する"
+"ので、典型的には、彼らは乾燥した土地を嫌います。"
 
 #. [race]: id=monster
 #: data/core/units.cfg:252
@@ -5897,17 +5717,17 @@ msgstr ""
 #. [race]: id=naga
 #: data/core/units.cfg:262
 msgid "race^Naga"
-msgstr "ナーガ族"
+msgstr "ナーガ"
 
 #. [race]: id=naga
 #: data/core/units.cfg:263
 msgid "race^Nagini"
-msgstr "ナーガ族の女性（ナガニ）"
+msgstr "ナーガ"
 
 #. [race]: id=naga
 #: data/core/units.cfg:264
 msgid "race^Nagas"
-msgstr "ナーガ族"
+msgstr "ナーガ"
 
 #. [race]: id=naga
 #: data/core/units.cfg:265
@@ -5934,9 +5754,9 @@ msgstr ""
 "深い水底に潜ることはできません。沿岸部に居住していることは、深海の住人から攻"
 "撃された際に陸地への逃げ道を彼らに与えていますし、足や翼や馬で移動する者から"
 "攻撃された場合には海に逃げ込むことができます。ナーガの体はいくぶん脆弱です"
-"が、しばしば彼らは敵よりも高速で機敏です。彼らはマーマン族と生活圏が重なる部"
-"分があるので、ときどき争いますが、結局ナーガ族は開けた水面より沼や川を好みま"
-"す。"
+"が、しばしば彼らは敵よりも高速で機敏です。彼らはマーフォークと生活圏が重なる"
+"部分があるので、ときどき争いますが、結局ナーガ族は開けた水面より沼や川を好み"
+"ます。"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:273
@@ -5955,22 +5775,6 @@ msgstr "オーガ"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:276
-#, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5987,33 +5791,32 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
-"オーガは野性的で文明化されていない種族であり主に大陸の荒野に住んでいます。肉"
-"体的には、彼らは人間とオークに共通点がありますが、それらを大きく強力にしたよ"
-"うなものです。実際、オーガの子供の頃には大部分の人間とほとんど変りません。人"
-"間の入植地ではオーガは信用されておらず、通常忌み嫌われて武力で追い払われま"
-"す。よって、彼らは人間の文明から離れた山岳地帯で人目を避けて動き回っているの"
-"で、空腹のオーガによる襲撃は旅人や隊商（キャラバン）にとって常に脅威です。"
-"オーガは特別に知的でも敏捷でもありませんが、彼らの肉体的頑強さは味方にできれ"
-"ば他種族の軍隊にとって貴重な財産です。オーガの残忍性を気にしない冷酷な司令官"
-"にとっては彼らは特に利用価値があります。彼らの生態や社会（それが存在するなら"
-"ば）についてはよくわかっていませんが、狼や他の獣と一緒に攻撃してくると言われ"
-"ています。これが、継続的な協力関係なのか、飼いならしているのか、単に一時的な"
-"機会主義なのかはわかっていません。"
+"オーガは野性的で文明を持たない種族であり、主に大陸の荒れ地に暮らしています。"
+"肉体的に、彼らは人間やオークに似ていますが、より大きく強い体をもちます。未成"
+"熟なものでさえ、人間の男性よりも大きいのです。オーガは人口の多い地域では信用"
+"が無く、通常それらを避けるか、彼らに力づくで追い払われます。その代わり、文明"
+"の外れにある山脈に潜んでおり、空腹の山賊オーガは旅人やキャラバンの脅威となっ"
+"ています。オーガは特に賢くも素早くもありませんが、彼らの頑強さと強さは他の種"
+"族の軍隊にとっては価値のあるものです。特に、オーガの凶暴性を気にしない冷酷な"
+"司令官には高く評価されます。彼らの生態や社会については詳しくは分かっていませ"
+"ん。彼らがそのようなものを本当に持っているとしたらですが。しかし、彼らは狼や"
+"他の獣と共に攻撃をすることがあるようです。これが協力関係なのか、家畜化なの"
+"か、それとも単なる日和見主義なのかは分かっていません。"
 
 #. [race]: id=orc
 #: data/core/units.cfg:284
 msgid "race^Orc"
-msgstr "オーク族"
+msgstr "オーク"
 
 #. [race]: id=orc
 #: data/core/units.cfg:285
 msgid "race+female^Orc"
-msgstr "オーク族"
+msgstr "オーク"
 
 #. [race]: id=orc
 #: data/core/units.cfg:286
 msgid "race^Orcs"
-msgstr "オーク族"
+msgstr "オーク"
 
 #. [race]: id=orc
 #: data/core/units.cfg:287
@@ -6284,32 +6087,6 @@ msgstr "アンデッド"
 
 #. [race]: id=undead
 #: data/core/units.cfg:329
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of it’s master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and mermen tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6336,29 +6113,24 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
-"アンデッドは単一の生き物の種族というわけではありませんが、しばしばそのような"
-"ものとして扱われます。どんな死んだ生き物でも、ほとんどが十分に経験を積んだネ"
-"クロマンサーによって、生き返り、アンデッドとなってふたたび立ち上がることがで"
-"きます。アンデッドは大部分において自然に反する、しかし心のない構造物で、彼ら"
-"を作った者ならば誰でも、疑問を持つことも考えることもなく従います。黒魔術のよ"
-"り大きな謎はネクロマンサーからの持続的な作用なしにどのように構造物が動き続け"
-"られるのかということです。アンデッドの生き物は命令し、持ちこたえるためにネク"
-"ロマンサーから継続的な注意を必要とせず、主人の命令に従って独立的に働くことが"
-"できます。ただまれに、おそらく数ヶ月に一度、ネクロマンサーは彼の創造物を維持"
-"する必要があります。\n"
+"アンデッドは本来1つの種族ではありませんが、しばしばそのように扱われます。ほと"
+"んど全ての生物の死体が、熟練したネクロマンサーの手により、動き出して不死とな"
+"ります。アンデッドの不自然で意思の無い構造物であり、何の疑問も無く生み出した"
+"者に従います。降霊術の大きな謎の1つは、ネクロマンサーは手を加えてないのにも関"
+"わらず、その構造物が維持されることです。アンデッドはネクロマンサーの継続的な"
+"命令や支えを必要とせず、主の命にしたがって自動的に動き続けます。ごく稀に、数"
+"カ月に一度、ネクロマンサーは創造物のメンテナンスを必要とするようです。\n"
 "\n"
-"降霊術を使うのはほとんどもっぱら人間に限られています。魔法に長けた種族である"
-"エルフ族やマーマンの伝説においてさえ、彼らの種族で黒魔術を深く研究したという"
-"者はほとんどいません。降霊術の魔法を使うためには相当な適応力と、柔軟な精神が"
-"必要なのだと推測することができます。こういった特徴の究極のものは、ほぼ一般的"
-"に人間に見受けられます。ほとんどのネクロマンサーにとっての究極の目標は命を保"
-"つとともに命を吹き込むこの同じ魔法を彼ら自身にかけ、どんな代償を払ってでも、"
-"彼ら自身の頭脳と精神を保ったまま死を究極的に逃れられるように彼ら自身を変える"
-"ことです。\n"
+"降霊術を行うのはほとんどが人間です。魔術の才のあるエルフやマーマンの伝説にさ"
+"え、闇の魔術を探求した者についてはほとんど伝えられていません。それは、降霊術"
+"を行うには相当な適応力と柔軟な精神が必要になるためだと言われています。それら"
+"の性質は一般的に人間に見られるものなのです。ほとんどのネクロマンサーにとって"
+"の最終的な目標は、生命を保ちつつ吹き込む魔法を自身に掛けて、どんな代償を払っ"
+"てでも自身の魂と心を保ち、死を逃れることです。\n"
 "\n"
-"<header>text='地理'</header>\n"
-"相当な数のアンデッドの支配者たちが大陸に到着したのは Haldric I 世の後であり、"
-"それ以前にはエルフ族もドワーフ族もまったく聞いたことがありませんでした。"
+"<header>text='地理'</header> 多くのアンデッドの支配者たちが大陸に到着したの"
+"は Haldric I 世の後であり、それ以前にはエルフ族もドワーフ族もアンデッドについ"
+"てまったく聞いたことがありませんでした。"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:342
@@ -6427,6 +6199,34 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+"この世界においては、力強いウーズたちは森の奥底にすんでいます。訓練された者で"
+"なければ、ウーズは奇妙な形をした立派な木にしか見えません。森の守護者として、"
+"ウーズはエルフよりも強い森との繋がりを持っています。ウーズは平和的な種族でで"
+"すが、彼らが世話をする古代の森を乱す者がいれば自然の怒りを買うことになりま"
+"す。ウーズは動きの遅い生物で、時の流れにも邪魔されることなく、一つの場所に何"
+"世紀も立っていることもあります。\n"
+"\n"
+"ウーズ自身は魔法を扱うことはありませんが、彼らは妖精との深い繋がりを持ってい"
+"ます。神秘の力（最も強力なエルフが生涯を捧げることで身につけることができる"
+"力）を信仰するエルフの学者によると、この太古の種族について分かっていることと"
+"言えば、ウーズは固有の生き物だということです。ウーズは木に似ていますが、彼ら"
+"の先祖は木とは異なります。ウーズはこの世界で最古の生物の一種だと考えられてお"
+"り、彼らの住む森よりもさらに古く、妖精の力が彼らに森の番人としての使命を与え"
+"ていると言うのです。\n"
+"\n"
+"ウーズは戦いを好まず、戦闘に慣れていません。しかし、森の領土を守るためならば"
+"見境の無い暴力を振るうでしょう。ウーズの動きは鈍く、森林の外では隙だらけで"
+"す。妖精と近しい関係にあるために、彼らは秘術に敏感です。強固な木肌によって彼"
+"らは物理攻撃を殆ど受け付けませんが、その代わりに炎が弱点となっています。ウー"
+"ズは平和的で鈍重な性質を持っていますが、厚い樹皮と妖精の力を利用した高い再生"
+"力によって敵の猛攻を耐えしのぎ、敵を粉砕することができます。森の住処にいると"
+"き、ウーズは木々の間に隠れることで、熟練したエルフの斥候ですらも待ち伏せるこ"
+"とができます。\n"
+"\n"
+"ウーズの生涯は良く分かっていませんが、この太古の種族は何百年と生きる間に大き"
+"く育ちます。ウーズは戦場で死なない限り、寿命が尽きることは無いのかもしれませ"
+"ん。彼らは衛兵のように何世紀も立っているだけで満足し、文明世界に無関心です。"
+"住処である自然世界と森を守るためだけに奮起するのです。"
 
 #: src/help/help.cpp:184
 msgid "Close"
@@ -6449,7 +6249,6 @@ msgstr "ヘルプ文書を解析中にエラー: "
 #~ msgid "Fundamentals of Gameplay"
 #~ msgstr "遊び方の基礎"
 
-# これが終わったら、「王位継承者」キャンペーンを最初にプレイすることをお勧めします。<bold>text='キャンペーン'</bold>、そして<italic>text='「王位継承者」'</italic>をクリックして下さい。<italic>text='Battle for Wesnoth'</italic> はとても難しいため、<italic>text='易しい'</italic>レベルから始めたいと思うかもしれません。
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -6464,9 +6263,11 @@ msgstr "ヘルプ文書を解析中にエラー: "
 #~ "\n"
 #~ "\n"
 #~ "ゲームを最初に始めたら、メインメニューの<bold>text='チュートリアル'</bold>"
-#~ "のボタンをクリックするとよいでしょう。これは、あなたに Wesnoth の基本を教"
-#~ "える対話的なチュートリアルです。次にお勧めするキャンペーンはチュートリアル"
-#~ "の最後に表示されます。"
+#~ "のボタンをクリックするとよいでしょう。これによって、Wesnothの基本を学ぶこ"
+#~ "とができます。次にお勧めするキャンペーンは王位継承者です。<bold>text='キャ"
+#~ "ンペーン'</bold> をクリックし、<italic>text='王位継承者'</italic>を選択し"
+#~ "て下さい。<italic>text='Battle for Wesnoth'</italic>はやりがいのあるゲーム"
+#~ "なので、簡単な所から始めましょう。"
 
 #~ msgid ""
 #~ "These pages outline all you need to know to play <italic>text='Battle for "
@@ -6482,7 +6283,6 @@ msgstr "ヘルプ文書を解析中にエラー: "
 #~ "特殊な例外や状況におけるより詳細な情報については、そこからのリンクを辿って"
 #~ "下さい。"
 
-# [ja] 意訳: 一連の物語を織りなす複数のシナリオ
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -6516,7 +6316,22 @@ msgstr "ヘルプ文書を解析中にエラー: "
 #~ "戦うことができます。"
 
 #~ msgid "Experience and Advancement"
-#~ msgstr "経験と昇進"
+#~ msgstr "経験値とレベルアップ"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
+#~ "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
+#~ "<ref>dst='traits_undead' text='undead'</ref>.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "ユニットに割り振られる他の特性には、<ref>dst='traits_dextrous' text='器"
+#~ "用'</ref>、<ref>dst='traits_loyal' text='忠義'</ref>、"
+#~ "<ref>dst='traits_undead' text='アンデッド'</ref>があります。\n"
+#~ "\n"
 
 #~ msgid ""
 #~ "\n"
@@ -6555,21 +6370,23 @@ msgstr "ヘルプ文書を解析中にエラー: "
 #~ msgid "Factions are only used in multiplayer"
 #~ msgstr "党派はマルチプレイヤーでのみ使用されます"
 
-#, fuzzy
-#~| msgid "Terrain"
 #~ msgid "Base Terrain: "
-#~ msgstr "地形"
+#~ msgstr "ベース地形: "
 
 #~ msgid "level"
 #~ msgstr "レベル"
 
 #~ msgid "Advances from: "
-#~ msgstr "クラスチェンジ元: "
+#~ msgstr "レベルアップ前: "
 
-#, fuzzy
-#~| msgid "Factions:"
+#~ msgid "Base unit: "
+#~ msgstr "ベースユニット: "
+
+#~ msgid "Base units: "
+#~ msgstr "ベースユニット: "
+
 #~ msgid "Variations: "
-#~ msgstr "党派:"
+#~ msgstr "派生: "
 
 #~ msgid "race^Miscellaneous"
 #~ msgstr "その他"
@@ -6588,6 +6405,12 @@ msgstr "ヘルプ文書を解析中にエラー: "
 
 #~ msgid "Moves: "
 #~ msgstr "移動: "
+
+#~ msgid "Vision: "
+#~ msgstr "ビジョン: "
+
+#~ msgid "Jamming: "
+#~ msgstr "ジャミング: "
 
 #~ msgid "Cost: "
 #~ msgstr "コスト: "
@@ -6617,13 +6440,13 @@ msgstr "ヘルプ文書を解析中にエラー: "
 #~ msgstr "特殊"
 
 #~ msgid "Resistances"
-#~ msgstr "抵抗力"
+#~ msgstr "耐性"
 
 #~ msgid "Attack Type"
 #~ msgstr "攻撃型"
 
 #~ msgid "Resistance"
-#~ msgstr "抵抗値"
+#~ msgstr "耐性"
 
 #~ msgid "Terrain"
 #~ msgstr "地形"
@@ -6633,6 +6456,12 @@ msgstr "ヘルプ文書を解析中にエラー: "
 
 #~ msgid "Movement Cost"
 #~ msgstr "移動コスト"
+
+#~ msgid "Vision Cost"
+#~ msgstr "ビジョンコスト"
+
+#~ msgid "Jamming Cost"
+#~ msgstr "ジャミングコスト"
 
 #~ msgid " < Back"
 #~ msgstr " < 戻る"
@@ -6645,906 +6474,3 @@ msgstr "ヘルプ文書を解析中にエラー: "
 
 #~ msgid "corrupted original file"
 #~ msgstr "破損した元のファイル"
-
-#~ msgid "Caste"
-#~ msgstr "階級"
-
-#~ msgid ""
-#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
-#~ "text='Drake Fighter'</ref>."
-#~ msgstr ""
-#~ "ドレークのさまざまな種類のことです。例えば<ref>dst='unit_Drake Clasher' "
-#~ "text='粉砕者'</ref>や<ref>dst='unit_Drake Fighter' text='戦士'</ref>などで"
-#~ "す。"
-
-#~ msgid "Aerie"
-#~ msgstr "Aerie"
-
-#~ msgid ""
-#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
-#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
-#~ "text='breeding pens'</ref>."
-#~ msgstr ""
-#~ "巨大な城のような構築物で<ref>dst='flight' text='飛行可能ドレーク'</ref>の"
-#~ "故郷です。そこには<ref>dst='breeding_pen' text='産卵場'</ref>もあります。"
-
-#~ msgid "Breeding Pen"
-#~ msgstr "産卵場"
-
-#~ msgid ""
-#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
-#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
-#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
-#~ msgstr ""
-#~ "<ref>dst='aerie' text='aerie'</ref> の一部分であり、そこには鈍感な"
-#~ "<ref>dst='breeder' text='産卵者'</ref>が<ref>dst='dominant' text='有力"
-#~ "者'</ref>の目に見える範囲で生活しています。"
-
-#~ msgid "Breeding Cycle"
-#~ msgstr "産卵周期"
-
-#~ msgid ""
-#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
-#~ "the next."
-#~ msgstr ""
-#~ "ある<ref>dst=egg text='卵'</ref>が産み落とされてから次の産卵までの時間。"
-
-#~ msgid "World Ocean"
-#~ msgstr "世界海"
-
-#~ msgid ""
-#~ "The World Ocean is the name of the open seas that surround the "
-#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
-#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
-#~ "deadly waterfall."
-#~ msgstr ""
-#~ "世界海とは <ref>dst='morogor' text='Morogor'</ref> と周辺の島の外に広がる"
-#~ "太洋のことです。ドレークはその果てで巨大な滝から<ref>dst='abyss' text='深"
-#~ "淵'</ref>に落ち込んでいると信じています。"
-
-#~ msgid "New Continent"
-#~ msgstr "新大陸"
-
-#, fuzzy
-#~ msgid ""
-#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
-#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
-#~ msgstr ""
-#~ "新大陸とは <ref>dst='morogor' text='Morogor'</ref> の東方に位置する巨大大"
-#~ "陸のことです。その存在は Galun の探検までドレークには知られていませんでし"
-#~ "た。"
-
-#~ msgid "Abyss"
-#~ msgstr "深淵"
-
-#~ msgid ""
-#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
-#~ "ocean falls off the world-disc."
-#~ msgstr ""
-#~ "ドレークの世界観では、世界全体が乗っている円盤の端から太洋は巨大な滝となっ"
-#~ "て流れ落ちています。"
-
-#~ msgid "Spiral Path"
-#~ msgstr "螺旋の道"
-
-#~ msgid ""
-#~ "A quasi-secret organization among the drakes devoted to avoiding a "
-#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-#~ "Path'</ref>"
-#~ msgstr ""
-#~ "このドレークによる秘密結社は Malthusian の最終戦争を回避することを使命とし"
-#~ "ています。<ref>dst='straight_path' text='真っ直ぐな道'</ref>も参照のこと。"
-
-#~ msgid "Straight Path"
-#~ msgstr "真っ直ぐな道"
-
-#, fuzzy
-#~ msgid ""
-#~ "The drakish tradition of perpetual expansion and conquest. This term is "
-#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
-#~ "Path'</ref>."
-#~ msgstr ""
-#~ "ドレークの伝統である絶え間ない拡大と征服において、この単語は主に"
-#~ "<ref>dst='spiral_path' text='螺旋の道'</ref>の会員によって使用されます。"
-
-#~ msgid "Dominant"
-#~ msgstr "有力者"
-
-#~ msgid ""
-#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
-#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-#~ "privileges on others."
-#~ msgstr ""
-#~ "<ref>dst='aspirant' text='熱望者'</ref>がドレーク部族のトップに上り詰めた"
-#~ "者で、その部族で<ref>dst='breeder' text='産卵者'</ref>と子孫を残すことがで"
-#~ "きる唯一のドレークです。まれに彼は他のドレークに交配権を分け与えることもあ"
-#~ "ります。"
-
-#~ msgid "Vulcaniad"
-#~ msgstr "噴火周期"
-
-#~ msgid ""
-#~ "The (irregular) period between consecutive eruptions of "
-#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-#~ msgstr ""
-#~ "<ref>dst='mount_morogor' text='Morogor 火山'</ref>が噴火してから次に噴火す"
-#~ "るまでの（一定しない）期間。<ref>dst='long_count' text='長い日数'</"
-#~ "ref>（ドレーク暦）はこれを基礎にしています。"
-
-#~ msgid "Recorder"
-#~ msgstr "記録者"
-
-#, fuzzy
-#~ msgid ""
-#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
-#~ "they recruit their members from all of the other castes."
-#~ msgstr ""
-#~ "記録者は<ref>dst='drakish_script' text='ドレークの書'</ref>の熟練者です。"
-#~ "記録者は唯一体力によって地位が決まらないドレークの<ref>dst='caste' "
-#~ "text='階級'</ref>です。"
-
-#~ msgid "Laying"
-#~ msgstr "横になる"
-
-#~ msgid ""
-#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-#~ msgstr "<ref>dst='breeding_cycle' text='産卵周期'</ref>の一部分"
-
-#~ msgid "Hatching"
-#~ msgstr "孵化"
-
-#~ msgid "Hatchling"
-#~ msgstr "ひな"
-
-#~ msgid ""
-#~ "A young drake that has not yet seen another generation hatch. The younger "
-#~ "of the current generation of hatchlings are the most aggressive is the "
-#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
-#~ msgstr ""
-#~ "次の産卵周期のひなが誕生する前の若いドレークです。現世代のひなの若さは"
-#~ "<ref>dst='flight' text='飛行可能ドレーク'</ref>の振る舞いから攻撃性を抽出"
-#~ "したようなものです。"
-
-#~ msgid "Fledgling"
-#~ msgstr "若鳥"
-
-#~ msgid ""
-#~ "A young drake that has seen another generation hatch. If the "
-#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
-#~ msgstr ""
-#~ "次の産卵周期のひなが誕生した後の若いドレークです。もし、一時的離脱を許せる"
-#~ "状況だと<ref>dst='flight' text='飛行可能ドレーク'</ref>が判断すれば、彼ら"
-#~ "は<ref>dst='swarming' text='巣帰り'</ref>できるだけの能力はあります。"
-
-#~ msgid "Breeder"
-#~ msgstr "産卵者"
-
-#~ msgid ""
-#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
-#~ "that become breeders have to be handled with extra care. The number of "
-#~ "breeders is also limited by the amounts of non-breeders around, since "
-#~ "breeders can't take care of their food for themselves when laying. Drake "
-#~ "breeders become fertile after the next <ref>dst='hatching' "
-#~ "text='hatching'</ref>."
-#~ msgstr ""
-#~ "メスのドレークのことです。<ref>dst='egg' text='卵'</ref>から産卵者に育てる"
-#~ "ためには特別に面倒を見る必要があるので彼女達は数少ない存在です。また、産卵"
-#~ "者は産卵期間中に自分自身の食料を確保することができないので産卵者以外のド"
-#~ "レークの数によっても制限されます。ドレークの産卵者は次の"
-#~ "<ref>dst='hatching' text='孵化'</ref>を経た数でその繁殖力が評価されます。"
-
-#~ msgid "Egg, Drake"
-#~ msgstr "ドレークの卵"
-
-#~ msgid ""
-#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
-#~ "laid and to some extent the ambient temperature."
-#~ msgstr ""
-#~ "<ref>dst='hatchling' text='ひな'</ref>が所属する<ref>dst=caste text='階"
-#~ "級'</ref>は以前十分保温された場所に寝かされていました。"
-
-#~ msgid "Flight"
-#~ msgstr "飛行可能ドレーク"
-
-#~ msgid ""
-#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-#~ "text='Dominant'</ref>, who confers mating privileges."
-#~ msgstr ""
-#~ "ドレークの各部族は <ref>dst='aerie' text='Aerie'</ref> に（性的）狩場を"
-#~ "持っています。それぞれの部族にはそれぞれ一人の<ref>dst='dominant' text='有"
-#~ "力者'</ref>がおり、部族民に対して交配権の授与を決定します。"
-
-#~ msgid "Aspirant"
-#~ msgstr "熱望者"
-
-#~ msgid ""
-#~ "Male drake that has passed through a hormonal metamorphosis that makes "
-#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-#~ "secretion of the hormone is caused by hunt and combat actions in which "
-#~ "the drake is involved."
-#~ msgstr ""
-#~ "オスのドレークはホルモンによる変身を経て<ref>dst='breeder' text='産卵者'</"
-#~ "ref>と交配可能となります。ホルモンの分泌は狩りや戦闘におけるドレークの複雑"
-#~ "な行動の原因です。"
-
-#~ msgid "Ascendant"
-#~ msgstr "Ascendant"
-
-#~ msgid ""
-#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-#~ msgstr ""
-#~ "ドレークの名前の一つで<ref>dst='unit_Fire Dragon' text='ドラゴン'</ref>を"
-#~ "意味します。"
-
-#~ msgid "Intendant"
-#~ msgstr "特別任務者"
-
-#~ msgid ""
-#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
-#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
-#~ "'Intendants' are sometimes designated for special duties. Intendants are "
-#~ "likeliest to be granted mating privileges, especially after a notable "
-#~ "service."
-#~ msgstr ""
-#~ "<ref>dst='dominant' text='有力者'</ref>の部下である<ref>dst='aspirant' "
-#~ "text='熱望者'</ref>の内から選抜された者です。 伝統的には彼自身のものとは異"
-#~ "なる<ref>dst=caste text='階級'</ref>の仕事をすることを言いましたが、追加さ"
-#~ "れた意味では「特別任務者」はその名の通り特別な任務を行うことを意味します。"
-#~ "特別任務者として活躍すれば交配権を獲得する近道が開かれます。"
-
-#~ msgid "Swarm"
-#~ msgstr "群れ"
-
-#~ msgid ""
-#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
-#~ msgstr ""
-#~ "<ref>dst='swarmlings' text='巣立ち'</ref>とは成長に伴って "
-#~ "<ref>dst='aerie' text='aerie'</ref> を離れることです."
-
-#~ msgid "Swarming"
-#~ msgstr "巣帰り"
-
-#~ msgid ""
-#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
-#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
-#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
-#~ "<ref>dst='swarm' text='Swarm'</ref>"
-#~ msgstr ""
-#~ "<ref>dst='flight' text='飛行可能ドレーク'</ref>が繁殖のため"
-#~ "<ref>dst='breeding_cycle' text='産卵周期'</ref>のたびに <ref>dst='aerie' "
-#~ "text='aerie'</ref> に戻ってくることです。<ref>dst='swarm' text='群れ'</"
-#~ "ref>も参照のこと。"
-
-#~ msgid "Runners"
-#~ msgstr "逃亡者"
-
-#~ msgid "Drakish term for escaped slaves hunted as game."
-#~ msgstr ""
-#~ "ドレークの用語で逃亡奴隷のことであり、それはゲームとして狩られます。"
-
-#~ msgid "Mount Morogor"
-#~ msgstr "Morogor 火山"
-
-#~ msgid ""
-#~ "Volcanic mountain on the central island of the archipelago "
-#~ "<ref>dst='morogor' text='Morogor'</ref>."
-#~ msgstr "<ref>dst='morogor' text='Morogor'</ref>諸島の中心に位置する大火山"
-
-#~ msgid "Long Count"
-#~ msgstr "長い日数"
-
-#~ msgid ""
-#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
-#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-#~ msgstr ""
-#~ "ドレークの暦は<ref>dst='vulcaniad' text='噴火周期'</ref>と"
-#~ "<ref>dst=breeding_cycle text='産卵周期'</ref>を基礎にしています。"
-
-#~ msgid "Long Pig"
-#~ msgstr "Long Pig"
-
-#~ msgid ""
-#~ "South Seas pidgin for human meat, used to translate a Drakish word with "
-#~ "the same meaning."
-#~ msgstr ""
-#~ "南の海の向こうでの人間の食肉販売業が、ドレーク語にも同じ意味で移入されまし"
-#~ "た。"
-
-#~ msgid "Ceramics"
-#~ msgstr "セラミック"
-
-#~ msgid ""
-#~ "The drakes work metal, but are are masters in the craftsmanship of making "
-#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-#~ "generate the amount of heat to cure the pieces to full strength."
-#~ msgstr ""
-#~ "ドレークには金属加工の技術もありますが、特にセラミックの加工技術が優れてい"
-#~ "ます。ドレークの中で<ref>dst='unit_Drake Burner' text='焼却者'</ref>だけが"
-#~ "小石を溶かして強靭な物体に作り上げられます。"
-
-#~ msgid "Drakish, script"
-#~ msgstr "ドレークの書"
-
-#~ msgid ""
-#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-#~ "text='Recorder'</ref> vocation."
-#~ msgstr ""
-#~ "ドレークの書かれた言葉です。それを<ref>dst='ceramic' text='セラミック'</"
-#~ "ref>の平板に書き記すことが<ref>dst='recorder' text='記録者'</ref>の使命で"
-#~ "す。"
-
-#~ msgid "Drakish, language"
-#~ msgstr "ドレーク語"
-
-#~ msgid "The language spoken by the drakes."
-#~ msgstr "ドレークによって使用されている言語です。"
-
-#~ msgid "Flat"
-#~ msgstr "平地"
-
-#~ msgid ""
-#~ "<italic>text='Grassland'</italic> represents open plains, whether "
-#~ "cultivated, cut back for grazing, or wild. Being open ground, grassland "
-#~ "is both very easy to move across, but is also difficult to defend oneself "
-#~ "in. Typically, those units that perform best on grassland are either "
-#~ "cavalry, or very agile units which take advantage of the open space.\n"
-#~ "\n"
-#~ "Most units have defense of 30 to 40% on grassland."
-#~ msgstr ""
-#~ "平原とは、耕されたり、放牧用に苅られたり、あるいは自然のままの開かれた平地"
-#~ "を表します。開かれた大地であるために、平原では移動するのがとても容易です"
-#~ "が、そこにいるものを防御することが難しくもあります。典型的には、平原で最も"
-#~ "良い働きをするユニットは、騎兵か、または広い土地で有利な超俊敏なユニットで"
-#~ "す。\n"
-#~ "\n"
-#~ "ほとんどのユニットは平原で 30 から 40% の防御を持ちます。"
-
-#~ msgid "Road"
-#~ msgstr "道路"
-
-#~ msgid ""
-#~ "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
-#~ "travelers passing over them. As far as gameplay is concerned, roads "
-#~ "behave as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "道路は、多くの旅行者がその上を通ることで形ができた、踏み固められた土の道で"
-#~ "す。ゲームプレイに関する限り、道路は<ref>dst='terrain_flat' text='平地'</"
-#~ "ref>地形と同じになります。\n"
-#~ "\n"
-
-#~ msgid "Forest"
-#~ msgstr "森"
-
-#~ msgid ""
-#~ "<italic>text='Forests'</italic> represent any woodland with significant "
-#~ "undergrowth, enough to hinder passage. Though they slow nearly everyone "
-#~ "down, forests do offer better defense to most units than open ground. "
-#~ "Cavalry, however, have so much trouble navigating them that any benefit "
-#~ "gained by stealth is negated. Elves are an exception to this general rule "
-#~ "for forests. Not only do they possess full movement in forests, but they "
-#~ "also gain a considerable defensive bonus. Dwarves are another exception "
-#~ "to this rule; though they are able to plow through the forests without "
-#~ "much loss of speed, their utter unfamiliarity with the terrain causes "
-#~ "them to receive no defensive bonus.\n"
-#~ "\n"
-#~ "Most units have 50% defense in forests, but cavalry are limited to 30%. "
-#~ "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted "
-#~ "units. Dwarves generally receive only 30% defense in forests.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "森は、通過するのを妨げるのに十分な、大地に根差す森林地の全てを表します。ほ"
-#~ "ぼ全てのものの歩みを遅くしますが、多くのユニットに対して開かれた土地より良"
-#~ "い防御を与えてくれます。しかしながら騎兵にとっては、隠されることで得られる"
-#~ "どのような恩恵も打ち消されるほど、操るのをひどく困難にしてしまいます。エル"
-#~ "フは森での一般的な規則に対する例外です。森の中でも完全な移動ができるだけで"
-#~ "なく、素晴らしい防御特典も得られるのです。ドワーフはこの規則へのもう一つの"
-#~ "例外で、この地形に全く慣れていない彼等は防御特典を全く受けることができませ"
-#~ "ん。\n"
-#~ "\n"
-#~ "多くのユニットは森で 50% の防御ですが、騎兵は 30% に制限されます。一方でエ"
-#~ "ルフは乗馬中であっても 60 から 70% の防御を享受します。ドワーフは一般的に"
-#~ "森では 30% の防御しか得られません。\n"
-#~ "\n"
-
-#~ msgid "Hills"
-#~ msgstr "丘"
-
-#~ msgid ""
-#~ "<italic>text='Hills'</italic> represent any reasonably rough terrain, "
-#~ "with enough dips and rises in the ground to provide some cover. Hills are "
-#~ "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#~ "enough familiarity with the terrain that they can pass through it without "
-#~ "being slowed down. Cavalry have enough trouble navigating the terrain "
-#~ "that any defensive aid lent by cover is negated.\n"
-#~ "\n"
-#~ "Most units have about 50% defense in hills, whereas cavalry are limited "
-#~ "to 40%. Dwarves enjoy 60% defense in hills.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "丘は、地面の高低差が激しく遮蔽になるような、荒々しい土地を表します。丘はほ"
-#~ "とんどの軍隊にとって進行が困難です。ドワーフとトロルとオークはこの地形に慣"
-#~ "れているため、遅くなることなく通り抜けることができます。騎兵は遮蔽の助けに"
-#~ "よるどのような防御も効果がなくなるほど、操るのに手こずります。\n"
-#~ "\n"
-#~ "ほとんどのユニットは丘で約 50% の防御を持ちますが、騎兵は 40% に抑えられま"
-#~ "す。ドワーフは丘では 60% の防御を享受します。\n"
-#~ "\n"
-
-#~ msgid "Mountains"
-#~ msgstr "山"
-
-#~ msgid ""
-#~ "<italic>text='Mountains'</italic> are steep enough that units often have "
-#~ "to climb over obstacles to move. By this nature, they provide a "
-#~ "considerable defensive bonus for most troops, but they also severely "
-#~ "impede any passage through them. Most cavalry simply cannot enter "
-#~ "mountainous terrain; however, elvish cavalry is an exception to this, as "
-#~ "are the goblin wolf riders. Both dwarves and trolls are native to "
-#~ "mountainous terrain, and have a very easy time getting around.\n"
-#~ "\n"
-#~ "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#~ "70%."
-#~ msgstr ""
-#~ "山は、しばしば移動のために障害物を登る必要のある険しい場所です。このため多"
-#~ "くの軍隊に対して素晴らしい防御を提供しますが、通り抜けて行くことをひどく妨"
-#~ "げます。ほとんどの騎兵は山岳地形には入っていくことさえもできませんが、エル"
-#~ "フの騎兵とゴブリンの狼乗りだけはこの例外です。ドワーフとトロルは山岳地形で"
-#~ "生まれており、移動することは容易です。\n"
-#~ "\n"
-#~ "多くのユニットは山で 60% の防御になりますが、ドワーフは 70% を享受します。"
-
-#~ msgid "Swamp"
-#~ msgstr "沼地"
-
-#~ msgid ""
-#~ "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps "
-#~ "slow down nearly everyone, and inhibit their ability to defend "
-#~ "themselves. An exception to this is any race bodily skilled in navigating "
-#~ "water; these receive both full movement and a defensive bonus. Those that "
-#~ "make their living in the wetlands are also adept at using this terrain "
-#~ "for cover.\n"
-#~ "\n"
-#~ "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
-#~ "all generally enjoy 60%."
-#~ msgstr ""
-#~ "沼地はあらゆる湿地帯を表します。沼地はほぼ全てのものの動きを遅くし、自分自"
-#~ "身を守る能力を制約します。これに対する例外は水中移動の身体能力をもつ全ての"
-#~ "種族で、完全な移動と防御特典を受けます。湿地帯で生きる者達はこの地形を防御"
-#~ "に役立てることもできます。\n"
-#~ "\n"
-#~ "多くのユニットは沼地で 30% の防御となります。 マーマン、ナーガ、トカゲ族は"
-#~ "全て一般的に 60% を享受します。"
-
-#~ msgid "Shallow Water"
-#~ msgstr "浅瀬"
-
-#~ msgid ""
-#~ "<italic>text='Shallow water'</italic> represents any body of water deep "
-#~ "enough to come up to roughly a man’s waist. This is enough to slow down "
-#~ "nearly anyone and leave them wide open to attack. Dwarves, given that the "
-#~ "water reaches up almost to their heads, have an extremely hard time of "
-#~ "this. The exception is any race whose bodies naturally lend themselves to "
-#~ "swimming, for which they receive a considerable defensive bonus and full "
-#~ "movement.\n"
-#~ "\n"
-#~ "Most units make do with 20 to 30% defense in shallow water, whereas both "
-#~ "naga and mermen enjoy 60%."
-#~ msgstr ""
-#~ "浅瀬はだいたい人間の腰までの深さの水の状態を表します。これはほぼ全てのもの"
-#~ "の動きを遅くし、防御能力を低下させてしまいます。ドワーフは、ほぼ頭まで水が"
-#~ "達してしまうため、ここにいることは非常に困難となります。例外は泳ぐための身"
-#~ "体能力を生まれながらに持っている種族で、極めて高い防御特典と完全な移動を得"
-#~ "ることができます。\n"
-#~ "\n"
-#~ "多くのユニットは浅瀬で 20 から 30% の防御を持ち、ナーガとマーマンは共に "
-#~ "60% を享受します。"
-
-#~ msgid "Deep Water"
-#~ msgstr "深水"
-
-#~ msgid ""
-#~ "<italic>text='Deep water'</italic> represents any body of water deep "
-#~ "enough to cover a man’s head. Most units cannot enter deep water: it is "
-#~ "the domain of units which can either fly, or are exceptionally strong "
-#~ "swimmers.\n"
-#~ "\n"
-#~ "Mermen and naga both receive 50% defense in deep water, with full "
-#~ "movement."
-#~ msgstr ""
-#~ "深水は、人間の頭を越える深さの水の状態を表します。ほとんどのユニットは深水"
-#~ "には入れず、飛ぶことができるか、泳ぐのが極めて得意なものだけが、この領域に"
-#~ "入れます。\n"
-#~ "\n"
-#~ "深水でマーマンとナーガは共に 50% の防御と完全な移動を行います。"
-
-#~ msgid "Frozen"
-#~ msgstr "凍土"
-
-#~ msgid ""
-#~ "<italic>text='Frozen'</italic> terrain represents any flat area that is "
-#~ "covered by snow or ice. Most units are slowed down on it, and have a "
-#~ "harder time defending themselves. Note that swimming units, even those "
-#~ "who can breathe underwater, cannot swim underneath ice.\n"
-#~ "\n"
-#~ "Most units have 20 to 40% defense in frozen terrain."
-#~ msgstr ""
-#~ "凍結した地形は、雪や氷で覆われた平らな地形を表します。ほとんどのユニットは"
-#~ "この地形上で動きが遅くなるため、自分自身を守るのにも苦労します。ユニット"
-#~ "は、たとえ水中で呼吸できたとしても、氷の下を泳げないことに注意してくださ"
-#~ "い。\n"
-#~ "\n"
-#~ "ほとんどのユニットが雪原で 20 から 40% の防御になります。"
-
-#~ msgid "Castle"
-#~ msgstr "城"
-
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#~ "Nearly all units receive a considerable bonus to their defense by being "
-#~ "stationed in a castle, and most units receive full movement in a castle. "
-#~ "Stationing units in a castle represents its defensive capability. Without "
-#~ "a unit in each wall hex, an enemy can simply sneak into the castle "
-#~ "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#~ "\n"
-#~ "Most units have about 60% defense in a castle.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "城はあらゆる種類の永久的な要塞です。城に駐留することで、ほとんどすべてのユ"
-#~ "ニットは防御について素晴らしい特典を受けます。またすべてのユニットは城では"
-#~ "完全に移動できます。城に駐留するユニットは完全な防御能力を示します。それぞ"
-#~ "れの壁のヘクスにユニットがいなければ、敵は簡単に城の中に忍び込むことがで"
-#~ "き、中にいる全てのものと同様の防御特典を得ることになります。\n"
-#~ "\n"
-#~ "ほとんどのユニットは城で 60% の防御になります。\n"
-#~ "\n"
-
-#~ msgid "Sand"
-#~ msgstr "砂地"
-
-#~ msgid ""
-#~ "The instability of <italic>text='sand'</italic> makes it harder for most "
-#~ "units to cross, and leaves them wide open to attack. In contrast, the "
-#~ "wide feet or snakelike bodies of the reptilian races make sand much "
-#~ "easier for them to navigate.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in sand."
-#~ msgstr ""
-#~ "砂の不安定さのため、多くのユニットが通り抜けが困難で、攻撃に対して無防備に"
-#~ "なってしまいます。一方で巨大な足や蛇型の身体のトガケ種族は砂での行動がずっ"
-#~ "と容易になります。\n"
-#~ "\n"
-#~ "多くのユニットは砂地において 20 から 40% の防御を持ちます。"
-
-#~ msgid "Desert"
-#~ msgstr "砂漠"
-
-#~ msgid ""
-#~ "<italic>text='Deserts'</italic> have a somewhat different composition "
-#~ "than small sand pits or beaches, however for gameplay purposes they are "
-#~ "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
-#~ msgstr ""
-#~ "砂漠は小さな砂の穴や砂浜とは少しばかり性質が異なりますが、ゲームプレイの目"
-#~ "的では同じ扱いです。<ref>dst='terrain_sand' text='砂地'</ref>を参照してく"
-#~ "ださい。"
-
-#~ msgid "Cave"
-#~ msgstr "洞窟"
-
-#~ msgid ""
-#~ "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#~ "with enough room for a unit to pass. Most units are wholly unfamiliar "
-#~ "with the terrain, and thus are both slowed down and hindered in defense. "
-#~ "Dwarves and trolls, who make their homes in caves, both have a relatively "
-#~ "easy time navigating this terrain, especially dwarves, who by dint of "
-#~ "their small size can navigate many obstacles that other races cannot. "
-#~ "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#~ "text='illuminated'</ref>.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
-#~ msgstr ""
-#~ "洞窟の地形はユニットが通り抜けられるだけの十分な空間のある地下の空洞を表し"
-#~ "ています。ほとんどのユニットはこの地形に十分慣れておらず、それゆえ歩みが遅"
-#~ "く防御を妨げられます。住まいを洞窟に作るドワーフ族とトロル族は、共にこの地"
-#~ "形では比較的容易に行動し、特にドワーフ族はその小さな身体で他の種族では通れ"
-#~ "ないような多くの障害物も乗り越えられます。時には、洞窟は"
-#~ "<ref>dst='terrain_illuminated_cave' text='照らされている'</ref>ことがあり"
-#~ "ます。\n"
-#~ "\n"
-#~ "多くのユニットは洞窟で 20 から 40% の防御となり、ドワーフ族は 50% です。"
-
-#~ msgid "Rockbound Cave"
-#~ msgstr "岩に囲まれた洞窟"
-
-#~ msgid ""
-#~ "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#~ "water and wind, carrying erosive particles that carve the rock. It "
-#~ "resembles a scraggy underground cavern which reduces efficiency of most "
-#~ "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#~ "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#~ "who by dint of their small size have the full advantage of navigation in "
-#~ "such topography. Occasionally caves are "
-#~ "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#~ "\n"
-#~ "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#~ "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
-#~ msgstr ""
-#~ "<italic>text='岩に囲まれた洞窟'</italic>の地形は水や風の作用によって作られ"
-#~ "たものです。水や風は岩を削る浸食作用のある粒子を運んでいるのです。ごつごつ"
-#~ "した地下の洞窟に似て、ほとんどのユニットの動きを妨げますが、防御力は高くな"
-#~ "ります。洞窟の主要な居住者であるドワーフ族やトロル族は、比較的楽にこの地形"
-#~ "を進むことができます。ドワーフ族は、その小さな体を生かし、このような地形を"
-#~ "歩くのに最も有利です。時には、洞窟は<ref>dst='terrain_illuminated_cave' "
-#~ "text='照らされている'</ref>ことがあります。\n"
-#~ "\n"
-#~ "ほとんどのユニットは岩の多い洞窟ではおよそ 50% の防御を得ます。一方騎兵は "
-#~ "40% に制限されます。ドワーフ族は岩に囲まれた洞窟では 60% の防御を享受しま"
-#~ "す。"
-
-#~ msgid "Illuminated Cave"
-#~ msgstr "照らされた洞窟"
-
-#~ msgid ""
-#~ "Rare patches of the underground world are illuminated by light from the "
-#~ "surface shining down into the gloomy darkness. This provides an attack "
-#~ "bonus for lawful units and removes the attack bonus from chaotic units. "
-#~ "In all other regards this terrain is functionally identical to normal "
-#~ "<ref>dst='terrain_cave' text='cave terrains'</ref>."
-#~ msgstr ""
-#~ "表面からの光が暗闇を照らしている地下の世界では珍しい土地です。これによって"
-#~ "秩序ユニットは攻撃ボーナスを得、混沌ユニットは攻撃ボーナスを失います。それ"
-#~ "以外のすべての点において、この地形は通常の<ref>dst='terrain_cave' text='洞"
-#~ "窟の地形'</ref>と同じです。"
-
-#~ msgid "Mushroom Grove"
-#~ msgstr "キノコの森"
-
-#~ msgid ""
-#~ "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#~ "giant mushrooms, which thrive in the damp darkness. Most units have "
-#~ "trouble negotiating the spongy floor of smaller fungi, but they have "
-#~ "plenty of cover behind the larger stalks. Mounted units, however, become "
-#~ "completely mired and lack proper freedom of movement in combat. Undead "
-#~ "units have a natural affinity for decay and function quite well in "
-#~ "mushroom forests.\n"
-#~ "\n"
-#~ "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#~ "receive only 20%."
-#~ msgstr ""
-#~ "<italic>text='キノコの森'</italic>は地下にある広大な巨大キノコでできた森で"
-#~ "す。巨大キノコは湿気のある暗闇でよく育ちます。ほとんどのユニットは小さな菌"
-#~ "類でできたスポンジのような床をうまく通り抜けることができませんが、大きな茎"
-#~ "の背後にはたくさんの避難場所があります。しかしながら、騎乗したユニットは、"
-#~ "完全につかまってしまい、戦闘において自由に動くことができません。アンデッド"
-#~ "ユニットは腐食という共通点があるため、キノコの森ではとてもよく機能しま"
-#~ "す。\n"
-#~ "\n"
-#~ "ほとんどのユニットはキノコの森において 50% から 60% の防御を得ます。一方、"
-#~ "騎兵は 20% しか得ることができません。"
-
-#~ msgid "Village"
-#~ msgstr "村"
-
-#~ msgid ""
-#~ "<italic>text='Villages'</italic> represent any group of buildings, human "
-#~ "or otherwise. Almost all units, even cavalry, have an easy time "
-#~ "navigating villages, and most units gain a defensive bonus from being "
-#~ "stationed in a village. Villages allow units the resources to clean and "
-#~ "tend to their wounds, which allows any unit stationed therein to heal "
-#~ "eight hitpoints each turn, or to be cured of poison.\n"
-#~ "\n"
-#~ "Most units have 50 to 60% defense in villages, whereas cavalry receive "
-#~ "only 40%.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "村は、人間族やその他の種族の建物を意味します。騎兵のようなユニットを含むほ"
-#~ "とんど全てのユニットは、村を容易に通過することができます。また、多くのユ"
-#~ "ニットは村に駐留することで上手く防御できるようになります。村では、ユニット"
-#~ "を清潔にし傷を介抱する能力によって、8 HPの回復、もしくは毒の治療が行われま"
-#~ "す。\n"
-#~ "\n"
-#~ "ほとんどのユニットは村に駐留することで 50 から 60% の防御を得ますが、騎兵"
-#~ "は 40% のみになります。\n"
-#~ "\n"
-
-#~ msgid "Submerged Village"
-#~ msgstr "水中の村"
-
-#~ msgid ""
-#~ "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
-#~ "nagas. While water-dwelling creatures are at home here, land-dwellers "
-#~ "have a hard time navigating and defending these villages. However, like "
-#~ "any village, the facilites are available to all creatures which allow "
-#~ "units to tend to their wounds. Any unit stationed in a village can heal "
-#~ "eight hitpoints each turn, or be cured of poison.\n"
-#~ "\n"
-#~ "Merfolk and nagas have 60% defense in submerged villages, whereas land "
-#~ "based units usually have a low defense."
-#~ msgstr ""
-#~ "水中の村は海の種族とナーガの住処です。水中にすむ生き物にとっては家にいるよ"
-#~ "うなものですが、陸にすむものにとってはこれらの村を通ったりこれらの村を防御"
-#~ "したりするのは困難です。しかしながら、他の村と同じように、すべての生き物の"
-#~ "ための設備があり、これによって傷を癒すことができます。村に配置されているユ"
-#~ "ニットはすべて各ターンに 8 HP の回復もしくは毒の治療を受けることができま"
-#~ "す。\n"
-#~ "\n"
-#~ "海の種族とナーガは水中の村で 60% の防御を得ますが、陸のユニットは通常低い"
-#~ "防御となります。"
-
-#~ msgid "Unwalkable"
-#~ msgstr "歩行不能"
-
-#~ msgid ""
-#~ "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge "
-#~ "which, as the name implies, cannot be crossed simply by walking. Chasms "
-#~ "are noted for sheer walls which would take days to traverse. As far as "
-#~ "gameplay is concerned, only units capable of flying can cross this "
-#~ "terrain."
-#~ msgstr ""
-#~ "歩行不能な地形は、その名の示す通り、単に歩いては渡れない亀裂や峡谷を含みま"
-#~ "す。地面の割れ目は通過するのに何日もかかる垂直に切り立った壁になっていま"
-#~ "す。ゲームプレイに関して言えば、空を飛ぶ能力を持ったユニットのみがこの地形"
-#~ "を通過できます。"
-
-#~ msgid "Lava"
-#~ msgstr "溶岩"
-
-#~ msgid ""
-#~ "The dangers inherent in trying to walk on <italic>text='lava'</italic> "
-#~ "are fairly obvious. As far as movement is concerned, lava is equivalent "
-#~ "to <ref>dst='terrain_unwalkable' text='unwalkable'</ref> terrain, and can "
-#~ "only be crossed by those units capable of flying a considerable distance "
-#~ "above it. The molten magma also produces a substantial glow, illuminating "
-#~ "the area immediately above it. This provides an attack bonus for lawful "
-#~ "units and removes the attack bonus from chaotic units."
-#~ msgstr ""
-#~ "溶岩の上を歩こうとすることによる危険は極めて明らかです。移動に関する限り、"
-#~ "溶岩は<ref>dst='terrain_unwalkable' text='歩行不能'</ref>地形と同等であ"
-#~ "り、十分に距離を取ってその上を飛び抜けられる能力を持ったユニットのみが、こ"
-#~ "の地形を越えられます。また溶解したマグマは、そのすぐ上のエリアを明るく照ら"
-#~ "す多大な光を生じます。これは秩序ユニットに対して攻撃のボーナスを与え、混沌"
-#~ "ユニットからは攻撃ボーナスを奪います。"
-
-#~ msgid "River Ford"
-#~ msgstr "川の浅瀬"
-
-#~ msgid ""
-#~ "When a river happens to be extremely shallow, passing over it is a "
-#~ "trivial matter for land based units. Moreover, any creature best adapted "
-#~ "to swimming has full mobility even at such places in the river. As far as "
-#~ "gameplay is concerned, a river ford is treated as either grassland or "
-#~ "shallow water, choosing whichever one offers the best defensive and "
-#~ "movement bonuses for the unit on it."
-#~ msgstr ""
-#~ "河川が極めて浅いならば、それを通り越えようとすることは、歩行型ユニットで"
-#~ "あっても珍しいことではありません。さらには泳ぎに最も適した生き物であれば、"
-#~ "河川のそのような場所であっても完全な移動を行うことができます。ゲームプレイ"
-#~ "に関する限り、川の浅瀬は草原か浅い水かで、そこにいるユニットにとって最も防"
-#~ "御と移動力ボーナスの大きい方が選択されます。"
-
-#~ msgid "Coastal Reef"
-#~ msgstr "沿岸の暗礁"
-
-#~ msgid ""
-#~ "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
-#~ "and sand. This provides most land units with a more steady footing and "
-#~ "defensive positions than wading in shallow water normally would and also "
-#~ "grants most water-dwelling races an exceptionally high defense.\n"
-#~ "\n"
-#~ "Mermen and Naga both receive 70% defense on coastal reefs."
-#~ msgstr ""
-#~ "沿岸の暗礁は岩や珊瑚、砂によって形成される浅瀬です。ほとんどの陸のユニット"
-#~ "に、通常浅瀬を渡る時よりもしっかりとした足場と防御地点を提供します。そして"
-#~ "ほとんどの水棲種族には例外的に高い防御率が与えられます。\n"
-#~ "\n"
-#~ "マーマンとナーガは沿岸の暗礁では両方とも 70% の防御を得ます。"
-
-#~ msgid "Bridge"
-#~ msgstr "橋"
-
-#~ msgid ""
-#~ "To those capable of building one, the ability to lay a "
-#~ "<italic>text='bridge'</italic> offers a liberation from the fickle nature "
-#~ "of waterways, whose fords come and go with the rise and fall of the "
-#~ "waterline. This is to say nothing of the luxury of dry feet, the loss of "
-#~ "which is no laughing matter in the cold months of the year.\n"
-#~ "\n"
-#~ "For those who go by land or sea, a bridge is the best of both worlds — "
-#~ "for gameplay purposes, it is treated either as grassland or the "
-#~ "underlying water, whichever offers the best movement and defensive "
-#~ "bonuses for the unit occupying the bridge hex. Note that a swimming unit "
-#~ "and a land unit are not capable of occupying a bridge hex at the same "
-#~ "time."
-#~ msgstr ""
-#~ "これを築ける者にとって、橋を渡すという能力は、上り下りの流れをともなう不安"
-#~ "定な自然の川の流れから解放してくれます。足が濡れずにすむ贅沢は言うまでもな"
-#~ "く、一年のうちの凍える何ヶ月もの間にはとても笑えない苦労をなくしてくれるの"
-#~ "です。\n"
-#~ "\n"
-#~ "陸や海を移動する者にとって、橋はどちらの世界でも最良のものであり、ゲームプ"
-#~ "レイにおける意味としては草原と浅瀬のいずれかとして扱われ、橋ヘクスを占拠す"
-#~ "るユニットにとって最も防御と移動力ボーナスの大きい方が選択されます。泳ぐユ"
-#~ "ニットと歩行型ユニットは同時に橋ヘクスを占拠することができないことに注意し"
-#~ "て下さい。"
-
-#~ msgid "Impassable"
-#~ msgstr "通行不能"
-
-#~ msgid ""
-#~ "Obstacles that not even the most determined traveler may overcome include "
-#~ "solid walls of stone and mountains so tall and steep that they are "
-#~ "constantly wreathed in cloud. Even flying creatures cannot navigate the "
-#~ "jagged peaks at such rarified heights, and not even the fiercest troll "
-#~ "can smash through thick walls of stone."
-#~ msgstr ""
-#~ "どんなに決心の固い旅行者ですら踏破できない障害物には、硬い石の壁や、非常に"
-#~ "高く急なため、常に雲に覆われている山々が含まれます。飛ぶことのできる生き物"
-#~ "であっても、このような空気の薄い高地のギザギザの山頂を超えることはできず、"
-#~ "最も荒々しいトロルですら分厚い石の壁を打ち抜くことができません。"
-
-#~ msgid ""
-#~ "Berserk:\n"
-#~ "Whether used offensively or defensively, this attack presses the "
-#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#~ "have occurred."
-#~ msgstr ""
-#~ "狂戦:\n"
-#~ "攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘"
-#~ "ユニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるま"
-#~ "で。"
-
-#~ msgid ""
-#~ "Magical:\n"
-#~ "This attack always has a 70% chance to hit regardless of the defensive "
-#~ "ability of the unit being attacked."
-#~ msgstr ""
-#~ "魔法:\n"
-#~ "この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率"
-#~ "が 70% となります。"
-
-#~ msgid "firststrike"
-#~ msgstr "先制"
-
-#~ msgid ""
-#~ "First Strike:\n"
-#~ "This unit always strikes first with this attack, even if they are "
-#~ "defending."
-#~ msgstr ""
-#~ "先制:\n"
-#~ "このユニットは、たとえ防御時であっても常にこの攻撃で先に攻撃します。"
-
-#~ msgid ""
-#~ "Feeding:\n"
-#~ "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#~ "living unit."
-#~ msgstr ""
-#~ "摂食:\n"
-#~ "このユニットは生きているユニットを殺すことで最大ヒットポイントが 1 増加し"
-#~ "ます。"
-
-#~ msgid ""
-#~ "Some weapons have special features that increase the effectiveness of "
-#~ "attacking with them.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "いくつかの武器には独特な特徴があり、その武器による攻撃の効果を高めます。\n"
-#~ "\n"
-
-#, fuzzy
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='命中率'</header>"

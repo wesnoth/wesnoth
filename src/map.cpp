@@ -40,9 +40,6 @@ static lg::log_domain log_config("config");
 #define LOG_G LOG_STREAM(info, lg::general)
 #define DBG_G LOG_STREAM(debug, lg::general)
 
-const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
-const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
-
 /** Gets the list of terrains. */
 const t_translation::t_list& gamemap::get_terrain_list() const
 {
@@ -116,8 +113,7 @@ gamemap::gamemap(const tdata_cache& tdata, const std::string& data):
 		h_(-1),
 		total_width_(0),
 		total_height_(0),
-		border_size_(gamemap::SINGLE_TILE_BORDER),
-		usage_(IS_MAP)
+		border_size_(default_border)
 {
 	DBG_G << "loading map: '" << data << "'\n";
 
@@ -134,25 +130,18 @@ gamemap::gamemap(const tdata_cache& tdata, const config& level):
 		h_(-1),
 		total_width_(0),
 		total_height_(0),
-		border_size_(gamemap::SINGLE_TILE_BORDER),
-		usage_(IS_MAP)
+		border_size_(default_border)
 {
 	DBG_G << "loading map: '" << level.debug() << "'\n";
 
-	const config& map_child = level.child_or_empty("map");
-
-	if (map_child.empty()) {
-		const std::string& map_data = level["map_data"];
-		if (!map_data.empty()) {
-			read(map_data);
-		} else {
-			w_ = 0;
-			h_ = 0;
-			total_width_ = 0;
-			total_height_ = 0;
-		}
+	const std::string& map_data = level["map_data"];
+	if (!map_data.empty()) {
+		read(map_data);
 	} else {
-		read(map_child["data"], true, map_child["border_size"], map_child["usage"]);
+		w_ = 0;
+		h_ = 0;
+		total_width_ = 0;
+		total_height_ = 0;
 	}
 }
 
@@ -160,11 +149,10 @@ gamemap::~gamemap()
 {
 }
 
-void gamemap::read(const std::string& data, const bool allow_invalid, int border_size, std::string usage) {
+void gamemap::read(const std::string& data, const bool allow_invalid, int border_size) {
 
 	// Initial stuff
 	border_size_ = border_size;
-	set_usage(usage);
 	tiles_.clear();
 	villages_.clear();
 	std::fill(startingPositions_, startingPositions_ +
@@ -248,31 +236,6 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 	}
 }
 
-void gamemap::set_usage(const std::string& usage)
-{
-	utils::string_map symbols;
-	symbols["border_size_key"] = "border_size";
-	symbols["usage_key"] = "usage";
-	symbols["usage_val"] = usage;
-	const std::string msg = "'$border_size_key|' should be "
-		"'$border_size_val|' when '$usage_key| = $usage_val|'";
-
-	if(usage == "map") {
-		usage_ = IS_MAP;
-		symbols["border_size_val"] = "1";
-		VALIDATE(border_size_ == 1, vgettext(msg.c_str(), symbols));
-	} else if(usage == "mask") {
-		usage_ = IS_MASK;
-		symbols["border_size_val"] = "0";
-		VALIDATE(border_size_ == 0, vgettext(msg.c_str(), symbols));
-	} else if(usage == "") {
-		throw incorrect_map_format_error("Map has a header but no usage");
-	} else {
-		std::string msg = "Map has a header but an unknown usage:" + usage;
-		throw incorrect_map_format_error(msg);
-	}
-}
-
 int gamemap::read_header(const std::string& data)
 {
 	// Test whether there is a header section
@@ -297,7 +260,6 @@ int gamemap::read_header(const std::string& data)
 	::read(header, header_str);
 
 	border_size_ = header["border_size"];
-	set_usage(header["usage"]);
 
 	return header_offset + 2;
 }
@@ -322,29 +284,6 @@ std::string gamemap::write() const
 		<< "\n";
 	return s.str();
 }
-
-/*
-void gamemap::write(config& cfg) const
-{
-	// Convert the starting positions to a map
-	std::map<int, t_translation::coordinate> starting_positions;
-	for (int i = 0; i < MAX_PLAYERS + 1; ++i)
-	{
-		if (!on_board(startingPositions_[i])) continue;
-		t_translation::coordinate position(
-				  startingPositions_[i].x + border_size_
-				, startingPositions_[i].y + border_size_);
-		starting_positions[i] = position;
-	}
-
-	cfg["border_size"] = border_size_;
-	cfg["usage"] = (usage_ == IS_MAP ? "map" : "mask");
-
-	std::ostringstream s;
-	s << t_translation::write_game_map(tiles_, starting_positions);
-	cfg["data"] = s.str();
-}
-*/
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
 {
@@ -372,8 +311,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			config::const_child_iterator rule = rules.first;
 			for( ; rule != rules.second; ++rule)
 			{
-				static const std::string src_key = "old", src_not_key = "old_not",
-				                         dst_key = "new", dst_not_key = "new_not";
+				static const std::string src_key = "old", dst_key = "new";
 				const config &cfg = *rule;
 				const t_translation::t_list& src = t_translation::read_list(cfg[src_key]);
 
@@ -381,21 +319,9 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 					continue;
 				}
 
-				const t_translation::t_list& src_not = t_translation::read_list(cfg[src_not_key]);
-
-				if(!src_not.empty() && t_translation::terrain_matches(current, src_not)) {
-					continue;
-				}
-
 				const t_translation::t_list& dst = t_translation::read_list(cfg[dst_key]);
 
 				if(!dst.empty() && t_translation::terrain_matches(t, dst) == false) {
-					continue;
-				}
-
-				const t_translation::t_list& dst_not = t_translation::read_list(cfg[dst_not_key]);
-
-				if(!dst_not.empty() && t_translation::terrain_matches(t, dst_not)) {
 					continue;
 				}
 

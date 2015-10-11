@@ -132,7 +132,7 @@ public:
 
 	bool has_time_area() const;
 
-	const tod_manager & get_tod_man() const { return tod_manager_; } /**< Allows this class to properly implement filter context, used for animations */
+	const tod_manager & get_tod_man() const { return *tod_manager_; } /**< Allows this class to properly implement filter context, used for animations */
 
 protected:
 	/**
@@ -214,8 +214,7 @@ public:
 	 */
 	enum tgame_mode {
 		RUNNING,         /**< no linger overlay, show fog and shroud. */
-		LINGER_SP,       /**< linger overlay, show fog and shroud. */
-		LINGER_MP };     /**< linger overlay, show fog and shroud. */
+		LINGER };     /**< linger overlay, show fog and shroud. */
 
 	void set_game_mode(const tgame_mode game_mode);
 
@@ -224,7 +223,10 @@ public:
 
 	/// Rebuilds the screen if needs_rebuild(true) was previously called, and resets the flag.
 	bool maybe_rebuild();
-
+	void reset_tod_manager(const tod_manager& tod_manager)
+	{
+		tod_manager_ = &tod_manager;
+	}
 private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
@@ -241,7 +243,7 @@ private:
 
 	pathfind::marked_route route_;
 
-	const tod_manager& tod_manager_;
+	const tod_manager* tod_manager_;
 
 	void invalidate_route();
 

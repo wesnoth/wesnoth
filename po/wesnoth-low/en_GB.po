@@ -1,12 +1,13 @@
 # translation of en_GB.po to English (British)
 # Steven Panek <Majora700@gmail.com>, 2011.
+# Wedge009 <wedge009@wedge009.net>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
-"PO-Revision-Date: 2012-12-26 23:09-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"PO-Revision-Date: 2015-08-30 22:11+1000\n"
+"Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
 "Language: en_GB\n"
@@ -14,6 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.4\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:48
@@ -66,7 +68,7 @@ msgstr "Lord"
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
 msgid "(Challenging)"
-msgstr ""
+msgstr "(Challenging)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
@@ -256,14 +258,8 @@ msgstr "The Uprooting"
 
 #. [scenario]: id=01_The_Uprooting
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and fight</i>"
 msgid "Chapter One: Flight and Fight"
-msgstr ""
-"Chapter One,\n"
-"<i>Flight and Fight</i>"
+msgstr "Chapter One: Flight and Fight"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:30
@@ -276,10 +272,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and fight</i>"
 msgid ""
 "Chapter One,\n"
 "<i>Flight and Fight</i>"
@@ -688,15 +680,11 @@ msgstr "Swordsmen you shall have, as swiftly as I can find them and return."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:500
-#, fuzzy
-#| msgid ""
-#| "Velon has fallen. He counseled weakness, but did not deserved such an "
-#| "ugly death. We shall return with swords to avenge him!"
 msgid ""
 "Velon has fallen. He counseled weakness, but did not deserve such an ugly "
 "death. We shall return with swords to avenge him!"
 msgstr ""
-"Velon has fallen. He counselled weakness, but did not deserved such an ugly "
+"Velon has fallen. He counselled weakness, but did not deserve such an ugly "
 "death. We shall return with swords to avenge him!"
 
 #. [message]: race=orc
@@ -1188,14 +1176,8 @@ msgstr "The Elvish Treasury"
 
 #. [scenario]: id=04_The_Elvish_Treasury
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Chapter Two,\n"
-#| "<i>The Treasury</i>"
 msgid "Chapter Two: The Treasury"
-msgstr ""
-"Chapter Two,\n"
-"<i>The Treasury</i>"
+msgstr "Chapter Two: The Treasury"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:31
@@ -1598,7 +1580,7 @@ msgstr "Traur"
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:246
 msgid "Try to save leveled dwarf units"
-msgstr ""
+msgstr "Try to save higher-level dwarf units"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:256
@@ -1770,7 +1752,7 @@ msgid ""
 "(Player(s) own more than 25 units while the foes’ numbers fell below 15)"
 msgstr ""
 "You must own the field and be capable of overwhelming your opponents. "
-"(Player(s) own more than 25 units while the foes’ numbers fell below 15)"
+"(Player(s) own more than 25 units while the foes’ numbers fall below 15.)"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:362
@@ -1782,7 +1764,6 @@ msgstr "Flee! They have broken us!"
 msgid "Hunt them down and kill every single one of them!"
 msgstr "Hunt them down and kill every single one of them!"
 
-# Dear?
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:370
 msgid ""
@@ -1802,7 +1783,7 @@ msgid ""
 "for when more of them arrive return must be made."
 msgstr ""
 "She is right. Don’t let them lure you away from the Ka’lian, preparations "
-"for when more of them arrive return must be made."
+"for when more of them arrive must be made."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:387
@@ -1890,24 +1871,18 @@ msgstr "And we have what’s left of the elvish treasury with us!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:497
-#, fuzzy
-#| msgid "Perhaps the gold will our word weight with the council."
 msgid "Perhaps the gold will give our words more weight with the council."
-msgstr "Perhaps the gold will our word weight with the council."
+msgstr "Perhaps the gold will give our words more weight with the council."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:503
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:509
-#, fuzzy
-#| msgid ""
-#| " has left the recovered gold into the elvish treasury. You will start the "
-#| "next scenario with a preset amount."
 msgid ""
 " has returned any remaining gold into the elvish treasury. You will start "
 "the next scenario with a preset amount."
 msgstr ""
-" has left the recovered gold into the elvish treasury. You will start the "
-"next scenario with a preset amount."
+" has returned any remaining gold into the elvish treasury. You will start "
+"the next scenario with a preset amount."
 
 #. [message]: speaker=narrator
 #. [part]
@@ -2367,7 +2342,7 @@ msgid ""
 "should go see this mage. Olurf, can you take us there?"
 msgstr ""
 "I think the Orcs will be in no position to attack us for some time. Maybe we "
-"should go see this mage. Olurf, can you take us there?"
+"should go and see this mage. Olurf, can you take us there?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:109
@@ -2390,14 +2365,8 @@ msgstr "Bounty Hunters"
 
 #. [scenario]: id=09_Bounty_Hunters
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Chapter Three,\n"
-#| "<i>The Book of Crelanu</i>"
 msgid "Chapter Three: The Book of Crelanu"
-msgstr ""
-"Chapter Three,\n"
-"<i>The Book of Crelanu</i>"
+msgstr "Chapter Three: The Book of Crelanu"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:30
@@ -2529,7 +2498,7 @@ msgid ""
 "cross it."
 msgstr ""
 "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends about "
-"it. May be they are but children’s tales... Still, be very careful when you "
+"it. Maybe they are but children’s tales... Still, be very careful when you "
 "cross it."
 
 #. [message]: id=Kalenz
@@ -2554,7 +2523,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:434
 msgid "From now on, Olurf can recruit dwarves to support Kalenz."
-msgstr ""
+msgstr "From now on, Olurf can recruit dwarves to support Kalenz."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:445
@@ -3358,14 +3327,8 @@ msgstr "News from the Front"
 
 #. [scenario]: id=13_News_from_the_Front
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:13
-#, fuzzy
-#| msgid ""
-#| "Chapter Four,\n"
-#| "<i>The Alliance</i>"
 msgid "Chapter Four: The Alliance"
-msgstr ""
-"Chapter Four,\n"
-"<i>The Alliance</i>"
+msgstr "Chapter Four: The Alliance"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:31
@@ -3411,15 +3374,11 @@ msgstr "Eonihar"
 
 #. [message]: id=Eonihar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:161
-#, fuzzy
-#| msgid ""
-#| "At last I have found, you alive and well! We need you back at once! The "
-#| "orcs have attacked the humans."
 msgid ""
 "At last I have found you, alive and well! We need you back at once! The orcs "
 "have attacked the humans."
 msgstr ""
-"At last I have found, you alive and well! We need you back at once! The orcs "
+"At last I have found you, alive and well! We need you back at once! The orcs "
 "have attacked the humans."
 
 #. [message]: id=Kalenz
@@ -3479,7 +3438,7 @@ msgid ""
 "Go tell the council and the human king that we will be there! Now, let’s "
 "hurry!"
 msgstr ""
-"Go tell the council and the human king that we will be there! Now, let’s "
+"Go and tell the council and the human king that we will be there! Now, let’s "
 "hurry!"
 
 #. [scenario]: id=14_Human_Alliance
@@ -3838,7 +3797,7 @@ msgid ""
 msgstr ""
 "Calm down, Aldar! The elf is right to reproach us. My father did not help "
 "when the orcs attacked you. But my father is dead. There are a lot of things "
-"my father did that I can not understand; he grew suspicious and strange in "
+"my father did that I cannot understand; he grew suspicious and strange in "
 "his last days. But <i>I</i> am the King of Wesnoth now, not my father! And "
 "it is my intention to renew our alliance by signing a new treaty here, with "
 "you."
@@ -4110,24 +4069,16 @@ msgstr "invisible"
 #. [hides]: id=invisible
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die_utils.cfg:17
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die_utils.cfg:18
-#, fuzzy
-#| msgid ""
-#| "invisible:\n"
-#| "Enemy units cannot see this unit, except for wolf-based units who can "
-#| "smell it if close enough. Hence except for wolf-based units, enemy units "
-#| "will not initiate an attack on this unit. Defense is at 80 percent for "
-#| "every terrain except water, where it is 70 percent."
 msgid ""
 "Enemy units cannot see this unit, except for wolf-based units who can smell "
 "it if close enough. Hence except for wolf-based units, enemy units will not "
 "initiate an attack on this unit. Defense is at 80 percent for every terrain "
 "except water, where it is 70 percent."
 msgstr ""
-"invisible:\n"
 "Enemy units cannot see this unit, except for wolf-based units who can smell "
 "it if close enough. Hence except for wolf-based units, enemy units will not "
-"initiate an attack on this unit. Defence is at 80 percent for every terrain "
-"except water, where it is 70 percent."
+"initiate an attack on this unit. Defence is at 80 per cent for every terrain "
+"except water, where it is 70 per cent."
 
 #. [unit]: type=Goblin Pillager, id=Odrun
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die_utils.cfg:53
@@ -4498,14 +4449,8 @@ msgstr "Costly Revenge"
 
 #. [scenario]: id=19_Costly_Revenge
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:11
-#, fuzzy
-#| msgid ""
-#| "Chapter Five,\n"
-#| "<i>Civil War</i>"
 msgid "Chapter Five: Civil War"
-msgstr ""
-"Chapter Five,\n"
-"<i>Civil War</i>"
+msgstr "Chapter Five: Civil War"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:35
@@ -4598,7 +4543,7 @@ msgid ""
 "We have finally reached Saurgrath, their capitol. Remember whose side they "
 "have taken in the war against us."
 msgstr ""
-"We have finally reached Saurgrath, their capitol. Remember whose side they "
+"We have finally reached Saurgrath, their capital. Remember whose side they "
 "have taken in the war against us."
 
 #. [message]: id=Landar
@@ -4689,7 +4634,7 @@ msgstr "Their revenge is terrible! I fear for our kind."
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:386
 msgid "Don’t flee. We cannot abandon our capitol."
-msgstr "Don’t flee. We cannot abandon our capitol."
+msgstr "Don’t flee. We cannot abandon our capital."
 
 #. [scenario]: id=20_Council_Ruling
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:3
@@ -5252,10 +5197,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/Great_Ogre.cfg:6
-#, fuzzy
-#| msgid "Creatures"
 msgid "Great Ogre"
-msgstr "Creatures"
+msgstr "Great Ogre"
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/Great_Ogre.cfg:36
@@ -5265,11 +5208,15 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Great Ogres are giant creatures that usually live alone in the wilderness, "
+"remarkably similar to humans in form, though large and misshapen. While they "
+"can be easily outrun or outsmarted, their strength is not to be "
+"underestimated."
 
 #. [attack]: type=blade
 #: data/campaigns/Legend_of_Wesmere/units/Great_Ogre.cfg:41
 msgid "cleaver"
-msgstr ""
+msgstr "cleaver"
 
 #. [unit_type]: id=Elvish Horse Archer
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:13
@@ -5327,11 +5274,6 @@ msgstr "heals Kalenz +4"
 # TODO: eliminate double space in the original and improve the string in general
 #. [heals]: id=heals_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:34
-#, fuzzy
-#| msgid ""
-#| "If a shyde has developed a special bond to a person her healing abilities "
-#| "increase for him.  This allows Cleodil to give Kalenz extra points of "
-#| "healing at the beginning of your turn."
 msgid ""
 "If a shyde has developed a special bond to a person her healing abilities "
 "increase for him. This allows Cleodil to give Kalenz extra points of healing "

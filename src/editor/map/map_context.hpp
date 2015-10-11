@@ -136,6 +136,9 @@ public:
 	virtual const gamemap & map() const {
 		return map_;
 	}
+	virtual const std::vector<std::string>& hidden_label_categories() const {
+		return lbl_categories_;
+	}
 
 	/**
 	 * Replace the [time]s of the currently active area.
@@ -241,7 +244,7 @@ public:
 	 */
 	void set_side_setup(int side, const std::string& id, const std::string& name,
 			int gold, int income, int village_gold, int village_support,
-			bool fog, bool share_view, bool shroud, bool share_maps,
+			bool fog, bool shroud, team::SHARE_VISION share_vision,
 			team::CONTROLLER controller, bool hidden, bool no_leader);
 
 	/**
@@ -328,6 +331,9 @@ public:
 
 	/** Clear the modified state */
 	void clear_modified();
+
+	/** Adds the map to the editor's recent files list. */
+	void add_to_recent_files();
 
 	/** @return true when undo can be performed, false otherwise */
 	bool can_undo() const;
@@ -478,6 +484,7 @@ private:
 	map_labels labels_;
 	unit_map units_;
 	std::vector<team> teams_;
+	std::vector<std::string> lbl_categories_;
 	boost::scoped_ptr<tod_manager> tod_manager_;
 	mp_game_settings mp_settings_;
 	game_classification game_classification_;
