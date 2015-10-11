@@ -262,6 +262,10 @@ private:
 	 */
 	bool check_switch_open_map(const std::string& fn);
 
+	/**
+	 * Displays the specified map name in the window titlebar
+	 */
+	void set_window_title();
 public:
 	/**
 	 * Load a map given the filename

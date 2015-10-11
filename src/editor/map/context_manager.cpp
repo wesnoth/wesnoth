@@ -161,6 +161,13 @@ context_manager::~context_manager()
 	BOOST_FOREACH(map_context* mc, map_contexts_) {
 		delete mc;
 	}
+
+	// Restore default window title
+	std::string wm_title_string = _("The Battle for Wesnoth");
+	wm_title_string += " - " + game_config::revision;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
 }
 
 void context_manager::refresh_all()
@@ -769,6 +776,8 @@ void context_manager::close_current_context()
 	}
 	map_context_refresher(*this, *current);
 	delete current;
+
+	set_window_title();
 }
 
 void context_manager::save_all_maps(bool auto_save_windows)
@@ -995,6 +1004,8 @@ void context_manager::switch_context(const int index)
 	map_context_refresher mcr(*this, *map_contexts_[index]);
 	current_labels = &get_map_context().get_labels();
 	current_context_index_ = index;
+
+	set_window_title();
 }
 
 void context_manager::replace_map_context(map_context* new_mc)
@@ -1002,7 +1013,23 @@ void context_manager::replace_map_context(map_context* new_mc)
 	boost::scoped_ptr<map_context> del(map_contexts_[current_context_index_]);
 	map_context_refresher mcr(*this, *new_mc);
 	map_contexts_[current_context_index_] = new_mc;
+
+	set_window_title();
 }
 
+void context_manager::set_window_title()
+{
+	std::string wm_title_string = _("The Battle for Wesnoth");
+	std::string map_name = filesystem::base_name(get_map_context().get_filename());
+
+	if(map_name.empty()){
+		map_name = get_map_context().is_pure_map() ? "New Map" : "New Scenario";
+	}
+
+	wm_title_string += " - " + map_name;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
+}
 
 } //Namespace editor
