@@ -240,8 +240,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false, scope_game, "" },
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false, scope_game | scope_editor | scope_main, "" },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, scope_game, "" },
-	//TODO: why does HOTKEY_USER_CMD have not only scope_game ?
-	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter User Command"), false, scope_game | scope_editor | scope_main, "" },
+	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter User Command"), false, scope_game, "" },
 	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom Command"), false, scope_game, "" },
 	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run Formula"), false, scope_game, "" },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Messages"), false, scope_game, "" },
