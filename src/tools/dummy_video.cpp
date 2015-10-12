@@ -35,6 +35,6 @@ surface display_format_alpha(surface)
 
 surface& get_video_surface()
 {
-	return NULL;
+	return dummy_screen_surface;
 }
 
