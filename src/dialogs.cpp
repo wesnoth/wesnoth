@@ -715,7 +715,7 @@ void save_preview_pane::draw_contents()
 		return;
 	}
 
-	surface screen = video().getSurface();
+	surface &screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = sdl::create_rect(loc.x + save_preview_border
@@ -1238,7 +1238,7 @@ void unit_preview_pane::draw_contents()
 
 	GPU_UnsetClip(get_render_target());
 #else
-	surface screen(video().getSurface());
+	surface& screen(video().getSurface());
 	const clip_rect_setter clipper(screen, &area);
 
 	surface unit_image = det.image;

@@ -740,7 +740,7 @@ void twindow::draw()
 		return;
 	}
 
-	surface frame_buffer = video_.getSurface();
+	surface& frame_buffer = video_.getSurface();
 
 	/***** ***** Layout and get dirty list ***** *****/
 	if(need_layout_) {
@@ -789,7 +789,7 @@ void twindow::draw()
 
 	if(dirty_list_.empty()) {
 		if(preferences::use_color_cursors() || sunset_) {
-			surface frame_buffer = get_video_surface();
+			surface& frame_buffer = get_video_surface();
 
 			if(sunset_) {
 				/** @todo should probably be moved to event::thandler::draw. */

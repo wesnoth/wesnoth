@@ -217,7 +217,7 @@ void show_about(display &disp, const std::string &campaign)
 {
 	boost::scoped_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
 	CVideo &video = disp.video();
-	surface screen = video.getSurface();
+	surface& screen = video.getSurface();
 	if (screen == NULL) return;
 
 	// If the title is multi-line, we need to split it accordingly or we

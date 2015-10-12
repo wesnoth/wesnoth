@@ -521,7 +521,7 @@ void help_text_area::draw_contents()
 {
 	SDL_Rect const &loc = inner_location();
 	bg_restore();
-	surface screen = video().getSurface();
+	surface& screen = video().getSurface();
 	clip_rect_setter clip_rect_set(screen, &loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;

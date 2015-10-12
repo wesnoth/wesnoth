@@ -185,7 +185,7 @@ void textbox::draw_contents()
 {
 	SDL_Rect const &loc = inner_location();
 
-	surface surf = video().getSurface();
+	surface& surf = video().getSurface();
 	sdl::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
 				    focus(NULL) ? alpha_focus_ : alpha_, surf);
 

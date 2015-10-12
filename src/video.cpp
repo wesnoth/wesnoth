@@ -268,7 +268,7 @@ surface display_format_alpha(surface surf)
 		return NULL;
 }
 
-surface get_video_surface()
+surface& get_video_surface()
 {
 	return frameBuffer;
 }
@@ -412,7 +412,7 @@ CVideo::~CVideo()
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	surface target(getSurface());
+	surface& target(getSurface());
 	SDL_Rect dst = sdl::create_rect(x, y, 0, 0);
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);

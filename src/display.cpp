@@ -769,7 +769,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 	bool res = false;
 
 	if (!map_screenshot) {
-		surface screenshot_surf = screen_.getSurface();
+		surface& screenshot_surf = screen_.getSurface();
 
 		res = image::save_image(screenshot_surf, filename);
 #if 0
@@ -1396,7 +1396,7 @@ void display::flip()
 		return;
 	}
 
-	surface frameBuffer = get_video_surface();
+	surface& frameBuffer = get_video_surface();
 
 	// This is just the debug function "sunset" to progressively darken the map area
 	static size_t sunset_timer = 0;
@@ -2220,7 +2220,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	font::scroll_floating_labels(dx, dy);
 	labels().recalculate_shroud();
 
-	surface screen(screen_.getSurface());
+	surface& screen(screen_.getSurface());
 
 	SDL_Rect dstrect = map_area();
 	dstrect.x += dx;
@@ -2778,7 +2778,7 @@ const map_labels& display::labels() const
 
 void display::clear_screen()
 {
-	surface disp(screen_.getSurface());
+	surface& disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
 	sdl::fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
 }

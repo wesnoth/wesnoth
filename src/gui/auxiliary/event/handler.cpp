@@ -539,9 +539,8 @@ void thandler::draw(const bool force)
 	if(!dispatchers_.empty()) {
 		CVideo& video = dynamic_cast<twindow&>(*dispatchers_.back()).video();
 
-		surface frame_buffer = video.getSurface();
-
 #if !SDL_VERSION_ATLEAST(2,0,0)
+		surface& frame_buffer = video.getSurface();
 		cursor::draw(frame_buffer);
 #endif
 		video.flip();

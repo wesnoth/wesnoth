@@ -164,7 +164,7 @@ void slider::draw_contents()
 	if (image->w >= loc.w)
 		return;
 
-	surface screen = video().getSurface();
+	surface& screen = video().getSurface();
 
 	SDL_Rect line_rect = sdl::create_rect(loc.x + image->w / 2
 			, loc.y + loc.h / 2

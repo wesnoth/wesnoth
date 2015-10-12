@@ -26,7 +26,8 @@
 
 namespace editor {
 
-std::string item_palette::get_help_string() {
+std::string item_palette::get_help_string()
+{
 	return selected_fg_item().name;
 }
 
@@ -58,9 +59,8 @@ void item_palette::setup(const config& cfg)
 	}
 }
 
-void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text) {
-
-	surface screen = gui_.video().getSurface();
+void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text)
+{
 
 	std::stringstream filename;
 	filename << item.image;

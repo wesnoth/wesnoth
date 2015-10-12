@@ -48,7 +48,7 @@ struct GPU_Target;
 GPU_Target *get_render_target();
 
 surface display_format_alpha(surface surf);
-surface get_video_surface();
+surface& get_video_surface();
 SDL_Rect screen_area();
 
 

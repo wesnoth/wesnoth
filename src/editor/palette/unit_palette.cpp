@@ -81,8 +81,6 @@ void unit_palette::setup(const config& /*cfg*/)
 
 void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstream& tooltip_text) {
 
-	surface screen = gui_.video().getSurface();
-
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
 	    	 << team::get_side_color_index(gui_.viewing_side()) << ')';
