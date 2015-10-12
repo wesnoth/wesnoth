@@ -715,7 +715,7 @@ void save_preview_pane::draw_contents()
 		return;
 	}
 
-	surface &screen = video().getSurface();
+	surface& screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = sdl::create_rect(loc.x + save_preview_border
