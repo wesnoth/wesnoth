@@ -598,6 +598,9 @@ void hotkey_preferences_dialog::show_binding_dialog(
 			&& (event.type != SDL_MOUSEBUTTONDOWN )
 	)
 		SDL_PollEvent(&event);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	events::peek_for_resize();
+#endif
 
 	do {
 		switch (event.type) {
@@ -610,6 +613,9 @@ void hotkey_preferences_dialog::show_binding_dialog(
 
 
 		SDL_PollEvent(&event);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	events::peek_for_resize();
+#endif
 		disp_.flip();
 		disp_.delay(10);
 	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP

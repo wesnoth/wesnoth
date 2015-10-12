@@ -21,6 +21,7 @@
 #include "sound.hpp"
 #include "quit_confirmation.hpp"
 #include "video.hpp"
+#include "display.hpp"
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
 #endif
@@ -278,7 +279,9 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 void pump()
 {
 	SDL_PumpEvents();
-
+#if SDL_VERSION_ATLEAST(2,0,0)
+	peek_for_resize();
+#endif
 	pump_info info;
 
 	//used to keep track of double click events
@@ -526,7 +529,7 @@ int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 #if SDL_VERSION_ATLEAST(2,0,0)
 
 /* The constants for the minimum and maximum are picked from the headers. */
-#define INPUT_MIN 0x200
+#define INPUT_MIN 0x300
 #define INPUT_MAX 0x8FF
 
 bool is_input(const SDL_Event& event)
@@ -537,6 +540,19 @@ bool is_input(const SDL_Event& event)
 void discard_input()
 {
 	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
+}
+
+void peek_for_resize()
+{
+	SDL_Event events[100];
+	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
+	for (int i = 0; i < num; i++) {
+		if (events[i].type == SDL_WINDOWEVENT &&
+				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
+			display::get_singleton()->video().update_framebuffer();
+
+		}
+	}
 }
 
 #else

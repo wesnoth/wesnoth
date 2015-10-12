@@ -532,6 +532,19 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 }
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+
+void CVideo::update_framebuffer()
+{
+	if (!window)
+		return;
+
+	surface fb = SDL_GetWindowSurface(*window);
+	if (!frameBuffer)
+		frameBuffer = fb;
+	else
+		frameBuffer.assign(fb);
+}
+
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
 	update_rects.clear();
@@ -554,7 +567,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		}
 	}
 
-	frameBuffer = SDL_GetWindowSurface(*window);
+	update_framebuffer();
 
 	if(frameBuffer != NULL) {
 		image::set_pixel_format(frameBuffer->format);

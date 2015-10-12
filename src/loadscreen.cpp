@@ -27,6 +27,9 @@
 #include "video.hpp"
 #include "image.hpp"
 #include "text.hpp"
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "display.hpp"
+#endif
 
 #include <SDL_events.h>
 #include <SDL_image.h>
@@ -206,6 +209,10 @@ void loadscreen::draw_screen(const std::string &text)
 	SDL_Event ev;
 	while(SDL_PollEvent(&ev)) {
 #if SDL_VERSION_ATLEAST(2,0,0)
+		if (ev.type == SDL_WINDOWEVENT &&
+				ev.window.type == SDL_WINDOWEVENT_RESIZED) {
+			display::get_singleton()->video().update_framebuffer();
+		}
 		if (ev.type == SDL_WINDOWEVENT &&
 				(ev.window.type == SDL_WINDOWEVENT_RESIZED ||
 						ev.window.type == SDL_WINDOWEVENT_EXPOSED))
