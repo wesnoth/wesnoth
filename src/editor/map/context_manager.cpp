@@ -395,9 +395,10 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
 			for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
 
 				const team& t = get_map_context().get_teams()[mci];
+				const std::string& teamname = t.user_team_name();
 				std::stringstream label;
 				label << "[" << mci+1 << "] ";
-				label << (t.name().empty() ? _("(New Side)") : t.name());
+				label << (teamname.empty() ? _("(New Side)") : teamname);
 				contexts.push_back(label.str());
 			}
 
