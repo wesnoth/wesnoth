@@ -99,7 +99,8 @@ def CheckOgg(context):
     }
 \n
 '''
-    test_program1 = context.env.Clone(TESTFILE = File("data/core/music/main_menu.ogg").rfile().abspath).subst(test_program)
+    nodepath = File("data/core/music/main_menu.ogg").rfile().abspath.replace("\\", "\\\\")
+    test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
     if context.env["host"]:
@@ -137,7 +138,8 @@ def CheckPNG(context):
     }
 \n
 '''
-    test_program1 = context.env.Clone(TESTFILE = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath).subst(test_program)
+    nodepath = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath.replace("\\", "\\\\")
+    test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for PNG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
@@ -174,7 +176,8 @@ def CheckJPG(context):
     }
 \n
 '''
-    test_program1 = context.env.Clone(TESTFILE = File("data/core/images/maps/background.jpg").rfile().abspath).subst(test_program)
+    nodepath = File("data/core/images/maps/background.jpg").rfile().abspath.replace("\\", "\\\\")
+    test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for JPG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
