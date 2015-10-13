@@ -350,7 +350,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
-	
+
 	return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).return_unit_method(L, m);
 }
 
@@ -540,7 +540,7 @@ static int impl_unit_attacks_len(lua_State *L)
  * Gets a propoerty of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
- * - Ret 1: 
+ * - Ret 1:
  */
 static int impl_unit_attack_get(lua_State *L)
 {
@@ -587,7 +587,7 @@ static int impl_unit_attack_get(lua_State *L)
  * Gets a propoerty of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
- * - Ret 1: 
+ * - Ret 1:
  */
 static int impl_unit_attack_set(lua_State *L)
 {
@@ -621,7 +621,7 @@ static int impl_unit_attack_set(lua_State *L)
 			modify_int_attrib("accuracy", attack.set_accuracy(value));
 			modify_int_attrib("movement_used", attack.set_movement_used(value));
 			modify_int_attrib("parry", attack.set_parry(value));
-			
+
 			if (strcmp(m, "specials") == 0) { \
 				attack.set_specials(luaW_checkconfig(L, 3));
 				return 0;
@@ -838,7 +838,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
 		return 1;
 	}
-	
+
 	if (!lua_isnoneornil(L, 3)) {
 		lua_unit *lu_adj = static_cast<lua_unit *>(lua_touserdata(L, 1));
 		unit* u_adj = lu_adj->get();
@@ -979,7 +979,7 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
  */
 int game_lua_kernel::intf_get_side_variable(lua_State *L)
 {
-	
+
 	unsigned side_index = luaL_checkinteger(L, 1) - 1;
 	if(side_index >= teams().size()) {
 		return luaL_argerror(L, 1, "invalid side number");
@@ -1172,8 +1172,8 @@ int game_lua_kernel::intf_highlight_hex(lua_State *L)
  */
 int game_lua_kernel::intf_is_enemy(lua_State *L)
 {
-	unsigned side_1 = luaL_checkint(L, 1) - 1;
-	unsigned side_2 = luaL_checkint(L, 2) - 1;
+	unsigned side_1 = luaL_checkinteger(L, 1) - 1;
+	unsigned side_2 = luaL_checkinteger(L, 2) - 1;
 	if (side_1 >= teams().size() || side_2 >= teams().size()) return 0;
 	lua_pushboolean(L, teams()[side_1].is_enemy(side_2 + 1));
 	return 1;
@@ -1213,8 +1213,8 @@ int game_lua_kernel::intf_lock_view(lua_State *L)
  */
 int game_lua_kernel::intf_get_terrain(lua_State *L)
 {
-	int x = luaL_checkint(L, 1);
-	int y = luaL_checkint(L, 2);
+	int x = luaL_checkinteger(L, 1);
+	int y = luaL_checkinteger(L, 2);
 
 	t_translation::t_terrain const &t = board().map().
 		get_terrain(map_location(x - 1, y - 1));
@@ -1231,8 +1231,8 @@ int game_lua_kernel::intf_get_terrain(lua_State *L)
  */
 int game_lua_kernel::intf_set_terrain(lua_State *L)
 {
-	int x = luaL_checkint(L, 1);
-	int y = luaL_checkint(L, 2);
+	int x = luaL_checkinteger(L, 1);
+	int y = luaL_checkinteger(L, 2);
 	std::string t_str(luaL_checkstring(L, 3));
 
 	std::string mode_str = "both";
@@ -1305,7 +1305,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 
 	if(lua_isnumber(L, arg)) {
 		++arg;
-		for_turn = luaL_checkint(L, 1);
+		for_turn = luaL_checkinteger(L, 1);
 		int number_of_turns = tod_man().number_of_turns();
 		if(for_turn < 1 || (number_of_turns != -1 && for_turn > number_of_turns)) {
 			return luaL_argerror(L, 1, "turn number out of range");
@@ -1358,8 +1358,8 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
  */
 int game_lua_kernel::intf_get_village_owner(lua_State *L)
 {
-	int x = luaL_checkint(L, 1);
-	int y = luaL_checkint(L, 2);
+	int x = luaL_checkinteger(L, 1);
+	int y = luaL_checkinteger(L, 2);
 
 	map_location loc(x - 1, y - 1);
 	if (!board().map().is_village(loc))
@@ -1378,9 +1378,9 @@ int game_lua_kernel::intf_get_village_owner(lua_State *L)
  */
 int game_lua_kernel::intf_set_village_owner(lua_State *L)
 {
-	int x = luaL_checkint(L, 1);
-	int y = luaL_checkint(L, 2);
-	int new_side = lua_isnoneornil(L, 3) ? 0 : luaL_checkint(L, 3);
+	int x = luaL_checkinteger(L, 1);
+	int y = luaL_checkinteger(L, 2);
+	int new_side = lua_isnoneornil(L, 3) ? 0 : luaL_checkinteger(L, 3);
 
 	map_location loc(x - 1, y - 1);
 	if (!board().map().is_village(loc))
@@ -1460,7 +1460,7 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 */
 int game_lua_kernel::intf_get_starting_location(lua_State* L)
 {
-	const int side = luaL_checkint(L, 1);
+	const int side = luaL_checkinteger(L, 1);
 	if(side < 1 || static_cast<int>(teams().size()) < side)
 		return luaL_argerror(L, 1, "out of bounds");
 	const map_location& starting_pos = board().map().starting_position(side);
@@ -1710,12 +1710,12 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
 
-	
+
 	if (play_controller_.is_regular_game_end()) {
 		return 0;
 	}
 	end_level_data data;
-	
+
 	// TODO: is this still needed?
 	// Remove 0-hp units from the unit map to avoid the following problem:
 	// In case a die event triggers an endlevel the dead unit is still as a
@@ -1733,10 +1733,10 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 
 	typedef boost::tuple<bool/*is_victory*/, boost::optional<bool>/*bonus*/, boost::optional<int>/*percentage*/, boost::optional<bool>/*add*/ > t_side_result;
 	const t_side_result default_result = t_side_result(
-		cfg["result"] != "defeat", 
+		cfg["result"] != "defeat",
 		cfg["bonus"].to_bool(true),
 		cfg["carryover_percentage"].apply_visitor(optional_int_visitor()),
-		cfg["carryover_add"].apply_visitor(optional_bool_visitor())	
+		cfg["carryover_add"].apply_visitor(optional_bool_visitor())
 	);
 	std::vector<t_side_result> side_results = std::vector<t_side_result>(board().teams().size(), default_result);
 	BOOST_FOREACH(const vconfig& side_result, cfg.get_children("result")) {
@@ -2478,7 +2478,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 int game_lua_kernel::intf_erase_unit(lua_State *L)
 {
 	map_location loc;
-	
+
 	if (lua_isnumber(L, 1)) {
 		loc.x = lua_tointeger(L, 2) - 1;
 		loc.y = luaL_checkinteger(L, 3) - 1;
@@ -2513,7 +2513,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 	} else {
 		return luaL_argerror(L, 1, "expected unit or integer");
 	}
-	
+
 	units().erase(loc);
 	return 0;
 }
@@ -2597,7 +2597,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
  */
 int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 {
-	int x = luaL_checkint(L, 1) - 1, y = luaL_checkint(L, 2) - 1;
+	int x = luaL_checkinteger(L, 1) - 1, y = luaL_checkinteger(L, 2) - 1;
 
 	unit_ptr u = unit_ptr();
 	if (!lua_isnoneornil(L, 3)) {
@@ -3048,7 +3048,7 @@ namespace
 		}
 
 		virtual std::string description() const OVERRIDE
-		{ 
+		{
 			return desc;
 		}
 
@@ -4441,7 +4441,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 
 	// Create the unit attacks metatable.
 	cmd_log_ << "Adding unit attacks metatable...\n";
-	
+
 	lua_pushlightuserdata(L, uattacksKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_attacks_get);
@@ -4453,7 +4453,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 
-	
+
 	lua_pushlightuserdata(L, uattackKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_attack_get);
@@ -4641,14 +4641,14 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"ability",               intf_unit_ability},
 		{"transform",             intf_transform_unit},
 	};
-	
+
 	BOOST_FOREACH(const luaL_Reg& r, methods) {
 		if (strcmp(m, r.name) == 0) {
 			lua_pushcfunction(L, r.func);
 			return 1;
 		}
 	}
-	
+
 	return 0;
 }
 

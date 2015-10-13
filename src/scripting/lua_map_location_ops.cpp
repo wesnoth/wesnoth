@@ -34,8 +34,8 @@ static map_location pop_map_location(lua_State* L)
 		luaL_error(L, "pop_map_location: expected to find a map location on the stack, but stack has less than two elements");
 		return map_location();
 	}
-	int y = luaL_checkint(L, -1);
-	int x = luaL_checkint(L, -2);
+	int y = luaL_checkinteger(L, -1);
+	int x = luaL_checkinteger(L, -2);
 	lua_pop(L, 2);
 
 	return map_location(x-1, y-1);
@@ -67,13 +67,13 @@ int intf_get_direction(lua_State* L)
 
 	int n = 1;
 	if (nargs == 4) {
-		n = luaL_checkint(L, -1);
+		n = luaL_checkinteger(L, -1);
 		lua_pop(L,1);
 	}
 
 	map_location::DIRECTION d;
 	if (lua_isnumber(L, -1)) {
-		d = map_location::rotate_right(map_location::NORTH, luaL_checkint(L, -1)); //easiest way to correctly convert int to direction
+		d = map_location::rotate_right(map_location::NORTH, (int)luaL_checkinteger(L, -1)); //easiest way to correctly convert int to direction
 		lua_pop(L,1);
 	} else if (lua_isstring(L, -1)) {
 		d = map_location::parse_direction(luaL_checkstring(L,-1));
@@ -129,7 +129,7 @@ int intf_vector_zero(lua_State* L)
  */
 int intf_rotate_right_around_center(lua_State* L)
 {
-	int k = luaL_checkint(L, -1);
+	int k = luaL_checkinteger(L, -1);
 	lua_pop(L,1);
 	map_location center = pop_map_location(L);
 	map_location loc = pop_map_location(L);
@@ -225,7 +225,7 @@ int intf_parse_direction(lua_State* L)
  */
 int intf_write_direction(lua_State* L)
 {
-	int d = luaL_checkint(L, -1);
+	int d = luaL_checkinteger(L, -1);
 	if (d >= 0 && d < map_location::NDIRECTIONS) {
 		lua_pushstring(L, map_location::write_direction(static_cast<map_location::DIRECTION>(d)).c_str());
 		return 1;
