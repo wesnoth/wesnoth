@@ -11,6 +11,11 @@
 #include <limits.h>
 #include <stddef.h>
 
+/*
+ * Wesnoth definitions for compatibility
+ */
+#define LUA_COMPAT_5_2
+
 
 /*
 ** ===================================================================
