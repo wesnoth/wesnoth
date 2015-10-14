@@ -190,7 +190,7 @@ SDL_Rect text_area(const std::string& text, int size, int style)
 	return draw_text(NULL, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
 }
 
-SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
+SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
@@ -241,7 +241,9 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
-	return draw_text(gui != NULL ? gui->getSurface() : NULL, area, size, color, txt, x, y, use_tooltips, style);
+	surface null_surf = surface(NULL);
+
+	return draw_text(gui != NULL ? gui->getSurface() : null_surf, area, size, color, txt, x, y, use_tooltips, style);
 }
 
 bool is_format_char(char c)

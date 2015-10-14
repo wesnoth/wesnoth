@@ -344,7 +344,7 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 									   const std::string& label, int label_width,
 									   surface& hp_distrib, int hp_distrib_width)
 {
-	surface screen = resources::screen->get_screen_surface();
+	surface& screen = resources::screen->get_screen_surface();
 	int i;
 
 	// NOTE. A preview pane is not made to be used alone and it is not

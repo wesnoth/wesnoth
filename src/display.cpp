@@ -1336,7 +1336,7 @@ void display::drawing_buffer_commit()
 	GPU_UnsetClip(get_render_target());
 #else
 	SDL_Rect clip_rect = map_area();
-	surface screen = get_screen_surface();
+	surface& screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
 
 	/*
@@ -1833,7 +1833,7 @@ void display::draw_init()
 #ifdef SDL_GPU
 		draw_background(screen_, clip_rect, theme_.border().background_image);
 #else
-		const surface screen = get_screen_surface();
+		const surface& screen = get_screen_surface();
 		clip_rect_setter set_clip_rect(screen, &clip_rect);
 		draw_background(screen, clip_rect, theme_.border().background_image);
 #endif
@@ -2791,7 +2791,7 @@ const SDL_Rect& display::get_clip_rect()
 void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
-	surface screen = get_screen_surface();
+	surface& screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
 	BOOST_FOREACH(const map_location& loc, invalidated_) {
 		int xpos = get_location_x(loc);

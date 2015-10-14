@@ -205,7 +205,7 @@ public:
 	CVideo& video() { return screen_; }
 
 	/** return the screen surface or the surface used for map_screenshot. */
-	surface get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
+	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
