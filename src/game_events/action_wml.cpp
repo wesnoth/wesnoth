@@ -31,13 +31,13 @@
 #include "ai/manager.hpp"
 #include "config_assign.hpp"
 #include "fake_unit_ptr.hpp"
+#include "filesystem.hpp"
 #include "game_classification.hpp"
 #include "game_display.hpp"
 #include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -594,18 +594,26 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	gamemap map(*game_map);
 
 	try {
-		if (cfg["map"].empty()) {
-			const vconfig& map_cfg = cfg.child("map");
-			map.read(map_cfg["data"], false, map_cfg["border_size"].to_int(), map_cfg["usage"].str());
+		if(!cfg["map_file"].empty()) {
+			const std::string& mapfile = filesystem::get_wml_location(cfg["map_file"].str());
+
+			if(filesystem::file_exists(mapfile)) {
+				map.read(filesystem::read_file(mapfile), false);
+			} else {
+				throw incorrect_map_format_error("Invalid file path");
+			}
+		} else {
+			map.read(cfg["map"], false);
 		}
-		else map.read(cfg["map"], false);
 	} catch(incorrect_map_format_error&) {
-		lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << std::endl;
+		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline data");
+		lg::wml_error << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
 	} catch(twml_exception& e) {
 		e.show(*resources::screen);
 		return;
 	}
+
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
 		if (!cfg["expand"].to_bool()) {
@@ -613,6 +621,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 			return;
 		}
 	}
+
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
 		if (!cfg["shrink"].to_bool()) {
@@ -892,11 +901,6 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 		return;
 	}
 
-
-	const vconfig::child_list values = cfg.get_children("value");
-	const vconfig::child_list literals = cfg.get_children("literal");
-	const vconfig::child_list split_elements = cfg.get_children("split");
-
 	std::vector<config> data;
 	if(cfg.has_attribute("to_variable"))
 	{
@@ -912,48 +916,47 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 		{
 			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug() << std::endl;
 		}
-	} else if(!values.empty()) {
-		for(vconfig::child_list::const_iterator i=values.begin(); i!=values.end(); ++i)
-		{
-			data.push_back((*i).get_parsed_config());
-		}
-	} else if(!literals.empty()) {
-		for(vconfig::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
-		{
-			data.push_back(i->get_config());
-		}
-	} else if(!split_elements.empty()) {
-		const vconfig & split_element = split_elements.front();
+	} else {
+		typedef std::pair<std::string, vconfig> vchild;
+		BOOST_FOREACH(const vchild& p, cfg.all_ordered()) {
+			if(p.first == "value") {
+				data.push_back(p.second.get_parsed_config());
+			} else if(p.first == "literal") {
+				data.push_back(p.second.get_config());
+			} else if(p.first == "split") {
+				const vconfig & split_element = p.second;
 
-		std::string split_string=split_element["list"];
-		std::string separator_string=split_element["separator"];
-		std::string key_name=split_element["key"];
-		if(key_name.empty())
-		{
-			key_name="value";
-		}
+				std::string split_string=split_element["list"];
+				std::string separator_string=split_element["separator"];
+				std::string key_name=split_element["key"];
+				if(key_name.empty())
+				{
+					key_name="value";
+				}
 
-		bool remove_empty = split_element["remove_empty"].to_bool();
+				bool remove_empty = split_element["remove_empty"].to_bool();
 
-		char* separator = separator_string.empty() ? NULL : &separator_string[0];
+				char* separator = separator_string.empty() ? NULL : &separator_string[0];
 
-		std::vector<std::string> split_vector;
+				std::vector<std::string> split_vector;
 
-		//if no separator is specified, explode the string
-		if(separator == NULL)
-		{
-			for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
-			{
-				split_vector.push_back(std::string(1, *i));
+				//if no separator is specified, explode the string
+				if(separator == NULL)
+				{
+					for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
+					{
+						split_vector.push_back(std::string(1, *i));
+					}
+				}
+				else {
+					split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
+				}
+
+				for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
+				{
+					data.push_back(config_of(key_name, *i));
+				}
 			}
-		}
-		else {
-			split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
-		}
-
-		for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
-		{
-			data.push_back(config_of(key_name, *i));
 		}
 	}
 	try
@@ -1172,19 +1175,20 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 
 	gamemap mask_map(resources::gameboard->map());
 
-	//config level;
-	std::string mask = cfg["mask"];
-	std::string usage = "mask";
-	int border_size = 0;
-
-	if (mask.empty()) {
-		usage = cfg["usage"].str();
-		border_size = cfg["border_size"];
-		mask = cfg["data"].str();
-	}
+	bool border = cfg["border"].to_bool(true);
 
 	try {
-		mask_map.read(mask, false, border_size, usage);
+		if(!cfg["mask_file"].empty()) {
+			const std::string& maskfile = filesystem::get_wml_location(cfg["mask_file"].str());
+
+			if(filesystem::file_exists(maskfile)) {
+				mask_map.read(filesystem::read_file(maskfile), false, border);
+			} else {
+				throw incorrect_map_format_error("Invalid file path");
+			}
+		} else {
+			mask_map.read(cfg["mask"], false, border);
+		}
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
@@ -1192,7 +1196,6 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		e.show(*resources::screen);
 		return;
 	}
-	bool border = cfg["border"].to_bool();
 	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc, border);
 	resources::screen->needs_rebuild(true);
 }

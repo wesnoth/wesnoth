@@ -180,17 +180,17 @@ class CampaignClient:
         return data
 
     def unescape(self, data):
+        data2 = bytearray()
         # 01 is used as escape character
-        data2 = b""
-        escape = False
-        for c in data:
-            if escape:
-                data2 += bytes([c - 1])
-                escape = False
-            elif c == 1:
-                escape = True
-            else:
-                data2 += bytes([c])
+        pos = 0
+        while True:
+            i = data.find(b"\x01", pos)
+            if i < 0:
+                break
+            data2 += data[pos:i]
+            data2 += bytes([data[i + 1] - 1])
+            pos = i + 2
+        data2 += data[pos:]
         return data2
 
     def decode_WML(self, data):
@@ -414,7 +414,7 @@ class CampaignClient:
                 contents = b""
                 if not self.quiet:
                     sys.stderr.write("File %s is empty.\n" % name)
-                    sys.stderr.write(f.debug(write = False) + "\n")
+                    sys.stderr.write(f.debug() + "\n")
             if verbose:
                 sys.stderr.write(i * " " + name + " (" +
                       str(len(contents)) + ")\n")

@@ -255,6 +255,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 							return true;
 						}
 						return false;
+					case editor::LOAD_MRU:
 					case editor::PALETTE:
 					case editor::AREA:
 					case editor::SIDE:
@@ -536,6 +537,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::MAP:
 			return index == context_manager_->current_context_index()
 					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::LOAD_MRU:
+			return ACTION_STATELESS;
 		case editor::PALETTE:
 			return ACTION_STATELESS;
 		case editor::AREA:
@@ -604,6 +607,11 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					}
 				}
 				return false;
+			case LOAD_MRU:
+				if (index >= 0) {
+					context_manager_->load_mru_item(static_cast<unsigned>(index));
+				}
+				return true;
 			case PALETTE:
 				toolkit_->get_palette_manager()->set_group(index);
 				return true;
@@ -779,7 +787,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			map_location loc = gui_->mouseover_hex();
 			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
 			bool canrecruit = un->can_recruit();
-			un->set_can_recurit(!canrecruit);
+			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
 		}
 		return true;
@@ -995,6 +1003,10 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 			items.push_back(*i);
 		}
 		++i;
+	}
+	if (!items.empty() && items.front() == "EDITOR-LOAD-MRU-PLACEHOLDER") {
+		active_menu_ = editor::LOAD_MRU;
+		context_manager_->expand_load_mru_menu(items);
 	}
 	if (!items.empty() && items.front() == "editor-switch-map") {
 		active_menu_ = editor::MAP;

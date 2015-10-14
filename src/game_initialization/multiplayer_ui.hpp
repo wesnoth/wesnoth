@@ -103,7 +103,7 @@ public:
 	 */
 	void set_location(const SDL_Rect& rect);
 	using widget::set_location;
-
+	const std::vector<std::string>& user_list() const { return user_list_; }
 protected:
 	int xscale(int x) const;
 	int yscale(int y) const;

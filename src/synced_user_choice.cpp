@@ -243,7 +243,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 		assert(1 <= side && side <= max_side);
 		const team& t = (*resources::teams)[side-1];
 		assert(!t.is_empty());
-		if(!t.is_local())
+		if(side != current_side_)
 		{
 			synced_context::set_is_simultaneously();
 		}

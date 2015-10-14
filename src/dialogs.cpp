@@ -760,11 +760,11 @@ void save_preview_pane::draw_contents()
 		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
 		if (scenario && !scenario.find_child("side", "shroud", "yes")) {
 			map_data = scenario["map_data"].str();
-			if (map_data.empty() && scenario.has_attribute("map")) {
+			if (map_data.empty() && scenario.has_attribute("map_file")) {
 				try {
-					map_data = filesystem::read_map(scenario["map"]);
+					map_data = filesystem::read_map(scenario["map_file"]);
 				} catch(filesystem::io_exception& e) {
-					ERR_G << "could not read map '" << scenario["map"] << "': " << e.what() << '\n';
+					ERR_G << "could not read map '" << scenario["map_file"] << "': " << e.what() << '\n';
 				}
 			}
 		}

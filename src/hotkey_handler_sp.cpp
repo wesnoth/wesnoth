@@ -23,6 +23,11 @@
 #include "whiteboard/manager.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
+#include "network.hpp"
+#include "save_index.hpp"
+#include "gui/dialogs/message.hpp"
+#include "resources.hpp"
+#include "replay.hpp"
 
 #include "unit.hpp"
 
@@ -278,14 +283,18 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_REPLAY_NEXT_TURN:
 		case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
 		case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
+		case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
+		case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
+		case hotkey::HOTKEY_REPLAY_SHOW_EACH:
+		case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
+		case hotkey::HOTKEY_REPLAY_RESET:
 			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd, index);
+		case hotkey::HOTKEY_REPLAY_EXIT:
+			return playsingle_controller_.get_replay_controller() != NULL;
 		default: return play_controller::hotkey_handler::can_execute_command(cmd, index);
 	}
 	return res;
 }
-#include "network.hpp"
-#include "save_index.hpp"
-#include "gui/dialogs/message.hpp"
 
 void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
 {
@@ -310,3 +319,10 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	}
 }
 
+void playsingle_controller::hotkey_handler::replay_exit()
+{
+	if(network::nconnections() == 0) {
+		resources::recorder->delete_upcoming_commands();
+	}
+	playsingle_controller_.set_player_type_changed();
+}

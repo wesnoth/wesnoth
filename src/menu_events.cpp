@@ -45,7 +45,6 @@
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/data_manage.hpp"
@@ -462,47 +461,6 @@ void menu_handler::save_map()
 			gui2::show_transient_message(gui_->video(), "", msg);
 		}
 	}
-
-	/*
-	std::string input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
-	int res = 0;
-	int overwrite = 1;
-	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
-		if (res == 0) {
-
-			if (filesystem::file_exists(input_name)) {
-				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
-				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
-			}
-			else
-				overwrite = 0;
-		}
-	} while (res == 0 && overwrite != 0);
-
-	// Try to save the map, if it fails we reset the filename.
-	if (res == 0) {
-		try {
-			config file;
-			config& map = file.add_child("map");
-			map().write(map);
-
-			std::stringstream str;
-			{
-				config_writer writer(str, false);
-				writer.write(file);
-			}
-			filesystem::write_file(input_name, str.str());
-
-			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
-		} catch (filesystem::io_exception& e) {
-			utils::string_map symbols;
-			symbols["msg"] = e.what();
-			const std::string msg = vgettext("Could not save the map: $msg",symbols);
-			gui2::show_transient_message(gui_->video(), "", msg);
-		}
-	}
-	*/
 }
 
 void menu_handler::preferences()

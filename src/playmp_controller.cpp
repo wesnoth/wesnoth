@@ -26,6 +26,7 @@
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
+#include "game_initialization/playcampaign.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
@@ -41,28 +42,24 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-unsigned int playmp_controller::replay_last_turn_ = 0;
-
 playmp_controller::playmp_controller(const config& level,
-		saved_game& state_of_game, const int ticks, const config& game_config, 
+		saved_game& state_of_game, const config& game_config, 
 		const tdata_cache & tdata, CVideo& video,
-		bool skip_replay, bool blindfold_replay_, bool is_host)
-	: playsingle_controller(level, state_of_game, ticks,
-		game_config, tdata, video, skip_replay || blindfold_replay_) //this || means that if blindfold is enabled, quick replays will be on.
+		mp_campaign_info* mp_info)
+	: playsingle_controller(level, state_of_game,
+	game_config, tdata, video, mp_info && mp_info->skip_replay_until_turn != 0) //this || means that if blindfold is enabled, quick replays will be on.
 	, network_processing_stopped_(false)
-	, blindfold_(*gui_,blindfold_replay_)
+	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
+	, mp_info_(mp_info)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the mp (network enabled) version
 
-	turn_data_.set_host(is_host);
+	//turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
 	// We stop quick replay if play isn't yet past turn 1
-	if ( replay_last_turn_ <= 1)
+	if (!mp_info_ || mp_info_->skip_replay_until_turn > 0)
 	{
 		skip_replay_ = false;
-	}
-	if (blindfold_replay_) {
-		LOG_NG << "Putting on the blindfold now " << std::endl;
 	}
 }
 
@@ -71,10 +68,6 @@ playmp_controller::~playmp_controller() {
 	try {
 		turn_data_.host_transfer().detach_handler(this);
 	} catch (...) {}
-}
-
-void playmp_controller::set_replay_last_turn(unsigned int turn){
-	 replay_last_turn_ = turn;
 }
 
 void playmp_controller::start_network(){
@@ -245,7 +238,7 @@ void playmp_controller::linger()
 	linger_ = true;
 	// If we need to set the status depending on the completion state
 	// we're needed here.
-	gui_->set_game_mode(game_display::LINGER_MP);
+	gui_->set_game_mode(game_display::LINGER);
 	// End all unit moves
 	gamestate().board_.set_all_units_user_end_turn();
 
@@ -345,7 +338,7 @@ void playmp_controller::play_network_turn(){
 	{
 		if (!network_processing_stopped_) {
 			process_network_data();
-			if (replay_last_turn_ <= turn()) {
+			if (!mp_info_ || mp_info_->skip_replay_until_turn > 0) {
 				skip_replay_ = false;
 			}
 		}
@@ -399,11 +392,17 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		turn_data_.send_data();
 	}
 	else if (name == "host_transfer"){
+		assert(mp_info_);
+		mp_info_->is_host = true;
 		if (linger_){
 			end_turn_enable(true);
 			gui_->invalidate_theme();
 		}
 	}
+}
+bool playmp_controller::is_host() const
+{
+	return !mp_info_ || mp_info_->is_host;
 }
 
 void playmp_controller::do_idle_notification()

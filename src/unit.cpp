@@ -1852,6 +1852,15 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 				} else if(apply_to == "max_experience") {
 					const std::string &increase = effect["increase"];
+					const std::string &set = effect["set"];
+
+					if(set.empty() == false) {
+						if(set[set.size()-1] == '%') {
+							max_experience_ = lexical_cast_default<int>(set)*max_experience_/100;
+						} else {
+							max_experience_ = lexical_cast_default<int>(set);
+						}
+					}
 
 					if(increase.empty() == false) {
 						if (!times)
@@ -2047,6 +2056,8 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						}
 						recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
 					}
+				} else if (resources::lua_kernel) {
+					resources::lua_kernel->apply_effect(apply_to, *this, effect);
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions

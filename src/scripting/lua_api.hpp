@@ -26,7 +26,7 @@ struct lua_State;
 /**
  * Converts a Lua value to a unit pointer.
  */
-unit_ptr luaW_tounit(lua_State *L, int index, bool only_on_map = false);
+unit* luaW_tounit(lua_State *L, int index, bool only_on_map = false);
 
 /**
  * Displays a message in the chat window.
@@ -43,31 +43,36 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false
 /**
  * Converts a Lua value to a unit pointer.
  */
-unit_ptr luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
-
+unit& luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
+class lua_unit;
+lua_unit* LuaW_pushlocalunit(lua_State *L, unit& u);
 struct map_location;
 
 /**
- * Storage for a unit, either owned by the Lua code (#ptr != 0), on a
- * recall list (#side != 0), or on the map. Shared units are represented
- * by their underlying ID (#uid).
+ * Storage for a unit, either owned by the Lua code (#ptr != 0), a
+ * local variable unit (c_ptr != 0), on a recall list (#side != 0), or on the map.
+ * Shared units are represented by their underlying ID (#uid).
  */
 class lua_unit
 {
 	size_t uid;
 	unit_ptr ptr;
 	int side;
+	unit* c_ptr;
 	lua_unit(lua_unit const &);
 
 public:
-	lua_unit(size_t u): uid(u), ptr(), side(0) {}
-	lua_unit(unit_ptr u): uid(0), ptr(u), side(0) {}
-	lua_unit(int s, size_t u): uid(u), ptr(), side(s) {}
+	lua_unit(size_t u): uid(u), ptr(), side(0), c_ptr() {}
+	lua_unit(unit_ptr u): uid(0), ptr(u), side(0), c_ptr() {}
+	lua_unit(int s, size_t u): uid(u), ptr(), side(s), c_ptr() {}
+	lua_unit(unit& u): uid(0), ptr(), side(0), c_ptr(&u) {}
 	~lua_unit();
 	bool on_map() const { return !ptr && side == 0; }
 	int on_recall_list() const { return side; }
-	unit_ptr get();
+	unit* get();
+	unit_ptr get_shared();
 
+	void clear_ref() { uid = 0; ptr = unit_ptr(); side = 0; c_ptr = NULL; }
 	// Clobbers loc
 	bool put_map(const map_location &loc);
 };

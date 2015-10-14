@@ -161,6 +161,13 @@ context_manager::~context_manager()
 	BOOST_FOREACH(map_context* mc, map_contexts_) {
 		delete mc;
 	}
+
+	// Restore default window title
+	std::string wm_title_string = _("The Battle for Wesnoth");
+	wm_title_string += " - " + game_config::revision;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
 }
 
 void context_manager::refresh_all()
@@ -189,6 +196,17 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 	}
 }
 
+void context_manager::load_mru_item(unsigned int index, bool force_same_context /* = false */)
+{
+	const std::vector<std::string>& mru = preferences::editor::recent_files();
+
+	if(mru.empty() || index >= mru.size()) {
+		return;
+	}
+
+	load_map(mru[index], !force_same_context);
+}
+
 void context_manager::edit_side_dialog(int side)
 {
 	team& t = get_map_context().get_teams()[side];
@@ -208,21 +226,21 @@ void context_manager::edit_side_dialog(int side)
 
 	bool no_leader = t.no_leader();
 	bool hidden = t.hidden();
-	bool share_view = t.share_view();
-	bool share_maps = t.share_maps();
 	bool fog = t.uses_fog();
 	bool shroud = t.uses_shroud();
 
+	team::SHARE_VISION share_vision = t.share_vision();
+
 	bool ok = gui2::teditor_edit_side::execute(side +1, team_name, user_team_name,
 			gold, income, village_gold, village_support,
-			fog, share_view, shroud, share_maps,
+			fog, shroud, share_vision,
 			controller, no_leader, hidden,
 			gui_.video());
 
 	if (ok) {
 		get_map_context().set_side_setup(side, team_name, user_team_name,
 				gold, income, village_gold, village_support,
-				fog, share_view, shroud, share_maps, controller, hidden, no_leader);
+				fog, shroud, share_vision, controller, hidden, no_leader);
 	}
 }
 
@@ -302,6 +320,36 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 	}
 }
 
+void context_manager::expand_load_mru_menu(std::vector<std::string>& items)
+{
+	std::vector<std::string> mru = preferences::editor::recent_files();
+
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] != "EDITOR-LOAD-MRU-PLACEHOLDER") {
+			continue;
+		}
+
+		items.erase(items.begin() + i);
+
+		if(mru.empty()) {
+			items.insert(items.begin() + i, _("No Recent Files"));
+			continue;
+		}
+
+		BOOST_FOREACH(std::string& path, mru)
+		{
+			// TODO: add proper leading ellipsization instead, since otherwise
+			// it'll be impossible to tell apart files with identical names and
+			// different parent paths.
+			path = filesystem::base_name(path);
+		}
+
+		items.insert(items.begin() + i, mru.begin(), mru.end());
+		break;
+	}
+
+}
+
 void context_manager::expand_areas_menu(std::vector<std::string>& items)
 {
 	tod_manager* tod = get_map_context().get_time_manager();
@@ -347,9 +395,10 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
 			for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
 
 				const team& t = get_map_context().get_teams()[mci];
+				const std::string& teamname = t.user_team_name();
 				std::stringstream label;
 				label << "[" << mci+1 << "] ";
-				label << (t.name().empty() ? _("(New Side)") : t.name());
+				label << (teamname.empty() ? _("(New Side)") : teamname);
 				contexts.push_back(label.str());
 			}
 
@@ -728,6 +777,8 @@ void context_manager::close_current_context()
 	}
 	map_context_refresher(*this, *current);
 	delete current;
+
+	set_window_title();
 }
 
 void context_manager::save_all_maps(bool auto_save_windows)
@@ -851,7 +902,9 @@ bool context_manager::check_switch_open_map(const std::string& fn)
 	size_t i = check_open_map(fn);
 	if (i < map_contexts_.size()) {
 		gui2::show_transient_message(gui_.video(), _("This map is already open."), fn);
-		switch_context(i);
+		if (i != static_cast<unsigned>(current_context_index_)) {
+			switch_context(i);
+		}
 		return true;
 	}
 	return false;
@@ -952,6 +1005,8 @@ void context_manager::switch_context(const int index)
 	map_context_refresher mcr(*this, *map_contexts_[index]);
 	current_labels = &get_map_context().get_labels();
 	current_context_index_ = index;
+
+	set_window_title();
 }
 
 void context_manager::replace_map_context(map_context* new_mc)
@@ -959,7 +1014,23 @@ void context_manager::replace_map_context(map_context* new_mc)
 	boost::scoped_ptr<map_context> del(map_contexts_[current_context_index_]);
 	map_context_refresher mcr(*this, *new_mc);
 	map_contexts_[current_context_index_] = new_mc;
+
+	set_window_title();
 }
 
+void context_manager::set_window_title()
+{
+	std::string wm_title_string = _("The Battle for Wesnoth");
+	std::string map_name = filesystem::base_name(get_map_context().get_filename());
+
+	if(map_name.empty()){
+		map_name = get_map_context().is_pure_map() ? "New Map" : "New Scenario";
+	}
+
+	wm_title_string += " - " + map_name;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
+}
 
 } //Namespace editor

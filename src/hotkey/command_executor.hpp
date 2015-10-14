@@ -90,6 +90,7 @@ public:
 	virtual void replay_show_each() {}
 	virtual void replay_show_team1() {}
 	virtual void replay_skip_animation() {}
+	virtual void replay_exit() {}
 	virtual void whiteboard_toggle() {}
 	virtual void whiteboard_execute_action() {}
 	virtual void whiteboard_execute_all_actions() {}

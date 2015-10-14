@@ -70,6 +70,14 @@ local function message_user_choice(cfg, speaker, options, text_input)
 		message = cfg.message,
 		portrait = image,
 	}
+	
+	if speaker ~= nil then
+		if cfg.male_message ~= nil and speaker.gender == "male" then
+			msg_cfg.message = cfg.male_message
+		elseif cfg.female_message ~= nil and speaker.gender == "female" then
+			msg_cfg.message = cfg.female_message
+		end
+	end
 
 	-- Parse input text, if not available all fields are empty
 	if text_input then
@@ -131,7 +139,25 @@ function wesnoth.wml_actions.message(cfg)
 		local condition = helper.get_child(option, "show_if") or {}
 
 		if wesnoth.eval_conditional(condition) then
-			table.insert(options, option.message)
+			if option.message and not option.image and not option.label then
+				local message = tostring(option.message)
+				if message:find("&") or message:find("=") or message:find("*") == 1 then
+					wesnoth.wml_actions.deprecated_message{message = '[option]message="&image=col1=col2" is deprecated, use new DescriptionWML instead (default, image, label, description)'}
+				end
+				-- Legacy format
+				table.insert(options, option.message)
+			else
+				local opt = helper.parsed(option)
+				if opt.message then
+					if not opt.label then
+						-- Support either message or description
+						opt.label = opt.message
+					else
+						log("[option] has both label= and message=, ignoring the latter", "warning")
+					end
+				end
+				table.insert(options, opt)
+			end
 			table.insert(option_events, {})
 
 			for cmd in helper.child_range(option, "command") do

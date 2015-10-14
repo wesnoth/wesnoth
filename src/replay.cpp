@@ -184,6 +184,11 @@ replay::replay(replay_recorder_base& base)
 	: base_(&base)
 	, message_locations()
 {}
+
+void replay::delete_upcoming_commands()
+{
+	base_->delete_upcoming_commands();
+}
 /*
 	TODO: there should be different types of OOS messages:
 		1)the normal OOS message

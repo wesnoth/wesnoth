@@ -262,7 +262,7 @@ do
       LoadFile="$OPTARG"
       ;;
     a )
-      extra_opts+="$OPTARG"
+      extra_opts+=" $OPTARG"
       ;;
     t )
       echo "Replacing default timer of 10 with" "$OPTARG" "seconds."

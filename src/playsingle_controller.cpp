@@ -71,10 +71,10 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 playsingle_controller::playsingle_controller(const config& level,
-		saved_game& state_of_game, const int ticks,
+		saved_game& state_of_game,
 		const config& game_config, const tdata_cache & tdata,
 		CVideo& video, bool skip_replay)
-	: play_controller(level, state_of_game, ticks, game_config, tdata, video, skip_replay)
+	: play_controller(level, state_of_game, game_config, tdata, video, skip_replay)
 	, cursor_setter(cursor::NORMAL)
 	, textbox_info_()
 	, replay_sender_(*resources::recorder)
@@ -132,67 +132,6 @@ void playsingle_controller::init_gui(){
 	events::raise_draw_event();
 }
 
-void playsingle_controller::report_victory(
-	std::ostringstream &report, team& t,
-	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
-{
-	report << "<small>" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
-
-	if(t.carryover_bonus()) {
-		if (turns_left > -1) {
-			report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
-				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
-				   << "<small>" << _("Total bonus: ") << finishing_bonus << "</small>\n";
-		}
-		report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
-	}
-	if (t.gold() > 0) {
-		report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
-	}
-	if(t.carryover_add()) {
-		report << "\n\n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-	} else {
-		report << "\n\n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-	}
-
-	std::string goldmsg;
-	utils::string_map symbols;
-
-	symbols["gold"] = lexical_cast_default<std::string>(t.carryover_gold());
-
-	// Note that both strings are the same in English, but some languages will
-	// want to translate them differently.
-	if(t.carryover_add()) {
-		if(t.carryover_gold() > 0) {
-			goldmsg = vngettext(
-					"You will start the next scenario with $gold "
-					"on top of the defined minimum starting gold.",
-					"You will start the next scenario with $gold "
-					"on top of the defined minimum starting gold.",
-					t.carryover_gold(), symbols);
-
-		} else {
-			goldmsg = vngettext(
-					"You will start the next scenario with "
-					"the defined minimum starting gold.",
-					"You will start the next scenario with "
-					"the defined minimum starting gold.",
-					t.carryover_gold(), symbols);
-		}
-	} else {
-		goldmsg = vngettext(
-			"You will start the next scenario with $gold "
-			"or its defined minimum starting gold, "
-			"whichever is higher.",
-			"You will start the next scenario with $gold "
-			"or its defined minimum starting gold, "
-			"whichever is higher.",
-			t.carryover_gold(), symbols);
-	}
-
-	// xgettext:no-c-format
-	report << "\n" << goldmsg;
-}
 
 void playsingle_controller::play_scenario_init(const config& level) {
 	// At the beginning of the scenario, save a snapshot as replay_start
@@ -244,14 +183,13 @@ void playsingle_controller::play_scenario_main_loop()
 			*/
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
 			play_scenario_init(*ex.level);
-			mp_replay_.reset(new mp_replay_controller(*this));
+			mp_replay_.reset(new replay_controller(*this, false, ex.level));
 			mp_replay_->play_replay();
 		}
 	} //end for loop
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(
-	const config::const_child_itors &story, const config& level)
+LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -262,7 +200,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	sound::commit_music_changes();
 
 	if(!this->is_skipping_replay()) {
-		show_story(*gui_, get_scenario_name(), story);
+		show_story(*gui_, get_scenario_name(), level.child_range("story"));
 	}
 	gui_->labels().read(level);
 
@@ -406,9 +344,8 @@ void playsingle_controller::play_side_impl()
 		if(res == REPLAY_FOUND_END_TURN) {
 			end_turn_ = END_TURN_SYNCED;
 		}
-		if (replay_->at_end()) {
+		if (player_type_changed_) {
 			mp_replay_.reset();
-			player_type_changed_ = true;
 		}
 	} else if((current_team().is_local_human() && current_team().is_proxy_human())) {
 		LOG_NG << "is human...\n";
@@ -515,7 +452,7 @@ void playsingle_controller::linger()
 
 	// If we need to set the status depending on the completion state
 	// the key to it is here.
-	gui_->set_game_mode(game_display::LINGER_SP);
+	gui_->set_game_mode(game_display::LINGER);
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
@@ -664,11 +601,6 @@ void playsingle_controller::check_objectives()
 }
 
 
-bool playsingle_controller::is_host() const
-{
-	return turn_data_.is_host();
-}
-
 void playsingle_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
@@ -695,10 +627,58 @@ void playsingle_controller::sync_end_turn()
 
 void playsingle_controller::update_viewing_player()
 {
+	if(mp_replay_ && mp_replay_->is_controlling_view()) {
+		mp_replay_->update_viewing_player();
+	}
 	//Update viewing team in case it has changed during the loop.
-	if(int side_num = play_controller::find_last_visible_team()) {
+	else if(int side_num = play_controller::find_last_visible_team()) {
 		if(side_num != this->gui_->viewing_side()) {
 			update_gui_to_player(side_num - 1);
+		}
+	}
+}
+
+void playsingle_controller::reset_replay()
+{
+	if(mp_replay_ && mp_replay_->allow_reset_replay()) {
+		mp_replay_->stop_replay();
+		throw reset_gamestate_exception(mp_replay_->get_reset_state());
+	}
+	else {
+		ERR_NG << "recieved invalid reset replay\n";
+	}
+}
+
+void playsingle_controller::enable_replay(bool is_unit_test)
+{
+	mp_replay_.reset(new replay_controller(*this, true, boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	if(is_unit_test) {
+		mp_replay_->play_replay();
+	}
+}
+
+bool playsingle_controller::should_return_to_play_side()
+{
+	if(player_type_changed_ || is_regular_game_end()) {
+		return true;
+	}
+	else if (end_turn_ == END_TURN_NONE || mp_replay_.get() != 0 || current_team().is_network()) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+void playsingle_controller::on_replay_end(bool is_unit_test)
+{
+	if(is_unit_test) {
+		mp_replay_->return_to_play_side();
+		if(!is_regular_game_end()) {
+			end_level_data e;
+			e.proceed_to_next_level = false;
+			e.is_victory = false;
+			set_end_level_data(e);
 		}
 	}
 }

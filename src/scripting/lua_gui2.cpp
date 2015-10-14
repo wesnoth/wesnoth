@@ -16,6 +16,7 @@
 
 #include "gui/auxiliary/canvas.hpp"     // for tcanvas
 #include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"
@@ -43,7 +44,6 @@
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
-#include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
 #include "video.hpp"
@@ -258,11 +258,52 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	std::string input_text = txt_cfg["text"].str();
 	unsigned int input_max_len = txt_cfg["max_length"].to_int(256);
 	
-	std::vector<std::string> options;
+	std::vector<gui2::twml_message_option> options;
 	int chosen_option = -1;
 	if (!lua_isnoneornil(L, 2)) {
-		std::vector<t_string> t_options = lua_check<std::vector<t_string> >(L, 2);
-		std::copy(t_options.begin(), t_options.end(), std::back_inserter(options));
+		luaL_checktype(L, 2, LUA_TTABLE);
+		size_t n = lua_rawlen(L, 2);
+		for(size_t i = 1; i <= n; i++) {
+			lua_rawgeti(L, 2, i);
+			t_string short_opt;
+			config opt;
+			if(luaW_totstring(L, -1, short_opt)) {
+				// Note: Although this currently uses the tlegacy_menu_item class
+				// for the deprecated syntax, this branch should still be retained
+				// when the deprecated syntax is removed, as a simpler method
+				// of specifying options when only a single string is needed.
+				gui2::tlegacy_menu_item item(short_opt);
+				opt["image"] = item.icon();
+				opt["label"] = item.label();
+				opt["description"] = item.description();
+				opt["default"] = item.is_default();
+				if(!opt["image"].blank() || !opt["description"].blank() || !opt["default"].blank()) {
+					ERR_LUA << "The &image=col1=col2 syntax is deprecated, use new DescriptionWML instead.\n";
+				}
+			} else if(!luaW_toconfig(L, -1, opt)) {
+				std::ostringstream error;
+				error << "expected array of config and/or translatable strings, but index ";
+				error << i << " was a " << lua_typename(L, lua_type(L, -1));
+				return luaL_argerror(L, 2, error.str().c_str());
+			}
+			gui2::twml_message_option option(opt["label"], opt["description"], opt["image"]);
+			if(opt["default"].to_bool(false)) {
+				chosen_option = i - 1;
+			}
+			options.push_back(option);
+			lua_pop(L, 1);
+		}
+		lua_getfield(L, 2, "default");
+		if(lua_isnumber(L, -1)) {
+			int i = lua_tointeger(L, -1);
+			if(i < 1 || size_t(i) > n) {
+				std::ostringstream error;
+				error << "default= key in options list is not a valid option index (1-" << n << ")";
+				return luaL_argerror(L, 2, error.str().c_str());
+			}
+			chosen_option = i - 1;
+		}
+		lua_pop(L, 1);
 	}
 	
 	const config& def_cfg = luaW_checkconfig(L, 1);

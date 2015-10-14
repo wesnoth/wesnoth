@@ -128,6 +128,7 @@ public:
 		returns true if a [start] was added.
 	*/
 	bool add_start_if_not_there_yet();
+	void delete_upcoming_commands();
 private:
 
 	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg> > &i) const;

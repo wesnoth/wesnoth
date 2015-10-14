@@ -110,6 +110,7 @@ static void copy_persistent(const config& src, config& dst)
 
 	static stringset tags = boost::assign::list_of
 			("terrain_graphics")
+			("lua")
 		.convert_to_container<stringset>();
 
 	BOOST_FOREACH(const std::string& attr, attrs)
@@ -146,12 +147,12 @@ static void clear_resources()
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config, const tdata_cache& tdata,
+		const config& game_config, const tdata_cache& tdata,
 		CVideo& video, bool skip_replay)
 	: controller_base(game_config, video)
 	, observer()
 	, savegame_config()
-	, ticks_(ticks)
+	, ticks_(SDL_GetTicks())
 	, tdata_(tdata)
 	, gamestate_()
 	, level_()
@@ -176,7 +177,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, init_side_done_now_(false)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
-	, end_level_data_()
 	, victory_music_()
 	, defeat_music_()
 	, scope_()
@@ -192,13 +192,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::mp_settings = &saved_game_.mp_settings();
 
 	persist_.start_transaction();
-	
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
-		end_level_data el_data;
-		el_data.read(endlevel_cfg);
-		el_data.transient.carryover_report = false;
-		set_end_level_data(el_data);
-	}
 
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
@@ -251,6 +244,8 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
+	
+	gamestate_->init(level, *this);
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
@@ -330,18 +325,22 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::game_events = NULL;
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
+
 	gamestate_.reset(new game_state(level, *this, tdata_));
-	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
 	resources::teams = &gamestate().board_.teams_;
 	resources::tod_manager = &gamestate().tod_manager_;
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
+	resources::undo_stack = &undo_stack();
+
+	gamestate_->init(level, *this);
+	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::lua_kernel = gamestate().lua_kernel_.get();
 	resources::game_events = gamestate().events_manager_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
-	resources::undo_stack = &undo_stack();
+
 	gui_->reset_tod_manager(gamestate().tod_manager_);
 	gui_->reset_reports(*gamestate().reports_);
 	gui_->change_display_context(&gamestate().board_);
@@ -514,20 +513,10 @@ void play_controller::init_side_end()
 
 config play_controller::to_config() const
 {
-	config cfg;
+	config cfg = level_;
 
-	cfg.merge_attributes(level_);
 	cfg["replay_pos"] = saved_game_.get_replay().get_pos();
 	gamestate().write(cfg);
-
-	if(end_level_data_.get_ptr() != NULL) {
-		end_level_data_->write(cfg.add_child("end_level_data"));
-	}
-
-	// Write terrain_graphics data in snapshot, too
-	BOOST_FOREACH(const config& tg, level_.child_range("terrain_graphics")) {
-		cfg.add_child("terrain_graphics", tg);
-	}
 
 	gui_->write(cfg.add_child("display"));
 
@@ -986,6 +975,9 @@ void play_controller::check_victory()
 
 void play_controller::process_oos(const std::string& msg) const
 {
+	if (non_interactive()) {
+		throw game::game_error(msg);
+	}
 	if (game_config::ignore_replay_errors) return;
 
 	std::stringstream message;

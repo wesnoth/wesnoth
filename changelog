@@ -15,6 +15,10 @@ Version 1.13.1+dev:
    * Under the Burning Suns:
      * Gave Garak a new ability called Teaching (at the start of every turn,
        his experience points are transferred to adjacent units on the same side)
+ * Editor:
+   * Add Recent Files menu with a list of recently saved or loaded maps or
+     scenarios, up to a custom limit (by default 10) that can be set in
+     Advanced Preferences.
  * Graphics:
    * New animated water.
    * New standing animation for the Dwarvish Runesmith
@@ -25,6 +29,8 @@ Version 1.13.1+dev:
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
  * Lua API:
+   * It is now possible to implement custom [effect]s with wesnoth.effects
+   * Changed interface for the wesnoth.synchronize_choice function
    * Added support for unit.level field (read only)
    * Added support for unit.advancements field (bug #23677)
    * Added support for current.event_context.unit_x/y fields (bug #23507)
@@ -37,6 +43,24 @@ Version 1.13.1+dev:
    * New parameter write_to_mods in wesnoth.add_modification
    * Added wesnoth.random function
    * helper.shuffle is now synced
+   * Remove wesnoth.get_unit(underlying_id)
+   * Add wesnoth.get_unit(string_id)
+   * Change wesnoth.message so that it can display translatable strings
+   * Change wesnoth.put_unit so that the unit is passed as the first parameter
+   * Add wesnoth.erase_unit, which replaces wesnoth.put_unit when called without a unit
+   * Add wesnoth.unit_vision_cost
+   * Add wesnoth.unit_jamming_cost
+   * Add methods to proxy unit metatable:
+       matches, to_map, to_recall, clone, extract, advance, add_modification,
+       resistance, defense, movement, vision, jamming, ability, transform
+     All are equivalent to a similar wesnoth.* function, but are called as
+     unit:fcn_name(arguments) instead of as wesnoth.fcn_name(unit, arguments)
+   * Add wesnoth.races[race_id].traits
+   * Add wesnoth.unit_types[unit_type_id].traits
+   * pairs() and ipairs() now work on vconfig userdata objects
+   * Add helper.get_nth_child
+   * Add helper.child_count
+   * Add helper.child_array
  * Music and sound effects:
    * New dwarf hit and die sounds.
  * Terrains:
@@ -47,6 +71,10 @@ Version 1.13.1+dev:
      as "Bridge", retaining their descriptive names in the editor as per
      convention.
  * User interface:
+   * It is now possible to switch from replay directly into normal play (bug #23833).
+   * The game now shows a notification on remote clients if a sides takes very long to do a local choice (bug #23297).
+   * It is now possible to replay a turn in mp games by loading autosaves.
+   * The game now asks for confirmation when attempting to quit during the game.
    * Add "unit status=..." command to debug console to add/remove unit statuses
    * GUI2:
      * stacked_widget can optionally display a single layer at a time. This
@@ -58,6 +86,14 @@ Version 1.13.1+dev:
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
  * WML engine:
+   * controller= in side filters can now be used in mp games for unsynced code
+   * Added [effect] apply_to=max_expereince set=<value>
+   * Added enable_if= to mod and era events 
+   * Added $varname?default_value| in variable substitution
+   * Fixed side_for= parameter in [message]s with input
+   * New actionwml tag [on_undo] contains actionswml that is executed when the current action is undone
+   * New actionwml tag [unsynced] executes its contents in an unsynced context where for example [set_variable]rand= will return unsynced results
+   * [campaign] now supports [event] subtags which are added to every scenario of the campaign similar to [modification] [event]s
    * Added support for mod_x,mod_y= in [terrain_graphics].
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
@@ -106,6 +142,9 @@ Version 1.13.1+dev:
    * Adjacency filters in abilities and weapon specials now support count= and is_enemy=
    * Add new looping tags: [for], [foreach], [repeat]
    * Add new flow control tags: [break], [continue], [return]
+   * Added a new [difficulty] tag for defining a campaign's difficulty level
+   * Add new syntax for [option], similar to the new difficulty syntax
+   * Add [test_condition] ActionWML that tells why a conditional failed (for debugging)
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:

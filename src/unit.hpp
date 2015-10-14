@@ -142,7 +142,7 @@ public:
 	/** The unit type name */
 	const t_string& type_name() const {return type_name_;}
 	const std::string& undead_variation() const {return undead_variation_;}
-	const std::string variation() const {return variation_; }
+	const std::string& variation() const {return variation_; }
 
 	/** The unit name for display */
 	const t_string &name() const { return name_; }
@@ -194,7 +194,7 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
-	void set_can_recurit(bool canrecruit) { canrecruit_ = canrecruit; }
+	void set_can_recruit(bool canrecruit) { canrecruit_ = canrecruit; }
 	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
 	void set_recruits(const std::vector<std::string>& recruits);
@@ -280,6 +280,7 @@ public:
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
+	const config::attribute_value& upkeep_raw() const { return cfg_["upkeep"]; }
 	bool loyal() const;
 
 	void set_hidden(bool state) const;

@@ -30,6 +30,14 @@ Some people experienced OOS errors on random maps due to sides being placed in d
 It is now possible to load an autosave in an networked mp game: when an autosave is loaded the local gamestate will be reset to the gamestate at that point. Then the game will be replayed (using the replay UI) until the current gamestate. When the current gamestate is reached the replay ui is removed and the game continues normally.
 [/rasection]
 
+[rasection="Default values for variables"]
+In variable substitution it's now posible to specify default values for example name="$player_name?Klaus|" will evaluate to 'Klaus' in case the variable player_name is not set.
+[/rasection]
+
+[rasection="Custom [effect]s"]
+It is now possible to create custom effects with the wesnoth.effects lua table.
+[/rasection]
+
 ==========
 KNOWN BUGS
 ==========

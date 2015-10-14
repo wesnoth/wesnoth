@@ -321,17 +321,16 @@ wml_actions["while"] = function( cfg )
 				local action = utils.handle_event_commands(do_child, "loop")
 				if action == "break" then
 					utils.set_exiting("none")
-					goto exit
+					return
 				elseif action == "continue" then
 					utils.set_exiting("none")
 					break
 				elseif action ~= "none" then
-					goto exit
+					return
 				end
 			end
 		else return end
 	end
-	::exit::
 end
 
 wml_actions["break"] = function(cfg)
@@ -348,23 +347,42 @@ end
 
 wesnoth.wml_actions["for"] = function(cfg)
 	local first, last, step
-	if cfg.array then
+	if cfg.array ~= nil then
 		first = 0
 		last = wesnoth.get_variable(cfg.array .. ".length") - 1
 		step = 1
-		if cfg.reverse == "yes" then
+		if cfg.reverse then
 			first, last = last, first
 			step = -1
 		end
 	else
 		first = cfg.start or 0
 		last = cfg["end"] or first
-		step = cfg.step or ((last - first) / math.abs(last - first))
+		step = cfg.step
+		if not step then
+			if last < first then step = -1 else step = 1 end
+		end
+	end
+	if step == 0 then -- Sanity check
+		helper.wml_error("[for] has a step of 0!")
+	end
+	if (first < last and step < 0) or (first > last and step > 0) then
+		-- Sanity check: If they specify something like start,end,step=1,4,-1
+		-- then we do nothing
+		return
 	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
+	local sentinel = last + step
 	wesnoth.set_variable(i_var, first)
-	while wesnoth.get_variable(i_var) <= last do
+	local function loop_condition()
+		if first < sentinel then
+			return wesnoth.get_variable(i_var) < sentinel
+		else
+			return wesnoth.get_variable(i_var) > sentinel
+		end
+	end
+	while loop_condition() do
 		for do_child in helper.child_range( cfg, "do" ) do
 			local action = utils.handle_event_commands(do_child, "loop")
 			if action == "break" then
@@ -377,7 +395,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 				goto exit
 			end
 		end
-		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + 1)
+		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + step)
 	end
 	::exit::
 	utils.end_var_scope(i_var, save_i)
@@ -486,6 +504,58 @@ function wml_actions.switch(cfg)
 	end
 end
 
+-- This is mainly for use in unit test macros, but maybe it can be useful elsewhere too
+function wml_actions.test_condition(cfg)
+	local logger = cfg.logger or "warning"
+	
+	-- This function returns true if it managed to explain the failure
+	local function explain(current_cfg, expect)
+		for i,t in ipairs(current_cfg) do
+			local tag, this_cfg = t[1], t[2]
+			-- Some special cases
+			if tag == "or" or tag == "and" then
+				if explain(this_cfg, expect) then
+					return true
+				end
+			elseif tag == "not" then
+				if explain(this_cfg, not expect) then
+					return true
+				end
+			elseif tag == "true" or tag == "false" then
+				-- We don't explain these ones.
+				return true
+			elseif wesnoth.eval_conditional{t} == expect then
+				local explanation = "The following conditional test %s:"
+				if expect then
+					explanation = explanation:format("passed")
+				else
+					explanation = explanation:format("failed")
+				end
+				explanation = string.format("%s\n\t[%s]", explanation, tag)
+				for k,v in pairs(this_cfg) do
+					if type(k) ~= "number" then
+						local format = "%s\n\t\t%s=%s"
+						local literal = tostring(helper.literal(this_cfg)[k])
+						if literal ~= v then
+							format = format .. "=%s"
+						end
+						explanation = string.format(format, explanation, k, literal, tostring(v))
+					end
+				end
+				explanation = string.format("%s\n\t[/%s]", explanation, tag)
+				if tag == "variable" then
+					explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, tostring(wesnoth.get_variable(this_cfg.name)))
+				end
+				wesnoth.wml_actions.wml_message{message = explanation, logger = logger}
+				return true
+			end
+		end
+	end
+	
+	-- Use not twice here to convert nil to false
+	explain(cfg, not not cfg.result)
+end
+
 function wml_actions.scroll_to(cfg)
 	local loc = wesnoth.get_locations( cfg )[1]
 	if not loc then return end
@@ -563,7 +633,7 @@ function wml_actions.store_unit(cfg)
 
 	for i,u in ipairs(units) do
 		utils.vwriter.write(writer, u.__cfg)
-		if kill_units then wesnoth.put_unit(u.x, u.y) end
+		if kill_units then wesnoth.erase_unit(u) end
 	end
 
 	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
@@ -572,7 +642,7 @@ function wml_actions.store_unit(cfg)
 			ucfg.x = "recall"
 			ucfg.y = "recall"
 			utils.vwriter.write(writer, ucfg)
-			if kill_units then wesnoth.extract_unit(u) end
+			if kill_units then wesnoth.erase_unit(u) end
 		end
 	end
 end
@@ -838,7 +908,7 @@ function wml_actions.petrify(cfg)
 		unit.status.petrified = true
 		-- Extract unit and put it back to update animation (not needed for recall units)
 		wesnoth.extract_unit(unit)
-		wesnoth.put_unit(unit, unit.x, unit.y)
+		wesnoth.put_unit(unit)
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
@@ -851,7 +921,7 @@ function wml_actions.unpetrify(cfg)
 		unit.status.petrified = false
 		-- Extract unit and put it back to update animation (not needed for recall units)
 		wesnoth.extract_unit(unit)
-		wesnoth.put_unit(unit, unit.x, unit.y)
+		wesnoth.put_unit(unit)
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
@@ -980,7 +1050,7 @@ function wml_actions.harm_unit(cfg)
 
 			-- Extract unit and put it back to update animation if status was changed
 			wesnoth.extract_unit(unit_to_harm)
-			wesnoth.put_unit(unit_to_harm, unit_to_harm.x, unit_to_harm.y)
+			wesnoth.put_unit(unit_to_harm)
 
 			if add_tab then
 				text = string.format("%s%s", "\t", text)
@@ -1304,7 +1374,7 @@ function wml_actions.put_to_recall_list(cfg)
 			unit.status.slowed = false
 		end
 		wesnoth.put_recall_unit(unit, unit.side)
-		wesnoth.put_unit(unit.x, unit.y)
+		wesnoth.erase_unit(unit)
 	end
 end
 

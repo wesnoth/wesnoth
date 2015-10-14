@@ -83,8 +83,10 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_match_unit(lua_State *L);
 	int intf_get_recall_units(lua_State *L);
 	int intf_get_variable(lua_State *L);
+	int intf_get_side_variable(lua_State *L);
 	int intf_random(lua_State *L);
 	int intf_set_variable(lua_State *L);
+	int intf_set_side_variable(lua_State *L);
 	int intf_highlight_hex(lua_State *L);
 	int intf_is_enemy(lua_State *L);
 	int intf_view_locked(lua_State *L);
@@ -115,6 +117,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_play_sound(lua_State *L);
 	int intf_print(lua_State *L);
 	int intf_put_unit(lua_State *L);
+	int intf_erase_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
@@ -170,6 +173,7 @@ public:
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 
+	void apply_effect(const std::string& name, unit& u, const config& cfg);
 	void initialize(const config& level);
 	void save_game(config & level);
 	void load_game(const config& level);
@@ -184,6 +188,7 @@ public:
 
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
+	int return_unit_method(lua_State *L, char const *m);
 };
 
 #endif

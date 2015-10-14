@@ -47,7 +47,7 @@ static lg::log_domain log_engine("engine");
 
 static void no_op() {}
 
-game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata) :
+game_state::game_state(const config & level, play_controller &, const tdata_cache & tdata) :
 	gamedata_(level),
 	board_(tdata, level),
 	tod_manager_(level),
@@ -62,7 +62,7 @@ game_state::game_state(const config & level, play_controller & pc, const tdata_c
 	server_request_number_(level["server_request_number"].to_int()),
 	first_human_team_(-1)
 {
-	init(pc.ticks(), pc, level);
+	//init(pc.ticks(), pc, level);
 }
 game_state::game_state(const config & level, play_controller & pc, game_board& board) :
 	gamedata_(level),
@@ -73,14 +73,22 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
 	events_manager_(),
 	player_number_(level["playing_team"].to_int() + 1),
+	end_level_data_(),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
-	init(pc.ticks(), pc, level);
+	if(const config& endlevel_cfg = level.child("end_level_data")) {
+		end_level_data el_data;
+		el_data.read(endlevel_cfg);
+		el_data.transient.carryover_report = false;
+		end_level_data_ = el_data;
+	}
 
-	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
+	//init(pc.ticks(), pc, level);
 
-	events_manager_.reset(new game_events::manager(level, game_events_resources_));
+	//game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
+
+	//events_manager_.reset(new game_events::manager(level, game_events_resources_));
 
 }
 
@@ -158,20 +166,19 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 	}
 }
 
-void game_state::init(const int ticks, play_controller & pc, const config& level)
+void game_state::init(const config& level, play_controller & pc)
 {
-	const int ticks1 = SDL_GetTicks();
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);
 	}
 
-	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - ticks) << std::endl;
+	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
 	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks) << std::endl;
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
 	//loadscreen::start_stage("init teams");
 
 	board_.teams_.resize(level.child_count("side"));
@@ -212,8 +219,6 @@ void game_state::init(const int ticks, play_controller & pc, const config& level
 		}
 	}
 	
-	LOG_NG << "Initializing teams took " << SDL_GetTicks() - ticks1 << " ticks.\n";
-
 	pathfind_manager_.reset(new pathfind::manager(level));
 
 	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));
@@ -221,8 +226,6 @@ void game_state::init(const int ticks, play_controller & pc, const config& level
 	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
 
 	events_manager_.reset(new game_events::manager(level, game_events_resources_));
-	
-	LOG_NG << "Initializing total took " << SDL_GetTicks() - ticks1 << " ticks.\n";
 
 
 }
@@ -270,6 +273,10 @@ void game_state::write(config& cfg) const
 
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
+
+	if(end_level_data_.get_ptr() != NULL) {
+		end_level_data_->write(cfg.add_child("end_level_data"));
+	}
 }
 
 namespace {

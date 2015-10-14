@@ -244,7 +244,7 @@ public:
 	 */
 	void set_side_setup(int side, const std::string& id, const std::string& name,
 			int gold, int income, int village_gold, int village_support,
-			bool fog, bool share_view, bool shroud, bool share_maps,
+			bool fog, bool shroud, team::SHARE_VISION share_vision,
 			team::CONTROLLER controller, bool hidden, bool no_leader);
 
 	/**
@@ -331,6 +331,9 @@ public:
 
 	/** Clear the modified state */
 	void clear_modified();
+
+	/** Adds the map to the editor's recent files list. */
+	void add_to_recent_files();
 
 	/** @return true when undo can be performed, false otherwise */
 	bool can_undo() const;
