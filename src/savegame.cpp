@@ -96,7 +96,7 @@ loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestat
 	, select_difficulty_(false)
 {}
 
-void loadgame::show_dialog(bool show_replay, bool cancel_orders)
+void loadgame::show_dialog()
 {
 	// FIXME: Integrate the load_game dialog into this class
 	// something to watch for the curious, but not yet ready to go
@@ -151,7 +151,7 @@ void loadgame::show_difficulty_dialog()
 bool loadgame::load_game()
 {
 	if (!gui_.video().faked()) {
-		show_dialog(false, false);
+		show_dialog();
 	}
 
 	if(filename_.empty()) {
@@ -189,7 +189,7 @@ bool loadgame::load_game(
 	select_difficulty_ = select_difficulty;
 
 	if (filename_.empty()){
-		show_dialog(show_replay, cancel_orders);
+		show_dialog();
 	}
 	else{
 		show_replay_ = show_replay;
@@ -295,7 +295,7 @@ void loadgame::set_gamestate()
 
 bool loadgame::load_multiplayer_game()
 {
-	show_dialog(false, false);
+	show_dialog();
 
 	if (filename_.empty())
 		return false;
