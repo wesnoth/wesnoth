@@ -311,6 +311,9 @@ public:
 	/** Clear the modified state */
 	void clear_modified();
 
+	/** Adds the map to the editor's recent files list. */
+	void add_to_recent_files();
+
 	/** @return true when undo can be performed, false otherwise */
 	bool can_undo() const;
 

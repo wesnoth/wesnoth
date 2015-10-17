@@ -14,6 +14,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action.hpp"
+#include "editor/editor_preferences.hpp"
 #include "map_context.hpp"
 
 #include "display.hpp"
@@ -141,6 +142,8 @@ map_context::map_context(const config& game_config, const std::string& filename,
 			boost::regex_constants::match_not_dot_null)) {
 		map_ = editor_map::from_string(game_config, file_string); //throws on error
 		pure_map_ = true;
+
+		add_to_recent_files();
 		return;
 	}
 
@@ -160,14 +163,15 @@ map_context::map_context(const config& game_config, const std::string& filename,
 			} catch (config::error & e) {
 				throw editor_map_load_exception("load_scenario", e.message); //we already caught and rethrew this exception in load_scenario
 			}
-			return;
 		} else {
 			LOG_ED << "Loading embedded map file" << std::endl;
 			embedded_ = true;
 			pure_map_ = true;
 			map_ = editor_map::from_string(game_config, map_data);
-			return;
 		}
+
+		add_to_recent_files();
+		return;
 	}
 
 	// 3.0 Macro referenced pure map
@@ -186,6 +190,8 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	file_string = filesystem::read_file(filename_);
 	map_ = editor_map::from_string(game_config, file_string);
 	pure_map_ = true;
+
+	add_to_recent_files();
 }
 
 void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
@@ -545,6 +551,7 @@ bool map_context::save_map()
 				throw editor_map_save_exception(_("Could not save into scenario"));
 			}
 		}
+		add_to_recent_files();
 		clear_modified();
 	} catch (filesystem::io_exception& e) {
 		utils::string_map symbols;
@@ -608,6 +615,11 @@ bool map_context::modified() const
 void map_context::clear_modified()
 {
 	actions_since_save_ = 0;
+}
+
+void map_context::add_to_recent_files()
+{
+	preferences::editor::add_recent_files_entry(get_filename());
 }
 
 bool map_context::can_undo() const
