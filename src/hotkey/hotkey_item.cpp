@@ -462,7 +462,7 @@ void save_hotkeys(config& cfg)
 	cfg.clear_children("hotkey");
 
 	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
-		if (!item->is_default()) {
+		if (!item->is_default() && item->active()) {
 			item->save(cfg.add_child("hotkey"));
 		}
 	}
