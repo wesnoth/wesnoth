@@ -653,6 +653,12 @@ void play_controller::tab()
 		BOOST_FOREACH(const std::string& o, gui_->observers()){
 			dictionary.insert(o);
 		}
+		
+		// Add nicks who whispered you
+		BOOST_FOREACH(const std::string& w, gui_->get_chat_manager().whisperers()){
+			dictionary.insert(w);
+		}
+		
 		//Exclude own nick from tab-completion.
 		//NOTE why ?
 		dictionary.erase(preferences::login());
