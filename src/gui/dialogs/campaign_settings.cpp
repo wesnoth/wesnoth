@@ -20,7 +20,11 @@
 #include "gui/dialogs/campaign_settings.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
