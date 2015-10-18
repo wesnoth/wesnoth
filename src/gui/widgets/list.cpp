@@ -195,7 +195,7 @@ void tlist::set_row_shown(const unsigned row, const bool shown)
 		window->invalidate_layout();
 	} else {
 		// grid().set_visible_rectangle(content_visible_rectangle());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -229,7 +229,7 @@ void tlist::set_row_shown(const std::vector<bool>& shown)
 		window->invalidate_layout();
 	} else {
 		// content_grid_->set_visible_rectangle(content_visible_rectangle());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -316,7 +316,7 @@ void tlist::resize_content(
 		need_layout_ = true;
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
-			set_dirty(true);
+			set_is_dirty(true);
 		}
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
@@ -372,7 +372,7 @@ void tlist::layout_children(const bool force)
 				grid().set_visible_rectangle(content_visible_area_);
 		*/
 		need_layout_ = false;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
