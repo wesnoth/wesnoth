@@ -30,6 +30,8 @@
 #include "unit_types.hpp"
 #include "utils/foreach.tpp"
 
+#include <boost/bind.hpp>
+
 namespace
 {
 static std::string last_chosen_type_id = "";
@@ -84,7 +86,7 @@ namespace gui2
 REGISTER_DIALOG(unit_create)
 
 tunit_create::tunit_create()
-	: gender_(last_gender), choice_(last_chosen_type_id), type_ids_()
+	: gender_(last_gender), choice_(last_chosen_type_id), type_info_()
 {
 }
 
@@ -107,7 +109,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 	// We use this container to "map" unit_type ids to list subscripts
 	// later, so it ought to be empty before proceeding.
-	type_ids_.clear();
+	type_info_.clear();
 
 	FOREACH(const AUTO & i, unit_types.types())
 	{
@@ -117,16 +119,16 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		// Make sure this unit type is built with the data we need.
 		unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
 
-		// And so we map an unit_type id to a list subscript. Ugh.
-		type_ids_.push_back(i.first);
+		// Create a race name/type id pair for each unit type
+		type_info_.push_back(std::make_pair(i.second.race()->plural_name(), i.first));
 
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
-		column["label"] = i.second.type_name();
-		row_data.insert(std::make_pair("unit_type", column));
-		column["label"] = i.second.race()->plural_name();
+		column["label"] = type_info_.back().first;
 		row_data.insert(std::make_pair("race", column));
+		column["label"] = type_info_.back().second;
+		row_data.insert(std::make_pair("unit_type", column));
 
 		list.add_row(row_data);
 
@@ -136,10 +138,38 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		}
 	}
 
-	if(type_ids_.empty()) {
+	if(type_info_.empty()) {
 		ERR_GUI_G << "no unit types found for unit create dialog; not good"
 				  << std::endl;
 	}
+
+	std::vector<tgenerator_::torder_func> order_funcs(2);
+	order_funcs[0] = boost::bind(&tunit_create::compare_race, this, _1, _2);
+	order_funcs[1] = boost::bind(&tunit_create::compare_race_rev, this, _1, _2);
+	list.set_column_order(0, order_funcs);
+	order_funcs[0] = boost::bind(&tunit_create::compare_type, this, _1, _2);
+	order_funcs[1] = boost::bind(&tunit_create::compare_type_rev, this, _1, _2);
+	list.set_column_order(1, order_funcs);
+}
+
+bool tunit_create::compare_type(unsigned i1, unsigned i2) const
+{
+	return type_info_[i1].second < type_info_[i2].second;
+}
+
+bool tunit_create::compare_race(unsigned i1, unsigned i2) const
+{
+	return type_info_[i1].first < type_info_[i2].first;
+}
+
+bool tunit_create::compare_type_rev(unsigned i1, unsigned i2) const
+{
+	return type_info_[i1].second > type_info_[i2].second;
+}
+
+bool tunit_create::compare_race_rev(unsigned i1, unsigned i2) const
+{
+	return type_info_[i1].first > type_info_[i2].first;
 }
 
 void tunit_create::post_show(twindow& window)
@@ -157,7 +187,7 @@ void tunit_create::post_show(twindow& window)
 	const int selected_row = list.get_selected_row();
 	if(selected_row < 0) {
 		return;
-	} else if(static_cast<size_t>(selected_row) >= type_ids_.size()) {
+	} else if(static_cast<size_t>(selected_row) >= type_info_.size()) {
 		// FIXME: maybe assert?
 		ERR_GUI_G << "unit create dialog has more list items than known unit "
 					 "types; not good\n";
@@ -165,7 +195,7 @@ void tunit_create::post_show(twindow& window)
 	}
 
 	last_chosen_type_id = choice_
-			= type_ids_[static_cast<size_t>(selected_row)];
+			= type_info_[static_cast<size_t>(selected_row)].second;
 	last_gender = gender_ = female_toggle.get_value() ? unit_race::FEMALE
 													  : unit_race::MALE;
 }
