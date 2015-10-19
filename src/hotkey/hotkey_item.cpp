@@ -98,7 +98,9 @@ hotkey::hotkey_item& get_hotkey(int character, int keycode,
 	bool found = false;
 
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->get_character() != -1) {
+		// If character is a letter, make sure it can match its key code. Otherwise combinations like Ctrl+Return/Enter can be mistaken for Ctrl+j or Ctrl+m (CR and LF respectively).
+		// Character may not match key code in case of punctuation, eg key code for semi-colon is different from key code for colon yet on US keyboards they are represented by the same key.
+		if (itor->get_character() != -1 && (isalpha(character) && keycode != -1 ? tolower(character) == keycode : true)) {
 			if (character == itor->get_character()) {
 				if (ctrl == itor->get_ctrl()
 						&& cmd == itor->get_cmd()
@@ -530,7 +532,10 @@ void hotkey_item::set_key(int character, int keycode,
 		character -= 32; }
 
 	// We handle simple cases by character, others by the actual key.
-	if (isprint(character) && !isspace(character)) {
+	// @ and ` are exceptions related to the space character. Without these, combinations involving Ctrl or Ctrl+Shift often resolve the character value to null (or @ and `).
+	// If character is read as a letter, only treat it as a letter if its key code matches that character. This covers cases such as Ctrl+Return/Enter, which would otherwise be mis-read as Ctrl+j or Ctrl+m (CR and LF respectively). 
+	if (character != '@' && character != '`' &&
+		( (isalpha(character) && tolower(character) == keycode) || (!isalpha(character) && isprint(character) && !isspace(character)) )) {
 		character_ = character;
 		ctrl_      = ctrl;
 		cmd_       = cmd;
