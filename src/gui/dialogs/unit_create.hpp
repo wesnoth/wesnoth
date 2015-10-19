@@ -17,9 +17,12 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "race.hpp"
+#include "unit_types.hpp"
 
 #include <string>
 #include <vector>
+
+class display;
 
 namespace gui2
 {
@@ -27,7 +30,7 @@ namespace gui2
 class tunit_create : public tdialog
 {
 public:
-	tunit_create();
+	tunit_create(display* disp = NULL);
 
 	/** Unit type choice from the user. */
 	const std::string& choice() const
@@ -48,10 +51,13 @@ public:
 	}
 
 private:
+	std::vector<const unit_type*> units_;
+
 	unit_race::GENDER gender_;
 
 	std::string choice_;
-	std::vector<std::pair<std::string, std::string> > type_info_;
+
+	display* disp_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -67,6 +73,12 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
+	void print_stats(std::stringstream& str, const int row);
+
+	/** Callbacks */
+	void list_item_clicked(twindow& window);
+	//void filter_text_changed(ttext_* textbox, const std::string& text);
+	void profile_button_callback(twindow& window);
 	void gender_toggle_callback(twindow& window);
 };
 }
