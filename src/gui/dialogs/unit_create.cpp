@@ -233,24 +233,24 @@ void tunit_create::post_show(twindow& window)
 	}
 
 	last_chosen_type_id = choice_
-			= units_[static_cast<size_t>(selected_row)]->id();
+			= units_[selected_row]->id();
 	last_gender = gender_ = female_toggle.get_value() ? unit_race::FEMALE
 													  : unit_race::MALE;
 }
 
 void tunit_create::print_stats(std::stringstream& str, const int row)
 {
-	const unit_type* u = units_[static_cast<size_t>(row)];
+	const unit_type* u = units_[row];
 
 	str << _("Level ") << u->level() << "\n";
 
-	str << "\n ";
+	str << "\n";
 
 	str << _("HP: ")
 		<< "<span color='#21e100'>" << u->hitpoints() << "/" << u->hitpoints() << "</span>" << "\n";
 
 	str << _("XP: ")
-		<< "<span color='#00a0e1'>" << u->experience_needed() << u->experience_needed() << "</span>" << "\n";
+		<< "<span color='#00a0e1'>" << u->experience_needed() << "/" << u->experience_needed() << "</span>" << "\n";
 
 	str << _("MP: ")
 		<< u->movement() << "/" << u->movement() << "\n";
@@ -282,7 +282,7 @@ void tunit_create::list_item_clicked(twindow& window)
 	const int selected_row 
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
-	const unit_type* u = units_[static_cast<size_t>(selected_row)];
+	const unit_type* u = units_[selected_row];
 
 	std::stringstream str;
 	print_stats(str, selected_row);
@@ -291,7 +291,7 @@ void tunit_create::list_item_clicked(twindow& window)
 
 	if(resources::controller) {
 		tc = "~RC(" + u->flag_rgb() + ">" +
-			 team::get_side_color_index(resources::controller->play_controller::current_side())
+			 team::get_side_color_index(resources::controller->current_side())
 			 + ")";
 	}
 
@@ -380,8 +380,8 @@ void tunit_create::profile_button_callback(twindow& window)
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
 	help::show_unit_help(*disp_,
-		units_[static_cast<size_t>(selected_row)]->id(),
-		units_[static_cast<size_t>(selected_row)]->show_variations_in_help(), false);
+		units_[selected_row]->id(),
+		units_[selected_row]->show_variations_in_help(), false);
 }
 
 void tunit_create::gender_toggle_callback(twindow& window)
