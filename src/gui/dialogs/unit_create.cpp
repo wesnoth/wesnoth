@@ -33,6 +33,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "display.hpp"
+#include "marked-up_text.hpp"
 #include "help/help.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
@@ -271,6 +272,30 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 			str << name << "\n";
 		}
 	}**/
+
+	str << " \n";
+
+	// Print attack details
+	BOOST_FOREACH(const attack_type& a, u->attacks())
+	{
+		str << "<span color='#f5e6c1'>" << a.num_attacks() 
+			<< font::weapon_numbers_sep << a.damage() << " " << a.name() << "</span>" << "\n";
+
+		str << "<span color='#a69275'>" << "  " << a.range() 
+			<< font::weapon_details_sep << a.type() << "</span>" << "\n";
+
+		const std::string special = a.weapon_specials();
+		if (!special.empty()) {
+			str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
+		}
+
+		const std::string accuracy_parry = a.accuracy_parry_description();
+		if(!accuracy_parry.empty()) {
+			str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
+		}
+
+		str << " \n";
+	}
 }
 
 void tunit_create::list_item_clicked(twindow& window)
