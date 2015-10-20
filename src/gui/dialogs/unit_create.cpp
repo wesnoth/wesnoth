@@ -288,9 +288,13 @@ void tunit_create::list_item_clicked(twindow& window)
 	std::stringstream str;
 	print_stats(str, selected_row);
 
-	const std::string& tc = "~RC(" 
-		+ u->flag_rgb() + ">" 
-		+ team::get_side_color_index(resources::controller->play_controller::current_side()) + ")";
+	std::string tc;
+
+	if(resources::controller) {
+		tc = "~RC(" + u->flag_rgb() + ">" +
+			 team::get_side_color_index(resources::controller->play_controller::current_side())
+			 + ")";
+	}
 
 	const std::string& alignment_name = unit_type::alignment_description(
 		u->alignment(),
@@ -326,6 +330,10 @@ void tunit_create::list_item_clicked(twindow& window)
 
 void tunit_create::profile_button_callback(twindow& window)
 {
+	if(!disp_) {
+		return;
+	}
+
 	const int selected_row
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
