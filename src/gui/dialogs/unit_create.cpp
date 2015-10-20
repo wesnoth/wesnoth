@@ -233,7 +233,7 @@ void tunit_create::post_show(twindow& window)
 	}
 
 	last_chosen_type_id = choice_
-			= units_[static_cast<size_t>(selected_row)]->type_name();
+			= units_[static_cast<size_t>(selected_row)]->id();
 	last_gender = gender_ = female_toggle.get_value() ? unit_race::FEMALE
 													  : unit_race::MALE;
 }
@@ -380,7 +380,7 @@ void tunit_create::profile_button_callback(twindow& window)
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
 	help::show_unit_help(*disp_,
-		units_[static_cast<size_t>(selected_row)]->type_name(),
+		units_[static_cast<size_t>(selected_row)]->id(),
 		units_[static_cast<size_t>(selected_row)]->show_variations_in_help(), false);
 }
 
