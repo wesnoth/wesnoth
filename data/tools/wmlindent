@@ -61,7 +61,7 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, getopt, filecmp, re, codecs
+import sys, os, argparse, filecmp, re, codecs
 from wesnoth import wmltools3 as wmltools
 
 closer_prefixes = ["{NEXT "]
@@ -271,26 +271,36 @@ def convertor(linefilter, arglist, exclude):
                                 os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h?de:qv",
-                                         ['help', 'dryrun', 'exclude=', 'quiet', 'verbose'])
-    verbose = 0
-    quiet = False
-    dryrun = False
-    exclude = []
-    for (opt, val) in options:
-        if opt in ('-?', '-h', '--help'):
-            print(__doc__)
-            sys.exit(0)
-        elif opt in ('-d', '--dryrun'):
-            dryrun = True
-        elif opt in ('-e', '--exclude'):
-            exclude.append(val)
-        elif opt in ('-q', '--quiet'):
-            quiet = True
-        elif opt in ('-v', '--verbose'):
-            verbose += 1
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawTextHelpFormatter
+        )
+    parser.add_argument("-?", action="help",
+                        help="show this help message and exit") # original --help, -h and -? printed __doc__
+    parser.add_argument("-d", "--dryrun", action="store_true",
+                        help="""detects and reports files that would be changed without
+changing them.""")
+    parser.add_argument("-v", "--verbose", action="count", default=0,
+                        help="""-v enables reporting files that are changed.
+-v -v unchanged files are also reported.""")
+    parser.add_argument("-e", "--exclude", action="append", default=[],
+                        help="takes a regexp and excludes files matching it.")
+    parser.add_argument("-q", "--quiet", action="store_true",
+                        help="Do not generate output") # TODO: improve description?
+    parser.add_argument("files", action="store", nargs="*",
+                        help="""Any number of files or directories.
+Call with no arguments to filter WML on stdin to
+reindented WML on stdout.""")
+
+    namespace = parser.parse_args()
+    verbose = namespace.verbose
+    quiet = namespace.quiet
+    dryrun = namespace.dryrun
+    exclude = namespace.exclude
+    arguments = namespace.files # a remnant of getopt...
+
     if dryrun:
         verbose = max(1, verbose)
+
     # in certain situations, Windows' command prompt appends a double quote
     # to the command line parameters. This block takes care of this issue.
     for i,arg in enumerate(arguments):
