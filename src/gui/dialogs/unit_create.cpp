@@ -155,7 +155,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			continue;
 
 		// Make sure this unit type is built with the data we need.
-		unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
+		unit_types.build_unit_type(i.second, unit_type::WITHOUT_ANIMATIONS);
 
 		units_.push_back(&i.second);
 
@@ -252,49 +252,73 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 	str << "<b>" << _("MP: ") << "</b>"
 		<< u->movement() << "\n";
 
-	// FIXME: This probably must be move into a unit_type function
-	// Also actually needs to be fixed
-	/**BOOST_FOREACH(const config& tr, u->possible_traits())
+	str << " \n";
+
+	// Print trait details
+	bool has_traits = false;
+	std::stringstream t_str;
+
+	BOOST_FOREACH(const config& tr, u->possible_traits())
 	{
-		if (tr["availability"] != "musthave") continue;
+		if(tr["availability"] != "musthave") continue;
 
 		const std::string gender_string = 
 			u->genders().front() == unit_race::FEMALE ? "female_name" : "male_name";
 
 		t_string name = tr[gender_string];
-		if (name.empty()) {
+		if(name.empty()) {
 			name = tr["name"];
 		}
-		if (!name.empty()) {
-			//if (!traits.empty()) {
-			//	str << ", ";
-			//}
-			str << name << "\n";
-		}
-	}**/
 
-	str << " \n";
-
-	// Print attack details
-	BOOST_FOREACH(const attack_type& a, u->attacks())
-	{
-		str << "<span color='#f5e6c1'>" << a.num_attacks() 
-			<< font::weapon_numbers_sep << a.damage() << " " << a.name() << "</span>" << "\n";
-
-		str << "<span color='#a69275'>" << "  " << a.range() 
-			<< font::weapon_details_sep << a.type() << "</span>" << "\n";
-
-		const std::string special = a.weapon_specials();
-		if (!special.empty()) {
-			str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
+		if(!name.empty()) {
+			t_str << "  " << name << "\n";
 		}
 
-		const std::string accuracy_parry = a.accuracy_parry_description();
-		if(!accuracy_parry.empty()) {
-			str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
+		has_traits = true;
+	}
+
+	if(has_traits) {
+		str << "<b>" << "Traits" << "</b>" << "\n";
+		str << t_str.str();
+		str << " \n";
+	}
+
+	// Print ability details
+	if(!u->abilities().empty()) {
+		str << "<b>" << "Abilities" << "</b>" << "\n";
+
+		BOOST_FOREACH(const std::string& ab, u->abilities())
+		{
+			str << "  " << ab << "\n";
 		}
 
 		str << " \n";
+	}
+
+	// Print attack details
+	if(!u->attacks().empty()) {
+		str << "<b>" << "Attacks" << "</b>" << "\n";
+
+		BOOST_FOREACH(const attack_type& a, u->attacks())
+		{
+			str << "<span color='#f5e6c1'>" << a.num_attacks() 
+				<< font::weapon_numbers_sep << a.damage() << " " << a.name() << "</span>" << "\n";
+
+			str << "<span color='#a69275'>" << "  " << a.range() 
+				<< font::weapon_details_sep << a.type() << "</span>" << "\n";
+
+			const std::string special = a.weapon_specials();
+			if (!special.empty()) {
+				str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
+			}
+
+			const std::string accuracy_parry = a.accuracy_parry_description();
+			if(!accuracy_parry.empty()) {
+				str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
+			}
+
+			str << " \n";
+		}
 	}
 }
 
