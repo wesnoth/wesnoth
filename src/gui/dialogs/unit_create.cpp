@@ -101,6 +101,7 @@ REGISTER_DIALOG(unit_create)
 tunit_create::tunit_create(display* disp)
 	: gender_(last_gender)
 	, choice_(last_chosen_type_id)
+	, last_words_()
 	, disp_(disp)
 {
 }
@@ -113,10 +114,12 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			= find_widget<ttoggle_button>(&window, "female_toggle", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
-	/**find_widget<ttext_box>(&window, "filter_box", false, true)
-			.set_text_changed_callback(
-					boost::bind(&tunit_create::filter_text_changed, this, _1, _2));**/
-			
+	ttext_box* filter
+			= find_widget<ttext_box>(&window, "filter_box", false, true);
+
+	filter->set_text_changed_callback(
+			boost::bind(&tunit_create::filter_text_changed, this, _1, _2));
+
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
 								   boost::bind(&tunit_create::list_item_clicked,
@@ -240,12 +243,8 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 	const unit_type* u = units_[static_cast<size_t>(row)];
 
 	str << _("Level ") << u->level() << "\n";
-	//str << unit_type::alignment_description(
-	//	u->alignment(),
-	//	u->genders().front()) << "\n";
-	//str << u->race()->name(u->genders().front()) << "\n";
 
-	str << "\n";
+	str << "\n ";
 
 	str << _("HP: ")
 		<< "<span color='#21e100'>" << u->hitpoints() << "/" << u->hitpoints() << "</span>" << "\n";
@@ -324,9 +323,52 @@ void tunit_create::list_item_clicked(twindow& window)
 	details.set_use_markup(true);
 }
 
-/**bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
+bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 {
-}**/
+	twindow& window = *textbox->get_window();
+
+	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
+
+	const std::vector<std::string> words = utils::split(text, ' ');
+
+	if(words == last_words_)
+		return false;
+	last_words_ = words;
+
+	std::vector<bool> show_items(list.get_item_count(), true);
+
+	if(!text.empty()) {
+		for(unsigned int i = 0; i < list.get_item_count(); i++) {
+			tgrid* row = list.get_row_grid(i);
+
+			tgrid::iterator it = row->begin();
+			tlabel& type_label
+					= find_widget<tlabel>(*it, "unit_type", false);
+
+			bool found = false;
+			FOREACH(const AUTO & word, words)
+			{
+				found = std::search(type_label.label().str().begin(),
+									type_label.label().str().end(),
+									word.begin(),
+									word.end(),
+									chars_equal_insensitive)
+						!= type_label.label().str().end();
+
+				if(!found) {
+					// one word doesn't match, we don't reach words.end()
+					break;
+				}
+			}
+
+			show_items[i] = found;
+		}
+	}
+
+	list.set_row_shown(show_items);
+
+	return false;
+}
 
 void tunit_create::profile_button_callback(twindow& window)
 {

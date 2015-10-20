@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/text.hpp"
 #include "race.hpp"
 #include "unit_types.hpp"
 
@@ -57,6 +58,8 @@ private:
 
 	std::string choice_;
 
+	std::vector<std::string> last_words_;
+
 	display* disp_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -77,7 +80,7 @@ private:
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);
-	//void filter_text_changed(ttext_* textbox, const std::string& text);
+	bool filter_text_changed(ttext_* textbox, const std::string& text);
 	void profile_button_callback(twindow& window);
 	void gender_toggle_callback(twindow& window);
 };
