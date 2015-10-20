@@ -181,6 +181,10 @@ void play_controller::hotkey_handler::goto_leader(){
 	menu_handler_.goto_leader(play_controller_.current_side());
 }
 
+void play_controller::hotkey_handler::concede(){
+    menu_handler_.concede(play_controller_.current_side());
+}
+
 void play_controller::hotkey_handler::unit_description(){
 	menu_handler_.unit_description();
 }
@@ -277,6 +281,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_STATUS_TABLE:
 	case hotkey::HOTKEY_MUTE:
 	case hotkey::HOTKEY_PREFERENCES:
+	case hotkey::HOTKEY_CONCEDE:
 	case hotkey::HOTKEY_OBJECTIVES:
 	case hotkey::HOTKEY_UNIT_LIST:
 	case hotkey::HOTKEY_STATISTICS:
@@ -429,7 +434,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
 			// Autosave visibility is similar to LOAD_GAME hotkey
-			
+
 			++i; continue; //cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
 		} else {
 			cmd = &hotkey::get_hotkey_command(*i);

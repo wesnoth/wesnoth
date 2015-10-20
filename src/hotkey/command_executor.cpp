@@ -60,6 +60,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_ENDTURN:
 			end_turn();
 			break;
+        case HOTKEY_CONCEDE:
+            concede();
+            break;
 		case HOTKEY_UNIT_HOLD_POSITION:
 			unit_hold_position();
 			break;

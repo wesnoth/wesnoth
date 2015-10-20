@@ -68,6 +68,7 @@ public:
 	void toggle_shroud_updates(int side_num);
 	void update_shroud_now(int side_num);
 	bool end_turn(int side_num);
+	void concede(int side_num);
 	void goto_leader(int side_num);
 	void unit_description();
 	void terrain_description(mouse_handler& mousehandler);

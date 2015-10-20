@@ -34,6 +34,7 @@ protected:
 public:
 	virtual void cycle_units() {}
 	virtual void cycle_back_units() {}
+	virtual void concede() {}
 	virtual void end_turn() {}
 	virtual void goto_leader() {}
 	virtual void unit_hold_position() {}

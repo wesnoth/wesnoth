@@ -20,7 +20,7 @@
 
 /*
  * Save an SDL_Surface as a PNG file, using writable RWops.
- * 
+ *
  * surface - the SDL_Surface structure containing the image to be saved
  * dst - a data stream to save to
  * freedst - non-zero to close the stream after being written
