@@ -300,7 +300,7 @@ void tunit_create::list_item_clicked(twindow& window)
 		u->genders().front());
 
 	find_widget<timage>(&window, "type_image", false)
-			.set_label(u->image() + tc);
+			.set_label((u->icon().empty() ? u->image() : u->icon()) + tc);
 
 	tlabel& u_name = find_widget<tlabel>(&window, "type_name", false);
 
