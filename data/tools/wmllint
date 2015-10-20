@@ -181,7 +181,7 @@
 # code.
 #
 
-import sys, os, re, getopt, string, copy, difflib, time, gzip, codecs
+import sys, os, re, argparse, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
 
@@ -2600,100 +2600,64 @@ def allcfgfiles(directory):
     datafiles.sort() # So diffs for same campaigns will cluster in reports
     return map(os.path.normpath, datafiles)
 
-def help():
-        print("""\
-Usage: wmllint [options] [dir]
-    Convert Battle of Wesnoth WML from older versions to newer ones.
-    Also validates WML to check for errors.
-
-    Takes any number of directories as arguments.  Each directory is converted.
-    If no directories are specified, acts on the current directory.
-
-Mode options:
-    Changes wmllint from default conversion mode.  Only one mode can be chosen.
-    -h, --help                 Emit this help message and quit.
-    -d, --dryrun               List changes (-v) but don't perform them.
-    -c, --clean                Clean up -bak files.
-    -D, --diff                 Display diffs between converted and unconverted
-                               files.
-    -r, --revert               Revert the conversion from the -bak files.
-
-Other options:
-    -v, --verbose              -v        lists changes.
-                               -v -v     names each file before it's processed.
-                               -v -v -v  shows verbose parse details.
-    -m, --missing              Don't warn about tags without side= keys now
-                               applying to all sides.
-    -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
-    -K, --known                Suppress check for unknown unit types, recruits,
-                               races, scenarios, etc.
-    -S, --nospellcheck         Suppress spellchecking
-    -Z, --stringfreeze         Suppress repair attempts of newlines in messages
-
-For more about wmllint, including how to prevent unwanted conversions and false
-positive warnings with magic comments, read the introduction in the wmllint
-file itself.  See also: http://wiki.wesnoth.org/Maintenance_tools.""", file=sys.stderr)
-
 if __name__ == '__main__':
-    try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDhmnrsvKSZ", [
-            "clean",
-            "diffs",
-            "dryrun",
-            "help",
-            "missing",
-            "revert",
-            "stripcr",
-            "verbose",
-            "known",
-            "nospellcheck",
-            "stringfreeze",
-            ])
-        # -f --future has been removed; there have been no experimental conversions since 1.4
-        # -p --progress has been removed; similar to existing -v -v
-    except getopt.GetoptError:
-        help()
-        print('\nAn option you have entered is invalid.  Review options and try again.', file=sys.stderr)
-        sys.exit(1)
-    clean = False
-    diffs = False
-    dryrun = False
-    missingside = True
-    revert = False
-    stringfreeze = False
-    stripcr = False
-    verbose = 0
-    dospellcheck = True
-    inconsistency = False
-    for (switch, val) in options:
-        if switch in ('-h', '--help'):
-            help()
-            sys.exit(0)
-        elif switch in ('-c', '--clean'):
-            clean = True
-        elif switch in ('-d', '--dryrun'):
-            dryrun = True
-        elif switch in ('-D', '--diffs'):
-            diffs = True
-        elif switch in ('-m', '--missing'):
-            missingside = False
-        elif switch in ('-r', '--revert'):
-            revert = True
-        elif switch in ('-s', '--stripcr'):
-            stripcr = True
-        elif switch in ('-Z', '--stringfreeze'):
-            stringfreeze = True
-        elif switch in ('-v', '--verbose'):
-            verbose += 1
-        elif switch in ('-S', '--nospellcheck'):
-            dospellcheck = False
-        elif switch in ('-K', '--known'):
-            inconsistency = True
+    parser = argparse.ArgumentParser(
+        description = '''Convert Battle of Wesnoth WML from older versions to newer ones.
+Also validates WML to check for errors.''',
+        epilog = '''For more about wmllint, including how to prevent unwanted conversions and false
+positive warnings with magic comments, read the introduction in the wmllint
+file itself.
+See also: http://wiki.wesnoth.org/Maintenance_tools.''',
+        formatter_class = argparse.RawTextHelpFormatter
+    )
+
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("-c", "--clean", action="store_true",
+                      help="Clean up -bak files.")
+    mode.add_argument("-D", "--diffs", action="store_true",
+                      help="Display diffs between converted and unconverted files.")
+    mode.add_argument("-d", "--dryrun", action="store_true",
+                      help="List changes (-v) but don't perform them.")
+    mode.add_argument("-r", "--revert", action="store_true",
+                      help="Revert the conversion from the -bak files.")
+    parser.add_argument("-m", "--missing", action="store_true",
+                        help="""Don't warn about tags without side= keys now applying
+to all sides.""")
+    parser.add_argument("-s", "--stripcr", action="store_true",
+                        help="Convert DOS-style CR/LF to Unix-style LF.")
+    parser.add_argument("-v", "--verbose", action="count", default=0,
+                        help="""-v        lists changes.
+-v -v     names each file before it's processed.
+-v -v -v  shows verbose parse details.""")
+    parser.add_argument("-K", "--known", action="store_true",
+                        help="""Suppress check for unknown unit types, recruits, races,
+scenarios, etc.""")
+    parser.add_argument("-S", "--nospellcheck", action="store_false",
+                        help="Suppress spellchecking")
+    parser.add_argument("-Z", "--stringfreeze", action="store_true",
+                        help="Suppress repair attempts of newlines in messages")
+    # -f --future has been removed; there have been no experimental conversions since 1.4
+    # -p --progress has been removed; similar to existing -v -v
+    parser.add_argument("directories", action="store", nargs="*",
+                        help="""Any number of directories. Each directory is converted.
+If no directories are specified, acts on the current
+directory.""")
+
+    namespace = parser.parse_args()
+    clean = namespace.clean
+    diffs = namespace.diffs
+    dryrun = namespace.dryrun
+    missingside = namespace.missing
+    revert = namespace.revert
+    stringfreeze = namespace.stringfreeze
+    stripcr = namespace.stripcr
+    verbose = namespace.verbose
+    dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!
+    inconsistency = namespace.known
+    arguments = namespace.directories # a remnant of getopt...
+
     if dryrun:
         verbose = max(1, verbose)
-    if clean and revert:
-        print("wmllint: can't do clean and revert together.", file=sys.stderr)
-        sys.exit(1)
 
     post15 = False
 
