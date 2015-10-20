@@ -70,6 +70,9 @@ Version 1.13.1+dev:
    * Hanging, stone chasm, and plank bridges are now displayed in-game simply
      as "Bridge", retaining their descriptive names in the editor as per
      convention.
+   * Fixed spurious "could not open image 'terrain/.png'" error messages caused
+     by terrains without a minimap image (symbol_image) such as those from the
+     Special category in the editor (Impassable Overlay, etc.).
  * User interface:
    * It is now possible to switch from replay directly into normal play (bug #23833).
    * The game now shows a notification on remote clients if a sides takes very long to do a local choice (bug #23297).
