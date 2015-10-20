@@ -2320,12 +2320,12 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	else if (!lua_isnoneornil(L, unit_arg))
 	{
 		config cfg = luaW_checkconfig(L, unit_arg);
-		if (unit_arg == 1) {
+		if (unit_arg == 1 && !map().on_board(loc)) {
 			loc.x = cfg["x"] - 1;
 			loc.y = cfg["y"] - 1;
 			if (!map().on_board(loc))
-				return luaL_argerror(L, 1, "invalid location");
-		} else {
+				return luaL_argerror(L, 2, "invalid location");
+		} else if (unit_arg != 1) {
 			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
 		u = unit_ptr (new unit(cfg, true));
