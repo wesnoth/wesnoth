@@ -26,6 +26,9 @@ Version 1.12.4+dev:
    * Hanging, stone chasm, and plank bridges are now displayed in-game simply
      as "Bridge", retaining their descriptive names in the editor as per
      convention.
+   * Fixed spurious "could not open image 'terrain/.png'" error messages caused
+     by terrains without a minimap image (symbol_image) such as those from the
+     Special category in the editor (Impassable Overlay, etc.).
  * User interface:
    * Force uniform font rendering settings across X11 and Apple OS X, avoiding
      color glitches resulting from incorrect applications of subpixel hinting

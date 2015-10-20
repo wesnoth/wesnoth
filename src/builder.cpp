@@ -276,19 +276,25 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		btile.images_background.clear();
 		const std::string filename =
 			map().get_terrain_info(loc).minimap_image();
-		animated<image::locator> img_loc;
-		img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
-		img_loc.start_animation(0, true);
-		btile.images_background.push_back(img_loc);
+
+		if(!filename.empty()) {
+			animated<image::locator> img_loc;
+			img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
+			img_loc.start_animation(0, true);
+			btile.images_background.push_back(img_loc);
+		}
 
 		//Combine base and overlay image if necessary
 		if(map().get_terrain_info(loc).is_combined()) {
 			const std::string filename_ovl =
 				map().get_terrain_info(loc).minimap_image_overlay();
-			animated<image::locator> img_loc_ovl;
-			img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl + ".png"));
-			img_loc_ovl.start_animation(0, true);
-			btile.images_background.push_back(img_loc_ovl);
+
+			if(!filename_ovl.empty()) {
+				animated<image::locator> img_loc_ovl;
+				img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl + ".png"));
+				img_loc_ovl.start_animation(0, true);
+				btile.images_background.push_back(img_loc_ovl);
+			}
 		}
 	}
 }
