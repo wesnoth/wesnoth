@@ -4636,8 +4636,8 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"resistance",            intf_unit_resistance},
 		{"defense",               intf_unit_defense},
 		{"movement",              intf_unit_movement_cost},
-		{"vision",                intf_unit_movement_cost},
-		{"jamming",               intf_unit_movement_cost},
+		{"vision",                intf_unit_vision_cost},
+		{"jamming",               intf_unit_jamming_cost},
 		{"ability",               intf_unit_ability},
 		{"transform",             intf_transform_unit},
 	};
