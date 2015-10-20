@@ -67,10 +67,10 @@ def run_tool(tool,queue,command):
         si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
         try:
             output=subprocess.check_output(' '.join(wrapped_line),stderr=subprocess.STDOUT,startupinfo=si,env=env)
-            queue.put_nowait(output)
+            queue.put_nowait(str(output, "utf8"))
         except subprocess.CalledProcessError as error:
             # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,error.output))
+            queue.put_nowait((tool,error.returncode,str(error.output, "utf8")))
     else: # STARTUPINFO is not available, nor needed, outside of Windows
         queue.put_nowait(' '.join(command)+"\n")
         try:
@@ -1091,21 +1091,26 @@ wmllint will be run only on the Wesnoth core directory""")
         if self.wmlscope_tab.progress_variable.get():
             wmlscope_command_string.append("--progress")
         if self.wmlscope_tab.exclude_variable.get():
-            wmlscope_command_string.append('--exclude="{0}"'.format(self.wmlscope_tab.exclude_regexp.get()))
+            wmlscope_command_string.append("--exclude")
+            wmlscope_command_string.append(self.wmlscope_tab.exclude_regexp.get())
         if self.wmlscope_tab.from_variable.get():
-            wmlscope_command_string.append('--from="{0}"'.format(self.wmlscope_tab.from_regexp.get()))
+            wmlscope_command_string.append("--from")
+            wmlscope_command_string.append(self.wmlscope_tab.from_regexp.get())
         if self.wmlscope_tab.refcount_variable.get():
             try:
-                wmlscope_command_string.append("--refcount=" + str(self.wmlscope_tab.refcount_number.get()))
+                wmlscope_command_string.append("--refcount")
+                wmlscope_command_string.append(str(self.wmlscope_tab.refcount_number.get()))
             except ValueError as error:
                 # normally it should be impossible to raise this exception
                 # due to the fact that the Spinbox is read-only
                 showerror("Error","""You typed an invalid value. Value must be an integer in the range 0-999""")
                 return
         if self.wmlscope_tab.typelist_variable.get():
-            wmlscope_command_string.append('--typelist="{0}"'.format(self.wmlscope_tab.typelist_string.get()))
+            wmlscope_command_string.append("--typelist")
+            wmlscope_command_string.append(self.wmlscope_tab.typelist_string.get())
         if self.wmlscope_tab.force_variable.get():
-            wmlscope_command_string.append('--force-used="{0}"'.format(self.wmlscope_tab.force_regexp.get()))
+            wmlscope_command_string.append("--force-used")
+            wmlscope_command_string.append(self.wmlscope_tab.force_regexp.get())
         wmlscope_command_string.append(WESNOTH_CORE_DIR)
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
@@ -1144,7 +1149,8 @@ wmlscope will be run only on the Wesnoth core directory""")
         for n in range(verbosity):
             wmlindent_command_string.append("-v")
         if self.wmlindent_tab.exclude_variable.get():
-            wmlindent_command_string.append('--exclude="{0}"'.format(self.wmlindent_tab.regexp_variable.get()))
+            wmlindent_command_string.append("--exclude")
+            wmlindent_command_string.append(self.wmlindent_tab.regexp_variable.get())
         if self.wmlindent_tab.quiet_variable.get():
             wmlindent_command_string.append("--quiet")
         umc_dir=self.dir_variable.get()

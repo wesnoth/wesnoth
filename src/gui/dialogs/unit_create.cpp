@@ -25,9 +25,22 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/button.hpp"
+#include "gui/widgets/image.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "display.hpp"
+#include "help/help.hpp"
+#include "game_config.hpp"
+#include "gettext.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
 #include "unit_types.hpp"
+
 #include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
@@ -85,8 +98,11 @@ namespace gui2
 
 REGISTER_DIALOG(unit_create)
 
-tunit_create::tunit_create()
-	: gender_(last_gender), choice_(last_chosen_type_id), type_info_()
+tunit_create::tunit_create(display* disp)
+	: gender_(last_gender)
+	, choice_(last_chosen_type_id)
+	, last_words_()
+	, disp_(disp)
 {
 }
 
@@ -98,18 +114,39 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			= find_widget<ttoggle_button>(&window, "female_toggle", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
-	male_toggle.set_callback_state_change(
-			dialog_callback<tunit_create,
-							&tunit_create::gender_toggle_callback>);
-	female_toggle.set_callback_state_change(
-			dialog_callback<tunit_create,
-							&tunit_create::gender_toggle_callback>);
-	update_male_female_toggles(male_toggle, female_toggle, gender_);
-	list.clear();
+	ttext_box* filter
+			= find_widget<ttext_box>(&window, "filter_box", false, true);
 
-	// We use this container to "map" unit_type ids to list subscripts
-	// later, so it ought to be empty before proceeding.
-	type_info_.clear();
+	filter->set_text_changed_callback(
+			boost::bind(&tunit_create::filter_text_changed, this, _1, _2));
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(*list,
+								   boost::bind(&tunit_create::list_item_clicked,
+											   *this,
+											   boost::ref(window)));
+#else
+	list.set_callback_value_change(
+			dialog_callback<tunit_create, &tunit_create::list_item_clicked>);
+#endif
+
+	window.keyboard_capture(&list);
+
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "type_profile", false),
+			boost::bind(&tunit_create::profile_button_callback,
+						this,
+						boost::ref(window)));
+
+	male_toggle.set_callback_state_change(
+			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
+
+	female_toggle.set_callback_state_change(
+			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
+
+	update_male_female_toggles(male_toggle, female_toggle, gender_);
+
+	list.clear();
 
 	FOREACH(const AUTO & i, unit_types.types())
 	{
@@ -119,15 +156,14 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		// Make sure this unit type is built with the data we need.
 		unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
 
-		// Create a race name/type id pair for each unit type
-		type_info_.push_back(std::make_pair(i.second.race()->plural_name(), i.first));
+		units_.push_back(&i.second);
 
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
-		column["label"] = type_info_.back().first;
+		column["label"] = units_.back()->race()->plural_name();
 		row_data.insert(std::make_pair("race", column));
-		column["label"] = type_info_.back().second;
+		column["label"] = units_.back()->type_name();
 		row_data.insert(std::make_pair("unit_type", column));
 
 		list.add_row(row_data);
@@ -138,7 +174,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		}
 	}
 
-	if(type_info_.empty()) {
+	if(units_.empty()) {
 		ERR_GUI_G << "no unit types found for unit create dialog; not good"
 				  << std::endl;
 	}
@@ -150,26 +186,28 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	order_funcs[0] = boost::bind(&tunit_create::compare_type, this, _1, _2);
 	order_funcs[1] = boost::bind(&tunit_create::compare_type_rev, this, _1, _2);
 	list.set_column_order(1, order_funcs);
+
+	list_item_clicked(window);
 }
 
 bool tunit_create::compare_type(unsigned i1, unsigned i2) const
 {
-	return type_info_[i1].second < type_info_[i2].second;
+	return units_[i1]->type_name().str() < units_[i2]->type_name().str();
 }
 
 bool tunit_create::compare_race(unsigned i1, unsigned i2) const
 {
-	return type_info_[i1].first < type_info_[i2].first;
+	return units_[i1]->race()->plural_name().str() < units_[i2]->race()->plural_name().str();
 }
 
 bool tunit_create::compare_type_rev(unsigned i1, unsigned i2) const
 {
-	return type_info_[i1].second > type_info_[i2].second;
+	return units_[i1]->type_name().str() > units_[i2]->type_name().str();
 }
 
 bool tunit_create::compare_race_rev(unsigned i1, unsigned i2) const
 {
-	return type_info_[i1].first > type_info_[i2].first;
+	return units_[i1]->race()->plural_name().str() > units_[i2]->race()->plural_name().str();
 }
 
 void tunit_create::post_show(twindow& window)
@@ -187,7 +225,7 @@ void tunit_create::post_show(twindow& window)
 	const int selected_row = list.get_selected_row();
 	if(selected_row < 0) {
 		return;
-	} else if(static_cast<size_t>(selected_row) >= type_info_.size()) {
+	} else if(static_cast<size_t>(selected_row) >= units_.size()) {
 		// FIXME: maybe assert?
 		ERR_GUI_G << "unit create dialog has more list items than known unit "
 					 "types; not good\n";
@@ -195,9 +233,159 @@ void tunit_create::post_show(twindow& window)
 	}
 
 	last_chosen_type_id = choice_
-			= type_info_[static_cast<size_t>(selected_row)].second;
+			= units_[selected_row]->id();
 	last_gender = gender_ = female_toggle.get_value() ? unit_race::FEMALE
 													  : unit_race::MALE;
+}
+
+void tunit_create::print_stats(std::stringstream& str, const int row)
+{
+	const unit_type* u = units_[row];
+
+	str << _("HP: ")
+		<< "<span color='#21e100'>" << u->hitpoints() << "/" << u->hitpoints() << "</span>" << "\n";
+
+	str << _("XP: ")
+		<< "<span color='#00a0e1'>" << u->experience_needed() << "/" << u->experience_needed() << "</span>" << "\n";
+
+	str << _("MP: ")
+		<< u->movement() << "/" << u->movement() << "\n";
+
+	// FIXME: This probably must be move into a unit_type function
+	// Also actually needs to be fixed
+	/**BOOST_FOREACH(const config& tr, u->possible_traits())
+	{
+		if (tr["availability"] != "musthave") continue;
+
+		const std::string gender_string = 
+			u->genders().front() == unit_race::FEMALE ? "female_name" : "male_name";
+
+		t_string name = tr[gender_string];
+		if (name.empty()) {
+			name = tr["name"];
+		}
+		if (!name.empty()) {
+			//if (!traits.empty()) {
+			//	str << ", ";
+			//}
+			str << name << "\n";
+		}
+	}**/
+}
+
+void tunit_create::list_item_clicked(twindow& window)
+{
+	const int selected_row 
+			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
+
+	const unit_type* u = units_[selected_row];
+
+	std::stringstream str;
+	print_stats(str, selected_row);
+
+	std::string tc;
+
+	if(resources::controller) {
+		tc = "~RC(" + u->flag_rgb() + ">" +
+			 team::get_side_color_index(resources::controller->current_side())
+			 + ")";
+	}
+
+	const std::string& alignment_name = unit_type::alignment_description(
+		u->alignment(),
+		u->genders().front());
+
+	find_widget<timage>(&window, "type_image", false)
+			.set_label((u->icon().empty() ? u->image() : u->icon()) + tc);
+
+	tlabel& u_name = find_widget<tlabel>(&window, "type_name", false);
+
+	u_name.set_label("<big>" + u->type_name() + "</big>");
+	u_name.set_use_markup(true);
+
+	std::stringstream l_str;
+	l_str << "<span size='x-large'>" << "L " << u->level() << "</span>";
+
+	tlabel& l_label = find_widget<tlabel>(&window, "type_level", false);
+
+	l_label.set_label(l_str.str());
+	l_label.set_use_markup(true);
+
+	timage& r_icon = find_widget<timage>(&window, "type_race", false);
+
+	r_icon.set_label("icons/unit-groups/race_" + u->race_id() + "_30.png");
+	r_icon.set_tooltip(u->race()->name(u->genders().front()));
+
+	timage& a_icon = find_widget<timage>(&window, "type_alignment", false);
+
+	a_icon.set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
+	a_icon.set_tooltip(alignment_name);
+
+	tlabel& details = find_widget<tlabel>(&window, "type_details", false);
+
+	details.set_label(str.str());
+	details.set_use_markup(true);
+}
+
+bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
+{
+	twindow& window = *textbox->get_window();
+
+	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
+
+	const std::vector<std::string> words = utils::split(text, ' ');
+
+	if(words == last_words_)
+		return false;
+	last_words_ = words;
+
+	std::vector<bool> show_items(list.get_item_count(), true);
+
+	if(!text.empty()) {
+		for(unsigned int i = 0; i < list.get_item_count(); i++) {
+			tgrid* row = list.get_row_grid(i);
+
+			tgrid::iterator it = row->begin();
+			tlabel& type_label
+					= find_widget<tlabel>(*it, "unit_type", false);
+
+			bool found = false;
+			FOREACH(const AUTO & word, words)
+			{
+				found = std::search(type_label.label().str().begin(),
+									type_label.label().str().end(),
+									word.begin(),
+									word.end(),
+									chars_equal_insensitive)
+						!= type_label.label().str().end();
+
+				if(!found) {
+					// one word doesn't match, we don't reach words.end()
+					break;
+				}
+			}
+
+			show_items[i] = found;
+		}
+	}
+
+	list.set_row_shown(show_items);
+
+	return false;
+}
+
+void tunit_create::profile_button_callback(twindow& window)
+{
+	if(!disp_) {
+		return;
+	}
+
+	const int selected_row
+			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
+
+	help::show_unit_help(*disp_,
+		units_[selected_row]->id(),
+		units_[selected_row]->show_variations_in_help(), false);
 }
 
 void tunit_create::gender_toggle_callback(twindow& window)

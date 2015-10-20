@@ -70,6 +70,9 @@ Version 1.13.1+dev:
    * Hanging, stone chasm, and plank bridges are now displayed in-game simply
      as "Bridge", retaining their descriptive names in the editor as per
      convention.
+   * Fixed spurious "could not open image 'terrain/.png'" error messages caused
+     by terrains without a minimap image (symbol_image) such as those from the
+     Special category in the editor (Impassable Overlay, etc.).
  * User interface:
    * It is now possible to switch from replay directly into normal play (bug #23833).
    * The game now shows a notification on remote clients if a sides takes very long to do a local choice (bug #23297).
@@ -112,6 +115,8 @@ Version 1.13.1+dev:
      messages involving macros.
    * Added WML menu item and event handler views to the Gamestate Inspector
      dialog.
+   * The Gamestate Inspector now displays empty WML variables too (including
+     containers/arrays).
    * Added new possibilities for [effect]:
      * apply_to=alignment - change a unit's alignment
      * apply_to=attacks_left - change a unit's attacks per turn
