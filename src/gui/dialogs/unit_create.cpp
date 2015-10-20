@@ -243,14 +243,14 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 {
 	const unit_type* u = units_[row];
 
-	str << _("HP: ")
-		<< "<span color='#21e100'>" << u->hitpoints() << "/" << u->hitpoints() << "</span>" << "\n";
+	str << "<b>" << _("HP: ") << "</b>"
+		<< "<span color='#21e100'>" << u->hitpoints() << "</span> ";
 
-	str << _("XP: ")
-		<< "<span color='#00a0e1'>" << u->experience_needed() << "/" << u->experience_needed() << "</span>" << "\n";
+	str << "<b>" << _("XP: ") << "</b>"
+		<< "<span color='#00a0e1'>" << u->experience_needed() << "</span> ";
 
-	str << _("MP: ")
-		<< u->movement() << "/" << u->movement() << "\n";
+	str << "<b>" << _("MP: ") << "</b>"
+		<< u->movement() << "\n";
 
 	// FIXME: This probably must be move into a unit_type function
 	// Also actually needs to be fixed
