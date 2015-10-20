@@ -242,10 +242,6 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 {
 	const unit_type* u = units_[row];
 
-	str << _("Level ") << u->level() << "\n";
-
-	str << "\n";
-
 	str << _("HP: ")
 		<< "<span color='#21e100'>" << u->hitpoints() << "/" << u->hitpoints() << "</span>" << "\n";
 
@@ -306,6 +302,14 @@ void tunit_create::list_item_clicked(twindow& window)
 
 	u_name.set_label("<big>" + u->type_name() + "</big>");
 	u_name.set_use_markup(true);
+
+	std::stringstream l_str;
+	l_str << "<span size='x-large'>" << "L " << u->level() << "</span>";
+
+	tlabel& l_label = find_widget<tlabel>(&window, "type_level", false);
+
+	l_label.set_label(l_str.str());
+	l_label.set_use_markup(true);
 
 	timage& r_icon = find_widget<timage>(&window, "type_race", false);
 
