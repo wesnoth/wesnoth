@@ -67,10 +67,10 @@ def run_tool(tool,queue,command):
         si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
         try:
             output=subprocess.check_output(' '.join(wrapped_line),stderr=subprocess.STDOUT,startupinfo=si,env=env)
-            queue.put_nowait(output)
+            queue.put_nowait(str(output, "utf8"))
         except subprocess.CalledProcessError as error:
             # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,error.output))
+            queue.put_nowait((tool,error.returncode,str(error.output, "utf8")))
     else: # STARTUPINFO is not available, nor needed, outside of Windows
         queue.put_nowait(' '.join(command)+"\n")
         try:
