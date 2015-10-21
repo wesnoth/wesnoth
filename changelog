@@ -153,6 +153,12 @@ Version 1.13.1+dev:
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
+   * Made Documents\My Games\WesnothX.Y the default user config+data dir on
+     Windows to replace the broken <current working dir>\userdata default that
+     has never been acceptable practice. Portable installs are now required to
+     explicitly use . or  .. (e.g. `--config-dir .\userdata`) to force the
+     user config+data dir path to be relative to the current working dir (see
+     also bug #23753).
    * Removed legacy filesystem API implementation.
    * Fixed Generate Map dialog bug that caused last choice of map
      generator to not be actually selected (bug #23711).
