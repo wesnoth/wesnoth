@@ -478,12 +478,32 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
 }
+
+#ifdef _WIN32
+// As a convenience for portable installs on Windows, relative paths with . or
+// .. as the first component are considered relative to the current workdir
+// instead of Documents/My Games.
+static bool is_path_relative_to_cwd(const std::string& str)
+{
+	const path p(str);
+
+	if(p.empty()) {
+		return false;
+	}
+
+	return *p.begin() == "." || *p.begin() == "..";
+}
+#endif
+
 void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
 	if(newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
 		user_data_dir = newprefdir;
+	} else if(is_path_relative_to_cwd(newprefdir)) {
+		// Custom directory relative to workdir (for portable installs, etc.)
+		user_data_dir = get_cwd() + "/" + newprefdir;
 	} else {
 		if(newprefdir.empty()) {
 			newprefdir = "Wesnoth" + get_version_path_suffix();
