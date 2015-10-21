@@ -36,6 +36,7 @@ using boost::uintmax_t;
 #ifdef _WIN32
 #include <boost/locale.hpp>
 #include <windows.h>
+#include <shlobj.h>
 #endif /* !_WIN32 */
 
 #include "config.hpp"
@@ -509,32 +510,20 @@ void set_user_data_dir(std::string newprefdir)
 			newprefdir = "Wesnoth" + get_version_path_suffix();
 		}
 
-		//
-		// TODO: we no longer need to use LoadLibrary since versions <
-		//       Windows XP are no longer supported so the required
-		//       functionality is guaranteed to be available.
-		//
-
-		HMODULE module = LoadLibraryA("shell32");
-
-		// CSIDL_MYDOCUMENTS
-		const int docs_csidl = 5;
-
-		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPWSTR, int, BOOL);
-		SHGSFPAddress SHGetSpecialFolderPathW
-				= reinterpret_cast<SHGSFPAddress>(
-						GetProcAddress(module, "SHGetSpecialFolderPathW"));
-
 		wchar_t docs_path[MAX_PATH];
 
-		if(!SHGetSpecialFolderPathW ||
-		   !SHGetSpecialFolderPathW(NULL, docs_path, docs_csidl, TRUE)) {
+		HRESULT res = SHGetFolderPathW(NULL,
+									   CSIDL_PERSONAL | CSIDL_FLAG_CREATE, NULL,
+									   SHGFP_TYPE_CURRENT,
+									   docs_path);
+		if(res != S_OK) {
 			//
 			// Crummy fallback path full of pain and suffering.
 			//
-			ERR_FS << "Could not determine path to user's Documents folder! "
-					  "User config/data directories may be unavailable for "
-					  "this session. Please report this as a bug.\n";
+			ERR_FS << "Could not determine path to user's Documents folder! ("
+				   << std::hex << "0x" << res << std::dec << ") "
+				   << "User config/data directories may be unavailable for "
+				   << "this session. Please report this as a bug.\n";
 			user_data_dir = path(get_cwd()) / newprefdir;
 		} else {
 			path games_path = path(docs_path) / "My Games";
