@@ -169,7 +169,7 @@ public:
 	std::vector<std::string> get_ability_list() const;
 
 	config::const_child_itors possible_traits() const
-	{ return possibleTraits_.child_range("trait"); }
+	{ return possible_traits_.child_range("trait"); }
 	bool has_random_traits() const;
 
 	/// The returned vector will not be empty, provided this has been built
@@ -271,7 +271,7 @@ private:
 
 	movetype movement_type_;
 
-	config possibleTraits_;
+	config possible_traits_;
 
 	std::vector<unit_race::GENDER> genders_;
 

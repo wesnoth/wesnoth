@@ -96,7 +96,7 @@ unit_type::unit_type(const unit_type& o) :
 	in_advancefrom_(o.in_advancefrom_),
 	alignment_(o.alignment_),
 	movement_type_(o.movement_type_),
-	possibleTraits_(o.possibleTraits_),
+	possible_traits_(o.possible_traits_),
 	genders_(o.genders_),
 	animations_(o.animations_),
     build_status_(o.build_status_),
@@ -156,7 +156,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	in_advancefrom_(false),
 	alignment_(unit_type::ALIGNMENT::NEUTRAL),
 	movement_type_(),
-	possibleTraits_(),
+	possible_traits_(),
 	genders_(),
 	animations_(),
 	build_status_(NOT_BUILT),
@@ -196,15 +196,15 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	if ( race_ != &unit_race::null_race )
 	{
 		if (!race_->uses_global_traits()) {
-			possibleTraits_.clear();
+			possible_traits_.clear();
 		}
 		if ( cfg_["ignore_race_traits"].to_bool() ) {
-			possibleTraits_.clear();
+			possible_traits_.clear();
 		} else {
 			BOOST_FOREACH(const config &t, race_->additional_traits())
 			{
 				if (alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
-					possibleTraits_.add_child("trait", t);
+					possible_traits_.add_child("trait", t);
 			}
 		}
 		if (undead_variation_.empty()) {
@@ -215,7 +215,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	// Insert any traits that are just for this unit type
 	BOOST_FOREACH(const config &trait, cfg_.child_range("trait"))
 	{
-		possibleTraits_.add_child("trait", trait);
+		possible_traits_.add_child("trait", trait);
 	}
 
 	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
@@ -344,7 +344,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 
 	BOOST_FOREACH(const config &t, traits)
 	{
-		possibleTraits_.add_child("trait", t);
+		possible_traits_.add_child("trait", t);
 	}
 	BOOST_FOREACH(const config &var_cfg, cfg_.child_range("variation"))
 	{
