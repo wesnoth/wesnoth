@@ -523,10 +523,8 @@ config play_controller::to_config() const
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
 	
-	if(gui_.get() != NULL) {
-		gui_->labels().write(cfg);
-		sound::write_music_play_list(cfg);
-	}
+	gui_->labels().write(cfg);
+	sound::write_music_play_list(cfg);
 
 	return cfg;
 }
