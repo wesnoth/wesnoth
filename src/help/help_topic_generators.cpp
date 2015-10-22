@@ -608,7 +608,7 @@ std::string unit_topic_generator::operator()() const {
 					continue;
 				const terrain_type& info = tdata->get_terrain_info(terrain);
 
-				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
+				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull() && info.id() != "rails") {
 					std::vector<item> row;
 					const std::string& name = info.name();
 					const std::string& id = info.id();
