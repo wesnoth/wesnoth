@@ -308,6 +308,8 @@ private:
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;
 
+	/** The default window title outside the editor */
+	std::string default_window_title_;
 };
 
 }
