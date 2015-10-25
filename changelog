@@ -48,6 +48,9 @@ Version 1.12.4+dev:
    * Fixed unit [resistance] and [jamming_costs] not being considered for sync
      check.
    * Fixed OOS on random maps, where clients placed sides in different castles.
+   * Several fixes to the handling of key combinations including
+     non-alphanumeric keys (Enter, Tab, F1-F12, etc.), especially relevant for
+     assigning custom hotkeys to actions in Preferences.
 
 Version 1.12.4:
  * Security fixes:
