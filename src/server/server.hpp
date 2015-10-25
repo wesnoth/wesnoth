@@ -80,6 +80,7 @@ private:
 	void add_player(socket_ptr socket, const wesnothd::player&);
 	void read_from_player(socket_ptr socket);
 	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_player_in_lobby(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
 	void handle_message(socket_ptr socket, simple_wml::node& message);

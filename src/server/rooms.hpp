@@ -52,6 +52,10 @@ class RoomList : public boost::noncopyable
 	room_ptr make_room(const std::string& room_name);
 	public:
 	RoomList(PlayerMap& player_connections);
+	
+	bool in_lobby(socket_ptr socket) {
+		return room_map_.left.count(socket);
+	}
 
 	void enter_room(const std::string& room_name, socket_ptr socket);
 	void leave_room(const std::string& room_name, socket_ptr socket);

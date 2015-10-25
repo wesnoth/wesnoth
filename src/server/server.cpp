@@ -76,6 +76,7 @@
 
 namespace {
 
+/*
 clock_t get_cpu_time(bool active) {
 	if(!active) {
 		return 0;
@@ -84,6 +85,7 @@ clock_t get_cpu_time(bool active) {
 	times(&buf);
 	return buf.tms_utime + buf.tms_stime;
 }
+*/
 
 }
 
@@ -1152,7 +1154,12 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 		handle_query(socket, *query);
 	}
 
-	// Lobby
+	if(room_list_.in_lobby(socket))
+		handle_player_in_lobby(socket, doc);
+
+}
+
+void server::handle_player_in_lobby(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc) {
 	if(simple_wml::node* message = doc->child("message")) {
 		handle_message(socket, *message);
 	}
@@ -1165,7 +1172,7 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 	if(simple_wml::node* room_query = doc->child("room_query")) {
 		handle_room_query(socket, *room_query);
 	}
-	
+
 	if(simple_wml::node* create_game = doc->child("create_game")) {
 		handle_create_game(socket, *create_game);
 	}

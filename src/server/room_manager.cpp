@@ -227,9 +227,9 @@ void room_manager::exit_lobby(network::connection player)
 	store_player_rooms(player);
 	t_rooms_by_player_::iterator i = rooms_by_player_.find(player);
 	if (i != rooms_by_player_.end()) {
-		BOOST_FOREACH(room* r, i->second) {
+		//BOOST_FOREACH(room* r, i->second) {
 			//r->remove_player(player);
-		}
+		//}
 	}
 	rooms_by_player_.erase(player);
 }
