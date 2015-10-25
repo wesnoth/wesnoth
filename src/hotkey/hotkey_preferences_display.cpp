@@ -639,6 +639,8 @@ void hotkey_preferences_dialog::show_binding_dialog(
 
 	// only if not canceled.
 	if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
+		hotkey::scope_changer scope_restorer;
+		hotkey::set_active_scopes(hotkey::get_hotkey_command(id).scope);
 
 		hotkey::hotkey_item newhk(id);
 		const hotkey::hotkey_item* oldhk = NULL;
