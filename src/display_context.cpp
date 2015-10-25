@@ -165,7 +165,7 @@ team_data display_context::calculate_team_data(const team& tm, int side) const
 	res.expenses = std::max<int>(0,res.upkeep - tm.support());
 	res.net_income = tm.total_income() - res.expenses;
 	res.gold = tm.gold();
-	res.teamname = tm.user_team_name();
+	res.teamname = tm.team_name();
 	return res;
 }
 

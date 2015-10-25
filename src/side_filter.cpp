@@ -115,19 +115,19 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
-	config::attribute_value cfg_team_name = cfg_["team_name"];
-	if (!cfg_team_name.blank()) {
-		const std::string& that_team_name = cfg_team_name;
-		const std::string& this_team_name = t.team_name();
+	config::attribute_value cfg_team_id = cfg_["team_id"];
+	if (!cfg_team_id.blank()) {
+		const std::string& that_team_id = cfg_team_id;
+		const std::string& this_team_id = t.team_id();
 
-		if(std::find(this_team_name.begin(), this_team_name.end(), ',') == this_team_name.end()) {
-			if(this_team_name != that_team_name) return false;
+		if(std::find(this_team_id.begin(), this_team_id.end(), ',') == this_team_id.end()) {
+			if(this_team_id != that_team_id) return false;
 		}
 		else {
-			const std::vector<std::string>& these_team_names = utils::split(this_team_name);
+			const std::vector<std::string>& these_team_ids = utils::split(this_team_id);
 			bool search_futile = true;
-			BOOST_FOREACH(const std::string& this_single_team_name, these_team_names) {
-				if(this_single_team_name == that_team_name) {
+			BOOST_FOREACH(const std::string& this_single_team_id, these_team_ids) {
+				if(this_single_team_id == that_team_id) {
 					search_futile = false;
 					break;
 				}

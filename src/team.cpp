@@ -65,7 +65,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("recall_cost")("recruit")("save_id")("scroll_to_leader")
 	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
 	("suppress_end_turn_confirmation")
-	("team_name")("user_team_name")("village_gold")("village_support")
+	("team_id")("team_name")("village_gold")("village_support")
 	// Multiplayer attributes.
 	("action_bonus_count")("allow_changes")("allow_player")("color_lock")
 	("countdown_time")("disallow_observers")("faction")
@@ -84,8 +84,8 @@ team::team_info::team_info() :
 	minimum_recruit_price(0),
 	recall_cost(0),
 	can_recruit(),
+	team_id(),
 	team_name(),
-	user_team_name(),
 	save_id(),
 	current_player(),
 	countdown_time(),
@@ -122,8 +122,8 @@ void team::team_info::read(const config &cfg)
 	name = cfg["name"].str();
 	gold = cfg["gold"];
 	income = cfg["income"];
-	team_name = cfg["team_name"].str();
-	user_team_name = cfg["user_team_name"];
+	team_id = cfg["team_name"].empty() ? cfg["team_id"].str() : cfg["team_name"];
+	team_name = cfg["user_team_name"].empty() ? cfg["team_name"] : cfg["user_team_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -156,8 +156,8 @@ void team::team_info::read(const config &cfg)
 	}
 
 	// If arel starting new scenario override settings from [ai] tags
-	if (!user_team_name.translatable())
-		user_team_name = t_string::from_serialized(user_team_name);
+	if (!team_name.translatable())
+		team_name = t_string::from_serialized(team_name);
 
 	if(cfg.has_attribute("ai_config")) {
 		ai::manager::add_ai_for_side_from_file(side, cfg["ai_config"], true);
@@ -177,8 +177,8 @@ void team::team_info::read(const config &cfg)
 	else
 		start_gold = default_team_gold_;
 
-	if(team_name.empty()) {
-		team_name = cfg["side"].str();
+	if(team_id.empty()) {
+		team_id = cfg["side"].str();
 	}
 
 	if(save_id.empty()) {
@@ -214,7 +214,7 @@ void team::team_info::read(const config &cfg)
 	// so share_view overrides share_maps.
 	share_vision = cfg["share_vision"].to_enum<team::SHARE_VISION>(team::SHARE_VISION::ALL);
 	handle_legacy_share_vision(cfg);
-	LOG_NG << "team_info::team_info(...): team_name: " << team_name
+	LOG_NG << "team_info::team_info(...): team_id: " << team_id
 	       << ", share_vision: " << share_vision << ".\n";
 }
 
@@ -233,14 +233,15 @@ void team::team_info::handle_legacy_share_vision(const config& cfg)
 		}
 	}
 }
+
 void team::team_info::write(config& cfg) const
 {
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
 	cfg["income"] = income;
 	cfg["name"] = name;
+	cfg["team_id"] = team_id;
 	cfg["team_name"] = team_name;
-	cfg["user_team_name"] = user_team_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
@@ -312,7 +313,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	shroud_.read(cfg["shroud_data"]);
 	auto_shroud_updates_ = cfg["auto_shroud"].to_bool(auto_shroud_updates_);
 
-	LOG_NG << "team::team(...): team_name: " << info_.team_name
+	LOG_NG << "team::team(...): team_id: " << info_.team_id
 	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
 
 	// Load the WML-cleared fog.
@@ -457,10 +458,10 @@ bool team::calculate_is_enemy(size_t index) const
 	}
 
 	// We are friends with anyone who we share a teamname with
-	std::vector<std::string> our_teams = utils::split(info_.team_name),
-						   their_teams = utils::split((*teams)[index].info_.team_name);
+	std::vector<std::string> our_teams = utils::split(info_.team_id),
+						   their_teams = utils::split((*teams)[index].info_.team_id);
 
-	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team "<<index+1 << "; our team_name ["<<info_.team_name<<"], their team_name is ["<<(*teams)[index].info_.team_name<<"]"<< std::endl;
+	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team "<<index+1 << "; our team_id ["<<info_.team_id<<"], their team_id is ["<<(*teams)[index].info_.team_id<<"]"<< std::endl;
 	for(std::vector<std::string>::const_iterator t = our_teams.begin(); t != our_teams.end(); ++t) {
 		if(std::find(their_teams.begin(), their_teams.end(), *t) != their_teams.end())
 		{
@@ -474,7 +475,7 @@ bool team::calculate_is_enemy(size_t index) const
 	return true;
 }
 
-namespace 
+namespace
 {
 	team::CONTROLLER unified_controller(team::CONTROLLER c)
 	{
@@ -525,7 +526,7 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 		}
 		if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
 			//We dont allow changing the currently active side to "null" controlled.
-			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below 
+			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
 		}
 		config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
 		if(!new_controller.parse(choice["controller"])) {
@@ -541,14 +542,14 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 
 void team::change_team(const std::string &name, const t_string &user_name)
 {
-	info_.team_name = name;
+	info_.team_id = name;
 	if (!user_name.empty())
 	{
-		info_.user_team_name = user_name;
+		info_.team_name = user_name;
 	}
 	else
 	{
-		info_.user_team_name = name;
+		info_.team_name = name;
 	}
 
 	clear_caches();

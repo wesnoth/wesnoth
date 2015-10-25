@@ -210,7 +210,7 @@ void scenario::set_sides()
 			pos < map_positions; ++pos) {
 			config& side = data_.add_child("side");
 			side["side"] = pos + 1;
-			side["team_name"] = "Team " + lexical_cast<std::string>(pos + 1);
+			side["team_id"] = "Team " + lexical_cast<std::string>(pos + 1);
 			side["canrecruit"] = true;
 			side["controller"] = "human";
 		}

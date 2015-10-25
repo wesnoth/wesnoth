@@ -194,7 +194,7 @@ public:
 	int playing_side() const { return activeTeam_ + 1; }
 
 
-	std::string current_team_name() const;
+	std::string current_team_id() const;
 
 	display_chat_manager & get_chat_manager() { return *chat_man_; }
 

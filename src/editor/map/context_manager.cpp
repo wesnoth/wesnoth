@@ -215,8 +215,8 @@ void context_manager::edit_side_dialog(int side)
 
 	team::CONTROLLER controller = t.controller();
 
-	std::string user_team_name = t.user_team_name();
 	std::string team_name = t.team_name();
+	std::string team_id = t.team_id();
 
 	int gold = t.gold();
 	int income = t.base_income();
@@ -230,14 +230,14 @@ void context_manager::edit_side_dialog(int side)
 
 	team::SHARE_VISION share_vision = t.share_vision();
 
-	bool ok = gui2::teditor_edit_side::execute(side +1, team_name, user_team_name,
+	bool ok = gui2::teditor_edit_side::execute(side +1, team_id, team_name,
 			gold, income, village_gold, village_support,
 			fog, shroud, share_vision,
 			controller, no_leader, hidden,
 			gui_.video());
 
 	if (ok) {
-		get_map_context().set_side_setup(side, team_name, user_team_name,
+		get_map_context().set_side_setup(side, team_id, team_name,
 				gold, income, village_gold, village_support,
 				fog, shroud, share_vision, controller, hidden, no_leader);
 	}
@@ -394,7 +394,7 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
 			for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
 
 				const team& t = get_map_context().get_teams()[mci];
-				const std::string& teamname = t.user_team_name();
+				const std::string& teamname = t.team_name();
 				std::stringstream label;
 				label << "[" << mci+1 << "] ";
 				label << (teamname.empty() ? _("(New Side)") : teamname);

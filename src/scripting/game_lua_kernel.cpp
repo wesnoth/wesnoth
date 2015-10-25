@@ -3279,8 +3279,8 @@ int game_lua_kernel::intf_modify_side(lua_State *L)
 
 	bool invalidate_screen = false;
 
+	std::string team_id = cfg["team_id"];
 	std::string team_name = cfg["team_name"];
-	std::string user_team_name = cfg["user_team_name"];
 	std::string controller = cfg["controller"];
 	std::string defeat_condition = cfg["defeat_condition"];
 	std::string recruit_str = cfg["recruit"];
@@ -3300,14 +3300,14 @@ int game_lua_kernel::intf_modify_side(lua_State *L)
 		team & tm = teams()[team_index];
 
 		LOG_LUA << "modifying side: " << side_num << "\n";
-		if(!team_name.empty()) {
-			LOG_LUA << "change side's team to team_name '" << team_name << "'\n";
-			tm.change_team(team_name,
-					user_team_name);
-		} else if(!user_team_name.empty()) {
-			LOG_LUA << "change side's user_team_name to '" << user_team_name << "'\n";
-			tm.change_team(tm.team_name(),
-					user_team_name);
+		if(!team_id.empty()) {
+			LOG_LUA << "change side's team to team_id '" << team_id << "'\n";
+			tm.change_team(team_id,
+					team_name);
+		} else if(!team_name.empty()) {
+			LOG_LUA << "change side's team_name to '" << team_name << "'\n";
+			tm.change_team(tm.team_id(),
+					team_name);
 		}
 		// Modify recruit list (override)
 		if (!recruit_str.empty()) {
@@ -3563,7 +3563,7 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 
 	if (game_display_) {
 		game_display_->add_overlay(map_location(x, y), cfg["image"], cfg["halo"],
-			cfg["team_name"], cfg["visible_in_fog"].to_bool(true));
+			cfg["team_id"], cfg["visible_in_fog"].to_bool(true));
 	}
 	return 0;
 }
@@ -3813,7 +3813,7 @@ int game_lua_kernel::intf_label(lua_State *L)
 
 		terrain_label label(screen.labels(), cfg.get_config());
 
-		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_name(), label.color(),
+		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_id(), label.color(),
 				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.category(), label.tooltip());
 	}
 	return 0;

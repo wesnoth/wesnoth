@@ -144,7 +144,7 @@ public:
 	 * One tile may have multiple overlays.
 	 */
 	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",
+		const std::string& halo="", const std::string& team_id="",
 		bool visible_under_fog = true);
 
 	/** remove_overlay will remove all overlays on a tile. */

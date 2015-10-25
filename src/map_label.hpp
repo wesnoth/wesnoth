@@ -42,7 +42,7 @@ public:
 	void write(config& res) const;
 	void read(const config &cfg);
 
-	const terrain_label* get_label(const map_location& loc, const std::string& team_name) const;
+	const terrain_label* get_label(const map_location& loc, const std::string& team_id) const;
 	// search a team-only label, if fails then try public labels
 	const terrain_label* get_label(const map_location& loc) const;
 	const terrain_label* set_label(const map_location& loc,
@@ -70,7 +70,7 @@ public:
 
 	const display& disp() const;
 
-	const std::string& team_name() const;
+	const std::string& team_id() const;
 	const std::vector<std::string>& all_categories() const;
 
 	void set_team(const team*);
@@ -84,8 +84,8 @@ private:
 	void clear_map(label_map &, bool);
 	/// For our private use, a wrapper for get_label() that can return a pointer
 	/// to a non-const terrain_label.
-	terrain_label* get_label_private(const map_location& loc, const std::string& team_name)
-	{ return const_cast<terrain_label*>(get_label(loc, team_name)); }
+	terrain_label* get_label_private(const map_location& loc, const std::string& team_id)
+	{ return const_cast<terrain_label*>(get_label(loc, team_id)); }
 	// Note: this is not an overload of get_label() so that we do not block
 	//       outsiders from calling get_label for a non-const map_labels object.
 
@@ -106,7 +106,7 @@ class terrain_label
 public:
 	terrain_label(const t_string& text,
 			const int creator,
-			const std::string& team_name,
+			const std::string& team_id,
 			const map_location& loc,
 			const map_labels& parent,
 			const SDL_Color color = font::NORMAL_COLOR,
@@ -126,7 +126,7 @@ public:
 	const t_string& text() const;
 	const t_string& tooltip() const;
 	int creator() const;
-	const std::string& team_name() const;
+	const std::string& team_id() const;
 	const std::string& category() const;
 	bool visible_in_fog() const;
 	bool visible_in_shroud() const;
@@ -145,7 +145,7 @@ public:
 	void update_info(const t_string& text,
 			const int creator,
 			const t_string& tooltip,
-			const std::string& team_name,
+			const std::string& team_id,
 			const SDL_Color color,
 			const bool visible_in_fog,
 			const bool visible_in_shroud,
@@ -170,7 +170,7 @@ private:
 	t_string text_;
 	t_string tooltip_;
 	std::string category_;
-	std::string team_name_;
+	std::string team_id_;
 	bool visible_in_fog_;
 	bool visible_in_shroud_;
 	bool immutable_;

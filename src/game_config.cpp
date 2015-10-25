@@ -142,7 +142,7 @@ namespace game_config
 	const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
 	const version_info test_version("test");
 
-	const std::string observer_team_name = "observer";
+	const std::string observer_team_id = "observer";
 
 	const size_t max_loop = 65536;
 
