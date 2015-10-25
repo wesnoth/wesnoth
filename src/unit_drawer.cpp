@@ -251,8 +251,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
 		const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
-		const int xoff = (hex_size - unit_img->w)/2;
-		const int yoff = (hex_size - unit_img->h)/2;
+		const int xoff = unit_img ? (hex_size - unit_img->w)/2 : 0;
+		const int yoff = unit_img ? (hex_size - unit_img->h)/2 : 0;
 		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
 						preferences::partial_color() + ")"  );
 		/*static*/ const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
