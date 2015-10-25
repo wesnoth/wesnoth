@@ -115,7 +115,7 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
-	config::attribute_value cfg_team_id = cfg_["team_id"];
+	config::attribute_value cfg_team_id = cfg_.has_attribute("team_id") ? cfg_["team_id"] : cfg_["team_name"];
 	if (!cfg_team_id.blank()) {
 		const std::string& that_team_id = cfg_team_id;
 		const std::string& this_team_id = t.team_id();
