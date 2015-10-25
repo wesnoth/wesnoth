@@ -66,7 +66,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_SAVE_GAME, "save", N_("Save Game"), false, scope_game, "" },
 	{ hotkey::HOTKEY_SAVE_REPLAY, "savereplay", N_("Save Replay"), false, scope_game, "" },
 	{ hotkey::HOTKEY_SAVE_MAP, "savemap", N_("Save Map"), false, scope_game, "" },
-	{ hotkey::HOTKEY_LOAD_GAME, "load", N_("Load Game"), false, scope_game, "" },
+	{ hotkey::HOTKEY_LOAD_GAME, "load", N_("Load Game"), false, scope_game | scope_main, "" },
 	{ hotkey::HOTKEY_RECRUIT, "recruit", N_("Recruit"), false, scope_game, "" },
 	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false, scope_game, "" },
 	{ hotkey::HOTKEY_RECALL, "recall", N_("Recall"), false, scope_game, "" },
