@@ -96,8 +96,8 @@ public:
 			throw "No scenariodata found";
 	}
 	const std::set<std::string>& connected_users() const;
-	const std::vector<std::string>& user_team_names()
-		{ return user_team_names_; }
+	const std::vector<std::string>& team_names()
+		{ return team_names_; }
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
 	bool first_scenario() const { return first_scenario_; }
@@ -129,8 +129,8 @@ private:
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
+	std::vector<std::string> team_ids_;
 	std::vector<std::string> team_names_;
-	std::vector<std::string> user_team_names_;
 	std::vector<std::string> player_teams_;
 	
 	std::set<std::string>& connected_users_rw();

@@ -278,7 +278,7 @@ void menu_handler::status_table(int selected)
 		}
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
 			<< leader_name << COLUMN_SEPARATOR
-			<< (data.teamname.empty() ? teams()[n].team_name() : data.teamname)
+			<< (data.teamname.empty() ? teams()[n].team_id() : data.teamname)
 			<< COLUMN_SEPARATOR;
 
 		if(!known && !game_config::debug) {
@@ -511,7 +511,7 @@ bool menu_handler::has_friends() const
 	}
 
 	for(size_t n = 0; n != teams().size(); ++n) {
-		if(n != gui_->viewing_team() && teams()[gui_->viewing_team()].team_name() == teams()[n].team_name() && teams()[n].is_network()) {
+		if(n != gui_->viewing_team() && teams()[gui_->viewing_team()].team_id() == teams()[n].team_id() && teams()[n].is_network()) {
 			return true;
 		}
 	}
@@ -920,16 +920,14 @@ namespace { // Helpers for create_unit()
 	 * context menu.)
 	 * @returns the selected type and gender. If this is canceled, the
 	 *          returned type is NULL.
-	 *
-	 * @todo Replace choose_unit() when complete.
 	 */
-	type_and_gender choose_unit_2(game_display& gui)
+	type_and_gender choose_unit(game_display& gui)
 	{
 		//
 		// The unit creation dialog makes sure unit types
 		// are properly cached.
 		//
-		gui2::tunit_create create_dlg;
+		gui2::tunit_create create_dlg(&gui);
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {
@@ -958,86 +956,6 @@ namespace { // Helpers for create_unit()
 	}
 
 	/**
-	 * Allows the user to select a type of unit.
-	 * (Intended for use when a unit is created in debug mode via hotkey or
-	 * context menu.)
-	 * @returns the selected type and gender. If this is canceled, the
-	 *          returned type is NULL.
-	 */
-	type_and_gender choose_unit(game_display& gui)
-	{
-		std::vector<std::string> options;
-		static int last_selection = -1;
-		static bool random_gender = false;
-		std::vector<const unit_type*> unit_choices;
-		const std::string heading = std::string(1,HEADING_PREFIX) +
-									_("Race")      + COLUMN_SEPARATOR +
-									_("Type");
-		options.push_back(heading);
-
-		BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
-		{
-			std::stringstream row;
-
-			// Make sure the unit type was built for the data we need.
-			unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
-
-			row << i.second.race()->plural_name() << COLUMN_SEPARATOR;
-			row << i.second.type_name() << COLUMN_SEPARATOR;
-
-			options.push_back(row.str());
-			unit_choices.push_back(&i.second);
-		}
-
-		int choice = 0;
-		bool random_gender_choice = random_gender;
-		{
-			gui::dialog umenu(gui, _("Create Unit (Debug!)"), "", gui::OK_CANCEL);
-
-			umenu.add_option(
-				(formatter()<<_("Gender: ")<<_("gender^Random")).str(),
-				random_gender_choice,
-				gui::dialog::BUTTON_EXTRA
-			);
-
-			gui::menu::basic_sorter sorter;
-			sorter.set_alpha_sort(0).set_alpha_sort(1);
-			umenu.set_menu(options, &sorter);
-
-			gui::filter_textbox* filter = new gui::filter_textbox(gui.video(),
-				_("Filter: "), options, options, 1, umenu, 200);
-			umenu.set_textbox(filter);
-
-			//sort by race then by type name
-			umenu.get_menu().sort_by(1);
-			umenu.get_menu().sort_by(0);
-			if (last_selection >= 0)
-				umenu.get_menu().move_selection(last_selection);
-			else
-				umenu.get_menu().reset_selection();
-
-			dialogs::unit_types_preview_pane unit_preview(unit_choices, filter, 1, dialogs::unit_types_preview_pane::SHOW_ALL);
-			umenu.add_pane(&unit_preview);
-			unit_preview.set_selection(umenu.get_menu().selection());
-
-			choice = umenu.show();
-			choice = filter->get_index(choice);
-			random_gender_choice = umenu.option_checked(0);
-		}
-
-		if (size_t(choice) < unit_choices.size()) {
-			last_selection = choice;
-			random_gender  = random_gender_choice;
-
-			return type_and_gender(unit_choices[choice],
-			                       random_gender ? unit_race::NUM_GENDERS :
-			                                       unit_choices[choice]->genders().front());
-		}
-		else
-			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
-	}
-
-	/**
 	 * Creates a unit and places it on the board.
 	 * (Intended for use with any units created via debug mode.)
 	 */
@@ -1062,8 +980,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	assert(gui_ != NULL);
 
 	// Let the user select the kind of unit to create.
-	type_and_gender selection = gui2::new_widgets ? choose_unit_2(*gui_) :
-	                                                choose_unit(*gui_);
+	type_and_gender selection = choose_unit(*gui_);
 	if ( selection.first != NULL )
 		// Make it so.
 		create_and_place(*gui_, map(), units(), destination,
@@ -1131,15 +1048,15 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	std::string label = old_label ? old_label->text() : "";
 
 	if(gui2::tedit_label::execute(label, team_only, gui_->video())) {
-		std::string team_name;
+		std::string team_id;
 		SDL_Color color = font::LABEL_COLOR;
 
 		if (team_only) {
-			team_name = gui_->labels().team_name();
+			team_id = gui_->labels().team_id();
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_id, color);
 		if (res)
 			resources::recorder->add_label(res);
 	}
@@ -1150,8 +1067,8 @@ void menu_handler::clear_labels()
 	if (gui_->team_valid()
 	   && !board().is_observer())
 	{
-		gui_->labels().clear(gui_->current_team_name(), false);
-		resources::recorder->clear_labels(gui_->current_team_name(), false);
+		gui_->labels().clear(gui_->current_team_id(), false);
+		resources::recorder->clear_labels(gui_->current_team_id(), false);
 	}
 }
 	
@@ -2517,7 +2434,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 
 	if(private_message) {
 		if (board().is_observer()) {
-			cfg["to_sides"] = game_config::observer_team_name;
+			cfg["to_sides"] = game_config::observer_team_id;
 		} else {
 			cfg["to_sides"] = teams()[gui_->viewing_team()].allied_human_teams();
 		}

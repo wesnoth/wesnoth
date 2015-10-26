@@ -62,7 +62,7 @@ Version 1.13.1+dev:
    * Add helper.child_count
    * Add helper.child_array
  * Music and sound effects:
-   * New dwarf hit and die sounds.
+   * New sounds: dwarf hit and die, ink, mud fist and glob.
  * Terrains:
    * Removed unit elevation from N-S hanging bridges
    * Added unit elevation to NW-SE and SW-NE stone chasm bridges
@@ -70,6 +70,9 @@ Version 1.13.1+dev:
    * Hanging, stone chasm, and plank bridges are now displayed in-game simply
      as "Bridge", retaining their descriptive names in the editor as per
      convention.
+   * Fixed spurious "could not open image 'terrain/.png'" error messages caused
+     by terrains without a minimap image (symbol_image) such as those from the
+     Special category in the editor (Impassable Overlay, etc.).
  * User interface:
    * It is now possible to switch from replay directly into normal play (bug #23833).
    * The game now shows a notification on remote clients if a sides takes very long to do a local choice (bug #23297).
@@ -112,6 +115,8 @@ Version 1.13.1+dev:
      messages involving macros.
    * Added WML menu item and event handler views to the Gamestate Inspector
      dialog.
+   * The Gamestate Inspector now displays empty WML variables too (including
+     containers/arrays).
    * Added new possibilities for [effect]:
      * apply_to=alignment - change a unit's alignment
      * apply_to=attacks_left - change a unit's attacks per turn
@@ -148,6 +153,12 @@ Version 1.13.1+dev:
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
+   * Made Documents\My Games\WesnothX.Y the default user config+data dir on
+     Windows to replace the broken <current working dir>\userdata default that
+     has never been acceptable practice. Portable installs are now required to
+     explicitly use . or  .. (e.g. `--config-dir .\userdata`) to force the
+     user config+data dir path to be relative to the current working dir (see
+     also bug #23753).
    * Removed legacy filesystem API implementation.
    * Fixed Generate Map dialog bug that caused last choice of map
      generator to not be actually selected (bug #23711).
@@ -174,6 +185,7 @@ Version 1.13.1+dev:
      eg if an add-on tries to set an invalid variable
    * Fixed bug 23060: unit stat tooltips do not show.
    * wmllint, wmlscope, wmlindent and wmllint-1.4 now run on Python 3
+   * Text boxes tab completion now lists whisperer nicks for easier answer
 
 Version 1.13.1:
  * Security fixes:

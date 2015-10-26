@@ -384,7 +384,7 @@ private:
 		Using this to make assumptions about the current gamestate is 
 		extremely dangerous and should especially not be done for anything 
 		that can be nodified by wml (especially by [modify_side]),
-		like team_name, controller ... in [side].
+		like team_id, controller ... in [side].
 		FIXME: move every code here that uses this object to query those
 		information to the clients. But note that there are some checks 
 		(like controller == null) that are definitely needed by the server and

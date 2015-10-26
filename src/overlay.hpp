@@ -21,13 +21,13 @@ struct overlay
 {
 
 	overlay(const std::string& img, const std::string& halo_img,
-			halo::handle handle, const std::string& overlay_team_name, const bool fogged) : image(img), halo(halo_img),
-					team_name(overlay_team_name), halo_handle(handle) , visible_in_fog(fogged)
+			halo::handle handle, const std::string& overlay_team_id, const bool fogged) : image(img), halo(halo_img),
+					team_id(overlay_team_id), halo_handle(handle) , visible_in_fog(fogged)
 	{}
 
 
 	overlay(const config& cfg) :
-		image(cfg["image"]), halo(cfg["halo"]), team_name(cfg["team_name"]),
+		image(cfg["image"]), halo(cfg["halo"]), team_id(cfg["team_id"]),
 		name(cfg["name"].t_str()), id(cfg["id"]),
 		halo_handle(), visible_in_fog(cfg["visible_in_fog"].to_bool())
 	{
@@ -35,7 +35,7 @@ struct overlay
 
 	std::string image;
 	std::string halo;
-	std::string team_name;
+	std::string team_id;
 	t_string name;
 	std::string id;
 

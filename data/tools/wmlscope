@@ -93,7 +93,7 @@
 #
 # sets the warning level.
 
-import sys, os, time, re, getopt, hashlib, glob, codecs
+import sys, os, time, re, argparse, hashlib, glob, codecs
 from wesnoth.wmltools3 import *
 
 def interpret(lines, css):
@@ -365,91 +365,59 @@ class CrossRefLister(CrossRef):
         fp.write(outstr)
 
 if __name__ == "__main__":
-    def help():
-        print("""\
-Usage: wmlscope [options] dirpath
-    Options may be any of these:
-    -h, --help                   Emit this help message and quit
-    -c, --crossreference         Report resolved macro references (implies -w 1)
-    -C, --collisions             Report duplicate resource files
-    -d, --definitions            Make definition list
-    -e regexp, --exclude regexp  Ignore files matching the specified regular expression
-    -f regexp, --from regexp     Report only on things defined in files matching regexp
-    -l, --listfiles              List files that will be processed
-    -r ddd, --refcount=ddd       Report only on macros w/references in ddd files
-    -t fname, --typelist fname   List actual & formal argtypes for calls in fname
-    -u, --unresolved             Report unresolved macro references
-    -w, --warnlevel              Set to 1 to warn of duplicate macro definitions
-    --force-used regexp          Ignore refcount 0 on names matching regexp
-    --extracthelp                Extract help from macro definition comments.
-    --unchecked                  Report all macros with untyped formals.
-   Options may be followed by any number of directiories to check.  If no
-   directories are given, all files under the current directory are checked.
-""", file=sys.stderr)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--crossreference", action="store_true",
+                        help="Report resolved macro references (implies -w 1)")
+    parser.add_argument("-C", "--collisions", action="store_true",
+                        help="Report duplicate resource files")
+    parser.add_argument("-d", "--definitions", action="store_true",
+                        help="Make definition list")
+    parser.add_argument("-e", "--exclude", action="append", default = [],
+                        help="Ignore files matching the specified regular expression")
+    parser.add_argument("-f", "--from", action="store", dest="from_", metavar="FROM", # from is a keyword
+                        help="Report only on things defined in files matching regexp")
+    parser.add_argument("-l", "--listfiles", action="store_true",
+                        help="List files that will be processed")
+    parser.add_argument("-r", "--refcount", action="store", type=int, # convert to int, defaults to None
+                        help="Report only on macros w/references in ddd files")
+    parser.add_argument("-t", "--typelist", action="store",
+                        help="List actual & formal argtypes for calls in fname")
+    parser.add_argument("-u", "--unresolved", action="store_true",
+                        help="Report unresolved macro references")
+    parser.add_argument("-w", "--warnlevel", action="store", type=int, default=0,
+                        help="Set to 1 to warn of duplicate macro definitions")
+    # this option was never listed before...
+    parser.add_argument("-p", "--progress", action="store_true",
+                        help="Show progress") # TODO: improve description
+    # no short options for these
+    parser.add_argument("--force-used", action="append", dest="forceused", default = [],
+                        help="Ignore refcount 0 on names matching regexp")
+    parser.add_argument("--extracthelp", action="store_true",
+                        help="Extract help from macro definition comments.")
+    parser.add_argument("--unchecked", action="store_true",
+                        help="Report all macros with untyped formals.")
+    parser.add_argument("directories", action="store", nargs="*",
+                        help="""Any number of directiories to check. If no
+directories are given, all files under the current directory are checked.""")
+    namespace = parser.parse_args()
 
     try:
         # Process options
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lpr:t:uw:",
-                                             [
-                                              'crossreference',
-                                              'collisions',
-                                              'definitions',
-                                              'exclude=',
-                                              'extracthelp',
-                                              'force-used=',
-                                              'from=',
-                                              'help',
-                                              'listfiles',
-                                              'progress',
-                                              'refcount=',
-                                              'typelist=',
-                                              'unchecked',
-                                              'unresolved',
-                                              'warnlevel=',
-                                              ])
-        crossreference = definitions = listfiles = unresolved = extracthelp = False
-        from_restrict = None
-        refcount_restrict = None
-        forceused = []
-        exclude = []
-        warnlevel = 0
-        collisions = False
-        typelist = None
-        unchecked = False
-        progress = False
-        for (switch, val) in options:
-            if switch in ('-h', '--help'):
-                help()
-                sys.exit(0)
-            if switch in ('-f', '--from'):
-                from_restrict = val
-            elif switch in ('-c', '--crossreference'):
-                crossreference = True
-                warnlevel = 1
-            elif switch in ('-C', '--collisions'):
-                collisions = True
-            elif switch in ('-d', '--definitions'):
-                definitions = True
-            elif switch in ('-e', '--exclude'):
-                exclude.append(val)
-            elif switch == '--extracthelp':
-                extracthelp = True
-            elif switch == '--force-used':
-                forceused.append(val)
-            elif switch in ('-l', '--listfiles'):
-                listfiles = True
-            elif switch in ('-p', '--progress'):
-                progress = True
-            elif switch in ('-r', '--refcount'):
-                refcount_restrict = int(val)
-            elif switch == '--unchecked':
-                unchecked = True
-            elif switch in ('-t', '--typelist'):
-                typelist = val
-            elif switch in ('-u', '--unresolved'):
-                unresolved = True
-            elif switch in ('-w', '--warnlevel'):
-                warnlevel = int(val)
+        crossreference = namespace.crossreference
+        collisions = namespace.collisions
+        definitions = namespace.definitions
+        exclude = namespace.exclude
+        from_restrict = namespace.from_
+        extracthelp = namespace.extracthelp
+        listfiles = namespace.listfiles
+        refcount_restrict = namespace.refcount
+        typelist = namespace.typelist
+        unresolved = namespace.unresolved
+        warnlevel = 1 if crossreference else namespace.warnlevel
+        forceused = namespace.forceused
+        unchecked = namespace.unchecked
+        progress = namespace.progress
+        arguments = namespace.directories # a remnant of getopt...
 
         # in certain situations, Windows' command prompt appends a double quote
         # to the command line parameters. This block takes care of this issue.

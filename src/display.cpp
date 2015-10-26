@@ -88,9 +88,9 @@ void display::parse_team_overlays()
 	const team& prev_team = dc_->teams()[playing_team()-1 < dc_->teams().size() ? playing_team()-1 : dc_->teams().size()-1];
 	BOOST_FOREACH(const game_display::overlay_map::value_type i, *overlays_) {
 		const overlay& ov = i.second;
-		if (!ov.team_name.empty() &&
-			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
-			((ov.team_name.find(prev_team.team_name()) + 1) != 0))
+		if (!ov.team_id.empty() &&
+			((ov.team_id.find(curr_team.team_id()) + 1) != 0) !=
+			((ov.team_id.find(prev_team.team_id()) + 1) != 0))
 		{
 			invalidate(i.first);
 		}
@@ -98,13 +98,13 @@ void display::parse_team_overlays()
 }
 
 
-void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_name, bool visible_under_fog)
+void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_id, bool visible_under_fog)
 {
 	if (halo_man_) {
 		const halo::handle halo_handle = halo_man_->add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-		const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
+		const overlay item(img, halo, halo_handle, team_id, visible_under_fog);
 		overlays_->insert(overlay_map::value_type(loc,item));
 	}
 }
@@ -2892,8 +2892,8 @@ void display::draw_hex(const map_location& loc) {
 		}
 
 		for( ; overlays.first != overlays.second; ++overlays.first) {
-			if ((overlays.first->second.team_name == "" ||
-					overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
+			if ((overlays.first->second.team_id == "" ||
+					overlays.first->second.team_id.find(dc_->teams()[viewing_team()].team_id()) != std::string::npos)
 					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 			{
 

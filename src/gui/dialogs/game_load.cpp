@@ -288,8 +288,8 @@ void tgame_load::display_savegame(twindow& window)
 
 		find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
 
-		// FIXME: Find a better way to change the label width
-		window.invalidate_layout();
+		// TODO: Find a better way to change the label width
+		// window.invalidate_layout();
 	}
 }
 

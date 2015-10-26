@@ -67,7 +67,7 @@ public:
 
 private:
 	/** Display the load-game dialog. */
-	void show_dialog(bool show_replay, bool cancel_orders);
+	void show_dialog();
 	/** Display the difficulty dialog. */
 	void show_difficulty_dialog();
 	/** Call check_version_compatibility above, using the version of this savefile. */

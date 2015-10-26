@@ -26,7 +26,11 @@
 namespace gui2
 {
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+class tlist;
+#else
 class tlistbox;
+#endif
 class tstacked_widget;
 
 class tgame_version : public tdialog

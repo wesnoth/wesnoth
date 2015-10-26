@@ -1351,7 +1351,7 @@ set(schema_generator_SRC
 	tools/schema/sourceparser.cpp
 	tools/schema/error_container.cpp
 	tools/schema/tag.cpp
-	filesystem.cpp
+	filesystem_boost.cpp
 	filesystem_common.cpp
 	loadscreen_empty.cpp
 )
@@ -1373,7 +1373,7 @@ set(schema_validator_SRC
 	serialization/validator.cpp
 	tools/dummy_video.cpp
 	tools/schema/tag.cpp
-	filesystem.cpp
+	filesystem_boost.cpp
 	filesystem_common.cpp
 	config_cache.cpp
 	utils/sha1.cpp

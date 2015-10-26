@@ -523,10 +523,8 @@ config play_controller::to_config() const
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
 	
-	if(gui_.get() != NULL) {
-		gui_->labels().write(cfg);
-		sound::write_music_play_list(cfg);
-	}
+	gui_->labels().write(cfg);
+	sound::write_music_play_list(cfg);
 
 	return cfg;
 }
@@ -653,6 +651,12 @@ void play_controller::tab()
 		BOOST_FOREACH(const std::string& o, gui_->observers()){
 			dictionary.insert(o);
 		}
+		
+		// Add nicks who whispered you
+		BOOST_FOREACH(const std::string& w, gui_->get_chat_manager().whisperers()){
+			dictionary.insert(w);
+		}
+		
 		//Exclude own nick from tab-completion.
 		//NOTE why ?
 		dictionary.erase(preferences::login());

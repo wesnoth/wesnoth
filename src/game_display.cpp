@@ -772,11 +772,11 @@ void game_display::clear_attack_indicator()
 	set_attack_indicator(map_location::null_location(), map_location::null_location());
 }
 
-std::string game_display::current_team_name() const
+std::string game_display::current_team_id() const
 {
 	if (team_valid())
 	{
-		return dc_->teams()[currentTeam_].team_name();
+		return dc_->teams()[currentTeam_].team_id();
 	}
 	return std::string();
 }

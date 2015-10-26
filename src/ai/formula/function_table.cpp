@@ -1362,12 +1362,12 @@ private:
 
         void display_label(const map_location& location, const std::string& text) const {
                 display* gui = display::get_singleton();
-		std::string team_name;
+		std::string team_id;
 
 		SDL_Color color = int_to_color(team::get_side_rgb(ai_.get_side()));
 
 		const terrain_label *res;
-		res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_name, color);
+		res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_id, color);
 		if (res && resources::recorder)
 			resources::recorder->add_label(res);
         }

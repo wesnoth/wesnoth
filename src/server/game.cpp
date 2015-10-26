@@ -15,7 +15,7 @@
 #include "../global.hpp"
 
 #include "../filesystem.hpp"
-#include "../game_config.hpp" // game_config::observer_team_name
+#include "../game_config.hpp" // game_config::observer_team_id
 #include "../log.hpp"
 
 #include "game.hpp"
@@ -234,7 +234,17 @@ void game::perform_controller_tweaks() {
 				user_name = username(user);
 			}
 
-			change_controller(side_index, sides_[side_index], user_name , false, (**s)["controller"].to_string());
+			// Issue change_controller command, transfering this side to its owner with proper name and controller.
+			// Ensures that what the server now thinks is true is effected on all of the clients.
+			//
+			// We use the "player_left" field as follows. Normally change_controller sends one message to the owner,
+			// and one message to everyone else. In case that a player drops, the owner is gone and should not get
+			// a message, instead the host gets a [side_drop] message.
+			//
+			// In the server controller tweaks, we want to avoid sending controller change messages to the host.
+			// Doing this has the negative consequence that all of the AI side names are given the owners name.
+			// Therefore, if the side belongs to the host, we pass player_left = true, otherwise player_left = false.
+			change_controller(side_index, sides_[side_index], user_name , sides_[side_index] == owner_, (**s)["controller"].to_string());
 
 			//next lines change controller types found in level_ to be what is appropriate for an observer at game start.
 			if ((**s)["controller"] == "ai") {
@@ -985,7 +995,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 		}
 		const simple_wml::string_span& to_sides = (*speak)["to_sides"];
 		// Anyone can send to the observer team.
-		if (is_muted_observer(user->first) && to_sides != game_config::observer_team_name.c_str()) {
+		if (is_muted_observer(user->first) && to_sides != game_config::observer_team_id.c_str()) {
 			send_server_message("You have been muted, others can't see your message!", user->first);
 			continue;
 		}
@@ -997,7 +1007,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 		if (to_sides == "") {
 			send_data(*message, user->first, "game message");
 			record_data(message.release());
-		} else if (to_sides == game_config::observer_team_name) {
+		} else if (to_sides == game_config::observer_team_id) {
 			wesnothd::send_to_many(*message, observers_, user->first, "game message");
 			record_data(message.release());
 		} else {

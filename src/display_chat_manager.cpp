@@ -55,6 +55,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	std::string sender = speaker;
 	if (whisper) {
 		sender.assign(speaker, 9, speaker.size());
+		add_whisperer( sender );
 	}
 	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;

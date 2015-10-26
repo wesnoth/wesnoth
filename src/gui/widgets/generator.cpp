@@ -74,14 +74,15 @@ void tone::delete_item(const unsigned index)
 
 			// Are there items left?
 			const unsigned item_count = get_item_count();
+			const unsigned visible_index = get_ordered_index(index);
 			if(item_count > 1) {
 				// Is the last item deselected?
-				if(index == item_count - 1) {
+				if(visible_index == item_count - 1) {
 					// Select the second last.
-					do_select_item(index - 1);
+					do_select_item(get_item_at_ordered(visible_index - 1));
 				} else {
 					// Select the next item.
-					do_select_item(index + 1);
+					do_select_item(get_item_at_ordered(visible_index + 1));
 				}
 			}
 		}

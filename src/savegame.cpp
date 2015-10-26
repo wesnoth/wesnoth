@@ -96,27 +96,19 @@ loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestat
 	, select_difficulty_(false)
 {}
 
-void loadgame::show_dialog(bool show_replay, bool cancel_orders)
+void loadgame::show_dialog()
 {
-	//FIXME: Integrate the load_game dialog into this class
-	//something to watch for the curious, but not yet ready to go
-	if (gui2::new_widgets){
-		gui2::tgame_load load_dialog(game_config_);
-		load_dialog.show(gui_.video());
+	// FIXME: Integrate the load_game dialog into this class
+	// something to watch for the curious, but not yet ready to go
+	gui2::tgame_load load_dialog(game_config_);
+	load_dialog.show(gui_.video());
 
-		if (load_dialog.get_retval() == gui2::twindow::OK) {
-			select_difficulty_ = load_dialog.change_difficulty();
+	if (load_dialog.get_retval() == gui2::twindow::OK) {
+		select_difficulty_ = load_dialog.change_difficulty();
 
-			filename_ = load_dialog.filename();
-			show_replay_ = load_dialog.show_replay();
-			cancel_orders_ = load_dialog.cancel_orders();
-		}
-	} else {
-		bool show_replay_dialog = show_replay;
-		bool cancel_orders_dialog = cancel_orders;
-		filename_ = dialogs::load_game_dialog(gui_, game_config_, &select_difficulty_, &show_replay_dialog, &cancel_orders_dialog);
-		show_replay_ = show_replay_dialog;
-		cancel_orders_ = cancel_orders_dialog;
+		filename_ = load_dialog.filename();
+		show_replay_ = load_dialog.show_replay();
+		cancel_orders_ = load_dialog.cancel_orders();
 	}
 }
 
@@ -159,7 +151,7 @@ void loadgame::show_difficulty_dialog()
 bool loadgame::load_game()
 {
 	if (!gui_.video().faked()) {
-		show_dialog(false, false);
+		show_dialog();
 	}
 
 	if(filename_.empty()) {
@@ -197,7 +189,7 @@ bool loadgame::load_game(
 	select_difficulty_ = select_difficulty;
 
 	if (filename_.empty()){
-		show_dialog(show_replay, cancel_orders);
+		show_dialog();
 	}
 	else{
 		show_replay_ = show_replay;
@@ -303,7 +295,7 @@ void loadgame::set_gamestate()
 
 bool loadgame::load_multiplayer_game()
 {
-	show_dialog(false, false);
+	show_dialog();
 
 	if (filename_.empty())
 		return false;

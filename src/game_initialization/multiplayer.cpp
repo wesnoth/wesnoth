@@ -869,7 +869,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 		for (int pos = state.get_starting_pos().child_count("side"); pos < map_positions; ++pos) {
 			config& side = state.get_starting_pos().add_child("side");
 			side["side"] = pos + 1;
-			side["team_name"] = pos + 1;
+			side["team_id"] = pos + 1;
 			side["canrecruit"] = true;
 			side["controller"] = "human";
 		}

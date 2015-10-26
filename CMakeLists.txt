@@ -640,7 +640,7 @@ if(ENABLE_GAME)
 	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
 
-if(ENABLE_GAME OR ENABLE_SERVER)
+if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
 	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
 
 	if(NOT ENABLE_LIBINTL)
@@ -652,7 +652,7 @@ if(ENABLE_GAME OR ENABLE_SERVER)
 			message("Warning: Using libintl on Windows instead of Boost.Locale may result in issues with translations and Unicode file paths!")
 		endif()
 	endif()
-endif(ENABLE_GAME OR ENABLE_SERVER)
+endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)

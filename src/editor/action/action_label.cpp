@@ -36,7 +36,7 @@ editor_action* editor_action_label::perform(map_context& mc) const
 
 	const terrain_label *old_label = mc.get_labels().get_label(loc_);
 	if (old_label) {
-		undo.reset(new editor_action_label(loc_, old_label->text(), old_label->team_name(), old_label->color()
+		undo.reset(new editor_action_label(loc_, old_label->text(), old_label->team_id(), old_label->color()
 				, old_label->visible_in_fog(), old_label->visible_in_shroud(), old_label->immutable(), old_label->category()) );
 	} else {
 		undo.reset(new editor_action_label_delete(loc_));
@@ -49,7 +49,7 @@ editor_action* editor_action_label::perform(map_context& mc) const
 void editor_action_label::perform_without_undo(map_context& mc) const
 {
 	mc.get_labels()
-			.set_label(loc_, text_, -1, team_name_, color_, visible_fog_, visible_shroud_, immutable_, category_);
+			.set_label(loc_, text_, -1, team_id_, color_, visible_fog_, visible_shroud_, immutable_, category_);
 }
 
 editor_action_label_delete* editor_action_label_delete::clone() const
@@ -65,7 +65,7 @@ editor_action* editor_action_label_delete::perform(map_context& mc) const
 
 	if (!deleted) return NULL;
 
-	undo.reset(new editor_action_label(loc_, deleted->text(), deleted->team_name()
+	undo.reset(new editor_action_label(loc_, deleted->text(), deleted->team_id()
 			, deleted->color(), deleted->visible_in_fog(), deleted->visible_in_shroud(), deleted->immutable(), deleted->category()));
 
 	perform_without_undo(mc);

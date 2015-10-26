@@ -62,7 +62,7 @@ teditor_edit_label::teditor_edit_label(std::string& text,
 
 
 	// std::string label     = old_label ? old_label->text()              : "";
-	// std::string team_name = old_label ? old_label->team_name()         : "";
+	// std::string team_id = old_label ? old_label->team_id()         : "";
 	// bool visible_shroud   = old_label ? old_label->visible_in_shroud() :
 	// false;
 	// bool visible_fog      = old_label ? old_label->visible_in_fog()    :

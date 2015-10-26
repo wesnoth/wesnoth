@@ -28,8 +28,8 @@ class teditor_edit_side : public tdialog
 {
 public:
 	teditor_edit_side(int side,
+					  std::string& team_id,
 					  std::string& team_name,
-					  std::string& user_team_name,
 					  int& gold,
 					  int& income,
 					  int& village_income,
@@ -43,8 +43,8 @@ public:
 
 	/** The execute function see @ref tdialog for more information. */
 	static bool execute(int side,
+						std::string& team_id,
 						std::string& team_name,
-						std::string& user_team_name,
 						int& gold,
 						int& income,
 						int& village_income,
@@ -58,8 +58,8 @@ public:
 						CVideo& video)
 	{
 		return teditor_edit_side(side,
+								 team_id,
 								 team_name,
-								 user_team_name,
 								 gold,
 								 income,
 								 village_income,
