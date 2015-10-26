@@ -15,6 +15,7 @@
 
 #include "rooms.hpp"
 #include "log.hpp"
+#include "game.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -42,7 +43,6 @@ room_ptr RoomList::make_room(const std::string& room_name)
 {
 	return room_ptr(new Room(room_name));
 }
-
 void RoomList::enter_room(const std::string& room_name, socket_ptr socket)
 {
 	RoomMap::right_iterator existing_room_iter = room_map_.right.find(room_name);
@@ -105,6 +105,23 @@ void RoomList::send_server_message(const std::string& room_name, const std::stri
 	msg.set_attr("sender", "server");
 	msg.set_attr_dup("message", message.c_str());
 	send_to_room(room_name, server_message, exclude);
+}
+
+void RoomList::enter_lobby(socket_ptr socket)
+{
+	RoomMap::left_iterator iter, iter_end;
+	boost::tie(iter, iter_end) = stored_room_map_.left.equal_range(socket);
+	for(; iter != iter_end; ++iter) {
+		room_map_.insert(*(room_map_.project_up(iter)));
+	}
+	stored_room_map_.left.erase(socket);
+}
+
+void RoomList::enter_lobby(wesnothd::game& game)
+{
+	BOOST_FOREACH(socket_ptr player, game.all_game_users()) {
+		enter_lobby(player);
+	}
 }
 
 void RoomList::exit_lobby(socket_ptr socket)

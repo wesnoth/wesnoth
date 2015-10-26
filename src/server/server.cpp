@@ -1156,6 +1156,8 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 
 	if(room_list_.in_lobby(socket))
 		handle_player_in_lobby(socket, doc);
+	else
+		handle_player_in_game(socket, doc);
 
 }
 
@@ -1425,6 +1427,346 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	if (diff1 || diff2) {
 		rooms_.lobby().send_data(diff);
 	}
+}
+
+void server::handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc) {
+	DBG_SERVER << "in process_data_game...\n";
+
+	PlayerMap::left_iterator p = player_connections_.left.find(socket);
+	wesnothd::player& player = p->info;
+	
+	const t_games::iterator game_iter =
+		std::find_if(games_.begin(), games_.end(), wesnothd::game_is_member(socket));
+	if (game_iter == games_.end()) {
+		ERR_SERVER << "ERROR: Could not find game for player: "
+			<< player.name() << ". (socket: " << socket << ")\n";
+		return;
+	}
+
+	wesnothd::game& g = *game_iter;
+
+	simple_wml::document& data = *doc;
+
+	// If this is data describing the level for a game.
+	if (doc->child("snapshot") || doc->child("scenario")) {
+		if (!g.is_owner(socket)) {
+			return;
+		}
+		// If this game is having its level data initialized
+		// for the first time, and is ready for players to join.
+		// We should currently have a summary of the game in g.level().
+		// We want to move this summary to the games_and_users_list_, and
+		// place a pointer to that summary in the game's description.
+		// g.level() should then receive the full data for the game.
+		if (!g.level_init()) {
+			LOG_SERVER << client_address(socket) << "\t" << player.name()
+				<< "\tcreated game:\t\"" << g.name() << "\" ("
+				<< g.id() << ").\n";
+			// Update our config object which describes the open games,
+			// and save a pointer to the description in the new game.
+			simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
+			assert(gamelist != NULL);
+			simple_wml::node& desc = gamelist->add_child("game");
+			g.level().root().copy_into(desc);
+			if (const simple_wml::node* m = doc->child("multiplayer")) {
+				m->copy_into(desc);
+			} else {
+				WRN_SERVER << client_address(socket) << "\t" << player.name()
+					<< "\tsent scenario data in game:\t\"" << g.name() << "\" ("
+					<< g.id() << ") without a 'multiplayer' child.\n";
+				// Set the description so it can be removed in delete_game().
+				g.set_description(&desc);
+				delete_game(game_iter);
+				room_list_.send_server_message("lobby", "The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", socket);
+				return;
+			}
+
+			g.set_description(&desc);
+			desc.set_attr_dup("id", lexical_cast_default<std::string>(g.id()).c_str());
+		} else {
+			WRN_SERVER << client_address(socket) << "\t" << player.name()
+				<< "\tsent scenario data in game:\t\"" << g.name() << "\" ("
+				<< g.id() << ") although it's already initialized.\n";
+			return;
+		}
+
+		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
+
+		simple_wml::node& desc = *g.description();
+		// Update the game's description.
+		// If there is no shroud, then tell players in the lobby
+		// what the map looks like
+		if (!data["mp_shroud"].to_bool()) {
+			desc.set_attr_dup("map_data", (*wesnothd::game::starting_pos(data.root()))["map_data"]);
+		}
+		if (const simple_wml::node* e = data.child("era")) {
+			if (!e->attr("require_era").to_bool(true)) {
+				desc.set_attr("require_era", "no");
+			}
+		}
+
+		if (data.attr("require_scenario").to_bool(false)) {
+			desc.set_attr("require_scenario", "yes");
+		}
+
+		const simple_wml::node::child_list& mlist = data.children("modification");
+		BOOST_FOREACH (const simple_wml::node* m, mlist) {
+			desc.add_child_at("modification", 0);
+			desc.child("modification")->set_attr_dup("id", m->attr("id"));
+			if (m->attr("require_modification").to_bool(false))
+				desc.child("modification")->set_attr("require_modification", "yes");
+		}
+
+		// Record the full scenario in g.level()
+		g.level().swap(data);
+		// The host already put himself in the scenario so we just need
+		// to update_side_data().
+		//g.take_side(sock);
+		g.update_side_data();
+		g.describe_slots();
+
+		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
+
+		// Send the update of the game description to the lobby.
+		simple_wml::document diff;
+		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
+		rooms_.lobby().send_data(diff);
+		/** @todo FIXME: Why not save the level data in the history_? */
+		return;
+// Everything below should only be processed if the game is already intialized.
+	} else if (!g.level_init()) {
+		WRN_SERVER << client_address(socket) << "\tReceived unknown data from: "
+			<< player.name() << " (socket:" << socket
+			<< ") while the scenario wasn't yet initialized.\n" << data.output();
+		return;
+	// If the host is sending the next scenario data.
+	} else if (const simple_wml::node* scenario = data.child("store_next_scenario")) {
+		if (!g.is_owner(socket)) return;
+		if (!g.level_init()) {
+			WRN_SERVER << client_address(socket) << "\tWarning: "
+				<< player.name() << "\tsent [store_next_scenario] in game:\t\""
+				<< g.name() << "\" (" << g.id()
+				<< ") while the scenario is not yet initialized.";
+			return;
+		}
+		g.save_replay();
+		g.reset_last_synced_context_id();
+		// Record the full scenario in g.level()
+		g.level().clear();
+		scenario->copy_into(g.level().root());
+
+		if (g.description() == NULL) {
+			ERR_SERVER << client_address(socket) << "\tERROR: \""
+				<< g.name() << "\" (" << g.id()
+				<< ") is initialized but has no description_.\n";
+			return;
+		}
+		simple_wml::node& desc = *g.description();
+		// Update the game's description.
+		if (const simple_wml::node* m = scenario->child("multiplayer")) {
+			m->copy_into(desc);
+		} else {
+			WRN_SERVER << client_address(socket) << "\t" << player.name()
+				<< "\tsent scenario data in game:\t\"" << g.name() << "\" ("
+				<< g.id() << ") without a 'multiplayer' child.\n";
+			delete_game(game_iter);
+			room_list_.send_server_message("lobby", "The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", socket);
+			return;
+		}
+
+		// If there is no shroud, then tell players in the lobby
+		// what the map looks like.
+		const simple_wml::node& s = *wesnothd::game::starting_pos(g.level().root());
+		desc.set_attr_dup("map_data", s["mp_shroud"].to_bool() ? "" :
+			s["map_data"]);
+		if (const simple_wml::node* e = data.child("era")) {
+			if (!e->attr("require_era").to_bool(true)) {
+				desc.set_attr("require_era", "no");
+			}
+		}
+
+		if (data.attr("require_scenario").to_bool(false)) {
+			desc.set_attr("require_scenario", "yes");
+		}
+
+		// Tell everyone that the next scenario data is available.
+		static simple_wml::document notify_next_scenario(
+			"[notify_next_scenario]\n[/notify_next_scenario]\n",
+			simple_wml::INIT_COMPRESSED);
+		g.send_data(notify_next_scenario, socket);
+
+		// Send the update of the game description to the lobby.
+		update_game_in_lobby(g);
+
+		return;
+	// A mp client sends a request for the next scenario of a mp campaign.
+	} else if (data.child("load_next_scenario")) {
+		g.load_next_scenario(socket);
+		return;
+	} else if (data.child("start_game")) {
+		if (!g.is_owner(socket)) return;
+		//perform controller tweaks, assigning sides as human for their owners etc.
+		g.perform_controller_tweaks();
+		// Send notification of the game starting immediately.
+		// g.start_game() will send data that assumes
+		// the [start_game] message has been sent
+		g.send_data(data, socket);
+		g.start_game(socket);
+
+		//update the game having changed in the lobby
+		update_game_in_lobby(g);
+		return;
+	} else if (data.child("update_game")) {
+		g.update_game();
+		update_game_in_lobby(g);
+		return;
+	} else if (data.child("leave_game")) {
+		// May be better to just let remove_player() figure out when a game ends.
+		if ((g.is_player(socket) && g.nplayers() == 1)
+		|| (g.is_owner(socket) && (!g.started() || g.nplayers() == 0))) {
+			// Remove the player in delete_game() with all other remaining
+			// ones so he gets the updated gamelist.
+			delete_game(game_iter);
+		} else {
+			g.remove_player(socket);
+			room_list_.enter_lobby(socket);
+			g.describe_slots();
+
+			// Send all other players in the lobby the update to the gamelist.
+			simple_wml::document diff;
+			bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"),
+							  "gamelist", "game", g.description(), diff);
+			bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
+							  "user", player.config_address(), diff);
+			if (diff1 || diff2) {
+				room_list_.send_to_room("lobby", diff, socket);
+			}
+
+			// Send the player who has quit the gamelist.
+			send_to_player(socket, games_and_users_list_);
+		}
+		return;
+	// If this is data describing side changes by the host.
+	} else if (const simple_wml::node* diff = data.child("scenario_diff")) {
+		if (!g.is_owner(socket)) return;
+		g.level().root().apply_diff(*diff);
+		const simple_wml::node* cfg_change = diff->child("change_child");
+		if (cfg_change
+			/**&& cfg_change->child("side") it is very likeley that
+			the diff changes a side so this check isn't that important.
+			Note that [side] is not at toplevel but inside
+			[scenario] or [snapshot] **/) {
+			g.update_side_data();
+		}
+		if (g.describe_slots()) {
+			update_game_in_lobby(g);
+		}
+		g.send_data(data, socket);
+		return;
+	// If a player changes his faction.
+	} else if (data.child("change_faction")) {
+		g.send_data(data, socket);
+		return;
+	// If the owner of a side is changing the controller.
+	} else if (const simple_wml::node *change = data.child("change_controller")) {
+		g.transfer_side_control(socket, *change);
+		if (g.describe_slots()) {
+			update_game_in_lobby(g);
+		}
+		return;
+	// If all observers should be muted. (toggles)
+	} else if (data.child("muteall")) {
+		if (!g.is_owner(socket)) {
+			g.send_server_message("You cannot mute: not the game host.", socket);
+			return;
+		}
+		g.mute_all_observers();
+		return;
+	// If an observer should be muted.
+	} else if (const simple_wml::node* mute = data.child("mute")) {
+		g.mute_observer(*mute, socket);
+		return;
+	// If an observer should be unmuted.
+	} else if (const simple_wml::node* unmute = data.child("unmute")) {
+		g.unmute_observer(*unmute, socket);
+		return;
+	// The owner is kicking/banning someone from the game.
+	} else if (data.child("kick") || data.child("ban")) {
+		bool ban = (data.child("ban") != NULL);
+		const socket_ptr user =
+				(ban ? g.ban_user(*data.child("ban"), socket)
+				: g.kick_member(*data.child("kick"), socket));
+		if (user) {
+			room_list_.enter_lobby(user);
+			if (g.describe_slots()) {
+				update_game_in_lobby(g, user);
+			}
+			// Send all other players in the lobby the update to the gamelist.
+			simple_wml::document diff;
+			make_change_diff(*games_and_users_list_.child("gamelist"),
+							  "gamelist", "game", g.description(), diff);
+			make_change_diff(games_and_users_list_.root(), NULL, "user",
+					player_connections_.left.info_at(user).config_address(), diff);
+			room_list_.send_to_room("lobby", diff, socket);
+			// Send the removed user the lobby game list.
+			send_to_player(user, games_and_users_list_);
+		}
+		return;
+	} else if (const simple_wml::node* unban = data.child("unban")) {
+		g.unban_user(*unban, socket);
+		return;
+	// If info is being provided about the game state.
+	} else if (const simple_wml::node* info = data.child("info")) {
+		if (!g.is_player(socket)) return;
+		if ((*info)["type"] == "termination") {
+			g.set_termination_reason((*info)["condition"].to_string());
+			if ((*info)["condition"].to_string() == "out of sync") {
+				g.send_server_message_to_all(player.name() + " reports out of sync errors.");
+			}
+		}
+		return;
+	} else if (data.child("turn")) {
+		// Notify the game of the commands, and if it changes
+		// the description, then sync the new description
+		// to players in the lobby.
+		if (g.process_turn(data, socket)) {
+			update_game_in_lobby(g);
+		}
+		return;
+	} else if (data.child("whiteboard")) {
+		g.process_whiteboard(data,socket);
+		return;
+	} else if (data.child("change_controller_wml")) {
+		g.process_change_controller_wml(data,socket);
+		return;
+	} else if (data.child("change_turns_wml")) {
+		g.process_change_turns_wml(data,socket);
+		update_game_in_lobby(g);
+		return;
+	} else if (data.child("require_random")) {
+		g.require_random(data,socket);
+		return;
+	} else if (simple_wml::node* sch = data.child("request_choice")) {
+		g.handle_choice(*sch, socket);
+		return;
+	} else if (data.child("message")) {
+		g.process_message(data, socket);
+		return;
+	} else if (data.child("stop_updates")) {
+		g.send_data(data, socket);
+		return;
+	// Data to ignore.
+	} else if (data.child("error")
+	|| data.child("side_secured")
+	|| data.root().has_attr("failed")
+	|| data.root().has_attr("side_drop")
+	|| data.root().has_attr("side")) {
+		return;
+	}
+
+	WRN_SERVER << client_address(socket) << "\tReceived unknown data from: "
+		<< player.name() << " (socket:" << socket << ") in game: \""
+		<< g.name() << "\" (" << g.id() << ")\n" << data.output();
 }
 
 typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;
@@ -3604,6 +3946,7 @@ void server::process_data_game(const network::connection sock,
 		<< g.name() << "\" (" << g.id() << ")\n" << data.output();
 }
 
+*/
 void server::delete_game(t_games::iterator game_it) {
 	metrics_.game_terminated(game_it->termination_reason());
 
@@ -3614,7 +3957,7 @@ void server::delete_game(t_games::iterator game_it) {
 	simple_wml::document diff;
 	if(make_delete_diff(*gamelist, "gamelist", "game",
 	                    game_it->description(), diff)) {
-		rooms_.lobby().send_data(diff);
+		room_list_.send_to_room("lobby", diff);
 	}
 
 	// Delete the game from the games_and_users_list_.
@@ -3635,13 +3978,13 @@ void server::delete_game(t_games::iterator game_it) {
 	for (wesnothd::user_vector::const_iterator user = users.begin();
 		user != users.end(); ++user)
 	{
-		const wesnothd::player_map::iterator pl = players_.find(*user);
-		if (pl != players_.end()) {
-			pl->second.mark_available();
+		PlayerMap::left_iterator pl = player_connections_.left.find(*user);
+		if (pl != player_connections_.left.end()) {
+			pl->info.mark_available();
 			simple_wml::document udiff;
 			if (make_change_diff(games_and_users_list_.root(), NULL,
-					     "user", pl->second.config_address(), udiff)) {
-				rooms_.lobby().send_data(udiff);
+						 "user", pl->info.config_address(), udiff)) {
+				room_list_.send_to_room("lobbly", udiff);
 			}
 		} else {
 			ERR_SERVER << "ERROR: delete_game(): Could not find user in players_. (socket: "
@@ -3653,20 +3996,18 @@ void server::delete_game(t_games::iterator game_it) {
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	game_it->send_data(leave_game_doc);
 	// Put the remaining users back in the lobby.
-	rooms_.enter_lobby(*game_it);
+	room_list_.enter_lobby(*game_it);
 
 	game_it->send_data(games_and_users_list_);
 
 	games_.erase(game_it);
 }
 
-*/
-
-void server::update_game_in_lobby(const wesnothd::game& g, network::connection exclude)
+void server::update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude)
 {
 	simple_wml::document diff;
 	if (make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g.description(), diff)) {
-		rooms_.lobby().send_data(diff, exclude);
+		room_list_.send_to_room("lobby", diff, exclude);
 	}
 }
 

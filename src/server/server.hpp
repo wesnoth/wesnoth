@@ -81,6 +81,7 @@ private:
 	void read_from_player(socket_ptr socket);
 	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void handle_player_in_lobby(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
 	void handle_message(socket_ptr socket, simple_wml::node& message);
@@ -222,7 +223,7 @@ private:
 	                       simple_wml::document& data);
 	void delete_game(t_games::iterator game_it);
 
-	void update_game_in_lobby(const wesnothd::game& g, network::connection exclude=0);
+	void update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude=socket_ptr());
 
 	void start_new_server();
 
