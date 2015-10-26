@@ -19,6 +19,8 @@ Version 1.13.1+dev:
    * Add Recent Files menu with a list of recently saved or loaded maps or
      scenarios, up to a custom limit (by default 10) that can be set in
      Advanced Preferences.
+   * Fixed Player Start labels not being updated with repeat map generations
+     (bug #20036)
  * Graphics:
    * New animated water.
    * New standing animation for the Dwarvish Runesmith
@@ -28,6 +30,7 @@ Version 1.13.1+dev:
      Japanese, Latvian
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
+   * Spelling and grammar review across all official campaigns.
  * Lua API:
    * It is now possible to implement custom [effect]s with wesnoth.effects
    * Changed interface for the wesnoth.synchronize_choice function
@@ -186,6 +189,9 @@ Version 1.13.1+dev:
    * Fixed bug 23060: unit stat tooltips do not show.
    * wmllint, wmlscope, wmlindent and wmllint-1.4 now run on Python 3
    * Text boxes tab completion now lists whisperer nicks for easier answer
+   * Fixed Cancel Orders not working when loading MP game (bug #22133)
+   * Fixed broken Oasis terrain help entry (bug #23023)
+   * Fixed load game hot-key not working in the main menu (bug #23215)
 
 Version 1.13.1:
  * Security fixes:
