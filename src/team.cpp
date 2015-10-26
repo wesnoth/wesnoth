@@ -122,8 +122,8 @@ void team::team_info::read(const config &cfg)
 	name = cfg["name"].str();
 	gold = cfg["gold"];
 	income = cfg["income"];
-	team_id = cfg["team_name"].empty() ? cfg["team_id"].str() : cfg["team_name"];
-	team_name = cfg["user_team_name"].empty() ? cfg["team_name"] : cfg["user_team_name"];
+	team_id = cfg["user_team_name"].blank() ? cfg["team_id"].str() : cfg["team_name"];
+	team_name = cfg["user_team_name"].blank() ? cfg["team_name"] : cfg["user_team_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
