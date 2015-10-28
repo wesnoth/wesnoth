@@ -347,28 +347,28 @@ if env["prereqs"]:
     if env['sdl2']:
         def have_sdl_net():
             return \
-                conf.CheckSDL(require_version = '2.0.0') & \
-                conf.CheckSDL("SDL2_net", header_file = "SDL_net")
+                conf.CheckSDL(require_version = '2.0.0')
 
         def have_sdl_other():
             return \
                 conf.CheckSDL(require_version = '2.0.0') & \
                 conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
                 conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
-                conf.CheckSDL("SDL2_image", header_file = "SDL_image")
+                conf.CheckSDL("SDL2_image", header_file = "SDL_image") & \
+                conf.CheckSDL("SDL2_net", header_file = "SDL_net")
 
     else:
         def have_sdl_net():
             return \
-                conf.CheckSDL(require_version = '1.2.10') & \
-                conf.CheckSDL('SDL_net')
+                conf.CheckSDL(require_version = '1.2.10')
 
         def have_sdl_other():
             return \
                 conf.CheckSDL(require_version = '1.2.10') & \
                 conf.CheckSDL("SDL_ttf", require_version = "2.0.8") & \
                 conf.CheckSDL("SDL_mixer", require_version = '1.2.12') & \
-                conf.CheckSDL("SDL_image", require_version = '1.2.0')
+                conf.CheckSDL("SDL_image", require_version = '1.2.0') & \
+                conf.CheckSDL('SDL_net')
 
     if env["libintl"]:
         def have_i18n_prereqs():

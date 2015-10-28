@@ -16,7 +16,6 @@
 #ifndef SERVER_PLAYER_NETWORK_HPP_INCLUDED
 #define SERVER_PLAYER_NETWORK_HPP_INCLUDED
 
-#include "../network.hpp"
 #include "player.hpp"
 #include "simple_wml.hpp"
 
@@ -33,71 +32,6 @@ namespace chat_message {
 	void truncate_message(const simple_wml::string_span& str,
 		simple_wml::node& message);
 } // end chat_message namespace
-
-typedef std::map<network::connection,player> player_map;
-typedef std::vector<network::connection> connection_vector;
-
-/**
- * Send a wml document to a single player
- * @param data        the document to send
- * @param sock        the socket id to send to
- * @param packet_type the packet type, if empty the root node name is used
- */
-bool send_to_one(simple_wml::document& data,
-				 const network::connection sock,
-				 std::string packet_type = "");
-
-/**
- * Send a wml document to a vector of players. More efficient than calling
- * send_to_one many times.
- * @param data        the document to send
- * @param vec         the vector of player socket ids to send to
- * @param exclude     if nonzero, do not send to this player
- * @param packet_type the packet type, if empty the root node name is used
- */
-void send_to_many(simple_wml::document& data,
-				  const connection_vector& vec,
-				  const network::connection exclude = 0,
-				  std::string packet_type = "");
-/**
- * A more powerful version of send_to_many, allowing the use of a predicate
- * connection->bool. The document will be sent only to those sockets for which
- * the predicate evaluates to false.
- * @param data        the document to send
- * @param vec         the vector of player socket ids to send to
- * @param pred        the predicate
- * @param exclude     if nonzero, do not send to this player
- * @param packet_type the packet type, if empty the root node name is used
- */
-/*
-void send_to_many(simple_wml::document& data,
-				  const connection_vector& vec,
-				  boost::function<bool (network::connection)> pred,
-				  const network::connection exclude = 0,
-				  std::string packet_type = "");
-*/
-
-template<typename TFilter>
-void send_to_many(simple_wml::document& data,
-				  const connection_vector& vec,
-				  const TFilter& pred,
-				  const network::connection exclude = 0,
-				  std::string packet_type = "")
-{
-	if (packet_type.empty()) {
-		packet_type = data.root().first_child().to_string();
-	}
-	try {
-		simple_wml::string_span s = data.output_compressed();
-		for(connection_vector::const_iterator i = vec.begin(); i != vec.end(); ++i) {
-			if ((*i != exclude) && pred(*i)) {
-				network::send_raw_data(s.begin(), s.size(), *i, packet_type);
-			}
-		}
-	} catch (simple_wml::error& e) {
-		LOG_STREAM(warn, log_config_pn) << __func__ << ": simple_wml error: " << e.message << std::endl;
-	}
-}
 
 } //end namespace wesnothd
 

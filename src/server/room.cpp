@@ -29,7 +29,6 @@ namespace wesnothd {
 
 room::room(const std::string& name)
 	: name_(name)
-	, members_()
 	, persistent_(false)
 	, topic_()
 	, logged_(false)
@@ -38,7 +37,6 @@ room::room(const std::string& name)
 
 room::room(const config& wml)
 	: name_(wml["name"])
-	, members_()
 	, persistent_(wml["persistent"].to_bool())
 	, topic_(wml["topic"])
 	, logged_(wml["logged"].to_bool())
@@ -88,7 +86,7 @@ void room::set_logged(bool v)
 	logged_ = v;
 }
 
-bool room::add_player(network::connection player)
+/*bool room::add_player(network::connection player)
 {
 	if (is_member(player)) {
 		ERR_ROOM << "ERROR: Player is already in this room. (socket: "
@@ -97,7 +95,7 @@ bool room::add_player(network::connection player)
 	}
 	members_.push_back(player);
 	return true;
-}
+}*/
 
 /*
 void room::remove_player(network::connection player)
@@ -113,7 +111,7 @@ void room::remove_player(network::connection player)
 }
 */
 
-void room::send_data(simple_wml::document& data,
+/*void room::send_data(simple_wml::document& data,
 					 const network::connection exclude,
 					 std::string packet_type) const
 {
@@ -144,11 +142,12 @@ void room::send_server_message(const char* message, network::connection sock,
 		send_to_one(doc, sock, "message");
 	}
 }
+*/
 
-void room::process_message(simple_wml::document& /*data*/,
-						   const player_map::iterator /*user*/)
-{
-}
+//void room::process_message(simple_wml::document& /*data*/,
+//						   const player_map::iterator /*user*/)
+//{
+//}
 
 
 

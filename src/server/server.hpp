@@ -19,10 +19,8 @@
 #include "user_handler.hpp"
 #include "input_stream.hpp"
 #include "metrics.hpp"
-#include "../network.hpp"
 #include "ban.hpp"
 #include "player.hpp"
-#include "room_manager.hpp"
 #include "simple_wml.hpp"
 #include "player_connection.hpp"
 #include "rooms.hpp"
@@ -38,24 +36,6 @@ public:
 	server(int port, bool keep_alive, const std::string& config_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
-	void send_error(network::connection sock, const char* msg, const char* error_code ="") const;
-	void send_error(network::connection sock, const std::string &msg, const char* error_code = "") const
-	{
-		send_error(sock, msg.c_str(), error_code);
-	}
-
-	void send_warning(network::connection sock, const char* msg, const char* warning_code ="") const;
-	void send_warning(network::connection sock, const std::string &msg, const char* warning_code = "") const
-	{
-		send_warning(sock, msg.c_str(), warning_code);
-	}
-
-	// The same as send_error(), we just add an extra child to the response
-	// telling the client the chosen username requires a password.
-	void send_password_request(network::connection sock, const std::string& msg,
-			const std::string& user, const char* error_code ="",
-			bool force_confirmation = false);
-
 	boost::asio::io_service io_service_;
 	boost::asio::ip::tcp::acceptor acceptor_;
 	void serve();
@@ -92,8 +72,6 @@ private:
 	void handle_join_game(socket_ptr socket, simple_wml::node& join);
 	void remove_player(socket_ptr socket);
 
-	const network::manager net_manager_;
-	network::server_manager server_;
 	wesnothd::ban_manager ban_manager_;
 
 	struct connection_log {
@@ -128,19 +106,18 @@ private:
 	std::deque<login_log> failed_logins_;
 
 	boost::scoped_ptr<user_handler> user_handler_;
-	std::map<network::connection,std::string> seeds_;
+	std::map<long int,std::string> seeds_;
 
 	/** std::map<network::connection,player>. */
-	wesnothd::player_map players_;
-	std::set<network::connection> ghost_players_;
+	//wesnothd::player_map players_;
+	//std::set<network::connection> ghost_players_;
 
 	PlayerMap player_connections_;
 
 	typedef boost::ptr_vector<wesnothd::game> t_games;
 	t_games games_;
-	std::set<network::connection> not_logged_in_;
+	//std::set<network::connection> not_logged_in_;
 
-	wesnothd::room_manager rooms_;
 	RoomList room_list_;
 
 	/** server socket/fifo. */
@@ -159,7 +136,7 @@ private:
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
 	std::string admin_passwd_;
-	std::set<network::connection> admins_;
+	//std::set<network::connection> admins_;
 	std::string motd_;
 	size_t default_max_messages_;
 	size_t default_time_period_;
@@ -199,28 +176,9 @@ private:
 	time_t last_uh_clean_;
 	void clean_user_handler(const time_t& now);
 
-	void process_data(const network::connection sock,
-	                  simple_wml::document& data);
-	void process_login(const network::connection sock,
-	                   simple_wml::document& data);
-
-	/** Handle queries from clients. */
-	void process_query(const network::connection sock,
-	                   simple_wml::node& query);
-
 	/** Process commands from admins and users. */
 	std::string process_command(std::string cmd, std::string issuer_name);
 
-	/** Handle private messages between players. */
-	void process_whisper(const network::connection sock,
-	                     simple_wml::node& whisper) const;
-
-	/** Handle nickname registration related requests from clients. */
-	void process_nickserv(const network::connection sock, simple_wml::node& data);
-	void process_data_lobby(const network::connection sock,
-	                        simple_wml::document& data);
-	void process_data_game(const network::connection sock,
-	                       simple_wml::document& data);
 	void delete_game(t_games::iterator game_it);
 
 	void update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude=socket_ptr());

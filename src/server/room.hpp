@@ -15,14 +15,11 @@
 #ifndef SERVER_ROOM_HPP_INCLUDED
 #define SERVER_ROOM_HPP_INCLUDED
 
-#include "../network.hpp"
 #include "player.hpp"
 #include "simple_wml.hpp"
 
 namespace wesnothd {
 
-typedef std::vector<network::connection> connection_vector;
-typedef std::map<network::connection,player> player_map;
 class game;
 
 /**
@@ -84,37 +81,37 @@ public:
 	/**
 	 * Return the number of players in this room
 	 */
-	size_t size() const {
-		return members_.size();
-	}
+	//size_t size() const {
+	//	return members_.size();
+	//}
 
 	/**
 	 * Return true iif the room is empty
 	 */
-	bool empty() const {
-		return members_.empty();
-	}
+	//bool empty() const {
+	//	return members_.empty();
+	//}
 
 	/**
 	 * Return the members of this room
 	 */
-	const std::vector<network::connection>& members() const {
-		return members_;
-	}
+	//const std::vector<network::connection>& members() const {
+	//	return members_;
+	//}
 
 	/**
 	 * Membership checker.
 	 * @return true iif player is a member of this room
 	 */
-	bool is_member(network::connection player) const {
-		return std::find(members_.begin(), members_.end(), player) != members_.end();
-	}
+	//bool is_member(network::connection player) const {
+	//	return std::find(members_.begin(), members_.end(), player) != members_.end();
+	//}
 
 	/**
 	 * Joining the room
 	 * @return true if the player was successfully added
 	 */
-	bool add_player(network::connection player);
+	//bool add_player(network::connection player);
 
 	/**
 	 * Leaving the room
@@ -124,7 +121,7 @@ public:
 	/**
 	 * Chat message processing
 	 */
-	void process_message(simple_wml::document& data, const player_map::iterator user);
+	//void process_message(simple_wml::document& data, const player_map::iterator user);
 
 	/**
 	 * Convenience function for sending a wml document to all (or all except
@@ -134,18 +131,18 @@ public:
 	 * @param exclude     if nonzero, do not send to this player
 	 * @param packet_type the packet type, if empty the root node name is used
 	 */
-	void send_data(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
+	//void send_data(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
 
 	/**
 	 * Send a text message to all members
 	 * @param message the message text
 	 * @param exclude if nonzero, do not send to this player
 	 */
-	void send_server_message_to_all(const char* message, network::connection exclude=0) const;
-	void send_server_message_to_all(const std::string& message, network::connection exclude=0) const
-	{
-		send_server_message_to_all(message.c_str(), exclude);
-	}
+	//void send_server_message_to_all(const char* message, network::connection exclude=0) const;
+	//void send_server_message_to_all(const std::string& message, network::connection exclude=0) const
+	//{
+	//	send_server_message_to_all(message.c_str(), exclude);
+	//}
 
 	/**
 	 * Prepare a text message and/or send it to a player. If a nonzero sock
@@ -156,19 +153,19 @@ public:
 	 * @param sock    the socket to send the message to, if nonzero
 	 * @param docptr  the wml document to store the message in, if nonnull
 	 */
-	void send_server_message(const char* message, network::connection sock,
-		simple_wml::document* docptr = NULL) const;
+	//void send_server_message(const char* message, network::connection sock,
+	//	simple_wml::document* docptr = NULL) const;
 
-	void send_server_message(const std::string& message, network::connection sock,
-		simple_wml::document* docptr = NULL) const
-	{
-		send_server_message(message.c_str(), sock, docptr);
-	}
+	//void send_server_message(const std::string& message, network::connection sock,
+	//	simple_wml::document* docptr = NULL) const
+	//{
+	//	send_server_message(message.c_str(), sock, docptr);
+	//}
 
 
 private:
 	std::string name_;
-	connection_vector members_;
+	//connection_vector members_;
 	bool persistent_;
 	std::string topic_;
 	bool logged_;
