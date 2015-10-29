@@ -14,6 +14,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action.hpp"
+#include "editor/editor_preferences.hpp"
 #include "map_context.hpp"
 
 #include "config_assign.hpp"
@@ -147,6 +148,8 @@ map_context::map_context(const config& game_config, const std::string& filename,
 			boost::regex_constants::match_not_dot_null)) {
 		map_ = editor_map::from_string(game_config, file_string); //throws on error
 		pure_map_ = true;
+
+		add_to_recent_files();
 		return;
 	}
 
@@ -166,14 +169,15 @@ map_context::map_context(const config& game_config, const std::string& filename,
 			} catch (config::error & e) {
 				throw editor_map_load_exception("load_scenario", e.message); //we already caught and rethrew this exception in load_scenario
 			}
-			return;
 		} else {
 			LOG_ED << "Loading embedded map file" << std::endl;
 			embedded_ = true;
 			pure_map_ = true;
 			map_ = editor_map::from_string(game_config, map_data);
-			return;
 		}
+
+		add_to_recent_files();
+		return;
 	}
 
 	// 3.0 Macro referenced pure map
@@ -192,11 +196,13 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	file_string = filesystem::read_file(filename_);
 	map_ = editor_map::from_string(game_config, file_string);
 	pure_map_ = true;
+
+	add_to_recent_files();
 }
 
 void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
 		int gold, int income, int village_gold, int village_support,
-		bool fog, bool share_view, bool shroud, bool share_maps,
+		bool fog, bool shroud, team::SHARE_VISION share_vision,
 		team::CONTROLLER controller, bool hidden, bool no_leader)
 {
 	assert(teams_.size() > static_cast<unsigned int>(side));
@@ -211,11 +217,7 @@ void map_context::set_side_setup(int side, const std::string& team_name, const s
 	t.set_hidden(hidden);
 	t.set_fog(fog);
 	t.set_shroud(shroud);
-	//TODO: USE team::SHARE_VISION in editor too.
-	t.handle_legacy_share_vision(config_of
-		("share_maps", share_maps)
-		("share_view", share_view)
-	);
+	t.set_share_vision(share_vision);
 	t.set_village_gold(village_gold);
 	t.set_village_support(village_support);
 	actions_since_save_++;
@@ -474,9 +476,8 @@ config map_context::to_config()
 		// side["allow_player"] = "yes";
 
 		side["fog"] = t->uses_fog();
-		side["share_view"] = t->share_view();
 		side["shroud"] = t->uses_shroud();
-		side["share_maps"] = t->share_maps();
+		side["share_vision"] = t->share_vision();
 
 		side["gold"] = t->gold();
 		side["income"] = t->base_income();
@@ -555,6 +556,7 @@ bool map_context::save_map()
 				throw editor_map_save_exception(_("Could not save into scenario"));
 			}
 		}
+		add_to_recent_files();
 		clear_modified();
 	} catch (filesystem::io_exception& e) {
 		utils::string_map symbols;
@@ -618,6 +620,11 @@ bool map_context::modified() const
 void map_context::clear_modified()
 {
 	actions_since_save_ = 0;
+}
+
+void map_context::add_to_recent_files()
+{
+	preferences::editor::add_recent_files_entry(get_filename());
 }
 
 bool map_context::can_undo() const

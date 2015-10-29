@@ -64,6 +64,12 @@ private:
 	void display_savegame(twindow& window);
 	void evaluate_summary_string(std::stringstream& str,
 								 const config& cfg_summary);
+
+	bool compare_name(unsigned i1, unsigned i2) const;
+	bool compare_date(unsigned i1, unsigned i2) const;
+	bool compare_name_rev(unsigned i1, unsigned i2) const;
+	bool compare_date_rev(unsigned i1, unsigned i2) const;
+
 	void fill_game_list(twindow& window,
 						std::vector<savegame::save_info>& games);
 

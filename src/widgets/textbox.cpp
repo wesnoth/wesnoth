@@ -585,7 +585,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	}
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-	ucs4::char_t character = key.scancode;
+	ucs4::char_t character = key.sym;
 #else
 	ucs4::char_t character = key.unicode;
 #endif

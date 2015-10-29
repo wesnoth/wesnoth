@@ -44,6 +44,9 @@
 #include "statistics.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "util.hpp"
+#include "variable_info.hpp"
+#include "formula_string_utils.hpp"
+#include "config.hpp" //Also for variable_set
 
 #include <boost/assign/list_of.hpp>
 #include <boost/range/adaptors.hpp>
@@ -205,26 +208,53 @@ void saved_game::expand_scenario()
 		}
 	}
 }
-
-//helper objects for saved_game::expand_mp_events()
-struct modevents_entry
+namespace
 {
-	modevents_entry(const std::string& _type, const std::string& _id) : type(_type), id(_id) {}
-	std::string type;
-	std::string id;
-};
-struct modevents_entry_for
-{
-	//this typedef is used by boost.
-    typedef modevents_entry result_type;
-	modevents_entry_for(const std::string& type ) : type_(type) {}
-	modevents_entry operator()(const std::string& id) const
+	struct config_variable_set : public variable_set
 	{
-		return modevents_entry(type_, id);
+		const config& cfg_;
+		config_variable_set(const config& cfg) : cfg_(cfg) {}
+		virtual config::attribute_value get_variable_const(const std::string &id) const
+		{
+			try
+			{
+				variable_access_const variable(id, cfg_);
+				return variable.as_scalar();
+			}
+			catch(const invalid_variablename_exception&)
+			{
+				ERR_NG << "invalid variablename " << id << "\n";
+				return config::attribute_value();
+			}
+		};
+	};
+
+	bool variable_to_bool(const config& vars, const std::string& expression)
+	{
+		std::string res = utils::interpolate_variables_into_string(expression, config_variable_set(vars));
+		return res == "true" || res == "yes" || res == "1";
 	}
-private:
-	std::string type_;
-};
+
+	//helper objects for saved_game::expand_mp_events()
+	struct modevents_entry
+	{
+		modevents_entry(const std::string& _type, const std::string& _id) : type(_type), id(_id) {}
+		std::string type;
+		std::string id;
+	};
+	struct modevents_entry_for
+	{
+		//this typedef is used by boost.
+		typedef modevents_entry result_type;
+		modevents_entry_for(const std::string& type ) : type_(type) {}
+		modevents_entry operator()(const std::string& id) const
+		{
+			return modevents_entry(type_, id);
+		}
+	private:
+		std::string type_;
+	};
+}
 
 // Gets the ids of the mp_era and modifications which were set to be active, then fetches these configs from the game_config and copies their [event] and [lua] to the starting_pos_.
 // At this time, also collect the addon_id attributes which appeared in them and put this list in the addon_ids attribute of the mp_settings.
@@ -240,6 +270,8 @@ void saved_game::expand_mp_events()
 			, std::back_inserter(mods) );
 		if(mp_settings_.mp_era != "") //We don't want the error message below if there is no era (= if this is a sp game)
 		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
+		if(classification_.campaign != "")
+		{ mods.push_back(modevents_entry("campaign", classification_.campaign)); }
 
 		BOOST_FOREACH(modevents_entry& mod, mods)
 		{
@@ -256,7 +288,10 @@ void saved_game::expand_mp_events()
 				// Copy events
 				BOOST_FOREACH(const config& modevent, cfg.child_range("event"))
 				{
-					this->starting_pos_.add_child("event", modevent);
+					if(modevent["enable_if"].empty() || variable_to_bool(carryover_.child_or_empty("variables"), modevent["enable_if"]))
+					{
+						this->starting_pos_.add_child("event", modevent);
+					}
 				}
 				// Copy lua
 				BOOST_FOREACH(const config& modlua, cfg.child_range("lua"))
@@ -329,10 +364,12 @@ void saved_game::expand_random_scenario()
 			update_label();
 			set_defaults();
 		}
-		//it looks like we support a map= where map=filename equals more or less map_data={filename}
-		if(starting_pos_["map_data"].empty() && !starting_pos_["map"].empty()) {
-			starting_pos_["map_data"] = filesystem::read_map(starting_pos_["map"]);
+
+		// If no map_data is provided, try to load the specified file directly
+		if(starting_pos_["map_data"].empty() && !starting_pos_["map_file"].empty()) {
+			starting_pos_["map_data"] = filesystem::read_map(starting_pos_["map_file"]);
 		}
+
 		// If the map should be randomly generated
 		// We don’t want that we accidentally to this twice so we check for starting_pos_["map_data"].empty()
 		if(starting_pos_["map_data"].empty() && !starting_pos_["map_generation"].empty()) {

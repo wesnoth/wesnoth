@@ -24,6 +24,8 @@
 #include "mouse_handler_base.hpp"
 #include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
+
 class config;
 
 //only static methods.
@@ -132,6 +134,7 @@ public:
 	class server_choice
 	{
 	public:
+		virtual ~server_choice(){};
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const = 0;
 		/// the request which is sended to the mp server.
@@ -143,6 +146,14 @@ public:
 		if we are in a mp game, ask the server, otherwise generate the answer ourselves.
 	*/
 	static config ask_server_choice(const server_choice&);
+
+	typedef boost::ptr_vector<config> tconfig_vector;
+	static tconfig_vector& get_undo_commands() { return undo_commands_; }
+	static tconfig_vector& get_redo_commands() { return redo_commands_; }
+	static void add_undo_commands(const config& commands);
+	static void add_redo_commands(const config& commands);
+	static void reset_undo_commands() { undo_commands_ = tconfig_vector(); }
+	static void reset_redo_commands() { redo_commands_ = tconfig_vector(); }
 private:
 	/*
 		weather we are in a synced move, in a user_choice, or none of them
@@ -153,12 +164,22 @@ private:
 		It's impossible to undo data that has been sended over the network.
 
 		false = we are on a local turn and haven't sended anything yet.
+
+		TODO: it would be better if the following variable were not static.
 	*/
 	static bool is_simultaneously_;
 	/**
 		Used to restore the unit id manager when undoing.
 	*/
 	static int last_unit_id_;
+	/**
+		Actions wml to be executed when the current actio is undone.
+	*/
+	static tconfig_vector undo_commands_;
+	/**
+		Actions wml to be executed when the current actio is redone.
+	*/
+	static tconfig_vector redo_commands_;
 };
 
 
@@ -205,7 +226,6 @@ public:
 	leave_synced_context();
 	~leave_synced_context();
 private:
-	random_new::rng new_rng_;
 	random_new::rng* old_rng_;
 };
 

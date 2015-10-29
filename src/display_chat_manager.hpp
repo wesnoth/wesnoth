@@ -32,6 +32,9 @@ public:
 	void add_observer(const std::string& name) { observers_.insert(name); }
 	void remove_observer(const std::string& name) { observers_.erase(name); }
 	const std::set<std::string>& observers() const { return observers_; }
+	
+	void add_whisperer(const std::string& nick) { whisperers_.insert(nick); }
+	const std::set<std::string>& whisperers() const { return whisperers_; }
 
 	void add_chat_message(const time_t& time, const std::string& speaker,
 		int side, const std::string& msg, events::chat_handler::MESSAGE_TYPE type, bool bell);
@@ -40,6 +43,7 @@ public:
 	friend class game_display; //needed because it calls prune_chat_message
 private:
 	std::set<std::string> observers_;
+	std::set<std::string> whisperers_; //nicks who whisper you for tab-completition purpose
 
 	struct chat_message
 	{

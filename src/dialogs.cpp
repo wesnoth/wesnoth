@@ -753,16 +753,18 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
+	assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
+
 	std::string map_data = summary["map_data"];
 	if(map_data.empty()) {
 		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
 		if (scenario && !scenario.find_child("side", "shroud", "yes")) {
 			map_data = scenario["map_data"].str();
-			if (map_data.empty() && scenario.has_attribute("map")) {
+			if (map_data.empty() && scenario.has_attribute("map_file")) {
 				try {
-					map_data = filesystem::read_map(scenario["map"]);
+					map_data = filesystem::read_map(scenario["map_file"]);
 				} catch(filesystem::io_exception& e) {
-					ERR_G << "could not read map '" << scenario["map"] << "': " << e.what() << '\n';
+					ERR_G << "could not read map '" << scenario["map_file"] << "': " << e.what() << '\n';
 				}
 			}
 		}
@@ -773,8 +775,6 @@ void save_preview_pane::draw_contents()
 	if(map_data.empty() == false) {
 		LOG_DP << "When parsing save summary " << ((*info_)[index_]).name() << std::endl
 			<< "Did not find a map_data field. Looking in game config for a child [" << summary["campaign_type"] << "] with id " << summary["scenario"] << std::endl;
-
-		assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
 
 		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
 		if(itor != map_cache_.end()) {
@@ -896,114 +896,6 @@ void save_preview_pane::draw_contents()
 }
 
 } // end anon namespace
-
-std::string load_game_dialog(display& disp, const config& game_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders)
-{
-	std::vector<savegame::save_info> games;
-	{
-		cursor::setter cur(cursor::WAIT);
-		games = savegame::get_saves_list();
-	}
-
-	if(games.empty()) {
-		gui2::show_transient_message(disp.video(),
-		                 _("No Saved Games"),
-				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"));
-		return "";
-	}
-
-	const events::event_context context;
-
-	std::vector<std::string> items;
-	std::ostringstream heading;
-	heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Date");
-	items.push_back(heading.str());
-	std::vector<savegame::save_info>::const_iterator i;
-	for(i = games.begin(); i != games.end(); ++i) {
-		std::string name = i->name();
-		utf8::truncate(name, 40);	// truncate only acts if the name is longer
-
-		std::ostringstream str;
-		str << name << COLUMN_SEPARATOR << util::format_time_summary(i->modified());
-
-		items.push_back(str.str());
-	}
-
-	gamemap map_obj(boost::make_shared<terrain_type_data>(game_config), "");
-
-
-	gui::dialog lmenu(disp,
-			  _("Load Game"),
-			  "", gui::NULL_DIALOG);
-	lmenu.set_basic_behavior(gui::OK_CANCEL);
-
-	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(0).set_id_sort(1);
-	lmenu.set_menu(items, &sorter);
-
-	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, items, 1, lmenu);
-	lmenu.set_textbox(filter);
-
-	gui::dialog_button* change_difficulty_option = NULL;
-
-	if(select_difficulty != NULL) {
-		// implementation of gui::dialog::add_option, needed for storing a pointer to the option-box
-		change_difficulty_option = new gui::dialog_button(disp.video(), _("Change difficulty"), gui::button::TYPE_CHECK);
-		change_difficulty_option->set_check(false);
-
-		change_difficulty_option->set_help_string(_("Change campaign difficulty before loading"));
-		lmenu.add_button(change_difficulty_option, gui::dialog::BUTTON_CHECKBOX);
-	}
-
-	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,*filter,change_difficulty_option);
-	lmenu.add_pane(&save_preview);
-	// create an option for whether the replay should be shown or not
-	if(show_replay != NULL) {
-		lmenu.add_option(_("Show replay"), false,
-			gui::dialog::BUTTON_CHECKBOX_LEFT,
-			_("Play the embedded replay from the saved game if applicable")
-			);
-	}
-	if(cancel_orders != NULL) {
-		lmenu.add_option(_("Cancel orders"), false,
-			gui::dialog::BUTTON_CHECKBOX_LEFT,
-			_("Cancel any pending unit movements in the saved game")
-			);
-	}
-	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
-	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
-
-	delete_save save_deleter(disp,*filter,games);
-	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
-
-	lmenu.add_button(delete_button,
-		// Beware load screen glitches at low res!
-		gui::dialog::BUTTON_HELP);
-
-	int res = lmenu.show();
-
-	if(res == -1)
-		return "";
-
-	res = filter->get_index(res);
-	int option_index = 0;
-	if (select_difficulty != NULL) {
-		*select_difficulty = lmenu.option_checked(option_index++) && change_difficulty_option->enabled();
-	}
-	if(show_replay != NULL) {
-	  *show_replay = lmenu.option_checked(option_index++);
-
-		const config& summary = games[res].summary();
-		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
-			*show_replay = true;
-		}
-	}
-	if (cancel_orders != NULL) {
-		*cancel_orders = lmenu.option_checked(option_index++);
-	}
-
-	return games[res].name();
-}
 
 namespace {
 	static const int unit_preview_border = 10;
@@ -1356,8 +1248,8 @@ void unit_preview_pane::draw_contents()
 	}
 
 	// we don't remove empty lines, so all fields stay at the same place
-	const std::vector<std::string> lines = utils::split(text.str(), '\n',
-		utils::STRIP_SPACES & !utils::REMOVE_EMPTY);
+	const std::vector<std::string> lines
+			= utils::split(text.str(), '\n', utils::STRIP_SPACES);
 
 
 	int ypos = area.y;

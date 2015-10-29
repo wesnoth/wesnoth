@@ -55,8 +55,7 @@ static lg::log_domain log_network("network");
 turn_info::turn_info(replay_network_sender &replay_sender,playturn_network_adapter &network_reader) :
 	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"),
-	network_reader_(network_reader),
-	is_host_(true)
+	network_reader_(network_reader)
 {
 }
 
@@ -178,12 +177,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = side - 1;
 
+		assert(resources::gameboard);
+
 		if(index >= resources::gameboard->teams().size()) {
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 			return PROCESS_CONTINUE;
 		}
 
-		assert(resources::gameboard);
 		const team & tm = resources::gameboard->teams().at(index);
 		const std::string &player = change["player"];
 		const bool was_local = tm.is_local();
@@ -211,8 +211,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::screen->redraw_everything();
 			resources::screen->recalculate_minimap();
 		}
-
-		resources::controller->maybe_do_init_side();
 
 		resources::whiteboard->on_change_controller(side,tm);
 
@@ -307,16 +305,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_AI);
 				change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
 
-				resources::controller->maybe_do_init_side();
-
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
 				resources::controller->on_not_observer();
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_HUMAN);
 				change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
-
-				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
@@ -371,7 +365,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	//If this client becomes the new host, notify the play_controller object about it
 	else if (const config &cfg_host_transfer = cfg.child("host_transfer")){
 		if (cfg_host_transfer["value"] == "1") {
-			is_host_ = true;
 			host_transfer_.notify_observers();
 		}
 	}

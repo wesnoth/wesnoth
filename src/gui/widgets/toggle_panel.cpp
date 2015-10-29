@@ -38,6 +38,7 @@ REGISTER_WIDGET(toggle_panel)
 ttoggle_panel::ttoggle_panel()
 	: tpanel(COUNT)
 	, state_(ENABLED)
+	, state_num_(0)
 	, retval_(0)
 	, callback_state_change_(0)
 	, callback_mouse_left_double_click_()
@@ -76,6 +77,14 @@ ttoggle_panel::ttoggle_panel()
 			event::tdispatcher::back_post_child);
 }
 
+unsigned ttoggle_panel::num_states() const
+{
+	std::div_t res = std::div(this->config()->state.size(), COUNT);
+	assert(res.rem == 0);
+	assert(res.quot > 0);
+	return res.quot;
+}
+
 void ttoggle_panel::set_child_members(
 		const std::map<std::string /* widget id */, string_map>& data)
 {
@@ -112,28 +121,20 @@ const twidget* ttoggle_panel::find_at(const tpoint& coordinate,
 void ttoggle_panel::set_active(const bool active)
 {
 	if(active) {
-		if(get_value()) {
-			set_state(ENABLED_SELECTED);
-		} else {
-			set_state(ENABLED);
-		}
+		set_state(ENABLED);
 	} else {
-		if(get_value()) {
-			set_state(DISABLED_SELECTED);
-		} else {
-			set_state(DISABLED);
-		}
+		set_state(DISABLED);
 	}
 }
 
 bool ttoggle_panel::get_active() const
 {
-	return state_ != DISABLED && state_ != DISABLED_SELECTED;
+	return state_ != DISABLED;
 }
 
 unsigned ttoggle_panel::get_state() const
 {
-	return state_;
+	return state_ + COUNT * state_num_;
 }
 
 SDL_Rect ttoggle_panel::get_client_rect() const
@@ -163,17 +164,13 @@ tpoint ttoggle_panel::border_space() const
 				  conf->top_border + conf->bottom_border);
 }
 
-void ttoggle_panel::set_value(const bool selected)
+void ttoggle_panel::set_value(const unsigned selected)
 {
 	if(selected == get_value()) {
 		return;
 	}
-
-	if(selected) {
-		set_state(static_cast<tstate>(state_ + ENABLED_SELECTED));
-	} else {
-		set_state(static_cast<tstate>(state_ - ENABLED_SELECTED));
-	}
+	state_num_ = selected % num_states();
+	set_is_dirty(true);
 }
 
 void ttoggle_panel::set_retval(const int retval)
@@ -239,11 +236,7 @@ void ttoggle_panel::signal_handler_mouse_enter(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	if(get_value()) {
-		set_state(FOCUSSED_SELECTED);
-	} else {
-		set_state(FOCUSSED);
-	}
+	set_state(FOCUSSED);
 	handled = true;
 }
 
@@ -252,11 +245,7 @@ void ttoggle_panel::signal_handler_mouse_leave(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	if(get_value()) {
-		set_state(ENABLED_SELECTED);
-	} else {
-		set_state(ENABLED);
-	}
+	set_state(ENABLED);
 	handled = true;
 }
 
@@ -265,7 +254,7 @@ ttoggle_panel::signal_handler_pre_left_button_click(const event::tevent event)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
-	set_value(true);
+	set_value(1);
 
 #if 0
 	/*
@@ -295,11 +284,7 @@ void ttoggle_panel::signal_handler_left_button_click(const event::tevent event,
 
 	sound::play_UI_sound(settings::sound_toggle_panel_click);
 
-	if(get_value()) {
-		set_state(ENABLED);
-	} else {
-		set_state(ENABLED_SELECTED);
-	}
+	set_value(get_value() + 1);
 
 	if(callback_state_change_) {
 		callback_state_change_(*this);

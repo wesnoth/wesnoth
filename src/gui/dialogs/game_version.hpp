@@ -26,7 +26,11 @@
 namespace gui2
 {
 
-class tselectable_;
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+class tlist;
+#else
+class tlistbox;
+#endif
 class tstacked_widget;
 
 class tgame_version : public tdialog
@@ -63,8 +67,6 @@ private:
 
 	std::vector<game_config::optional_feature> opts_;
 
-	std::vector<tselectable_*> tabs_;
-
 	std::string report_;
 
 	void generate_plain_text_report();
@@ -75,20 +77,14 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-
 	//
 	// Widget event callbacks.
 	//
 
 	/**
-	 * Callback function called when the tab switch widgets' state changes.
-	 *
-	 * @param me            The widget whose state just changed.
-	 * @param tab_container The tab pages container widget.
+	 * Callback function called when switching tabs.
 	 */
-	void tab_switch_callback(tselectable_& me, tstacked_widget& tab_container);
+	void tab_switch_callback(twindow& window);
 
 	/**
 	 * Callback function for the dialog-wide copy-to-clipboard button.

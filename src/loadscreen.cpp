@@ -71,9 +71,9 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 	screen_(screen),
 	textarea_(),
 #ifdef SDL_GPU
-	logo_image_(image::get_texture("misc/logo.png")),
+	logo_image_(image::get_texture("misc/logo-bg.png~BLIT(misc/logo.png)")),
 #else
-	logo_surface_(image::get_image("misc/logo.png")),
+	logo_surface_(image::get_image("misc/logo-bg.png~BLIT(misc/logo.png)")),
 #endif
 	logo_drawn_(false),
 	pby_offset_(0),
@@ -205,7 +205,13 @@ void loadscreen::draw_screen(const std::string &text)
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
 	SDL_Event ev;
 	while(SDL_PollEvent(&ev)) {
+#if SDL_VERSION_ATLEAST(2,0,0)
+		if (ev.type == SDL_WINDOWEVENT &&
+				(ev.window.type == SDL_WINDOWEVENT_RESIZED ||
+						ev.window.type == SDL_WINDOWEVENT_EXPOSED))
+#else
 		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE)
+#endif
 		{
 			logo_drawn_ = false;
 		}

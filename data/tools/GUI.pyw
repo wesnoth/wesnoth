@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # By Elvish_Hunter, April 2014
@@ -10,30 +10,19 @@
 
 # threading and subprocess are needed to run wmllint without freezing the window
 # codecs is used to save files as UTF8
-# Queue (queue in Python3) is needed to exchange informations between threads
+# queue is needed to exchange informations between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 import sys,os,threading,subprocess,codecs
 
-# sys.version_info checks the interpreter version
-# this is used to have a script that can run on both Python2 and Python3
-# not that useful until the mainline tools are updated, but still...
-if sys.version_info.major >= 3:
-    import queue
-    # tkinter modules
-    from tkinter import *
-    from tkinter.messagebox import *
-    from tkinter.filedialog import *
-    # ttk must be called last
-    from tkinter.ttk import *
-else: # we are on Python 2
-    import Queue
-    # tkinter modules
-    from Tkinter import *
-    from tkMessageBox import *
-    from tkFileDialog import *
-    # ttk must be called last
-    from ttk import *
+import queue
+# tkinter modules
+from tkinter import *
+from tkinter.messagebox import *
+from tkinter.filedialog import *
+import tkinter.font as font
+# ttk must be called last
+from tkinter.ttk import *
 
 # we need to know in what series we are
 # so set it in a constant and change it for every new series
@@ -61,6 +50,11 @@ def wrap_elem(line):
 
 def run_tool(tool,queue,command):
     """Runs a maintenance tool with the desired arguments and pushes the output in the supplied queue"""
+    # set the encoding for the subprocess
+    # otherwise, with the new Unicode literals used by the wml tools,
+    # we may get UnicodeDecodeErros
+    env=os.environ
+    env['PYTHONIOENCODING']="utf8"
     if sys.platform=="win32":
         # Windows wants a string, Linux wants a list and Polly wants a cracker
         # Windows wants also strings flavoured with double quotes
@@ -72,19 +66,19 @@ def run_tool(tool,queue,command):
         si=subprocess.STARTUPINFO()
         si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
         try:
-            output=subprocess.check_output(' '.join(wrapped_line),stderr=subprocess.STDOUT,startupinfo=si)
-            queue.put_nowait(output)
+            output=subprocess.check_output(' '.join(wrapped_line),stderr=subprocess.STDOUT,startupinfo=si,env=env)
+            queue.put_nowait(str(output, "utf8"))
         except subprocess.CalledProcessError as error:
             # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,error.output))
+            queue.put_nowait((tool,error.returncode,str(error.output, "utf8")))
     else: # STARTUPINFO is not available, nor needed, outside of Windows
         queue.put_nowait(' '.join(command)+"\n")
         try:
-            output=subprocess.check_output(command,stderr=subprocess.STDOUT)
-            queue.put_nowait(output)
+            output=subprocess.check_output(command,stderr=subprocess.STDOUT,env=env)
+            queue.put_nowait(str(output, "utf8"))
         except subprocess.CalledProcessError as error:
             # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,error.output))
+            queue.put_nowait((tool,error.returncode, str(error.output, "utf8")))
 
 def is_wesnoth_tools_path(path):
     """Checks if the supplied path may be a wesnoth/data/tools directory"""
@@ -131,15 +125,83 @@ def attach_select_all(widget,function):
     elif windowingsystem == "x11":
         widget.bind("<Control-KeyRelease-a>", function)
 
+class Tooltip(Toplevel):
+    def __init__(self,widget,text,tag=None):
+        """A tooltip, or balloon. Displays the specified help text when the
+mouse pointer stays on the widget for more than 500 ms."""
+        # the master attribute retrieves the window where our "parent" widget is
+        super().__init__(widget.master)
+        self.widget=widget
+        self.preshow_id=None
+        self.show_id=None
+        self.label=Label(self,
+                         text=text,
+                         background="#ffffe1", # background color used on Windows
+                         borderwidth=1,
+                         relief=SOLID,
+                         padding=1,
+                         # Tk has a bunch of predefined fonts
+                         # use the one specific for tooltips
+                         font=font.nametofont("TkTooltipFont"))
+        self.label.pack()
+        self.overrideredirect(True)
+        # allow binding the tooltips to tagged elements of a widget
+        # only Text, Canvas and Treeview support tags
+        # and as such, they have a tag_bind method
+        # if the widget doesn't support tags, bind directly to it
+        if tag and hasattr(widget, "tag_bind") and callable(widget.tag_bind):
+            self.widget.tag_bind(tag,"<Enter>",self.preshow)
+            self.widget.tag_bind(tag,"<Leave>",self.hide)
+        else:
+            self.widget.bind("<Enter>",self.preshow)
+            self.widget.bind("<Leave>",self.hide)
+        self.bind_all("<Button>",self.hide)
+        self.withdraw()
+    def preshow(self,event=None):
+        self.after_cleanup()
+        # 500 ms and 5000 ms are the default values used on Windows
+        self.preshow_id=self.after(500,self.show)
+    def show(self):
+        self.after_cleanup()
+        # check if the tooltip will end up out of the screen
+        # and handle this case if so
+        screen_width = self.winfo_screenwidth()
+        tooltip_width = self.winfo_reqwidth()
+        if tooltip_width + self.winfo_pointerx() > screen_width:
+            # unfortunately, it seems like Tkinter doesn't have a way to check the pointer's size
+            # so I'm using a value of 20px, which is enough for the usual 16px pointers
+            self.geometry("+%d+%d" % (screen_width-tooltip_width,self.winfo_pointery()+20))
+        else:
+            self.geometry("+%d+%d" % (self.winfo_pointerx(),self.winfo_pointery()+20))
+        # update_idletasks forces a geometry update
+        self.update_idletasks()
+        self.state("normal")
+        self.lift()
+        self.show_id=self.after(5000, self.hide)
+    def hide(self,event=None):
+        self.after_cleanup()
+        self.withdraw()
+    def after_cleanup(self):
+        # each event should cleanup after itself,
+        # to avoid having two .after() calls conflicting
+        # for example, one previously scheduled .after() may
+        # try to hide the tooltip before five seconds are passed
+        if self.show_id:
+            self.after_cancel(self.show_id)
+            self.show_id=None
+        if self.preshow_id:
+            self.after_cancel(self.preshow_id)
+            self.preshow_id=None
+    def set_text(self,text):
+        self.label.configure(text=text)
+        self.update_idletasks()
+
 class Popup(Toplevel):
     def __init__(self,parent,tool,thread):
         """Creates a popup that informs the user that the desired tool is running.
 Self destroys when the tool thread is over"""
         self.thread=thread
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Toplevel.__init__(self,parent)
+        super().__init__(parent)
         self.transient(parent)
         self.grab_set()
         self.protocol("WM_DELETE_WINDOW",
@@ -185,10 +247,7 @@ class ContextMenu(Menu):
     def __init__(self,x,y,widget):
         """A subclass of Menu, used to display a context menu in Text and Entry widgets
 If the widget isn't active, some options do not appear"""
-        if sys.version_info.major>=3:
-            super().__init__(None,tearoff=0) # otherwise Tk allows splitting it in a new window
-        else:
-            Menu.__init__(self,None,tearoff=0)
+        super().__init__(None,tearoff=0) # otherwise Tk allows splitting it in a new window
         self.widget=widget
         # MacOS uses a key called Command, instead of the usual Control used by Windows and Linux
         # so prepare the accelerator strings accordingly
@@ -237,10 +296,7 @@ class EntryContext(Entry):
     def __init__(self,parent,**kwargs):
         """An enhanced Entry widget that has a right-click menu
 Use like any other Entry widget"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,**kwargs)
-        else:
-            Entry.__init__(self,parent,**kwargs)
+        super().__init__(parent,**kwargs)
         attach_context_menu(self,self.on_context_menu)
         attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
@@ -253,10 +309,7 @@ class SpinboxContext(Spinbox):
     def __init__(self,parent,**kwargs):
         """An enhanced Spinbox widget that has a right-click menu
 Use like any other Spinbox widget"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,**kwargs)
-        else:
-            Spinbox.__init__(self,parent,**kwargs)
+        super().__init__(parent,**kwargs)
         attach_context_menu(self,self.on_context_menu)
         attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
@@ -269,10 +322,7 @@ class EnhancedText(Text):
     def __init__(self,*args,**kwargs):
         """A subclass of Text with a context menu
 Use it like any other Text widget"""
-        if sys.version_info.major>=3:
-            super().__init__(*args,**kwargs)
-        else:
-            Text.__init__(self,*args,**kwargs)
+        super().__init__(*args,**kwargs)
         attach_context_menu(self,self.on_context_menu)
         attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
@@ -286,10 +336,7 @@ class SelectDirectory(LabelFrame):
     def __init__(self,parent,textvariable=None,**kwargs):
         """A subclass of LabelFrame sporting a readonly Entry and a Button with a folder icon.
 It comes complete with a context menu and a directory selection screen"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,text="Directory",**kwargs)
-        else:
-            LabelFrame.__init__(self,parent,text="Directory",**kwargs)
+        super().__init__(parent,text="Directory",**kwargs)
         self.textvariable=textvariable
         self.dir_entry=EntryContext(self,
                                     width=40,
@@ -363,10 +410,7 @@ class WmllintTab(Frame):
     def __init__(self,parent):
         # it means super(WmllintTab,self), that in turn means
         # Frame.__init__(self,parent)
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
                                    text="wmllint mode")
@@ -381,38 +425,48 @@ class WmllintTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
         self.radio_clean=Radiobutton(self.mode_frame,
-                                     text="Clean\nDelete *.bak files",
+                                     text="Clean",
                                      variable=self.mode_variable,
                                      value=2)
         self.radio_clean.grid(row=2,
                               column=0,
                               sticky=W,
                               padx=10)
+        self.tooltip_clean=Tooltip(self.radio_clean,
+                                   "Delete *.bak files")
         self.radio_diff=Radiobutton(self.mode_frame,
-                                    text="Diff\nShow differences in converted files",
+                                    text="Diff",
                                     variable=self.mode_variable,
                                     value=3)
         self.radio_diff.grid(row=3,
                              column=0,
                              sticky=W,
                              padx=10)
+        self.tooltip_diff=Tooltip(self.radio_diff,
+                                  "Show differences in converted files")
         self.radio_revert=Radiobutton(self.mode_frame,
-                                      text="Revert\nRevert conversions using *.bak files",
+                                      text="Revert",
                                       variable=self.mode_variable,
                                       value=4)
         self.radio_revert.grid(row=4,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_revert=Tooltip(self.radio_revert,
+                                    "Revert conversions using *.bak files")
         self.verbosity_frame=LabelFrame(self,
                                         text="Verbosity level")
         self.verbosity_frame.grid(row=0,
@@ -436,7 +490,7 @@ class WmllintTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Name files\nbefore processing",
+                                  text="Name files before processing",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
@@ -520,10 +574,7 @@ class WmllintTab(Frame):
 
 class WmlscopeTab(Frame):
     def __init__(self,parent):
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.options_frame=LabelFrame(self,
                                       text="wmlscope options")
         self.options_frame.grid(row=0,
@@ -730,10 +781,7 @@ class WmlscopeTab(Frame):
 
 class WmlindentTab(Frame):
     def __init__(self,parent):
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
                                    text="wmlindent mode")
@@ -748,14 +796,18 @@ class WmlindentTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
         self.verbosity_frame=LabelFrame(self,
                                         text="Verbosity level")
         self.verbosity_frame.grid(row=0,
@@ -779,7 +831,7 @@ class WmlindentTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Also report\nunchanged files",
+                                  text="Report unchanged files",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
@@ -830,58 +882,48 @@ class WmlindentTab(Frame):
 class MainFrame(Frame):
     def __init__(self,parent):
         self.parent=parent
-        if sys.version_info.major>=3:
-            self.queue=queue.Queue()
-            super().__init__(parent)
-        else:
-            self.queue=Queue.Queue()
-            Frame.__init__(self,parent)
+        self.queue=queue.Queue()
+        super().__init__(parent)
         self.grid(sticky=N+E+S+W)
         self.buttonbox=Frame(self)
         self.buttonbox.grid(row=0,
                             column=0,
                             sticky=E+W)
         self.run_button=Button(self.buttonbox,
-                               text="Run wmllint",
                                image=ICONS['run'],
-                               compound=LEFT,
-                               width=15, # to avoid changing size when callback is called
                                command=self.on_run_wmllint)
         self.run_button.pack(side=LEFT,
                              padx=5,
                              pady=5)
+        self.run_tooltip=Tooltip(self.run_button,"Run wmllint")
         self.save_button=Button(self.buttonbox,
-                                text="Save as text...",
                                 image=ICONS['save'],
-                                compound=LEFT,
                                 command=self.on_save)
         self.save_button.pack(side=LEFT,
                               padx=5,
                               pady=5)
+        self.save_tooltip=Tooltip(self.save_button,"Save as text...")
         self.clear_button=Button(self.buttonbox,
-                                 text="Clear output",
                                  image=ICONS['clear'],
-                                 compound=LEFT,
                                  command=self.on_clear)
         self.clear_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.clear_tooltip=Tooltip(self.clear_button,"Clear output")
         self.about_button=Button(self.buttonbox,
-                                 text="About...",
                                  image=ICONS['about'],
-                                 compound=LEFT,
                                  command=self.on_about)
         self.about_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.about_tooltip=Tooltip(self.about_button,"About...")
         self.exit_button=Button(self.buttonbox,
-                                text="Exit",
                                 image=ICONS['exit'],
-                                compound=LEFT,
-                                command=parent.destroy)
+                                command=self.on_quit)
         self.exit_button.pack(side=RIGHT,
                               padx=5,
                               pady=5)
+        self.exit_tooltip=Tooltip(self.exit_button,"Exit")
         self.dir_variable=StringVar()
         self.dir_frame=SelectDirectory(self,
                                        textvariable=self.dir_variable)
@@ -946,20 +988,23 @@ class MainFrame(Frame):
         self.columnconfigure(0,weight=1)
         self.rowconfigure(3,weight=1)
         self.notebook.bind("<<NotebookTabChanged>>",self.tab_callback)
-        # this allows using the mouse wheel even on the disabled Text widget
-        # without the need to clic on said widget
-        self.tk_focusFollowsMouse()
+
+        parent.protocol("WM_DELETE_WINDOW",
+                        self.on_quit)
 
     def tab_callback(self,event):
         # we check the ID of the active tab and ask its position
         # the order of the tabs is pretty obvious
         active_tab=self.notebook.index(self.notebook.select())
         if active_tab==0:
-            self.run_button.configure(text="Run wmllint",command=self.on_run_wmllint)
+            self.run_tooltip.set_text("Run wmllint")
+            self.run_button.configure(command=self.on_run_wmllint)
         elif active_tab==1:
-            self.run_button.configure(text="Run wmlscope",command=self.on_run_wmlscope)
+            self.run_tooltip.set_text("Run wmlscope")
+            self.run_button.configure(command=self.on_run_wmlscope)
         elif active_tab==2:
-            self.run_button.configure(text="Run wmlindent",command=self.on_run_wmlindent)
+            self.run_tooltip.set_text("Run wmlindent")
+            self.run_button.configure(command=self.on_run_wmlindent)
 
     def on_run_wmllint(self):
         # first of all, check if we have something to run wmllint on it
@@ -1046,21 +1091,26 @@ wmllint will be run only on the Wesnoth core directory""")
         if self.wmlscope_tab.progress_variable.get():
             wmlscope_command_string.append("--progress")
         if self.wmlscope_tab.exclude_variable.get():
-            wmlscope_command_string.append('--exclude="{0}"'.format(self.wmlscope_tab.exclude_regexp.get()))
+            wmlscope_command_string.append("--exclude")
+            wmlscope_command_string.append(self.wmlscope_tab.exclude_regexp.get())
         if self.wmlscope_tab.from_variable.get():
-            wmlscope_command_string.append('--from="{0}"'.format(self.wmlscope_tab.from_regexp.get()))
+            wmlscope_command_string.append("--from")
+            wmlscope_command_string.append(self.wmlscope_tab.from_regexp.get())
         if self.wmlscope_tab.refcount_variable.get():
             try:
-                wmlscope_command_string.append("--refcount=" + str(self.wmlscope_tab.refcount_number.get()))
+                wmlscope_command_string.append("--refcount")
+                wmlscope_command_string.append(str(self.wmlscope_tab.refcount_number.get()))
             except ValueError as error:
                 # normally it should be impossible to raise this exception
                 # due to the fact that the Spinbox is read-only
                 showerror("Error","""You typed an invalid value. Value must be an integer in the range 0-999""")
                 return
         if self.wmlscope_tab.typelist_variable.get():
-            wmlscope_command_string.append('--typelist="{0}"'.format(self.wmlscope_tab.typelist_string.get()))
+            wmlscope_command_string.append("--typelist")
+            wmlscope_command_string.append(self.wmlscope_tab.typelist_string.get())
         if self.wmlscope_tab.force_variable.get():
-            wmlscope_command_string.append('--force-used="{0}"'.format(self.wmlscope_tab.force_regexp.get()))
+            wmlscope_command_string.append("--force-used")
+            wmlscope_command_string.append(self.wmlscope_tab.force_regexp.get())
         wmlscope_command_string.append(WESNOTH_CORE_DIR)
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
@@ -1099,7 +1149,8 @@ wmlscope will be run only on the Wesnoth core directory""")
         for n in range(verbosity):
             wmlindent_command_string.append("-v")
         if self.wmlindent_tab.exclude_variable.get():
-            wmlindent_command_string.append('--exclude="{0}"'.format(self.wmlindent_tab.regexp_variable.get()))
+            wmlindent_command_string.append("--exclude")
+            wmlindent_command_string.append(self.wmlindent_tab.regexp_variable.get())
         if self.wmlindent_tab.quiet_variable.get():
             wmlindent_command_string.append("--quiet")
         umc_dir=self.dir_variable.get()
@@ -1146,6 +1197,8 @@ Error code: {1}""".format(queue_item[0],queue_item[1]))
             try:
                 with codecs.open(fn,"w","utf-8") as out:
                     out.write(self.text.get(1.0,END)[:-1]) # exclude the double endline at the end
+                # the output is saved, if we close we don't lose anything
+                self.text.edit_modified(False)
             except IOError as error: # in case that we attempt to write without permissions
                 showerror("Error","""Error while writing to:
 {0}
@@ -1158,6 +1211,10 @@ Error code: {1}
         self.text.configure(state=NORMAL)
         self.text.delete(1.0,END)
         self.text.configure(state=DISABLED)
+        # the edit_modified flag is set to True every time that the content
+        # of the text widget is altered
+        # since there's nothing useful inside of it, set it to False
+        self.text.edit_modified(False)
 
     def on_about(self):
         showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014-2015
@@ -1165,6 +1222,18 @@ Error code: {1}
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
 Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
+
+    def on_quit(self):
+        # check if the text widget contains something
+        # and ask for a confirmation if so
+        if self.text.edit_modified():
+            answer = askyesno("Exit confirmation",
+                              "Do you really want to quit?",
+                              icon = WARNING)
+            if answer:
+                self.parent.destroy()
+        else:
+            self.parent.destroy()
 
 root=Tk()
 
@@ -1370,7 +1439,18 @@ R0lGODlhEAAQAKUZAAAAAIeJhIiKhYqMh4uNiIGXr4KYsLS1s7W2s7W2tKi+1qm/16rA2KvB2azC
 8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8CH5BAEKAD8ALAAAAAAQABAAAAaWwN9B
 QCwaiYjfL0AqlUik0UgkCoVAA6WApFgsGIyGWPwhaEuLgrrgWDvKWhJjXXjY7fDfdr5+QP4WeQIj
 DXQQahEXgiMODn4RERKSGIuOEJCSExMZgiJtdGoUGh5meiKPkgAUABUbpFohqBOrHB0dr3ogDwa8
-BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
+BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs='''),
+           "window_icon":PhotoImage(data=b'''
+R0lGODlhEAAQAMZqAAogQA0lRA4nQBMmQBAoQRUoQRYoQRYpQhcpQxcqQhgqQRgrRBYtQhctQh8w
+SSEwRSMxQiIyRSAyTTE9RTlCSjtDSjRFYDVFYDdFXUBFSjVGYzdGZDpJYkRKWFZKQ1dKQ1ROSlRO
+S1FQSVZQQFNSTlZST1tSQWpTRVdYVUxZcWxURmVZRVNcbWdbSndgQlhkfXVjVYVjOY5jNIxjPY9l
+NGdrcIZnPY9lPoBpSI5oO4RuPJBrP3pwWIZxQYpvT4RxT5RxRaJ2KJ55SYt9apx8UYSCgaSAUpmC
+Y62BNaCCVpmEbaGEWYmJiKOResqQL56XfaKWgc2XOKSfm6yghdidIqyoj92lK6yurq6vsN6xW7m5
+turIeO7MeevMhu3Nfe7SjevWn+zZq+3aou7aofjdj/bfmfLgo/zim/fkmfzurP//////////////
+/////////////////////////////////////////////////////////////////////////yH5
+BAEKAH8ALAAAAAAQABAAAAeOgH+Cg4SFgx+GhB6EIVqDQzCDWiCEVypHNSkcDggZPidYhUYWL0xV
+TygGDDKGSxtTaWJjZz8EO4ZCGlBmYWBlPAI0hkAXRWhfXWQkDTmGNh0sXF5bWRATMYklGEhRTkEK
+Iol/LRImVFYjAyviTRUBOj0AFEqJUn9JEQcFD0R/9uI4EixwIa7QjRkFExIKBAA7=''')
            }
     ROOT_W,ROOT_H=800,480
     # the following string may be confusing, so here there's an explanation
@@ -1384,6 +1464,10 @@ BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
     root.title("Maintenance tools GUI")
     root.rowconfigure(0,weight=1)
     root.columnconfigure(0,weight=1)
+    # set the window icon
+    # for now, it's just a grayscale Wesnoth icon
+    # also, this line shouldn't have effect on Mac OS
+    root.tk.call("wm", "iconphoto", root, "-default", ICONS["window_icon"])
     # use a better style on X11 systems instead of the Motif-like one
     style=Style()
     if root.tk.call('tk', 'windowingsystem') == "x11" and "clam" in style.theme_names():

@@ -7,12 +7,14 @@ class config;
 #include <vector>
 #include <string>
 #include <set>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 #include "config.hpp"
 #include "mt_rng.hpp"
 #include "game_events/wmi_container.hpp"
 
-class carryover{
+class carryover
+{
 public:
 	carryover()
 		: add_ ()
@@ -43,11 +45,13 @@ private:
 	//       case between scenarios.
 	std::vector<config> recall_list_;
 	std::string save_id_;
+	config variables_;
 
 	std::string get_recruits(bool erase=false);
 };
 
-class carryover_info{
+class carryover_info
+{
 public:
 	carryover_info()
 		: carryover_sides_()
@@ -74,8 +78,6 @@ public:
 	void set_variables(const config& vars) { variables_ = vars; }
 	const config& get_variables() const { return variables_; }
 
-	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
-
 	const rand_rng::mt_rng& rng() const { return rng_; }
 	rand_rng::mt_rng& rng() { return rng_; }
 
@@ -88,7 +90,7 @@ private:
 	std::vector<carryover> carryover_sides_;
 	config variables_;
 	rand_rng::mt_rng rng_;
-	game_events::wmi_container wml_menu_items_;
+	boost::ptr_vector<config> wml_menu_items_;
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 	int next_underlying_unit_id_;
 };

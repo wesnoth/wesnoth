@@ -42,9 +42,9 @@
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/edit_label.hpp"
+#include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/data_manage.hpp"
@@ -461,47 +461,6 @@ void menu_handler::save_map()
 			gui2::show_transient_message(gui_->video(), "", msg);
 		}
 	}
-
-	/*
-	std::string input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
-	int res = 0;
-	int overwrite = 1;
-	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
-		if (res == 0) {
-
-			if (filesystem::file_exists(input_name)) {
-				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
-				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
-			}
-			else
-				overwrite = 0;
-		}
-	} while (res == 0 && overwrite != 0);
-
-	// Try to save the map, if it fails we reset the filename.
-	if (res == 0) {
-		try {
-			config file;
-			config& map = file.add_child("map");
-			map().write(map);
-
-			std::stringstream str;
-			{
-				config_writer writer(str, false);
-				writer.write(file);
-			}
-			filesystem::write_file(input_name, str.str());
-
-			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
-		} catch (filesystem::io_exception& e) {
-			utils::string_map symbols;
-			symbols["msg"] = e.what();
-			const std::string msg = vgettext("Could not save the map: $msg",symbols);
-			gui2::show_transient_message(gui_->video(), "", msg);
-		}
-	}
-	*/
 }
 
 void menu_handler::preferences()
@@ -961,16 +920,14 @@ namespace { // Helpers for create_unit()
 	 * context menu.)
 	 * @returns the selected type and gender. If this is canceled, the
 	 *          returned type is NULL.
-	 *
-	 * @todo Replace choose_unit() when complete.
 	 */
-	type_and_gender choose_unit_2(game_display& gui)
+	type_and_gender choose_unit(game_display& gui)
 	{
 		//
 		// The unit creation dialog makes sure unit types
 		// are properly cached.
 		//
-		gui2::tunit_create create_dlg;
+		gui2::tunit_create create_dlg(&gui);
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {
@@ -999,86 +956,6 @@ namespace { // Helpers for create_unit()
 	}
 
 	/**
-	 * Allows the user to select a type of unit.
-	 * (Intended for use when a unit is created in debug mode via hotkey or
-	 * context menu.)
-	 * @returns the selected type and gender. If this is canceled, the
-	 *          returned type is NULL.
-	 */
-	type_and_gender choose_unit(game_display& gui)
-	{
-		std::vector<std::string> options;
-		static int last_selection = -1;
-		static bool random_gender = false;
-		std::vector<const unit_type*> unit_choices;
-		const std::string heading = std::string(1,HEADING_PREFIX) +
-									_("Race")      + COLUMN_SEPARATOR +
-									_("Type");
-		options.push_back(heading);
-
-		BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
-		{
-			std::stringstream row;
-
-			// Make sure the unit type was built for the data we need.
-			unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
-
-			row << i.second.race()->plural_name() << COLUMN_SEPARATOR;
-			row << i.second.type_name() << COLUMN_SEPARATOR;
-
-			options.push_back(row.str());
-			unit_choices.push_back(&i.second);
-		}
-
-		int choice = 0;
-		bool random_gender_choice = random_gender;
-		{
-			gui::dialog umenu(gui, _("Create Unit (Debug!)"), "", gui::OK_CANCEL);
-
-			umenu.add_option(
-				(formatter()<<_("Gender: ")<<_("gender^Random")).str(),
-				random_gender_choice,
-				gui::dialog::BUTTON_EXTRA
-			);
-
-			gui::menu::basic_sorter sorter;
-			sorter.set_alpha_sort(0).set_alpha_sort(1);
-			umenu.set_menu(options, &sorter);
-
-			gui::filter_textbox* filter = new gui::filter_textbox(gui.video(),
-				_("Filter: "), options, options, 1, umenu, 200);
-			umenu.set_textbox(filter);
-
-			//sort by race then by type name
-			umenu.get_menu().sort_by(1);
-			umenu.get_menu().sort_by(0);
-			if (last_selection >= 0)
-				umenu.get_menu().move_selection(last_selection);
-			else
-				umenu.get_menu().reset_selection();
-
-			dialogs::unit_types_preview_pane unit_preview(unit_choices, filter, 1, dialogs::unit_types_preview_pane::SHOW_ALL);
-			umenu.add_pane(&unit_preview);
-			unit_preview.set_selection(umenu.get_menu().selection());
-
-			choice = umenu.show();
-			choice = filter->get_index(choice);
-			random_gender_choice = umenu.option_checked(0);
-		}
-
-		if (size_t(choice) < unit_choices.size()) {
-			last_selection = choice;
-			random_gender  = random_gender_choice;
-
-			return type_and_gender(unit_choices[choice],
-			                       random_gender ? unit_race::NUM_GENDERS :
-			                                       unit_choices[choice]->genders().front());
-		}
-		else
-			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
-	}
-
-	/**
 	 * Creates a unit and places it on the board.
 	 * (Intended for use with any units created via debug mode.)
 	 */
@@ -1103,8 +980,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	assert(gui_ != NULL);
 
 	// Let the user select the kind of unit to create.
-	type_and_gender selection = gui2::new_widgets ? choose_unit_2(*gui_) :
-	                                                choose_unit(*gui_);
+	type_and_gender selection = choose_unit(*gui_);
 	if ( selection.first != NULL )
 		// Make it so.
 		create_and_place(*gui_, map(), units(), destination,
@@ -1180,7 +1056,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if (res)
 			resources::recorder->add_label(res);
 	}
@@ -1194,6 +1070,12 @@ void menu_handler::clear_labels()
 		gui_->labels().clear(gui_->current_team_name(), false);
 		resources::recorder->clear_labels(gui_->current_team_name(), false);
 	}
+}
+	
+void menu_handler::label_settings() {
+	// TODO: I think redraw_everything might be a bit too much? It causes a flicker.
+	if(gui2::tlabel_settings::execute(board(), gui_->video()))
+		gui_->redraw_everything();
 }
 
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)

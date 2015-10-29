@@ -15,14 +15,33 @@ Version 1.13.1+dev:
    * New animated water.
 
  * Language and i18n:
-   * Updated translations: Galician.
+   * Updated translations: British English, French, Galician, Hungarian,
+     Japanese, Latvian.
+   * Fixed crashes during start-up on Windows resulting from add-ons containing
+     erroneous textdomain declarations (bug #23839).
 
  * Music and sound effects:
-   * New dwarf hit and die sounds.
+   * New sounds: dwarf hit and die, ink, mud fist and glob.
 
  * User interface:
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
+   * Added an interface to hide labels placed by certain players or belonging
+     to certain categories (such as village names).
+   * By default, labels placed by ignored players are hidden. You can override
+     this using the above interface.
+
+ * Miscellaneous and bug fixes:
+   * Made Documents\My Games\WesnothX.Y the default user config+data dir on
+     Windows to replace the broken <current working dir>\userdata default that
+     has never been acceptable practice. Portable installs are now required to
+     explicitly use . or  .. (e.g. `--config-dir .\userdata`) to force the
+     user config+data dir path to be relative to the current working dir (see
+     also bug #23753).
+   * Fixed OOS on random maps, where clients placed sides in different castles.
+   * Fixed possibility of corrupting saved games in certain instances,
+     eg if an add-on tries to set an invalid variable
+   * Enhanced tab completion in text boxes for easier whispers answer.
 
 
 Version 1.13.1:

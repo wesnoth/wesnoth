@@ -103,7 +103,9 @@ public:
 	explicit config(const std::string &child);
 
 	~config();
-
+	
+	// Verifies that the string can be used as an attribute or tag name
+	static bool valid_id(std::string);
 
 #ifdef HAVE_CXX11
 	explicit operator bool() const
@@ -143,7 +145,7 @@ public:
 		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
 		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
 		friend bool operator>=(const this_type& a, const this_type& b) { return a.i_ >= b.i_; }
-		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ > b.i_; }
 
 		this_type& operator+=(Itor::difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(Itor::difference_type n) { i_ -= n; return *this; }
@@ -184,7 +186,7 @@ public:
 		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
 		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
 		friend bool operator>=(const this_type& a, const this_type& b) { return a.i_ >= b.i_; }
-		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ > b.i_; }
 
 		this_type& operator+=(Itor::difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(Itor::difference_type n) { i_ -= n; return *this; }
@@ -666,6 +668,11 @@ public:
 	 * Adds children from @a cfg.
 	 */
 	void append_children(const config &cfg);
+
+	/**
+	 * Adds children from @a cfg.
+	 */
+	void append_children(const config &cfg, const std::string& key);
 
 	/**
 	 * All children with the given key will be merged

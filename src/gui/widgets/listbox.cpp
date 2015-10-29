@@ -26,6 +26,7 @@
 #include "gui/auxiliary/window_builder/horizontal_listbox.hpp"
 #include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/selectable.hpp"
 #include "gui/widgets/window.hpp"
 
 #include <boost/bind.hpp>
@@ -60,6 +61,7 @@ tlistbox::tlistbox(const bool has_minimum,
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
 	, need_layout_(false)
+	, orders_()
 {
 }
 
@@ -515,7 +517,16 @@ void tlistbox::finalize(tbuilder_grid_const_ptr header,
 	if(header) {
 		swap_grid(&grid(), content_grid(), header->build(), "_header_grid");
 	}
-
+	tgrid& p = find_widget<tgrid>(this, "_header_grid", false);
+	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
+		if(tselectable_* selectable = find_widget<tselectable_>(p.widget(0,i), "sort_" +  lexical_cast<std::string>(i), false, false)) {
+			selectable->set_callback_state_change(boost::bind(&tlistbox::order_by_column, this, i, _1));
+			if(orders_.size() < max ) {
+				orders_.resize(max);
+			}
+			orders_[i].first = selectable;
+		}
+	}
 	if(footer) {
 		swap_grid(&grid(), content_grid(), footer->build(), "_footer_grid");
 	}
@@ -523,6 +534,51 @@ void tlistbox::finalize(tbuilder_grid_const_ptr header,
 	generator_->create_items(
 			-1, list_builder_, list_data, callback_list_item_clicked);
 	swap_grid(NULL, content_grid(), generator_, "_list_grid");
+}
+namespace {
+	bool default_sort(unsigned i1, unsigned i2)
+	{
+		return i1 < i2;
+	}
+}
+
+void tlistbox::order_by_column(unsigned column, twidget& widget)
+{
+	tselectable_& selectable = dynamic_cast<tselectable_&>(widget);
+	if(column >= orders_.size()) {
+		return;
+	}
+	FOREACH(AUTO& pair, orders_)
+	{
+		if(pair.first != NULL && pair.first != &selectable) {
+			pair.first->set_value(0);
+		}
+	}
+	if(selectable.get_value() > orders_[column].second.size()) {
+		return;
+	}
+	if(selectable.get_value() == 0) {
+		order_by(tgenerator_::torder_func(&default_sort));
+	}
+	else {
+		order_by(orders_[column].second[selectable.get_value() - 1]);
+	}
+}
+
+void tlistbox::order_by(const tgenerator_::torder_func& func)
+{
+	generator_->set_order(func);
+
+	set_is_dirty(true);
+	need_layout_ = true;
+}
+
+void tlistbox::set_column_order(unsigned col, const std::vector<tgenerator_::torder_func>& func)
+{
+	if(col >= orders_.size()) {
+		orders_.resize(col + 1);
+	}
+	orders_[col].second = func;
 }
 
 void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)

@@ -295,12 +295,13 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.with_replay)
 		game::load_game_exception::show_replay = true;
 
-	std::cerr << '\n';
-	std::cerr << "Data directory: " << game_config::path
+	std::cerr
+		<< "\nData directory:               " << game_config::path
 		<< "\nUser configuration directory: " << filesystem::get_user_config_dir()
-		<< "\nUser data directory: " << filesystem::get_user_data_dir()
-		<< "\nCache directory: " << filesystem::get_cache_dir()
+		<< "\nUser data directory:          " << filesystem::get_user_data_dir()
+		<< "\nCache directory:              " << filesystem::get_cache_dir()
 		<< '\n';
+	std::cerr << '\n';
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||
@@ -432,11 +433,11 @@ bool game_launcher::init_video()
 		return false;
 	}
 
-	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
+	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
 	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
 	video_.setBpp(bpp);
 	if(res == 0) {
-		std::cerr << "required video mode, " << resolution.first << "x"
+		std::cerr << "Required video mode, " << resolution.first << "x"
 		          << resolution.second << "x" << bpp << " is not supported\n";
 		return false;
 	}
@@ -455,7 +456,7 @@ bool game_launcher::init_lua_script()
 {
 	bool error = false;
 
-	std::cerr << "checking lua scripts... ";
+	std::cerr << "Checking lua scripts... ";
 
 	if (cmdline_opts_.script_unsafe_mode) {
 		plugins_manager::get()->get_kernel_base()->load_package(); //load the "package" package, so that scripts can get what packages they want
@@ -558,6 +559,9 @@ bool game_launcher::play_test()
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 	state_.classification().campaign_define = "TEST";
 
+	state_.mp_settings().mp_era = "era_default";
+	state_.mp_settings().show_connect = false;
+
 	state_.set_carryover_sides_start(
 		config_of("next_scenario", test_scenario_)
 	);
@@ -568,7 +572,8 @@ bool game_launcher::play_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		ccontroller.play_game();
 	} catch (game::load_game_exception &) {
 		return true;
 	}
@@ -600,7 +605,8 @@ int game_launcher::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		LEVEL_RESULT res = play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), IO_SERVER, false, false, false, true);
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		LEVEL_RESULT res = ccontroller.play_game();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
 		}
@@ -635,8 +641,8 @@ int game_launcher::unit_test()
 	}
 
 	try {
-		//LEVEL_RESULT res = play_game(disp(), state_, game_config_manager::get()->game_config(), IO_SERVER, false,false,false,true);
-		LEVEL_RESULT res = ::play_replay(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
@@ -1086,8 +1092,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	}
 
 	try {
-		const LEVEL_RESULT result = play_game(disp(),state_,
-		    game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		LEVEL_RESULT result = ccontroller.play_game();
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
@@ -1109,8 +1115,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 void game_launcher::play_replay()
 {
 	try {
-		::play_replay(disp(),state_,game_config_manager::get()->game_config(),
-		    game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		ccontroller.play_replay();
 
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {

@@ -18,6 +18,8 @@
 
 #include <cassert>
 #include <stdlib.h>
+#include <boost/random/mersenne_twister.hpp>
+#include <time.h>
 
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
@@ -25,9 +27,29 @@ static lg::log_domain log_random("random");
 #define WRN_RND LOG_STREAM(warn, log_random)
 #define ERR_RND LOG_STREAM(err, log_random)
 
+namespace {
+
+	class rng_default : public random_new::rng
+	{
+	public:
+		rng_default()
+			: gen_(time(NULL))
+		{
+		}
+	protected:
+		virtual uint32_t next_random_impl()
+		{
+			return gen_();
+		}
+	private:
+		boost::mt19937 gen_;
+	};
+}
+
 namespace random_new
 {
-	rng* generator = new rng();
+
+	rng* generator = &rng::default_instance();
 
 	rng::rng()
 		: random_calls_(0)
@@ -38,6 +60,12 @@ namespace random_new
 	rng::~rng()
 	{
 
+	}
+
+	rng& rng::default_instance()
+	{
+		static rng* def = new rng_default();
+		return *def;
 	}
 
 	unsigned int rng::get_random_calls()
@@ -70,14 +98,5 @@ namespace random_new
 	{
 		assert(max >= 0);
 		return static_cast<int> (next_random() % (static_cast<uint32_t>(max)+1));
-	}
-
-	uint32_t rng::next_random_impl()
-	{
-		//getting here means random was called form outsiude a synced context.
-		uint32_t retv = rand();
-		
-		LOG_RND << "random_new::rng::next_random returned " << retv;
-		return retv;
 	}
 }

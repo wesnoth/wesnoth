@@ -98,7 +98,8 @@ public:
 	explicit unit(
 			  const config& cfg
 			, bool use_traits = false
-			, const vconfig* vcfg = NULL);
+			, const vconfig* vcfg = NULL
+			, n_unit::id_manager* id_manager = NULL);
 
 	/**
 	  * Initializes a unit from a unit type
@@ -141,7 +142,7 @@ public:
 	/** The unit type name */
 	const t_string& type_name() const {return type_name_;}
 	const std::string& undead_variation() const {return undead_variation_;}
-	const std::string variation() const {return variation_; }
+	const std::string& variation() const {return variation_; }
 
 	/** The unit name for display */
 	const t_string &name() const { return name_; }
@@ -193,7 +194,7 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
-	void set_can_recurit(bool canrecruit) { canrecruit_ = canrecruit; }
+	void set_can_recruit(bool canrecruit) { canrecruit_ = canrecruit; }
 	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
 	void set_recruits(const std::vector<std::string>& recruits);
@@ -279,6 +280,7 @@ public:
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
+	const config::attribute_value& upkeep_raw() const { return cfg_["upkeep"]; }
 	bool loyal() const;
 
 	void set_hidden(bool state) const;
@@ -393,7 +395,7 @@ private:
 	 * cfg: an ability WML structure
 	 */
 	bool ability_active(const std::string& ability,const config& cfg,const map_location& loc) const;
-	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc) const;
+	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc,const unit& from) const;
 	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
@@ -406,7 +408,7 @@ private:
 	/** register a trait's name and its description for UI's use*/
 	void add_trait_description(const config& trait, const t_string& description);
 
-	void set_underlying_id();
+	void set_underlying_id(n_unit::id_manager& id_manager);
 
 	config cfg_;
 private:

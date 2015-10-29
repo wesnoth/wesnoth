@@ -78,7 +78,7 @@ game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb:
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
 		route_(),
-		tod_manager_(tod),
+		tod_manager_(&tod),
 		displayedUnitHex_(),
 		sidebarScaling_(1.0),
 		first_turn_(true),
@@ -113,10 +113,10 @@ game_display::~game_display()
 //TODO: proper SDL_gpu implementation
 void game_display::new_turn()
 {
-	const time_of_day& tod = tod_manager_.get_time_of_day();
+	const time_of_day& tod = tod_manager_->get_time_of_day();
 
 	if( !first_turn_) {
-		const time_of_day& old_tod = tod_manager_.get_previous_time_of_day();
+		const time_of_day& old_tod = tod_manager_->get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
 			const surface old_mask(image::get_image(old_tod.image_mask,image::SCALED_TO_HEX));
@@ -453,12 +453,12 @@ void game_display::draw_hex(const map_location& loc)
 
 const time_of_day& game_display::get_time_of_day(const map_location& loc) const
 {
-	return tod_manager_.get_time_of_day(loc);
+	return tod_manager_->get_time_of_day(loc);
 }
 
 bool game_display::has_time_area() const
 {
-	return tod_manager_.has_time_area();
+	return tod_manager_->has_time_area();
 }
 
 void game_display::draw_sidebar()
@@ -475,7 +475,7 @@ void game_display::draw_sidebar()
 
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		BOOST_FOREACH(const std::string &name, reports_object_.report_list()) {
+		BOOST_FOREACH(const std::string &name, reports_object_->report_list()) {
 			refresh_report(name);
 		}
 		invalidateGameStatus_ = false;

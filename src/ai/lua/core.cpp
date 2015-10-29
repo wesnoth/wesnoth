@@ -117,7 +117,7 @@ static bool to_map_location(lua_State *L, int &index, map_location &res)
 {
 	if (lua_isuserdata(L, index))
 	{
-		const unit_const_ptr u = luaW_tounit(L, index);
+		const unit* u = luaW_tounit(L, index);
 		if (!u) return false;
 		res = u->get_location();
 		++index;
@@ -140,7 +140,7 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 	int index = 1;
 
 	ai::readonly_context &context = get_readonly_context(L);
-	unit_const_ptr leader;
+	unit* leader = NULL;
 	if (lua_isuserdata(L, index))
 	{
 		leader = luaW_tounit(L, index);

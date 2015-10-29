@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 #
 # wmlscope -- generate reports on WML macro and resource usage
 #
@@ -92,10 +93,8 @@
 #
 # sets the warning level.
 
-from __future__ import print_function
-
-import sys, os, time, re, getopt, hashlib, glob
-from wesnoth.wmltools import *
+import sys, os, time, re, argparse, hashlib, glob, codecs
+from wesnoth.wmltools3 import *
 
 def interpret(lines, css):
     "Interpret the ! convention for .cfg comments."
@@ -163,7 +162,7 @@ class CrossRefLister(CrossRef):
         if len(self.unresolved) == 0 and len(self.missing) == 0:
             print("# No unresolved references")
         else:
-            #print(self.fileref.keys())
+            #print(list(self.fileref.keys()))
             for (name, reference) in self.unresolved + self.missing:
                 print("%s: Unresolved reference -> %s" % (reference, name))
         mismatched = []
@@ -181,21 +180,61 @@ class CrossRefLister(CrossRef):
                     for (ln, args) in refs:
                         print('"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)])))
 
-    def undersized(self):
-        "Report undersized images that cannot be safely overlaid on a hex."
-        try:
-            from PIL import Image
-            for (namespace, filename) in xref.filelist.generator():
-                if filename.endswith(".png"):
-                    try:
-                        with Image.open(filename) as im:
-                            (x, y) = im.size
-                        if x <= 60 or y <= 60:
-                            print("%s: %d by %d" % (filename, x, y))
-                    except IOError:
-                        print("%s: PIL internal error" % filename, file=sys.stderr)
-        except ImportError:
-            print("Install Python Imaging Library to enable size check.", file=sys.stderr)
+    def incorrectlysized(self):
+        "Report incorrectly sized images that cannot be safely used for their intended purpose"
+        for (namespace, filename) in xref.filelist.generator():
+            if filename.endswith(".png"):
+                fn_list = filename.split(os.sep)
+                try:
+                    with open(filename, mode="rb") as image:
+                        png_header = image.read(16)
+                        w = image.read(4)
+                        h = image.read(4)
+                    # some explanations for those that don't want to read the PNG documentation
+                    # all valid PNG files always start with the same 16 bytes
+                    # the first 8 are the 'magic number', which is 89 50 4E 47 0D 0A 1A 0A
+                    # notice that '50 4E 47' is 'PNG' in ASCII
+                    # the next 4 are the chunk size, then the next 4 are the chunk type
+                    # the IHDR chunk is always the first one in any PNG file
+                    # and has always a length of 13 bytes (0D == 13)
+                    if png_header != b"\x89PNG\r\n\x1a\n\x00\x00\x00\x0dIHDR":
+                        print("%s is not a valid PNG file" % filename, file=sys.stderr)
+                        continue
+                    # after the common part to all PNG files,
+                    # the next 4 bytes are the image width, and the next 4 are the image height
+                    # said bytes are placed in big-endian order (most significant bytes come first)
+                    # we need to use some bitwise operations to convert them as a single integer
+                    # also we don't need the remaining 5 bytes of the IHDR chunk
+                    # Py3 reads the file as bytes, and each byte is already an int
+                    # this is why, unlike Python 2, ord() isn't needed
+                    x = w[0] << 24 | w[1] << 16 | w[2] << 8 | w[3]
+                    y = h[0] << 24 | h[1] << 16 | h[2] << 8 | h[3]
+                    # these checks rely on add-ons that place files following mainline conventions
+                    # I'm aware that this may not always be the case
+                    # but the alternative will be implementing a more sophisticated check in wmllint
+                    if "images" in fn_list:
+                        expected_size = None
+                        if "attacks" in fn_list or "icons" in fn_list:
+                            # images used in attack dialogs should be 60x60
+                            if x != 60 or y != 60:
+                                expected_size = (60,60)
+                        elif "flags" in fn_list:
+                            # flags should be 72x72, but their icons should be 24 x 16
+                            if "icon" in os.path.split(filename)[1]:
+                                if x != 24 or y != 16:
+                                    expected_size = (24,16)
+                            else:
+                                if x != 72 or y != 72:
+                                    expected_size = (72,72)
+                        elif "items" in fn_list:
+                            # items should be 72x72
+                            if x != 72 or y != 72:
+                                expected_size = (72,72)
+                        if expected_size:
+                            print("%s: image is %d x %d, expected %d x %d" % (filename, x, y, expected_size[0], expected_size[1]))
+                except IOError:
+                    print("%s: unable to read file" % filename, file=sys.stderr)
+
     def duplicates(self, exportonly):
         "Dump duplicate unit IDs."
         duplicate_latch = False
@@ -252,23 +291,23 @@ class CrossRefLister(CrossRef):
                     unchecked.append((name, defn))
                     unresolvedcount += len(defn.references)
         if unchecked:
-            print("# %d of %d (%d%%) macro definitions and %d of %d calls (%d%%) have untyped formals:" \
+            print("# %d of %d (%.02f%%) macro definitions and %d of %d calls (%.02f%%) have untyped formals:" \
                   % (len(unchecked),
                      defcount,
-                     int((100 * len(unchecked)) / defcount),
+                     ((100 * len(unchecked)) / defcount),
                      unresolvedcount,
                      callcount,
-                     int((100 * unresolvedcount) / callcount)))
-            unchecked.sort(lambda a, b: cmp(a[1], b[1]))
+                     ((100 * unresolvedcount) / callcount)))
+            # sort by checking the 2nd element in the tuple
+            unchecked.sort(key=lambda element: element[1])
             for (name, defn) in unchecked:
                 print("%s: %s(%s)" % (defn, name, ", ".join(defn.args)))
 
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
-        doclist = self.xref.keys()
-        doclist = [x for x in doclist if self.xref[x][0].docstring.count("\n") > 1]
-        doclist.sort(lambda x, y: cmp(self.xref[x][0], self.xref[y][0]))
+        doclist = [x for x in self.xref.keys() if self.xref[x][0].docstring.count("\n") > 1]
+        doclist.sort(key=lambda element: self.xref[element][0])
         outstr = ""
         filename = None
         filenamelist = []
@@ -288,7 +327,7 @@ class CrossRefLister(CrossRef):
                 outstr += "<h1 id='file:" + displayname + "' class='file_header'>From file: " + displayname + "</h1>\n"
                 filenamelist.append(displayname)
                 hdr = []
-                with open(filename) as dfp:
+                with codecs.open(filename, "r", "utf8") as dfp:
                     for line in dfp:
                         line = line.lstrip()
                         if line and line.startswith("#textdomain"):
@@ -303,9 +342,9 @@ class CrossRefLister(CrossRef):
             if entry.docstring:
                 lines = entry.docstring.split("\n")
                 header = lines.pop(0).split()
-                if lines and not lines[-1]:	# Ignore trailing blank lines
+                if lines and not lines[-1]: # Ignore trailing blank lines
                     lines.pop()
-                if not lines:	# Ignore definitions without a docstring
+                if not lines: # Ignore definitions without a docstring
                     continue
                 outstr += "\n<dt id='" + header[0] + "'>\n"
                 outstr += "<em class='macro_name'>" + header[0] + "</em>"
@@ -326,91 +365,59 @@ class CrossRefLister(CrossRef):
         fp.write(outstr)
 
 if __name__ == "__main__":
-    def help():
-        print("""\
-Usage: wmlscope [options] dirpath
-    Options may be any of these:
-    -h, --help                   Emit this help message and quit
-    -c, --crossreference         Report resolved macro references (implies -w 1)
-    -C, --collisions             Report duplicate resource files
-    -d, --definitions            Make definition list
-    -e regexp, --exclude regexp  Ignore files matching the specified regular expression
-    -f regexp, --from regexp     Report only on things defined in files matching regexp
-    -l, --listfiles              List files that will be processed
-    -r ddd, --refcount=ddd       Report only on macros w/references in ddd files
-    -t fname, --typelist fname   List actual & formal argtypes for calls in fname
-    -u, --unresolved             Report unresolved macro references
-    -w, --warnlevel              Set to 1 to warn of duplicate macro definitions
-    --force-used regexp          Ignore refcount 0 on names matching regexp
-    --extracthelp                Extract help from macro definition comments.
-    --unchecked                  Report all macros with untyped formals.
-   Options may be followed by any number of directiories to check.  If no
-   directories are given, all files under the current directory are checked.
-""", file=sys.stderr)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--crossreference", action="store_true",
+                        help="Report resolved macro references (implies -w 1)")
+    parser.add_argument("-C", "--collisions", action="store_true",
+                        help="Report duplicate resource files")
+    parser.add_argument("-d", "--definitions", action="store_true",
+                        help="Make definition list")
+    parser.add_argument("-e", "--exclude", action="append", default = [],
+                        help="Ignore files matching the specified regular expression")
+    parser.add_argument("-f", "--from", action="store", dest="from_", metavar="FROM", # from is a keyword
+                        help="Report only on things defined in files matching regexp")
+    parser.add_argument("-l", "--listfiles", action="store_true",
+                        help="List files that will be processed")
+    parser.add_argument("-r", "--refcount", action="store", type=int, # convert to int, defaults to None
+                        help="Report only on macros w/references in ddd files")
+    parser.add_argument("-t", "--typelist", action="store",
+                        help="List actual & formal argtypes for calls in fname")
+    parser.add_argument("-u", "--unresolved", action="store_true",
+                        help="Report unresolved macro references")
+    parser.add_argument("-w", "--warnlevel", action="store", type=int, default=0,
+                        help="Set to 1 to warn of duplicate macro definitions")
+    # this option was never listed before...
+    parser.add_argument("-p", "--progress", action="store_true",
+                        help="Show progress") # TODO: improve description
+    # no short options for these
+    parser.add_argument("--force-used", action="append", dest="forceused", default = [],
+                        help="Ignore refcount 0 on names matching regexp")
+    parser.add_argument("--extracthelp", action="store_true",
+                        help="Extract help from macro definition comments.")
+    parser.add_argument("--unchecked", action="store_true",
+                        help="Report all macros with untyped formals.")
+    parser.add_argument("directories", action="store", nargs="*",
+                        help="""Any number of directiories to check. If no
+directories are given, all files under the current directory are checked.""")
+    namespace = parser.parse_args()
 
     try:
         # Process options
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lpr:t:uw:",
-                                             [
-                                              'crossreference',
-                                              'collisions',
-                                              'definitions',
-                                              'exclude=',
-                                              'extracthelp',
-                                              'force-used=',
-                                              'from=',
-                                              'help',
-                                              'listfiles',
-                                              'progress',
-                                              'refcount=',
-                                              'typelist=',
-                                              'unchecked',
-                                              'unresolved',
-                                              'warnlevel=',
-                                              ])
-        crossreference = definitions = listfiles = unresolved = extracthelp = False
-        from_restrict = None
-        refcount_restrict = None
-        forceused = []
-        exclude = []
-        warnlevel = 0
-        collisions = False
-        typelist = None
-        unchecked = False
-        progress = False
-        for (switch, val) in options:
-            if switch in ('-h', '--help'):
-                help()
-                sys.exit(0)
-            if switch in ('-f', '--from'):
-                from_restrict = val
-            elif switch in ('-c', '--crossreference'):
-                crossreference = True
-                warnlevel = 1
-            elif switch in ('-C', '--collisions'):
-                collisions = True
-            elif switch in ('-d', '--definitions'):
-                definitions = True
-            elif switch in ('-e', '--exclude'):
-                exclude.append(val)
-            elif switch == '--extracthelp':
-                extracthelp = True
-            elif switch == '--force-used':
-                forceused.append(val)
-            elif switch in ('-l', '--listfiles'):
-                listfiles = True
-            elif switch in ('-p', '--progress'):
-                progress = True
-            elif switch in ('-r', '--refcount'):
-                refcount_restrict = int(val)
-            elif switch == '--unchecked':
-                unchecked = True
-            elif switch in ('-t', '--typelist'):
-                typelist = val
-            elif switch in ('-u', '--unresolved'):
-                unresolved = True
-            elif switch in ('-w', '--warnlevel'):
-                warnlevel = int(val)
+        crossreference = namespace.crossreference
+        collisions = namespace.collisions
+        definitions = namespace.definitions
+        exclude = namespace.exclude
+        from_restrict = namespace.from_
+        extracthelp = namespace.extracthelp
+        listfiles = namespace.listfiles
+        refcount_restrict = namespace.refcount
+        typelist = namespace.typelist
+        unresolved = namespace.unresolved
+        warnlevel = 1 if crossreference else namespace.warnlevel
+        forceused = namespace.forceused
+        unchecked = namespace.unchecked
+        progress = namespace.progress
+        arguments = namespace.directories # a remnant of getopt...
 
         # in certain situations, Windows' command prompt appends a double quote
         # to the command line parameters. This block takes care of this issue.
@@ -445,20 +452,20 @@ Usage: wmlscope [options] dirpath
         if collisions:
             collisions = []
             for (namespace, filename) in xref.filelist.generator():
-                with open(filename) as ifp:
-                    collisions.append(hashlib.md5(ifp.read()).digest())
-            collisions = zip(xref.filelist.flatten(), collisions)
-            hashcounts = {}
-            for (n, h) in collisions:
-                hashcounts[h] = hashcounts.get(h, 0) + 1
-            collisions = [(n,h) for (n,h) in collisions if hashcounts[h] > 1]
-            collisions.sort(lambda (n1, h1), (n2, h2): cmp(h1, h2))
-            lasthash = None
-            for (n, h) in collisions:
-                if h != lasthash:
-                    print("%%")
-                    lasthash = h
-                print(n)
+                with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
+                    collisions.append(hashlib.md5(ifp.read()).hexdigest()) # hexdigest can be easily printed, unlike digest
+            hashes = {}
+            # hash in Py3 is a builtin function, hence the underscore after the variable name
+            for (filename, hash_) in zip(xref.filelist.flatten(), collisions):
+                if hash_ in hashes:
+                    hashes[hash_].append(filename)
+                else:
+                    hashes[hash_]=[filename]
+            for (hash_, files) in hashes.items(): # items in Py3 is equivalent to iteritems in Py2
+                if len(files) > 1:
+                    print("%%\nPossible duplicated files with MD5 hash", hash_)
+                    for fn in files:
+                        print("->", fn)
             xref.duplicates(exportonly=False)
         elif typelist:
             xref.typelist(typelist)
@@ -479,7 +486,7 @@ Usage: wmlscope [options] dirpath
             if definitions:
                 xref.deflist(predicate)
             if unresolved:
-                #xref.undersized()
+                xref.incorrectlysized()
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
     except KeyboardInterrupt:

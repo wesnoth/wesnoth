@@ -17,8 +17,13 @@
 
 #ifdef _MSC_VER
 
+// Enable C99 support for VC14
+#if _MSC_VER>=1900
+#define STDC99
+#else
 #undef snprintf
 #define snprintf _snprintf
+#endif
 
 // Disable warning about source encoding not in current code page.
 #pragma warning(disable: 4819)
@@ -26,7 +31,7 @@
 // Disable warning about deprecated functions.
 #pragma warning(disable: 4996)
 
-//disable some MSVC warnings which are useless according to mordante
+// Disable some MSVC warnings which are useless according to mordante
 #pragma warning(disable: 4244)
 #pragma warning(disable: 4345)
 #pragma warning(disable: 4250)
@@ -68,5 +73,7 @@
  */
 #error "Compilation with NDEBUG defined isn't supported, Wesnoth depends on asserts."
 #endif
+
+#define UNUSED(x)  ((void)(x))     /* to avoid warnings */
 
 #endif //GLOBAL_HPP_INCLUDED

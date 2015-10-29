@@ -58,13 +58,13 @@ teditor_edit_side::teditor_edit_side(int side,
 									 int& village_income,
 									 int& village_support,
 									 bool& fog,
-									 bool& share_view,
 									 bool& shroud,
-									 bool& share_maps,
+									 team::SHARE_VISION& share_vision,
 									 team::CONTROLLER& controller,
 									 bool& no_leader,
 									 bool& hidden)
 	: controller_(controller)
+	, share_vision_(share_vision)
 {
 	std::stringstream side_stream;
 	side_stream << side;
@@ -80,10 +80,7 @@ teditor_edit_side::teditor_edit_side(int side,
 	register_integer("village_support", true, village_support);
 
 	register_bool("fog", true, fog);
-	register_bool("share_view", true, share_view);
-
 	register_bool("shroud", true, shroud);
-	register_bool("share_maps", true, share_maps);
 
 	register_bool("no_leader", true, no_leader);
 	register_bool("hidden", true, hidden);
@@ -91,30 +88,33 @@ teditor_edit_side::teditor_edit_side(int side,
 
 void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
 {
-	register_controller_toggle(window, "human", team::CONTROLLER::HUMAN);
-	register_controller_toggle(window, "ai", team::CONTROLLER::AI);
-	register_controller_toggle(window, "null", team::CONTROLLER::EMPTY);
+	register_radio_toggle<team::CONTROLLER>(window, "controller_human", team::CONTROLLER::HUMAN, controller_, controller_tgroup_);
+	register_radio_toggle<team::CONTROLLER>(window, "controller_ai",    team::CONTROLLER::AI,    controller_, controller_tgroup_);
+	register_radio_toggle<team::CONTROLLER>(window, "controller_null",  team::CONTROLLER::EMPTY, controller_, controller_tgroup_);
+
+	register_radio_toggle<team::SHARE_VISION>(window, "vision_all",    team::SHARE_VISION::ALL,    share_vision_, vision_tgroup_);
+	register_radio_toggle<team::SHARE_VISION>(window, "vision_shroud", team::SHARE_VISION::SHROUD, share_vision_, vision_tgroup_);
+	register_radio_toggle<team::SHARE_VISION>(window, "vision_null",   team::SHARE_VISION::NONE,   share_vision_, vision_tgroup_);
 }
 
-void teditor_edit_side::register_controller_toggle(twindow& window,
-												   const std::string& toggle_id,
-												   team::CONTROLLER value)
+template <typename T>
+void teditor_edit_side::register_radio_toggle(twindow& window, const std::string& toggle_id, T enum_value, T& current_value, std::vector<std::pair<ttoggle_button*, T> >& dst)
 {
 	ttoggle_button* b = &find_widget<ttoggle_button>(
-								 &window, "controller_" + toggle_id, false);
+								 &window, toggle_id, false);
 
-	b->set_value(value == controller_);
-	connect_signal_mouse_left_click(
-			*b,
-			boost::bind(
-					&teditor_edit_side::toggle_controller_callback, this, b));
+	b->set_value(enum_value == current_value);
+	connect_signal_mouse_left_click(*b,
+				boost::bind(
+					&teditor_edit_side::toggle_radio_callback<T>, this, boost::ref(dst), boost::ref(current_value), b));
 
-	controller_tgroup_.push_back(std::make_pair(b, value));
+	dst.push_back(std::make_pair(b, enum_value));
 }
 
-void teditor_edit_side::toggle_controller_callback(ttoggle_button* active)
+template <typename C>
+void teditor_edit_side::toggle_radio_callback(const std::vector<std::pair<ttoggle_button*, C> >& vec, C& value, ttoggle_button* active)
 {
-	FOREACH(const AUTO & e, controller_tgroup_)
+	FOREACH(const AUTO & e, vec)
 	{
 		ttoggle_button* const b = e.first;
 		if(b == NULL) {
@@ -122,10 +122,11 @@ void teditor_edit_side::toggle_controller_callback(ttoggle_button* active)
 		} else if(b == active && !b->get_value()) {
 			b->set_value(true);
 		} else if(b == active) {
-			controller_ = e.second;
+			value = e.second;
 		} else if(b != active && b->get_value()) {
 			b->set_value(false);
 		}
 	}
 }
-}
+
+} // end namespace gui2

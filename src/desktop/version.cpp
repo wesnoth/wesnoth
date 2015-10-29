@@ -16,9 +16,11 @@
 
 #include "desktop/version.hpp"
 
+#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "scoped_resource.hpp"
 #include "serialization/unicode.hpp"
 
 #include <cstring>
@@ -48,10 +50,10 @@ static lg::log_domain log_desktop("desktop");
 namespace desktop
 {
 
-#ifdef _WIN32
 namespace
 {
 
+#ifdef _WIN32
 /**
  * Detects whether we are running on Wine or not.
  *
@@ -65,15 +67,108 @@ bool on_wine()
 		return false;
 	}
 
-	return GetProcAddress(ntdll, "wine_get_version");
+	return GetProcAddress(ntdll, "wine_get_version") != NULL;
 }
+#endif
+
+#if defined(_X11) || defined(__APPLE__)
+/**
+ * Release policy for POSIX pipe streams opened with popen(3).
+ */
+struct posix_pipe_release_policy
+{
+	void operator()(std::FILE* f) const { if(f != NULL) { pclose(f); } }
+};
+
+/**
+ * Scoped POSIX pipe stream.
+ *
+ * The stream object type is the same as a regular file stream, but the release
+ * policy is different, as required by popen(3).
+ */
+typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posix_pipe;
+
+/**
+ * Read a single line from the specified pipe.
+ *
+ * @returns An empty string if the pipe is invalid or nothing could be read.
+ */
+std::string read_pipe_line(scoped_posix_pipe& p)
+{
+	if(!p.get()) {
+		return "";
+	}
+
+	std::string ver;
+	int c;
+	
+	ver.reserve(64);
+	
+	// We only want the first line.
+	while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
+		ver.push_back(static_cast<char>(c));
+	}
+	
+	return ver;
+}
+#endif
 
 } // end anonymous namespace
-#endif
 
 std::string os_version()
 {
 #if defined(_X11) || defined(__APPLE__)
+	
+#ifdef __APPLE__
+
+	//
+	// Standard Mac OSX version
+	//
+	
+	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
+	static const std::string defaults_bin = "/usr/bin/defaults";
+	
+	if(filesystem::file_exists(defaults_bin) && filesystem::file_exists(version_plist)) {
+		static const std::string cmdline
+				= defaults_bin + " read " + version_plist + " ProductUserVisibleVersion";
+
+		scoped_posix_pipe p(popen(cmdline.c_str(), "r"));
+		const std::string& ver = read_pipe_line(p);
+
+		if(!ver.empty()) {
+			return "Apple OS X " + ver;
+		}
+	}
+
+#else
+
+	//
+	// Linux Standard Base version.
+	//
+
+	static const std::string lsb_release_bin = "/usr/bin/lsb_release";
+
+	if(filesystem::file_exists(lsb_release_bin)) {
+		static const std::string cmdline = lsb_release_bin + " -s -d";
+
+		scoped_posix_pipe p(popen(cmdline.c_str(), "r"));
+		std::string ver = read_pipe_line(p);
+
+		if(ver.length() >= 2 && ver[0] == '"' && ver[ver.length() - 1] == '"') {
+			ver.erase(ver.length() - 1, 1);
+			ver.erase(0, 1);
+		}
+
+		// Check this again in case we got "" above for some weird reason.
+		if(!ver.empty()) {
+			return ver;
+		}
+	}
+#endif
+
+	//
+	// POSIX uname version.
+	//
 
 	utsname u;
 
@@ -87,6 +182,11 @@ std::string os_version()
 						<< u.machine).str();
 
 #elif defined(_WIN32)
+
+	//
+	// Windows version.
+	//
+
 	static const std::string base
 			= !on_wine() ? "Microsoft Windows" : "Wine/Microsoft Windows";
 
@@ -168,6 +268,10 @@ std::string os_version()
 	return base + " " + version;
 
 #else
+
+	//
+	// "I don't know where I am" version.
+	//
 
 	ERR_DU << "os_version(): unsupported platform\n";
 	return _("operating_system^<unknown>");

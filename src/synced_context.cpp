@@ -27,6 +27,7 @@
 #include "resources.hpp"
 #include "synced_checkup.hpp"
 #include "game_data.hpp"
+#include "game_board.hpp"
 #include "network.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
@@ -52,6 +53,8 @@ static lg::log_domain log_replay("replay");
 
 synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
 int synced_context::last_unit_id_ = 0;
+synced_context::tconfig_vector synced_context::undo_commands_ = synced_context::tconfig_vector();
+synced_context::tconfig_vector synced_context::redo_commands_ = synced_context::tconfig_vector();
 bool synced_context::is_simultaneously_ = false;
 
 bool synced_context::run(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
@@ -239,7 +242,7 @@ int synced_context::get_unit_id_diff()
 {
 	//this method only works in a synced context.
 	assert(is_synced());
-	return n_unit::id_manager::instance().get_save_id() - last_unit_id_;
+	return resources::gameboard->unit_id_manager().get_save_id() - last_unit_id_;
 }
 
 namespace
@@ -257,15 +260,7 @@ namespace
 
 void synced_context::pull_remote_user_input()
 {
-	//code copied form persist_var, feels strange to call ai::.. functions for something where the ai isn't involved....
-	//note that ai::manager::raise_sync_network isn't called by the ai at all anymore (one more reason to put it somehwere else)
 	try{
-		if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
-		{
-			//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
-			//because that might result in crashs if someone clicks anywhere during screenlock.
-			ai::manager::raise_user_interact();
-		}
 		syncmp_registry::pull_remote_choice();
 	}
 	catch(network::error& err)
@@ -387,6 +382,16 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	}
 }
 
+void synced_context::add_undo_commands(const config& commands)
+{
+	undo_commands_.insert(undo_commands_.begin(), new config(commands));
+}
+
+void synced_context::add_redo_commands(const config& commands)
+{
+	redo_commands_.insert(redo_commands_.begin(), new config(commands));
+}
+
 set_scontext_synced_base::set_scontext_synced_base()
 	: new_rng_(synced_context::get_rng_for_action())
 	, old_rng_(random_new::generator)
@@ -396,7 +401,9 @@ set_scontext_synced_base::set_scontext_synced_base()
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneously();
-	synced_context::set_last_unit_id(n_unit::id_manager::instance().get_save_id());
+	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
+	synced_context::reset_undo_commands();
+	synced_context::reset_redo_commands();
 	old_rng_ = random_new::generator;
 	random_new::generator = new_rng_.get();
 }
@@ -452,7 +459,7 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 	config co;
 	config cn = config_of
 		("random_calls", new_rng_->get_random_calls())
-		("next_unit_id", n_unit::id_manager::instance().get_save_id() + 1);
+		("next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1);
 	if(checkup_instance->local_checkup(cn, co))
 	{
 		return;
@@ -503,15 +510,14 @@ int set_scontext_synced::get_random_calls()
 
 
 leave_synced_context::leave_synced_context()
-	: new_rng_()
-	, old_rng_(random_new::generator)
+	: old_rng_(random_new::generator)
 {
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
 	//calling the synced rng form inside a local_choice would cause oos.
 	//TODO: should we also reset the synced checkup?
-	random_new::generator = &new_rng_;
+	random_new::generator = &random_new::rng::default_instance();
 }
 
 leave_synced_context::~leave_synced_context()

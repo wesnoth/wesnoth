@@ -35,9 +35,8 @@ public:
 					  int& village_income,
 					  int& village_support,
 					  bool& fog,
-					  bool& share_view,
 					  bool& shroud,
-					  bool& share_maps,
+					  team::SHARE_VISION& share_vision,
 					  team::CONTROLLER& controller,
 					  bool& no_leader,
 					  bool& hidden);
@@ -51,9 +50,8 @@ public:
 						int& village_income,
 						int& village_support,
 						bool& fog,
-						bool& share_view,
 						bool& shroud,
-						bool& share_maps,
+						team::SHARE_VISION& share_vision,
 						team::CONTROLLER& controller,
 						bool& no_leader,
 						bool& hidden,
@@ -67,9 +65,8 @@ public:
 								 village_income,
 								 village_support,
 								 fog,
-								 share_view,
 								 shroud,
-								 share_maps,
+								 share_vision,
 								 controller,
 								 no_leader,
 								 hidden).show(video);
@@ -78,17 +75,21 @@ public:
 private:
 	void pre_show(CVideo& /*video*/, twindow& window);
 
-	void register_controller_toggle(twindow& window,
-									const std::string& toggle_id,
-									team::CONTROLLER value);
+	template <typename T>
+	void register_radio_toggle(twindow& window, const std::string& toggle_id, T enum_value, T& current_value, std::vector<std::pair<ttoggle_button*, T> >& dst);
 
 	team::CONTROLLER& controller_;
 
+	team::SHARE_VISION& share_vision_;
+
 	typedef std::pair<ttoggle_button*, team::CONTROLLER> controller_toggle;
-	// Dialog display state variables.
 	std::vector<controller_toggle> controller_tgroup_;
 
-	void toggle_controller_callback(ttoggle_button* active);
+	typedef std::pair<ttoggle_button*, team::SHARE_VISION> vision_toggle;
+	std::vector<vision_toggle> vision_tgroup_;
+
+	template <typename C>
+	void toggle_radio_callback(const std::vector<std::pair<ttoggle_button*, C> >& vec, C& value, ttoggle_button* active);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

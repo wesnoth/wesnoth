@@ -21,7 +21,6 @@
 #include "save_index.hpp"
 #include "carryover.hpp"
 #include "config_assign.hpp"
-#include "game_initialization/configure_engine.hpp"
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "format_time_summary.hpp"
 #include "formula_string_utils.hpp"
@@ -97,27 +96,19 @@ loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestat
 	, select_difficulty_(false)
 {}
 
-void loadgame::show_dialog(bool show_replay, bool cancel_orders)
+void loadgame::show_dialog()
 {
-	//FIXME: Integrate the load_game dialog into this class
-	//something to watch for the curious, but not yet ready to go
-	if (gui2::new_widgets){
-		gui2::tgame_load load_dialog(game_config_);
-		load_dialog.show(gui_.video());
+	// FIXME: Integrate the load_game dialog into this class
+	// something to watch for the curious, but not yet ready to go
+	gui2::tgame_load load_dialog(game_config_);
+	load_dialog.show(gui_.video());
 
-		if (load_dialog.get_retval() == gui2::twindow::OK) {
-			select_difficulty_ = load_dialog.change_difficulty();
+	if (load_dialog.get_retval() == gui2::twindow::OK) {
+		select_difficulty_ = load_dialog.change_difficulty();
 
-			filename_ = load_dialog.filename();
-			show_replay_ = load_dialog.show_replay();
-			cancel_orders_ = load_dialog.cancel_orders();
-		}
-	} else {
-		bool show_replay_dialog = show_replay;
-		bool cancel_orders_dialog = cancel_orders;
-		filename_ = dialogs::load_game_dialog(gui_, game_config_, &select_difficulty_, &show_replay_dialog, &cancel_orders_dialog);
-		show_replay_ = show_replay_dialog;
-		cancel_orders_ = cancel_orders_dialog;
+		filename_ = load_dialog.filename();
+		show_replay_ = load_dialog.show_replay();
+		cancel_orders_ = load_dialog.cancel_orders();
 	}
 }
 
@@ -128,49 +119,31 @@ void loadgame::show_difficulty_dialog()
 	const config& cfg_summary = info.summary();
 
 	if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
-		|| (!cfg_summary["turn"].empty()) )
+		|| (!cfg_summary["turn"].empty()) ) {
 		return;
+	}
 
 	std::string campaign_id = cfg_summary["campaign"];
-	const config::const_child_itors &campaigns = game_config_.child_range("campaign");
-	std::vector<std::string> difficulties;
-	std::vector<std::pair<std::string, bool> > difficulty_options;
-	BOOST_FOREACH(const config &campaign, campaigns)
+
+	BOOST_FOREACH(const config &campaign, game_config_.child_range("campaign"))
 	{
-		if (campaign["id"] == campaign_id) {
-			difficulties = utils::split(campaign["difficulties"], ',');
-			std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
-			if (difficulty_opts.size() != difficulties.size()) {
-				difficulty_opts = difficulties;
-			}
-			for (size_t i = 0; i < difficulties.size(); i++) {
-				difficulty_options.push_back(make_pair(difficulty_opts[i], preferences::is_campaign_completed(campaign_id, difficulties[i])));
-			}
-			break;
+		if(campaign["id"] != campaign_id) {
+			continue;
 		}
-	}
 
-	if (difficulty_options.empty())
-		return;
+		gui2::tcampaign_difficulty difficulty_dlg(campaign);
+		difficulty_dlg.show(gui_.video());
 
-#if 0
-	int default_difficulty = -1;
-	for (size_t i = 0; i < difficulties.size(); i++) {
-		if (difficulties[i] == cfg_summary["difficulty"]) {
-			default_difficulty = i;
-			break;
+		// Return if canceled, since otherwise difficulty_ will be set to 'CANCEL'
+		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
+			return;
 		}
+
+		difficulty_ = difficulty_dlg.selected_difficulty();
+
+		// Exit loop
+		break;
 	}
-#endif
-
-	gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
-	difficulty_dlg.show(gui_.video());
-
-	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
-		return;
-	}
-
-	difficulty_ = difficulties[difficulty_dlg.selected_index()];
 }
 
 // Called only by play_controller to handle in-game attempts to load. Instead of returning true,
@@ -178,7 +151,7 @@ void loadgame::show_difficulty_dialog()
 bool loadgame::load_game()
 {
 	if (!gui_.video().faked()) {
-		show_dialog(false, false);
+		show_dialog();
 	}
 
 	if(filename_.empty()) {
@@ -216,7 +189,7 @@ bool loadgame::load_game(
 	select_difficulty_ = select_difficulty;
 
 	if (filename_.empty()){
-		show_dialog(show_replay, cancel_orders);
+		show_dialog();
 	}
 	else{
 		show_replay_ = show_replay;
@@ -309,7 +282,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 		symbols["version_number"] = save_version.str();
 		const int res = gui2::show_message(video, _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::tmessage::yes_no_buttons);
-		return res == gui2::twindow::OK; 
+		return res == gui2::twindow::OK;
 	}
 
 	return true;
@@ -322,7 +295,7 @@ void loadgame::set_gamestate()
 
 bool loadgame::load_multiplayer_game()
 {
-	show_dialog(false, false);
+	show_dialog();
 
 	if (filename_.empty())
 		return false;
@@ -400,7 +373,7 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 
 	const int res = show_save_dialog(video, message, dialog_type);
 
-	if (res == 2) { 
+	if (res == 2) {
 		throw_quit_game_exception(); //Quit game
 	}
 
@@ -445,7 +418,7 @@ bool savegame::check_overwrite(CVideo& video)
 	message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename_;
 	const int res = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
 	return res == gui2::twindow::OK;
-	
+
 }
 
 bool savegame::check_filename(const std::string& filename, CVideo& video)
@@ -541,7 +514,7 @@ void savegame::write_game(config_writer &out)
 	log_scope("write_game");
 
 	out.write_key_val("version", game_config::version);
-	
+
 	gamestate_.write_general_info(out);
 	out.open_child("statistics");
 	statistics::write_stats(out);
@@ -827,7 +800,6 @@ static void convert_old_saves_1_13_0(config& cfg)
 	{
 		cfg.clear_children("carryover_sides");
 	}
-#if 1
 	//This code is needed because for example otherwise it won't find the (empty) era
 	if(!cfg.has_child("multiplayer")) {
 		cfg.add_child("multiplayer", config_of
@@ -837,19 +809,45 @@ static void convert_old_saves_1_13_0(config& cfg)
 			("mp_use_map_settings", true)
 		);
 	}
-	//the alternative code down below doesn’t work replay saves or start of scenario saves
-	//because those don't contain a snapshot. If the code below works with we can enable that code
-	//If it turns out that this code works well we can delete that code.
-#else
+}
 
-	if(!cfg.has_child("multiplayer") && cfg["campaign_type"] == "scenario") {
-		saved_game tmp(cfg);
-		ng::configure_engine eng(tmp);
-		eng.set_default_values();
-		tmp.mp_settings().mp_era = "era_blank";
-		cfg.add_child("multiplayer", tmp.mp_settings().to_config());
+
+//changes done during 1.13.0+dev
+static void convert_old_saves_1_13_1(config& cfg)
+{
+	if(config& multiplayer = cfg.child("multiplayer")) {
+		if(multiplayer["mp_era"] == "era_blank") {
+			multiplayer["mp_era"] = "era_default";
+		}
 	}
-#endif
+	//This currently only fixes start-of-scenario saves.
+	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
+	{
+		BOOST_FOREACH(config& side, carryover_sides_start.child_range("side"))
+		{
+			BOOST_FOREACH(config& unit, side.child_range("unit"))
+			{
+				if(config& modifications = unit.child("modifications"))
+				{
+					BOOST_FOREACH(config& advancement, modifications.child_range("advance"))
+					{
+						modifications.add_child("advancement", advancement);
+					}
+					modifications.clear_children("advance");
+				}
+			}
+		}
+	}
+	BOOST_FOREACH(config& snapshot, cfg.child_range("snapshot")) {
+		if (snapshot.has_attribute("used_items")) {
+			config used_items;
+			BOOST_FOREACH(const std::string& item, utils::split(snapshot["used_items"])) {
+				used_items[item] = true;
+			}
+			snapshot.remove_attribute("used_items");
+			snapshot.add_child("used_items", used_items);
+		}
+	}
 }
 
 void convert_old_saves(config& cfg)
@@ -864,6 +862,10 @@ void convert_old_saves(config& cfg)
 	if(loaded_version < version_info("1.13.1"))
 	{
 		convert_old_saves_1_13_0(cfg);
+	}
+	if(loaded_version <= version_info("1.13.1"))
+	{
+		convert_old_saves_1_13_1(cfg);
 	}
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }

@@ -201,15 +201,25 @@ const file_tree_checksum& data_tree_checksum(bool reset)
 	return checksum;
 }
 
-
+#if SDL_VERSION_ATLEAST(2,0,0)
+static Sint64 ifs_size (struct SDL_RWops * context);
+static Sint64 SDLCALL ifs_seek(struct SDL_RWops *context, Sint64 offset, int whence);
+static size_t SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, size_t size, size_t maxnum);
+static size_t SDLCALL ifs_write(struct SDL_RWops *context, const void *ptr, size_t size, size_t num);
+static int SDLCALL ifs_close(struct SDL_RWops *context);
+#else
 static int SDLCALL ifs_seek(struct SDL_RWops *context, int offset, int whence);
 static int SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, int size, int maxnum);
 static int SDLCALL ifs_write(struct SDL_RWops *context, const void *ptr, int size, int num);
 static int SDLCALL ifs_close(struct SDL_RWops *context);
+#endif
 
 SDL_RWops* load_RWops(const std::string &path) {
 	SDL_RWops *rw = SDL_AllocRW();
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+	rw->size = &ifs_size;
+#endif
 	rw->seek = &ifs_seek;
 	rw->read = &ifs_read;
 	rw->write = &ifs_write;
@@ -228,7 +238,29 @@ SDL_RWops* load_RWops(const std::string &path) {
 	return rw;
 }
 
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+static Sint64 ifs_size (struct SDL_RWops * context) {
+	std::istream *ifs = static_cast<std::istream*>(context->hidden.unknown.data1);
+	std::streampos orig = ifs->tellg();
+
+	ifs->seekg(0, std::ios::end);
+
+	std::streampos len = ifs->tellg();
+
+	ifs->seekg(orig);
+
+	return len;
+
+}
+#endif
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+static Sint64 SDLCALL ifs_seek(struct SDL_RWops *context, Sint64 offset, int whence) {
+#else
 static int SDLCALL ifs_seek(struct SDL_RWops *context, int offset, int whence) {
+#endif
+
 	std::ios_base::seekdir seekdir;
 	switch(whence){
 	case RW_SEEK_SET:
@@ -261,7 +293,12 @@ static int SDLCALL ifs_seek(struct SDL_RWops *context, int offset, int whence) {
 	std::streamsize pos = ifs->tellg();
 	return static_cast<int>(pos);
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+static size_t SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, size_t size, size_t maxnum) {
+#else
 static int SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, int size, int maxnum) {
+#endif
 	std::istream *ifs = static_cast<std::istream*>(context->hidden.unknown.data1);
 
 	// This seems overly simplistic, but it's the same as mem_read's implementation
@@ -274,7 +311,12 @@ static int SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, int size, int 
 
 	return static_cast<int>(num);
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+static size_t SDLCALL ifs_write(struct SDL_RWops * /*context*/, const void * /*ptr*/, size_t /*size*/, size_t /*num*/) {
+#else
 static int SDLCALL ifs_write(struct SDL_RWops * /*context*/, const void * /*ptr*/, int /*size*/, int /*num*/) {
+#endif
 	SDL_SetError("Writing not implemented");
 	return 0;
 }

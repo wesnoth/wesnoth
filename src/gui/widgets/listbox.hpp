@@ -22,7 +22,7 @@
 
 namespace gui2
 {
-
+class tselectable_;
 namespace implementation
 {
 struct tbuilder_listbox;
@@ -226,6 +226,9 @@ public:
 		list_builder_ = list_builder;
 	}
 
+	void order_by(const tgenerator_::torder_func& func);
+
+	void set_column_order(unsigned col, const std::vector<tgenerator_::torder_func>& func);
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -297,6 +300,8 @@ private:
 
 	bool need_layout_;
 
+	typedef std::vector<std::pair<tselectable_*, std::vector<tgenerator_::torder_func> > > torder_list;
+	torder_list orders_;
 	/**
 	 * Resizes the content.
 	 *
@@ -332,6 +337,8 @@ private:
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
+
+	void order_by_column(unsigned column, twidget& widget);
 };
 
 } // namespace gui2

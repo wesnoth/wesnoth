@@ -30,6 +30,7 @@ carryover::carryover(const config& side)
 		, previous_recruits_(side.has_attribute("recruit") ? utils::set_split(side["recruit"]) :utils::set_split(side["previous_recruits"]))
 		, recall_list_()
 		, save_id_(side["save_id"])
+		, variables_(side.child_or_empty("variables"))
 {
 	BOOST_FOREACH(const config& u, side.child_range("unit")){
 		recall_list_.push_back(u);
@@ -49,6 +50,7 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, previous_recruits_(t.recruits())
 		, recall_list_()
 		, save_id_(t.save_id())
+		, variables_(t.variables())
 {
 	BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 		recall_list_.push_back(config());
@@ -73,7 +75,8 @@ void carryover::transfer_all_gold_to(config& side_cfg){
 	else if(gold_ > cfg_gold){
 		side_cfg["gold"] = gold_;
 	}
-
+	side_cfg.child_or_add("variables").swap(variables_);
+	variables_.clear();
 	gold_ = 0;
 }
 
@@ -138,8 +141,10 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 		}
 		this->carryover_sides_.push_back(carryover(side));
 	}
-
-	wml_menu_items_.set_menu_items(cfg);
+	BOOST_FOREACH(const config& item, cfg.child_range("menu_item"))
+	{
+		wml_menu_items_.push_back(new config(item));
+	}
 }
 
 std::vector<carryover>& carryover_info::get_all_sides() {
@@ -198,7 +203,8 @@ void carryover_info::transfer_all_to(config& side_cfg){
 	}
 }
 
-void carryover_info::transfer_to(config& level){
+void carryover_info::transfer_to(config& level)
+{
 	if(!level.has_attribute("next_underlying_unit_id"))
 	{
 		level["next_underlying_unit_id"] = next_underlying_unit_id_;
@@ -216,10 +222,15 @@ void carryover_info::transfer_to(config& level){
 	}
 
 	if(!level.has_child("menu_item")){
-		wml_menu_items_.to_config(level);
+		BOOST_FOREACH(config& item , wml_menu_items_)
+		{
+			level.add_child("menu_item").swap(item);
+		}
 	}
 
 	next_scenario_ = "";
+	variables_ = config();
+	wml_menu_items_.clear();
 
 }
 
@@ -237,9 +248,10 @@ const config carryover_info::to_config()
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);
-
-	wml_menu_items_.to_config(cfg);
-
+	BOOST_FOREACH(const config& item , wml_menu_items_)
+	{
+		cfg.add_child("menu_item", item);
+	}
 	return cfg;
 }
 

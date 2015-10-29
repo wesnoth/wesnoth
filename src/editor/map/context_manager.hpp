@@ -109,6 +109,9 @@ public:
 	/** Menu expanding for open maps list */
 	void expand_open_maps_menu(std::vector<std::string>& items);
 
+	/** Menu expanding for most recent loaded list */
+	void expand_load_mru_menu(std::vector<std::string>& items);
+
 	/** Menu expanding for the map's player sides */
 	void expand_sides_menu(std::vector<std::string>& items);
 
@@ -123,6 +126,9 @@ public:
 
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);
+
+	/** Open the specified entry from the recent files list. */
+	void load_mru_item(unsigned index, bool force_same_context = false);
 
 	/** Display a scenario edit dialog and process user input. */
 	void edit_scenario_dialog();
@@ -256,6 +262,10 @@ private:
 	 */
 	bool check_switch_open_map(const std::string& fn);
 
+	/**
+	 * Displays the specified map name in the window titlebar
+	 */
+	void set_window_title();
 public:
 	/**
 	 * Load a map given the filename

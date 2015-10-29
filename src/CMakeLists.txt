@@ -15,26 +15,56 @@ else(MSVC)
 endif(MSVC)
 
 
-include_directories(SYSTEM ${SDL_INCLUDE_DIR} )
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
 include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
-#optional dependencies
-if(SDLIMAGE_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLIMAGE_INCLUDE_DIR} )
-endif()
-if(SDLMIXER_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLMIXER_INCLUDE_DIR} )
-endif()
-if(SDLNET_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLNET_INCLUDE_DIR} )
-endif()
-if(SDLTTF_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDLTTF_INCLUDE_DIR} )
-endif()
+if(ENABLE_SDL2)
+	include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
+	set(sdl-lib ${SDL2_LIBRARY})
+	set(sdlmain-lib ${SDL2MAIN_LIBRARY})
+	#optional dependencies
+	if(SDL2IMAGE_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR} )
+		set(sdl_image-lib ${SDL2_IMAGE_LIBRARY})
+	endif()
+	if(SDL2MIXER_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR} )
+		set(sdl_mixer-lib ${SDL2_MIXER_LIBRARY})
+	endif()
+	if(SDL2NET_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2NET_INCLUDE_DIR} )
+		set(sdl_net-lib ${SDL2_NET_LIBRARY})
+	endif()
+	if(SDL2TTF_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDL2TTF_INCLUDE_DIR} )
+		set(sdl_ttf-lib ${SDL2_TTF_LIBRARY})
+	endif()
+else(ENABLE_SDL2)
+	include_directories(SYSTEM ${SDL_INCLUDE_DIR} )
+	set(sdl-lib ${SDL_LIBRARY})
+	set(sdlmain-lib ${SDLMAIN_LIBRARY})
+	#optional dependencies
+	if(SDLIMAGE_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLIMAGE_INCLUDE_DIR} )
+		set(sdl_image-lib ${SDLIMAGE_LIBRARY})
+	endif()
+	if(SDLMIXER_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLMIXER_INCLUDE_DIR} )
+		set(sdl_mixer-lib ${SDLMIXER_LIBRARY})
+	endif()
+	if(SDLNET_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLNET_INCLUDE_DIR} )
+		set(sdl_net-lib ${SDLNET_LIBRARY})
+	endif()
+	if(SDLTTF_INCLUDE_DIR)
+		include_directories(SYSTEM ${SDLTTF_INCLUDE_DIR} )
+		set(sdl_ttf-lib ${SDLTTF_LIBRARY})
+	endif()
+endif(ENABLE_SDL2)
+
 if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
 endif()
@@ -65,14 +95,14 @@ if(MSVC)
 	# Since MSVC does autolinking of boost adding those files will duplicate
 	# the includes and cause build errors.
 	set(common-external-libs
-		${SDL_LIBRARY}
-		${SDLMAIN_LIBRARY}
+		${sdl-lib}
+		${sdlmain-lib}
 		ws2_32.lib
 		${sdl_gpu-lib-vc}
 	)
 else(MSVC)
 	set(common-external-libs
-		${SDL_LIBRARY}
+		${sdl-lib}
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
@@ -101,9 +131,9 @@ set(game-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
-	${SDLIMAGE_LIBRARY}
-	${SDLMIXER_LIBRARY}
-	${SDLTTF_LIBRARY}
+	${sdl_image-lib}
+	${sdl_mixer-lib}
+	${sdl_ttf-lib}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
@@ -136,18 +166,18 @@ endif(MSVC)
 
 set(server-external-libs
 	${common-external-libs}
-	${SDLNET_LIBRARY}
+	${sdl_net-lib}
 	${Boost_SYSTEM_LIBRARIES}
 )
 
 set(game-external-libs
 	${game-external-libs}
-	${SDLNET_LIBRARY}
+	${sdl_net-lib}
 )
 
 set(tools-external-libs
 	${common-external-libs}
-	${SDLIMAGE_LIBRARY}
+	${sdl_image-lib}
 	${Boost_FILESYSTEM_LIBRARY}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
@@ -432,8 +462,8 @@ add_library(wesnoth-sdl
 )
 
 target_link_libraries(wesnoth-sdl
-	${SDL_LIBRARY}
-	${SDLIMAGE_LIBRARY}
+	${sdl-lib}
+	${sdl_image-lib}
 )
 
 # The main library is rather huge especially in debug mode, causing quite a bit
@@ -709,6 +739,7 @@ set(wesnoth-main_SRC
 	actions/undo_recall_action.cpp
 	actions/undo_recruit_action.cpp
 	actions/undo_update_shroud_action.cpp
+	actions/unit_creator.cpp
 	actions/vision.cpp
 	addon/client.cpp
 	addon/info.cpp
@@ -874,6 +905,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/game_save.cpp
 	gui/dialogs/game_version.cpp
 	gui/dialogs/gamestate_inspector.cpp
+	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
 	gui/dialogs/lobby/lobby_data.cpp
 	gui/dialogs/lobby/lobby_info.cpp
@@ -896,6 +928,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/screenshot_notification.cpp
 	gui/dialogs/simple_item_selector.cpp
+	gui/dialogs/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
@@ -925,6 +958,7 @@ set(wesnoth-main_SRC
 	mouse_handler_base.cpp
 	movetype.cpp
 	mp_game_settings.cpp
+	mp_replay_controller.cpp
 	game_initialization/mp_game_utils.cpp
 	game_initialization/mp_options.cpp
 	mp_ui_alerts.cpp
@@ -992,6 +1026,7 @@ set(wesnoth-main_SRC
 	synced_checkup.cpp
 	synced_context.cpp
 	synced_commands.cpp
+	synced_user_choice.cpp
 	syncmp_handler.cpp
 	team.cpp
 	teambuilder.cpp
@@ -1073,6 +1108,7 @@ set(libwesnoth-game_STAT_SRC
 	preferences.cpp
 	preferences_display.cpp
 	race.cpp
+	quit_confirmation.cpp
 	reports.cpp
 	show_dialog.cpp
 	simple_rng.cpp
@@ -1314,7 +1350,7 @@ set(schema_generator_SRC
 	tools/schema/sourceparser.cpp
 	tools/schema/error_container.cpp
 	tools/schema/tag.cpp
-	filesystem.cpp
+	filesystem_boost.cpp
 	filesystem_common.cpp
 	loadscreen_empty.cpp
 )
@@ -1336,7 +1372,7 @@ set(schema_validator_SRC
 	serialization/validator.cpp
 	tools/dummy_video.cpp
 	tools/schema/tag.cpp
-	filesystem.cpp
+	filesystem_boost.cpp
 	filesystem_common.cpp
 	config_cache.cpp
 	utils/sha1.cpp

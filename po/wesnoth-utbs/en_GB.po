@@ -3,13 +3,14 @@
 # PJR <pjr@britishlibrary.net>, 2006.
 # Peter J Ross <wesnoth@pjr.britishlibrary.net>, 2007.
 # Steven Panek <Majora700@gmail.com>, 2011.
+# Wedge009 <wedge009@wedge009.net>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2013-01-04 16:58-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"PO-Revision-Date: 2015-08-29 10:48+1000\n"
+"Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
 "Language: en_GB\n"
@@ -17,6 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.4\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -112,7 +114,7 @@ msgstr "And special thanks to everyone else who I forgot to mention."
 #. [lua]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:181
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:5
@@ -141,10 +143,8 @@ msgstr "Kaleh"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:33
-#, fuzzy
-#| msgid "team_name^Trolls"
 msgid "team_name^Quenoth Elves"
-msgstr "Troll"
+msgstr "Quenoth Elves"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:59
@@ -653,18 +653,12 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:748
-#, fuzzy
-#| msgid ""
-#| "The water of the lake suddenly goes dark and unsettled, only to erupt in "
-#| "a swarm of tentacles in the moment that the first elf put a foot outside "
-#| "the island."
 msgid ""
 "The water of the lake suddenly goes dark and unsettled, only to erupt in a "
 "swarm of tentacles the moment the first elf set foot off the island."
 msgstr ""
 "The water of the lake suddenly goes dark and unsettled, only to erupt in a "
-"swarm of tentacles in the moment that the first elf put a foot outside the "
-"island."
+"swarm of tentacles the moment the first elf set foot off the island."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:757
@@ -893,15 +887,11 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1170
-#, fuzzy
-#| msgid ""
-#| "We’ve explored the village and I think we’ve rescued the last of the "
-#| "survivors."
 msgid ""
 "We’ve explored the village, and I think we’ve rescued the last of the "
 "survivors."
 msgstr ""
-"We’ve explored the village and I think we’ve rescued the last of the "
+"We’ve explored the village, and I think we’ve rescued the last of the "
 "survivors."
 
 #. [message]: speaker=unit
@@ -1273,7 +1263,7 @@ msgid ""
 "the night, this journey will be hard on our people."
 msgstr ""
 "Unfortunately, because of our hasty flight from our village, we are short on "
-"waterskins and rations. We’ll have enough if we move quickly and eat as "
+"water-skins and rations. We’ll have enough if we move quickly and eat as "
 "little as possible, but we won’t last long in the wastes if we can’t find "
 "more sources of water. As it is, between the heat of the day and the cold of "
 "the night, this journey will be hard on our people."
@@ -1292,7 +1282,7 @@ msgstr ""
 "During the daytime (Dawn, Morning, Midday, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
 "dune hex will suffer from thirst. Each turn of thirst reduces a unit’s "
-"attack damage and causes $dehydration_loss hitpoints of damage. Healers can "
+"attack damage and causes $dehydration_loss hit-points of damage. Healers can "
 "prevent dehydration from becoming worse, but cannot heal it. Only by "
 "refreshing at an oasis (any water hex) at the start of your turn will your "
 "units regain full attack strength."
@@ -1657,8 +1647,8 @@ msgid ""
 msgstr ""
 "I am, I’m a fire mage. I’ve been travelling for quite a while now, exploring "
 "and learning. But these sands seem particularly inhospitable! I’ve been "
-"meaning to check out the northern mountains; mind if I join you for a while "
-"in your travels?"
+"meaning to visit the northern mountains; mind if I join you for a while in "
+"your travels?"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1199
@@ -2060,7 +2050,7 @@ msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
 msgstr ""
-"These lost souls cannot hold onto anything but memories of lives long gone. "
+"These lost souls cannot hold on to anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
 
 #. [message]: speaker=Kaleh
@@ -2176,7 +2166,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:395
 msgid "... think so. You really know how to pick a campsite, Kaleh."
-msgstr "... think so. You really know how to pick a campsite, Kaleh."
+msgstr "... think so. You really know how to pick a camp-site, Kaleh."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:399
@@ -2287,8 +2277,8 @@ msgid ""
 "You will not do any such thing, anyone trying to fight these creeps "
 "singlehanded will surely die. We need you, we will not make it without you."
 msgstr ""
-"You will not do any such thing, anyone trying to fight these creeps "
-"singlehanded will surely die. We need you, we will not make it without you."
+"You will not do any such thing, anyone trying to fight these creeps single-"
+"handed will surely die. We need you, we will not make it without you."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:629
@@ -2397,8 +2387,8 @@ msgid ""
 "their dark magics unravel."
 msgstr ""
 "Look, dawn is nigh, our salvation is almost at hand. Even the long dark "
-"can’t last forever, and with the light of the sun the undead power wanes and "
-"their dark magics unravel."
+"can’t last for ever, and with the light of the sun the undead power wanes "
+"and their dark magics unravel."
 
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:923
@@ -2625,7 +2615,7 @@ msgstr ""
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1528
 msgid "Hahaha...!"
-msgstr "Hahaha...!"
+msgstr "Ha ha ha...!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1532
@@ -2643,7 +2633,7 @@ msgid ""
 "Hahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again my minions and feast in the slaughter!"
 msgstr ""
-"Hahaha! Your puny friend is no more. With his body I shall crush you all. "
+"Ha ha ha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again my minions and feast in the slaughter!"
 
 #. [unit]: type=Orcish Leader, type=Orcish Ruler, id=Ganthos
@@ -2725,7 +2715,7 @@ msgid ""
 "Difficult, but worth a try I guess. But first we must try to survive this "
 "mess."
 msgstr ""
-"Difficult, but worth a try I guess. But first we must try to survive this "
+"Difficult, but worth a try I suppose. But first we must try to survive this "
 "mess."
 
 #. [message]: speaker=Nym
@@ -3171,8 +3161,8 @@ msgid ""
 "Well if we are going to go under these mountains, we’re certainly going to "
 "have our hands full fighting all those orcs and goblins."
 msgstr ""
-"Well if we are going to go under these mountains, we’re certainly going to "
-"have our hands full fighting all those orcs and goblins."
+"Well if we are going under these mountains, we’re certainly going to have "
+"our hands full fighting all those orcs and goblins."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:393
@@ -3556,7 +3546,7 @@ msgid ""
 msgstr ""
 "Having killed all the orc and goblin leaders in the immediate vicinity, we "
 "can take our time and should have no trouble bringing the rest of our people "
-"down this way. It’s odd, I guess we’re trading the dangers we know for the "
+"down this way. It’s odd, I suppose we’re trading the dangers we know for the "
 "dangers we don’t. We really are putting our lives in Eloh’s palm; may she "
 "guide us as well as she has before."
 
@@ -3569,7 +3559,7 @@ msgid ""
 "may she guide as well as she has before."
 msgstr ""
 "Now that you’ve found the way we should be able to get the rest of our "
-"people past the orcs. It’s odd, I guess we’re trading the dangers we know "
+"people past the orcs. It’s odd, I suppose we’re trading the dangers we know "
 "for the dangers we don’t. We really are putting our lives in Eloh’s palm, "
 "may she guide as well as she has before."
 
@@ -3800,13 +3790,6 @@ msgstr "What are trolls?"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:505
-#, fuzzy
-#| msgid ""
-#| "Trolls were huge green creatures as big as giants and very strong. They "
-#| "were reclusive creatures, hiding underground. We never had much contact "
-#| "with them, though some fought with the orcs in the great wars. They were "
-#| "mighty warriors. I’m sure they have all died off; I certainly would never "
-#| "want to meet one face to face."
 msgid ""
 "Trolls were huge gray creatures as big as giants and very strong. They were "
 "reclusive creatures, hiding underground. We never had much contact with "
@@ -3814,7 +3797,7 @@ msgid ""
 "warriors. I’m sure they have all died off; I certainly would never want to "
 "meet one face to face."
 msgstr ""
-"Trolls were huge green creatures as big as giants and very strong. They were "
+"Trolls were huge grey creatures as big as giants and very strong. They were "
 "reclusive creatures, hiding underground. We never had much contact with "
 "them, though some fought with the orcs in the great wars. They were mighty "
 "warriors. I’m sure they have all died off; I certainly would never want to "
@@ -4136,9 +4119,9 @@ msgstr ""
 "While you were fighting, a separate clan of trolls sneaked around our "
 "sentries and flanked us, attacking our supply depots. There are more of "
 "those stinking buggers than we had originally thought. To tell you the "
-"truth, we are hard pressed. We’re going to have to pull back all our forces "
-"in these caves to reinforce the back lines. But your victory here has "
-"produced a unexpected opportunity."
+"truth, we are hard pressed. We will have to pull back all our forces in "
+"these caves to reinforce the back lines. But your victory here has produced "
+"a unexpected opportunity."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:989
@@ -4319,7 +4302,7 @@ msgid ""
 "drive these lummoxes from our tunnels."
 msgstr ""
 "Those monsters killed me boys. Kaleh, if you be of stout heart, help us "
-"drive these lummoxes from our tunnels."
+"drive these fools from our tunnels."
 
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1298
@@ -4808,16 +4791,6 @@ msgstr "Troll High Shaman"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:418
-#, fuzzy
-#| msgid ""
-#| "This passage leads very close to the trolls’ main lair; you can hear them "
-#| "tromping back and forth just past the eastern wall. All that separates us "
-#| "from the trolls is a thin wall of stone. I’ve had me boys mine the end of "
-#| "the tunnel with explosives; when you move a unit adjacent to the final "
-#| "wall, I’ll blow the charges and open the way. The troll leader should "
-#| "only be lightly defended; he’s sent most of his best warriors to the "
-#| "front. You’ll know the head troll when you see him — he’s big, green and "
-#| "extra ugly."
 msgid ""
 "This passage leads very close to the trolls’ main lair; you can hear them "
 "tromping back and forth just past the eastern wall. All that separates us "
@@ -4833,7 +4806,7 @@ msgstr ""
 "the tunnel with explosives; when you move a unit adjacent to the final wall, "
 "I’ll blow the charges and open the way. The troll leader should only be "
 "lightly defended; he’s sent most of his best warriors to the front. You’ll "
-"know the head troll when you see him — he’s big, green and extra ugly."
+"know the head troll when you see him — he’s big, grey and extra ugly."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:423
@@ -4924,11 +4897,6 @@ msgstr "Fire in the hole!"
 # Someone needs to correct the original string.
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:565
-#, fuzzy
-#| msgid ""
-#| "My work here is done. I must report back to my King. I have many more "
-#| "things to do before the day is done, but I will once you finish your "
-#| "mission. Fight well!"
 msgid ""
 "My work here is done. I must report back to my King. I have many more things "
 "to do before the day is done, but I will return once you finish your "
@@ -5037,7 +5005,7 @@ msgid ""
 "They have broken through the outer guard-line. Destroy the bridge, they must "
 "not pass!"
 msgstr ""
-"They have broken through the outer guardpost. Destroy the bridge, they must "
+"They have broken through the outer guard-post. Destroy the bridge, they must "
 "not pass!"
 
 #. [message]: speaker=$explorer.id
@@ -5047,9 +5015,9 @@ msgid ""
 "they think the lava can hold us back. Well, we’ll show them. It will take "
 "more than a little heat to stop us!"
 msgstr ""
-"Uh, I take that back. Still, the trolls don’t seem to be advancing. I guess "
-"they think the lava can hold us back. Well, we’ll show them. It will take "
-"more than a little heat to stop us!"
+"Uh, I take that back. Still, the trolls don’t seem to be advancing. I "
+"suppose they think the lava can hold us back. Well, we’ll show them. It will "
+"take more than a little heat to stop us!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:976
@@ -5091,10 +5059,10 @@ msgid ""
 "the unit leaves this pool, it will suffer the standard $heat_damage damage "
 "each turn from the heat."
 msgstr ""
-"At the start of each turn, any unit currently in this pool will heal 10 "
-"hitpoints and will not be affected by the heat in the cavern. Of course, if "
-"the unit leaves this pool, it will suffer the standard $heat_damage damage "
-"each turn from the heat."
+"At the start of each turn, any unit currently in this pool will heal 10 hit-"
+"points and will not be affected by the heat in the cavern. Of course, if the "
+"unit leaves this pool, it will suffer the standard $heat_damage damage each "
+"turn from the heat."
 
 #. [message]: role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1075
@@ -5638,7 +5606,7 @@ msgid ""
 msgstr ""
 "Zurg must have collapsed the tunnel. Perhaps he didn’t want to give the "
 "dwarves an easy access route if they defeated us. So much for an escape "
-"route, I guess we’ll just have to be sure not to fail."
+"route, I suppose we’ll just have to be sure not to fail."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:614
@@ -5776,8 +5744,8 @@ msgid ""
 "What?! Nothing happened! Who rigged the darn charges anyway? I’m going to "
 "have to hold them off by myself."
 msgstr ""
-"What?! Nothing happened! Who rigged the darn charges anyway? I’m going to "
-"have to hold them off by myself."
+"What?! Nothing happened! Who rigged the darn charges anyway? I’ll have to "
+"hold them off by myself."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:950
@@ -5799,7 +5767,7 @@ msgid ""
 "So I challenge you, man to man. If you are not cowards, step out onto these "
 "bridges and meet your fate!"
 msgstr ""
-"So I challenge you, man to man. If you are not cowards, step out onto these "
+"So I challenge you, man to man. If you are not cowards, step out on to these "
 "bridges and meet your fate!"
 
 #. [message]: speaker=Jorgi
@@ -6490,8 +6458,8 @@ msgid ""
 "will strike again."
 msgstr ""
 "And now I think you should be off as soon as possible. The trolls have "
-"retreated back into their holes for the present, but who knows when they "
-"will strike again?"
+"retreated into their holes for the present, but who knows when they will "
+"strike again?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:558
@@ -6850,10 +6818,8 @@ msgstr "Out of the Frying Pan"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:190
-#, fuzzy
-#| msgid "Human Escort"
 msgid "Humans"
-msgstr "Human Escort"
+msgstr "Humans"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:79
@@ -7008,10 +6974,8 @@ msgstr "We haven’t a moment to lose!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:779
-#, fuzzy
-#| msgid "Hey look, more ants!"
 msgid "Hey look, ants!"
-msgstr "Hey look, more ants!"
+msgstr "Hey look, ants!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:785
@@ -7025,10 +6989,6 @@ msgstr "Are you sure there aren’t any spiders?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:806
-#, fuzzy
-#| msgid ""
-#| "No, but the water is rising to the southeast as well. The river must have "
-#| "led to more tunnels than we first thought."
 msgid ""
 "No, but the water is rising to the southeast as well. The river must lead to "
 "more tunnels than we first thought."
@@ -7038,16 +6998,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:813
-#, fuzzy
-#| msgid ""
-#| "I don’t see any spiders, but the water is rising to the southeast as "
-#| "well. The river must have lead to more tunnels than we first thought."
 msgid ""
 "I don’t see any spiders, but the water is rising to the southeast as well. "
 "The river must lead to more tunnels than we first thought."
 msgstr ""
 "I don’t see any spiders, but the water is rising to the south-east as well. "
-"The river must have lead to more tunnels than we first thought."
+"The river must lead to more tunnels than we first thought."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:820
@@ -7060,7 +7016,7 @@ msgid ""
 "They seem confused, leaderless. I guess it’s every ant for itself. Uh, oh. "
 "Some of them seem to have noticed us."
 msgstr ""
-"They seem confused, leaderless. I guess it’s every ant for itself. Uh, oh. "
+"They seem confused, leaderless. I suppose it’s every ant for itself. Uh, oh. "
 "Some of them seem to have noticed us."
 
 #. [message]: speaker=Kaleh
@@ -7113,19 +7069,13 @@ msgstr "Huh? A troll?"
 
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:915
-#, fuzzy
-#| msgid ""
-#| "Yeah, just like my old grandmam used to tell us: dark green skin, beady "
-#| "red eyes, hulking brutes with brains as small as a barnacle. They lurk "
-#| "deep in the earth and hate everything that lives above ground. This must "
-#| "be an invasion! The trolls must have started the flood!"
 msgid ""
 "Yeah, just like my old grandmam used to tell us: dark gray skin, beady red "
 "eyes, hulking brutes with brains as small as a barnacle. They lurk deep in "
 "the earth and hate everything that lives above ground. This must be an "
 "invasion! The trolls must have started the flood!"
 msgstr ""
-"Yeah, just like my old grandmam used to tell us: dark green skin, beady red "
+"Yeah, just like my old grandmam used to tell us: dark grey skin, beady red "
 "eyes, hulking brutes with brains as small as a barnacle. They lurk deep in "
 "the earth and hate everything that lives above ground. This must be an "
 "invasion! The trolls must have started the flood!"
@@ -7450,7 +7400,7 @@ msgstr "I feel refreshed and rejuvenated!"
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1454
 msgid "The rune is gone. I guess the magic only had limited uses."
-msgstr "The rune is gone. I guess the magic only had limited uses."
+msgstr "The rune is gone. I suppose the magic only had limited uses."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1494
@@ -7557,7 +7507,7 @@ msgid ""
 msgstr ""
 "Come on! I ain’t going anywhere for the rest of the day, and unless you can "
 "fight better than that, neither are you. Now get your sorry behinds up off "
-"the ground and do it all over again. You numbskulls aren’t getting the easy "
+"the ground and do it all over again. You numb-skulls aren’t getting the easy "
 "treatment on my watch, no sir!"
 
 #. [message]: speaker=Novice Pior
@@ -7570,7 +7520,7 @@ msgstr "Finally, we get to take a break. I am so sick of fighting practice."
 msgid ""
 "Kali’s just a hardass because he’s bitter that he never became a high priest."
 msgstr ""
-"Kali’s just a hardarse because he’s bitter that he never became a high "
+"Kali’s just a hard-arse because he’s bitter that he never became a high "
 "priest."
 
 #. [message]: speaker=Novice Iona
@@ -8199,7 +8149,7 @@ msgstr ""
 "They brought some humans, bound up tight. So beautiful... she had flaming "
 "red hair... they cut her... I can still hear her screaming. But that was "
 "only the beginning. They chanted words of power, and spilled the hot blood "
-"onto the sand and then I heard their screams of agony and pain..."
+"on to the sand and then I heard their screams of agony and pain..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2556
@@ -8544,9 +8494,9 @@ msgstr ""
 "oath. I do not like the above ground, it is too open and exposed; I feel "
 "that I could be attacked from any direction. But an oath is an oath and so I "
 "will follow you and your people wherever you may go, and protect you as best "
-"I can. The tunnels cannot stay flooded forever; later perhaps, if am able to "
-"return this way, I may be able to find my way back to my homeland. But for "
-"now I am yours to command."
+"I can. The tunnels cannot stay flooded for ever; later perhaps, if am able "
+"to return this way, I may be able to find my way back to my homeland. But "
+"for now I am yours to command."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2837
@@ -8866,8 +8816,8 @@ msgid ""
 msgstr ""
 "Dead?! You ‘found’ them you say? You’ll pardon me if I don’t take you at "
 "your word. We haven’t seen elves for generations, but we remember your "
-"ancient betrayal. What are elves doing sneaking up through the caves out "
-"onto our back doorstep?"
+"ancient betrayal. What are elves doing sneaking up through the caves out on "
+"to our back doorstep?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3281
@@ -9048,7 +8998,7 @@ msgid ""
 msgstr ""
 "There’s no time. Right now we have to prepare ourselves for another battle. "
 "I’d better head back to the outpost and rally our troops. I fear a whole lot "
-"of hurt is going to be coming up through those hills very soon."
+"of hurt will be coming up through those hills very soon."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3436
@@ -9115,10 +9065,10 @@ msgid ""
 "half-manned. They obviously didn’t expect any serious attack to come from "
 "this direction."
 msgstr ""
-"Anyway you’ve really gotten us into a mess. The good news is that the "
-"outpost isn’t guarded as heavily as you might think. The garrison seems only "
-"half-manned. They obviously didn’t expect any serious attack to come from "
-"this direction."
+"Anyway you’ve really got us into a mess. The good news is that the outpost "
+"isn’t guarded as heavily as you might think. The garrison seems only half-"
+"manned. They obviously didn’t expect any serious attack to come from this "
+"direction."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3577
@@ -9417,7 +9367,7 @@ msgid ""
 msgstr ""
 "So what do we do now? The land seems to be about the same on the northern "
 "side of the mountains as it was on the south. And we can’t hang around here "
-"forever. The humans will be back with reinforcements eventually, and the "
+"for ever. The humans will be back with reinforcements eventually, and the "
 "valley is still haunted with undead."
 
 #. [message]: speaker=Kaleh
@@ -9860,13 +9810,6 @@ msgstr ""
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:435
-#, fuzzy
-#| msgid ""
-#| "My master wanted to make sure that if one of us was captured, we couldn’t "
-#| "betray his location. So she didn’t tell us where she was, but she taught "
-#| "us a simple spell to divine her hiding place. But it requires three "
-#| "merfolk to cast. So in order to find her, we must rescue at least two of "
-#| "my people. Though I hope we can save all of them."
 msgid ""
 "My master wanted to make sure that if one of us was captured, we couldn’t "
 "betray her location. So she didn’t tell us where she was, but she taught us "
@@ -9875,10 +9818,10 @@ msgid ""
 "Though I hope we can save all of them."
 msgstr ""
 "My master wanted to make sure that if one of us was captured, we couldn’t "
-"betray his location. So she didn’t tell us where she was, but she taught us "
+"betray her location. So she didn’t tell us where she was, but she taught us "
 "a simple spell to divine her hiding place. But it requires three merfolk to "
-"cast. So, in order to find her, we must rescue at least two of my people—"
-"though I hope we can save all of them."
+"cast. So in order to find her, we must rescue at least two of my people. "
+"Though I hope we can save all of them."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:439
@@ -10384,7 +10327,7 @@ msgid ""
 "If I were a landwalker, I might think the view from this sandbar to be "
 "amazing. But I am a creature of the sea and I see views like this every day."
 msgstr ""
-"If I were a landwalker, I might think the view from this sandbar to be "
+"If I were a land-walker, I might think the view from this sandbar to be "
 "amazing. But I am a creature of the sea and I see views like this every day."
 
 #. [message]: speaker=Zelgant
@@ -11264,7 +11207,7 @@ msgid ""
 "retreat back into the dunes?"
 msgstr ""
 "Our people are scattered and exhausted; where will we go now, Kaleh? Shall "
-"we retreat back into the dunes?"
+"we retreat into the dunes?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2336
@@ -11618,7 +11561,7 @@ msgstr ""
 "We’ll meet you along the coastline west of here. Don’t worry about losing "
 "us, we’ll stick to the coast and the merfolk will help us keep in contact. "
 "Once we’ve escaped and are out of range of any counter-attacks by the "
-"humans, we can load the rest of our people onto the ships."
+"humans, we can load the rest of our people on to the ships."
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2772
@@ -11821,20 +11764,6 @@ msgstr "Yes, we know about this age."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:268
-#, fuzzy
-#| msgid ""
-#| "This will go much faster if you don’t interrupt me. Now, as I was saying "
-#| "the Empire of Wesnoth was very learned in the magical arts and had vast "
-#| "repositories of knowledge. Back then there was only one sun in the sky, "
-#| "the sun you call Sela. But the king decreed that he would raise a second "
-#| "sun into the heavens, to lengthen their days and shorten the darkness. "
-#| "All the mages, sorcerers and wise men came together and cast a mountain "
-#| "into the sky and made it glow as bright as the sun. They sent this second "
-#| "sun, who you call Naia, hurling through the sky so that there was only a "
-#| "few hours of dark each night. Though some had called the attempt foolish, "
-#| "it was a resounding success and stood as a tribute to the power and might "
-#| "of the humans. The golden age glowed brighter than ever and the many "
-#| "believed that they had dispelled evil and darkness forever."
 msgid ""
 "This will go much faster if you don’t interrupt me. Now, as I was saying the "
 "Empire of Wesnoth was very learned in the magical arts and had vast "
@@ -11849,35 +11778,21 @@ msgid ""
 "humans. The golden age glowed brighter than ever and the many believed that "
 "they had dispelled evil and darkness forever."
 msgstr ""
-"This will go much faster if you don’t interrupt me. Now, as I was saying: "
-"the Empire of Wesnoth was very learned in the magical arts and had vast "
+"This will go much faster if you don’t interrupt me. Now, as I was saying the "
+"Empire of Wesnoth was very learned in the magical arts and had vast "
 "repositories of knowledge. Back then there was only one sun in the sky, the "
 "sun you call Sela. But the king decreed that he would raise a second sun "
 "into the heavens, to lengthen their days and shorten the darkness. All the "
 "mages, sorcerers and wise men came together and cast a mountain into the sky "
-"and made it glow as bright as the sun. They sent this second sun, who you "
-"call Naia, hurling through the sky so that there was only a few hours of "
-"dark each night. Though some had called the attempt foolish, it was a "
+"and made it glow as bright as the sun. They sent this second sun, the one "
+"you call Naia, hurtling through the sky so that only a few hours of darkness "
+"remained each night. Though some had called the attempt foolish, it was a "
 "resounding success and stood as a tribute to the power and might of the "
 "humans. The golden age glowed brighter than ever and the many believed that "
-"they had dispelled evil and darkness forever."
+"they had dispelled evil and darkness for ever."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:273
-#, fuzzy
-#| msgid ""
-#| "But with their prosperity and power, over the generations the humans grew "
-#| "arrogant. One day a young descendant of the original king decreed that "
-#| "darkness should be abolished altogether from the land, so that light and "
-#| "goodness would shine forth everywhere. But the people had grown lazy and "
-#| "complacent and the ranks of mages who still trained hard to harness the "
-#| "magical arts had decreased greatly. Still the king believed he was all-"
-#| "powerful and would not listen to the mages’ protests. So, seeking to "
-#| "duplicate their ancestors’ previous success, the mages tried to lift a "
-#| "second mountain into the sky. But a great evil befell them that day; "
-#| "their power failed and the mountain crashed down onto the humans capital, "
-#| "crushing all within it. In an instant the center of the Empire of Wesnoth "
-#| "was utterly destroyed."
 msgid ""
 "But with their prosperity and power, over the generations the humans grew "
 "arrogant. One day a young descendant of the original king decreed that "
@@ -11901,9 +11816,9 @@ msgstr ""
 "powerful and would not listen to the mages’ protests. So, seeking to "
 "duplicate their ancestors’ previous success, the mages tried to lift a "
 "second mountain into the sky. But a great evil befell them that day; their "
-"power failed and the mountain crashed down onto the humans capital, crushing "
-"all within it. In an instant the centre of the Empire of Wesnoth was utterly "
-"destroyed."
+"power failed and the mountain crashed down on to the humans' capital, "
+"crushing all within it. In an instant the centre of the Empire of Wesnoth "
+"was utterly destroyed."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:278
@@ -12132,7 +12047,7 @@ msgid ""
 "have the strength to stand up to such a force. If we do not, who will?"
 msgstr ""
 "You must realize that if she is not stopped, who knows how far her "
-"pestilence might spread? I have scryed far and wide and there are few that "
+"pestilence might spread? I have scried far and wide and there are few that "
 "have the strength to stand up to such a force. If we do not, who will?"
 
 #. [message]: speaker=Zhul
@@ -12159,14 +12074,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:363
-#, fuzzy
-#| msgid ""
-#| "Because in the end, I’m afraid you just have to trust us. If we wanted to "
-#| "capture you we could have already. But we are not here to force you to do "
-#| "anything. Feel free to leave if you want, we can take you back to land. "
-#| "But you will find few friends among the wilds north of the mountains, and "
-#| "the humans will be searching for you. Eloh’s reach is long and her "
-#| "vengeance is terrible."
 msgid ""
 "Because in the end, I’m afraid you just have to trust us. If we wanted to "
 "capture you we could have already. But we are not here to force you to do "
@@ -12175,12 +12082,12 @@ msgid ""
 "humans will be searching for you. Yechnagoth’s reach is long and her "
 "vengeance is terrible."
 msgstr ""
-"Because, in the end, I’m afraid you just have to trust us. If we wanted to "
+"Because in the end, I’m afraid you just have to trust us. If we wanted to "
 "capture you we could have already. But we are not here to force you to do "
 "anything. Feel free to leave if you want, we can take you back to land. But "
 "you will find few friends among the wilds north of the mountains, and the "
-"humans will be searching for you. Eloh’s reach is long and her vengeance is "
-"terrible."
+"humans will be searching for you. Yechnagoth’s reach is long and her "
+"vengeance is terrible."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:368
@@ -12433,8 +12340,8 @@ msgid ""
 "would give you whole army of trolls, but I am afraid you only have Grog. "
 "Still, Grog will do what he can to see her destroyed."
 msgstr ""
-"Even in deepest tunnels my people could not escape Yechnagoth’s power "
-"forever if she is not stopped. Against such evil I am sure the Great Leader "
+"Even in deepest tunnels my people could not escape Yechnagoth’s power for "
+"ever if she is not stopped. Against such evil I am sure the Great Leader "
 "would give you whole army of trolls, but I am afraid you only have Grog. "
 "Still, Grog will do what he can to see her destroyed."
 
@@ -12446,8 +12353,8 @@ msgid ""
 "would give you whole army of trolls, but I am afraid you only have Nog. "
 "Still, Nog will do what he can to see her destroyed."
 msgstr ""
-"Even in deepest tunnels my people could not escape Yechnagoth’s power "
-"forever if she is not stopped. Against such evil I am sure the Great Leader "
+"Even in deepest tunnels my people could not escape Yechnagoth’s power for "
+"ever if she is not stopped. Against such evil I am sure the Great Leader "
 "would give you whole army of trolls, but I am afraid you only have Nog. "
 "Still, Nog will do what he can to see her destroyed."
 
@@ -12461,7 +12368,7 @@ msgid ""
 "king would give you a whole army of dwarves, but I am afraid you only have "
 "me. Still, I will do what I can to see her destroyed."
 msgstr ""
-"Even in the deepest tunnels underground we could not forever escape "
+"Even in the deepest tunnels underground we could not for ever escape "
 "Yechnagoth’s power if she remains unchecked. Against such evil I am sure my "
 "king would give you a whole army of dwarves, but I am afraid you only have "
 "me. Still, I will do what I can to see her destroyed."
@@ -12635,16 +12542,12 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:635
-#, fuzzy
-#| msgid ""
-#| "I will do as you ask. It is only fair. But if if this battle goes ill I "
-#| "do not think there will be many safe places left in the known lands."
 msgid ""
 "I will do as you ask. It is only fair. But if this battle goes ill I do not "
 "think there will be many safe places left in the known lands."
 msgstr ""
-"I will do as you ask. It is only fair. But if if this battle goes ill I do "
-"not think there will be many safe places left in the known lands."
+"I will do as you ask. It is only fair. But if this battle goes ill I do not "
+"think there will be many safe places left in the known lands."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:640
@@ -13987,7 +13890,7 @@ msgid ""
 msgstr ""
 "I stumbled out into the daylight, scarcely believing that we were "
 "victorious. Looking out over the island it took me a moment to realize what "
-"had changed. The fetid darkness had lifted from the land and I saw the suns "
+"had changed. The foetid darkness had lifted from the land and I saw the suns "
 "shining brightly for what seemed like the first time in ages. Gazing across "
 "the bright green trees and sparkling ocean I realized that once this had "
 "been a place of beauty. Several of our brethren were waiting for me and I "
@@ -14432,7 +14335,7 @@ msgid ""
 "kind has done for our people."
 msgstr ""
 "I am saddened by the death of Grog, but by saving my life in the end he did "
-"fulfill his life debt to me. I think he also would have been glad to have "
+"fulfil his life debt to me. I think he also would have been glad to have "
 "died in battle. I considered leading an expedition to go back and return his "
 "body to his people, but my fellow elves have been weakened by our long "
 "journey and I do not want to risk losing any more. Instead I searched all "
@@ -14457,7 +14360,7 @@ msgid ""
 "kind has done for our people."
 msgstr ""
 "I am saddened by the death of Nog, but by saving my life in the end he did "
-"fulfill his life debt to me. I think he also would have been glad to have "
+"fulfil his life debt to me. I think he also would have been glad to have "
 "died in battle. I considered leading an expedition to go back and return his "
 "body to his people, but my fellow elves have been weakened by our long "
 "journey and I do not want to risk losing any more. Instead I searched all "
@@ -14482,15 +14385,15 @@ msgid ""
 "service that his kind has done for our people."
 msgstr ""
 "I am saddened by the death of Rogrimir, but by saving my life in the end he "
-"did fulfill his life debt to me. I think he also would have been glad to "
-"have died in battle. I considered leading an expedition to go back and "
-"return his body to his people, but my fellow elves have been weakened by our "
-"long journey and I do not want to risk losing any more. Instead I searched "
-"all across the islands and at last in the rocky outcroppings to the north-"
-"west I found a series of caves. They were not as deep as his homeland but I "
-"thought Rogrimir would have appreciated being laid to rest under some solid "
-"rock. And so we buried him with much honour and will long remember the "
-"service that his kind has done for our people."
+"did fulfil his life debt to me. I think he also would have been glad to have "
+"died in battle. I considered leading an expedition to go back and return his "
+"body to his people, but my fellow elves have been weakened by our long "
+"journey and I do not want to risk losing any more. Instead I searched all "
+"across the islands and at last in the rocky outcroppings to the north-west I "
+"found a series of caves. They were not as deep as his homeland but I thought "
+"Rogrimir would have appreciated being laid to rest under some solid rock. "
+"And so we buried him with much honour and will long remember the service "
+"that his kind has done for our people."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:281
@@ -14507,7 +14410,7 @@ msgid ""
 "kind has done for our people."
 msgstr ""
 "I am saddened by the death of Jarl, but by saving my life in the end he did "
-"fulfill his life debt to me. I think he also would have been glad to have "
+"fulfil his life debt to me. I think he also would have been glad to have "
 "died in battle. I considered leading an expedition to go back and return his "
 "body to his people, but my fellow elves have been weakened by our long "
 "journey and I do not want to risk losing any more. Instead I searched all "
@@ -14962,7 +14865,7 @@ msgid ""
 "forms of combat. Like their kin, they prefer the sword to the bow and are "
 "adept at sneaking around and backstabbing their enemies."
 msgstr ""
-"Desert Avengers are extremely skillful and extremely quick, powerful in all "
+"Desert Avengers are extremely skilful and extremely quick, powerful in all "
 "forms of combat. Like their kin, they prefer the sword to the bow and are "
 "adept at sneaking around and backstabbing their enemies."
 
@@ -15345,7 +15248,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shyde.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg:25
 msgid "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
-msgstr " This unit can fly across any terrain except deep water."
+msgstr "This unit can fly across any terrain except deep water."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shyde.cfg:30
@@ -15375,7 +15278,7 @@ msgstr ""
 #. [unit_type]: id=Desert Star
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg:25
 msgid "SPECIAL_NOTE^ It also gains a 10% bonus to resistance from all attacks."
-msgstr " It also gains a 10% bonus to resistance from all attacks."
+msgstr "It also gains a 10% bonus to resistance from all attacks."
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg:4
@@ -15455,16 +15358,10 @@ msgstr "sustenance"
 
 #. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:239
-#, fuzzy
-#| msgid ""
-#| "Sustenance:\n"
-#| "This unit’s resistances are increased by 20% in daylight, on defense and "
-#| "attack. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
 msgstr ""
-"Sustenance:\n"
 "This unit’s resistances are increased by 20% in daylight, on defence and "
 "attack. Vulnerabilities are not affected."
 
@@ -15485,16 +15382,10 @@ msgstr "stun"
 #. [dummy]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:278
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:280
-#, fuzzy
-#| msgid ""
-#| "Stun:\n"
-#| "This attack puts enormous pressure on the enemy, disrupting his ZOC if a "
-#| "hit is landed. Not active on defense."
 msgid ""
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
 "is landed. Not active on defense."
 msgstr ""
-"Stun:\n"
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
 "is landed. Not active on defence."
 
@@ -15511,16 +15402,6 @@ msgstr "camouflage"
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:301
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:304
-#, fuzzy
-#| msgid ""
-#| "Camouflage:\n"
-#| "This unit can hide in desert dunes, desert mountains and craters, and "
-#| "remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in desert dunes, desert "
-#| "mountains, oasis and craters, except if they have units next to it. Any "
-#| "enemy unit that first discovers this unit immediately loses all its "
-#| "remaining movement."
 msgid ""
 "This unit can hide in desert dunes, desert mountains and craters, and remain "
 "undetected by its enemies.\n"
@@ -15530,7 +15411,6 @@ msgid ""
 "enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Camouflage:\n"
 "This unit can hide in desert dunes, desert mountains and craters, and remain "
 "undetected by its enemies.\n"
 "\n"
@@ -15743,14 +15623,8 @@ msgstr "dust recuperation"
 
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:75
-#, fuzzy
-#| msgid ""
-#| "Dust Recuperation:\n"
-#| "The unit will heal itself 6 HP per turn on sand or dirt terrain."
 msgid "The unit will heal itself 6 HP per turn on sand or dirt terrain."
-msgstr ""
-"Dust Recuperation:\n"
-"The unit will heal itself 6 HP per turn on sand or dirt terrain."
+msgstr "The unit will heal itself 6 HP per turn on sand or dirt terrain."
 
 #. [advancement]: id=Dust1
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:81
@@ -15949,7 +15823,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Spectre.cfg:16
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Wraith.cfg:17
 msgid "SPECIAL_NOTE^ This unit is able to move through solid stone walls."
-msgstr " This unit is able to move through solid stone walls."
+msgstr "This unit is able to move through solid stone walls."
 
 #. [unit_type]: id=ENightgaunt
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:7
@@ -15961,7 +15835,7 @@ msgstr "Ethereal Nightgaunt"
 msgid ""
 "SPECIAL_NOTE^ Unlike normal Nightgaunts, Ethereal Nightgaunts cannot hide at "
 "night."
-msgstr " Unlike normal Nightgaunts, Ethereal Nightgaunts cannot hide at night."
+msgstr "Unlike normal Nightgaunts, Ethereal Nightgaunts cannot hide at night."
 
 #. [unit_type]: id=ENightgaunt
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:14
@@ -16000,7 +15874,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:17
 msgid ""
 "SPECIAL_NOTE^ Unlike normal Shadows, Ethereal Shadows cannot hide at night."
-msgstr " Unlike normal Shadows, Ethereal Shadows cannot hide at night."
+msgstr "Unlike normal Shadows, Ethereal Shadows cannot hide at night."
 
 #. [unit_type]: id=ESpectre
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Spectre.cfg:7
@@ -16068,9 +15942,9 @@ msgid ""
 "and over and over."
 msgstr ""
 "Haunts are the tortured souls of those who have died suddenly and never been "
-"laid to rest. Paralysed by the shock of their death, they are cursed to "
-"forever haunt the place of their death and relive their final moments over "
-"and over and over."
+"laid to rest. Paralysed by the shock of their death, they are cursed to for "
+"ever haunt the place of their death and relive their final moments over and "
+"over and over."
 
 #. [unit_type]: id=Spider Lich, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:4
@@ -16084,7 +15958,7 @@ msgid ""
 "sight to behold. Crawling around on huge skeletal legs, and wielding huge "
 "magical staves, these abominations are fearsome undead foes. "
 msgstr ""
-"No one is quite sure how spider liches are created, but they are horrific "
+"No one is quite sure how spider liches are created, but they are a horrific "
 "sight to behold. Crawling around on huge skeletal legs, and wielding huge "
 "magical staves, these abominations are fearsome undead foes. "
 
@@ -16398,11 +16272,11 @@ msgstr ""
 "I was giddy on the journey back home, my heart pumping with elation and "
 "pride. I had fought my first battle; now I was a man like my father. Then "
 "one night during the long dark a harsh wind came up, moaning and howling "
-"around our tents. By dawn it had only gotten worse; I wondered if some dark "
-"god was trying to avenge the massacre of the orcs. I’d seen sandstorms "
-"before, but I had never experienced one like this. I hid in my tent praying "
-"to Eloh as if my life depended on it. The air grew thick with sand, and "
-"everything grew dark and hazy..."
+"around our tents. By dawn it had only got worse; I wondered if some dark god "
+"was trying to avenge the massacre of the orcs. I’d seen sandstorms before, "
+"but I had never experienced one like this. I hid in my tent praying to Eloh "
+"as if my life depended on it. The air grew thick with sand, and everything "
+"grew dark and hazy..."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:35
@@ -16549,7 +16423,7 @@ msgstr ""
 "name of Uria was not yet known among our people, and our powers were so "
 "great that we raised another sun into the sky, so that the days were "
 "lengthened and dark hours were few. Happy indeed were our people during "
-"these long years, but it was not to last forever."
+"these long years, but it was not to last for ever."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:70
@@ -16574,7 +16448,7 @@ msgid ""
 msgstr ""
 "Eventually peace and prosperity fostered corruption and decadence. Through "
 "her powers of deception and guile, Uria cultivated secret groups of "
-"followers, promising to fulfill their darkest desires. She bided her time, "
+"followers, promising to fulfil their darkest desires. She bided her time, "
 "and slowly stretched her black hands out across the world. At first, petty "
 "arguments between humans, elves and dwarves erupted into conflicts, "
 "embroiling our people in the first wars they had fought for ages. Then orcs "
@@ -17349,7 +17223,7 @@ msgstr "Phantom Keep"
 #~ "them, they can often become confused."
 
 #~ msgid "Campfire"
-#~ msgstr "Campfire"
+#~ msgstr "Camp Fire"
 
 #~ msgid "Inner Summoning Circle"
 #~ msgstr "Inner Summoning Circle"

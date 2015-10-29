@@ -56,10 +56,14 @@ namespace pathfind {
  * team's shroud will be considered.
  */
 map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
-                              const unit* pass_check, const team* shroud_check)
+                              const unit* pass_check, const team* shroud_check, const game_board* board)
 {
-	const gamemap & map = resources::gameboard->map();
-	const unit_map & units = *resources::units;
+	if (!board) {
+		board = resources::gameboard;
+		assert(board);
+	}
+	const gamemap & map = board->map();
+	const unit_map & units = board->units();
 
 	if (!map.on_board(loc)) return map_location();
 

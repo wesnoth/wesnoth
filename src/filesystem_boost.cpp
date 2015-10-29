@@ -36,6 +36,7 @@ using boost::uintmax_t;
 #ifdef _WIN32
 #include <boost/locale.hpp>
 #include <windows.h>
+#include <shlobj.h>
 #endif /* !_WIN32 */
 
 #include "config.hpp"
@@ -444,7 +445,6 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 
 static path user_data_dir, user_config_dir, cache_dir;
 
-#ifndef _WIN32
 static const std::string& get_version_path_suffix()
 {
 	static std::string suffix;
@@ -461,7 +461,6 @@ static const std::string& get_version_path_suffix()
 
 	return suffix;
 }
-#endif
 
 static void setup_user_data_dir()
 {
@@ -480,33 +479,57 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
 }
+
+#ifdef _WIN32
+// As a convenience for portable installs on Windows, relative paths with . or
+// .. as the first component are considered relative to the current workdir
+// instead of Documents/My Games.
+static bool is_path_relative_to_cwd(const std::string& str)
+{
+	const path p(str);
+
+	if(p.empty()) {
+		return false;
+	}
+
+	return *p.begin() == "." || *p.begin() == "..";
+}
+#endif
+
 void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
-	if(newprefdir.empty()) {
-		user_data_dir = path(get_cwd()) / "userdata";
-	} else if (newprefdir.size() > 2 && newprefdir[1] == ':') {
+	if(newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
 		user_data_dir = newprefdir;
+	} else if(is_path_relative_to_cwd(newprefdir)) {
+		// Custom directory relative to workdir (for portable installs, etc.)
+		user_data_dir = get_cwd() + "/" + newprefdir;
 	} else {
-		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPWSTR, int, BOOL);
-		SHGSFPAddress SHGetSpecialFolderPathW;
-		HMODULE module = LoadLibraryA("shell32");
-		SHGetSpecialFolderPathW = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathW"));
-		if(SHGetSpecialFolderPathW) {
-			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
-			wchar_t my_documents_path[MAX_PATH];
-			if(SHGetSpecialFolderPathW(NULL, my_documents_path, 5, 1)) {
-				path mygames_path = path(my_documents_path) / "My Games";
-				create_directory_if_missing(mygames_path);
-				user_data_dir = mygames_path / newprefdir;
-			} else {
-				WRN_FS << "SHGetSpecialFolderPath failed\n";
-				user_data_dir = path(get_cwd()) / newprefdir;
-			}
-		} else {
-			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
+		if(newprefdir.empty()) {
+			newprefdir = "Wesnoth" + get_version_path_suffix();
+		}
+
+		wchar_t docs_path[MAX_PATH];
+
+		HRESULT res = SHGetFolderPathW(NULL,
+									   CSIDL_PERSONAL | CSIDL_FLAG_CREATE, NULL,
+									   SHGFP_TYPE_CURRENT,
+									   docs_path);
+		if(res != S_OK) {
+			//
+			// Crummy fallback path full of pain and suffering.
+			//
+			ERR_FS << "Could not determine path to user's Documents folder! ("
+				   << std::hex << "0x" << res << std::dec << ") "
+				   << "User config/data directories may be unavailable for "
+				   << "this session. Please report this as a bug.\n";
 			user_data_dir = path(get_cwd()) / newprefdir;
+		} else {
+			path games_path = path(docs_path) / "My Games";
+			create_directory_if_missing(games_path);
+
+			user_data_dir = games_path / newprefdir;
 		}
 	}
 
@@ -644,17 +667,21 @@ std::string get_cwd()
 }
 std::string get_exe_dir()
 {
-#ifndef _WIN32
-	path self_exe("/proc/self/exe");
-	error_code ec;
-	path exe = bfs::read_symlink(self_exe, ec);
-	if (ec) {
-		return std::string();
-	}
-
-	return exe.parent_path().string();
+#ifdef _WIN32
+    return get_cwd();
 #else
-	return get_cwd();
+    if (bfs::exists("/proc/")) {
+        path self_exe("/proc/self/exe");
+        error_code ec;
+        path exe = bfs::read_symlink(self_exe, ec);
+        if (ec) {
+            return std::string();
+        }
+
+        return exe.parent_path().string();
+    } else {
+        return get_cwd();
+    }
 #endif
 }
 

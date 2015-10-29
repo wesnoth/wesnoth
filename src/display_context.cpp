@@ -22,6 +22,10 @@
 
 #include <boost/foreach.hpp>
 
+std::vector<std::string>& display_context::hidden_label_categories_ref() {
+	return const_cast<std::vector<std::string>&>(this->hidden_label_categories());
+}
+
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
 {
 	map_location adjs[6];

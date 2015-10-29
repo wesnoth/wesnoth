@@ -284,7 +284,7 @@ void tcampaign_selection::post_show(twindow& window)
 		choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
 		deterministic_ = find_widget<ttoggle_button>(&window,
 													 "checkbox_deterministic",
-													 false).get_value();
+													 false).get_value_bool();
 
 		preferences::set_modifications(engine_.active_mods(), false);
 	} else {
@@ -292,7 +292,7 @@ void tcampaign_selection::post_show(twindow& window)
 						  .get_selected_row();
 		deterministic_ = find_widget<ttoggle_button>(&window,
 													 "checkbox_deterministic",
-													 false).get_value();
+													 false).get_value_bool();
 	}
 }
 

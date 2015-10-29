@@ -22,6 +22,7 @@
 #include "savegame_config.hpp"
 #include "unit_ptr.hpp"
 #include "util.hpp"
+#include "config.hpp"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/container/flat_set.hpp>
@@ -163,6 +164,7 @@ private:
 		bool carryover_add;
 		bool carryover_bonus;
 		int carryover_gold;
+		config variables;
 		void handle_legacy_share_vision(const config& cfg);
 	};
 
@@ -352,6 +354,8 @@ public:
 	bool carryover_bonus() const { return info_.carryover_bonus; }
 	void set_carryover_gold(int value) { info_.carryover_gold = value; }
 	int carryover_gold() const { return info_.carryover_gold; }
+	config& variables() { return info_.variables; }
+	const config& variables() const { return info_.variables; }
 
 	bool no_turn_confirmation() const { return info_.no_turn_confirmation; }
 	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
@@ -380,6 +384,12 @@ public:
 	bool share_maps() const { return info_.share_vision != SHARE_VISION::NONE ; }
 	bool share_view() const { return info_.share_vision == SHARE_VISION::ALL; }
 	SHARE_VISION share_vision() const { return info_.share_vision; }
+
+	void set_share_vision(const std::string& vision_status) {
+		info_.share_vision = lexical_cast_default<SHARE_VISION> (vision_status, SHARE_VISION::ALL);
+	}
+
+	void set_share_vision(SHARE_VISION vision_status) { info_.share_vision = vision_status; }
 
 	void handle_legacy_share_vision(const config& cfg)
 	{

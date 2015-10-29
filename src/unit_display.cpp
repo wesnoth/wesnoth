@@ -25,6 +25,7 @@
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
+#include "sound.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_animation_component.hpp"
@@ -573,7 +574,7 @@ void unit_die(const map_location& loc, unit& loser,
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
-                 int swing,std::string hit_text,int drain_amount,std::string att_text)
+                 int swing,std::string hit_text,int drain_amount,std::string att_text, const std::vector<std::string>* extra_hit_sounds)
 {
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
@@ -653,7 +654,15 @@ void unit_attack(display * disp, game_board & board,
 	animator.start_animations();
 	animator.wait_until(0);
 	int damage_left = damage;
+	bool extra_hit_sounds_played = false;
 	while(damage_left > 0 && !animator.would_end()) {
+		if(!extra_hit_sounds_played && extra_hit_sounds != NULL) {
+			BOOST_FOREACH (std::string hit_sound, *extra_hit_sounds) {
+				sound::play_sound(hit_sound);
+			}
+			extra_hit_sounds_played = true;
+		}
+
 		int step_left = (animator.get_end_time() - animator.get_animation_time() )/50;
 		if(step_left < 1) step_left = 1;
 		int removed_hp =  damage_left/step_left ;
@@ -868,9 +877,13 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 				secondary_loc = u->get_location().get_direction(dir);
 			}
 		}
+		config::attribute_value text = u->gender() == unit_race::FEMALE ? cfg["female_text"] : cfg["male_text"];
+		if(text.blank()) {
+			text = cfg["text"];
+		}
 		animator.add_animation(&*u, cfg["flag"], u->get_location(),
 			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(),
-			cfg["text"], text_color, hits, primary, secondary,
+			text.str(), text_color, hits, primary, secondary,
 			cfg["value_second"]);
 	}
 	const vconfig::child_list sub_anims = cfg.get_children("animate");

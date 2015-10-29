@@ -1,23 +1,28 @@
+# #-#-#-#-#  wesnoth-sof.cpp.pot (Battle for Wesnoth 1.12.4)  #-#-#-#-#
+# Japanese translations for Battle for Wesnoth package.
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators:
 # np <tukiplus@gmail.com>, 2009.
 # clearpotion <clearpotion+fantasy@gmail.com>, 2010.
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2011.
 # nolze, 2011.
-#
+# OOTA, Masato(oo), 2015.
+# RatArmy <broadbarredfirefish@gmail.com>, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth dev-trunk\n"
+"Project-Id-Version: Battle for Wesnoth 1.12.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
-"PO-Revision-Date: 2011-04-11 23:20+0900\n"
-"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
-"Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
-"Language: Japanese\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"PO-Revision-Date: 2015-08-18 10:37+0000\n"
+"Last-Translator: OOTA, Masato(oo)\n"
+"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
+"wesnoth112/language/ja_JP/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Language: Japanese\n"
-"X-Poedit-Country: JAPAN\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -59,7 +64,6 @@ msgstr "（難しい）"
 msgid "Lord"
 msgstr "君主"
 
-# 「～しましょう」に戻した。このキャンペーンのナレーションに合わせる。
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:22
 msgid ""
@@ -167,7 +171,7 @@ msgstr "Glildur"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:66
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:35
 msgid "Elves"
-msgstr "エルフ族"
+msgstr "エルフ"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:96
@@ -485,7 +489,6 @@ msgstr "Alanin"
 msgid "That’s right. I’ll be coming over along with the silver."
 msgstr "よし、私が銀と共にそちらに行きましょう。"
 
-# 通行料を払うこと無しに宝石や金を輸送させることはできん。
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:322
 msgid ""
@@ -570,9 +573,8 @@ msgstr ""
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:431
-#, fuzzy
 msgid "All the silver is there too. Proceed with the task, Rugnur!"
-msgstr "全ての金は渡ったな。仕事を始めよ、Rugnur！"
+msgstr "銀も全部そこにあるぞ。任務を続けよ、Rugnur！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:473
@@ -654,13 +656,12 @@ msgstr "お前たちの大切なLandarは俺の斧にキスできるだろうぜ
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:636
-#, fuzzy
 msgid ""
 "You just let a caravan, with <i>my</i> money loaded in it, get captured! If "
 "I can’t trust you to keep my property secure, the deal’s off."
 msgstr ""
-"そなたは余の金を積んだ隊商が捕まるのをただ許してしまった！ もしそなたが余の財"
-"産を安全に預かれぬようであれば、取引は無しだ。"
+"そなたは隊商を、<i>余の</i>銀を積んだ隊商を捕らえさせてしまったぞ！ 余の所有"
+"物を確実に保存できるとは信用できぬから、取引は取りやめだ。"
 
 #. [scenario]: id=2_Closing_the_Gates
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:3
@@ -713,13 +714,12 @@ msgstr "Baglurの死"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:161
-#, fuzzy
 msgid ""
 "These elves are right behind me! We have to go warn the council of this "
 "attack...!"
 msgstr ""
-"このエルフ共はちょうど俺の真後ろにいやがる！ 俺達は評議会にこの攻撃に関する通"
-"知をせにゃならん。"
+"あのエルフは俺のすぐ後にいるぞ！ この攻撃のことを評議会へ警告しに行かなけれ"
+"ば。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:165
@@ -769,13 +769,12 @@ msgstr "Baglur"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:229
-#, fuzzy
 msgid ""
 "Wait! Rugnur, dinna’ they tell you <i>anything</i> when you took command "
 "here?!"
 msgstr ""
-"待ちなされ、Rugnur！ あなたがここで指揮を執った時、彼らはあなたに「何か」話さ"
-"なんだかの？！？"
+"待ってくれ！ Rugnur、あなたがここの指揮を取ってるってのに、奴らに<i>好き勝手"
+"な</i>ことを言わせておいたりしないですよね？！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:233
@@ -811,7 +810,6 @@ msgstr ""
 msgid "Baglur, how do you close the gates?"
 msgstr "Baglur、どうすりゃ門を閉じられる？"
 
-# 最初の説明なのでここだけ　ルーン文字の刻印
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:249
 msgid ""
@@ -832,7 +830,6 @@ msgid "Don’t we have troops positioned near these glyphs, to unlock them?"
 msgstr ""
 "ロックを解除する為には兵士達を刻印の近くに配置させるだけではだめなのか？"
 
-# fuzzy
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:257
 msgid ""
@@ -858,14 +855,12 @@ msgstr ""
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:269
-#, fuzzy
 msgid ""
 "Have you made up your mind yet about surrendering? If you will not give up, "
 "prepare for battle!"
 msgstr ""
-"まだ投降する気にならないのか？！ もし投降しないのであれば、戦いの用意をしろ！"
+"降伏の件は決心がついたか？ 諦めるつもりがないのなら、戦闘の準備をするんだな！"
 
-# そんなことはさせん。
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:274
 msgid ""
@@ -885,7 +880,6 @@ msgstr ""
 "しかし、この入り口はどうします？ エルフ達は中央門と同じ位簡単に通り抜けられま"
 "すし、ここは閉じられません！"
 
-# gap 隙間　だと日本語では大きすぎる気がする
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:428
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:446
@@ -1087,7 +1081,6 @@ msgstr "なんだって？ 伝令が来なかったかい？"
 msgid "No."
 msgstr "いや。"
 
-# 我々はその門を閉じました、かなりの時間がかかりましたが。
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:175
 msgid ""
@@ -1097,7 +1090,6 @@ msgstr ""
 "私に説明させてください。Wesnothの王Haldric二世が門のところへいらっしゃってい"
 "ます。我々はその門を閉ざさるを得ませんでした。かなりの時間がかかりましたが。"
 
-# 閉じたのだ
 #. [message]: speaker=Glinar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:180
 msgid "What’d he want? And why’d you have to close the gate?"
@@ -1130,19 +1122,17 @@ msgstr ""
 "彼は先払いで5千の銀をよこし、彼が死ぬまでに俺達が完成品を届ければさらに5千く"
 "れる。"
 
-# %c
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:196
-#, fuzzy
 msgid ""
 "What?! You already accepted? Foolish boy, you should have come for one of "
 "the elders! We could have gotten much more than ten thousand silver out of "
 "him! This is a task that will take many years, and now all of our work in "
 "that time will bring us very little gain."
 msgstr ""
-"何だと？！？ 君は既にその取引を受けたのか？ 愚かな小僧、君は先に年長者に相談"
-"すべきだった！ 我々はもっと多くの銀を得られたはずだ！ これは何年もかかる仕事"
-"だ、そして我々の今の仕事は全てほとんど金にならない。"
+"何だって？！ すでに受け入れたのか？ 馬鹿な小僧め、長老の誰かを呼びに来るべき"
+"だったのだ！ 彼からは一万銀以上取れたはずだ！ こいつは何年もかかる仕事だし、"
+"その間に俺達は仕事でほんの少ししか儲けが出せないんだぞ。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:200
@@ -1151,20 +1141,18 @@ msgstr ""
 "すまねぇ、王。しかし、彼はもし取引をしないなら他の部族のところに行くと言った"
 "んだ。"
 
-# そして他の部族のところへ行くことなど出来ない。
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:204
-#, fuzzy
 msgid ""
 "Can’t you tell a bluff when you hear one?! He knows we’re the best "
 "craftsmen, and he wouldn’t have gone to another tribe if we stalled for a "
 "year. Oh well, what’s done is done. We’ll have to work for less than I would "
 "prefer..."
 msgstr ""
-"ブラフだと分からなかったのか？！？ 彼は我々が最高の職人だと知っている。そして"
-"一年引き延ばしたところで、他の部族の所へ行くことなど出来ない。まぁ、良い。済"
-"んだことは済んだことだ。私が望んでいたより少ない報酬の為に皆が働かねばならん"
-"な。"
+"聞いた時にハッタリだと分からなかったのか？！ 彼は俺達が最高の職人だと知ってる"
+"から、1年ぐらい引き伸ばしたって別の部族のところへ行くつもりなんてなかったんだ"
+"よ。まあしかたがない、済んだことは済んだことだ。私の好みより劣った作りにしな"
+"きゃならんだろうな……"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:208
@@ -1208,7 +1196,6 @@ msgstr ""
 "分かりましたよ、御主人。俺達は北へ行ってThursaganを見つければ良いわけですな。"
 "彼がどこにいるか、情報はありますか？"
 
-# そのあたりの丘にいるはずだ。
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:228
 msgid ""
@@ -1223,7 +1210,6 @@ msgstr ""
 msgid "What did I miss, eh?"
 msgstr "何を間違えてしまったのだろう？"
 
-# どこの馬の骨だ？　くらいかも
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:245
 msgid ""
@@ -1314,15 +1300,13 @@ msgstr "Krawg"
 #. vocal tract of a bird and is speaking through a beak.
 #. "Will you speak with us?"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:302
-#, fuzzy
 msgid "Kwill yooo spakkk wit uus?!"
-msgstr "ボクらとハナしてくれる？！？"
+msgstr "ボクらとハナしたいの？"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:307
-#, fuzzy
 msgid "Aah! What is that?!"
-msgstr "アーッ！ あれはなんだ？！？"
+msgstr "あぁぅ！ 何だあれは？！"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:311
@@ -1399,7 +1383,7 @@ msgstr "Kawn"
 #. "I see a house in the distance!"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:426
 msgid "Iii zeee hoose iiin eee d’zztaaan’eee!"
-msgstr ""
+msgstr "トオくにイエがミエるよ！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:432
@@ -1426,14 +1410,13 @@ msgid ""
 "He doesn’t want to talk to the gryphons, apparently. I think we’ll have to "
 "get someone there he will talk to..."
 msgstr ""
-"どうやら彼はグリフォンと話しをしたくないようです。私が思うに、誰かを話しに行"
-"かせなければいけません……。"
+"どうやら彼はグリフォンと話をしたくないようです。私が思うに、誰かを話に行かせ"
+"なければいけません……。"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:508
-#, fuzzy
 msgid "What do you people want?! Leave me alone!"
-msgstr "お前らは何が望みだ！？ ほっといてくれ！"
+msgstr "お前の仲間は何が望みだ？！ 一人にしてくれ！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:512
@@ -1516,13 +1499,10 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:552
-#, fuzzy
 msgid ""
 "Good. Now, there are still wild animals here... We have to get back into the "
 "caves."
-msgstr ""
-"ありがとうございます。ここにはまだ野生の動物達がいます……我々は洞窟へ戻らねば"
-"なりません。"
+msgstr "いいですよ。さて、まだ野獣がここにいます…… 洞窟に戻らないと。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:579
@@ -1646,9 +1626,8 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:191
-#, fuzzy
 msgid "It will be as it must, then. (<i>Grumble grumble</i>)"
-msgstr "（不満そうに）必要ならば仕方がない。（ブツブツ）"
+msgstr "では、やるべきことをせよ。(<i>ぶつぶつ</i>)"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:197
@@ -1714,7 +1693,6 @@ msgstr ""
 msgid "So, we will go to the eastern mines!"
 msgstr "では、俺達は東の鉱山へ行くぞ！"
 
-# 私は宝石を手に入れよう。我々の利益はほとんど消えてしまうが、
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:234
 msgid ""
@@ -1725,7 +1703,6 @@ msgstr ""
 "よろしい。宝石に関しては他の者に調達させよう。我々の支出がかなりかかってしま"
 "うだろうが、どうしようもない。我が民は宝石を掘らないからな。"
 
-#  恐らく　from schoolは卒業していない  卒業しているならgraduate of あたりらしい……たぶん
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:238
 msgid ""
@@ -1965,9 +1942,8 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:162
-#, fuzzy
 msgid "You’re going to cut the jewel?! Are you insane?"
-msgstr "宝石をカットするつもりか！？ 気でも狂ったか？"
+msgstr "宝石をカットしようとしているのか？！ 気は確かか？"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:166
@@ -2025,10 +2001,9 @@ msgstr "で、Theganli、この宝石についてどう思う？"
 
 #. [message]: speaker=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:207
-#, fuzzy
 msgid "Uh, um, yes, yes, very impressive jewel, impressive, yes..."
 msgstr ""
-"うん、うむ、よい、よい、とても印象的な宝石です。印象的で、すばらしい……。"
+"うぅ、うむ、そう、そうですね、とても印象的な宝石です、印象的だ、そうとも……"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:211
@@ -2046,7 +2021,6 @@ msgstr ""
 msgid "Very well. See what you can do."
 msgstr "よろしい。君に出来るか調べてみてくれ。"
 
-# Theganliは何ヶ月も宝石を炎の笏に合うようにカットするために時間を費やしました。そして、ついには炎のルビーをカットしようとしましたが、出来ませんでした。
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:224
 msgid ""
@@ -2141,19 +2115,18 @@ msgstr "待て！ 先の取引で君は5千片の銀を損している。今回�
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:286
 msgid "Are you sure that is wise, lord?"
-msgstr "本気ですか、Durstorn様？"
+msgstr "それが賢いやり方だってのは間違いないんですか、閣下？"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:290
 msgid ""
 "Of course! To be safe, though, you and Noiraran are going to come with us."
-msgstr "もちろんだ！ しかし、安全のために君とNoiraranも共に来たまえ。"
+msgstr "もちろんだ！ しかし念の為に、君とNoiraranも共に来たまえ。"
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:294
-#, fuzzy
 msgid "Yes sir... (<i>Sigh</i>)"
-msgstr "はい分かりました……ハァ……。"
+msgstr "はい、閣下…… (<i>ため息</i>)"
 
 #. [scenario]: id=5_Hills_of_the_Shorbear_Clan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:3
@@ -2291,9 +2264,8 @@ msgstr "最低でも2500だね。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:289
-#, fuzzy
 msgid "Durstorn, that would be a quarter of all our profits!"
-msgstr "（ささやき）Durstorn、これは俺達の儲けの4分の1だぜ！"
+msgstr "Durstorn、それだと俺達の収入全体の1/4になってしまいます！"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:293
@@ -2322,13 +2294,12 @@ msgstr "2000。これ以上は下げねぇ！"
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:309
 msgid "What are we going to do? We can’t go much higher!"
-msgstr "（ささやき）どうします？ これ以上は上げられませんよ！"
+msgstr "どうします？ これ以上は上げられませんよ！"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:313
 msgid "Offer him fifteen hundred, but don’t go up, even if he refuses."
-msgstr ""
-"（ささやき）1500まで出しましょう。しかし、彼が拒んでもそれ以上はダメです。"
+msgstr "1500まで出しましょう。しかし、彼が拒んでもそれ以上はダメです。"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:317
@@ -2337,25 +2308,23 @@ msgid ""
 "earlier, and all the other expenses, if we pay more than a thousand we’ll "
 "barely even make a profit!"
 msgstr ""
-"（ささやき）フン！ このカットはそこまで価値のあるものではない。Rugnurが早々に"
-"失敗した上、その他の全ての費用を考えると、1000以上も払ったらかろうじてトント"
-"ンだ！"
+"フン！ このカットはそこまで価値のあるものではない。Rugnurが早々に失敗した上、"
+"その他の全ての費用を考えると、1000以上も払ったらかろうじてトントンだ！"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:321
 msgid "So what are you going to do?"
-msgstr "（ささやき）では、どうする？"
+msgstr "では、どうする？"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:325
 msgid "Fight him, and take the tools by force."
-msgstr "（ささやき）彼と戦う。そして力ずくで道具を奪い取る。"
+msgstr "彼と戦う。そして力ずくで道具を奪い取る。"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:329
-#, fuzzy
 msgid "Are you mad?!"
-msgstr "狂ったか？！？"
+msgstr "気は確かか？！"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:333
@@ -2431,7 +2400,6 @@ msgstr ""
 "その通り。彼らはそのルビーをカットするためにうちの道具を借りたいと言いなが"
 "ら、充分な金額を提示しねぇ！"
 
-# 代わりにルビーを戴く。
 #. [message]: speaker=Lyndar
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:397
 msgid ""
@@ -2462,8 +2430,6 @@ msgstr ""
 "のは失敗だった。しかし、戦わなければならん以上、一旦後退するべきだ。わしらは"
 "何を手に入れる為に来たのだ、道具の為だ！"
 
-# 敵が一人もShorbearの洞窟内にいないときに、全ての英雄を揃える
-# これは意訳しないと分かりにくそう。
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:418
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:524
@@ -2474,10 +2440,8 @@ msgstr "全員Shorbearの洞窟に入り、全ての敵を締め出す"
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:472
 msgid "Ha! Now we can get those tools easily, and go back to our own caves."
-msgstr ""
-"ハハ！ 今我々は道具を簡単に手に入れられる。そして、我々の洞窟へ帰ろう。"
+msgstr "ハハ！ もう道具を簡単に手に入れられるぞ。それから我々の洞窟へ帰ろう。"
 
-# 丘に待ちかまえている。
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:476
 msgid ""
@@ -2612,22 +2576,18 @@ msgstr ""
 "しくはありませんでした。彼がどんなルーンの魔法を笏にかけても、それは思うよう"
 "には働きませんでした。"
 
-# 北→北東　元の洞窟と間違えかねない
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:171
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:487
 msgid "Move Rugnur to the northeast cave entrance"
 msgstr "北東の洞窟の入り口へRugnurを移動させる"
 
-# 川の東側の南の境へAlaninを移動させる
-# 意訳しないと分かりにくい
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:175
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:575
 msgid "Move Alanin to the southern border east of the river"
 msgstr "Alaninを川の東側の最南端に移動させる"
 
-# 最後の計画があり宝石と金が必要だ。
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:230
 msgid ""
@@ -2649,9 +2609,8 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:243
-#, fuzzy
 msgid "If ye’ll permit me to say so, sir, ye’re wrong. We could—"
-msgstr "言わせて貰えれば、あなたは間違っています。我々は出れ――"
+msgstr "失礼ながら言わせてもらえば、閣下、あなたは間違ってますよ。俺達は—"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:247
@@ -2666,9 +2625,8 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:253
-#, fuzzy
 msgid "If you’ll permit me to say so, sir, you’re wrong. We could —"
-msgstr "言わせて貰えれば、あんたは間違っとる。我々は出れー"
+msgstr "失礼ながら言わせてもらえば、閣下、あなたは間違ってますよ。俺達は—"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:257
@@ -2701,7 +2659,6 @@ msgstr ""
 "よう命令するぞ、和平の申し入れとして。そうすれば、生きてここを出られるかもし"
 "れん。"
 
-# fuzzy
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:271
 msgid ""
@@ -2727,7 +2684,7 @@ msgstr ""
 #. [animate_unit]
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:289
 msgid "<i>Swoosh!</i>"
-msgstr ""
+msgstr "<i>シュッ！</i>"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:318
@@ -2735,8 +2692,8 @@ msgid ""
 "Nice try, Durstorn, but you missed. Now, I’d say that attacking an ally "
 "constitutes treason, wouldn’t you?"
 msgstr ""
-"よい試みだ、Durstorn。しかし、誤ったな。同盟者への攻撃は裏切りと言えよう、違"
-"うか？"
+"惜しかったな、Durstorn。だが外しちまったな。さぁて、同盟者への攻撃は裏切りと"
+"言えよう、違うか？"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:322
@@ -2764,7 +2721,7 @@ msgstr "断る！"
 #. [animate]
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:359
 msgid "<i>Thud!</i>"
-msgstr "ドスッ！"
+msgstr "<i>ドスッ！</i>"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:378
@@ -2848,15 +2805,14 @@ msgstr "……そして、あんたの前哨基地へたどり着くまで走れ
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:426
-#, fuzzy
 msgid ""
 "I’m not going to do that, its suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
 "fight with you."
 msgstr ""
-"そうしたくありません。それは自殺行為です！ それに、どんな事情でも私はあなた達"
-"と10年を過ごしてきました。ほとんど私がWesnothの軍隊に居た期間と同じです。私は"
-"あなた達と共に戦いたい。"
+"そんなことをするつもりはありませんよ。それじゃ自殺だ！ いずれにせよ、10年も一"
+"緒にいたんです。Wesnoth軍にいたのとほぼ同じくらいだ。だから私はあなた達と一緒"
+"に戦いたい。"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:430
@@ -3060,8 +3016,8 @@ msgid ""
 "I see. Well, come on in. I doubt they would be able to capture this fort, "
 "even if they did want to start a war, which I doubt."
 msgstr ""
-"分かりました。さぁ、中へ。私は彼らがこの砦を取るのみならず、戦争を起こすつも"
-"りではないかと思います。"
+"分かりました。さぁ、中へ。彼らにこの砦を取れるとは思えません。たとえ戦争を起"
+"こすつもりがあってもです。それだって疑わしい。"
 
 #. [scenario]: id=8_The_Dragon
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
@@ -3107,7 +3063,6 @@ msgstr ""
 "Thursagan、採掘坑にたどり着いた。しかし、エルフ達がぴったり付いてくるぜ。どう"
 "する？"
 
-# やつらを嵌めることもできるかもしれん。→
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:224
 msgid ""
@@ -3146,8 +3101,8 @@ msgid ""
 "Then we shall run. I suggest calling to arms every last dwarf we possibly "
 "can here. This might be the last chance we’ll get to do so."
 msgstr ""
-"では、走ろう。全ての残っているドワーフの軍隊を呼ぶべきだろう。そうすることが"
-"できる最後の機会かもしれん。"
+"では、走ろう。残っているドワーフの軍隊を全部呼ぶべきだろう。そうすることがで"
+"きる最後の機会かもしれん。"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:246
@@ -3158,11 +3113,10 @@ msgstr ""
 "では、走って逃げるわけですね？　走るのは好きではありませんが、それしか選択肢"
 "は無いようですね。"
 
-# fuzzy もしもっと気分が良くなれば、死ぬかもしれんな。
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:250
 msgid "If it makes you feel any better, we’ll probably die this way, too."
-msgstr "気分が良くなるようなことがあるなら、死んでるな。"
+msgstr "気休めになるか分からんが、どうせこの先で死んじまうだろうよ。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:273
@@ -3197,8 +3151,6 @@ msgid ""
 msgstr ""
 "俺は数百人の強力なエルフ達より強力なドラゴンに対面している。歩みを止めるな！"
 
-# エルフ達と一緒にわしらと戦うドワーフが？！
-# 表現検討
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:311
 msgid "What’s this? A dwarf fighting against us with the elves?!"
@@ -3232,13 +3184,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:351
-#, fuzzy
 msgid ""
 "Look, I’ve found something here. It looks like a forge, heated by the lava. "
 "It looks magic, and it looks hot enough to make the sceptre."
 msgstr ""
-"見てください。何かここにあります。これは溶岩で熱されてまるで溶鉱炉のようで"
-"す。まるで魔法のようだ。そして、充分笏を作れるだけ暖まっているようです。"
+"見てくれ、ここで何か見つけたぞ。溶岩で熱せられていて溶鉱炉みたいだ。魔法のよ"
+"うだな。それに笏を作れるだけの熱があるようだ。"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:357
@@ -3266,9 +3217,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:406
-#, fuzzy
 msgid "Survive until turns run out"
-msgstr "9ターンの間生き残る"
+msgstr "ターンが尽きるまで生き延びる"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:419
@@ -3277,9 +3227,8 @@ msgstr "敵が炉へ移動する"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:445
-#, fuzzy
 msgid "You fool, you let the enemy get at me when I was unarmed!"
-msgstr "馬鹿者が！ わしが武装解除している時に敵の侵入を許しおって！"
+msgstr "馬鹿者、武装してないわしを敵にくれてやったのか！"
 
 #. [message]: speaker=Thursagan
 #. [message]: speaker=narrator
@@ -3511,10 +3460,8 @@ msgstr "逃がすな、逃げられたら失敗だ。"
 
 #. [message]: role=dumbelf
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:673
-#, fuzzy
 msgid "Aghh!! The volcano is erupting, and now our exit has been blocked off!!"
-msgstr ""
-"アァァ！！！ 火山が噴火している、そして今や我々の出口は塞がれている！！！"
+msgstr "あああ！！ 火山が噴火してる。それにもう出口は塞がってるぞ！！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:698
@@ -3597,7 +3544,6 @@ msgstr ""
 msgid "Very well. You may pass."
 msgstr "よかろう。通って良い。"
 
-# Alanin、王に面会したいそうだな。何を申し上げるのだ？
 #. [message]: speaker=Guard Captain
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:108
 msgid ""
@@ -3618,7 +3564,6 @@ msgstr ""
 msgid "Enter, Alanin, and give the king your message."
 msgstr "入れ、Alanin。そして王に申し上げるが良い。"
 
-# あなた？ とりあえず上様　あとで変えるかも
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:122
 msgid ""
@@ -3876,59 +3821,3 @@ msgstr "アァァ……。"
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "クァァ……。"
-
-#~ msgid "sceptre of fire"
-#~ msgstr "炎の笏"
-
-#~ msgid "Allies"
-#~ msgstr "Allies"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat Glildur</span> <small>(early finish bonus)</"
-#~ "small>"
-#~ msgstr ""
-#~ "<span color='white'>別の目標</span>\n"
-#~ "<span color='green'>Glildurを倒す</span> <small>(早期終了ボーナス)</small>"
-
-#~ msgid "Capture (death) of a caravan"
-#~ msgstr "隊商が捕らえられる（隊商の死）"
-
-#~ msgid "Time runs out"
-#~ msgstr "時間切れ"
-
-#~ msgid " *gulp*"
-#~ msgstr "グッ"
-
-#~ msgid " *swoosh*"
-#~ msgstr "（ダッー）"
-
-#~ msgid " *thud*"
-#~ msgstr "（ドスッ）"
-
-#~ msgid "Landar"
-#~ msgstr "Landar"
-
-# Thursaganのセリフ
-#~ msgid "In $turnsleft more turns I will have completed the Sceptre of Fire."
-#~ msgstr "あと $turnsleft ターンあれば笏は完成じゃ。"
-
-#~ msgid ""
-#~ "<255,255,255>Alternative objective:\n"
-#~ "@Defeat Glildur\n"
-#~ "`(early finish bonus)"
-#~ msgstr ""
-#~ "<255,255,255>他の目標:\n"
-#~ "@Glildurを倒す\n"
-#~ "`（早期終了ボーナス）"
-
-#~ msgid "Kwe... yoo ants to ide uuus, nooa? Kwe, uus kan..."
-#~ msgstr ""
-#~ "クェー...あなたタチがボクらにノりたいなら、クェー、ボクらにはそれができ"
-#~ "る..."
-
-#~ msgid ""
-#~ "Humans, halt! Don't come any closer, we dwarves don't like company..."
-#~ msgstr ""
-#~ "人間ども、止まりな！それ以上近づくな、俺達ドワーフは交際が好きじゃないんで"
-#~ "ね。"

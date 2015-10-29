@@ -20,36 +20,6 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
-find_package(SDL 1.2.7 REQUIRED)
-find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system)
-find_package(Boost 1.40 REQUIRED COMPONENTS random)
-
-# no, gettext executables are not required when NLS is deactivated
-find_package(Gettext)
-
-find_package(X11)
-
-if(NOT MSVC)
-	#needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
-	set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
-	exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
-	add_definitions(${SDL_CFLAGS})
-endif(NOT MSVC)
-
-if(NOT WIN32)
-	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
-	add_definitions(-DLUA_USE_POSIX)
-endif(NOT WIN32)
-
-if(MSVC)
-	add_definitions(-D_SCL_SECURE_NO_WARNINGS)
-	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
-	add_definitions(-DNOMINMAX)
-endif(MSVC)
-
-#check for some compiler/arch specific things and export defines accordingly...
-include(SearchForStuff)
-
 #
 # Options
 #
@@ -79,6 +49,7 @@ option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
 option(ENABLE_SERVER "Enable compilation of server" ON)
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_SDL2_TOOLS "Enable building and installation of tools for testing with SDL2" OFF)
+option(ENABLE_SDL2 "Enable building the game with SDL2" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
@@ -88,6 +59,48 @@ option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental)" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
+
+if(ENABLE_SDL2)
+	find_package(SDL2 2.0.0 REQUIRED)
+else(ENABLE_SDL2)
+	find_package(SDL 1.2.7 REQUIRED) 
+endif(ENABLE_SDL2)
+  
+find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system)
+find_package(Boost 1.40 REQUIRED COMPONENTS random)
+
+# no, gettext executables are not required when NLS is deactivated
+find_package(Gettext)
+
+find_package(X11)
+
+if(NOT MSVC)
+	if(ENABLE_SDL2)
+		#needed to get some SDL2 defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
+		set(SDL2_CONFIG "sdl2-config" CACHE STRING "Path to sdl2-config script")
+		exec_program(${SDL2_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL2_CFLAGS)
+		add_definitions(${SDL2_CFLAGS})
+	  else(ENABLE_SDL2)
+		#needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
+		set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
+		exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
+		add_definitions(${SDL_CFLAGS})
+	endif(ENABLE_SDL2)
+endif(NOT MSVC)
+
+if(NOT WIN32)
+	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
+	add_definitions(-DLUA_USE_POSIX)
+endif(NOT WIN32)
+
+if(MSVC)
+	add_definitions(-D_SCL_SECURE_NO_WARNINGS)
+	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+	add_definitions(-DNOMINMAX)
+endif(MSVC)
+
+#check for some compiler/arch specific things and export defines accordingly...
+include(SearchForStuff)
 
 # if no build type is specified, it can happen that the game is built without
 # optimization (c.f. bug #23445), work around this by enforcing "release" type
@@ -176,14 +189,14 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # -Wnot_supported_flag. For that case all not-named parameters will be added to
 # the target instead.
 #
-# param target                    The variable to add the compiler flag to.
-# param flag                      The compiler flag to test.
-# param variable                  The test macro needs a variable to store the
-#                                 result of the test, this paramter holds that
-#                                 variable.
-# param ...                       If this variable is set it will be added to
-#                                 target instead of flag when the compiler
-#                                 supports flag.
+# param target			  The variable to add the compiler flag to.
+# param flag			  The compiler flag to test.
+# param variable		  The test macro needs a variable to store the
+#				  result of the test, this paramter holds that
+#				  variable.
+# param ...			  If this variable is set it will be added to
+#				  target instead of flag when the compiler
+#				  supports flag.
 macro(check_compiler_has_flag target flag variable)
 	check_cxx_compiler_flag(${flag} ${variable})
 	if(${variable})
@@ -553,23 +566,35 @@ endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 #
 
 if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
-	find_package( SDL_image 1.2 REQUIRED )
+	if(ENABLE_SDL2)
+		find_package( SDL2_image 2.0.0 REQUIRED )
+	else(ENABLE_SDL2)
+		find_package( SDL_image 1.2 REQUIRED )
+	endif(ENABLE_SDL2)
 endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
-	find_package( SDL_mixer 1.2.12 REQUIRED )
-	find_package( SDL_ttf 2.0.8 REQUIRED )
-
+	if(ENABLE_SDL2)
+		find_package( SDL2_mixer 2.0.0 REQUIRED )
+		find_package( SDL2_ttf 2.0.8 REQUIRED )
+	else(ENABLE_SDL2)
+		find_package( SDL_mixer 1.2.12 REQUIRED )
+		find_package( SDL_ttf 2.0.8 REQUIRED )
+	endif(ENABLE_SDL2)
 	if(NOT MSVC)
 		find_package(VorbisFile REQUIRED)
 		find_package( PkgConfig REQUIRED )
 		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
-        pkg_check_modules( SYSTEMD systemd )
+	pkg_check_modules( SYSTEMD systemd )
 	endif(NOT MSVC)
 
 endif(ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
-	find_package( SDL_net REQUIRED )
+	if(ENABLE_SDL2)
+		find_package( SDL2_net 2.0.0 REQUIRED )
+	else(ENABLE_SDL2)
+		find_package( SDL_net REQUIRED )
+	endif(ENABLE_SDL2)
 endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
 if(ENABLE_TOOLS)
 	find_package( ZLIB REQUIRED )
@@ -615,7 +640,7 @@ if(ENABLE_GAME)
 	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
 
-if(ENABLE_GAME OR ENABLE_SERVER)
+if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
 	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
 
 	if(NOT ENABLE_LIBINTL)
@@ -627,7 +652,7 @@ if(ENABLE_GAME OR ENABLE_SERVER)
 			message("Warning: Using libintl on Windows instead of Boost.Locale may result in issues with translations and Unicode file paths!")
 		endif()
 	endif()
-endif(ENABLE_GAME OR ENABLE_SERVER)
+endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)
@@ -680,10 +705,10 @@ if(ENABLE_SERVER AND FIFO_DIR)
 	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
     # install systemd stuff if it is installed
     if(SYSTEMD_FOUND)
-#        configure_file(packaging/systemd/wesnothd.tmpfiles.conf.in ${CMAKE_BINARY_DIR}/wesnothd.conf)
-#        configure_file(packaging/systemd/wesnothd.service.in ${CMAKE_BINARY_DIR}/wesnothd.service)
-#        install(FILES ${CMAKE_BINARY_DIR}/wesnothd.conf DESTINATION lib/tmpfiles.d)
-#       install(FILES ${CMAKE_BINARY_DIR}/wesnothd.service DESTINATION lib/systemd/system)
+#	 configure_file(packaging/systemd/wesnothd.tmpfiles.conf.in ${CMAKE_BINARY_DIR}/wesnothd.conf)
+#	 configure_file(packaging/systemd/wesnothd.service.in ${CMAKE_BINARY_DIR}/wesnothd.service)
+#	 install(FILES ${CMAKE_BINARY_DIR}/wesnothd.conf DESTINATION lib/tmpfiles.d)
+#	install(FILES ${CMAKE_BINARY_DIR}/wesnothd.service DESTINATION lib/systemd/system)
     endif()
 	if(SERVER_UID AND SERVER_GID)
 		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")

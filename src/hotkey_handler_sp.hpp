@@ -54,6 +54,7 @@ public:
 	virtual void kill_unit();
 	virtual void label_terrain(bool);
 	virtual void clear_labels();
+	virtual void label_settings();
 	virtual void continue_move();
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();
@@ -70,6 +71,32 @@ public:
 	virtual void whiteboard_bump_down_action();
 	virtual void whiteboard_suppose_dead();
 
+	//replay
+	replay_controller& get_replay_controller()
+	{ 
+		assert(playsingle_controller_.get_replay_controller()); 
+		return *playsingle_controller_.get_replay_controller();
+	}
+	virtual void stop_replay() OVERRIDE
+	{ return get_replay_controller().stop_replay(); }
+	virtual void play_replay() OVERRIDE
+	{ return get_replay_controller().play_replay(); }
+	virtual void replay_next_turn() OVERRIDE
+	{ return get_replay_controller().replay_next_turn(); }
+	virtual void replay_next_side() OVERRIDE
+	{ return get_replay_controller().replay_next_side(); }
+	virtual void replay_next_move() OVERRIDE
+	{ return get_replay_controller().replay_next_move(); }
+	virtual void replay_show_everything() OVERRIDE
+	{ return get_replay_controller().replay_show_everything(); }
+	virtual void replay_show_each() OVERRIDE
+	{ return get_replay_controller().replay_show_each(); }
+	virtual void replay_show_team1() OVERRIDE
+	{ return get_replay_controller().replay_show_team1(); }
+	virtual void reset_replay() OVERRIDE
+	{ return playsingle_controller_.reset_replay(); }
+	virtual void replay_exit() OVERRIDE;
+	virtual void load_autosave(const std::string& filename);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 };
 

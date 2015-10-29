@@ -237,7 +237,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	dialog.parent->set_menu(items);
 	dialog.parent->add_pane(&dialog);
 	// select the tab corresponding to the current scope.
-	dialog.parent->get_menu().move_selection(scope);
+	dialog.parent->get_menu().move_selection(scope - 1);
 	dialog.parent->show();
 	return;
 }

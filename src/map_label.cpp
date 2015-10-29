@@ -43,7 +43,7 @@ inline bool is_fogged(const display& disp, const map_location& loc)
 }
 
 map_labels::map_labels(const display &disp, const team *team) :
-	disp_(disp), team_(team), labels_(), enabled_(true)
+	disp_(disp), team_(team), labels_(), enabled_(true), categories_dirty(true)
 {
 }
 
@@ -139,17 +139,20 @@ void map_labels::set_team(const team* team)
 	if ( team_ != team )
 	{
 		team_ = team;
+		categories_dirty = true;
 	}
 }
 
 
 const terrain_label* map_labels::set_label(const map_location& loc,
 					   const t_string& text,
+					   const int creator,
 					   const std::string& team_name,
 					   const SDL_Color color,
 					   const bool visible_in_fog,
 					   const bool visible_in_shroud,
 					   const bool immutable,
+					   const std::string& category,
 					   const t_string& tooltip )
 {
 	terrain_label* res = NULL;
@@ -176,7 +179,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		}
 		else
 		{
-			current_label->second->update_info(text, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable);
+			current_label->second->update_info(text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
 			res = current_label->second;
 		}
 	}
@@ -187,6 +190,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 
 		// Add the new label.
 		res = new terrain_label(text,
+				creator,
 				team_name,
 				loc,
 				*this,
@@ -194,6 +198,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				visible_in_fog,
 				visible_in_shroud,
 				immutable,
+				category,
 				tooltip);
 		add_label(loc, res);
 
@@ -201,12 +206,14 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		if ( global_label != NULL )
 			global_label->recalculate();
 	}
+	categories_dirty = true;
 	return res;
 }
 
 void map_labels::add_label(const map_location &loc, terrain_label *new_label)
 {
 	labels_[new_label->team_name()][loc] = new_label;
+	categories_dirty = true;
 }
 
 void map_labels::clear(const std::string& team_name, bool force)
@@ -222,6 +229,7 @@ void map_labels::clear(const std::string& team_name, bool force)
 	{
 		clear_map(i->second, force);
 	}
+	categories_dirty = true;
 }
 
 void map_labels::clear_map(label_map &m, bool force)
@@ -234,6 +242,7 @@ void map_labels::clear_map(label_map &m, bool force)
 			m.erase(i++);
 		} else ++i;
 	}
+	categories_dirty = true;
 }
 
 void map_labels::clear_all()
@@ -286,9 +295,30 @@ void map_labels::recalculate_shroud()
 	}
 }
 
+const std::vector<std::string>& map_labels::all_categories() const {
+	if(categories_dirty) {
+		categories_dirty = false;
+		categories.clear();
+		categories.push_back("team");
+		for(size_t i = 1; i <= resources::teams->size(); i++) {
+			categories.push_back("side:" + str_cast(i));
+		}
+		std::set<std::string> unique_cats;
+		BOOST_FOREACH(const team_label_map::value_type& m, labels_) {
+			BOOST_FOREACH(const label_map::value_type& l, m.second) {
+				if(l.second->category().empty()) continue;
+				unique_cats.insert("cat:" + l.second->category());
+			}
+		}
+		std::copy(unique_cats.begin(), unique_cats.end(), std::back_inserter(categories));
+	}
+	return categories;
+}
+
 
 /// creating new label
 terrain_label::terrain_label(const t_string& text,
+		const int creator,
 		const std::string& team_name,
 		const map_location& loc,
 		const map_labels& parent,
@@ -296,14 +326,17 @@ terrain_label::terrain_label(const t_string& text,
 		const bool visible_in_fog,
 		const bool visible_in_shroud,
 		const bool immutable,
+		const std::string& category,
 		const t_string& tooltip ) :
 				handle_(0),
 				text_(text),
 				tooltip_(tooltip),
+				category_(category),
 				team_name_(team_name),
 				visible_in_fog_(visible_in_fog),
 				visible_in_shroud_(visible_in_shroud),
 				immutable_(immutable),
+				creator_(creator),
 				color_(color),
 				parent_(&parent),
 				loc_(loc)
@@ -320,6 +353,7 @@ terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		visible_in_fog_(true),
 		visible_in_shroud_(false),
 		immutable_(true),
+		creator_(-1),
 		color_(),
 		parent_(&parent),
 		loc_()
@@ -347,6 +381,17 @@ void terrain_label::read(const config &cfg)
 	visible_in_fog_ = cfg["visible_in_fog"].to_bool(true);
 	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();
 	immutable_ = cfg["immutable"].to_bool(true);
+	category_ = cfg["category"].str();
+	
+	int side = cfg["side"].to_int(-1);
+	if(side >= 0) {
+		creator_ = side - 1;
+	} else if(cfg["side"].str() == "current") {
+		config::attribute_value current_side = vs.get_variable_const("side_number");
+		if(!current_side.empty()) {
+			creator_ = current_side.to_int();
+		}
+	}
 
 	text_ = utils::interpolate_variables_into_tstring(text_, vs); // Not moved to rendering, as that would depend on variables at render-time
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
@@ -371,6 +416,8 @@ void terrain_label::write(config& cfg) const
 	cfg["visible_in_fog"] = visible_in_fog_;
 	cfg["visible_in_shroud"] = visible_in_shroud_;
 	cfg["immutable"] = immutable_;
+	cfg["category"] = category_;
+	cfg["side"] = creator_ + 1;
 }
 
 const t_string& terrain_label::text() const
@@ -381,6 +428,16 @@ const t_string& terrain_label::text() const
 const t_string& terrain_label::tooltip() const
 {
 	return tooltip_;
+}
+
+int terrain_label::creator() const
+{
+	return creator_;
+}
+
+const std::string& terrain_label::category() const
+{
+	return category_;
 }
 
 const std::string& terrain_label::team_name() const
@@ -434,6 +491,7 @@ void terrain_label::set_text(const t_string& text)
 }
 
 void terrain_label::update_info(const t_string& text,
+								const int creator,
 								const t_string& tooltip,
 								const std::string& team_name,
 								const SDL_Color color)
@@ -442,21 +500,25 @@ void terrain_label::update_info(const t_string& text,
 	text_ = text;
 	tooltip_ = tooltip;
 	team_name_ = team_name;
+	creator_ = creator;
 	draw();
 }
 
 void terrain_label::update_info(const t_string& text,
+								const int creator,
 								const t_string& tooltip,
 								const std::string& team_name,
 								const SDL_Color color,
 								const bool visible_in_fog,
 								const bool visible_in_shroud,
-								const bool immutable)
+								const bool immutable,
+								const std::string& category)
 {
 	visible_in_fog_ = visible_in_fog;
 	visible_in_shroud_ = visible_in_shroud;
 	immutable_ = immutable;
-	update_info(text, tooltip, team_name, color);
+	category_ = category;
+	update_info(text, creator, tooltip, team_name, color);
 }
 
 void terrain_label::recalculate()
@@ -539,6 +601,18 @@ void terrain_label::draw()
  */
 bool terrain_label::hidden() const
 {
+	// Respect user's label preferences
+	std::string category = "cat:" + category_;
+	std::string creator = "side:" + str_cast(creator_ + 1);
+	const std::vector<std::string>& hidden_categories = parent_->disp().get_disp_context().hidden_label_categories();
+	
+	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end())
+		return true;
+	if(creator_ >= 0 && std::find(hidden_categories.begin(), hidden_categories.end(), creator) != hidden_categories.end())
+		return true;
+	if(!team_name().empty() && std::find(hidden_categories.begin(), hidden_categories.end(), "team") != hidden_categories.end())
+		return true;
+	
 	// Fog can hide some labels.
 	if ( !visible_in_fog_ && is_fogged(parent_->disp(), loc_) )
 		return true;

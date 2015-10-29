@@ -170,10 +170,7 @@ namespace
 		char* endptr;
 		int res = strtol(index_str, &endptr, 10);
 
-		if (*endptr != ']') {
-			res = 0;//default
-		}
-		if(res > int(game_config::max_loop))
+		if (*endptr != ']' || res > int(game_config::max_loop))
 		{
 			throw invalid_variablename_exception();
 		}
@@ -186,7 +183,11 @@ namespace
 		: public variable_info_visitor<vit, void>
 	{
 	public:
-		get_variable_key_visitor(const std::string& key) : key_(key) {}
+		get_variable_key_visitor(const std::string& key) : key_(key) {
+			if (!config::valid_id(key_)) {
+				throw invalid_variablename_exception();
+			}
+		}
 		void from_named(typename get_variable_key_visitor::param_type state) const
 		{
 			if(key_ == "length")

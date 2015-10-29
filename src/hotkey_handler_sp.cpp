@@ -23,6 +23,11 @@
 #include "whiteboard/manager.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
+#include "network.hpp"
+#include "save_index.hpp"
+#include "gui/dialogs/message.hpp"
+#include "resources.hpp"
+#include "replay.hpp"
 
 #include "unit.hpp"
 
@@ -121,6 +126,10 @@ void playsingle_controller::hotkey_handler::ai_formula(){
 
 void playsingle_controller::hotkey_handler::clear_messages(){
 	menu_handler_.clear_messages();
+}
+
+void playsingle_controller::hotkey_handler::label_settings(){
+	menu_handler_.label_settings();
 }
 
 void playsingle_controller::hotkey_handler::whiteboard_toggle() {
@@ -269,8 +278,51 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			return false;
 		}
 
+		case hotkey::HOTKEY_REPLAY_STOP:
+		case hotkey::HOTKEY_REPLAY_PLAY:
+		case hotkey::HOTKEY_REPLAY_NEXT_TURN:
+		case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
+		case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
+		case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
+		case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
+		case hotkey::HOTKEY_REPLAY_SHOW_EACH:
+		case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
+		case hotkey::HOTKEY_REPLAY_RESET:
+			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd, index);
+		case hotkey::HOTKEY_REPLAY_EXIT:
+			return playsingle_controller_.get_replay_controller() != NULL;
 		default: return play_controller::hotkey_handler::can_execute_command(cmd, index);
 	}
 	return res;
 }
 
+void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
+{
+	if(network::nconnections() > 0)
+	{
+		config savegame;
+		std::string error_log;
+		savegame::read_save_file(filename, savegame, &error_log);
+
+		if(!error_log.empty() || savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
+			gui2::show_error_message(play_controller_.get_display().video(),
+				_("The file you have tried to load is corrupt: '") +
+				error_log);
+			return;
+		}
+		boost::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
+		throw reset_gamestate_exception(res);
+	}
+	else
+	{
+		play_controller::hotkey_handler::load_autosave(filename);
+	}
+}
+
+void playsingle_controller::hotkey_handler::replay_exit()
+{
+	if(network::nconnections() == 0) {
+		resources::recorder->delete_upcoming_commands();
+	}
+	playsingle_controller_.set_player_type_changed();
+}

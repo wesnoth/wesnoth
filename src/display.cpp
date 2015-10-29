@@ -176,7 +176,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	turbo_(false),
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
-	reports_object_(reports_object),
+	reports_object_(&reports_object),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
@@ -229,6 +229,8 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	, do_reverse_memcpy_workaround_(false)
 #endif
 {
+	//The following assertion fails when starting a campaign
+	//assert(singleton_ == NULL);
 	singleton_ = this;
 
 	resources::fake_units = fake_unit_man_.get();
@@ -2226,6 +2228,14 @@ bool display::scroll(int xmove, int ymove, bool force)
 	srcrect.y -= dy;
 	if (!screen_.update_locked()) {
 
+		/* TODO: This is a workaround for a SDL2 bug when blitting on overlapping surfaces.
+		 * The bug only strikes during scrolling, but will then duplicate textures across
+		 * the entire map. */
+#if SDL_VERSION_ATLEAST(2,0,0)
+		surface screen_copy = make_neutral_surface(screen);
+		SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
+		SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
+#else
 // Hack to workaround bug #17573
 #if defined(__GLIBC__)
 		if (do_reverse_memcpy_workaround_) {
@@ -2236,6 +2246,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 		}
 #else
 		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+#endif
 #endif
 	}
 
@@ -3100,7 +3111,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 
 	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
-	const config generated_cfg = new_cfg ? config() : reports_object_.generate_report(report_name, temp_context);
+	const config generated_cfg = new_cfg ? config() : reports_object_->generate_report(report_name, temp_context);
 	if ( new_cfg == NULL )
 		new_cfg = &generated_cfg;
 
@@ -3311,7 +3322,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 
 	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
-	const config generated_cfg = new_cfg ? config() : reports_object_.generate_report(report_name, temp_context);
+	const config generated_cfg = new_cfg ? config() : reports_object_->generate_report(report_name, temp_context);
 	if ( new_cfg == NULL )
 		new_cfg = &generated_cfg;
 

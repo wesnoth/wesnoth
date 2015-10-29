@@ -26,7 +26,9 @@
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "game_config.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"
+#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/control.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -48,8 +50,8 @@
 namespace
 {
 
-const std::string img_feature_on = "buttons/checkbox-pressed.png";
-const std::string img_feature_off = "buttons/checkbox.png";
+const std::string text_feature_on =  "<span color='#0f0'>&#10003;</span>";
+const std::string text_feature_off = "<span color='#f00'>&#10005;</span>";
 
 } // end anonymous namespace
 
@@ -95,7 +97,6 @@ tgame_version::tgame_version()
 #endif
 	, deps_()
 	, opts_(game_config::optional_features_table())
-	, tabs_()
 	, report_()
 {
 	// NOTE: these path_map_ entries are referenced by the GUI2 WML
@@ -243,10 +244,11 @@ void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
 		list_data["opt_name"]["label"] = opt.name;
 
 		if(opt.enabled) {
-			list_data["opt_status"]["label"] = img_feature_on;
+			list_data["opt_status"]["label"] = text_feature_on;
 		} else {
-			list_data["opt_status"]["label"] = img_feature_off;
+			list_data["opt_status"]["label"] = text_feature_off;
 		}
+		list_data["opt_status"]["use_markup"] = "true";
 
 		opts_listbox.add_row(list_data);
 	}
@@ -262,37 +264,45 @@ void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
 			= find_widget<tstacked_widget>(&window, "tabs_container", false);
 	pager.select_layer(0);
 
-	tabs_.push_back(&find_widget<tselectable_>(&window, "tab_game_paths", false));
-	tabs_.push_back(&find_widget<tselectable_>(&window, "tab_game_deps", false));
-	tabs_.push_back(&find_widget<tselectable_>(&window, "tab_game_features", false));
-	tabs_.front()->set_value(true);
+	tlistbox& tab_bar
+			= find_widget<tlistbox>(&window, "tab_bar", false);
 
-	FOREACH(const AUTO & tab, tabs_)
-	{
-		tab->set_callback_state_change(
-				boost::bind(&tgame_version::tab_switch_callback, this, boost::ref(*tab), boost::ref(pager)));
+	list_data["tab_label"]["label"] = _("Paths");
+	tab_bar.add_row(list_data);
+
+	list_data["tab_label"]["label"] = _("Libraries");
+	tab_bar.add_row(list_data);
+
+	list_data["tab_label"]["label"] = _("Features");
+	tab_bar.add_row(list_data);
+
+	tab_bar.select_row(0);
+	window.keyboard_capture(&tab_bar);
+
+	const unsigned tab_count = tab_bar.get_item_count();
+	VALIDATE(tab_count == pager.get_layer_count(), "Tab bar and container size mismatch");
+
+	for(unsigned k = 0; k < tab_count; ++k) {
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+		connect_signal_notify_modified(tab_bar,
+									   boost::bind(&tgame_version::tab_switch_callback,
+												   *this,
+												   boost::ref(window)));
+#else
+		tab_bar.set_callback_value_change(
+			dialog_callback<tgame_version, &tgame_version::tab_switch_callback>);
+#endif
 	}
 }
 
-void tgame_version::post_show(twindow& /*window*/)
+void tgame_version::tab_switch_callback(twindow& window)
 {
-	tabs_.clear();
-}
+	tstacked_widget& pager
+			= find_widget<tstacked_widget>(&window, "tabs_container", false);
+	tlistbox& tab_bar
+			= find_widget<tlistbox>(&window, "tab_bar", false);
 
-void tgame_version::tab_switch_callback(tselectable_& me, tstacked_widget& tab_container)
-{
-	for(size_t k = 0; k < tabs_.size(); ++k) {
-		tselectable_* const current = tabs_[k];
-
-		if(!current) {
-			continue;
-		}
-
-		current->set_value(&me == current);
-		if(&me == current) {
-			tab_container.select_layer(k);
-		}
-	}
+	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }
 
 void tgame_version::browse_directory_callback(const std::string& path)

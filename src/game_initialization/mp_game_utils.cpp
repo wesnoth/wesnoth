@@ -55,6 +55,7 @@ static void add_multiplayer_classification(config& multiplayer, saved_game& stat
 config initial_level_config(saved_game& state)
 {
 	const mp_game_settings& params = state.mp_settings();
+	state.set_defaults();
 	//Also impliers state.expand_scenario()
 	//We need to call this before expand_mp_events/options oterwise they might be overwritten
 	state.expand_random_scenario();

@@ -1,5 +1,6 @@
-import helpers, sys, helpers
-from html_output import Translation
+import sys
+from . import helpers
+from .html_output import Translation
 
 def main():
     wesnoth = helpers.WesnothList(
@@ -40,14 +41,14 @@ def main():
     
     # Get all defined races.
     races = {}
-    for campaign, unitslists in punits.items():
+    for campaign, unitslists in list(punits.items()):
         for unitlist in unitslists:
             for race in unitlist.get_all(tag = "race"):
                 races[race.get_text_val("id")] = race
     
     # Go through all units and put them into a dictionary.
     all_units = {}
-    for campaign, unitslists in punits.items():
+    for campaign, unitslists in list(punits.items()):
         for unitlist in unitslists:
             for unit in unitlist.get_all(tag = "unit_type"):
                 if unit.get_text_val("do_not_list") in ["yes", "true"]: continue
@@ -68,7 +69,7 @@ def main():
         return None
     
     # Handle unit attributes
-    for unit in all_units.values():
+    for unit in list(all_units.values()):
         
         unit.name = base_val(unit, "name", translation = translated.translate)               
         unit.orig_name = base_val(unit, "name", translation = original.translate)
@@ -85,7 +86,7 @@ def main():
         else: unit.advances_to = [x.strip() for x in a.split(",")]
     
     # Find children and parents of all units.
-    for unit in all_units.values():
+    for unit in list(all_units.values()):
         for aid in unit.advances_to:
             unit.children.append(all_units[aid])
             all_units[aid].parents.append(unit)
@@ -100,13 +101,13 @@ def main():
 
     # Group by race/campaign
     units_per_race = {}
-    for unit in all_units.values():
+    for unit in list(all_units.values()):
         x = race_key(unit)
         if x not in units_per_race: units_per_race[x] = set()
         units_per_race[x].add(unit)
     
     # Recursively add all related units of a units to the same race as well.
-    for race in units_per_race.keys():
+    for race in list(units_per_race.keys()):
         while True:
             add = []
             for unit in units_per_race[race]:
@@ -153,14 +154,14 @@ def main():
 
         # Create grid.
         grid = []
-        for j in xrange(n + 1):
+        for j in range(n + 1):
             grid.append([None] * 6)
         for unit in units:
             grid[unit.y][unit.level] = unit
         
         # Output it.
-        for y in xrange(n + 1):
-            for x in xrange(6):
+        for y in range(n + 1):
+            for x in range(6):
                 unit = grid[y][x]
                 if unit:
                     w("|'''" + unit.name + "'''<br />" + unit.orig_name)

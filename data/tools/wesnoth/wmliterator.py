@@ -20,7 +20,13 @@ Limitations:
  enough for now.
 """
 
-import sys, re, copy
+from __future__ import print_function, unicode_literals, division
+from future_builtins import filter, map, zip
+input = raw_input
+range = xrange
+
+from functools import total_ordering
+import sys, re, copy, codecs
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(^|(?<![\w|}]))(\[/?\+?[a-z _]+\])')
@@ -95,6 +101,10 @@ def isAttribute(elem):
         elem = elem[0]
     return type(elem) == type("") and elem.endswith("=")
 
+# the total_ordering decorator from functools allows to define only two comparison
+# methods, and Python generates the remaining methods
+# it comes with a speed penalty, but the alternative is defining six methods by hand...
+@total_ordering
 class WmlIterator(object):
     """Return an iterable WML navigation object.
     Initialize with a list of lines or a file; if the the line list is
@@ -125,9 +135,8 @@ Important Attributes:
             lines = []
             if filename:
                 try:
-                    ifp = open(self.fname)
-                    lines = ifp.readlines()
-                    ifp.close()
+                    with codecs.open(self.fname, "r", "utf8") as ifp:
+                        lines = ifp.readlines()
                 except Exception:
                     self.printError('error opening file')
         self.lines = lines
@@ -329,10 +338,13 @@ Important Attributes:
         """The magic iterator method"""
         return self
 
-    def __cmp__(self, other):
-        """Compare two iterators"""
-        return cmp((self.fname, self.lineno, self.element),
-                   (other.fname, other.lineno, other.element))
+    def __eq__(self, other):
+        return (self.fname, self.lineno, self.element) == \
+               (other.fname, other.lineno, other.element)
+
+    def __gt__(self, other):
+        return (self.fname, self.lineno, self.element) > \
+               (other.fname, other.lineno, other.element)
 
     def reset(self):
         """Reset any line tracking information to defaults"""
@@ -408,7 +420,7 @@ Important Attributes:
         self.element, nextScopes = self.parseElements(self.text)
         self.nextScopes = []
         for elem in nextScopes:
-	    # remember scopes by storing a copy of the iterator
+        # remember scopes by storing a copy of the iterator
             copyItor = self.copy()
             copyItor.element = elem
             self.nextScopes.append(copyItor)
@@ -451,15 +463,15 @@ Important Attributes:
         if nav.fname:
             silenceValue = ' '.join(map(str, misc))
             if nav.fname not in silenceErrors:
-                print >>sys.stderr, nav.fname
+                print(nav.fname, file=sys.stderr)
                 silenceErrors[nav.fname] = set()
             elif silenceValue in silenceErrors[nav.fname]:
                 return # do not print a duplicate error for this file
             silenceErrors[nav.fname].add(silenceValue)
-        print >>sys.stderr, 'wmliterator:',
+        print('wmliterator:', end=" ", file=sys.stderr)
         for item in misc:
-            print >>sys.stderr, item,
-        print >>sys.stderr #terminate line
+            print(item, end=" ", file=sys.stderr)
+        print("", file=sys.stderr) #terminate line
 
 if __name__ == '__main__':
     """Perform a test run on a file or directory"""
@@ -467,8 +479,8 @@ if __name__ == '__main__':
     didSomething = False
     flist = sys.argv[1:]
     if not flist:
-        print 'Current directory is', os.getcwd()
-        flist = glob.glob(os.path.join(os.getcwd(), raw_input('Which file(s) would you like to test?\n')))
+        print('Current directory is', os.getcwd())
+        flist = glob.glob(os.path.join(os.getcwd(), input('Which file(s) would you like to test?\n')))
     while flist:
         fname = flist.pop()
         if os.path.isdir(fname):
@@ -476,16 +488,15 @@ if __name__ == '__main__':
             continue
         if not os.path.isfile(fname) or os.path.splitext(fname)[1] != '.cfg':
             continue
-        print 'Reading', fname+'...'
+        print('Reading', fname+'...')
         didSomething = True
-        f = open(fname)
-        itor = WmlIterator(f.readlines())
-        for i in itor:
-            pass
-        f.close()
-        print itor.lineno + itor.span, 'lines read.'
+        with codecs.open(fname, "r", "utf8") as f:
+            itor = WmlIterator(f.readlines())
+            for i in itor:
+                pass
+        print(itor.lineno + itor.span, 'lines read.')
     if not didSomething:
-        print 'That is not a valid .cfg file'
+        print('That is not a valid .cfg file')
     if os.name == 'nt' and os.path.splitext(__file__)[0].endswith('wmliterator') and not sys.argv[1:]:
         os.system('pause')
 

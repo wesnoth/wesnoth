@@ -23,26 +23,31 @@
 #include "playturn.hpp"
 #include "replay.hpp"
 #include "saved_game.hpp"
+#include "replay_controller.hpp"
+
 class team;
+
+struct reset_gamestate_exception
+{
+	reset_gamestate_exception(boost::shared_ptr<config> l) : level(l) {}
+	boost::shared_ptr<config> level;
+};
 
 class playsingle_controller : public play_controller
 {
 public:
 	playsingle_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config, const tdata_cache & tdata, CVideo& video, bool skip_replay);
+		const config& game_config, const tdata_cache & tdata, CVideo& video, bool skip_replay);
 	virtual ~playsingle_controller();
 
-	LEVEL_RESULT play_scenario(const config::const_child_itors &story);
-	void play_scenario_init();
+	LEVEL_RESULT play_scenario(const config& level);
+	void play_scenario_init(const config& level);
 	void play_scenario_main_loop();
 
 	virtual void handle_generic_event(const std::string& name);
 
 	virtual void check_objectives();
-	void report_victory(std::ostringstream &report, team& t, int finishing_bonus_per_turn,
-			int turns_left, int finishing_bonus);
 	virtual void on_not_observer() {}
-	bool is_host() const ;
 	virtual void maybe_linger();
 
 	void end_turn();
@@ -53,11 +58,13 @@ public:
 	
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
-	virtual bool should_return_to_play_side()
-	{ return player_type_changed_ || end_turn_ != END_TURN_NONE || is_regular_game_end(); }
+	virtual bool should_return_to_play_side();
+	replay_controller * get_replay_controller()
+	{ return mp_replay_.get(); }
+	void enable_replay(bool is_unit_test = false);
+	void on_replay_end(bool is_unit_test);
 protected:
-	void play_turn();
-	virtual void play_side();
+	virtual void play_side_impl();
 	void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
@@ -69,7 +76,6 @@ protected:
 	virtual void do_idle_notification();
 	virtual void play_network_turn();
 	virtual void init_gui();
-	void check_time_over();
 	void store_recalls();
 	void store_gold(bool obs = false);
 
@@ -89,10 +95,12 @@ protected:
 		END_TURN_SYNCED,
 	};
 	END_TURN_STATE end_turn_;
-	bool player_type_changed_;
 	bool skip_next_turn_;
+	boost::scoped_ptr<replay_controller> mp_replay_;
 	void linger();
 	void sync_end_turn();
+	void update_viewing_player();
+	void reset_replay();
 };
 
 

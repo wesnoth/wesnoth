@@ -35,14 +35,16 @@ class dummy_editor_display_context : public display_context
 	editor_map em;
 	unit_map u;
 	std::vector<team> t;
+	std::vector<std::string> lbls;
 
 public:
-	dummy_editor_display_context() : dummy_cfg1(), em(dummy_cfg1), u(), t() {}
+	dummy_editor_display_context() : dummy_cfg1(), em(dummy_cfg1), u(), t(), lbls() {}
 	virtual ~dummy_editor_display_context(){}
 
 	virtual const gamemap & map() const { return em; }
 	virtual const unit_map & units() const { return u; }
 	virtual const std::vector<team> & teams() const { return t; }
+	virtual const std::vector<std::string> & hidden_label_categories() const { return lbls; }
 };
 
 const display_context * get_dummy_display_context() {

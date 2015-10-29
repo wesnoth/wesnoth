@@ -55,11 +55,10 @@ class game_lua_kernel : public lua_kernel_base
 	game_board & board();
 	unit_map & units();
 	const gamemap & map();
-	std::vector<team> & teams();
 	game_data & gamedata();
 	tod_manager & tod_man();
 
-	const config &level_;
+	config level_lua_;
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
@@ -84,7 +83,10 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_match_unit(lua_State *L);
 	int intf_get_recall_units(lua_State *L);
 	int intf_get_variable(lua_State *L);
+	int intf_get_side_variable(lua_State *L);
+	int intf_random(lua_State *L);
 	int intf_set_variable(lua_State *L);
+	int intf_set_side_variable(lua_State *L);
 	int intf_highlight_hex(lua_State *L);
 	int intf_is_enemy(lua_State *L);
 	int intf_view_locked(lua_State *L);
@@ -115,6 +117,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_play_sound(lua_State *L);
 	int intf_print(lua_State *L);
 	int intf_put_unit(lua_State *L);
+	int intf_erase_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
@@ -128,7 +131,9 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
 	int intf_select_hex(lua_State *L);
-	int intf_synchronize_choice(lua_State *L);
+	int intf_deselect_hex(lua_State *L);
+	int intf_is_skipping_messages(lua_State *L);
+	int intf_skip_messages(lua_State *L);
 	int intf_get_locations(lua_State *L);
 	int intf_get_villages(lua_State *L);
 	int intf_match_location(lua_State *L);
@@ -161,15 +166,17 @@ class game_lua_kernel : public lua_kernel_base
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
-	game_lua_kernel(const config &, CVideo *, game_state &, play_controller &, reports &);
+	std::vector<team> & teams();
+	game_lua_kernel(CVideo *, game_state &, play_controller &, reports &);
 
 	void set_game_display(game_display * gd);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 
-	void initialize();
-	void save_game(config &);
-	void load_game();
+	void apply_effect(const std::string& name, unit& u, const config& cfg);
+	void initialize(const config& level);
+	void save_game(config & level);
+	void load_game(const config& level);
 	bool run_event(game_events::queued_event const &);
 	void set_wml_action(std::string const &, game_events::wml_action::handler);
 	bool run_wml_action(std::string const &, vconfig const &,
@@ -181,6 +188,7 @@ public:
 
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
+	int return_unit_method(lua_State *L, char const *m);
 };
 
 #endif

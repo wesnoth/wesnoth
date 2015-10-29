@@ -257,7 +257,7 @@ void helper_advance_unit(const map_location& loc){
 	}else{
 		const config &mod_option = mod_options[advance_choice-options.size()];
 		advanced_unit.set_experience(advanced_unit.experience()-advanced_unit.max_experience());
-		advanced_unit.add_modification("advance", mod_option);
+		advanced_unit.add_modification("advancement", mod_option);
 	}
 
 	resources::units->replace(loc, advanced_unit);
