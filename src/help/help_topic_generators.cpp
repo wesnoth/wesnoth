@@ -494,7 +494,7 @@ std::string unit_topic_generator::operator()() const {
 				push_tab_pair(row, lang_weapon);
 				push_tab_pair(row, lang_type);
 				attack_ss.str(clear_stringstream);
-				attack_ss << attack_it->damage() << utils::unicode_en_dash << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
+				attack_ss << attack_it->damage() << utils::unicode_en_dash << attack_it->num_attacks() << " ";
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
 				if ((*attack_it).min_range() > 1 || (*attack_it).max_range() > 1)

@@ -39,9 +39,6 @@ public:
 	const std::string& range() const { return range_; }
 	int min_range() const { return min_range_; }
 	int max_range() const { return max_range_; }
-	std::string accuracy_parry_description() const;
-	int accuracy() const { return accuracy_; }
-	int parry() const { return parry_; }
 	int damage() const { return damage_; }
 	int num_attacks() const { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
@@ -55,8 +52,6 @@ public:
 	void set_range(const std::string& value) { range_ = value; }
 	// void set_min_range(int value) { min_range_ = value; }
 	// void set_max_range(int value) { max_range_ = value; }
-	void set_accuracy(int value) { accuracy_ = value; }
-	void set_parry(int value) { parry_ = value; }
 	void set_damage(int value) { damage_ = value; }
 	void set_num_attacks(int value) { num_attacks_ = value; }
 	void set_attack_weight(double value) { attack_weight_ = value; }
@@ -117,9 +112,7 @@ private:
 	double attack_weight_;
 	double defense_weight_;
 
-	int accuracy_;
 	int movement_used_;
-	int parry_;
 	config specials_;
 };
 #endif
