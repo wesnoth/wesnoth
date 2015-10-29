@@ -706,7 +706,9 @@ void manager::create_temp_move()
 
 			if(path.size() >= 2)
 			{
-				if(!fake_unit)
+				// Bug #20299 demonstrates a situation where an incorrect fake/ghosted unit can be used.
+				// So before assuming that a pre-existing fake_unit can be re-used, check that its ID matches the unit being moved.
+				if (!fake_unit || fake_unit->id() != temp_moved_unit->id())
 				{
 					// Create temp ghost unit
 					fake_unit.reset(new game_display::fake_unit(*temp_moved_unit));
