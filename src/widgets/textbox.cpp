@@ -106,14 +106,21 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 
 	SDL_SetAlpha(new_text.get(),0,0);
 	SDL_SetAlpha(text_image_.get(),0,0);
-
+#if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_NONE);
+#endif
 	sdl_blit(text_image_,NULL,new_surface,NULL);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_BLEND);
+#endif
 
 	SDL_Rect target = sdl::create_rect(0
 			, text_image_->h
 			, new_text->w
 			, new_text->h);
-
+#if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_SetSurfaceBlendMode(new_text, SDL_BLENDMODE_NONE);
+#endif
 	sdl_blit(new_text,NULL,new_surface,&target);
 	text_image_.assign(new_surface);
 
