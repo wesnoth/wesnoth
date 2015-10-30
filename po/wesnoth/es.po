@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-12 18:03-0300\n"
+"POT-Creation-Date: 2015-10-30 01:45-0300\n"
 "PO-Revision-Date: 2015-06-09 10:06+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -233,13 +233,24 @@ msgstr ""
 "Reemplaza la sala de entrada clásica para multijugador por otra con una "
 "nueva interfaz experimental"
 
-#. [advanced_preference]: type=boolean
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:193
+msgid "Editor recent files limit"
+msgstr ""
+
+#. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:194
+msgid ""
+"The maximum number of items to display on the Recent Files menu in the editor"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:205
 msgid "Show color cursors"
 msgstr "Mostrar cursores de colores"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:195
+#: data/advanced_preferences.cfg:206
 msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
@@ -248,97 +259,97 @@ msgstr ""
 "incluso colgarlo (usar bajo su responsabilidad)"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:204
+#: data/advanced_preferences.cfg:215
 msgid "Joystick support"
 msgstr "Soporte joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:211
+#: data/advanced_preferences.cfg:222
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Joystick: número para desplazamiento en el eje x del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:221
+#: data/advanced_preferences.cfg:232
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Joystick: número para desplazamiento en el eje x"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:231
+#: data/advanced_preferences.cfg:242
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Joystick: número para desplazamiento en el eje y del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:241
+#: data/advanced_preferences.cfg:252
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Joystick: número para desplazamiento en el eje y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:251
+#: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Joystick: límite para el desplazamiento del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:261
+#: data/advanced_preferences.cfg:272
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Joystick: número para el cursor del eje x del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:271
+#: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Joystick: número para el cursor del eje x"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:281
+#: data/advanced_preferences.cfg:292
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Joystick: número para el cursor del eje y del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:291
+#: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Joystick: número para el cursor del eje y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:301
+#: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Joystick: límite para el cursor de la palanca"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:311
+#: data/advanced_preferences.cfg:322
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Joystick: número del eje x del ratón del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:321
+#: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Joystick: número del eje x del ratón"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:331
+#: data/advanced_preferences.cfg:342
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Joystick: número del eje y del ratón del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:341
+#: data/advanced_preferences.cfg:352
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Joystick: número del eje y del ratón"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:351
+#: data/advanced_preferences.cfg:362
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Joystick: límite para el ratón del joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:361
+#: data/advanced_preferences.cfg:372
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Joystick: número para el desplazamiento presionando el joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:371
+#: data/advanced_preferences.cfg:382
 msgid "Joystick: number of the thrust axis"
 msgstr "Joystick: número para el desplazamiento en la dirección de presión"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:381
+#: data/advanced_preferences.cfg:392
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: límite de la presión"
 
@@ -375,317 +386,317 @@ msgid "General Purpose Administration and Coordination"
 msgstr "Administración de propósito general y coordinación"
 
 #. [about]
-#: data/core/about.cfg:257
+#: data/core/about.cfg:263
 msgid "Artwork and Graphics"
 msgstr "Arte y gráficos"
 
 #. [about]
-#: data/core/about.cfg:649
+#: data/core/about.cfg:655
 msgid "Music"
 msgstr "Música"
 
 #. [about]
-#: data/core/about.cfg:686
+#: data/core/about.cfg:692
 msgid "Sound Effects"
 msgstr "Efectos de sonido"
 
 #. [about]
-#: data/core/about.cfg:702
+#: data/core/about.cfg:708
 msgid "Campaign Design"
 msgstr "Diseño de campañas"
 
 #. [about]
-#: data/core/about.cfg:773
+#: data/core/about.cfg:779
 msgid "Multiplayer Maps and Balancing"
 msgstr "Balance y mapas multijugador"
 
 #. [about]
-#: data/core/about.cfg:818
+#: data/core/about.cfg:824
 msgid "Packagers"
 msgstr "Distribuidores"
 
 #. [about]
-#: data/core/about.cfg:893
+#: data/core/about.cfg:923
 msgid "Miscellaneous Contributors"
 msgstr "Contribuidores diversos"
 
 #. [about]
-#: data/core/about.cfg:1339
+#: data/core/about.cfg:1372
 msgid "Internationalization Managers"
 msgstr "Responsables de internacionalización"
 
 #. [about]
-#: data/core/about.cfg:1364
+#: data/core/about.cfg:1397
 msgid "English strings edition"
 msgstr "Edición de texto en inglés"
 
 #. [about]
-#: data/core/about.cfg:1371
+#: data/core/about.cfg:1404
 msgid "Afrikaans Translation"
 msgstr "Traducción al afrikáans"
 
 #. [about]
-#: data/core/about.cfg:1391
+#: data/core/about.cfg:1424
 msgid "Arabic Translation"
 msgstr "Traducción al árabe"
 
 #. [about]
-#: data/core/about.cfg:1398
+#: data/core/about.cfg:1431
 msgid "Basque Translation"
 msgstr "Traducción al vasco"
 
 #. [about]
-#: data/core/about.cfg:1411
+#: data/core/about.cfg:1444
 msgid "Bulgarian Translation"
 msgstr "Traducción al búlgaro"
 
 #. [about]
-#: data/core/about.cfg:1430
+#: data/core/about.cfg:1463
 msgid "Catalan Translation"
 msgstr "Traducción al catalán"
 
 #. [about]
-#: data/core/about.cfg:1471
+#: data/core/about.cfg:1504
 msgid "Chinese Translation"
 msgstr "Traducción al chino"
 
 #. [about]
-#: data/core/about.cfg:1551
+#: data/core/about.cfg:1584
 msgid "Chinese (Taiwan) Translation"
 msgstr "Traducción al chino (Taiwan)"
 
 #. [about]
-#: data/core/about.cfg:1564
+#: data/core/about.cfg:1597
 msgid "Croatian Translation"
 msgstr "Traducción al croata"
 
 #. [about]
-#: data/core/about.cfg:1574
+#: data/core/about.cfg:1607
 msgid "Czech Translation"
 msgstr "Traducción al checo"
 
 #. [about]
-#: data/core/about.cfg:1634
+#: data/core/about.cfg:1667
 msgid "Danish Translation"
 msgstr "Traducción al danés"
 
 #. [about]
-#: data/core/about.cfg:1665
+#: data/core/about.cfg:1698
 msgid "Dutch Translation"
 msgstr "Traducción al holandés"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1762
 msgid "English (GB) Translation"
 msgstr "Traducción al inglés (GB)"
 
 #. [about]
-#: data/core/about.cfg:1752
+#: data/core/about.cfg:1785
 msgid "English (Shaw) Translation"
 msgstr "Traducción al inglés (Shaw)"
 
 #. [about]
-#: data/core/about.cfg:1770
+#: data/core/about.cfg:1803
 msgid "Esperanto Translation"
 msgstr "Traducción al esperanto"
 
 #. [about]
-#: data/core/about.cfg:1789
+#: data/core/about.cfg:1822
 msgid "Estonian Translation"
 msgstr "Traducción al estonio"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1832
 msgid "Filipino Translation"
 msgstr "Traducción al filipino"
 
 #. [about]
-#: data/core/about.cfg:1809
+#: data/core/about.cfg:1842
 msgid "Finnish Translation"
 msgstr "Traducción al finlandés"
 
 #. [about]
-#: data/core/about.cfg:1855
+#: data/core/about.cfg:1888
 msgid "French Translation"
 msgstr "Traducción al francés"
 
 #. [about]
-#: data/core/about.cfg:2017
+#: data/core/about.cfg:2050
 msgid "Friulian Translation"
 msgstr "Traducción al friulano"
 
 #. [about]
-#: data/core/about.cfg:2024
+#: data/core/about.cfg:2057
 msgid "Galician Translation"
 msgstr "Traducción al gallego"
 
 #. [about]
-#: data/core/about.cfg:2060
+#: data/core/about.cfg:2093
 msgid "German Translation"
 msgstr "Traducción al alemán"
 
 #. [about]
-#: data/core/about.cfg:2134
+#: data/core/about.cfg:2167
 msgid "Greek Translation"
 msgstr "Traducción al griego"
 
 #. [about]
-#: data/core/about.cfg:2177
+#: data/core/about.cfg:2210
 msgid "Hebrew Translation"
 msgstr "Traducción al hebreo"
 
 #. [about]
-#: data/core/about.cfg:2190
+#: data/core/about.cfg:2223
 msgid "Hungarian Translation"
 msgstr "Traducción al húngaro"
 
 #. [about]
-#: data/core/about.cfg:2251
+#: data/core/about.cfg:2284
 msgid "Icelandic Translation"
 msgstr "Traducción al islandés"
 
 #. [about]
-#: data/core/about.cfg:2261
+#: data/core/about.cfg:2294
 msgid "Indonesian Translation"
 msgstr "Traducción al indonesio"
 
 #. [about]
-#: data/core/about.cfg:2284
+#: data/core/about.cfg:2317
 msgid "Irish Translation"
 msgstr "Traducción al irlandés"
 
 #. [about]
-#: data/core/about.cfg:2291
+#: data/core/about.cfg:2324
 msgid "Italian Translation"
 msgstr "Traducción al italiano"
 
 #. [about]
-#: data/core/about.cfg:2338
+#: data/core/about.cfg:2371
 msgid "Japanese Translation"
 msgstr "Traducción al japonés"
 
 #. [about]
-#: data/core/about.cfg:2406
+#: data/core/about.cfg:2450
 msgid "Korean Translation"
 msgstr "Traducción al coreano"
 
 #. [about]
-#: data/core/about.cfg:2414
+#: data/core/about.cfg:2458
 msgid "Latin Translation"
 msgstr "Traducción al latín"
 
 #. [about]
-#: data/core/about.cfg:2440
+#: data/core/about.cfg:2484
 msgid "Latvian Translation"
 msgstr "Traducción al letón"
 
 #. [about]
-#: data/core/about.cfg:2451
+#: data/core/about.cfg:2499
 msgid "Lithuanian Translation"
 msgstr "Traducción al lituano"
 
 #. [about]
-#: data/core/about.cfg:2476
+#: data/core/about.cfg:2524
 msgid "Macedonian Translation"
 msgstr "Traducción al macedonio"
 
 #. [about]
-#: data/core/about.cfg:2483
+#: data/core/about.cfg:2531
 msgid "Marathi Translation"
 msgstr "Traducción al maratí"
 
 #. [about]
-#: data/core/about.cfg:2492
+#: data/core/about.cfg:2540
 msgid "Norwegian Translation"
 msgstr "Traducción al noruego"
 
 #. [about]
-#: data/core/about.cfg:2517
+#: data/core/about.cfg:2565
 msgid "Old English Translation"
 msgstr "Traducción al anglosajón"
 
 #. [about]
-#: data/core/about.cfg:2535
+#: data/core/about.cfg:2583
 msgid "Polish Translation"
 msgstr "Traducción al polaco"
 
 #. [about]
-#: data/core/about.cfg:2579
+#: data/core/about.cfg:2627
 msgid "Portuguese Translation"
 msgstr "Traducción al portugués"
 
 #. [about]
-#: data/core/about.cfg:2597
+#: data/core/about.cfg:2645
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducción al portugués (Brasil)"
 
 #. [about]
-#: data/core/about.cfg:2651
+#: data/core/about.cfg:2699
 msgid "Romanian Translation"
 msgstr "Traducción al rumano"
 
 #. [about]
-#: data/core/about.cfg:2659
+#: data/core/about.cfg:2707
 msgid "Russian Translation"
 msgstr "Traducción al ruso"
 
 #. [about]
-#: data/core/about.cfg:2748
+#: data/core/about.cfg:2796
 msgid "Scottish Gaelic Translation"
 msgstr "Traducción al gaélico escocés"
 
 #. [about]
-#: data/core/about.cfg:2757
+#: data/core/about.cfg:2805
 msgid "Serbian Translation"
 msgstr "Traducción al serbio"
 
 #. [about]
-#: data/core/about.cfg:2776
+#: data/core/about.cfg:2824
 msgid "Slovak Translation"
 msgstr "Traducción al eslovaco"
 
 #. [about]
-#: data/core/about.cfg:2805
+#: data/core/about.cfg:2853
 msgid "Slovenian Translation"
 msgstr "Traducción al esloveno"
 
 #. [about]
-#: data/core/about.cfg:2821
+#: data/core/about.cfg:2869
 msgid "Spanish Translation"
 msgstr "Traducción al español"
 
 #. [about]
-#: data/core/about.cfg:2903
+#: data/core/about.cfg:2951
 msgid "Swedish Translation"
 msgstr "Traducción al sueco"
 
 #. [about]
-#: data/core/about.cfg:2944
+#: data/core/about.cfg:2992
 msgid "Turkish Translation"
 msgstr "Traducción al turco"
 
 #. [about]
-#: data/core/about.cfg:2966
+#: data/core/about.cfg:3014
 msgid "Ukrainian Translation"
 msgstr "Traducción al ucraniano"
 
 #. [about]
-#: data/core/about.cfg:2979
+#: data/core/about.cfg:3027
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducción al valenciano (catalán del sur)"
 
 #. [about]
-#: data/core/about.cfg:2992
+#: data/core/about.cfg:3040
 msgid "Vietnamese Translation"
 msgstr "Traducción al vietnamita"
 
 #. [about]
-#: data/core/about.cfg:3011
+#: data/core/about.cfg:3059
 msgid "RACV’s Translation"
 msgstr "Traducción al idioma de la RACV"
 
 #. [about]
-#: data/core/about.cfg:3018
+#: data/core/about.cfg:3066
 msgid "Bots"
 msgstr "Robots"
 
@@ -2717,7 +2728,7 @@ msgstr ""
 "ocupado por un jugador humano."
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:805
+#: data/core/macros/utils.cfg:807
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Usted recibe $amount_gold monedas de oro."
 
@@ -3238,11 +3249,11 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 # Esta es una traducción literal, ya que puede tener varios significados en el idioma inglés.  Esto último se debe a que no tiene más palabras que de a entender a lo que se refiere en inglés.
-#: data/scenario-test.cfg:4009
+#: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr "demasiado largo"
 
-#: data/scenario-test.cfg:4010
+#: data/scenario-test.cfg:4005
 msgid "electrical"
 msgstr "eléctrico"
 
@@ -5138,8 +5149,7 @@ msgstr "La batalla por Wesnoth"
 msgid "The file you have tried to load is corrupt"
 msgstr "El archivo que ha intentado cargar está corrupto"
 
-#: src/game_controller.cpp:483 src/game_controller.cpp:501
-#: src/savegame.cpp:691
+#: src/game_controller.cpp:483 src/game_controller.cpp:501 src/savegame.cpp:691
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El archivo que ha intentado cargar está corrupto: «"
 
@@ -5198,7 +5208,7 @@ msgstr "Mensaje de chat"
 msgid "Turn changed"
 msgstr "Turno cambiado"
 
-#: src/game_events/action_wml.cpp:751
+#: src/game_events/action_wml.cpp:750
 msgid "Invalid value in the result key for [end_level]"
 msgstr "Valor inválido en el atributo resultado de la etiqueta [end_level]"
 
@@ -5305,25 +5315,25 @@ msgstr "Usted"
 msgid "Error"
 msgstr "Error"
 
-#: src/hotkey/command_executor.cpp:509 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
+#: src/hotkey/command_executor.cpp:510 src/hotkey/command_executor.cpp:672
+#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:871
 #: src/multiplayer_wait.cpp:188
 msgid "Quit"
 msgstr "Salir"
 
-#: src/hotkey/command_executor.cpp:510 src/hotkey/command_executor.cpp:672
+#: src/hotkey/command_executor.cpp:511 src/hotkey/command_executor.cpp:673
 msgid "Do you really want to quit?"
 msgstr "¿Está seguro de que desea salir?"
 
-#: src/hotkey/command_executor.cpp:627
+#: src/hotkey/command_executor.cpp:628
 msgid "Map-Screenshot"
 msgstr "Captura de mapa"
 
-#: src/hotkey/command_executor.cpp:627
+#: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "Imagen de pantalla"
 
-#: src/hotkey/command_executor.cpp:634
+#: src/hotkey/command_executor.cpp:635
 msgid "Screenshot Done"
 msgstr "Captura completada"
 
@@ -6575,7 +6585,7 @@ msgstr "Compartir mapas"
 msgid "Share None"
 msgstr "No compartir nada"
 
-#: src/multiplayer_configure.cpp:211 src/multiplayer_create_engine.cpp:457
+#: src/multiplayer_configure.cpp:211 src/multiplayer_create_engine.cpp:458
 msgid "$login|’s game"
 msgstr "La partida de $login"
 
@@ -6724,7 +6734,7 @@ msgstr "Reservado"
 msgid "--give--"
 msgstr "--ceder--"
 
-#: src/multiplayer_create.cpp:60 src/multiplayer_lobby.cpp:860
+#: src/multiplayer_create.cpp:60 src/multiplayer_lobby.cpp:868
 msgid "Create Game"
 msgstr "Crear partida"
 
@@ -6840,19 +6850,19 @@ msgstr "Número de jugadores: "
 msgid "No description available."
 msgstr "No hay una descripción disponible."
 
-#: src/multiplayer_create_engine.cpp:139 src/multiplayer_create_engine.cpp:805
+#: src/multiplayer_create_engine.cpp:140 src/multiplayer_create_engine.cpp:806
 msgid "Map could not be loaded: "
 msgstr "El mapa no se ha podido cargar: "
 
-#: src/multiplayer_create_engine.cpp:143
+#: src/multiplayer_create_engine.cpp:144
 msgid "Map could not be loaded."
 msgstr "El mapa no se ha podido cargar."
 
-#: src/multiplayer_create_engine.cpp:165
+#: src/multiplayer_create_engine.cpp:166
 msgid "not available."
 msgstr "no disponible."
 
-#: src/multiplayer_create_engine.cpp:217
+#: src/multiplayer_create_engine.cpp:218
 msgid "User made map"
 msgstr "Mapa creado por el usuario"
 
@@ -6881,68 +6891,68 @@ msgstr "Campaña desconocida: $campaign_id"
 msgid " (missing)"
 msgstr " (perdido)"
 
-#: src/multiplayer_lobby.cpp:670 src/multiplayer_lobby.cpp:1028
+#: src/multiplayer_lobby.cpp:670 src/multiplayer_lobby.cpp:1036
 msgid "Password Required"
 msgstr "Contraseña requerida"
 
-#: src/multiplayer_lobby.cpp:853 src/multiplayer_wait.cpp:187
+#: src/multiplayer_lobby.cpp:861 src/multiplayer_wait.cpp:187
 msgid "Game Lobby"
 msgstr "Sala de entrada"
 
-#: src/multiplayer_lobby.cpp:858
+#: src/multiplayer_lobby.cpp:866
 msgid "Observe Game"
 msgstr "Observar partida"
 
-#: src/multiplayer_lobby.cpp:859
+#: src/multiplayer_lobby.cpp:867
 msgid "Join Game"
 msgstr "Unirse a la partida"
 
-#: src/multiplayer_lobby.cpp:862
+#: src/multiplayer_lobby.cpp:870
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/multiplayer_lobby.cpp:864
+#: src/multiplayer_lobby.cpp:872
 msgid "Apply filter"
 msgstr "Usar filtro"
 
-#: src/multiplayer_lobby.cpp:865
+#: src/multiplayer_lobby.cpp:873
 msgid "Invert"
 msgstr "Invertir"
 
-#: src/multiplayer_lobby.cpp:866
+#: src/multiplayer_lobby.cpp:874
 msgid "Vacant slots"
 msgstr "Puestos vacantes"
 
-#: src/multiplayer_lobby.cpp:867
+#: src/multiplayer_lobby.cpp:875
 msgid "Friends in game"
 msgstr "Partida con amigos"
 
-#: src/multiplayer_lobby.cpp:868
+#: src/multiplayer_lobby.cpp:876
 msgid "Search:"
 msgstr "Buscar:"
 
-#: src/multiplayer_lobby.cpp:876
+#: src/multiplayer_lobby.cpp:884
 msgid "Normal Replays"
 msgstr "Repetición normal"
 
-#: src/multiplayer_lobby.cpp:877
+#: src/multiplayer_lobby.cpp:885
 msgid "Quick Replays"
 msgstr "Repetición rápida"
 
 # tengo que verlo en el menú o no lo entiendo bien
-#: src/multiplayer_lobby.cpp:878
+#: src/multiplayer_lobby.cpp:886
 msgid "Enter Blindfolded"
 msgstr "Entrar a ciegas"
 
-#: src/multiplayer_lobby.cpp:882
+#: src/multiplayer_lobby.cpp:890
 msgid "Skip quickly to the active turn when observing"
 msgstr "Saltar rápidamente al turno activo cuando se está observando"
 
-#: src/multiplayer_lobby.cpp:883
+#: src/multiplayer_lobby.cpp:891
 msgid "Do not show replay turns"
 msgstr "No mostrar la repetición de los turnos"
 
-#: src/multiplayer_lobby.cpp:896
+#: src/multiplayer_lobby.cpp:904
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -6950,7 +6960,7 @@ msgstr ""
 "Permite el filtrado de partidas. Si no está seleccionado, todas las partidas "
 "serán mostradas, sin importar que otros filtros se hayan escogido."
 
-#: src/multiplayer_lobby.cpp:899
+#: src/multiplayer_lobby.cpp:907
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -6958,29 +6968,33 @@ msgstr ""
 "Muestra todas las partidas que NO forman parte del filtrado que usted ha "
 "escogido. Esto es útil para ocultar aquellas partidas que no interesa ver."
 
-#: src/multiplayer_lobby.cpp:903
+#: src/multiplayer_lobby.cpp:911
 msgid "Only show games that have at least one vacant slot"
 msgstr ""
 "Solamente muestra partidas que contengan por lo menos un puesto vacante"
 
-#: src/multiplayer_lobby.cpp:907
+#: src/multiplayer_lobby.cpp:915
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Solamente muestra partidas que están siendo jugadas u observadas por lo "
 "menos por uno de sus amigos"
 
-#: src/multiplayer_lobby.cpp:913
-msgid "Only show games whose title or description contain the entered text"
+#: src/multiplayer_lobby.cpp:921
+#, fuzzy
+#| msgid "Only show games whose title or description contain the entered text"
+msgid ""
+"Only show games whose title, description, era or mods contain the entered "
+"text"
 msgstr ""
 "Solamente muestra partidas que contengan el título o la descripción en el "
 "texto introducido"
 
-#: src/multiplayer_lobby.cpp:1029
+#: src/multiplayer_lobby.cpp:1037
 msgid "Joining this game requires a password."
 msgstr "Unirse a este juego requiere contraseña."
 
-#: src/multiplayer_lobby.cpp:1030
+#: src/multiplayer_lobby.cpp:1038
 msgid "Password: "
 msgstr "Contraseña: "
 
@@ -7975,27 +7989,27 @@ msgstr "octubre"
 msgid "September"
 msgstr "septiembre"
 
-#: src/strftime.cpp:73
+#: src/strftime.cpp:78
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%d/%m/%Y a las %H:%M:%S"
 
-#: src/strftime.cpp:77
+#: src/strftime.cpp:82
 msgid "%a %d %b %Y %H:%M:%S %z"
 msgstr "%d/%m/%Y a las %H:%M:%S %z"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "AM"
 msgstr "AM"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "PM"
 msgstr "PM"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "am"
 msgstr "am"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "pm"
 msgstr "pm"
 
@@ -8025,8 +8039,7 @@ msgid "Stub Time of Day"
 msgstr "Hora del día mínima"
 
 # e/y
-#: src/unit.cpp:2432 src/unit.cpp:2662 src/unit.cpp:2743
-#: src/unit_types.cpp:163
+#: src/unit.cpp:2432 src/unit.cpp:2662 src/unit.cpp:2743 src/unit_types.cpp:163
 msgid " and "
 msgstr " y "
 

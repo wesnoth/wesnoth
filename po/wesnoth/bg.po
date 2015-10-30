@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-12 18:03-0300\n"
+"POT-Creation-Date: 2015-10-30 01:45-0300\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -224,110 +224,121 @@ msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
 
-#. [advanced_preference]: type=boolean
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:193
+msgid "Editor recent files limit"
+msgstr ""
+
+#. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:194
+msgid ""
+"The maximum number of items to display on the Recent Files menu in the editor"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:205
 msgid "Show color cursors"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:195
+#: data/advanced_preferences.cfg:206
 msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:204
+#: data/advanced_preferences.cfg:215
 msgid "Joystick support"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:211
+#: data/advanced_preferences.cfg:222
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:221
+#: data/advanced_preferences.cfg:232
 msgid "Joystick: number of the scroll X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:231
+#: data/advanced_preferences.cfg:242
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:241
+#: data/advanced_preferences.cfg:252
 msgid "Joystick: number of the scroll Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:251
+#: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:261
+#: data/advanced_preferences.cfg:272
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:271
+#: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the cursor X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:281
+#: data/advanced_preferences.cfg:292
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:291
+#: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the cursor Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:301
+#: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the cursor stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:311
+#: data/advanced_preferences.cfg:322
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:321
+#: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the mouse X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:331
+#: data/advanced_preferences.cfg:342
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:341
+#: data/advanced_preferences.cfg:352
 msgid "Joystick: number of the mouse Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:351
+#: data/advanced_preferences.cfg:362
 msgid "Joystick: deadzone of the mouse stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:361
+#: data/advanced_preferences.cfg:372
 msgid "Joystick: number of the thrust axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:371
+#: data/advanced_preferences.cfg:382
 msgid "Joystick: number of the thrust axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:381
+#: data/advanced_preferences.cfg:392
 msgid "Joystick: deadzone of the thruster"
 msgstr ""
 
@@ -364,337 +375,337 @@ msgid "General Purpose Administration and Coordination"
 msgstr "Обща администрация и координация на целите"
 
 #. [about]
-#: data/core/about.cfg:257
+#: data/core/about.cfg:263
 msgid "Artwork and Graphics"
 msgstr "Графично оформление и дизайн"
 
 #. [about]
-#: data/core/about.cfg:649
+#: data/core/about.cfg:655
 msgid "Music"
 msgstr "Музика"
 
 #. [about]
-#: data/core/about.cfg:686
+#: data/core/about.cfg:692
 msgid "Sound Effects"
 msgstr "Звукови ефекти"
 
 #. [about]
-#: data/core/about.cfg:702
+#: data/core/about.cfg:708
 msgid "Campaign Design"
 msgstr "Проект на кампания"
 
 #. [about]
-#: data/core/about.cfg:773
+#: data/core/about.cfg:779
 msgid "Multiplayer Maps and Balancing"
 msgstr "Карти и балансиране за мрежова игра "
 
 #. [about]
-#: data/core/about.cfg:818
+#: data/core/about.cfg:824
 msgid "Packagers"
 msgstr "Пакетиращи"
 
 #. [about]
-#: data/core/about.cfg:893
+#: data/core/about.cfg:923
 #, fuzzy
 msgid "Miscellaneous Contributors"
 msgstr "Разни"
 
 #. [about]
-#: data/core/about.cfg:1339
+#: data/core/about.cfg:1372
 msgid "Internationalization Managers"
 msgstr "Ръководители на превода"
 
 #. [about]
-#: data/core/about.cfg:1364
+#: data/core/about.cfg:1397
 #, fuzzy
 msgid "English strings edition"
 msgstr "Превод на английски (Великобритания)"
 
 #. [about]
-#: data/core/about.cfg:1371
+#: data/core/about.cfg:1404
 msgid "Afrikaans Translation"
 msgstr "Превод на африкански"
 
 #. [about]
-#: data/core/about.cfg:1391
+#: data/core/about.cfg:1424
 #, fuzzy
 msgid "Arabic Translation"
 msgstr "Превод на сръбски"
 
 #. [about]
-#: data/core/about.cfg:1398
+#: data/core/about.cfg:1431
 msgid "Basque Translation"
 msgstr "Превод на езика на баските (северна Испания)"
 
 #. [about]
-#: data/core/about.cfg:1411
+#: data/core/about.cfg:1444
 msgid "Bulgarian Translation"
 msgstr "Превод на български"
 
 #. [about]
-#: data/core/about.cfg:1430
+#: data/core/about.cfg:1463
 msgid "Catalan Translation"
 msgstr "Превод на каталунски"
 
 #. [about]
-#: data/core/about.cfg:1471
+#: data/core/about.cfg:1504
 msgid "Chinese Translation"
 msgstr "Превод на китайски"
 
 #. [about]
-#: data/core/about.cfg:1551
+#: data/core/about.cfg:1584
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "Превод на китайски"
 
 #. [about]
-#: data/core/about.cfg:1564
+#: data/core/about.cfg:1597
 #, fuzzy
 msgid "Croatian Translation"
 msgstr "Превод на каталунски"
 
 #. [about]
-#: data/core/about.cfg:1574
+#: data/core/about.cfg:1607
 msgid "Czech Translation"
 msgstr "Превод на чешки"
 
 #. [about]
-#: data/core/about.cfg:1634
+#: data/core/about.cfg:1667
 msgid "Danish Translation"
 msgstr "Превод на датски"
 
 #. [about]
-#: data/core/about.cfg:1665
+#: data/core/about.cfg:1698
 msgid "Dutch Translation"
 msgstr "Превод на холандски"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1762
 msgid "English (GB) Translation"
 msgstr "Превод на английски (Великобритания)"
 
 #. [about]
-#: data/core/about.cfg:1752
+#: data/core/about.cfg:1785
 #, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "Превод на английски (Великобритания)"
 
 #. [about]
-#: data/core/about.cfg:1770
+#: data/core/about.cfg:1803
 msgid "Esperanto Translation"
 msgstr "Превод на Есперанто"
 
 #. [about]
-#: data/core/about.cfg:1789
+#: data/core/about.cfg:1822
 msgid "Estonian Translation"
 msgstr "Превод на естонски"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1832
 msgid "Filipino Translation"
 msgstr "Превод на филипински"
 
 #. [about]
-#: data/core/about.cfg:1809
+#: data/core/about.cfg:1842
 msgid "Finnish Translation"
 msgstr "Превод на финландски"
 
 #. [about]
-#: data/core/about.cfg:1855
+#: data/core/about.cfg:1888
 msgid "French Translation"
 msgstr "Превод на френски"
 
 #. [about]
-#: data/core/about.cfg:2017
+#: data/core/about.cfg:2050
 #, fuzzy
 msgid "Friulian Translation"
 msgstr "Превод на филипински"
 
 #. [about]
-#: data/core/about.cfg:2024
+#: data/core/about.cfg:2057
 msgid "Galician Translation"
 msgstr "Превод на галицийски"
 
 #. [about]
-#: data/core/about.cfg:2060
+#: data/core/about.cfg:2093
 msgid "German Translation"
 msgstr "Превод на немски"
 
 #. [about]
-#: data/core/about.cfg:2134
+#: data/core/about.cfg:2167
 msgid "Greek Translation"
 msgstr "Превод на гръцки"
 
 #. [about]
-#: data/core/about.cfg:2177
+#: data/core/about.cfg:2210
 msgid "Hebrew Translation"
 msgstr "Превод на иврит"
 
 #. [about]
-#: data/core/about.cfg:2190
+#: data/core/about.cfg:2223
 msgid "Hungarian Translation"
 msgstr "Превод на унгарски"
 
 #. [about]
-#: data/core/about.cfg:2251
+#: data/core/about.cfg:2284
 #, fuzzy
 msgid "Icelandic Translation"
 msgstr "Превод на италиански"
 
 #. [about]
-#: data/core/about.cfg:2261
+#: data/core/about.cfg:2294
 msgid "Indonesian Translation"
 msgstr "Превод на индонезийски"
 
 #. [about]
-#: data/core/about.cfg:2284
+#: data/core/about.cfg:2317
 #, fuzzy
 msgid "Irish Translation"
 msgstr "Превод на турски"
 
 #. [about]
-#: data/core/about.cfg:2291
+#: data/core/about.cfg:2324
 msgid "Italian Translation"
 msgstr "Превод на италиански"
 
 #. [about]
-#: data/core/about.cfg:2338
+#: data/core/about.cfg:2371
 msgid "Japanese Translation"
 msgstr "Превод на японски"
 
 #. [about]
-#: data/core/about.cfg:2406
+#: data/core/about.cfg:2450
 msgid "Korean Translation"
 msgstr "Превод на корейски"
 
 #. [about]
-#: data/core/about.cfg:2414
+#: data/core/about.cfg:2458
 msgid "Latin Translation"
 msgstr "Превод на латински"
 
 #. [about]
-#: data/core/about.cfg:2440
+#: data/core/about.cfg:2484
 #, fuzzy
 msgid "Latvian Translation"
 msgstr "Превод на латински"
 
 #. [about]
-#: data/core/about.cfg:2451
+#: data/core/about.cfg:2499
 msgid "Lithuanian Translation"
 msgstr "Превод на литовски"
 
 #. [about]
-#: data/core/about.cfg:2476
+#: data/core/about.cfg:2524
 #, fuzzy
 msgid "Macedonian Translation"
 msgstr "Превод на индонезийски"
 
 #. [about]
-#: data/core/about.cfg:2483
+#: data/core/about.cfg:2531
 #, fuzzy
 msgid "Marathi Translation"
 msgstr "Превод на латински"
 
 #. [about]
-#: data/core/about.cfg:2492
+#: data/core/about.cfg:2540
 msgid "Norwegian Translation"
 msgstr "Превод на норвежки"
 
 #. [about]
-#: data/core/about.cfg:2517
+#: data/core/about.cfg:2565
 #, fuzzy
 msgid "Old English Translation"
 msgstr "Превод на английски (Великобритания)"
 
 #. [about]
-#: data/core/about.cfg:2535
+#: data/core/about.cfg:2583
 msgid "Polish Translation"
 msgstr "Превод на полски"
 
 #. [about]
-#: data/core/about.cfg:2579
+#: data/core/about.cfg:2627
 msgid "Portuguese Translation"
 msgstr "Превод на португалски"
 
 #. [about]
-#: data/core/about.cfg:2597
+#: data/core/about.cfg:2645
 msgid "Portuguese (Brazil) Translation"
 msgstr "Превод на португалски (Бразилия)"
 
 #. [about]
-#: data/core/about.cfg:2651
+#: data/core/about.cfg:2699
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "Превод на естонски"
 
 #. [about]
-#: data/core/about.cfg:2659
+#: data/core/about.cfg:2707
 msgid "Russian Translation"
 msgstr "Превод на руски"
 
 #. [about]
-#: data/core/about.cfg:2748
+#: data/core/about.cfg:2796
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Превод на галицийски"
 
 #. [about]
-#: data/core/about.cfg:2757
+#: data/core/about.cfg:2805
 msgid "Serbian Translation"
 msgstr "Превод на сръбски"
 
 #. [about]
-#: data/core/about.cfg:2776
+#: data/core/about.cfg:2824
 msgid "Slovak Translation"
 msgstr "Превод на словашки"
 
 #. [about]
-#: data/core/about.cfg:2805
+#: data/core/about.cfg:2853
 msgid "Slovenian Translation"
 msgstr "Превод на словенски"
 
 #. [about]
-#: data/core/about.cfg:2821
+#: data/core/about.cfg:2869
 msgid "Spanish Translation"
 msgstr "Превод на испански"
 
 #. [about]
-#: data/core/about.cfg:2903
+#: data/core/about.cfg:2951
 msgid "Swedish Translation"
 msgstr "Превод на шведски"
 
 #. [about]
-#: data/core/about.cfg:2944
+#: data/core/about.cfg:2992
 msgid "Turkish Translation"
 msgstr "Превод на турски"
 
 #. [about]
-#: data/core/about.cfg:2966
+#: data/core/about.cfg:3014
 #, fuzzy
 msgid "Ukrainian Translation"
 msgstr "Превод на естонски"
 
 #. [about]
-#: data/core/about.cfg:2979
+#: data/core/about.cfg:3027
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Превод на валенсиански"
 
 #. [about]
-#: data/core/about.cfg:2992
+#: data/core/about.cfg:3040
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Превод на китайски"
 
 #. [about]
-#: data/core/about.cfg:3011
+#: data/core/about.cfg:3059
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "Превод на китайски"
 
 #. [about]
-#: data/core/about.cfg:3018
+#: data/core/about.cfg:3066
 msgid "Bots"
 msgstr "Ботове"
 
@@ -2307,7 +2318,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:805
+#: data/core/macros/utils.cfg:807
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -2839,11 +2850,11 @@ msgstr "ОК"
 msgid "Cancel"
 msgstr "Отказ"
 
-#: data/scenario-test.cfg:4009
+#: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr ""
 
-#: data/scenario-test.cfg:4010
+#: data/scenario-test.cfg:4005
 #, fuzzy
 msgid "electrical"
 msgstr "механичен"
@@ -4715,8 +4726,7 @@ msgstr "Битката за Уеснот"
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
-#: src/game_controller.cpp:483 src/game_controller.cpp:501
-#: src/savegame.cpp:691
+#: src/game_controller.cpp:483 src/game_controller.cpp:501 src/savegame.cpp:691
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файлът който се опитвате да заредите е повреден: '"
 
@@ -4779,7 +4789,7 @@ msgstr ""
 msgid "Turn changed"
 msgstr "далечен бой"
 
-#: src/game_events/action_wml.cpp:751
+#: src/game_events/action_wml.cpp:750
 msgid "Invalid value in the result key for [end_level]"
 msgstr ""
 
@@ -4893,27 +4903,27 @@ msgstr ""
 msgid "Error"
 msgstr "Грешка"
 
-#: src/hotkey/command_executor.cpp:509 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
+#: src/hotkey/command_executor.cpp:510 src/hotkey/command_executor.cpp:672
+#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:871
 #: src/multiplayer_wait.cpp:188
 msgid "Quit"
 msgstr "Изход"
 
-#: src/hotkey/command_executor.cpp:510 src/hotkey/command_executor.cpp:672
+#: src/hotkey/command_executor.cpp:511 src/hotkey/command_executor.cpp:673
 #, fuzzy
 msgid "Do you really want to quit?"
 msgstr "Наистина ли искате ли да изтриете записа?"
 
-#: src/hotkey/command_executor.cpp:627
+#: src/hotkey/command_executor.cpp:628
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkey/command_executor.cpp:627
+#: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkey/command_executor.cpp:634
+#: src/hotkey/command_executor.cpp:635
 #, fuzzy
 #| msgid "Screenshot"
 msgid "Screenshot Done"
@@ -6196,7 +6206,7 @@ msgstr "Споделяне на карти"
 msgid "Share None"
 msgstr "Без споделяне"
 
-#: src/multiplayer_configure.cpp:211 src/multiplayer_create_engine.cpp:457
+#: src/multiplayer_configure.cpp:211 src/multiplayer_create_engine.cpp:458
 msgid "$login|’s game"
 msgstr "Игра на $login"
 
@@ -6356,7 +6366,7 @@ msgstr "Резерв: "
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_create.cpp:60 src/multiplayer_lobby.cpp:860
+#: src/multiplayer_create.cpp:60 src/multiplayer_lobby.cpp:868
 msgid "Create Game"
 msgstr "Създай игра"
 
@@ -6491,25 +6501,25 @@ msgstr "Име на играта:"
 msgid "No description available."
 msgstr "Няма цели"
 
-#: src/multiplayer_create_engine.cpp:139 src/multiplayer_create_engine.cpp:805
+#: src/multiplayer_create_engine.cpp:140 src/multiplayer_create_engine.cpp:806
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
 msgstr "Играта не може да се зареди: "
 
-#: src/multiplayer_create_engine.cpp:143
+#: src/multiplayer_create_engine.cpp:144
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
 msgstr "Играта не може да се зареди: "
 
-#: src/multiplayer_create_engine.cpp:165
+#: src/multiplayer_create_engine.cpp:166
 #, fuzzy
 #| msgid "Era not available"
 msgid "not available."
 msgstr "Ерата е недостъпна"
 
-#: src/multiplayer_create_engine.cpp:217
+#: src/multiplayer_create_engine.cpp:218
 msgid "User made map"
 msgstr ""
 
@@ -6542,103 +6552,105 @@ msgstr "Изпълнение и поддръжка"
 msgid " (missing)"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:670 src/multiplayer_lobby.cpp:1028
+#: src/multiplayer_lobby.cpp:670 src/multiplayer_lobby.cpp:1036
 #, fuzzy
 msgid "Password Required"
 msgstr "масирана атака"
 
-#: src/multiplayer_lobby.cpp:853 src/multiplayer_wait.cpp:187
+#: src/multiplayer_lobby.cpp:861 src/multiplayer_wait.cpp:187
 msgid "Game Lobby"
 msgstr "Лоби на играта"
 
-#: src/multiplayer_lobby.cpp:858
+#: src/multiplayer_lobby.cpp:866
 msgid "Observe Game"
 msgstr "Наблюдавай игра"
 
-#: src/multiplayer_lobby.cpp:859
+#: src/multiplayer_lobby.cpp:867
 msgid "Join Game"
 msgstr "Влизане в игра"
 
-#: src/multiplayer_lobby.cpp:862
+#: src/multiplayer_lobby.cpp:870
 msgid "Preferences"
 msgstr "Настройки"
 
-#: src/multiplayer_lobby.cpp:864
+#: src/multiplayer_lobby.cpp:872
 #, fuzzy
 msgid "Apply filter"
 msgstr "Умения: "
 
-#: src/multiplayer_lobby.cpp:865
+#: src/multiplayer_lobby.cpp:873
 msgid "Invert"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:866
+#: src/multiplayer_lobby.cpp:874
 #, fuzzy
 msgid "Vacant slots"
 msgstr "Свободни места:"
 
-#: src/multiplayer_lobby.cpp:867
+#: src/multiplayer_lobby.cpp:875
 msgid "Friends in game"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:868
+#: src/multiplayer_lobby.cpp:876
 #, fuzzy
 msgid "Search:"
 msgstr "Търсене"
 
-#: src/multiplayer_lobby.cpp:876
+#: src/multiplayer_lobby.cpp:884
 #, fuzzy
 msgid "Normal Replays"
 msgstr "Повторение"
 
-#: src/multiplayer_lobby.cpp:877
+#: src/multiplayer_lobby.cpp:885
 #, fuzzy
 #| msgid "Quick replays"
 msgid "Quick Replays"
 msgstr "Бързи повторения"
 
-#: src/multiplayer_lobby.cpp:878
+#: src/multiplayer_lobby.cpp:886
 msgid "Enter Blindfolded"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:882
+#: src/multiplayer_lobby.cpp:890
 msgid "Skip quickly to the active turn when observing"
 msgstr "Бързо прескачане към активният ход при наблюдаване на игра"
 
-#: src/multiplayer_lobby.cpp:883
+#: src/multiplayer_lobby.cpp:891
 msgid "Do not show replay turns"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:896
+#: src/multiplayer_lobby.cpp:904
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:899
+#: src/multiplayer_lobby.cpp:907
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:903
+#: src/multiplayer_lobby.cpp:911
 msgid "Only show games that have at least one vacant slot"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:907
+#: src/multiplayer_lobby.cpp:915
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:913
-msgid "Only show games whose title or description contain the entered text"
+#: src/multiplayer_lobby.cpp:921
+msgid ""
+"Only show games whose title, description, era or mods contain the entered "
+"text"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:1029
+#: src/multiplayer_lobby.cpp:1037
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:1030
+#: src/multiplayer_lobby.cpp:1038
 #, fuzzy
 msgid "Password: "
 msgstr "масирана атака"
@@ -7702,33 +7714,33 @@ msgstr ""
 msgid "September"
 msgstr ""
 
-#: src/strftime.cpp:73
+#: src/strftime.cpp:78
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/strftime.cpp:77
+#: src/strftime.cpp:82
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "AM"
 msgstr ""
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "PM"
 msgstr ""
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 #, fuzzy
 #| msgid "Name"
 msgid "am"
 msgstr "Име"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "pm"
 msgstr ""
 
@@ -7758,8 +7770,7 @@ msgstr ""
 msgid "Stub Time of Day"
 msgstr "Време от денонощието "
 
-#: src/unit.cpp:2432 src/unit.cpp:2662 src/unit.cpp:2743
-#: src/unit_types.cpp:163
+#: src/unit.cpp:2432 src/unit.cpp:2662 src/unit.cpp:2743 src/unit_types.cpp:163
 #, fuzzy
 msgid " and "
 msgstr "Песъчлив терен"

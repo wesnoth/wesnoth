@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-05 21:33-0300\n"
+"POT-Creation-Date: 2015-10-30 01:45-0300\n"
 "PO-Revision-Date: 2012-05-06 23:59+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. [terrain_type]: id=deep_water_medium
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:18 data/core/terrain.cfg:29 data/core/terrain.cfg:40
-#: data/core/terrain.cfg:2352 data/core/terrain.cfg:2353
+#: data/core/terrain.cfg:2365 data/core/terrain.cfg:2366
 msgid "Deep Water"
 msgstr "syvää vettä"
 
@@ -49,7 +49,7 @@ msgstr "syvää vettä tropiikissa"
 #. [terrain_type]: id=shallow_water
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:51 data/core/terrain.cfg:62 data/core/terrain.cfg:73
-#: data/core/terrain.cfg:2311 data/core/terrain.cfg:2312
+#: data/core/terrain.cfg:2324 data/core/terrain.cfg:2325
 msgid "Shallow Water"
 msgstr "matalaa vettä"
 
@@ -88,9 +88,8 @@ msgstr ""
 #. [terrain_type]: id=medium_reef
 #. [terrain_type]: id=reef
 #. [terrain_type]: id=tropical_reef
-#: data/core/terrain.cfg:96 data/core/terrain.cfg:107
-#: data/core/terrain.cfg:118 data/core/terrain.cfg:2266
-#: data/core/terrain.cfg:2267
+#: data/core/terrain.cfg:96 data/core/terrain.cfg:107 data/core/terrain.cfg:118
+#: data/core/terrain.cfg:2279 data/core/terrain.cfg:2280
 msgid "Coastal Reef"
 msgstr "koralliriutta"
 
@@ -115,7 +114,7 @@ msgstr "trooppinen särkkä"
 #. [terrain_type]: id=swamp_water
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:131 data/core/terrain.cfg:142
-#: data/core/terrain.cfg:2295 data/core/terrain.cfg:2296
+#: data/core/terrain.cfg:2308 data/core/terrain.cfg:2309
 msgid "Swamp"
 msgstr "suo"
 
@@ -189,8 +188,8 @@ msgstr "kuivaa mutaa"
 #. [terrain_type]: id=road_clean
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:234 data/core/terrain.cfg:245
-#: data/core/terrain.cfg:255 data/core/terrain.cfg:825
-#: data/core/terrain.cfg:835
+#: data/core/terrain.cfg:255 data/core/terrain.cfg:826
+#: data/core/terrain.cfg:836
 msgid "Road"
 msgstr "tie"
 
@@ -247,7 +246,7 @@ msgstr ""
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
-#: data/core/terrain.cfg:302 data/core/terrain.cfg:2253
+#: data/core/terrain.cfg:302 data/core/terrain.cfg:2266
 msgid "Sand"
 msgstr "hiekkaa"
 
@@ -258,7 +257,7 @@ msgstr "hiekkaranta"
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
-#: data/core/terrain.cfg:307 data/core/terrain.cfg:2257
+#: data/core/terrain.cfg:307 data/core/terrain.cfg:2270
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -269,106 +268,106 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:315
+#: data/core/terrain.cfg:315 data/core/terrain.cfg:316
 msgid "Oasis"
 msgstr "keidas"
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:327
+#: data/core/terrain.cfg:328
 msgid "Rubble"
 msgstr "kivimurskaa"
 
 #. [terrain_type]: id=crater
-#: data/core/terrain.cfg:337
+#: data/core/terrain.cfg:338
 msgid "Crater"
 msgstr "kraateri"
 
 #. [terrain_type]: id=flowers_mixed
-#: data/core/terrain.cfg:351
+#: data/core/terrain.cfg:352
 msgid "Mixed Flowers"
 msgstr "kukkaketo"
 
 #. [terrain_type]: id=farm
-#: data/core/terrain.cfg:360
+#: data/core/terrain.cfg:361
 msgid "Farmland"
 msgstr "peltomaa"
 
 #. [terrain_type]: id=stones_small
-#: data/core/terrain.cfg:369
+#: data/core/terrain.cfg:370
 msgid "Stones"
 msgstr "kiviä"
 
 #. [terrain_type]: id=mushrooms_small
-#: data/core/terrain.cfg:378
+#: data/core/terrain.cfg:379
 msgid "Small Mushrooms"
 msgstr "pieniä sieniä"
 
 #. [terrain_type]: id=mushrooms_farm
-#: data/core/terrain.cfg:387
+#: data/core/terrain.cfg:388
 msgid "Mushroom Farm"
 msgstr "sieniviljelmä"
 
 #. [terrain_type]: id=desert_plants
-#: data/core/terrain.cfg:396
+#: data/core/terrain.cfg:397
 msgid "Desert Plants"
 msgstr "aavikkokasveja"
 
 #. [terrain_type]: id=desert_plants_sans_bones
-#: data/core/terrain.cfg:405
+#: data/core/terrain.cfg:406
 msgid "Desert Plants without Bones"
 msgstr "aavikkokasveja ilman luita"
 
 #. [terrain_type]: id=windmill
-#: data/core/terrain.cfg:414
+#: data/core/terrain.cfg:415
 msgid "Windmill"
 msgstr "tuulimylly"
 
 #. [terrain_type]: id=campfire
-#: data/core/terrain.cfg:423
+#: data/core/terrain.cfg:424
 #, fuzzy
 #| msgid "Campaign"
 msgid "Campfire"
 msgstr "Kampanjat"
 
 #. [terrain_type]: id=fence
-#: data/core/terrain.cfg:432
+#: data/core/terrain.cfg:433
 msgid "Fence"
 msgstr "aita"
 
 #. [terrain_type]: id=sand_drifts
-#: data/core/terrain.cfg:441
+#: data/core/terrain.cfg:442
 msgid "Stones with Sand Drifts"
 msgstr "kiviä ja hiekkakinoksia"
 
 #. [terrain_type]: id=water-lilies
-#: data/core/terrain.cfg:450
+#: data/core/terrain.cfg:451
 msgid "Water Lilies"
 msgstr "lumpeita"
 
 #. [terrain_type]: id=water-lilies-flower
-#: data/core/terrain.cfg:460
+#: data/core/terrain.cfg:461
 msgid "Flowering Water Lilies"
 msgstr "kukkivia lumpeita"
 
 #. [terrain_type]: id=detritus_trash
-#: data/core/terrain.cfg:471
+#: data/core/terrain.cfg:472
 msgid "Trash"
 msgstr ""
 
 #. [terrain_type]: id=detritus_bones
-#: data/core/terrain.cfg:480
+#: data/core/terrain.cfg:481
 msgid "Remains"
 msgstr ""
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
-#: data/core/terrain.cfg:493 data/core/terrain.cfg:494
-#: data/core/terrain.cfg:505
+#: data/core/terrain.cfg:494 data/core/terrain.cfg:495
+#: data/core/terrain.cfg:506
 msgid "Great Tree"
 msgstr "massiivinen puu"
 
 #. [terrain_type]: id=great_tree_dead
-#: data/core/terrain.cfg:506
+#: data/core/terrain.cfg:507
 msgid "Dead Great Tree"
 msgstr "kuollut massiivinen puu"
 
@@ -388,96 +387,96 @@ msgstr "kuollut massiivinen puu"
 #. [terrain_type]: id=savanna_forest
 #. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:517 data/core/terrain.cfg:529
-#: data/core/terrain.cfg:541 data/core/terrain.cfg:553
-#: data/core/terrain.cfg:565 data/core/terrain.cfg:577
-#: data/core/terrain.cfg:589 data/core/terrain.cfg:601
-#: data/core/terrain.cfg:613 data/core/terrain.cfg:625
-#: data/core/terrain.cfg:637 data/core/terrain.cfg:649
-#: data/core/terrain.cfg:661 data/core/terrain.cfg:673
-#: data/core/terrain.cfg:685 data/core/terrain.cfg:2378
-#: data/core/terrain.cfg:2379
+#: data/core/terrain.cfg:518 data/core/terrain.cfg:530
+#: data/core/terrain.cfg:542 data/core/terrain.cfg:554
+#: data/core/terrain.cfg:566 data/core/terrain.cfg:578
+#: data/core/terrain.cfg:590 data/core/terrain.cfg:602
+#: data/core/terrain.cfg:614 data/core/terrain.cfg:626
+#: data/core/terrain.cfg:638 data/core/terrain.cfg:650
+#: data/core/terrain.cfg:662 data/core/terrain.cfg:674
+#: data/core/terrain.cfg:686 data/core/terrain.cfg:2391
+#: data/core/terrain.cfg:2392
 msgid "Forest"
 msgstr "metsä"
 
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:518
+#: data/core/terrain.cfg:519
 msgid "Tropical Forest"
 msgstr "trooppinen metsä"
 
 #. [terrain_type]: id=rainforest
-#: data/core/terrain.cfg:530
+#: data/core/terrain.cfg:531
 #, fuzzy
 #| msgid "Pine Forest"
 msgid "Rainforest"
 msgstr "mäntymetsä"
 
 #. [terrain_type]: id=palm_desert_forest
-#: data/core/terrain.cfg:542
+#: data/core/terrain.cfg:543
 #, fuzzy
 #| msgid "Pine Forest"
 msgid "Palm Forest"
 msgstr "mäntymetsä"
 
 #. [terrain_type]: id=palm_forest
-#: data/core/terrain.cfg:554
+#: data/core/terrain.cfg:555
 #, fuzzy
 #| msgid "Pine Forest"
 msgid "Dense Palm Forest"
 msgstr "mäntymetsä"
 
 #. [terrain_type]: id=savanna_forest
-#: data/core/terrain.cfg:566
+#: data/core/terrain.cfg:567
 msgid "Savanna"
 msgstr "savanni"
 
 #. [terrain_type]: id=pine_forest
-#: data/core/terrain.cfg:578
+#: data/core/terrain.cfg:579
 msgid "Pine Forest"
 msgstr "mäntymetsä"
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:590
+#: data/core/terrain.cfg:591
 msgid "Snowy Pine Forest"
 msgstr "luminen mäntymetsä"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:602
+#: data/core/terrain.cfg:603
 msgid "Summer Deciduous Forest"
 msgstr "kesäinen lehtimetsä"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:614
+#: data/core/terrain.cfg:615
 msgid "Fall Deciduous Forest"
 msgstr "syksyinen lehtimetsä"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:626
+#: data/core/terrain.cfg:627
 msgid "Winter Deciduous Forest"
 msgstr "talvinen lehtimetsä"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:638
+#: data/core/terrain.cfg:639
 msgid "Snowy Deciduous Forest"
 msgstr "luminen lehtimetsä"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:650
+#: data/core/terrain.cfg:651
 msgid "Summer Mixed Forest"
 msgstr "kesäinen sekametsä"
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:662
+#: data/core/terrain.cfg:663
 msgid "Fall Mixed Forest"
 msgstr "syksyinen sekametsä"
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:674
+#: data/core/terrain.cfg:675
 msgid "Winter Mixed Forest"
 msgstr "talvinen sekametsä"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:686
+#: data/core/terrain.cfg:687
 msgid "Snowy Mixed Forest"
 msgstr "luminen sekametsä"
 
@@ -485,29 +484,29 @@ msgstr "luminen sekametsä"
 #. [terrain_type]: id=hills_dry
 #. [terrain_type]: id=hills_regular
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:701 data/core/terrain.cfg:711
-#: data/core/terrain.cfg:731 data/core/terrain.cfg:2281
-#: data/core/terrain.cfg:2282
+#: data/core/terrain.cfg:702 data/core/terrain.cfg:712
+#: data/core/terrain.cfg:732 data/core/terrain.cfg:2294
+#: data/core/terrain.cfg:2295
 msgid "Hills"
 msgstr "mäkiä"
 
 #. [terrain_type]: id=hills_regular
-#: data/core/terrain.cfg:702
+#: data/core/terrain.cfg:703
 msgid "Regular Hills"
 msgstr "tavallisia mäkiä"
 
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:712
+#: data/core/terrain.cfg:713
 msgid "Dry Hills"
 msgstr "kuivia mäkiä"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:721
+#: data/core/terrain.cfg:722
 msgid "Dunes"
 msgstr "hiekkadyyni"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:732
+#: data/core/terrain.cfg:733
 msgid "Snow Hills"
 msgstr "lumisia mäkiä"
 
@@ -518,96 +517,96 @@ msgstr "lumisia mäkiä"
 #. [terrain_type]: id=mountains
 #. [terrain_type]: id=regular_mountains
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:746 data/core/terrain.cfg:756
-#: data/core/terrain.cfg:766 data/core/terrain.cfg:1001
-#: data/core/terrain.cfg:1011 data/core/terrain.cfg:1022
-#: data/core/terrain.cfg:2338 data/core/terrain.cfg:2339
+#: data/core/terrain.cfg:747 data/core/terrain.cfg:757
+#: data/core/terrain.cfg:767 data/core/terrain.cfg:1002
+#: data/core/terrain.cfg:1012 data/core/terrain.cfg:1023
+#: data/core/terrain.cfg:2351 data/core/terrain.cfg:2352
 msgid "Mountains"
 msgstr "vuori"
 
 #. [terrain_type]: id=regular_mountains
-#: data/core/terrain.cfg:747
+#: data/core/terrain.cfg:748
 #, fuzzy
 msgid "Regular Mountains"
 msgstr "ylitsepääsemättömiä aavikkovuoria"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:757
+#: data/core/terrain.cfg:758
 msgid "Dry Mountains"
 msgstr "kuivia vuoria"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:767
+#: data/core/terrain.cfg:768
 msgid "Snowy Mountains"
 msgstr "lumisia vuori"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:779
+#: data/core/terrain.cfg:780
 msgid "Wooden Floor"
 msgstr "tavallinen puulattia"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:781
+#: data/core/terrain.cfg:782
 msgid "Basic Wooden Floor"
 msgstr "tavallinen puulattia"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:794
+#: data/core/terrain.cfg:795
 msgid "Lit"
 msgstr "valaistu"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:795
+#: data/core/terrain.cfg:796
 msgid "Beam of Light"
 msgstr "valonsäde"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave_floor
-#: data/core/terrain.cfg:805 data/core/terrain.cfg:815
-#: data/core/terrain.cfg:2238 data/core/terrain.cfg:2239
+#: data/core/terrain.cfg:806 data/core/terrain.cfg:816
+#: data/core/terrain.cfg:2251 data/core/terrain.cfg:2252
 msgid "Cave"
 msgstr "luola"
 
 #. [terrain_type]: id=cave_floor
-#: data/core/terrain.cfg:806
+#: data/core/terrain.cfg:807
 msgid "Cave Floor"
 msgstr "luolan lattia"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:816
+#: data/core/terrain.cfg:817
 msgid "Earthy Cave Floor"
 msgstr "maaluolan lattia"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:826
+#: data/core/terrain.cfg:827
 msgid "Dark Flagstones"
 msgstr "mustia liuskekiviä"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:836
+#: data/core/terrain.cfg:837
 msgid "Cave Path"
 msgstr "luolapolku"
 
 #. [terrain_type]: id=fungus_beam
 #. [terrain_type]: id=fungus_grove
-#: data/core/terrain.cfg:845 data/core/terrain.cfg:846
-#: data/core/terrain.cfg:856
+#: data/core/terrain.cfg:846 data/core/terrain.cfg:847
+#: data/core/terrain.cfg:857
 msgid "Mushroom Grove"
 msgstr "sienilehto"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:857
+#: data/core/terrain.cfg:858
 msgid "Lit Mushroom Grove"
 msgstr "valaistu sienilehto"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:868 data/core/terrain.cfg:869
+#: data/core/terrain.cfg:869 data/core/terrain.cfg:870
 msgid "Rockbound Cave"
 msgstr "louhikkoluola"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:874
+#: data/core/terrain.cfg:875
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -625,8 +624,8 @@ msgstr ""
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
 #. [terrain_type]: id=mine_railsdiag2
-#: data/core/terrain.cfg:884 data/core/terrain.cfg:896
-#: data/core/terrain.cfg:909
+#: data/core/terrain.cfg:885 data/core/terrain.cfg:897
+#: data/core/terrain.cfg:910
 msgid "Mine Rail"
 msgstr "kaivosrautatie"
 
@@ -634,38 +633,38 @@ msgstr "kaivosrautatie"
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:927 data/core/terrain.cfg:938
-#: data/core/terrain.cfg:949 data/core/terrain.cfg:960
+#: data/core/terrain.cfg:928 data/core/terrain.cfg:939
+#: data/core/terrain.cfg:950 data/core/terrain.cfg:961
 msgid "Chasm"
 msgstr "kuilu"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:928
+#: data/core/terrain.cfg:929
 msgid "Regular Chasm"
 msgstr "tavallinen kuilu"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:939
+#: data/core/terrain.cfg:940
 msgid "Earthy Chasm"
 msgstr "maakuilu"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:950
+#: data/core/terrain.cfg:951
 msgid "Ethereal Abyss"
 msgstr "aineeton syöveri"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:961
+#: data/core/terrain.cfg:962
 msgid "Lava Chasm"
 msgstr "laavakuilu"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:972 data/core/terrain.cfg:973
+#: data/core/terrain.cfg:973 data/core/terrain.cfg:974
 msgid "Lava"
 msgstr "laavaa"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:979
+#: data/core/terrain.cfg:980
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -677,22 +676,22 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:986
+#: data/core/terrain.cfg:987
 msgid "Volcano"
 msgstr "tulivuori"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1002
+#: data/core/terrain.cfg:1003
 msgid "Regular Impassable Mountains"
 msgstr "ylitsepääsemättömiä tavallisia vuoria"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1012
+#: data/core/terrain.cfg:1013
 msgid "Desert Impassable Mountains"
 msgstr "ylitsepääsemättömiä aavikkovuoria"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1023
+#: data/core/terrain.cfg:1024
 msgid "Snowy Impassable Mountains"
 msgstr "ylitsepääsemättömiä lumivuoria"
 
@@ -700,49 +699,49 @@ msgstr "ylitsepääsemättömiä lumivuoria"
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:1033 data/core/terrain.cfg:1044
-#: data/core/terrain.cfg:1055 data/core/terrain.cfg:1066
+#: data/core/terrain.cfg:1034 data/core/terrain.cfg:1045
+#: data/core/terrain.cfg:1056 data/core/terrain.cfg:1067
 msgid "Cave Wall"
 msgstr "luolan seinä"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1034
+#: data/core/terrain.cfg:1035
 msgid "Natural Cave Wall"
 msgstr "luonnonluolan seinä"
 
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:1045
+#: data/core/terrain.cfg:1046
 msgid "Hewn Cave Wall"
 msgstr "luolan hirsiseinä"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1056
+#: data/core/terrain.cfg:1057
 msgid "Natural Earthy Cave Wall"
 msgstr "luonnollinen maaluolan seinä"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1067
+#: data/core/terrain.cfg:1068
 msgid "Reinforced Earthy Cave Wall"
 msgstr "vahvistettu maaluolan seinä"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1077 data/core/terrain.cfg:1087
+#: data/core/terrain.cfg:1078 data/core/terrain.cfg:1088
 msgid "Stone Wall"
 msgstr "kiviseinä"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1088
+#: data/core/terrain.cfg:1089
 msgid "Lit Stone Wall"
 msgstr "valaistu kiviseinä"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1097
+#: data/core/terrain.cfg:1098
 msgid "Impassable Overlay"
 msgstr "ylitsepääsemätön"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1110
+#: data/core/terrain.cfg:1111
 #, fuzzy
 #| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
@@ -751,8 +750,8 @@ msgstr "ylitsepääsemätön"
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1122 data/core/terrain.cfg:2178
-#: data/core/terrain.cfg:2189
+#: data/core/terrain.cfg:1123 data/core/terrain.cfg:2191
+#: data/core/terrain.cfg:2202
 msgid "Void"
 msgstr "tyhjiö"
 
@@ -786,167 +785,167 @@ msgstr "tyhjiö"
 #. [terrain_type]: id=village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1138 data/core/terrain.cfg:1151
-#: data/core/terrain.cfg:1164 data/core/terrain.cfg:1179
-#: data/core/terrain.cfg:1192 data/core/terrain.cfg:1207
-#: data/core/terrain.cfg:1220 data/core/terrain.cfg:1235
-#: data/core/terrain.cfg:1248 data/core/terrain.cfg:1261
-#: data/core/terrain.cfg:1274 data/core/terrain.cfg:1287
-#: data/core/terrain.cfg:1300 data/core/terrain.cfg:1313
-#: data/core/terrain.cfg:1326 data/core/terrain.cfg:1339
-#: data/core/terrain.cfg:1352 data/core/terrain.cfg:1365
-#: data/core/terrain.cfg:1378 data/core/terrain.cfg:1393
-#: data/core/terrain.cfg:1406 data/core/terrain.cfg:1419
-#: data/core/terrain.cfg:1432 data/core/terrain.cfg:1445
-#: data/core/terrain.cfg:1458 data/core/terrain.cfg:1471
-#: data/core/terrain.cfg:1486 data/core/terrain.cfg:1499
-#: data/core/terrain.cfg:1517 data/core/terrain.cfg:2403
-#: data/core/terrain.cfg:2404
+#: data/core/terrain.cfg:1139 data/core/terrain.cfg:1152
+#: data/core/terrain.cfg:1165 data/core/terrain.cfg:1180
+#: data/core/terrain.cfg:1193 data/core/terrain.cfg:1208
+#: data/core/terrain.cfg:1221 data/core/terrain.cfg:1236
+#: data/core/terrain.cfg:1249 data/core/terrain.cfg:1262
+#: data/core/terrain.cfg:1275 data/core/terrain.cfg:1288
+#: data/core/terrain.cfg:1301 data/core/terrain.cfg:1314
+#: data/core/terrain.cfg:1327 data/core/terrain.cfg:1340
+#: data/core/terrain.cfg:1353 data/core/terrain.cfg:1366
+#: data/core/terrain.cfg:1379 data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1407 data/core/terrain.cfg:1420
+#: data/core/terrain.cfg:1433 data/core/terrain.cfg:1446
+#: data/core/terrain.cfg:1459 data/core/terrain.cfg:1472
+#: data/core/terrain.cfg:1487 data/core/terrain.cfg:1500
+#: data/core/terrain.cfg:1518 data/core/terrain.cfg:2416
+#: data/core/terrain.cfg:2417
 msgid "Village"
 msgstr "kylä"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1139
+#: data/core/terrain.cfg:1140
 msgid "Adobe Village"
 msgstr "kupolikylä"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1152
+#: data/core/terrain.cfg:1153
 msgid "Desert Tent Village"
 msgstr "telttakylä aavikolla"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1165
+#: data/core/terrain.cfg:1166
 msgid "Tent Village"
 msgstr "telttakylä"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1180
+#: data/core/terrain.cfg:1181
 msgid "Orcish Village"
 msgstr "örkkien kylä"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1193
+#: data/core/terrain.cfg:1194
 msgid "Snowy Orcish Village"
 msgstr "luminen örkkikylä"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1208
+#: data/core/terrain.cfg:1209
 msgid "Snowy Elven Village"
 msgstr "luminen haltiakylä"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1221
+#: data/core/terrain.cfg:1222
 msgid "Elven Village"
 msgstr "haltiakylä"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1236
+#: data/core/terrain.cfg:1237
 msgid "Cottage"
 msgstr "mökki"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1249
+#: data/core/terrain.cfg:1250
 msgid "Snowy Cottage"
 msgstr "luminen mökki"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1262
+#: data/core/terrain.cfg:1263
 msgid "Ruined Cottage"
 msgstr "rauniomökki"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1275
+#: data/core/terrain.cfg:1276
 msgid "Human City"
 msgstr "ihmisten kaupunki"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1288
+#: data/core/terrain.cfg:1289
 msgid "Windmill Village"
 msgstr "tuulimyllykylä"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1301
+#: data/core/terrain.cfg:1302
 msgid "Snowy Human City"
 msgstr "luminen ihmisten kaupunki"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1314
+#: data/core/terrain.cfg:1315
 msgid "Ruined Human City"
 msgstr "ihmisten kaupungin rauniot"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1327
+#: data/core/terrain.cfg:1328
 msgid "Hill Stone Village"
 msgstr "kivikylä mäellä"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1340
+#: data/core/terrain.cfg:1341
 msgid "Snowy Hill Stone Village"
 msgstr "luminen kivikylä mäellä"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1353
+#: data/core/terrain.cfg:1354
 msgid "Ruined Hill Stone Village"
 msgstr "raunioitunut kivikylä mäellä"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1366
+#: data/core/terrain.cfg:1367
 msgid "Tropical Village"
 msgstr "trooppinen kylä"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1379
+#: data/core/terrain.cfg:1380
 msgid "Drake Village"
 msgstr "draakkien kylä"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1395
 msgid "Cave Village"
 msgstr "luolakylä"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1407
+#: data/core/terrain.cfg:1408
 msgid "Dwarven Village"
 msgstr "kääpiökylä"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1420
+#: data/core/terrain.cfg:1421
 msgid "Hut"
 msgstr "maja"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1433
+#: data/core/terrain.cfg:1434
 msgid "Snowy Hut"
 msgstr "luminen maja"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1446
+#: data/core/terrain.cfg:1447
 msgid "Log Cabin"
 msgstr "tukkikämppä"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1459
+#: data/core/terrain.cfg:1460
 msgid "Snowy Log Cabin"
 msgstr "luminen tukkikämppä"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1472
+#: data/core/terrain.cfg:1473
 msgid "Igloo"
 msgstr "iglu"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1487
+#: data/core/terrain.cfg:1488
 msgid "Swamp Village"
 msgstr "kylä suolla"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1500
+#: data/core/terrain.cfg:1501
 msgid "Merfolk Village"
 msgstr "merenväen kylä"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1501
+#: data/core/terrain.cfg:1502
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -960,19 +959,19 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1518
+#: data/core/terrain.cfg:1519
 msgid "Village Overlay"
 msgstr "kyläpäällys"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1534 data/core/terrain.cfg:1535
-#: data/core/terrain.cfg:1546
+#: data/core/terrain.cfg:1535 data/core/terrain.cfg:1536
+#: data/core/terrain.cfg:1547
 msgid "Encampment"
 msgstr "leiri"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1547
+#: data/core/terrain.cfg:1548
 msgid "Snowy Encampment"
 msgstr "luminen leiri"
 
@@ -985,43 +984,43 @@ msgstr "luminen leiri"
 #. [terrain_type]: id=sand_castle
 #. [terrain_type]: id=snow_castle
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1558 data/core/terrain.cfg:1570
-#: data/core/terrain.cfg:1582 data/core/terrain.cfg:1594
-#: data/core/terrain.cfg:1605 data/core/terrain.cfg:1617
-#: data/core/terrain.cfg:1667 data/core/terrain.cfg:1877
-#: data/core/terrain.cfg:2322 data/core/terrain.cfg:2323
+#: data/core/terrain.cfg:1559 data/core/terrain.cfg:1571
+#: data/core/terrain.cfg:1583 data/core/terrain.cfg:1595
+#: data/core/terrain.cfg:1606 data/core/terrain.cfg:1618
+#: data/core/terrain.cfg:1668 data/core/terrain.cfg:1878
+#: data/core/terrain.cfg:2335 data/core/terrain.cfg:2336
 msgid "Castle"
 msgstr "linna"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1559
+#: data/core/terrain.cfg:1560
 msgid "Orcish Castle"
 msgstr "örkkien linna"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1571
+#: data/core/terrain.cfg:1572
 msgid "Snowy Orcish Castle"
 msgstr "luminen örkkilinna"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:1583
+#: data/core/terrain.cfg:1584
 msgid "Human Castle"
 msgstr "ihmisten linna"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1595
+#: data/core/terrain.cfg:1596
 msgid "Snowy Human Castle"
 msgstr "ihmisten linna talvella"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1606
+#: data/core/terrain.cfg:1607
 #, fuzzy
 #| msgid "Elven Castle Keep"
 msgid "Elven Castle"
 msgstr "haltialinnan linnake"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1618
+#: data/core/terrain.cfg:1619
 msgid "Dwarven Castle"
 msgstr "kääpiölinna"
 
@@ -1029,51 +1028,51 @@ msgstr "kääpiölinna"
 #. [terrain_type]: id=sand_castle_ruin
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1629 data/core/terrain.cfg:1641
-#: data/core/terrain.cfg:1654 data/core/terrain.cfg:1679
+#: data/core/terrain.cfg:1630 data/core/terrain.cfg:1642
+#: data/core/terrain.cfg:1655 data/core/terrain.cfg:1680
 msgid "Ruined Castle"
 msgstr "linnan rauniot"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1630
+#: data/core/terrain.cfg:1631
 msgid "Ruined Human Castle"
 msgstr "ihmisten linnan rauniot"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1642
+#: data/core/terrain.cfg:1643
 msgid "Sunken Human Ruin"
 msgstr "uponnut raunio"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1655
+#: data/core/terrain.cfg:1656
 msgid "Swamp Human Ruin"
 msgstr "soistunut raunio"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1668
+#: data/core/terrain.cfg:1669
 msgid "Desert Castle"
 msgstr "aavikkolinna"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1680
+#: data/core/terrain.cfg:1681
 msgid "Ruined Desert Castle"
 msgstr "aavikkolinnan rauniot"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1695 data/core/terrain.cfg:1707
-#: data/core/terrain.cfg:1720
+#: data/core/terrain.cfg:1696 data/core/terrain.cfg:1708
+#: data/core/terrain.cfg:1721
 msgid "Encampment Keep"
 msgstr "leirin linnake"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:1708
+#: data/core/terrain.cfg:1709
 msgid "Tall Encampment Keep"
 msgstr "korkea leirin linnake"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1721
+#: data/core/terrain.cfg:1722
 msgid "Snowy Encampment Keep"
 msgstr "lumisen leirin linnake"
 
@@ -1085,40 +1084,40 @@ msgstr "lumisen leirin linnake"
 #. [terrain_type]: id=orcish_keep
 #. [terrain_type]: id=snow_keep
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1733 data/core/terrain.cfg:1746
-#: data/core/terrain.cfg:1759 data/core/terrain.cfg:1772
-#: data/core/terrain.cfg:1785 data/core/terrain.cfg:1798
-#: data/core/terrain.cfg:1850 data/core/terrain.cfg:1890
+#: data/core/terrain.cfg:1734 data/core/terrain.cfg:1747
+#: data/core/terrain.cfg:1760 data/core/terrain.cfg:1773
+#: data/core/terrain.cfg:1786 data/core/terrain.cfg:1799
+#: data/core/terrain.cfg:1851 data/core/terrain.cfg:1891
 msgid "Keep"
 msgstr "linnake"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1734
+#: data/core/terrain.cfg:1735
 msgid "Orcish Keep"
 msgstr "örkkilinnake"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1747
+#: data/core/terrain.cfg:1748
 msgid "Snowy Orcish Keep"
 msgstr "luminen örkkilinnake"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1760
+#: data/core/terrain.cfg:1761
 msgid "Human Castle Keep"
 msgstr "ihmisten linnan linnake"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1773
+#: data/core/terrain.cfg:1774
 msgid "Snowy Human Castle Keep"
 msgstr "ihmislinnan linnake talvella"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1786
+#: data/core/terrain.cfg:1787
 msgid "Elven Castle Keep"
 msgstr "haltialinnan linnake"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1799
+#: data/core/terrain.cfg:1800
 msgid "Dwarven Castle Keep"
 msgstr "kääpiölinnan linnake"
 
@@ -1126,43 +1125,43 @@ msgstr "kääpiölinnan linnake"
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1811 data/core/terrain.cfg:1824
-#: data/core/terrain.cfg:1837 data/core/terrain.cfg:1863
+#: data/core/terrain.cfg:1812 data/core/terrain.cfg:1825
+#: data/core/terrain.cfg:1838 data/core/terrain.cfg:1864
 msgid "Ruined Keep"
 msgstr "rauniolinnake"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1812
+#: data/core/terrain.cfg:1813
 msgid "Ruined Human Castle Keep"
 msgstr "ihmisten linnan raunioiden linnake"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1825
+#: data/core/terrain.cfg:1826
 msgid "Sunken Human Castle Keep"
 msgstr "uponneen linnan linnake"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1838
+#: data/core/terrain.cfg:1839
 msgid "Swamp Human Castle Keep"
 msgstr "ihmislinnan linnake suolla"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1851
+#: data/core/terrain.cfg:1852
 msgid "Desert Keep"
 msgstr "aavikkolinnake"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1864
+#: data/core/terrain.cfg:1865
 msgid "Ruined Desert Keep"
 msgstr "aavikkolinnakeen rauniot"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1878
+#: data/core/terrain.cfg:1879
 msgid "Castle Overlay"
 msgstr "linna"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1891
+#: data/core/terrain.cfg:1892
 msgid "Keep Overlay"
 msgstr "linnake"
 
@@ -1172,31 +1171,45 @@ msgstr "linnake"
 #. [terrain_type]: id=bridgechasmdiag2
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
+#. [terrain_type]: id=hangingbridge
+#. [terrain_type]: id=hangingbridgediag1
+#. [terrain_type]: id=hangingbridgediag2
+#. [terrain_type]: id=plankbridge
+#. [terrain_type]: id=plankbridgediag1
+#. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:1909 data/core/terrain.cfg:1924
-#: data/core/terrain.cfg:1937 data/core/terrain.cfg:1950
-#: data/core/terrain.cfg:1962 data/core/terrain.cfg:1975
-#: data/core/terrain.cfg:1990 data/core/terrain.cfg:2002
-#: data/core/terrain.cfg:2015 data/core/terrain.cfg:2030
-#: data/core/terrain.cfg:2041 data/core/terrain.cfg:2054
+#. [terrain_type]: id=stonechasmbridge
+#. [terrain_type]: id=stonechasmbridgediag1
+#. [terrain_type]: id=stonechasmbridgediag2
+#: data/core/terrain.cfg:1910 data/core/terrain.cfg:1925
+#: data/core/terrain.cfg:1938 data/core/terrain.cfg:1951
+#: data/core/terrain.cfg:1963 data/core/terrain.cfg:1976
+#: data/core/terrain.cfg:1991 data/core/terrain.cfg:2003
+#: data/core/terrain.cfg:2016 data/core/terrain.cfg:2031
+#: data/core/terrain.cfg:2042 data/core/terrain.cfg:2055
+#: data/core/terrain.cfg:2071 data/core/terrain.cfg:2084
+#: data/core/terrain.cfg:2097 data/core/terrain.cfg:2110
+#: data/core/terrain.cfg:2123 data/core/terrain.cfg:2136
+#: data/core/terrain.cfg:2149 data/core/terrain.cfg:2162
+#: data/core/terrain.cfg:2175
 msgid "Bridge"
 msgstr "silta"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:1910 data/core/terrain.cfg:1925
-#: data/core/terrain.cfg:1938
+#: data/core/terrain.cfg:1911 data/core/terrain.cfg:1926
+#: data/core/terrain.cfg:1939
 msgid "Wooden Bridge"
 msgstr "puusilta"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:1916
+#: data/core/terrain.cfg:1917
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1214,32 +1227,32 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:1951 data/core/terrain.cfg:1963
-#: data/core/terrain.cfg:1976
+#: data/core/terrain.cfg:1952 data/core/terrain.cfg:1964
+#: data/core/terrain.cfg:1977
 msgid "Rotting Bridge"
 msgstr "laho silta"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:1991 data/core/terrain.cfg:2003
-#: data/core/terrain.cfg:2016
+#: data/core/terrain.cfg:1992 data/core/terrain.cfg:2004
+#: data/core/terrain.cfg:2017
 msgid "Basic Stone Bridge"
 msgstr "tavallinen kivisilta"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2031 data/core/terrain.cfg:2042
-#: data/core/terrain.cfg:2055
+#: data/core/terrain.cfg:2032 data/core/terrain.cfg:2043
+#: data/core/terrain.cfg:2056
 msgid "Cave Chasm Bridge"
 msgstr "silta luolakuilun yli"
 
 #. [terrain_type]: id=hangingbridge
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
-#: data/core/terrain.cfg:2070 data/core/terrain.cfg:2082
-#: data/core/terrain.cfg:2094
+#: data/core/terrain.cfg:2072 data/core/terrain.cfg:2085
+#: data/core/terrain.cfg:2098
 #, fuzzy
 #| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
@@ -1248,8 +1261,8 @@ msgstr "laho silta"
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
-#: data/core/terrain.cfg:2107 data/core/terrain.cfg:2118
-#: data/core/terrain.cfg:2129
+#: data/core/terrain.cfg:2111 data/core/terrain.cfg:2124
+#: data/core/terrain.cfg:2137
 #, fuzzy
 #| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
@@ -1258,42 +1271,42 @@ msgstr "silta luolakuilun yli"
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
-#: data/core/terrain.cfg:2141 data/core/terrain.cfg:2152
-#: data/core/terrain.cfg:2163
+#: data/core/terrain.cfg:2150 data/core/terrain.cfg:2163
+#: data/core/terrain.cfg:2176
 #, fuzzy
 #| msgid "Bridge"
 msgid "Plank Bridge"
 msgstr "silta"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2179
+#: data/core/terrain.cfg:2192
 msgid "Off Map"
 msgstr "kartan ulkopuolella"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2190
+#: data/core/terrain.cfg:2203
 msgid "Experimental Fake Map Edge"
 msgstr "kokeellinen kartan valereuna"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
-#: data/core/terrain.cfg:2200 data/gui/default/window/editor_edit_side.cfg:176
+#: data/core/terrain.cfg:2213 data/gui/default/window/editor_edit_side.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "huntu"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:2210
+#: data/core/terrain.cfg:2223
 msgid "Fog"
 msgstr "sumu"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2225 data/core/terrain.cfg:2226
+#: data/core/terrain.cfg:2238 data/core/terrain.cfg:2239
 msgid "Fungus"
 msgstr ""
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2229
+#: data/core/terrain.cfg:2242
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms,\n"
@@ -1308,7 +1321,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:2241
+#: data/core/terrain.cfg:2254
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1329,14 +1342,14 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:2254
+#: data/core/terrain.cfg:2267
 #, fuzzy
 #| msgid "Sand"
 msgid "Sands"
 msgstr "hiekkaa"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:2271
+#: data/core/terrain.cfg:2284
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1348,7 +1361,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:2285
+#: data/core/terrain.cfg:2298
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
 "with enough dips and rises in the ground to provide some cover. Hills are "
@@ -1362,7 +1375,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:2300
+#: data/core/terrain.cfg:2313
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1376,7 +1389,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:2313
+#: data/core/terrain.cfg:2326
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1391,7 +1404,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2328
+#: data/core/terrain.cfg:2341
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -1404,7 +1417,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:2342
+#: data/core/terrain.cfg:2355
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1418,7 +1431,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:2354
+#: data/core/terrain.cfg:2367
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -1429,12 +1442,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2365 data/core/terrain.cfg:2366
+#: data/core/terrain.cfg:2378 data/core/terrain.cfg:2379
 msgid "Flat"
 msgstr "tasamaa"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2367
+#: data/core/terrain.cfg:2380
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -1447,7 +1460,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:2380
+#: data/core/terrain.cfg:2393
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -1466,12 +1479,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2390 data/core/terrain.cfg:2391
+#: data/core/terrain.cfg:2403 data/core/terrain.cfg:2404
 msgid "Frozen"
 msgstr "jäätynyt"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2393
+#: data/core/terrain.cfg:2406
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -1483,7 +1496,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:2406
+#: data/core/terrain.cfg:2419
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -1498,12 +1511,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2416 data/core/terrain.cfg:2417
+#: data/core/terrain.cfg:2429 data/core/terrain.cfg:2430
 msgid "Impassable"
 msgstr "ylitsepääsemätön"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2419
+#: data/core/terrain.cfg:2432
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -1513,12 +1526,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2426 data/core/terrain.cfg:2427
+#: data/core/terrain.cfg:2439 data/core/terrain.cfg:2440
 msgid "Unwalkable"
 msgstr "kulkukelvoton"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2429
+#: data/core/terrain.cfg:2442
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -1527,12 +1540,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2436 data/core/terrain.cfg:2437
+#: data/core/terrain.cfg:2449 data/core/terrain.cfg:2450
 msgid "Rails"
 msgstr ""
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2439
+#: data/core/terrain.cfg:2452
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
 msgstr ""
@@ -3447,19 +3460,19 @@ msgstr "Tiedoston poistaminen epäonnistui."
 msgid "Creation of the directory failed."
 msgstr "Kansion luominen epäonnistui."
 
-#: src/game_preferences.cpp:357
+#: src/game_preferences.cpp:361
 msgid "No server has been defined."
 msgstr "Palvelinta ei ole määritetty."
 
-#: src/game_preferences.cpp:437
+#: src/game_preferences.cpp:441
 msgid "player"
 msgstr "pelaaja"
 
-#: src/game_preferences.cpp:964
+#: src/game_preferences.cpp:968
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:967
+#: src/game_preferences.cpp:971
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -5165,63 +5178,63 @@ msgstr "Näytä vinkki"
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:406 src/hotkey/hotkey_item.cpp:409
+#: src/hotkey/hotkey_item.cpp:408 src/hotkey/hotkey_item.cpp:411
 msgid "Button"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:406
+#: src/hotkey/hotkey_item.cpp:408
 msgid "Mouse"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:409 src/hotkey/hotkey_item.cpp:445
+#: src/hotkey/hotkey_item.cpp:411 src/hotkey/hotkey_item.cpp:447
 msgid "Joystick"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:415
+#: src/hotkey/hotkey_item.cpp:417
 msgid "Centered"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:418
+#: src/hotkey/hotkey_item.cpp:420
 msgid "Up"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:421
+#: src/hotkey/hotkey_item.cpp:423
 #, fuzzy
 #| msgid "Height:"
 msgid "Right"
 msgstr "Korkeus:"
 
-#: src/hotkey/hotkey_item.cpp:424
+#: src/hotkey/hotkey_item.cpp:426
 msgid "Down"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:427
+#: src/hotkey/hotkey_item.cpp:429
 msgid "Left"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:430
+#: src/hotkey/hotkey_item.cpp:432
 msgid "RightUp"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:433
+#: src/hotkey/hotkey_item.cpp:435
 msgid "RightDown"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:436
+#: src/hotkey/hotkey_item.cpp:438
 msgid "LeftUp"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:439
+#: src/hotkey/hotkey_item.cpp:441
 msgid "LeftDown"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:442
+#: src/hotkey/hotkey_item.cpp:444
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Tuntematon aikakausi"
 
-#: src/hotkey/hotkey_item.cpp:445
+#: src/hotkey/hotkey_item.cpp:447
 #, fuzzy
 #| msgid "Hut"
 msgid "Hat"
@@ -5321,7 +5334,7 @@ msgstr "Pikanäppäimet"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:423
+#: src/image.cpp:425
 msgid "language code for localized resources^en_US"
 msgstr "fi"
 

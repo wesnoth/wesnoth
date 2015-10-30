@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
+"POT-Creation-Date: 2015-10-30 01:45-0300\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -177,63 +177,68 @@ msgstr "theme^Redaktorius"
 msgid "File"
 msgstr "Failas"
 
+#. [menu]: id=menu-editor-recent
+#: data/themes/editor.cfg:72
+msgid "Load Recent"
+msgstr ""
+
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:82
+#: data/themes/editor.cfg:90
 msgid "Map"
 msgstr "Žemėlapis"
 
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:90
+#: data/themes/editor.cfg:98
 msgid "Transition Update"
 msgstr "Perėjimų atnaujinimas"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:97
+#: data/themes/editor.cfg:105
 msgid "Window"
 msgstr "Langas"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:106
+#: data/themes/editor.cfg:114
 msgid "Areas"
 msgstr "Vietovės"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:114
+#: data/themes/editor.cfg:122
 msgid "Assign Local Time"
 msgstr "Priskirti vietinį laiką"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:120
+#: data/themes/editor.cfg:128
 msgid "Assign Local Time Schedule"
 msgstr "Priskirti vietinį paros laiką"
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:128
+#: data/themes/editor.cfg:136
 msgid "Side"
 msgstr "Pusė"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:146
+#: data/themes/editor.cfg:154
 msgid "villages"
 msgstr "kaimai"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:163
+#: data/themes/editor.cfg:171
 msgid "units"
 msgstr "kariai"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:442
+#: data/themes/editor.cfg:450
 msgid "Time Schedule Menu"
 msgstr "Paros laiko meniu"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:453
+#: data/themes/editor.cfg:461
 msgid "Playlist"
 msgstr "Grojaraštis"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:459
+#: data/themes/editor.cfg:467
 msgid "Assign Time Schedule"
 msgstr "Priskirti paros laiką"
 
@@ -293,24 +298,24 @@ msgstr "Išjungti"
 msgid "No editor time-of-day found."
 msgstr "Nerastas dienos-laiko redaktorius."
 
-#: src/editor/editor_controller.cpp:1070
+#: src/editor/editor_controller.cpp:1082
 msgid "Change Unit ID"
 msgstr "Keisti dalinio ID"
 
-#: src/editor/editor_controller.cpp:1071
+#: src/editor/editor_controller.cpp:1083
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/editor_controller.cpp:1087
+#: src/editor/editor_controller.cpp:1099
 msgid "Rename Unit"
 msgstr "Pervadinti karį"
 
-#: src/editor/editor_controller.cpp:1088
+#: src/editor/editor_controller.cpp:1100
 msgid "Name:"
 msgstr "Vardas:"
 
 #: src/editor/map/context_manager.cpp:127
-#: src/editor/map/context_manager.cpp:288
+#: src/editor/map/context_manager.cpp:299
 msgid "(New Map)"
 msgstr "(Naujas žemėlapis)"
 
@@ -318,103 +323,107 @@ msgstr "(Naujas žemėlapis)"
 msgid "Choose a File to Open"
 msgstr "Pasirinkite atveriamą failą"
 
-#: src/editor/map/context_manager.cpp:290
+#: src/editor/map/context_manager.cpp:301
 msgid "(New Scenario)"
 msgstr "(Naujas scenarijus)"
 
-#: src/editor/map/context_manager.cpp:324
+#: src/editor/map/context_manager.cpp:328
+msgid "No Recent Files"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:365
 msgid "(Unnamed Area)"
 msgstr "(Nepavadinta vietovė)"
 
-#: src/editor/map/context_manager.cpp:352
+#: src/editor/map/context_manager.cpp:393
 msgid "(New Side)"
 msgstr "(Nauja pusė)"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:459
 msgid "Choose a Mask to Apply"
 msgstr "Pasirinkite pritaikoma kaukę"
 
-#: src/editor/map/context_manager.cpp:425
+#: src/editor/map/context_manager.cpp:466
 msgid "Error loading mask"
 msgstr "Klaida, įkeliant kaukę"
 
-#: src/editor/map/context_manager.cpp:444
+#: src/editor/map/context_manager.cpp:485
 msgid "Identifier:"
 msgstr "Identifikatorius: "
 
-#: src/editor/map/context_manager.cpp:444
+#: src/editor/map/context_manager.cpp:485
 msgid "Rename Area"
 msgstr "Pervadinti vietovę"
 
-#: src/editor/map/context_manager.cpp:455
+#: src/editor/map/context_manager.cpp:496
 msgid "Choose Target Map"
 msgstr "Pasirinkite žemėlapį"
 
-#: src/editor/map/context_manager.cpp:462
-#: src/editor/map/context_manager.cpp:895
+#: src/editor/map/context_manager.cpp:503
+#: src/editor/map/context_manager.cpp:937
 msgid "Error loading map"
 msgstr "Klaida įkeliant žemėlapį"
 
-#: src/editor/map/context_manager.cpp:579
+#: src/editor/map/context_manager.cpp:620
 msgid "Save the Map As"
 msgstr "Išsaugoti žemėlapį kaip"
 
-#: src/editor/map/context_manager.cpp:583
-#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:624
+#: src/editor/map/context_manager.cpp:652
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Failas jau egzistuoja. Ar norite jį perrašyti?"
 
-#: src/editor/map/context_manager.cpp:607
+#: src/editor/map/context_manager.cpp:648
 msgid "Save the Scenario As"
 msgstr "Išsaugoti scenarijų kaip"
 
-#: src/editor/map/context_manager.cpp:646
+#: src/editor/map/context_manager.cpp:687
 msgid "No random map generators found."
 msgstr "Nerasta atsitiktinių žemėlapių generatorių."
 
-#: src/editor/map/context_manager.cpp:659
-#: src/editor/map/context_manager.cpp:663
+#: src/editor/map/context_manager.cpp:700
+#: src/editor/map/context_manager.cpp:704
 msgid "Map creation failed."
 msgstr "Žemėlapio kūrimas nepavyko."
 
-#: src/editor/map/context_manager.cpp:675
+#: src/editor/map/context_manager.cpp:717
 msgid "Unsaved Changes"
 msgstr "Neišsaugoti pakeitimai"
 
-#: src/editor/map/context_manager.cpp:676
+#: src/editor/map/context_manager.cpp:718
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Ar norite išmesti visus pakeitimus, darytus žemėlapiui nuo paskutinio "
 "išsaugojimo?"
 
-#: src/editor/map/context_manager.cpp:773
+#: src/editor/map/context_manager.cpp:815
 msgid "This scenario is already open."
 msgstr "Šis scenarijus jau atvertas."
 
-#: src/editor/map/context_manager.cpp:795
-#: src/editor/map/context_manager.cpp:850
+#: src/editor/map/context_manager.cpp:837
+#: src/editor/map/context_manager.cpp:892
 msgid "This map is already open."
 msgstr "Šis žemėlapis jau atvertas."
 
-#: src/editor/map/context_manager.cpp:816
+#: src/editor/map/context_manager.cpp:858
 msgid "Scenario saved."
 msgstr "Scenarijus išsaugotas."
 
-#: src/editor/map/context_manager.cpp:830
+#: src/editor/map/context_manager.cpp:872
 msgid "Map saved."
 msgstr "Žemėlapis išsaugotas."
 
-#: src/editor/map/context_manager.cpp:873
+#: src/editor/map/context_manager.cpp:915
 msgid "Loaded embedded map data"
 msgstr "Įkeliami įdėto žemėlapio duomenys"
 
-#: src/editor/map/context_manager.cpp:874
-#: src/editor/map/context_manager.cpp:888
+#: src/editor/map/context_manager.cpp:916
+#: src/editor/map/context_manager.cpp:930
 msgid "Map loaded from scenario"
 msgstr "Žemėlapis įkeltas iš scenarijaus"
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:926
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -430,15 +439,15 @@ msgstr "Žaidėjas"
 msgid "The size of the target map is different from the current map"
 msgstr "Pritaikomo žemėlapio dydis skiriasi nuo dabartinio žemėlapio dydžio"
 
-#: src/editor/map/map_context.cpp:127
+#: src/editor/map/map_context.cpp:128
 msgid "File not found"
 msgstr "Failas nerastas"
 
-#: src/editor/map/map_context.cpp:133
+#: src/editor/map/map_context.cpp:134
 msgid "Empty file"
 msgstr "Tuščias failas"
 
-#: src/editor/map/map_context.cpp:179
+#: src/editor/map/map_context.cpp:183
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -446,15 +455,15 @@ msgstr ""
 "Žemėlapio failas atrodo kaip scenarijus, tačiau map_data vertė nerodo į "
 "egzistuojantį failą"
 
-#: src/editor/map/map_context.cpp:518
+#: src/editor/map/map_context.cpp:524
 msgid "Could not save the scenario: $msg"
 msgstr "Nepavyksta išsaugoti scenarijaus: $msg"
 
-#: src/editor/map/map_context.cpp:545
+#: src/editor/map/map_context.cpp:551
 msgid "Could not save into scenario"
 msgstr "Nepavyksta įrašyti į scenarijų"
 
-#: src/editor/map/map_context.cpp:552
+#: src/editor/map/map_context.cpp:559
 msgid "Could not save the map: $msg"
 msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 

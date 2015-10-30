@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-12 18:03-0300\n"
+"POT-Creation-Date: 2015-10-30 01:45-0300\n"
 "PO-Revision-Date: 2014-06-05 22:13+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -216,13 +216,24 @@ msgstr ""
 "Thay thế phòng gặp gỡ nhiều người chơi cổ điển bằng một giao diện thử nghiệm "
 "mới hơn"
 
-#. [advanced_preference]: type=boolean
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:193
+msgid "Editor recent files limit"
+msgstr ""
+
+#. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:194
+msgid ""
+"The maximum number of items to display on the Recent Files menu in the editor"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:205
 msgid "Show color cursors"
 msgstr "Hiện con trỏ màu"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:195
+#: data/advanced_preferences.cfg:206
 msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
@@ -231,97 +242,97 @@ msgstr ""
 "chịu rủi ro khi sử dụng)"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:204
+#: data/advanced_preferences.cfg:215
 msgid "Joystick support"
 msgstr "Hỗ trợ cần điều khiển"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:211
+#: data/advanced_preferences.cfg:222
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Cần điều khiển: số của cần điều khiển trục X cuộn"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:221
+#: data/advanced_preferences.cfg:232
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Cần điều khiển: số của trục X cuộn"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:231
+#: data/advanced_preferences.cfg:242
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Cần điều khiển: số của cần điều khiển trục Y cuộn"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:241
+#: data/advanced_preferences.cfg:252
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Cần điều khiển: số của trục Y cuộn"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:251
+#: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Cần điều khiển: vùng chết của cần cuộn"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:261
+#: data/advanced_preferences.cfg:272
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Cần điều khiển: số của cần điều khiển trục X trỏ"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:271
+#: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Cần điều khiển: số của trục X trỏ"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:281
+#: data/advanced_preferences.cfg:292
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Cần điều khiển: số của cần điều khiển trục Y trỏ"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:291
+#: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Cần điều khiển: số của trục Y trỏ"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:301
+#: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Cần điều khiển: vùng chết của cần trỏ"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:311
+#: data/advanced_preferences.cfg:322
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Cần điều khiển: số của cần điều khiển trục X chuột"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:321
+#: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Cần điều khiển: số của trục X chuột"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:331
+#: data/advanced_preferences.cfg:342
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Cần điều khiển: số của cần điều khiển trục Y chuột"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:341
+#: data/advanced_preferences.cfg:352
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Cần điều khiển: số của trục Y chuột"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:351
+#: data/advanced_preferences.cfg:362
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Cần điều khiển: vùng chết của cần chuột"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:361
+#: data/advanced_preferences.cfg:372
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Cần điều khiển: số của cần điều khiển trục đẩy"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:371
+#: data/advanced_preferences.cfg:382
 msgid "Joystick: number of the thrust axis"
 msgstr "Cần điều khiển: số của trục đẩy"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:381
+#: data/advanced_preferences.cfg:392
 msgid "Joystick: deadzone of the thruster"
 msgstr "Cần điều khiển: vùng chết của động cơ đẩy"
 
@@ -358,317 +369,317 @@ msgid "General Purpose Administration and Coordination"
 msgstr "Quản lý và phối hợp đa năng"
 
 #. [about]
-#: data/core/about.cfg:257
+#: data/core/about.cfg:263
 msgid "Artwork and Graphics"
 msgstr "Mỹ thuật và đồ họa"
 
 #. [about]
-#: data/core/about.cfg:649
+#: data/core/about.cfg:655
 msgid "Music"
 msgstr "Âm nhạc"
 
 #. [about]
-#: data/core/about.cfg:686
+#: data/core/about.cfg:692
 msgid "Sound Effects"
 msgstr "Hiệu ứng âm thanh"
 
 #. [about]
-#: data/core/about.cfg:702
+#: data/core/about.cfg:708
 msgid "Campaign Design"
 msgstr "Thiết kế chiến dịch"
 
 #. [about]
-#: data/core/about.cfg:773
+#: data/core/about.cfg:779
 msgid "Multiplayer Maps and Balancing"
 msgstr "Bản đồ và bảng cân đối nhiều người chơi"
 
 #. [about]
-#: data/core/about.cfg:818
+#: data/core/about.cfg:824
 msgid "Packagers"
 msgstr "Đóng gói"
 
 #. [about]
-#: data/core/about.cfg:893
+#: data/core/about.cfg:923
 msgid "Miscellaneous Contributors"
 msgstr "Đóng góp hỗn hợp"
 
 #. [about]
-#: data/core/about.cfg:1339
+#: data/core/about.cfg:1372
 msgid "Internationalization Managers"
 msgstr "Quản lý quốc tế hóa"
 
 #. [about]
-#: data/core/about.cfg:1364
+#: data/core/about.cfg:1397
 msgid "English strings edition"
 msgstr "Sửa câu tiếng Anh"
 
 #. [about]
-#: data/core/about.cfg:1371
+#: data/core/about.cfg:1404
 msgid "Afrikaans Translation"
 msgstr "Bản dịch tiếng Nam Phi"
 
 #. [about]
-#: data/core/about.cfg:1391
+#: data/core/about.cfg:1424
 msgid "Arabic Translation"
 msgstr "Bản dịch tiếng Ả Rập"
 
 #. [about]
-#: data/core/about.cfg:1398
+#: data/core/about.cfg:1431
 msgid "Basque Translation"
 msgstr "Bản dịch tiếng Basque"
 
 #. [about]
-#: data/core/about.cfg:1411
+#: data/core/about.cfg:1444
 msgid "Bulgarian Translation"
 msgstr "Bản dịch tiếng Bun-ga-ri"
 
 #. [about]
-#: data/core/about.cfg:1430
+#: data/core/about.cfg:1463
 msgid "Catalan Translation"
 msgstr "Bản dịch tiếng Catalan"
 
 #. [about]
-#: data/core/about.cfg:1471
+#: data/core/about.cfg:1504
 msgid "Chinese Translation"
 msgstr "Bản dịch tiếng Trung Quốc"
 
 #. [about]
-#: data/core/about.cfg:1551
+#: data/core/about.cfg:1584
 msgid "Chinese (Taiwan) Translation"
 msgstr "Bản dịch tiếng Trung Quốc (Đài Loan)"
 
 #. [about]
-#: data/core/about.cfg:1564
+#: data/core/about.cfg:1597
 msgid "Croatian Translation"
 msgstr "Bản dịch tiếng Croatia"
 
 #. [about]
-#: data/core/about.cfg:1574
+#: data/core/about.cfg:1607
 msgid "Czech Translation"
 msgstr "Bản dịch tiếng Séc"
 
 #. [about]
-#: data/core/about.cfg:1634
+#: data/core/about.cfg:1667
 msgid "Danish Translation"
 msgstr "Bản dịch tiếng Đan Mạch"
 
 #. [about]
-#: data/core/about.cfg:1665
+#: data/core/about.cfg:1698
 msgid "Dutch Translation"
 msgstr "Bản dịch tiếng Hà Lan"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1762
 msgid "English (GB) Translation"
 msgstr "Bản dịch tiếng Anh (Vương quốc Anh)"
 
 #. [about]
-#: data/core/about.cfg:1752
+#: data/core/about.cfg:1785
 msgid "English (Shaw) Translation"
 msgstr "Bản dịch tiếng Anh (bảng chữ cái Shaw)"
 
 #. [about]
-#: data/core/about.cfg:1770
+#: data/core/about.cfg:1803
 msgid "Esperanto Translation"
 msgstr "Bản dịch tiếng Esperanto (Quốc tế ngữ)"
 
 #. [about]
-#: data/core/about.cfg:1789
+#: data/core/about.cfg:1822
 msgid "Estonian Translation"
 msgstr "Bản dịch tiếng Estonia"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1832
 msgid "Filipino Translation"
 msgstr "Bản dịch tiếng Phi-líp-pin"
 
 #. [about]
-#: data/core/about.cfg:1809
+#: data/core/about.cfg:1842
 msgid "Finnish Translation"
 msgstr "Bản dịch tiếng Phần Lan"
 
 #. [about]
-#: data/core/about.cfg:1855
+#: data/core/about.cfg:1888
 msgid "French Translation"
 msgstr "Bản dịch tiếng Pháp"
 
 #. [about]
-#: data/core/about.cfg:2017
+#: data/core/about.cfg:2050
 msgid "Friulian Translation"
 msgstr "Bản dịch tiếng Friuli"
 
 #. [about]
-#: data/core/about.cfg:2024
+#: data/core/about.cfg:2057
 msgid "Galician Translation"
 msgstr "Bản dịch tiếng Galicia"
 
 #. [about]
-#: data/core/about.cfg:2060
+#: data/core/about.cfg:2093
 msgid "German Translation"
 msgstr "Bản dịch tiếng Đức"
 
 #. [about]
-#: data/core/about.cfg:2134
+#: data/core/about.cfg:2167
 msgid "Greek Translation"
 msgstr "Bản dịch tiếng Hy Lạp"
 
 #. [about]
-#: data/core/about.cfg:2177
+#: data/core/about.cfg:2210
 msgid "Hebrew Translation"
 msgstr "Bản dịch tiếng Do Thái"
 
 #. [about]
-#: data/core/about.cfg:2190
+#: data/core/about.cfg:2223
 msgid "Hungarian Translation"
 msgstr "Bản dịch tiếng Hung-ga-ri"
 
 #. [about]
-#: data/core/about.cfg:2251
+#: data/core/about.cfg:2284
 msgid "Icelandic Translation"
 msgstr "Bản dịch tiếng Ai-xơ-len"
 
 #. [about]
-#: data/core/about.cfg:2261
+#: data/core/about.cfg:2294
 msgid "Indonesian Translation"
 msgstr "Bản dịch tiếng In-đô-nê-xi-a"
 
 #. [about]
-#: data/core/about.cfg:2284
+#: data/core/about.cfg:2317
 msgid "Irish Translation"
 msgstr "Bản dịch tiếng Ai-len"
 
 #. [about]
-#: data/core/about.cfg:2291
+#: data/core/about.cfg:2324
 msgid "Italian Translation"
 msgstr "Bản dịch tiếng Ý"
 
 #. [about]
-#: data/core/about.cfg:2338
+#: data/core/about.cfg:2371
 msgid "Japanese Translation"
 msgstr "Bản dịch tiếng Nhật"
 
 #. [about]
-#: data/core/about.cfg:2406
+#: data/core/about.cfg:2450
 msgid "Korean Translation"
 msgstr "Bản dịch tiếng Hàn Quốc"
 
 #. [about]
-#: data/core/about.cfg:2414
+#: data/core/about.cfg:2458
 msgid "Latin Translation"
 msgstr "Bản dịch tiếng La-tinh"
 
 #. [about]
-#: data/core/about.cfg:2440
+#: data/core/about.cfg:2484
 msgid "Latvian Translation"
 msgstr "Bản dịch tiếng Latvia"
 
 #. [about]
-#: data/core/about.cfg:2451
+#: data/core/about.cfg:2499
 msgid "Lithuanian Translation"
 msgstr "Bản dịch tiếng Lát-vi"
 
 #. [about]
-#: data/core/about.cfg:2476
+#: data/core/about.cfg:2524
 msgid "Macedonian Translation"
 msgstr "Bản dịch tiếng Ma-xê-đô-ni-a"
 
 #. [about]
-#: data/core/about.cfg:2483
+#: data/core/about.cfg:2531
 msgid "Marathi Translation"
 msgstr "Bản dịch tiếng Maratha"
 
 #. [about]
-#: data/core/about.cfg:2492
+#: data/core/about.cfg:2540
 msgid "Norwegian Translation"
 msgstr "Bản dịch tiếng Na Uy"
 
 #. [about]
-#: data/core/about.cfg:2517
+#: data/core/about.cfg:2565
 msgid "Old English Translation"
 msgstr "Bản dịch tiếng Anh cổ"
 
 #. [about]
-#: data/core/about.cfg:2535
+#: data/core/about.cfg:2583
 msgid "Polish Translation"
 msgstr "Bản dịch tiếng Ba Lan"
 
 #. [about]
-#: data/core/about.cfg:2579
+#: data/core/about.cfg:2627
 msgid "Portuguese Translation"
 msgstr "Bản dịch tiếng Bồ Đào Nha"
 
 #. [about]
-#: data/core/about.cfg:2597
+#: data/core/about.cfg:2645
 msgid "Portuguese (Brazil) Translation"
 msgstr "Bản dịch tiếng Bồ Đào Nha (Braxin)"
 
 #. [about]
-#: data/core/about.cfg:2651
+#: data/core/about.cfg:2699
 msgid "Romanian Translation"
 msgstr "Bản dịch tiếng Ru-ma-ni"
 
 #. [about]
-#: data/core/about.cfg:2659
+#: data/core/about.cfg:2707
 msgid "Russian Translation"
 msgstr "Bản dịch tiếng Nga"
 
 #. [about]
-#: data/core/about.cfg:2748
+#: data/core/about.cfg:2796
 msgid "Scottish Gaelic Translation"
 msgstr "Bản dịch tiếng Gael Scotland"
 
 #. [about]
-#: data/core/about.cfg:2757
+#: data/core/about.cfg:2805
 msgid "Serbian Translation"
 msgstr "Bản dịch tiếng Xéc-bi"
 
 #. [about]
-#: data/core/about.cfg:2776
+#: data/core/about.cfg:2824
 msgid "Slovak Translation"
 msgstr "Bản dịch tiếng Slô-va-ki-a"
 
 #. [about]
-#: data/core/about.cfg:2805
+#: data/core/about.cfg:2853
 msgid "Slovenian Translation"
 msgstr "Bản dịch tiếng Slô-vê-ni-a"
 
 #. [about]
-#: data/core/about.cfg:2821
+#: data/core/about.cfg:2869
 msgid "Spanish Translation"
 msgstr "Bản dịch tiếng Tây Ban Nha"
 
 #. [about]
-#: data/core/about.cfg:2903
+#: data/core/about.cfg:2951
 msgid "Swedish Translation"
 msgstr "Bản dịch tiếng Thụy Điển"
 
 #. [about]
-#: data/core/about.cfg:2944
+#: data/core/about.cfg:2992
 msgid "Turkish Translation"
 msgstr "Bản dịch tiếng Thổ Nhĩ Kỳ"
 
 #. [about]
-#: data/core/about.cfg:2966
+#: data/core/about.cfg:3014
 msgid "Ukrainian Translation"
 msgstr "Bản dịch tiếng Ukraina"
 
 #. [about]
-#: data/core/about.cfg:2979
+#: data/core/about.cfg:3027
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Bản dịch tiếng Valencia (nam Catalan)"
 
 #. [about]
-#: data/core/about.cfg:2992
+#: data/core/about.cfg:3040
 msgid "Vietnamese Translation"
 msgstr "Bản dịch tiếng Việt"
 
 #. [about]
-#: data/core/about.cfg:3011
+#: data/core/about.cfg:3059
 msgid "RACV’s Translation"
 msgstr "Bản dịch của RACV"
 
 #. [about]
-#: data/core/about.cfg:3018
+#: data/core/about.cfg:3066
 msgid "Bots"
 msgstr "Người máy"
 
@@ -2680,7 +2691,7 @@ msgstr ""
 "Phe $side_number vốn dành cho người điều khiển."
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:805
+#: data/core/macros/utils.cfg:807
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Bạn nhận được $amount_gold lượng vàng."
 
@@ -3188,11 +3199,11 @@ msgstr "Đồng ý"
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
-#: data/scenario-test.cfg:4009
+#: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr "rất dài"
 
-#: data/scenario-test.cfg:4010
+#: data/scenario-test.cfg:4005
 msgid "electrical"
 msgstr "điện tử"
 
@@ -5032,8 +5043,7 @@ msgstr "Trận chiến vì Wesnoth"
 msgid "The file you have tried to load is corrupt"
 msgstr "Tập tin bạn cố tải bị hỏng"
 
-#: src/game_controller.cpp:483 src/game_controller.cpp:501
-#: src/savegame.cpp:691
+#: src/game_controller.cpp:483 src/game_controller.cpp:501 src/savegame.cpp:691
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tập tin bạn cố tải bị hỏng: '"
 
@@ -5096,7 +5106,7 @@ msgstr "Tin nhắn tán gẫu"
 msgid "Turn changed"
 msgstr "Đã thay đổi lượt"
 
-#: src/game_events/action_wml.cpp:751
+#: src/game_events/action_wml.cpp:750
 msgid "Invalid value in the result key for [end_level]"
 msgstr "Giá trị không hợp lệ trong khóa kết quả cho [end_level]"
 
@@ -5201,25 +5211,25 @@ msgstr "Bạn"
 msgid "Error"
 msgstr "Lỗi"
 
-#: src/hotkey/command_executor.cpp:509 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
+#: src/hotkey/command_executor.cpp:510 src/hotkey/command_executor.cpp:672
+#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:871
 #: src/multiplayer_wait.cpp:188
 msgid "Quit"
 msgstr "Thoát"
 
-#: src/hotkey/command_executor.cpp:510 src/hotkey/command_executor.cpp:672
+#: src/hotkey/command_executor.cpp:511 src/hotkey/command_executor.cpp:673
 msgid "Do you really want to quit?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/hotkey/command_executor.cpp:627
+#: src/hotkey/command_executor.cpp:628
 msgid "Map-Screenshot"
 msgstr "Chụp màn hình bản đồ"
 
-#: src/hotkey/command_executor.cpp:627
+#: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "Chụp màn hình"
 
-#: src/hotkey/command_executor.cpp:634
+#: src/hotkey/command_executor.cpp:635
 msgid "Screenshot Done"
 msgstr "Đã chụp màn hình"
 
@@ -6446,7 +6456,7 @@ msgstr "Chia sẻ bản đồ"
 msgid "Share None"
 msgstr "Không chia sẻ gì"
 
-#: src/multiplayer_configure.cpp:211 src/multiplayer_create_engine.cpp:457
+#: src/multiplayer_configure.cpp:211 src/multiplayer_create_engine.cpp:458
 msgid "$login|’s game"
 msgstr "Trò chơi của $login"
 
@@ -6595,7 +6605,7 @@ msgstr "Dành riêng"
 msgid "--give--"
 msgstr "--cho--"
 
-#: src/multiplayer_create.cpp:60 src/multiplayer_lobby.cpp:860
+#: src/multiplayer_create.cpp:60 src/multiplayer_lobby.cpp:868
 msgid "Create Game"
 msgstr "Tạo trò chơi"
 
@@ -6711,19 +6721,19 @@ msgstr "Số lượng người chơi: "
 msgid "No description available."
 msgstr "Không có mô tả."
 
-#: src/multiplayer_create_engine.cpp:139 src/multiplayer_create_engine.cpp:805
+#: src/multiplayer_create_engine.cpp:140 src/multiplayer_create_engine.cpp:806
 msgid "Map could not be loaded: "
 msgstr "Không thể tải bản đồ: "
 
-#: src/multiplayer_create_engine.cpp:143
+#: src/multiplayer_create_engine.cpp:144
 msgid "Map could not be loaded."
 msgstr "Không thể tải bản đồ."
 
-#: src/multiplayer_create_engine.cpp:165
+#: src/multiplayer_create_engine.cpp:166
 msgid "not available."
 msgstr "không khả dụng."
 
-#: src/multiplayer_create_engine.cpp:217
+#: src/multiplayer_create_engine.cpp:218
 msgid "User made map"
 msgstr "Bản đồ do người dùng tạo"
 
@@ -6751,73 +6761,73 @@ msgstr "Chiến dịch không xác đinh: $campaign_id"
 msgid " (missing)"
 msgstr " (thiếu)"
 
-#: src/multiplayer_lobby.cpp:670 src/multiplayer_lobby.cpp:1028
+#: src/multiplayer_lobby.cpp:670 src/multiplayer_lobby.cpp:1036
 msgid "Password Required"
 msgstr "Cần mật khẩu"
 
-#: src/multiplayer_lobby.cpp:853 src/multiplayer_wait.cpp:187
+#: src/multiplayer_lobby.cpp:861 src/multiplayer_wait.cpp:187
 msgid "Game Lobby"
 msgstr "Phòng gặp gỡ trò chơi"
 
-#: src/multiplayer_lobby.cpp:858
+#: src/multiplayer_lobby.cpp:866
 msgid "Observe Game"
 msgstr "Quan sát trò chơi"
 
-#: src/multiplayer_lobby.cpp:859
+#: src/multiplayer_lobby.cpp:867
 msgid "Join Game"
 msgstr "Tham gia trò chơi"
 
-#: src/multiplayer_lobby.cpp:862
+#: src/multiplayer_lobby.cpp:870
 msgid "Preferences"
 msgstr "Tùy thích"
 
-#: src/multiplayer_lobby.cpp:864
+#: src/multiplayer_lobby.cpp:872
 msgid "Apply filter"
 msgstr "Áp dụng bộ lọc"
 
-#: src/multiplayer_lobby.cpp:865
+#: src/multiplayer_lobby.cpp:873
 msgid "Invert"
 msgstr "Đảo ngược"
 
-#: src/multiplayer_lobby.cpp:866
+#: src/multiplayer_lobby.cpp:874
 msgid "Vacant slots"
 msgstr "Còn trống"
 
-#: src/multiplayer_lobby.cpp:867
+#: src/multiplayer_lobby.cpp:875
 msgid "Friends in game"
 msgstr "Bạn bè đang chơi"
 
-#: src/multiplayer_lobby.cpp:868
+#: src/multiplayer_lobby.cpp:876
 msgid "Search:"
 msgstr "Tìm kiếm:"
 
-#: src/multiplayer_lobby.cpp:876
+#: src/multiplayer_lobby.cpp:884
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Normal Replays"
 msgstr "Lưu bản phát lại"
 
-#: src/multiplayer_lobby.cpp:877
+#: src/multiplayer_lobby.cpp:885
 #, fuzzy
 #| msgid "Quick replays"
 msgid "Quick Replays"
 msgstr "Phát lại nhanh"
 
-#: src/multiplayer_lobby.cpp:878
+#: src/multiplayer_lobby.cpp:886
 #, fuzzy
 #| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
 msgstr "Vào không cần xem"
 
-#: src/multiplayer_lobby.cpp:882
+#: src/multiplayer_lobby.cpp:890
 msgid "Skip quickly to the active turn when observing"
 msgstr "Nhảy nhanh đến lượt hiện tại khi quan sát"
 
-#: src/multiplayer_lobby.cpp:883
+#: src/multiplayer_lobby.cpp:891
 msgid "Do not show replay turns"
 msgstr "Không hiện lượt phát lại"
 
-#: src/multiplayer_lobby.cpp:896
+#: src/multiplayer_lobby.cpp:904
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -6825,7 +6835,7 @@ msgstr ""
 "Bật bộ lọc trò chơi. Nếu không đánh dấu, sẽ hiện mọi trò chơi, bất kể bộ lọc "
 "là gì."
 
-#: src/multiplayer_lobby.cpp:899
+#: src/multiplayer_lobby.cpp:907
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -6833,27 +6843,31 @@ msgstr ""
 "Hiện tất cả các trò chơi *không* khớp với bộ lọc của bạn. Hữu ích để ẩn "
 "những trò chơi mà bạn không quan tâm."
 
-#: src/multiplayer_lobby.cpp:903
+#: src/multiplayer_lobby.cpp:911
 msgid "Only show games that have at least one vacant slot"
 msgstr "Chỉ hiện những trò chơi có ít nhất một chỗ trống"
 
-#: src/multiplayer_lobby.cpp:907
+#: src/multiplayer_lobby.cpp:915
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Chỉ hiện những trò chơi mà có ít nhất một trong số các bạn bè của bạn đang "
 "chơi hoặc quan sát"
 
-#: src/multiplayer_lobby.cpp:913
-msgid "Only show games whose title or description contain the entered text"
+#: src/multiplayer_lobby.cpp:921
+#, fuzzy
+#| msgid "Only show games whose title or description contain the entered text"
+msgid ""
+"Only show games whose title, description, era or mods contain the entered "
+"text"
 msgstr ""
 "Chỉ hiện những trò chơi có tiêu đề hoặc mô tả chứa văn bản được nhập vào"
 
-#: src/multiplayer_lobby.cpp:1029
+#: src/multiplayer_lobby.cpp:1037
 msgid "Joining this game requires a password."
 msgstr "Cần mật khẩu để tham gia trò chơi này."
 
-#: src/multiplayer_lobby.cpp:1030
+#: src/multiplayer_lobby.cpp:1038
 msgid "Password: "
 msgstr "Mật khẩu: "
 
@@ -7823,27 +7837,27 @@ msgstr "Tháng mười"
 msgid "September"
 msgstr "Tháng chín"
 
-#: src/strftime.cpp:73
+#: src/strftime.cpp:78
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%a %b %e %H:%M:%S %Y"
 
-#: src/strftime.cpp:77
+#: src/strftime.cpp:82
 msgid "%a %d %b %Y %H:%M:%S %z"
 msgstr "%a %d %b %Y %H:%M:%S %z"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "AM"
 msgstr "SA"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "PM"
 msgstr "CH"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "am"
 msgstr "sa"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "pm"
 msgstr "ch"
 
@@ -7871,8 +7885,7 @@ msgstr "Phím tắt: "
 msgid "Stub Time of Day"
 msgstr "Thời điểm trong ngày thử nghiệm"
 
-#: src/unit.cpp:2432 src/unit.cpp:2662 src/unit.cpp:2743
-#: src/unit_types.cpp:163
+#: src/unit.cpp:2432 src/unit.cpp:2662 src/unit.cpp:2743 src/unit_types.cpp:163
 msgid " and "
 msgstr " và "
 
