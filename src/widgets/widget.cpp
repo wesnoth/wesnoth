@@ -116,27 +116,27 @@ void widget::set_location(int x, int y)
 	set_location(sdl::create_rect(x, y, rect_.w, rect_.h));
 }
 
-void widget::set_width(unsigned w)
+void widget::set_width(int w)
 {
 	set_location(sdl::create_rect(rect_.x, rect_.y, w, rect_.h));
 }
 
-void widget::set_height(unsigned h)
+void widget::set_height(int h)
 {
 	set_location(sdl::create_rect(rect_.x, rect_.y, rect_.w, h));
 }
 
-void widget::set_measurements(unsigned w, unsigned h)
+void widget::set_measurements(int w, int h)
 {
 	set_location(sdl::create_rect(rect_.x, rect_.y, w, h));
 }
 
-unsigned widget::width() const
+int widget::width() const
 {
 	return rect_.w;
 }
 
-unsigned widget::height() const
+int widget::height() const
 {
 	return rect_.h;
 }

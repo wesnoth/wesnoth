@@ -362,6 +362,7 @@ void wait::join_game(bool observe)
 				}
 			}
 
+
 			std::vector<gui::preview_pane* > preview_panes;
 			leader_preview_pane leader_selector(disp(), flg, color);
 			preview_panes.push_back(&leader_selector);
