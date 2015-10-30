@@ -20,10 +20,9 @@ class color_range;
 
 #include "tstring.hpp"
 
-#include <SDL_types.h>
-
 #include <vector>
 #include <map>
+#include <stdint.h>
 
 //basic game configuration information is here.
 namespace game_config
@@ -124,15 +123,15 @@ namespace game_config
 	extern double hex_semi_brightening;
 
 	extern std::string flag_rgb;
-	extern std::vector<Uint32> red_green_scale;
-	extern std::vector<Uint32> red_green_scale_text;
+	extern std::vector<uint32_t> red_green_scale;
+	extern std::vector<uint32_t> red_green_scale_text;
 
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 
 	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
-	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
+	extern std::map<std::string, std::vector<uint32_t> > team_rgb_colors;
 
 	/** observer team name used for observer team chat */
 	extern const std::string observer_team_name;
@@ -160,7 +159,7 @@ namespace game_config
 	void load_config(const config &cfg);
 
 	void add_color_info(const config& v);
-	const std::vector<Uint32>& tc_info(const std::string& name);
+	const std::vector<uint32_t>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);
 
 	/**
@@ -170,8 +169,8 @@ namespace game_config
 	 * red_green_scale and red_green_scale_text
 	 */
 
-	Uint32 red_to_green(int val, bool for_text = true);
-	Uint32 blue_to_white(int val, bool for_text = true);
+	uint32_t red_to_green(int val, bool for_text = true);
+	uint32_t blue_to_white(int val, bool for_text = true);
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;

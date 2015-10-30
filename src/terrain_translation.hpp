@@ -17,9 +17,9 @@
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED
 
-#include <SDL_types.h> //used for Uint32 definition
 #include <vector>
 #include <map>
+#include <stdint.h>
 
 #include "exceptions.hpp"
 
@@ -31,7 +31,7 @@ namespace t_translation {
      */
     size_t max_map_size();
 
-	typedef Uint32 t_layer;
+	typedef uint32_t t_layer;
 	const t_layer WILDCARD = 0x2A000000;
 	const t_layer NO_LAYER = 0xFFFFFFFF;
 

@@ -502,8 +502,7 @@ inline bool contains(const Container & container, const Value & value)
 
 
 #if 1
-# include <SDL_types.h>
-typedef Sint32 fixed_t;
+typedef int32_t fixed_t;
 # define fxp_shift 8
 # define fxp_base (1 << fxp_shift)
 
