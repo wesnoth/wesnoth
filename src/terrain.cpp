@@ -203,7 +203,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	editor_image_(base.editor_image_ + "~BLIT(" + overlay.editor_image_ +")"),
 	id_(base.id_+"^"+overlay.id_),
 	name_(overlay.name_),
-	editor_name_(base.editor_name_ + " / " + (overlay.editor_name_.empty() ? overlay.name_ : overlay.editor_name_)),	// Resolve Bug #23023: fall back to overlay name if overlay editor name is empty
+	editor_name_((base.editor_name_.empty() ? base.name_ : base.editor_name_) + " / " + (overlay.editor_name_.empty() ? overlay.name_ : overlay.editor_name_)),
 	description_(overlay.description()),
 	help_topic_text_(),
 	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
