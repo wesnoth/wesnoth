@@ -210,12 +210,12 @@ void loadscreen::draw_screen(const std::string &text)
 	while(SDL_PollEvent(&ev)) {
 #if SDL_VERSION_ATLEAST(2,0,0)
 		if (ev.type == SDL_WINDOWEVENT &&
-				ev.window.type == SDL_WINDOWEVENT_RESIZED) {
+				ev.window.event == SDL_WINDOWEVENT_RESIZED) {
 			display::get_singleton()->video().update_framebuffer();
 		}
 		if (ev.type == SDL_WINDOWEVENT &&
-				(ev.window.type == SDL_WINDOWEVENT_RESIZED ||
-						ev.window.type == SDL_WINDOWEVENT_EXPOSED))
+				(ev.window.event == SDL_WINDOWEVENT_RESIZED ||
+						ev.window.event == SDL_WINDOWEVENT_EXPOSED))
 #else
 		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE)
 #endif
