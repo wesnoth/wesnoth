@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-10-30 01:45-0300\n"
-"PO-Revision-Date: 2015-06-09 10:06+0100\n"
+"PO-Revision-Date: 2015-10-31 16:17+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -236,13 +236,15 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:193
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "Límite de archivos recientes para el editor"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:194
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
+"El número máximo de elementos a mostrar en el menú de Archivos Recientes del "
+"editor"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:205
@@ -6981,14 +6983,12 @@ msgstr ""
 "menos por uno de sus amigos"
 
 #: src/multiplayer_lobby.cpp:921
-#, fuzzy
-#| msgid "Only show games whose title or description contain the entered text"
 msgid ""
 "Only show games whose title, description, era or mods contain the entered "
 "text"
 msgstr ""
-"Solamente muestra partidas que contengan el título o la descripción en el "
-"texto introducido"
+"Solamente muestra partidas cuyo título, descripción, era o complementos "
+"contengan el texto introducido"
 
 #: src/multiplayer_lobby.cpp:1037
 msgid "Joining this game requires a password."
