@@ -3,13 +3,14 @@
 # PJR <pjr@britishlibrary.net>, 2006.
 # Peter J Ross <wesnoth@pjr.britishlibrary.net>, 2007.
 # Steven Panek <Majora700@gmail.com>, 2011.
+# Wedge009 <wedge009@wedge009.net>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-05-24 20:08+0200\n"
-"PO-Revision-Date: 2012-12-26 23:13-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"PO-Revision-Date: 2015-10-31 18:55+1000\n"
+"Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
 "Language: en_GB\n"
@@ -17,6 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
 msgid ""
@@ -125,7 +127,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 msgid "Left click on Konrad"
-msgstr "Left click on Konrad"
+msgstr "Left-click on Konrad"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -134,7 +136,7 @@ msgstr "Left click on Konrad"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:451
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
 msgid "Left click on Li’sar"
-msgstr "Left click on Li’sar"
+msgstr "Left-click on Li’sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:274
@@ -176,7 +178,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:302
 msgid "Left click on tile labeled <b>Here</b>"
-msgstr "Left click on tile labelled <b>Here</b>"
+msgstr "Left-click on tile labelled <b>Here</b>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:327
@@ -232,7 +234,7 @@ msgstr "A quintain? You want me to fight a dummy?"
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:415
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
-msgstr "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
+msgstr "You have 32 hit-points and a sword, boy. I’m fairly sure you’ll win."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:420
@@ -240,7 +242,7 @@ msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
 "win."
 msgstr ""
-"Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
+"Young lady, you have 32 hit-points and a sword. I’m fairly sure you’ll win."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
@@ -352,7 +354,7 @@ msgid ""
 msgstr ""
 "Yes. It’s a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
-"every time, you’ll drop from $student_hp to $future_hp hit points. Brace "
+"every time, you’ll drop from $student_hp to $future_hp hit-points. Brace "
 "yourself!"
 
 #. [event]
@@ -363,7 +365,7 @@ msgstr "Click on the <b>End Turn</b> button in the bottom right of the screen"
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:557
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Ouch! I need to heal! Only $student_hp hitpoints left!"
+msgstr "Ouch! I need to heal! Only $student_hp hit-points left!"
 
 #. [event]
 #. [then]
@@ -437,7 +439,7 @@ msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
 msgstr ""
-"You’re about to be healed by $hp_difference hitpoints, but it’s time to "
+"You’re about to be healed by $hp_difference hit-points, but it’s time to "
 "summon some help against that quintain."
 
 #. [message]: id=Delfador
@@ -446,7 +448,7 @@ msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
 msgstr ""
-"You’re about to be healed by $hp_difference hitpoints, but it’s time to "
+"You’re about to be healed by $hp_difference hit-points, but it’s time to "
 "summon some help against that quintain."
 
 #. [message]: id=student
@@ -508,7 +510,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
 msgid "Right click on a castle tile and select <b>Recruit</b>"
-msgstr "Right click on a castle tile and select <b>Recruit</b>"
+msgstr "Right-click on a castle tile and select <b>Recruit</b>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
@@ -534,14 +536,14 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:777
 msgid "Right click on the other castle tile and recruit another unit"
-msgstr "Right click on the other castle tile and recruit another unit"
+msgstr "Right-click on the other castle tile and recruit another unit"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:799
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
-"Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
+"Hey, the quintain just healed 2 hit-points! I’d better attack it at once!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:803
@@ -554,8 +556,8 @@ msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
-"Had the quintain survived your onslaught, it would have regained two "
-"hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
+"Had the quintain survived your onslaught, it would have regained two hit-"
+"points. If a unit doesn’t do anything for a turn, it will slowly heal."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:823
@@ -583,7 +585,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:833
 msgid "Left click on an Elvish Fighter"
-msgstr "Left click on an Elvish Fighter"
+msgstr "Left-click on an Elvish Fighter"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:834
@@ -604,7 +606,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:864
 msgid "Left click on the quintain to attack it."
-msgstr "Left click on the quintain to attack it."
+msgstr "Left-click on the quintain to attack it."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:901
@@ -681,7 +683,7 @@ msgstr "Unit Descriptions"
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"You can right click on a unit to see a detailed <b>Unit Description</b>."
+"You can right-click on a unit to see a detailed <b>Unit Description</b>."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1033
@@ -728,7 +730,7 @@ msgid ""
 "to support as first level units."
 msgstr ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
-"present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
+"present, is on the <b>right</b> of the <i>hit-points bar</i>), it will go up "
 "a level. Elvish Fighters have two advancement options, and you will be able "
 "to choose which one you want. However, second level units cost twice as much "
 "to support as first level units."
@@ -770,7 +772,7 @@ msgid ""
 msgstr ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
-"Now, Konrad, I will leave you with more dummies to practice on! After that, "
+"Now, Konrad, I will leave you with more dummies to practise on! After that, "
 "we have real work to do..."
 
 #. [message]: id=Delfador
@@ -783,7 +785,7 @@ msgid ""
 msgstr ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
-"Now, Li’sar, I will leave you with more dummies to practice on! After that, "
+"Now, Li’sar, I will leave you with more dummies to practise on! After that, "
 "we have real work to do..."
 
 #. [message]: speaker=narrator
@@ -818,7 +820,7 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1217
 msgid "Yes, I’m still figuring it out."
-msgstr "Yes, I'm still working it out."
+msgstr "Yes, I’m still working it out."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1220
@@ -879,7 +881,8 @@ msgid ""
 "move one tile further each turn, and ‘resilient’ means it has more hitpoints."
 msgstr ""
 " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
-"move one tile further each turn, and ‘resilient’ means it has more hitpoints."
+"move one tile further each turn, and ‘resilient’ means it has more hit-"
+"points."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
@@ -908,7 +911,7 @@ msgid ""
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
-"she will heal it 4 hitpoints per turn. Just be careful not to expose the "
+"she will heal it 4 hit-points per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 
 #. [then]
@@ -922,7 +925,7 @@ msgid ""
 "Advance other units onto the island or to capture villages, then <b>End "
 "Turn</b>"
 msgstr ""
-"Advance other units onto the island or to capture villages, then <b>End "
+"Advance other units on to the island or to capture villages, then <b>End "
 "Turn</b>"
 
 #. [then]
@@ -1001,7 +1004,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:457
 msgid "This is no game, Konrad! "
-msgstr "This is no game, Konrad! "
+msgstr "This is no game, Konrad!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:458
@@ -1018,7 +1021,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:458
 msgid "This is no game, Li’sar! "
-msgstr "This is no game, Li’sar! "
+msgstr "This is no game, Li’sar!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:461
@@ -1139,7 +1142,7 @@ msgstr "RECALL $recall_name1"
 msgid ""
 "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
 msgstr ""
-"Right click on the tile north-east of you and <i>recall</i> $recall_name1"
+"Right-click on the tile north-east of you and <i>recall</i> $recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:590
@@ -1174,7 +1177,7 @@ msgstr "Elvish Fighter"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:597
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
-"Right click on the tile south-east of you and recruit an Elvish Fighter"
+"Right-click on the tile south-east of you and recruit an Elvish Fighter"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:637
@@ -1300,7 +1303,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
 msgid "Right click on the tile east of you and recall $recall_name2"
-msgstr "Right click on the tile east of you and recall $recall_name2"
+msgstr "Right-click on the tile east of you and recall $recall_name2"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:846
@@ -1311,7 +1314,7 @@ msgstr "RECALL $recall_name2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:850
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:892
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr "Right click on the tile east of you and recruit an Elvish Fighter"
+msgstr "Right-click on the tile east of you and recruit an Elvish Fighter"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:873
@@ -1548,7 +1551,7 @@ msgid ""
 msgstr ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn.\n"
-"To move your troops onto that island without wading slowly through the "
+"To move your troops on to that island without wading slowly through the "
 "water, you’ll have to kill the Grunt."
 
 #. [event]
@@ -1645,7 +1648,7 @@ msgid ""
 "at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
 "day."
 msgstr ""
-"Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
+"Careful! It is now night-time. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
 "a noticeable difference. You are <i>lawful</i>: stronger by day and weaker "
 "at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
@@ -1675,7 +1678,7 @@ msgid ""
 "unit)."
 msgstr ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
-"hitpoints at a time, while villages can heal 8 (the maximum healing for any "
+"hit-points at a time, while villages can heal 8 (the maximum healing for any "
 "unit)."
 
 #. [event]
@@ -1865,7 +1868,7 @@ msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
-"Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
+"Beware of the orc leader: he can do 36 hit-points of damage at night! Attack "
 "with many units at once during the day."
 
 #. [message]: speaker=unit
