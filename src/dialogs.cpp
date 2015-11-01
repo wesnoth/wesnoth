@@ -1091,11 +1091,6 @@ void unit_preview_pane::draw_contents()
 				<< font::weapon_details_sep
 				<< string_table["type_" + at_it->type()] << "\n";
 
-			std::string accuracy_parry = at_it->accuracy_parry_description();
-			if(accuracy_parry.empty() == false) {
-				text << font::weapon_details << "  " << accuracy_parry << "\n";
-			}
-
 			std::string special = at_it->weapon_specials();
 			if (!special.empty()) {
 				text << font::weapon_details << "  " << special << "\n";
@@ -1234,11 +1229,6 @@ void unit_preview_pane::draw_contents()
 				<< "  " << string_table["range_" + at_it->range()]
 				<< font::weapon_details_sep
 				<< string_table["type_" + at_it->type()] << "\n";
-
-			std::string accuracy_parry = at_it->accuracy_parry_description();
-			if(accuracy_parry.empty() == false) {
-				text << font::weapon_details << "  " << accuracy_parry << "\n";
-			}
 
 			std::string special = at_it->weapon_specials();
 			if (!special.empty()) {

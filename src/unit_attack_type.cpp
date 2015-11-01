@@ -52,9 +52,7 @@ attack_type::attack_type(const config& cfg) :
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
-	accuracy_(cfg["accuracy"]),
 	movement_used_(cfg["movement_used"].to_int(100000)),
-	parry_(cfg["parry"]),
 	specials_(cfg.child_or_empty("specials"))
 {
 	if (description_.empty())
@@ -70,22 +68,6 @@ attack_type::attack_type(const config& cfg) :
 
 attack_type::~attack_type()
 {
-}
-
-std::string attack_type::accuracy_parry_description() const
-{
-	if(accuracy_ == 0 && parry_ == 0) {
-		return "";
-	}
-
-	std::ostringstream s;
-	s << utils::signed_percent(accuracy_);
-
-	if(parry_ != 0) {
-		s << "/" << utils::signed_percent(parry_);
-	}
-
-	return s.str();
 }
 
 /**
@@ -159,7 +141,7 @@ namespace {
  *
  * If *description is provided, it will be set to a (translated) description
  * of the modification(s) applied (currently only changes to the number of
- * strikes, damage, accuracy, and parry are included in this description).
+ * strikes, damage are included in this description).
  *
  * @returns whether or not @c this matched the @a cfg as a filter.
  */
@@ -180,10 +162,6 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const std::string& set_attacks = cfg["set_attacks"];
 	const std::string& set_attack_weight = cfg["attack_weight"];
 	const std::string& set_defense_weight = cfg["defense_weight"];
-	const std::string& increase_accuracy = cfg["increase_accuracy"];
-	const std::string& set_accuracy = cfg["set_accuracy"];
-	const std::string& increase_parry = cfg["increase_parry"];
-	const std::string& set_parry = cfg["set_parry"];
 	const std::string& increase_movement = cfg["increase_movement_used"];
 	const std::string& set_movement = cfg["set_movement_used"];
 
@@ -271,48 +249,6 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			int inc_attacks = lexical_cast<int>(increase_attacks);
 			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
-		}
-	}
-
-	if(set_accuracy.empty() == false) {
-		accuracy_ = lexical_cast<int>(set_accuracy);
-
-		if(description != NULL) {
-			add_and(desc);
-			// xgettext:no-c-format
-			desc << accuracy_ << " " << _("% accuracy");
-		}
-	}
-
-	if(increase_accuracy.empty() == false) {
-		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
-
-		if(description != NULL) {
-			add_and(desc);
-			int inc_acc = lexical_cast<int>(increase_accuracy);
-			// Help xgettext with a directive to recognize the string as a non C printf-like string
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_acc) << _("% accuracy");
-		}
-	}
-
-	if(set_parry.empty() == false) {
-		parry_ = lexical_cast<int>(set_parry);
-
-		if(description != NULL) {
-			add_and(desc);
-			desc << parry_ << _(" parry");
-		}
-	}
-
-	if(increase_parry.empty() == false) {
-		parry_ = utils::apply_modifier(parry_, increase_parry, 1);
-
-		if(description != NULL) {
-			add_and(desc);
-			int inc_parry = lexical_cast<int>(increase_parry);
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_parry) << _("% parry");
 		}
 	}
 
@@ -406,8 +342,6 @@ void attack_type::write(config& cfg) const
 	cfg["number"] = num_attacks_;
 	cfg["attack_weight"] = attack_weight_;
 	cfg["defense_weight"] = defense_weight_;
-	cfg["accuracy"] = accuracy_;
 	cfg["movement_used"] = movement_used_;
-	cfg["parry"] = parry_;
 	cfg.add_child("specials", specials_);
 }

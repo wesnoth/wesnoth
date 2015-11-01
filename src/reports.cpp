@@ -784,24 +784,6 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	}
 	add_text(res, flush(str), flush(tooltip));
 
-	const std::string &accuracy_parry = at.accuracy_parry_description();
-	if (!accuracy_parry.empty())
-	{
-		str << span_color(font::weapon_details_color)
-			<< "  " << accuracy_parry << "</span>\n";
-		int accuracy = at.accuracy();
-		if (accuracy) {
-			tooltip << _("Accuracy:") << "<b>"
-				<< utils::signed_percent(accuracy) << "</b>\n";
-		}
-		int parry = at.parry();
-		if (parry) {
-			tooltip << _("Parry:") << "<b>"
-				<< utils::signed_percent(parry) << "</b>\n";
-			}
-		add_text(res, flush(str), flush(tooltip));
-	}
-
 	std::vector<bool> active;
 	const std::vector<std::pair<t_string, t_string> > &specials = at.special_tooltips(&active);
 	const size_t specials_size = specials.size();

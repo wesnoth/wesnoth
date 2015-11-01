@@ -312,11 +312,6 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 				str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
 			}
 
-			const std::string accuracy_parry = a.accuracy_parry_description();
-			if(!accuracy_parry.empty()) {
-				str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
-			}
-
 			str << " \n";
 		}
 	}
