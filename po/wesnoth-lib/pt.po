@@ -1,13 +1,13 @@
 # European Portuguese translations for Battle for Wesnoth
 # Copyright (C) 2005-2014 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# trewe <sjrs456@yahoo.fr>, 2014
+# trewe <sjrs456@yahoo.fr>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-lib)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-10-30 01:45-0300\n"
-"PO-Revision-Date: 2014-02-22 15:04+0100\n"
+"PO-Revision-Date: 2015-11-03 13:39+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #
 #. [terrain_type]: id=deep_water
@@ -2134,7 +2134,7 @@ msgstr "Campanhas"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:50
 msgid "addons_of_type^MP eras"
-msgstr "Eras MJ"
+msgstr "Eras"
 
 #
 #. [row]
@@ -2146,7 +2146,7 @@ msgstr "Cenários"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:54
 msgid "addons_of_type^MP factions"
-msgstr "Fações MJ"
+msgstr "Fações"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
@@ -2157,7 +2157,7 @@ msgstr "Campanhas Híbridas"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:58
 msgid "addons_of_type^MP campaigns"
-msgstr "Campanhas MJ"
+msgstr "Campanhas em Rede"
 
 #
 #. [row]
@@ -2169,7 +2169,7 @@ msgstr "Suplementos"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:62
 msgid "addons_of_type^MP scenarios"
-msgstr "Cenários MJ"
+msgstr "Cenários em Rede"
 
 #
 #. [row]
@@ -2181,7 +2181,7 @@ msgstr "Outros"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:67
 msgid "addons_of_type^MP map-packs"
-msgstr "Pacote de Mapas MJ"
+msgstr "Pacote de Mapas"
 
 #
 #. [row]
@@ -2193,7 +2193,7 @@ msgstr "Desconhecido"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:71
 msgid "addons_of_type^MP modifications"
-msgstr "Modificações MJ"
+msgstr "Modificações"
 
 #
 #. [label]
@@ -2205,8 +2205,7 @@ msgstr "Opções"
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:184
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr ""
-"Os extras que estão em conformidade com o filtro seguinte irão ser mostrados."
+msgstr "Define quais os extras que devem ser mostrados."
 
 #
 #. [label]
@@ -2248,7 +2247,7 @@ msgstr "Pela última data de modificação"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:361
 msgid "sort^By first upload"
-msgstr "Pela primeira data de modificação"
+msgstr "Pela data de publicação"
 
 #
 #. [row]
@@ -2354,7 +2353,7 @@ msgstr "Página:"
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:74
 msgid "Last"
-msgstr "Último"
+msgstr "Última"
 
 #
 #. [button]: id=previous_page
@@ -4884,22 +4883,22 @@ msgstr "Desconhecido"
 #
 #: src/gui/dialogs/addon/filter_options.cpp:294
 msgid "addons_view^Not Installed"
-msgstr "Não Instalado"
+msgstr "Não Instalados"
 
 #
 #: src/gui/dialogs/addon/filter_options.cpp:296
 msgid "addons_view^Upgradable"
-msgstr "Atualizável"
+msgstr "Atualizáveis"
 
 #
 #: src/gui/dialogs/addon/filter_options.cpp:298
 msgid "addons_view^Installed"
-msgstr "Instalado"
+msgstr "Instalados"
 
 #
 #: src/gui/dialogs/addon/filter_options.cpp:300
 msgid "addons_view^All Add-ons"
-msgstr "Todos os Extras"
+msgstr "Todos"
 
 #
 #: src/gui/dialogs/addon_list.cpp:227
@@ -5974,11 +5973,11 @@ msgstr "Choupana"
 
 #: src/hotkey/hotkey_preferences_display.cpp:134
 msgid "Add a new binding to \"$hotkey_description|\""
-msgstr ""
+msgstr "Associar uma nova tecla de atalho à “$hotkey_description|”"
 
 #: src/hotkey/hotkey_preferences_display.cpp:136
 msgid "Clears the current bindings for \"$hotkey_description|\""
-msgstr ""
+msgstr "Limpar a tecla de atalho para “$hotkey_description|”"
 
 #
 #: src/hotkey/hotkey_preferences_display.cpp:150

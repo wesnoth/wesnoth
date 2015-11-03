@@ -1,15 +1,14 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Portuguese translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
 # trewe <sjrs456@yahoo.fr>, 2013.
+# Automatically generated, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-10-30 01:45-0300\n"
-"PO-Revision-Date: 2015-01-16 21:18-0000\n"
+"PO-Revision-Date: 2015-11-03 13:30+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -17,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.8.5\n"
 "Country: PORTUGAL\n"
 
 #. [advanced_preference]: type=combo
@@ -250,13 +249,13 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:193
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "Limite de ficheiros recentes no editor"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:194
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
-msgstr ""
+msgstr "O máximo de ficheiros recentes a mostrar no editor de mapas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:205
@@ -4336,7 +4335,7 @@ msgid ""
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
 "Se moveres uma unidade, mas não atacares nem descobrires informações "
-"adicionais, podes desfazer o movimento ao carregar <b>u</b>."
+"adicionais, podes desfazer o movimento ao carregares <b>u</b>."
 
 #
 #. [tip]
@@ -4802,37 +4801,37 @@ msgstr "Cenário"
 
 #: src/addon/info.cpp:160
 msgid "addon_type^SP/MP Campaign"
-msgstr "Campanhas Híbridas"
+msgstr "Campanha Híbrida"
 
 #
 #: src/addon/info.cpp:162
 msgid "addon_type^MP era"
-msgstr "Era JR"
+msgstr "Era"
 
 #
 #: src/addon/info.cpp:164
 msgid "addon_type^MP faction"
-msgstr "Fação JR"
+msgstr "Fação"
 
 #
 #: src/addon/info.cpp:166
 msgid "addon_type^MP map-pack"
-msgstr "Pacote de mapas JR"
+msgstr "Pacote de mapas"
 
 #
 #: src/addon/info.cpp:168
 msgid "addon_type^MP scenario"
-msgstr "Cenário JR"
+msgstr "Cenário em rede"
 
 #
 #: src/addon/info.cpp:170
 msgid "addon_type^MP campaign"
-msgstr "Campanha JR"
+msgstr "Campanha em rede"
 
 #
 #: src/addon/info.cpp:172
 msgid "addon_type^MP modification"
-msgstr "Modificação JR"
+msgstr "Modificação"
 
 #
 #: src/addon/info.cpp:174
@@ -5418,12 +5417,12 @@ msgstr "Convocar"
 #
 #: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a, %d %b %Y %H:%M"
 
 #
 #: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a, %d %b %Y %H:%M"
 
 #
 #: src/dialogs.cpp:801
@@ -5482,7 +5481,7 @@ msgid ""
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
-"Não há partidas guardados para carregar.\n"
+"Não há partidas guardadas para carregar.\n"
 "\n"
 "(As partidas são guardadas automaticamente quando completares um cenário)"
 
@@ -5494,7 +5493,7 @@ msgstr "Data"
 #
 #: src/dialogs.cpp:892 src/savegame.cpp:643
 msgid "Load Game"
-msgstr "Carregar Partida Guardada"
+msgstr "Retomar uma Partida Guardada"
 
 #
 #: src/dialogs.cpp:907
@@ -5504,7 +5503,7 @@ msgstr "Mudar a Dificuldade"
 #
 #: src/dialogs.cpp:910
 msgid "Change campaign difficulty before loading"
-msgstr "Muda a dificuldade da campanha antes de carregar"
+msgstr "Muda a dificuldade da campanha antes de a carregar"
 
 #
 #: src/dialogs.cpp:918
@@ -5592,7 +5591,7 @@ msgstr "%H:%M"
 #
 #: src/format_time_summary.cpp:49 src/reports.cpp:1542
 msgid "%I:%M %p"
-msgstr "%I:%M %p"
+msgstr "%H:%M"
 
 #
 #: src/format_time_summary.cpp:54
@@ -5601,7 +5600,7 @@ msgstr "%A, %H:%M"
 
 #: src/format_time_summary.cpp:57
 msgid "%A, %I:%M %p"
-msgstr "%A, %I:%M %p"
+msgstr "%A, %H:%M"
 
 #: src/format_time_summary.cpp:61
 msgid "%b %d"
@@ -5619,7 +5618,7 @@ msgstr "Faixa de cor inválida: "
 #: src/game_config_manager.cpp:180
 msgid "Error loading game configuration files. The game will now exit."
 msgstr ""
-"Erro ao carregar ficheiro de configuração do jogo. O Programa irá terminar "
+"Erro ao carregar o ficheiro de configuração do jogo. O Programa irá terminar "
 "agora."
 
 #
@@ -5663,18 +5662,14 @@ msgid "File I/O Error while reading the game: '"
 msgstr "Erro de E/S ao ler o jogo: '"
 
 #: src/game_controller.cpp:543
-#, fuzzy
-#| msgid ""
-#| "This is a multiplayer scenario. Some parts of it may not work properly in "
-#| "single-player. It is recommended to load this scenario through the "
-#| "Multiplayer -> Load Game dialog instead."
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
 "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
-"Este é um cenário para ser jogado em rede, como tal para um melhor "
-"funcionamento deve ser carregado via “Jogo em Rede” > “Retomar Partida”."
+"Este é um cenário para ser jogado em rede, como tal pode não funcionar "
+"correctamente em modo campanha. É recomendado para ser carregado via <b>Jogo "
+"em Rede</b> → <b>Retomar Partida</b>."
 
 #
 #: src/game_controller.cpp:543 src/multiplayer.cpp:262
@@ -7597,7 +7592,7 @@ msgstr "Configurações..."
 #
 #: src/multiplayer_create.cpp:82
 msgid "Load Game..."
-msgstr "Carregar Partida..."
+msgstr "Retomar uma Partida ..."
 
 #
 #: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:272
@@ -7650,7 +7645,7 @@ msgstr ""
 #
 #: src/multiplayer_create.cpp:181 src/multiplayer_create.cpp:270
 msgid "Deactivate"
-msgstr "desativar"
+msgstr "Desativar"
 
 #
 #: src/multiplayer_create.cpp:239
@@ -7829,12 +7824,12 @@ msgstr ""
 
 #
 #: src/multiplayer_lobby.cpp:921
-#, fuzzy
-#| msgid "Only show games whose title or description contain the entered text"
 msgid ""
 "Only show games whose title, description, era or mods contain the entered "
 "text"
-msgstr "Só mostra partidas cujo título ou descrição contém o texto inserido"
+msgstr ""
+"Só mostra partidas cujo título, descrição ou era escolhida contém o texto "
+"inserido"
 
 #
 #: src/multiplayer_lobby.cpp:1037
@@ -7858,10 +7853,9 @@ msgstr "Usuário selecionado: "
 
 #
 #: src/multiplayer_ui.cpp:455
-#, fuzzy
-#| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
-msgstr "Aceitar sussurros somente de amigos"
+msgstr ""
+"$sender mandou-te um sussurro, e estás a aceitar mensagens somente de amigos."
 
 #
 #: src/multiplayer_wait.cpp:140
