@@ -356,10 +356,13 @@ bool is_campaign_completed(const std::string& campaign_id, const std::string &di
 
 bool parse_should_show_lobby_join(const std::string &sender, const std::string &message)
 {
-	// If it's actually not a lobby join message return true (show it).
+	// If it's actually not a lobby join or leave message return true (show it).
 	if (sender != "server") return true;
 	std::string::size_type pos = message.find(" has logged into the lobby");
-	if (pos == std::string::npos) return true;
+	if (pos == std::string::npos){
+		pos = message.find(" has disconnected");
+		if (pos == std::string::npos) return true;
+	}
 	int lj = lobby_joins();
 	if (lj == SHOW_NONE) return false;
 	if (lj == SHOW_ALL) return true;
