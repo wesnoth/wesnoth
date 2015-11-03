@@ -34,6 +34,7 @@ public:
 	const std::set<std::string>& observers() const { return observers_; }
 	
 	void add_whisperer(const std::string& nick) { whisperers_.insert(nick); }
+	void remove_whisperer(const std::string& nick) { whisperers_.erase(nick); }
 	const std::set<std::string>& whisperers() const { return whisperers_; }
 
 	void add_chat_message(const time_t& time, const std::string& speaker,
