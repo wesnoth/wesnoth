@@ -120,13 +120,14 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				OutputFile="$(OutDir)\WindowsTimeout.exe"
 				GenerateDebugInformation="false"
+				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				TargetMachine="1"
 				LinkTimeCodeGeneration="1"
-				OutputFile="$(OutDir)\WindowsTimeout.exe"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
