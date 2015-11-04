@@ -33,8 +33,10 @@ uninstall.vcproj
 *.vcproj.*.user
 projectfiles/VC[12]*
 src/**/*.vcproj
-/WindowsTimeout.ilk
-/WindowsTimeout.pdb
+wesnoth.ncb
+wesnoth.suo
+*.ilk
+*.pdb
 
 # XCode
 projectfiles/Xcode/**/build
@@ -90,10 +92,7 @@ tags
 # build results etc.
 wesnoth_zip
 wesnoth.exp
-wesnoth.ilk
 wesnoth.lib
-wesnoth.ncb
-wesnoth.suo
 wesnoth.opt
 wesnoth.plg
 *.exe
@@ -170,13 +169,13 @@ data/campaigns/**/images/**/.gitignore
 *.xhtml
 *.[ao]
 *.out
+*.7z
 *~
 .deps
 .dirstamp
 
 # uncategorized
 revision*
-config.h
 6not
 .kdev*
 callgrind.out.*
