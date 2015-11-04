@@ -1,4 +1,5 @@
 # vi: syntax=python:et:ts=4
+from subprocess import Popen, call, PIPE
 from os.path import join
 from glob import glob
 import SCons.Node
@@ -39,3 +40,51 @@ def WindowsInstaller(env, files):
     env.Alias("windows-installer", [files, "#/Wesnoth.nsi"], "makensis ${SOURCES[-1]}")
 
 env.AddMethod(WindowsInstaller)
+
+
+def WinPatch(patch7z, empty, env):
+	Version = env["version"].rsplit(".",1)
+	FDset, FAset = set(), set(["deletelist.txt", "wesnoth.exe", "wesnothd.exe"])
+
+	if Version[0] == "1.12":
+		FAset |= set(["libvorbis-0.dll", "libvorbisfile-3.dll"])
+
+	if env["nls"]:
+		FAset.add("translations\\")
+
+	# We're iterating over all releases to catch changes that were reverted later on.
+	# Except for this special case, which gfgtdf noted, the first iteration would suffice.
+	for rev in range(int(Version[1])):
+		proc = Popen(['git', 'diff', '--name-status', Version[0]+'.'+str(rev), 'HEAD',
+				'--', 'data', 'fonts', 'images', 'sounds', 'doc/manual'], stdout=PIPE)
+
+		for line in proc.communicate()[0].splitlines():
+			AMD_name = line.split('\t')
+			print AMD_name
+			if AMD_name[0] == 'D':
+				FDset.add(AMD_name[1].lstrip("doc/"))
+			else:
+				FAset.add(AMD_name[1])
+
+
+	with open("deletelist.txt", 'w') as f:
+		for item in FDset:
+			f.write(item.replace('/', '\\') + '\n')
+
+	with open("patch.txt", 'w') as f:
+		for item in FAset:
+			f.write(item.replace('/', '\\') + '\n')
+
+	# 'rn' requires 7zip 15.05 or higher: http://www.7-zip.org/download.html
+	call(['7z.exe', 'a', '-t7z', patch7z, '@patch.txt'])
+	call(['7z.exe', 'rn', patch7z, 'doc/manual', 'manual', 'README.md', 'README.txt'])
+
+	call(['rm', 'deletelist.txt'])
+	call(['rm', 'patch.txt'])
+
+env.AddMethod(WinPatch)
+env.Command("patch.7z", None, WinPatch)
+
+env.Command("Windows-Patcher", "patch.7z", "makensis /DVersion_M='Version[0]' /DPatch=Version[1] packaging/windows/Patch.nsi")
+
+env.Command("Windows-Updater", "patch.7z", "makensis /DVersion_M='Version[0]' /DPatch=Download packaging/windows/Patch.nsi")

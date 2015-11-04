@@ -7,6 +7,10 @@
   LangString        LManual      ${LANG_${Lg}}  "Manual"
   LangString        LWesnoth     ${LANG_${Lg}}  "Battle for Wesnoth"
   LangString        LUserdata    ${LANG_${Lg}}  "Userdata directory"
+  LangString        LDownloadErr ${LANG_${Lg}}  "Download failed"
+  LangString        LVersionErr  ${LANG_${Lg}}  "cannot be found."
+  LangString        LAdminErr    ${LANG_${Lg}}  "Please retry as administrator."
+  LangString        LUpdate      ${LANG_${Lg}}  "Update progress"
 !macroend
 
 ; first language is the default language
@@ -59,6 +63,10 @@
   LangString		LManual			${LANG_CZECH}			"Manuál uživatele"
   LangString		LWesnoth		${LANG_CZECH}			"Bitva o Wesnoth"
   LangString		LUserdata		${LANG_CZECH}			"Uživatelská data"
+  LangString		LDownloadErr	${LANG_CZECH}			"Stahování selhalo"
+  LangString		LVersionErr		${LANG_CZECH}			"nenalezeno."
+  LangString		LAdminErr		${LANG_CZECH}			""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_CZECH}			"Průběh aktualizace"
 
   !insertmacro		MUI_LANGUAGE	"Finnish"
   LicenseLangString	MUILicense		${LANG_FINNISH}			"COPYING"
@@ -67,6 +75,10 @@
   LangString		LManual			${LANG_FINNISH}			"käyttäjän opas"
   LangString		LWesnoth		${LANG_FINNISH}			"Taistelu Wesnothista"
   LangString		LUserdata		${LANG_FINNISH}			"Käyttäjän tiedot"
+  LangString		LDownloadErr	${LANG_FINNISH}			"Lataaminen epäonnistui"
+  LangString		LVersionErr		${LANG_FINNISH}			"ei löydy."
+  LangString		LAdminErr		${LANG_FINNISH}			""	# "Please retry as administrator." #Olkaa hyvä ja uudelleen yrittäkää hallintomiehenä.
+  LangString		LUpdate			${LANG_FINNISH}			"Päivityksen tilanne"
 
   !insertmacro		MUI_LANGUAGE	"French"
   LicenseLangString	MUILicense		${LANG_FRENCH}			"packaging\windows\gpl-3.fr.txt"
@@ -75,6 +87,10 @@
   LangString		LManual			${LANG_FRENCH}			"Manuel utilisateur"
   LangString		LWesnoth		${LANG_FRENCH}			"La Bataille pour Wesnoth"
   LangString		LUserdata		${LANG_FRENCH}			"Données utilisateur"
+  LangString		LDownloadErr	${LANG_FRENCH}			"Échec du téléchargement"
+  LangString		LVersionErr		${LANG_FRENCH}			"introuvable."
+  LangString		LAdminErr		${LANG_FRENCH}			"Veuillez réessayer à titre d'administrateur."
+  LangString		LUpdate			${LANG_FRENCH}			"Avancement de la mise à jour"
 
   !insertmacro		MUI_LANGUAGE	"Galician"
   LicenseLangString	MUILicense		${LANG_GALICIAN}		"packaging\windows\gpl-2.gl.txt"
@@ -83,6 +99,10 @@
   LangString		LManual			${LANG_GALICIAN}		"Manual"
   LangString		LWesnoth		${LANG_GALICIAN}		"A batalla polo Noroeste"
   LangString		LUserdata		${LANG_GALICIAN}		"Datos do usuario"
+  LangString		LDownloadErr	${LANG_GALICIAN}		"Erro na descarga"
+  LangString		LVersionErr		${LANG_GALICIAN}		"non encontrada."
+  LangString		LAdminErr		${LANG_GALICIAN}		""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_GALICIAN}		"Progreso de actualización"
 
   !insertmacro		MUI_LANGUAGE	"German"
   LicenseLangString	MUILicense		${LANG_GERMAN}			"packaging\windows\gpl-2.de.txt"
@@ -91,6 +111,10 @@
   LangString		LManual			${LANG_GERMAN}			"Spielanleitung"
   LangString		LWesnoth		${LANG_GERMAN}			"Battle for Wesnoth"
   LangString		LUserdata		${LANG_GERMAN}			"Benutzerdaten"
+  LangString		LDownloadErr	${LANG_GERMAN}			"Download fehlgeschlagen"
+  LangString		LVersionErr		${LANG_GERMAN}			"wurde nicht gefunden."
+  LangString		LAdminErr		${LANG_GERMAN}			"Bitte versuchen Sie es als Administrator erneut."
+  LangString		LUpdate			${LANG_GERMAN}			"Fortschritt der Aktualisierung"
 
   !insertmacro		MUI_LANGUAGE	"Hungarian"
   LicenseLangString	MUILicense		${LANG_HUNGARIAN}		"packaging\windows\gpl-3.hu.txt"
@@ -99,6 +123,10 @@
   LangString		LManual			${LANG_HUNGARIAN}		"Felhasználói Kézikönyv"
   LangString		LWesnoth		${LANG_HUNGARIAN}		"Harc Wesnothért"
   LangString		LUserdata		${LANG_HUNGARIAN}		"Felhasználói adatfájlok"
+  LangString		LDownloadErr	${LANG_HUNGARIAN}		"Sikertelen letöltés"
+  LangString		LVersionErr		${LANG_HUNGARIAN}		"nem található."
+  LangString		LAdminErr		${LANG_HUNGARIAN}		""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_HUNGARIAN}		"Frissítési folyamat"
 
   !insertmacro		MUI_LANGUAGE	"Italian"
   LicenseLangString	MUILicense		${LANG_ITALIAN}			"packaging\windows\gpl-2.it.txt"
@@ -107,6 +135,10 @@
   LangString		LManual			${LANG_ITALIAN}			"Manuale per l’utente"
   LangString		LWesnoth		${LANG_ITALIAN}			"Battle for Wesnoth"
   LangString		LUserdata		${LANG_ITALIAN}			"Dati utente"
+  LangString		LDownloadErr	${LANG_ITALIAN}			"Download non riuscito"
+  LangString		LVersionErr		${LANG_ITALIAN}			"non trovato."
+  LangString		LAdminErr		${LANG_ITALIAN}			"Ripetere con privilegi di amministrazione."
+  LangString		LUpdate			${LANG_ITALIAN}			"Stato dell'aggiornamento"
 
   !insertmacro		MUI_LANGUAGE	"Japanese"
   LicenseLangString	MUILicense		${LANG_JAPANESE}		"COPYING"
@@ -115,6 +147,10 @@
   LangString		LManual			${LANG_JAPANESE}		"ユーザーズ・マニュアル"
   LangString		LWesnoth		${LANG_JAPANESE}		"The Battle for Wesnoth"
   LangString		LUserdata		${LANG_JAPANESE}		"ユーザデータ"
+  LangString		LDownloadErr	${LANG_JAPANESE}		"ダウンロード失敗"
+  LangString		LVersionErr		${LANG_JAPANESE}		"見つかりません."
+  LangString		LAdminErr		${LANG_JAPANESE}		""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_JAPANESE}		"更新の進行状況"
 
   !insertmacro		MUI_LANGUAGE	"Polish"
   LicenseLangString	MUILicense		${LANG_POLISH}			"packaging\windows\gpl-2.pl.txt"
@@ -123,6 +159,10 @@
   LangString		LManual			${LANG_POLISH}			"Podręcznik użytkownika"
   LangString		LWesnoth		${LANG_POLISH}			"Bitwy o Wesnoth"
   LangString		LUserdata		${LANG_POLISH}			"Dane użytkownika"
+  LangString		LDownloadErr	${LANG_POLISH}			"Pobieranie nie powiodło się"
+  LangString		LVersionErr		${LANG_POLISH}			"nie znaleziono."
+  LangString		LAdminErr		${LANG_POLISH}			""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_POLISH}			"Postęp aktualizacji"
 
   !insertmacro		MUI_LANGUAGE	"Portuguese"
   LicenseLangString	MUILicense		${LANG_PORTUGUESE}		"packaging\windows\gpl-2.pt.txt"
@@ -131,6 +171,10 @@
   LangString		LManual			${LANG_PORTUGUESE}		"Manual de Utilizador"
   LangString		LWesnoth		${LANG_PORTUGUESE}		"A Batalha por Wesnoth"
   LangString		LUserdata		${LANG_PORTUGUESE}		"Dados do Utilizador"
+  LangString		LDownloadErr	${LANG_PORTUGUESE}		"Falha na transferência"
+  LangString		LVersionErr		${LANG_PORTUGUESE}		"não encontrado."
+  LangString		LAdminErr		${LANG_PORTUGUESE}		""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_PORTUGUESE}		"Progresso da Actualização"
 
   !insertmacro		MUI_LANGUAGE	"PortugueseBR"
   LicenseLangString	MUILicense		${LANG_PORTUGUESEBR}	"packaging\windows\gpl-2.pt-br.txt"
@@ -139,6 +183,10 @@
   LangString		LManual			${LANG_PORTUGUESEBR}	"Manual do usuário"
   LangString		LWesnoth		${LANG_PORTUGUESEBR}	"A Batalha por Wesnoth"
   LangString		LUserdata		${LANG_PORTUGUESEBR}	"Dados do usuário"
+  LangString		LDownloadErr	${LANG_PORTUGUESEBR}	"Falha no download"
+  LangString		LVersionErr		${LANG_PORTUGUESEBR}	"não encontrado."
+  LangString		LAdminErr		${LANG_PORTUGUESEBR}	""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_PORTUGUESEBR}	"Progresso da Atualização"
 
   !insertmacro		MUI_LANGUAGE	"Russian"
   LicenseLangString	MUILicense		${LANG_RUSSIAN}			"packaging\windows\gpl-2.ru.txt"
@@ -147,6 +195,10 @@
   LangString		LManual			${LANG_RUSSIAN}			"Руководство пользователя"
   LangString		LWesnoth		${LANG_RUSSIAN}			"Битва за Веснот"
   LangString		LUserdata		${LANG_RUSSIAN}			"Пользовательские данные"
+  LangString		LDownloadErr	${LANG_RUSSIAN}			"Сбой загрузки"
+  LangString		LVersionErr		${LANG_RUSSIAN}			"не найдено."
+  LangString		LAdminErr		${LANG_RUSSIAN}			""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_RUSSIAN}			"Ход обновления"
 
   !insertmacro		MUI_LANGUAGE	"SimpChinese"
   LicenseLangString	MUILicense		${LANG_SIMPCHINESE}		"packaging\windows\gpl-2.zh-cn.txt"
@@ -155,6 +207,10 @@
   LangString		LManual			${LANG_SIMPCHINESE}		"韦诺之战用户手册"
   LangString		LWesnoth		${LANG_SIMPCHINESE}		"韦诺之战 (Battle for Wesnoth)"
   LangString		LUserdata		${LANG_SIMPCHINESE}		"用户数据"
+  LangString		LDownloadErr	${LANG_SIMPCHINESE}		"下载失败"
+  LangString		LVersionErr		${LANG_SIMPCHINESE}		"未找到。"
+  LangString		LAdminErr		${LANG_SIMPCHINESE}		""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_SIMPCHINESE}		"更新进度"
 
   !insertmacro		MUI_LANGUAGE	"Spanish"
   LicenseLangString	MUILicense		${LANG_SPANISH}			"COPYING"
@@ -163,6 +219,10 @@
   LangString		LManual			${LANG_SPANISH}			"Manual de usuario"
   LangString		LWesnoth		${LANG_SPANISH}			"La batalla por Wesnoth"
   LangString		LUserdata		${LANG_SPANISH}			"Datos de usuario"
+  LangString		LDownloadErr	${LANG_SPANISH}			"Error en la descarga"
+  LangString		LVersionErr		${LANG_SPANISH}			"no se encuentra."
+  LangString		LAdminErr		${LANG_SPANISH}			"Vuelva a intentar con privilegios de administrador."
+  LangString		LUpdate			${LANG_SPANISH}			"Progreso de la actualización"
 
   !insertmacro		MUI_LANGUAGE	"TradChinese"
   LicenseLangString	MUILicense		${LANG_TRADCHINESE}		"packaging\windows\gpl-2.zh-tw.txt"
@@ -171,3 +231,7 @@
   LangString		LManual			${LANG_TRADCHINESE}		"韋諾之戰用戶手冊"
   LangString		LWesnoth		${LANG_TRADCHINESE}		"韋諾之戰 (Battle for Wesnoth)"
   LangString		LUserdata		${LANG_TRADCHINESE}		"使用者資料"
+  LangString		LDownloadErr	${LANG_TRADCHINESE}		"下載失敗"
+  LangString		LVersionErr		${LANG_TRADCHINESE}		"找不到。"
+  LangString		LAdminErr		${LANG_TRADCHINESE}		""	# "Please retry as administrator."
+  LangString		LUpdate			${LANG_TRADCHINESE}		"更新進度"

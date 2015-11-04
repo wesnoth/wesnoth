@@ -1,14 +1,16 @@
+!define Version %version
+
   Unicode true
   SetCompressor /SOLID lzma
 
   !define MULTIUSER_EXECUTIONLEVEL Highest
   !define MULTIUSER_MUI
   !define MULTIUSER_INSTALLMODE_COMMANDLINE
-  !define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
+  !define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_KEY "Software\Battle for Wesnoth\${Version}"
   !define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_VALUENAME ""
-  !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
+  !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_KEY "Software\Battle for Wesnoth\${Version}"
   !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_VALUENAME ""
-  !define MULTIUSER_INSTALLMODE_INSTDIR "Battle for Wesnoth %version"
+  !define MULTIUSER_INSTALLMODE_INSTDIR "Battle for Wesnoth ${Version}"
   !include "MultiUser.nsh"
   !include "MUI2.nsh"
   !include "LogicLib.nsh"
@@ -19,7 +21,7 @@
 
   ;Name and file
   Name $(LWesnoth)
-  OutFile "wesnoth-%version-win32.exe"
+  OutFile "wesnoth-${Version}-win32.exe"
 
 ;--------------------------------
 ;Variables
@@ -28,7 +30,7 @@
 
 ;--------------------------------
 ;Interface Settings
-
+  !define MUI_ICON "packaging\windows\wesnoth-icon.ico"
   !define MUI_WELCOMEFINISHPAGE_BITMAP packaging\windows\WindowsInstallerGraphic.bmp
   !define MUI_ABORTWARNING
   !define MUI_WELCOMEPAGE_TITLE_3LINES
@@ -41,8 +43,8 @@
 ;Language Selection Dialog Settings
 
   ;Remember the installer language
-  !define MUI_LANGDLL_REGISTRY_ROOT "SHCTX" 
-  !define MUI_LANGDLL_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
+  !define MUI_LANGDLL_REGISTRY_ROOT "SHCTX"
+  !define MUI_LANGDLL_REGISTRY_KEY "Software\Battle for Wesnoth\${Version}"
   !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
 ;--------------------------------
@@ -54,10 +56,10 @@
   !insertmacro MUI_PAGE_DIRECTORY
 
   ;Start Menu Folder Page Configuration
-  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "SHCTX" 
-  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
+  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "SHCTX"
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\${Version}"
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
-  !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Battle for Wesnoth %version"
+  !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Battle for Wesnoth ${Version}"
 
   !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 
@@ -91,7 +93,7 @@ Section "Battle for Wesnoth" BfWSection
   SectionIn RO
 
   SetOutPath "$INSTDIR\manual"
-  File /r /x .* doc\manual\*.html
+  File /r doc\manual\*.html
   File /r /x .* doc\manual\styles
   File /r /x .* doc\manual\images
 
@@ -110,20 +112,20 @@ Section "Battle for Wesnoth" BfWSection
   SetOutPath "$INSTDIR"
 
   ;Store installation folder
-  WriteRegStr SHCTX "Software\Battle for Wesnoth\%version" "" $INSTDIR
+  WriteRegStr SHCTX "Software\Battle for Wesnoth\${Version}" "" $INSTDIR
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
   ;Add uninstall information
-  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayName" "Battle for Wesnoth %version" 
-  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayIcon" "$\"$INSTDIR\wesnoth.exe$\""
-  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
-  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
-  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "URLInfoAbout" "www.wesnoth.org"
-  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayVersion" "%version"
-  WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoModify" 1
-  WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoRepair" 1
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "DisplayName" "Battle for Wesnoth ${Version}"
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "DisplayIcon" "$\"$INSTDIR\wesnoth.exe$\""
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "URLInfoAbout" "www.wesnoth.org"
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "DisplayVersion" "${Version}"
+  WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "NoModify" 1
+  WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}" "NoRepair" 1
 
   Call StartMenuShortcuts
 
@@ -167,8 +169,8 @@ Function StartMenuShortcuts
   ${EndIf}
 
   ; Add translations to desktop.ini
-  ${If} $StartMenuFolder == "Battle for Wesnoth %version"
-    WriteIniStr $0 ".ShellClassInfo" "LocalizedResourceName" "$(LWesnoth) %version"
+  ${If} $StartMenuFolder == "Battle for Wesnoth ${Version}"
+    WriteIniStr $0 ".ShellClassInfo" "LocalizedResourceName" "$(LWesnoth) ${Version}"
   ${EndIf}
   WriteIniStr $0 "LocalizedFileNames" "Battle for Wesnoth.lnk" "$(LWesnoth)"
   WriteIniStr $0 "LocalizedFileNames" "Battle for Wesnoth (with console).lnk" "$(LWesnoth) (with console)"
@@ -225,14 +227,20 @@ Section "un.$(LWesnoth)" un.BfW
   Delete "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk"
   RMDir "$SMPROGRAMS\$StartMenuFolder"
 
-  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version"
-  DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth\%version"
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth ${Version}"
+  DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth\${Version}"
   DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth"
 
 SectionEnd
 
 Section /o "un.$(LUserdata)" un.Userdata # optional
-  RMDir /r "$DOCUMENTS\My Games\Wesnoth%version_major"
+  Var /GLOBAL Version_M
+  ${For} $0 3 5
+    StrCpy $Version_M ${Version} $0
+    StrCpy $1 ${Version} 1 $0
+    ${IfThen} $1 == "." ${|} ${Break} ${|}
+  ${Next}
+  RMDir /r "$DOCUMENTS\My Games\Wesnoth$Version_M"
 SectionEnd
 
 ;--------------------------------
