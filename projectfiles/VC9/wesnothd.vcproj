@@ -39,7 +39,7 @@
 				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="2"
 				RuntimeLibrary="3"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
@@ -58,6 +58,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="/SAFESEH:NO"
 				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
