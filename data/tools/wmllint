@@ -812,7 +812,7 @@ def is_translatable(key):
         "prefix", "set_description", "source", "story", "summary",
         "victory_string", "defeat_string", "gold_carryover_string",
         "notes_string", "text", "title", "title2", "tooltip",
-        "translator_comment", "user_team_name"
+        "translator_comment", "team_name", "user_team_name"
         )
     return key in translatables or key.startswith(("type_", "range_"))
 
@@ -2102,6 +2102,157 @@ def hack_syntax(filename, lines):
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
+    # team_name -> team_id and usert_team_name -> team_name
+    # prepare the required flags
+    in_side = False
+    in_modify_side = False
+    in_filter_side = False
+    in_for_side = False # used only by [scroll_to_unit], AFAIK
+    # tags supporting inline StandardSideFilters
+    # DirectActionsWML
+    in_gold = False
+    in_allow_recruit = False
+    in_disallow_recruit = False
+    in_set_recruit = False
+    in_modify_ai = False
+    # InterfaceActionsWML
+    in_objectives = False
+    in_redraw = False
+    in_show_objectives = False
+    in_chat = False
+    # two special cases, as they don't seem to support team_id just yet
+    in_item = False
+    in_label = False
+    # InternalActionsWML
+    in_store_gold = False
+    in_store_side = False
+    in_store_starting_location = False
+    # variables to keep track of complex situations
+    team_name_ln = []
+    user_team_name_ln = []
+    found_team_id = False
+
+    # iterate through the lines and set the flags accordingly
+    for i, line in enumerate(lines):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if "[side]" in line:
+            in_side = True
+        if "[/side]" in line:
+            in_side = False
+        if "[modify_side]" in line:
+            in_modify_side = True
+        if "[/modify_side]" in line:
+            in_modify_side = False
+        if "[filter_side]" in line:
+            in_filter_side = True
+        if "[/filter_side]" in line:
+            in_filter_side = False
+        if "[for_side]" in line:
+            in_for_side = True
+        if "[/for_side]" in line:
+            in_for_side = False
+        if "[gold]" in line:
+            in_gold = True
+        if "[/gold]" in line:
+            in_gold = False
+        if "[allow_recruit]" in line:
+            in_allow_recruit = True
+        if "[/allow_recruit]" in line:
+            in_allow_recruit = False
+        if "[disallow_recruit]" in line:
+            in_disallow_recruit = True
+        if "[/disallow_recruit]" in line:
+            in_disallow_recruit = False
+        if "[set_recruit]" in line:
+            in_set_recruit = True
+        if "[/set_recruit]" in line:
+            in_set_recruit = False
+        if "[modify_ai]" in line:
+            in_modify_ai = True
+        if "[/modify_ai]" in line:
+            in_modify_ai = False
+        if "[objectives]" in line:
+            in_objectives = True
+        if "[/objectives]" in line:
+            in_objectives = False
+        if "[redraw]" in line:
+            in_redraw = True
+        if "[/redraw]" in line:
+            in_redraw = False
+        if "[show_objectives]" in line:
+            in_show_objectives = True
+        if "[/show_objectives]" in line:
+            in_show_objectives = False
+        if "[chat]" in line:
+            in_chat = True
+        if "[/chat]" in line:
+            in_chat = False
+        if "[item]" in line:
+            in_item = True
+        if "[/item]" in line:
+            in_item = False
+        if "[label]" in line:
+            in_label = True
+        if "[/label]" in line:
+            in_label = False
+        if "[store_gold]" in line:
+            in_store_gold = True
+        if "[/store_gold]" in line:
+            in_store_gold = False
+        if "[store_side]" in line:
+            in_store_side = True
+        if "[/store_side]" in line:
+            in_store_side = False
+        if "[store_starting_location]" in line:
+            in_store_starting_location = True
+        if "[/store_starting_location]" in line:
+            in_store_starting_location = False
+        # StandardUnitFilters support only team_name, so conversion should be simple
+        if in_filter_side or in_for_side or in_gold or in_allow_recruit or \
+           in_disallow_recruit or in_set_recruit or in_modify_ai or \
+           in_objectives or in_redraw or in_show_objectives or in_chat or \
+           in_store_gold or in_store_side or in_store_starting_location:
+            try:
+                key, prefix, value, comment = parse_attribute(line)
+                if key == "team_name":
+                    lines[i] = lines[i].replace("team_name","team_id",1)
+                    print('"%s", line %d: team_name -> team_id' % (filename, i+1))
+            except TypeError:
+                pass
+        elif in_side or (in_modify_side and not in_filter_side):
+            # these are the two complex cases
+            # basically, store every line number where we meet the keys and convert them later
+            # also, skip if we find team_id, because this means that the tag is already updated
+            try:
+                key, prefix, value, comment = parse_attribute(line)
+                if key == "team_id":
+                    found_team_id = True
+                elif key == "team_name":
+                    team_name_ln.append(i)
+                elif key == "user_team_name":
+                    user_team_name_ln.append(i)
+            except TypeError:
+                pass
+        elif not (in_side or in_modify_side) and len(user_team_name_ln) > 0 and not found_team_id:
+            # we are outside of the two complex tags and we found user_team_name.
+            # checking for team_name may be dangerous, as the key simply changed purpose...
+            # also replace only the first instance of the strings, which should be the key
+            for ln in team_name_ln:
+                lines[ln] = lines[ln].replace("team_name","team_id",1)
+                print('"%s", line %d: team_name -> team_id' % (filename, ln+1))
+            team_name_ln.clear()
+            for ln in user_team_name_ln:
+                lines[ln] = lines[ln].replace("user_team_name","team_name",1)
+                print('"%s", line %d: user_team_name -> team_name' % (filename, ln+1))
+            user_team_name_ln.clear()
+        elif not (in_side or in_modify_side) and found_team_id:
+            # if team_id was found, this means that the tag was already updated
+            # reset the variables and do not perform any further action
+            found_team_id = False
+            team_name_ln.clear()
+            user_team_name_ln.clear()
+
     # More syntax transformations would go here.
     return lines
 
