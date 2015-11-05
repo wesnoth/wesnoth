@@ -138,6 +138,13 @@ move::move(config const& cfg, bool hidden)
 
 void move::init()
 {
+	// If a unit is invalid, return immediately to avoid crashes such as trying to plan a move for a planned recruit.
+	// As per Bug #18637, this should be fixed so that planning moves on planned recruits work properly.
+	// The alternative is to disable movement on planned recruits altogether,
+	// possibly in select_or_action() where the fake unit is selected in the first place.
+	if (get_unit() == NULL)
+		return;
+
 	assert(get_unit());
 	unit_id_ = get_unit()->id();
 
