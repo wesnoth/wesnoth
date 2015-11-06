@@ -91,9 +91,8 @@ msgstr ""
 #. [terrain_type]: id=medium_reef
 #. [terrain_type]: id=reef
 #. [terrain_type]: id=tropical_reef
-#: data/core/terrain.cfg:98 data/core/terrain.cfg:109
-#: data/core/terrain.cfg:120 data/core/terrain.cfg:2286
-#: data/core/terrain.cfg:2287
+#: data/core/terrain.cfg:98 data/core/terrain.cfg:109 data/core/terrain.cfg:120
+#: data/core/terrain.cfg:2286 data/core/terrain.cfg:2287
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Coster"
@@ -1989,7 +1988,7 @@ msgid "Remove"
 msgstr "Eliminar"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
-msgid "Bilinear intepolation scaling (legacy wesnoth option)"
+msgid "Bilinear interpolation scaling (legacy wesnoth option)"
 msgstr ""
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
@@ -2021,7 +2020,7 @@ msgid "xBRZ followed by Nearest Neighbor (recommended)"
 msgstr ""
 
 #: data/gui/default/window/advanced_graphics_options.cfg:46
-msgid "Bilinear intepolation scaling (new implementation)"
+msgid "Bilinear interpolation scaling (new implementation)"
 msgstr ""
 
 #: data/gui/default/window/advanced_graphics_options.cfg:46
@@ -3382,7 +3381,7 @@ msgstr "Borrar mensages"
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:179
 #, fuzzy
-msgid "When a private message is recieved"
+msgid "When a private message is received"
 msgstr "Borrar mensages"
 
 #. [grid]
@@ -3393,8 +3392,9 @@ msgstr "Llista d'amics"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:180
-msgid "When a message from a friend is recieved"
-msgstr ""
+#, fuzzy
+msgid "When a message from a friend is received"
+msgstr "Borrar mensages"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:181
@@ -3403,8 +3403,9 @@ msgstr ""
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:181
-msgid "When a public message is recieved"
-msgstr ""
+#, fuzzy
+msgid "When a public message is received"
+msgstr "Borrar mensages"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:182
@@ -3414,8 +3415,9 @@ msgstr "Borrar mensages"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:182
-msgid "When a server message is recieved"
-msgstr ""
+#, fuzzy
+msgid "When a server message is received"
+msgstr "Borrar mensages"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:183
@@ -4777,8 +4779,7 @@ msgid "addon_state^Unknown"
 msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:420
-#: src/gui/dialogs/game_cache_options.cpp:98
-#: src/gui/dialogs/game_paths.cpp:119
+#: src/gui/dialogs/game_cache_options.cpp:98 src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
 #: src/gui/dialogs/lua_interpreter.cpp:459
 #: src/gui/dialogs/screenshot_notification.cpp:94
