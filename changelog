@@ -55,6 +55,12 @@ Version 1.12.5:
    * Fixed unit [resistance] and [jamming_costs] not being considered for sync
      check.
    * Fixed OOS on random maps, where clients placed sides in different castles.
+   * Disallowed undoing moves performed before the last shroud update to avoid
+     OOS with sighted events (bug #23600).
+   * [allow_undo] is now ignored in WML menu items to avoid OOS (bug #23903).
+   * Fixed OOS encounted by observers of MP campaigns (bug #23454).
+   * Fixed capture events firing when undoing moves involving villages, causing
+     OOS (bug #23695).
    * Several fixes to the handling of key combinations including
      non-alphanumeric keys (Enter, Tab, F1-F12, etc.), especially relevant for
      assigning custom hotkeys to actions in Preferences.
