@@ -65,7 +65,7 @@ scenario.
 overrides the data directory with the one specified
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+prints the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 enables additional command mode options in\-game (see the wiki page at
@@ -185,8 +185,8 @@ runs the game in a small test scenario.
 sets the user configuration directory to \fIname\fP under $HOME or "My
 Documents\eMy Games" for windows.  You can also specify an absolute path for
 the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+Under X11 this is set to $XDG_CONFIG_HOME or $HOME/.config/wesnoth by
+default, on other systems to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 prints the path of the user configuration directory and exits.
@@ -234,7 +234,7 @@ era. The era is chosen by an id. Eras are described in the
 .TP 
 \fB\-\-exit\-at\-end\fP
 exits once the scenario is over, without displaying victory/defeat dialog
-which requires the user to click OK.  This is also used for scriptable
+which requires the user to click OK.  This is also used for script\-based
 benchmarking.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
@@ -242,7 +242,7 @@ do not use map settings, use default values instead.
 .TP 
 \fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
 repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
-scriptable benchmarking.
+script\-based benchmarking.
 .TP 
 \fB\-\-nogui\fP
 runs the game without the GUI. Must appear before \fB\-\-multiplayer\fP to have

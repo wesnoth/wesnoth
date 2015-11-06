@@ -102,16 +102,16 @@ and write.  Bans will be saved to this file and read again on server start.
 .TP 
 \fBcompress_stored_rooms\fP
 Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+compressed form. Default value is \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 The number of allowed connections from the same IP. \fB0\fP means
 infinite. (default: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from
+wild\-card patterns are supported. See \fBglob\fP(7)  for more details.  Default
+values (used if nothing is specified) are:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
@@ -151,7 +151,7 @@ The command that the server uses to start a new server process via the
 .TP 
 \fBroom_save_file\fP
 Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
+server start\-up and written to later. If empty or not set, rooms are not
 loaded and not saved.
 .TP 
 \fBsave_replays\fP
@@ -160,7 +160,7 @@ games. (default: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
+and \fB?\fP from wild\-card patterns are supported.  (defaults to the
 corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fP accepts any version string.
@@ -187,7 +187,7 @@ The port to connect to.
 .TP 
 \fBversion\fP
 A comma separated list of versions to redirect. Behaves the same way as
-\fBversions_accepted\fP in regard to wildcard patterns.
+\fBversions_accepted\fP in regard to wild\-card patterns.
 .RE
 .P
 \fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
@@ -260,7 +260,7 @@ The user name under which to log into the mail server.
 This user's password.
 .TP  
 \fBfrom_address\fP
-The reply\-to address of you mail.
+The reply\-to address of your mail.
 .TP  
 \fBmail_port\fP
 The port on which your mail server is running. Default is 25.
