@@ -83,7 +83,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 			COMMAND ${CMAKE_COMMAND}
 				-DSOURCE="manual.${LINGUA}.xml"
 				-DCMD="${CMD}"
-				-P "${CMAKE_MODULE_PATH}/po4a-manual.cmake"
+				-P "${CMAKE_SOURCE_DIR}/cmake/po4a-manual.cmake"
 			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.xml
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.xml
 			COMMENT "[update-po4a-manual ${LINGUA}] Building ${LINGUA}.html."

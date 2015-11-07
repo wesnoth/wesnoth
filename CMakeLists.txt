@@ -18,7 +18,7 @@ endif(COMMAND cmake_policy)
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # use our own version of FindBoost.cmake and other Find* scripts
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 #
 # Options
@@ -723,7 +723,7 @@ install(FILES l10n-track DESTINATION ${DATADIR})
 #
 
 configure_file(
-	"${CMAKE_MODULE_PATH}/uninstall.cmake.in"
+	"${CMAKE_SOURCE_DIR}/cmake/uninstall.cmake.in"
 	"${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake"
 	IMMEDIATE @ONLY
 )
