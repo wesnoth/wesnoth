@@ -31,7 +31,31 @@ Until now, the official Wesnoth installer has included the option to store user 
 
 From this version onwards, the installer no longer provides the option to store user files in the installation dir, and the game itself defaults to using the Documents folder (more specifically, [c]Documents\My Games\WesnothX.Y[/c] where [c]X.Y[/c] represents the major and minor version numbers, such as [c]1.13[/c]) unless specifically instructed to do otherwise with the [c]--config-dir[/c] option in the command line. Additionally, [c]--config-dir[/c] paths can be either absolute, relative to [c]Documents\My Games[/c] (to support the previous installer approach to storing files in Documents), or relative to the process current working dir (usually the install dir) if either . or .. are provided as the first path component; this latter option is provided so that people can still install and run Wesnoth from removable media if they wish.
 
-See also bug [bug]23753[/bug].[/rasection]
+See also bug [bug]23753[/bug].
+
+[b]Command-line changes short version:[/b]
+
+(For people who need to customize the game’s command-line for any reason.)
+
+[b]Before 1.13.2:[/b]
+[list]
+  [*]Default: use [tt]<cwd>\userdata[/tt]
+  [*]With [tt]--config-dir <path>[/tt]: [list]
+    [*]use [tt]<Home dir>\Documents\My Games\<path>[/tt] (installer adds [c]--config-dir WesnothX.Y[/c]) if path does not begin with a drive spec
+    [*]use absolute [tt]<path>[/tt] otherwise
+  [/list]
+[/list]
+
+[b]After 1.13.2:/b]
+[list]
+  [*]Default: use [tt]<Home dir>\Documents\My Games\WesnothX.Y[/tt]
+  [*]With [tt]--config-dir <path>[/tt]: [list]
+    [*]use [tt]<cwd>\<path>[/tt] if path begins with . or ..
+    [*]use [tt]<Home dir>\Documents\My Games\<path>[/tt] (installer adds [c]--config-dir WesnothX.Y[/c]) if path does not begin with a drive spec;
+    [*]use absolute [tt]<path>[/tt] otherwise
+  [/list]
+[/list]
+[/rasection]
 
 [rasection="New game version dialog"]
 Describe how awesome the new game version dialog is and how it replaces the old game paths dialog from 1.12.x
