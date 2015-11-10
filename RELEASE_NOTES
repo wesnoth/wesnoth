@@ -18,24 +18,6 @@ CHANGES
 Example contents.
 [/rasection]
 
-[rasection="Fixed OOS errors on random maps"]
-Some people experienced OOS errors on random maps due to sides being placed in different castles in the beginning of the game. This has now been fixed.
-[/rasection]
-
-[rasection="More OOS fixes"]
-[list]
-[*][bug] 23600 [/bug] It was possible to undo moves that were made before the last shroud update. This can cause OOS if certain sighted events are involved.
-[*][bug] 23903 [/bug] [allow_undo] in wml menu items caused OOS. Now [allow_undo] is ignored in wml menu items.
-[*][bug] 23454 [/bug] OOS happened to observers of mp campaigns.
-[*][bug] 23695 [/bug] A capture event was fired when undoing moves that started from a village.
-[/list]
-
-[/rasection]
-
-[rasection="Fixed Eastern Invasion scenario 'Captured'"]
-On easy difficulty, the scenario events were not working correctly, essentially breaking the whole scenario. This has now been fixed, but requires a restart of the scenario.
-[/rasection]
-
 ==========
 KNOWN BUGS
 ==========
