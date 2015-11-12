@@ -781,7 +781,7 @@ namespace { // Helpers for place_recruit()
 		config original_checksum_config;
 
 		bool checksum_equals = checkup_instance->local_checkup(config_of("checksum", checksum),original_checksum_config);
-		if(!checksum_equals)
+		if(!checksum_equals && false)
 		{
 			const std::string old_checksum = original_checksum_config["checksum"];
 			std::stringstream error_msg;
