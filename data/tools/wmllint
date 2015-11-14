@@ -2212,7 +2212,8 @@ def hack_syntax(filename, lines):
         if in_filter_side or in_for_side or in_gold or in_allow_recruit or \
            in_disallow_recruit or in_set_recruit or in_modify_ai or \
            in_objectives or in_redraw or in_show_objectives or in_chat or \
-           in_store_gold or in_store_side or in_store_starting_location:
+           in_store_gold or in_store_side or in_store_starting_location or \
+           in_label or in_item:
             try:
                 key, prefix, value, comment = parse_attribute(line)
                 if key == "team_name":
