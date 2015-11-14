@@ -2216,7 +2216,7 @@ def hack_syntax(filename, lines):
             try:
                 key, prefix, value, comment = parse_attribute(line)
                 if key == "team_name":
-                    lines[i] = lines[i].replace("team_name","team_id",1)
+                    lines[i] = "%s%s%s\n" % (prefix.replace("team_name","team_id"), value.lstrip("_"), comment)
                     print('"%s", line %d: team_name -> team_id' % (filename, i+1))
             except TypeError:
                 pass
@@ -2239,7 +2239,8 @@ def hack_syntax(filename, lines):
             # checking for team_name may be dangerous, as the key simply changed purpose...
             # also replace only the first instance of the strings, which should be the key
             for ln in team_name_ln:
-                lines[ln] = lines[ln].replace("team_name","team_id",1)
+                key, prefix, value, comment = parse_attribute(lines[ln])
+                lines[ln] = "%s%s%s\n" % (prefix.replace("team_name","team_id"), value.lstrip("_"), comment)
                 print('"%s", line %d: team_name -> team_id' % (filename, ln+1))
             team_name_ln.clear()
             for ln in user_team_name_ln:
