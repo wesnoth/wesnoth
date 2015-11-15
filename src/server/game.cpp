@@ -921,6 +921,13 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 				}
 			}
 		} 
+		else if ((**command).child("recall") || (**command).child("recruit")) {
+			simple_wml::node& command_r = **command;
+			// remove all [checkup] from recruit or replay [command]s, this fixes some false positive OOS reports caused by differences in unit checksum calculation between 1.12.4. and 1.12.5
+			while(command_r.child("checkup")) {
+				command_r.remove_child("checkup", 0);
+			}
+		}
 		else if((**command).has_attr("from_side"))
 		{
 			if((**command)["from_side"] == "server")
