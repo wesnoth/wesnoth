@@ -121,7 +121,7 @@ private:
 	RoomList room_list_;
 
 	/** server socket/fifo. */
-	boost::scoped_ptr<input_stream> input_;
+	//boost::scoped_ptr<input_stream> input_;
 	std::string input_path_;
 
 	const std::string config_file_;

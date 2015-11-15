@@ -25,9 +25,7 @@
 #include "../game_config.hpp"
 #include "../log.hpp"
 #include "../map.hpp" // gamemap::MAX_PLAYERS
-#include "../filesystem.hpp"
 #include "../multiplayer_error_codes.hpp"
-#include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../serialization/unicode.hpp"
@@ -419,7 +417,6 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	user_handler_(NULL),
 	games_(),
 	room_list_(player_connections_),
-	input_(),
 	input_path_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -568,6 +565,7 @@ void async_send_warning(socket_ptr socket, const std::string& msg, const char* w
 
 config server::read_config() const {
 	config configuration;
+	/*
 	if (config_file_ == "") return configuration;
 	try {
 		filesystem::scoped_istream stream = preprocess_file(config_file_);
@@ -578,6 +576,7 @@ config server::read_config() const {
 		ERR_CONFIG << "ERROR: Could not read configuration file: '"
 			<< config_file_ << "': '" << e.message << "'.\n";
 	}
+	*/
 	return configuration;
 }
 
@@ -597,15 +596,15 @@ void server::load_config() {
 #endif
 	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
 	// Reset (replace) the input stream only if the FIFO path changed.
-	if(fifo_path != input_path_) {
+	/*if(fifo_path != input_path_) {
 		input_.reset(new input_stream(fifo_path));
 	}
-	input_path_ = fifo_path;
+	input_path_ = fifo_path;*/
 
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();
 
-	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : filesystem::read_file(cfg_["tor_ip_list_path"]), '\n');
+	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : ""/*filesystem::read_file(cfg_["tor_ip_list_path"])*/, '\n');
 
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
@@ -2176,7 +2175,7 @@ void server::restart_handler(const std::string& issuer_name, const std::string& 
 		graceful_restart = true;
 		// stop listening socket
 		// TODO: Shutdown
-		input_.reset();
+		//input_.reset();
 		// start new server
 		start_new_server();
 		process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
@@ -3542,7 +3541,7 @@ int main(int argc, char** argv) {
 	std::string config_file;
 
 	// setting path to currentworking directory
-	game_config::path = filesystem::get_cwd();
+	game_config::path = ""/*filesystem::get_cwd()*/;
 
 	// show 'info' by default
 	lg::set_log_domain_severity("server", lg::info);
