@@ -74,6 +74,8 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
     test_program += """
         int main(int argc, char** argv)
         {
+            SDL_Init(0);
+            SDL_Quit();
         }
         \n"""
     if context.TryLink(test_program, ".c"):
