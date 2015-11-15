@@ -56,6 +56,10 @@
 #include <string>
 #include <utility>
 
+#include <boost/date_time/posix_time/posix_time_types.hpp>
+
+using boost::posix_time::ptime;
+
 namespace lg {
 
 /**
@@ -140,19 +144,17 @@ extern log_domain general;
 
 class scope_logger
 {
-	int ticks_;
+	ptime ticks_;
 	std::ostream *output_;
 	std::string str_;
 public:
 	scope_logger(log_domain const &domain, const char* str) :
-		ticks_(0),
 		output_(NULL),
 		str_()
 	{
 		if (!debug.dont_log(domain)) do_log_entry(domain, str);
 	}
 	scope_logger(log_domain const &domain, const std::string& str) :
-		ticks_(0),
 		output_(NULL),
 		str_()
 	{

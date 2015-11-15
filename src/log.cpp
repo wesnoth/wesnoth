@@ -22,8 +22,6 @@
 #include "game_errors.hpp"
 #include "global.hpp"
 
-#include "SDL_timer.h"
-
 #include "log.hpp"
 
 #include <boost/foreach.hpp>
@@ -206,14 +204,14 @@ void scope_logger::do_log_entry(log_domain const &domain, const std::string& str
 {
 	output_ = &debug(domain, false, true);
 	str_ = str;
-	ticks_ = SDL_GetTicks();
+	ticks_ = boost::posix_time::microsec_clock::local_time();
 	(*output_) << "{ BEGIN: " << str_ << "\n";
 	++indent;
 }
 
 void scope_logger::do_log_exit()
 {
-	const int ticks = SDL_GetTicks() - ticks_;
+	const long ticks = (boost::posix_time::microsec_clock::local_time() - ticks_).total_milliseconds();
 	--indent;
 	do_indent();
 	if (timestamp) (*output_) << get_timestamp(time(NULL));
