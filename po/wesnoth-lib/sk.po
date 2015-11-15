@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2014-03-06 22:36+0100\n"
+"PO-Revision-Date: 2015-11-07 11:07+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -92,9 +92,8 @@ msgstr ""
 #. [terrain_type]: id=medium_reef
 #. [terrain_type]: id=reef
 #. [terrain_type]: id=tropical_reef
-#: data/core/terrain.cfg:98 data/core/terrain.cfg:109
-#: data/core/terrain.cfg:120 data/core/terrain.cfg:2286
-#: data/core/terrain.cfg:2287
+#: data/core/terrain.cfg:98 data/core/terrain.cfg:109 data/core/terrain.cfg:120
+#: data/core/terrain.cfg:2286 data/core/terrain.cfg:2287
 msgid "Coastal Reef"
 msgstr "Pobrežný útes"
 
@@ -2055,7 +2054,7 @@ msgid "Remove"
 msgstr "Odstrániť"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
-msgid "Bilinear intepolation scaling (legacy wesnoth option)"
+msgid "Bilinear interpolation scaling (legacy wesnoth option)"
 msgstr ""
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
@@ -2087,7 +2086,7 @@ msgid "xBRZ followed by Nearest Neighbor (recommended)"
 msgstr ""
 
 #: data/gui/default/window/advanced_graphics_options.cfg:46
-msgid "Bilinear intepolation scaling (new implementation)"
+msgid "Bilinear interpolation scaling (new implementation)"
 msgstr ""
 
 #: data/gui/default/window/advanced_graphics_options.cfg:46
@@ -3377,7 +3376,7 @@ msgstr "Odoslať súkromnú správu"
 #: data/gui/default/window/mp_alerts_options.cfg:179
 #, fuzzy
 #| msgid "Send a private message"
-msgid "When a private message is recieved"
+msgid "When a private message is received"
 msgstr "Odoslať súkromnú správu"
 
 #. [grid]
@@ -3389,7 +3388,7 @@ msgstr "Priatelia"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:180
-msgid "When a message from a friend is recieved"
+msgid "When a message from a friend is received"
 msgstr ""
 
 #. [grid]
@@ -3401,7 +3400,7 @@ msgstr "Správa:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:181
-msgid "When a public message is recieved"
+msgid "When a public message is received"
 msgstr ""
 
 #. [grid]
@@ -3413,7 +3412,7 @@ msgstr "Odoslať súkromnú správu"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:182
-msgid "When a server message is recieved"
+msgid "When a server message is received"
 msgstr ""
 
 #. [grid]
@@ -4742,8 +4741,7 @@ msgid "addon_state^Unknown"
 msgstr "Neznámy"
 
 #: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:420
-#: src/gui/dialogs/game_cache_options.cpp:98
-#: src/gui/dialogs/game_paths.cpp:119
+#: src/gui/dialogs/game_cache_options.cpp:98 src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
 #: src/gui/dialogs/lua_interpreter.cpp:459
 #: src/gui/dialogs/screenshot_notification.cpp:94
@@ -5848,11 +5846,11 @@ msgstr "Klobúk"
 
 #: src/hotkey/hotkey_preferences_display.cpp:134
 msgid "Add a new binding to \"$hotkey_description|\""
-msgstr ""
+msgstr "Pridať nové prepojenie na \"$hotkey_description|\""
 
 #: src/hotkey/hotkey_preferences_display.cpp:136
 msgid "Clears the current bindings for \"$hotkey_description|\""
-msgstr ""
+msgstr "Vymaže aktuálne prepojenia pre \"$hotkey_description|\""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "Hotkeys Reset"
@@ -5896,7 +5894,7 @@ msgstr "Akcia"
 
 #: src/hotkey/hotkey_preferences_display.cpp:258
 msgid "Binding"
-msgstr "Väzba (skratka)"
+msgstr "Prepojenie (skratka)"
 
 #: src/hotkey/hotkey_preferences_display.cpp:567
 msgid "Press desired hotkey (Esc cancels)"
@@ -6000,25 +5998,20 @@ msgstr ""
 "Kľúč '$deprecated_key' bol premenovaný na '$key'. Podpora pre "
 "'$deprecated_key' bude odstránená vo verzii $removal_version."
 
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Level options"
-#~ msgstr "Možnosti"
-
 #~ msgid "Generate Random Map"
 #~ msgstr "Generuj náhodnú mapu"
 
 #~ msgid "Next Generator"
 #~ msgstr "Ďalší generátor"
 
+#~ msgid "Password: "
+#~ msgstr "Heslo: "
+
 #~ msgid "Team 1"
 #~ msgstr "Tím 1"
 
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Vlastná tvorba dennej doby"
-
-#~ msgid "Password: "
-#~ msgstr "Heslo: "
 
 #~ msgid "controller^Human/AI"
 #~ msgstr "Človek/Počítač"
