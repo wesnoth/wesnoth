@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-11-05 21:31-0300\n"
-"PO-Revision-Date: 2015-01-17 20:46+0100\n"
+"PO-Revision-Date: 2015-11-07 11:03+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -219,13 +219,13 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:193
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "Limit posledných súborov v editore"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:194
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
-msgstr ""
+msgstr "Počet položiek na zobrazenie v naposledy použitých súboroch v editore"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:205
@@ -5082,18 +5082,14 @@ msgid "File I/O Error while reading the game: '"
 msgstr "Chyba pri čítaní súboru hry: '"
 
 #: src/game_controller.cpp:543
-#, fuzzy
-#| msgid ""
-#| "This is a multiplayer scenario. Some parts of it may not work properly in "
-#| "single-player. It is recommended to load this scenario through the "
-#| "Multiplayer -> Load Game dialog instead."
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
 "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 "Toto je scéna pre viacerých hráčov. Niektoré časti nemusia fungovať správne "
-"s jedným hráčom. Odporúča sa načítať túto scénu cez Zápas -> Načítať hru."
+"v hre jedného hráča. Odporúča sa načítať túto scénu cez <b>Zápas</b> → "
+"<b>Načítať hru</b>."
 
 #: src/game_controller.cpp:543 src/multiplayer.cpp:262
 msgid "Warning"
@@ -6863,12 +6859,12 @@ msgid ""
 msgstr "Zobraziť len hry, kde hrá alebo pozoruje niektorý tvoj priateľ"
 
 #: src/multiplayer_lobby.cpp:921
-#, fuzzy
-#| msgid "Only show games whose title or description contain the entered text"
 msgid ""
 "Only show games whose title, description, era or mods contain the entered "
 "text"
-msgstr "Zobraziť len hry, ktorých názov alebo popis obsahuje zadaný text"
+msgstr ""
+"Zobraziť len hry, ktorých názov, popis, éra alebo modifikácie obsahujú "
+"zadaný text"
 
 #: src/multiplayer_lobby.cpp:1037
 msgid "Joining this game requires a password."
@@ -6887,10 +6883,10 @@ msgid "Selected user: "
 msgstr "Vybraný používateľ: "
 
 #: src/multiplayer_ui.cpp:455
-#, fuzzy
-#| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
-msgstr "Súkromné správy prijímať len od priateľov"
+msgstr ""
+"$sender vám posiela správu, ale prijímanie súkromných správ máte povolené "
+"len od priateľov."
 
 #: src/multiplayer_wait.cpp:140
 msgid "Leader: "
