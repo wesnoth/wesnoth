@@ -196,7 +196,7 @@ namespace lua_check_impl
 	}
 	
 #if defined(__GNUC__) && !defined(__clang__)
-#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6 )
+#if __GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 8 )
 // 'list.size()' below is unsigned for some (most but not all) list types.
 #pragma GCC diagnostic ignored "-Wtype-limits"
 #endif
