@@ -1042,15 +1042,15 @@ void game::process_whiteboard(simple_wml::document& data, const player_map::cons
 		msg << "Ignoring illegal whiteboard data, sent from user '" << user->second.name()
 				<< "' to team '" << std::string(team_name.begin(), team_name.end()) << "'";
 		if(side_num < 1 || side_num > gamemap::MAX_PLAYERS) {
-			msg << " (invalid side number '" << side_num << "')"
+			msg << " (invalid side number '" << side_num << "')";
 		}
 		else if(sides_[side_num-1] != user->first) {
-			msg << " (player doesn't control side '" << side_num << "')"
+			msg << " (player doesn't control side '" << side_num << "')";
 		}
 		else {
 			FOREACH(AUTO p_side, level_.root().children("side"))
 			{
-				if((*p_side)["side"].to_int() == side_num) {
+				if((*p_side)["side"].to_int() == int(side_num)) {
 					if((*p_side)["team_name"] != team_name) {
 						msg << "(side '" << side_num << "' is on team '" << (*p_side)["team_name"] << "')";
 					}
