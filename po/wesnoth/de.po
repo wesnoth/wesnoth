@@ -226,13 +226,14 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:193
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "Editor: Anzuzeigende Anzahl zuletzt geöffneter Dateien"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:194
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
+"Höchstzahl der Einträge im Menü »Zuletzt geöffnete Dateien« des Karteneditors"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:205
@@ -343,7 +344,6 @@ msgstr "Joystick: Achsen-Nummer des Schubhebels"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: Totbereich des Schubhebels"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
@@ -1377,7 +1377,6 @@ msgstr "Team $temp_i"
 msgid "side $temp_i ($side_i_leader.name|)"
 msgstr "Team $temp_i ($side_i_leader.name|)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [value]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:424
@@ -1514,7 +1513,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:21
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr "Ihr habt einen Wunschbrunnen gefunden. Was wünscht ihr euch?"
+msgstr "Ihr habt einen Wunschbrunnen gefunden. Was wünscht Ihr euch?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:24
@@ -2816,7 +2815,6 @@ msgstr "Weiß"
 msgid "Teal"
 msgstr "Türkis"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:98 src/leader_scroll_dialog.cpp:47
 #: src/menu_events.cpp:196 src/multiplayer_connect.cpp:378
@@ -2883,7 +2881,6 @@ msgstr "Höhle"
 msgid "Fungus"
 msgstr "Pilze"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:179 src/terrain.cpp:175
 msgid "Village"
@@ -2914,14 +2911,12 @@ msgstr "Unbegehbar"
 msgid "Impassable"
 msgstr "Unpassierbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:338
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Nebel"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:341
 #: src/gui/dialogs/lobby/lobby_data.cpp:344 src/multiplayer_configure.cpp:78
@@ -3186,31 +3181,26 @@ msgstr ""
 msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1795 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1797 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1797 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1798 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "versteinert"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1798 src/actions/attack.cpp:993
 msgid "petrified"
@@ -3226,7 +3216,6 @@ msgstr "unheilbar"
 msgid "unhealable"
 msgstr "unheilbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:2462 src/mp_game_utils.cpp:157
 msgid "Victory:"
@@ -3252,14 +3241,12 @@ msgstr "(diese Runde verbleibt)"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:1043 src/dialogs.cpp:929 src/mp_depcheck.cpp:483
 #: src/multiplayer_configure.cpp:82
 msgid "OK"
 msgstr "Okay"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:1044 src/dialogs.cpp:930 src/dialogs.cpp:1405
 #: src/dialogs.cpp:1511 src/multiplayer_connect.cpp:384
@@ -3335,7 +3322,6 @@ msgstr "Perspektive"
 msgid "Skip animation"
 msgstr "Keine Animationen"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
 #: data/themes/_initial.cfg:515 src/dialogs.cpp:838
 msgid "Replay"
@@ -3343,27 +3329,23 @@ msgstr "Aufzeichnung"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:600
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Nächste Seite"
+msgstr "Nächster Zug"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:601
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "Zug des aktuellen Spielers anzeigen"
+msgstr "Einzelnen Zug abspielen"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr ""
+msgstr "Klassisch"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr ""
+msgstr "Traditionelle Benutzeroberfläche vor BfW 1.12"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:106 data/themes/default.cfg:80
@@ -3386,14 +3368,12 @@ msgstr "Zug beenden"
 msgid "End Scenario"
 msgstr "Szenario beenden"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/classic.cfg:215 data/themes/default.cfg:132 src/dialogs.cpp:280
 #: src/unit.cpp:2473 src/unit.cpp:2673
 msgid "HP"
 msgstr "LP"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #: data/themes/classic.cfg:224 data/themes/default.cfg:141 src/dialogs.cpp:282
 #: src/dialogs.cpp:454
@@ -3427,65 +3407,23 @@ msgstr "Ausgaben"
 msgid "income"
 msgstr "Einkommen"
 
-# = Infos zur Einheit in der rechten Seitenleiste
-# Es ist nur Platz für "lvl" - mir war nicht auf Anhieb klar, dass das "Level" bedeuten soll.
-# Jede längere Bezeichnung wird jedenfalls verstümmelt (siehe Forum Thread "Ideas for a UI facelift").
-# Daran wird sich wohl nichts ändern, lt. Dev Fabi sollen sich die Übersetzer Abkürzungen ausdenken.
-# Stufe: "S"
-# besser als "St." - angezeigt würde also: S 0 - S 1 - S 2 - S 3 ...
-# Nachteil: sowohl das eine wie das andere können mit "Status" verwechselt werden
-# Rang: "R"
-# ideal, da unverwechselbar - angezeigt würde also: R 0 - R 1 - R 2 - R 3 ...
-# Nachteil: es wird immer nur von "Stufenaufstieg - Einheiten den Stufe 0 - die nächsthöhere Sufe - etc." gesprochen
-# Idealerweise wird das Wort "Stufe" überall gegen "Rang" ausgetauscht.
-# Gleiches gilt für die Anzeige in der "Einheitenübersicht"
+# Klassisches Grafikthema: 'level' bzw. 'Stufe' wird ausgeschrieben
 # src/dialogs.cpp:281 src/dialogs.cpp:453
 #. [unit_level]: id=unit-level
 #: data/themes/classic.cfg:432
-#, fuzzy
 #| msgid "statuspanel^lvl"
 msgid "statuspanel^level"
-msgstr "S"
+msgstr "Stufe"
 
-# = Infos zur Einheit in der rechten Seitenleiste
-# Es ist nur Platz für "lvl" - mir war nicht auf Anhieb klar, dass das "Level" bedeuten soll.
-# Jede längere Bezeichnung wird jedenfalls verstümmelt (siehe Forum Thread "Ideas for a UI facelift").
-# Daran wird sich wohl nichts ändern, lt. Dev Fabi sollen sich die Übersetzer Abkürzungen ausdenken.
-# Stufe: "S"
-# besser als "St." - angezeigt würde also: S 0 - S 1 - S 2 - S 3 ...
-# Nachteil: sowohl das eine wie das andere können mit "Status" verwechselt werden
-# Rang: "R"
-# ideal, da unverwechselbar - angezeigt würde also: R 0 - R 1 - R 2 - R 3 ...
-# Nachteil: es wird immer nur von "Stufenaufstieg - Einheiten den Stufe 0 - die nächsthöhere Sufe - etc." gesprochen
-# Idealerweise wird das Wort "Stufe" überall gegen "Rang" ausgetauscht.
-# Gleiches gilt für die Anzeige in der "Einheitenübersicht"
-# src/dialogs.cpp:281 src/dialogs.cpp:453
 #. [unit_moves]: id=unit-moves
 #: data/themes/classic.cfg:462
-#, fuzzy
-#| msgid "statuspanel^lvl"
 msgid "statuspanel^moves"
-msgstr "S"
+msgstr "BP"
 
-# = Infos zur Einheit in der rechten Seitenleiste
-# Es ist nur Platz für "lvl" - mir war nicht auf Anhieb klar, dass das "Level" bedeuten soll.
-# Jede längere Bezeichnung wird jedenfalls verstümmelt (siehe Forum Thread "Ideas for a UI facelift").
-# Daran wird sich wohl nichts ändern, lt. Dev Fabi sollen sich die Übersetzer Abkürzungen ausdenken.
-# Stufe: "S"
-# besser als "St." - angezeigt würde also: S 0 - S 1 - S 2 - S 3 ...
-# Nachteil: sowohl das eine wie das andere können mit "Status" verwechselt werden
-# Rang: "R"
-# ideal, da unverwechselbar - angezeigt würde also: R 0 - R 1 - R 2 - R 3 ...
-# Nachteil: es wird immer nur von "Stufenaufstieg - Einheiten den Stufe 0 - die nächsthöhere Sufe - etc." gesprochen
-# Idealerweise wird das Wort "Stufe" überall gegen "Rang" ausgetauscht.
-# Gleiches gilt für die Anzeige in der "Einheitenübersicht"
-# src/dialogs.cpp:281 src/dialogs.cpp:453
 #. [unit_defense]: id=unit-defense
 #: data/themes/classic.cfg:471
-#, fuzzy
-#| msgid "statuspanel^lvl"
 msgid "statuspanel^terrain def."
-msgstr "S"
+msgstr "Geländevert."
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
@@ -3494,10 +3432,8 @@ msgstr "Standard"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default theme."
 msgid "The default theme"
-msgstr "Standard Grafikthema"
+msgstr "Voreingestellte graphische Benutzeroberfläche"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:90
@@ -3546,8 +3482,6 @@ msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:21
-#, fuzzy
-#| msgid "800x480 theme optimized for Pandora devices."
 msgid "An 800×480 theme optimized for Pandora devices"
 msgstr "Für die Pandora Konsole optimiertes 800x480 Grafikthema"
 
@@ -4005,7 +3939,7 @@ msgid ""
 msgstr ""
 "Geduld ist häufig der Schlüssel zum Sieg. Anstatt mit wenigen Einheiten oder "
 "unter schlechten Bedingungen anzugreifen, solltet Ihr lieber bessere "
-"Voraussetzungen für eure Offensive abwarten."
+"Voraussetzungen für Eure Offensive abwarten."
 
 #. [tip]
 #: data/tips.cfg:124
@@ -4078,7 +4012,7 @@ msgid ""
 msgstr ""
 "Truppen niedriger Stufe genießen Vorteile im Gefecht, wenn sie an der Seite "
 "einer höherrangigen Einheit mit <i>Führungsqualitäten</i> kämpfen. An der "
-"Schlachtlinie langsam entlang bewegtk können letztere einer großen Zahl "
+"Schlachtlinie langsam entlang bewegt, können letztere einer großen Zahl "
 "schwächerer Truppen zu einem Angriffsbonus verhelfen."
 
 #. [tip]
@@ -4235,7 +4169,7 @@ msgid ""
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
 "Ein Zug, der den <b>Schleier der Finsternis</b> lüftet oder den <b>Nebel des "
-"Krieges</b> verweht, kann nicht rückgängig gemacht werden. Wenn ihr die "
+"Krieges</b> verweht, kann nicht rückgängig gemacht werden. Wenn Ihr die "
 "Möglichkeit der Annullierung beibehalten möchtet, könnt Ihr die Einstellung "
 "<b>Schleier verspätet aktualisieren</b> aktivieren oder das neue »Reißbrett« "
 "als Planungshilfe verwenden."
@@ -4325,7 +4259,7 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
-"Überlegt es Euch zweimal, bevor ihr eine Einheit entlasst, egal wie wenig "
+"Überlegt es Euch zweimal, bevor Ihr eine Einheit entlasst, egal wie wenig "
 "Erfahrungspunkte sie besitzt. Manchmal gäbe man viel darum, vorher genau zu "
 "wissen, über welche Fähigkeiten ein Neuankömmling verfügt…"
 
@@ -4647,7 +4581,7 @@ msgstr[0] ""
 "installiert noch auf dem Server verfügbar ist. Möchtet Ihr fortfahren?"
 msgstr[1] ""
 "Die gewählte Erweiterung hat folgende Abhängigkeiten, die weder installiert "
-"noch auf dem Server verfügbar sind. Möchtet ihr fortfahren?"
+"noch auf dem Server verfügbar sind. Möchtet Ihr fortfahren?"
 
 #: src/addon/manager_ui.cpp:157
 msgid "Broken Dependencies"
@@ -4688,10 +4622,10 @@ msgid_plural ""
 "installed. Do you wish to install them before continuing?"
 msgstr[0] ""
 "Die gewählte Erweiterung hat die folgende Abhängigkeit, die noch nicht "
-"installiert ist. Möchtet Ihr sie installieren bevor ihr fortfahrt?"
+"installiert ist. Möchtet Ihr sie installieren bevor Ihr fortfahrt?"
 msgstr[1] ""
 "Die gewählte Erweiterung hat folgende Abhängigkeiten, die noch nicht "
-"installiert sind. Möchtet Ihr sie installieren bevor ihr fortfahrt?"
+"installiert sind. Möchtet Ihr sie installieren bevor Ihr fortfahrt?"
 
 #: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
 #: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
@@ -4723,7 +4657,7 @@ msgid ""
 "information that will be permanently lost if you continue:"
 msgstr ""
 "Die Erweiterung '$addon|' ist bereits installiert und enthält zusätzliche "
-"Daten, die unwiederbringlich verloren gehen, wenn ihr fortfahrt:"
+"Daten, die unwiederbringlich verloren gehen, wenn Ihr fortfahrt:"
 
 #: src/addon/manager_ui.cpp:283
 msgid "Publishing information file (.pbl)"
@@ -4904,9 +4838,9 @@ msgstr "Ihr habt keine Erweiterungen installiert."
 #: src/addon/manager_ui.cpp:1075
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Seid ihr sicher, dass Ihr die folgende Erweiterung entfernen wollt?"
+msgstr[0] "Seid Ihr sicher, dass Ihr die folgende Erweiterung entfernen wollt?"
 msgstr[1] ""
-"Seid ihr sicher, dass Ihr die folgenden Erweiterungen entfernen wollt?"
+"Seid Ihr sicher, dass Ihr die folgenden Erweiterungen entfernen wollt?"
 
 #: src/addon/manager_ui.cpp:1101
 msgid ""
@@ -5120,10 +5054,6 @@ msgstr "Version: "
 msgid "No Saved Games"
 msgstr "Keine Spielstände vorhanden"
 
-# vorher:
-# Es wurden keine Spielstände gefunden.\n
-# (Spielstände werden automatisch gespeichert, wenn Ihr ein Szenario beendet)
-#
 # Hinweis betr. Original- und Übersetzungs-String:
 # Die Kombi " \+n" bewirkt den Umbruch einer Textzeile, fügt aber KEINE Leerzeile ein!
 # Es sei denn man setzt ein Leerzeichen davor! Das betrifft aber nur WINDOWS!
@@ -5298,23 +5228,19 @@ msgstr "E/A-Dateifehler beim Einlesen des Spieles"
 msgid "File I/O Error while reading the game: '"
 msgstr "E/A-Dateifehler beim Einlesen des Spieles: '"
 
-# "Multiplayer>LOAD GAME" gibt’s es übrigens nicht, sondern nur: "Multiplayer>LOCAL GAME>Load Game".
-# Allerdings ist hier "Load Game" nicht mit "Spiel laden" sondern "SpielSTAND laden" übersetzten.
-# Evtl. ist also der korrekte Weg:
-# "... Ladet es besser über das Menü »Mehrspieler > Lokales Spiel > PARTIE ERÖFFNEN«.
+# Den Dialog "Multiplayer > Load Game" gibt es nicht –
+# nur: "Multiplayer > Local Game/Lokales Spiel > CreateGame/Partie eröffnen,
+# hier im Fenster dann Load Game/Spielstand laden" …
+# und dieser Link führt zur 'saves' Liste mit gespeicherten Spielen.
+# Ein MP-Szenario kann hier nicht gestartet werden.
 #: src/game_controller.cpp:543
-#, fuzzy
-#| msgid ""
-#| "This is a multiplayer scenario. Some parts of it may not work properly in "
-#| "single-player. It is recommended to load this scenario through the "
-#| "Multiplayer -> Load Game dialog instead."
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
 "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 "Dies ist ein Mehrspieler-Szenario, welches im Einzelspieler-Modus nicht "
-"richtig funktionieren kann. Ladet es besser über das Menü »Mehrspieler > "
+"richtig funktionieren kann. Ladet es besser über das Menü »Mehrspieler → "
 "Lokales Spiel«."
 
 #: src/game_controller.cpp:543 src/multiplayer.cpp:262
@@ -5560,9 +5486,7 @@ msgstr ""
 "Einnahmen\n"
 "pro Dorf"
 
-# Es geht hier offenbar nicht um einen Geldbetrag, sondern um die Anzahl von Einheiten, die von einem Dorf finaziert werden:
-# = Unterhaltsempfänger pro Dorf
-#
+# Es geht hier offenbar nicht um einen Geldbetrag, sondern um die Anzahl von Einheiten, die von einem Dorf finaziert werden: Unterhaltsempfänger pro Dorf
 # lt. zookeeper:
 # = number of unit levels this side is able to support (=does not pay upkeep on) per village it controls (v1.11 and later only)
 # "Such a column should not appear unless a non-default value is used for a side. Reason being that in mainline the game rules explicitly state that village support is always 1. So unless the feature is used, it's a redundant and confusing column, especially when there's no tooltip to explain it. Who added an extra column in the status table?"
@@ -5954,7 +5878,7 @@ msgstr "Entfernt einen Benutzer von Eurer Ignorieren-Liste."
 
 #: src/menu_events.cpp:1890
 msgid "Show your ignores and friends list."
-msgstr "Zeigt eure Freunde- und Ignorieren-Liste an."
+msgstr "Zeigt Eure Freunde- und Ignorieren-Liste an."
 
 #: src/menu_events.cpp:1893
 msgid "Display version information."
@@ -6094,7 +6018,7 @@ msgstr "Ebenen des Geländes unter der Maus auf Fehler testen."
 
 #: src/menu_events.cpp:2074
 msgid "Show fps."
-msgstr "Bilder pro Sekunde (FPS) anzeigen."
+msgstr "Bilder pro Sekunde (FPS) anzeigen"
 
 #: src/menu_events.cpp:2076
 msgid "Save game."
@@ -6555,7 +6479,7 @@ msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr ""
-"Der Server akzeptiert Version »$version1«, ihr verwendet aber Version "
+"Der Server akzeptiert Version »$version1«, Ihr verwendet aber Version "
 "»$version2«"
 
 #: src/multiplayer.cpp:192
@@ -7120,22 +7044,21 @@ msgid "Search:"
 msgstr "Suchen:"
 
 #: src/multiplayer_lobby.cpp:884
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Aufzeichnung speichern"
+msgstr "Normale Wiedergabe der Spielaufzeichnung"
 
 #: src/multiplayer_lobby.cpp:885
-#, fuzzy
-#| msgid "Quick replays"
 msgid "Quick Replays"
 msgstr "Schnelle Wiedergabe der Spielaufzeichnung"
 
+# Gibt es dieses Feature überhaupt noch?
+# Es wurde Anfang März 2014 im MP Development-Forum kurz diskutiert...
+# Wenn ja, sollte evtl. eine Erklärung dazu:
+#
+# Blind einklinken (Einheiten und Terrain unsichtbar, bis Kontrolle über ein Team zugewiesen wird.)
 #: src/multiplayer_lobby.cpp:886
-#, fuzzy
-#| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
-msgstr "Blindlings teilnehmen"
+msgstr "Blind einklinken"
 
 #: src/multiplayer_lobby.cpp:890
 msgid "Skip quickly to the active turn when observing"
@@ -7172,14 +7095,12 @@ msgstr ""
 "Nur Spiele anzeigen, in dem mindestens ein Freund mitspielt oder beobachtet"
 
 #: src/multiplayer_lobby.cpp:921
-#, fuzzy
-#| msgid "Only show games whose title or description contain the entered text"
 msgid ""
 "Only show games whose title, description, era or mods contain the entered "
 "text"
 msgstr ""
-"Nur Spiele anzeigen, deren Titel oder Beschreibung den angegebenen Text "
-"enthalten"
+"Nur Spiele anzeigen, deren Titel, Beschreibung, Epoche oder Modifikationen "
+"den angegebenen Text enthalten"
 
 #: src/multiplayer_lobby.cpp:1037
 msgid "Joining this game requires a password."
@@ -7198,10 +7119,10 @@ msgid "Selected user: "
 msgstr "Benutzer auswählen: "
 
 #: src/multiplayer_ui.cpp:455
-#, fuzzy
-#| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
-msgstr "Private Nachrichten nur von Freunden akzeptieren"
+msgstr ""
+"$sender schickt eine Nachricht, Privatmitteilungen werden aber nur von "
+"Freunden akzeptiert"
 
 #: src/multiplayer_wait.cpp:140
 msgid "Leader: "
@@ -7384,7 +7305,7 @@ msgstr ""
 "zu schummeln. Es könnte auch auf einen Fehler im Spiel hindeuten, obwohl das "
 "weniger wahrscheinlich ist.\n"
 " \n"
-"Möchtet ihr ein Fehlerprotokoll zu diesem Spiel abspeichern?"
+"Möchtet Ihr ein Fehlerprotokoll zu diesem Spiel abspeichern?"
 
 #: src/playsingle_controller.cpp:230
 msgid "(press $hotkey to deactivate)"
@@ -8211,7 +8132,7 @@ msgstr "September"
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%a %d %b %H:%M:%S %Y"
 
-# Originao + Translation:
+# Original + Translation:
 # Mon 31 Oct 2014   04:59:35   -0700
 #: src/strftime.cpp:82
 msgid "%a %d %b %Y %H:%M:%S %z"
