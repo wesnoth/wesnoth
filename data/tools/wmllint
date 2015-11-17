@@ -1686,7 +1686,7 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value and value[0] in ("$", "{"):
                         continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not in_clear_menu_item and not directly_in_event[-1] and not in_time_area:
+                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not in_clear_menu_item and not directly_in_event[-1] and not in_time_area and not in_trait:
                         ids = value.split(",")
                         for id_ in ids:
                             # removal of leading whitespace of items in comma-separated lists

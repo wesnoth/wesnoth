@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2015-01-19 20:28+0100\n"
+"PO-Revision-Date: 2015-10-31 16:17+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5921,8 +5921,7 @@ msgid "Random map options:"
 msgstr "Opciones de mapa aleatorio:"
 
 #: src/game_initialization/multiplayer_create.cpp:96
-#: src/game_initialization/multiplayer_lobby.cpp:698
-#: src/help/help_impl.cpp:529
+#: src/game_initialization/multiplayer_lobby.cpp:698 src/help/help_impl.cpp:529
 msgid "Era:"
 msgstr "Era:"
 
@@ -6217,14 +6216,12 @@ msgstr ""
 "menos por uno de sus amigos"
 
 #: src/game_initialization/multiplayer_lobby.cpp:1087
-#, fuzzy
-#| msgid "Only show games whose title or description contain the entered text"
 msgid ""
 "Only show games whose title, description, era or mods contain the entered "
 "text"
 msgstr ""
-"Solamente muestra partidas que contengan el título o la descripción en el "
-"texto introducido"
+"Solamente muestra partidas cuyo título, descripción, era o complementos "
+"contengan el texto introducido"
 
 #: src/game_initialization/multiplayer_lobby.cpp:1192
 #, fuzzy
@@ -6272,10 +6269,9 @@ msgid "Selected user: "
 msgstr "Usuario seleccionado: "
 
 #: src/game_initialization/multiplayer_ui.cpp:463
-#, fuzzy
-#| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
-msgstr "Aceptar únicamente susurros de amigos"
+msgstr ""
+"Ha recibido un mensaje de $sender y acepta únicamente susurros de amigos."
 
 #: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2296
 msgid "whisper: $sender"
@@ -6421,11 +6417,6 @@ msgid "File I/O Error while reading the game: '"
 msgstr "Error de E/S en el archivo mientras se intentaba cargar la partida: «"
 
 #: src/game_launcher.cpp:766
-#, fuzzy
-#| msgid ""
-#| "This is a multiplayer scenario. Some parts of it may not work properly in "
-#| "single-player. It is recommended to load this scenario through the "
-#| "Multiplayer -> Load Game dialog instead."
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
@@ -6433,7 +6424,8 @@ msgid ""
 msgstr ""
 "Este es un escenario multijugador. Algunas de sus partes podrían no "
 "funcionar correctamente para un solo jugador. Es recomendable cargar este "
-"escenario utilizando las opciones del menú Multijugador -> Cargar partida."
+"escenario utilizando las opciones del menú <b>Multijugador</b> → <b>Cargar "
+"partida</b>."
 
 #: src/game_launcher.cpp:967
 msgid "Error while starting server: "
@@ -8857,6 +8849,34 @@ msgstr "Objetos"
 msgid "Previous Items"
 msgstr "Unidad anterior"
 
+#~ msgid "Lobby sounds"
+#~ msgstr "Sonidos de la sala de entrada"
+
+#~ msgid "Disable notifications"
+#~ msgstr "Desactivar notificaciones"
+
+#~ msgid "Editor recent files limit"
+#~ msgstr "Límite de archivos recientes para el editor"
+
+#~ msgid ""
+#~ "The maximum number of items to display on the Recent Files menu in the "
+#~ "editor"
+#~ msgstr ""
+#~ "El número máximo de elementos a mostrar en el menú de Archivos Recientes "
+#~ "del editor"
+
+#~ msgid "Screenshot Done"
+#~ msgstr "Captura completada"
+
+#~ msgid "Do not show replay turns"
+#~ msgstr "No mostrar la repetición de los turnos"
+
+#~ msgid "Joining this game requires a password."
+#~ msgstr "Unirse a este juego requiere contraseña."
+
+#~ msgid "Password: "
+#~ msgstr "Contraseña: "
+
 #~ msgid "Could not connect to host"
 #~ msgstr "No se pudo conectar al equipo anfitrión"
 
@@ -8865,24 +8885,6 @@ msgstr "Unidad anterior"
 
 #~ msgid "Gold: "
 #~ msgstr "Oro: "
-
-#~ msgid "Joining this game requires a password."
-#~ msgstr "Unirse a este juego requiere contraseña."
-
-#~ msgid "Password: "
-#~ msgstr "Contraseña: "
-
-#~ msgid "Screenshot Done"
-#~ msgstr "Captura completada"
-
-#~ msgid "Lobby sounds"
-#~ msgstr "Sonidos de la sala de entrada"
-
-#~ msgid "Disable notifications"
-#~ msgstr "Desactivar notificaciones"
-
-#~ msgid "Do not show replay turns"
-#~ msgstr "No mostrar la repetición de los turnos"
 
 #~ msgid ""
 #~ "The save has corrupt version information ($version_number|) and cannot be "

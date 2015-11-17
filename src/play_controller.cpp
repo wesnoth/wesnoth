@@ -656,7 +656,14 @@ void play_controller::tab()
 		BOOST_FOREACH(const std::string& w, gui_->get_chat_manager().whisperers()){
 			dictionary.insert(w);
 		}
-		
+
+		// Add nicks from friendlist
+		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+
+		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter){
+			dictionary.insert((*iter).first);
+		}
+
 		//Exclude own nick from tab-completion.
 		//NOTE why ?
 		dictionary.erase(preferences::login());
