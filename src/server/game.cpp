@@ -39,7 +39,7 @@ namespace
 {
 	struct split_conv_impl
 	{
-		void operator()(std::vector<int> res, const simple_wml::string_span& span)
+		void operator()(std::vector<int>& res, const simple_wml::string_span& span)
 		{
 			if(!span.empty()) {
 				res.push_back(span.to_int());
