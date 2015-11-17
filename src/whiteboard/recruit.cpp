@@ -186,6 +186,7 @@ action::error recruit::check_validity() const
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recruit is still in side's recruit list
+	//FIXME: look at leaders extra_recruit too.
 	const std::set<std::string>& recruits = (*resources::teams)[team_index()].recruits();
 	if(recruits.find(unit_name_) == recruits.end()) {
 		return UNIT_UNAVAILABLE;
