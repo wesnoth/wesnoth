@@ -299,6 +299,7 @@ wesnoth_sources = Split("""
     fake_unit_manager.cpp
     fake_unit_ptr.cpp
     filechooser.cpp
+    filesystem_sdl.cpp
     game_initialization/flg_manager.cpp
     floating_textbox.cpp
     formula.cpp
@@ -700,7 +701,7 @@ wesnothd_sources = Split("""
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, env["wesnothd_res"]], have_server_prereqs)
+env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libdummy_video, env["wesnothd_res"]], have_server_prereqs)
 
 cutter_sources = Split("""
     tools/cutter.cpp
