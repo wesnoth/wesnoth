@@ -27,8 +27,10 @@
 #include "../map.hpp" // gamemap::MAX_PLAYERS
 #include "../multiplayer_error_codes.hpp"
 #include "../serialization/preprocessor.hpp"
+#include "../serialization/parser.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../serialization/unicode.hpp"
+#include "../filesystem.hpp"
 #include "../util.hpp"
 
 #include "game.hpp"
@@ -565,7 +567,6 @@ void async_send_warning(socket_ptr socket, const std::string& msg, const char* w
 
 config server::read_config() const {
 	config configuration;
-	/*
 	if (config_file_ == "") return configuration;
 	try {
 		filesystem::scoped_istream stream = preprocess_file(config_file_);
@@ -576,7 +577,6 @@ config server::read_config() const {
 		ERR_CONFIG << "ERROR: Could not read configuration file: '"
 			<< config_file_ << "': '" << e.message << "'.\n";
 	}
-	*/
 	return configuration;
 }
 
@@ -604,7 +604,7 @@ void server::load_config() {
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();
 
-	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : ""/*filesystem::read_file(cfg_["tor_ip_list_path"])*/, '\n');
+	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : filesystem::read_file(cfg_["tor_ip_list_path"]), '\n');
 
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
@@ -3541,7 +3541,7 @@ int main(int argc, char** argv) {
 	std::string config_file;
 
 	// setting path to currentworking directory
-	game_config::path = ""/*filesystem::get_cwd()*/;
+	game_config::path = filesystem::get_cwd();
 
 	// show 'info' by default
 	lg::set_log_domain_severity("server", lg::info);
