@@ -63,6 +63,7 @@
 
 #ifdef _WIN32
 #include "desktop/windows_console.hpp"
+#include "log_windows.hpp"
 #endif // _WIN32
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
@@ -909,6 +910,8 @@ int main(int argc, char** argv)
 #endif
 #endif //_OPENMP
 #ifdef _WIN32
+	lg::early_log_file_setup();
+
 	(void)argc;
 	(void)argv;
 

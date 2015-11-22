@@ -288,6 +288,12 @@ else()
 	)
 endif()
 
+if(WIN32)
+	set(libwesnoth-core_STAT_SRC
+		${libwesnoth-core_STAT_SRC}
+		log_windows.cpp
+	)
+
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
 add_library(wesnoth-core ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
