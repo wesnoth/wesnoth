@@ -326,14 +326,7 @@ namespace {
 		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
 		{
 			//Ensure we have a config at the given explicit position.
-			if(vit == vit_create_if_not_existent)
-			{
-				get_child_at<vit>(*state.child_, state.key_, state.index_);
-			}
-			else if(state.child_->child(state.key_, state.index_))
-			{
-				throw invalid_variablename_exception();
-			}
+			get_child_at<vit>(*state.child_, state.key_, state.index_);
 			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
 		}
 	};
