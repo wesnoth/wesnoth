@@ -22,6 +22,8 @@
 #include <cstdio>
 #include <ctime>
 
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/foreach.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 
@@ -57,18 +59,66 @@ namespace lg
 namespace
 {
 
+// Prefix and extension for log files. This is used both to generate the unique
+// log file name during startup and to find old files to delete.
+const std::string log_file_prefix = "wesnoth-";
+const std::string log_file_suffix = ".log";
+
+// Maximum number of older log files to keep intact. Other files are deleted.
+// Note that this count does not include the current log file!
+const unsigned max_logs = 8;
+
+/** Helper function for rotate_logs. */
+bool is_not_log_file(const std::string& fn)
+{
+	return !(boost::algorithm::istarts_with(fn, log_file_prefix) &&
+			 boost::algorithm::iends_with(fn, log_file_suffix));
+}
+
+/**
+ * Deletes old log files from the log directory.
+ */
+void rotate_logs(const std::string& log_dir)
+{
+	std::vector<std::string> files;
+	filesystem::get_files_in_dir(log_dir, &files);
+
+	files.erase(std::remove_if(files.begin(), files.end(), is_not_log_file), files.end());
+
+	if(files.size() <= max_logs) {
+		return;
+	}
+
+	// Sorting the file list and deleting all but the last max_logs items
+	// should hopefully be faster than stat'ing every single file for its
+	// time attributes (which aren't very reliable to begin with.
+
+	std::sort(files.begin(), files.end());
+
+	for(size_t j = 0; j < files.size() - max_logs; ++j) {
+		const std::string path = log_dir + '/' + files[j];
+		LOG_LS << "rotate_logs(): delete " << path << '\n';
+		if(!filesystem::delete_file(path)) {
+			WRN_LS << "rotate_logs(): failed to delete " << path << "!\n";
+		}
+	}
+}
+
 /**
  * Generates a "unique" log file name.
  *
  * This is really not guaranteed to be unique, but it's close enough, since
  * the odds of having multiple Wesnoth instances spawn with the same PID within
  * a second span are close to zero.
+ *
+ * The file name includes a timestamp in order to satisfy the requirements of
+ * the rotate_logs logic.
  */
 std::string unique_log_filename()
 {
 	std::ostringstream o;
 
-	o << "wesnoth-";
+	o << log_file_prefix;
 
 	const time_t cur = time(NULL);
 	const tm* const lt = localtime(&cur);
@@ -79,7 +129,7 @@ std::string unique_log_filename()
 		o << ts_buf;
 	}
 
-	o << GetCurrentProcessId() << ".log";
+	o << GetCurrentProcessId() << log_file_suffix;
 
 	return o.str();
 }
@@ -334,6 +384,8 @@ void finish_log_file_setup()
 	if(!filesystem::file_exists(log_dir) && !filesystem::make_directory(log_dir)) {
 		log_init_panic(std::string("Could not create logs directory at ") +
 					   log_dir + ".");
+	} else {
+		rotate_logs(log_dir);
 	}
 
 	lfm->move_log_file(log_dir);
