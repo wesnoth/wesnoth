@@ -57,6 +57,12 @@ See also bug [bug]23753[/bug].
 [/list]
 [/rasection]
 
+[rasection="New log files location on Windows"]
+From this release onwards, Wesnoth no longer writes its stdout/stderr logs to [tt]stdout.txt[/tt]/[tt]stderr.txt[/tt] in the installation path. Instead, a single combined log file is written to [tt]<user data dir>\logs\wesnoth-<TIMESTAMP>-<PID>.log[/tt] containing all stdout [b]and[/b] stderr output. Up to 8 older log files are kept around, the rest being automatically deleted at game startup. Note that if an early startup failure occurs, the log file will be found at [tt]%TEMP%\wesnoth-<TIMESTAMP>-<PID>.log[/tt] instead.
+
+Since this replaces SDL 1.2's buggy built-in stdout/stderr redirection code with a Unicode-aware alternative, this also fixes bug [bug]22897[/bug].
+[/rasection]
+
 [rasection="New game version dialog"]
 Describe how awesome the new game version dialog is and how it replaces the old game paths dialog from 1.12.x
 [/rasection]
