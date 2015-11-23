@@ -5,6 +5,7 @@
    The contents of this file are placed in the public domain.
  */
 
+#include <exception>
 #include <cerrno>
 #include <cstring>
 #include <string>
@@ -15,10 +16,17 @@
 /**
  * Exception type used to propagate C runtime errors across functions.
  */
-class libc_error
+class libc_error : public std::exception
 {
 public:
-	libc_error(): e_(errno), msg_(strerror(e_))
+	libc_error()
+		: e_(errno)
+		, desc_(strerror(e_))
+		, msg_("C library error: " + desc_)
+	{
+	}
+
+	virtual ~libc_error() throw()
 	{
 	}
 
@@ -28,14 +36,21 @@ public:
 		return e_;
 	}
 
-	/** Returns an explanatory string describing the runtime error. */
+	/** Returns an explanatory string describing the runtime error alone. */
 	const std::string& desc() const
 	{
-		return msg_;
+		return desc_;
+	}
+
+	/** Returns an explanatory string describing the exception. */
+	const char* what() const throw()
+	{
+		return msg_.c_str();
 	}
 
 private:
 	int e_;
+	std::string desc_;
 	std::string msg_;
 };
 
