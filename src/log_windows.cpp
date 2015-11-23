@@ -241,6 +241,15 @@ public:
 	 */
 	bool console_enabled() const;
 
+	/**
+	 * Returns whether we are attached to a native console right now.
+	 *
+	 * Note that being attached to a console does not necessarily mean that the
+	 * standard streams are pointing to it. Use console_enabled to check that
+	 * instead.
+	 */
+	bool console_attached() const;
+
 private:
 	std::string fn_;
 	std::string cur_path_;
@@ -283,9 +292,17 @@ private:
 log_file_manager::log_file_manager(bool native_console)
 	: fn_(unique_log_filename())
 	, cur_path_()
-	, use_wincon_()
+	, use_wincon_(console_attached())
 {
 	DBG_LS << "Early init message\n";
+
+	if(use_wincon_) {
+		// Someone already attached a console to us. Assume we were compiled
+		// with the console subsystem flag and that the standard streams are
+		// already pointing to the console.
+		LOG_LS << "Console already attached at startup, log file disabled.\n";
+		return;
+	}
 
 	if(native_console) {
 		enable_native_console_output();
@@ -384,8 +401,19 @@ bool log_file_manager::console_enabled() const
 	return use_wincon_;
 }
 
+bool log_file_manager::console_attached() const
+{
+	return GetConsoleWindow() != NULL;
+}
+
 void log_file_manager::enable_native_console_output()
 {
+	if(use_wincon_) {
+		// We either went over this already or the console was set up by
+		// Windows itself (console subsystem flag in executable).
+		return;
+	}
+
 	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
 		LOG_LS << "Attached parent process console.\n";
 	} else if(AllocConsole()) {
