@@ -208,6 +208,7 @@ class log_file_manager : private boost::noncopyable
 {
 public:
 	log_file_manager();
+	~log_file_manager();
 
 	/**
 	 * Returns the path to the current log file.
@@ -283,6 +284,18 @@ log_file_manager::log_file_manager()
 	}
 
 	LOG_LS << "Opened log file at " << new_path << '\n';
+}
+
+log_file_manager::~log_file_manager()
+{
+	if(cur_path_.empty()) {
+		// No log file, nothing to do.
+		return;
+	}
+
+	DBG_LS << "Closing log file...\n";
+	fclose(stdout);
+	fclose(stderr);
 }
 
 std::string log_file_manager::log_file_path() const
