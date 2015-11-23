@@ -62,7 +62,6 @@
 #include "wml_exception.hpp"            // for twml_exception
 
 #ifdef _WIN32
-#include "desktop/windows_console.hpp"
 #include "log_windows.hpp"
 #endif // _WIN32
 
@@ -910,8 +909,6 @@ int main(int argc, char** argv)
 #endif
 #endif //_OPENMP
 #ifdef _WIN32
-	lg::early_log_file_setup();
-
 	(void)argc;
 	(void)argv;
 
@@ -924,10 +921,12 @@ int main(int argc, char** argv)
 	//       here and let program_options ignore the switch later.
 	for(size_t k = 0; k < args.size(); ++k) {
 		if(args[k] == "--wconsole") {
-			desktop::enable_win32_console();
+			lg::enable_native_console_output();
 			break;
 		}
 	}
+
+	lg::early_log_file_setup();
 #else
 	std::vector<std::string> args;
 	for(int i = 0; i < argc; ++i)

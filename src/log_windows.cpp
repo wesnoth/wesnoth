@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2014 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -207,7 +207,7 @@ void log_init_panic(const libc_error& e,
 class log_file_manager : private boost::noncopyable
 {
 public:
-	log_file_manager();
+	log_file_manager(bool native_console = false);
 	~log_file_manager();
 
 	/**
@@ -228,9 +228,23 @@ public:
 	 */
 	void move_log_file(const std::string& log_dir);
 
+	/**
+	 * Switches to using a native console instead of log file redirection.
+	 *
+	 * This is an irreversible operation right now. This might change later if
+	 * someone deems it useful.
+	 */
+	void enable_native_console_output();
+
+	/**
+	 * Returns whether we are using a native console instead of a log file.
+	 */
+	bool console_enabled() const;
+
 private:
 	std::string fn_;
 	std::string cur_path_;
+	bool use_wincon_;
 
 	enum STREAM_ID {
 		STREAM_STDOUT = 1,
@@ -266,11 +280,17 @@ private:
 								   bool truncate);
 };
 
-log_file_manager::log_file_manager()
+log_file_manager::log_file_manager(bool native_console)
 	: fn_(unique_log_filename())
 	, cur_path_()
+	, use_wincon_()
 {
 	DBG_LS << "Early init message\n";
+
+	if(native_console) {
+		enable_native_console_output();
+		return;
+	}
 
 	//
 	// We use the Windows temp dir on startup,
@@ -359,6 +379,44 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side B]\n";
 }
 
+bool log_file_manager::console_enabled() const
+{
+	return use_wincon_;
+}
+
+void log_file_manager::enable_native_console_output()
+{
+	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
+		LOG_LS << "Attached parent process console.\n";
+	} else if(AllocConsole()) {
+		LOG_LS << "Allocated own console.\n";
+	} else {
+		ERR_LS << "Console attachment or allocation failed!\n";
+		return;
+	}
+
+	DBG_LS << "stderr to console\n";
+	fflush(stderr);
+	std::cerr.flush();
+	freopen("CONOUT$", "wb", stderr);
+
+	DBG_LS << "stdout to console\n";
+	fflush(stdout);
+	std::cout.flush();
+	freopen("CONOUT$", "wb", stdout);
+
+	DBG_LS << "stdin from console\n";
+	freopen("CONIN$",  "rb", stdin);
+
+	// At this point the log file has been closed and it's no longer our
+	// responsibility to clean up anything; Windows will figure out what to do
+	// when the time comes for the process to exit.
+	cur_path_.clear();
+	use_wincon_ = true;
+
+	LOG_LS << "Console streams handover complete!\n";
+}
+
 boost::scoped_ptr<log_file_manager> lfm;
 
 } // end anonymous namespace
@@ -381,10 +439,25 @@ void early_log_file_setup()
 	lfm.reset(new log_file_manager());
 }
 
+void enable_native_console_output()
+{
+	if(lfm) {
+		lfm->enable_native_console_output();
+		return;
+	}
+
+	lfm.reset(new log_file_manager(true));
+}
+
 void finish_log_file_setup()
 {
 	// Make sure the LFM is actually set up just in case.
 	early_log_file_setup();
+
+	if(lfm->console_enabled()) {
+		// Nothing to do if running in console mode.
+		return;
+	}
 
 	static bool setup_complete = false;
 

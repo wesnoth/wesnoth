@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2014 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -67,6 +67,18 @@ void early_log_file_setup();
  * it when the user data directory isn't known yet).
  */
 void finish_log_file_setup();
+
+/**
+ * Switches to using a native console instead of log file redirection.
+ *
+ * In this mode, the log file is closed (if it was created in the first place)
+ * and output is sent directly to an attached or allocated console instead.
+ * This is used to implement the --wconsole command line option.
+ *
+ * Using a native console instead of a file has the benefit of allowing to see
+ * output in real time or redirecting it to a user-specified file.
+ */
+void enable_native_console_output();
 
 }
 
