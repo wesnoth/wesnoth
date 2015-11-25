@@ -35,22 +35,11 @@
 
 #include <windows.h>
 
-#if 1
 static lg::log_domain log_setup("logsetup");
 #define ERR_LS LOG_STREAM(err,   log_setup)
 #define WRN_LS LOG_STREAM(warn,  log_setup)
 #define LOG_LS LOG_STREAM(info,  log_setup)
 #define DBG_LS LOG_STREAM(debug, log_setup)
-
-#else
-
-std::stringstream foo;
-#define ERR_LS foo
-#define WRN_LS foo
-#define LOG_LS foo
-#define DBG_LS foo
-
-#endif
 
 namespace lg
 {
