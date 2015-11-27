@@ -153,6 +153,9 @@ Version 1.13.1+dev:
    * Added a new [difficulty] tag for defining a campaign's difficulty level
    * Add new syntax for [option], similar to the new difficulty syntax
    * Add [test_condition] ActionWML that tells why a conditional failed (for debugging)
+   * Add [remove_time_area] WML tag which takes a comma-separated list of time
+     area ids, and make [time_area] id= accept a comma-separated list when
+     using remove=yes as well.
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:

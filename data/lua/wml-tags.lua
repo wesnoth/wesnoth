@@ -1407,11 +1407,18 @@ function wml_actions.remove_shroud(cfg)
 end
 
 function wml_actions.time_area(cfg)
-	local remove = cfg.remove
-	if remove then
-		wesnoth.remove_time_area(cfg.id)
+	if cfg.remove then
+		wml_actions.remove_time_area(cfg)
 	else
 		wesnoth.add_time_area(cfg)
+	end
+end
+
+function wml_actions.remove_time_area(cfg)
+	local id = cfg.id or helper.wml_error("[remove_time_area] missing required id= key")
+
+	for w in utils.split(id) do
+		wesnoth.remove_time_area(w)
 	end
 end
 
