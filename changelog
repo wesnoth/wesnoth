@@ -64,6 +64,9 @@ Version 1.13.1+dev:
    * Add helper.get_nth_child
    * Add helper.child_count
    * Add helper.child_array
+   * wesnoth.remove_time_area no longer takes a comma-separated list of time
+     area ids.
+   * wesnoth.add_time_area no longer warns about commas in time area ids
  * Music and sound effects:
    * New sounds: dwarf hit and die, ink, mud fist and glob.
  * Terrains:
@@ -154,8 +157,8 @@ Version 1.13.1+dev:
    * Add new syntax for [option], similar to the new difficulty syntax
    * Add [test_condition] ActionWML that tells why a conditional failed (for debugging)
    * Add [remove_time_area] WML tag which takes a comma-separated list of time
-     area ids, and make [time_area] id= accept a comma-separated list when
-     using remove=yes as well.
+     area ids.
+   * [time_area] no longer warns about commas in ids when not using remove=yes.
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:

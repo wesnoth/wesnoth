@@ -4073,35 +4073,26 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	log_scope("time_area");
 
 	vconfig cfg(luaW_checkvconfig(L, 1));
-	std::string id = cfg["id"];
-
-	if(id.find(',') != std::string::npos) {
-		id = utils::split(id,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
-		ERR_LUA << "multiple ids for inserting a new time_area; will use only the first" << std::endl;
-	}
+	const std::string id = cfg["id"];
 
 	std::set<map_location> locs;
 	const terrain_filter filter(cfg, &game_state_);
 	filter.get_locations(locs, true);
 	config parsed_cfg = cfg.get_parsed_config();
 	tod_man().add_time_area(id, locs, parsed_cfg);
-	LOG_LUA << "event WML inserted time_area '" << id << "'\n";
+	LOG_LUA << "Lua inserted time_area '" << id << "'\n";
 	return 0;
 }
 
 /// Removing new time_areas dynamically with Standard Location Filters.
 int game_lua_kernel::intf_remove_time_area(lua_State * L)
 {
-	log_scope("time_area");
+	log_scope("remove_time_area");
 
-	const char * ids = luaL_checkstring(L, 1);
+	const char * id = luaL_checkstring(L, 1);
+	tod_man().remove_time_area(id);
+	LOG_LUA << "Lua removed time_area '" << id << "'\n";
 
-	const std::vector<std::string> id_list =
-		utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-	BOOST_FOREACH(const std::string& id, id_list) {
-		tod_man().remove_time_area(id);
-		LOG_LUA << "event WML removed time_area '" << id << "'\n";
-	}
 	return 0;
 }
 
