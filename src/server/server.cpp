@@ -124,16 +124,6 @@ static lg::log_domain log_config("config");
 #ifndef SIGHUP
 #define SIGHUP 20
 #endif
-/** @todo FIXME: should define SIGINT here too, but to what? */
-
-static sig_atomic_t config_reload = 0;
-
-#ifndef _MSC_VER
-static void reload_config(int signal) {
-	assert(signal == SIGHUP);
-	config_reload = 1;
-}
-#endif
 
 static void exit_sigint(int signal) {
 	assert(signal == SIGINT);
@@ -453,7 +443,8 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	last_ping_(time(NULL)),
 	last_stats_(last_ping_),
 	last_uh_clean_(last_ping_),
-	cmd_handlers_()
+	cmd_handlers_(),
+	sighup_(io_service_, SIGHUP)
 {
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
 	acceptor_.open(endpoint.protocol());
@@ -469,14 +460,21 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	load_config();
 	ban_manager_.read();
 
-	setup_fifo();
-
-#ifndef _MSC_VER
-	signal(SIGHUP, reload_config);
-#endif
+	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
 
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
+}
+
+void server::handle_sighup(const boost::system::error_code& error, int) {
+	assert(!error);
+
+	WRN_SERVER << "SIGHUP caught, reloading config\n";
+
+	cfg_ = read_config();
+	load_config();
+
+	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
 }
 
 void server::setup_fifo() {

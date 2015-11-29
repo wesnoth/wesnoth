@@ -29,6 +29,8 @@
 #include <boost/shared_array.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 
+#include <boost/asio/signal_set.hpp>
+
 class server
 {
 public:
@@ -223,6 +225,9 @@ private:
 	void motd_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void searchlog_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void dul_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+
+	boost::asio::signal_set sighup_;
+	void handle_sighup(const boost::system::error_code& error, int signal_number);
 };
 
 #endif
