@@ -52,6 +52,7 @@ static int impl_side_get(lua_State *L)
 
 	// Find the corresponding attribute.
 	return_int_attrib("side", t.side());
+	return_string_attrib("save_id", t.save_id());
 	return_int_attrib("gold", t.gold());
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
