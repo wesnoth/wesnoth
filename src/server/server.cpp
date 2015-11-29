@@ -34,7 +34,6 @@
 #include "../util.hpp"
 
 #include "game.hpp"
-#include "input_stream.hpp"
 #include "metrics.hpp"
 #include "player.hpp"
 #include "simple_wml.hpp"
@@ -419,6 +418,7 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	user_handler_(NULL),
 	games_(),
 	room_list_(player_connections_),
+	input_(io_service_),
 	input_path_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -469,6 +469,8 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	load_config();
 	ban_manager_.read();
 
+	setup_fifo();
+
 #ifndef _MSC_VER
 	signal(SIGHUP, reload_config);
 #endif
@@ -476,6 +478,52 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
 }
+
+void server::setup_fifo() {
+#ifndef _WIN32
+	const int res = mkfifo(input_path_.c_str(),0660);
+	if(res != 0 && errno != EEXIST) {
+		ERR_SERVER << "could not make fifo at '" << input_path_ << "' (" << strerror(errno) << ")\n";
+		return;
+	}
+	int fifo = open(input_path_.c_str(), O_RDWR|O_NONBLOCK);
+	input_.assign(fifo);
+	LOG_SERVER << "opened fifo at '" << input_path_ << "'. Server commands may be written to this file.\n";
+	read_from_fifo();
+#endif
+}
+
+#ifndef _WIN32
+void server::read_from_fifo() {
+	async_read_until(input_,
+			   admin_cmd_, '\n',
+			   boost::bind(&server::handle_read_from_fifo, this, _1, _2));
+}
+
+void server::handle_read_from_fifo(const boost::system::error_code& error, std::size_t) {
+	if(error) {
+		std::cout << error.message() << std::endl;
+		return;
+	}
+
+	std::istream is(&admin_cmd_);
+	std::string cmd;
+	std::getline(is, cmd);
+
+	LOG_SERVER << "Admin Command: type: " << cmd << "\n";
+	const std::string res = process_command(cmd, "*socket*");
+	// Only mark the response if we fake the issuer (i.e. command comes from IRC or so)
+	if (cmd.at(0) == '+') {
+		LOG_SERVER << "[admin_command_response]\n" << res << "\n" << "[/admin_command_response]\n";
+	} else {
+		LOG_SERVER << res << "\n";
+	}
+
+	read_from_fifo();
+
+}
+
+#endif
 
 void server::setup_handlers()
 {
@@ -596,10 +644,11 @@ void server::load_config() {
 #endif
 	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
 	// Reset (replace) the input stream only if the FIFO path changed.
-	/*if(fifo_path != input_path_) {
-		input_.reset(new input_stream(fifo_path));
+	if(fifo_path != input_path_) {
+		input_.close();
+		input_path_ = fifo_path;
+		setup_fifo();
 	}
-	input_path_ = fifo_path;*/
 
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();

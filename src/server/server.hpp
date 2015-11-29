@@ -17,7 +17,6 @@
 
 #include "config.hpp"
 #include "user_handler.hpp"
-#include "input_stream.hpp"
 #include "metrics.hpp"
 #include "ban.hpp"
 #include "player.hpp"
@@ -121,7 +120,9 @@ private:
 	RoomList room_list_;
 
 	/** server socket/fifo. */
-	//boost::scoped_ptr<input_stream> input_;
+#ifndef _WIN32
+	boost::asio::posix::stream_descriptor input_;
+#endif
 	std::string input_path_;
 
 	const std::string config_file_;
@@ -185,6 +186,12 @@ private:
 
 	void start_new_server();
 
+	void setup_fifo();
+#ifndef _WIN32
+	void read_from_fifo();
+	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
+	boost::asio::streambuf admin_cmd_;
+#endif
 	void setup_handlers();
 
 	typedef boost::function5<void, server*, const std::string&, const std::string&, std::string&, std::ostringstream *> cmd_handler;
