@@ -162,7 +162,8 @@ private:
 
 		int carryover_percentage;
 		bool carryover_add;
-		bool carryover_bonus;
+		// TODO: maybe make this integer percentage? I like the float version more but this might casue OOS error because of floating point rounding differences on different hardware.
+		double carryover_bonus;
 		int carryover_gold;
 		config variables;
 		void handle_legacy_share_vision(const config& cfg);
@@ -350,8 +351,8 @@ public:
 	int carryover_percentage() const { return info_.carryover_percentage; }
 	void set_carryover_add(bool value) { info_.carryover_add = value; }
 	bool carryover_add() const { return info_.carryover_add; }
-	void set_carryover_bonus(bool value) { info_.carryover_bonus = value; }
-	bool carryover_bonus() const { return info_.carryover_bonus; }
+	void set_carryover_bonus(double value) { info_.carryover_bonus = value; }
+	double carryover_bonus() const { return info_.carryover_bonus; }
 	void set_carryover_gold(int value) { info_.carryover_gold = value; }
 	int carryover_gold() const { return info_.carryover_gold; }
 	config& variables() { return info_.variables; }

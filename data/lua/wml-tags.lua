@@ -1474,7 +1474,15 @@ function wml_actions.endlevel(cfg)
 	local there_is_a_human_defeat = false
 	local there_is_a_local_human_victory = false
 	local there_is_a_local_human_defeat = false
-
+	local bool_int = function(b)
+		if b == true then
+			return 0
+		elseif b == false then
+			return 1
+		else
+			return b
+		end
+	end
 	for k,v in ipairs(wesnoth.sides) do
 		local side_result = side_results[v.side] or {}
 		local victory_or_defeat = side_result.result or cfg.result or "victory"
@@ -1497,9 +1505,9 @@ function wml_actions.endlevel(cfg)
 			end
 		end
 		if side_result.bonus ~= nil then
-			v.carryover_bonus = side_result.bonus
+			v.carryover_bonus = bool_int(side_result.bonus)
 		elseif cfg.bonus ~= nil then
-			v.carryover_bonus = cfg.bonus
+			v.carryover_bonus = bool_int(cfg.bonus)
 		end
 		if side_result.carryover_add ~= nil then
 			v.carryover_add = side_result.carryover_add
