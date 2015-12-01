@@ -2,6 +2,8 @@
 import os
 from SCons.Script import *
 from config_check_utils import *
+from os import environ
+from SCons.Util import PrependPath
 
 def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = None):
     if require_version:
@@ -40,8 +42,9 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
             sdlmain_name = "SDLmain"
         env = context.env
         if sdldir:
-            env.AppendUnique(CPPPATH = [os.path.join(sdldir, sdl_include_dir)], LIBPATH = [os.path.join(sdldir, "lib")])
-        else:
+            env["ENV"]["PATH"] = PrependPath(environ["PATH"], join(sdldir, "bin"))
+            env["ENV"]["PKG_CONFIG_PATH"] = PrependPath(environ.get("PKG_CONFIG_PATH", ""), join(sdldir, "lib/pkgconfig"))
+        if env["PLATFORM"] != "win32":
             for foo_config in [
                 "pkg-config --cflags --libs %s" % sdl_lib_name_pkgconfig,
                 "%s --cflags --libs" % sdl_config_name
@@ -52,7 +55,9 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
                     pass
                 else:
                     break
-        if env["PLATFORM"] == "win32":
+        else:
+            if sdldir:
+                env.AppendUnique(CPPPATH = [os.path.join(sdldir, sdl_include_dir)], LIBPATH = [os.path.join(sdldir, "lib")])
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
             env.AppendUnique(LIBS = Split("mingw32 %s %s" % (sdlmain_name, sdl_lib_name)))
             env.AppendUnique(LINKFLAGS = ["-mwindows"])

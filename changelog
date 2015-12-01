@@ -64,6 +64,9 @@ Version 1.13.1+dev:
    * Add helper.get_nth_child
    * Add helper.child_count
    * Add helper.child_array
+   * wesnoth.remove_time_area no longer takes a comma-separated list of time
+     area ids.
+   * wesnoth.add_time_area no longer warns about commas in time area ids
  * Music and sound effects:
    * New sounds: dwarf hit and die, ink, mud fist and glob.
  * Terrains:
@@ -153,6 +156,9 @@ Version 1.13.1+dev:
    * Added a new [difficulty] tag for defining a campaign's difficulty level
    * Add new syntax for [option], similar to the new difficulty syntax
    * Add [test_condition] ActionWML that tells why a conditional failed (for debugging)
+   * Add [remove_time_area] WML tag which takes a comma-separated list of time
+     area ids.
+   * [time_area] no longer warns about commas in ids when not using remove=yes.
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
@@ -162,6 +168,12 @@ Version 1.13.1+dev:
      explicitly use . or  .. (e.g. `--config-dir .\userdata`) to force the
      user config+data dir path to be relative to the current working dir (see
      also bug #23753).
+   * Wesnoth now uses combined stdout+stderr log files on Windows, moved to
+     <user data dir>\logs during initialization and first created in the user's
+     temporary files directory defined by Windows. Log files are named like
+     "wesnoth-<TIMESTAMP>-<PID>.log" and up to 8 log files are kept along with
+     the latest session's log file. This avoids issues caused by SDL 1.2's
+     built-in redirection code not being Unicode-aware (fixes bug #22897).
    * Removed legacy filesystem API implementation.
    * Fixed Generate Map dialog bug that caused last choice of map
      generator to not be actually selected (bug #23711).

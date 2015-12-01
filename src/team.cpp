@@ -112,7 +112,7 @@ team::team_info::team_info() :
 	lost(false),
 	carryover_percentage(game_config::gold_carryover_percentage),
 	carryover_add(false),
-	carryover_bonus(false),
+	carryover_bonus(0),
 	carryover_gold(0)
 {
 }
@@ -145,7 +145,7 @@ void team::team_info::read(const config &cfg)
 	side = cfg["side"].to_int(1);
 	carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
 	carryover_add = cfg["carryover_add"].to_bool(false);
-	carryover_bonus = cfg["carryover_bonus"].to_bool(false);
+	carryover_bonus = cfg["carryover_bonus"].to_double(1);
 	carryover_gold = cfg["carryover_gold"].to_int(0);
 	variables = cfg.child_or_empty("variables");
 

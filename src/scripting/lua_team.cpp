@@ -52,6 +52,7 @@ static int impl_side_get(lua_State *L)
 
 	// Find the corresponding attribute.
 	return_int_attrib("side", t.side());
+	return_string_attrib("save_id", t.save_id());
 	return_int_attrib("gold", t.gold());
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
@@ -73,6 +74,9 @@ static int impl_side_get(lua_State *L)
 	return_cstring_attrib("controller", t.controller().to_string().c_str());
 	return_string_attrib("defeat_condition", t.defeat_condition().to_string());
 	return_string_attrib("share_vision", t.share_vision().to_string());
+	return_float_attrib("carryover_bonus", t.carryover_bonus());
+	return_int_attrib("carryover_percentage", t.carryover_percentage());
+	return_bool_attrib("carryover_add", t.carryover_add());
 	return_bool_attrib("lost", t.lost());
 
 	if (strcmp(m, "recruit") == 0) {
@@ -117,7 +121,14 @@ static int impl_side_set(lua_State *L)
 	modify_string_attrib("controller", t.change_controller_by_wml(value));
 	modify_string_attrib("color", t.set_color(value));
 	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
+	modify_int_attrib("carryover_percentage", t.set_carryover_percentage(value));
+	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
 	modify_bool_attrib("lost", t.set_lost(value));
+
+	if (strcmp(m, "carryover_bonus") == 0) {
+		t.set_carryover_bonus(luaL_checknumber(L, 3));
+		return 0;
+	}
 
 	if (strcmp(m, "recruit") == 0) {
 		t.set_recruits(std::set<std::string>());

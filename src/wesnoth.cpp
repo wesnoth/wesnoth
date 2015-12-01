@@ -62,12 +62,8 @@
 #include "wml_exception.hpp"            // for twml_exception
 
 #ifdef _WIN32
-#include "desktop/windows_console.hpp"
+#include "log_windows.hpp"
 #endif // _WIN32
-
-#ifndef _WIN32
-#include <signal.h>
-#endif
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
 #include <boost/foreach.hpp>            // for auto_any_base, etc
@@ -80,6 +76,7 @@
 #include <boost/program_options/errors.hpp>  // for error
 #include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <boost/tuple/tuple.hpp>        // for tuple
+
 #include <cerrno>                       // for ENOMEM
 #include <clocale>                      // for setlocale, NULL, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
@@ -88,15 +85,6 @@
 #include <exception>                    // for exception
 #include <fstream>                      // for operator<<, basic_ostream, etc
 #include <iostream>                     // for cerr, cout
-#include <map>                          // for _Rb_tree_iterator, etc
-#include <new>                          // for bad_alloc
-#include <string>                       // for string, basic_string, etc
-#include <utility>                      // for make_pair, pair
-#include <vector>                       // for vector, etc
-#include "SDL_error.h"                  // for SDL_GetError
-#include "SDL_events.h"                 // for SDL_EventState, etc
-#include "SDL_stdinc.h"                 // for SDL_putenv, Uint32
-#include "SDL_timer.h"                  // for SDL_GetTicks
 
 //#define NO_CATCH_AT_GAME_END
 
@@ -931,10 +919,12 @@ int main(int argc, char** argv)
 	//       here and let program_options ignore the switch later.
 	for(size_t k = 0; k < args.size(); ++k) {
 		if(args[k] == "--wconsole") {
-			desktop::enable_win32_console();
+			lg::enable_native_console_output();
 			break;
 		}
 	}
+
+	lg::early_log_file_setup();
 #else
 	std::vector<std::string> args;
 	for(int i = 0; i < argc; ++i)

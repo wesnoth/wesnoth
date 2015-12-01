@@ -42,9 +42,9 @@ local function get_speaker(cfg)
 	if cfg.speaker == "narrator" then
 		speaker = "narrator"
 	elseif cfg.speaker == "unit" then
-		speaker = wesnoth.get_unit(context.x1, context.y1)
+		speaker = wesnoth.get_unit(context.x1 or 0, context.y1 or 0)
 	elseif cfg.speaker == "second_unit" then
-		speaker = wesnoth.get_unit(context.x2, context.y2)
+		speaker = wesnoth.get_unit(context.x2 or 0, context.y2 or 0)
 	else
 		speaker = wesnoth.get_units(cfg)[1]
 	end

@@ -1684,28 +1684,7 @@ int game_lua_kernel::intf_clear_messages(lua_State*)
 	}
 	return 0;
 }
-namespace {
-	struct optional_int_visitor : public boost::static_visitor<boost::optional<int> >
-	{
-		template <typename T> result_type operator()(T const &) const
-		{ return result_type(); }
-		result_type operator()(int i) const
-		{ return i; }
-		result_type operator()(unsigned long long u) const
-		{ return static_cast<int>(u); }
-	};
 
-	struct optional_bool_visitor : public boost::static_visitor<boost::optional<bool> >
-	{
-		template <typename T> result_type operator()(T const &) const
-		{ return result_type(); }
-		//Cannot use bool, the case above would catch the yes_no and true_false values.
-		result_type operator()(const config::attribute_value::yes_no & b) const
-		{ return static_cast<bool>(b); }
-		result_type operator()(const config::attribute_value::true_false & b) const
-		{ return static_cast<bool>(b); }
-	};
-}
 int game_lua_kernel::intf_end_level(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
@@ -1715,108 +1694,15 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 		return 0;
 	}
 	end_level_data data;
-	
-	// TODO: is this still needed?
-	// Remove 0-hp units from the unit map to avoid the following problem:
-	// In case a die event triggers an endlevel the dead unit is still as a
-	// 'ghost' in linger mode. After save loading in linger mode the unit
-	// is fully visible again.
-	unit_map & um = units();
-	unit_map::iterator u = um.begin();
-	while (u) {
-		if (u->hitpoints() <= 0) {
-			um.erase(u++);
-		} else {
-			++u;
-		}
-	}
 
-	typedef boost::tuple<bool/*is_victory*/, boost::optional<bool>/*bonus*/, boost::optional<int>/*percentage*/, boost::optional<bool>/*add*/ > t_side_result;
-	const t_side_result default_result = t_side_result(
-		cfg["result"] != "defeat", 
-		cfg["bonus"].to_bool(true),
-		cfg["carryover_percentage"].apply_visitor(optional_int_visitor()),
-		cfg["carryover_add"].apply_visitor(optional_bool_visitor())	
-	);
-	std::vector<t_side_result> side_results = std::vector<t_side_result>(board().teams().size(), default_result);
-	BOOST_FOREACH(const vconfig& side_result, cfg.get_children("result")) {
-		size_t side = side_result["side"].to_int();
-		if(side >= side_results.size()) {
-			return luaL_error(L, "invalid side index %d in [result] in wesnoth.end_level", side);
-		}
-
-		std::string result = side_result["result"];
-		VALIDATE_WITH_DEV_MESSAGE(
-			  result.empty() || result == "victory" || result == "defeat"
-			, _("Invalid value in the result key for [end_level]")
-			, "result = '"  + result + "'.");
-
-		if(result != "") {
-			side_results[side].get<0>() = result != "defeat";
-		}
-		if(boost::optional<bool> bonus = side_result["bonus"].apply_visitor(optional_bool_visitor())){
-			side_results[side].get<1>() = bonus;
-		}
-		if(boost::optional<int> percentage = side_result["carryover_percentage"].apply_visitor(optional_int_visitor())){
-			side_results[side].get<2>() = percentage;
-		}
-		if(boost::optional<bool> add = side_result["carryover_add"].apply_visitor(optional_bool_visitor())){
-			side_results[side].get<3>() = add;
-		}
-	}
-	//Find out whether it is victory or defeat:
-	// If there is a local human side then we have a victory iff one of those sides has a victory
-	// If there is no local human side but a remote human side then we have a victory iff one of those sides has a victory
-	// else we use the default_result from ouside [result].
-	bool any_human_victory = false;
-	bool local_human_victory = false;
-	bool there_is_a_remote_human = false;
-	bool there_is_a_local_human = false;
-	for(int i = 0; i < static_cast<int>(side_results.size()); ++i) {
-		team& t = teams()[i];
-		const t_side_result result = side_results[i];
-
-		if(t.is_local_human()) {
-			there_is_a_local_human = true;
-			if(result.get<0>()) {
-				local_human_victory = true;
-				any_human_victory = true;
-			}
-		}
-		if(t.is_network_human()) {
-			there_is_a_remote_human = true;
-			if(result.get<0>()) {
-				any_human_victory = true;
-			}
-		}
-
-		if(boost::optional<bool> bonus = result.get<1>()){
-			t.set_carryover_bonus(bonus.get());
-		}
-		if(boost::optional<int> percentage = result.get<2>()){
-			t.set_carryover_percentage(percentage.get());
-		}
-		if(boost::optional<bool> add = result.get<3>()){
-			t.set_carryover_add(add.get());
-		}
-	}
-	if(!there_is_a_remote_human && !there_is_a_local_human) {
-		any_human_victory = default_result.get<0>();
-	}
-	if(!there_is_a_local_human) {
-		local_human_victory = any_human_victory;
-	}
-	data.proceed_to_next_level = any_human_victory;
-
-
+	data.proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
 	data.transient.custom_endlevel_music = cfg["music"].str();
 	data.transient.carryover_report = cfg["carryover_report"].to_bool(true);
 	data.prescenario_save = cfg["save"].to_bool(true);
 	data.replay_save = cfg["replay_save"].to_bool(true);
-	data.transient.linger_mode = cfg["linger_mode"].to_bool(true)
-		&& !teams().empty();
+	data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
 	data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
-	data.is_victory = local_human_victory;
+	data.is_victory = cfg["result"] == "victory";
 	play_controller_.set_end_level_data(data);
 	return 0;
 }
@@ -4073,35 +3959,26 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	log_scope("time_area");
 
 	vconfig cfg(luaW_checkvconfig(L, 1));
-	std::string id = cfg["id"];
-
-	if(id.find(',') != std::string::npos) {
-		id = utils::split(id,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
-		ERR_LUA << "multiple ids for inserting a new time_area; will use only the first" << std::endl;
-	}
+	const std::string id = cfg["id"];
 
 	std::set<map_location> locs;
 	const terrain_filter filter(cfg, &game_state_);
 	filter.get_locations(locs, true);
 	config parsed_cfg = cfg.get_parsed_config();
 	tod_man().add_time_area(id, locs, parsed_cfg);
-	LOG_LUA << "event WML inserted time_area '" << id << "'\n";
+	LOG_LUA << "Lua inserted time_area '" << id << "'\n";
 	return 0;
 }
 
 /// Removing new time_areas dynamically with Standard Location Filters.
 int game_lua_kernel::intf_remove_time_area(lua_State * L)
 {
-	log_scope("time_area");
+	log_scope("remove_time_area");
 
-	const char * ids = luaL_checkstring(L, 1);
+	const char * id = luaL_checkstring(L, 1);
+	tod_man().remove_time_area(id);
+	LOG_LUA << "Lua removed time_area '" << id << "'\n";
 
-	const std::vector<std::string> id_list =
-		utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-	BOOST_FOREACH(const std::string& id, id_list) {
-		tod_man().remove_time_area(id);
-		LOG_LUA << "event WML removed time_area '" << id << "'\n";
-	}
 	return 0;
 }
 

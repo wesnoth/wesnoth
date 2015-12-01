@@ -32,7 +32,10 @@ function wesnoth.wml_actions.replace_map(cfg)
 
 	local x1,x2 = string.match(cfg.x, "(%d+)-(%d+)")
 	local y1,y2 = string.match(cfg.y, "(%d+)-(%d+)")
-	local map = cfg.map_data
+	local header,map = string.match(cfg.map_data, "(.-)\n\n(.*)")
+	if not map then 
+		map = cfg.map_data
+	end
 
 	x1 = tonumber(x1)
 	y1 = tonumber(y1)

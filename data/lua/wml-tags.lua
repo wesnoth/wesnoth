@@ -146,7 +146,7 @@ function wml_actions.allow_recruit(cfg)
 			wesnoth.add_known_unit(type)
 		end
 		team.recruit = v
-	end
+		end
 end
 
 function wml_actions.allow_extra_recruit(cfg)
@@ -1407,11 +1407,18 @@ function wml_actions.remove_shroud(cfg)
 end
 
 function wml_actions.time_area(cfg)
-	local remove = cfg.remove
-	if remove then
-		wesnoth.remove_time_area(cfg.id)
+	if cfg.remove then
+		wml_actions.remove_time_area(cfg)
 	else
 		wesnoth.add_time_area(cfg)
+	end
+end
+
+function wml_actions.remove_time_area(cfg)
+	local id = cfg.id or helper.wml_error("[remove_time_area] missing required id= key")
+
+	for w in utils.split(id) do
+		wesnoth.remove_time_area(w)
 	end
 end
 
@@ -1436,6 +1443,7 @@ function wml_actions.end_turn(cfg)
 end
 
 function wml_actions.endlevel(cfg)
+	local parsed = helper.parsed(cfg)
 	if wesnoth.check_end_level_disabled() then
 		wesnoth.message("Repeated [endlevel] execution, ignoring")
 		return
@@ -1456,8 +1464,74 @@ function wml_actions.endlevel(cfg)
 	if end_credits ~= nil then
 		wesnoth.set_end_campaign_credits(end_credits)
 	end
-
-	wesnoth.end_level(cfg)
+	
+	local side_results = {}
+	for result in helper.child_range(parsed, "result") do
+		local side = result.side or helper.wml_error("[result] in [endlevel] missing required side= key")
+		side_results[side] = result
+	end
+	local there_is_a_human_victory = false
+	local there_is_a_human_defeat = false
+	local there_is_a_local_human_victory = false
+	local there_is_a_local_human_defeat = false
+	local bool_int = function(b)
+		if b == true then
+			return 0
+		elseif b == false then
+			return 1
+		else
+			return b
+		end
+	end
+	for k,v in ipairs(wesnoth.sides) do
+		local side_result = side_results[v.side] or {}
+		local victory_or_defeat = side_result.result or cfg.result or "victory"
+		local victory = victory_or_defeat == "victory"
+		if victory_or_defeat ~= "victory" and victory_or_defeat ~= "defeat" then
+			return helper.wml_error("invalid result= key in [endlevel] '" .. victory_or_defeat .."'")
+		end
+		if v.controller == "human" or v.controller == "network" then
+			if victory then
+				there_is_a_human_victory = true
+			else
+				there_is_a_human_defeat = true
+			end
+		end
+		if v.controller == "human" then
+			if victory then
+				there_is_a_local_human_victory = true
+			else
+				there_is_a_local_human_defeat = true
+			end
+		end
+		if side_result.bonus ~= nil then
+			v.carryover_bonus = bool_int(side_result.bonus)
+		elseif cfg.bonus ~= nil then
+			v.carryover_bonus = bool_int(cfg.bonus)
+		end
+		if side_result.carryover_add ~= nil then
+			v.carryover_add = side_result.carryover_add
+		elseif cfg.carryover_add ~= nil then
+			v.carryover_add = cfg.carryover_add
+		end
+		if side_result.carryover_percentage ~= nil then
+			v.carryover_percentage = side_result.carryover_percentage
+		elseif cfg.carryover_percentage ~= nil then
+			v.carryover_percentage = cfg.carryover_percentage
+		end
+	end
+	local proceed_to_next_level = there_is_a_human_victory or (not there_is_a_human_defeat and cfg.result ~= "defeat") 
+	local victory = there_is_a_local_human_victory or (not there_is_a_local_human_defeat and proceed_to_next_level)
+	wesnoth.end_level {
+		music = cfg.music,
+		carryover_report = cfg.carryover_report,
+		save = cfg.save,
+		replay_save = cfg.replay_save,
+		linger_mode = cfg.linger_mode,
+		reveal_map = cfg.reveal_map,
+		proceed_to_next_level = proceed_to_next_level,
+		result = victory and "victory" or "defeat",
+	}
 end
 
 function wml_actions.event(cfg)

@@ -34,7 +34,10 @@
 using boost::uintmax_t;
 
 #ifdef _WIN32
+#include "log_windows.hpp"
+
 #include <boost/locale.hpp>
+
 #include <windows.h>
 #include <shlobj.h>
 #endif /* !_WIN32 */
@@ -478,6 +481,10 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "data" / "add-ons");
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
+
+#ifdef _WIN32
+	lg::finish_log_file_setup();
+#endif
 }
 
 #ifdef _WIN32
