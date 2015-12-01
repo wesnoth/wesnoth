@@ -1343,7 +1343,7 @@ msgstr "Waffenfähigkeiten"
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:63 data/core/help.cfg:129
 msgid "Eras"
-msgstr ""
+msgstr "Epochen"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
@@ -1361,7 +1361,7 @@ msgstr "Erweiterungen"
 #. [topic]: id=..commands
 #: data/core/help.cfg:86 data/core/help.cfg:650
 msgid "Commands"
-msgstr "Kommandos"
+msgstr "Befehle"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:98
@@ -3523,7 +3523,7 @@ msgstr ""
 "zu diesem Zweck entworfene Kampagnen gespielt werden, die völlig nach "
 "eigenen Vorstellungen der Anwender gescriptet und auf deren Wünsche "
 "zugeschnitten wurden. Ebenso stehen Pakete mit Sets aus mehreren "
-"individuellen Szenarien für den Spielmodus 'Multiplayer' (MP) bereit."
+"individuellen Szenarien für den Mehrspieler-Modus bereit."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:603
@@ -3717,10 +3717,8 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:656
-#, fuzzy
-#| msgid "General commands"
 msgid "General Commands"
-msgstr "Generelle Kommandos"
+msgstr "Allgemeine Befehle"
 
 #. [topic]: id=debug_commands
 #. [topic]: id=general_commands
@@ -3761,8 +3759,8 @@ msgid ""
 msgstr ""
 "\n"
 "Debug-Modus aktivieren (funktioniert nicht bei Mehrspieler-Partien)\n"
-"Eine Übersicht der möglichen Kommandos findet Ihr unter "
-"<ref>dst='debug_commands' text='Debug Kommandos'</ref>.\n"
+"Eine Übersicht der möglichen Befehle findet Ihr unter "
+"<ref>dst='debug_commands' text='Debug-Befehle'</ref>.\n"
 "Der Debug-Modus wird bei Beenden des Spiels abgeschaltet oder durch den "
 "Befehl [:nodebug].\n"
 "\n"
@@ -3879,10 +3877,8 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:700
-#, fuzzy
-#| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
-msgstr "Mehrspieler Kommandos"
+msgstr "Mehrspieler-Befehle"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:703
@@ -3968,7 +3964,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Spieler von einer Multiplayer-Partie ausschließen\n"
+"Spieler von einer Mehrspieler-Partie ausschließen\n"
 "Es ist den betroffenen Spielern jedoch möglich, dem Spiel erneut "
 "beizutreten.\n"
 "Soll nur die Kontrolle eines/mehrere Teams geändert werden, verwendet den "
@@ -4044,10 +4040,8 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:738
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
-msgstr "Debug Kommandos"
+msgstr "Debug-Befehle"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:741
@@ -4233,11 +4227,10 @@ msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Diese Einheit steht wie ein Fels im Schlachtgetümmel und ihre Schlagkraft "
-"ist verdoppelt. Wenn sie sich aber verteidigt, steigt sie nur um maximal "
-"50%.\n"
-"Auf die Anfälligkeit für Schaden wirkt diese Fertigkeit sich wohlgemerkt "
-"nicht aus."
+"Diese Einheit steht wie ein Fels im Schlachtgetümmel, denn ihre Resistenz "
+"ist verdoppelt, wenn sie sich verteidigt; allerdings steigt ihre Resistenz "
+"nur bis maximal 50%.\n"
+"Bei Anfälligkeiten gegen Schadensarten wirkt sich diese Fertigkeit nicht aus."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:106 data/core/macros/abilities.cfg:127
