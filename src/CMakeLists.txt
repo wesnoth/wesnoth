@@ -293,6 +293,7 @@ if(WIN32)
 		${libwesnoth-core_STAT_SRC}
 		log_windows.cpp
 	)
+endif()
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
