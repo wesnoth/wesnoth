@@ -295,6 +295,8 @@ void pump()
 	while(SDL_PollEvent(&temp_event)) {
 		++poll_count;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+		peek_for_resize();
+
 		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT
 				&& (temp_event.window.event == SDL_WINDOWEVENT_ENTER
 						|| temp_event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED))
