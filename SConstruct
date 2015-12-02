@@ -97,6 +97,7 @@ opts.AddVariables(
     PathVariable('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
+    EnumVariable('multilib_arch', 'Address model for multilib compiler: 32-bit or 64-bit', "", ["", "32", "64"]),
     ('jobs', 'Set the number of parallel compilations', "1", lambda key, value, env: int(value), int),
     BoolVariable('distcc', 'Use distcc', False),
     BoolVariable('ccache', "Use ccache", False),
@@ -303,6 +304,10 @@ configure_args = dict(
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
 env.MergeFlags(env["extra_flags_config"])
+
+if env["multilib_arch"]:
+    multilib_flag = "-m" + env["multilib_arch"]
+    env.AppendUnique(CCFLAGS = [multilib_flag], LINKFLAGS = [multilib_flag])
 
 # Some tests need to load parts of boost
 env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
