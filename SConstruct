@@ -99,6 +99,7 @@ opts.AddVariables(
     ('jobs', 'Set the number of parallel compilations', "1", lambda key, value, env: int(value), int),
     BoolVariable('distcc', 'Use distcc', False),
     BoolVariable('ccache', "Use ccache", False),
+    ('ctool', 'Set c compiler command if not using standard compiler.'),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolVariable('cxx0x', 'Use C++0x features.', False),
     BoolVariable('openmp', 'Enable openmp use.', False),
@@ -149,10 +150,15 @@ else:
     from cross_compile import *
     setup_cross_compile(env)
 
+if 'HOME' in os.environ:
+    env['ENV']['HOME'] = os.environ['HOME']
+
+if env.get('ctool',""):
+    env['CC'] = env['ctool']
+    env['CXX'] = env['ctool'].rstrip("cc") + "++"
+
 if env.get('cxxtool',""):
     env['CXX'] = env['cxxtool']
-    if 'HOME' in os.environ:
-        env['ENV']['HOME'] = os.environ['HOME']
 
 if env['jobs'] > 1:
     SetOption("num_jobs", env['jobs'])
