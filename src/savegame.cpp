@@ -222,16 +222,8 @@ bool loadgame::load_game(
 	if (!difficulty_.empty()){
 		load_config_["difficulty"] = difficulty_;
 	}
-#if 0
-	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
-	gamestate_.classification().campaign_type = lexical_cast_default<game_classification::CAMPAIGN_TYPE> (load_config_["campaign_type"].str(), game_classification::CAMPAIGN_TYPE::SCENARIO);
-	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
-	gamestate_.classification().version = load_config_["version"].str();
-	gamestate_.classification().difficulty = load_config_["difficulty"].str();
-#else
 	// read classification to for loading the game_config config object.
 	gamestate_.classification() = game_classification(load_config_);
-#endif
 
 	if (skip_version_check) {
 		return true;
