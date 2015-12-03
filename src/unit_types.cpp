@@ -274,7 +274,8 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	big_profile_ = cfg_["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);
 
-	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"].str(), unit_type::ALIGNMENT::NEUTRAL);
+	alignment_ = unit_type::ALIGNMENT::NEUTRAL;
+	alignment_.parse(cfg_["alignment"].str());
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])

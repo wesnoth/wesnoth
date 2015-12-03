@@ -277,7 +277,8 @@ public:
 	void make_human() { info_.controller = CONTROLLER::HUMAN; }
 	void make_ai() { info_.controller = CONTROLLER::AI; }
 	void change_controller(const std::string& new_controller) {
-		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, CONTROLLER::AI);
+		info_.controller = CONTROLLER::AI;
+		info_.controller.parse(new_controller);
 	}
 	void change_controller_by_wml(const std::string& new_controller);
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
@@ -339,7 +340,7 @@ public:
 	DEFEAT_CONDITION defeat_condition() const { return info_.defeat_condition; }
 	void set_defeat_condition(DEFEAT_CONDITION value) { info_.defeat_condition = value; }
 	///sets the defeat condition if @param value is a valid defeat condition, otherwise nothing happes.
-	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(value, info_.defeat_condition); }
+	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition.parse(value); }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
@@ -387,7 +388,8 @@ public:
 	SHARE_VISION share_vision() const { return info_.share_vision; }
 
 	void set_share_vision(const std::string& vision_status) {
-		info_.share_vision = lexical_cast_default<SHARE_VISION> (vision_status, SHARE_VISION::ALL);
+		info_.share_vision = SHARE_VISION::ALL;
+		info_.share_vision.parse(vision_status);
 	}
 
 	void set_share_vision(SHARE_VISION vision_status) { info_.share_vision = vision_status; }

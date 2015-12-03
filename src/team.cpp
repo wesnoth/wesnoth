@@ -138,7 +138,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"].str(), team::DEFEAT_CONDITION::NO_LEADER);
+	defeat_condition = cfg["defeat_condition"].to_enum<team::DEFEAT_CONDITION>(team::DEFEAT_CONDITION::NO_LEADER);
 	lost = cfg["lost"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
@@ -197,7 +197,8 @@ void team::team_info::read(const config &cfg)
 	else
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
-	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::CONTROLLER::AI);
+	controller = team::CONTROLLER::AI;
+	controller.parse(cfg["controller"].str());
 
 	//TODO: Why do we read disallow observers differently when controller is empty?
 	if (controller == CONTROLLER::EMPTY) {
