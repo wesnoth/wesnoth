@@ -79,7 +79,7 @@ private:
 		ENABLED,
 		DISABLED,
 		PRESSED,
-		FOCUSSED,
+		FOCUSED,
 		COUNT
 	};
 

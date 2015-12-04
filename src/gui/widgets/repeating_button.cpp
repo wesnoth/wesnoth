@@ -109,7 +109,7 @@ void trepeating_button::signal_handler_mouse_enter(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	set_state(FOCUSSED);
+	set_state(FOCUSED);
 	handled = true;
 }
 
@@ -163,7 +163,7 @@ void trepeating_button::signal_handler_left_button_up(const event::tevent event,
 	}
 
 	if(get_active()) {
-		set_state(FOCUSSED);
+		set_state(FOCUSED);
 	}
 	handled = true;
 }

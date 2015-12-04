@@ -433,7 +433,7 @@ void ttext_::signal_handler_receive_keyboard_focus(const event::tevent event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	set_state(FOCUSSED);
+	set_state(FOCUSED);
 }
 
 void ttext_::signal_handler_lose_keyboard_focus(const event::tevent event)
