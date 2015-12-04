@@ -121,6 +121,8 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	filter->set_text_changed_callback(
 			boost::bind(&tunit_create::filter_text_changed, this, _1, _2));
 
+	window.keyboard_capture(filter);
+
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
 								   boost::bind(&tunit_create::list_item_clicked,
@@ -130,8 +132,6 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	list.set_callback_value_change(
 			dialog_callback<tunit_create, &tunit_create::list_item_clicked>);
 #endif
-
-	window.keyboard_capture(&list);
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "type_profile", false),
