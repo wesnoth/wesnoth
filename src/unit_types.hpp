@@ -53,7 +53,7 @@ public:
 	/// Records the status of the lazy building of unit types.
 	/// These are in order of increasing levels of being built.
 	/// HELP_INDEX is already defined in a windows header under some conditions.
-	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED , WITHOUT_ANIMATIONS, FULL};
+	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,

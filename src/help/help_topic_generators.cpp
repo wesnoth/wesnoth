@@ -231,7 +231,7 @@ static void print_trait_list(std::stringstream & ss, const std::vector<trait_dat
 
 std::string unit_topic_generator::operator()() const {
 		// Force the lazy loading to build this unit.
-		unit_types.build_unit_type(type_, unit_type::WITHOUT_ANIMATIONS);
+		unit_types.build_unit_type(type_, unit_type::FULL);
 
 		std::stringstream ss;
 		std::string clear_stringstream;

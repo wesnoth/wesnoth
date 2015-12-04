@@ -155,7 +155,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			continue;
 
 		// Make sure this unit type is built with the data we need.
-		unit_types.build_unit_type(i.second, unit_type::WITHOUT_ANIMATIONS);
+		unit_types.build_unit_type(i.second, unit_type::FULL);
 
 		units_.push_back(&i.second);
 

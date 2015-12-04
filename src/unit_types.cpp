@@ -430,8 +430,6 @@ void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_typ
 		build_help_index(movement_types, races, traits);
 		return;
 
-	case WITHOUT_ANIMATIONS:
-		// Animations are now built when they are accessed, so fall down to FULL.
 	case FULL:
 		build_full(movement_types, races, traits);
 		return;
