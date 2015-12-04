@@ -117,10 +117,10 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(filter);
 	filter->set_text_changed_callback(
 			boost::bind(&tgame_load::filter_text_changed, this, _1, _2));
+	window.keyboard_capture(filter);
 
 	tlistbox* list
 			= find_widget<tlistbox>(&window, "savegame_list", false, true);
-	window.keyboard_capture(list);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
