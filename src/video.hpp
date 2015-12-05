@@ -49,6 +49,12 @@ GPU_Target *get_render_target();
 
 surface display_format_alpha(surface surf);
 surface& get_video_surface();
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+//this needs to be invoked immediately after a resize event or the game will crash.
+void update_framebuffer();
+#endif
+
+
 SDL_Rect screen_area();
 
 
@@ -74,11 +80,6 @@ class CVideo : private boost::noncopyable {
 	int bppForMode( int x, int y, int flags);
 	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
 	int setMode( int x, int y, int bits_per_pixel, int flags );
-
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	//this needs to be invoked immediately after a resize event or the game will crash.
-	void update_framebuffer();
-#endif
 
 	//did the mode change, since the last call to the modeChanged() method?
 	bool modeChanged();

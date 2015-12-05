@@ -533,7 +533,7 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
-void CVideo::update_framebuffer()
+void update_framebuffer()
 {
 	if (!window)
 		return;

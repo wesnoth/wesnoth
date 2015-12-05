@@ -211,7 +211,7 @@ void loadscreen::draw_screen(const std::string &text)
 #if SDL_VERSION_ATLEAST(2,0,0)
 		if (ev.type == SDL_WINDOWEVENT &&
 				ev.window.event == SDL_WINDOWEVENT_RESIZED) {
-			display::get_singleton()->video().update_framebuffer();
+			update_framebuffer();
 		}
 		if (ev.type == SDL_WINDOWEVENT &&
 				(ev.window.event == SDL_WINDOWEVENT_RESIZED ||

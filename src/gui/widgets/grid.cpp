@@ -21,9 +21,6 @@
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/widgets/control.hpp"
 #include "utils/foreach.tpp"
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "events.hpp"
-#endif
 
 #include <numeric>
 
@@ -920,9 +917,8 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 	 * Without the call when resizing larger a black area of remains, this is
 	 * the area not used for resizing the screen, this call `fixes' that.
 	 */
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	SDL_PumpEvents();
-#if SDL_VERSION_ATLEAST(2,0,0)
-	events::peek_for_resize();
 #endif
 
 
@@ -962,9 +958,8 @@ tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	 * Without the call when resizing larger a black area of remains, this is
 	 * the area not used for resizing the screen, this call `fixes' that.
 	 */
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	SDL_PumpEvents();
-#if SDL_VERSION_ATLEAST(2,0,0)
-	events::peek_for_resize();
 #endif
 
 	assert(get_visible() == twidget::tvisible::visible);
