@@ -3374,7 +3374,12 @@ static int intf_remove_tile_overlay(lua_State *L)
  */
 static int intf_delay(lua_State *L)
 {
-	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
+	lua_Integer delay = luaL_checkinteger(L, 1);
+	if(delay == 0) {
+		resources::controller->play_slice(false);
+		return 0;
+	} 
+	unsigned final = SDL_GetTicks() + delay;
 	do {
 		resources::controller->play_slice(false);
 		resources::screen->delay(10);
