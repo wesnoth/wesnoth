@@ -3517,6 +3517,10 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 int game_lua_kernel::intf_delay(lua_State *L)
 {
 	lua_Integer delay = luaL_checkinteger(L, 1);
+	if(delay == 0) {
+		play_controller_.play_slice(false);
+		return 0;
+	}
 	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
 		delay /= game_display_->turbo_speed();
 	}
