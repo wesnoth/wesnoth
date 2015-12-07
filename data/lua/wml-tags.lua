@@ -1655,6 +1655,8 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	local variable = cfg.variable or helper.wml_error("[random_placement] missing required 'variable' attribute")
 	local use_delay = cfg.use_delay == true
 	local allow_less = cfg.allow_less == true
+	local variable_previous = utils.start_var_scope(variable)
+
 	if radius < 0 then
 		-- optimisation for radius = -1
 		dist_le_radius = function() return false end
@@ -1715,4 +1717,6 @@ wesnoth.wml_actions.random_placement = function(cfg)
 			wesnoth.delay(0);
 		end
 	end
+	utils.end_var_scope(variable, variable_previous)
+
 end
