@@ -58,6 +58,8 @@ public:
 	/// does NOT expand [option]s because variables are persitent anyway to we don't need it
 	/// should be called after expand_scenario() but before expand_carryover()
 	void expand_mp_events();
+	/// helper for expand_mp_events();
+	void load_mod(const std::string& type, const std::string& id);
 	/// adds values of [option]s into [carryover_sides_start][variables] so that they are applied in the next level.
 	/// Note that since [variabels] are persistent we only use this once at the beginning
 	/// of a campaign but calling it multiple times is no harm eigher
@@ -101,9 +103,8 @@ public:
 	void set_defaults();
 	replay_recorder_base& get_replay() { return replay_data_; }
 	const replay_recorder_base& get_replay() const { return replay_data_; }
+
 private:
-	void expand_resources();
-	
 	bool has_carryover_expanded_;
 	/** 
 		depends on has_carryover_expanded_:

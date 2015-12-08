@@ -256,6 +256,44 @@ namespace
 	};
 }
 
+void saved_game::load_mod(const std::string& type, const std::string& id)
+{
+	if(const config& cfg = game_config_manager::get()->
+		game_config().find_child(type, "id", id))
+	{
+		// Note the addon_id if this mod is required to play the game in mp
+		std::string require_attr = "require_" + type;
+		bool require_default = (type == "era"); // By default, eras have "require_era = true", and mods have "require_modification = false"
+		if (!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
+			mp_settings_.update_addon_requirements(config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]));
+		}
+
+		// Copy events
+		BOOST_FOREACH(const config& modevent, cfg.child_range("event"))
+		{
+			if(modevent["enable_if"].empty() || variable_to_bool(carryover_.child_or_empty("variables"), modevent["enable_if"]))
+			{
+				this->starting_pos_.add_child("event", modevent);
+			}
+		}
+		// Copy lua
+		BOOST_FOREACH(const config& modlua, cfg.child_range("lua"))
+		{
+			this->starting_pos_.add_child("lua", modlua);
+		}
+		// Copy load_resource
+		BOOST_FOREACH(const config& load_resource, cfg.child_range("load_resource"))
+		{
+			this->starting_pos_.add_child("load_resource", load_resource);
+		}
+	}
+	else
+	{
+		//TODO: A user message instead?
+		ERR_NG << "Couldn't find [" << type<< "] with id=" << id <<std::endl;
+	}
+}
+
 // Gets the ids of the mp_era and modifications which were set to be active, then fetches these configs from the game_config and copies their [event] and [lua] to the starting_pos_.
 // At this time, also collect the addon_id attributes which appeared in them and put this list in the addon_ids attribute of the mp_settings.
 void saved_game::expand_mp_events()
@@ -264,7 +302,7 @@ void saved_game::expand_mp_events()
 	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->starting_pos_["has_mod_events"].to_bool(false))
 	{
 		std::vector<modevents_entry> mods;
-
+		std::set<std::string> loaded_resources;
 		boost::copy( mp_settings_.active_mods
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
 			, std::back_inserter(mods) );
@@ -272,40 +310,23 @@ void saved_game::expand_mp_events()
 		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
 		if(classification_.campaign != "")
 		{ mods.push_back(modevents_entry("campaign", classification_.campaign)); }
-
-		BOOST_FOREACH(modevents_entry& mod, mods)
-		{
-			if(const config& cfg = game_config_manager::get()->
-				game_config().find_child(mod.type, "id", mod.id))
+		
+		// In the first iteration mod contains no [resource]s in all other iterations, mods contains only [resource]s
+		do {
+			BOOST_FOREACH(modevents_entry& mod, mods)
 			{
-				// Note the addon_id if this mod is required to play the game in mp
-				std::string require_attr = "require_" + mod.type;
-				bool require_default = (mod.type == "era"); // By default, eras have "require_era = true", and mods have "require_modification = false"
-				if (!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
-					mp_settings_.update_addon_requirements(config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]));
-				}
-
-				// Copy events
-				BOOST_FOREACH(const config& modevent, cfg.child_range("event"))
-				{
-					if(modevent["enable_if"].empty() || variable_to_bool(carryover_.child_or_empty("variables"), modevent["enable_if"]))
-					{
-						this->starting_pos_.add_child("event", modevent);
-					}
-				}
-				// Copy lua
-				BOOST_FOREACH(const config& modlua, cfg.child_range("lua"))
-				{
-					this->starting_pos_.add_child("lua", modlua);
+				load_mod(mod.type, mod.id);
+			}
+			mods.clear();
+			BOOST_FOREACH(const config& cfg, starting_pos_.child_range("load_resource"))
+			{
+				if(loaded_resources.find(cfg["id"].str()) == loaded_resources.end()) {
+					mods.push_back(modevents_entry("resource", cfg["id"].str()));
+					loaded_resources.insert(cfg["id"].str());
 				}
 			}
-			else
-			{
-				//TODO: A user message instead?
-				ERR_NG << "Couldn't find [" << mod.type<< "] with id=" << mod.id <<std::endl;
-			}
-		}
-		expand_resources();
+			starting_pos_.clear_children("load_resource");
+		} while(!mods.empty());
 		this->starting_pos_["has_mod_events"] = true;
 	}
 }
@@ -627,40 +648,4 @@ void saved_game::set_data(config& cfg)
 	classification_ = game_classification(cfg);
 	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
 	cfg.clear();
-}
-void saved_game::expand_resources()
-{
-	const config& game_config = game_config_manager::get()->game_config();
-	
-	std::set<std::string> loaded_resources;
-	std::vector<config> todos;
-	//also loads resources from campaign.
-	if(const config& campaign = game_config.find_child("campaign", "id", classification_.campaign))
-	{
-		boost::copy(campaign.child_range("load_resource"), std::back_inserter(todos));
-	}
-	do
-	{
-		boost::copy(starting_pos_.child_range("load_resource"), std::back_inserter(todos));
-		starting_pos_.clear_children("load_resource");
-
-		BOOST_FOREACH(const config& todo, todos)
-		{
-			std::string resource_id = todo["id"];
-			if(loaded_resources.find(resource_id) != loaded_resources.end())
-			{
-				loaded_resources.insert(resource_id);
-				if(const config& resource = game_config.find_child("resource", "id", resource_id))
-				{
-					starting_pos_.append_children(resource);
-				}
-				else
-				{
-					ERR_NG << "Cannot find resource with id=" << resource_id << std::endl;
-				}
-			}
-		}
-		todos.clear();
-	//the resource my have loaded other resource into the level.
-	} while(starting_pos_.has_child("load_resource"));
 }
