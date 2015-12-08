@@ -69,7 +69,6 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("flag_icon", t.flag_icon());
 	return_tstring_attrib("team_name", t.team_name());
 	return_string_attrib("team_id", t.team_id());
-	return_string_attrib("name", t.name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller().to_string().c_str());
 	return_string_attrib("defeat_condition", t.defeat_condition().to_string());

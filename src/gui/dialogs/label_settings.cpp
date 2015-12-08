@@ -59,10 +59,7 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 			labels_display[label_cat_key] = "";
 			continue;
 		}
-		std::string team_id = team.name();
-		if(team_id.empty()) {
-			team_id = team.current_player();
-		}
+		std::string team_id = team.current_player();
 		if(team_id.empty()) {
 			team_id = team.team_name();
 		}

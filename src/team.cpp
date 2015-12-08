@@ -75,7 +75,6 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("disallow_shuffle")("description").convert_to_container<boost::container::flat_set<std::string> >();
 
 team::team_info::team_info() :
-	name(),
 	gold(0),
 	start_gold(0),
 	income(0),
@@ -119,7 +118,6 @@ team::team_info::team_info() :
 
 void team::team_info::read(const config &cfg)
 {
-	name = cfg["name"].str();
 	gold = cfg["gold"];
 	income = cfg["income"];
 	team_id = cfg["user_team_name"].blank() ? cfg["team_id"].str() : cfg["team_name"];
@@ -240,7 +238,6 @@ void team::team_info::write(config& cfg) const
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
 	cfg["income"] = income;
-	cfg["name"] = name;
 	cfg["team_id"] = team_id;
 	cfg["team_name"] = team_name;
 	cfg["save_id"] = save_id;
@@ -341,7 +338,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
-			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << std::endl;
+			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc << std::endl;
 		}
 	}
 
