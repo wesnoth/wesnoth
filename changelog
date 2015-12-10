@@ -71,6 +71,9 @@ Version 1.13.1+dev:
    * wesnoth.remove_time_area no longer takes a comma-separated list of time
      area ids.
    * wesnoth.add_time_area no longer warns about commas in time area ids
+   * unit.variables can now access sub variables.
+   * Added wesnoth.get/set_side_variable to store variables in a [side]-
+   * Added read/write fields carryover_bonus/carryover_add/carryover_percentage in lua sides.
  * Music and sound effects:
    * Updated music track "Frantic", new one by Stephen Rozanc.
    * New sounds: dwarf hit and die, ink, mud fist and glob.
@@ -172,6 +175,10 @@ Version 1.13.1+dev:
    * [time_area] no longer warns about commas in ids when not using remove=yes.
    * Add [random_placement] ActionWML
    * In [set_variables] you can now mix [value] and [literal], and even [split]
+   * Add [resource] tag which contains [event] and [lua] tags smimilar to
+     [modification] but hidden from the user.
+   * Removed name= attribute in [side].
+   * Add support for [endlevel] bonus=<number>
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
