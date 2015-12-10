@@ -76,11 +76,15 @@ It is now possible to load an autosave in an networked mp game: when an autosave
 [/rasection]
 
 [rasection="Default values for variables"]
-In variable substitution it's now posible to specify default values for example name="$player_name?Klaus|" will evaluate to 'Klaus' in case the variable player_name is not set.
+In variable substitution it's now possible to specify default values for example [tt]name="$player_name?Klaus|"[/tt] will evaluate to 'Klaus' in case the variable [tt]player_name[/tt] is not set.
 [/rasection]
 
 [rasection="Custom [effect]s"]
-It is now possible to create custom effects with the wesnoth.effects lua table.
+It is now possible to create custom effects with the [tt]wesnoth.effects[/tt] lua table.
+[/rasection]
+
+[rasection="New $other_unit variable for some filters"]
+A new [tt]$other_unit[/tt] variable is accessible in some unit filters. This can be used in [tt]filter_adjacent[/tt] and similar contexts to create filters that are relative to the main unit. The backstab and leadership abilities have been rewritten to take advantage of this feature, which allows leadership to be implemented by a single macro, [tt]{ABILITY_LEADERSHIP}[/tt]. Although the old [tt]{ABILITY_LEADERSHIP_LEVEL_3}[/tt] etc macros are still available, they merely point to the new one. As a result, anyone who used a leadership level not matching the unit's level (for example, level 4 leadership on a level 3 unit) will find that this no longer works as expected.
 [/rasection]
 
 ==========
