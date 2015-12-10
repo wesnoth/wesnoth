@@ -37,6 +37,7 @@ Version 1.13.1+dev:
    * Changed interface for the wesnoth.synchronize_choice function
    * Added support for unit.level field (read only)
    * Added support for unit.advancements field (bug #23677)
+   * Added support for unit.parry and unit.accuracy fields
    * Added support for current.event_context.unit_x/y fields (bug #23507)
    * Added wesnoth.set_dialog_focus function
    * Added wesnoth.set_dialog_visible function
@@ -61,6 +62,8 @@ Version 1.13.1+dev:
      unit:fcn_name(arguments) instead of as wesnoth.fcn_name(unit, arguments)
    * Add wesnoth.races[race_id].traits
    * Add wesnoth.unit_types[unit_type_id].traits
+   * Add optional third argument to wesnoth.match_unit, which is used for
+     the $other_unit variable in the filter.
    * pairs() and ipairs() now work on vconfig userdata objects
    * Add helper.get_nth_child
    * Add helper.child_count
@@ -103,15 +106,17 @@ Version 1.13.1+dev:
    * Added $varname?default_value| in variable substitution
    * Fixed side_for= parameter in [message]s with input
    * New actionwml tag [on_undo] contains actionswml that is executed when the current action is undone
-   * New actionwml tag [unsynced] executes its contents in an unsynced context where for example [set_variable]rand= will return unsynced results
+   * New actionwml tag [unsynced] executes its contents in an unsynced context where for example
+     [set_variable]rand= will return unsynced results
    * [campaign] now supports [event] subtags which are added to every scenario of the campaign similar to [modification] [event]s
    * Added support for mod_x,mod_y= in [terrain_graphics].
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
      show/hide them
    * Add female_text= to [animate_unit] and [unstore_unit] for easier translating
+   * Add female_message= to [message] for easier translating of lines spoken by generic units
    * AMLAs in [modifications] now use [advancement] tags instead of [advance] tags.
-     This means you can add an AMLA to placed unit by simply using its definition macro,
+     This means you can add an AMLA to a placed unit by simply using its definition macro,
      for example {AMLA_DEFAULT}.
    * [get/set_global_variable]'s side= attribute now defaults to "global" (bug #23686)
    * [team] share_view=yes/no, share_maps=yes/no was replaced with share_vision=all/shroud/none
@@ -127,7 +132,7 @@ Version 1.13.1+dev:
      containers/arrays).
    * Added new possibilities for [effect]:
      * apply_to=alignment - change a unit's alignment
-     * apply_to=attacks_left - change a unit's attacks per turn
+     * apply_to=max_attacks - change a unit's attacks per turn
      * apply_to=recall_cost - change a unit's recall cost
      * apply_to=vision, apply_to=jamming - change a unit's vision/jamming points
      * apply_to=new_advancement - add new advancement possibilities (either units
@@ -153,6 +158,10 @@ Version 1.13.1+dev:
      These operators are applied after the existing '-' operator that takes the
      opposite direction.
    * Adjacency filters in abilities and weapon specials now support count= and is_enemy=
+   * New implementations of backstab and leadership specials using $other_unit.
+     In particular, leadership is now a single macro and it is not supported to give a
+     unit a leadership ability of a different level (eg level 4 leadership on level 2 unit).
+     The backstab= key is deprecated.
    * Add new looping tags: [for], [foreach], [repeat]
    * Add new flow control tags: [break], [continue], [return]
    * Added a new [difficulty] tag for defining a campaign's difficulty level
@@ -162,9 +171,11 @@ Version 1.13.1+dev:
      area ids.
    * [time_area] no longer warns about commas in ids when not using remove=yes.
    * Add [random_placement] ActionWML
+   * In [set_variables] you can now mix [value] and [literal], and even [split]
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
+   * Fix $this_unit auto-stored variable not working correctly in most SUFs
    * Made Documents\My Games\WesnothX.Y the default user config+data dir on
      Windows to replace the broken <current working dir>\userdata default that
      has never been acceptable practice. Portable installs are now required to
