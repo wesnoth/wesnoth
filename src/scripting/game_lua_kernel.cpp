@@ -2517,8 +2517,7 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 
 	t_string text = luaW_checktstring(L, 3);
 	if (game_display_) {
-		game_display_->float_label(loc, text, font::LABEL_COLOR.r,
-			font::LABEL_COLOR.g, font::LABEL_COLOR.b);
+		game_display_->float_label(loc, text, font::LABEL_COLOR);
 	}
 	return 0;
 }

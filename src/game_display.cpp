@@ -728,8 +728,7 @@ void game_display::set_route(const pathfind::marked_route *route)
 	invalidate_route();
 }
 
-void game_display::float_label(const map_location& loc, const std::string& text,
-						  int red, int green, int blue)
+void game_display::float_label(const map_location& loc, const std::string& text, const SDL_Color& color)
 {
 	if(preferences::show_floating_labels() == false || fogged(loc)) {
 		return;
@@ -737,7 +736,6 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 
 	font::floating_label flabel(text);
 	flabel.set_font_size(font::SIZE_XLARGE);
-	const SDL_Color color = create_color(red, green, blue);
 	flabel.set_color(color);
 	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
 	flabel.set_move(0, -2 * turbo_speed());

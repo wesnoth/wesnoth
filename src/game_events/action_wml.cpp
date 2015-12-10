@@ -1342,7 +1342,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			if(!text.empty() && !controller->is_skipping_replay())
 			{
 				// Print floating label
-				resources::screen->float_label(loc, text, cfg["red"], cfg["green"], cfg["blue"]);
+				resources::screen->float_label(loc, text, create_color(cfg["red"], cfg["green"], cfg["blue"]));
 			}
 			if(advance) {
 				advance_unit_at(advance_unit_params(loc)
