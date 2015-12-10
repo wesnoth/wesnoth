@@ -80,11 +80,11 @@ SDL_Color string_to_color(const std::string& color)
 	const std::vector<std::string> c = utils::split(color);
 
 	return create_color(
-        *c[0].c_str(),
-        *c[1].c_str(),
-        *c[2].c_str(),
-        *c[3].c_str()
-    );
+		*c[0].c_str(),
+		*c[1].c_str(),
+		*c[2].c_str(),
+		*c[3].c_str()
+	);
 }
 
 SDL_Color create_color(const unsigned char red
