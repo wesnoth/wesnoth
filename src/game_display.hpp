@@ -116,7 +116,8 @@ public:
 	void set_route(const pathfind::marked_route *route);
 
 	/** Function to float a label above a tile */
-	void float_label(const map_location& loc, const std::string& text, const SDL_Color& color);
+	void float_label(const map_location& loc, const std::string& text,
+	                 int red, int green, int blue);
 
 	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const map_location& loc);

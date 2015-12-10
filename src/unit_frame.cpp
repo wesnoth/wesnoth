@@ -649,12 +649,10 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 			sound::play_sound(current_data.sound);
 		}
 		if(!current_data.text.empty()  ) {
-			game_display::get_singleton()->float_label(src, current_data.text,
-				create_color(
-					(current_data.text_color & 0x00FF0000) >> 16,
-					(current_data.text_color & 0x0000FF00) >> 8,
-					(current_data.text_color & 0x000000FF) >> 0)
-			);
+			game_display::get_singleton()->float_label(src,current_data.text,
+			(current_data.text_color & 0x00FF0000) >> 16,
+			(current_data.text_color & 0x0000FF00) >> 8,
+			(current_data.text_color & 0x000000FF) >> 0);
 		}
 	}
 	image::locator image_loc;

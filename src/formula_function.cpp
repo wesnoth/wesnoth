@@ -261,7 +261,7 @@ private:
         }
 
         void display_float(const map_location& location, const std::string& text) const{
-                game_display::get_singleton()->float_label(location, text, create_color(255,0,0));
+                game_display::get_singleton()->float_label(location,text,255,0,0);
         }
 };
 

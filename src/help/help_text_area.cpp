@@ -288,7 +288,7 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	bool bold = cfg["bold"].to_bool();
 	bool italic = cfg["italic"].to_bool();
 	int font_size = cfg["font_size"].to_int(normal_font_size);
-	SDL_Color color = help::string_to_color(cfg["color"]);
+	SDL_Color color = string_to_color(cfg["color"]);
 	add_text_item(text, "", false, font_size, bold, italic, color);
 }
 
