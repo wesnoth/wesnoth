@@ -350,7 +350,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
-	
+
 	return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).return_unit_method(L, m);
 }
 
@@ -540,7 +540,7 @@ static int impl_unit_attacks_len(lua_State *L)
  * Gets a propoerty of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
- * - Ret 1: 
+ * - Ret 1:
  */
 static int impl_unit_attack_get(lua_State *L)
 {
@@ -587,7 +587,7 @@ static int impl_unit_attack_get(lua_State *L)
  * Gets a propoerty of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
- * - Ret 1: 
+ * - Ret 1:
  */
 static int impl_unit_attack_set(lua_State *L)
 {
@@ -621,7 +621,7 @@ static int impl_unit_attack_set(lua_State *L)
 			modify_int_attrib("accuracy", attack.set_accuracy(value));
 			modify_int_attrib("movement_used", attack.set_movement_used(value));
 			modify_int_attrib("parry", attack.set_parry(value));
-			
+
 			if (strcmp(m, "specials") == 0) { \
 				attack.set_specials(luaW_checkconfig(L, 3));
 				return 0;
@@ -838,7 +838,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
 		return 1;
 	}
-	
+
 	if (!lua_isnoneornil(L, 3)) {
 		lua_unit *lu_adj = static_cast<lua_unit *>(lua_touserdata(L, 1));
 		unit* u_adj = lu_adj->get();
@@ -979,7 +979,7 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
  */
 int game_lua_kernel::intf_get_side_variable(lua_State *L)
 {
-	
+
 	unsigned side_index = luaL_checkinteger(L, 1) - 1;
 	if(side_index >= teams().size()) {
 		return luaL_argerror(L, 1, "invalid side number");
@@ -1689,7 +1689,7 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
 
-	
+
 	if (play_controller_.is_regular_game_end()) {
 		return 0;
 	}
@@ -2364,7 +2364,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 int game_lua_kernel::intf_erase_unit(lua_State *L)
 {
 	map_location loc;
-	
+
 	if (lua_isnumber(L, 1)) {
 		loc.x = lua_tointeger(L, 2) - 1;
 		loc.y = luaL_checkinteger(L, 3) - 1;
@@ -2399,7 +2399,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 	} else {
 		return luaL_argerror(L, 1, "expected unit or integer");
 	}
-	
+
 	units().erase(loc);
 	return 0;
 }
@@ -2517,8 +2517,12 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 
 	t_string text = luaW_checktstring(L, 3);
 	if (game_display_) {
-		game_display_->float_label(loc, text, font::LABEL_COLOR.r,
-			font::LABEL_COLOR.g, font::LABEL_COLOR.b);
+		game_display_->float_label(loc, text,
+			create_color(
+				font::LABEL_COLOR.r,
+				font::LABEL_COLOR.g,
+				font::LABEL_COLOR.b)
+		);
 	}
 	return 0;
 }
@@ -2934,7 +2938,7 @@ namespace
 		}
 
 		virtual std::string description() const OVERRIDE
-		{ 
+		{
 			return desc;
 		}
 
@@ -4322,7 +4326,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 
 	// Create the unit attacks metatable.
 	cmd_log_ << "Adding unit attacks metatable...\n";
-	
+
 	lua_pushlightuserdata(L, uattacksKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_attacks_get);
@@ -4334,7 +4338,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 
-	
+
 	lua_pushlightuserdata(L, uattackKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_attack_get);
@@ -4522,14 +4526,14 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"ability",               intf_unit_ability},
 		{"transform",             intf_transform_unit},
 	};
-	
+
 	BOOST_FOREACH(const luaL_Reg& r, methods) {
 		if (strcmp(m, r.name) == 0) {
 			lua_pushcfunction(L, r.func);
 			return 1;
 		}
 	}
-	
+
 	return 0;
 }
 
