@@ -184,11 +184,13 @@ lỗi kiểm định được đối xử như là lỗi nghiêm trọng.
 chạy trò chơi trong một màn chơi thử nghiệm nhỏ.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-đặt đường dẫn thư mục cấu hình của người dùng thành \fItên\fP dưới $HOME hoặc
-"My Documents\eMy Games" với windows. Bạn cũng có thể chỉ định một đường dẫn
-tuyệt đối cho thư mục cấu hình nằm ngoài $HOME hoặc "My Documents\eMy
-Games". Dưới X11 mặc định là $XDG_CONFIG_HOME hoặc $HOME/.config/wesnoth,
-trên các hệ thống khác là đường dẫn dữ liệu của người dùng.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 in đường dẫn của thư mục chứa thiết lập người dùng và thoát.
@@ -196,7 +198,9 @@ in đường dẫn của thư mục chứa thiết lập người dùng và tho�
 \fB\-\-userdata\-dir\fP\fI\ tên\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
 .TP 
 \fB\-\-userdata\-path\fP
 in đường dẫn của thư mục dữ liệu của người dùng và thoát.

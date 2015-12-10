@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2012-09-28 12:24+0100\n"
 "Last-Translator: galicae <nikolaspapadop@yahoo.com>\n"
 "Language-Team: none\n"
@@ -377,9 +377,13 @@ msgstr "Άουτς! Χρειάζομαι περίθαλψη! Μου έμεινα
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:425
+#, fuzzy
+#| msgid ""
+#| "There is a village on the other side of the river. Visiting villages is a "
+#| "good idea, and ending your turn in one will heal you. To the village!"
 msgid ""
-"There is a village on the other side of the river. Visiting villages is a "
-"good idea, and ending your turn in one will heal you. To the village!"
+"There are two villages within your reach. Visiting villages is a good idea, "
+"and ending your turn on one will heal you. To a village!"
 msgstr ""
 "Υπάρχει ένα χωριό στην άλλη όχθη του ποταμού. Είναι καλή ιδέα να "
 "επισκέπτεσαι χωριά, και αν τελειώσεις τον γύρο σου πάνω σε ένα, θα "
@@ -389,14 +393,14 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:429
 #, fuzzy
 #| msgid "Move Konrad to capture a village"
-msgid "Move Konrad to the nearest village"
+msgid "Move Konrad to a nearby village"
 msgstr "Μετακίνησε τον Κόνραντ κυριεύοντας ένα χωριό"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:431
 #, fuzzy
 #| msgid "Move Li’sar to capture a village"
-msgid "Move Li’sar to the nearest village"
+msgid "Move Li’sar to a nearby village"
 msgstr "Μετακίνησε την Λί'ζαρ ώστε να πάρει ένα χωριό"
 
 #. [message]: speaker=narrator
@@ -460,7 +464,7 @@ msgstr "Θα στρατολογήσω μερικά ξωτικά!"
 #| "have plenty of gold for that."
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
-"this turn. Instead, you could return to the keep and recruit two units; you "
+"this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
 "Καταπληκτική ιδέα. Εάν επιστρέψεις στον πύργο, μπορείς να στρατολογήσεις δύο "
@@ -1169,7 +1173,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:326
 msgid ""
-"Each turn, you will gain 2 gold pus one for each village you own. However, "
+"Each turn, you will gain 2 gold plus one for each village you own. However, "
 "<i>upkeep</i> is subtracted for that. You can support as many levels worth "
 "of units as the number of villages you own; beyond that, you must pay 1 gold "
 "per turn. Be careful, as owning too many units can cause you to have "

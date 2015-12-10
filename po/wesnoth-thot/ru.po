@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2014-11-11 12:05+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,9 @@ msgstr "МТ"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
-msgid "(Easy)"
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(Лёгкий)"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -40,7 +42,9 @@ msgstr "Ополченец"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
-msgid "(Normal)"
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
 msgstr "(Средний)"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -50,7 +54,9 @@ msgstr "Латник"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Сложный)"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -59,7 +65,7 @@ msgid "Lord"
 msgstr "Богатырь"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:21
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:22
 msgid ""
 "In the first years of the Northern Alliance, an expedition from Knalga seeks "
 "out their kin at Kal Kartha and to learn the fate of the legendary Hammer of "
@@ -75,32 +81,32 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:23
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:24
 msgid "(Intermediate level, 11 scenarios.)"
 msgstr "(Средний уровень, 11 сценариев)"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:26
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:27
 msgid "Author"
 msgstr "Автор"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:32
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:33
 msgid "Special Guest Designer"
 msgstr "Специально приглашённый художник"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:38
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:39
 msgid "Art"
 msgstr "Дизайн"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:47
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:48
 msgid "Brainstorming, playtesting, and spousal support"
 msgstr "Мозговой штурм, проверка игры и супружеская поддержка"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:53
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:54
 msgid "Campaign Maintenance"
 msgstr ""
 
@@ -1084,9 +1090,15 @@ msgstr ""
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
+#, fuzzy
+#| msgid ""
+#| "We’re grateful for your assistance. And I’d like to send one of our "
+#| "senior apprentices with you to the east. It has come time for him to be "
+#| "journeyman... and I sense something being born to the east that I do not "
+#| "like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send one of our senior "
-"apprentices with you to the east. It has come time for him to be "
+"apprentices with you to the east. It has come time for him to be a "
 "journeyman... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""

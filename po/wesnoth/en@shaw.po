@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -242,110 +242,121 @@ msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
 
-#. [advanced_preference]: type=boolean
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:191
+msgid "Editor recent files limit"
+msgstr ""
+
+#. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
+msgid ""
+"The maximum number of items to display on the Recent Files menu in the editor"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:203
 msgid "Show color cursors"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:193
+#: data/advanced_preferences.cfg:204
 msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:202
+#: data/advanced_preferences.cfg:213
 msgid "Joystick support"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:209
+#: data/advanced_preferences.cfg:220
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:219
+#: data/advanced_preferences.cfg:230
 msgid "Joystick: number of the scroll X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:229
+#: data/advanced_preferences.cfg:240
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:239
+#: data/advanced_preferences.cfg:250
 msgid "Joystick: number of the scroll Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:249
+#: data/advanced_preferences.cfg:260
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:259
+#: data/advanced_preferences.cfg:270
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:269
+#: data/advanced_preferences.cfg:280
 msgid "Joystick: number of the cursor X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:279
+#: data/advanced_preferences.cfg:290
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:289
+#: data/advanced_preferences.cfg:300
 msgid "Joystick: number of the cursor Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:299
+#: data/advanced_preferences.cfg:310
 msgid "Joystick: deadzone of the cursor stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:309
+#: data/advanced_preferences.cfg:320
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:319
+#: data/advanced_preferences.cfg:330
 msgid "Joystick: number of the mouse X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:329
+#: data/advanced_preferences.cfg:340
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:339
+#: data/advanced_preferences.cfg:350
 msgid "Joystick: number of the mouse Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:349
+#: data/advanced_preferences.cfg:360
 msgid "Joystick: deadzone of the mouse stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:359
+#: data/advanced_preferences.cfg:370
 msgid "Joystick: number of the thrust axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:369
+#: data/advanced_preferences.cfg:380
 msgid "Joystick: number of the thrust axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:379
+#: data/advanced_preferences.cfg:390
 msgid "Joystick: deadzone of the thruster"
 msgstr ""
 
@@ -353,21 +364,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2515 src/actions/attack.cpp:987
 msgid "poisoned"
 msgstr "𐑐𐑶𐑟𐑩𐑯𐑛"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:3222
+#: data/lua/wml/objectives.lua:3758
 msgid "Gold carryover:"
 msgstr ""
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:3223
+#: data/lua/wml/objectives.lua:3759
 msgid "Notes:"
 msgstr ""
 
@@ -387,319 +398,314 @@ msgid "Artwork and Graphics"
 msgstr "𐑸𐑑𐑢𐑻𐑒 𐑯 𐑜𐑮𐑨𐑓𐑦𐑒𐑕"
 
 #. [about]
-#: data/core/about.cfg:670
+#: data/core/about.cfg:678
 msgid "Music"
 msgstr "𐑥𐑿𐑟𐑦𐑒"
 
 #. [about]
-#: data/core/about.cfg:707
+#: data/core/about.cfg:715
 msgid "Sound Effects"
 msgstr "𐑕𐑬𐑯𐑛 𐑦𐑓𐑧𐑒𐑑𐑕"
 
 #. [about]
-#: data/core/about.cfg:723
+#: data/core/about.cfg:739
 msgid "Campaign Design"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯 𐑛𐑩𐑟𐑲𐑯"
 
 #. [about]
-#: data/core/about.cfg:802
+#: data/core/about.cfg:818
 msgid "Multiplayer Maps and Balancing"
 msgstr "𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑥𐑨𐑐𐑕 𐑯 𐑚𐑨𐑤𐑩𐑯𐑕𐑦𐑙"
 
 #. [about]
-#: data/core/about.cfg:847
+#: data/core/about.cfg:863
 msgid "Packagers"
 msgstr "𐑐𐑨𐑒𐑦𐑡𐑼𐑟"
 
 #. [about]
-#: data/core/about.cfg:927
+#: data/core/about.cfg:962
 msgid "Miscellaneous Contributors"
 msgstr "𐑥𐑦𐑕𐑩𐑤𐑱𐑯𐑰𐑩𐑕 𐑒𐑩𐑯𐑑𐑮𐑦𐑚𐑘𐑩𐑑𐑻𐑟"
 
 #. [about]
-#: data/core/about.cfg:1392
+#: data/core/about.cfg:1457
 msgid "Internationalization Managers"
 msgstr "𐑦𐑯𐑑𐑻𐑯𐑨𐑖𐑩𐑯𐑩𐑤𐑦𐑟𐑱𐑖𐑩𐑯 𐑥𐑨𐑯𐑦𐑡𐑼𐑟"
 
 #. [about]
-#: data/core/about.cfg:1417
-msgid "English strings edition"
-msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 𐑕𐑑𐑮𐑦𐑙𐑟 𐑦𐑛𐑦𐑖𐑩𐑯"
-
-#. [about]
-#: data/core/about.cfg:1424
+#: data/core/about.cfg:1482
 msgid "Afrikaans Translation"
 msgstr "𐑨𐑓𐑮𐑩𐑒𐑭𐑯𐑟 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1444
+#: data/core/about.cfg:1502
 msgid "Arabic Translation"
 msgstr "𐑨𐑮𐑩𐑚𐑦𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1451
+#: data/core/about.cfg:1509
 msgid "Basque Translation"
 msgstr "𐑚𐑨𐑕𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1464
+#: data/core/about.cfg:1522
 msgid "Bulgarian Translation"
 msgstr "𐑚𐑩𐑤𐑜𐑺𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1483
+#: data/core/about.cfg:1541
 msgid "Catalan Translation"
 msgstr "𐑒𐑨𐑑𐑩𐑤𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1524
+#: data/core/about.cfg:1582
 msgid "Chinese Translation"
 msgstr "𐑗𐑲𐑯𐑰𐑟 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1598
+#: data/core/about.cfg:1656
 msgid "Chinese (Taiwan) Translation"
 msgstr "𐑗𐑲𐑯𐑰𐑟 (𐑑𐑲𐑢𐑭𐑯) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1611
+#: data/core/about.cfg:1669
 msgid "Croatian Translation"
 msgstr "𐑒𐑮𐑴𐑱𐑖𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1621
+#: data/core/about.cfg:1679
 msgid "Czech Translation"
 msgstr "𐑗𐑧𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1681
+#: data/core/about.cfg:1739
 msgid "Danish Translation"
 msgstr "𐑛𐑱𐑯𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1712
+#: data/core/about.cfg:1770
 msgid "Dutch Translation"
 msgstr "𐑛𐑳𐑗 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1776
+#: data/core/about.cfg:1834
 msgid "English (GB) Translation"
 msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 (GB) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1857
 #, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 (GB) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1875
 msgid "Esperanto Translation"
 msgstr "𐑧𐑕𐑐𐑻𐑨𐑯𐑑𐑴 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1836
+#: data/core/about.cfg:1894
 msgid "Estonian Translation"
 msgstr "𐑧𐑕𐑑𐑴𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1904
 msgid "Filipino Translation"
 msgstr "𐑓𐑦𐑤𐑩𐑐𐑰𐑯𐑴 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1856
+#: data/core/about.cfg:1914
 msgid "Finnish Translation"
 msgstr "𐑓𐑦𐑯𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:1902
+#: data/core/about.cfg:1960
 msgid "French Translation"
 msgstr "𐑓𐑮𐑧𐑯𐑗 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2064
+#: data/core/about.cfg:2122
 msgid "Friulian Translation"
 msgstr "𐑓𐑮𐑰𐑵𐑤𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2071
+#: data/core/about.cfg:2129
 msgid "Galician Translation"
 msgstr "𐑜𐑨𐑤𐑦𐑕𐑾𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2107
+#: data/core/about.cfg:2165
 msgid "German Translation"
 msgstr "𐑡𐑻𐑥𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2181
+#: data/core/about.cfg:2239
 msgid "Greek Translation"
 msgstr "𐑜𐑮𐑰𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2224
+#: data/core/about.cfg:2282
 msgid "Hebrew Translation"
 msgstr "𐑣𐑰𐑚𐑮𐑵 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2237
+#: data/core/about.cfg:2295
 msgid "Hungarian Translation"
 msgstr "𐑣𐑩𐑙𐑜𐑺𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2298
+#: data/core/about.cfg:2356
 msgid "Icelandic Translation"
 msgstr "𐑲𐑕𐑤𐑨𐑯𐑛𐑦𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2308
+#: data/core/about.cfg:2366
 msgid "Indonesian Translation"
 msgstr "𐑦𐑯𐑛𐑴𐑯𐑰𐑠𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2331
+#: data/core/about.cfg:2389
 #, fuzzy
 msgid "Irish Translation"
 msgstr "𐑑𐑻𐑒𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2338
+#: data/core/about.cfg:2396
 msgid "Italian Translation"
 msgstr "𐑦𐑑𐑨𐑤𐑦𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2385
+#: data/core/about.cfg:2443
 msgid "Japanese Translation"
 msgstr "𐑡𐑨𐑐𐑩𐑯𐑰𐑟 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2453
+#: data/core/about.cfg:2522
 msgid "Korean Translation"
 msgstr "𐑒𐑹𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2530
 msgid "Latin Translation"
 msgstr "·𐑤𐑨𐑑𐑦𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2487
+#: data/core/about.cfg:2556
 msgid "Latvian Translation"
 msgstr "𐑤𐑨𐑑𐑝𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2498
+#: data/core/about.cfg:2571
 msgid "Lithuanian Translation"
 msgstr "𐑤𐑦𐑔𐑩𐑢𐑱𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2523
+#: data/core/about.cfg:2596
 msgid "Macedonian Translation"
 msgstr "𐑥𐑨𐑕𐑩𐑛𐑴𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2530
+#: data/core/about.cfg:2603
 msgid "Marathi Translation"
 msgstr "𐑥𐑼𐑭𐑑𐑰 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2539
+#: data/core/about.cfg:2612
 msgid "Norwegian Translation"
 msgstr "𐑯𐑹𐑢𐑰𐑡𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2564
+#: data/core/about.cfg:2637
 #, fuzzy
 msgid "Old English Translation"
 msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 (GB) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2582
+#: data/core/about.cfg:2655
 msgid "Polish Translation"
 msgstr "𐑐𐑪𐑤𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2626
+#: data/core/about.cfg:2699
 msgid "Portuguese Translation"
 msgstr "𐑐𐑹𐑗𐑩𐑜𐑰𐑟 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2640
+#: data/core/about.cfg:2713
 msgid "Portuguese (Brazil) Translation"
 msgstr "𐑐𐑹𐑗𐑩𐑜𐑰𐑟 (𐑚𐑮𐑩𐑟𐑦𐑤) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2694
+#: data/core/about.cfg:2767
 msgid "Romanian Translation"
 msgstr "𐑮𐑴𐑥𐑱𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2775
 msgid "Russian Translation"
 msgstr "𐑮𐑳𐑖𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2794
+#: data/core/about.cfg:2867
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "𐑜𐑨𐑤𐑦𐑕𐑾𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2803
+#: data/core/about.cfg:2876
 msgid "Serbian Translation"
 msgstr "𐑕𐑻𐑚𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2822
+#: data/core/about.cfg:2895
 msgid "Slovak Translation"
 msgstr "𐑕𐑤𐑴𐑝𐑨𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2851
+#: data/core/about.cfg:2924
 msgid "Slovenian Translation"
 msgstr "𐑕𐑤𐑴𐑝𐑰𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2867
+#: data/core/about.cfg:2940
 msgid "Spanish Translation"
 msgstr "𐑕𐑐𐑨𐑯𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2949
+#: data/core/about.cfg:3022
 msgid "Swedish Translation"
 msgstr "𐑕𐑢𐑰𐑛𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:2990
+#: data/core/about.cfg:3063
 msgid "Turkish Translation"
 msgstr "𐑑𐑻𐑒𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:3012
+#: data/core/about.cfg:3085
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "𐑮𐑴𐑥𐑱𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:3025
+#: data/core/about.cfg:3098
 msgid "Valencian (southern Catalan) Translation"
 msgstr "𐑝𐑨𐑤𐑧𐑯𐑕𐑰𐑨𐑯 (𐑕𐑳𐑞𐑼𐑯 𐑒𐑨𐑑𐑩𐑤𐑩𐑯) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:3038
+#: data/core/about.cfg:3111
 msgid "Vietnamese Translation"
 msgstr "𐑝𐑰𐑧𐑑𐑯𐑭𐑥𐑰𐑕 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:3057
+#: data/core/about.cfg:3130
 msgid "RACV’s Translation"
 msgstr "RACV’s 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about.cfg:3064
+#: data/core/about.cfg:3137
 msgid "Bots"
 msgstr "𐑚𐑭𐑑𐑕"
 
@@ -1556,26 +1562,26 @@ msgstr ""
 "𐑕𐑐𐑧𐑖𐑩𐑤: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 
-#: data/core/macros/deprecated-utils.cfg:17
+#: data/core/macros/deprecated-utils.cfg:37
 msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(early 𐑓𐑦𐑯𐑦𐑖 𐑚𐑴𐑯𐑩𐑕)</𐑕𐑥𐑷𐑤>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:20 data/lua/wml/objectives.lua:3284
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:3820
 msgid "Early finish bonus."
 msgstr "𐑻𐑤𐑰 𐑓𐑦𐑯𐑦𐑖 𐑚𐑴𐑯𐑩𐑕."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:23 data/lua/wml/objectives.lua:3286
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:3822
 msgid "No early finish bonus."
 msgstr "𐑯𐑴 𐑻𐑤𐑰 𐑓𐑦𐑯𐑦𐑖 𐑚𐑴𐑯𐑩𐑕."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:26 data/lua/wml/objectives.lua:3294
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:3830
 msgid "No gold carried over to the next scenario."
 msgstr "𐑯𐑴 𐑜𐑴𐑤𐑛 𐑒𐑨𐑮𐑦𐑛 𐑴𐑝𐑼 𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴."
 
-#: data/core/macros/deprecated-utils.cfg:29
+#: data/core/macros/deprecated-utils.cfg:49
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1583,7 +1589,7 @@ msgstr ""
 "\n"
 "100% 𐑝 𐑓𐑦𐑯𐑦𐑖𐑦𐑙 𐑜𐑴𐑤𐑛 𐑒𐑨𐑮𐑦𐑛 𐑴𐑝𐑼 𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴."
 
-#: data/core/macros/deprecated-utils.cfg:33
+#: data/core/macros/deprecated-utils.cfg:53
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1591,7 +1597,7 @@ msgstr ""
 "\n"
 "40% 𐑝 𐑓𐑦𐑯𐑦𐑖𐑦𐑙 𐑜𐑴𐑤𐑛 𐑒𐑨𐑮𐑦𐑛 𐑴𐑝𐑼 𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴."
 
-#: data/core/macros/deprecated-utils.cfg:37
+#: data/core/macros/deprecated-utils.cfg:57
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -2704,7 +2710,7 @@ msgstr ""
 "𐑕𐑲𐑛 $side_number 𐑦𐑟 𐑦𐑯𐑑𐑧𐑯𐑛𐑩𐑛 𐑑 𐑚𐑰 𐑐𐑤𐑱𐑛 𐑚𐑲 𐑩 𐑣𐑿𐑥𐑩𐑯 𐑐𐑤𐑱𐑻."
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:762
+#: data/core/macros/utils.cfg:688
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -2912,7 +2918,7 @@ msgstr "𐑦𐑥𐑐𐑨𐑕𐑩𐑚𐑩𐑤"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:261
-#: src/game_initialization/multiplayer_lobby.cpp:821
+#: src/game_initialization/multiplayer_lobby.cpp:823
 #: src/gui/dialogs/lobby/lobby_data.cpp:341
 msgid "Fog"
 msgstr "𐑓𐑪𐑜"
@@ -2921,20 +2927,20 @@ msgstr "𐑓𐑪𐑜"
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:267
 #: src/game_initialization/multiplayer_configure.cpp:64
-#: src/game_initialization/multiplayer_lobby.cpp:825
-#: src/game_initialization/multiplayer_lobby.cpp:831
+#: src/game_initialization/multiplayer_lobby.cpp:827
+#: src/game_initialization/multiplayer_lobby.cpp:833
 #: src/gui/dialogs/lobby/lobby_data.cpp:344
 #: src/gui/dialogs/lobby/lobby_data.cpp:347
 msgid "Shroud"
 msgstr "𐑖𐑮𐑬𐑛"
 
 #. [core]: id=default
-#: data/cores.cfg:3
+#: data/cores.cfg:5
 msgid "Wesnoth (Default)"
 msgstr ""
 
 #. [core]: id=default
-#: data/cores.cfg:6
+#: data/cores.cfg:8
 msgid ""
 "Wesnoth has many different sagas waiting to be played. Fight to regain the "
 "throne of Wesnoth, of which you are the legitimate heir... step into the "
@@ -2951,7 +2957,7 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default
-#: data/cores.cfg:10
+#: data/cores.cfg:12
 msgid ""
 "(17 Single Player Campaigns with 211 Scenarios,\n"
 "One Multiplayer Campaign with 14 Scenarios,\n"
@@ -2960,12 +2966,12 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:19
+#: data/cores.cfg:21
 msgid "Wesnoth (Failsafe)"
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:22
+#: data/cores.cfg:24
 msgid "Loads only mainline Wesnoth data without any add-ons."
 msgstr ""
 
@@ -3228,171 +3234,182 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2515 src/actions/attack.cpp:987
 msgid "female^poisoned"
 msgstr "𐑐𐑶𐑟𐑩𐑯𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:994
 msgid "female^slowed"
 msgstr "𐑕𐑤𐑴𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:994
 msgid "slowed"
 msgstr "𐑕𐑤𐑴𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2518 src/actions/attack.cpp:1001
 msgid "female^petrified"
 msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2518 src/actions/attack.cpp:1001
 msgid "petrified"
 msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑛"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2519
 #, fuzzy
 msgid "female^unhealable"
 msgstr "𐑳𐑯𐑛𐑧𐑛"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2519
 #, fuzzy
 msgid "unhealable"
 msgstr "𐑳𐑯𐑢𐑷𐑒𐑩𐑚𐑤"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3220
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:3756
+#: src/game_initialization/mp_game_utils.cpp:72
 msgid "Victory:"
 msgstr "𐑝𐑦𐑒𐑑𐑼𐑦:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3221
+#: data/lua/wml/objectives.lua:3757
 msgid "Defeat:"
 msgstr "𐑛𐑦𐑓𐑰𐑑:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3241
+#: data/lua/wml/objectives.lua:3777
 msgid "(%d turns left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3243
+#: data/lua/wml/objectives.lua:3779
 msgid "(this turn left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3296
+#: data/lua/wml/objectives.lua:3832
 #, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "𐑯𐑴 𐑜𐑴𐑤𐑛 𐑒𐑨𐑮𐑦𐑛 𐑴𐑝𐑼 𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1040 src/dialogs.cpp:973
-#: src/game_initialization/depcheck.cpp:488
+#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:92
 msgid "OK"
 msgstr "𐑴𐑒𐑱"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1041 src/dialogs.cpp:974 src/dialogs.cpp:1567
-#: src/dialogs.cpp:1673 src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_create.cpp:104
-#: src/game_initialization/multiplayer_wait.cpp:197
+#: data/scenario-test.cfg:1031 src/dialogs.cpp:1459 src/dialogs.cpp:1565
+#: src/game_initialization/multiplayer_connect.cpp:390
+#: src/game_initialization/multiplayer_create.cpp:105
+#: src/game_initialization/multiplayer_wait.cpp:198
 msgid "Cancel"
 msgstr "𐑒𐑨𐑯𐑕𐑩𐑤"
 
-#: data/scenario-test.cfg:4018
+#: data/scenario-test.cfg:4003
 msgid "very long"
 msgstr ""
 
-#: data/scenario-test.cfg:4019
+#: data/scenario-test.cfg:4004
 #, fuzzy
 msgid "electrical"
 msgstr "𐑥𐑩𐑒𐑨𐑯𐑦𐑒𐑩𐑤"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:545
+#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:557
 msgid "Play"
 msgstr "𐑐𐑤𐑱"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:546
+#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:558
 msgid "continuous replay"
 msgstr "𐑒𐑩𐑯𐑑𐑦𐑯𐑿𐑩𐑕 𐑮𐑰𐑐𐑤𐑱"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:559
+#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:571
 msgid "Stop"
 msgstr "𐑕𐑑𐑪𐑐"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:560
+#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:572
 msgid "pause at end of turn"
 msgstr "𐑐𐑷𐑟 𐑨𐑑 𐑧𐑯𐑛 𐑝 𐑑𐑻𐑯"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:573
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:585
 msgid "Reset"
 msgstr "𐑮𐑰𐑕𐑧𐑑"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:574
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:586
 msgid "reset to beginning"
 msgstr "𐑮𐑰𐑕𐑧𐑑 𐑑 𐑚𐑩𐑜𐑦𐑯𐑦𐑙"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:599
 msgid "Next Turn"
 msgstr "𐑯𐑧𐑒𐑕𐑑 𐑑𐑻𐑯"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:588
+#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:600
 msgid "play turn"
 msgstr "𐑐𐑤𐑱 𐑑𐑻𐑯"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:613
 msgid "Next Side"
 msgstr "𐑯𐑧𐑒𐑕𐑑 𐑕𐑲𐑛"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:602
+#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:614
 msgid "play side turn"
 msgstr "𐑐𐑤𐑱 𐑕𐑲𐑛 𐑑𐑻𐑯"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:627
 #, fuzzy
 #| msgid "Next Side"
 msgid "Next Move"
 msgstr "𐑯𐑧𐑒𐑕𐑑 𐑕𐑲𐑛"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:616
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:628
 #, fuzzy
 #| msgid "play side turn"
 msgid "play single move"
 msgstr "𐑐𐑤𐑱 𐑕𐑲𐑛 𐑑𐑻𐑯"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:640
 msgid "Point of view"
 msgstr "𐑐𐑶𐑯𐑑 𐑝 𐑝𐑿"
 
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:499
+#, fuzzy
+#| msgid "continuous replay"
+msgid "Continue Play"
+msgstr "𐑒𐑩𐑯𐑑𐑦𐑯𐑿𐑩𐑕 𐑮𐑰𐑐𐑤𐑱"
+
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:500
+msgid "Exit the replay mode and continue playing normally."
+msgstr ""
+
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:500 data/themes/_initial.cfg:640
+#: data/themes/_initial.cfg:512 data/themes/_initial.cfg:652
 #, fuzzy
 #| msgid "Skip Animation"
 msgid "Skip animation"
@@ -3400,7 +3417,7 @@ msgstr "𐑕𐑒𐑦𐑐 𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:530 src/dialogs.cpp:882
+#: data/themes/_initial.cfg:542 src/dialogs.cpp:882
 msgid "Replay"
 msgstr "𐑮𐑰𐑐𐑤𐑱"
 
@@ -3446,8 +3463,8 @@ msgstr "𐑧𐑯𐑛 𐑕𐑦𐑯𐑺𐑰𐑴"
 #. [label]: id=selected-label-hp
 #: data/themes/classic.cfg:215 data/themes/default.cfg:132
 #: data/themes/unit_box.cfg:373 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1736
-#: src/unit.cpp:1927
+#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1770
+#: src/unit.cpp:2087
 msgid "HP"
 msgstr "HP"
 
@@ -4339,60 +4356,60 @@ msgstr ""
 msgid "Close"
 msgstr "𐑒𐑤𐑴𐑟"
 
-#: src/actions/attack.cpp:350 src/actions/attack.cpp:576
-#: src/actions/attack.cpp:1224
+#: src/actions/attack.cpp:351 src/actions/attack.cpp:577
+#: src/actions/attack.cpp:1235
 msgid "An invalid attacker weapon got selected."
 msgstr "𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑩𐑑𐑨𐑒𐑻 𐑢𐑧𐑐𐑩𐑯 𐑜𐑪𐑑 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛."
 
-#: src/actions/attack.cpp:355
+#: src/actions/attack.cpp:356
 msgid "An invalid defender weapon got selected."
 msgstr "𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑛𐑦𐑓𐑧𐑯𐑛𐑼 𐑢𐑧𐑐𐑩𐑯 𐑜𐑪𐑑 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛."
 
-#: src/actions/create.cpp:514
+#: src/actions/create.cpp:339
 #, fuzzy
 #| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
 msgstr "𐑿 𐑛𐑴𐑯𐑑 𐑣𐑨𐑝 𐑩 𐑤𐑰𐑛𐑻 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑢𐑦𐑞."
 
-#: src/actions/create.cpp:518
+#: src/actions/create.cpp:343
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders are able to recall that unit."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑪𐑯 𐑩 𐑒𐑰𐑐 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑹 𐑮𐑰𐑒𐑷𐑤 𐑿𐑯𐑦𐑑𐑕."
 
-#: src/actions/create.cpp:522
+#: src/actions/create.cpp:347
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑪𐑯 𐑩 𐑒𐑰𐑐 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑹 𐑮𐑰𐑒𐑷𐑤 𐑿𐑯𐑦𐑑𐑕."
 
-#: src/actions/create.cpp:526
+#: src/actions/create.cpp:351
 #, fuzzy
 #| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "𐑞𐑺 𐑸 𐑯𐑴 𐑝𐑱𐑒𐑩𐑯𐑑 𐑒𐑨𐑕𐑩𐑤 𐑑𐑲𐑤𐑟 𐑦𐑯 𐑢𐑦𐑗 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑩 𐑿𐑯𐑦𐑑."
 
-#: src/actions/create.cpp:536 src/actions/create.cpp:672
+#: src/actions/create.cpp:361 src/actions/create.cpp:497
 msgid "An unrecognized error has occurred."
 msgstr ""
 
-#: src/actions/create.cpp:650
+#: src/actions/create.cpp:475
 msgid "You don’t have a leader to recruit with."
 msgstr "𐑿 𐑛𐑴𐑯𐑑 𐑣𐑨𐑝 𐑩 𐑤𐑰𐑛𐑻 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑢𐑦𐑞."
 
-#: src/actions/create.cpp:654
+#: src/actions/create.cpp:479
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders are able to recruit that unit."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑪𐑯 𐑩 𐑒𐑰𐑐 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑹 𐑮𐑰𐑒𐑷𐑤 𐑿𐑯𐑦𐑑𐑕."
 
-#: src/actions/create.cpp:658
+#: src/actions/create.cpp:483
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑪𐑯 𐑩 𐑒𐑰𐑐 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑹 𐑮𐑰𐑒𐑷𐑤 𐑿𐑯𐑦𐑑𐑕."
 
-#: src/actions/create.cpp:662
+#: src/actions/create.cpp:487
 #, fuzzy
 #| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
@@ -4468,25 +4485,25 @@ msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑𐑦𐑙 𐑤𐑦𐑕𐑑 𐑝 𐑨𐑛-𐑭
 msgid "Requesting distribution terms..."
 msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑𐑦𐑙 𐑤𐑦𐑕𐑑 𐑝 𐑨𐑛-𐑭𐑯𐑟"
 
-#: src/addon/client.cpp:143
+#: src/addon/client.cpp:140
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:177
+#: src/addon/client.cpp:174
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:201
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:218
+#: src/addon/client.cpp:215
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -4495,7 +4512,7 @@ msgid ""
 "cannot be installed."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:306 src/addon/manager_ui.cpp:810
+#: src/addon/client.cpp:303 src/addon/manager_ui.cpp:828
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -4559,7 +4576,7 @@ msgstr "𐑳𐑞𐑼"
 msgid "addon_type^(unknown)"
 msgstr "(𐑳𐑯𐑯𐑴𐑯)"
 
-#: src/addon/info.cpp:222 src/dialogs.cpp:1600
+#: src/addon/info.cpp:222 src/dialogs.cpp:1492
 msgid "unit_byte^B"
 msgstr ""
 
@@ -4613,14 +4630,14 @@ msgstr ""
 msgid "addon_state^Unknown"
 msgstr "(𐑳𐑯𐑯𐑴𐑯)"
 
-#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:372
-#: src/addon/manager_ui.cpp:387 src/addon/manager_ui.cpp:392
+#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:373
+#: src/addon/manager_ui.cpp:405 src/addon/manager_ui.cpp:410
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "𐑞 𐑕𐑻𐑝𐑻 𐑮𐑰𐑕𐑐𐑪𐑯𐑛𐑧𐑛 𐑢𐑦𐑞 𐑩𐑯 𐑻𐑹: \""
 
-#: src/addon/manager_ui.cpp:184
+#: src/addon/manager_ui.cpp:185
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -4630,40 +4647,40 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:193
+#: src/addon/manager_ui.cpp:194
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "𐑛𐑦𐑐𐑧𐑯𐑛𐑩𐑯𐑕𐑰𐑟"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:659
 msgid "Author"
 msgstr "𐑷𐑔𐑼"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:635
-#: src/dialogs.cpp:299 src/dialogs.cpp:474 src/dialogs.cpp:919
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:653
+#: src/dialogs.cpp:299 src/dialogs.cpp:474
 msgid "Name"
 msgstr "𐑯𐑱𐑥"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:639
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:657
 msgid "Version"
 msgstr "𐑝𐑻𐑠𐑩𐑯"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:659
 msgid "Size"
 msgstr "𐑕𐑲𐑟"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:668
 #: src/dialogs.cpp:298 src/dialogs.cpp:473
-#: src/help/help_topic_generators.cpp:477 src/menu_events.cpp:1016
+#: src/help/help_topic_generators.cpp:478
 msgid "Type"
 msgstr "𐑑𐑲𐑐"
 
-#: src/addon/manager_ui.cpp:241
+#: src/addon/manager_ui.cpp:242
 #, fuzzy
 msgid "Install Dependencies"
 msgstr "𐑛𐑦𐑐𐑧𐑯𐑛𐑩𐑯𐑕𐑰𐑟"
 
-#: src/addon/manager_ui.cpp:242
+#: src/addon/manager_ui.cpp:243
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -4673,7 +4690,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:278
+#: src/addon/manager_ui.cpp:279
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -4683,160 +4700,176 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:282
+#: src/addon/manager_ui.cpp:283
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:306
+#: src/addon/manager_ui.cpp:307
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:310
+#: src/addon/manager_ui.cpp:311
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:315
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:318
+#: src/addon/manager_ui.cpp:319
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you really wish to continue?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
-#: src/addon/manager_ui.cpp:320 src/addon/manager_ui.cpp:363
-#: src/addon/manager_ui.cpp:1128 src/game_initialization/multiplayer.cpp:292
+#: src/addon/manager_ui.cpp:321 src/addon/manager_ui.cpp:364
+#: src/addon/manager_ui.cpp:1146 src/game_initialization/multiplayer.cpp:291
 msgid "Confirm"
 msgstr "𐑒𐑪𐑯𐑓𐑻𐑥"
 
-#: src/addon/manager_ui.cpp:360
+#: src/addon/manager_ui.cpp:361
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:376 src/addon/manager_ui.cpp:395
-#: src/game_initialization/multiplayer_wait.cpp:464
+#: src/addon/manager_ui.cpp:377 src/addon/manager_ui.cpp:413
+#: src/game_initialization/multiplayer_wait.cpp:435
 msgid "Response"
 msgstr "𐑮𐑦𐑕𐑐𐑪𐑯𐑕"
 
-#: src/addon/manager_ui.cpp:389
+#: src/addon/manager_ui.cpp:392 src/game_initialization/multiplayer.cpp:277
+#: src/game_launcher.cpp:780
+#, fuzzy
+#| msgid "Warning: "
+msgid "Warning"
+msgstr "𐑢𐑹𐑯𐑦𐑙: "
+
+#: src/addon/manager_ui.cpp:393
+msgid ""
+"The remote version of this add-on is greater or equal to the version being "
+"uploaded. Do you really wish to continue?"
+msgstr ""
+
+#: src/addon/manager_ui.cpp:402
+msgid "Invalid icon path. Make sure the path points to a valid image."
+msgstr ""
+
+#: src/addon/manager_ui.cpp:407
 msgid "Terms"
 msgstr "𐑑𐑻𐑥𐑟"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 #, fuzzy
 #| msgid "New version"
 msgid "New Version"
 msgstr "𐑯𐑿 𐑝𐑻𐑠𐑩𐑯"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 #, fuzzy
 #| msgid "Old version"
 msgid "Old Version"
 msgstr "𐑴𐑤𐑛 𐑝𐑻𐑠𐑩𐑯"
 
-#: src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:668
 msgid "Downloads"
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑟"
 
-#: src/addon/manager_ui.cpp:770
+#: src/addon/manager_ui.cpp:788
 #, fuzzy
 #| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
 msgstr "𐑐𐑳𐑚𐑤𐑦𐑖 𐑨𐑛-𐑪𐑯: "
 
-#: src/addon/manager_ui.cpp:779
+#: src/addon/manager_ui.cpp:797
 #, fuzzy
 #| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
 msgstr "𐑛𐑦𐑤𐑰𐑑 𐑨𐑛-𐑪𐑯: "
 
-#: src/addon/manager_ui.cpp:806
+#: src/addon/manager_ui.cpp:824
 msgid "There are no add-ons available for download from this server."
 msgstr "𐑞𐑺 𐑸 𐑯𐑴 𐑨𐑛-𐑭𐑯𐑟 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑓𐑹 𐑛𐑬𐑯𐑤𐑴𐑛 𐑓𐑮𐑪𐑥 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/addon/manager_ui.cpp:807
+#: src/addon/manager_ui.cpp:825
 #, fuzzy
 #| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "𐑞𐑺 𐑸 𐑯𐑴 𐑨𐑛-𐑭𐑯𐑟 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑓𐑹 𐑛𐑬𐑯𐑤𐑴𐑛 𐑓𐑮𐑪𐑥 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/addon/manager_ui.cpp:829 src/dialogs.cpp:570 src/dialogs.cpp:944
-#: src/menu_events.cpp:1049
+#: src/addon/manager_ui.cpp:847 src/dialogs.cpp:570
 msgid "Filter: "
 msgstr "𐑓𐑦𐑤𐑑𐑼: "
 
-#: src/addon/manager_ui.cpp:839
+#: src/addon/manager_ui.cpp:857
 msgid "Description"
 msgstr "𐑛𐑦𐑕𐑒𐑮𐑦𐑐𐑖𐑩𐑯"
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:860
 #, fuzzy
 #| msgid "Update all"
 msgid "Update All"
 msgstr "𐑳𐑐𐑛𐑱𐑑 𐑷𐑤"
 
-#: src/addon/manager_ui.cpp:849
+#: src/addon/manager_ui.cpp:867
 msgid "filter^Options"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 msgid "Add-on Installed"
 msgstr "𐑨𐑛-𐑪𐑯 𐑦𐑯𐑕𐑑𐑷𐑤𐑛"
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 #, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-on Updated"
 msgstr "𐑨𐑛-𐑪𐑯 𐑛𐑦𐑤𐑰𐑑𐑩𐑛"
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 '$addon_title|' 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑕𐑩𐑒𐑕𐑧𐑕𐑓𐑩𐑤𐑦 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 #, fuzzy
 #| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 '$addon_title|' 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑕𐑩𐑒𐑕𐑧𐑕𐑓𐑩𐑤𐑦 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Installed"
 msgstr "𐑨𐑛-𐑪𐑯 𐑦𐑯𐑕𐑑𐑷𐑤𐑛"
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 #, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-ons Updated"
 msgstr "𐑨𐑛-𐑪𐑯 𐑛𐑦𐑤𐑰𐑑𐑩𐑛"
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 #, fuzzy
 #| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
 msgstr "𐑷𐑤 𐑨𐑛-𐑭𐑯𐑟 𐑳𐑐𐑛𐑱𐑑𐑩𐑛 𐑕𐑩𐑒𐑕𐑧𐑕𐑓𐑩𐑤𐑦."
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 msgid "All add-ons updated successfully."
 msgstr "𐑷𐑤 𐑨𐑛-𐑭𐑯𐑟 𐑳𐑐𐑛𐑱𐑑𐑩𐑛 𐑕𐑩𐑒𐑕𐑧𐑕𐑓𐑩𐑤𐑦."
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 msgid "Installation Failed"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 #, fuzzy
 #| msgid "Update failed"
 msgid "Update Failed"
 msgstr "𐑳𐑐𐑛𐑱𐑑 𐑓𐑱𐑤𐑛"
 
-#: src/addon/manager_ui.cpp:963
+#: src/addon/manager_ui.cpp:981
 #, fuzzy
 #| msgid ""
 #| "The following add-on could not be downloaded or updated successfully:"
@@ -4848,29 +4881,29 @@ msgid_plural ""
 msgstr[0] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑪𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑛𐑬𐑯𐑤𐑴𐑛𐑩𐑛 𐑹 𐑳𐑐𐑛𐑱𐑑𐑩𐑛 𐑕𐑩𐑒𐑕𐑧𐑕𐑓𐑩𐑤𐑦:"
 msgstr[1] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑭𐑯𐑟 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑛𐑬𐑯𐑤𐑴𐑛𐑩𐑛 𐑹 𐑳𐑐𐑛𐑱𐑑𐑩𐑛 𐑕𐑩𐑒𐑕𐑧𐑕𐑓𐑩𐑤𐑦:"
 
-#: src/addon/manager_ui.cpp:1006 src/addon/manager_ui.cpp:1016
-#: src/addon/manager_ui.cpp:1224
+#: src/addon/manager_ui.cpp:1024 src/addon/manager_ui.cpp:1034
+#: src/addon/manager_ui.cpp:1242
 #, fuzzy
 #| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "𐑩𐑯 𐑻𐑹 𐑪𐑒𐑻𐑛 𐑢𐑲𐑤 𐑒𐑩𐑥𐑿𐑯𐑦𐑒𐑱𐑑𐑦𐑙 𐑢𐑦𐑞 𐑞 𐑕𐑻𐑝𐑻."
 
-#: src/addon/manager_ui.cpp:1034 src/addon/manager_ui.cpp:1247
+#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
 msgid "Network communication error."
 msgstr "𐑯𐑧𐑑𐑢𐑻𐑒 𐑒𐑩𐑥𐑿𐑯𐑦𐑒𐑱𐑖𐑩𐑯 𐑻𐑹."
 
-#: src/addon/manager_ui.cpp:1037 src/addon/manager_ui.cpp:1040
-#: src/addon/manager_ui.cpp:1250 src/addon/manager_ui.cpp:1253
+#: src/addon/manager_ui.cpp:1055 src/addon/manager_ui.cpp:1058
+#: src/addon/manager_ui.cpp:1268 src/addon/manager_ui.cpp:1271
 msgid "Remote host disconnected."
 msgstr "𐑮𐑦𐑥𐑴𐑑 𐑣𐑴𐑕𐑑 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑑𐑩𐑛."
 
-#: src/addon/manager_ui.cpp:1043 src/addon/manager_ui.cpp:1256
+#: src/addon/manager_ui.cpp:1061 src/addon/manager_ui.cpp:1274
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "𐑩 𐑐𐑮𐑪𐑚𐑤𐑩𐑥 𐑪𐑒𐑻𐑛 𐑢𐑧𐑯 𐑑𐑮𐑲𐑦𐑙 𐑑 𐑒𐑮𐑰𐑱𐑑 𐑞 𐑓𐑲𐑤𐑟 𐑯𐑧𐑕𐑩𐑕𐑼𐑦 𐑑 𐑦𐑯𐑕𐑑𐑷𐑤 𐑞𐑦𐑕 𐑨𐑛-𐑪𐑯."
 
-#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
+#: src/addon/manager_ui.cpp:1070 src/addon/manager_ui.cpp:1283
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -4878,15 +4911,15 @@ msgid ""
 "Error message: $msg"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:1058 src/addon/manager_ui.cpp:1271
+#: src/addon/manager_ui.cpp:1076 src/addon/manager_ui.cpp:1289
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:1072
+#: src/addon/manager_ui.cpp:1090
 msgid "You have no add-ons installed."
 msgstr "𐑿 𐑣𐑨𐑝 𐑯𐑴 𐑨𐑛-𐑭𐑯𐑟 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/manager_ui.cpp:1123
+#: src/addon/manager_ui.cpp:1141
 #, fuzzy
 #| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
@@ -4894,7 +4927,7 @@ msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "𐑸 𐑿 𐑖𐑫𐑼 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑮𐑰𐑥𐑵𐑝 𐑞 𐑨𐑛-𐑪𐑯 '$addon|'?"
 msgstr[1] "𐑸 𐑿 𐑖𐑫𐑼 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑮𐑰𐑥𐑵𐑝 𐑞 𐑨𐑛-𐑪𐑯 '$addon|'?"
 
-#: src/addon/manager_ui.cpp:1149
+#: src/addon/manager_ui.cpp:1167
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -4904,7 +4937,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:1159
+#: src/addon/manager_ui.cpp:1177
 #, fuzzy
 #| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
@@ -4912,7 +4945,7 @@ msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "𐑨𐑛-𐑪𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑛𐑦𐑤𐑰𐑑𐑩𐑛 𐑐𐑮𐑪𐑐𐑼𐑤𐑦:"
 msgstr[1] "𐑨𐑛-𐑪𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑛𐑦𐑤𐑰𐑑𐑩𐑛 𐑐𐑮𐑪𐑐𐑼𐑤𐑦:"
 
-#: src/addon/manager_ui.cpp:1166
+#: src/addon/manager_ui.cpp:1184
 #, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-on Deleted"
@@ -4920,7 +4953,7 @@ msgid_plural "Add-ons Deleted"
 msgstr[0] "𐑨𐑛-𐑪𐑯 𐑛𐑦𐑤𐑰𐑑𐑩𐑛"
 msgstr[1] "𐑨𐑛-𐑪𐑯 𐑛𐑦𐑤𐑰𐑑𐑩𐑛"
 
-#: src/addon/manager_ui.cpp:1168
+#: src/addon/manager_ui.cpp:1186
 #, fuzzy
 #| msgid "The following add-on had errors and could not be loaded:"
 #| msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -4929,7 +4962,7 @@ msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑛 𐑻𐑼𐑟 𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛:"
 msgstr[1] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑭𐑯𐑟 𐑣𐑨𐑛 𐑻𐑼𐑟 𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛:"
 
-#: src/addon/manager_ui.cpp:1238
+#: src/addon/manager_ui.cpp:1256
 #, fuzzy
 #| msgid "Could not find any updated add-ons on this server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
@@ -4979,7 +5012,7 @@ msgstr "𐑯𐑴 𐑿𐑟𐑩𐑚𐑩𐑤 𐑢𐑧𐑐𐑩𐑯"
 msgid "Chance of being unscathed"
 msgstr "𐑗𐑭𐑯𐑕 𐑝 𐑚𐑰𐑦𐑙 𐑩𐑯𐑕𐑒𐑱𐑞𐑛"
 
-#: src/attack_prediction_display.cpp:537 src/mouse_events.cpp:1075
+#: src/attack_prediction_display.cpp:551 src/mouse_events.cpp:1075
 msgid "Damage Calculations"
 msgstr "𐑛𐑨𐑥𐑦𐑡 𐑒𐑨𐑤𐑒𐑿𐑤𐑱𐑖𐑩𐑯𐑟"
 
@@ -4995,8 +5028,8 @@ msgstr ""
 "𐑒𐑤𐑽 𐑗𐑨𐑑 𐑥𐑧𐑕𐑦𐑡𐑩𐑟.\n"
 "\n"
 
-#: src/desktop/windows_tray_notification.cpp:108 src/game_launcher.cpp:383
-#: src/game_launcher.cpp:1035
+#: src/desktop/windows_tray_notification.cpp:141 src/game_launcher.cpp:392
+#: src/game_launcher.cpp:1054
 msgid "The Battle for Wesnoth"
 msgstr "𐑞 𐑚𐑨𐑑𐑩𐑤 𐑓𐑹 ·𐑢𐑧𐑕𐑯𐑷𐑔"
 
@@ -5077,8 +5110,8 @@ msgstr "𐑮𐑩𐑒𐑮𐑵𐑑"
 msgid "Select unit:"
 msgstr "𐑕𐑩𐑤𐑧𐑒𐑑 𐑿𐑯𐑦𐑑:"
 
-#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:387
-#: src/help/help_topic_generators.cpp:408
+#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:409
 msgid "Traits"
 msgstr "𐑑𐑮𐑱𐑑𐑕"
 
@@ -5118,7 +5151,7 @@ msgstr "𐑑𐑵𐑑𐑹𐑰𐑩𐑤"
 msgid "Test scenario"
 msgstr "𐑮𐑦𐑥𐑴𐑑 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/dialogs.cpp:884 src/savegame.cpp:681
+#: src/dialogs.cpp:884 src/savegame.cpp:646
 msgid "Turn"
 msgstr "𐑑𐑻𐑯"
 
@@ -5134,77 +5167,25 @@ msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦: "
 msgid "Version: "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/dialogs.cpp:910
-msgid "No Saved Games"
-msgstr "𐑯𐑴 𐑕𐑱𐑝𐑛 𐑜𐑱𐑥𐑟"
-
-#: src/dialogs.cpp:911
-msgid ""
-"There are no saved games to load.\n"
-"\n"
-"(Games are saved automatically when you complete a scenario)"
-msgstr ""
-"𐑞𐑺 𐑸 𐑯𐑴 𐑕𐑱𐑝𐑛 𐑜𐑱𐑥𐑟 𐑑 𐑤𐑴𐑛.\n"
-"\n"
-"(𐑜𐑱𐑥𐑟 𐑸 𐑕𐑱𐑝𐑛 𐑷𐑑𐑩𐑥𐑨𐑑𐑦𐑒𐑤𐑦 𐑢𐑧𐑯 𐑿 𐑒𐑩𐑥𐑐𐑤𐑰𐑑 𐑩 𐑕𐑦𐑯𐑺𐑰𐑴)"
-
-#: src/dialogs.cpp:919
-msgid "Date"
-msgstr "𐑛𐑱𐑑"
-
-#: src/dialogs.cpp:936 src/savegame.cpp:310
-msgid "Load Game"
-msgstr "𐑤𐑴𐑛 𐑜𐑱𐑥"
-
-#: src/dialogs.cpp:951
-#, fuzzy
-#| msgid "Difficulty"
-msgid "Change difficulty"
-msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦"
-
-#: src/dialogs.cpp:954
-msgid "Change campaign difficulty before loading"
-msgstr ""
-
-#: src/dialogs.cpp:962
-msgid "Show replay"
-msgstr "𐑖𐑴 𐑮𐑰𐑐𐑤𐑱"
-
-#: src/dialogs.cpp:964
-msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
-
-#: src/dialogs.cpp:968
-msgid "Cancel orders"
-msgstr "𐑒𐑨𐑯𐑕𐑩𐑤 𐑹𐑛𐑼𐑟"
-
-#: src/dialogs.cpp:970
-msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
-
-#: src/dialogs.cpp:977
-msgid "Delete Save"
-msgstr "𐑛𐑦𐑤𐑰𐑑 𐑕𐑱𐑝"
-
-#: src/dialogs.cpp:1036
+#: src/dialogs.cpp:928
 msgid "Profile"
 msgstr "𐑐𐑮𐑴𐑓𐑲𐑤"
 
-#: src/dialogs.cpp:1166 src/dialogs.cpp:1310
+#: src/dialogs.cpp:1058 src/dialogs.cpp:1202
 msgid "level"
 msgstr "𐑤𐑧𐑝𐑩𐑤"
 
-#: src/dialogs.cpp:1179 src/dialogs.cpp:1323
-#: src/help/help_topic_generators.cpp:449
+#: src/dialogs.cpp:1071 src/dialogs.cpp:1215
+#: src/help/help_topic_generators.cpp:450
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:1182 src/dialogs.cpp:1326
+#: src/dialogs.cpp:1074 src/dialogs.cpp:1218
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:1186 src/dialogs.cpp:1330
-#: src/help/help_topic_generators.cpp:450
+#: src/dialogs.cpp:1078 src/dialogs.cpp:1222
+#: src/help/help_topic_generators.cpp:451
 msgid "Moves: "
 msgstr "𐑥𐑵𐑝𐑟: "
 
@@ -5236,67 +5217,67 @@ msgstr "%𐑚𐑰 %𐑛𐑰"
 msgid "%b %d %Y"
 msgstr "%𐑚𐑰 %𐑛𐑰 %𐑢𐑲"
 
-#: src/game_config.cpp:371
+#: src/game_config.cpp:383
 msgid "Invalid color range: "
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑳𐑤𐑼 𐑮𐑱𐑯𐑡: "
 
-#: src/game_config_manager.cpp:185 src/game_config_manager.cpp:193
-#: src/game_config_manager.cpp:204
+#: src/game_config_manager.cpp:189 src/game_config_manager.cpp:197
+#: src/game_config_manager.cpp:208
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:186
+#: src/game_config_manager.cpp:190
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:187 src/game_config_manager.cpp:196
-#: src/game_config_manager.cpp:208
+#: src/game_config_manager.cpp:191 src/game_config_manager.cpp:200
+#: src/game_config_manager.cpp:212
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:194 src/game_config_manager.cpp:205
-#: src/game_config_manager.cpp:227
+#: src/game_config_manager.cpp:198 src/game_config_manager.cpp:209
+#: src/game_config_manager.cpp:231
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:195
+#: src/game_config_manager.cpp:199
 #, fuzzy
 msgid "The ID is already in use."
 msgstr "𐑞 𐑜𐑱𐑥 𐑦𐑟 𐑴𐑝𐑼."
 
-#: src/game_config_manager.cpp:206
+#: src/game_config_manager.cpp:210
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:207
+#: src/game_config_manager.cpp:211
 #, fuzzy
 #| msgid "No era information found."
 msgid "File not found."
 msgstr "𐑯𐑴 𐑽𐑩 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑓𐑬𐑯𐑛."
 
-#: src/game_config_manager.cpp:226 src/game_config_manager.cpp:237
+#: src/game_config_manager.cpp:230 src/game_config_manager.cpp:241
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:228
+#: src/game_config_manager.cpp:232
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:229
+#: src/game_config_manager.cpp:233
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:242
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:239
+#: src/game_config_manager.cpp:243
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (𐑞 𐑜𐑱𐑥 𐑢𐑦𐑤 𐑯𐑬 𐑧𐑜𐑟𐑦𐑑)"
 
-#: src/game_config_manager.cpp:311
+#: src/game_config_manager.cpp:300
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5304,7 +5285,7 @@ msgid ""
 "loading add-ons."
 msgstr "𐑻𐑹 𐑤𐑴𐑛𐑦𐑙 𐑜𐑱𐑥 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯 𐑓𐑲𐑤𐑟: '"
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:305
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5312,27 +5293,27 @@ msgid ""
 "default core files."
 msgstr "𐑻𐑹 𐑤𐑴𐑛𐑦𐑙 𐑜𐑱𐑥 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯 𐑓𐑲𐑤𐑟: '"
 
-#: src/game_config_manager.cpp:323
+#: src/game_config_manager.cpp:312
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "𐑻𐑹 𐑤𐑴𐑛𐑦𐑙 𐑜𐑱𐑥 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯 𐑓𐑲𐑤𐑟: '"
 
-#: src/game_config_manager.cpp:449
+#: src/game_config_manager.cpp:438
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑛 𐑻𐑼𐑟 𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛:"
 msgstr[1] "𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑨𐑛-𐑭𐑯𐑟 𐑣𐑨𐑛 𐑻𐑼𐑟 𐑯 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛:"
 
-#: src/game_config_manager.cpp:453
+#: src/game_config_manager.cpp:442
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:463 src/game_launcher.cpp:998
+#: src/game_events/pump.cpp:463 src/game_launcher.cpp:1017
 msgid "Error: "
 msgstr "𐑻𐑹: "
 
@@ -5348,8 +5329,8 @@ msgstr "𐑛𐑰𐑚𐑳𐑜: "
 msgid "Info: "
 msgstr "𐑦𐑯𐑓𐑴: "
 
-#: src/game_initialization/configure_engine.cpp:127
-#: src/game_initialization/create_engine.cpp:651
+#: src/game_initialization/configure_engine.cpp:126
+#: src/game_initialization/create_engine.cpp:633
 msgid "$login|’s game"
 msgstr "$login|’s 𐑜𐑱𐑥"
 
@@ -5358,44 +5339,44 @@ msgstr "$login|’s 𐑜𐑱𐑥"
 msgid "Team"
 msgstr "𐑑𐑰𐑥"
 
-#: src/game_initialization/connect_engine.cpp:947
+#: src/game_initialization/connect_engine.cpp:976
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "𐑩𐑯𐑪𐑯𐑦𐑥𐑩𐑕 𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:952
-#: src/game_initialization/connect_engine.cpp:1243
-#: src/game_initialization/multiplayer_wait.cpp:518
+#: src/game_initialization/connect_engine.cpp:981
+#: src/game_initialization/connect_engine.cpp:1267
+#: src/game_initialization/multiplayer_wait.cpp:489
 msgid "Computer Player"
 msgstr "𐑒𐑩𐑥𐑐𐑿𐑑𐑼 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1000
+#: src/game_initialization/connect_engine.cpp:1029
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1240
+#: src/game_initialization/connect_engine.cpp:1264
 msgid "Network Player"
 msgstr "𐑯𐑧𐑑𐑢𐑻𐑒 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1242
+#: src/game_initialization/connect_engine.cpp:1266
 msgid "Local Player"
 msgstr "𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/game_initialization/connect_engine.cpp:1244
+#: src/game_initialization/connect_engine.cpp:1268
 msgid "Empty"
 msgstr "𐑧𐑥𐑐𐑑𐑦"
 
-#: src/game_initialization/connect_engine.cpp:1247
+#: src/game_initialization/connect_engine.cpp:1271
 msgid "Reserved"
 msgstr "𐑮𐑦𐑟𐑻𐑝𐑛"
 
-#: src/game_initialization/connect_engine.cpp:1251
+#: src/game_initialization/connect_engine.cpp:1275
 msgid "--give--"
 msgstr "--give--"
 
 #: src/game_initialization/create_engine.cpp:170
-#: src/game_initialization/create_engine.cpp:1020
+#: src/game_initialization/create_engine.cpp:1002
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -5475,17 +5456,17 @@ msgstr "𐑳𐑯𐑱𐑚𐑩𐑤 𐑑 𐑓𐑲𐑯𐑛 𐑩 𐑤𐑰𐑛𐑻 �
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/mp_game_utils.cpp:73
+#: src/game_initialization/mp_game_utils.cpp:74
 msgid "Defeat enemy leader(s)"
 msgstr "𐑛𐑦𐑓𐑰𐑑 𐑧𐑯𐑩𐑥𐑦 𐑤𐑰𐑛𐑻(𐑕)"
 
-#: src/game_initialization/mp_game_utils.cpp:92
+#: src/game_initialization/mp_game_utils.cpp:93
 msgid "Cannot find era $era"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑓𐑲𐑯𐑛 𐑽𐑩 $era"
 
-#: src/game_initialization/mp_game_utils.cpp:134
-#: src/game_initialization/multiplayer.cpp:255
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/mp_game_utils.cpp:135
+#: src/game_initialization/multiplayer.cpp:254
+#: src/game_initialization/multiplayer.cpp:339
 msgid "Connection timed out"
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
@@ -5493,16 +5474,16 @@ msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 msgid "Defaults"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:171
-#: src/game_initialization/multiplayer.cpp:214
+#: src/game_initialization/multiplayer.cpp:170
+#: src/game_initialization/multiplayer.cpp:213
 msgid "Connecting to Server..."
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑑𐑦𐑙 𐑑 𐑕𐑻𐑝𐑻..."
 
-#: src/game_initialization/multiplayer.cpp:181
+#: src/game_initialization/multiplayer.cpp:180
 msgid "Reading from Server..."
 msgstr "𐑮𐑰𐑛𐑦𐑙 𐑓𐑮𐑪𐑥 𐑕𐑻𐑝𐑻..."
 
-#: src/game_initialization/multiplayer.cpp:197
+#: src/game_initialization/multiplayer.cpp:196
 #, fuzzy
 #| msgid ""
 #| "The server requires version '$version1' while you are using version "
@@ -5512,44 +5493,38 @@ msgid ""
 "'$version2'"
 msgstr "𐑞 𐑕𐑻𐑝𐑻 𐑮𐑦𐑒𐑢𐑲𐑼𐑟 𐑝𐑻𐑠𐑩𐑯 '$version1' 𐑢𐑲𐑤 𐑿 𐑸 𐑿𐑟𐑦𐑙 𐑝𐑻𐑠𐑩𐑯 '$version2'"
 
-#: src/game_initialization/multiplayer.cpp:208
+#: src/game_initialization/multiplayer.cpp:207
 msgid "Server-side redirect loop"
 msgstr "𐑕𐑻𐑝𐑻-𐑕𐑲𐑛 𐑮𐑰𐑛𐑻𐑧𐑒𐑑 𐑤𐑵𐑐"
 
-#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:266
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:276
+#: src/game_initialization/multiplayer.cpp:275
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
-#: src/game_initialization/multiplayer.cpp:278 src/game_launcher.cpp:766
-#, fuzzy
-#| msgid "Warning: "
-msgid "Warning"
-msgstr "𐑢𐑹𐑯𐑦𐑙: "
-
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:321
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:362
 msgid "You must login first."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑤𐑪𐑜𐑦𐑯 𐑓𐑻𐑕𐑑."
 
-#: src/game_initialization/multiplayer.cpp:365
+#: src/game_initialization/multiplayer.cpp:364
 #, fuzzy
 #| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑑𐑱𐑒𐑩𐑯."
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:366
 #, fuzzy
 #| msgid ""
 #| "The nick '$nick' contains invalid characters. Only alpha-numeric "
@@ -5561,37 +5536,37 @@ msgstr ""
 "𐑞 𐑯𐑦𐑒 '$nick' 𐑒𐑩𐑯𐑑𐑱𐑯𐑟 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟. 𐑴𐑯𐑤𐑦 𐑨𐑤𐑓𐑩-𐑯𐑿𐑥𐑧𐑮𐑦𐑒 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟, 𐑩𐑯𐑛𐑻𐑕𐑒𐑹𐑟 "
 "𐑯 𐑣𐑲𐑓𐑧𐑯𐑕 𐑸 𐑩𐑤𐑬𐑛."
 
-#: src/game_initialization/multiplayer.cpp:371
+#: src/game_initialization/multiplayer.cpp:370
 #, fuzzy
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑑𐑵 𐑤𐑪𐑙. 𐑯𐑦𐑒𐑕 𐑥𐑳𐑕𐑑 𐑚𐑰 18 𐑒𐑨𐑮𐑩𐑒𐑑𐑼𐑟 𐑹 𐑤𐑧𐑕."
 
-#: src/game_initialization/multiplayer.cpp:374
+#: src/game_initialization/multiplayer.cpp:373
 #, fuzzy
 #| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑦𐑟𐑻𐑝𐑛 𐑯 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛 𐑚𐑲 𐑐𐑤𐑱𐑼𐑟."
 
-#: src/game_initialization/multiplayer.cpp:376
+#: src/game_initialization/multiplayer.cpp:375
 #, fuzzy
 #| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑯𐑪𐑑 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:377
+#: src/game_initialization/multiplayer.cpp:376
 #, fuzzy
 #| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr "𐑞𐑦𐑕 𐑕𐑻𐑝𐑻 𐑛𐑦𐑕𐑩𐑤𐑬𐑕 𐑩𐑯𐑮𐑧𐑡𐑦𐑕𐑑𐑻𐑛 𐑯𐑦𐑒𐑕."
 
-#: src/game_initialization/multiplayer.cpp:379
-#: src/game_initialization/multiplayer.cpp:381
+#: src/game_initialization/multiplayer.cpp:378
+#: src/game_initialization/multiplayer.cpp:380
 #, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "𐑞 𐑯𐑦𐑒 '$nick' 𐑦𐑟 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑪𐑯 𐑞𐑦𐑕 𐑕𐑻𐑝𐑻."
 
-#: src/game_initialization/multiplayer.cpp:382
+#: src/game_initialization/multiplayer.cpp:381
 #, fuzzy
 #| msgid ""
 #| "WARNING: There is already a client using this nick, logging in will cause "
@@ -5603,20 +5578,20 @@ msgstr ""
 "𐑢𐑹𐑯𐑦𐑙: 𐑞𐑺 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑩 𐑒𐑤𐑲𐑩𐑯𐑑 𐑿𐑟𐑦𐑙 𐑞𐑦𐑕 𐑯𐑦𐑒, 𐑤𐑪𐑜𐑦𐑙 𐑦𐑯 𐑢𐑦𐑤 𐑒𐑷𐑟 𐑞𐑨𐑑 𐑒𐑤𐑲𐑩𐑯𐑑 𐑑 𐑚𐑰 "
 "𐑒𐑦𐑒𐑑!"
 
-#: src/game_initialization/multiplayer.cpp:385
+#: src/game_initialization/multiplayer.cpp:384
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "𐑻𐑹 𐑦𐑯 𐑞 𐑤𐑪𐑜𐑦𐑯 𐑐𐑮𐑩𐑕𐑰𐑡𐑻 (𐑞 𐑕𐑻𐑝𐑻 𐑣𐑨𐑛 𐑯𐑴 𐑕𐑰𐑛 𐑓𐑹 𐑿𐑼 𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯)."
 
-#: src/game_initialization/multiplayer.cpp:388
+#: src/game_initialization/multiplayer.cpp:387
 msgid "The password you provided was incorrect."
 msgstr "𐑞 𐑐𐑭𐑕𐑢𐑻𐑛 𐑿 𐑐𐑮𐑩𐑝𐑲𐑛𐑩𐑛 𐑢𐑪𐑟 𐑦𐑯𐑒𐑩𐑮𐑧𐑒𐑑."
 
-#: src/game_initialization/multiplayer.cpp:390
+#: src/game_initialization/multiplayer.cpp:389
 msgid "You have made too many login attempts."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:609
+#: src/game_initialization/multiplayer.cpp:619
 msgid "No sides found. At least one side or starting position must be defined."
 msgstr ""
 
@@ -5627,7 +5602,7 @@ msgid "Generic"
 msgstr "𐑡𐑧𐑯𐑼𐑩𐑤 𐑒𐑩𐑥𐑭𐑯𐑛𐑟"
 
 #: src/game_initialization/multiplayer_configure.cpp:61
-#: src/game_initialization/multiplayer_lobby.cpp:355
+#: src/game_initialization/multiplayer_lobby.cpp:357
 msgid "Use map settings"
 msgstr "𐑿𐑟 𐑥𐑨𐑐 𐑕𐑧𐑑𐑦𐑙𐑟"
 
@@ -5816,21 +5791,21 @@ msgstr "𐑨𐑒𐑖𐑩𐑯 𐑚𐑴𐑯𐑩𐑕: "
 
 #: src/game_initialization/multiplayer_connect.cpp:58
 #: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_wait.cpp:587
+#: src/game_initialization/multiplayer_wait.cpp:595
 msgid "("
 msgstr "("
 
 #: src/game_initialization/multiplayer_connect.cpp:58
 #: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:627
+#: src/game_initialization/multiplayer_wait.cpp:587
+#: src/game_initialization/multiplayer_wait.cpp:598
 msgid ")"
 msgstr ")"
 
 #: src/game_initialization/multiplayer_connect.cpp:60
 #: src/game_initialization/multiplayer_connect.cpp:260
-#: src/game_initialization/multiplayer_wait.cpp:626
+#: src/game_initialization/multiplayer_wait.cpp:597
 msgid "+"
 msgstr "+"
 
@@ -5866,7 +5841,7 @@ msgid "Team/Color"
 msgstr "𐑒𐑳𐑤𐑼"
 
 #: src/game_initialization/multiplayer_connect.cpp:386
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_wait.cpp:595
 #: src/leader_scroll_dialog.cpp:54 src/menu_events.cpp:215
 msgid "Income"
 msgstr "𐑦𐑯𐑒𐑳𐑥"
@@ -5876,9 +5851,11 @@ msgid "I’m Ready"
 msgstr "𐑲'𐑧𐑥 𐑮𐑧𐑛𐑦"
 
 #: src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_lobby.cpp:1036
-#: src/game_initialization/multiplayer_wait.cpp:197
-#: src/hotkey/command_executor.cpp:522 src/hotkey/command_executor.cpp:695
+#: src/game_initialization/multiplayer_lobby.cpp:1039
+#: src/game_initialization/multiplayer_wait.cpp:198
+#: src/gui/dialogs/synced_choice_wait.cpp:104
+#: src/hotkey/command_executor.cpp:529 src/hotkey/command_executor.cpp:702
+#: src/quit_confirmation.cpp:41
 msgid "Quit"
 msgstr "𐑒𐑢𐑦𐑑"
 
@@ -5899,65 +5876,59 @@ msgstr "𐑢𐑱𐑑𐑦𐑙 𐑓𐑹 𐑐𐑤𐑱𐑼𐑟 𐑑 𐑡𐑶𐑯..."
 msgid "Waiting for players to choose factions..."
 msgstr "𐑢𐑱𐑑𐑦𐑙 𐑓𐑹 𐑐𐑤𐑱𐑼𐑟 𐑑 𐑡𐑶𐑯..."
 
-#: src/game_initialization/multiplayer_create.cpp:85
-#: src/game_initialization/multiplayer_lobby.cpp:1033
+#: src/game_initialization/multiplayer_create.cpp:86
+#: src/game_initialization/multiplayer_lobby.cpp:1036
 msgid "Create Game"
 msgstr "𐑒𐑮𐑰𐑱𐑑 𐑜𐑱𐑥"
 
-#: src/game_initialization/multiplayer_create.cpp:93
+#: src/game_initialization/multiplayer_create.cpp:94
 #, fuzzy
 msgid "Filter:"
 msgstr "𐑓𐑦𐑤𐑑𐑼: "
 
-#: src/game_initialization/multiplayer_create.cpp:94
-#: src/game_initialization/multiplayer_create.cpp:476
+#: src/game_initialization/multiplayer_create.cpp:95
+#: src/game_initialization/multiplayer_create.cpp:464
 msgid "Number of players: any"
 msgstr ""
 
-#: src/game_initialization/multiplayer_create.cpp:95
+#: src/game_initialization/multiplayer_create.cpp:96
 #, fuzzy
 #| msgid "Random start time"
 msgid "Random map options:"
 msgstr "𐑮𐑨𐑯𐑛𐑩𐑥 𐑕𐑑𐑸𐑑 𐑑𐑲𐑥"
 
-#: src/game_initialization/multiplayer_create.cpp:96
-#: src/game_initialization/multiplayer_lobby.cpp:698
-#: src/help/help_impl.cpp:529
+#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_lobby.cpp:700 src/help/help_impl.cpp:529
 msgid "Era:"
 msgstr "𐑽𐑩:"
 
-#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_create.cpp:98
 msgid ""
 "No eras available\n"
 "for this game."
 msgstr ""
 
-#: src/game_initialization/multiplayer_create.cpp:99
-#: src/game_initialization/multiplayer_lobby.cpp:725
+#: src/game_initialization/multiplayer_create.cpp:100
+#: src/game_initialization/multiplayer_lobby.cpp:727
 #, fuzzy
 msgid "Modifications:"
 msgstr "𐑛𐑦𐑕𐑱𐑚𐑩𐑤 𐑷𐑑𐑴𐑕𐑱𐑝𐑟."
 
-#: src/game_initialization/multiplayer_create.cpp:103
+#: src/game_initialization/multiplayer_create.cpp:104
 msgid "Next"
 msgstr "𐑯𐑧𐑒𐑕𐑑"
 
-#: src/game_initialization/multiplayer_create.cpp:105
+#: src/game_initialization/multiplayer_create.cpp:106
 msgid "Regenerate"
 msgstr "𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑"
 
-#: src/game_initialization/multiplayer_create.cpp:106
+#: src/game_initialization/multiplayer_create.cpp:107
 msgid "Settings..."
 msgstr "𐑕𐑧𐑑𐑦𐑙𐑟..."
 
-#: src/game_initialization/multiplayer_create.cpp:107
+#: src/game_initialization/multiplayer_create.cpp:108
 msgid "Load Game..."
 msgstr "𐑤𐑴𐑛 𐑜𐑱𐑥..."
-
-#: src/game_initialization/multiplayer_create.cpp:108
-#: src/game_initialization/multiplayer_create.cpp:369
-msgid "Activate"
-msgstr ""
 
 #: src/game_initialization/multiplayer_create.cpp:128
 #, fuzzy
@@ -6004,135 +5975,128 @@ msgstr "𐑯𐑴 𐑽𐑩𐑟 𐑓𐑬𐑯𐑛."
 msgid "No eras found"
 msgstr "𐑯𐑴 𐑽𐑩𐑟 𐑓𐑬𐑯𐑛"
 
-#: src/game_initialization/multiplayer_create.cpp:204
+#: src/game_initialization/multiplayer_create.cpp:199
 #, fuzzy
 msgid ""
 "Modifications:\n"
 "None found."
 msgstr "𐑛𐑦𐑕𐑱𐑚𐑩𐑤 𐑷𐑑𐑴𐑕𐑱𐑝𐑟."
 
-#: src/game_initialization/multiplayer_create.cpp:206
-#: src/game_initialization/multiplayer_create.cpp:367
-#, fuzzy
-#| msgid "Debug mode activated!"
-msgid "Deactivate"
-msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑨𐑒𐑑𐑦𐑝𐑱𐑑𐑩𐑛!"
-
-#: src/game_initialization/multiplayer_create.cpp:319
+#: src/game_initialization/multiplayer_create.cpp:312
 #, fuzzy
 msgid "The level is invalid."
 msgstr "𐑞 𐑜𐑱𐑥 𐑦𐑟 𐑴𐑝𐑼."
 
-#: src/game_initialization/multiplayer_create.cpp:421
+#: src/game_initialization/multiplayer_create.cpp:409
 msgid "Players: "
 msgstr "𐑐𐑤𐑱𐑼𐑟: "
 
-#: src/game_initialization/multiplayer_create.cpp:441
+#: src/game_initialization/multiplayer_create.cpp:429
 msgid "Size: "
 msgstr "𐑕𐑲𐑟: "
 
-#: src/game_initialization/multiplayer_create.cpp:478
+#: src/game_initialization/multiplayer_create.cpp:466
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "𐑯𐑱𐑥 𐑝 𐑜𐑱𐑥:"
 
-#: src/game_initialization/multiplayer_create.cpp:584 src/unit_types.cpp:474
+#: src/game_initialization/multiplayer_create.cpp:572 src/unit_types.cpp:477
 msgid "No description available."
 msgstr "𐑯𐑴 𐑛𐑦𐑕𐑒𐑮𐑦𐑐𐑖𐑩𐑯 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤."
 
-#: src/game_initialization/multiplayer_lobby.cpp:145
+#: src/game_initialization/multiplayer_lobby.cpp:147
 msgid "--no games open--"
 msgstr "--no 𐑜𐑱𐑥𐑟 𐑴𐑐𐑩𐑯--"
 
-#: src/game_initialization/multiplayer_lobby.cpp:182
+#: src/game_initialization/multiplayer_lobby.cpp:184
 msgid " (Unknown Era)"
 msgstr "(𐑳𐑯𐑯𐑴𐑯 𐑽𐑩)"
 
-#: src/game_initialization/multiplayer_lobby.cpp:190
+#: src/game_initialization/multiplayer_lobby.cpp:192
 msgid " (Need to download addons)"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:192
+#: src/game_initialization/multiplayer_lobby.cpp:194
 #, fuzzy
 #| msgid "Outdated add-ons"
 msgid " (Outdated addons)"
 msgstr "𐑬𐑑𐑛𐑱𐑑𐑦𐑛 𐑨𐑛-𐑭𐑯𐑟"
 
-#: src/game_initialization/multiplayer_lobby.cpp:476
+#: src/game_initialization/multiplayer_lobby.cpp:478
 #, fuzzy
 #| msgid "End Scenario"
 msgid "Scenario:"
 msgstr "𐑧𐑯𐑛 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/game_initialization/multiplayer_lobby.cpp:497
+#: src/game_initialization/multiplayer_lobby.cpp:499
 #: src/gui/dialogs/lobby/lobby_data.cpp:300
 msgid "Remote scenario"
 msgstr "𐑮𐑦𐑥𐑴𐑑 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/game_initialization/multiplayer_lobby.cpp:511
+#: src/game_initialization/multiplayer_lobby.cpp:513
 #: src/gui/dialogs/lobby/lobby_data.cpp:308
 msgid "Unknown scenario: $scenario_id"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴: $scenario_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:519
+#: src/game_initialization/multiplayer_lobby.cpp:521
 #: src/gui/dialogs/lobby/lobby_data.cpp:313
 msgid "Unknown scenario"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/game_initialization/multiplayer_lobby.cpp:530
+#: src/game_initialization/multiplayer_lobby.cpp:532
 #, fuzzy
 #| msgid "Campaign Design"
 msgid "Campaign:"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯 𐑛𐑩𐑟𐑲𐑯"
 
-#: src/game_initialization/multiplayer_lobby.cpp:564
+#: src/game_initialization/multiplayer_lobby.cpp:566
 #, fuzzy
 #| msgid "Campaign: $campaign_name"
 msgid "Unknown campaign: $campaign_id"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯: $campaign_name"
 
-#: src/game_initialization/multiplayer_lobby.cpp:667
+#: src/game_initialization/multiplayer_lobby.cpp:669
 msgid ""
 "Host's version of $addon is too old: host's version $host_ver < your version "
 "$local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:680
+#: src/game_initialization/multiplayer_lobby.cpp:682
 msgid ""
 "Your version of $addon is out of date: host's version $host_ver > your "
 "version $local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:710
+#: src/game_initialization/multiplayer_lobby.cpp:712
 #: src/gui/dialogs/lobby/lobby_data.cpp:215
 msgid "Unknown era: $era_id"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩: $era_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:714
+#: src/game_initialization/multiplayer_lobby.cpp:716
 #: src/gui/dialogs/lobby/lobby_data.cpp:220
 msgid "Unknown era"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑽𐑩"
 
-#: src/game_initialization/multiplayer_lobby.cpp:740
+#: src/game_initialization/multiplayer_lobby.cpp:742
 msgid " (missing)"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:763
+#: src/game_initialization/multiplayer_lobby.cpp:765
 msgid "Missing addon: $id"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:790
+#: src/game_initialization/multiplayer_lobby.cpp:792
 #: src/gui/dialogs/lobby/lobby_data.cpp:319
 msgid "Reloaded game"
 msgstr "𐑮𐑰𐑤𐑴𐑛𐑦𐑛 𐑜𐑱𐑥"
 
-#: src/game_initialization/multiplayer_lobby.cpp:806
+#: src/game_initialization/multiplayer_lobby.cpp:808
 #: src/gui/dialogs/lobby/lobby_data.cpp:330
 msgid "Turn "
 msgstr "𐑑𐑻𐑯 "
 
-#: src/game_initialization/multiplayer_lobby.cpp:810
+#: src/game_initialization/multiplayer_lobby.cpp:812
 #: src/gui/dialogs/lobby/lobby_data.cpp:335
 #, fuzzy
 #| msgid "Vacant Slot:"
@@ -6142,83 +6106,83 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑:"
 msgstr[1] "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:813
+#: src/game_initialization/multiplayer_lobby.cpp:815
 msgid "Password Required"
 msgstr "𐑐𐑭𐑕𐑢𐑻𐑛 𐑮𐑦𐑒𐑢𐑲𐑼𐑛"
 
-#: src/game_initialization/multiplayer_lobby.cpp:835
+#: src/game_initialization/multiplayer_lobby.cpp:837
 #: src/gui/dialogs/lobby/lobby_data.cpp:349
 msgid "none"
 msgstr "𐑯𐑳𐑯"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1026
-#: src/game_initialization/multiplayer_wait.cpp:196
+#: src/game_initialization/multiplayer_lobby.cpp:1028
+#: src/game_initialization/multiplayer_wait.cpp:197
 msgid "Game Lobby"
 msgstr "𐑜𐑱𐑥 𐑤𐑭𐑚𐑰"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1031
+#: src/game_initialization/multiplayer_lobby.cpp:1034
 msgid "Observe Game"
 msgstr "𐑩𐑚𐑟𐑻𐑝 𐑜𐑱𐑥"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1032
+#: src/game_initialization/multiplayer_lobby.cpp:1035
 msgid "Join Game"
 msgstr "𐑡𐑶𐑯 𐑜𐑱𐑥"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1035
+#: src/game_initialization/multiplayer_lobby.cpp:1038
 msgid "Preferences"
 msgstr "𐑐𐑮𐑧𐑓𐑼𐑩𐑯𐑕𐑩𐑟"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1037
+#: src/game_initialization/multiplayer_lobby.cpp:1040
 msgid "Apply filter"
 msgstr "𐑩𐑐𐑤𐑲 𐑓𐑦𐑤𐑑𐑼"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1038
+#: src/game_initialization/multiplayer_lobby.cpp:1041
 msgid "Invert"
 msgstr "𐑦𐑯𐑝𐑻𐑑"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1039
+#: src/game_initialization/multiplayer_lobby.cpp:1042
 msgid "Vacant slots"
 msgstr "𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑭𐑑𐑕"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1040
+#: src/game_initialization/multiplayer_lobby.cpp:1043
 msgid "Friends in game"
 msgstr "𐑓𐑮𐑧𐑯𐑛𐑟 𐑦𐑯 𐑜𐑱𐑥"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1041
+#: src/game_initialization/multiplayer_lobby.cpp:1044
 msgid "Search:"
 msgstr "𐑕𐑻𐑗:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1050
+#: src/game_initialization/multiplayer_lobby.cpp:1053
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Normal Replays"
 msgstr "𐑕𐑱𐑝 𐑮𐑰𐑐𐑤𐑱"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1051
+#: src/game_initialization/multiplayer_lobby.cpp:1054
 #, fuzzy
 #| msgid "Quick replays"
 msgid "Quick Replays"
 msgstr "𐑒𐑢𐑦𐑒 𐑮𐑰𐑐𐑤𐑱𐑟"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1052
+#: src/game_initialization/multiplayer_lobby.cpp:1055
 msgid "Enter Blindfolded"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1056
+#: src/game_initialization/multiplayer_lobby.cpp:1059
 msgid "Skip quickly to the active turn when observing"
 msgstr "𐑕𐑒𐑦𐑐 𐑒𐑢𐑦𐑒𐑤𐑦 𐑑 𐑞 𐑨𐑒𐑑𐑦𐑝 𐑑𐑻𐑯 𐑢𐑧𐑯 𐑩𐑚𐑟𐑻𐑝𐑦𐑙"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1057
+#: src/game_initialization/multiplayer_lobby.cpp:1060
 msgid "Do not show the map until given control of a side"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1070
+#: src/game_initialization/multiplayer_lobby.cpp:1073
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑞 𐑜𐑱𐑥𐑟 𐑓𐑦𐑤𐑑𐑼. 𐑦𐑓 𐑩𐑯𐑗𐑧𐑒𐑑 𐑷𐑤 𐑜𐑱𐑥𐑟 𐑸 𐑖𐑴𐑯, 𐑮𐑦𐑜𐑸𐑛𐑤𐑩𐑕 𐑝 𐑧𐑯𐑦 𐑓𐑦𐑤𐑑𐑼."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1073
+#: src/game_initialization/multiplayer_lobby.cpp:1076
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -6226,16 +6190,16 @@ msgstr ""
 "𐑖𐑴 𐑷𐑤 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑛𐑵 *𐑯𐑪𐑑* 𐑥𐑨𐑗 𐑿𐑼 𐑓𐑦𐑤𐑑𐑼. 𐑿𐑕𐑓𐑩𐑤 𐑓𐑹 𐑣𐑲𐑛𐑦𐑙 𐑜𐑱𐑥𐑟 𐑿 𐑸 𐑯𐑪𐑑 𐑦𐑯𐑑𐑼𐑩𐑕𐑑𐑩𐑛 "
 "𐑦𐑯."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1077
+#: src/game_initialization/multiplayer_lobby.cpp:1080
 msgid "Only show games that have at least one vacant slot"
 msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑣𐑨𐑝 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑢𐑳𐑯 𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1081
+#: src/game_initialization/multiplayer_lobby.cpp:1084
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑞𐑨𐑑 𐑸 𐑐𐑤𐑱𐑛 𐑹 𐑩𐑚𐑟𐑻𐑝𐑛 𐑚𐑲 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑢𐑳𐑯 𐑝 𐑿𐑼 𐑓𐑮𐑧𐑯𐑛𐑟"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1087
+#: src/game_initialization/multiplayer_lobby.cpp:1090
 #, fuzzy
 #| msgid "Only show games whose title or description contain the entered text"
 msgid ""
@@ -6243,37 +6207,37 @@ msgid ""
 "text"
 msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑜𐑱𐑥𐑟 𐑣𐑵𐑟 𐑑𐑲𐑑𐑩𐑤 𐑹 𐑛𐑦𐑕𐑒𐑮𐑦𐑐𐑖𐑩𐑯 𐑒𐑩𐑯𐑑𐑱𐑯 𐑞 𐑧𐑯𐑑𐑻𐑛 𐑑𐑧𐑒𐑕𐑑"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1192
+#: src/game_initialization/multiplayer_lobby.cpp:1195
 #, fuzzy
 #| msgid "No eras found."
 msgid "Incompatible user-made content."
 msgstr "𐑯𐑴 𐑽𐑩𐑟 𐑓𐑬𐑯𐑛."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1193
+#: src/game_initialization/multiplayer_lobby.cpp:1196
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons which "
 "are incompatible with your version. You might suggest to them that they "
 "update their add-ons."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1196
-#: src/game_initialization/multiplayer_lobby.cpp:1211
+#: src/game_initialization/multiplayer_lobby.cpp:1199
+#: src/game_initialization/multiplayer_lobby.cpp:1214
 #, fuzzy
 #| msgid "Details"
 msgid "Details:"
 msgstr "𐑛𐑰𐑑𐑱𐑤𐑟"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1207
+#: src/game_initialization/multiplayer_lobby.cpp:1210
 msgid "Missing user-made content."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1208
+#: src/game_initialization/multiplayer_lobby.cpp:1211
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join. Do you want to try to install them?"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1246
+#: src/game_initialization/multiplayer_lobby.cpp:1249
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby, please report this at bugs.wesnoth.org."
@@ -6294,158 +6258,237 @@ msgstr "𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛 𐑿𐑟𐑼: "
 msgid "$sender is messaging you, and you accept whispers from friends only."
 msgstr "𐑨𐑒𐑕𐑧𐑐𐑑 𐑢𐑦𐑕𐑐𐑻 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑓𐑮𐑪𐑥 𐑓𐑮𐑧𐑯𐑛𐑟 𐑴𐑯𐑤𐑦"
 
-#: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2296
+#: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2180
 msgid "whisper: $sender"
 msgstr ""
 
-#: src/game_initialization/multiplayer_wait.cpp:149
+#: src/game_initialization/multiplayer_wait.cpp:150
 msgid "Leader: "
 msgstr "𐑤𐑰𐑛𐑻: "
 
-#: src/game_initialization/multiplayer_wait.cpp:152 src/menu_events.cpp:1039
+#: src/game_initialization/multiplayer_wait.cpp:153
 msgid "Gender: "
 msgstr "𐑡𐑧𐑯𐑛𐑻: "
 
-#: src/game_initialization/multiplayer_wait.cpp:155
+#: src/game_initialization/multiplayer_wait.cpp:156
 msgid "Recruits: "
 msgstr "𐑮𐑩𐑒𐑮𐑵𐑑𐑕: "
 
-#: src/game_initialization/multiplayer_wait.cpp:198
+#: src/game_initialization/multiplayer_wait.cpp:199
 msgid "Waiting for game to start..."
 msgstr "𐑢𐑱𐑑𐑦𐑙 𐑓𐑹 𐑜𐑱𐑥 𐑑 𐑕𐑑𐑸𐑑..."
 
-#: src/game_initialization/multiplayer_wait.cpp:351
+#: src/game_initialization/multiplayer_wait.cpp:322
 msgid "No era information found."
 msgstr "𐑯𐑴 𐑽𐑩 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑓𐑬𐑯𐑛."
 
-#: src/game_initialization/multiplayer_wait.cpp:355
+#: src/game_initialization/multiplayer_wait.cpp:326
 msgid "No multiplayer sides found"
 msgstr "𐑯𐑴 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑕𐑲𐑛𐑟 𐑓𐑬𐑯𐑛"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:370
 msgid "Choose your faction:"
 msgstr "𐑗𐑵𐑟 𐑿𐑼 𐑓𐑨𐑒𐑖𐑩𐑯:"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:370
 msgid "Starting position: "
 msgstr "𐑕𐑑𐑸𐑑𐑦𐑙 𐑐𐑩𐑟𐑦𐑖𐑩𐑯: "
 
-#: src/game_initialization/multiplayer_wait.cpp:521
+#: src/game_initialization/multiplayer_wait.cpp:492
 msgid "(Empty slot)"
 msgstr "(𐑧𐑥𐑐𐑑𐑦 𐑕𐑤𐑪𐑑)"
 
-#: src/game_initialization/multiplayer_wait.cpp:526
+#: src/game_initialization/multiplayer_wait.cpp:497
 msgid "(Reserved for $playername)"
 msgstr "(𐑮𐑦𐑟𐑻𐑝𐑛 𐑓𐑹 $playername)"
 
-#: src/game_initialization/multiplayer_wait.cpp:529
+#: src/game_initialization/multiplayer_wait.cpp:500
 msgid "(Vacant slot)"
 msgstr "(𐑝𐑱𐑒𐑩𐑯𐑑 𐑕𐑤𐑪𐑑)"
 
-#: src/game_initialization/multiplayer_wait.cpp:536 src/menu_events.cpp:2392
-#: src/menu_events.cpp:2410
+#: src/game_initialization/multiplayer_wait.cpp:507 src/menu_events.cpp:2276
+#: src/menu_events.cpp:2294
 msgid "(empty)"
 msgstr "(𐑧𐑥𐑐𐑑𐑦)"
 
-#: src/game_initialization/multiplayer_wait.cpp:620
+#: src/game_initialization/multiplayer_wait.cpp:591
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "𐑜𐑴𐑤𐑛"
 msgstr[1] "𐑜𐑴𐑤𐑛"
 
-#: src/game_initialization/multiplayer_wait.cpp:664
+#: src/game_initialization/multiplayer_wait.cpp:635
 msgid "Getting game data..."
 msgstr "𐑜𐑧𐑑𐑦𐑙 𐑜𐑱𐑥 𐑛𐑱𐑑𐑩..."
 
+#: src/game_initialization/playcampaign.cpp:66
+msgid "Remaining gold: "
+msgstr "𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑜𐑴𐑤𐑛: "
+
+#: src/game_initialization/playcampaign.cpp:70
+msgid "Turns finished early: "
+msgstr "𐑑𐑻𐑯𐑟 𐑓𐑦𐑯𐑦𐑖𐑑 𐑻𐑤𐑰: "
+
+#: src/game_initialization/playcampaign.cpp:71
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "𐑐𐑻 𐑑𐑻𐑯"
+
+#: src/game_initialization/playcampaign.cpp:71
+msgid "Early finish bonus: "
+msgstr "𐑻𐑤𐑰 𐑓𐑦𐑯𐑦𐑖 𐑚𐑴𐑯𐑩𐑕: "
+
+#: src/game_initialization/playcampaign.cpp:72
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Total bonus: "
+msgstr "𐑑𐑻𐑯 𐑚𐑴𐑯𐑩𐑕: "
+
+#: src/game_initialization/playcampaign.cpp:74
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "𐑝𐑦𐑤𐑦𐑡 𐑜𐑴𐑤𐑛: "
+
 #: src/game_initialization/playcampaign.cpp:77
+#, fuzzy
+#| msgid "Carry over percentage: "
+msgid "Carryover percentage: "
+msgstr "𐑒𐑨𐑮𐑦 𐑴𐑝𐑼 𐑐𐑼𐑕𐑧𐑯𐑑𐑦𐑡: "
+
+#: src/game_initialization/playcampaign.cpp:80
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "𐑚𐑴𐑯𐑩𐑕 𐑜𐑴𐑤𐑛: "
+
+#: src/game_initialization/playcampaign.cpp:82
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "𐑮𐑦𐑑𐑱𐑯𐑛 𐑜𐑴𐑤𐑛: "
+
+#: src/game_initialization/playcampaign.cpp:95
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
+msgstr[1] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
+
+#: src/game_initialization/playcampaign.cpp:103
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
+msgstr[1] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
+
+#: src/game_initialization/playcampaign.cpp:111
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑹 𐑦𐑑𐑕 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛, 𐑢𐑦𐑗𐑧𐑝𐑼 "
+"𐑦𐑟 𐑣𐑲𐑼."
+msgstr[1] ""
+"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑹 𐑦𐑑𐑕 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛, 𐑢𐑦𐑗𐑧𐑝𐑼 "
+"𐑦𐑟 𐑣𐑲𐑼."
+
+#: src/game_initialization/playcampaign.cpp:141
 msgid "Scenario Report"
 msgstr "𐑕𐑦𐑯𐑺𐑰𐑴 𐑮𐑩𐑐𐑹𐑑"
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:143
 msgid "Victory"
 msgstr "𐑝𐑦𐑒𐑑𐑼𐑦"
 
-#: src/game_initialization/playcampaign.cpp:80
+#: src/game_initialization/playcampaign.cpp:144
 msgid "You have emerged victorious!"
 msgstr "𐑿 𐑣𐑨𐑝 𐑦𐑥𐑻𐑡𐑛 𐑝𐑦𐑒𐑑𐑹𐑦𐑩𐑕!"
 
-#: src/game_initialization/playcampaign.cpp:82
+#: src/game_initialization/playcampaign.cpp:146
 msgid "Defeat"
 msgstr "𐑛𐑦𐑓𐑰𐑑"
 
-#: src/game_initialization/playcampaign.cpp:83
+#: src/game_initialization/playcampaign.cpp:147
 msgid "You have been defeated!"
 msgstr "𐑿 𐑣𐑨𐑝 𐑚𐑰𐑯 𐑛𐑦𐑓𐑰𐑑𐑩𐑛!"
 
-#: src/game_initialization/playcampaign.cpp:147
-#: src/game_initialization/playcampaign.cpp:151
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:969
+#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:988
 msgid "The game could not be loaded: "
 msgstr "𐑞 𐑜𐑱𐑥 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛: "
 
-#: src/game_initialization/playcampaign.cpp:158
-#: src/game_initialization/playcampaign.cpp:162
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:971
+#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:990
 msgid "Error while playing the game: "
 msgstr "𐑻𐑹 𐑢𐑲𐑤 𐑐𐑤𐑱𐑦𐑙 𐑞 𐑜𐑱𐑥: "
 
-#: src/game_initialization/playcampaign.cpp:165
-#: src/game_initialization/playcampaign.cpp:169
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:991
+#: src/game_initialization/playcampaign.cpp:307 src/game_launcher.cpp:1010
 msgid "The game map could not be loaded: "
 msgstr "𐑞 𐑜𐑱𐑥 𐑥𐑨𐑐 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:973
+#: src/game_initialization/playcampaign.cpp:310 src/game_launcher.cpp:992
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:305
+#: src/game_initialization/playcampaign.cpp:312
 msgid "Error while reading the WML: "
 msgstr "𐑻𐑹 𐑢𐑲𐑤 𐑮𐑰𐑛𐑦𐑙 𐑞 WML: "
 
-#: src/game_initialization/playcampaign.cpp:343
-#: src/playsingle_controller.cpp:319
+#: src/game_initialization/playcampaign.cpp:350
+#: src/playsingle_controller.cpp:277
 msgid "Game Over"
 msgstr "𐑜𐑱𐑥 𐑴𐑝𐑼"
 
-#: src/game_initialization/playcampaign.cpp:344
+#: src/game_initialization/playcampaign.cpp:351
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "𐑞𐑦𐑕 𐑕𐑦𐑯𐑺𐑰𐑴 𐑣𐑨𐑟 𐑧𐑯𐑛𐑩𐑛. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑒𐑩𐑯𐑑𐑦𐑯𐑿 𐑞 𐑒𐑨𐑥𐑐𐑱𐑯?"
 
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:419
 msgid "Unknown scenario: '$scenario|'"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑕𐑦𐑯𐑺𐑰𐑴: '$scenario|'"
 
-#: src/game_initialization/singleplayer.cpp:41
+#: src/game_initialization/singleplayer.cpp:40
 msgid "No campaigns are available.\n"
 msgstr "𐑯𐑴 𐑒𐑨𐑥𐑐𐑱𐑯𐑟 𐑸 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤.\n"
 
-#: src/game_launcher.cpp:726 src/game_launcher.cpp:744
+#: src/game_launcher.cpp:740 src/game_launcher.cpp:758
 msgid "The file you have tried to load is corrupt"
 msgstr "𐑞 𐑓𐑲𐑤 𐑿 𐑣𐑨𐑝 𐑑𐑮𐑲𐑛 𐑑 𐑤𐑴𐑛 𐑦𐑟 𐑒𐑼𐑳𐑐𐑑"
 
-#: src/game_launcher.cpp:729 src/game_launcher.cpp:747 src/savegame.cpp:195
-#: src/savegame.cpp:343
+#: src/game_launcher.cpp:743 src/game_launcher.cpp:761
+#: src/hotkey_handler_sp.cpp:309 src/savegame.cpp:168 src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "𐑞 𐑓𐑲𐑤 𐑿 𐑣𐑨𐑝 𐑑𐑮𐑲𐑛 𐑑 𐑤𐑴𐑛 𐑦𐑟 𐑒𐑼𐑳𐑐𐑑: '"
 
-#: src/game_launcher.cpp:737
+#: src/game_launcher.cpp:751
 msgid "File I/O Error while reading the game"
 msgstr "𐑓𐑲𐑤 𐑲/𐑴 𐑻𐑹 𐑢𐑲𐑤 𐑮𐑰𐑛𐑦𐑙 𐑞 𐑜𐑱𐑥"
 
-#: src/game_launcher.cpp:739
+#: src/game_launcher.cpp:753
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "𐑓𐑲𐑤 𐑲/𐑴 𐑻𐑹 𐑢𐑲𐑤 𐑮𐑰𐑛𐑦𐑙 𐑞 𐑜𐑱𐑥"
 
-#: src/game_launcher.cpp:766
+#: src/game_launcher.cpp:780
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
 "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 
-#: src/game_launcher.cpp:967
+#: src/game_launcher.cpp:986
 msgid "Error while starting server: "
 msgstr "𐑻𐑹 𐑢𐑲𐑤 𐑕𐑑𐑸𐑑𐑦𐑙 𐑕𐑻𐑝𐑻: "
 
@@ -6496,6 +6539,14 @@ msgstr ""
 #: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "𐑻𐑹"
+
+#: src/gui/dialogs/synced_choice_wait.cpp:105
+#: src/hotkey/command_executor.cpp:530 src/hotkey/command_executor.cpp:703
+#: src/quit_confirmation.cpp:42
+#, fuzzy
+#| msgid "Do you really want to dismiss him?"
+msgid "Do you really want to quit?"
+msgstr "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑦𐑕𐑥𐑦𐑕 𐑣𐑦𐑥?"
 
 #: src/help/help_browser.cpp:150
 msgid "Reference to unknown topic: "
@@ -6553,11 +6604,11 @@ msgid "Recruits"
 msgstr "𐑮𐑩𐑒𐑮𐑵𐑑𐑕"
 
 #: src/help/help_impl.cpp:696 src/help/help_impl.cpp:871
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:364
 msgid "race^Miscellaneous"
 msgstr "𐑥𐑦𐑕𐑩𐑤𐑱𐑯𐑰𐑩𐑕"
 
-#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:456
+#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:457
 #: src/reports.cpp:351
 msgid "Alignment: "
 msgstr "𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑: "
@@ -6594,148 +6645,142 @@ msgstr "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
 msgid "Defense properties: "
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:289
+#: src/help/help_topic_generators.cpp:290
 msgid "Advances from: "
 msgstr "𐑩𐑛𐑝𐑭𐑯𐑕𐑩𐑟 𐑓𐑮𐑪𐑥: "
 
-#: src/help/help_topic_generators.cpp:291
+#: src/help/help_topic_generators.cpp:292
 msgid "Advances to: "
 msgstr "𐑩𐑛𐑝𐑭𐑯𐑕𐑩𐑟 𐑑: "
 
-#: src/help/help_topic_generators.cpp:316
+#: src/help/help_topic_generators.cpp:317
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base unit: "
 msgstr "𐑤𐑷𐑓𐑫𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/help/help_topic_generators.cpp:321
+#: src/help/help_topic_generators.cpp:322
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base units: "
 msgstr "𐑤𐑷𐑓𐑫𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/help/help_topic_generators.cpp:339
+#: src/help/help_topic_generators.cpp:340
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "𐑓𐑨𐑒𐑖𐑩𐑯𐑟:"
 
-#: src/help/help_topic_generators.cpp:365 src/reports.cpp:189
+#: src/help/help_topic_generators.cpp:366 src/reports.cpp:189
 msgid "Race: "
 msgstr "𐑮𐑱𐑕: "
 
-#: src/help/help_topic_generators.cpp:418
+#: src/help/help_topic_generators.cpp:419
 msgid "Abilities: "
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦𐑟: "
 
-#: src/help/help_topic_generators.cpp:434
+#: src/help/help_topic_generators.cpp:435
 msgid "Ability Upgrades: "
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦 𐑩𐑐𐑜𐑮𐑱𐑛𐑟: "
 
-#: src/help/help_topic_generators.cpp:452
+#: src/help/help_topic_generators.cpp:453
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision: "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/help/help_topic_generators.cpp:454
+#: src/help/help_topic_generators.cpp:455
 #, fuzzy
 #| msgid "Warning: "
 msgid "Jamming: "
 msgstr "𐑢𐑹𐑯𐑦𐑙: "
 
-#: src/help/help_topic_generators.cpp:455
+#: src/help/help_topic_generators.cpp:456
 msgid "Cost: "
 msgstr "𐑒𐑪𐑕𐑑: "
 
-#: src/help/help_topic_generators.cpp:460
+#: src/help/help_topic_generators.cpp:461
 msgid "Required XP: "
 msgstr "𐑮𐑦𐑒𐑢𐑲𐑼𐑛 XP: "
 
-#: src/help/help_topic_generators.cpp:469
+#: src/help/help_topic_generators.cpp:470
 msgid "unit help^Attacks"
 msgstr "𐑩𐑑𐑨𐑒𐑕"
 
-#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:477
 msgid "unit help^Name"
 msgstr "𐑯𐑱𐑥"
 
-#: src/help/help_topic_generators.cpp:478
+#: src/help/help_topic_generators.cpp:479
 msgid "Strikes"
 msgstr "𐑕𐑑𐑮𐑲𐑒𐑕"
 
-#: src/help/help_topic_generators.cpp:479
+#: src/help/help_topic_generators.cpp:480
 msgid "Range"
 msgstr "𐑮𐑱𐑯𐑡"
 
-#: src/help/help_topic_generators.cpp:480
+#: src/help/help_topic_generators.cpp:481
 #, fuzzy
 #| msgid "Special"
 msgid "Special"
 msgstr "𐑕𐑐𐑧𐑖𐑩𐑤"
 
-#: src/help/help_topic_generators.cpp:545
+#: src/help/help_topic_generators.cpp:546
 msgid "Resistances"
 msgstr "𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕𐑩𐑟"
 
-#: src/help/help_topic_generators.cpp:549
+#: src/help/help_topic_generators.cpp:550
 msgid "Attack Type"
 msgstr "𐑩𐑑𐑨𐑒 𐑑𐑲𐑐"
 
-#: src/help/help_topic_generators.cpp:550
+#: src/help/help_topic_generators.cpp:551
 msgid "Resistance"
 msgstr "𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:580
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "𐑑𐑻𐑱𐑯 𐑥𐑪𐑛𐑦𐑓𐑲𐑼𐑟"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:584
 msgid "Terrain"
 msgstr "𐑑𐑻𐑱𐑯"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:585
 msgid "Defense"
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Cost"
 msgstr "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
 
-#: src/help/help_topic_generators.cpp:589
+#: src/help/help_topic_generators.cpp:590
 #, fuzzy
 msgid "Defense Cap"
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:593
+#: src/help/help_topic_generators.cpp:594
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision Cost"
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:597
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:523 src/hotkey/command_executor.cpp:696
-#, fuzzy
-#| msgid "Do you really want to dismiss him?"
-msgid "Do you really want to quit?"
-msgstr "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑦𐑕𐑥𐑦𐑕 𐑣𐑦𐑥?"
-
-#: src/hotkey/command_executor.cpp:644
+#: src/hotkey/command_executor.cpp:651
 msgid "Map-Screenshot"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:644
+#: src/hotkey/command_executor.cpp:651
 msgid "Screenshot"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:657
+#: src/hotkey/command_executor.cpp:664
 msgid ""
 "Screenshot creation failed.\n"
 "\n"
@@ -6757,35 +6802,35 @@ msgstr ""
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey_handler.cpp:366 src/save_index.cpp:290 src/savegame.cpp:78
-#: src/savegame.cpp:635 src/savegame.cpp:637
+#: src/hotkey_handler.cpp:367 src/save_index.cpp:290 src/savegame.cpp:77
+#: src/savegame.cpp:600 src/savegame.cpp:602
 msgid "Auto-Save"
 msgstr "𐑷𐑑𐑴-𐑕𐑱𐑝"
 
-#: src/hotkey_handler.cpp:370
+#: src/hotkey_handler.cpp:371
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "𐑚𐑨𐑒 𐑑 𐑑𐑻𐑯 "
 
-#: src/hotkey_handler.cpp:378
+#: src/hotkey_handler.cpp:379
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "𐑚𐑨𐑒 𐑑 𐑑𐑻𐑯 "
 
-#: src/hotkey_handler_sp.cpp:134
+#: src/hotkey_handler_sp.cpp:143
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(𐑐𐑮𐑧𐑕 $hotkey 𐑑 𐑒𐑰𐑐 𐑥𐑵𐑝𐑦𐑙)"
 
-#: src/hotkey_handler_sp.cpp:134 src/menu_events.cpp:3203
+#: src/hotkey_handler_sp.cpp:143 src/menu_events.cpp:3087
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑨𐑒𐑑𐑦𐑝𐑱𐑑𐑩𐑛!"
 
-#: src/hotkey_handler_sp.cpp:136 src/menu_events.cpp:3206
+#: src/hotkey_handler_sp.cpp:145 src/menu_events.cpp:3090
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑛𐑰𐑨𐑒𐑑𐑦𐑝𐑱𐑑𐑦𐑛!"
@@ -6892,95 +6937,95 @@ msgstr "𐑕𐑦𐑯𐑺𐑰𐑴 𐑕𐑧𐑑𐑦𐑙𐑟"
 msgid " < Back"
 msgstr "< 𐑚𐑨𐑒"
 
-#: src/loadscreen.cpp:323
+#: src/loadscreen.cpp:329
 #, fuzzy
 msgid "Initializing user interface"
 msgstr "𐑦𐑯𐑦𐑖𐑩𐑤𐑲𐑟𐑦𐑙 𐑑𐑰𐑥𐑟"
 
-#: src/loadscreen.cpp:324
+#: src/loadscreen.cpp:330
 #, fuzzy
 msgid "Loading game configuration"
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑜𐑱𐑥 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯."
 
-#: src/loadscreen.cpp:325 src/loadscreen.cpp:332
+#: src/loadscreen.cpp:331 src/loadscreen.cpp:338
 #, fuzzy
 msgid "Verifying cache"
 msgstr "𐑝𐑧𐑮𐑦𐑓𐑲𐑦𐑙 𐑒𐑨𐑖..."
 
-#: src/loadscreen.cpp:326 src/loadscreen.cpp:333
+#: src/loadscreen.cpp:332 src/loadscreen.cpp:339
 #, fuzzy
 msgid "Reading files and creating cache"
 msgstr "𐑮𐑰𐑛𐑦𐑙 𐑓𐑲𐑤𐑟 𐑯 𐑒𐑮𐑦𐑱𐑑𐑦𐑙 𐑒𐑨𐑖..."
 
-#: src/loadscreen.cpp:327 src/loadscreen.cpp:334
+#: src/loadscreen.cpp:333 src/loadscreen.cpp:340
 #, fuzzy
 msgid "Reading unit files"
 msgstr "𐑮𐑰𐑛𐑦𐑙 𐑿𐑯𐑦𐑑 𐑓𐑲𐑤𐑟..."
 
-#: src/loadscreen.cpp:328
+#: src/loadscreen.cpp:334
 #, fuzzy
 msgid "Reinitialize fonts for the current language"
 msgstr "𐑮𐑰-𐑦𐑯𐑦𐑖𐑩𐑤𐑲𐑟 𐑓𐑪𐑯𐑑𐑕 𐑓𐑹 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑤𐑨𐑙𐑜𐑢𐑩𐑡."
 
-#: src/loadscreen.cpp:329
+#: src/loadscreen.cpp:335
 #, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "𐑕𐑻𐑗𐑦𐑙 𐑓𐑹 𐑦𐑯𐑕𐑑𐑷𐑤𐑛 𐑨𐑛-𐑭𐑯𐑟."
 
-#: src/loadscreen.cpp:330
+#: src/loadscreen.cpp:336
 #, fuzzy
 msgid "Loading title screen"
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑑𐑲𐑑𐑩𐑤 𐑕𐑒𐑮𐑰𐑯."
 
-#: src/loadscreen.cpp:331
+#: src/loadscreen.cpp:337
 msgid "Loading data files"
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑛𐑱𐑑𐑩 𐑓𐑲𐑤𐑟"
 
-#: src/loadscreen.cpp:335
+#: src/loadscreen.cpp:341
 msgid "Loading level"
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑤𐑧𐑝𐑩𐑤"
 
-#: src/loadscreen.cpp:336
+#: src/loadscreen.cpp:342
 msgid "Initializing teams"
 msgstr "𐑦𐑯𐑦𐑖𐑩𐑤𐑲𐑟𐑦𐑙 𐑑𐑰𐑥𐑟"
 
-#: src/loadscreen.cpp:337
+#: src/loadscreen.cpp:343
 msgid "Loading units"
 msgstr "𐑤𐑴𐑛𐑦𐑙 𐑿𐑯𐑦𐑑𐑕"
 
-#: src/loadscreen.cpp:338 src/loadscreen.cpp:340
+#: src/loadscreen.cpp:344 src/loadscreen.cpp:346
 msgid "Initializing display"
 msgstr "𐑦𐑯𐑦𐑖𐑩𐑤𐑲𐑟𐑦𐑙 𐑛𐑩𐑕𐑐𐑤𐑱"
 
-#: src/loadscreen.cpp:339
+#: src/loadscreen.cpp:345
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/loadscreen.cpp:341
+#: src/loadscreen.cpp:347
 msgid "Starting game"
 msgstr "𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑱𐑥"
 
-#: src/map_location.cpp:134
+#: src/map_location.cpp:170
 msgid "North"
 msgstr ""
 
-#: src/map_location.cpp:136
+#: src/map_location.cpp:172
 msgid "North East"
 msgstr ""
 
-#: src/map_location.cpp:138
+#: src/map_location.cpp:174
 msgid "North West"
 msgstr ""
 
-#: src/map_location.cpp:140
+#: src/map_location.cpp:176
 msgid "South"
 msgstr ""
 
-#: src/map_location.cpp:142
+#: src/map_location.cpp:178
 msgid "South East"
 msgstr ""
 
-#: src/map_location.cpp:144
+#: src/map_location.cpp:180
 msgid "South West"
 msgstr ""
 
@@ -7004,37 +7049,37 @@ msgstr "𐑥𐑨𐑐 𐑕𐑱𐑝𐑛."
 msgid "Could not save the map: $msg"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐: $msg"
 
-#: src/menu_events.cpp:531
+#: src/menu_events.cpp:490
 msgid "Message:"
 msgstr "𐑥𐑧𐑕𐑦𐑡:"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 msgid "Send to allies only"
 msgstr "𐑕𐑧𐑯𐑛 𐑑 𐑨𐑤𐑲𐑟 𐑴𐑯𐑤𐑦"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 msgid "Send to observers only"
 msgstr "𐑕𐑧𐑯𐑛 𐑑 𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑴𐑯𐑤𐑦"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:562
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "𐑜𐑴𐑤𐑛"
 msgstr[1] "𐑜𐑴𐑤𐑛"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:569
 msgid "You have no units available to recruit."
 msgstr "𐑿 𐑣𐑨𐑝 𐑯𐑴 𐑿𐑯𐑦𐑑𐑕 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑."
 
-#: src/menu_events.cpp:643
+#: src/menu_events.cpp:602
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "𐑿 𐑛𐑴𐑯𐑑 𐑣𐑨𐑝 𐑦𐑯𐑳𐑓 𐑜𐑴𐑤𐑛 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑞𐑨𐑑 𐑿𐑯𐑦𐑑"
 
-#: src/menu_events.cpp:676
+#: src/menu_events.cpp:635
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "𐑿 𐑸 𐑕𐑧𐑐𐑼𐑱𐑑𐑩𐑛 𐑓𐑮𐑪𐑥 𐑿𐑼 𐑕𐑴𐑤𐑡𐑼𐑟 𐑯 𐑥𐑱 𐑯𐑪𐑑 𐑮𐑰𐑒𐑷𐑤 𐑞𐑧𐑥"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:657
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7042,11 +7087,11 @@ msgstr ""
 "𐑞𐑺 𐑸 𐑯𐑴 𐑑𐑮𐑵𐑐𐑕 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑑 𐑮𐑰𐑒𐑷𐑤\n"
 "(𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑝𐑧𐑑𐑻𐑩𐑯 𐑕𐑻𐑝𐑲𐑝𐑻𐑟 𐑓𐑮𐑪𐑥 𐑩 𐑐𐑮𐑰𐑝𐑦𐑩𐑕 𐑕𐑦𐑯𐑺𐑰𐑴)"
 
-#: src/menu_events.cpp:704
+#: src/menu_events.cpp:663
 msgid "You currently can't recall at the highlighted location"
 msgstr ""
 
-#: src/menu_events.cpp:726
+#: src/menu_events.cpp:685
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -7055,68 +7100,56 @@ msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑨𐑑 𐑤𐑰𐑕𐑑 1 𐑜𐑴𐑤𐑛 𐑐𐑰𐑕 𐑑 𐑮𐑰𐑒𐑷𐑤 𐑩 𐑿𐑯𐑦𐑑"
 msgstr[1] "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑨𐑑 𐑤𐑰𐑕𐑑 $cost 𐑜𐑴𐑤𐑛 𐑐𐑰𐑕𐑩𐑟 𐑑 𐑮𐑰𐑒𐑷𐑤 𐑩 𐑿𐑯𐑦𐑑"
 
-#: src/menu_events.cpp:850
+#: src/menu_events.cpp:809
 #, fuzzy
 msgid "You cannot end your turn yet!"
 msgstr "𐑐𐑷𐑟 𐑨𐑑 𐑧𐑯𐑛 𐑝 𐑑𐑻𐑯"
 
-#: src/menu_events.cpp:864
+#: src/menu_events.cpp:823
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "𐑿 𐑣𐑨𐑝 𐑯𐑪𐑑 𐑕𐑑𐑸𐑑𐑩𐑛 𐑿𐑼 𐑑𐑻𐑯 𐑘𐑧𐑑. 𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑧𐑯𐑛 𐑿𐑼 𐑑𐑻𐑯?"
 
-#: src/menu_events.cpp:871
+#: src/menu_events.cpp:830
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "𐑕𐑳𐑥 𐑿𐑯𐑦𐑑𐑕 𐑣𐑨𐑝 𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑤𐑧𐑓𐑑. 𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑧𐑯𐑛 𐑿𐑼 𐑑𐑻𐑯?"
 
-#: src/menu_events.cpp:878
+#: src/menu_events.cpp:837
 #, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "𐑕𐑳𐑥 𐑿𐑯𐑦𐑑𐑕 𐑣𐑨𐑝 𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑤𐑧𐑓𐑑. 𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑧𐑯𐑛 𐑿𐑼 𐑑𐑻𐑯?"
 
-#: src/menu_events.cpp:930
+#: src/menu_events.cpp:889
 msgid "Rename Unit"
 msgstr "𐑮𐑰𐑯𐑱𐑥 𐑿𐑯𐑦𐑑"
 
-#: src/menu_events.cpp:931
+#: src/menu_events.cpp:890
 #, fuzzy
 #| msgid "Name: "
 msgid "Name:"
 msgstr "𐑯𐑱𐑥: "
 
-#: src/menu_events.cpp:1015
-msgid "Race"
-msgstr "𐑮𐑱𐑕"
-
-#: src/menu_events.cpp:1036
-msgid "Create Unit (Debug!)"
-msgstr "𐑒𐑮𐑰𐑱𐑑 𐑿𐑯𐑦𐑑 (𐑛𐑰𐑚𐑳𐑜!)"
-
-#: src/menu_events.cpp:1039
-msgid "gender^Random"
-msgstr "𐑮𐑨𐑯𐑛𐑩𐑥"
-
-#: src/menu_events.cpp:1372
+#: src/menu_events.cpp:1254
 msgid "Search"
 msgstr "𐑕𐑻𐑗"
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1435
 msgid "This command is currently unavailable."
 msgstr "𐑞𐑦𐑕 𐑒𐑩𐑥𐑭𐑯𐑛 𐑦𐑟 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑩𐑯𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤."
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1441
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1457
 #, fuzzy
 msgid "Error:"
 msgstr "𐑻𐑹: "
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1463
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -7124,59 +7157,59 @@ msgstr ""
 "𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑒𐑩𐑥𐑭𐑯𐑛𐑟 𐑤𐑦𐑕𐑑 𐑯 𐑒𐑩𐑥𐑭𐑯𐑛-𐑕𐑐𐑩𐑕𐑦𐑓𐑦𐑒 𐑣𐑧𐑤𐑐. 𐑿𐑟 \"𐑣𐑧𐑤𐑐 𐑷𐑤\" 𐑑 𐑦𐑯𐑒𐑤𐑵𐑛 "
 "𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑩𐑯𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑒𐑩𐑥𐑭𐑯𐑛𐑟."
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1465
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:1628
+#: src/menu_events.cpp:1510
 msgid "Missing argument $arg_id"
 msgstr ""
 
-#: src/menu_events.cpp:1676
+#: src/menu_events.cpp:1558
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 
-#: src/menu_events.cpp:1676 src/menu_events.cpp:1677 src/menu_events.cpp:1700
+#: src/menu_events.cpp:1558 src/menu_events.cpp:1559 src/menu_events.cpp:1582
 #, fuzzy
 msgid "help"
 msgstr "𐑣𐑧𐑤𐑐"
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1559
 msgid "Type $help_command <command> for more info."
 msgstr ""
 
-#: src/menu_events.cpp:1688
+#: src/menu_events.cpp:1570
 msgid " No help available."
 msgstr "𐑯𐑴 𐑣𐑧𐑤𐑐 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤."
 
-#: src/menu_events.cpp:1693
+#: src/menu_events.cpp:1575
 #, fuzzy
 msgid "Usage:"
 msgstr "𐑥𐑧𐑕𐑦𐑡:"
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1580
 msgid "aliases:"
 msgstr ""
 
-#: src/menu_events.cpp:1819
+#: src/menu_events.cpp:1701
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/menu_events.cpp:1826 src/menu_events.cpp:2034
+#: src/menu_events.cpp:1708 src/menu_events.cpp:1916
 #, fuzzy
 msgid "(admin only)"
 msgstr "𐑑𐑰𐑥 𐑴𐑯𐑤𐑦"
 
-#: src/menu_events.cpp:1846
+#: src/menu_events.cpp:1728
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 "𐑕𐑧𐑯𐑛 𐑩 𐑒𐑢𐑽𐑦 𐑑 𐑞 𐑕𐑻𐑝𐑻. 𐑢𐑦𐑞𐑬𐑑 𐑸𐑜𐑿𐑥𐑩𐑯𐑑𐑕 𐑞 𐑕𐑻𐑝𐑻 𐑖𐑫𐑛 𐑑𐑧𐑤 𐑿 𐑞 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑒𐑩𐑥𐑭𐑯𐑛𐑟."
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1732
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -7184,48 +7217,48 @@ msgstr ""
 "𐑚𐑨𐑯 𐑯 𐑒𐑦𐑒 𐑩 𐑐𐑤𐑱𐑻 𐑹 𐑩𐑚𐑟𐑻𐑝𐑻. 𐑦𐑓 𐑣𐑰 𐑦𐑟 𐑯𐑪𐑑 𐑦𐑯 𐑞 𐑜𐑱𐑥 𐑚𐑳𐑑 𐑪𐑯 𐑞 𐑕𐑻𐑝𐑻 𐑣𐑰 𐑢𐑦𐑤 𐑴𐑯𐑤𐑦 "
 "𐑚𐑰 𐑚𐑨𐑯𐑛."
 
-#: src/menu_events.cpp:1851 src/menu_events.cpp:1854 src/menu_events.cpp:1856
-#: src/menu_events.cpp:1858 src/menu_events.cpp:1860 src/menu_events.cpp:1887
-#: src/menu_events.cpp:1889 src/menu_events.cpp:1891 src/menu_events.cpp:1905
+#: src/menu_events.cpp:1733 src/menu_events.cpp:1736 src/menu_events.cpp:1738
+#: src/menu_events.cpp:1740 src/menu_events.cpp:1742 src/menu_events.cpp:1769
+#: src/menu_events.cpp:1771 src/menu_events.cpp:1773 src/menu_events.cpp:1787
 msgid "<nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1735
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "𐑳𐑯𐑚𐑨𐑯 𐑩 𐑿𐑟𐑼. 𐑣𐑰 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑣𐑨𐑝 𐑑 𐑚𐑰 𐑦𐑯 𐑞 𐑜𐑱𐑥 𐑚𐑳𐑑 𐑪𐑯 𐑞 𐑕𐑻𐑝𐑻."
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1738
 msgid "Kick a player or observer."
 msgstr "𐑒𐑦𐑒 𐑩 𐑐𐑤𐑱𐑻 𐑹 𐑩𐑚𐑟𐑻𐑝𐑻."
 
-#: src/menu_events.cpp:1858
+#: src/menu_events.cpp:1740
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "𐑥𐑿𐑑 𐑩𐑯 𐑩𐑚𐑟𐑻𐑝𐑻. 𐑢𐑦𐑞𐑬𐑑 𐑩𐑯 𐑸𐑜𐑿𐑥𐑩𐑯𐑑 𐑛𐑦𐑕𐑐𐑤𐑱𐑟 𐑞 𐑥𐑿𐑑 𐑕𐑑𐑱𐑑𐑫𐑕."
 
-#: src/menu_events.cpp:1860
+#: src/menu_events.cpp:1742
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "𐑳𐑯𐑥𐑿𐑑 𐑩𐑯 𐑩𐑚𐑟𐑻𐑝𐑻. 𐑢𐑦𐑞𐑬𐑑 𐑩𐑯 𐑸𐑜𐑿𐑥𐑩𐑯𐑑 𐑳𐑯𐑥𐑿𐑑𐑕 𐑧𐑝𐑮𐑰𐑢𐑳𐑯."
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1744
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "𐑥𐑿𐑑/𐑳𐑯𐑥𐑿𐑑 𐑷𐑤 𐑩𐑚𐑟𐑻𐑝𐑼𐑟. (𐑑𐑪𐑜𐑩𐑤𐑟)"
 
-#: src/menu_events.cpp:1872
+#: src/menu_events.cpp:1754
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 #, fuzzy
 msgid "<message>"
 msgstr "𐑥𐑧𐑕𐑦𐑡:"
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 msgid "Send an emotion or personal action in chat."
 msgstr "𐑕𐑧𐑯𐑛 𐑩𐑯 𐑦𐑥𐑴𐑖𐑩𐑯 𐑹 𐑐𐑻𐑕𐑩𐑯𐑩𐑤 𐑨𐑒𐑖𐑩𐑯 𐑦𐑯 𐑗𐑨𐑑."
 
-#: src/menu_events.cpp:1879
+#: src/menu_events.cpp:1761
 #, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
@@ -7234,562 +7267,566 @@ msgstr ""
 "𐑕𐑧𐑯𐑛𐑟 𐑩 𐑐𐑮𐑲𐑝𐑩𐑑 𐑥𐑧𐑕𐑦𐑡. 𐑿 𐑒𐑭𐑯𐑑 𐑕𐑧𐑯𐑛 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑑 𐑐𐑤𐑱𐑼𐑟 𐑞𐑨𐑑 𐑛𐑴𐑯𐑑 𐑒𐑩𐑯𐑑𐑮𐑴𐑤 𐑩 𐑕𐑲𐑛 𐑦𐑯 "
 "𐑩 𐑮𐑳𐑯𐑦𐑙 𐑜𐑱𐑥 𐑿 𐑸 𐑦𐑯."
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1763
 #, fuzzy
 msgid "<nickname> <message>"
 msgstr "𐑥𐑧𐑕𐑦𐑡:"
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "Change the log level of a log domain."
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑤𐑪𐑜 𐑤𐑧𐑝𐑩𐑤 𐑝 𐑩 𐑤𐑪𐑜 𐑛𐑴𐑥𐑱𐑯."
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1769
 #, fuzzy
 #| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "𐑨𐑛 𐑩 𐑯𐑦𐑒 𐑑 𐑿𐑼 𐑦𐑜𐑯𐑹𐑟 𐑤𐑦𐑕𐑑."
 
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1771
 #, fuzzy
 #| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
 msgstr "𐑨𐑛 𐑩 𐑯𐑦𐑒 𐑑 𐑿𐑼 𐑓𐑮𐑧𐑯𐑛𐑟 𐑤𐑦𐑕𐑑."
 
-#: src/menu_events.cpp:1891
+#: src/menu_events.cpp:1773
 #, fuzzy
 #| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "𐑮𐑰𐑥𐑵𐑝 𐑩 𐑯𐑦𐑒 𐑓𐑮𐑪𐑥 𐑿𐑼 𐑦𐑜𐑯𐑹𐑟 𐑹 𐑓𐑮𐑧𐑯𐑛𐑟 𐑤𐑦𐑕𐑑."
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1775
 msgid "Show your ignores and friends list."
 msgstr "𐑖𐑴 𐑿𐑼 𐑦𐑜𐑯𐑹𐑟 𐑯 𐑓𐑮𐑧𐑯𐑛𐑟 𐑤𐑦𐑕𐑑."
 
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1778
 msgid "Display version information."
 msgstr "𐑛𐑩𐑕𐑐𐑤𐑱 𐑝𐑻𐑠𐑩𐑯 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯."
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 msgid "<password> <email (optional)>"
 msgstr ""
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 #, fuzzy
 #| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "𐑮𐑧𐑡𐑦𐑕𐑑𐑼 𐑿𐑼 𐑯𐑦𐑒"
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1782
 #, fuzzy
 #| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "𐑛𐑮𐑪𐑐 𐑿𐑼 𐑯𐑦𐑒."
 
-#: src/menu_events.cpp:1902
+#: src/menu_events.cpp:1784
 #, fuzzy
 #| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "𐑳𐑐𐑛𐑱𐑑 𐑛𐑰𐑑𐑱𐑤𐑟 𐑓𐑹 𐑿𐑼 𐑯𐑦𐑒. 𐑓𐑹 𐑐𐑪𐑕𐑩𐑚𐑩𐑤 𐑛𐑰𐑑𐑱𐑤𐑟 𐑕𐑰 '/𐑛𐑰𐑑𐑱𐑤𐑟'."
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1785
 msgid "<detail> <value>"
 msgstr ""
 
-#: src/menu_events.cpp:1905
+#: src/menu_events.cpp:1787
 #, fuzzy
 #| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑩𐑚𐑬𐑑 𐑩 𐑯𐑦𐑒."
 
-#: src/menu_events.cpp:1907
+#: src/menu_events.cpp:1789
 #, fuzzy
 #| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑 𐑩 𐑤𐑦𐑕𐑑 𐑝 𐑛𐑰𐑑𐑱𐑤𐑟 𐑿 𐑒𐑨𐑯 𐑕𐑧𐑑 𐑓𐑹 𐑿𐑼 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑯𐑦𐑒."
 
-#: src/menu_events.cpp:1909 src/menu_events.cpp:1912 src/menu_events.cpp:1914
+#: src/menu_events.cpp:1791 src/menu_events.cpp:1794 src/menu_events.cpp:1796
 msgid "<room>"
 msgstr ""
 
-#: src/menu_events.cpp:1909
+#: src/menu_events.cpp:1791
 msgid "Join a room."
 msgstr "𐑡𐑶𐑯 𐑩 𐑮𐑵𐑥."
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1794
 msgid "Part a room."
 msgstr "𐑐𐑸𐑑 𐑩 𐑮𐑵𐑥."
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1796
 msgid "List room members."
 msgstr "𐑤𐑦𐑕𐑑 𐑮𐑵𐑥 𐑥𐑧𐑥𐑚𐑼𐑟."
 
-#: src/menu_events.cpp:1916
+#: src/menu_events.cpp:1798
 msgid "List available rooms."
 msgstr "𐑤𐑦𐑕𐑑 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑮𐑵𐑥𐑟."
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "<room> <msg>"
 msgstr ""
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "Room message."
 msgstr "𐑮𐑵𐑥 𐑥𐑧𐑕𐑦𐑡."
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "<room> <type> [value]"
 msgstr ""
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "Room query."
 msgstr "𐑮𐑵𐑥 𐑒𐑢𐑽𐑦."
 
-#: src/menu_events.cpp:2026
+#: src/menu_events.cpp:1908
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:1914
 #, fuzzy
 msgid "(debug command)"
 msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑒𐑩𐑥𐑭𐑯𐑛𐑟"
 
-#: src/menu_events.cpp:2033
+#: src/menu_events.cpp:1915
 #, fuzzy
 msgid "(network only)"
 msgstr "𐑯𐑧𐑑𐑢𐑻𐑒 𐑐𐑤𐑱𐑻"
 
-#: src/menu_events.cpp:2058
+#: src/menu_events.cpp:1917
+msgid "(not during other events)"
+msgstr ""
+
+#: src/menu_events.cpp:1942
 msgid "Refresh gui."
 msgstr "𐑮𐑰𐑓𐑮𐑧𐑖 ·𐑜·𐑿·𐑦."
 
-#: src/menu_events.cpp:2060
+#: src/menu_events.cpp:1944
 msgid "Switch a side to/from AI control."
 msgstr "𐑕𐑢𐑦𐑗 𐑩 𐑕𐑲𐑛 𐑑/𐑓𐑮𐑪𐑥 AI 𐑒𐑩𐑯𐑑𐑮𐑴𐑤."
 
-#: src/menu_events.cpp:2060 src/menu_events.cpp:2062
+#: src/menu_events.cpp:1944 src/menu_events.cpp:1946
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:2062
+#: src/menu_events.cpp:1946
 #, fuzzy
 #| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
 msgstr "𐑕𐑢𐑦𐑗 𐑩 𐑕𐑲𐑛 𐑑/𐑓𐑮𐑪𐑥 AI 𐑒𐑩𐑯𐑑𐑮𐑴𐑤."
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "<side> <nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "Assign control of a side to a different player or observer."
 msgstr "𐑩𐑕𐑲𐑯 𐑒𐑩𐑯𐑑𐑮𐑴𐑤 𐑝 𐑩 𐑕𐑲𐑛 𐑑 𐑩 𐑛𐑦𐑓𐑼𐑩𐑯𐑑 𐑐𐑤𐑱𐑻 𐑹 𐑩𐑚𐑟𐑻𐑝𐑻."
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:1953
 msgid "Clear chat history."
 msgstr "𐑒𐑤𐑽 𐑗𐑨𐑑 𐑣𐑦𐑕𐑑𐑼𐑦."
 
-#: src/menu_events.cpp:2071
+#: src/menu_events.cpp:1955
 msgid "Visualize the screen refresh procedure."
 msgstr "𐑝𐑦𐑠𐑢𐑩𐑤𐑲𐑟 𐑞 𐑕𐑒𐑮𐑰𐑯 𐑮𐑰𐑓𐑮𐑧𐑖 𐑐𐑮𐑩𐑕𐑰𐑡𐑻."
 
-#: src/menu_events.cpp:2073
+#: src/menu_events.cpp:1957
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2075
+#: src/menu_events.cpp:1959
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2076
+#: src/menu_events.cpp:1960
 #, fuzzy
 msgid "Show fps."
 msgstr "𐑖𐑴 𐑮𐑰𐑐𐑤𐑱"
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:1962
 msgid "Save game."
 msgstr "𐑕𐑱𐑝 𐑜𐑱𐑥."
 
-#: src/menu_events.cpp:2080
+#: src/menu_events.cpp:1964
 msgid "Quit game."
 msgstr "𐑒𐑢𐑦𐑑 𐑜𐑱𐑥."
 
-#: src/menu_events.cpp:2084
+#: src/menu_events.cpp:1968
 msgid "Save and quit."
 msgstr "𐑕𐑱𐑝 𐑯 𐑒𐑢𐑦𐑑."
 
-#: src/menu_events.cpp:2087
+#: src/menu_events.cpp:1971
 msgid "Ignore replay errors."
 msgstr "𐑦𐑜𐑯𐑹 𐑮𐑰𐑐𐑤𐑱 𐑻𐑼𐑟."
 
-#: src/menu_events.cpp:2089
+#: src/menu_events.cpp:1973
 msgid "Disable autosaves."
 msgstr "𐑛𐑦𐑕𐑱𐑚𐑩𐑤 𐑷𐑑𐑴𐑕𐑱𐑝𐑟."
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "𐑩𐑛𐑝𐑭𐑯𐑕 𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴, 𐑹 𐑕𐑦𐑯𐑺𐑰𐑴 𐑲𐑛𐑧𐑯𐑑𐑦𐑓𐑲𐑛 𐑚𐑲 '𐑦𐑛'"
 
-#: src/menu_events.cpp:2094
+#: src/menu_events.cpp:1978
 msgid "Choose next scenario"
 msgstr "𐑗𐑵𐑟 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:1985
 msgid "Turn debug mode on."
 msgstr "𐑑𐑻𐑯 𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑪𐑯."
 
-#: src/menu_events.cpp:2103
+#: src/menu_events.cpp:1987
 msgid "Turn debug mode off."
 msgstr "𐑑𐑻𐑯 𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑪𐑓."
 
-#: src/menu_events.cpp:2105 src/menu_events.cpp:2109
+#: src/menu_events.cpp:1989 src/menu_events.cpp:1993
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:2105
+#: src/menu_events.cpp:1989
 msgid "Execute a Lua statement."
 msgstr "𐑧𐑒𐑕𐑩𐑒𐑿𐑑 𐑩 𐑤𐑵𐑩 𐑕𐑑𐑱𐑑𐑥𐑩𐑯𐑑."
 
-#: src/menu_events.cpp:2107
+#: src/menu_events.cpp:1991
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:2109
+#: src/menu_events.cpp:1993
 msgid "Set the command used by the custom command hotkey"
 msgstr "𐑕𐑧𐑑 𐑞 𐑒𐑩𐑥𐑭𐑯𐑛 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑚𐑲 𐑞 𐑒𐑳𐑕𐑑𐑩𐑥 𐑒𐑩𐑥𐑭𐑯𐑛 𐑣𐑭𐑑𐑒𐑰"
 
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:1996
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:2116
+#: src/menu_events.cpp:2000
 msgid "Launch the gamestate inspector"
 msgstr "𐑤𐑷𐑯𐑗 𐑞 𐑜𐑱𐑥𐑕𐑑𐑱𐑑 𐑦𐑯𐑕𐑐𐑧𐑒𐑑𐑻"
 
-#: src/menu_events.cpp:2118
+#: src/menu_events.cpp:2002
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "Set or show alias to a command"
 msgstr "𐑕𐑧𐑑 𐑹 𐑖𐑴 𐑱𐑤𐑰𐑩𐑕 𐑑 𐑩 𐑒𐑩𐑥𐑭𐑯𐑛"
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "Set a scenario variable."
 msgstr "𐑕𐑧𐑑 𐑩 𐑕𐑦𐑯𐑺𐑰𐑴 𐑝𐑺𐑦𐑩𐑚𐑩𐑤."
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "Show a scenario variable."
 msgstr "𐑖𐑴 𐑩 𐑕𐑦𐑯𐑺𐑰𐑴 𐑝𐑺𐑦𐑩𐑚𐑩𐑤."
 
-#: src/menu_events.cpp:2126
+#: src/menu_events.cpp:2010
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "𐑥𐑪𐑛𐑦𐑓𐑲 𐑩 𐑿𐑯𐑦𐑑 𐑝𐑺𐑦𐑩𐑚𐑩𐑤. (𐑴𐑯𐑤𐑦 𐑑𐑪𐑐 𐑤𐑧𐑝𐑩𐑤 𐑒𐑰𐑟 𐑸 𐑕𐑩𐑐𐑹𐑑𐑩𐑛.)"
 
-#: src/menu_events.cpp:2133
+#: src/menu_events.cpp:2017
 msgid "Discover all units in help."
 msgstr "𐑛𐑦𐑕𐑒𐑳𐑝𐑼 𐑷𐑤 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑣𐑧𐑤𐑐."
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2019
 #, fuzzy
 msgid "'Undiscover' all units in help."
 msgstr "𐑛𐑦𐑕𐑒𐑳𐑝𐑼 𐑷𐑤 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑣𐑧𐑤𐑐."
 
-#: src/menu_events.cpp:2137
+#: src/menu_events.cpp:2021
 msgid "Create a unit."
 msgstr "𐑒𐑮𐑰𐑱𐑑 𐑩 𐑿𐑯𐑦𐑑."
 
-#: src/menu_events.cpp:2139
+#: src/menu_events.cpp:2023
 msgid "Toggle fog for the current player."
 msgstr "𐑑𐑪𐑜𐑩𐑤 𐑓𐑪𐑜 𐑓𐑹 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑐𐑤𐑱𐑻."
 
-#: src/menu_events.cpp:2141
+#: src/menu_events.cpp:2025
 msgid "Toggle shroud for the current player."
 msgstr "𐑑𐑪𐑜𐑩𐑤 𐑖𐑮𐑬𐑛 𐑓𐑹 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑐𐑤𐑱𐑻."
 
-#: src/menu_events.cpp:2143
+#: src/menu_events.cpp:2027
 msgid "Give gold to the current player."
 msgstr "𐑜𐑦𐑝 𐑜𐑴𐑤𐑛 𐑑 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑐𐑤𐑱𐑻."
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2029
 msgid "Fire a game event."
 msgstr "𐑓𐑲𐑼 𐑩 𐑜𐑱𐑥 𐑦𐑝𐑧𐑯𐑑."
 
-#: src/menu_events.cpp:2148
+#: src/menu_events.cpp:2032
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "𐑑𐑪𐑜𐑩𐑤 𐑴𐑝𐑼𐑤𐑱𐑦𐑙 𐑝 𐑧𐑒𐑕,𐑢𐑲 𐑒𐑴𐑹𐑛𐑦𐑯𐑱𐑑𐑕 𐑪𐑯 𐑣𐑧𐑒𐑕𐑧𐑟."
 
-#: src/menu_events.cpp:2151
+#: src/menu_events.cpp:2035
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "𐑑𐑪𐑜𐑩𐑤 𐑴𐑝𐑼𐑤𐑱𐑦𐑙 𐑝 𐑑𐑻𐑱𐑯 𐑒𐑴𐑛𐑟 𐑪𐑯 𐑣𐑧𐑒𐑕𐑧𐑟."
 
-#: src/menu_events.cpp:2154
+#: src/menu_events.cpp:2038
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2157
+#: src/menu_events.cpp:2041
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:2200
+#: src/menu_events.cpp:2084
 msgid "Unknown debug level: '$level'."
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑛𐑰𐑚𐑳𐑜 𐑤𐑧𐑝𐑩𐑤: '$level'."
 
-#: src/menu_events.cpp:2202 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2086 src/menu_events.cpp:2095
 msgid "error"
 msgstr "𐑻𐑹"
 
-#: src/menu_events.cpp:2209
+#: src/menu_events.cpp:2093
 msgid "Unknown debug domain: '$domain'."
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑛𐑰𐑚𐑳𐑜 𐑛𐑴𐑥𐑱𐑯: '$domain'."
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2102
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "𐑕𐑢𐑦𐑗𐑑 𐑛𐑴𐑥𐑱𐑯: '$domain' 𐑑 𐑤𐑧𐑝𐑩𐑤: '$level'."
 
-#: src/menu_events.cpp:2289
+#: src/menu_events.cpp:2173
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/menu_events.cpp:2392 src/menu_events.cpp:2398 src/menu_events.cpp:2445
+#: src/menu_events.cpp:2276 src/menu_events.cpp:2282 src/menu_events.cpp:2329
 #, fuzzy
 msgid "ignores list"
 msgstr "𐑨𐑛𐑩𐑛 𐑑 𐑦𐑜𐑯𐑹 𐑤𐑦𐑕𐑑: "
 
-#: src/menu_events.cpp:2398
+#: src/menu_events.cpp:2282
 #, fuzzy
 msgid "Added to ignore list: $nick"
 msgstr "𐑨𐑛𐑩𐑛 𐑑 𐑦𐑜𐑯𐑹 𐑤𐑦𐑕𐑑: "
 
-#: src/menu_events.cpp:2401 src/menu_events.cpp:2419
+#: src/menu_events.cpp:2285 src/menu_events.cpp:2303
 #, fuzzy
 msgid "Invalid username: $nick"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑿𐑟𐑻𐑯𐑱𐑥: "
 
-#: src/menu_events.cpp:2410 src/menu_events.cpp:2416 src/menu_events.cpp:2441
+#: src/menu_events.cpp:2294 src/menu_events.cpp:2300 src/menu_events.cpp:2325
 #, fuzzy
 msgid "friends list"
 msgstr "𐑨𐑛𐑩𐑛 𐑑 𐑓𐑮𐑧𐑯𐑛𐑟 𐑤𐑦𐑕𐑑: "
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2300
 #, fuzzy
 msgid "Added to friends list: $nick"
 msgstr "𐑨𐑛𐑩𐑛 𐑑 𐑓𐑮𐑧𐑯𐑛𐑟 𐑤𐑦𐑕𐑑: "
 
-#: src/menu_events.cpp:2431
+#: src/menu_events.cpp:2315
 #, fuzzy
 msgid "Removed from list: $nick"
 msgstr "𐑮𐑦𐑥𐑵𐑝𐑛 𐑓𐑮𐑪𐑥 𐑤𐑦𐑕𐑑: "
 
-#: src/menu_events.cpp:2431 src/menu_events.cpp:2449
+#: src/menu_events.cpp:2315 src/menu_events.cpp:2333
 #, fuzzy
 msgid "friends and ignores list"
 msgstr "𐑨𐑛𐑩𐑛 𐑑 𐑦𐑜𐑯𐑹 𐑤𐑦𐑕𐑑: "
 
-#: src/menu_events.cpp:2449
+#: src/menu_events.cpp:2333
 msgid "There are no players on your friends or ignore list."
 msgstr "𐑞𐑺 𐑸 𐑯𐑴 𐑐𐑤𐑱𐑼𐑟 𐑪𐑯 𐑿𐑼 𐑓𐑮𐑧𐑯𐑛𐑟 𐑹 𐑦𐑜𐑯𐑹 𐑤𐑦𐑕𐑑."
 
-#: src/menu_events.cpp:2454
+#: src/menu_events.cpp:2338
 #, fuzzy
 msgid "version"
 msgstr "𐑝𐑻𐑠𐑩𐑯"
 
-#: src/menu_events.cpp:2470
+#: src/menu_events.cpp:2354
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2358
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2477 src/menu_events.cpp:2488 src/menu_events.cpp:2506
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2361 src/menu_events.cpp:2372 src/menu_events.cpp:2390
+#: src/menu_events.cpp:2404
 msgid "nick registration"
 msgstr ""
 
-#: src/menu_events.cpp:2488
+#: src/menu_events.cpp:2372
 msgid "dropping your username"
 msgstr ""
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2390
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2404
 #, fuzzy
 msgid "requesting information for user $nick"
 msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑩𐑚𐑬𐑑 𐑩 𐑯𐑦𐑒."
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2521
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "𐑒𐑫𐑛𐑯𐑑 𐑓𐑲𐑯𐑛 𐑤𐑱𐑚𐑩𐑤 𐑹 𐑿𐑯𐑦𐑑 𐑒𐑩𐑯𐑑𐑱𐑯𐑦𐑙 𐑞 𐑕𐑑𐑮𐑦𐑙 '$search'."
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2560
 msgid "Can't droid invalid side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑛𐑮𐑶𐑛 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2681
+#: src/menu_events.cpp:2565
 msgid "Can't droid networked side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑛𐑮𐑶𐑛 𐑯𐑧𐑑𐑢𐑻𐑒𐑑 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2699
+#: src/menu_events.cpp:2583
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑛𐑮𐑶𐑛 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2715
+#: src/menu_events.cpp:2599
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑛𐑮𐑶𐑛 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2720
+#: src/menu_events.cpp:2604
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑛𐑮𐑶𐑛 𐑯𐑧𐑑𐑢𐑻𐑒𐑑 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2725
+#: src/menu_events.cpp:2609
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑛𐑮𐑶𐑛 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2774
+#: src/menu_events.cpp:2658
 msgid "Can't change control of invalid side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑗𐑱𐑯𐑡 𐑒𐑩𐑯𐑑𐑮𐑴𐑤 𐑝 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2784
+#: src/menu_events.cpp:2668
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑗𐑱𐑯𐑡 𐑒𐑩𐑯𐑑𐑮𐑴𐑤 𐑝 𐑬𐑑-𐑝-𐑚𐑬𐑯𐑛𐑟 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2799
+#: src/menu_events.cpp:2683
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑗𐑱𐑯𐑡 𐑒𐑩𐑯𐑑𐑮𐑴𐑤 𐑝 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2805
+#: src/menu_events.cpp:2689
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "𐑒𐑭𐑯𐑑 𐑗𐑱𐑯𐑡 𐑒𐑩𐑯𐑑𐑮𐑴𐑤 𐑝 𐑬𐑑-𐑝-𐑚𐑬𐑯𐑛𐑟 𐑕𐑲𐑛: '$side'."
 
-#: src/menu_events.cpp:2925
+#: src/menu_events.cpp:2809
 #, fuzzy
 msgid "Layers"
 msgstr "𐑐𐑤𐑱𐑼𐑟: "
 
-#: src/menu_events.cpp:2987
+#: src/menu_events.cpp:2871
 msgid "Choose Scenario (Debug!)"
 msgstr "𐑗𐑵𐑟 𐑕𐑦𐑯𐑺𐑰𐑴 (𐑛𐑰𐑚𐑳𐑜!)"
 
-#: src/menu_events.cpp:3021
+#: src/menu_events.cpp:2905
 msgid "Debug mode activated!"
 msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑨𐑒𐑑𐑦𐑝𐑱𐑑𐑩𐑛!"
 
-#: src/menu_events.cpp:3024
+#: src/menu_events.cpp:2908
 msgid "Debug mode not available in network games"
 msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑯𐑪𐑑 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑦𐑯 𐑯𐑧𐑑𐑢𐑻𐑒 𐑜𐑱𐑥𐑟"
 
-#: src/menu_events.cpp:3029
+#: src/menu_events.cpp:2913
 msgid "Debug mode deactivated!"
 msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑛𐑰𐑨𐑒𐑑𐑦𐑝𐑱𐑑𐑦𐑛!"
 
-#: src/menu_events.cpp:3045
+#: src/menu_events.cpp:2929
 msgid "Unsafe Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:3046
+#: src/menu_events.cpp:2930
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
 
-#: src/menu_events.cpp:3049
+#: src/menu_events.cpp:2933
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:3093
+#: src/menu_events.cpp:2977
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:3138
+#: src/menu_events.cpp:3022
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:3153
+#: src/menu_events.cpp:3037
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3167
+#: src/menu_events.cpp:3051
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑑𐑨𐑜 𐑯𐑱𐑥"
 
-#: src/menu_events.cpp:3175
+#: src/menu_events.cpp:3059
 #, fuzzy
 msgid "Invalid location"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑒𐑳𐑤𐑼"
 
-#: src/menu_events.cpp:3222
+#: src/menu_events.cpp:3106
 msgid "ai"
 msgstr "AI"
 
-#: src/menu_events.cpp:3230 src/menu_events.cpp:3258
+#: src/menu_events.cpp:3114 src/menu_events.cpp:3142
 msgid "prompt^Command:"
 msgstr "𐑒𐑩𐑥𐑭𐑯𐑛:"
 
@@ -7861,38 +7898,38 @@ msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑨𐑛 𐑕𐑪𐑒𐑩𐑑 𐑑 𐑕𐑪�
 msgid "Could not send initial handshake"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑧𐑯𐑛 𐑦𐑯𐑦𐑖𐑩𐑤 𐑣𐑨𐑯𐑛𐑖𐑱𐑒"
 
-#: src/pathfind/pathfind.cpp:714
+#: src/pathfind/pathfind.cpp:718
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "𐑑𐑻𐑱𐑯 𐑢𐑦𐑞 𐑩 𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑 𐑤𐑧𐑕 𐑞𐑨𐑯 1 𐑦𐑯𐑒𐑬𐑯𐑑𐑻𐑛."
 
-#: src/play_controller.cpp:232
+#: src/play_controller.cpp:268
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:234 src/replay_controller.cpp:177
+#: src/play_controller.cpp:270 src/replay_controller.cpp:132
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:920
+#: src/play_controller.cpp:995
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:921 src/replay_controller.cpp:410
+#: src/play_controller.cpp:996
 #, fuzzy
 msgid "Error details:"
 msgstr "𐑻𐑹: "
 
-#: src/playmp_controller.cpp:159
+#: src/playmp_controller.cpp:152
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "𐑳𐑯𐑛𐑵𐑦𐑙 𐑥𐑵𐑝𐑟 𐑯𐑪𐑑 𐑘𐑧𐑑 𐑑𐑮𐑨𐑯𐑕𐑥𐑦𐑑𐑩𐑛 𐑑 𐑞 𐑕𐑻𐑝𐑻."
 
-#: src/playmp_controller.cpp:295
+#: src/playmp_controller.cpp:288
 msgid "Waiting for next scenario..."
 msgstr "𐑢𐑱𐑑𐑦𐑙 𐑓𐑹 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴..."
 
-#: src/playmp_controller.cpp:375
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7908,116 +7945,31 @@ msgstr ""
 "\n"
 "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑩𐑯 𐑻𐑹 𐑤𐑪𐑜 𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:139
-msgid "Remaining gold: "
-msgstr "𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑜𐑴𐑤𐑛: "
-
-#: src/playsingle_controller.cpp:143
-msgid "Turns finished early: "
-msgstr "𐑑𐑻𐑯𐑟 𐑓𐑦𐑯𐑦𐑖𐑑 𐑻𐑤𐑰: "
-
-#: src/playsingle_controller.cpp:144
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "𐑐𐑻 𐑑𐑻𐑯"
-
-#: src/playsingle_controller.cpp:144
-msgid "Early finish bonus: "
-msgstr "𐑻𐑤𐑰 𐑓𐑦𐑯𐑦𐑖 𐑚𐑴𐑯𐑩𐑕: "
-
-#: src/playsingle_controller.cpp:145
-#, fuzzy
-#| msgid "Turn bonus: "
-msgid "Total bonus: "
-msgstr "𐑑𐑻𐑯 𐑚𐑴𐑯𐑩𐑕: "
-
 #: src/playsingle_controller.cpp:147
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "𐑝𐑦𐑤𐑦𐑡 𐑜𐑴𐑤𐑛: "
-
-#: src/playsingle_controller.cpp:150
-#, fuzzy
-#| msgid "Carry over percentage: "
-msgid "Carryover percentage: "
-msgstr "𐑒𐑨𐑮𐑦 𐑴𐑝𐑼 𐑐𐑼𐑕𐑧𐑯𐑑𐑦𐑡: "
-
-#: src/playsingle_controller.cpp:153
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "𐑚𐑴𐑯𐑩𐑕 𐑜𐑴𐑤𐑛: "
-
-#: src/playsingle_controller.cpp:155
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "𐑮𐑦𐑑𐑱𐑯𐑛 𐑜𐑴𐑤𐑛: "
-
-#: src/playsingle_controller.cpp:168
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
-msgstr[1] ""
-"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
-
-#: src/playsingle_controller.cpp:176
-#, fuzzy
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
-msgstr[1] ""
-"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑪𐑯 𐑑𐑪𐑐 𐑝 𐑞 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛."
-
-#: src/playsingle_controller.cpp:184
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑹 𐑦𐑑𐑕 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛, 𐑢𐑦𐑗𐑧𐑝𐑼 "
-"𐑦𐑟 𐑣𐑲𐑼."
-msgstr[1] ""
-"𐑿 𐑢𐑦𐑤 𐑕𐑑𐑸𐑑 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑕𐑦𐑯𐑺𐑰𐑴 𐑢𐑦𐑞 $gold 𐑹 𐑦𐑑𐑕 𐑛𐑦𐑓𐑲𐑯𐑛 𐑥𐑦𐑯𐑩𐑥𐑩𐑥 𐑕𐑑𐑸𐑑𐑦𐑙 𐑜𐑴𐑤𐑛, 𐑢𐑦𐑗𐑧𐑝𐑼 "
-"𐑦𐑟 𐑣𐑲𐑼."
-
-#: src/playsingle_controller.cpp:208
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "𐑻𐑹"
 
-#: src/playsingle_controller.cpp:209
+#: src/playsingle_controller.cpp:148
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:277
 msgid "The game is over."
 msgstr "𐑞 𐑜𐑱𐑥 𐑦𐑟 𐑴𐑝𐑼."
 
-#: src/playsingle_controller.cpp:359
+#: src/playsingle_controller.cpp:317
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -8026,46 +7978,37 @@ msgstr ""
 "𐑩 𐑯𐑧𐑑𐑢𐑻𐑒 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑣𐑨𐑟 𐑪𐑒𐑻𐑛, 𐑯 𐑞 𐑜𐑱𐑥\n"
 "𐑒𐑨𐑯𐑪𐑑 𐑒𐑩𐑯𐑑𐑦𐑯𐑿. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑞 𐑜𐑱𐑥?"
 
-#: src/playsingle_controller.cpp:547
+#: src/playsingle_controller.cpp:409
 msgid "It is now $name|’s turn"
 msgstr "𐑦𐑑 𐑦𐑟 𐑯𐑬 $name|'s 𐑑𐑻𐑯"
 
-#: src/playturn.cpp:261
+#: src/playturn.cpp:259
 msgid "Replace with AI"
 msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 AI"
 
-#: src/playturn.cpp:262
+#: src/playturn.cpp:260
 msgid "Replace with local player"
 msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/playturn.cpp:263
+#: src/playturn.cpp:261
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:264
+#: src/playturn.cpp:262
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "𐑩𐑚𐑹𐑑 𐑜𐑱𐑥"
 
-#: src/playturn.cpp:272 src/playturn.cpp:288
+#: src/playturn.cpp:270 src/playturn.cpp:286
 msgid "Replace with $player"
 msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 $player"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:292
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player 𐑣𐑨𐑟 𐑤𐑧𐑓𐑑 𐑞 𐑜𐑱𐑥. 𐑢𐑪𐑑 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑵?"
 
-#: src/replay_controller.cpp:409
-#, fuzzy
-msgid ""
-"The replay is corrupt/out of sync. It might not make much sense to continue. "
-"Do you want to save the game?"
-msgstr ""
-"𐑩 𐑯𐑧𐑑𐑢𐑻𐑒 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑣𐑨𐑟 𐑪𐑒𐑻𐑛, 𐑯 𐑞 𐑜𐑱𐑥\n"
-"𐑒𐑨𐑯𐑪𐑑 𐑒𐑩𐑯𐑑𐑦𐑯𐑿. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑞 𐑜𐑱𐑥?"
-
-#: src/reports.cpp:148 src/savegame.cpp:445
+#: src/reports.cpp:148 src/savegame.cpp:410
 msgid "Name: "
 msgstr "𐑯𐑱𐑥: "
 
@@ -8319,11 +8262,11 @@ msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟:"
 msgid " replay"
 msgstr "𐑮𐑰𐑐𐑤𐑱"
 
-#: src/savegame.cpp:240 src/savegame.cpp:244
+#: src/savegame.cpp:213 src/savegame.cpp:217
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "𐑢𐑹𐑯𐑦𐑙: 𐑞 𐑓𐑲𐑤 𐑿 𐑣𐑨𐑝 𐑑𐑮𐑲𐑛 𐑑 𐑤𐑴𐑛 𐑦𐑟 𐑒𐑼𐑳𐑐𐑑. 𐑤𐑴𐑛𐑦𐑙 𐑧𐑯𐑦𐑢𐑱.\n"
 
-#: src/savegame.cpp:299
+#: src/savegame.cpp:264
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -8331,7 +8274,7 @@ msgid ""
 "be loaded."
 msgstr "𐑞𐑦𐑕 𐑕𐑱𐑝 𐑦𐑟 𐑓𐑮𐑪𐑥 𐑩 𐑝𐑻𐑠𐑩𐑯 𐑑𐑵 𐑴𐑤𐑛 𐑑 𐑚𐑰 𐑤𐑴𐑛𐑩𐑛."
 
-#: src/savegame.cpp:307
+#: src/savegame.cpp:272
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -8341,63 +8284,68 @@ msgid ""
 "wish to try to load it?"
 msgstr "𐑞𐑦𐑕 𐑕𐑱𐑝 𐑦𐑟 𐑓𐑮𐑪𐑥 𐑩 𐑛𐑦𐑓𐑼𐑩𐑯𐑑 𐑝𐑻𐑠𐑩𐑯 𐑝 𐑞 𐑜𐑱𐑥. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑑𐑮𐑲 𐑑 𐑤𐑴𐑛 𐑦𐑑?"
 
-#: src/savegame.cpp:349
+#: src/savegame.cpp:275
+msgid "Load Game"
+msgstr "𐑤𐑴𐑛 𐑜𐑱𐑥"
+
+#: src/savegame.cpp:314
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "𐑞𐑦𐑕 𐑦𐑟 𐑯𐑪𐑑 𐑩 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑕𐑱𐑝"
 
-#: src/savegame.cpp:374
+#: src/savegame.cpp:339
 msgid "The game could not be saved: "
 msgstr "𐑞 𐑜𐑱𐑥 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑕𐑱𐑝𐑛: "
 
-#: src/savegame.cpp:445
+#: src/savegame.cpp:410
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "𐑕𐑱𐑝 𐑷𐑤𐑮𐑧𐑛𐑦 𐑧𐑒𐑟𐑦𐑕𐑑𐑕. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑴𐑝𐑼𐑮𐑲𐑑 𐑦𐑑?"
 
-#: src/savegame.cpp:446
+#: src/savegame.cpp:411
 msgid "Overwrite?"
 msgstr "𐑴𐑝𐑼𐑮𐑲𐑑?"
 
-#: src/savegame.cpp:454
+#: src/savegame.cpp:419
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "𐑕𐑱𐑝 𐑯𐑱𐑥𐑟 𐑖𐑫𐑛 𐑯𐑪𐑑 𐑧𐑯𐑛 𐑪𐑯 '.gz'. 𐑐𐑤𐑰𐑟 𐑗𐑵𐑟 𐑩 𐑛𐑦𐑓𐑼𐑩𐑯𐑑 𐑯𐑱𐑥."
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:469
 msgid "Saved"
 msgstr "𐑕𐑱𐑝𐑛"
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:469
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "𐑞 𐑜𐑱𐑥 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑕𐑱𐑝𐑛"
 
-#: src/savegame.cpp:535 src/savegame.cpp:555
+#: src/savegame.cpp:500 src/savegame.cpp:520
 msgid "Could not write to file"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑮𐑲𐑑 𐑑 𐑓𐑲𐑤"
 
-#: src/savegame.cpp:588
+#: src/savegame.cpp:553
 msgid "Save Replay"
 msgstr "𐑕𐑱𐑝 𐑮𐑰𐑐𐑤𐑱"
 
-#: src/savegame.cpp:597
+#: src/savegame.cpp:562
 msgid "replay"
 msgstr "𐑮𐑰𐑐𐑤𐑱"
 
-#: src/savegame.cpp:618
+#: src/savegame.cpp:583
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑷𐑑𐑴 𐑕𐑱𐑝 𐑞 𐑜𐑱𐑥. 𐑐𐑤𐑰𐑟 𐑕𐑱𐑝 𐑞 𐑜𐑱𐑥 𐑥𐑨𐑯𐑘𐑫𐑩𐑤𐑦."
 
-#: src/savegame.cpp:670
+#: src/savegame.cpp:635
 msgid "Save Game"
 msgstr "𐑕𐑱𐑝 𐑜𐑱𐑥"
 
-#: src/scripting/game_lua_kernel.cpp:1697
-msgid "Invalid value in the result key for [end_level]"
+#: src/scripting/game_lua_kernel.cpp:2970
+#: src/scripting/game_lua_kernel.cpp:3005
+msgid "input"
 msgstr ""
 
 #: src/serialization/parser.cpp:133
@@ -8772,34 +8720,38 @@ msgstr ""
 msgid "September"
 msgstr ""
 
-#: src/strftime.cpp:73
+#: src/strftime.cpp:78
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%𐑩 %𐑚𐑰 %𐑛𐑰 %𐑱𐑗:%𐑧𐑥 %𐑢𐑲"
 
-#: src/strftime.cpp:77
+#: src/strftime.cpp:82
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
 msgstr "%𐑩 %𐑚𐑰 %𐑛𐑰 %𐑱𐑗:%𐑧𐑥 %𐑢𐑲"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "AM"
 msgstr ""
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "PM"
 msgstr ""
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 #, fuzzy
 #| msgid "Name"
 msgid "am"
 msgstr "𐑯𐑱𐑥"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "pm"
+msgstr ""
+
+#: src/synced_user_choice.cpp:331
+msgid "waiting for $desc from side(s)$sides"
 msgstr ""
 
 #: src/terrain.cpp:184
@@ -8832,91 +8784,147 @@ msgstr "𐑑𐑲𐑥 𐑝 𐑛𐑱"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/unit.cpp:1695 src/unit.cpp:1916 src/unit.cpp:1997
+#: src/unit.cpp:1729 src/unit.cpp:2076 src/unit.cpp:2169
 #: src/unit_attack_type.cpp:152
 msgid " and "
 msgstr "𐑯 "
 
-#: src/unit.cpp:1706
+#: src/unit.cpp:1740
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:1767
+#: src/unit.cpp:1801
 msgid "moves"
 msgstr "𐑥𐑵𐑝𐑟"
 
-#: src/unit.cpp:1797 src/unit.cpp:1940
+#: src/unit.cpp:1817
+#, fuzzy
+#| msgid "Version: "
+msgid "vision"
+msgstr "𐑝𐑻𐑠𐑩𐑯: "
+
+#: src/unit.cpp:1831
+#, fuzzy
+#| msgid "Warning: "
+msgid "jamming"
+msgstr "𐑢𐑹𐑯𐑦𐑙: "
+
+#: src/unit.cpp:1868 src/unit.cpp:2112
 msgid "XP to advance"
 msgstr "XP 𐑑 𐑩𐑛𐑝𐑭𐑯𐑕"
 
-#: src/unit.cpp:1933
+#: src/unit.cpp:2029
+#, fuzzy
+#| msgid "per turn"
+msgid "attack per turn"
+msgstr "𐑐𐑻 𐑑𐑻𐑯"
+
+#: src/unit.cpp:2030
+#, fuzzy
+#| msgid "per turn"
+msgid "attacks per turn"
+msgstr "𐑐𐑻 𐑑𐑻𐑯"
+
+#: src/unit.cpp:2055
+msgid "cost to recall"
+msgstr ""
+
+#: src/unit.cpp:2093
 msgid " move"
 msgstr "𐑥𐑵𐑝"
 
-#: src/unit.cpp:1948
+#: src/unit.cpp:2099
+#, fuzzy
+#| msgid "Version: "
+msgid " vision"
+msgstr "𐑝𐑻𐑠𐑩𐑯: "
+
+#: src/unit.cpp:2105
+#, fuzzy
+#| msgid "Warning: "
+msgid " jamming"
+msgstr "𐑢𐑹𐑯𐑦𐑙: "
+
+#: src/unit.cpp:2120
 msgid "$effect_description per level"
 msgstr "$effect_description 𐑐𐑻 𐑤𐑧𐑝𐑩𐑤"
 
-#: src/unit_attack_type.cpp:235 src/unit_attack_type.cpp:315
+#: src/unit_attack_type.cpp:239 src/unit_attack_type.cpp:253
+#: src/unit_attack_type.cpp:380
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "𐑛𐑨𐑥𐑦𐑡"
 msgstr[1] "𐑛𐑨𐑥𐑦𐑡"
 
-#: src/unit_attack_type.cpp:246 src/unit_attack_type.cpp:322
+#: src/unit_attack_type.cpp:262 src/unit_attack_type.cpp:273
+#: src/unit_attack_type.cpp:387
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "𐑕𐑑𐑮𐑲𐑒"
 msgstr[1] "𐑕𐑑𐑮𐑲𐑒𐑕"
 
-#: src/unit_attack_type.cpp:258
+#: src/unit_attack_type.cpp:283 src/unit_attack_type.cpp:295
 #, no-c-format
 msgid "% accuracy"
 msgstr "% 𐑨𐑒𐑘𐑻𐑩𐑕𐑰"
 
-#: src/unit_attack_type.cpp:269
+#: src/unit_attack_type.cpp:304
+#, fuzzy
+#| msgid "% parry"
+msgid " parry"
+msgstr "% 𐑐𐑺𐑰"
+
+#: src/unit_attack_type.cpp:315
 #, no-c-format
 msgid "% parry"
 msgstr "% 𐑐𐑺𐑰"
 
-#: src/unit_types.cpp:850
+#: src/unit_attack_type.cpp:324 src/unit_attack_type.cpp:334
+#, fuzzy
+#| msgid "Movement Cost"
+msgid "movement point"
+msgid_plural "movement points"
+msgstr[0] "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
+msgstr[1] "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
+
+#: src/unit_types.cpp:853
 msgid "female^lawful"
 msgstr "𐑤𐑷𐑓𐑫𐑤"
 
-#: src/unit_types.cpp:851
+#: src/unit_types.cpp:854
 msgid "female^neutral"
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤"
 
-#: src/unit_types.cpp:852
+#: src/unit_types.cpp:855
 msgid "female^chaotic"
 msgstr "𐑒𐑱𐑭𐑑𐑦𐑒"
 
-#: src/unit_types.cpp:853
+#: src/unit_types.cpp:856
 #, fuzzy
 msgid "female^liminal"
 msgstr "𐑤𐑶𐑩𐑤"
 
-#: src/whiteboard/manager.cpp:1080
+#: src/whiteboard/manager.cpp:1082
 msgid "SHOW ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1081
+#: src/whiteboard/manager.cpp:1083
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1095
+#: src/whiteboard/manager.cpp:1097
 #, fuzzy
 #| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "𐑖𐑴 𐑮𐑰𐑐𐑤𐑱"
 
-#: src/whiteboard/manager.cpp:1097
+#: src/whiteboard/manager.cpp:1099
 #, fuzzy
 #| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 $player"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1102
 msgid "Whiteboard Options"
 msgstr ""
 
@@ -8929,6 +8937,60 @@ msgstr "𐑢𐑫𐑤𐑝𐑟"
 #: src/wmi_pager.cpp:51
 msgid "Previous Items"
 msgstr ""
+
+#~ msgid "English strings edition"
+#~ msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 𐑕𐑑𐑮𐑦𐑙𐑟 𐑦𐑛𐑦𐑖𐑩𐑯"
+
+#~ msgid "No Saved Games"
+#~ msgstr "𐑯𐑴 𐑕𐑱𐑝𐑛 𐑜𐑱𐑥𐑟"
+
+#~ msgid ""
+#~ "There are no saved games to load.\n"
+#~ "\n"
+#~ "(Games are saved automatically when you complete a scenario)"
+#~ msgstr ""
+#~ "𐑞𐑺 𐑸 𐑯𐑴 𐑕𐑱𐑝𐑛 𐑜𐑱𐑥𐑟 𐑑 𐑤𐑴𐑛.\n"
+#~ "\n"
+#~ "(𐑜𐑱𐑥𐑟 𐑸 𐑕𐑱𐑝𐑛 𐑷𐑑𐑩𐑥𐑨𐑑𐑦𐑒𐑤𐑦 𐑢𐑧𐑯 𐑿 𐑒𐑩𐑥𐑐𐑤𐑰𐑑 𐑩 𐑕𐑦𐑯𐑺𐑰𐑴)"
+
+#~ msgid "Date"
+#~ msgstr "𐑛𐑱𐑑"
+
+#, fuzzy
+#~| msgid "Difficulty"
+#~ msgid "Change difficulty"
+#~ msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑦"
+
+#~ msgid "Show replay"
+#~ msgstr "𐑖𐑴 𐑮𐑰𐑐𐑤𐑱"
+
+#~ msgid "Cancel orders"
+#~ msgstr "𐑒𐑨𐑯𐑕𐑩𐑤 𐑹𐑛𐑼𐑟"
+
+#~ msgid "Delete Save"
+#~ msgstr "𐑛𐑦𐑤𐑰𐑑 𐑕𐑱𐑝"
+
+#, fuzzy
+#~| msgid "Debug mode activated!"
+#~ msgid "Deactivate"
+#~ msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑨𐑒𐑑𐑦𐑝𐑱𐑑𐑩𐑛!"
+
+#~ msgid "Race"
+#~ msgstr "𐑮𐑱𐑕"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "𐑒𐑮𐑰𐑱𐑑 𐑿𐑯𐑦𐑑 (𐑛𐑰𐑚𐑳𐑜!)"
+
+#~ msgid "gender^Random"
+#~ msgstr "𐑮𐑨𐑯𐑛𐑩𐑥"
+
+#, fuzzy
+#~ msgid ""
+#~ "The replay is corrupt/out of sync. It might not make much sense to "
+#~ "continue. Do you want to save the game?"
+#~ msgstr ""
+#~ "𐑩 𐑯𐑧𐑑𐑢𐑻𐑒 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑣𐑨𐑟 𐑪𐑒𐑻𐑛, 𐑯 𐑞 𐑜𐑱𐑥\n"
+#~ "𐑒𐑨𐑯𐑪𐑑 𐑒𐑩𐑯𐑑𐑦𐑯𐑿. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑞 𐑜𐑱𐑥?"
 
 #, fuzzy
 #~ msgid "Could not connect to host"

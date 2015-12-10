@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2014-08-23 07:39+0200\n"
 "Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
 "Language-Team: Mistic\n"
@@ -39,17 +39,21 @@ msgstr "OŽ"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-msgid "(Normal)"
-msgstr "(normální)"
-
-#. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "Fighter"
 msgstr "Bojovník"
 
 #. [campaign]: id=Sceptre_of_Fire
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(normální)"
+
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:19
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(nelehká)"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -59,7 +63,9 @@ msgstr "Trpasličí těžkooděnec"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(náročná)"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -69,7 +75,7 @@ msgstr "Lord"
 
 # Pozn.: někde uchovat ostatní verze básničky!
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:22
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:23
 msgid ""
 "The land of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -91,27 +97,27 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:31
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:32
 msgid "(Expert level, 9 scenarios.)"
 msgstr "(Obtížnost: expert, 9 scénářů)"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:34
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:35
 msgid "Campaign Design"
 msgstr "Návrh tažení"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:40
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:41
 msgid "Campaign Maintenance"
 msgstr "Údržba tažení"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:47
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:48
 msgid "WML Assistance"
 msgstr "Pomoc se skriptováním"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:62
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:63
 msgid "Artwork and Graphics Design"
 msgstr "Kresby a grafika"
 
@@ -252,7 +258,7 @@ msgstr "Poraz Glildura"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:411
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:187
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:465
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:843
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:844
 msgid "Death of Rugnur"
 msgstr "Rugnur zemře"
 
@@ -406,8 +412,12 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:261
+#, fuzzy
+#| msgid ""
+#| "Uh, no, wait! Lets talk business — how much will you pay us to do this "
+#| "for you?"
 msgid ""
-"Uh, no, wait! Lets talk business — how much will you pay us to do this for "
+"Uh, no, wait! Let’s talk business — how much will you pay us to do this for "
 "you?"
 msgstr ""
 "Uf, ne počkej! Promluvme si... kolik zaplatíš, když to pro tebe uděláme?"
@@ -1383,7 +1393,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:415
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:191
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:469
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:847
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:848
 msgid "Death of Krawg"
 msgstr "Krawg zemře"
 
@@ -1537,7 +1547,7 @@ msgstr "Přesuň Thursagana na ukazatel."
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:378
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:195
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:473
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:851
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:852
 msgid "Death of Thursagan"
 msgstr "Thursagan zemře"
 
@@ -2686,11 +2696,17 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:271
+#, fuzzy
+#| msgid ""
+#| "You don’t have authority over me, Durstorn. And I wouldn’t give the "
+#| "Sceptre to them even if you did. It’s not yours to give, its mine, and "
+#| "Rugnur’s, and Baglur’s. Krawg’s done more for its existence than you "
+#| "have! And yet, you still get the profits from selling it to Haldric."
 msgid ""
 "You don’t have authority over me, Durstorn. And I wouldn’t give the Sceptre "
-"to them even if you did. It’s not yours to give, its mine, and Rugnur’s, and "
-"Baglur’s. Krawg’s done more for its existence than you have! And yet, you "
-"still get the profits from selling it to Haldric."
+"to them even if you did. It’s not yours to give, it’s mine, and Rugnur’s, "
+"and Baglur’s. Krawg’s done more for its existence than you have! And yet, "
+"you still get the profits from selling it to Haldric."
 msgstr ""
 "Nade mnou nemáš pravomoc, Durstorne. A já bych jim žezlo nedal, i kdyby ty "
 "ano. Není tvoje, aby jsi ho někomu dával. Je mé a Rugnurovo a Baglurovo. To "
@@ -2831,8 +2847,13 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:426
+#, fuzzy
+#| msgid ""
+#| "I’m not going to do that, its suicide! And in any case, I’ve been with "
+#| "you for ten years, almost as long as I was in the Wesnothian army; I’d "
+#| "prefer to fight with you."
 msgid ""
-"I’m not going to do that, its suicide! And in any case, I’ve been with you "
+"I’m not going to do that, it’s suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
 "fight with you."
 msgstr ""
@@ -2864,8 +2885,13 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:472
+#, fuzzy
+#| msgid ""
+#| "Alanin, ride as fast as you can south. Tell Haldric we are heading "
+#| "northeast, towards the old eastern mines, and if he wants his precious "
+#| "sceptre he should send forces to meet us there as soon as he can!"
 msgid ""
-"Alanin, ride as fast as you can south. Tell Haldric we are heading "
+"Alanin, ride south as fast as you can. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
 "sceptre he should send forces to meet us there as soon as he can!"
 msgstr ""
@@ -3424,31 +3450,31 @@ msgid "Move onto the glyph in the center of the volcano"
 msgstr "Přesuň se na znak v centru sopky."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:521
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:522
 msgid "That’s it! The volcano will erupt soon now that you’ve triggered it."
 msgstr "To je ono! Vulkán brzy exploduje, když jsi to spustil."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:537
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:538
 msgid ""
 "Look, it has knocked down some of the walls! Those orcs have a way out now!"
 msgstr "Podívej, porazilo to některé zdi! Teď mají skřeti volnou cestu!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:546
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:547
 msgid ""
 "Well, we’ve succeeded in stopping the elves from getting the Sceptre, I "
 "would say. But what do we do now?!"
 msgstr "Zabránili jsme nadobro elfům získat žezlo, řekl bych. Ale co teď?"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:552
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:553
 msgid "Now, we must fight the orcs until we die, it’s our only option."
 msgstr ""
 "Teď musíme bojovat se skřety, dokud nezemřeme. Je to naše jediná možnost."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:558
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:559
 msgid ""
 "We cannot let any of the elves or their mercenaries escape; they would tell "
 "where the Sceptre of Fire is. Make sure they all die!"
@@ -3457,7 +3483,7 @@ msgstr ""
 "umístění žezla. Zajistěte, aby všichni zemřeli!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:564
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:565
 msgid ""
 "We have to kill them quickly, before they realize what is happening. And "
 "remember, the lava spreads quickly, suddenly, and dangerously. The only "
@@ -3467,7 +3493,7 @@ msgstr ""
 "rychle, náhle a nebezpečně. Jediné bezpečné místo je oblast kolem znaku."
 
 #. [message]: role=smartelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:596
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:597
 msgid ""
 "Wait, what’s going on? The volcano is going to erupt! Everyone, try to get "
 "out of these caves!"
@@ -3475,35 +3501,35 @@ msgstr ""
 "Počkejte co se děje? Sopka se chystá vybuchnout! Všichni pryč z jeskyně!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:611
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:612
 msgid "I must go report to my superiors!"
 msgstr "Musím to jít nahlásit nadřízeným!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:615
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:616
 msgid "We have allowed an enemy to escape; we have failed."
 msgstr "Nechali jsme nepřítele uniknout. Selhali jsme."
 
 #. [message]: role=dumbelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:673
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:674
 msgid "Aghh!! The volcano is erupting, and now our exit has been blocked off!!"
 msgstr "Aghh!! Sopka explodovala a všechny východy jsou teď zablokované!!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:698
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:699
 msgid ""
 "We have hidden the Sceptre well, but now the volcano is going to erupt and "
 "kill us all."
 msgstr "Skryli jsme žezlo dobře, ale teď vybuchne sopka a zabije nás všechny."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:839
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:840
 msgid "Kill all of the elves before one of them escapes from the caves"
 msgstr "Zabij všechny elfy dříve, než některý unikne z jeskyně."
 
 #. [message]: speaker=Krawg
 #. "Hmmm, me leave now!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:952
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:953
 msgid "Hm... Me le’ no’w!"
 msgstr "Hm... Já pryč!"
 

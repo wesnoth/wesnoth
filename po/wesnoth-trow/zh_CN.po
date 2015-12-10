@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2015-02-07 13:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -32,42 +32,48 @@ msgid "The Rise of Wesnoth"
 msgstr "韦诺崛起"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:11
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:13
 msgid "TRoW"
 msgstr "TRoW"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
-msgid "(Easy)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "（简单）"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "Fighter"
 msgstr "战士"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
-msgid "(Normal)"
-msgstr "（普通）"
-
-#. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
 msgid "Commander"
 msgstr "指挥官"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
-msgid "(Challenging)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
+#, fuzzy
+#| msgid "Normal:"
+msgid "Normal"
+msgstr "普通："
+
+#. [campaign]: id=The_Rise_of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "（挑战）"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
 msgid "Lord"
 msgstr "领主"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -79,27 +85,27 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 msgid "(Expert level, 24 scenarios.)"
 msgstr "(专家级别，24幕。)"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:27
 msgid "Campaign Design"
 msgstr "战役设计"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:32
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:33
 msgid "Campaign Maintenance"
 msgstr "战役维护"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:45
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:46
 msgid "Artwork and Graphics Design"
 msgstr "美工和图像设计"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:70
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:71
 msgid "WML Contributors"
 msgstr "WML贡献者"
 
@@ -1284,8 +1290,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:627
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest... I should have stayed at home and took my "
+#| "chances with the orcs!"
 msgid ""
-"Oh great, now a forest... I should have stayed at home and took my chances "
+"Oh great, now a forest... I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr "啊太“好”了，现在要去森林...我真应该留在家里，还能找兽人比划比划！"
 
@@ -1432,8 +1442,13 @@ msgstr "拉德克爵士"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:384
+#, fuzzy
+#| msgid ""
+#| "Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+#| "guard. The main body of their forces is on the road to Southbay. It is an "
+#| "army of nightmarish size."
 msgid ""
-"Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+"Hold there! You cannot pass. You’ve already stumbled on the orcish rear "
 "guard. The main body of their forces is on the road to Southbay. It is an "
 "army of nightmarish size."
 msgstr ""
@@ -1482,8 +1497,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:414
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest. I should have stayed at home and took my chances "
+#| "with the orcs!"
 msgid ""
-"Oh great, now a forest. I should have stayed at home and took my chances "
+"Oh great, now a forest. I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr "啊太“好”了，现在要去森林...我真应该留在家里，还能找兽人比划比划！"
 
@@ -5744,10 +5763,15 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:147
+#, fuzzy
+#| msgid ""
+#| "Haldric! I won’t do it... I won’t help. What is it with your kind, always "
+#| "rushing to a fool’s death? Who’ll lead these people? I... <i>we</i> need "
+#| "you alive"
 msgid ""
 "Haldric! I won’t do it... I won’t help. What is it with your kind, always "
 "rushing to a fool’s death? Who’ll lead these people? I... <i>we</i> need you "
-"alive"
+"alive."
 msgstr ""
 "哈德里克！我不要...我不会帮这个忙的。你们到底怎么了，总是迫不及待地要象个傻瓜"
 "一样死掉？谁来领导这些人民？我...（改口）我们想要你活着"
@@ -6283,17 +6307,17 @@ msgid "Rise, rise from the ground!"
 msgstr "复活，从地下复活！"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1453
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1434
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "从地底深处归来吧，我忠诚的士兵！"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1656
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1618
 msgid "We did it! We won!"
 msgstr "我们做到了！我们赢了！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1660
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1622
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6301,7 +6325,7 @@ msgstr ""
 "劫复魇被消灭了，但是代价惨重。让我们安葬艾瑟指挥官并来讨论一下将来该怎么办。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1668
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1630
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
@@ -6941,6 +6965,9 @@ msgid ""
 "That is excellent news indeed. Our numbers have doubled. Now on to the "
 "business at hand."
 msgstr "这确实是个好消息。我们的人数增加了一倍。现在继续完成手头的工作。"
+
+#~ msgid "(Normal)"
+#~ msgstr "（普通）"
 
 #~ msgid ""
 #~ "Rarely seen, even by Elves, a Wose is an order of creature about which "

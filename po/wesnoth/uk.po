@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2012-10-31 12:37+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,110 +228,121 @@ msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
 
-#. [advanced_preference]: type=boolean
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:191
+msgid "Editor recent files limit"
+msgstr ""
+
+#. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
+msgid ""
+"The maximum number of items to display on the Recent Files menu in the editor"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:203
 msgid "Show color cursors"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:193
+#: data/advanced_preferences.cfg:204
 msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:202
+#: data/advanced_preferences.cfg:213
 msgid "Joystick support"
 msgstr "Підтримка джойстика"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:209
+#: data/advanced_preferences.cfg:220
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Джойстік: к-сть оборотів джойстіка по осі Х"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:219
+#: data/advanced_preferences.cfg:230
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Джойстік: к-сть оборотів по осі Х"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:229
+#: data/advanced_preferences.cfg:240
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Джойстік: к-сть оборотів джойстіка по осі Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:239
+#: data/advanced_preferences.cfg:250
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Джойстік: к-сть оборотів по осі Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:249
+#: data/advanced_preferences.cfg:260
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Джойстік: мертва зона ручки прокручування"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:259
+#: data/advanced_preferences.cfg:270
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Джойстік: номер курсора джойстіка по осі Х"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:269
+#: data/advanced_preferences.cfg:280
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Джойстік: номер курсора по осі Х"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:279
+#: data/advanced_preferences.cfg:290
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Джойстік: номер курсора джойстіка по осі Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:289
+#: data/advanced_preferences.cfg:300
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Джойстік: номер курсора по осі Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:299
+#: data/advanced_preferences.cfg:310
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Джойстік: мертва зона ручки курсора"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:309
+#: data/advanced_preferences.cfg:320
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Джойстік: номер миші джойстіка по осі X"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:319
+#: data/advanced_preferences.cfg:330
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Джойстік: номер миші по осі X"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:329
+#: data/advanced_preferences.cfg:340
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Джойстік: номер миші джойстіка по осі Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:339
+#: data/advanced_preferences.cfg:350
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Джойстік: номер миші по осі Y"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:349
+#: data/advanced_preferences.cfg:360
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Джойстік: мертва зона ручки миші"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:359
+#: data/advanced_preferences.cfg:370
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Джойстік: номер осі напрямку джойстіка"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:369
+#: data/advanced_preferences.cfg:380
 msgid "Joystick: number of the thrust axis"
 msgstr "Джойстік: номер осі напрямку"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:379
+#: data/advanced_preferences.cfg:390
 msgid "Joystick: deadzone of the thruster"
 msgstr "Джойстік: мертва зона штовхача"
 
@@ -339,21 +350,21 @@ msgstr "Джойстік: мертва зона штовхача"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2515 src/actions/attack.cpp:987
 msgid "poisoned"
 msgstr "отруєний"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:3222
+#: data/lua/wml/objectives.lua:3758
 msgid "Gold carryover:"
 msgstr "Золота переноситься:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:3223
+#: data/lua/wml/objectives.lua:3759
 msgid "Notes:"
 msgstr "Нотатки:"
 
@@ -373,312 +384,307 @@ msgid "Artwork and Graphics"
 msgstr "Графіка та дизайн"
 
 #. [about]
-#: data/core/about.cfg:670
+#: data/core/about.cfg:678
 msgid "Music"
 msgstr "Музика"
 
 #. [about]
-#: data/core/about.cfg:707
+#: data/core/about.cfg:715
 msgid "Sound Effects"
 msgstr "Звукові ефекти"
 
 #. [about]
-#: data/core/about.cfg:723
+#: data/core/about.cfg:739
 msgid "Campaign Design"
 msgstr "Разробка кампаній"
 
 #. [about]
-#: data/core/about.cfg:802
+#: data/core/about.cfg:818
 msgid "Multiplayer Maps and Balancing"
 msgstr "Мережні карти та баланс гри"
 
 #. [about]
-#: data/core/about.cfg:847
+#: data/core/about.cfg:863
 msgid "Packagers"
 msgstr "Збирачі"
 
 #. [about]
-#: data/core/about.cfg:927
+#: data/core/about.cfg:962
 msgid "Miscellaneous Contributors"
 msgstr "Решта помічників"
 
 #. [about]
-#: data/core/about.cfg:1392
+#: data/core/about.cfg:1457
 msgid "Internationalization Managers"
 msgstr "Менеджери перекляду"
 
 #. [about]
-#: data/core/about.cfg:1417
-msgid "English strings edition"
-msgstr "Редагування англійського перекладу"
-
-#. [about]
-#: data/core/about.cfg:1424
+#: data/core/about.cfg:1482
 msgid "Afrikaans Translation"
 msgstr "Переклад на африкаанс"
 
 #. [about]
-#: data/core/about.cfg:1444
+#: data/core/about.cfg:1502
 msgid "Arabic Translation"
 msgstr "Арабський переклад"
 
 #. [about]
-#: data/core/about.cfg:1451
+#: data/core/about.cfg:1509
 msgid "Basque Translation"
 msgstr "Баскський переклад"
 
 #. [about]
-#: data/core/about.cfg:1464
+#: data/core/about.cfg:1522
 msgid "Bulgarian Translation"
 msgstr "Болгарський переклад"
 
 #. [about]
-#: data/core/about.cfg:1483
+#: data/core/about.cfg:1541
 msgid "Catalan Translation"
 msgstr "Каталонський переклад"
 
 #. [about]
-#: data/core/about.cfg:1524
+#: data/core/about.cfg:1582
 msgid "Chinese Translation"
 msgstr "Китайський переклад"
 
 #. [about]
-#: data/core/about.cfg:1598
+#: data/core/about.cfg:1656
 msgid "Chinese (Taiwan) Translation"
 msgstr "Китайський переклад (Тайвань)"
 
 #. [about]
-#: data/core/about.cfg:1611
+#: data/core/about.cfg:1669
 msgid "Croatian Translation"
 msgstr "Хорватський переклад"
 
 #. [about]
-#: data/core/about.cfg:1621
+#: data/core/about.cfg:1679
 msgid "Czech Translation"
 msgstr "Чеський переклад"
 
 #. [about]
-#: data/core/about.cfg:1681
+#: data/core/about.cfg:1739
 msgid "Danish Translation"
 msgstr "Датський переклад"
 
 #. [about]
-#: data/core/about.cfg:1712
+#: data/core/about.cfg:1770
 msgid "Dutch Translation"
 msgstr "Голландський переклад"
 
 #. [about]
-#: data/core/about.cfg:1776
+#: data/core/about.cfg:1834
 msgid "English (GB) Translation"
 msgstr "Англійський переклад (Британія)"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1857
 msgid "English (Shaw) Translation"
 msgstr "Англійський переклад (Шоу)"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1875
 msgid "Esperanto Translation"
 msgstr "Переклад на есперанто"
 
 #. [about]
-#: data/core/about.cfg:1836
+#: data/core/about.cfg:1894
 msgid "Estonian Translation"
 msgstr "Естонський переклад"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1904
 msgid "Filipino Translation"
 msgstr "Філіппінський переклад"
 
 #. [about]
-#: data/core/about.cfg:1856
+#: data/core/about.cfg:1914
 msgid "Finnish Translation"
 msgstr "Фінський переклад"
 
 #. [about]
-#: data/core/about.cfg:1902
+#: data/core/about.cfg:1960
 msgid "French Translation"
 msgstr "Французький переклад"
 
 #. [about]
-#: data/core/about.cfg:2064
+#: data/core/about.cfg:2122
 msgid "Friulian Translation"
 msgstr "Фріульський переклад"
 
 #. [about]
-#: data/core/about.cfg:2071
+#: data/core/about.cfg:2129
 msgid "Galician Translation"
 msgstr "Галісійський переклад"
 
 #. [about]
-#: data/core/about.cfg:2107
+#: data/core/about.cfg:2165
 msgid "German Translation"
 msgstr "Німецький переклад"
 
 #. [about]
-#: data/core/about.cfg:2181
+#: data/core/about.cfg:2239
 msgid "Greek Translation"
 msgstr "Грецький переклад"
 
 #. [about]
-#: data/core/about.cfg:2224
+#: data/core/about.cfg:2282
 msgid "Hebrew Translation"
 msgstr "Переклад на іврит"
 
 #. [about]
-#: data/core/about.cfg:2237
+#: data/core/about.cfg:2295
 msgid "Hungarian Translation"
 msgstr "Угорський переклад"
 
 #. [about]
-#: data/core/about.cfg:2298
+#: data/core/about.cfg:2356
 msgid "Icelandic Translation"
 msgstr "Ісландський переклад"
 
 #. [about]
-#: data/core/about.cfg:2308
+#: data/core/about.cfg:2366
 msgid "Indonesian Translation"
 msgstr "Індонезійський переклад"
 
 #. [about]
-#: data/core/about.cfg:2331
+#: data/core/about.cfg:2389
 msgid "Irish Translation"
 msgstr "Ірландський переклад"
 
 #. [about]
-#: data/core/about.cfg:2338
+#: data/core/about.cfg:2396
 msgid "Italian Translation"
 msgstr "Італійський переклад"
 
 #. [about]
-#: data/core/about.cfg:2385
+#: data/core/about.cfg:2443
 msgid "Japanese Translation"
 msgstr "Японський переклад"
 
 #. [about]
-#: data/core/about.cfg:2453
+#: data/core/about.cfg:2522
 msgid "Korean Translation"
 msgstr "Корейський переклад"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2530
 msgid "Latin Translation"
 msgstr "Латинський переклад"
 
 #. [about]
-#: data/core/about.cfg:2487
+#: data/core/about.cfg:2556
 msgid "Latvian Translation"
 msgstr "Латвійський переклад"
 
 #. [about]
-#: data/core/about.cfg:2498
+#: data/core/about.cfg:2571
 msgid "Lithuanian Translation"
 msgstr "Литовський переклад"
 
 #. [about]
-#: data/core/about.cfg:2523
+#: data/core/about.cfg:2596
 msgid "Macedonian Translation"
 msgstr "Македонський переклад"
 
 #. [about]
-#: data/core/about.cfg:2530
+#: data/core/about.cfg:2603
 msgid "Marathi Translation"
 msgstr "Переклад на маратхі"
 
 #. [about]
-#: data/core/about.cfg:2539
+#: data/core/about.cfg:2612
 msgid "Norwegian Translation"
 msgstr "Норвезький переклад"
 
 #. [about]
-#: data/core/about.cfg:2564
+#: data/core/about.cfg:2637
 msgid "Old English Translation"
 msgstr "Староанглійський переклад"
 
 #. [about]
-#: data/core/about.cfg:2582
+#: data/core/about.cfg:2655
 msgid "Polish Translation"
 msgstr "Польський переклад"
 
 #. [about]
-#: data/core/about.cfg:2626
+#: data/core/about.cfg:2699
 msgid "Portuguese Translation"
 msgstr "Португальський переклад"
 
 #. [about]
-#: data/core/about.cfg:2640
+#: data/core/about.cfg:2713
 msgid "Portuguese (Brazil) Translation"
 msgstr "Португальський переклад (Бразилія)"
 
 #. [about]
-#: data/core/about.cfg:2694
+#: data/core/about.cfg:2767
 msgid "Romanian Translation"
 msgstr "Румунський переклад"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2775
 msgid "Russian Translation"
 msgstr "Російський переклад"
 
 #. [about]
-#: data/core/about.cfg:2794
+#: data/core/about.cfg:2867
 msgid "Scottish Gaelic Translation"
 msgstr "Шотландський гельський переклад"
 
 #. [about]
-#: data/core/about.cfg:2803
+#: data/core/about.cfg:2876
 msgid "Serbian Translation"
 msgstr "Сербський переклад"
 
 #. [about]
-#: data/core/about.cfg:2822
+#: data/core/about.cfg:2895
 msgid "Slovak Translation"
 msgstr "Словацький переклад"
 
 #. [about]
-#: data/core/about.cfg:2851
+#: data/core/about.cfg:2924
 msgid "Slovenian Translation"
 msgstr "Словенський переклад"
 
 #. [about]
-#: data/core/about.cfg:2867
+#: data/core/about.cfg:2940
 msgid "Spanish Translation"
 msgstr "Іспанський переклад"
 
 #. [about]
-#: data/core/about.cfg:2949
+#: data/core/about.cfg:3022
 msgid "Swedish Translation"
 msgstr "Швецький переклад"
 
 #. [about]
-#: data/core/about.cfg:2990
+#: data/core/about.cfg:3063
 msgid "Turkish Translation"
 msgstr "Турецький переклад"
 
 #. [about]
-#: data/core/about.cfg:3012
+#: data/core/about.cfg:3085
 msgid "Ukrainian Translation"
 msgstr "Український переклад"
 
 #. [about]
-#: data/core/about.cfg:3025
+#: data/core/about.cfg:3098
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Валенсійська (Південно-Каталонский діалект)"
 
 #. [about]
-#: data/core/about.cfg:3038
+#: data/core/about.cfg:3111
 msgid "Vietnamese Translation"
 msgstr "В'єтнамський переклад"
 
 #. [about]
-#: data/core/about.cfg:3057
+#: data/core/about.cfg:3130
 msgid "RACV’s Translation"
 msgstr "Переклад RACV"
 
 #. [about]
-#: data/core/about.cfg:3064
+#: data/core/about.cfg:3137
 msgid "Bots"
 msgstr "Боти"
 
@@ -1531,26 +1537,26 @@ msgstr ""
 "Спеціальний: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 
-#: data/core/macros/deprecated-utils.cfg:17
+#: data/core/macros/deprecated-utils.cfg:37
 msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(бонус швидкого завершення)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:20 data/lua/wml/objectives.lua:3284
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:3820
 msgid "Early finish bonus."
 msgstr "Бонус швидкого завершення."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:23 data/lua/wml/objectives.lua:3286
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:3822
 msgid "No early finish bonus."
 msgstr "Немає бонусу швидкого завершення."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:26 data/lua/wml/objectives.lua:3294
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:3830
 msgid "No gold carried over to the next scenario."
 msgstr "Золото не переноситься в наступний сценарій."
 
-#: data/core/macros/deprecated-utils.cfg:29
+#: data/core/macros/deprecated-utils.cfg:49
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1558,7 +1564,7 @@ msgstr ""
 "\n"
 "100% золота переноситься в наступний сценарій."
 
-#: data/core/macros/deprecated-utils.cfg:33
+#: data/core/macros/deprecated-utils.cfg:53
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1566,7 +1572,7 @@ msgstr ""
 "\n"
 "40% золота переноситься в наступний сценарій."
 
-#: data/core/macros/deprecated-utils.cfg:37
+#: data/core/macros/deprecated-utils.cfg:57
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -2746,7 +2752,7 @@ msgstr ""
 "Передбачається, що гравець $side_number - це людина."
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:762
+#: data/core/macros/utils.cfg:688
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Ви витягуєте $amount_gold золотих."
 
@@ -2950,7 +2956,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:261
-#: src/game_initialization/multiplayer_lobby.cpp:821
+#: src/game_initialization/multiplayer_lobby.cpp:823
 #: src/gui/dialogs/lobby/lobby_data.cpp:341
 msgid "Fog"
 msgstr "Туман"
@@ -2959,22 +2965,22 @@ msgstr "Туман"
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:267
 #: src/game_initialization/multiplayer_configure.cpp:64
-#: src/game_initialization/multiplayer_lobby.cpp:825
-#: src/game_initialization/multiplayer_lobby.cpp:831
+#: src/game_initialization/multiplayer_lobby.cpp:827
+#: src/game_initialization/multiplayer_lobby.cpp:833
 #: src/gui/dialogs/lobby/lobby_data.cpp:344
 #: src/gui/dialogs/lobby/lobby_data.cpp:347
 msgid "Shroud"
 msgstr "Пелена"
 
 #. [core]: id=default
-#: data/cores.cfg:3
+#: data/cores.cfg:5
 #, fuzzy
 #| msgid "Restore defaults"
 msgid "Wesnoth (Default)"
 msgstr "Відновити типові"
 
 #. [core]: id=default
-#: data/cores.cfg:6
+#: data/cores.cfg:8
 msgid ""
 "Wesnoth has many different sagas waiting to be played. Fight to regain the "
 "throne of Wesnoth, of which you are the legitimate heir... step into the "
@@ -2991,7 +2997,7 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default
-#: data/cores.cfg:10
+#: data/cores.cfg:12
 msgid ""
 "(17 Single Player Campaigns with 211 Scenarios,\n"
 "One Multiplayer Campaign with 14 Scenarios,\n"
@@ -3000,12 +3006,12 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:19
+#: data/cores.cfg:21
 msgid "Wesnoth (Failsafe)"
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:22
+#: data/cores.cfg:24
 msgid "Loads only mainline Wesnoth data without any add-ons."
 msgstr ""
 
@@ -3260,173 +3266,184 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2515 src/actions/attack.cpp:987
 msgid "female^poisoned"
 msgstr "отруєна"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:994
 msgid "female^slowed"
 msgstr "уповільнена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:994
 msgid "slowed"
 msgstr "уповільнений"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2518 src/actions/attack.cpp:1001
 msgid "female^petrified"
 msgstr "паралізована"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2518 src/actions/attack.cpp:1001
 msgid "petrified"
 msgstr "паралізований"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2519
 msgid "female^unhealable"
 msgstr "невиліковна"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2519
 msgid "unhealable"
 msgstr "невиліковний"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3220
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:3756
+#: src/game_initialization/mp_game_utils.cpp:72
 msgid "Victory:"
 msgstr "Перемога:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3221
+#: data/lua/wml/objectives.lua:3757
 msgid "Defeat:"
 msgstr "Поразка:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3241
+#: data/lua/wml/objectives.lua:3777
 msgid "(%d turns left)"
 msgstr "(лишилось %d ходів)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3243
+#: data/lua/wml/objectives.lua:3779
 msgid "(this turn left)"
 msgstr "(це останній хід)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3296
+#: data/lua/wml/objectives.lua:3832
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "В наступний сценарій переноситься %d%% золота."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1040 src/dialogs.cpp:973
-#: src/game_initialization/depcheck.cpp:488
+#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:92
 msgid "OK"
 msgstr "Гаразд"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1041 src/dialogs.cpp:974 src/dialogs.cpp:1567
-#: src/dialogs.cpp:1673 src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_create.cpp:104
-#: src/game_initialization/multiplayer_wait.cpp:197
+#: data/scenario-test.cfg:1031 src/dialogs.cpp:1459 src/dialogs.cpp:1565
+#: src/game_initialization/multiplayer_connect.cpp:390
+#: src/game_initialization/multiplayer_create.cpp:105
+#: src/game_initialization/multiplayer_wait.cpp:198
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: data/scenario-test.cfg:4018
+#: data/scenario-test.cfg:4003
 msgid "very long"
 msgstr "дуже довгий"
 
-#: data/scenario-test.cfg:4019
+#: data/scenario-test.cfg:4004
 msgid "electrical"
 msgstr "електричний"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:545
+#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:557
 msgid "Play"
 msgstr "Грати"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:546
+#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:558
 msgid "continuous replay"
 msgstr "безперервний повтор"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:559
+#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:571
 msgid "Stop"
 msgstr "Стоп"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:560
+#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:572
 msgid "pause at end of turn"
 msgstr "пауза в кінці ходу"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:573
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:585
 msgid "Reset"
 msgstr "Скинути"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:574
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:586
 msgid "reset to beginning"
 msgstr "скинути на початок"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:599
 msgid "Next Turn"
 msgstr "Наступний хід"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:588
+#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:600
 msgid "play turn"
 msgstr "програти хід"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:613
 msgid "Next Side"
 msgstr "Наступна сторона"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:602
+#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:614
 msgid "play side turn"
 msgstr "програти хід сторони"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:627
 #, fuzzy
 #| msgid "Next Side"
 msgid "Next Move"
 msgstr "Наступна сторона"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:616
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:628
 #, fuzzy
 #| msgid "play side turn"
 msgid "play single move"
 msgstr "програти хід сторони"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:640
 msgid "Point of view"
 msgstr "Точка зору"
 
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:499
+#, fuzzy
+#| msgid "continuous replay"
+msgid "Continue Play"
+msgstr "безперервний повтор"
+
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:500
+msgid "Exit the replay mode and continue playing normally."
+msgstr ""
+
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:500 data/themes/_initial.cfg:640
+#: data/themes/_initial.cfg:512 data/themes/_initial.cfg:652
 msgid "Skip animation"
 msgstr "Пропустити анімацію"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:530 src/dialogs.cpp:882
+#: data/themes/_initial.cfg:542 src/dialogs.cpp:882
 msgid "Replay"
 msgstr "Повтор"
 
@@ -3472,8 +3489,8 @@ msgstr "Скінчити місію"
 #. [label]: id=selected-label-hp
 #: data/themes/classic.cfg:215 data/themes/default.cfg:132
 #: data/themes/unit_box.cfg:373 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1736
-#: src/unit.cpp:1927
+#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1770
+#: src/unit.cpp:2087
 msgid "HP"
 msgstr "ЗД"
 
@@ -4396,52 +4413,52 @@ msgstr ""
 msgid "Close"
 msgstr "Закрити"
 
-#: src/actions/attack.cpp:350 src/actions/attack.cpp:576
-#: src/actions/attack.cpp:1224
+#: src/actions/attack.cpp:351 src/actions/attack.cpp:577
+#: src/actions/attack.cpp:1235
 msgid "An invalid attacker weapon got selected."
 msgstr "Вибрана неправильна зброя того, що атакує."
 
-#: src/actions/attack.cpp:355
+#: src/actions/attack.cpp:356
 msgid "An invalid defender weapon got selected."
 msgstr "Вибрана неправильна зброя того, що захищається."
 
-#: src/actions/create.cpp:514
+#: src/actions/create.cpp:339
 msgid "You don’t have a leader to recall with."
 msgstr "У Вас немає лідера, який міг би закликати бійців."
 
-#: src/actions/create.cpp:518
+#: src/actions/create.cpp:343
 #, fuzzy
 #| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recall that unit."
 msgstr "Жоден з Ваших лідерів не може призвати цього бійця."
 
-#: src/actions/create.cpp:522
+#: src/actions/create.cpp:347
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "Ви можете закликати бійців лише якщо Ваш лідер знаходиться в замку."
 
-#: src/actions/create.cpp:526
+#: src/actions/create.cpp:351
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "У замку немає вільних полів для цього бійця."
 
-#: src/actions/create.cpp:536 src/actions/create.cpp:672
+#: src/actions/create.cpp:361 src/actions/create.cpp:497
 msgid "An unrecognized error has occurred."
 msgstr ""
 
-#: src/actions/create.cpp:650
+#: src/actions/create.cpp:475
 msgid "You don’t have a leader to recruit with."
 msgstr "У Вас немає лідера, який міг би вербувати бійців."
 
-#: src/actions/create.cpp:654
+#: src/actions/create.cpp:479
 #, fuzzy
 #| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recruit that unit."
 msgstr "Жоден з Ваших лідерів не може призвати цього бійця."
 
-#: src/actions/create.cpp:658
+#: src/actions/create.cpp:483
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "Ви можете вербувати бійців лише якщо Ваш лідер знаходиться в замку."
 
-#: src/actions/create.cpp:662
+#: src/actions/create.cpp:487
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "У замку немає вільних полів для вербування цього бійця."
 
@@ -4509,19 +4526,19 @@ msgstr "Завантажую перелік аддонів..."
 msgid "Requesting distribution terms..."
 msgstr "Запит умов розповсюдження..."
 
-#: src/addon/client.cpp:143
+#: src/addon/client.cpp:140
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Відсилаю аддон <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:177
+#: src/addon/client.cpp:174
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Видаляю аддон <i>$addon_title</i> з сервера..."
 
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:201
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Завантажую аддон <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:218
+#: src/addon/client.cpp:215
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -4529,7 +4546,7 @@ msgstr ""
 "Аддон <i>$addon_title</i> має неправильне ім'я файлу чи теки і не може бути "
 "встановлений."
 
-#: src/addon/client.cpp:306 src/addon/manager_ui.cpp:810
+#: src/addon/client.cpp:303 src/addon/manager_ui.cpp:828
 msgid "Add-ons Manager"
 msgstr "Менеджер Аддонів"
 
@@ -4589,7 +4606,7 @@ msgstr "Інше"
 msgid "addon_type^(unknown)"
 msgstr "(невідомо)"
 
-#: src/addon/info.cpp:222 src/dialogs.cpp:1600
+#: src/addon/info.cpp:222 src/dialogs.cpp:1492
 msgid "unit_byte^B"
 msgstr "Б"
 
@@ -4637,12 +4654,12 @@ msgstr "Опублікований, зламаний"
 msgid "addon_state^Unknown"
 msgstr "Невідомо"
 
-#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:372
-#: src/addon/manager_ui.cpp:387 src/addon/manager_ui.cpp:392
+#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:373
+#: src/addon/manager_ui.cpp:405 src/addon/manager_ui.cpp:410
 msgid "The server responded with an error:"
 msgstr "Сервер відповів помилкою:"
 
-#: src/addon/manager_ui.cpp:184
+#: src/addon/manager_ui.cpp:185
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -4659,38 +4676,38 @@ msgstr[2] ""
 "Вибраний аддон має наступні залежності, які не встановлені або відсутні на "
 "сервері. Ви хочете продовжити?"
 
-#: src/addon/manager_ui.cpp:193
+#: src/addon/manager_ui.cpp:194
 msgid "Broken Dependencies"
 msgstr "Зламані залежності"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:659
 msgid "Author"
 msgstr "Автор"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:635
-#: src/dialogs.cpp:299 src/dialogs.cpp:474 src/dialogs.cpp:919
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:653
+#: src/dialogs.cpp:299 src/dialogs.cpp:474
 msgid "Name"
 msgstr "Назва"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:639
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:657
 msgid "Version"
 msgstr "Версія"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:659
 msgid "Size"
 msgstr "Розмір"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:668
 #: src/dialogs.cpp:298 src/dialogs.cpp:473
-#: src/help/help_topic_generators.cpp:477 src/menu_events.cpp:1016
+#: src/help/help_topic_generators.cpp:478
 msgid "Type"
 msgstr "Тип"
 
-#: src/addon/manager_ui.cpp:241
+#: src/addon/manager_ui.cpp:242
 msgid "Install Dependencies"
 msgstr "Встановити залежності"
 
-#: src/addon/manager_ui.cpp:242
+#: src/addon/manager_ui.cpp:243
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -4707,7 +4724,7 @@ msgstr[2] ""
 "Вибраний аддон має наступні залежності, які зараз не встановлені. Ви хочете "
 "спершу їх встановити?"
 
-#: src/addon/manager_ui.cpp:278
+#: src/addon/manager_ui.cpp:279
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -4721,11 +4738,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Наступні залежності не можуть бути встановлені. Ви все ще хочете продовжити?"
 
-#: src/addon/manager_ui.cpp:282
+#: src/addon/manager_ui.cpp:283
 msgid "Dependencies Installation Failed"
 msgstr "Не вдалось встановити залежності"
 
-#: src/addon/manager_ui.cpp:306
+#: src/addon/manager_ui.cpp:307
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -4733,24 +4750,24 @@ msgstr ""
 "Аддон '$addon|' вже встановлений і містить додаткову інформацію, яка буде "
 "повністю втрачена, якщо ви продовжите:"
 
-#: src/addon/manager_ui.cpp:310
+#: src/addon/manager_ui.cpp:311
 msgid "Publishing information file (.pbl)"
 msgstr "Файл інформації про публікацію (.pbl)"
 
-#: src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:315
 msgid "Version control system (VCS) information"
 msgstr "Інформація системи керування версіями (VCS)"
 
-#: src/addon/manager_ui.cpp:318
+#: src/addon/manager_ui.cpp:319
 msgid "Do you really wish to continue?"
 msgstr "Ви дійсно хочете продовжити?"
 
-#: src/addon/manager_ui.cpp:320 src/addon/manager_ui.cpp:363
-#: src/addon/manager_ui.cpp:1128 src/game_initialization/multiplayer.cpp:292
+#: src/addon/manager_ui.cpp:321 src/addon/manager_ui.cpp:364
+#: src/addon/manager_ui.cpp:1146 src/game_initialization/multiplayer.cpp:291
 msgid "Confirm"
 msgstr "Підтвердити"
 
-#: src/addon/manager_ui.cpp:360
+#: src/addon/manager_ui.cpp:361
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -4758,101 +4775,115 @@ msgstr ""
 "Якщо Ви видалите '$addon|', то тим самим назавжди видалите з сервера "
 "статистиику завантажень і вивантажень. Ви дійсно хочете продовжити?"
 
-#: src/addon/manager_ui.cpp:376 src/addon/manager_ui.cpp:395
-#: src/game_initialization/multiplayer_wait.cpp:464
+#: src/addon/manager_ui.cpp:377 src/addon/manager_ui.cpp:413
+#: src/game_initialization/multiplayer_wait.cpp:435
 msgid "Response"
 msgstr "Відповідь"
 
-#: src/addon/manager_ui.cpp:389
+#: src/addon/manager_ui.cpp:392 src/game_initialization/multiplayer.cpp:277
+#: src/game_launcher.cpp:780
+msgid "Warning"
+msgstr "Попередження"
+
+#: src/addon/manager_ui.cpp:393
+msgid ""
+"The remote version of this add-on is greater or equal to the version being "
+"uploaded. Do you really wish to continue?"
+msgstr ""
+
+#: src/addon/manager_ui.cpp:402
+msgid "Invalid icon path. Make sure the path points to a valid image."
+msgstr ""
+
+#: src/addon/manager_ui.cpp:407
 msgid "Terms"
 msgstr "Умови"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 msgid "New Version"
 msgstr "Нова версія"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 msgid "Old Version"
 msgstr "Стара версія"
 
-#: src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:668
 msgid "Downloads"
 msgstr "Завантаження"
 
-#: src/addon/manager_ui.cpp:770
+#: src/addon/manager_ui.cpp:788
 msgid "Publish: $addon_title"
 msgstr "Опублікувати: $addon_title"
 
-#: src/addon/manager_ui.cpp:779
+#: src/addon/manager_ui.cpp:797
 msgid "Delete: $addon_title"
 msgstr "Видалити: $addon_title"
 
-#: src/addon/manager_ui.cpp:806
+#: src/addon/manager_ui.cpp:824
 msgid "There are no add-ons available for download from this server."
 msgstr "На цьому сервері немає доступних для завантаження аддонов."
 
-#: src/addon/manager_ui.cpp:807
+#: src/addon/manager_ui.cpp:825
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "На цьому сервері немає аддонів, що відповідають заданим критеріям."
 
-#: src/addon/manager_ui.cpp:829 src/dialogs.cpp:570 src/dialogs.cpp:944
-#: src/menu_events.cpp:1049
+#: src/addon/manager_ui.cpp:847 src/dialogs.cpp:570
 msgid "Filter: "
 msgstr "Фільтр: "
 
-#: src/addon/manager_ui.cpp:839
+#: src/addon/manager_ui.cpp:857
 msgid "Description"
 msgstr "Опис"
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:860
 msgid "Update All"
 msgstr "Оновити всі"
 
-#: src/addon/manager_ui.cpp:849
+#: src/addon/manager_ui.cpp:867
 msgid "filter^Options"
 msgstr "Опції"
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 msgid "Add-on Installed"
 msgstr "Аддон встановлено"
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 msgid "Add-on Updated"
 msgstr "Аддон оновлено"
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Аддон '$addon_title|' було успішно встановлено."
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "Аддон '$addon_title|' був успішно оновлений."
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 msgid "Add-ons Installed"
 msgstr "Аддони встановлено"
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 msgid "Add-ons Updated"
 msgstr "Аддони оновлено"
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 msgid "All add-ons installed successfully."
 msgstr "Всі аддони були успішно встановлені."
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 msgid "All add-ons updated successfully."
 msgstr "Всі аддони були успішно оновлені."
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 msgid "Installation Failed"
 msgstr "Встановлення провалилось"
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 msgid "Update Failed"
 msgstr "Оновлення провалилось"
 
-#: src/addon/manager_ui.cpp:963
+#: src/addon/manager_ui.cpp:981
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
@@ -4860,21 +4891,21 @@ msgstr[0] "Цей аддон не вдалося завантажити або �
 msgstr[1] "Ці аддони не вдалося завантажити або оновити:"
 msgstr[2] "Ці аддони не вдалося завантажити або оновити:"
 
-#: src/addon/manager_ui.cpp:1006 src/addon/manager_ui.cpp:1016
-#: src/addon/manager_ui.cpp:1224
+#: src/addon/manager_ui.cpp:1024 src/addon/manager_ui.cpp:1034
+#: src/addon/manager_ui.cpp:1242
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Сталася помилка при завантаженні списку аддонів з сервера."
 
-#: src/addon/manager_ui.cpp:1034 src/addon/manager_ui.cpp:1247
+#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
 msgid "Network communication error."
 msgstr "Помилка при під'єднанні до мережі."
 
-#: src/addon/manager_ui.cpp:1037 src/addon/manager_ui.cpp:1040
-#: src/addon/manager_ui.cpp:1250 src/addon/manager_ui.cpp:1253
+#: src/addon/manager_ui.cpp:1055 src/addon/manager_ui.cpp:1058
+#: src/addon/manager_ui.cpp:1268 src/addon/manager_ui.cpp:1271
 msgid "Remote host disconnected."
 msgstr "Віддалений хост від'єднався."
 
-#: src/addon/manager_ui.cpp:1043 src/addon/manager_ui.cpp:1256
+#: src/addon/manager_ui.cpp:1061 src/addon/manager_ui.cpp:1274
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -4882,7 +4913,7 @@ msgstr ""
 "Виникла проблема зі створенням файлів, потрібних для встановлення цього "
 "аддону."
 
-#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
+#: src/addon/manager_ui.cpp:1070 src/addon/manager_ui.cpp:1283
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -4890,22 +4921,22 @@ msgid ""
 "Error message: $msg"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:1058 src/addon/manager_ui.cpp:1271
+#: src/addon/manager_ui.cpp:1076 src/addon/manager_ui.cpp:1289
 msgid "The add-ons server address specified is not valid."
 msgstr "Вказана адреса сервера аддонів недійсна."
 
-#: src/addon/manager_ui.cpp:1072
+#: src/addon/manager_ui.cpp:1090
 msgid "You have no add-ons installed."
 msgstr "У Вас немає встановлених аддонів."
 
-#: src/addon/manager_ui.cpp:1123
+#: src/addon/manager_ui.cpp:1141
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Ви упевнені, що хочете видалити наступний аддон?"
 msgstr[1] "Ви упевнені, що хочете видалити наступні аддони?"
 msgstr[2] "Ви упевнені, що хочете видалити наступні аддони?"
 
-#: src/addon/manager_ui.cpp:1149
+#: src/addon/manager_ui.cpp:1167
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -4922,28 +4953,28 @@ msgstr[2] ""
 "Наступні аддони, схоже, зберігають дані публікації та історію версій "
 "локально, і не будуть видалені:"
 
-#: src/addon/manager_ui.cpp:1159
+#: src/addon/manager_ui.cpp:1177
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Не вдалося правильно видалити аддон:"
 msgstr[1] "Не вдалося правильно видалити аддони:"
 msgstr[2] "Не вдалося правильно видалити аддони:"
 
-#: src/addon/manager_ui.cpp:1166
+#: src/addon/manager_ui.cpp:1184
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Аддон видалено"
 msgstr[1] "Аддони видалено"
 msgstr[2] "Аддони видалено"
 
-#: src/addon/manager_ui.cpp:1168
+#: src/addon/manager_ui.cpp:1186
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Наступний аддон був успішно видалений:"
 msgstr[1] "Наступні аддони були успішно видалені:"
 msgstr[2] "Наступні аддони були успішно видалені:"
 
-#: src/addon/manager_ui.cpp:1238
+#: src/addon/manager_ui.cpp:1256
 #, fuzzy
 #| msgid "Could not find any updated add-ons on this server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
@@ -4993,7 +5024,7 @@ msgstr "Немає відповідної зброї"
 msgid "Chance of being unscathed"
 msgstr "Шанс вийти неушкодженим"
 
-#: src/attack_prediction_display.cpp:537 src/mouse_events.cpp:1075
+#: src/attack_prediction_display.cpp:551 src/mouse_events.cpp:1075
 msgid "Damage Calculations"
 msgstr "Обчислення шкоди"
 
@@ -5003,8 +5034,8 @@ msgstr "Обчислення шкоди"
 msgid "Chat message"
 msgstr "Затримувати повідомлення в чаті"
 
-#: src/desktop/windows_tray_notification.cpp:108 src/game_launcher.cpp:383
-#: src/game_launcher.cpp:1035
+#: src/desktop/windows_tray_notification.cpp:141 src/game_launcher.cpp:392
+#: src/game_launcher.cpp:1054
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
@@ -5085,8 +5116,8 @@ msgstr "Вербувати"
 msgid "Select unit:"
 msgstr "Виберіть бійця:"
 
-#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:387
-#: src/help/help_topic_generators.cpp:408
+#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:409
 msgid "Traits"
 msgstr "Риси"
 
@@ -5122,7 +5153,7 @@ msgstr "Навчання"
 msgid "Test scenario"
 msgstr "Тестовий сценарій"
 
-#: src/dialogs.cpp:884 src/savegame.cpp:681
+#: src/dialogs.cpp:884 src/savegame.cpp:646
 msgid "Turn"
 msgstr "Хід"
 
@@ -5138,75 +5169,25 @@ msgstr "Складність: "
 msgid "Version: "
 msgstr "Версія: "
 
-#: src/dialogs.cpp:910
-msgid "No Saved Games"
-msgstr "Немає збережених ігор"
-
-#: src/dialogs.cpp:911
-msgid ""
-"There are no saved games to load.\n"
-"\n"
-"(Games are saved automatically when you complete a scenario)"
-msgstr ""
-"Немає збережених ігор, які можна завантажити.\n"
-"\n"
-"(Коли ви завершуєте сценарій, гра зберігається автоматично)"
-
-#: src/dialogs.cpp:919
-msgid "Date"
-msgstr "Дата"
-
-#: src/dialogs.cpp:936 src/savegame.cpp:310
-msgid "Load Game"
-msgstr "Завантажити гру"
-
-#: src/dialogs.cpp:951
-msgid "Change difficulty"
-msgstr "Змінити складність"
-
-#: src/dialogs.cpp:954
-msgid "Change campaign difficulty before loading"
-msgstr "Змінити складність кампанії перед завантаженням"
-
-#: src/dialogs.cpp:962
-msgid "Show replay"
-msgstr "Показати повтор"
-
-#: src/dialogs.cpp:964
-msgid "Play the embedded replay from the saved game if applicable"
-msgstr "Грати вкладений повтор із збереженої гри, якщо придатний"
-
-#: src/dialogs.cpp:968
-msgid "Cancel orders"
-msgstr "Скасувати накази"
-
-#: src/dialogs.cpp:970
-msgid "Cancel any pending unit movements in the saved game"
-msgstr "Скасувати будь-які заплановані рухи бійців у збереженій грі"
-
-#: src/dialogs.cpp:977
-msgid "Delete Save"
-msgstr "Видалити запис"
-
-#: src/dialogs.cpp:1036
+#: src/dialogs.cpp:928
 msgid "Profile"
 msgstr "Профіль"
 
-#: src/dialogs.cpp:1166 src/dialogs.cpp:1310
+#: src/dialogs.cpp:1058 src/dialogs.cpp:1202
 msgid "level"
 msgstr "рівень"
 
-#: src/dialogs.cpp:1179 src/dialogs.cpp:1323
-#: src/help/help_topic_generators.cpp:449
+#: src/dialogs.cpp:1071 src/dialogs.cpp:1215
+#: src/help/help_topic_generators.cpp:450
 msgid "HP: "
 msgstr "ЗД: "
 
-#: src/dialogs.cpp:1182 src/dialogs.cpp:1326
+#: src/dialogs.cpp:1074 src/dialogs.cpp:1218
 msgid "XP: "
 msgstr "ДВ: "
 
-#: src/dialogs.cpp:1186 src/dialogs.cpp:1330
-#: src/help/help_topic_generators.cpp:450
+#: src/dialogs.cpp:1078 src/dialogs.cpp:1222
+#: src/help/help_topic_generators.cpp:451
 msgid "Moves: "
 msgstr "Ходів:"
 
@@ -5236,68 +5217,68 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
-#: src/game_config.cpp:371
+#: src/game_config.cpp:383
 msgid "Invalid color range: "
 msgstr "Невірний діапазон кольорів: "
 
-#: src/game_config_manager.cpp:185 src/game_config_manager.cpp:193
-#: src/game_config_manager.cpp:204
+#: src/game_config_manager.cpp:189 src/game_config_manager.cpp:197
+#: src/game_config_manager.cpp:208
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:186
+#: src/game_config_manager.cpp:190
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:187 src/game_config_manager.cpp:196
-#: src/game_config_manager.cpp:208
+#: src/game_config_manager.cpp:191 src/game_config_manager.cpp:200
+#: src/game_config_manager.cpp:212
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:194 src/game_config_manager.cpp:205
-#: src/game_config_manager.cpp:227
+#: src/game_config_manager.cpp:198 src/game_config_manager.cpp:209
+#: src/game_config_manager.cpp:231
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:195
+#: src/game_config_manager.cpp:199
 #, fuzzy
 #| msgid "This map is already open."
 msgid "The ID is already in use."
 msgstr "Цю карту вже відкрито."
 
-#: src/game_config_manager.cpp:206
+#: src/game_config_manager.cpp:210
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:207
+#: src/game_config_manager.cpp:211
 #, fuzzy
 #| msgid "Variable not found"
 msgid "File not found."
 msgstr "Змінна не знайдена"
 
-#: src/game_config_manager.cpp:226 src/game_config_manager.cpp:237
+#: src/game_config_manager.cpp:230 src/game_config_manager.cpp:241
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:228
+#: src/game_config_manager.cpp:232
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:229
+#: src/game_config_manager.cpp:233
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:242
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:239
+#: src/game_config_manager.cpp:243
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (Зараз гра буде завершена)"
 
-#: src/game_config_manager.cpp:311
+#: src/game_config_manager.cpp:300
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5305,7 +5286,7 @@ msgid ""
 "loading add-ons."
 msgstr "Помилка завантаження файлів з налаштуваннями гри: '"
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:305
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5313,21 +5294,21 @@ msgid ""
 "default core files."
 msgstr "Помилка завантаження файлів з налаштуваннями гри: '"
 
-#: src/game_config_manager.cpp:323
+#: src/game_config_manager.cpp:312
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Помилка завантаження файлів з налаштуваннями гри: '"
 
-#: src/game_config_manager.cpp:449
+#: src/game_config_manager.cpp:438
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Наступний аддон має помилки і не може бути завантажений:"
 msgstr[1] "Наступні аддони мають помилки і не можуть бути завантажені:"
 msgstr[2] "Наступні аддони мають помилки і не можуть бути завантажені:"
 
-#: src/game_config_manager.cpp:453
+#: src/game_config_manager.cpp:442
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -5335,7 +5316,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/game_events/pump.cpp:463 src/game_launcher.cpp:998
+#: src/game_events/pump.cpp:463 src/game_launcher.cpp:1017
 msgid "Error: "
 msgstr "Помилка: "
 
@@ -5351,8 +5332,8 @@ msgstr "Відладка: "
 msgid "Info: "
 msgstr "Інформація: "
 
-#: src/game_initialization/configure_engine.cpp:127
-#: src/game_initialization/create_engine.cpp:651
+#: src/game_initialization/configure_engine.cpp:126
+#: src/game_initialization/create_engine.cpp:633
 msgid "$login|’s game"
 msgstr "Гра $login"
 
@@ -5361,44 +5342,44 @@ msgstr "Гра $login"
 msgid "Team"
 msgstr "Команда"
 
-#: src/game_initialization/connect_engine.cpp:947
+#: src/game_initialization/connect_engine.cpp:976
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Анонімний локальний гравець"
 
-#: src/game_initialization/connect_engine.cpp:952
-#: src/game_initialization/connect_engine.cpp:1243
-#: src/game_initialization/multiplayer_wait.cpp:518
+#: src/game_initialization/connect_engine.cpp:981
+#: src/game_initialization/connect_engine.cpp:1267
+#: src/game_initialization/multiplayer_wait.cpp:489
 msgid "Computer Player"
 msgstr "Комп'ютерний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1000
+#: src/game_initialization/connect_engine.cpp:1029
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1240
+#: src/game_initialization/connect_engine.cpp:1264
 msgid "Network Player"
 msgstr "Мережний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1242
+#: src/game_initialization/connect_engine.cpp:1266
 msgid "Local Player"
 msgstr "Локальний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1244
+#: src/game_initialization/connect_engine.cpp:1268
 msgid "Empty"
 msgstr "Порожньо"
 
-#: src/game_initialization/connect_engine.cpp:1247
+#: src/game_initialization/connect_engine.cpp:1271
 msgid "Reserved"
 msgstr "Зарезервовано"
 
-#: src/game_initialization/connect_engine.cpp:1251
+#: src/game_initialization/connect_engine.cpp:1275
 msgid "--give--"
 msgstr "--дати--"
 
 #: src/game_initialization/create_engine.cpp:170
-#: src/game_initialization/create_engine.cpp:1020
+#: src/game_initialization/create_engine.cpp:1002
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -5473,17 +5454,17 @@ msgstr "Не можу знайти тип лідера для фракції $fa
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/mp_game_utils.cpp:73
+#: src/game_initialization/mp_game_utils.cpp:74
 msgid "Defeat enemy leader(s)"
 msgstr "Вбийте лідера(ів) противника"
 
-#: src/game_initialization/mp_game_utils.cpp:92
+#: src/game_initialization/mp_game_utils.cpp:93
 msgid "Cannot find era $era"
 msgstr "Не вдалось знайти еру $era"
 
-#: src/game_initialization/mp_game_utils.cpp:134
-#: src/game_initialization/multiplayer.cpp:255
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/mp_game_utils.cpp:135
+#: src/game_initialization/multiplayer.cpp:254
+#: src/game_initialization/multiplayer.cpp:339
 msgid "Connection timed out"
 msgstr "Перевищена межа часу під'єднання"
 
@@ -5491,16 +5472,16 @@ msgstr "Перевищена межа часу під'єднання"
 msgid "Defaults"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:171
-#: src/game_initialization/multiplayer.cpp:214
+#: src/game_initialization/multiplayer.cpp:170
+#: src/game_initialization/multiplayer.cpp:213
 msgid "Connecting to Server..."
 msgstr "З'єднуюсь з сервером..."
 
-#: src/game_initialization/multiplayer.cpp:181
+#: src/game_initialization/multiplayer.cpp:180
 msgid "Reading from Server..."
 msgstr "Читаю з сервера..."
 
-#: src/game_initialization/multiplayer.cpp:197
+#: src/game_initialization/multiplayer.cpp:196
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
@@ -5508,11 +5489,11 @@ msgstr ""
 "Серверу потрібна версія '$version1' тоді як Ви використовуєте версію "
 "'$version2'"
 
-#: src/game_initialization/multiplayer.cpp:208
+#: src/game_initialization/multiplayer.cpp:207
 msgid "Server-side redirect loop"
 msgstr "Циклічне перенаправлення з боку сервера"
 
-#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:266
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -5522,27 +5503,23 @@ msgstr ""
 "не активуєте свій акаунт по email або не попросите адміністратора зробити це "
 "за Вас."
 
-#: src/game_initialization/multiplayer.cpp:276
+#: src/game_initialization/multiplayer.cpp:275
 msgid "Do you want to continue?"
 msgstr "Ви хочете продовжити?"
 
-#: src/game_initialization/multiplayer.cpp:278 src/game_launcher.cpp:766
-msgid "Warning"
-msgstr "Попередження"
-
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:321
 msgid "Bad data received from server"
 msgstr "Сервер прислав невірні дані"
 
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:362
 msgid "You must login first."
 msgstr "Спочатку ввійдіть."
 
-#: src/game_initialization/multiplayer.cpp:365
+#: src/game_initialization/multiplayer.cpp:364
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Прізвисько '$nick' вже зайняте."
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:366
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
@@ -5550,28 +5527,28 @@ msgstr ""
 "Нік '$nick' містить заборонені символи. Дозволені лише алфавітно-цифрові "
 "символи, знаки підкреслення і дефіси."
 
-#: src/game_initialization/multiplayer.cpp:371
+#: src/game_initialization/multiplayer.cpp:370
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Нік '$nick' занадто довгий. Ники має бути не довший 20 символів."
 
-#: src/game_initialization/multiplayer.cpp:374
+#: src/game_initialization/multiplayer.cpp:373
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Нік '$nick' зарезервований, його не можна використовувати."
 
-#: src/game_initialization/multiplayer.cpp:376
+#: src/game_initialization/multiplayer.cpp:375
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Нік '$nick' на цьому сервері не зареєстрований."
 
-#: src/game_initialization/multiplayer.cpp:377
+#: src/game_initialization/multiplayer.cpp:376
 msgid " This server disallows unregistered nicknames."
 msgstr " Цей сервер не дозволяє використовувати незареєстровані ніки."
 
-#: src/game_initialization/multiplayer.cpp:379
-#: src/game_initialization/multiplayer.cpp:381
+#: src/game_initialization/multiplayer.cpp:378
+#: src/game_initialization/multiplayer.cpp:380
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Нік '$nick' зареєстрований на цьому сервері."
 
-#: src/game_initialization/multiplayer.cpp:382
+#: src/game_initialization/multiplayer.cpp:381
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5579,20 +5556,20 @@ msgstr ""
 "УВАГА: Один з клієнтів вже використовує цей нік, якщо Ви під ним "
 "залогінитесь, інший буде копнутий!"
 
-#: src/game_initialization/multiplayer.cpp:385
+#: src/game_initialization/multiplayer.cpp:384
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Помилка при вході (сервер не відповідає на ваше підключення)."
 
-#: src/game_initialization/multiplayer.cpp:388
+#: src/game_initialization/multiplayer.cpp:387
 msgid "The password you provided was incorrect."
 msgstr "Ви ввели неправильний пароль."
 
-#: src/game_initialization/multiplayer.cpp:390
+#: src/game_initialization/multiplayer.cpp:389
 msgid "You have made too many login attempts."
 msgstr "Ви намагалися увійти надто багато разів."
 
-#: src/game_initialization/multiplayer.cpp:609
+#: src/game_initialization/multiplayer.cpp:619
 msgid "No sides found. At least one side or starting position must be defined."
 msgstr ""
 
@@ -5601,7 +5578,7 @@ msgid "Generic"
 msgstr ""
 
 #: src/game_initialization/multiplayer_configure.cpp:61
-#: src/game_initialization/multiplayer_lobby.cpp:355
+#: src/game_initialization/multiplayer_lobby.cpp:357
 msgid "Use map settings"
 msgstr "Параметри карти"
 
@@ -5788,21 +5765,21 @@ msgstr "Бонус дії: "
 
 #: src/game_initialization/multiplayer_connect.cpp:58
 #: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_wait.cpp:587
+#: src/game_initialization/multiplayer_wait.cpp:595
 msgid "("
 msgstr "("
 
 #: src/game_initialization/multiplayer_connect.cpp:58
 #: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:627
+#: src/game_initialization/multiplayer_wait.cpp:587
+#: src/game_initialization/multiplayer_wait.cpp:598
 msgid ")"
 msgstr ")"
 
 #: src/game_initialization/multiplayer_connect.cpp:60
 #: src/game_initialization/multiplayer_connect.cpp:260
-#: src/game_initialization/multiplayer_wait.cpp:626
+#: src/game_initialization/multiplayer_wait.cpp:597
 msgid "+"
 msgstr "+"
 
@@ -5838,7 +5815,7 @@ msgid "Team/Color"
 msgstr "Колір"
 
 #: src/game_initialization/multiplayer_connect.cpp:386
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_wait.cpp:595
 #: src/leader_scroll_dialog.cpp:54 src/menu_events.cpp:215
 msgid "Income"
 msgstr "Прибуток"
@@ -5848,9 +5825,11 @@ msgid "I’m Ready"
 msgstr "Я готовий"
 
 #: src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_lobby.cpp:1036
-#: src/game_initialization/multiplayer_wait.cpp:197
-#: src/hotkey/command_executor.cpp:522 src/hotkey/command_executor.cpp:695
+#: src/game_initialization/multiplayer_lobby.cpp:1039
+#: src/game_initialization/multiplayer_wait.cpp:198
+#: src/gui/dialogs/synced_choice_wait.cpp:104
+#: src/hotkey/command_executor.cpp:529 src/hotkey/command_executor.cpp:702
+#: src/quit_confirmation.cpp:41
 msgid "Quit"
 msgstr "Вийти"
 
@@ -5870,69 +5849,63 @@ msgstr "Чекаємо підключення гравців..."
 msgid "Waiting for players to choose factions..."
 msgstr "Чекаємо, поки гравці виберуть фракцію..."
 
-#: src/game_initialization/multiplayer_create.cpp:85
-#: src/game_initialization/multiplayer_lobby.cpp:1033
+#: src/game_initialization/multiplayer_create.cpp:86
+#: src/game_initialization/multiplayer_lobby.cpp:1036
 msgid "Create Game"
 msgstr "Створити гру"
 
-#: src/game_initialization/multiplayer_create.cpp:93
+#: src/game_initialization/multiplayer_create.cpp:94
 #, fuzzy
 #| msgid "Filter: "
 msgid "Filter:"
 msgstr "Фільтр: "
 
-#: src/game_initialization/multiplayer_create.cpp:94
-#: src/game_initialization/multiplayer_create.cpp:476
+#: src/game_initialization/multiplayer_create.cpp:95
+#: src/game_initialization/multiplayer_create.cpp:464
 msgid "Number of players: any"
 msgstr ""
 
-#: src/game_initialization/multiplayer_create.cpp:95
+#: src/game_initialization/multiplayer_create.cpp:96
 #, fuzzy
 #| msgid "Random start time"
 msgid "Random map options:"
 msgstr "Випадковий час початку"
 
-#: src/game_initialization/multiplayer_create.cpp:96
-#: src/game_initialization/multiplayer_lobby.cpp:698
-#: src/help/help_impl.cpp:529
+#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_lobby.cpp:700 src/help/help_impl.cpp:529
 msgid "Era:"
 msgstr "Ера:"
 
-#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_create.cpp:98
 msgid ""
 "No eras available\n"
 "for this game."
 msgstr ""
 
-#: src/game_initialization/multiplayer_create.cpp:99
-#: src/game_initialization/multiplayer_lobby.cpp:725
+#: src/game_initialization/multiplayer_create.cpp:100
+#: src/game_initialization/multiplayer_lobby.cpp:727
 #, fuzzy
 #| msgid "Modifications..."
 msgid "Modifications:"
 msgstr "Модифікації..."
 
-#: src/game_initialization/multiplayer_create.cpp:103
+#: src/game_initialization/multiplayer_create.cpp:104
 #, fuzzy
 #| msgid "Next Turn"
 msgid "Next"
 msgstr "Наступний хід"
 
-#: src/game_initialization/multiplayer_create.cpp:105
+#: src/game_initialization/multiplayer_create.cpp:106
 msgid "Regenerate"
 msgstr "Перегенерувати"
 
-#: src/game_initialization/multiplayer_create.cpp:106
+#: src/game_initialization/multiplayer_create.cpp:107
 msgid "Settings..."
 msgstr "Параметри..."
 
-#: src/game_initialization/multiplayer_create.cpp:107
+#: src/game_initialization/multiplayer_create.cpp:108
 msgid "Load Game..."
 msgstr "Завантажити гру..."
-
-#: src/game_initialization/multiplayer_create.cpp:108
-#: src/game_initialization/multiplayer_create.cpp:369
-msgid "Activate"
-msgstr ""
 
 #: src/game_initialization/multiplayer_create.cpp:128
 #, fuzzy
@@ -5979,7 +5952,7 @@ msgstr "Ери не знайдені."
 msgid "No eras found"
 msgstr "Ери не знайдені"
 
-#: src/game_initialization/multiplayer_create.cpp:204
+#: src/game_initialization/multiplayer_create.cpp:199
 #, fuzzy
 #| msgid "Modifications..."
 msgid ""
@@ -5987,131 +5960,124 @@ msgid ""
 "None found."
 msgstr "Модифікації..."
 
-#: src/game_initialization/multiplayer_create.cpp:206
-#: src/game_initialization/multiplayer_create.cpp:367
-#, fuzzy
-#| msgid "Debug mode activated!"
-msgid "Deactivate"
-msgstr "Налагодження ввімкнено!"
-
-#: src/game_initialization/multiplayer_create.cpp:319
+#: src/game_initialization/multiplayer_create.cpp:312
 #, fuzzy
 #| msgid "The map is invalid."
 msgid "The level is invalid."
 msgstr "Карта недійсна."
 
-#: src/game_initialization/multiplayer_create.cpp:421
+#: src/game_initialization/multiplayer_create.cpp:409
 msgid "Players: "
 msgstr "Гравці: "
 
-#: src/game_initialization/multiplayer_create.cpp:441
+#: src/game_initialization/multiplayer_create.cpp:429
 msgid "Size: "
 msgstr "Розмір: "
 
-#: src/game_initialization/multiplayer_create.cpp:478
+#: src/game_initialization/multiplayer_create.cpp:466
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "Назва гри:"
 
-#: src/game_initialization/multiplayer_create.cpp:584 src/unit_types.cpp:474
+#: src/game_initialization/multiplayer_create.cpp:572 src/unit_types.cpp:477
 msgid "No description available."
 msgstr "Опису немає."
 
-#: src/game_initialization/multiplayer_lobby.cpp:145
+#: src/game_initialization/multiplayer_lobby.cpp:147
 msgid "--no games open--"
 msgstr "--немає відкритих ігор--"
 
-#: src/game_initialization/multiplayer_lobby.cpp:182
+#: src/game_initialization/multiplayer_lobby.cpp:184
 msgid " (Unknown Era)"
 msgstr " (Невідома ера)"
 
-#: src/game_initialization/multiplayer_lobby.cpp:190
+#: src/game_initialization/multiplayer_lobby.cpp:192
 msgid " (Need to download addons)"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:192
+#: src/game_initialization/multiplayer_lobby.cpp:194
 #, fuzzy
 #| msgid "Outdated add-ons"
 msgid " (Outdated addons)"
 msgstr "Застарілі аддони"
 
-#: src/game_initialization/multiplayer_lobby.cpp:476
+#: src/game_initialization/multiplayer_lobby.cpp:478
 #, fuzzy
 #| msgid "Scenario"
 msgid "Scenario:"
 msgstr "Сценарій"
 
-#: src/game_initialization/multiplayer_lobby.cpp:497
+#: src/game_initialization/multiplayer_lobby.cpp:499
 #: src/gui/dialogs/lobby/lobby_data.cpp:300
 msgid "Remote scenario"
 msgstr "Віддалений сценарій"
 
-#: src/game_initialization/multiplayer_lobby.cpp:511
+#: src/game_initialization/multiplayer_lobby.cpp:513
 #: src/gui/dialogs/lobby/lobby_data.cpp:308
 msgid "Unknown scenario: $scenario_id"
 msgstr "Невідомий сценарій: $scenario_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:519
+#: src/game_initialization/multiplayer_lobby.cpp:521
 #: src/gui/dialogs/lobby/lobby_data.cpp:313
 msgid "Unknown scenario"
 msgstr "Невідомий сценарій"
 
-#: src/game_initialization/multiplayer_lobby.cpp:530
+#: src/game_initialization/multiplayer_lobby.cpp:532
 #, fuzzy
 #| msgid "Campaign"
 msgid "Campaign:"
 msgstr "Кампанія"
 
-#: src/game_initialization/multiplayer_lobby.cpp:564
+#: src/game_initialization/multiplayer_lobby.cpp:566
 #, fuzzy
 #| msgid "Campaign: $campaign_name"
 msgid "Unknown campaign: $campaign_id"
 msgstr "Кампанія: $campaign_name"
 
-#: src/game_initialization/multiplayer_lobby.cpp:667
+#: src/game_initialization/multiplayer_lobby.cpp:669
 msgid ""
 "Host's version of $addon is too old: host's version $host_ver < your version "
 "$local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:680
+#: src/game_initialization/multiplayer_lobby.cpp:682
 msgid ""
 "Your version of $addon is out of date: host's version $host_ver > your "
 "version $local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:710
+#: src/game_initialization/multiplayer_lobby.cpp:712
 #: src/gui/dialogs/lobby/lobby_data.cpp:215
 msgid "Unknown era: $era_id"
 msgstr "Невідома ера: $era_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:714
+#: src/game_initialization/multiplayer_lobby.cpp:716
 #: src/gui/dialogs/lobby/lobby_data.cpp:220
 msgid "Unknown era"
 msgstr "Невідома ера"
 
-#: src/game_initialization/multiplayer_lobby.cpp:740
+#: src/game_initialization/multiplayer_lobby.cpp:742
 msgid " (missing)"
 msgstr " (втрачено)"
 
-#: src/game_initialization/multiplayer_lobby.cpp:763
+#: src/game_initialization/multiplayer_lobby.cpp:765
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Відсутній аргумент $arg_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:790
+#: src/game_initialization/multiplayer_lobby.cpp:792
 #: src/gui/dialogs/lobby/lobby_data.cpp:319
 msgid "Reloaded game"
 msgstr "Гра перезавантажена"
 
-#: src/game_initialization/multiplayer_lobby.cpp:806
+#: src/game_initialization/multiplayer_lobby.cpp:808
 #: src/gui/dialogs/lobby/lobby_data.cpp:330
 msgid "Turn "
 msgstr "Хід "
 
-#: src/game_initialization/multiplayer_lobby.cpp:810
+#: src/game_initialization/multiplayer_lobby.cpp:812
 #: src/gui/dialogs/lobby/lobby_data.cpp:335
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
@@ -6119,77 +6085,77 @@ msgstr[0] "Вільний слот:"
 msgstr[1] "Вільні слоти:"
 msgstr[2] "Вільні слоти:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:813
+#: src/game_initialization/multiplayer_lobby.cpp:815
 msgid "Password Required"
 msgstr "Потрібний пароль"
 
-#: src/game_initialization/multiplayer_lobby.cpp:835
+#: src/game_initialization/multiplayer_lobby.cpp:837
 #: src/gui/dialogs/lobby/lobby_data.cpp:349
 msgid "none"
 msgstr "немає"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1026
-#: src/game_initialization/multiplayer_wait.cpp:196
+#: src/game_initialization/multiplayer_lobby.cpp:1028
+#: src/game_initialization/multiplayer_wait.cpp:197
 msgid "Game Lobby"
 msgstr "Фойє гри"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1031
+#: src/game_initialization/multiplayer_lobby.cpp:1034
 msgid "Observe Game"
 msgstr "Спостерігати за грою"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1032
+#: src/game_initialization/multiplayer_lobby.cpp:1035
 msgid "Join Game"
 msgstr "Приєднатися до гри"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1035
+#: src/game_initialization/multiplayer_lobby.cpp:1038
 msgid "Preferences"
 msgstr "Параметри"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1037
+#: src/game_initialization/multiplayer_lobby.cpp:1040
 msgid "Apply filter"
 msgstr "Фільтрувати"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1038
+#: src/game_initialization/multiplayer_lobby.cpp:1041
 msgid "Invert"
 msgstr "Інвертувати"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1039
+#: src/game_initialization/multiplayer_lobby.cpp:1042
 msgid "Vacant slots"
 msgstr "Вакантних місць"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1040
+#: src/game_initialization/multiplayer_lobby.cpp:1043
 msgid "Friends in game"
 msgstr "Друзі в грі"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1041
+#: src/game_initialization/multiplayer_lobby.cpp:1044
 msgid "Search:"
 msgstr "Пошук:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1050
+#: src/game_initialization/multiplayer_lobby.cpp:1053
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Normal Replays"
 msgstr "Зберегти повтор"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1051
+#: src/game_initialization/multiplayer_lobby.cpp:1054
 #, fuzzy
 #| msgid "Quick replays"
 msgid "Quick Replays"
 msgstr "Швидкі повтори"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1052
+#: src/game_initialization/multiplayer_lobby.cpp:1055
 msgid "Enter Blindfolded"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1056
+#: src/game_initialization/multiplayer_lobby.cpp:1059
 msgid "Skip quickly to the active turn when observing"
 msgstr "Швидко перейти до активного ходу при спостереженні"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1057
+#: src/game_initialization/multiplayer_lobby.cpp:1060
 msgid "Do not show the map until given control of a side"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1070
+#: src/game_initialization/multiplayer_lobby.cpp:1073
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -6197,7 +6163,7 @@ msgstr ""
 "Включити фільтр ігор. Якщо вимкнено, Ви бачитимете усі ігри, незалежно від "
 "умов фільтру."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1073
+#: src/game_initialization/multiplayer_lobby.cpp:1076
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -6205,17 +6171,17 @@ msgstr ""
 "Показувати лише ігри, які *не* відповідають Вашому фільтру. Допомагає "
 "прибрати ігри, які Вам не цікаві."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1077
+#: src/game_initialization/multiplayer_lobby.cpp:1080
 msgid "Only show games that have at least one vacant slot"
 msgstr "Показувати лише ігри з хоча б одним вільним місцем"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1081
+#: src/game_initialization/multiplayer_lobby.cpp:1084
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Показувати лише ігри, в яких бере участь або спостерігає хтось з друзів"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1087
+#: src/game_initialization/multiplayer_lobby.cpp:1090
 #, fuzzy
 #| msgid "Only show games whose title or description contain the entered text"
 msgid ""
@@ -6223,37 +6189,37 @@ msgid ""
 "text"
 msgstr "Показувати лише ігри з вказаним текстом в назві або описі"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1192
+#: src/game_initialization/multiplayer_lobby.cpp:1195
 #, fuzzy
 #| msgid "No compatible eras found."
 msgid "Incompatible user-made content."
 msgstr "Не знайдено сумісних ер."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1193
+#: src/game_initialization/multiplayer_lobby.cpp:1196
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons which "
 "are incompatible with your version. You might suggest to them that they "
 "update their add-ons."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1196
-#: src/game_initialization/multiplayer_lobby.cpp:1211
+#: src/game_initialization/multiplayer_lobby.cpp:1199
+#: src/game_initialization/multiplayer_lobby.cpp:1214
 #, fuzzy
 #| msgid "Details"
 msgid "Details:"
 msgstr "Детально"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1207
+#: src/game_initialization/multiplayer_lobby.cpp:1210
 msgid "Missing user-made content."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1208
+#: src/game_initialization/multiplayer_lobby.cpp:1211
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join. Do you want to try to install them?"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1246
+#: src/game_initialization/multiplayer_lobby.cpp:1249
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby, please report this at bugs.wesnoth.org."
@@ -6274,158 +6240,246 @@ msgstr "Вибраний користувач: "
 msgid "$sender is messaging you, and you accept whispers from friends only."
 msgstr "Отримувати особисті повідомлення тільки від друзів"
 
-#: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2296
+#: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2180
 msgid "whisper: $sender"
 msgstr "шёпіт: $sender"
 
-#: src/game_initialization/multiplayer_wait.cpp:149
+#: src/game_initialization/multiplayer_wait.cpp:150
 msgid "Leader: "
 msgstr "Лідер: "
 
-#: src/game_initialization/multiplayer_wait.cpp:152 src/menu_events.cpp:1039
+#: src/game_initialization/multiplayer_wait.cpp:153
 msgid "Gender: "
 msgstr "Стать: "
 
-#: src/game_initialization/multiplayer_wait.cpp:155
+#: src/game_initialization/multiplayer_wait.cpp:156
 msgid "Recruits: "
 msgstr "Найманці: "
 
-#: src/game_initialization/multiplayer_wait.cpp:198
+#: src/game_initialization/multiplayer_wait.cpp:199
 msgid "Waiting for game to start..."
 msgstr "Чекаємо початку гри..."
 
-#: src/game_initialization/multiplayer_wait.cpp:351
+#: src/game_initialization/multiplayer_wait.cpp:322
 msgid "No era information found."
 msgstr "Інформація про ери не знайдена."
 
-#: src/game_initialization/multiplayer_wait.cpp:355
+#: src/game_initialization/multiplayer_wait.cpp:326
 msgid "No multiplayer sides found"
 msgstr "Немає мережевих сторін"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:370
 msgid "Choose your faction:"
 msgstr "Виберіть вашу фракцію:"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:370
 msgid "Starting position: "
 msgstr "Початкова позиція: "
 
-#: src/game_initialization/multiplayer_wait.cpp:521
+#: src/game_initialization/multiplayer_wait.cpp:492
 msgid "(Empty slot)"
 msgstr "(Порожній слот)"
 
-#: src/game_initialization/multiplayer_wait.cpp:526
+#: src/game_initialization/multiplayer_wait.cpp:497
 msgid "(Reserved for $playername)"
 msgstr "(Зайнято для $playername)"
 
-#: src/game_initialization/multiplayer_wait.cpp:529
+#: src/game_initialization/multiplayer_wait.cpp:500
 msgid "(Vacant slot)"
 msgstr "(Вільний слот)"
 
-#: src/game_initialization/multiplayer_wait.cpp:536 src/menu_events.cpp:2392
-#: src/menu_events.cpp:2410
+#: src/game_initialization/multiplayer_wait.cpp:507 src/menu_events.cpp:2276
+#: src/menu_events.cpp:2294
 msgid "(empty)"
 msgstr "(порожньо)"
 
-#: src/game_initialization/multiplayer_wait.cpp:620
+#: src/game_initialization/multiplayer_wait.cpp:591
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "Золотий"
 msgstr[1] "Золоті"
 msgstr[2] "Золотих"
 
-#: src/game_initialization/multiplayer_wait.cpp:664
+#: src/game_initialization/multiplayer_wait.cpp:635
 msgid "Getting game data..."
 msgstr "Отримуємо ігрові дані..."
 
+#: src/game_initialization/playcampaign.cpp:66
+msgid "Remaining gold: "
+msgstr "Залишок золота: "
+
+#: src/game_initialization/playcampaign.cpp:70
+msgid "Turns finished early: "
+msgstr "К-сть невикористаних ходів: "
+
+#: src/game_initialization/playcampaign.cpp:71
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "за хід"
+
+#: src/game_initialization/playcampaign.cpp:71
+msgid "Early finish bonus: "
+msgstr "Бонус швидкого завершення: "
+
+#: src/game_initialization/playcampaign.cpp:72
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Total bonus: "
+msgstr "Бонус ходів: "
+
+#: src/game_initialization/playcampaign.cpp:74
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "Золото з сіл: "
+
 #: src/game_initialization/playcampaign.cpp:77
+#, fuzzy
+#| msgid "Carry over percentage: "
+msgid "Carryover percentage: "
+msgstr "Відсоток перенесення: "
+
+#: src/game_initialization/playcampaign.cpp:80
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "Бонусне золото: "
+
+#: src/game_initialization/playcampaign.cpp:82
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "Збережене золото: "
+
+#: src/game_initialization/playcampaign.cpp:95
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Ви почнете наступний сценарій з $gold золотим в додачу до мінімуму, що "
+"заданий сценарієм."
+msgstr[1] ""
+"Ви почнете наступний сценарій з $gold золотими в додачу до мінімуму, що "
+"заданий сценарієм."
+msgstr[2] ""
+"Ви почнете наступний сценарій з $gold золотими в додачу до мінімуму, що "
+"заданий сценарієм."
+
+#: src/game_initialization/playcampaign.cpp:103
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Ви почнете наступний сценарій із заданим для нього мінімумом золота."
+msgstr[1] ""
+"Ви почнете наступний сценарій із заданим для нього мінімумом золота."
+msgstr[2] ""
+"Ви почнете наступний сценарій із заданим для нього мінімумом золота."
+
+#: src/game_initialization/playcampaign.cpp:111
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Ви почнете наступний сценарій з $gold золотим, або з мінімумом, заданим в "
+"цьому сценарії - залежно від того, що більше."
+msgstr[1] ""
+"Ви почнете наступний сценарій з $gold золотими, або з мінімумом, заданим в "
+"цьому сценарії - залежно від того, що більше."
+msgstr[2] ""
+"Ви почнете наступний сценарій з $gold золотими, або з мінімумом, заданим в "
+"цьому сценарії - залежно від того, що більше."
+
+#: src/game_initialization/playcampaign.cpp:141
 msgid "Scenario Report"
 msgstr "Звіт про сценарій"
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:143
 msgid "Victory"
 msgstr "Перемога"
 
-#: src/game_initialization/playcampaign.cpp:80
+#: src/game_initialization/playcampaign.cpp:144
 msgid "You have emerged victorious!"
 msgstr "Ви перемогли!"
 
-#: src/game_initialization/playcampaign.cpp:82
+#: src/game_initialization/playcampaign.cpp:146
 msgid "Defeat"
 msgstr "Поразка"
 
-#: src/game_initialization/playcampaign.cpp:83
+#: src/game_initialization/playcampaign.cpp:147
 msgid "You have been defeated!"
 msgstr "Вас перемогли!"
 
-#: src/game_initialization/playcampaign.cpp:147
-#: src/game_initialization/playcampaign.cpp:151
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:969
+#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:988
 msgid "The game could not be loaded: "
 msgstr "Не вдалось завантажити гру: "
 
-#: src/game_initialization/playcampaign.cpp:158
-#: src/game_initialization/playcampaign.cpp:162
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:971
+#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:990
 msgid "Error while playing the game: "
 msgstr "Виникла помилка під час гри: "
 
-#: src/game_initialization/playcampaign.cpp:165
-#: src/game_initialization/playcampaign.cpp:169
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:991
+#: src/game_initialization/playcampaign.cpp:307 src/game_launcher.cpp:1010
 msgid "The game map could not be loaded: "
 msgstr "Не вдалось завантажити ігрову карту: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:973
+#: src/game_initialization/playcampaign.cpp:310 src/game_launcher.cpp:992
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:305
+#: src/game_initialization/playcampaign.cpp:312
 msgid "Error while reading the WML: "
 msgstr "Виникла помилка читання WML: "
 
-#: src/game_initialization/playcampaign.cpp:343
-#: src/playsingle_controller.cpp:319
+#: src/game_initialization/playcampaign.cpp:350
+#: src/playsingle_controller.cpp:277
 msgid "Game Over"
 msgstr "Кінець гри"
 
-#: src/game_initialization/playcampaign.cpp:344
+#: src/game_initialization/playcampaign.cpp:351
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Сценарій завершений. Ви хочете продовжити кампанію?"
 
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:419
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Невідомий сценарій: '$scenario|'"
 
-#: src/game_initialization/singleplayer.cpp:41
+#: src/game_initialization/singleplayer.cpp:40
 msgid "No campaigns are available.\n"
 msgstr "Немає доступних кампаній.\n"
 
-#: src/game_launcher.cpp:726 src/game_launcher.cpp:744
+#: src/game_launcher.cpp:740 src/game_launcher.cpp:758
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, який Ви намагалися завантажити, пошкоджений"
 
-#: src/game_launcher.cpp:729 src/game_launcher.cpp:747 src/savegame.cpp:195
-#: src/savegame.cpp:343
+#: src/game_launcher.cpp:743 src/game_launcher.cpp:761
+#: src/hotkey_handler_sp.cpp:309 src/savegame.cpp:168 src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файл, який Ви намагалися завантажити, пошкоджений: '"
 
-#: src/game_launcher.cpp:737
+#: src/game_launcher.cpp:751
 msgid "File I/O Error while reading the game"
 msgstr "Помилка вводу/виводу при читанні файлу з грою"
 
-#: src/game_launcher.cpp:739
+#: src/game_launcher.cpp:753
 msgid "File I/O Error while reading the game: '"
 msgstr "Помилка вводу/виводу при читанні файлу з грою: '"
 
-#: src/game_launcher.cpp:766
+#: src/game_launcher.cpp:780
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
 "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 
-#: src/game_launcher.cpp:967
+#: src/game_launcher.cpp:986
 msgid "Error while starting server: "
 msgstr "Помилка запуску сервера: "
 
@@ -6476,6 +6530,14 @@ msgstr "Ви"
 #: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "Помилка"
+
+#: src/gui/dialogs/synced_choice_wait.cpp:105
+#: src/hotkey/command_executor.cpp:530 src/hotkey/command_executor.cpp:703
+#: src/quit_confirmation.cpp:42
+#, fuzzy
+#| msgid "Do you really want to dismiss him?"
+msgid "Do you really want to quit?"
+msgstr "Ви дійсно хочете його звільнити?"
 
 #: src/help/help_browser.cpp:150
 msgid "Reference to unknown topic: "
@@ -6531,11 +6593,11 @@ msgid "Recruits"
 msgstr "Найманців"
 
 #: src/help/help_impl.cpp:696 src/help/help_impl.cpp:871
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:364
 msgid "race^Miscellaneous"
 msgstr ""
 
-#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:456
+#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:457
 #: src/reports.cpp:351
 msgid "Alignment: "
 msgstr "Тип: "
@@ -6572,169 +6634,163 @@ msgstr ""
 msgid "Defense properties: "
 msgstr "Захист: "
 
-#: src/help/help_topic_generators.cpp:289
+#: src/help/help_topic_generators.cpp:290
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances from: "
 msgstr "Просувається в:"
 
-#: src/help/help_topic_generators.cpp:291
+#: src/help/help_topic_generators.cpp:292
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances to: "
 msgstr "Просувається в:"
 
-#: src/help/help_topic_generators.cpp:316
+#: src/help/help_topic_generators.cpp:317
 #, fuzzy
 #| msgid "Base attacks: "
 msgid "Base unit: "
 msgstr "Базові атаки: "
 
-#: src/help/help_topic_generators.cpp:321
+#: src/help/help_topic_generators.cpp:322
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base units: "
 msgstr "Порядні бійці: "
 
-#: src/help/help_topic_generators.cpp:339
+#: src/help/help_topic_generators.cpp:340
 #, fuzzy
 #| msgid "Modifications..."
 msgid "Variations: "
 msgstr "Модифікації..."
 
-#: src/help/help_topic_generators.cpp:365 src/reports.cpp:189
+#: src/help/help_topic_generators.cpp:366 src/reports.cpp:189
 msgid "Race: "
 msgstr "Раса: "
 
-#: src/help/help_topic_generators.cpp:418
+#: src/help/help_topic_generators.cpp:419
 #, fuzzy
 #| msgid "Ability: "
 msgid "Abilities: "
 msgstr "Здібність: "
 
-#: src/help/help_topic_generators.cpp:434
+#: src/help/help_topic_generators.cpp:435
 #, fuzzy
 #| msgid "Ability: "
 msgid "Ability Upgrades: "
 msgstr "Здібність: "
 
-#: src/help/help_topic_generators.cpp:452
+#: src/help/help_topic_generators.cpp:453
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision: "
 msgstr "Версія: "
 
-#: src/help/help_topic_generators.cpp:454
+#: src/help/help_topic_generators.cpp:455
 #, fuzzy
 #| msgid "Warning: "
 msgid "Jamming: "
 msgstr "Попередження: "
 
-#: src/help/help_topic_generators.cpp:455
+#: src/help/help_topic_generators.cpp:456
 msgid "Cost: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:460
+#: src/help/help_topic_generators.cpp:461
 msgid "Required XP: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:469
+#: src/help/help_topic_generators.cpp:470
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:477
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:478
+#: src/help/help_topic_generators.cpp:479
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
 msgid "Strikes"
 msgstr "удар"
 
-#: src/help/help_topic_generators.cpp:479
+#: src/help/help_topic_generators.cpp:480
 #, fuzzy
 #| msgid "Orange"
 msgid "Range"
 msgstr "Помаранчевий"
 
-#: src/help/help_topic_generators.cpp:480
+#: src/help/help_topic_generators.cpp:481
 #, fuzzy
 #| msgid "Specials: "
 msgid "Special"
 msgstr "Особливості: "
 
-#: src/help/help_topic_generators.cpp:545
+#: src/help/help_topic_generators.cpp:546
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistances"
 msgstr "Опори: "
 
-#: src/help/help_topic_generators.cpp:549
+#: src/help/help_topic_generators.cpp:550
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack Type"
 msgstr "Нападник"
 
-#: src/help/help_topic_generators.cpp:550
+#: src/help/help_topic_generators.cpp:551
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistance"
 msgstr "Опори: "
 
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:580
 #, fuzzy
 #| msgid "Experience Modifier: "
 msgid "Terrain Modifiers"
 msgstr "Модифікатор досвіду: "
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:584
 #, fuzzy
 #| msgid "Terrain: "
 msgid "Terrain"
 msgstr "Місцевість: "
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:585
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense"
 msgstr "Захист: "
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:586
 msgid "Movement Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:589
+#: src/help/help_topic_generators.cpp:590
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense Cap"
 msgstr "Захист: "
 
-#: src/help/help_topic_generators.cpp:593
+#: src/help/help_topic_generators.cpp:594
 #, fuzzy
 msgid "Vision Cost"
 msgstr "Версія: "
 
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:597
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:523 src/hotkey/command_executor.cpp:696
-#, fuzzy
-#| msgid "Do you really want to dismiss him?"
-msgid "Do you really want to quit?"
-msgstr "Ви дійсно хочете його звільнити?"
-
-#: src/hotkey/command_executor.cpp:644
+#: src/hotkey/command_executor.cpp:651
 msgid "Map-Screenshot"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:644
+#: src/hotkey/command_executor.cpp:651
 msgid "Screenshot"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:657
+#: src/hotkey/command_executor.cpp:664
 msgid ""
 "Screenshot creation failed.\n"
 "\n"
@@ -6756,30 +6812,30 @@ msgstr ""
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey_handler.cpp:366 src/save_index.cpp:290 src/savegame.cpp:78
-#: src/savegame.cpp:635 src/savegame.cpp:637
+#: src/hotkey_handler.cpp:367 src/save_index.cpp:290 src/savegame.cpp:77
+#: src/savegame.cpp:600 src/savegame.cpp:602
 msgid "Auto-Save"
 msgstr "Автозбереження"
 
-#: src/hotkey_handler.cpp:370
+#: src/hotkey_handler.cpp:371
 msgid "Back to Turn "
 msgstr "Назад до ходу "
 
-#: src/hotkey_handler.cpp:378
+#: src/hotkey_handler.cpp:379
 msgid "Back to Start"
 msgstr "Назад до початку"
 
-#: src/hotkey_handler_sp.cpp:134
+#: src/hotkey_handler_sp.cpp:143
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(натисніть $hotkey, щоб продовжити рух)"
 
-#: src/hotkey_handler_sp.cpp:134 src/menu_events.cpp:3203
+#: src/hotkey_handler_sp.cpp:143 src/menu_events.cpp:3087
 msgid "Planning mode activated!"
 msgstr "Режим планування ввімкнений!"
 
-#: src/hotkey_handler_sp.cpp:136 src/menu_events.cpp:3206
+#: src/hotkey_handler_sp.cpp:145 src/menu_events.cpp:3090
 msgid "Planning mode deactivated!"
 msgstr "Режим планування вимкнений!"
 
@@ -6881,87 +6937,87 @@ msgstr "Параметри сценарію"
 msgid " < Back"
 msgstr " < Назад"
 
-#: src/loadscreen.cpp:323
+#: src/loadscreen.cpp:329
 msgid "Initializing user interface"
 msgstr "Ініціалізація інтерфейсу користувача"
 
-#: src/loadscreen.cpp:324
+#: src/loadscreen.cpp:330
 msgid "Loading game configuration"
 msgstr "Завантажую конфігурацію гри"
 
-#: src/loadscreen.cpp:325 src/loadscreen.cpp:332
+#: src/loadscreen.cpp:331 src/loadscreen.cpp:338
 msgid "Verifying cache"
 msgstr "Перевіряю кеш"
 
-#: src/loadscreen.cpp:326 src/loadscreen.cpp:333
+#: src/loadscreen.cpp:332 src/loadscreen.cpp:339
 msgid "Reading files and creating cache"
 msgstr "Читаю файли та створюю кеш"
 
-#: src/loadscreen.cpp:327 src/loadscreen.cpp:334
+#: src/loadscreen.cpp:333 src/loadscreen.cpp:340
 msgid "Reading unit files"
 msgstr "Читаю файли бійців"
 
-#: src/loadscreen.cpp:328
+#: src/loadscreen.cpp:334
 msgid "Reinitialize fonts for the current language"
 msgstr "Переналаштовую шрифти для поточної мови"
 
-#: src/loadscreen.cpp:329
+#: src/loadscreen.cpp:335
 msgid "Searching for installed add-ons"
 msgstr "Шукаю встановлені аддони"
 
-#: src/loadscreen.cpp:330
+#: src/loadscreen.cpp:336
 msgid "Loading title screen"
 msgstr "Завантажую титульну сторінку"
 
-#: src/loadscreen.cpp:331
+#: src/loadscreen.cpp:337
 msgid "Loading data files"
 msgstr "Завантажую файли даних"
 
-#: src/loadscreen.cpp:335
+#: src/loadscreen.cpp:341
 msgid "Loading level"
 msgstr "Завантажую рівень"
 
-#: src/loadscreen.cpp:336
+#: src/loadscreen.cpp:342
 msgid "Initializing teams"
 msgstr "Ініціалізую команди"
 
-#: src/loadscreen.cpp:337
+#: src/loadscreen.cpp:343
 msgid "Loading units"
 msgstr "Завантажую бійців"
 
-#: src/loadscreen.cpp:338 src/loadscreen.cpp:340
+#: src/loadscreen.cpp:344 src/loadscreen.cpp:346
 msgid "Initializing display"
 msgstr "Ініціалізую дисплей"
 
-#: src/loadscreen.cpp:339
+#: src/loadscreen.cpp:345
 msgid "Building terrain rules"
 msgstr "Будую правила місцевості"
 
-#: src/loadscreen.cpp:341
+#: src/loadscreen.cpp:347
 msgid "Starting game"
 msgstr "Починаю гру"
 
-#: src/map_location.cpp:134
+#: src/map_location.cpp:170
 msgid "North"
 msgstr ""
 
-#: src/map_location.cpp:136
+#: src/map_location.cpp:172
 msgid "North East"
 msgstr ""
 
-#: src/map_location.cpp:138
+#: src/map_location.cpp:174
 msgid "North West"
 msgstr ""
 
-#: src/map_location.cpp:140
+#: src/map_location.cpp:176
 msgid "South"
 msgstr ""
 
-#: src/map_location.cpp:142
+#: src/map_location.cpp:178
 msgid "South East"
 msgstr ""
 
-#: src/map_location.cpp:144
+#: src/map_location.cpp:180
 msgid "South West"
 msgstr ""
 
@@ -6985,38 +7041,38 @@ msgstr "Карту збережено."
 msgid "Could not save the map: $msg"
 msgstr "Не вдалось зберегти карту: $msg"
 
-#: src/menu_events.cpp:531
+#: src/menu_events.cpp:490
 msgid "Message:"
 msgstr "Повідомлення:"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 msgid "Send to allies only"
 msgstr "Відправити лише союзникам"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 msgid "Send to observers only"
 msgstr "Відправити лише спостерігачам"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:562
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Золотий"
 msgstr[1] "Золотих"
 msgstr[2] "Золотих"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:569
 msgid "You have no units available to recruit."
 msgstr "Немає бійців для вербування."
 
-#: src/menu_events.cpp:643
+#: src/menu_events.cpp:602
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "У вас замало золота щоб найняти цього бійця"
 
-#: src/menu_events.cpp:676
+#: src/menu_events.cpp:635
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Ви відокремлені від ваших солдатів і не можете їх закликати"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:657
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7024,11 +7080,11 @@ msgstr ""
 "Немає військ для заклику\n"
 "(У Вас мають бути бійці, що уціліли з минулого сценарію)"
 
-#: src/menu_events.cpp:704
+#: src/menu_events.cpp:663
 msgid "You currently can't recall at the highlighted location"
 msgstr "Зараз Ви не можете закликати на цьому полі"
 
-#: src/menu_events.cpp:726
+#: src/menu_events.cpp:685
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -7038,56 +7094,44 @@ msgstr[0] "У Вас має бути хоча би $cost золотий для �
 msgstr[1] "У Вас має бути хоча би $cost золотих для заклику бійця"
 msgstr[2] "У Вас має бути хоча би $cost золотих для заклику бійця"
 
-#: src/menu_events.cpp:850
+#: src/menu_events.cpp:809
 msgid "You cannot end your turn yet!"
 msgstr "Ви поки що не можете закінчити хід!"
 
-#: src/menu_events.cpp:864
+#: src/menu_events.cpp:823
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Ви ще не починали свій хід. Ви дійсно хочете завершити свій хід?"
 
-#: src/menu_events.cpp:871
+#: src/menu_events.cpp:830
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Деякі бійці ще можуть ходити. Ви дійсно хочете завершити свій хід?"
 
-#: src/menu_events.cpp:878
+#: src/menu_events.cpp:837
 #, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "Деякі бійці ще можуть ходити. Ви дійсно хочете завершити свій хід?"
 
-#: src/menu_events.cpp:930
+#: src/menu_events.cpp:889
 msgid "Rename Unit"
 msgstr "Перейменувати бійця"
 
-#: src/menu_events.cpp:931
+#: src/menu_events.cpp:890
 #, fuzzy
 #| msgid "Name: "
 msgid "Name:"
 msgstr "Ім'я: "
 
-#: src/menu_events.cpp:1015
-msgid "Race"
-msgstr "Раса"
-
-#: src/menu_events.cpp:1036
-msgid "Create Unit (Debug!)"
-msgstr "Створити бійця (Відладка!)"
-
-#: src/menu_events.cpp:1039
-msgid "gender^Random"
-msgstr "Випадкова"
-
-#: src/menu_events.cpp:1372
+#: src/menu_events.cpp:1254
 msgid "Search"
 msgstr "Пошук"
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1435
 msgid "This command is currently unavailable."
 msgstr "Ця команда наразі недоступна."
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1441
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -7095,11 +7139,11 @@ msgstr ""
 "Команда '$command' невідома; щоб отримати список доступних команд, введіть "
 "$help_command."
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1457
 msgid "Error:"
 msgstr "Помилка:"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1463
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -7107,15 +7151,15 @@ msgstr ""
 "Перелік доступних команд і довідка по кожній команді. Напишіть \"help all\", "
 "якщо хочете включити в перелік наразі недоступні команди."
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1465
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<command>]"
 
-#: src/menu_events.cpp:1628
+#: src/menu_events.cpp:1510
 msgid "Missing argument $arg_id"
 msgstr "Відсутній аргумент $arg_id"
 
-#: src/menu_events.cpp:1676
+#: src/menu_events.cpp:1558
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -7123,35 +7167,35 @@ msgstr ""
 "Доступні команди $flags_description:\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:1676 src/menu_events.cpp:1677 src/menu_events.cpp:1700
+#: src/menu_events.cpp:1558 src/menu_events.cpp:1559 src/menu_events.cpp:1582
 msgid "help"
 msgstr "довідка"
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1559
 msgid "Type $help_command <command> for more info."
 msgstr "Напишіть $help_command <command> для детальної інформації."
 
-#: src/menu_events.cpp:1688
+#: src/menu_events.cpp:1570
 msgid " No help available."
 msgstr " Довідка відсутня."
 
-#: src/menu_events.cpp:1693
+#: src/menu_events.cpp:1575
 msgid "Usage:"
 msgstr "Використання:"
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1580
 msgid "aliases:"
 msgstr "псевдоніми:"
 
-#: src/menu_events.cpp:1819
+#: src/menu_events.cpp:1701
 msgid "(A) — admin command"
 msgstr "(A) — адмінська команда"
 
-#: src/menu_events.cpp:1826 src/menu_events.cpp:2034
+#: src/menu_events.cpp:1708 src/menu_events.cpp:1916
 msgid "(admin only)"
 msgstr "(лише для адмінів)"
 
-#: src/menu_events.cpp:1846
+#: src/menu_events.cpp:1728
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -7159,7 +7203,7 @@ msgstr ""
 "Відіслати запит на сервер. Без параметрів - сервер видасть список доступних "
 "команд."
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1732
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -7167,35 +7211,35 @@ msgstr ""
 "Забанити і копнути гравця або глядача. Якщо він не в грі, а лише на сервері, "
 "то Ви його тільки забаните."
 
-#: src/menu_events.cpp:1851 src/menu_events.cpp:1854 src/menu_events.cpp:1856
-#: src/menu_events.cpp:1858 src/menu_events.cpp:1860 src/menu_events.cpp:1887
-#: src/menu_events.cpp:1889 src/menu_events.cpp:1891 src/menu_events.cpp:1905
+#: src/menu_events.cpp:1733 src/menu_events.cpp:1736 src/menu_events.cpp:1738
+#: src/menu_events.cpp:1740 src/menu_events.cpp:1742 src/menu_events.cpp:1769
+#: src/menu_events.cpp:1771 src/menu_events.cpp:1773 src/menu_events.cpp:1787
 msgid "<nickname>"
 msgstr "<прізвисько>"
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1735
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Розбанити користувача. Він не повинен бути в грі, але має бути на сервері."
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1738
 msgid "Kick a player or observer."
 msgstr "Копнути гравця або глядача."
 
-#: src/menu_events.cpp:1858
+#: src/menu_events.cpp:1740
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Вимкнути розмови спостерігачів. Без параметра - показує статус тиші."
 
-#: src/menu_events.cpp:1860
+#: src/menu_events.cpp:1742
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Дозволити спостерігачеві говорити. Без параметра - дозволяє говорити всім."
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1744
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Заборонити/дозволити говорити всім глядачам. (перемикач)"
 
-#: src/menu_events.cpp:1872
+#: src/menu_events.cpp:1754
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -7203,15 +7247,15 @@ msgstr ""
 "Повідомити про некоректну поведінку, порушення правил і т.д. модераторам "
 "сервера. Будь ласка, правильно вкажіть прізвиська та ін."
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 msgid "<message>"
 msgstr "<повідомлення>"
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 msgid "Send an emotion or personal action in chat."
 msgstr "Відправити емоцію або персональну дію в чаті."
 
-#: src/menu_events.cpp:1879
+#: src/menu_events.cpp:1761
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -7219,202 +7263,206 @@ msgstr ""
 "Відправити приватне повідомлення. Ви не можете відправляти приватні "
 "повідомлення гравцям що грають з вами або спостерігають."
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1763
 msgid "<nickname> <message>"
 msgstr "<прізвисько> <повідомлення>"
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "<level> <domain>"
 msgstr "<рівень> <домен>"
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "Change the log level of a log domain."
 msgstr "Змінити рівень логу в домені логу."
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1769
 msgid "Add a nickname to your ignores list."
 msgstr "Додати гравця в перелік ігнору."
 
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1771
 msgid "Add a nickname to your friends list."
 msgstr "Додати гравця в перелік друзів."
 
-#: src/menu_events.cpp:1891
+#: src/menu_events.cpp:1773
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Видалити гравця із списку ігнору або списку друзів."
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1775
 msgid "Show your ignores and friends list."
 msgstr "Показати списки друзів і ігнору."
 
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1778
 msgid "Display version information."
 msgstr "Показати версію."
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 msgid "<password> <email (optional)>"
 msgstr "<пароль> <email (необов'язково)>"
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 msgid "Register your nickname"
 msgstr "Зареєструвати свій нік"
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1782
 msgid "Drop your nickname."
 msgstr "Видалити свій нік."
 
-#: src/menu_events.cpp:1902
+#: src/menu_events.cpp:1784
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "Відновити профіль свого ніку. Дивіться детально через '/details'."
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1785
 msgid "<detail> <value>"
 msgstr "<параметр> <значення>"
 
-#: src/menu_events.cpp:1905
+#: src/menu_events.cpp:1787
 msgid "Request information about a nickname."
 msgstr "Запитати дані про прізвисько."
 
-#: src/menu_events.cpp:1907
+#: src/menu_events.cpp:1789
 msgid "Request a list of details you can set for your registered nickname."
 msgstr "Дізнатись, які дані можна міняти для свого зареєстрованого прізвиська."
 
-#: src/menu_events.cpp:1909 src/menu_events.cpp:1912 src/menu_events.cpp:1914
+#: src/menu_events.cpp:1791 src/menu_events.cpp:1794 src/menu_events.cpp:1796
 msgid "<room>"
 msgstr "<кімната>"
 
-#: src/menu_events.cpp:1909
+#: src/menu_events.cpp:1791
 msgid "Join a room."
 msgstr "Зайти в кімнату."
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1794
 msgid "Part a room."
 msgstr "Вийти з кімнати."
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1796
 msgid "List room members."
 msgstr "Члени кімнати."
 
-#: src/menu_events.cpp:1916
+#: src/menu_events.cpp:1798
 msgid "List available rooms."
 msgstr "Доступні кімнати."
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "<room> <msg>"
 msgstr "<кімната> <повід>"
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "Room message."
 msgstr "Повідомлення для кімнати."
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "<room> <type> [value]"
 msgstr "<кімната> <тип> [значення]"
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "Room query."
 msgstr "Запит до кімнати."
 
-#: src/menu_events.cpp:2026
+#: src/menu_events.cpp:1908
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 "(D) - налагоджувальна команда, (N) - мережна команда, (A) - адмін команда"
 
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:1914
 msgid "(debug command)"
 msgstr "(налагоджувальна команда)"
 
-#: src/menu_events.cpp:2033
+#: src/menu_events.cpp:1915
 msgid "(network only)"
 msgstr "(мережна команда)"
 
-#: src/menu_events.cpp:2058
+#: src/menu_events.cpp:1917
+msgid "(not during other events)"
+msgstr ""
+
+#: src/menu_events.cpp:1942
 msgid "Refresh gui."
 msgstr "Оновити GUI."
 
-#: src/menu_events.cpp:2060
+#: src/menu_events.cpp:1944
 msgid "Switch a side to/from AI control."
 msgstr "Віддати контроль над стороною ПК або людині."
 
-#: src/menu_events.cpp:2060 src/menu_events.cpp:2062
+#: src/menu_events.cpp:1944 src/menu_events.cpp:1946
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<сторона> [on/off]]"
 
-#: src/menu_events.cpp:2062
+#: src/menu_events.cpp:1946
 #, fuzzy
 #| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
 msgstr "Віддати контроль над стороною ПК або людині."
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "<side> <nickname>"
 msgstr "<сторона> <нік>"
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "Assign control of a side to a different player or observer."
 msgstr "Віддати контроль над стороною іншому гравцеві або глядачеві."
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:1953
 msgid "Clear chat history."
 msgstr "Очистити історію чату."
 
-#: src/menu_events.cpp:2071
+#: src/menu_events.cpp:1955
 msgid "Visualize the screen refresh procedure."
 msgstr "Показати процедуру оновлення екрану."
 
-#: src/menu_events.cpp:2073
+#: src/menu_events.cpp:1957
 msgid "Debug foreground terrain."
 msgstr "Відладка верхнього шару місцевості."
 
-#: src/menu_events.cpp:2075
+#: src/menu_events.cpp:1959
 msgid "Debug layers from terrain under the mouse."
 msgstr "Відладка шарів місцевості під курсором."
 
-#: src/menu_events.cpp:2076
+#: src/menu_events.cpp:1960
 msgid "Show fps."
 msgstr "Показати fps."
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:1962
 msgid "Save game."
 msgstr "Зберегти гру."
 
-#: src/menu_events.cpp:2080
+#: src/menu_events.cpp:1964
 msgid "Quit game."
 msgstr "Вийти з гри."
 
-#: src/menu_events.cpp:2084
+#: src/menu_events.cpp:1968
 msgid "Save and quit."
 msgstr "Зберегти та вийти."
 
-#: src/menu_events.cpp:2087
+#: src/menu_events.cpp:1971
 msgid "Ignore replay errors."
 msgstr "Ігнорувати помилки в повторі."
 
-#: src/menu_events.cpp:2089
+#: src/menu_events.cpp:1973
 msgid "Disable autosaves."
 msgstr "Вимкнути автозбереження."
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Перейти до наступного сценарію, або сценарію за 'id'"
 
-#: src/menu_events.cpp:2094
+#: src/menu_events.cpp:1978
 msgid "Choose next scenario"
 msgstr "Вибрати наступний сценарій."
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7422,11 +7470,11 @@ msgstr ""
 "Змінити номер ходу (і час дня), або збільшити його на один, якщо значення не "
 "вказане."
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid "[turn]"
 msgstr "[хід]"
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7434,282 +7482,282 @@ msgstr ""
 "Змінити ліміт ходів, або вимкнути його зовсім, якщо значення не вказане або "
 "це −1."
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid "[limit]"
 msgstr "[ліміт]"
 
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:1985
 msgid "Turn debug mode on."
 msgstr "Ввімкнути налагодження."
 
-#: src/menu_events.cpp:2103
+#: src/menu_events.cpp:1987
 msgid "Turn debug mode off."
 msgstr "Вимкнути налагодження."
 
-#: src/menu_events.cpp:2105 src/menu_events.cpp:2109
+#: src/menu_events.cpp:1989 src/menu_events.cpp:1993
 msgid "<command>[;<command>...]"
 msgstr "<команда>[;<команда>...]"
 
-#: src/menu_events.cpp:2105
+#: src/menu_events.cpp:1989
 msgid "Execute a Lua statement."
 msgstr "Виконати інструкцію Lua."
 
-#: src/menu_events.cpp:2107
+#: src/menu_events.cpp:1991
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Дати скриптам на Lua високий пріоритет."
 
-#: src/menu_events.cpp:2109
+#: src/menu_events.cpp:1993
 msgid "Set the command used by the custom command hotkey"
 msgstr "Змінити команду на гарячій клавіші."
 
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:1996
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Викликати діалог зміни сторін в мультиплеєрі."
 
-#: src/menu_events.cpp:2116
+#: src/menu_events.cpp:2000
 msgid "Launch the gamestate inspector"
 msgstr "Запустити Інспектор стану гри"
 
-#: src/menu_events.cpp:2118
+#: src/menu_events.cpp:2002
 msgid "Manage persistence data"
 msgstr "Управління постійними даними"
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "<name>[=<command>]"
 msgstr "<ім'я>[=<команда>]"
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "Set or show alias to a command"
 msgstr "Встановити/показати псевдонім команди"
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "<var>=<value>"
 msgstr "<змінна>=<значення>"
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "Set a scenario variable."
 msgstr "Задати змінну в сценарії."
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "<var>"
 msgstr "<змінна>"
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "Show a scenario variable."
 msgstr "Показати змінну сценарію."
 
-#: src/menu_events.cpp:2126
+#: src/menu_events.cpp:2010
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Поміняти змінну бійця. (Підтримуються лише ключі верхнього рівня.)"
 
-#: src/menu_events.cpp:2133
+#: src/menu_events.cpp:2017
 msgid "Discover all units in help."
 msgstr "Розкрити всіх бійців в довідці."
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2019
 msgid "'Undiscover' all units in help."
 msgstr "Згорнути всіх бійців в довідці."
 
-#: src/menu_events.cpp:2137
+#: src/menu_events.cpp:2021
 msgid "Create a unit."
 msgstr "Створити бійця."
 
-#: src/menu_events.cpp:2139
+#: src/menu_events.cpp:2023
 msgid "Toggle fog for the current player."
 msgstr "Перемкнути туман для поточного гравця."
 
-#: src/menu_events.cpp:2141
+#: src/menu_events.cpp:2025
 msgid "Toggle shroud for the current player."
 msgstr "Перемкнути пелену для поточного гравця."
 
-#: src/menu_events.cpp:2143
+#: src/menu_events.cpp:2027
 msgid "Give gold to the current player."
 msgstr "Дати золота поточному гравцеві."
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2029
 msgid "Fire a game event."
 msgstr "Запустити ігрову подію."
 
-#: src/menu_events.cpp:2148
+#: src/menu_events.cpp:2032
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Перемкнути покриття координат x, y на сітці."
 
-#: src/menu_events.cpp:2151
+#: src/menu_events.cpp:2035
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Перемкнути покриття кодів місцевості на сітці."
 
-#: src/menu_events.cpp:2154
+#: src/menu_events.cpp:2038
 msgid "Toggle planning mode."
 msgstr "Перемкнути режим планування."
 
-#: src/menu_events.cpp:2157
+#: src/menu_events.cpp:2041
 msgid "Access whiteboard options dialog."
 msgstr "Відкрити налаштування планувальника."
 
-#: src/menu_events.cpp:2200
+#: src/menu_events.cpp:2084
 msgid "Unknown debug level: '$level'."
 msgstr "Невідомий рівень відладки: '$level'."
 
-#: src/menu_events.cpp:2202 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2086 src/menu_events.cpp:2095
 msgid "error"
 msgstr "помилка"
 
-#: src/menu_events.cpp:2209
+#: src/menu_events.cpp:2093
 msgid "Unknown debug domain: '$domain'."
 msgstr "Невідомий домен відладки: '$domain'."
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2102
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Домен '$domain' перемкнутий на рівень '$level'."
 
-#: src/menu_events.cpp:2289
+#: src/menu_events.cpp:2173
 msgid "whisper to $receiver"
 msgstr "прошептати до $receiver"
 
-#: src/menu_events.cpp:2392 src/menu_events.cpp:2398 src/menu_events.cpp:2445
+#: src/menu_events.cpp:2276 src/menu_events.cpp:2282 src/menu_events.cpp:2329
 msgid "ignores list"
 msgstr "список ігнору"
 
-#: src/menu_events.cpp:2398
+#: src/menu_events.cpp:2282
 msgid "Added to ignore list: $nick"
 msgstr "Доданий в ігнор: $nick"
 
-#: src/menu_events.cpp:2401 src/menu_events.cpp:2419
+#: src/menu_events.cpp:2285 src/menu_events.cpp:2303
 msgid "Invalid username: $nick"
 msgstr "Недійсний нік: $nick"
 
-#: src/menu_events.cpp:2410 src/menu_events.cpp:2416 src/menu_events.cpp:2441
+#: src/menu_events.cpp:2294 src/menu_events.cpp:2300 src/menu_events.cpp:2325
 msgid "friends list"
 msgstr "перелік друзів"
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2300
 msgid "Added to friends list: $nick"
 msgstr "Доданий в перелік друзів: $nick"
 
-#: src/menu_events.cpp:2431
+#: src/menu_events.cpp:2315
 msgid "Removed from list: $nick"
 msgstr "Видалений зі списку: $nick"
 
-#: src/menu_events.cpp:2431 src/menu_events.cpp:2449
+#: src/menu_events.cpp:2315 src/menu_events.cpp:2333
 msgid "friends and ignores list"
 msgstr "списки друзів і ігнору"
 
-#: src/menu_events.cpp:2449
+#: src/menu_events.cpp:2333
 msgid "There are no players on your friends or ignore list."
 msgstr "У ваших списках друзів або ігнору нікого немає."
 
-#: src/menu_events.cpp:2454
+#: src/menu_events.cpp:2338
 msgid "version"
 msgstr "версія"
 
-#: src/menu_events.cpp:2470
+#: src/menu_events.cpp:2354
 msgid "registering with password *** and no email address"
 msgstr "реєструємо з паролем *** і без е-мейлу"
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2358
 msgid "registering with password *** and email address $email"
 msgstr "реєструємо з паролем *** і е-мейлом $email"
 
-#: src/menu_events.cpp:2477 src/menu_events.cpp:2488 src/menu_events.cpp:2506
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2361 src/menu_events.cpp:2372 src/menu_events.cpp:2390
+#: src/menu_events.cpp:2404
 msgid "nick registration"
 msgstr "реєстрація прізвиська"
 
-#: src/menu_events.cpp:2488
+#: src/menu_events.cpp:2372
 msgid "dropping your username"
 msgstr "видаляю ваш нік"
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2390
 msgid "setting $var to $value"
 msgstr "виставляю для $var значення $value"
 
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2404
 msgid "requesting information for user $nick"
 msgstr "запрошую інформацію про користувача $nick"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2521
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Не можу знайти мітку або бійця з текстом \"$search\"."
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2560
 msgid "Can't droid invalid side: '$side'."
 msgstr "Не можу перемкнути на ПК недійсну сторону: '$side'."
 
-#: src/menu_events.cpp:2681
+#: src/menu_events.cpp:2565
 msgid "Can't droid networked side: '$side'."
 msgstr "Не можу перемкнути на ПК мережну сторону: '$side'."
 
-#: src/menu_events.cpp:2699
+#: src/menu_events.cpp:2583
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Не можу перемкнути на ПК недійсну сторону: '$side'."
 
-#: src/menu_events.cpp:2715
+#: src/menu_events.cpp:2599
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "Не можу перемкнути на ПК недійсну сторону: '$side'."
 
-#: src/menu_events.cpp:2720
+#: src/menu_events.cpp:2604
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Не можу перемкнути на ПК мережну сторону: '$side'."
 
-#: src/menu_events.cpp:2725
+#: src/menu_events.cpp:2609
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Не можу перемкнути на ПК недійсну сторону: '$side'."
 
-#: src/menu_events.cpp:2774
+#: src/menu_events.cpp:2658
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Не можу змінити управління: недійсна сторона '$side'."
 
-#: src/menu_events.cpp:2784
+#: src/menu_events.cpp:2668
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Не можу змінити управління: сторона '$side' поза межами."
 
-#: src/menu_events.cpp:2799
+#: src/menu_events.cpp:2683
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Не можу змінити управління: недійсна сторона '$side'."
 
-#: src/menu_events.cpp:2805
+#: src/menu_events.cpp:2689
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Не можу змінити управління: сторона '$side' поза межами."
 
-#: src/menu_events.cpp:2925
+#: src/menu_events.cpp:2809
 msgid "Layers"
 msgstr "Шари"
 
-#: src/menu_events.cpp:2987
+#: src/menu_events.cpp:2871
 msgid "Choose Scenario (Debug!)"
 msgstr "Виберіть сценарій (Відладка!)"
 
-#: src/menu_events.cpp:3021
+#: src/menu_events.cpp:2905
 msgid "Debug mode activated!"
 msgstr "Налагодження ввімкнено!"
 
-#: src/menu_events.cpp:3024
+#: src/menu_events.cpp:2908
 msgid "Debug mode not available in network games"
 msgstr "У мережевій грі налагоджувальний режим недоступний"
 
-#: src/menu_events.cpp:3029
+#: src/menu_events.cpp:2913
 msgid "Debug mode deactivated!"
 msgstr "Налагодження вимкнено!"
 
-#: src/menu_events.cpp:3045
+#: src/menu_events.cpp:2929
 msgid "Unsafe Lua scripts."
 msgstr "Небезпечні скрипти на Lua."
 
-#: src/menu_events.cpp:3046
+#: src/menu_events.cpp:2930
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -7719,15 +7767,15 @@ msgstr ""
 "зробити? Якщо Ви завантажили аддони, не натискайте \"гаразд\"! Вони вмить "
 "захоплять Ваш комп'ютер. Ми Вас попередили."
 
-#: src/menu_events.cpp:3049
+#: src/menu_events.cpp:2933
 msgid "Unsafe mode enabled!"
 msgstr "Ввімкнений небезпечний режим!"
 
-#: src/menu_events.cpp:3093
+#: src/menu_events.cpp:2977
 msgid "Variable not found"
 msgstr "Змінна не знайдена"
 
-#: src/menu_events.cpp:3138
+#: src/menu_events.cpp:3022
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7735,24 +7783,24 @@ msgstr ""
 "Невідомий характер: '$alignment' має бути одним з: порядний, нейтральний, "
 "хаотичний або тіньовий."
 
-#: src/menu_events.cpp:3153
+#: src/menu_events.cpp:3037
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 "Ви точно хочете прибрати всю інформацію про відкритих бійців з довідки?"
 
-#: src/menu_events.cpp:3167
+#: src/menu_events.cpp:3051
 msgid "Invalid unit type"
 msgstr "Недійсний тип бійця"
 
-#: src/menu_events.cpp:3175
+#: src/menu_events.cpp:3059
 msgid "Invalid location"
 msgstr "Невірне місце"
 
-#: src/menu_events.cpp:3222
+#: src/menu_events.cpp:3106
 msgid "ai"
 msgstr "комп"
 
-#: src/menu_events.cpp:3230 src/menu_events.cpp:3258
+#: src/menu_events.cpp:3114 src/menu_events.cpp:3142
 msgid "prompt^Command:"
 msgstr "Команада:"
 
@@ -7823,38 +7871,38 @@ msgstr "Неможливо додати сокет до набору сокет�
 msgid "Could not send initial handshake"
 msgstr "Неможливо відправити дані для ініціалізації"
 
-#: src/pathfind/pathfind.cpp:714
+#: src/pathfind/pathfind.cpp:718
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Виявлена територія з ціною руху менше 1."
 
-#: src/play_controller.cpp:232
+#: src/play_controller.cpp:268
 msgid "time left for current turn"
 msgstr "залишилося часу на цей хід"
 
-#: src/play_controller.cpp:234 src/replay_controller.cpp:177
+#: src/play_controller.cpp:270 src/replay_controller.cpp:132
 msgid "current local time"
 msgstr "поточний місцевий час"
 
-#: src/play_controller.cpp:920
+#: src/play_controller.cpp:995
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 "Помилка синхронізації, немає сенсу продовжувати. Ви хочете зберегти гру?"
 
-#: src/play_controller.cpp:921 src/replay_controller.cpp:410
+#: src/play_controller.cpp:996
 msgid "Error details:"
 msgstr "Деталі помилки:"
 
-#: src/playmp_controller.cpp:159
+#: src/playmp_controller.cpp:152
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Скасування ходів, ще не переданих на сервер."
 
-#: src/playmp_controller.cpp:295
+#: src/playmp_controller.cpp:288
 msgid "Waiting for next scenario..."
 msgstr "Очікую наступний сценарій..."
 
-#: src/playmp_controller.cpp:375
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7870,169 +7918,67 @@ msgstr ""
 "\n"
 "Ви хочете зберегти журнал помилки?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:139
-msgid "Remaining gold: "
-msgstr "Залишок золота: "
-
-#: src/playsingle_controller.cpp:143
-msgid "Turns finished early: "
-msgstr "К-сть невикористаних ходів: "
-
-#: src/playsingle_controller.cpp:144
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "за хід"
-
-#: src/playsingle_controller.cpp:144
-msgid "Early finish bonus: "
-msgstr "Бонус швидкого завершення: "
-
-#: src/playsingle_controller.cpp:145
-#, fuzzy
-#| msgid "Turn bonus: "
-msgid "Total bonus: "
-msgstr "Бонус ходів: "
-
 #: src/playsingle_controller.cpp:147
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "Золото з сіл: "
-
-#: src/playsingle_controller.cpp:150
-#, fuzzy
-#| msgid "Carry over percentage: "
-msgid "Carryover percentage: "
-msgstr "Відсоток перенесення: "
-
-#: src/playsingle_controller.cpp:153
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "Бонусне золото: "
-
-#: src/playsingle_controller.cpp:155
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "Збережене золото: "
-
-#: src/playsingle_controller.cpp:168
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Ви почнете наступний сценарій з $gold золотим в додачу до мінімуму, що "
-"заданий сценарієм."
-msgstr[1] ""
-"Ви почнете наступний сценарій з $gold золотими в додачу до мінімуму, що "
-"заданий сценарієм."
-msgstr[2] ""
-"Ви почнете наступний сценарій з $gold золотими в додачу до мінімуму, що "
-"заданий сценарієм."
-
-#: src/playsingle_controller.cpp:176
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Ви почнете наступний сценарій із заданим для нього мінімумом золота."
-msgstr[1] ""
-"Ви почнете наступний сценарій із заданим для нього мінімумом золота."
-msgstr[2] ""
-"Ви почнете наступний сценарій із заданим для нього мінімумом золота."
-
-#: src/playsingle_controller.cpp:184
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Ви почнете наступний сценарій з $gold золотим, або з мінімумом, заданим в "
-"цьому сценарії - залежно від того, що більше."
-msgstr[1] ""
-"Ви почнете наступний сценарій з $gold золотими, або з мінімумом, заданим в "
-"цьому сценарії - залежно від того, що більше."
-msgstr[2] ""
-"Ви почнете наступний сценарій з $gold золотими, або з мінімумом, заданим в "
-"цьому сценарії - залежно від того, що більше."
-
-#: src/playsingle_controller.cpp:208
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Помилка"
 
-#: src/playsingle_controller.cpp:209
+#: src/playsingle_controller.cpp:148
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:277
 msgid "The game is over."
 msgstr "Кінець гри."
 
-#: src/playsingle_controller.cpp:359
+#: src/playsingle_controller.cpp:317
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "З'єднання обірване, гра не може бути продовжена. Хочете зберегти гру?"
 
-#: src/playsingle_controller.cpp:547
+#: src/playsingle_controller.cpp:409
 msgid "It is now $name|’s turn"
 msgstr "Зараз хід $name"
 
-#: src/playturn.cpp:261
+#: src/playturn.cpp:259
 msgid "Replace with AI"
 msgstr "Замінити комп'ютером"
 
-#: src/playturn.cpp:262
+#: src/playturn.cpp:260
 msgid "Replace with local player"
 msgstr "Замінити локальним гравцем"
 
-#: src/playturn.cpp:263
+#: src/playturn.cpp:261
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:264
+#: src/playturn.cpp:262
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Перервати гру"
 
-#: src/playturn.cpp:272 src/playturn.cpp:288
+#: src/playturn.cpp:270 src/playturn.cpp:286
 msgid "Replace with $player"
 msgstr "Замінити на $player"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:292
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player вийшов з гри. Що Ви робитимете?"
 
-#: src/replay_controller.cpp:409
-msgid ""
-"The replay is corrupt/out of sync. It might not make much sense to continue. "
-"Do you want to save the game?"
-msgstr ""
-"Повтор зіпсований або не синхронізований, немає сенсу продовжувати. Хочете "
-"зберегти гру?"
-
-#: src/reports.cpp:148 src/savegame.cpp:445
+#: src/reports.cpp:148 src/savegame.cpp:410
 msgid "Name: "
 msgstr "Ім'я: "
 
@@ -8254,12 +8200,12 @@ msgstr "Спостерігачі: "
 msgid " replay"
 msgstr " повтор"
 
-#: src/savegame.cpp:240 src/savegame.cpp:244
+#: src/savegame.cpp:213 src/savegame.cpp:217
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Увага: Завантажуваний файл пошкоджений. Але я спробую його завантажити.\n"
 
-#: src/savegame.cpp:299
+#: src/savegame.cpp:264
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -8267,7 +8213,7 @@ msgstr ""
 "Це збереження від занадто старої версії ($version_number|) і не може бути "
 "завантажене."
 
-#: src/savegame.cpp:307
+#: src/savegame.cpp:272
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -8275,64 +8221,69 @@ msgstr ""
 "Це збереження з іншої версії гри ($version_number|). Спробувати його "
 "завантажити?"
 
-#: src/savegame.cpp:349
+#: src/savegame.cpp:275
+msgid "Load Game"
+msgstr "Завантажити гру"
+
+#: src/savegame.cpp:314
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Це не мережне збереження"
 
-#: src/savegame.cpp:374
+#: src/savegame.cpp:339
 msgid "The game could not be saved: "
 msgstr "Гра не може бути збережена: "
 
-#: src/savegame.cpp:445
+#: src/savegame.cpp:410
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Збереження вже існує. Переписати його?"
 
-#: src/savegame.cpp:446
+#: src/savegame.cpp:411
 msgid "Overwrite?"
 msgstr "Перезаписати?"
 
-#: src/savegame.cpp:454
+#: src/savegame.cpp:419
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 "Імена збережень не повинні закінчуватися на '.gz' чи '.bz2'. Видаліть "
 "розширення."
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:469
 msgid "Saved"
 msgstr "Збережено"
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:469
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "Гру успішно зебережно"
 
-#: src/savegame.cpp:535 src/savegame.cpp:555
+#: src/savegame.cpp:500 src/savegame.cpp:520
 msgid "Could not write to file"
 msgstr "Не вдалося записати у файл"
 
-#: src/savegame.cpp:588
+#: src/savegame.cpp:553
 msgid "Save Replay"
 msgstr "Зберегти повтор"
 
-#: src/savegame.cpp:597
+#: src/savegame.cpp:562
 msgid "replay"
 msgstr "повтор"
 
-#: src/savegame.cpp:618
+#: src/savegame.cpp:583
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Автозбереження гри неможливе. Збережіть гру вручну."
 
-#: src/savegame.cpp:670
+#: src/savegame.cpp:635
 msgid "Save Game"
 msgstr "Зберегти гру"
 
-#: src/scripting/game_lua_kernel.cpp:1697
-msgid "Invalid value in the result key for [end_level]"
-msgstr "Невірне значення ключа [end_level]"
+#: src/scripting/game_lua_kernel.cpp:2970
+#: src/scripting/game_lua_kernel.cpp:3005
+msgid "input"
+msgstr ""
 
 #: src/serialization/parser.cpp:133
 msgid "Unexpected characters at line start"
@@ -8698,34 +8649,38 @@ msgstr ""
 msgid "September"
 msgstr ""
 
-#: src/strftime.cpp:73
+#: src/strftime.cpp:78
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/strftime.cpp:77
+#: src/strftime.cpp:82
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "AM"
 msgstr ""
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "PM"
 msgstr ""
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 #, fuzzy
 #| msgid "Name"
 msgid "am"
 msgstr "Назва"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "pm"
+msgstr ""
+
+#: src/synced_user_choice.cpp:331
+msgid "waiting for $desc from side(s)$sides"
 msgstr ""
 
 #: src/terrain.cpp:184
@@ -8758,88 +8713,143 @@ msgstr "Час дня"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/unit.cpp:1695 src/unit.cpp:1916 src/unit.cpp:1997
+#: src/unit.cpp:1729 src/unit.cpp:2076 src/unit.cpp:2169
 #: src/unit_attack_type.cpp:152
 msgid " and "
 msgstr " та "
 
-#: src/unit.cpp:1706
+#: src/unit.cpp:1740
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:1767
+#: src/unit.cpp:1801
 msgid "moves"
 msgstr "ходи"
 
-#: src/unit.cpp:1797 src/unit.cpp:1940
+#: src/unit.cpp:1817
+#, fuzzy
+#| msgid "Version: "
+msgid "vision"
+msgstr "Версія: "
+
+#: src/unit.cpp:1831
+#, fuzzy
+#| msgid "Warning: "
+msgid "jamming"
+msgstr "Попередження: "
+
+#: src/unit.cpp:1868 src/unit.cpp:2112
 msgid "XP to advance"
 msgstr "ДВ для поліпшення"
 
-#: src/unit.cpp:1933
+#: src/unit.cpp:2029
+#, fuzzy
+#| msgid "per turn"
+msgid "attack per turn"
+msgstr "за хід"
+
+#: src/unit.cpp:2030
+#, fuzzy
+#| msgid "per turn"
+msgid "attacks per turn"
+msgstr "за хід"
+
+#: src/unit.cpp:2055
+msgid "cost to recall"
+msgstr ""
+
+#: src/unit.cpp:2093
 msgid " move"
 msgstr " хід"
 
-#: src/unit.cpp:1948
+#: src/unit.cpp:2099
+#, fuzzy
+#| msgid "Version: "
+msgid " vision"
+msgstr "Версія: "
+
+#: src/unit.cpp:2105
+#, fuzzy
+#| msgid "Warning: "
+msgid " jamming"
+msgstr "Попередження: "
+
+#: src/unit.cpp:2120
 msgid "$effect_description per level"
 msgstr "$effect_description за рівень"
 
-#: src/unit_attack_type.cpp:235 src/unit_attack_type.cpp:315
+#: src/unit_attack_type.cpp:239 src/unit_attack_type.cpp:253
+#: src/unit_attack_type.cpp:380
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "пошкодження"
 msgstr[1] "пошкодження"
 msgstr[2] "пошкодження"
 
-#: src/unit_attack_type.cpp:246 src/unit_attack_type.cpp:322
+#: src/unit_attack_type.cpp:262 src/unit_attack_type.cpp:273
+#: src/unit_attack_type.cpp:387
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "удар"
 msgstr[1] "удари"
 msgstr[2] "ударів"
 
-#: src/unit_attack_type.cpp:258
+#: src/unit_attack_type.cpp:283 src/unit_attack_type.cpp:295
 #, no-c-format
 msgid "% accuracy"
 msgstr "% попадань"
 
-#: src/unit_attack_type.cpp:269
+#: src/unit_attack_type.cpp:304
+#, fuzzy
+#| msgid "% parry"
+msgid " parry"
+msgstr "% захисту"
+
+#: src/unit_attack_type.cpp:315
 #, no-c-format
 msgid "% parry"
 msgstr "% захисту"
 
-#: src/unit_types.cpp:850
+#: src/unit_attack_type.cpp:324 src/unit_attack_type.cpp:334
+msgid "movement point"
+msgid_plural "movement points"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/unit_types.cpp:853
 msgid "female^lawful"
 msgstr "порядна"
 
-#: src/unit_types.cpp:851
+#: src/unit_types.cpp:854
 msgid "female^neutral"
 msgstr "найтральна"
 
-#: src/unit_types.cpp:852
+#: src/unit_types.cpp:855
 msgid "female^chaotic"
 msgstr "хаотична"
 
-#: src/unit_types.cpp:853
+#: src/unit_types.cpp:856
 msgid "female^liminal"
 msgstr "тіньова"
 
-#: src/whiteboard/manager.cpp:1080
+#: src/whiteboard/manager.cpp:1082
 msgid "SHOW ALL allies’ plans"
 msgstr "Показати плани всіх союзників"
 
-#: src/whiteboard/manager.cpp:1081
+#: src/whiteboard/manager.cpp:1083
 msgid "HIDE ALL allies’ plans"
 msgstr "Сховати плани всіх союзників"
 
-#: src/whiteboard/manager.cpp:1095
+#: src/whiteboard/manager.cpp:1097
 msgid "Show plans for $player"
 msgstr "Показати плани $player"
 
-#: src/whiteboard/manager.cpp:1097
+#: src/whiteboard/manager.cpp:1099
 msgid "Hide plans for $player"
 msgstr "Сховати плани $player"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1102
 msgid "Whiteboard Options"
 msgstr "Параметри планувальника"
 
@@ -8852,6 +8862,69 @@ msgstr "Більше >"
 #: src/wmi_pager.cpp:51
 msgid "Previous Items"
 msgstr ""
+
+#~ msgid "English strings edition"
+#~ msgstr "Редагування англійського перекладу"
+
+#~ msgid "No Saved Games"
+#~ msgstr "Немає збережених ігор"
+
+#~ msgid ""
+#~ "There are no saved games to load.\n"
+#~ "\n"
+#~ "(Games are saved automatically when you complete a scenario)"
+#~ msgstr ""
+#~ "Немає збережених ігор, які можна завантажити.\n"
+#~ "\n"
+#~ "(Коли ви завершуєте сценарій, гра зберігається автоматично)"
+
+#~ msgid "Date"
+#~ msgstr "Дата"
+
+#~ msgid "Change difficulty"
+#~ msgstr "Змінити складність"
+
+#~ msgid "Change campaign difficulty before loading"
+#~ msgstr "Змінити складність кампанії перед завантаженням"
+
+#~ msgid "Show replay"
+#~ msgstr "Показати повтор"
+
+#~ msgid "Play the embedded replay from the saved game if applicable"
+#~ msgstr "Грати вкладений повтор із збереженої гри, якщо придатний"
+
+#~ msgid "Cancel orders"
+#~ msgstr "Скасувати накази"
+
+#~ msgid "Cancel any pending unit movements in the saved game"
+#~ msgstr "Скасувати будь-які заплановані рухи бійців у збереженій грі"
+
+#~ msgid "Delete Save"
+#~ msgstr "Видалити запис"
+
+#, fuzzy
+#~| msgid "Debug mode activated!"
+#~ msgid "Deactivate"
+#~ msgstr "Налагодження ввімкнено!"
+
+#~ msgid "Race"
+#~ msgstr "Раса"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "Створити бійця (Відладка!)"
+
+#~ msgid "gender^Random"
+#~ msgstr "Випадкова"
+
+#~ msgid ""
+#~ "The replay is corrupt/out of sync. It might not make much sense to "
+#~ "continue. Do you want to save the game?"
+#~ msgstr ""
+#~ "Повтор зіпсований або не синхронізований, немає сенсу продовжувати. "
+#~ "Хочете зберегти гру?"
+
+#~ msgid "Invalid value in the result key for [end_level]"
+#~ msgstr "Невірне значення ключа [end_level]"
 
 #~ msgid "Could not connect to host"
 #~ msgstr "Не вдалося приєднатись до вузла"

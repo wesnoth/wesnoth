@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2007-11-27 21:12+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -27,7 +27,9 @@ msgstr "SotBE"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Utmanande)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -37,7 +39,9 @@ msgstr "Soldat"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Svårt)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -47,7 +51,9 @@ msgstr "Krigare"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-msgid "(Nightmare)"
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
 msgstr "(Mardröm)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -238,7 +244,7 @@ msgid ""
 "arranged by the Northern Alliance — was between the local earls and the "
 "orcish tribes and didn’t have any direct connection with the Northern "
 "Alliance. The other — and perhaps the main — reason why the treaty held was "
-"that with the death of the Black Eye, the unity of the orcs was shattered "
+"that with the death of the Black-Eye, the unity of the orcs was shattered "
 "and they once again descended into inner squabbling. Thus the years that "
 "followed were relatively peaceful and prosperous — at least for the humans."
 msgstr ""
@@ -1484,7 +1490,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
-"and his warriors set off to Tirigaz."
+"and his warriors, set off to Tirigaz."
 msgstr ""
 "Kapou'e lämnade de flesta av sina mannar i Barag Gór, och gav sig av mot "
 "Tirigaz tillsammans med hans närmaste män och schamanerna."
@@ -2058,7 +2064,7 @@ msgstr ""
 msgid "(<i>Puke</i>)"
 msgstr ""
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:399
 msgid ""
 "Hold it right there! This oasis is ours! Begone or you all will be killed!"
@@ -2075,7 +2081,7 @@ msgstr ""
 "Hör nu, pysen, vi är mitt i en sandstorm, och har nästan ingen mat och inget "
 "vatten kvar. Vi kan inte gå en meter till utan att stanna till här."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:409
 msgid "I don’t care, get lost!"
 msgstr "Det struntar jag i, försvinn!"
@@ -2221,13 +2227,13 @@ msgstr ""
 "vi vila. Vi har tillräckligt med vapenmakt för att kunna ta hand om några "
 "alvtjuvskyttar. Om vi stöter på några så skär vi dem i bitar."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
 #, fuzzy
 msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr "Alver! Du hade rätt, Pirk, skogen är nerlusad av trädkramarna."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
 #, fuzzy
 msgid ""
@@ -2235,7 +2241,7 @@ msgid ""
 "weaklings."
 msgstr "Alver! Du hade rätt, Pirk, skogen är nerlusad av trädkramarna."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:213
 msgid "Blast it, the orcs have discovered us."
 msgstr "Tusan också, orcherna har upptäckt oss."
@@ -2245,7 +2251,7 @@ msgstr "Tusan också, orcherna har upptäckt oss."
 msgid "What is your purpose for trespassing on orcish territory?"
 msgstr "Vad har ni att skaffa på orchterritorium?"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Fool, do you really think we are going to tell you?"
 msgstr "Dåre, tror du verkligen att vi tänker berätta det?"
@@ -2611,7 +2617,7 @@ msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
-"leadership on it."
+"leadership of it."
 msgstr ""
 "Lämna dina mannar här, Kapou'e - för stunden är de säkra - och försvara "
 "Prestim. Under tiden så skall vi, nu när rådet åter är fulltaligt, begrunda "
@@ -4191,7 +4197,7 @@ msgstr "Bedrifter?"
 #, fuzzy
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
-"becomes no less than a boot-licking spy for the humans. Then goes on to "
+"becomes no less than a boot-licking spy for the humans. Then he goes on to "
 "engineer the death of half of the Great Council and in doing so makes "
 "himself directly responsible for the deaths of hundreds of orcs. And best of "
 "all, he is directly responsible for a bloody civil war right at the time "

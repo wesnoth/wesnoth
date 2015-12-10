@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -223,110 +223,121 @@ msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
 
-#. [advanced_preference]: type=boolean
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:191
+msgid "Editor recent files limit"
+msgstr ""
+
+#. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
+msgid ""
+"The maximum number of items to display on the Recent Files menu in the editor"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:203
 msgid "Show color cursors"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:193
+#: data/advanced_preferences.cfg:204
 msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:202
+#: data/advanced_preferences.cfg:213
 msgid "Joystick support"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:209
+#: data/advanced_preferences.cfg:220
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:219
+#: data/advanced_preferences.cfg:230
 msgid "Joystick: number of the scroll X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:229
+#: data/advanced_preferences.cfg:240
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:239
+#: data/advanced_preferences.cfg:250
 msgid "Joystick: number of the scroll Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:249
+#: data/advanced_preferences.cfg:260
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:259
+#: data/advanced_preferences.cfg:270
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:269
+#: data/advanced_preferences.cfg:280
 msgid "Joystick: number of the cursor X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:279
+#: data/advanced_preferences.cfg:290
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:289
+#: data/advanced_preferences.cfg:300
 msgid "Joystick: number of the cursor Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:299
+#: data/advanced_preferences.cfg:310
 msgid "Joystick: deadzone of the cursor stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:309
+#: data/advanced_preferences.cfg:320
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:319
+#: data/advanced_preferences.cfg:330
 msgid "Joystick: number of the mouse X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:329
+#: data/advanced_preferences.cfg:340
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:339
+#: data/advanced_preferences.cfg:350
 msgid "Joystick: number of the mouse Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:349
+#: data/advanced_preferences.cfg:360
 msgid "Joystick: deadzone of the mouse stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:359
+#: data/advanced_preferences.cfg:370
 msgid "Joystick: number of the thrust axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:369
+#: data/advanced_preferences.cfg:380
 msgid "Joystick: number of the thrust axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:379
+#: data/advanced_preferences.cfg:390
 msgid "Joystick: deadzone of the thruster"
 msgstr ""
 
@@ -334,21 +345,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2515 src/actions/attack.cpp:987
 msgid "poisoned"
 msgstr "venenita"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:3222
+#: data/lua/wml/objectives.lua:3758
 msgid "Gold carryover:"
 msgstr ""
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:3223
+#: data/lua/wml/objectives.lua:3759
 msgid "Notes:"
 msgstr ""
 
@@ -368,331 +379,325 @@ msgid "Artwork and Graphics"
 msgstr "Artlaboro kaj desegnado"
 
 #. [about]
-#: data/core/about.cfg:670
+#: data/core/about.cfg:678
 msgid "Music"
 msgstr "Muziko"
 
 #. [about]
-#: data/core/about.cfg:707
+#: data/core/about.cfg:715
 msgid "Sound Effects"
 msgstr "Sonefektoj"
 
 #. [about]
-#: data/core/about.cfg:723
+#: data/core/about.cfg:739
 msgid "Campaign Design"
 msgstr "Desegnado de kampanjoj"
 
 #. [about]
-#: data/core/about.cfg:802
+#: data/core/about.cfg:818
 msgid "Multiplayer Maps and Balancing"
 msgstr "Grupludaj mapoj kaj balancigo"
 
 #. [about]
-#: data/core/about.cfg:847
+#: data/core/about.cfg:863
 msgid "Packagers"
 msgstr "Pakaĵfarado"
 
 #. [about]
-#: data/core/about.cfg:927
+#: data/core/about.cfg:962
 msgid "Miscellaneous Contributors"
 msgstr "Diversaj kontribuantoj"
 
 #. [about]
-#: data/core/about.cfg:1392
+#: data/core/about.cfg:1457
 #, fuzzy
 msgid "Internationalization Managers"
 msgstr "+Traduk-meneĝeroj"
 
 #. [about]
-#: data/core/about.cfg:1417
-#, fuzzy
-msgid "English strings edition"
-msgstr "Angla (GB) traduko"
-
-#. [about]
-#: data/core/about.cfg:1424
+#: data/core/about.cfg:1482
 msgid "Afrikaans Translation"
 msgstr "Afrikansa traduko"
 
 #. [about]
-#: data/core/about.cfg:1444
+#: data/core/about.cfg:1502
 #, fuzzy
 msgid "Arabic Translation"
 msgstr "Serba traduko"
 
 #. [about]
-#: data/core/about.cfg:1451
+#: data/core/about.cfg:1509
 msgid "Basque Translation"
 msgstr "Eŭska tradulo"
 
 #. [about]
-#: data/core/about.cfg:1464
+#: data/core/about.cfg:1522
 msgid "Bulgarian Translation"
 msgstr "Bulgara traduko"
 
 #. [about]
-#: data/core/about.cfg:1483
+#: data/core/about.cfg:1541
 msgid "Catalan Translation"
 msgstr "Kataluna traduko"
 
 #. [about]
-#: data/core/about.cfg:1524
+#: data/core/about.cfg:1582
 msgid "Chinese Translation"
 msgstr "Ĉina traduko"
 
 #. [about]
-#: data/core/about.cfg:1598
+#: data/core/about.cfg:1656
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "Ĉina traduko"
 
 #. [about]
-#: data/core/about.cfg:1611
+#: data/core/about.cfg:1669
 #, fuzzy
 msgid "Croatian Translation"
 msgstr "Kataluna traduko"
 
 #. [about]
-#: data/core/about.cfg:1621
+#: data/core/about.cfg:1679
 msgid "Czech Translation"
 msgstr "Ĉeĥa traduko"
 
 #. [about]
-#: data/core/about.cfg:1681
+#: data/core/about.cfg:1739
 msgid "Danish Translation"
 msgstr "Dana traduko"
 
 #. [about]
-#: data/core/about.cfg:1712
+#: data/core/about.cfg:1770
 msgid "Dutch Translation"
 msgstr "Nederlanda traduko"
 
 #. [about]
-#: data/core/about.cfg:1776
+#: data/core/about.cfg:1834
 msgid "English (GB) Translation"
 msgstr "Angla (GB) traduko"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1857
 #, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "Angla (GB) traduko"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1875
 msgid "Esperanto Translation"
 msgstr "Esperanto traduko"
 
 #. [about]
-#: data/core/about.cfg:1836
+#: data/core/about.cfg:1894
 msgid "Estonian Translation"
 msgstr "Estona traduko"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1904
 msgid "Filipino Translation"
 msgstr "Filipina traduko"
 
 #. [about]
-#: data/core/about.cfg:1856
+#: data/core/about.cfg:1914
 msgid "Finnish Translation"
 msgstr "Finna traduko"
 
 #. [about]
-#: data/core/about.cfg:1902
+#: data/core/about.cfg:1960
 msgid "French Translation"
 msgstr "Franca traduko"
 
 #. [about]
-#: data/core/about.cfg:2064
+#: data/core/about.cfg:2122
 #, fuzzy
 msgid "Friulian Translation"
 msgstr "Filipina traduko"
 
 #. [about]
-#: data/core/about.cfg:2071
+#: data/core/about.cfg:2129
 msgid "Galician Translation"
 msgstr "Galega traduko"
 
 #. [about]
-#: data/core/about.cfg:2107
+#: data/core/about.cfg:2165
 msgid "German Translation"
 msgstr "Germana traduko"
 
 #. [about]
-#: data/core/about.cfg:2181
+#: data/core/about.cfg:2239
 msgid "Greek Translation"
 msgstr "Greka traduko"
 
 #. [about]
-#: data/core/about.cfg:2224
+#: data/core/about.cfg:2282
 msgid "Hebrew Translation"
 msgstr "Hebrea traduko"
 
 #. [about]
-#: data/core/about.cfg:2237
+#: data/core/about.cfg:2295
 msgid "Hungarian Translation"
 msgstr "Hungara traduko"
 
 #. [about]
-#: data/core/about.cfg:2298
+#: data/core/about.cfg:2356
 #, fuzzy
 msgid "Icelandic Translation"
 msgstr "Itala traduko"
 
 #. [about]
-#: data/core/about.cfg:2308
+#: data/core/about.cfg:2366
 msgid "Indonesian Translation"
 msgstr "Indonezia traduko"
 
 #. [about]
-#: data/core/about.cfg:2331
+#: data/core/about.cfg:2389
 #, fuzzy
 msgid "Irish Translation"
 msgstr "Turka traduko"
 
 #. [about]
-#: data/core/about.cfg:2338
+#: data/core/about.cfg:2396
 msgid "Italian Translation"
 msgstr "Itala traduko"
 
 #. [about]
-#: data/core/about.cfg:2385
+#: data/core/about.cfg:2443
 msgid "Japanese Translation"
 msgstr "Japana traduko"
 
 #. [about]
-#: data/core/about.cfg:2453
+#: data/core/about.cfg:2522
 msgid "Korean Translation"
 msgstr "Korea traduko"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2530
 msgid "Latin Translation"
 msgstr "Latina traduko"
 
 #. [about]
-#: data/core/about.cfg:2487
+#: data/core/about.cfg:2556
 #, fuzzy
 msgid "Latvian Translation"
 msgstr "Latina traduko"
 
 #. [about]
-#: data/core/about.cfg:2498
+#: data/core/about.cfg:2571
 msgid "Lithuanian Translation"
 msgstr "Litova traduko"
 
 #. [about]
-#: data/core/about.cfg:2523
+#: data/core/about.cfg:2596
 #, fuzzy
 msgid "Macedonian Translation"
 msgstr "Indonezia traduko"
 
 #. [about]
-#: data/core/about.cfg:2530
+#: data/core/about.cfg:2603
 #, fuzzy
 msgid "Marathi Translation"
 msgstr "Latina traduko"
 
 #. [about]
-#: data/core/about.cfg:2539
+#: data/core/about.cfg:2612
 msgid "Norwegian Translation"
 msgstr "Norvega traduko"
 
 #. [about]
-#: data/core/about.cfg:2564
+#: data/core/about.cfg:2637
 #, fuzzy
 msgid "Old English Translation"
 msgstr "Angla (GB) traduko"
 
 #. [about]
-#: data/core/about.cfg:2582
+#: data/core/about.cfg:2655
 msgid "Polish Translation"
 msgstr "Pola traduko"
 
 #. [about]
-#: data/core/about.cfg:2626
+#: data/core/about.cfg:2699
 msgid "Portuguese Translation"
 msgstr "Portugala traduko"
 
 #. [about]
-#: data/core/about.cfg:2640
+#: data/core/about.cfg:2713
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugala traduko (Brazilo)"
 
 #. [about]
-#: data/core/about.cfg:2694
+#: data/core/about.cfg:2767
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "Estona traduko"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2775
 msgid "Russian Translation"
 msgstr "Rusa traduko"
 
 #. [about]
-#: data/core/about.cfg:2794
+#: data/core/about.cfg:2867
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Galega traduko"
 
 #. [about]
-#: data/core/about.cfg:2803
+#: data/core/about.cfg:2876
 msgid "Serbian Translation"
 msgstr "Serba traduko"
 
 #. [about]
-#: data/core/about.cfg:2822
+#: data/core/about.cfg:2895
 msgid "Slovak Translation"
 msgstr "Slovaka traduko"
 
 #. [about]
-#: data/core/about.cfg:2851
+#: data/core/about.cfg:2924
 msgid "Slovenian Translation"
 msgstr "Slovena traduko"
 
 #. [about]
-#: data/core/about.cfg:2867
+#: data/core/about.cfg:2940
 msgid "Spanish Translation"
 msgstr "Hispana traduko"
 
 #. [about]
-#: data/core/about.cfg:2949
+#: data/core/about.cfg:3022
 msgid "Swedish Translation"
 msgstr "Sveda traduko"
 
 #. [about]
-#: data/core/about.cfg:2990
+#: data/core/about.cfg:3063
 msgid "Turkish Translation"
 msgstr "Turka traduko"
 
 #. [about]
-#: data/core/about.cfg:3012
+#: data/core/about.cfg:3085
 #, fuzzy
 msgid "Ukrainian Translation"
 msgstr "Estona traduko"
 
 #. [about]
-#: data/core/about.cfg:3025
+#: data/core/about.cfg:3098
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencia traduko"
 
 #. [about]
-#: data/core/about.cfg:3038
+#: data/core/about.cfg:3111
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Ĉina traduko"
 
 #. [about]
-#: data/core/about.cfg:3057
+#: data/core/about.cfg:3130
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "Ĉina traduko"
 
 #. [about]
-#: data/core/about.cfg:3064
+#: data/core/about.cfg:3137
 msgid "Bots"
 msgstr "Robotoj"
 
@@ -1538,41 +1543,41 @@ msgid ""
 "currently_doing_special_description"
 msgstr ""
 
-#: data/core/macros/deprecated-utils.cfg:17
+#: data/core/macros/deprecated-utils.cfg:37
 #, fuzzy
 msgid "<small>(early finish bonus)</small>"
 msgstr "Bonifiko pro rapida fino:"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:20 data/lua/wml/objectives.lua:3284
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:3820
 #, fuzzy
 msgid "Early finish bonus."
 msgstr "Bonifiko pro rapida fino:"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:23 data/lua/wml/objectives.lua:3286
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:3822
 #, fuzzy
 msgid "No early finish bonus."
 msgstr "Bonifiko pro rapida fino:"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:26 data/lua/wml/objectives.lua:3294
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:3830
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/deprecated-utils.cfg:29
+#: data/core/macros/deprecated-utils.cfg:49
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/deprecated-utils.cfg:33
+#: data/core/macros/deprecated-utils.cfg:53
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/deprecated-utils.cfg:37
+#: data/core/macros/deprecated-utils.cfg:57
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -2665,7 +2670,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:762
+#: data/core/macros/utils.cfg:688
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -2871,7 +2876,7 @@ msgstr "Netrapaseblaj montoj"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:261
-#: src/game_initialization/multiplayer_lobby.cpp:821
+#: src/game_initialization/multiplayer_lobby.cpp:823
 #: src/gui/dialogs/lobby/lobby_data.cpp:341
 msgid "Fog"
 msgstr "Nebulo"
@@ -2880,20 +2885,20 @@ msgstr "Nebulo"
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:267
 #: src/game_initialization/multiplayer_configure.cpp:64
-#: src/game_initialization/multiplayer_lobby.cpp:825
-#: src/game_initialization/multiplayer_lobby.cpp:831
+#: src/game_initialization/multiplayer_lobby.cpp:827
+#: src/game_initialization/multiplayer_lobby.cpp:833
 #: src/gui/dialogs/lobby/lobby_data.cpp:344
 #: src/gui/dialogs/lobby/lobby_data.cpp:347
 msgid "Shroud"
 msgstr "Malkovro de mapo"
 
 #. [core]: id=default
-#: data/cores.cfg:3
+#: data/cores.cfg:5
 msgid "Wesnoth (Default)"
 msgstr ""
 
 #. [core]: id=default
-#: data/cores.cfg:6
+#: data/cores.cfg:8
 msgid ""
 "Wesnoth has many different sagas waiting to be played. Fight to regain the "
 "throne of Wesnoth, of which you are the legitimate heir... step into the "
@@ -2910,7 +2915,7 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default
-#: data/cores.cfg:10
+#: data/cores.cfg:12
 msgid ""
 "(17 Single Player Campaigns with 211 Scenarios,\n"
 "One Multiplayer Campaign with 14 Scenarios,\n"
@@ -2919,12 +2924,12 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:19
+#: data/cores.cfg:21
 msgid "Wesnoth (Failsafe)"
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:22
+#: data/cores.cfg:24
 msgid "Loads only mainline Wesnoth data without any add-ons."
 msgstr ""
 
@@ -3191,175 +3196,186 @@ msgstr ""
 # undead
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2515 src/actions/attack.cpp:987
 #, fuzzy
 msgid "female^poisoned"
 msgstr "nemortinta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:994
 #, fuzzy
 msgid "female^slowed"
 msgstr "lojala"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:994
 msgid "slowed"
 msgstr "malrapidiga"
 
 # undead
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2518 src/actions/attack.cpp:1001
 #, fuzzy
 msgid "female^petrified"
 msgstr "nemortinta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2518 src/actions/attack.cpp:1001
 msgid "petrified"
 msgstr ""
 
 # undead
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2519
 #, fuzzy
 msgid "female^unhealable"
 msgstr "nemortinta"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2519
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3220
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:3756
+#: src/game_initialization/mp_game_utils.cpp:72
 msgid "Victory:"
 msgstr "Venko se:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3221
+#: data/lua/wml/objectives.lua:3757
 msgid "Defeat:"
 msgstr "Malvenko se:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3241
+#: data/lua/wml/objectives.lua:3777
 msgid "(%d turns left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3243
+#: data/lua/wml/objectives.lua:3779
 msgid "(this turn left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3296
+#: data/lua/wml/objectives.lua:3832
 msgid "%d%% of gold carried over to the next scenario."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1040 src/dialogs.cpp:973
-#: src/game_initialization/depcheck.cpp:488
+#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:92
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1041 src/dialogs.cpp:974 src/dialogs.cpp:1567
-#: src/dialogs.cpp:1673 src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_create.cpp:104
-#: src/game_initialization/multiplayer_wait.cpp:197
+#: data/scenario-test.cfg:1031 src/dialogs.cpp:1459 src/dialogs.cpp:1565
+#: src/game_initialization/multiplayer_connect.cpp:390
+#: src/game_initialization/multiplayer_create.cpp:105
+#: src/game_initialization/multiplayer_wait.cpp:198
 msgid "Cancel"
 msgstr "Nuligo"
 
-#: data/scenario-test.cfg:4018
+#: data/scenario-test.cfg:4003
 msgid "very long"
 msgstr ""
 
-#: data/scenario-test.cfg:4019
+#: data/scenario-test.cfg:4004
 #, fuzzy
 msgid "electrical"
 msgstr "mekanika"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:545
+#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:557
 msgid "Play"
 msgstr "Ludi"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:546
+#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:558
 msgid "continuous replay"
 msgstr ""
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:559
+#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:571
 msgid "Stop"
 msgstr "Halti"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:560
+#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:572
 msgid "pause at end of turn"
 msgstr "paŭzo fine de movo"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:573
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:585
 msgid "Reset"
 msgstr ""
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:574
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:586
 msgid "reset to beginning"
 msgstr ""
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:599
 msgid "Next Turn"
 msgstr "Sekva movo"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:588
+#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:600
 msgid "play turn"
 msgstr "ludi movon"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:613
 msgid "Next Side"
 msgstr "Sekva flanko"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:602
+#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:614
 #, fuzzy
 msgid "play side turn"
 msgstr "por turno"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:627
 #, fuzzy
 #| msgid "Next Side"
 msgid "Next Move"
 msgstr "Sekva flanko"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:616
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:628
 #, fuzzy
 msgid "play single move"
 msgstr "por turno"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:640
 #, fuzzy
 msgid "Point of view"
 msgstr "Pocio de putro"
 
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:499
+#, fuzzy
+#| msgid "Computer Player"
+msgid "Continue Play"
+msgstr "Komputilo"
+
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:500
+msgid "Exit the replay mode and continue playing normally."
+msgstr ""
+
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:500 data/themes/_initial.cfg:640
+#: data/themes/_initial.cfg:512 data/themes/_initial.cfg:652
 #, fuzzy
 #| msgid "Slovak Translation"
 msgid "Skip animation"
@@ -3367,7 +3383,7 @@ msgstr "Slovaka traduko"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:530 src/dialogs.cpp:882
+#: data/themes/_initial.cfg:542 src/dialogs.cpp:882
 msgid "Replay"
 msgstr ""
 
@@ -3413,8 +3429,8 @@ msgstr "Fini scenejon"
 #. [label]: id=selected-label-hp
 #: data/themes/classic.cfg:215 data/themes/default.cfg:132
 #: data/themes/unit_box.cfg:373 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1736
-#: src/unit.cpp:1927
+#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1770
+#: src/unit.cpp:2087
 msgid "HP"
 msgstr "Vivoj"
 
@@ -4258,24 +4274,24 @@ msgstr ""
 msgid "Close"
 msgstr "Fermu"
 
-#: src/actions/attack.cpp:350 src/actions/attack.cpp:576
-#: src/actions/attack.cpp:1224
+#: src/actions/attack.cpp:351 src/actions/attack.cpp:577
+#: src/actions/attack.cpp:1235
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Elektita ne valida erao"
 
-#: src/actions/attack.cpp:355
+#: src/actions/attack.cpp:356
 #, fuzzy
 msgid "An invalid defender weapon got selected."
 msgstr "Elektita ne valida erao"
 
-#: src/actions/create.cpp:514
+#: src/actions/create.cpp:339
 #, fuzzy
 #| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
 msgstr "Vi ne havas komandanton, tial ne eblas varbi."
 
-#: src/actions/create.cpp:518
+#: src/actions/create.cpp:343
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders are able to recall that unit."
@@ -4283,7 +4299,7 @@ msgstr ""
 "Por ke vi povu varbi aŭ alvoki milit-unuojn, vi devas havi en fortreso "
 "komandanton."
 
-#: src/actions/create.cpp:522
+#: src/actions/create.cpp:347
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
@@ -4291,21 +4307,21 @@ msgstr ""
 "Por ke vi povu varbi aŭ alvoki milit-unuojn, vi devas havi en fortreso "
 "komandanton."
 
-#: src/actions/create.cpp:526
+#: src/actions/create.cpp:351
 #, fuzzy
 #| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Vi ne havas en fortreso lokon, kien vi povu varbi milit-unuon."
 
-#: src/actions/create.cpp:536 src/actions/create.cpp:672
+#: src/actions/create.cpp:361 src/actions/create.cpp:497
 msgid "An unrecognized error has occurred."
 msgstr ""
 
-#: src/actions/create.cpp:650
+#: src/actions/create.cpp:475
 msgid "You don’t have a leader to recruit with."
 msgstr "Vi ne havas komandanton, tial ne eblas varbi."
 
-#: src/actions/create.cpp:654
+#: src/actions/create.cpp:479
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders are able to recruit that unit."
@@ -4313,7 +4329,7 @@ msgstr ""
 "Por ke vi povu varbi aŭ alvoki milit-unuojn, vi devas havi en fortreso "
 "komandanton."
 
-#: src/actions/create.cpp:658
+#: src/actions/create.cpp:483
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -4321,7 +4337,7 @@ msgstr ""
 "Por ke vi povu varbi aŭ alvoki milit-unuojn, vi devas havi en fortreso "
 "komandanton."
 
-#: src/actions/create.cpp:662
+#: src/actions/create.cpp:487
 #, fuzzy
 #| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
@@ -4393,28 +4409,28 @@ msgstr "Mi enŝutas kampanjon..."
 msgid "Requesting distribution terms..."
 msgstr ""
 
-#: src/addon/client.cpp:143
+#: src/addon/client.cpp:140
 #, fuzzy
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:177
+#: src/addon/client.cpp:174
 #, fuzzy
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:201
 #, fuzzy
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:218
+#: src/addon/client.cpp:215
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
 
-#: src/addon/client.cpp:306 src/addon/manager_ui.cpp:810
+#: src/addon/client.cpp:303 src/addon/manager_ui.cpp:828
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -4472,7 +4488,7 @@ msgstr ""
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon/info.cpp:222 src/dialogs.cpp:1600
+#: src/addon/info.cpp:222 src/dialogs.cpp:1492
 msgid "unit_byte^B"
 msgstr ""
 
@@ -4524,14 +4540,14 @@ msgstr ""
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:372
-#: src/addon/manager_ui.cpp:387 src/addon/manager_ui.cpp:392
+#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:373
+#: src/addon/manager_ui.cpp:405 src/addon/manager_ui.cpp:410
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "Servilo anoncis erearon: \""
 
-#: src/addon/manager_ui.cpp:184
+#: src/addon/manager_ui.cpp:185
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -4541,40 +4557,40 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:193
+#: src/addon/manager_ui.cpp:194
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "Princino"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:659
 msgid "Author"
 msgstr "Aŭtoro"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:635
-#: src/dialogs.cpp:299 src/dialogs.cpp:474 src/dialogs.cpp:919
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:653
+#: src/dialogs.cpp:299 src/dialogs.cpp:474
 msgid "Name"
 msgstr "Nomo"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:639
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:657
 msgid "Version"
 msgstr "Versio"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:659
 msgid "Size"
 msgstr "Grandeco"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:668
 #: src/dialogs.cpp:298 src/dialogs.cpp:473
-#: src/help/help_topic_generators.cpp:477 src/menu_events.cpp:1016
+#: src/help/help_topic_generators.cpp:478
 msgid "Type"
 msgstr "Tipo"
 
-#: src/addon/manager_ui.cpp:241
+#: src/addon/manager_ui.cpp:242
 #, fuzzy
 msgid "Install Dependencies"
 msgstr "Princino"
 
-#: src/addon/manager_ui.cpp:242
+#: src/addon/manager_ui.cpp:243
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -4584,7 +4600,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:278
+#: src/addon/manager_ui.cpp:279
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -4594,153 +4610,168 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:282
+#: src/addon/manager_ui.cpp:283
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:306
+#: src/addon/manager_ui.cpp:307
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:310
+#: src/addon/manager_ui.cpp:311
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:315
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:318
+#: src/addon/manager_ui.cpp:319
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you really wish to continue?"
 msgstr "Ĉu vi volas savi vian ludon?"
 
-#: src/addon/manager_ui.cpp:320 src/addon/manager_ui.cpp:363
-#: src/addon/manager_ui.cpp:1128 src/game_initialization/multiplayer.cpp:292
+#: src/addon/manager_ui.cpp:321 src/addon/manager_ui.cpp:364
+#: src/addon/manager_ui.cpp:1146 src/game_initialization/multiplayer.cpp:291
 msgid "Confirm"
 msgstr "Konfirmi"
 
-#: src/addon/manager_ui.cpp:360
+#: src/addon/manager_ui.cpp:361
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:376 src/addon/manager_ui.cpp:395
-#: src/game_initialization/multiplayer_wait.cpp:464
+#: src/addon/manager_ui.cpp:377 src/addon/manager_ui.cpp:413
+#: src/game_initialization/multiplayer_wait.cpp:435
 msgid "Response"
 msgstr "Respondo"
 
-#: src/addon/manager_ui.cpp:389
+#: src/addon/manager_ui.cpp:392 src/game_initialization/multiplayer.cpp:277
+#: src/game_launcher.cpp:780
+#, fuzzy
+msgid "Warning"
+msgstr "Mateno"
+
+#: src/addon/manager_ui.cpp:393
+msgid ""
+"The remote version of this add-on is greater or equal to the version being "
+"uploaded. Do you really wish to continue?"
+msgstr ""
+
+#: src/addon/manager_ui.cpp:402
+msgid "Invalid icon path. Make sure the path points to a valid image."
+msgstr ""
+
+#: src/addon/manager_ui.cpp:407
 msgid "Terms"
 msgstr "Kondiĉoj"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 #, fuzzy
 msgid "New Version"
 msgstr "Versio"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 #, fuzzy
 msgid "Old Version"
 msgstr "Versio"
 
-#: src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:668
 msgid "Downloads"
 msgstr "Enŝutoj"
 
-#: src/addon/manager_ui.cpp:770
+#: src/addon/manager_ui.cpp:788
 #, fuzzy
 msgid "Publish: $addon_title"
 msgstr "Publiku kampanjon:"
 
-#: src/addon/manager_ui.cpp:779
+#: src/addon/manager_ui.cpp:797
 #, fuzzy
 #| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
 msgstr "Forigu aldonaĵon:"
 
-#: src/addon/manager_ui.cpp:806
+#: src/addon/manager_ui.cpp:824
 #, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "Sur ĉi tiu servilo estas neniaj disponeblaj kampanjoj."
 
-#: src/addon/manager_ui.cpp:807
+#: src/addon/manager_ui.cpp:825
 #, fuzzy
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "Sur ĉi tiu servilo estas neniaj disponeblaj kampanjoj."
 
-#: src/addon/manager_ui.cpp:829 src/dialogs.cpp:570 src/dialogs.cpp:944
-#: src/menu_events.cpp:1049
+#: src/addon/manager_ui.cpp:847 src/dialogs.cpp:570
 msgid "Filter: "
 msgstr "Filtrilo:"
 
-#: src/addon/manager_ui.cpp:839
+#: src/addon/manager_ui.cpp:857
 msgid "Description"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:860
 #, fuzzy
 msgid "Update All"
 msgstr "Muro de groto"
 
-#: src/addon/manager_ui.cpp:849
+#: src/addon/manager_ui.cpp:867
 msgid "filter^Options"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 msgid "Add-on Installed"
 msgstr "Aldonaĵo instalita"
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 #, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-on Updated"
 msgstr "Aldonaĵo forigita"
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "La aldonaĵo estas instalita"
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "La aldonaĵo estas instalita"
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Installed"
 msgstr "Aldonaĵo instalita"
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 #, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-ons Updated"
 msgstr "Aldonaĵo forigita"
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 msgid "All add-ons installed successfully."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 msgid "Installation Failed"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 #, fuzzy
 msgid "Update Failed"
 msgstr "Muro de groto"
 
-#: src/addon/manager_ui.cpp:963
+#: src/addon/manager_ui.cpp:981
 #, fuzzy
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
@@ -4748,29 +4779,29 @@ msgid_plural ""
 msgstr[0] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 msgstr[1] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 
-#: src/addon/manager_ui.cpp:1006 src/addon/manager_ui.cpp:1016
-#: src/addon/manager_ui.cpp:1224
+#: src/addon/manager_ui.cpp:1024 src/addon/manager_ui.cpp:1034
+#: src/addon/manager_ui.cpp:1242
 #, fuzzy
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Eraro dum komunikado kun servero."
 
-#: src/addon/manager_ui.cpp:1034 src/addon/manager_ui.cpp:1247
+#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
 msgid "Network communication error."
 msgstr "Eraro dum reta komunikado."
 
-#: src/addon/manager_ui.cpp:1037 src/addon/manager_ui.cpp:1040
-#: src/addon/manager_ui.cpp:1250 src/addon/manager_ui.cpp:1253
+#: src/addon/manager_ui.cpp:1055 src/addon/manager_ui.cpp:1058
+#: src/addon/manager_ui.cpp:1268 src/addon/manager_ui.cpp:1271
 msgid "Remote host disconnected."
 msgstr "Servilo deŝaltiĝis"
 
-#: src/addon/manager_ui.cpp:1043 src/addon/manager_ui.cpp:1256
+#: src/addon/manager_ui.cpp:1061 src/addon/manager_ui.cpp:1274
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Okazis eraro dum kreo de instaldosieroj."
 
-#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
+#: src/addon/manager_ui.cpp:1070 src/addon/manager_ui.cpp:1283
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -4778,22 +4809,22 @@ msgid ""
 "Error message: $msg"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:1058 src/addon/manager_ui.cpp:1271
+#: src/addon/manager_ui.cpp:1076 src/addon/manager_ui.cpp:1289
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:1072
+#: src/addon/manager_ui.cpp:1090
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "kampanjo instalita"
 
-#: src/addon/manager_ui.cpp:1123
+#: src/addon/manager_ui.cpp:1141
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:1149
+#: src/addon/manager_ui.cpp:1167
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -4803,14 +4834,14 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:1159
+#: src/addon/manager_ui.cpp:1177
 #, fuzzy
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Aldonaĵo ne forigeblas - dosiero mankas."
 msgstr[1] "Aldonaĵo ne forigeblas - dosiero mankas."
 
-#: src/addon/manager_ui.cpp:1166
+#: src/addon/manager_ui.cpp:1184
 #, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-on Deleted"
@@ -4818,14 +4849,14 @@ msgid_plural "Add-ons Deleted"
 msgstr[0] "Aldonaĵo forigita"
 msgstr[1] "Aldonaĵo forigita"
 
-#: src/addon/manager_ui.cpp:1168
+#: src/addon/manager_ui.cpp:1186
 #, fuzzy
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 msgstr[1] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 
-#: src/addon/manager_ui.cpp:1238
+#: src/addon/manager_ui.cpp:1256
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
@@ -4873,7 +4904,7 @@ msgstr "Neniu uzebla armilo"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/attack_prediction_display.cpp:537 src/mouse_events.cpp:1075
+#: src/attack_prediction_display.cpp:551 src/mouse_events.cpp:1075
 msgid "Damage Calculations"
 msgstr "Vundiĝelkalkulo"
 
@@ -4882,8 +4913,8 @@ msgstr "Vundiĝelkalkulo"
 msgid "Chat message"
 msgstr "Mesaĝo:"
 
-#: src/desktop/windows_tray_notification.cpp:108 src/game_launcher.cpp:383
-#: src/game_launcher.cpp:1035
+#: src/desktop/windows_tray_notification.cpp:141 src/game_launcher.cpp:392
+#: src/game_launcher.cpp:1054
 msgid "The Battle for Wesnoth"
 msgstr "Batalo pri Vesnot"
 
@@ -4964,8 +4995,8 @@ msgstr "Varbu"
 msgid "Select unit:"
 msgstr "Elektu milit-unuon:"
 
-#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:387
-#: src/help/help_topic_generators.cpp:408
+#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:409
 msgid "Traits"
 msgstr "Ecoj"
 
@@ -5005,7 +5036,7 @@ msgstr "Trejnado"
 msgid "Test scenario"
 msgstr "Fini scenejon"
 
-#: src/dialogs.cpp:884 src/savegame.cpp:681
+#: src/dialogs.cpp:884 src/savegame.cpp:646
 msgid "Turn"
 msgstr "turno"
 
@@ -5021,78 +5052,25 @@ msgstr "Komplikeco:"
 msgid "Version: "
 msgstr "Versio:"
 
-#: src/dialogs.cpp:910
-msgid "No Saved Games"
-msgstr "Nenio estas registrita"
-
-#: src/dialogs.cpp:911
-#, fuzzy
-msgid ""
-"There are no saved games to load.\n"
-"\n"
-"(Games are saved automatically when you complete a scenario)"
-msgstr ""
-"Ne eblas alŝuti ludon, ĉar nenia estas savita.\n"
-"(Ludo saviĝas aŭtomate post trairo de scenejo)"
-
-#: src/dialogs.cpp:919
-msgid "Date"
-msgstr "Dato"
-
-#: src/dialogs.cpp:936 src/savegame.cpp:310
-msgid "Load Game"
-msgstr "Legi ludon"
-
-#: src/dialogs.cpp:951
-#, fuzzy
-#| msgid "Difficulty"
-msgid "Change difficulty"
-msgstr "Komplikeco"
-
-#: src/dialogs.cpp:954
-msgid "Change campaign difficulty before loading"
-msgstr ""
-
-#: src/dialogs.cpp:962
-msgid "Show replay"
-msgstr "Montru registron"
-
-#: src/dialogs.cpp:964
-msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
-
-#: src/dialogs.cpp:968
-#, fuzzy
-msgid "Cancel orders"
-msgstr "Nuligo"
-
-#: src/dialogs.cpp:970
-msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
-
-#: src/dialogs.cpp:977
-msgid "Delete Save"
-msgstr "Forviŝu registritan"
-
-#: src/dialogs.cpp:1036
+#: src/dialogs.cpp:928
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:1166 src/dialogs.cpp:1310
+#: src/dialogs.cpp:1058 src/dialogs.cpp:1202
 msgid "level"
 msgstr "Nivelo"
 
-#: src/dialogs.cpp:1179 src/dialogs.cpp:1323
-#: src/help/help_topic_generators.cpp:449
+#: src/dialogs.cpp:1071 src/dialogs.cpp:1215
+#: src/help/help_topic_generators.cpp:450
 msgid "HP: "
 msgstr "Sano:"
 
-#: src/dialogs.cpp:1182 src/dialogs.cpp:1326
+#: src/dialogs.cpp:1074 src/dialogs.cpp:1218
 msgid "XP: "
 msgstr "Spertoj:"
 
-#: src/dialogs.cpp:1186 src/dialogs.cpp:1330
-#: src/help/help_topic_generators.cpp:450
+#: src/dialogs.cpp:1078 src/dialogs.cpp:1222
+#: src/help/help_topic_generators.cpp:451
 msgid "Moves: "
 msgstr "Movoj:"
 
@@ -5124,68 +5102,68 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%t.  %m. %j"
 
-#: src/game_config.cpp:371
+#: src/game_config.cpp:383
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Ne valida koloro"
 
-#: src/game_config_manager.cpp:185 src/game_config_manager.cpp:193
-#: src/game_config_manager.cpp:204
+#: src/game_config_manager.cpp:189 src/game_config_manager.cpp:197
+#: src/game_config_manager.cpp:208
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:186
+#: src/game_config_manager.cpp:190
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:187 src/game_config_manager.cpp:196
-#: src/game_config_manager.cpp:208
+#: src/game_config_manager.cpp:191 src/game_config_manager.cpp:200
+#: src/game_config_manager.cpp:212
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:194 src/game_config_manager.cpp:205
-#: src/game_config_manager.cpp:227
+#: src/game_config_manager.cpp:198 src/game_config_manager.cpp:209
+#: src/game_config_manager.cpp:231
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:195
+#: src/game_config_manager.cpp:199
 #, fuzzy
 msgid "The ID is already in use."
 msgstr "La ludo finiĝis."
 
-#: src/game_config_manager.cpp:206
+#: src/game_config_manager.cpp:210
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:207
+#: src/game_config_manager.cpp:211
 #, fuzzy
 #| msgid "No era information found."
 msgid "File not found."
 msgstr "Neniu informo pri erao troveblas"
 
-#: src/game_config_manager.cpp:226 src/game_config_manager.cpp:237
+#: src/game_config_manager.cpp:230 src/game_config_manager.cpp:241
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:228
+#: src/game_config_manager.cpp:232
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:229
+#: src/game_config_manager.cpp:233
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:242
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:239
+#: src/game_config_manager.cpp:243
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (Ludo nun finiĝas)"
 
-#: src/game_config_manager.cpp:311
+#: src/game_config_manager.cpp:300
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5193,7 +5171,7 @@ msgid ""
 "loading add-ons."
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:305
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5201,28 +5179,28 @@ msgid ""
 "default core files."
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game_config_manager.cpp:323
+#: src/game_config_manager.cpp:312
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game_config_manager.cpp:449
+#: src/game_config_manager.cpp:438
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 msgstr[1] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 
-#: src/game_config_manager.cpp:453
+#: src/game_config_manager.cpp:442
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:463 src/game_launcher.cpp:998
+#: src/game_events/pump.cpp:463 src/game_launcher.cpp:1017
 #, fuzzy
 msgid "Error: "
 msgstr "Eraro"
@@ -5240,8 +5218,8 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_initialization/configure_engine.cpp:127
-#: src/game_initialization/create_engine.cpp:651
+#: src/game_initialization/configure_engine.cpp:126
+#: src/game_initialization/create_engine.cpp:633
 msgid "$login|’s game"
 msgstr "ludas $login"
 
@@ -5250,45 +5228,45 @@ msgstr "ludas $login"
 msgid "Team"
 msgstr "Teamo"
 
-#: src/game_initialization/connect_engine.cpp:947
+#: src/game_initialization/connect_engine.cpp:976
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Anonima loka ludanto"
 
-#: src/game_initialization/connect_engine.cpp:952
-#: src/game_initialization/connect_engine.cpp:1243
-#: src/game_initialization/multiplayer_wait.cpp:518
+#: src/game_initialization/connect_engine.cpp:981
+#: src/game_initialization/connect_engine.cpp:1267
+#: src/game_initialization/multiplayer_wait.cpp:489
 msgid "Computer Player"
 msgstr "Komputilo"
 
-#: src/game_initialization/connect_engine.cpp:1000
+#: src/game_initialization/connect_engine.cpp:1029
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1240
+#: src/game_initialization/connect_engine.cpp:1264
 msgid "Network Player"
 msgstr "Reta ludanto"
 
-#: src/game_initialization/connect_engine.cpp:1242
+#: src/game_initialization/connect_engine.cpp:1266
 msgid "Local Player"
 msgstr "Loka ludanto"
 
-#: src/game_initialization/connect_engine.cpp:1244
+#: src/game_initialization/connect_engine.cpp:1268
 msgid "Empty"
 msgstr "Nenio"
 
-#: src/game_initialization/connect_engine.cpp:1247
+#: src/game_initialization/connect_engine.cpp:1271
 #, fuzzy
 msgid "Reserved"
 msgstr "Servilo:"
 
-#: src/game_initialization/connect_engine.cpp:1251
+#: src/game_initialization/connect_engine.cpp:1275
 msgid "--give--"
 msgstr ""
 
 #: src/game_initialization/create_engine.cpp:170
-#: src/game_initialization/create_engine.cpp:1020
+#: src/game_initialization/create_engine.cpp:1002
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -5368,20 +5346,20 @@ msgstr "Mi ne kapablas trovi komandanton por frakcio $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/mp_game_utils.cpp:73
+#: src/game_initialization/mp_game_utils.cpp:74
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Venko:\n"
 "@Venku aliajn komandantojn"
 
-#: src/game_initialization/mp_game_utils.cpp:92
+#: src/game_initialization/mp_game_utils.cpp:93
 msgid "Cannot find era $era"
 msgstr "Mi ne kapablas trovi eraon $era"
 
-#: src/game_initialization/mp_game_utils.cpp:134
-#: src/game_initialization/multiplayer.cpp:255
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/mp_game_utils.cpp:135
+#: src/game_initialization/multiplayer.cpp:254
+#: src/game_initialization/multiplayer.cpp:339
 msgid "Connection timed out"
 msgstr "Aliĝtempo pasis"
 
@@ -5390,17 +5368,17 @@ msgstr "Aliĝtempo pasis"
 msgid "Defaults"
 msgstr "Standarda"
 
-#: src/game_initialization/multiplayer.cpp:171
-#: src/game_initialization/multiplayer.cpp:214
+#: src/game_initialization/multiplayer.cpp:170
+#: src/game_initialization/multiplayer.cpp:213
 msgid "Connecting to Server..."
 msgstr "Mi aliĝas al servilo..."
 
-#: src/game_initialization/multiplayer.cpp:181
+#: src/game_initialization/multiplayer.cpp:180
 #, fuzzy
 msgid "Reading from Server..."
 msgstr "Mi aliĝas al servilo..."
 
-#: src/game_initialization/multiplayer.cpp:197
+#: src/game_initialization/multiplayer.cpp:196
 #, fuzzy
 #| msgid ""
 #| "The server requires version '$version1' while you are using version "
@@ -5411,88 +5389,83 @@ msgid ""
 msgstr ""
 "La servilo bezonas version '$version1' kaj via versio estas: '$version2'"
 
-#: src/game_initialization/multiplayer.cpp:208
+#: src/game_initialization/multiplayer.cpp:207
 msgid "Server-side redirect loop"
 msgstr "Servilo alidirektas ronde"
 
-#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:266
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:276
+#: src/game_initialization/multiplayer.cpp:275
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "Ĉu vi volas savi vian ludon?"
 
-#: src/game_initialization/multiplayer.cpp:278 src/game_launcher.cpp:766
-#, fuzzy
-msgid "Warning"
-msgstr "Mateno"
-
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:321
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:362
 #, fuzzy
 msgid "You must login first."
 msgstr "Al ĉi servilo vi devas aliĝi"
 
-#: src/game_initialization/multiplayer.cpp:365
+#: src/game_initialization/multiplayer.cpp:364
 msgid "The nickname ‘$nick’ is already taken."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:366
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:371
+#: src/game_initialization/multiplayer.cpp:370
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:374
+#: src/game_initialization/multiplayer.cpp:373
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:376
+#: src/game_initialization/multiplayer.cpp:375
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:377
+#: src/game_initialization/multiplayer.cpp:376
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:379
-#: src/game_initialization/multiplayer.cpp:381
+#: src/game_initialization/multiplayer.cpp:378
+#: src/game_initialization/multiplayer.cpp:380
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:382
+#: src/game_initialization/multiplayer.cpp:381
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:385
+#: src/game_initialization/multiplayer.cpp:384
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:388
+#: src/game_initialization/multiplayer.cpp:387
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:390
+#: src/game_initialization/multiplayer.cpp:389
 msgid "You have made too many login attempts."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:609
+#: src/game_initialization/multiplayer.cpp:619
 msgid "No sides found. At least one side or starting position must be defined."
 msgstr ""
 
@@ -5503,7 +5476,7 @@ msgid "Generic"
 msgstr "Ĝeneralaj komandoj"
 
 #: src/game_initialization/multiplayer_configure.cpp:61
-#: src/game_initialization/multiplayer_lobby.cpp:355
+#: src/game_initialization/multiplayer_lobby.cpp:357
 msgid "Use map settings"
 msgstr "Uzu pozicion el mapo"
 
@@ -5693,21 +5666,21 @@ msgstr "Bonifiko pro agoj:"
 
 #: src/game_initialization/multiplayer_connect.cpp:58
 #: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_wait.cpp:587
+#: src/game_initialization/multiplayer_wait.cpp:595
 msgid "("
 msgstr "("
 
 #: src/game_initialization/multiplayer_connect.cpp:58
 #: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:627
+#: src/game_initialization/multiplayer_wait.cpp:587
+#: src/game_initialization/multiplayer_wait.cpp:598
 msgid ")"
 msgstr ")"
 
 #: src/game_initialization/multiplayer_connect.cpp:60
 #: src/game_initialization/multiplayer_connect.cpp:260
-#: src/game_initialization/multiplayer_wait.cpp:626
+#: src/game_initialization/multiplayer_wait.cpp:597
 msgid "+"
 msgstr "+"
 
@@ -5744,7 +5717,7 @@ msgid "Team/Color"
 msgstr "Koloro"
 
 #: src/game_initialization/multiplayer_connect.cpp:386
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_wait.cpp:595
 #: src/leader_scroll_dialog.cpp:54 src/menu_events.cpp:215
 msgid "Income"
 msgstr "Enspezo"
@@ -5754,9 +5727,11 @@ msgid "I’m Ready"
 msgstr "Mi pretas"
 
 #: src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_lobby.cpp:1036
-#: src/game_initialization/multiplayer_wait.cpp:197
-#: src/hotkey/command_executor.cpp:522 src/hotkey/command_executor.cpp:695
+#: src/game_initialization/multiplayer_lobby.cpp:1039
+#: src/game_initialization/multiplayer_wait.cpp:198
+#: src/gui/dialogs/synced_choice_wait.cpp:104
+#: src/hotkey/command_executor.cpp:529 src/hotkey/command_executor.cpp:702
+#: src/quit_confirmation.cpp:41
 msgid "Quit"
 msgstr "Fino"
 
@@ -5778,34 +5753,33 @@ msgstr "Mi atendas aliĝon de ludantoj..."
 msgid "Waiting for players to choose factions..."
 msgstr "Mi atendas aliĝon de ludantoj..."
 
-#: src/game_initialization/multiplayer_create.cpp:85
-#: src/game_initialization/multiplayer_lobby.cpp:1033
+#: src/game_initialization/multiplayer_create.cpp:86
+#: src/game_initialization/multiplayer_lobby.cpp:1036
 msgid "Create Game"
 msgstr "Kreu ludon"
 
-#: src/game_initialization/multiplayer_create.cpp:93
+#: src/game_initialization/multiplayer_create.cpp:94
 #, fuzzy
 msgid "Filter:"
 msgstr "Filtrilo:"
 
-#: src/game_initialization/multiplayer_create.cpp:94
-#: src/game_initialization/multiplayer_create.cpp:476
+#: src/game_initialization/multiplayer_create.cpp:95
+#: src/game_initialization/multiplayer_create.cpp:464
 msgid "Number of players: any"
 msgstr ""
 
-#: src/game_initialization/multiplayer_create.cpp:95
+#: src/game_initialization/multiplayer_create.cpp:96
 #, fuzzy
 #| msgid "Random start time"
 msgid "Random map options:"
 msgstr "Hazarda komenc-tempo"
 
-#: src/game_initialization/multiplayer_create.cpp:96
-#: src/game_initialization/multiplayer_lobby.cpp:698
-#: src/help/help_impl.cpp:529
+#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_lobby.cpp:700 src/help/help_impl.cpp:529
 msgid "Era:"
 msgstr "Erao:"
 
-#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_create.cpp:98
 #, fuzzy
 #| msgid "No multiplayer sides available in this game"
 msgid ""
@@ -5813,32 +5787,27 @@ msgid ""
 "for this game."
 msgstr "En ĉi tiu ludo jam nenia flanko disponeblas"
 
-#: src/game_initialization/multiplayer_create.cpp:99
-#: src/game_initialization/multiplayer_lobby.cpp:725
+#: src/game_initialization/multiplayer_create.cpp:100
+#: src/game_initialization/multiplayer_lobby.cpp:727
 #, fuzzy
 msgid "Modifications:"
 msgstr "Nevalida koloro"
 
-#: src/game_initialization/multiplayer_create.cpp:103
+#: src/game_initialization/multiplayer_create.cpp:104
 msgid "Next"
 msgstr "Sekva"
 
-#: src/game_initialization/multiplayer_create.cpp:105
+#: src/game_initialization/multiplayer_create.cpp:106
 msgid "Regenerate"
 msgstr "Denove kreu"
 
-#: src/game_initialization/multiplayer_create.cpp:106
+#: src/game_initialization/multiplayer_create.cpp:107
 msgid "Settings..."
 msgstr "Alĝustigoj..."
 
-#: src/game_initialization/multiplayer_create.cpp:107
+#: src/game_initialization/multiplayer_create.cpp:108
 msgid "Load Game..."
 msgstr "Legado de ludo..."
-
-#: src/game_initialization/multiplayer_create.cpp:108
-#: src/game_initialization/multiplayer_create.cpp:369
-msgid "Activate"
-msgstr ""
 
 #: src/game_initialization/multiplayer_create.cpp:128
 #, fuzzy
@@ -5885,134 +5854,129 @@ msgstr "Neniu erao troveblas."
 msgid "No eras found"
 msgstr "Mi ne kapablas trovi eraojn"
 
-#: src/game_initialization/multiplayer_create.cpp:204
+#: src/game_initialization/multiplayer_create.cpp:199
 #, fuzzy
 msgid ""
 "Modifications:\n"
 "None found."
 msgstr "Nevalida koloro"
 
-#: src/game_initialization/multiplayer_create.cpp:206
-#: src/game_initialization/multiplayer_create.cpp:367
-msgid "Deactivate"
-msgstr ""
-
-#: src/game_initialization/multiplayer_create.cpp:319
+#: src/game_initialization/multiplayer_create.cpp:312
 #, fuzzy
 msgid "The level is invalid."
 msgstr "La ludo finiĝis."
 
-#: src/game_initialization/multiplayer_create.cpp:421
+#: src/game_initialization/multiplayer_create.cpp:409
 msgid "Players: "
 msgstr "Ludantoj:"
 
-#: src/game_initialization/multiplayer_create.cpp:441
+#: src/game_initialization/multiplayer_create.cpp:429
 msgid "Size: "
 msgstr "Grandeco:"
 
-#: src/game_initialization/multiplayer_create.cpp:478
+#: src/game_initialization/multiplayer_create.cpp:466
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "Nomo de ludo:"
 
-#: src/game_initialization/multiplayer_create.cpp:584 src/unit_types.cpp:474
+#: src/game_initialization/multiplayer_create.cpp:572 src/unit_types.cpp:477
 #, fuzzy
 msgid "No description available."
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/game_initialization/multiplayer_lobby.cpp:145
+#: src/game_initialization/multiplayer_lobby.cpp:147
 msgid "--no games open--"
 msgstr "--neniu malfermita ludo--"
 
-#: src/game_initialization/multiplayer_lobby.cpp:182
+#: src/game_initialization/multiplayer_lobby.cpp:184
 #, fuzzy
 msgid " (Unknown Era)"
 msgstr "Nekonata erao"
 
-#: src/game_initialization/multiplayer_lobby.cpp:190
+#: src/game_initialization/multiplayer_lobby.cpp:192
 msgid " (Need to download addons)"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:192
+#: src/game_initialization/multiplayer_lobby.cpp:194
 #, fuzzy
 msgid " (Outdated addons)"
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/game_initialization/multiplayer_lobby.cpp:476
+#: src/game_initialization/multiplayer_lobby.cpp:478
 #, fuzzy
 #| msgid "End Scenario"
 msgid "Scenario:"
 msgstr "Fini scenejon"
 
-#: src/game_initialization/multiplayer_lobby.cpp:497
+#: src/game_initialization/multiplayer_lobby.cpp:499
 #: src/gui/dialogs/lobby/lobby_data.cpp:300
 msgid "Remote scenario"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:511
+#: src/game_initialization/multiplayer_lobby.cpp:513
 #: src/gui/dialogs/lobby/lobby_data.cpp:308
 msgid "Unknown scenario: $scenario_id"
 msgstr "Nekonata scenejo: $scenario_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:519
+#: src/game_initialization/multiplayer_lobby.cpp:521
 #: src/gui/dialogs/lobby/lobby_data.cpp:313
 msgid "Unknown scenario"
 msgstr "Nekonata scenejo"
 
-#: src/game_initialization/multiplayer_lobby.cpp:530
+#: src/game_initialization/multiplayer_lobby.cpp:532
 #, fuzzy
 #| msgid "Campaign Design"
 msgid "Campaign:"
 msgstr "Desegnado de kampanjoj"
 
-#: src/game_initialization/multiplayer_lobby.cpp:564
+#: src/game_initialization/multiplayer_lobby.cpp:566
 #, fuzzy
 #| msgid "Campaign: $campaign_name"
 msgid "Unknown campaign: $campaign_id"
 msgstr "Kampanjo: $campaign_name"
 
-#: src/game_initialization/multiplayer_lobby.cpp:667
+#: src/game_initialization/multiplayer_lobby.cpp:669
 msgid ""
 "Host's version of $addon is too old: host's version $host_ver < your version "
 "$local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:680
+#: src/game_initialization/multiplayer_lobby.cpp:682
 msgid ""
 "Your version of $addon is out of date: host's version $host_ver > your "
 "version $local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:710
+#: src/game_initialization/multiplayer_lobby.cpp:712
 #: src/gui/dialogs/lobby/lobby_data.cpp:215
 msgid "Unknown era: $era_id"
 msgstr "Nekonata erao: $era_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:714
+#: src/game_initialization/multiplayer_lobby.cpp:716
 #: src/gui/dialogs/lobby/lobby_data.cpp:220
 msgid "Unknown era"
 msgstr "Nekonata erao"
 
-#: src/game_initialization/multiplayer_lobby.cpp:740
+#: src/game_initialization/multiplayer_lobby.cpp:742
 msgid " (missing)"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:763
+#: src/game_initialization/multiplayer_lobby.cpp:765
 msgid "Missing addon: $id"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:790
+#: src/game_initialization/multiplayer_lobby.cpp:792
 #: src/gui/dialogs/lobby/lobby_data.cpp:319
 msgid "Reloaded game"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:806
+#: src/game_initialization/multiplayer_lobby.cpp:808
 #: src/gui/dialogs/lobby/lobby_data.cpp:330
 msgid "Turn "
 msgstr "Movo"
 
-#: src/game_initialization/multiplayer_lobby.cpp:810
+#: src/game_initialization/multiplayer_lobby.cpp:812
 #: src/gui/dialogs/lobby/lobby_data.cpp:335
 #, fuzzy
 msgid "Vacant Slot:"
@@ -6020,136 +5984,136 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "Vaka loko"
 msgstr[1] "Vaka loko"
 
-#: src/game_initialization/multiplayer_lobby.cpp:813
+#: src/game_initialization/multiplayer_lobby.cpp:815
 #, fuzzy
 msgid "Password Required"
 msgstr "Pasvorto:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:835
+#: src/game_initialization/multiplayer_lobby.cpp:837
 #: src/gui/dialogs/lobby/lobby_data.cpp:349
 msgid "none"
 msgstr "nenio"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1026
-#: src/game_initialization/multiplayer_wait.cpp:196
+#: src/game_initialization/multiplayer_lobby.cpp:1028
+#: src/game_initialization/multiplayer_wait.cpp:197
 msgid "Game Lobby"
 msgstr "Atendejo"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1031
+#: src/game_initialization/multiplayer_lobby.cpp:1034
 msgid "Observe Game"
 msgstr "Observu ludon"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1032
+#: src/game_initialization/multiplayer_lobby.cpp:1035
 msgid "Join Game"
 msgstr "Aliĝu al ludo"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1035
+#: src/game_initialization/multiplayer_lobby.cpp:1038
 msgid "Preferences"
 msgstr "Preferencoj"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1037
+#: src/game_initialization/multiplayer_lobby.cpp:1040
 #, fuzzy
 msgid "Apply filter"
 msgstr "Filtrilo:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1038
+#: src/game_initialization/multiplayer_lobby.cpp:1041
 msgid "Invert"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1039
+#: src/game_initialization/multiplayer_lobby.cpp:1042
 #, fuzzy
 msgid "Vacant slots"
 msgstr "Vaka loko"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1040
+#: src/game_initialization/multiplayer_lobby.cpp:1043
 msgid "Friends in game"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1041
+#: src/game_initialization/multiplayer_lobby.cpp:1044
 #, fuzzy
 msgid "Search:"
 msgstr "Serĉu"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1050
+#: src/game_initialization/multiplayer_lobby.cpp:1053
 #, fuzzy
 msgid "Normal Replays"
 msgstr "Registri reludon"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1051
+#: src/game_initialization/multiplayer_lobby.cpp:1054
 #, fuzzy
 msgid "Quick Replays"
 msgstr " registrado"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1052
+#: src/game_initialization/multiplayer_lobby.cpp:1055
 msgid "Enter Blindfolded"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1056
+#: src/game_initialization/multiplayer_lobby.cpp:1059
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1057
+#: src/game_initialization/multiplayer_lobby.cpp:1060
 msgid "Do not show the map until given control of a side"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1070
+#: src/game_initialization/multiplayer_lobby.cpp:1073
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1073
+#: src/game_initialization/multiplayer_lobby.cpp:1076
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1077
+#: src/game_initialization/multiplayer_lobby.cpp:1080
 msgid "Only show games that have at least one vacant slot"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1081
+#: src/game_initialization/multiplayer_lobby.cpp:1084
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1087
+#: src/game_initialization/multiplayer_lobby.cpp:1090
 msgid ""
 "Only show games whose title, description, era or mods contain the entered "
 "text"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1192
+#: src/game_initialization/multiplayer_lobby.cpp:1195
 #, fuzzy
 #| msgid "No eras found."
 msgid "Incompatible user-made content."
 msgstr "Neniu erao troveblas."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1193
+#: src/game_initialization/multiplayer_lobby.cpp:1196
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons which "
 "are incompatible with your version. You might suggest to them that they "
 "update their add-ons."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1196
-#: src/game_initialization/multiplayer_lobby.cpp:1211
+#: src/game_initialization/multiplayer_lobby.cpp:1199
+#: src/game_initialization/multiplayer_lobby.cpp:1214
 #, fuzzy
 #| msgid "Details"
 msgid "Details:"
 msgstr "Detaloj"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1207
+#: src/game_initialization/multiplayer_lobby.cpp:1210
 msgid "Missing user-made content."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1208
+#: src/game_initialization/multiplayer_lobby.cpp:1211
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join. Do you want to try to install them?"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1246
+#: src/game_initialization/multiplayer_lobby.cpp:1249
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby, please report this at bugs.wesnoth.org."
@@ -6169,161 +6133,229 @@ msgstr "Elektu milit-unuon:"
 msgid "$sender is messaging you, and you accept whispers from friends only."
 msgstr ""
 
-#: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2296
+#: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2180
 msgid "whisper: $sender"
 msgstr ""
 
-#: src/game_initialization/multiplayer_wait.cpp:149
+#: src/game_initialization/multiplayer_wait.cpp:150
 msgid "Leader: "
 msgstr "Komandanto:"
 
-#: src/game_initialization/multiplayer_wait.cpp:152 src/menu_events.cpp:1039
+#: src/game_initialization/multiplayer_wait.cpp:153
 msgid "Gender: "
 msgstr "Sekso:"
 
-#: src/game_initialization/multiplayer_wait.cpp:155
+#: src/game_initialization/multiplayer_wait.cpp:156
 msgid "Recruits: "
 msgstr "Varbitaj:"
 
-#: src/game_initialization/multiplayer_wait.cpp:198
+#: src/game_initialization/multiplayer_wait.cpp:199
 msgid "Waiting for game to start..."
 msgstr "Mi atendas komencon de ludo..."
 
-#: src/game_initialization/multiplayer_wait.cpp:351
+#: src/game_initialization/multiplayer_wait.cpp:322
 msgid "No era information found."
 msgstr "Neniu informo pri erao troveblas"
 
-#: src/game_initialization/multiplayer_wait.cpp:355
+#: src/game_initialization/multiplayer_wait.cpp:326
 msgid "No multiplayer sides found"
 msgstr "Ne estas difinitaj flankoj en reta ludo"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:370
 #, fuzzy
 msgid "Choose your faction:"
 msgstr "Elektu vian flankon:"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:370
 msgid "Starting position: "
 msgstr ""
 
-#: src/game_initialization/multiplayer_wait.cpp:521
+#: src/game_initialization/multiplayer_wait.cpp:492
 msgid "(Empty slot)"
 msgstr "(Vaka loko)"
 
-#: src/game_initialization/multiplayer_wait.cpp:526
+#: src/game_initialization/multiplayer_wait.cpp:497
 msgid "(Reserved for $playername)"
 msgstr ""
 
-#: src/game_initialization/multiplayer_wait.cpp:529
+#: src/game_initialization/multiplayer_wait.cpp:500
 msgid "(Vacant slot)"
 msgstr "(Vaka loko)"
 
-#: src/game_initialization/multiplayer_wait.cpp:536 src/menu_events.cpp:2392
-#: src/menu_events.cpp:2410
+#: src/game_initialization/multiplayer_wait.cpp:507 src/menu_events.cpp:2276
+#: src/menu_events.cpp:2294
 #, fuzzy
 msgid "(empty)"
 msgstr "Nenio"
 
-#: src/game_initialization/multiplayer_wait.cpp:620
+#: src/game_initialization/multiplayer_wait.cpp:591
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_initialization/multiplayer_wait.cpp:664
+#: src/game_initialization/multiplayer_wait.cpp:635
 msgid "Getting game data..."
 msgstr "Mi akiras datojn de ludo..."
 
+#: src/game_initialization/playcampaign.cpp:66
+msgid "Remaining gold: "
+msgstr "Restanta oro:"
+
+#: src/game_initialization/playcampaign.cpp:70
+msgid "Turns finished early: "
+msgstr "Ŝparitaj tiroj:"
+
+#: src/game_initialization/playcampaign.cpp:71
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "por turno"
+
+#: src/game_initialization/playcampaign.cpp:71
+msgid "Early finish bonus: "
+msgstr "Bonifiko pro rapida fino:"
+
+#: src/game_initialization/playcampaign.cpp:72
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Total bonus: "
+msgstr "Bonifiko por movo:"
+
+#: src/game_initialization/playcampaign.cpp:74
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "Oro/Vilaĝo:"
+
 #: src/game_initialization/playcampaign.cpp:77
+msgid "Carryover percentage: "
+msgstr ""
+
+#: src/game_initialization/playcampaign.cpp:80
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "Bonifiko:"
+
+#: src/game_initialization/playcampaign.cpp:82
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "Ŝparita oro:"
+
+#: src/game_initialization/playcampaign.cpp:95
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/game_initialization/playcampaign.cpp:103
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/game_initialization/playcampaign.cpp:111
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/game_initialization/playcampaign.cpp:141
 msgid "Scenario Report"
 msgstr "Raporto pri scenejo"
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:143
 msgid "Victory"
 msgstr "Venko"
 
-#: src/game_initialization/playcampaign.cpp:80
+#: src/game_initialization/playcampaign.cpp:144
 msgid "You have emerged victorious!"
 msgstr "Vi venkis!"
 
-#: src/game_initialization/playcampaign.cpp:82
+#: src/game_initialization/playcampaign.cpp:146
 msgid "Defeat"
 msgstr "Malvenko"
 
-#: src/game_initialization/playcampaign.cpp:83
+#: src/game_initialization/playcampaign.cpp:147
 msgid "You have been defeated!"
 msgstr "Vi malvenkis!"
 
-#: src/game_initialization/playcampaign.cpp:147
-#: src/game_initialization/playcampaign.cpp:151
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:969
+#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:988
 msgid "The game could not be loaded: "
 msgstr "Ne eblis alŝuti ludon:"
 
-#: src/game_initialization/playcampaign.cpp:158
-#: src/game_initialization/playcampaign.cpp:162
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:971
+#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:990
 msgid "Error while playing the game: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game_initialization/playcampaign.cpp:165
-#: src/game_initialization/playcampaign.cpp:169
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:991
+#: src/game_initialization/playcampaign.cpp:307 src/game_launcher.cpp:1010
 msgid "The game map could not be loaded: "
 msgstr "Ne eblis alŝuti ludmapon:"
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:973
+#: src/game_initialization/playcampaign.cpp:310 src/game_launcher.cpp:992
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:305
+#: src/game_initialization/playcampaign.cpp:312
 msgid "Error while reading the WML: "
 msgstr "Eraro dum legado de WML:"
 
-#: src/game_initialization/playcampaign.cpp:343
-#: src/playsingle_controller.cpp:319
+#: src/game_initialization/playcampaign.cpp:350
+#: src/playsingle_controller.cpp:277
 msgid "Game Over"
 msgstr "Fino de ludo"
 
-#: src/game_initialization/playcampaign.cpp:344
+#: src/game_initialization/playcampaign.cpp:351
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:419
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nekonata scenejo: '$scenario|'"
 
-#: src/game_initialization/singleplayer.cpp:41
+#: src/game_initialization/singleplayer.cpp:40
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/game_launcher.cpp:726 src/game_launcher.cpp:744
+#: src/game_launcher.cpp:740 src/game_launcher.cpp:758
 msgid "The file you have tried to load is corrupt"
 msgstr "Dosiero, kiun vi volis legi, estas damaĝita."
 
-#: src/game_launcher.cpp:729 src/game_launcher.cpp:747 src/savegame.cpp:195
-#: src/savegame.cpp:343
+#: src/game_launcher.cpp:743 src/game_launcher.cpp:761
+#: src/hotkey_handler_sp.cpp:309 src/savegame.cpp:168 src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "La dosiero, kiun vi volis ŝarĝi, estas damaĝita: '"
 
-#: src/game_launcher.cpp:737
+#: src/game_launcher.cpp:751
 msgid "File I/O Error while reading the game"
 msgstr "Eraro ĉe legado de lud-dosiero"
 
-#: src/game_launcher.cpp:739
+#: src/game_launcher.cpp:753
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "Eraro ĉe legado de lud-dosiero"
 
-#: src/game_launcher.cpp:766
+#: src/game_launcher.cpp:780
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
 "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 
-#: src/game_launcher.cpp:967
+#: src/game_launcher.cpp:986
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Eraro ĉe ludado:"
@@ -6374,6 +6406,14 @@ msgstr ""
 #: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "Eraro"
+
+#: src/gui/dialogs/synced_choice_wait.cpp:105
+#: src/hotkey/command_executor.cpp:530 src/hotkey/command_executor.cpp:703
+#: src/quit_confirmation.cpp:42
+#, fuzzy
+#| msgid "Do you really want to dismiss him?"
+msgid "Do you really want to quit?"
+msgstr "Ĉu vi vere volas likvidi lin?"
 
 #: src/help/help_browser.cpp:150
 msgid "Reference to unknown topic: "
@@ -6431,11 +6471,11 @@ msgid "Recruits"
 msgstr "Rekrutoj"
 
 #: src/help/help_impl.cpp:696 src/help/help_impl.cpp:871
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:364
 msgid "race^Miscellaneous"
 msgstr "Diversaj"
 
-#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:456
+#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:457
 #: src/reports.cpp:351
 msgid "Alignment: "
 msgstr "Aparteneco:"
@@ -6472,148 +6512,142 @@ msgstr "Kosto de movo"
 msgid "Defense properties: "
 msgstr "Defendo"
 
-#: src/help/help_topic_generators.cpp:289
+#: src/help/help_topic_generators.cpp:290
 msgid "Advances from: "
 msgstr "Avanca de: "
 
-#: src/help/help_topic_generators.cpp:291
+#: src/help/help_topic_generators.cpp:292
 msgid "Advances to: "
 msgstr "Avancu al: "
 
-#: src/help/help_topic_generators.cpp:316
+#: src/help/help_topic_generators.cpp:317
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base unit: "
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/help/help_topic_generators.cpp:321
+#: src/help/help_topic_generators.cpp:322
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base units: "
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/help/help_topic_generators.cpp:339
+#: src/help/help_topic_generators.cpp:340
 #, fuzzy
 msgid "Variations: "
 msgstr "Frakcio"
 
-#: src/help/help_topic_generators.cpp:365 src/reports.cpp:189
+#: src/help/help_topic_generators.cpp:366 src/reports.cpp:189
 msgid "Race: "
 msgstr "Raso:"
 
-#: src/help/help_topic_generators.cpp:418
+#: src/help/help_topic_generators.cpp:419
 msgid "Abilities: "
 msgstr "Kapabloj:"
 
-#: src/help/help_topic_generators.cpp:434
+#: src/help/help_topic_generators.cpp:435
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Kapabloj:"
 
-#: src/help/help_topic_generators.cpp:452
+#: src/help/help_topic_generators.cpp:453
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision: "
 msgstr "Versio:"
 
-#: src/help/help_topic_generators.cpp:454
+#: src/help/help_topic_generators.cpp:455
 #, fuzzy
 msgid "Jamming: "
 msgstr "Mateno"
 
-#: src/help/help_topic_generators.cpp:455
+#: src/help/help_topic_generators.cpp:456
 msgid "Cost: "
 msgstr "Kostoj:"
 
-#: src/help/help_topic_generators.cpp:460
+#: src/help/help_topic_generators.cpp:461
 msgid "Required XP: "
 msgstr "Bezonataj spertoj:"
 
-#: src/help/help_topic_generators.cpp:469
+#: src/help/help_topic_generators.cpp:470
 msgid "unit help^Attacks"
 msgstr "Atakoj"
 
-#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:477
 msgid "unit help^Name"
 msgstr "Nomo"
 
-#: src/help/help_topic_generators.cpp:478
+#: src/help/help_topic_generators.cpp:479
 msgid "Strikes"
 msgstr "Batoj"
 
-#: src/help/help_topic_generators.cpp:479
+#: src/help/help_topic_generators.cpp:480
 msgid "Range"
 msgstr "Efikdistanco"
 
-#: src/help/help_topic_generators.cpp:480
+#: src/help/help_topic_generators.cpp:481
 #, fuzzy
 #| msgid "Special"
 msgid "Special"
 msgstr "Speciale"
 
-#: src/help/help_topic_generators.cpp:545
+#: src/help/help_topic_generators.cpp:546
 msgid "Resistances"
 msgstr "Rezistoj"
 
-#: src/help/help_topic_generators.cpp:549
+#: src/help/help_topic_generators.cpp:550
 msgid "Attack Type"
 msgstr "Ataktipo"
 
-#: src/help/help_topic_generators.cpp:550
+#: src/help/help_topic_generators.cpp:551
 msgid "Resistance"
 msgstr "Rezisto"
 
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:580
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Influo de tereno"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:584
 msgid "Terrain"
 msgstr "Tereno"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:585
 msgid "Defense"
 msgstr "Defendo"
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Cost"
 msgstr "Kosto de movo"
 
-#: src/help/help_topic_generators.cpp:589
+#: src/help/help_topic_generators.cpp:590
 #, fuzzy
 msgid "Defense Cap"
 msgstr "Defendo"
 
-#: src/help/help_topic_generators.cpp:593
+#: src/help/help_topic_generators.cpp:594
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision Cost"
 msgstr "Versio:"
 
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:597
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:523 src/hotkey/command_executor.cpp:696
-#, fuzzy
-#| msgid "Do you really want to dismiss him?"
-msgid "Do you really want to quit?"
-msgstr "Ĉu vi vere volas likvidi lin?"
-
-#: src/hotkey/command_executor.cpp:644
+#: src/hotkey/command_executor.cpp:651
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Foto el ekrano"
 
-#: src/hotkey/command_executor.cpp:644
+#: src/hotkey/command_executor.cpp:651
 msgid "Screenshot"
 msgstr "Foto el ekrano"
 
-#: src/hotkey/command_executor.cpp:657
+#: src/hotkey/command_executor.cpp:664
 msgid ""
 "Screenshot creation failed.\n"
 "\n"
@@ -6635,34 +6669,34 @@ msgstr ""
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey_handler.cpp:366 src/save_index.cpp:290 src/savegame.cpp:78
-#: src/savegame.cpp:635 src/savegame.cpp:637
+#: src/hotkey_handler.cpp:367 src/save_index.cpp:290 src/savegame.cpp:77
+#: src/savegame.cpp:600 src/savegame.cpp:602
 msgid "Auto-Save"
 msgstr "Aŭtomata konservado"
 
-#: src/hotkey_handler.cpp:370
+#: src/hotkey_handler.cpp:371
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Reen al antaŭa movo"
 
-#: src/hotkey_handler.cpp:378
+#: src/hotkey_handler.cpp:379
 #, fuzzy
 #| msgid "Back to start"
 msgid "Back to Start"
 msgstr "Reen al komenco"
 
-#: src/hotkey_handler_sp.cpp:134
+#: src/hotkey_handler_sp.cpp:143
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(premu $hotkey por daŭrigi)"
 
-#: src/hotkey_handler_sp.cpp:134 src/menu_events.cpp:3203
+#: src/hotkey_handler_sp.cpp:143 src/menu_events.cpp:3087
 msgid "Planning mode activated!"
 msgstr ""
 
-#: src/hotkey_handler_sp.cpp:136 src/menu_events.cpp:3206
+#: src/hotkey_handler_sp.cpp:145 src/menu_events.cpp:3090
 msgid "Planning mode deactivated!"
 msgstr ""
 
@@ -6758,94 +6792,94 @@ msgstr "Preferoj de scenejo"
 msgid " < Back"
 msgstr "< Reen"
 
-#: src/loadscreen.cpp:323
+#: src/loadscreen.cpp:329
 #, fuzzy
 msgid "Initializing user interface"
 msgstr "Iniciito"
 
-#: src/loadscreen.cpp:324
+#: src/loadscreen.cpp:330
 #, fuzzy
 msgid "Loading game configuration"
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/loadscreen.cpp:325 src/loadscreen.cpp:332
+#: src/loadscreen.cpp:331 src/loadscreen.cpp:338
 msgid "Verifying cache"
 msgstr ""
 
-#: src/loadscreen.cpp:326 src/loadscreen.cpp:333
+#: src/loadscreen.cpp:332 src/loadscreen.cpp:339
 msgid "Reading files and creating cache"
 msgstr ""
 
-#: src/loadscreen.cpp:327 src/loadscreen.cpp:334
+#: src/loadscreen.cpp:333 src/loadscreen.cpp:340
 #, fuzzy
 msgid "Reading unit files"
 msgstr "Legado de dosieroj de militunuoj."
 
-#: src/loadscreen.cpp:328
+#: src/loadscreen.cpp:334
 msgid "Reinitialize fonts for the current language"
 msgstr ""
 
-#: src/loadscreen.cpp:329
+#: src/loadscreen.cpp:335
 #, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/loadscreen.cpp:330
+#: src/loadscreen.cpp:336
 #, fuzzy
 msgid "Loading title screen"
 msgstr "Legado de dosieroj de militunuoj."
 
-#: src/loadscreen.cpp:331
+#: src/loadscreen.cpp:337
 msgid "Loading data files"
 msgstr ""
 
-#: src/loadscreen.cpp:335
+#: src/loadscreen.cpp:341
 msgid "Loading level"
 msgstr ""
 
-#: src/loadscreen.cpp:336
+#: src/loadscreen.cpp:342
 #, fuzzy
 msgid "Initializing teams"
 msgstr "Iniciito"
 
-#: src/loadscreen.cpp:337
+#: src/loadscreen.cpp:343
 #, fuzzy
 msgid "Loading units"
 msgstr "Legado de dosieroj de militunuoj."
 
-#: src/loadscreen.cpp:338 src/loadscreen.cpp:340
+#: src/loadscreen.cpp:344 src/loadscreen.cpp:346
 msgid "Initializing display"
 msgstr ""
 
-#: src/loadscreen.cpp:339
+#: src/loadscreen.cpp:345
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/loadscreen.cpp:341
+#: src/loadscreen.cpp:347
 msgid "Starting game"
 msgstr "Komenco de ludo"
 
-#: src/map_location.cpp:134
+#: src/map_location.cpp:170
 msgid "North"
 msgstr ""
 
-#: src/map_location.cpp:136
+#: src/map_location.cpp:172
 msgid "North East"
 msgstr ""
 
-#: src/map_location.cpp:138
+#: src/map_location.cpp:174
 msgid "North West"
 msgstr ""
 
-#: src/map_location.cpp:140
+#: src/map_location.cpp:176
 msgid "South"
 msgstr ""
 
-#: src/map_location.cpp:142
+#: src/map_location.cpp:178
 msgid "South East"
 msgstr ""
 
-#: src/map_location.cpp:144
+#: src/map_location.cpp:180
 msgid "South West"
 msgstr ""
 
@@ -6869,756 +6903,748 @@ msgstr "Mapo savita."
 msgid "Could not save the map: $msg"
 msgstr "Mapo ne saveblas: $msg"
 
-#: src/menu_events.cpp:531
+#: src/menu_events.cpp:490
 msgid "Message:"
 msgstr "Mesaĝo:"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 msgid "Send to allies only"
 msgstr "Sendu nur al aliancanoj"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 #, fuzzy
 msgid "Send to observers only"
 msgstr "Sendu nur al aliancanoj"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:562
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "oro por milit-unuo"
 msgstr[1] "oro por milit-unuo"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:569
 msgid "You have no units available to recruit."
 msgstr "Vi ne povas varbi milit-unuojn"
 
-#: src/menu_events.cpp:643
+#: src/menu_events.cpp:602
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Vi ne havas sufiĉe da oro, por varbi ĉi tiun milit-unuon"
 
-#: src/menu_events.cpp:676
+#: src/menu_events.cpp:635
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Vi estas malproksime de propraj soldatoj kaj vi  ne povas alvoki ilin"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:657
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Ne estas milit-unuoj por alvoki. Vi devas havi savintojn el pasinta scenejo"
 
-#: src/menu_events.cpp:704
+#: src/menu_events.cpp:663
 msgid "You currently can't recall at the highlighted location"
 msgstr ""
 
-#: src/menu_events.cpp:726
+#: src/menu_events.cpp:685
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] "Necesas almenaŭ $cost oramoneroj por alvoki milit-unuon"
 msgstr[1] "Necesas almenaŭ $cost oramoneroj por alvoki milit-unuon"
 
-#: src/menu_events.cpp:850
+#: src/menu_events.cpp:809
 #, fuzzy
 msgid "You cannot end your turn yet!"
 msgstr "paŭzo fine de movo"
 
-#: src/menu_events.cpp:864
+#: src/menu_events.cpp:823
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Ankoraŭ vi ne ekmovis. Ĉu vere vi volas turni?"
 
-#: src/menu_events.cpp:871
+#: src/menu_events.cpp:830
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Kelkaj milit-unuoj ankoraŭ povas tiri. Ĉu vi vere volas fini tiron?"
 
-#: src/menu_events.cpp:878
+#: src/menu_events.cpp:837
 #, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "Kelkaj milit-unuoj ankoraŭ povas tiri. Ĉu vi vere volas fini tiron?"
 
-#: src/menu_events.cpp:930
+#: src/menu_events.cpp:889
 msgid "Rename Unit"
 msgstr "Alinomu milit-unuon"
 
-#: src/menu_events.cpp:931
+#: src/menu_events.cpp:890
 msgid "Name:"
 msgstr "Nomo:"
 
-#: src/menu_events.cpp:1015
-msgid "Race"
-msgstr "Raso"
-
-#: src/menu_events.cpp:1036
-msgid "Create Unit (Debug!)"
-msgstr ""
-
-#: src/menu_events.cpp:1039
-msgid "gender^Random"
-msgstr "Hazarda"
-
-#: src/menu_events.cpp:1372
+#: src/menu_events.cpp:1254
 msgid "Search"
 msgstr "Serĉu"
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1435
 #, fuzzy
 msgid "This command is currently unavailable."
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1441
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1457
 #, fuzzy
 msgid "Error:"
 msgstr "Eraro"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1463
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1465
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:1628
+#: src/menu_events.cpp:1510
 msgid "Missing argument $arg_id"
 msgstr ""
 
-#: src/menu_events.cpp:1676
+#: src/menu_events.cpp:1558
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 
-#: src/menu_events.cpp:1676 src/menu_events.cpp:1677 src/menu_events.cpp:1700
+#: src/menu_events.cpp:1558 src/menu_events.cpp:1559 src/menu_events.cpp:1582
 #, fuzzy
 msgid "help"
 msgstr "Helpo"
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1559
 msgid "Type $help_command <command> for more info."
 msgstr ""
 
-#: src/menu_events.cpp:1688
+#: src/menu_events.cpp:1570
 #, fuzzy
 msgid " No help available."
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/menu_events.cpp:1693
+#: src/menu_events.cpp:1575
 #, fuzzy
 msgid "Usage:"
 msgstr "Mesaĝo:"
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1580
 msgid "aliases:"
 msgstr ""
 
-#: src/menu_events.cpp:1819
+#: src/menu_events.cpp:1701
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/menu_events.cpp:1826 src/menu_events.cpp:2034
+#: src/menu_events.cpp:1708 src/menu_events.cpp:1916
 #, fuzzy
 msgid "(admin only)"
 msgstr "Nur teamo"
 
-#: src/menu_events.cpp:1846
+#: src/menu_events.cpp:1728
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1732
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:1851 src/menu_events.cpp:1854 src/menu_events.cpp:1856
-#: src/menu_events.cpp:1858 src/menu_events.cpp:1860 src/menu_events.cpp:1887
-#: src/menu_events.cpp:1889 src/menu_events.cpp:1891 src/menu_events.cpp:1905
+#: src/menu_events.cpp:1733 src/menu_events.cpp:1736 src/menu_events.cpp:1738
+#: src/menu_events.cpp:1740 src/menu_events.cpp:1742 src/menu_events.cpp:1769
+#: src/menu_events.cpp:1771 src/menu_events.cpp:1773 src/menu_events.cpp:1787
 msgid "<nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1735
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1738
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:1858
+#: src/menu_events.cpp:1740
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:1860
+#: src/menu_events.cpp:1742
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1744
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
-#: src/menu_events.cpp:1872
+#: src/menu_events.cpp:1754
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 #, fuzzy
 msgid "<message>"
 msgstr "Mesaĝo:"
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 
-#: src/menu_events.cpp:1879
+#: src/menu_events.cpp:1761
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1763
 #, fuzzy
 msgid "<nickname> <message>"
 msgstr "Mesaĝo:"
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1769
 msgid "Add a nickname to your ignores list."
 msgstr ""
 
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1771
 msgid "Add a nickname to your friends list."
 msgstr ""
 
-#: src/menu_events.cpp:1891
+#: src/menu_events.cpp:1773
 msgid "Remove a nickname from your ignores or friends list."
 msgstr ""
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1775
 msgid "Show your ignores and friends list."
 msgstr ""
 
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1778
 #, fuzzy
 msgid "Display version information."
 msgstr "Neniu informo pri erao troveblas"
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 msgid "<password> <email (optional)>"
 msgstr ""
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 msgid "Register your nickname"
 msgstr ""
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1782
 msgid "Drop your nickname."
 msgstr ""
 
-#: src/menu_events.cpp:1902
+#: src/menu_events.cpp:1784
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1785
 msgid "<detail> <value>"
 msgstr ""
 
-#: src/menu_events.cpp:1905
+#: src/menu_events.cpp:1787
 #, fuzzy
 msgid "Request information about a nickname."
 msgstr "Neniu informo pri erao troveblas"
 
-#: src/menu_events.cpp:1907
+#: src/menu_events.cpp:1789
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 
-#: src/menu_events.cpp:1909 src/menu_events.cpp:1912 src/menu_events.cpp:1914
+#: src/menu_events.cpp:1791 src/menu_events.cpp:1794 src/menu_events.cpp:1796
 msgid "<room>"
 msgstr ""
 
-#: src/menu_events.cpp:1909
+#: src/menu_events.cpp:1791
 #, fuzzy
 msgid "Join a room."
 msgstr "Aliĝu al ludo"
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1794
 msgid "Part a room."
 msgstr ""
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1796
 #, fuzzy
 msgid "List room members."
 msgstr "Listo de serviloj"
 
-#: src/menu_events.cpp:1916
+#: src/menu_events.cpp:1798
 msgid "List available rooms."
 msgstr ""
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "<room> <msg>"
 msgstr ""
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "Room message."
 msgstr ""
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "<room> <type> [value]"
 msgstr ""
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "Room query."
 msgstr ""
 
-#: src/menu_events.cpp:2026
+#: src/menu_events.cpp:1908
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:1914
 msgid "(debug command)"
 msgstr ""
 
-#: src/menu_events.cpp:2033
+#: src/menu_events.cpp:1915
 #, fuzzy
 msgid "(network only)"
 msgstr "Reta ludanto"
 
-#: src/menu_events.cpp:2058
+#: src/menu_events.cpp:1917
+msgid "(not during other events)"
+msgstr ""
+
+#: src/menu_events.cpp:1942
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:2060
+#: src/menu_events.cpp:1944
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2060 src/menu_events.cpp:2062
+#: src/menu_events.cpp:1944 src/menu_events.cpp:1946
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:2062
+#: src/menu_events.cpp:1946
 msgid "Switch a side to/from idle state."
 msgstr ""
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "<side> <nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:1953
 msgid "Clear chat history."
 msgstr ""
 
-#: src/menu_events.cpp:2071
+#: src/menu_events.cpp:1955
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2073
+#: src/menu_events.cpp:1957
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2075
+#: src/menu_events.cpp:1959
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2076
+#: src/menu_events.cpp:1960
 #, fuzzy
 msgid "Show fps."
 msgstr "Montru registron"
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:1962
 #, fuzzy
 msgid "Save game."
 msgstr "Savu ludon"
 
-#: src/menu_events.cpp:2080
+#: src/menu_events.cpp:1964
 #, fuzzy
 msgid "Quit game."
 msgstr "Fini la ludon"
 
-#: src/menu_events.cpp:2084
+#: src/menu_events.cpp:1968
 msgid "Save and quit."
 msgstr ""
 
-#: src/menu_events.cpp:2087
+#: src/menu_events.cpp:1971
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2089
+#: src/menu_events.cpp:1973
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 #, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Atendu sekvan scenejon..."
 
-#: src/menu_events.cpp:2094
+#: src/menu_events.cpp:1978
 #, fuzzy
 msgid "Choose next scenario"
 msgstr "Elŝutas sekvan scenejon..."
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:1985
 msgid "Turn debug mode on."
 msgstr ""
 
-#: src/menu_events.cpp:2103
+#: src/menu_events.cpp:1987
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2105 src/menu_events.cpp:2109
+#: src/menu_events.cpp:1989 src/menu_events.cpp:1993
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:2105
+#: src/menu_events.cpp:1989
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:2107
+#: src/menu_events.cpp:1991
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:2109
+#: src/menu_events.cpp:1993
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:1996
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:2116
+#: src/menu_events.cpp:2000
 msgid "Launch the gamestate inspector"
 msgstr ""
 
-#: src/menu_events.cpp:2118
+#: src/menu_events.cpp:2002
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2126
+#: src/menu_events.cpp:2010
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2133
+#: src/menu_events.cpp:2017
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2019
 msgid "'Undiscover' all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2137
+#: src/menu_events.cpp:2021
 #, fuzzy
 msgid "Create a unit."
 msgstr "Kreu ludon"
 
-#: src/menu_events.cpp:2139
+#: src/menu_events.cpp:2023
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2141
+#: src/menu_events.cpp:2025
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2143
+#: src/menu_events.cpp:2027
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2029
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2148
+#: src/menu_events.cpp:2032
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2151
+#: src/menu_events.cpp:2035
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2154
+#: src/menu_events.cpp:2038
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2157
+#: src/menu_events.cpp:2041
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:2200
+#: src/menu_events.cpp:2084
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2202 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2086 src/menu_events.cpp:2095
 msgid "error"
 msgstr "eraro"
 
-#: src/menu_events.cpp:2209
+#: src/menu_events.cpp:2093
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2102
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2289
+#: src/menu_events.cpp:2173
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/menu_events.cpp:2392 src/menu_events.cpp:2398 src/menu_events.cpp:2445
+#: src/menu_events.cpp:2276 src/menu_events.cpp:2282 src/menu_events.cpp:2329
 #, fuzzy
 msgid "ignores list"
 msgstr "Ignori ĉiujn"
 
-#: src/menu_events.cpp:2398
+#: src/menu_events.cpp:2282
 msgid "Added to ignore list: $nick"
 msgstr ""
 
-#: src/menu_events.cpp:2401 src/menu_events.cpp:2419
+#: src/menu_events.cpp:2285 src/menu_events.cpp:2303
 #, fuzzy
 msgid "Invalid username: $nick"
 msgstr "Nevalida uzantnomo:"
 
-#: src/menu_events.cpp:2410 src/menu_events.cpp:2416 src/menu_events.cpp:2441
+#: src/menu_events.cpp:2294 src/menu_events.cpp:2300 src/menu_events.cpp:2325
 msgid "friends list"
 msgstr ""
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2300
 msgid "Added to friends list: $nick"
 msgstr ""
 
-#: src/menu_events.cpp:2431
+#: src/menu_events.cpp:2315
 msgid "Removed from list: $nick"
 msgstr ""
 
-#: src/menu_events.cpp:2431 src/menu_events.cpp:2449
+#: src/menu_events.cpp:2315 src/menu_events.cpp:2333
 msgid "friends and ignores list"
 msgstr ""
 
-#: src/menu_events.cpp:2449
+#: src/menu_events.cpp:2333
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2454
+#: src/menu_events.cpp:2338
 #, fuzzy
 msgid "version"
 msgstr "Versio"
 
-#: src/menu_events.cpp:2470
+#: src/menu_events.cpp:2354
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2358
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2477 src/menu_events.cpp:2488 src/menu_events.cpp:2506
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2361 src/menu_events.cpp:2372 src/menu_events.cpp:2390
+#: src/menu_events.cpp:2404
 msgid "nick registration"
 msgstr ""
 
-#: src/menu_events.cpp:2488
+#: src/menu_events.cpp:2372
 msgid "dropping your username"
 msgstr ""
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2390
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2404
 #, fuzzy
 msgid "requesting information for user $nick"
 msgstr "Neniu informo pri erao troveblas"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2521
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr ""
 "Mi povas trovi nek signon nek milit-unuon, enhavantan en nomo '$search'."
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2560
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2681
+#: src/menu_events.cpp:2565
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2699
+#: src/menu_events.cpp:2583
 msgid "Can't droid a local ai side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2715
+#: src/menu_events.cpp:2599
 msgid "Can't idle invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2720
+#: src/menu_events.cpp:2604
 msgid "Can't idle networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2725
+#: src/menu_events.cpp:2609
 msgid "Can't idle local ai side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2774
+#: src/menu_events.cpp:2658
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2784
+#: src/menu_events.cpp:2668
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2799
+#: src/menu_events.cpp:2683
 msgid "Can't query control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2805
+#: src/menu_events.cpp:2689
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2925
+#: src/menu_events.cpp:2809
 #, fuzzy
 msgid "Layers"
 msgstr "Ludantoj:"
 
-#: src/menu_events.cpp:2987
+#: src/menu_events.cpp:2871
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:3021
+#: src/menu_events.cpp:2905
 msgid "Debug mode activated!"
 msgstr ""
 
-#: src/menu_events.cpp:3024
+#: src/menu_events.cpp:2908
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:3029
+#: src/menu_events.cpp:2913
 msgid "Debug mode deactivated!"
 msgstr ""
 
-#: src/menu_events.cpp:3045
+#: src/menu_events.cpp:2929
 msgid "Unsafe Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:3046
+#: src/menu_events.cpp:2930
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
 
-#: src/menu_events.cpp:3049
+#: src/menu_events.cpp:2933
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:3093
+#: src/menu_events.cpp:2977
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:3138
+#: src/menu_events.cpp:3022
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:3153
+#: src/menu_events.cpp:3037
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3167
+#: src/menu_events.cpp:3051
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Nevalida signonomo"
 
-#: src/menu_events.cpp:3175
+#: src/menu_events.cpp:3059
 #, fuzzy
 msgid "Invalid location"
 msgstr "Nevalida koloro"
 
-#: src/menu_events.cpp:3222
+#: src/menu_events.cpp:3106
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:3230 src/menu_events.cpp:3258
+#: src/menu_events.cpp:3114 src/menu_events.cpp:3142
 msgid "prompt^Command:"
 msgstr "Ordono:"
 
@@ -7692,38 +7718,38 @@ msgstr "Mi ne povas aldoni kontaktingon"
 msgid "Could not send initial handshake"
 msgstr "Mi ne povas sendi konektpeton."
 
-#: src/pathfind/pathfind.cpp:714
+#: src/pathfind/pathfind.cpp:718
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:232
+#: src/play_controller.cpp:268
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:234 src/replay_controller.cpp:177
+#: src/play_controller.cpp:270 src/replay_controller.cpp:132
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:920
+#: src/play_controller.cpp:995
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:921 src/replay_controller.cpp:410
+#: src/play_controller.cpp:996
 #, fuzzy
 msgid "Error details:"
 msgstr "Eraro"
 
-#: src/playmp_controller.cpp:159
+#: src/playmp_controller.cpp:152
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:295
+#: src/playmp_controller.cpp:288
 msgid "Waiting for next scenario..."
 msgstr "Atendu sekvan scenejon..."
 
-#: src/playmp_controller.cpp:375
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7733,149 +7759,68 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:139
-msgid "Remaining gold: "
-msgstr "Restanta oro:"
-
-#: src/playsingle_controller.cpp:143
-msgid "Turns finished early: "
-msgstr "Ŝparitaj tiroj:"
-
-#: src/playsingle_controller.cpp:144
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "por turno"
-
-#: src/playsingle_controller.cpp:144
-msgid "Early finish bonus: "
-msgstr "Bonifiko pro rapida fino:"
-
-#: src/playsingle_controller.cpp:145
-#, fuzzy
-#| msgid "Turn bonus: "
-msgid "Total bonus: "
-msgstr "Bonifiko por movo:"
-
 #: src/playsingle_controller.cpp:147
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "Oro/Vilaĝo:"
-
-#: src/playsingle_controller.cpp:150
-msgid "Carryover percentage: "
-msgstr ""
-
-#: src/playsingle_controller.cpp:153
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "Bonifiko:"
-
-#: src/playsingle_controller.cpp:155
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "Ŝparita oro:"
-
-#: src/playsingle_controller.cpp:168
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/playsingle_controller.cpp:176
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/playsingle_controller.cpp:184
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/playsingle_controller.cpp:208
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Eraro"
 
-#: src/playsingle_controller.cpp:209
+#: src/playsingle_controller.cpp:148
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:277
 msgid "The game is over."
 msgstr "La ludo finiĝis."
 
-#: src/playsingle_controller.cpp:359
+#: src/playsingle_controller.cpp:317
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "Retkonekto rompiĝis kaj ludo ne povas daŭrigi. Ĉu mi savu ĝin?"
 
-#: src/playsingle_controller.cpp:547
+#: src/playsingle_controller.cpp:409
 msgid "It is now $name|’s turn"
 msgstr "Nun movo de $name"
 
-#: src/playturn.cpp:261
+#: src/playturn.cpp:259
 msgid "Replace with AI"
 msgstr "Anstataŭu per komputilo"
 
-#: src/playturn.cpp:262
+#: src/playturn.cpp:260
 msgid "Replace with local player"
 msgstr "Anstataŭu per alia ludanto"
 
-#: src/playturn.cpp:263
+#: src/playturn.cpp:261
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:264
+#: src/playturn.cpp:262
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Nuligu la ludon"
 
-#: src/playturn.cpp:272 src/playturn.cpp:288
+#: src/playturn.cpp:270 src/playturn.cpp:286
 msgid "Replace with $player"
 msgstr "Anstataŭi per $player"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:292
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player forlasis la ludon. Kion vi faros?"
 
-#: src/replay_controller.cpp:409
-#, fuzzy
-msgid ""
-"The replay is corrupt/out of sync. It might not make much sense to continue. "
-"Do you want to save the game?"
-msgstr "Retkonekto rompiĝis kaj ludo ne povas daŭrigi. Ĉu mi savu ĝin?"
-
-#: src/reports.cpp:148 src/savegame.cpp:445
+#: src/reports.cpp:148 src/savegame.cpp:410
 msgid "Name: "
 msgstr "Nomo:"
 
@@ -8130,13 +8075,13 @@ msgstr "Spektantoj:"
 msgid " replay"
 msgstr " registrado"
 
-#: src/savegame.cpp:240 src/savegame.cpp:244
+#: src/savegame.cpp:213 src/savegame.cpp:217
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Atentu: La dosiero kiun vi volis alŝuti estas damaĝita. Sed malgraŭ tio mi "
 "provos daŭrigi.\n"
 
-#: src/savegame.cpp:299
+#: src/savegame.cpp:264
 #, fuzzy
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
@@ -8145,7 +8090,7 @@ msgstr ""
 "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
 "ĝin?"
 
-#: src/savegame.cpp:307
+#: src/savegame.cpp:272
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -8157,26 +8102,30 @@ msgstr ""
 "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
 "ĝin?"
 
-#: src/savegame.cpp:349
+#: src/savegame.cpp:275
+msgid "Load Game"
+msgstr "Legi ludon"
+
+#: src/savegame.cpp:314
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Tio ĉi estas ne savita reta ludo"
 
-#: src/savegame.cpp:374
+#: src/savegame.cpp:339
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "Oni ne sukcesis registri la ludon"
 
-#: src/savegame.cpp:445
+#: src/savegame.cpp:410
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Savita ludo kun sama nomo jam ekzistas. Ĉu vi volas reskribi ĝin?"
 
-#: src/savegame.cpp:446
+#: src/savegame.cpp:411
 msgid "Overwrite?"
 msgstr "Traskribi?"
 
-#: src/savegame.cpp:454
+#: src/savegame.cpp:419
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -8184,39 +8133,40 @@ msgid ""
 msgstr ""
 "Nomoj de savitaj ludoj ne povas fini per '.gz'. Bonvolu elekti alian nomon."
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:469
 msgid "Saved"
 msgstr "Konservita"
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:469
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "La ludo estis konservita"
 
-#: src/savegame.cpp:535 src/savegame.cpp:555
+#: src/savegame.cpp:500 src/savegame.cpp:520
 msgid "Could not write to file"
 msgstr "Mi ne povas registri en dosieron."
 
-#: src/savegame.cpp:588
+#: src/savegame.cpp:553
 #, fuzzy
 msgid "Save Replay"
 msgstr "Registri reludon"
 
-#: src/savegame.cpp:597
+#: src/savegame.cpp:562
 msgid "replay"
 msgstr "registro"
 
-#: src/savegame.cpp:618
+#: src/savegame.cpp:583
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ne eblis aŭtomate savi ludon. Bonvolu savi lunon per menuo."
 
-#: src/savegame.cpp:670
+#: src/savegame.cpp:635
 msgid "Save Game"
 msgstr "Savu ludon"
 
-#: src/scripting/game_lua_kernel.cpp:1697
-msgid "Invalid value in the result key for [end_level]"
+#: src/scripting/game_lua_kernel.cpp:2970
+#: src/scripting/game_lua_kernel.cpp:3005
+msgid "input"
 msgstr ""
 
 #: src/serialization/parser.cpp:133
@@ -8591,34 +8541,38 @@ msgstr ""
 msgid "September"
 msgstr ""
 
-#: src/strftime.cpp:73
+#: src/strftime.cpp:78
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%a %b %d %H:%M %J"
 
-#: src/strftime.cpp:77
+#: src/strftime.cpp:82
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
 msgstr "%a %b %d %H:%M %J"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "AM"
 msgstr ""
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "PM"
 msgstr ""
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 #, fuzzy
 #| msgid "Name"
 msgid "am"
 msgstr "Nomo"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "pm"
+msgstr ""
+
+#: src/synced_user_choice.cpp:331
+msgid "waiting for $desc from side(s)$sides"
 msgstr ""
 
 #: src/terrain.cpp:184
@@ -8651,97 +8605,149 @@ msgstr "Taga tempo"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/unit.cpp:1695 src/unit.cpp:1916 src/unit.cpp:1997
+#: src/unit.cpp:1729 src/unit.cpp:2076 src/unit.cpp:2169
 #: src/unit_attack_type.cpp:152
 msgid " and "
 msgstr " kaj "
 
-#: src/unit.cpp:1706
+#: src/unit.cpp:1740
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:1767
+#: src/unit.cpp:1801
 msgid "moves"
 msgstr "movoj"
 
-#: src/unit.cpp:1797 src/unit.cpp:1940
+#: src/unit.cpp:1817
+#, fuzzy
+#| msgid "Version: "
+msgid "vision"
+msgstr "Versio:"
+
+#: src/unit.cpp:1831
+#, fuzzy
+msgid "jamming"
+msgstr "Mateno"
+
+#: src/unit.cpp:1868 src/unit.cpp:2112
 msgid "XP to advance"
 msgstr "Sperto por avanco"
 
-#: src/unit.cpp:1933
+#: src/unit.cpp:2029
+#, fuzzy
+#| msgid "per turn"
+msgid "attack per turn"
+msgstr "por turno"
+
+#: src/unit.cpp:2030
+#, fuzzy
+#| msgid "per turn"
+msgid "attacks per turn"
+msgstr "por turno"
+
+#: src/unit.cpp:2055
+msgid "cost to recall"
+msgstr ""
+
+#: src/unit.cpp:2093
 msgid " move"
 msgstr " movo"
 
-#: src/unit.cpp:1948
+#: src/unit.cpp:2099
+#, fuzzy
+#| msgid "Version: "
+msgid " vision"
+msgstr "Versio:"
+
+#: src/unit.cpp:2105
+#, fuzzy
+msgid " jamming"
+msgstr "Mateno"
+
+#: src/unit.cpp:2120
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit_attack_type.cpp:235 src/unit_attack_type.cpp:315
+#: src/unit_attack_type.cpp:239 src/unit_attack_type.cpp:253
+#: src/unit_attack_type.cpp:380
 #, fuzzy
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "vundiĝoj"
 msgstr[1] "vundiĝoj"
 
-#: src/unit_attack_type.cpp:246 src/unit_attack_type.cpp:322
+#: src/unit_attack_type.cpp:262 src/unit_attack_type.cpp:273
+#: src/unit_attack_type.cpp:387
 #, fuzzy
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "batoj"
 msgstr[1] "batoj"
 
-#: src/unit_attack_type.cpp:258
+#: src/unit_attack_type.cpp:283 src/unit_attack_type.cpp:295
 #, fuzzy, no-c-format
 msgid "% accuracy"
 msgstr "tuta damaĝo"
 
-#: src/unit_attack_type.cpp:269
+#: src/unit_attack_type.cpp:304
+msgid " parry"
+msgstr ""
+
+#: src/unit_attack_type.cpp:315
 #, no-c-format
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:850
+#: src/unit_attack_type.cpp:324 src/unit_attack_type.cpp:334
+#, fuzzy
+#| msgid "Movement Cost"
+msgid "movement point"
+msgid_plural "movement points"
+msgstr[0] "Kosto de movo"
+msgstr[1] "Kosto de movo"
+
+#: src/unit_types.cpp:853
 #, fuzzy
 msgid "female^lawful"
 msgstr "lojala"
 
 # undead
-#: src/unit_types.cpp:851
+#: src/unit_types.cpp:854
 #, fuzzy
 msgid "female^neutral"
 msgstr "nemortinta"
 
-#: src/unit_types.cpp:852
+#: src/unit_types.cpp:855
 #, fuzzy
 msgid "female^chaotic"
 msgstr "mekanika"
 
-#: src/unit_types.cpp:853
+#: src/unit_types.cpp:856
 #, fuzzy
 msgid "female^liminal"
 msgstr "lojala"
 
-#: src/whiteboard/manager.cpp:1080
+#: src/whiteboard/manager.cpp:1082
 msgid "SHOW ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1081
+#: src/whiteboard/manager.cpp:1083
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1095
+#: src/whiteboard/manager.cpp:1097
 #, fuzzy
 #| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "Montru registron"
 
-#: src/whiteboard/manager.cpp:1097
+#: src/whiteboard/manager.cpp:1099
 #, fuzzy
 #| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "Anstataŭi per $player"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1102
 msgid "Whiteboard Options"
 msgstr ""
 
@@ -8753,6 +8759,52 @@ msgstr "Elfoj"
 #: src/wmi_pager.cpp:51
 msgid "Previous Items"
 msgstr ""
+
+#, fuzzy
+#~ msgid "English strings edition"
+#~ msgstr "Angla (GB) traduko"
+
+#~ msgid "No Saved Games"
+#~ msgstr "Nenio estas registrita"
+
+#, fuzzy
+#~ msgid ""
+#~ "There are no saved games to load.\n"
+#~ "\n"
+#~ "(Games are saved automatically when you complete a scenario)"
+#~ msgstr ""
+#~ "Ne eblas alŝuti ludon, ĉar nenia estas savita.\n"
+#~ "(Ludo saviĝas aŭtomate post trairo de scenejo)"
+
+#~ msgid "Date"
+#~ msgstr "Dato"
+
+#, fuzzy
+#~| msgid "Difficulty"
+#~ msgid "Change difficulty"
+#~ msgstr "Komplikeco"
+
+#~ msgid "Show replay"
+#~ msgstr "Montru registron"
+
+#, fuzzy
+#~ msgid "Cancel orders"
+#~ msgstr "Nuligo"
+
+#~ msgid "Delete Save"
+#~ msgstr "Forviŝu registritan"
+
+#~ msgid "Race"
+#~ msgstr "Raso"
+
+#~ msgid "gender^Random"
+#~ msgstr "Hazarda"
+
+#, fuzzy
+#~ msgid ""
+#~ "The replay is corrupt/out of sync. It might not make much sense to "
+#~ "continue. Do you want to save the game?"
+#~ msgstr "Retkonekto rompiĝis kaj ludo ne povas daŭrigi. Ĉu mi savu ĝin?"
 
 #, fuzzy
 #~ msgid "Could not connect to host"
