@@ -201,7 +201,9 @@ sets the user configuration directory to
 .I name
 under $HOME or "My Documents\\My Games" for windows.
 You can also specify an absolute path for the configuration directory outside
-the $HOME or "My Documents\\My Games".
+the $HOME or "My Documents\\My Games". On Windows it is also possible to
+specify a directory relative to the process working directory by using path
+starting with ".\\" or "..\\".
 Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth,
 on other systems to the userdata path.
 .TP
@@ -213,7 +215,9 @@ sets the userdata directory to
 .I name
 under $HOME or "My Documents\\My Games" for windows.
 You can also specify an absolute path for the userdata directory outside
-the $HOME or "My Documents\\My Games".
+the $HOME or "My Documents\\My Games". On Windows it is also possible to
+specify a directory relative to the process working directory by using path
+starting with ".\\" or "..\\".
 .TP
 .B --userdata-path
 prints the path of the userdata directory and exits.
