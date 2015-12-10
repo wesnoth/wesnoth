@@ -15,7 +15,7 @@
 #include "../global.hpp"
 
 #include "../filesystem.hpp"
-#include "../game_config.hpp" // game_config::observer_team_id
+#include "../game_config.hpp" // game_config::observer_team_name
 #include "../log.hpp"
 
 #include "game.hpp"
@@ -995,7 +995,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 		}
 		const simple_wml::string_span& to_sides = (*speak)["to_sides"];
 		// Anyone can send to the observer team.
-		if (is_muted_observer(user->first) && to_sides != game_config::observer_team_id.c_str()) {
+		if (is_muted_observer(user->first) && to_sides != game_config::observer_team_name.c_str()) {
 			send_server_message("You have been muted, others can't see your message!", user->first);
 			continue;
 		}
@@ -1007,7 +1007,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 		if (to_sides == "") {
 			send_data(*message, user->first, "game message");
 			record_data(message.release());
-		} else if (to_sides == game_config::observer_team_id) {
+		} else if (to_sides == game_config::observer_team_name) {
 			wesnothd::send_to_many(*message, observers_, user->first, "game message");
 			record_data(message.release());
 		} else {

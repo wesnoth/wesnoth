@@ -19,7 +19,7 @@
 
 BOOST_AUTO_TEST_SUITE( teams )
 
-BOOST_AUTO_TEST_CASE( test_team_name )
+BOOST_AUTO_TEST_CASE( test_user_team_name )
 {
 	BOOST_WARN_EQUAL(0,0);
 }

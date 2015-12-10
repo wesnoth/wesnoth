@@ -117,8 +117,8 @@ private:
 		mutable int minimum_recruit_price;
 		int recall_cost;
 		std::set<std::string> can_recruit;
-		std::string team_id;
-		t_string team_name;
+		std::string team_name;
+		t_string user_team_name;
 		std::string save_id;
 		// 'id' of the current player (not necessarily unique)
 		std::string current_player;
@@ -291,8 +291,8 @@ public:
 	void toggle_droid() { info_.proxy_controller = (info_.proxy_controller == PROXY_CONTROLLER::PROXY_AI  ) ? PROXY_CONTROLLER::PROXY_HUMAN : PROXY_CONTROLLER::PROXY_AI;   }
 	void toggle_idle()  { info_.proxy_controller = (info_.proxy_controller == PROXY_CONTROLLER::PROXY_IDLE) ? PROXY_CONTROLLER::PROXY_HUMAN : PROXY_CONTROLLER::PROXY_IDLE; }
 
-	const std::string& team_id() const { return info_.team_id; }
-	const t_string &team_name() const { return info_.team_name; }
+	const std::string& team_name() const { return info_.team_name; }
+	const t_string &user_team_name() const { return info_.user_team_name; }
 	void change_team(const std::string &name, const t_string &user_name);
 
 	const std::string& flag() const { return info_.flag; }

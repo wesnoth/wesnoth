@@ -149,8 +149,8 @@ chat_msg::chat_msg(const config &cfg)
 	, nick_()
 	, text_(cfg["message"].str())
 {
-	const std::string& team_id = cfg["team_id"];
-	if(team_id == "")
+	const std::string& team_name = cfg["team_name"];
+	if(team_name == "")
 	{
 		nick_ = cfg["id"].str();
 	} else {
@@ -275,12 +275,12 @@ void replay::add_label(const terrain_label* label)
 	cmd.add_child("label",val);
 }
 
-void replay::clear_labels(const std::string& team_id, bool force)
+void replay::clear_labels(const std::string& team_name, bool force)
 {
 	config& cmd = add_nonundoable_command();
 
 	config val;
-	val["team_id"] = team_id;
+	val["team_name"] = team_name;
 	val["force"] = force;
 	cmd.add_child("clear_labels",val);
 }
@@ -710,7 +710,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (const config &child = cfg->child("speak"))
 		{
-			const std::string &team_id = child["team_id"];
+			const std::string &team_name = child["team_name"];
 			const std::string &speaker_name = child["id"];
 			const std::string &message = child["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
@@ -720,7 +720,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
 					int side = child["side"];
 					resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
-						(team_id.empty() ? events::chat_handler::MESSAGE_PUBLIC
+						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
 				}	
@@ -733,12 +733,12 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			resources::screen->labels().set_label(label.location(),
 						label.text(),
 						label.creator(),
-						label.team_id(),
+						label.team_name(),
 						label.color());
 		}
 		else if (const config &child = cfg->child("clear_labels"))
 		{
-			resources::screen->labels().clear(std::string(child["team_id"]), child["force"].to_bool());
+			resources::screen->labels().clear(std::string(child["team_name"]), child["force"].to_bool());
 		}
 		else if (const config &child = cfg->child("rename"))
 		{
