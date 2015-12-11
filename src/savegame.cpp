@@ -98,6 +98,12 @@ loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestat
 
 void loadgame::show_dialog()
 {
+	if(get_saves_list().empty()) {
+		gui2::show_transient_message(gui_.video(), _("No Saved Games"),
+			_("There are no savefiles to load"));
+		return;
+	}
+
 	// FIXME: Integrate the load_game dialog into this class
 	// something to watch for the curious, but not yet ready to go
 	gui2::tgame_load load_dialog(game_config_);
