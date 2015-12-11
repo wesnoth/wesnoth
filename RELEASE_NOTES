@@ -95,6 +95,16 @@ A new [tt]$other_unit[/tt] variable is accessible in some unit filters. This can
 A number of new WML tags have been added for different types of loops as well as loop flow control. The new looping tags are [tt][for][/tt], [tt][foreach][/tt], and [tt][repeat][/tt], while the flow control tags are [tt][continue][/tt], [tt][break][/tt], and [tt][return][/tt]. The [tt]{FOREACH}[/tt] and [tt]{REPEAT}[/tt] macros have been altered to make use of these new loops, which fixes an issue whereby the [tt]{REPEAT}[/tt] macro would not work correctly if nested in itself.
 [/rasection]
 
+[rasection="Wml/lua compability changes and deprecations"]
+- [advance] was changed to [advancement] in modifications
+- {FOREACH} and {NEXT} how use [for] tags this is only important for user who use on these tag wthout the other
+- the interface of wesnoth.synchronize_choice for choices from multiple sides has changed.
+- wesnoth.get_unit(underlying_id) was removed
+- Changed wesnoth.put_unit so that the unit is passed as the first parameter
+- [team] share_view=yes/no, share_maps=yes/no was replaced with share_vision=all/shroud/none
+- The menu items syntax in campaigns difficulcy and in [message][option] is not deprecated
+[/rasection]
+
 ==========
 KNOWN BUGS
 ==========
