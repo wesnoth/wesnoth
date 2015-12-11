@@ -111,10 +111,50 @@ A number of new WML tags have been added for different types of loops as well as
 KNOWN BUGS
 ==========
 
+[raissue="Newly introduced in 1.13.x"]
+[b]General bugs:[/b]
+
 [list]
-[*] The mp server has trouble with "Local" player types in campaigns. We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of wesnoth. https://gna.org/bugs/?21965
-[*] The new 'Replay turns during mp games' feature causes OOS in mp games if the controllers were changed during the game.
-[*] The game can crash when planning units recruits with planning mode.
-[*] [event] in [unit], [unit_type] or [side] don't work as expected.
-[*] using [set_menu_item] to change an existing menu items fails in some cases.
+[*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
+[*]Replaying turns during MP games with the new feature causes OOS in multiplayer games if side controllers changed during the game.
+[*]The game can crash when planning recruits in Planning Mode.
+[*][tt][event][/tt] in [tt][unit][/tt], [tt][unit_type][/tt] or [tt][side][/tt] does not work as expected.
+[*]Using [tt][set_menu_item][/tt] to change an existing menu items fails in some cases.
 [/list]
+[/raissue]
+
+[raissue="Carried over from 1.12.x"]
+[b]General bugs:[/b]
+
+[list]
+[*]It’s not possible to clear some default hotkeys with the Clear Hotkey option (bug [bug]21983[/bug]).
+[*]Attempting to assign hotkeys including both the Ctrl and Alt modifiers does not work (bug [bug]22219[/bug]).
+[/list]
+
+[b]Bugs specific to Microsoft Windows:[/b]
+
+[list]
+[*]ClearType font rendering is disabled as it causes glitches (bug [bug]21648[/bug]).
+This is likely caused by outdated libraries in the packaging process.
+[*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).
+This is likely caused by outdated libraries in the packaging process. There is no built-in workaround available yet.
+[/list]
+
+[b]Bugs specific to Apple OS X:[/b]
+
+The following issues affecting Wesnoth on Apple OS X are known and they are pending fixes. Many of them require significant re-engineering that can only be done in 1.13.x development releases later, or cannot be properly addressed due to a lack of experienced OS X coders in our team. Thus, unless someone can contribute patches to address them, it is unlikely that these bugs will be fixed.
+
+[list]
+[*]Color cursors are forcibly disabled on this platform due to severe performance issues (bug [bug]18112[/bug]).
+[*]The default variable-width font is used instead of a monospace font even where a monospace font is required (bug [bug]23628[/bug]).
+[*]Helvetica is used as the default variable-width font instead of DejaVu Sans (bug [bug]23560[/bug]).
+[*]Fullscreen mode does not fill the entire screen when maximum resolution is selected in Preferences → Display, and user interface elements are scaled and distorted.
+[*]System commands do not work while Wesnoth is running in fullscreen mode (bug [bug]21943[/bug]).
+[*]The mouse cursor is not mapped correctly to the game screen contents on Retina displays due to problems with detected vs. real screen resolution mismatches (bug [bug]20332[/bug]).
+A workaround is in place making Wesnoth default to 800x600 on OS X regardless of the incorrectly-detected maximum resolution.
+[*]Trackpad tap clicking is sometimes not recognized ([url=http://forums.wesnoth.org/viewtopic.php?f=4&t=39788]forum post[/url]).
+[*]Unofficial builds  with OpenMP support enabled randomly freeze (bug [bug]18144[/bug]).
+[*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).
+This is likely caused by outdated libraries in the packaging process. There is no built-in workaround available yet.
+[/list]
+[/raissue]
