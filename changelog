@@ -52,7 +52,8 @@ Version 1.13.1+dev:
    * Add wesnoth.get_unit(string_id)
    * Change wesnoth.message so that it can display translatable strings
    * Change wesnoth.put_unit so that the unit is passed as the first parameter
-   * Add wesnoth.erase_unit, which replaces wesnoth.put_unit when called without a unit
+   * Add wesnoth.erase_unit, which replaces wesnoth.put_unit when called without
+     a unit
    * Add wesnoth.unit_vision_cost
    * Add wesnoth.unit_jamming_cost
    * Add methods to proxy unit metatable:
@@ -73,7 +74,8 @@ Version 1.13.1+dev:
    * wesnoth.add_time_area no longer warns about commas in time area ids
    * unit.variables can now access sub variables.
    * Added wesnoth.get/set_side_variable to store variables in a [side]-
-   * Added read/write fields carryover_bonus/carryover_add/carryover_percentage in lua sides.
+   * Added read/write fields carryover_bonus/carryover_add/carryover_percentage
+     in lua sides.
  * Music and sound effects:
    * Updated music track "Frantic", new one by Stephen Rozanc.
    * New sounds: dwarf hit and die, ink, mud fist and glob.
@@ -88,8 +90,10 @@ Version 1.13.1+dev:
      by terrains without a minimap image (symbol_image) such as those from the
      Special category in the editor (Impassable Overlay, etc.).
  * User interface:
-   * It is now possible to switch from replay directly into normal play (bug #23833).
-   * The game now shows a notification on remote clients if a sides takes very long to do a local choice (bug #23297).
+   * It is now possible to switch from replay directly into normal play
+     (bug #23833).
+   * The game now shows a notification on remote clients if a sides takes very
+     long to do a local choice (bug #23297).
    * It is now possible to replay a turn in mp games by loading autosaves.
    * The game now asks for confirmation when attempting to quit during the game.
    * Add "unit status=..." command to debug console to add/remove unit statuses
@@ -99,7 +103,8 @@ Version 1.13.1+dev:
      * Widgets which are children of invisible or hidden parents can no longer
        be interacted with even if the children themselves are still internally
        visible.
-     * Added support for tristate buttons/toggle panels or more generally n-state buttons/toggle panels
+     * Added support for tristate buttons/toggle panels or more generally
+       n-state buttons/toggle panels
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
  * WML engine:
@@ -108,23 +113,31 @@ Version 1.13.1+dev:
    * Added enable_if= to mod and era events 
    * Added $varname?default_value| in variable substitution
    * Fixed side_for= parameter in [message]s with input
-   * New actionwml tag [on_undo] contains actionswml that is executed when the current action is undone
-   * New actionwml tag [unsynced] executes its contents in an unsynced context where for example
+   * New actionwml tag [on_undo] contains actionswml that is executed when the
+     current action is undone
+   * New actionwml tag [unsynced] executes its contents in an unsynced context
+     where for example
      [set_variable]rand= will return unsynced results
-   * [campaign] now supports [event] subtags which are added to every scenario of the campaign similar to [modification] [event]s
+   * [campaign] now supports [event] subtags which are added to every scenario
+     of the campaign similar to [modification] [event]s
    * Added support for mod_x,mod_y= in [terrain_graphics].
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
      show/hide them
-   * Add female_text= to [animate_unit] and [unstore_unit] for easier translating
-   * Add female_message= to [message] for easier translating of lines spoken by generic units
-   * AMLAs in [modifications] now use [advancement] tags instead of [advance] tags.
-     This means you can add an AMLA to a placed unit by simply using its definition macro,
-     for example {AMLA_DEFAULT}.
-   * [get/set_global_variable]'s side= attribute now defaults to "global" (bug #23686)
-   * [team] share_view=yes/no, share_maps=yes/no was replaced with share_vision=all/shroud/none
-   * Add exclude_amla= key in [advancement] which disables the advancment if the unit
-     has already taken certain other advancements.
+   * Add female_text= to [animate_unit] and [unstore_unit] for easier
+     translating
+   * Add female_message= to [message] for easier translating of lines spoken by
+     generic units
+   * AMLAs in [modifications] now use [advancement] tags instead of [advance]
+     tags.
+     This means you can add an AMLA to a placed unit by simply using its
+     definition macro, for example {AMLA_DEFAULT}.
+   * [get/set_global_variable]'s side= attribute now defaults to "global"
+     (bug #23686)
+   * [team] share_view=yes/no, share_maps=yes/no was replaced with
+     share_vision=all/shroud/none
+   * Add exclude_amla= key in [advancement] which disables the advancment if the
+     unit has already taken certain other advancements.
    * The WML preprocessor now writes warnings to stderr for macros redefined
      without #undef, to help detect unintentional name clashes.
    * Fix macro definition line numbers being offset by 1 in WML preprocessor
@@ -138,19 +151,21 @@ Version 1.13.1+dev:
      * apply_to=max_attacks - change a unit's attacks per turn
      * apply_to=recall_cost - change a unit's recall cost
      * apply_to=vision, apply_to=jamming - change a unit's vision/jamming points
-     * apply_to=new_advancement - add new advancement possibilities (either units
-       or AMLAs)
-     * apply_to=remove_advancement - remove advancement possibilities (either units
-       or AMLAs)
+     * apply_to=new_advancement - add new advancement possibilities (either
+       units or AMLAs)
+     * apply_to=remove_advancement - remove advancement possibilities (either
+       units or AMLAs)
      * apply_to=attack - add set_ versions of all existing increase_ keys
-     * apply_to=attack - add increase_movement_used and set_movement_used to change the
-       number of movement points the attack consumes
+     * apply_to=attack - add increase_movement_used and set_movement_used to
+       change the number of movement points the attack consumes
    * Ability to patch movetypes to account for custom terrains or damage types
    * Removed y offset by -1 from [message]'s scroll-to-unit logic.
-   * Add [found_item] ConditionalWML to check if an [object]id= ActionWML has been taken
+   * Add [found_item] ConditionalWML to check if an [object]id= ActionWML has
+     been taken
    * New auto-stored WML variable $other_unit usable in the following contexts:
-     * [filter_adjacent] - $other_unit refers to the $this_unit of the enclosing filter
-       (In weapon specials and unit abilities, the unit owning the ability.)
+     * [filter_adjacent] - $other_unit refers to the $this_unit of the enclosing
+       filter (In weapon specials and unit abilities, the unit owning the
+       ability.)
      * [filter_self/opponent/attacker/defender] (weapon specials)
        $other_unit refers to the other unit in the attack
        (eg in [filter_self], it's the opponent)
@@ -160,16 +175,18 @@ Version 1.13.1+dev:
      (This is useful mostly in conjunction with variable substitution.)
      These operators are applied after the existing '-' operator that takes the
      opposite direction.
-   * Adjacency filters in abilities and weapon specials now support count= and is_enemy=
+   * Adjacency filters in abilities and weapon specials now support count= and
+     is_enemy=
    * New implementations of backstab and leadership specials using $other_unit.
-     In particular, leadership is now a single macro and it is not supported to give a
-     unit a leadership ability of a different level (eg level 4 leadership on level 2 unit).
-     The backstab= key is deprecated.
+     In particular, leadership is now a single macro and it is not supported to
+     give a unit a leadership ability of a different level (eg level 4
+     leadership on level 2 unit). The backstab= key is deprecated.
    * Add new looping tags: [for], [foreach], [repeat]
    * Add new flow control tags: [break], [continue], [return]
    * Added a new [difficulty] tag for defining a campaign's difficulty level
    * Add new syntax for [option], similar to the new difficulty syntax
-   * Add [test_condition] ActionWML that tells why a conditional failed (for debugging)
+   * Add [test_condition] ActionWML that tells why a conditional failed (for
+     debugging)
    * Add [remove_time_area] WML tag which takes a comma-separated list of time
      area ids.
    * [time_area] no longer warns about commas in ids when not using remove=yes.
@@ -221,7 +238,8 @@ Version 1.13.1+dev:
      eg if an add-on tries to set an invalid variable
    * Fixed bug 23060: unit stat tooltips do not show.
    * wmllint, wmlscope, wmlindent and wmllint-1.4 now run on Python 3
-   * Text boxes tab completion now lists friends and whisperer nicks for easier answer (bug #9742)
+   * Text boxes tab completion now lists friends and whisperer nicks for easier
+     answer (bug #9742)
    * Avoid crash when planning moves on planned recruits (bug #18637)
    * Fixed cases of wrong unit type used in planning moves (bug #20299)
    * Fixed hang when attempting to make a screenshot from a non-existent map via
