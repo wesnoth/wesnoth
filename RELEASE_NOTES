@@ -99,7 +99,7 @@ A number of new WML tags have been added for different types of loops as well as
 [list]
 [*][tt][advance][/tt] was changed to [tt][advancement][/tt] in modifications; as a result, AMLA definition macros (such as [tt]{AMLA_DEFAULT}[/tt]) can now be used to create units that have already taken certain advancements
 [*][tt]{FOREACH}[/tt] and [tt]{NEXT}[/tt] now use [tt][for][/tt] tags; this is only important for users who used one of these tags without the other, such as a custom loop macro closed by [tt]{NEXT}[/tt]
-[*]The interface of [tt]wesnoth.synchronize_choice[/tt] for choices from multiple sides has changed.
+[*]The interface of [tt]wesnoth.synchronize_choice[/tt] for choices from multiple sides (which was introduced in wesnoth 1.13.0) has changed.
 [*][tt]wesnoth.get_unit(underlying_id)[/tt] was removed; this was pretty useless since there was no reliable way to obtain the underlying_id
 [*]Changed [tt]wesnoth.put_unit[/tt] so that the unit is passed as the first parameter; the original order is still supported, but is deprecated. In addition, calling [tt]wesnoth.put_unit[/tt] without a unit (ie, with just a location) is deprecated in favor of a new [tt]wesnoth.erase_unit[/tt] function.
 [*][side] share_view=yes/no, share_maps=yes/no were replaced with share_vision=all/shroud/none
