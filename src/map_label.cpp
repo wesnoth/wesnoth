@@ -397,13 +397,7 @@ void terrain_label::read(const config &cfg)
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
 	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
-	if(!tmp_color.empty()) {
-		std::vector<Uint32> temp_rgb;
-		if(string2rgb(tmp_color, temp_rgb) && !temp_rgb.empty()) {
-			color = int_to_color(temp_rgb[0]);
-		}
-	}
-	color_ = color;
+	color_ = (color = string_to_color(tmp_color));
 }
 
 void terrain_label::write(config& cfg) const
