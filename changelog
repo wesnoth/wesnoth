@@ -1,6 +1,11 @@
 Version 1.13.2+dev:
  * Language and i18n:
    * Updated translations:
+ * Miscellaneous and bug fixes:
+   * Fix the new log code on Windows to actually use Unicode-aware functions
+     in a couple of places so Wesnoth does not quit on startup when trying to
+     relocate the log file to a path with Unicode characters (bug #22897,
+     definitely fixed this time).
 
 Version 1.13.2:
  * Add-ons client:
