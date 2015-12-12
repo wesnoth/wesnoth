@@ -175,15 +175,13 @@ void log_init_panic(const libc_error& e,
 	}
 
 	msg << "\n\n"
-		<< "Runtime error: " << e.desc() << " (" << e.num() << ")\n"
-		<< "New log file path: " << new_log_path << '\n'
-		<< "Old log file path: ";
+		<< "Runtime error: " << e.desc() << " (" << e.num() << ")\n";
 
 	if(old_log_path.empty()) {
 		msg << "Log file path: " << new_log_path << '\n';
 	} else {
 		msg << "New log file path: " << new_log_path << '\n'
-			<< "Old log file path: ";
+			<< "Old log file path: " << old_log_path;
 	}
 
 	log_init_panic(msg.str());
