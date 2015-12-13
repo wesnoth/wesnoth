@@ -84,6 +84,7 @@ static lg::log_domain log_display("display");
 
 static lg::log_domain log_wml("wml");
 #define LOG_WML LOG_STREAM(info, log_wml)
+#define WRN_WML LOG_STREAM(warn, log_wml)
 #define ERR_WML LOG_STREAM(err, log_wml)
 
 static lg::log_domain log_config("config");
@@ -1342,7 +1343,15 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			if(!text.empty() && !controller->is_skipping_replay())
 			{
 				// Print floating label
-				resources::screen->float_label(loc, text, create_color(cfg["red"], cfg["green"], cfg["blue"]));
+				SDL_Color color = font::LABEL_COLOR;
+
+				if(!cfg["color"].empty()) {
+					color = string_to_color(cfg["color"]);
+				} else if(cfg.has_attribute("red") || cfg.has_attribute("green") || cfg.has_attribute("blue")) {
+					color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
+				}
+
+				resources::screen->float_label(loc, text, color);
 			}
 			if(advance) {
 				advance_unit_at(advance_unit_params(loc)
