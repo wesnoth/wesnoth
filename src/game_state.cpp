@@ -54,7 +54,7 @@ game_state::game_state(const config & level, play_controller &, const tdata_cach
 	pathfind_manager_(),
 	reports_(new reports()),
 	lua_kernel_(),
-	events_manager_(new game_events::manager(level)),
+	events_manager_(new game_events::manager()),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
@@ -70,12 +70,13 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	pathfind_manager_(new pathfind::manager(level)),
 	reports_(new reports()),
 	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
-	events_manager_(new game_events::manager(level)),
+	events_manager_(new game_events::manager()),
 	player_number_(level["playing_team"].to_int() + 1),
 	end_level_data_(),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
+	events_manager_->read_scenario(level);
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
 		el_data.read(endlevel_cfg);
@@ -160,6 +161,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 
 void game_state::init(const config& level, play_controller & pc)
 {
+	events_manager_->read_scenario(level);
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);

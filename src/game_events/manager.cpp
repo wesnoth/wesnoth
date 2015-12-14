@@ -62,20 +62,24 @@ void manager::remove_event_handler(const std::string & id)
 
 /* ** manager ** */
 
-manager::manager(const config& cfg)
+manager::manager()
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
 	, pump_(new game_events::t_pump(*this))
 	, wml_menu_items_()
 {
-	wml_menu_items_.set_menu_items(cfg);
-	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
+}
+
+void manager::read_scenario(const config& scenario_cfg)
+{
+	BOOST_FOREACH(const config &ev, scenario_cfg.child_range("event")) {
 		add_event_handler(ev);
 	}
-	BOOST_FOREACH(const std::string &id, utils::split(cfg["unit_wml_ids"])) {
+	BOOST_FOREACH(const std::string &id, utils::split(scenario_cfg["unit_wml_ids"])) {
 		unit_wml_ids_.insert(id);
 	}
 
+	wml_menu_items_.set_menu_items(scenario_cfg);
 	// Create the event handlers for menu items.
 	wml_menu_items_.init_handlers();
 }

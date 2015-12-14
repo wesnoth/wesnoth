@@ -104,9 +104,8 @@ namespace game_events {
 		game_events::wmi_container wml_menu_items_;
 
 	public:
-		/// Note that references will be maintained,
-		/// and must remain valid for the life of the object.
-		explicit manager(const config& scenario_cfg);
+		explicit manager();
+		void read_scenario(const config& scenario_cfg);
 		~manager();
 
 		/// Create an event handler.
