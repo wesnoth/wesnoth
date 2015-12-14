@@ -102,7 +102,6 @@ namespace game_events {
 
 		boost::scoped_ptr<game_events::t_pump> pump_;
 		game_events::wmi_container wml_menu_items_;
-		boost::shared_ptr<manager* const> me_;
 
 	public:
 		/// Note that references will be maintained,

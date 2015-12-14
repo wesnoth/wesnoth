@@ -33,8 +33,6 @@
 #include "util.hpp"
 
 #include <boost/foreach.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/unordered_map.hpp>
 #include <iostream>
 
@@ -69,7 +67,6 @@ manager::manager(const config& cfg)
 	, unit_wml_ids_()
 	, pump_(new game_events::t_pump(*this))
 	, wml_menu_items_()
-	, me_(boost::make_shared<manager * const>(this))
 {
 	wml_menu_items_.set_menu_items(cfg);
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
@@ -80,7 +77,7 @@ manager::manager(const config& cfg)
 	}
 
 	// Create the event handlers for menu items.
-	wml_menu_items_.init_handlers(me_);
+	wml_menu_items_.init_handlers();
 }
 
 manager::~manager() {}

@@ -24,9 +24,6 @@
 #include "../tstring.hpp"
 #include "../variable.hpp"
 
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
-
 class filter_context;
 class game_data;
 struct map_location;
@@ -34,7 +31,6 @@ class unit_map;
 
 namespace game_events
 {
-class manager;
 
 class wml_menu_item
 {
@@ -61,7 +57,7 @@ public:
 	/// Removes the implicit event handler for an inlined [command].
 	void finish_handler() const;
 	/// Initializes the implicit event handler for an inlined [command].
-	void init_handler(const boost::shared_ptr<manager * const> &) const;
+	void init_handler() const;
 	/// The text to put in a menu for this item.
 	/// This will be either translated text or a hotkey identifier.
 	std::string menu_text() const
@@ -105,9 +101,6 @@ private: // Data
 	/// If true, this item will be sended ot ther clients.
 	/// The command shall not change the gamestate if !is_synced_
 	bool is_synced_;
-
-	/// A link back to my manager
-	mutable boost::weak_ptr<manager * const> my_manager_;
 };
 
 } // end namespace game_events
