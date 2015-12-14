@@ -70,6 +70,7 @@
 #include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/regex.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -575,7 +576,45 @@ WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 {
 	resources::soundsources->remove(cfg["id"]);
 }
+namespace {
+	struct map_choice : public mp_sync::user_choice
+	{
+		map_choice(const std::string& filename) : filename_(filename) {}
+		std::string filename_;
+		virtual config query_user(int /*side*/) const
+		{
+			//Do a regex check for the file format to prevent sending aribitary files to other clients.
+			//Note: this allows only the new format.
+			static const std::string s_simple_terrain = "[A-Za-z\\\\\\|\\/]{1,4}";
+			static const std::string s_terrain = s_simple_terrain + "(\\^" + s_simple_terrain + ")?";
+			static const std::string s_sep = "(, |\\n)";
+			static const std::string s_prefix = "(\\d+ )?";
+			static const std::string s_all = "(" + s_prefix + s_terrain + s_sep + ")+";
+			static const boost::regex r_all(s_all);
+			
+			const std::string& mapfile = filesystem::get_wml_location(filename_);
+			std::string res = "";
+			if(filesystem::file_exists(mapfile)) {
+				res = filesystem::read_file(mapfile);
+			}
+			config retv;
+			if(boost::regex_match(res, r_all)) 
+			{
+				retv["map_data"] = res;
+			}
+			return retv;
+		}
+		virtual config random_choice(int /*side*/) const
+		{
+			return config();
+		}
+		virtual std::string description() const
+		{ 
+			return "Map Data"; 
+		}
 
+	};
+}
 /// Experimental map replace
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
@@ -595,13 +634,8 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 
 	try {
 		if(!cfg["map_file"].empty()) {
-			const std::string& mapfile = filesystem::get_wml_location(cfg["map_file"].str());
-
-			if(filesystem::file_exists(mapfile)) {
-				map.read(filesystem::read_file(mapfile), false);
-			} else {
-				throw incorrect_map_format_error("Invalid file path");
-			}
+			config file_cfg = mp_sync::get_user_choice("map_data", map_choice(cfg["map_file"].str()));
+			map.read(file_cfg["map_data"].str(), false);
 		} else {
 			map.read(cfg["map"], false);
 		}
