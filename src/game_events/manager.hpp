@@ -33,19 +33,6 @@ class unit_map;
 
 namespace game_events {
 
-	struct t_context {
-		game_lua_kernel * lua_kernel;
-		filter_context * filter_con;
-		game_display * screen;
-		game_data * gamedata;
-		unit_map * units;
-
-		boost::function<void()> on_gamestate_change; //whiteboard callback
-		boost::function<int()> current_side; //current_side function
-
-		t_context(game_lua_kernel * lua_kernel, filter_context * filter_con, game_display * screen, game_data * gamedata, unit_map * um, boost::function<void()>, boost::function<int()>);
-	};
-
 	class t_pump;
 
 	class t_event_handlers;
@@ -114,14 +101,13 @@ namespace game_events {
 		std::set<std::string> unit_wml_ids_;
 
 		boost::scoped_ptr<game_events::t_pump> pump_;
-		boost::shared_ptr<t_context> resources_;
 		game_events::wmi_container wml_menu_items_;
 		boost::shared_ptr<manager* const> me_;
 
 	public:
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
-		explicit manager(const config& scenario_cfg, const boost::shared_ptr<t_context> &);
+		explicit manager(const config& scenario_cfg);
 		~manager();
 
 		/// Create an event handler.

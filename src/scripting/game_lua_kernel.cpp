@@ -42,6 +42,7 @@
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for clear_chat_messages
+#include "utils/foreach.tpp"
 #include "formatter.hpp"
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
@@ -4443,6 +4444,11 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_pop(L, 1);
 
 	lua_settop(L, 0);
+
+	FOREACH(const AUTO& handler, game_events::wml_action::registry())
+	{
+		set_wml_action(handler.first, handler.second);
+	}
 }
 
 void game_lua_kernel::initialize(const config& level)
