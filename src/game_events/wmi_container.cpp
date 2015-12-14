@@ -158,7 +158,9 @@ void wmi_container::init_handlers(const boost::shared_ptr<manager * const> & man
 	}
 
 	// Diagnostic:
-	LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
+	if ( wmi_count > 0 ) {
+		LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
+	}
 }
 
 void wmi_container::to_config(config& cfg) const
@@ -174,24 +176,19 @@ void wmi_container::to_config(config& cfg) const
 /**
  * Updates or creates (as appropriate) the menu item with the given @a id.
  */
-void wmi_container::set_item(const std::string& id, const vconfig& menu_item, manager * man)
+void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
 {
 	// Try to insert a dummy value. This combines looking for an existing
 	// entry with insertion.
 	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, item_ptr())).first;
 
-	if ( add_it->second ) {
+	if ( add_it->second )
 		// Create a new menu item based on the old. This leaves the old item
 		// alone in case someone else is holding on to (and processing) it.
 		add_it->second.reset(new wml_menu_item(id, menu_item, *add_it->second));
-	} else {
+	else
 		// This is a new menu item.
 		add_it->second.reset(new wml_menu_item(id, menu_item));
-	}
-
-	if (man) {
-		add_it->second->init_handler(*man);
-	}
 }
 
 /**

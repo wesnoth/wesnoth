@@ -88,7 +88,7 @@ public:
 	void init_handlers(const boost::shared_ptr<manager * const> &) const;
 	void to_config(config& cfg) const;
 	/// Updates or creates (as appropriate) the menu item with the given @a id.
-	void set_item(const std::string& id, const vconfig& menu_item, manager *);
+	void set_item(const std::string& id, const vconfig& menu_item);
 	/// Sets the current menu items to the "menu_item" children of @a cfg.
 	void set_menu_items(const config& cfg);
 

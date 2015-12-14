@@ -62,7 +62,6 @@ public:
 	void finish_handler() const;
 	/// Initializes the implicit event handler for an inlined [command].
 	void init_handler(const boost::shared_ptr<manager * const> &) const;
-	void init_handler(manager &) const;
 	/// The text to put in a menu for this item.
 	/// This will be either translated text or a hotkey identifier.
 	std::string menu_text() const

@@ -261,7 +261,6 @@ void wml_menu_item::init_handler(const boost::shared_ptr<manager * const> & man)
 	if ( !command_.empty() ) {
 		assert(man);
 		my_manager_ = man;
-		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
 		(**man).add_event_handler(command_, true);
 	}
 
@@ -269,11 +268,6 @@ void wml_menu_item::init_handler(const boost::shared_ptr<manager * const> & man)
 	if ( use_hotkey_ ) {
 		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
 	}
-}
-
-void wml_menu_item::init_handler(manager & man) const
-{
-	init_handler(man.get_shared());
 }
 
 /**
@@ -381,7 +375,7 @@ void wml_menu_item::update(const vconfig & vcfg)
  */
 void wml_menu_item::update_command(const config & new_command)
 {
-/*	if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
+	if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
 		// If there is an old command, remove it from the event handlers.
 		if ( !command_.empty() ) {
 			manager::iteration iter(event_name_, **man);
@@ -393,7 +387,7 @@ void wml_menu_item::update_command(const config & new_command)
 				++iter;
 			}
 		}
-*/
+
 		// Update our stored command.
 		if ( new_command.empty() )
 			command_.clear();
@@ -408,15 +402,13 @@ void wml_menu_item::update_command(const config & new_command)
 			command_["name"] = event_name_;
 			command_["first_time_only"] = false;
 
-/*
 			// Register the event.
 			LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
 			(**man).add_event_handler(command_, true);
-*/		}
-/*	} else {
+		}
+	} else {
 		ERR_NG << "Tried to set a command for a menu item, but the manager could not be found\n";
 	}
-*/
 }
 
 } // end namespace game_events

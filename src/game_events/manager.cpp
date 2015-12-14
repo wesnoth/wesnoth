@@ -196,9 +196,4 @@ game_events::t_pump & manager::pump()
 	return *pump_;
 }
 
-const boost::shared_ptr<manager * const> & manager::get_shared()
-{
-	return me_;
-}
-
 } //end namespace game_events

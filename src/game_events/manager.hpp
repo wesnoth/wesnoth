@@ -119,8 +119,6 @@ namespace game_events {
 		                const std::string& type = std::string());
 		void write_events(config& cfg);
 
-		const boost::shared_ptr<manager * const> & get_shared();
-
 		game_events::t_pump & pump();
 	};
 }
