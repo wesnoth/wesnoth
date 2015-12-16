@@ -578,19 +578,20 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
  *
  * @param	set_value Preselected difficulty number. The default -1 launches the gui.
  * @return	Selected difficulty. Returns "FAIL" if set_value is invalid,
- *	        and "CANCEL" if the gui is cancelled.
+ *	        and "CANCEL" if the gui is canceled.
  */
 std::string create_engine::select_campaign_difficulty(int set_value)
 {
 	// Verify the existence of difficulties
-	std::vector<std::string> difficulties =
-		utils::split(current_level().data()["difficulties"]);
+	std::vector<std::string> difficulties;
+
+	BOOST_FOREACH(const config &d, current_level().data().child_range("difficulty"))
+	{
+		difficulties.push_back(d["define"]);
+	}
 
 	if(difficulties.empty()) {
-		BOOST_FOREACH(const config &d, current_level().data().child_range("difficulty"))
-		{
-			difficulties.push_back(d["define"]);
-		}
+		difficulties = utils::split(current_level().data()["difficulties"]);
 	}
 
 	// No difficulties found. Exit
