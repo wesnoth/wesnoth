@@ -82,12 +82,12 @@ tcampaign_difficulty::tcampaign_difficulty(
 	// Populate local config with difficulty children
 	difficulties_.append_children(campaign, "difficulty");
 
-	std::vector<std::string> difficulty_list = utils::split(campaign["difficulties"]);
-	std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
-
 	// Convert legacy format to new-style config if latter not present
 	if(difficulties_.empty()) {
 		WRN_WML << "[campaign] difficulties,difficulty_descriptions= is deprecated. Use [difficulty] instead" << std::endl;
+
+		std::vector<std::string> difficulty_list = utils::split(campaign["difficulties"]);
+		std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
 
 		if(difficulty_opts.size() != difficulty_list.size()) {
 			difficulty_opts = difficulty_list;
