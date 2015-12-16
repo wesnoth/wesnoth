@@ -625,7 +625,7 @@ void flg_manager::set_current_gender(const std::string& gender)
 
 std::vector<std::string> flg_manager::get_original_recruits(const config& cfg)
 {
-	if (cfg["no_recruit"].to_bool()) {
+	if (cfg["default_recruit"].empty()) {
 		return std::vector<std::string>();
 	}
 	const config::attribute_value& cfg_default_recruit = cfg["default_recruit"];

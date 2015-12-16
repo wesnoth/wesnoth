@@ -398,11 +398,9 @@ void terrain_label::read(const config &cfg)
 	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
 	if(!tmp_color.empty()) {
-		std::vector<Uint32> temp_rgb;
-		if(string2rgb(tmp_color, temp_rgb) && !temp_rgb.empty()) {
-			color = int_to_color(temp_rgb[0]);
-		}
+		color = string_to_color(tmp_color);
 	}
+
 	color_ = color;
 }
 
