@@ -327,6 +327,10 @@ void tunit_create::list_item_clicked(twindow& window)
 	const int selected_row 
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
+	if(selected_row == -1) {
+		return;
+	}
+
 	const unit_type* u = units_[selected_row];
 
 	std::stringstream str;
