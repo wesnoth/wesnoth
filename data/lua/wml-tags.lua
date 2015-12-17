@@ -1475,9 +1475,9 @@ function wml_actions.endlevel(cfg)
 	local there_is_a_local_human_defeat = false
 	local bool_int = function(b)
 		if b == true then
-			return 0
-		elseif b == false then
 			return 1
+		elseif b == false then
+			return 0
 		else
 			return b
 		end
