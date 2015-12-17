@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2011-12-29 13:46+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -24,7 +24,9 @@ msgstr "MsP"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Keeruline)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -34,7 +36,9 @@ msgstr "Jorss"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Raske)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -44,7 +48,9 @@ msgstr "Orkisõdalane"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-msgid "(Nightmare)"
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
 msgstr "(Kohutav)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -237,7 +243,7 @@ msgid ""
 "arranged by the Northern Alliance — was between the local earls and the "
 "orcish tribes and didn’t have any direct connection with the Northern "
 "Alliance. The other — and perhaps the main — reason why the treaty held was "
-"that with the death of the Black Eye, the unity of the orcs was shattered "
+"that with the death of the Black-Eye, the unity of the orcs was shattered "
 "and they once again descended into inner squabbling. Thus the years that "
 "followed were relatively peaceful and prosperous — at least for the humans."
 msgstr ""
@@ -1431,9 +1437,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
+#, fuzzy
+#| msgid ""
+#| "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the "
+#| "shamans and his warriors set off to Tirigaz."
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
-"and his warriors set off to Tirigaz."
+"and his warriors, set off to Tirigaz."
 msgstr ""
 "Jättes suurema osa rahvast Barag Góri, asus Kapou'e oma sõdalaste ja "
 "šamaanidega teele Tirigazi."
@@ -1987,7 +1997,7 @@ msgstr "Ähh, ta on varsti jälle terve. Ta on ju troll. Eks, Grüü?"
 msgid "(<i>Puke</i>)"
 msgstr "(Ööääkkk)"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:399
 msgid ""
 "Hold it right there! This oasis is ours! Begone or you all will be killed!"
@@ -2003,7 +2013,7 @@ msgstr ""
 "Kuule tohman, me oleme keset liivatormi ja peaaegu täiesti ilma vee ja "
 "toiduta. Me ei saa siit ilma peatumata edasi minna."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:409
 msgid "I don’t care, get lost!"
 msgstr "Ei huvita, kaduge ära!"
@@ -2148,7 +2158,7 @@ msgstr ""
 "Me oleme piisavalt relvastatud, et kamba haldjatest salaküttidega hakkama "
 "saada. Kui mõnda kohtame, lõikame ta tükkideks."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
 #, fuzzy
 #| msgid ""
@@ -2158,7 +2168,7 @@ msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr ""
 "Haldjad! Gork, sul oli õigus, see koht on neid rääbakaid nõrgukesi täis."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
 msgid ""
 "Elves! You were right, Gork, this place is infested with the skinny "
@@ -2166,7 +2176,7 @@ msgid ""
 msgstr ""
 "Haldjad! Gork, sul oli õigus, see koht on neid rääbakaid nõrgukesi täis."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:213
 msgid "Blast it, the orcs have discovered us."
 msgstr "Neetud, orkid avastasid meid."
@@ -2176,7 +2186,7 @@ msgstr "Neetud, orkid avastasid meid."
 msgid "What is your purpose for trespassing on orcish territory?"
 msgstr "Mis asjus te orkide maale olete tunginud?"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Fool, do you really think we are going to tell you?"
 msgstr "Narr, kas sa tõesti mõtled, et me sulle ütleme?"
@@ -2530,11 +2540,17 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership on it."
 msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
-"leadership on it."
+"leadership of it."
 msgstr ""
 "Jäta oma rahvas siia, Kapou'e - nad on praegu väljaspool ohtu - ja mine "
 "Prestimi kaitsma. Vahepeal, nüüd kui Nõukogu on koos, peame me aru. Ilmselt "
@@ -4092,9 +4108,17 @@ msgstr "Saavutustega?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:234
+#, fuzzy
+#| msgid ""
+#| "Well let’s see, first he betrays the trust of his sworn sovereign and "
+#| "becomes no less than a boot-licking spy for the humans. Then goes on to "
+#| "engineer the death of half of the Great Council and in doing so makes "
+#| "himself directly responsible for the deaths of hundreds of orcs. And best "
+#| "of all, he is directly responsible for a bloody civil war right at the "
+#| "time when his people are on the edge of total extermination!"
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
-"becomes no less than a boot-licking spy for the humans. Then goes on to "
+"becomes no less than a boot-licking spy for the humans. Then he goes on to "
 "engineer the death of half of the Great Council and in doing so makes "
 "himself directly responsible for the deaths of hundreds of orcs. And best of "
 "all, he is directly responsible for a bloody civil war right at the time "

@@ -505,7 +505,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
 	}
 
-	alignment_ = lexical_cast_default<unit_type::ALIGNMENT> (cfg["alignment"].str(), alignment_);
+	alignment_.parse(cfg["alignment"].str());
 
 	generate_name();
 

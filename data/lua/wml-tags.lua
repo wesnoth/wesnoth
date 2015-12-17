@@ -146,7 +146,7 @@ function wml_actions.allow_recruit(cfg)
 			wesnoth.add_known_unit(type)
 		end
 		team.recruit = v
-	end
+		end
 end
 
 function wml_actions.allow_extra_recruit(cfg)
@@ -1172,7 +1172,6 @@ function wml_actions.store_side(cfg)
 				income = t.total_income,
 				village_gold = t.village_gold,
 				village_support = t.village_support,
-				name = t.name,
 				team_name = t.team_name,
 				user_team_name = t.user_team_name,
 				color = t.color,
@@ -1407,11 +1406,18 @@ function wml_actions.remove_shroud(cfg)
 end
 
 function wml_actions.time_area(cfg)
-	local remove = cfg.remove
-	if remove then
-		wesnoth.remove_time_area(cfg.id)
+	if cfg.remove then
+		wml_actions.remove_time_area(cfg)
 	else
 		wesnoth.add_time_area(cfg)
+	end
+end
+
+function wml_actions.remove_time_area(cfg)
+	local id = cfg.id or helper.wml_error("[remove_time_area] missing required id= key")
+
+	for w in utils.split(id) do
+		wesnoth.remove_time_area(w)
 	end
 end
 
@@ -1436,6 +1442,7 @@ function wml_actions.end_turn(cfg)
 end
 
 function wml_actions.endlevel(cfg)
+	local parsed = helper.parsed(cfg)
 	if wesnoth.check_end_level_disabled() then
 		wesnoth.message("Repeated [endlevel] execution, ignoring")
 		return
@@ -1456,8 +1463,74 @@ function wml_actions.endlevel(cfg)
 	if end_credits ~= nil then
 		wesnoth.set_end_campaign_credits(end_credits)
 	end
-
-	wesnoth.end_level(cfg)
+	
+	local side_results = {}
+	for result in helper.child_range(parsed, "result") do
+		local side = result.side or helper.wml_error("[result] in [endlevel] missing required side= key")
+		side_results[side] = result
+	end
+	local there_is_a_human_victory = false
+	local there_is_a_human_defeat = false
+	local there_is_a_local_human_victory = false
+	local there_is_a_local_human_defeat = false
+	local bool_int = function(b)
+		if b == true then
+			return 1
+		elseif b == false then
+			return 0
+		else
+			return b
+		end
+	end
+	for k,v in ipairs(wesnoth.sides) do
+		local side_result = side_results[v.side] or {}
+		local victory_or_defeat = side_result.result or cfg.result or "victory"
+		local victory = victory_or_defeat == "victory"
+		if victory_or_defeat ~= "victory" and victory_or_defeat ~= "defeat" then
+			return helper.wml_error("invalid result= key in [endlevel] '" .. victory_or_defeat .."'")
+		end
+		if v.controller == "human" or v.controller == "network" then
+			if victory then
+				there_is_a_human_victory = true
+			else
+				there_is_a_human_defeat = true
+			end
+		end
+		if v.controller == "human" then
+			if victory then
+				there_is_a_local_human_victory = true
+			else
+				there_is_a_local_human_defeat = true
+			end
+		end
+		if side_result.bonus ~= nil then
+			v.carryover_bonus = bool_int(side_result.bonus)
+		elseif cfg.bonus ~= nil then
+			v.carryover_bonus = bool_int(cfg.bonus)
+		end
+		if side_result.carryover_add ~= nil then
+			v.carryover_add = side_result.carryover_add
+		elseif cfg.carryover_add ~= nil then
+			v.carryover_add = cfg.carryover_add
+		end
+		if side_result.carryover_percentage ~= nil then
+			v.carryover_percentage = side_result.carryover_percentage
+		elseif cfg.carryover_percentage ~= nil then
+			v.carryover_percentage = cfg.carryover_percentage
+		end
+	end
+	local proceed_to_next_level = there_is_a_human_victory or (not there_is_a_human_defeat and cfg.result ~= "defeat") 
+	local victory = there_is_a_local_human_victory or (not there_is_a_local_human_defeat and proceed_to_next_level)
+	wesnoth.end_level {
+		music = cfg.music,
+		carryover_report = cfg.carryover_report,
+		save = cfg.save,
+		replay_save = cfg.replay_save,
+		linger_mode = cfg.linger_mode,
+		reveal_map = cfg.reveal_map,
+		proceed_to_next_level = proceed_to_next_level,
+		result = victory and "victory" or "defeat",
+	}
 end
 
 function wml_actions.event(cfg)
@@ -1568,4 +1641,76 @@ function wml_actions.unsynced(cfg)
 	wesnoth.unsynced(function ()
 		wml_actions.command(cfg)
 	end)
+end
+
+wesnoth.wml_actions.random_placement = function(cfg)
+	local dist_le = nil
+	
+	local parsed = helper.shallow_parsed(cfg)
+	local filter = helper.get_child(parsed, "filter_location") or {}
+	local command = helper.get_child(parsed, "command") or helper.wml_error("[random_placement] missing required [command] subtag")
+	local distance = cfg.min_distance or 0
+	local num_items = cfg.num_items or helper.wml_error("[random_placement] missing required 'num_items' attribute")
+	local variable = cfg.variable or helper.wml_error("[random_placement] missing required 'variable' attribute")
+	local allow_less = cfg.allow_less == true
+	local variable_previous = utils.start_var_scope(variable)
+
+	if distance < 0 then
+		-- optimisation for distance = -1
+		dist_le = function() return false end
+	elseif distance == 0 then
+		-- optimisation for distance = 0
+		dist_le = function(x1,y1,x2,y2) return x1 == x2 and y1 == y2 end
+	else 
+		-- optimisation: cloasure is faster than string lookups.
+		local math_abs = math.abs
+		-- same effect as helper.distance_between(x1,y1,x2,y2) <= distance but faster.
+		dist_le = function(x1,y1,x2,y2)
+			local d_x = math_abs(x1-x2)
+			if d_x > distance then
+				return false
+			end
+			if d_x % 2 ~= 0 then
+				if x1 % 2 == 0 then
+					y2 = y2 - 0.5
+				else
+					y2 = y2 + 0.5
+				end
+			end
+			local d_y = math_abs(y1-y2)
+			return d_x + 2*d_y <= 2*distance
+		end
+	end
+	
+	local locs = wesnoth.get_locations(filter)
+	if type(num_items) == "string" then		
+		num_items = math.floor(loadstring("local size = " .. #locs .. "; return " .. num_items)())
+		print("num_items=" .. num_items .. ", #locs=" .. #locs)
+	end
+	local size = #locs
+	for i = 1, num_items do
+		if size == 0 then
+			if allow_less then
+				print("placed only " .. i .. " items")
+				return
+			else
+				helper.wml_error("[random_placement] failed to place items. only " .. i .. " items were placed")
+			end
+		end
+		local index = wesnoth.random(size)
+		local point = locs[index]
+		wesnoth.set_variable(variable .. ".x", point[1])
+		wesnoth.set_variable(variable .. ".y", point[2])
+		wesnoth.set_variable(variable .. ".n", i)
+		for j = size, 1, -1 do
+			if dist_le(locs[j][1], locs[j][2], point[1], point[2]) then
+				-- optimisation: swapping elements and storing size in an extra variable is faster than table.remove(locs, j)
+				locs[j] = locs[size]
+				size = size - 1
+			end
+		end
+		wesnoth.wml_actions.command (command)
+	end
+	utils.end_var_scope(variable, variable_previous)
+
 end

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2008-12-27 22:09+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:11
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:9
 msgid "Heir to the Throne"
 msgstr "Tronarvingen"
 
@@ -31,38 +31,7 @@ msgid "HttT"
 msgstr "T"
 
 #. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:16
-msgid "(Beginner)"
-msgstr "(Begynder)"
-
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:16
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:5
-msgid "Fighter"
-msgstr "Soldat"
-
-#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
-msgid "(Normal)"
-msgstr "(Normal)"
-
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:17
-msgid "Hero"
-msgstr "Helt"
-
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:18
-msgid "(Challenging)"
-msgstr "(Udfordrende)"
-
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:18
-msgid "Champion"
-msgstr "Mester"
-
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:19
 #, fuzzy
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
@@ -74,27 +43,64 @@ msgstr ""
 "(Begynderniveau, 25 scenarier.)"
 
 #. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:21
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:19
 msgid "(Novice level, 23 scenarios.)"
 msgstr ""
 
+#. [campaign]: id=Heir_To_The_Throne
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:21
+#, fuzzy
+#| msgid "(Beginner)"
+msgid "Beginner"
+msgstr "(Begynder)"
+
+#. [campaign]: id=Heir_To_The_Throne
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:21
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:5
+msgid "Fighter"
+msgstr "Soldat"
+
+#. [campaign]: id=Heir_To_The_Throne
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:22
+msgid "Hero"
+msgstr "Helt"
+
+#. [campaign]: id=Heir_To_The_Throne
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:22
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(Normal)"
+
+#. [campaign]: id=Heir_To_The_Throne
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:23
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Udfordrende)"
+
+#. [campaign]: id=Heir_To_The_Throne
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:23
+msgid "Champion"
+msgstr "Mester"
+
 #. [about]
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:29
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:30
 msgid "Campaign Design"
 msgstr "Kampagnedesign"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:35
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:36
 msgid "Campaign Maintenance"
 msgstr "Kampagnevedligeholdelse"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:48
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:49
 msgid "Artwork and Graphics Design"
 msgstr "Tegninger og grafik"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:60
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:61
 msgid "Miscellaneous"
 msgstr "Diverse"
 
@@ -132,8 +138,8 @@ msgstr "Flyt Konrad til skiltet i nordvest."
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:28
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:76
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:847
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:968
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:848
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:969
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:39
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:27
@@ -162,8 +168,8 @@ msgstr "Konrads død"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:32
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:80
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:851
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:972
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:852
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:973
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:29
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:43
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:31
@@ -182,7 +188,7 @@ msgstr "Delfadors død"
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:51
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:71
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:74
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:72
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:50
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:63
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:52
@@ -227,7 +233,7 @@ msgstr "Konrad"
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:65
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:58
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:78
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:80
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:78
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:56
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:69
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:58
@@ -506,42 +512,42 @@ msgid ""
 msgstr "Åh nej! Tiden er løbet fra os, de har hentet forstærkninger..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:452
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:444
 msgid "Die, villain, die!"
 msgstr "Dø, slyngel, dø!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:464
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:456
 msgid "Only the foolish oppose me!"
 msgstr "Kun fjolser går mod mig!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:475
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:467
 msgid "I am Galdrad. You will have to fight me to get any further!"
 msgstr "Jeg er Galdrad. Du må kæmpe mod mig for at komme videre!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:487
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:479
 msgid "Only a fool would dare to attack me!"
 msgstr "Kun et fjols tør angribe mig!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:499
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:491
 msgid "I am Delfador the Great. Prepare to die!"
 msgstr "Jeg er Delfador den Store. Bered dig på at dø!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:511
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:503
 msgid "Let me through, you rogue!"
 msgstr "Lad mig komme igennem din lærling!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:589
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:581
 msgid "Oh no! They are destroying our home!"
 msgstr "Åh nej! De smadrer vores hjem!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:593
+#: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:585
 msgid "There can be no looking back. We must go quickly!"
 msgstr "Der er ikke tid til at se sig tilbage. Vi må skynde os afsted!"
 
@@ -2349,8 +2355,8 @@ msgstr "Besejr Kojun Herolm"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:40
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:45
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:88
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:859
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:980
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:860
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:981
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:51
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:39
@@ -2424,22 +2430,22 @@ msgstr ""
 "det begynde!"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:490
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:460
 msgid "Niodien"
 msgstr "Niodien"
 
 #. [message]: speaker=Niodien
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:494
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:464
 msgid "Stay on the path! The hills here are not safe!"
 msgstr "Hold jer til vejen! Bakkerne her er ikke sikre!"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:511
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:481
 msgid "Loflar"
 msgstr "Loflar"
 
 #. [message]: speaker=Loflar
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:485
 msgid ""
 "Beware the hills! There are many orcs in hiding, preparing to ambush you!"
 msgstr ""
@@ -2447,7 +2453,7 @@ msgstr ""
 "chance for at lokke jer i et baghold!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:534
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:504
 msgid ""
 "NE — Dan’Tonk\n"
 "SE — Fort Tahn"
@@ -2456,12 +2462,12 @@ msgstr ""
 "SØ - Fort Tahn"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:540
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:510
 msgid "Dan’Tonk, we are so close to Weldyn."
 msgstr "Dan'Tonk, vi er så tæt på Weldyn."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:544
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:514
 #, fuzzy
 msgid ""
 "We dare not confront Asheviere yet. We must retrieve the Sceptre of Fire and "
@@ -2471,7 +2477,7 @@ msgstr ""
 "flere allierede i norden."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:564
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:534
 msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "Sejren er vores! Lad os fortsætte mod nordøst!"
 
@@ -2494,24 +2500,24 @@ msgstr ""
 "dronningen..."
 
 #. [part]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:54
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:53
 msgid "...and she sent her most able commander."
 msgstr "...og hun sender sin bedste kommandør."
 
 #. [label]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:63
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:61
 msgid "Elmar’s Crossing"
 msgstr "Elmar overgangen"
 
 #. [label]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:68
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:66
 msgid "Elbridge"
 msgstr "Elbridge"
 
 #. [event]
 #. [side]: type=Princess, id=Li'sar
 #. [unit]: id=Li'sar, type=$stored_Lisar.type
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:89
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:67
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:661
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:93
@@ -2529,7 +2535,7 @@ msgstr "Li’sar"
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=Princess, id=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:132
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:130
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:88
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:83
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:219
@@ -2545,57 +2551,57 @@ msgid "Asheviere"
 msgstr "Asheviere"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:169
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:167
 msgid ""
 "On the road to Knalga, the party was opposed by the forces of Asheviere."
 msgstr "På vejen mod Knalga, blev gruppen konfronteret af Ashevieres styrker."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:173
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:171
 msgid "The Queen has sent me to stop you, impostor!"
 msgstr "Dronningen har sendt mig for at stoppe dig, din svindler!"
 
 #. [message]: role=Advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:177
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:175
 #, fuzzy
 msgid ""
 "That’s the princess, Li’sar. The daughter of the Queen, and her successor!"
 msgstr "Det er prinsessen Li'sar. Dronningens datter og hendes efterfølger!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:181
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:179
 msgid "I’m no impostor. It seems that your mother has lied to you."
 msgstr "Jeg er ingen svindler. Din mor har løjet for dig."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:186
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:184
 msgid "This is treason! Your lies will perish with you!"
 msgstr "Dette er forræderi! Dine løgne vil gå til grunde med dig!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:190
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:188
 msgid ""
 "There is no use in reasoning. She will understand only one thing. To arms!"
 msgstr ""
 "Der er ingen grund til at søge fornuft. Hun forstår kun en ting. Grib våbene!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:203
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:201
 msgid "This is taking too much time, I had best call some reinforcements!"
 msgstr "Dette tager alt for lang tid, jeg må heller hidkalde forstærkninger!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:214
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:212
 msgid "Maybe I was not using enough forces..."
 msgstr "Måske brugte jeg ikke nok styrker..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:225
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:223
 msgid "I surrender! Don’t hurt me, impostor."
 msgstr "Jeg overgiver mig! Gør mig ikke fortræd svindler."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:229
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:227
 msgid ""
 "I said before I’m not an impostor, but if you yield, I will spare your life."
 msgstr ""
@@ -2603,17 +2609,17 @@ msgstr ""
 "spare dit liv."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:234
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:232
 msgid "Let me go!"
 msgstr "Lad mig gå!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:239
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:237
 msgid "Think about the story of the old king. Ask somebody who knew of him."
 msgstr "Tænk på historien om den gamle konge. Spørg nogen som kendte til ham."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:244
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:242
 msgid ""
 "The old king? I have heard about that, but I know it is not true. My mother "
 "told me."
@@ -2621,7 +2627,7 @@ msgstr ""
 "Den gamle konge? jeg har hørt om det, men det passer ikke. Det siger min mor."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:248
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:246
 #, fuzzy
 msgid ""
 "Your mother has lied to you, child. Now I suggest you reconsider, and either "
@@ -2635,7 +2641,7 @@ msgstr ""
 "spare dit liv endnu en gang."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:253
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:251
 msgid ""
 "I am not a child, and I do not want to talk about it! You said you would "
 "spare me, so be on your way. The northern road should be safe for you."
@@ -2644,12 +2650,12 @@ msgstr ""
 "nådig mod mig så gå din vej. Den nordlige vej er sikker for dig."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:255
 msgid "Good day then, Princess. Come, men, to the northern road!"
 msgstr "Farvel så prinsesse. Kom, mænd, til den nordlige vej!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:260
 msgid ""
 "(Ha ha, little do they know just how many undead have wandered the northern "
 "road of late. Surely they are doomed!)"
@@ -2658,7 +2664,7 @@ msgstr ""
 "nylig. De er helt sikkert fortabt!)"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:320
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:318
 #, fuzzy
 msgid ""
 "I see that your forces draw near, impostor! I’ll not be defeated in my own "
@@ -2669,28 +2675,28 @@ msgstr ""
 "duelister!"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:334
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:390
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:332
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:388
 msgid "Ronry"
 msgstr "Ronry"
 
 #. [message]: speaker=Ronry
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:350
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:348
 msgid "I’ll seize their keep, my Lady!"
 msgstr "Jeg indtager deres borgtårn min lady!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:383
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:381
 msgid "It sounds like there is something in the mine shaft."
 msgstr "Det lyder som om der er noget i mineskakten."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:399
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:397
 msgid "You’ve discovered my ploy! It doesn’t matter, I’ll still rout you!"
 msgstr "Du har opdaget min plan! Det betyder intet, jeg slår dig alligevel!"
 
 #. [message]: speaker=Ronry
-#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:412
+#: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:410
 msgid "The trap is foiled, but I’ll still flush this rabble from their keep!"
 msgstr ""
 "Fælden er afsløret, men jeg skylder stadig dette affald væk fra deres "
@@ -4665,8 +4671,8 @@ msgstr "En hurtig alliance"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:36
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:41
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:84
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:855
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:976
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:856
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:977
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:47
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:35
@@ -5845,7 +5851,7 @@ msgstr "Thorias kløfter"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:72
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:838
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:839
 msgid "Make it to the end of the river"
 msgstr "Nå til enden af floden"
 
@@ -5858,13 +5864,13 @@ msgstr "Hestedrager"
 
 #. [unit]: type=Injured Sergeant, id=Warven
 #. [unit]: type=Sergeant, id=Warven
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:246
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:890
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:247
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:891
 msgid "Warven"
 msgstr "Warven"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:260
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:261
 #, fuzzy
 msgid ""
 "The party traveled down the river for days, sometimes walking through the "
@@ -5874,7 +5880,7 @@ msgstr ""
 "vand, undertiden svømmende, hjulpet af havfolket."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:265
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:266
 #, fuzzy
 msgid ""
 "One day they saw a gruesome sight — a fleet of boats and rafts sunk or "
@@ -5886,7 +5892,7 @@ msgstr ""
 "nærmere."
 
 #. [message]: role=merman-advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:270
 #, fuzzy
 msgid ""
 "These are not proper ships, but shallow-draft boats built only recently; "
@@ -5901,7 +5907,7 @@ msgstr ""
 "skibe havde Wesnoths krone som banner."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:273
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:274
 #, fuzzy
 msgid ""
 "Haven’t you found any enemy boats, ones the Wesnothians were fighting "
@@ -5909,31 +5915,31 @@ msgid ""
 msgstr "Har du ikke fundet nogen fjendtlige skibe som de kæmpede imod?"
 
 #. [message]: role=merman-advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:277
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:278
 msgid "No we have not. If there were any, they are long gone."
 msgstr "Nej ingen. Hvis der var nogen, er de for længst væk."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:281
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:282
 #, fuzzy
 msgid "Perhaps the monsters Lord Kalenz alluded to sunk the boats."
 msgstr ""
 "Måske monstrene lensherre Kalenz kom med hentydninger om sænkede skibene."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:285
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:286
 msgid ""
 "That is possible. I would guess they were seeking a way east, just as we are."
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:289
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:290
 msgid ""
 "What do we do next? How much more of the river do we still have to travel?"
 msgstr "Hvad gør vi nu? Hvor langt op af floden har vi tilbage?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:293
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:294
 msgid ""
 "The mountains north of the river are impassable. Perhaps we should try "
 "moving south, to the swamps."
@@ -5942,7 +5948,7 @@ msgstr ""
 "rejse mod syd; til sumpene."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:297
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:298
 msgid ""
 "I don’t recommend it. Long ago, a lich who was at war with my people "
 "appointed some of his most powerful minions to guard the swamps. We must not "
@@ -5953,7 +5959,7 @@ msgstr ""
 "ikke tage den vej!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:301
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:302
 #, fuzzy
 msgid ""
 "Then we have only two choices: to proceed down the river or to go back where "
@@ -5963,7 +5969,7 @@ msgstr ""
 "hvor vi kom fra og kæmpe os igennem orkerne eller de udøde."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:305
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:306
 #, fuzzy
 msgid ""
 "We certainly have no time to go back! We must hurry to the home of the North "
@@ -5973,28 +5979,28 @@ msgstr ""
 "vores elverallierede."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:309
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:310
 msgid "Delfador is right. We must go on!"
 msgstr "Delfador har ret. Vi må fortsætte!"
 
 #. [unit]: type=Armageddon Drake, id=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:328
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:329
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:437
 msgid "Keh Ohn"
 msgstr "Keh Ohn"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:333
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:334
 msgid "Oh my! A monster!"
 msgstr "Oh ha! Et monster!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:337
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:338
 msgid "A dragon! A big one!"
 msgstr "En drage! En stor en!"
 
 #. [message]: speaker=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:342
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:343
 #, fuzzy
 msgid ""
 "I am Keh Ohn, leader of the drakes who have settled upon these cliffs. Who "
@@ -6004,12 +6010,12 @@ msgstr ""
 "Hvem er du?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:346
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:347
 msgid "A talking dragon?"
 msgstr "En talende drage?"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:350
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:351
 msgid ""
 "I am beginning to understand why you were talking about monsters on our way "
 "here, Lord Kalenz."
@@ -6018,7 +6024,7 @@ msgstr ""
 "Kalenz."
 
 #. [message]: role=merman-advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:354
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:355
 msgid ""
 "With all due respect, Your Highnesses, you are both wrong. This is not a "
 "dragon. This is a drake."
@@ -6027,7 +6033,7 @@ msgstr ""
 "Det er en hestedrage."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:358
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:359
 #, fuzzy
 msgid ""
 "Here? But, drakes have never been seen in Wesnoth before... Are you certain "
@@ -6037,7 +6043,7 @@ msgstr "Her? Men hestedrager er aldrig set i Wesnoth... Er du sikker på det?"
 #. [message]: role=merman-advisor
 #. Yes, "Eastern Shore" is correct. Mermen are water-oriented;
 #. it's the eastern shore of the Great Ocean.
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:365
 msgid ""
 "I was born in the Bay of Pearls and spent my entire life on the Eastern "
 "Shore. But I have spoken with those who have traveled the Western Ocean and "
@@ -6055,7 +6061,7 @@ msgstr ""
 "mange utænkelige ting og skabninger som lever udenfor Wesnoth."
 
 #. [message]: speaker=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:370
 #, fuzzy
 msgid ""
 "GRROAR!! Will you silly self-centered creatures show some manners and pay "
@@ -6065,7 +6071,7 @@ msgstr ""
 "opmærksomhed?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:373
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:374
 #, fuzzy
 msgid ""
 "Eh... well of course, sir drake. Let me introduce myself — I am Prince "
@@ -6075,7 +6081,7 @@ msgstr ""
 "prins Konrad, leder af denne gruppe og arving til Wesnoths trone."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:377
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:378
 msgid ""
 "And I am Princess Li’sar, the only daughter of the late King Garard II and "
 "Queen Asheviere. I too am an heir to the throne of Wesnoth!"
@@ -6084,7 +6090,7 @@ msgstr ""
 "dronning Asheviere. Jeg er også arving til Wesnoths trone!"
 
 #. [message]: speaker=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:383
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:384
 msgid ""
 "(releasing a torrent of fire towards Konrad and Li’sar)\n"
 "Soooo... It is you who sent your subordinates to attack us. Now when we’ve "
@@ -6095,7 +6101,7 @@ msgstr ""
 "dem, kommer i for selv at gøre arbejdet."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:389
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:390
 #, fuzzy
 msgid ""
 "No...There is an ongoing civil war amongst us humans. The boats were sent by "
@@ -6105,12 +6111,12 @@ msgstr ""
 "blev sendt af vores fjender, ikke af os, selvom det var skibe fra Wesnoth."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:393
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:394
 msgid "The Prince speaks the truth."
 msgstr "Prinsessen taler sandhed."
 
 #. [message]: speaker=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:397
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:398
 #, fuzzy
 msgid ""
 "I don’t know. Maybe you are telling the truth, maybe not. We drakes don’t "
@@ -6124,17 +6130,19 @@ msgstr ""
 "fred. Hvis i fortsætter vil vi vise jer vores klør."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:401
-msgid "But we can not go back. We are on an important mission."
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:402
+#, fuzzy
+#| msgid "But we can not go back. We are on an important mission."
+msgid "But we cannot go back. We are on an important mission."
 msgstr "Men vi kan ikke gå tilbage. Vi er på en vigtig mission."
 
 #. [message]: speaker=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:406
 msgid "If you defy my warning — prepare for battle."
 msgstr "Hvis i ignorerer min advarsel - gør jer klar til kamp."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:410
 #, fuzzy
 msgid ""
 "So be it. We have to go down the river; we have no choice. We’ll fight our "
@@ -6144,12 +6152,12 @@ msgstr ""
 "kæmpe os igennem hvis nødvendigt."
 
 #. [message]: speaker=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:413
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:414
 msgid "You will regret challenging us. Drakes, to arms!"
 msgstr "I vil fortryde jeres udfordring. Hestedragere grib våbene!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:510
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:511
 msgid ""
 "I slew the undead monster but somehow it has revived! Dark magic is stirring "
 "around us!"
@@ -6158,7 +6166,7 @@ msgstr ""
 "igen!Mørk magi omgiver os!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:514
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:515
 msgid ""
 "Those are some of the monsters I warned about. Such undead guardians are "
 "indestructible. We must find another way to go."
@@ -6167,25 +6175,25 @@ msgstr ""
 "ikke ødelægges. Vi må finde en anden vej."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:583
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:584
 #, fuzzy
 msgid "We’ve found $random gold in the drake nest."
 msgstr "Vi har fundet $random guldstykker i hestedragernes base."
 
 #. [message]: speaker=Keh Ohn
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:623
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:624
 #, fuzzy
 msgid "GRRROOOOAAAAR!"
 msgstr "GRRROOOOAAAAR"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:627
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:628
 #, fuzzy
 msgid "Hurrah! We’ve killed their leader!"
 msgstr "Hurrah! Vi har dræbt deres leder"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:632
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:633
 msgid ""
 "Our leader is dead, but it matters not! Time enough to appoint a new leader "
 "after the battle is won! Fight on to the last, comrades!"
@@ -6194,7 +6202,7 @@ msgstr ""
 "en ny leder, når slaget er vundet! Kæmp til det sidste kammerater!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:637
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:638
 #, fuzzy
 msgid ""
 "Keep on going down the river. While we’re at it, let us force as many drakes "
@@ -6206,17 +6214,17 @@ msgstr ""
 "møde samme skæbne som deres leder!"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:648
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:649
 msgid "We hear and obey, My Lord."
 msgstr "Vi hører og adlyder."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:752
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:753
 msgid "I see someone at the top of the furthermost cliff!"
 msgstr "Jeg kan se nogen på toppen af den klippeskrænt der er længst væk."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:765
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:766
 msgid ""
 "It is a young human sergeant, barely more than a boy. He appears badly hurt "
 "but still alive."
@@ -6225,7 +6233,7 @@ msgstr ""
 "hårdt såret; men stadig i live."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:769
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:770
 #, fuzzy
 msgid ""
 "I wonder why the drakes haven’t finished him by now? It is strange that "
@@ -6235,22 +6243,22 @@ msgstr ""
 "mærkeligt at der ikke er nogen hestedrager eller udøde i det område."
 
 #. [message]: type=Water Serpent
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:790
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:791
 msgid "Grrroar"
 msgstr "Grrroar"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:797
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:798
 msgid "Well... that answers the question."
 msgstr "... det besvarer det spørgsmål."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:801
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:802
 msgid "We should try to help the injured soldier."
 msgstr "Vi bør forsøge at hjælpe den sårede soldat."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:805
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:806
 msgid ""
 "Must I remind you that he, like all the others who died, was sent to kill "
 "us!?"
@@ -6259,7 +6267,7 @@ msgstr ""
 "dræbe os!?"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:809
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:810
 msgid ""
 "Perhaps he was sent after you, but not after me. I am sure that he is still "
 "loyal to his princess — the heiress to the throne of Wesnoth!"
@@ -6268,7 +6276,7 @@ msgstr ""
 "stadig er loyal over for sin prinsesse - arvingen til tronen i Wesnoth!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:813
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:814
 msgid ""
 "Princess Li’sar, do I have to remind you again that it is Konrad, not you, "
 "who is the rightful heir?"
@@ -6277,7 +6285,7 @@ msgstr ""
 "den retmæssige arving?"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:817
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:818
 msgid ""
 "Whatever.... I still think we should make an effort to rescue him from the "
 "unfortunate position he is in. If you help him, I’ll do my best to convince "
@@ -6288,7 +6296,7 @@ msgstr ""
 "overbevise ham om at du ikke er hans fjende men hans ven..."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:821
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:822
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
 "we might try to rescue the sergeant stranded on the cliff. However, I make "
@@ -6299,32 +6307,32 @@ msgstr ""
 "lover dog ingenting."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:825
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:826
 msgid "Fair enough!"
 msgstr "Rimeligt nok!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:829
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:830
 msgid "Fair enough."
 msgstr "Rimeligt nok."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:833
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:834
 msgid "Fair enough..."
 msgstr "Rimeligt nok..."
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:843
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:844
 msgid "Rescue the sergeant"
 msgstr ""
 
 #. [message]: speaker=Warven
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:904
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:905
 msgid "Who...who are you? A friend or a foe?"
 msgstr "Hvem... hvem er du? Ven eller fjende?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:908
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:909
 msgid ""
 "We are friends. Don’t worry about it and don’t try to fight us — you are in "
 "no condition to fight."
@@ -6333,7 +6341,7 @@ msgstr ""
 "os - du er ikke i form til at kæmpe."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:912
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:913
 msgid ""
 "I am Princess Li’sar, and we are friends. Join us and wait for the healers "
 "to help you, young sergeant."
@@ -6342,12 +6350,12 @@ msgstr ""
 "naturlægernes hjælp unge sergent."
 
 #. [message]: speaker=Warven
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:916
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:917
 msgid "Princess Li’sar — here? Your Highness, I am yours to command!"
 msgstr "Prinsesse Li'sar - her? Deres majestæt, jeg er under din kommando!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:920
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:921
 msgid ""
 "Follow us when you think you are capable and beware of monsters. We have "
 "fought many already, and there are sure to be more ahead."
@@ -6356,7 +6364,7 @@ msgstr ""
 "allerede, og der er flere foran os."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:936
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:937
 msgid ""
 "There is a cataract ahead. By the thunder of the water and the height of the "
 "spume, it must drop several hundred feet at least. We must leave the river "
@@ -6364,12 +6372,12 @@ msgid ""
 msgstr ""
 
 #. [message]: role=merman-advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:945
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:946
 msgid "Even we merfolk cannot swim that. The road east is blocked."
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:949
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:950
 #, fuzzy
 msgid ""
 "Wait. What about the tributary which flows into the river from inside the "
@@ -6379,7 +6387,7 @@ msgstr ""
 "at være en hule..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:954
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:955
 msgid ""
 "Legend says that that little river comes from the land of the North Elves. "
 "It is said that it is an outflow of Everlore, which flows in the land of my "
@@ -6403,17 +6411,17 @@ msgstr ""
 "os. Jeg kan ikke anbefale at gå ind i hulerne hvis vi har en anden mulighed."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:958
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:959
 msgid "Unfortunately, we have no other options. Onward into the cave!"
 msgstr "Desværre har vi ingen andre muligheder. Fremad mod hulerne!"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:964
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:965
 msgid "Reach the cave"
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1008
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1009
 msgid ""
 "I’ve reached the cave entrance. There seems to be a system of channels "
 "running through the mountains. Follow me, and let us hope we somehow manage "
@@ -6423,33 +6431,33 @@ msgstr ""
 "løber igennem bjergene. Følg mig, og lad os håbe at vi kan komme ud i live."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1012
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1013
 msgid "That is so very encouraging...."
 msgstr "Det er bare så opløftende...."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1016
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1017
 msgid "I wonder what kind of monsters await us inside."
 msgstr "Hvilke monstre venter os mon indenfor."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1020
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1021
 msgid "We are soon going to find out."
 msgstr "Det finder vi snart ud af."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1024
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1025
 msgid ""
 "Well, there is no point in delaying any further. Let us go and find out."
 msgstr "Der er ingen grund til at vente længere. Lad os finde ud af det."
 
 #. [message]: speaker=Warven
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1029
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1030
 msgid "Yes, my lady!"
 msgstr "Ja!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1033
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1034
 msgid "Everybody inside..."
 msgstr "Alle indenfor..."
 
@@ -8602,13 +8610,13 @@ msgstr ""
 "ild:   +10 %"
 
 #. [object]: id=object_scepter
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:385
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:313
 #, fuzzy
 msgid "Sceptre of Fire"
 msgstr "Ildscepter"
 
 #. [object]: id=object_scepter
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:316
 #, fuzzy
 msgid ""
 "This ancient Sceptre was forged by the great Dwarves of the Heart Mountains. "
@@ -8620,7 +8628,7 @@ msgstr ""
 "ildkugler mod fjender af den der holder scepteret!"
 
 #. [object]: id=object_scepter
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:389
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:317
 #, fuzzy
 msgid ""
 "This is the Sceptre of Fire. Only a true successor to the throne can "
@@ -8630,30 +8638,30 @@ msgstr ""
 "tage det!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:417
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:345
 #, fuzzy
 msgid "Here it is at last, I have the Sceptre!"
 msgstr "Endelig, her er det! Jeg har scepteret!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:421
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:349
 msgid "So it is in our hands! Now let us leave this stinking pit."
 msgstr "So er det i vores besiddelse. Lad os forlade dette stinkende hul."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:425
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:353
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr "Jeg tror at hvis vi rejse en smule mod nord kan vi måske komme ud."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:451
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:379
 #, fuzzy
 msgid "At last! I have the Sceptre!"
 msgstr "Endelig! Jeg har scepteret!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:455
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:383
 msgid ""
 "Indeed. You managed to reach it, Li’sar. I hope you shall use it wisely."
 msgstr ""
@@ -8661,7 +8669,7 @@ msgstr ""
 "bruge det med kløgt."
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:459
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
 msgid ""
 "My first use for it is going to be to help us get out of this hole! I hope "
 "you consider that wise."
@@ -8670,7 +8678,7 @@ msgstr ""
 "det for at være klogt."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:464
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:392
 #, fuzzy
 msgid ""
 "The Sceptre makes its wielder powerful, but hardly immortal, child. Use it "
@@ -8680,7 +8688,7 @@ msgstr ""
 "omtanke. Lad os gå der skulle være en udgang mod nord!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:468
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:396
 msgid "I think I know what I’m doing. Come, let us go!"
 msgstr "Jeg ved hvad jeg gør. Kom, lad os gå!"
 

@@ -325,9 +325,14 @@ void replay::add_log_data(const std::string &category, const std::string &key, c
 
 bool replay::add_chat_message_location()
 {
-	int pos = base_->get_pos() - 1;
+	return add_chat_message_location(base_->get_pos() - 1);
+}
+
+bool replay::add_chat_message_location(int pos)
+{
+	assert(base_->get_command_at(pos).has_child("speak"));
 	if(std::find(message_locations.begin(), message_locations.end(), pos) == message_locations.end()) {
-		message_locations.push_back(base_->get_pos() - 1);
+		message_locations.push_back(pos);
 		return true;
 	}
 	else {
@@ -337,10 +342,10 @@ bool replay::add_chat_message_location()
 
 void replay::speak(const config& cfg)
 {
-	config& cmd = base_->insert_command(base_->get_pos());
+	config& cmd = base_->insert_command(base_->size());
 	cmd["undo"] = false;
 	cmd.add_child("speak",cfg);
-	add_chat_message_location();
+	add_chat_message_location(base_->size() - 1);
 }
 
 void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg> > &i) const

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2011-10-27 23:27+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -24,7 +24,9 @@ msgstr "검은눈"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(까다로운)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -34,7 +36,9 @@ msgstr "졸개"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(어려운)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -44,7 +48,9 @@ msgstr "전사"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-msgid "(Nightmare)"
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
 msgstr "(짜증나는)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -236,7 +242,7 @@ msgid ""
 "arranged by the Northern Alliance — was between the local earls and the "
 "orcish tribes and didn’t have any direct connection with the Northern "
 "Alliance. The other — and perhaps the main — reason why the treaty held was "
-"that with the death of the Black Eye, the unity of the orcs was shattered "
+"that with the death of the Black-Eye, the unity of the orcs was shattered "
 "and they once again descended into inner squabbling. Thus the years that "
 "followed were relatively peaceful and prosperous — at least for the humans."
 msgstr ""
@@ -1425,9 +1431,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
+#, fuzzy
+#| msgid ""
+#| "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the "
+#| "shamans and his warriors set off to Tirigaz."
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
-"and his warriors set off to Tirigaz."
+"and his warriors, set off to Tirigaz."
 msgstr ""
 "Kapou'e는 대부분의 백성들을 Barag Gór에 남겨두고 전사들과 함께 샤먼들을 동행"
 "하여 Tirigaz로 출발했다."
@@ -1973,7 +1983,7 @@ msgstr ""
 msgid "(<i>Puke</i>)"
 msgstr "(<i>우엑</i>)"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:399
 msgid ""
 "Hold it right there! This oasis is ours! Begone or you all will be killed!"
@@ -1989,7 +1999,7 @@ msgstr ""
 "이것봐, 멍청아, 우린 모래 폭풍 한가운데 있는데다가 식량과 물은 거의 바닥났"
 "다. 이 오아시스에서 보급을 하지 않으면 더 못간다고."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:409
 msgid "I don’t care, get lost!"
 msgstr "상관없어, 저리 꺼져!"
@@ -2133,7 +2143,7 @@ msgstr ""
 "해. 우린 엘프 밀렵꾼 몇 무리 즘은 충분히 상대할 만한 무장을 갖췄다. 몇놈이라"
 "도 보이면 조각조각 내주지."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
 #, fuzzy
 #| msgid ""
@@ -2142,14 +2152,14 @@ msgstr ""
 msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr "엘프들이다! Gork의 말이 맞았어요, 여긴 깡마른 약골들로 가득해요."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
 msgid ""
 "Elves! You were right, Gork, this place is infested with the skinny "
 "weaklings."
 msgstr "엘프들이다! Gork의 말이 맞았어요, 여긴 깡마른 약골들로 가득해요."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:213
 msgid "Blast it, the orcs have discovered us."
 msgstr "제기랄, 오크들이 우릴 발견했다."
@@ -2159,7 +2169,7 @@ msgstr "제기랄, 오크들이 우릴 발견했다."
 msgid "What is your purpose for trespassing on orcish territory?"
 msgstr "어째서 오크의 영토에 무단 침입한거냐?"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Fool, do you really think we are going to tell you?"
 msgstr "멍청하긴, 우리가 네놈에게 말해줄 것 같나?"
@@ -2510,11 +2520,17 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership on it."
 msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
-"leadership on it."
+"leadership of it."
 msgstr ""
 "Kapou'e. 백성들은 여기에 남겨 두시오. 이들은 잠시 동안은 안전할 거요. Prestim"
 "을 원호하러 가시오. 그리고 이제 의회가 완전히 구성됐으니 결정을 내리겠소. 우"
@@ -4053,9 +4069,17 @@ msgstr "업적이라고?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:234
+#, fuzzy
+#| msgid ""
+#| "Well let’s see, first he betrays the trust of his sworn sovereign and "
+#| "becomes no less than a boot-licking spy for the humans. Then goes on to "
+#| "engineer the death of half of the Great Council and in doing so makes "
+#| "himself directly responsible for the deaths of hundreds of orcs. And best "
+#| "of all, he is directly responsible for a bloody civil war right at the "
+#| "time when his people are on the edge of total extermination!"
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
-"becomes no less than a boot-licking spy for the humans. Then goes on to "
+"becomes no less than a boot-licking spy for the humans. Then he goes on to "
 "engineer the death of half of the Great Council and in doing so makes "
 "himself directly responsible for the deaths of hundreds of orcs. And best of "
 "all, he is directly responsible for a bloody civil war right at the time "

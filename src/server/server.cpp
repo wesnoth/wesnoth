@@ -851,6 +851,10 @@ void server::run() {
 				simple_wml::document diff;
 				if(make_delete_diff(games_and_users_list_.root(), NULL, "user",
 				                    pl_it->second.config_address(), diff)) {
+					for (t_games::const_iterator g = games_.begin(); g != games_.end(); ++g) {
+					      // Note: This string is parsed by the client to identify lobby leave messages!
+					      g->send_server_message_to_all(pl_it->second.name() + " has disconnected");
+					}
 					rooms_.lobby().send_data(diff, e.socket);
 				}
 

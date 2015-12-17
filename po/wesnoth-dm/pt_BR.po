@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2013-05-16 15:21+0100\n"
 "Last-Translator: trewe <sjrs456@yahoo.fr>\n"
 "Language-Team: none\n"
@@ -38,23 +38,27 @@ msgstr "MD"
 # File: data/campaigns/Delfadors_Memoirs/_main.cfg, line: 31
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
-msgid "(Normal)"
-msgstr "(Normal)"
+msgid "Apprentice"
+msgstr "Aprendiz"
 
 #
 # File: data/campaigns/Delfadors_Memoirs/_main.cfg, line: 31
 # File: data/campaigns/Delfadors_Memoirs/_main.cfg, line: 31
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
-msgid "Apprentice"
-msgstr "Aprendiz"
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(Normal)"
 
 #
 # File: data/campaigns/Delfadors_Memoirs/_main.cfg, line: 32
 # File: data/campaigns/Delfadors_Memoirs/_main.cfg, line: 32
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Desafiador)"
 
 #
@@ -70,7 +74,9 @@ msgstr "Mago"
 # File: data/campaigns/Delfadors_Memoirs/_main.cfg, line: 33
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Difícil)"
 
 #
@@ -6007,11 +6013,16 @@ msgstr "Maldun"
 msgid "Alderoth"
 msgstr "Alderoth"
 
+#. [objective]: condition=lose
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:163
+msgid "Loss of all Undead veterans before Iliah-Malal is defeated"
+msgstr ""
+
 #
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 172
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 172
 #. [note]
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:171
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:182
 msgid ""
 "The killing blow against Iliah-Malal can only be struck by one of your "
 "Undead veterans"
@@ -6023,7 +6034,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 182
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 182
 #. [note]
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:181
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:192
 msgid "The killing blow against Iliah-Malal can only be struck by Delfador"
 msgstr ""
 "O golpe mortífero contra Ilah-Malal só pode ser dado por Delfador em pessoa"
@@ -6032,7 +6043,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 223
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 223
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:224
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:235
 msgid ""
 "So we meet again, Delfador. You were a fool to turn down my offer. None of "
 "your allies will save you now."
@@ -6044,7 +6055,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 227
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 227
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:228
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:239
 msgid ""
 "You have ravaged your own soul with your corrupt arts, and your words are "
 "empty wind; I fear them not."
@@ -6056,7 +6067,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 231
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 231
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:232
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:243
 msgid ""
 "Is he not amusing, my creatures? He puffs himself up as though he were "
 "Delfador the Mighty, Delfador the Powerful, Delfador the Great... rather "
@@ -6070,7 +6081,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 235
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 235
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:236
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:247
 msgid ""
 "Delfador the Great, eh? And so it comes to pass as the four Oracles "
 "foretold. I accept your name-gift, Iliah-Malal."
@@ -6082,7 +6093,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 239
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 239
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:240
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:251
 msgid ""
 "Oracles? What nonsense you babble... After you die, I will raise your corpse "
 "and compel you to tell me how to reopen my portal!"
@@ -6094,7 +6105,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 243
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 243
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:244
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:255
 msgid "One of us will find a final death here. I do not think it will be me."
 msgstr "Um de nós encontrará a morte final aqui. E acho que não vou ser eu."
 
@@ -6102,7 +6113,7 @@ msgstr "Um de nós encontrará a morte final aqui. E acho que não vou ser eu."
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 258
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 258
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:259
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:270
 msgid ""
 "In this scenario only, you may recall your veterans from the Land of the "
 "Dead. The killing blow against Iliah-Malal can only be struck by one of them."
@@ -6116,8 +6127,8 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 273
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 328
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:274
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:329
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:285
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:380
 msgid "Now your days are ended!"
 msgstr "Seus dias chegaram ao fim!"
 
@@ -6131,10 +6142,10 @@ msgstr "Seus dias chegaram ao fim!"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 332
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 359
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:278
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:305
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:333
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:360
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:289
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:316
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:384
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:411
 msgid ""
 "The power of death is mine! When you strike me down I arise stronger than "
 "before!"
@@ -6146,7 +6157,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 281
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 281
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:282
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:293
 msgid ""
 "Not this time. For I have gazed upon the dark heart of necromancy in the "
 "Book of Crelanu, and found there your final doom at the hands of the dead "
@@ -6156,11 +6167,18 @@ msgstr ""
 "necromancia no Livro de Crelanu, e encontrei que sua derrota final será "
 "feita pela mão dos próprios mortos."
 
+#. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:356
+msgid ""
+"Alas! Without any undead to strike the killing blow, we will never be able "
+"to defeat Iliah-Malal!"
+msgstr ""
+
 #
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 336
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 336
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:337
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:388
 msgid ""
 "Not this time. For I have gazed upon the dark heart of necromancy in the "
 "Book of Crelanu, AND I REMAIN OF THE LIGHT!"
@@ -6172,7 +6190,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 378
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 378
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:379
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:430
 msgid "Delfador... You raise undead?!"
 msgstr "Delfador... você consegue criar mortos-vivos?"
 
@@ -6180,7 +6198,7 @@ msgstr "Delfador... você consegue criar mortos-vivos?"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 382
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 382
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:383
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:434
 msgid ""
 "No. I did not raise them from our dead; I offered some who fought beside me "
 "in the otherworld a way here, and they come to us of their own will. Today "
@@ -6194,7 +6212,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 390
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 390
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:391
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:442
 msgid ""
 "I have prepared some holy water. Sprinkle it on your impact weapon and smash "
 "those foul creatures into dust!"
@@ -6206,7 +6224,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 395
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 395
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:396
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:447
 msgid "Powers of darkness, enshroud this field!"
 msgstr "Poderes da escuridão, escureçam este campo!"
 
@@ -6214,7 +6232,7 @@ msgstr "Poderes da escuridão, escureçam este campo!"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 409
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 409
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:410
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:461
 msgid "Darkness shall be dispelled!"
 msgstr "Escuridão foi espalhada pelo cenário!"
 
@@ -6222,7 +6240,7 @@ msgstr "Escuridão foi espalhada pelo cenário!"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 417
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 417
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:418
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:469
 msgid "No!"
 msgstr "Não!"
 
@@ -6230,7 +6248,7 @@ msgstr "Não!"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 421
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 421
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:422
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:473
 msgid "Let the light shine forth!"
 msgstr "Que a luz brilhe forte!"
 
@@ -6238,7 +6256,7 @@ msgstr "Que a luz brilhe forte!"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 425
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 425
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:426
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:477
 msgid ""
 "Your sorcery matters little. Your army will fall like wheat to the sickle "
 "before my undead legions."
@@ -6250,7 +6268,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 429
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 429
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:430
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:481
 msgid ""
 "Your mindless minions will be no match for the spirit and fire of the living."
 msgstr ""
@@ -6260,7 +6278,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 434
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 434
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:435
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:486
 msgid ""
 "Delfador, as the King ordered I place all troops under your command. They "
 "will follow you to death, if necessary, and so will I!"
@@ -6272,7 +6290,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 439
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 439
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:440
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:491
 msgid ""
 "Lionel, it is an honor to go into battle beside you. Now let us fight for "
 "life over death!"
@@ -6284,7 +6302,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 451
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 451
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:452
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:503
 msgid ""
 "Remember one of our undead must strike the final blow, for Iliah-Malal’s un-"
 "life can only be ended by the touch of un-life."
@@ -6296,7 +6314,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 457
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 457
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:458
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:509
 msgid ""
 "Remember that I must strike the final blow, for Iliah-Malal’s un-life must "
 "be ended by a spell I have specially crafted to the task."
@@ -6309,7 +6327,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 470
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 470
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:471
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:522
 msgid ""
 "Evil has been vanquished on this day. May this victory bring lasting peace."
 msgstr ""
@@ -6322,8 +6340,8 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 489
 #. [message]: speaker=Admirer5
 #. [message]: speaker=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:480
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:490
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:531
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:541
 msgid ""
 "You have earned the name the accursed one gave you... Delfador the Great."
 msgstr ""
@@ -6333,7 +6351,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 501
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 501
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:502
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:553
 msgid ""
 "You who fought beside me in the Land of the Dead and chose the side of the "
 "living on this day, return now to your peace and rest."
@@ -6345,7 +6363,7 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 512
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 512
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:513
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:564
 msgid "And the portal, it is sealed for good?"
 msgstr "E o portal, está selado para sempre?"
 
@@ -6353,7 +6371,7 @@ msgstr "E o portal, está selado para sempre?"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 516
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 516
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:517
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:568
 msgid ""
 "Yes, it is. But it was too great a work of magic to be entirely undone; "
 "there is a flaw still remaining, a trace of Iliah-Malal’s way between "

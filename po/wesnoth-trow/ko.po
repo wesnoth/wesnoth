@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2011-11-22 15:47+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -20,42 +20,48 @@ msgid "The Rise of Wesnoth"
 msgstr "Wesnoth의 성립"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:11
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:13
 msgid "TRoW"
 msgstr "건국"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
-msgid "(Easy)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(쉬움)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "Fighter"
 msgstr "투사"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
-msgid "(Normal)"
-msgstr "(보통)"
-
-#. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
 msgid "Commander"
 msgstr "지휘관"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
-msgid "(Challenging)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
+#, fuzzy
+#| msgid "Normal:"
+msgid "Normal"
+msgstr "평범한 길:"
+
+#. [campaign]: id=The_Rise_of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(어려움)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
 msgid "Lord"
 msgstr "군주"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -68,27 +74,27 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 msgid "(Expert level, 24 scenarios.)"
 msgstr "(고급자 레벨, 24 개 시나리오.)"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:27
 msgid "Campaign Design"
 msgstr "캠페인 기획"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:32
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:33
 msgid "Campaign Maintenance"
 msgstr "캠페인 관리"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:45
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:46
 msgid "Artwork and Graphics Design"
 msgstr "미술 및 그래픽 디자인"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:70
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:71
 msgid "WML Contributors"
 msgstr "WML에 기여한 이들"
 
@@ -1312,8 +1318,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:627
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest... I should have stayed at home and took my "
+#| "chances with the orcs!"
 msgid ""
-"Oh great, now a forest... I should have stayed at home and took my chances "
+"Oh great, now a forest... I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr "오 대단해, 이젠 숲인가... 그냥 집에서 운에 맡기고 오크들과 싸우는건데!"
 
@@ -1463,8 +1473,13 @@ msgstr "Ladoc 경"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:384
+#, fuzzy
+#| msgid ""
+#| "Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+#| "guard. The main body of their forces is on the road to Southbay. It is an "
+#| "army of nightmarish size."
 msgid ""
-"Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+"Hold there! You cannot pass. You’ve already stumbled on the orcish rear "
 "guard. The main body of their forces is on the road to Southbay. It is an "
 "army of nightmarish size."
 msgstr ""
@@ -1516,8 +1531,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:414
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest. I should have stayed at home and took my chances "
+#| "with the orcs!"
 msgid ""
-"Oh great, now a forest. I should have stayed at home and took my chances "
+"Oh great, now a forest. I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr ""
 "오 대단해, 이젠 숲이란 말이지. 그냥 집에서 운에 맡기고 오크들과 싸우는건데!"
@@ -5971,10 +5990,15 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:147
+#, fuzzy
+#| msgid ""
+#| "Haldric! I won’t do it... I won’t help. What is it with your kind, always "
+#| "rushing to a fool’s death? Who’ll lead these people? I... <i>we</i> need "
+#| "you alive"
 msgid ""
 "Haldric! I won’t do it... I won’t help. What is it with your kind, always "
 "rushing to a fool’s death? Who’ll lead these people? I... <i>we</i> need you "
-"alive"
+"alive."
 msgstr ""
 "Haldric! 그럴 순 없어요... 난 돕지 않겠어요. 당신들은 어째서 그런가요, 언제"
 "나 멍청하게 죽으려고 달려들고? 누가 이 사람들을 이끌죠? 난... <i>우린</i> 당"
@@ -6548,17 +6572,17 @@ msgid "Rise, rise from the ground!"
 msgstr "일어나라, 지하에서 일어나라!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1453
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1434
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "심해에서 걸어나오라 내 충성스런 병사들이여!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1656
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1618
 msgid "We did it! We won!"
 msgstr "우리가 해냈어요! 우리가 이겼어!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1660
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1622
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6567,7 +6591,7 @@ msgstr ""
 "으로의 일에 대해 논의해 봅시다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1668
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1630
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
@@ -7272,6 +7296,9 @@ msgid ""
 msgstr ""
 "그건 정말로 좋은 소식이군요. 우리의 숫자가 두배가 됐어. 이제 지금 할 일을 하"
 "죠."
+
+#~ msgid "(Normal)"
+#~ msgstr "(보통)"
 
 #~ msgid ""
 #~ "Rarely seen, even by Elves, a Wose is an order of creature about which "

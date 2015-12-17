@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2015-08-23 02:41+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -370,21 +370,29 @@ msgstr "Ouch! I need to heal! Only $student_hp hit-points left!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:425
+#, fuzzy
+#| msgid ""
+#| "There is a village on the other side of the river. Visiting villages is a "
+#| "good idea, and ending your turn in one will heal you. To the village!"
 msgid ""
-"There is a village on the other side of the river. Visiting villages is a "
-"good idea, and ending your turn in one will heal you. To the village!"
+"There are two villages within your reach. Visiting villages is a good idea, "
+"and ending your turn on one will heal you. To a village!"
 msgstr ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:429
-msgid "Move Konrad to the nearest village"
+#, fuzzy
+#| msgid "Move Konrad to the nearest village"
+msgid "Move Konrad to a nearby village"
 msgstr "Move Konrad to the nearest village"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:431
-msgid "Move Li’sar to the nearest village"
+#, fuzzy
+#| msgid "Move Li’sar to the nearest village"
+msgid "Move Li’sar to a nearby village"
 msgstr "Move Li’sar to the nearest village"
 
 #. [message]: speaker=narrator
@@ -432,9 +440,14 @@ msgstr "I’ll recruit some elves!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:481
+#, fuzzy
+#| msgid ""
+#| "A splendid idea! It’s probably best not to attempt attacking the quintain "
+#| "this turn. Instead, you could return to the keep and recruit two units; "
+#| "you have plenty of gold for that."
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
-"this turn. Instead, you could return to the keep and recruit two units; you "
+"this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
@@ -591,7 +604,7 @@ msgstr "Unit Descriptions"
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"You can right click on a unit to see a detailed <b>Unit Description</b>."
+"You can right-click on a unit to see a detailed <b>Unit Description</b>."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:699
@@ -988,7 +1001,7 @@ msgstr ""
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
 "gold each. This allows you to build a formidable army over the course of "
 "multiple scenarios by recalling your highest level troops or those with good "
-"combinations of traits and abilities. To recall a unit, right click while "
+"combinations of traits and abilities. To recall a unit, right-click while "
 "your leader stands on a keep and select the <i>Recall</i> option. Remember "
 "to also recruit new troops in addition to recalling old ones."
 
@@ -1115,8 +1128,15 @@ msgstr "Income and Upkeep"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:326
+#, fuzzy
+#| msgid ""
+#| "Each turn, you will gain 2 gold pus one for each village you own. "
+#| "However, <i>upkeep</i> is subtracted for that. You can support as many "
+#| "levels worth of units as the number of villages you own; beyond that, you "
+#| "must pay 1 gold per turn. Be careful, as owning too many units can cause "
+#| "you to have negative income and lose gold each turn!"
 msgid ""
-"Each turn, you will gain 2 gold pus one for each village you own. However, "
+"Each turn, you will gain 2 gold plus one for each village you own. However, "
 "<i>upkeep</i> is subtracted for that. You can support as many levels worth "
 "of units as the number of villages you own; beyond that, you must pay 1 gold "
 "per turn. Be careful, as owning too many units can cause you to have "

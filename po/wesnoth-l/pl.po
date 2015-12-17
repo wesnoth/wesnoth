@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2012-01-21 10:39+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -27,42 +27,48 @@ msgstr "Wolność"
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:17
-msgid "(Easy)"
+#: data/campaigns/Liberty/_main.cfg:18
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(łatwy)"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:17
+#: data/campaigns/Liberty/_main.cfg:18
 msgid "Peasant"
 msgstr "Chłop"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:18
-msgid "(Normal)"
+#: data/campaigns/Liberty/_main.cfg:19
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
 msgstr "(normalny)"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:18
+#: data/campaigns/Liberty/_main.cfg:19
 msgid "Outlaw"
 msgstr "Banita"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:19
-msgid "(Difficult)"
+#: data/campaigns/Liberty/_main.cfg:20
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(trudny)"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:19
+#: data/campaigns/Liberty/_main.cfg:20
 msgid "Fugitive"
 msgstr "Uciekinier"
 
@@ -877,9 +883,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:275
+#, fuzzy
+#| msgid ""
+#| "Baldras and Relana returned to their villages to find them destroyed, "
+#| "with those who fought left dead and the few survivors born away to "
+#| "unguessable fates. It was a bitter doom, and as Wesnoth descended into "
+#| "darkness they would live to see worse."
 msgid ""
 "Baldras and Relana returned to their villages to find them destroyed, with "
-"those who fought left dead and the few survivors born away to unguessable "
+"those who fought left dead and the few survivors borne away to unknown "
 "fates. It was a bitter doom, and as Wesnoth descended into darkness they "
 "would live to see worse."
 msgstr ""
@@ -2237,7 +2249,7 @@ msgid "No one inside the fortress would make it out alive."
 msgstr "Nikt w środku fortecy nie przeżył."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:918
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:916
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere’s host "
 "arrived from Weldyn. The battle was soon finished. Every last man from the "
@@ -2248,12 +2260,12 @@ msgstr ""
 "został stracony."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:948
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:946
 msgid "Men, help me out of here! I am trapped under this rubble."
 msgstr "Ludzie, pomóżcie mi! Jestem uwięziony pod tym zwaliskiem."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:952
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:950
 msgid ""
 "No one was able to get to Baldras in time. He and many of his companions "
 "died that day beneath the stronghold of Halstead."
@@ -2262,19 +2274,19 @@ msgstr ""
 "dnia pod gruzami twierdzy Halstead."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:957
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:955
 msgid "I hope this sacrifice is not in vain... but we will never know."
 msgstr ""
 "Mam nadzieję, że to poświęcenie nie poszło na marne... ale nigdy się tego "
 "nie dowiemy."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:963
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:961
 msgid "Our dream of freedom... gone... Unngh."
 msgstr "Nasz sen o wolności... się rozwiał... uungh."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:970
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:968
 msgid ""
 "The rebellion had staked its all on victory at Halstead, but win or lose, "
 "there would be no help for the villagers, ground beneath the wheels of "
@@ -2285,22 +2297,22 @@ msgstr ""
 "wsi zmiażdżonych przez machinę wojenną okrutnej Asheviere."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:986
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:984
 msgid "Uncle!"
 msgstr "Wuju!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:990
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:988
 msgid "NO!"
 msgstr "NIE!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:994
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:992
 msgid "I promised your father I would watch after you... and I failed."
 msgstr "Obiecałem twojemu ojcu, że będę o ciebie dbał... i zawiodłem."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:998
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:996
 msgid ""
 "But we are so close to the end. We must finish this. I am sorry you will not "
 "be able to enjoy our freedom. Goodbye, Harper."
@@ -2309,7 +2321,7 @@ msgstr ""
 "będziesz w stanie cieszyć się naszą wolnością. Żegnaj, Harper."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1012
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1010
 msgid ""
 "Carry on, my friends. Fighting by your side is the most honorable thing I "
 "have done..."
@@ -2318,12 +2330,12 @@ msgstr ""
 "jaką kiedykolwiek uczyniłem..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1059
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1057
 msgid "Your reign of terror is over, General."
 msgstr "Twoje panowanie strachu się skończyło, Generale."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1064
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1062
 msgid ""
 "You will never successfully oppose Asheviere. Her power is too great... This "
 "small victory today is but a reprieve from the unimaginable pain you will "
@@ -2335,13 +2347,13 @@ msgstr ""
 "pełna moc jej gniewu."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1075
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1073
 msgid ""
 "This was no small victory. You underestimate the power of love for freedom."
 msgstr "To było małe zwycięstwo. Nie doceniacie potęgi miłości do wolności."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1080
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1078
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... Uungh..."
 msgstr ""
@@ -2349,7 +2361,7 @@ msgstr ""
 "Nnnghh..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1087
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1085
 msgid ""
 "Small victory? Bah! Now we will raze this fortress and bury it in the earth "
 "from whence it came."
@@ -2859,8 +2871,8 @@ msgstr "Jak to możliwe? Przegraliśmy."
 #| "see worse."
 msgid ""
 "They returned to their village to find it destroyed, with those who fought "
-"left dead and the few survivors borne away to unguessable fates. It was a "
-"bitter doom, but as Asheviere’s grip tightened they would live to see worse."
+"left dead and the few survivors borne away to unknown fates. It was a bitter "
+"doom, but as Asheviere’s grip tightened they would live to see worse."
 msgstr ""
 "Powrócili do swej wioski, by zastać ją w ruinie. Wszyscy obrońcy zginęli, a "
 "nieliczni ocaleni mieszkańcy zostali uprowadzeni ku niewiadomemu. Gorzki to "

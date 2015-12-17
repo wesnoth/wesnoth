@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2013-08-22 20:28+0800\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -33,42 +33,48 @@ msgstr "Tự do"
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:17
-msgid "(Easy)"
+#: data/campaigns/Liberty/_main.cfg:18
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(Dễ)"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:17
+#: data/campaigns/Liberty/_main.cfg:18
 msgid "Peasant"
 msgstr "Nông dân"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:18
-msgid "(Normal)"
+#: data/campaigns/Liberty/_main.cfg:19
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
 msgstr "(Bình thường)"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:18
+#: data/campaigns/Liberty/_main.cfg:19
 msgid "Outlaw"
 msgstr "Kẻ phạm pháp"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:19
-msgid "(Difficult)"
+#: data/campaigns/Liberty/_main.cfg:20
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Khó)"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
-#: data/campaigns/Liberty/_main.cfg:19
+#: data/campaigns/Liberty/_main.cfg:20
 msgid "Fugitive"
 msgstr "Kẻ trốn tránh"
 
@@ -891,9 +897,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:275
+#, fuzzy
+#| msgid ""
+#| "Baldras and Relana returned to their villages to find them destroyed, "
+#| "with those who fought left dead and the few survivors born away to "
+#| "unguessable fates. It was a bitter doom, and as Wesnoth descended into "
+#| "darkness they would live to see worse."
 msgid ""
 "Baldras and Relana returned to their villages to find them destroyed, with "
-"those who fought left dead and the few survivors born away to unguessable "
+"those who fought left dead and the few survivors borne away to unknown "
 "fates. It was a bitter doom, and as Wesnoth descended into darkness they "
 "would live to see worse."
 msgstr ""
@@ -2266,7 +2278,7 @@ msgid "No one inside the fortress would make it out alive."
 msgstr "Không ai ở bên trong pháo đài có thể sống sót mà ra ngoài."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:918
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:916
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere’s host "
 "arrived from Weldyn. The battle was soon finished. Every last man from the "
@@ -2276,12 +2288,12 @@ msgstr ""
 "đến. Trận chiến nhanh chóng kết thúc. Mọi người từ tỉnh Annuvin bị hành hình."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:948
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:946
 msgid "Men, help me out of here! I am trapped under this rubble."
 msgstr "Người đâu, giúp tôi ra khỏi đây! Tôi bị kẹt dưới đống đá vụn này."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:952
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:950
 msgid ""
 "No one was able to get to Baldras in time. He and many of his companions "
 "died that day beneath the stronghold of Halstead."
@@ -2290,19 +2302,19 @@ msgstr ""
 "hôm đó dưới thành trì Halstead."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:957
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:955
 msgid "I hope this sacrifice is not in vain... but we will never know."
 msgstr ""
 "Tôi hy vọng sự hy sinh này không vô ích... nhưng chúng ta sẽ chẳng bao giờ "
 "biết."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:963
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:961
 msgid "Our dream of freedom... gone... Unngh."
 msgstr "Mơ ước tự do của chúng ta... tiêu tan rồi... Hựự."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:970
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:968
 msgid ""
 "The rebellion had staked its all on victory at Halstead, but win or lose, "
 "there would be no help for the villagers, ground beneath the wheels of "
@@ -2313,22 +2325,22 @@ msgstr ""
 "nộ của Asheviere."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:986
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:984
 msgid "Uncle!"
 msgstr "Bác!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:990
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:988
 msgid "NO!"
 msgstr "KHÔNG!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:994
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:992
 msgid "I promised your father I would watch after you... and I failed."
 msgstr "Ta đã hứa với cha cháu ta sẽ chăm sóc cháu... và ta đã thất bại."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:998
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:996
 msgid ""
 "But we are so close to the end. We must finish this. I am sorry you will not "
 "be able to enjoy our freedom. Goodbye, Harper."
@@ -2337,7 +2349,7 @@ msgstr ""
 "cháu sẽ không thể tận hưởng tự do. Vĩnh biệt, Harper."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1012
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1010
 msgid ""
 "Carry on, my friends. Fighting by your side is the most honorable thing I "
 "have done..."
@@ -2346,12 +2358,12 @@ msgstr ""
 "làm..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1059
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1057
 msgid "Your reign of terror is over, General."
 msgstr "Triều đại khủng bố của ngươi kết thúc rồi, tướng quân."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1064
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1062
 msgid ""
 "You will never successfully oppose Asheviere. Her power is too great... This "
 "small victory today is but a reprieve from the unimaginable pain you will "
@@ -2363,7 +2375,7 @@ msgstr ""
 "bà ta giáng xuống các ngươi."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1075
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1073
 msgid ""
 "This was no small victory. You underestimate the power of love for freedom."
 msgstr ""
@@ -2371,14 +2383,14 @@ msgstr ""
 "tình yêu tự do."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1080
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1078
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... Uungh..."
 msgstr ""
 "Ngươi... đánh giá thấp sự... tàn bạo và tham vọng của nữ hoàng... Hựự..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1087
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1085
 msgid ""
 "Small victory? Bah! Now we will raze this fortress and bury it in the earth "
 "from whence it came."
@@ -2881,10 +2893,16 @@ msgstr "Sao lại thế này? Chúng ta thua rồi."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/utils/utils.cfg:164
+#, fuzzy
+#| msgid ""
+#| "They returned to their village to find it destroyed, with those who "
+#| "fought left dead and the few survivors borne away to unguessable fates. "
+#| "It was a bitter doom, but as Asheviere’s grip tightened they would live "
+#| "to see worse."
 msgid ""
 "They returned to their village to find it destroyed, with those who fought "
-"left dead and the few survivors borne away to unguessable fates. It was a "
-"bitter doom, but as Asheviere’s grip tightened they would live to see worse."
+"left dead and the few survivors borne away to unknown fates. It was a bitter "
+"doom, but as Asheviere’s grip tightened they would live to see worse."
 msgstr ""
 "Họ quay trở về làng của mình và nhận ra rằng nó đã bị phá hủy, với những "
 "người chiến đấu đã chết và số ít những người sống sót bị cuốn vào những số "

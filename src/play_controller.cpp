@@ -244,6 +244,7 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
+	resources::game_events = gamestate().events_manager_.get();
 	
 	gamestate_->init(level, *this);
 	resources::tunnels = gamestate().pathfind_manager_.get();
@@ -284,7 +285,6 @@ void play_controller::init(CVideo& video, const config& level)
 	// Has to be done before registering any events!
 	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::lua_kernel = gamestate().lua_kernel_.get();
-	resources::game_events = gamestate().events_manager_.get();
 
 	if(gamestate().first_human_team_ != -1) {
 		gui_->set_team(gamestate().first_human_team_);
@@ -334,11 +334,11 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
+	resources::game_events = gamestate().events_manager_.get();
 
 	gamestate_->init(level, *this);
 	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::lua_kernel = gamestate().lua_kernel_.get();
-	resources::game_events = gamestate().events_manager_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	gui_->reset_tod_manager(gamestate().tod_manager_);
@@ -523,10 +523,8 @@ config play_controller::to_config() const
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
 	
-	if(gui_.get() != NULL) {
-		gui_->labels().write(cfg);
-		sound::write_music_play_list(cfg);
-	}
+	gui_->labels().write(cfg);
+	sound::write_music_play_list(cfg);
 
 	return cfg;
 }
@@ -653,6 +651,19 @@ void play_controller::tab()
 		BOOST_FOREACH(const std::string& o, gui_->observers()){
 			dictionary.insert(o);
 		}
+		
+		// Add nicks who whispered you
+		BOOST_FOREACH(const std::string& w, gui_->get_chat_manager().whisperers()){
+			dictionary.insert(w);
+		}
+
+		// Add nicks from friendlist
+		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+
+		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter){
+			dictionary.insert((*iter).first);
+		}
+
 		//Exclude own nick from tab-completion.
 		//NOTE why ?
 		dictionary.erase(preferences::login());

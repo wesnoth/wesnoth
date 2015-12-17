@@ -191,6 +191,11 @@ public:
 
 	unsigned int get_num_page(const std::string& s)
 	{
+		// We always want to reserve a page for empty contents.
+		if(s.empty()) {
+			return 1;
+		}
+
 		return (s.length() / max_inspect_win_len) + (s.length() % max_inspect_win_len > 0 ? 1 : 0);
 	}
 };

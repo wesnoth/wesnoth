@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2014-02-25 23:45-0000\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -31,17 +31,21 @@ msgstr "DnO"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
-msgid "(Normal)"
-msgstr "(Normale)"
-
-#. [campaign]: id=Descent_into_Darkness
-#: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "Neophyte"
 msgstr "Neofita"
 
 #. [campaign]: id=Descent_into_Darkness
+#: data/campaigns/Descent_Into_Darkness/_main.cfg:17
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(Normale)"
+
+#. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Impegnativo)"
 
 #. [campaign]: id=Descent_into_Darkness
@@ -51,7 +55,9 @@ msgstr "Evocatore"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:19
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Difficile)"
 
 #. [campaign]: id=Descent_into_Darkness
@@ -60,7 +66,7 @@ msgid "Summoner"
 msgstr "Invocatore"
 
 #. [campaign]: id=Descent_into_Darkness
-#: data/campaigns/Descent_Into_Darkness/_main.cfg:20
+#: data/campaigns/Descent_Into_Darkness/_main.cfg:21
 msgid ""
 "Learn the dark arts of necromancy in order to save your people from an "
 "orcish incursion.\n"
@@ -71,22 +77,22 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Descent_into_Darkness
-#: data/campaigns/Descent_Into_Darkness/_main.cfg:22
+#: data/campaigns/Descent_Into_Darkness/_main.cfg:23
 msgid "(Intermediate level, 12 scenarios.)"
 msgstr "(Livello intermedio, 12 scenari)"
 
 #. [about]
-#: data/campaigns/Descent_Into_Darkness/_main.cfg:25
+#: data/campaigns/Descent_Into_Darkness/_main.cfg:26
 msgid "Campaign Design"
 msgstr "Progetto della campagna"
 
 #. [about]
-#: data/campaigns/Descent_Into_Darkness/_main.cfg:31
+#: data/campaigns/Descent_Into_Darkness/_main.cfg:32
 msgid "Campaign Maintenance"
 msgstr "Manutenzione della campagna"
 
 #. [about]
-#: data/campaigns/Descent_Into_Darkness/_main.cfg:44
+#: data/campaigns/Descent_Into_Darkness/_main.cfg:45
 msgid "Artwork and Graphics Design"
 msgstr "Progettazione grafica e lavoro artistico"
 
@@ -651,8 +657,8 @@ msgstr "Sarà il banco di prova per le tue nuove abilità."
 msgid "Beware the goblin guards in the villages."
 msgstr "Attento alle guardie goblin nei villaggi."
 
-#. [unit]: id=guard_$x1|_$y1|_$guard_i, type=Goblin Spearman
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:209
+#. [unit]: id=guard_$x1|_$y1|_$guard_location.n, type=Goblin Spearman
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:196
 msgid "Villager"
 msgstr "Paesano"
 
@@ -661,17 +667,17 @@ msgstr "Paesano"
 #. If the names cannot be translated into your language so that the
 #. movie reference remains recognizable, then simply translate these the
 #. same as "Villager" above.
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:258
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:240
 msgid "Shaun"
 msgstr "Shaun"
 
 #. [modify_unit]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:264
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:246
 msgid "Ed"
 msgstr "Ed"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:283
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:265
 msgid ""
 "Ahhh... I did not realize there was a swamp near this village. Malin, I "
 "believe it would be beneficial for your training if you and I were to "
@@ -681,17 +687,17 @@ msgstr ""
 "Malin, credo che per il bene del tuo addestramento dovremmo perlustrarla."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:299
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:281
 msgid "Rise, rise from the realms of death and decay!"
 msgstr "Levatevi, levatevi dai regni della morte e del decadimento!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:327
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:309
 msgid "What are those things?"
 msgstr "Che cosa sono quelle cose?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:332
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:314
 msgid ""
 "They are ghouls. Once, they were... evil men... murderers and outlaws. "
 "Through magic they have been transformed so their outsides match the spirits "
@@ -705,12 +711,12 @@ msgstr ""
 "luoghi."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:337
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:319
 msgid "It seems cruel to turn men into such a hideous form."
 msgstr "Sembra crudele tramutare uomini in esseri così terribili."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:342
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:324
 msgid ""
 "In their present form they can best serve the greater good. Even now they "
 "will aid you in defeating this goblin rabble. Besides, as I said, these were "
@@ -721,12 +727,12 @@ msgstr ""
 "malvagi. Non c’è castigo sufficiente per questa gente."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:347
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:329
 msgid "I suppose so..."
 msgstr "Suppongo di sì..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:383
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:365
 msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won’t stand up to full orcish warriors."
@@ -735,7 +741,7 @@ msgstr ""
 "pipistrelli non possono competere con i guerrieri orchi."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:388
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:370
 msgid ""
 "Your training is just beginning, Malin. With the souls from these goblins "
 "now available for our use, you will see your forces grow quickly."
@@ -744,7 +750,7 @@ msgstr ""
 "anime di questi goblin, vedrai che le tue forze cresceranno rapidamente."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:393
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:375
 msgid "Excellent. I’m eager to move on to the real foes."
 msgstr "Ottimo. Non vedo l’ora di attaccare dei veri nemici."
 

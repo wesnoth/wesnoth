@@ -288,6 +288,13 @@ else()
 	)
 endif()
 
+if(WIN32)
+	set(libwesnoth-core_STAT_SRC
+		${libwesnoth-core_STAT_SRC}
+		log_windows.cpp
+	)
+endif()
+
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
 add_library(wesnoth-core ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
@@ -1142,7 +1149,6 @@ set(libwesnoth-game_STAT_SRC
 if(WIN32)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
-		desktop/windows_console.cpp
 		desktop/windows_tray_notification.cpp
 	)
 endif(WIN32)
@@ -1350,7 +1356,7 @@ set(schema_generator_SRC
 	tools/schema/sourceparser.cpp
 	tools/schema/error_container.cpp
 	tools/schema/tag.cpp
-	filesystem.cpp
+	filesystem_boost.cpp
 	filesystem_common.cpp
 	loadscreen_empty.cpp
 )
@@ -1372,7 +1378,7 @@ set(schema_validator_SRC
 	serialization/validator.cpp
 	tools/dummy_video.cpp
 	tools/schema/tag.cpp
-	filesystem.cpp
+	filesystem_boost.cpp
 	filesystem_common.cpp
 	config_cache.cpp
 	utils/sha1.cpp

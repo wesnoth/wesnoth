@@ -182,7 +182,7 @@ static void delay_event(const SDL_Event& event, const Uint32 delay)
 /**
  * Adds a SHOW_HELPTIP event to the SDL event queue.
  *
- * The event is used to show the helptip for the currently focussed widget.
+ * The event is used to show the helptip for the currently focused widget.
  */
 static bool helptip()
 {

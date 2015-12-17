@@ -106,4 +106,5 @@ revert:
 	./wmllint --revert $(MAINLINE) $(UMC)
 clean:
 	./wmllint --clean $(MAINLINE) $(UMC)
+	rm -f macro-reference.html
 

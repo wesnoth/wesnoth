@@ -65,7 +65,7 @@ void campaign_controller::report_victory(
 {
 	report << "<small>" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
 
-	if(t.carryover_bonus()) {
+	if(t.carryover_bonus() != 0) {
 		if (turns_left > -1) {
 			report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
 				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
@@ -169,7 +169,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 				continue;
 			}
 			int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
-			int finishing_bonus = t.carryover_bonus() ? finishing_bonus_per_turn * turns_left : 0;
+			int finishing_bonus = t.carryover_bonus() * finishing_bonus_per_turn * turns_left;
 			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
 			if(!t.is_local_human())
 			{

@@ -43,8 +43,6 @@ namespace actions { class undo_list; }
 class game_state : public filter_context
 {
 private:
-	boost::shared_ptr<game_events::t_context> game_events_resources_; //!< This allows us to easily rebind the pointers used by the game events manager and pump
-
 	friend class replay_controller;
 public:
 	game_data gamedata_;

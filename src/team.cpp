@@ -75,7 +75,6 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("disallow_shuffle")("description").convert_to_container<boost::container::flat_set<std::string> >();
 
 team::team_info::team_info() :
-	name(),
 	gold(0),
 	start_gold(0),
 	income(0),
@@ -112,14 +111,13 @@ team::team_info::team_info() :
 	lost(false),
 	carryover_percentage(game_config::gold_carryover_percentage),
 	carryover_add(false),
-	carryover_bonus(false),
+	carryover_bonus(0),
 	carryover_gold(0)
 {
 }
 
 void team::team_info::read(const config &cfg)
 {
-	name = cfg["name"].str();
 	gold = cfg["gold"];
 	income = cfg["income"];
 	team_name = cfg["team_name"].str();
@@ -138,15 +136,16 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"].str(), team::DEFEAT_CONDITION::NO_LEADER);
+	defeat_condition = cfg["defeat_condition"].to_enum<team::DEFEAT_CONDITION>(team::DEFEAT_CONDITION::NO_LEADER);
 	lost = cfg["lost"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
 	carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
 	carryover_add = cfg["carryover_add"].to_bool(false);
-	carryover_bonus = cfg["carryover_bonus"].to_bool(false);
+	carryover_bonus = cfg["carryover_bonus"].to_double(1);
 	carryover_gold = cfg["carryover_gold"].to_int(0);
+	variables = cfg.child_or_empty("variables");
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
@@ -196,7 +195,8 @@ void team::team_info::read(const config &cfg)
 	else
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
-	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::CONTROLLER::AI);
+	controller = team::CONTROLLER::AI;
+	controller.parse(cfg["controller"].str());
 
 	//TODO: Why do we read disallow observers differently when controller is empty?
 	if (controller == CONTROLLER::EMPTY) {
@@ -232,12 +232,12 @@ void team::team_info::handle_legacy_share_vision(const config& cfg)
 		}
 	}
 }
+
 void team::team_info::write(config& cfg) const
 {
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
 	cfg["income"] = income;
-	cfg["name"] = name;
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
 	cfg["save_id"] = save_id;
@@ -272,6 +272,7 @@ void team::team_info::write(config& cfg) const
 	cfg["carryover_bonus"] = carryover_bonus;
 	cfg["carryover_gold"] = carryover_gold;
 
+	cfg.add_child("variables", variables);
 	cfg.add_child("ai", ai::manager::to_config(side));
 }
 
@@ -337,7 +338,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
-			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << std::endl;
+			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc << std::endl;
 		}
 	}
 
@@ -472,7 +473,7 @@ bool team::calculate_is_enemy(size_t index) const
 	return true;
 }
 
-namespace 
+namespace
 {
 	team::CONTROLLER unified_controller(team::CONTROLLER c)
 	{
@@ -523,7 +524,7 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 		}
 		if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
 			//We dont allow changing the currently active side to "null" controlled.
-			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below 
+			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
 		}
 		config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
 		if(!new_controller.parse(choice["controller"])) {

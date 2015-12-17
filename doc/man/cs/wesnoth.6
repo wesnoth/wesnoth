@@ -180,11 +180,13 @@ chyby validace jsou brány jako fatální.
 spouští hru v malém testovacím scénáři.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-nastaví adresář s uživatelskými daty na \fIjméno\fP v $HOME nebo "Dokumenty\eMy
-Games" pod windows. Můžete však také použít absolutní cestu pro adresář s
-nastavením mmio $HOME nebo "Dokumenty\eMyGames". Pod X11 je výchozí
-$XDG_CONFIG_HOME nebo $HOME/.config/wesnoth, na ostatních systémech v
-uživatelských adresářích.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
@@ -192,7 +194,9 @@ pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
 \fB\-\-userdata\-dir\fP\fI\ jméno\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
 .TP 
 \fB\-\-userdata\-path\fP
 pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.

@@ -45,6 +45,7 @@ private:
 	//       case between scenarios.
 	std::vector<config> recall_list_;
 	std::string save_id_;
+	config variables_;
 
 	std::string get_recruits(bool erase=false);
 };

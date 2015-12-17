@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2014-08-20 06:01+0200\n"
 "Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
 "Language-Team: Mistic\n"
@@ -34,42 +34,48 @@ msgid "The Rise of Wesnoth"
 msgstr "Vznik Wesnothu"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:11
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:13
 msgid "TRoW"
 msgstr "VW"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
-msgid "(Easy)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(snadná)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "Fighter"
 msgstr "Bojovník"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
-msgid "(Normal)"
-msgstr "(normální)"
-
-#. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
 msgid "Commander"
 msgstr "Vojevůdce"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
-msgid "(Challenging)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
+#, fuzzy
+#| msgid "Normal:"
+msgid "Normal"
+msgstr "Normálně:"
+
+#. [campaign]: id=The_Rise_of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(nelehká)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
 msgid "Lord"
 msgstr "Šlechtic"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -82,27 +88,27 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 msgid "(Expert level, 24 scenarios.)"
 msgstr "(Obtížnost: expert, 24 scénářů)"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:27
 msgid "Campaign Design"
 msgstr "Návrh tažení"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:32
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:33
 msgid "Campaign Maintenance"
 msgstr "Údržba tažení"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:45
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:46
 msgid "Artwork and Graphics Design"
 msgstr "Kresby a grafika"
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:70
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:71
 msgid "WML Contributors"
 msgstr "Skriptování tažení"
 
@@ -1338,8 +1344,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:627
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest... I should have stayed at home and took my "
+#| "chances with the orcs!"
 msgid ""
-"Oh great, now a forest... I should have stayed at home and took my chances "
+"Oh great, now a forest... I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr ""
 "No báječné, teď zase les...  Měl jsem zůstat doma a zkusit to se skřety!"
@@ -1492,8 +1502,13 @@ msgstr "Sir Ladoc"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:384
+#, fuzzy
+#| msgid ""
+#| "Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+#| "guard. The main body of their forces is on the road to Southbay. It is an "
+#| "army of nightmarish size."
 msgid ""
-"Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+"Hold there! You cannot pass. You’ve already stumbled on the orcish rear "
 "guard. The main body of their forces is on the road to Southbay. It is an "
 "army of nightmarish size."
 msgstr ""
@@ -1544,8 +1559,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:414
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest. I should have stayed at home and took my chances "
+#| "with the orcs!"
 msgid ""
-"Oh great, now a forest. I should have stayed at home and took my chances "
+"Oh great, now a forest. I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr "No báječně, teď zase les. Měl jsem zůstat doma a zkusit to se skřety!"
 
@@ -6000,10 +6019,15 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:147
+#, fuzzy
+#| msgid ""
+#| "Haldric! I won’t do it... I won’t help. What is it with your kind, always "
+#| "rushing to a fool’s death? Who’ll lead these people? I... <i>we</i> need "
+#| "you alive"
 msgid ""
 "Haldric! I won’t do it... I won’t help. What is it with your kind, always "
 "rushing to a fool’s death? Who’ll lead these people? I... <i>we</i> need you "
-"alive"
+"alive."
 msgstr ""
 "Haldriku! To neudělám... v tom ti nepomůžu. Co je to s vámi, že se neustále "
 "ženete do pošetilé smrti? Kdo pak povede tyto lidi? Potřebuji... "
@@ -6576,17 +6600,17 @@ msgid "Rise, rise from the ground!"
 msgstr "Povstaň, povstaň ze země!!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1453
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1434
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "Pojďte ke mně z hlubin, mí věrní vojáci!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1656
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1618
 msgid "We did it! We won!"
 msgstr "Dokázali jsme to! Vyhráli jsme!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1660
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1622
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6595,7 +6619,7 @@ msgstr ""
 "poslední sbohem, také musíme prodiskutovat běh věcí pro nadcházející dny."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1668
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1630
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
@@ -7276,6 +7300,9 @@ msgid ""
 msgstr ""
 "To jsou vskutku skvělé zprávy. Náš počet se tím zdvojnásobil. A teď zpět k "
 "práci, již máme zde."
+
+#~ msgid "(Normal)"
+#~ msgstr "(normální)"
 
 #~ msgid ""
 #~ "Rarely seen, even by Elves, a Wose is an order of creature about which "

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2007-11-30 11:09+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -24,42 +24,47 @@ msgid "The Rise of Wesnoth"
 msgstr "Wesnoths Uppgång"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:11
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:13
 msgid "TRoW"
 msgstr "TRoW"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
-msgid "(Easy)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(Lätt)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "Fighter"
 msgstr "Krigare"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
-msgid "(Normal)"
-msgstr "(Normalsvårt)"
-
-#. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
 msgid "Commander"
 msgstr "Befälhavare"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
-msgid "(Challenging)"
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
+#, fuzzy
+msgid "Normal"
+msgstr "(Normalsvårt)"
+
+#. [campaign]: id=The_Rise_of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Utmanande)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
 msgid "Lord"
 msgstr "Furste"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 #, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
@@ -74,27 +79,27 @@ msgstr ""
 "(Medelsvår nivå, 25 scenarier.)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 msgid "(Expert level, 24 scenarios.)"
 msgstr ""
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:27
 msgid "Campaign Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:32
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:33
 msgid "Campaign Maintenance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:45
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:46
 msgid "Artwork and Graphics Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:70
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:71
 msgid "WML Contributors"
 msgstr ""
 
@@ -1354,8 +1359,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:627
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest... I should have stayed at home and took my "
+#| "chances with the orcs!"
 msgid ""
-"Oh great, now a forest... I should have stayed at home and took my chances "
+"Oh great, now a forest... I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr ""
 "Åh, toppen, en skog... Jag skulle ha stannat hemma och slagits mot orcherna!"
@@ -1515,8 +1524,13 @@ msgstr "Sir Ladoc"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:384
+#, fuzzy
+#| msgid ""
+#| "Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+#| "guard. The main body of their forces is on the road to Southbay. It is an "
+#| "army of nightmarish size."
 msgid ""
-"Hold there! You can not pass. You’ve already stumbled on the orcish rear "
+"Hold there! You cannot pass. You’ve already stumbled on the orcish rear "
 "guard. The main body of their forces is on the road to Southbay. It is an "
 "army of nightmarish size."
 msgstr ""
@@ -1569,8 +1583,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:414
+#, fuzzy
+#| msgid ""
+#| "Oh great, now a forest. I should have stayed at home and took my chances "
+#| "with the orcs!"
 msgid ""
-"Oh great, now a forest. I should have stayed at home and took my chances "
+"Oh great, now a forest. I should have stayed at home and taken my chances "
 "with the orcs!"
 msgstr ""
 "Toppen, nu ska vi in i skogen. Jag visste att jag skulle stannat hemma och "
@@ -6194,7 +6212,7 @@ msgstr ""
 msgid ""
 "Haldric! I won’t do it... I won’t help. What is it with your kind, always "
 "rushing to a fool’s death? Who’ll lead these people? I... <i>we</i> need you "
-"alive"
+"alive."
 msgstr ""
 "Haldric! Jag gör det inte... Jag kommer inte att hjälpa dig. Vad är det med "
 "ert släkte, när ni alltid måste rusa rakt in i dödens käftar. Vem ska leda "
@@ -6775,17 +6793,17 @@ msgid "Rise, rise from the ground!"
 msgstr "Res er, res er, upp ur marken!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1453
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1434
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "Kom upp ur djupet, mina lojala soldater!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1656
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1618
 msgid "We did it! We won!"
 msgstr "Vi gjorde det! Vi vann!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1660
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1622
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6794,7 +6812,7 @@ msgstr ""
 "Aethyr, och diskutera vad vi skall göra härnäst."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1668
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1630
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
@@ -7487,6 +7505,9 @@ msgid ""
 msgstr ""
 "Detta är sannerligen fantastiska nyheter. Vårt antal har fördubblats. Och nu "
 "till ärendet vi har för handen."
+
+#~ msgid "(Normal)"
+#~ msgstr "(Normalsvårt)"
 
 #, fuzzy
 #~ msgid ""

@@ -258,7 +258,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 			usage + " but no unit of that type (usage=) is"
 			" available. Check the recruit and [ai]"
 			" recruitment_pattern keys for team '" +
-			current_team().name() + "' (" +
+			current_team().current_player() + "' (" +
 			lexical_cast<std::string>(get_side()) + ")"
 			" against the usage key of the"
 			" units in question! Removing invalid"

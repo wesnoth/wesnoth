@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2009-01-16 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -21,7 +21,9 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
-msgid "The Eastern Invasion"
+#, fuzzy
+#| msgid "The Eastern Invasion"
+msgid "Eastern Invasion"
 msgstr "Invasionen fra øst"
 
 #. [campaign]: id=Eastern_Invasion
@@ -31,7 +33,9 @@ msgstr "IØ"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
-msgid "(Easy)"
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(Nem)"
 
 #. [campaign]: id=Eastern_Invasion
@@ -41,7 +45,9 @@ msgstr "Spydmand"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
-msgid "(Normal)"
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
 msgstr "(Normal)"
 
 #. [campaign]: id=Eastern_Invasion
@@ -51,7 +57,9 @@ msgstr "Sværdmand"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Udfordrende)"
 
 #. [campaign]: id=Eastern_Invasion
@@ -60,7 +68,7 @@ msgid "Royal Guard"
 msgstr "Kongelig vagt"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:19
+#: data/campaigns/Eastern_Invasion/_main.cfg:20
 #, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
@@ -75,32 +83,32 @@ msgstr ""
 "(Mellemniveau, 18 scenarier.)"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:21
+#: data/campaigns/Eastern_Invasion/_main.cfg:22
 msgid "(Intermediate level, 16 scenarios.)"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:25
+#: data/campaigns/Eastern_Invasion/_main.cfg:26
 msgid "Campaign Design"
 msgstr "Kampagnedesign"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:31
+#: data/campaigns/Eastern_Invasion/_main.cfg:32
 msgid "Campaign Maintenance"
 msgstr "Kampagnevedligeholdelse"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:44
+#: data/campaigns/Eastern_Invasion/_main.cfg:45
 msgid "Campaign Epilogue and Continuity"
 msgstr "Kampagneepilog og -vedligeholdelse"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:50
+#: data/campaigns/Eastern_Invasion/_main.cfg:51
 msgid "Prose and Story Edits"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:56
+#: data/campaigns/Eastern_Invasion/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Tegninger og grafik"
 
@@ -374,8 +382,7 @@ msgstr "Forposten"
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:81
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:173
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:84
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:96
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1037
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:157
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:140
@@ -401,7 +408,7 @@ msgstr "Gweddrys død"
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:87
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:85
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:177
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:88
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:100
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1041
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:161
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:144
@@ -1422,8 +1429,7 @@ msgstr "Besejr den udøde leder"
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:91
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:181
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:92
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:264
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:104
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1045
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:165
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:148
@@ -2375,21 +2381,20 @@ msgstr "Kraagak"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:76
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:256
 #, fuzzy
 #| msgid "Defeat either enemy leader"
 msgid "Defeat the enemy leaders"
 msgstr "Besejr begge fjendtlige ledere"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:86
 #, fuzzy
 #| msgid "Move Gweddry to the trapdoor"
 msgid "Move Dacyn to the stronghold"
 msgstr "Flyt Gwedry til den skjulte dør"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:131
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:143
 msgid ""
 "The trail stops soon. We have almost reached Lake Vrug. There is a small "
 "island off the coast ahead that was once home to a great school of magic. I "
@@ -2397,45 +2402,45 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:135
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:147
 msgid "But what happened to the people living on it?"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:139
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:151
 msgid ""
 "Few enough remained before the trolls and gryphons took up residence in the "
 "mountains. But now the school is deserted, and has been for decades."
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:143
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:155
 msgid ""
 "Very well, we will take care of the trolls and gryphons. Search the library "
 "and may you find us an answer. Onward!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:172
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:184
 msgid ""
 "The island ahead is mountainous; it would be wise to select troops that do "
 "well on such terrain."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:196
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:208
 msgid "This must be the academy Dacyn mentioned."
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:200
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:212
 msgid ""
 "It still looks quite defensible. We should be able to hold there while Dacyn "
 "is working."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:204
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:216
 #, fuzzy
 #| msgid ""
 #| "Very well. Let us rally there, and then move to destroy these trolls and "
@@ -2445,32 +2450,37 @@ msgid ""
 msgstr "Ok. Lad os slå lejr her, og så bekæmper vi troldene og grifferne."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:232
 msgid "You find 100 gold in the fortress!"
 msgstr "Du finder 100 guld i fæstningen!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:236
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:249
 msgid "Excellent; I’ll start my research."
 msgstr ""
 
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:279
+msgid "Some time later..."
+msgstr ""
+
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:299
 msgid "Alright, now we should be safe while Dacyn is researching."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:334
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:350
 msgid "I have found an answer! We must return to Wesnoth immediately! ..."
 msgstr ""
 
 #. [unit]: type=Troll Warrior, id=Groog
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:345
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:361
 msgid "Groog"
 msgstr "Groog"
 
 #. [message]: speaker=Groog
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:377
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:393
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Ikke så hurtig. Du kommer med os."
 
@@ -2998,18 +3008,18 @@ msgstr "Besejr Khrakrahs"
 #. [message]
 #. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:163
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:434
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:385
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
 #. [object]
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:172
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:507
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:458
 msgid "Null Stone"
 msgstr ""
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:416
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:367
 #, fuzzy
 msgid ""
 "Now, we have reached the Horse Plains, the fair homeland of my people. They "
@@ -3019,7 +3029,7 @@ msgstr ""
 "til at hjælpe os med - "
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:420
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:371
 msgid ""
 "What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
@@ -3028,7 +3038,7 @@ msgstr ""
 "for!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:424
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:375
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
 "death, decay, everything that they are themselves. I can sense them lurking "
@@ -3039,23 +3049,23 @@ msgstr ""
 "baghold i sumpen."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:428
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:379
 msgid "I s’ppose we’ll hav’ to wade across it anyway... ugh."
 msgstr "Jeg antager at vi må vade over den alligevel... ugh."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:436
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:387
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "Findshhh... myrdddd... dræbbb..."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:440
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:391
 #, fuzzy
 msgid "What was that?!"
 msgstr "Hvad er detfor en lyd?!?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:444
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:395
 #, fuzzy
 #| msgid ""
 #| "I do not know, but my guess is the dragon Khrakrahs. He was a powerful "
@@ -3074,7 +3084,7 @@ msgstr ""
 "sket, men vi må ødelægge ham."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:483
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:434
 msgid ""
 "Ah! It appears that the mighty Khrakrahs is no longer among the living. But "
 "this undead abomination does not appear weak to my arcane powers... he must "
@@ -3082,7 +3092,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:501
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:452
 msgid "The Null Stone! With it we may finally defeat Mal-Ravanal!"
 msgstr ""
 

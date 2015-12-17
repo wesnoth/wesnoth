@@ -65,7 +65,7 @@ thorizontal_scrollbar_definition::thorizontal_scrollbar_definition(
  * * state_disabled, the horizontal scrollbar is disabled.
  * * state_pressed, the left mouse button is down on the positioner of the
  *   horizontal scrollbar.
- * * state_focussed, the mouse is over the positioner of the horizontal
+ * * state_focused, the mouse is over the positioner of the horizontal
  *   scrollbar.
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled"}
@@ -73,8 +73,8 @@ thorizontal_scrollbar_definition::thorizontal_scrollbar_definition(
  * @end{tag}{name="state_disabled"}
  * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focussed"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
  * @end{tag}{name="resolution"}
  * @end{tag}{name="horizontal_scrollbar_definition"}
  * @end{parent}{name="gui/"}
@@ -94,7 +94,7 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focussed")));
+	state.push_back(tstate_definition(cfg.child("state_focused")));
 }
 
 } // namespace gui2

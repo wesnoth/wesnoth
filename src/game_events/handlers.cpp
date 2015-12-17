@@ -114,6 +114,7 @@ void event_handler::disable()
 void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p, game_lua_kernel & lk)
 {
 	// We will need our config after possibly self-destructing. Make a copy now.
+	// TODO: instead of copying possibly huge config objects we should use shared things and only increase a refcount here.
 	vconfig vcfg(cfg_, true);
 
 	if (is_menu_item_) {

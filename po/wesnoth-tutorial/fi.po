@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2012-04-04 14:02+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -379,9 +379,13 @@ msgstr "Ai! Lääkäri! Minulla on vain $student_hp elämäpistettä jäljellä!
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:425
+#, fuzzy
+#| msgid ""
+#| "There is a village on the other side of the river. Visiting villages is a "
+#| "good idea, and ending your turn in one will heal you. To the village!"
 msgid ""
-"There is a village on the other side of the river. Visiting villages is a "
-"good idea, and ending your turn in one will heal you. To the village!"
+"There are two villages within your reach. Visiting villages is a good idea, "
+"and ending your turn on one will heal you. To a village!"
 msgstr ""
 "Joen toisella puolella on kylä. Kylissä käyminen on hyvä ajatus. Vuoron "
 "lopettaminen kylään parantaa sinua. Siispä kylään!"
@@ -390,14 +394,14 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:429
 #, fuzzy
 #| msgid "Move Konrad to capture a village"
-msgid "Move Konrad to the nearest village"
+msgid "Move Konrad to a nearby village"
 msgstr "Valtaa kylä liikuttamalla Konrad siihen"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:431
 #, fuzzy
 #| msgid "Move Li’sar to capture a village"
-msgid "Move Li’sar to the nearest village"
+msgid "Move Li’sar to a nearby village"
 msgstr "Valtaa kylä liikuttamalla Li'sar siihen"
 
 #. [message]: speaker=narrator
@@ -459,7 +463,7 @@ msgstr "Värvään haltioita!"
 #| "have plenty of gold for that."
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
-"this turn. Instead, you could return to the keep and recruit two units; you "
+"this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
 "Loistoajatus. Jos palaat linnakkeeseen, voit värvätä kaksi yksikköä. Sinulla "
@@ -1175,7 +1179,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:326
 msgid ""
-"Each turn, you will gain 2 gold pus one for each village you own. However, "
+"Each turn, you will gain 2 gold plus one for each village you own. However, "
 "<i>upkeep</i> is subtracted for that. You can support as many levels worth "
 "of units as the number of villages you own; beyond that, you must pay 1 gold "
 "per turn. Be careful, as owning too many units can cause you to have "

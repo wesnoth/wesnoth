@@ -262,6 +262,10 @@ private:
 	 */
 	bool check_switch_open_map(const std::string& fn);
 
+	/**
+	 * Displays the specified map name in the window titlebar
+	 */
+	void set_window_title();
 public:
 	/**
 	 * Load a map given the filename
@@ -304,6 +308,8 @@ private:
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;
 
+	/** The default window title outside the editor */
+	std::string default_window_title_;
 };
 
 }

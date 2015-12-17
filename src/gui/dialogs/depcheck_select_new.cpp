@@ -19,7 +19,11 @@
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gettext.hpp"
 
 namespace gui2

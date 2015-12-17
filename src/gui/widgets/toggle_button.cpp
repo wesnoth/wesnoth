@@ -148,7 +148,7 @@ void ttoggle_button::signal_handler_mouse_enter(const event::tevent event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-	set_state(FOCUSSED);
+	set_state(FOCUSED);
 	handled = true;
 }
 

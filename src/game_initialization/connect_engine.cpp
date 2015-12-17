@@ -912,6 +912,11 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		cfg_["controller"] = "ai";
 	}
 
+	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
+		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
+		cfg_.remove_attribute("controller");
+	}
+
 	if (cfg_["controller"] == "null") {
 		set_controller(CNTR_EMPTY);
 	} else if (cfg_["controller"] == "ai") {
@@ -986,11 +991,7 @@ config side_engine::new_config() const
 
 	// Save default "recruit" so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
-	// In case recruit list was empty, set a flag to indicate that.
 	res["default_recruit"] = cfg_["recruit"].str();
-	if (res["default_recruit"].empty()) {
-		res["no_recruit"] = true;
-	}
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.

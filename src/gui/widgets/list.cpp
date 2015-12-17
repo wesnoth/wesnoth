@@ -18,15 +18,17 @@
 
 #include "gui/widgets/list.hpp"
 
-#include "foreach.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/listbox.hpp"
 #include "gui/auxiliary/window_builder/listbox.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -120,7 +122,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 
 void tlist::append_rows(const std::vector<string_map>& items)
 {
-	foreach(const string_map & item, items)
+	BOOST_FOREACH(const string_map & item, items)
 	{
 		add_row(item);
 	}
@@ -193,7 +195,7 @@ void tlist::set_row_shown(const unsigned row, const bool shown)
 		window->invalidate_layout();
 	} else {
 		// grid().set_visible_rectangle(content_visible_rectangle());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -227,7 +229,7 @@ void tlist::set_row_shown(const std::vector<bool>& shown)
 		window->invalidate_layout();
 	} else {
 		// content_grid_->set_visible_rectangle(content_visible_rectangle());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -314,7 +316,7 @@ void tlist::resize_content(
 		need_layout_ = true;
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
-			set_dirty(true);
+			set_is_dirty(true);
 		}
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
@@ -370,7 +372,7 @@ void tlist::layout_children(const bool force)
 				grid().set_visible_rectangle(content_visible_area_);
 		*/
 		need_layout_ = false;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 

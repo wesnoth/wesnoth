@@ -578,27 +578,30 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
  *
  * @param	set_value Preselected difficulty number. The default -1 launches the gui.
  * @return	Selected difficulty. Returns "FAIL" if set_value is invalid,
- *	        and "CANCEL" if the gui is cancelled.
+ *	        and "CANCEL" if the gui is canceled.
  */
 std::string create_engine::select_campaign_difficulty(int set_value)
 {
+	// Verify the existence of difficulties
+	std::vector<std::string> difficulties;
+
+	BOOST_FOREACH(const config &d, current_level().data().child_range("difficulty"))
+	{
+		difficulties.push_back(d["define"]);
+	}
+
+	if(difficulties.empty()) {
+		difficulties = utils::split(current_level().data()["difficulties"]);
+	}
+
+	// No difficulties found. Exit
+	if(difficulties.empty()) {
+		return "";
+	}
+
 	// A specific difficulty value was passed
 	// Use a minimilistic interface to get the specified define
 	if(set_value != -1) {
-		std::vector<std::string> difficulties =
-			utils::split(current_level().data()["difficulties"]);
-
-		if(difficulties.empty()) {
-			BOOST_FOREACH(const config &d, current_level().data().child_range("difficulty"))
-			{
-				difficulties.push_back(d["define"]);
-			}
-		}
-
-		if(difficulties.empty()) {
-			return "";
-		}
-
 		if (set_value > static_cast<int>(difficulties.size())) {
 			std::cerr << "incorrect difficulty number: [" <<
 				set_value << "]. maximum is [" << difficulties.size() << "].\n";
@@ -613,6 +616,8 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	}
 
 	// If not, let the user pick one from the prompt
+	// We don't pass the difficulties vector here because additional data is required
+	// to constrict the dialog
 	gui2::tcampaign_difficulty dlg(current_level().data());
 	dlg.show(disp_.video());
 

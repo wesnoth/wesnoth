@@ -37,6 +37,7 @@
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
 #include "../variable.hpp"
+#include "../resources.hpp"
 
 #include <boost/foreach.hpp>
 #include <iomanip>
@@ -102,16 +103,14 @@ struct pump_impl {
 	unsigned instance_count;
 
 	manager * my_manager;
-	boost::shared_ptr<t_context> resources;
 
-	pump_impl(manager & man, const boost::shared_ptr<t_context> & res)
+	pump_impl(manager & man)
 		: events_queue()
 		, internal_wml_tracking(0)
 		, wml_messages_stream()
 		, contexts_()
 		, instance_count(0)
 		, my_manager(&man)
-		, resources(res)
 	{
 		contexts_.push(context::state(false));
 	}
@@ -148,10 +147,10 @@ namespace { // Support functions
 
 	pump_manager::pump_manager(pump_impl & impl) :
 		impl_(impl),
-		x1_(impl_.resources->gamedata->get_variable("x1")),
-		x2_(impl_.resources->gamedata->get_variable("x2")),
-		y1_(impl_.resources->gamedata->get_variable("y1")),
-		y2_(impl_.resources->gamedata->get_variable("y2")),
+		x1_(resources::gamedata->get_variable("x1")),
+		x2_(resources::gamedata->get_variable("x2")),
+		y1_(resources::gamedata->get_variable("y1")),
+		y2_(resources::gamedata->get_variable("y2")),
 		queue_(), // Filled later with a swap().
 		pumped_count_(0)
 	{
@@ -176,10 +175,10 @@ namespace { // Support functions
 		}
 
 		// Restore the old values of the game variables.
-		impl_.resources->gamedata->get_variable("y2") = y2_;
-		impl_.resources->gamedata->get_variable("y1") = y1_;
-		impl_.resources->gamedata->get_variable("x2") = x2_;
-		impl_.resources->gamedata->get_variable("x1") = x1_;
+		resources::gamedata->get_variable("y2") = y2_;
+		resources::gamedata->get_variable("y1") = y1_;
+		resources::gamedata->get_variable("x2") = x2_;
+		resources::gamedata->get_variable("x1") = x1_;
 	}
 }
 
@@ -188,7 +187,7 @@ namespace { // Support functions
 	 */
 	bool t_pump::filter_event(const event_handler& handler, const queued_event& ev)
 	{
-		const unit_map *units = impl_->resources->units;
+		const unit_map *units = resources::units;
 		unit_map::const_iterator unit1 = units->find(ev.loc1);
 		unit_map::const_iterator unit2 = units->find(ev.loc2);
 		vconfig filters(handler.get_config());
@@ -202,8 +201,8 @@ namespace { // Support functions
 
 		BOOST_FOREACH(const vconfig &f, filters.get_children("filter_side"))
 		{
-			side_filter ssf(f, impl_->resources->filter_con);
-			if ( !ssf.match(impl_->resources->current_side()) )
+			side_filter ssf(f, &resources::controller->gamestate());
+			if ( !ssf.match(resources::controller->current_side()) )
 				return false;
 		}
 
@@ -285,7 +284,7 @@ namespace { // Support functions
 		if ( !handler_p )
 			return false;
 
-		unit_map *units = impl_->resources->units;
+		unit_map *units = resources::units;
 		scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
 		scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
 		scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
@@ -297,16 +296,16 @@ namespace { // Support functions
 		// The event hasn't been filtered out, so execute the handler.
 		++impl_->internal_wml_tracking;
 		context::scoped evc(impl_->contexts_);
-		assert(impl_->resources->lua_kernel);
-		handler_p->handle_event(ev, handler_p, *impl_->resources->lua_kernel);
+		assert(resources::lua_kernel != NULL);
+		handler_p->handle_event(ev, handler_p, *resources::lua_kernel);
 		// NOTE: handler_p may be null at this point!
 
 		if(ev.name == "select") {
-			impl_->resources->gamedata->last_selected = ev.loc1;
+			resources::gamedata->last_selected = ev.loc1;
 		}
-
-		impl_->resources->screen->maybe_rebuild();
-
+		if(resources::screen != NULL) {
+			resources::screen->maybe_rebuild();
+		}
 		return context_mutated();
 	}
 
@@ -364,7 +363,7 @@ namespace { // Support functions
 				msg << " (" << itor->second << ")";
 			}
 
-			impl_->resources->screen->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg.str(),
+			resources::screen->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg.str(),
 					events::chat_handler::MESSAGE_PUBLIC, false);
 			if ( to_cerr )
 				std::cerr << caption << ": " << msg.str() << '\n';
@@ -484,7 +483,7 @@ void t_pump::raise(const std::string& event,
            const entity_location& loc2,
            const config& data)
 {
-	if(impl_->resources->screen == NULL)
+	if(resources::screen == NULL)
 		return;
 
 	DBG_EH << "raising event: " << event << "\n";
@@ -495,9 +494,9 @@ void t_pump::raise(const std::string& event,
 bool t_pump::operator()()
 {
 	// Quick aborts:
-	if(impl_->resources->screen == NULL)
+	if(resources::screen == NULL)
 		return false;
-	assert(impl_->resources->lua_kernel != NULL);
+	assert(resources::lua_kernel != NULL);
 	if ( impl_->events_queue.empty() ) {
 		DBG_EH << "Processing queued events, but none found.\n";
 		return false;
@@ -534,8 +533,7 @@ bool t_pump::operator()()
 		
 		{ // Block for context::scoped
 			context::scoped evc(impl_->contexts_, false);
-
-			if ( impl_->resources->lua_kernel->run_event(ev) ) {
+			if ( resources::lua_kernel->run_event(ev) ) {
 				++impl_->internal_wml_tracking;
 			}
 		}
@@ -548,10 +546,10 @@ bool t_pump::operator()()
 		//       functionally wrong, merely inefficient. So we do not have
 		//       to cache *handler_iter here.
 		if ( *handler_iter ) {
-			impl_->resources->gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
-			impl_->resources->gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
-			impl_->resources->gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
-			impl_->resources->gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
+			resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
+			resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
+			resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
+			resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
 		}
 
 		// While there is a potential handler for this event name.
@@ -572,7 +570,7 @@ bool t_pump::operator()()
 	if ( old_wml_track != impl_->internal_wml_tracking )
 		// Notify the whiteboard of any event.
 		// This is used to track when moves, recruits, etc. happen.
-		impl_->resources->on_gamestate_change();
+		resources::whiteboard->on_gamestate_change();
 
 	return context_mutated();
 }
@@ -580,7 +578,7 @@ bool t_pump::operator()()
 void t_pump::flush_messages()
 {
 	// Dialogs can only be shown if the display is not locked
-	if (!impl_->resources->screen->video().update_locked()) {
+	if (resources::screen && !resources::screen->video().update_locked()) {
 		show_wml_errors();
 		show_wml_messages();
 	}
@@ -607,8 +605,8 @@ size_t t_pump::wml_tracking()
 	return impl_->internal_wml_tracking;
 }
 
-t_pump::t_pump(manager & man, const boost::shared_ptr<t_context> & res)
-	: impl_(new pump_impl(man, res))
+t_pump::t_pump(manager & man)
+	: impl_(new pump_impl(man))
 {}
 
 t_pump::~t_pump() {}
