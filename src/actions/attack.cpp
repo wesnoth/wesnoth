@@ -1160,6 +1160,7 @@ namespace {
 					newunit.heal_all();
 				}
 				units_.add(death_loc, newunit);
+				resources::game_events->pump().fire("unit placed", death_loc);
 				preferences::encountered_units().insert(newunit.type_id());
 				if (update_display_) {
 					resources::screen->invalidate(death_loc);
