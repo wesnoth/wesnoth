@@ -69,11 +69,6 @@ namespace gui2
  * -date & & control & o &
  *         Date the savegame was created. $
  *
- * preview_pane & & widget & m &
- *         Container widget or grid that contains the items for a preview. The
- *         visible status of this container depends on whether or not something
- *         is selected. $
- *
  * -minimap & & minimap & m &
  *         Minimap of the selected savegame. $
  *
@@ -260,37 +255,32 @@ void tgame_load::display_savegame(twindow& window)
 			= find_widget<tlistbox>(&window, "savegame_list", false)
 					  .get_selected_row();
 
-	twidget& preview_pane
-			= find_widget<twidget>(&window, "preview_pane", false);
-
 	if(selected_row == -1) {
-		preview_pane.set_visible(twidget::tvisible::hidden);
-	} else {
-		preview_pane.set_visible(twidget::tvisible::visible);
+		return;
+	}
 
-		savegame::save_info& game = games_[selected_row];
-		filename_ = game.name();
+	savegame::save_info& game = games_[selected_row];
+	filename_ = game.name();
 
-		const config& summary = game.summary();
+	const config& summary = game.summary();
 
-		find_widget<timage>(&window, "imgLeader", false)
+	find_widget<timage>(&window, "imgLeader", false)
 				.set_label(summary["leader_image"]);
 
-		find_widget<tminimap>(&window, "minimap", false)
+	find_widget<tminimap>(&window, "minimap", false)
 				.set_map_data(summary["map_data"]);
 
-		find_widget<tlabel>(&window, "lblScenario", false)
+	find_widget<tlabel>(&window, "lblScenario", false)
 				.set_label(game.name());
 
-		std::stringstream str;
-		str << game.format_time_local();
-		evaluate_summary_string(str, summary);
+	std::stringstream str;
+	str << game.format_time_local();
+	evaluate_summary_string(str, summary);
 
-		find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
+	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
 
-		// TODO: Find a better way to change the label width
-		// window.invalidate_layout();
-	}
+	// TODO: Find a better way to change the label width
+	// window.invalidate_layout();
 }
 
 void tgame_load::evaluate_summary_string(std::stringstream& str,
