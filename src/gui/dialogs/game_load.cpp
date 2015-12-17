@@ -36,6 +36,7 @@
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences_display.hpp"
@@ -43,6 +44,12 @@
 
 #include <cctype>
 #include <boost/bind.hpp>
+
+/* Helper function for determining if the selected save is a replay */
+static bool is_replay_save(const config& cfg)
+{
+	return cfg["replay"].to_bool() && !cfg["snapshot"].to_bool(true);
+}
 
 namespace gui2
 {
@@ -277,6 +284,15 @@ void tgame_load::display_savegame(twindow& window)
 	str << game.format_time_local();
 	evaluate_summary_string(str, summary);
 
+	// Always toggle show_replay on if the save is a replay
+	ttoggle_button& replay_toggle = 
+			find_widget<ttoggle_button>(&window, "show_replay", false);
+
+	const bool& is_replay = is_replay_save(summary);
+
+	replay_toggle.set_value(is_replay);
+	replay_toggle.set_active(!is_replay);
+
 	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
 
 	// TODO: Find a better way to change the label width
@@ -343,8 +359,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 
 		str << "\n";
 
-		if(cfg_summary["replay"].to_bool()
-		   && !cfg_summary["snapshot"].to_bool(true)) {
+		if(is_replay_save(cfg_summary)) {
 			str << _("Replay");
 		} else if(!cfg_summary["turn"].empty()) {
 			str << _("Turn") << " " << cfg_summary["turn"];
