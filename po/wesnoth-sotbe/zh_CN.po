@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2015-03-16 19:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -30,7 +30,9 @@ msgstr "SotBE"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "（挑战）"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -40,7 +42,9 @@ msgstr "大兵"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "（困难）"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -50,7 +54,9 @@ msgstr "勇士"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-msgid "(Nightmare)"
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
 msgstr "（噩梦）"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -223,12 +229,22 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:107
+#, fuzzy
+#| msgid ""
+#| "The peace treaty still held however, partially because the treaty — "
+#| "although arranged by the Northern Alliance — was between the local earls "
+#| "and the orcish tribes and didn’t have any direct connection with the "
+#| "Northern Alliance. The other — and perhaps the main — reason why the "
+#| "treaty held was that with the death of the Black Eye, the unity of the "
+#| "orcs was shattered and they once again descended into inner squabbling. "
+#| "Thus the years that followed were relatively peaceful and prosperous — at "
+#| "least for the humans."
 msgid ""
 "The peace treaty still held however, partially because the treaty — although "
 "arranged by the Northern Alliance — was between the local earls and the "
 "orcish tribes and didn’t have any direct connection with the Northern "
 "Alliance. The other — and perhaps the main — reason why the treaty held was "
-"that with the death of the Black Eye, the unity of the orcs was shattered "
+"that with the death of the Black-Eye, the unity of the orcs was shattered "
 "and they once again descended into inner squabbling. Thus the years that "
 "followed were relatively peaceful and prosperous — at least for the humans."
 msgstr ""
@@ -1321,9 +1337,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
+#, fuzzy
+#| msgid ""
+#| "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the "
+#| "shamans and his warriors set off to Tirigaz."
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
-"and his warriors set off to Tirigaz."
+"and his warriors, set off to Tirigaz."
 msgstr ""
 "把大部分人留在了灞拉·格后，卡破尔和他的御林军们护送萨满出发前往提里加斯。"
 
@@ -1834,7 +1854,7 @@ msgstr "他应该过会儿就好了。毕竟他是个巨魔嘛。是吧，库鲁
 msgid "(<i>Puke</i>)"
 msgstr "(<b>呕</b>)"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:399
 msgid ""
 "Hold it right there! This oasis is ours! Begone or you all will be killed!"
@@ -1850,7 +1870,7 @@ msgstr ""
 "你也不看看，傻子，我们在沙暴中央，又几乎没有食物和水。如果不在绿洲停一停要我"
 "们怎么赶路。"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:409
 msgid "I don’t care, get lost!"
 msgstr "我不管，快滚开！"
@@ -1973,7 +1993,7 @@ msgstr ""
 "精灵跑到这么远的兽人领土里搞什么？不论如何，我们要休整一下。我们现在有足够的"
 "武装来对付这一小撮精灵偷猎者。如果我们遇到他们，把他们用砍成渣渣。"
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
 #, fuzzy
 #| msgid ""
@@ -1982,14 +2002,14 @@ msgstr ""
 msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr "是精灵！你说对了，格尔克，这些皮包骨头的软蛋已经寄生在这块地方了。"
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
 msgid ""
 "Elves! You were right, Gork, this place is infested with the skinny "
 "weaklings."
 msgstr "是精灵！你说对了，格尔克，这些皮包骨头的软蛋已经寄生在这块地方了。"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:213
 msgid "Blast it, the orcs have discovered us."
 msgstr "可恶，兽人发现我们了。"
@@ -1999,7 +2019,7 @@ msgstr "可恶，兽人发现我们了。"
 msgid "What is your purpose for trespassing on orcish territory?"
 msgstr "你们侵入兽人领地干什么？"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Fool, do you really think we are going to tell you?"
 msgstr "傻子，你以为我们会告诉你？"
@@ -2329,11 +2349,17 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership on it."
 msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
-"leadership on it."
+"leadership of it."
 msgstr ""
 "把你的人民留在这吧，卡破尔。他们暂时是安全的。你要去保卫普莱斯庭。与此同时，"
 "元老会就可以重聚，而我们会决定的。我们可能必须再次联合大部落，并给予你最高领"
@@ -3747,7 +3773,7 @@ msgstr "成就?"
 #, fuzzy
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
-"becomes no less than a boot-licking spy for the humans. Then goes on to "
+"becomes no less than a boot-licking spy for the humans. Then he goes on to "
 "engineer the death of half of the Great Council and in doing so makes "
 "himself directly responsible for the deaths of hundreds of orcs. And best of "
 "all, he is directly responsible for a bloody civil war right at the time "

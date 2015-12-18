@@ -336,7 +336,7 @@ void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
 	switch(state_) {
 		case ENABLED:
 			if(on_positioner(mouse)) {
-				set_state(FOCUSSED);
+				set_state(FOCUSED);
 			}
 
 			break;
@@ -347,7 +347,7 @@ void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
 			move_positioner(distance);
 		} break;
 
-		case FOCUSSED:
+		case FOCUSED:
 			if(!on_positioner(mouse)) {
 				set_state(ENABLED);
 			}
@@ -370,7 +370,7 @@ void tscrollbar_::signal_handler_mouse_leave(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	if(state_ == FOCUSSED) {
+	if(state_ == FOCUSED) {
 		set_state(ENABLED);
 	}
 	handled = true;
@@ -427,7 +427,7 @@ void tscrollbar_::signal_handler_left_button_up(const event::tevent event,
 	get_window()->mouse_capture(false);
 
 	if(on_positioner(mouse)) {
-		set_state(FOCUSSED);
+		set_state(FOCUSED);
 	} else {
 		set_state(ENABLED);
 	}

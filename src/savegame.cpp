@@ -98,6 +98,12 @@ loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestat
 
 void loadgame::show_dialog()
 {
+	if(get_saves_list().empty()) {
+		gui2::show_transient_message(gui_.video(), _("No Saved Games"),
+			_("There are no savefiles to load"));
+		return;
+	}
+
 	// FIXME: Integrate the load_game dialog into this class
 	// something to watch for the curious, but not yet ready to go
 	gui2::tgame_load load_dialog(game_config_);
@@ -222,16 +228,8 @@ bool loadgame::load_game(
 	if (!difficulty_.empty()){
 		load_config_["difficulty"] = difficulty_;
 	}
-#if 0
-	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
-	gamestate_.classification().campaign_type = lexical_cast_default<game_classification::CAMPAIGN_TYPE> (load_config_["campaign_type"].str(), game_classification::CAMPAIGN_TYPE::SCENARIO);
-	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
-	gamestate_.classification().version = load_config_["version"].str();
-	gamestate_.classification().difficulty = load_config_["difficulty"].str();
-#else
 	// read classification to for loading the game_config config object.
 	gamestate_.classification() = game_classification(load_config_);
-#endif
 
 	if (skip_version_check) {
 		return true;

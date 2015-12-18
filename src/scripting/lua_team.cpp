@@ -67,9 +67,8 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("scroll_to_leader", t.get_scroll_to_leader());
 	return_string_attrib("flag", t.flag());
 	return_string_attrib("flag_icon", t.flag_icon());
-	return_tstring_attrib("team_name", t.team_name());
-	return_string_attrib("team_id", t.team_id());
-	return_string_attrib("name", t.name());
+	return_tstring_attrib("user_team_name", t.user_team_name());
+	return_string_attrib("team_name", t.team_name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller().to_string().c_str());
 	return_string_attrib("defeat_condition", t.defeat_condition().to_string());
@@ -116,8 +115,8 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
 	modify_bool_attrib("hidden", t.set_hidden(value));
 	modify_bool_attrib("scroll_to_leader", t.set_scroll_to_leader(value));
-	modify_tstring_attrib("team_name", t.change_team(t.team_id(), value));
-	modify_string_attrib("team_id", t.change_team(value, t.team_name()));
+	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
+	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	modify_string_attrib("controller", t.change_controller_by_wml(value));
 	modify_string_attrib("color", t.set_color(value));
 	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));

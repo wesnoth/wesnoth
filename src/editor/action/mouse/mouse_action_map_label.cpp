@@ -51,7 +51,7 @@ editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, in
 	if (label) {
 		partial = true;
 		chain = new editor_action_chain(new editor_action_label_delete(last_draged_));
-		chain->append_action(new editor_action_label(hex, label->text(), label->team_id(), label->color(),
+		chain->append_action(new editor_action_label(hex, label->text(), label->team_name(), label->color(),
 				label->visible_in_shroud(), label->visible_in_fog(), label->immutable(), label->category()));
 	}
 
@@ -71,7 +71,7 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 
 	const terrain_label* old_label = editor::get_current_labels()->get_label(hex);
 	std::string label     = old_label ? old_label->text()              : "";
-	std::string team_id = old_label ? old_label->team_id()         : "";
+	std::string team_name = old_label ? old_label->team_name()         : "";
 	std::string category  = old_label ? old_label->category()          : "";
 	bool visible_shroud   = old_label ? old_label->visible_in_shroud() : false;
 	bool visible_fog      = old_label ? old_label->visible_in_fog()    : true;
@@ -82,7 +82,7 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 
 	editor_action* a = NULL;
 	if(d.show(disp.video())) {
-		a = new editor_action_label(hex, label, team_id, color
+		a = new editor_action_label(hex, label, team_name, color
 				, visible_fog, visible_shroud, immutable, category);
 		update_brush_highlights(disp, hex);
 	}

@@ -175,15 +175,13 @@ void log_init_panic(const libc_error& e,
 	}
 
 	msg << "\n\n"
-		<< "Runtime error: " << e.desc() << " (" << e.num() << ")\n"
-		<< "New log file path: " << new_log_path << '\n'
-		<< "Old log file path: ";
+		<< "Runtime error: " << e.desc() << " (" << e.num() << ")\n";
 
 	if(old_log_path.empty()) {
 		msg << "Log file path: " << new_log_path << '\n';
 	} else {
 		msg << "New log file path: " << new_log_path << '\n'
-			<< "Old log file path: ";
+			<< "Old log file path: " << old_log_path;
 	}
 
 	log_init_panic(msg.str());
@@ -340,7 +338,12 @@ void log_file_manager::move_log_file(const std::string& log_dir)
 			// cur_path_ with NUL, hence the backup above.
 			open_log_file("NUL", false);
 
-			if(rename(old_path.c_str(), new_path.c_str()) != 0) {
+			const std::wstring old_path_w
+					= unicode_cast<std::wstring>(old_path);
+			const std::wstring new_path_w
+					= unicode_cast<std::wstring>(new_path);
+
+			if(_wrename(old_path_w.c_str(), new_path_w.c_str()) != 0) {
 				throw libc_error();
 			}
 		}
@@ -374,7 +377,9 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 	fflush(crts);
 	cxxs.flush();
 
-	if(!freopen(file_path.c_str(), (truncate ? "w" : "a"), crts))
+	const std::wstring file_path_w = unicode_cast<std::wstring>(file_path);
+
+	if(!_wfreopen(file_path_w.c_str(), (truncate ? L"w" : L"a"), crts))
 	{
 		throw libc_error();
 	}

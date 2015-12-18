@@ -65,7 +65,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("recall_cost")("recruit")("save_id")("scroll_to_leader")
 	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
 	("suppress_end_turn_confirmation")
-	("team_id")("team_name")("user_team_name")("village_gold")("village_support")
+	("team_name")("user_team_name")("village_gold")("village_support")
 	// Multiplayer attributes.
 	("action_bonus_count")("allow_changes")("allow_player")("color_lock")
 	("countdown_time")("disallow_observers")("faction")
@@ -75,7 +75,6 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("disallow_shuffle")("description").convert_to_container<boost::container::flat_set<std::string> >();
 
 team::team_info::team_info() :
-	name(),
 	gold(0),
 	start_gold(0),
 	income(0),
@@ -84,8 +83,8 @@ team::team_info::team_info() :
 	minimum_recruit_price(0),
 	recall_cost(0),
 	can_recruit(),
-	team_id(),
 	team_name(),
+	user_team_name(),
 	save_id(),
 	current_player(),
 	countdown_time(),
@@ -119,11 +118,10 @@ team::team_info::team_info() :
 
 void team::team_info::read(const config &cfg)
 {
-	name = cfg["name"].str();
 	gold = cfg["gold"];
 	income = cfg["income"];
-	team_id = cfg["user_team_name"].blank() ? cfg["team_id"].str() : cfg["team_name"];
-	team_name = cfg["user_team_name"].blank() ? cfg["team_name"] : cfg["user_team_name"];
+	team_name = cfg["team_name"].str();
+	user_team_name = cfg["user_team_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -138,7 +136,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"].str(), team::DEFEAT_CONDITION::NO_LEADER);
+	defeat_condition = cfg["defeat_condition"].to_enum<team::DEFEAT_CONDITION>(team::DEFEAT_CONDITION::NO_LEADER);
 	lost = cfg["lost"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
@@ -156,8 +154,8 @@ void team::team_info::read(const config &cfg)
 	}
 
 	// If arel starting new scenario override settings from [ai] tags
-	if (!team_name.translatable())
-		team_name = t_string::from_serialized(team_name);
+	if (!user_team_name.translatable())
+		user_team_name = t_string::from_serialized(user_team_name);
 
 	if(cfg.has_attribute("ai_config")) {
 		ai::manager::add_ai_for_side_from_file(side, cfg["ai_config"], true);
@@ -177,8 +175,8 @@ void team::team_info::read(const config &cfg)
 	else
 		start_gold = default_team_gold_;
 
-	if(team_id.empty()) {
-		team_id = cfg["side"].str();
+	if(team_name.empty()) {
+		team_name = cfg["side"].str();
 	}
 
 	if(save_id.empty()) {
@@ -197,7 +195,8 @@ void team::team_info::read(const config &cfg)
 	else
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
-	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::CONTROLLER::AI);
+	controller = team::CONTROLLER::AI;
+	controller.parse(cfg["controller"].str());
 
 	//TODO: Why do we read disallow observers differently when controller is empty?
 	if (controller == CONTROLLER::EMPTY) {
@@ -214,7 +213,7 @@ void team::team_info::read(const config &cfg)
 	// so share_view overrides share_maps.
 	share_vision = cfg["share_vision"].to_enum<team::SHARE_VISION>(team::SHARE_VISION::ALL);
 	handle_legacy_share_vision(cfg);
-	LOG_NG << "team_info::team_info(...): team_id: " << team_id
+	LOG_NG << "team_info::team_info(...): team_name: " << team_name
 	       << ", share_vision: " << share_vision << ".\n";
 }
 
@@ -239,9 +238,8 @@ void team::team_info::write(config& cfg) const
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
 	cfg["income"] = income;
-	cfg["name"] = name;
-	cfg["team_id"] = team_id;
 	cfg["team_name"] = team_name;
+	cfg["user_team_name"] = user_team_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
@@ -313,7 +311,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	shroud_.read(cfg["shroud_data"]);
 	auto_shroud_updates_ = cfg["auto_shroud"].to_bool(auto_shroud_updates_);
 
-	LOG_NG << "team::team(...): team_id: " << info_.team_id
+	LOG_NG << "team::team(...): team_name: " << info_.team_name
 	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
 
 	// Load the WML-cleared fog.
@@ -340,7 +338,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
-			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << std::endl;
+			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc << std::endl;
 		}
 	}
 
@@ -458,10 +456,10 @@ bool team::calculate_is_enemy(size_t index) const
 	}
 
 	// We are friends with anyone who we share a teamname with
-	std::vector<std::string> our_teams = utils::split(info_.team_id),
-						   their_teams = utils::split((*teams)[index].info_.team_id);
+	std::vector<std::string> our_teams = utils::split(info_.team_name),
+						   their_teams = utils::split((*teams)[index].info_.team_name);
 
-	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team "<<index+1 << "; our team_id ["<<info_.team_id<<"], their team_id is ["<<(*teams)[index].info_.team_id<<"]"<< std::endl;
+	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team "<<index+1 << "; our team_name ["<<info_.team_name<<"], their team_name is ["<<(*teams)[index].info_.team_name<<"]"<< std::endl;
 	for(std::vector<std::string>::const_iterator t = our_teams.begin(); t != our_teams.end(); ++t) {
 		if(std::find(their_teams.begin(), their_teams.end(), *t) != their_teams.end())
 		{
@@ -542,14 +540,14 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 
 void team::change_team(const std::string &name, const t_string &user_name)
 {
-	info_.team_id = name;
+	info_.team_name = name;
 	if (!user_name.empty())
 	{
-		info_.team_name = user_name;
+		info_.user_team_name = user_name;
 	}
 	else
 	{
-		info_.team_name = name;
+		info_.user_team_name = name;
 	}
 
 	clear_caches();

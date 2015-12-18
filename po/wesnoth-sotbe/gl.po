@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2015-04-06 20:49+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -34,7 +34,9 @@ msgstr "FON"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(esixente)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -44,7 +46,9 @@ msgstr "Roñón"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(difícil)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -54,7 +58,9 @@ msgstr "Guerreiro"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-msgid "(Nightmare)"
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
 msgstr "(pesadelo)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -235,12 +241,22 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:107
+#, fuzzy
+#| msgid ""
+#| "The peace treaty still held however, partially because the treaty — "
+#| "although arranged by the Northern Alliance — was between the local earls "
+#| "and the orcish tribes and didn’t have any direct connection with the "
+#| "Northern Alliance. The other — and perhaps the main — reason why the "
+#| "treaty held was that with the death of the Black Eye, the unity of the "
+#| "orcs was shattered and they once again descended into inner squabbling. "
+#| "Thus the years that followed were relatively peaceful and prosperous — at "
+#| "least for the humans."
 msgid ""
 "The peace treaty still held however, partially because the treaty — although "
 "arranged by the Northern Alliance — was between the local earls and the "
 "orcish tribes and didn’t have any direct connection with the Northern "
 "Alliance. The other — and perhaps the main — reason why the treaty held was "
-"that with the death of the Black Eye, the unity of the orcs was shattered "
+"that with the death of the Black-Eye, the unity of the orcs was shattered "
 "and they once again descended into inner squabbling. Thus the years that "
 "followed were relatively peaceful and prosperous — at least for the humans."
 msgstr ""
@@ -1416,9 +1432,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
+#, fuzzy
+#| msgid ""
+#| "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the "
+#| "shamans and his warriors set off to Tirigaz."
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
-"and his warriors set off to Tirigaz."
+"and his warriors, set off to Tirigaz."
 msgstr ""
 "Deixando a case todos os seus orcos en Báragor, Quipui partiu cara Tírigaz, "
 "acompañado polos xamáns e os seus guerreiros."
@@ -1963,7 +1983,7 @@ msgstr "Ah, estará ben nuns minutos. A fin de contas é un troll. Non si, Gru?"
 msgid "(<i>Puke</i>)"
 msgstr "(<i>vomita</i>)"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:399
 msgid ""
 "Hold it right there! This oasis is ours! Begone or you all will be killed!"
@@ -1979,7 +1999,7 @@ msgstr ""
 "Mira, parvo, estamos en medio dunha tormenta de area, e apenas nos quedan "
 "comida nin auga. Non podemos ir a ningures se non repousamos antes no oasis."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:409
 msgid "I don’t care, get lost!"
 msgstr "Non me importa, perdédevos!"
@@ -2109,12 +2129,12 @@ msgstr ""
 "necesitamos un descanso. Se aparece algún elfo xa nos encargaremos del, "
 "estamos preparados."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
 msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr "Elfos! Estaba no certo, este lugar está cheo destes fodeárbores."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
 msgid ""
 "Elves! You were right, Gork, this place is infested with the skinny "
@@ -2122,7 +2142,7 @@ msgid ""
 msgstr ""
 "Elfos! Estabas no certo, Gorco, este lugar está cheo destes fodeárbores."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:213
 msgid "Blast it, the orcs have discovered us."
 msgstr "Maldición, os orcos descubríronos."
@@ -2132,7 +2152,7 @@ msgstr "Maldición, os orcos descubríronos."
 msgid "What is your purpose for trespassing on orcish territory?"
 msgstr "Por que entrastes en territorio dos orcos?"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Fool, do you really think we are going to tell you?"
 msgstr "Parvo, acaso pensas que cho imos dicir?"
@@ -2477,11 +2497,17 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership on it."
 msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
-"leadership on it."
+"leadership of it."
 msgstr ""
 "Deixa aos teus aquí —de momento están a salvo— e vai defender Prestin. "
 "Mentres tanto, agora que o consello volve estar completo, tomaremos unha "
@@ -3999,9 +4025,17 @@ msgstr "Logros?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:234
+#, fuzzy
+#| msgid ""
+#| "Well let’s see, first he betrays the trust of his sworn sovereign and "
+#| "becomes no less than a boot-licking spy for the humans. Then goes on to "
+#| "engineer the death of half of the Great Council and in doing so makes "
+#| "himself directly responsible for the deaths of hundreds of orcs. And best "
+#| "of all, he is directly responsible for a bloody civil war right at the "
+#| "time when his people are on the edge of total extermination!"
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
-"becomes no less than a boot-licking spy for the humans. Then goes on to "
+"becomes no less than a boot-licking spy for the humans. Then he goes on to "
 "engineer the death of half of the Great Council and in doing so makes "
 "himself directly responsible for the deaths of hundreds of orcs. And best of "
 "all, he is directly responsible for a bloody civil war right at the time "

@@ -200,7 +200,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	add_to_recent_files();
 }
 
-void map_context::set_side_setup(int side, const std::string& team_id, const std::string& team_name,
+void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
 		int gold, int income, int village_gold, int village_support,
 		bool fog, bool shroud, team::SHARE_VISION share_vision,
 		team::CONTROLLER controller, bool hidden, bool no_leader)
@@ -209,7 +209,7 @@ void map_context::set_side_setup(int side, const std::string& team_id, const std
 	team& t = teams_[side];
 //	t.set_save_id(id);
 //	t.set_name(name);
-	t.change_team(team_id, team_name);
+	t.change_team(team_name, user_team_name);
 	t.have_leader(!no_leader);
 	t.change_controller(controller);
 	t.set_gold(gold);
@@ -451,7 +451,7 @@ config map_context::to_config()
 			item["halo"] = it->second.halo;
 			item["visible_in_fog"] = it->second.visible_in_fog;
 			item["name"] = it->second.name;
-			item["team_id"] = it->second.team_id;
+			item["team_name"] = it->second.team_name;
 	}
 
 	BOOST_FOREACH(const music_map::value_type& track, music_tracks_) {
@@ -469,8 +469,8 @@ config map_context::to_config()
 		side["controller"] = t->controller();
 		side["no_leader"] = t->no_leader();
 
-		side["team_id"] = t->team_id();
 		side["team_name"] = t->team_name();
+		side["user_team_name"] = t->user_team_name();
 
 		// TODO
 		// side["allow_player"] = "yes";

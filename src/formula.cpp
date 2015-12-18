@@ -401,6 +401,7 @@ private:
 	static int dice_roll(int num_rolls, int faces) {
 		int res = 0;
 		while(faces > 0 && num_rolls-- > 0) {
+			// TODO: should we use the synced rng here ?
 			res += (rand()%faces)+1;
 		}
 		return res;

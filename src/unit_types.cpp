@@ -274,7 +274,8 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	big_profile_ = cfg_["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);
 
-	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"].str(), unit_type::ALIGNMENT::NEUTRAL);
+	alignment_ = unit_type::ALIGNMENT::NEUTRAL;
+	alignment_.parse(cfg_["alignment"].str());
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -429,8 +430,6 @@ void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_typ
 		build_help_index(movement_types, races, traits);
 		return;
 
-	case WITHOUT_ANIMATIONS:
-		// Animations are now built when they are accessed, so fall down to FULL.
 	case FULL:
 		build_full(movement_types, races, traits);
 		return;

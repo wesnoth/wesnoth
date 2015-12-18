@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2012-04-04 19:46+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -380,9 +380,13 @@ msgstr "Oj! Potrzebuję leczenia! Zostało mi tylko $student_hp PŻ!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:425
+#, fuzzy
+#| msgid ""
+#| "There is a village on the other side of the river. Visiting villages is a "
+#| "good idea, and ending your turn in one will heal you. To the village!"
 msgid ""
-"There is a village on the other side of the river. Visiting villages is a "
-"good idea, and ending your turn in one will heal you. To the village!"
+"There are two villages within your reach. Visiting villages is a good idea, "
+"and ending your turn on one will heal you. To a village!"
 msgstr ""
 "Po drugiej stronie rzeki znajduje się wioska. Odwiedzanie wiosek to dobry "
 "pomysł, bo zakończenie tury w wiosce pozwoli ci odzyskać część zdrowia. Do "
@@ -392,14 +396,14 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:429
 #, fuzzy
 #| msgid "Move Konrad to capture a village"
-msgid "Move Konrad to the nearest village"
+msgid "Move Konrad to a nearby village"
 msgstr "Przesuń Konrada, by zajął wioskę"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:431
 #, fuzzy
 #| msgid "Move Li’sar to capture a village"
-msgid "Move Li’sar to the nearest village"
+msgid "Move Li’sar to a nearby village"
 msgstr "Przesuń Li'sar, by zajęła wioskę"
 
 #. [message]: speaker=narrator
@@ -462,7 +466,7 @@ msgstr "Powołam do służby kilka elfów!"
 #| "have plenty of gold for that."
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
-"this turn. Instead, you could return to the keep and recruit two units; you "
+"this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
 "Doskonały pomysł. Wróć do fortecy i rekrutuj dwie jednostki. Twój zapas "
@@ -1175,7 +1179,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:326
 msgid ""
-"Each turn, you will gain 2 gold pus one for each village you own. However, "
+"Each turn, you will gain 2 gold plus one for each village you own. However, "
 "<i>upkeep</i> is subtracted for that. You can support as many levels worth "
 "of units as the number of villages you own; beyond that, you must pay 1 gold "
 "per turn. Be careful, as owning too many units can cause you to have "

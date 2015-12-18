@@ -42,6 +42,7 @@
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for clear_chat_messages
+#include "utils/foreach.tpp"
 #include "formatter.hpp"
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
@@ -350,7 +351,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
-	
+
 	return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).return_unit_method(L, m);
 }
 
@@ -540,7 +541,7 @@ static int impl_unit_attacks_len(lua_State *L)
  * Gets a propoerty of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
- * - Ret 1: 
+ * - Ret 1:
  */
 static int impl_unit_attack_get(lua_State *L)
 {
@@ -587,7 +588,7 @@ static int impl_unit_attack_get(lua_State *L)
  * Gets a propoerty of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
- * - Ret 1: 
+ * - Ret 1:
  */
 static int impl_unit_attack_set(lua_State *L)
 {
@@ -621,7 +622,7 @@ static int impl_unit_attack_set(lua_State *L)
 			modify_int_attrib("accuracy", attack.set_accuracy(value));
 			modify_int_attrib("movement_used", attack.set_movement_used(value));
 			modify_int_attrib("parry", attack.set_parry(value));
-			
+
 			if (strcmp(m, "specials") == 0) { \
 				attack.set_specials(luaW_checkconfig(L, 3));
 				return 0;
@@ -838,7 +839,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
 		return 1;
 	}
-	
+
 	if (!lua_isnoneornil(L, 3)) {
 		lua_unit *lu_adj = static_cast<lua_unit *>(lua_touserdata(L, 1));
 		unit* u_adj = lu_adj->get();
@@ -979,7 +980,7 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
  */
 int game_lua_kernel::intf_get_side_variable(lua_State *L)
 {
-	
+
 	unsigned side_index = luaL_checkinteger(L, 1) - 1;
 	if(side_index >= teams().size()) {
 		return luaL_argerror(L, 1, "invalid side number");
@@ -1058,8 +1059,7 @@ int game_lua_kernel::intf_random(lua_State *L)
 
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
 {
-	game_state_.get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2), game_state_.events_manager_.get());
-
+	game_state_.get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2));
 	return 0;
 }
 
@@ -1689,7 +1689,7 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
 
-	
+
 	if (play_controller_.is_regular_game_end()) {
 		return 0;
 	}
@@ -2255,7 +2255,14 @@ int game_lua_kernel::intf_print(lua_State *L) {
 
 	int size = cfg["size"].to_int(font::SIZE_SMALL);
 	int lifetime = cfg["duration"].to_int(50);
-	SDL_Color color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
+
+	SDL_Color color = font::LABEL_COLOR;
+
+	if(!cfg["color"].empty()) {
+		color = string_to_color(cfg["color"]);
+	} else if(cfg.has_attribute("red") || cfg.has_attribute("green") || cfg.has_attribute("blue")) {
+		color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
+	} 
 
 	const SDL_Rect& rect = game_display_->map_outside_area();
 
@@ -2320,12 +2327,12 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	else if (!lua_isnoneornil(L, unit_arg))
 	{
 		config cfg = luaW_checkconfig(L, unit_arg);
-		if (unit_arg == 1) {
+		if (unit_arg == 1 && !map().on_board(loc)) {
 			loc.x = cfg["x"] - 1;
 			loc.y = cfg["y"] - 1;
 			if (!map().on_board(loc))
-				return luaL_argerror(L, 1, "invalid location");
-		} else {
+				return luaL_argerror(L, 2, "invalid location");
+		} else if (unit_arg != 1) {
 			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
 		u = unit_ptr (new unit(cfg, true));
@@ -2364,7 +2371,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 int game_lua_kernel::intf_erase_unit(lua_State *L)
 {
 	map_location loc;
-	
+
 	if (lua_isnumber(L, 1)) {
 		loc.x = lua_tointeger(L, 2) - 1;
 		loc.y = luaL_checkinteger(L, 3) - 1;
@@ -2399,7 +2406,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 	} else {
 		return luaL_argerror(L, 1, "expected unit or integer");
 	}
-	
+
 	units().erase(loc);
 	return 0;
 }
@@ -2517,8 +2524,7 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 
 	t_string text = luaW_checktstring(L, 3);
 	if (game_display_) {
-		game_display_->float_label(loc, text, font::LABEL_COLOR.r,
-			font::LABEL_COLOR.g, font::LABEL_COLOR.b);
+		game_display_->float_label(loc, text, font::LABEL_COLOR);
 	}
 	return 0;
 }
@@ -2934,7 +2940,7 @@ namespace
 		}
 
 		virtual std::string description() const OVERRIDE
-		{ 
+		{
 			return desc;
 		}
 
@@ -3165,8 +3171,8 @@ int game_lua_kernel::intf_modify_side(lua_State *L)
 
 	bool invalidate_screen = false;
 
-	std::string team_id = cfg["team_id"];
 	std::string team_name = cfg["team_name"];
+	std::string user_team_name = cfg["user_team_name"];
 	std::string controller = cfg["controller"];
 	std::string defeat_condition = cfg["defeat_condition"];
 	std::string recruit_str = cfg["recruit"];
@@ -3186,14 +3192,14 @@ int game_lua_kernel::intf_modify_side(lua_State *L)
 		team & tm = teams()[team_index];
 
 		LOG_LUA << "modifying side: " << side_num << "\n";
-		if(!team_id.empty()) {
-			LOG_LUA << "change side's team to team_id '" << team_id << "'\n";
-			tm.change_team(team_id,
-					team_name);
-		} else if(!team_name.empty()) {
-			LOG_LUA << "change side's team_name to '" << team_name << "'\n";
-			tm.change_team(tm.team_id(),
-					team_name);
+		if(!team_name.empty()) {
+			LOG_LUA << "change side's team to team_name '" << team_name << "'\n";
+			tm.change_team(team_name,
+					user_team_name);
+		} else if(!user_team_name.empty()) {
+			LOG_LUA << "change side's user_team_name to '" << user_team_name << "'\n";
+			tm.change_team(tm.team_name(),
+					user_team_name);
 		}
 		// Modify recruit list (override)
 		if (!recruit_str.empty()) {
@@ -3449,7 +3455,7 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 
 	if (game_display_) {
 		game_display_->add_overlay(map_location(x, y), cfg["image"], cfg["halo"],
-			cfg["team_id"], cfg["visible_in_fog"].to_bool(true));
+			cfg["team_name"], cfg["visible_in_fog"].to_bool(true));
 	}
 	return 0;
 }
@@ -3517,6 +3523,10 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 int game_lua_kernel::intf_delay(lua_State *L)
 {
 	lua_Integer delay = luaL_checkinteger(L, 1);
+	if(delay == 0) {
+		play_controller_.play_slice(false);
+		return 0;
+	}
 	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
 		delay /= game_display_->turbo_speed();
 	}
@@ -3699,7 +3709,7 @@ int game_lua_kernel::intf_label(lua_State *L)
 
 		terrain_label label(screen.labels(), cfg.get_config());
 
-		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_id(), label.color(),
+		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_name(), label.color(),
 				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.category(), label.tooltip());
 	}
 	return 0;
@@ -4318,7 +4328,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 
 	// Create the unit attacks metatable.
 	cmd_log_ << "Adding unit attacks metatable...\n";
-	
+
 	lua_pushlightuserdata(L, uattacksKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_attacks_get);
@@ -4330,7 +4340,6 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 
-	
 	lua_pushlightuserdata(L, uattackKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_attack_get);
@@ -4440,6 +4449,11 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_pop(L, 1);
 
 	lua_settop(L, 0);
+
+	FOREACH(const AUTO& handler, game_events::wml_action::registry())
+	{
+		set_wml_action(handler.first, handler.second);
+	}
 }
 
 void game_lua_kernel::initialize(const config& level)
@@ -4518,14 +4532,14 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"ability",               intf_unit_ability},
 		{"transform",             intf_transform_unit},
 	};
-	
+
 	BOOST_FOREACH(const luaL_Reg& r, methods) {
 		if (strcmp(m, r.name) == 0) {
 			lua_pushcfunction(L, r.func);
 			return 1;
 		}
 	}
-	
+
 	return 0;
 }
 

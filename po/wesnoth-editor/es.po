@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2015-10-31 16:22+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -187,68 +187,73 @@ msgstr "Editor"
 msgid "File"
 msgstr "Archivo"
 
+#. [menu]: id=menu-editor-recent
+#: data/themes/editor.cfg:72
+msgid "Load Recent"
+msgstr "Cargar reciente"
+
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:82
+#: data/themes/editor.cfg:90
 msgid "Map"
 msgstr "Mapa"
 
 #. [menu]: id=menu-unit-facing
-#: data/themes/editor.cfg:90
+#: data/themes/editor.cfg:98
 msgid "Unit Facing"
 msgstr ""
 
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:96
+#: data/themes/editor.cfg:104
 msgid "Transition Update"
 msgstr "Actualización de transición"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:103
+#: data/themes/editor.cfg:111
 msgid "Window"
 msgstr "Ventana"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:112
+#: data/themes/editor.cfg:120
 msgid "Areas"
 msgstr "Áreas"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:120
+#: data/themes/editor.cfg:128
 msgid "Assign Local Time"
 msgstr "Asignar fase horaria local"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:126
+#: data/themes/editor.cfg:134
 msgid "Assign Local Time Schedule"
 msgstr "Asignar planificación de las fases horarias locales"
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:134
+#: data/themes/editor.cfg:142
 msgid "Side"
 msgstr "Bando"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:152
+#: data/themes/editor.cfg:160
 msgid "villages"
 msgstr "aldeas"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:169
+#: data/themes/editor.cfg:177
 msgid "units"
 msgstr "unidades"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:448
+#: data/themes/editor.cfg:456
 msgid "Time Schedule Menu"
 msgstr "Menú de planificación de fases horarias"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:459
+#: data/themes/editor.cfg:467
 msgid "Playlist"
 msgstr "Lista de reproducción"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:465
+#: data/themes/editor.cfg:473
 msgid "Assign Time Schedule"
 msgstr "Asignar la planificación de fases horarias"
 
@@ -308,95 +313,103 @@ msgstr "Salir"
 msgid "No editor time-of-day found."
 msgstr "No se encontraron datos de la «hora del día» para el editor."
 
-#: src/editor/controller/editor_controller.cpp:1101
+#: src/editor/controller/editor_controller.cpp:1113
 msgid "Change Unit ID"
 msgstr "Cambiar el ID de la unidad"
 
-#: src/editor/controller/editor_controller.cpp:1102
+#: src/editor/controller/editor_controller.cpp:1114
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1118
+#: src/editor/controller/editor_controller.cpp:1130
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/editor/controller/editor_controller.cpp:1119
+#: src/editor/controller/editor_controller.cpp:1131
 msgid "Name:"
 msgstr "Nombre:"
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:290
+#: src/editor/map/context_manager.cpp:305
 msgid "(New Map)"
 msgstr "(Nuevo mapa)"
 
-#: src/editor/map/context_manager.cpp:186
+#: src/editor/map/context_manager.cpp:148
+msgid "The Battle for Wesnoth"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:192
 msgid "Choose a File to Open"
 msgstr "Seleccionar un archivo para cargar"
 
-#: src/editor/map/context_manager.cpp:292
+#: src/editor/map/context_manager.cpp:307
 msgid "(New Scenario)"
 msgstr "(Nuevo escenario)"
 
-#: src/editor/map/context_manager.cpp:326
+#: src/editor/map/context_manager.cpp:334
+msgid "No Recent Files"
+msgstr "Sin archivos recientes"
+
+#: src/editor/map/context_manager.cpp:371
 msgid "(Unnamed Area)"
 msgstr "(Área sin nombre)"
 
-#: src/editor/map/context_manager.cpp:354
+#: src/editor/map/context_manager.cpp:400
 msgid "(New Side)"
 msgstr "(Nuevo bando)"
 
-#: src/editor/map/context_manager.cpp:420
+#: src/editor/map/context_manager.cpp:466
 msgid "Choose a Mask to Apply"
 msgstr "Seleccionar una máscara para aplicar"
 
-#: src/editor/map/context_manager.cpp:427
+#: src/editor/map/context_manager.cpp:473
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor/map/context_manager.cpp:446
+#: src/editor/map/context_manager.cpp:492
 msgid "Identifier:"
 msgstr "Identificador:"
 
-#: src/editor/map/context_manager.cpp:446
+#: src/editor/map/context_manager.cpp:492
 msgid "Rename Area"
 msgstr "Renombrar área"
 
-#: src/editor/map/context_manager.cpp:457
+#: src/editor/map/context_manager.cpp:503
 msgid "Choose Target Map"
 msgstr "Seleccionar mapa de destino"
 
-#: src/editor/map/context_manager.cpp:464
-#: src/editor/map/context_manager.cpp:899
+#: src/editor/map/context_manager.cpp:510
+#: src/editor/map/context_manager.cpp:950
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor/map/context_manager.cpp:581
+#: src/editor/map/context_manager.cpp:627
 msgid "Save the Map As"
 msgstr "Guardar el mapa como"
 
-#: src/editor/map/context_manager.cpp:585
-#: src/editor/map/context_manager.cpp:613
+#: src/editor/map/context_manager.cpp:631
+#: src/editor/map/context_manager.cpp:659
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
-#: src/editor/map/context_manager.cpp:609
+#: src/editor/map/context_manager.cpp:655
 msgid "Save the Scenario As"
 msgstr "Guardar el escenario como"
 
-#: src/editor/map/context_manager.cpp:648
+#: src/editor/map/context_manager.cpp:694
 msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapas aleatorios."
 
-#: src/editor/map/context_manager.cpp:662
-#: src/editor/map/context_manager.cpp:666
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:712
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor/map/context_manager.cpp:679
+#: src/editor/map/context_manager.cpp:726
 msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
-#: src/editor/map/context_manager.cpp:680
+#: src/editor/map/context_manager.cpp:727
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -406,39 +419,51 @@ msgstr ""
 "¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
 "por última vez?"
 
-#: src/editor/map/context_manager.cpp:777
+#: src/editor/map/context_manager.cpp:826
 msgid "This scenario is already open."
 msgstr "Este escenario ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:799
-#: src/editor/map/context_manager.cpp:854
+#: src/editor/map/context_manager.cpp:848
+#: src/editor/map/context_manager.cpp:903
 msgid "This map is already open."
 msgstr "Este mapa ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:820
+#: src/editor/map/context_manager.cpp:869
 msgid "Scenario saved."
 msgstr "Escenario guardado."
 
-#: src/editor/map/context_manager.cpp:834
+#: src/editor/map/context_manager.cpp:883
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:928
 msgid "Loaded embedded map data"
 msgstr "Cargado los datos de mapa incrustados"
 
-#: src/editor/map/context_manager.cpp:878
-#: src/editor/map/context_manager.cpp:892
+#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:943
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
-#: src/editor/map/context_manager.cpp:888
+#: src/editor/map/context_manager.cpp:939
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 "Cargado el archivo de mapa indicado:\n"
 "$new"
+
+#: src/editor/map/context_manager.cpp:1025
+#, fuzzy
+#| msgid "(New Map)"
+msgid "New Map"
+msgstr "(Nuevo mapa)"
+
+#: src/editor/map/context_manager.cpp:1025
+#, fuzzy
+#| msgid "(New Scenario)"
+msgid "New Scenario"
+msgstr "(Nuevo escenario)"
 
 #: src/editor/map/editor_map.cpp:152
 msgid "Player"
@@ -448,15 +473,15 @@ msgstr "Jugador"
 msgid "The size of the target map is different from the current map"
 msgstr "El tamaño del mapa de destino difiere del mapa actual"
 
-#: src/editor/map/map_context.cpp:132
+#: src/editor/map/map_context.cpp:134
 msgid "File not found"
 msgstr "Archivo no encontrado"
 
-#: src/editor/map/map_context.cpp:138
+#: src/editor/map/map_context.cpp:140
 msgid "Empty file"
 msgstr "Archivo vacío"
 
-#: src/editor/map/map_context.cpp:184
+#: src/editor/map/map_context.cpp:189
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -464,15 +489,15 @@ msgstr ""
 "El mapa parece un escenario, pero el valor de map_data no apunta a un "
 "archivo existente"
 
-#: src/editor/map/map_context.cpp:524
+#: src/editor/map/map_context.cpp:529
 msgid "Could not save the scenario: $msg"
 msgstr "No se pudo guardar el escenario: $msg"
 
-#: src/editor/map/map_context.cpp:551
+#: src/editor/map/map_context.cpp:556
 msgid "Could not save into scenario"
 msgstr "No se pudo guardar en el escenario"
 
-#: src/editor/map/map_context.cpp:558
+#: src/editor/map/map_context.cpp:564
 msgid "Could not save the map: $msg"
 msgstr "No se pudo guardar el mapa: $msg"
 
@@ -508,12 +533,6 @@ msgstr "Ninguno"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Jugador $player_number"
-
-#~ msgid "Load Recent"
-#~ msgstr "Cargar reciente"
-
-#~ msgid "No Recent Files"
-#~ msgstr "Sin archivos recientes"
 
 #~ msgid ""
 #~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "

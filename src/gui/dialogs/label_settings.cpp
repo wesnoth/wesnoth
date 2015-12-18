@@ -59,19 +59,16 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 			labels_display[label_cat_key] = "";
 			continue;
 		}
-		std::string team_id = team.name();
-		if(team_id.empty()) {
-			team_id = team.current_player();
+		std::string team_name = team.current_player();
+		if(team_name.empty()) {
+			team_name = team.user_team_name();
 		}
-		if(team_id.empty()) {
-			team_id = team.team_name();
-		}
-		if(team_id.empty()) {
-			team_id = _("Unknown");
+		if(team_name.empty()) {
+			team_name = _("Unknown");
 		}
 		string_map subst;
 		subst["side_number"] = str_cast(i + 1);
-		subst["name"] = team_id;
+		subst["name"] = team_name;
 		labels_display[label_cat_key] = vgettext("Side $side_number ($name)", subst);
 	}
 }

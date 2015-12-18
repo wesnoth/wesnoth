@@ -118,7 +118,7 @@ void status_table(display& gui, int selected)
 		}
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
 			<< leader_name << COLUMN_SEPARATOR
-			<< (data.teamname.empty() ? teams[n].team_id() : data.teamname)
+			<< (data.teamname.empty() ? teams[n].team_name() : data.teamname)
 			<< COLUMN_SEPARATOR;
 
 		if(!known && !game_config::debug) {

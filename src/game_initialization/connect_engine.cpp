@@ -64,8 +64,8 @@ const std::string attributes_to_trim[] = {
 	"previous_recruits",
 	"controller",
 	"current_player",
-	"team_id",
 	"team_name",
+	"user_team_name",
 	"color",
 	"gold",
 	"income",
@@ -87,8 +87,8 @@ connect_engine::connect_engine(saved_game& state,
 	force_lock_settings_(),
 	side_engines_(),
 	era_factions_(),
-	team_ids_(),
 	team_names_(),
+	user_team_names_(),
 	player_teams_()
 {
 	// Initial level config from the mp_game_settings.
@@ -109,28 +109,28 @@ connect_engine::connect_engine(saved_game& state,
 
 	// Set the team name lists and modify the original level sides,
 	// if necessary.
-	std::vector<std::string> original_team_ids;
+	std::vector<std::string> original_team_names;
 	std::string team_prefix(std::string(_("Team")) + " ");
 	int side_count = 1;
 	BOOST_FOREACH(config& side, sides) {
 		const std::string side_str = lexical_cast<std::string>(side_count);
-		config::attribute_value& team_id = side["team_id"];
-		config::attribute_value& team_name =
-			side["team_name"];
+		config::attribute_value& team_name = side["team_name"];
+		config::attribute_value& user_team_name =
+			side["user_team_name"];
 
 		// Revert to default values if appropriate.
-		if (team_id.empty()) {
-			team_id = side_str;
+		if (team_name.empty()) {
+			team_name = side_str;
 		}
-		if (params_.use_map_settings && team_name.empty()) {
-			team_name = team_id;
+		if (params_.use_map_settings && user_team_name.empty()) {
+			user_team_name = team_name;
 		}
 
 		bool add_team = true;
 		if (params_.use_map_settings) {
 			// Only add a team if it is not found.
-			bool found = std::find(team_ids_.begin(), team_ids_.end(),
-				team_id.str()) != team_ids_.end();
+			bool found = std::find(team_names_.begin(), team_names_.end(),
+				team_name.str()) != team_names_.end();
 
 			if (found) {
 				add_team = false;
@@ -139,29 +139,29 @@ connect_engine::connect_engine(saved_game& state,
 			// Always add a new team for every side, but leave
 			// the specified team assigned to a side if there is one.
 			std::vector<std::string>::const_iterator name_itor =
-				std::find(original_team_ids.begin(),
-					original_team_ids.end(), team_id.str());
-			if (name_itor == original_team_ids.end()) {
-				original_team_ids.push_back(team_id);
+				std::find(original_team_names.begin(),
+					original_team_names.end(), team_name.str());
+			if (name_itor == original_team_names.end()) {
+				original_team_names.push_back(team_name);
 
-				team_id = "Team " +
-					lexical_cast<std::string>(original_team_ids.size());
+				team_name = "Team " +
+					lexical_cast<std::string>(original_team_names.size());
 			} else {
-				team_id = "Team " + lexical_cast<std::string>(
-					name_itor - original_team_ids.begin() + 1);
-			} // Note that the prefix "Team " is untranslatable, as team_id is not meant to be translated. This is needed so that the attribute
+				team_name = "Team " + lexical_cast<std::string>(
+					name_itor - original_team_names.begin() + 1);
+			} // Note that the prefix "Team " is untranslatable, as team_name is not meant to be translated. This is needed so that the attribute
 			  // is not interpretted as an int when reading from config, which causes bugs later.
 
-			team_name = team_prefix + side_str;
+			user_team_name = team_prefix + side_str;
 		}
 
 		if (add_team) {
-			team_ids_.push_back(params_.use_map_settings ? team_id :
+			team_names_.push_back(params_.use_map_settings ? team_name :
 				"Team " + side_str);
-			team_names_.push_back(team_name.t_str().to_serialized());
+			user_team_names_.push_back(user_team_name.t_str().to_serialized());
 
 			if (side["allow_player"].to_bool(true) || game_config::debug) {
-				player_teams_.push_back(team_name.str());
+				player_teams_.push_back(user_team_name.str());
 			}
 		}
 
@@ -933,20 +933,20 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 
 	// Initialize team and color.
-	unsigned team_id_index = 0;
-	BOOST_FOREACH(const std::string& name, parent_.team_ids_) {
-		if (name == cfg["team_id"]) {
+	unsigned team_name_index = 0;
+	BOOST_FOREACH(const std::string& name, parent_.team_names_) {
+		if (name == cfg["team_name"]) {
 			break;
 		}
 
-		team_id_index++;
+		team_name_index++;
 	}
-	if (team_id_index >= parent_.team_ids_.size()) {
-		assert(!parent_.team_ids_.empty());
+	if (team_name_index >= parent_.team_names_.size()) {
+		assert(!parent_.team_names_.empty());
 		team_ = 0;
-		WRN_MP << "In side_engine constructor: Could not find my team_id " << cfg["team_id"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!" << std::endl;
+		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!" << std::endl;
 	} else {
-		team_ = team_id_index;
+		team_ = team_name_index;
 	}
 	if (!cfg["color"].empty()) {
 		if(cfg["color"].to_int()) {
@@ -991,11 +991,7 @@ config side_engine::new_config() const
 
 	// Save default "recruit" so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
-	// In case recruit list was empty, set a flag to indicate that.
 	res["default_recruit"] = cfg_["recruit"].str();
-	if (res["default_recruit"].empty()) {
-		res["no_recruit"] = true;
-	}
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
@@ -1098,8 +1094,8 @@ config side_engine::new_config() const
 		(*leader)["type"] = flg_.current_leader();
 		(*leader)["gender"] = flg_.current_gender();
 
-		res["team_id"] = parent_.team_ids_[team_];
 		res["team_name"] = parent_.team_names_[team_];
+		res["user_team_name"] = parent_.user_team_names_[team_];
 		res["allow_player"] = allow_player_;
 		res["color"] = get_color(color_);
 		res["gold"] = gold_;

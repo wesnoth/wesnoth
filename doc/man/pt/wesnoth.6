@@ -185,12 +185,13 @@ erros de validação são tratados como fatais.
 inicia o jogo com um pequeno cenário de teste.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-define o diretório \fInome\fP do utilizador em $HOME ou “Os meus Documentos\Os
-Meus Jogos” em Windows. Também podes especificar o caminho absoluto para as
-configurações fora de $HOME ou “Os meus Documentos\Os Meus Jogos”. Em
-sistemas X11 este indica por predefinição até $XDG_CONFIG_HOME ou
-$HOME/.config/wesnoth, nos outros sistemas operativos ao diretório do
-utilizador.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 imprime o caminho da pasta de configurações de usuário e sai.
@@ -198,7 +199,9 @@ imprime o caminho da pasta de configurações de usuário e sai.
 \fB\-\-userdata\-dir\fP\fI\ nome\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
 .TP 
 \fB\-\-userdata\-path\fP
 imprime o caminho da pasta de configurações de usuário e termina.

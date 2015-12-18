@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2015-06-29 10:10+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -36,7 +36,9 @@ msgstr "RN"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(esixente)"
 
 # lanceiro FIXADO
@@ -47,7 +49,9 @@ msgstr "Lanceiro"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(difícil)"
 
 # espadachín FIXADO
@@ -58,13 +62,17 @@ msgstr "Espadachín"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
-msgid "(Nightmare)"
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
 msgstr "(pesadelo)"
 
 # garda real FIXADO
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
-msgid "Royal Guard"
+#, fuzzy
+#| msgid "Royal Guard"
+msgid "Royal Guarde"
 msgstr "Garda real"
 
 # Dwarven Doors=Portas dos Ananos FIXADO
@@ -391,12 +399,12 @@ msgstr "Derrota aos líderes inimigos."
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:661
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:95
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:204
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:361
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:418
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:363
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:420
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:88
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:257
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:58
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:681
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:698
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:265
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:237
@@ -804,11 +812,11 @@ msgstr "Hamel"
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:119
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:145
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:48
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:107
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:129
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:153
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:186
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:207
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:109
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:131
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:155
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:188
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:209
 msgid "Undead"
 msgstr "Non mortos"
 
@@ -1175,13 +1183,13 @@ msgstr ""
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:648
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1304
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2229
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2308
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2361
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2406
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:589
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:859
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1306
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2231
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2310
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2363
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2408
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:606
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:876
 msgid "Very well."
 msgstr "Moi ben."
 
@@ -1705,7 +1713,6 @@ msgstr "Alianza"
 #. [unit]: type=Ancient Lich, id=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:49
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:53
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2575
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:249
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:108
 msgid "Malifor"
@@ -1870,7 +1877,9 @@ msgstr "Pero que temos aquí? Se é Talin!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:329
-msgid "He knows your name, Tallin. I don’t like the looks of this."
+#, fuzzy
+#| msgid "He knows your name, Tallin. I don’t like the looks of this."
+msgid "He knows your name, Tallin. I don’t like the sound of this."
 msgstr "Sabe o teu nome, Talin. Isto non che me gusta nada."
 
 #. [message]: speaker=Malifor
@@ -1941,8 +1950,12 @@ msgstr "Iso xa o veremos."
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:501
+#, fuzzy
+#| msgid ""
+#| "These little vermin are making progress! This is unacceptable. Rise my "
+#| "minions — gorge on the flesh of these scurrying little rats!"
 msgid ""
-"These little vermin are making progress! This is unacceptable. Rise my "
+"These little vermin are making progress! This is unacceptable. Rise, my "
 "minions — gorge on the flesh of these scurrying little rats!"
 msgstr ""
 "Estes miñocas están avanzando. Isto non pode ser. Erguédevos, súbditos. "
@@ -1969,9 +1982,15 @@ msgstr "Polos señores da luz, que clase de vil criaturas son esas?!"
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:555
+#, fuzzy
+#| msgid ""
+#| "Out of all of a necromancer’s creations, I must say those things are the "
+#| "most tortured and vilest. They have an insatiable hunger for flesh and "
+#| "mindlessly shrug of all manner of damage to get it. Even my fire bolts "
+#| "have a slightly lesser effect on them."
 msgid ""
 "Out of all of a necromancer’s creations, I must say those things are the "
-"most tortured and vilest. They have an insatiable hunger for flesh and "
+"most tortured and vile. They have an insatiable hunger for flesh and "
 "mindlessly shrug of all manner of damage to get it. Even my fire bolts have "
 "a slightly lesser effect on them."
 msgstr ""
@@ -2082,7 +2101,7 @@ msgstr ""
 msgid "Thank you, Lord Hamel."
 msgstr "Ghrasas, cabaleiro Hamel."
 
-#. [scenario]: id=05a_01_The_Pursuit
+#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:5
 msgid "The Pursuit"
 msgstr "A persecución"
@@ -2097,42 +2116,42 @@ msgstr ""
 "marcharon en busca de Malifor."
 
 #. [side]: type=Death Knight, id=Hettel
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:112
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:114
 msgid "Hettel"
 msgstr "Hetel"
 
 #. [side]: type=Death Knight, id=Tervor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:134
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:136
 msgid "Tervor"
 msgstr "Tervor"
 
 #. [side]: type=Death Knight, id=Author
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:158
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:160
 msgid "Author"
 msgstr "Autor"
 
 #. [side]: type=Death Knight, id=Boblin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:191
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:193
 msgid "Boblin"
 msgstr "Boblin"
 
 #. [side]: type=Death Knight, id=Antrasis
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:212
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:214
 msgid "Antrasis"
 msgstr "Antrasis"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:339
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:341
 msgid "There he goes! Quick, get him!"
 msgstr "Alí o vai! A présa, collédeo!"
 
 #. [message]: role=starting_speaker
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:344
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:346
 msgid "I don’t think so, you living vermin."
 msgstr "Iso cres ti, miñoca."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:349
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:351
 msgid ""
 "We’ll have to kill these revenants to get after him. There are only two of "
 "them, so they shouldn’t last long."
@@ -2141,22 +2160,22 @@ msgstr ""
 "non debería levarmos moito."
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:357
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:359
 msgid "Get past the Revenants."
 msgstr "Acaba cos renacidos."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:383
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:385
 msgid "Uh... Which way?"
 msgstr "Isto… por onde vamos?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:388
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:390
 msgid "Blast it! We lost him."
 msgstr "Maldita sexa! Perdémolo."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:393
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:395
 msgid ""
 "It makes no difference in the end, because we will hunt him down and crush "
 "him to powder. HEAR THAT, YOU OLD SKELETON?"
@@ -2165,17 +2184,17 @@ msgstr ""
 "cinzas. <b>Escoitaches, vello esqueleto?</b>"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:398
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:400
 msgid "(<i>Faint cackle of laughter in the distance</i>)"
 msgstr "(<i>escóitase unha risada na distancia</i>)"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:403
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:405
 msgid "Yeah! This is gonna be fun!"
 msgstr "Si señor! Isto vai ser divertido."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:410
 msgid ""
 "Let us proceed with caution. Nobody is to go off by himself. We don’t know "
 "what could be lurking in these tunnels."
@@ -2183,42 +2202,42 @@ msgstr ""
 "A modo. Que ninguén se separe. Non sabemos o que nos espera nestes túneles."
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:414
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:416
 msgid "Find Malifor and destroy him"
 msgstr "Atopa a Malifor e acaba con el."
 
 #. [note]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:428
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:430
 msgid "Be sure to explore"
 msgstr "Procura explorar."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:455
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:457
 msgid "The Dungeon"
 msgstr "Calabozo"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:460
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:462
 msgid "Those poor wretches!"
 msgstr "Eses pobres desgraciados!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:465
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:467
 msgid "We won’t leave them in Malifor’s chains!"
 msgstr "Non os deixaremos presos das cadeas de Malifor!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:484
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:486
 msgid "Intruders! Stop them before they free the prisoners!"
 msgstr "Intrusos! Detédeos antes de que liberen os prisioneiros!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:489
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:491
 msgid "Good luck, my friend."
 msgstr "Sorte, amigo."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:522
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:524
 msgid ""
 "Finally! I am free. Lord Tallin, I am forever in your debt! We will follow "
 "you to the end of the world if need be."
@@ -2227,45 +2246,45 @@ msgstr ""
 "a fin do mundo se teño que facelo."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:527
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:529
 msgid "It’s just ‘Tallin’, no ‘Lord’. And no problem."
 msgstr "«Talin» a secas, nada de «cabaleiro». E toda axuda será benvida."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:539
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:672
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:541
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:674
 msgid "Morvin!"
 msgstr "Morvin!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:544
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:677
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:546
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:679
 msgid "Thera!"
 msgstr "Dera!"
 
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:555
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:561
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:687
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:693
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:557
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:563
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:689
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:695
 msgid "Please, folks, not now."
 msgstr "Rapaces, por favor, deixádeo para outra ocasión."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:568
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:699
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:570
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:701
 msgid "Oh, sorry."
 msgstr "Ah, perdón."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:575
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:705
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:577
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:707
 msgid "Who are you? How did you end up down here?"
 msgstr "Quen es ti? Como acabaches aquí?"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:580
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:582
 msgid ""
 "My name is Morvin. My wife, Thera and I were advisers and healers for the "
 "dwarvish nobles. We could not shield them from the wrath of Khazg Black-"
@@ -2278,7 +2297,7 @@ msgstr ""
 "que logo nos capturasen estes esqueletos."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:585
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:587
 msgid ""
 "Funny, why would the bonebag keep you as his prisoners? He doesn’t really "
 "seem to be the merciful type."
@@ -2287,7 +2306,7 @@ msgstr ""
 "que teñen piedade polas súas vítimas, precisamente."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:590
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:592
 msgid ""
 "He didn’t keep us alive out of mercy, he wanted to study us to see if there "
 "was a way to counteract our arcane attacks. His kind are very vulnerable to "
@@ -2298,8 +2317,8 @@ msgstr ""
 "ese tipo de ataques."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:595
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:725
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:597
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:727
 msgid ""
 "Indeed, that is good to know. But you are now free to go wherever you like. "
 "May the Lords of Light guide your path."
@@ -2308,7 +2327,7 @@ msgstr ""
 "Que os señores da luz vos guíen."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:600
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:602
 msgid ""
 "As I have said, Tallin, I am eternally in your debt, and I take my debts "
 "seriously. If you have no objection, I will serve you until one of us "
@@ -2319,7 +2338,7 @@ msgstr ""
 "túas ordes ata que a morte nos separe."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:605
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:607
 msgid ""
 "Oh, think nothing of it. Let no talk of debts come between us; rather let us "
 "join hands as allies in restoring these Northlands to sanity."
@@ -2330,14 +2349,14 @@ msgstr ""
 #. [message]: id=Elenia
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:610
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:740
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:612
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:742
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:270
 msgid "Thank you, Tallin."
 msgstr "Grazas, Talin."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:624
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:626
 msgid ""
 "Wow! That’s incredible. Now I understand why the bag of bones kept you guys "
 "in jail; he just simply couldn’t kill you!"
@@ -2346,18 +2365,18 @@ msgstr ""
 "gaiola. Non foi capaz de matarvos!"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:629
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:631
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:210
 msgid "(<i>Giggle</i>)"
 msgstr "(<i>ri con picardía</i>)"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:657
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:659
 msgid "Freedom at last! Thank you, Lord Tallin."
 msgstr "Por fin libres! Grazas, cabaleiro Talin."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:662
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:664
 msgid ""
 "Just ‘Tallin’. I am no Lord, just a humble peasant trying to restore our "
 "people to freedom."
@@ -2366,7 +2385,7 @@ msgstr ""
 "devolverlle a liberdade á súa xente."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:710
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:712
 msgid ""
 "My name is Thera. My husband Morvin and I were advisers and healers for the "
 "dwarvish nobles of Knalga. We could not save them from Khazg Black-Tusk’s "
@@ -2379,7 +2398,7 @@ msgstr ""
 "nos capturasen estes esqueletos."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:715
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:717
 msgid ""
 "Funny, why would the bonebag keep you as his prisoners? He didn’t seem to be "
 "the merciful type."
@@ -2388,7 +2407,7 @@ msgstr ""
 "que teñen piedade polas súas vítimas, precisamente."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:720
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:722
 msgid ""
 "He didn’t keep us alive out of mercy, he wanted to study us to see if there "
 "was a way to counteract our arcane attacks. His kind are very vulnerable to "
@@ -2399,7 +2418,7 @@ msgstr ""
 "ese tipo de ataques, como saberás."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:730
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:732
 msgid ""
 "If you have no objection, Tallin, we would like to join you. These "
 "northlands are hardly safe these days for anyone to be traveling on their "
@@ -2410,17 +2429,17 @@ msgstr ""
 "poderiamos resultar de gran axuda para a vosa causa."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:735
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:737
 msgid "Very well, you are most welcome to join us."
 msgstr "Moi ben, será un pracer tervos connosco."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:753
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:755
 msgid "Look at this. There’s some sort of opening in the wall..."
 msgstr "E mirade isto, hai unha especie de apertura na parede…"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:758
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:760
 msgid ""
 "It was there when I was thrown down here. The hole wasn’t big enough for me "
 "to go through, but perhaps one of you might enlarge it?"
@@ -2429,51 +2448,51 @@ msgstr ""
 "de vós sabe como facelo máis grande?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:763
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:765
 msgid "Hmmm, let’s see..."
 msgstr "Hmm, vexamos…"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:795
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:797
 msgid "There we go. Now let’s see where this tunnel leads."
 msgstr "Listo. Agora a ver onde nos leva este túnel."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:826
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:828
 msgid "She’s not in good shape..."
 msgstr "Non está en boa forma…"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:838
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:840
 msgid "Here, let me see her."
 msgstr "Aquí, deixádeme botarlle unha ollada."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:852
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:854
 msgid "This should help."
 msgstr "Isto debería axudar."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:873
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:918
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:875
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:920
 msgid "Uh... where... am... I...?"
 msgstr "Eh… onde… estou?"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:878
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:880
 msgid ""
 "You are in the dungeons of Malifor. These brave people have just released "
 "you."
 msgstr "Estás nos calabozos de Malifor. Estes valentes acaban de liberarte."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:883
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:928
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:885
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:930
 msgid "... Thanks."
 msgstr "…grazas."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:888
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:890
 msgid ""
 "No problem. Sister Thera, you take care of her. If she wants to join us she "
 "would make a powerful ally."
@@ -2482,13 +2501,13 @@ msgstr ""
 "gran axuda."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:893
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:938
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:895
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:940
 msgid "Yes, I would... like to join... you Lord Tallin."
 msgstr "Si, gustaríame… unirme a vós... cabaleiro Talin."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:898
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:900
 msgid ""
 "Just Tallin; I am no lord. But gee, that sure is some powerful spell you "
 "used on her, Thera. She’s looking better already."
@@ -2497,23 +2516,23 @@ msgstr ""
 "usaches con ela é incríbel, Dera. Xa ten mellor pinta."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:903
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:905
 msgid "And I feel better too. Now let’s get back at that disgusting skeleton."
 msgstr "Síntome mellor. Vamos por ese noxento esqueleto."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:909
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:911
 msgid "I wish we had some healers with us; I’ll try to help her as best I can."
 msgstr ""
 "Mágoa non termos algún sandador connosco. Intentarei axudala no que poida."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:923
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:925
 msgid "You are in the dungeons of Malifor. We have just released you."
 msgstr "Estás nos calabozos de Malifor, acabamos de liberarte."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:933
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:935
 msgid ""
 "No problem. Just take it easy. If you would like to join us your help could "
 "mean life or death for a lot of us."
@@ -2522,12 +2541,12 @@ msgstr ""
 "a diferencia entre a vida e a morte para moitos de nós."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:943
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:945
 msgid "Just Tallin, I am no lord. And you are looking better already."
 msgstr "«Talin» a secas, non son cabaleiro. E xa tes mellor aspecto."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:965
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:967
 msgid ""
 "Oh, just a few tricks I know, otherwise I probably would be dead by now. But "
 "let’s get back at that disgusting skeleton."
@@ -2536,85 +2555,85 @@ msgstr ""
 "morta. Pero agora volvamos por ese noxento esqueleto."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:972
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:974
 msgid "Why did the bag of bones capture you in the first place?"
 msgstr "Por que te capturou o saco de ósos?"
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:977
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:979
 msgid "Because he thought I was pretty."
 msgstr "Dixo que era fermosa."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:983
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:985
 msgid "That old skeleton? Geez, what a nutcase."
 msgstr "O vello esqueleto? Recoiro, o que hai que ver."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:988
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:990
 msgid "You’re telling me."
 msgstr "A min mo vas contar."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1016
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1018
 msgid "Holy cow! What did I just let out of that cage! Look out everyone."
 msgstr "Ceo santo! Que é iso que acabo de liberar?! Rapaces, coidado."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1021
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1023
 msgid "Oooooh, cool, it’s a drake!"
 msgstr "Oh! Mola, un draconián!"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1026
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1028
 msgid "(<i>Whimper</i>)"
 msgstr "(<i>gruñe por mor da dor</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1031
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1033
 msgid ""
 "Bright Gods, such a fierce creature whimpering! What the heck have they done "
 "to it?"
 msgstr "Por todos os deuses, que demo lle fixeron?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1036
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1038
 msgid "The bastards!"
 msgstr "Serán cabróns!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1047
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1049
 msgid "Probably another one of Malifor’s experiments."
 msgstr "Probabelmente outro dos experimentos de Malifor."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1052
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1054
 msgid "I don’t know, see if it talks."
 msgstr "Non sei, a ver se pode falar."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1059
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1061
 msgid "Hey, big guy. We aren’t gonna hurt you. We wanna be your friends."
 msgstr ""
 "Ei, grandeiro. Non teñas medo, non che imos facer mal. Queremos axudarche."
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1064
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1066
 msgid "... Not... going... to... hurt... me?"
 msgstr "Non… dano… a… min?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1069
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1071
 msgid "Hey, it talks!"
 msgstr "Ei, pode falar!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1074
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1076
 msgid "It’s a ‘he’, and yes, they’re actually very intelligent creatures."
 msgstr "E tanto que pode, son criaturas moi intelixentes."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1079
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1081
 msgid ""
 "Hush! I am trying to talk to him. Nope, we’ll never hurt you. But if you "
 "want to you can hurt some skeletons."
@@ -2623,28 +2642,28 @@ msgstr ""
 "estar tranquilo. Pero… terás forzas para axudarnos contra os esqueletos?"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1084
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1086
 msgid "Skeletons! GRRRR!!"
 msgstr "Esqueletos! <b>Grr!</b>"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1089
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1091
 msgid "Look out! He is ready to go! Hey, is that smoke coming out of his ears?"
 msgstr "Coidado! Está listo! Ei, iso que lle sae das orellas é fume?"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1103
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1105
 msgid "ROOOAARR!"
 msgstr "<b>Roar!</b>"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1108
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1110
 msgid ""
 "Whoa! Maybe he isn’t so friendly after all... or at least to some things."
 msgstr "Buá! E parecía inofensivo alí na gaiola."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1124
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1126
 msgid ""
 "(<i>Sigh</i>) There doesn’t seem to be anything down this tunnel, either "
 "friend or foe."
@@ -2653,66 +2672,66 @@ msgstr ""
 "inimigos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1148
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1150
 msgid "The Treasury"
 msgstr "Tesouro"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1153
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1155
 msgid "The Treasury! Cool, let’s go loot some booty!"
 msgstr "O tesouro! Mola, collamos todo canto poidamos!"
 
 #. [message]: role=Treasury Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1186
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1188
 msgid "Intruders! Get them!"
 msgstr "Intrusos! Collédeos!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1191
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1193
 msgid "Bring it on!"
 msgstr "Veña, oh!"
 
-#. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1235
+#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1237
 msgid "There are at least several hundred gold coins in here!"
 msgstr "Ala! Aquí hai polo menos varios centos de moedas de ouro!"
 
-#. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1237
+#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1239
 msgid "I don’t think the undead will be be needing this anyway."
 msgstr "A fin de contas, non creo que os non mortos vaian necesitalas."
 
-#. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1239
+#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1241
 msgid ""
 "Our people could rebuild their lives ten-fold with the gold in this treasury."
 msgstr ""
 "O noso pobo ben podería reconstruír as súas vidas dez veces co outro deste "
 "cofre."
 
-#. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1241
+#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1243
 msgid "We’re rich!"
 msgstr "Somos ricos!"
 
-#. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1243
+#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1245
 msgid "Why do these skeletons have so much gold just sitting around?"
 msgstr "Por que teñen estes esqueletos tanto ouro gardado?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1269
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1271
 msgid ""
 "The Rod of Justice! What in the world is it doing all the way down here?"
 msgstr "A Vara da Xustiza! Que carallo fai isto aquí abaixo de todo?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1274
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1276
 msgid "What do you have there, Abhai?"
 msgstr "O que, Abai?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1279
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1281
 msgid ""
 "This is the Great Rod of Justice, my boy. It was an ancient artifact even "
 "when I was young. They say it was crafted by the Great Gods themselves, and "
@@ -2729,7 +2748,7 @@ msgstr ""
 "maldade asolaron as terras."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1284
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1286
 msgid ""
 "Well, if you don’t mind me saying — that certainly isn’t the state of "
 "affairs now. Knalga lies in ruins, orcs ravage the surface, and these dark "
@@ -2745,7 +2764,7 @@ msgstr ""
 "probabelmente morreu nun van intento por conseguir o Cetro de Lume."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1289
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1291
 msgid ""
 "Ahh, with the Rod of Justice down here it is to be expected. Come Tallin, "
 "either you or one of your trusted men must wield this staff and bring peace "
@@ -2756,12 +2775,12 @@ msgstr ""
 "volta ao noso mundo."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1294
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1296
 msgid "Why can’t you wield it, Abhai?"
 msgstr "Por que non o levas ti xa, Abai?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1299
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1301
 msgid ""
 "I am a creature of the past, and thus my time to wield it is long gone. This "
 "is your era, Tallin, and thus it is your responsibility to see to it that "
@@ -2774,7 +2793,7 @@ msgstr ""
 "baixa ou manda a un dos teus compañeiros, non hai tempo que perder."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1328
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1330
 msgid ""
 "An elegantly carved sceptre rests at the bottom of the chest. Precious "
 "jewels glitter across its surface, and it exudes a great aura of power."
@@ -2783,12 +2802,12 @@ msgstr ""
 "está repleta de pedras preciosas, e desprende unha gran aura de poder."
 
 #. [option]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1330
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1332
 msgid "rod of justice^Take it"
 msgstr "Collela."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1334
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1336
 msgid ""
 "This thing is... incredible! What is such a powerful artifact doing hidden "
 "all the way back here?"
@@ -2796,17 +2815,17 @@ msgstr ""
 "Esta cousa é… incríbel! Que fai un artefacto tan poderoso agochado aquí?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1344
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1346
 msgid "That’s... that’s the Rod of Justice!"
 msgstr "É… é a Vara da Xustiza!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1349
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1351
 msgid "Do you know anything about it, Camerin?"
 msgstr "Coñécela?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1354
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1356
 msgid ""
 "I don’t think there is a person alive who knows anything more solid than "
 "rumors and legends. There are very few people who even knows it exists!"
@@ -2815,12 +2834,12 @@ msgstr ""
 "lendas. Poucos son de feito os que saben da súa existencia!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1359
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1361
 msgid "How did you come to know of it?"
 msgstr "E como é que ti es un deses poucos?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1364
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1366
 msgid ""
 "Some of the most ancient elvish legends make some vague mention of this "
 "artifact. But beyond that..."
@@ -2829,7 +2848,7 @@ msgstr ""
 "artefacto. Non sei máis nada…"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1369
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1371
 msgid ""
 "Interesting. I wonder who — or what — could have created such a powerful "
 "artifact. There must be one heck of a story behind this thing."
@@ -2838,12 +2857,12 @@ msgstr ""
 "seguro que ten unha gran historia."
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1382
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1384
 msgid "Rod of Justice"
 msgstr "Vara da Xustiza"
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1385
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1387
 msgid ""
 "A magical staff of tremendous power and unknown origin. Although the full "
 "extent of its power has not been fathomed, there are a few features about it "
@@ -2861,59 +2880,59 @@ msgstr ""
 "corazón e dispostas a sacrificar a súa vida pola xustiza poden portala."
 
 #. [effect]: type=fire
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1394
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1396
 msgid "rod of justice"
 msgstr "vara da xustiza"
 
 #. [option]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1448
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1450
 msgid "rod of justice^Leave it"
 msgstr "Deixala"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1475
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1477
 msgid "The Great Chamber"
 msgstr "Gran Cámara"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1480
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1482
 msgid "‘The Great Chamber’? Hmmm, wonder what that could be."
 msgstr "A «Gran Cámara»? Hm… Que haberá dentro?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1497
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1499
 msgid "Halt! You’re not allowed to be here! Authorized undead only!"
 msgstr ""
 "Alto aí! Non podes estar aquí! Este é un lugar exclusivo de non mortos "
 "autorizados!"
 
 #. [unit]: type=Dwarvish Steelclad, id=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1520
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1522
 msgid "Dulcatas"
 msgstr "Dulcatas"
 
 #. [unit]: type=Dwarvish Thunderguard, id=Antolos
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1533
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1535
 msgid "Antolos"
 msgstr "Antolos"
 
 #. [unit]: type=Dwarvish Fighter, id=Varem
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1546
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1548
 msgid "Varem"
 msgstr "Varen"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1558
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1560
 msgid "Halt! Who goes there? Friend or foe?"
 msgstr "Alto! Quen vai? Amigho ou inimigho?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1563
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1565
 msgid "Depends. Are you loyal to Malifor?"
 msgstr "Depende. Es leal a Malifor?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1568
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1570
 msgid ""
 "Never! If you ha’ been sent by Malifor, then know that we will never yield! "
 "Come and meet your death!"
@@ -2922,7 +2941,7 @@ msgstr ""
 "acheghe!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1573
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1575
 msgid ""
 "Hold! We aren’t friends of Malifor in the least. Rather, we have come to "
 "destroy him."
@@ -2931,17 +2950,17 @@ msgstr ""
 "acabar con el."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1578
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1580
 msgid "Finally! You don’t know how long we have been waiting for this day."
 msgstr "Por fin! Non sabedes canto tempo estivemos aghardando por este día."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1583
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1585
 msgid "How did you get here and how long have you been here?"
 msgstr "Como acabastes aquí?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1588
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1590
 msgid ""
 "We were originally prisoners of Malifor, but we tunneled out and escaped. "
 "Since then, we have eked out a precarious survival on what we have been able "
@@ -2951,12 +2970,12 @@ msgstr ""
 "entón, apañámonos para sobrevivir roubándolle a Malifor."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1593
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1595
 msgid "By now you have tunnels all through this place."
 msgstr "Polo de agora tendes túneles por todo o lugar."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1598
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1600
 msgid ""
 "Aye. That seemingly blank wall to the south there is actually a hidden "
 "entrance to the treasury."
@@ -2965,65 +2984,70 @@ msgstr ""
 "tesouro."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1603
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1605
 msgid "Awesome, let’s go!"
 msgstr "Xenial, vamos!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1619
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1621
 msgid "Here we go."
 msgstr "Dádelle."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1661
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1663
+#, fuzzy
+#| msgid ""
+#| "So this is the Great Chamber eh? Doesn’t look like there is much to see "
+#| "here."
 msgid ""
-"So this is the Great Chamber eh? Doesn’t look like there is much to see here."
+"So this is the Great Chamber, eh? Doesn’t look like there is much to see "
+"here."
 msgstr "Conque esta é a Gran Cámara, eh? Non parece que haxa moito que ver."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1669
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1671
 msgid "The ground shakes."
 msgstr "A terra treme."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1674
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1676
 msgid "Perhaps I spoke too soon..."
 msgstr "Quen me mandaría a min dicir nada…"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1691
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1693
 msgid "What is this? Out retreat is cut off!"
 msgstr "Que é isto? Quedamos sen camiño de retirada!"
 
 #. [message]: type=Giant Spider
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1730
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1732
 msgid "Hsssss"
 msgstr "Hsss"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1735
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1737
 msgid "‘Great Chamber’, my foot! This is a death chamber!"
 msgstr "O carallo «Gran Cámara»! Esta é a cámara da morte!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1757
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1759
 msgid "Malifor the Great’s Study"
 msgstr "Estudio de Malifor “O grande”"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1762
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1764
 msgid "There we go! This way, guys!"
 msgstr "Veña, por aquí rapaces!"
 
 #. [message]: role=Study Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1780
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1782
 msgid ""
 "They are attacking the master’s study! We must stop them! Call the reserves!"
 msgstr ""
 "Están atacando o estudio do amo! Debemos detelos! Chamade aos reforzos!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1808
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1810
 msgid ""
 "Caution! Tunnel flooded and infested with aquatic monsters. Enter at the "
 "risk of your unlife."
@@ -3032,7 +3056,7 @@ msgstr ""
 "pode supoñer un serio risco para a súa non-vida."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1813
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1815
 msgid ""
 "Interesting. It seems like someone really doesn’t want us going down this "
 "tunnel."
@@ -3041,17 +3065,17 @@ msgstr ""
 "broma."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1831
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1833
 msgid "Intruders? Capture them and throw them in with the toxic waste!"
 msgstr "Intrusos? Capturádeos e botádeos ao lixo!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1863
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1865
 msgid "A section of wall slides away."
 msgstr "Unha sección da parede apártase."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1872
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1874
 msgid ""
 "Holy water! For a certainty, those skeletons won’t like us getting our hands "
 "on this stuff. But that’s probably why they kept them back here in the first "
@@ -3061,7 +3085,7 @@ msgstr ""
 "teñamos isto, e por iso o teñen gardado aquí."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1886
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1888
 msgid ""
 "Warning! These bottles contain toxic waste. Causes disintegration on contact."
 msgstr ""
@@ -3069,22 +3093,22 @@ msgstr ""
 "contacto."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1891
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1893
 msgid "(<i>rolls eyes</i>) Oh, the hazardous life of a skeleton."
 msgstr "(<i>con cara de circunstancia</i>) Oh, a arriscada vida dun esqueleto."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1906
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1908
 msgid "Hey, an underground lake."
 msgstr "Ei, un lago subterráneo."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1923
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1925
 msgid "Ack! What are those things!"
 msgstr "Ah! Que son esas cousas?!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1933
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1935
 msgid ""
 "Oh yeah, those things. Watch out, they are the arms of some sort of "
 "underwater creature. They’ll try to pummel you to death, then drag you under "
@@ -3095,7 +3119,7 @@ msgstr ""
 "auga para que lle sirvas de cea á criatura."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1938
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1940
 msgid ""
 "Then how do we get past? I can see that the passage continues to both the "
 "north and south and we haven’t found Malifor yet..."
@@ -3104,7 +3128,7 @@ msgstr ""
 "atopamos a Malifor…"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1943
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1945
 msgid ""
 "Creatures of that type regenerate over time; it’s doubtful we can destroy it "
 "completely. But if we destroy its arms we’ll be relatively safe until they "
@@ -3115,53 +3139,53 @@ msgstr ""
 "relativamente a salvo ata que se rexeneren."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1948
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1950
 msgid "Let’s get to it, then."
 msgstr "Pois veña entón."
 
 #. [unit]: type=Wraith, id=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1972
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1974
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:278
 msgid "Abhai"
 msgstr "Abai"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1983
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1985
 msgid "AH! A ghost!"
 msgstr "AH! Un fantasma!"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1988
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1990
 msgid "Who are you that dares to venture down these tunnels?"
 msgstr "Quen es ti que ousas aventurarte nestes túneles?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1993
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1995
 msgid "I... I am one of Tallin’s men..."
 msgstr "Son… son un dos homes de Talin…"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1998
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2000
 msgid "Who is this ‘Tallin’?"
 msgstr "Quen é ese tal «Talin»?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2003
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2005
 msgid "That would be me."
 msgstr "Son eu."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2008
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2010
 msgid "What is your purpose in coming here?"
 msgstr "Pódese saber que viñestes facer aquí?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2013
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2015
 msgid "We seek the destruction of the lich Malifor."
 msgstr "Queremos acabar co liche Malifor."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2018
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2020
 msgid ""
 "(<i>pales if possible</i>) Malifor...! Finally someone here in force to deal "
 "with that menace!"
@@ -3170,7 +3194,7 @@ msgstr ""
 "plantarlle cara a esa ameaza!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2023
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2025
 msgid ""
 "Can you tell us where he is? And, if I may ask, who are — or rather, were — "
 "you?"
@@ -3179,7 +3203,7 @@ msgstr ""
 "dicir, quen era?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2028
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2030
 msgid ""
 "I am Lord Abhai, the ruler... once... of a great kingdom far to the west. In "
 "time, as all men do, I grew old and passed to the Land of the Dead. I know "
@@ -3192,12 +3216,12 @@ msgstr ""
 "trouxesen a este reino mediante un terríbel poder."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2033
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2035
 msgid "Let me guess. Malifor?"
 msgstr "Déixame adiviñar. Malifor?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2038
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2040
 msgid ""
 "Indeed. He was once a great sorcerer, but he coveted wealth and power. To "
 "gain his ends, he allied himself with the Lich-Lords, and from them he "
@@ -3223,7 +3247,7 @@ msgstr ""
 "que os servos de Malifor temen, así que non me molestan."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2043
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2045
 msgid ""
 "I am afraid times have changed much. Our first king, Haldric I, fled from "
 "the Green Isle with the Wesfolk and the orcs in pursuit. He came ashore on "
@@ -3236,26 +3260,30 @@ msgstr ""
 "Llevian antes de fundar o Reino do Noroeste. Iso foi hai séculos."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2048
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2050
 msgid "So... much time has passed indeed."
 msgstr "Daquela sí que pasou moito tempo, si."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2053
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2055
 msgid "Would you join us to defeat this evil creature?"
 msgstr "Uniríaste a nós para derrotar a esa malvada criatura?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2059
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2061
+#, fuzzy
+#| msgid ""
+#| "Wouldn’t miss it. Maybe after he is destroyed me and my kind can live... "
+#| "er... be dead peacefully."
 msgid ""
-"Wouldn’t miss it. Maybe after he is destroyed me and my kind can live... "
+"Wouldn’t miss it. Maybe after he is destroyed my kind and I can live... "
 "er... be dead peacefully."
 msgstr ""
 "Non mo perdería por nada do mundo. Quizais unha vez destruído eu e os outros "
 "coma min podamos vivir… quero dicir, morrer en paz."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2064
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2066
 msgid ""
 "Keep following these flooded tunnels. I think they might lead you directly "
 "to Malifor."
@@ -3263,17 +3291,17 @@ msgstr ""
 "Seguide os túneles inundados. Creo que vos levarán directamente ata Malifor."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2069
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2071
 msgid "Great. Forward, men!"
 msgstr "Perfecto. Adiante, compañeiros!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2084
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2086
 msgid "Ugh, a corpse. And it — (<i>gags</i>) — reeks!"
 msgstr "Agh, un cadáver. E (<i>dálle unha arcada</i>) fede!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2097
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2099
 msgid ""
 "Gee, what’s with these bodies floating around? Is this river some sort of "
 "body disposal?"
@@ -3283,7 +3311,7 @@ msgstr ""
 
 # Evitar referencias con xénero gramatical, pode ser home ou muller.
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2111
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2113
 msgid ""
 "Just great, I am cold, wet, and tired and what have we here? Another dead "
 "body. This place is starting to get on my nerves!"
@@ -3293,52 +3321,52 @@ msgstr ""
 "tocarme a moral!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2127
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2129
 msgid "Hold it, people, there’s something just ahead!"
 msgstr "Agardade, hai algo aí diante!"
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2148
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2150
 msgid "(<i>sniff</i>) I smell humans."
 msgstr "(<i>ule</i>) Cheiro humanos."
 
 #. [message]: type=Naga Fighter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2153
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2155
 msgid "You are just plain deaf. I heard them coming a mile off."
 msgstr ""
 "Estás completamente xordo. Escoiteinos, están a menos de dous quilómetros."
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2158
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2160
 msgid "Ahh, shut up. Let’s go kill them."
 msgstr "Ah, cala xa. Vamos matalos."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2192
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2194
 msgid ""
 "It looks like this is it. Here is the door to Malifor’s study. Are we all "
 "ready for this?"
 msgstr "Parece que é esta. Esta é a porta ao estudio de Malifor. Listos?"
 
 #. [option]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2194
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2196
 msgid "Get those doors open!"
 msgstr "Abre esas portas!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2214
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2216
 msgid "Let’s go!"
 msgstr "Vamos!"
 
 #. [option]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2225
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2304
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2402
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2227
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2404
 msgid "Just wait a sec."
 msgstr "Agarda un momentiño."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2252
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2254
 msgid ""
 "Hmmm. The wall appears weak here. I think there might be something on the "
 "other side."
@@ -3347,65 +3375,65 @@ msgstr ""
 "outro lado."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2257
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2259
 msgid "Anything you can’t handle?"
 msgstr "Non te das apañado?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2262
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2264
 msgid "Nope. Should I open it?"
 msgstr "Non é iso. Ábroa?"
 
 #. [option]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2264
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2343
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2266
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2345
 msgid "Go for it!"
 msgstr "Dálle!"
 
 #. [message]: speaker=Sister Thera
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2293
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2295
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:575
 msgid "There we go."
 msgstr "Imos aló."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2331
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2333
 msgid "Hey, check this out, it looks like some sort of lever."
 msgstr "Ei, mirade, parece unha especie de panca."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2336
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2338
 msgid "Throw it and see what it does."
 msgstr "Tírao e a ver que fai."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2341
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2343
 msgid "Should I throw it?"
 msgstr "Tiro dela?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2351
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2353
 msgid "Nothing. That door is not moving."
 msgstr "Nada. A porta non se move."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2356
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2358
 msgid "Why don’t you try ‘knocking’?"
 msgstr "Probaches a petar a ver se responde alguén ao outro lado?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2387
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2389
 msgid "Anybody home?"
 msgstr "Hai alguén aí?"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2449
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2451
 msgid "You wretched vermin, I have had it with you! Guards!"
 msgstr "Maldita miñoca, xa estou farto de ti! Gardas!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2473
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2475
 msgid ""
 "You invaded my kingdom, drove me from my mines, raided my dungeon, and "
 "plundered my treasury. Your audacity ends here!"
@@ -3414,7 +3442,7 @@ msgstr ""
 "calabozos, e saqueaches a miña tesouraría. Aquí remata o teu atrevemento!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2486
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2488
 msgid ""
 "You are wrong, Malifor, for you shall be the one who is destroyed. You are "
 "cruel, merciless and a terror to all that lives. The world will be a better "
@@ -3425,7 +3453,7 @@ msgstr ""
 "botar de menos!"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2491
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2493
 msgid ""
 "To feed your greed and hunger you have terrorized all that is good. You have "
 "disturbed the rest of the brave defenders of Knalga. Now, your evil reign "
@@ -3436,7 +3464,7 @@ msgstr ""
 "chegará á súa fin."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2496
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2498
 msgid ""
 "Fools! Don’t think it’s so easy to kill me. Your corpses shall all soon be "
 "serving me. Fall on them, my hordes!"
@@ -3445,17 +3473,101 @@ msgstr ""
 "vosos cadáveres se unirán ás miñas filas. A por eles, gardas!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2607
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2536
+msgid "HAHAHAHA, DEATH HAS NO EFFECT ON ME YOU FOOLS!"
+msgstr "<b>Ha ha ha ha ha! A morte non ten efecto sobre min, parvos!</b>"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2541
+#, fuzzy
+#| msgid "Well, obviously clubs and arrows won’t work."
+msgid "Well, blades don’t work."
+msgstr "Ben, é obvio que as trancas e as frechas non han funcionar."
+
+#. [message]: speaker=Malifor
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2551
+msgid "HAHAHAHA, YOUR IDIOCY AMUSES ME GREATLY!"
+msgstr "<b>Ha ha ha ha ha! A vosa idiotez é moi divertida!</b>"
+
+#. [message]: speaker=Tallin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2556
+#, fuzzy
+#| msgid "Geez, how are we going to kill him?"
+msgid "Geez, how are we going to kill him? This weapon is ineffective!"
+msgstr "Arre demo, como o imos matar?"
+
+#. [message]: speaker=Malifor
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2566
+msgid "YOU PUNY MORTALS SHALL SOON BE SERVING ME!"
+msgstr "<b>Vós, débiles mortais, pronto habedes servir ás miñas ordes!</b>"
+
+#. [message]: speaker=Camerin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2571
+#, fuzzy
+#| msgid "That blasted skeleton! Even fire has no affect on him!"
+msgid "That blasted skeleton! Even fire has no effect on him!"
+msgstr "Ese maldito esqueleto! Nin o lume lle afecta!"
+
+#. [message]: speaker=Tallin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2576
+msgid "Let’s try using something different on him."
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2591
+#, fuzzy
+#| msgid "AHHHH!"
+msgid "AAAAAAHHHHHH!"
+msgstr "<b>Ah!</b>"
+
+#. [message]: speaker=Father Morvin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2596
+msgid "I see now. It is impossible to destroy him by ordinary means."
+msgstr "Xa o entendo. É imposíbel destruílo con medios ordinarios."
+
+#. [message]: speaker=Tallin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2601
+msgid "Then how are we going to destroy him? Surely there must be a way."
+msgstr "Entón como o imos destruír? Ten que haber algunha forma."
+
+#. [message]: speaker=Father Morvin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2606
+msgid ""
+"Yes, I think there is, but only myself or Thera have the means to do it. "
+"Come on Thera, let’s destroy that old skeleton."
+msgstr ""
+"De feito, creo que sei cal é, pero só eu e Dera podemos facelo. Veña, Dera, "
+"acabemos con ese esqueleto."
+
+#. [message]: speaker=Sister Thera
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2611
+msgid "Yeah, I can’t wait to get my hands on that bastard!"
+msgstr ""
+"Vamos, teño unhas ganas terríbeis de darlle o seu merecido a ese cabrón!"
+
+#. [message]: speaker=Father Morvin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2616
+msgid "That was very unladylike of you."
+msgstr "Onde foron as túas formas, muller?"
+
+#. [message]: speaker=Sister Thera
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2621
+#: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:453
+msgid "(<i>Giggle</i>) Sorry."
+msgstr "(<i>rindo levemente</i>) Perdón."
+
+#. [message]: speaker=Malifor
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2638
 msgid "AHHHH! YOU BLASTED MAGE!"
 msgstr "<b>Ah! Maldito mago!</b>"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2612
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2643
 msgid "Good. We finally got him. He is dissolving."
 msgstr "Ben. Por fin o conseguimos. Estase disolvendo."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2617
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2648
 msgid ""
 "Curses on you you blasted mages, curses on you you blasted dwarves, curses "
 "on you you blasted humans, and CURSES ON YOU YOU BLASTED TALLIN! MAY YOUR "
@@ -3470,14 +3582,14 @@ msgstr ""
 
 #. [message]: speaker=Sister Thera
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2622
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2653
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
 msgid "May you shut your ugly mouth and hurry up and die."
 msgstr "Que cales a túa noxenta boca dunha vez e morras."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2627
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2658
 msgid ""
 "MAY THE EARTH OPEN UP AND SWALLOW YOU! MAY ALL YOUR TEETH FALL OUT! MAY YOU "
 "BECOME A WEAK SKINNY OLD MAN! MAY—"
@@ -3487,171 +3599,29 @@ msgstr ""
 
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2632
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2673
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
 msgid "Finally! He has been reduced to dust."
 msgstr "Por fin! Esfumouse para sempre."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2637
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2678
 msgid "At last! Victory is ours! Good work, men!"
 msgstr "Por fin! Gañamos! Bo traballo, compañeiros!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2642
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2683
 msgid "So, where to now, Tallin?"
 msgstr "Onde imos agora, Talin?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2647
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2688
 msgid ""
 "Now, let’s get back to the dwarves and see what progress they have made in "
 "forging us weapons."
 msgstr ""
 "Agora volvamos canda os ananos e vexamos como avanzaron na forxa das armas."
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2689
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2802
-msgid "HAHAHA, FOOLS, YOU THINK YOU CAN KILL ME?"
-msgstr "<b>Ha ha ha ha! Parvos, pensades que me podedes matar?</b>"
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2696
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2809
-msgid "HAHAHAHA!"
-msgstr "<b>Ha ha ha ha!</b>"
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2701
-msgid "What the...!"
-msgstr "Pero que demo…"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2706
-msgid "How can it be?! Our axes and hammers are failing."
-msgstr "Como pode ser?! Os nosos machados e martelos non funcionaron."
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2711
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2819
-msgid "Blast it! Now where did he go? Let’s find him and try something else!"
-msgstr "Recoiro! Onde foi agora? Atopémolo e probemos con outra cousa!"
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2719
-msgid "HAHAHAHA, DEATH HAS NO EFFECT ON ME YOU FOOLS!"
-msgstr "<b>Ha ha ha ha ha! A morte non ten efecto sobre min, parvos!</b>"
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2726
-msgid "HAHAHA, I CAN NEVER BE DESTROYED!"
-msgstr "<b>Ha ha ha ha ha! Nunca me poderedes destruír!</b>"
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2731
-msgid "Oh yes you will! But... how?"
-msgstr "Oh, destruír destruirémoste! Pero… como?"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2736
-msgid "Well, it sure isn’t gonna be done with a blade."
-msgstr "Ben, o que está claro é que <i>non</i> vai ser cunha folla."
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2741
-msgid "And look, he’s gone. Now we gotta find him all over again!"
-msgstr "E mira, marchou. Agora temos que volver atopalo desde cero!"
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2749
-msgid "HAHAHAHA, YOUR IDIOCY AMUSES ME GREATLY!"
-msgstr "<b>Ha ha ha ha ha! A vosa idiotez é moi divertida!</b>"
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2756
-msgid "COME AND GET ME!"
-msgstr "<b>Vide e collédeme!</b>"
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2761
-msgid "Geez, how are we going to kill him?"
-msgstr "Arre demo, como o imos matar?"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2766
-msgid "Well, obviously clubs and arrows won’t work."
-msgstr "Ben, é obvio que as trancas e as frechas non han funcionar."
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2771
-msgid "Oh darn, he disappeared. Let’s find him and try a different weapon."
-msgstr "Oh, xa estamos, desapareceu. Busquémolo e provemos unha arma distinta."
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2779
-msgid "HAHAHAHA, I AM IMMORTAL!"
-msgstr "<b>Ha ha ha ha ha! Son inmortal!</b>"
-
-#. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2786
-msgid "YOU PUNY MORTALS SHALL SOON BE SERVING ME!"
-msgstr "<b>Vós, débiles mortais, pronto habedes servir ás miñas ordes!</b>"
-
-#. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2791
-msgid "That blasted skeleton! Even fire has no affect on him!"
-msgstr "Ese maldito esqueleto! Nin o lume lle afecta!"
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2796
-msgid ""
-"Look, he disappeared again. Let’s find him and try using a different weapon "
-"on him."
-msgstr ""
-"Mira, volveu desaparecer. Vamos buscalo e probar cun arma distinta desta vez."
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2814
-msgid "What the—"
-msgstr "Pero que demo…"
-
-#. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2831
-msgid "I see now. It is impossible to destroy him by ordinary means."
-msgstr "Xa o entendo. É imposíbel destruílo con medios ordinarios."
-
-#. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2836
-msgid "Then how are we going to destroy him? Surely there must be a way."
-msgstr "Entón como o imos destruír? Ten que haber algunha forma."
-
-#. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2841
-msgid ""
-"Yes, I think there is, but only myself or Thera have the means to do it. "
-"Come on Thera, let’s destroy that old skeleton."
-msgstr ""
-"De feito, creo que sei cal é, pero só eu e Dera podemos facelo. Veña, Dera, "
-"acabemos con ese esqueleto."
-
-#. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2846
-msgid "Yeah, I can’t wait to get my hands on that bastard!"
-msgstr ""
-"Vamos, teño unhas ganas terríbeis de darlle o seu merecido a ese cabrón!"
-
-#. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2851
-msgid "That was very unladylike of you."
-msgstr "Onde foron as túas formas, muller?"
-
-#. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2856
-#: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:453
-msgid "(<i>Giggle</i>) Sorry."
-msgstr "(<i>rindo levemente</i>) Perdón."
 
 #. [scenario]: id=05a_02_Dealings
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:5
@@ -3691,10 +3661,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:24
+#, fuzzy
+#| msgid ""
+#| "They found Hamel in a forge hammering away at a new axe. He greeted them "
+#| "warmly and arrangements were quickly made for all their food and "
+#| "accommodations, as wall as care for the sick and wounded."
 msgid ""
 "They found Hamel in a forge hammering away at a new axe. He greeted them "
 "warmly and arrangements were quickly made for all their food and "
-"accommodations, as wall as care for the sick and wounded."
+"accommodations, as well as care for the sick and wounded."
 msgstr ""
 "Atoparon a Hamel nunha das forxas, traballando nun novo machado. O anano "
 "deulles unha calorosa benvida, e ordenou que se lles provese de comida, "
@@ -4026,7 +4001,7 @@ msgstr ""
 #. [side]: type=Great Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:130
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:147
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:148
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:127
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:99
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:25
@@ -4242,8 +4217,13 @@ msgstr "Argh! Matáronme!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:422
+#, fuzzy
+#| msgid ""
+#| "Killed him! Got his gold too. Lets see, hmmm, about 500 gold pieces. Not "
+#| "bad."
 msgid ""
-"Killed him! Got his gold too. Lets see, hmmm, about 500 gold pieces. Not bad."
+"Killed him! Got his gold too. Let’s see, hmmm, about 500 gold pieces. Not "
+"bad."
 msgstr ""
 "Mateino! E collín o seu ouro! Debe haber unhas cincocentas pezas de ouro. "
 "Non está mal."
@@ -4331,8 +4311,11 @@ msgstr ""
 
 #. [message]: id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:529
-msgid ""
-"I propose that we retreat back into the caves and consult with the dwarves."
+#, fuzzy
+#| msgid ""
+#| "I propose that we retreat back into the caves and consult with the "
+#| "dwarves."
+msgid "I propose that we retreat into the caves and consult with the dwarves."
 msgstr ""
 "Eu diría de volver ás covas xunta os ananos e decidir con eles o que facemos."
 
@@ -4963,50 +4946,50 @@ msgstr "E foi así como Talin e os seus partiron en busca da axuda dos magos."
 
 #. [side]: type=Dwarvish Lord, id=Stalrag
 #. [unit]: type=Dwarvish Lord, id=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:152
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:107
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
 msgid "Stalrag"
 msgstr "Estalar"
 
 #. [side]: type=Ancient Lich, id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:205
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:213
 msgid "Liches"
 msgstr "Liches"
 
 #. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:210
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:218
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:121
 msgid "Ro’Arthian"
 msgstr "Ardian"
 
 #. [unit]: type=Lich, id=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:248
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:622
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:772
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:262
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:639
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:789
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:134
 msgid "Ro’Sothian"
 msgstr "Sodian"
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:307
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:324
 msgid "Save Stalrag from Ro’Sothian."
 msgstr "Salva a Estalar de Sodian."
 
 #. [objective]: condition=lose
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:311
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:328
 msgid "Death of Tallin."
 msgstr "Morte de Talin."
 
 #. [objective]: condition=lose
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:315
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:685
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:332
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:702
 msgid "Death of Stalrag."
 msgstr "Morte de Estalar."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:334
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:351
 msgid ""
 "Upon arriving at the mountain pass it appeared to Tallin and his men that "
 "they were just a bit too late."
@@ -5015,12 +4998,12 @@ msgstr ""
 "sensación de que chegaban un pouco tarde de máis."
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:340
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:357
 msgid "HAH! I finally have you, you wretched dwarf!"
 msgstr "<b>Ha!</b> Por fin te teño, maldito anano!"
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:345
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:362
 msgid ""
 "Argh! You blasted mages! How many times do I have to kill you two before you "
 "will leave us in peace!"
@@ -5029,7 +5012,7 @@ msgstr ""
 "en pas?"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:350
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:367
 msgid ""
 "Leave <i>you</i> in peace?! It is your kind that won’t leave <i>us</i> in "
 "peace! Ever since you blasted dwarves built that damn road you have harassed "
@@ -5044,7 +5027,7 @@ msgstr ""
 "non has regresar."
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:355
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:372
 msgid ""
 "You cursed mage! I now go to join all of my men you have killed. But know "
 "this, the Shinsplitters will <i>never</i> submit! We will defy you to our "
@@ -5055,29 +5038,29 @@ msgstr ""
 "o noso derradeiro alento!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:360
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:377
 msgid "Hold it! What’s going on here?"
 msgstr "Un momento! Que está pasando aquí?"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:365
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:382
 msgid "Ro’Sothian, is that you?"
 msgstr "Es ti, Sodian?"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:370
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:387
 msgid "Not now, Father. I’m a little busy at the moment."
 msgstr "Agora non, pai. Estouche un pouco ocupado agora mesmo."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:381
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:398
 msgid ""
 "Ro’Sothian! How are you doing, my old friend! Boy, you sure look... erm... "
 "different!"
 msgstr "Sodian! Como che vai, meu! Mi ma, estás bastante… Hm… Cambiado!"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:386
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:403
 msgid ""
 "Camerin! Great Lords of Darkness, I haven’t seen you in ages! Here, let me "
 "just finish off this little vermin and I’ll be right over."
@@ -5086,32 +5069,32 @@ msgstr ""
 "Déixame acabar con este anano un momento e xa nos poñemos ao día."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:391
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:408
 msgid "whisper^Camerin, you know him?"
 msgstr "Cámerin, coñécelo?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:396
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:413
 msgid "whisper^Duh! His brother Ro’Arthian is the one who taught me magic!"
 msgstr "Que se o coñezo? Foi seu irmán quen me ensinou todo o que sei!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:401
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:418
 msgid "whisper^Oh...!"
 msgstr "Ah…"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:425
 msgid "Hang on a sec, Ro’Sothian, you don’t want to kill him."
 msgstr "Espera un momento, Sodian, non o mates. Non tes motivos para matalo."
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:413
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:430
 msgid "Huh?! He killed me!"
 msgstr "Que non que? Se <i>el</i> me matou primeiro!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:418
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:435
 msgid ""
 "Oh... I see. But we come on more pressing business. We are in desperate need "
 "of your help. Here is Tallin from the community of Dwarven Doors. As you "
@@ -5126,7 +5109,7 @@ msgstr ""
 "devolver as cousas á normalidade nas súas terras."
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:423
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:440
 msgid ""
 "So? What does this have to do with me? And hurry up, my staff is buzzing to "
 "blast this little vermin once and for all."
@@ -5135,7 +5118,7 @@ msgstr ""
 "esta miñoca dunha vez por todas."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:428
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:445
 msgid ""
 "Don’t! Please, my friend, listen. The orcs are on the rise again and they "
 "are threatening to complete their conquest of Knalga and convert it into an "
@@ -5148,7 +5131,7 @@ msgstr ""
 "para axudarnos a derrotar aos orcos."
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:433
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:450
 msgid ""
 "Take your begging and shove it, Father! We don’t help no-one. Not even you "
 "and <i>especially</i> not any dwarf!"
@@ -5157,7 +5140,7 @@ msgstr ""
 "Nin a ti, nin moito menos a ningún anano!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:443
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:460
 msgid ""
 "Hold a moment, my friend. You won’t believe what a blast it is fighting with "
 "these guys. You get to fry skeletons, orcs, trolls, and wolves by the "
@@ -5168,7 +5151,7 @@ msgstr ""
 "Veña meu, vente, que te me estás oxidando."
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:448
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:465
 msgid ""
 "Camerin, you were always a little crazy. Now I see you have gone stark "
 "raving mad! Do you really think we would help anyone? <i>Especially</i> a "
@@ -5179,7 +5162,7 @@ msgstr ""
 "fato de ananos?!"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:455
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:472
 msgid ""
 "I tire of this; prepare to die, wretched dwarf! And the rest of you, get "
 "lost and don’t come back, unless you’re tired of life!"
@@ -5188,32 +5171,32 @@ msgstr ""
 "non volvades se é que aínda sentides algún aprecio polas vosas vidas!"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:460
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:477
 msgid "Uh oh, he is gathering energy for a cold blast."
 msgstr "Oh oh, está reunindo enerxía para un raio de frío."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:465
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:482
 msgid "Quick, honey, we’ve got to stop him. Let’s go!"
 msgstr "Rápido, cariño, temos que pararlle os pes. Vamos!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:475
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:492
 msgid "Hey, are you two going to hog all the fun for yourselves?"
 msgstr "Ei, acaso ides quedarvos a diversión toda para vós os dous?"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:480
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:497
 msgid "All right, all right, hang on!"
 msgstr "Vale, veña, pero apúrate!"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:542
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:559
 msgid "BROTHER! HELP ME!"
 msgstr "<b>Irmán! Axúdame!</b>"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:547
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:564
 msgid ""
 "(<i>Booming voice coming from all directions</i>) SO YOU MAGES HAVE THE "
 "AUDACITY TO ATTACK MY BROTHER! YOU SHALL DIE FOR YOUR FOLLY!"
@@ -5222,7 +5205,7 @@ msgstr ""
 "atacar ao meu irmán, magos. Morreredes pola vosa insensatez!</b>"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:552
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:569
 msgid ""
 "Ro’Arthian, listen to me. We don’t want to fight with you, we have come here "
 "to seek your assistance."
@@ -5231,13 +5214,13 @@ msgstr ""
 "axuda."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:558
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:569
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:575
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:586
 msgid "(<i>No answer</i>)"
 msgstr "(<i>non hai resposta</i>)"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:563
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:580
 msgid ""
 "I know you can hear me, Ro’Arthian. Please, the fate of every creature in "
 "the north depends on your help."
@@ -5246,7 +5229,7 @@ msgstr ""
 "nórdicas está nas vosas mans."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:574
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:591
 msgid ""
 "Give it up, father, he isn’t answering. I am afraid we may have to use um... "
 "more forceful means to convince him."
@@ -5255,98 +5238,103 @@ msgstr ""
 "persuasivos."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:579
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:596
 msgid "(<i>Sigh</i>) Yes, you are right."
 msgstr "(<i>suspira</i>) Tes razón."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:584
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:601
 msgid "Put Ro’Sothian into that jail over there until we capture his brother."
 msgstr "Engaiolade a Sodian ata que collamos ao seu irmán."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:596
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:613
 msgid "And someone keep an eye on him. We don’t want him to get away."
 msgstr "E que alguén o vixíe, non volva fuxir."
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:629
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:646
 msgid "Ha! I am free! Now you foul traitors will pay!"
 msgstr "Ha! Son libre! Agora pagarédelo, noxentos traidores!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:634
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:651
 msgid "Oh no, he got away! Quick, men, we must capture him again!"
 msgstr "Oh, non, fuxiu! A présa, compañeiros, debemos capturalo de novo!"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:646
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:663
 msgid "Ahhhh! Not again!"
 msgstr "Ah! Outra vez non!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:651
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:668
 msgid ""
 "Come on, Ro’Sothian, we really don’t have to be doing this. Come, join us!"
 msgstr "Veña, Sodian, nada disto é necesario. Únete a nós!"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:656
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:673
 msgid "Never!"
 msgstr "Xamais!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:661
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:678
 msgid "Sigh, we’ll talk later."
 msgstr "En fin, xa falaremos."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:666
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:683
 msgid "Back to jail, my friend."
 msgstr "Volve á gaiola, amigo."
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:677
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:694
 msgid "Capture Ro’Arthian."
 msgstr "Captura a Ardian."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:711
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:728
 msgid "Ro’Arthian, are you ready to talk yet?"
 msgstr "Ardian, xa estás listo para falar?"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:716
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:733
 msgid "Fine, you trespassers. What do you want?"
 msgstr "De acordo, invasores. Que é o que queredes?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:721
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:738
 msgid "Well... First, why don’t you tell us what <i>you</i> want?"
 msgstr "E se primeiro nos contas que é o que queres <i>ti</i>?"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:726
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:743
+#, fuzzy
+#| msgid ""
+#| "What do <i>I</i> want? I’ll tell you what I want! I want the stinking "
+#| "carcasses of you, all your henchmen and those dwarvish vermin off of my "
+#| "land! And <i>stay</i> off!"
 msgid ""
 "What do <i>I</i> want? I’ll tell you what I want! I want the stinking "
-"carcasses of you, all your henchmen and those dwarvish vermin off of my "
-"land! And <i>stay</i> off!"
+"carcasses of you, all your henchmen and those dwarvish vermin off my land! "
+"And <i>stay</i> off!"
 msgstr ""
 "O que quero? Vouche dicir o que quero! Quero que vos vaiades das miñas "
 "terras, ti, os teus secuaces e os todos os ananos! E non quero que volvades!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:731
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:748
 msgid "So basically, you want to be left alone in peace. Right?"
 msgstr "Entón o que queres é, basicamente, que te deixen en paz, non?"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:736
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:753
 msgid "Wow! Someone <i>finally</i> figured it out!"
 msgstr "Arre demo! <i>Por fin</i> alguén que o comprendeu!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:741
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:758
 msgid ""
 "All right! Listen, then. Right now we have very little power to grant your "
 "request. We are simply a band of peasants fighting for the freedom of our "
@@ -5357,7 +5345,7 @@ msgstr ""
 "pola liberdade das súas terras."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:746
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:763
 msgid ""
 "But when we defeat the orcish host, re-establish Knalga, and bring law and "
 "order into these Northlands, we will have gained some authority by right of "
@@ -5367,7 +5355,7 @@ msgstr ""
 "e a orde ás Terras Nórdicas, teremos como conquistadores certa autoridade."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:751
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:768
 msgid ""
 "When that time comes, I hereby make a solemn oath: no man or dwarf shall "
 "ever set foot on your land without your leave. If any of my men violates "
@@ -5380,7 +5368,7 @@ msgstr ""
 "tamén por Hamel."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:756
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:773
 msgid ""
 "In order for that to come about, we must crush the orcish host. But we can’t "
 "do that without your help. Will you join us?"
@@ -5389,7 +5377,7 @@ msgstr ""
 "non podemos facelo sen a vosa axuda. Unirédesvos a nós?"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:761
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:778
 msgid ""
 "Think of it, Ro’Arthian, it is a fair bargain. If you don’t agree to "
 "Tallin’s proposal, the endless war you two wage with the dwarves will never "
@@ -5401,17 +5389,17 @@ msgstr ""
 "de que poidades descansar en paz."
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:766
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:783
 msgid "Hrmph. What do you think, brother?"
 msgstr "Hm… Ti que dis, irmán?"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:784
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:801
 msgid "(<i>Shrugs</i>) I don’t think we have any other choice left."
 msgstr "(<i>encolle de ombros</i>) Dáme que non nos queda outra."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:789
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:806
 msgid ""
 "Come on, guys, it will be great! Those orcs will never know what hit them! "
 "Together we’ll rip them to shreds! If you are planning to retire after this, "
@@ -5426,7 +5414,7 @@ msgstr ""
 "coas hordas dos orcos</i>»!"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:794
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:811
 msgid ""
 "Very well, Tallin. We accept under the terms that your people will forever "
 "leave us in peace after this."
@@ -5435,7 +5423,7 @@ msgstr ""
 "nos deixe en paz para sempre."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:799
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:816
 msgid ""
 "Ro’Arthian, I am not of royal blood, but I am a man of my word. I will "
 "uphold the oath I have given even at the cost of my life."
@@ -5444,12 +5432,12 @@ msgstr ""
 "xuramento, aínda que sexa a costa da miña vida."
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:804
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:821
 msgid "Very well. The orcish hosts shall feel our wrath!"
 msgstr "Moi ben. A nosa ira caerá sobre as hordas dos orcos!"
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:809
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:826
 msgid ""
 "Wait a second, Tallin. Are you saying that we should abandon our homeland to "
 "these wretched mages?!"
@@ -5461,7 +5449,7 @@ msgstr ""
 #. [message]: speaker=Eryssa
 #. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:814
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:831
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:982
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:451
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:905
@@ -5469,7 +5457,7 @@ msgid "(<i>Snicker</i>)"
 msgstr "(<i>ri polo baixo</i>)"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:819
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:836
 msgid ""
 "Chief Stalrag, it is said that to save a family, we should be willing to "
 "sacrifice one person; to save a town we should be willing to sacrifice a "
@@ -5481,13 +5469,13 @@ msgstr ""
 "disposto a sacrificar unha cidade."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:824
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:841
 msgid "Now, Stalrag, it is up to you. Do you want to save Knalga or not?"
 msgstr ""
 "Pero agora, Estalar, de ti depende. Queres ou non queres salvar Neilga?"
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:829
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:846
 msgid ""
 "Well Tallin, if you put it that way... We don’t like it, but if that’s what "
 "is needed to save Knalga, we shall do it."
@@ -5496,7 +5484,7 @@ msgstr ""
 "nesesario para salvar Neilgha, que así sexa."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:834
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:851
 msgid ""
 "Thank you, Stalrag. I am sure that the sacrifice of you and your people will "
 "always be remembered."
@@ -5505,12 +5493,12 @@ msgstr ""
 "xamais será esquecido."
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:839
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:856
 msgid "(<i>Mumbles</i>) Yeah, great compensation..."
 msgstr "(<i>polo baixo</i>) Suponse que iso me ten que faser sentir mellor?"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:844
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:861
 msgid ""
 "I have the power to control many creatures, such as Gryphons, Trolls and "
 "Ogres. So while I am with you they shall be at your command."
@@ -5519,12 +5507,12 @@ msgstr ""
 "Así que mentres estea contigo estarán ás túas ordes."
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:849
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:866
 msgid "The Shinsplitters will be at your service, Tallin."
 msgstr "Os creba cabesas estaremos ao teu serviso, Talin."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:854
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:871
 msgid ""
 "My thanks, Stalrag and Ro’Arthian. However, I have sufficient forces under "
 "my control presently and I think that merging our forces will just create "
@@ -5537,7 +5525,7 @@ msgstr ""
 "teus trolles e ogros, ata que sexan necesarios."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:864
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:881
 msgid ""
 "Great. Now let’s get back to the caves and start planning the best way teach "
 "those orcs a lesson they will never forget!"
@@ -5546,12 +5534,12 @@ msgstr ""
 "ensinarlles a eses orcos unha lección que nunca esquecerán!"
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:877
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:894
 msgid "Farewell, my friends. I now go to join my fallen brethren."
 msgstr "Ata a vista, amigos. Vou unirme aos meus irmáns caídos."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:882
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:899
 msgid ""
 "No! If Stalrag dies now none of his men will follow us. We are finished."
 msgstr ""
@@ -6610,9 +6598,14 @@ msgstr "Xamais! Négome rotundamente a pronunciar esas palabras malditas!"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:430
+#, fuzzy
+#| msgid ""
+#| "No art in itself is ever evil, my boy; evil or good is in is the use to "
+#| "which it is put. But now is not the time to argue; see how the arms of "
+#| "this creature reach for us! Quickly, we must defeat this creature!"
 msgid ""
-"No art in itself is ever evil, my boy; evil or good is in is the use to "
-"which it is put. But now is not the time to argue; see how the arms of this "
+"No art in itself is ever evil, my boy; evil or good is in the use to which "
+"it is put. But now is not the time to argue; see how the arms of this "
 "creature reach for us! Quickly, we must defeat this creature!"
 msgstr ""
 "Ningunha arte é malvada de por si, rapaz. O mal ou o ben dependen do uso que "
@@ -7256,10 +7249,15 @@ msgstr "E iso que ten que ver comigo?"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:289
+#, fuzzy
+#| msgid ""
+#| "There is a large elvish force not far from here who — we believe anyway — "
+#| "has been sent to free you. We were hoping if we could secure your release "
+#| "you guys would help us crush the orcish host."
 msgid ""
 "There is a large elvish force not far from here who — we believe anyway — "
 "has been sent to free you. We were hoping if we could secure your release "
-"you guys would help us crush the orcish host."
+"you would help us crush the orcish host."
 msgstr ""
 "Hai un gran exército de elfos non lonxe de aquí, e cremos que foi enviado "
 "coa misión de liberarte ou de pagar o rescate. Esperabamos que se te "
@@ -7394,7 +7392,9 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:456
-msgid "I can see the dwarvish defenses just ahead. Lets go!"
+#, fuzzy
+#| msgid "I can see the dwarvish defenses just ahead. Lets go!"
+msgid "I can see the dwarvish defenses just ahead. Let’s go!"
 msgstr "Xa podo ver as defensas dos ananos aí diante. Vamos!"
 
 #. [scenario]: id=09b_Judgment
@@ -7607,10 +7607,17 @@ msgstr "Queredes dicir que siga practicando a escura arte da nigromancia?"
 
 #. [message]: speaker=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:214
+#, fuzzy
+#| msgid ""
+#| "Even the foulest of weapons can be put to good use, Tallin. Poison "
+#| "generally kills, but it can also be used to heal. In the same way, "
+#| "although this art is usually practiced by the most power-hungry and "
+#| "corrupt, it may still may turned to the ends of good by one with the "
+#| "strength of will and soul-depth you have gained through your suffering."
 msgid ""
 "Even the foulest of weapons can be put to good use, Tallin. Poison generally "
 "kills, but it can also be used to heal. In the same way, although this art "
-"is usually practiced by the most power-hungry and corrupt, it may still may "
+"is usually practiced by the most power-hungry and corrupt, it may still be "
 "turned to the ends of good by one with the strength of will and soul-depth "
 "you have gained through your suffering."
 msgstr ""
@@ -7706,10 +7713,15 @@ msgstr ""
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:49
+#, fuzzy
+#| msgid ""
+#| "It was a ploy. Nae sooner ha’ we thinned the ranks of the northern "
+#| "defenders then a small, hardened group of trolls smashed through the "
+#| "defenses and made their way straight for your gold."
 msgid ""
-"It was a ploy. Nae sooner ha’ we thinned the ranks of the northern defenders "
-"then a small, hardened group of trolls smashed through the defenses and made "
-"their way straight for your gold."
+"It was a ploy. Nae sooner than we ha’ thinned the ranks of the northern "
+"defenders, a small, hardened group of trolls smashed through the defenses "
+"and made their way straight for your gold."
 msgstr ""
 "Foi unha estrataxema. En canto baixamos as defensas no norte, apareseu un "
 "pequeno grupo de trolles, atravesaron as defensas e foron directos a polo "
@@ -9301,8 +9313,12 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:636
+#, fuzzy
+#| msgid ""
+#| "Ro’Arthian’s brother, Ro’Sothian went south with another crew of trolls, "
+#| "ogres and mages. Tallin himself led the western group."
 msgid ""
-"Ro’Arthian’s brother, Ro’Sothian went south with another crew of trolls, "
+"Ro’Arthian’s brother, Ro’Sothian, went south with another crew of trolls, "
 "ogres and mages. Tallin himself led the western group."
 msgstr ""
 "O irmán de Ardian, Sodian, foi ao sur con outra manchea de trolles, ogros e "
@@ -9867,9 +9883,13 @@ msgstr ""
 
 #. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:256
+#, fuzzy
+#| msgid ""
+#| "Knowing you and your spirit of adventure, Elenia, I am certain that you "
+#| "are gonna be back sooner or later."
 msgid ""
-"Knowing you and your spirit of adventure, Elenia, I am certain that you are "
-"gonna be back sooner or later."
+"Knowing you and your spirit of adventure, Elenia, I am certain that you will "
+"be back sooner or later."
 msgstr ""
 "Coñecéndote a ti e ao teu espírito aventureiro, estou segura de que volverás "
 "antes ou despois."
@@ -9895,8 +9915,12 @@ msgstr "Cras?"
 
 #. [message]: id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:285
+#, fuzzy
+#| msgid ""
+#| "I am sorry, Tallin but me and my friends had better be getting back to "
+#| "our people."
 msgid ""
-"I am sorry, Tallin but me and my friends had better be getting back to our "
+"I’m sorry, Tallin, but me and my friends better be getting back to our "
 "people."
 msgstr ""
 "Síntoo, Talin, pero nós os draconiáns será mellor que volvamos co resto do "
@@ -9981,8 +10005,12 @@ msgstr ""
 
 #. [message]: id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:334
+#, fuzzy
+#| msgid ""
+#| "Thank you father, and thank you again, Tallin for all that you have done, "
+#| "both for the world of the living and the dead."
 msgid ""
-"Thank you father, and thank you again, Tallin for all that you have done, "
+"Thank you, Father, and thank you again, Tallin, for all that you have done, "
 "both for the world of the living and the dead."
 msgstr ""
 "Grazas, pai, e grazas de novo, Talin, por todo canto fixeches, tanto no "
@@ -10646,6 +10674,54 @@ msgstr "Malditos, pagaredes por esta! <b>Adiante, a por eles!</b>"
 msgid "Arthian"
 msgstr "Ardian"
 
+#~ msgid "HAHAHA, FOOLS, YOU THINK YOU CAN KILL ME?"
+#~ msgstr "<b>Ha ha ha ha! Parvos, pensades que me podedes matar?</b>"
+
+#~ msgid "HAHAHAHA!"
+#~ msgstr "<b>Ha ha ha ha!</b>"
+
+#~ msgid "What the...!"
+#~ msgstr "Pero que demo…"
+
+#~ msgid "How can it be?! Our axes and hammers are failing."
+#~ msgstr "Como pode ser?! Os nosos machados e martelos non funcionaron."
+
+#~ msgid ""
+#~ "Blast it! Now where did he go? Let’s find him and try something else!"
+#~ msgstr "Recoiro! Onde foi agora? Atopémolo e probemos con outra cousa!"
+
+#~ msgid "HAHAHA, I CAN NEVER BE DESTROYED!"
+#~ msgstr "<b>Ha ha ha ha ha! Nunca me poderedes destruír!</b>"
+
+#~ msgid "Oh yes you will! But... how?"
+#~ msgstr "Oh, destruír destruirémoste! Pero… como?"
+
+#~ msgid "Well, it sure isn’t gonna be done with a blade."
+#~ msgstr "Ben, o que está claro é que <i>non</i> vai ser cunha folla."
+
+#~ msgid "And look, he’s gone. Now we gotta find him all over again!"
+#~ msgstr "E mira, marchou. Agora temos que volver atopalo desde cero!"
+
+#~ msgid "COME AND GET ME!"
+#~ msgstr "<b>Vide e collédeme!</b>"
+
+#~ msgid "Oh darn, he disappeared. Let’s find him and try a different weapon."
+#~ msgstr ""
+#~ "Oh, xa estamos, desapareceu. Busquémolo e provemos unha arma distinta."
+
+#~ msgid "HAHAHAHA, I AM IMMORTAL!"
+#~ msgstr "<b>Ha ha ha ha ha! Son inmortal!</b>"
+
+#~ msgid ""
+#~ "Look, he disappeared again. Let’s find him and try using a different "
+#~ "weapon on him."
+#~ msgstr ""
+#~ "Mira, volveu desaparecer. Vamos buscalo e probar cun arma distinta desta "
+#~ "vez."
+
+#~ msgid "What the—"
+#~ msgstr "Pero que demo…"
+
 #~ msgid "Wow, this place is interesting."
 #~ msgstr "Interesante este lugar."
 
@@ -10782,9 +10858,6 @@ msgstr "Ardian"
 
 #~ msgid "EEEEEE!"
 #~ msgstr "Eh!"
-
-#~ msgid "AHHHH!"
-#~ msgstr "<b>Ah!</b>"
 
 #~ msgid "... Wait a second, who are you?"
 #~ msgstr "Un momento, ti quen es?"

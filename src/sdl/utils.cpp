@@ -18,6 +18,7 @@
  */
 
 #include "global.hpp"
+#include "color_range.hpp"
 
 #include "sdl/utils.hpp"
 #include "sdl/alpha.hpp"
@@ -73,6 +74,18 @@ SDL_Color int_to_color(const Uint32 rgb)
 	result.unused = SDL_ALPHA_OPAQUE;
 #endif
 	return result;
+}
+
+SDL_Color string_to_color(const std::string& color_string)
+{
+	SDL_Color color;
+
+	std::vector<Uint32> temp_rgb;
+	if(string2rgb(color_string, temp_rgb) && !temp_rgb.empty()) {
+		color = int_to_color(temp_rgb[0]);
+	}
+
+	return color;
 }
 
 SDL_Color create_color(const unsigned char red

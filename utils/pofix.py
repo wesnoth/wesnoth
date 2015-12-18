@@ -114,6 +114,16 @@ game_stringfixes = {
 ("$unit.type", "$unit.language_name"),
 ),
 
+"wesnoth-units" : (
+# conversion added in 1.12.5+dev
+("Ghazis are", "Ghazi are"),
+("Hakims are", "Hakim are"),
+("Shujas are", "Shuja are"),
+("Mudafis excel", "Mudafi excel"),
+("uses to this advantage", "uses this to their advantage"),
+
+),
+
 "wesnoth-utbs" : (
 # fixes added in 1.12.0+dev
 ("On the tallest peak was build", "On the tallest peak was built"),
@@ -140,7 +150,7 @@ website_mode = 0
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1283156523  # Mo 30 Aug 2010 08:22:03 UTC
+timecheck = 1447845528  # Wed Nov 18 11:18:48 2015
 
 import os, sys, time, stat, re, argparse
 try:

@@ -537,7 +537,7 @@ void load_settings()
  * @begin{parent}{name="generic/"}
  * @begin{tag}{name="state"}{min=0}{max=1}
  * Definition of a state. A state contains the info what to do in a state.
- * Atm this is rather focussed on the drawing part, might change later.
+ * Atm this is rather focused on the drawing part, might change later.
  * Keys:
  * @begin{table}{config}
  *     draw & section & &                 Section with drawing directions for a

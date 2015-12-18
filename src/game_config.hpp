@@ -135,7 +135,7 @@ namespace game_config
 	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 
 	/** observer team name used for observer team chat */
-	extern const std::string observer_team_id;
+	extern const std::string observer_team_name;
 
 	/**
 	 * The maximum number of hexes on a map and items in an array and also used

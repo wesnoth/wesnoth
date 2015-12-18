@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2013-02-07 15:14+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -182,70 +182,75 @@ msgstr "退出編輯器"
 msgid "File"
 msgstr "檔案"
 
+#. [menu]: id=menu-editor-recent
+#: data/themes/editor.cfg:72
+msgid "Load Recent"
+msgstr ""
+
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:82
+#: data/themes/editor.cfg:90
 msgid "Map"
 msgstr "地圖"
 
 #. [menu]: id=menu-unit-facing
-#: data/themes/editor.cfg:90
+#: data/themes/editor.cfg:98
 msgid "Unit Facing"
 msgstr ""
 
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:96
+#: data/themes/editor.cfg:104
 #, fuzzy
 #| msgid "Delay transition updates"
 msgid "Transition Update"
 msgstr "延遲更新"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:103
+#: data/themes/editor.cfg:111
 msgid "Window"
 msgstr "視窗"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:112
+#: data/themes/editor.cfg:120
 msgid "Areas"
 msgstr ""
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:120
+#: data/themes/editor.cfg:128
 msgid "Assign Local Time"
 msgstr ""
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:126
+#: data/themes/editor.cfg:134
 msgid "Assign Local Time Schedule"
 msgstr ""
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:134
+#: data/themes/editor.cfg:142
 msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:152
+#: data/themes/editor.cfg:160
 msgid "villages"
 msgstr "村莊"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:169
+#: data/themes/editor.cfg:177
 msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:448
+#: data/themes/editor.cfg:456
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:459
+#: data/themes/editor.cfg:467
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:465
+#: data/themes/editor.cfg:473
 msgid "Assign Time Schedule"
 msgstr ""
 
@@ -301,105 +306,115 @@ msgstr "離開"
 msgid "No editor time-of-day found."
 msgstr "沒有找到時間編輯器。"
 
-#: src/editor/controller/editor_controller.cpp:1101
+#: src/editor/controller/editor_controller.cpp:1113
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1102
+#: src/editor/controller/editor_controller.cpp:1114
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1118
+#: src/editor/controller/editor_controller.cpp:1130
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1119
+#: src/editor/controller/editor_controller.cpp:1131
 msgid "Name:"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:290
+#: src/editor/map/context_manager.cpp:305
 msgid "(New Map)"
 msgstr "（新地圖）"
 
-#: src/editor/map/context_manager.cpp:186
+#: src/editor/map/context_manager.cpp:148
+#, fuzzy
+#| msgid "Battle for Wesnoth Map Editor"
+msgid "The Battle for Wesnoth"
+msgstr "Battle for Wesnoth Map Editor"
+
+#: src/editor/map/context_manager.cpp:192
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
 msgstr "選擇地圖載入"
 
-#: src/editor/map/context_manager.cpp:292
+#: src/editor/map/context_manager.cpp:307
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Scenario)"
 msgstr "（新地圖）"
 
-#: src/editor/map/context_manager.cpp:326
+#: src/editor/map/context_manager.cpp:334
+msgid "No Recent Files"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:371
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(Unnamed Area)"
 msgstr "（新地圖）"
 
-#: src/editor/map/context_manager.cpp:354
+#: src/editor/map/context_manager.cpp:400
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "（新地圖）"
 
-#: src/editor/map/context_manager.cpp:420
+#: src/editor/map/context_manager.cpp:466
 msgid "Choose a Mask to Apply"
 msgstr "選擇要套用的遮罩"
 
-#: src/editor/map/context_manager.cpp:427
+#: src/editor/map/context_manager.cpp:473
 msgid "Error loading mask"
 msgstr "讀取遮罩時錯誤"
 
-#: src/editor/map/context_manager.cpp:446
+#: src/editor/map/context_manager.cpp:492
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:446
+#: src/editor/map/context_manager.cpp:492
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:457
+#: src/editor/map/context_manager.cpp:503
 msgid "Choose Target Map"
 msgstr "選擇目標地圖"
 
-#: src/editor/map/context_manager.cpp:464
-#: src/editor/map/context_manager.cpp:899
+#: src/editor/map/context_manager.cpp:510
+#: src/editor/map/context_manager.cpp:950
 msgid "Error loading map"
 msgstr "讀取地圖錯誤"
 
-#: src/editor/map/context_manager.cpp:581
+#: src/editor/map/context_manager.cpp:627
 msgid "Save the Map As"
 msgstr "另存地圖"
 
-#: src/editor/map/context_manager.cpp:585
-#: src/editor/map/context_manager.cpp:613
+#: src/editor/map/context_manager.cpp:631
+#: src/editor/map/context_manager.cpp:659
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "地圖名稱已存在，確定要覆蓋？"
 
-#: src/editor/map/context_manager.cpp:609
+#: src/editor/map/context_manager.cpp:655
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save the Scenario As"
 msgstr "另存地圖"
 
-#: src/editor/map/context_manager.cpp:648
+#: src/editor/map/context_manager.cpp:694
 msgid "No random map generators found."
 msgstr "沒有找到隨機地圖產生器？"
 
-#: src/editor/map/context_manager.cpp:662
-#: src/editor/map/context_manager.cpp:666
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:712
 msgid "Map creation failed."
 msgstr "創造地圖失敗。"
 
-#: src/editor/map/context_manager.cpp:679
+#: src/editor/map/context_manager.cpp:726
 msgid "Unsaved Changes"
 msgstr "未儲存的更動"
 
-#: src/editor/map/context_manager.cpp:680
+#: src/editor/map/context_manager.cpp:727
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -407,43 +422,55 @@ msgstr "未儲存的更動"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "您確定要放棄所有對地圖的更動？"
 
-#: src/editor/map/context_manager.cpp:777
+#: src/editor/map/context_manager.cpp:826
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "這個地圖已被開啟。"
 
-#: src/editor/map/context_manager.cpp:799
-#: src/editor/map/context_manager.cpp:854
+#: src/editor/map/context_manager.cpp:848
+#: src/editor/map/context_manager.cpp:903
 msgid "This map is already open."
 msgstr "這個地圖已被開啟。"
 
-#: src/editor/map/context_manager.cpp:820
+#: src/editor/map/context_manager.cpp:869
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "地圖已儲存。"
 
-#: src/editor/map/context_manager.cpp:834
+#: src/editor/map/context_manager.cpp:883
 msgid "Map saved."
 msgstr "地圖已儲存。"
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:928
 msgid "Loaded embedded map data"
 msgstr "已讀取嵌入地圖的資料"
 
-#: src/editor/map/context_manager.cpp:878
-#: src/editor/map/context_manager.cpp:892
+#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:943
 msgid "Map loaded from scenario"
 msgstr "已從任務中讀取地圖"
 
-#: src/editor/map/context_manager.cpp:888
+#: src/editor/map/context_manager.cpp:939
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 "已讀取地圖引用檔案:\n"
 "$new"
+
+#: src/editor/map/context_manager.cpp:1025
+#, fuzzy
+#| msgid "(New Map)"
+msgid "New Map"
+msgstr "（新地圖）"
+
+#: src/editor/map/context_manager.cpp:1025
+#, fuzzy
+#| msgid "(New Map)"
+msgid "New Scenario"
+msgstr "（新地圖）"
 
 #: src/editor/map/editor_map.cpp:152
 msgid "Player"
@@ -453,33 +480,33 @@ msgstr "玩家"
 msgid "The size of the target map is different from the current map"
 msgstr "目標地圖尺寸與當前地圖不同"
 
-#: src/editor/map/map_context.cpp:132
+#: src/editor/map/map_context.cpp:134
 msgid "File not found"
 msgstr "檔案不存在"
 
-#: src/editor/map/map_context.cpp:138
+#: src/editor/map/map_context.cpp:140
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "空白地圖檔案"
 
-#: src/editor/map/map_context.cpp:184
+#: src/editor/map/map_context.cpp:189
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr "這份地圖檔案像是一個任務，但是地圖資料連結一個不存在的檔案。"
 
-#: src/editor/map/map_context.cpp:524
+#: src/editor/map/map_context.cpp:529
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "無法儲存地圖： $msg"
 
-#: src/editor/map/map_context.cpp:551
+#: src/editor/map/map_context.cpp:556
 msgid "Could not save into scenario"
 msgstr "無法儲存地圖"
 
-#: src/editor/map/map_context.cpp:558
+#: src/editor/map/map_context.cpp:564
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖： $msg"
 
@@ -632,9 +659,6 @@ msgstr "玩家 $player_number"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "選擇你最愛的語言"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Battle for Wesnoth Map Editor"
 
 #~ msgid "Which Player?"
 #~ msgstr "那個玩家？"

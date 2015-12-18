@@ -91,7 +91,7 @@ private:
 	enum tstate {
 		ENABLED,
 		DISABLED,
-		FOCUSSED,
+		FOCUSED,
 		COUNT
 	};
 

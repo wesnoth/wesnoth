@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2014-03-16 18:27+0100\n"
 "Last-Translator: Crommy\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
@@ -31,7 +31,9 @@ msgstr "SchwS"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Herausfordernd)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -41,7 +43,9 @@ msgstr "Grunzer"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Schwierig)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -51,7 +55,9 @@ msgstr "Krieger"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-msgid "(Nightmare)"
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
 msgstr "(Albtraum)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
@@ -235,12 +241,22 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:107
+#, fuzzy
+#| msgid ""
+#| "The peace treaty still held however, partially because the treaty — "
+#| "although arranged by the Northern Alliance — was between the local earls "
+#| "and the orcish tribes and didn’t have any direct connection with the "
+#| "Northern Alliance. The other — and perhaps the main — reason why the "
+#| "treaty held was that with the death of the Black Eye, the unity of the "
+#| "orcs was shattered and they once again descended into inner squabbling. "
+#| "Thus the years that followed were relatively peaceful and prosperous — at "
+#| "least for the humans."
 msgid ""
 "The peace treaty still held however, partially because the treaty — although "
 "arranged by the Northern Alliance — was between the local earls and the "
 "orcish tribes and didn’t have any direct connection with the Northern "
 "Alliance. The other — and perhaps the main — reason why the treaty held was "
-"that with the death of the Black Eye, the unity of the orcs was shattered "
+"that with the death of the Black-Eye, the unity of the orcs was shattered "
 "and they once again descended into inner squabbling. Thus the years that "
 "followed were relatively peaceful and prosperous — at least for the humans."
 msgstr ""
@@ -1445,9 +1461,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
+#, fuzzy
+#| msgid ""
+#| "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the "
+#| "shamans and his warriors set off to Tirigaz."
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
-"and his warriors set off to Tirigaz."
+"and his warriors, set off to Tirigaz."
 msgstr ""
 "Die meisten seines Volkes in Barag Gór zurücklassend, setzte sich Kapou’e "
 "mit seiner schlagkräftigen Garde und den Schamanen in Richtung Tirigaz in "
@@ -1999,7 +2019,7 @@ msgstr ""
 msgid "(<i>Puke</i>)"
 msgstr "(<i>Würg</i>)"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:399
 msgid ""
 "Hold it right there! This oasis is ours! Begone or you all will be killed!"
@@ -2017,7 +2037,7 @@ msgstr ""
 "Du, du… du Mensch! Wir sind mitten in einem Sandsturm, ohne Nahrung, ohne "
 "Wasser. Wir können nicht weiterziehen, ohne eine kurze Pause an dieser Oase."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:409
 msgid "I don’t care, get lost!"
 msgstr "Ist mir egal, verschwindet!"
@@ -2153,7 +2173,7 @@ msgstr ""
 "stark genug, um es mit einer Bande von Elfen aufzunehmen. Falls wir wirklich "
 "auf sie stoßen sollten, hauen wir sie eben in Stücke!"
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
 #, fuzzy
 #| msgid ""
@@ -2164,7 +2184,7 @@ msgstr ""
 "Elfen! Pirk, du hattest Recht! Dieser Ort ist verseucht mit diesen "
 "dünnhäutigen Schwächlingen."
 
-#. [message]: speaker=unit
+#. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
 msgid ""
 "Elves! You were right, Gork, this place is infested with the skinny "
@@ -2173,7 +2193,7 @@ msgstr ""
 "Elfen! Pirk, du hattest Recht! Dieser Ort ist verseucht mit diesen "
 "dünnhäutigen Schwächlingen."
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:213
 msgid "Blast it, the orcs have discovered us."
 msgstr "Mist, die Orks haben uns entdeckt."
@@ -2183,7 +2203,7 @@ msgstr "Mist, die Orks haben uns entdeckt."
 msgid "What is your purpose for trespassing on orcish territory?"
 msgstr "Warum dringt ihr in unser Land ein?"
 
-#. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
 msgid "Fool, do you really think we are going to tell you?"
 msgstr "Narr, denkst du wirklich, wir würden dir darauf antworten?"
@@ -2537,11 +2557,17 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
+#, fuzzy
+#| msgid ""
+#| "Leave your people here Kapou’e — they are safe for the moment — and go "
+#| "defend Prestim. In the meantime, now that the council is complete again, "
+#| "we will decide. We may have to form the Great Horde again, and give you "
+#| "the leadership on it."
 msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
-"leadership on it."
+"leadership of it."
 msgstr ""
 "Euer Stamm ist müde, Kapou’e. Für den Augenblick sind sie hier sicher und "
 "sollten sich ausruhen. Ihr und eure Grunzer aber müsst zur Verteidigung von "
@@ -4075,9 +4101,17 @@ msgstr "Verdienste?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:234
+#, fuzzy
+#| msgid ""
+#| "Well let’s see, first he betrays the trust of his sworn sovereign and "
+#| "becomes no less than a boot-licking spy for the humans. Then goes on to "
+#| "engineer the death of half of the Great Council and in doing so makes "
+#| "himself directly responsible for the deaths of hundreds of orcs. And best "
+#| "of all, he is directly responsible for a bloody civil war right at the "
+#| "time when his people are on the edge of total extermination!"
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
-"becomes no less than a boot-licking spy for the humans. Then goes on to "
+"becomes no less than a boot-licking spy for the humans. Then he goes on to "
 "engineer the death of half of the Great Council and in doing so makes "
 "himself directly responsible for the deaths of hundreds of orcs. And best of "
 "all, he is directly responsible for a bloody civil war right at the time "

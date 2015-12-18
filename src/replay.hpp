@@ -83,6 +83,7 @@ public:
 		@returns true if a message location was added
 	*/
 	bool add_chat_message_location();
+	bool add_chat_message_location(int pos);
 	void speak(const config& cfg);
 	const std::vector<chat_msg>& build_chat_log();
 

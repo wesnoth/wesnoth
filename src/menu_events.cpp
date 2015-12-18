@@ -278,7 +278,7 @@ void menu_handler::status_table(int selected)
 		}
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
 			<< leader_name << COLUMN_SEPARATOR
-			<< (data.teamname.empty() ? teams()[n].team_id() : data.teamname)
+			<< (data.teamname.empty() ? teams()[n].team_name() : data.teamname)
 			<< COLUMN_SEPARATOR;
 
 		if(!known && !game_config::debug) {
@@ -511,7 +511,7 @@ bool menu_handler::has_friends() const
 	}
 
 	for(size_t n = 0; n != teams().size(); ++n) {
-		if(n != gui_->viewing_team() && teams()[gui_->viewing_team()].team_id() == teams()[n].team_id() && teams()[n].is_network()) {
+		if(n != gui_->viewing_team() && teams()[gui_->viewing_team()].team_name() == teams()[n].team_name() && teams()[n].is_network()) {
 			return true;
 		}
 	}
@@ -1048,15 +1048,15 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	std::string label = old_label ? old_label->text() : "";
 
 	if(gui2::tedit_label::execute(label, team_only, gui_->video())) {
-		std::string team_id;
+		std::string team_name;
 		SDL_Color color = font::LABEL_COLOR;
 
 		if (team_only) {
-			team_id = gui_->labels().team_id();
+			team_name = gui_->labels().team_name();
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_id, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if (res)
 			resources::recorder->add_label(res);
 	}
@@ -1067,8 +1067,8 @@ void menu_handler::clear_labels()
 	if (gui_->team_valid()
 	   && !board().is_observer())
 	{
-		gui_->labels().clear(gui_->current_team_id(), false);
-		resources::recorder->clear_labels(gui_->current_team_id(), false);
+		gui_->labels().clear(gui_->current_team_name(), false);
+		resources::recorder->clear_labels(gui_->current_team_name(), false);
 	}
 }
 	
@@ -2434,7 +2434,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 
 	if(private_message) {
 		if (board().is_observer()) {
-			cfg["to_sides"] = game_config::observer_team_id;
+			cfg["to_sides"] = game_config::observer_team_name;
 		} else {
 			cfg["to_sides"] = teams()[gui_->viewing_team()].allied_human_teams();
 		}

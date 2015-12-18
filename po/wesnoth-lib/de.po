@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2014-03-23 13:50+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -24,7 +24,7 @@ msgstr ""
 #. [terrain_type]: id=deep_water_medium
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:20 data/core/terrain.cfg:31 data/core/terrain.cfg:42
-#: data/core/terrain.cfg:2372 data/core/terrain.cfg:2373
+#: data/core/terrain.cfg:2384 data/core/terrain.cfg:2385
 msgid "Deep Water"
 msgstr "Tiefes Wasser"
 
@@ -48,7 +48,7 @@ msgstr "Tropischer Meeresabgrund"
 #. [terrain_type]: id=shallow_water
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:53 data/core/terrain.cfg:64 data/core/terrain.cfg:75
-#: data/core/terrain.cfg:2331 data/core/terrain.cfg:2332
+#: data/core/terrain.cfg:2343 data/core/terrain.cfg:2344
 msgid "Shallow Water"
 msgstr "Seichtes Wasser"
 
@@ -94,9 +94,8 @@ msgstr ""
 #. [terrain_type]: id=medium_reef
 #. [terrain_type]: id=reef
 #. [terrain_type]: id=tropical_reef
-#: data/core/terrain.cfg:98 data/core/terrain.cfg:109
-#: data/core/terrain.cfg:120 data/core/terrain.cfg:2286
-#: data/core/terrain.cfg:2287
+#: data/core/terrain.cfg:98 data/core/terrain.cfg:109 data/core/terrain.cfg:120
+#: data/core/terrain.cfg:2298 data/core/terrain.cfg:2299
 msgid "Coastal Reef"
 msgstr "Küstennahes Riff"
 
@@ -120,7 +119,7 @@ msgstr "Tropisches küstennahes Riff"
 #. [terrain_type]: id=swamp_water
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:133 data/core/terrain.cfg:144
-#: data/core/terrain.cfg:2315 data/core/terrain.cfg:2316
+#: data/core/terrain.cfg:2327 data/core/terrain.cfg:2328
 msgid "Swamp"
 msgstr "Sumpf"
 
@@ -254,7 +253,7 @@ msgstr ""
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
-#: data/core/terrain.cfg:304 data/core/terrain.cfg:2273
+#: data/core/terrain.cfg:304 data/core/terrain.cfg:2285
 msgid "Sand"
 msgstr "Sand"
 
@@ -265,7 +264,7 @@ msgstr "Sandstrand"
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
-#: data/core/terrain.cfg:309 data/core/terrain.cfg:2277
+#: data/core/terrain.cfg:309 data/core/terrain.cfg:2289
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -416,8 +415,8 @@ msgstr "Morscher Baumriese"
 #: data/core/terrain.cfg:633 data/core/terrain.cfg:645
 #: data/core/terrain.cfg:657 data/core/terrain.cfg:669
 #: data/core/terrain.cfg:681 data/core/terrain.cfg:693
-#: data/core/terrain.cfg:705 data/core/terrain.cfg:2398
-#: data/core/terrain.cfg:2399
+#: data/core/terrain.cfg:705 data/core/terrain.cfg:2410
+#: data/core/terrain.cfg:2411
 msgid "Forest"
 msgstr "Wald"
 
@@ -502,8 +501,8 @@ msgstr "Verschneiter Mischwald"
 #. [terrain_type]: id=hills_regular
 #. [terrain_type]: id=snow_hills
 #: data/core/terrain.cfg:721 data/core/terrain.cfg:731
-#: data/core/terrain.cfg:751 data/core/terrain.cfg:2301
-#: data/core/terrain.cfg:2302
+#: data/core/terrain.cfg:751 data/core/terrain.cfg:2313
+#: data/core/terrain.cfg:2314
 msgid "Hills"
 msgstr "Hügel"
 
@@ -537,7 +536,7 @@ msgstr "Verschneite Hügel"
 #: data/core/terrain.cfg:766 data/core/terrain.cfg:776
 #: data/core/terrain.cfg:786 data/core/terrain.cfg:1021
 #: data/core/terrain.cfg:1031 data/core/terrain.cfg:1042
-#: data/core/terrain.cfg:2358 data/core/terrain.cfg:2359
+#: data/core/terrain.cfg:2370 data/core/terrain.cfg:2371
 msgid "Mountains"
 msgstr "Berge"
 
@@ -581,7 +580,7 @@ msgstr "Lichtstrahl"
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave_floor
 #: data/core/terrain.cfg:825 data/core/terrain.cfg:835
-#: data/core/terrain.cfg:2258 data/core/terrain.cfg:2259
+#: data/core/terrain.cfg:2270 data/core/terrain.cfg:2271
 msgid "Cave"
 msgstr "Höhle"
 
@@ -782,8 +781,8 @@ msgstr "Unpassierbar-Overlay"
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1142 data/core/terrain.cfg:2198
-#: data/core/terrain.cfg:2209
+#: data/core/terrain.cfg:1142 data/core/terrain.cfg:2210
+#: data/core/terrain.cfg:2221
 msgid "Void"
 msgstr "Nichts"
 
@@ -831,8 +830,8 @@ msgstr "Nichts"
 #: data/core/terrain.cfg:1452 data/core/terrain.cfg:1465
 #: data/core/terrain.cfg:1478 data/core/terrain.cfg:1491
 #: data/core/terrain.cfg:1506 data/core/terrain.cfg:1519
-#: data/core/terrain.cfg:1537 data/core/terrain.cfg:2423
-#: data/core/terrain.cfg:2424
+#: data/core/terrain.cfg:1537 data/core/terrain.cfg:2435
+#: data/core/terrain.cfg:2436
 msgid "Village"
 msgstr "Dorf"
 
@@ -1020,7 +1019,7 @@ msgstr "Winterlager"
 #: data/core/terrain.cfg:1602 data/core/terrain.cfg:1614
 #: data/core/terrain.cfg:1625 data/core/terrain.cfg:1637
 #: data/core/terrain.cfg:1687 data/core/terrain.cfg:1897
-#: data/core/terrain.cfg:2342 data/core/terrain.cfg:2343
+#: data/core/terrain.cfg:2354 data/core/terrain.cfg:2355
 msgid "Castle"
 msgstr "Burg"
 
@@ -1202,18 +1201,32 @@ msgstr "Burgfried-Overlay"
 #. [terrain_type]: id=bridgechasmdiag2
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
+#. [terrain_type]: id=hangingbridge
+#. [terrain_type]: id=hangingbridgediag1
+#. [terrain_type]: id=hangingbridgediag2
+#. [terrain_type]: id=plankbridge
+#. [terrain_type]: id=plankbridgediag1
+#. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
+#. [terrain_type]: id=stonechasmbridge
+#. [terrain_type]: id=stonechasmbridgediag1
+#. [terrain_type]: id=stonechasmbridgediag2
 #: data/core/terrain.cfg:1929 data/core/terrain.cfg:1944
 #: data/core/terrain.cfg:1957 data/core/terrain.cfg:1970
 #: data/core/terrain.cfg:1982 data/core/terrain.cfg:1995
 #: data/core/terrain.cfg:2010 data/core/terrain.cfg:2022
 #: data/core/terrain.cfg:2035 data/core/terrain.cfg:2050
 #: data/core/terrain.cfg:2061 data/core/terrain.cfg:2074
+#: data/core/terrain.cfg:2090 data/core/terrain.cfg:2103
+#: data/core/terrain.cfg:2116 data/core/terrain.cfg:2129
+#: data/core/terrain.cfg:2142 data/core/terrain.cfg:2155
+#: data/core/terrain.cfg:2168 data/core/terrain.cfg:2181
+#: data/core/terrain.cfg:2194
 msgid "Bridge"
 msgstr "Brücke"
 
@@ -1280,16 +1293,16 @@ msgstr "Rundbogenbrücke"
 #. [terrain_type]: id=hangingbridge
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
-#: data/core/terrain.cfg:2090 data/core/terrain.cfg:2102
-#: data/core/terrain.cfg:2114
+#: data/core/terrain.cfg:2091 data/core/terrain.cfg:2104
+#: data/core/terrain.cfg:2117
 msgid "Hanging Bridge"
 msgstr "Hängebrücke"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
-#: data/core/terrain.cfg:2127 data/core/terrain.cfg:2138
-#: data/core/terrain.cfg:2149
+#: data/core/terrain.cfg:2130 data/core/terrain.cfg:2143
+#: data/core/terrain.cfg:2156
 #, fuzzy
 msgid "Stone Chasm Bridge"
 msgstr "Rundbogenbrücke"
@@ -1297,41 +1310,44 @@ msgstr "Rundbogenbrücke"
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
-#: data/core/terrain.cfg:2161 data/core/terrain.cfg:2172
-#: data/core/terrain.cfg:2183
+#: data/core/terrain.cfg:2169 data/core/terrain.cfg:2182
+#: data/core/terrain.cfg:2195
 #, fuzzy
 msgid "Plank Bridge"
 msgstr "Brücke"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2199
+#: data/core/terrain.cfg:2211
 msgid "Off Map"
 msgstr "Jenseits der Karte"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2210
+#: data/core/terrain.cfg:2222
 msgid "Experimental Fake Map Edge"
 msgstr "Experimenteller vorgetäuschter Kartenrand"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
-#: data/core/terrain.cfg:2220 data/gui/default/window/editor_edit_side.cfg:176
+#: data/core/terrain.cfg:2232
+#: data/gui-2/default/window/editor_edit_side.cfg:182
+#: data/gui-2/default/window/mp_create_game.cfg:479
+#: data/gui/default/window/editor_edit_side.cfg:182
 #: data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Schleier der Finsternis"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:2230
+#: data/core/terrain.cfg:2242
 msgid "Fog"
 msgstr "Nebel"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2245 data/core/terrain.cfg:2246
+#: data/core/terrain.cfg:2257 data/core/terrain.cfg:2258
 msgid "Fungus"
 msgstr ""
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2249
+#: data/core/terrain.cfg:2261
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms,\n"
@@ -1346,7 +1362,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:2261
+#: data/core/terrain.cfg:2273
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1367,13 +1383,13 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:2274
+#: data/core/terrain.cfg:2286
 #, fuzzy
 msgid "Sands"
 msgstr "Sand"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:2291
+#: data/core/terrain.cfg:2303
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1385,7 +1401,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:2305
+#: data/core/terrain.cfg:2317
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
 "with enough dips and rises in the ground to provide some cover. Hills are "
@@ -1399,7 +1415,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:2320
+#: data/core/terrain.cfg:2332
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1413,7 +1429,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:2333
+#: data/core/terrain.cfg:2345
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1437,7 +1453,7 @@ msgstr ""
 "Wasser, Naga und Angehörige des Meervolkes haben 60%."
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2348
+#: data/core/terrain.cfg:2360
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -1450,7 +1466,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:2362
+#: data/core/terrain.cfg:2374
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1464,7 +1480,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:2374
+#: data/core/terrain.cfg:2386
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -1475,12 +1491,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2385 data/core/terrain.cfg:2386
+#: data/core/terrain.cfg:2397 data/core/terrain.cfg:2398
 msgid "Flat"
 msgstr "Flachland"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2387
+#: data/core/terrain.cfg:2399
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -1493,7 +1509,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:2400
+#: data/core/terrain.cfg:2412
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -1512,12 +1528,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2410 data/core/terrain.cfg:2411
+#: data/core/terrain.cfg:2422 data/core/terrain.cfg:2423
 msgid "Frozen"
 msgstr "Gefroren"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2413
+#: data/core/terrain.cfg:2425
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -1529,7 +1545,7 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:2426
+#: data/core/terrain.cfg:2438
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -1544,12 +1560,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2436 data/core/terrain.cfg:2437
+#: data/core/terrain.cfg:2448 data/core/terrain.cfg:2449
 msgid "Impassable"
 msgstr "Unpassierbar"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2439
+#: data/core/terrain.cfg:2451
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -1559,12 +1575,12 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2446 data/core/terrain.cfg:2447
+#: data/core/terrain.cfg:2458 data/core/terrain.cfg:2459
 msgid "Unwalkable"
 msgstr "Unbegehbar"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2449
+#: data/core/terrain.cfg:2461
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -1579,12 +1595,12 @@ msgstr ""
 "Hindernis passieren."
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2456 data/core/terrain.cfg:2457
+#: data/core/terrain.cfg:2468 data/core/terrain.cfg:2469
 msgid "Rails"
 msgstr "Schienen"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2459
+#: data/core/terrain.cfg:2471
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
 msgstr ""
@@ -1594,11 +1610,23 @@ msgstr ""
 #. [button]: id=click_dismiss
 #. [button]: id=close_window
 #. [button]: id=ok
+#: data/gui-2/default/widget/window_default.cfg:140
+#: data/gui-2/default/window/addon_description.cfg:555
+#: data/gui-2/default/window/addon_filter_options.cfg:420
+#: data/gui-2/default/window/advanced_graphics_options.cfg:166
+#: data/gui-2/default/window/chat_log.cfg:205
+#: data/gui-2/default/window/game_version.cfg:599
+#: data/gui-2/default/window/gamestate_inspector.cfg:299
+#: data/gui-2/default/window/lobby_main.cfg:625
+#: data/gui-2/default/window/lobby_player_info.cfg:200
+#: data/gui-2/default/window/lua_interpreter.cfg:137
+#: data/gui-2/default/window/message.cfg:137
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_description.cfg:555
 #: data/gui/default/window/addon_filter_options.cfg:420
 #: data/gui/default/window/advanced_graphics_options.cfg:166
 #: data/gui/default/window/chat_log.cfg:205
+#: data/gui/default/window/game_version.cfg:599
 #: data/gui/default/window/gamestate_inspector.cfg:299
 #: data/gui/default/window/lobby_main.cfg:625
 #: data/gui/default/window/lobby_player_info.cfg:200
@@ -1610,6 +1638,10 @@ msgstr "Schließen"
 
 #. [column]
 #. [label]
+#: data/gui-2/default/window/addon_connect.cfg:40
+#: data/gui-2/default/window/mp_connect.cfg:41
+#: data/gui-2/default/window/mp_method_selection.cfg:156
+#: data/gui-2/default/window/mp_server_list.cfg:49
 #: data/gui/default/window/addon_connect.cfg:40
 #: data/gui/default/window/mp_connect.cfg:41
 #: data/gui/default/window/mp_method_selection.cfg:156
@@ -1618,11 +1650,14 @@ msgid "Connect to Server"
 msgstr "Mit einem Server verbinden"
 
 #. [label]
+#: data/gui-2/default/window/addon_connect.cfg:59
 #: data/gui/default/window/addon_connect.cfg:59
 msgid "You will now connect to a server to download add-ons."
 msgstr "Ihr werdet nun mit einem Erweiterungsserver verbunden."
 
 #. [label]
+#: data/gui-2/default/window/addon_connect.cfg:89
+#: data/gui-2/default/window/mp_connect.cfg:90
 #: data/gui/default/window/addon_connect.cfg:89
 #: data/gui/default/window/mp_connect.cfg:90
 msgid "Server:"
@@ -1630,6 +1665,9 @@ msgstr "Server: "
 
 #. [button]: id=remove_addons
 #. [label]
+#: data/gui-2/default/window/addon_connect.cfg:147
+#: data/gui-2/default/window/addon_connect.cfg:148
+#: data/gui-2/default/window/addon_uninstall_list.cfg:51
 #: data/gui/default/window/addon_connect.cfg:147
 #: data/gui/default/window/addon_connect.cfg:148
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -1639,13 +1677,19 @@ msgstr "Erweiterungen entfernen"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
 #. [button]: id=show_help
+#: data/gui-2/default/window/addon_connect.cfg:188
+#: data/gui-2/default/window/title_screen.cfg:179
 #: data/gui/default/window/addon_connect.cfg:188
 #: data/gui/default/window/title_screen.cfg:179
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Help"
 msgstr "Hilfe"
 
 #. [button]: id=ok
+#: data/gui-2/default/window/addon_connect.cfg:202
+#: data/gui-2/default/window/addon_connect.cfg:203
+#: data/gui-2/default/window/mp_connect.cfg:161
+#: data/gui-2/default/window/mp_connect.cfg:162
 #: data/gui/default/window/addon_connect.cfg:202
 #: data/gui/default/window/addon_connect.cfg:203
 #: data/gui/default/window/mp_connect.cfg:161
@@ -1655,27 +1699,66 @@ msgstr "Verbinden"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
+#: data/gui-2/default/window/addon_connect.cfg:217
+#: data/gui-2/default/window/addon_uninstall_list.cfg:174
+#: data/gui-2/default/window/campaign_dialog.cfg:535
+#: data/gui-2/default/window/campaign_difficulty.cfg:256
+#: data/gui-2/default/window/core_dialog.cfg:240
+#: data/gui-2/default/window/custom_tod.cfg:397
+#: data/gui-2/default/window/data_manage.cfg:361
+#: data/gui-2/default/window/depcheck_select_new.cfg:146
+#: data/gui-2/default/window/edit_label.cfg:154
+#: data/gui-2/default/window/edit_text.cfg:130
+#: data/gui-2/default/window/editor_edit_label.cfg:317
+#: data/gui-2/default/window/editor_edit_scenario.cfg:304
+#: data/gui-2/default/window/editor_edit_side.cfg:457
+#: data/gui-2/default/window/editor_generate_map.cfg:215
+#: data/gui-2/default/window/editor_new_map.cfg:125
+#: data/gui-2/default/window/editor_resize_map.cfg:284
+#: data/gui-2/default/window/editor_set_starting_position.cfg:175
+#: data/gui-2/default/window/folder_create.cfg:134
+#: data/gui-2/default/window/game_load.cfg:473
+#: data/gui-2/default/window/game_save.cfg:135
+#: data/gui-2/default/window/joystick_settings.cfg:156
+#: data/gui-2/default/window/label_settings.cfg:149
+#: data/gui-2/default/window/language_selection.cfg:141
+#: data/gui-2/default/window/message.cfg:151
+#: data/gui-2/default/window/mp_change_control.cfg:160
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:485
+#: data/gui-2/default/window/mp_connect.cfg:176
+#: data/gui-2/default/window/mp_create_game.cfg:559
+#: data/gui-2/default/window/mp_create_game_choose_mods.cfg:202
+#: data/gui-2/default/window/mp_join_game_password_prompt.cfg:150
+#: data/gui-2/default/window/mp_login.cfg:274
+#: data/gui-2/default/window/mp_method_selection.cfg:225
+#: data/gui-2/default/window/mp_server_list.cfg:231
+#: data/gui-2/default/window/network_transmission.cfg:114
+#: data/gui-2/default/window/simple_item_selector.cfg:158
+#: data/gui-2/default/window/theme_list.cfg:172
+#: data/gui-2/default/window/unit_attack.cfg:210
+#: data/gui-2/default/window/unit_create.cfg:210
+#: data/gui-2/default/window/unit_create.cfg:211
 #: data/gui/default/window/addon_connect.cfg:217
 #: data/gui/default/window/addon_uninstall_list.cfg:174
-#: data/gui/default/window/campaign_dialog.cfg:538
-#: data/gui/default/window/campaign_difficulty.cfg:223
+#: data/gui/default/window/campaign_dialog.cfg:535
+#: data/gui/default/window/campaign_difficulty.cfg:256
 #: data/gui/default/window/core_dialog.cfg:240
 #: data/gui/default/window/custom_tod.cfg:397
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/depcheck_select_new.cfg:146
 #: data/gui/default/window/edit_label.cfg:154
 #: data/gui/default/window/edit_text.cfg:130
-#: data/gui/default/window/editor_edit_label.cfg:191
+#: data/gui/default/window/editor_edit_label.cfg:317
 #: data/gui/default/window/editor_edit_scenario.cfg:304
-#: data/gui/default/window/editor_edit_side.cfg:488
-#: data/gui/default/window/editor_generate_map.cfg:218
+#: data/gui/default/window/editor_edit_side.cfg:457
+#: data/gui/default/window/editor_generate_map.cfg:215
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
 #: data/gui/default/window/folder_create.cfg:134
-#: data/gui/default/window/game_load.cfg:477
+#: data/gui/default/window/game_load.cfg:471
 #: data/gui/default/window/game_save.cfg:135
-#: data/gui/default/window/joystick_settings.cfg:156
+#: data/gui/default/window/label_settings.cfg:149
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
@@ -1691,28 +1774,34 @@ msgstr "Verbinden"
 #: data/gui/default/window/simple_item_selector.cfg:158
 #: data/gui/default/window/theme_list.cfg:172
 #: data/gui/default/window/unit_attack.cfg:210
-#: data/gui/default/window/unit_create.cfg:210
-#: data/gui/default/window/unit_create.cfg:211 src/construct_dialog.cpp:135
+#: data/gui/default/window/unit_create.cfg:424
+#: data/gui/default/window/unit_create.cfg:425 src/construct_dialog.cpp:135
 #: src/construct_dialog.cpp:138 src/hotkey/hotkey_command.cpp:41
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:88
 #: data/gui/default/window/addon_description.cfg:88
 msgid "Type:"
 msgstr "Typ:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:115
 #: data/gui/default/window/addon_description.cfg:115
 msgid "Status:"
 msgstr "Status:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:146
 #: data/gui/default/window/addon_description.cfg:146
 msgid "Version:"
 msgstr "Version:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:172
+#: data/gui-2/default/window/game_cache_options.cfg:161
+#: data/gui-2/default/window/screenshot_notification.cfg:140
 #: data/gui/default/window/addon_description.cfg:172
 #: data/gui/default/window/game_cache_options.cfg:161
 #: data/gui/default/window/screenshot_notification.cfg:140
@@ -1720,127 +1809,153 @@ msgid "Size:"
 msgstr "Größe:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:202
 #: data/gui/default/window/addon_description.cfg:202
 msgid "Author:"
 msgstr "Autor:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:228
 #: data/gui/default/window/addon_description.cfg:228
 msgid "Downloads:"
 msgstr "Heruntergeladen:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:258
 #: data/gui/default/window/addon_description.cfg:258
 msgid "date^Last updated:"
 msgstr "Aktualisiert am:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:284
 #: data/gui/default/window/addon_description.cfg:284
 msgid "date^First uploaded:"
 msgstr "Veröffentlicht am:"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:329
+#: data/gui-2/default/window/editor_edit_scenario.cfg:142
 #: data/gui/default/window/addon_description.cfg:329
 #: data/gui/default/window/editor_edit_scenario.cfg:142
 msgid "Description:"
 msgstr "Beschreibung:"
 
 #. [scroll_label]: id=description
+#: data/gui-2/default/window/addon_description.cfg:346
 #: data/gui/default/window/addon_description.cfg:346
 msgid "No description available."
 msgstr "Keine Beschreibung verfügbar."
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:376
 #: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
 msgstr "Webseite:"
 
 #. [label]: id=url_none
+#: data/gui-2/default/window/addon_description.cfg:400
 #: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
 msgstr "Keine"
 
 #. [button]: id=url_copy
+#: data/gui-2/default/window/addon_description.cfg:435
 #: data/gui/default/window/addon_description.cfg:435
 msgid "url^Copy"
 msgstr "Kopieren"
 
 #. [button]: id=url_copy
+#: data/gui-2/default/window/addon_description.cfg:436
 #: data/gui/default/window/addon_description.cfg:436
 msgid "Copy this URL to clipboard"
 msgstr "URL in die Zwischenablage kopieren"
 
 #. [button]: id=url_go
+#: data/gui-2/default/window/addon_description.cfg:449
 #: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
 msgstr "Los"
 
 #. [button]: id=url_go
+#: data/gui-2/default/window/addon_description.cfg:450
 #: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
 msgstr "URL mit einem Webbrowser besuchen"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:478
 #: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
 msgstr "Abhängigkeiten:"
 
 #. [scroll_label]: id=dependencies
+#: data/gui-2/default/window/addon_description.cfg:492
 #: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
 msgstr "Keine"
 
 #. [label]
+#: data/gui-2/default/window/addon_description.cfg:510
 #: data/gui/default/window/addon_description.cfg:510
 msgid "Translations:"
 msgstr "Übersetzungen:"
 
 #. [scroll_label]: id=translations
+#: data/gui-2/default/window/addon_description.cfg:524
 #: data/gui/default/window/addon_description.cfg:524
 msgid "translations^None"
 msgstr "Keine"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:49
 #: data/gui/default/window/addon_filter_options.cfg:49
 msgid "addons_of_type^Campaigns"
 msgstr "Kampagnen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:50
 #: data/gui/default/window/addon_filter_options.cfg:50
 msgid "addons_of_type^MP eras"
 msgstr "MS Epochen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:53
 #: data/gui/default/window/addon_filter_options.cfg:53
 msgid "addons_of_type^Scenarios"
 msgstr "Szenarien"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:54
 #: data/gui/default/window/addon_filter_options.cfg:54
 msgid "addons_of_type^MP factions"
 msgstr "MS Fraktionen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:57
 #: data/gui/default/window/addon_filter_options.cfg:57
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "ES/MS Kampagnen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:58
 #: data/gui/default/window/addon_filter_options.cfg:58
 msgid "addons_of_type^MP campaigns"
 msgstr "MS Kampagnen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:61
 #: data/gui/default/window/addon_filter_options.cfg:61
 msgid "addons_of_type^Resources"
 msgstr "Ressourcen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:62
 #: data/gui/default/window/addon_filter_options.cfg:62
 msgid "addons_of_type^MP scenarios"
 msgstr "MS Szenarien"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:65
 #: data/gui/default/window/addon_filter_options.cfg:65
 #, fuzzy
 #| msgid "addons_of_type^Resources"
@@ -1848,53 +1963,63 @@ msgid "addons_of_type^Cores"
 msgstr "Ressourcen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:66
 #: data/gui/default/window/addon_filter_options.cfg:66
 msgid "addons_of_type^MP map-packs"
 msgstr "MS Kartenpakete"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:70
 #: data/gui/default/window/addon_filter_options.cfg:70
 msgid "addons_of_type^Other"
 msgstr "Verschiedenes"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:71
 #: data/gui/default/window/addon_filter_options.cfg:71
 msgid "addons_of_type^MP modifications"
 msgstr "MS Modifikationen"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:74
 #: data/gui/default/window/addon_filter_options.cfg:74
 msgid "addons_of_type^Unknown"
 msgstr "Unbekannt"
 
 #. [label]
+#: data/gui-2/default/window/addon_filter_options.cfg:174
 #: data/gui/default/window/addon_filter_options.cfg:174
 msgid "Options"
 msgstr "Einstellungen"
 
 #. [label]
+#: data/gui-2/default/window/addon_filter_options.cfg:188
 #: data/gui/default/window/addon_filter_options.cfg:188
 msgid "Add-ons matching the following criteria will be displayed."
 msgstr ""
 "Erweiterungen, welche den folgenden Kriterien entsprechen, werden angezeigt."
 
 #. [label]
+#: data/gui-2/default/window/addon_filter_options.cfg:225
 #: data/gui/default/window/addon_filter_options.cfg:225
 msgid "Installation status:"
 msgstr "Installationsstatus:"
 
 #. [label]
+#: data/gui-2/default/window/addon_filter_options.cfg:268
 #: data/gui/default/window/addon_filter_options.cfg:268
 msgid "Add-on types:"
 msgstr "Erweiterungsarten:"
 
 #. [button]: id=toggle_all_displayed_types
+#: data/gui-2/default/window/addon_filter_options.cfg:281
 #: data/gui/default/window/addon_filter_options.cfg:281
 #, fuzzy
 msgid "Toggle All"
 msgstr "Teammarkierungen anzeigen"
 
 #. [label]
+#: data/gui-2/default/window/addon_filter_options.cfg:325
 #: data/gui/default/window/addon_filter_options.cfg:325
 msgid "Add-ons will be sorted as follows when no column is selected:"
 msgstr ""
@@ -1902,31 +2027,84 @@ msgstr ""
 "ist:"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:355
 #: data/gui/default/window/addon_filter_options.cfg:355
 msgid "sort^By name"
 msgstr "Nach Name"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:360
 #: data/gui/default/window/addon_filter_options.cfg:360
 msgid "sort^By last updated"
 msgstr "Nach Aktualisierungsdatum"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:365
 #: data/gui/default/window/addon_filter_options.cfg:365
 msgid "sort^By first upload"
 msgstr "Nach Veröffentlichungstermin"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:381
 #: data/gui/default/window/addon_filter_options.cfg:381
 msgid "sort^Ascending"
 msgstr "Aufsteigend"
 
 #. [row]
+#: data/gui-2/default/window/addon_filter_options.cfg:386
 #: data/gui/default/window/addon_filter_options.cfg:386
 msgid "sort^Descending"
 msgstr "Absteigend"
 
+#. [label]: id=filename
+#. [label]: id=name
+#. [toggle_button]: id=sort_0
+#. [toggle_button]: id=sort_name
+#: data/gui-2/default/window/addon_list.cfg:195
+#: data/gui-2/default/window/data_manage.cfg:163
+#: data/gui-2/default/window/game_load.cfg:264
+#: data/gui-2/default/window/mp_server_list.cfg:107
+#: data/gui/default/window/addon_list.cfg:195
+#: data/gui/default/window/data_manage.cfg:163
+#: data/gui/default/window/game_load.cfg:252
+#: data/gui/default/window/mp_server_list.cfg:107
+msgid "Name"
+msgstr "Name"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui-2/default/window/addon_list.cfg:210
+#: data/gui/default/window/addon_list.cfg:210
+#: src/gui/dialogs/title_screen.cpp:325
+msgid "Version"
+msgstr "Version"
+
+#. [toggle_button]: id=sort_author
+#: data/gui-2/default/window/addon_list.cfg:227
+#: data/gui/default/window/addon_list.cfg:227
+#, fuzzy
+#| msgid "Author:"
+msgid "Author"
+msgstr "Autor:"
+
+#. [toggle_button]: id=sort_downloads
+#: data/gui-2/default/window/addon_list.cfg:244
+#: data/gui/default/window/addon_list.cfg:244
+#, fuzzy
+#| msgid "Downloads:"
+msgid "Downloads"
+msgstr "Heruntergeladen:"
+
+#. [toggle_button]: id=sort_size
+#: data/gui-2/default/window/addon_list.cfg:261
+#: data/gui/default/window/addon_list.cfg:261
+#, fuzzy
+#| msgid "Size:"
+msgid "Size"
+msgstr "Größe:"
+
 #. [scroll_label]
+#: data/gui-2/default/window/addon_uninstall_list.cfg:70
 #: data/gui/default/window/addon_uninstall_list.cfg:70
 msgid "Choose the add-ons you want to remove."
 msgstr "Wählt die Erweiterung, die Ihr entfernen möchtet."
@@ -1934,53 +2112,66 @@ msgstr "Wählt die Erweiterung, die Ihr entfernen möchtet."
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=remove
+#: data/gui-2/default/window/addon_uninstall_list.cfg:161
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:200
 #: data/gui/default/window/addon_uninstall_list.cfg:161
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:220
+#: src/game_preferences_display.cpp:219
 msgid "Remove"
 msgstr "Entfernen"
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:42
 #: data/gui/default/window/advanced_graphics_options.cfg:42
-msgid "Bilinear intepolation scaling (legacy wesnoth option)"
+msgid "Bilinear interpolation scaling (legacy wesnoth option)"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:42
 #: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Linear (legacy)"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:43
 #: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "Nearest Neighbor"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:43
 #: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "Nearest Neighbor scaling (fastest)"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:44
 #: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + linear"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:44
 #: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ followed by Bilinear interpolation"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:45
 #: data/gui/default/window/advanced_graphics_options.cfg:45
 msgid "xBRZ + NN"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:45
 #: data/gui/default/window/advanced_graphics_options.cfg:45
 msgid "xBRZ followed by Nearest Neighbor (recommended)"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:46
 #: data/gui/default/window/advanced_graphics_options.cfg:46
-msgid "Bilinear intepolation scaling (new implementation)"
+msgid "Bilinear interpolation scaling (new implementation)"
 msgstr ""
 
+#: data/gui-2/default/window/advanced_graphics_options.cfg:46
 #: data/gui/default/window/advanced_graphics_options.cfg:46
 msgid "Linear"
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/advanced_graphics_options.cfg:92
 #: data/gui/default/window/advanced_graphics_options.cfg:92
 #, fuzzy
 #| msgid "sound^Advanced Options"
@@ -1988,42 +2179,50 @@ msgid "Advanced Graphics Options"
 msgstr "Erweiterte Einstellungen"
 
 #. [label]
+#: data/gui-2/default/window/advanced_graphics_options.cfg:108
 #: data/gui/default/window/advanced_graphics_options.cfg:108
 msgid "Images will be scaled using the following algorithms:"
 msgstr ""
 
 #. [column]
+#: data/gui-2/default/window/advanced_graphics_options.cfg:129
 #: data/gui/default/window/advanced_graphics_options.cfg:129
 msgid "All units, haloes, border hexes"
 msgstr ""
 
 #. [column]
+#: data/gui-2/default/window/advanced_graphics_options.cfg:129
 #: data/gui/default/window/advanced_graphics_options.cfg:129
 msgid "Scaled to zoom"
 msgstr ""
 
 #. [column]
+#: data/gui-2/default/window/advanced_graphics_options.cfg:140
 #: data/gui/default/window/advanced_graphics_options.cfg:140
 msgid "Everything else"
 msgstr ""
 
 #. [column]
+#: data/gui-2/default/window/advanced_graphics_options.cfg:140
 #: data/gui/default/window/advanced_graphics_options.cfg:140
 msgid "Scaled to hex"
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/campaign_dialog.cfg:56
 #: data/gui/default/window/campaign_dialog.cfg:56
 msgid "Play a Campaign"
 msgstr "Eine Kampagne spielen"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:507
+#: data/gui-2/default/window/campaign_dialog.cfg:504
+#: data/gui/default/window/campaign_dialog.cfg:504
 msgid "Deterministic mode"
 msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:509
+#: data/gui-2/default/window/campaign_dialog.cfg:506
+#: data/gui/default/window/campaign_dialog.cfg:506
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2032,8 +2231,48 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
-#: data/gui/default/window/campaign_dialog.cfg:524
-#: data/gui/default/window/campaign_difficulty.cfg:210
+#: data/gui-2/default/window/campaign_dialog.cfg:521
+#: data/gui-2/default/window/campaign_difficulty.cfg:243
+#: data/gui-2/default/window/campaign_settings.cfg:322
+#: data/gui-2/default/window/core_dialog.cfg:227
+#: data/gui-2/default/window/custom_tod.cfg:387
+#: data/gui-2/default/window/data_manage.cfg:347
+#: data/gui-2/default/window/data_manage.cfg:348
+#: data/gui-2/default/window/depcheck_select_new.cfg:132
+#: data/gui-2/default/window/edit_label.cfg:140
+#: data/gui-2/default/window/edit_text.cfg:116
+#: data/gui-2/default/window/editor_edit_label.cfg:303
+#: data/gui-2/default/window/editor_edit_scenario.cfg:290
+#: data/gui-2/default/window/editor_edit_side.cfg:445
+#: data/gui-2/default/window/editor_set_starting_position.cfg:162
+#: data/gui-2/default/window/error_report.cfg:130
+#: data/gui-2/default/window/folder_create.cfg:120
+#: data/gui-2/default/window/game_cache_options.cfg:249
+#: data/gui-2/default/window/game_load.cfg:459
+#: data/gui-2/default/window/game_load.cfg:460
+#: data/gui-2/default/window/game_save.cfg:120
+#: data/gui-2/default/window/game_save.cfg:121
+#: data/gui-2/default/window/joystick_settings.cfg:144
+#: data/gui-2/default/window/label_settings.cfg:137
+#: data/gui-2/default/window/language_selection.cfg:127
+#: data/gui-2/default/window/mp_alerts_options.cfg:225
+#: data/gui-2/default/window/mp_change_control.cfg:150
+#: data/gui-2/default/window/mp_create_game.cfg:544
+#: data/gui-2/default/window/mp_create_game_choose_mods.cfg:188
+#: data/gui-2/default/window/mp_create_game_set_password.cfg:133
+#: data/gui-2/default/window/mp_join_game_password_prompt.cfg:137
+#: data/gui-2/default/window/mp_login.cfg:246
+#: data/gui-2/default/window/mp_method_selection.cfg:211
+#: data/gui-2/default/window/screenshot_notification.cfg:201
+#: data/gui-2/default/window/simple_item_selector.cfg:145
+#: data/gui-2/default/window/theme_list.cfg:159
+#: data/gui-2/default/window/unit_create.cfg:198
+#: data/gui-2/default/window/unit_create.cfg:199
+#: data/gui-2/default/window/wml_error.cfg:162
+#: data/gui-2/default/window/wml_message.cfg:485
+#: data/gui-2/default/window/wml_message.cfg:714
+#: data/gui/default/window/campaign_dialog.cfg:521
+#: data/gui/default/window/campaign_difficulty.cfg:243
 #: data/gui/default/window/campaign_settings.cfg:322
 #: data/gui/default/window/core_dialog.cfg:227
 #: data/gui/default/window/custom_tod.cfg:387
@@ -2042,18 +2281,17 @@ msgstr ""
 #: data/gui/default/window/depcheck_select_new.cfg:132
 #: data/gui/default/window/edit_label.cfg:140
 #: data/gui/default/window/edit_text.cfg:116
-#: data/gui/default/window/editor_edit_label.cfg:177
+#: data/gui/default/window/editor_edit_label.cfg:303
 #: data/gui/default/window/editor_edit_scenario.cfg:290
-#: data/gui/default/window/editor_edit_side.cfg:476
+#: data/gui/default/window/editor_edit_side.cfg:445
 #: data/gui/default/window/editor_set_starting_position.cfg:162
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_cache_options.cfg:249
-#: data/gui/default/window/game_load.cfg:463
-#: data/gui/default/window/game_load.cfg:464
-#: data/gui/default/window/game_paths.cfg:165
+#: data/gui/default/window/game_load.cfg:457
+#: data/gui/default/window/game_load.cfg:458
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/game_save.cfg:121
-#: data/gui/default/window/joystick_settings.cfg:144
+#: data/gui/default/window/label_settings.cfg:137
 #: data/gui/default/window/language_selection.cfg:127
 #: data/gui/default/window/mp_alerts_options.cfg:225
 #: data/gui/default/window/mp_change_control.cfg:150
@@ -2066,8 +2304,8 @@ msgstr ""
 #: data/gui/default/window/screenshot_notification.cfg:201
 #: data/gui/default/window/simple_item_selector.cfg:145
 #: data/gui/default/window/theme_list.cfg:159
-#: data/gui/default/window/unit_create.cfg:198
-#: data/gui/default/window/unit_create.cfg:199
+#: data/gui/default/window/unit_create.cfg:412
+#: data/gui/default/window/unit_create.cfg:413
 #: data/gui/default/window/wml_error.cfg:162
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:127
@@ -2077,16 +2315,19 @@ msgid "OK"
 msgstr "Okay"
 
 #. [label]: id=title
-#: data/gui/default/window/campaign_difficulty.cfg:57
+#: data/gui-2/default/window/campaign_difficulty.cfg:58
+#: data/gui/default/window/campaign_difficulty.cfg:58
 msgid "Difficulty"
 msgstr "Schwierigkeitsgrad"
 
 #. [scroll_label]: id=message
-#: data/gui/default/window/campaign_difficulty.cfg:77
+#: data/gui-2/default/window/campaign_difficulty.cfg:78
+#: data/gui/default/window/campaign_difficulty.cfg:78
 msgid "Select difficulty level:"
 msgstr "Wählt den Schwierigkeitsgrad:"
 
 #. [label]
+#: data/gui-2/default/window/campaign_settings.cfg:48
 #: data/gui/default/window/campaign_settings.cfg:48
 #, fuzzy
 #| msgid "sound^Advanced Options"
@@ -2094,11 +2335,13 @@ msgid "Advanced Settings"
 msgstr "Erweiterte Einstellungen"
 
 #. [label]
+#: data/gui-2/default/window/campaign_settings.cfg:77
 #: data/gui/default/window/campaign_settings.cfg:77
 msgid "Additional dialogs:"
 msgstr ""
 
 #. [toggle_button]: id=mp_connect
+#: data/gui-2/default/window/campaign_settings.cfg:116
 #: data/gui/default/window/campaign_settings.cfg:116
 #, fuzzy
 #| msgid "Configuration:"
@@ -2107,12 +2350,15 @@ msgstr "Konfiguration:"
 
 #. [label]
 #. [label]: id=era_label
+#: data/gui-2/default/window/campaign_settings.cfg:157
+#: data/gui-2/default/window/mp_create_game.cfg:185
 #: data/gui/default/window/campaign_settings.cfg:157
 #: data/gui/default/window/mp_create_game.cfg:185
 msgid "Era:"
 msgstr "Epoche:"
 
 #. [label]: id=mod_label
+#: data/gui-2/default/window/campaign_settings.cfg:246
 #: data/gui/default/window/campaign_settings.cfg:246
 #, fuzzy
 #| msgid "Choose Modifications"
@@ -2120,16 +2366,19 @@ msgid "Modifications:"
 msgstr "Modifikationen auswählen"
 
 #. [label]
+#: data/gui-2/default/window/chat_log.cfg:38
 #: data/gui/default/window/chat_log.cfg:38
 msgid "Chat Log"
 msgstr "Gesprächsprotokoll"
 
 #. [label]
+#: data/gui-2/default/window/chat_log.cfg:59
 #: data/gui/default/window/chat_log.cfg:59
 msgid "Page:"
 msgstr "Seite:"
 
 #. [slider]: id=page_number
+#: data/gui-2/default/window/chat_log.cfg:74
 #: data/gui/default/window/chat_log.cfg:74
 msgid "Last"
 msgstr "Letzte"
@@ -2137,6 +2386,9 @@ msgstr "Letzte"
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
 #. [button]: id=previous_tod
+#: data/gui-2/default/window/chat_log.cfg:98
+#: data/gui-2/default/window/custom_tod.cfg:326
+#: data/gui-2/default/window/title_screen.cfg:195
 #: data/gui/default/window/chat_log.cfg:98
 #: data/gui/default/window/custom_tod.cfg:326
 #: data/gui/default/window/title_screen.cfg:195
@@ -2144,6 +2396,7 @@ msgid "Previous"
 msgstr "Zurück"
 
 #. [button]: id=previous_page
+#: data/gui-2/default/window/chat_log.cfg:99
 #: data/gui/default/window/chat_log.cfg:99
 msgid "Previous page"
 msgstr "Vorherige Seite"
@@ -2151,6 +2404,9 @@ msgstr "Vorherige Seite"
 #. [button]: id=next_page
 #. [button]: id=next_tip
 #. [button]: id=next_tod
+#: data/gui-2/default/window/chat_log.cfg:106
+#: data/gui-2/default/window/custom_tod.cfg:349
+#: data/gui-2/default/window/title_screen.cfg:210
 #: data/gui/default/window/chat_log.cfg:106
 #: data/gui/default/window/custom_tod.cfg:349
 #: data/gui/default/window/title_screen.cfg:210
@@ -2158,17 +2414,25 @@ msgid "Next"
 msgstr "Weiter"
 
 #. [button]: id=next_page
+#: data/gui-2/default/window/chat_log.cfg:107
 #: data/gui/default/window/chat_log.cfg:107
 msgid "Next page"
 msgstr "Nächste Seite"
 
 #. [label]
+#: data/gui-2/default/window/chat_log.cfg:125
+#: data/gui-2/default/window/lobby_main.cfg:581
 #: data/gui/default/window/chat_log.cfg:125
 #: data/gui/default/window/lobby_main.cfg:581
 msgid "Filter:"
 msgstr "Filter:"
 
 #. [button]: id=copy
+#: data/gui-2/default/window/chat_log.cfg:189
+#: data/gui-2/default/window/error_report.cfg:92
+#: data/gui-2/default/window/gamestate_inspector.cfg:238
+#: data/gui-2/default/window/lua_interpreter.cfg:121
+#: data/gui-2/default/window/wml_error.cfg:124
 #: data/gui/default/window/chat_log.cfg:189
 #: data/gui/default/window/gamestate_inspector.cfg:238
 #: data/gui/default/window/lua_interpreter.cfg:121
@@ -2177,6 +2441,7 @@ msgid "clipboard^Copy"
 msgstr "Kopieren"
 
 #. [label]
+#: data/gui-2/default/window/core_dialog.cfg:44
 #: data/gui/default/window/core_dialog.cfg:44
 #, fuzzy
 #| msgid "Load Game"
@@ -2184,6 +2449,7 @@ msgid "Load Core"
 msgstr "Spielstand laden"
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:45
 #: data/gui/default/window/custom_tod.cfg:45
 #, fuzzy
 #| msgid "Custom Time of Day Schedule"
@@ -2191,6 +2457,13 @@ msgid "Custom Time Schedule"
 msgstr "Benutzerdefinierter Tagesablauf"
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:67
+#: data/gui-2/default/window/editor_edit_scenario.cfg:107
+#: data/gui-2/default/window/folder_create.cfg:72
+#: data/gui-2/default/window/game_save.cfg:72
+#: data/gui-2/default/window/game_save_message.cfg:93
+#: data/gui-2/default/window/game_save_oos.cfg:92
+#: data/gui-2/default/window/screenshot_notification.cfg:119
 #: data/gui/default/window/custom_tod.cfg:67
 #: data/gui/default/window/editor_edit_scenario.cfg:107
 #: data/gui/default/window/folder_create.cfg:72
@@ -2202,116 +2475,136 @@ msgid "Name:"
 msgstr "Name: "
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:100
 #: data/gui/default/window/custom_tod.cfg:100
 msgid "ID:"
 msgstr "Kennung:"
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:133
 #: data/gui/default/window/custom_tod.cfg:133
 msgid "Metadata:"
 msgstr "Metadaten:"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #. [button]: id=image_button
+#: data/gui-2/default/window/custom_tod.cfg:147
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
 msgstr "Bild"
 
 #. [button]: id=mask_button
+#: data/gui-2/default/window/custom_tod.cfg:157
 #: data/gui/default/window/custom_tod.cfg:157
 msgid "Mask"
 msgstr "Maske"
 
 #. [button]: id=sound_button
+#: data/gui-2/default/window/custom_tod.cfg:167
 #: data/gui/default/window/custom_tod.cfg:167
 msgid "Sound"
 msgstr ""
 
 #. [label]: id=current_sound
+#: data/gui-2/default/window/custom_tod.cfg:180
 #: data/gui/default/window/custom_tod.cfg:180
 msgid "long size text"
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:201
 #: data/gui/default/window/custom_tod.cfg:201
 msgid "Lawful Bonus:"
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:228
 #: data/gui/default/window/custom_tod.cfg:228
 msgid "Red:"
 msgstr "Rot:"
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:255
 #: data/gui/default/window/custom_tod.cfg:255
 msgid "Green:"
 msgstr "Grün:"
 
 #. [label]
+#: data/gui-2/default/window/custom_tod.cfg:282
 #: data/gui/default/window/custom_tod.cfg:282
 msgid "Blue:"
 msgstr "Blau:"
 
 #. [label]: id=tod_number
+#: data/gui-2/default/window/custom_tod.cfg:337
 #: data/gui/default/window/custom_tod.cfg:337
 msgid "100/100"
 msgstr "100/100"
 
 #. [button]: id=new
+#: data/gui-2/default/window/custom_tod.cfg:359
 #: data/gui/default/window/custom_tod.cfg:359
 msgid "New ToD"
 msgstr ""
 
 #. [button]: id=delete
+#: data/gui-2/default/window/custom_tod.cfg:369
 #: data/gui/default/window/custom_tod.cfg:369
 #, fuzzy
 msgid "Delete ToD"
 msgstr "Löschen"
 
 #. [label]: id=lblTitle
+#: data/gui-2/default/window/data_manage.cfg:50
 #: data/gui/default/window/data_manage.cfg:50
 msgid "Manage Data"
 msgstr "Daten verwalten"
 
 #. [label]: id=lblChoose
+#: data/gui-2/default/window/data_manage.cfg:89
+#: data/gui-2/default/window/game_load.cfg:189
 #: data/gui/default/window/data_manage.cfg:89
-#: data/gui/default/window/game_load.cfg:189
 msgid "Choose the game to load"
 msgstr "Wählt den zu ladenden Spielstand"
 
+#. [label]
 #. [label]: id=lblFilter
+#: data/gui-2/default/window/data_manage.cfg:113
+#: data/gui-2/default/window/game_load.cfg:213
 #: data/gui/default/window/data_manage.cfg:113
-#: data/gui/default/window/game_load.cfg:213
+#: data/gui/default/window/game_load.cfg:201
+#: data/gui/default/window/unit_create.cfg:217
 msgid "Filter"
 msgstr "Filter"
 
-#. [label]: id=filename
-#. [label]: id=name
-#: data/gui/default/window/data_manage.cfg:163
-#: data/gui/default/window/game_load.cfg:265
-#: data/gui/default/window/mp_server_list.cfg:107
-msgid "Name"
-msgstr "Name"
-
 #. [label]: id=date
+#. [toggle_button]: id=sort_1
+#: data/gui-2/default/window/data_manage.cfg:177
+#: data/gui-2/default/window/game_load.cfg:278
 #: data/gui/default/window/data_manage.cfg:177
-#: data/gui/default/window/game_load.cfg:281
+#: data/gui/default/window/game_load.cfg:266
 msgid "Date"
 msgstr "Datum"
 
 #. [button]: id=clear
+#: data/gui-2/default/window/data_manage.cfg:266
+#: data/gui-2/default/window/data_manage.cfg:267
 #: data/gui/default/window/data_manage.cfg:266
 #: data/gui/default/window/data_manage.cfg:267
 msgid "Clear"
 msgstr "Leeren"
 
 #. [button]: id=restore
+#: data/gui-2/default/window/data_manage.cfg:283
+#: data/gui-2/default/window/data_manage.cfg:284
 #: data/gui/default/window/data_manage.cfg:283
 #: data/gui/default/window/data_manage.cfg:284
 msgid "Restore"
 msgstr "Wiederherstellen"
 
 #. [button]: id=backup
+#: data/gui-2/default/window/data_manage.cfg:300
+#: data/gui-2/default/window/data_manage.cfg:301
 #: data/gui/default/window/data_manage.cfg:300
 #: data/gui/default/window/data_manage.cfg:301
 msgid "Backup"
@@ -2319,18 +2612,30 @@ msgstr "Sichern"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#: data/gui-2/default/window/depcheck_confirm_change.cfg:40
 #: data/gui/default/window/depcheck_confirm_change.cfg:40
 #: src/gui/widgets/label.cpp:177
 msgid "Confirm"
 msgstr "Bestätigen"
 
 #. [label]
+#: data/gui-2/default/window/depcheck_confirm_change.cfg:98
 #: data/gui/default/window/depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
 msgstr "Möchtet Ihr die Änderungen übernehmen?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
+#: data/gui-2/default/window/depcheck_confirm_change.cfg:130
+#: data/gui-2/default/window/game_delete.cfg:107
+#: data/gui-2/default/window/game_delete.cfg:108
+#: data/gui-2/default/window/game_save_message.cfg:141
+#: data/gui-2/default/window/game_save_message.cfg:142
+#: data/gui-2/default/window/game_save_oos.cfg:194
+#: data/gui-2/default/window/game_save_oos.cfg:195
+#: data/gui-2/default/window/game_save_overwrite.cfg:96
+#: data/gui-2/default/window/game_save_overwrite.cfg:97
+#: data/gui-2/default/window/mp_host_game_prompt.cfg:105
 #: data/gui/default/window/depcheck_confirm_change.cfg:130
 #: data/gui/default/window/game_delete.cfg:107
 #: data/gui/default/window/game_delete.cfg:108
@@ -2347,6 +2652,12 @@ msgstr "Ja"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
+#: data/gui-2/default/window/depcheck_confirm_change.cfg:144
+#: data/gui-2/default/window/game_delete.cfg:122
+#: data/gui-2/default/window/game_save_message.cfg:156
+#: data/gui-2/default/window/game_save_oos.cfg:209
+#: data/gui-2/default/window/game_save_overwrite.cfg:111
+#: data/gui-2/default/window/mp_host_game_prompt.cfg:118
 #: data/gui/default/window/depcheck_confirm_change.cfg:144
 #: data/gui/default/window/game_delete.cfg:122
 #: data/gui/default/window/game_save_message.cfg:156
@@ -2358,179 +2669,246 @@ msgid "No"
 msgstr "Nein"
 
 #. [label]
+#: data/gui-2/default/window/depcheck_select_new.cfg:40
 #: data/gui/default/window/depcheck_select_new.cfg:40
 msgid "User Interaction Required"
 msgstr "Benutzerinteraktion erforderlich"
 
 #. [label]: id=message
+#: data/gui-2/default/window/depcheck_select_new.cfg:59
 #: data/gui/default/window/depcheck_select_new.cfg:59
 msgid "User interaction required"
 msgstr "Benutzerinteraktion erforderlich"
 
 #. [label]: id=title
+#: data/gui-2/default/window/edit_label.cfg:42
+#: data/gui-2/default/window/editor_edit_label.cfg:42
 #: data/gui/default/window/edit_label.cfg:42
 #: data/gui/default/window/editor_edit_label.cfg:42
 msgid "Place Label"
 msgstr "Beschriftung erstellen"
 
 #. [label]
+#: data/gui-2/default/window/edit_label.cfg:72
+#: data/gui-2/default/window/editor_edit_label.cfg:72
 #: data/gui/default/window/edit_label.cfg:72
 #: data/gui/default/window/editor_edit_label.cfg:72
 msgid "Label:"
 msgstr "Beschriftung:"
 
 #. [toggle_button]: id=team_only_toggle
+#: data/gui-2/default/window/edit_label.cfg:112
 #: data/gui/default/window/edit_label.cfg:112
 msgid "Team only"
 msgstr "Nur für Verbündete"
 
+#. [label]
+#: data/gui-2/default/window/editor_edit_label.cfg:107
+#: data/gui/default/window/editor_edit_label.cfg:107
+msgid "Category:"
+msgstr ""
+
+#. [label]
+#: data/gui-2/default/window/editor_edit_label.cfg:154
+#: data/gui/default/window/editor_edit_label.cfg:154
+msgid "Properties"
+msgstr ""
+
+#. [label]
+#: data/gui-2/default/window/editor_edit_label.cfg:166
+#: data/gui/default/window/editor_edit_label.cfg:166
+msgid "Color"
+msgstr ""
+
 #. [toggle_button]: id=immutable_toggle
-#: data/gui/default/window/editor_edit_label.cfg:112
+#: data/gui-2/default/window/editor_edit_label.cfg:183
+#: data/gui/default/window/editor_edit_label.cfg:183
 #, fuzzy
 msgid "Immutable"
 msgstr "Unpassierbar"
 
 #. [toggle_button]: id=visible_fog_toggle
-#: data/gui/default/window/editor_edit_label.cfg:130
+#: data/gui-2/default/window/editor_edit_label.cfg:218
+#: data/gui/default/window/editor_edit_label.cfg:218
 msgid "Visible in fog"
 msgstr "Sichtbar im Nebel"
 
 #. [toggle_button]: id=visible_shroud_toggle
-#: data/gui/default/window/editor_edit_label.cfg:148
+#: data/gui-2/default/window/editor_edit_label.cfg:253
+#: data/gui/default/window/editor_edit_label.cfg:253
 msgid "Visible in shroud"
 msgstr "Sichtbar durch Schleier"
 
 #. [label]: id=title
+#: data/gui-2/default/window/editor_edit_scenario.cfg:42
 #: data/gui/default/window/editor_edit_scenario.cfg:42
 msgid "Edit Scenario Settings"
 msgstr "Szenarioeinstellungen bearbeiten"
 
 #. [label]
+#: data/gui-2/default/window/editor_edit_scenario.cfg:72
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
 msgstr "Kennung:"
 
 #. [label]
+#: data/gui-2/default/window/editor_edit_scenario.cfg:173
 #: data/gui/default/window/editor_edit_scenario.cfg:173
 msgid "Experience modifier:"
 msgstr "Erfahrungsmodifikator:"
 
 #. [label]
+#: data/gui-2/default/window/editor_edit_scenario.cfg:204
 #: data/gui/default/window/editor_edit_scenario.cfg:204
 msgid "Turns:"
 msgstr "Runden:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
+#: data/gui-2/default/window/editor_edit_scenario.cfg:244
 #: data/gui/default/window/editor_edit_scenario.cfg:244
 msgid "Declare victory once all enemies are defeated"
 msgstr "Sieg erklären, sobald alle Feinde bezwungen sind"
 
 #. [toggle_button]: id=random_start_time
+#: data/gui-2/default/window/editor_edit_scenario.cfg:262
 #: data/gui/default/window/editor_edit_scenario.cfg:262
 msgid "Random starting time"
 msgstr "Zufällige Startzeit"
 
 #. [label]: id=title
-#: data/gui/default/window/editor_edit_side.cfg:54
+#: data/gui-2/default/window/editor_edit_side.cfg:60
+#: data/gui/default/window/editor_edit_side.cfg:60
 msgid "Side Setup"
 msgstr "Fraktionseinstellungen"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:77
+#: data/gui-2/default/window/editor_edit_side.cfg:83
+#: data/gui/default/window/editor_edit_side.cfg:83
 msgid "Number:"
 msgstr "Nummer:"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:105
+#: data/gui-2/default/window/editor_edit_side.cfg:111
+#: data/gui/default/window/editor_edit_side.cfg:111
 msgid "Team identifier:"
 msgstr "Fraktionskennung:"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:133
+#: data/gui-2/default/window/editor_edit_side.cfg:139
+#: data/gui/default/window/editor_edit_side.cfg:139
 msgid "Team name:"
 msgstr "Fraktionsname:"
 
-#. [toggle_button]: id=share_maps
-#: data/gui/default/window/editor_edit_side.cfg:188
-msgid "Share map"
-msgstr "Karte teilen"
-
 #. [toggle_button]: id=no_leader
-#: data/gui/default/window/editor_edit_side.cfg:200
+#: data/gui-2/default/window/editor_edit_side.cfg:194
+#: data/gui/default/window/editor_edit_side.cfg:194
 msgid "No leader"
 msgstr "Kein Heerführer"
 
 #. [toggle_button]: id=fog
-#: data/gui/default/window/editor_edit_side.cfg:216
+#: data/gui-2/default/window/editor_edit_side.cfg:210
+#: data/gui-2/default/window/mp_create_game.cfg:460
+#: data/gui/default/window/editor_edit_side.cfg:210
 #: data/gui/default/window/mp_create_game.cfg:460
 msgid "Fog of war"
 msgstr "Nebel des Krieges"
 
-#. [toggle_button]: id=share_view
-#: data/gui/default/window/editor_edit_side.cfg:228
-msgid "Share view"
-msgstr "Sicht teilen"
-
 #. [toggle_button]: id=hidden
-#: data/gui/default/window/editor_edit_side.cfg:240
+#: data/gui-2/default/window/editor_edit_side.cfg:222
+#: data/gui/default/window/editor_edit_side.cfg:222
 msgid "Hide in status table"
 msgstr "In Spielübersicht ausblenden"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:269
+#: data/gui-2/default/window/editor_edit_side.cfg:251
+#: data/gui/default/window/editor_edit_side.cfg:251
 msgid "Gold:"
 msgstr "Gold:"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:297
+#: data/gui-2/default/window/editor_edit_side.cfg:279
+#: data/gui/default/window/editor_edit_side.cfg:279
 #, fuzzy
 msgid "Gold per village:"
 msgstr "Steuereinnahmen pro Dorf:"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:325
+#: data/gui-2/default/window/editor_edit_side.cfg:307
+#: data/gui/default/window/editor_edit_side.cfg:307
 msgid "Income:"
 msgstr "Einkommen:"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:353
+#: data/gui-2/default/window/editor_edit_side.cfg:335
+#: data/gui/default/window/editor_edit_side.cfg:335
 #, fuzzy
 msgid "Support per village:"
 msgstr "Steuereinnahmen pro Dorf"
 
 #. [label]
-#: data/gui/default/window/editor_edit_side.cfg:383
+#: data/gui-2/default/window/editor_edit_side.cfg:365
+#: data/gui/default/window/editor_edit_side.cfg:365
 msgid "Controller:"
 msgstr "Spielertyp:"
 
 #. [row]
-#: data/gui/default/window/editor_edit_side.cfg:400
+#: data/gui-2/default/window/editor_edit_side.cfg:375
+#: data/gui/default/window/editor_edit_side.cfg:375
 msgid "controller^Human"
 msgstr "Mensch"
 
 #. [row]
-#: data/gui/default/window/editor_edit_side.cfg:402
+#: data/gui-2/default/window/editor_edit_side.cfg:377
+#: data/gui/default/window/editor_edit_side.cfg:377
 msgid "controller^AI only"
 msgstr "Computer"
 
 #. [row]
-#: data/gui/default/window/editor_edit_side.cfg:404
+#: data/gui-2/default/window/editor_edit_side.cfg:379
+#: data/gui/default/window/editor_edit_side.cfg:379
 msgid "controller^None"
 msgstr "Niemand"
 
+#. [label]
+#: data/gui-2/default/window/editor_edit_side.cfg:398
+#: data/gui/default/window/editor_edit_side.cfg:398
+#, fuzzy
+#| msgid "Share view"
+msgid "Share Vision:"
+msgstr "Sicht teilen"
+
 #. [row]
-#: data/gui/default/window/editor_edit_side.cfg:421
-msgid "controller^Player number:"
-msgstr "Spielernummer:"
+#: data/gui-2/default/window/editor_edit_side.cfg:408
+#: data/gui/default/window/editor_edit_side.cfg:408
+msgid "vision^All"
+msgstr ""
+
+#. [row]
+#: data/gui-2/default/window/editor_edit_side.cfg:410
+#: data/gui/default/window/editor_edit_side.cfg:410
+#, fuzzy
+#| msgid "Shroud"
+msgid "vision^Shroud"
+msgstr "Schleier der Finsternis"
+
+#. [row]
+#: data/gui-2/default/window/editor_edit_side.cfg:412
+#: data/gui/default/window/editor_edit_side.cfg:412
+#, fuzzy
+#| msgid "translations^None"
+msgid "vision^None"
+msgstr "Keine"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#: data/gui-2/default/window/editor_generate_map.cfg:43
 #: data/gui/default/window/editor_generate_map.cfg:43
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Generate Map"
 msgstr "Karte erzeugen"
 
 #. [label]
+#: data/gui-2/default/window/editor_generate_map.cfg:58
 #: data/gui/default/window/editor_generate_map.cfg:58
 #, fuzzy
 #| msgid "Map Generator"
@@ -2538,31 +2916,36 @@ msgid "Choose a map generator:"
 msgstr "Zufallskartengenerator"
 
 #. [button]: id=settings
-#: data/gui/default/window/editor_generate_map.cfg:131
+#: data/gui-2/default/window/editor_generate_map.cfg:128
+#: data/gui/default/window/editor_generate_map.cfg:128
 msgid "Settings"
 msgstr "Einstellungen"
 
 #. [label]
-#: data/gui/default/window/editor_generate_map.cfg:164
+#: data/gui-2/default/window/editor_generate_map.cfg:161
+#: data/gui/default/window/editor_generate_map.cfg:161
 #, fuzzy
 #| msgid "Speed: "
 msgid "Seed:"
 msgstr "Geschwindigkeit: "
 
 #. [button]: id=ok
-#: data/gui/default/window/editor_generate_map.cfg:206
+#: data/gui-2/default/window/editor_generate_map.cfg:203
+#: data/gui/default/window/editor_generate_map.cfg:203
 msgid "Generate"
 msgstr "Erzeugen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#: data/gui-2/default/window/editor_new_map.cfg:35
 #: data/gui/default/window/editor_new_map.cfg:35
-#: src/hotkey/hotkey_command.cpp:136
+#: src/hotkey/hotkey_command.cpp:137
 msgid "New Map"
 msgstr "Neue Karte"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#: data/gui-2/default/window/editor_new_map.cfg:54
 #: data/gui/default/window/editor_new_map.cfg:54
 #: src/generators/default_map_generator.cpp:122
 msgid "Width:"
@@ -2570,122 +2953,169 @@ msgstr "Breite:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#: data/gui-2/default/window/editor_new_map.cfg:81
 #: data/gui/default/window/editor_new_map.cfg:81
 #: src/generators/default_map_generator.cpp:123
 msgid "Height:"
 msgstr "Höhe:"
 
 #. [button]: id=ok
+#: data/gui-2/default/window/editor_new_map.cfg:115
 #: data/gui/default/window/editor_new_map.cfg:115
 msgid "Create"
 msgstr "Erstellen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#: data/gui-2/default/window/editor_resize_map.cfg:35
 #: data/gui/default/window/editor_resize_map.cfg:35
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Resize Map"
 msgstr "Kartengröße anpassen"
 
 #. [label]
+#: data/gui-2/default/window/editor_resize_map.cfg:54
 #: data/gui/default/window/editor_resize_map.cfg:54
 msgid "New width:"
 msgstr "Neue Breite:"
 
 #. [label]
+#: data/gui-2/default/window/editor_resize_map.cfg:78
 #: data/gui/default/window/editor_resize_map.cfg:78
 msgid "Old width:"
 msgstr "Alte Breite:"
 
 #. [label]
+#: data/gui-2/default/window/editor_resize_map.cfg:102
 #: data/gui/default/window/editor_resize_map.cfg:102
 msgid "New height:"
 msgstr "Neue Höhe:"
 
 #. [label]
+#: data/gui-2/default/window/editor_resize_map.cfg:126
 #: data/gui/default/window/editor_resize_map.cfg:126
 msgid "Old height:"
 msgstr "Alte Höhe:"
 
 #. [label]
+#: data/gui-2/default/window/editor_resize_map.cfg:154
 #: data/gui/default/window/editor_resize_map.cfg:154
 #, fuzzy
 msgid "Expand/shrink direction:"
 msgstr "Richtung erweitern/verringern"
 
 #. [toggle_button]: id=copy_edge_terrain
+#: data/gui-2/default/window/editor_resize_map.cfg:253
 #: data/gui/default/window/editor_resize_map.cfg:253
 msgid "Copy edge terrain"
 msgstr "Rahmengelände kopieren"
 
 #. [button]: id=ok
+#: data/gui-2/default/window/editor_resize_map.cfg:274
 #: data/gui/default/window/editor_resize_map.cfg:274
 #, fuzzy
 msgid "Resize"
 msgstr "Kartengröße anpassen"
 
 #. [label]: id=title
+#: data/gui-2/default/window/editor_set_starting_position.cfg:50
 #: data/gui/default/window/editor_set_starting_position.cfg:50
 msgid "Choose Player"
 msgstr "Spieler wählen"
 
 #. [label]: id=message
+#: data/gui-2/default/window/editor_set_starting_position.cfg:70
 #: data/gui/default/window/editor_set_starting_position.cfg:70
 msgid "Which player should start here?"
 msgstr "Welcher Spieler soll hier starten?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui-2/default/window/error_report.cfg:40
+#: data/gui-2/default/window/wml_error.cfg:40
+#: data/gui/default/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:205
+#: src/gui/dialogs/transient_message.cpp:76
+msgid "Error"
+msgstr "Fehler"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=details_heading
+#: data/gui-2/default/window/error_report.cfg:80
+#: data/gui-2/default/window/wml_error.cfg:112
+#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
+msgid "Details:"
+msgstr "Details:"
+
+#. [button]: id=copy
+#: data/gui-2/default/window/error_report.cfg:93
+#: data/gui-2/default/window/wml_error.cfg:125
+#: data/gui/default/window/wml_error.cfg:125
+msgid "Copy this report to clipboard"
+msgstr "Bericht in Zwischenablage kopieren"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
+#: data/gui-2/default/window/folder_create.cfg:43
 #: data/gui/default/window/folder_create.cfg:43 src/filechooser.cpp:85
 msgid "New Folder"
 msgstr "Neuer Ordner"
 
 #. [label]
+#: data/gui-2/default/window/formula_debugger.cfg:36
 #: data/gui/default/window/formula_debugger.cfg:36
 msgid "Formula debugger"
 msgstr "Formeldebugger"
 
 #. [label]
+#: data/gui-2/default/window/formula_debugger.cfg:59
 #: data/gui/default/window/formula_debugger.cfg:59
 msgid "Welcome"
 msgstr "Willkommen"
 
 #. [label]: id=state
+#: data/gui-2/default/window/formula_debugger.cfg:71
 #: data/gui/default/window/formula_debugger.cfg:71
 msgid "state"
 msgstr "Zustand"
 
 #. [label]
+#: data/gui-2/default/window/formula_debugger.cfg:85
 #: data/gui/default/window/formula_debugger.cfg:85
 msgid "Call stack"
 msgstr "Aufrufstapel"
 
 #. [label]
+#: data/gui-2/default/window/formula_debugger.cfg:94
 #: data/gui/default/window/formula_debugger.cfg:94
 msgid "Actions"
 msgstr "Aktionen"
 
 #. [button]: id=step
+#: data/gui-2/default/window/formula_debugger.cfg:128
 #: data/gui/default/window/formula_debugger.cfg:128
 msgid "Step operation"
 msgstr "Schritt über Ausdruck"
 
 #. [button]: id=next
+#: data/gui-2/default/window/formula_debugger.cfg:139
 #: data/gui/default/window/formula_debugger.cfg:139
 msgid "Next operation"
 msgstr "Schritt hinüber"
 
 #. [button]: id=stepout
+#: data/gui-2/default/window/formula_debugger.cfg:150
 #: data/gui/default/window/formula_debugger.cfg:150
 msgid "Step out"
 msgstr "Schritt heraus"
 
 #. [button]: id=continue
+#: data/gui-2/default/window/formula_debugger.cfg:161
 #: data/gui/default/window/formula_debugger.cfg:161
 msgid "Continue"
 msgstr "Forsetzen"
 
 #. [label]
+#: data/gui-2/default/window/formula_debugger.cfg:178
 #: data/gui/default/window/formula_debugger.cfg:178
 msgid "Execution trace"
 msgstr "Aufrufstapel"
@@ -2693,6 +3123,9 @@ msgstr "Aufrufstapel"
 #. [button]: id=cancel
 #. [button]: id=quit
 #. [grid]
+#: data/gui-2/default/window/formula_debugger.cfg:234
+#: data/gui-2/default/window/lobby_main.cfg:666
+#: data/gui-2/default/window/title_screen.cfg:266
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:666
 #: data/gui/default/window/title_screen.cfg:266
@@ -2700,6 +3133,7 @@ msgid "Quit"
 msgstr "Beenden"
 
 #. [label]: id=title
+#: data/gui-2/default/window/game_cache_options.cfg:36
 #: data/gui/default/window/game_cache_options.cfg:36
 #, fuzzy
 #| msgid "Cache:"
@@ -2707,6 +3141,7 @@ msgid "WML Cache"
 msgstr "Cache:"
 
 #. [label]
+#: data/gui-2/default/window/game_cache_options.cfg:53
 #: data/gui/default/window/game_cache_options.cfg:53
 msgid ""
 "Wesnoth maintains a cache of preprocessed WML data for campaigns, "
@@ -2717,6 +3152,7 @@ msgid ""
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/game_cache_options.cfg:81
 #: data/gui/default/window/game_cache_options.cfg:81
 #, fuzzy
 #| msgid "Paths"
@@ -2725,66 +3161,84 @@ msgstr "Verzeichnisse"
 
 #. [button]: id=copy
 #. [button]: id=copy_
+#: data/gui-2/default/window/game_cache_options.cfg:111
+#: data/gui-2/default/window/game_version.cfg:47
+#: data/gui-2/default/window/screenshot_notification.cfg:34
 #: data/gui/default/window/game_cache_options.cfg:111
-#: data/gui/default/window/game_paths.cfg:47
+#: data/gui/default/window/game_version.cfg:47
 #: data/gui/default/window/screenshot_notification.cfg:34
 msgid "filesystem^Copy"
 msgstr "Kopieren"
 
 #. [button]: id=copy
 #. [button]: id=copy_
+#: data/gui-2/default/window/game_cache_options.cfg:112
+#: data/gui-2/default/window/game_version.cfg:48
+#: data/gui-2/default/window/screenshot_notification.cfg:35
 #: data/gui/default/window/game_cache_options.cfg:112
-#: data/gui/default/window/game_paths.cfg:48
+#: data/gui/default/window/game_version.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
 msgid "Copy this path to clipboard"
 msgstr "Verzeichnis in Zwischenablage kopieren"
 
 #. [button]: id=browse
 #. [button]: id=browse_
+#: data/gui-2/default/window/game_cache_options.cfg:127
+#: data/gui-2/default/window/game_version.cfg:63
 #: data/gui/default/window/game_cache_options.cfg:127
-#: data/gui/default/window/game_paths.cfg:63
+#: data/gui/default/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Anzeigen"
 
 #. [button]: id=browse
 #. [button]: id=browse_
+#: data/gui-2/default/window/game_cache_options.cfg:128
+#: data/gui-2/default/window/game_version.cfg:64
 #: data/gui/default/window/game_cache_options.cfg:128
-#: data/gui/default/window/game_paths.cfg:64
+#: data/gui/default/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
 msgstr "Verzeichnis im Dateimanager öffnen"
 
 #. [button]: id=clean
+#: data/gui-2/default/window/game_cache_options.cfg:196
 #: data/gui/default/window/game_cache_options.cfg:196
 msgid "cache^Clean"
 msgstr ""
 
 #. [button]: id=clean
+#: data/gui-2/default/window/game_cache_options.cfg:197
 #: data/gui/default/window/game_cache_options.cfg:197
 msgid "Clear stale and unused cache files"
 msgstr ""
 
 #. [button]: id=purge
+#: data/gui-2/default/window/game_cache_options.cfg:209
 #: data/gui/default/window/game_cache_options.cfg:209
 msgid "cache^Purge"
 msgstr ""
 
 #. [button]: id=purge
+#: data/gui-2/default/window/game_cache_options.cfg:210
 #: data/gui/default/window/game_cache_options.cfg:210
 msgid "Purge the entire contents of the cache"
 msgstr ""
 
 #. [label]: id=lblTitle
+#: data/gui-2/default/window/game_delete.cfg:40
 #: data/gui/default/window/game_delete.cfg:40
 msgid "Delete Save"
 msgstr "Spielstand löschen"
 
 #. [label]: id=lblMessage
+#: data/gui-2/default/window/game_delete.cfg:60
 #: data/gui/default/window/game_delete.cfg:60
 msgid "Do you really want to delete this game?"
 msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
 
 #. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#: data/gui-2/default/window/game_delete.cfg:80
+#: data/gui-2/default/window/mp_host_game_prompt.cfg:79
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -2792,84 +3246,61 @@ msgstr "Nicht noch einmal anzeigen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
-#: data/gui/default/window/game_load.cfg:50
+#: data/gui-2/default/window/game_load.cfg:50
+#: data/gui/default/window/game_load.cfg:52
 #: src/gui/dialogs/mp_create_game.cpp:97 src/hotkey/hotkey_command.cpp:69
 msgid "Load Game"
 msgstr "Spielstand laden"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:364
-#: data/gui/default/window/game_load.cfg:365
+#: data/gui-2/default/window/game_load.cfg:360
+#: data/gui-2/default/window/game_load.cfg:361
+#: data/gui/default/window/game_load.cfg:372
+#: data/gui/default/window/game_load.cfg:373
 msgid "Delete"
 msgstr "Löschen"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/default/window/game_load.cfg:383
+#: data/gui-2/default/window/game_load.cfg:379
+#: data/gui/default/window/game_load.cfg:356
 msgid "Change difficulty"
 msgstr "Schwierigkeitsgrad ändern"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/default/window/game_load.cfg:384
+#: data/gui-2/default/window/game_load.cfg:380
+#: data/gui/default/window/game_load.cfg:357
 msgid "Change campaign difficulty before loading"
 msgstr ""
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:403
+#: data/gui-2/default/window/game_load.cfg:399
+#: data/gui/default/window/game_load.cfg:397
 msgid "Show replay"
 msgstr "Spielverlauf anzeigen"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:404
+#: data/gui-2/default/window/game_load.cfg:400
+#: data/gui/default/window/game_load.cfg:398
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:422
+#: data/gui-2/default/window/game_load.cfg:418
+#: data/gui/default/window/game_load.cfg:416
 msgid "Cancel orders"
 msgstr "Befehle verwerfen"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:423
+#: data/gui-2/default/window/game_load.cfg:419
+#: data/gui/default/window/game_load.cfg:417
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 
-#. [label]: id=title
-#: data/gui/default/window/game_paths.cfg:105
-msgid "Game Paths"
-msgstr "Spielverzeichnisse"
-
-#. [grid]
-#: data/gui/default/window/game_paths.cfg:127
-msgid "Game data:"
-msgstr "Spieldaten:"
-
-#. [grid]
-#: data/gui/default/window/game_paths.cfg:129
-msgid "Configuration:"
-msgstr "Konfiguration:"
-
-#. [grid]
-#: data/gui/default/window/game_paths.cfg:131
-msgid "User data:"
-msgstr "Benutzerdaten:"
-
-#. [grid]
-#: data/gui/default/window/game_paths.cfg:133
-msgid "Saved games:"
-msgstr "Spielstände:"
-
-#. [grid]
-#: data/gui/default/window/game_paths.cfg:135
-msgid "Add-ons:"
-msgstr "Erweiterungen:"
-
-#. [grid]
-#: data/gui/default/window/game_paths.cfg:137
-msgid "Cache:"
-msgstr "Cache:"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
+#: data/gui-2/default/window/game_save.cfg:42
+#: data/gui-2/default/window/game_save_message.cfg:42
+#: data/gui-2/default/window/game_save_oos.cfg:42
 #: data/gui/default/window/game_save.cfg:42
 #: data/gui/default/window/game_save_message.cfg:42
 #: data/gui/default/window/game_save_oos.cfg:42
@@ -2878,45 +3309,150 @@ msgid "Save Game"
 msgstr "Spiel speichern"
 
 #. [toggle_button]: id=ignore_all
+#: data/gui-2/default/window/game_save_oos.cfg:144
 #: data/gui/default/window/game_save_oos.cfg:144
 msgid "Ignore all"
 msgstr "Alle ignorieren"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
+#: data/gui-2/default/window/game_save_oos.cfg:161
 #: data/gui/default/window/game_save_oos.cfg:161
-#: src/hotkey/hotkey_command.cpp:90
 msgid "Quit Game"
 msgstr "Spiel beenden"
 
 #. [label]: id=lblTitle
+#: data/gui-2/default/window/game_save_overwrite.cfg:40
 #: data/gui/default/window/game_save_overwrite.cfg:40
 msgid "Overwrite?"
 msgstr "Überschreiben?"
 
 #. [label]: id=lblMessage
+#: data/gui-2/default/window/game_save_overwrite.cfg:60
 #: data/gui/default/window/game_save_overwrite.cfg:60
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
+#. [grid]
+#: data/gui-2/default/window/game_version.cfg:127
+#: data/gui/default/window/game_version.cfg:127
+msgid "Game data:"
+msgstr "Spieldaten:"
+
+#. [grid]
+#: data/gui-2/default/window/game_version.cfg:129
+#: data/gui/default/window/game_version.cfg:129
+msgid "Configuration:"
+msgstr "Konfiguration:"
+
+#. [grid]
+#: data/gui-2/default/window/game_version.cfg:131
+#: data/gui/default/window/game_version.cfg:131
+msgid "User data:"
+msgstr "Benutzerdaten:"
+
+#. [grid]
+#: data/gui-2/default/window/game_version.cfg:133
+#: data/gui/default/window/game_version.cfg:133
+msgid "Saved games:"
+msgstr "Spielstände:"
+
+#. [grid]
+#: data/gui-2/default/window/game_version.cfg:135
+#: data/gui/default/window/game_version.cfg:135
+msgid "Add-ons:"
+msgstr "Erweiterungen:"
+
+#. [grid]
+#: data/gui-2/default/window/game_version.cfg:137
+#: data/gui/default/window/game_version.cfg:137
+msgid "Cache:"
+msgstr "Cache:"
+
+#. [button]: id=open_stderr
+#: data/gui-2/default/window/game_version.cfg:162
+#: data/gui/default/window/game_version.cfg:162
+msgid "Open Log File"
+msgstr ""
+
+#. [button]: id=open_stderr
+#: data/gui-2/default/window/game_version.cfg:163
+#: data/gui/default/window/game_version.cfg:163
+msgid "Opens the log file, which may contain useful debug information"
+msgstr ""
+
 #. [label]
+#: data/gui-2/default/window/game_version.cfg:196
+#: data/gui/default/window/game_version.cfg:196
+msgid "library^Name"
+msgstr ""
+
+#. [label]
+#: data/gui-2/default/window/game_version.cfg:206
+#: data/gui/default/window/game_version.cfg:206
+msgid "library^Build version"
+msgstr ""
+
+#. [label]
+#: data/gui-2/default/window/game_version.cfg:216
+#: data/gui/default/window/game_version.cfg:216
+msgid "library^Runtime version"
+msgstr ""
+
+#. [label]
+#: data/gui-2/default/window/game_version.cfg:294
+#: data/gui/default/window/game_version.cfg:294
+msgid ""
+"The following features were selected when building this version of Wesnoth:"
+msgstr ""
+
+#. [label]
+#: data/gui-2/default/window/game_version.cfg:448
+#: data/gui/default/window/game_version.cfg:448
+#, fuzzy
+#| msgid "Show Battle for Wesnoth help"
+msgid "The Battle for Wesnoth"
+msgstr "Hilfe zu Battle for Wesnoth anzeigen"
+
+#. [button]: id=copy_all
+#: data/gui-2/default/window/game_version.cfg:584
+#: data/gui/default/window/game_version.cfg:584
+#, fuzzy
+#| msgid "Copy"
+msgid "page^Copy"
+msgstr "Kopieren"
+
+#. [button]: id=copy_all
+#: data/gui-2/default/window/game_version.cfg:585
+#: data/gui/default/window/game_version.cfg:585
+#, fuzzy
+#| msgid "Copy this report to clipboard"
+msgid "Copy the full report to clipboard"
+msgstr "Bericht in Zwischenablage kopieren"
+
+#. [label]
+#: data/gui-2/default/window/gamestate_inspector.cfg:45
 #: data/gui/default/window/gamestate_inspector.cfg:45
 msgid "Gamestate Inspector"
 msgstr "Spielzustandsanzeige"
 
 #. [label]: id=typename
 #. [label]: id=unit_type
+#. [toggle_button]: id=sort_1
+#: data/gui-2/default/window/gamestate_inspector.cfg:102
+#: data/gui-2/default/window/unit_create.cfg:131
 #: data/gui/default/window/gamestate_inspector.cfg:102
-#: data/gui/default/window/unit_create.cfg:131
+#: data/gui/default/window/unit_create.cfg:280
 msgid "Type"
 msgstr "Typ"
 
 #. [label]: id=name
+#: data/gui-2/default/window/gamestate_inspector.cfg:164
 #: data/gui/default/window/gamestate_inspector.cfg:164
 msgid "Items"
 msgstr "Gegenstände"
 
 #. [label]
+#: data/gui-2/default/window/gamestate_inspector.cfg:226
 #: data/gui/default/window/gamestate_inspector.cfg:226
 #, fuzzy
 msgid "Contents"
@@ -2924,100 +3460,126 @@ msgstr "Wert"
 
 #. [button]: id=lua
 #. [label]
+#: data/gui-2/default/window/gamestate_inspector.cfg:287
+#: data/gui-2/default/window/lua_interpreter.cfg:41
 #: data/gui/default/window/gamestate_inspector.cfg:287
 #: data/gui/default/window/lua_interpreter.cfg:41
 msgid "Lua Console"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/joystick_settings.cfg:25
+#: data/gui-2/default/window/joystick_settings.cfg:25
 #, fuzzy
 #| msgid "Mouse Scrolling"
 msgid "Map scrolling"
 msgstr "Mit der Maus scrollen"
 
 #. [label]
-#: data/gui/default/window/joystick_settings.cfg:54
+#: data/gui-2/default/window/joystick_settings.cfg:54
 #, fuzzy
 #| msgid "Moderation"
 msgid "Mouse emulation"
 msgstr "Moderation"
 
 #. [label]
-#: data/gui/default/window/joystick_settings.cfg:93
+#: data/gui-2/default/window/joystick_settings.cfg:93
 #, fuzzy
 #| msgid "Hotkey Settings"
 msgid "Joystick Settings"
 msgstr "Tastenkürzel anpassen"
 
 #. [toggle_button]
-#: data/gui/default/window/joystick_settings.cfg:107
+#: data/gui-2/default/window/joystick_settings.cfg:107
 msgid "Enable joystick support"
 msgstr ""
 
+#. [label]: id=title
+#: data/gui-2/default/window/label_settings.cfg:42
+#: data/gui/default/window/label_settings.cfg:42
+#, fuzzy
+#| msgid "Show floating labels"
+msgid "Show or Hide Labels"
+msgstr "Schwebende Meldungen anzeigen"
+
 #. [grid]
 #. [label]
+#: data/gui-2/default/window/language_selection.cfg:41
+#: data/gui-2/default/window/title_screen.cfg:263
 #: data/gui/default/window/language_selection.cfg:41
 #: data/gui/default/window/title_screen.cfg:263
 msgid "Language"
 msgstr "Spracheinstellungen"
 
 #. [label]
+#: data/gui-2/default/window/language_selection.cfg:60
 #: data/gui/default/window/language_selection.cfg:60
 msgid "Choose your preferred language:"
 msgstr "Wählt Eure bevorzugte Sprache:"
 
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:115
 #: data/gui/default/window/lobby_main.cfg:115
 msgid "Games"
 msgstr "Spiele"
 
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:182
 #: data/gui/default/window/lobby_main.cfg:182
 msgid "Assign sides to players at random"
 msgstr "Fraktionen zufällig an Spieler verteilen"
 
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:183
 #: data/gui/default/window/lobby_main.cfg:183
 msgid "Requires a password to join"
 msgstr "Passwort benötigt, um beizutreten"
 
 #. [row]
 #. [toggle_button]: id=use_map_settings
+#: data/gui-2/default/window/lobby_main.cfg:184
+#: data/gui-2/default/window/mp_create_game.cfg:321
 #: data/gui/default/window/lobby_main.cfg:184
 #: data/gui/default/window/mp_create_game.cfg:321
 msgid "Use map settings"
 msgstr "Vorgaben nutzen"
 
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:185
 #: data/gui/default/window/lobby_main.cfg:185
 msgid "Reloaded game"
 msgstr "Spiel neu geladen"
 
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:186
 #: data/gui/default/window/lobby_main.cfg:186
 msgid "Unknown era"
 msgstr "Unbekannte Epoche"
 
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:188
 #: data/gui/default/window/lobby_main.cfg:188
 msgid "Gold per village"
 msgstr "Steuereinnahmen pro Dorf"
 
 #. [label]
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:190
+#: data/gui-2/default/window/mp_create_game.cfg:420
 #: data/gui/default/window/lobby_main.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:420
 msgid "Experience modifier"
 msgstr "Erfahrungsmodifikator"
 
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:192
 #: data/gui/default/window/lobby_main.cfg:192
 msgid "Time limit"
 msgstr "Zeitbegrenzung"
 
 #. [button]: id=join_global
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:201
+#: data/gui-2/default/window/lobby_main.cfg:698
 #: data/gui/default/window/lobby_main.cfg:201
 #: data/gui/default/window/lobby_main.cfg:698
 msgid "Join"
@@ -3025,83 +3587,101 @@ msgstr "Beitreten"
 
 #. [button]: id=observe_global
 #. [row]
+#: data/gui-2/default/window/lobby_main.cfg:204
+#: data/gui-2/default/window/lobby_main.cfg:704
 #: data/gui/default/window/lobby_main.cfg:204
 #: data/gui/default/window/lobby_main.cfg:704
 msgid "Observe"
 msgstr "Beobachten"
 
 #. [label]
+#: data/gui-2/default/window/lobby_main.cfg:311
 #: data/gui/default/window/lobby_main.cfg:311
 msgid "Sort players:"
 msgstr "Spieler sortieren:"
 
 #. [toggle_button]: id=player_list_sort_relation
+#: data/gui-2/default/window/lobby_main.cfg:319
 #: data/gui/default/window/lobby_main.cfg:319
 msgid "Friends first, ignored people last"
 msgstr "Zuerst Freunde, dann Ignorierte"
 
 #. [toggle_button]: id=player_list_sort_name
+#: data/gui-2/default/window/lobby_main.cfg:327
 #: data/gui/default/window/lobby_main.cfg:327
 msgid "Alphabetically"
 msgstr "Alphabetisch"
 
 #. [definition]
+#: data/gui-2/default/window/lobby_main.cfg:343
 #: data/gui/default/window/lobby_main.cfg:343
 msgid "Selected game"
 msgstr "Ausgewähltes Spiel"
 
 #. [definition]
+#: data/gui-2/default/window/lobby_main.cfg:344
 #: data/gui/default/window/lobby_main.cfg:344
 msgid "Current room"
 msgstr "Derzeitiger Raum"
 
 #. [definition]
+#: data/gui-2/default/window/lobby_main.cfg:345
 #: data/gui/default/window/lobby_main.cfg:345
 msgid "Lobby"
 msgstr "Lobby"
 
 #. [definition]
+#: data/gui-2/default/window/lobby_main.cfg:346
 #: data/gui/default/window/lobby_main.cfg:346
 msgid "Other games"
 msgstr "Andere Partien"
 
 #. [label]: id=room
+#: data/gui-2/default/window/lobby_main.cfg:485
 #: data/gui/default/window/lobby_main.cfg:485
 msgid "Rooms"
 msgstr "Räume"
 
 #. [image]: id=pending_messages
+#: data/gui-2/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_main.cfg:503
 msgid "Messages waiting"
 msgstr "Neue Nachrichten"
 
 #. [label]
+#: data/gui-2/default/window/lobby_main.cfg:573
 #: data/gui/default/window/lobby_main.cfg:573
 msgid "Multiplayer Lobby"
 msgstr "Mehrspielerlobby"
 
 #. [toggle_button]: id=filter_with_friends
+#: data/gui-2/default/window/lobby_main.cfg:592
 #: data/gui/default/window/lobby_main.cfg:592
 msgid "Friends"
 msgstr "Freunde"
 
 #. [toggle_button]: id=filter_without_ignored
+#: data/gui-2/default/window/lobby_main.cfg:598
 #: data/gui/default/window/lobby_main.cfg:598
 msgid "No ignored"
 msgstr "Nicht ignoriert"
 
 #. [toggle_button]: id=filter_vacant_slots
+#: data/gui-2/default/window/lobby_main.cfg:604
 #: data/gui/default/window/lobby_main.cfg:604
 msgid "Vacant slots"
 msgstr "Freie Plätze"
 
 #. [toggle_button]: id=filter_invert
+#: data/gui-2/default/window/lobby_main.cfg:610
 #: data/gui/default/window/lobby_main.cfg:610
 msgid "Invert filter"
 msgstr "Filter invertieren"
 
 #. [button]: id=ok
 #. [button]: id=send_message
+#: data/gui-2/default/window/lobby_main.cfg:654
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:101
 #: data/gui/default/window/lobby_main.cfg:654
 #: data/gui/default/window/mp_cmd_wrapper.cfg:101
 msgid "Send"
@@ -3110,86 +3690,105 @@ msgstr "Senden"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
+#: data/gui-2/default/window/lobby_main.cfg:672
+#: data/gui-2/default/window/title_screen.cfg:264
 #: data/gui/default/window/lobby_main.cfg:672
 #: data/gui/default/window/title_screen.cfg:264
-#: src/game_preferences_display.cpp:71 src/hotkey/hotkey_command.cpp:84
+#: src/game_preferences_display.cpp:70 src/hotkey/hotkey_command.cpp:85
 msgid "Preferences"
 msgstr "Einstellungen"
 
 #. [button]: id=refresh
+#: data/gui-2/default/window/lobby_main.cfg:678
 #: data/gui/default/window/lobby_main.cfg:678
 msgid "Refresh"
 msgstr "Aktualisieren"
 
 #. [button]: id=create
 #. [label]
+#: data/gui-2/default/window/lobby_main.cfg:692
+#: data/gui-2/default/window/mp_create_game.cfg:41
 #: data/gui/default/window/lobby_main.cfg:692
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
 #. [toggle_button]: id=skip_replay
+#: data/gui-2/default/window/lobby_main.cfg:710
 #: data/gui/default/window/lobby_main.cfg:710
 msgid "Quick replay"
 msgstr "Schneller Verlauf"
 
 #. [label]
+#: data/gui-2/default/window/lobby_player_info.cfg:38
 #: data/gui/default/window/lobby_player_info.cfg:38
 msgid "Player Info — "
 msgstr "Spielerinformationen — "
 
 #. [button]: id=start_whisper
+#: data/gui-2/default/window/lobby_player_info.cfg:70
 #: data/gui/default/window/lobby_player_info.cfg:70
 msgid "Send Private Message"
 msgstr "Private Nachricht senden"
 
 #. [button]: id=add_to_friends
+#: data/gui-2/default/window/lobby_player_info.cfg:99
 #: data/gui/default/window/lobby_player_info.cfg:99
 msgid "Add to Friends"
 msgstr "Als Freund hinzufügen"
 
 #. [button]: id=add_to_ignores
+#: data/gui-2/default/window/lobby_player_info.cfg:108
 #: data/gui/default/window/lobby_player_info.cfg:108
 msgid "Add to Ignores"
 msgstr "Als Ignoriert hinzufügen"
 
 #. [button]: id=remove_from_list
+#: data/gui-2/default/window/lobby_player_info.cfg:117
 #: data/gui/default/window/lobby_player_info.cfg:117
 msgid "Remove from List"
 msgstr "Von Liste entfernen"
 
 #. [label]
+#: data/gui-2/default/window/lobby_player_info.cfg:141
 #: data/gui/default/window/lobby_player_info.cfg:141
 msgid "Moderation"
 msgstr "Moderation"
 
 #. [button]: id=check_status
+#: data/gui-2/default/window/lobby_player_info.cfg:148
 #: data/gui/default/window/lobby_player_info.cfg:148
 msgid "Check status"
 msgstr "Status überprüfen"
 
 #. [label]
+#: data/gui-2/default/window/lobby_player_info.cfg:155
 #: data/gui/default/window/lobby_player_info.cfg:155
 msgid "Kick / ban reason:"
 msgstr "Grund für Rauswurf / Verbannung:"
 
 #. [button]: id=kick
+#: data/gui-2/default/window/lobby_player_info.cfg:168
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:399
 #: data/gui/default/window/lobby_player_info.cfg:168
 #: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr "Vom Server werfen"
 
 #. [label]
+#: data/gui-2/default/window/lobby_player_info.cfg:175
 #: data/gui/default/window/lobby_player_info.cfg:175
 msgid "Ban time:"
 msgstr "Dauer der Verbannung:"
 
 #. [button]: id=kick_ban
+#: data/gui-2/default/window/lobby_player_info.cfg:188
 #: data/gui/default/window/lobby_player_info.cfg:188
 msgid "Kick/ban"
 msgstr "Vom Server werfen/Bannen"
 
 #. [label]: id=title
+#: data/gui-2/default/window/mp_alerts_options.cfg:100
 #: data/gui/default/window/mp_alerts_options.cfg:100
 #, fuzzy
 #| msgid "Multiplayer"
@@ -3197,26 +3796,31 @@ msgid "Multiplayer Alerts"
 msgstr "Mehrspieler"
 
 #. [label]
+#: data/gui-2/default/window/mp_alerts_options.cfg:125
 #: data/gui/default/window/mp_alerts_options.cfg:125
 msgid "Event:"
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/mp_alerts_options.cfg:140
 #: data/gui/default/window/mp_alerts_options.cfg:140
 msgid "Play Sound:"
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/mp_alerts_options.cfg:141
 #: data/gui/default/window/mp_alerts_options.cfg:141
 msgid "Play a sound for the event, specified in data/game_config.cfg"
 msgstr ""
 
 #. [label]: id=notification_label
+#: data/gui-2/default/window/mp_alerts_options.cfg:156
 #: data/gui/default/window/mp_alerts_options.cfg:156
 msgid "Desktop Notification:"
 msgstr ""
 
 #. [label]: id=notification_label
+#: data/gui-2/default/window/mp_alerts_options.cfg:157
 #: data/gui/default/window/mp_alerts_options.cfg:157
 msgid ""
 "Shows desktop/system tray notifications for turn change events or "
@@ -3224,17 +3828,20 @@ msgid ""
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/mp_alerts_options.cfg:171
 #: data/gui/default/window/mp_alerts_options.cfg:171
 msgid "Also in main lobby:"
 msgstr ""
 
 #. [label]
+#: data/gui-2/default/window/mp_alerts_options.cfg:172
 #: data/gui/default/window/mp_alerts_options.cfg:172
 msgid ""
 "Also take these actions in response to events in the main multiplayer lobby"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:177
 #: data/gui/default/window/mp_alerts_options.cfg:177
 #, fuzzy
 #| msgid "Players:"
@@ -3242,11 +3849,13 @@ msgid "Player joins:"
 msgstr "Spieler:"
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:177
 #: data/gui/default/window/mp_alerts_options.cfg:177
 msgid "When a player joins the lobby or game"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:178
 #: data/gui/default/window/mp_alerts_options.cfg:178
 #, fuzzy
 #| msgid "Players:"
@@ -3254,11 +3863,13 @@ msgid "Player leaves:"
 msgstr "Spieler:"
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:178
 #: data/gui/default/window/mp_alerts_options.cfg:178
 msgid "When a player leaves the lobby or game"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:179
 #: data/gui/default/window/mp_alerts_options.cfg:179
 #, fuzzy
 #| msgid "Send Private Message"
@@ -3266,11 +3877,13 @@ msgid "Private message:"
 msgstr "Private Nachricht senden"
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:179
 #: data/gui/default/window/mp_alerts_options.cfg:179
-msgid "When a private message is recieved"
+msgid "When a private message is received"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:180
 #: data/gui/default/window/mp_alerts_options.cfg:180
 #, fuzzy
 #| msgid "Friends"
@@ -3278,11 +3891,13 @@ msgid "Friend message:"
 msgstr "Freunde"
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:180
 #: data/gui/default/window/mp_alerts_options.cfg:180
-msgid "When a message from a friend is recieved"
+msgid "When a message from a friend is received"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:181
 #: data/gui/default/window/mp_alerts_options.cfg:181
 #, fuzzy
 #| msgid "Message:"
@@ -3290,11 +3905,13 @@ msgid "Public message:"
 msgstr "Nachricht:"
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:181
 #: data/gui/default/window/mp_alerts_options.cfg:181
-msgid "When a public message is recieved"
+msgid "When a public message is received"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:182
 #: data/gui/default/window/mp_alerts_options.cfg:182
 #, fuzzy
 #| msgid "Send Private Message"
@@ -3302,11 +3919,13 @@ msgid "Server message:"
 msgstr "Private Nachricht senden"
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:182
 #: data/gui/default/window/mp_alerts_options.cfg:182
-msgid "When a server message is recieved"
+msgid "When a server message is received"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:183
 #: data/gui/default/window/mp_alerts_options.cfg:183
 #, fuzzy
 #| msgid "Random start time"
@@ -3314,39 +3933,46 @@ msgid "Ready to start game:"
 msgstr "Zufällige Startzeit"
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:183
 #: data/gui/default/window/mp_alerts_options.cfg:183
 msgid "When the game you are hosting is ready to start"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:184
 #: data/gui/default/window/mp_alerts_options.cfg:184
 msgid "Game has begun:"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:184
 #: data/gui/default/window/mp_alerts_options.cfg:184
 msgid "When the host (not you) has started the game"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:185
 #: data/gui/default/window/mp_alerts_options.cfg:185
 msgid "Turn changed:"
 msgstr ""
 
 #. [grid]
+#: data/gui-2/default/window/mp_alerts_options.cfg:185
 #: data/gui/default/window/mp_alerts_options.cfg:185
 msgid "When a new turn has begun"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=revert_to_defaults
+#: data/gui-2/default/window/mp_alerts_options.cfg:210
 #: data/gui/default/window/mp_alerts_options.cfg:210
-#: src/game_preferences_display.cpp:254
+#: src/game_preferences_display.cpp:252
 #: src/hotkey/hotkey_preferences_display.cpp:172
 msgid "Defaults"
 msgstr "Standard"
 
 #. [button]: id=revert_to_defaults
+#: data/gui-2/default/window/mp_alerts_options.cfg:211
 #: data/gui/default/window/mp_alerts_options.cfg:211
 #, fuzzy
 #| msgid "All hotkeys have been reset to their default values."
@@ -3354,152 +3980,184 @@ msgid "Reset all options to their default values"
 msgstr "Alle Tastaturküzel wurden auf die Standardeinstellungen zurückgesetzt."
 
 #. [label]: id=side_title
+#: data/gui-2/default/window/mp_change_control.cfg:21
 #: data/gui/default/window/mp_change_control.cfg:21
 msgid "Side"
 msgstr "Fraktion"
 
 #. [label]: id=nick_title
+#: data/gui-2/default/window/mp_change_control.cfg:73
 #: data/gui/default/window/mp_change_control.cfg:73
 msgid "Nickname"
 msgstr "Spielername"
 
 #. [label]
+#: data/gui-2/default/window/mp_change_control.cfg:194
 #: data/gui/default/window/mp_change_control.cfg:194
 msgid "Change Control"
 msgstr "Kontrolle ändern"
 
 #. [window]: id=mp_cmd_wrapper
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:8
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command dialog"
 msgstr "Mehrspielerkommandodialog"
 
 #. [label]
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:39
 #: data/gui/default/window/mp_cmd_wrapper.cfg:39
 msgid "Messaging"
 msgstr "Nachrichten"
 
 #. [label]
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:69
 #: data/gui/default/window/mp_cmd_wrapper.cfg:69
 msgid "Message:"
 msgstr "Nachricht:"
 
 #. [label]
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:141
 #: data/gui/default/window/mp_cmd_wrapper.cfg:141
 msgid "Friends/Ignored List"
 msgstr "Freundes-/Ignorierliste"
 
 #. [button]: id=add_friend
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:170
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
 msgid "Add as Friend"
 msgstr "Als Freund hinzufügen"
 
 #. [button]: id=add_ignore
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:185
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
 msgid "Add as Ignore"
 msgstr "Als Ignoriert hinzufügen"
 
 #. [label]
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:251
 #: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr "Moderation"
 
 #. [label]
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:281
 #: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "Grund:"
 
 #. [label]
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:333
 #: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "Zeit:"
 
 #. [button]: id=status
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:384
 #: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "Status"
 
 #. [button]: id=ban
+#: data/gui-2/default/window/mp_cmd_wrapper.cfg:414
 #: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr "Verbannen"
 
 #. [label]
+#: data/gui-2/default/window/mp_connect.cfg:60
+#: data/gui-2/default/window/mp_server_list.cfg:69
 #: data/gui/default/window/mp_connect.cfg:60
 #: data/gui/default/window/mp_server_list.cfg:69
 msgid "You will now connect to the multiplayer server."
 msgstr "Ihr werdet nun mit einem Mehrspielerserver verbunden."
 
 #. [button]: id=list
+#: data/gui-2/default/window/mp_connect.cfg:133
 #: data/gui/default/window/mp_connect.cfg:133
 msgid "View List"
 msgstr "Liste zeigen"
 
 #. [label]
 #. [text_box]: id=game_name
+#: data/gui-2/default/window/mp_create_game.cfg:70
+#: data/gui-2/default/window/mp_create_game.cfg:85
 #: data/gui/default/window/mp_create_game.cfg:70
 #: data/gui/default/window/mp_create_game.cfg:85
 msgid "Name of game:"
 msgstr "Name der Partie:"
 
 #. [label]: id=map_players
+#: data/gui-2/default/window/mp_create_game.cfg:148
 #: data/gui/default/window/mp_create_game.cfg:148
 msgid "Players: "
 msgstr "Spieler: "
 
 #. [label]: id=map_size
+#: data/gui-2/default/window/mp_create_game.cfg:167
 #: data/gui/default/window/mp_create_game.cfg:167
 msgid "Map size: "
 msgstr "Kartengröße: "
 
 #. [button]: id=era
+#: data/gui-2/default/window/mp_create_game.cfg:204
 #: data/gui/default/window/mp_create_game.cfg:204
 msgid "Default"
 msgstr "Standard"
 
 #. [button]: id=password
 #. [label]: id=title
+#: data/gui-2/default/window/mp_create_game.cfg:226
+#: data/gui-2/default/window/mp_create_game_set_password.cfg:42
 #: data/gui/default/window/mp_create_game.cfg:226
 #: data/gui/default/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
 msgstr "Passwort festlegen"
 
 #. [label]
+#: data/gui-2/default/window/mp_create_game.cfg:254
 #: data/gui/default/window/mp_create_game.cfg:254
 msgid "Map to play:"
 msgstr "Verfügbare Karten:"
 
 #. [label]
+#: data/gui-2/default/window/mp_create_game.cfg:339
 #: data/gui/default/window/mp_create_game.cfg:339
 msgid "Number of turns"
 msgstr "Anzahl Runden:"
 
 #. [slider]: id=turn_count
+#: data/gui-2/default/window/mp_create_game.cfg:362
 #: data/gui/default/window/mp_create_game.cfg:362
 msgid "Unlimited"
 msgstr "Unbegrenzt"
 
 #. [label]
+#: data/gui-2/default/window/mp_create_game.cfg:380
 #: data/gui/default/window/mp_create_game.cfg:380
 msgid "Village gold"
 msgstr "Steuereinnahmen pro Dorf:"
 
 #. [toggle_button]: id=random_start_time
+#: data/gui-2/default/window/mp_create_game.cfg:501
 #: data/gui/default/window/mp_create_game.cfg:501
 msgid "Random start time"
 msgstr "Zufällige Startzeit"
 
 #. [label]
+#: data/gui-2/default/window/mp_create_game_choose_mods.cfg:54
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
 msgid "Choose Modifications"
 msgstr "Modifikationen auswählen"
 
 #. [label]: id=message
+#: data/gui-2/default/window/mp_create_game_choose_mods.cfg:73
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
 msgstr ""
 "Aktiviert die Modifikationen, welche während des Spiels aktiv sein sollen."
 
 #. [scroll_label]: id=message
+#: data/gui-2/default/window/mp_create_game_set_password.cfg:61
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
@@ -3508,6 +4166,9 @@ msgstr ""
 "beizutreten."
 
 #. [label]
+#: data/gui-2/default/window/mp_create_game_set_password.cfg:90
+#: data/gui-2/default/window/mp_join_game_password_prompt.cfg:90
+#: data/gui-2/default/window/mp_login.cfg:144
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
 #: data/gui/default/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/default/window/mp_login.cfg:144
@@ -3516,12 +4177,15 @@ msgstr "Passwort:"
 
 #. [column]
 #. [label]
+#: data/gui-2/default/window/mp_host_game_prompt.cfg:40
+#: data/gui-2/default/window/mp_method_selection.cfg:166
 #: data/gui/default/window/mp_host_game_prompt.cfg:40
 #: data/gui/default/window/mp_method_selection.cfg:166
 msgid "Host Networked Game"
 msgstr "Netzwerkpartie eröffnen"
 
 #. [label]
+#: data/gui-2/default/window/mp_host_game_prompt.cfg:58
 #: data/gui/default/window/mp_host_game_prompt.cfg:58
 msgid ""
 "A local server instance has to be started in order to host a networked game. "
@@ -3533,37 +4197,45 @@ msgstr ""
 "abgemeldet habe. Möchtet Ihr fortfahren?"
 
 #. [label]: id=title
+#: data/gui-2/default/window/mp_join_game_password_prompt.cfg:42
 #: data/gui/default/window/mp_join_game_password_prompt.cfg:42
 msgid "Password Required"
 msgstr "Passwort benötigt"
 
 #. [scroll_label]: id=message
+#: data/gui-2/default/window/mp_join_game_password_prompt.cfg:61
 #: data/gui/default/window/mp_join_game_password_prompt.cfg:61
 msgid "Joining this game requires a password."
 msgstr "Um diesem Spiel beizutreten, wird ein Passwort benötigt."
 
 #. [window]: id=mp_login
+#: data/gui-2/default/window/mp_login.cfg:8
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
 msgstr "Anmelden am Mehrspielerserver"
 
 #. [label]
+#: data/gui-2/default/window/mp_login.cfg:41
 #: data/gui/default/window/mp_login.cfg:41
 msgid "Login"
 msgstr "Anmelden"
 
 #. [label]
+#: data/gui-2/default/window/mp_login.cfg:91
+#: data/gui-2/default/window/mp_method_selection.cfg:69
 #: data/gui/default/window/mp_login.cfg:91
 #: data/gui/default/window/mp_method_selection.cfg:69
 msgid "Login:"
 msgstr "Euer Name:"
 
 #. [toggle_button]: id=remember_password
+#: data/gui-2/default/window/mp_login.cfg:202
 #: data/gui/default/window/mp_login.cfg:202
 msgid "Save password to preferences (clear text)"
 msgstr "Speichert das Passwort in der Konfigurationsdatei (im Klartext)"
 
 #. [button]: id=password_reminder
+#: data/gui-2/default/window/mp_login.cfg:260
 #: data/gui/default/window/mp_login.cfg:260
 msgid "Password Reminder"
 msgstr "Passworterinnerung"
@@ -3571,13 +4243,16 @@ msgstr "Passworterinnerung"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
+#: data/gui-2/default/window/mp_method_selection.cfg:39
+#: data/gui-2/default/window/title_screen.cfg:258
 #: data/gui/default/window/mp_method_selection.cfg:39
 #: data/gui/default/window/title_screen.cfg:258
-#: src/gui/dialogs/game_load.cpp:312
+#: src/gui/dialogs/game_load.cpp:339
 msgid "Multiplayer"
 msgstr "Mehrspieler"
 
 #. [text_box]: id=user_name
+#: data/gui-2/default/window/mp_method_selection.cfg:87
 #: data/gui/default/window/mp_method_selection.cfg:87
 msgid ""
 "You may login to the official multiplayer server with your forum username "
@@ -3597,77 +4272,114 @@ msgstr ""
 "finden."
 
 #. [column]
+#: data/gui-2/default/window/mp_method_selection.cfg:146
 #: data/gui/default/window/mp_method_selection.cfg:146
 msgid "Join Official Server"
 msgstr "Offiziellem Server beitreten"
 
 #. [column]
+#: data/gui-2/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_method_selection.cfg:147
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Beim offiziellen Wesnoth-Server anmelden"
 
 #. [column]
+#: data/gui-2/default/window/mp_method_selection.cfg:157
 #: data/gui/default/window/mp_method_selection.cfg:157
 msgid "Join a different server"
 msgstr "Einem anderem Server beitreten"
 
 #. [column]
+#: data/gui-2/default/window/mp_method_selection.cfg:167
 #: data/gui/default/window/mp_method_selection.cfg:167
 msgid "Host a game using dedicated server ‘wesnothd’"
 msgstr ""
 "Ausrichten einer Partie unter Zuhilfenahme des dedizierten »wesnothd« Servers"
 
 #. [column]
+#: data/gui-2/default/window/mp_method_selection.cfg:176
 #: data/gui/default/window/mp_method_selection.cfg:176
 msgid "Local Game"
 msgstr "Lokales Spiel"
 
 #. [column]
+#: data/gui-2/default/window/mp_method_selection.cfg:177
 #: data/gui/default/window/mp_method_selection.cfg:177
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Eine Mehrspielerpartie am selben Rechner gegen KI/Menschen spielen"
 
 #. [label]: id=address
+#: data/gui-2/default/window/mp_server_list.cfg:124
 #: data/gui/default/window/mp_server_list.cfg:124
 msgid "Address"
 msgstr "Adresse"
 
 #. [button]: id=ok
+#: data/gui-2/default/window/mp_server_list.cfg:217
 #: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
 msgstr "Auswählen"
 
 #. [button]: id=open
+#: data/gui-2/default/window/screenshot_notification.cfg:50
 #: data/gui/default/window/screenshot_notification.cfg:50
 msgid "filesystem^Open"
 msgstr "Öffnen"
 
 #. [button]: id=open
+#: data/gui-2/default/window/screenshot_notification.cfg:51
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
 msgstr ""
 
 #. [label]: id=title
+#: data/gui-2/default/window/screenshot_notification.cfg:95
 #: data/gui/default/window/screenshot_notification.cfg:95
 msgid "Screenshot Saved"
 msgstr "Bildschirmfoto gespeichert"
 
 #. [button]: id=browse_dir
+#: data/gui-2/default/window/screenshot_notification.cfg:185
 #: data/gui/default/window/screenshot_notification.cfg:185
 msgid "Screenshots..."
 msgstr "Bildschirmfotos…"
 
 #. [button]: id=browse_dir
+#: data/gui-2/default/window/screenshot_notification.cfg:187
 #: data/gui/default/window/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
 msgstr "Bildschirmfotoverzeichnis im Dateimanager öffnen"
 
+#. [label]: id=lblTitle
+#: data/gui-2/default/window/synced_choice_wait.cfg:40
+#: data/gui/default/window/synced_choice_wait.cfg:40
+msgid "Waiting..."
+msgstr ""
+
+#. [label]: id=lblMessage
+#: data/gui-2/default/window/synced_choice_wait.cfg:60
+#: data/gui/default/window/synced_choice_wait.cfg:60
+msgid "Waiting for remote input"
+msgstr ""
+
+#. [button]: id=btn_quit_game
+#: data/gui-2/default/window/synced_choice_wait.cfg:96
+#: data/gui-2/default/window/synced_choice_wait.cfg:97
+#: data/gui/default/window/synced_choice_wait.cfg:96
+#: data/gui/default/window/synced_choice_wait.cfg:97
+#, fuzzy
+#| msgid "Quit Game"
+msgid "Quit game"
+msgstr "Spiel beenden"
+
 #. [label]
+#: data/gui-2/default/window/theme_list.cfg:51
 #: data/gui/default/window/theme_list.cfg:51
 msgid "Choose Theme"
 msgstr "Grafikthema wählen"
 
 #. [label]
+#: data/gui-2/default/window/theme_list.cfg:67
 #: data/gui/default/window/theme_list.cfg:67
 msgid "The new theme will take effect after loading or starting a new game."
 msgstr ""
@@ -3675,43 +4387,53 @@ msgstr ""
 "Spiel gestartet wird."
 
 #. [button]: id=help
+#: data/gui-2/default/window/title_screen.cfg:180
 #: data/gui/default/window/title_screen.cfg:180
 msgid "Show Battle for Wesnoth help"
 msgstr "Hilfe zu Battle for Wesnoth anzeigen"
 
 #. [button]: id=previous_tip
+#: data/gui-2/default/window/title_screen.cfg:196
 #: data/gui/default/window/title_screen.cfg:196
 msgid "Show previous tip of the day"
 msgstr "Vorherigen Tipp des Tages anzeigen"
 
 #. [button]: id=next_tip
+#: data/gui-2/default/window/title_screen.cfg:211
 #: data/gui/default/window/title_screen.cfg:211
 msgid "Show next tip of the day"
 msgstr "Nächsten Tipp des Tages anzeigen"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:256
 #: data/gui/default/window/title_screen.cfg:256
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Führt in die Grundzüge des Spieles ein"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:256
 #: data/gui/default/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:315
+#: src/gui/dialogs/game_load.cpp:342
 msgid "Tutorial"
 msgstr "Einführung"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:257
 #: data/gui/default/window/title_screen.cfg:257
-msgid "Campaign"
+#, fuzzy
+#| msgid "Campaign"
+msgid "Campaigns"
 msgstr "Kampagne"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:257
 #: data/gui/default/window/title_screen.cfg:257
 msgid "Start a new single player campaign"
 msgstr "Eine neue Einzelspielerkampagne starten"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:258
 #: data/gui/default/window/title_screen.cfg:258
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
@@ -3721,26 +4443,31 @@ msgstr ""
 "spielen"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:259
 #: data/gui/default/window/title_screen.cfg:259
 msgid "Load"
 msgstr "Laden"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:259
 #: data/gui/default/window/title_screen.cfg:259
 msgid "Load a saved game"
 msgstr "Einen Spielstand laden"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:260
 #: data/gui/default/window/title_screen.cfg:260
 msgid "Add-ons"
 msgstr "Erweiterungen"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:260
 #: data/gui/default/window/title_screen.cfg:260
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Herunterladen von Kampagnen, Epochen oder Kartensammlungen"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:261
 #: data/gui/default/window/title_screen.cfg:261
 #, fuzzy
 #| msgid "Forest"
@@ -3748,6 +4475,7 @@ msgid "Cores"
 msgstr "Wald"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:261
 #: data/gui/default/window/title_screen.cfg:261
 #, fuzzy
 #| msgid "Selected game"
@@ -3755,93 +4483,137 @@ msgid "Select the game core data"
 msgstr "Ausgewähltes Spiel"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:262
 #: data/gui/default/window/title_screen.cfg:262
 msgid "Map Editor"
 msgstr "Karteneditor"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:262
 #: data/gui/default/window/title_screen.cfg:262
 msgid "Start the map editor"
 msgstr "Startet den Karteneditor"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:263
 #: data/gui/default/window/title_screen.cfg:263
 msgid "Change the language"
 msgstr "Spracheinstellungen ändern"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:264
 #: data/gui/default/window/title_screen.cfg:264
 msgid "Configure the game’s settings"
 msgstr "Globale Einstellungen des Spiels verändern"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:265
 #: data/gui/default/window/title_screen.cfg:265
 msgid "Credits"
 msgstr "Mitwirkende"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:265
 #: data/gui/default/window/title_screen.cfg:265
 msgid "View the credits"
 msgstr "Mitwirkende anzeigen"
 
 #. [grid]
+#: data/gui-2/default/window/title_screen.cfg:266
 #: data/gui/default/window/title_screen.cfg:266
 msgid "Quit the game"
 msgstr "Spiel beenden"
 
+#. [button]: id=about
+#: data/gui-2/default/window/title_screen.cfg:476
+#: data/gui/default/window/title_screen.cfg:476
+msgid "Display the game version and build information"
+msgstr ""
+
 #. [button]: id=ok
+#: data/gui-2/default/window/unit_attack.cfg:197
 #: data/gui/default/window/unit_attack.cfg:197
 msgid "Attack"
 msgstr "Angreifen"
 
 #. [label]
+#: data/gui-2/default/window/unit_attack.cfg:265
 #: data/gui/default/window/unit_attack.cfg:265
 msgid "Attack enemy"
 msgstr "Gegner angreifen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:45 src/hotkey/hotkey_command.cpp:81
+#: data/gui-2/default/window/unit_create.cfg:45
+#: data/gui/default/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:82
 msgid "Create Unit (Debug!)"
 msgstr "Einheit erstellen (Debug!)"
 
 #. [label]
-#: data/gui/default/window/unit_create.cfg:67
+#: data/gui-2/default/window/unit_create.cfg:67
+#: data/gui/default/window/unit_create.cfg:348
 msgid "Gender:"
 msgstr "Geschlecht:"
 
 #. [toggle_button]: id=male_toggle
-#: data/gui/default/window/unit_create.cfg:77
+#: data/gui-2/default/window/unit_create.cfg:77
+#: data/gui/default/window/unit_create.cfg:360
 msgid "Male"
 msgstr "Männlich"
 
 #. [toggle_button]: id=female_toggle
-#: data/gui/default/window/unit_create.cfg:87
+#: data/gui-2/default/window/unit_create.cfg:87
+#: data/gui/default/window/unit_create.cfg:372
 msgid "Female"
 msgstr "Weiblich"
 
 #. [label]: id=race
-#: data/gui/default/window/unit_create.cfg:119
+#. [toggle_button]: id=sort_0
+#: data/gui-2/default/window/unit_create.cfg:119
+#: data/gui/default/window/unit_create.cfg:266
 msgid "Race"
 msgstr "Rasse"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/default/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:205
-#: src/gui/dialogs/transient_message.cpp:76
-msgid "Error"
-msgstr "Fehler"
+#. [button]: id=type_profile
+#: data/gui/default/window/unit_create.cfg:116
+msgid "Profile"
+msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=details_heading
-#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
-msgid "Details:"
-msgstr "Details:"
+#: src/build_info.cpp:190
+msgid "feature^Experimental OpenMP support"
+msgstr ""
 
-#. [button]: id=copy
-#: data/gui/default/window/wml_error.cfg:125
-msgid "Copy this report to clipboard"
-msgstr "Bericht in Zwischenablage kopieren"
+#: src/build_info.cpp:195
+msgid "feature^PNG screenshots"
+msgstr ""
+
+#: src/build_info.cpp:200
+msgid "feature^Lua console completion"
+msgstr ""
+
+#: src/build_info.cpp:205
+msgid "feature^Legacy bidirectional rendering"
+msgstr ""
+
+#: src/build_info.cpp:212
+msgid "feature^D-Bus notifications back end"
+msgstr ""
+
+#: src/build_info.cpp:221
+msgid "feature^Win32 notifications back end"
+msgstr ""
+
+#: src/build_info.cpp:227
+msgid "feature^Cocoa notifications back end"
+msgstr ""
+
+#: src/build_info.cpp:232
+msgid "feature^Growl notifications back end"
+msgstr ""
+
+#: src/desktop/version.cpp:277
+msgid "operating_system^<unknown>"
+msgstr ""
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -3859,411 +4631,407 @@ msgstr "Das Löschen der Datei ist fehlgeschlagen."
 msgid "Creation of the directory failed."
 msgstr "Das Anlegen des Verzeichnisses ist fehlgeschlagen."
 
-#: src/game_preferences.cpp:398
+#: src/game_preferences.cpp:408
 msgid "No server has been defined."
 msgstr "Es wurde kein Server angegeben."
 
-#: src/game_preferences.cpp:497
+#: src/game_preferences.cpp:507
 msgid "player"
 msgstr "Spieler"
 
-#: src/game_preferences.cpp:1032
+#: src/game_preferences.cpp:1048
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:1035
+#: src/game_preferences.cpp:1051
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:201
 msgid "Full screen"
 msgstr "Vollbild"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:202
 msgid "Accelerated speed"
 msgstr "Geschwindigkeit erhöhen"
 
-#: src/game_preferences_display.cpp:204
+#: src/game_preferences_display.cpp:203
 msgid "Skip AI moves"
 msgstr "Computerzüge überspringen"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:204
 msgid "Interrupt move when an ally is sighted"
 msgstr "Bewegung unterbrechen, wenn Verbündete gesichtet werden"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:205
 msgid "Show grid"
 msgstr "Gitternetz einblenden"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:206
 msgid "Save replays at the end of scenarios"
 msgstr "Aufzeichnungen am Ende des Szenarios speichern"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:207
 msgid "Delete auto-saves at the end of scenarios"
 msgstr "Automatische Spielstände bei Szenarioende löschen"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:208
 msgid "Do not show lobby joins"
 msgstr "Erscheinen von Spielern in der Lobby nicht anzeigen"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:209
 msgid "Show lobby joins of friends only"
 msgstr "Erscheinen von Freunden in der Lobby anzeigen"
 
-#: src/game_preferences_display.cpp:211
+#: src/game_preferences_display.cpp:210
 msgid "Show all lobby joins"
 msgstr "Erscheinen von Spielern in der Lobby anzeigen"
 
-#: src/game_preferences_display.cpp:212
+#: src/game_preferences_display.cpp:211
 msgid "Sort lobby list"
 msgstr "Spielerliste sortieren"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:212
 msgid "Iconize lobby list"
 msgstr "Spielerliste mit Piktogrammen versehen"
 
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:213
 msgid "Save password to preferences (plain text)"
 msgstr "Passwort in Konfiguration speichern (im Klartext)"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:214
 msgid "Set Path to wesnothd"
 msgstr "Pfad für wesnothd festlegen"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:215
 msgid "Friends List"
 msgstr "Freundesliste"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:216
 msgid "Multiplayer Options"
 msgstr "Mehrspieler"
 
-#: src/game_preferences_display.cpp:218
+#: src/game_preferences_display.cpp:217
 msgid "Add As Friend"
 msgstr "Als Freund hinzufügen"
 
-#: src/game_preferences_display.cpp:219
+#: src/game_preferences_display.cpp:218
 msgid "Add As Ignore"
 msgstr "Als Ignoriert hinzufügen"
 
-#: src/game_preferences_display.cpp:221
+#: src/game_preferences_display.cpp:220
 msgid "Show floating labels"
 msgstr "Schwebende Meldungen anzeigen"
 
-#: src/game_preferences_display.cpp:222
+#: src/game_preferences_display.cpp:221
 msgid "Turn dialog"
 msgstr "Hinweisfenster zu Rundenbeginn"
 
-#: src/game_preferences_display.cpp:223
+#: src/game_preferences_display.cpp:222
 msgid "Enable planning mode on start"
 msgstr "Planungsmodus bei Start aktivieiren"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:223
 msgid "Hide allies’ plans by default"
 msgstr "Pläne verbündeter Spiele standardmässig ausblenden"
 
-#: src/game_preferences_display.cpp:225
+#: src/game_preferences_display.cpp:224
 msgid "Turn bell"
 msgstr "Akustische Benachrichtigung zu Rundenbeginn"
 
-#: src/game_preferences_display.cpp:226
+#: src/game_preferences_display.cpp:225
 msgid "Show team colors"
 msgstr "Teammarkierungen anzeigen"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:226
 msgid "Show haloing effects"
 msgstr "Spezialeffekte anzeigen"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:227
 msgid "Change Resolution"
 msgstr "Auflösung ändern"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:228
 msgid "Theme"
 msgstr "Grafikthema"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:229
 msgid "Hotkeys"
 msgstr "Tastenkürzel"
 
-#: src/game_preferences_display.cpp:231
-msgid "Paths"
-msgstr "Verzeichnisse"
-
-#: src/game_preferences_display.cpp:232
+#: src/game_preferences_display.cpp:230
 msgid "Colors"
 msgstr ""
 
-#: src/game_preferences_display.cpp:233
+#: src/game_preferences_display.cpp:231
 #, fuzzy
 #| msgid "Cache:"
 msgid "Cache"
 msgstr "Cache:"
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:233
 msgid "Sound effects"
 msgstr "Soundeffekte"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:234
 msgid "Music"
 msgstr "Musik"
 
-#: src/game_preferences_display.cpp:237
+#: src/game_preferences_display.cpp:235
 msgid "Chat timestamping"
 msgstr "Zeitinformationen anzeigen"
 
-#: src/game_preferences_display.cpp:238
+#: src/game_preferences_display.cpp:236
 msgid "sound^Advanced Options"
 msgstr "Erweiterte Einstellungen"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:237
 msgid "sound^Standard Options"
 msgstr "Standardeinstellungen"
 
-#: src/game_preferences_display.cpp:240
+#: src/game_preferences_display.cpp:238
 #, fuzzy
 #| msgid "Refresh Display"
 msgid "colors^Display"
 msgstr "Anzeige aktualisieren"
 
-#: src/game_preferences_display.cpp:241
+#: src/game_preferences_display.cpp:239
 msgid "User interface sounds"
 msgstr "Klänge der Benutzeroberfläche"
 
-#: src/game_preferences_display.cpp:244
+#: src/game_preferences_display.cpp:242
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: src/game_preferences_display.cpp:245
+#: src/game_preferences_display.cpp:243
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:244
 msgid "Show unit idle animations"
 msgstr "Untätigkeitsanimationen der Einheiten anzeigen"
 
-#: src/game_preferences_display.cpp:247
+#: src/game_preferences_display.cpp:245
 msgid "Show unit standing animations"
 msgstr "Untätigkeitsanimationen der Einheiten anzeigen"
 
-#: src/game_preferences_display.cpp:248
+#: src/game_preferences_display.cpp:246
 msgid "Animate map"
 msgstr "Karte animieren"
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:247
 msgid "Disable automatic moves"
 msgstr ""
 
-#: src/game_preferences_display.cpp:250
+#: src/game_preferences_display.cpp:248
 msgid "Alerts"
 msgstr ""
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:249
 msgid "Advanced"
 msgstr ""
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:253
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
 msgstr "Gegn. Bewegungen zeigen"
 
-#: src/game_preferences_display.cpp:256
+#: src/game_preferences_display.cpp:254
 #, fuzzy
 #| msgid "Show all lobby joins"
 msgid "Show ally orb"
 msgstr "Erscheinen von Spielern in der Lobby anzeigen"
 
-#: src/game_preferences_display.cpp:257
+#: src/game_preferences_display.cpp:255
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
 msgstr "Gegn. Bewegungen zeigen"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:256
 msgid "Show partial moved orb"
 msgstr ""
 
-#: src/game_preferences_display.cpp:259
+#: src/game_preferences_display.cpp:257
 #, fuzzy
 #| msgid "Show team colors"
 msgid "Show moved orb"
 msgstr "Teammarkierungen anzeigen"
 
+#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:268
 #: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:270
-#: src/game_preferences_display.cpp:271 src/game_preferences_display.cpp:272
 msgid "Volume:"
 msgstr "Lautstärke:"
 
-#: src/game_preferences_display.cpp:274
+#: src/game_preferences_display.cpp:272
 msgid "Scroll speed:"
 msgstr "Scroll-Geschwindigkeit:"
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:275
 msgid "Sample rate (Hz):"
 msgstr "Abtastrate (Hz):"
 
-#: src/game_preferences_display.cpp:278
+#: src/game_preferences_display.cpp:276
 msgid "Frequency:"
 msgstr "Frequenz:"
 
-#: src/game_preferences_display.cpp:302
+#: src/game_preferences_display.cpp:300
 msgid "Sound effects on/off"
 msgstr "Soundeffekte an/aus"
 
-#: src/game_preferences_display.cpp:306
+#: src/game_preferences_display.cpp:304
 msgid "Change the sound effects volume"
 msgstr "Lautstärke der Soundeffekt ändern"
 
-#: src/game_preferences_display.cpp:309
+#: src/game_preferences_display.cpp:307
 msgid "Music on/off"
 msgstr "Musik an/aus"
 
-#: src/game_preferences_display.cpp:313
+#: src/game_preferences_display.cpp:311
 msgid "Change the music volume"
 msgstr "Lautstärke der Musik ändern"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:359
 msgid "Change the bell volume"
 msgstr "Lautstärke der Benachrichtigung zu Rundenbeginn ändern"
 
-#: src/game_preferences_display.cpp:364
+#: src/game_preferences_display.cpp:362
 msgid "Turn menu and button sounds on/off"
 msgstr "Menü- und Schaltflächenklänge an/aus"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:366
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Lautstärke für den Klick auf Schaltflächen, usw. ändern"
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:368
 msgid "Change the sample rate"
 msgstr "Ändern der Abtastrate (Sample Rate)"
 
-#: src/game_preferences_display.cpp:379
+#: src/game_preferences_display.cpp:377
 msgid "User defined sample rate"
 msgstr "Benutzerdefinierte Abtastrate"
 
-#: src/game_preferences_display.cpp:389 src/game_preferences_display.cpp:393
+#: src/game_preferences_display.cpp:387 src/game_preferences_display.cpp:391
 msgid "Change the buffer size"
 msgstr "Ändern der Größe des Puffers"
 
-#: src/game_preferences_display.cpp:391 src/game_preferences_display.cpp:1176
+#: src/game_preferences_display.cpp:389 src/game_preferences_display.cpp:1167
 msgid "Buffer size: "
 msgstr "Größe des Puffers: "
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:396
 msgid "Change the speed of scrolling around the map"
 msgstr ""
 "Ändert die Geschwindigkeit, mit der der angezeigte Kartenausschnitt bewegt "
 "wird"
 
-#: src/game_preferences_display.cpp:403 src/game_preferences_display.cpp:405
+#: src/game_preferences_display.cpp:401 src/game_preferences_display.cpp:403
 msgid "Set the amount of chat lines shown"
 msgstr "Legt die Anzahl der angezeigten Mitteilungen fest"
 
-#: src/game_preferences_display.cpp:408
+#: src/game_preferences_display.cpp:406
 msgid "Add a timestamp to chat messages"
 msgstr "Fügt die aktuelle Zeit einer Mitteilung hinzu"
 
-#: src/game_preferences_display.cpp:411
+#: src/game_preferences_display.cpp:409
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Das Spiel im Vollbild- oder Fenstermodus betreiben"
 
-#: src/game_preferences_display.cpp:414
+#: src/game_preferences_display.cpp:412
 msgid "Make units move and fight faster"
 msgstr "Die Bewegungs- und Kampfgeschwindigkeit der Einheiten wird erhöht"
 
-#: src/game_preferences_display.cpp:433
+#: src/game_preferences_display.cpp:431
 msgid "Units move and fight speed"
 msgstr ""
 "Die Änderung der Bewegungs- und Kampfgeschwindigkeit der Einheiten festlegen"
 
-#: src/game_preferences_display.cpp:436
+#: src/game_preferences_display.cpp:434
 msgid "Play short random animations for idle units"
 msgstr "Darstellen von zufälligen Animationen für untätige Einheiten"
 
-#: src/game_preferences_display.cpp:439
+#: src/game_preferences_display.cpp:437
 msgid "Continuously animate standing units in the battlefield"
 msgstr "Einheiten auf dem Schlachtfeld durchgehend animieren"
 
-#: src/game_preferences_display.cpp:442
+#: src/game_preferences_display.cpp:440
 msgid "Display animated terrain graphics"
 msgstr "Zeigt animierte Geländegrafiken an"
 
-#: src/game_preferences_display.cpp:448
+#: src/game_preferences_display.cpp:446
 msgid "Set the frequency of unit idle animations"
 msgstr "Frequenz der Untätigkeitsanimationen einstellen"
 
-#: src/game_preferences_display.cpp:453
+#: src/game_preferences_display.cpp:451
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 "Legt die maximale Anzahl an zu behaltenden automatischen Spielständen fest"
 
-#: src/game_preferences_display.cpp:457
+#: src/game_preferences_display.cpp:455
 msgid "Do not animate AI units moving"
 msgstr "Die Züge der Einheiten des Computers werden nicht animiert"
 
-#: src/game_preferences_display.cpp:460
+#: src/game_preferences_display.cpp:458
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 "Unterbricht die Bewegung Eurer Einheit, sobald eine verbündete Einheit "
 "gesichtet wird"
 
-#: src/game_preferences_display.cpp:463
+#: src/game_preferences_display.cpp:461
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Speichert Aufzeichnungen von Spielen bei Siegen in allen Modi und "
 "zustätzlich Niederlagen im Mehrspielermodus"
 
-#: src/game_preferences_display.cpp:466
+#: src/game_preferences_display.cpp:464
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr "Automatische Spielstände nach ES/MS Sieg oder MS Niederlage löschen"
 
-#: src/game_preferences_display.cpp:468
+#: src/game_preferences_display.cpp:466
 msgid "Overlay a grid onto the map"
 msgstr "Legt ein Gitternetz über die Karte"
 
-#: src/game_preferences_display.cpp:471
+#: src/game_preferences_display.cpp:469
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Sortiert die Liste der Spieler in der Lobby nach Gruppen"
 
-#: src/game_preferences_display.cpp:474
+#: src/game_preferences_display.cpp:472
 msgid "Show icons in front of the player names in the lobby"
 msgstr "Zeigt Piktogramme vor den Spielernamen in der Empfangshalle an"
 
-#: src/game_preferences_display.cpp:477
+#: src/game_preferences_display.cpp:475
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr "Deaktiveren, um gespeicherte Passwörter zu löschen (bei Programmende)"
 
-#: src/game_preferences_display.cpp:481
+#: src/game_preferences_display.cpp:479
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Zeigt keine Mitteilung, wenn ein Spieler die Mehrspielerlobby betritt"
 
-#: src/game_preferences_display.cpp:483
+#: src/game_preferences_display.cpp:481
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 "Zeigt eine Mitteilung, wenn einer Eurer Freunde die Mehrspielerlobby betritt"
 
-#: src/game_preferences_display.cpp:485
+#: src/game_preferences_display.cpp:483
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Zeigt eine Mitteilung, wenn ein Spieler die Mehrspielerlobby betritt"
 
-#: src/game_preferences_display.cpp:487
+#: src/game_preferences_display.cpp:485
 msgid "Find and set path to MP server to host LAN games"
 msgstr "Gibt den Pfad zum MS Server an, um Mehrspielerpartien auszurichten"
 
-#: src/game_preferences_display.cpp:488
+#: src/game_preferences_display.cpp:486
 msgid "View and edit your friends and ignores list"
 msgstr "Anzeigen und Editieren der Freundes- oder Ignorierliste"
 
-#: src/game_preferences_display.cpp:489
+#: src/game_preferences_display.cpp:487
 msgid "Back to the multiplayer options"
 msgstr "Zurück zu den Mehrspielereinstellungen"
 
-#: src/game_preferences_display.cpp:490
+#: src/game_preferences_display.cpp:488
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
@@ -4271,7 +5039,7 @@ msgstr ""
 "Fügt den Benutzer zu Eurer Freundesliste hinzu (mit optionalen Anmerkungen, "
 "bsp. 'spieler_name Freundesnotiz')"
 
-#: src/game_preferences_display.cpp:491
+#: src/game_preferences_display.cpp:489
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
@@ -4279,43 +5047,43 @@ msgstr ""
 "Fügt den Benutzer zu Eurer Sperrliste hinzu (mit optionalen Anmerkungen, "
 "bsp. 'spieler_name Freundesnotiz')"
 
-#: src/game_preferences_display.cpp:492
+#: src/game_preferences_display.cpp:490
 msgid "Remove this username from your list"
 msgstr "Entfernt den Spieler von Eurer Liste"
 
-#: src/game_preferences_display.cpp:495
+#: src/game_preferences_display.cpp:493
 msgid "Insert a username"
 msgstr "Spielernamen eingeben"
 
-#: src/game_preferences_display.cpp:498
+#: src/game_preferences_display.cpp:496
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Schwebende Meldungen anzeigen"
 
-#: src/game_preferences_display.cpp:500
+#: src/game_preferences_display.cpp:498
 msgid "Change the resolution the game runs at"
 msgstr "Verändert die Auflösung, unter der das Spiel läuft"
 
-#: src/game_preferences_display.cpp:501
+#: src/game_preferences_display.cpp:499
 msgid "Change the theme the game runs with"
 msgstr "Verändert das Grafikthema, mit dem das Spiel läuft."
 
-#: src/game_preferences_display.cpp:504
+#: src/game_preferences_display.cpp:502
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Zeigt ein Hinweisfenster zu Rundenbeginn des Spielers"
 
-#: src/game_preferences_display.cpp:507
+#: src/game_preferences_display.cpp:505
 msgid "Activates Planning Mode on game start"
 msgstr "Aktiviert den Planungsmodus beim Start eines Szenarios"
 
-#: src/game_preferences_display.cpp:510
+#: src/game_preferences_display.cpp:508
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr "Blendet die Pläne verbündeter Spieler im Mehrspielermodus aus"
 
-#: src/game_preferences_display.cpp:513
+#: src/game_preferences_display.cpp:511
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Spielt einen Signalton zu Rundenbeginn des Spielers"
 
-#: src/game_preferences_display.cpp:516
+#: src/game_preferences_display.cpp:514
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -4323,113 +5091,109 @@ msgstr ""
 "Ein farbiger Kreis markiert die Einheiten, um zu zeigen, welcher Seite sie "
 "angehören"
 
-#: src/game_preferences_display.cpp:519
+#: src/game_preferences_display.cpp:517
 msgid "Use graphical special effects (may be slower)"
 msgstr "Verwenden von Spezialeffekten (kann das Spiel verlangsamen)"
 
-#: src/game_preferences_display.cpp:521
+#: src/game_preferences_display.cpp:519
 msgid "View and configure keyboard shortcuts"
 msgstr "Tastenkürzel betrachten und verändern"
 
-#: src/game_preferences_display.cpp:522
-msgid "View game file paths"
-msgstr "Spielverzeichnisse anzeigen"
-
-#: src/game_preferences_display.cpp:523
+#: src/game_preferences_display.cpp:520
 msgid "Adjust orb colors"
 msgstr ""
 
-#: src/game_preferences_display.cpp:524
+#: src/game_preferences_display.cpp:521
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
 msgstr "Ändern der Abtastrate (Sample Rate)"
 
-#: src/game_preferences_display.cpp:527
+#: src/game_preferences_display.cpp:524
 #, fuzzy
 #| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the begining of a turn"
 msgstr "Spielt einen Signalton zu Rundenbeginn des Spielers"
 
-#: src/game_preferences_display.cpp:960
+#: src/game_preferences_display.cpp:951
 msgid "Speed: "
 msgstr "Geschwindigkeit: "
 
-#: src/game_preferences_display.cpp:965 src/game_preferences_display.cpp:967
+#: src/game_preferences_display.cpp:956 src/game_preferences_display.cpp:958
 msgid "Maximum auto-saves: "
 msgstr "Maximale automatische Spielstände: "
 
-#: src/game_preferences_display.cpp:965
+#: src/game_preferences_display.cpp:956
 msgid "infinite"
 msgstr "unendlich"
 
-#: src/game_preferences_display.cpp:1232
+#: src/game_preferences_display.cpp:1223
 msgid "Chat lines: "
 msgstr "Mitteilungen: "
 
-#: src/game_preferences_display.cpp:1263 src/game_preferences_display.cpp:1280
+#: src/game_preferences_display.cpp:1254 src/game_preferences_display.cpp:1271
 msgid "Invalid username"
 msgstr "Ungültiger Spielername"
 
-#: src/game_preferences_display.cpp:1411
+#: src/game_preferences_display.cpp:1402
 msgid "Desktop Notifications Unavailable"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1412
+#: src/game_preferences_display.cpp:1403
 msgid ""
 "This build of Wesnoth does not include support for desktop notifications. "
 "Check with the packager for your platform, or if compiling yourself, make "
 "sure that you have the appropriate dependencies installed."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1493
+#: src/game_preferences_display.cpp:1484
 msgid "yes"
 msgstr "Ja"
 
-#: src/game_preferences_display.cpp:1495
+#: src/game_preferences_display.cpp:1486
 msgid "no"
 msgstr "Nein"
 
-#: src/game_preferences_display.cpp:1546
+#: src/game_preferences_display.cpp:1537
 msgid "friend"
 msgstr "Freund"
 
-#: src/game_preferences_display.cpp:1550
+#: src/game_preferences_display.cpp:1541
 msgid "ignored"
 msgstr "ignoriert"
 
-#: src/game_preferences_display.cpp:1564
+#: src/game_preferences_display.cpp:1555
 msgid "(empty list)"
 msgstr "(Leere Liste)"
 
-#: src/game_preferences_display.cpp:1713
+#: src/game_preferences_display.cpp:1703
 #: src/hotkey/hotkey_preferences_display.cpp:223
 msgid "Prefs section^General"
 msgstr "Allgemein"
 
-#: src/game_preferences_display.cpp:1714
+#: src/game_preferences_display.cpp:1704
 msgid "Prefs section^Display"
 msgstr "Grafik"
 
-#: src/game_preferences_display.cpp:1715
+#: src/game_preferences_display.cpp:1705
 msgid "Prefs section^Sound"
 msgstr "Audio"
 
-#: src/game_preferences_display.cpp:1716
+#: src/game_preferences_display.cpp:1706
 msgid "Prefs section^Multiplayer"
 msgstr "Mehrspieler"
 
-#: src/game_preferences_display.cpp:1717
+#: src/game_preferences_display.cpp:1707
 msgid "Advanced section^Advanced"
 msgstr "Diverses"
 
-#: src/game_preferences_display.cpp:1770
+#: src/game_preferences_display.cpp:1760
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Keine Grafikthemen gefunden. Versucht die Einstellungen in einem laufenden "
 "Spiel anzupassen."
 
-#: src/game_preferences_display.cpp:1829
+#: src/game_preferences_display.cpp:1814
 msgid "Find $filename server binary to host networked games"
 msgstr "Sucht den $filename Server, um Mehrspielerpartien auszurichten"
 
@@ -4503,11 +5267,11 @@ msgstr "Der Kreis passt nicht auf die Zeichenfläche."
 msgid "Image doesn't fit on canvas."
 msgstr "Das Bild passt nicht auf die Zeichenfläche."
 
-#: src/gui/auxiliary/canvas.cpp:1361
+#: src/gui/auxiliary/canvas.cpp:1362
 msgid "Text has a font size of 0."
 msgstr "Der Text hat eine Schriftgröße von 0."
 
-#: src/gui/auxiliary/canvas.cpp:1437
+#: src/gui/auxiliary/canvas.cpp:1438
 msgid "Text doesn't start on canvas."
 msgstr "Der Text beginnt nicht auf der Zeichenfläche."
 
@@ -4652,8 +5416,8 @@ msgstr "Unbekannt"
 
 #: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:98
-#: src/gui/dialogs/game_paths.cpp:119
-#: src/gui/dialogs/gamestate_inspector.cpp:713
+#: src/gui/dialogs/game_version.cpp:186
+#: src/gui/dialogs/gamestate_inspector.cpp:839
 #: src/gui/dialogs/lua_interpreter.cpp:459
 #: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:224
@@ -4676,7 +5440,7 @@ msgstr "Installiert"
 msgid "addons_view^All Add-ons"
 msgstr "Alle Erweiterungen"
 
-#: src/gui/dialogs/addon_list.cpp:227
+#: src/gui/dialogs/addon_list.cpp:345
 #: src/gui/dialogs/game_cache_options.cpp:135
 #: src/gui/dialogs/network_transmission.cpp:56
 #: src/gui/dialogs/network_transmission.cpp:57
@@ -4684,14 +5448,14 @@ msgstr "Alle Erweiterungen"
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/campaign_settings.cpp:117
+#: src/gui/dialogs/campaign_settings.cpp:121
 msgid ""
 "Era:\n"
 "\n"
 "Not allowed."
 msgstr ""
 
-#: src/gui/dialogs/campaign_settings.cpp:142
+#: src/gui/dialogs/campaign_settings.cpp:146
 msgid ""
 "Modifications:\n"
 "\n"
@@ -4706,13 +5470,13 @@ msgstr ""
 msgid "$requester requires the following modifications to be disabled:"
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:67
+#: src/gui/dialogs/depcheck_select_new.cpp:71
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:72
+#: src/gui/dialogs/depcheck_select_new.cpp:76
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -4720,7 +5484,7 @@ msgstr ""
 "Die ausgewählte Epoche ist mit Euren Einstellungen nicht kompatibel.\n"
 "Bitte wählt eine kompatible Epoche aus."
 
-#: src/gui/dialogs/depcheck_select_new.cpp:78
+#: src/gui/dialogs/depcheck_select_new.cpp:82
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -4771,37 +5535,79 @@ msgstr ""
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:275
+#: src/gui/dialogs/game_load.cpp:302
 msgid "#(Invalid)"
 msgstr "#(Ungültig)"
 
-#: src/gui/dialogs/game_load.cpp:303
+#: src/gui/dialogs/game_load.cpp:330
 msgid "Campaign: $campaign_name"
 msgstr "Kampagne: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:318
+#: src/gui/dialogs/game_load.cpp:345
 msgid "Test scenario"
 msgstr "Testszenario"
 
-#: src/gui/dialogs/game_load.cpp:331
+#: src/gui/dialogs/game_load.cpp:358
 msgid "Replay"
 msgstr "Spielverlauf"
 
-#: src/gui/dialogs/game_load.cpp:333
+#: src/gui/dialogs/game_load.cpp:360
 msgid "Turn"
 msgstr "Runde"
 
-#: src/gui/dialogs/game_load.cpp:335
+#: src/gui/dialogs/game_load.cpp:362
 msgid "Scenario start"
 msgstr "Szenariostart"
 
-#: src/gui/dialogs/game_load.cpp:338
+#: src/gui/dialogs/game_load.cpp:365
 msgid "Difficulty: "
 msgstr "Schwierigkeitsgrad: "
 
-#: src/gui/dialogs/game_load.cpp:342
+#: src/gui/dialogs/game_load.cpp:369
 msgid "Version: "
 msgstr "Version: "
+
+#: src/gui/dialogs/game_version.cpp:137
+#, fuzzy
+#| msgid "Version "
+msgid "Version $version"
+msgstr "Version "
+
+#: src/gui/dialogs/game_version.cpp:141
+msgid "Running on $os"
+msgstr ""
+
+#: src/gui/dialogs/game_version.cpp:226
+#, fuzzy
+#| msgid "Version"
+msgid "version^N/A"
+msgstr "Version"
+
+#: src/gui/dialogs/game_version.cpp:270
+msgid "Paths"
+msgstr "Verzeichnisse"
+
+#: src/gui/dialogs/game_version.cpp:273
+msgid "Libraries"
+msgstr ""
+
+#: src/gui/dialogs/game_version.cpp:276
+msgid "Features"
+msgstr ""
+
+#: src/gui/dialogs/label_settings.cpp:49
+#, fuzzy
+#| msgid "Set Team Label"
+msgid "Team Labels"
+msgstr "Teamspezifische Beschriftung erstellen"
+
+#: src/gui/dialogs/label_settings.cpp:67 src/hotkey/hotkey_item.cpp:448
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: src/gui/dialogs/label_settings.cpp:72
+msgid "Side $side_number ($name)"
+msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:227
 msgid "whisper to $receiver"
@@ -4859,13 +5665,21 @@ msgstr "Spielstand laden…"
 msgid "file_size^Unknown"
 msgstr "Unbekannt"
 
-#: src/gui/dialogs/title_screen.cpp:320
+#: src/gui/dialogs/title_screen.cpp:321
 msgid "Version "
 msgstr "Version "
 
-#: src/gui/dialogs/title_screen.cpp:324
-msgid "Version"
-msgstr "Version"
+#: src/gui/dialogs/unit_create.cpp:246
+msgid "HP: "
+msgstr ""
+
+#: src/gui/dialogs/unit_create.cpp:249
+msgid "XP: "
+msgstr ""
+
+#: src/gui/dialogs/unit_create.cpp:252
+msgid "MP: "
+msgstr ""
 
 #: src/gui/widgets/helper.cpp:127
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -4911,7 +5725,7 @@ msgstr ""
 "Schaltfläche."
 
 #: src/gui/widgets/window.cpp:1112 src/gui/widgets/window.cpp:1149
-#: src/tests/gui/test_gui2.cpp:484
+#: src/tests/gui/test_gui2.cpp:495
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 "Anzeigen eines Dialogfensters fehlgeschlagen. Es passt nicht in die aktuelle "
@@ -5018,7 +5832,7 @@ msgstr "Einheit löschen"
 msgid "Save Replay"
 msgstr "Aufzeichnung speichern"
 
-#: src/hotkey/hotkey_command.cpp:68 src/hotkey/hotkey_command.cpp:139
+#: src/hotkey/hotkey_command.cpp:68 src/hotkey/hotkey_command.cpp:140
 msgid "Save Map"
 msgstr "Karte speichern"
 
@@ -5035,64 +5849,70 @@ msgid "Recall"
 msgstr "Einberufen"
 
 #: src/hotkey/hotkey_command.cpp:73
+#, fuzzy
+#| msgid "Show labels"
+msgid "Show/Hide Labels"
+msgstr "Beschriftungen anzeigen"
+
+#: src/hotkey/hotkey_command.cpp:74
 msgid "End Turn"
 msgstr "Zug beenden"
 
-#: src/hotkey/hotkey_command.cpp:75
+#: src/hotkey/hotkey_command.cpp:76
 msgid "Toggle Ellipses"
 msgstr "Teammarkierungen anzeigen"
 
-#: src/hotkey/hotkey_command.cpp:76
+#: src/hotkey/hotkey_command.cpp:77
 msgid "Toggle Grid"
 msgstr "Gitternetz einblenden"
 
-#: src/hotkey/hotkey_command.cpp:77
+#: src/hotkey/hotkey_command.cpp:78
 msgid "Mouse Scrolling"
 msgstr "Mit der Maus scrollen"
 
-#: src/hotkey/hotkey_command.cpp:78
+#: src/hotkey/hotkey_command.cpp:79
 msgid "Status Table"
 msgstr "Spielübersicht anzeigen"
 
-#: src/hotkey/hotkey_command.cpp:79
+#: src/hotkey/hotkey_command.cpp:80
 msgid "Mute"
 msgstr "Musik und Ton ausschalten"
 
-#: src/hotkey/hotkey_command.cpp:80
+#: src/hotkey/hotkey_command.cpp:81
 msgid "Speak"
 msgstr "Sprechen"
 
-#: src/hotkey/hotkey_command.cpp:82
+#: src/hotkey/hotkey_command.cpp:83
 msgid "Change Side (Debug!)"
 msgstr "Zugehörigkeit ändern (Debug!)"
 
-#: src/hotkey/hotkey_command.cpp:83
+#: src/hotkey/hotkey_command.cpp:84
 msgid "Kill Unit (Debug!)"
 msgstr "Einheit töten (Debug!)"
 
-#: src/hotkey/hotkey_command.cpp:85
+#: src/hotkey/hotkey_command.cpp:86
 msgid "Scenario Objectives"
 msgstr "Missionsziele"
 
-#: src/hotkey/hotkey_command.cpp:86
+#: src/hotkey/hotkey_command.cpp:87
 msgid "Unit List"
 msgstr "Einheitenübersicht"
 
-#: src/hotkey/hotkey_command.cpp:87
+#: src/hotkey/hotkey_command.cpp:88
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: src/hotkey/hotkey_command.cpp:88
+#: src/hotkey/hotkey_command.cpp:89
 msgid "Pause Network Game"
 msgstr "Netzwerkpartie pausieren"
 
-#: src/hotkey/hotkey_command.cpp:89
+#: src/hotkey/hotkey_command.cpp:90
 msgid "Continue Network Game"
 msgstr "Netzwerkpartie fortsetzen"
 
 #: src/hotkey/hotkey_command.cpp:91
-msgid "Quit Editor"
-msgstr "Editor beenden"
+msgid "Quit to Titlescreen"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Set Team Label"
@@ -5158,133 +5978,139 @@ msgstr "Burg"
 msgid "Skip Animation"
 msgstr "Animationen überspringen"
 
+#: src/hotkey/hotkey_command.cpp:108
+#, fuzzy
+#| msgid "Replay"
+msgid "End Replay"
+msgstr "Spielverlauf"
+
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkey/hotkey_command.cpp:110
+#: src/hotkey/hotkey_command.cpp:111
 msgid "whiteboard^Planning Mode"
 msgstr "Planungsmodus"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkey/hotkey_command.cpp:112
+#: src/hotkey/hotkey_command.cpp:113
 msgid "whiteboard^Execute Action"
 msgstr "Aktion umsetzen"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkey/hotkey_command.cpp:114
+#: src/hotkey/hotkey_command.cpp:115
 msgid "whiteboard^Execute All Actions"
 msgstr "Alle Aktionen umsetzen"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkey/hotkey_command.cpp:116
+#: src/hotkey/hotkey_command.cpp:117
 msgid "whiteboard^Delete Action"
 msgstr "Aktion löschen"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkey/hotkey_command.cpp:118
+#: src/hotkey/hotkey_command.cpp:119
 msgid "whiteboard^Move Action Up"
 msgstr "Handlung vorziehen"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkey/hotkey_command.cpp:120
+#: src/hotkey/hotkey_command.cpp:121
 msgid "whiteboard^Move Action Down"
 msgstr "Handlung zurückstellen"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkey/hotkey_command.cpp:122
+#: src/hotkey/hotkey_command.cpp:123
 msgid "whiteboard^Suppose Dead"
 msgstr "Als Tod annehmen"
 
-#: src/hotkey/hotkey_command.cpp:124
+#: src/hotkey/hotkey_command.cpp:125
 msgid "Quit to Desktop"
 msgstr "Beenden und zum Desktop zurückkehren"
 
-#: src/hotkey/hotkey_command.cpp:125
+#: src/hotkey/hotkey_command.cpp:126
 msgid "Close Map"
 msgstr "Karte schließen"
 
-#: src/hotkey/hotkey_command.cpp:129
+#: src/hotkey/hotkey_command.cpp:130
 #, fuzzy
 msgid "Switch Time of Day"
 msgstr "Karte wechseln"
 
-#: src/hotkey/hotkey_command.cpp:131
+#: src/hotkey/hotkey_command.cpp:132
 msgid "Switch Map"
 msgstr "Karte wechseln"
 
-#: src/hotkey/hotkey_command.cpp:132
+#: src/hotkey/hotkey_command.cpp:133
 msgid "Assign Local Time"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:134
+#: src/hotkey/hotkey_command.cpp:135
 msgid "Time Schedule Editor"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:135
+#: src/hotkey/hotkey_command.cpp:136
 msgid "Partial Undo"
 msgstr "Teilweise rückgängig"
 
-#: src/hotkey/hotkey_command.cpp:137
+#: src/hotkey/hotkey_command.cpp:138
 msgid "New Scenario"
 msgstr "Neues Szenario"
 
-#: src/hotkey/hotkey_command.cpp:138
+#: src/hotkey/hotkey_command.cpp:139
 msgid "Load Map"
 msgstr "Karte laden"
 
-#: src/hotkey/hotkey_command.cpp:140
+#: src/hotkey/hotkey_command.cpp:141
 msgid "Save Map As"
 msgstr "Karte speichern unter"
 
-#: src/hotkey/hotkey_command.cpp:141
+#: src/hotkey/hotkey_command.cpp:142
 msgid "Save Scenario As"
 msgstr "Szenario speichern unter"
 
-#: src/hotkey/hotkey_command.cpp:142
+#: src/hotkey/hotkey_command.cpp:143
 msgid "Save All Maps"
 msgstr "Alle Karten speichern"
 
-#: src/hotkey/hotkey_command.cpp:143
+#: src/hotkey/hotkey_command.cpp:144
 msgid "Revert All Changes"
 msgstr "Alle Änderungen rückgängig machen"
 
-#: src/hotkey/hotkey_command.cpp:144
+#: src/hotkey/hotkey_command.cpp:145
 msgid "Map Information"
 msgstr "Karteninformationen"
 
-#: src/hotkey/hotkey_command.cpp:146
+#: src/hotkey/hotkey_command.cpp:147
 #, fuzzy
 msgid "Clear Selected Item Set"
 msgstr "Ausgewähltes Spiel"
 
-#: src/hotkey/hotkey_command.cpp:147
+#: src/hotkey/hotkey_command.cpp:148
 #, fuzzy
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Vorder- und Hintergrundgelände tauschen"
 
-#: src/hotkey/hotkey_command.cpp:148
+#: src/hotkey/hotkey_command.cpp:149
 msgid "Change Palette Group"
 msgstr "Palettengruppe wechseln"
 
-#: src/hotkey/hotkey_command.cpp:149
+#: src/hotkey/hotkey_command.cpp:150
 msgid "Scroll Palette Left"
 msgstr "Palette linksseitig verschieben"
 
-#: src/hotkey/hotkey_command.cpp:150
+#: src/hotkey/hotkey_command.cpp:151
 msgid "Scroll Palette Right"
 msgstr "Palette rechtsseitig verschieben"
 
-#: src/hotkey/hotkey_command.cpp:152
+#: src/hotkey/hotkey_command.cpp:153
 msgid "Add New Side"
 msgstr "Fraktion hinzufügen"
 
-#: src/hotkey/hotkey_command.cpp:154
+#: src/hotkey/hotkey_command.cpp:155
 msgid "Next Tool"
 msgstr "Nächstes Werkzeug"
 
-#: src/hotkey/hotkey_command.cpp:156
+#: src/hotkey/hotkey_command.cpp:157
 msgid "Paint Tool"
 msgstr "Malwerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:156 src/hotkey/hotkey_command.cpp:157
+#: src/hotkey/hotkey_command.cpp:157 src/hotkey/hotkey_command.cpp:158
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -5294,11 +6120,11 @@ msgstr ""
 "zeichnen. Mit Ctrl+Klick wird das Gelände unter dem Cursor als Pinsel "
 "übernommen."
 
-#: src/hotkey/hotkey_command.cpp:157
+#: src/hotkey/hotkey_command.cpp:158
 msgid "Fill Tool"
 msgstr "Füllwerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:158
+#: src/hotkey/hotkey_command.cpp:159
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -5307,11 +6133,11 @@ msgstr ""
 "ist; die Rechte ruft ein Kontextmenü auf. Haltet Umschalt gedrückt, um eine "
 "Zauberstabauswahl des selben Geländetyps durchzuführen."
 
-#: src/hotkey/hotkey_command.cpp:158
+#: src/hotkey/hotkey_command.cpp:159
 msgid "Selection Tool"
 msgstr "Auswahlwerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:159
+#: src/hotkey/hotkey_command.cpp:160
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -5321,21 +6147,21 @@ msgstr ""
 "den Zifferntasten springt Ihr zur jeweiligen Startposition, Alt+Nummer setzt "
 "die jeweilige Startposition, Entfernen löscht diese."
 
-#: src/hotkey/hotkey_command.cpp:159
+#: src/hotkey/hotkey_command.cpp:160
 msgid "Starting Positions Tool"
 msgstr "Startpositionswerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:161
 msgid "Label Tool"
 msgstr "Beschriftungswerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:161
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 "Die linke Maustaste platziert oder verschiebt die Beschriftung, die Rechte "
 "löscht sie."
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -5343,15 +6169,15 @@ msgstr ""
 "Die linke Maustaste platziert oder verschiebt eine Einheit, die Rechte ruft "
 "ein Kontextmenü auf. Benötigt eine definierte Fraktion."
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid "Unit Tool"
 msgstr "Einheitenwerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid "Item Tool"
 msgstr "Gegenstandswerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
@@ -5359,7 +6185,7 @@ msgstr ""
 "Die linke Maustaste platziert oder verschiebt einen Gegenstand, die Rechte "
 "löscht ihn. Noch nicht implementiert."
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
@@ -5367,11 +6193,11 @@ msgstr ""
 "Die linke Maustaste platziert oder verschiebt eine Geräuschquelle, die "
 "Rechte löscht sie. Noch nicht implementiert."
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid "Sound Source Tool"
 msgstr "Geräuschquellenwerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -5379,266 +6205,266 @@ msgstr ""
 "Die linke Maustaste weißt dieses Dorf der aktuellen Fraktion zu, die Rechte "
 "entfernt den Besitzer. Benötigt eine definierte Fraktion."
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid "Village Tool"
 msgstr "Dorfwerkzeug"
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 #, fuzzy
 msgid "Can Recruit"
 msgstr "Ausbilden"
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid "Can be Renamed"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:168
+#: src/hotkey/hotkey_command.cpp:169
 msgid "Assign Recruit List"
 msgstr "Rekrutierungsliste zuweisen"
 
-#: src/hotkey/hotkey_command.cpp:168
+#: src/hotkey/hotkey_command.cpp:169
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:170
+#: src/hotkey/hotkey_command.cpp:171
 msgid "Change Unit ID"
 msgstr "Einheitenkennung ändern"
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Loyal"
 msgstr "Loyal"
 
-#: src/hotkey/hotkey_command.cpp:174
+#: src/hotkey/hotkey_command.cpp:175
 msgid "Toggle Minimap Unit Coding"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:175
+#: src/hotkey/hotkey_command.cpp:176
 msgid "Toggle Minimap Terrain Coding"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:177
+#: src/hotkey/hotkey_command.cpp:178
 msgid "Toggle Minimap Unit Drawing"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:178
+#: src/hotkey/hotkey_command.cpp:179
 msgid "Toggle Minimap Village Drawing"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:179
+#: src/hotkey/hotkey_command.cpp:180
 #, fuzzy
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Geländeübergänge aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:181
+#: src/hotkey/hotkey_command.cpp:182
 msgid "Next Brush"
 msgstr "Nächster Pinsel"
 
-#: src/hotkey/hotkey_command.cpp:182
+#: src/hotkey/hotkey_command.cpp:183
 msgid "Default Brush"
 msgstr "Standardpinsel"
 
-#: src/hotkey/hotkey_command.cpp:183
+#: src/hotkey/hotkey_command.cpp:184
 msgid "Single Tile"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:184
+#: src/hotkey/hotkey_command.cpp:185
 msgid "Radius One"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:185
+#: src/hotkey/hotkey_command.cpp:186
 msgid "Radius Two"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:186
+#: src/hotkey/hotkey_command.cpp:187
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:187
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Copy"
 msgstr "Kopieren"
 
-#: src/hotkey/hotkey_command.cpp:191
+#: src/hotkey/hotkey_command.cpp:192
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:191
+#: src/hotkey/hotkey_command.cpp:192
 msgid "Paste"
 msgstr "Einfügen"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Ausgewählte Koordinaten in Systemzwischenablage exportieren"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Select All"
 msgstr "Alles auswählen"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Select Inverse"
 msgstr "Auswahl umkehren"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Select None"
 msgstr "Nichts auswählen"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Rotate Clipboard Clockwise"
 msgstr "Zwischenablage im Uhrzeigersinn rotieren"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Zwischenablage gegen den Uhrzeigersinn rotieren"
 
-#: src/hotkey/hotkey_command.cpp:198
+#: src/hotkey/hotkey_command.cpp:199
 msgid "Flip Clipboard Horizontally"
 msgstr "Zwischenablage horizontal spiegeln"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Flip Clipboard Vertically"
 msgstr "Zwischenablage vertikal spiegeln"
 
-#: src/hotkey/hotkey_command.cpp:200
+#: src/hotkey/hotkey_command.cpp:201
 msgid "Rotate Selection"
 msgstr "Auswahl rotieren"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Flip Selection"
 msgstr "Ausgewählten Bereich umdrehen"
 
-#: src/hotkey/hotkey_command.cpp:202
+#: src/hotkey/hotkey_command.cpp:203
 msgid "Fill Selection"
 msgstr "Ausgewählten Bereich füllen"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 #, fuzzy
 msgid "Generate Tiles in Selection"
 msgstr "Felder in Auswahl generieren"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 #, fuzzy
 msgid "Randomize Tiles in Selection"
 msgstr "Felder in Auswahl randomisieren"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Rotate Map"
 msgstr "Karte drehen"
 
-#: src/hotkey/hotkey_command.cpp:208
+#: src/hotkey/hotkey_command.cpp:209
 msgid "Apply a Mask"
 msgstr "Maske anwenden"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Create Mask"
 msgstr "Maske erstellen"
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Refresh Display"
 msgstr "Anzeige aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Update Terrain Transitions"
 msgstr "Geländeübergänge aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 #, fuzzy
 msgid "Toggle Terrain Transition Update"
 msgstr "Geländeübergänge aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:217
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Auto-update Terrain Transitions"
 msgstr "Geländeübergänge automatisch aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:219
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Geländeübergänge automatisch aktualisieren: Nein"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Geländeübergänge automatisch aktualisieren: Teilweise"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Refresh Image Cache"
 msgstr "Grafik-Cache aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Draw Hex Coordinates"
 msgstr "Hexkoordinaten anzeigen"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Draw Terrain Codes"
 msgstr "Geländekürzel zeigen"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 #, fuzzy
 msgid "Save Selection to Area"
 msgstr "Auswahl rotieren"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Rename Selected Area"
 msgstr "Ausgewähltes Gebiet umbenennen"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Remove Selected Area"
 msgstr "Ausgewähltes Gebiet entfernen"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Add New Area"
 msgstr "Neue Epoche hinzufügen"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Edit Scenario"
 msgstr "Szenario bearbeiten"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Edit Side"
 msgstr "Fraktion bearbeiten"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Remove Side"
 msgstr "Fraktion entfernen"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Delay Shroud Updates"
 msgstr "Schleier verspätet aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Update Shroud Now"
 msgstr "Schleier jetzt aktualisieren"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Continue Move"
 msgstr "Bewegung fortsetzen"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Find Label or Unit"
 msgstr "Beschriftung / Einheiten suchen"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Speak to Ally"
 msgstr "Nachricht an Verbündete"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Speak to All"
 msgstr "Nachricht an alle"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "View Chat Log"
 msgstr "Gesprächsprotokoll anzeigen"
 
@@ -5716,59 +6542,55 @@ msgstr ""
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:408 src/hotkey/hotkey_item.cpp:411
+#: src/hotkey/hotkey_item.cpp:412 src/hotkey/hotkey_item.cpp:415
 msgid "Button"
 msgstr "Taste"
 
-#: src/hotkey/hotkey_item.cpp:408
+#: src/hotkey/hotkey_item.cpp:412
 msgid "Mouse"
 msgstr "Maus"
 
-#: src/hotkey/hotkey_item.cpp:411 src/hotkey/hotkey_item.cpp:447
+#: src/hotkey/hotkey_item.cpp:415 src/hotkey/hotkey_item.cpp:451
 msgid "Joystick"
 msgstr "Joystick"
 
-#: src/hotkey/hotkey_item.cpp:417
+#: src/hotkey/hotkey_item.cpp:421
 msgid "Centered"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:420
+#: src/hotkey/hotkey_item.cpp:424
 msgid "Up"
 msgstr "Oben"
 
-#: src/hotkey/hotkey_item.cpp:423
+#: src/hotkey/hotkey_item.cpp:427
 msgid "Right"
 msgstr "Rechts"
 
-#: src/hotkey/hotkey_item.cpp:426
+#: src/hotkey/hotkey_item.cpp:430
 msgid "Down"
 msgstr "Unten"
 
-#: src/hotkey/hotkey_item.cpp:429
+#: src/hotkey/hotkey_item.cpp:433
 msgid "Left"
 msgstr "Links"
 
-#: src/hotkey/hotkey_item.cpp:432
+#: src/hotkey/hotkey_item.cpp:436
 msgid "RightUp"
 msgstr "Rechtsoben"
 
-#: src/hotkey/hotkey_item.cpp:435
+#: src/hotkey/hotkey_item.cpp:439
 msgid "RightDown"
 msgstr "Rechtsunten"
 
-#: src/hotkey/hotkey_item.cpp:438
+#: src/hotkey/hotkey_item.cpp:442
 msgid "LeftUp"
 msgstr "Linksoben"
 
-#: src/hotkey/hotkey_item.cpp:441
+#: src/hotkey/hotkey_item.cpp:445
 msgid "LeftDown"
 msgstr "Linksunten"
 
-#: src/hotkey/hotkey_item.cpp:444
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#: src/hotkey/hotkey_item.cpp:447
+#: src/hotkey/hotkey_item.cpp:451
 #, fuzzy
 msgid "Hat"
 msgstr "Hüttensiedlung"
@@ -5829,7 +6651,7 @@ msgstr "Tastenkürzel"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Drückt das gewünschte Tastenkürzel (Esc zum Abbrechen)"
 
-#: src/hotkey/hotkey_preferences_display.cpp:698
+#: src/hotkey/hotkey_preferences_display.cpp:700
 msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
@@ -5837,7 +6659,7 @@ msgstr ""
 "\"$hotkey_sequence|\" wird bereits von \"$old_hotkey_action|\" verwendet. "
 "Möchtet Ihr diese Kombination \"$new_hotkey_action|\" zuweisen?"
 
-#: src/hotkey/hotkey_preferences_display.cpp:703
+#: src/hotkey/hotkey_preferences_display.cpp:705
 msgid "Reassign Hotkey"
 msgstr "Tastenkürzel zuweisen"
 
@@ -5930,6 +6752,21 @@ msgid ""
 msgstr ""
 "Der Schlüssel »$deprecated_key« wurde in »$key« umbenannt. Unterstützung für "
 "»$deprecated_key« wird in Version $removal_version entfernt."
+
+#~ msgid "Share map"
+#~ msgstr "Karte teilen"
+
+#~ msgid "controller^Player number:"
+#~ msgstr "Spielernummer:"
+
+#~ msgid "Game Paths"
+#~ msgstr "Spielverzeichnisse"
+
+#~ msgid "View game file paths"
+#~ msgstr "Spielverzeichnisse anzeigen"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Editor beenden"
 
 #, fuzzy
 #~| msgid "Options"

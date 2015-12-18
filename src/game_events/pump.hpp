@@ -64,7 +64,7 @@ namespace game_events
 	class t_pump {
 		boost::scoped_ptr<pump_impl> impl_;
 	public:
-		t_pump(manager &, const boost::shared_ptr<t_context> &);
+		t_pump(manager &);
 		~t_pump();
 		/// Context: The general environment within which events are processed.
 		/// Returns whether or not we believe WML might have changed something.
