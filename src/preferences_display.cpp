@@ -176,11 +176,13 @@ bool set_resolution(CVideo& video
 	int bpp = video.bppForMode(width, height, flags);
 
 	if(bpp != 0) {
-		video.setMode(width, height, bpp, flags);
+		//video.setMode(width, height, bpp, flags);
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 		if(disp) {
 			disp->redraw_everything();
 		}
+#endif
 
 	} else {
         // grzywacz: is this even true?

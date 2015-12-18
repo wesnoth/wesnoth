@@ -30,6 +30,7 @@
 #include "sdl/window.hpp"
 #include "video.hpp"
 #include "sdl/gpu.hpp"
+#include "display.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -47,11 +48,18 @@ namespace {
 	GPU_Target *render_target_;
 }
 void resize_monitor::process(events::pump_info &info) {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(info.resize_dimensions.first >= preferences::min_allowed_width()
 	&& info.resize_dimensions.second >= preferences::min_allowed_height()
 	&& disallow_resize == 0) {
 		preferences::set_resolution(info.resize_dimensions);
 	}
+#else
+	if(info.resize_dimensions.first > 0 &&
+			info.resize_dimensions.second > 0
+			&& display::get_singleton())
+		display::get_singleton()->redraw_everything();
+#endif
 }
 
 resize_lock::resize_lock()

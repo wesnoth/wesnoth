@@ -1446,7 +1446,7 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 											  const tpoint& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(new_size.x < preferences::min_allowed_width()
 	   || new_size.y < preferences::min_allowed_height()) {
 
@@ -1461,6 +1461,7 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 		handled = true;
 		return;
 	}
+#endif
 
 	if(!preferences::set_resolution(video_, new_size.x, new_size.y)) {
 
