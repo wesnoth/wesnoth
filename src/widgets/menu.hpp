@@ -199,6 +199,9 @@ public:
 	void set_max_height(const int new_max_height);
 	void set_max_width(const int new_max_width);
 
+	int get_max_height() { return max_height_; }
+	int get_max_width() { return max_width_; }
+
 	size_t number_of_items() const { return items_.size(); }
 
 	int process();
