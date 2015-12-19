@@ -205,7 +205,7 @@ public:
 	CVideo& video() { return screen_; }
 
 	/** return the screen surface or the surface used for map_screenshot. */
-	surface get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
+	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
@@ -1164,7 +1164,7 @@ private:
 	sdl::timage panel_image_;
 #endif
 
-#if defined(__GLIBC__)
+#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 	/** Flag for bug #17573 - this is set in the constructor **/
 	bool do_reverse_memcpy_workaround_;
 #endif

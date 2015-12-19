@@ -36,7 +36,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="2"
 				RuntimeLibrary="3"
 				WarningLevel="4"
 				DebugInformationFormat="4"
@@ -53,7 +53,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -119,7 +119,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
 				SubSystem="1"
@@ -187,7 +187,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -253,7 +253,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
 				SubSystem="1"

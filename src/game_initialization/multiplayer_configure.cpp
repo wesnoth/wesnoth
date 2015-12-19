@@ -567,8 +567,8 @@ void configure::layout_children(const SDL_Rect& rect)
 
 	int slider_width = options_pane_left_.width() - 40;
 
-	unsigned int xpos_left = 0;
-	unsigned int ypos_left = 0;
+	int xpos_left = 0;
+	int ypos_left = 0;
 
 	ypos_left += 2 * border_size;
 	options_pane_left_.add_widget(&shuffle_sides_, xpos_left, ypos_left);

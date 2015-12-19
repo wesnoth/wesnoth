@@ -109,7 +109,7 @@ opts.AddVariables(
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
-    BoolVariable("sdl2", "Build with SDL2 support (experimental!)", False)
+    BoolVariable("sdl2", "Build with SDL2 support (experimental!)", True)
     )
 
 #

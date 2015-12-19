@@ -162,8 +162,8 @@ SDL_Rect scrollpane::client_area() const
 
 void scrollpane::update_content_size()
 {
-	unsigned int maxx = 0;
-	unsigned int maxy = 0;
+	int maxx = 0;
+	int maxy = 0;
 
 	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
 		if(itor->second.x + itor->second.w->width() > maxx) {

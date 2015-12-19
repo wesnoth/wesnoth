@@ -899,9 +899,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
 #if SDL_VERSION_ATLEAST(2,0,0)
-	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 #else
-	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().unused, SDL_ALPHA_OPAQUE);
 #endif
 
 	delete mod;
@@ -925,9 +925,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
 #if SDL_VERSION_ATLEAST(2,0,0)
-	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 #else
-	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().unused, SDL_ALPHA_OPAQUE);
 #endif
 
 	delete mod;
@@ -951,9 +951,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
 #if SDL_VERSION_ATLEAST(2,0,0)
-	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 #else
-	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().unused, SDL_ALPHA_OPAQUE);
 #endif
 
 	delete mod;
@@ -977,9 +977,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 3);
 #if SDL_VERSION_ATLEAST(2,0,0)
-	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
 #else
-	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+	BOOST_CHECK_EQUAL(mod->get_color().unused, SDL_ALPHA_OPAQUE);
 #endif
 
 	delete mod;

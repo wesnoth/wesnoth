@@ -740,7 +740,7 @@ void twindow::draw()
 		return;
 	}
 
-	surface frame_buffer = video_.getSurface();
+	surface& frame_buffer = video_.getSurface();
 
 	/***** ***** Layout and get dirty list ***** *****/
 	if(need_layout_) {
@@ -789,7 +789,7 @@ void twindow::draw()
 
 	if(dirty_list_.empty()) {
 		if(preferences::use_color_cursors() || sunset_) {
-			surface frame_buffer = get_video_surface();
+			surface& frame_buffer = get_video_surface();
 
 			if(sunset_) {
 				/** @todo should probably be moved to event::thandler::draw. */
@@ -798,7 +798,7 @@ void twindow::draw()
 					SDL_Rect r = sdl::create_rect(
 							0, 0, frame_buffer->w, frame_buffer->h);
 					const Uint32 color
-							= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, 255);
+							= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, SDL_ALPHA_OPAQUE);
 
 					sdl::fill_rect_alpha(r, color, 1, frame_buffer);
 					update_rect(r);
@@ -1446,7 +1446,7 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 											  const tpoint& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(new_size.x < preferences::min_allowed_width()
 	   || new_size.y < preferences::min_allowed_height()) {
 
@@ -1461,6 +1461,7 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 		handled = true;
 		return;
 	}
+#endif
 
 	if(!preferences::set_resolution(video_, new_size.x, new_size.y)) {
 

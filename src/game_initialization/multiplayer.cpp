@@ -682,7 +682,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 				, 0
 				, 0
 				, 0
-				, 255);
+				, SDL_ALPHA_OPAQUE);
 
 		sdl::fill_rect(disp.video().getSurface(), NULL, color);
 

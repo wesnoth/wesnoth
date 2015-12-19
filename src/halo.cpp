@@ -232,7 +232,7 @@ bool halo_impl::effect::render()
 		return false;
 	}
 
-	surface screen = disp->get_screen_surface();
+	surface& screen = disp->get_screen_surface();
 
 	const clip_rect_setter clip_setter(screen, &clip_rect);
 	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
@@ -240,7 +240,7 @@ bool halo_impl::effect::render()
 		buffer_.assign(get_surface_portion(screen,rect));
 	} else {
 		SDL_Rect rect = rect_;
-		sdl_blit(screen,&rect,buffer_,NULL);
+		sdl_copy_portion(screen,&rect,buffer_,NULL);
 	}
 
 	sdl_blit(surf_,NULL,screen,&rect);
@@ -265,7 +265,7 @@ void halo_impl::effect::unrender()
 		return;
 	}
 
-	surface screen = disp->get_screen_surface();
+	surface& screen = disp->get_screen_surface();
 
 	SDL_Rect clip_rect = disp->map_outside_area();
 	const clip_rect_setter clip_setter(screen, &clip_rect);

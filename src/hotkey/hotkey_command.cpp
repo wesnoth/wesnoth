@@ -88,7 +88,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_STATISTICS, "statistics", N_("Statistics"), false, scope_game, "" },
 	{ hotkey::HOTKEY_STOP_NETWORK, "stopnetwork", N_("Pause Network Game"), false, scope_game, "" },
 	{ hotkey::HOTKEY_START_NETWORK, "startnetwork", N_("Continue Network Game"), false, scope_game, "" },
-	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit to Titlescreen"), false, scope_game | scope_editor | scope_main, "" },
+	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit to Titlescreen"), false, scope_game | scope_editor, "" },
 	{ hotkey::HOTKEY_LABEL_TEAM_TERRAIN, "labelteamterrain", N_("Set Team Label"), false, scope_game, "" },
 	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false, scope_game, "" },
 	{ hotkey::HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false, scope_game, "" },
@@ -122,7 +122,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	// TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, scope_game, "" },
 
-	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, scope_editor, "" },
+	{ hotkey::HOTKEY_QUIT_TO_DESKTOP, "quit-to-desktop", N_("Quit to Desktop"), false, scope_game | scope_editor | scope_main, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_CLOSE, "editor-close-map", N_("Close Map"), false, scope_editor, "" },
 
 	// These are not really hotkey items but menu entries to get expanded.
@@ -389,9 +389,9 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 
 		if(!default_hotkey.empty() && !has_hotkey_item(id))
 		{
-			hotkey_item new_item(default_hotkey, true);
-			new_item.set_command(id);
-			if(new_item.valid())
+			hotkey::hotkey_ptr new_item = hotkey::load_from_config(default_hotkey);
+			new_item->set_command(id);
+			if(new_item->valid())
 			{
 				DBG_G << "added default description for the wml hotkey with id=" + id;
 				add_hotkey(new_item);

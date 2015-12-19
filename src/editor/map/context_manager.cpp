@@ -166,6 +166,8 @@ context_manager::~context_manager()
 	// Restore default window title
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_WM_SetCaption(default_window_title_.c_str(), NULL);
+#else
+	CVideo::set_window_title(default_window_title_);
 #endif
 }
 
@@ -1028,6 +1030,8 @@ void context_manager::set_window_title()
 	const std::string& wm_title_string = map_name + " - " + default_window_title_;
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#else
+	CVideo::set_window_title(wm_title_string);
 #endif
 }
 

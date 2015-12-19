@@ -30,6 +30,7 @@
 #include "sdl/window.hpp"
 #include "video.hpp"
 #include "sdl/gpu.hpp"
+#include "display.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -47,11 +48,18 @@ namespace {
 	GPU_Target *render_target_;
 }
 void resize_monitor::process(events::pump_info &info) {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(info.resize_dimensions.first >= preferences::min_allowed_width()
 	&& info.resize_dimensions.second >= preferences::min_allowed_height()
 	&& disallow_resize == 0) {
 		preferences::set_resolution(info.resize_dimensions);
 	}
+#else
+	if(info.resize_dimensions.first > 0 &&
+			info.resize_dimensions.second > 0
+			&& display::get_singleton())
+		display::get_singleton()->redraw_everything();
+#endif
 }
 
 resize_lock::resize_lock()
@@ -241,7 +249,7 @@ bool non_interactive()
 	if (fake_interactive)
 		return false;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-	return false;
+	return window == NULL;
 #else
 	return SDL_GetVideoSurface() == NULL;
 #endif
@@ -268,7 +276,7 @@ surface display_format_alpha(surface surf)
 		return NULL;
 }
 
-surface get_video_surface()
+surface& get_video_surface()
 {
 	return frameBuffer;
 }
@@ -412,7 +420,7 @@ CVideo::~CVideo()
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	surface target(getSurface());
+	surface& target(getSurface());
 	SDL_Rect dst = sdl::create_rect(x, y, 0, 0);
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
@@ -532,6 +540,19 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 }
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+
+void update_framebuffer()
+{
+	if (!window)
+		return;
+
+	surface fb = SDL_GetWindowSurface(*window);
+	if (!frameBuffer)
+		frameBuffer = fb;
+	else
+		frameBuffer.assign(fb);
+}
+
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
 	update_rects.clear();
@@ -554,7 +575,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		}
 	}
 
-	frameBuffer = SDL_GetWindowSurface(*window);
+	update_framebuffer();
 
 	if(frameBuffer != NULL) {
 		image::set_pixel_format(frameBuffer->format);
@@ -652,8 +673,8 @@ void CVideo::flip()
 
 	clear_updates();
 #else
-	assert(window);
-	window->render();
+	if (window)
+		window->render();
 #endif
 #endif
 }

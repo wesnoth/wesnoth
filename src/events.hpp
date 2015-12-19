@@ -64,7 +64,9 @@ protected:
 	}
 
 private:
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	int unicode_;
+#endif
 	bool has_joined_;
 };
 
@@ -90,6 +92,11 @@ struct event_context
 
 //causes events to be dispatched to all handler objects.
 void pump();
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+//look for resize events and update references to the screen area
+void peek_for_resize();
+#endif
 
 struct pump_info {
 	pump_info() : resize_dimensions(), ticks_(0) {}

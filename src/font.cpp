@@ -885,7 +885,7 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 	return render_text(str, size, color, style, false);
 }
 
-SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
+SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& color, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {

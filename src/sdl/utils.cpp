@@ -67,11 +67,11 @@ SDL_Color int_to_color(const Uint32 rgb)
 	result.g = (0x0000FF00 & rgb) >> 8;
 	result.b = (0x000000FF & rgb);
 #ifdef SDL_GPU
-	result.unused = 255;
+	result.unused = SDL_ALPHA_OPAQUE;
 #elif SDL_VERSION_ATLEAST(2,0,0)
-	result.a = 0;
+	result.a = SDL_ALPHA_OPAQUE;
 #else
-	result.unused = 0;
+	result.unused = SDL_ALPHA_OPAQUE;
 #endif
 	return result;
 }
@@ -2561,7 +2561,7 @@ surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_fo
 		return NULL;
 	}
 
-	sdl_blit(src, &area, dst, NULL);
+	sdl_copy_portion(src, &area, dst, NULL);
 
 	return optimize_format ? display_format_alpha(dst) : dst;
 }
@@ -2748,4 +2748,3 @@ std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
 	s << rect.x << ',' << rect.y << " x "  << rect.w << ',' << rect.h;
 	return s;
 }
-

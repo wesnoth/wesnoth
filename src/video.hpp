@@ -48,7 +48,13 @@ struct GPU_Target;
 GPU_Target *get_render_target();
 
 surface display_format_alpha(surface surf);
-surface get_video_surface();
+surface& get_video_surface();
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+//this needs to be invoked immediately after a resize event or the game will crash.
+void update_framebuffer();
+#endif
+
+
 SDL_Rect screen_area();
 
 

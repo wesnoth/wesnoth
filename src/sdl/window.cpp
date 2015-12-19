@@ -67,12 +67,13 @@ twindow::~twindow()
 
 void twindow::set_size(const int w, const int h)
 {
+	SDL_SetWindowFullscreen(window_, 0);
 	SDL_SetWindowSize(window_, w, h);
 }
 
 void twindow::full_screen()
 {
-	/** @todo Implement. */
+	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 
 void twindow::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)

@@ -93,7 +93,7 @@ void wait::leader_preview_pane::draw_contents()
 {
 	bg_restore();
 
-	surface screen = video().getSurface();
+	surface& screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = sdl::create_rect(loc.x + leader_pane_border,
@@ -361,6 +361,7 @@ void wait::join_game(bool observe)
 					choices.push_back(name);
 				}
 			}
+
 
 			std::vector<gui::preview_pane* > preview_panes;
 			leader_preview_pane leader_selector(disp(), flg, color);

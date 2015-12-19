@@ -90,8 +90,7 @@ void file_menu::display_current_files() {
 		// Make sure that all lines fit.
 		// Guess the width of the scrollbar to be 30 since it is not accessible from here.
 		// -25 to compensate for the picture column.
-		while(static_cast<unsigned int>(
-				font::line_width(*it, menu_font_size)) > width() - 30 - 25) {
+		while(font::line_width(*it, menu_font_size) > width() - 30 - 25) {
 
 			(*it).resize((*it).size() - 1);
 		}

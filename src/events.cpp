@@ -21,6 +21,7 @@
 #include "sound.hpp"
 #include "quit_confirmation.hpp"
 #include "video.hpp"
+#include "display.hpp"
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
 #endif
@@ -164,13 +165,11 @@ event_context::~event_context()
 	event_contexts.pop_back();
 }
 
-sdl_handler::sdl_handler(const bool auto_join)
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	: unicode_(1)
-#else
-	: unicode_(SDL_EnableUNICODE(1))
+	sdl_handler::sdl_handler(const bool auto_join) :
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	unicode_(SDL_EnableUNICODE(1)),
 #endif
-	, has_joined_(false)
+	has_joined_(false)
 {
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
@@ -280,7 +279,9 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 void pump()
 {
 	SDL_PumpEvents();
-
+#if SDL_VERSION_ATLEAST(2,0,0)
+	peek_for_resize();
+#endif
 	pump_info info;
 
 	//used to keep track of double click events
@@ -294,6 +295,8 @@ void pump()
 	while(SDL_PollEvent(&temp_event)) {
 		++poll_count;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+		peek_for_resize();
+
 		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT
 				&& (temp_event.window.event == SDL_WINDOWEVENT_ENTER
 						|| temp_event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED))
@@ -399,6 +402,16 @@ void pump()
 				}
 				break;
 			}
+			
+#ifndef __APPLE__
+			case SDL_KEYDOWN: {
+				if(event.key.keysym.sym == SDLK_F4 && (event.key.keysym.mod == KMOD_RALT || event.key.keysym.mod == KMOD_LALT)) {
+					quit_confirmation::quit();
+					continue; // this event is already handled
+				}
+				break;
+			}
+#endif
 
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
@@ -518,7 +531,7 @@ int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 #if SDL_VERSION_ATLEAST(2,0,0)
 
 /* The constants for the minimum and maximum are picked from the headers. */
-#define INPUT_MIN 0x200
+#define INPUT_MIN 0x300
 #define INPUT_MAX 0x8FF
 
 bool is_input(const SDL_Event& event)
@@ -529,6 +542,19 @@ bool is_input(const SDL_Event& event)
 void discard_input()
 {
 	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
+}
+
+void peek_for_resize()
+{
+	SDL_Event events[100];
+	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
+	for (int i = 0; i < num; i++) {
+		if (events[i].type == SDL_WINDOWEVENT &&
+				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
+			update_framebuffer();
+
+		}
+	}
 }
 
 #else

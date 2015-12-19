@@ -113,6 +113,17 @@ inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_R
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
+inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surface& dst, SDL_Rect* dst_rect){
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
+	SDL_SetSurfaceBlendMode(dst, SDL_BLENDMODE_NONE);
+#endif
+	SDL_BlitSurface(screen, screen_rect, dst, dst_rect);
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
+#endif
+}
+
 /**
  * This method blends a RGBA color. The method takes as input a surface,
  * the RGB color to blend and a value specifying how much blending to apply.
@@ -440,7 +451,7 @@ SDL_Color string_to_color(const std::string& color_string);
 SDL_Color create_color(const unsigned char red
 		, unsigned char green
 		, unsigned char blue
-		, unsigned char alpha = 255);
+		, unsigned char alpha = SDL_ALPHA_OPAQUE);
 
 /**
  * Helper class for pinning SDL surfaces into memory.
