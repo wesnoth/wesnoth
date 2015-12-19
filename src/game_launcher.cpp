@@ -433,6 +433,8 @@ bool game_launcher::init_video()
 		return false;
 	}
 
+	video_flags ^= SDL_WINDOW_MAXIMIZED;
+
 	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
 	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
 	video_.setBpp(bpp);
