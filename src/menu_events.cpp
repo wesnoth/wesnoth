@@ -849,6 +849,15 @@ bool menu_handler::end_turn(int side_num)
 	return true;
 }
 
+void menu_handler::concede(int side_num)
+{
+    const int res = gui2::show_message((*gui_).video(), "", _(" Do you really want to concede the game?"), gui2::tmessage::yes_no_buttons);
+		if(res == gui2::twindow::OK) {
+		    team& tm = teams()[side_num-1];
+			tm.set_defeat_condition(team::DEFEAT_CONDITION::ALWAYS);
+		}
+}
+
 void menu_handler::goto_leader(int side_num)
 {
 	unit_map::const_iterator i = units().find_leader(side_num);
@@ -1071,7 +1080,7 @@ void menu_handler::clear_labels()
 		resources::recorder->clear_labels(gui_->current_team_name(), false);
 	}
 }
-	
+
 void menu_handler::label_settings() {
 	// TODO: I think redraw_everything might be a bit too much? It causes a flicker.
 	if(gui2::tlabel_settings::execute(board(), gui_->video()))
@@ -3122,7 +3131,7 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 		return;
 	} else {
 		//The server will (or won't because we aren't allowed to change the controller)
-		//send us a [change_controller] back, which we then handle in playturn.cpp 
+		//send us a [change_controller] back, which we then handle in playturn.cpp
 		change_side_controller(side,player);
 	}
 }

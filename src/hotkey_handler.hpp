@@ -104,6 +104,7 @@ public:
 	virtual void redo();
 	virtual void show_enemy_moves(bool ignore_units);
 	virtual void goto_leader();
+	virtual void concede();
 	virtual void unit_description();
 	virtual void terrain_description();
 	virtual void toggle_ellipses();
