@@ -22,6 +22,8 @@
 
 #include "util.hpp"
 
+#include <cstdio>
+
 /**
  * Helper class for buffering a @c std::istream.
  *

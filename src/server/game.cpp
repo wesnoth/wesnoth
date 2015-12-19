@@ -27,6 +27,8 @@
 #include <iomanip>
 #include <boost/foreach.hpp>
 
+#include <cstdio>
+
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
 #define WRN_GAME LOG_STREAM(warn, log_server)
@@ -168,7 +170,7 @@ namespace {
 std::string describe_turns(int turn, int num_turns)
 {
 	char buf[100];
-	
+
 	if(num_turns == -1) {
 		snprintf(buf, sizeof(buf), "%d/-", turn);
 	} else {
@@ -395,7 +397,7 @@ void game::reset_sides()
 	sides_.resize(nsides_);
 }
 
-void game::update_side_data() 
+void game::update_side_data()
 {
 				//added by iceiceice: since level_ will now reflect how an observer
 	if (started_) return; 	//views the replay start position and not the current position, the sides_, side_controllers_,
@@ -450,7 +452,7 @@ void game::update_side_data()
 				side_found = true;
 			}
 			else if (*user == owner_ && (controller == "null" || controller == "reserved")) {
-				//the *user == owner_ check has no effect, 
+				//the *user == owner_ check has no effect,
 				//it's just an optimisation so that we only do this once.
 				side_controllers_[side_index] = controller.to_string();
 			}
@@ -1112,7 +1114,7 @@ void game::handle_choice(const simple_wml::node& data, const player_map::iterato
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 
 	// Otherwise we allow observers to cause OOS for the playing clients by sending
-	// server choice requests based on incompatible local changes. To solve this we block 
+	// server choice requests based on incompatible local changes. To solve this we block
 	// server choice requests from observers.
 	if(!started_) {
 		return;
@@ -1121,7 +1123,7 @@ void game::handle_choice(const simple_wml::node& data, const player_map::iterato
 		return;
 	}
 	int request_id = lexical_cast_default<int>(data["request_id"], -10);
-	
+
 	if(request_id <= last_choice_request_id_) {
 		// We gave already an anwer to this request.
 		return;
@@ -1175,7 +1177,7 @@ void game::process_change_controller_wml(simple_wml::document& data, const playe
 	const size_t side_index = ccw_node["side"].to_int() - 1;
 	const std::string new_controller = ccw_node["controller"].to_string();
 	if(new_controller != "human" && new_controller != "ai" && new_controller != "null") {
-		return;	
+		return;
 	}
 	if(side_index >= sides_.size()) {
 		return;
