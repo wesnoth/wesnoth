@@ -923,8 +923,8 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::try_actual_movement(bool show)
 	{
-		static const std::string enter_hex_str("enter_hex");
-		static const std::string exit_hex_str("exit_hex");
+		static const std::string enter_hex_str("enter hex");
+		static const std::string exit_hex_str("exit hex");
 
 
 		bool obstructed_stop = false;

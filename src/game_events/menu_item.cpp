@@ -59,7 +59,7 @@ namespace { // Some helpers for construction.
 	 */
 	inline std::string make_item_name(const std::string & id)
 	{
-		return std::string("menu_item") + (id.empty() ? "" : ' ' + id);
+		return std::string("menu item") + (id.empty() ? "" : ' ' + id);
 	}
 
 	/**

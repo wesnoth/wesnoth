@@ -1487,13 +1487,13 @@ void advance_unit_at(const advance_unit_params& params)
 
 		if(params.fire_events_)
 		{
-			LOG_NG << "Firing pre_advance event at " << params.loc_ <<".\n";
-			resources::game_events->pump().fire("pre_advance", params.loc_);
+			LOG_NG << "Firing pre advance event at " << params.loc_ <<".\n";
+			resources::game_events->pump().fire("pre advance", params.loc_);
 			//TODO: maybe use id instead of location here ?.
 			u = resources::units->find(params.loc_);
 			if(!unit_helper::will_certainly_advance(u))
 			{
-				LOG_NG << "pre_advance event aborted advancing.\n";
+				LOG_NG << "pre advance event aborted advancing.\n";
 				return;
 			}
 		}
@@ -1619,7 +1619,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	if(fire_event)
 	{
 		LOG_NG << "Firing post_advance event at " << loc << ".\n";
-		resources::game_events->pump().fire("post_advance",loc);
+		resources::game_events->pump().fire("post advance",loc);
 	}
 
 	// "sighted" event(s).
