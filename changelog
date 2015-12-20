@@ -7,6 +7,7 @@ Version 1.13.2+dev:
      relocate the log file to a path with Unicode characters (bug #22897,
      definitely fixed this time).
    * Fix bug #23108: exclude aborted attacks from statistics
+   * imgcheck now runs on Python 3
  * Greatly improved SDL2 support. SDL2 is now the default build.
    * Fix bug #24138: SDL2 crash on resize after starting a game and returning to title screen
    * Fix bug #23908: SDL2 SDL_BlitSurface Causes Crashes
