@@ -1179,7 +1179,6 @@ void unit::new_turn()
 void unit::end_turn()
 {
 	expire_modifications("turn end");
-	expire_modifications("turn_end");
 
 	set_state(STATE_SLOWED,false);
 	if((movement_ != total_movement()) && !(get_state(STATE_NOT_MOVED))) {
