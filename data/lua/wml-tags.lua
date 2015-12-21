@@ -1114,39 +1114,13 @@ function wml_actions.harm_unit(cfg)
 				wesnoth.set_variable(string.format("%s[%d]", variable, index - 1), { harm_amount = damage })
 			end
 
-			-- both may no longer be alive at this point, so double check
-			-- this blocks handles the harmed units advancing
-			if experience ~= false and harmer and unit_to_harm.valid and unit_to_harm.experience >= unit_to_harm.max_experience then
-				wml_actions.store_unit { 
-					T.filter { id = unit_to_harm.id }, 
-					variable = "Lua_store_unit", 
-					kill = true,
-				}
-				wml_actions.unstore_unit {
-					variable = "Lua_store_unit",
-					find_vacant = false,
-					advance = true,
-					animate = toboolean( animate ),
-					fire_event = fire_event,
-				}
-				wesnoth.set_variable ( "Lua_store_unit", nil )
+			-- both units may no longer be alive at this point, so double check
+			if experience ~= false and unit_to_harm and unit_to_harm.valid then
+				unit_to_harm:advance(toboolean(animate), fire_event ~= false)
 			end
 
-			-- this block handles the harmer advancing
-			if experience ~= false and harmer and harmer.valid and harmer.experience >= harmer.max_experience then
-				wml_actions.store_unit { 
-					T.filter { id = harmer.id },
-					variable = "Lua_store_unit",
-					kill = true,
-				}
-				wml_actions.unstore_unit {
-					variable = "Lua_store_unit",
-					find_vacant = false,
-					advance = true,
-					animate = toboolean( animate ),
-					fire_event = fire_event,
-				}
-				wesnoth.set_variable ( "Lua_store_unit", nil )
+			if experience ~= false and harmer and harmer.valid then
+				harmer:advance(toboolean(animate), fire_event ~= false)
 			end
 		end
 
