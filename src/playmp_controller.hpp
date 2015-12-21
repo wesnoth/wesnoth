@@ -25,7 +25,7 @@ class playmp_controller : public playsingle_controller, public syncmp_handler
 {
 public:
 	playmp_controller(const config& level, saved_game& state_of_game,
-		const config& game_config, 
+		const config& game_config,
 		const tdata_cache & tdata, CVideo& video,
 		mp_campaign_info* mp_info);
 	virtual ~playmp_controller();

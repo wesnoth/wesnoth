@@ -33,7 +33,7 @@ class play_controller;
  * game dialog from the destructor of a class is a bad idea, because those
  * functions throw exceptions. For example if the user decides to quit the game,
  * or there is a filesystem erorr. If the destructor throws exceptions, it will
- * cause memory leaks and crashes. 
+ * cause memory leaks and crashes.
  * http://wiki.wesnoth.org/CodingStandards#Destructors_must_not_throw_exceptions
  *
  * As a temporary fix the destructor has been changed to swallow all exceptions.

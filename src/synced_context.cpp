@@ -180,7 +180,7 @@ void synced_context::set_synced_state(synced_state newstate)
 	state_ = newstate;
 }
 
-namespace 
+namespace
 {
 	class random_server_choice : public synced_context::server_choice
 	{
@@ -343,7 +343,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				we don't want to send multiple "require_random" to the server.
 			*/
 			if(!did_require)
-			{	
+			{
 				sch.send_request();
 				did_require = true;
 			}

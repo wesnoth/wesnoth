@@ -1000,9 +1000,9 @@ namespace { // Helpers for set_config()
 		// Restore the variations.
 		ut_cfg.splice_children(variations, "variation");
 	}
-	
+
 	const boost::regex fai_identifier("[a-zA-Z_]+");
-	
+
 	template<typename MoveT>
 	void patch_movetype(MoveT& mt, const std::string& new_key, const std::string& formula_str, int default_val, bool replace) {
 		config temp_cfg, original_cfg;
@@ -1048,7 +1048,7 @@ void unit_type_data::set_config(config &cfg)
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
 		loadscreen::increment_progress();
 	}
-	
+
 	// Movetype resistance patching
 	BOOST_FOREACH(const config &r, cfg.child_range("resistance_defaults"))
 	{
@@ -1071,7 +1071,7 @@ void unit_type_data::set_config(config &cfg)
 			}
 		}
 	}
-	
+
 	// Movetype move/defend patching
 	BOOST_FOREACH(const config &terrain, cfg.child_range("terrain_defaults"))
 	{

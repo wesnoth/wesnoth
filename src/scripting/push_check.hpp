@@ -26,7 +26,7 @@ namespace lua_check_impl
 		BOOST_MPL_HAS_XXX_TRAIT_DEF(key_type)
 		BOOST_MPL_HAS_XXX_TRAIT_DEF(mapped_type)
 	}
-	
+
 	template <typename T, typename Enable = void>
 	struct is_container
 		: boost::mpl::bool_<
@@ -44,7 +44,7 @@ namespace lua_check_impl
 			detail::has_mapped_type<T>::value
 		>
 	{};
-	
+
 	template <typename T>
 	struct is_container<T&>
 		: is_container<T>
@@ -166,7 +166,7 @@ namespace lua_check_impl
 	{
 		lua_pushnumber(L, val);
 	}
-	
+
 	//std::vector and similar but not std::string
 	template<typename T>
 	typename boost::enable_if<
@@ -194,7 +194,7 @@ namespace lua_check_impl
 			throw "luaL_argerror returned"; //shouldnt happen, luaL_argerror always throws.
 		}
 	}
-	
+
 #if defined(__GNUC__) && !defined(__clang__)
 #if __GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 8 )
 // 'list.size()' below is unsigned for some (most but not all) list types.
@@ -221,7 +221,7 @@ namespace lua_check_impl
 			lua_check_impl::lua_push<typename remove_constref<typename T::value_type>::type>(L, list[i]);
 			lua_rawseti(L, -2, i + 1);
 		}
-	}	
+	}
 
 
 	//accepts std::map TODO: add a check function for that

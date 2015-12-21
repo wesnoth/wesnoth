@@ -9,7 +9,7 @@ namespace actions
 {
 namespace undo
 {
-	
+
 struct recruit_action : undo_action, shroud_clearing_action
 {
 	const unit_type & u_type;

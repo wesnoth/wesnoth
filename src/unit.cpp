@@ -1589,7 +1589,7 @@ std::vector<config> unit::get_modification_advances() const
 		std::vector<std::string> uniq_require, uniq_exclude;
 		std::unique_copy(temp_require.begin(), temp_require.end(), std::back_inserter(uniq_require));
 		std::unique_copy(temp_exclude.begin(), temp_exclude.end(), std::back_inserter(uniq_exclude));
-		
+
 		bool exclusion_found = false;
 		BOOST_FOREACH(const std::string &s, uniq_exclude)
 		{
@@ -1639,7 +1639,7 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 			++res;
 		}
 	}
-	
+
 	// For backwards compatibility, if asked for "advancement", also count "advance"
 	if (mod_type == "advancement") {
 		res += modification_count("advance", id);
@@ -1689,7 +1689,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				else if(apply_to == "healthy")
 				{
 					is_healthy_ = effect["set"].to_bool(true);
-				} 
+				}
 				else if(apply_to == "profile") {
 					if (const config::attribute_value *v = effect.get("portrait")) {
 						std::string big = *v, small = effect["small_portrait"];
@@ -1971,7 +1971,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				} else if (apply_to == "new_advancement") {
 					const std::string &types = effect["types"];
 					const bool replace = effect["replace"].to_bool(false);
-					
+
 					if (!types.empty()) {
 						if (replace) {
 							advances_to_ = utils::parenthetical_split(types, ',');
@@ -1980,7 +1980,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 							std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
 						}
 					}
-					
+
 					if (effect.has_child("advancement")) {
 						if (replace) {
 							cfg_.clear_children("advancement");
@@ -1991,7 +1991,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				} else if (apply_to == "remove_advancement") {
 					const std::string &types = effect["types"];
 					const std::string &amlas = effect["amlas"];
-					
+
 					std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
 					std::vector<std::string>::iterator iter;
 					BOOST_FOREACH(const std::string& unit, temp_advances) {
@@ -2000,7 +2000,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 							advances_to_.erase(iter);
 						}
 					}
-					
+
 					temp_advances = utils::parenthetical_split(amlas, ',');
 					std::vector<size_t> remove_indices;
 					size_t remove_index = 0;
@@ -2021,7 +2021,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 				} else if (apply_to == "max_attacks") {
 					const std::string &increase = effect["increase"];
-					
+
 					if(increase.empty() == false) {
 						if (!times) {
 							description += utils::print_modifier(increase) + " ";
@@ -2039,7 +2039,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					const std::string &increase = effect["increase"];
 					const std::string &set = effect["set"];
 					const int recall_cost = recall_cost_ < 0 ? resources::teams->at(side_).recall_cost() : recall_cost_;
-					
+
 					if(set.empty() == false) {
 						if(set[set.size()-1] == '%') {
 							recall_cost_ = lexical_cast_default<int>(set)*recall_cost/100;
@@ -2047,7 +2047,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 							recall_cost_ = lexical_cast_default<int>(set);
 						}
 					}
-					
+
 					if(increase.empty() == false) {
 						if (!times) {
 							description += utils::print_modifier(increase) + " " +

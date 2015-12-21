@@ -223,7 +223,7 @@ LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 
 LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 {
-	
+
 	playmp_controller playcontroller(state_.get_starting_pos(), state_,
 		game_config_, tdata_, disp_.video(), mp_info_);
 	LEVEL_RESULT res = playcontroller.play_scenario(state_.get_starting_pos());
@@ -262,7 +262,7 @@ LEVEL_RESULT campaign_controller::play_game()
 	else {
 		state_.get_replay().set_to_end();
 	}
-	
+
 	state_.expand_scenario();
 
 	game_classification::CAMPAIGN_TYPE game_type = state_.classification().campaign_type;
@@ -289,7 +289,7 @@ LEVEL_RESULT campaign_controller::play_game()
 				if(is_replay_) {
 					return res;
 				}
-			} else 
+			} else
 #endif
 			{
 				res = playmp_scenario(end_level);
@@ -336,7 +336,7 @@ LEVEL_RESULT campaign_controller::play_game()
 			savegame::replay_savegame save(state_, preferences::save_compression_format());
 			save.save_game_automatic(disp_.video(), true);
 		}
-		
+
 		state_.convert_to_start_save();
 
 		//If there is no next scenario we're done now.

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/* 
+/*
    This file provides a name space to store a source for seeds for
    prgs. It should be boost::random_device on platforms that provide
    this with our version of boost random, and otherwise should be the

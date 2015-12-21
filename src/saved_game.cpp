@@ -310,7 +310,7 @@ void saved_game::expand_mp_events()
 		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
 		if(classification_.campaign != "")
 		{ mods.push_back(modevents_entry("campaign", classification_.campaign)); }
-		
+
 		// In the first iteration mod contains no [resource]s in all other iterations, mods contains only [resource]s
 		do {
 			BOOST_FOREACH(modevents_entry& mod, mods)
@@ -380,7 +380,7 @@ void saved_game::expand_random_scenario()
 			{
 				scenario_new.add_child("story", story);
 			}
-			scenario_new["id"] = starting_pos_["id"]; 
+			scenario_new["id"] = starting_pos_["id"];
 			starting_pos_ = scenario_new;
 			update_label();
 			set_defaults();
@@ -494,7 +494,7 @@ config saved_game::to_config() const
 		r.add_child("replay_start", replay_start_);
 	}
 	replay_data_.write(r.add_child("replay"));
-	
+
 	if(starting_pos_type_ == STARTINGPOS_SNAPSHOT)
 	{
 		r.add_child("snapshot", starting_pos_);
@@ -644,7 +644,7 @@ void saved_game::set_data(config& cfg)
 		statistics::fresh_stats();
 		statistics::read_stats(stats);
 	}
-	
+
 	classification_ = game_classification(cfg);
 	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
 	cfg.clear();

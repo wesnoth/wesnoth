@@ -87,7 +87,7 @@ const char* sngettext (const char *singular, const char *plural, int n)
 	return msgval;
 }
 
-#endif 
+#endif
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
 	bind_textdomain_codeset(domainname, "UTF-8");
@@ -132,7 +132,7 @@ void set_language(const std::string& slocale, const std::vector<std::string>* al
 	// use that value, so someone with es would get the game in Spanish
 	// instead of en_US the first time round
 	// LANGUAGE overrides other settings, so for now just get rid of it
-	
+
 #ifdef _WIN32
 	(void)alternates;
 	std::string win_locale(locale, 0, 2);

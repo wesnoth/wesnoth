@@ -121,7 +121,7 @@ private:
 	const config &side_cfg_;
 
 	std::vector<const config*> entry_points_;
-	
+
 	std::vector<std::string> entry_point_titles_;
 };
 

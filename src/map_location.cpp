@@ -72,12 +72,12 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 	if(str.empty()) {
 		return NDIRECTIONS;
 	}
-	
+
 	// Syntax: [-] (n|ne|se|s|sw|nw) [:cw|:ccw]
 	// - means "take opposite direction" and has higher precedence
 	// :cw and :ccw mean "one step (counter-)clockwise"
 	// Parentheses can be used for grouping or to apply an operator more than once
-	
+
 	const size_t open = str.find_first_of('('), close = str.find_last_of(')');
 	if (open != std::string::npos && close != std::string::npos) {
 		std::string sub = str.substr(open + 1, close - open - 1);
@@ -86,12 +86,12 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 		sub.replace(open, close - open + 1, write_direction(dir));
 		return parse_direction(sub);
 	}
-	
+
 	const size_t start = str[0] == '-' ? 1 : 0;
 	const size_t end = str.find_first_of(':');
 	const std::string& main_dir = str.substr(start, end - start);
 	map_location::DIRECTION dir;
-	
+
 	if (main_dir == "n") {
 		dir = NORTH;
 	} else if (main_dir == "ne") {
@@ -107,11 +107,11 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 	} else {
 		return NDIRECTIONS;
 	}
-	
+
 	if (start == 1) {
 		dir = get_opposite_dir(dir);
 	}
-	
+
 	if (end != std::string::npos) {
 		const std::string rel_dir = str.substr(end + 1);
 		if (rel_dir == "cw") {
@@ -122,7 +122,7 @@ map_location::DIRECTION map_location::parse_direction(const std::string& str)
 			return NDIRECTIONS;
 		}
 	}
-	
+
 	return dir;
 }
 

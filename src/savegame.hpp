@@ -166,7 +166,7 @@ private:
 	//before_save (write replay data) changes this so it cannot be const
 	saved_game& gamestate_;
 	/** Filename of the savegame file on disk */
-	std::string filename_; 
+	std::string filename_;
 
 	const std::string title_; /** Title of the savegame dialog */
 

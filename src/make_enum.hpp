@@ -114,7 +114,7 @@ namespace make_enum_detail
 #define ADD_PAREN_2( A, B ) ((A, B)) ADD_PAREN_1
 #define ADD_PAREN_1_END
 #define ADD_PAREN_2_END
-#define MAKEPAIRS( INPUT ) BOOST_PP_CAT(ADD_PAREN_1 INPUT,_END)  
+#define MAKEPAIRS( INPUT ) BOOST_PP_CAT(ADD_PAREN_1 INPUT,_END)
 #define PP_SEQ_FOR_EACH_I_PAIR(macro, data, pairs) BOOST_PP_SEQ_FOR_EACH_I(macro, data, MAKEPAIRS(pairs))
 
 

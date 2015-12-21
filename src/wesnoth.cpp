@@ -937,7 +937,7 @@ int main(int argc, char** argv)
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
 	}
-	
+
 #ifndef _WIN32
 	struct sigaction terminate_handler;
 	terminate_handler.sa_handler = wesnoth_terminate_handler;

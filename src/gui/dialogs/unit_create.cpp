@@ -262,7 +262,7 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 	{
 		if(tr["availability"] != "musthave") continue;
 
-		const std::string gender_string = 
+		const std::string gender_string =
 			u->genders().front() == unit_race::FEMALE ? "female_name" : "male_name";
 
 		t_string name = tr[gender_string];
@@ -301,10 +301,10 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 
 		BOOST_FOREACH(const attack_type& a, u->attacks())
 		{
-			str << "<span color='#f5e6c1'>" << a.num_attacks() 
+			str << "<span color='#f5e6c1'>" << a.num_attacks()
 				<< font::weapon_numbers_sep << a.damage() << " " << a.name() << "</span>" << "\n";
 
-			str << "<span color='#a69275'>" << "  " << a.range() 
+			str << "<span color='#a69275'>" << "  " << a.range()
 				<< font::weapon_details_sep << a.type() << "</span>" << "\n";
 
 			const std::string special = a.weapon_specials();
@@ -324,7 +324,7 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 
 void tunit_create::list_item_clicked(twindow& window)
 {
-	const int selected_row 
+	const int selected_row
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
 	if(selected_row == -1) {

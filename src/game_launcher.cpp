@@ -567,7 +567,7 @@ bool game_launcher::play_test()
 	);
 
 
-	
+
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
 

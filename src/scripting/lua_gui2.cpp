@@ -257,7 +257,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	const std::string& input_caption = txt_cfg["label"];
 	std::string input_text = txt_cfg["text"].str();
 	unsigned int input_max_len = txt_cfg["max_length"].to_int(256);
-	
+
 	std::vector<gui2::twml_message_option> options;
 	int chosen_option = -1;
 	if (!lua_isnoneornil(L, 2)) {
@@ -305,35 +305,35 @@ int show_message_dialog(lua_State *L, CVideo & video)
 		}
 		lua_pop(L, 1);
 	}
-	
+
 	const config& def_cfg = luaW_checkconfig(L, 1);
 	const std::string& title = def_cfg["title"];
 	const std::string& message = def_cfg["message"];
 	const std::string& portrait = def_cfg["portrait"];
 	const bool left_side = def_cfg["left_side"].to_bool(true);
 	const bool mirror = def_cfg["mirror"].to_bool(false);
-	
+
 	int dlg_result = gui2::show_wml_message(
 		left_side, video, title, message, portrait, mirror,
 		has_input, input_caption, &input_text, input_max_len,
 		options, &chosen_option
 	);
-	
+
 	if (!has_input && options.empty()) {
 		lua_pushinteger(L, dlg_result);
 	} else {
 		lua_pushinteger(L, chosen_option + 1);
 	}
-	
+
 	if (has_input) {
 		lua_pushlstring(L, input_text.c_str(), input_text.length());
 	} else {
 		lua_pushnil(L);
 	}
-	
+
 	return 2;
 }
-	
+
 /**
  * Displays a popup message
  * - Arg 1: Title (allows Pango markup)
@@ -344,7 +344,7 @@ int show_popup_dialog(lua_State *L, CVideo & video) {
 	std::string title = luaL_checkstring(L, 1);
 	std::string msg = luaL_checkstring(L, 2);
 	std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
-	
+
 	gui2::show_transient_message(video, title, msg, image, true, true);
 	return 0;
 }

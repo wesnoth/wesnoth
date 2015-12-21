@@ -544,7 +544,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state, 
+	saved_game& state,
 	bool local_players_only = false);
 
 static void enter_create_mode(game_display& disp, const config& game_config,

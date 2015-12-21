@@ -106,7 +106,7 @@ public:
 
 private:
 	bool has_carryover_expanded_;
-	/** 
+	/**
 		depends on has_carryover_expanded_:
 		if true:  The carryover information for all sides from the previous scenario that aren't used in this scenario (to be carried over to the next scenario).
 		if false: The carryover information for all sides from the previous scenario.

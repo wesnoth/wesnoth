@@ -260,7 +260,7 @@ void wait::join_game(bool observe)
 
 	// Add the map name to the title.
 	append_to_title(": " + get_scenario()["name"].t_str());
-	
+
 	game_config::add_color_info(get_scenario());
 	if (!observe) {
 		//search for an appropriate vacant slot. If a description is set

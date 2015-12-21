@@ -40,7 +40,7 @@ namespace events {
 	class mouse_handler;
 }
 
-class reports 
+class reports
 {
 public:
 

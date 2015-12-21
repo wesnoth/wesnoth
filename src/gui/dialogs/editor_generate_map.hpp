@@ -79,7 +79,7 @@ private:
 
 	/** Current map generator index */
 	int current_map_generator_;
-	
+
 	/** random seed integer input*/
 	std::string random_seed_;
 

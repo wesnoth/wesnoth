@@ -941,7 +941,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
 		BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
 
 			if(!boost::contains(i.map_info, search_string, chars_equal_insensitive) &&
-			   !boost::contains(i.name, search_string, chars_equal_insensitive) && 
+			   !boost::contains(i.name, search_string, chars_equal_insensitive) &&
 			   !boost::contains(i.era_and_mod_info, search_string, chars_equal_insensitive)) {
 
 				found_match = false;

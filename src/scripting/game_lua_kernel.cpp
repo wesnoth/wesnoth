@@ -2262,7 +2262,7 @@ int game_lua_kernel::intf_print(lua_State *L) {
 		color = string_to_color(cfg["color"]);
 	} else if(cfg.has_attribute("red") || cfg.has_attribute("green") || cfg.has_attribute("blue")) {
 		color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
-	} 
+	}
 
 	const SDL_Rect& rect = game_display_->map_outside_area();
 

@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_SUITE( cmdline_opts )
 
 BOOST_AUTO_TEST_CASE (test_empty_options)
 {
-	
+
 	std::vector<std::string> args = boost::assign::list_of("wesnoth");
 	commandline_options co(args);
 

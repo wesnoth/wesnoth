@@ -33,7 +33,7 @@ class config;
 struct SDL_RWops;
 
 namespace filesystem {
-	
+
 SDL_RWops* load_RWops(const std::string &path);
 
 /** An exception object used when an IO error occurs */

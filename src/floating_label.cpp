@@ -493,7 +493,7 @@ void undraw_floating_labels(surface screen)
 	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
 	//into the exact state it started in.
 	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
-		if(context.count(i->first) > 0) {			
+		if(context.count(i->first) > 0) {
 			i->second.undraw(screen);
 		}
 	}

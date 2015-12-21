@@ -40,7 +40,7 @@ enum START_POSITION {
 /**
  * Shows an introduction sequence using story WML.
  *
- * Each part of the sequence will be displayed in turn, with the user 
+ * Each part of the sequence will be displayed in turn, with the user
  * able to go to the next part, previous part, or skip it entirely.
  */
 void show_story(display &disp, const std::string &scenario_name,

@@ -55,8 +55,8 @@ t_string interpolate_variables_into_tstring(const t_string &str, const variable_
 }
 /// An alias for boost::assign::map_list_of<std::string, std::string>
 inline boost::assign_detail::generic_list< std::pair
-        < 
-            boost::assign_detail::assign_decay<std::string>::type, 
+        <
+            boost::assign_detail::assign_decay<std::string>::type,
             boost::assign_detail::assign_decay<std::string>::type
         > >
 string_map_of(const std::string& k, const std::string& v)

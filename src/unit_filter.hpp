@@ -68,7 +68,7 @@ public:
 	/// (Only use for units currently on the map; otherwise use the overload
 	/// that takes a location, possibly with a null location.)
 	bool matches(const unit & u) const;
-	
+
 	bool matches(const unit & u, const map_location & loc, const unit & u2) const;
 	bool matches(const unit & u, const unit & u2) const;
 

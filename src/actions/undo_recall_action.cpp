@@ -18,7 +18,7 @@ namespace actions
 {
 namespace undo
 {
-	
+
 /**
  * Writes this into the provided config.
  */

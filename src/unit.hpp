@@ -255,7 +255,7 @@ public:
 
 	void set_emit_zoc(bool val) { emit_zoc_ = val; }
 	bool get_emit_zoc() const { return emit_zoc_; }
-	
+
 
 	const std::vector<attack_type>& attacks() const { return attacks_; }
 	std::vector<attack_type>& attacks() { return attacks_; }

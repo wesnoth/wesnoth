@@ -103,10 +103,10 @@ protected:
 
 	// Show a dialog to the currently connected video object (if available)
 	int intf_show_dialog(lua_State * L);
-	
+
 	// Show a message dialog, possibly with options
 	int intf_show_message_dialog(lua_State * L);
-	
+
 	// Show a transient popup message
 	int intf_show_popup_dialog(lua_State * L);
 

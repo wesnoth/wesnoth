@@ -16,7 +16,7 @@
 #define LUA_FILEOPS_HPP_INCLUDED
 
 /**
- * This namespace contains the implementations for wesnoth's 
+ * This namespace contains the implementations for wesnoth's
  * safe fileops for lua.
  */
 

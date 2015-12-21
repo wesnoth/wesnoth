@@ -32,7 +32,7 @@ public:
 	void add_observer(const std::string& name) { observers_.insert(name); }
 	void remove_observer(const std::string& name) { observers_.erase(name); }
 	const std::set<std::string>& observers() const { return observers_; }
-	
+
 	void add_whisperer(const std::string& nick) { whisperers_.insert(nick); }
 	void remove_whisperer(const std::string& nick) { whisperers_.erase(nick); }
 	const std::set<std::string>& whisperers() const { return whisperers_; }

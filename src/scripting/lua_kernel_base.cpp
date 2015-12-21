@@ -126,7 +126,7 @@ int lua_kernel_base::intf_show_message_dialog(lua_State *L)
 		lua_error(L);
 		return 0;
 	}
-	
+
 	return lua_gui2::show_message_dialog(L, *video_);
 }
 
@@ -137,7 +137,7 @@ int lua_kernel_base::intf_show_popup_dialog(lua_State *L)
 		lua_error(L);
 		return 0;
 	}
-	
+
 	return lua_gui2::show_popup_dialog(L, *video_);
 }
 
@@ -476,7 +476,7 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 }
 
 // Call load_string and protected call. Make them throw exceptions.
-// 
+//
 void lua_kernel_base::throwing_run(const char * prog) {
 	cmd_log_ << "$ " << prog << "\n";
 	error_handler eh = boost::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
@@ -597,7 +597,7 @@ std::vector<std::string> lua_kernel_base::get_global_var_names()
 	int idx = lua_gettop(L);
 	lua_getglobal(L, "_G");
 	lua_pushnil(L);
-	
+
 	while (lua_next(L, idx+1) != 0) {
 		if (lua_isstring(L, -2)) {
 			ret.push_back(lua_tostring(L,-2));
@@ -633,10 +633,10 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 			return ret; //if we didn't get a table or userdata we can't proceed
 		}
 
-		var_path = var_path.substr(idx+1); // chop off the part of the path we just dereferenced		
+		var_path = var_path.substr(idx+1); // chop off the part of the path we just dereferenced
 		idx = var_path.find('.'); // find the next .
 	}
-	
+
 	std::string prefix = input.substr(0, last_dot);
 
 	lua_pushnil(L);

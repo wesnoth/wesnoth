@@ -221,15 +221,15 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			return (!browse() || linger()) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !linger() 
+			return !linger()
 				&& (viewing_team().uses_fog() || viewing_team().uses_shroud())
 				&& viewing_team_is_playing()
-				&& viewing_team().is_local_human() 
+				&& viewing_team().is_local_human()
 				&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger()
 				&& viewing_team_is_playing()
-				&& viewing_team().is_local_human() 
+				&& viewing_team().is_local_human()
 				&& !events::commands_disabled
 				&& viewing_team().auto_shroud_updates() == false;
 

@@ -1187,7 +1187,7 @@ namespace {
 			a_.get_unit().set_movement(-1, true);
 			return;
 		}
-		
+
 		a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
 		d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
 
@@ -1458,8 +1458,8 @@ namespace
 			return retv;
 		}
 		virtual std::string description() const
-		{ 
-			return "an advancement choice"; 
+		{
+			return "an advancement choice";
 		}
 	private:
 		const map_location loc_;

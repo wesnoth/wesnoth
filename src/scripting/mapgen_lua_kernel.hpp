@@ -32,7 +32,7 @@ public:
 	void user_config(const char * prog, const config & generator); // throws game::lua_error
 	std::string create_map(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed); // throws game::lua_error
 	config create_scenario(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed); // throws game::lua_error
-	
+
 	virtual boost::uint32_t get_random_seed();
 private:
 	void run_generator(const char * prog, const config & generator);

@@ -43,7 +43,7 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 playmp_controller::playmp_controller(const config& level,
-		saved_game& state_of_game, const config& game_config, 
+		saved_game& state_of_game, const config& game_config,
 		const tdata_cache & tdata, CVideo& video,
 		mp_campaign_info* mp_info)
 	: playsingle_controller(level, state_of_game,
@@ -104,7 +104,7 @@ void playmp_controller::play_linger_turn()
 	if (is_host()) {
 		end_turn_enable(true);
 	}
-	
+
 	while(end_turn_ == END_TURN_NONE) {
 		config cfg;
 		if(network_reader_.read(cfg)) {
@@ -310,7 +310,7 @@ void playmp_controller::after_human_turn(){
 	if(saved_game_.mp_settings().mp_countdown)
 	{
 		//time_left + turn_bonus + (action_bouns * number of actions done)
-		const int new_time_in_secs = (current_team().countdown_time() / 1000) 
+		const int new_time_in_secs = (current_team().countdown_time() / 1000)
 			+ saved_game_.mp_settings().mp_countdown_turn_bonus
 			+ saved_game_.mp_settings().mp_countdown_action_bonus * current_team().action_bonus_count();
 		const int new_time = 1000 * std::min<int>(new_time_in_secs, saved_game_.mp_settings().mp_countdown_reservoir_time);
@@ -460,7 +460,7 @@ void playmp_controller::process_network_data()
 	turn_info::PROCESS_DATA_RESULT res = turn_info::PROCESS_CONTINUE;
 	config cfg;
 	if(!resources::recorder->at_end()) {
-		res = turn_info::replay_to_process_data_result(do_replay()); 
+		res = turn_info::replay_to_process_data_result(do_replay());
 	}
 	else if(network_reader_.read(cfg)) {
 		res = turn_data_.process_network_data(cfg);

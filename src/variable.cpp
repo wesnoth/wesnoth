@@ -47,11 +47,11 @@ namespace
 		assert(resources::gamedata);
 		config::const_child_itors range = resources::gamedata->get_variable_access_read(varname).as_array();
 
-		if(range.first == range.second) 
+		if(range.first == range.second)
 		{
 			return as_nonempty_range_default.child_range("_");
 		}
-		else 
+		else
 		{
 			return range;
 		}
@@ -149,7 +149,7 @@ config vconfig::get_parsed_config() const
 			if(!vconfig_recursion.insert(vname).second) {
 				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
-			try 
+			try
 			{
 				config::const_child_itors range = as_nonempty_range(vname);
 				BOOST_FOREACH(const config& child, range)
@@ -212,7 +212,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 size_t vconfig::count_children(const std::string& key) const
 {
 	size_t n = 0;
-	
+
 	BOOST_FOREACH(const config::any_child &child, cfg_->all_children_range())
 	{
 		if (child.key == key) {
@@ -329,11 +329,11 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 
 			config::const_child_itors range = vinfo.as_array();
 
-			if (++inner_index_ < std::distance(range.first, range.second)) 
+			if (++inner_index_ < std::distance(range.first, range.second))
 			{
 				return *this;
 			}
-		
+
 		}
 		catch(const invalid_variablename_exception&)
 		{
@@ -379,7 +379,7 @@ vconfig vconfig::all_children_iterator::get_child() const
 		try
 		{
 			config::const_child_itors range = as_nonempty_range(vconfig(i_->cfg)["variable"]);
-			
+
 			std::advance(range.first, inner_index_);
 			return vconfig(*range.first, true);
 		}

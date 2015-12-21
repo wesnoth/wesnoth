@@ -49,7 +49,7 @@ private:
 
 	// populate era and mod lists
 	void update_lists(twindow& window);
-	
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 

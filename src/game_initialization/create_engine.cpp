@@ -572,7 +572,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
  *
  * Launches difficulty selection gui and returns selected difficulty name.
  *
- * The gui can be bypassed by supplying a number from 1 to the number of 
+ * The gui can be bypassed by supplying a number from 1 to the number of
  * difficulties available, corresponding to a choice of difficulty.
  * This is useful for specifying difficulty via command line.
  *

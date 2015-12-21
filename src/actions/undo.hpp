@@ -46,7 +46,7 @@ public:
 	/// Creates an undo_action based on a config.
 	/// Throws bad_lexical_cast or config::error if it cannot parse the config properly.
 	static undo_action_base * create_action(const config & cfg);
-		
+
 	// Functions related to managing the undo stack:
 
 	/// Adds an auto-shroud toggle to the undo stack.

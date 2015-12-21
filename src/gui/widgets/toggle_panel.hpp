@@ -91,7 +91,7 @@ public:
 
 	/** Inherited from tselectable_ */
 	void set_value(const unsigned selected);
-	
+
 	/** Inherited from tselectable_ */
 	unsigned num_states() const OVERRIDE;
 

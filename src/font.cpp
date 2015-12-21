@@ -293,7 +293,7 @@ static TTF_Font* get_font(font_id id)
 	const std::map<font_id, ttf_record>::iterator it = font_table.find(id);
 	if(it != font_table.end()) {
 		if (it->second.font != NULL) {
-			// If we found a valid record, use SDL_TTF to add in the difference 
+			// If we found a valid record, use SDL_TTF to add in the difference
 			// between its intrinsic style and the desired style.
 			TTF_SetFontStyle(it->second.font, it->second.style ^ id.style);
 		}

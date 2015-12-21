@@ -94,7 +94,7 @@ private:
 
 	team_label_map labels_;
 	bool enabled_;
-	
+
 	mutable std::vector<std::string> categories;
 	mutable bool categories_dirty;
 };

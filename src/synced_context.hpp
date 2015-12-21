@@ -35,7 +35,7 @@ public:
 	enum synced_state
 	{
 		UNSYNCED,
-		SYNCED, 
+		SYNCED,
 		LOCAL_CHOICE
 	};
 	/**

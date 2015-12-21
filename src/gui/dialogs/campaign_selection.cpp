@@ -154,7 +154,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 			tree_group_item["victory"] = tree_group_field;
 
 			tree.add_node("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
-		
+
 			/*** Add detail item ***/
 			string_map detail_item;
 			std::map<std::string, string_map> detail_page;
@@ -169,7 +169,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 			multi_page.add_page(detail_page);
 		}
 		if (!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
-			
+
 			tree_group_field["label"] = "Modifications";
 			tree_group_item["tree_view_node_label"] = tree_group_field;
 			//tree_group_item["tree_view_node_label"] = tree_group_field;
@@ -178,7 +178,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 
 			id = 0;
 			tree_group_item.clear();
-			FOREACH(const AUTO& mod, engine_.get_const_extras_by_type(ng::create_engine::MOD)) 
+			FOREACH(const AUTO& mod, engine_.get_const_extras_by_type(ng::create_engine::MOD))
 			{
 				bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 				/*** Add tree item ***/

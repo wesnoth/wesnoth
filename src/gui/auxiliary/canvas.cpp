@@ -1317,7 +1317,7 @@ private:
  *     text_markup & f_bool & false &  Can the text have mark-up? $
  *     text_link_aware & f_bool & false &
  *                                     Is the text link aware? $
- *     text_link_color & f_string & "#ffff00" & 
+ *     text_link_color & f_string & "#ffff00" &
  *                                     The color of links in the text $
  *     maximum_width & f_int & -1 &    The maximum width the text is allowed to
  *                                     be. $

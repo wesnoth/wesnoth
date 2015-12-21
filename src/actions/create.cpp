@@ -519,7 +519,7 @@ namespace { // Helpers for place_recruit()
 			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
 				": has checksum " << checksum <<
 				" while datasource has checksum " << old_checksum << "\n";
-			if(old_checksum.empty()) 
+			if(old_checksum.empty())
 			{
 				error_msg << "Original result is \n" << original_checksum_config << "\n";
 			}

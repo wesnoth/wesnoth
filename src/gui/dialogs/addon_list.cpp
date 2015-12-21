@@ -79,7 +79,7 @@ struct filter_transform
 	bool operator()(const config& cfg) const
 	{
 			FOREACH(const AUTO& filter, filtertext_)
-			{			
+			{
 				bool found = false;
 				FOREACH(const AUTO& attribute, cfg.attribute_range())
 				{
@@ -183,7 +183,7 @@ void taddon_list::register_sort_button_alphabetical(twindow& window, const std::
 
 void taddon_list::register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id)
 {
-	
+
 	register_sort_button(window, id, boost::bind(&num_up, &cfg_, prop_id, _1, _2), boost::bind(&num_down, &cfg_, prop_id, _1, _2));
 }
 

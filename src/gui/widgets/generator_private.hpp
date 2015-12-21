@@ -1047,7 +1047,7 @@ private:
 	typedef boost::function<bool (unsigned, unsigned)> torder_func;
 	torder_func order_func_;
 
-	
+
 	virtual void set_order(const torder_func& order) OVERRIDE
 	{
 		order_func_ = order;
@@ -1071,7 +1071,7 @@ private:
 			return order_func_(a, b);
 		}
 	};
-	
+
 	virtual unsigned get_ordered_index(unsigned index) const
 	{
 		assert(index < items_.size());
@@ -1101,7 +1101,7 @@ private:
 			for(size_t i = 0; i < order_.size(); ++i) {
 				items_[order_[i]]->ordered_index = i;
 			}
-			
+
 			order_dirty_ = false;
 		}
 		else {

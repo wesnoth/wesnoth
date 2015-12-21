@@ -8,7 +8,7 @@ namespace actions
 {
 namespace undo
 {
-	
+
 struct dismiss_action : undo_action
 {
 	unit_ptr dismissed_unit;

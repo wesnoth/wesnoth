@@ -16,7 +16,7 @@
 #define LUA_MAP_LOCATION_OPS_HPP_INCLUDED
 
 /**
- * This namespace contains the implementations for wesnoth's 
+ * This namespace contains the implementations for wesnoth's
  * lua bindings for the C++ map location operations.
  */
 

@@ -377,20 +377,20 @@ private:
 	int nsides_;
 	bool started_;
 
-	/** 
-		The current scenario data.´ 
-		WRONG! This contains the initial state or the state from which 
+	/**
+		The current scenario data.´
+		WRONG! This contains the initial state or the state from which
 		the game was loaded from.
-		Using this to make assumptions about the current gamestate is 
-		extremely dangerous and should especially not be done for anything 
+		Using this to make assumptions about the current gamestate is
+		extremely dangerous and should especially not be done for anything
 		that can be nodified by wml (especially by [modify_side]),
 		like team_name, controller ... in [side].
 		FIXME: move every code here that uses this object to query those
-		information to the clients. But note that there are some checks 
+		information to the clients. But note that there are some checks
 		(like controller == null) that are definitely needed by the server and
-		in this case we should try to modify the client to inform the server if 
-		a change of those properties occur. Ofc we shouldn't update level_ 
-		then, but rather store that information in a seperate object 
+		in this case we should try to modify the client to inform the server if
+		a change of those properties occur. Ofc we shouldn't update level_
+		then, but rather store that information in a seperate object
 		(like in side_controllers_).
 	*/
 	simple_wml::document level_;

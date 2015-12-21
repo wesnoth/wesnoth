@@ -207,7 +207,7 @@ public:
 	void prepare_for_saved_game();
 	//random maps, user maps
 	void prepare_for_other();
-	
+
 	std::string select_campaign_difficulty(int set_value = -1);
 
 	void apply_level_filter(const std::string& name);
@@ -244,7 +244,7 @@ public:
 		get_extras_by_type(const MP_EXTRA extra_type);
 
 	bool toggle_current_mod(bool force = false);
-	
+
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);
 

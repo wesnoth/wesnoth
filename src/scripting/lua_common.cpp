@@ -405,9 +405,9 @@ std::string register_vconfig_metatable(lua_State *L)
 
 	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
-	
+
 	// Metatables for the iterator userdata
-	
+
 	// I don't bother setting __metatable because this
 	// userdata is only ever stored in the iterator's
 	// upvalues, so it's never visible to the user.
@@ -415,7 +415,7 @@ std::string register_vconfig_metatable(lua_State *L)
 	lua_pushstring(L, "__gc");
 	lua_pushcfunction(L, &impl_vconfig_pairs_collect);
 	lua_rawset(L, -3);
-	
+
 	luaL_newmetatable(L, vconfigipairsKey);
 	lua_pushstring(L, "__gc");
 	lua_pushcfunction(L, &impl_vconfig_ipairs_collect);
@@ -765,7 +765,7 @@ bool LuaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 		default:
 		default_explicit:
 			return luaL_typerror(L, n, "WML table or scalar") != 0;
-			
+
 		}
 	}
 	catch (const invalid_variablename_exception&)

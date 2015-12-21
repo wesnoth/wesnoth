@@ -34,7 +34,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 
 		std::vector<ng::create_engine::level_ptr> campaigns(
 			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN));
-		
+
 		if (campaigns.empty()) {
 		  gui2::show_error_message(disp.video(),
 					  _("No campaigns are available.\n"));

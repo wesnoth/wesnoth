@@ -107,7 +107,7 @@ void plugins_manager::start_plugin(size_t idx)
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
 			DBG_PLG << "creating thread[" << idx << "]\n";
-			plugins_[idx].thread.reset(plugins_[idx].is_file ? 
+			plugins_[idx].thread.reset(plugins_[idx].is_file ?
 						kernel_->load_script_from_file(plugins_[idx].source) : kernel_->load_script_from_string(plugins_[idx].source));
 			DBG_PLG << "finished [" << idx << "], status = '" << plugins_[idx].thread->status() << "'\n";
 		} else {
@@ -121,7 +121,7 @@ void plugins_manager::start_plugin(size_t idx)
 size_t plugins_manager::add_plugin(const std::string & name, const std::string & prog)
 {
 	size_t idx = plugins_.size();
-	plugins_.push_back(new plugin);	
+	plugins_.push_back(new plugin);
 
 	plugin & p = plugins_[idx];
 	p.name = name;
@@ -134,7 +134,7 @@ size_t plugins_manager::add_plugin(const std::string & name, const std::string &
 size_t plugins_manager::load_plugin(const std::string & name, const std::string & filename)
 {
 	size_t idx = plugins_.size();
-	plugins_.push_back(new plugin);	
+	plugins_.push_back(new plugin);
 
 	plugin & p = plugins_[idx];
 	p.name = name;
@@ -182,7 +182,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 			std::vector<event> input = plugins_[idx].queue; //empty the queue to a temporary variable
 			plugins_[idx].queue = std::vector<event>();
 
-			//application_lua_kernel::requests_list requests = 
+			//application_lua_kernel::requests_list requests =
 			std::vector<boost::function<bool(void)> > requests =
 				plugins_[idx].thread->run_script(ctxt, input);
 
@@ -208,7 +208,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 
 bool plugins_manager::any_running()
 {
-	
+
 	for (size_t i = 0; i < size(); ++i) {
 		if (STATUS::RUNNING == get_status(i)) {
 			return true;

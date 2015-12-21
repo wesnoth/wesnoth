@@ -42,10 +42,10 @@ namespace ucs4_convert_impl
 		}
 	};
 	template<typename Tret, typename Tcheck>
-	struct enableif 
-	{ 
-		typedef Tcheck ignore; 
-		typedef Tret type; 
+	struct enableif
+	{
+		typedef Tcheck ignore;
+		typedef Tret type;
 	};
 }
 
@@ -67,7 +67,7 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 
 	TD res;
 	try
-	{	
+	{
 		t_outputitor inserter(res);
 		iteratorwriter<t_outputitor> dst(inserter);
 		t_inputitor i1 = source.begin();
@@ -77,7 +77,7 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 			t_impl_writer::write (dst, t_impl_reader::read(i1, i2));
 		}
 	}
-	catch(utf8::invalid_utf8_exception&) 
+	catch(utf8::invalid_utf8_exception&)
 	{
 		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
 		std::cerr << "Failed to convert a string from " << t_impl_reader::get_name() << " to " << t_impl_writer::get_name() << "\n";
@@ -98,7 +98,7 @@ TD unicode_cast(ucs4::char_t onechar)
 	typedef typename convert_impl<typename TD::value_type>::type t_impl_writer;
 	typedef convert_impl<ucs4::char_t>::type t_impl_reader;
 	typedef typename std::back_insert_iterator<TD> t_outputitor;
-	
+
 	TD res;
 	try
 	{
@@ -106,7 +106,7 @@ TD unicode_cast(ucs4::char_t onechar)
 		iteratorwriter<t_outputitor> dst(inserter);
 		t_impl_writer::write (dst, onechar);
 	}
-	catch(utf8::invalid_utf8_exception&) 
+	catch(utf8::invalid_utf8_exception&)
 	{
 		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
 		std::cerr << "Failed to convert a string from " << t_impl_reader::get_name() << " to " << t_impl_writer::get_name() << "\n";

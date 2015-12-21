@@ -64,7 +64,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 			if (*w == message.substr(0,pos)) remove_whisperer(*w);
 		}
 	}
-	
+
 	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 

@@ -73,8 +73,8 @@ public:
 
 	//replay
 	replay_controller& get_replay_controller()
-	{ 
-		assert(playsingle_controller_.get_replay_controller()); 
+	{
+		assert(playsingle_controller_.get_replay_controller());
 		return *playsingle_controller_.get_replay_controller();
 	}
 	virtual void stop_replay() OVERRIDE

@@ -36,7 +36,7 @@ void undo_action::write_tconfig_vector(const tconfig_vector& vec, config& cfg, c
 {
 	BOOST_FOREACH(const config& c, vec)
 	{
-		cfg.add_child(tag, c);		
+		cfg.add_child(tag, c);
 	}
 }
 

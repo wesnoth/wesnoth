@@ -18,7 +18,7 @@
  * Using this, for example, C++ method functions may be boost::bind'ed and
  * then pushed into the lua environment and called like usual.
  *
- * They are represented as user data with a call operator, which uses a 
+ * They are represented as user data with a call operator, which uses a
  * dispatcher implemented as a C-style function to retrieve the boost
  * function and execute it. Thus effectively all that we have to provide
  * is a "value type" user data (full userdata, not light userdata) in lua
@@ -50,7 +50,7 @@
  * way should have C-function shim provided for each method which may be called
  * by lua -- the object's "this" is retrieved from the userdata type on the
  * stack, and used to call the appopriate method. A metatable is defined, which
- * may be the same as the "lua module" placed in the global namespace which may 
+ * may be the same as the "lua module" placed in the global namespace which may
  * also provide access to a constructor.
  *
  * This approach is often quite good for small objects. Wesnoth uses full userdata

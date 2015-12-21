@@ -44,7 +44,7 @@ public:
 
 	/** The number of states, that is 2 for normal buttons, 3 for tristate buttons. */
 	virtual unsigned num_states() const = 0;
-	
+
 	bool get_value_bool() const
 	{
 		assert(num_states() == 2);

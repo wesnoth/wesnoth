@@ -26,7 +26,7 @@ struct shroud_clearing_action
 	{
 
 	}
-	
+
 	typedef std::vector<map_location> t_route;
 
 	shroud_clearing_action(const unit_const_ptr u, const t_route::const_iterator& begin, const t_route::const_iterator& end)
@@ -41,7 +41,7 @@ struct shroud_clearing_action
 	t_route route;
 	/// A record of the affected unit's ability to see.
 	clearer_info view_info;
-	
+
 	void write(config & cfg) const
 	{
 		write_locations(route, cfg);

@@ -53,7 +53,7 @@
 #define UNUSEDNOWARN
 #endif
 
-namespace translation 
+namespace translation
 {
 	std::string dgettext(const char* domain, const char* msgid);
 	std::string egettext(const char*);
@@ -61,11 +61,11 @@ namespace translation
 	//const char* sngettext(const char *singular, const char *plural, int n);
 	std::string dsngettext(const char * domainname, const char *singular, const char *plural, int n);
 
-	inline UNUSEDNOWARN static std::string gettext(const char* str) 
+	inline UNUSEDNOWARN static std::string gettext(const char* str)
 	{ return translation::dgettext(GETTEXT_DOMAIN, str); }
-	inline UNUSEDNOWARN static std::string sgettext(const char* str) 
+	inline UNUSEDNOWARN static std::string sgettext(const char* str)
 	{ return translation::dsgettext(GETTEXT_DOMAIN, str); }
-	inline UNUSEDNOWARN static std::string sngettext(const char* str1, const char* str2, int n)  
+	inline UNUSEDNOWARN static std::string sngettext(const char* str1, const char* str2, int n)
 	{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2 , n); }
 
 

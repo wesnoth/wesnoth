@@ -39,7 +39,7 @@ namespace random_new
 	private:
 		void initialize();
 		bool has_valid_seed_;
-		boost::function0<std::string> seed_generator_; 
+		boost::function0<std::string> seed_generator_;
 		rand_rng::mt_rng gen_;
 	};
 }

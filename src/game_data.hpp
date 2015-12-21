@@ -62,7 +62,7 @@ public:
 	void clear_variable(const std::string& varname);
 	/// Clears only the config children
 	/// does nothing if varname is no valid variable name.
-	void clear_variable_cfg(const std::string& varname); 
+	void clear_variable_cfg(const std::string& varname);
 
 	const rand_rng::mt_rng& rng() const { return rng_; }
 	rand_rng::mt_rng& rng() { return rng_; }

@@ -28,7 +28,7 @@ namespace random_new
 	{
 	public:
 		rng();
-		/** 
+		/**
 		 * Provides the next random draw. This is raw PRG output.
 		 */
 		uint32_t next_random();
@@ -40,14 +40,14 @@ namespace random_new
 		 */
 		unsigned int get_random_calls();
 
-		/** 
+		/**
 	         *  This helper method provides a random int from the underlying generator,
 		 *  using results of next_random in a manner guaranteed to be cross platform.
 		 *  The result will be random in range [min,max] inclusive.
 		 *  @param min		The minimum value produced.
 		 *  @param max		The maximum value produced.
 		 */
-		int get_random_int(int min, int max) 
+		int get_random_int(int min, int max)
 		{ return min + get_random_int_in_range_zero_to(max - min); }
 		static rng& default_instance();
 	protected:
@@ -55,7 +55,7 @@ namespace random_new
 		unsigned int random_calls_;
 
 	private:
-		/** Does the hard work of get_random_int. 
+		/** Does the hard work of get_random_int.
 		 *  The result will be random in range [0,max] inclusive.
 		 *  @param max		The maximum value produced.
 		 */

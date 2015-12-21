@@ -28,7 +28,7 @@ namespace ucs4 {
 namespace utf8 {
 	typedef char char_t;
 	typedef std::string string;
-	
+
 	/**
 	 * Thrown by operations encountering invalid UTF-8 data.
 	 *

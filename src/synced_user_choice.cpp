@@ -46,7 +46,7 @@ namespace
 		int label_id_;
 		std::string message_;
 		unsigned int start_show_;
-		
+
 	public:
 		user_choice_notifer_ingame()
 			: label_id_(-1)

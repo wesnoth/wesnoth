@@ -43,7 +43,7 @@ struct persist_choice: mp_sync::user_choice {
 		, side(side_num) {
 	}
 	virtual config query_user(int /*side_for*/) const {
-		//side can be different from side_for: if side was null-controlled 
+		//side can be different from side_for: if side was null-controlled
 		//then get_user_choice will use the next non-null-controlled side instead
 		config ret;
 		ret["side"] = side;
@@ -53,10 +53,10 @@ struct persist_choice: mp_sync::user_choice {
 	virtual config random_choice(int /*side_for*/) const {
 		return config();
 	}
-	
+
 	virtual std::string description() const
-	{ 
-		return "a global variable"; 
+	{
+		return "a global variable";
 	}
 	virtual bool is_visible() const { return false; }
 };

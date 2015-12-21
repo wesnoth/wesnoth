@@ -9,7 +9,7 @@ namespace actions
 {
 namespace undo
 {
-	
+
 struct move_action : undo_action, shroud_clearing_action
 {
 	int starting_moves;

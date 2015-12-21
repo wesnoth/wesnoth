@@ -13,7 +13,7 @@
 */
 
 /* This file selects a seed source -- "nondeterministic" random number
-   generator in boost documentation. It should be a wrapper for 
+   generator in boost documentation. It should be a wrapper for
    boost::random_device on platforms where this is available, otherwise
    it should most likely be the system time.
 */

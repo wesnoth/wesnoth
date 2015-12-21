@@ -43,7 +43,7 @@ public:
 								 bool roads_between_castles, std::map<map_location,std::string>* labels,
 								 const config& cfg);
 private:
-	
+
 	typedef std::vector<std::vector<int> > height_map;
 	typedef t_translation::t_map terrain_map;
 

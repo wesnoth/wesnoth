@@ -53,7 +53,7 @@ class replay
 public:
 	explicit replay(replay_recorder_base& base);
 
-	
+
 	void add_start();
 	void add_countdown_update(int value,int team);
 

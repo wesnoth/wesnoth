@@ -265,7 +265,7 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		ss << "\n\n";
-	
+
 		if (!female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image") {
 			ss << "<img>src='" << female_portrait << "' box='no' align='right' float='yes'</img> ";
 		}

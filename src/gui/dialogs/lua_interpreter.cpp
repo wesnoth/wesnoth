@@ -219,7 +219,7 @@ public:
 
 	void maybe_update_prefix (const std::string & text) {
 		LOG_LUA << "maybe update prefix\n";
-		LOG_LUA << "prefix_: '"<< prefix_ << "'\t text='"<< text << "'\n";   
+		LOG_LUA << "prefix_: '"<< prefix_ << "'\t text='"<< text << "'\n";
 
 		if (!end_of_history_) return;
 

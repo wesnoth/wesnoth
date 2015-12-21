@@ -210,7 +210,7 @@ void game_state::init(const config& level, play_controller & pc)
 			}
 		}
 	}
-	
+
 	pathfind_manager_.reset(new pathfind::manager(level));
 
 	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));

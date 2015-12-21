@@ -193,7 +193,7 @@ private:
 #ifdef SDL_GPU
 	void update_overlay(SDL_Rect *rect = NULL);
 
-	sdl::shader_program shader_; 
+	sdl::shader_program shader_;
 	surface overlay_;
 #endif
 

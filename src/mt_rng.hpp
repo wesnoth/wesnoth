@@ -26,8 +26,8 @@ namespace rand_rng
 {
 
 /*
-   This class provides an interface, similar to simple_rng, to the 
-   boost mt19937 generator. 
+   This class provides an interface, similar to simple_rng, to the
+   boost mt19937 generator.
 */
 
 class mt_rng
@@ -41,10 +41,10 @@ public:
 
 	/**
 	 *  Same as uint32_t version, but uses a stringstream to convert given
-         *  hex string. 
-         *  @param seed         A hex string. Should not have 0x leading. 
+         *  hex string.
+         *  @param seed         A hex string. Should not have 0x leading.
          *  @param call_count   Value to set internal call counter to after seeding.
-         */ 
+         */
 	void seed_random(const std::string & seed, const unsigned int call_count = 0);
 
 	/**
@@ -73,9 +73,9 @@ private:
 	/** Number of time a random number is generated. */
 	unsigned int random_calls_;
 
-	/** On my local version of boost::random, I can use mt_.discard to discard a number of rng results. 
-	In older versions this seems to be unavailable. I'm implementing as a private method of mt_rng, 
-	following description here: http://www.boost.org/doc/libs/1_51_0/doc/html/boost/random/mersenne_twister_engine.html#id1408119-bb 
+	/** On my local version of boost::random, I can use mt_.discard to discard a number of rng results.
+	In older versions this seems to be unavailable. I'm implementing as a private method of mt_rng,
+	following description here: http://www.boost.org/doc/libs/1_51_0/doc/html/boost/random/mersenne_twister_engine.html#id1408119-bb
 	*/
 	void discard(const unsigned int call_count);
 

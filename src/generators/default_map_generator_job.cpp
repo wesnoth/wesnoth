@@ -242,7 +242,7 @@ bool default_map_generator_job::generate_lake(terrain_map& terrain, int x, int y
  * successfully.
  */
 
-namespace 
+namespace
 {
 	struct for_randomshuffle
 	{

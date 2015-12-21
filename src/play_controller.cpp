@@ -183,7 +183,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, player_type_changed_(false)
 {
 	copy_persistent(level, level_);
-	
+
 	resources::controller = this;
 	resources::persist = &persist_;
 	resources::recorder = replay_.get();
@@ -236,7 +236,7 @@ void play_controller::init(CVideo& video, const config& level)
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
 	gamestate_.reset(new game_state(level, *this, tdata_));
-	
+
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
 	resources::teams = &gamestate().board_.teams_;
@@ -245,7 +245,7 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
 	resources::game_events = gamestate().events_manager_.get();
-	
+
 	gamestate_->init(level, *this);
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
@@ -407,7 +407,7 @@ void play_controller::init_side_begin()
 
 	// If we are observers we move to watch next team if it is allowed
 	if ((is_observer() && !current_team().get_disallow_observers())
-		|| (current_team().is_local_human() && !this->is_replay())) 
+		|| (current_team().is_local_human() && !this->is_replay()))
 	{
 		update_gui_to_player(current_side() - 1);
 	}
@@ -522,7 +522,7 @@ config play_controller::to_config() const
 
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
-	
+
 	gui_->labels().write(cfg);
 	sound::write_music_play_list(cfg);
 
@@ -550,7 +550,7 @@ void play_controller::finish_side_turn()
 		pump().fire("side " + side_num + " turn " + turn_num + " end");
 		// This is where we refog, after all of a side's events are done.
 		actions::recalculate_fog(current_side());
-		check_victory();	
+		check_victory();
 		sync.do_final_checkup();
 	}
 
@@ -651,7 +651,7 @@ void play_controller::tab()
 		BOOST_FOREACH(const std::string& o, gui_->observers()){
 			dictionary.insert(o);
 		}
-		
+
 		// Add nicks who whispered you
 		BOOST_FOREACH(const std::string& w, gui_->get_chat_manager().whisperers()){
 			dictionary.insert(w);
@@ -1086,7 +1086,7 @@ void play_controller::start_game(const config& level)
 		gamestate().start_event_fired_ = true;
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
-		
+
 		set_scontext_synced sync;
 
 		fire_prestart();
@@ -1096,7 +1096,7 @@ void play_controller::start_game(const config& level)
 
 		for ( int side = gamestate().board_.teams().size(); side != 0; --side )
 			actions::clear_shroud(side, false, false);
-		
+
 		init_gui();
 		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
 
@@ -1148,7 +1148,7 @@ void play_controller::play_side()
 	gui_->parse_team_overlays();
 	do {
 		update_viewing_player();
-		{ 
+		{
 			save_blocker blocker;
 			maybe_do_init_side();
 			if(is_regular_game_end()) {

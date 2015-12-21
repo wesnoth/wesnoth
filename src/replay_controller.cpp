@@ -62,7 +62,7 @@ struct replay_play_turn : public replay_play_moves_base
 	int turn_begin_;
 	replay_play_turn(int turn_begin) : replay_play_moves_base(1, false), turn_begin_(turn_begin) {}
 	virtual void new_side_turn(int , int turn)
-	{ 
+	{
 		if (turn != turn_begin_) {
 			start();
 		}
@@ -75,7 +75,7 @@ struct replay_play_side : public replay_play_moves_base
 	int side_begin_;
 	replay_play_side(int turn_begin, int side_begin) : replay_play_moves_base(1, false), turn_begin_(turn_begin), side_begin_(side_begin) {}
 	virtual void new_side_turn(int side , int turn)
-	{ 
+	{
 		if (turn != turn_begin_ || side != side_begin_) {
 			start();
 		}
@@ -197,7 +197,7 @@ void replay_controller::update_replay_ui()
 
 		if (play_move_b) {
 			play_move_b->enable(false);
-		} 
+		}
 	}
 }
 
@@ -326,7 +326,7 @@ REPLAY_RETURN replay_controller::play_side_impl()
 					return res;
 				}
 				if(res == REPLAY_RETURN_AT_END) {
-					new replay_stop_condition(); 
+					new replay_stop_condition();
 				}
 			}
 			controller_.play_slice(false);

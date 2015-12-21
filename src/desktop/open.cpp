@@ -96,7 +96,7 @@ bool open_object(const std::string& path_or_url)
 	LOG_DU << "open_object(): on Win32, will use ShellExecute()\n";
 
 	std::wstring u16path = unicode_cast<std::wstring>(path_or_url);
-	
+
 	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(NULL, L"open", u16path.c_str(), NULL, NULL, SW_SHOW));
 	if(res <= 32) {
 		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")" << std::endl;

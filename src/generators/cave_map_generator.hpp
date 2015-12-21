@@ -76,7 +76,7 @@ private:
 		size_t translate_x(size_t x) const;
 		size_t translate_y(size_t y) const;
 
-		
+
 		const cave_map_generator& params;
 		bool flipx_, flipy_;
 

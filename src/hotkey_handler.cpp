@@ -430,7 +430,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
 			// Autosave visibility is similar to LOAD_GAME hotkey
-			
+
 			++i; continue; //cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
 		} else {
 			cmd = &hotkey::get_hotkey_command(*i);

@@ -83,7 +83,7 @@ namespace ucs4_convert_impl
 					out.push(c);
 				}
 			}
-		}	
+		}
 		/**
 		 * Reads a UCS-4 character from a UTF-8 stream
 		 *
@@ -127,7 +127,7 @@ namespace ucs4_convert_impl
 			return current_char;
 		}
 	};
-	
+
 	struct utf16_impl
 	{
 		static const char* get_name()  { return "utf16"; }
@@ -141,7 +141,7 @@ namespace ucs4_convert_impl
 				assert(out.can_push(1));
 				out.push(static_cast<utf16::char_t>(ch));
 			}
-			else 
+			else
 			{
 				assert(out.can_push(2));
 				const ucs4::char_t char20 = ch - bit17;
@@ -192,7 +192,7 @@ namespace ucs4_convert_impl
 			return current_char;
 		}
 	};
-	
+
 	struct utf32_impl
 	{
 		static const char* get_name()  { return "UCS4"; }
@@ -221,13 +221,13 @@ namespace ucs4_convert_impl
 	{
 		typedef utf8_impl type;
 	};
-	
+
 	template<>
 	struct convert_impl<utf16::char_t>
 	{
 		typedef utf16_impl type;
 	};
-	
+
 	template<>
 	struct convert_impl<ucs4::char_t>
 	{

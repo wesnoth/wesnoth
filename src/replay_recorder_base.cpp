@@ -26,8 +26,8 @@ void replay_recorder_base::swap(replay_recorder_base& other)
 }
 
 int replay_recorder_base::get_pos() const
-{ 
-	return pos_; 
+{
+	return pos_;
 }
 
 int replay_recorder_base::size() const

@@ -60,7 +60,7 @@ void controller_base::handle_event(const SDL_Event& event)
 				hotkey::execute_command(get_display(), quit_hotkey, get_hotkey_command_executor());
 				break;
 			}
-			
+
 			process_keydown_event(event);
 			hotkey::key_event(get_display(), event, get_hotkey_command_executor());
 		} else {
