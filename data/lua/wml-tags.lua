@@ -249,22 +249,6 @@ function wml_actions.unit_worth(cfg)
 	wesnoth.set_variable("unit_worth", math.floor(math.max(ut.cost * hp, best_adv * xp)))
 end
 
-function wml_actions.wml_action(cfg)
-	-- The new tag's name
-	local name = cfg.name or
-		helper.wml_error "[wml_action] missing required name= attribute."
-	local code = cfg.lua_function or
-		helper.wml_error "[wml_action] missing required lua_function= attribute."
-	local bytecode, message = load(code)
-	if not bytecode then
-		helper.wml_error("[wml_action] failed to compile Lua code: " .. message)
-	end
-	-- The lua function that is executed when the tag is called
-	local lua_function = bytecode() or
-		helper.wml_error "[wml_action] expects a Lua code returning a function."
-	wml_actions[name] = lua_function
-end
-
 function wml_actions.lua(cfg)
 	local cfg = helper.shallow_literal(cfg)
 	local bytecode, message = load(cfg.code or "")
