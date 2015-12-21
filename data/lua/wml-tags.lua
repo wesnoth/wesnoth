@@ -1647,6 +1647,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	local dist_le = nil
 	
 	local parsed = helper.shallow_parsed(cfg)
+	-- TODO: In most cases this tag is used to place units, so maybe make include_borders=no the default for [filter_location]?
 	local filter = helper.get_child(parsed, "filter_location") or {}
 	local command = helper.get_child(parsed, "command") or helper.wml_error("[random_placement] missing required [command] subtag")
 	local distance = cfg.min_distance or 0
