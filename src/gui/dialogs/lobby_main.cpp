@@ -440,23 +440,18 @@ static bool fullscreen(CVideo& video)
 {
 	video.set_fullscreen(!preferences::fullscreen());
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// Setting to fullscreen doesn't seem to generate a resize event.
 	const SDL_Rect& rect = screen_area();
 
 	SDL_Event event;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	event.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = rect.w;
-	event.window.data2 = rect.h;
-#else
 	event.type = SDL_VIDEORESIZE;
 	event.resize.type = SDL_VIDEORESIZE;
 	event.resize.w = rect.w;
 	event.resize.h = rect.h;
-#endif
 
 	SDL_PushEvent(&event);
+#endif
 
 	return true;
 }
@@ -465,7 +460,7 @@ void tlobby_main::post_build(CVideo& video, twindow& window)
 {
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-						   boost::bind(fullscreen, boost::ref(video)));
+			boost::bind(fullscreen, boost::ref(video)));
 
 
 	/** @todo Remove this code once the resizing in twindow is finished. */
