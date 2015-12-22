@@ -561,7 +561,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	flags = get_flags(flags);
 
-	fullScreen = (flags & FULL_SCREEN) != 0;
+	fullScreen = (flags & SDL_FULLSCREEN) != 0;
 
 	if(!window) {
 		// SDL_WINDOWPOS_UNDEFINED allows SDL to centre the window in the display instead of using a fixed initial position.
@@ -595,13 +595,13 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	flags = get_flags(flags);
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
 #ifdef SDL_GPU
-	const bool toggle_fullscreen = ((flags & FULL_SCREEN) != 0) != fullScreen;
+	const bool toggle_fullscreen = ((flags & SDL_FULLSCREEN) != 0) != fullScreen;
 #endif
 
 	if( res == 0 )
 		return 0;
 
-	fullScreen = (flags & FULL_SCREEN) != 0;
+	fullScreen = (flags & SDL_FULLSCREEN) != 0;
 #ifdef SDL_GPU
 	//NOTE: this surface is in fact unused now. Can be removed when possible.
 	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, x, y, 32,
@@ -782,9 +782,9 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 	if (const surface& surf = getSurface()) {
 		SDL_PixelFormat format = *surf->format;
 		format.BitsPerPixel = getBpp();
-		modes = SDL_ListModes(&format, FULL_SCREEN);
+		modes = SDL_ListModes(&format, SDL_FULLSCREEN);
 	} else
-		modes = SDL_ListModes(NULL, FULL_SCREEN);
+		modes = SDL_ListModes(NULL, SDL_FULLSCREEN);
 
 	// The SDL documentation says that a return value of -1
 	// means that all dimensions are supported/possible.

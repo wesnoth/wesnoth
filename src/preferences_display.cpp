@@ -64,7 +64,7 @@ display_manager::~display_manager()
 
 bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& bpp, int& video_flags)
 {
-	video_flags = fullscreen() ? FULL_SCREEN : 0;
+	video_flags = fullscreen() ? SDL_FULLSCREEN : 0;
 	resolution = preferences::resolution();
 
 	int DefaultBPP = 24;
@@ -113,7 +113,7 @@ void set_fullscreen(CVideo& video, const bool ison)
 
 	const std::pair<int,int>& res = resolution();
 	if(video.isFullScreen() != ison) {
-		const int flags = ison ? FULL_SCREEN : 0;
+		const int flags = ison ? SDL_FULLSCREEN : 0;
 		int bpp = video.bppForMode(res.first, res.second, flags);
 
 		if(bpp > 0) {
@@ -172,7 +172,7 @@ bool set_resolution(CVideo& video
 		return true;
 	}
 
-	const int flags = fullscreen() ? FULL_SCREEN : 0;
+	const int flags = fullscreen() ? SDL_FULLSCREEN : 0;
 	int bpp = video.bppForMode(width, height, flags);
 
 	if(bpp != 0) {

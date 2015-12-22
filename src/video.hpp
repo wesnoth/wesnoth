@@ -36,8 +36,6 @@ class timage;
 #endif
 
 //possible flags when setting video modes
-#define FULL_SCREEN SDL_FULLSCREEN
-
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 #define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
 #define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */

@@ -417,8 +417,8 @@ bool game_launcher::init_video()
 		bpp = 32;
 	}
 
-	if(!found_matching && (video_flags & FULL_SCREEN)) {
-		video_flags ^= FULL_SCREEN;
+	if(!found_matching && (video_flags & SDL_FULLSCREEN)) {
+		video_flags ^= SDL_FULLSCREEN;
 		found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
 		if (found_matching) {
 			std::cerr << "Failed to set " << resolution.first << 'x' << resolution.second << 'x' << bpp << " in fullscreen mode. Using windowed instead.\n";
