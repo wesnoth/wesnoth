@@ -110,26 +110,15 @@ void set_fullscreen(CVideo& video, const bool ison)
 	const std::pair<int,int>& res = resolution();
 	if(video.isFullScreen() != ison) {
 		const int flags = ison ? SDL_FULLSCREEN : 0;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		int bpp = 32;
+#else
 		int bpp = video.bppForMode(res.first, res.second, flags);
+#endif
 
-		if(bpp > 0) {
-			video.setMode(res.first,res.second,bpp,flags);
-			if(disp) {
-				disp->redraw_everything();
-			}
-		} else {
-			int tmp_flags = flags;
-			std::pair<int,int> tmp_res;
-			if(detect_video_settings(video, tmp_res, bpp, tmp_flags)) {
-				set_resolution(video, tmp_res.first, tmp_res.second);
-			// TODO: see if below line is actually needed, possibly for displays that only support 16 bbp
-			} else if(video.modePossible(1024,768,16,flags)) {
-				set_resolution(video, 1024, 768);
-			} else {
-				gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
-			}
-			// We reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
-			set_color_cursors(preferences::get("color_cursors", false));
+		video.setMode(res.first,res.second,bpp,flags);
+		if(disp) {
+			disp->redraw_everything();
 		}
 	}
 }
@@ -180,10 +169,6 @@ bool set_resolution(CVideo& video
 		}
 #endif
 
-	} else {
-        // grzywacz: is this even true?
-		gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
-		return false;
 	}
 
 	_set_resolution(std::make_pair(width, height));
