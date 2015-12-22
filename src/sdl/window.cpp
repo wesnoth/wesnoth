@@ -71,6 +71,17 @@ void twindow::set_size(const int w, const int h)
 	SDL_SetWindowSize(window_, w, h);
 }
 
+void twindow::center()
+{
+	SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+}
+
+void twindow::maximize()
+{
+	SDL_SetWindowFullscreen(window_, 0);
+	SDL_MaximizeWindow(window_);
+}
+
 void twindow::full_screen()
 {
 	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);

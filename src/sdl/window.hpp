@@ -90,6 +90,16 @@ public:
 	void set_size(const int w, const int h);
 
 	/**
+	 * Dummy function for centering the window.
+	 */
+	void center();
+
+	/**
+	 * Dummy function for setting the maximizing the screen.
+	 */
+	void maximize();
+
+	/**
 	 * Dummy function for setting the screen to full screen mode.
 	 *
 	 * @todo Implement this function properly.
