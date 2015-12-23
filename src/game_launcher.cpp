@@ -433,7 +433,9 @@ bool game_launcher::init_video()
 
 	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
 	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	video_.setBpp(bpp);
+#endif
 	if(res == 0) {
 		std::cerr << "Required video mode, " << resolution.first << "x"
 		          << resolution.second << "x" << bpp << " is not supported\n";

@@ -511,6 +511,7 @@ void CVideo::make_test_fake(const unsigned width,
 
 }
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 int CVideo::bppForMode( int x, int y, int flags)
 {
 	int test_values[3] = {getBpp(), 32, 16};
@@ -522,6 +523,7 @@ int CVideo::bppForMode( int x, int y, int flags)
 
 	return 0;
 }
+#endif
 
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal )
 {
@@ -847,6 +849,7 @@ surface& CVideo::getSurface()
 
 bool CVideo::isFullScreen() const { return fullScreen; }
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 void CVideo::setBpp( int bpp )
 {
 	bpp_ = bpp;
@@ -856,6 +859,7 @@ int CVideo::getBpp()
 {
 	return bpp_;
 }
+#endif
 
 int CVideo::set_help_string(const std::string& str)
 {

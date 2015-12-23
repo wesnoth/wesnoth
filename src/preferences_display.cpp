@@ -85,8 +85,12 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 		res_list.push_back(res_t(1920, 1080));
 	}
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	bpp = DefaultBPP;
+#else
 	bpp = video.modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags, true);
+#endif
 
 	BOOST_REVERSE_FOREACH(const res_t &res, res_list)
 	{
@@ -96,8 +100,12 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 			<< " is not supported; attempting " << res.first
 			<< 'x' << res.second << 'x' << DefaultBPP << "...\n";
 		resolution = res;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		bpp = DefaultBPP;
+#else
 		bpp = video.modePossible(resolution.first, resolution.second,
 			DefaultBPP, video_flags);
+#endif
 	}
 
 	return bpp != 0;
@@ -158,7 +166,11 @@ bool set_resolution(CVideo& video
 	}
 
 	const int flags = fullscreen() ? SDL_FULLSCREEN : 0;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	int bpp = 32;
+#else
 	int bpp = video.bppForMode(width, height, flags);
+#endif
 
 	if(bpp != 0) {
 		//video.setMode(width, height, bpp, flags);

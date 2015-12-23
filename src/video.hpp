@@ -129,8 +129,10 @@ class CVideo : private boost::noncopyable {
 	};
 
 	//functions to allow changing video modes when 16BPP is emulated
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	void setBpp( int bpp );
 	int getBpp();
+#endif
 
 	void make_fake();
 	/**
