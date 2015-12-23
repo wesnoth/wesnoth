@@ -115,19 +115,6 @@ void set_idle_anim_rate(int rate) {
 	}
 }
 
-namespace {
-class escape_handler : public events::sdl_handler {
-public:
-	escape_handler() : escape_pressed_(false) {}
-	bool escape_pressed() const { return escape_pressed_; }
-	void handle_event(const SDL_Event &event) { escape_pressed_ |= (event.type == SDL_KEYDOWN)
-		&& (reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym.sym == SDLK_ESCAPE); }
-private:
-	bool escape_pressed_;
-};
-
-} // end anonymous namespace
-
 
 bool show_video_mode_dialog(display& disp)
 {
