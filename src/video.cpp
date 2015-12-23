@@ -619,6 +619,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 			window->full_screen();
 		} else {
 			window->set_size(x, y);
+			window->center();
 		}
 	}
 
