@@ -412,7 +412,7 @@ bool game_launcher::init_video()
 	bool found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
 
 	if (cmdline_opts_.screenshot) {
-		bpp = 32;
+		bpp = CVideo::DefaultBpp;
 	}
 
 	if(!found_matching && (video_flags & SDL_FULLSCREEN)) {

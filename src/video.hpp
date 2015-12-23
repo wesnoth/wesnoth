@@ -76,6 +76,7 @@ class CVideo : private boost::noncopyable {
 	CVideo(FAKE_TYPES type = NO_FAKE);
 	~CVideo();
 
+	const static int DefaultBpp = 32;
 
 	int bppForMode( int x, int y, int flags);
 	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
@@ -143,7 +144,7 @@ class CVideo : private boost::noncopyable {
 	 * @param bpp                 The bpp of the buffer.
 	 */
 	void make_test_fake(const unsigned width = 1024,
-			const unsigned height = 768, const unsigned bpp = 32);
+			const unsigned height = 768, const unsigned bpp = DefaultBpp);
 	bool faked() const { return fake_screen_; }
 
 	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears
