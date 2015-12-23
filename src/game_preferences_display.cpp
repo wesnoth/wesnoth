@@ -1720,10 +1720,10 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 				show_video_mode_dialog(disp);
 				break;
 			case preferences_dialog::video_mode_change_exception::MAKE_FULLSCREEN:
-				set_fullscreen(true);
+				disp.video().set_fullscreen(true);
 				break;
 			case preferences_dialog::video_mode_change_exception::MAKE_WINDOWED:
-				set_fullscreen(false);
+				disp.video().set_fullscreen(false);
 				break;
 			}
 

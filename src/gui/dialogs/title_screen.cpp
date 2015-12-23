@@ -38,7 +38,6 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences_display.hpp"
 #include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
@@ -170,7 +169,7 @@ static void animate_logo(size_t& timer_id,
 
 static bool fullscreen(CVideo& video)
 {
-	preferences::set_fullscreen(video, !preferences::fullscreen());
+	video.set_fullscreen(!preferences::fullscreen());
 
 	// Setting to fullscreen doesn't seem to generate a resize event.
 	const SDL_Rect& rect = screen_area();

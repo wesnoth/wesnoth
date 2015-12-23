@@ -47,7 +47,6 @@
 #include "network.hpp"
 #include "game_initialization/playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
-#include "preferences_display.hpp"      // for detect_video_settings, etc
 #include "savegame.hpp"                 // for clean_saves, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "sdl/utils.hpp"                // for surface
@@ -188,7 +187,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.fullscreen)
-		preferences::set_fullscreen(true);
+		video_.set_fullscreen(true);
 	if (cmdline_opts_.load)
 		game::load_game_exception::game = *cmdline_opts_.load;
 	if (cmdline_opts_.max_fps) {
@@ -247,7 +246,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		const int yres = cmdline_opts_.resolution->get<1>();
 		if(xres > 0 && yres > 0) {
 			const std::pair<int,int> resolution(xres,yres);
-			preferences::set_resolution(resolution);
+			video_.set_resolution(resolution);
 		}
 	}
 	if (cmdline_opts_.screenshot) {
@@ -291,7 +290,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 
 	}
 	if (cmdline_opts_.windowed)
-		preferences::set_fullscreen(false);
+		video_.set_fullscreen(false);
 	if (cmdline_opts_.with_replay)
 		game::load_game_exception::show_replay = true;
 
@@ -409,7 +408,7 @@ bool game_launcher::init_video()
 	int bpp = 0;
 	int video_flags = 0;
 
-	bool found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
+	bool found_matching = video_.detect_video_settings(resolution, bpp, video_flags);
 
 	if (cmdline_opts_.screenshot) {
 		bpp = CVideo::DefaultBpp;
@@ -417,7 +416,7 @@ bool game_launcher::init_video()
 
 	if(!found_matching && (video_flags & SDL_FULLSCREEN)) {
 		video_flags ^= SDL_FULLSCREEN;
-		found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
+		found_matching = video_.detect_video_settings(resolution, bpp, video_flags);
 		if (found_matching) {
 			std::cerr << "Failed to set " << resolution.first << 'x' << resolution.second << 'x' << bpp << " in fullscreen mode. Using windowed instead.\n";
 		}

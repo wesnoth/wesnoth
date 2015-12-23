@@ -46,7 +46,6 @@
 #include "log.hpp"
 #include "network.hpp"
 #include "playmp_controller.hpp"
-#include "preferences_display.hpp"
 #include "mp_ui_alerts.hpp"
 
 #include <boost/bind.hpp>
@@ -431,7 +430,7 @@ static void signal_handler_sdl_video_resize(const event::tevent event,
 		return;
 	}
 
-	if(!preferences::set_resolution(video, new_size.x, new_size.y)) {
+	if(!video.set_resolution(new_size.x, new_size.y)) {
 
 		LOG_GUI_E << __func__ << ": resize aborted, resize failed.\n";
 	}
@@ -439,7 +438,7 @@ static void signal_handler_sdl_video_resize(const event::tevent event,
 
 static bool fullscreen(CVideo& video)
 {
-	preferences::set_fullscreen(video, !preferences::fullscreen());
+	video.set_fullscreen(!preferences::fullscreen());
 
 	// Setting to fullscreen doesn't seem to generate a resize event.
 	const SDL_Rect& rect = screen_area();

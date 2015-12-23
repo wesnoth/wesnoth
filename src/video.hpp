@@ -82,6 +82,32 @@ class CVideo : private boost::noncopyable {
 	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
 	int setMode( int x, int y, int bits_per_pixel, int flags );
 
+	/**
+	 * Detect a good resolution.
+	 *
+	 * @param video               The video 'holding' the framebuffer.
+	 * @param resolution          Any good resolution is returned through this reference.
+	 * @param bpp                 A reference through which the best bpp is returned.
+	 * @param video_flags         A reference through which the video flags for setting the video mode are returned.
+	 *
+	 * @returns                   Whether valid video settings were found.
+	 */
+	bool detect_video_settings(std::pair<int,int>& resolution, int& bpp, int& video_flags);
+
+	void set_fullscreen(bool ison);
+
+	/**
+	 * Set the resolution.
+	 *
+	 * @param width               The new width.
+	 * @param height              The new height.
+	 *
+	 * @returns                   The status true if width and height are the
+	 *                            size of the framebuffer, false otherwise.
+	 */
+	void set_resolution(const std::pair<int,int>& res);
+	bool set_resolution(const unsigned width, const unsigned height);
+			
 	//did the mode change, since the last call to the modeChanged() method?
 	bool modeChanged();
 
