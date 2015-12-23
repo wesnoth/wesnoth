@@ -178,7 +178,7 @@ bool show_video_mode_dialog(display& disp)
 		return false;
 	}
 
-	disp.video().set_resolution(resolutions[static_cast<size_t>(choice)]);
+	disp.get_singleton()->video().set_resolution(resolutions[static_cast<size_t>(choice)]);
 	return true;
 }
 

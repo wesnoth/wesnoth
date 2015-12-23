@@ -1002,15 +1002,15 @@ bool CVideo::set_resolution(const unsigned width, const unsigned height)
 		return true;
 	}
 
+	const int flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	int bpp = DefaultBpp;
 #else
-	const int flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
 	int bpp = bppForMode(width, height, flags);
 #endif
 
 	if(bpp != 0) {
-		// setMode(width, height, bpp, flags);
+		setMode(width, height, bpp, flags);
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 		if(display::get_singleton()) {

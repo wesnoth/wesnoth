@@ -649,7 +649,7 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 	 * @todo This might no longer be needed when gui2 is done.
 	 */
 	const SDL_Rect rect = screen_area();
-	disp.video().set_resolution(rect.w, rect.h);
+	disp.get_singleton()->video().set_resolution(rect.w, rect.h);
 
 	gui2::settings::gamemap_width += rect.w - gui2::settings::screen_width ;
 	gui2::settings::gamemap_height += rect.h - gui2::settings::screen_height ;
