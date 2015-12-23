@@ -22,7 +22,6 @@
 #include "global.hpp"
 #include "preferences_display.hpp"
 
-#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "formatter.hpp"
 #include "game_preferences.hpp"
@@ -32,9 +31,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
-#include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/math/common_factor_rt.hpp>
