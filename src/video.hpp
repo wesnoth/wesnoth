@@ -78,8 +78,10 @@ class CVideo : private boost::noncopyable {
 
 	const static int DefaultBpp = 32;
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	int bppForMode( int x, int y, int flags);
 	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
+#endif
 	int setMode( int x, int y, int bits_per_pixel, int flags );
 
 	/**

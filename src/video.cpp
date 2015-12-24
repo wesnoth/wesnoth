@@ -556,18 +556,9 @@ int CVideo::bppForMode( int x, int y, int flags)
 
 	return 0;
 }
-#endif
 
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal )
 {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	UNUSED(x);
-	UNUSED(y);
-	UNUSED(flags);
-	UNUSED(current_screen_optimal);
-
-	return bits_per_pixel;
-#else
 	int bpp = SDL_VideoModeOK( x, y, bits_per_pixel, get_flags(flags) );
 	if(current_screen_optimal)
 	{
@@ -581,8 +572,8 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 		}
 	}
 	return bpp;
-#endif
 }
+#endif
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
