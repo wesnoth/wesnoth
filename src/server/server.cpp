@@ -2754,8 +2754,8 @@ void server::kick_handler(const std::string& /*issuer_name*/, const std::string&
 			*out << "Kicked " << it->info.name() << " ("
 				<< client_address(it->left) << "). '"
 				<< kick_message << "'";
-			//send_error(pl->first, kick_message);
-			//network::queue_disconnect(pl->first);
+			async_send_error(it->left, kick_message);
+			remove_player(it->left);
 		}
 	}
 	if (!kicked) *out << "No user matched '" << kick_mask << "'.";
