@@ -137,7 +137,7 @@ public:
 		gamestate().end_level_data_ = data;
 	}
 	void reset_end_level_data() {
-		gamestate().end_level_data_ = boost::none_t();
+		gamestate().end_level_data_ = boost::none;
 	}
 	bool is_regular_game_end() const {
 		return gamestate().end_level_data_.get_ptr() != NULL;
