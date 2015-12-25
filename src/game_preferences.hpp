@@ -274,8 +274,6 @@ class acquaintance;
 	void set_theme(const std::string& theme);
 	std::string theme();
 
-	bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs);
-
 	// Ask for end turn confirmation
 	bool yellow_confirm();
 	bool green_confirm();
