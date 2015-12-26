@@ -25,12 +25,12 @@ order to build Wesnoth:
    * Asio                      >= 1.36.0 (header only)
    * Program Options           >= 1.36.0
    * System                    >= 1.36.0
- * SDL libraries:
-   * SDL                       >= 1.2.10
-   * SDL_image                 >= 1.2.0  (with PNG and JPEG support)
-   * SDL_mixer                 >= 1.2.12 (with Ogg Vorbis support)
-   * SDL_ttf                   >= 2.0.8
-   * SDL_net
+ * SDL2 libraries:
+   * SDL2                       >= 2.0.3
+   * SDL2_image                 >= 2.0.0  (with PNG and JPEG support)
+   * SDL2_mixer                 >= 2.0.0 (with Ogg Vorbis support)
+   * SDL2_ttf                   >= 2.0.12
+   * SDL2_net                   >= 2.0.0
  * Fontconfig                  >= 2.4.1
  * Pango                       >= 1.21.3 (with Cairo backend)
  * Vorbisfile
@@ -56,9 +56,6 @@ features:
 Note that although different Boost version requirements are listed, individual
 libraries from different releases are generally incompatible with each other
 and you should not mix and match.
-
-Also note that SDL 1.2.14 is known to have problems on Windows, so we advise
-you to use SDL 1.2.15 instead.
 
 Although not recommended, you may use libintl on platforms other than Windows
 instead of Boost.Locale. For scons, set the `libintl` option to `true`.

@@ -107,6 +107,14 @@ A number of new WML tags have been added for different types of loops as well as
 [/list]
 [/rasection]
 
+[rasection="SDL2 support"]
+The game now uses SDL2 for all operations. There is still a fall-back option of using SDL 1.2, but it is deprecated and slated for removal. 
+[/rasection]
+
+[rasection="Hotkeys rely on scancodes"]
+The hotkey implementation has been changed to rely on scancodes over characters. This means that the hotkey configuration now uses the same physical buttons on the keyboard, regardless of the keyboard layout.
+[/rasection]
+
 ==========
 KNOWN BUGS
 ==========
