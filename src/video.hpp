@@ -109,7 +109,9 @@ class CVideo : private boost::noncopyable {
 	 */
 	void set_resolution(const std::pair<int,int>& res);
 	bool set_resolution(const unsigned width, const unsigned height);
-			
+
+	std::pair<int,int> current_resolution();
+
 	//did the mode change, since the last call to the modeChanged() method?
 	bool modeChanged();
 

@@ -859,7 +859,7 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
 
 	if (getSurface() && getSurface()->w >= min_res.first && getSurface()->h >= min_res.second)
-		result.push_back(std::make_pair(getSurface()->w, getSurface()->h));
+		result.push_back(current_resolution);
 
 	for(int i = 0; modes[i] != NULL; ++i) {
 		if (modes[i]->w >= min_res.first && modes[i]->h >= min_res.second)
@@ -876,6 +876,11 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 surface& CVideo::getSurface()
 {
 	return frameBuffer;
+}
+
+std::pair<int,int> CVideo::current_resolution()
+{
+	return std::make_pair(getSurface()->w, getSurface()->h);
 }
 
 bool CVideo::isFullScreen() const { return fullScreen; }
