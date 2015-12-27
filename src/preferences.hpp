@@ -22,6 +22,8 @@ class display;
 
 #include "terrain_translation.hpp"
 
+#include "SDL.h"
+
 #include <utility>
 
 namespace hotkey {
@@ -36,6 +38,8 @@ namespace preferences {
 		base_manager();
 		~base_manager();
 	};
+
+	void handle_event(const SDL_Event& event);
 
 	void write_preferences();
 

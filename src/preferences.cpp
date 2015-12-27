@@ -91,6 +91,21 @@ base_manager::~base_manager()
 	} catch (...) {}
 }
 
+/* 
+ * Hook for setting window state variables on window resize and maximize
+ * events. Since there is no fullscreen window event, that setter is called 
+ * from the CVideo function instead.
+ */
+void handle_event(const SDL_Event& event)
+{
+	switch(event.window.event) {
+	case SDL_WINDOWEVENT_RESIZED:
+		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
+
+		break;
+	}
+}
+
 void write_preferences()
 {
 #ifndef _WIN32

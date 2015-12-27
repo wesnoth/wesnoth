@@ -445,11 +445,14 @@ void pump()
 					case SDL_WINDOWEVENT_RESIZED:
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;
-
-						preferences::_set_resolution(
-							std::make_pair(event.window.data1,event.window.data2));
 						break;
 				}
+
+				// Hook into preferences event handling
+				// This probably isn't the right place for this but I really don't
+				// know where else to put it. 
+				// - Vultraz, 12/28/2015
+				preferences::handle_event(event);
 
 				break;
 #else
