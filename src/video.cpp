@@ -943,7 +943,10 @@ void CVideo::clear_all_help_strings()
 
 bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int& video_flags)
 {
-	video_flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
+	video_flags  = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	video_flags |= preferences::maximized()  ? SDL_WINDOW_MAXIMIZED : 0;
+#endif
 	resolution = preferences::resolution();
 
 	int DefaultBPP = DefaultBpp;

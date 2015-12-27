@@ -103,6 +103,16 @@ void handle_event(const SDL_Event& event)
 		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
 
 		break;
+
+	case SDL_WINDOWEVENT_SIZE_CHANGED:
+		_set_maximized(false);
+
+		break;
+
+	case SDL_WINDOWEVENT_MAXIMIZED:
+		_set_maximized(true);
+
+		break;
 	}
 }
 
@@ -198,10 +208,6 @@ config* get_prefs(){
 	return pointer;
 }
 
-bool fullscreen()
-{
-	return get("fullscreen", false);
-}
 
 bool show_allied_orb() {
 	return get("show_ally_orb", game_config::show_ally_orb);
@@ -299,12 +305,6 @@ void set_partial_color(const std::string& color_id) {
 	prefs["partial_orb_color"] = color_id;
 }
 
-
-void _set_fullscreen(bool ison)
-{
-	prefs["fullscreen"] = ison;
-}
-
 bool scroll_to_action()
 {
 	return get("scroll_to_action", true);
@@ -350,11 +350,31 @@ std::pair<int,int> resolution()
 	}
 }
 
+bool maximized()
+{
+	return get("maximized", (fullscreen() & true));
+}
+
+bool fullscreen()
+{
+	return get("fullscreen", false);
+}
+
 void _set_resolution(const std::pair<int, int>& res)
 {
 	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
 	preferences::set('x' + postfix, lexical_cast<std::string>(res.first));
 	preferences::set('y' + postfix, lexical_cast<std::string>(res.second));
+}
+
+void _set_maximized(bool ison)
+{
+	prefs["maximized"] = ison;
+}
+
+void _set_fullscreen(bool ison)
+{
+	prefs["fullscreen"] = ison;
 }
 
 bool turbo()
