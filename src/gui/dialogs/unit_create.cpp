@@ -301,8 +301,8 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 
 		BOOST_FOREACH(const attack_type& a, u->attacks())
 		{
-			str << "<span color='#f5e6c1'>" << a.num_attacks()
-				<< font::weapon_numbers_sep << a.damage() << " " << a.name() << "</span>" << "\n";
+			str << "<span color='#f5e6c1'>" << a.damage()
+				<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>" << "\n";
 
 			str << "<span color='#a69275'>" << "  " << a.range()
 				<< font::weapon_details_sep << a.type() << "</span>" << "\n";
