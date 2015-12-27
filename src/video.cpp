@@ -732,8 +732,7 @@ bool CVideo::update_locked() const
 }
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-Uint8
-CVideo::window_state()
+Uint8 CVideo::window_state()
 {
 	Uint8 state = 0;
 	Uint32 flags = 0;
@@ -751,6 +750,12 @@ CVideo::window_state()
 	}
 	if (flags & SDL_WINDOW_MOUSE_FOCUS) {
 		state |= SDL_APPMOUSEFOCUS;
+	}
+	if (flags & SDL_WINDOW_MAXIMIZED) {
+		state |= SDL_WINDOW_MAXIMIZED;
+	}
+	if (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) {
+		state |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 	}
 	return state;
 }
