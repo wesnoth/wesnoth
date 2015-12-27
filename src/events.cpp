@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "sound.hpp"
 #include "quit_confirmation.hpp"
+#include "preferences.hpp"
 #include "video.hpp"
 #include "display.hpp"
 #if defined _WIN32
@@ -444,6 +445,9 @@ void pump()
 					case SDL_WINDOWEVENT_RESIZED:
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;
+
+						preferences::_set_resolution(
+							std::make_pair(event.window.data1,event.window.data2));
 						break;
 				}
 
