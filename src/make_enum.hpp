@@ -176,9 +176,19 @@ struct NAME : public enum_tag \
 		assert(false && "Corrupted enum found with identifier NAME"); \
 		throw "assertion ignored"; \
 	} \
+	static const char* enum_to_cstring (NAME val) \
+	{ \
+		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNCREV_NORMAL, val.v , CONTENT) \
+		assert(false && "Corrupted enum found with identifier NAME"); \
+		throw "assertion ignored"; \
+	} \
 	std::string to_string () const \
 	{ \
 		return enum_to_string(*this); \
+	} \
+	const char* to_cstring () const \
+	{ \
+		return enum_to_cstring(*this); \
 	} \
 	friend std::ostream& operator<< (std::ostream & os, NAME val) \
 	{ \
