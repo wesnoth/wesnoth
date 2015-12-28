@@ -63,6 +63,7 @@ public:
 	}
 
 	virtual boost::uint32_t get_random_seed();
+	lua_State * get_state() { return mState; }
 protected:
 	lua_State *mState;
 
