@@ -376,6 +376,53 @@ bool game_launcher::init_language()
 	return true;
 }
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+bool game_launcher::init_video()
+{
+	// Handle special commandline launch flags
+	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
+		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.plugin_file || cmdline_opts_.headless_unit_test) ) {
+			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
+			return false;
+		}
+		video_.make_fake();
+		game_config::no_delay = true;
+		return true;
+	}
+
+	// Create window with any saved settings
+	std::pair<int,int> resolution = preferences::resolution();
+
+	int video_flags = 0;
+	video_flags  = preferences::fullscreen() ? SDL_FULLSCREEN       : 0;
+	video_flags |= preferences::maximized()  ? SDL_WINDOW_MAXIMIZED : 0;
+
+	int bpp = CVideo::DefaultBpp;
+
+	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
+
+	// Set window state
+	const int res = video_.setMode(resolution.first, resolution.second, bpp, video_flags);
+	if(res == 0) {
+		std::cerr << "Required video mode, " << resolution.first << "x"
+		          << resolution.second << "x" << bpp << " is not supported\n";
+		return false;
+	}
+
+	// Set window title and icon
+	std::string wm_title_string = _("The Battle for Wesnoth");
+	wm_title_string += " - " + game_config::revision;
+	CVideo::set_window_title(wm_title_string);
+
+#if !(defined(__APPLE__))
+	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
+	if(icon != NULL) {
+		CVideo::set_window_icon(icon);
+	}
+#endif
+	return true;
+}
+#else
 bool game_launcher::init_video()
 {
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
@@ -390,17 +437,13 @@ bool game_launcher::init_video()
 
 	std::string wm_title_string = _("The Battle for Wesnoth");
 	wm_title_string += " - " + game_config::revision;
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
-#endif
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
 	if(icon != NULL) {
 		///must be called after SDL_Init() and before setting video mode
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
 		SDL_WM_SetIcon(icon,NULL);
-#endif
 	}
 #endif
 
@@ -432,24 +475,15 @@ bool game_launcher::init_video()
 
 	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
 	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	video_.setBpp(bpp);
-#endif
 	if(res == 0) {
 		std::cerr << "Required video mode, " << resolution.first << "x"
 		          << resolution.second << "x" << bpp << " is not supported\n";
 		return false;
 	}
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	CVideo::set_window_title(wm_title_string);
-#if !(defined(__APPLE__))
-	if(icon != NULL) {
-		CVideo::set_window_icon(icon);
-	}
-#endif
-#endif
 	return true;
 }
+#endif
 
 bool game_launcher::init_lua_script()
 {

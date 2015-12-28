@@ -42,7 +42,8 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 namespace {
-	bool fullScreen = false;
+	bool is_fullscreen = false;
+	bool is_maximized = false;
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	int disallow_resize = 0;
 #endif
@@ -50,6 +51,7 @@ namespace {
 	GPU_Target *render_target_;
 #endif
 }
+
 void resize_monitor::process(events::pump_info &info) {
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(info.resize_dimensions.first >= preferences::min_allowed_width()
@@ -597,17 +599,20 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	flags = get_flags(flags);
 
-	fullScreen = (flags & SDL_FULLSCREEN) != 0;
+	is_fullscreen = (flags & SDL_FULLSCREEN      ) != 0;
+	is_maximized  = (flags & SDL_WINDOW_MAXIMIZED) != 0;
 
-	if(!window) {
+	if (!window) {
 		// SDL_WINDOWPOS_UNDEFINED allows SDL to centre the window in the display instead of using a fixed initial position.
 		// Note that x and y in this particular case refer to width and height of the window, not co-ordinates.
 		window = new sdl::twindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, flags, SDL_RENDERER_SOFTWARE);
 		window->set_minimum_size(preferences::min_allowed_width(), preferences::min_allowed_height());
 		event_handler_.join_global();
 	} else {
-		if(fullScreen) {
+		if (is_fullscreen) {
 			window->full_screen();
+		} else if (is_maximized) {
+			window->maximize();
 		} else {
 			window->set_size(x, y);
 			window->center();
@@ -633,13 +638,13 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	flags = get_flags(flags);
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
 #ifdef SDL_GPU
-	const bool toggle_fullscreen = ((flags & SDL_FULLSCREEN) != 0) != fullScreen;
+	const bool toggle_fullscreen = ((flags & SDL_FULLSCREEN) != 0) != is_fullscreen;
 #endif
 
 	if( res == 0 )
 		return 0;
 
-	fullScreen = (flags & SDL_FULLSCREEN) != 0;
+	is_fullscreen = (flags & SDL_FULLSCREEN) != 0;
 #ifdef SDL_GPU
 	//NOTE: this surface is in fact unused now. Can be removed when possible.
 	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, x, y, 32,
@@ -883,7 +888,7 @@ std::pair<int,int> CVideo::current_resolution()
 	return std::make_pair(getSurface()->w, getSurface()->h);
 }
 
-bool CVideo::isFullScreen() const { return fullScreen; }
+bool CVideo::isFullScreen() const { return is_fullscreen; }
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 void CVideo::setBpp( int bpp )
@@ -941,23 +946,20 @@ void CVideo::clear_all_help_strings()
 	clear_help_string(help_string_);
 }
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int& video_flags)
 {
 	video_flags  = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	video_flags |= preferences::maximized()  ? SDL_WINDOW_MAXIMIZED : 0;
-#endif
+
 	resolution = preferences::resolution();
 
 	int DefaultBPP = DefaultBpp;
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	/* This needs to be fixed properly. */
 	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
 	if(video_info != NULL && video_info->vfmt != NULL) {
 		DefaultBPP = video_info->vfmt->BitsPerPixel;
 	}
-#endif
 
 	std::cerr << "Checking video mode: " << resolution.first << 'x'
 		<< resolution.second << 'x' << DefaultBPP << "...\n";
@@ -972,12 +974,8 @@ bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int
 		res_list.push_back(res_t(1920, 1080));
 	}
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	bpp = DefaultBPP;
-#else
 	bpp = modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags, true);
-#endif
 
 	BOOST_REVERSE_FOREACH(const res_t &res, res_list)
 	{
@@ -987,23 +985,22 @@ bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int
 			<< " is not supported; attempting " << res.first
 			<< 'x' << res.second << 'x' << DefaultBPP << "...\n";
 		resolution = res;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-		bpp = DefaultBPP;
-#else
+
 		bpp = modePossible(resolution.first, resolution.second,
 			DefaultBPP, video_flags);
-#endif
 	}
 
 	return bpp != 0;
 }
+#endif
 
 void CVideo::set_fullscreen(bool ison)
 {
 	if(display::get_singleton() != NULL) {
 		const std::pair<int,int>& res = preferences::resolution();
 		if(isFullScreen() != ison) {
-			const int flags = ison ? SDL_FULLSCREEN : 0;
+			// When toggling fullscreen off, switch to a maximized window
+			const int flags = ison ? SDL_FULLSCREEN : SDL_WINDOW_MAXIMIZED;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 			int bpp = DefaultBpp;
 #else
