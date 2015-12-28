@@ -548,6 +548,21 @@ static void check_fpu()
 		std::cerr << "_controlfp_s failed.\n";
 	}
 }
+#else
+static void check_fpu()
+{
+	switch (fegetround()) {
+	case FE_TONEAREST: break;
+	case FE_DOWNWARD: std::cerr << "Floating point precision mode is currently 'downward'"; goto reset_fpu;
+	case FE_TOWARDZERO: std::cerr << "Floating point precision mode is currently 'toward-zero'"; goto reset_fpu;
+	case FE_UPWARD: std::cerr << "Floating point precision mode is currently 'upward'"; goto reset_fpu;
+	default: std::cerr << "Floating point precision mode is currently 'unknown'"; goto reset_fpu;
+	reset_fpu:
+		std::cerr << "setting to 'nearest'"
+		fesetround(FE_TONEAREST);
+		break;
+	}
+}
 #endif
 /**
  * Setups the game environment and enters
@@ -608,9 +623,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		}
 	}
 
-#if defined(_WIN32)
 	check_fpu();
-#endif
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
