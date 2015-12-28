@@ -558,7 +558,7 @@ static void check_fpu()
 	case FE_UPWARD: std::cerr << "Floating point precision mode is currently 'upward'"; goto reset_fpu;
 	default: std::cerr << "Floating point precision mode is currently 'unknown'"; goto reset_fpu;
 	reset_fpu:
-		std::cerr << "setting to 'nearest'"
+		std::cerr << "setting to 'nearest'";
 		fesetround(FE_TONEAREST);
 		break;
 	}
