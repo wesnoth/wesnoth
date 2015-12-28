@@ -47,7 +47,9 @@ namespace game_events
 		queued_event(const std::string& name, const entity_location& loc1,
 		             const entity_location& loc2, const config& data)
 			: name(name), loc1(loc1), loc2(loc2), data(data)
-		{}
+		{
+			std::replace(this->name.begin(), this->name.end(), ' ',  '_');
+		}
 
 		std::string name;
 		entity_location loc1;
