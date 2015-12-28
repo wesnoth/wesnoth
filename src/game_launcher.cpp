@@ -247,6 +247,9 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		if(xres > 0 && yres > 0) {
 			const std::pair<int,int> resolution(xres,yres);
 			video_.set_resolution(resolution);
+
+			// Override previously saved maximized state
+			preferences::_set_maximized(false);
 		}
 	}
 	if (cmdline_opts_.screenshot) {
