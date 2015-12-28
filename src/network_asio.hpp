@@ -16,17 +16,18 @@
 #define NETWORK_ASIO_HPP_INCLUDED
 
 #ifdef _WIN32
-#define BOOST_ASIO_DISABLE_IOCP
-	#ifdef INADDR_ANY
-		#undef INADDR_ANY
-	#endif
-	#ifdef INADDR_BROADCAST
-		#undef INADDR_BROADCAST
-	#endif
-	#ifdef INADDR_NONE
-		#undef INADDR_NONE
-	#endif
+# define BOOST_ASIO_DISABLE_IOCP
+# ifdef INADDR_ANY
+#  undef INADDR_ANY
+# endif
+# ifdef INADDR_BROADCAST
+#  undef INADDR_BROADCAST
+# endif
+# ifdef INADDR_NONE
+#  undef INADDR_NONE
+# endif
 #endif
+
 #include <boost/asio.hpp>
 #include <boost/optional.hpp>
 #include "exceptions.hpp"
