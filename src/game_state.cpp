@@ -60,6 +60,12 @@ game_state::game_state(const config & level, play_controller &, const tdata_cach
 	server_request_number_(level["server_request_number"].to_int()),
 	first_human_team_(-1)
 {
+	if(const config& endlevel_cfg = level.child("end_level_data")) {
+		end_level_data el_data;
+		el_data.read(endlevel_cfg);
+		el_data.transient.carryover_report = false;
+		end_level_data_ = el_data;
+	}
 }
 game_state::game_state(const config & level, play_controller & pc, game_board& board) :
 	gamedata_(level),
