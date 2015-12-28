@@ -66,7 +66,6 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 }
 
 commandline_options::commandline_options (const std::vector<std::string>& args) :
-	bpp(),
 	bunzip2(),
 	bzip2(),
 	campaign(),
@@ -215,7 +214,6 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 
 	po::options_description display_opts("Display options");
 	display_opts.add_options()
-		("bpp", po::value<int>(), "sets BitsPerPixel value. Example: --bpp 32")
 		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
 		("fullscreen,f", "runs the game in full screen mode.")
 		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
@@ -298,8 +296,6 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
 	if (vm.count("algorithm"))
 		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string> >());
-	if (vm.count("bpp"))
-		bpp = vm["bpp"].as<int>();
 	if (vm.count("bunzip2"))
 		bunzip2 = vm["bunzip2"].as<std::string>();
 	if (vm.count("bzip2"))

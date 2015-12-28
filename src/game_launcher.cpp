@@ -411,9 +411,7 @@ bool game_launcher::init_video()
 
 	bool found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
 
-	if (cmdline_opts_.bpp) {
-		bpp = *cmdline_opts_.bpp;
-	} else if (cmdline_opts_.screenshot) {
+	if (cmdline_opts_.screenshot) {
 		bpp = 32;
 	}
 

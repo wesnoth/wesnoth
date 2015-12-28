@@ -47,8 +47,6 @@ public:
 
 	config to_config() const; /* Used by lua scrips. Not all of the options need to be exposed here, just those exposed to lua */
 
-	/// BitsPerPixel specified by --bpp option.
-	boost::optional<int> bpp;
 	/// Non-empty if --bunzip2 was given on the command line. Uncompresses a .bz2 file and exits.
 	boost::optional<std::string> bunzip2;
 	/// Non-empty if --bzip2 was given on the command line. Compresses a file to .bz2 and exits.
