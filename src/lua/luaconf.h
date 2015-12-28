@@ -547,6 +547,10 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 
 #endif							/* } */
 
+#if defined(__STDC_IEC_559__) && !defined(LUA_IEEE754TRICK)
+#define LUA_IEEE754TRICK
+#endif
+
 #ifndef LUA_IEEE754TRICK
 /* We need a same floating point calculations on all clients to prevent OOS */
 #error IEEE754 Support is required to play build wesnoth
