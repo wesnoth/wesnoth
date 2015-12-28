@@ -515,6 +515,7 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 
 /* We currently don't use direct3d so we can use LUA_IEEE754TRICK on windows too. */
 #define LUA_IEEE754TRICK
+#define LUA_IEEELL
 #define LUA_IEEEENDIAN		0
 #define LUA_NANTRICK
 
@@ -532,16 +533,19 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 
 #define LUA_IEEE754TRICK
 #define LUA_IEEEENDIAN		0
+#define LUA_IEEELL
 
 #elif defined(__POWERPC__) || defined(__ppc__)			/* }{ */
 
 #define LUA_IEEE754TRICK
 #define LUA_IEEEENDIAN		1
+#define LUA_IEEELL
 
 #else								/* }{ */
 
 /* assume IEEE754 and a 32-bit integer type */
 #define LUA_IEEE754TRICK
+#define LUA_IEEELL
 
 #endif								/* } */
 
@@ -549,6 +553,7 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 
 #if defined(__STDC_IEC_559__) && !defined(LUA_IEEE754TRICK)
 #define LUA_IEEE754TRICK
+#define LUA_IEEELL
 #endif
 
 #ifndef LUA_IEEE754TRICK
