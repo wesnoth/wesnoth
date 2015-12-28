@@ -16,10 +16,18 @@
 
 
 #define BOOST_TEST_MODULE wesnoth unit tests master suite
+
+#include <boost/version.hpp>
+
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_monitor.hpp>
+#if BOOST_VERSION >= 106000
+#include <boost/test/unit_test_parameters.hpp>
+#else
 #include <boost/test/detail/unit_test_parameters.hpp>
+#endif
 #include <boost/test/results_reporter.hpp>
+
 
 #include <fstream>
 
@@ -80,6 +88,15 @@ struct wesnoth_global_fixture {
 
 
 		// Set more report as default
+#if BOOST_VERSION >= 106000
+		if (boost::unit_test::runtime_config::get<boost::unit_test::log_level>(boost::unit_test::runtime_config::LOG_LEVEL) == boost::unit_test::invalid_log_level)
+			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
+		if (boost::unit_test::runtime_config::get<boost::unit_test::report_level>(boost::unit_test::runtime_config::REPORT_LEVEL) == boost::unit_test::INV_REPORT_LEVEL)
+			boost::unit_test::results_reporter::set_level(boost::unit_test::SHORT_REPORT);
+		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
+		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
+		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
+#else
 		if (boost::unit_test::runtime_config::log_level() == boost::unit_test::invalid_log_level)
 			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
 		if (boost::unit_test::runtime_config::report_level() == boost::unit_test::INV_REPORT_LEVEL)
@@ -87,6 +104,7 @@ struct wesnoth_global_fixture {
 		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
+#endif
 	}
 	~wesnoth_global_fixture()
 	{
@@ -94,7 +112,7 @@ struct wesnoth_global_fixture {
 	}
 };
 
-BOOST_GLOBAL_FIXTURE(wesnoth_global_fixture)
+BOOST_GLOBAL_FIXTURE(wesnoth_global_fixture);
 
 /*
  * This is a main compilation unit for the test program.
