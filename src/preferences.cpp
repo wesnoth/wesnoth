@@ -98,6 +98,9 @@ base_manager::~base_manager()
  */
 void handle_event(const SDL_Event& event)
 {
+	// Saftey check to make sure this is a window event
+	if (event.type != SDL_WINDOWEVENT) return;
+
 	switch(event.window.event) {
 	case SDL_WINDOWEVENT_RESIZED:
 		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
