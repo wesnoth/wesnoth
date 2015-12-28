@@ -71,6 +71,7 @@
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
+#include "resources.hpp"
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
@@ -125,10 +126,6 @@
 #include "SDL_video.h"                  // for SDL_Color, SDL_Surface
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
-
-#include "resources.hpp"
-#include "game_events/manager.hpp"
-#include "game_events/pump.hpp"
 
 class CVideo;
 
