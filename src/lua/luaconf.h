@@ -513,7 +513,8 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 /* Microsoft compiler on a Pentium (32 bit) ? */
 #if defined(LUA_WIN) && defined(_MSC_VER) && defined(_M_IX86)	/* { */
 
-#define LUA_MSASMTRICK
+/* We currently don't use direct3d so we can use LUA_IEEE754TRICK on windows too. */
+#define LUA_IEEE754TRICK
 #define LUA_IEEEENDIAN		0
 #define LUA_NANTRICK
 
@@ -546,6 +547,10 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 
 #endif							/* } */
 
+#ifndef LUA_IEEE754TRICK
+/* We need a same floating point calculations on all clients to prevent OOS */
+#error IEEE754 Support is required to play build wesnoth
+#endif
 /* }================================================================== */
 
 
