@@ -399,11 +399,12 @@ void game::reset_sides()
 
 void game::update_side_data()
 {
-				//added by iceiceice: since level_ will now reflect how an observer
-	if (started_) return; 	//views the replay start position and not the current position, the sides_, side_controllers_,
-				//players_ info should not be updated from the level_ after the game has started.
-				//controller changes are now stored in the history, so an observer that joins will get up to
-				//date that way.
+	//added by iceiceice: since level_ will now reflect how an observer
+	//views the replay start position and not the current position, the sides_, side_controllers_,
+	//players_ info should not be updated from the level_ after the game has started.
+	//controller changes are now stored in the history, so an observer that joins will get up to
+	//date that way.
+	if (started_) return;
 
 	DBG_GAME << "update_side_data...\n";
 	DBG_GAME << debug_player_info();
