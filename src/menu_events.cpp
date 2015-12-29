@@ -3148,15 +3148,6 @@ void menu_handler::clear_messages()
 	gui_->get_chat_manager().clear_chat_messages();	// also clear debug-messages and WML-error-messages
 }
 
-void menu_handler::change_controller(const std::string& side, const std::string& controller)
-{
-	config cfg;
-	config& change = cfg.add_child("change_controller");
-	change["side"] = side;
-	change["controller"] = controller;
-	network::send_data(cfg, 0);
-}
-
 void menu_handler::change_side_controller(const std::string& side, const std::string& player)
 {
 	config cfg;
