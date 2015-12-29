@@ -161,7 +161,8 @@ struct NAME : public enum_tag \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \
 		throw bad_enum_cast( #NAME , str); \
 	} \
-	bool parse (const std::string& str) \
+	template<typename TStr> \
+	bool parse (const TStr& str) \
 	{ \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMPARSE_NORMAL, str , CONTENT) \
 		return false; \
@@ -207,9 +208,9 @@ struct NAME : public enum_tag \
 		is >> temp; \
 		try { \
 			val = string_to_enum(temp); \
-		} catch (const bad_enum_cast & e) {\
+		} catch (const bad_enum_cast & /*e*/) {\
 			is.setstate(std::ios::failbit); \
-			make_enum_detail::debug_conversion_error(temp, e); \
+			/*make_enum_detail::debug_conversion_error(temp, e); */\
 		} \
 		return is; \
 	} \

@@ -435,14 +435,14 @@ void game::update_side_data()
 					//we found invalid [side] data. Some message would be cool.
 					continue;
 				}
-				side_controllers_[side_index] = controller.to_string();
+				side_controllers_[side_index].parse(controller);
 				sides_[side_index] = *user;
 				side_found = true;
 			}
 			else if (*user == owner_ && (controller == "null")) {
 				//the *user == owner_ check has no effect,
 				//it's just an optimisation so that we only do this once.
-				side_controllers_[side_index] = controller.to_string();
+				side_controllers_[side_index].parse(controller);
 			}
 		}
 		if (side_found) {
@@ -553,7 +553,7 @@ void game::change_controller(const size_t side_index,
 	const std::string& side = lexical_cast_default<std::string, size_t>(side_index + 1);
 	sides_[side_index] = sock;
 
-	if (player_left && side_controllers_[side_index] == "ai") {
+	if (player_left && side_controllers_[side_index] == CONTROLLER::AI) {
 		// Automatic AI side transfer.
 	} else {
 		if (started_) {
@@ -568,7 +568,7 @@ void game::change_controller(const size_t side_index,
 	change.set_attr("player", player_name.c_str());
 
 	// Tell everyone but the new player that this side's controller changed.
-	change.set_attr("controller", (side_controllers_[side_index] == "ai" ? "ai" : "human"));
+	change.set_attr("controller", side_controllers_[side_index].to_cstring());
 	change.set_attr("is_local", "no");
 
 	send_data(response, sock);
@@ -1010,25 +1010,25 @@ void game::handle_random_choice(const simple_wml::node&)
 void game::handle_controller_choice(const simple_wml::node& req)
 {
 	const size_t side_index = req["side"].to_int() - 1;
-	const std::string new_controller = req["new_controller"].to_string();
-	const std::string old_controller = req["old_controller"].to_string();
-	if(new_controller != "human" && new_controller != "ai" && new_controller != "null") {
-		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid controller '" + new_controller + "'");
+	CONTROLLER new_controller;
+	CONTROLLER old_controller;
+	if(!new_controller.parse(req["new_controller"])) {
+		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid controller '" + req["new_controller"].to_string() + "'");
 		return;
 	}
-	if(old_controller != "human" && old_controller != "ai" && old_controller != "null") {
-		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid controller '" + old_controller + "'");
+	if(!old_controller.parse(req["old_controller"])) {
+		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid controller '" + req["old_controller"].to_string() + "'");
 		return;
 	}
 	if(old_controller != this->side_controllers_[side_index]) {
-		send_and_record_server_message("Found unexpected old_controller= '" + old_controller + "' in [request_choice] [change_controller]");
+		send_and_record_server_message("Found unexpected old_controller= '" + old_controller.to_string() + "' in [request_choice] [change_controller]");
 	}
 	if(side_index >= sides_.size()) {
 		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid side '" + req["side"].to_string() + "'");
 		return;
 	}
-	const bool was_null = this->side_controllers_[side_index] == "null";
-	const bool becomes_null = new_controller == "null";
+	const bool was_null = this->side_controllers_[side_index] == CONTROLLER::EMPTY;
+	const bool becomes_null = new_controller == CONTROLLER::EMPTY;
 	if(was_null) {
 		assert(sides_[side_index] == 0);
 		sides_[side_index] = current_player();
@@ -1042,15 +1042,15 @@ void game::handle_controller_choice(const simple_wml::node& req)
 	simple_wml::node& turn = mdata->root().add_child("turn");
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& change_controller_wml = command.add_child("change_controller_wml");
-	change_controller_wml.set_attr_dup("controller", new_controller.c_str());
-	change_controller_wml.set_attr_dup("is_local", "yes");
+	change_controller_wml.set_attr("controller", new_controller.to_cstring());
+	change_controller_wml.set_attr("is_local", "yes");
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
 	if(sides_[side_index] != 0) {
 		//calling send_to_one to 0 connect causes the package to be sended to all clients.
 		wesnothd::send_to_one(*mdata, sides_[side_index], "game replay");
 	}
-	change_controller_wml.set_attr_dup("is_local", "no");
+	change_controller_wml.set_attr("is_local", "no");
 	send_data(*mdata, sides_[side_index], "game replay");
 	record_data(mdata);
 }
@@ -1142,7 +1142,7 @@ bool game::end_turn() {
 		turn_ended = true;
 	}
 	// Skip over empty sides.
-	for (int i = 0; i < nsides_ && side_controllers_[current_side()] == "null"; ++i) {
+	for (int i = 0; i < nsides_ && side_controllers_[current_side()] == CONTROLLER::EMPTY; ++i) {
 		++end_turn_;
 		if (current_side() == 0) {
 			turn_ended = true;
@@ -1289,7 +1289,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	for (side_vector::iterator side = sides_.begin(); side != sides_.end(); ++side)	{
 		size_t side_index = side - sides_.begin();
 		if (*side != player) continue;
-		if (side_controllers_[side_index] == "ai") ai_transfer = true;
+		if (side_controllers_[side_index] == CONTROLLER::AI) ai_transfer = true;
 
 		player_map::iterator o = player_info_->find(owner_);
 		change_controller(side_index, owner_, username(o));
@@ -1306,7 +1306,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		const std::string side_drop = lexical_cast_default<std::string, size_t>(side_index + 1);
 		simple_wml::document drop;
 		drop.root().set_attr("side_drop", side_drop.c_str());
-		drop.root().set_attr("controller", side_controllers_[side_index].c_str());
+		drop.root().set_attr("controller", side_controllers_[side_index].to_cstring());
 
 		DBG_GAME << "*** sending side drop: \n" << drop.output() << std::endl;
 
@@ -1654,7 +1654,7 @@ std::string game::debug_sides_info() const {
 	result << "\t\t level, server\n";
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		result << "side " << (**s)["side"].to_int() << " :\t" << (**s)["controller"].to_string()
-			<< "\t, " << side_controllers_[(**s)["side"].to_int() - 1]
+			<< "\t, " << side_controllers_[(**s)["side"].to_int() - 1].to_cstring()
 			<< "\t( " << sides_[(**s)["side"].to_int()-1] << ",\t"
 			<< (**s)["current_player"].to_string() << " )\n";
 	}

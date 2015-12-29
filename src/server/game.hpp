@@ -24,6 +24,7 @@
 #include <vector>
 
 #include "../mt_rng.hpp"
+#include "../make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 //class player;
@@ -37,6 +38,13 @@ typedef std::vector<network::connection> side_vector;
 class game
 {
 public:
+	MAKE_ENUM(CONTROLLER,
+		(HUMAN, "human")
+		(AI, "ai")
+		/* NULL is alreaddy the name of a standart c++ macro */
+		(EMPTY, "null")
+	)
+
 	game(player_map& players, const network::connection host=0,
 			const std::string& name="", bool save_replays=false,
 			const std::string& replay_save_path="");
@@ -360,13 +368,7 @@ private:
 	/** A vector of side owners. */
 	side_vector sides_;
 
-	/**
-	 * A vector of controller strings indicating the type.
-	 * "human"   - a side controlled by a human
-	 * "ai"      - a side controlled by an AI
-	 * "null"    - an empty side
-	 */
-	std::vector<std::string> side_controllers_;
+	std::vector<CONTROLLER> side_controllers_;
 
 	/** Number of sides in the current scenario. */
 	int nsides_;
