@@ -364,7 +364,7 @@ bool game::take_side(const player_map::const_iterator user)
 	cfg.root().set_attr_dup("name", user->second.name().c_str());
 
 	//FIXME: It the client code (multiplayer.wait.cpp) the host code (connect_engine.cpp) and the server code (this file)
-	//       Has this code to figure out a fitting aise for a new players, tis is clearly too much.
+	//       Has this code to figure out a fitting side for new players, this is clearly too much.
 	// Check if we can figure out a fitting side.
 	const simple_wml::node::child_list& sides = get_sides_list();
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
