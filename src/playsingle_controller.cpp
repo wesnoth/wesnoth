@@ -177,11 +177,19 @@ void playsingle_controller::play_scenario_main_loop()
 					1) The undo stack is not reset along with the gamestate (fixed).
 					2) The server_request_number_ is not reset along with the gamestate (fixed).
 					3) chat and other unsynced actions are inserted in the middle of the replay bringing the replay_pos in unorder (fixed).
-					4) untracked changes in side controllers are lost when resetting gamestate.
+					4) untracked changes in side controllers are lost when resetting gamestate. (fixed)
 					5) The game should have a stricter check for whether the loaded game is actually a parent of this game.
 					6) If an action was undone after a game was saved it can casue if teh undone action is in the snapshot of the saved game. (luckyli this is never the case for autosaves)
 			*/
+			std::vector<bool> local_players(gamestate().board_.teams().size(), true);
+			//Preserve side controllers, becasue we won't get the side controoller updates again when replaying.
+			for(size_t i = 0; i < local_players.size(); ++i) {
+				local_players[i] = gamestate().board_.teams()[i].is_local();
+			}
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
+			for(size_t i = 0; i < local_players.size(); ++i) {
+				(*resources::teams)[i].set_local(local_players[i]);
+			}
 			play_scenario_init(*ex.level);
 			mp_replay_.reset(new replay_controller(*this, false, ex.level));
 			mp_replay_->play_replay();

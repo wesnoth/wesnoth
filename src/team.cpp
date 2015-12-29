@@ -521,7 +521,9 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 		if(!new_controller.parse(choice["controller"])) {
 			ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
 		}
-		set_local(choice["is_local"].to_bool());
+		if(!resources::controller->is_replay()) {
+			set_local(choice["is_local"].to_bool());
+		}
 		change_controller(new_controller);
 	}
 	catch(const bad_enum_cast&)
