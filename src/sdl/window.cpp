@@ -100,6 +100,11 @@ void twindow::set_icon(const surface& icon)
 	SDL_SetWindowIcon(window_, icon);
 }
 
+void twindow::set_minimum_size(int min_w, int min_h)
+{
+	SDL_SetWindowMinimumSize(window_, min_w, min_h);
+}
+
 twindow::operator SDL_Window*()
 {
 	return window_;

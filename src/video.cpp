@@ -567,6 +567,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		// SDL_WINDOWPOS_UNDEFINED allows SDL to centre the window in the display instead of using a fixed initial position.
 		// Note that x and y in this particular case refer to width and height of the window, not co-ordinates.
 		window = new sdl::twindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, flags, SDL_RENDERER_SOFTWARE);
+		window->set_minimum_size(preferences::min_allowed_width(), preferences::min_allowed_height());
 	} else {
 		if(fullScreen) {
 			window->full_screen();

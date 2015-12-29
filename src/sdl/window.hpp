@@ -129,6 +129,13 @@ public:
 	 */
 	void set_icon(const surface& icon);
 
+	/**
+	 * Set mimimum size of the window.
+	 *
+	 * This is a wrapper for @ref SDL_SetWindowMinimumWindowSize.
+	 */
+	void set_minimum_size(int min_w, int min_h);
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**
