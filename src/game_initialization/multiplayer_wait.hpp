@@ -65,7 +65,6 @@ private:
 	};
 
 	void generate_menu();
-	bool has_level_data() const;
 	bool download_level_data();
 	config& get_scenario();
 	const config& get_scenario() const;

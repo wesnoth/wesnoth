@@ -205,6 +205,7 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 
 	tm.change_controller(ctrl);
 	tm.change_proxy(proxy);
+	tm.set_local(true);
 
 	tm.set_current_player(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
 

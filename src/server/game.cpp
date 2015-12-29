@@ -22,6 +22,7 @@
 #include "player_network.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+#include "utils\foreach.tpp"
 
 #include <sstream>
 #include <iomanip>
@@ -1370,27 +1371,16 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	//             here), and then we send that side an automatic controller
 	//             change later.
 	//
-	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-		if ((**s)["controller"] != "null") {
-			const size_t side_index = s - sides.begin();
-			if(side_index >= sides_.size()) {
-				LOG_GAME << "found an invalid side number (" << side_index - 1 << ")\n";
-			}
-			else if (sides_[side_index] == 0) {
-				sides_[side_index] = owner_;
-				std::stringstream msg;
-				msg << "Side "  << side_index + 1 << " had no controller while a client was loading next scenario! The host was assigned control.";
-				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
-				send_and_record_server_message(msg.str());
-			} else if (sides_[side_index] == user->first) {
-				(*s)->set_attr("is_local", "yes");
-			} else {
-				(*s)->set_attr("is_local", "no");
-			}
-		}
+	simple_wml::document doc_controllers;
+	simple_wml::node & cfg_controllers = doc_controllers.root().add_child("controllers");
+
+	FOREACH(const AUTO& side_user, sides_) {
+		simple_wml::node & cfg_controller = cfg_controllers.add_child("controller");
+		cfg_controller.set_attr("is_local", side_user == user->first ? "yes" : "no");
 	}
 
 	if (!wesnothd::send_to_one(cfg_scenario, user->first)) return;
+	if (!wesnothd::send_to_one(doc_controllers, user->first)) return;
 	// Send the player the history of the game to-date.
 	send_history(user->first);
 	// Send observer join of all the observers in the game to the user.

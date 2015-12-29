@@ -1011,10 +1011,10 @@ config side_engine::new_config() const
 	}
 
 	res["controller"] = controller_names[controller_];
-	// the hosts rveices the serversided controller tweaks after the start event, but
+	// the hosts recieves the serversided controller tweaks after the start event, but
 	// for mp sync it's very important that the controller types are correct
 	// during the start/prestart event (otherwse random unit creation during prestart fails).
-	res["is_local"] = player_id_ == preferences::login();
+	res["is_local"] = player_id_ == preferences::login() || controller_ == CNTR_COMPUTER;
 
 	std::string desc = user_description();
 	if(!desc.empty()) {
