@@ -486,6 +486,7 @@ void replay_controller::play_side(){
 			current_turn_++;
 			gui_->new_turn();
 		}
+		init_side_done_ = false;
 
 		// This is necessary for replays in order to show possible movements.
 		BOOST_FOREACH(unit &u, units_) {
