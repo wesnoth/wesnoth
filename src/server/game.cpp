@@ -451,7 +451,7 @@ void game::update_side_data()
 				sides_[side_index] = *user;
 				side_found = true;
 			}
-			else if (*user == owner_ && (controller == "null" || controller == "reserved")) {
+			else if (*user == owner_ && (controller == "null")) {
 				//the *user == owner_ check has no effect,
 				//it's just an optimisation so that we only do this once.
 				side_controllers_[side_index] = controller.to_string();
