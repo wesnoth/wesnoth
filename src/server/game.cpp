@@ -572,7 +572,6 @@ void game::change_controller(const size_t side_index,
 		if (started_) {
 			send_and_record_server_message(player_name + " takes control of side " + side + ".");
 		}
-		side_controllers_[side_index] = "human";
 	}
 
 	simple_wml::document response;
