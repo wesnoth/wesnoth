@@ -16,7 +16,6 @@ static char  **gArgv;
 @interface SDLApplication : NSApplication
 @end
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
 @implementation SDLApplication
 /* Invoked from the Quit menu item */
 - (void)terminate:(id)sender
@@ -46,7 +45,6 @@ static char  **gArgv;
 	}
 }
 @end
-#endif
 
 /* The main class of the application, the application's delegate */
 @implementation SDLMain
