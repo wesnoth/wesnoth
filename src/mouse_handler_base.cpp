@@ -42,7 +42,7 @@ int commands_disabled= 0;
 static bool command_active()
 {
 #ifdef __APPLE__
-	return (SDL_GetModState()&KMOD_META) != 0;
+	return (SDL_GetModState()&KMOD_CTRL) != 0;
 #else
 	return false;
 #endif
