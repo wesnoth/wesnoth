@@ -1002,26 +1002,6 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	return turn_ended;
 }
 
-void game::require_random(const simple_wml::document &data, const player_map::iterator user)
-{
-	//Compability to older clients.
-	const simple_wml::node* require_random = data.root().child("require_random");
-	if(!require_random) return;
-	if(require_random->has_attr("request_id"))
-	{
-		int context_id = (*require_random)["request_id"].to_int();
-		if(context_id <= last_choice_request_id_)
-		{
-			// We gave already a random seed for this synced context.
-			return;
-		}
-		DBG_GAME << "answering seed request " << context_id << " by player " << user->second.name() << "(" << user->first << ")" << std::endl;
-		last_choice_request_id_ = context_id;
-	}
-	handle_random_choice(*require_random);
-
-}
-
 void game::handle_random_choice(const simple_wml::node&)
 {
 	uint32_t seed = rng_.get_next_random();
@@ -1149,32 +1129,6 @@ void game::process_whiteboard(simple_wml::document& data, const player_map::cons
 	}
 
 	send_data_sides(data, to_sides, user->first, "whiteboard");
-}
-
-void game::process_change_controller_wml(simple_wml::document& data, const player_map::const_iterator user)
-{
-	if(!started_ || !is_player(user->first))
-		return;
-
-	simple_wml::node const& ccw_node = *data.child("change_controller_wml");
-	const size_t side_index = ccw_node["side"].to_int() - 1;
-	const std::string new_controller = ccw_node["controller"].to_string();
-	if(new_controller != "human" && new_controller != "ai" && new_controller != "null") {
-		return;
-	}
-	if(side_index >= sides_.size()) {
-		return;
-	}
-	const bool was_null = this->side_controllers_[side_index] == "null";
-	const bool becomes_null = new_controller == "null";
-	if(was_null) {
-		sides_[side_index] = user->first;
-	}
-	if(becomes_null) {
-		sides_[side_index] = 0;
-	}
-	side_controllers_[side_index] = new_controller;
-	//Dont send or store this change, all players should have gotten it by wml.
 }
 
 void game::process_change_turns_wml(simple_wml::document& data, const player_map::const_iterator user)

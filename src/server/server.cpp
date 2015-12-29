@@ -2703,15 +2703,9 @@ void server::process_data_game(const network::connection sock,
 	} else if (data.child("whiteboard")) {
 		g.process_whiteboard(data,pl);
 		return;
-	} else if (data.child("change_controller_wml")) {
-		g.process_change_controller_wml(data,pl);
-		return;
 	} else if (data.child("change_turns_wml")) {
 		g.process_change_turns_wml(data,pl);
 		update_game_in_lobby(g);
-		return;
-	} else if (data.child("require_random")) {
-		g.require_random(data,pl);
 		return;
 	} else if (simple_wml::node* sch = data.child("request_choice")) {
 		g.handle_choice(*sch, pl);
@@ -2724,9 +2718,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 	// Data to ignore.
 	} else if (data.child("error")
-	|| data.child("side_secured")
 	|| data.root().has_attr("failed")
-	|| data.root().has_attr("side_drop")
 	|| data.root().has_attr("side")) {
 		return;
 	}

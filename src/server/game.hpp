@@ -170,8 +170,6 @@ public:
 
 	/** Handles incoming [whiteboard] data. */
 	void process_whiteboard(simple_wml::document& data, const player_map::const_iterator user);
-	/** Handles incoming [change_controller_wml] data. */
-	void process_change_controller_wml(simple_wml::document& data, const player_map::const_iterator user);
 	/** Handles incoming [change_turns_wml] data. */
 	void process_change_turns_wml(simple_wml::document& data, const player_map::const_iterator user);
 
@@ -229,8 +227,6 @@ public:
 	}
 
 	void set_termination_reason(const std::string& reason);
-
-	void require_random(const simple_wml::document &data, const player_map::iterator user);
 
 	void handle_choice(const simple_wml::node& data, const player_map::iterator user);
 
