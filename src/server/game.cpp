@@ -246,7 +246,7 @@ void game::perform_controller_tweaks() {
 			// In the server controller tweaks, we want to avoid sending controller change messages to the host.
 			// Doing this has the negative consequence that all of the AI side names are given the owners name.
 			// Therefore, if the side belongs to the host, we pass player_left = true, otherwise player_left = false.
-			change_controller(side_index, sides_[side_index], user_name , sides_[side_index] == owner_, (**s)["controller"].to_string());
+			change_controller(side_index, sides_[side_index], user_name , sides_[side_index] == owner_);
 
 			//next lines change controller types found in level_ to be what is appropriate for an observer at game start.
 			if ((**s)["controller"] == "ai") {
@@ -497,23 +497,12 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	if (oldplayer == player_info_->end()) missing_user(old_player, __func__);
 	const std::string old_player_name = username(oldplayer);
 
-	// A player (un)droids his side.
+	// Not supported anymore.
 	if (newplayer_name.empty()) {
-		if (sock != old_player) {
-			if (cfg["controller"].empty()) {
-				send_server_message("No player name or controller type given.", sock);
-			} else {
-				send_server_message("You can only (un)droid your own sides!", sock);
-			}
-			return;
-		} else if (cfg["controller"] != "ai" && cfg["controller"] != "human") {
-			std::stringstream msg;
-			msg << "Wrong controller type received: '" << cfg["controller"] << "'";
-			DBG_GAME << msg.str() << "\n";
-			send_server_message(msg.str(), sock);
-			return;
-		}
-		change_controller(side_num - 1, old_player, old_player_name, false, cfg["controller"].to_string());
+		std::stringstream msg;
+		msg << "Recived invalid [change_controller] with no player= attribute specified";
+		DBG_GAME << msg.str() << "\n";
+		send_server_message(msg.str(), sock);
 		return;
 	}
 
@@ -570,8 +559,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 void game::change_controller(const size_t side_index,
 		const network::connection sock,
 		const std::string& player_name,
-		const bool player_left,
-		const std::string& controller)
+		const bool player_left)
 {
 	DBG_GAME << __func__ << "...\n";
 
@@ -580,17 +568,11 @@ void game::change_controller(const size_t side_index,
 
 	if (player_left && side_controllers_[side_index] == "ai") {
 		// Automatic AI side transfer.
-	} else if (controller.empty()) {
+	} else {
 		if (started_) {
 			send_and_record_server_message(player_name + " takes control of side " + side + ".");
 		}
 		side_controllers_[side_index] = "human";
-	} else {
-		if (started_) {
-			send_and_record_server_message(player_name + (controller == "ai" ? " " : " un")
-					+ "droids side " + side + ".");
-		}
-		side_controllers_[side_index] = (controller == "ai" ? "ai" : "human");
 	}
 
 	simple_wml::document response;

@@ -61,7 +61,6 @@ public:
 
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 private:
-	static void change_controller(int side, const std::string& controller);
 	static void change_side_controller(int side, const std::string& player);
 	PROCESS_DATA_RESULT handle_turn(const config& t);
 

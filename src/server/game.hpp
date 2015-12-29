@@ -276,8 +276,7 @@ private:
 	void change_controller(const size_t side_num,
 			const network::connection sock,
 			const std::string& player_name,
-			const bool player_left = true,
-			const std::string& controller = "");
+			const bool player_left = true);
 	void transfer_ai_sides(const network::connection player);
 	void send_leave_game(network::connection user) const;
 	/**
