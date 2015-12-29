@@ -279,7 +279,7 @@ void wait::join_game(bool observe)
 				side_num = nb_sides;
 				break;
 			}
-			if (sd["controller"] == "network" && sd["player_id"].empty())
+			if (sd["controller"] == "human" && sd["player_id"].empty())
 			{
 				if (!side_choice) { // found the first empty side
 					side_choice = &sd;

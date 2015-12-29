@@ -245,12 +245,8 @@ void game::perform_controller_tweaks() {
 			// Therefore, if the side belongs to the host, we pass player_left = true, otherwise player_left = false.
 			change_controller(side_index, sides_[side_index], user_name , sides_[side_index] == owner_);
 
-			//next lines change controller types found in level_ to be what is appropriate for an observer at game start.
-			if ((**s)["controller"] == "ai") {
-				(*s)->set_attr("controller", "network_ai");
-			} else {	//this catches "reserved" also
-				(*s)->set_attr("controller", "network");
-			}
+			//next line change controller types found in level_ to be what is appropriate for an observer at game start.
+			(*s)->set_attr("is_local", "no");
 
 			if (sides_[side_index] == 0) {
 				std::stringstream msg;
@@ -366,10 +362,12 @@ bool game::take_side(const player_map::const_iterator user)
 	simple_wml::document cfg;
 	cfg.root().set_attr_dup("name", user->second.name().c_str());
 
+	//FIXME: It the client code (multiplayer.wait.cpp) the host code (connect_engine.cpp) and the server code (this file)
+	//       Has this code to figure out a fitting aise for a new players, tis is clearly too much.
 	// Check if we can figure out a fitting side.
 	const simple_wml::node::child_list& sides = get_sides_list();
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
-		if(((**side)["controller"] == "network" || (**side)["controller"] == "reserved")
+		if(((**side)["controller"] == "human" || (**side)["controller"] == "reserved")
 				&& (**side)["current_player"] == user->second.name().c_str())
 		{
 			if (send_taken_side(cfg, side)) return true;
@@ -377,7 +375,7 @@ bool game::take_side(const player_map::const_iterator user)
 	}
 	// If there was no fitting side just take the first available.
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
-		if((**side)["controller"] == "network") {
+		if((**side)["controller"] == "human") {
 			if (send_taken_side(cfg, side)) return true;
 		}
 	}
@@ -433,14 +431,11 @@ void game::update_side_data()
 			const simple_wml::string_span& player_id = (**side)["player_id"];
 			const simple_wml::string_span& controller = (**side)["controller"];
 			if ( player_id == info->second.name().c_str()) {
-				//if this is called before perform_controller_tweaks() we have "ai" and "human" controllers
-				//if its called after that we have "network" and "network_ai" controllers.
-				if(controller != "network" && controller != "human" && controller != "ai" && controller != "network_ai") {
+				if(controller != "human" && controller != "ai") {
 					//we found invalid [side] data. Some message would be cool.
 					continue;
 				}
-				//convert "network_ai" -> "ai", "network" -> "human"
-				side_controllers_[side_index] = controller == "network" ? "human" : controller == "network_ai" ? "ai" : controller.to_string();
+				side_controllers_[side_index] = controller.to_string();
 				sides_[side_index] = *user;
 				side_found = true;
 			}
@@ -573,7 +568,8 @@ void game::change_controller(const size_t side_index,
 	change.set_attr("player", player_name.c_str());
 
 	// Tell everyone but the new player that this side's controller changed.
-	change.set_attr("controller", (side_controllers_[side_index] == "ai" ? "network_ai" : "network"));
+	change.set_attr("controller", (side_controllers_[side_index] == "ai" ? "ai" : "human"));
+	change.set_attr("is_local", "no");
 
 	send_data(response, sock);
 	if (started_) { //this is added instead of the if (started_) {...} below
@@ -585,7 +581,7 @@ void game::change_controller(const size_t side_index,
 	// Just don't send it when the player left the game. (The host gets the
 	// side_drop already.)
 	if (!player_left) {
-		change.set_attr("controller", (side_controllers_[side_index] == "ai" ? "ai" : "human"));
+		change.set_attr("is_local", "yes");
 		wesnothd::send_to_one(response, sock);
 	}
 }
@@ -1047,18 +1043,14 @@ void game::handle_controller_choice(const simple_wml::node& req)
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& change_controller_wml = command.add_child("change_controller_wml");
 	change_controller_wml.set_attr_dup("controller", new_controller.c_str());
+	change_controller_wml.set_attr_dup("is_local", "yes");
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
 	if(sides_[side_index] != 0) {
 		//calling send_to_one to 0 connect causes the package to be sended to all clients.
 		wesnothd::send_to_one(*mdata, sides_[side_index], "game replay");
 	}
-	if(new_controller == "human") {
-		change_controller_wml.set_attr("controller", "network");
-	}
-	if(new_controller == "ai") {
-		change_controller_wml.set_attr("controller", "network_ai");
-	}
+	change_controller_wml.set_attr_dup("is_local", "no");
 	send_data(*mdata, sides_[side_index], "game replay");
 	record_data(mdata);
 }
@@ -1391,27 +1383,9 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
 				send_and_record_server_message(msg.str());
 			} else if (sides_[side_index] == user->first) {
-				if (side_controllers_[side_index] == "human") {
-					(*s)->set_attr("controller", "human");
-				} else if (side_controllers_[side_index] == "ai") {
-					(*s)->set_attr("controller", "ai");
-				} else {
-					std::stringstream msg;
-					msg << "Side " << side_index + 1 << " had unexpected side_controller = " << side_controllers_[side_index] << " on server side.";
-					LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
-					send_and_record_server_message(msg.str());
-				}
+				(*s)->set_attr("is_local", "yes");
 			} else {
-				if (side_controllers_[side_index] == "human") {
-					(*s)->set_attr("controller", "network");
-				} else if (side_controllers_[side_index] == "ai") {
-					(*s)->set_attr("controller", "network_ai");
-				} else {
-					std::stringstream msg;
-					msg << "Side " << side_index + 1 << " had unexpected side_controller = " << side_controllers_[side_index] << " on server side.";
-					LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
-					send_and_record_server_message(msg.str());
-				}
+				(*s)->set_attr("is_local", "no");
 			}
 		}
 	}

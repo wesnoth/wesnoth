@@ -55,8 +55,6 @@ public:
 	MAKE_ENUM(CONTROLLER,
 		(HUMAN,       "human")
 		(AI,          "ai")
-		(NETWORK,     "network")
-		(NETWORK_AI,  "network_ai")
 		(EMPTY,	      "null")
 	)
 
@@ -140,6 +138,7 @@ private:
 		mutable bool objectives_changed;
 
 		CONTROLLER controller;
+		bool is_local;
 		DEFEAT_CONDITION defeat_condition;
 
 		PROXY_CONTROLLER proxy_controller;	// when controller == HUMAN, the proxy controller determines what input method is actually used.
@@ -257,24 +256,26 @@ public:
 	void set_color(const std::string& color) { info_.color = color; }
 	bool is_empty() const { return info_.controller == CONTROLLER::EMPTY; }
 
-	bool is_local() const { return is_local_human() || is_local_ai(); }
-	bool is_network() const { return is_network_human() || is_network_ai(); }
+	bool is_local() const { return !is_empty() && info_.is_local; }
+	bool is_network() const { return !is_empty() && !info_.is_local; }
 
-	bool is_human() const { return is_local_human() || is_network_human(); }
+	bool is_human() const { return info_.controller == CONTROLLER::HUMAN; }
+	bool is_ai() const { return info_.controller == CONTROLLER::AI; }
 
-	bool is_local_human() const { return info_.controller == CONTROLLER::HUMAN;  }
-	bool is_local_ai() const { return info_.controller == CONTROLLER::AI; }
-	bool is_network_human() const { return info_.controller == CONTROLLER::NETWORK; }
-	bool is_network_ai() const { return info_.controller == CONTROLLER::NETWORK_AI; }
+	bool is_local_human() const {  return is_human() && is_local(); }
+	bool is_local_ai() const { return is_ai() && is_local(); }
+	bool is_network_human() const { return is_human() && is_network(); }
+	bool is_network_ai() const { return is_ai() && is_network(); }
 
+	void set_local(bool local) { info_.is_local = local; }
 	void make_human() { info_.controller = CONTROLLER::HUMAN; }
 	void make_ai() { info_.controller = CONTROLLER::AI; }
 	void change_controller(const std::string& new_controller) {
 		info_.controller = CONTROLLER::AI;
 		info_.controller.parse(new_controller);
 	}
-	void change_controller_by_wml(const std::string& new_controller);
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
+	void change_controller_by_wml(const std::string& new_controller);
 
 	PROXY_CONTROLLER proxy_controller() const { return info_.proxy_controller; }
 	bool is_proxy_human() const { return info_.proxy_controller == PROXY_CONTROLLER::PROXY_HUMAN; }

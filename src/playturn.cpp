@@ -173,30 +173,20 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty." << std::endl;
 			return PROCESS_CONTINUE;
 		}
-		//don't use lexical_cast_default it's "safer" to end on error
-		const int side = lexical_cast<int>(change["side"]);
+
+		const int side = change["side"].to_int();
+		const bool is_local = change["is_local"].to_bool();
+		const std::string player = change["player"];
 		const size_t index = side - 1;
-
-		assert(resources::gameboard);
-
 		if(index >= resources::gameboard->teams().size()) {
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 			return PROCESS_CONTINUE;
 		}
 
 		const team & tm = resources::gameboard->teams().at(index);
-		const std::string &player = change["player"];
 		const bool was_local = tm.is_local();
 
-		team::CONTROLLER new_controller = team::CONTROLLER();
-		try {
-			new_controller = team::CONTROLLER::string_to_enum(change["controller"].str());
-		} catch (bad_enum_cast & e) {
-			ERR_NW << "Bad [change_controller] message from server:\n" << e.what() << std::endl << change.debug() << std::endl;
-			return PROCESS_CONTINUE;
-		}
-
-		resources::gameboard->side_change_controller(side, new_controller, player);
+		resources::gameboard->side_change_controller(side, is_local, player);
 
 		if (!was_local && tm.is_local()) {
 			resources::controller->on_not_observer();

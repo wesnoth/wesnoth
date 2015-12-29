@@ -96,6 +96,7 @@ team::team_info::team_info() :
 	objectives(),
 	objectives_changed(false),
 	controller(),
+	is_local(true),
 	defeat_condition(team::DEFEAT_CONDITION::NO_LEADER),
 	proxy_controller(team::PROXY_CONTROLLER::PROXY_HUMAN),
 	share_vision(team::SHARE_VISION::ALL),
@@ -146,6 +147,7 @@ void team::team_info::read(const config &cfg)
 	carryover_bonus = cfg["carryover_bonus"].to_double(1);
 	carryover_gold = cfg["carryover_gold"].to_int(0);
 	variables = cfg.child_or_empty("variables");
+	is_local = cfg["is_local"].to_bool(true);
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
@@ -204,7 +206,7 @@ void team::team_info::read(const config &cfg)
 	}
 	//override persistence flag if it is explicitly defined in the config
 	//by default, persistence of a team is set depending on the controller
-	persistent = cfg["persistent"].to_bool(this->controller == CONTROLLER::HUMAN || this->controller == CONTROLLER::NETWORK);
+	persistent = cfg["persistent"].to_bool(this->controller == CONTROLLER::HUMAN);
 
 	//========================================================
 	//END OF MESSY CODE
@@ -475,14 +477,6 @@ bool team::calculate_is_enemy(size_t index) const
 
 namespace
 {
-	team::CONTROLLER unified_controller(team::CONTROLLER c)
-	{
-		if(c == team::CONTROLLER::NETWORK)
-			return team::CONTROLLER::HUMAN;
-		if(c == team::CONTROLLER::NETWORK_AI)
-			return team::CONTROLLER::AI;
-		return c;
-	}
 	class controller_server_choice : public synced_context::server_choice
 	{
 	public:
@@ -501,7 +495,7 @@ namespace
 		{
 			return config_of
 				("new_controller", new_controller_)
-				("old_controller", unified_controller(team_.controller()))
+				("old_controller", team_.controller())
 				("side", team_.side());
 		}
 		virtual const char* name() const
@@ -519,17 +513,15 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 	try
 	{
 		CONTROLLER new_controller = lexical_cast<CONTROLLER> (new_controller_string);
-		if(new_controller == CONTROLLER::NETWORK || new_controller == CONTROLLER::NETWORK_AI) {
-			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
-		}
 		if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
-			//We dont allow changing the currently active side to "null" controlled.
+			//We don't allow changing the currently active side to "null" controlled.
 			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
 		}
 		config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
 		if(!new_controller.parse(choice["controller"])) {
 			ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
 		}
+		set_local(choice["is_local"].to_bool());
 		change_controller(new_controller);
 	}
 	catch(const bad_enum_cast&)

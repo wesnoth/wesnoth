@@ -48,7 +48,7 @@ static lg::log_domain log_network("network");
 namespace {
 
 const std::string controller_names[] = {
-	"network",
+	"human",
 	"human",
 	"ai",
 	"null",
@@ -1011,12 +1011,10 @@ config side_engine::new_config() const
 	}
 
 	res["controller"] = controller_names[controller_];
-	if(player_id_ == preferences::login() && res["controller"] == "network") {
-		// the hosts rveices the serversided controller wteaks after the start event, but
-		// for mp sync it's very important that the controller types are correct
-		// during the start/prestart event (otherwse random unit creation during prestart fails).
-		res["controller"] = "human";
-	}
+	// the hosts rveices the serversided controller tweaks after the start event, but
+	// for mp sync it's very important that the controller types are correct
+	// during the start/prestart event (otherwse random unit creation during prestart fails).
+	res["is_local"] = player_id_ == preferences::login();
 
 	std::string desc = user_description();
 	if(!desc.empty()) {
