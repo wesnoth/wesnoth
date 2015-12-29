@@ -996,26 +996,24 @@ bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int
 
 void CVideo::set_fullscreen(bool ison)
 {
-	if(display::get_singleton() != NULL) {
-		const std::pair<int,int>& res = preferences::resolution();
-		if(isFullScreen() != ison) {
-			// When toggling fullscreen off, switch to a maximized window
-			const int flags = ison ? SDL_FULLSCREEN : SDL_WINDOW_MAXIMIZED;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-			int bpp = DefaultBpp;
-#else
-			int bpp = bppForMode(res.first, res.second, flags);
-#endif
-
-			setMode(res.first,res.second,bpp,flags);
-			if(display::get_singleton()) {
-				display::get_singleton()->redraw_everything();
-			}
-		}
-	}
-
 	// Change the config value.
 	preferences::_set_fullscreen(ison);
+
+	if (display::get_singleton() && isFullScreen() != ison) {
+		const int flags = ison ? SDL_FULLSCREEN : 0;
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		int bpp = DefaultBpp;
+#else
+		int bpp = bppForMode(res.first, res.second, flags);
+#endif
+
+		const std::pair<int,int>& res = preferences::resolution();
+
+		setMode(res.first, res.second, bpp, flags);
+
+		display::get_singleton()->redraw_everything();
+	}
 }
 
 void CVideo::set_resolution(const std::pair<int,int>& resolution)
