@@ -22,7 +22,7 @@
 #include "player_network.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
-#include "utils\foreach.tpp"
+#include "utils/foreach.tpp"
 
 #include <sstream>
 #include <iomanip>
