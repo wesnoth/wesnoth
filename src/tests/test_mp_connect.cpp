@@ -125,8 +125,8 @@ static ng::side_engine* create_side_engine(const config& defaults,
 
 /* Tests */
 
-BOOST_GLOBAL_FIXTURE( mp_connect_fixture )
-BOOST_AUTO_TEST_SUITE( mp_connect )
+BOOST_GLOBAL_FIXTURE( mp_connect_fixture );
+BOOST_AUTO_TEST_SUITE( mp_connect );
 
 
 BOOST_AUTO_TEST_CASE( flg_map_settings )
