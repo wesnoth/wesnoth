@@ -216,10 +216,7 @@ void game::perform_controller_tweaks() {
 
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		if ((**s)["controller"] != "null") {
-			const size_t side_index = (**s)["side"].to_int() - 1;
-			if(side_index >= sides_.size()) {
-				continue;
-			}
+			const size_t side_index = s - sides.begin();
 			if (sides_[side_index] == 0) {
 				sides_[side_index] = owner_;
 				std::stringstream msg;
@@ -306,7 +303,7 @@ void game::start_game(const player_map::const_iterator starter) {
 
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		if ((**s)["controller"] != "null") {
-			const size_t side_index = (**s)["side"].to_int() - 1;
+			const size_t side_index = s - sides.begin();
 			if(side_index >= sides_.size()) {
 				continue;
 			}
@@ -414,12 +411,7 @@ void game::update_side_data()
 	observers_.clear();
 	reset_sides();
 	const simple_wml::node::child_list& level_sides = get_sides_list();
-	/* This causes data corruption for some reason
-	if (!lg::debug.dont_log(log_server)) {
-		for (simple_wml::node::child_list::const_iterator side = level_sides.begin();
-				side != level_sides.end(); ++side)
-			DBG_GAME << "[side]\n" << simple_wml::node_to_string(**side) << "[/side]\n";
-	}*/
+
 	// For each user:
 	// * Find the username.
 	// * Find the side this username corresponds to.
@@ -434,7 +426,7 @@ void game::update_side_data()
 		for (simple_wml::node::child_list::const_iterator side = level_sides.begin();
 				side != level_sides.end(); ++side)
 		{
-			const size_t side_index = (**side)["side"].to_int() - 1;
+			const size_t side_index = side - level_sides.begin();
 			if (side_index >= sides_.size()
 					|| sides_[side_index] != 0) continue;
 
@@ -1388,7 +1380,7 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	//
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		if ((**s)["controller"] != "null") {
-			const size_t side_index = (**s)["side"].to_int() - 1;
+			const size_t side_index = s - sides.begin();
 			if(side_index >= sides_.size()) {
 				LOG_GAME << "found an invalid side number (" << side_index - 1 << ")\n";
 			}
