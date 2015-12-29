@@ -63,6 +63,8 @@
 
 #ifdef _WIN32
 #include "log_windows.hpp"
+#else
+#include <fenv.h>
 #endif // _WIN32
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
