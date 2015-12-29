@@ -590,11 +590,8 @@ void game::change_controller(const size_t side_index,
 void game::notify_new_host(){
 	const std::string owner_name = username(player_info_->find(owner_));
 	simple_wml::document cfg;
-	simple_wml::node& cfg_host_transfer = cfg.root().add_child("host_transfer");
+	cfg.root().add_child("host_transfer");
 
-	// Why do we send the new host his own name?
-	cfg_host_transfer.set_attr("name", owner_name.c_str());
-	cfg_host_transfer.set_attr("value", "1");
 	std::string message = owner_name + " has been chosen as the new host.";
 	if (!wesnothd::send_to_one(cfg, owner_)) {
 		message += " But an internal error occurred. You probably have to abandon this game.";
