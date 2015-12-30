@@ -398,12 +398,20 @@ void pump()
 
 					case SDL_WINDOWEVENT_EXPOSED:
 						update_whole_screen();
+						if (display::get_singleton())
+							display::get_singleton()->redraw_everything();
 						break;
 
 					case SDL_WINDOWEVENT_RESIZED: {
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;
 						break;
+					case SDL_WINDOWEVENT_MOVED:
+					case SDL_WINDOWEVENT_CLOSE:
+						break;
+					default:
+						if (display::get_singleton())
+							display::get_singleton()->redraw_everything();
 					}
 				}
 				break;
