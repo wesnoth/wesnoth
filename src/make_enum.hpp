@@ -167,6 +167,11 @@ struct NAME : public enum_tag \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMPARSE_NORMAL, str , CONTENT) \
 		return false; \
 	} \
+	/* for const char* parameters we cannot use the template above because it would only compare the pointer. */ \
+	bool parse (const char* str) \
+	{ \
+		return parse(std::string(str)); \
+	} \
 	static std::string name() \
 	{ \
 		return #NAME; \
