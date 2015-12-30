@@ -44,8 +44,12 @@ static lg::log_domain log_display("display");
 
 namespace {
 	bool fullScreen = false;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	int disallow_resize = 0;
+#endif
+#ifdef SDL_GPU
 	GPU_Target *render_target_;
+#endif
 }
 void resize_monitor::process(events::pump_info &info) {
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
@@ -64,12 +68,17 @@ void resize_monitor::process(events::pump_info &info) {
 
 resize_lock::resize_lock()
 {
+	
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	++disallow_resize;
+#endif
 }
 
 resize_lock::~resize_lock()
 {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	--disallow_resize;
+#endif
 }
 
 static unsigned int get_flags(unsigned int flags)
@@ -256,11 +265,12 @@ bool non_interactive()
 }
 
 
-
+#ifdef SDL_GPU
 GPU_Target *get_render_target()
 {
 	return render_target_;
 }
+#endif
 
 surface display_format_alpha(surface surf)
 {

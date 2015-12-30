@@ -42,8 +42,10 @@ class timage;
 #define SDL_APPACTIVE		0x04		/**< The application is active */
 #endif
 
+#ifdef SDL_GPU
 struct GPU_Target;
 GPU_Target *get_render_target();
+#endif
 
 surface display_format_alpha(surface surf);
 surface& get_video_surface();
