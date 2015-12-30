@@ -95,12 +95,12 @@ static unsigned int get_flags(unsigned int flags)
 #endif
 #endif
 
-
-	if((flags&SDL_FULLSCREEN) == 0)
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		flags |= SDL_WINDOW_RESIZABLE;
+	flags |= SDL_WINDOW_RESIZABLE;
 #else
+	if((flags&SDL_FULLSCREEN) == 0) {
 		flags |= SDL_RESIZABLE;
+	}
 #endif
 
 	return flags;
