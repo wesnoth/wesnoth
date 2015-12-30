@@ -352,7 +352,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	//If this client becomes the new host, notify the play_controller object about it
-	else if (const config &cfg_host_transfer = cfg.child("host_transfer")){
+	else if (cfg.child("host_transfer")){
 		host_transfer_.notify_observers();
 	}
 	else
