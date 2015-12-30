@@ -1069,7 +1069,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 		gui2::show_error_message(disp.video(),
 			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(twml_exception& e) {
-		e.show(disp);
+		e.show(disp.video());
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
 	} catch(const addons_client::invalid_server_address&) {
@@ -1282,7 +1282,7 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> &
 		gui2::show_error_message(disp.video(),
 			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(twml_exception& e) {
-		e.show(disp);
+		e.show(disp.video());
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
 	} catch(const addons_client::invalid_server_address&) {

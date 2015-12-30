@@ -50,7 +50,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			try {
 				dlg.show(disp.video());
 			} catch(twml_exception& e) {
-				e.show(disp);
+				e.show(disp.video());
 				return false;
 			}
 

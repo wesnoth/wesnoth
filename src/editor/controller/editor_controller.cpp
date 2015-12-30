@@ -179,7 +179,7 @@ EXIT_STATUS editor_controller::main_loop()
 		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
 		return EXIT_ERROR;
 	} catch (twml_exception& e) {
-		e.show(gui());
+		e.show(gui().video());
 	}
 	return quit_mode_;
 }
@@ -195,7 +195,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 			ERR_ED << "Screenshot creation failed!\n";
 		}
 	} catch (twml_exception& e) {
-		e.show(gui());
+		e.show(gui().video());
 	}
 }
 

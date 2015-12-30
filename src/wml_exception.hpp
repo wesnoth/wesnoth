@@ -27,6 +27,7 @@
 #include <string>
 
 class display;
+class CVideo;
 
 /**
  * The macro to use for the validation of WML
@@ -132,7 +133,7 @@ struct twml_exception
 	 * Shows the error in a dialog.
 	 *  @param disp         The display object to show the message on.
 	 */
-	void show(display &disp);
+	void show(CVideo &video);
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
 };

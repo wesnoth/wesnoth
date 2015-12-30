@@ -742,7 +742,7 @@ bool game_launcher::load_game()
 		}
 		return false;
 	} catch(twml_exception& e) {
-		e.show(disp());
+		e.show(disp().video());
 		return false;
 	} catch(filesystem::io_exception& e) {
 		if(e.message.empty()) {
@@ -1009,7 +1009,7 @@ bool game_launcher::play_multiplayer()
 	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
-		e.show(disp());
+		e.show(disp().video());
 	} catch (game::error & e) {
 		std::cerr << "caught game::error...\n";
 		gui2::show_error_message(disp().video(), _("Error: ") + e.message);
@@ -1106,7 +1106,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
-		e.show(disp());
+		e.show(disp().video());
 	}
 }
 
@@ -1120,7 +1120,7 @@ void game_launcher::play_replay()
 	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
-		e.show(disp());
+		e.show(disp().video());
 	}
 }
 
