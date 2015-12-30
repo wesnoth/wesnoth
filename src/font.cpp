@@ -54,7 +54,7 @@
 
 #if !defined(CAIRO_HAS_FT_FONT) && !defined(CAIRO_HAS_WIN32_FONT)
 // Is there soemthing like #warning which just gives awarnign insteads of an error?
-#error Coudn't find floading tools.
+#error unable to find font loading tools.
 #endif
 
 static lg::log_domain log_font("font");
