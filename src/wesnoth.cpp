@@ -63,9 +63,13 @@
 
 #ifdef _WIN32
 #include "log_windows.hpp"
-#else
-#include <fenv.h>
+
+#include <float.h>
 #endif // _WIN32
+
+#ifndef _MSC_VER
+#include <fenv.h>
+#endif // _MSC_VER
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
 #include <boost/foreach.hpp>            // for auto_any_base, etc
@@ -516,7 +520,7 @@ static void handle_lua_script_args(game_launcher * game, commandline_options & /
 	}
 }
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 static void check_fpu()
 {
 	uint32_t f_control;
@@ -525,7 +529,7 @@ static void check_fpu()
 		uint32_t rounding_mode = f_control & _MCW_RC;
 		uint32_t precision_mode = f_control & _MCW_PC;
 		if(rounding_mode != _RC_NEAR) {
-			std::cerr << "Floating point rounding mode is currently '" << 
+			std::cerr << "Floating point rounding mode is currently '" <<
 				((rounding_mode == _RC_CHOP) ? "chop" :
 				(rounding_mode == _RC_UP) ? "up" :
 				(rounding_mode == _RC_DOWN) ? "down" :
@@ -536,7 +540,7 @@ static void check_fpu()
 			}
 		}
 		if(precision_mode != _PC_53) {
-			std::cerr << "Floating point precision mode is currently '" << 
+			std::cerr << "Floating point precision mode is currently '" <<
 				((precision_mode == _PC_53) ? "double" :
 				(precision_mode == _PC_24) ? "single" :
 				(precision_mode == _PC_64 ) ? "double extended" :
