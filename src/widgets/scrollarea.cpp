@@ -150,6 +150,8 @@ unsigned scrollarea::scrollbar_width() const
 
 void scrollarea::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
+
 	if (mouse_locked() || hidden())
 		return;
 

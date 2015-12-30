@@ -279,6 +279,7 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 
 #if SDL_VERSION_ATLEAST(2,0,0)
 
+const Uint32 resize_timeout = 100;
 SDL_Event last_resize_event;
 bool last_resize_event_used = true;
 
@@ -289,13 +290,19 @@ bool resize_comparer(SDL_Event a, SDL_Event b) {
 }
 
 bool remove_on_resize(const SDL_Event &a) {
-	if (a.type == DRAW_EVENT)
+	if (a.type == DRAW_EVENT) {
 		return true;
-	if (a.type == SHOW_HELPTIP_EVENT)
+	}
+	if (a.type == SHOW_HELPTIP_EVENT) {
 		return true;
-	if (a.type == SDL_WINDOWEVENT) // &&
-			//(a.window.event == SDL_WINDOWEVENT_RESIZED || a.window.event == SDL_WINDOWEVENT_SIZE_CHANGED || a.window.event == SDL_WINDOWEVENT_EXPOSED))
+	}
+	if ((a.type == SDL_WINDOWEVENT) &&
+			(a.window.event == SDL_WINDOWEVENT_RESIZED ||
+					a.window.event == SDL_WINDOWEVENT_SIZE_CHANGED ||
+					a.window.event == SDL_WINDOWEVENT_EXPOSED)) {
 		return true;
+	}
+
 	return false;
 }
 
@@ -362,9 +369,9 @@ void pump()
 	}
 	// remove all inputs, draw events and only keep the last of the resize events
 	// This will turn horrible after ~38 days when the Uint32 wraps.
-	if (resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + RESIZE_TIMEOUT) {
+	if (resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + resize_timeout) {
 		events.erase(std::remove_if(events.begin(), events.end(), remove_on_resize), events.end());
-	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + RESIZE_TIMEOUT && !last_resize_event_used) {
+	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {
 		events.insert(events.begin(), last_resize_event);
 		last_resize_event_used = true;
 	}

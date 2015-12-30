@@ -321,6 +321,8 @@ void scrollbar::draw_contents()
 
 void scrollbar::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
+
 	if (mouse_locked() || hidden())
 		return;
 
