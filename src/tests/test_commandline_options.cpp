@@ -26,7 +26,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	std::vector<std::string> args = boost::assign::list_of("wesnoth");
 	commandline_options co(args);
 
-	BOOST_CHECK(!co.bpp);
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
@@ -107,7 +106,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 		("--test");
 
 	commandline_options co(args);
-	BOOST_CHECK(!co.bpp);
 	BOOST_CHECK(co.campaign && co.campaign->empty());
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
@@ -184,7 +182,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		("--ai-config=2:aibar")
 		("--algorithm=3:algfoo")
 		("--algorithm=4:algbar")
-		("--bpp=32")
 		("--campaign=campfoo")
 		("--campaign-difficulty=16")
 		("--campaign-scenario=scenfoo")
@@ -254,7 +251,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 
 	commandline_options co(args);
 
-	BOOST_CHECK(co.bpp && *co.bpp == 32);
 	BOOST_CHECK(co.campaign && *co.campaign == "campfoo");
 	BOOST_CHECK(co.campaign_difficulty && *co.campaign_difficulty == 16);
 	BOOST_CHECK(co.campaign_scenario && *co.campaign_scenario == "scenfoo");
@@ -352,7 +348,6 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 
 	commandline_options co(args);
 
-	BOOST_CHECK(!co.bpp);
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
