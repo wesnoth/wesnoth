@@ -27,6 +27,8 @@
 #define CLOSE_WINDOW_EVENT (SDL_USEREVENT + 4)
 #define SHOW_HELPTIP_EVENT (SDL_USEREVENT + 5)
 
+#define RESIZE_TIMEOUT 100
+
 namespace events
 {
 
