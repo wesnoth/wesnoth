@@ -2694,7 +2694,7 @@ void console_handler::do_controller()
 	if (!menu_handler_.teams()[side_num - 1].is_proxy_human()) {
 		report += " (" + menu_handler_.teams()[side_num - 1].proxy_controller().to_string() + ")";
 	}
-	if (!menu_handler_.teams()[side_num - 1].is_network()) {
+	if (menu_handler_.teams()[side_num - 1].is_network()) {
 		report += " (networked)";
 	}
 
