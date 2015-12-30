@@ -12,12 +12,13 @@ Version 1.13.2+dev:
    * Fix bug #23108: exclude aborted attacks from statistics
    * imgcheck now runs on Python 3
    * Fix bug #15259: Secondary click uses control-click instead of command-click in OS X
+   * New hi-res icon using new logo for OS X
  * Greatly improved SDL2 support. SDL2 is now the default build.
    * Fix bug #24138: SDL2 crash on resize after starting a game and returning to title screen
    * Fix bug #23908: SDL2 SDL_BlitSurface Causes Crashes
    * Fix bug #23821: Text input is broken in GUI1 under SDL2
    * Fix bug #23820: SDL 2 alpha blending issues
-   * Fix bug #23918: UI Graphics In OS X El Capitan
+   * Fix bug #23918: UI Graphics in OS X 10.11 El Capitan
    * Fix bug #18112: Color cursor causes slow mouse movement at menus
 
 Version 1.13.2:
