@@ -30,7 +30,7 @@
 ** CHANGE it (define it) if you want Lua to avoid the use of any
 ** non-ansi feature or library.
 */
-#if !defined(LUA_ANSI) && defined(__STRICT_ANSI__)
+#if 0 && !defined(LUA_ANSI) && defined(__STRICT_ANSI__)
 #define LUA_ANSI
 #endif
 
