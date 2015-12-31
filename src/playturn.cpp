@@ -120,6 +120,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader()
 		{
 			return res;
 		}
+		cfg.clear();
 	}
 	return PROCESS_CONTINUE;
 }
