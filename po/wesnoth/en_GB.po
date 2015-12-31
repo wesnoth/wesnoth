@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-12-10 19:01-0300\n"
-"PO-Revision-Date: 2015-08-24 00:11+1000\n"
+"PO-Revision-Date: 2015-12-11 21:39+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -229,13 +229,14 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:191
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "Editor recent files limit"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
+"The maximum number of items to display on the Recent Files menu in the editor"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:203
@@ -3376,15 +3377,13 @@ msgstr "Point of view"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:499
-#, fuzzy
-#| msgid "continuous replay"
 msgid "Continue Play"
-msgstr "continuous replay"
+msgstr "Continue Play"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:500
 msgid "Exit the replay mode and continue playing normally."
-msgstr ""
+msgstr "Exit the replay mode and continue playing normally."
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:512 data/themes/_initial.cfg:652
@@ -4718,10 +4717,12 @@ msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"The remote version of this add-on is greater than or equal to the version "
+"being uploaded. Do you really wish to continue?"
 
 #: src/addon/manager_ui.cpp:402
 msgid "Invalid icon path. Make sure the path points to a valid image."
-msgstr ""
+msgstr "Invalid icon path. Make sure the path points to a valid image."
 
 #: src/addon/manager_ui.cpp:407
 msgid "Terms"
@@ -7148,7 +7149,7 @@ msgstr "(network only)"
 
 #: src/menu_events.cpp:1917
 msgid "(not during other events)"
-msgstr ""
+msgstr "(not during other events)"
 
 #: src/menu_events.cpp:1942
 msgid "Refresh gui."
@@ -8035,7 +8036,7 @@ msgstr "Save Game"
 #: src/scripting/game_lua_kernel.cpp:2970
 #: src/scripting/game_lua_kernel.cpp:3005
 msgid "input"
-msgstr ""
+msgstr "input"
 
 #: src/serialization/parser.cpp:133
 msgid "Unexpected characters at line start"
@@ -8416,7 +8417,7 @@ msgstr "pm"
 
 #: src/synced_user_choice.cpp:331
 msgid "waiting for $desc from side(s)$sides"
-msgstr ""
+msgstr "waiting for $desc from side(s)$sides"
 
 #: src/terrain.cpp:184
 msgid "Allied village"
@@ -8460,52 +8461,40 @@ msgid "moves"
 msgstr "moves"
 
 #: src/unit.cpp:1817
-#, fuzzy
-#| msgid "vision: "
 msgid "vision"
-msgstr "vision: "
+msgstr "vision"
 
 #: src/unit.cpp:1831
-#, fuzzy
-#| msgid "Jamming: "
 msgid "jamming"
-msgstr "Jamming: "
+msgstr "jamming"
 
 #: src/unit.cpp:1868 src/unit.cpp:2112
 msgid "XP to advance"
 msgstr "XP to advance"
 
 #: src/unit.cpp:2029
-#, fuzzy
-#| msgid " per turn"
 msgid "attack per turn"
-msgstr " per turn"
+msgstr "attack per turn"
 
 #: src/unit.cpp:2030
-#, fuzzy
-#| msgid " per turn"
 msgid "attacks per turn"
-msgstr " per turn"
+msgstr "attacks per turn"
 
 #: src/unit.cpp:2055
 msgid "cost to recall"
-msgstr ""
+msgstr "cost to recall"
 
 #: src/unit.cpp:2093
 msgid " move"
 msgstr " move"
 
 #: src/unit.cpp:2099
-#, fuzzy
-#| msgid "vision: "
 msgid " vision"
-msgstr "vision: "
+msgstr " vision"
 
 #: src/unit.cpp:2105
-#, fuzzy
-#| msgid "Jamming: "
 msgid " jamming"
-msgstr "Jamming: "
+msgstr " jamming"
 
 #: src/unit.cpp:2120
 msgid "$effect_description per level"
@@ -8531,10 +8520,8 @@ msgid "% accuracy"
 msgstr "% accuracy"
 
 #: src/unit_attack_type.cpp:304
-#, fuzzy
-#| msgid "% parry"
 msgid " parry"
-msgstr "% parry"
+msgstr " parry"
 
 #: src/unit_attack_type.cpp:315
 #, no-c-format
@@ -8542,12 +8529,10 @@ msgid "% parry"
 msgstr "% parry"
 
 #: src/unit_attack_type.cpp:324 src/unit_attack_type.cpp:334
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "movement point"
 msgid_plural "movement points"
-msgstr[0] "Movement Cost"
-msgstr[1] "Movement Cost"
+msgstr[0] "movement point"
+msgstr[1] "movement points"
 
 #: src/unit_types.cpp:853
 msgid "female^lawful"

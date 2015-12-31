@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-12-10 19:01-0300\n"
-"PO-Revision-Date: 2015-08-24 09:11+1000\n"
+"PO-Revision-Date: 2015-12-11 21:41+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: \n"
 "Language: en_GB\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -739,7 +739,7 @@ msgstr "I'm out of here."
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
 msgid "Fast"
-msgstr ""
+msgstr "Fast"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/fast.cfg:64
@@ -753,6 +753,14 @@ msgid ""
 "There is nothing to do here, just watch or use this scenario as a template "
 "or for your own tests."
 msgstr ""
+"This scenario presents a situation with so many units on the map that there "
+"is a noticeable delay (a few seconds or so) before each move by the default "
+"AI. By contrast, the Fast Micro AI has a much shorter delay. To demonstrate "
+"the difference, side 1 is played by the Fast Micro AI and side 2 by the "
+"default (RCA) AI.\n"
+"\n"
+"There is nothing to do here, just watch or use this scenario as a template "
+"or for your own tests."
 
 # Appears to be the name of the AI, 'go to'.
 #. [event]
@@ -2370,7 +2378,7 @@ msgstr "Simple Attack"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:92
 msgid "Fast AI"
-msgstr ""
+msgstr "Fast AI"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:99
@@ -2673,10 +2681,8 @@ msgstr ""
 #. [set_menu_item]: id=m16_fast
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:340
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:349
-#, fuzzy
-#| msgid "Patrol Micro AI demo"
 msgid "Fast Micro AI demo"
-msgstr "Patrol Micro AI demo"
+msgstr "Fast Micro AI demo"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:349
@@ -2684,6 +2690,8 @@ msgid ""
 "A simple demonstration of the calculation time advantage of the Fast Micro "
 "AI over the default AI in scenarios with many units."
 msgstr ""
+"A simple demonstration of the calculation time advantage of the Fast Micro "
+"AI over the default AI in scenarios with many units."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:359
