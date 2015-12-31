@@ -718,6 +718,8 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 
 void button::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
+
 	if (hidden() || !enabled())
 		return;
 

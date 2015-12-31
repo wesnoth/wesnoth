@@ -447,6 +447,7 @@ bool textbox::requires_event_focus(const SDL_Event* event) const
 
 void textbox::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
 	handle_event(event, false);
 }
 

@@ -287,6 +287,7 @@ void default_map_generator::user_config(display& disp)
 		width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 		height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 
+		f.draw();
 		events::raise_process_event();
 		events::raise_draw_event();
 

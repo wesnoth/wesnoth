@@ -318,6 +318,8 @@ int dialog::show()
 	const dialog_manager manager;
 	const resize_lock prevent_resizing;
 
+	get_frame().join();
+
 	//draw
 	draw_frame();
 	update_widget_positions();
@@ -397,11 +399,13 @@ void dialog::update_widget_positions()
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 			preview_pane *pane = *i;
+			pane->leave();
 			pane->join();
 			pane->set_location(dim_.panes.find(pane)->second);
 		}
 	}
 	if(text_widget_) {
+		text_widget_->leave();
 		text_widget_->join();
 		text_widget_->set_location(dim_.textbox);
 		if(text_widget_->get_label()) {
@@ -409,6 +413,7 @@ void dialog::update_widget_positions()
 		}
 	}
 	if(get_menu().height() > 0) {
+		menu_->leave();
 		menu_->join();
 		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
 		menu_->set_width( dim_.menu_width );
@@ -419,6 +424,7 @@ void dialog::update_widget_positions()
 		menu_->set_location( dim_.menu_x, dim_.menu_y );
 	}
 	if(image_) {
+		image_->leave();
 		image_->join();
 		image_->set_location(dim_.image_x, dim_.image_y);
 		if(image_->caption()) {
@@ -428,24 +434,29 @@ void dialog::update_widget_positions()
 	button_iterator b;
 	for(b = top_buttons_.begin(); b != top_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
+		btn->leave();
 		btn->join();
 		std::pair<int,int> coords = dim_.buttons.find(btn)->second;
 		btn->set_location(coords.first, coords.second);
 	}
 	for(b = extra_buttons_.begin(); b != extra_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
+		btn->leave();
 		btn->join();
 		std::pair<int,int> coords = dim_.buttons.find(btn)->second;
 		btn->set_location(coords.first, coords.second);
 	}
 	for(b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
+		btn->leave();
 		btn->join();
 	}
 	if(help_button_) {
+		help_button_->leave();
 		help_button_->join();
 	}
 	message_->set_location(dim_.message);
+	message_->leave();
 	message_->join();
 }
 
@@ -798,6 +809,9 @@ int dialog::process(dialog_process_info &info)
 			return (selection);
 		}
 	}
+
+	draw_frame();
+	//draw_contents();
 
 	events::raise_process_event();
 	events::raise_draw_event();

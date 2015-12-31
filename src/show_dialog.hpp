@@ -52,7 +52,7 @@ private:
 	bool reset_to;
 };
 
-class dialog_frame {
+class dialog_frame :public events::sdl_handler {
 public:
 	struct dimension_measurements {
 		dimension_measurements();
@@ -95,6 +95,10 @@ public:
 	//also called by layout with null param
 	SDL_Rect draw_title(CVideo *video);
 
+	void set_dirty(bool dirty = true);
+
+	virtual void handle_event(const SDL_Event& event);
+
 private:
 	void clear_background();
 
@@ -112,6 +116,7 @@ private:
 	surface top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
 #endif
 	bool have_border_;
+	bool dirty_;
 };
 
 //frame_measurements draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);

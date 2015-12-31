@@ -33,6 +33,7 @@
 #include <deque>
 #include <utility>
 #include <vector>
+#include <algorithm>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
@@ -276,6 +277,37 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 	return false;
 }
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+
+const Uint32 resize_timeout = 100;
+SDL_Event last_resize_event;
+bool last_resize_event_used = true;
+
+bool resize_comparer(SDL_Event a, SDL_Event b) {
+	return a.type == SDL_WINDOWEVENT && a.type == b.type &&
+			a.window.event == SDL_WINDOWEVENT_RESIZED &&
+			a.window.event == b.window.event;
+}
+
+bool remove_on_resize(const SDL_Event &a) {
+	if (a.type == DRAW_EVENT) {
+		return true;
+	}
+	if (a.type == SHOW_HELPTIP_EVENT) {
+		return true;
+	}
+	if ((a.type == SDL_WINDOWEVENT) &&
+			(a.window.event == SDL_WINDOWEVENT_RESIZED ||
+					a.window.event == SDL_WINDOWEVENT_SIZE_CHANGED ||
+					a.window.event == SDL_WINDOWEVENT_EXPOSED)) {
+		return true;
+	}
+
+	return false;
+}
+
+#endif
+
 void pump()
 {
 	SDL_PumpEvents();
@@ -311,6 +343,7 @@ void pump()
 		}
 		events.push_back(temp_event);
 	}
+
 	std::vector<SDL_Event>::iterator ev_it = events.begin();
 	for(int i=1; i < begin_ignoring; ++i){
 		if(is_input(*ev_it)) {
@@ -320,7 +353,32 @@ void pump()
 			++ev_it;
 		}
 	}
+
 	std::vector<SDL_Event>::iterator ev_end = events.end();
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	bool resize_found = false;
+	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
+		SDL_Event &event = *ev_it;
+		if (event.type == SDL_WINDOWEVENT &&
+				event.window.event == SDL_WINDOWEVENT_RESIZED) {
+			resize_found = true;
+			last_resize_event = event;
+			last_resize_event_used = false;
+
+		}
+	}
+	// remove all inputs, draw events and only keep the last of the resize events
+	// This will turn horrible after ~38 days when the Uint32 wraps.
+	if (resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + resize_timeout) {
+		events.erase(std::remove_if(events.begin(), events.end(), remove_on_resize), events.end());
+	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {
+		events.insert(events.begin(), last_resize_event);
+		last_resize_event_used = true;
+	}
+
+	ev_end = events.end();
+#endif
+
 	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
 		SDL_Event &event = *ev_it;
 		switch(event.type) {
@@ -340,12 +398,20 @@ void pump()
 
 					case SDL_WINDOWEVENT_EXPOSED:
 						update_whole_screen();
+						if (display::get_singleton())
+							display::get_singleton()->redraw_everything();
 						break;
 
 					case SDL_WINDOWEVENT_RESIZED: {
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;
 						break;
+					case SDL_WINDOWEVENT_MOVED:
+					case SDL_WINDOWEVENT_CLOSE:
+						break;
+					default:
+						if (display::get_singleton())
+							display::get_singleton()->redraw_everything();
 					}
 				}
 				break;

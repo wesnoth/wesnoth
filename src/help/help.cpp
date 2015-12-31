@@ -117,6 +117,7 @@ help_manager::~help_manager()
 void show_help(display &disp, const std::string& show_topic, int xloc, int yloc)
 {
 	show_help(disp, toplevel, show_topic, xloc, yloc);
+	disp.redraw_everything();
 }
 
 /**
@@ -128,6 +129,7 @@ void show_unit_help(display &disp, const std::string& show_topic, bool has_varia
 {
 	show_help(disp, toplevel,
 			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
+	disp.redraw_everything();
 }
 
 /**
@@ -138,6 +140,7 @@ void show_unit_help(display &disp, const std::string& show_topic, bool has_varia
 void show_terrain_help(display &disp, const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
 	show_help(disp, toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
+	disp.redraw_everything();
 }
 
 
@@ -148,6 +151,7 @@ void show_terrain_help(display &disp, const std::string& show_topic, bool hidden
 void show_variation_help(display &disp, const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
 {
 	show_help(disp, toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
+	disp.redraw_everything();
 }
 
 /**
@@ -222,6 +226,7 @@ void show_help(display &disp, const section &toplevel_sec,
 		for (;;) {
 			events::pump();
 			events::raise_process_event();
+			f.draw();
 			events::raise_draw_event();
 			if (key[SDLK_ESCAPE]) {
 				// Escape quits from the dialog.
