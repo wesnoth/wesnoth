@@ -1463,7 +1463,7 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 	}
 #endif
 
-	if(!preferences::set_resolution(video_, new_size.x, new_size.y)) {
+	if(!video_.set_resolution(new_size.x, new_size.y)) {
 
 		LOG_GUI_E << LOG_HEADER << " resize aborted, resize failed.\n";
 		return;

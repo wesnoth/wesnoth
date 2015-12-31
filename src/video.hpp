@@ -76,11 +76,38 @@ class CVideo : private boost::noncopyable {
 	CVideo(FAKE_TYPES type = NO_FAKE);
 	~CVideo();
 
+	const static int DefaultBpp = 32;
 
 	int bppForMode( int x, int y, int flags);
 	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
 	int setMode( int x, int y, int bits_per_pixel, int flags );
 
+	/**
+	 * Detect a good resolution.
+	 *
+	 * @param video               The video 'holding' the framebuffer.
+	 * @param resolution          Any good resolution is returned through this reference.
+	 * @param bpp                 A reference through which the best bpp is returned.
+	 * @param video_flags         A reference through which the video flags for setting the video mode are returned.
+	 *
+	 * @returns                   Whether valid video settings were found.
+	 */
+	bool detect_video_settings(std::pair<int,int>& resolution, int& bpp, int& video_flags);
+
+	void set_fullscreen(bool ison);
+
+	/**
+	 * Set the resolution.
+	 *
+	 * @param width               The new width.
+	 * @param height              The new height.
+	 *
+	 * @returns                   The status true if width and height are the
+	 *                            size of the framebuffer, false otherwise.
+	 */
+	void set_resolution(const std::pair<int,int>& res);
+	bool set_resolution(const unsigned width, const unsigned height);
+			
 	//did the mode change, since the last call to the modeChanged() method?
 	bool modeChanged();
 
@@ -129,8 +156,10 @@ class CVideo : private boost::noncopyable {
 	};
 
 	//functions to allow changing video modes when 16BPP is emulated
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	void setBpp( int bpp );
 	int getBpp();
+#endif
 
 	void make_fake();
 	/**
@@ -141,7 +170,7 @@ class CVideo : private boost::noncopyable {
 	 * @param bpp                 The bpp of the buffer.
 	 */
 	void make_test_fake(const unsigned width = 1024,
-			const unsigned height = 768, const unsigned bpp = 32);
+			const unsigned height = 768, const unsigned bpp = DefaultBpp);
 	bool faked() const { return fake_screen_; }
 
 	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears

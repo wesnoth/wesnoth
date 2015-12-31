@@ -48,7 +48,6 @@ display_manager::display_manager(display* d)
 	set_grid(grid());
 	set_turbo(turbo());
 	set_turbo_speed(turbo_speed());
-	set_fullscreen(fullscreen());
 	set_scroll_to_action(scroll_to_action());
 	set_color_cursors(preferences::get("color_cursors", false));
 }
@@ -58,137 +57,9 @@ display_manager::~display_manager()
 	disp = NULL;
 }
 
-bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& bpp, int& video_flags)
-{
-	video_flags = fullscreen() ? SDL_FULLSCREEN : 0;
-	resolution = preferences::resolution();
-
-	int DefaultBPP = 24;
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	/* This needs to be fixed properly. */
-	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
-	if(video_info != NULL && video_info->vfmt != NULL) {
-		DefaultBPP = video_info->vfmt->BitsPerPixel;
-	}
-#endif
-
-	std::cerr << "Checking video mode: " << resolution.first << 'x'
-		<< resolution.second << 'x' << DefaultBPP << "...\n";
-
-	typedef std::pair<int, int> res_t;
-	std::vector<res_t> res_list = video.get_available_resolutions();
-	if (res_list.empty()) {
-		res_list.push_back(res_t(800, 480));
-		res_list.push_back(res_t(800, 600));
-		res_list.push_back(res_t(1024, 600));
-		res_list.push_back(res_t(1024, 768));
-		res_list.push_back(res_t(1920, 1080));
-	}
-
-	bpp = video.modePossible(resolution.first, resolution.second,
-		DefaultBPP, video_flags, true);
-
-	BOOST_REVERSE_FOREACH(const res_t &res, res_list)
-	{
-		if (bpp != 0) break;
-		std::cerr << "Video mode " << resolution.first << 'x'
-			<< resolution.second << 'x' << DefaultBPP
-			<< " is not supported; attempting " << res.first
-			<< 'x' << res.second << 'x' << DefaultBPP << "...\n";
-		resolution = res;
-		bpp = video.modePossible(resolution.first, resolution.second,
-			DefaultBPP, video_flags);
-	}
-
-	return bpp != 0;
-}
-
-void set_fullscreen(CVideo& video, const bool ison)
-{
-	_set_fullscreen(ison);
-
-	const std::pair<int,int>& res = resolution();
-	if(video.isFullScreen() != ison) {
-		const int flags = ison ? SDL_FULLSCREEN : 0;
-		int bpp = video.bppForMode(res.first, res.second, flags);
-
-		if(bpp > 0) {
-			video.setMode(res.first,res.second,bpp,flags);
-			if(disp) {
-				disp->redraw_everything();
-			}
-		} else {
-			int tmp_flags = flags;
-			std::pair<int,int> tmp_res;
-			if(detect_video_settings(video, tmp_res, bpp, tmp_flags)) {
-				set_resolution(video, tmp_res.first, tmp_res.second);
-			// TODO: see if below line is actually needed, possibly for displays that only support 16 bbp
-			} else if(video.modePossible(1024,768,16,flags)) {
-				set_resolution(video, 1024, 768);
-			} else {
-				gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
-			}
-			// We reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
-			set_color_cursors(preferences::get("color_cursors", false));
-		}
-	}
-}
-
-void set_fullscreen(bool ison)
-{
-	if(disp != NULL) {
-		set_fullscreen(disp->video(), ison);
-	} else {
-		// Only change the config value.
-		_set_fullscreen(ison);
-	}
-}
-
 void set_scroll_to_action(bool ison)
 {
 	_set_scroll_to_action(ison);
-}
-void set_resolution(const std::pair<int,int>& resolution)
-{
-	if(disp) {
-		set_resolution(disp->video(), resolution.first, resolution.second);
-	} else {
-		// Only change the config value. This part is needed when wesnoth is
-		// started with the -r parameter.
-		_set_resolution(resolution);
-	}
-}
-
-bool set_resolution(CVideo& video
-		, const unsigned width, const unsigned height)
-{
-	SDL_Rect rect;
-	SDL_GetClipRect(video.getSurface(), &rect);
-	if(static_cast<unsigned int> (rect.w) == width && static_cast<unsigned int>(rect.h) == height) {
-		return true;
-	}
-
-	const int flags = fullscreen() ? SDL_FULLSCREEN : 0;
-	int bpp = video.bppForMode(width, height, flags);
-
-	if(bpp != 0) {
-		//video.setMode(width, height, bpp, flags);
-
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-		if(disp) {
-			disp->redraw_everything();
-		}
-#endif
-
-	} else {
-        // grzywacz: is this even true?
-		gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
-		return false;
-	}
-
-	_set_resolution(std::make_pair(width, height));
-
-	return true;
 }
 
 void set_turbo(bool ison)
@@ -307,7 +178,10 @@ bool show_video_mode_dialog(display& disp)
 		return false;
 	}
 
-	set_resolution(resolutions[static_cast<size_t>(choice)]);
+	if (disp.get_singleton()) {
+		disp.get_singleton()->video().set_resolution(resolutions[static_cast<size_t>(choice)]);
+	}
+
 	return true;
 }
 

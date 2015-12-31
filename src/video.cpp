@@ -24,7 +24,6 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
-#include "preferences_display.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/window.hpp"
@@ -56,7 +55,9 @@ void resize_monitor::process(events::pump_info &info) {
 	if(info.resize_dimensions.first >= preferences::min_allowed_width()
 	&& info.resize_dimensions.second >= preferences::min_allowed_height()
 	&& disallow_resize == 0) {
-		preferences::set_resolution(info.resize_dimensions);
+		if (display::get_singleton()) {
+			display::get_singleton()->video().set_resolution(info.resize_dimensions);
+		}
 	}
 #else
 	if(info.resize_dimensions.first > 0 &&
@@ -511,6 +512,7 @@ void CVideo::make_test_fake(const unsigned width,
 
 }
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 int CVideo::bppForMode( int x, int y, int flags)
 {
 	int test_values[3] = {getBpp(), 32, 16};
@@ -522,6 +524,7 @@ int CVideo::bppForMode( int x, int y, int flags)
 
 	return 0;
 }
+#endif
 
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal )
 {
@@ -847,6 +850,7 @@ surface& CVideo::getSurface()
 
 bool CVideo::isFullScreen() const { return fullScreen; }
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 void CVideo::setBpp( int bpp )
 {
 	bpp_ = bpp;
@@ -856,6 +860,7 @@ int CVideo::getBpp()
 {
 	return bpp_;
 }
+#endif
 
 int CVideo::set_help_string(const std::string& str)
 {
@@ -901,3 +906,121 @@ void CVideo::clear_all_help_strings()
 	clear_help_string(help_string_);
 }
 
+bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int& video_flags)
+{
+	video_flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
+	resolution = preferences::resolution();
+
+	int DefaultBPP = DefaultBpp;
+
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	/* This needs to be fixed properly. */
+	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
+	if(video_info != NULL && video_info->vfmt != NULL) {
+		DefaultBPP = video_info->vfmt->BitsPerPixel;
+	}
+#endif
+
+	std::cerr << "Checking video mode: " << resolution.first << 'x'
+		<< resolution.second << 'x' << DefaultBPP << "...\n";
+
+	typedef std::pair<int, int> res_t;
+	std::vector<res_t> res_list = get_available_resolutions();
+	if (res_list.empty()) {
+		res_list.push_back(res_t(800, 480));
+		res_list.push_back(res_t(800, 600));
+		res_list.push_back(res_t(1024, 600));
+		res_list.push_back(res_t(1024, 768));
+		res_list.push_back(res_t(1920, 1080));
+	}
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	bpp = DefaultBPP;
+#else
+	bpp = modePossible(resolution.first, resolution.second,
+		DefaultBPP, video_flags, true);
+#endif
+
+	BOOST_REVERSE_FOREACH(const res_t &res, res_list)
+	{
+		if (bpp != 0) break;
+		std::cerr << "Video mode " << resolution.first << 'x'
+			<< resolution.second << 'x' << DefaultBPP
+			<< " is not supported; attempting " << res.first
+			<< 'x' << res.second << 'x' << DefaultBPP << "...\n";
+		resolution = res;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		bpp = DefaultBPP;
+#else
+		bpp = modePossible(resolution.first, resolution.second,
+			DefaultBPP, video_flags);
+#endif
+	}
+
+	return bpp != 0;
+}
+
+void CVideo::set_fullscreen(bool ison)
+{
+	if(display::get_singleton() != NULL) {
+		const std::pair<int,int>& res = preferences::resolution();
+		if(isFullScreen() != ison) {
+			const int flags = ison ? SDL_FULLSCREEN : 0;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+			int bpp = DefaultBpp;
+#else
+			int bpp = bppForMode(res.first, res.second, flags);
+#endif
+
+			setMode(res.first,res.second,bpp,flags);
+			if(display::get_singleton()) {
+				display::get_singleton()->redraw_everything();
+			}
+		}
+	}
+
+	// Change the config value.
+	preferences::_set_fullscreen(ison);
+}
+
+void CVideo::set_resolution(const std::pair<int,int>& resolution)
+{
+	if(display::get_singleton()) {
+		set_resolution(resolution.first, resolution.second);
+	} else {
+		// Only change the config value. This part is needed when wesnoth is
+		// started with the -r parameter.
+		preferences::_set_resolution(resolution);
+	}
+}
+
+bool CVideo::set_resolution(const unsigned width, const unsigned height)
+{
+	SDL_Rect rect;
+	SDL_GetClipRect(getSurface(), &rect);
+	if(static_cast<unsigned int> (rect.w) == width && static_cast<unsigned int>(rect.h) == height) {
+		return true;
+	}
+
+	const int flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	int bpp = DefaultBpp;
+#else
+	int bpp = bppForMode(width, height, flags);
+#endif
+
+	if(bpp != 0) {
+		setMode(width, height, bpp, flags);
+
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+		if(display::get_singleton()) {
+			display::get_singleton()->redraw_everything();
+		}
+#endif
+
+	}
+
+	preferences::_set_resolution(std::make_pair(width, height));
+
+	return true;
+}
