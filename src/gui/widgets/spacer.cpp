@@ -54,11 +54,6 @@ bool tspacer::disable_click_dismiss() const
 	return false;
 }
 
-void tspacer::impl_draw_background(surface& /*frame_buffer*/)
-{
-	/* DO NOTHING */
-}
-
 void tspacer::impl_draw_background(surface& /*frame_buffer*/
 								   ,
 								   int /*x_offset*/
