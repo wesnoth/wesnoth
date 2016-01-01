@@ -313,6 +313,17 @@ void ui::handle_event(const SDL_Event& event)
 {
 	gui::widget::handle_event(event);
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
+		SDL_Rect new_location;
+		new_location.x = 0;
+		new_location.y = 0;
+		new_location.w = event.window.data1;
+		new_location.h = event.window.data2;
+		set_location(new_location);
+	}
+#endif
+
 	if(event.type == SDL_KEYDOWN) {
 		handle_key_event(event.key);
 	}
