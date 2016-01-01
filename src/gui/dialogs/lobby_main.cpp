@@ -405,38 +405,6 @@ tlobby_main::~tlobby_main()
 	}
 }
 
-static void signal_handler_sdl_video_resize(const event::tevent event,
-											bool& handled,
-											bool& halt,
-											const tpoint& new_size,
-											CVideo& video)
-{
-	DBG_GUI_E << __func__ << ": " << event << ".\n";
-
-	if(new_size.x < preferences::min_allowed_width()
-	   || new_size.y < preferences::min_allowed_height()) {
-
-		DBG_GUI_E << __func__ << ": resize aborted, too small.\n";
-		handled = true;
-		halt = true;
-		return;
-	}
-
-	if(new_size.x == static_cast<int>(settings::screen_width)
-	   && new_size.y == static_cast<int>(settings::screen_height)) {
-
-		DBG_GUI_E << __func__ << ": resize not needed.\n";
-		handled = true;
-		return;
-	}
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	if(!video.set_resolution(new_size.x, new_size.y)) {
-
-		LOG_GUI_E << __func__ << ": resize aborted, resize failed.\n";
-	}
-#endif
-}
-
 static bool fullscreen(CVideo& video)
 {
 	video.set_fullscreen(!preferences::fullscreen());
@@ -462,17 +430,6 @@ void tlobby_main::post_build(CVideo& video, twindow& window)
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
 			boost::bind(fullscreen, boost::ref(video)));
-
-
-	/** @todo Remove this code once the resizing in twindow is finished. */
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(
-			boost::bind(&signal_handler_sdl_video_resize,
-						_2,
-						_3,
-						_4,
-						_5,
-						boost::ref(video)),
-			event::tdispatcher::front_child);
 
 	/*** Local hotkeys. ***/
 	preferences_wrapper_
