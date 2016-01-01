@@ -123,6 +123,11 @@ void prefs_event_handler::handle_event(const SDL_Event& event)
 		_set_maximized(true);
 
 		break;
+
+	case SDL_WINDOWEVENT_RESTORED:
+		_set_maximized(false);
+
+		break;
 	}
 #else
 	UNUSED(event);
