@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "sound.hpp"
 #include "quit_confirmation.hpp"
+#include "preferences.hpp"
 #include "video.hpp"
 #include "display.hpp"
 #if defined _WIN32

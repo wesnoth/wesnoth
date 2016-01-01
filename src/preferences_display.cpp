@@ -115,19 +115,6 @@ void set_idle_anim_rate(int rate) {
 	}
 }
 
-namespace {
-class escape_handler : public events::sdl_handler {
-public:
-	escape_handler() : escape_pressed_(false) {}
-	bool escape_pressed() const { return escape_pressed_; }
-	void handle_event(const SDL_Event &event) { escape_pressed_ |= (event.type == SDL_KEYDOWN)
-		&& (reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym.sym == SDLK_ESCAPE); }
-private:
-	bool escape_pressed_;
-};
-
-} // end anonymous namespace
-
 
 bool show_video_mode_dialog(display& disp)
 {
@@ -146,17 +133,13 @@ bool show_video_mode_dialog(display& disp)
 		return false;
 	}
 
-	const std::pair<int,int> current_res(
-			  disp.video().getSurface()->w
-			, disp.video().getSurface()->h);
-
 	std::vector<std::string> options;
 	unsigned current_choice = 0;
 
 	for(size_t k = 0; k < resolutions.size(); ++k) {
 		std::pair<int, int> const& res = resolutions[k];
 
-		if (res == current_res)
+		if (res == disp.video().current_resolution())
 			current_choice = static_cast<unsigned>(k);
 
 		std::ostringstream option;
@@ -174,7 +157,7 @@ bool show_video_mode_dialog(display& disp)
 
 	int choice = dlg.selected_index();
 
-	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == current_res) {
+	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == disp.video().current_resolution()) {
 		return false;
 	}
 

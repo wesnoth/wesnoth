@@ -87,16 +87,6 @@ class preferences_dialog : public gui::preview_pane
 public:
 	preferences_dialog(display& disp, const config& game_cfg);
 
-	struct video_mode_change_exception
-	{
-		enum TYPE { CHANGE_RESOLUTION, MAKE_FULLSCREEN, MAKE_WINDOWED };
-
-		video_mode_change_exception(TYPE type) : type(type)
-		{}
-
-		TYPE type;
-	};
-
 	virtual sdl_handler_vector handler_members();
 private:
 
@@ -965,15 +955,13 @@ void preferences_dialog::process_event()
 		if (show_floating_labels_button_.pressed())
 			set_show_floating_labels(show_floating_labels_button_.checked());
 		if (video_mode_button_.pressed())
-			throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
+			show_video_mode_dialog(disp_);
 		if (theme_button_.pressed()) {
 			show_theme_dialog(disp_);
 			parent->clear_buttons();
 		}
 		if (fullscreen_button_.pressed())
-			throw video_mode_change_exception(fullscreen_button_.checked()
-											? video_mode_change_exception::MAKE_FULLSCREEN
-											: video_mode_change_exception::MAKE_WINDOWED);
+			disp_.video().set_fullscreen(fullscreen_button_.checked());
 		if (show_haloing_button_.pressed())
 			set_show_haloes(show_haloing_button_.checked());
 		if (show_team_colors_button_.pressed())
@@ -1706,32 +1694,15 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 	items.push_back(pre + "multiplayer.png" + sep + translation::sgettext("Prefs section^Multiplayer"));
 	items.push_back(pre + "advanced.png" + sep + translation::sgettext("Advanced section^Advanced"));
 
-	for(;;) {
-		try {
-			preferences_dialog dialog(disp,game_cfg);
-			dialog.parent.assign(new preferences_parent_dialog(disp));
-			dialog.parent->set_menu(items);
-			dialog.parent->add_pane(&dialog);
-			dialog.parent->show();
-			return;
-		} catch(preferences_dialog::video_mode_change_exception& e) {
-			switch(e.type) {
-			case preferences_dialog::video_mode_change_exception::CHANGE_RESOLUTION:
-				show_video_mode_dialog(disp);
-				break;
-			case preferences_dialog::video_mode_change_exception::MAKE_FULLSCREEN:
-				disp.video().set_fullscreen(true);
-				break;
-			case preferences_dialog::video_mode_change_exception::MAKE_WINDOWED:
-				disp.video().set_fullscreen(false);
-				break;
-			}
-
-			if(items[1].empty() || items[1][0] != '*') {
-				items[1] = "*" + items[1];
-			}
-		}
+	if(items[1].empty() || items[1][0] != '*') {
+		items[1] = "*" + items[1];
 	}
+
+	preferences_dialog dialog(disp,game_cfg);
+	dialog.parent.assign(new preferences_parent_dialog(disp));
+	dialog.parent->set_menu(items);
+	dialog.parent->add_pane(&dialog);
+	dialog.parent->show();
 }
 
 bool show_theme_dialog(display& disp)
