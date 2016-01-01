@@ -1055,6 +1055,7 @@ bool CVideo::set_resolution(const unsigned width, const unsigned height)
 	}
 
 	preferences::_set_resolution(std::make_pair(width, height));
+	preferences::_set_maximized(false);
 
 	return true;
 }
