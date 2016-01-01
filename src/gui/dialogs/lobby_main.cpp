@@ -429,11 +429,12 @@ static void signal_handler_sdl_video_resize(const event::tevent event,
 		handled = true;
 		return;
 	}
-
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(!video.set_resolution(new_size.x, new_size.y)) {
 
 		LOG_GUI_E << __func__ << ": resize aborted, resize failed.\n";
 	}
+#endif
 }
 
 static bool fullscreen(CVideo& video)
