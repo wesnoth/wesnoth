@@ -100,6 +100,11 @@ public:
 	void maximize();
 
 	/**
+	 * Dummy function for restoring the window.
+	 */
+	void restore();
+
+	/**
 	 * Dummy function for setting the window to fullscreen mode.
 	 */
 	void full_screen();

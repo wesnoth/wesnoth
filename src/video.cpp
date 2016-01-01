@@ -616,6 +616,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		} else if (is_maximized) {
 			window->maximize();
 		} else {
+			window->restore();
 			window->set_size(x, y);
 			window->center();
 		}

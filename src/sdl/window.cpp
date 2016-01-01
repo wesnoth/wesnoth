@@ -67,7 +67,6 @@ twindow::~twindow()
 
 void twindow::set_size(const int w, const int h)
 {
-	SDL_SetWindowFullscreen(window_, 0);
 	SDL_SetWindowSize(window_, w, h);
 }
 
@@ -78,8 +77,13 @@ void twindow::center()
 
 void twindow::maximize()
 {
-	SDL_SetWindowFullscreen(window_, 0);
 	SDL_MaximizeWindow(window_);
+}
+
+void twindow::restore()
+{
+	SDL_SetWindowFullscreen(window_, 0);
+	SDL_RestoreWindow(window_);
 }
 
 void twindow::full_screen()
