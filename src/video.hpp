@@ -218,6 +218,12 @@ class CVideo : private boost::noncopyable {
 
 private:
 
+	class video_event_handler : public events::sdl_handler {
+	public:
+		virtual void handle_event(const SDL_Event &event);
+		video_event_handler() :	sdl_handler(false) {}
+	};
+
 	void initSDL();
 #ifdef SDL_GPU
 	void update_overlay(SDL_Rect *rect = NULL);
@@ -232,6 +238,8 @@ private:
 
 	//if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;
+
+	video_event_handler event_handler_;
 
 	//variables for help strings
 	int help_string_;
