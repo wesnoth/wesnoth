@@ -141,6 +141,10 @@ void context::set_focus(const sdl_handler* ptr)
 //in that context. The current context is the one on the top of the stack
 std::deque<context> event_contexts;
 
+//add a global context for event handlers. Whichever object has joined this will always
+//receive all events, regardless of the current context.
+context global_context;
+
 std::vector<pump_monitor*> pump_monitors;
 
 } //end anon namespace
@@ -185,7 +189,12 @@ event_context::~event_context()
 
 sdl_handler::~sdl_handler()
 {
-	leave();
+	if (has_joined_)
+		leave();
+
+	if (has_joined_global_)
+		leave_global();
+
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_EnableUNICODE(unicode_);
 #endif
@@ -225,6 +234,38 @@ void sdl_handler::leave()
 		}
 	}
 	has_joined_ = false;
+}
+
+void sdl_handler::join_global()
+{
+	if(has_joined_global_) {
+		leave_global(); // should not be in multiple event contexts
+	}
+	//join self
+	global_context.add_handler(this);
+	has_joined_global_ = true;
+
+	//instruct members to join
+	sdl_handler_vector members = handler_members();
+	if(!members.empty()) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+			(*i)->join_global();
+		}
+	}
+}
+
+void sdl_handler::leave_global()
+{
+	sdl_handler_vector members = handler_members();
+	if(!members.empty()) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+			(*i)->leave_global();
+		}
+	}
+
+	global_context.remove_handler(this);
+
+	has_joined_global_ = false;
 }
 
 void focus_handler(const sdl_handler* ptr)
@@ -398,22 +439,14 @@ void pump()
 
 					case SDL_WINDOWEVENT_EXPOSED:
 						update_whole_screen();
-						if (display::get_singleton())
-							display::get_singleton()->redraw_everything();
 						break;
 
-					case SDL_WINDOWEVENT_RESIZED: {
+					case SDL_WINDOWEVENT_RESIZED:
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;
 						break;
-					case SDL_WINDOWEVENT_MOVED:
-					case SDL_WINDOWEVENT_CLOSE:
-						break;
-					default:
-						if (display::get_singleton())
-							display::get_singleton()->redraw_everything();
-					}
 				}
+
 				break;
 #else
 			case SDL_ACTIVEEVENT: {
@@ -500,6 +533,11 @@ void pump()
 			}
 		}
 
+		const std::vector<sdl_handler*>& event_handlers = global_context.handlers;
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->handle_event(event);
+		}
+
 		if(event_contexts.empty() == false) {
 
 			const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
@@ -510,6 +548,7 @@ void pump()
 				event_handlers[i1]->handle_event(event);
 			}
 		}
+
 	}
 
 	//inform the pump monitors that an events::pump() has occurred

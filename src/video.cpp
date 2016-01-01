@@ -60,10 +60,7 @@ void resize_monitor::process(events::pump_info &info) {
 		}
 	}
 #else
-	if(info.resize_dimensions.first > 0 &&
-			info.resize_dimensions.second > 0
-			&& display::get_singleton())
-		display::get_singleton()->redraw_everything();
+	UNUSED(info);
 #endif
 }
 
@@ -355,6 +352,41 @@ void update_whole_screen()
 {
 	update_all = true;
 }
+
+
+void CVideo::video_event_handler::handle_event(const SDL_Event &event)
+{
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	if (event.type == SDL_WINDOWEVENT) {
+		switch (event.window.event) {
+			case SDL_WINDOWEVENT_RESIZED:
+			case SDL_WINDOWEVENT_RESTORED:
+			case SDL_WINDOWEVENT_SHOWN:
+			case SDL_WINDOWEVENT_EXPOSED:
+				if (display::get_singleton())
+					display::get_singleton()->redraw_everything();
+				break;
+#if !SDL_VERSION_ATLEAST(2, 0, 4) && defined(_WIN32)
+			case SDL_WINDOWEVENT_FOCUS_GAINED:
+
+				if(SDL_GetWindowFlags(*window) & SDL_WINDOW_MAXIMIZED) {
+					SDL_RestoreWindow(*window);
+					SDL_MaximizeWindow(*window);
+				}
+				if(SDL_GetWindowFlags(*window) & SDL_WINDOW_FULLSCREEN_DESKTOP) {
+					SDL_RestoreWindow(*window);
+					SDL_SetWindowFullscreen(*window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+				}
+				break;
+#endif
+		}
+	}
+#else
+	UNUSED(event);
+#endif
+}
+
+
 CVideo::CVideo(FAKE_TYPES type) :
 #ifdef SDL_GPU
 	shader_(),
@@ -581,6 +613,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		// Note that x and y in this particular case refer to width and height of the window, not co-ordinates.
 		window = new sdl::twindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, flags, SDL_RENDERER_SOFTWARE);
 		window->set_minimum_size(preferences::min_allowed_width(), preferences::min_allowed_height());
+		event_handler_.join_global();
 	} else {
 		if(fullScreen) {
 			window->full_screen();
