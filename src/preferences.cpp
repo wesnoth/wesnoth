@@ -56,8 +56,18 @@ config prefs;
 
 namespace preferences {
 
+class prefs_event_handler : public events::sdl_handler {
+public:
+	virtual void handle_event(const SDL_Event &event);
+	prefs_event_handler() :	sdl_handler(false) {}
+};
+
+prefs_event_handler event_handler_;
+
 base_manager::base_manager()
 {
+	event_handler_.join_global();
+
 	try{
 #ifdef DEFAULT_PREFS_PATH
 		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
@@ -96,7 +106,7 @@ base_manager::~base_manager()
  * events. Since there is no fullscreen window event, that setter is called 
  * from the CVideo function instead.
  */
-void handle_event(const SDL_Event& event)
+void prefs_event_handler::handle_event(const SDL_Event& event)
 {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	// Saftey check to make sure this is a window event
@@ -107,7 +117,7 @@ void handle_event(const SDL_Event& event)
 	case SDL_WINDOWEVENT_RESIZED:
 		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
 
-		break; 
+		break;
 
 	case SDL_WINDOWEVENT_MAXIMIZED:
 		_set_maximized(true);
