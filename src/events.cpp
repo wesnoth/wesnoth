@@ -443,6 +443,7 @@ void pump()
 						break;
 
 					case SDL_WINDOWEVENT_RESIZED:
+						std::cout << "resize event: " << event.window.data1 << "x" << event.window.data2 << "\n";
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;
 						break;

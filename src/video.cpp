@@ -601,9 +601,6 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	flags = get_flags(flags);
 
-	is_fullscreen = (flags & SDL_FULLSCREEN      ) != 0;
-	is_maximized  = (flags & SDL_WINDOW_MAXIMIZED) != 0;
-
 	if (!window) {
 		// SDL_WINDOWPOS_UNDEFINED allows SDL to centre the window in the display instead of using a fixed initial position.
 		// Note that x and y in this particular case refer to width and height of the window, not co-ordinates.
@@ -611,13 +608,18 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		window->set_minimum_size(preferences::min_allowed_width(), preferences::min_allowed_height());
 		event_handler_.join_global();
 	} else {
+		int window_flags = window->get_flags();
+		is_fullscreen = (window_flags & SDL_FULLSCREEN      ) != 0;
+		is_maximized  = (window_flags & SDL_WINDOW_MAXIMIZED) != 0;
+
+		window->set_size(x, y);
 		if (is_fullscreen) {
 			window->full_screen();
 		} else if (is_maximized) {
+			window->restore();
 			window->maximize();
 		} else {
 			window->restore();
-			window->set_size(x, y);
 			window->center();
 		}
 	}
