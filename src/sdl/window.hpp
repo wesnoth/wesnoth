@@ -95,14 +95,17 @@ public:
 	void center();
 
 	/**
-	 * Dummy function for setting the maximizing the screen.
+	 * Dummy function for maximizing the window.
 	 */
 	void maximize();
 
 	/**
-	 * Dummy function for setting the screen to full screen mode.
-	 *
-	 * @todo Implement this function properly.
+	 * Dummy function for restoring the window.
+	 */
+	void restore();
+
+	/**
+	 * Dummy function for setting the window to fullscreen mode.
 	 */
 	void full_screen();
 

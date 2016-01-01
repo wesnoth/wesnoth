@@ -113,7 +113,6 @@ void prefs_event_handler::handle_event(const SDL_Event& event)
 	if (event.type != SDL_WINDOWEVENT) return;
 
 	switch(event.window.event) {
-	case SDL_WINDOWEVENT_SIZE_CHANGED: // Fall through to RESIZED
 	case SDL_WINDOWEVENT_RESIZED:
 		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
 
@@ -121,6 +120,11 @@ void prefs_event_handler::handle_event(const SDL_Event& event)
 
 	case SDL_WINDOWEVENT_MAXIMIZED:
 		_set_maximized(true);
+
+		break;
+
+	case SDL_WINDOWEVENT_RESTORED:
+		_set_maximized(false);
 
 		break;
 	}
