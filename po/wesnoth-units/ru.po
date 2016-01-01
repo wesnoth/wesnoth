@@ -13,20 +13,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-08 18:04-0300\n"
-"PO-Revision-Date: 2014-11-14 20:45+0300\n"
+"POT-Creation-Date: 2015-11-05 21:31-0300\n"
+"PO-Revision-Date: 2015-12-30 01:49+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.4.1, po-mode 2.22+0.4\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Language: Russian\n"
-"X-Poedit-Country: RUSSIAN FEDERATION\n"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -42,13 +40,13 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
-"Драконьи стражи — самые загадочные из всех гномов. Никто даже не знает, "
-"почему собратья-гномы их так прозвали. Одни болтают, что всё дело в их "
-"оружии — этот странный посох изрыгает огонь и сеет смерть, как настоящий "
-"дракон. Другие думают, что это идёт ещё из тех времён, когда стражи своим "
-"оружием защищали гномов от истинных драконов.\n"
+"Драконоборцы — самые загадочные из всех гномов. Никто даже не знает, почему "
+"собратья-гномы их так прозвали. Одни болтают, что всё дело в их оружии — "
+"этот странный посох изрыгает огонь и сеет смерть, как настоящий дракон. "
+"Другие думают, что это идёт ещё из тех времён, когда стражи своим оружием "
+"защищали гномов от истинных драконов.\n"
 "Рассказывают, что в короткий период перемирия между двумя гномо-эльфийскими "
-"войнами, один драконий страж почему-то забрёл в лес к эльфам. Те не смогли "
+"войнами, один драконоборец почему-то забрёл в лес к эльфам. Те не смогли "
 "удержаться от соблазна узнать его тайну и попытались его схватить. Как они "
 "их ни уговаривал, как ни напоминал им о перемирии — ничто негодяев не "
 "остановило. Тогда гном достал свой посох... Сбежать смог только один эльф. "
@@ -131,9 +129,8 @@ msgstr "топор"
 #: data/core/units/dwarves/Fighter.cfg:62 data/core/units/dwarves/Lord.cfg:69
 #: data/core/units/dwarves/Runemaster.cfg:42
 #: data/core/units/dwarves/Runesmith.cfg:46
-#: data/core/units/dwarves/Steelclad.cfg:69
-#: data/core/units/trolls/Great.cfg:38 data/core/units/trolls/Hero.cfg:38
-#: data/core/units/trolls/Warrior.cfg:38
+#: data/core/units/dwarves/Steelclad.cfg:69 data/core/units/trolls/Great.cfg:38
+#: data/core/units/trolls/Hero.cfg:38 data/core/units/trolls/Warrior.cfg:38
 msgid "hammer"
 msgstr "молот"
 
@@ -148,25 +145,24 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
-"Эльфийское выражение «крепкий, как дуб» как нельзя лучше подходит к "
-"стражникам: уж если они где-то встанут, то сдвинуть с места их будет "
-"непросто. Прикрываясь башенными щитами, за которыми их практически не видно, "
+"Выражение «крепкий, как дуб» как нельзя лучше подходит к гномам, и многие из "
+"них используют свойства своего телосложения для получения преимущества в "
+"бою. Прикрываясь башенными щитами, за которыми их практически не видно, "
 "орудуя массивными копьями, которые они могут при необходимости и метнуть в "
-"противника, выстроившись в свой любимый хирд, они непоколебимы как те скалы, "
-"из которых гномы были выкованы по легенде."
+"противника, выстроившись в свой любимый хирд, они способны удерживать "
+"позиции со стойкостью дуба, вцепившегося корнями в землю, и создать большие "
+"проблемы для тех, кто пытается прорваться через их линии обороны."
 
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:29
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:38
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:33
-#: data/core/units/drakes/Clasher.cfg:46
-#: data/core/units/drakes/Thrasher.cfg:44
+#: data/core/units/drakes/Clasher.cfg:46 data/core/units/drakes/Thrasher.cfg:44
 #: data/core/units/dwarves/Guardsman.cfg:41
 #: data/core/units/dwarves/Sentinel.cfg:50
 #: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/goblins/Impaler.cfg:41
-#: data/core/units/goblins/Impaler.cfg:53
-#: data/core/units/goblins/Rouser.cfg:44
+#: data/core/units/goblins/Impaler.cfg:53 data/core/units/goblins/Rouser.cfg:44
 #: data/core/units/goblins/Spearman.cfg:42
 #: data/core/units/goblins/Spearman.cfg:52
 #: data/core/units/humans/Horseman.cfg:37
@@ -174,8 +170,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Spearman.cfg:77
 #: data/core/units/khalifate/Mudafi.cfg:22
 #: data/core/units/khalifate/Rasikh.cfg:23
-#: data/core/units/merfolk/Hoplite.cfg:47
-#: data/core/units/merfolk/Hunter.cfg:36 data/core/units/merfolk/Hunter.cfg:44
+#: data/core/units/merfolk/Hoplite.cfg:47 data/core/units/merfolk/Hunter.cfg:36
+#: data/core/units/merfolk/Hunter.cfg:44
 #: data/core/units/merfolk/Javelineer.cfg:36
 #: data/core/units/merfolk/Javelineer.cfg:44
 #: data/core/units/merfolk/Spearman.cfg:35
@@ -228,16 +224,13 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
-"Прозвище «скала» эти гномы заслужили не случайно. Опыт и индивидуально "
+"Лучшие бойцы среди своих собратьев, Неуязвимые формируют костяк гномьих "
+"боевых порядков. Прямая атака против позиций, на которых они укрепились, "
+"обычно вне обсуждения; она будет не просто неэффективна, а прямо "
+"самоубийственна. Эти гномы - мастера ближнего боя, а опыт и индивидуально "
 "подогнанные доспехи, делают их практически неуязвимыми. Как скала может "
-"непоколебимо стоять посреди моря, так и эти бойцы, могут удержать для вашей "
-"армии любую точку. У гномов есть легенда времён самой первой гномо-"
-"эльфийской войны. Эльфы тогда вплотную подошли ко входу в пещеры; "
-"подкрепления же гномов ожидались лишь через сутки. И тогда один такой "
-"часовой закрыл узкий проход и удерживал эльфов до подхода основных сил. Один "
-"против всех. Когда же пришла подмога, на нём обнаружили всего несколько "
-"царапин, зато щит его и доспехи были утыканы стрелами, как дикобраз. (Погиб "
-"этот гном, кстати, очень глупо - подавился костью на пире в свою честь.)"
+"непоколебимо стоять посреди бушующего моря, так и эти бойцы могут держать "
+"оборону с невероятной стойкостью, что бы вокруг ни происходило."
 
 # **
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
@@ -250,11 +243,10 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
-"У эльфов есть поговорка: если где-то вырос лес — его оттуда не изгонишь. Но "
-"одно дело эльфы со своими россказнями, другое дело — гномы в бою: если они "
-"окопались — их уже не выбить. Несколько проведёных сражений даёт хранителям "
-"представлние о преимуществах разных типов местности и потому они знают где "
-"как лучше окопаться."
+"Опыт и тренировка превращают рядовых хирда в превосходных воинов. Ветераны "
+"хирда экипированы в более качественные доспехи и могут удерживать линию "
+"обороны против самых жестоких атак. Отступать перед ними опасно, потому что "
+"вернуть обратно позиции, на которых они укрепились, очень непросто."
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
@@ -305,14 +297,14 @@ msgid ""
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
 "Когда громовержец закалится в боях и докажет, что умеет держать язык за "
-"зубами, он становится громовым стражем и обзаводится новым, намного более "
+"зубами, он получает звание Огневержца и обзаводится новым, намного более "
 "смертоносным посохом из дерева и железа. Говорят, они сами куют себе оружие "
 "по тайным чертежам. Мало что известно том, как работает их оружие. Вроде бы "
 "кто-то видел, как гномы засыпают в него какой-то странный чёрный порошок. "
 "Люди болтают, что этим порошком они кормят огнедышащую тварь, что заперта в "
 "этом посохе. Но сказать точно никто не берётся.\n"
-"Громовые стражи — страшные противники: пока гном зарядит своё оружие, эльф "
-"успеет выпустить в него три-четыре стрелы; но мощь выстрела, который затем "
+"Огневержцы — страшные противники: пока гном зарядит своё оружие, эльф успеет "
+"выпустить в него три-четыре стрелы; но мощь выстрела, который затем "
 "последует, стоит того, чтобы потерпеть!"
 
 #. [unit_type]: id=Dwarvish Rune Lord prerevelation, race=dwarf
@@ -364,7 +356,7 @@ msgstr "волна теней"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr "Шида"
+msgstr "Лесная фея"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -385,8 +377,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/bats/Bat_Blood.cfg:129
-#: data/core/units/bats/Bat_Dread.cfg:44
+#: data/core/units/bats/Bat_Blood.cfg:129 data/core/units/bats/Bat_Dread.cfg:44
 #: data/core/units/bats/Bat_Vampire.cfg:128
 #: data/core/units/goblins/Direwolf_Rider.cfg:44
 #: data/core/units/goblins/Knight.cfg:46
@@ -495,7 +486,7 @@ msgstr ""
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
 msgid "Drake Arbiter"
-msgstr "Арбитр"
+msgstr "Надзиратель"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:18
@@ -507,12 +498,13 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
-"Арбитры очень серьёзно воспринимают обязанность своей касты — охранять "
-"пордок. Чтобы лучше исполнять свой долг, они отказались от обычных для "
-"дрейков боевых когтей, и сменили копья на колюще-режущие алебарды. По их "
-"мнению, потеря маневренности вполне окупается преимуществами тяжёлого "
-"наконечника. Толстые доспехи этих дрейков хорошо защищают от оружия, "
-"способного проскользнуть сквозь их чешую."
+"Надзиратели очень серьёзно воспринимают обязанность своей касты — "
+"обеспечивать законность и порядок. Чтобы лучше исполнять свой долг, они "
+"отказались от обычных для дрейков боевых когтей, и сменили копья на колюще-"
+"режущие алебарды. По их мнению, потеря маневренности вполне окупается "
+"преимуществами, которое дает тяжёлое металлическое лезвие. Толстые доспехи "
+"этих дрейков хорошо защищают от оружия, способного проскользнуть сквозь их "
+"чешую."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -585,8 +577,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:40
-#: data/core/units/drakes/Clasher.cfg:37
-#: data/core/units/drakes/Enforcer.cfg:47
+#: data/core/units/drakes/Clasher.cfg:37 data/core/units/drakes/Enforcer.cfg:47
 #: data/core/units/drakes/Thrasher.cfg:35
 msgid "war talon"
 msgstr "когти войны"
@@ -628,7 +619,7 @@ msgstr "когти"
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr "Боец"
+msgstr "Страж"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:19
@@ -645,22 +636,22 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
-"Каста Бойцов отличается от прочих дрейков. Их толстые доспехи, хотя и "
+"Каста Стражей отличается от прочих дрейков. Их толстые доспехи, хотя и "
 "компенсируют природную уязвимость дрейков к копьям и стрелам, настолько "
 "тяжелы и неудобны, что не дают ни летать, ни дышать достаточно глубоко для "
-"использования внутреннего огня. Бойцы принимают это как должное и полностью "
-"закрывают свои крылья чтобы подчеркнуть, что им не нужно летать для победы в "
-"бою.\n"
+"использования внутреннего огня. Стражи принимают это как должное и полностью "
+"бронируют свои крылья, чтобы подчеркнуть, что им не нужно летать для победы "
+"в бою.\n"
 "\n"
 "К тому же, это единственная каста, которой позволено нарушать табу и "
 "сражаться копьями в дополнение к обычным для дрейков металлическим когтям. "
-"Благодаря этому Бойцы успешно «решают» территориальные споры и наводят "
-"порядок среди своих сородичей."
+"Благодаря этому Стражи успешно «решают» территориальные споры с другими "
+"племенами дрейков и обеспечивают соблюдение законов внутри своего племени."
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr "Броненосец"
+msgstr "Палач"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:20
@@ -672,12 +663,11 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
-"Броненосцы – отнюдь не мастера тактики, манёвра или обмана; вместо этого, "
-"они рвутся в самую гущу рукопашной. На ближней дистанции не так уж и важно, "
-"что их доспехи мешают им использовать огненное дыхание, важна лишь мощь, "
+"Палачи – отнюдь не мастера тактики, манёвра или обмана; наоборот, они рвутся "
+"в самую гущу рукопашной. На ближней дистанции не так уж и важно, что их "
+"доспехи мешают им использовать огненное дыхание, важна лишь мощь, "
 "вкладываемая ими в каждый удар. Вожди дрейков стараются не запятнать честь "
-"Броненосцев и обычно зовут их на битву только против самых смертельных "
-"врагов."
+"Палачей и обычно зовут их на битву только против самых смертельных врагов."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:56
@@ -688,9 +678,8 @@ msgstr "таран"
 #. [attack]: type=blade
 #. [attack]: type=pierce
 #: data/core/units/drakes/Enforcer.cfg:65
-#: data/core/units/merfolk/Fighter.cfg:35
-#: data/core/units/merfolk/Triton.cfg:37 data/core/units/merfolk/Triton.cfg:45
-#: data/core/units/merfolk/Warrior.cfg:35
+#: data/core/units/merfolk/Fighter.cfg:35 data/core/units/merfolk/Triton.cfg:37
+#: data/core/units/merfolk/Triton.cfg:45 data/core/units/merfolk/Warrior.cfg:35
 msgid "trident"
 msgstr "трезубец"
 
@@ -714,8 +703,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:37
-#: data/core/units/drakes/Flameheart.cfg:40
-#: data/core/units/drakes/Flare.cfg:39 data/core/units/drakes/Warrior.cfg:38
+#: data/core/units/drakes/Flameheart.cfg:40 data/core/units/drakes/Flare.cfg:39
+#: data/core/units/drakes/Warrior.cfg:38
 msgid "war blade"
 msgstr "клинок войны"
 
@@ -785,7 +774,7 @@ msgstr ""
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr "Планёр"
+msgstr "Охотник"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:19
@@ -804,28 +793,28 @@ msgid ""
 "precious wings as far from the enemy as possible."
 msgstr ""
 "Многие дрейки более всего любят бьющий по чешуе ветер, и поэтому носят "
-"лёгкие одежды касты Планёров. Их страсть – длительные набеги на дальние "
-"границы владений племени, хотя прочие дрейки удивляются – как кто-то может "
-"наслаждаться нудной охотой, когда можно завоевать большую славу на поле "
-"боя.\n"
+"лёгкие одежды касты Охотников. Их страсть – длительные полеты за добычей к "
+"дальним границам владений племени, хотя прочие дрейки удивляются – как кто-"
+"то может наслаждаться нудной охотой, когда можно завоевать большую славу на "
+"поле боя.\n"
 "\n"
-"Чаще всего Планёры охотятся на крупную дичь – оленей, кабанов, дельфинов; их "
+"Чаще всего Охотники загоняют крупную дичь – оленей, кабанов, дельфинов; их "
 "огненное дыхание, не стеснённое как у других каст доспехами, очень помогает "
-"собрать добычу в одно стадо, не вредя ей. Если Планёра призывают на поле "
+"собрать добычу в одно стадо, не вредя ей. Если Охотника призывают на поле "
 "боя, он предпочитает тревожить врага издалека, – и только если все остальные "
 "средства исчерпаны, он бьётся ногами, стараясь удержать врага как можно "
 "дальше от своих драгоценных крыльев."
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:42
-#: data/core/units/drakes/Hurricane.cfg:64 data/core/units/drakes/Sky.cfg:63
+#: data/core/units/drakes/Glider.cfg:42 data/core/units/drakes/Hurricane.cfg:64
+#: data/core/units/drakes/Sky.cfg:63
 msgid "slam"
 msgstr "удар слёта"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr "Ураган"
+msgstr "Истребитель"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:19
@@ -838,14 +827,13 @@ msgid ""
 "castes has increased their skill in combat, but their greatest strength "
 "still lies in their speed and flight."
 msgstr ""
-"Ураганные Дрейки уже не занимаются чёрной работой вроде охоты и "
-"собирательства, для чего предназначены младшие члены касты. Они — "
-"неотъемлемая часть армии дрейков: разведчики, которых посылают перед "
-"основными силами, гонцы на поле боя, но с тем же успехом они могут "
-"обрушиться с неба на врага там, где он этого меньше всего ожидает. Им "
-"неохотно, но позволяют тренироваться с новобранцами других каст, что "
-"повышает их искусство рукопашного боя, однако главная их сила – полёт и "
-"скорость."
+"Истребители уже не занимаются чёрной работой вроде охоты и собирательства, "
+"для чего предназначены младшие члены касты. Они — неотъемлемая часть армии "
+"дрейков: разведчики, которых посылают перед основными силами, гонцы на поле "
+"боя, но с тем же успехом они могут обрушиться с неба на врага там, где он "
+"этого меньше всего ожидает. Им неохотно, но позволяют тренироваться с "
+"новобранцами других каст, что повышает их искусство рукопашного боя, однако "
+"главная их сила – полёт и скорость."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -870,7 +858,7 @@ msgstr ""
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr "Небесный"
+msgstr "Ветролов"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:18
@@ -882,7 +870,7 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
-"Лёгкие керамические доспехи, которые носят Небесные — символ их касты; их "
+"Лёгкие керамические доспехи, которые носят Ветроловы — символ их касты; их "
 "серебрянные украшения символизируют власть над воздухом. Как управляющие "
 "охотой, они часто и надолго отлучаются из дома. Каждый из них стремится "
 "принести как можно больше добычи, завоевав уважение племени, и, возможно, "
@@ -891,7 +879,7 @@ msgstr ""
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
-msgstr "Рубака"
+msgstr "Каратель"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -903,16 +891,16 @@ msgid ""
 "are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
-"Доспех ограничивает Рубак меньше, чем других воинов — они научились "
+"Доспехи Карателей не ограничивают их, а являются их оружием — они научились "
 "перенаправлять тяжесть доспехов в движущий импульс, что добавляет силы к "
-"ударам их коротких копьев и железных когтей. Их оружие и тело едины; даже их "
-"толстые шлемы и кости черепа – оружие. Рубака всегда счастлив выполнить свой "
-"долг перед кастой, особенно на поле боя."
+"ударам их коротких копий и железных когтей. Снаряжение и тело едины; даже их "
+"толстые шлемы и крепкие кости черепа внутри – оружие. Каатель всегда "
+"счастлив выполнить свой долг перед кастой, особенно на поле боя."
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
-msgstr "Страж"
+msgstr "Прокуратор"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:19
@@ -925,12 +913,13 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
-"Две вещи отличают Стражей от остальных Бойцов: причудливые шлемы, "
-"изображающие предков-драконов, и тщание, с которым они драпируют свои "
-"бронированные крылья яркими тканями, отправляясь на службу. Хотя этот стиль "
-"и отражает их гордость своим положением в иерархии дрейков, тем не менее, он "
-"далёк от церемониального. Громоздкие бронзовые доспехи Стражей — наилучшее "
-"изделие дрейковских кузниц, а их алебарды способны рассечь человека надвое."
+"Две вещи отличают Прокураторов от остальных представителей касты Стражей: "
+"причудливые шлемы, изображающие предков-драконов, и тщание, с которым они "
+"драпируют свои бронированные крылья яркими тканями, отправляясь на службу. "
+"Хотя этот стиль и отражает их гордость своим положением в иерархии дрейков, "
+"тем не менее, он далёк от церемониального. Громоздкие бронзовые доспехи "
+"Прокураторов — наилучшее изделие дрейковских кузниц, а их алебарды способны "
+"рассечь человека надвое."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -957,7 +946,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
 msgid "Dwarvish Arcanister"
-msgstr "Заклинатель"
+msgstr "Заклинатель рун"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:31
@@ -967,16 +956,16 @@ msgid ""
 "that is his intent. His skill in runecrafting is unrivaled, and the glyphs "
 "he carves into his weapons and armor deflect the blows of his enemies."
 msgstr ""
-"Самые одарённые заклинатели не просто знают, как и для чего использовать "
-"руны; они словно чувствуют их магическую силу. Они смело пробуют разные "
-"сочетания рун и достигают порой невероятного могущества. Встреча с таким "
-"гномом — самое страшное, что может случиться с врагом; раненому бойцу хватит "
-"и одного удара молотом; а увернуться удаётся немногим!\n"
-"Среди людей ходят слухи, что броню, выкованную заклинателями, не может "
+"Самые одарённые рунописцы не просто знают, как и для чего использовать руны; "
+"они словно чувствуют их магическую силу. Они смело пробуют разные сочетания "
+"рун и достигают порой невероятного могущества. Встреча с таким гномом — "
+"самое страшное, что может случиться с врагом; раненому бойцу хватит и одного "
+"удара молотом; а увернуться удаётся немногим!\n"
+"Среди людей ходят слухи, что броню, выкованную заклинателями рун, не может "
 "разрубить даже тролль, а оружие, зачарованное ими, режет камни как масло. "
 "Многие жулики неплохо нажились, продавая доверчивым простакам поддельные "
-"вещицы, якобы сделанные заклинателями. Неужели неясно, что такие вещи никто "
-"в здравом уме продавать не будет?!"
+"вещицы, якобы сделанные заклинателями рун. Неужели неясно, что такие вещи "
+"никто в здравом уме продавать не будет?!"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
@@ -1003,7 +992,7 @@ msgstr "ярость берсерка"
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
-msgstr "Драконий страж"
+msgstr "Драконоборец"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
@@ -1043,7 +1032,7 @@ msgstr "Ополченец"
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr "Стражник"
+msgstr "Хирдник"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
@@ -1074,7 +1063,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
 msgid "Dwarvish Pathfinder"
-msgstr "Следопыт"
+msgstr "Скалолаз"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:23
@@ -1088,9 +1077,10 @@ msgstr ""
 "Некоторых скороходов, особенно отличившихся в разведке, совет кланов "
 "направляет на охрану своих границ. У гномов нет специальных пограничных "
 "войск — мало кому охота столько времени торчать на поверхности. Потому-то "
-"для пограничной службы и выбирают тех, кто побыстрее: пробежался по своему "
-"участку, убедился, что всё спокойно, и можешь возвращаться обратно в горы. "
-"Главное не забывать обходить границу три раза в день."
+"для пограничной службы и выбирают тех, кто может быстро передвигаться по "
+"горам: пробежался по своему участку, убедился, что всё спокойно, и можешь "
+"возвращаться обратно в пещеры. Главное не забывать обходить границу три раза "
+"в день."
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
@@ -1144,12 +1134,12 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr "Часовой"
+msgstr "Неуязвимый"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr "Хранитель"
+msgstr "Ветеран хирда"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
@@ -1175,7 +1165,7 @@ msgstr "Громовержец"
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr "Громовой страж"
+msgstr "Огневержец"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -1197,7 +1187,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr "Лучник"
+msgstr "Стрелок"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:19
@@ -1267,7 +1257,7 @@ msgstr "лук"
 #. [female]
 #: data/core/units/elves/Archer.cfg:92
 msgid "female^Elvish Archer"
-msgstr "Лучница"
+msgstr "Стрелок"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:4
@@ -1287,7 +1277,7 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
-"Этих искусных лесников называют странным именем «Мстители» за их излюбленную "
+"Этих стражей леса называют странным именем «Мстители» за их излюбленную "
 "тактику. Врагу дают пройти сквозь слабую оборону, а когда вслед за передовой "
 "линией подходят уязвимые отряды, эти лучники сбрасывают маскировку и "
 "атакуют, отрезая обозы со снаряжением и окружая противника одним точным "
@@ -1377,8 +1367,7 @@ msgstr ""
 #: data/core/units/merfolk/Enchantress.cfg:36
 #: data/core/units/merfolk/Initiate.cfg:38
 #: data/core/units/merfolk/Priestess.cfg:55
-#: data/core/units/saurians/Augur.cfg:37
-#: data/core/units/saurians/Oracle.cfg:49
+#: data/core/units/saurians/Augur.cfg:37 data/core/units/saurians/Oracle.cfg:49
 #: data/core/units/saurians/Soothsayer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:61
 msgid "staff"
@@ -1414,8 +1403,8 @@ msgstr ""
 "об их действительном положении и функциях в обществе известно немногое."
 
 #. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:48
-#: data/core/units/elves/Shaman.cfg:50 data/core/units/elves/Sorceress.cfg:50
+#: data/core/units/elves/Enchantress.cfg:48 data/core/units/elves/Shaman.cfg:50
+#: data/core/units/elves/Sorceress.cfg:50
 msgid "entangle"
 msgstr "путы"
 
@@ -1518,7 +1507,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr "Стрелок"
+msgstr "Меткий стрелок"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:19
@@ -1546,7 +1535,7 @@ msgstr "длинный лук"
 #. [female]
 #: data/core/units/elves/Marksman.cfg:102
 msgid "female^Elvish Marksman"
-msgstr "Стрелок"
+msgstr "Меткий стрелок"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
@@ -1599,7 +1588,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr "Егерь"
+msgstr "Хранитель леса"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:19
@@ -1618,12 +1607,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Ranger.cfg:104
 msgid "female^Elvish Ranger"
-msgstr "Егерь"
+msgstr "Хранитель леса"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr "Всадник"
+msgstr "Гонец"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:22
@@ -1647,7 +1636,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr "Разведчик"
+msgstr "Наездник"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:22
@@ -1658,7 +1647,7 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
-"Конники лесных эльфов владеют и луком, и мечом, но их подлинный талант — "
+"Наездники лесных эльфов владеют и луком, и мечом, но их подлинный талант — "
 "верховая езда. Даже других эльфов поражает их способность без единой "
 "царапины промчаться сквозь лесные заросли на бешеной скорости. Это, "
 "наверное, единственный существующий вид конницы, предпочитающий лес открытым "
@@ -1667,7 +1656,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "Шаманка"
+msgstr "Ведунья"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:20
@@ -1681,10 +1670,10 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle."
 msgstr ""
-"Будучи отчасти родственными феям, эльфы обладают врождённой способностью к "
-"магии. Это проявляется в их близости с миром природы, который они могут "
-"призывать себе в союзники. Зашедшие в их леса враги могут вскоре оказаться "
-"опутанными корнями, приковывающими их к земле.\n"
+"Являясь в некотором смысле волшебными существами, эльфы обладают врождённой "
+"способностью к магии. Это проявляется в их близости с миром природы, который "
+"они могут призывать себе в союзники. Зашедшие в их леса враги могут вскоре "
+"оказаться опутанными корнями, приковывающими их к земле.\n"
 "\n"
 "Лекарские способности эльфов тоже весьма примечательны и находят применение "
 "в битве."
@@ -1721,7 +1710,7 @@ msgid ""
 "their people."
 msgstr ""
 "Обращение к волшебной части своей сущности в конце концов превращает "
-"эльфийскую женщину в существо двух миров. Мало кто может понять, какие силы "
+"эльфийскую деву в существо двух миров. Мало кто может понять, какие силы "
 "движут этими прекрасными хранительницами эльфийских лесов, воплотившими в "
 "себе грацию и таинственность своего народа."
 
@@ -1784,7 +1773,7 @@ msgstr "Убирает туман"
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr "Волколачий наездник"
+msgstr "Наездник лютоволка"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:19
@@ -1800,7 +1789,7 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts’ paws into a most "
 "deadly stroke."
 msgstr ""
-"Волколаки отличаются от обычных волков только размером и цветом. Они обычно "
+"Лютоволки отличаются от обычных волков только размером и цветом. Они обычно "
 "выше лошади, и аппетит у них соответствующий. Только сумасшедший захочет "
 "встретиться с ними; лишь гоблины огромной ценой сумели приручить и оседлать "
 "их.\n"
@@ -1831,7 +1820,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
-msgstr "Рыцарь"
+msgstr "Волчий рыцарь"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:18
@@ -1854,7 +1843,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr "Мародёр"
+msgstr "Волчий мародёр"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:19
@@ -1902,7 +1891,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr "Копьеносец"
+msgstr "Копейщик"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:18
@@ -2427,8 +2416,7 @@ msgstr ""
 #: data/core/units/khalifate/Jawal.cfg:24
 #: data/core/units/khalifate/Khaiyal.cfg:39
 #: data/core/units/khalifate/Mufariq.cfg:32
-#: data/core/units/khalifate/Qanas.cfg:22
-#: data/core/units/khalifate/Rami.cfg:23
+#: data/core/units/khalifate/Qanas.cfg:22 data/core/units/khalifate/Rami.cfg:23
 #: data/core/units/khalifate/Saree.cfg:23
 #: data/core/units/khalifate/Tabib.cfg:28
 msgid "mace"
@@ -2762,8 +2750,7 @@ msgstr ""
 "колдовское искусство в качестве великолепного инструмента."
 
 #. [attack]: type=fire
-#: data/core/units/humans/Mage.cfg:50
-#: data/core/units/humans/Mage_Silver.cfg:57
+#: data/core/units/humans/Mage.cfg:50 data/core/units/humans/Mage_Silver.cfg:57
 msgid "missile"
 msgstr "снаряд"
 
@@ -3059,12 +3046,12 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
-"После нескольких лет службы, бывшие «скороходы» продвигаются вверх среди "
-"своих собратьев-изгнанников. Показав себя в бою, они будут получать более "
-"опасные задания и большую долю добычи. Хотя много противников посмеивались "
-"над их оружием, изгнанники хорошо знакомы с его убийственной силой, а "
-"боеприпасы доступны. Изгнанники несколько хуже бьются днем, предпочитая "
-"скрываться под покровом ночи."
+"После нескольких лет службы, бывшие «бродяги» продвигаются вверх по "
+"преступной иерархии. Показав себя в бою, они будут получать более опасные "
+"задания и большую долю добычи.  Хотя многие посмеиваются над их оружием, "
+"изгнанники хорошо умеют пользоваться убийственной силой пращи, а боеприпасы "
+"для нее легко доступны. Изгнанники несколько хуже сражаются днем, "
+"предпочитая скрываться под покровом ночи."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw.cfg:44
@@ -3134,7 +3121,7 @@ msgstr ""
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
-msgstr "Скороход"
+msgstr "Бродяга"
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:20
@@ -3146,30 +3133,30 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
-"Этих мелких преступников их старшие товарищи иронически называют "
-"«скороходами» за то, что те постоянно бегают по поручениям. Несмотря на "
-"скудное вооружение, выносливость и скорость позволяют им быть полезными в "
-"бою. Они очень хорошо треплют противников, особенно под покровом темноты."
+"Этих мелких преступников их старшие товарищи иронически называют «бродягами» "
+"за их внешность оборванцев и постоянное пребывание в дороге в роли курьеров "
+"или разведчиков преступного сообщества. Несмотря на скудное вооружение, "
+"выносливость и скорость позволяют им быть полезными в бою. Они очень хорошо "
+"треплют противников, особенно под покровом темноты."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:37
 #: data/core/units/humans/Outlaw_Ruffian.cfg:35
 #: data/core/units/humans/Outlaw_Thug.cfg:36
 #: data/core/units/merfolk/Entangler.cfg:26
-#: data/core/units/merfolk/Netcaster.cfg:37
-#: data/core/units/trolls/Troll.cfg:37
+#: data/core/units/merfolk/Netcaster.cfg:37 data/core/units/trolls/Troll.cfg:37
 msgid "club"
 msgstr "дубинка"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:100
 msgid "female^Footpad"
-msgstr "Скороходка"
+msgstr "Бродяжка"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr "Беглец"
+msgstr "Беглый преступник"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:21
@@ -3178,14 +3165,16 @@ msgid ""
 "to elude capture. They can be dangerous in their element, though no match "
 "for the sheer numbers that law-abiding soldiery can throw at them."
 msgstr ""
-"Бывалые преступники печально известны своей жестокостью и неуловимостью. "
-"Опасные и беспощадные, они могут быть лучшими среди себе подобных, однако "
-"они не могут тягаться численностью с регулярной армией."
+"Бывалые преступники печально известны своей жестокостью и способностью "
+"скрываться от правосудия. Опасные и беспощадные, они могут быть лучшими "
+"среди себе подобных, однако не могут оказать серьезного сопротивления "
+"превосходящему числу солдат, которых регулярная армия может бросить против "
+"них."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:94
 msgid "female^Fugitive"
-msgstr "Беглянка"
+msgstr "Беглая преступница"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
@@ -3210,7 +3199,7 @@ msgstr ""
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
-msgstr "Жулик"
+msgstr "Грабитель"
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
@@ -3223,7 +3212,7 @@ msgid ""
 "them more comfortable fighting in the dark."
 msgstr ""
 "Вожаки любой группы воров заслужили свое положение благодаря своим навыкам. "
-"Эти жулики приобрели полезные в бою навыки, вроде бега сквозь толпу и "
+"Эти грабители приобрели полезные в бою навыки, вроде бега сквозь толпу и "
 "уклонения от недоброжелателей. Мастера поножовщины, они точно мечут ножи, а "
 "долгие часы, проведенные в прятках от стражи, позволяют им комфортно "
 "чувствовать себя в ночном бою."
@@ -3231,7 +3220,7 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:97
 msgid "female^Rogue"
-msgstr "Бестия"
+msgstr "Грабительница"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
@@ -3356,7 +3345,7 @@ msgstr ""
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
-msgstr "Охотник"
+msgstr "Ловчий"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:20
@@ -3378,16 +3367,17 @@ msgid ""
 msgstr ""
 "Охота — популярный спорт для знати, для простых же людей обычно она — "
 "средство пропитания. Как и в любом другом деле, в охоте есть свои мастера. "
-"Охотники знают все тонкости своего дела, и обучены ориентированию, чтению "
+"Ловчие знают все тонкости своего дела, и обучены ориентированию, чтению "
 "следов и стрельбе из лука. Они замечательно стреляют как по движущимся "
 "целям, так и по целям, находящимся в укрытии. Это умении они прибрели за "
 "годы охоты на дичь, тогда как лучники регулярных армий часто его лишены.\n"
 "\n"
-"Мастеров охоты нанимают те, кто живёт или проходит через дикую местность, "
-"будь то люди закона, или вне закона. Порой сама природа преподносит коварные "
+"Ловчих нанимают те, кто живёт или проходит через дикую местность, будь то "
+"люди закона, или вне закона. Порой сама природа преподносит коварные "
 "сюрпризы, и командир, не сумевший нанять такого проводника, может потерять "
-"своих людей лишь по причине незнания местности. Хорошие егеря спасают жизни, "
-"снабжают пищей, а их умение обращаться с луком чрезвычайно полезно в бою."
+"своих людей лишь по причине незнания местности. Хорошие ловчие спасают "
+"жизни, снабжают пищей, а их умение обращаться с луком чрезвычайно полезно в "
+"бою."
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
@@ -3416,7 +3406,7 @@ msgstr ""
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
-msgstr "Егерь"
+msgstr "Следопыт"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:20
@@ -3433,10 +3423,10 @@ msgid ""
 "even hear of it at all. Rangers can be hired, but they are just as likely to "
 "be in the employ of bandits, as they are to be in the king’s service."
 msgstr ""
-"Егеря — это дикари и бродяги, который по множеству причин сторонятся себе "
-"подобных. Они проводят лучшую часть своей жизни на природе, и знают многие "
-"её секреты. Они превосходные следопыты и разведчики, и умеют найти пищу и "
-"жильё там, где другие найдут лишь палки и камни.\n"
+"Следопыты — это дикари и бродяги, который по множеству причин сторонятся "
+"себе подобных. Они проводят лучшую часть своей жизни на природе, и знают "
+"многие её секреты. Они превосходные землепроходцы и разведчики, и умеют "
+"найти пищу и жильё там, где другие найдут лишь палки и камни.\n"
 "\n"
 "Присутствие таких людей беспокоит приверженцев авторитарного стиля "
 "правления; рыцари и пехота не способны их контролировать. Они — люди "
@@ -3491,8 +3481,7 @@ msgstr ""
 "крепости своих стен."
 
 #. [attack]: type=blade
-#: data/core/units/khalifate/Arif.cfg:22
-#: data/core/units/khalifate/Ghazi.cfg:22
+#: data/core/units/khalifate/Arif.cfg:22 data/core/units/khalifate/Ghazi.cfg:22
 #: data/core/units/khalifate/Khalid.cfg:23
 #: data/core/units/khalifate/Mighwar.cfg:26
 #: data/core/units/khalifate/Monawish.cfg:25
@@ -3527,8 +3516,7 @@ msgstr ""
 #: data/core/units/khalifate/Jawal.cfg:32
 #: data/core/units/khalifate/Jundi.cfg:30
 #: data/core/units/khalifate/Muharib.cfg:30
-#: data/core/units/khalifate/Rami.cfg:31
-#: data/core/units/khalifate/Saree.cfg:31
+#: data/core/units/khalifate/Rami.cfg:31 data/core/units/khalifate/Saree.cfg:31
 msgid "composite bow"
 msgstr "составной лук"
 
@@ -3645,6 +3633,15 @@ msgstr "Хаким"
 
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Hakim are learned individuals who have given up their urban life in order "
+#| "to assist the Khalifate armies in their travels. Their motivations are "
+#| "many; some look to it as an adventure or as a steady source of pay, while "
+#| "others feel it to be a requirement of their faith. Regardless, Hakims are "
+#| "highly respected by all. They are trained with the advanced medical "
+#| "techniques and possess a potent clutch of medicines and herbs, which "
+#| "allows them to quickly heal even the most gravely wounded allies."
 msgid ""
 "Hakim are learned individuals who have given up their urban life in order to "
 "assist the Khalifate armies in their travels. Their motivations are many; "
@@ -3865,7 +3862,7 @@ msgstr ""
 #: data/core/units/khalifate/Qatif-al-nar.cfg:27
 #: data/core/units/khalifate/Tineen.cfg:27
 msgid "naphtha attack"
-msgstr "атака керосином"
+msgstr "жидкий огонь"
 
 #. [attack]: type=fire
 #: data/core/units/khalifate/Naffat.cfg:36
@@ -3959,6 +3956,12 @@ msgstr "Сари"
 
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:18
+#, fuzzy
+#| msgid ""
+#| "Rami who demonstrate exceptional skill with the bow are made into Saree, "
+#| "spending hours every day practicing and building a rapport with their "
+#| "steed. This has made them the fastest riders in the Khalifate armies, and "
+#| "a wise Khalid uses to this advantage."
 msgid ""
 "Rami who demonstrate exceptional skill with the bow are made into Saree, "
 "spending hours every day practicing and building a rapport with their steed. "
@@ -4050,7 +4053,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr "Колдунья"
+msgstr "Чаровницы"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
@@ -4071,15 +4074,14 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Enchantress.cfg:45
-#: data/core/units/merfolk/Initiate.cfg:47
-#: data/core/units/merfolk/Siren.cfg:53
+#: data/core/units/merfolk/Initiate.cfg:47 data/core/units/merfolk/Siren.cfg:53
 msgid "water spray"
 msgstr "поток воды"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
-msgstr "Запутник"
+msgstr "Опутыватель"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
@@ -4141,7 +4143,7 @@ msgstr ""
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
-msgstr "Охотник"
+msgstr "Ловец"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:18
@@ -4179,7 +4181,7 @@ msgstr ""
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
-msgstr "Метатель дротиков"
+msgstr "Мастер метания"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
@@ -4189,9 +4191,9 @@ msgid ""
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"Эти водяные, мастерски владеющие искусством метания дротиков, могут очень "
-"скоро стать столь же эффективными, как и лучники — хотя тяжесть их оружия "
-"ограничивает дальность атаки, повреждение от одного дротика значительно."
+"Те водяные, которые являются мастерами метания копий, могут стать настолько "
+"же эффективны, как лучники - хотя тяжесть их орудий ограничивает дальность, "
+"сила удара значительно выше."
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
@@ -4277,7 +4279,7 @@ msgstr "дыхание наяд"
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
-msgstr "Копейщик"
+msgstr "Копьеметатель"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
@@ -4289,11 +4291,12 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
-"Стрельба из лука у водяных не в почёте, вместо этого они используют дротики. "
+"Стрельба из лука у водяных не в почёте, вместо этого они используют копья. "
 "Хотя метательные копья малоприменимы под водой, они очень эффективны на "
-"поверхности, где их вес позволяет погрузиться на несколько футов в воду и "
-"сохранить достаточный импульс для нанесения ран. К тому же, в отличие от "
-"стрел, дротиком можно пользоваться и в рукопашной, даже на большой глубине."
+"поверхности, вес брошенного копья позволяет ему погрузиться на несколько "
+"футов под воду и при этом сохранить достаточную силу удара для нанесения "
+"раны. К тому же, в отличие от стрел, копьем можно пользоваться и в "
+"рукопашной, даже на большой глубине."
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -4610,12 +4613,12 @@ msgstr ""
 #. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf_Dire.cfg:4
 msgid "Direwolf"
-msgstr "Волколак"
+msgstr "Лютоволк"
 
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf_Great.cfg:4
 msgid "Great Wolf"
-msgstr "Волк-гигант"
+msgstr "Матерый волк"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -4804,7 +4807,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
-msgstr "Убийца"
+msgstr "Отравитель"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:22
@@ -4816,7 +4819,7 @@ msgid ""
 "a considerable aid to their larger and more brutal kin."
 msgstr ""
 "Несмотря на то, что кто-то считает его использование трусостью, яд — особо "
-"любимое орудие орков, особенно слабых телом. Убийцы, использующие "
+"любимое орудие орков, особенно слабых телом. Отравители, использующие "
 "метательные ножи, обычно очень хрупки по стандартам своей расы, но зато "
 "необычайно проворны. Хотя они редко убивают кого-либо, они — неоценимая "
 "помощь своим более крупным и более грубым собратьям."
@@ -5047,8 +5050,7 @@ msgstr ""
 "используется."
 
 #. [attack]: type=cold
-#: data/core/units/saurians/Augur.cfg:46
-#: data/core/units/saurians/Oracle.cfg:58
+#: data/core/units/saurians/Augur.cfg:46 data/core/units/saurians/Oracle.cfg:58
 #: data/core/units/saurians/Soothsayer.cfg:47
 msgid "curse"
 msgstr "проклятие"
@@ -5056,7 +5058,7 @@ msgstr "проклятие"
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr "Фланговый"
+msgstr "Захватчик"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:19
@@ -5069,8 +5071,8 @@ msgid ""
 msgstr ""
 "Обычно воины-ящеры слабее телом, чем эльфы или люди. Однако некоторые из них "
 "относительно сильны, не теряя при этом своей природной скорости. Они очень "
-"опасны в бою, и беспечный противник скоро обнаружит, что его тыл занят этими "
-"созданиями."
+"опасны, беспечный противник скоро обнаружит, что части снабжения в его тылу "
+"захвачены, и эти создания вовсю там хозяйничают."
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
@@ -5721,7 +5723,7 @@ msgstr ""
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
-msgstr "Клинок смерти"
+msgstr "Костяной рубака"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:19
@@ -5732,11 +5734,11 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
-"При жизни эти существа, известные как «Клинки Смерти», были мастерами битвы, "
-"смертельно опасными и ловкими бойцами. Их новые хозяева стараются "
+"При жизни эти существа, известные как «Костяные рубаки», были мастерами "
+"битвы, смертельно опасными и ловкими бойцами. Их новые хозяева стараются "
 "воспользоваться этим обстоятельством, снаряжая их собразно с былыми "
 "умениями. Хотя эти монстры хрупки, для ходячих трупов они очень быстры, как "
-"в движении, так и в обращении со своими клинками."
+"в движении, так и в обращении со своими топорами."
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
@@ -5761,7 +5763,7 @@ msgstr ""
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
-msgstr "Возрожденный"
+msgstr "Воин смерти"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
@@ -5773,11 +5775,11 @@ msgid ""
 "powerful tool in combat: a fearless warrior that feels no pain and will "
 "fight to the bitter end."
 msgstr ""
-"Получив мнимую жизнь ради битвы еще раз, Возрождённый, бывший в свое время "
-"великим воином, теперь не помнит ничего из своего прошлого. Даже поднявший "
-"его колдун может только догадываться, кем тот был. Без сомнения, "
-"Возрождённый — полезный инструмент в битве: не чувствующий боли бесстрашный "
-"воин, сражающийся до печального конца."
+"Получив мнимую жизнь ради битвы еще раз, Воин смерти, бывший в свое время "
+"великим воином мира живых, теперь не помнит ничего из своего прошлого. Даже "
+"поднявший его колдун может только догадываться, кем тот был. Без сомнения, "
+"Воин смерти — полезный инструмент в битве: не чувствующий боли бесстрашный "
+"боец, сражающийся до печального конца."
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
@@ -5927,7 +5929,7 @@ msgstr ""
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr "Древний леший"
+msgstr "Патриарх леса"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:18
@@ -5948,7 +5950,7 @@ msgstr ""
 "дерево, и оставил лишь голый кусок земли.\n"
 "\n"
 "Такие истории — это всё, что нам известно о том, как могли бы выглядеть "
-"самые древние лешие."
+"самые старые древни."
 
 #. [attack]: type=impact
 #: data/core/units/wose/Ancient.cfg:47 data/core/units/wose/Elder.cfg:46
@@ -5959,7 +5961,7 @@ msgstr "дробящий"
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr "Старший леший"
+msgstr "Древобород"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:17
@@ -5976,19 +5978,21 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
-"Лешие имеют множество разных обличий, но все подобны деревьям. Становясь "
-"старше, они растут. Легенды рассказывают о древних леших, которые походили "
-"на деревья и своим ростом, возвышаясь надо всеми ходячими тварями. Во "
-"многом, поэтому их так сложно встретить — обычно они дремлют и выглядят "
-"просто как странное дерево. Даже невнимательный эльф может их не заметить.\n"
+"Древни имеют множество разных обличий, но все подобны деревьям, хотя и имеют "
+"лица, напоминающие человеческие, обрамленные бородой из мха. Становясь "
+"старше, древни растут, как и их бороды. Легенды рассказывают о древобородах, "
+"которые выросли высотой со старые деревья и возвышались надо всеми ходячими "
+"тварями. Во многом, поэтому их так сложно встретить — обычно они дремлют и "
+"выглядят просто как странное дерево. Даже невнимательный эльф может их не "
+"заметить.\n"
 "\n"
-"Лешие никоим образом не являются воинами, тем не менее, любой, кто "
+"Древни никоим образом не являются воинами, тем не менее, любой, кто "
 "разгневает их, очень сильно пожалеет, ведь сила их огромна."
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr "Леший"
+msgstr "Древень"
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:17
@@ -6005,11 +6009,11 @@ msgid ""
 "however, neither used to, nor quick at moving around."
 msgstr ""
 "Даже эльфы редко встречают этих малоизвестных созданий. Почти все знания о "
-"них получены от эльфов. От них известно, что лешие не являются потомками "
-"деревьев, хотя и очень похожи на них. Также известно, что лешие намного "
+"них получены от эльфов. От них известно, что древни не являются потомками "
+"деревьев, хотя и очень похожи на них. Также известно, что древни намного "
 "сильнее связаны с миром волшебства, чем сами эльфы, хотя несколько по-иному. "
 "Побуждения и направление деятельности этого народа неизвестны, хотя "
-"очевидно, что лешие защищают мир природы.\n"
+"очевидно, что древни защищают мир природы.\n"
 "\n"
-"Лешие неагрессивны, но обладают огромной силой. Хорошо, что при этом они не "
+"Древни неагрессивны, но обладают огромной силой. Хорошо, что при этом они не "
 "любят и не умеют быстро ходить."
