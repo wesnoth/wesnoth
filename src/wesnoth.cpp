@@ -49,6 +49,7 @@
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
 #include "serialization/preprocessor.hpp"  // for preproc_define, etc
+#include "serialization/string_utils.hpp"
 #include "serialization/validator.hpp"  // for strict_validation_enabled
 #include "serialization/unicode_cast.hpp"
 #include "sound.hpp"                    // for commit_music_changes, etc
@@ -71,6 +72,7 @@
 #endif // _MSC_VER
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/iostreams/categories.hpp>  // for input, output
 #include <boost/iostreams/copy.hpp>     // for copy
@@ -82,6 +84,7 @@
 #include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <boost/tuple/tuple.hpp>        // for tuple
 
+#include <algorithm>                    // for transform
 #include <cerrno>                       // for ENOMEM
 #include <clocale>                      // for setlocale, NULL, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
@@ -90,6 +93,7 @@
 #include <exception>                    // for exception
 #include <fstream>                      // for operator<<, basic_ostream, etc
 #include <iostream>                     // for cerr, cout
+#include <vector>
 
 //#define NO_CATCH_AT_GAME_END
 
@@ -934,31 +938,6 @@ int main(int argc, char** argv)
 	VLDEnable();
 #endif
 
-#ifdef _OPENMP
-	// Wesnoth is a special case for OMP
-	// OMP wait strategy is to have threads busy-loop for 100ms
-	// if there is nothing to do, they then go to sleep.
-	// this avoids the scheduler putting the thread to sleep when work
-	// is about to be available
-	//
-	// However Wesnoth has a lot of very small jobs that need to be done
-	// at each redraw => 50fps every 2ms.
-	// All the threads are thus busy-waiting all the time, hogging the CPU
-	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
-	// but that var is read by OMP at library loading time (before main)
-	// thus the relaunching of ourselves after setting the variable.
-#if !defined(_WIN32) && !defined(__APPLE__)
-	if (!getenv("OMP_WAIT_POLICY")) {
-		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
-		execv(argv[0], argv);
-	}
-#elif _MSC_VER >= 1600
-	if (!getenv("OMP_WAIT_POLICY")) {
-		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
-		_execv(argv[0], argv);
-	}
-#endif
-#endif //_OPENMP
 #ifdef _WIN32
 	(void)argc;
 	(void)argv;
@@ -986,6 +965,39 @@ int main(int argc, char** argv)
 	}
 #endif
 	assert(!args.empty());
+
+#ifdef _OPENMP
+	// Wesnoth is a special case for OMP
+	// OMP wait strategy is to have threads busy-loop for 100ms
+	// if there is nothing to do, they then go to sleep.
+	// this avoids the scheduler putting the thread to sleep when work
+	// is about to be available
+	//
+	// However Wesnoth has a lot of very small jobs that need to be done
+	// at each redraw => 50fps every 2ms.
+	// All the threads are thus busy-waiting all the time, hogging the CPU
+	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
+	// but that var is read by OMP at library loading time (before main)
+	// thus the relaunching of ourselves after setting the variable.
+#if !defined(_WIN32) && !defined(__APPLE__)
+	if (!getenv("OMP_WAIT_POLICY")) {
+		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
+		execv(argv[0], argv);
+	}
+#elif _MSC_VER >= 1600
+	if (!getenv("OMP_WAIT_POLICY")) {
+		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
+		args[0] = utils::quote(args[0]);
+		// NewArgs contains one more element than args in order to be
+		// NULL terminated (its buffer will be passed to _execv() as argv).
+		std::vector<const char*> newArgs(args.size() + 1, NULL);
+		std::transform(args.begin(), args.end(),
+			newArgs.begin(), boost::bind(&std::string::c_str, _1));
+		_execv(argv[0], &newArgs[0]);
+	}
+#endif
+#endif //_OPENMP
+
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);

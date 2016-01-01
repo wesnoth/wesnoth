@@ -240,6 +240,12 @@ std::string &strip(std::string &str);
 /** Remove whitespace from the back of the string 'str'. */
 std::string &strip_end(std::string &str);
 
+/** Surround the string 'str' with double quotes. */
+inline std::string quote(const std::string &str)
+{
+	return '"' + str + '"';
+}
+
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);
 
