@@ -407,6 +407,8 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 
 void tristate_button::handle_event(const SDL_Event& event) {
 
+	gui::widget::handle_event(event);
+
 	if (hidden() || !enabled())
 		return;
 

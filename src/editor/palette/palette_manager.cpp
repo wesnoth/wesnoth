@@ -153,6 +153,8 @@ sdl_handler_vector palette_manager::handler_members()
 
 void palette_manager::handle_event(const SDL_Event& event) {
 
+	gui::widget::handle_event(event);
+
 	if (event.type == SDL_MOUSEMOTION) {
 		// If the mouse is inside the palette, give it focus.
 		if (sdl::point_in_rect(event.button.x, event.button.y, location())) {

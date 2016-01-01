@@ -136,6 +136,8 @@ void help_browser::move_in_history(std::deque<const topic *> &from,
 
 void help_browser::handle_event(const SDL_Event &event)
 {
+	gui::widget::handle_event(event);
+
 	SDL_MouseButtonEvent mouse_event = event.button;
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		if (mouse_event.button == SDL_BUTTON_LEFT) {

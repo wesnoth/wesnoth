@@ -311,6 +311,8 @@ void ui::process_event()
 
 void ui::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
+
 	if(event.type == SDL_KEYDOWN) {
 		handle_key_event(event.key);
 	}
