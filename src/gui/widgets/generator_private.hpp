@@ -873,23 +873,6 @@ public:
 	}
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE
-	{
-		assert(this->get_visible() == twidget::tvisible::visible);
-
-		calculate_order();
-		FOREACH(AUTO index, order_)
-		{
-			titem* item = items_[index];
-			if(item->grid.get_visible() == twidget::tvisible::visible
-			   && item->shown) {
-
-				item->grid.draw_children(frame_buffer);
-			}
-		}
-	}
-
-	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) OVERRIDE

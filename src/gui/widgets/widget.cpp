@@ -346,20 +346,6 @@ void twidget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
 	}
 }
 
-void twidget::draw_background(surface& frame_buffer)
-{
-	assert(visible_ == tvisible::visible);
-
-	if(redraw_action_ == tredraw_action::partly) {
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle_);
-		draw_debug_border(frame_buffer);
-		impl_draw_background(frame_buffer);
-	} else {
-		draw_debug_border(frame_buffer);
-		impl_draw_background(frame_buffer);
-	}
-}
-
 void twidget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	assert(visible_ == tvisible::visible);
@@ -375,18 +361,6 @@ void twidget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	}
 }
 
-void twidget::draw_children(surface& frame_buffer)
-{
-	assert(visible_ == tvisible::visible);
-
-	if(redraw_action_ == tredraw_action::partly) {
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle_);
-		impl_draw_children(frame_buffer);
-	} else {
-		impl_draw_children(frame_buffer);
-	}
-}
-
 void twidget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
 	assert(visible_ == tvisible::visible);
@@ -399,18 +373,6 @@ void twidget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 		impl_draw_foreground(frame_buffer, x_offset, y_offset);
 	} else {
 		impl_draw_foreground(frame_buffer, x_offset, y_offset);
-	}
-}
-
-void twidget::draw_foreground(surface& frame_buffer)
-{
-	assert(visible_ == tvisible::visible);
-
-	if(redraw_action_ == tredraw_action::partly) {
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle_);
-		impl_draw_foreground(frame_buffer);
-	} else {
-		impl_draw_foreground(frame_buffer);
 	}
 }
 

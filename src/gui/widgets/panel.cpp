@@ -58,15 +58,7 @@ unsigned tpanel::get_state() const
 	return 0;
 }
 
-void tpanel::impl_draw_background(surface& frame_buffer)
-{
-	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	canvas(0).blit(frame_buffer, get_rectangle());
-}
-
-void
-tpanel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void tpanel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
@@ -74,13 +66,7 @@ tpanel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void tpanel::impl_draw_foreground(surface& frame_buffer)
-{
-	canvas(1).blit(frame_buffer, get_rectangle());
-}
-
-void
-tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
 	canvas(1).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));

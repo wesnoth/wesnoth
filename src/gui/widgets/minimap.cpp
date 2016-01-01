@@ -231,27 +231,6 @@ const surface tminimap::get_image(const int w, const int h) const
 	return NULL;
 }
 
-void tminimap::impl_draw_background(surface& frame_buffer)
-{
-	if(!terrain_)
-		return;
-	assert(terrain_);
-
-	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	if(map_data_.empty()) {
-		return;
-	}
-
-	SDL_Rect rect = get_rectangle();
-	assert(rect.w > 0 && rect.h > 0);
-
-	const ::surface surf = get_image(rect.w, rect.h);
-	if(surf) {
-		sdl_blit(surf, NULL, frame_buffer, &rect);
-	}
-}
-
 void tminimap::impl_draw_background(surface& frame_buffer,
 									int x_offset,
 									int y_offset)

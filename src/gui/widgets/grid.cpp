@@ -906,48 +906,7 @@ void tgrid::layout(const tpoint& origin)
 	}
 }
 
-void tgrid::impl_draw_children(surface& frame_buffer)
-{
-	/*
-	 * The call to SDL_PumpEvents seems a bit like black magic.
-	 * With the call the resizing doesn't seem to lose resize events.
-	 * But when added the queue still only contains one resize event and the
-	 * internal SDL queue doesn't seem to overflow (rarely more than 50 pending
-	 * events).
-	 * Without the call when resizing larger a black area of remains, this is
-	 * the area not used for resizing the screen, this call `fixes' that.
-	 */
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	SDL_PumpEvents();
-#endif
-
-
-	assert(get_visible() == twidget::tvisible::visible);
-	set_is_dirty(false);
-
-	FOREACH(AUTO & child, children_)
-	{
-
-		twidget* widget = child.widget();
-		assert(widget);
-
-		if(widget->get_visible() != twidget::tvisible::visible) {
-			continue;
-		}
-
-		if(widget->get_drawing_action() == twidget::tredraw_action::none) {
-			continue;
-		}
-
-		widget->draw_background(frame_buffer);
-		widget->draw_children(frame_buffer);
-		widget->draw_foreground(frame_buffer);
-		widget->set_is_dirty(false);
-	}
-}
-
-void
-tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	/*
 	 * The call to SDL_PumpEvents seems a bit like black magic.

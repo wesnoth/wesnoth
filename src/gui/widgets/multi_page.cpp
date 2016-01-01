@@ -156,11 +156,6 @@ void tmulti_page::finalize(const std::vector<string_map>& page_data)
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
 }
 
-void tmulti_page::impl_draw_background(surface& /*frame_buffer*/)
-{
-	/* DO NOTHING */
-}
-
 void tmulti_page::impl_draw_background(surface& /*frame_buffer*/
 									   ,
 									   int /*x_offset*/

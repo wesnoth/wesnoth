@@ -137,14 +137,6 @@ void tcontainer_::set_visible_rectangle(const SDL_Rect& rectangle)
 	grid_.set_visible_rectangle(rectangle);
 }
 
-void tcontainer_::impl_draw_children(surface& frame_buffer)
-{
-	assert(get_visible() == twidget::tvisible::visible
-		   && grid_.get_visible() == twidget::tvisible::visible);
-
-	grid_.draw_children(frame_buffer);
-}
-
 void tcontainer_::impl_draw_children(surface& frame_buffer,
 									 int x_offset,
 									 int y_offset)

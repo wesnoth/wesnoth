@@ -518,20 +518,6 @@ void ttree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-void ttree_view_node::impl_draw_children(surface& frame_buffer)
-{
-	grid_.draw_children(frame_buffer);
-
-	if(is_folded()) {
-		return;
-	}
-
-	FOREACH(AUTO & node, children_)
-	{
-		node.impl_draw_children(frame_buffer);
-	}
-}
-
 void ttree_view_node::impl_draw_children(surface& frame_buffer,
 										 int x_offset,
 										 int y_offset)

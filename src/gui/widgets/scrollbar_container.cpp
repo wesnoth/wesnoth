@@ -763,17 +763,6 @@ void tscrollbar_container::set_horizontal_scrollbar_mode(
 	}
 }
 
-void tscrollbar_container::impl_draw_children(surface& frame_buffer)
-{
-	assert(get_visible() == twidget::tvisible::visible
-		   && content_grid_->get_visible() == twidget::tvisible::visible);
-
-	// Inherited.
-	tcontainer_::impl_draw_children(frame_buffer);
-
-	content_grid_->draw_children(frame_buffer);
-}
-
 void tscrollbar_container::impl_draw_children(surface& frame_buffer,
 											  int x_offset,
 											  int y_offset)
