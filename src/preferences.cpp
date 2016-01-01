@@ -98,6 +98,7 @@ base_manager::~base_manager()
  */
 void handle_event(const SDL_Event& event)
 {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 	// Saftey check to make sure this is a window event
 	if (event.type != SDL_WINDOWEVENT) return;
 
@@ -114,6 +115,9 @@ void handle_event(const SDL_Event& event)
 
 		break;
 	}
+#else
+	UNUSED(event);
+#endif
 }
 
 void write_preferences()

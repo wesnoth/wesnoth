@@ -43,7 +43,9 @@ static lg::log_domain log_display("display");
 
 namespace {
 	bool is_fullscreen = false;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 	bool is_maximized = false;
+#endif
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	int disallow_resize = 0;
 #endif
@@ -864,7 +866,7 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
 
 	if (getSurface() && getSurface()->w >= min_res.first && getSurface()->h >= min_res.second)
-		result.push_back(current_resolution);
+		result.push_back(current_resolution());
 
 	for(int i = 0; modes[i] != NULL; ++i) {
 		if (modes[i]->w >= min_res.first && modes[i]->h >= min_res.second)
@@ -1001,14 +1003,13 @@ void CVideo::set_fullscreen(bool ison)
 
 	if (display::get_singleton() && isFullScreen() != ison) {
 		const int flags = ison ? SDL_FULLSCREEN : 0;
+		const std::pair<int,int>& res = preferences::resolution();
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 		int bpp = DefaultBpp;
 #else
 		int bpp = bppForMode(res.first, res.second, flags);
 #endif
-
-		const std::pair<int,int>& res = preferences::resolution();
 
 		setMode(res.first, res.second, bpp, flags);
 
