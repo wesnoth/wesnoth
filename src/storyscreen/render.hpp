@@ -23,6 +23,7 @@
 
 #include "key.hpp"
 #include "storyscreen/part.hpp"
+#include "events.hpp"
 // #include "widgets/button.hpp"
 
 class display;
@@ -39,7 +40,7 @@ namespace storyscreen {
  * assumed that the screen dimensions remain constant between the
  * constructor call, and the destruction of the objects.
  */
-class part_ui
+class part_ui : public events::sdl_handler
 {
 public:
 	/** Storyscreen result. */
@@ -63,6 +64,8 @@ public:
 	 */
 	RESULT show();
 
+	virtual void handle_event(const SDL_Event& event);
+
 private:
 	part& p_;
 	display& disp_;
@@ -72,6 +75,8 @@ private:
 	gui::button& next_button_;
 	gui::button& back_button_;
 	gui::button& play_button_;
+
+	bool dirty_;
 
 	RESULT ret_;
 	bool skip_, last_key_;
@@ -101,6 +106,7 @@ private:
 	/** Constructor implementation details. */
 	void prepare_floating_images();
 
+	part_ui::RESULT render_all();
 	void render_background();
 	void render_title_box();
 	void render_story_box();
