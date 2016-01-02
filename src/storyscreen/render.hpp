@@ -106,7 +106,6 @@ private:
 	/** Constructor implementation details. */
 	void prepare_floating_images();
 
-	part_ui::RESULT render_all();
 	void render_background();
 	void render_title_box();
 	void render_story_box();
