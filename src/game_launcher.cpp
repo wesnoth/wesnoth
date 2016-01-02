@@ -393,9 +393,7 @@ bool game_launcher::init_video()
 	video_.init_window();
 
 	// Set window title and icon
-	std::string wm_title_string = _("The Battle for Wesnoth");
-	wm_title_string += " - " + game_config::revision;
-	CVideo::set_window_title(wm_title_string);
+	CVideo::set_window_title(game_config::default_title_string);
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
@@ -418,9 +416,7 @@ bool game_launcher::init_video()
 		return true;
 	}
 
-	std::string wm_title_string = _("The Battle for Wesnoth");
-	wm_title_string += " - " + game_config::revision;
-	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+	SDL_WM_SetCaption(game_config::default_title_string.c_str(), NULL);
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
@@ -1067,12 +1063,10 @@ bool game_launcher::change_language()
 	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
-		std::string wm_title_string = _("The Battle for Wesnoth");
-		wm_title_string += " - " + game_config::revision;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		CVideo::set_window_title(wm_title_string);
+		CVideo::set_window_title(game_config::default_title_string);
 #else
-		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+		SDL_WM_SetCaption(game_config::default_title_string.c_str(), NULL);
 #endif
 	}
 

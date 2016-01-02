@@ -145,7 +145,6 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
 	, auto_update_transitions_(preferences::editor::auto_update_transitions())
 	, map_contexts_()
 	, clipboard_()
-	, default_window_title_(_("The Battle for Wesnoth") + " - " + game_config::revision)
 {
 	if (default_dir_.empty()) {
 		default_dir_ = filesystem::get_dir(filesystem::get_user_data_dir() + "/editor");
@@ -165,9 +164,9 @@ context_manager::~context_manager()
 
 	// Restore default window title
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
-	SDL_WM_SetCaption(default_window_title_.c_str(), NULL);
+	SDL_WM_SetCaption(game_config::default_title_string.c_str(), NULL);
 #else
-	CVideo::set_window_title(default_window_title_);
+	CVideo::set_window_title(game_config::default_title_string);
 #endif
 }
 
@@ -1027,7 +1026,7 @@ void context_manager::set_window_title()
 		map_name = get_map_context().is_pure_map() ? _("New Map") : _("New Scenario");
 	}
 
-	const std::string& wm_title_string = map_name + " - " + default_window_title_;
+	const std::string& wm_title_string = map_name + " - " + game_config::default_title_string;
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 #else

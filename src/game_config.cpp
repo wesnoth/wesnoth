@@ -58,6 +58,8 @@ namespace game_config
 #else
 	const std::string revision = VERSION;
 #endif
+	const std::string default_title_string = _("The Battle for Wesnoth") + " - " + revision;
+
 	std::string wesnoth_program_dir;
 	bool debug = false, debug_lua = false, editor = false,
 		ignore_replay_errors = false, mp_debug = false, exit_at_end = false,
