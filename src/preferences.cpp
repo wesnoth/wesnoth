@@ -34,6 +34,9 @@
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/concept_check.hpp>
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
