@@ -80,9 +80,13 @@ void twindow::maximize()
 	SDL_MaximizeWindow(window_);
 }
 
-void twindow::restore()
+void twindow::to_window()
 {
 	SDL_SetWindowFullscreen(window_, 0);
+}
+
+void twindow::restore()
+{
 	SDL_RestoreWindow(window_);
 }
 

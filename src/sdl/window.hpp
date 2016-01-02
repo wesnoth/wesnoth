@@ -105,6 +105,11 @@ public:
 	void restore();
 
 	/**
+	 * Dummy function for returning the window to windowed mode.
+	 */
+	void to_window();
+
+	/**
 	 * Dummy function for setting the window to fullscreen mode.
 	 */
 	void full_screen();
