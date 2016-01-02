@@ -926,6 +926,40 @@ static void wesnoth_terminate_handler(int) {
 }
 #endif
 
+#ifdef _WIN32
+static void restart_process(const std::vector<std::string>& commandline)
+{
+	wchar_t process_path[MAX_PATH];
+	SetLastError(ERROR_SUCCESS);
+	GetModuleFileNameW(NULL, process_path, MAX_PATH);
+	if (GetLastError() != ERROR_SUCCESS)
+	{
+		throw std::exception("Failed to retrieve the process path");
+	}
+
+	std::wstring commandline_str = unicode_cast<std::wstring>(utils::join(commandline, " "));
+	// CreateProcessW is allowed to modify the passed command line.
+	// Therefore we need to copy it.
+	wchar_t* commandline_c_str = new wchar_t[commandline_str.length() + 1];
+	commandline_str.copy(commandline_c_str, commandline_str.length());
+	commandline_c_str[commandline_str.length()] = L'\0';
+
+	STARTUPINFOW startup_info;
+	ZeroMemory(&startup_info, sizeof(startup_info));
+	startup_info.cb = sizeof(startup_info);
+	PROCESS_INFORMATION process_info;
+	ZeroMemory(&process_info, sizeof(process_info));
+
+	CreateProcessW(process_path, commandline_c_str, NULL, NULL,
+		false, ABOVE_NORMAL_PRIORITY_CLASS, NULL, NULL, &startup_info, &process_info);
+
+	CloseHandle(process_info.hProcess);
+	CloseHandle(process_info.hThread);
+
+	std::exit(EXIT_SUCCESS);
+}
+#endif
+
 #if defined(__native_client__) || (defined(__APPLE__) && SDL_VERSION_ATLEAST(2, 0, 0))
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
@@ -988,12 +1022,7 @@ int main(int argc, char** argv)
 	if (!getenv("OMP_WAIT_POLICY")) {
 		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
 		args[0] = utils::quote(args[0]);
-		// NewArgs contains one more element than args in order to be
-		// NULL terminated (its buffer will be passed to _execv() as argv).
-		std::vector<const char*> newArgs(args.size() + 1, NULL);
-		std::transform(args.begin(), args.end(),
-			newArgs.begin(), boost::bind(&std::string::c_str, _1));
-		_execv(argv[0], &newArgs[0]);
+		restart_process(args);
 	}
 #endif
 #endif //_OPENMP
