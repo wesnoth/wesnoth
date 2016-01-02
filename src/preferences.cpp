@@ -355,15 +355,7 @@ std::pair<int,int> resolution()
 		//res.second &= ~3;
 		return res;
 	} else {
-	#ifdef __APPLE__
-		// When windowsize is larger than the screen,  Wesnoth scales the video
-		// which causes distortion with mouse tracking. 768 is simply too large
-		// vertically to safely fit. We need a smaller default resolution here for Macs.
-		// See bug #20332.
-		return std::pair<int,int>(800,600);
-	#else
 		return std::pair<int,int>(1024,768);
-	#endif
 	}
 }
 
