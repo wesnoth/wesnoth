@@ -37,16 +37,15 @@
 #include <map>
 #include <algorithm>
 
+#include <assert.h>
+
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
 
 namespace {
-	bool is_fullscreen = false;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	bool is_maximized = false;
-#endif
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
+	bool is_fullscreen = false;
 	int disallow_resize = 0;
 #endif
 #ifdef SDL_GPU
@@ -70,7 +69,7 @@ void resize_monitor::process(events::pump_info &info) {
 
 resize_lock::resize_lock()
 {
-	
+
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	++disallow_resize;
 #endif
@@ -593,44 +592,83 @@ void update_framebuffer()
 		frameBuffer.assign(fb);
 }
 
-int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
+/**
+ * Creates a new window instance.
+ */
+bool CVideo::init_window()
 {
+	// Position
+	const int x = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
+	const int y = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
+
+	// Dimensions
+	const int w = preferences::resolution().first;
+	const int h = preferences::resolution().second;
+
+	// Video flags
+	int video_flags = 0;
+
+	video_flags = get_flags(video_flags);
+
+	if (preferences::fullscreen()) {
+		video_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+	} else if (preferences::maximized()) {
+		video_flags |= SDL_WINDOW_MAXIMIZED;
+	}
+
+	// Initialize window
+	window = new sdl::twindow("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE);
+
+	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
+
+	window->set_minimum_size(
+		preferences::min_allowed_width(),
+		preferences::min_allowed_height()
+	);
+
+	event_handler_.join_global();
+
+	update_framebuffer();
+	if(frameBuffer) {
+		image::set_pixel_format(frameBuffer->format);
+	}
+
+	return true;
+}
+
+void CVideo::setMode(int x, int y, const MODE_EVENT mode)
+{
+	assert(window);
+
 	update_rects.clear();
-	if (fake_screen_) return 0;
+	if (fake_screen_) return;
 	mode_changed_ = true;
 
-	flags = get_flags(flags);
-
-	if (!window) {
-		// SDL_WINDOWPOS_UNDEFINED allows SDL to centre the window in the display instead of using a fixed initial position.
-		// Note that x and y in this particular case refer to width and height of the window, not co-ordinates.
-		window = new sdl::twindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, flags, SDL_RENDERER_SOFTWARE);
-		window->set_minimum_size(preferences::min_allowed_width(), preferences::min_allowed_height());
-		event_handler_.join_global();
-	} else {
-		int window_flags = window->get_flags();
-		is_fullscreen = (window_flags & SDL_FULLSCREEN      ) != 0;
-		is_maximized  = (window_flags & SDL_WINDOW_MAXIMIZED) != 0;
-
-		window->set_size(x, y);
-		if (is_fullscreen) {
+	switch(mode) {
+		case TO_FULLSCREEN:
 			window->full_screen();
-		} else if (is_maximized) {
+			break;
+
+		case TO_WINDOWED:
+			window->to_window();
 			window->restore();
+			break;
+
+		case TO_MAXIMIZED_WINDOW:
+			window->to_window();
 			window->maximize();
-		} else {
+			break;
+
+		case TO_RES:
 			window->restore();
+			window->set_size(x, y);
 			window->center();
-		}
+			break;
 	}
 
 	update_framebuffer();
-
-	if(frameBuffer != NULL) {
+	if(frameBuffer) {
 		image::set_pixel_format(frameBuffer->format);
-		return bits_per_pixel;
-	} else	{
-		return 0;
 	}
 }
 #else
@@ -893,7 +931,13 @@ std::pair<int,int> CVideo::current_resolution()
 	return std::make_pair(getSurface()->w, getSurface()->h);
 }
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+bool CVideo::isFullScreen() const { 
+	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0; 
+}
+#else
 bool CVideo::isFullScreen() const { return is_fullscreen; }
+#endif
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 void CVideo::setBpp( int bpp )
@@ -1001,64 +1045,62 @@ bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int
 
 void CVideo::set_fullscreen(bool ison)
 {
-	// Change the config value.
-	preferences::_set_fullscreen(ison);
-
 	if (display::get_singleton() && isFullScreen() != ison) {
-		const int flags = ison ? SDL_FULLSCREEN : 0;
 		const std::pair<int,int>& res = preferences::resolution();
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		int bpp = DefaultBpp;
+		MODE_EVENT mode;
+
+		if (ison) {
+			mode = TO_FULLSCREEN;
+		} else {
+			mode = preferences::maximized() ? TO_MAXIMIZED_WINDOW : TO_WINDOWED;
+		}
+
+		setMode(res.first, res.second, mode);
 #else
+		const int flags = ison ? SDL_FULLSCREEN : 0;
 		int bpp = bppForMode(res.first, res.second, flags);
-#endif
 
 		setMode(res.first, res.second, bpp, flags);
+#endif
 
 		display::get_singleton()->redraw_everything();
 	}
+
+	// Change the config value.
+	preferences::_set_fullscreen(ison);
 }
 
 void CVideo::set_resolution(const std::pair<int,int>& resolution)
 {
-	if(display::get_singleton()) {
-		set_resolution(resolution.first, resolution.second);
-	} else {
-		// Only change the config value. This part is needed when wesnoth is
-		// started with the -r parameter.
-		preferences::_set_resolution(resolution);
-	}
+	set_resolution(resolution.first, resolution.second);
 }
 
-bool CVideo::set_resolution(const unsigned width, const unsigned height)
+void CVideo::set_resolution(const unsigned width, const unsigned height)
 {
-	SDL_Rect rect;
-	SDL_GetClipRect(getSurface(), &rect);
-	if(static_cast<unsigned int> (rect.w) == width && static_cast<unsigned int>(rect.h) == height) {
-		return true;
-	}
+	if(display::get_singleton()) {
+		if (static_cast<unsigned int> (current_resolution().first)  == width &&
+			static_cast<unsigned int> (current_resolution().second) == height) {
 
-	const int flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
+			return;
+		}
+
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-	int bpp = DefaultBpp;
+		setMode(width, height, TO_RES);
 #else
-	int bpp = bppForMode(width, height, flags);
-#endif
+		const int flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
+		int bpp = bppForMode(width, height, flags);
 
-	if(bpp != 0) {
-		setMode(width, height, bpp, flags);
-
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-		if(display::get_singleton()) {
-			display::get_singleton()->redraw_everything();
+		if(bpp != 0) {
+			setMode(width, height, bpp, flags);
 		}
 #endif
 
+		display::get_singleton()->redraw_everything();
 	}
 
+	// Change the config values.
 	preferences::_set_resolution(std::make_pair(width, height));
 	preferences::_set_maximized(false);
-
-	return true;
 }

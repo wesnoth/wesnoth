@@ -245,11 +245,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		const int xres = cmdline_opts_.resolution->get<0>();
 		const int yres = cmdline_opts_.resolution->get<1>();
 		if(xres > 0 && yres > 0) {
-			const std::pair<int,int> resolution(xres,yres);
-			video_.set_resolution(resolution);
-
-			// Override previously saved maximized state
-			preferences::_set_maximized(false);
+			video_.set_resolution(xres, yres);
 		}
 	}
 	if (cmdline_opts_.screenshot) {
@@ -393,24 +389,8 @@ bool game_launcher::init_video()
 		return true;
 	}
 
-	// Create window with any saved settings
-	std::pair<int,int> resolution = preferences::resolution();
-
-	int video_flags = 0;
-	video_flags  = preferences::fullscreen() ? SDL_FULLSCREEN       : 0;
-	video_flags |= preferences::maximized()  ? SDL_WINDOW_MAXIMIZED : 0;
-
-	int bpp = CVideo::DefaultBpp;
-
-	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
-
-	// Set window state
-	const int res = video_.setMode(resolution.first, resolution.second, bpp, video_flags);
-	if(res == 0) {
-		std::cerr << "Required video mode, " << resolution.first << "x"
-		          << resolution.second << "x" << bpp << " is not supported\n";
-		return false;
-	}
+	// Initialize a new window
+	video_.init_window();
 
 	// Set window title and icon
 	std::string wm_title_string = _("The Battle for Wesnoth");

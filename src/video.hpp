@@ -66,12 +66,19 @@ void update_rect(const SDL_Rect& rect);
 void update_whole_screen();
 
 class CVideo : private boost::noncopyable {
-     public:
-		 enum FAKE_TYPES {
-			 NO_FAKE,
-			 FAKE,
-			 FAKE_TEST
-		 };
+public:
+	enum FAKE_TYPES {
+		  NO_FAKE
+		, FAKE
+		, FAKE_TEST
+	};
+
+	enum MODE_EVENT {
+		  TO_RES
+		, TO_FULLSCREEN
+		, TO_WINDOWED
+		, TO_MAXIMIZED_WINDOW
+	};
 
 	CVideo(FAKE_TYPES type = NO_FAKE);
 	~CVideo();
@@ -82,8 +89,19 @@ class CVideo : private boost::noncopyable {
 	int bppForMode( int x, int y, int flags);
 	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
 #endif
-	int setMode( int x, int y, int bits_per_pixel, int flags );
 
+	/**
+	 * Initializes a new window, taking into account any preiously saved states.
+	 */
+	bool init_window();
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	void setMode( int x, int y, const MODE_EVENT mode );
+#else
+	int setMode( int x, int y, int bits_per_pixel, int flags );
+#endif
+
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	/**
 	 * Detect a good resolution.
 	 *
@@ -95,6 +113,7 @@ class CVideo : private boost::noncopyable {
 	 * @returns                   Whether valid video settings were found.
 	 */
 	bool detect_video_settings(std::pair<int,int>& resolution, int& bpp, int& video_flags);
+#endif
 
 	void set_fullscreen(bool ison);
 
@@ -108,7 +127,7 @@ class CVideo : private boost::noncopyable {
 	 *                            size of the framebuffer, false otherwise.
 	 */
 	void set_resolution(const std::pair<int,int>& res);
-	bool set_resolution(const unsigned width, const unsigned height);
+	void set_resolution(const unsigned width, const unsigned height);
 
 	std::pair<int,int> current_resolution();
 
