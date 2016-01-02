@@ -395,7 +395,9 @@ CVideo::CVideo(FAKE_TYPES type) :
 	shader_(),
 #endif
 	mode_changed_(false),
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	bpp_(0),
+#endif
 	fake_screen_(false),
 	help_string_(0),
 	updatesLocked_(0)

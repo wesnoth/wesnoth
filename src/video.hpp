@@ -257,7 +257,9 @@ private:
 
 	bool mode_changed_;
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	int bpp_;	// Store real bits per pixel
+#endif
 
 	//if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;
