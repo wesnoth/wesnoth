@@ -379,8 +379,6 @@ bool fullscreen()
 
 void _set_resolution(const std::pair<int, int>& res)
 {
-	std::cout << "preferences set res: " << res.first << "x" << res.second << "\n";
-
 	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
 	preferences::set('x' + postfix, lexical_cast<std::string>(res.first));
 	preferences::set('y' + postfix, lexical_cast<std::string>(res.second));
