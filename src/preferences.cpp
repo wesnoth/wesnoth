@@ -349,14 +349,11 @@ std::pair<int,int> resolution()
 {
 	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
 	std::string x = prefs['x' + postfix], y = prefs['y' + postfix];
-	if (!x.empty() && !y.empty()) {
-		std::pair<int,int> res(std::max(atoi(x.c_str()), min_allowed_width()),
-		                       std::max(atoi(y.c_str()), min_allowed_height()));
 
-		// Make sure resolutions are always divisible by 4
-		//res.first &= ~3;
-		//res.second &= ~3;
-		return res;
+	if (!x.empty() && !y.empty()) {
+		return std::make_pair(
+			std::max(atoi(x.c_str()), min_allowed_width()),
+			std::max(atoi(y.c_str()), min_allowed_height()));
 	} else {
 		return std::pair<int,int>(1024,768);
 	}
