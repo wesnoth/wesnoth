@@ -237,6 +237,9 @@ function wesnoth.wml_actions.message(cfg)
 			wesnoth.set_variable(text_input.variable or "input", choice.text)
 		end
 	end
+	
+	-- Unhilight the speaker
+	wesnoth.deselect_hex()
 
 	if #options > 0 then
 		if option_chosen > #options then
