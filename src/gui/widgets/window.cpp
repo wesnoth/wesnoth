@@ -1424,11 +1424,7 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 		return;
 	}
 
-	if(!video_.set_resolution(new_size.x, new_size.y)) {
-
-		LOG_GUI_E << LOG_HEADER << " resize aborted, resize failed.\n";
-		return;
-	}
+	video_.set_resolution(new_size.x, new_size.y);
 #endif
 
 	settings::gamemap_width += new_size.x - settings::screen_width;
