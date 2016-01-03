@@ -46,8 +46,6 @@ static lg::log_domain log_filesystem("filesystem");
 
 namespace {
 
-bool color_cursors = false;
-
 bool no_preferences_save = false;
 
 bool fps = false;
@@ -920,13 +918,16 @@ void set_draw_delay(int value)
 
 bool use_color_cursors()
 {
-	return color_cursors;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return get("color_cursors", true);
+#else
+	return get("color_cursors", false);
+#endif
 }
 
 void _set_color_cursors(bool value)
 {
 	preferences::set("color_cursors", value);
-	color_cursors = value;
 }
 
 void load_hotkeys()
