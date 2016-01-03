@@ -58,7 +58,7 @@ namespace game_config
 #else
 	const std::string revision = VERSION;
 #endif
-	const std::string default_title_string = _("The Battle for Wesnoth") + " - " + revision;
+
 
 	std::string wesnoth_program_dir;
 	bool debug = false, debug_lua = false, editor = false,
@@ -420,6 +420,11 @@ namespace game_config
 		val = std::max<int>(0, std::min<int>(val, 100));
 		int lvl = (color_scale.size()-1) * val / 100;
 		return color_scale[lvl];
+	}
+
+	std::string get_default_title_string() {
+		 std::string ret = _("The Battle for Wesnoth") + " - " + revision;
+		 return ret;
 	}
 
 } // game_config
