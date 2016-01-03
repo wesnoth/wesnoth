@@ -347,6 +347,7 @@ static int impl_unit_get(lua_State *L)
 	return_string_attrib("variation", u.variation());
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
+	return_string_attrib("portrait", u.big_profile() == u.absolute_image() ? u.absolute_image() + u.image_mods() : u.big_profile());
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
 
 	return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).return_unit_method(L, m);
