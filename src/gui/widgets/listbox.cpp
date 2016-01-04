@@ -98,6 +98,9 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 	}
 
 	int height_reduced = 0;
+	//TODO: Fix this for horizinal listboxes
+	//Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
+	int row_pos = generator_->item(row).get_y()  - content_grid_->get_y();
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != tvisible::invisible) {
 			height_reduced += generator_->item(row).get_height();
@@ -106,7 +109,7 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 	}
 
 	if(height_reduced != 0) {
-		resize_content(0, -height_reduced);
+		resize_content(0, -height_reduced, 0, row_pos);
 	}
 }
 
@@ -296,13 +299,15 @@ void tlistbox::place(const tpoint& origin, const tpoint& size)
 }
 
 void tlistbox::resize_content(const int width_modification,
-							  const int height_modification)
+							  const int height_modification,
+							  const int width_modification_pos,
+							  const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
 			  << " width_modification " << width_modification
 			  << " height_modification " << height_modification << ".\n";
 
-	if(content_resize_request(width_modification, height_modification)) {
+	if(content_resize_request(width_modification, height_modification, width_modification_pos, height_modification_pos)) {
 
 		// Calculate new size.
 		tpoint size = content_grid()->get_size();

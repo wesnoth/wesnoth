@@ -363,6 +363,55 @@ set_scrollbar_mode(tgrid* scrollbar_grid,
 											: twidget::tvisible::hidden);
 	}
 }
+static bool is_inserted_before(unsigned insertion_pos, unsigned old_item_count, unsigned old_position, unsigned visible_items)
+{
+	if(old_position == 0)
+		return false;
+	else if(old_position + visible_items >= old_item_count)
+		return true;
+	else if(insertion_pos <= old_position)
+		return true;
+	else
+		return false;
+}
+
+static void
+adjust_scrollbar_mode(tgrid* scrollbar_grid,
+				   tscrollbar_* scrollbar,
+				   tscrollbar_container::tscrollbar_mode& scrollbar_mode,
+				   const unsigned items_before,
+				   const unsigned items_after,
+				   const int insertion_pos,
+				   const unsigned visible_items)
+{
+	assert(scrollbar_grid && scrollbar);
+	if(items_before != scrollbar->get_item_count()) {
+		return set_scrollbar_mode(scrollbar_grid, scrollbar, scrollbar_mode, items_after, visible_items);
+	}
+	//TODO: does this also work well in case the items were removed?
+	const unsigned previous_item_position = scrollbar->get_item_position();
+	//Casts insertion_pos to an unsigned so negative values are interpreted as 'at end'
+	const bool inserted_before_visible_area = is_inserted_before(static_cast<unsigned>(insertion_pos), items_before, previous_item_position, visible_items);
+
+	if(scrollbar_mode == tscrollbar_container::always_invisible) {
+		scrollbar_grid->set_visible(twidget::tvisible::invisible);
+		return;
+	}
+
+	scrollbar->set_item_count(items_after);
+	scrollbar->set_item_position(inserted_before_visible_area ? previous_item_position + items_after - items_before : previous_item_position);
+	//scrollbar->set_item_position(0);
+	scrollbar->set_visible_items(visible_items);
+
+	if(scrollbar_mode == tscrollbar_container::auto_visible) {
+
+		const bool scrollbar_needed = items_after > visible_items;
+
+		scrollbar_grid->set_visible(scrollbar_needed
+											? twidget::tvisible::visible
+											: twidget::tvisible::hidden);
+	}
+}
 
 void tscrollbar_container::place(const tpoint& origin, const tpoint& size)
 {
@@ -553,7 +602,9 @@ resize:
 }
 
 bool tscrollbar_container::content_resize_request(const int width_modification,
-												  const int height_modification)
+												  const int height_modification,
+												  const int width_modification_pos,
+												  const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " wanted width modification "
 			  << width_modification << " wanted height modification "
@@ -574,9 +625,9 @@ bool tscrollbar_container::content_resize_request(const int width_modification,
 
 	assert(content_ && content_grid_);
 
-	const bool result = content_resize_width(width_modification)
-						&& content_resize_height(height_modification);
-
+	const bool result = content_resize_width(width_modification, width_modification_pos)
+						&& content_resize_height(height_modification, height_modification_pos);
+	scrollbar_moved();
 	if(result) {
 		/*
 		 * The subroutines set the new size of the scrollbar but don't
@@ -589,7 +640,7 @@ bool tscrollbar_container::content_resize_request(const int width_modification,
 	return result;
 }
 
-bool tscrollbar_container::content_resize_width(const int width_modification)
+bool tscrollbar_container::content_resize_width(const int width_modification, const int width_modification_pos)
 {
 	if(width_modification == 0) {
 		return true;
@@ -603,10 +654,12 @@ bool tscrollbar_container::content_resize_width(const int width_modification)
 
 	if(static_cast<unsigned>(new_width) <= content_->get_width()) {
 		DBG_GUI_L << " width fits in container, test height.\n";
-		set_scrollbar_mode(horizontal_scrollbar_grid_,
+		adjust_scrollbar_mode(horizontal_scrollbar_grid_,
 						   horizontal_scrollbar_,
 						   horizontal_scrollbar_mode_,
-						   new_width,
+						   content_grid_->get_width(),
+						   content_grid_->get_width() + width_modification,
+						   width_modification_pos,
 						   content_->get_width());
 		return true;
 	}
@@ -625,16 +678,18 @@ bool tscrollbar_container::content_resize_width(const int width_modification)
 	}
 
 	DBG_GUI_L << " use the horizontal scrollbar, test height.\n";
-	set_scrollbar_mode(horizontal_scrollbar_grid_,
+	adjust_scrollbar_mode(horizontal_scrollbar_grid_,
 					   horizontal_scrollbar_,
 					   horizontal_scrollbar_mode_,
-					   new_width,
+					   content_grid_->get_width(),
+					   content_grid_->get_width() + width_modification,
+					   width_modification_pos,
 					   content_->get_width());
 
 	return true;
 }
 
-bool tscrollbar_container::content_resize_height(const int height_modification)
+bool tscrollbar_container::content_resize_height(const int height_modification, const int height_modification_pos)
 {
 	if(height_modification == 0) {
 		return true;
@@ -649,10 +704,12 @@ bool tscrollbar_container::content_resize_height(const int height_modification)
 
 	if(static_cast<unsigned>(new_height) <= content_->get_height()) {
 		DBG_GUI_L << " height in container, resize allowed.\n";
-		set_scrollbar_mode(vertical_scrollbar_grid_,
+		adjust_scrollbar_mode(vertical_scrollbar_grid_,
 						   vertical_scrollbar_,
 						   vertical_scrollbar_mode_,
+						   content_grid_->get_height(),
 						   new_height,
+						   height_modification_pos,
 						   content_->get_height());
 		return true;
 	}
@@ -671,10 +728,12 @@ bool tscrollbar_container::content_resize_height(const int height_modification)
 	}
 
 	DBG_GUI_L << " use the vertical scrollbar, resize allowed.\n";
-	set_scrollbar_mode(vertical_scrollbar_grid_,
+	adjust_scrollbar_mode(vertical_scrollbar_grid_,
 					   vertical_scrollbar_,
 					   vertical_scrollbar_mode_,
+					   content_grid_->get_height(),
 					   new_height,
+					   height_modification_pos,
 					   content_->get_height());
 
 	return true;

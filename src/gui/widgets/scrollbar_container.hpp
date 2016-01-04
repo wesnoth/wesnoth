@@ -283,12 +283,22 @@ protected:
 	 *                            * negative values reduce height.
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
+	 * @param width_modification_pos
+	 *                            The position where the additional content was
+	 *                            inserted/removed, defaults to -1 whcih means 
+	 *                            'at end'
+	 * @param height_modification_po
+	 *                            The position where the additional content was
+	 *                            inserted/removed, defaults to -1 whcih means 
+	 *                            'at end'
 	 *
 	 * @returns                   True is wanted modification is accepted false
 	 *                            otherwise.
 	 */
 	bool content_resize_request(const int width_modification,
-								const int height_modification);
+								const int height_modification,
+								const int width_modification_pos = -1,
+								const int height_modification_pos = -1);
 
 private:
 	/**
@@ -296,14 +306,14 @@ private:
 	 *
 	 * Handle the width modification.
 	 */
-	bool content_resize_width(const int width_modification);
+	bool content_resize_width(const int width_modification, const int width_modification_pos);
 
 	/**
 	 * Helper for @ref content_resize_request.
 	 *
 	 * Handle the height modification.
 	 */
-	bool content_resize_height(const int height_modification);
+	bool content_resize_height(const int height_modification, const int width_modification_pos);
 
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
