@@ -159,6 +159,8 @@ else:
     from cross_compile import *
     setup_cross_compile(env)
 
+env.Tool("system_include")
+
 if 'HOME' in os.environ:
     env['ENV']['HOME'] = os.environ['HOME']
 
