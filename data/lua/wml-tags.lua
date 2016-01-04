@@ -331,37 +331,48 @@ function wml_actions.continue(cfg)
 end
 
 wesnoth.wml_actions["for"] = function(cfg)
-	local first, last, step
+	local loop_lim = {}
+	local first
 	if cfg.array ~= nil then
-		first = 0
-		last = wesnoth.get_variable(cfg.array .. ".length") - 1
-		step = 1
 		if cfg.reverse then
-			first, last = last, first
-			step = -1
+			first = wesnoth.get_variable(cfg.array .. ".length") - 1
+			loop_lim.last = 0
+			loop_lim.step = -1
+		else
+			first = 0
+			loop_lim.last = '$($' .. cfg.array .. ".length - 1)"
+			loop_lim.step = 1
 		end
 	else
+		-- Get a literal config to fetch end and step;
+		-- this done is to delay expansion of variables
+		local cfg_lit = helper.literal(cfg)
 		first = cfg.start or 0
-		last = cfg["end"] or first
-		step = cfg.step
-		if not step then
-			if last < first then step = -1 else step = 1 end
-		end
+		loop_lim.last = cfg_lit["end"] or first
+		if cfg.step then loop_lim.step = cfg_lit.step end
 	end
-	if step == 0 then -- Sanity check
+	loop_lim = wesnoth.tovconfig(loop_lim)
+	if loop_lim.step == 0 then -- Sanity check
 		helper.wml_error("[for] has a step of 0!")
 	end
-	if (first < last and step < 0) or (first > last and step > 0) then
+	if (first < loop_lim.last and loop_lim.step <= 0) or (first > loop_lim.last and loop_lim.step >= 0) then
 		-- Sanity check: If they specify something like start,end,step=1,4,-1
 		-- then we do nothing
 		return
 	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
-	local sentinel = last + step
 	wesnoth.set_variable(i_var, first)
 	local function loop_condition()
-		if first < sentinel then
+		local sentinel = loop_lim.last
+		if loop_lim.step then
+			sentinel = sentinel + loop_lim.step
+		elseif loop_lim.last < first then
+			sentinel = sentinel - 1
+		else
+			sentinel = sentinel + 1
+		end
+		if loop_lim.step > 0 then
 			return wesnoth.get_variable(i_var) < sentinel
 		else
 			return wesnoth.get_variable(i_var) > sentinel
@@ -380,7 +391,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 				goto exit
 			end
 		end
-		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + step)
+		wesnoth.set_variable(i_var, wesnoth.get_variable(i_var) + loop_lim.step)
 	end
 	::exit::
 	utils.end_var_scope(i_var, save_i)
