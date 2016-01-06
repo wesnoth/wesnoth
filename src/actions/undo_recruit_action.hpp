@@ -17,9 +17,9 @@ struct recruit_action : undo_action, shroud_clearing_action
 
 
 	recruit_action(const unit_const_ptr recruited, const map_location& loc,
-	               const map_location& from)
+	               const map_location& from, int orig_village_owner, bool time_bonus)
 		: undo_action()
-		, shroud_clearing_action(recruited, loc)
+		, shroud_clearing_action(recruited, loc, orig_village_owner, time_bonus)
 		, u_type(recruited->type())
 		, recruit_from(from)
 	{

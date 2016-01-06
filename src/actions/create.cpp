@@ -607,14 +607,13 @@ namespace { // Helpers for place_recruit()
 		}
 	}
 }// anonymous namespace
-
-bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
+//Used by recalls and recruits
+place_recruit_result place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
     int cost, bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
+	place_recruit_result res(false, 0, false);
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
-
-	bool mutated = false;
 	unit new_unit = u;
 	if (full_movement) {
 		new_unit.set_movement(new_unit.total_movement(), true);
@@ -646,7 +645,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			mutated |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			res.get<0>() |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
@@ -667,7 +666,8 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 
 	// Village capturing.
 	if ( resources::gameboard->map().is_village(current_loc) ) {
-		mutated |= actions::get_village(current_loc, new_unit_itor->side());
+		res.get<1>() = resources::gameboard->village_owner(current_loc) + 1;
+		res.get<0>() |= actions::get_village(current_loc, new_unit_itor->side(), &res.get<2>());
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
 	}
@@ -675,22 +675,22 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	// Fog clearing.
 	actions::shroud_clearer clearer;
 	if ( !wml_triggered ) // To preserve current WML behavior.
-		mutated |= clearer.clear_unit(current_loc, *new_unit_itor);
+		res.get<0>() |= clearer.clear_unit(current_loc, *new_unit_itor);
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			mutated |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			res.get<0>() |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 	}
 
 	// "sighted" event(s).
-	mutated |= clearer.fire_events();
+	res.get<0>() |= clearer.fire_events();
 	if ( new_unit_itor.valid() )
-		mutated |= actions::actor_sighted(*new_unit_itor);
+		res.get<0>() |= actions::actor_sighted(*new_unit_itor);
 
-	return mutated;
+	return res;
 }
 
 
@@ -704,17 +704,17 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 
 	// Place the recruit.
-	bool mutated = place_recruit(*new_unit, loc, from, u_type.cost(), false, show);
+	place_recruit_result res = place_recruit(*new_unit, loc, from, u_type.cost(), false, show);
 	statistics::recruit_unit(*new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recruit.)
 	if ( use_undo ) {
-		resources::undo_stack->add_recruit(new_unit, loc, from);
+		resources::undo_stack->add_recruit(new_unit, loc, from, res.get<1>(), res.get<2>());
 		// Check for information uncovered or randomness used.
 
-		if ( mutated  || !synced_context::can_undo()) {
+		if ( res.get<0>() || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -745,13 +745,13 @@ bool recall_unit(const std::string & id, team & current_team,
 	// Place the recall.
 	// We also check to see if a custom unit level recall has been set if not,
 	// we use the team's recall cost otherwise the unit's.
-	bool mutated;
+	place_recruit_result res;
 	if (recall->recall_cost() < 0) {
-		mutated = place_recruit(*recall, loc, from, current_team.recall_cost(),
+		res = place_recruit(*recall, loc, from, current_team.recall_cost(),
 	                             true, show);
 	}
 	else {
-		mutated = place_recruit(*recall, loc, from, recall->recall_cost(),
+		res = place_recruit(*recall, loc, from, recall->recall_cost(),
 	                             true, show);
 	}
 	statistics::recall_unit(*recall);
@@ -760,8 +760,8 @@ bool recall_unit(const std::string & id, team & current_team,
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
-		resources::undo_stack->add_recall(recall, loc, from);
-		if ( mutated || !synced_context::can_undo()) {
+		resources::undo_stack->add_recall(recall, loc, from, res.get<1>(), res.get<2>());
+		if ( res.get<0>() || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}

@@ -13,8 +13,6 @@ namespace undo
 struct move_action : undo_action, shroud_clearing_action
 {
 	int starting_moves;
-	int original_village_owner;
-	int countdown_time_bonus;
 	map_location::DIRECTION starting_dir;
 	map_location goto_hex;
 
@@ -24,21 +22,17 @@ struct move_action : undo_action, shroud_clearing_action
 	            const std::vector<map_location>::const_iterator & end,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir)
 		: undo_action()
-		, shroud_clearing_action(moved, begin, end)
+		, shroud_clearing_action(moved, begin, end, orig, timebonus != 0)
 		, starting_moves(sm)
-		, original_village_owner(orig)
-		, countdown_time_bonus(timebonus)
 		, starting_dir(dir == map_location::NDIRECTIONS ? moved->facing() : dir)
 		, goto_hex(moved->get_goto())
 	{
 	}
 	move_action(const config & cfg, const config & unit_cfg,
-	            int sm, int timebonus, int orig, const map_location::DIRECTION dir)
+	            int sm, const map_location::DIRECTION dir)
 		: undo_action(cfg)
 		, shroud_clearing_action(cfg)
 		, starting_moves(sm)
-		, original_village_owner(orig)
-		, countdown_time_bonus(timebonus)
 		, starting_dir(dir)
 		, goto_hex(unit_cfg["goto_x"].to_int(-999) - 1,
 		         unit_cfg["goto_y"].to_int(-999) - 1)

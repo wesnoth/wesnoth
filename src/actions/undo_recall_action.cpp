@@ -66,6 +66,7 @@ bool recall_action::undo(int side)
 	// to also do the overlapped hexes
 	gui.invalidate(recall_loc);
 	units.erase(recall_loc);
+	this->return_village();
 	execute_undo_umc_wml();
 	return true;
 }

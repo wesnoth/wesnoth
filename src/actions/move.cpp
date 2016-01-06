@@ -138,7 +138,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 }
 
 
-bool get_village(const map_location& loc, int side, int *action_timebonus, bool fire_event)
+bool get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
 	std::vector<team> &teams = *resources::teams;
 	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : NULL;
@@ -170,7 +170,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus, bool 
 
 	if(grants_timebonus) {
 		t->set_action_bonus_count(1 + t->action_bonus_count());
-		*action_timebonus = 1;
+		*action_timebonus = true;
 	}
 
 	if(not_defeated) {
@@ -1019,8 +1019,8 @@ namespace { // Private helpers for move_unit()
 	{
 		const map_location & final_loc = final_hex();
 
-		int orig_village_owner = -1;
-		int action_time_bonus = 0;
+		int orig_village_owner = 0;
+		bool action_time_bonus = false;
 
 		// Reveal ambushers?
 		if ( ambushed_ || blocked() )
@@ -1041,8 +1041,8 @@ namespace { // Private helpers for move_unit()
 			// Village capturing.
 			if ( resources::gameboard->map().is_village(final_loc) ) {
 				// Is this a capture?
-				orig_village_owner = resources::gameboard->village_owner(final_loc);
-				if ( orig_village_owner != current_side_-1 ) {
+				orig_village_owner = resources::gameboard->village_owner(final_loc) + 1;
+				if ( orig_village_owner != current_side_) {
 					// Captured. Zap movement and take over the village.
 					move_it_->set_movement(0, true);
 					event_mutated_ |= get_village(final_loc, current_side_, &action_time_bonus);

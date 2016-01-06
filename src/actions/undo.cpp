@@ -90,8 +90,6 @@ undo_action_base * undo_list::create_action(const config & cfg)
 	if ( str == "move" ) {
 		res = new undo::move_action(cfg, cfg.child_or_empty("unit"),
 		                       cfg["starting_moves"],
-		                       cfg["time_bonus"],
-		                       cfg["village_owner"],
 		                       map_location::parse_direction(cfg["starting_direction"]));
 	}
 
@@ -194,18 +192,18 @@ void undo_list::add_move(const unit_const_ptr u,
  * Adds a recall to the undo stack.
  */
 void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
-                           const map_location& from)
+                           const map_location& from, int orig_village_owner, bool time_bonus)
 {
-	add(new undo::recall_action(u, loc, from));
+	add(new undo::recall_action(u, loc, from, orig_village_owner, time_bonus));
 }
 
 /**
  * Adds a recruit to the undo stack.
  */
 void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
-                            const map_location& from)
+                            const map_location& from, int orig_village_owner, bool time_bonus)
 {
-	add(new undo::recruit_action(u, loc, from));
+	add(new undo::recruit_action(u, loc, from, orig_village_owner, time_bonus));
 }
 
 /**
