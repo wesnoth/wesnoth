@@ -45,7 +45,6 @@ bool move_action::undo(int side)
 {
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
 
 	// Copy some of our stored data.
 	const int saved_moves = starting_moves;
@@ -90,7 +89,6 @@ bool move_action::redo(int side)
 {
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
 
 	// Check units.
 	unit_map::iterator u = units.find(route.front());
