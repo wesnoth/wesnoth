@@ -14,7 +14,7 @@ void shroud_clearing_action::return_village()
 {
 	team &current_team = resources::controller->current_team();
 	const map_location back = route.back();
-	if(original_village_owner != 0 && resources::gameboard->map().is_village(back)) {
+	if(resources::gameboard->map().is_village(back)) {
 		get_village(back, original_village_owner, NULL, false);
 		//MP_COUNTDOWN take away capture bonus
 		if(take_village_timebonus) {
