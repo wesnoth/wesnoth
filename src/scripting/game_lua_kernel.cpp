@@ -1083,7 +1083,7 @@ int game_lua_kernel::intf_set_end_campaign_credits(lua_State *L)
 int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
 {
 	game_classification &classification = const_cast<game_classification &> (play_controller_.get_classification());
-	classification.end_text = luaL_checkstring(L, 1);
+	classification.end_text = luaW_checktstring(L, 1);
 	if (lua_isnumber(L, 2)) {
 		classification.end_text_duration = static_cast<int> (lua_tonumber(L, 2));
 	}
