@@ -258,7 +258,7 @@ protected:
 		// this hack shall be removed, since it messes up with 'multiple leaders'
 
 		// If this side tag describes the leader of the side
-		if (!side_cfg_["no_leader"].to_bool() && side_cfg_["controller"] != "null") {
+		if (side_cfg_.has_attribute("type") && side_cfg_["type"] != "null" ) {
 			handle_leader(side_cfg_);
 		}
 		BOOST_FOREACH(const config &l, side_cfg_.child_range("leader")) {
