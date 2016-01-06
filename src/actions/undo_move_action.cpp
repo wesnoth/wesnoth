@@ -41,7 +41,7 @@ void move_action::write(config & cfg) const
  * Undoes this action.
  * @return true on success; false on an error.
  */
-bool move_action::undo(int side)
+bool move_action::undo(int)
 {
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
@@ -85,7 +85,7 @@ bool move_action::undo(int side)
  * Redoes this action.
  * @return true on success; false on an error.
  */
-bool move_action::redo(int side)
+bool move_action::redo(int)
 {
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
