@@ -791,11 +791,6 @@ static scaling_function select_algorithm(gui2::tadvanced_graphics_options::SCALI
 			scaling_function result = &scale_xbrz_helper<scale_surface_nn>;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LEGACY_LINEAR:
-		{
-			scaling_function result = &scale_surface_legacy;
-			return result;
-		}
 		default:
 			assert(false && "I don't know how to implement this scaling algorithm");
 			throw 42;

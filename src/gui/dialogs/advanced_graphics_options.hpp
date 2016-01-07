@@ -48,7 +48,6 @@ public:
 		(NEAREST_NEIGHBOR, 	"nn")
 		(XBRZ_LIN,		"xbrzlin")
 		(XBRZ_NN,		"xbrznn")
-		(LEGACY_LINEAR,		"legacy_lin")
 	)
 
 private:
