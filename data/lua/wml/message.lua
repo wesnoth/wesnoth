@@ -147,11 +147,16 @@ function wesnoth.wml_actions.message(cfg)
 				-- Legacy format
 				table.insert(options, option.message)
 			else
-				local opt = helper.parsed(option)
-				if opt.message then
-					if not opt.label then
+				local opt = {
+					label = option.label,
+					description = option.description,
+					image = option.image,
+					default = option.default,
+				}
+				if option.message then
+					if not option.label then
 						-- Support either message or description
-						opt.label = opt.message
+						opt.label = option.message
 					else
 						log("[option] has both label= and message=, ignoring the latter", "warning")
 					end
