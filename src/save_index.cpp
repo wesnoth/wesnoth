@@ -412,6 +412,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 						break;
 					}
 				}
+
+				// Exit on first human leader
+				break;
 			}
 		}
 	//}
