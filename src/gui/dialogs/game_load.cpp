@@ -278,7 +278,7 @@ void tgame_load::display_savegame(twindow& window)
 				.set_map_data(summary["map_data"]);
 
 	find_widget<tlabel>(&window, "lblScenario", false)
-				.set_label(game.name());
+				.set_label(summary["label"]);
 
 	std::stringstream str;
 	str << game.format_time_local();
