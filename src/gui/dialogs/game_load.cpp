@@ -272,31 +272,34 @@ void tgame_load::display_savegame(twindow& window)
 	const config& summary = game.summary();
 
 	find_widget<timage>(&window, "imgLeader", false)
-				.set_label(summary["leader_image"]);
+			.set_label(summary["leader_image"]);
 
 	find_widget<tminimap>(&window, "minimap", false)
-				.set_map_data(summary["map_data"]);
+			.set_map_data(summary["map_data"]);
 
 	find_widget<tlabel>(&window, "lblScenario", false)
-				.set_label(summary["label"]);
+			.set_label(summary["label"]);
 
 	std::stringstream str;
 	str << game.format_time_local();
 	evaluate_summary_string(str, summary);
 
-	// Always toggle show_replay on if the save is a replay
 	ttoggle_button& replay_toggle =
 			find_widget<ttoggle_button>(&window, "show_replay", false);
-	// cancel orders doesnt make sense on replay saves or start-of-scenario saves.
+
 	ttoggle_button& cancel_orders_toggle =
 			find_widget<ttoggle_button>(&window, "cancel_orders", false);
 
 	const bool is_replay = is_replay_save(summary);
 	const bool is_scenario_start = summary["turn"].empty();
 
+	// Always toggle show_replay on if the save is a replay
 	replay_toggle.set_value(is_replay);
 	replay_toggle.set_active(!is_replay && !is_scenario_start);
+	
+	// Cancel orders doesnt make sense on replay saves or start-of-scenario saves.
 	cancel_orders_toggle.set_active(!is_replay && !is_scenario_start);
+
 	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
 
 	// TODO: Find a better way to change the label width
