@@ -15,7 +15,7 @@ local function get_image(cfg, speaker)
 	local image = cfg.image
 
 	if speaker and image == nil then
-		image = speaker.__cfg.profile
+		image = speaker.portrait
 	end
 
 	if image == "none" or image == nil then
@@ -147,11 +147,16 @@ function wesnoth.wml_actions.message(cfg)
 				-- Legacy format
 				table.insert(options, option.message)
 			else
-				local opt = helper.parsed(option)
-				if opt.message then
-					if not opt.label then
+				local opt = {
+					label = option.label,
+					description = option.description,
+					image = option.image,
+					default = option.default,
+				}
+				if option.message then
+					if not option.label then
 						-- Support either message or description
-						opt.label = opt.message
+						opt.label = option.message
 					else
 						log("[option] has both label= and message=, ignoring the latter", "warning")
 					end
@@ -211,7 +216,8 @@ function wesnoth.wml_actions.message(cfg)
 			wesnoth.scroll_to_tile(speaker.x, speaker.y)
 		end
 
-		wesnoth.select_hex(speaker.x, speaker.y, false)
+		wesnoth.select_hex(speaker.x, speaker.y, true)
+		wesnoth.fire("redraw")
 	end
 
 	if cfg.sound then wesnoth.play_sound(cfg.sound) end
@@ -237,6 +243,9 @@ function wesnoth.wml_actions.message(cfg)
 			wesnoth.set_variable(text_input.variable or "input", choice.text)
 		end
 	end
+	
+	-- Unhilight the speaker
+	wesnoth.deselect_hex()
 
 	if #options > 0 then
 		if option_chosen > #options then
