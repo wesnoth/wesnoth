@@ -25,6 +25,9 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "game_config.hpp"
+#include "language.hpp"
+#include "marked-up_text.hpp"
 #include "unit.hpp"
 #include "utils/foreach.tpp"
 
@@ -110,21 +113,59 @@ static void set_weapon_info(twindow& window,
 	FOREACH(const AUTO & weapon, weapons)
 	{
 		const battle_context_unit_stats& attacker = weapon.get_attacker_stats();
-
 		const battle_context_unit_stats& defender = weapon.get_defender_stats();
 
-		const attack_type& attacker_weapon = *attacker.weapon;
-		const attack_type& defender_weapon = defender.weapon ? *defender.weapon
-															 : no_weapon;
+		const attack_type& attacker_weapon = 
+			*attacker.weapon;
+		const attack_type& defender_weapon = defender.weapon ? 
+			*defender.weapon : no_weapon;
+
+		const SDL_Color a_cth_color =
+			int_to_color(game_config::red_to_green(attacker.chance_to_hit));
+		const SDL_Color d_cth_color =
+			int_to_color(game_config::red_to_green(defender.chance_to_hit));
+
+		const std::string& attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
+		const std::string& defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";
+
+		std::string range = attacker_weapon.range().empty() ? defender_weapon.range() : attacker_weapon.range();
+		if (!range.empty()) {
+			range = string_table["range_" + range];
+		}
+
+		std::stringstream attacker_stats, defender_stats;
+
+		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
+			<< attacker_weapon.damage() << font::weapon_numbers_sep << attacker_weapon.num_attacks()
+			<< "  " << attacker_weapon.weapon_specials() << "\n"
+			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>" << "\n";
+
+		defender_stats << "<b>" << defw_name << "</b>" << "\n"
+			<< defender_weapon.damage() << font::weapon_numbers_sep << defender_weapon.num_attacks()
+			<< "  " << defender_weapon.weapon_specials() << "\n"
+			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>" << "\n";
 
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = attacker_weapon.name();
+		item["label"] = attacker_weapon.icon();
+		data.insert(std::make_pair("attacker_weapon_icon", item));
+
+		item["label"] = attacker_stats.str();
+		item["use_markup"] = "true";
 		data.insert(std::make_pair("attacker_weapon", item));
 
-		item["label"] = defender_weapon.name();
+		//item["label"] = << utils::unicode_em_dash + " " << range << " " + utils::unicode_em_dash;
+		item["label"] = "<span color='#a69275'>" + utils::unicode_em_dash + " " + range + " " + utils::unicode_em_dash + "</span>";
+		item["use_markup"] = "true";
+		data.insert(std::make_pair("range", item));
+
+		item["label"] = defender_stats.str();
+		item["use_markup"] = "true";
 		data.insert(std::make_pair("defender_weapon", item));
+
+		item["label"] = defender_weapon.icon();
+		data.insert(std::make_pair("defender_weapon_icon", item));
 
 		weapon_list.add_row(data);
 	}
