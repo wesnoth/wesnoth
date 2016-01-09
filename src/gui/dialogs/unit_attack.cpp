@@ -28,6 +28,9 @@
 #include "game_config.hpp"
 #include "language.hpp"
 #include "marked-up_text.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
 #include "unit.hpp"
 #include "utils/foreach.tpp"
 
@@ -87,15 +90,28 @@ set_label(twindow& window, const std::string& id, const std::string& label)
 
 static void set_attacker_info(twindow& w, unit& u)
 {
-	set_label<timage>(w, "attacker_portrait", u.absolute_image());
-	set_label<timage>(w, "attacker_icon", u.absolute_image());
+	std::string tc;
+
+	if(resources::controller) {
+		tc = "~RC(" + u.team_color() + ">" +
+			 team::get_side_color_index(resources::controller->current_side())
+			 + ")";
+	}
+
+	set_label<timage>(w, "attacker_portrait", u.absolute_image() + tc);
+	set_label<timage>(w, "attacker_icon", u.absolute_image() + tc);
 	set_label<tcontrol>(w, "attacker_name", u.name());
 }
 
 static void set_defender_info(twindow& w, unit& u)
 {
-	set_label<timage>(w, "defender_portrait", u.absolute_image());
-	set_label<timage>(w, "defender_icon", u.absolute_image());
+	const std::string& 
+		tc = "~RC(" + u.team_color() + ">" + 
+			 team::get_side_color_index(u.side())
+			 + ")";
+
+	set_label<timage>(w, "defender_portrait", u.absolute_image() + tc);
+	set_label<timage>(w, "defender_icon", u.absolute_image() + tc);
 	set_label<tcontrol>(w, "defender_name", u.name());
 }
 
