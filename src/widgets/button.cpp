@@ -317,8 +317,12 @@ void button::calculate_size()
 									font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
+	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
+	// The proper fix should possibly be in the draw_contents() function.
+#if 0
 	if (!change_size)
 		return;
+#endif
 
 	set_height(std::max(textRect_.h+vertical_padding,base_height_));
 	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {

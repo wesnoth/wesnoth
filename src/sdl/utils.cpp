@@ -2546,7 +2546,7 @@ void surface_restorer::restore() const
 
 void surface_restorer::update()
 {
-	if(rect_.w == 0 || rect_.h == 0)
+	if(rect_.w <= 0 || rect_.h <= 0)
 		surface_.assign(NULL);
 	else
 		surface_.assign(::get_surface_portion(target_->getSurface(),rect_));

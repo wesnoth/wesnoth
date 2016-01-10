@@ -403,9 +403,11 @@ public:
 
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
-#ifdef SDL_GPU
+
+	void layout_buttons();
+
 	void render_buttons();
-#endif
+
 	void invalidate_theme() { panelsDrawn_ = false; }
 
 	void refresh_report(std::string const &report_name, const config * new_cfg=NULL);

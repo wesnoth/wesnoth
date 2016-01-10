@@ -255,6 +255,10 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 
 	init_flags();
 
+	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+		create_buttons();
+	}
+
 #if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 	// Runtime checks for bug #17573
 	// Get glibc runtime version information
@@ -868,6 +872,48 @@ gui::zoom_slider* display::find_slider(const std::string& id)
 	return NULL;
 }
 
+void display::layout_buttons()
+{
+
+	DBG_DP << "positioning sliders...\n";
+	const std::vector<theme::slider>& sliders = theme_.sliders();
+	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
+		gui::zoom_slider* s = find_slider(i->get_id());
+		if (s) {
+			const SDL_Rect& loc = i->location(screen_area());
+			s->set_location(loc);
+			s->set_volatile(
+				sdl::rects_overlap(s->location(),map_outside_area()));
+		}
+	}
+
+	DBG_DP << "positioning menu buttons...\n";
+	const std::vector<theme::menu>& buttons = theme_.menus();
+	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+		gui::button* b = find_menu_button(i->get_id());
+		if(b) {
+			const SDL_Rect& loc = i->location(screen_area());
+			b->set_location(loc);
+			b->set_label(i->title());
+			b->set_volatile(
+					sdl::rects_overlap(b->location(),map_outside_area()));
+		}
+	}
+
+	DBG_DP << "positioning action buttons...\n";
+	const std::vector<theme::action>& actions = theme_.actions();
+	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
+		gui::button* b = find_action_button(i->get_id());
+		if(b) {
+			const SDL_Rect& loc = i->location(screen_area());
+			b->set_location(loc);
+			b->set_label(i->title());
+			b->set_volatile(
+						sdl::rects_overlap(b->location(),map_outside_area()));
+		}
+	}
+}
+
 void display::create_buttons()
 {
 	std::vector<gui::button> menu_work;
@@ -880,17 +926,12 @@ void display::create_buttons()
 		gui::zoom_slider s(screen_, i->image(), i->black_line());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		s.set_id(i->get_id());
-		const SDL_Rect& loc = i->location(screen_area());
-		s.set_location(loc);
 		//TODO support for non zoom sliders
 		s.set_max(MaxZoom);
 		s.set_min(MinZoom);
 		s.set_value(zoom_);
 		if (!i->tooltip().empty()){
 			s.set_tooltip_string(i->tooltip());
-		}
-		if(sdl::rects_overlap(s.location(),map_outside_area())) {
-			s.set_volatile(true);
 		}
 
 		gui::zoom_slider* s_prev = find_slider(s.id());
@@ -914,13 +955,8 @@ void display::create_buttons()
 				gui::button::DEFAULT_SPACE, true, i->overlay());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
-		const SDL_Rect& loc = i->location(screen_area());
-		b.set_location(loc.x,loc.y);
 		if (!i->tooltip().empty()){
 			b.set_tooltip_string(i->tooltip());
-		}
-		if(sdl::rects_overlap(b.location(),map_outside_area())) {
-			b.set_volatile(true);
 		}
 
 		gui::button* b_prev = find_menu_button(b.id());
@@ -936,13 +972,8 @@ void display::create_buttons()
 
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
-		const SDL_Rect& loc = i->location(screen_area());
-		b.set_location(loc.x,loc.y);
 		if (!i->tooltip(0).empty()){
 			b.set_tooltip_string(i->tooltip(0));
-		}
-		if(sdl::rects_overlap(b.location(),map_outside_area())) {
-			b.set_volatile(true);
 		}
 
 		gui::button* b_prev = find_action_button(b.id());
@@ -951,13 +982,16 @@ void display::create_buttons()
 		action_work.push_back(b);
 	}
 
+
+
 	menu_buttons_.swap(menu_work);
 	action_buttons_.swap(action_work);
 	sliders_.swap(slider_work);
+
+	layout_buttons();
 	DBG_DP << "buttons created\n";
 }
 
-#ifdef SDL_GPU
 void display::render_buttons()
 {
 	BOOST_FOREACH(gui::button &btn, menu_buttons_) {
@@ -972,7 +1006,7 @@ void display::render_buttons()
 		sld.set_dirty(true);
 	}
 }
-#endif
+
 
 gui::button::TYPE display::string_to_button_type(std::string type)
 {
@@ -1591,8 +1625,7 @@ void display::draw_all_panels()
 		draw_label(video(),screen,*i);
 	}
 
-	//FIXME: does it really make sense to recreate buttons all the time?
-	create_buttons();
+	render_buttons();
 #endif
 }
 
@@ -2686,6 +2719,9 @@ void display::redraw_everything()
 	tooltips::clear_tooltips();
 
 	theme_.set_resolution(screen_area());
+
+	layout_buttons();
+	render_buttons();
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
 		create_buttons();
