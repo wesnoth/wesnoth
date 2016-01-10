@@ -136,6 +136,21 @@ static void set_alignment_icon(twindow& window, const std::string& widget_id, co
 	a_icon.set_tooltip(alignment_name);
 }
 
+static std::string get_blit_string(const unit& u)
+{
+	std::string overlays;
+
+	if (u.can_recruit()) {
+		overlays += "~BLIT(" + unit::leader_crown() + ")";
+	}
+
+	BOOST_FOREACH(const std::string& overlay, u.overlays()) {
+		overlays += "~BLIT(" + overlay + ")";
+	}
+
+	return overlays;
+}
+
 static void set_attacker_info(twindow& window, const unit& u)
 {
 	std::string tc;
@@ -146,8 +161,8 @@ static void set_attacker_info(twindow& window, const unit& u)
 			 + ")";
 	}
 
-	set_label<timage>(window, "attacker_portrait", u.absolute_image() + tc);
-	set_label<timage>(window, "attacker_icon", u.absolute_image() + tc);
+	set_label<timage>(window, "attacker_portrait", u.absolute_image() + tc + get_blit_string(u));
+	set_label<timage>(window, "attacker_icon", u.absolute_image() + tc + get_blit_string(u));
 
 	tcontrol& attacker_name =
 		find_widget<tcontrol>(&window, "attacker_stats", false);
@@ -166,8 +181,8 @@ static void set_defender_info(twindow& window, const unit& u)
 			 + ")";
 
 	// Ensure the defender image is always facing left
-	set_label<timage>(window, "defender_portrait", u.absolute_image() + tc + "~FL(horiz)");
-	set_label<timage>(window, "defender_icon", u.absolute_image() + tc + "~FL(horiz)");
+	set_label<timage>(window, "defender_portrait", u.absolute_image() + tc + "~FL(horiz)" + get_blit_string(u));
+	set_label<timage>(window, "defender_icon", u.absolute_image() + tc + "~FL(horiz)" + get_blit_string(u));
 
 	tcontrol& defender_name =
 		find_widget<tcontrol>(&window, "defender_stats", false);
