@@ -14,6 +14,8 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "attack_prediction_display.hpp"
+
 #include "gui/dialogs/unit_attack.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
@@ -252,6 +254,15 @@ void tunit_attack::profile_button_callback(const std::string& type)
 	help::show_unit_help(*disp_, type);
 }
 
+void tunit_attack::damage_calc_callback(twindow& window)
+{
+	const int selection
+		= find_widget<tlistbox>(&window, "weapon_list", false).get_selected_row();
+
+	attack_prediction_displayer predition_dialog(weapons_, (*attacker_itor_).get_location(), (*defender_itor_).get_location());
+	predition_dialog.button_pressed(selection);
+}
+
 void tunit_attack::pre_show(CVideo& /*video*/, twindow& window)
 {
 	connect_signal_mouse_left_click(
@@ -262,14 +273,9 @@ void tunit_attack::pre_show(CVideo& /*video*/, twindow& window)
 			find_widget<tbutton>(&window, "defender_profile", false),
 			boost::bind(&tunit_attack::profile_button_callback, this, (*defender_itor_).type_id()));
 
-	// TODO: implement
-	find_widget<tbutton>(&window, "damage_calculation", false).set_active(false);
-
-	/**connect_signal_mouse_left_click(
+	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "damage_calculation", false),
-			boost::bind(&tunit_attack::damage_calc_callback,
-						this,
-						boost::ref(window)));**/
+			boost::bind(&tunit_attack::damage_calc_callback, this, boost::ref(window)));
 
 	set_attacker_info(window, *attacker_itor_);
 	set_defender_info(window, *defender_itor_);

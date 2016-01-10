@@ -20,7 +20,6 @@
 #include "actions/attack.hpp"           // for battle_context, etc
 #include "actions/move.hpp"           // for move_and_record
 #include "actions/undo.hpp"             // for undo_list
-#include "attack_prediction_display.hpp"
 #include "config.hpp"                   // for config
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
 #include "dialogs.hpp"                  // for units_list_preview_pane, etc

@@ -50,7 +50,9 @@ private:
 	void post_show(twindow& window);
 
 	void profile_button_callback(const std::string& type);
-	
+
+	void damage_calc_callback(twindow& window);
+
 	/** The index of the selected weapon. */
 	int selected_weapon_;
 
