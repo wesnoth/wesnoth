@@ -99,7 +99,7 @@ set_label(twindow& window, const std::string& id, const std::string& label)
 	}
 }
 
-static std::string format_stats(unit& u)
+static std::string format_stats(const unit& u)
 {
 	const std::string& name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
 	const std::string& traits = !u.get_traits_list().empty() ? u.get_traits_list().front() : " ";
@@ -124,7 +124,7 @@ static std::string format_stats(unit& u)
 	return str.str();
 }
 
-static void set_alignment_icon(twindow& window, const std::string& widget_id, unit& u)
+static void set_alignment_icon(twindow& window, const std::string& widget_id, const unit& u)
 {
 	const std::string& alignment_name = unit_type::alignment_description(
 		u.alignment(),
@@ -136,7 +136,7 @@ static void set_alignment_icon(twindow& window, const std::string& widget_id, un
 	a_icon.set_tooltip(alignment_name);
 }
 
-static void set_attacker_info(twindow& window, unit& u)
+static void set_attacker_info(twindow& window, const unit& u)
 {
 	std::string tc;
 
@@ -158,7 +158,7 @@ static void set_attacker_info(twindow& window, unit& u)
 	set_alignment_icon(window, "a_alignment", u);
 }
 
-static void set_defender_info(twindow& window, unit& u)
+static void set_defender_info(twindow& window, const unit& u)
 {
 	const std::string& 
 		tc = "~RC(" + u.team_color() + ">" + 
