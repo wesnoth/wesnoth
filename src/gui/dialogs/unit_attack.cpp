@@ -161,8 +161,7 @@ static void set_attacker_info(twindow& window, const unit& u)
 			 + ")";
 	}
 
-	set_label<timage>(window, "attacker_portrait", u.absolute_image() + tc + get_blit_string(u));
-	set_label<timage>(window, "attacker_icon", u.absolute_image() + tc + get_blit_string(u));
+	set_label<timage>(window, "attacker_image", u.absolute_image() + tc + get_blit_string(u));
 
 	tcontrol& attacker_name =
 		find_widget<tcontrol>(&window, "attacker_stats", false);
@@ -181,8 +180,7 @@ static void set_defender_info(twindow& window, const unit& u)
 			 + ")";
 
 	// Ensure the defender image is always facing left
-	set_label<timage>(window, "defender_portrait", u.absolute_image() + tc + "~FL(horiz)" + get_blit_string(u));
-	set_label<timage>(window, "defender_icon", u.absolute_image() + tc + "~FL(horiz)" + get_blit_string(u));
+	set_label<timage>(window, "defender_image", u.absolute_image() + tc + "~FL(horiz)" + get_blit_string(u));
 
 	tcontrol& defender_name =
 		find_widget<tcontrol>(&window, "defender_stats", false);
