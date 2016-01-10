@@ -966,6 +966,13 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		return -1; // abort, click will do nothing
 	}
 
+	if ((*attacker).attacks().empty()) {
+		gui2::show_transient_message(gui_->video(), "No Attacks",
+			_("This unit has no usable weapons."));
+
+		return -1;
+	}
+
 	std::vector<battle_context> bc_vector;
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
