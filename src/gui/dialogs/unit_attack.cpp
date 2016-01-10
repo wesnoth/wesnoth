@@ -113,6 +113,8 @@ static std::string format_stats(const unit& u)
 
 	str << "Lvl " << u.level() << "\n";
 
+	str << u.alignment() << "\n";
+
 	str << traits << "\n";
 
 	str << font::span_color(u.hp_color()) << _("HP: ") << u.hitpoints() << "</span>" << "\n";
@@ -121,18 +123,6 @@ static std::string format_stats(const unit& u)
 	str << "</small>" << "\n";
 
 	return str.str();
-}
-
-static void set_alignment_icon(twindow& window, const std::string& widget_id, const unit& u)
-{
-	const std::string& alignment_name = unit_type::alignment_description(
-		u.alignment(),
-		u.gender());
-
-	timage& a_icon = find_widget<timage>(&window, widget_id, false);
-
-	a_icon.set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
-	a_icon.set_tooltip(alignment_name);
 }
 
 static std::string get_image_mods(const unit& u)
@@ -160,8 +150,6 @@ static void set_attacker_info(twindow& window, const unit& u)
 
 	attacker_name.set_use_markup(true);
 	attacker_name.set_label(format_stats(u));
-
-	set_alignment_icon(window, "a_alignment", u);
 }
 
 static void set_defender_info(twindow& window, const unit& u)
@@ -174,8 +162,6 @@ static void set_defender_info(twindow& window, const unit& u)
 
 	defender_name.set_use_markup(true);
 	defender_name.set_label(format_stats(u));
-
-	set_alignment_icon(window, "d_alignment", u);
 }
 
 static void set_weapon_info(twindow& window,
