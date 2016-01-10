@@ -103,7 +103,15 @@ set_label(twindow& window, const std::string& id, const std::string& label)
 static std::string format_stats(const unit& u)
 {
 	const std::string& name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
-	const std::string& traits = !u.get_traits_list().empty() ? u.get_traits_list().front() : " ";
+	std::string traits;
+
+	BOOST_FOREACH(const std::string& trait, u.get_traits_list()) {
+		traits += (traits.empty() ? "" : ", ") + trait;
+	}
+
+	if (traits.empty()) {
+		traits = " ";
+	}
 
 	std::stringstream str;
 
