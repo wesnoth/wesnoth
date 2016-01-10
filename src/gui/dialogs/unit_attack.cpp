@@ -33,7 +33,6 @@
 #include "help/help.hpp"
 #include "language.hpp"
 #include "marked-up_text.hpp"
-#include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
@@ -136,32 +135,25 @@ static void set_alignment_icon(twindow& window, const std::string& widget_id, co
 	a_icon.set_tooltip(alignment_name);
 }
 
-static std::string get_blit_string(const unit& u)
+static std::string get_image_mods(const unit& u)
 {
-	std::string overlays;
+	std::string res
+		= "~RC(" + u.team_color() + ">" + team::get_side_color_index(u.side()) + ")";
 
 	if (u.can_recruit()) {
-		overlays += "~BLIT(" + unit::leader_crown() + ")";
+		res += "~BLIT(" + unit::leader_crown() + ")";
 	}
 
 	BOOST_FOREACH(const std::string& overlay, u.overlays()) {
-		overlays += "~BLIT(" + overlay + ")";
+		res += "~BLIT(" + overlay + ")";
 	}
 
-	return overlays;
+	return res;
 }
 
 static void set_attacker_info(twindow& window, const unit& u)
 {
-	std::string tc;
-
-	if(resources::controller) {
-		tc = "~RC(" + u.team_color() + ">" +
-			 team::get_side_color_index(resources::controller->current_side())
-			 + ")";
-	}
-
-	set_label<timage>(window, "attacker_image", u.absolute_image() + tc + get_blit_string(u));
+	set_label<timage>(window, "attacker_image", u.absolute_image() + get_image_mods(u));
 
 	tcontrol& attacker_name =
 		find_widget<tcontrol>(&window, "attacker_stats", false);
@@ -174,13 +166,8 @@ static void set_attacker_info(twindow& window, const unit& u)
 
 static void set_defender_info(twindow& window, const unit& u)
 {
-	const std::string& 
-		tc = "~RC(" + u.team_color() + ">" + 
-			 team::get_side_color_index(u.side())
-			 + ")";
-
 	// Ensure the defender image is always facing left
-	set_label<timage>(window, "defender_image", u.absolute_image() + tc + "~FL(horiz)" + get_blit_string(u));
+	set_label<timage>(window, "defender_image", u.absolute_image() + "~FL(horiz)" + get_image_mods(u));
 
 	tcontrol& defender_name =
 		find_widget<tcontrol>(&window, "defender_stats", false);
