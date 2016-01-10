@@ -9,43 +9,41 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-12-10 19:01-0300\n"
-"PO-Revision-Date: 2011-04-25 04:55+0100\n"
-"Last-Translator: Niklas Bolmdahl <niklas.spamfilter@karragard.com>\n"
+"PO-Revision-Date: 2016-01-10 14:34+0100\n"
+"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
-"Language: \n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: /home/tigge/Source/Wesnoth/Source/Wesnoth-trunk\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr "Enkel hex"
+msgstr "Enkel ruta"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr "Radie 1-hex"
+msgstr "Radie 1-ruta"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr "Radie 2-hex"
+msgstr "Radie 2-ruta"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr "Hex-linje NV-SÖ"
+msgstr "Rad av rutor NV-SÖ"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SW-NE"
-msgstr "Hex-linje NV-SÖ"
+msgstr "Rad av rutor NV-SÖ"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -80,7 +78,7 @@ msgstr "skog"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "höst"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -130,54 +128,53 @@ msgstr "Ingen"
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "Förval"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "Sommar"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "Vinter"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "Underjordiskt"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "Djupt underjordiskt"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "Inomhus"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24-timmarsschema"
 
+# Two Suns Default Schedule
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "Efter fallet"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Vill du verkligen sluta?"
+msgstr "Redigerare"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -187,7 +184,7 @@ msgstr "Arkiv"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Läs in senaste"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:90
@@ -197,14 +194,12 @@ msgstr "Karta"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Trupp vänd mot"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
-#, fuzzy
-#| msgid "Delay transition updates"
 msgid "Transition Update"
-msgstr "Fördröj övergångsuppdateringar"
+msgstr "Övergångsuppdateringar"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:111
@@ -214,22 +209,22 @@ msgstr "Fönster"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:120
 msgid "Areas"
-msgstr ""
+msgstr "Områden"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:128
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Ange lokal tid"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:134
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Ange schema för lokal tild"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:142
 msgid "Side"
-msgstr ""
+msgstr "Sida"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:160
@@ -239,46 +234,46 @@ msgstr "byar"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:177
 msgid "units"
-msgstr ""
+msgstr "trupper"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:456
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Meny för tidsschema"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:467
 msgid "Playlist"
-msgstr ""
+msgstr "Spellista"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:473
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Ange tidsschema"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Identifier: "
-msgstr ""
+msgstr "Identifierare: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Name: "
-msgstr ""
+msgstr "Namn: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Type: "
-msgstr ""
+msgstr "Typ: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Level: "
-msgstr ""
+msgstr "Nivå: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:65
 msgid "Cost: "
-msgstr ""
+msgstr "Kostnad: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Recruit: "
-msgstr ""
+msgstr "Rekrytera: "
 
 #: src/editor/controller/editor_controller.cpp:179
 msgid "Fatal error"
@@ -310,23 +305,23 @@ msgstr "Avsluta"
 
 #: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
-msgstr "Ingen tid-på-dan för editorn hittades."
+msgstr "Ingen redigerare för tid-på-dagen hittades."
 
 #: src/editor/controller/editor_controller.cpp:1113
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Byt trupp-ID"
 
 #: src/editor/controller/editor_controller.cpp:1114
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/controller/editor_controller.cpp:1130
 msgid "Rename Unit"
-msgstr ""
+msgstr "Döp om trupp"
 
 #: src/editor/controller/editor_controller.cpp:1131
 msgid "Name:"
-msgstr ""
+msgstr "Namn:"
 
 #: src/editor/map/context_manager.cpp:128
 #: src/editor/map/context_manager.cpp:305
@@ -334,38 +329,28 @@ msgid "(New Map)"
 msgstr "(Ny karta)"
 
 #: src/editor/map/context_manager.cpp:148
-#, fuzzy
-#| msgid "Battle for Wesnoth Map Editor"
 msgid "The Battle for Wesnoth"
-msgstr "Kampen om Wesnoths karteditor"
+msgstr "Kampen om Wesnoth"
 
 #: src/editor/map/context_manager.cpp:192
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
-msgstr "Välj en karta att öppna"
+msgstr "Välj en fil att öppna"
 
 #: src/editor/map/context_manager.cpp:307
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Scenario)"
-msgstr "(Ny karta)"
+msgstr "(Nytt scenario)"
 
 #: src/editor/map/context_manager.cpp:334
 msgid "No Recent Files"
-msgstr ""
+msgstr "Inga nyligen använda filer"
 
 #: src/editor/map/context_manager.cpp:371
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(Unnamed Area)"
-msgstr "(Ny karta)"
+msgstr "(Område utan namn)"
 
 #: src/editor/map/context_manager.cpp:400
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "(Ny karta)"
+msgstr "(Ny sida)"
 
 #: src/editor/map/context_manager.cpp:466
 msgid "Choose a Mask to Apply"
@@ -377,11 +362,11 @@ msgstr "Fel vid öppning av markering"
 
 #: src/editor/map/context_manager.cpp:492
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifierare:"
 
 #: src/editor/map/context_manager.cpp:492
 msgid "Rename Area"
-msgstr ""
+msgstr "Döp om område"
 
 #: src/editor/map/context_manager.cpp:503
 msgid "Choose Target Map"
@@ -402,10 +387,8 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Filen existerar redan. Vill du skriva över den?"
 
 #: src/editor/map/context_manager.cpp:655
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "Spara kartan som"
+msgstr "Spara scenariot som"
 
 #: src/editor/map/context_manager.cpp:694
 msgid "No random map generators found."
@@ -421,20 +404,14 @@ msgid "Unsaved Changes"
 msgstr "Osparade ändringar"
 
 #: src/editor/map/context_manager.cpp:727
-#, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Vill du överge alla ändringar du har gjort i kartan sedan den senast "
 "sparades?"
 
 #: src/editor/map/context_manager.cpp:826
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Den här kartan är redan öppen."
+msgstr "Det här scenariot är redan öppet."
 
 #: src/editor/map/context_manager.cpp:848
 #: src/editor/map/context_manager.cpp:903
@@ -442,10 +419,8 @@ msgid "This map is already open."
 msgstr "Den här kartan är redan öppen."
 
 #: src/editor/map/context_manager.cpp:869
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Kartan har sparats."
+msgstr "Scenariot har sparats."
 
 #: src/editor/map/context_manager.cpp:883
 msgid "Map saved."
@@ -469,16 +444,12 @@ msgstr ""
 "$new"
 
 #: src/editor/map/context_manager.cpp:1025
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(Ny karta)"
+msgstr "Ny karta"
 
 #: src/editor/map/context_manager.cpp:1025
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Scenario"
-msgstr "(Ny karta)"
+msgstr "Nytt scenario"
 
 #: src/editor/map/editor_map.cpp:152
 msgid "Player"
@@ -493,10 +464,8 @@ msgid "File not found"
 msgstr "Filen kunde inte hittas"
 
 #: src/editor/map/map_context.cpp:140
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Tom kartfil"
+msgstr "Tom fil"
 
 #: src/editor/map/map_context.cpp:189
 msgid ""
@@ -507,10 +476,8 @@ msgstr ""
 "existerande fil"
 
 #: src/editor/map/map_context.cpp:529
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Kunde inte spara kartan: $msg"
+msgstr "Kunde inte spara scenariot: $msg"
 
 #: src/editor/map/map_context.cpp:556
 msgid "Could not save into scenario"
@@ -523,7 +490,7 @@ msgstr "Kunde inte spara kartan: $msg"
 #: src/editor/palette/editor_palettes.cpp:60
 #: src/editor/palette/editor_palettes.cpp:115
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Okänd grupp)"
 
 #: src/editor/palette/editor_palettes.cpp:384
 msgid "(non-core)"
@@ -542,20 +509,16 @@ msgid "BG: "
 msgstr "BG:"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:129
-#, fuzzy
-#| msgid "Choose player"
 msgid "Choose File"
-msgstr "Välj spelare"
+msgstr "Välj fil"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:87
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "Ingen"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
-msgstr ""
+msgstr "Spelare $player_number"
 
 #~ msgid ""
 #~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
