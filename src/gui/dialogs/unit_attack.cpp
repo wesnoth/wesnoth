@@ -270,11 +270,11 @@ void tunit_attack::pre_show(CVideo& /*video*/, twindow& window)
 {
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "attacker_profile", false),
-			boost::bind(&profile_button_callback, this, (*attacker_itor_).type_id()));
+			boost::bind(&tunit_attack::profile_button_callback, this, (*attacker_itor_).type_id()));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "defender_profile", false),
-			boost::bind(&profile_button_callback, this, (*defender_itor_).type_id()));
+			boost::bind(&tunit_attack::profile_button_callback, this, (*defender_itor_).type_id()));
 
 	// TODO: implement
 	find_widget<tbutton>(&window, "damage_calculation", false).set_active(false);
