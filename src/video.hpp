@@ -152,6 +152,7 @@ public:
 	void clear_overlay();
 #endif
 	void flip();
+	static void delay(unsigned int milliseconds);
 
 	surface& getSurface();
 

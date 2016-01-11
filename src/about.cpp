@@ -436,7 +436,7 @@ void show_about(display &disp, const std::string &campaign)
 
 		// flip screen and wait, so the text does not scroll too fast
 		disp.flip();
-		disp.delay(20);
+		CVideo::delay(20);
 
 	} while(!close.pressed() && (last_escape || !key[SDLK_ESCAPE]));
 }

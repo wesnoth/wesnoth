@@ -617,7 +617,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 	events::peek_for_resize();
 #endif
 		disp_.flip();
-		disp_.delay(10);
+		CVideo::delay(10);
 	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
 			&& event.type != SDL_JOYHATMOTION
 			&& event.type != SDL_MOUSEBUTTONUP);

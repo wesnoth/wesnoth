@@ -503,9 +503,6 @@ public:
 
 	void set_diagnostic(const std::string& msg);
 
-	/** Delay routines: use these not SDL_Delay (for --nogui). */
-	void delay(unsigned int milliseconds) const;
-
 	/**
 	 * Set/Get whether 'turbo' mode is on.
 	 * When turbo mode is on, everything moves much faster.

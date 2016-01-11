@@ -61,7 +61,7 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		events::raise_process_event();
 		events::raise_draw_event();
 		disp.flip();
-		disp.delay(10);
+		CVideo::delay(10);
 	}
 
 	//
@@ -74,7 +74,7 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		events::raise_process_event();
 		events::raise_draw_event();
 		disp.flip();
-		disp.delay(10);
+		CVideo::delay(10);
 		--count;
 	}
 }

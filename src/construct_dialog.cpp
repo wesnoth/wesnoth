@@ -373,7 +373,6 @@ void dialog::draw_contents()
 dialog_frame& dialog::get_frame()
 {
 	if(frame_ == NULL) {
-		CVideo& screen = disp_.video();
 		frame_buttons_.clear();
 		for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
 		{
@@ -463,7 +462,7 @@ void dialog::update_widget_positions()
 void dialog::refresh()
 {
 	disp_.flip();
-	disp_.delay(10);
+	CVideo::delay(10);
 }
 
 dialog::dimension_measurements dialog::layout(int xloc, int yloc)

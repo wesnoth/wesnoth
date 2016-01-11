@@ -3531,9 +3531,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	const unsigned final = SDL_GetTicks() + delay;
 	do {
 		play_controller_.play_slice(false);
-		if (game_display_) {
-			game_display_->delay(10);
-		}
+		CVideo::delay(10);
 	} while (int(final - SDL_GetTicks()) > 0);
 	return 0;
 }

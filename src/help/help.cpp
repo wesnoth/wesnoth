@@ -240,7 +240,7 @@ void show_help(display &disp, const section &toplevel_sec,
 				}
 			}
 			disp.flip();
-			disp.delay(10);
+			CVideo::delay(10);
 		}
 	}
 	catch (parse_error& e) {

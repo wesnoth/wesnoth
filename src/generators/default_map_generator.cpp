@@ -329,7 +329,7 @@ void default_map_generator::user_config(display& disp)
 		update_rect(xpos,ypos,width,height);
 
 		disp.update_display();
-		disp.delay(100);
+		CVideo::delay(100);
 		events::pump();
 	}
 
