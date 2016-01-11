@@ -107,8 +107,8 @@ static unsigned int get_flags(unsigned int flags)
 	return flags;
 }
 
-namespace {
 #if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
+namespace {
 struct event {
 	int x, y, w, h;
 	bool in;
@@ -229,12 +229,11 @@ static void calc_rects()
 		}
 	}
 }
-#endif
-
-
 bool update_all = false;
+
+
 }
-#if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
+
 static void clear_updates()
 {
 	update_all = false;
@@ -302,8 +301,10 @@ void update_rect(size_t x, size_t y, size_t w, size_t h)
 
 void update_rect(const SDL_Rect& rect_value)
 {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(update_all)
 		return;
+#endif
 
 	SDL_Rect rect = rect_value;
 
@@ -352,7 +353,9 @@ void update_rect(const SDL_Rect& rect_value)
 
 void update_whole_screen()
 {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	update_all = true;
+#endif
 }
 
 
