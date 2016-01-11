@@ -43,6 +43,8 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
 
+CVideo* CVideo::singleton_ = NULL;
+
 namespace {
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	bool is_fullscreen = false;
@@ -245,13 +247,9 @@ namespace {
 
 surface frameBuffer = NULL;
 bool fake_interactive = false;
-
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-sdl::twindow* window = NULL;
-#endif
 }
 
-bool non_interactive()
+bool CVideo::non_interactive()
 {
 	if (fake_interactive)
 		return false;
@@ -380,6 +378,7 @@ void CVideo::video_event_handler::handle_event(const SDL_Event &event)
 
 
 CVideo::CVideo(FAKE_TYPES type) :
+	window(),
 #ifdef SDL_GPU
 	shader_(),
 #endif
@@ -391,6 +390,8 @@ CVideo::CVideo(FAKE_TYPES type) :
 	help_string_(0),
 	updatesLocked_(0)
 {
+	assert(!singleton_);
+	singleton_ = this;
 	initSDL();
 	switch(type)
 	{
@@ -449,9 +450,8 @@ CVideo::~CVideo()
 {
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	delete window;
-#endif
+	assert(singleton_);
+	singleton_ = NULL;
 	LOG_DP << "called SDL_Quit()\n";
 }
 
@@ -571,7 +571,7 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
-void update_framebuffer()
+void CVideo::update_framebuffer()
 {
 	if (!window)
 		return;
@@ -608,7 +608,7 @@ bool CVideo::init_window()
 	}
 
 	// Initialize window
-	window = new sdl::twindow("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE);
+	window.reset(new sdl::twindow("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
@@ -811,13 +811,13 @@ void CVideo::set_window_icon(surface& icon)
 
 sdl::twindow *CVideo::get_window()
 {
-	return window;
+	return window.get();
 }
 
 #endif
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-static int sdl_display_index()
+static int sdl_display_index(sdl::twindow* window)
 {
 	if(window) {
 		return SDL_GetWindowDisplayIndex(*window);
@@ -831,7 +831,7 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 {
 	std::vector<std::pair<int, int> > result;
 
-	const int modes = SDL_GetNumDisplayModes(sdl_display_index());
+	const int modes = SDL_GetNumDisplayModes(sdl_display_index(window.get()));
 	if(modes <= 0) {
 		std::cerr << "No modes supported\n";
 		return result;

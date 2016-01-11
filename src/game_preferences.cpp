@@ -951,7 +951,7 @@ void set_autosavemax(int value)
 
 std::string theme()
 {
-	if(non_interactive()) {
+	if(CVideo::get_singleton().non_interactive()) {
 		static const std::string null_theme = "null";
 		return null_theme;
 	}

@@ -657,7 +657,7 @@ void peek_for_resize()
 	for (int i = 0; i < num; i++) {
 		if (events[i].type == SDL_WINDOWEVENT &&
 				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
-			update_framebuffer();
+			CVideo::get_singleton().update_framebuffer();
 
 		}
 	}

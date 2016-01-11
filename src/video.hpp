@@ -19,6 +19,7 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
 
 #if SDL_VERSION_ATLEAST(2,0,0)
 #include "sdl/window.hpp"
@@ -49,16 +50,11 @@ GPU_Target *get_render_target();
 
 surface display_format_alpha(surface surf);
 surface& get_video_surface();
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-//this needs to be invoked immediately after a resize event or the game will crash.
-void update_framebuffer();
-#endif
 
 
 SDL_Rect screen_area();
 
 
-bool non_interactive();
 
 //which areas of the screen will be updated when the buffer is flipped?
 void update_rect(size_t x, size_t y, size_t w, size_t h);
@@ -82,6 +78,9 @@ public:
 
 	CVideo(FAKE_TYPES type = NO_FAKE);
 	~CVideo();
+	static CVideo& get_singleton() { return *singleton_; }
+
+	bool non_interactive();
 
 	const static int DefaultBpp = 32;
 
@@ -212,26 +211,29 @@ public:
 	bool update_locked() const;
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+	//this needs to be invoked immediately after a resize event or the game will crash.
+	void update_framebuffer();
+
 	/**
 	 * Wrapper for SDL_GetAppState.
 	 */
-	static Uint8 window_state();
+	Uint8 window_state();
 
 	/**
 	 * Sets the title of the main window.
 	 *
 	 * @param title               The new title for the window.
 	 */
-	static void set_window_title(const std::string& title);
+	void set_window_title(const std::string& title);
 
 	/**
 	 * Sets the icon of the main window.
 	 *
 	 * @param icon                The new icon for the window.
 	 */
-	static void set_window_icon(surface& icon);
+	void set_window_icon(surface& icon);
 
-	static sdl::twindow *get_window();
+	sdl::twindow *get_window();
 #endif
 
 	/**
@@ -240,7 +242,11 @@ public:
 	std::vector<std::pair<int, int> > get_available_resolutions();
 
 private:
+	static CVideo* singleton_;
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	boost::scoped_ptr<sdl::twindow> window;
+#endif
 	class video_event_handler : public events::sdl_handler {
 	public:
 		virtual void handle_event(const SDL_Event &event);

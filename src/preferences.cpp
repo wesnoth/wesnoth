@@ -386,7 +386,7 @@ void _set_fullscreen(bool ison)
 
 bool turbo()
 {
-	if(non_interactive()) {
+	if(CVideo::get_singleton().non_interactive()) {
 		return true;
 	}
 

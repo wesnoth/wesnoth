@@ -393,12 +393,12 @@ bool game_launcher::init_video()
 	video_.init_window();
 
 	// Set window title and icon
-	CVideo::set_window_title(game_config::get_default_title_string());
+	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
 	if(icon != NULL) {
-		CVideo::set_window_icon(icon);
+		CVideo::get_singleton().set_window_icon(icon);
 	}
 #endif
 	return true;
@@ -1064,7 +1064,7 @@ bool game_launcher::change_language()
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		CVideo::set_window_title(game_config::get_default_title_string());
+		CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
 #else
 		SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
 #endif
