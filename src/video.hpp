@@ -243,7 +243,10 @@ private:
 
 	class video_event_handler : public events::sdl_handler {
 	public:
-		virtual void handle_event(const SDL_Event &event);
+		virtual void handle_event(const SDL_Event &) {}
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		virtual void handle_window_event(const SDL_Event &event);
+#endif
 		video_event_handler() :	sdl_handler(false) {}
 	};
 

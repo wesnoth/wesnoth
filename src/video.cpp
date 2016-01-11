@@ -356,10 +356,10 @@ void update_whole_screen()
 	update_all = true;
 }
 
-
-void CVideo::video_event_handler::handle_event(const SDL_Event &event)
-{
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
+{
+
 	if (event.type == SDL_WINDOWEVENT) {
 		switch (event.window.event) {
 			case SDL_WINDOWEVENT_RESIZED:
@@ -384,10 +384,8 @@ void CVideo::video_event_handler::handle_event(const SDL_Event &event)
 #endif
 		}
 	}
-#else
-	UNUSED(event);
-#endif
 }
+#endif
 
 
 CVideo::CVideo(FAKE_TYPES type) :

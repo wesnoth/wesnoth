@@ -447,8 +447,22 @@ void pump()
 						info.resize_dimensions.second = event.window.data2;
 						break;
 				}
+				//make sure this runs in it's own scope.
+				{
+					for( std::deque<context>::reverse_iterator i = event_contexts.rbegin() ; i != event_contexts.rend(); i++) {
+						const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
+						for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+							event_handlers[i1]->handle_window_event(event);
+						}
+					}
+					const std::vector<sdl_handler*>& event_handlers = global_context.handlers;
+					for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+						event_handlers[i1]->handle_window_event(event);
+					}
+				}
 
-				break;
+				//This event was just distributed, don't re-distribute.
+				continue;
 #else
 			case SDL_ACTIVEEVENT: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
@@ -586,6 +600,17 @@ void raise_draw_event()
 	}
 }
 
+void raise_draw_all_event()
+{
+	/* iterate backwards as the most recent things will be at the top */
+	for( std::deque<context>::reverse_iterator i = event_contexts.rbegin() ; i != event_contexts.rend(); i++) {
+		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->draw();
+		}
+	}
+}
+
 void raise_volatile_draw_event()
 {
 	if(event_contexts.empty() == false) {
@@ -594,6 +619,17 @@ void raise_volatile_draw_event()
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->volatile_draw();
+		}
+	}
+}
+
+void raise_volatile_draw_all_event()
+{
+	/* iterate backwards as the most recent things will be at the top */
+	for( std::deque<context>::reverse_iterator i = event_contexts.rbegin() ; i != event_contexts.rend(); i++) {
+		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->volatile_draw();
 		}

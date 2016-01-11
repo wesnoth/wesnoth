@@ -342,15 +342,13 @@ void widget::process_tooltip_string(int mousex, int mousey)
 	}
 }
 
-void widget::handle_event(SDL_Event const &event) {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+void widget::handle_window_event(SDL_Event const &event) {
 	if (event.type == SDL_WINDOWEVENT) {
 		set_dirty();
 	}
-#else
-	UNUSED(event);
-#endif
 }
+#endif
 
 
 }

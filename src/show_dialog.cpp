@@ -149,15 +149,14 @@ void dialog_frame::set_dirty(bool dirty) {
 	dirty_ = dirty;
 }
 
-void dialog_frame::handle_event(const SDL_Event& event) {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+void dialog_frame::handle_window_event(const SDL_Event& event) {
+
 	if (event.type == SDL_WINDOWEVENT) {
 		dirty_ = true;
 	}
-#else
-	UNUSED(event);
-#endif
 }
+#endif
 
 int dialog_frame::bottom_padding() const {
 	int padding = 0;

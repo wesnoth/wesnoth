@@ -26,6 +26,7 @@
 #define DRAW_EVENT (SDL_USEREVENT + 3)
 #define CLOSE_WINDOW_EVENT (SDL_USEREVENT + 4)
 #define SHOW_HELPTIP_EVENT (SDL_USEREVENT + 5)
+#define DRAW_ALL_EVENT (SDL_USEREVENT + 6)
 
 namespace events
 {
@@ -41,6 +42,9 @@ class sdl_handler
 {
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	virtual void handle_window_event(const SDL_Event& event) = 0;
+#endif
 	virtual void process_event() {}
 	virtual void draw() {}
 
@@ -120,7 +124,9 @@ public:
 
 void raise_process_event();
 void raise_draw_event();
+void rasie_draw_all_event();
 void raise_volatile_draw_event();
+void raise_volativle_draw_all_event();
 void raise_volatile_undraw_event();
 void raise_help_string_event(int mousex, int mousey);
 
