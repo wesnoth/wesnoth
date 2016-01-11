@@ -126,7 +126,6 @@ bool operator==(const event& a, const event& b) {
 	return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h && a.in == b.in;
 }
 std::vector<event> events;
-#endif
 
 struct segment {
 	int x, count;
@@ -138,7 +137,6 @@ struct segment {
 std::vector<SDL_Rect> update_rects;
 std::map<int, segment> segments;
 
-#if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
 static void calc_rects()
 {
 	events.clear();
@@ -347,8 +345,9 @@ void update_rect(const SDL_Rect& rect_value)
 			return;
 		}
 	}
-
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	update_rects.push_back(rect);
+#endif
 }
 
 void update_whole_screen()
@@ -641,8 +640,6 @@ bool CVideo::init_window()
 void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 {
 	assert(window);
-
-	update_rects.clear();
 	if (fake_screen_) return;
 	mode_changed_ = true;
 
