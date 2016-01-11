@@ -367,7 +367,6 @@ void dialog::draw_contents()
 	events::raise_draw_event(); //draw widgets
 
 	disp_.flip();
-	disp_.invalidate_all();
 }
 
 dialog_frame& dialog::get_frame()

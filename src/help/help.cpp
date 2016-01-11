@@ -221,7 +221,6 @@ void show_help(display &disp, const section &toplevel_sec,
 		hb.set_dirty(true);
 		events::raise_draw_event();
 		disp.flip();
-		disp.invalidate_all();
 		CKey key;
 		for (;;) {
 			events::pump();
