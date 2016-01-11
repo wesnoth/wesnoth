@@ -108,12 +108,12 @@ static unsigned int get_flags(unsigned int flags)
 }
 
 namespace {
+#if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
 struct event {
 	int x, y, w, h;
 	bool in;
 	event(const SDL_Rect& rect, bool i) : x(i ? rect.x : rect.x + rect.w), y(rect.y), w(rect.w), h(rect.h), in(i) { }
 };
-#if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
 bool operator<(const event& a, const event& b) {
 	if (a.x != b.x) return a.x < b.x;
 	if (a.in != b.in) return a.in;
@@ -125,6 +125,7 @@ bool operator<(const event& a, const event& b) {
 bool operator==(const event& a, const event& b) {
 	return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h && a.in == b.in;
 }
+std::vector<event> events;
 #endif
 
 struct segment {
@@ -135,7 +136,6 @@ struct segment {
 
 
 std::vector<SDL_Rect> update_rects;
-std::vector<event> events;
 std::map<int, segment> segments;
 
 #if !SDL_GPU && !SDL_VERSION_ATLEAST(2, 0, 0)
