@@ -371,19 +371,6 @@ void CVideo::video_event_handler::handle_event(const SDL_Event &event)
 				if (display::get_singleton())
 					display::get_singleton()->redraw_everything();
 				break;
-#if !SDL_VERSION_ATLEAST(2, 0, 4) && defined(_WIN32)
-			case SDL_WINDOWEVENT_FOCUS_GAINED:
-
-				if(SDL_GetWindowFlags(*window) & SDL_WINDOW_MAXIMIZED) {
-					SDL_RestoreWindow(*window);
-					SDL_MaximizeWindow(*window);
-				}
-				if(SDL_GetWindowFlags(*window) & SDL_WINDOW_FULLSCREEN_DESKTOP) {
-					SDL_RestoreWindow(*window);
-					SDL_SetWindowFullscreen(*window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-				}
-				break;
-#endif
 		}
 	}
 #else
