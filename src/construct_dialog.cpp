@@ -366,7 +366,7 @@ void dialog::draw_contents()
 	}
 	events::raise_draw_event(); //draw widgets
 
-	disp_.flip();
+	disp_.video().flip();
 }
 
 dialog_frame& dialog::get_frame()
@@ -460,7 +460,7 @@ void dialog::update_widget_positions()
 
 void dialog::refresh()
 {
-	disp_.flip();
+	disp_.video().flip();
 	CVideo::delay(10);
 }
 
