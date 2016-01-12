@@ -24,9 +24,9 @@ bool quit_confirmation::open_ = false;
 
 void quit_confirmation::quit()
 {
-	if(count_ != 0 && display::get_singleton() && !open_)
+	if(count_ != 0 && !open_)
 	{
-		quit(display::get_singleton()->video());
+		quit(CVideo::get_singleton());
 	}
 	else
 	{

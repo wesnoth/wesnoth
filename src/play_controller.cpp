@@ -972,7 +972,7 @@ void play_controller::check_victory()
 		return;
 	}
 
-	if (CVideo::get_singleton().non_interactive()) {
+	if (gui_->video().non_interactive()) {
 		LOG_AIT << "winner: ";
 		BOOST_FOREACH(unsigned l, not_defeated) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
@@ -993,7 +993,7 @@ void play_controller::check_victory()
 
 void play_controller::process_oos(const std::string& msg) const
 {
-	if (CVideo::get_singleton().non_interactive()) {
+	if (gui_->video().non_interactive()) {
 		throw game::game_error(msg);
 	}
 	if (game_config::ignore_replay_errors) return;
@@ -1188,7 +1188,7 @@ void play_controller::play_turn()
 
 	LOG_NG << "turn: " << turn() << "\n";
 
-	if(CVideo::get_singleton().non_interactive()) {
+	if(gui_->video().non_interactive()) {
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
@@ -1213,7 +1213,7 @@ void play_controller::play_turn()
 		if(is_regular_game_end()) {
 			return;
 		}
-		if(CVideo::get_singleton().non_interactive()) {
+		if(gui_->video().non_interactive()) {
 			LOG_AIT << " Player " << current_side() << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
@@ -1243,7 +1243,7 @@ void play_controller::check_time_over()
 			return;
 		}
 
-		if(CVideo::get_singleton().non_interactive()) {
+		if(gui_->video().non_interactive()) {
 			LOG_AIT << "time over (draw)\n";
 			ai_testing::log_draw();
 		}

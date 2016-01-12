@@ -240,7 +240,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 
 	read(level.child_or_empty("display"));
 
-	if(CVideo::get_singleton().non_interactive()
+	if(video.non_interactive()
 		&& (get_video_surface() != NULL
 		&& video.faked())) {
 		screen_.lock_updates(true);

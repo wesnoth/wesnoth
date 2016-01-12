@@ -650,9 +650,7 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 	 */
 	const SDL_Rect rect = screen_area();
 
-	if (disp.get_singleton()) {
-		disp.get_singleton()->video().set_resolution(rect.w, rect.h);
-	}
+	CVideo::get_singleton().set_resolution(rect.w, rect.h);
 
 	gui2::settings::gamemap_width += rect.w - gui2::settings::screen_width ;
 	gui2::settings::gamemap_height += rect.h - gui2::settings::screen_height ;
