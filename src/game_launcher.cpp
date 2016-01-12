@@ -585,7 +585,7 @@ bool game_launcher::play_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		ccontroller.play_game();
 	} catch (game::load_game_exception &) {
 		return true;
@@ -618,7 +618,7 @@ int game_launcher::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_game();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
@@ -627,7 +627,7 @@ int game_launcher::unit_test()
 		std::cerr << "Load_game_exception encountered while loading the unit test!" << std::endl;
 		return 1; //failed to load the unit test scenario
 	} catch(twml_exception& e) {
-		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl; //e.show(disp());
+		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
 		return 1;
 	}
 
@@ -654,7 +654,7 @@ int game_launcher::unit_test()
 	}
 
 	try {
-		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY)) {
 			std::cerr << "Observed failure on replay" << std::endl;
@@ -730,7 +730,7 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(disp().video(), game_config_manager::get()->game_config(),
+	savegame::loadgame load(video(), game_config_manager::get()->game_config(),
 	    state_);
 
 	try {
@@ -827,7 +827,7 @@ bool game_launcher::new_campaign()
 	state_.mp_settings().show_connect = false;
 	play_replay_ = false;
 
-	return sp::enter_create_mode(disp(), game_config_manager::get()->game_config(),
+	return sp::enter_create_mode(video(), game_config_manager::get()->game_config(),
 		state_, jump_to_campaign_, true);
 }
 
@@ -979,7 +979,7 @@ bool game_launcher::play_multiplayer()
 		cursor::set(cursor::NORMAL);
 
 		if(res == 3) {
-			mp::start_local_game(disp(),
+			mp::start_local_game(video(),
 			    game_config_manager::get()->game_config(), state_);
 		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;
@@ -991,7 +991,7 @@ bool game_launcher::play_multiplayer()
 				host = multiplayer_server_;
 				multiplayer_server_ = "";
 			}
-			mp::start_client(disp(), game_config_manager::get()->game_config(),
+			mp::start_client(video(), game_config_manager::get()->game_config(),
 				state_, host);
 		}
 
@@ -1051,7 +1051,7 @@ bool game_launcher::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	mp::start_local_game_commandline(disp(),
+	mp::start_local_game_commandline(video(),
 	    game_config_manager::get()->game_config(), state_, cmdline_opts_);
 
 	return false;
@@ -1077,7 +1077,7 @@ bool game_launcher::change_language()
 void game_launcher::show_preferences()
 {
 	const preferences::display_manager disp_manager(&disp());
-	preferences::show_preferences_dialog(disp().video(),
+	preferences::show_preferences_dialog(video(),
 	    game_config_manager::get()->game_config());
 
 	video().flip();
@@ -1103,7 +1103,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	}
 
 	try {
-		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		LEVEL_RESULT result = ccontroller.play_game();
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
@@ -1126,7 +1126,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 void game_launcher::play_replay()
 {
 	try {
-		campaign_controller ccontroller(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		ccontroller.play_replay();
 
 		clear_loaded_game();
