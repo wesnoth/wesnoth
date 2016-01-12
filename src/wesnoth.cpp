@@ -643,7 +643,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
-	game_config_manager config_manager(cmdline_opts, game->disp(),
+	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
 	loadscreen::start_stage("load config");

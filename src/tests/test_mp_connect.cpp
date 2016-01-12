@@ -72,7 +72,7 @@ struct mp_connect_fixture {
 		video.make_fake();
 		disp.reset(game_display::create_dummy_display(video));
 
-		config_manager.reset(new game_config_manager(cmdline_opts, *disp,
+		config_manager.reset(new game_config_manager(cmdline_opts, video,
 			false));
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
