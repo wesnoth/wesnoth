@@ -200,11 +200,6 @@ private:
 	bool initialized_;
 	bool gamelist_initialized_;
 
-	/** Ensures standard hotkeys are correctly handled. */
-	const hotkey::basic_handler hotkey_handler_;
-
-	const preferences::display_manager disp_manager_;
-
 	/**
 	 * The main game configuration, as defined by loading the preprocessed WML
 	 * files. Access using the game_config() method if necessary.
