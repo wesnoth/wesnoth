@@ -246,7 +246,7 @@ public:
 	bool toggle_current_mod(bool force = false);
 
 	bool generator_assigned() const;
-	void generator_user_config(display& disp);
+	void generator_user_config(CVideo& v);
 
 	int find_level_by_id(const std::string& id) const;
 	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;

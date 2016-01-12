@@ -23,7 +23,7 @@
 #include <string>
 
 struct lua_State;
-class display;
+class CVideo;
 
 // TODO: Add support for user configurability (via defining a gui2 dialog in lua)
 // What's missing is that you need access to the 'wesnoth' object to call show dialog
@@ -41,7 +41,7 @@ public:
 
 	std::string config_name() const { return config_name_; }
 
-	virtual void user_config(display & disp);
+	virtual void user_config(CVideo & v);
 	virtual std::string create_map(boost::optional<boost::uint32_t> randomseed);
 	virtual config create_scenario(boost::optional<boost::uint32_t> randomseed);
 

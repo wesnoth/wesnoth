@@ -24,7 +24,7 @@ public:
 	default_map_generator(const config &game_config);
 
 	bool allow_user_config() const;
-	void user_config(display& disp);
+	void user_config(CVideo& v);
 
 	std::string name() const;
 

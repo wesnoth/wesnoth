@@ -853,9 +853,9 @@ bool create_engine::generator_assigned() const
 	return generator_ != NULL;
 }
 
-void create_engine::generator_user_config(display& disp)
+void create_engine::generator_user_config(CVideo& v)
 {
-	generator_->user_config(disp);
+	generator_->user_config(v);
 }
 
 int create_engine::find_level_by_id(const std::string& id) const
