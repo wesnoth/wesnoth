@@ -220,8 +220,7 @@ void show_help(display &disp, const section &toplevel_sec,
 		}
 		hb.set_dirty(true);
 		events::raise_draw_event();
-		disp.flip();
-		disp.invalidate_all();
+		disp.video().flip();
 		CKey key;
 		for (;;) {
 			events::pump();
@@ -239,8 +238,8 @@ void show_help(display &disp, const section &toplevel_sec,
 					return;
 				}
 			}
-			disp.flip();
-			disp.delay(10);
+			disp.video().flip();
+			CVideo::delay(10);
 		}
 	}
 	catch (parse_error& e) {

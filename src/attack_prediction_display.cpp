@@ -548,7 +548,7 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);
 
-		gui::show_dialog(*resources::screen, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
+		gui::show_dialog(resources::screen->video(), NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
 	}
 
 	return gui::CONTINUE_DIALOG;

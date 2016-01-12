@@ -1886,12 +1886,6 @@ void display::draw_wrap(bool update, bool force)
 	}
 }
 
-void display::delay(unsigned int milliseconds) const
-{
-	if (!game_config::no_delay)
-		SDL_Delay(milliseconds);
-}
-
 const theme::action* display::action_pressed()
 {
 	for(std::vector<gui::button>::iterator i = action_buttons_.begin();

@@ -367,7 +367,7 @@ void wait::join_game(bool observe)
 			leader_preview_pane leader_selector(disp(), flg, color);
 			preview_panes.push_back(&leader_selector);
 
-			const int faction_choice = gui::show_dialog(disp(), NULL,
+			const int faction_choice = gui::show_dialog(disp().video(), NULL,
 				_("Choose your faction:"), _("Starting position: ") +
 				lexical_cast<std::string>(side_num + 1), gui::OK_CANCEL,
 				&choices, &preview_panes);

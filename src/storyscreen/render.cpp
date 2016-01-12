@@ -362,7 +362,7 @@ bool part_ui::render_floating_images()
 			{
 				if (handle_interface()) return false;
 				if (skip_) break;
-				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
+				CVideo::.delay(std::min<int>(delay_step, delay - i * delay_step));
 			}
 		}
 
@@ -393,7 +393,7 @@ bool part_ui::render_floating_images()
 			{
 				if (handle_interface()) return false;
 				if (skip_) break;
-				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
+				CVideo::delay(std::min<int>(delay_step, delay - i * delay_step));
 			}
 		}
 
@@ -736,7 +736,7 @@ void part_ui::render_story_box()
 		if (handle_interface()) break;
 
 		if (!skip_ || scan_finished) {
-			disp_.delay(20);
+			CVideo::.delay(20);
 		}
 	}
 
@@ -894,7 +894,7 @@ void part_ui::render_story_box()
 		if (handle_interface()) break;
 
 		if (!skip_ || scan_finished) {
-			disp_.delay(20);
+			CVideo::delay(20);
 		}
 
 	}
@@ -913,7 +913,7 @@ void part_ui::wait_for_input()
 	last_key_ = true;
 	skip_ = true;
 	while (!handle_interface()) {
-		disp_.delay(20);
+		CVideo::delay(20);
 	}
 }
 

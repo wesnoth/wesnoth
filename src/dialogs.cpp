@@ -220,7 +220,7 @@ int advance_unit_dialog(const map_location &loc)
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		gui::dialog advances = gui::dialog(*resources::screen,
+		gui::dialog advances = gui::dialog(resources::screen->video(),
 				      _("Advance Unit"),
 		                      _("What should our victorious unit become?"),
 		                      gui::OK_ONLY);
@@ -402,7 +402,7 @@ void show_unit_list(display& gui)
 		dialogs::units_list_preview_pane unit_preview(units_list);
 		unit_preview.set_selection(selected);
 
-		gui::dialog umenu(gui, _("Unit List"), "", gui::NULL_DIALOG);
+		gui::dialog umenu(gui.video(), _("Unit List"), "", gui::NULL_DIALOG);
 		umenu.set_menu(items, &sorter);
 		umenu.add_pane(&unit_preview);
 		//sort by type name
@@ -440,7 +440,7 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(1);
 
-	gui::dialog rmenu(disp, _("Recruit") + title_suffix,
+	gui::dialog rmenu(disp.video(), _("Recruit") + title_suffix,
 			  _("Select unit:") + std::string("\n"),
 			  gui::OK_CANCEL,
 			  gui::dialog::default_style);
@@ -554,7 +554,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 		options_to_filter.push_back(option_to_filter.str());
 	}
 
-	gui::dialog rmenu(disp, _("Recall") + title_suffix,
+	gui::dialog rmenu(disp.video(), _("Recall") + title_suffix,
 		_("Select unit:") + std::string("\n"),
 		gui::OK_CANCEL, gui::dialog::default_style);
 
@@ -1181,7 +1181,7 @@ static network::connection network_data_dialog(display& disp, const std::string&
 	progress.set_location(progress_rect);
 
 	events::raise_draw_event();
-	disp.flip();
+	disp.video().flip();
 
 	network::statistics old_stats = get_stats(connection_num);
 
@@ -1198,7 +1198,7 @@ static network::connection network_data_dialog(display& disp, const std::string&
 		}
 
 		events::raise_draw_event();
-		disp.flip();
+		disp.video().flip();
 		events::pump();
 
 		if(res != 0) {
@@ -1243,7 +1243,7 @@ private:
 connect_waiter::ACTION connect_waiter::process()
 {
 	events::raise_draw_event();
-	disp_.flip();
+	disp_.video().flip();
 	events::pump();
 	if(button_.pressed()) {
 		return ABORT;
@@ -1274,7 +1274,7 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	frame.draw();
 
 	events::raise_draw_event();
-	disp.flip();
+	disp.video().flip();
 
 	connect_waiter waiter(disp,cancel_button);
 	return network::connect(hostname,port,waiter);

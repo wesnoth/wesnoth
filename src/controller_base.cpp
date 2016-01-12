@@ -285,7 +285,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	// be nice when window is not visible
 	// NOTE should be handled by display instead, to only disable drawing
 	if (is_delay_enabled && (SDL_GetAppState() & SDL_APPACTIVE) == 0) {
-		get_display().delay(200);
+		CVideo::delay(200);
 	}
 
 	if (!scrolling_ && was_scrolling) {

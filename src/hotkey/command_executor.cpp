@@ -341,7 +341,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	std::vector<std::string> menu = get_menu_images(gui, items);
 	int res = 0;
 	{
-		gui::dialog mmenu = gui::dialog(gui,"","",
+		gui::dialog mmenu = gui::dialog(gui.video(),"","",
 				gui::MESSAGE, gui::dialog::hotkeys_style);
 		mmenu.set_menu(menu);
 		res = mmenu.show(xloc, yloc);

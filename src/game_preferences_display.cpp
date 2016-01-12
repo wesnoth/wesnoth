@@ -67,7 +67,7 @@ struct advanced_preferences_sorter
 class preferences_parent_dialog : public gui::dialog
 {
 public:
-	preferences_parent_dialog(display &disp) : dialog(disp, _("Preferences"),"",gui::CLOSE_ONLY),
+	preferences_parent_dialog(display &disp) : dialog(disp.video(), _("Preferences"),"",gui::CLOSE_ONLY),
 		clear_buttons_(false) {}
 	~preferences_parent_dialog() {write_preferences();}
 	void action(gui::dialog_process_info &info)

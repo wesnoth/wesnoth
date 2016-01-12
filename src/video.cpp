@@ -729,6 +729,12 @@ int CVideo::gety() const
 #endif
 }
 
+void CVideo::delay(unsigned int milliseconds)
+{
+	if (!game_config::no_delay)
+		SDL_Delay(milliseconds);
+}
+
 void CVideo::flip()
 {
 	if(fake_screen_)
@@ -921,8 +927,8 @@ std::pair<int,int> CVideo::current_resolution()
 }
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-bool CVideo::isFullScreen() const { 
-	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0; 
+bool CVideo::isFullScreen() const {
+	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
 }
 #else
 bool CVideo::isFullScreen() const { return is_fullscreen; }

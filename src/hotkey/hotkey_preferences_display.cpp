@@ -164,7 +164,7 @@ public:
 
 	hotkey_preferences_parent_dialog(display &disp,
 			hotkey_preferences_dialog& hotkey_preferences_dialog) :
-				dialog(disp, _("Hotkey Settings"), "", gui::OK_CANCEL),
+				dialog(disp.video(), _("Hotkey Settings"), "", gui::OK_CANCEL),
 				clear_buttons_(false),
 				hotkey_cfg_(),
 				resetter_(disp, hotkey_preferences_dialog) {
@@ -617,7 +617,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 	events::peek_for_resize();
 #endif
 		disp_.flip();
-		disp_.delay(10);
+		CVideo::delay(10);
 	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
 			&& event.type != SDL_JOYHATMOTION
 			&& event.type != SDL_MOUSEBUTTONUP);
