@@ -30,6 +30,10 @@
 #include "preferences.hpp"
 #include "game_end_exceptions.hpp"
 
+
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+
 #include <cassert>
 
 static lg::log_domain log_config("config");
@@ -39,10 +43,36 @@ static lg::log_domain log_config("config");
 #define DBG_G  LOG_STREAM(debug, lg::general)
 #define ERR_CF LOG_STREAM(err,   log_config)
 
+namespace {
 
+bool screenshot(const std::string& filename, CVideo& video)
+{
+	return image::save_image(video.getSurface(), filename);
+}
+
+template<typename TFunc>
+void make_screenshot(const std::string& name, CVideo& video, const TFunc& func)
+{
+	std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
+#ifdef HAVE_LIBPNG
+	const std::string ext = ".png";
+#else
+	const std::string ext = ".bmp";
+#endif
+	filename = filesystem::get_next_filename(filename, ext);
+	const bool res = func(filename);
+	if (res) {
+		gui2::tscreenshot_notification::display(filename, video);
+	} else {
+		gui2::show_error_message(video,
+			_("Screenshot creation failed.\n\n"
+			"Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
+	}
+}
+}
 namespace hotkey {
 
-static void event_execute(display& disp, const SDL_Event& event, command_executor* executor);
+static void event_execute(const SDL_Event& event, command_executor* executor);
 
 bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/)
 {
@@ -266,72 +296,33 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_ACCELERATED:
 			toggle_accelerated_speed();
 			break;
+		case LUA_CONSOLE:
+			lua_console();
+			break;
+		case HOTKEY_ZOOM_IN:
+			zoom_in();
+			break;
+		case HOTKEY_ZOOM_OUT:
+			zoom_out();
+			break;
+		case HOTKEY_ZOOM_DEFAULT:
+			zoom_default();
+			break;
+		case HOTKEY_MAP_SCREENSHOT:
+			map_screenshot();
+			break;
+		case HOTKEY_QUIT_TO_DESKTOP:
+			quit_to_desktop();
+			break;
+		case HOTKEY_QUIT_GAME:
+			quit_to_main_menu();
+			break;
 		default:
 			return false;
 	}
 	return true;
 }
 
-void command_executor::set_button_state(display& disp) {
-
-	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
-
-		gui::button* button = disp.find_menu_button(menu.get_id());
-		if (!button) continue;
-		bool enabled = false;
-		BOOST_FOREACH(const std::string& command, menu.items()) {
-
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
-			bool can_execute = can_execute_command(command_obj);
-			if (can_execute) {
-				enabled = true;
-				break;
-			}
-		}
-		button->enable(enabled);
-	}
-
-	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
-
-		gui::button* button = disp.find_action_button(action.get_id());
-		if (!button) continue;
-		bool enabled = false;
-		int i = 0;
-		BOOST_FOREACH(const std::string& command, action.items()) {
-
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
-			std::string tooltip = action.tooltip(i);
-			if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png" ))
-				button->set_overlay("icons/action/" + command);
-			if (!tooltip.empty())
-				button->set_tooltip_string(tooltip);
-
-			bool can_execute = can_execute_command(command_obj);
-			i++;
-			if (!can_execute) continue;
-			enabled = true;
-
-			ACTION_STATE state = get_action_state(command_obj.id, -1);
-			switch (state) {
-			case ACTION_SELECTED:
-			case ACTION_ON:
-				button->set_check(true);
-				break;
-			case ACTION_OFF:
-			case ACTION_DESELECTED:
-				button->set_check(false);
-				break;
-			case ACTION_STATELESS:
-				break;
-			default:
-				break;
-			}
-
-			break;
-		}
-		button->enable(enabled);
-	}
-}
 
 void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
 {
@@ -355,8 +346,8 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {
 		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]);
-		hotkey::execute_command(gui,cmd,this,res);
-		set_button_state(gui);
+		hotkey::execute_command(cmd,this,res);
+		set_button_state();
 	}
 }
 
@@ -371,8 +362,8 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 	while(i != items.end()) {
 		const hotkey_command &command = hotkey::get_hotkey_command(*i);
 		if (can_execute_command(command)) {
-			hotkey::execute_command(gui, command, this);
-			set_button_state(gui);
+			hotkey::execute_command(command, this);
+			set_button_state();
 		}
 		++i;
 	}
@@ -464,15 +455,10 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 	}
 	return result;
 }
-basic_handler::basic_handler(display* disp, command_executor* exec) : disp_(disp), exec_(exec) {}
+basic_handler::basic_handler(command_executor* exec) : exec_(exec) {}
 
 void basic_handler::handle_event(const SDL_Event& event)
 {
-	//TODO this code path is never called?
-
-	if (disp_ == NULL) {
-		return;
-	}
 
 	switch (event.type) {
 	case SDL_KEYDOWN:
@@ -480,50 +466,50 @@ void basic_handler::handle_event(const SDL_Event& event)
 		// handled by the executor.
 		// If we're not in a dialog we can call the regular key event handler.
 		if (!gui::in_dialog()) {
-			key_event(*disp_, event,exec_);
+			key_event(event,exec_);
 		} else if (exec_ != NULL) {
-			event_execute(*disp_, event,exec_);
+			event_execute(event,exec_);
 		}
 		break;
 	case SDL_JOYBUTTONDOWN:
 		if (!gui::in_dialog()) {
-			jbutton_event(*disp_, event,exec_);
+			jbutton_event(event,exec_);
 		} else if (exec_ != NULL) {
-			event_execute(*disp_, event,exec_);
+			event_execute(event,exec_);
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (!gui::in_dialog()) {
-			mbutton_event(*disp_, event,exec_);
+			mbutton_event(event,exec_);
 		} else if (exec_ != NULL) {
-			event_execute(*disp_, event,exec_);
+			event_execute(event,exec_);
 		}
 		break;
 	}
 }
 
-void mbutton_event(display& disp, const SDL_Event& event, command_executor* executor)
+void mbutton_event(const SDL_Event& event, command_executor* executor)
 {
-	event_execute(disp, event, executor);
+	event_execute(event, executor);
 }
 
-void jbutton_event(display& disp, const SDL_Event& event, command_executor* executor)
+void jbutton_event(const SDL_Event& event, command_executor* executor)
 {
-	event_execute(disp, event, executor);
+	event_execute(event, executor);
 }
 
-void jhat_event(display& disp, const SDL_Event& event, command_executor* executor)
+void jhat_event(const SDL_Event& event, command_executor* executor)
 {
-	event_execute(disp, event, executor);
+	event_execute(event, executor);
 }
 
-void key_event(display& disp, const SDL_Event& event, command_executor* executor)
+void key_event(const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
-	event_execute(disp, event,executor);
+	event_execute(event,executor);
 }
 
-static void event_execute(display& disp, const SDL_Event& event, command_executor* executor)
+static void event_execute( const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
 	const hotkey_ptr hk = get_hotkey(event);
@@ -531,15 +517,12 @@ static void event_execute(display& disp, const SDL_Event& event, command_executo
 		return;
 	}
 
-	execute_command(disp, hotkey::get_hotkey_command(hk->get_command()), executor);
-	executor->set_button_state(disp);
+	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor);
+	executor->set_button_state();
 }
 
-void execute_command(display& disp, const hotkey_command& command, command_executor* executor, int index)
+void execute_command(const hotkey_command& command, command_executor* executor, int index)
 {
-	const int zoom_amount = 4;
-	bool map_screenshot = false;
-
 	if (executor != NULL) {
 		if (!executor->can_execute_command(command, index)
 				|| executor->execute_command(command, index)) {
@@ -550,61 +533,30 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
 			preferences::toggle_minimap_draw_terrain();
-			disp.recalculate_minimap();
+			executor->recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
 			preferences::toggle_minimap_terrain_coding();
-			disp.recalculate_minimap();
+			executor->recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
 			preferences::toggle_minimap_movement_coding();
-			disp.recalculate_minimap();
+			executor->recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
 			preferences::toggle_minimap_draw_units();
-			disp.redraw_minimap();
+			executor->recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
 			preferences::toggle_minimap_draw_villages();
-			disp.recalculate_minimap();
-			break;
-		case HOTKEY_ZOOM_IN:
-			disp.set_zoom(zoom_amount);
-			break;
-		case HOTKEY_ZOOM_OUT:
-			disp.set_zoom(-zoom_amount);
-			break;
-		case HOTKEY_ZOOM_DEFAULT:
-			disp.set_default_zoom();
+			executor->recalculate_minimap();
 			break;
 		case HOTKEY_FULLSCREEN:
-			disp.video().set_fullscreen(!preferences::fullscreen());
+			executor->get_video().set_fullscreen(!preferences::fullscreen());
 			break;
-		case HOTKEY_MAP_SCREENSHOT:
-			if (!disp.in_game() && !disp.in_editor()) {
-				break;
-			}
-			map_screenshot = true;
-			// intentional fall-through
-		case HOTKEY_SCREENSHOT: {
-			const std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
-			std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
-#ifdef HAVE_LIBPNG
-			const std::string ext = ".png";
-#else
-			const std::string ext = ".bmp";
-#endif
-			filename = filesystem::get_next_filename(filename, ext);
-			const bool res = disp.screenshot(filename, map_screenshot);
-			if (res) {
-				gui2::tscreenshot_notification::display(filename, disp.video());
-			} else {
-				gui2::show_error_message(disp.video(),
-										 _("Screenshot creation failed.\n\n"
-										 "Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
-			}
+		case HOTKEY_SCREENSHOT:
+			make_screenshot(_("Screenshot"), executor->get_video(), boost::bind(&::screenshot, _1, boost::ref(executor->get_video())));
 			break;
-		}
 		case HOTKEY_ANIMATE_MAP:
 			preferences::set_animate_map(!preferences::animate_map());
 			break;
@@ -635,34 +587,128 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 				}
 			}
 			break;
-		case HOTKEY_QUIT_TO_DESKTOP:
-		case HOTKEY_QUIT_GAME: {
-			if (disp.in_game()) {
-				DBG_G << "is in game -- showing quit message\n";
-				const int res = gui2::show_message(disp.video(), _("Quit"),
-						_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
-				if (res != gui2::twindow::CANCEL) {
-					if (command.id == HOTKEY_QUIT_TO_DESKTOP) {
-						throw CVideo::quit();
-					} else {
-						throw_quit_game_exception();
-					}
-				}
-			}
-			break;
-		}
-		case LUA_CONSOLE: {
-			if (!disp.in_game()) {
-				//WRN_G << "caution: attempting to interface console with game lua kernel when we are not in game...\n";
-				gui2::tlua_interpreter::display(disp.video(), gui2::tlua_interpreter::APP);
-			} else {
-				gui2::tlua_interpreter::display(disp.video(), gui2::tlua_interpreter::GAME);
-			}
-			break;
-		}
 		default:
 			DBG_G << "command_executor: unknown command number " << command.id << ", ignoring.\n";
 			break;
+	}
+}
+
+void command_executor_default::set_button_state()
+{
+	display& disp = get_display();
+	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
+
+		gui::button* button = disp.find_menu_button(menu.get_id());
+		if (!button) continue;
+		bool enabled = false;
+		BOOST_FOREACH(const std::string& command, menu.items()) {
+
+			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
+			bool can_execute = can_execute_command(command_obj);
+			if (can_execute) {
+				enabled = true;
+				break;
+			}
+		}
+		button->enable(enabled);
+	}
+
+	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
+
+		gui::button* button = disp.find_action_button(action.get_id());
+		if (!button) continue;
+		bool enabled = false;
+		int i = 0;
+		BOOST_FOREACH(const std::string& command, action.items()) {
+
+			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
+			std::string tooltip = action.tooltip(i);
+			if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png" ))
+				button->set_overlay("icons/action/" + command);
+			if (!tooltip.empty())
+				button->set_tooltip_string(tooltip);
+
+			bool can_execute = can_execute_command(command_obj);
+			i++;
+			if (!can_execute) continue;
+			enabled = true;
+
+			ACTION_STATE state = get_action_state(command_obj.id, -1);
+			switch (state) {
+			case ACTION_SELECTED:
+			case ACTION_ON:
+				button->set_check(true);
+				break;
+			case ACTION_OFF:
+			case ACTION_DESELECTED:
+				button->set_check(false);
+				break;
+			case ACTION_STATELESS:
+				break;
+			default:
+				break;
+			}
+
+			break;
+		}
+		button->enable(enabled);
+	}
+}
+
+void command_executor_default::recalculate_minimap()
+{
+	get_display().recalculate_minimap();
+}
+CVideo& command_executor_default::get_video()
+{
+	return get_display().video();
+}
+void command_executor_default::lua_console()
+{
+	if (get_display().in_game()) {
+		gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::GAME);
+		//WRN_G << "caution: attempting to interface console with game lua kernel when we are not in game...\n";
+		gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::APP);
+	} else {
+		command_executor::lua_console();
+	}
+
+}
+void command_executor::lua_console()
+{
+	gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::APP);
+}
+
+void command_executor_default::zoom_in()
+{
+	get_display().set_zoom(zoom_amount);
+}
+void command_executor_default::zoom_out()
+{
+	get_display().set_zoom(-zoom_amount);
+}
+void command_executor_default::zoom_default()
+{
+	get_display().set_default_zoom();
+}
+void command_executor_default::map_screenshot()
+{
+	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
+}
+void command_executor_default::quit_to_desktop()
+{
+	if(gui2::show_message(get_video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL) {
+		throw CVideo::quit();
+	}
+}
+void command_executor::quit_to_desktop()
+{
+	throw CVideo::quit();
+}
+void command_executor_default::quit_to_main_menu()
+{
+	if(gui2::show_message(get_video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL) {
+		throw_quit_game_exception();
 	}
 }
 }

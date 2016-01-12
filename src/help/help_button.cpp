@@ -58,7 +58,7 @@ void help_button::join() {
 
 	//wait until we join the event context to start a hotkey handler
 	delete help_hand_;
-	help_hand_ = new hotkey::basic_handler(&disp_, this);
+	help_hand_ = new hotkey::basic_handler(this);
 }
 
 void help_button::leave() {

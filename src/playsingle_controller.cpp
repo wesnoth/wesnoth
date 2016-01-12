@@ -128,7 +128,7 @@ void playsingle_controller::init_gui(){
 
 	update_locker lock_display(gui_->video(), is_skipping_replay());
 	gui_->draw();
-	get_hotkey_command_executor()->set_button_state(*gui_);
+	get_hotkey_command_executor()->set_button_state();
 	events::raise_draw_event();
 }
 
@@ -498,7 +498,7 @@ void playsingle_controller::linger()
 void playsingle_controller::end_turn_enable(bool enable)
 {
 	gui_->enable_menu("endturn", enable);
-	get_hotkey_command_executor()->set_button_state(*gui_);
+	get_hotkey_command_executor()->set_button_state();
 }
 
 

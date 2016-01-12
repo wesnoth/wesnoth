@@ -57,12 +57,12 @@ void controller_base::handle_event(const SDL_Event& event)
 		// in which case the key press events should go only to it.
 		if(have_keyboard_focus()) {
 			if(event.key.keysym.sym == SDLK_ESCAPE) {
-				hotkey::execute_command(get_display(), quit_hotkey, get_hotkey_command_executor());
+				hotkey::execute_command(quit_hotkey, get_hotkey_command_executor());
 				break;
 			}
 
 			process_keydown_event(event);
-			hotkey::key_event(get_display(), event, get_hotkey_command_executor());
+			hotkey::key_event(event, get_hotkey_command_executor());
 		} else {
 			process_focus_keydown_event(event);
 			break;
@@ -73,11 +73,11 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 	case SDL_JOYBUTTONDOWN:
 		process_keydown_event(event);
-		hotkey::jbutton_event(get_display(), event, get_hotkey_command_executor());
+		hotkey::jbutton_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_JOYHATMOTION:
 		process_keydown_event(event);
-		hotkey::jhat_event(get_display(), event, get_hotkey_command_executor());
+		hotkey::jhat_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
@@ -97,7 +97,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
-		hotkey::mbutton_event(get_display(), event, get_hotkey_command_executor());
+		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());

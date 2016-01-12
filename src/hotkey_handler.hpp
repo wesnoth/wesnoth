@@ -37,9 +37,11 @@ class wmi_pager;
 
 class team;
 
-class play_controller::hotkey_handler : public hotkey::command_executor {
+class play_controller::hotkey_handler : public hotkey::command_executor_default {
 
 protected:
+	display& get_display() { return play_controller_.get_display(); }
+
 	/** References to parent object / constituents */
 	play_controller & play_controller_;
 

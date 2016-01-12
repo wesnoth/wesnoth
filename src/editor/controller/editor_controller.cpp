@@ -1202,9 +1202,9 @@ void editor_controller::refresh_image_cache()
 	context_manager_->refresh_all();
 }
 
-void editor_controller::display_redraw_callback(display& disp)
+void editor_controller::display_redraw_callback(display&)
 {
-	set_button_state(disp);
+	set_button_state();
 	toolkit_->adjust_size();
 	context_manager_->get_map_context().get_labels().recalculate_labels();
 }
@@ -1279,7 +1279,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 
 	return false;
 }
@@ -1294,14 +1294,14 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_left(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change()) {
 		if (gui_->set_zoom(s->value(), true)) {
 			context_manager_->get_map_context().get_labels().recalculate_labels();
 			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
-			set_button_state(*gui_);
+			set_button_state();
 		}
 	}
 	context_manager_->refresh_after_action();
@@ -1317,7 +1317,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	return false;
 }
 
@@ -1331,7 +1331,7 @@ void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_right(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }

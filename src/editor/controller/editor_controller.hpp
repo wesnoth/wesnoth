@@ -85,6 +85,7 @@ class editor_controller : public controller_base,
 
 		~editor_controller();
 
+		CVideo& get_video() OVERRIDE { return gui_->video(); }
 		/** Editor main loop */
 		EXIT_STATUS main_loop();
 

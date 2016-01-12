@@ -14,9 +14,10 @@
 
 #ifndef HELP_BUTTON_HPP
 #define HELP_BUTTON_HPP
-
+#include "global.hpp"
 #include "hotkey/command_executor.hpp"
 #include "construct_dialog.hpp"
+#include "display.hpp"
 
 class config;
 class display;
@@ -31,6 +32,7 @@ public:
 	std::string topic() const { return topic_; }
 	void join();
 	void leave();
+	CVideo& get_video() OVERRIDE { return disp_.video(); }
 private:
 	void show_help();
 	bool can_execute_command(const hotkey::hotkey_command& command, int/*index*/ =-1) const;

@@ -773,7 +773,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		cursor::set(cursor::NORMAL);
 		if(res == gui2::ttitle_screen::NOTHING) {
-			const hotkey::basic_handler key_handler(&game->disp());
 			gui2::ttitle_screen dlg;
 			dlg.show(game->disp().video());
 
