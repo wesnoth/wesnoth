@@ -243,7 +243,7 @@ namespace {
 	{
 		BOOST_FOREACH(const tresolution& resolution, resolutions) {
 			
-			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
+			//CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			std::vector<std::string>& list =
 					gui2::unit_test_registered_window_list();
