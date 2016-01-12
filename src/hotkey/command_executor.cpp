@@ -351,7 +351,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	}
 }
 
-void command_executor::execute_action(const std::vector<std::string>& items_arg, int /*xloc*/, int /*yloc*/, bool /*context_menu*/, display& gui)
+void command_executor::execute_action(const std::vector<std::string>& items_arg, int /*xloc*/, int /*yloc*/, bool /*context_menu*/, display&)
 {
 	std::vector<std::string> items = items_arg;
 	if (items.empty()) {
