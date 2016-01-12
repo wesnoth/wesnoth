@@ -17,7 +17,7 @@
 
 class config;
 class display;
-
+class CVideo;
 #include <string>
 
 namespace preferences {
@@ -46,7 +46,7 @@ namespace preferences {
 
 	std::string show_wesnothd_server_search(display&);
 	void show_preferences_dialog(display& disp, const config& game_cfg);
-	bool show_video_mode_dialog(display& disp);
+	bool show_video_mode_dialog(CVideo& disp);
 	bool show_theme_dialog(display& disp);
 	void show_paths_dialog(display& disp);
 	void show_mp_alerts_dialog(display& disp);

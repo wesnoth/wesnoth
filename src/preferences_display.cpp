@@ -116,17 +116,17 @@ void set_idle_anim_rate(int rate) {
 }
 
 
-bool show_video_mode_dialog(display& disp)
+bool show_video_mode_dialog(CVideo& video)
 {
 	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
 	std::vector<std::pair<int,int> > resolutions
-			= disp.video().get_available_resolutions();
+			= video.get_available_resolutions();
 
 	if(resolutions.empty()) {
 		gui2::show_transient_message(
-				disp.video()
+				video
 				, ""
 				, _("There are no alternative video modes available"));
 
@@ -139,7 +139,7 @@ bool show_video_mode_dialog(display& disp)
 	for(size_t k = 0; k < resolutions.size(); ++k) {
 		std::pair<int, int> const& res = resolutions[k];
 
-		if (res == disp.video().current_resolution())
+		if (res == video.current_resolution())
 			current_choice = static_cast<unsigned>(k);
 
 		std::ostringstream option;
@@ -153,17 +153,15 @@ bool show_video_mode_dialog(display& disp)
 
 	gui2::tsimple_item_selector dlg(_("Choose Resolution"), "", options);
 	dlg.set_selected_index(current_choice);
-	dlg.show(disp.video());
+	dlg.show(video);
 
 	int choice = dlg.selected_index();
 
-	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == disp.video().current_resolution()) {
+	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == video.current_resolution()) {
 		return false;
 	}
 
-	if (disp.get_singleton()) {
-		disp.get_singleton()->video().set_resolution(resolutions[static_cast<size_t>(choice)]);
-	}
+	video.set_resolution(resolutions[static_cast<size_t>(choice)]);
 
 	return true;
 }
