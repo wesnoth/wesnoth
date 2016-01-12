@@ -866,9 +866,9 @@ void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& a
 		gui::dialog_button* filter_opts_button = new gui::dialog_button(v,
 			_("filter^Options"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &filter_opts_helper);
 		dlg.add_button(filter_opts_button, gui::dialog::BUTTON_TOP);
-		//FIXME: enable
-		//help::help_button* help_button = new help::help_button(v, "installing_addons");
-		//dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
+
+		help::help_button* help_button = new help::help_button(v, "installing_addons");
+		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
 
 		// Disable some buttons when there's nothing to display.
 		if(dummy_addons_list) {

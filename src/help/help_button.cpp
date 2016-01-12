@@ -16,7 +16,6 @@
 
 #include "help.hpp"
 #include "gettext.hpp"
-#include "display.hpp"
 #include "config.hpp"
 
 #include "hotkey/command_executor.hpp"
@@ -26,8 +25,8 @@
 
 namespace help {
 
-help_button::help_button(display& disp, const std::string &help_topic)
-	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic), help_hand_(NULL)
+help_button::help_button(CVideo& video, const std::string &help_topic)
+	: dialog_button(video, _("Help")), video_(video), topic_(help_topic), help_hand_(NULL)
 {}
 
 help_button::~help_button() {
@@ -44,7 +43,7 @@ int help_button::action(gui::dialog_process_info &info) {
 
 void help_button::show_help()
 {
-	help::show_help(disp_.video(), topic_);
+	help::show_help(video_, topic_);
 }
 
 bool help_button::can_execute_command(const hotkey::hotkey_command& cmd, int/*index*/) const

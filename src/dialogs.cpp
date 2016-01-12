@@ -444,7 +444,7 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 			  _("Select unit:") + std::string("\n"),
 			  gui::OK_CANCEL,
 			  gui::dialog::default_style);
-	rmenu.add_button(new help::help_button(disp, "recruit_and_recall"),
+	rmenu.add_button(new help::help_button(disp.video(), "recruit_and_recall"),
 		gui::dialog::BUTTON_HELP);
 
 	gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
@@ -574,7 +574,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 	gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
 	rmenu.add_button(delete_button);
 
-	rmenu.add_button(new help::help_button(disp,"recruit_and_recall"),
+	rmenu.add_button(new help::help_button(disp.video(), "recruit_and_recall"),
 		gui::dialog::BUTTON_HELP);
 
 	dialogs::units_list_preview_pane unit_preview(units, filter);
