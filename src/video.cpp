@@ -378,7 +378,9 @@ void CVideo::video_event_handler::handle_event(const SDL_Event &event)
 
 
 CVideo::CVideo(FAKE_TYPES type) :
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 	window(),
+#endif
 #ifdef SDL_GPU
 	shader_(),
 #endif
