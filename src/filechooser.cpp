@@ -204,7 +204,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info)
 		if(!chosen_file_.empty())
 		{
 			if(files_list_->delete_chosen_file() == -1) {
-				gui2::show_transient_error_message(CVideo::get_singleton()
+				gui2::show_transient_error_message(get_video()
 						, _("Deletion of the file failed."));
 				dp_info.clear_buttons();
 			} else {
@@ -217,10 +217,10 @@ void file_dialog::action(gui::dialog_process_info &dp_info)
 	else if(result() == gui::CREATE_ITEM)
 	{
 		std::string new_dir_name = "";
-		if(gui2::tfolder_create::execute(new_dir_name, CVideo::get_singleton()))
+		if(gui2::tfolder_create::execute(new_dir_name, get_video()))
 		{
 			if( !files_list_->make_directory(new_dir_name) ) {
-				gui2::show_transient_error_message(CVideo::get_singleton()
+				gui2::show_transient_error_message(get_video()
 						, _("Creation of the directory failed."));
 			} else {
 				dp_info.first_time = true;

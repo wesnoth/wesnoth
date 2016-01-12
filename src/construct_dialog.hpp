@@ -277,6 +277,7 @@ public:
 	std::string textbox_text() const { return text_widget_->text();}
 	dialog_textbox& get_textbox() const { return *text_widget_; }
 	bool option_checked(unsigned int option_index=0);
+	CVideo& get_video() { return video_; }
 
 	/// Explicit freeing of class static resources.
 	/// Must not be called if any instances of this class exist.

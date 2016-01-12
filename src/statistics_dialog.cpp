@@ -149,7 +149,7 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 		break;
 	}
 	if (items_sub.empty() == false) {
-		gui::dialog d(CVideo::get_singleton(), title + " (" + player_name_ + ")", "", gui::CLOSE_ONLY);
+		gui::dialog d(get_video(), title + " (" + player_name_ + ")", "", gui::CLOSE_ONLY);
 		d.set_menu(items_sub);
 		d.show();
 		dp_info.clear_buttons();
@@ -317,7 +317,7 @@ void statistics_dialog::do_scene_selection()
 
 	// Let the player choose a scenario.
 	SDL_Rect const &loc = scene_btn_->location();
-	size_t new_scenario = gui::show_dialog(CVideo::get_singleton(), NULL, "", "",
+	size_t new_scenario = gui::show_dialog(get_video(), NULL, "", "",
 	                                       gui::MESSAGE, &names, NULL, "", NULL,
 	                                       -1, NULL, loc.x, loc.y + loc.h);
 
