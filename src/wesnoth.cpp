@@ -637,7 +637,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(game->disp().video());
+	loadscreen::global_loadscreen_manager loadscreen_manager(game->video());
 
 	loadscreen::start_stage("init gui");
 	gui2::init();
@@ -669,7 +669,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	plugins_manager plugins_man(new application_lua_kernel(&game->disp().video()));
+	plugins_manager plugins_man(new application_lua_kernel(&game->video()));
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
@@ -767,14 +767,12 @@ static int do_gameloop(const std::vector<std::string>& args)
 				? gui2::ttitle_screen::LOAD_GAME
 				: gui2::ttitle_screen::NOTHING;
 
-		const preferences::display_manager disp_manager(&game->disp());
-
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
 		if(res == gui2::ttitle_screen::NOTHING) {
 			gui2::ttitle_screen dlg;
-			dlg.show(game->disp().video());
+			dlg.show(game->video());
 
 			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
@@ -812,7 +810,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 					image::flush_cache();
 				}
 			} catch ( std::runtime_error & e ) {
-				gui2::show_error_message(game->disp().video(), e.what());
+				gui2::show_error_message(game->video(), e.what());
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::EDIT_PREFERENCES) {
@@ -829,7 +827,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			// NOTE: we need the help_manager to get access to the Add-ons
 			// section in the game help!
 			help::help_manager help_manager(&config_manager.game_config());
-			if(manage_addons(game->disp().video())) {
+			if(manage_addons(game->video())) {
 				config_manager.reload_changed_game_config();
 			}
 			continue;
@@ -845,7 +843,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 
 			gui2::tcore_selection core_dlg(cores, current);
-			if (core_dlg.show(game->disp().video())) {
+			if (core_dlg.show(game->video())) {
 				int core_index = core_dlg.get_choice();
 				const std::string& core_id = cores[core_index]["id"];
 				preferences::set_core_id(core_id);
@@ -853,7 +851,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			loadscreen::global_loadscreen_manager loadscreen(game->disp().video());
+			loadscreen::global_loadscreen_manager loadscreen(game->video());
 			config_manager.reload_changed_game_config();
 			image::flush_cache();
 			continue;

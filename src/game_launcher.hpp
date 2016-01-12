@@ -19,7 +19,6 @@
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
 #include "font.hpp"                     // for manager
-#include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for load_game_exception, etc
 #include "game_preferences.hpp"         // for manager
 #include "hotkey/hotkey_manager.hpp"    // for manager
@@ -57,7 +56,6 @@ public:
 	game_launcher(const commandline_options& cmdline_opts, const char* appname);
 	~game_launcher();
 
-	game_display& disp();
 	CVideo& video() { return video_; }
 
 	bool init_video();
@@ -107,7 +105,7 @@ private:
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 
 	const commandline_options& cmdline_opts_;
-	util::scoped_ptr<game_display> disp_;
+
 	CVideo video_;
 
 	//this should get destroyed *after* the video, since we want

@@ -106,7 +106,6 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts, const char *appname) :
 	cmdline_opts_(cmdline_opts),
-	disp_(NULL),
 	video_(),
 	thread_manager(),
 	font_manager_(),
@@ -313,17 +312,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	else if (no_music) { // else disable the music in nomusic mode
 		preferences::set_music(false);
 	}
-}
-
-game_display& game_launcher::disp()
-{
-	if(disp_.get() == NULL) {
-		if(get_video_surface() == NULL) {
-			throw CVideo::error();
-		}
-		disp_.assign(game_display::create_dummy_display(video_));
-	}
-	return *disp_.get();
 }
 
 bool game_launcher::init_joystick()
@@ -1076,7 +1064,6 @@ bool game_launcher::change_language()
 
 void game_launcher::show_preferences()
 {
-	const preferences::display_manager disp_manager(&disp());
 	preferences::show_preferences_dialog(video(),
 	    game_config_manager::get()->game_config());
 

@@ -231,7 +231,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 #endif
 {
 	//The following assertion fails when starting a campaign
-	//assert(singleton_ == NULL);
+	assert(singleton_ == NULL);
 	singleton_ = this;
 
 	resources::fake_units = fake_unit_man_.get();
