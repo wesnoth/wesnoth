@@ -640,8 +640,7 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 static void do_preferences_dialog(game_display& disp, const config& game_config)
 {
 	DBG_MP << "displaying preferences dialog" << std::endl;
-	const preferences::display_manager disp_manager(&disp);
-	preferences::show_preferences_dialog(disp,game_config);
+	preferences::show_preferences_dialog(disp.video(), game_config);
 
 	/**
 	 * The screen size might have changed force an update of the size.

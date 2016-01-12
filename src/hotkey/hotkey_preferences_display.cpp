@@ -52,7 +52,7 @@ private	:
 	static const int truncate_at = 25;
 
 public:
-	hotkey_preferences_dialog(display& disp);
+	hotkey_preferences_dialog(CVideo& v);
 
 	/**
 	 * Populates, sorts and redraws the hotkey menu specified by tab_.
@@ -120,7 +120,7 @@ private:
 	gui::menu general_hotkeys_, game_hotkeys_, editor_hotkeys_, title_screen_hotkeys_;
 
 	/** The display, for usage by child dialogs */
-	display &disp_;
+	CVideo &video_;
 
 public:
 	/**
@@ -138,8 +138,8 @@ const char* hotkey_preferences_dialog::clear_button_text =
 class hotkey_resetter : public gui::dialog_button_action
 {
 public:
-	hotkey_resetter(display& disp, hotkey_preferences_dialog& dialog) :
-		disp_(disp),
+	hotkey_resetter(CVideo& video, hotkey_preferences_dialog& dialog) :
+		video_(video),
 		dialog_(dialog)
 	{}
 
@@ -147,14 +147,14 @@ public:
 	RESULT button_pressed(int /*selection*/)
 	{
 		clear_hotkeys();
-		gui2::show_transient_message(disp_.video(), _("Hotkeys Reset"),
+		gui2::show_transient_message(video_, _("Hotkeys Reset"),
 				_("All hotkeys have been reset to their default values."));
 		dialog_.set_hotkey_menu(true);
 		return gui::CONTINUE_DIALOG;
 	}
 
 private:
-	display& disp_;
+	CVideo& video_;
 	hotkey_preferences_dialog& dialog_;
 };
 
@@ -162,13 +162,13 @@ class hotkey_preferences_parent_dialog: public gui::dialog {
 
 public:
 
-	hotkey_preferences_parent_dialog(display &disp,
+	hotkey_preferences_parent_dialog(CVideo& video,
 			hotkey_preferences_dialog& hotkey_preferences_dialog) :
-				dialog(disp.video(), _("Hotkey Settings"), "", gui::OK_CANCEL),
+				dialog(video, _("Hotkey Settings"), "", gui::OK_CANCEL),
 				clear_buttons_(false),
 				hotkey_cfg_(),
-				resetter_(disp, hotkey_preferences_dialog) {
-		gui::dialog_button* reset_button = new gui::dialog_button(disp.video(),
+				resetter_(video, hotkey_preferences_dialog) {
+		gui::dialog_button* reset_button = new gui::dialog_button(video,
 				_("Defaults"), gui::button::TYPE_PRESS,
 				gui::CONTINUE_DIALOG, &resetter_);
 		reset_button->set_help_string(
@@ -206,7 +206,7 @@ private:
 };
 
 
-void show_hotkeys_preferences_dialog(display& disp) {
+void show_hotkeys_preferences_dialog(CVideo& video) {
 
 	std::vector<std::string> items;
 	const std::string pre = IMAGE_PREFIX + std::string("icons/icon-");
@@ -232,8 +232,8 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	// The restorer will change the scope back to where we came from
 	// when it runs out of the function's scope
 	hotkey::scope_changer scope_restorer;
-	hotkey_preferences_dialog dialog(disp);
-	dialog.parent.assign(new hotkey_preferences_parent_dialog(disp, dialog));
+	hotkey_preferences_dialog dialog(video);
+	dialog.parent.assign(new hotkey_preferences_parent_dialog(video, dialog));
 	dialog.parent->set_menu(items);
 	dialog.parent->add_pane(&dialog);
 	// select the tab corresponding to the current scope.
@@ -245,10 +245,10 @@ void show_hotkeys_preferences_dialog(display& disp) {
 
 /* hotkey_preferences_dialog members ************************/
 
-hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
-		gui::preview_pane(disp.video()),
-		add_button_(disp.video(), _("Add Hotkey")),
-		clear_button_(disp.video(),	_("Clear Hotkey")),
+hotkey_preferences_dialog::hotkey_preferences_dialog(CVideo& video) :
+		gui::preview_pane(video),
+		add_button_(video, _("Add Hotkey")),
+		clear_button_(video,	_("Clear Hotkey")),
 		tab_(hotkey::SCOPE_COUNT), //SCOPE_COUNT means "hotkey with more than one scope" in this case
 		general_commands_(),
 		game_commands_(),
@@ -263,15 +263,15 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		title_screen_sorter_(),
 		// Note: If you don't instantiate the menus with heading_,
 		// the header can't be enabled later, seems to be a bug in gui::menu
-		general_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+		general_hotkeys_(video, boost::assign::list_of(heading_),
 				false, -1, -1, &general_sorter_, &gui::menu::bluebg_style),
-		game_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+		game_hotkeys_(video, boost::assign::list_of(heading_),
 				false, -1, -1, &game_sorter_, &gui::menu::bluebg_style),
-		editor_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+		editor_hotkeys_(video, boost::assign::list_of(heading_),
 				false, -1, -1, &editor_sorter_, &gui::menu::bluebg_style),
-		title_screen_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+		title_screen_hotkeys_(video, boost::assign::list_of(heading_),
 				false, -1, -1, &title_screen_sorter_, &gui::menu::bluebg_style),
-		disp_(disp),
+		video_(video),
 		parent(NULL)
 {
 
@@ -311,7 +311,7 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 	}
 
 	/// @todo move to the caller?
-	disp_.video().clear_all_help_strings();
+	video_.clear_all_help_strings();
 
 	// Initialize sorters.
 	general_sorter_.set_alpha_sort(1).set_alpha_sort(2);
@@ -566,28 +566,28 @@ void hotkey_preferences_dialog::show_binding_dialog(
 
 	const std::string text = _("Press desired hotkey (Esc cancels)");
 
-	SDL_Rect clip_rect = sdl::create_rect(0, 0, disp_.w(), disp_.h());
+	SDL_Rect clip_rect = sdl::create_rect(0, 0, video_.getx(), video_.gety());
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
 			font::NORMAL_COLOR, text, 0, 0);
 
-	const int centerx = disp_.w() / 2;
-	const int centery = disp_.h() / 2;
+	const int centerx = video_.getx() / 2;
+	const int centery = video_.gety() / 2;
 
 	SDL_Rect dlgr = sdl::create_rect(centerx - text_size.w / 2 - 30,
 			centery - text_size.h / 2 - 16, text_size.w + 60,
 			text_size.h + 32);
 
-	surface_restorer restorer(&disp_.video(), dlgr);
-	gui::dialog_frame mini_frame(disp_.video());
+	surface_restorer restorer(&video_, dlgr);
+	gui::dialog_frame mini_frame(video_);
 	mini_frame.layout(centerx - text_size.w / 2 - 20,
 			centery - text_size.h / 2 - 6, text_size.w + 40,
 			text_size.h + 12);
 	mini_frame.draw_background();
 	mini_frame.draw_border();
-	font::draw_text(&disp_.video(), clip_rect, font::SIZE_LARGE,
+	font::draw_text(&video_, clip_rect, font::SIZE_LARGE,
 			font::NORMAL_COLOR, text,
 			centerx - text_size.w / 2, centery - text_size.h / 2);
-	disp_.update_display();
+	video_.flip();
 	SDL_Event event;
 	event.type = 0;
 	int keycode  = -1, mod    = -1;
@@ -616,14 +616,14 @@ void hotkey_preferences_dialog::show_binding_dialog(
 #if SDL_VERSION_ATLEAST(2,0,0)
 	events::peek_for_resize();
 #endif
-		disp_.flip();
+		video_.flip();
 		CVideo::delay(10);
 	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
 			&& event.type != SDL_JOYHATMOTION
 			&& event.type != SDL_MOUSEBUTTONUP);
 
 	restorer.restore();
-	disp_.update_display();
+	video_.flip();
 
 	// only if not cancelled.
 	if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
@@ -641,7 +641,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 //			if ( (hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_SCREENSHOT
 //					|| hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_MAP_SCREENSHOT)
 //					&& (mod & any_mod) == 0 ) {
-//				gui2::show_transient_message(disp_.video(), _("Warning"),
+//				gui2::show_transient_message(video_, _("Warning"),
 /*						_("Screenshot hotkeys should be combined with the \
 Control, Alt or Meta modifiers to avoid problems.")); */
 //			}
@@ -662,7 +662,7 @@ Control, Alt or Meta modifiers to avoid problems.")); */
 \"$old_hotkey_action|\". Do you wish to reassign it to \"$new_hotkey_action|\"?"
 								, symbols);
 
-				const int res = gui2::show_message(disp_.video(),
+				const int res = gui2::show_message(video_,
 						_("Reassign Hotkey"), text,
 						gui2::tmessage::yes_no_buttons);
 				if (res == gui2::twindow::OK) {

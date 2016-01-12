@@ -1072,7 +1072,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	preferences::show_preferences_dialog(*gui_, game_config_);
+	preferences::show_preferences_dialog(gui_->video(), game_config_);
 
 	gui_->redraw_everything();
 }

@@ -67,7 +67,7 @@ struct advanced_preferences_sorter
 class preferences_parent_dialog : public gui::dialog
 {
 public:
-	preferences_parent_dialog(display &disp) : dialog(disp.video(), _("Preferences"),"",gui::CLOSE_ONLY),
+	preferences_parent_dialog(CVideo &video) : dialog(video, _("Preferences"),"",gui::CLOSE_ONLY),
 		clear_buttons_(false) {}
 	~preferences_parent_dialog() {write_preferences();}
 	void action(gui::dialog_process_info &info)
@@ -85,7 +85,7 @@ private:
 class preferences_dialog : public gui::preview_pane
 {
 public:
-	preferences_dialog(display& disp, const config& game_cfg);
+	preferences_dialog(CVideo& video, const config& game_cfg);
 
 	virtual sdl_handler_vector handler_members();
 private:
@@ -167,7 +167,7 @@ private:
 				/*extra tab*/
 				COLOR_TAB, ADVANCED_SOUND_TAB, FRIENDS_TAB};
 	TAB tab_;
-	display &disp_;
+	CVideo &video_;
 	const config& game_cfg_;
 	std::vector<config> adv_preferences_cfg_;
 public:
@@ -175,76 +175,76 @@ public:
 };
 
 //change
-preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
-	: gui::preview_pane(disp.video()),
+preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg)
+	: gui::preview_pane(video),
 	  friends_names_(),
 	  color_ids_(),
-	  music_slider_(disp.video()), sound_slider_(disp.video()),
-	  UI_sound_slider_(disp.video()), bell_slider_(disp.video()),
-	  scroll_slider_(disp.video()),
-	  chat_lines_slider_(disp.video()), buffer_size_slider_(disp.video()),
-	  idle_anim_slider_(disp.video()), autosavemax_slider_(disp.video()),
-	  advanced_slider_(disp.video()),
-	  turbo_slider_(disp.video()),
+	  music_slider_(video), sound_slider_(video),
+	  UI_sound_slider_(video), bell_slider_(video),
+	  scroll_slider_(video),
+	  chat_lines_slider_(video), buffer_size_slider_(video),
+	  idle_anim_slider_(video), autosavemax_slider_(video),
+	  advanced_slider_(video),
+	  turbo_slider_(video),
 
 
-	  fullscreen_button_(disp.video(), _("Full screen"), gui::button::TYPE_CHECK),
-	  turbo_button_(disp.video(), _("Accelerated speed"), gui::button::TYPE_CHECK),
-	  show_ai_moves_button_(disp.video(), _("Skip AI moves"), gui::button::TYPE_CHECK),
-	  interrupt_when_ally_sighted_button_(disp.video(), _("Interrupt move when an ally is sighted"), gui::button::TYPE_CHECK),
-	  show_grid_button_(disp.video(), _("Show grid"), gui::button::TYPE_CHECK),
-	  save_replays_button_(disp.video(), _("Save replays at the end of scenarios"), gui::button::TYPE_CHECK),
-	  delete_saves_button_(disp.video(), _("Delete auto-saves at the end of scenarios"), gui::button::TYPE_CHECK),
-	  show_lobby_joins_button1_(disp.video(), _("Do not show lobby joins"), gui::button::TYPE_RADIO),
-	  show_lobby_joins_button2_(disp.video(), _("Show lobby joins of friends only"), gui::button::TYPE_RADIO),
-	  show_lobby_joins_button3_(disp.video(), _("Show all lobby joins"), gui::button::TYPE_RADIO),
-	  sort_list_by_group_button_(disp.video(), _("Sort lobby list"), gui::button::TYPE_CHECK),
-	  iconize_list_button_(disp.video(), _("Iconize lobby list"), gui::button::TYPE_CHECK),
-	  remember_pw_button_(disp.video(), _("Save password to preferences (plain text)"), gui::button::TYPE_CHECK),
-	  mp_server_search_button_(disp.video(), _("Set Path to wesnothd")),
-	  friends_list_button_(disp.video(), _("Friends List")),
-	  friends_back_button_(disp.video(), _("Multiplayer Options")),
-	  friends_add_friend_button_(disp.video(), _("Add As Friend")),
-	  friends_add_ignore_button_(disp.video(), _("Add As Ignore")),
-	  friends_remove_button_(disp.video(), _("Remove")),
-	  show_floating_labels_button_(disp.video(), _("Show floating labels"), gui::button::TYPE_CHECK),
-	  turn_dialog_button_(disp.video(), _("Turn dialog"), gui::button::TYPE_CHECK),
-	  whiteboard_on_start_button_(disp.video(), _("Enable planning mode on start"), gui::button::TYPE_CHECK),
-	  hide_whiteboard_button_(disp.video(), _("Hide allies’ plans by default"), gui::button::TYPE_CHECK),
-	  turn_bell_button_(disp.video(), _("Turn bell"), gui::button::TYPE_CHECK),
-	  show_team_colors_button_(disp.video(), _("Show team colors"), gui::button::TYPE_CHECK),
-	  show_haloing_button_(disp.video(), _("Show haloing effects"), gui::button::TYPE_CHECK),
-	  video_mode_button_(disp.video(), _("Change Resolution")),
-	  theme_button_(disp.video(), _("Theme")),
-	  hotkeys_button_(disp.video(), _("Hotkeys")),
-	  colors_button_(disp.video(), _("Colors")),
-	  cache_button_(disp.video(), _("Cache")),
-	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
-	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
-	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
-	  chat_timestamp_button_(disp.video(), _("Chat timestamping"), gui::button::TYPE_CHECK),
-	  advanced_sound_button_(disp.video(), _("sound^Advanced Options")),
-	  normal_sound_button_(disp.video(), _("sound^Standard Options")),
-	  display_button_(disp.video(), _("colors^Display")),
-	  UI_sound_button_(disp.video(), _("User interface sounds"), gui::button::TYPE_CHECK),
-	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_RADIO),
-	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_RADIO),
-	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_RADIO),
-	  confirm_sound_button_(disp.video(), _("Apply")),
-	  idle_anim_button_(disp.video(), _("Show unit idle animations"), gui::button::TYPE_CHECK),
-	  standing_anim_button_(disp.video(), _("Show unit standing animations"), gui::button::TYPE_CHECK),
-	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
-	  disable_auto_move_button_(disp.video(), _("Disable automatic moves"), gui::button::TYPE_CHECK),
-	  mp_alerts_options_button_(disp.video(), _("Alerts")),
-	  advanced_graphics_options_button_(disp.video(), _("Advanced")),
+	  fullscreen_button_(video, _("Full screen"), gui::button::TYPE_CHECK),
+	  turbo_button_(video, _("Accelerated speed"), gui::button::TYPE_CHECK),
+	  show_ai_moves_button_(video, _("Skip AI moves"), gui::button::TYPE_CHECK),
+	  interrupt_when_ally_sighted_button_(video, _("Interrupt move when an ally is sighted"), gui::button::TYPE_CHECK),
+	  show_grid_button_(video, _("Show grid"), gui::button::TYPE_CHECK),
+	  save_replays_button_(video, _("Save replays at the end of scenarios"), gui::button::TYPE_CHECK),
+	  delete_saves_button_(video, _("Delete auto-saves at the end of scenarios"), gui::button::TYPE_CHECK),
+	  show_lobby_joins_button1_(video, _("Do not show lobby joins"), gui::button::TYPE_RADIO),
+	  show_lobby_joins_button2_(video, _("Show lobby joins of friends only"), gui::button::TYPE_RADIO),
+	  show_lobby_joins_button3_(video, _("Show all lobby joins"), gui::button::TYPE_RADIO),
+	  sort_list_by_group_button_(video, _("Sort lobby list"), gui::button::TYPE_CHECK),
+	  iconize_list_button_(video, _("Iconize lobby list"), gui::button::TYPE_CHECK),
+	  remember_pw_button_(video, _("Save password to preferences (plain text)"), gui::button::TYPE_CHECK),
+	  mp_server_search_button_(video, _("Set Path to wesnothd")),
+	  friends_list_button_(video, _("Friends List")),
+	  friends_back_button_(video, _("Multiplayer Options")),
+	  friends_add_friend_button_(video, _("Add As Friend")),
+	  friends_add_ignore_button_(video, _("Add As Ignore")),
+	  friends_remove_button_(video, _("Remove")),
+	  show_floating_labels_button_(video, _("Show floating labels"), gui::button::TYPE_CHECK),
+	  turn_dialog_button_(video, _("Turn dialog"), gui::button::TYPE_CHECK),
+	  whiteboard_on_start_button_(video, _("Enable planning mode on start"), gui::button::TYPE_CHECK),
+	  hide_whiteboard_button_(video, _("Hide allies’ plans by default"), gui::button::TYPE_CHECK),
+	  turn_bell_button_(video, _("Turn bell"), gui::button::TYPE_CHECK),
+	  show_team_colors_button_(video, _("Show team colors"), gui::button::TYPE_CHECK),
+	  show_haloing_button_(video, _("Show haloing effects"), gui::button::TYPE_CHECK),
+	  video_mode_button_(video, _("Change Resolution")),
+	  theme_button_(video, _("Theme")),
+	  hotkeys_button_(video, _("Hotkeys")),
+	  colors_button_(video, _("Colors")),
+	  cache_button_(video, _("Cache")),
+	  advanced_button_(video, "", gui::button::TYPE_CHECK),
+	  sound_button_(video, _("Sound effects"), gui::button::TYPE_CHECK),
+	  music_button_(video, _("Music"), gui::button::TYPE_CHECK),
+	  chat_timestamp_button_(video, _("Chat timestamping"), gui::button::TYPE_CHECK),
+	  advanced_sound_button_(video, _("sound^Advanced Options")),
+	  normal_sound_button_(video, _("sound^Standard Options")),
+	  display_button_(video, _("colors^Display")),
+	  UI_sound_button_(video, _("User interface sounds"), gui::button::TYPE_CHECK),
+	  sample_rate_button1_(video, "22050", gui::button::TYPE_RADIO),
+	  sample_rate_button2_(video, "44100", gui::button::TYPE_RADIO),
+	  sample_rate_button3_(video, _("Custom"), gui::button::TYPE_RADIO),
+	  confirm_sound_button_(video, _("Apply")),
+	  idle_anim_button_(video, _("Show unit idle animations"), gui::button::TYPE_CHECK),
+	  standing_anim_button_(video, _("Show unit standing animations"), gui::button::TYPE_CHECK),
+	  animate_map_button_(video, _("Animate map"), gui::button::TYPE_CHECK),
+	  disable_auto_move_button_(video, _("Disable automatic moves"), gui::button::TYPE_CHECK),
+	  mp_alerts_options_button_(video, _("Alerts")),
+	  advanced_graphics_options_button_(video, _("Advanced")),
 
 	  // Colors tab buttons
-	  orb_colors_defaults_(disp.video(), _("Defaults")),
-	  orb_colors_enemy_toggle_(disp.video(), _("Show enemy orb"), gui::button::TYPE_CHECK),
-	  orb_colors_ally_toggle_(disp.video(), _("Show ally orb"), gui::button::TYPE_CHECK),
-	  orb_colors_unmoved_toggle_(disp.video(), _("Show unmoved orb"), gui::button::TYPE_CHECK),
-	  orb_colors_partial_toggle_(disp.video(), _("Show partial moved orb"), gui::button::TYPE_CHECK),
-	  orb_colors_moved_toggle_(disp.video(), _("Show moved orb"), gui::button::TYPE_CHECK),
+	  orb_colors_defaults_(video, _("Defaults")),
+	  orb_colors_enemy_toggle_(video, _("Show enemy orb"), gui::button::TYPE_CHECK),
+	  orb_colors_ally_toggle_(video, _("Show ally orb"), gui::button::TYPE_CHECK),
+	  orb_colors_unmoved_toggle_(video, _("Show unmoved orb"), gui::button::TYPE_CHECK),
+	  orb_colors_partial_toggle_(video, _("Show partial moved orb"), gui::button::TYPE_CHECK),
+	  orb_colors_moved_toggle_(video, _("Show moved orb"), gui::button::TYPE_CHECK),
 
 	  //colors tab buttons
 	  orb_colors_ally_buttons_(),
@@ -254,32 +254,32 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  orb_colors_unmoved_buttons_(),
 
 	  // Sound tab labels
-	  music_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
-	  sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
-	  UI_sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
-	  bell_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
+	  music_label_(video, _("Volume:"), font::SIZE_SMALL),
+	  sound_label_(video, _("Volume:"), font::SIZE_SMALL),
+	  UI_sound_label_(video, _("Volume:"), font::SIZE_SMALL),
+	  bell_label_(video, _("Volume:"), font::SIZE_SMALL),
 
-	  scroll_label_(disp.video(), _("Scroll speed:")),
-	  chat_lines_label_(disp.video(), ""),
-	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
-	  sample_rate_label_(disp.video(), _("Sample rate (Hz):")), buffer_size_label_(disp.video(), ""),
-	  idle_anim_slider_label_(disp.video(), _("Frequency:"), font::SIZE_SMALL ),
-	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
-	  advanced_option_label_(disp.video(), "", font::SIZE_SMALL),
+	  scroll_label_(video, _("Scroll speed:")),
+	  chat_lines_label_(video, ""),
+	  turbo_slider_label_(video, "", font::SIZE_SMALL ),
+	  sample_rate_label_(video, _("Sample rate (Hz):")), buffer_size_label_(video, ""),
+	  idle_anim_slider_label_(video, _("Frequency:"), font::SIZE_SMALL ),
+	  autosavemax_slider_label_(video, "", font::SIZE_SMALL),
+	  advanced_option_label_(video, "", font::SIZE_SMALL),
 
-	  sample_rate_input_(disp.video(), 70),
-	  friends_input_(disp.video(), 170),
+	  sample_rate_input_(video, 70),
+	  friends_input_(video, 170),
 
-	  advanced_combo_(disp.video(), std::vector<std::string>()),
+	  advanced_combo_(video, std::vector<std::string>()),
 
 	  slider_label_width_(0),
-	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
-	  friends_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
+	  advanced_(video,std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
+	  friends_(video,std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
 
 	  advanced_selection_(-1),
 	  friends_selection_(-1),
 
-	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg), adv_preferences_cfg_(), parent(NULL)
+	  tab_(GENERAL_TAB), video_(video), game_cfg_(game_cfg), adv_preferences_cfg_(), parent(NULL)
 {
 	sort_advanced_preferences();
 
@@ -321,7 +321,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 		std::string image_path = "misc/orb"; //game_config::images::orb;
 		std::string image_path_suffix = "~RC(magenta>" + color_id + ")";
 
-		gui::button color_radio_button(disp.video(), "", gui::button::TYPE_IMAGE, image_path, gui::button::MINIMUM_SPACE);
+		gui::button color_radio_button(video, "", gui::button::TYPE_IMAGE, image_path, gui::button::MINIMUM_SPACE);
 		color_radio_button.set_tooltip_string(color_name);
 		color_radio_button.set_help_string(color_name);
 		color_radio_button.set_image_path_suffix(image_path_suffix);
@@ -925,11 +925,11 @@ void preferences_dialog::process_event()
 		if (hide_whiteboard_button_.pressed())
 			set_hide_whiteboard(hide_whiteboard_button_.checked());
 		if (hotkeys_button_.pressed()) {
-			show_hotkeys_preferences_dialog(disp_);
+			show_hotkeys_preferences_dialog(video_);
 			parent->clear_buttons();
 		}
 		if (cache_button_.pressed()) {
-			gui2::tgame_cache_options::display(disp_.video());
+			gui2::tgame_cache_options::display(video_);
 			parent->clear_buttons();
 		}
 
@@ -955,13 +955,13 @@ void preferences_dialog::process_event()
 		if (show_floating_labels_button_.pressed())
 			set_show_floating_labels(show_floating_labels_button_.checked());
 		if (video_mode_button_.pressed())
-			show_video_mode_dialog(disp_.video());
+			show_video_mode_dialog(video_);
 		if (theme_button_.pressed()) {
-			show_theme_dialog(disp_);
+			show_theme_dialog(video_);
 			parent->clear_buttons();
 		}
 		if (fullscreen_button_.pressed())
-			disp_.video().set_fullscreen(fullscreen_button_.checked());
+			video_.set_fullscreen(fullscreen_button_.checked());
 		if (show_haloing_button_.pressed())
 			set_show_haloes(show_haloing_button_.checked());
 		if (show_team_colors_button_.pressed())
@@ -987,7 +987,7 @@ void preferences_dialog::process_event()
 				set_selection(COLOR_TAB);
 
 		if (advanced_graphics_options_button_.pressed())
-			show_advanced_graphics_dialog(disp_);
+			show_advanced_graphics_dialog(video_);
 
 		return;
 	}
@@ -1192,7 +1192,7 @@ void preferences_dialog::process_event()
 
 		if (mp_server_search_button_.pressed())
 		{
-			std::string path = show_wesnothd_server_search(disp_);
+			std::string path = show_wesnothd_server_search(video_);
 			if (!path.empty())
 			{
 				preferences::set_mp_server_program_name(path);
@@ -1201,7 +1201,7 @@ void preferences_dialog::process_event()
 		}
 
 		if (mp_alerts_options_button_.pressed()) {
-			show_mp_alerts_dialog(disp_);
+			show_mp_alerts_dialog(video_);
 		}
 
 		set_chat_lines(chat_lines_slider_.value());
@@ -1239,7 +1239,7 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-				gui2::show_transient_error_message(disp_.video(), _("Invalid username"));
+				gui2::show_transient_error_message(video_, _("Invalid username"));
 			}
 		}
 		if (friends_add_ignore_button_.pressed()) {
@@ -1256,7 +1256,7 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-				gui2::show_transient_error_message(disp_.video(), _("Invalid username"));
+				gui2::show_transient_error_message(video_, _("Invalid username"));
             }
         }
 		if (friends_remove_button_.pressed()) {
@@ -1386,7 +1386,7 @@ void preferences_dialog::process_event()
 				}
 
 				if(pref["field"] == "disable_notifications" && !advanced_button_check && !desktop::notifications::available()) {
-					gui2::show_transient_message(disp_.video(),
+					gui2::show_transient_message(video_,
 												 _("Desktop Notifications Unavailable"),
 												 _("This build of Wesnoth does not include support for desktop notifications. Check with the packager for your platform, or if compiling yourself, make sure that you have the appropriate dependencies installed."));
 				}
@@ -1682,7 +1682,7 @@ void preferences_dialog::set_selection(int index)
 
 } //end anonymous namespace
 
-void show_preferences_dialog(display& disp, const config& game_cfg)
+void show_preferences_dialog(CVideo& video, const config& game_cfg)
 {
 	std::vector<std::string> items;
 
@@ -1698,14 +1698,14 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 		items[1] = "*" + items[1];
 	}
 
-	preferences_dialog dialog(disp,game_cfg);
-	dialog.parent.assign(new preferences_parent_dialog(disp));
+	preferences_dialog dialog(video,game_cfg);
+	dialog.parent.assign(new preferences_parent_dialog(video));
 	dialog.parent->set_menu(items);
 	dialog.parent->add_pane(&dialog);
 	dialog.parent->show();
 }
 
-bool show_theme_dialog(display& disp)
+bool show_theme_dialog(CVideo& video)
 {
 	std::vector<theme_info> themes = theme::get_known_themes();
 
@@ -1718,7 +1718,7 @@ bool show_theme_dialog(display& disp)
 			}
 		}
 
-		dlg.show(disp.video());
+		dlg.show(video);
 		const int action = dlg.selected_index();
 
 		if(action >= 0){
@@ -1728,23 +1728,23 @@ bool show_theme_dialog(display& disp)
 			return 1;
 		}
 	} else {
-		gui2::show_transient_message(disp.video(),"",_("No known themes. Try changing from within an existing game."));
+		gui2::show_transient_message(video,"",_("No known themes. Try changing from within an existing game."));
 	}
 
 	return 0;
 }
 
-void show_mp_alerts_dialog(display & disp)
+void show_mp_alerts_dialog(CVideo& video)
 {
-	gui2::tmp_alerts_options::display(disp.video());
+	gui2::tmp_alerts_options::display(video);
 }
 
-void show_advanced_graphics_dialog(display & disp)
+void show_advanced_graphics_dialog(CVideo& video)
 {
-	gui2::tadvanced_graphics_options::display(disp.video());
+	gui2::tadvanced_graphics_options::display(video);
 }
 
-std::string show_wesnothd_server_search(display& disp)
+std::string show_wesnothd_server_search(CVideo& video)
 {
 	// Showing file_chooser so user can search the wesnothd
 	std::string old_path = preferences::get_mp_server_program_name();
@@ -1785,7 +1785,7 @@ std::string show_wesnothd_server_search(display& disp)
 			  _("Find $filename server binary to host networked games")
 			, &symbols);
 
-	int res = dialogs::show_file_chooser_dialog(disp.video(), path, title, false, filename);
+	int res = dialogs::show_file_chooser_dialog(video, path, title, false, filename);
 	if (res == 0)
 		return path;
 	else

@@ -957,7 +957,7 @@ bool game_launcher::play_multiplayer()
 				start_wesnothd();
 			} catch(game::mp_server_error&)
 			{
-				std::string path = preferences::show_wesnothd_server_search(disp());
+				std::string path = preferences::show_wesnothd_server_search(video());
 
 				if (!path.empty())
 				{
@@ -1077,7 +1077,7 @@ bool game_launcher::change_language()
 void game_launcher::show_preferences()
 {
 	const preferences::display_manager disp_manager(&disp());
-	preferences::show_preferences_dialog(disp(),
+	preferences::show_preferences_dialog(disp().video(),
 	    game_config_manager::get()->game_config());
 
 	video().flip();

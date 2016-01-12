@@ -465,7 +465,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	preferences::show_preferences_dialog(*gui_, game_config_);
+	preferences::show_preferences_dialog(gui_->video(), game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
@@ -2624,7 +2624,7 @@ void console_handler::do_idle() {
 }
 
 void console_handler::do_theme() {
-	preferences::show_theme_dialog(*menu_handler_.gui_);
+	preferences::show_theme_dialog(menu_handler_.gui_->video());
 }
 
 struct save_id_matches
