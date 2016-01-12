@@ -437,7 +437,7 @@ private:
 	void show_help()
 	{
 		if(topic_.empty() == false) {
-			help::show_help(disp_,topic_);
+			help::show_help(disp_.video(),topic_);
 		}
 	}
 

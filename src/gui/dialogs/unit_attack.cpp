@@ -261,7 +261,7 @@ void tunit_attack::profile_button_callback(const std::string& type)
 		return;
 	}
 
-	help::show_unit_help(*disp_, type);
+	help::show_unit_help(disp_->video(), type);
 }
 
 void tunit_attack::damage_calc_callback(twindow& window)

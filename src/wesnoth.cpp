@@ -824,7 +824,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
 			help::help_manager help_manager(&config_manager.game_config());
-			help::show_help(game->disp());
+			help::show_help(game->video());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
 			// NOTE: we need the help_manager to get access to the Add-ons

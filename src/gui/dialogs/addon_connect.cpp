@@ -61,11 +61,9 @@ taddon_connect::taddon_connect(std::string& host_name,
 	register_text("host_name", false, host_name, true);
 }
 
-void taddon_connect::help_button_callback(twindow& /*window*/)
+void taddon_connect::help_button_callback(twindow& window)
 {
-	if(disp_) {
-		help::show_help(*disp_, "installing_addons");
-	}
+	help::show_help(window.video(), "installing_addons");
 }
 
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)

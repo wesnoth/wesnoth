@@ -17,7 +17,6 @@
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include "SDL_mouse.h"                  // for SDL_GetMouseState, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::HYPERLINK, etc
-#include "display.hpp"                  // for display
 #include "font.hpp"                     // for relative_size
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
@@ -25,21 +24,23 @@
 #include "help_impl.hpp"                // for find_topic, hidden_symbol, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for log_scope
+#include "sdl/rect.hpp"
+#include "video.hpp"
+
 struct SDL_Rect;
 
 namespace help {
 
-help_browser::help_browser(display &disp, const section &toplevel) :
-	gui::widget(disp.video()),
-	disp_(disp),
-	menu_(disp.video(),
+help_browser::help_browser(CVideo& video, const section &toplevel) :
+	gui::widget(video),
+	menu_(video,
 	toplevel),
-	text_area_(disp.video(), toplevel), toplevel_(toplevel),
+	text_area_(video, toplevel), toplevel_(toplevel),
 	ref_cursor_(false),
 	back_topics_(),
 	forward_topics_(),
-	back_button_(disp.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left"),
-	forward_button_(disp.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right"),
+	back_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left"),
+	forward_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right"),
 	shown_topic_(NULL)
 {
 	// Hide the buttons at first since we do not have any forward or
@@ -150,7 +151,7 @@ void help_browser::handle_event(const SDL_Event &event)
 				if (t == NULL) {
 					std::stringstream msg;
 					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
-					gui2::show_transient_message(disp_.video(), "", msg.str());
+					gui2::show_transient_message(CVideo::get_singleton(), "", msg.str());
 					update_cursor();
 				}
 				else {

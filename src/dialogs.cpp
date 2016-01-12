@@ -1058,7 +1058,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 void units_list_preview_pane::process_event()
 {
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		help::show_unit_description(*units_->at(index_));
+		help::show_unit_description(CVideo::get_singleton(), *units_->at(index_));
 	}
 }
 
@@ -1146,7 +1146,7 @@ void unit_types_preview_pane::process_event()
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
 		if (type != NULL)
-			help::show_unit_description(*type);
+			help::show_unit_description(CVideo::get_singleton(), *type);
 	}
 }
 

@@ -482,7 +482,7 @@ void menu_handler::show_chat_log()
 
 void menu_handler::show_help()
 {
-	help::show_help(*gui_);
+	help::show_help(gui_->video());
 }
 
 void menu_handler::speak()
@@ -861,7 +861,7 @@ void menu_handler::unit_description()
 {
 	const unit_map::const_iterator un = current_unit();
 	if(un != units().end()) {
-		help::show_unit_description(*un);
+		help::show_unit_description(pc_.get_display().video(), *un);
 	}
 }
 
@@ -874,7 +874,7 @@ void menu_handler::terrain_description(mouse_handler& mousehandler)
 
 	const terrain_type& type = map().get_terrain_info(loc);
 	//const terrain_type& info = board().map().get_terrain_info(terrain);
-	help::show_terrain_description(type);
+	help::show_terrain_description(pc_.get_display().video(), type);
 }
 
 void menu_handler::rename_unit()

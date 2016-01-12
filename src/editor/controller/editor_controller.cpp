@@ -979,7 +979,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 void editor_controller::show_help()
 {
-	help::show_help(*gui_, "..editor");
+	help::show_help(gui_->video(), "..editor");
 }
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
@@ -1089,9 +1089,9 @@ void editor_controller::unit_description()
 	const unit_map & units = context_manager_->get_map_context().get_units();
 	const unit_map::const_unit_iterator un = units.find(loc);
 	if(un != units.end()) {
-		help::show_unit_help(*gui_, un->type_id(), un->type().show_variations_in_help(), false);
+		help::show_unit_help(gui_->video(), un->type_id(), un->type().show_variations_in_help(), false);
 	} else {
-		help::show_help(*gui_, "..units");
+		help::show_help(gui_->video(), "..units");
 	}
 }
 
@@ -1343,7 +1343,7 @@ void editor_controller::terrain_description()
 		return;
 
 	const terrain_type& type = context_manager_->get_map().get_terrain_info(loc);
-	help::show_terrain_description(type);
+	help::show_terrain_description(gui().video(), type);
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)

@@ -167,7 +167,7 @@ class editor_controller : public controller_base,
 		/* controller_base overrides */
 		void process_keyup_event(const SDL_Event& event);
 		mouse_handler_base& get_mouse_handler_base() { return *this; }
-		editor_display& get_display() {return *gui_;}
+		editor_display& get_display() { return *gui_; }
 
 		/** Get the current mouse action */
 		mouse_action* get_mouse_action();

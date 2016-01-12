@@ -44,7 +44,7 @@ int help_button::action(gui::dialog_process_info &info) {
 
 void help_button::show_help()
 {
-	help::show_help(disp_, topic_);
+	help::show_help(disp_.video(), topic_);
 }
 
 bool help_button::can_execute_command(const hotkey::hotkey_command& cmd, int/*index*/) const

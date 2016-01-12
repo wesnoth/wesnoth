@@ -436,7 +436,7 @@ void tunit_create::profile_button_callback(twindow& window)
 	const int selected_row
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
-	help::show_unit_help(*disp_,
+	help::show_unit_help(disp_->video(),
 		units_[selected_row]->id(),
 		units_[selected_row]->show_variations_in_help(), false);
 }
