@@ -116,7 +116,7 @@ help_manager::~help_manager()
  */
 void show_help(display &disp, const std::string& show_topic, int xloc, int yloc)
 {
-	show_help(disp.video(), toplevel, show_topic, xloc, yloc);
+	show_help(disp, toplevel, show_topic, xloc, yloc);
 	disp.redraw_everything();
 }
 
@@ -127,7 +127,7 @@ void show_help(display &disp, const std::string& show_topic, int xloc, int yloc)
  */
 void show_unit_help(display &disp, const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
 {
-	show_help(disp.video(), toplevel,
+	show_help(disp, toplevel,
 			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
 	disp.redraw_everything();
 }
@@ -139,7 +139,7 @@ void show_unit_help(display &disp, const std::string& show_topic, bool has_varia
  */
 void show_terrain_help(display &disp, const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
-	show_help(disp.video(), toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
+	show_help(disp, toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
 	disp.redraw_everything();
 }
 
@@ -150,7 +150,7 @@ void show_terrain_help(display &disp, const std::string& show_topic, bool hidden
  */
 void show_variation_help(display &disp, const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
 {
-	show_help(disp.video(), toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
+	show_help(disp, toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
 	disp.redraw_everything();
 }
 
@@ -160,7 +160,7 @@ void show_variation_help(display &disp, const std::string& unit, const std::stri
  * This allows for complete customization of the contents, although not in a
  * very easy way.
  */
-void show_help(CVideo& video, const section &toplevel_sec,
+void show_help(display &disp, const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
@@ -168,7 +168,8 @@ void show_help(CVideo& video, const section &toplevel_sec,
 	const gui::dialog_manager manager;
 	const resize_lock prevent_resizing;
 
-	const surface& scr = video.getSurface();
+	CVideo& screen = disp.video();
+	const surface& scr = screen.getSurface();
 
 	const int width  = std::min<int>(font::relative_size(1250), scr->w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(850), scr->h - font::relative_size(150));
@@ -184,10 +185,10 @@ void show_help(CVideo& video, const section &toplevel_sec,
 		yloc = scr->h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button close_button_(video, _("Close"));
+	gui::button close_button_(disp.video(), _("Close"));
 	buttons_ptr.push_back(&close_button_);
 
-	gui::dialog_frame f(video, _("The Battle for Wesnoth Help"), gui::dialog_frame::default_style,
+	gui::dialog_frame f(disp.video(), _("The Battle for Wesnoth Help"), gui::dialog_frame::default_style,
 					 true, &buttons_ptr);
 	f.layout(xloc, yloc, width, height);
 	f.draw();
@@ -207,7 +208,7 @@ void show_help(CVideo& video, const section &toplevel_sec,
 		generate_contents();
 	}
 	try {
-		help_browser hb(video, toplevel_sec);
+		help_browser hb(disp, toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
 		hb.set_width(width - left_padding - right_padding);
 		hb.set_height(height - top_padding - bot_padding);
@@ -219,7 +220,7 @@ void show_help(CVideo& video, const section &toplevel_sec,
 		}
 		hb.set_dirty(true);
 		events::raise_draw_event();
-		video.flip();
+		disp.video().flip();
 		CKey key;
 		for (;;) {
 			events::pump();
@@ -237,14 +238,14 @@ void show_help(CVideo& video, const section &toplevel_sec,
 					return;
 				}
 			}
-			video.flip();
+			disp.video().flip();
 			CVideo::delay(10);
 		}
 	}
 	catch (parse_error& e) {
 		std::stringstream msg;
 		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
-		gui2::show_transient_message(video, "", msg.str());
+		gui2::show_transient_message(disp.video(), "", msg.str());
 	}
 }
 

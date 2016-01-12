@@ -29,16 +29,17 @@ struct SDL_Rect;
 
 namespace help {
 
-help_browser::help_browser(CVideo& video, const section &toplevel) :
-	gui::widget(video),
-	video_(video),
-	menu_(video, toplevel),
-	text_area_(video, toplevel), toplevel_(toplevel),
+help_browser::help_browser(display &disp, const section &toplevel) :
+	gui::widget(disp.video()),
+	disp_(disp),
+	menu_(disp.video(),
+	toplevel),
+	text_area_(disp.video(), toplevel), toplevel_(toplevel),
 	ref_cursor_(false),
 	back_topics_(),
 	forward_topics_(),
-	back_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left"),
-	forward_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right"),
+	back_button_(disp.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left"),
+	forward_button_(disp.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right"),
 	shown_topic_(NULL)
 {
 	// Hide the buttons at first since we do not have any forward or
@@ -149,7 +150,7 @@ void help_browser::handle_event(const SDL_Event &event)
 				if (t == NULL) {
 					std::stringstream msg;
 					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
-					gui2::show_transient_message(video_, "", msg.str());
+					gui2::show_transient_message(disp_.video(), "", msg.str());
 					update_cursor();
 				}
 				else {

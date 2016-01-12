@@ -31,7 +31,7 @@ namespace help {
 class help_browser : public gui::widget
 {
 public:
-	help_browser(CVideo& video, const section &toplevel);
+	help_browser(display &disp, const section &toplevel);
 
 	void adjust_layout();
 
@@ -54,7 +54,7 @@ private:
 	/// it in to. Pop at the fronts if the maximum number of elements is
 	/// exceeded.
 	void move_in_history(std::deque<const topic *> &from, std::deque<const topic *> &to);
-	CVideo& video_;
+	display &disp_;
 	help_menu menu_;
 	help_text_area text_area_;
 	const section &toplevel_;
