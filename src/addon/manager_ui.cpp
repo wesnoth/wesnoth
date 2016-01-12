@@ -239,7 +239,7 @@ addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& clie
 	}
 
 	/* do */ {
-		gui::dialog dlg(disp, _("Install Dependencies"),
+		gui::dialog dlg(disp.video(), _("Install Dependencies"),
 			_n("The selected add-on has the following dependency, which is not currently installed. Do you wish to install it before continuing?",
 			   "The selected add-on has the following dependencies, which are not currently installed. Do you wish to install them before continuing?",
 			   missing_deps.size()),
@@ -825,7 +825,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 				: _("There are no add-ons matching the specified criteria on this server.");
 		}
 
-		gui::dialog dlg(disp, _("Add-ons Manager"), dlg_message, gui::OK_CANCEL);
+		gui::dialog dlg(disp.video(), _("Add-ons Manager"), dlg_message, gui::OK_CANCEL);
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3);

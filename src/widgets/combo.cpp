@@ -74,7 +74,7 @@ void combo::set_selected(int val)
 void combo::make_drop_down_menu()
 {
 	SDL_Rect const &loc = location();
-	set_selected_internal(gui::show_dialog(*disp_, NULL, "", "", gui::MESSAGE, &items_,
+	set_selected_internal(gui::show_dialog(disp_->video(), NULL, "", "", gui::MESSAGE, &items_,
 	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h));
 }
 

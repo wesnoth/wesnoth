@@ -61,7 +61,7 @@ int show_file_chooser_dialog_save(display &disp, std::string &filename,
 file_dialog::file_dialog(display &disp, const std::string& file_path,
 		const std::string& title, const std::string& default_file_name,
 		bool show_directory_buttons) :
-	gui::dialog(disp, title, file_path, gui::OK_CANCEL),
+	gui::dialog(disp.video(), title, file_path, gui::OK_CANCEL),
 	show_directory_buttons_(show_directory_buttons),
 	files_list_(NULL),
 	last_selection_(-1),
@@ -204,7 +204,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info)
 		if(!chosen_file_.empty())
 		{
 			if(files_list_->delete_chosen_file() == -1) {
-				gui2::show_transient_error_message(get_display().video()
+				gui2::show_transient_error_message(CVideo::get_singleton()
 						, _("Deletion of the file failed."));
 				dp_info.clear_buttons();
 			} else {
@@ -217,10 +217,10 @@ void file_dialog::action(gui::dialog_process_info &dp_info)
 	else if(result() == gui::CREATE_ITEM)
 	{
 		std::string new_dir_name = "";
-		if(gui2::tfolder_create::execute(new_dir_name, get_display().video()))
+		if(gui2::tfolder_create::execute(new_dir_name, CVideo::get_singleton()))
 		{
 			if( !files_list_->make_directory(new_dir_name) ) {
-				gui2::show_transient_error_message(get_display().video()
+				gui2::show_transient_error_message(CVideo::get_singleton()
 						, _("Creation of the directory failed."));
 			} else {
 				dp_info.first_time = true;

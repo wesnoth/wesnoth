@@ -164,7 +164,7 @@ public:
 
 	hotkey_preferences_parent_dialog(display &disp,
 			hotkey_preferences_dialog& hotkey_preferences_dialog) :
-				dialog(disp, _("Hotkey Settings"), "", gui::OK_CANCEL),
+				dialog(disp.video(), _("Hotkey Settings"), "", gui::OK_CANCEL),
 				clear_buttons_(false),
 				hotkey_cfg_(),
 				resetter_(disp, hotkey_preferences_dialog) {

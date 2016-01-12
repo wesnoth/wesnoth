@@ -173,7 +173,7 @@ public:
 	leader_scroll_dialog(display &disp, const std::string &title,
 			std::vector<bool> &leader_bools, int selected,
 			gui::DIALOG_RESULT extra_result) :
-		dialog(disp, title, "", gui::NULL_DIALOG),
+		dialog(disp.video(), title, "", gui::NULL_DIALOG),
 		scroll_btn_(new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false)),
 		leader_bools_(leader_bools),
 		extra_result_(extra_result)
@@ -2809,7 +2809,7 @@ void console_handler::do_layers() {
 	// NOTE using ", " also allows better word wrapping
 	info << "Flags :" << utils::join(flags, ", ");
 	{
-		gui::dialog menu(*menu_handler_.gui_, _("Layers"), info.str(), gui::OK_CANCEL);
+		gui::dialog menu(menu_handler_.gui_->video(), _("Layers"), info.str(), gui::OK_CANCEL);
 		menu.set_menu(layers);
 		menu.show();
 	}

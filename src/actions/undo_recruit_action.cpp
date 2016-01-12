@@ -105,7 +105,7 @@ bool recruit_action::redo(int side)
 		}
 		sync.do_final_checkup();
 	} else {
-		gui::dialog(gui, "", msg, gui::OK_ONLY).show();
+		gui::dialog(gui.video(), "", msg, gui::OK_ONLY).show();
 		return false;
 	}
 
