@@ -1111,7 +1111,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 			the_end(video(), state_.classification().end_text, state_.classification().end_text_duration);
 			if(state_.classification().end_credits) {
-				about::show_about(disp(),state_.classification().campaign);
+				about::show_about(video(),state_.classification().campaign);
 			}
 		}
 

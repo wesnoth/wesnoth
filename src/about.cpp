@@ -22,7 +22,6 @@
 
 #include "config.hpp"                   // for config, etc
 #include "cursor.hpp"                   // for setter, CURSOR_TYPE::WAIT
-#include "display.hpp"                  // for display
 #include "events.hpp"        // for pump, raise_draw_event, etc
 #include "font.hpp"                     // for NORMAL_COLOR, SIZE_XLARGE
 #include "game_config.hpp"              // for game_title_background
@@ -213,10 +212,9 @@ void set_about(const config &cfg)
  * Names of people are shown scrolling up like in movie-credits.\n
  * Uses map from wesnoth or campaign as background.
  */
-void show_about(display &disp, const std::string &campaign)
+void show_about(CVideo &video, const std::string &campaign)
 {
 	boost::scoped_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
-	CVideo &video = disp.video();
 	surface& screen = video.getSurface();
 	if (screen == NULL) return;
 
@@ -435,7 +433,7 @@ void show_about(display &disp, const std::string &campaign)
 		events::raise_draw_event();
 
 		// flip screen and wait, so the text does not scroll too fast
-		disp.flip();
+		video.flip();
 		CVideo::delay(20);
 
 	} while(!close.pressed() && (last_escape || !key[SDLK_ESCAPE]));

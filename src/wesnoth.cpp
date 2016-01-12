@@ -819,7 +819,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			game->show_preferences();
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_ABOUT) {
-			about::show_about(game->disp());
+			about::show_about(game->video());
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
 			help::help_manager help_manager(&config_manager.game_config());
