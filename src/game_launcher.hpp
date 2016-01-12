@@ -58,6 +58,7 @@ public:
 	~game_launcher();
 
 	game_display& disp();
+	CVideo& video() { return video_; }
 
 	bool init_video();
 	bool init_language();

@@ -545,7 +545,7 @@ bool game_launcher::init_lua_script()
 
 			return true;
 		} catch (std::exception & e) {
-			gui2::show_error_message(disp().video(), std::string("When loading a plugin, error:\n") + e.what());
+			gui2::show_error_message(video(), std::string("When loading a plugin, error:\n") + e.what());
 			error = true;
 		}
 	}
@@ -637,7 +637,7 @@ int game_launcher::unit_test()
 		return 0; //we passed, huzzah!
 
 	savegame::replay_savegame save(state_, compression::NONE);
-	save.save_game_automatic(disp().video(), false, "unit_test_replay"); //false means don't check for overwrite
+	save.save_game_automatic(video(), false, "unit_test_replay"); //false means don't check for overwrite
 
 	clear_loaded_game();
 
@@ -665,7 +665,7 @@ int game_launcher::unit_test()
 		std::cerr << "Load_game_exception encountered during play_replay!" << std::endl;
 		return 3; //failed to load replay
 	} catch(twml_exception& e) {
-		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl; //e.show(disp());
+		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
 		return 4; //failed with an error during the replay
 	}
 
@@ -750,28 +750,28 @@ bool game_launcher::load_game()
 
 	} catch(config::error& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(video(), _("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	} catch(twml_exception& e) {
-		e.show(disp().video());
+		e.show(video());
 		return false;
 	} catch(filesystem::io_exception& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(disp().video(), _("File I/O Error while reading the game"));
+			gui2::show_error_message(video(), _("File I/O Error while reading the game"));
 		} else {
-			gui2::show_error_message(disp().video(), _("File I/O Error while reading the game: '") + e.message + '\'');
+			gui2::show_error_message(video(), _("File I/O Error while reading the game: '") + e.message + '\'');
 		}
 		return false;
 	} catch(game::error& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(video(), _("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	}
@@ -790,7 +790,7 @@ bool game_launcher::load_game()
 
 	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		state_.unify_controllers();
-		gui2::show_message(disp().video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the <b>Multiplayer</b> → <b>Load Game</b> dialog instead."), "", true, true);
+		gui2::show_message(video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the <b>Multiplayer</b> → <b>Load Game</b> dialog instead."), "", true, true);
 	}
 
 	if (load.cancel_orders()) {
@@ -929,7 +929,7 @@ bool game_launcher::play_multiplayer()
 
 			gui2::tmp_method_selection dlg;
 
-			dlg.show(disp().video());
+			dlg.show(video());
 
 			if(dlg.get_retval() == gui2::twindow::OK) {
 				res = dlg.get_choice();
@@ -939,7 +939,7 @@ bool game_launcher::play_multiplayer()
 			}
 
 			if (res == 2 && preferences::mp_server_warning_disabled() < 2) {
-				start_server = !gui2::tmp_host_game_prompt::execute(disp().video());
+				start_server = !gui2::tmp_host_game_prompt::execute(video());
 			}
 		} while (start_server);
 		if (res < 0) {
@@ -996,17 +996,17 @@ bool game_launcher::play_multiplayer()
 		}
 
 	} catch(game::mp_server_error& e) {
-		gui2::show_error_message(disp().video(), _("Error while starting server: ") + e.message);
+		gui2::show_error_message(video(), _("Error while starting server: ") + e.message);
 	} catch(game::load_game_failed& e) {
-		gui2::show_error_message(disp().video(), _("The game could not be loaded: ") + e.message);
+		gui2::show_error_message(video(), _("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
-		gui2::show_error_message(disp().video(), _("Error while playing the game: ") + e.message);
+		gui2::show_error_message(video(), _("Error while playing the game: ") + e.message);
 	} catch (mapgen_exception& e) {
-		gui2::show_error_message(disp().video(), std::string(_("Map generator error: ") + e.message));
+		gui2::show_error_message(video(), std::string(_("Map generator error: ") + e.message));
 	} catch(network::error& e) {
 		if(e.message != "") {
 			ERR_NET << "caught network::error: " << e.message << std::endl;
-			gui2::show_transient_message(disp().video()
+			gui2::show_transient_message(video()
 					, ""
 					, translation::gettext(e.message.c_str()));
 		} else {
@@ -1015,19 +1015,19 @@ bool game_launcher::play_multiplayer()
 	} catch(config::error& e) {
 		if(e.message != "") {
 			ERR_CONFIG << "caught config::error: " << e.message << std::endl;
-			gui2::show_transient_message(disp().video(), "", e.message);
+			gui2::show_transient_message(video(), "", e.message);
 		} else {
 			ERR_CONFIG << "caught config::error" << std::endl;
 		}
 	} catch(incorrect_map_format_error& e) {
-		gui2::show_error_message(disp().video(), std::string(_("The game map could not be loaded: ")) + e.message);
+		gui2::show_error_message(video(), std::string(_("The game map could not be loaded: ")) + e.message);
 	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
-		e.show(disp().video());
+		e.show(video());
 	} catch (game::error & e) {
 		std::cerr << "caught game::error...\n";
-		gui2::show_error_message(disp().video(), _("Error: ") + e.message);
+		gui2::show_error_message(video(), _("Error: ") + e.message);
 	}
 
 	return false;
@@ -1060,7 +1060,7 @@ bool game_launcher::play_multiplayer_commandline()
 bool game_launcher::change_language()
 {
 	gui2::tlanguage_selection dlg;
-	dlg.show(disp().video());
+	dlg.show(video());
 	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
@@ -1080,7 +1080,7 @@ void game_launcher::show_preferences()
 	preferences::show_preferences_dialog(disp(),
 	    game_config_manager::get()->game_config());
 
-	disp().redraw_everything();
+	video().flip();
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
@@ -1091,7 +1091,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
+	loadscreen::global_loadscreen_manager loadscreen_manager(video());
 	loadscreen::start_stage("load data");
 	if(reload == RELOAD_DATA) {
 		try {
@@ -1119,7 +1119,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
-		e.show(disp().video());
+		e.show(video());
 	}
 }
 
@@ -1133,7 +1133,7 @@ void game_launcher::play_replay()
 	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
-		e.show(disp().video());
+		e.show(video());
 	}
 }
 
