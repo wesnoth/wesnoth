@@ -928,47 +928,4 @@ def resolve_unit_image(namespace, subdir, resource):
 # And this is for code that does syntax transformation
 baseindent = "    "
 
-## Version-control hooks begin here.
-#
-# Not tested since the git transition
-
-vcdir = ".git"
-
-def vcmove(src, dst):
-    "Move a file under version control. Only applied to unmodified files."
-    (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".git")):
-        return "git mv %s %s" % (src, dst)
-    else:
-        return "echo 'cannot move %s to %s, .git is missing'" % (src, dst)
-
-def vcunmove(src, dst):
-    "Revert the result of a previous move (before commit)."
-    (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".git")):
-        return "git checkout %s" % dst # Revert the add at the destination
-        return "git rm " + dst # Remove the moved copy
-        return "git checkout %s" % src # Revert the deletion
-    else:
-        return "echo 'cannot unmove %s from %s, .git is missing'" % (src, dst)
-
-def vcdelete(src):
-    "Delete a file under version control."
-    (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".git")):
-        return "git rm %s" % src
-    else:
-        return "echo 'cannot undelete %s, .git is missing'" % src
-
-def vcundelete(src):
-    "Revert the result of a previous delete (before commit)."
-    (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".git")):
-        return "git checkout %s" % src # Revert the deletion
-    else:
-        return "echo 'cannot undelete %s, .git is missing'" % src
-
-#
-## Version-control hooks end here
-
 # wmltools.py ends here
