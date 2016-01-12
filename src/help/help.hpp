@@ -19,6 +19,7 @@ class display;
 class terrain_type;
 class unit;
 class unit_type;
+class CVideo;
 
 #include <string>
 
@@ -33,7 +34,7 @@ struct section;
 /// Open a help dialog using a toplevel other than the default. This
 /// allows for complete customization of the contents, although not in a
 /// very easy way.
-void show_help(display &disp, const section &toplevel, const std::string& show_topic="",
+void show_help(CVideo& video, const section &toplevel, const std::string& show_topic="",
 			   int xloc=-1, int yloc=-1);
 
 /// Open the help browser. The help browser will have the topic with id
