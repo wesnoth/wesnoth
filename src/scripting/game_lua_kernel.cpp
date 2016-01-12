@@ -2357,6 +2357,8 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		units().insert(u);
 	}
 
+	play_controller_.pump().fire("unit placed", loc);
+
 	return 0;
 }
 

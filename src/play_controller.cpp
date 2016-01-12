@@ -373,6 +373,13 @@ void play_controller::fire_prestart()
 	// as those may cause the display to be refreshed.
 	update_locker lock_display(gui_->video());
 	gamestate().gamedata_.set_phase(game_data::PRESTART);
+
+	// Fire these right before prestart events, to catch only the units sides
+	// have started with.
+	BOOST_FOREACH(const unit& u, gamestate().board_.units()) {
+		pump().fire("unit placed", map_location(u.get_location()));
+	}
+
 	pump().fire("prestart");
 	// prestart event may modify start turn with WML, reflect any changes.
 	gamestate().gamedata_.get_variable("turn_number") = int(turn());
