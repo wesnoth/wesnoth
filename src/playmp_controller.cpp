@@ -285,7 +285,7 @@ void playmp_controller::wait_for_upload()
 	while(true) {
 		try {
 			const network::connection res = dialogs::network_receive_dialog(
-				*gui_, _("Waiting for next scenario..."), cfg);
+				gui_->video(), _("Waiting for next scenario..."), cfg);
 
 			if(res != network::null_connection) {
 				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {

@@ -27,7 +27,7 @@ namespace mp {
 // max. length of a player name
 const size_t max_login_size = 20;
 
-void run_lobby_loop(display& disp, mp::ui& ui);
+void run_lobby_loop(CVideo& v, mp::ui& ui);
 
 /*
  * This is the main entry points of multiplayer mode.

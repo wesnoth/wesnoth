@@ -537,7 +537,7 @@ struct twrapper<gui2::tcampaign_selection>
 	{
 		static saved_game state;
 		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
+		static ng::create_engine ng(test_utils::get_fake_display(-1, -1).video(), state);
 		return new gui2::tcampaign_selection(ng);
 	}
 };
@@ -549,7 +549,7 @@ struct twrapper<gui2::tcampaign_settings>
 	{
 		static saved_game state;
 		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
+		static ng::create_engine ng(test_utils::get_fake_display(-1, -1).video(), state);
 		return new gui2::tcampaign_settings(ng);
 	}
 };

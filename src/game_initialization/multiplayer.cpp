@@ -83,18 +83,18 @@ public:
 
 namespace mp {
 
-void run_lobby_loop(display& disp, mp::ui& ui)
+void run_lobby_loop(CVideo& video, mp::ui& ui)
 {
 	DBG_MP << "running lobby loop" << std::endl;
-	disp.video().modeChanged();
+	video.modeChanged();
 	bool first = true;
 	font::cache_mode(font::CACHE_LOBBY);
 	while (ui.get_result() == mp::ui::CONTINUE) {
-		if (disp.video().modeChanged() || first) {
+		if (video.modeChanged() || first) {
 			SDL_Rect lobby_pos = sdl::create_rect(0
 					, 0
-					, disp.video().getx()
-					, disp.video().gety());
+					, video.getx()
+					, video.gety());
 			ui.set_location(lobby_pos);
 			first = false;
 		}
@@ -112,7 +112,7 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		disp.flip();
+		video.flip();
 		CVideo::delay(20);
 	}
 	font::cache_mode(font::CACHE_GAME);
@@ -167,7 +167,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 	shown_hosts.insert(hostpair(host, port));
 
 	config data;
-	sock = dialogs::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
+	sock = dialogs::network_connect_dialog(disp.video(),_("Connecting to Server..."),host,port);
 
 	do {
 
@@ -177,7 +177,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 		data.clear();
 		network::connection data_res = dialogs::network_receive_dialog(
-				disp,_("Reading from Server..."),data);
+				disp.video(), _("Reading from Server..."), data);
 		if (!data_res) return ABORT_SERVER;
 		mp::check_response(data_res, data);
 
@@ -210,7 +210,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 			if(network::nconnections() > 0)
 				network::disconnect();
-			sock = dialogs::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
+			sock = dialogs::network_connect_dialog(disp.video(),_("Connecting to Server..."),host,port);
 			continue;
 		}
 
@@ -459,11 +459,11 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 	}
 
 	{
-		mp::wait ui(disp, game_config, state, gamechat, gamelist);
+		mp::wait ui(disp.video(), game_config, state, gamechat, gamelist);
 
 		ui.join_game(observe);
 
-		run_lobby_loop(disp, ui);
+		run_lobby_loop(disp.video(), ui);
 		res = ui.get_result();
 		campaign_info.connected_players.insert(ui.user_list().begin(), ui.user_list().end());
 
@@ -511,9 +511,9 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 
 	{
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, campaign_info.get_ptr()));
-		mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist,
+		mp::connect ui(disp.video(), state.mp_settings().name, game_config, gamechat, gamelist,
 			*connect_engine);
-		run_lobby_loop(disp, ui);
+		run_lobby_loop(disp.video(), ui);
 
 		res = ui.get_result();
 
@@ -571,8 +571,8 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 			mp::ui::result res;
 
 			{
-				mp::create ui(disp, game_config, state, gamechat, gamelist);
-				run_lobby_loop(disp, ui);
+				mp::create ui(disp.video(), game_config, state, gamechat, gamelist);
+				run_lobby_loop(disp.video(), ui);
 				res = ui.get_result();
 				ui.get_parameters();
 			}
@@ -610,9 +610,9 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 
 		{
 			if (state.get_starting_pos().child("side")) {
-				mp::configure ui(disp, game_config, gamechat, gamelist, state,
+				mp::configure ui(disp.video(), game_config, gamechat, gamelist, state,
 					local_players_only);
-				run_lobby_loop(disp, ui);
+				run_lobby_loop(disp.video(), ui);
 				res = ui.get_result();
 				ui.get_parameters();
 			} else {
@@ -708,8 +708,8 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 					res = mp::ui::QUIT;
 			}
 		} else {
-			mp::lobby ui(disp, game_config, gamechat, gamelist, installed_addons);
-			run_lobby_loop(disp, ui);
+			mp::lobby ui(disp.video(), game_config, gamechat, gamelist, installed_addons);
+			run_lobby_loop(disp.video(), ui);
 			res = ui.get_result();
 			current_turn = ui.current_turn;
 		}
@@ -883,7 +883,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 
 	{
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, NULL));
-		mp::connect ui(disp, parameters.name, game_config, gamechat, gamelist,
+		mp::connect ui(disp.video(), parameters.name, game_config, gamechat, gamelist,
 			*connect_engine);
 
 		// Update the parameters to reflect game start conditions
@@ -958,9 +958,9 @@ mp::ui::result goto_mp_connect(game_display& disp, ng::connect_engine& engine,
 	mp::ui::result res;
 
 	{
-		mp::connect ui(disp, game_name, game_config, gamechat, gamelist,
+		mp::connect ui(disp.video(), game_name, game_config, gamechat, gamelist,
 			engine);
-		run_lobby_loop(disp, ui);
+		run_lobby_loop(disp.video(), ui);
 
 		res = ui.get_result();
 		if (res == mp::ui::PLAY) {
@@ -977,10 +977,10 @@ mp::ui::result goto_mp_wait(saved_game& state, game_display& disp,
 	mp::ui::result res;
 
 	{
-		mp::wait ui(disp, game_config, state, gamechat, gamelist, false);
+		mp::wait ui(disp.video(), game_config, state, gamechat, gamelist, false);
 
 		ui.join_game(observe);
-		run_lobby_loop(disp, ui);
+		run_lobby_loop(disp.video(), ui);
 
 		res = ui.get_result();
 		if (res == mp::ui::PLAY) {

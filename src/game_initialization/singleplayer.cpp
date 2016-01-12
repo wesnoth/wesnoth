@@ -29,7 +29,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 
 	do {
 
-		ng::create_engine create_eng(disp, state);
+		ng::create_engine create_eng(disp.video(), state);
 		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
 
 		std::vector<ng::create_engine::level_ptr> campaigns(
@@ -136,8 +136,8 @@ bool enter_configure_mode(game_display& disp, const config& game_config, saved_g
 		mp::ui::result res;
 
 		{
-			mp::configure ui(disp, game_config, gamechat, gamelist, state, local_players_only);
-			mp::run_lobby_loop(disp, ui);
+			mp::configure ui(disp.video(), game_config, gamechat, gamelist, state, local_players_only);
+			mp::run_lobby_loop(disp.video(), ui);
 			res = ui.get_result();
 			ui.get_parameters();
 		}
@@ -163,8 +163,8 @@ bool enter_connect_mode(game_display& disp, const config& game_config,
 		mp::ui::result res;
 		gamelist.clear();
 		{
-			mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist, connect_eng);
-			mp::run_lobby_loop(disp, ui);
+			mp::connect ui(disp.video(), state.mp_settings().name, game_config, gamechat, gamelist, connect_eng);
+			mp::run_lobby_loop(disp.video(), ui);
 			res = ui.get_result();
 
 			if (res == mp::ui::PLAY) {

@@ -79,7 +79,7 @@ public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, LOAD_GAME, PREFERENCES,
 		PLAY, QUIT };
 
-	ui(game_display& d, const std::string& title,
+	ui(CVideo& v, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);
 
 	/**
@@ -112,8 +112,8 @@ protected:
 
 	SDL_Rect client_area() const;
 
-	game_display& disp_;
-	game_display& disp() { return disp_; }
+	CVideo& video_;
+	CVideo& video() { return video_; }
 
 	/**
 	 * Returns the main game config, as defined by loading the preprocessed WML

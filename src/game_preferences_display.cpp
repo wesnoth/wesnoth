@@ -270,7 +270,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sample_rate_input_(disp.video(), 70),
 	  friends_input_(disp.video(), 170),
 
-	  advanced_combo_(disp, std::vector<std::string>()),
+	  advanced_combo_(disp.video(), std::vector<std::string>()),
 
 	  slider_label_width_(0),
 	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),

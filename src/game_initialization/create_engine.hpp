@@ -18,12 +18,12 @@
 #include "make_enum.hpp"
 #include "map.hpp"
 #include "mp_game_settings.hpp"
-#include "game_display.hpp"
-
+#include "video.hpp"
 #include <boost/scoped_ptr.hpp>
 #include <string>
 #include <utility>
 
+class CVideo;
 class saved_game;
 class map_generator;
 namespace ng {
@@ -178,7 +178,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(game_display& disp, saved_game& state);
+	create_engine(CVideo& v, saved_game& state);
 	~create_engine();
 
 	enum MP_EXTRA { ERA, MOD };
@@ -302,7 +302,7 @@ private:
 
 	saved_game& state_;
 
-	game_display& disp_;
+	CVideo& video_;
 	//Never NULL
 	boost::scoped_ptr<depcheck::manager> dependency_manager_;
 

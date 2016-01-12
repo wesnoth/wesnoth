@@ -25,7 +25,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(game_display& disp, const config& cfg, saved_game& state, chat& c,
+	wait(CVideo& v, const config& cfg, saved_game& state, chat& c,
 		config& gamelist, const bool first_scenario = true);
 	~wait();
 	virtual void process_event();
@@ -43,7 +43,7 @@ private:
 	class leader_preview_pane : public gui::preview_pane
 	{
 	public:
-		leader_preview_pane(game_display& disp, ng::flg_manager& flg,
+		leader_preview_pane(CVideo& v, ng::flg_manager& flg,
 			const std::string& color);
 
 		bool show_above() const;

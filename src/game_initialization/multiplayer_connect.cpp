@@ -83,15 +83,15 @@ connect::side::side(connect& parent, ng::side_engine_ptr engine) :
 	label_gold_(parent.video(), str_cast(engine_->gold()), font::SIZE_SMALL, font::LOBBY_COLOR),
 	label_income_(parent.video(), get_income_string(engine_->income()), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
-	combo_controller_(new gui::combo_drag(parent.disp(),
+	combo_controller_(new gui::combo_drag(parent.video(),
 		std::vector<std::string>(), parent.combo_control_group_)),
-	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
-	combo_faction_(parent.disp(), std::vector<std::string>()),
+	combo_ai_algorithm_(parent.video(), std::vector<std::string>()),
+	combo_faction_(parent.video(), std::vector<std::string>()),
 	label_leader_name_(parent.video(), engine_->cfg()["name"], font::SIZE_SMALL),
-	combo_leader_(parent.disp(), std::vector<std::string>()),
-	combo_gender_(parent.disp(), std::vector<std::string>()),
-	combo_team_(parent.disp(), engine_->player_teams()),
-	combo_color_(parent.disp(), engine->get_colors()),
+	combo_leader_(parent.video(), std::vector<std::string>()),
+	combo_gender_(parent.video(), std::vector<std::string>()),
+	combo_team_(parent.video(), engine_->player_teams()),
+	combo_color_(parent.video(), engine->get_colors()),
 	slider_gold_(parent.video()),
 	slider_income_(parent.video())
 {
@@ -365,10 +365,10 @@ void connect::side::update_controller_ui()
 	}
 }
 
-connect::connect(game_display& disp, const std::string& game_name,
+connect::connect(CVideo& v, const std::string& game_name,
 	const config& game_config, chat& c, config& gamelist,
 	ng::connect_engine& engine) :
-	mp::ui(disp, _("Game Lobby: ") + game_name, game_config, c, gamelist),
+	mp::ui(v, _("Game Lobby: ") + game_name, game_config, c, gamelist),
 	ai_algorithms_(),
 	sides_(),
 	engine_(engine),

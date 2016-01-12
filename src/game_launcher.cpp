@@ -730,7 +730,7 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(disp(), game_config_manager::get()->game_config(),
+	savegame::loadgame load(disp().video(), game_config_manager::get()->game_config(),
 	    state_);
 
 	try {
