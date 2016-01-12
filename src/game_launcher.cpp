@@ -1109,7 +1109,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		// change this if MP campaigns are implemented
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
-			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
+			the_end(video(), state_.classification().end_text, state_.classification().end_text_duration);
 			if(state_.classification().end_credits) {
 				about::show_about(disp(),state_.classification().campaign);
 			}
