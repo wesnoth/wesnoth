@@ -560,7 +560,7 @@ void create::draw_level_image()
 		draw_centered_on_background(image, image_rect_, back_color,
 			video().getSurface());
 	} else {
-		surface& display(disp_.get_screen_surface());
+		surface& display(disp_.video().getSurface());
 		sdl::fill_rect(display, &image_rect_,
 			SDL_MapRGB(display->format, 0, 0, 0));
 		update_rect(image_rect_);

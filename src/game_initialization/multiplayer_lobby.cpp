@@ -1189,7 +1189,7 @@ void lobby::process_event()
 	process_event_impl(data);
 }
 
-static void handle_addon_requirements_gui(display & disp, const std::vector<required_addon> & reqs, mp::ADDON_REQ addon_outcome)
+static void handle_addon_requirements_gui(CVideo & v, const std::vector<required_addon> & reqs, mp::ADDON_REQ addon_outcome)
 {
 	if (addon_outcome == CANNOT_SATISFY) {
 		std::string e_title = _("Incompatible user-made content.");
@@ -1205,7 +1205,7 @@ static void handle_addon_requirements_gui(display & disp, const std::vector<requ
 				err_msg += "\n";
 			}
 		}
-		gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::auto_close);
+		gui2::show_message(v, e_title, err_msg, gui2::tmessage::auto_close);
 	} else if (addon_outcome == NEED_DOWNLOAD) {
 		std::string e_title = _("Missing user-made content.");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join. Do you want to try to install them?");
@@ -1227,8 +1227,8 @@ static void handle_addon_requirements_gui(display & disp, const std::vector<requ
 		}
 		assert(needs_download.size() > 0);
 
-		if (gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
-			ad_hoc_addon_fetch_session(disp, needs_download);
+		if (gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+			ad_hoc_addon_fetch_session(v, needs_download);
 			throw lobby_reload_request_exception();
 		}
 	}
@@ -1244,7 +1244,7 @@ void lobby::process_event_impl(const process_event_data & data)
 	if ((games_menu_.selected() || data.observe || data.join) && games_menu_.selection_needs_addons())
 	{
 		if (const std::vector<required_addon> * reqs = games_menu_.selection_addon_requirements()) {
-			handle_addon_requirements_gui(disp(), *reqs, games_menu_.selection_addon_outcome());
+			handle_addon_requirements_gui(disp().video(), *reqs, games_menu_.selection_addon_outcome());
 		} else {
 			gui2::show_error_message(video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby, please report this at bugs.wesnoth.org."));
 		}
