@@ -1707,7 +1707,7 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 bool show_theme_dialog(display& disp)
 {
-	std::vector<theme_info> themes = disp.get_theme().get_known_themes();
+	std::vector<theme_info> themes = theme::get_known_themes();
 
 	if(!themes.empty()){
 		gui2::ttheme_list dlg(themes);
@@ -1785,7 +1785,7 @@ std::string show_wesnothd_server_search(display& disp)
 			  _("Find $filename server binary to host networked games")
 			, &symbols);
 
-	int res = dialogs::show_file_chooser_dialog(disp, path, title, false, filename);
+	int res = dialogs::show_file_chooser_dialog(disp.video(), path, title, false, filename);
 	if (res == 0)
 		return path;
 	else

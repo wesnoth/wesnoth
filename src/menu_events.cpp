@@ -437,7 +437,7 @@ void menu_handler::save_map()
 	int res = 0;
 	int overwrite = 1;
 	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"), ".map");
+		res = dialogs::show_file_chooser_dialog_save(gui_->video(), input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
 
 			if (filesystem::file_exists(input_name)) {
