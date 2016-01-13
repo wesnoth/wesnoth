@@ -115,7 +115,7 @@ public:
 
 	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}
-	virtual CVideo& get_video() = NULL;
+	virtual CVideo& get_video() = 0;
 
 	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsitent.
 	// Gets the action's image (if any). Displayed left of the action text in menus.
