@@ -1042,7 +1042,7 @@ bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int
 
 void CVideo::set_fullscreen(bool ison)
 {
-	if (display::get_singleton() && isFullScreen() != ison) {
+	if (isFullScreen() != ison) {
 		const std::pair<int,int>& res = preferences::resolution();
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
@@ -1062,7 +1062,9 @@ void CVideo::set_fullscreen(bool ison)
 		setMode(res.first, res.second, bpp, flags);
 #endif
 
-		display::get_singleton()->redraw_everything();
+		if (display::get_singleton()) {
+			display::get_singleton()->redraw_everything();
+		}
 	}
 
 	// Change the config value.
@@ -1076,24 +1078,24 @@ void CVideo::set_resolution(const std::pair<int,int>& resolution)
 
 void CVideo::set_resolution(const unsigned width, const unsigned height)
 {
-	if(display::get_singleton()) {
-		if (static_cast<unsigned int> (current_resolution().first)  == width &&
-			static_cast<unsigned int> (current_resolution().second) == height) {
+	if (static_cast<unsigned int> (current_resolution().first)  == width &&
+		static_cast<unsigned int> (current_resolution().second) == height) {
 
-			return;
-		}
+		return;
+	}
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		setMode(width, height, TO_RES);
+	setMode(width, height, TO_RES);
 #else
-		const int flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
-		int bpp = bppForMode(width, height, flags);
+	const int flags = preferences::fullscreen() ? SDL_FULLSCREEN : 0;
+	int bpp = bppForMode(width, height, flags);
 
-		if(bpp != 0) {
-			setMode(width, height, bpp, flags);
-		}
+	if(bpp != 0) {
+		setMode(width, height, bpp, flags);
+	}
 #endif
 
+	if(display::get_singleton()) {
 		display::get_singleton()->redraw_everything();
 	}
 
