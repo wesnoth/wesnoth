@@ -55,8 +55,8 @@ REGISTER_DIALOG(addon_connect)
 
 taddon_connect::taddon_connect(std::string& host_name,
 							   const bool allow_remove,
-							   display* disp)
-	: allow_remove_(allow_remove), disp_(disp)
+							   display*)
+	: allow_remove_(allow_remove)
 {
 	register_text("host_name", false, host_name, true);
 }
