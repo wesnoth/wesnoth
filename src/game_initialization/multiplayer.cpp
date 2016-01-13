@@ -687,7 +687,6 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		sdl::fill_rect(video.getSurface(), NULL, color);
 
 		if(preferences::new_lobby()) {
-#if 0
 			gui2::tlobby_main dlg(game_config, li, video);
 			dlg.set_preferences_callback(
 				boost::bind(do_preferences_dialog,
@@ -707,7 +706,6 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 				default:
 					res = mp::ui::QUIT;
 			}
-#endif
 		} else {
 			mp::lobby ui(video, game_config, gamechat, gamelist, installed_addons);
 			run_lobby_loop(video, ui);
