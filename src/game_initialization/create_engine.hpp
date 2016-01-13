@@ -18,7 +18,8 @@
 #include "make_enum.hpp"
 #include "map.hpp"
 #include "mp_game_settings.hpp"
-#include "video.hpp"
+#include "sdl/utils.hpp"
+
 #include <boost/scoped_ptr.hpp>
 #include <string>
 #include <utility>
