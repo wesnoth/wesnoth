@@ -151,7 +151,7 @@ void help_browser::handle_event(const SDL_Event &event)
 				if (t == NULL) {
 					std::stringstream msg;
 					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
-					gui2::show_transient_message(CVideo::get_singleton(), "", msg.str());
+					gui2::show_transient_message(video(), "", msg.str());
 					update_cursor();
 				}
 				else {
