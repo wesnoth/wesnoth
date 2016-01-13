@@ -244,7 +244,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		const int xres = cmdline_opts_.resolution->get<0>();
 		const int yres = cmdline_opts_.resolution->get<1>();
 		if(xres > 0 && yres > 0) {
-			video_.set_resolution(xres, yres);
+			preferences::_set_resolution(std::make_pair(xres, yres));
+			preferences::_set_maximized(false);
 		}
 	}
 	if (cmdline_opts_.screenshot) {
