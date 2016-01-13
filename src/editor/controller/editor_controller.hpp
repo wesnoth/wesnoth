@@ -70,7 +70,7 @@ enum menu_type {
  * general logic.
  */
 class editor_controller : public controller_base,
-	public hotkey::command_executor,
+	public hotkey::command_executor_default,
 	public events::mouse_handler_base,
 	private boost::noncopyable
 {
@@ -85,7 +85,6 @@ class editor_controller : public controller_base,
 
 		~editor_controller();
 
-		CVideo& get_video() OVERRIDE { return gui_->video(); }
 		/** Editor main loop */
 		EXIT_STATUS main_loop();
 
