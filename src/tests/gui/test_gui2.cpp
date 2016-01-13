@@ -691,7 +691,7 @@ struct twrapper<gui2::tlobby_main>
 		static config game_config;
 		static lobby_info li(game_config);
 		return new gui2::tlobby_main(game_config, li,
-			*static_cast<display*>(&test_utils::get_fake_display(-1, -1)));
+			static_cast<display*>(&test_utils::get_fake_display(-1, -1))->video());
 	}
 };
 

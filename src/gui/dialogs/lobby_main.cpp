@@ -347,7 +347,7 @@ void tlobby_main::do_notify(t_notify_mode mode, const std::string & sender, cons
 
 tlobby_main::tlobby_main(const config& game_config,
 						 lobby_info& info,
-						 display& disp)
+						 CVideo& video)
 	: legacy_result_(QUIT)
 	, game_config_(game_config)
 	, gamelistbox_(NULL)
@@ -371,7 +371,7 @@ tlobby_main::tlobby_main(const config& game_config,
 	, gamelist_dirty_(false)
 	, last_gamelist_update_(0)
 	, gamelist_diff_update_(true)
-	, disp_(disp)
+	, video_(video)
 	, lobby_update_timer_(0)
 	, preferences_wrapper_()
 	, gamelist_id_at_row_()
@@ -1596,7 +1596,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	join["observe"] = observe;
 	if(join && !observe && game.password_required) {
 		std::string password;
-		if(!gui2::tmp_join_game_password_prompt::execute(password, disp_.video())) {
+		if(!gui2::tmp_join_game_password_prompt::execute(password, video_)) {
 			return false;
 		}
 

@@ -688,10 +688,10 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 
 		if(preferences::new_lobby()) {
 #if 0
-			gui2::tlobby_main dlg(game_config, li, video);
+			gui2::tlobby_main dlg(game_config, li, *display::get_singleton());
 			dlg.set_preferences_callback(
 				boost::bind(do_preferences_dialog,
-					boost::ref(disp), boost::ref(game_config)));
+					boost::ref(video), boost::ref(game_config)));
 			dlg.show(video);
 			//ugly kludge for launching other dialogs like the old lobby
 			switch (dlg.get_legacy_result()) {
