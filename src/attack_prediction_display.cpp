@@ -202,7 +202,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			if(i->type == unit_abilities::MUL) {
 				left_strings.push_back((*i->ability)["name"]);
 				str.str("");
-				str << "* " << (i->value / 100);
+				str << "× " << (i->value / 100);
 				if(i->value % 100) {
 					str << "." << ((i->value % 100) / 10);
 					if(i->value % 10) str << (i->value % 10);
@@ -242,7 +242,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			str << string_table["type_" + weapon->type()];
 			left_strings.push_back(str.str());
 			str.str("");
-			str << "* " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
+			str << "× " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
 			right_strings.push_back(str.str());
 		}
 
