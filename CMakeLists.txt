@@ -61,7 +61,7 @@ option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Lo
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(ENABLE_SDL2)
-	find_package(SDL2 2.0.4 REQUIRED)
+	find_package(SDL2 2.0.2 REQUIRED)
 else(ENABLE_SDL2)
 	find_package(SDL 1.2.7 REQUIRED) 
 endif(ENABLE_SDL2)
