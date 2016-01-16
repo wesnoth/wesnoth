@@ -73,7 +73,6 @@ This is likely caused by outdated libraries in the packaging process. There is n
 The following issues affecting Wesnoth on Apple OS X are known and they are pending fixes. Many of them require significant re-engineering that can only be done in 1.13.x development releases later, or cannot be properly addressed due to a lack of experienced OS X coders in our team. Thus, unless someone can contribute patches to address them, it is unlikely that these bugs will be fixed.
 
 [list]
-[*]Color cursors are forcibly disabled on this platform due to severe performance issues (bug [bug]18112[/bug]).
 [*]The default variable-width font is used instead of a monospace font even where a monospace font is required (bug [bug]23628[/bug]).
 [*]Helvetica is used as the default variable-width font instead of DejaVu Sans (bug [bug]23560[/bug]).
 [*]Fullscreen mode does not fill the entire screen when maximum resolution is selected in Preferences → Display, and user interface elements are scaled and distorted.
