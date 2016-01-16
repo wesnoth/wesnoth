@@ -1695,7 +1695,7 @@ void show_preferences_dialog(CVideo& video, const config& game_cfg)
 	items.push_back(pre + "advanced.png" + sep + translation::sgettext("Advanced section^Advanced"));
 
 	if(items[1].empty() || items[1][0] != '*') {
-		items[1] = "*" + items[1];
+		items[0] = "*" + items[0];
 	}
 
 	preferences_dialog dialog(video,game_cfg);
