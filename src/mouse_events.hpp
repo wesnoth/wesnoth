@@ -16,7 +16,7 @@
 #ifndef MOUSE_EVENTS_H_INCLUDED
 #define MOUSE_EVENTS_H_INCLUDED
 
-#include "game_display.hpp"             // for game_display
+#include "game_display.hpp"             // for game_display -> display conversion.
 #include "map_location.hpp"             // for map_location
 #include "mouse_handler_base.hpp"       // for mouse_handler_base
 #include "pathfind/pathfind.hpp"        // for marked_route, paths
@@ -26,6 +26,7 @@
 #include <vector>                       // for vector
 #include "SDL_events.h"                 // for SDL_MouseButtonEvent
 
+class game_display;
 class battle_context;  // lines 23-23
 class play_controller;
 class team;

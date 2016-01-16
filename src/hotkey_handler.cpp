@@ -16,6 +16,7 @@
 
 #include "actions/create.hpp"
 #include "formula_string_utils.hpp"
+#include "game_display.hpp"
 #include "game_errors.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"

@@ -31,6 +31,9 @@
 #include "formula_string_utils.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
+#include "team.hpp"
+#include "sdl/utils.hpp"
+#include "sdl/rect.hpp"
 
 #include <boost/foreach.hpp>
 

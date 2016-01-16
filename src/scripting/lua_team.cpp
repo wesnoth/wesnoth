@@ -77,6 +77,7 @@ static int impl_side_get(lua_State *L)
 	return_int_attrib("carryover_percentage", t.carryover_percentage());
 	return_bool_attrib("carryover_add", t.carryover_add());
 	return_bool_attrib("lost", t.lost());
+	return_bool_attrib("persistent", t.persistent());
 
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
@@ -108,6 +109,7 @@ static int impl_side_set(lua_State *L)
 	// Find the corresponding attribute.
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
+	//maybe add a setterf for save_id too?
 	modify_int_attrib("village_gold", t.set_village_gold(value));
 	modify_int_attrib("village_support", t.set_village_support(value));
 	modify_int_attrib("recall_cost", t.set_recall_cost(value));
@@ -123,6 +125,7 @@ static int impl_side_set(lua_State *L)
 	modify_int_attrib("carryover_percentage", t.set_carryover_percentage(value));
 	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
 	modify_bool_attrib("lost", t.set_lost(value));
+	modify_bool_attrib("persistent", t.set_persistent(value));
 
 	if (strcmp(m, "carryover_bonus") == 0) {
 		t.set_carryover_bonus(luaL_checknumber(L, 3));

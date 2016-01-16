@@ -14,13 +14,10 @@
 #include "global.hpp"
 #include "synced_checkup.hpp"
 #include "log.hpp"
-#include "map_location.hpp"
-#include "unit_map.hpp"
-#include "unit.hpp"
 #include "replay.hpp"
 #include "synced_user_choice.hpp"
 #include "resources.hpp"
-#include "game_display.hpp"
+
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)

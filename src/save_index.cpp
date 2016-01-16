@@ -20,13 +20,13 @@
 
 #include "format_time_summary.hpp"
 #include "formula_string_utils.hpp"
-#include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "team.hpp"
 
 #include "filesystem.hpp"
 #include "config.hpp"

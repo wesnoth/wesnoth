@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/title_screen.hpp"
 
-#include "display.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -39,6 +38,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
+#include "video.hpp"
 
 #include <boost/bind.hpp>
 

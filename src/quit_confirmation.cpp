@@ -14,7 +14,7 @@
 
 #include "quit_confirmation.hpp"
 #include "gettext.hpp"
-#include "display.hpp"
+#include "video.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include "resources.hpp"

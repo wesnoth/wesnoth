@@ -81,6 +81,9 @@ public:
 			reports & reports_object,
 			const config& theme_cfg, const config& level);
 	virtual ~display();
+	/// Returns the display object if a display object exists. Otherwise it returns NULL.
+	/// the display object represents the game gui which handles themewml and drawing the map.
+	/// A display object only exists during a game or while the mapeditor is running.
 	static display* get_singleton() { return singleton_ ;}
 
 	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }

@@ -39,7 +39,9 @@
 #include "formula_string_utils.hpp"
 #include "terrain_type_data.hpp"
 #include "version.hpp"
-
+#include "sdl/rect.hpp"
+#include "sdl/utils.hpp"
+#include "video.hpp"
 
 #include <cassert>
 #include <boost/algorithm/string/predicate.hpp>

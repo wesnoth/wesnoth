@@ -19,7 +19,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "dialogs.hpp"
-#include "display.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula_string_utils.hpp"
@@ -36,8 +35,10 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "help/help_button.hpp"
+#include "image.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "video.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 

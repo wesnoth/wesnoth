@@ -44,6 +44,8 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "widgets/multimenu.hpp"
+#include "sdl/utils.hpp"
+#include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>

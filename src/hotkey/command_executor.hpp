@@ -16,8 +16,11 @@
 #define COMMAND_EXECUTOR_HPP_INCLUDED
 
 #include "hotkey_command.hpp"
-#include "display.hpp"
 #include "game_end_exceptions.hpp"
+#include "events.hpp"
+
+class display;
+class CVideo;
 
 namespace hotkey {
 
