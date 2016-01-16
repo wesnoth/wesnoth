@@ -77,8 +77,6 @@ The following issues affecting Wesnoth on Apple OS X are known and they are pend
 [*]Helvetica is used as the default variable-width font instead of DejaVu Sans (bug [bug]23560[/bug]).
 [*]Fullscreen mode does not fill the entire screen when maximum resolution is selected in Preferences → Display, and user interface elements are scaled and distorted.
 [*]System commands do not work while Wesnoth is running in fullscreen mode (bug [bug]21943[/bug]).
-[*]The mouse cursor is not mapped correctly to the game screen contents on Retina displays due to problems with detected vs. real screen resolution mismatches (bug [bug]20332[/bug]).
-A workaround is in place making Wesnoth default to 800x600 on OS X regardless of the incorrectly-detected maximum resolution.
 [*]Trackpad tap clicking is sometimes not recognized ([url=http://forums.wesnoth.org/viewtopic.php?f=4&t=39788]forum post[/url]).
 [*]Unofficial builds  with OpenMP support enabled randomly freeze (bug [bug]18144[/bug]).
 [*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).
