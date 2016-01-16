@@ -26,7 +26,6 @@
 
 #include <string>
 
-class display;
 class CVideo;
 
 /**

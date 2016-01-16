@@ -29,7 +29,7 @@
 #include "log.hpp"
 #include "preferences.hpp"
 #include "game_end_exceptions.hpp"
-
+#include "display.hpp"
 
 #include <boost/function.hpp>
 #include <boost/bind.hpp>

@@ -424,38 +424,6 @@ void dialog_frame::draw()
 	dirty_ = false;
 }
 
-} //end namespace gui
-
-namespace {
-
-struct help_handler : public hotkey::command_executor
-{
-	help_handler(display& disp, const std::string& topic) : disp_(disp), topic_(topic)
-	{}
-
-private:
-	void show_help()
-	{
-		if(topic_.empty() == false) {
-			help::show_help(disp_.video(),topic_);
-		}
-	}
-
-	bool can_execute_command(const hotkey::hotkey_command& cmd, int /*index*/) const
-	{
-		hotkey::HOTKEY_COMMAND command = cmd.id;
-		return (topic_.empty() == false && command == hotkey::HOTKEY_HELP) || command == hotkey::HOTKEY_SCREENSHOT;
-	}
-
-	display& disp_;
-	std::string topic_;
-};
-
-}
-
-namespace gui
-{
-
 int show_dialog(CVideo& video, surface image,
 				const std::string& caption, const std::string& message,
 				DIALOG_TYPE type,

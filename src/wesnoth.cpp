@@ -42,7 +42,6 @@
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "network.hpp"			// for describe_versions
 #include "preferences.hpp"              // for core_id, etc
-#include "preferences_display.hpp"      // for display_manager
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"

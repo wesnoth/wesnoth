@@ -27,9 +27,6 @@
 #include "video.hpp"
 #include "image.hpp"
 #include "text.hpp"
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "display.hpp"
-#endif
 
 #include <SDL_events.h>
 #include <SDL_image.h>

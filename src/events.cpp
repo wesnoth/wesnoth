@@ -22,7 +22,6 @@
 #include "quit_confirmation.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
-#include "display.hpp"
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
 #endif
