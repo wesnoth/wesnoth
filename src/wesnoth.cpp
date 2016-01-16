@@ -28,6 +28,7 @@
 #include "formula.hpp"                  // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
 #include "game_config_manager.hpp"      // for game_config_manager, etc
+#include "game_end_exceptions.hpp"
 #include "game_launcher.hpp"          // for game_launcher, etc
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"  // for tmanager
@@ -36,7 +37,6 @@
 #include "gui/dialogs/message.hpp" 	// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
 #include "help/help.hpp"                     // for help_manager
-#include "hotkey/command_executor.hpp"  // for basic_handler
 #include "image.hpp"                    // for flush_cache, etc
 #include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
