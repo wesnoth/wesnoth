@@ -891,10 +891,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
 		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
-		std::ostringstream save_id;
-		//generating a save_id that is unique for this campaign playthrough.
-		save_id << "save_id_" << time(NULL) << "_" << index;
-		cfg_["save_id"] = save_id.str();
+		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + lexical_cast<std::string>(index);
 	}
 
 	update_controller_options();
