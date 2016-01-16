@@ -41,6 +41,11 @@ KNOWN BUGS
 [list]
 [*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
 [/list]
+[*]Doubled-up GUI1 dialogs don't redraw the secondary in SDL2 (bug [bug]24294[/bug]).
+[*]Window state handling inconsistent across different OSes in SDL2 builds (bug [bug]24270[/bug]).
+[*]Area under Objectives not redrawn on resize (bug [bug]24261[/bug]).
+[*]Menu and Action buttons disappear on resize (bug [bug]24260[/bug]).
+[*]Wesnoth does not exist on the panel (bug [bug]24202[/bug]).
 [/raissue]
 
 [raissue="Carried over from 1.12.x"]
