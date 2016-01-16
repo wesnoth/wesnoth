@@ -18,6 +18,7 @@
 #include "dialogs.hpp"
 #include "formula_string_utils.hpp"
 #include "saved_game.hpp"
+#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

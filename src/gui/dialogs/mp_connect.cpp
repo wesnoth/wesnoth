@@ -26,7 +26,6 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "utils/foreach.tpp"
-#include "video.hpp"
 
 #include <boost/bind.hpp>
 

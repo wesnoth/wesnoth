@@ -15,7 +15,6 @@
 #include "lua_map_generator.hpp"
 
 #include "config.hpp"
-#include "video.hpp"
 #include "game_errors.hpp"
 #include "scripting/mapgen_lua_kernel.hpp"
 

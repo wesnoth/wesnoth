@@ -42,9 +42,11 @@
 #include "playcampaign.hpp"
 #include "settings.hpp"
 #include "scripting/plugins/context.hpp"
+#include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "unit_id.hpp"
+#include "video.hpp"
 #include "game_config_manager.hpp"
 
 #include <boost/bind.hpp>

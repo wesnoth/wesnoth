@@ -56,6 +56,7 @@
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default
+#include "video.hpp"                    // for CVideo, resize_monitor
 #include "wml_exception.hpp"            // for twml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
@@ -106,7 +107,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts, const char *appname) :
 	cmdline_opts_(cmdline_opts),
-	video_(),
+	video_(new CVideo()),
 	thread_manager(),
 	font_manager_(),
 	prefs_manager_(),
@@ -114,7 +115,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	main_event_context_(),
 	hotkey_manager_(),
 	music_thinker_(),
-	resize_monitor_(),
+	resize_monitor_(new resize_monitor()),
 	test_scenario_("test"),
 	screenshot_map_(),
 	screenshot_filename_(),
@@ -186,7 +187,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.fullscreen)
-		video_.set_fullscreen(true);
+		video().set_fullscreen(true);
 	if (cmdline_opts_.load)
 		game::load_game_exception::game = *cmdline_opts_.load;
 	if (cmdline_opts_.max_fps) {
@@ -289,7 +290,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 
 	}
 	if (cmdline_opts_.windowed)
-		video_.set_fullscreen(false);
+		video().set_fullscreen(false);
 	if (cmdline_opts_.with_replay)
 		game::load_game_exception::show_replay = true;
 
@@ -373,22 +374,22 @@ bool game_launcher::init_video()
 			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
 			return false;
 		}
-		video_.make_fake();
+		video().make_fake();
 		game_config::no_delay = true;
 		return true;
 	}
 
 	// Initialize a new window
-	video_.init_window();
+	video().init_window();
 
 	// Set window title and icon
-	video_.set_window_title(game_config::get_default_title_string());
+	video().set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
 	if(icon != NULL) {
 
-		video_.set_window_icon(icon);
+		video().set_window_icon(icon);
 	}
 #endif
 	return true;
@@ -401,7 +402,7 @@ bool game_launcher::init_video()
 			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
 			return false;
 		}
-		video_.make_fake();
+		video().make_fake();
 		game_config::no_delay = true;
 		return true;
 	}
@@ -420,7 +421,7 @@ bool game_launcher::init_video()
 	int bpp = 0;
 	int video_flags = 0;
 
-	bool found_matching = video_.detect_video_settings(resolution, bpp, video_flags);
+	bool found_matching = video().detect_video_settings(resolution, bpp, video_flags);
 
 	if (cmdline_opts_.screenshot) {
 		bpp = CVideo::DefaultBpp;
@@ -428,7 +429,7 @@ bool game_launcher::init_video()
 
 	if(!found_matching && (video_flags & SDL_FULLSCREEN)) {
 		video_flags ^= SDL_FULLSCREEN;
-		found_matching = video_.detect_video_settings(resolution, bpp, video_flags);
+		found_matching = video().detect_video_settings(resolution, bpp, video_flags);
 		if (found_matching) {
 			std::cerr << "Failed to set " << resolution.first << 'x' << resolution.second << 'x' << bpp << " in fullscreen mode. Using windowed instead.\n";
 		}
@@ -443,8 +444,8 @@ bool game_launcher::init_video()
 	}
 
 	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
-	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
-	video_.setBpp(bpp);
+	const int res = video().setMode(resolution.first,resolution.second,bpp,video_flags);
+	video().setBpp(bpp);
 	if(res == 0) {
 		std::cerr << "Required video mode, " << resolution.first << "x"
 		          << resolution.second << "x" << bpp << " is not supported\n";
@@ -671,7 +672,7 @@ bool game_launcher::play_screenshot_mode()
 
 	::init_textdomains(game_config_manager::get()->game_config());
 
-	editor::start(game_config_manager::get()->game_config(), video_,
+	editor::start(game_config_manager::get()->game_config(), video(),
 	    screenshot_map_, true, screenshot_filename_);
 	return false;
 }
@@ -1054,7 +1055,7 @@ bool game_launcher::change_language()
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		video_.set_window_title(game_config::get_default_title_string());
+		video().set_window_title(game_config::get_default_title_string());
 #else
 		SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
 #endif
@@ -1133,7 +1134,7 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 		::init_textdomains(game_config_manager::get()->game_config());
 
 		editor::EXIT_STATUS res = editor::start(
-		    game_config_manager::get()->game_config(), video_, filename);
+		    game_config_manager::get()->game_config(), video(), filename);
 
 		if(res != editor::EXIT_RELOAD_DATA)
 			return res;

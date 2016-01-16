@@ -21,7 +21,6 @@
 #include "ai/configuration.hpp"
 #include "dialogs.hpp"
 #include "display_chat_manager.hpp"
-#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

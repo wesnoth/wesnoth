@@ -18,13 +18,13 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
 #include "utils/sha1.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
 #include "version.hpp"
 
 #include <boost/foreach.hpp>

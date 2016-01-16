@@ -25,8 +25,8 @@
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for log_scope
 #include "sdl/rect.hpp"
-#include "video.hpp"
 
+class CVideo;
 struct SDL_Rect;
 
 namespace help {

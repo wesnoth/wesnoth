@@ -38,7 +38,6 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "video.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 

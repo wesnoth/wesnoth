@@ -17,8 +17,6 @@
 
 #include <string>
 #include "config.hpp"
-#include "video.hpp"
-#include "video.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "widgets/scrollpane.hpp"

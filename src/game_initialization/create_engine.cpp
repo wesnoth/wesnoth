@@ -17,7 +17,6 @@
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "video.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_generator.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"

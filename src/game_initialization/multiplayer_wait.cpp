@@ -19,7 +19,7 @@
 #include "game_config_manager.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "video.hpp"
+#include "image.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "mp_game_utils.hpp"
@@ -28,10 +28,12 @@
 #include "saved_game.hpp"
 #include "mp_ui_alerts.hpp"
 #include "scripting/plugins/context.hpp"
+#include "sdl/rect.hpp"
 #include "unit_types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "video.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>

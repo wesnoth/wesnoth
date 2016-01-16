@@ -27,13 +27,14 @@
 #include "scoped_resource.hpp"          // for scoped_ptr
 #include "sound.hpp"                    // for music_thinker
 #include "thread.hpp"                   // for manager
-#include "video.hpp"                    // for CVideo, resize_monitor
 
 #include <string>                       // for string
 #include <vector>                       // for vector
 
 class commandline_options;
 class config;
+class CVideo;
+class resize_monitor;
 
 struct jump_to_campaign_info
 {
@@ -56,7 +57,7 @@ public:
 	game_launcher(const commandline_options& cmdline_opts, const char* appname);
 	~game_launcher();
 
-	CVideo& video() { return video_; }
+	CVideo& video() { return *video_; }
 
 	bool init_video();
 	bool init_language();
@@ -105,8 +106,8 @@ private:
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 
 	const commandline_options& cmdline_opts_;
-
-	CVideo video_;
+	//Never null.
+	boost::scoped_ptr<CVideo> video_;
 
 	//this should get destroyed *after* the video, since we want
 	//to clean up threads after the display disappears.
@@ -118,7 +119,8 @@ private:
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
 	sound::music_thinker music_thinker_;
-	resize_monitor resize_monitor_;
+	//Never null.
+	boost::scoped_ptr<resize_monitor> resize_monitor_;
 
 	std::string test_scenario_;
 
