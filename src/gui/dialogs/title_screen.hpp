@@ -91,9 +91,6 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	/** The progress bar time for the logo. */
-	size_t logo_timer_id_;
-
 	/** Holds the debug clock dialog. */
 	tpopup* debug_clock_;
 

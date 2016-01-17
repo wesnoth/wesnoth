@@ -1027,11 +1027,6 @@ compression::format save_compression_format()
 	return compression::GZIP;
 }
 
-bool startup_effect()
-{
-	return preferences::get("startup_effect", false);
-}
-
 std::string get_chat_timestamp(const time_t& t) {
 	if (chat_timestamping()) {
 		if(preferences::use_twelve_hour_clock_format() == false) {
