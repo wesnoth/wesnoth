@@ -26,8 +26,8 @@ order to build Wesnoth:
    * Program Options           >= 1.36.0
    * System                    >= 1.36.0
  * SDL2 libraries:
-   * SDL2                       >= 2.0.4 (>= 2.0.2 on GNU/Linux or *BSD)
-   * SDL2_image                 >= 2.0.0  (with PNG and JPEG support)
+   * SDL2                       >= 2.0.2 (2.0.4 on Windows and OS X)
+   * SDL2_image                 >= 2.0.0 (with PNG and JPEG support)
    * SDL2_mixer                 >= 2.0.0 (with Ogg Vorbis support)
    * SDL2_ttf                   >= 2.0.12
    * SDL2_net                   >= 2.0.0
@@ -95,7 +95,7 @@ rebuild Wesnoth frequently (i.e. for development and testing).
 NOTE: It has been reported that using GCC 3.3.6 and earlier versions with
 optimizations enabled will result in a build that is incapable of using
 multiplayer. See <https://gna.org/bugs/?10326> for further details. We
-recommend using GCC 4.x to build Wesnoth.
+recommend using GCC 4.x and later to build Wesnoth.
 
 
 3. SCons Build
