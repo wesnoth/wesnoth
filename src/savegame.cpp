@@ -100,7 +100,7 @@ void loadgame::show_dialog()
 {
 	if(get_saves_list().empty()) {
 		gui2::show_transient_message(video_, _("No Saved Games"),
-			_("There are no savefiles to load"));
+			_("There are no save files to load"));
 		return;
 	}
 
