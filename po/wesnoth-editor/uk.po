@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2012-10-31 12:38+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -328,96 +328,92 @@ msgid "Name:"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:305
+#: src/editor/map/context_manager.cpp:306
 msgid "(New Map)"
 msgstr "(Нова Карта)"
 
-#: src/editor/map/context_manager.cpp:148
-msgid "The Battle for Wesnoth"
-msgstr ""
-
-#: src/editor/map/context_manager.cpp:192
+#: src/editor/map/context_manager.cpp:193
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
 msgstr "Оберіть, яку карту відкрити"
 
-#: src/editor/map/context_manager.cpp:307
+#: src/editor/map/context_manager.cpp:308
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Scenario)"
 msgstr "(Нова Карта)"
 
-#: src/editor/map/context_manager.cpp:334
+#: src/editor/map/context_manager.cpp:335
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:371
+#: src/editor/map/context_manager.cpp:372
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(Unnamed Area)"
 msgstr "(Нова Карта)"
 
-#: src/editor/map/context_manager.cpp:400
+#: src/editor/map/context_manager.cpp:401
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(Нова Карта)"
 
-#: src/editor/map/context_manager.cpp:466
+#: src/editor/map/context_manager.cpp:467
 msgid "Choose a Mask to Apply"
 msgstr "Оберіть, яку маску застосувати"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:474
 msgid "Error loading mask"
 msgstr "Помилка при завантаженні маски"
 
-#: src/editor/map/context_manager.cpp:492
+#: src/editor/map/context_manager.cpp:493
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:492
+#: src/editor/map/context_manager.cpp:493
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:503
+#: src/editor/map/context_manager.cpp:504
 msgid "Choose Target Map"
 msgstr "Оберіть цільову карту"
 
-#: src/editor/map/context_manager.cpp:510
-#: src/editor/map/context_manager.cpp:950
+#: src/editor/map/context_manager.cpp:511
+#: src/editor/map/context_manager.cpp:951
 msgid "Error loading map"
 msgstr "Помилка при завантаженні карти"
 
-#: src/editor/map/context_manager.cpp:627
+#: src/editor/map/context_manager.cpp:628
 msgid "Save the Map As"
 msgstr "Зберегти карту як"
 
-#: src/editor/map/context_manager.cpp:631
-#: src/editor/map/context_manager.cpp:659
+#: src/editor/map/context_manager.cpp:632
+#: src/editor/map/context_manager.cpp:660
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Файл вже існує. Перезаписати його?"
 
-#: src/editor/map/context_manager.cpp:655
+#: src/editor/map/context_manager.cpp:656
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save the Scenario As"
 msgstr "Зберегти карту як"
 
-#: src/editor/map/context_manager.cpp:694
+#: src/editor/map/context_manager.cpp:695
 msgid "No random map generators found."
 msgstr "Генератора випадкових карт не знайдено."
 
-#: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:712
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:713
 msgid "Map creation failed."
 msgstr "Не вдалося створити карту."
 
-#: src/editor/map/context_manager.cpp:726
+#: src/editor/map/context_manager.cpp:727
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:728
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -427,37 +423,37 @@ msgstr ""
 "Ви дійсно хочете відкинути всі зміни, які внесли від часу останнього "
 "збереження карти?"
 
-#: src/editor/map/context_manager.cpp:826
+#: src/editor/map/context_manager.cpp:827
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "Ця карта вже відкрита."
 
-#: src/editor/map/context_manager.cpp:848
-#: src/editor/map/context_manager.cpp:903
+#: src/editor/map/context_manager.cpp:849
+#: src/editor/map/context_manager.cpp:904
 msgid "This map is already open."
 msgstr "Ця карта вже відкрита."
 
-#: src/editor/map/context_manager.cpp:869
+#: src/editor/map/context_manager.cpp:870
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Карту збережено."
 
-#: src/editor/map/context_manager.cpp:883
+#: src/editor/map/context_manager.cpp:884
 msgid "Map saved."
 msgstr "Карту збережено."
 
-#: src/editor/map/context_manager.cpp:928
+#: src/editor/map/context_manager.cpp:929
 msgid "Loaded embedded map data"
 msgstr "Вбудовані в карту дані завантажено"
 
-#: src/editor/map/context_manager.cpp:929
-#: src/editor/map/context_manager.cpp:943
+#: src/editor/map/context_manager.cpp:930
+#: src/editor/map/context_manager.cpp:944
 msgid "Map loaded from scenario"
 msgstr "Карту завантажено з сценарію"
 
-#: src/editor/map/context_manager.cpp:939
+#: src/editor/map/context_manager.cpp:940
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -465,13 +461,13 @@ msgstr ""
 "Завантажено по посиланню файл карти:\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1025
+#: src/editor/map/context_manager.cpp:1026
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Нова Карта)"
 
-#: src/editor/map/context_manager.cpp:1025
+#: src/editor/map/context_manager.cpp:1026
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
