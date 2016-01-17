@@ -736,7 +736,7 @@ void part_ui::render_story_box()
 		if (handle_interface()) break;
 
 		if (!skip_ || scan_finished) {
-			CVideo::.delay(20);
+			CVideo::delay(20);
 		}
 	}
 
