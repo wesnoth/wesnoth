@@ -31,6 +31,10 @@ The game now uses SDL2 for all operations. There is still a fall-back option of 
 The hotkey implementation has been changed to rely on scancodes over characters. This means that the hotkey configuration now uses the same physical buttons on the keyboard, regardless of the keyboard layout.
 [/rasection]
 
+[rasection="New WML event"]
+A new 'unit placed' event has been added, making it possible to better implement certain kinds of event-driven behavior. [wiki=EventWML]See the wiki for details[/wiki].
+[/rasection]
+
 ==========
 KNOWN BUGS
 ==========
