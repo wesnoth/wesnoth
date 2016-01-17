@@ -202,7 +202,6 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	mouseoverHex_(),
 	keys_(),
 	animate_map_(true),
-	local_tod_light_(false),
 	flags_(),
 	activeTeam_(0),
 	drawing_buffer_(),
@@ -1120,39 +1119,33 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			timeid, builder_terrain_type);
 
 	image::light_string lt;
-	bool use_local_light = local_tod_light_;
-	if(use_local_light){
-		const time_of_day& tod = get_time_of_day(loc);
 
-		//get all the light transitions
-		map_location adjs[6];
-		get_adjacent_tiles(loc,adjs);
-		for(int d=0; d<6; ++d){
-			const time_of_day& atod = get_time_of_day(adjs[d]);
-			if(atod.color == tod.color)
-				continue;
+	const time_of_day& tod = get_time_of_day(loc);
 
-			if(lt.empty()) {
-				//color the full hex before adding transitions
-				tod_color col = tod.color + color_adjust_;
-				lt = image::get_light_string(6, col.r, col.g, col.b);
-			}
+	//get all the light transitions
+	map_location adjs[6];
+	get_adjacent_tiles(loc,adjs);
+	for(int d=0; d<6; ++d){
+		const time_of_day& atod = get_time_of_day(adjs[d]);
+		if(atod.color == tod.color)
+			continue;
 
-			// add the directional transitions
-			tod_color acol = atod.color + color_adjust_;
-			lt += image::get_light_string(d, acol.r, acol.g, acol.b);
+		if(lt.empty()) {
+			//color the full hex before adding transitions
+			tod_color col = tod.color + color_adjust_;
+			lt = image::get_light_string(6, col.r, col.g, col.b);
 		}
 
-		if(lt.empty()){
-			if(tod.color == get_time_of_day().color) {
-				use_local_light = false;
-			} else {
-				tod_color col = tod.color + color_adjust_;
-				if(!col.is_zero()){
-					// no real lightmap needed but still color the hex
-					lt = image::get_light_string(-1, col.r, col.g, col.b);
-				}
-			}
+		// add the directional transitions
+		tod_color acol = atod.color + color_adjust_;
+		lt += image::get_light_string(d, acol.r, acol.g, acol.b);
+	}
+
+	if(lt.empty()){
+		tod_color col = tod.color + color_adjust_;
+		if(!col.is_zero()){
+			// no real lightmap needed but still color the hex
+			lt = image::get_light_string(-1, col.r, col.g, col.b);
 		}
 	}
 
@@ -1188,7 +1181,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 #else
 			surface surf;
 			const bool off_map = image.get_filename() == off_map_name;
-			if(!use_local_light || off_map) {
+			if(off_map) {
 				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
 			} else if(lt.empty()) {
 				surf = image::get_image(image, image::SCALED_TO_HEX);
@@ -2722,7 +2715,6 @@ void display::draw(bool update,bool force) {
 		return;
 	}
 	set_scontext_unsynced leave_synced_context;
-	local_tod_light_ = has_time_area() && preferences::get("local_tod_lighting", true);
 
 	draw_init();
 	pre_draw();
@@ -2868,10 +2860,9 @@ void display::draw_hex(const map_location& loc) {
 		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
 		const bool have_overlays = overlays.first != overlays.second;
 
-		bool use_local_light = local_tod_light_;
 		image::light_string lt;
 
-		if(have_overlays && use_local_light) {
+		if(have_overlays) {
 			const time_of_day& loc_tod = get_time_of_day(loc);
 			const tod_color& loc_col = loc_tod.color;
 
@@ -2881,8 +2872,6 @@ void display::draw_hex(const map_location& loc) {
 				// to apply the color_adjust_ ourselves.
 				tod_color col = loc_col + color_adjust_;
 				lt = image::get_light_string(-1, col.r, col.g, col.b);
-			} else {
-				use_local_light = false;
 			}
 		}
 
@@ -2898,9 +2887,8 @@ void display::draw_hex(const map_location& loc) {
 					   : image::get_texture(overlays.first->second.image, image_type);
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, img);
 #else
-				const surface surf = use_local_light
-					   ? image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX)
-					   : image::get_image(overlays.first->second.image, image_type);
+				const surface surf =
+                        image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX);
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
 #endif
 			}
