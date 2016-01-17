@@ -239,9 +239,6 @@ class acquaintance;
 	void set_show_haloes(bool value);
 
 
-	bool flip_time();
-	void set_flip_time(bool value);
-
 	// Multiplayer functions
 	std::string get_chat_timestamp(const time_t& t);
 	bool chat_timestamping();

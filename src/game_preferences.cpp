@@ -1006,16 +1006,6 @@ void set_show_haloes(bool value)
 	preferences::set("show_haloes", value);
 }
 
-bool flip_time()
-{
-	return preferences::get("flip_time", false);
-}
-
-void set_flip_time(bool value)
-{
-	preferences::set("flip_time", value);
-}
-
 compression::format save_compression_format()
 {
 	const std::string& choice =
