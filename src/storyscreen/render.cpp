@@ -745,6 +745,20 @@ void part_ui::render_story_box()
 #else
 
 	LOG_NG<< "ENTER part_ui()::render_story_box()\n";
+	bool first = true;
+
+	render_background();
+
+	if(p_.show_title()) {
+		render_title_box();
+	}
+
+	if(!imgs_.empty()) {
+		if(!render_floating_images()) {
+			return;
+		}
+	}
+
 
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
@@ -759,11 +773,11 @@ void part_ui::render_story_box()
 	bool scan_finished = false;
 	SDL_Rect scan;
 	SDL_Rect dstrect;
-	bool first = true;
+
 
 	while(true) {
 
-		if (dirty_ || first) {
+		if (dirty_) {
 
 			render_background();
 
