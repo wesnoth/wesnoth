@@ -990,7 +990,12 @@ void part_ui::handle_event(const SDL_Event &event)
 {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (event.type == SDL_WINDOWEVENT &&
-			(event.window.event == SDL_WINDOWEVENT_MAXIMIZED || SDL_WINDOWEVENT_RESIZED || SDL_WINDOWEVENT_EXPOSED || SDL_WINDOWEVENT_RESTORED)) {
+			(event.window.event == SDL_WINDOWEVENT_MAXIMIZED ||
+					event.window.event == SDL_WINDOWEVENT_RESIZED ||
+					event.window.event == SDL_WINDOWEVENT_EXPOSED ||
+					event.window.event == SDL_WINDOWEVENT_RESTORED)) {
+
+
 
 		this->prepare_background();
 		this->prepare_geometry();
