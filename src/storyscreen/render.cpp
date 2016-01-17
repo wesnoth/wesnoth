@@ -362,7 +362,7 @@ bool part_ui::render_floating_images()
 			{
 				if (handle_interface()) return false;
 				if (skip_) break;
-				CVideo::.delay(std::min<int>(delay_step, delay - i * delay_step));
+				CVideo::delay(std::min<int>(delay_step, delay - i * delay_step));
 			}
 		}
 
