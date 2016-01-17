@@ -250,7 +250,6 @@ void show_about(CVideo &video, const std::string &campaign)
 
 	gui::button close(video,_("Close"));
 	close.set_location((screen->w/2)-(close.width()/2), screen->h - 30);
-	close.set_volatile(true);
 
 	const int def_size = font::SIZE_XLARGE;
 	const SDL_Color def_color = font::NORMAL_COLOR;
