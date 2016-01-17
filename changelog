@@ -17,9 +17,12 @@ Version 1.13.2+dev:
    * Updated translations: British English, Russian, Swedish
  * Sound effects:
    * Fixed various subtle timing problems with attack sounds.
+ * User Interface:
+   * Implemented a new GUI2 Attack dialog
  * WML engine:
    * Added new event "unit placed", which triggers when (and regardless of how)
      a unit appears on the map.
+   * Added support for color= in [unstore_unit] and [print]
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
