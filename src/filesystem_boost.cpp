@@ -505,6 +505,10 @@ static bool is_path_relative_to_cwd(const std::string& str)
 
 void set_user_data_dir(std::string newprefdir)
 {
+#ifdef PREFERENCES_DIR
+	if (newprefdir.empty()) newprefdir = PREFERENCES_DIR;
+#endif
+
 #ifdef _WIN32
 	if(newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
@@ -541,10 +545,6 @@ void set_user_data_dir(std::string newprefdir)
 	}
 
 #else /*_WIN32*/
-
-#ifdef PREFERENCES_DIR
-	if (newprefdir.empty()) newprefdir = PREFERENCES_DIR;
-#endif
 
 	std::string backupprefdir = ".wesnoth" + get_version_path_suffix();
 
