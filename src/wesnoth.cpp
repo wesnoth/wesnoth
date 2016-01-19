@@ -951,7 +951,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 	ZeroMemory(&process_info, sizeof(process_info));
 
 	CreateProcessW(process_path, commandline_c_str, NULL, NULL,
-		false, ABOVE_NORMAL_PRIORITY_CLASS, NULL, NULL, &startup_info, &process_info);
+		false, 0u, NULL, NULL, &startup_info, &process_info);
 
 	CloseHandle(process_info.hProcess);
 	CloseHandle(process_info.hThread);
