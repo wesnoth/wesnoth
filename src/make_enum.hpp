@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -114,7 +114,7 @@ namespace make_enum_detail
 #define ADD_PAREN_2( A, B ) ((A, B)) ADD_PAREN_1
 #define ADD_PAREN_1_END
 #define ADD_PAREN_2_END
-#define MAKEPAIRS( INPUT ) BOOST_PP_CAT(ADD_PAREN_1 INPUT,_END)  
+#define MAKEPAIRS( INPUT ) BOOST_PP_CAT(ADD_PAREN_1 INPUT,_END)
 #define PP_SEQ_FOR_EACH_I_PAIR(macro, data, pairs) BOOST_PP_SEQ_FOR_EACH_I(macro, data, MAKEPAIRS(pairs))
 
 
@@ -161,10 +161,16 @@ struct NAME : public enum_tag \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \
 		throw bad_enum_cast( #NAME , str); \
 	} \
-	bool parse (const std::string& str) \
+	template<typename TStr> \
+	bool parse (const TStr& str) \
 	{ \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMPARSE_NORMAL, str , CONTENT) \
 		return false; \
+	} \
+	/* for const char* parameters we cannot use the template above because it would only compare the pointer. */ \
+	bool parse (const char* str) \
+	{ \
+		return parse(std::string(str)); \
 	} \
 	static std::string name() \
 	{ \
@@ -176,9 +182,19 @@ struct NAME : public enum_tag \
 		assert(false && "Corrupted enum found with identifier NAME"); \
 		throw "assertion ignored"; \
 	} \
+	static const char* enum_to_cstring (NAME val) \
+	{ \
+		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNCREV_NORMAL, val.v , CONTENT) \
+		assert(false && "Corrupted enum found with identifier NAME"); \
+		throw "assertion ignored"; \
+	} \
 	std::string to_string () const \
 	{ \
 		return enum_to_string(*this); \
+	} \
+	const char* to_cstring () const \
+	{ \
+		return enum_to_cstring(*this); \
 	} \
 	friend std::ostream& operator<< (std::ostream & os, NAME val) \
 	{ \
@@ -197,9 +213,9 @@ struct NAME : public enum_tag \
 		is >> temp; \
 		try { \
 			val = string_to_enum(temp); \
-		} catch (const bad_enum_cast & e) {\
+		} catch (const bad_enum_cast & /*e*/) {\
 			is.setstate(std::ios::failbit); \
-			make_enum_detail::debug_conversion_error(temp, e); \
+			/*make_enum_detail::debug_conversion_error(temp, e); */\
 		} \
 		return is; \
 	} \

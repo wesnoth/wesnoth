@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,11 @@
 int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha)
 {
 	if(flag & SDL_SRCALPHA) {
+		// Need to specify the alpha blend mode if not setting alpha as opaque
+		int blendModeResult = SDL_SetSurfaceBlendMode (surface, SDL_BLENDMODE_BLEND);
+		if (blendModeResult != 0)
+			return blendModeResult;
+
 		return SDL_SetSurfaceAlphaMod(surface, alpha);
 	} else {
 		return SDL_SetSurfaceAlphaMod(surface, SDL_ALPHA_OPAQUE);

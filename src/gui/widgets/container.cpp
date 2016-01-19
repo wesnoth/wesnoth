@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -135,14 +135,6 @@ void tcontainer_::set_visible_rectangle(const SDL_Rect& rectangle)
 	twidget::set_visible_rectangle(rectangle);
 
 	grid_.set_visible_rectangle(rectangle);
-}
-
-void tcontainer_::impl_draw_children(surface& frame_buffer)
-{
-	assert(get_visible() == twidget::tvisible::visible
-		   && grid_.get_visible() == twidget::tvisible::visible);
-
-	grid_.draw_children(frame_buffer);
 }
 
 void tcontainer_::impl_draw_children(surface& frame_buffer,

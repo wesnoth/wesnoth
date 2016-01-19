@@ -22,7 +22,7 @@ namespace actions
 namespace undo
 {
 
-	
+
 /**
  * Writes this into the provided config.
  */
@@ -32,8 +32,6 @@ void move_action::write(config & cfg) const
 	shroud_clearing_action::write(cfg);
 	cfg["starting_direction"] = map_location::write_direction(starting_dir);
 	cfg["starting_moves"] = starting_moves;
-	cfg["time_bonus"] = countdown_time_bonus;
-	cfg["village_owner"] = original_village_owner;
 	config & child = cfg.child("unit");
 	child["goto_x"] = goto_hex.x + 1;
 	child["goto_y"] = goto_hex.y + 1;
@@ -43,11 +41,10 @@ void move_action::write(config & cfg) const
  * Undoes this action.
  * @return true on success; false on an error.
  */
-bool move_action::undo(int side)
+bool move_action::undo(int)
 {
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
 
 	// Copy some of our stored data.
 	const int saved_moves = starting_moves;
@@ -62,15 +59,7 @@ bool move_action::undo(int side)
 		ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?" << std::endl;
 		return false;
 	}
-
-	if ( resources::gameboard->map().is_village(rev_route.front()) ) {
-		get_village(rev_route.front(), original_village_owner + 1, NULL, false);
-		//MP_COUNTDOWN take away capture bonus
-		if ( countdown_time_bonus )
-		{
-			current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
-		}
-	}
+	this->return_village();
 
 	// Record the unit's current state so it can be redone.
 	starting_moves = u->movement_left();
@@ -96,11 +85,10 @@ bool move_action::undo(int side)
  * Redoes this action.
  * @return true on success; false on an error.
  */
-bool move_action::redo(int side)
+bool move_action::redo(int)
 {
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side-1];
 
 	// Check units.
 	unit_map::iterator u = units.find(route.front());
@@ -124,15 +112,8 @@ bool move_action::redo(int side)
 	u->set_goto(goto_hex);
 	u->set_movement(saved_moves, true);
 	u->anim_comp().set_standing();
-
-	if ( resources::gameboard->map().is_village(route.back()) ) {
-		get_village(route.back(), u->side(), NULL, false);
-		//MP_COUNTDOWN restore capture bonus
-		if ( countdown_time_bonus )
-		{
-			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
-		}
-	}
+	
+	this->take_village();
 
 	gui.invalidate_unit_after_move(route.front(), route.back());
 	resources::recorder->redo(replay_data);

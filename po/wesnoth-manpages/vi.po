@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+dev\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2016-01-16 20:56-0300\n"
 "PO-Revision-Date: 2014-06-04 23:24+0700\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -140,11 +140,18 @@ msgstr "B<-c, --campaign \\ [E<lt>định_danh_chiến_dịchE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
+#, fuzzy
+#| msgid ""
+#| "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
+#| "menu will appear if no id was specified.  B<Note:> When using this switch "
+#| "please ensure that you specify the data directory path as the final "
+#| "argument aswell, otherwise the game will take the campaign/scenario id as "
+#| "the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
 "please ensure that you specify the data directory path as the final argument "
-"aswell, otherwise the game will take the campaign/scenario id as the data "
+"as well, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
 "đến trực tiếp chiến dịch có định danh E<lt>định_danh_chiến_dịchE<gt>. Một "
@@ -653,13 +660,22 @@ msgstr "B<--userconfig-dir>I<\\ tên>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:209
+#, fuzzy
+#| msgid ""
+#| "sets the user configuration directory to I<name> under $HOME or \"My "
+#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#| "path for the configuration directory outside the $HOME or \"My Documents"
+#| "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#| "config/wesnoth, on other systems to the userdata path."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
-"Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
-"wesnoth, on other systems to the userdata path."
+"Games\". On Windows it is also possible to specify a directory relative to "
+"the process working directory by using path starting with \".\\e\" or \"..\\e"
+"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
+"on other systems to the userdata path."
 msgstr ""
 "đặt đường dẫn thư mục cấu hình của người dùng thành I<tên> dưới $HOME hoặc "
 "\"My Documents\\eMy Games\" với windows. Bạn cũng có thể chỉ định một đường "
@@ -669,7 +685,7 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:209
 #, fuzzy, no-wrap
 #| msgid "B<--userconfig-path>"
 msgid "B<--userconfig-path>"
@@ -677,20 +693,20 @@ msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:212
 msgid "prints the path of the user configuration directory and exits."
 msgstr "in đường dẫn của thư mục chứa thiết lập người dùng và thoát."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:212
 #, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
 msgstr "B<--userdata-dir>I<\\ tên>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:217
+#: ../../doc/man/wesnoth.6:221
 #, fuzzy
 #| msgid ""
 #| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
@@ -699,7 +715,9 @@ msgstr "B<--userdata-dir>I<\\ tên>"
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
-"directory outside the $HOME or \"My Documents\\eMy Games\"."
+"directory outside the $HOME or \"My Documents\\eMy Games\". On Windows it is "
+"also possible to specify a directory relative to the process working "
+"directory by using path starting with \".\\e\" or \"..\\e\"."
 msgstr ""
 "đặt đường dẫn thư mục dữ liệu của người dùng thành I<tên> dưới $HOME hoặc "
 "\"My Documents\\eMy Games\" với windows. Bạn cũng có thể chỉ định một đường "
@@ -708,79 +726,79 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:217
+#: ../../doc/man/wesnoth.6:221
 #, no-wrap
 msgid "B<--userdata-path>"
 msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:220
+#: ../../doc/man/wesnoth.6:224
 msgid "prints the path of the userdata directory and exits."
 msgstr "in đường dẫn của thư mục dữ liệu của người dùng và thoát."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:220
+#: ../../doc/man/wesnoth.6:224
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:223
+#: ../../doc/man/wesnoth.6:227
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "giả sử rằng bộ nhớ đệm hợp lệ. (nguy hiểm)"
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:223
+#: ../../doc/man/wesnoth.6:227
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:226
+#: ../../doc/man/wesnoth.6:230
 msgid "shows the version number and exits."
 msgstr "hiện số phiên bản và thoát."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:226
+#: ../../doc/man/wesnoth.6:230
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:229
+#: ../../doc/man/wesnoth.6:233
 msgid "runs the game in windowed mode."
 msgstr "chạy trò chơi trong chế độ cửa sổ."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:229
+#: ../../doc/man/wesnoth.6:233
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:238
 msgid "replays the game loaded with the B<--load> option."
 msgstr "phát lại trò chơi được tải với tùy chọn B<--load>."
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:235
+#: ../../doc/man/wesnoth.6:239
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Tùy chọn cho --multiplayer"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:242
+#: ../../doc/man/wesnoth.6:246
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -792,28 +810,28 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:242
+#: ../../doc/man/wesnoth.6:246
 #, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
 msgstr "B<--ai_config>I<số>B<=>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:249
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "chọn một tập tin cấu hình để tải cho máy tính điều khiển phe này."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:249
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<số>B<=>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:252
+#: ../../doc/man/wesnoth.6:256
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -823,28 +841,28 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:252
+#: ../../doc/man/wesnoth.6:256
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<số>B<=>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:258
+#: ../../doc/man/wesnoth.6:262
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "chọn người điều khiển cho phe này. Giá trị có sẵn: B<human> và B<ai>."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:258
+#: ../../doc/man/wesnoth.6:262
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:265
+#: ../../doc/man/wesnoth.6:269
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -856,14 +874,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:265
+#: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:269
+#: ../../doc/man/wesnoth.6:273
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -874,25 +892,25 @@ msgstr ""
 "nghiệm theo kịch bản."
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:269
+#: ../../doc/man/wesnoth.6:273
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:276
 msgid "do not use map settings, use default values instead."
 msgstr "không sử dụng thiết lập bản đồ, mà sử dụng các giá trị mặc định."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:276
 #, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
 msgstr "B<--multiplayer-repeat=>I<giá_trị>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:279
+#: ../../doc/man/wesnoth.6:283
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
@@ -902,14 +920,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:279
+#: ../../doc/man/wesnoth.6:283
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:284
+#: ../../doc/man/wesnoth.6:288
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -919,14 +937,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:284
+#: ../../doc/man/wesnoth.6:288
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<số>B<=>I<tên>B<:>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:293
+#: ../../doc/man/wesnoth.6:297
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -938,14 +956,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:293
+#: ../../doc/man/wesnoth.6:297
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:297
+#: ../../doc/man/wesnoth.6:301
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -955,14 +973,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:297
+#: ../../doc/man/wesnoth.6:301
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<số>B<=>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:302
+#: ../../doc/man/wesnoth.6:306
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -972,25 +990,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:302
+#: ../../doc/man/wesnoth.6:306
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<giá_trị>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:306
+#: ../../doc/man/wesnoth.6:310
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "đặt số lượt cho màn chơi được chọn. Mặc định là B<50>."
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:307 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:311 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "TRẠNG THÁI THOÁT"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:310
+#: ../../doc/man/wesnoth.6:314
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1002,20 +1020,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:311 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:315 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "TÁC GIẢ"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:314
+#: ../../doc/man/wesnoth.6:318
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Viết bởi David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:316
+#: ../../doc/man/wesnoth.6:320
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1025,7 +1043,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:318
+#: ../../doc/man/wesnoth.6:322
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -1035,27 +1053,30 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:320 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:324 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Truy cập trang chủ chính thức: http://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:321 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:325 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "BẢN QUYỀN"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:324 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
+#: ../../doc/man/wesnoth.6:328 ../../doc/man/wesnothd.6:280
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Bản quyền \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:327 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:331 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1068,14 +1089,14 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:328 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:332 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "XEM THÊM"
 
 # type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:330
+#: ../../doc/man/wesnoth.6:334
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 

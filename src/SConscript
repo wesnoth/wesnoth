@@ -69,6 +69,11 @@ libwesnoth_core_sources.extend([
     filesystem_env.Object("filesystem_boost.cpp")
 ])
 
+if env["PLATFORM"] == "win32":
+    libwesnoth_core_sources.extend([
+        filesystem_env.Object("log_windows.cpp")
+    ])
+
 if env["libintl"]:
     libwesnoth_core_sources.extend([
         filesystem_env.Object("gettext.cpp")
@@ -167,6 +172,7 @@ libwesnoth_sdl_sources = Split("""
     sdl/exception.cpp
     sdl/rect.cpp
     sdl/image.cpp
+    sdl/keyboard.cpp
     sdl/window.cpp
     tracer.cpp
     xBRZ/xbrz.cpp
@@ -631,7 +637,6 @@ wesnoth_sources = Split("""
 
 if env["PLATFORM"] == "win32":
     wesnoth_sources.append("desktop/windows_tray_notification.cpp")
-	wesnoth_sources.append("desktop/windows_console.cpp")
 
 if env["PLATFORM"] == 'darwin':
     wesnoth_sources.append("desktop/apple_notification.mm")
@@ -761,6 +766,7 @@ test_sources = Split("""
     tests/test_formula_function.cpp
     tests/test_image_modifications.cpp
     tests/test_lexical_cast.cpp
+    tests/test_lua.cpp
     tests/test_map_location.cpp
     tests/test_make_enum.cpp
     tests/test_rng.cpp

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,11 +40,11 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
  * The following states exist:
  * * state_enabled, the button is enabled and not selected.
  * * state_disabled, the button is disabled and not selected.
- * * state_focussed, the mouse is over the button and not selected.
+ * * state_focused, the mouse is over the button and not selected.
  *
  * * state_enabled_selected, the button is enabled and selected.
  * * state_disabled_selected, the button is disabled and selected.
- * * state_focussed_selected, the mouse is over the button and selected.
+ * * state_focused_selected, the mouse is over the button and selected.
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="toggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
@@ -52,14 +52,14 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
  * @end{tag}{name="state_enabled"}
  * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focussed"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
  * @begin{tag}{name="state_enabled_selected"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled_selected"}
  * @begin{tag}{name="state_disabled_selected"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_disabled_selected"}
- * @begin{tag}{name="state_focussed_selected"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focussed_selected"}
+ * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused_selected"}
  * @end{tag}{name="resolution"}
  * @end{tag}{name="toggle_button_definition"}
  * @end{parent}{name="gui/"}
@@ -73,7 +73,7 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
 	{
 		state.push_back(tstate_definition(c.child("enabled")));
 		state.push_back(tstate_definition(c.child("disabled")));
-		state.push_back(tstate_definition(c.child("focussed")));
+		state.push_back(tstate_definition(c.child("focused")));
 	}
 }
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -70,7 +70,7 @@ enum menu_type {
  * general logic.
  */
 class editor_controller : public controller_base,
-	public hotkey::command_executor,
+	public hotkey::command_executor_default,
 	public events::mouse_handler_base,
 	private boost::noncopyable
 {
@@ -167,7 +167,7 @@ class editor_controller : public controller_base,
 		/* controller_base overrides */
 		void process_keyup_event(const SDL_Event& event);
 		mouse_handler_base& get_mouse_handler_base() { return *this; }
-		editor_display& get_display() {return *gui_;}
+		editor_display& get_display() { return *gui_; }
 
 		/** Get the current mouse action */
 		mouse_action* get_mouse_action();

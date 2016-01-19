@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -515,20 +515,6 @@ void ttree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	FOREACH(AUTO & node, children_)
 	{
 		node.set_visible_rectangle(rectangle);
-	}
-}
-
-void ttree_view_node::impl_draw_children(surface& frame_buffer)
-{
-	grid_.draw_children(frame_buffer);
-
-	if(is_folded()) {
-		return;
-	}
-
-	FOREACH(AUTO & node, children_)
-	{
-		node.impl_draw_children(frame_buffer);
 	}
 }
 

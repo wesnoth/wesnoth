@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -81,6 +81,9 @@ public:
 			reports & reports_object,
 			const config& theme_cfg, const config& level);
 	virtual ~display();
+	/// Returns the display object if a display object exists. Otherwise it returns NULL.
+	/// the display object represents the game gui which handles themewml and drawing the map.
+	/// A display object only exists during a game or while the mapeditor is running.
 	static display* get_singleton() { return singleton_ ;}
 
 	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
@@ -205,7 +208,7 @@ public:
 	CVideo& video() { return screen_; }
 
 	/** return the screen surface or the surface used for map_screenshot. */
-	surface get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
+	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
@@ -502,9 +505,6 @@ public:
 	void enable_menu(const std::string& item, bool enable);
 
 	void set_diagnostic(const std::string& msg);
-
-	/** Delay routines: use these not SDL_Delay (for --nogui). */
-	void delay(unsigned int milliseconds) const;
 
 	/**
 	 * Set/Get whether 'turbo' mode is on.
@@ -1164,7 +1164,7 @@ private:
 	sdl::timage panel_image_;
 #endif
 
-#if defined(__GLIBC__)
+#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 	/** Flag for bug #17573 - this is set in the constructor **/
 	bool do_reverse_memcpy_workaround_;
 #endif

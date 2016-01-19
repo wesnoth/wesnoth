@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2014 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,8 +24,6 @@
 #include "message.hpp"
 #include "../../game_end_exceptions.hpp"
 #include "../../gettext.hpp"
-#include "../../resources.hpp"
-#include "../../game_display.hpp"
 
 
 #include <boost/bind.hpp>
@@ -69,7 +67,7 @@ tsynced_choice_wait::~tsynced_choice_wait()
 	mgr_.changed_event_.detach_handler(this);
 }
 
-void tsynced_choice_wait::pre_show(CVideo& /*video*/, twindow& window)
+void tsynced_choice_wait::pre_show(CVideo& video, twindow& window)
 {
 	window_ = &window;
 	message_ = find_widget<tlabel>(&window, "lblMessage", false, true);
@@ -80,7 +78,7 @@ void tsynced_choice_wait::pre_show(CVideo& /*video*/, twindow& window)
 
 	connect_signal_mouse_left_click(
 		quit_button,
-		boost::bind(&tsynced_choice_wait::on_btn_quit_game, this)
+		boost::bind(&tsynced_choice_wait::on_btn_quit_game, this, boost::ref(video))
 	);
 
 	message_->set_label(mgr_.wait_message());
@@ -99,9 +97,9 @@ void tsynced_choice_wait::handle_generic_event(const std::string& event_name)
 	}
 }
 
-void tsynced_choice_wait::on_btn_quit_game()
+void tsynced_choice_wait::on_btn_quit_game(CVideo& video)
 {
-	const int res = gui2::show_message(resources::screen->video(), _("Quit"),
+	const int res = gui2::show_message(video, _("Quit"),
 		_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
 	if (res != gui2::twindow::CANCEL) {
 		throw_quit_game_exception();

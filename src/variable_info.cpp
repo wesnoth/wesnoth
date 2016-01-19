@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2015 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
 
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -343,7 +343,7 @@ namespace {
 		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
 		{
 			//calling get_child_at<vit>(*state.child_, state.key_, state.index_) like above would have no effect
-			if(int(state.child_->child_count(state.key_)) < state.index_)
+			if(int(state.child_->child_count(state.key_)) <= state.index_)
 			{
 				return this->handler_(non_empty_const_cfg, "_", 0, 1);
 			}

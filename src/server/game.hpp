@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 #include <vector>
 
 #include "../mt_rng.hpp"
+#include "../make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 //class player;
@@ -36,6 +37,13 @@ typedef std::vector<socket_ptr> side_vector;
 class game
 {
 public:
+	MAKE_ENUM(CONTROLLER,
+		(HUMAN, "human")
+		(AI, "ai")
+		/* NULL is alreaddy the name of a standart c++ macro */
+		(EMPTY, "null")
+	)
+
 	game(PlayerMap& player_connections, socket_ptr host,
 			const std::string& name="", bool save_replays=false,
 			const std::string& replay_save_path="");
@@ -169,8 +177,6 @@ public:
 
 	/** Handles incoming [whiteboard] data. */
 	void process_whiteboard(simple_wml::document& data, const socket_ptr user);
-	/** Handles incoming [change_controller_wml] data. */
-	void process_change_controller_wml(simple_wml::document& data, const socket_ptr user);
 	/** Handles incoming [change_turns_wml] data. */
 	void process_change_turns_wml(simple_wml::document& data, const socket_ptr user);
 
@@ -229,8 +235,6 @@ public:
 
 	void set_termination_reason(const std::string& reason);
 
-	void require_random(const simple_wml::document &data, const socket_ptr user);
-
 	void handle_choice(const simple_wml::node& data, const socket_ptr user);
 
 	void handle_random_choice(const simple_wml::node& data);
@@ -275,8 +279,7 @@ private:
 	void change_controller(const size_t side_num,
 			const socket_ptr sock,
 			const std::string& player_name,
-			const bool player_left = true,
-			const std::string& controller = "");
+			const bool player_left = true);
 	void transfer_ai_sides(const socket_ptr player);
 	void send_leave_game(socket_ptr user) const;
 	/**
@@ -364,32 +367,26 @@ private:
 	/** A vector of side owners. */
 	side_vector sides_;
 
-	/**
-	 * A vector of controller strings indicating the type.
-	 * "human"   - a side controlled by a human
-	 * "ai"      - a side controlled by an AI
-	 * "null"    - an empty side
-	 */
-	std::vector<std::string> side_controllers_;
+	std::vector<CONTROLLER> side_controllers_;
 
 	/** Number of sides in the current scenario. */
 	int nsides_;
 	bool started_;
 
-	/** 
-		The current scenario data.´ 
-		WRONG! This contains the initial state or the state from which 
+	/**
+		The current scenario data.´
+		WRONG! This contains the initial state or the state from which
 		the game was loaded from.
-		Using this to make assumptions about the current gamestate is 
-		extremely dangerous and should especially not be done for anything 
+		Using this to make assumptions about the current gamestate is
+		extremely dangerous and should especially not be done for anything
 		that can be nodified by wml (especially by [modify_side]),
 		like team_name, controller ... in [side].
 		FIXME: move every code here that uses this object to query those
-		information to the clients. But note that there are some checks 
+		information to the clients. But note that there are some checks
 		(like controller == null) that are definitely needed by the server and
-		in this case we should try to modify the client to inform the server if 
-		a change of those properties occur. Ofc we shouldn't update level_ 
-		then, but rather store that information in a seperate object 
+		in this case we should try to modify the client to inform the server if
+		a change of those properties occur. Ofc we shouldn't update level_
+		then, but rather store that information in a seperate object
 		(like in side_controllers_).
 	*/
 	simple_wml::document level_;

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2015 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -25,8 +25,7 @@
 #include <set>
 #include <string>
 
-class display;
-class game_display;
+class CVideo;
 class saved_game;
 class terrain_type_data;
 class team;
@@ -56,7 +55,7 @@ struct mp_campaign_info
 
 class campaign_controller
 {
-	game_display& disp_;
+	CVideo& video_;
 	saved_game& state_;
 	const config& game_config_;
 	const tdata_cache & tdata_;
@@ -64,8 +63,8 @@ class campaign_controller
 	bool is_replay_;
 	mp_campaign_info* mp_info_;
 public:
-	campaign_controller(game_display& disp, saved_game& state, const config& game_config, const tdata_cache & tdata, bool is_unit_test = false)
-		: disp_(disp)
+	campaign_controller(CVideo& video, saved_game& state, const config& game_config, const tdata_cache & tdata, bool is_unit_test = false)
+		: video_(video)
 		, state_(state)
 		, game_config_(game_config)
 		, tdata_(tdata)

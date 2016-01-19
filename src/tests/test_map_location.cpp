@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -64,9 +64,9 @@ struct MLFixture
 	~MLFixture() {}
 };
 
-BOOST_GLOBAL_FIXTURE ( MLFixture )
+BOOST_GLOBAL_FIXTURE ( MLFixture );
 
-BOOST_AUTO_TEST_SUITE ( test_map_location )
+BOOST_AUTO_TEST_SUITE ( test_map_location );
 
 //#define MAP_LOCATION_GET_OUTPUT
 

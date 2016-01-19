@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 
 #include <string>
 
-class display;
+class CVideo;
 
 /**
  * The macro to use for the validation of WML
@@ -132,7 +132,7 @@ struct twml_exception
 	 * Shows the error in a dialog.
 	 *  @param disp         The display object to show the message on.
 	 */
-	void show(display &disp);
+	void show(CVideo &video);
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
 };

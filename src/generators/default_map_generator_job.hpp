@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,7 +43,7 @@ public:
 								 bool roads_between_castles, std::map<map_location,std::string>* labels,
 								 const config& cfg);
 private:
-	
+
 	typedef std::vector<std::vector<int> > height_map;
 	typedef t_translation::t_map terrain_map;
 

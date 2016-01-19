@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -382,7 +382,7 @@ void terrain_label::read(const config &cfg)
 	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();
 	immutable_ = cfg["immutable"].to_bool(true);
 	category_ = cfg["category"].str();
-	
+
 	int side = cfg["side"].to_int(-1);
 	if(side >= 0) {
 		creator_ = side - 1;
@@ -398,11 +398,9 @@ void terrain_label::read(const config &cfg)
 	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
 	if(!tmp_color.empty()) {
-		std::vector<Uint32> temp_rgb;
-		if(string2rgb(tmp_color, temp_rgb) && !temp_rgb.empty()) {
-			color = int_to_color(temp_rgb[0]);
-		}
+		color = string_to_color(tmp_color);
 	}
+
 	color_ = color;
 }
 
@@ -605,14 +603,14 @@ bool terrain_label::hidden() const
 	std::string category = "cat:" + category_;
 	std::string creator = "side:" + str_cast(creator_ + 1);
 	const std::vector<std::string>& hidden_categories = parent_->disp().get_disp_context().hidden_label_categories();
-	
+
 	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end())
 		return true;
 	if(creator_ >= 0 && std::find(hidden_categories.begin(), hidden_categories.end(), creator) != hidden_categories.end())
 		return true;
 	if(!team_name().empty() && std::find(hidden_categories.begin(), hidden_categories.end(), "team") != hidden_categories.end())
 		return true;
-	
+
 	// Fog can hide some labels.
 	if ( !visible_in_fog_ && is_fogged(parent_->disp(), loc_) )
 		return true;

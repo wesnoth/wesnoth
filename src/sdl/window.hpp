@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -90,9 +90,27 @@ public:
 	void set_size(const int w, const int h);
 
 	/**
-	 * Dummy function for setting the screen to full screen mode.
-	 *
-	 * @todo Implement this function properly.
+	 * Dummy function for centering the window.
+	 */
+	void center();
+
+	/**
+	 * Dummy function for maximizing the window.
+	 */
+	void maximize();
+
+	/**
+	 * Dummy function for restoring the window.
+	 */
+	void restore();
+
+	/**
+	 * Dummy function for returning the window to windowed mode.
+	 */
+	void to_window();
+
+	/**
+	 * Dummy function for setting the window to fullscreen mode.
 	 */
 	void full_screen();
 
@@ -128,6 +146,15 @@ public:
 	 * @param icon                The new icon for the window.
 	 */
 	void set_icon(const surface& icon);
+
+	int get_flags();
+
+	/**
+	 * Set mimimum size of the window.
+	 *
+	 * This is a wrapper for @ref SDL_SetWindowMinimumWindowSize.
+	 */
+	void set_minimum_size(int min_w, int min_h);
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 

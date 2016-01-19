@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,7 +46,7 @@ public:
 	/// Creates an undo_action based on a config.
 	/// Throws bad_lexical_cast or config::error if it cannot parse the config properly.
 	static undo_action_base * create_action(const config & cfg);
-		
+
 	// Functions related to managing the undo stack:
 
 	/// Adds an auto-shroud toggle to the undo stack.
@@ -63,10 +63,10 @@ public:
 	              const map_location::DIRECTION dir=map_location::NDIRECTIONS);
 	/// Adds a recall to the undo stack.
 	void add_recall(const unit_const_ptr u, const map_location& loc,
-	                const map_location& from);
+	                const map_location& from, int orig_village_owner, bool time_bonus);
 	/// Adds a recruit to the undo stack.
 	void add_recruit(const unit_const_ptr u, const map_location& loc,
-	                 const map_location& from);
+	                 const map_location& from, int orig_village_owner, bool time_bonus);
 	/// Adds a shroud update to the undo stack.
 	void add_update_shroud();
 private:

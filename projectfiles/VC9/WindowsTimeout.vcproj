@@ -33,13 +33,10 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="2"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
@@ -56,11 +53,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="/SAFESEH:NO"
+				OutputFile="$(OutDir)\WindowsTimeout.exe"
+				LinkIncremental="2"
 				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(IntDir)\$(TargetName).pdb"
 				SubSystem="1"
 				TargetMachine="1"
-				LinkIncremental="2"
-				OutputFile="$(OutDir)\WindowsTimeout.exe"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -100,9 +99,6 @@
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"

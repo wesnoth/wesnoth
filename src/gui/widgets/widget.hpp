@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -542,7 +542,6 @@ public:
 	 *                            @p frame_buffer to draw.
 	 */
 	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
-	void draw_background(surface& frame_buffer);
 
 	/**
 	 * Draws the children of a widget.
@@ -559,7 +558,6 @@ public:
 	 *                            @p frame_buffer to draw.
 	 */
 	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
-	void draw_children(surface& frame_buffer);
 
 	/**
 	 * Draws the foreground of the widget.
@@ -577,7 +575,6 @@ public:
 	 *                            @p frame_buffer to draw.
 	 */
 	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
-	void draw_foreground(surface& frame_buffer);
 
 private:
 	/** See @ref draw_background. */
@@ -593,9 +590,6 @@ private:
 	}
 
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(surface& /*frame_buffer*/)
-	{
-	}
 	virtual void impl_draw_children(surface& /*frame_buffer*/
 									,
 									int /*x_offset*/
@@ -605,9 +599,6 @@ private:
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(surface& /*frame_buffer*/)
-	{
-	}
 	virtual void impl_draw_foreground(surface& /*frame_buffer*/
 									  ,
 									  int /*x_offset*/

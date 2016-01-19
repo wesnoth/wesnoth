@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Maxim Biro <nurupo.contributions@gmail.com>
+   Copyright (C) 2013 - 2016 by Maxim Biro <nurupo.contributions@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -194,7 +194,7 @@ HWND windows_tray_notification::get_window_handle()
 	if (SDL_GetWMInfo(&wmInfo) != 1) {
 #else
 	// SDL 1.2 keeps track of window handles internally whereas SDL 2.0 allows the caller control over which window to use
-	if (SDL_GetWindowWMInfo (static_cast<SDL_Window *> (*CVideo::get_window()), &wmInfo) != SDL_TRUE) {
+	if (SDL_GetWindowWMInfo (static_cast<SDL_Window *> (*CVideo::get_singleton().get_window()), &wmInfo) != SDL_TRUE) {
 #endif
 		return NULL;
 	}

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,8 +43,6 @@ namespace actions { class undo_list; }
 class game_state : public filter_context
 {
 private:
-	boost::shared_ptr<game_events::t_context> game_events_resources_; //!< This allows us to easily rebind the pointers used by the game events manager and pump
-
 	friend class replay_controller;
 public:
 	game_data gamedata_;

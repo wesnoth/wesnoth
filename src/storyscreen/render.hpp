@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 
 #include "key.hpp"
 #include "storyscreen/part.hpp"
+#include "events.hpp"
 // #include "widgets/button.hpp"
 
 class display;
@@ -39,7 +40,7 @@ namespace storyscreen {
  * assumed that the screen dimensions remain constant between the
  * constructor call, and the destruction of the objects.
  */
-class part_ui
+class part_ui : public events::sdl_handler
 {
 public:
 	/** Storyscreen result. */
@@ -63,6 +64,8 @@ public:
 	 */
 	RESULT show();
 
+	virtual void handle_event(const SDL_Event& event);
+
 private:
 	part& p_;
 	display& disp_;
@@ -72,6 +75,8 @@ private:
 	gui::button& next_button_;
 	gui::button& back_button_;
 	gui::button& play_button_;
+
+	bool dirty_;
 
 	RESULT ret_;
 	bool skip_, last_key_;

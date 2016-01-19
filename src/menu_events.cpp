@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -173,7 +173,7 @@ public:
 	leader_scroll_dialog(display &disp, const std::string &title,
 			std::vector<bool> &leader_bools, int selected,
 			gui::DIALOG_RESULT extra_result) :
-		dialog(disp, title, "", gui::NULL_DIALOG),
+		dialog(disp.video(), title, "", gui::NULL_DIALOG),
 		scroll_btn_(new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false)),
 		leader_bools_(leader_bools),
 		extra_result_(extra_result)
@@ -437,7 +437,7 @@ void menu_handler::save_map()
 	int res = 0;
 	int overwrite = 1;
 	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"), ".map");
+		res = dialogs::show_file_chooser_dialog_save(gui_->video(), input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
 
 			if (filesystem::file_exists(input_name)) {
@@ -465,7 +465,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	preferences::show_preferences_dialog(*gui_, game_config_);
+	preferences::show_preferences_dialog(gui_->video(), game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
@@ -482,7 +482,7 @@ void menu_handler::show_chat_log()
 
 void menu_handler::show_help()
 {
-	help::show_help(*gui_);
+	help::show_help(gui_->video());
 }
 
 void menu_handler::speak()
@@ -861,7 +861,7 @@ void menu_handler::unit_description()
 {
 	const unit_map::const_iterator un = current_unit();
 	if(un != units().end()) {
-		help::show_unit_description(*un);
+		help::show_unit_description(pc_.get_display().video(), *un);
 	}
 }
 
@@ -874,7 +874,7 @@ void menu_handler::terrain_description(mouse_handler& mousehandler)
 
 	const terrain_type& type = map().get_terrain_info(loc);
 	//const terrain_type& info = board().map().get_terrain_info(terrain);
-	help::show_terrain_description(type);
+	help::show_terrain_description(pc_.get_display().video(), type);
 }
 
 void menu_handler::rename_unit()
@@ -1071,7 +1071,7 @@ void menu_handler::clear_labels()
 		resources::recorder->clear_labels(gui_->current_team_name(), false);
 	}
 }
-	
+
 void menu_handler::label_settings() {
 	// TODO: I think redraw_everything might be a bit too much? It causes a flicker.
 	if(gui2::tlabel_settings::execute(board(), gui_->video()))
@@ -2624,7 +2624,7 @@ void console_handler::do_idle() {
 }
 
 void console_handler::do_theme() {
-	preferences::show_theme_dialog(*menu_handler_.gui_);
+	preferences::show_theme_dialog(menu_handler_.gui_->video());
 }
 
 struct save_id_matches
@@ -2693,6 +2693,9 @@ void console_handler::do_controller()
 	std::string report = menu_handler_.teams()[side_num - 1].controller().to_string();
 	if (!menu_handler_.teams()[side_num - 1].is_proxy_human()) {
 		report += " (" + menu_handler_.teams()[side_num - 1].proxy_controller().to_string() + ")";
+	}
+	if (menu_handler_.teams()[side_num - 1].is_network()) {
+		report += " (networked)";
 	}
 
 	print(get_cmd(), report);
@@ -2806,7 +2809,7 @@ void console_handler::do_layers() {
 	// NOTE using ", " also allows better word wrapping
 	info << "Flags :" << utils::join(flags, ", ");
 	{
-		gui::dialog menu(*menu_handler_.gui_, _("Layers"), info.str(), gui::OK_CANCEL);
+		gui::dialog menu(menu_handler_.gui_->video(), _("Layers"), info.str(), gui::OK_CANCEL);
 		menu.set_menu(layers);
 		menu.show();
 	}
@@ -3122,7 +3125,7 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 		return;
 	} else {
 		//The server will (or won't because we aren't allowed to change the controller)
-		//send us a [change_controller] back, which we then handle in playturn.cpp 
+		//send us a [change_controller] back, which we then handle in playturn.cpp
 		change_side_controller(side,player);
 	}
 }
@@ -3146,15 +3149,6 @@ void menu_handler::ai_formula()
 void menu_handler::clear_messages()
 {
 	gui_->get_chat_manager().clear_chat_messages();	// also clear debug-messages and WML-error-messages
-}
-
-void menu_handler::change_controller(const std::string& side, const std::string& controller)
-{
-	config cfg;
-	config& change = cfg.add_child("change_controller");
-	change["side"] = side;
-	change["controller"] = controller;
-	network::send_data(cfg, 0);
 }
 
 void menu_handler::change_side_controller(const std::string& side, const std::string& player)

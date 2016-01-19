@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,10 @@
 
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
-#include "game_display.hpp"
 #include "filesystem.hpp"
 #include "terrain_type_data.hpp"
 
+class CVideo;
 class config;
 class game_classification;
 
@@ -27,7 +27,7 @@ class game_config_manager
 {
 public:
 	game_config_manager(const commandline_options& cmdline_opts,
-		game_display& disp,	const bool jump_to_editor);
+		CVideo& video, const bool jump_to_editor);
 	~game_config_manager();
 	enum FORCE_RELOAD_CONFIG
 	{
@@ -66,7 +66,7 @@ private:
 	void set_unit_data();
 
 	const commandline_options& cmdline_opts_;
-	game_display& disp_;
+	CVideo& video_;
 	const bool jump_to_editor_;
 
 	config game_config_;

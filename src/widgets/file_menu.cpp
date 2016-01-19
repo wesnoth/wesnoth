@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -90,10 +90,12 @@ void file_menu::display_current_files() {
 		// Make sure that all lines fit.
 		// Guess the width of the scrollbar to be 30 since it is not accessible from here.
 		// -25 to compensate for the picture column.
-		while(static_cast<unsigned int>(
-				font::line_width(*it, menu_font_size)) > width() - 30 - 25) {
-
-			(*it).resize((*it).size() - 1);
+		if (get_max_width() != -1) {
+			while(font::line_width(*it, menu_font_size) > width() - 30 - 25) {
+				//we cannot decrease its size if its empty.
+				assert(!(*it).empty());
+				(*it).resize((*it).size() - 1);
+			}
 		}
 	}
 	set_items(to_show);

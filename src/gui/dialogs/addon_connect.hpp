@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,8 +45,6 @@ public:
 private:
 	/** Enable the addon remove button? */
 	bool allow_remove_;
-
-	display* disp_;
 
 	void help_button_callback(twindow& window);
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
  */
 
 #include "global.hpp"
+#include "color_range.hpp"
 
 #include "sdl/utils.hpp"
 #include "sdl/alpha.hpp"
@@ -66,13 +67,25 @@ SDL_Color int_to_color(const Uint32 rgb)
 	result.g = (0x0000FF00 & rgb) >> 8;
 	result.b = (0x000000FF & rgb);
 #ifdef SDL_GPU
-	result.unused = 255;
+	result.unused = SDL_ALPHA_OPAQUE;
 #elif SDL_VERSION_ATLEAST(2,0,0)
-	result.a = 0;
+	result.a = SDL_ALPHA_OPAQUE;
 #else
-	result.unused = 0;
+	result.unused = SDL_ALPHA_OPAQUE;
 #endif
 	return result;
+}
+
+SDL_Color string_to_color(const std::string& color_string)
+{
+	SDL_Color color;
+
+	std::vector<Uint32> temp_rgb;
+	if(string2rgb(color_string, temp_rgb) && !temp_rgb.empty()) {
+		color = int_to_color(temp_rgb[0]);
+	}
+
+	return color;
 }
 
 SDL_Color create_color(const unsigned char red
@@ -587,171 +600,6 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				r = rr >> (16); // now shift over by 16 for the bilin part
 				g = gg >> (16);
 				b = bb >> (16);
-				*dst_word = (a << 24) + (r << 16) + (g << 8) + b;
-			}
-		}
-	}
-
-	return optimize ? create_optimized_surface(dst) : dst;
-}
-
-// NOTE: Don't pass this function 0 scaling arguments.
-surface scale_surface_legacy(const surface &surf, int w, int h) {
-	return scale_surface_legacy(surf, w, h, true);
-}
-
-surface scale_surface_legacy(const surface &surf, int w, int h, bool optimize)
-{
-	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT==0);
-
-	if(surf == NULL)
-		return NULL;
-
-	if(w == surf->w && h == surf->h) {
-		return surf;
-	}
-	assert(w >= 0);
-	assert(h >= 0);
-
-	surface dst(create_neutral_surface(w,h));
-
-	if (w == 0 || h ==0) {
-		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
-	}
-
-	surface src(make_neutral_surface(surf));
-	// Now both surfaces are always in the "neutral" pixel format
-
-	if(src == NULL || dst == NULL) {
-		std::cerr << "Could not create surface to scale onto\n";
-		return NULL;
-	}
-
-	{
-		const_surface_lock src_lock(src);
-		surface_lock dst_lock(dst);
-
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* const dst_pixels = dst_lock.pixels();
-
-		fixed_t xratio = fxpdiv(surf->w,w);
-		fixed_t yratio = fxpdiv(surf->h,h);
-
-		fixed_t ysrc = ftofxp(0.0);
-		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
-			fixed_t xsrc = ftofxp(0.0);
-			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = fxptoi(xsrc);
-				const int ysrcint = fxptoi(ysrc);
-
-				const Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
-				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
-				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
-				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
-
-				Uint8 r,g,b,a;
-				Uint32 rr,gg,bb,aa;
-				Uint16 avg_r, avg_g, avg_b, avg_a;
-				Uint32 pix[4], bilin[4];
-
-				// This next part is the fixed point
-				// equivalent of "take everything to
-				// the right of the decimal point."
-				// These fundamental weights decide
-				// the contributions from various
-				// input pixels. The labels assume
-				// that the upper left corner of the
-				// screen ("northeast") is 0,0 but the
-				// code should still be consistent if
-				// the graphics origin is actually
-				// somewhere else.
-
-				const fixed_t e = 0x000000FF & xsrc;
-				const fixed_t s = 0x000000FF & ysrc;
-				const fixed_t n = 0xFF - s;
-				const fixed_t w = 0xFF - e;
-
-				pix[0] = *src_word;              // northwest
-				pix[1] = *(src_word + dx);       // northeast
-				pix[2] = *(src_word + dy);       // southwest
-				pix[3] = *(src_word + dx + dy);  // southeast
-
-				bilin[0] = n*w;
-				bilin[1] = n*e;
-				bilin[2] = s*w;
-				bilin[3] = s*e;
-
-				// Scope out the neighboorhood, see
-				// what the pixel values are like.
-
-				int count = 0;
-				avg_r = avg_g = avg_b = avg_a = 0;
-				int loc;
-				for (loc=0; loc<4; loc++) {
-				  a = pix[loc] >> 24;
-				  r = pix[loc] >> 16;
-				  g = pix[loc] >> 8;
-				  b = pix[loc] >> 0;
-				  if (a != 0) {
-				    avg_r += r;
-				    avg_g += g;
-				    avg_b += b;
-				    avg_a += a;
-				    count++;
-				  }
-				}
-				if (count>0) {
-				  avg_r /= count;
-				  avg_b /= count;
-				  avg_g /= count;
-				  avg_a /= count;
-				}
-
-				// Perform modified bilinear interpolation.
-				// Don't trust any color information from
-				// an RGBA sample when the alpha channel
-				// is set to fully transparent.
-				//
-				// Some of the input images are hex tiles,
-				// created using a hexagon shaped alpha channel
-				// that is either set to full-on or full-off.
-				//
-				// If intermediate alpha values are introduced
-				// along a hex edge, it produces a gametime artifact.
-				// Moving the mouse around will leave behind
-				// "hexagon halos" from the temporary highlighting.
-				// In other words, the Wesnoth rendering engine
-				// freaks out.
-				//
-				// The alpha thresholding step attempts
-				// to accommodates this limitation.
-				// There is a small loss of quality.
-				// For example, skeleton bowstrings
-				// are not as good as they could be.
-
-				rr = gg = bb = aa = 0;
-				for (loc=0; loc<4; loc++) {
-				  a = pix[loc] >> 24;
-				  r = pix[loc] >> 16;
-				  g = pix[loc] >> 8;
-				  b = pix[loc] >> 0;
-				  if (a == 0) {
-				    r = static_cast<Uint8>(avg_r);
-				    g = static_cast<Uint8>(avg_g);
-				    b = static_cast<Uint8>(avg_b);
-				  }
-				  rr += r * bilin[loc];
-				  gg += g * bilin[loc];
-				  bb += b * bilin[loc];
-				  aa += a * bilin[loc];
-				}
-				r = rr >> 16;
-				g = gg >> 16;
-				b = bb >> 16;
-				a = aa >> 16;
-				a = (a < avg_a/2) ? 0 : avg_a;
 				*dst_word = (a << 24) + (r << 16) + (g << 8) + b;
 			}
 		}
@@ -2548,7 +2396,7 @@ surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_fo
 		return NULL;
 	}
 
-	sdl_blit(src, &area, dst, NULL);
+	sdl_copy_portion(src, &area, dst, NULL);
 
 	return optimize_format ? display_format_alpha(dst) : dst;
 }
@@ -2735,4 +2583,3 @@ std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
 	s << rect.x << ',' << rect.y << " x "  << rect.w << ',' << rect.h;
 	return s;
 }
-

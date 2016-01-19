@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -95,8 +95,9 @@ private:
 /**
  * Makes it so the village at the given location is owned by the given side.
  * Returns true if getting the village triggered a mutating event.
+ * side can be 0 to make teh village uncaptured.
  */
-bool get_village(const map_location& loc, int side, int *time_bonus = NULL, bool fire_event = true);
+bool get_village(const map_location& loc, int side, bool *time_bonus = NULL, bool fire_event = true);
 
 /// Moves a unit across the board.
 /// And enters the synced context.

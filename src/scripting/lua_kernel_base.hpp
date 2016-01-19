@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -63,6 +63,7 @@ public:
 	}
 
 	virtual boost::uint32_t get_random_seed();
+	lua_State * get_state() { return mState; }
 protected:
 	lua_State *mState;
 
@@ -103,10 +104,10 @@ protected:
 
 	// Show a dialog to the currently connected video object (if available)
 	int intf_show_dialog(lua_State * L);
-	
+
 	// Show a message dialog, possibly with options
 	int intf_show_message_dialog(lua_State * L);
-	
+
 	// Show a transient popup message
 	int intf_show_popup_dialog(lua_State * L);
 

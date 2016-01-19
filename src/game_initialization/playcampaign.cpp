@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2015 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -65,7 +65,7 @@ void campaign_controller::report_victory(
 {
 	report << "<small>" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
 
-	if(t.carryover_bonus()) {
+	if(t.carryover_bonus() != 0) {
 		if (turns_left > -1) {
 			report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
 				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
@@ -169,7 +169,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 				continue;
 			}
 			int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
-			int finishing_bonus = t.carryover_bonus() ? finishing_bonus_per_turn * turns_left : 0;
+			int finishing_bonus = t.carryover_bonus() * finishing_bonus_per_turn * turns_left;
 			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
 			if(!t.is_local_human())
 			{
@@ -184,13 +184,13 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 	}
 
 	if (end_level.transient.carryover_report) {
-		gui2::show_transient_message(disp_.video(), title, report.str(), "", true);
+		gui2::show_transient_message(video_, title, report.str(), "", true);
 	}
 }
 
 LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 {
-	playsingle_controller playcontroller(is_replay_ ? state_.get_replay_starting_pos() : state_.get_starting_pos(), state_, game_config_, tdata_, disp_.video(), false);
+	playsingle_controller playcontroller(is_replay_ ? state_.get_replay_starting_pos() : state_.get_starting_pos(), state_, game_config_, tdata_, video_, false);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
@@ -212,7 +212,7 @@ LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 	end_level = playcontroller.get_end_level_data_const();
 
 	show_carryover_message(playcontroller, end_level, res);
-	if(!disp_.video().faked())
+	if(!video_.faked())
 	{
 		playcontroller.maybe_linger();
 	}
@@ -223,9 +223,9 @@ LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 
 LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 {
-	
+
 	playmp_controller playcontroller(state_.get_starting_pos(), state_,
-		game_config_, tdata_, disp_.video(), mp_info_);
+		game_config_, tdata_, video_, mp_info_);
 	LEVEL_RESULT res = playcontroller.play_scenario(state_.get_starting_pos());
 
 	//Check if the player started as mp client and changed to host
@@ -243,7 +243,7 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 		//(we want to see that message before entering the linger mode)
 		show_carryover_message(playcontroller, end_level, res);
 	}
-	if(!disp_.video().faked())
+	if(!video_.faked())
 	{
 		playcontroller.maybe_linger();
 	}
@@ -262,7 +262,7 @@ LEVEL_RESULT campaign_controller::play_game()
 	else {
 		state_.get_replay().set_to_end();
 	}
-	
+
 	state_.expand_scenario();
 
 	game_classification::CAMPAIGN_TYPE game_type = state_.classification().campaign_type;
@@ -289,30 +289,30 @@ LEVEL_RESULT campaign_controller::play_game()
 				if(is_replay_) {
 					return res;
 				}
-			} else 
+			} else
 #endif
 			{
 				res = playmp_scenario(end_level);
 			}
 		} catch(game::load_game_failed& e) {
-			gui2::show_error_message(disp_.video(), _("The game could not be loaded: ") + e.message);
+			gui2::show_error_message(video_, _("The game could not be loaded: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch(quit_game_exception&) {
 			LOG_NG << "The game was aborted\n";
 			return LEVEL_RESULT::QUIT;
 		} catch(game::game_error& e) {
-			gui2::show_error_message(disp_.video(), _("Error while playing the game: ") + e.message);
+			gui2::show_error_message(video_, _("Error while playing the game: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch(incorrect_map_format_error& e) {
-			gui2::show_error_message(disp_.video(), std::string(_("The game map could not be loaded: ")) + e.message);
+			gui2::show_error_message(video_, std::string(_("The game map could not be loaded: ")) + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch (mapgen_exception& e) {
-			gui2::show_error_message(disp_.video(), std::string(_("Map generator error: ") + e.message));
+			gui2::show_error_message(video_, std::string(_("Map generator error: ") + e.message));
 		} catch(config::error& e) {
-			gui2::show_error_message(disp_.video(), _("Error while reading the WML: ") + e.message);
+			gui2::show_error_message(video_, _("Error while reading the WML: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch(twml_exception& e) {
-			e.show(disp_);
+			e.show(video_);
 			return LEVEL_RESULT::QUIT;
 		}
 
@@ -334,9 +334,9 @@ LEVEL_RESULT campaign_controller::play_game()
 		}
 		if (preferences::save_replays() && end_level.replay_save) {
 			savegame::replay_savegame save(state_, preferences::save_compression_format());
-			save.save_game_automatic(disp_.video(), true);
+			save.save_game_automatic(video_, true);
 		}
-		
+
 		state_.convert_to_start_save();
 
 		//If there is no next scenario we're done now.
@@ -347,7 +347,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		else if(res == LEVEL_RESULT::OBSERVER_END)
 		{
 			// TODO: does it make sense to ask this question if we are currently the host?
-			const int dlg_res = gui2::show_message(disp_.video(), _("Game Over"),
+			const int dlg_res = gui2::show_message(video_, _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::tmessage::yes_no_buttons);
 
@@ -358,7 +358,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 		if (mp_info_ && !mp_info_->is_host) {
 			// Opens mp::connect dialog to get a new gamestate.
-			mp::ui::result wait_res = mp::goto_mp_wait(state_, disp_,
+			mp::ui::result wait_res = mp::goto_mp_wait(state_, video_,
 				game_config_, res == LEVEL_RESULT::OBSERVER_END);
 			if (wait_res == mp::ui::QUIT) {
 				return LEVEL_RESULT::QUIT;
@@ -381,7 +381,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens mp::connect dialog to allow users to make an adjustments for scenario.
-					mp::ui::result connect_res = mp::goto_mp_connect(disp_,
+					mp::ui::result connect_res = mp::goto_mp_connect(video_,
 						*connect_engine, game_config_, state_.mp_settings().name);
 					if (connect_res == mp::ui::QUIT) {
 						return LEVEL_RESULT::QUIT;
@@ -409,7 +409,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				savegame::scenariostart_savegame save(state_, preferences::save_compression_format());
 
-				save.save_game_automatic(disp_.video());
+				save.save_game_automatic(video_);
 			}
 
 		}
@@ -420,7 +420,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		utils::string_map symbols;
 		symbols["scenario"] = state_.get_scenario_id();
 		message = utils::interpolate_variables_into_string(message, &symbols);
-		gui2::show_error_message(disp_.video(), message);
+		gui2::show_error_message(video_, message);
 		return LEVEL_RESULT::QUIT;
 	}
 

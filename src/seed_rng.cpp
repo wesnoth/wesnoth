@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,7 +13,7 @@
 */
 
 /* This file selects a seed source -- "nondeterministic" random number
-   generator in boost documentation. It should be a wrapper for 
+   generator in boost documentation. It should be a wrapper for
    boost::random_device on platforms where this is available, otherwise
    it should most likely be the system time.
 */

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -84,7 +84,7 @@ struct tplayer_list
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
-	tlobby_main(const config& game_config, lobby_info& info, display& disp);
+	tlobby_main(const config& game_config, lobby_info& info, CVideo& video);
 
 	~tlobby_main();
 
@@ -411,7 +411,7 @@ private:
 
 	bool gamelist_diff_update_;
 
-	display& disp_;
+	CVideo& video_;
 
 	/** Timer for updating the lobby. */
 	size_t lobby_update_timer_;

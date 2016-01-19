@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,6 +39,7 @@ namespace game_config
 	extern unsigned lobby_refresh;
 	extern const std::string version;
 	extern const std::string revision;
+	extern const std::string default_title_string;
 	extern std::string default_terrain;
 
 	inline int kill_xp(int level)
@@ -175,6 +176,8 @@ namespace game_config
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
 	extern const version_info test_version;
+
+	std::string get_default_title_string();
 }
 
 #endif

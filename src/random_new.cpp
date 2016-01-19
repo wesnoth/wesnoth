@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -79,11 +79,11 @@ namespace random_new
 		return next_random_impl();
 	}
 
-	/** 
+	/**
 	 *  This code is based on the boost implementation of uniform_smallint.
 	 *  http://www.boost.org/doc/libs/1_55_0/boost/random/uniform_smallint.hpp
 	 *  Using that code would be ideal, except that boost, and C++11, do not
-	 *  guarantee that it will work the same way on all platforms, or that the 
+	 *  guarantee that it will work the same way on all platforms, or that the
 	 *  results may not be different in future versions of the library.
 	 *  The simplified version I have written should work the same on all
 	 *  platforms, which is the most important thing for us.

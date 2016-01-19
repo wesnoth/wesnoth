@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2015 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2016 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -179,8 +179,9 @@ std::size_t connection::is_read_complete(
 		std::size_t bytes_transferred
 		)
 {
-	if(ec)
+	if(ec) {
 		throw system_error(ec);
+	}
 	bytes_read_ = bytes_transferred;
 	if(bytes_transferred < 4) {
 		return 4;

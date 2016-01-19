@@ -34,7 +34,10 @@
 using boost::uintmax_t;
 
 #ifdef _WIN32
+#include "log_windows.hpp"
+
 #include <boost/locale.hpp>
+
 #include <windows.h>
 #include <shlobj.h>
 #endif /* !_WIN32 */
@@ -170,12 +173,12 @@ namespace {
 			catch(...)
 			{
 				ERR_FS << "Invalid UTF-16 string" << std::endl;
-				return std::codecvt_base::error;	
+				return std::codecvt_base::error;
 			}
 			return std::codecvt_base::ok;
 		}
 	};
-	
+
 #ifdef _WIN32
 	class static_runner {
 	public:
@@ -368,7 +371,7 @@ void get_files_in_dir(const std::string &dir,
 			}
 		} else if (st.type() == bfs::directory_file) {
 			std::string basename = di->path().filename().string();
-			
+
 			if(!basename.empty() && basename[0] == '.' )
 				continue;
 			if (filter == SKIP_MEDIA_DIR
@@ -478,6 +481,10 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "data" / "add-ons");
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
+
+#ifdef _WIN32
+	lg::finish_log_file_setup();
+#endif
 }
 
 #ifdef _WIN32
@@ -498,6 +505,10 @@ static bool is_path_relative_to_cwd(const std::string& str)
 
 void set_user_data_dir(std::string newprefdir)
 {
+#ifdef PREFERENCES_DIR
+	if (newprefdir.empty()) newprefdir = PREFERENCES_DIR;
+#endif
+
 #ifdef _WIN32
 	if(newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
@@ -534,10 +545,6 @@ void set_user_data_dir(std::string newprefdir)
 	}
 
 #else /*_WIN32*/
-
-#ifdef PREFERENCES_DIR
-	if (newprefdir.empty()) newprefdir = PREFERENCES_DIR;
-#endif
 
 	std::string backupprefdir = ".wesnoth" + get_version_path_suffix();
 
@@ -1077,12 +1084,12 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
-	// We define ".." as "remove everything before" this is needed becasue 
-	// on the one hand allowing ".." would be a security risk but 
+	// We define ".." as "remove everything before" this is needed becasue
+	// on the one hand allowing ".." would be a security risk but
 	// especialy for terrains the c++ engine puts a hardcoded "terrain/" before filename
-	// and there would be no way to "escape" from "terrain/" otherwise. This is not the 
+	// and there would be no way to "escape" from "terrain/" otherwise. This is not the
 	// best solution but we cannot remove it without another solution (subtypes maybe?).
-	
+
 	// using 'for' instead 'if' to allow putting delcaration and check into the brackets
 	for(std::string::size_type pos = filename.rfind("../"); pos != std::string::npos;)
 		return get_binary_file_location(type, filename.substr(pos + 3));

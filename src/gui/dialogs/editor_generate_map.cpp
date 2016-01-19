@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/editor_generate_map.hpp"
 
+#include "display.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
 
@@ -88,7 +89,7 @@ void teditor_generate_map::do_generator_selected(twindow& window)
 
 void teditor_generate_map::do_settings(twindow&)
 {
-	get_selected_map_generator()->user_config(*gui_);
+	get_selected_map_generator()->user_config(gui_->video());
 }
 
 map_generator* teditor_generate_map::get_selected_map_generator()

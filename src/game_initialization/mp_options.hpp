@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2015 by Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2012 - 2016 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,6 @@
 
 #include <string>
 #include "config.hpp"
-#include "video.hpp"
-#include "game_display.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "widgets/scrollpane.hpp"
@@ -99,7 +97,7 @@ private:
 class combo_display : public option_display
 {
 public:
-	combo_display(game_display& display, const config& cfg);
+	combo_display(CVideo& video, const config& cfg);
 	~combo_display();
 
 	void layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane);
@@ -163,7 +161,7 @@ public:
 	 *
 	 * @param initial_value 	The initial values for each option.
 	 */
-	manager(const config& gamecfg, game_display& display, gui::scrollpane* pane, const config& initial_value);
+	manager(const config& gamecfg, CVideo& video, gui::scrollpane* pane, const config& initial_value);
 
 	~manager();
 
@@ -232,7 +230,7 @@ private:
 	config values_;
 
 	/** The screen to display the dialog on */
-	game_display &display_;
+	CVideo& video_;
 
 	/** The scrollarea to put the widgets on */
 	gui::scrollpane* pane_;

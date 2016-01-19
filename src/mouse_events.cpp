@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 #include "actions/attack.hpp"           // for battle_context, etc
 #include "actions/move.hpp"           // for move_and_record
 #include "actions/undo.hpp"             // for undo_list
-#include "attack_prediction_display.hpp"
 #include "config.hpp"                   // for config
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
 #include "dialogs.hpp"                  // for units_list_preview_pane, etc
@@ -482,7 +481,7 @@ void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state(*gui_);
+			pc_.get_hotkey_command_executor()->set_button_state();
 }
 
 void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
@@ -490,7 +489,7 @@ void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state(*gui_);
+			pc_.get_hotkey_command_executor()->set_button_state();
 }
 
 void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/)
@@ -498,7 +497,7 @@ void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state(*gui_);
+			pc_.get_hotkey_command_executor()->set_button_state();
 }
 
 void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/)
@@ -506,7 +505,7 @@ void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state(*gui_);
+			pc_.get_hotkey_command_executor()->set_button_state();
 }
 
 void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*/)
@@ -514,7 +513,7 @@ void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state(*gui_);
+			pc_.get_hotkey_command_executor()->set_button_state();
 }
 
 void mouse_handler::select_or_action(bool browse)
@@ -890,7 +889,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
 	size_t moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(), false, true, &interrupted);
-	
+
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
 
@@ -966,132 +965,30 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		return -1; // abort, click will do nothing
 	}
 
-	std::vector<battle_context> bc_vector;
-	const int best = fill_weapon_choices(bc_vector, attacker, defender);
+	if ((*attacker).attacks().empty()) {
+		gui2::show_transient_message(gui_->video(), "No Attacks",
+			_("This unit has no usable weapons."));
 
-	if(gui2::new_widgets) {
-		gui2::tunit_attack dlg(
-				  attacker
-				, defender
-				, bc_vector
-				, best);
-
-		dlg.show(gui_->video());
-
-		if(dlg.get_retval() == gui2::twindow::OK) {
-			return dlg.get_selected_weapon();
-		} else {
-			return -1;
-		}
-	}
-
-	std::vector<int> disable_items_skip;
-
-	std::vector<std::string> items;
-	{
-		const config tmp_config;
-		const attack_type no_weapon(tmp_config);
-		for (unsigned int i = 0; i < bc_vector.size(); i++) {
-			const battle_context_unit_stats& att = bc_vector[i].get_attacker_stats();
-			const battle_context_unit_stats& def = bc_vector[i].get_defender_stats();
-			const attack_type& attw = *att.weapon;
-			const attack_type& defw = def.weapon ? *def.weapon : no_weapon;
-
-			attw.set_specials_context(attacker_loc, defender_loc, true,  def.weapon);
-			defw.set_specials_context(defender_loc, attacker_loc, false, att.weapon);
-
-			// Don't show iff the weapon has at least one active "disable" special.
-			// TODO also skip disabled weapons in the gui2 dialog.
-			if (attw.get_special_bool("disable")) {
-				disable_items_skip.push_back(i);
-				continue;
-			}
-
-			// if missing, add dummy special, to be sure to have
-			// big enough minimum width (weapon's name can be very short)
-			std::string att_weapon_special = attw.weapon_specials(true, att.backstab_pos);
-			if (att_weapon_special.empty())
-				att_weapon_special += "       ";
-			std::string def_weapon_special = defw.weapon_specials(true);
-			if (def_weapon_special.empty())
-				def_weapon_special += "       ";
-
-			std::stringstream atts;
-			if (static_cast<int>(i) == best) {
-				atts << DEFAULT_ITEM;
-			}
-
-			std::string range = attw.range().empty() ? defw.range() : attw.range();
-			if (!range.empty()) {
-				range = string_table["range_" + range];
-			}
-
-			// add dummy names if missing, to keep stats aligned
-			std::string attw_name = attw.name();
-			if(attw_name.empty())
-				attw_name = " ";
-			std::string defw_name = defw.name();
-			if(defw_name.empty())
-				defw_name = " ";
-
-			// color CtH in red-yellow-green
-			SDL_Color att_cth_color =
-					int_to_color( game_config::red_to_green(att.chance_to_hit) );
-			SDL_Color def_cth_color =
-					int_to_color( game_config::red_to_green(def.chance_to_hit) );
-
-			atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
-					<< font::BOLD_TEXT << attw_name  << "\n"
-					<< att.damage << font::weapon_numbers_sep << att.num_blows
-					<< "  " << att_weapon_special << "\n"
-					<< font::color2markup(att_cth_color) << att.chance_to_hit << "%"
-					<< COLUMN_SEPARATOR << font::weapon_details << utils::unicode_em_dash + " " << range << " " + utils::unicode_em_dash << COLUMN_SEPARATOR
-					<< font::BOLD_TEXT << defw_name  << "\n"
-					<< def.damage << font::weapon_numbers_sep << def.num_blows
-					<< "  " << def_weapon_special << "\n"
-					<< font::color2markup(def_cth_color) << def.chance_to_hit << "%"
-					<< COLUMN_SEPARATOR << IMAGE_PREFIX << defw.icon();
-
-			items.push_back(atts.str());
-		}
-	}
-	if (items.empty()) {
-		dialogs::units_list_preview_pane attacker_preview(attacker.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, true);
-		dialogs::units_list_preview_pane defender_preview(defender.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, false);
-		std::vector<gui::preview_pane*> preview_panes;
-		preview_panes.push_back(&attacker_preview);
-		preview_panes.push_back(&defender_preview);
-
-		gui::show_dialog(gui(), NULL, _("Attack Enemy"),
-				_("No usable weapon"), gui::CANCEL_ONLY, NULL,
-				&preview_panes, "", NULL, -1, NULL, -1, -1, NULL, NULL);
 		return -1;
 	}
 
-	int res = 0;
-	{
-		attack_prediction_displayer ap_displayer(bc_vector, attacker_loc, defender_loc);
-		std::vector<gui::dialog_button_info> buttons;
-		buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
+	std::vector<battle_context> bc_vector;
+	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
-		dialogs::units_list_preview_pane attacker_preview(attacker.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, true);
-		dialogs::units_list_preview_pane defender_preview(defender.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, false);
-		std::vector<gui::preview_pane*> preview_panes;
-		preview_panes.push_back(&attacker_preview);
-		preview_panes.push_back(&defender_preview);
+	gui2::tunit_attack dlg(
+			  attacker
+			, defender
+			, bc_vector
+			, best
+			, gui_);
 
-		res = gui::show_dialog(gui(),NULL,_("Attack Enemy"),
-				_("Choose weapon:")+std::string("\n"),
-				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,-1,-1,
-				NULL,&buttons);
-	}
-	cursor::set(cursor::NORMAL);
+	dlg.show(gui_->video());
 
-	BOOST_FOREACH(int i, disable_items_skip) {
-		if (i<=res) res++;
+	if(dlg.get_retval() == gui2::twindow::OK) {
+		return dlg.get_selected_weapon();
 	}
 
-	return res;
+	return -1;
 }
 
 void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice)

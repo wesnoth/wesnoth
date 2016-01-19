@@ -34,18 +34,12 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="2"
 				RuntimeLibrary="3"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
@@ -64,7 +58,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalOptions="/SAFESEH:NO"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
@@ -112,12 +107,6 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
@@ -141,7 +130,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
@@ -191,12 +180,6 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
@@ -221,7 +204,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
@@ -269,12 +252,6 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
@@ -298,7 +275,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"

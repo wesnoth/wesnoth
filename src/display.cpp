@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,6 +45,7 @@
 #include "unit_animation_component.hpp"
 #include "unit_drawer.hpp"
 #include "whiteboard/manager.hpp"
+#include "show_dialog.hpp"
 
 #include "SDL_image.h"
 
@@ -57,7 +58,7 @@
 #include <cmath>
 
 // Includes for bug #17573
-#if defined(__GLIBC__)
+#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 #include <gnu/libc-version.h>
 #include <cstdio>
 #endif
@@ -225,12 +226,12 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	, update_panel_image_(true),
 	panel_image_()
 #endif
-#if defined(__GLIBC__)
+#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 	, do_reverse_memcpy_workaround_(false)
 #endif
 {
 	//The following assertion fails when starting a campaign
-	//assert(singleton_ == NULL);
+	assert(singleton_ == NULL);
 	singleton_ = this;
 
 	resources::fake_units = fake_unit_man_.get();
@@ -239,7 +240,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 
 	read(level.child_or_empty("display"));
 
-	if(non_interactive()
+	if(video.non_interactive()
 		&& (get_video_surface() != NULL
 		&& video.faked())) {
 		screen_.lock_updates(true);
@@ -769,7 +770,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 	bool res = false;
 
 	if (!map_screenshot) {
-		surface screenshot_surf = screen_.getSurface();
+		surface& screenshot_surf = screen_.getSurface();
 
 		res = image::save_image(screenshot_surf, filename);
 #if 0
@@ -1336,7 +1337,7 @@ void display::drawing_buffer_commit()
 	GPU_UnsetClip(get_render_target());
 #else
 	SDL_Rect clip_rect = map_area();
-	surface screen = get_screen_surface();
+	surface& screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
 
 	/*
@@ -1396,14 +1397,14 @@ void display::flip()
 		return;
 	}
 
-	surface frameBuffer = get_video_surface();
+	surface& frameBuffer = get_video_surface();
 
 	// This is just the debug function "sunset" to progressively darken the map area
 	static size_t sunset_timer = 0;
 	if (sunset_delay && ++sunset_timer > sunset_delay) {
 		sunset_timer = 0;
 		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
-		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
+		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,SDL_ALPHA_OPAQUE);
 		// Adjust the alpha if you want to balance cpu-cost / smooth sunset
 		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
 		update_rect(r);
@@ -1414,11 +1415,15 @@ void display::flip()
 	font::draw_floating_labels(frameBuffer);
 #endif
 	events::raise_volatile_draw_event();
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	cursor::draw(frameBuffer);
+#endif
 
 	video().flip();
 
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	cursor::undraw(frameBuffer);
+#endif
 	events::raise_volatile_undraw_event();
 #ifdef SDL_GPU
 	font::undraw_floating_labels(screen_);
@@ -1650,7 +1655,6 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 }
 #endif
 
-//TODO: convert this to use sdl::ttexture
 void display::draw_text_in_hex(const map_location& loc,
 		const tdrawing_layer layer, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
@@ -1829,7 +1833,7 @@ void display::draw_init()
 #ifdef SDL_GPU
 		draw_background(screen_, clip_rect, theme_.border().background_image);
 #else
-		const surface screen = get_screen_surface();
+		const surface& screen = get_screen_surface();
 		clip_rect_setter set_clip_rect(screen, &clip_rect);
 		draw_background(screen, clip_rect, theme_.border().background_image);
 #endif
@@ -1880,12 +1884,6 @@ void display::draw_wrap(bool update, bool force)
 		// we can also get the opposite effect.
 		nextDraw_ = std::max<int>(nextDraw_, SDL_GetTicks());
 	}
-}
-
-void display::delay(unsigned int milliseconds) const
-{
-	if (!game_config::no_delay)
-		SDL_Delay(milliseconds);
 }
 
 const theme::action* display::action_pressed()
@@ -2100,7 +2098,7 @@ void display::draw_minimap()
 	const surface& screen(screen_.getSurface());
 	clip_rect_setter clip_setter(screen, &area);
 
-	SDL_Color back_color = {31,31,23,255};
+	SDL_Color back_color = {31,31,23,SDL_ALPHA_OPAQUE};
 	draw_centered_on_background(minimap_, area, back_color, screen);
 
 	//update the minimap location for mouse and units functions
@@ -2216,7 +2214,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	font::scroll_floating_labels(dx, dy);
 	labels().recalculate_shroud();
 
-	surface screen(screen_.getSurface());
+	surface& screen(screen_.getSurface());
 
 	SDL_Rect dstrect = map_area();
 	dstrect.x += dx;
@@ -2688,8 +2686,9 @@ void display::redraw_everything()
 	}
 
 	panelsDrawn_ = false;
-
-	labels().recalculate_labels();
+	if (!gui::in_dialog()) {
+		labels().recalculate_labels();
+	}
 
 	redraw_background_ = true;
 
@@ -2774,7 +2773,7 @@ const map_labels& display::labels() const
 
 void display::clear_screen()
 {
-	surface disp(screen_.getSurface());
+	surface& disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
 	sdl::fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
 }
@@ -2787,7 +2786,7 @@ const SDL_Rect& display::get_clip_rect()
 void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
-	surface screen = get_screen_surface();
+	surface& screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
 	BOOST_FOREACH(const map_location& loc, invalidated_) {
 		int xpos = get_location_x(loc);

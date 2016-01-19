@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2013-05-16 15:23+0100\n"
 "Last-Translator: trewe <sjrs456@yahoo.fr>\n"
 "Language-Team: none\n"
@@ -37,7 +37,9 @@ msgstr "AM"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 16
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:16
-msgid "(Beginner)"
+#, fuzzy
+#| msgid "(Beginner)"
+msgid "Beginner"
 msgstr "(Iniciante)"
 
 #
@@ -55,8 +57,8 @@ msgstr "Cidadão"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 17
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:17
-msgid "(Normal)"
-msgstr "(Normal)"
+msgid "Fighter"
+msgstr "Lutador"
 
 #
 # File: data/campaigns/Dead_Water/_main.cfg, line: 17
@@ -64,8 +66,10 @@ msgstr "(Normal)"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 17
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:17
-msgid "Fighter"
-msgstr "Lutador"
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(Normal)"
 
 #
 # File: data/campaigns/Dead_Water/_main.cfg, line: 18
@@ -73,7 +77,9 @@ msgstr "Lutador"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 18
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:18
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Desafiador)"
 
 #
@@ -91,7 +97,9 @@ msgstr "Guerreiro"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 19
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:19
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Difícil)"
 
 #
@@ -108,7 +116,7 @@ msgstr "Tritão"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 20
 # File: data/campaigns/Dead_Water/_main.cfg, line: 20
 #. [campaign]: id=Dead_Water
-#: data/campaigns/Dead_Water/_main.cfg:20
+#: data/campaigns/Dead_Water/_main.cfg:21
 msgid ""
 "You are Kai Krellis, son and heir of the last merman king but only a child. "
 "A necromancer is turning your subjects into undead slaves! Lead your people "
@@ -131,7 +139,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/_main.cfg, line: 22
 # File: data/campaigns/Dead_Water/_main.cfg, line: 22
 #. [campaign]: id=Dead_Water
-#: data/campaigns/Dead_Water/_main.cfg:22
+#: data/campaigns/Dead_Water/_main.cfg:23
 msgid "(Intermediate level, 10 scenarios.)"
 msgstr "(Nível intermediário, 10 cenários.)"
 
@@ -140,7 +148,7 @@ msgstr "(Nível intermediário, 10 cenários.)"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 28
 # File: data/campaigns/Dead_Water/_main.cfg, line: 28
 #. [about]
-#: data/campaigns/Dead_Water/_main.cfg:28
+#: data/campaigns/Dead_Water/_main.cfg:29
 msgid "Campaign design and programming"
 msgstr "Design de campanha e programação"
 
@@ -149,7 +157,7 @@ msgstr "Design de campanha e programação"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 34
 # File: data/campaigns/Dead_Water/_main.cfg, line: 34
 #. [about]
-#: data/campaigns/Dead_Water/_main.cfg:34
+#: data/campaigns/Dead_Water/_main.cfg:35
 msgid "Script-doctoring and cleanup for mainline"
 msgstr "Criação de diálogos e adaptação para linha principal"
 
@@ -158,7 +166,7 @@ msgstr "Criação de diálogos e adaptação para linha principal"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 40
 # File: data/campaigns/Dead_Water/_main.cfg, line: 40
 #. [about]
-#: data/campaigns/Dead_Water/_main.cfg:40
+#: data/campaigns/Dead_Water/_main.cfg:41
 msgid "Artwork"
 msgstr "Ilustrações"
 
@@ -167,7 +175,7 @@ msgstr "Ilustrações"
 # File: data/campaigns/Dead_Water/_main.cfg, line: 85
 # File: data/campaigns/Dead_Water/_main.cfg, line: 85
 #. [lua]
-#: data/campaigns/Dead_Water/_main.cfg:85
+#: data/campaigns/Dead_Water/_main.cfg:86
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
 "atordoado: Esta unidade está atordoada. Não pode exercer uma Zona de "
@@ -326,7 +334,7 @@ msgstr "Forças Mortas-Vivas"
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:119
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
 msgid "Mal-Kevek"
 msgstr "Mal-Kevek"
@@ -703,9 +711,9 @@ msgstr "Derrote todos os líderes inimigos"
 #. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:114
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:138
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:157
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:111
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:135
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:154
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:34
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:50
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:90
@@ -721,7 +729,7 @@ msgstr "Forças de Mal-Ravanal"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 146
 # File: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg, line: 150
 #. [side]: type=Necromancer, id=Mel Daveth
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:143
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:140
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:55
 msgid "Mel Daveth"
 msgstr "Mel Daveth"
@@ -731,7 +739,7 @@ msgstr "Mel Daveth"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 277
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 277
 #. [message]: speaker=Mal-Kevek
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:274
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:271
 msgid ""
 "You may have ended my first life, but you have only made me more powerful in "
 "death. Now I will teach you a lesson!"
@@ -744,7 +752,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 282
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 282
 #. [message]: speaker=Mel Daveth
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:279
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:276
 msgid "Leave some of them for me."
 msgstr "Deixe alguns para mim."
 
@@ -756,7 +764,7 @@ msgstr "Deixe alguns para mim."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 288
 # File: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg, line: 613
 #. [message]: speaker=Dead Knight
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:285
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:282
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:517
 msgid "Uhhh."
 msgstr "Uhhh."
@@ -766,7 +774,7 @@ msgstr "Uhhh."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 293
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 293
 #. [message]: speaker=Mel Daveth
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:290
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:287
 msgid "And him."
 msgstr "E para ele."
 
@@ -775,7 +783,7 @@ msgstr "E para ele."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 298
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 298
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:295
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:292
 msgid ""
 "We are surrounded. Look how many there are! How can we defeat them this time?"
 msgstr "Estamos cercados. Olhe quantos eles são! Como poderemos derrotá-los?"
@@ -785,7 +793,7 @@ msgstr "Estamos cercados. Olhe quantos eles são! Como poderemos derrotá-los?"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 303
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 303
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:300
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:297
 msgid ""
 "I am afraid we cannot. We need help. My old instructor, Tyegëa, teaches on "
 "an island to the north. She and her priestesses are powerful. With their "
@@ -802,7 +810,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 308
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 308
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:305
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:302
 msgid "You can do that, right?"
 msgstr "Você pode fazer isso, não?"
 
@@ -811,7 +819,7 @@ msgstr "Você pode fazer isso, não?"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 313
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 313
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:310
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:307
 msgid "I am not sure that I can. However, you could."
 msgstr "Não estou certo que possa. Entretando, você pode."
 
@@ -820,7 +828,7 @@ msgstr "Não estou certo que possa. Entretando, você pode."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 318
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 318
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:315
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:312
 msgid ""
 "Me? I’ve never even met Tyegëa. How can I convince her to help us if you "
 "cannot?"
@@ -833,7 +841,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 323
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 323
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:320
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:317
 msgid ""
 "You will just have to trust me on this. She will listen to you. I will say "
 "no more on the matter."
@@ -846,7 +854,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 328
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 328
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:325
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:322
 msgid "Very well. How do we get there?"
 msgstr "Muito bem. Como chego lá?"
 
@@ -855,7 +863,7 @@ msgstr "Muito bem. Como chego lá?"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 333
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 333
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:330
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:327
 msgid ""
 "We follow the coast north, then go west to Bilheld Island. Tyegëa lives on a "
 "small island to the west of Bilheld, which is over ocean to the west-"
@@ -872,7 +880,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 358
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 358
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:355
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:352
 msgid ""
 "Most of your citizens are not soldiers who will simply obey your orders. It "
 "will not be voiced aloud, but if you leave now, some of the people will "
@@ -887,7 +895,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 364
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 364
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:361
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:358
 msgid ""
 "However, I am afraid that not everyone will follow you on so perilous an "
 "adventure. First you must prove you are not afraid of danger. If you leave "
@@ -902,7 +910,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 371
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 371
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:368
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:365
 msgid ""
 "I am not afraid! My people will see me fight the undead before we leave, "
 "even if defeating them all is impossible."
@@ -915,7 +923,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 377
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 377
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:374
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:371
 msgid ""
 "But will everyone follow me on so perilous an adventure? I am still a youth; "
 "it may be they will not trust me."
@@ -927,7 +935,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 386
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 386
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:383
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:380
 msgid ""
 "They will follow. You proved your courage in our last battle. Your father, "
 "the Kai-that-was, would have been proud."
@@ -940,7 +948,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 392
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 392
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:389
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:386
 msgid ""
 "You have proven your courage in battle, as tradition required of a kai; they "
 "will follow you now."
@@ -956,7 +964,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 414
 # File: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg, line: 804
 #. [message]: speaker=Mal-Kevek
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:411
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:408
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:708
 msgid "This is impossible!"
 msgstr "Isto é impossível!"
@@ -966,7 +974,7 @@ msgstr "Isto é impossível!"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 444
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 444
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:441
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:438
 msgid "With their master gone, the undead are vanishing!"
 msgstr "Sem seu mestre, os mortos vivos estão desaparecendo!"
 
@@ -975,7 +983,7 @@ msgstr "Sem seu mestre, os mortos vivos estão desaparecendo!"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 458
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 458
 #. [unit]: type=Dread Bat, id=Fearsome Bat
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:455
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:452
 msgid "Fearsome Bat"
 msgstr "Morcego Medonho"
 
@@ -984,7 +992,7 @@ msgstr "Morcego Medonho"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 473
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 473
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:470
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:467
 msgid "Look! There is a massive bat back here."
 msgstr "Olhe! Tem um morcego gigantesco aqui."
 
@@ -993,7 +1001,7 @@ msgstr "Olhe! Tem um morcego gigantesco aqui."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 477
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 477
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:474
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:471
 msgid "Be courageous, and attack it anyway!"
 msgstr "Seja corajoso e ataque mesmo assim!"
 
@@ -1002,7 +1010,7 @@ msgstr "Seja corajoso e ataque mesmo assim!"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 481
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 481
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:478
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:475
 msgid ""
 "But it isn’t attacking <i>me</i>. Do you think, with its master gone, it "
 "might desire a new one?"
@@ -1013,7 +1021,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 485
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 485
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:482
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:479
 msgid ""
 "If it does not attack, we shall not kill it. Let us see if it follows us."
 msgstr ""
@@ -1024,7 +1032,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 491
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 491
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:488
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:485
 msgid "That is a mighty bat!"
 msgstr "Isso é um morcego muito poderoso!"
 
@@ -1033,7 +1041,7 @@ msgstr "Isso é um morcego muito poderoso!"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 495
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 495
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:492
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:489
 msgid "It is no matter. I will destroy it immediately."
 msgstr "Isso não importa. Eu vou destrui-lo imediatamente."
 
@@ -1042,7 +1050,7 @@ msgstr "Isso não importa. Eu vou destrui-lo imediatamente."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 499
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 499
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:496
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:493
 msgid ""
 "Hold a moment! Do you think, with its master gone, it might desire a new one?"
 msgstr ""
@@ -1053,7 +1061,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 503
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 503
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:500
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:497
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr ""
 "Se ele não nos atacar, nós não o mataremos. Vamos ver se ele segue a gente."
@@ -1063,7 +1071,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 540
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 540
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:537
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:534
 msgid "With their master gone, the undead are fading away!"
 msgstr "Sem seu mestre, os mortos vivos estão indo embora!"
 
@@ -1072,7 +1080,7 @@ msgstr "Sem seu mestre, os mortos vivos estão indo embora!"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 555
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 555
 #. [unit]: type=Vampire Bat, id=Friendly Bat
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:552
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:549
 msgid "Friendly Bat"
 msgstr "Morcego Amigável"
 
@@ -1081,7 +1089,7 @@ msgstr "Morcego Amigável"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 570
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 570
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:567
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:564
 msgid "And look! There is a bat cowering in the corner here."
 msgstr "E olhe! Tem um morcego escondido no canto aqui."
 
@@ -1090,8 +1098,10 @@ msgstr "E olhe! Tem um morcego escondido no canto aqui."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 574
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 574
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:571
-msgid "Well, kill it, and lets keep moving."
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:568
+#, fuzzy
+#| msgid "Well, kill it, and lets keep moving."
+msgid "Well, kill it, and let’s keep moving."
 msgstr "Bem, mate-o, e vamos continuar."
 
 #
@@ -1099,7 +1109,7 @@ msgstr "Bem, mate-o, e vamos continuar."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 578
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 578
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:575
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:572
 msgid "But look, it’s licking my hand."
 msgstr "Mas olhe bem, ele está lambendo minha mão."
 
@@ -1116,8 +1126,8 @@ msgstr "Mas olhe bem, ele está lambendo minha mão."
 #. [message]: speaker=$unit.id
 #. [message]: speaker=Friendly Bat
 #. This should just be "translated" to whatever noise a bat makes in your language.
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:580
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:606
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:577
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:603
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:707
 msgid "Neep?"
 msgstr "Neep?"
@@ -1127,7 +1137,7 @@ msgstr "Neep?"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 587
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 587
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:584
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:581
 msgid "It’s kind of cute."
 msgstr "Ele até é bonitinho."
 
@@ -1136,7 +1146,7 @@ msgstr "Ele até é bonitinho."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 591
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 591
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:588
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:585
 msgid "Very well then. I suppose we have our own bat."
 msgstr "Muito bem, então. Parece que temos nosso próprio morcego."
 
@@ -1145,7 +1155,7 @@ msgstr "Muito bem, então. Parece que temos nosso próprio morcego."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 597
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 597
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:594
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:591
 msgid "Look! There is a bat cowering in the corner here."
 msgstr "Olhe! Tem um morcego ali no canto."
 
@@ -1154,7 +1164,7 @@ msgstr "Olhe! Tem um morcego ali no canto."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 601
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 601
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:598
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:595
 msgid "Aren’t you going to kill it? We need to keep moving."
 msgstr "Não vai matá-lo? Precisamos continuar."
 
@@ -1163,7 +1173,7 @@ msgstr "Não vai matá-lo? Precisamos continuar."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 605
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 605
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:602
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:599
 msgid "I would feel bad about that. It is, uh, licking my hand."
 msgstr "Me sinto mal quanto a isso. Ele está, uh, lambendo minha mão."
 
@@ -1172,7 +1182,7 @@ msgstr "Me sinto mal quanto a isso. Ele está, uh, lambendo minha mão."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 613
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 613
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:610
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:607
 msgid "Apparently you have your own bat."
 msgstr "Parece que você tem seu próprio morcego agora."
 
@@ -1181,7 +1191,7 @@ msgstr "Parece que você tem seu próprio morcego agora."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 647
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 647
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:644
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:641
 msgid "With their master gone, the skeletons are crumbling!"
 msgstr "Sem seu mestre, os esqueletos estão decaindo!"
 
@@ -1190,7 +1200,7 @@ msgstr "Sem seu mestre, os esqueletos estão decaindo!"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 660
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 660
 #. [unit]: type=Walking Corpse, id=Undead Bat
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:657
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:654
 msgid "Undead Bat"
 msgstr "Morcego Morto-vivo"
 
@@ -1199,7 +1209,7 @@ msgstr "Morcego Morto-vivo"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 669
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 669
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:666
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:663
 msgid ""
 "Look! There is a bat in the corner here. It is moving, but it looks half "
 "dead."
@@ -1212,7 +1222,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 678
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 678
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:675
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:672
 msgid "No, that thing is all the way dead."
 msgstr "Não, aquela coisa está totalmente morta."
 
@@ -1221,7 +1231,7 @@ msgstr "Não, aquela coisa está totalmente morta."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 684
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 684
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:681
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:678
 msgid "Actually, I believe it is truly dead."
 msgstr "Na verdade, eu acredito que está verdadeiramente morto."
 
@@ -1230,7 +1240,7 @@ msgstr "Na verdade, eu acredito que está verdadeiramente morto."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 690
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 690
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:687
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:684
 msgid ""
 "I believe it is undead and has no will of its own, but the Kai may have the "
 "will power to direct it."
@@ -1243,7 +1253,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 694
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 694
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:691
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:688
 msgid "Fascinating. I shall certainly try."
 msgstr "Fascinante. I certamente tentarei."
 
@@ -1252,7 +1262,7 @@ msgstr "Fascinante. I certamente tentarei."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 706
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 706
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:703
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:700
 msgid "He had a chest in his tent, too. It is filled with gold!"
 msgstr "Ele tinha um baú na sua tenda, também. Está cheio de ouro!"
 
@@ -1261,7 +1271,7 @@ msgstr "Ele tinha um baú na sua tenda, também. Está cheio de ouro!"
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 718
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 718
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:715
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:712
 msgid "You receive 120 gold."
 msgstr "Você recebeu 120 peças de ouro."
 
@@ -1270,7 +1280,7 @@ msgstr "Você recebeu 120 peças de ouro."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 725
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 725
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:722
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:719
 msgid "It galls me to flee from our home, but we will return."
 msgstr "Me parte o coração ter que sair de nossas casas. Mas nós voltaremos."
 
@@ -1279,7 +1289,7 @@ msgstr "Me parte o coração ter que sair de nossas casas. Mas nós voltaremos."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 809
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 809
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:806
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:803
 msgid "Have a unit pick up the ring to end the scenario."
 msgstr "Uma unidade pega o anel no fim do cenário."
 
@@ -1288,7 +1298,7 @@ msgstr "Uma unidade pega o anel no fim do cenário."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 822
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 822
 #. [objective]: condition=win
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:819
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:816
 msgid "Have a unit pick up the ring of power."
 msgstr "Uma unidade pega o anel do poder."
 
@@ -1297,7 +1307,7 @@ msgstr "Uma unidade pega o anel do poder."
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 840
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 840
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:837
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:834
 msgid ""
 "Killing these enemies was good, but there were many more on the way. It will "
 "take greater might than we have to defeat them."
@@ -1310,7 +1320,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 844
 # File: data/campaigns/Dead_Water/scenarios/02_Flight.cfg, line: 844
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:841
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:838
 msgid "Onward to Tyegëa’s island, then."
 msgstr "Rumo à ilha de Tyegëa, então. "
 
@@ -3354,7 +3364,7 @@ msgstr "Ache Caladon, o mago"
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 252
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 252
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:194
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:141
 msgid ""
 "I do not much care for the look of this area. The darkness seems to hang "
 "beneath the trees, unnaturally dense."
@@ -3367,7 +3377,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 256
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 256
 #. [message]: speaker=Teeloa
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:198
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:145
 msgid "I just heard a splash. I think something’s out there."
 msgstr "Escutei um barulho. Tem alguma coisa por ali."
 
@@ -3376,7 +3386,7 @@ msgstr "Escutei um barulho. Tem alguma coisa por ali."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 260
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 260
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:202
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:149
 msgid "Let us find the mage quickly and leave."
 msgstr "Vamos encontrar o mago e ir logo embora."
 
@@ -3385,7 +3395,7 @@ msgstr "Vamos encontrar o mago e ir logo embora."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 445
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 445
 #. [message]: speaker=Teeloa
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:387
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:334
 msgid "Hey, that cavern is full of bats! I HATE those things."
 msgstr "Hey, aquela caverna está cheia de morcegos! Eu ODEIO essas coisas."
 
@@ -3394,7 +3404,7 @@ msgstr "Hey, aquela caverna está cheia de morcegos! Eu ODEIO essas coisas."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 449
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 449
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:391
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:338
 msgid "I hope there aren’t any more bats in there."
 msgstr "Espero que não hajam mais morcegos."
 
@@ -3403,7 +3413,7 @@ msgstr "Espero que não hajam mais morcegos."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 459
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 459
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:401
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:348
 msgid ""
 "This is a good place for a large colony, so I think we will see more soon."
 msgstr ""
@@ -3414,7 +3424,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 465
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 465
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:407
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:354
 msgid ""
 "This is a good place for a large colony, so I imagine we will see more soon."
 msgstr ""
@@ -3433,7 +3443,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg, line: 154
 #. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:431
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:378
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
 msgid "Caladon"
@@ -3444,7 +3454,7 @@ msgstr "Caladon"
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 507
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 507
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:449
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:396
 msgid "There is somebody here."
 msgstr "Tem alguém aqui."
 
@@ -3453,7 +3463,7 @@ msgstr "Tem alguém aqui."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 511
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 511
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:453
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:400
 msgid "Whoa there! BACK off or else!"
 msgstr "Pare aí! Vá EMBORA ou verão o que pode acontecer!"
 
@@ -3462,7 +3472,7 @@ msgstr "Pare aí! Vá EMBORA ou verão o que pode acontecer!"
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 515
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 515
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:457
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:404
 msgid "Do not worry about him. He is friendly."
 msgstr "Não se preocupe, ele é amigável."
 
@@ -3471,7 +3481,7 @@ msgstr "Não se preocupe, ele é amigável."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 527
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 527
 #. [message]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:469
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:416
 msgid "Neep, neep, neep!"
 msgstr "Neep, neep, neep!"
 
@@ -3480,7 +3490,7 @@ msgstr "Neep, neep, neep!"
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 533
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 533
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:475
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:422
 msgid "Hey, I found somebody!"
 msgstr "Hey, achei alguém!"
 
@@ -3489,7 +3499,7 @@ msgstr "Hey, achei alguém!"
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 541
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 541
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:483
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:430
 msgid "You must be Caladon. We are glad to see you."
 msgstr "Você deve ser Caladon. Estávamos ansiosos por vê-lo."
 
@@ -3498,7 +3508,7 @@ msgstr "Você deve ser Caladon. Estávamos ansiosos por vê-lo."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 545
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 545
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:487
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:434
 msgid "I am Caladon. Am I glad to see YOU?"
 msgstr "Sou Caladon. Estou ansioso para ver VOCÊS?"
 
@@ -3507,7 +3517,7 @@ msgstr "Sou Caladon. Estou ansioso para ver VOCÊS?"
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 549
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 549
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:491
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:438
 msgid ""
 "I am Kai Krellis of Jotha. I am seeking a flaming sword, and I am told you "
 "know where to find it."
@@ -3520,7 +3530,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 553
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 553
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:495
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:442
 msgid ""
 "Ha! A MERman wants the Flaming Sword of AGNOVON! Why would YOU be able to "
 "get it when so many others could NOT? Although you do have an impressive "
@@ -3535,7 +3545,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 557
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 557
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:499
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:446
 msgid "Whether I can succeed or not, I must try. Will you help me find it?"
 msgstr ""
 "Não importa se eu conseguirei ou não, eu preciso tentar. Você me ajudará a "
@@ -3546,7 +3556,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 561
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 561
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:503
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:450
 msgid ""
 "I will show you EXACTLY where it is, but knowing where to FIND it isn’t the "
 "hard part. Oh, no! You will see, my fine merman, you will see."
@@ -3559,7 +3569,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 565
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 565
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:507
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:454
 msgid "We would be very grateful if you would guide us."
 msgstr "Nós ficaríamos muito gratos se você nos guiasse até lá."
 
@@ -3568,7 +3578,7 @@ msgstr "Nós ficaríamos muito gratos se você nos guiasse até lá."
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 569
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 569
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:511
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:458
 msgid ""
 "I would be HAPPY to guide such a pretty mermaid AND her friends. Follow me "
 "everybody!"
@@ -3587,7 +3597,7 @@ msgstr ""
 # File: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg, line: 1136
 # File: data/campaigns/Dead_Water/utils/dw-utils.cfg, line: 134
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:541
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:482
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1083
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:134
 msgid "Cylanna! I need you!"
@@ -3601,7 +3611,7 @@ msgstr "Cylanna! Preciso de você!"
 # File: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg, line: 603
 # File: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg, line: 1140
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:545
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1087
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "Tyegëa nunca me perdoará. Estamos perdidos."
@@ -3617,7 +3627,7 @@ msgstr "Tyegëa nunca me perdoará. Estamos perdidos."
 # File: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg, line: 1154
 # File: data/campaigns/Dead_Water/utils/dw-utils.cfg, line: 148
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:559
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:500
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1101
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:148
 msgid "We are lost without our king!"
@@ -4896,19 +4906,6 @@ msgid "tail"
 msgstr "cauda"
 
 #
-# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 198
-# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 278
-# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 198
-# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 278
-# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 198
-# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 278
-#. [set_variable]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:112
-#: data/campaigns/Dead_Water/units/Brawler.cfg:183
-msgid "female^stunned"
-msgstr "atordoada"
-
-#
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 205
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 285
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 205
@@ -4916,10 +4913,25 @@ msgstr "atordoada"
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 205
 # File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 285
 #. [set_variable]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:119
-#: data/campaigns/Dead_Water/units/Brawler.cfg:190
+#. [unstore_unit]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:106
+#: data/campaigns/Dead_Water/units/Brawler.cfg:166
 msgid "stunned"
 msgstr "atordoado"
+
+#
+# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 198
+# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 278
+# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 198
+# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 278
+# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 198
+# File: data/campaigns/Dead_Water/units/Brawler.cfg, line: 278
+#. [set_variable]
+#. [unstore_unit]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:107
+#: data/campaigns/Dead_Water/units/Brawler.cfg:159
+msgid "female^stunned"
+msgstr "atordoada"
 
 #
 # File: data/campaigns/Dead_Water/units/Child_King.cfg, line: 4
@@ -5235,7 +5247,9 @@ msgstr "Nós deixaremos o morcego ficar com o anel. Isso o deixará mais forte."
 # File: data/campaigns/Dead_Water/utils/items.cfg, line: 219
 #. [option]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:219
-msgid "Someone take that off of him before he hurts himself."
+#, fuzzy
+#| msgid "Someone take that off of him before he hurts himself."
+msgid "Someone take that off him before he hurts himself."
 msgstr "Alguém tire o anel dele, antes que ele se machuque."
 
 #

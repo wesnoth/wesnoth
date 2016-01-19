@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,14 +26,13 @@
 #include "game_data.hpp"
 #include "log.hpp"
 #include "reports.hpp"
+#include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
 #include "soundsource.hpp"
 #include "util.hpp"
 
 #include <boost/foreach.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/unordered_map.hpp>
 #include <iostream>
 
@@ -47,16 +46,6 @@ static lg::log_domain log_event_handler("event_handler");
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
 namespace game_events {
-
-t_context::t_context(game_lua_kernel * lk, filter_context * fc, game_display * sc, game_data * gd, unit_map * um, boost::function<void()> wb_callback, boost::function<int()> current_side_accessor)
-	: lua_kernel(lk)
-	, filter_con(fc)
-	, screen(sc)
-	, gamedata(gd)
-	, units(um)
-	, on_gamestate_change(wb_callback)
-	, current_side(current_side_accessor)
-{}
 
 /** Create an event handler. */
 void manager::add_event_handler(const config & handler, bool is_menu_item)
@@ -73,34 +62,26 @@ void manager::remove_event_handler(const std::string & id)
 
 /* ** manager ** */
 
-manager::manager(const config& cfg, const boost::shared_ptr<t_context> & res)
+manager::manager()
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
-	, pump_(new game_events::t_pump(*this, res))
-	, resources_(res)
+	, pump_(new game_events::t_pump(*this))
 	, wml_menu_items_()
-	, me_(boost::make_shared<manager * const>(this))
 {
-	wml_menu_items_.set_menu_items(cfg);
-	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
+}
+
+void manager::read_scenario(const config& scenario_cfg)
+{
+	BOOST_FOREACH(const config &ev, scenario_cfg.child_range("event")) {
 		add_event_handler(ev);
 	}
-	BOOST_FOREACH(const std::string &id, utils::split(cfg["unit_wml_ids"])) {
+	BOOST_FOREACH(const std::string &id, utils::split(scenario_cfg["unit_wml_ids"])) {
 		unit_wml_ids_.insert(id);
 	}
 
-	// Guard against a memory leak (now) / memory corruption (when this is deleted).
-	// This is why creating multiple manager objects is prohibited.
-	assert(resources_->lua_kernel != NULL);
-
-	wml_action::map::const_iterator action_end = wml_action::end();
-	wml_action::map::const_iterator action_cur = wml_action::begin();
-	for ( ; action_cur != action_end; ++action_cur ) {
-		resources_->lua_kernel->set_wml_action(action_cur->first, action_cur->second);
-	}
-
+	wml_menu_items_.set_menu_items(scenario_cfg);
 	// Create the event handlers for menu items.
-	wml_menu_items_.init_handlers(me_);
+	wml_menu_items_.init_handlers();
 }
 
 manager::~manager() {}
@@ -122,7 +103,7 @@ manager::iteration::iteration(const std::string & event_name, manager & man) :
 	main_is_current_(false),
 	main_it_(main_list_.begin()),
 	var_it_(event_name.empty() ? var_list_.end() : var_list_.begin()),
-	gamedata_(man.resources_->gamedata)
+	gamedata_(resources::gamedata)
 {
 }
 
@@ -214,11 +195,6 @@ void manager::write_events(config& cfg)
 game_events::t_pump & manager::pump()
 {
 	return *pump_;
-}
-
-const boost::shared_ptr<manager * const> & manager::get_shared()
-{
-	return me_;
 }
 
 } //end namespace game_events

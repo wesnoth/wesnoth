@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -484,7 +484,7 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	handled = true;
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
-		
+
 		// why do we do this check here but not in handle_key_up_arrow?
 		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
 		   || !get_item_shown(get_item_at_ordered(i))) {

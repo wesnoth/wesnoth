@@ -1,6 +1,6 @@
 /* vim:set encoding=utf-8: */
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -50,6 +50,11 @@
 
 #ifdef CAIRO_HAS_FT_FONT
 #include <fontconfig/fontconfig.h>
+#endif
+
+#if !defined(CAIRO_HAS_FT_FONT) && !defined(CAIRO_HAS_WIN32_FONT)
+// Is there soemthing like #warning which just gives awarnign insteads of an error?
+#error unable to find font loading tools.
 #endif
 
 static lg::log_domain log_font("font");
@@ -293,7 +298,7 @@ static TTF_Font* get_font(font_id id)
 	const std::map<font_id, ttf_record>::iterator it = font_table.find(id);
 	if(it != font_table.end()) {
 		if (it->second.font != NULL) {
-			// If we found a valid record, use SDL_TTF to add in the difference 
+			// If we found a valid record, use SDL_TTF to add in the difference
 			// between its intrinsic style and the desired style.
 			TTF_SetFontStyle(it->second.font, it->second.style ^ id.style);
 		}
@@ -885,7 +890,7 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 	return render_text(str, size, color, style, false);
 }
 
-SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
+SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& color, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {

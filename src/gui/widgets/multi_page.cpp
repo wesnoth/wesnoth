@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -154,11 +154,6 @@ void tmulti_page::finalize(const std::vector<string_map>& page_data)
 	assert(generator_);
 	generator_->create_items(-1, page_builder_, page_data, NULL);
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
-}
-
-void tmulti_page::impl_draw_background(surface& /*frame_buffer*/)
-{
-	/* DO NOTHING */
 }
 
 void tmulti_page::impl_draw_background(surface& /*frame_buffer*/

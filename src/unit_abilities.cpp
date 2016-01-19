@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Dominic Bolin <dominic.bolin@exong.net>
+   Copyright (C) 2006 - 2016 by Dominic Bolin <dominic.bolin@exong.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -365,7 +365,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		size_t count = 0;
 		terrain_filter adj_filter(vconfig(i), resources::filter_con);
 		adj_filter.flatten(illuminates);
-		
+
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
 		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
@@ -888,7 +888,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	const unit_map & units = *resources::units;
 	unit_map::const_iterator self  = units.find(self_loc_);
 	unit_map::const_iterator other = units.find(other_loc_);
-	
+
 	// Make sure they're facing each other.
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
@@ -1017,7 +1017,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	BOOST_FOREACH (const unit_ability & ability, list) {
 		const config& cfg = *ability.first;
 		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
-		
+
 		if (!cfg["backstab"].blank()) {
 			lg::wml_error << "The backstab= key in weapon specials is deprecated; use [filter_adjacent] instead\n";
 		}

@@ -306,8 +306,6 @@ void scrollbar::draw_contents()
 		return;
 	}
 
-	surface const screen = video().getSurface();
-
 	// Draw scrollbar "groove"
 	video().blit_surface(groove.x, groove.y, top_grv);
 	video().blit_surface(groove.x, groove.y + top_grv->h, groove_scaled_);
@@ -323,6 +321,8 @@ void scrollbar::draw_contents()
 
 void scrollbar::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
+
 	if (mouse_locked() || hidden())
 		return;
 

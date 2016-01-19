@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,7 +14,6 @@
 #ifndef MP_GAME_UTILS_HPP_INCLUDED
 #define MP_GAME_UTILS_HPP_INCLUDED
 
-#include "game_display.hpp"
 #include "mp_game_settings.hpp"
 #include "network.hpp"
 

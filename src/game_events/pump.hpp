@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -47,7 +47,9 @@ namespace game_events
 		queued_event(const std::string& name, const entity_location& loc1,
 		             const entity_location& loc2, const config& data)
 			: name(name), loc1(loc1), loc2(loc2), data(data)
-		{}
+		{
+			std::replace(this->name.begin(), this->name.end(), ' ',  '_');
+		}
 
 		std::string name;
 		entity_location loc1;
@@ -64,7 +66,7 @@ namespace game_events
 	class t_pump {
 		boost::scoped_ptr<pump_impl> impl_;
 	public:
-		t_pump(manager &, const boost::shared_ptr<t_context> &);
+		t_pump(manager &);
 		~t_pump();
 		/// Context: The general environment within which events are processed.
 		/// Returns whether or not we believe WML might have changed something.

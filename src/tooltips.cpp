@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -220,7 +220,7 @@ bool click(int mousex, int mousey)
 	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(!i->second.action.empty() && sdl::point_in_rect(mousex, mousey, i->second.rect)) {
 			display* disp = resources::screen;
-			help::show_help(*disp, i->second.action);
+			help::show_help(disp->video(), i->second.action);
 			return true;
 		}
 	}

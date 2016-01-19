@@ -18,46 +18,72 @@ CHANGES
 Example contents.
 [/rasection]
 
-[rasection="New user files location on Windows by default"]
-[b]Short version:[/b]
-
-The installer no longer provides a choice between storing user files in the installation dir and [c]Documents\My Games\WesnothX.Y[/c], forcing the latter instead (which no longer requires a command-line switch to be added to the game shortcut).
-
-[b]Long version:[/b]
-
-Up to Windows XP, mostly owing to the lack of user and process access control facilities on the mainstream Windows 9x series, applications would freely write user data into their installation paths without restriction. NT-based versions of Windows (including Windows XP) still supported this when running processes as accounts with administrator privileges, albeit at the risk of breaking things horribly in a proper multi-user environment. However, since Windows Vista, this practice is no longer recommended (and rightly so). Because there are too many applications that rely on the aforementioned broken scheme, Vista introduces User Access Control Virtualization to support legacy applications, by redirecting their writes to restricted paths to a user-dependent Virtual Store location.
-
-Until now, the official Wesnoth installer has included the option to store user files either in the user’s Documents folder, or in the installation dir; the latter option forces Wesnoth to rely on UAC Virtualization if Wesnoth has been installed system-wide and then is run with normal user privileges. This has resulted in confusing documentation and countless forum threads on the matter of finding the actual location of Wesnoth’s user files on disk, mostly due to people choosing the install dir option [u]without a real need to do so[/u].
-
-From this version onwards, the installer no longer provides the option to store user files in the installation dir, and the game itself defaults to using the Documents folder (more specifically, [c]Documents\My Games\WesnothX.Y[/c] where [c]X.Y[/c] represents the major and minor version numbers, such as [c]1.13[/c]) unless specifically instructed to do otherwise with the [c]--config-dir[/c] option in the command line. Additionally, [c]--config-dir[/c] paths can be either absolute, relative to [c]Documents\My Games[/c] (to support the previous installer approach to storing files in Documents), or relative to the process current working dir (usually the install dir) if either . or .. are provided as the first path component; this latter option is provided so that people can still install and run Wesnoth from removable media if they wish.
-
-See also bug [bug]23753[/bug].[/rasection]
-
-[rasection="New game version dialog"]
-Describe how awesome the new game version dialog is and how it replaces the old game paths dialog from 1.12.x
+[rasection="WML/Lua compatibility changes and deprecations"]
+[list]
+[/list]
 [/rasection]
 
-[rasection="Fixed OOS errors on random maps"]
-Some people experienced OOS errors on random maps due to sides being placed in different castles in the beginning of the game. This has now been fixed.
+[rasection="SDL2 support"]
+The game now uses SDL2 for all operations. There is still a fall-back option of using SDL 1.2, but it is deprecated and slated for removal. 
 [/rasection]
 
-[rasection="Replay turns during mp games"]
-It is now possible to load an autosave in an networked mp game: when an autosave is loaded the local gamestate will be reset to the gamestate at that point. Then the game will be replayed (using the replay UI) until the current gamestate. When the current gamestate is reached the replay ui is removed and the game continues normally.
+[rasection="Hotkeys rely on scancodes"]
+The hotkey implementation has been changed to rely on scancodes over characters. This means that the hotkey configuration now uses the same physical buttons on the keyboard, regardless of the keyboard layout.
 [/rasection]
 
-[rasection="Default values for variables"]
-In variable substitution it's now posible to specify default values for example name="$player_name?Klaus|" will evaluate to 'Klaus' in case the variable player_name is not set.
-[/rasection]
-
-[rasection="Custom [effect]s"]
-It is now possible to create custom effects with the wesnoth.effects lua table.
+[rasection="New WML event"]
+A new 'unit placed' event has been added, making it possible to better implement certain kinds of event-driven behavior. [wiki=EventWML]See the wiki for details[/wiki].
 [/rasection]
 
 ==========
 KNOWN BUGS
 ==========
 
+[raissue="Newly introduced in 1.13.x"]
+[b]General bugs:[/b]
+
 [list]
-[*] The mp server has trouble with "Local" player types in campaigns. We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of wesnoth. https://gna.org/bugs/?21965
-[*] Text for entry2.
+[*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
+[*]2p mp survival map Dark Forecast is bugged (24200).
 [/list]
+[*]Doubled-up GUI1 dialogs don't redraw the secondary in SDL2 (bug [bug]24294[/bug]).
+[*]Window state handling inconsistent across different OSes in SDL2 builds (bug [bug]24270[/bug]).
+[*]Area under Objectives not redrawn on resize (bug [bug]24261[/bug]).
+[*]Menu and Action buttons disappear on resize (bug [bug]24260[/bug]).
+[*]Wesnoth does not exist on the panel (bug [bug]24202[/bug]).
+[*]SDL2 build handled input incorrectly once window focus is lost when menus are open (bug [bug]24212[/bug]).
+[/raissue]
+
+[raissue="Carried over from 1.12.x"]
+[b]General bugs:[/b]
+
+[list]
+[*]The game can crash when planning recruits in Planning Mode.
+[*]It’s not possible to clear some default hotkeys with the Clear Hotkey option (bug [bug]21983[/bug]).
+[*]Attempting to assign hotkeys including both the Ctrl and Alt modifiers does not work (bug [bug]22219[/bug]).
+[/list]
+
+[b]Bugs specific to Microsoft Windows:[/b]
+
+[list]
+[*]ClearType font rendering is disabled as it causes glitches (bug [bug]21648[/bug]).
+This is likely caused by outdated libraries in the packaging process.
+[*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).
+This is likely caused by outdated libraries in the packaging process. There is no built-in workaround available yet.
+[/list]
+
+[b]Bugs specific to Apple OS X:[/b]
+
+The following issues affecting Wesnoth on Apple OS X are known and they are pending fixes. Many of them require significant re-engineering that can only be done in 1.13.x development releases later, or cannot be properly addressed due to a lack of experienced OS X coders in our team. Thus, unless someone can contribute patches to address them, it is unlikely that these bugs will be fixed.
+
+[list]
+[*]The default variable-width font is used instead of a monospace font even where a monospace font is required (bug [bug]23628[/bug]).
+[*]Helvetica is used as the default variable-width font instead of DejaVu Sans (bug [bug]23560[/bug]).
+[*]Fullscreen mode does not fill the entire screen when maximum resolution is selected in Preferences → Display, and user interface elements are scaled and distorted.
+[*]System commands do not work while Wesnoth is running in fullscreen mode (bug [bug]21943[/bug]).
+[*]Trackpad tap clicking is sometimes not recognized ([url=http://forums.wesnoth.org/viewtopic.php?f=4&t=39788]forum post[/url]).
+[*]Unofficial builds  with OpenMP support enabled randomly freeze (bug [bug]18144[/bug]).
+[*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).
+This is likely caused by outdated libraries in the packaging process. There is no built-in workaround available yet.
+[/list]
+[/raissue]

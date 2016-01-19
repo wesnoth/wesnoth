@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "sound.hpp"
 #include "quit_confirmation.hpp"
+#include "preferences.hpp"
 #include "video.hpp"
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
@@ -32,6 +33,7 @@
 #include <deque>
 #include <utility>
 #include <vector>
+#include <algorithm>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
@@ -139,6 +141,10 @@ void context::set_focus(const sdl_handler* ptr)
 //in that context. The current context is the one on the top of the stack
 std::deque<context> event_contexts;
 
+//add a global context for event handlers. Whichever object has joined this will always
+//receive all events, regardless of the current context.
+context global_context;
+
 std::vector<pump_monitor*> pump_monitors;
 
 } //end anon namespace
@@ -164,13 +170,11 @@ event_context::~event_context()
 	event_contexts.pop_back();
 }
 
-sdl_handler::sdl_handler(const bool auto_join)
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	: unicode_(1)
-#else
-	: unicode_(SDL_EnableUNICODE(1))
+	sdl_handler::sdl_handler(const bool auto_join) :
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	unicode_(SDL_EnableUNICODE(1)),
 #endif
-	, has_joined_(false)
+	has_joined_(false)
 {
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
@@ -185,7 +189,12 @@ sdl_handler::sdl_handler(const bool auto_join)
 
 sdl_handler::~sdl_handler()
 {
-	leave();
+	if (has_joined_)
+		leave();
+
+	if (has_joined_global_)
+		leave_global();
+
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_EnableUNICODE(unicode_);
 #endif
@@ -225,6 +234,38 @@ void sdl_handler::leave()
 		}
 	}
 	has_joined_ = false;
+}
+
+void sdl_handler::join_global()
+{
+	if(has_joined_global_) {
+		leave_global(); // should not be in multiple event contexts
+	}
+	//join self
+	global_context.add_handler(this);
+	has_joined_global_ = true;
+
+	//instruct members to join
+	sdl_handler_vector members = handler_members();
+	if(!members.empty()) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+			(*i)->join_global();
+		}
+	}
+}
+
+void sdl_handler::leave_global()
+{
+	sdl_handler_vector members = handler_members();
+	if(!members.empty()) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+			(*i)->leave_global();
+		}
+	}
+
+	global_context.remove_handler(this);
+
+	has_joined_global_ = false;
 }
 
 void focus_handler(const sdl_handler* ptr)
@@ -277,10 +318,37 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 	return false;
 }
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+
+const Uint32 resize_timeout = 100;
+SDL_Event last_resize_event;
+bool last_resize_event_used = true;
+
+static bool remove_on_resize(const SDL_Event &a) {
+	if (a.type == DRAW_EVENT) {
+		return true;
+	}
+	if (a.type == SHOW_HELPTIP_EVENT) {
+		return true;
+	}
+	if ((a.type == SDL_WINDOWEVENT) &&
+			(a.window.event == SDL_WINDOWEVENT_RESIZED ||
+					a.window.event == SDL_WINDOWEVENT_SIZE_CHANGED ||
+					a.window.event == SDL_WINDOWEVENT_EXPOSED)) {
+		return true;
+	}
+
+	return false;
+}
+
+#endif
+
 void pump()
 {
 	SDL_PumpEvents();
-
+#if SDL_VERSION_ATLEAST(2,0,0)
+	peek_for_resize();
+#endif
 	pump_info info;
 
 	//used to keep track of double click events
@@ -294,6 +362,8 @@ void pump()
 	while(SDL_PollEvent(&temp_event)) {
 		++poll_count;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+		peek_for_resize();
+
 		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT
 				&& (temp_event.window.event == SDL_WINDOWEVENT_ENTER
 						|| temp_event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED))
@@ -308,6 +378,7 @@ void pump()
 		}
 		events.push_back(temp_event);
 	}
+
 	std::vector<SDL_Event>::iterator ev_it = events.begin();
 	for(int i=1; i < begin_ignoring; ++i){
 		if(is_input(*ev_it)) {
@@ -317,7 +388,32 @@ void pump()
 			++ev_it;
 		}
 	}
+
 	std::vector<SDL_Event>::iterator ev_end = events.end();
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	bool resize_found = false;
+	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
+		SDL_Event &event = *ev_it;
+		if (event.type == SDL_WINDOWEVENT &&
+				event.window.event == SDL_WINDOWEVENT_RESIZED) {
+			resize_found = true;
+			last_resize_event = event;
+			last_resize_event_used = false;
+
+		}
+	}
+	// remove all inputs, draw events and only keep the last of the resize events
+	// This will turn horrible after ~38 days when the Uint32 wraps.
+	if (resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + resize_timeout) {
+		events.erase(std::remove_if(events.begin(), events.end(), remove_on_resize), events.end());
+	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {
+		events.insert(events.begin(), last_resize_event);
+		last_resize_event_used = true;
+	}
+
+	ev_end = events.end();
+#endif
+
 	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
 		SDL_Event &event = *ev_it;
 		switch(event.type) {
@@ -339,12 +435,12 @@ void pump()
 						update_whole_screen();
 						break;
 
-					case SDL_WINDOWEVENT_RESIZED: {
+					case SDL_WINDOWEVENT_RESIZED:
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;
 						break;
-					}
 				}
+
 				break;
 #else
 			case SDL_ACTIVEEVENT: {
@@ -400,6 +496,16 @@ void pump()
 				break;
 			}
 
+#ifndef __APPLE__
+			case SDL_KEYDOWN: {
+				if(event.key.keysym.sym == SDLK_F4 && (event.key.keysym.mod == KMOD_RALT || event.key.keysym.mod == KMOD_LALT)) {
+					quit_confirmation::quit();
+					continue; // this event is already handled
+				}
+				break;
+			}
+#endif
+
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
 				//clipboard support for X11
@@ -421,6 +527,11 @@ void pump()
 			}
 		}
 
+		const std::vector<sdl_handler*>& event_handlers = global_context.handlers;
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->handle_event(event);
+		}
+
 		if(event_contexts.empty() == false) {
 
 			const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
@@ -431,6 +542,7 @@ void pump()
 				event_handlers[i1]->handle_event(event);
 			}
 		}
+
 	}
 
 	//inform the pump monitors that an events::pump() has occurred
@@ -518,7 +630,7 @@ int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 #if SDL_VERSION_ATLEAST(2,0,0)
 
 /* The constants for the minimum and maximum are picked from the headers. */
-#define INPUT_MIN 0x200
+#define INPUT_MIN 0x300
 #define INPUT_MAX 0x8FF
 
 bool is_input(const SDL_Event& event)
@@ -529,6 +641,19 @@ bool is_input(const SDL_Event& event)
 void discard_input()
 {
 	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
+}
+
+void peek_for_resize()
+{
+	SDL_Event events[100];
+	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
+	for (int i = 0; i < num; i++) {
+		if (events[i].type == SDL_WINDOWEVENT &&
+				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
+			CVideo::get_singleton().update_framebuffer();
+
+		}
+	}
 }
 
 #else

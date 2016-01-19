@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,9 +37,11 @@ class wmi_pager;
 
 class team;
 
-class play_controller::hotkey_handler : public hotkey::command_executor {
+class play_controller::hotkey_handler : public hotkey::command_executor_default {
 
 protected:
+	display& get_display() { return play_controller_.get_display(); }
+
 	/** References to parent object / constituents */
 	play_controller & play_controller_;
 

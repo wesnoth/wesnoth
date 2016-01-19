@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2016 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -1389,13 +1389,13 @@ void unit_animator::wait_until(int animation_time) const
 	while (SDL_GetTicks() < static_cast<unsigned int>(end_tick)
 				- std::min<int>(static_cast<unsigned int>(20/speed),20)) {
 
-		disp->delay(std::max<int>(0,
+		CVideo::delay(std::max<int>(0,
 			std::min<int>(10,
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
 		resources::controller->play_slice(false);
 		end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	}
-	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
+	CVideo::delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
 	new_animation_frame();
 }
 
@@ -1404,11 +1404,11 @@ void unit_animator::wait_for_end() const
 	if (game_config::no_delay) return;
 
 	bool finished = false;
-	display*disp = display::get_singleton();
+
 	while(!finished) {
 		resources::controller->play_slice(false);
 
-		disp->delay(10);
+		CVideo::delay(10);
 		finished = true;
 		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 			finished &= anim->my_unit->anim_comp().get_animation()->animation_finished_potential();

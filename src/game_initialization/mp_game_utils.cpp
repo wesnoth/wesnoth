@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #include "dialogs.hpp"
 #include "formula_string_utils.hpp"
 #include "saved_game.hpp"
+#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

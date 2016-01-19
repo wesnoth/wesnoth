@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -92,9 +92,8 @@ void ai_testing::log_game_start()
 	for (std::vector<team>::const_iterator tm = resources::teams->begin(); tm != resources::teams->end(); ++tm) {
 		int side = tm-resources::teams->begin()+1;
 		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << ai::manager::get_active_ai_identifier_for_side(side) <<std::endl;
-		LOG_AI_TESTING << "TEAM"<<side<<": " << tm->name() << std::endl;
+		LOG_AI_TESTING << "TEAM"<<side<<": " << tm->side() << std::endl;
 		resources::recorder->add_log_data("ai_log","ai_id"+str_cast(side),ai::manager::get_active_ai_identifier_for_side(side));
-		resources::recorder->add_log_data("ai_log","faction"+str_cast(side),tm->name());
 		///@todo 1.9: add information about ai_config
 	}
 	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;

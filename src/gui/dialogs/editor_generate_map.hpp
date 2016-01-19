@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -79,7 +79,7 @@ private:
 
 	/** Current map generator index */
 	int current_map_generator_;
-	
+
 	/** random seed integer input*/
 	std::string random_seed_;
 

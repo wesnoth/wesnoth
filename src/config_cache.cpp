@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2016 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,13 +18,13 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
 #include "utils/sha1.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
 #include "version.hpp"
 
 #include <boost/foreach.hpp>

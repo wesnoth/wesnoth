@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -288,7 +288,7 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	bool bold = cfg["bold"].to_bool();
 	bool italic = cfg["italic"].to_bool();
 	int font_size = cfg["font_size"].to_int(normal_font_size);
-	SDL_Color color = string_to_color(cfg["color"]);
+	SDL_Color color = help::string_to_color(cfg["color"]);
 	add_text_item(text, "", false, font_size, bold, italic, color);
 }
 
@@ -521,7 +521,7 @@ void help_text_area::draw_contents()
 {
 	SDL_Rect const &loc = inner_location();
 	bg_restore();
-	surface screen = video().getSurface();
+	surface& screen = video().getSurface();
 	clip_rect_setter clip_rect_set(screen, &loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;

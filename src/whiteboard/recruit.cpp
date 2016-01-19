@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -186,6 +186,7 @@ action::error recruit::check_validity() const
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recruit is still in side's recruit list
+	//FIXME: look at leaders extra_recruit too.
 	const std::set<std::string>& recruits = (*resources::teams)[team_index()].recruits();
 	if(recruits.find(unit_name_) == recruits.end()) {
 		return UNIT_UNAVAILABLE;

@@ -84,7 +84,7 @@ private:
 	play_controller& controller_;
 	boost::scoped_ptr<replay_stop_condition> stop_condition_;
 	events::command_disabler disabler_;
-	
+
 	enum REPLAY_VISION
 	{
 		HUMAN_TEAM,

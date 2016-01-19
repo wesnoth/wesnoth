@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -42,7 +42,7 @@ int commands_disabled= 0;
 static bool command_active()
 {
 #ifdef __APPLE__
-	return (SDL_GetModState()&KMOD_META) != 0;
+	return (SDL_GetModState()&KMOD_CTRL) != 0;
 #else
 	return false;
 #endif

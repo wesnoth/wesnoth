@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2010-03-22 23:02+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -26,17 +26,21 @@ msgstr "T"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-msgid "(Normal)"
-msgstr "(normaali)"
-
-#. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "Fighter"
 msgstr "Soturi"
 
 #. [campaign]: id=Sceptre_of_Fire
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(normaali)"
+
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:19
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(haastava)"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -46,7 +50,9 @@ msgstr "Rautapaita"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(vaikea)"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -55,7 +61,7 @@ msgid "Lord"
 msgstr "Ylimys"
 
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:22
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:23
 #, fuzzy
 msgid ""
 "The land of Wesnoth’s banner bold\n"
@@ -79,27 +85,27 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:31
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:32
 msgid "(Expert level, 9 scenarios.)"
 msgstr "(asiantuntijatasoa, 9 skenaariota)"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:34
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:35
 msgid "Campaign Design"
 msgstr "Kampanjasuunnittelu"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:40
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:41
 msgid "Campaign Maintenance"
 msgstr "Kampanjan ylläpito"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:47
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:48
 msgid "WML Assistance"
 msgstr "WML -tuki"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:62
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:63
 msgid "Artwork and Graphics Design"
 msgstr "Taide ja graafinen suunnittelu"
 
@@ -242,7 +248,7 @@ msgstr "Glildur"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:411
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:187
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:465
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:843
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:844
 msgid "Death of Rugnur"
 msgstr "Rugnurin kuolema"
 
@@ -405,7 +411,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:261
 #, fuzzy
 msgid ""
-"Uh, no, wait! Lets talk business — how much will you pay us to do this for "
+"Uh, no, wait! Let’s talk business — how much will you pay us to do this for "
 "you?"
 msgstr ""
 "Öh, no... Ei. Odottakaatten! Puhutaanpa nyt sitten - Kuis paljon aiotte "
@@ -1400,7 +1406,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:415
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:191
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:469
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:847
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:848
 msgid "Death of Krawg"
 msgstr "Krawgin kuolema"
 
@@ -1556,7 +1562,7 @@ msgstr "Vie Thursagan tienviitalle"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:378
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:195
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:473
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:851
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:852
 msgid "Death of Thursagan"
 msgstr "Thursaganin kuolema"
 
@@ -2724,11 +2730,17 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:271
+#, fuzzy
+#| msgid ""
+#| "You don’t have authority over me, Durstorn. And I wouldn’t give the "
+#| "Sceptre to them even if you did. It’s not yours to give, its mine, and "
+#| "Rugnur’s, and Baglur’s. Krawg’s done more for its existence than you "
+#| "have! And yet, you still get the profits from selling it to Haldric."
 msgid ""
 "You don’t have authority over me, Durstorn. And I wouldn’t give the Sceptre "
-"to them even if you did. It’s not yours to give, its mine, and Rugnur’s, and "
-"Baglur’s. Krawg’s done more for its existence than you have! And yet, you "
-"still get the profits from selling it to Haldric."
+"to them even if you did. It’s not yours to give, it’s mine, and Rugnur’s, "
+"and Baglur’s. Krawg’s done more for its existence than you have! And yet, "
+"you still get the profits from selling it to Haldric."
 msgstr ""
 "Ja sähän et edelleenkään mua kometele, Durnstorn. Enkä khyl antais heille "
 "valtikkaa, vaik sä antaasit. Ei se sun oo. Se on mun ja Rugnurin ja "
@@ -2874,7 +2886,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:426
 #, fuzzy
 msgid ""
-"I’m not going to do that, its suicide! And in any case, I’ve been with you "
+"I’m not going to do that, it’s suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
 "fight with you."
 msgstr ""
@@ -2908,8 +2920,13 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:472
+#, fuzzy
+#| msgid ""
+#| "Alanin, ride as fast as you can south. Tell Haldric we are heading "
+#| "northeast, towards the old eastern mines, and if he wants his precious "
+#| "sceptre he should send forces to meet us there as soon as he can!"
 msgid ""
-"Alanin, ride as fast as you can south. Tell Haldric we are heading "
+"Alanin, ride south as fast as you can. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
 "sceptre he should send forces to meet us there as soon as he can!"
 msgstr ""
@@ -3462,31 +3479,31 @@ msgid "Move onto the glyph in the center of the volcano"
 msgstr "Siirry glyyfin päälle tulivuoren keskellä"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:521
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:522
 #, fuzzy
 msgid "That’s it! The volcano will erupt soon now that you’ve triggered it."
 msgstr "Toi se on! Vuori purkautuu kohta!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:537
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:538
 msgid ""
 "Look, it has knocked down some of the walls! Those orcs have a way out now!"
 msgstr "Kato, se murskas seiniä! Noil örkeil on nyt ulospääsy!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:546
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:547
 msgid ""
 "Well, we’ve succeeded in stopping the elves from getting the Sceptre, I "
 "would say. But what do we do now?!"
 msgstr "Ainakaan suippokorvat ei nyt saa Tulivaltikkaa... No mitäs nyt?!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:552
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:553
 msgid "Now, we must fight the orcs until we die, it’s our only option."
 msgstr "Helppo juttu. Tapellaan, kunnes kuollaan."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:558
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:559
 msgid ""
 "We cannot let any of the elves or their mercenaries escape; they would tell "
 "where the Sceptre of Fire is. Make sure they all die!"
@@ -3495,7 +3512,7 @@ msgstr ""
 "Tulivaltikka on. Kattokaa, että kaikki kuolee!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:564
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:565
 msgid ""
 "We have to kill them quickly, before they realize what is happening. And "
 "remember, the lava spreads quickly, suddenly, and dangerously. The only "
@@ -3505,43 +3522,43 @@ msgstr ""
 "nopeasti. Ainoa turvallinen paikka on glyyfin lähel!"
 
 #. [message]: role=smartelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:596
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:597
 msgid ""
 "Wait, what’s going on? The volcano is going to erupt! Everyone, try to get "
 "out of these caves!"
 msgstr "Mitä tapahtuu? Tulivuori - se purkautuu! Kaikki ulos luolista!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:611
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:612
 msgid "I must go report to my superiors!"
 msgstr "Täytyy raportoida ylemmille!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:615
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:616
 msgid "We have allowed an enemy to escape; we have failed."
 msgstr "Ne pääs pakoon - me epäonnistuttiin."
 
 #. [message]: role=dumbelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:673
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:674
 #, fuzzy
 msgid "Aghh!! The volcano is erupting, and now our exit has been blocked off!!"
 msgstr "Aaargh!!! Tulivuori purkaantuu, eikä ulospääsyä ole!!!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:698
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:699
 msgid ""
 "We have hidden the Sceptre well, but now the volcano is going to erupt and "
 "kill us all."
 msgstr "Tulivaltikka on nyt piilossa, mutta vuori tappaa nyt meiät kaikki."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:839
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:840
 msgid "Kill all of the elves before one of them escapes from the caves"
 msgstr "Tapa kaikki haltiat, ettei yksikään pakene luolista."
 
 #. [message]: speaker=Krawg
 #. "Hmmm, me leave now!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:952
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:953
 msgid "Hm... Me le’ no’w!"
 msgstr "Hmm... Määääämeeennny..."
 
@@ -3830,7 +3847,7 @@ msgid "Caravan"
 msgstr "Karavaani"
 
 #. [unit_type]: id=Caravan, race=mechanical
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
+#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:18
 msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
 "immense weight of the cargo this caravan carries, it moves very slowly."
@@ -3855,7 +3872,7 @@ msgstr ""
 "tekoon."
 
 #. [attack]: type=pierce
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:46
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:23
 msgid "pick"
 msgstr "hakku"
 

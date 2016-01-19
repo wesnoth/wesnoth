@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -59,7 +59,7 @@ namespace game_events
 		static map::const_iterator begin()  { return registry_.begin(); }
 		/// One past the last registered action.
 		static map::const_iterator end()    { return registry_.end(); }
-
+		static const map& registry() { return registry_; }
 	private:
 		/// Tracks the known action handlers.
 		static map registry_;

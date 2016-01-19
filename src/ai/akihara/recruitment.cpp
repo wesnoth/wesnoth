@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Aline Riss <aline.riss@gmail.com>
+   Copyright (C) 2009 - 2016 by Aline Riss <aline.riss@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -113,6 +113,17 @@ inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_R
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
+inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surface& dst, SDL_Rect* dst_rect){
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
+	SDL_SetSurfaceBlendMode(dst, SDL_BLENDMODE_NONE);
+#endif
+	SDL_BlitSurface(screen, screen_rect, dst, dst_rect);
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
+#endif
+}
+
 /**
  * This method blends a RGBA color. The method takes as input a surface,
  * the RGB color to blend and a value specifying how much blending to apply.
@@ -203,20 +214,6 @@ surface scale_surface_nn(const surface & surf, int w, int h);
  */
 surface scale_surface(const surface &surf, int w, int h, bool optimize /*=true*/);
 surface scale_surface(const surface &surf, int w, int h);
-//commenting out the default parameter so that it is possible to make function pointers to the 3 parameter version
-
-/** Scale a surface (legacy (1.10, 1.12) version)
- *  @param surf              The source surface.
- *  @param w                 The width of the resulting surface.
- *  @param h                 The height of the resulting surface.
- *  @param optimize          Should the return surface be RLE optimized.
- *  @return                  A surface containing the scaled version of the source.
- *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w and h == surf->h
- *                           note this ignores the optimize flag.
- */
-surface scale_surface_legacy(const surface &surf, int w, int h, bool optimize /*=true*/);
-surface scale_surface_legacy(const surface &surf, int w, int h);
 //commenting out the default parameter so that it is possible to make function pointers to the 3 parameter version
 
 /** Scale a surface using modified nearest neighbour algorithm. Use only if
@@ -432,13 +429,15 @@ SDL_Rect get_non_transparent_portion(const surface &surf);
 
 bool operator==(const SDL_Color& a, const SDL_Color& b);
 bool operator!=(const SDL_Color& a, const SDL_Color& b);
+
 SDL_Color inverse(const SDL_Color& color);
 SDL_Color int_to_color(const Uint32 rgb);
+SDL_Color string_to_color(const std::string& color_string);
 
 SDL_Color create_color(const unsigned char red
 		, unsigned char green
 		, unsigned char blue
-		, unsigned char alpha = 255);
+		, unsigned char alpha = SDL_ALPHA_OPAQUE);
 
 /**
  * Helper class for pinning SDL surfaces into memory.

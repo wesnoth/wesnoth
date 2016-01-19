@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -96,7 +96,7 @@ unit_type::unit_type(const unit_type& o) :
 	in_advancefrom_(o.in_advancefrom_),
 	alignment_(o.alignment_),
 	movement_type_(o.movement_type_),
-	possibleTraits_(o.possibleTraits_),
+	possible_traits_(o.possible_traits_),
 	genders_(o.genders_),
 	animations_(o.animations_),
     build_status_(o.build_status_),
@@ -156,7 +156,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	in_advancefrom_(false),
 	alignment_(unit_type::ALIGNMENT::NEUTRAL),
 	movement_type_(),
-	possibleTraits_(),
+	possible_traits_(),
 	genders_(),
 	animations_(),
 	build_status_(NOT_BUILT),
@@ -196,15 +196,15 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	if ( race_ != &unit_race::null_race )
 	{
 		if (!race_->uses_global_traits()) {
-			possibleTraits_.clear();
+			possible_traits_.clear();
 		}
 		if ( cfg_["ignore_race_traits"].to_bool() ) {
-			possibleTraits_.clear();
+			possible_traits_.clear();
 		} else {
 			BOOST_FOREACH(const config &t, race_->additional_traits())
 			{
 				if (alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
-					possibleTraits_.add_child("trait", t);
+					possible_traits_.add_child("trait", t);
 			}
 		}
 		if (undead_variation_.empty()) {
@@ -215,7 +215,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	// Insert any traits that are just for this unit type
 	BOOST_FOREACH(const config &trait, cfg_.child_range("trait"))
 	{
-		possibleTraits_.add_child("trait", trait);
+		possible_traits_.add_child("trait", trait);
 	}
 
 	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
@@ -274,7 +274,8 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	big_profile_ = cfg_["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);
 
-	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"].str(), unit_type::ALIGNMENT::NEUTRAL);
+	alignment_ = unit_type::ALIGNMENT::NEUTRAL;
+	alignment_.parse(cfg_["alignment"].str());
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -344,7 +345,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 
 	BOOST_FOREACH(const config &t, traits)
 	{
-		possibleTraits_.add_child("trait", t);
+		possible_traits_.add_child("trait", t);
 	}
 	BOOST_FOREACH(const config &var_cfg, cfg_.child_range("variation"))
 	{
@@ -429,8 +430,6 @@ void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_typ
 		build_help_index(movement_types, races, traits);
 		return;
 
-	case WITHOUT_ANIMATIONS:
-		// Animations are now built when they are accessed, so fall down to FULL.
 	case FULL:
 		build_full(movement_types, races, traits);
 		return;
@@ -1001,9 +1000,9 @@ namespace { // Helpers for set_config()
 		// Restore the variations.
 		ut_cfg.splice_children(variations, "variation");
 	}
-	
+
 	const boost::regex fai_identifier("[a-zA-Z_]+");
-	
+
 	template<typename MoveT>
 	void patch_movetype(MoveT& mt, const std::string& new_key, const std::string& formula_str, int default_val, bool replace) {
 		config temp_cfg, original_cfg;
@@ -1049,7 +1048,7 @@ void unit_type_data::set_config(config &cfg)
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
 		loadscreen::increment_progress();
 	}
-	
+
 	// Movetype resistance patching
 	BOOST_FOREACH(const config &r, cfg.child_range("resistance_defaults"))
 	{
@@ -1072,7 +1071,7 @@ void unit_type_data::set_config(config &cfg)
 			}
 		}
 	}
-	
+
 	// Movetype move/defend patching
 	BOOST_FOREACH(const config &terrain, cfg.child_range("terrain_defaults"))
 	{

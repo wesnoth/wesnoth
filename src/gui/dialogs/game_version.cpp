@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2013 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,9 +20,6 @@
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "desktop/version.hpp"
-#ifdef _WIN32
-#include "desktop/windows_console.hpp"
-#endif
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "game_config.hpp"
@@ -41,6 +38,9 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text.hpp"
 #include "gui/widgets/window.hpp"
+#ifdef _WIN32
+#include "log_windows.hpp"
+#endif
 #include "serialization/string_utils.hpp"
 
 #include "gettext.hpp"
@@ -93,7 +93,7 @@ tgame_version::tgame_version()
 	, browse_wid_stem_("browse_")
 	, path_map_()
 #ifdef _WIN32
-	, log_path_(game_config::wesnoth_program_dir + "\\stderr.txt")
+	, log_path_(lg::log_file_path())
 #endif
 	, deps_()
 	, opts_(game_config::optional_features_table())
@@ -199,7 +199,7 @@ void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
 			boost::bind(&tgame_version::browse_directory_callback,
 						this,
 						log_path_));
-	stderr_button.set_active(!desktop::is_win32_console_enabled());
+	stderr_button.set_active(!log_path_.empty());
 #endif
 
 	//

@@ -30,7 +30,7 @@
 ** CHANGE it (define it) if you want Lua to avoid the use of any
 ** non-ansi feature or library.
 */
-#if !defined(LUA_ANSI) && defined(__STRICT_ANSI__)
+#if 0 && !defined(LUA_ANSI) && defined(__STRICT_ANSI__)
 #define LUA_ANSI
 #endif
 
@@ -513,7 +513,9 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 /* Microsoft compiler on a Pentium (32 bit) ? */
 #if defined(LUA_WIN) && defined(_MSC_VER) && defined(_M_IX86)	/* { */
 
-#define LUA_MSASMTRICK
+/* We currently don't use direct3d so we can use LUA_IEEE754TRICK on windows too. */
+#define LUA_IEEE754TRICK
+#define LUA_IEEELL
 #define LUA_IEEEENDIAN		0
 #define LUA_NANTRICK
 
@@ -531,21 +533,33 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 
 #define LUA_IEEE754TRICK
 #define LUA_IEEEENDIAN		0
+#define LUA_IEEELL
 
 #elif defined(__POWERPC__) || defined(__ppc__)			/* }{ */
 
 #define LUA_IEEE754TRICK
 #define LUA_IEEEENDIAN		1
+#define LUA_IEEELL
 
 #else								/* }{ */
 
 /* assume IEEE754 and a 32-bit integer type */
 #define LUA_IEEE754TRICK
+#define LUA_IEEELL
 
 #endif								/* } */
 
 #endif							/* } */
 
+#if defined(__STDC_IEC_559__) && !defined(LUA_IEEE754TRICK)
+#define LUA_IEEE754TRICK
+#define LUA_IEEELL
+#endif
+
+#ifndef LUA_IEEE754TRICK
+/* We need a same floating point calculations on all clients to prevent OOS */
+#error IEEE754 Support is required to play build wesnoth
+#endif
 /* }================================================================== */
 
 

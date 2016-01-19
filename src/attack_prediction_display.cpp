@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -202,7 +202,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			if(i->type == unit_abilities::MUL) {
 				left_strings.push_back((*i->ability)["name"]);
 				str.str("");
-				str << "* " << (i->value / 100);
+				str << "× " << (i->value / 100);
 				if(i->value % 100) {
 					str << "." << ((i->value % 100) / 10);
 					if(i->value % 10) str << (i->value % 10);
@@ -242,7 +242,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			str << string_table["type_" + weapon->type()];
 			left_strings.push_back(str.str());
 			str.str("");
-			str << "* " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
+			str << "× " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
 			right_strings.push_back(str.str());
 		}
 
@@ -344,7 +344,7 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 									   const std::string& label, int label_width,
 									   surface& hp_distrib, int hp_distrib_width)
 {
-	surface screen = resources::screen->get_screen_surface();
+	surface& screen = resources::screen->get_screen_surface();
 	int i;
 
 	// NOTE. A preview pane is not made to be used alone and it is not
@@ -435,9 +435,9 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 	SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
 
 	SDL_Rect clip_rect = sdl::create_rect(0, 0, width, height);
-	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, 255);
+	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, SDL_ALPHA_OPAQUE);
 
-	Uint32 background_color = SDL_MapRGBA(surf->format, 25, 25, 25, 255);
+	Uint32 background_color = SDL_MapRGBA(surf->format, 25, 25, 25, SDL_ALPHA_OPAQUE);
 	sdl::fill_rect(surf, &clip_rect, background_color);
 
 	// Draw the surrounding borders and separators.
@@ -471,7 +471,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 
 		// Death line is red.
 		if(hp == 0) {
-			SDL_Color color = {0xe5, 0, 0, 0};
+			SDL_Color color = {0xe5, 0, 0, SDL_ALPHA_OPAQUE};
 			row_color = color;
 		}
 
@@ -479,17 +479,17 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		else if(hp < static_cast<int>(stats.hp)) {
 			// Stone is grey.
 			if(opp_stats.petrifies) {
-				SDL_Color color = {0x9a, 0x9a, 0x9a, 0};
+				SDL_Color color = {0x9a, 0x9a, 0x9a, SDL_ALPHA_OPAQUE};
 				row_color = color;
 			} else {
-				SDL_Color color = {0xf4, 0xc9, 0, 0};
+				SDL_Color color = {0xf4, 0xc9, 0, SDL_ALPHA_OPAQUE};
 				row_color = color;
 			}
 		}
 
 		// Current hitpoints value and above is green.
 		else {
-			SDL_Color color = {0x08, 0xca, 0, 0};
+			SDL_Color color = {0x08, 0xca, 0, SDL_ALPHA_OPAQUE};
 			row_color = color;
 		}
 
@@ -518,16 +518,16 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		sdl::fill_rect(surf, &bar_rect_4, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.a, 0));
 #else
 		SDL_Rect bar_rect_1 = sdl::create_rect(hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8);
-				sdl::fill_rect(surf, &bar_rect_1, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 100));
+		sdl::fill_rect(surf, &bar_rect_1, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 100));
 
-				SDL_Rect bar_rect_2 = sdl::create_rect(hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6);
-				sdl::fill_rect(surf, &bar_rect_2, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 66));
+		SDL_Rect bar_rect_2 = sdl::create_rect(hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6);
+		sdl::fill_rect(surf, &bar_rect_2, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 66));
 
-				SDL_Rect bar_rect_3 = sdl::create_rect(hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4);
-				sdl::fill_rect(surf, &bar_rect_3, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 33));
+		SDL_Rect bar_rect_3 = sdl::create_rect(hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4);
+		sdl::fill_rect(surf, &bar_rect_3, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 33));
 
-				SDL_Rect bar_rect_4 = sdl::create_rect(hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2);
-				sdl::fill_rect(surf, &bar_rect_4, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 0));
+		SDL_Rect bar_rect_4 = sdl::create_rect(hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2);
+		sdl::fill_rect(surf, &bar_rect_4, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 0));
 #endif
 
 		// Draw probability percentage, aligned right.
@@ -548,10 +548,8 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);
 
-		gui::show_dialog(*resources::screen, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
+		gui::show_dialog(resources::screen->video(), NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
 	}
 
 	return gui::CONTINUE_DIALOG;
 }
-
-

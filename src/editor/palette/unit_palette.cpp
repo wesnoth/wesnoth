@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -80,8 +80,6 @@ void unit_palette::setup(const config& /*cfg*/)
 }
 
 void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstream& tooltip_text) {
-
-	surface screen = gui_.video().getSurface();
 
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'

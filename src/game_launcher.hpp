@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,6 @@
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
 #include "font.hpp"                     // for manager
-#include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for load_game_exception, etc
 #include "game_preferences.hpp"         // for manager
 #include "hotkey/hotkey_manager.hpp"    // for manager
@@ -28,13 +27,14 @@
 #include "scoped_resource.hpp"          // for scoped_ptr
 #include "sound.hpp"                    // for music_thinker
 #include "thread.hpp"                   // for manager
-#include "video.hpp"                    // for CVideo, resize_monitor
 
 #include <string>                       // for string
 #include <vector>                       // for vector
 
 class commandline_options;
 class config;
+class CVideo;
+class resize_monitor;
 
 struct jump_to_campaign_info
 {
@@ -57,7 +57,7 @@ public:
 	game_launcher(const commandline_options& cmdline_opts, const char* appname);
 	~game_launcher();
 
-	game_display& disp();
+	CVideo& video() { return *video_; }
 
 	bool init_video();
 	bool init_language();
@@ -106,8 +106,8 @@ private:
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 
 	const commandline_options& cmdline_opts_;
-	util::scoped_ptr<game_display> disp_;
-	CVideo video_;
+	//Never null.
+	boost::scoped_ptr<CVideo> video_;
 
 	//this should get destroyed *after* the video, since we want
 	//to clean up threads after the display disappears.
@@ -119,7 +119,8 @@ private:
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
 	sound::music_thinker music_thinker_;
-	resize_monitor resize_monitor_;
+	//Never null.
+	boost::scoped_ptr<resize_monitor> resize_monitor_;
 
 	std::string test_scenario_;
 

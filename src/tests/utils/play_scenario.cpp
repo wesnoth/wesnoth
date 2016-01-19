@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2016 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -118,7 +118,7 @@ namespace test_utils {
 		state.set_carryover_sides_start(
 			config_of("next_scenario", id_)
 		);
-		campaign_controller controller(get_fake_display(1024, 768), state, game_config_, tdata_);
+		campaign_controller controller(get_fake_display(1024, 768).video(), state, game_config_, tdata_);
 
 		controller.play_game();
 	}

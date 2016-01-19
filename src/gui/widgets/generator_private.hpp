@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -873,23 +873,6 @@ public:
 	}
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE
-	{
-		assert(this->get_visible() == twidget::tvisible::visible);
-
-		calculate_order();
-		FOREACH(AUTO index, order_)
-		{
-			titem* item = items_[index];
-			if(item->grid.get_visible() == twidget::tvisible::visible
-			   && item->shown) {
-
-				item->grid.draw_children(frame_buffer);
-			}
-		}
-	}
-
-	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) OVERRIDE
@@ -1047,7 +1030,7 @@ private:
 	typedef boost::function<bool (unsigned, unsigned)> torder_func;
 	torder_func order_func_;
 
-	
+
 	virtual void set_order(const torder_func& order) OVERRIDE
 	{
 		order_func_ = order;
@@ -1071,7 +1054,7 @@ private:
 			return order_func_(a, b);
 		}
 	};
-	
+
 	virtual unsigned get_ordered_index(unsigned index) const
 	{
 		assert(index < items_.size());
@@ -1101,7 +1084,7 @@ private:
 			for(size_t i = 0; i < order_.size(); ++i) {
 				items_[order_[i]]->ordered_index = i;
 			}
-			
+
 			order_dirty_ = false;
 		}
 		else {

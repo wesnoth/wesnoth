@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #define MAP_GEN_HPP_INCLUDED
 
 class config;
-class display;
+class CVideo;
 
 #include "exceptions.hpp"
 #include "map_location.hpp"
@@ -49,7 +49,7 @@ public:
 	 * to modify how the generator behaves.
 	 * (This function will not be called if allow_user_config() returns false).
 	 */
-	virtual void user_config(display& disp);
+	virtual void user_config(CVideo& v);
 
 	/**
 	 * Returns a string identifying the generator by name.

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -76,7 +76,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
  * A bounding rectangle of the text is returned. If dst is NULL, then the
  * text will not be drawn, and a bounding rectangle only will be returned.
  */
-SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
+SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 

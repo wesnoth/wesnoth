@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2007 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@
 
 class config;
 class video;
-class game_display;
+class CVideo;
 
 /**
  * This module controls the multiplayer lobby.
@@ -186,7 +186,7 @@ private:
 class lobby : public ui
 {
 public:
-	lobby(game_display& d, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons);
+	lobby(CVideo& v, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons);
 
 	virtual void process_event();
 

@@ -260,6 +260,10 @@ void floating_label::draw(surface screen)
 		return;
 	}
 
+	if(screen == NULL) {
+		return;
+	}
+
 	create_surface();
 	if(surf_ == NULL) {
 		return;
@@ -272,13 +276,9 @@ void floating_label::draw(surface screen)
 		}
 	}
 
-	if(screen == NULL) {
-		return;
-	}
-
 	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_blit(screen,&rect,buf_,NULL);
+	sdl_copy_portion(screen,&rect,buf_,NULL);
 	sdl_blit(surf_,NULL,screen,&rect);
 
 	update_rect(rect);
@@ -493,7 +493,7 @@ void undraw_floating_labels(surface screen)
 	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
 	//into the exact state it started in.
 	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
-		if(context.count(i->first) > 0) {			
+		if(context.count(i->first) > 0) {
 			i->second.undraw(screen);
 		}
 	}

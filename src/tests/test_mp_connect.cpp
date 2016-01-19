@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 #include "hotkey/hotkey_manager.hpp"
 #include "mt_rng.hpp"
 #include "saved_game.hpp"
+#include "tests/utils/fake_display.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -42,7 +43,7 @@ public:
 
 class test_connect_engine : public ng::connect_engine {
 public:
-	test_connect_engine(game_display& /*disp*/, saved_game& gamestate) :
+	test_connect_engine(saved_game& gamestate) :
 		ng::connect_engine(gamestate, true, NULL)
 		{}
 };
@@ -52,7 +53,6 @@ public:
 
 namespace {
 
-boost::scoped_ptr<game_display> disp;
 boost::scoped_ptr<saved_game> state;
 boost::scoped_ptr<rand_rng::mt_rng> rng;
 
@@ -63,17 +63,13 @@ boost::scoped_ptr<rand_rng::mt_rng> rng;
 
 struct mp_connect_fixture {
 	mp_connect_fixture() :
-		video(),
 		dummy_args(boost::assign::list_of("wesnoth")("--noaddons").convert_to_container<std::vector<std::string> >()),
 		cmdline_opts(dummy_args),
 		hotkey_manager(),
 		config_manager()
 	{
-		video.make_fake();
-		disp.reset(game_display::create_dummy_display(video));
 
-		config_manager.reset(new game_config_manager(cmdline_opts, *disp,
-			false));
+		config_manager.reset(new game_config_manager(cmdline_opts, test_utils::get_fake_display(1000,1000).video(), false));
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		state.reset(new saved_game());
@@ -95,7 +91,6 @@ struct mp_connect_fixture {
 	~mp_connect_fixture()
 	{
 	}
-	CVideo video;
 	std::vector<std::string> dummy_args;
 	commandline_options cmdline_opts;
 	hotkey::manager hotkey_manager;
@@ -108,7 +103,7 @@ struct mp_connect_fixture {
 static test_connect_engine* create_test_connect_engine()
 {
 	test_connect_engine* connect_engine =
-		new test_connect_engine(*disp, *state);
+		new test_connect_engine(*state);
 
 	return connect_engine;
 }
@@ -125,8 +120,8 @@ static ng::side_engine* create_side_engine(const config& defaults,
 
 /* Tests */
 
-BOOST_GLOBAL_FIXTURE( mp_connect_fixture )
-BOOST_AUTO_TEST_SUITE( mp_connect )
+BOOST_GLOBAL_FIXTURE( mp_connect_fixture );
+BOOST_AUTO_TEST_SUITE( mp_connect );
 
 
 BOOST_AUTO_TEST_CASE( flg_map_settings )

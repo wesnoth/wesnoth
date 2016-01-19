@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -44,7 +44,7 @@ public:
 
 	/** The number of states, that is 2 for normal buttons, 3 for tristate buttons. */
 	virtual unsigned num_states() const = 0;
-	
+
 	bool get_value_bool() const
 	{
 		assert(num_states() == 2);

@@ -19,7 +19,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "dialogs.hpp"
-#include "display.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula_string_utils.hpp"
@@ -36,6 +35,7 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "help/help_button.hpp"
+#include "image.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
@@ -117,7 +117,7 @@ std::string describe_addon_status(const addon_tracking_info& info)
 }
 
 // Asks the client to download and install an addon, reporting errors in a gui dialog. Returns true if new content was installed, false otherwise.
-bool try_fetch_addon(display & disp, addons_client & client, const addon_info & addon)
+bool try_fetch_addon(CVideo & v, addons_client & client, const addon_info & addon)
 {
 	config archive;
 
@@ -127,7 +127,7 @@ bool try_fetch_addon(display & disp, addons_client & client, const addon_info & 
 	)) {
 		const std::string& server_error = client.get_last_server_error();
 		if(!server_error.empty()) {
-			gui2::show_error_message(disp.video(),
+			gui2::show_error_message(v,
 				std::string(_("The server responded with an error:")) + "\n" + server_error);
 		}
 		return false;
@@ -150,7 +150,7 @@ struct addon_op_result
  *                   SUCCESS otherwise
  *          wml_change: indicates if new wml content was installed
  */
-addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon)
+addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, const addons_list& addons, const addon_info& addon)
 {
 	addon_op_result result;
 	result.outcome = SUCCESS;
@@ -191,7 +191,7 @@ addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& clie
 			broken_deps_report += "\n    " + utils::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
-		if(gui2::show_message(disp.video(), _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
+		if(gui2::show_message(v, _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
 			result.outcome = ABORT;
 			return result; // canceled by user
 		}
@@ -239,7 +239,7 @@ addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& clie
 	}
 
 	/* do */ {
-		gui::dialog dlg(disp, _("Install Dependencies"),
+		gui::dialog dlg(v, _("Install Dependencies"),
 			_n("The selected add-on has the following dependency, which is not currently installed. Do you wish to install it before continuing?",
 			   "The selected add-on has the following dependencies, which are not currently installed. Do you wish to install them before continuing?",
 			   missing_deps.size()),
@@ -247,7 +247,7 @@ addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& clie
 		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
 		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
 		gui::menu* addon_menu = new gui::menu(
-			disp.video(), options, false, -1,
+			v, options, false, -1,
 			gui::dialog::max_menu_width, NULL, &addon_style, false);
 		dlg.set_menu(addon_menu);
 
@@ -267,7 +267,7 @@ addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& clie
 	BOOST_FOREACH(const std::string& dep, missing_deps) {
 		const addon_info& addon = addon_at(dep, addons);
 
-		if(!try_fetch_addon(disp, client, addon)) {
+		if(!try_fetch_addon(v, client, addon)) {
 			failed_titles.push_back(addon.title);
 		} else {
 			result.wml_changed = true;
@@ -280,7 +280,7 @@ addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& clie
 			"The following dependencies could not be installed. Do you still wish to continue?",
 			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
-		result.outcome = gui2::show_message(disp.video(), _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK ? SUCCESS : ABORT; // If the user cancels, return ABORT. Otherwise, return SUCCESS, since the user chose to ignore the failure.
+		result.outcome = gui2::show_message(v, _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK ? SUCCESS : ABORT; // If the user cancels, return ABORT. Otherwise, return SUCCESS, since the user chose to ignore the failure.
 		return result;
 	}
 
@@ -327,9 +327,9 @@ bool do_check_before_overwriting_addon(CVideo& video, const addon_info& addon)
  *                   SUCCESS otherwise
  *          wml_changed: indicates if new wml content was installed at any point
  */
-addon_op_result try_fetch_addon_with_checks(display & disp, addons_client& client, const addons_list& addons, const addon_info& addon)
+addon_op_result try_fetch_addon_with_checks(CVideo & v, addons_client& client, const addons_list& addons, const addon_info& addon)
 {
-	if(!(do_check_before_overwriting_addon(disp.video(), addon))) {
+	if(!(do_check_before_overwriting_addon(v, addon))) {
 		// Just do nothing and leave.
 		addon_op_result result;
 		result.outcome = ABORT;
@@ -339,12 +339,12 @@ addon_op_result try_fetch_addon_with_checks(display & disp, addons_client& clien
 	}
 
 	// Resolve any dependencies
-	addon_op_result res = do_resolve_addon_dependencies(disp, client, addons, addon);
+	addon_op_result res = do_resolve_addon_dependencies(v, client, addons, addon);
 	if (res.outcome != SUCCESS) { // this function only returns SUCCESS and ABORT as outcomes
 		return res; // user aborted
 	}
 
-	if(!try_fetch_addon(disp, client, addon)) {
+	if(!try_fetch_addon(v, client, addon)) {
 		res.outcome = FAILURE;
 		return res; //wml_changed should have whatever value was obtained in resolving dependencies
 	} else {
@@ -418,15 +418,15 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 /** GUI1 support class handling the button used to display add-on descriptions. */
 class description_display_action : public gui::dialog_button_action
 {
-	display& disp_;
+	CVideo& v_;
 	std::vector<std::string> display_ids_;
 	addons_list addons_;
 	addons_tracking_list tracking_;
 	gui::filter_textbox* filter_;
 
 public:
-	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, const addons_tracking_list& tracking, gui::filter_textbox* filter)
-		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter)
+	description_display_action(CVideo& v, const std::vector<std::string>& display_ids, const addons_list& addons, const addons_tracking_list& tracking, gui::filter_textbox* filter)
+		: v_(v) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter)
 	{}
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int filter_choice)
@@ -440,7 +440,7 @@ public:
 		if(choice < display_ids_.size()) {
 			const std::string& id = display_ids_[choice];
 			assert(tracking_.find(id) != tracking_.end());
-			gui2::taddon_description::display(id, addons_, tracking_, disp_.video());
+			gui2::taddon_description::display(id, addons_, tracking_, v_);
 		}
 
 		return gui::CONTINUE_DIALOG;
@@ -608,7 +608,7 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons, ADDON_SORT sort,
 	return res;
 }
 
-void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, addons_filter_state& filter)
+void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& addons, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, addons_filter_state& filter)
 {
 	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
@@ -825,7 +825,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 				: _("There are no add-ons matching the specified criteria on this server.");
 		}
 
-		gui::dialog dlg(disp, _("Add-ons Manager"), dlg_message, gui::OK_CANCEL);
+		gui::dialog dlg(v, _("Add-ons Manager"), dlg_message, gui::OK_CANCEL);
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3);
@@ -838,7 +838,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
 		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
 
-		gui::menu* addons_list_menu = new gui::menu(disp.video(), options, false, -1,
+		gui::menu* addons_list_menu = new gui::menu(v, options, false, -1,
 			gui::dialog::max_menu_width, &sorter, &addon_style, false);
 		dlg.set_menu(addons_list_menu);
 
@@ -847,27 +847,27 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			filter_label = _("Filter: ");
 		}
 
-		gui::filter_textbox* filter_box = new gui::filter_textbox(disp.video(),
+		gui::filter_textbox* filter_box = new gui::filter_textbox(v,
 			filter_label, options, filter_options, 1, dlg, 300);
 		filter_box->set_text(filter.keywords);
 		dlg.set_textbox(filter_box);
 
-		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box);
-		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),
+		description_display_action description_helper(v, option_ids, addons, tracking, filter_box);
+		gui::dialog_button* description_button = new gui::dialog_button(v,
 			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
 
-		gui::dialog_button* update_all_button = new gui::dialog_button(disp.video(), _("Update All"),
+		gui::dialog_button* update_all_button = new gui::dialog_button(v, _("Update All"),
 			gui::button::TYPE_PRESS, update_all_value);
 		update_all_button->enable(have_upgradable_addons);
 		dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 
-		filter_options_action filter_opts_helper(disp.video(), filter);
-		gui::dialog_button* filter_opts_button = new gui::dialog_button(disp.video(),
+		filter_options_action filter_opts_helper(v, filter);
+		gui::dialog_button* filter_opts_button = new gui::dialog_button(v,
 			_("filter^Options"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &filter_opts_helper);
 		dlg.add_button(filter_opts_button, gui::dialog::BUTTON_TOP);
 
-		help::help_button* help_button = new help::help_button(disp, "installing_addons");
+		help::help_button* help_button = new help::help_button(v, "installing_addons");
 		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
 
 		// Disable some buttons when there's nothing to display.
@@ -915,12 +915,12 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		if(result >= int(option_ids.size() + can_publish_ids.size())) {
 			// Handle remote deletion.
 			const std::string& id = can_delete_ids[result - int(option_ids.size() + can_publish_ids.size())];
-			do_remote_addon_delete(disp.video(), client, id);
+			do_remote_addon_delete(v, client, id);
 			return;
 		} else if(result >= int(option_ids.size())) {
 			// Handle remote publishing.
 			const std::string& id = can_publish_ids[result - int(option_ids.size())];
-			do_remote_addon_publish(disp.video(), client, id, tracking[id].remote_version);
+			do_remote_addon_publish(v, client, id, tracking[id].remote_version);
 			return;
 		}
 	}
@@ -943,7 +943,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	BOOST_FOREACH(const std::string& id, ids_to_install) {
 		const addon_info& addon = addon_at(id, addons);
 
-		addon_op_result res = try_fetch_addon_with_checks(disp, client, addons, addon);
+		addon_op_result res = try_fetch_addon_with_checks(v, client, addons, addon);
 		wml_changed |= res.wml_changed; // take note if any wml_changes occurred
 		if (res.outcome == ABORT) {
 			return; // the user aborted because of some issue encountered
@@ -968,13 +968,13 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		msg_title = !updating ? _("Add-on Installed") : _("Add-on Updated");
 		msg_text = !updating ? _("The add-on '$addon_title|' has been successfully installed.") : _("The add-on '$addon_title|' has been successfully updated.");
 
-		gui2::show_transient_message(disp.video(),
+		gui2::show_transient_message(v,
 			msg_title, utils::interpolate_variables_into_string(msg_text, &syms));
 	} else if(failed_titles.empty()) {
 		msg_title = !updating ? _("Add-ons Installed") : _("Add-ons Updated");
 		msg_text = !updating ? _("All add-ons installed successfully.") : _("All add-ons updated successfully.");
 
-		gui2::show_transient_message(disp.video(), msg_title, msg_text);
+		gui2::show_transient_message(v, msg_title, msg_text);
 	} else {
 		msg_title = !updating ? _("Installation Failed") : _("Update Failed");
 		msg_text = _n(
@@ -982,11 +982,11 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			"The following add-ons could not be downloaded or installed successfully:",
 			failed_titles.size());
 
-		gui2::show_message(disp.video(), msg_title, msg_text + std::string("\n\n") + utils::bullet_list(failed_titles), gui2::tmessage::ok_button);
+		gui2::show_message(v, msg_title, msg_text + std::string("\n\n") + utils::bullet_list(failed_titles), gui2::tmessage::ok_button);
 	}
 }
 
-bool addons_manager_ui(display& disp, const std::string& remote_address)
+bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 {
 	bool stay_in_manager_ui = false;
 	bool need_wml_cache_refresh = false;
@@ -1010,7 +1010,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 			// TODO: don't create a new client instance each time we return to the UI,
 			// but for that we need to make sure any pending network operations are canceled
 			// whenever addons_client throws user_exit even before it gets destroyed
-			addons_client client(disp, remote_address);
+			addons_client client(v, remote_address);
 			client.connect();
 
 			addons_list addons;
@@ -1020,25 +1020,25 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 				client.request_addons_list(cfg);
 				if(!cfg) {
 					gui2::show_error_message(
-							disp.video()
+							v
 							, _("An error occurred while downloading the "
 								"add-ons list from the server."));
 					return need_wml_cache_refresh;
 				}
 				gui2::taddon_list dlg(cfg);
-				dlg.show(disp.video());
+				dlg.show(v);
 				return need_wml_cache_refresh;
 			}
 
 			if(!get_addons_list(client, addons)) {
-				gui2::show_error_message(disp.video(), _("An error occurred while downloading the add-ons list from the server."));
+				gui2::show_error_message(v, _("An error occurred while downloading the add-ons list from the server."));
 				return need_wml_cache_refresh;
 			}
 
 			try {
 				// Don't reconnect when switching between view modes.
 				do {
-					show_addons_manager_dialog(disp, client, addons, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter);
+					show_addons_manager_dialog(v, client, addons, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter);
 				} while(filter.changed);
 			} catch(const addons_client::user_exit&) {
 				// Don't do anything; just go back to the addons manager UI
@@ -1049,16 +1049,16 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 		} while(stay_in_manager_ui);
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("Network communication error."));
+		gui2::show_error_message(v, _("Network communication error."));
 	} catch(const network::error& e) {
 		ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
+		gui2::show_error_message(v, _("Remote host disconnected."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
+		gui2::show_error_message(v, _("Remote host disconnected."));
 	} catch(const filesystem::io_exception& e) {
 		ERR_FS << "filesystem::io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
+		gui2::show_error_message(v, _("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
 		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
 
@@ -1066,27 +1066,27 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 		symbols["path"] = e.path;
 		symbols["msg"] = e.message;
 
-		gui2::show_error_message(disp.video(),
+		gui2::show_error_message(v,
 			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(twml_exception& e) {
-		e.show(disp);
+		e.show(v);
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
 	} catch(const addons_client::invalid_server_address&) {
-		gui2::show_error_message(disp.video(), _("The add-ons server address specified is not valid."));
+		gui2::show_error_message(v, _("The add-ons server address specified is not valid."));
 	}
 
 	return need_wml_cache_refresh;
 }
 
-bool uninstall_local_addons(display& disp)
+bool uninstall_local_addons(CVideo& v)
 {
 	const std::string list_lead = "\n\n";
 
 	const std::vector<std::string>& addons = installed_addons();
 
 	if(addons.empty()) {
-		gui2::show_error_message(disp.video(),
+		gui2::show_error_message(v,
 			_("You have no add-ons installed."));
 		return false;
 	}
@@ -1124,7 +1124,7 @@ bool uninstall_local_addons(display& disp)
 
 	do {
 		gui2::taddon_uninstall_list dlg(addon_titles_map);
-		dlg.show(disp.video());
+		dlg.show(v);
 
 		remove_ids = dlg.selected_addons();
 		if(remove_ids.empty()) {
@@ -1142,7 +1142,7 @@ bool uninstall_local_addons(display& disp)
 			"Are you sure you want to remove the following installed add-ons?",
 			remove_ids.size()) + list_lead + utils::bullet_list(remove_names);
 
-		res = gui2::show_message(disp.video()
+		res = gui2::show_message(v
 				, _("Confirm")
 				, confirm_message
 				, gui2::tmessage::yes_no_buttons);
@@ -1169,11 +1169,11 @@ bool uninstall_local_addons(display& disp)
 			skipped_names.size());
 
 		gui2::show_error_message(
-			disp.video(), dlg_msg + list_lead + utils::bullet_list(skipped_names));
+			v, dlg_msg + list_lead + utils::bullet_list(skipped_names));
 	}
 
 	if(!failed_names.empty()) {
-		gui2::show_error_message(disp.video(), _n(
+		gui2::show_error_message(v, _n(
 			"The following add-on could not be deleted properly:",
 			"The following add-ons could not be deleted properly:",
 			failed_names.size()) + list_lead + utils::bullet_list(failed_names));
@@ -1188,7 +1188,7 @@ bool uninstall_local_addons(display& disp)
 			succeeded_names.size());
 
 		gui2::show_transient_message(
-			disp.video(), dlg_title,
+			v, dlg_title,
 			dlg_msg + list_lead + utils::bullet_list(succeeded_names));
 
 		return true;
@@ -1199,7 +1199,7 @@ bool uninstall_local_addons(display& disp)
 
 } // end anonymous namespace
 
-bool manage_addons(display& disp)
+bool manage_addons(CVideo& v)
 {
 	static const int addon_download  = 0;
 	// NOTE: the following two values are also known by WML, so don't change them.
@@ -1208,8 +1208,8 @@ bool manage_addons(display& disp)
 	std::string host_name = preferences::campaign_server();
 	const bool have_addons = !installed_addons().empty();
 
-	gui2::taddon_connect addon_dlg(host_name, have_addons, &disp);
-	addon_dlg.show(disp.video());
+	gui2::taddon_connect addon_dlg(host_name, have_addons);
+	addon_dlg.show(v);
 	int res = addon_dlg.get_retval();
 
 	if(res == gui2::twindow::OK) {
@@ -1218,28 +1218,28 @@ bool manage_addons(display& disp)
 
 	switch(res) {
 		case addon_download:
-			return addons_manager_ui(disp, host_name);
+			return addons_manager_ui(v, host_name);
 		case addon_uninstall:
-			return uninstall_local_addons(disp);
+			return uninstall_local_addons(v);
 		default:
 			return false;
 	}
 }
 
-bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> & addon_ids)
+bool ad_hoc_addon_fetch_session(CVideo & v, const std::vector<std::string> & addon_ids)
 {
 	std::string remote_address = preferences::campaign_server();
 
 	// These exception handlers copied from addon_manager_ui fcn above.
 	try {
 
-		addons_client client(disp, remote_address);
+		addons_client client(v, remote_address);
 		client.connect();
 
 		addons_list addons;
 
 		if(!get_addons_list(client, addons)) {
-			gui2::show_error_message(disp.video(), _("An error occurred while downloading the add-ons list from the server."));
+			gui2::show_error_message(v, _("An error occurred while downloading the add-ons list from the server."));
 			return false;
 		}
 
@@ -1248,12 +1248,12 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> &
 			addons_list::const_iterator it = addons.find(addon_id);
 			if(it != addons.end()) {
 				const addon_info& addon = it->second;
-				addon_op_result res = try_fetch_addon_with_checks(disp, client, addons, addon);
+				addon_op_result res = try_fetch_addon_with_checks(v, client, addons, addon);
 				return_value = return_value && (res.outcome == SUCCESS);
 			} else {
 				utils::string_map symbols;
 				symbols["addon_id"] = addon_id;
-				gui2::show_error_message(disp.video(), vgettext("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
+				gui2::show_error_message(v, vgettext("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
 				return_value = false;
 			}
 		}
@@ -1262,16 +1262,16 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> &
 
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("Network communication error."));
+		gui2::show_error_message(v, _("Network communication error."));
 	} catch(const network::error& e) {
 		ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
+		gui2::show_error_message(v, _("Remote host disconnected."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
+		gui2::show_error_message(v, _("Remote host disconnected."));
 	} catch(const filesystem::io_exception& e) {
 		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
-		gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
+		gui2::show_error_message(v, _("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
 		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
 
@@ -1279,14 +1279,14 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> &
 		symbols["path"] = e.path;
 		symbols["msg"] = e.message;
 
-		gui2::show_error_message(disp.video(),
+		gui2::show_error_message(v,
 			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(twml_exception& e) {
-		e.show(disp);
+		e.show(v);
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
 	} catch(const addons_client::invalid_server_address&) {
-		gui2::show_error_message(disp.video(), _("The add-ons server address specified is not valid."));
+		gui2::show_error_message(v, _("The add-ons server address specified is not valid."));
 	}
 
 	return false;

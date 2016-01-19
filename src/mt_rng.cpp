@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,7 @@ mt_rng::mt_rng() :
 {
 }
 
-	
+
 mt_rng::mt_rng(boost::uint32_t seed)
 	: random_seed_(seed)
 	, mt_(random_seed_)
@@ -47,15 +47,15 @@ mt_rng::mt_rng(boost::uint32_t seed)
 
 mt_rng::mt_rng(const config& cfg) :
 	random_seed_(42),
-	mt_(random_seed_), //we don't have the seed at construction time, we have to seed after construction in this case. Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory. 
+	mt_(random_seed_), //we don't have the seed at construction time, we have to seed after construction in this case. Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory.
 	random_calls_(0)
 {
 	config::attribute_value seed = cfg["random_seed"];
 	seed_random(seed.str(), cfg["random_calls"].to_int(0));
-} 
+}
 
 bool mt_rng::operator== (const mt_rng & other) const {
-	return random_seed_ == other.random_seed_  
+	return random_seed_ == other.random_seed_
 	    && random_calls_ == other.random_calls_
 	    && mt_ == other.mt_;
 }
@@ -87,8 +87,8 @@ void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)
 
 void mt_rng::seed_random(const std::string & seed_str, const unsigned int call_count)
 {
-	uint32_t new_seed; 
-	std::istringstream s(seed_str); 
+	uint32_t new_seed;
+	std::istringstream s(seed_str);
 	if (!(s >> std::hex >> new_seed)) {
 		new_seed = 42;
 		DBG_RND << "Failed to seed a random number generator using seed string '" << seed_str << "', it could not be parsed to hex. Seeding with 42.\n";

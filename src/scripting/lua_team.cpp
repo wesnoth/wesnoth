@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -52,6 +52,7 @@ static int impl_side_get(lua_State *L)
 
 	// Find the corresponding attribute.
 	return_int_attrib("side", t.side());
+	return_string_attrib("save_id", t.save_id());
 	return_int_attrib("gold", t.gold());
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
@@ -68,12 +69,15 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("flag_icon", t.flag_icon());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
-	return_string_attrib("name", t.name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller().to_string().c_str());
 	return_string_attrib("defeat_condition", t.defeat_condition().to_string());
 	return_string_attrib("share_vision", t.share_vision().to_string());
+	return_float_attrib("carryover_bonus", t.carryover_bonus());
+	return_int_attrib("carryover_percentage", t.carryover_percentage());
+	return_bool_attrib("carryover_add", t.carryover_add());
 	return_bool_attrib("lost", t.lost());
+	return_bool_attrib("persistent", t.persistent());
 
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
@@ -105,6 +109,7 @@ static int impl_side_set(lua_State *L)
 	// Find the corresponding attribute.
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
+	//maybe add a setterf for save_id too?
 	modify_int_attrib("village_gold", t.set_village_gold(value));
 	modify_int_attrib("village_support", t.set_village_support(value));
 	modify_int_attrib("recall_cost", t.set_recall_cost(value));
@@ -117,7 +122,15 @@ static int impl_side_set(lua_State *L)
 	modify_string_attrib("controller", t.change_controller_by_wml(value));
 	modify_string_attrib("color", t.set_color(value));
 	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
+	modify_int_attrib("carryover_percentage", t.set_carryover_percentage(value));
+	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
 	modify_bool_attrib("lost", t.set_lost(value));
+	modify_bool_attrib("persistent", t.set_persistent(value));
+
+	if (strcmp(m, "carryover_bonus") == 0) {
+		t.set_carryover_bonus(luaL_checknumber(L, 3));
+		return 0;
+	}
 
 	if (strcmp(m, "recruit") == 0) {
 		t.set_recruits(std::set<std::string>());

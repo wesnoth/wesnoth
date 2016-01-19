@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2015 by Fabian Mueller
+   Copyright (C) 2011 - 2016 by Fabian Mueller
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,7 +41,7 @@ static bool attached(
 		  const std::vector<SDL_Joystick*>& joysticks
 		, const size_t index)
 {
-	return SDL_JoystickGetAttached(joysticks[index]);
+	return SDL_JoystickGetAttached(joysticks[index]) == SDL_TRUE;
 }
 
 static const char* name(

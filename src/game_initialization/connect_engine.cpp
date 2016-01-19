@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,7 @@ static lg::log_domain log_network("network");
 namespace {
 
 const std::string controller_names[] = {
-	"network",
+	"human",
 	"human",
 	"ai",
 	"null",
@@ -775,7 +775,7 @@ void connect_engine::send_level_data(const network::connection sock) const
 			("create_game", config_of
 				("name", params_.name)
 				("password", params_.password)
-			)	
+			)
 		);
 		network::send_data(level_, sock);
 	} else {
@@ -811,7 +811,7 @@ void connect_engine::load_previous_sides_users()
 		const std::string& save_id = side->previous_save_id();
 		if (side_users.find(save_id) != side_users.end()) {
 			side->set_reserved_for(side_users[save_id]);
-			
+
 			if (side->controller() != CNTR_COMPUTER) {
 				side->set_controller(CNTR_RESERVED);
 				names.insert(side_users[save_id]);
@@ -891,25 +891,27 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
 		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
-		std::ostringstream save_id;
-		//generating a save_id that is unique for this campaign playthrough.
-		save_id << "save_id_" << time(NULL) << "_" << index;
-		cfg_["save_id"] = save_id.str();
+		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + lexical_cast<std::string>(index);
 	}
 
 	update_controller_options();
 
 	// Tweak the controllers.
 	if (cfg_["controller"] == "network_ai" ||
-		(parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank())) 
+		(parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank()))
 	{
 		cfg_["controller"] = "ai";
 	}
 	//this is a workaround for bug #21797
 	if(cfg_["controller"] == "network" &&  !allow_player_ && parent_.params_.saved_game)
-	{	
+	{
 		WRN_MP << "Found a side controlled by a network player with allow_player=no" << std::endl;
 		cfg_["controller"] = "ai";
+	}
+
+	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
+		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
+		cfg_.remove_attribute("controller");
 	}
 
 	if (cfg_["controller"] == "null") {
@@ -965,7 +967,7 @@ side_engine::~side_engine()
 
 std::string side_engine::user_description() const
 {
-	switch(controller_) 
+	switch(controller_)
 	{
 	case CNTR_LOCAL:
 		return N_("Anonymous player");
@@ -986,11 +988,7 @@ config side_engine::new_config() const
 
 	// Save default "recruit" so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
-	// In case recruit list was empty, set a flag to indicate that.
 	res["default_recruit"] = cfg_["recruit"].str();
-	if (res["default_recruit"].empty()) {
-		res["no_recruit"] = true;
-	}
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
@@ -1008,20 +1006,18 @@ config side_engine::new_config() const
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
-	
+
 	res["controller"] = controller_names[controller_];
-	if(player_id_ == preferences::login() && res["controller"] == "network") {
-		// the hosts rveices the serversided controller wteaks after the start event, but 
-		// for mp sync it's very important that the controller types are correct 
-		// during the start/prestart event (otherwse random unit creation during prestart fails).
-		res["controller"] = "human";
-	}
-	
+	// the hosts recieves the serversided controller tweaks after the start event, but
+	// for mp sync it's very important that the controller types are correct
+	// during the start/prestart event (otherwse random unit creation during prestart fails).
+	res["is_local"] = player_id_ == preferences::login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
+
 	std::string desc = user_description();
 	if(!desc.empty()) {
 		res["user_description"] = t_string(desc, "wesnoth");
 		desc = vgettext(
-			"$playername $side", 
+			"$playername $side",
 			boost::assign::map_list_of
 				("playername", _(desc.c_str()))
 				("side", res["side"].str())
@@ -1031,7 +1027,7 @@ config side_engine::new_config() const
 	}
 	if(res["name"].str().empty() && !desc.empty()) {
 		res["name"] = desc;
-	} 
+	}
 
 	assert(controller_ != CNTR_LAST);
 	if(controller_ == CNTR_COMPUTER && allow_player_) {
@@ -1045,7 +1041,7 @@ config side_engine::new_config() const
 
 	// Side's "current_player" is the player which is currently taken that side
 	// or the one which is reserved to it.
-	// "player_id" is the id of the client who controlls that side, 
+	// "player_id" is the id of the client who controlls that side,
 	// that always the host for Local players and AIs
 	// any always empty for free/reserved sides or null controlled sides.
 	// especialy you can use !res["player_id"].empty() to check whether a side is already taken.
@@ -1059,7 +1055,7 @@ config side_engine::new_config() const
 	} else if(controller_ == CNTR_COMPUTER) {
 		//TODO what is the content of player_id_ here ?
 		res["current_player"] = desc;
-		res["player_id"] = preferences::login(); 
+		res["player_id"] = preferences::login();
 	} else if(!player_id_.empty()) {
 		res["player_id"] = player_id_;
 		res["current_player"] = player_id_;

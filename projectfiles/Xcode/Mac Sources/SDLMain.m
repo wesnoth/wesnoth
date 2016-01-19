@@ -7,6 +7,9 @@
 #import "SDL.h"
 #import "SDLMain.h"
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+extern int wesnoth_main(int argc, char **argv);
+#endif
 static int    gArgc;
 static char  **gArgv;
 
@@ -43,7 +46,6 @@ static char  **gArgv;
 }
 @end
 
-
 /* The main class of the application, the application's delegate */
 @implementation SDLMain
 
@@ -73,7 +75,11 @@ static char  **gArgv;
 	//setenv("PYTHONHOME", ".", 1); //not needed because we don't use Python anymore
 
 	/* Hand off to main application code */
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	status = wesnoth_main (gArgc, gArgv);
+#else
 	status = SDL_main (gArgc, gArgv);
+#endif
 
 	/* We're done, thank you for playing */
 	exit(status);

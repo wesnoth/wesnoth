@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -38,7 +38,7 @@
 #define KMOD_META KMOD_GUI
 #define SDL_FULLSCREEN SDL_WINDOW_FULLSCREEN_DESKTOP
 #define SDL_EVENTMASK(EVENT) EVENT, EVENT
-#define SDL_GetAppState CVideo::window_state
+#define SDL_GetAppState CVideo::get_singleton().window_state
 
 #endif
 

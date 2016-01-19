@@ -26,7 +26,9 @@
 #define amask 0xFF000000
 #endif
 
-/* libpng callbacks */ 
+#include <cstdlib>
+
+/* libpng callbacks */
 static void png_error_SDL(png_structp /*ctx*/, png_const_charp str)
 {
 	SDL_SetError("libpng: %s\n", str);
@@ -37,12 +39,12 @@ static void png_write_SDL(png_structp png_ptr, png_bytep data, png_size_t length
 	SDL_RWwrite(rw, data, sizeof(png_byte), length);
 }
 
-SDL_Surface *SDL_PNGFormatAlpha(SDL_Surface *src) 
+SDL_Surface *SDL_PNGFormatAlpha(SDL_Surface *src)
 {
 	SDL_Surface *surf;
 	SDL_Rect rect = { 0 , 0 , 0 , 0 };
 
-	/* NO-OP for images < 32bpp and 32bpp images that already have Alpha channel */ 
+	/* NO-OP for images < 32bpp and 32bpp images that already have Alpha channel */
 	if (src->format->BitsPerPixel <= 24 || src->format->Amask) {
 		src->refcount++;
 		return src;
@@ -58,7 +60,7 @@ SDL_Surface *SDL_PNGFormatAlpha(SDL_Surface *src)
 	return surf;
 }
 
-int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst) 
+int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 {
 	png_structp png_ptr;
 	png_infop info_ptr;
@@ -81,7 +83,7 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 		return (SAVEPNG_ERROR);
 	}
 	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, png_error_SDL, NULL); /* err_ptr, err_fn, warn_fn */
-	if (!png_ptr) 
+	if (!png_ptr)
 	{
 		SDL_SetError("Unable to png_create_write_struct on %s\n", PNG_LIBPNG_VER_STRING);
 		if (freedst) SDL_RWclose(dst);

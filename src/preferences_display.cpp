@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,6 @@
 #include "global.hpp"
 #include "preferences_display.hpp"
 
-#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "formatter.hpp"
 #include "game_preferences.hpp"
@@ -32,9 +31,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
-#include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/math/common_factor_rt.hpp>
@@ -52,7 +48,6 @@ display_manager::display_manager(display* d)
 	set_grid(grid());
 	set_turbo(turbo());
 	set_turbo_speed(turbo_speed());
-	set_fullscreen(fullscreen());
 	set_scroll_to_action(scroll_to_action());
 	set_color_cursors(preferences::get("color_cursors", false));
 }
@@ -62,135 +57,9 @@ display_manager::~display_manager()
 	disp = NULL;
 }
 
-bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& bpp, int& video_flags)
-{
-	video_flags = fullscreen() ? FULL_SCREEN : 0;
-	resolution = preferences::resolution();
-
-	int DefaultBPP = 24;
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	/* This needs to be fixed properly. */
-	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
-	if(video_info != NULL && video_info->vfmt != NULL) {
-		DefaultBPP = video_info->vfmt->BitsPerPixel;
-	}
-#endif
-
-	std::cerr << "Checking video mode: " << resolution.first << 'x'
-		<< resolution.second << 'x' << DefaultBPP << "...\n";
-
-	typedef std::pair<int, int> res_t;
-	std::vector<res_t> res_list = video.get_available_resolutions();
-	if (res_list.empty()) {
-		res_list.push_back(res_t(800, 480));
-		res_list.push_back(res_t(800, 600));
-		res_list.push_back(res_t(1024, 600));
-		res_list.push_back(res_t(1024, 768));
-		res_list.push_back(res_t(1920, 1080));
-	}
-
-	bpp = video.modePossible(resolution.first, resolution.second,
-		DefaultBPP, video_flags, true);
-
-	BOOST_REVERSE_FOREACH(const res_t &res, res_list)
-	{
-		if (bpp != 0) break;
-		std::cerr << "Video mode " << resolution.first << 'x'
-			<< resolution.second << 'x' << DefaultBPP
-			<< " is not supported; attempting " << res.first
-			<< 'x' << res.second << 'x' << DefaultBPP << "...\n";
-		resolution = res;
-		bpp = video.modePossible(resolution.first, resolution.second,
-			DefaultBPP, video_flags);
-	}
-
-	return bpp != 0;
-}
-
-void set_fullscreen(CVideo& video, const bool ison)
-{
-	_set_fullscreen(ison);
-
-	const std::pair<int,int>& res = resolution();
-	if(video.isFullScreen() != ison) {
-		const int flags = ison ? FULL_SCREEN : 0;
-		int bpp = video.bppForMode(res.first, res.second, flags);
-
-		if(bpp > 0) {
-			video.setMode(res.first,res.second,bpp,flags);
-			if(disp) {
-				disp->redraw_everything();
-			}
-		} else {
-			int tmp_flags = flags;
-			std::pair<int,int> tmp_res;
-			if(detect_video_settings(video, tmp_res, bpp, tmp_flags)) {
-				set_resolution(video, tmp_res.first, tmp_res.second);
-			// TODO: see if below line is actually needed, possibly for displays that only support 16 bbp
-			} else if(video.modePossible(1024,768,16,flags)) {
-				set_resolution(video, 1024, 768);
-			} else {
-				gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
-			}
-			// We reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
-			set_color_cursors(preferences::get("color_cursors", false));
-		}
-	}
-}
-
-void set_fullscreen(bool ison)
-{
-	if(disp != NULL) {
-		set_fullscreen(disp->video(), ison);
-	} else {
-		// Only change the config value.
-		_set_fullscreen(ison);
-	}
-}
-
 void set_scroll_to_action(bool ison)
 {
 	_set_scroll_to_action(ison);
-}
-void set_resolution(const std::pair<int,int>& resolution)
-{
-	if(disp) {
-		set_resolution(disp->video(), resolution.first, resolution.second);
-	} else {
-		// Only change the config value. This part is needed when wesnoth is
-		// started with the -r parameter.
-		_set_resolution(resolution);
-	}
-}
-
-bool set_resolution(CVideo& video
-		, const unsigned width, const unsigned height)
-{
-	SDL_Rect rect;
-	SDL_GetClipRect(video.getSurface(), &rect);
-	if(static_cast<unsigned int> (rect.w) == width && static_cast<unsigned int>(rect.h) == height) {
-		return true;
-	}
-
-	const int flags = fullscreen() ? FULL_SCREEN : 0;
-	int bpp = video.bppForMode(width, height, flags);
-
-	if(bpp != 0) {
-		video.setMode(width, height, bpp, flags);
-
-		if(disp) {
-			disp->redraw_everything();
-		}
-
-	} else {
-        // grzywacz: is this even true?
-		gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
-		return false;
-	}
-
-	_set_resolution(std::make_pair(width, height));
-
-	return true;
 }
 
 void set_turbo(bool ison)
@@ -246,40 +115,23 @@ void set_idle_anim_rate(int rate) {
 	}
 }
 
-namespace {
-class escape_handler : public events::sdl_handler {
-public:
-	escape_handler() : escape_pressed_(false) {}
-	bool escape_pressed() const { return escape_pressed_; }
-	void handle_event(const SDL_Event &event) { escape_pressed_ |= (event.type == SDL_KEYDOWN)
-		&& (reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym.sym == SDLK_ESCAPE); }
-private:
-	bool escape_pressed_;
-};
 
-} // end anonymous namespace
-
-
-bool show_video_mode_dialog(display& disp)
+bool show_video_mode_dialog(CVideo& video)
 {
 	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
 	std::vector<std::pair<int,int> > resolutions
-			= disp.video().get_available_resolutions();
+			= video.get_available_resolutions();
 
 	if(resolutions.empty()) {
 		gui2::show_transient_message(
-				disp.video()
+				video
 				, ""
 				, _("There are no alternative video modes available"));
 
 		return false;
 	}
-
-	const std::pair<int,int> current_res(
-			  disp.video().getSurface()->w
-			, disp.video().getSurface()->h);
 
 	std::vector<std::string> options;
 	unsigned current_choice = 0;
@@ -287,7 +139,7 @@ bool show_video_mode_dialog(display& disp)
 	for(size_t k = 0; k < resolutions.size(); ++k) {
 		std::pair<int, int> const& res = resolutions[k];
 
-		if (res == current_res)
+		if (res == video.current_resolution())
 			current_choice = static_cast<unsigned>(k);
 
 		std::ostringstream option;
@@ -301,15 +153,16 @@ bool show_video_mode_dialog(display& disp)
 
 	gui2::tsimple_item_selector dlg(_("Choose Resolution"), "", options);
 	dlg.set_selected_index(current_choice);
-	dlg.show(disp.video());
+	dlg.show(video);
 
 	int choice = dlg.selected_index();
 
-	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == current_res) {
+	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == video.current_resolution()) {
 		return false;
 	}
 
-	set_resolution(resolutions[static_cast<size_t>(choice)]);
+	video.set_resolution(resolutions[static_cast<size_t>(choice)]);
+
 	return true;
 }
 

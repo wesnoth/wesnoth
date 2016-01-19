@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -183,7 +183,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, player_type_changed_(false)
 {
 	copy_persistent(level, level_);
-	
+
 	resources::controller = this;
 	resources::persist = &persist_;
 	resources::recorder = replay_.get();
@@ -236,7 +236,7 @@ void play_controller::init(CVideo& video, const config& level)
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
 	gamestate_.reset(new game_state(level, *this, tdata_));
-	
+
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
 	resources::teams = &gamestate().board_.teams_;
@@ -244,7 +244,8 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
-	
+	resources::game_events = gamestate().events_manager_.get();
+
 	gamestate_->init(level, *this);
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
@@ -284,7 +285,6 @@ void play_controller::init(CVideo& video, const config& level)
 	// Has to be done before registering any events!
 	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::lua_kernel = gamestate().lua_kernel_.get();
-	resources::game_events = gamestate().events_manager_.get();
 
 	if(gamestate().first_human_team_ != -1) {
 		gui_->set_team(gamestate().first_human_team_);
@@ -334,11 +334,11 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
+	resources::game_events = gamestate().events_manager_.get();
 
 	gamestate_->init(level, *this);
 	gamestate().bind(whiteboard_manager_.get(), gui_.get());
 	resources::lua_kernel = gamestate().lua_kernel_.get();
-	resources::game_events = gamestate().events_manager_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	gui_->reset_tod_manager(gamestate().tod_manager_);
@@ -373,6 +373,13 @@ void play_controller::fire_prestart()
 	// as those may cause the display to be refreshed.
 	update_locker lock_display(gui_->video());
 	gamestate().gamedata_.set_phase(game_data::PRESTART);
+
+	// Fire these right before prestart events, to catch only the units sides
+	// have started with.
+	BOOST_FOREACH(const unit& u, gamestate().board_.units()) {
+		pump().fire("unit placed", map_location(u.get_location()));
+	}
+
 	pump().fire("prestart");
 	// prestart event may modify start turn with WML, reflect any changes.
 	gamestate().gamedata_.get_variable("turn_number") = int(turn());
@@ -407,7 +414,7 @@ void play_controller::init_side_begin()
 
 	// If we are observers we move to watch next team if it is allowed
 	if ((is_observer() && !current_team().get_disallow_observers())
-		|| (current_team().is_local_human() && !this->is_replay())) 
+		|| (current_team().is_local_human() && !this->is_replay()))
 	{
 		update_gui_to_player(current_side() - 1);
 	}
@@ -522,11 +529,9 @@ config play_controller::to_config() const
 
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
-	
-	if(gui_.get() != NULL) {
-		gui_->labels().write(cfg);
-		sound::write_music_play_list(cfg);
-	}
+
+	gui_->labels().write(cfg);
+	sound::write_music_play_list(cfg);
 
 	return cfg;
 }
@@ -552,7 +557,7 @@ void play_controller::finish_side_turn()
 		pump().fire("side " + side_num + " turn " + turn_num + " end");
 		// This is where we refog, after all of a side's events are done.
 		actions::recalculate_fog(current_side());
-		check_victory();	
+		check_victory();
 		sync.do_final_checkup();
 	}
 
@@ -653,12 +658,19 @@ void play_controller::tab()
 		BOOST_FOREACH(const std::string& o, gui_->observers()){
 			dictionary.insert(o);
 		}
-		
+
 		// Add nicks who whispered you
 		BOOST_FOREACH(const std::string& w, gui_->get_chat_manager().whisperers()){
 			dictionary.insert(w);
 		}
-		
+
+		// Add nicks from friendlist
+		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+
+		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter){
+			dictionary.insert((*iter).first);
+		}
+
 		//Exclude own nick from tab-completion.
 		//NOTE why ?
 		dictionary.erase(preferences::login());
@@ -863,7 +875,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(*gui_, game_config_, saved_game_);
+	savegame::loadgame load(gui_->video(), game_config_, saved_game_);
 	load.load_game();
 }
 
@@ -960,7 +972,7 @@ void play_controller::check_victory()
 		return;
 	}
 
-	if (non_interactive()) {
+	if (gui_->video().non_interactive()) {
 		LOG_AIT << "winner: ";
 		BOOST_FOREACH(unsigned l, not_defeated) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
@@ -981,7 +993,7 @@ void play_controller::check_victory()
 
 void play_controller::process_oos(const std::string& msg) const
 {
-	if (non_interactive()) {
+	if (gui_->video().non_interactive()) {
 		throw game::game_error(msg);
 	}
 	if (game_config::ignore_replay_errors) return;
@@ -1081,7 +1093,7 @@ void play_controller::start_game(const config& level)
 		gamestate().start_event_fired_ = true;
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
-		
+
 		set_scontext_synced sync;
 
 		fire_prestart();
@@ -1091,7 +1103,7 @@ void play_controller::start_game(const config& level)
 
 		for ( int side = gamestate().board_.teams().size(); side != 0; --side )
 			actions::clear_shroud(side, false, false);
-		
+
 		init_gui();
 		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
 
@@ -1143,7 +1155,7 @@ void play_controller::play_side()
 	gui_->parse_team_overlays();
 	do {
 		update_viewing_player();
-		{ 
+		{
 			save_blocker blocker;
 			maybe_do_init_side();
 			if(is_regular_game_end()) {
@@ -1176,7 +1188,7 @@ void play_controller::play_turn()
 
 	LOG_NG << "turn: " << turn() << "\n";
 
-	if(non_interactive()) {
+	if(gui_->video().non_interactive()) {
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
@@ -1201,7 +1213,7 @@ void play_controller::play_turn()
 		if(is_regular_game_end()) {
 			return;
 		}
-		if(non_interactive()) {
+		if(gui_->video().non_interactive()) {
 			LOG_AIT << " Player " << current_side() << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
@@ -1231,7 +1243,7 @@ void play_controller::check_time_over()
 			return;
 		}
 
-		if(non_interactive()) {
+		if(gui_->video().non_interactive()) {
 			LOG_AIT << "time over (draw)\n";
 			ai_testing::log_draw();
 		}

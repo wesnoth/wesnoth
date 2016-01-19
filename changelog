@@ -1,4 +1,52 @@
-Version 1.13.1+dev:
+Version 1.13.2+dev:
+ * Campaigns:
+   * Liberty:
+     * Added some animations for the Rogue Mage line.
+     * Fixed Relana appearing as male.
+   * Sceptre of Fire:
+     * Added some animations for Dwarvish Miner.
+     * Improved sprite for Dwarvish Caravan.
+   * Son of the Black-Eye:
+     * Added some animations for the Orcish Shamans.
+   * Under the Burning Suns:
+     * Updated sprites for Naga Hunter, Naga Guardian line, Crab Man.
+     * Crab Man changed to Monster Crab.
+ * Graphics:
+   * Improved terrain graphics: Stones with Sand Drifts, Igloo Village.
+ * Language and i18n:
+   * Updated translations: British English, Russian, Swedish
+ * Sound effects:
+   * Fixed various subtle timing problems with attack sounds.
+ * User Interface:
+   * Implemented a new GUI2 Attack dialog
+ * WML engine:
+   * Added new event "unit placed", which triggers when (and regardless of how)
+     a unit appears on the map.
+   * Added support for color= in [unstore_unit] and [print]
+ * Miscellaneous and bug fixes:
+   * Fix the new log code on Windows to actually use Unicode-aware functions
+     in a couple of places so Wesnoth does not quit on startup when trying to
+     relocate the log file to a path with Unicode characters (bug #22897,
+     definitely fixed this time).
+   * Fix bug #23108: exclude aborted attacks from statistics
+   * imgcheck now runs on Python 3
+   * Fix bug #15259: Secondary click uses control-click instead of command-click in OS X
+   * New hi-res icon using new logo for OS X
+ * Greatly improved SDL2 support. SDL2 is now the default build.
+   * Fix bug #18112: Color cursor causes slow mouse movement at menus
+   * Fix bug #20332: Cursor not mapping correctly on Retina display when in Windowed mode
+   * Fix bug #24138: SDL2 crash on resize after starting a game and returning to title screen
+   * Fix bug #23908: SDL2 SDL_BlitSurface Causes Crashes
+   * Fix bug #23821: Text input is broken in GUI1 under SDL2
+   * Fix bug #23820: SDL 2 alpha blending issues
+   * Fix bug #23918: UI Graphics in OS X 10.11 El Capitan
+   * Fix bug #18112: Color cursor causes slow mouse movement at menus
+   * Fix bug #24214: SDL2 build handles fullscreen toggle badly
+   * Fix bug #23934: Resize actions are laggy
+   * Fix bug #24209: Screen becomes black upon minimise and restore
+   * Fix bug #24213: SDL2 build leaves menu items stuck if window dimensions change when open
+
+Version 1.13.2:
  * Add-ons client:
    * Warn user if attempting to upload an addon with a version lesser than or
      equal to a published version.
@@ -19,20 +67,25 @@ Version 1.13.1+dev:
    * Add Recent Files menu with a list of recently saved or loaded maps or
      scenarios, up to a custom limit (by default 10) that can be set in
      Advanced Preferences.
+   * Fixed Player Start labels not being updated with repeat map generations
+     (bug #20036)
  * Graphics:
    * New animated water.
    * New standing animation for the Dwarvish Runesmith
    * New generic portraits for the Troll and Troll Whelp
+   * New game logo
  * Language and i18n:
    * Updated translations: British English, French, Galician, Hungarian,
-     Japanese, Latvian
+     Italian, Japanese, Latvian, Polish, RACV, Scottish Gaelic, Slovak, Spanish
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
+   * Spelling and grammar review across all official campaigns.
  * Lua API:
    * It is now possible to implement custom [effect]s with wesnoth.effects
    * Changed interface for the wesnoth.synchronize_choice function
    * Added support for unit.level field (read only)
    * Added support for unit.advancements field (bug #23677)
+   * Added support for unit.parry and unit.accuracy fields
    * Added support for current.event_context.unit_x/y fields (bug #23507)
    * Added wesnoth.set_dialog_focus function
    * Added wesnoth.set_dialog_visible function
@@ -47,7 +100,8 @@ Version 1.13.1+dev:
    * Add wesnoth.get_unit(string_id)
    * Change wesnoth.message so that it can display translatable strings
    * Change wesnoth.put_unit so that the unit is passed as the first parameter
-   * Add wesnoth.erase_unit, which replaces wesnoth.put_unit when called without a unit
+   * Add wesnoth.erase_unit, which replaces wesnoth.put_unit when called without
+     a unit
    * Add wesnoth.unit_vision_cost
    * Add wesnoth.unit_jamming_cost
    * Add methods to proxy unit metatable:
@@ -57,11 +111,21 @@ Version 1.13.1+dev:
      unit:fcn_name(arguments) instead of as wesnoth.fcn_name(unit, arguments)
    * Add wesnoth.races[race_id].traits
    * Add wesnoth.unit_types[unit_type_id].traits
+   * Add optional third argument to wesnoth.match_unit, which is used for
+     the $other_unit variable in the filter.
    * pairs() and ipairs() now work on vconfig userdata objects
    * Add helper.get_nth_child
    * Add helper.child_count
    * Add helper.child_array
+   * wesnoth.remove_time_area no longer takes a comma-separated list of time
+     area ids.
+   * wesnoth.add_time_area no longer warns about commas in time area ids
+   * unit.variables can now access sub variables.
+   * Added wesnoth.get/set_side_variable to store variables in a [side]-
+   * Added read/write fields carryover_bonus/carryover_add/carryover_percentage
+     in lua sides.
  * Music and sound effects:
+   * Updated music track "Frantic", new one by Stephen Rozanc.
    * New sounds: dwarf hit and die, ink, mud fist and glob.
  * Terrains:
    * Removed unit elevation from N-S hanging bridges
@@ -74,8 +138,10 @@ Version 1.13.1+dev:
      by terrains without a minimap image (symbol_image) such as those from the
      Special category in the editor (Impassable Overlay, etc.).
  * User interface:
-   * It is now possible to switch from replay directly into normal play (bug #23833).
-   * The game now shows a notification on remote clients if a sides takes very long to do a local choice (bug #23297).
+   * It is now possible to switch from replay directly into normal play
+     (bug #23833).
+   * The game now shows a notification on remote clients if a sides takes very
+     long to do a local choice (bug #23297).
    * It is now possible to replay a turn in mp games by loading autosaves.
    * The game now asks for confirmation when attempting to quit during the game.
    * Add "unit status=..." command to debug console to add/remove unit statuses
@@ -85,7 +151,8 @@ Version 1.13.1+dev:
      * Widgets which are children of invisible or hidden parents can no longer
        be interacted with even if the children themselves are still internally
        visible.
-     * Added support for tristate buttons/toggle panels or more generally n-state buttons/toggle panels
+     * Added support for tristate buttons/toggle panels or more generally
+       n-state buttons/toggle panels
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
  * WML engine:
@@ -94,21 +161,31 @@ Version 1.13.1+dev:
    * Added enable_if= to mod and era events 
    * Added $varname?default_value| in variable substitution
    * Fixed side_for= parameter in [message]s with input
-   * New actionwml tag [on_undo] contains actionswml that is executed when the current action is undone
-   * New actionwml tag [unsynced] executes its contents in an unsynced context where for example [set_variable]rand= will return unsynced results
-   * [campaign] now supports [event] subtags which are added to every scenario of the campaign similar to [modification] [event]s
+   * New actionwml tag [on_undo] contains actionswml that is executed when the
+     current action is undone
+   * New actionwml tag [unsynced] executes its contents in an unsynced context
+     where for example
+     [set_variable]rand= will return unsynced results
+   * [campaign] now supports [event] subtags which are added to every scenario
+     of the campaign similar to [modification] [event]s
    * Added support for mod_x,mod_y= in [terrain_graphics].
    * Added support for has_flag= in terrain graphics [variant].
    * Added category= to [label] - allows grouping labels so that players can
      show/hide them
-   * Add female_text= to [animate_unit] and [unstore_unit] for easier translating
-   * AMLAs in [modifications] now use [advancement] tags instead of [advance] tags.
-     This means you can add an AMLA to placed unit by simply using its definition macro,
-     for example {AMLA_DEFAULT}.
-   * [get/set_global_variable]'s side= attribute now defaults to "global" (bug #23686)
-   * [team] share_view=yes/no, share_maps=yes/no was replaced with share_vision=all/shroud/none
-   * Add exclude_amla= key in [advancement] which disables the advancment if the unit
-     has already taken certain other advancements.
+   * Add female_text= to [animate_unit] and [unstore_unit] for easier
+     translating
+   * Add female_message= to [message] for easier translating of lines spoken by
+     generic units
+   * AMLAs in [modifications] now use [advancement] tags instead of [advance]
+     tags.
+     This means you can add an AMLA to a placed unit by simply using its
+     definition macro, for example {AMLA_DEFAULT}.
+   * [get/set_global_variable]'s side= attribute now defaults to "global"
+     (bug #23686)
+   * [team] share_view=yes/no, share_maps=yes/no was replaced with
+     share_vision=all/shroud/none
+   * Add exclude_amla= key in [advancement] which disables the advancment if the
+     unit has already taken certain other advancements.
    * The WML preprocessor now writes warnings to stderr for macros redefined
      without #undef, to help detect unintentional name clashes.
    * Fix macro definition line numbers being offset by 1 in WML preprocessor
@@ -119,22 +196,24 @@ Version 1.13.1+dev:
      containers/arrays).
    * Added new possibilities for [effect]:
      * apply_to=alignment - change a unit's alignment
-     * apply_to=attacks_left - change a unit's attacks per turn
+     * apply_to=max_attacks - change a unit's attacks per turn
      * apply_to=recall_cost - change a unit's recall cost
      * apply_to=vision, apply_to=jamming - change a unit's vision/jamming points
-     * apply_to=new_advancement - add new advancement possibilities (either units
-       or AMLAs)
-     * apply_to=remove_advancement - remove advancement possibilities (either units
-       or AMLAs)
+     * apply_to=new_advancement - add new advancement possibilities (either
+       units or AMLAs)
+     * apply_to=remove_advancement - remove advancement possibilities (either
+       units or AMLAs)
      * apply_to=attack - add set_ versions of all existing increase_ keys
-     * apply_to=attack - add increase_movement_used and set_movement_used to change the
-       number of movement points the attack consumes
+     * apply_to=attack - add increase_movement_used and set_movement_used to
+       change the number of movement points the attack consumes
    * Ability to patch movetypes to account for custom terrains or damage types
    * Removed y offset by -1 from [message]'s scroll-to-unit logic.
-   * Add [found_item] ConditionalWML to check if an [object]id= ActionWML has been taken
+   * Add [found_item] ConditionalWML to check if an [object]id= ActionWML has
+     been taken
    * New auto-stored WML variable $other_unit usable in the following contexts:
-     * [filter_adjacent] - $other_unit refers to the $this_unit of the enclosing filter
-       (In weapon specials and unit abilities, the unit owning the ability.)
+     * [filter_adjacent] - $other_unit refers to the $this_unit of the enclosing
+       filter (In weapon specials and unit abilities, the unit owning the
+       ability.)
      * [filter_self/opponent/attacker/defender] (weapon specials)
        $other_unit refers to the other unit in the attack
        (eg in [filter_self], it's the opponent)
@@ -144,21 +223,43 @@ Version 1.13.1+dev:
      (This is useful mostly in conjunction with variable substitution.)
      These operators are applied after the existing '-' operator that takes the
      opposite direction.
-   * Adjacency filters in abilities and weapon specials now support count= and is_enemy=
+   * Adjacency filters in abilities and weapon specials now support count= and
+     is_enemy=
+   * New implementations of backstab and leadership specials using $other_unit.
+     In particular, leadership is now a single macro and it is not supported to
+     give a unit a leadership ability of a different level (eg level 4
+     leadership on level 2 unit). The backstab= key is deprecated.
    * Add new looping tags: [for], [foreach], [repeat]
    * Add new flow control tags: [break], [continue], [return]
    * Added a new [difficulty] tag for defining a campaign's difficulty level
    * Add new syntax for [option], similar to the new difficulty syntax
-   * Add [test_condition] ActionWML that tells why a conditional failed (for debugging)
+   * Add [test_condition] ActionWML that tells why a conditional failed (for
+     debugging)
+   * Add [remove_time_area] WML tag which takes a comma-separated list of time
+     area ids.
+   * [time_area] no longer warns about commas in ids when not using remove=yes.
+   * Add [random_placement] ActionWML
+   * In [set_variables] you can now mix [value] and [literal], and even [split]
+   * Add [resource] tag which contains [event] and [lua] tags smimilar to
+     [modification] but hidden from the user.
+   * Removed name= attribute in [side].
+   * Add support for [endlevel] bonus=<number>
  * Editor:
    * Added Category field and color sliders to the Edit Label panel.
  * Miscellaneous and bug fixes:
+   * Fix $this_unit auto-stored variable not working correctly in most SUFs
    * Made Documents\My Games\WesnothX.Y the default user config+data dir on
      Windows to replace the broken <current working dir>\userdata default that
      has never been acceptable practice. Portable installs are now required to
      explicitly use . or  .. (e.g. `--config-dir .\userdata`) to force the
      user config+data dir path to be relative to the current working dir (see
      also bug #23753).
+   * Wesnoth now uses combined stdout+stderr log files on Windows, moved to
+     <user data dir>\logs during initialization and first created in the user's
+     temporary files directory defined by Windows. Log files are named like
+     "wesnoth-<TIMESTAMP>-<PID>.log" and up to 8 log files are kept along with
+     the latest session's log file. This avoids issues caused by SDL 1.2's
+     built-in redirection code not being Unicode-aware (fixes bug #22897).
    * Removed legacy filesystem API implementation.
    * Fixed Generate Map dialog bug that caused last choice of map
      generator to not be actually selected (bug #23711).
@@ -185,7 +286,16 @@ Version 1.13.1+dev:
      eg if an add-on tries to set an invalid variable
    * Fixed bug 23060: unit stat tooltips do not show.
    * wmllint, wmlscope, wmlindent and wmllint-1.4 now run on Python 3
-   * Text boxes tab completion now lists whisperer nicks for easier answer
+   * Text boxes tab completion now lists friends and whisperer nicks for easier
+     answer (bug #9742)
+   * Avoid crash when planning moves on planned recruits (bug #18637)
+   * Fixed cases of wrong unit type used in planning moves (bug #20299)
+   * Fixed hang when attempting to make a screenshot from a non-existent map via
+     command-line (bug #20900)
+   * Fixed Cancel Orders not working when loading MP game (bug #22133)
+   * Fixed broken Oasis terrain help entry (bug #23023)
+   * Fixed load game hot-key not working in the main menu (bug #23215)
+   * Added user's leave notification for ingame players
 
 Version 1.13.1:
  * Security fixes:

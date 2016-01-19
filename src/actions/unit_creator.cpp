@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,8 @@
 #include "../config.hpp"
 #include "../filter_context.hpp"
 #include "../game_board.hpp"
+#include "../game_events/manager.hpp"
+#include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
 #include "../game_data.hpp" // for resources::gamedata conversion variable_set
 #include "../gettext.hpp"
@@ -214,6 +216,8 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 			actions::get_village(loc, new_unit.side());
 		}
 	}
+
+	resources::game_events->pump().fire("unit placed", loc);
 
 	if (resources::screen!=NULL) {
 

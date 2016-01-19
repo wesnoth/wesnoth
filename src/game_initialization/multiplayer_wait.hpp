@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2007 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(game_display& disp, const config& cfg, saved_game& state, chat& c,
+	wait(CVideo& v, const config& cfg, saved_game& state, chat& c,
 		config& gamelist, const bool first_scenario = true);
 	~wait();
 	virtual void process_event();
@@ -43,7 +43,7 @@ private:
 	class leader_preview_pane : public gui::preview_pane
 	{
 	public:
-		leader_preview_pane(game_display& disp, ng::flg_manager& flg,
+		leader_preview_pane(CVideo& v, ng::flg_manager& flg,
 			const std::string& color);
 
 		bool show_above() const;
@@ -65,7 +65,6 @@ private:
 	};
 
 	void generate_menu();
-	bool has_level_data() const;
 	bool download_level_data();
 	config& get_scenario();
 	const config& get_scenario() const;

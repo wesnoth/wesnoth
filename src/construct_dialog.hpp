@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Patrick Parker <patrick_x99@hotmail.com>
+   Copyright (C) 2006 - 2016 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth widget Copyright (C) 2003-5 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -224,7 +224,7 @@ public:
 	//Constructor & destructor
 	//dialog - throws button::error() if standard buttons fail to initialize
 	//         throws utf8::invalid_utf8_exception() if message is invalid
-	dialog(display &disp,
+	dialog(CVideo& video,
 	       const std::string& title="",
 	       const std::string& message="",
 	       const DIALOG_TYPE type=MESSAGE,
@@ -277,7 +277,7 @@ public:
 	std::string textbox_text() const { return text_widget_->text();}
 	dialog_textbox& get_textbox() const { return *text_widget_; }
 	bool option_checked(unsigned int option_index=0);
-	display& get_display() { return disp_; }
+	CVideo& get_video() { return video_; }
 
 	/// Explicit freeing of class static resources.
 	/// Must not be called if any instances of this class exist.
@@ -307,10 +307,10 @@ private:
 	/// A pointer to this empty menu is used instead of NULL (for menu_).
 	static menu * empty_menu;
 	/// Provides create-on-use semantics for empty_menu.
-	static menu * get_empty_menu(display &disp);
+	static menu * get_empty_menu(CVideo& video);
 
 	//Members
-	display &disp_;
+	CVideo& video_;
 	dialog_image *image_;
 	std::string title_;
 	const style& style_;

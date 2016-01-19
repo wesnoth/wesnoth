@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2016 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -220,7 +220,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
 BOOST_AUTO_TEST_CASE( track_real_unit_by_iterator ) {
 	// FIXME: this test currently fails becasue unit id manager was moved to game_board.
 	return;
-	
+
 	config game_config(test_utils::get_test_config());
 
 	config orc_config;

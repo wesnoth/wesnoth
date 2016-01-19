@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,7 +46,6 @@
 #include "log.hpp"
 #include "network.hpp"
 #include "playmp_controller.hpp"
-#include "preferences_display.hpp"
 #include "mp_ui_alerts.hpp"
 
 #include <boost/bind.hpp>
@@ -348,7 +347,7 @@ void tlobby_main::do_notify(t_notify_mode mode, const std::string & sender, cons
 
 tlobby_main::tlobby_main(const config& game_config,
 						 lobby_info& info,
-						 display& disp)
+						 CVideo& video)
 	: legacy_result_(QUIT)
 	, game_config_(game_config)
 	, gamelistbox_(NULL)
@@ -372,7 +371,7 @@ tlobby_main::tlobby_main(const config& game_config,
 	, gamelist_dirty_(false)
 	, last_gamelist_update_(0)
 	, gamelist_diff_update_(true)
-	, disp_(disp)
+	, video_(video)
 	, lobby_update_timer_(0)
 	, preferences_wrapper_()
 	, gamelist_id_at_row_()
@@ -406,58 +405,22 @@ tlobby_main::~tlobby_main()
 	}
 }
 
-static void signal_handler_sdl_video_resize(const event::tevent event,
-											bool& handled,
-											bool& halt,
-											const tpoint& new_size,
-											CVideo& video)
-{
-	DBG_GUI_E << __func__ << ": " << event << ".\n";
-
-	if(new_size.x < preferences::min_allowed_width()
-	   || new_size.y < preferences::min_allowed_height()) {
-
-		DBG_GUI_E << __func__ << ": resize aborted, too small.\n";
-		handled = true;
-		halt = true;
-		return;
-	}
-
-	if(new_size.x == static_cast<int>(settings::screen_width)
-	   && new_size.y == static_cast<int>(settings::screen_height)) {
-
-		DBG_GUI_E << __func__ << ": resize not needed.\n";
-		handled = true;
-		return;
-	}
-
-	if(!preferences::set_resolution(video, new_size.x, new_size.y)) {
-
-		LOG_GUI_E << __func__ << ": resize aborted, resize failed.\n";
-	}
-}
-
 static bool fullscreen(CVideo& video)
 {
-	preferences::set_fullscreen(video, !preferences::fullscreen());
+	video.set_fullscreen(!preferences::fullscreen());
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// Setting to fullscreen doesn't seem to generate a resize event.
 	const SDL_Rect& rect = screen_area();
 
 	SDL_Event event;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	event.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = rect.w;
-	event.window.data2 = rect.h;
-#else
 	event.type = SDL_VIDEORESIZE;
 	event.resize.type = SDL_VIDEORESIZE;
 	event.resize.w = rect.w;
 	event.resize.h = rect.h;
-#endif
 
 	SDL_PushEvent(&event);
+#endif
 
 	return true;
 }
@@ -466,18 +429,7 @@ void tlobby_main::post_build(CVideo& video, twindow& window)
 {
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-						   boost::bind(fullscreen, boost::ref(video)));
-
-
-	/** @todo Remove this code once the resizing in twindow is finished. */
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(
-			boost::bind(&signal_handler_sdl_video_resize,
-						_2,
-						_3,
-						_4,
-						_5,
-						boost::ref(video)),
-			event::tdispatcher::front_child);
+			boost::bind(fullscreen, boost::ref(video)));
 
 	/*** Local hotkeys. ***/
 	preferences_wrapper_
@@ -1644,7 +1596,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	join["observe"] = observe;
 	if(join && !observe && game.password_required) {
 		std::string password;
-		if(!gui2::tmp_join_game_password_prompt::execute(password, disp_.video())) {
+		if(!gui2::tmp_join_game_password_prompt::execute(password, video_)) {
 			return false;
 		}
 

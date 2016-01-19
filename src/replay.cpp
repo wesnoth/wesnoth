@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -325,9 +325,14 @@ void replay::add_log_data(const std::string &category, const std::string &key, c
 
 bool replay::add_chat_message_location()
 {
-	int pos = base_->get_pos() - 1;
+	return add_chat_message_location(base_->get_pos() - 1);
+}
+
+bool replay::add_chat_message_location(int pos)
+{
+	assert(base_->get_command_at(pos).has_child("speak"));
 	if(std::find(message_locations.begin(), message_locations.end(), pos) == message_locations.end()) {
-		message_locations.push_back(base_->get_pos() - 1);
+		message_locations.push_back(pos);
 		return true;
 	}
 	else {
@@ -337,10 +342,10 @@ bool replay::add_chat_message_location()
 
 void replay::speak(const config& cfg)
 {
-	config& cmd = base_->insert_command(base_->get_pos());
+	config& cmd = base_->insert_command(base_->size());
 	cmd["undo"] = false;
 	cmd.add_child("speak",cfg);
-	add_chat_message_location();
+	add_chat_message_location(base_->size() - 1);
 }
 
 void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg> > &i) const
@@ -489,7 +494,7 @@ void replay::undo_cut(config& dst)
 		//"async"=yes means rename_unit
 		//"dependent"=true means user input
 		const config &c = command(cmd_index);
-		
+
 		if(c["undo"].to_bool(true) && !c["async"].to_bool(false) && !c["dependent"].to_bool(false))
 		{
 			if(c["sent"].to_bool(false))
@@ -506,7 +511,7 @@ void replay::undo_cut(config& dst)
 
 	if (cmd_index < 0)
 	{
-		ERR_REPLAY << "trying to undo a command but no command was found.\n";		
+		ERR_REPLAY << "trying to undo a command but no command was found.\n";
 		return;
 	}
 	//Fix the [command]s after the undone action. This includes dependent commands for that user actions and async user action.
@@ -718,7 +723,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
-				}	
+				}
 			}
 		}
 		else if (const config &child = cfg->child("label"))
@@ -836,7 +841,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			else
 			{
 				LOG_REPLAY << "found commandname " << commandname << "in replay";
-				
+
 				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
 					ERR_REPLAY << "recieved a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";
 				}

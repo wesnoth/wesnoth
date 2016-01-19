@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -137,7 +137,7 @@ bool LuaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 	}
 
 #define return_string_attrib(name, accessor) \
-	return_cstring_attrib(name, accessor.c_str())
+	return_cstring_attrib(name, (accessor).c_str())
 
 #define return_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \

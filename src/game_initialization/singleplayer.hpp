@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
+   Copyright (C) 2014 - 2016 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,13 +22,13 @@
 
 namespace sp {
 
-bool enter_create_mode(game_display& disp, const config& game_config,
+bool enter_create_mode(CVideo& video, const config& game_config,
 	saved_game& state, jump_to_campaign_info jump_to, bool local_players_only = true);
 
-bool enter_configure_mode(game_display& disp, const config& game_config,
+bool enter_configure_mode(CVideo& video, const config& game_config,
 	saved_game& state, bool local_players_only = true);
 
-bool enter_connect_mode(game_display& disp, const config& game_config,
+bool enter_connect_mode(CVideo& video, const config& game_config,
 	saved_game& state, bool local_players_only = true);
 
 } // end namespace sp

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2013 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -96,7 +96,7 @@ bool open_object(const std::string& path_or_url)
 	LOG_DU << "open_object(): on Win32, will use ShellExecute()\n";
 
 	std::wstring u16path = unicode_cast<std::wstring>(path_or_url);
-	
+
 	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(NULL, L"open", u16path.c_str(), NULL, NULL, SW_SHOW));
 	if(res <= 32) {
 		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")" << std::endl;

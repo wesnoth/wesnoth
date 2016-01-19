@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -116,8 +116,7 @@ public:
 	void set_route(const pathfind::marked_route *route);
 
 	/** Function to float a label above a tile */
-	void float_label(const map_location& loc, const std::string& text,
-	                 int red, int green, int blue);
+	void float_label(const map_location& loc, const std::string& text, const SDL_Color& color);
 
 	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const map_location& loc);

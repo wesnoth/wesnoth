@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2007 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,7 @@ namespace mp {
 class create : public mp::ui
 {
 public:
-	create(game_display& disp, const config& game_config, saved_game& state,
+	create(CVideo& v, const config& game_config, saved_game& state,
 		chat& c, config& gamelist);
 	~create();
 

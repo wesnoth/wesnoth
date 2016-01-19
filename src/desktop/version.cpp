@@ -101,14 +101,14 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 	std::string ver;
 	int c;
-	
+
 	ver.reserve(64);
-	
+
 	// We only want the first line.
 	while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
 		ver.push_back(static_cast<char>(c));
 	}
-	
+
 	return ver;
 }
 #endif
@@ -118,16 +118,16 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 std::string os_version()
 {
 #if defined(_X11) || defined(__APPLE__)
-	
+
 #ifdef __APPLE__
 
 	//
 	// Standard Mac OSX version
 	//
-	
+
 	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
 	static const std::string defaults_bin = "/usr/bin/defaults";
-	
+
 	if(filesystem::file_exists(defaults_bin) && filesystem::file_exists(version_plist)) {
 		static const std::string cmdline
 				= defaults_bin + " read " + version_plist + " ProductUserVisibleVersion";

@@ -18,7 +18,7 @@ namespace actions
 {
 namespace undo
 {
-	
+
 /**
  * Writes this into the provided config.
  */
@@ -66,6 +66,7 @@ bool recall_action::undo(int side)
 	// to also do the overlapped hexes
 	gui.invalidate(recall_loc);
 	units.erase(recall_loc);
+	this->return_village();
 	execute_undo_umc_wml();
 	return true;
 }
@@ -106,7 +107,7 @@ bool recall_action::redo(int side)
 		}
 		sync.do_final_checkup();
 	} else {
-		gui::dialog(gui, "", msg, gui::OK_ONLY).show();
+		gui::dialog(gui.video(), "", msg, gui::OK_ONLY).show();
 		return false;
 	}
 

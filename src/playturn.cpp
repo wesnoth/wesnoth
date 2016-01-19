@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -120,6 +120,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader()
 		{
 			return res;
 		}
+		cfg.clear();
 	}
 	return PROCESS_CONTINUE;
 }
@@ -173,30 +174,20 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty." << std::endl;
 			return PROCESS_CONTINUE;
 		}
-		//don't use lexical_cast_default it's "safer" to end on error
-		const int side = lexical_cast<int>(change["side"]);
+
+		const int side = change["side"].to_int();
+		const bool is_local = change["is_local"].to_bool();
+		const std::string player = change["player"];
 		const size_t index = side - 1;
-
-		assert(resources::gameboard);
-
 		if(index >= resources::gameboard->teams().size()) {
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 			return PROCESS_CONTINUE;
 		}
 
 		const team & tm = resources::gameboard->teams().at(index);
-		const std::string &player = change["player"];
 		const bool was_local = tm.is_local();
 
-		team::CONTROLLER new_controller = team::CONTROLLER();
-		try {
-			new_controller = team::CONTROLLER::string_to_enum(change["controller"].str());
-		} catch (bad_enum_cast & e) {
-			ERR_NW << "Bad [change_controller] message from server:\n" << e.what() << std::endl << change.debug() << std::endl;
-			return PROCESS_CONTINUE;
-		}
-
-		resources::gameboard->side_change_controller(side, new_controller, player);
+		resources::gameboard->side_change_controller(side, is_local, player);
 
 		if (!was_local && tm.is_local()) {
 			resources::controller->on_not_observer();
@@ -223,7 +214,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	else if (const config &side_drop_c = cfg.child("side_drop"))
 	{
 		const int  side_drop = side_drop_c["side_num"].to_int(0);
-		const std::string controller = side_drop_c["controller"];
 		size_t index = side_drop -1;
 
 		bool restart = side_drop == resources::screen->playing_side();
@@ -233,17 +223,20 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			throw network::error("");
 		}
 
-		team::CONTROLLER ctrl = team::CONTROLLER();
-		try {
-			ctrl = team::CONTROLLER::string_to_enum(controller);
-		} catch (bad_enum_cast & e) {
-			ERR_NW << "unknown controller type issued from server on side drop: " << e.what() << std::endl;
+		team::CONTROLLER ctrl;
+		if(!ctrl.parse(side_drop_c["controller"])) {
+			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
 			throw network::error("");
 		}
-
-		if (ctrl == team::CONTROLLER::AI){
+		
+		if (ctrl == team::CONTROLLER::AI) {
 			resources::gameboard->side_drop_to(side_drop, ctrl);
-			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+			return restart ? PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+		}
+		//null controlled side cannot be dropped becasue they aren't controlled by anyone.
+		else if (ctrl != team::CONTROLLER::HUMAN) {
+			ERR_NW << "unknown controller type issued from server on side drop: " << ctrl.to_cstring() << std::endl;
+			throw network::error("");
 		}
 
 		int action = 0;
@@ -303,19 +296,16 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			case 0:
 				resources::controller->on_not_observer();
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_AI);
-				change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
 				resources::controller->on_not_observer();
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_HUMAN);
-				change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);
-				change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
@@ -339,8 +329,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						size_t i = index - observers.size();
 						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
-						resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_AI);
-						change_controller(side_drop, team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN));
+						//This shouldnt be possible.
+						assert(false);
 					}
 					return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 				}
@@ -363,10 +353,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	//If this client becomes the new host, notify the play_controller object about it
-	else if (const config &cfg_host_transfer = cfg.child("host_transfer")){
-		if (cfg_host_transfer["value"] == "1") {
-			host_transfer_.notify_observers();
-		}
+	else if (cfg.child("host_transfer")){
+		host_transfer_.notify_observers();
 	}
 	else
 	{
@@ -374,16 +362,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	return PROCESS_CONTINUE;
-}
-
-void turn_info::change_controller(int side, const std::string& controller)
-{
-	config cfg;
-	config& change = cfg.add_child("change_controller");
-	change["side"] = side;
-	change["controller"] = controller;
-
-	network::send_data(cfg, 0);
 }
 
 

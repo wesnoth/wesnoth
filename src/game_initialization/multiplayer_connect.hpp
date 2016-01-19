@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2007 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 #include "widgets/combo_drag.hpp"
 #include "widgets/scrollpane.hpp"
 #include "widgets/slider.hpp"
+class CVideo;
 
 namespace ai {
 	struct description;
@@ -91,7 +92,7 @@ public:
 
 	typedef std::vector<side> side_list;
 
-	connect(game_display& disp, const std::string& game_name,
+	connect(CVideo& v, const std::string& game_name,
 		const config& game_config, chat& c, config& gamelist,
 		ng::connect_engine& engine);
 	~connect();

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -121,6 +121,8 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	filter->set_text_changed_callback(
 			boost::bind(&tunit_create::filter_text_changed, this, _1, _2));
 
+	window.keyboard_capture(filter);
+
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
 								   boost::bind(&tunit_create::list_item_clicked,
@@ -130,8 +132,6 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	list.set_callback_value_change(
 			dialog_callback<tunit_create, &tunit_create::list_item_clicked>);
 #endif
-
-	window.keyboard_capture(&list);
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "type_profile", false),
@@ -155,7 +155,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			continue;
 
 		// Make sure this unit type is built with the data we need.
-		unit_types.build_unit_type(i.second, unit_type::WITHOUT_ANIMATIONS);
+		unit_types.build_unit_type(i.second, unit_type::FULL);
 
 		units_.push_back(&i.second);
 
@@ -262,7 +262,7 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 	{
 		if(tr["availability"] != "musthave") continue;
 
-		const std::string gender_string = 
+		const std::string gender_string =
 			u->genders().front() == unit_race::FEMALE ? "female_name" : "male_name";
 
 		t_string name = tr[gender_string];
@@ -301,10 +301,10 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 
 		BOOST_FOREACH(const attack_type& a, u->attacks())
 		{
-			str << "<span color='#f5e6c1'>" << a.num_attacks() 
-				<< font::weapon_numbers_sep << a.damage() << " " << a.name() << "</span>" << "\n";
+			str << "<span color='#f5e6c1'>" << a.damage()
+				<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>" << "\n";
 
-			str << "<span color='#a69275'>" << "  " << a.range() 
+			str << "<span color='#a69275'>" << "  " << a.range()
 				<< font::weapon_details_sep << a.type() << "</span>" << "\n";
 
 			const std::string special = a.weapon_specials();
@@ -324,8 +324,12 @@ void tunit_create::print_stats(std::stringstream& str, const int row)
 
 void tunit_create::list_item_clicked(twindow& window)
 {
-	const int selected_row 
+	const int selected_row
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
+
+	if(selected_row == -1) {
+		return;
+	}
 
 	const unit_type* u = units_[selected_row];
 
@@ -353,7 +357,7 @@ void tunit_create::list_item_clicked(twindow& window)
 	u_name.set_use_markup(true);
 
 	std::stringstream l_str;
-	l_str << "<span size='x-large'>" << "L " << u->level() << "</span>";
+	l_str << "<b>" << "Lvl " << u->level() << "</b>";
 
 	tlabel& l_label = find_widget<tlabel>(&window, "type_level", false);
 
@@ -432,7 +436,7 @@ void tunit_create::profile_button_callback(twindow& window)
 	const int selected_row
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
-	help::show_unit_help(*disp_,
+	help::show_unit_help(disp_->video(),
 		units_[selected_row]->id(),
 		units_[selected_row]->show_variations_in_help(), false);
 }

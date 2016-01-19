@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2012-04-17 08:15-0300\n"
 "Last-Translator: Romero Gonçalves <romerotg@gmail.com>\n"
 "Language-Team: Portuguese Brazilian\n"
@@ -24,17 +24,21 @@ msgstr "CdF"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-msgid "(Normal)"
-msgstr "(Normal)"
-
-#. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "Fighter"
 msgstr "Soldado"
 
 #. [campaign]: id=Sceptre_of_Fire
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(Normal)"
+
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:19
-msgid "(Challenging)"
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Desafiador)"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -44,7 +48,9 @@ msgstr "Encouraçado"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
-msgid "(Difficult)"
+#, fuzzy
+#| msgid "(Difficult)"
+msgid "Difficult"
 msgstr "(Difícil)"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -53,7 +59,7 @@ msgid "Lord"
 msgstr "Lorde"
 
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:22
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:23
 msgid ""
 "The land of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -76,27 +82,27 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:31
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:32
 msgid "(Expert level, 9 scenarios.)"
 msgstr "(Nível experiente, 9 cenários.)"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:34
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:35
 msgid "Campaign Design"
 msgstr "Design da Campanha"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:40
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:41
 msgid "Campaign Maintenance"
 msgstr "Manutenção da Campanha"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:47
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:48
 msgid "WML Assistance"
 msgstr "Assistência WML"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:62
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:63
 msgid "Artwork and Graphics Design"
 msgstr "Design gráfico e ilustrações"
 
@@ -238,7 +244,7 @@ msgstr "Derrotar Glildur"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:411
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:187
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:465
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:843
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:844
 msgid "Death of Rugnur"
 msgstr "Morte de Rugnur"
 
@@ -396,8 +402,12 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:261
+#, fuzzy
+#| msgid ""
+#| "Uh, no, wait! Lets talk business — how much will you pay us to do this "
+#| "for you?"
 msgid ""
-"Uh, no, wait! Lets talk business — how much will you pay us to do this for "
+"Uh, no, wait! Let’s talk business — how much will you pay us to do this for "
 "you?"
 msgstr ""
 "Oh, não, espere! Vamos falar de negócios — quanto você vai nos pagar para "
@@ -1385,7 +1395,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:415
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:191
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:469
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:847
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:848
 msgid "Death of Krawg"
 msgstr "Morte de Krawg"
 
@@ -1540,7 +1550,7 @@ msgstr "Mova Thursagan para o sinal"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:378
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:195
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:473
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:851
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:852
 msgid "Death of Thursagan"
 msgstr "Morte de Thursagan"
 
@@ -2720,11 +2730,17 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:271
+#, fuzzy
+#| msgid ""
+#| "You don’t have authority over me, Durstorn. And I wouldn’t give the "
+#| "Sceptre to them even if you did. It’s not yours to give, its mine, and "
+#| "Rugnur’s, and Baglur’s. Krawg’s done more for its existence than you "
+#| "have! And yet, you still get the profits from selling it to Haldric."
 msgid ""
 "You don’t have authority over me, Durstorn. And I wouldn’t give the Sceptre "
-"to them even if you did. It’s not yours to give, its mine, and Rugnur’s, and "
-"Baglur’s. Krawg’s done more for its existence than you have! And yet, you "
-"still get the profits from selling it to Haldric."
+"to them even if you did. It’s not yours to give, it’s mine, and Rugnur’s, "
+"and Baglur’s. Krawg’s done more for its existence than you have! And yet, "
+"you still get the profits from selling it to Haldric."
 msgstr ""
 "Você não tem autoridade sobre mim, Durstorn. E eu não entregaria o Cetro a "
 "eles mesmo se você tivesse. Não é seu para entregá-los, é meu, de Rugnur e "
@@ -2867,8 +2883,13 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:426
+#, fuzzy
+#| msgid ""
+#| "I’m not going to do that, its suicide! And in any case, I’ve been with "
+#| "you for ten years, almost as long as I was in the Wesnothian army; I’d "
+#| "prefer to fight with you."
 msgid ""
-"I’m not going to do that, its suicide! And in any case, I’ve been with you "
+"I’m not going to do that, it’s suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
 "fight with you."
 msgstr ""
@@ -2899,8 +2920,13 @@ msgstr "Saim, anões, e se rendam! Ou morram na caverna, a escolha é sua."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:472
+#, fuzzy
+#| msgid ""
+#| "Alanin, ride as fast as you can south. Tell Haldric we are heading "
+#| "northeast, towards the old eastern mines, and if he wants his precious "
+#| "sceptre he should send forces to meet us there as soon as he can!"
 msgid ""
-"Alanin, ride as fast as you can south. Tell Haldric we are heading "
+"Alanin, ride south as fast as you can. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
 "sceptre he should send forces to meet us there as soon as he can!"
 msgstr ""
@@ -3476,14 +3502,14 @@ msgid "Move onto the glyph in the center of the volcano"
 msgstr "Coloquem-no sobre o glifo no centro do vulcão"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:521
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:522
 msgid "That’s it! The volcano will erupt soon now that you’ve triggered it."
 msgstr ""
 "É isso aí! o vulcão vai entrar em erupção em breve, agora que você o "
 "desencadeou."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:537
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:538
 msgid ""
 "Look, it has knocked down some of the walls! Those orcs have a way out now!"
 msgstr ""
@@ -3491,7 +3517,7 @@ msgstr ""
 "de sair!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:546
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:547
 msgid ""
 "Well, we’ve succeeded in stopping the elves from getting the Sceptre, I "
 "would say. But what do we do now?!"
@@ -3500,13 +3526,13 @@ msgstr ""
 "que faremos agora?"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:552
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:553
 msgid "Now, we must fight the orcs until we die, it’s our only option."
 msgstr ""
 "Agora, nós devemos lutar com os orcs at;e morrermos, é a nossa única opção."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:558
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:559
 msgid ""
 "We cannot let any of the elves or their mercenaries escape; they would tell "
 "where the Sceptre of Fire is. Make sure they all die!"
@@ -3516,7 +3542,7 @@ msgstr ""
 "morram!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:564
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:565
 msgid ""
 "We have to kill them quickly, before they realize what is happening. And "
 "remember, the lava spreads quickly, suddenly, and dangerously. The only "
@@ -3527,7 +3553,7 @@ msgstr ""
 "perigosamente. O único lugar a salvo é perto do glifo."
 
 #. [message]: role=smartelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:596
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:597
 msgid ""
 "Wait, what’s going on? The volcano is going to erupt! Everyone, try to get "
 "out of these caves!"
@@ -3536,22 +3562,22 @@ msgstr ""
 "tentem sair destas cavernas!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:611
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:612
 msgid "I must go report to my superiors!"
 msgstr "Eu devo reportar aos meus superiores!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:615
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:616
 msgid "We have allowed an enemy to escape; we have failed."
 msgstr "Nós deixamos um inimigo escapar; nós falhamos."
 
 #. [message]: role=dumbelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:673
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:674
 msgid "Aghh!! The volcano is erupting, and now our exit has been blocked off!!"
 msgstr "Aghh!! O vulcão está em erupção, e agora a nossa saída foi bloqueada!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:698
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:699
 msgid ""
 "We have hidden the Sceptre well, but now the volcano is going to erupt and "
 "kill us all."
@@ -3560,13 +3586,13 @@ msgstr ""
 "todos nós."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:839
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:840
 msgid "Kill all of the elves before one of them escapes from the caves"
 msgstr "Mate todos os elfos antes que um deles escape das cavernas!"
 
 #. [message]: speaker=Krawg
 #. "Hmmm, me leave now!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:952
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:953
 msgid "Hm... Me le’ no’w!"
 msgstr "Hm... Mim sair agora!"
 
@@ -3854,7 +3880,7 @@ msgid "Caravan"
 msgstr "Caravana"
 
 #. [unit_type]: id=Caravan, race=mechanical
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
+#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:18
 msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
 "immense weight of the cargo this caravan carries, it moves very slowly."
@@ -3880,7 +3906,7 @@ msgstr ""
 "artefatos"
 
 #. [attack]: type=pierce
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:46
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:23
 msgid "pick"
 msgstr "espetar"
 

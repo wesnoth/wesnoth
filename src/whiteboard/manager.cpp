@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2015 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -713,7 +713,9 @@ void manager::create_temp_move()
 
 			if(path.size() >= 2)
 			{
-				if(!fake_unit)
+				// Bug #20299 demonstrates a situation where an incorrect fake/ghosted unit can be used.
+				// So before assuming that a pre-existing fake_unit can be re-used, check that its ID matches the unit being moved.
+				if(!fake_unit || fake_unit.get_unit_ptr()->id() != temp_moved_unit->id())
 				{
 					// Create temp ghost unit
 					fake_unit = fake_unit_ptr(unit_ptr (new unit(*temp_moved_unit)), resources::fake_units);

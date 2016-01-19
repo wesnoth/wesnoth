@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,6 +30,11 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
+
+#include "log.hpp"
+
+static lg::log_domain log_wml("wml");
+#define WRN_WML LOG_STREAM(warn, log_wml)
 
 namespace gui2
 {
@@ -77,11 +82,13 @@ tcampaign_difficulty::tcampaign_difficulty(
 	// Populate local config with difficulty children
 	difficulties_.append_children(campaign, "difficulty");
 
-	std::vector<std::string> difficulty_list = utils::split(campaign["difficulties"]);
-	std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
-
 	// Convert legacy format to new-style config if latter not present
 	if(difficulties_.empty()) {
+		WRN_WML << "[campaign] difficulties,difficulty_descriptions= is deprecated. Use [difficulty] instead" << std::endl;
+
+		std::vector<std::string> difficulty_list = utils::split(campaign["difficulties"]);
+		std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
+
 		if(difficulty_opts.size() != difficulty_list.size()) {
 			difficulty_opts = difficulty_list;
 		}

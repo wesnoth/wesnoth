@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -1693,15 +1693,9 @@ void server::handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_w
 	} else if (data.child("whiteboard")) {
 		g.process_whiteboard(data,socket);
 		return;
-	} else if (data.child("change_controller_wml")) {
-		g.process_change_controller_wml(data,socket);
-		return;
 	} else if (data.child("change_turns_wml")) {
 		g.process_change_turns_wml(data,socket);
 		update_game_in_lobby(g);
-		return;
-	} else if (data.child("require_random")) {
-		g.require_random(data,socket);
 		return;
 	} else if (simple_wml::node* sch = data.child("request_choice")) {
 		g.handle_choice(*sch, socket);
@@ -2017,6 +2011,10 @@ void server::run() {
 				simple_wml::document diff;
 				if(make_delete_diff(games_and_users_list_.root(), NULL, "user",
 				                    pl_it->second.config_address(), diff)) {
+					for (t_games::const_iterator g = games_.begin(); g != games_.end(); ++g) {
+					      // Note: This string is parsed by the client to identify lobby leave messages!
+					      g->send_server_message_to_all(pl_it->second.name() + " has disconnected");
+					}
 					rooms_.lobby().send_data(diff, e.socket);
 				}
 
@@ -3472,15 +3470,9 @@ void server::process_data_game(const network::connection sock,
 	} else if (data.child("whiteboard")) {
 		g.process_whiteboard(data,pl);
 		return;
-	} else if (data.child("change_controller_wml")) {
-		g.process_change_controller_wml(data,pl);
-		return;
 	} else if (data.child("change_turns_wml")) {
 		g.process_change_turns_wml(data,pl);
 		update_game_in_lobby(g);
-		return;
-	} else if (data.child("require_random")) {
-		g.require_random(data,pl);
 		return;
 	} else if (simple_wml::node* sch = data.child("request_choice")) {
 		g.handle_choice(*sch, pl);
@@ -3493,9 +3485,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 	// Data to ignore.
 	} else if (data.child("error")
-	|| data.child("side_secured")
 	|| data.root().has_attr("failed")
-	|| data.root().has_attr("side_drop")
 	|| data.root().has_attr("side")) {
 		return;
 	}

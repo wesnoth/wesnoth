@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -86,7 +86,7 @@ playsingle_controller::playsingle_controller(const config& level,
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 
-	
+
 	// game may need to start in linger mode
 	linger_ = this->is_regular_game_end();
 
@@ -128,7 +128,7 @@ void playsingle_controller::init_gui(){
 
 	update_locker lock_display(gui_->video(), is_skipping_replay());
 	gui_->draw();
-	get_hotkey_command_executor()->set_button_state(*gui_);
+	get_hotkey_command_executor()->set_button_state();
 	events::raise_draw_event();
 }
 
@@ -177,11 +177,19 @@ void playsingle_controller::play_scenario_main_loop()
 					1) The undo stack is not reset along with the gamestate (fixed).
 					2) The server_request_number_ is not reset along with the gamestate (fixed).
 					3) chat and other unsynced actions are inserted in the middle of the replay bringing the replay_pos in unorder (fixed).
-					4) untracked changes in side controllers are lost when resetting gamestate.
+					4) untracked changes in side controllers are lost when resetting gamestate. (fixed)
 					5) The game should have a stricter check for whether the loaded game is actually a parent of this game.
 					6) If an action was undone after a game was saved it can casue if teh undone action is in the snapshot of the saved game. (luckyli this is never the case for autosaves)
 			*/
+			std::vector<bool> local_players(gamestate().board_.teams().size(), true);
+			//Preserve side controllers, becasue we won't get the side controoller updates again when replaying.
+			for(size_t i = 0; i < local_players.size(); ++i) {
+				local_players[i] = gamestate().board_.teams()[i].is_local();
+			}
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
+			for(size_t i = 0; i < local_players.size(); ++i) {
+				(*resources::teams)[i].set_local(local_players[i]);
+			}
 			play_scenario_init(*ex.level);
 			mp_replay_.reset(new replay_controller(*this, false, ex.level));
 			mp_replay_->play_replay();
@@ -268,7 +276,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		pump().fire(is_victory ? "victory" : "defeat");
 		{ // Block for set_scontext_synced_base
 			set_scontext_synced_base sync;
-			pump().fire("scenario_end");
+			pump().fire("scenario end");
 		}
 		if(end_level.proceed_to_next_level) {
 			gamestate().board_.heal_all_survivors();
@@ -490,7 +498,7 @@ void playsingle_controller::linger()
 void playsingle_controller::end_turn_enable(bool enable)
 {
 	gui_->enable_menu("endturn", enable);
-	get_hotkey_command_executor()->set_button_state(*gui_);
+	get_hotkey_command_executor()->set_button_state();
 }
 
 

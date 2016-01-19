@@ -97,9 +97,11 @@ opts.AddVariables(
     PathVariable('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
+    EnumVariable('multilib_arch', 'Address model for multilib compiler: 32-bit or 64-bit', "", ["", "32", "64"]),
     ('jobs', 'Set the number of parallel compilations', "1", lambda key, value, env: int(value), int),
     BoolVariable('distcc', 'Use distcc', False),
     BoolVariable('ccache', "Use ccache", False),
+    ('ctool', 'Set c compiler command if not using standard compiler.'),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolVariable('cxx0x', 'Use C++0x features.', False),
     BoolVariable('openmp', 'Enable openmp use.', False),
@@ -107,7 +109,7 @@ opts.AddVariables(
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
-    BoolVariable("sdl2", "Build with SDL2 support (experimental!)", False)
+    BoolVariable("sdl2", "Build with SDL2 support (experimental!)", True)
     )
 
 #
@@ -157,10 +159,17 @@ else:
     from cross_compile import *
     setup_cross_compile(env)
 
+env.Tool("system_include")
+
+if 'HOME' in os.environ:
+    env['ENV']['HOME'] = os.environ['HOME']
+
+if env.get('ctool',""):
+    env['CC'] = env['ctool']
+    env['CXX'] = env['ctool'].rstrip("cc") + "++"
+
 if env.get('cxxtool',""):
     env['CXX'] = env['cxxtool']
-    if 'HOME' in os.environ:
-        env['ENV']['HOME'] = os.environ['HOME']
 
 if env['jobs'] > 1:
     SetOption("num_jobs", env['jobs'])
@@ -169,6 +178,12 @@ if env['distcc']:
     env.Tool('distcc')
 
 if env['ccache']: env.Tool('ccache')
+
+SDL2_version = '';
+if env["PLATFORM"] is "win32" or env["PLATFORM"] is "cygwin" or env["PLATFORM"] is "darwin":
+    SDL2_version = '2.0.4';
+else:
+    SDL2_version = '2.0.2';
 
 
 Help("""Arguments may be a mixture of switches and targets in any order.
@@ -298,6 +313,10 @@ configure_args = dict(
 
 env.MergeFlags(env["extra_flags_config"])
 
+if env["multilib_arch"]:
+    multilib_flag = "-m" + env["multilib_arch"]
+    env.AppendUnique(CCFLAGS = [multilib_flag], LINKFLAGS = [multilib_flag])
+
 # Some tests need to load parts of boost
 env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 
@@ -347,12 +366,12 @@ if env["prereqs"]:
     if env['sdl2']:
         def have_sdl_net():
             return \
-                conf.CheckSDL(require_version = '2.0.0') & \
+                conf.CheckSDL(require_version = SDL2_version) & \
                 conf.CheckSDL("SDL2_net", header_file = "SDL_net")
 
         def have_sdl_other():
             return \
-                conf.CheckSDL(require_version = '2.0.0') & \
+                conf.CheckSDL(require_version = SDL2_version) & \
                 conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
                 conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
                 conf.CheckSDL("SDL2_image", header_file = "SDL_image")

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -341,23 +341,23 @@ void menu::update_scrollbar_grip_height()
 
 void menu::update_size()
 {
-	unsigned int h = heading_height();
+	int h = heading_height();
 	for(size_t i = get_position(),
 	    i_end = std::min(items_.size(), i + max_items_onscreen());
 	    i < i_end; ++i)
 		h += get_item_rect(i).h;
 	h = std::max(h, height());
-	if (max_height_ > 0 && h > static_cast<unsigned>(max_height_)) {
+	if (max_height_ > 0 && h > (max_height_)) {
 		h = max_height_;
 	}
 
 	use_ellipsis_ = false;
 	std::vector<int> const &widths = column_widths();
-	unsigned w = std::accumulate(widths.begin(), widths.end(), 0);
+	int w = std::accumulate(widths.begin(), widths.end(), 0);
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
 	w = std::max(w, width());
-	if (max_width_ > 0 && w > static_cast<unsigned>(max_width_)) {
+	if (max_width_ > 0 && w > (max_width_)) {
 		use_ellipsis_ = true;
 		w = max_width_;
 	}

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -205,7 +205,6 @@ CALLABLE_WRAPPER_FN(gold)
 CALLABLE_WRAPPER_FN(base_income)
 CALLABLE_WRAPPER_FN(village_gold)
 CALLABLE_WRAPPER_FN(village_support)
-CALLABLE_WRAPPER_FN(name)
 CALLABLE_WRAPPER_FN2(is_human, is_local_human)
 CALLABLE_WRAPPER_FN2(is_ai, is_local_ai)
 CALLABLE_WRAPPER_FN(is_network)

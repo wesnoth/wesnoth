@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@ namespace gui {
 class combo : public button
 {
 public:
-	combo(display& disp, const std::vector<std::string>& items);
+	combo(CVideo& v, const std::vector<std::string>& items);
 
 	void set_selected(int val);
 	void set_items(const std::vector<std::string>& items);
@@ -38,7 +38,7 @@ private:
 	void set_selected_internal(int val);
 	std::vector<std::string> items_;
 	int selected_, oldSelected_;
-	display* disp_;
+	CVideo* video_;
 	static const std::string empty_combo_label;
 	static const int font_size;
 	static const int horizontal_padding;

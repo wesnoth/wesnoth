@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2013 - 2016 Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,7 @@ class configure : public mp::ui
 public:
 	///gives the user the option to adjust the passed saved_game
 	///Call get_parameters to finalize;
-	configure(game_display& dist, const config& game_config, chat& c, config& gamelist, saved_game& game, bool local_players_only);
+	configure(CVideo& v, const config& game_config, chat& c, config& gamelist, saved_game& game, bool local_players_only);
 	~configure();
 
 	void get_parameters();
@@ -47,7 +47,7 @@ private:
 	//Settings that can be changed unledd wml forbids it
 	struct nolock_settings
 	{
-		nolock_settings(game_display& disp);
+		nolock_settings(CVideo& video);
 
 		gui::slider turns_slider_;
 		gui::label turns_label_;

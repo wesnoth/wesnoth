@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,20 +35,23 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		hotkey::deactivate_all_scopes();
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 		editor_controller editor(game_conf, video);
-		if (!filename.empty()) {
+		if (!filename.empty() && filesystem::file_exists (filename)) {
 			if (filesystem::is_directory(filename)) {
 				editor.context_manager_->set_default_dir(filename);
 				editor.context_manager_->load_map_dialog(true);
 			} else {
 				editor.context_manager_->load_map(filename, false);
 			}
+
+			if (take_screenshot) {
+				editor.do_screenshot(screenshot_filename);
+				e = EXIT_NORMAL;
+			}
 		}
-		if(take_screenshot) {
-			editor.do_screenshot(screenshot_filename);
-			e = EXIT_NORMAL;
-		} else {
+
+		if (!take_screenshot)
 			e = editor.main_loop();
-		}
+
 	} catch (editor_exception& e) {
 		ERR_ED << "Editor exception in editor::start: " << e.what() << std::endl;
 		throw;

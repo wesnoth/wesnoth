@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #include "widgets/combo.hpp"
 #include "widgets/drop_target.hpp"
 
-class display;
+class CVideo;
 
 namespace gui {
 
@@ -27,7 +27,7 @@ namespace gui {
 	class combo_drag : public combo, public drop_target, public events::pump_monitor
 	{
 		public:
-			combo_drag(display& disp, const std::vector<std::string>& items, const drop_group_manager_ptr group);
+			combo_drag(CVideo& v, const std::vector<std::string>& items, const drop_group_manager_ptr group);
 
 			/**
 			 * used to query if this object was dropped to a target

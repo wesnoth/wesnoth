@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -392,14 +392,6 @@ int tcontrol::get_text_maximum_height() const
 	return get_height() - config_->text_extra_height;
 }
 
-void tcontrol::impl_draw_background(surface& frame_buffer)
-{
-	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
-			  << get_rectangle() << ".\n";
-
-	canvas(get_state()).blit(frame_buffer, get_rectangle());
-}
-
 void tcontrol::impl_draw_background(surface& frame_buffer,
 									int x_offset,
 									int y_offset)
@@ -409,11 +401,6 @@ void tcontrol::impl_draw_background(surface& frame_buffer,
 
 	canvas(get_state()).blit(frame_buffer,
 							 calculate_blitting_rectangle(x_offset, y_offset));
-}
-
-void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/)
-{
-	/* DO NOTHING */
 }
 
 void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/

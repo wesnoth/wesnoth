@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2007 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -39,8 +39,9 @@
 #include "formula_string_utils.hpp"
 #include "terrain_type_data.hpp"
 #include "version.hpp"
-#include "game_display.hpp"
-
+#include "sdl/rect.hpp"
+#include "sdl/utils.hpp"
+#include "video.hpp"
 
 #include <cassert>
 #include <boost/algorithm/string/predicate.hpp>
@@ -941,7 +942,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
 		BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
 
 			if(!boost::contains(i.map_info, search_string, chars_equal_insensitive) &&
-			   !boost::contains(i.name, search_string, chars_equal_insensitive) && 
+			   !boost::contains(i.name, search_string, chars_equal_insensitive) &&
 			   !boost::contains(i.era_and_mod_info, search_string, chars_equal_insensitive)) {
 
 				found_match = false;
@@ -1024,27 +1025,27 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 	return basic_sorter::less(column,row1,row2);
 }
 
-lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
-	mp::ui(disp, _("Game Lobby"), cfg, c, gamelist),
+lobby::lobby(CVideo& v, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
+	mp::ui(v, _("Game Lobby"), cfg, c, gamelist),
 
 	current_turn(0),
 	game_vacant_slots_(),
 	game_observers_(),
 
-	observe_game_(disp.video(), _("Observe Game")),
-	join_game_(disp.video(), _("Join Game")),
-	create_game_(disp.video(), _("Create Game")),
-	replay_options_(disp, std::vector<std::string>()),
-	game_preferences_(disp.video(), _("Preferences")),
-	quit_game_(disp.video(), _("Quit")),
-	apply_filter_(disp.video(), _("Apply filter"), gui::button::TYPE_CHECK),
-	invert_filter_(disp.video(), _("Invert"), gui::button::TYPE_CHECK),
-	vacant_slots_(disp.video(), _("Vacant slots"), gui::button::TYPE_CHECK),
-	friends_in_game_(disp.video(), _("Friends in game"), gui::button::TYPE_CHECK),
-	filter_label_(disp.video(), _("Search:")),
-	filter_text_(disp.video(), 150),
+	observe_game_(video(), _("Observe Game")),
+	join_game_(video(), _("Join Game")),
+	create_game_(video(), _("Create Game")),
+	replay_options_(video(), std::vector<std::string>()),
+	game_preferences_(video(), _("Preferences")),
+	quit_game_(video(), _("Quit")),
+	apply_filter_(video(), _("Apply filter"), gui::button::TYPE_CHECK),
+	invert_filter_(video(), _("Invert"), gui::button::TYPE_CHECK),
+	vacant_slots_(video(), _("Vacant slots"), gui::button::TYPE_CHECK),
+	friends_in_game_(video(), _("Friends in game"), gui::button::TYPE_CHECK),
+	filter_label_(video(), _("Search:")),
+	filter_text_(video(), 150),
 	last_selected_game_(-1), sorter_(gamelist),
-	games_menu_(disp.video(),cfg.child("multiplayer_hashes")),
+	games_menu_(video(),cfg.child("multiplayer_hashes")),
 	minimaps_(),
 	search_string_(preferences::fi_text()),
 	installed_addons_(installed_addons)
@@ -1189,7 +1190,7 @@ void lobby::process_event()
 	process_event_impl(data);
 }
 
-static void handle_addon_requirements_gui(display & disp, const std::vector<required_addon> & reqs, mp::ADDON_REQ addon_outcome)
+static void handle_addon_requirements_gui(CVideo & v, const std::vector<required_addon> & reqs, mp::ADDON_REQ addon_outcome)
 {
 	if (addon_outcome == CANNOT_SATISFY) {
 		std::string e_title = _("Incompatible user-made content.");
@@ -1205,7 +1206,7 @@ static void handle_addon_requirements_gui(display & disp, const std::vector<requ
 				err_msg += "\n";
 			}
 		}
-		gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::auto_close);
+		gui2::show_message(v, e_title, err_msg, gui2::tmessage::auto_close);
 	} else if (addon_outcome == NEED_DOWNLOAD) {
 		std::string e_title = _("Missing user-made content.");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join. Do you want to try to install them?");
@@ -1227,8 +1228,8 @@ static void handle_addon_requirements_gui(display & disp, const std::vector<requ
 		}
 		assert(needs_download.size() > 0);
 
-		if (gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
-			ad_hoc_addon_fetch_session(disp, needs_download);
+		if (gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+			ad_hoc_addon_fetch_session(v, needs_download);
 			throw lobby_reload_request_exception();
 		}
 	}
@@ -1244,7 +1245,7 @@ void lobby::process_event_impl(const process_event_data & data)
 	if ((games_menu_.selected() || data.observe || data.join) && games_menu_.selection_needs_addons())
 	{
 		if (const std::vector<required_addon> * reqs = games_menu_.selection_addon_requirements()) {
-			handle_addon_requirements_gui(disp(), *reqs, games_menu_.selection_addon_outcome());
+			handle_addon_requirements_gui(video(), *reqs, games_menu_.selection_addon_outcome());
 		} else {
 			gui2::show_error_message(video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby, please report this at bugs.wesnoth.org."));
 		}
@@ -1284,7 +1285,7 @@ void lobby::process_event_impl(const process_event_data & data)
 
 			std::string password;
 			if(join && game.password_required) {
-				if(!gui2::tmp_join_game_password_prompt::execute(password, disp_.video())) {
+				if(!gui2::tmp_join_game_password_prompt::execute(password, video())) {
 					return;
 				}
 			}

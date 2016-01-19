@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
+   Copyright (C) 2014 - 2016 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -121,7 +121,7 @@ private:
 	const config &side_cfg_;
 
 	std::vector<const config*> entry_points_;
-	
+
 	std::vector<std::string> entry_point_titles_;
 };
 

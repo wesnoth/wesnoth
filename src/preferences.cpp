@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,6 +34,9 @@
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/concept_check.hpp>
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
@@ -42,8 +45,6 @@ static lg::log_domain log_filesystem("filesystem");
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
 namespace {
-
-bool color_cursors = false;
 
 bool no_preferences_save = false;
 
@@ -56,8 +57,18 @@ config prefs;
 
 namespace preferences {
 
+class prefs_event_handler : public events::sdl_handler {
+public:
+	virtual void handle_event(const SDL_Event &event);
+	prefs_event_handler() :	sdl_handler(false) {}
+};
+
+prefs_event_handler event_handler_;
+
 base_manager::base_manager()
 {
+	event_handler_.join_global();
+
 	try{
 #ifdef DEFAULT_PREFS_PATH
 		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
@@ -89,6 +100,38 @@ base_manager::~base_manager()
 
 		write_preferences();
 	} catch (...) {}
+}
+
+/* 
+ * Hook for setting window state variables on window resize and maximize
+ * events. Since there is no fullscreen window event, that setter is called 
+ * from the CVideo function instead.
+ */
+void prefs_event_handler::handle_event(const SDL_Event& event)
+{
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	// Saftey check to make sure this is a window event
+	if (event.type != SDL_WINDOWEVENT) return;
+
+	switch(event.window.event) {
+	case SDL_WINDOWEVENT_RESIZED:
+		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
+
+		break;
+
+	case SDL_WINDOWEVENT_MAXIMIZED:
+		_set_maximized(true);
+
+		break;
+
+	case SDL_WINDOWEVENT_RESTORED:
+		_set_maximized(false);
+
+		break;
+	}
+#else
+	UNUSED(event);
+#endif
 }
 
 void write_preferences()
@@ -183,10 +226,6 @@ config* get_prefs(){
 	return pointer;
 }
 
-bool fullscreen()
-{
-	return get("fullscreen", false);
-}
 
 bool show_allied_orb() {
 	return get("show_ally_orb", game_config::show_ally_orb);
@@ -284,12 +323,6 @@ void set_partial_color(const std::string& color_id) {
 	prefs["partial_orb_color"] = color_id;
 }
 
-
-void _set_fullscreen(bool ison)
-{
-	prefs["fullscreen"] = ison;
-}
-
 bool scroll_to_action()
 {
 	return get("scroll_to_action", true);
@@ -314,25 +347,24 @@ std::pair<int,int> resolution()
 {
 	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
 	std::string x = prefs['x' + postfix], y = prefs['y' + postfix];
-	if (!x.empty() && !y.empty()) {
-		std::pair<int,int> res(std::max(atoi(x.c_str()), min_allowed_width()),
-		                       std::max(atoi(y.c_str()), min_allowed_height()));
 
-		// Make sure resolutions are always divisible by 4
-		//res.first &= ~3;
-		//res.second &= ~3;
-		return res;
+	if (!x.empty() && !y.empty()) {
+		return std::make_pair(
+			std::max(atoi(x.c_str()), min_allowed_width()),
+			std::max(atoi(y.c_str()), min_allowed_height()));
 	} else {
-	#ifdef __APPLE__
-		// When windowsize is larger than the screen,  Wesnoth scales the video
-		// which causes distortion with mouse tracking. 768 is simply too large
-		// vertically to safely fit. We need a smaller default resolution here for Macs.
-		// See bug #20332.
-		return std::pair<int,int>(800,600);
-	#else
 		return std::pair<int,int>(1024,768);
-	#endif
 	}
+}
+
+bool maximized()
+{
+	return get("maximized", (fullscreen() & true));
+}
+
+bool fullscreen()
+{
+	return get("fullscreen", false);
 }
 
 void _set_resolution(const std::pair<int, int>& res)
@@ -342,9 +374,19 @@ void _set_resolution(const std::pair<int, int>& res)
 	preferences::set('y' + postfix, lexical_cast<std::string>(res.second));
 }
 
+void _set_maximized(bool ison)
+{
+	prefs["maximized"] = ison;
+}
+
+void _set_fullscreen(bool ison)
+{
+	prefs["fullscreen"] = ison;
+}
+
 bool turbo()
 {
-	if(non_interactive()) {
+	if(CVideo::get_singleton().non_interactive()) {
 		return true;
 	}
 
@@ -876,13 +918,16 @@ void set_draw_delay(int value)
 
 bool use_color_cursors()
 {
-	return color_cursors;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return get("color_cursors", true);
+#else
+	return get("color_cursors", false);
+#endif
 }
 
 void _set_color_cursors(bool value)
 {
 	preferences::set("color_cursors", value);
-	color_cursors = value;
 }
 
 void load_hotkeys()

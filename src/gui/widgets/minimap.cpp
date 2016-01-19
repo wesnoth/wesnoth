@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -229,27 +229,6 @@ const surface tminimap::get_image(const int w, const int h) const
 #endif
 	}
 	return NULL;
-}
-
-void tminimap::impl_draw_background(surface& frame_buffer)
-{
-	if(!terrain_)
-		return;
-	assert(terrain_);
-
-	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	if(map_data_.empty()) {
-		return;
-	}
-
-	SDL_Rect rect = get_rectangle();
-	assert(rect.w > 0 && rect.h > 0);
-
-	const ::surface surf = get_image(rect.w, rect.h);
-	if(surf) {
-		sdl_blit(surf, NULL, frame_buffer, &rect);
-	}
 }
 
 void tminimap::impl_draw_background(surface& frame_buffer,

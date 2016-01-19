@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -141,7 +141,7 @@ public:
 					"filter_wml",
 				};
 				static const std::string* const valid_tags_end = valid_tags + NUM_VALID_TAGS;
-				
+
 				if (std::find(valid_tags, valid_tags_end, cond_name) == valid_tags_end){
 					std::stringstream errmsg;
 					errmsg << "encountered a child [" << cond_name << "] of a standard unit filter, it is being ignored";
@@ -441,7 +441,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 
 	BOOST_FOREACH(const vconfig& vision, vcfg.get_children("filter_vision")) {
 		std::set<int> viewers;
-		
+
 		// Use standard side filter
 		side_filter ssf(vision, &fc_);
 		std::vector<int> sides = ssf.get_teams();
@@ -468,7 +468,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		BOOST_FOREACH(const vconfig& adj_cfg, vcfg.get_children("filter_adjacent")) {
 			int match_count=0;
 			unit_filter filt(adj_cfg, &fc_, use_flat_tod_);
-			
+
 			config::attribute_value i_adjacent = adj_cfg["adjacent"];
 			std::vector<map_location::DIRECTION> dirs;
 			if (i_adjacent.blank()) {

@@ -47,10 +47,11 @@ posebne jedinice, scenarije, pohode, i podelite ih sa drugim igračima.
 postavlja vrednost BitsPerPixel. Primer: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign  \ [<id\-pohoda>]\fP
-skače direktno na pohod sa ID\-om <id\-pohoda>. Ako se ID ne zada,
-pojaviće se meni za izbor. \fBNapomena:\fP Pri upotrebi ove opcije morate
-zadati i putanju direktorijuma podataka kao poslednji argument, inače će ID
-pohoda ili scenarija biti shvaćen kao direktorijum podataka.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<difficulty>]\fP
 težina zadatog pohoda (od 1 do najveće). Ako se ne zada, pojaviće se dijalog
@@ -178,7 +179,9 @@ pokreće igru sa malim probnim scenariom.
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
 Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
 Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
 other systems to the userdata path.
 .TP 
@@ -188,7 +191,9 @@ ispisuje putanju korisničkog postavnog direktorijuma i izlazi.
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
 .TP 
 \fB\-\-userdata\-path\fP
 prints the path of the userdata directory and exits.
@@ -278,7 +283,7 @@ Posetite zvaničnu domaću stranicu: http://www.wesnoth.org/
 .
 .SH "AUTORSKA PRAVA"
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 Ovo je slobodan softver; licenciran je pod uslovima OJL verzije 2  (GPLv2),
 koju izdaje Zadužbina za slobodni softver. Nema BILO KAKVE GARANCIJE; čak ni

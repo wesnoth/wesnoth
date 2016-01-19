@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -53,7 +53,7 @@ public:
 	/// Records the status of the lazy building of unit types.
 	/// These are in order of increasing levels of being built.
 	/// HELP_INDEX is already defined in a windows header under some conditions.
-	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED , WITHOUT_ANIMATIONS, FULL};
+	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
@@ -169,7 +169,7 @@ public:
 	std::vector<std::string> get_ability_list() const;
 
 	config::const_child_itors possible_traits() const
-	{ return possibleTraits_.child_range("trait"); }
+	{ return possible_traits_.child_range("trait"); }
 	bool has_random_traits() const;
 
 	/// The returned vector will not be empty, provided this has been built
@@ -271,7 +271,7 @@ private:
 
 	movetype movement_type_;
 
-	config possibleTraits_;
+	config possible_traits_;
 
 	std::vector<unit_race::GENDER> genders_;
 

@@ -52,8 +52,8 @@ namespace ucs4
 		}
 
 		bool operator!=(const iterator_base& a) const
-		{ 
-			return ! (*this == a); 
+		{
+			return ! (*this == a);
 		}
 
 		iterator_base& operator++()

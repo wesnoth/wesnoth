@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #include "sdl/compat.hpp"
 
 #if SDL_VERSION_ATLEAST(2,0,0)
-#include "video.hpp"
+#include "video.hpp" //SDL_GetAppState()
 #else
 #include "SDL_active.h"
 #endif

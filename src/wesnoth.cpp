@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 #include "formula.hpp"                  // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
 #include "game_config_manager.hpp"      // for game_config_manager, etc
+#include "game_end_exceptions.hpp"
 #include "game_launcher.hpp"          // for game_launcher, etc
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"  // for tmanager
@@ -36,13 +37,11 @@
 #include "gui/dialogs/message.hpp" 	// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
 #include "help/help.hpp"                     // for help_manager
-#include "hotkey/command_executor.hpp"  // for basic_handler
 #include "image.hpp"                    // for flush_cache, etc
 #include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "network.hpp"			// for describe_versions
 #include "preferences.hpp"              // for core_id, etc
-#include "preferences_display.hpp"      // for display_manager
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -62,8 +61,14 @@
 #include "wml_exception.hpp"            // for twml_exception
 
 #ifdef _WIN32
-#include "desktop/windows_console.hpp"
+#include "log_windows.hpp"
+
+#include <float.h>
 #endif // _WIN32
+
+#ifndef _MSC_VER
+#include <fenv.h>
+#endif // _MSC_VER
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
 #include <boost/foreach.hpp>            // for auto_any_base, etc
@@ -76,6 +81,7 @@
 #include <boost/program_options/errors.hpp>  // for error
 #include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <boost/tuple/tuple.hpp>        // for tuple
+
 #include <cerrno>                       // for ENOMEM
 #include <clocale>                      // for setlocale, NULL, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
@@ -84,15 +90,6 @@
 #include <exception>                    // for exception
 #include <fstream>                      // for operator<<, basic_ostream, etc
 #include <iostream>                     // for cerr, cout
-#include <map>                          // for _Rb_tree_iterator, etc
-#include <new>                          // for bad_alloc
-#include <string>                       // for string, basic_string, etc
-#include <utility>                      // for make_pair, pair
-#include <vector>                       // for vector, etc
-#include "SDL_error.h"                  // for SDL_GetError
-#include "SDL_events.h"                 // for SDL_EventState, etc
-#include "SDL_stdinc.h"                 // for SDL_putenv, Uint32
-#include "SDL_timer.h"                  // for SDL_GetTicks
 
 //#define NO_CATCH_AT_GAME_END
 
@@ -522,6 +519,56 @@ static void handle_lua_script_args(game_launcher * game, commandline_options & /
 	}
 }
 
+#ifdef _MSC_VER
+static void check_fpu()
+{
+	uint32_t f_control;
+	if(_controlfp_s(&f_control, 0, 0) == 0) {
+		uint32_t unused;
+		uint32_t rounding_mode = f_control & _MCW_RC;
+		uint32_t precision_mode = f_control & _MCW_PC;
+		if(rounding_mode != _RC_NEAR) {
+			std::cerr << "Floating point rounding mode is currently '" <<
+				((rounding_mode == _RC_CHOP) ? "chop" :
+				(rounding_mode == _RC_UP) ? "up" :
+				(rounding_mode == _RC_DOWN) ? "down" :
+				(rounding_mode == _RC_NEAR) ? "near" :
+				"unknown") << "' setting to 'near'\n";
+			if(_controlfp_s(&unused, _RC_NEAR, _MCW_RC)) {
+				std::cerr << "failed to set floating point rounding type to 'near'\n";
+			}
+		}
+		if(precision_mode != _PC_53) {
+			std::cerr << "Floating point precision mode is currently '" <<
+				((precision_mode == _PC_53) ? "double" :
+				(precision_mode == _PC_24) ? "single" :
+				(precision_mode == _PC_64 ) ? "double extended" :
+				"unknown") << "' setting to 'double'\n";
+			if(_controlfp_s(&unused, _PC_53, _MCW_PC)) {
+				std::cerr << "failed to set floating point precision type to 'double'\n";
+			}
+		}
+	}
+	else {
+		std::cerr << "_controlfp_s failed.\n";
+	}
+}
+#else
+static void check_fpu()
+{
+	switch (fegetround()) {
+	case FE_TONEAREST: break;
+	case FE_DOWNWARD: std::cerr << "Floating point precision mode is currently 'downward'"; goto reset_fpu;
+	case FE_TOWARDZERO: std::cerr << "Floating point precision mode is currently 'toward-zero'"; goto reset_fpu;
+	case FE_UPWARD: std::cerr << "Floating point precision mode is currently 'upward'"; goto reset_fpu;
+	default: std::cerr << "Floating point precision mode is currently 'unknown'"; goto reset_fpu;
+	reset_fpu:
+		std::cerr << "setting to 'nearest'";
+		fesetround(FE_TONEAREST);
+		break;
+	}
+}
+#endif
 /**
  * Setups the game environment and enters
  * the titlescreen or game loops.
@@ -581,6 +628,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		}
 	}
 
+	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
@@ -588,13 +636,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(game->disp().video());
+	loadscreen::global_loadscreen_manager loadscreen_manager(game->video());
 
 	loadscreen::start_stage("init gui");
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
-	game_config_manager config_manager(cmdline_opts, game->disp(),
+	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
 	loadscreen::start_stage("load config");
@@ -620,7 +668,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	plugins_manager plugins_man(new application_lua_kernel(&game->disp().video()));
+	plugins_manager plugins_man(new application_lua_kernel(&game->video()));
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
@@ -718,15 +766,12 @@ static int do_gameloop(const std::vector<std::string>& args)
 				? gui2::ttitle_screen::LOAD_GAME
 				: gui2::ttitle_screen::NOTHING;
 
-		const preferences::display_manager disp_manager(&game->disp());
-
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
 		if(res == gui2::ttitle_screen::NOTHING) {
-			const hotkey::basic_handler key_handler(&game->disp());
 			gui2::ttitle_screen dlg;
-			dlg.show(game->disp().video());
+			dlg.show(game->video());
 
 			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
@@ -764,24 +809,24 @@ static int do_gameloop(const std::vector<std::string>& args)
 					image::flush_cache();
 				}
 			} catch ( std::runtime_error & e ) {
-				gui2::show_error_message(game->disp().video(), e.what());
+				gui2::show_error_message(game->video(), e.what());
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::EDIT_PREFERENCES) {
 			game->show_preferences();
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_ABOUT) {
-			about::show_about(game->disp());
+			about::show_about(game->video());
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
 			help::help_manager help_manager(&config_manager.game_config());
-			help::show_help(game->disp());
+			help::show_help(game->video());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
 			// NOTE: we need the help_manager to get access to the Add-ons
 			// section in the game help!
 			help::help_manager help_manager(&config_manager.game_config());
-			if(manage_addons(game->disp())) {
+			if(manage_addons(game->video())) {
 				config_manager.reload_changed_game_config();
 			}
 			continue;
@@ -797,7 +842,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 
 			gui2::tcore_selection core_dlg(cores, current);
-			if (core_dlg.show(game->disp().video())) {
+			if (core_dlg.show(game->video())) {
 				int core_index = core_dlg.get_choice();
 				const std::string& core_id = cores[core_index]["id"];
 				preferences::set_core_id(core_id);
@@ -805,7 +850,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			loadscreen::global_loadscreen_manager loadscreen(game->disp().video());
+			loadscreen::global_loadscreen_manager loadscreen(game->video());
 			config_manager.reload_changed_game_config();
 			image::flush_cache();
 			continue;
@@ -871,8 +916,14 @@ static std::vector<std::string> parse_commandline_arguments(std::string input)
 }
 #endif
 
+#ifndef _WIN32
+static void wesnoth_terminate_handler(int) {
+	exit(0);
+}
+#endif
 
-#ifdef __native_client__
+#if defined(__native_client__) || (defined(__APPLE__) && SDL_VERSION_ATLEAST(2, 0, 0))
+extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
 int main(int argc, char** argv)
@@ -921,10 +972,12 @@ int main(int argc, char** argv)
 	//       here and let program_options ignore the switch later.
 	for(size_t k = 0; k < args.size(); ++k) {
 		if(args[k] == "--wconsole") {
-			desktop::enable_win32_console();
+			lg::enable_native_console_output();
 			break;
 		}
 	}
+
+	lg::early_log_file_setup();
 #else
 	std::vector<std::string> args;
 	for(int i = 0; i < argc; ++i)
@@ -937,6 +990,15 @@ int main(int argc, char** argv)
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
 	}
+
+#ifndef _WIN32
+	struct sigaction terminate_handler;
+	terminate_handler.sa_handler = wesnoth_terminate_handler;
+	terminate_handler.sa_flags = 0;
+	sigemptyset(&terminate_handler.sa_mask);
+	sigaction(SIGTERM, &terminate_handler, NULL);
+	sigaction(SIGINT, &terminate_handler, NULL);
+#endif
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';

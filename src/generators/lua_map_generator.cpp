@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 #include "lua_map_generator.hpp"
 
 #include "config.hpp"
-#include "display.hpp"
 #include "game_errors.hpp"
 #include "scripting/mapgen_lua_kernel.hpp"
 
@@ -43,9 +42,9 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	}
 }
 
-void lua_map_generator::user_config(display & disp)
+void lua_map_generator::user_config(CVideo & v)
 {
-	lk_.set_video(&disp.video());
+	lk_.set_video(&v);
 	try {
 		lk_.user_config(user_config_.c_str(), generator_data_);
 	} catch (game::lua_error & e) {

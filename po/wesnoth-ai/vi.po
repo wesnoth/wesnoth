@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2014-06-24 22:26+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -768,6 +768,24 @@ msgstr "Chỉ huy dơi chết"
 #: data/ai/micro_ais/scenarios/dragon.cfg:138
 msgid "I'm out of here."
 msgstr "Tôi ra khỏi đây đây."
+
+#. [test]: id=fast
+#: data/ai/micro_ais/scenarios/fast.cfg:5
+msgid "Fast"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/fast.cfg:64
+msgid ""
+"This scenario presents a situation with so many units on the map, that there "
+"is a noticeable delay (a few seconds or so) before each move by the default "
+"AI. By contrast, the Fast Micro AI has a much shorter delay. To demonstrate "
+"the difference, side 1 is played by the Fast Micro AI and side 2 by the "
+"default (RCA) AI.\n"
+"\n"
+"There is nothing to do here, just watch or use this scenario as a template "
+"or for your own tests."
+msgstr ""
 
 #. [event]
 #. [test]: id=goto
@@ -2398,18 +2416,23 @@ msgstr "Quanh quẩn và Sứ giả"
 msgid "Simple Attack"
 msgstr "Tấn công đơn giản"
 
+#. [event]
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:92
+msgid "Fast AI"
+msgstr ""
+
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:96
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:99
 msgid "Bottleneck Defense Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Phòng thủ thắt cổ chai"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:105
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:108
 msgid "Bottleneck Defense Micro AI Demo"
 msgstr "Minh họa trí tuệ nhân tạo Phòng thủ thắt cổ chai"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:105
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:108
 msgid ""
 "In the Bottleneck Defense Micro AI scenario, a small group of human soldiers "
 "is instructed to hold a pass against a large horde of orcs. You can either "
@@ -2423,13 +2446,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m02_swamp_lurkers
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:111
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:120
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:114
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:123
 msgid "Swamp Lurker Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Kẻ ẩn nấp trong đầm lầy"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:120
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:123
 msgid ""
 "Swamp lurkers are dumb, impulse-driven creatures which can move across most "
 "terrain, but only stop on swamp. They move individually without any strategy "
@@ -2443,13 +2466,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m03_guardians
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:126
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:135
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:129
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:138
 msgid "Guardian Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Hộ vệ"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:135
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:138
 msgid ""
 "In 'Guardians', several variations of the standard Wesnoth guardian are "
 "shown, including a \"coward\" unit that runs away from any approaching unit "
@@ -2461,13 +2484,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m04_patrol
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:141
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:150
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:144
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:153
 msgid "Patrol Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Tuần tra"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:150
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:153
 msgid "'Patrols' contains AI modifications for units following patrol routes."
 msgstr ""
 "'Tuần tra' chứa bản sửa đổi trí tuệ nhân tạo cho các đơn vị theo lộ trình "
@@ -2475,13 +2498,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m05_recruiting
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:156
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:165
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:159
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:168
 msgid "Recruiting Tests Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Kiểm tra tuyển quân"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:165
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:168
 msgid ""
 "A simple scenario set up for the sole purpose of testing different "
 "recruiting patterns."
@@ -2490,17 +2513,17 @@ msgstr ""
 "tuyển quân khác nhau."
 
 #. [set_menu_item]: id=m06_protect
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:171
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:174
 msgid "Protect Unit Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Bảo vệ đơn vị"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:180
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:183
 msgid "Protect Unit Micro AI Demo"
 msgstr "Minh họa trí tuệ nhân tạo Bảo vệ đơn vị"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:180
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:183
 msgid ""
 "This scenario demonstrates one side protecting a wizard while moving him to "
 "a goal location. At the same time, the other side is modified to do priority "
@@ -2517,13 +2540,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m06a_protect
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:187
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:196
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:190
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:199
 msgid "HttT: The Elves Besieged Micro AI demo"
 msgstr "NTKNV: Minh họa trí tuệ nhân tạo Thần tiên bị bao vây"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:196
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:199
 msgid ""
 "This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
 "campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
@@ -2536,13 +2559,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m07_messenger
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:202
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:211
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:205
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:214
 msgid "Messenger Escort Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Hộ tống sứ giả"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:211
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:214
 msgid ""
 "'Messenger Escort' has the AI actively protect a messenger while he makes "
 "his way to the edge of the map. The escort will also try to open the path "
@@ -2554,13 +2577,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m08_animals
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:217
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:226
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:220
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:229
 msgid "Animals Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Động vật"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:226
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:229
 msgid ""
 "This scenario demonstrates a number of different animals following "
 "customized AI behavior, including wolves hunting deer in packs; dogs herding "
@@ -2573,13 +2596,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m09_wolves
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:232
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:241
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:235
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:244
 msgid "Wolves Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Chó sói"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:241
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:244
 msgid ""
 "Another demonstration of wolves wandering and attacking in packs, with a "
 "different behavior from that in 'Animals'."
@@ -2589,43 +2612,43 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m10_swarm
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:247
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:256
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:250
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:259
 msgid "Swarm Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Bầy đàn"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:256
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:259
 msgid "This scenario features bats moving around semi-randomly in a swarm."
 msgstr ""
 "Màn chơi này minh họa các con dơi di chuyển nửa ngẫu nhiên trong một bầy."
 
 #. [command]
 #. [set_menu_item]: id=m11_dragon
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:262
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:271
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:265
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:274
 msgid "Dragon Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Rồng"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:271
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:274
 msgid ""
 "This scenario features a fire dragon displaying a hunt-and-rest behavior."
 msgstr ""
 "Màn chơi này minh họa một con rồng lửa thể hiện ứng xử săn-mồi-và-nghỉ-ngơi."
 
 #. [set_menu_item]: id=m12_healer_support
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:277
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:280
 msgid "Healer support Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Hỗ trợ điều trị viên"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:286
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:289
 msgid "Healer Support Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Hỗ trợ điều trị viên"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:286
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:289
 msgid ""
 "This scenario contains a simple demonstration of setting up the Healer "
 "Support Micro AI, which uses the healers of a side to back up injured or "
@@ -2639,13 +2662,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m13_goto
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:292
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:301
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:295
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:304
 msgid "Goto Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Đi đến"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:301
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:304
 msgid ""
 "This scenario contains several example usages of the Goto Micro AI, which is "
 "a highly configurable method of sending a unit (or units) to a location or "
@@ -2659,17 +2682,17 @@ msgstr ""
 "trong một bộ lọc địa điểm chuẩn."
 
 #. [set_menu_item]: id=m14_hangout
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:307
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:310
 msgid "Hang Out Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Quanh quẩn"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:316
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:319
 msgid "Combined Hang Out and Messenger Escort Micro AI demo"
 msgstr "Minh họa kết hợp trí tuệ nhân tạo Quanh quẩn và Hộ tống sứ giả"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:316
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:319
 msgid ""
 "This scenario is a demonstration of the Hang Out Micro AI which keeps units "
 "around a (customizable) location until a (customizable) condition is met.  "
@@ -2685,14 +2708,14 @@ msgstr ""
 "thời điểm giải phóng."
 
 #. [command]
-#. [set_menu_item]: id=m14_simple_attack
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:322
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:331
+#. [set_menu_item]: id=m15_simple_attack
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:325
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:334
 msgid "Simple Attack Micro AI demo"
 msgstr "Minh họa trí tuệ nhân tạo Tấn công đơn giản"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:331
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:334
 msgid ""
 "This scenario demonstrates how certain attacks can be executed with higher "
 "priority than the standard Wesnoth attacks and how the AI can be forced to "
@@ -2702,8 +2725,24 @@ msgstr ""
 "ưu tiên cao hơn các đòn tấn công chuẩn của Wesnoth và cách trí tuệ nhân tạo "
 "có thể bị bắt buộc phải tấn công mà lẽ ra nó tránh."
 
+#. [command]
+#. [set_menu_item]: id=m16_fast
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:340
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:349
+#, fuzzy
+#| msgid "Patrol Micro AI demo"
+msgid "Fast Micro AI demo"
+msgstr "Minh họa trí tuệ nhân tạo Tuần tra"
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:349
+msgid ""
+"A simple demonstration of the calculation time advantage of the Fast Micro "
+"AI over the default AI in scenarios with many units."
+msgstr ""
+
 #. [event]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:359
 msgid ""
 "Move me to any of the signposts to go to a Micro AI demonstration.\n"
 "\n"
@@ -2717,12 +2756,12 @@ msgstr ""
 "trên biển chỉ đường tương ứng."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:347
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:365
 msgid "Move Grnk to one of the signposts"
 msgstr "Di chuyển Grnk đến một trong các biển chỉ đường"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:351
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:369
 msgid "Right-click on a signpost to get information about the scenario"
 msgstr "Nhấn chuột phải lên một biển chỉ đường để có thông tin về màn chơi"
 
@@ -3218,68 +3257,68 @@ msgid "Test scenario for Lua AI"
 msgstr "Màn chơi kiểm tra trí tuệ nhân tạo Lua"
 
 #. [label]
-#: data/ai/scenarios/scenario-lua-ai.cfg:44
-#: data/ai/scenarios/scenario-no_engine.cfg:44
+#: data/ai/scenarios/scenario-lua-ai.cfg:42
+#: data/ai/scenarios/scenario-no_engine.cfg:42
 msgid "Patrol waypoint 1"
 msgstr "Điểm định vị tuần tra 1"
 
 #. [label]
-#: data/ai/scenarios/scenario-lua-ai.cfg:49
-#: data/ai/scenarios/scenario-no_engine.cfg:49
+#: data/ai/scenarios/scenario-lua-ai.cfg:47
+#: data/ai/scenarios/scenario-no_engine.cfg:47
 msgid "Patrol waypoint 2"
 msgstr "Điểm định vị tuần tra 2"
 
 #. [label]
-#: data/ai/scenarios/scenario-lua-ai.cfg:54
-#: data/ai/scenarios/scenario-no_engine.cfg:54
+#: data/ai/scenarios/scenario-lua-ai.cfg:52
+#: data/ai/scenarios/scenario-no_engine.cfg:52
 msgid "Formula priorities test"
 msgstr "Kiểm tra độ ưu tiên công thức"
 
 #. [label]
-#: data/ai/scenarios/scenario-lua-ai.cfg:59
-#: data/ai/scenarios/scenario-no_engine.cfg:59
+#: data/ai/scenarios/scenario-lua-ai.cfg:57
+#: data/ai/scenarios/scenario-no_engine.cfg:57
 msgid "first"
 msgstr "đầu tiên"
 
 #. [label]
-#: data/ai/scenarios/scenario-lua-ai.cfg:64
-#: data/ai/scenarios/scenario-no_engine.cfg:64
+#: data/ai/scenarios/scenario-lua-ai.cfg:62
+#: data/ai/scenarios/scenario-no_engine.cfg:62
 msgid "second"
 msgstr "thứ hai"
 
 #. [label]
-#: data/ai/scenarios/scenario-lua-ai.cfg:69
-#: data/ai/scenarios/scenario-no_engine.cfg:69
+#: data/ai/scenarios/scenario-lua-ai.cfg:67
+#: data/ai/scenarios/scenario-no_engine.cfg:67
 msgid "third"
 msgstr "thứ ba"
 
 #. [label]
-#: data/ai/scenarios/scenario-lua-ai.cfg:74
-#: data/ai/scenarios/scenario-no_engine.cfg:74
+#: data/ai/scenarios/scenario-lua-ai.cfg:72
+#: data/ai/scenarios/scenario-no_engine.cfg:72
 msgid "Location guarded (range = 3)"
 msgstr "Vị trí được bảo vệ (phạm vi = 3)"
 
 #. [unit]: type=Skeletal Dragon, id=Kiressh
-#: data/ai/scenarios/scenario-lua-ai.cfg:154
-#: data/ai/scenarios/scenario-no_engine.cfg:154
+#: data/ai/scenarios/scenario-lua-ai.cfg:152
+#: data/ai/scenarios/scenario-no_engine.cfg:152
 msgid "Kiressh"
 msgstr "Kiressh"
 
 #. [unit]: type=Orcish Archer
-#: data/ai/scenarios/scenario-lua-ai.cfg:160
-#: data/ai/scenarios/scenario-no_engine.cfg:160
+#: data/ai/scenarios/scenario-lua-ai.cfg:158
+#: data/ai/scenarios/scenario-no_engine.cfg:158
 msgid "Bilbo"
 msgstr "Bilbo"
 
 #. [unit]: type=Walking Corpse
-#: data/ai/scenarios/scenario-lua-ai.cfg:165
-#: data/ai/scenarios/scenario-no_engine.cfg:165
+#: data/ai/scenarios/scenario-lua-ai.cfg:163
+#: data/ai/scenarios/scenario-no_engine.cfg:163
 msgid "Sirené"
 msgstr "Sirené"
 
 #. [unit]: type=Wolf Rider
-#: data/ai/scenarios/scenario-lua-ai.cfg:171
-#: data/ai/scenarios/scenario-no_engine.cfg:171
+#: data/ai/scenarios/scenario-lua-ai.cfg:169
+#: data/ai/scenarios/scenario-no_engine.cfg:169
 msgid "Rark"
 msgstr "Rark"
 

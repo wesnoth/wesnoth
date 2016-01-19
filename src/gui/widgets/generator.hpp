@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -270,9 +270,6 @@ public:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE = 0;
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE = 0;
-
-	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) OVERRIDE = 0;
@@ -364,7 +361,7 @@ protected:
 
 	/** Gets the grid of an item. */
 	virtual const tgrid& item_ordered(const unsigned index) const = 0;
-	
+
 	virtual unsigned get_ordered_index(unsigned index) const = 0;
 	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;
 };

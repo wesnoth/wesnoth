@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -273,8 +273,6 @@ class acquaintance;
 
 	void set_theme(const std::string& theme);
 	std::string theme();
-
-	bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs);
 
 	// Ask for end turn confirmation
 	bool yellow_confirm();

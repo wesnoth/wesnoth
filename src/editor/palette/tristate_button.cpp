@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2013 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -406,6 +406,8 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 }
 
 void tristate_button::handle_event(const SDL_Event& event) {
+
+	gui::widget::handle_event(event);
 
 	if (hidden() || !enabled())
 		return;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -149,7 +149,7 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 		break;
 	}
 	if (items_sub.empty() == false) {
-		gui::dialog d(get_display(), title + " (" + player_name_ + ")", "", gui::CLOSE_ONLY);
+		gui::dialog d(get_video(), title + " (" + player_name_ + ")", "", gui::CLOSE_ONLY);
 		d.set_menu(items_sub);
 		d.show();
 		dp_info.clear_buttons();
@@ -163,7 +163,7 @@ statistics_dialog::statistics_dialog(game_display &disp,
 		const unsigned int team,
 		const std::string& team_id,
 		const std::string& player) :
-	dialog(disp, title, "", gui::NULL_DIALOG),
+	dialog(disp.video(), title, "", gui::NULL_DIALOG),
 	detail_btn_(new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false)),
 	toggle_btn_(new gui::dialog_button(disp.video(), "", gui::button::TYPE_PRESS, BUTTON_TOGGLE)),
 	scene_btn_(new gui::dialog_button(disp.video(), _("Select Scenario"), gui::button::TYPE_PRESS, BUTTON_SCENE)),
@@ -317,7 +317,7 @@ void statistics_dialog::do_scene_selection()
 
 	// Let the player choose a scenario.
 	SDL_Rect const &loc = scene_btn_->location();
-	size_t new_scenario = gui::show_dialog(get_display(), NULL, "", "",
+	size_t new_scenario = gui::show_dialog(get_video(), NULL, "", "",
 	                                       gui::MESSAGE, &names, NULL, "", NULL,
 	                                       -1, NULL, loc.x, loc.y + loc.h);
 

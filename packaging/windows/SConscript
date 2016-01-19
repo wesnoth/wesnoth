@@ -14,6 +14,8 @@ for bin in binaries:
     except AttributeError:
         res = []
     env[bin + "_res"] = res
+if env["multilib_arch"] == "32":
+    env.AppendUnique(RCFLAGS = Split("-F pe-i386"))
 
 def WindowsInstaller(env, files):
     files = map(Entry, Flatten(files))

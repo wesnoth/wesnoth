@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -149,18 +149,18 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_config )
 	cfg["t2"] = foo::enumname::enum_to_string(e2);
 	cfg["t3"] = "name2";
 	cfg["t4"] = "345646";
-	
+
 	BOOST_CHECK_EQUAL(cfg["t1"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
 	BOOST_CHECK_EQUAL(cfg["t2"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
 	BOOST_CHECK_EQUAL(cfg["t3"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
-	
+
 	BOOST_CHECK_EQUAL(cfg["t1"].to_enum(e1) , e2);
 	BOOST_CHECK_EQUAL(cfg["t2"].to_enum(e1) , e2);
 	BOOST_CHECK_EQUAL(cfg["t3"].to_enum(e1) , e2);
 
-	
+
 	BOOST_CHECK_EQUAL(cfg["t4"].to_enum<foo::enumname>(foo::enumname::con3) , e3);
-	
+
 	BOOST_CHECK_EQUAL(cfg["t1"].str() , "name2");
 }
 
@@ -177,9 +177,9 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_parse )
 	cfg["t3"] = e1.to_string();
 	cfg["t4"] = "name3";
 	cfg["t5"] = "345646";
-	
+
 	foo::enumname dummy = foo::enumname::con1;
-	
+
 	BOOST_CHECK_EQUAL(dummy, e1);
 	BOOST_CHECK_EQUAL(dummy.parse("name1"), true);
 	BOOST_CHECK_EQUAL(dummy, e1);

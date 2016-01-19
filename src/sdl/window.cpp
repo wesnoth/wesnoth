@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -70,9 +70,29 @@ void twindow::set_size(const int w, const int h)
 	SDL_SetWindowSize(window_, w, h);
 }
 
+void twindow::center()
+{
+	SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+}
+
+void twindow::maximize()
+{
+	SDL_MaximizeWindow(window_);
+}
+
+void twindow::to_window()
+{
+	SDL_SetWindowFullscreen(window_, 0);
+}
+
+void twindow::restore()
+{
+	SDL_RestoreWindow(window_);
+}
+
 void twindow::full_screen()
 {
-	/** @todo Implement. */
+	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 
 void twindow::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
@@ -97,6 +117,16 @@ void twindow::set_title(const std::string& title)
 void twindow::set_icon(const surface& icon)
 {
 	SDL_SetWindowIcon(window_, icon);
+}
+
+int twindow::get_flags()
+{
+	return SDL_GetWindowFlags(window_);
+}
+
+void twindow::set_minimum_size(int min_w, int min_h)
+{
+	SDL_SetWindowMinimumSize(window_, min_w, min_h);
 }
 
 twindow::operator SDL_Window*()

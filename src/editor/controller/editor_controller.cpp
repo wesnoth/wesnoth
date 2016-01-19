@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -179,7 +179,7 @@ EXIT_STATUS editor_controller::main_loop()
 		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
 		return EXIT_ERROR;
 	} catch (twml_exception& e) {
-		e.show(gui());
+		e.show(gui().video());
 	}
 	return quit_mode_;
 }
@@ -195,7 +195,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 			ERR_ED << "Screenshot creation failed!\n";
 		}
 	} catch (twml_exception& e) {
-		e.show(gui());
+		e.show(gui().video());
 	}
 }
 
@@ -324,7 +324,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return context_manager_->get_map_context().can_undo();
 		case TITLE_SCREEN__RELOAD_WML:
-		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
+		case HOTKEY_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
@@ -722,7 +722,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
 			return true;
-		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
+		case HOTKEY_QUIT_TO_DESKTOP:
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
@@ -979,7 +979,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 void editor_controller::show_help()
 {
-	help::show_help(*gui_, "..editor");
+	help::show_help(gui_->video(), "..editor");
 }
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
@@ -1072,7 +1072,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	preferences::show_preferences_dialog(*gui_, game_config_);
+	preferences::show_preferences_dialog(gui_->video(), game_config_);
 
 	gui_->redraw_everything();
 }
@@ -1089,9 +1089,9 @@ void editor_controller::unit_description()
 	const unit_map & units = context_manager_->get_map_context().get_units();
 	const unit_map::const_unit_iterator un = units.find(loc);
 	if(un != units.end()) {
-		help::show_unit_help(*gui_, un->type_id(), un->type().show_variations_in_help(), false);
+		help::show_unit_help(gui_->video(), un->type_id(), un->type().show_variations_in_help(), false);
 	} else {
-		help::show_help(*gui_, "..units");
+		help::show_help(gui_->video(), "..units");
 	}
 }
 
@@ -1202,9 +1202,9 @@ void editor_controller::refresh_image_cache()
 	context_manager_->refresh_all();
 }
 
-void editor_controller::display_redraw_callback(display& disp)
+void editor_controller::display_redraw_callback(display&)
 {
-	set_button_state(disp);
+	set_button_state();
 	toolkit_->adjust_size();
 	context_manager_->get_map_context().get_labels().recalculate_labels();
 }
@@ -1279,7 +1279,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 
 	return false;
 }
@@ -1294,14 +1294,14 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_left(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change()) {
 		if (gui_->set_zoom(s->value(), true)) {
 			context_manager_->get_map_context().get_labels().recalculate_labels();
 			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
-			set_button_state(*gui_);
+			set_button_state();
 		}
 	}
 	context_manager_->refresh_after_action();
@@ -1317,7 +1317,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	return false;
 }
 
@@ -1331,7 +1331,7 @@ void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_right(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
@@ -1343,7 +1343,7 @@ void editor_controller::terrain_description()
 		return;
 
 	const terrain_type& type = context_manager_->get_map().get_terrain_info(loc);
-	help::show_terrain_description(type);
+	help::show_terrain_description(gui().video(), type);
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)

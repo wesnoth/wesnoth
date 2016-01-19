@@ -20,6 +20,7 @@
 #include <vector>
 
 class display;
+class CVideo;
 
 /**
  * Shows the add-ons server connection dialog, for access to the various management front-ends.
@@ -29,7 +30,7 @@ class display;
  * @return @a true when one or more add-ons have been successfully installed or
  *         removed, thus requiring a local WML cache refresh. @a false otherwise.
  */
-bool manage_addons(display& disp);
+bool manage_addons(CVideo& v);
 
 /**
  * Conducts an ad-hoc add-ons server connection to download an add-on with a particular id and all
@@ -40,6 +41,6 @@ bool manage_addons(display& disp);
  *
  * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
  */
-bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> & addon_ids);
+bool ad_hoc_addon_fetch_session(CVideo & v, const std::vector<std::string> & addon_ids);
 
 #endif

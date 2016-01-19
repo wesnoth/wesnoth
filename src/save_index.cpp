@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2016 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -20,13 +20,13 @@
 
 #include "format_time_summary.hpp"
 #include "formula_string_utils.hpp"
-#include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "team.hpp"
 
 #include "filesystem.hpp"
 #include "config.hpp"
@@ -370,6 +370,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
 	std::string leader;
 	std::string leader_image;
+	std::string leader_image_tc_modifier;
 
 	//BOOST_FOREACH(const config &p, cfg_save.child_range("player"))
 	//{
@@ -398,6 +399,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 				{
 						leader = side["id"].str();
 						leader_image = side["image"].str();
+						leader_image_tc_modifier = "~RC(magenta>" + side["color"].str() + ")"; // Hardcode magenta
 						break;
 				}
 
@@ -406,9 +408,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 					if (u["canrecruit"].to_bool()) {
 						leader = u["id"].str();
 						leader_image = u["image"].str();
+						leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
 						break;
 					}
 				}
+
+				// Exit on first human leader
+				break;
 			}
 		}
 	//}
@@ -418,6 +424,8 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	// so it can be displayed for campaign-specific units in the dialog
 	// even when the campaign isn't loaded yet.
 	cfg_summary["leader_image"] = filesystem::get_independent_image_path(leader_image);
+	// Append the leader image's team coloring
+	cfg_summary["leader_image"] = cfg_summary["leader_image"].str() + leader_image_tc_modifier;
 
 	if(!shrouded) {
 		if(has_snapshot) {

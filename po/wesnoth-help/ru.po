@@ -12,37 +12,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2014-11-15 12:02+0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"PO-Revision-Date: 2015-12-30 01:14+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.4.1, po-mode 2.22+0.4\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Language: Russian\n"
-"X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Bookmarks: 120,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:459
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Подземелье"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:540
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
+#: data/core/macros/abilities.cfg:391
 msgid "berserk"
 msgstr "берсерк"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
-#: data/core/macros/abilities.cfg:541
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:655
+#: data/core/macros/abilities.cfg:392
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -51,14 +49,14 @@ msgstr ""
 "погибнет, или пока не пройдут 30 раундов боя."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:619
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
+#: data/core/macros/abilities.cfg:478
 msgid "magical"
 msgstr "магия"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:620
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
+#: data/core/macros/abilities.cfg:479
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -67,14 +65,14 @@ msgstr ""
 "обороняющегося."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
-#: data/core/macros/abilities.cfg:664
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
+#: data/core/macros/abilities.cfg:523
 msgid "first strike"
 msgstr "бьёт первым"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
-#: data/core/macros/abilities.cfg:665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
+#: data/core/macros/abilities.cfg:524
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Боец с этой атакой всегда наносит первый удар, даже если защищается."
@@ -1026,7 +1024,7 @@ msgid ""
 "and the Great River. A notoriously dangerous place.\n"
 "    • Lake Vrug: A large mountain lake whose river carves the only pathway "
 "through the Northern Mountains.\n"
-"    • Arkan-thoria: The river than comes out of Lake Vrug. This is the "
+"    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
 "elvish name; among humans it is called Longlier.\n"
 "    • River Listra: The south-running tributary of the Great River into "
 "which the Arkan-thoria empties.\n"
@@ -2136,9 +2134,9 @@ msgstr ""
 "\n"
 "Из этого правила есть два исключения: <ref>dst='weaponspecial_magical' "
 "text='магические атаки'</ref> и <ref>dst='weaponspecial_marksman' "
-"text='снайперы'</ref>. Магические атаки всегда имеют шанс попасть в 70%, "
-"независимо от местности. Шанс Снайпера всегда не ниже 60%, независимо от "
-"местности, но только при атаке."
+"text='меткость'</ref>. Магические атаки всегда имеют шанс попасть в 70%, "
+"независимо от местности. Шанс меткого стрелка всегда не ниже 60%, независимо "
+"от местности, но только при атаке."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2590,7 +2588,7 @@ msgid ""
 "any traits. "
 msgstr ""
 "Большинство бойцов имеет две особенности. Мертвецы обладают только одной "
-"особенностью — <italic>text='мертвец'</italic>, а лешие вообще не имеют "
+"особенностью — <italic>text='мертвец'</italic>, а древни вообще не имеют "
 "никаких особенностей. Особенности — это небольшие изменения параметров "
 "бойцов. Обычно они назначаются бойцам случайным образом при вербовке."
 
@@ -2630,31 +2628,17 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:399
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#| "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
-#| "<ref>dst='traits_undead' text='undead'</ref>.\n"
-#| "\n"
 msgid ""
 "\n"
 "\n"
 "Elves may also receive <ref>dst='traits_dextrous' text='dextrous'</ref>, and "
-"dwarves may recieve <ref>dst='traits_healthy' text='healthy'</ref>. Trolls "
-"and certain humans may recieve <ref>dst='traits_fearless' text='fearless'</"
+"dwarves may receive <ref>dst='traits_healthy' text='healthy'</ref>. Trolls "
+"and certain humans may receive <ref>dst='traits_fearless' text='fearless'</"
 "ref>. Other traits which may be assigned include <ref>dst='traits_loyal' "
 "text='loyal'</ref>, <ref>dst='traits_feral' text='feral'</ref> and "
 "<ref>dst='traits_undead' text='undead'</ref>.\n"
 "\n"
 msgstr ""
-"\n"
-"\n"
-"У бойцов бывают и другие особенности: <ref>dst='traits_dextrous' "
-"text='меткий'</ref>, <ref>dst='traits_loyal' text='верный'</ref>, "
-"<ref>dst='traits_undead' text='мертвец'</ref>.\n"
-"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:409
@@ -2954,7 +2938,7 @@ msgstr ""
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:485
 msgid "Dextrous"
-msgstr "Меткий"
+msgstr "Ловкий"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:486
@@ -2968,7 +2952,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Особенность «меткий» бывает только у эльфов. Народ эльфов известен "
+"Особенность «ловкий» бывает только у эльфов. Народ эльфов известен "
 "сверхестественной грацией и умением великолепно обращаться с луком. "
 "Некоторые из них, тем не менее, одарены особым даром, большим, чем у их "
 "собратьев. Эти эльфы наносят дополнительную единицу ущерба с каждой стрелой."
@@ -2979,7 +2963,7 @@ msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"<italic>text='Меткие'</italic> бойцы наносят урона на 1 единицу больше при "
+"<italic>text='Ловкие'</italic> бойцы наносят урона на 1 единицу больше при "
 "каждом успешном попадании из дальнего оружия."
 
 #. [topic]: id=traits_healthy
@@ -3209,7 +3193,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Land‐based villages generally give best‐defense, best‐movement as well. "
+"Land-based villages generally give the best defense and movement as well. "
 "These villages are mixed terrains, based on the village terrain type, "
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
@@ -3220,9 +3204,9 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Finally, water villages generally are not hospitable to land units, and do "
-"not give defense or movement benefits associated to the village terrain "
-"type. They count only as water tiles instead.\n"
+"Finally, water villages are generally inhospitable to land units, and do not "
+"give defense or movement benefits associated with the village terrain type. "
+"Instead, they count only as water tiles.\n"
 "\n"
 msgstr ""
 
@@ -3231,7 +3215,7 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"You can see what basic types are associated to a mixed type by mousing over "
+"You can see what basic types a mixed terrain is comprised of by mousing over "
 "its hex and checking the terrain type icons displayed in the upper right, "
 "(under the default theme)."
 msgstr ""
@@ -4046,23 +4030,17 @@ msgstr ""
 "50%. Уязвимости не затрагиваются."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:106 data/core/macros/abilities.cfg:127
-#: data/core/macros/abilities.cfg:159 data/core/macros/abilities.cfg:202
-#: data/core/macros/abilities.cfg:256
+#: data/core/macros/abilities.cfg:107
 msgid "leadership"
 msgstr "лидерство"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:107 data/core/macros/abilities.cfg:128
-#: data/core/macros/abilities.cfg:160 data/core/macros/abilities.cfg:203
-#: data/core/macros/abilities.cfg:257
+#: data/core/macros/abilities.cfg:108
 msgid "female^leadership"
 msgstr "лидерство"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:108 data/core/macros/abilities.cfg:129
-#: data/core/macros/abilities.cfg:161 data/core/macros/abilities.cfg:204
-#: data/core/macros/abilities.cfg:258
+#: data/core/macros/abilities.cfg:109
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -4079,17 +4057,17 @@ msgstr ""
 "25% больше урона за каждую 1 разницы в уровнях."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:319
+#: data/core/macros/abilities.cfg:170
 msgid "skirmisher"
 msgstr "неуловимый"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:320
+#: data/core/macros/abilities.cfg:171
 msgid "female^skirmisher"
 msgstr "неуловимая"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:321
+#: data/core/macros/abilities.cfg:172
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -4098,17 +4076,17 @@ msgstr ""
 "контроля."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:334
+#: data/core/macros/abilities.cfg:185
 msgid "illuminates"
 msgstr "освещает"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:335
+#: data/core/macros/abilities.cfg:186
 msgid "female^illuminates"
 msgstr "освещает"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:187
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4123,17 +4101,17 @@ msgstr ""
 "сумерки, и дерётся в сумерки так, как если бы дрался днём."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:199
 msgid "teleport"
 msgstr "телепорт"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:349
+#: data/core/macros/abilities.cfg:200
 msgid "female^teleport"
 msgstr "телепорт"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:350
+#: data/core/macros/abilities.cfg:201
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -4142,17 +4120,17 @@ msgstr ""
 "деревнями, вместо хода на одну клетку."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:386 data/core/macros/abilities.cfg:388
+#: data/core/macros/abilities.cfg:237 data/core/macros/abilities.cfg:239
 msgid "ambush"
 msgstr "засада"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:387 data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:238 data/core/macros/abilities.cfg:240
 msgid "female^ambush"
 msgstr "засада"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:393
+#: data/core/macros/abilities.cfg:241 data/core/macros/abilities.cfg:244
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4166,13 +4144,13 @@ msgstr ""
 "первым обнаруживший его, немедленно теряет все оставшиеся ходы."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:410 data/core/macros/abilities.cfg:411
-#: data/core/macros/abilities.cfg:415
+#: data/core/macros/abilities.cfg:261 data/core/macros/abilities.cfg:262
+#: data/core/macros/abilities.cfg:266
 msgid "nightstalk"
 msgstr "невидимка"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:412 data/core/macros/abilities.cfg:417
+#: data/core/macros/abilities.cfg:263 data/core/macros/abilities.cfg:268
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4186,27 +4164,36 @@ msgstr ""
 "первым обнаруживший его, немедленно теряет все оставшиеся ходы."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:267
 msgid "female^nightstalk"
 msgstr "невидимка"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:434 data/core/macros/abilities.cfg:439
+#: data/core/macros/abilities.cfg:285 data/core/macros/abilities.cfg:290
 msgid "concealment"
 msgstr "скрытность"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:435 data/core/macros/abilities.cfg:440
+#: data/core/macros/abilities.cfg:286 data/core/macros/abilities.cfg:291
 msgid "female^concealment"
 msgstr "скрытность"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:436 data/core/macros/abilities.cfg:441
+#: data/core/macros/abilities.cfg:287 data/core/macros/abilities.cfg:292
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units can not see this unit while it is in a village, except if "
+#| "they have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
 "\n"
-"Enemy units can not see this unit while it is in a village, except if they "
+"Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
@@ -4217,17 +4204,17 @@ msgstr ""
 "ходы."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:458 data/core/macros/abilities.cfg:463
+#: data/core/macros/abilities.cfg:309 data/core/macros/abilities.cfg:314
 msgid "submerge"
 msgstr "погружается"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:459 data/core/macros/abilities.cfg:464
+#: data/core/macros/abilities.cfg:310 data/core/macros/abilities.cfg:315
 msgid "female^submerge"
 msgstr "погружается"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:460 data/core/macros/abilities.cfg:465
+#: data/core/macros/abilities.cfg:311 data/core/macros/abilities.cfg:316
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4244,17 +4231,17 @@ msgstr ""
 "оставшиеся ходы."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:485
+#: data/core/macros/abilities.cfg:336
 msgid "feeding"
 msgstr "пожиратель"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:486
+#: data/core/macros/abilities.cfg:337
 msgid "female^feeding"
 msgstr "пожирательница"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:487
+#: data/core/macros/abilities.cfg:338
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4263,17 +4250,17 @@ msgstr ""
 "убивает врага (кроме тех, на кого не действует чума)."
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:509
+#: data/core/macros/abilities.cfg:360
 msgid "+1 max HP"
 msgstr "+1 max ЗД"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:402
 msgid "backstab"
 msgstr "бьёт в спину"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:552
+#: data/core/macros/abilities.cfg:403
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4285,12 +4272,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:564 data/core/macros/abilities.cfg:575
+#: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:434
 msgid "plague"
 msgstr "чума"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:565
+#: data/core/macros/abilities.cfg:424
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
@@ -4301,7 +4288,7 @@ msgstr ""
 "находящиеся в деревнях)."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:576
+#: data/core/macros/abilities.cfg:435
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4312,12 +4299,12 @@ msgstr ""
 "в деревнях)."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:586
+#: data/core/macros/abilities.cfg:445
 msgid "slows"
 msgstr "замедляет"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:587
+#: data/core/macros/abilities.cfg:446
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4329,12 +4316,12 @@ msgstr ""
 "замедлен, к его описанию в правой части экрана добавляется значок улитки."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:596
+#: data/core/macros/abilities.cfg:455
 msgid "petrifies"
 msgstr "окаменение"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:597
+#: data/core/macros/abilities.cfg:456
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4343,24 +4330,24 @@ msgstr ""
 "могут перемещаться и атаковать."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:606
+#: data/core/macros/abilities.cfg:465
 msgid "marksman"
-msgstr "снайпер"
+msgstr "меткий"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:607
+#: data/core/macros/abilities.cfg:466
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "При нападении данная атака всегда имеет шанс не менее 60% нанести ущерб."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:631
+#: data/core/macros/abilities.cfg:490
 msgid "swarm"
 msgstr "рой"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:632
+#: data/core/macros/abilities.cfg:491
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4373,12 +4360,12 @@ msgstr ""
 "только 3/4 от числа возможных ударов."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:641
+#: data/core/macros/abilities.cfg:500
 msgid "charge"
 msgstr "наскок"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:642
+#: data/core/macros/abilities.cfg:501
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4387,12 +4374,12 @@ msgstr ""
 "также будет получать двойной урон от ответного удара атакуемого."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:654
+#: data/core/macros/abilities.cfg:513
 msgid "drains"
 msgstr "высасывает"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:655
+#: data/core/macros/abilities.cfg:514
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4401,15 +4388,20 @@ msgstr ""
 "половину нанесенного ущерба (округляется вниз)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:674
+#: data/core/macros/abilities.cfg:533
 msgid "poison"
 msgstr "яд"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:675
+#: data/core/macros/abilities.cfg:534
+#, fuzzy
+#| msgid ""
+#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
+#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
+#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
 "a unit."
 msgstr ""
 "Данный вид атаки отравляет живых. Отравленный боец теряет 8 ЗД каждый ход до "
@@ -4909,12 +4901,12 @@ msgstr "сильная"
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:108
 msgid "dextrous"
-msgstr "меткий"
+msgstr "ловкий"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:109
 msgid "female^dextrous"
-msgstr "меткая"
+msgstr "ловкая"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:122
@@ -6235,12 +6227,12 @@ msgstr "Волки"
 #. [race]: id=wose
 #: data/core/units.cfg:354
 msgid "race^Wose"
-msgstr "Леший"
+msgstr "Древень"
 
 #. [race]: id=wose
 #: data/core/units.cfg:355
 msgid "race^Woses"
-msgstr "Лешие"
+msgstr "Древни"
 
 #. [race]: id=wose
 #: data/core/units.cfg:356
@@ -6284,50 +6276,50 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
-"Могучие лешие живут в самой глубине лесов известного мира. Для "
-"нетренированного глаза леший выглядит не более чем деревом странной формы, "
-"хоть и благородным. Лешие — защитники леса, связанные с ними сильнее, чем "
-"даже эльфы. Лешие — мирная раса, но непорядки в древних лесах, которые они "
-"охраняют, вызовут гнев самой природы. Лешие — медлительные создания, которые "
-"могут провести столетия, стоя на одном месте, не потревоженные течением "
-"времени.\n"
+"Могучие древни живут в самой глубине лесов известного мира. Для "
+"нетренированного глаза древень выглядит не более чем деревом странной формы, "
+"хоть и благородным. Древни — защитники леса, связанные с ними сильнее, чем "
+"даже эльфы. Древни — мирная раса, но непорядки в древних лесах, которые они "
+"охраняют, вызовут гнев самой природы. Древни — медлительные создания, "
+"которые могут провести столетия, стоя на одном месте, не потревоженные "
+"течением времени.\n"
 "\n"
 "Хотя сами они магией не занимаются, они тесно связаны с волшебным миром. То "
 "немногое, что известно об этой древней расе, идёт от эльфийских учёных, "
 "которые считают, что их мистическая сила, которую сильнейшие из эльфов "
-"изучают всю жизнь, дана лешему от природы. Хоть лешие и похожи на деревья, у "
-"них нет общих предков. Считается, что лешие — одни из древнейших созданий "
+"изучают всю жизнь, дана древню от природы. Хоть древни и похожи на деревья, "
+"у них нет общих предков. Считается, что древни — одни из древнейших созданий "
 "этого мира, возможно, даже более древние, чем леса, где они живут; многие "
 "думают, что сила волшебного мира дала этим существам вечную задачу служить "
 "хранителями леса.\n"
 "\n"
-"Лешие не воинственны и плохо приспособлены к битве. Они, однако, используют "
+"Древни не воинственны и плохо приспособлены к битве. Они, однако, используют "
 "силу, чтобы защитить свои лесные земли. За пределами лесов они медлительны и "
 "уязвимы. Из-за своей связи с волшебным миром они особенно чувствительны к "
-"мистическим атакам. Плотное древесное тело лешего почти не поддаётся "
+"мистическим атакам. Плотное древесное тело древня почти не поддаётся "
 "физическим атакам, но очень уязвимо перед огнём. Их толстая кора и данное "
-"миром магии умение быстро восстанавливаться позволяет лешему пережить "
+"миром магии умение быстро восстанавливаться позволяет древню пережить "
 "нападение врага достаточно долго, чтобы ответить сокрушающей мощью, которую "
-"скрывает их мирная, медлительная природа. В своём лесном доме, леший может "
+"скрывает их мирная, медлительная природа. В своём лесном доме, древень может "
 "спрятаться среди деревьев и поймать в засаду даже самого обученного "
 "эльфийского разведчика.\n"
 "\n"
-"Никто не знает, сколько живут лешие, хотя самые древние представители этой "
-"расы прожили сотни лет и достигли огромного роста. Считается, что если леший "
-"не пал в битве, он не встретит своего природного конца. Они согласны "
+"Никто не знает, сколько живут древни, хотя самые старые представители этой "
+"расы прожили сотни лет и достигли огромного роста. Считается, что если "
+"древень не пал в битве, он не встретит своего природного конца. Они согласны "
 "проводить столетия как часовые, не интересуясь, что происходит в "
-"цивилизованном мире. Лешие выходят из спячки только чтобы выступить на "
+"цивилизованном мире. Древни выходят из спячки только чтобы выступить на "
 "защиту природного мира и леса, которые они зовут домом."
 
-#: src/help/help.cpp:184
+#: src/help/help.cpp:187
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/help/help.cpp:187
+#: src/help/help.cpp:190
 msgid "The Battle for Wesnoth Help"
 msgstr "Помощь по игре Битва за Веснот"
 
-#: src/help/help.cpp:243
+#: src/help/help.cpp:246
 msgid "Parse error when parsing help text: "
 msgstr "Синтаксическая ошибка при загрузке помощи: "
 
@@ -6410,6 +6402,21 @@ msgstr "Синтаксическая ошибка при загрузке пом
 
 #~ msgid "Experience and Advancement"
 #~ msgstr "Опыт и продвижение"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
+#~ "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
+#~ "<ref>dst='traits_undead' text='undead'</ref>.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "У бойцов бывают и другие особенности: <ref>dst='traits_dextrous' "
+#~ "text='ловкий'</ref>, <ref>dst='traits_loyal' text='верный'</ref>, "
+#~ "<ref>dst='traits_undead' text='мертвец'</ref>.\n"
+#~ "\n"
 
 #~ msgid ""
 #~ "\n"

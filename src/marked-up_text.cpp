@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -50,14 +50,14 @@ const std::string weapon = "<245,230,193>",
 		race = "<166,146,117>";
 
 const SDL_Color
-	weapon_color = { 245, 230, 193, 255 },
-	good_dmg_color = { 130, 240, 50, 255 },
-	bad_dmg_color = { 250, 140, 80, 255 },
-	weapon_details_color = { 166, 146, 117, 255 },
-	inactive_details_color = { 146, 146, 146, 255 },
-	inactive_ability_color = { 146, 146, 146, 255 },
-	unit_type_color = { 245, 230, 193, 255 },
-	race_color = { 166, 146, 117, 255 };
+	weapon_color = { 245, 230, 193, SDL_ALPHA_OPAQUE },
+	good_dmg_color = { 130, 240, 50, SDL_ALPHA_OPAQUE },
+	bad_dmg_color = { 250, 140, 80, SDL_ALPHA_OPAQUE },
+	weapon_details_color = { 166, 146, 117, SDL_ALPHA_OPAQUE },
+	inactive_details_color = { 146, 146, 146, SDL_ALPHA_OPAQUE },
+	inactive_ability_color = { 146, 146, 146, SDL_ALPHA_OPAQUE },
+	unit_type_color = { 245, 230, 193, SDL_ALPHA_OPAQUE },
+	race_color = { 166, 146, 117, SDL_ALPHA_OPAQUE };
 
 const std::string weapon_numbers_sep = "–", weapon_details_sep = "–";
 
@@ -190,7 +190,7 @@ SDL_Rect text_area(const std::string& text, int size, int style)
 	return draw_text(NULL, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
 }
 
-SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
+SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
@@ -241,7 +241,9 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
-	return draw_text(gui != NULL ? gui->getSurface() : NULL, area, size, color, txt, x, y, use_tooltips, style);
+	surface null_surf = surface(NULL);
+
+	return draw_text(gui != NULL ? gui->getSurface() : null_surf, area, size, color, txt, x, y, use_tooltips, style);
 }
 
 bool is_format_char(char c)

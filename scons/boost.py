@@ -70,7 +70,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
     libname = "boost_" + boost_lib + env.get("boost_suffix", "")
 
     if env["fast"]:
-        env.AppendUnique(CXXFLAGS = "-I" + boostdir, LIBPATH = [boostlibdir])
+        env.AppendUnique(CXXFLAGS = ["-isystem", boostdir], LIBPATH = [boostlibdir])
     else:
         env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     if not header_only:

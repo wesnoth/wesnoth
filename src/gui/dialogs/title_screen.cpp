@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/title_screen.hpp"
 
-#include "display.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -38,8 +37,8 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences_display.hpp"
 #include "utils/foreach.tpp"
+#include "video.hpp"
 
 #include <boost/bind.hpp>
 
@@ -170,25 +169,20 @@ static void animate_logo(size_t& timer_id,
 
 static bool fullscreen(CVideo& video)
 {
-	preferences::set_fullscreen(video, !preferences::fullscreen());
+	video.set_fullscreen(!preferences::fullscreen());
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// Setting to fullscreen doesn't seem to generate a resize event.
 	const SDL_Rect& rect = screen_area();
 
 	SDL_Event event;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	event.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = rect.w;
-	event.window.data2 = rect.h;
-#else
 	event.type = SDL_VIDEORESIZE;
 	event.resize.type = SDL_VIDEORESIZE;
 	event.resize.w = rect.w;
 	event.resize.h = rect.h;
-#endif
 
 	SDL_PushEvent(&event);
+#endif
 
 	return true;
 }
@@ -207,7 +201,7 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 			boost::bind(&hotkey, boost::ref(window), RELOAD_GAME_DATA));
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-						   boost::bind(fullscreen, boost::ref(video)));
+			boost::bind(fullscreen, boost::ref(video)));
 
 	window.register_hotkey(
 			hotkey::HOTKEY_LANGUAGE,
@@ -267,7 +261,7 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 			hotkey::TITLE_SCREEN__CREDITS,
 			boost::bind(&hotkey, boost::ref(window), SHOW_ABOUT));
 
-	window.register_hotkey(hotkey::HOTKEY_QUIT_GAME,
+	window.register_hotkey(hotkey::HOTKEY_QUIT_TO_DESKTOP,
 						   boost::bind(&hotkey, boost::ref(window), QUIT_GAME));
 
 	window.register_hotkey(

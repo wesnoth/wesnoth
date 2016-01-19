@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -54,13 +54,13 @@ ttext_box_definition::ttext_box_definition(const config& cfg)
  * The following states exist:
  * * state_enabled, the text box is enabled.
  * * state_disabled, the text box is disabled.
- * * state_focussed, the text box has the focus of the keyboard.
+ * * state_focused, the text box has the focus of the keyboard.
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled"}
  * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_disabled"}
- * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focussed"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
  * @end{tag}{name="resolution"}
  * @end{tag}{name="text_box_definition"}
  * @end{parent}{name="gui/"}
@@ -73,7 +73,7 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
 	// Note the order should be the same as the enum tstate in text_box.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_focussed")));
+	state.push_back(tstate_definition(cfg.child("state_focused")));
 }
 
 } // namespace gui2

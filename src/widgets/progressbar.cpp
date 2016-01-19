@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -42,7 +42,7 @@ void progress_bar::set_text(const std::string& text)
 
 void progress_bar::draw_contents()
 {
-	surface surf = video().getSurface();
+	surface& surf = video().getSurface();
 	SDL_Rect area = location();
 
 	if(area.w >= 2 && area.h >= 2) {

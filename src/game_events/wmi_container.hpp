@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -38,7 +38,7 @@ class vconfig;
 namespace game_events
 {
 class wml_menu_item;
-class manager;
+
 
 /// A container of wml_menu_item.
 class wmi_container{
@@ -85,10 +85,10 @@ public:
 		return get_items(hex, gamedata, fc, units, begin(), end());
 	}
 	/// Initializes the implicit event handlers for inlined [command]s.
-	void init_handlers(const boost::shared_ptr<manager * const> &) const;
+	void init_handlers() const;
 	void to_config(config& cfg) const;
 	/// Updates or creates (as appropriate) the menu item with the given @a id.
-	void set_item(const std::string& id, const vconfig& menu_item, manager *);
+	void set_item(const std::string& id, const vconfig& menu_item);
 	/// Sets the current menu items to the "menu_item" children of @a cfg.
 	void set_menu_items(const config& cfg);
 

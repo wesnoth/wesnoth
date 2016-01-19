@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 
 BOOST_AUTO_TEST_SUITE( rng )
 
-/* this test adapted from validation routine at 
+/* this test adapted from validation routine at
    http://www.boost.org/doc/libs/1_38_0/libs/random/random_test.cpp
 */
 BOOST_AUTO_TEST_CASE( validate_mt19937 )
@@ -78,7 +78,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_seed_manip )
 	BOOST_CHECK (seed != seed3);
 	BOOST_CHECK (seed_str != seed_str3);
 
-}	
+}
 
 BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 {
@@ -141,7 +141,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility )
 	BOOST_CHECK(rng1 == rng2);
 	for (int i = 0; i < 10 ; i++) {
 		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
-	}	
+	}
 }
 
 BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility2 )
@@ -156,7 +156,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility2 )
 	BOOST_CHECK(rng1 == rng2);
 	for (int i = 0; i < 10 ; i++) {
 		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
-	}	
+	}
 }
 
 BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility3 )
@@ -165,13 +165,13 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility3 )
 	config cfg;
 	cfg["random_seed"] = rng1.get_random_seed_str();
 	cfg["random_calls"] = rng1.get_random_calls();
-	
+
 	rand_rng::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
 	for (int i = 0; i < 10 ; i++) {
 		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
-	}	
+	}
 }
 
 BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility4 )
@@ -185,7 +185,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility4 )
 	config cfg;
 	cfg["random_seed"] = rng1.get_random_seed_str();
 	cfg["random_calls"] = rng1.get_random_calls();
-	
+
 	rand_rng::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
@@ -223,7 +223,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 	cfg_save["random_calls"] = rng.get_random_calls();
 
 	uint32_t result3 = rng.get_next_random();
-	
+
 	rand_rng::mt_rng rng3(cfg_save);
 	uint32_t result4 = rng3.get_next_random();
 
@@ -250,7 +250,7 @@ void validate_seed_string(std::string seed_str)
 	config cfg2;
 	cfg2["random_seed"] = rng1.get_random_seed_str();
 	cfg2["random_calls"] = rng1.get_random_calls();
-	
+
 	rand_rng::mt_rng rng2(cfg2);
 
 	for (int i = 0; i < 9999 ; i++) {
@@ -298,7 +298,7 @@ std::string validate_get_random_int_seed_generator()
  *  from the get_random_int function, in the class random_new.
  *  We test both subclasses of random_new.
  *  If these tests fail but the seed manipulation tests all pass,
- *  and validate_mt19937 passes, then it suggests that the implementation 
+ *  and validate_mt19937 passes, then it suggests that the implementation
  *  of get_random_int may not be working properly on your platform.
  */
 BOOST_AUTO_TEST_CASE( validate_get_random_int )

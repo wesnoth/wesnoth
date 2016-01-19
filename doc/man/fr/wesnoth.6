@@ -49,12 +49,11 @@ scénarios ou vos campagnes et partagez\-les avec le reste du monde.
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign \ [<id_campagne>]\fP
-Va directement à la campagne qui a pour identifiant
-<id_campagne>. Le menu de sélection de campagne apparaîtra si l'id
-n'est pas spécifié.  \fBNote\ :\fP Lorsque vous utilisez cette option,
-assurez\-vous d'avoir spécifié le chemin vers le dossier de données en
-argument final, sinon le jeu prendra l'identifiant campagne/scénario comme
-répertoire de données.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<difficulté>]\fP
 La difficulté de la campagne spécifiée (de 1 à max). Si la difficulté n'est
@@ -187,12 +186,13 @@ Les erreurs de validation sont traitées comme des erreurs fatales.
 Lance le jeu avec un petit scénario de test.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
-ou dans "Mes Documents\eMes Jeux" pour Windows.  Vous pouvez aussi indiquer
-un chemin absolu pour un dossier de configuration situé en dehors de $HOME
-ou de "Mes Documents\eMes Jeux". Sous X11 le répertoire par défaut est
-$XDG_CONFIG_HOME ou $HOME/.config/wesnoth. Sur les autres systèmes le
-répertoire par défaut est le répertoire de données.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 Affiche le nom du répertoire de configuration utilisateur et quitte le
@@ -201,7 +201,9 @@ programme.
 \fB\-\-userdata\-dir\fP\fI\ nom\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
 .TP 
 \fB\-\-userdata\-path\fP
 Affiche le nom du répertoire de données et quitte le programme.
@@ -295,7 +297,7 @@ Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y

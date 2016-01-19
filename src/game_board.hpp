@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -124,7 +124,7 @@ public:
 	// Manipulator from playturn
 
 	void side_drop_to (int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy = team::PROXY_CONTROLLER::PROXY_HUMAN);
-	void side_change_controller (int side_num, team::CONTROLLER ctrl, const std::string& pname = "");
+	void side_change_controller (int side_num, bool is_local, const std::string& pname = "");
 
 	// Manipulator from actionwml
 

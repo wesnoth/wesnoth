@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,8 +45,6 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-static void no_op() {}
-
 game_state::game_state(const config & level, play_controller &, const tdata_cache & tdata) :
 	gamedata_(level),
 	board_(tdata, level),
@@ -54,27 +52,12 @@ game_state::game_state(const config & level, play_controller &, const tdata_cach
 	pathfind_manager_(),
 	reports_(new reports()),
 	lua_kernel_(),
-	events_manager_(),
+	events_manager_(new game_events::manager()),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	start_event_fired_(!level["playing_team"].empty()),
 	server_request_number_(level["server_request_number"].to_int()),
-	first_human_team_(-1)
-{
-	//init(pc.ticks(), pc, level);
-}
-game_state::game_state(const config & level, play_controller & pc, game_board& board) :
-	gamedata_(level),
-	board_(board),
-	tod_manager_(level),
-	pathfind_manager_(new pathfind::manager(level)),
-	reports_(new reports()),
-	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
-	events_manager_(),
-	player_number_(level["playing_team"].to_int() + 1),
-	end_level_data_(),
-	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
@@ -83,13 +66,27 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 		el_data.transient.carryover_report = false;
 		end_level_data_ = el_data;
 	}
-
-	//init(pc.ticks(), pc, level);
-
-	//game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
-
-	//events_manager_.reset(new game_events::manager(level, game_events_resources_));
-
+}
+game_state::game_state(const config & level, play_controller & pc, game_board& board) :
+	gamedata_(level),
+	board_(board),
+	tod_manager_(level),
+	pathfind_manager_(new pathfind::manager(level)),
+	reports_(new reports()),
+	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
+	events_manager_(new game_events::manager()),
+	player_number_(level["playing_team"].to_int() + 1),
+	end_level_data_(),
+	init_side_done_(level["init_side_done"].to_bool(false)),
+	first_human_team_(-1)
+{
+	events_manager_->read_scenario(level);
+	if(const config& endlevel_cfg = level.child("end_level_data")) {
+		end_level_data el_data;
+		el_data.read(endlevel_cfg);
+		el_data.transient.carryover_report = false;
+		end_level_data_ = el_data;
+	}
 }
 
 
@@ -168,6 +165,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 
 void game_state::init(const config& level, play_controller & pc)
 {
+	events_manager_->read_scenario(level);
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);
@@ -218,32 +216,20 @@ void game_state::init(const config& level, play_controller & pc)
 			}
 		}
 	}
-	
+
 	pathfind_manager_.reset(new pathfind::manager(level));
 
 	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));
-
-	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
-
-	events_manager_.reset(new game_events::manager(level, game_events_resources_));
-
-
 }
 
-void game_state::bind(wb::manager * whiteboard, game_display * gd)
+void game_state::bind(wb::manager *, game_display * gd)
 {
-	if (whiteboard) {
-		game_events_resources_->on_gamestate_change = boost::bind(&wb::manager::on_gamestate_change, whiteboard);
-	} else {
-		game_events_resources_->on_gamestate_change = &no_op;
-	}
 	set_game_display(gd);
 }
 
 void game_state::set_game_display(game_display * gd)
 {
 	lua_kernel_->set_game_display(gd);
-	game_events_resources_->screen = gd;
 }
 
 void game_state::write(config& cfg) const

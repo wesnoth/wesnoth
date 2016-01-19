@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_generator.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
@@ -389,7 +388,7 @@ int campaign::max_players() const
 	return max_players_;
 }
 
-create_engine::create_engine(game_display& disp, saved_game& state) :
+create_engine::create_engine(CVideo& v, saved_game& state) :
 	current_level_type_(),
 	current_level_index_(0),
 	current_era_index_(0),
@@ -407,7 +406,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	eras_(),
 	mods_(),
 	state_(state),
-	disp_(disp),
+	video_(v),
 	dependency_manager_(NULL),
 	generator_(NULL)
 {
@@ -421,7 +420,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_connect = connect;
 	game_config_manager::get()->load_game_config_for_create(type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 	//Initilialize dependency_manager_ after refreshing game config.
-	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, disp.video()));
+	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, video_));
 	//TODO the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, filesystem::FILE_NAME_ONLY);
@@ -572,33 +571,36 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
  *
  * Launches difficulty selection gui and returns selected difficulty name.
  *
- * The gui can be bypassed by supplying a number from 1 to the number of 
+ * The gui can be bypassed by supplying a number from 1 to the number of
  * difficulties available, corresponding to a choice of difficulty.
  * This is useful for specifying difficulty via command line.
  *
  * @param	set_value Preselected difficulty number. The default -1 launches the gui.
  * @return	Selected difficulty. Returns "FAIL" if set_value is invalid,
- *	        and "CANCEL" if the gui is cancelled.
+ *	        and "CANCEL" if the gui is canceled.
  */
 std::string create_engine::select_campaign_difficulty(int set_value)
 {
+	// Verify the existence of difficulties
+	std::vector<std::string> difficulties;
+
+	BOOST_FOREACH(const config &d, current_level().data().child_range("difficulty"))
+	{
+		difficulties.push_back(d["define"]);
+	}
+
+	if(difficulties.empty()) {
+		difficulties = utils::split(current_level().data()["difficulties"]);
+	}
+
+	// No difficulties found. Exit
+	if(difficulties.empty()) {
+		return "";
+	}
+
 	// A specific difficulty value was passed
 	// Use a minimilistic interface to get the specified define
 	if(set_value != -1) {
-		std::vector<std::string> difficulties =
-			utils::split(current_level().data()["difficulties"]);
-
-		if(difficulties.empty()) {
-			BOOST_FOREACH(const config &d, current_level().data().child_range("difficulty"))
-			{
-				difficulties.push_back(d["define"]);
-			}
-		}
-
-		if(difficulties.empty()) {
-			return "";
-		}
-
 		if (set_value > static_cast<int>(difficulties.size())) {
 			std::cerr << "incorrect difficulty number: [" <<
 				set_value << "]. maximum is [" << difficulties.size() << "].\n";
@@ -613,8 +615,10 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	}
 
 	// If not, let the user pick one from the prompt
+	// We don't pass the difficulties vector here because additional data is required
+	// to constrict the dialog
 	gui2::tcampaign_difficulty dlg(current_level().data());
-	dlg.show(disp_.video());
+	dlg.show(video_);
 
 	return dlg.selected_difficulty();
 }
@@ -848,9 +852,9 @@ bool create_engine::generator_assigned() const
 	return generator_ != NULL;
 }
 
-void create_engine::generator_user_config(display& disp)
+void create_engine::generator_user_config(CVideo& v)
 {
-	generator_->user_config(disp);
+	generator_->user_config(v);
 }
 
 int create_engine::find_level_by_id(const std::string& id) const

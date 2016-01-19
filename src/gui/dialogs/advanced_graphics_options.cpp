@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -72,7 +72,7 @@ void tadvanced_graphics_options::setup_scale_button(const std::string & case_id,
 {
 	std::string pref_id = "scale_" + case_id;
 
-	tadvanced_graphics_options::SCALING_ALGORITHM algo = tadvanced_graphics_options::SCALING_ALGORITHM::LEGACY_LINEAR;
+	tadvanced_graphics_options::SCALING_ALGORITHM algo = tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get(pref_id));
 	} catch (bad_enum_cast &) {
@@ -89,7 +89,7 @@ void tadvanced_graphics_options::setup_scale_button(const std::string & case_id,
 
 void tadvanced_graphics_options::scale_button_callback(std::string pref_id, SCALING_ALGORITHM me, twindow & window)
 {
-	tadvanced_graphics_options::SCALING_ALGORITHM algo = tadvanced_graphics_options::SCALING_ALGORITHM::LEGACY_LINEAR;
+	tadvanced_graphics_options::SCALING_ALGORITHM algo = tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get(pref_id));
 	} catch (bad_enum_cast &) {

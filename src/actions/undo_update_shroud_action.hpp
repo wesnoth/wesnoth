@@ -8,7 +8,7 @@ namespace actions
 {
 namespace undo
 {
-	
+
 struct auto_shroud_action : undo_action_base {
 	bool active;
 

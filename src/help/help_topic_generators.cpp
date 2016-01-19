@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -231,7 +231,7 @@ static void print_trait_list(std::stringstream & ss, const std::vector<trait_dat
 
 std::string unit_topic_generator::operator()() const {
 		// Force the lazy loading to build this unit.
-		unit_types.build_unit_type(type_, unit_type::WITHOUT_ANIMATIONS);
+		unit_types.build_unit_type(type_, unit_type::FULL);
 
 		std::stringstream ss;
 		std::string clear_stringstream;
@@ -256,16 +256,18 @@ std::string unit_topic_generator::operator()() const {
 			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
 #endif
 
-		const std::string &male_portrait = male_type.small_profile();
-		const std::string &female_portrait = female_type.small_profile();
+		const std::string &male_portrait = male_type.big_profile();
+		const std::string &female_portrait = female_type.big_profile();
 
 		// TODO: figure out why the second checks don't match but the last does
 		if (!male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image") {
-			ss << "<img>src='" << male_portrait << "~SCALE(205,205)~BG()' align='right'</img> ";
+			ss << "<img>src='" << male_portrait << "' box='no' align='right' float='yes'</img> ";
 		}
 
+		ss << "\n\n";
+
 		if (!female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image") {
-			ss << "<img>src='" << female_portrait << "~SCALE(205,205)~BG()' align='right'</img> ";
+			ss << "<img>src='" << female_portrait << "' box='no' align='right' float='yes'</img> ";
 		}
 
 		ss << "\n";

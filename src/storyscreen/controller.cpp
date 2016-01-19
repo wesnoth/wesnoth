@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -146,6 +146,9 @@ void controller::resolve_wml(const vconfig& cfg)
 
 STORY_RESULT controller::show(START_POSITION startpos)
 {
+
+	events::event_context story_context;
+
 	if(parts_.empty()) {
 		LOG_NG << "no storyscreen parts to show\n";
 		return NEXT;

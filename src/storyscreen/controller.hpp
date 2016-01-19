@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,7 @@
 
 #include "events.hpp"
 #include "interface.hpp"
-#include "video.hpp"
+#include "video.hpp" //for resize_lock
 
 #include <boost/shared_ptr.hpp>
 

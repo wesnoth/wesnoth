@@ -14,7 +14,7 @@
 
 #include "quit_confirmation.hpp"
 #include "gettext.hpp"
-#include "display.hpp"
+#include "video.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include "resources.hpp"
@@ -24,9 +24,9 @@ bool quit_confirmation::open_ = false;
 
 void quit_confirmation::quit()
 {
-	if(count_ != 0 && display::get_singleton() && !open_)
+	if(count_ != 0 && !open_)
 	{
-		quit(display::get_singleton()->video());
+		quit(CVideo::get_singleton());
 	}
 	else
 	{

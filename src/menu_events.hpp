@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2015 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -116,7 +116,6 @@ private:
 	//void do_speak(const std::string& message, bool allies_only);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
-	static void change_controller(const std::string& side, const std::string& controller);
 	static void change_side_controller(const std::string& side, const std::string& player);
 	void scenario_settings_table(int selected=0);
 

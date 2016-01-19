@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -50,15 +50,9 @@ public:
 
 private:
 	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
-
-	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) OVERRIDE;
-
-	/** See @ref twidget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,

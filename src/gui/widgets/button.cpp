@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -85,7 +85,7 @@ void tbutton::signal_handler_mouse_enter(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	set_state(FOCUSSED);
+	set_state(FOCUSED);
 	handled = true;
 }
 
@@ -117,7 +117,7 @@ void tbutton::signal_handler_left_button_up(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	set_state(FOCUSSED);
+	set_state(FOCUSED);
 	handled = true;
 }
 

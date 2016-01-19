@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2016 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -84,9 +84,9 @@ void clean_saves(const std::string& label)
 	}
 }
 
-loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestate)
+loadgame::loadgame(CVideo& video, const config& game_config, saved_game& gamestate)
 	: game_config_(game_config)
-	, gui_(gui)
+	, video_(video)
 	, gamestate_(gamestate)
 	, filename_()
 	, difficulty_()
@@ -98,10 +98,16 @@ loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestat
 
 void loadgame::show_dialog()
 {
+	if(get_saves_list().empty()) {
+		gui2::show_transient_message(video_, _("No Saved Games"),
+			_("There are no save files to load"));
+		return;
+	}
+
 	// FIXME: Integrate the load_game dialog into this class
 	// something to watch for the curious, but not yet ready to go
 	gui2::tgame_load load_dialog(game_config_);
-	load_dialog.show(gui_.video());
+	load_dialog.show(video_);
 
 	if (load_dialog.get_retval() == gui2::twindow::OK) {
 		select_difficulty_ = load_dialog.change_difficulty();
@@ -132,7 +138,7 @@ void loadgame::show_difficulty_dialog()
 		}
 
 		gui2::tcampaign_difficulty difficulty_dlg(campaign);
-		difficulty_dlg.show(gui_.video());
+		difficulty_dlg.show(video_);
 
 		// Return if canceled, since otherwise difficulty_ will be set to 'CANCEL'
 		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
@@ -150,7 +156,7 @@ void loadgame::show_difficulty_dialog()
 // throws a "load_game_exception" to signal a resulting load game request.
 bool loadgame::load_game()
 {
-	if (!gui_.video().faked()) {
+	if (!video_.faked()) {
 		show_dialog();
 	}
 
@@ -164,12 +170,12 @@ bool loadgame::load_game()
 	const config & summary = save_index_manager.get(filename_);
 
 	if (summary["corrupt"].to_bool(false)) {
-		gui2::show_error_message(gui_.video(),
+		gui2::show_error_message(video_,
 				_("The file you have tried to load is corrupt: '"));
 		return false;
 	}
 
-	if (!loadgame::check_version_compatibility(summary["version"].str(), gui_.video())) {
+	if (!loadgame::check_version_compatibility(summary["version"].str(), video_)) {
 		return false;
 	}
 
@@ -209,11 +215,11 @@ bool loadgame::load_game(
 
 	if(!error_log.empty()) {
         try {
-		    gui2::show_error_message(gui_.video(),
+		    gui2::show_error_message(video_,
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
 				    error_log);
         } catch (utf8::invalid_utf8_exception&) {
-		    gui2::show_error_message(gui_.video(),
+		    gui2::show_error_message(video_,
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
                     std::string("(UTF-8 ERROR)"));
         }
@@ -222,16 +228,8 @@ bool loadgame::load_game(
 	if (!difficulty_.empty()){
 		load_config_["difficulty"] = difficulty_;
 	}
-#if 0
-	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
-	gamestate_.classification().campaign_type = lexical_cast_default<game_classification::CAMPAIGN_TYPE> (load_config_["campaign_type"].str(), game_classification::CAMPAIGN_TYPE::SCENARIO);
-	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
-	gamestate_.classification().version = load_config_["version"].str();
-	gamestate_.classification().difficulty = load_config_["difficulty"].str();
-#else
 	// read classification to for loading the game_config config object.
 	gamestate_.classification() = game_classification(load_config_);
-#endif
 
 	if (skip_version_check) {
 		return true;
@@ -242,7 +240,7 @@ bool loadgame::load_game(
 
 bool loadgame::check_version_compatibility()
 {
-	return loadgame::check_version_compatibility(gamestate_.classification().version, gui_.video());
+	return loadgame::check_version_compatibility(gamestate_.classification().version, video_);
 }
 
 bool loadgame::check_version_compatibility(const version_info & save_version, CVideo & video)
@@ -312,14 +310,14 @@ bool loadgame::load_multiplayer_game()
 	}
 
 	if(!error_log.empty()) {
-		gui2::show_error_message(gui_.video(),
+		gui2::show_error_message(video_,
 				_("The file you have tried to load is corrupt: '") +
 				error_log);
 		return false;
 	}
 
 	if(gamestate_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-		gui2::show_transient_error_message(gui_.video(), _("This is not a multiplayer save."));
+		gui2::show_transient_error_message(video_, _("This is not a multiplayer save."));
 		return false;
 	}
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #ifndef INTRO_HPP_INCLUDED
 #define INTRO_HPP_INCLUDED
 
-class display;
+class CVideo;
 
 #include <string>
 
@@ -30,6 +30,6 @@ class display;
  * @param duration In milliseconds, for how much time the text will
  *                 be displayed on screen.
  */
-void the_end(display &disp, std::string text, unsigned int duration);
+void the_end(CVideo &video, std::string text, unsigned int duration);
 
 #endif /* ! INTRO_HPP_INCLUDED */

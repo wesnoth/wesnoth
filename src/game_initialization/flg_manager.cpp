@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -365,7 +365,7 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	if (!side_["no_leader"].to_bool() || !leader_lock_) {
+	if (!default_leader_type_.empty() || !side_["no_leader"].to_bool() || !leader_lock_) {
 
 		int random_pos = 0;
 		// Add a default leader if there is one.
@@ -625,7 +625,7 @@ void flg_manager::set_current_gender(const std::string& gender)
 
 std::vector<std::string> flg_manager::get_original_recruits(const config& cfg)
 {
-	if (cfg["no_recruit"].to_bool()) {
+	if (cfg["default_recruit"].empty()) {
 		return std::vector<std::string>();
 	}
 	const config::attribute_value& cfg_default_recruit = cfg["default_recruit"];

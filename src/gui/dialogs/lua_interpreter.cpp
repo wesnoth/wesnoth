@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -133,6 +133,7 @@ public:
 		DBG_LUA << "constructing a tlua_interpreter::model\n";
 		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.\n";
 		log_ << lk.get_log().str() << std::flush;
+		//FIXME: we should escapte th input that we get from L_ with escape_text
 		L_.set_external_log(&log_); //register our log to get commands and output from the lua interpreter
 		//DBG_LUA << "recieved:\n" << log_.str() << "\n.\n";
 
@@ -219,7 +220,7 @@ public:
 
 	void maybe_update_prefix (const std::string & text) {
 		LOG_LUA << "maybe update prefix\n";
-		LOG_LUA << "prefix_: '"<< prefix_ << "'\t text='"<< text << "'\n";   
+		LOG_LUA << "prefix_: '"<< prefix_ << "'\t text='"<< text << "'\n";
 
 		if (!end_of_history_) return;
 

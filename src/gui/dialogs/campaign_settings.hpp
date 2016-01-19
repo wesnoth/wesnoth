@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
+   Copyright (C) 2014 - 2016 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -49,7 +49,7 @@ private:
 
 	// populate era and mod lists
 	void update_lists(twindow& window);
-	
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 

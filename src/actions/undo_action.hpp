@@ -92,7 +92,7 @@ namespace actions {
 		tconfig_vector umc_commands_redo;
 		void execute_undo_umc_wml();
 		void execute_redo_umc_wml();
-		
+
 		static void read_tconfig_vector(tconfig_vector& vec, const config& cfg, const std::string& tag);
 		static void write_tconfig_vector(const tconfig_vector& vec, config& cfg, const std::string& tag);
 	};

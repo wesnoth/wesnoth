@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include "actions/create.hpp"
 #include "formula_string_utils.hpp"
+#include "game_display.hpp"
 #include "game_errors.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
@@ -281,6 +282,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_UNIT_LIST:
 	case hotkey::HOTKEY_STATISTICS:
 	case hotkey::HOTKEY_QUIT_GAME:
+	case hotkey::HOTKEY_QUIT_TO_DESKTOP:
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:
@@ -429,7 +431,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
 			// Autosave visibility is similar to LOAD_GAME hotkey
-			
+
 			++i; continue; //cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
 		} else {
 			cmd = &hotkey::get_hotkey_command(*i);

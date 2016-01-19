@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2015 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,10 @@
 #include "formula_callable.hpp"
 
 #ifdef _MSC_VER
+#if _MSC_VER < 1600
+// SDL2 uses [dfi]vec.h which used to define EXPLICIT
+#undef EXPLICIT
+#endif
 #pragma warning(push)
 //silence "inherits via dominance" warnings
 #pragma warning(disable:4250)

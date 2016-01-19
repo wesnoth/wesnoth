@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,28 +14,29 @@
 
 #ifndef HELP_BUTTON_HPP
 #define HELP_BUTTON_HPP
-
+#include "global.hpp"
 #include "hotkey/command_executor.hpp"
 #include "construct_dialog.hpp"
 
 class config;
-class display;
+class CVideo;
 
 namespace help {
 
 class help_button : public gui::dialog_button, public hotkey::command_executor {
 public:
-	help_button(display& disp, const std::string &help_topic);
+	help_button(CVideo& video, const std::string &help_topic);
 	~help_button();
 	int action(gui::dialog_process_info &info);
 	std::string topic() const { return topic_; }
 	void join();
 	void leave();
+	CVideo& get_video() OVERRIDE { return video_; }
 private:
 	void show_help();
 	bool can_execute_command(const hotkey::hotkey_command& command, int/*index*/ =-1) const;
 
-	display &disp_;
+	CVideo &video_;
 	const std::string topic_;
 	hotkey::basic_handler *help_hand_;
 };

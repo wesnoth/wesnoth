@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2015 by Lukasz Dobrogowski
+   Copyright (C) 2011 - 2016 by Lukasz Dobrogowski
    <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 

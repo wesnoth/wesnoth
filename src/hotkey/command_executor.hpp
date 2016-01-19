@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,11 @@
 #define COMMAND_EXECUTOR_HPP_INCLUDED
 
 #include "hotkey_command.hpp"
-#include "display.hpp"
 #include "game_end_exceptions.hpp"
+#include "events.hpp"
+
+class display;
+class CVideo;
 
 namespace hotkey {
 
@@ -105,7 +108,17 @@ public:
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}
 	virtual void toggle_accelerated_speed() {}
+	virtual void lua_console();
+	virtual void zoom_in() {}
+	virtual void zoom_out() {}
+	virtual void zoom_default() {}
+	virtual void map_screenshot() {}
+	virtual void quit_to_desktop();
+	virtual void quit_to_main_menu() {}
 
+	virtual void set_button_state() {}
+	virtual void recalculate_minimap() {}
+	virtual CVideo& get_video() = 0;
 
 	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsitent.
 	// Gets the action's image (if any). Displayed left of the action text in menus.
@@ -120,37 +133,49 @@ public:
 	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
-	/**
-	 * Adjusts the state of those theme menu buttons which trigger hotkey events.
-	 */
-	void set_button_state(display& disp);
-
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
 	virtual bool execute_command(const hotkey_command& command, int index=-1);
 };
-
+class command_executor_default : public command_executor
+{
+protected:
+	static const int zoom_amount = 4;
+	virtual display& get_display() = 0;
+public:
+	CVideo& get_video();
+	void set_button_state();
+	void recalculate_minimap();
+	void lua_console();
+	void zoom_in();
+	void zoom_out();
+	void zoom_default();
+	void map_screenshot();
+	void quit_to_desktop();
+	void quit_to_main_menu();
+};
 /* Functions to be called every time a event is intercepted.
  * Will call the relevant function in executor if the event is not NULL.
  * Also handles some events in the function itself,
  * and so is still meaningful to call with executor=NULL
  */
-void jbutton_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
-void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
-void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
-void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
+void jbutton_event(const SDL_Event& event, command_executor* executor);
+void jhat_event(const SDL_Event& event, command_executor* executor);
+void key_event(const SDL_Event& event, command_executor* executor);
+void mbutton_event(const SDL_Event& event, command_executor* executor);
+
 
 //TODO
-void execute_command(display& disp, const hotkey_command& command, command_executor* executor, int index=-1);
+void execute_command(const hotkey_command& command, command_executor* executor, int index=-1);
 
 // Object which will ensure that basic keyboard events like escape
 // are handled properly for the duration of its lifetime.
-struct basic_handler : public events::sdl_handler {
-	basic_handler(display* disp, command_executor* exec=NULL);
+class basic_handler : public events::sdl_handler
+{
+public:
+	basic_handler(command_executor* exec);
 
 	void handle_event(const SDL_Event& event);
-
 private:
-	display* disp_;
 	command_executor* exec_;
 };
 

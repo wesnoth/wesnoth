@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2005 - 2015 by Joeri Melis <joeri_melis@hotmail.com>
+   Copyright (C) 2005 - 2016 by Joeri Melis <joeri_melis@hotmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -199,7 +199,7 @@ void loadscreen::draw_screen(const std::string &text)
 	}
 	screen_.flip();
 #else
-	surface gdis = screen_.getSurface();
+	surface& gdis = screen_.getSurface();
 	SDL_Rect area;
 
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
@@ -207,8 +207,12 @@ void loadscreen::draw_screen(const std::string &text)
 	while(SDL_PollEvent(&ev)) {
 #if SDL_VERSION_ATLEAST(2,0,0)
 		if (ev.type == SDL_WINDOWEVENT &&
-				(ev.window.type == SDL_WINDOWEVENT_RESIZED ||
-						ev.window.type == SDL_WINDOWEVENT_EXPOSED))
+				ev.window.event == SDL_WINDOWEVENT_RESIZED) {
+			screen_.update_framebuffer();
+		}
+		if (ev.type == SDL_WINDOWEVENT &&
+				(ev.window.event == SDL_WINDOWEVENT_RESIZED ||
+						ev.window.event == SDL_WINDOWEVENT_EXPOSED))
 #else
 		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE)
 #endif
@@ -298,7 +302,7 @@ void loadscreen::clear_screen()
 	int scrx = screen_.getx();                     // Screen width.
 	int scry = screen_.gety();                     // Screen height.
 	SDL_Rect area = sdl::create_rect(0, 0, scrx, scry); // Screen area.
-	surface disp(screen_.getSurface());      // Screen surface.
+	surface& disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
 	sdl::fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 	update_whole_screen();

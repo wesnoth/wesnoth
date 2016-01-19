@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -271,7 +271,7 @@ editor_action_apply_mask* editor_action_apply_mask::clone() const
 }
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().overlay(mask_, config(), 0, 0, true);
+	mc.get_map().overlay(mask_, config(), 0, 0, false);
 	mc.set_needs_terrain_rebuild();
 }
 

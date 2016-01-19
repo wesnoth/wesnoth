@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -198,6 +198,9 @@ public:
 	/// everything, such as set_items().
 	void set_max_height(const int new_max_height);
 	void set_max_width(const int new_max_width);
+
+	int get_max_height() { return max_height_; }
+	int get_max_width() { return max_width_; }
 
 	size_t number_of_items() const { return items_.size(); }
 

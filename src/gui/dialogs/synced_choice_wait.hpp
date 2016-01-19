@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2014 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -38,7 +38,7 @@ private:
 	void pre_show(CVideo& video, twindow& window);
 
 	virtual void handle_generic_event(const std::string& event_name);
-	void on_btn_quit_game();
+	void on_btn_quit_game(CVideo& video);
 };
 }
 

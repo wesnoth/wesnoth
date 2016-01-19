@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2015 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -761,17 +761,6 @@ void tscrollbar_container::set_horizontal_scrollbar_mode(
 	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
 		horizontal_scrollbar_mode_ = scrollbar_mode;
 	}
-}
-
-void tscrollbar_container::impl_draw_children(surface& frame_buffer)
-{
-	assert(get_visible() == twidget::tvisible::visible
-		   && content_grid_->get_visible() == twidget::tvisible::visible);
-
-	// Inherited.
-	tcontainer_::impl_draw_children(frame_buffer);
-
-	content_grid_->draw_children(frame_buffer);
 }
 
 void tscrollbar_container::impl_draw_children(surface& frame_buffer,

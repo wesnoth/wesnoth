@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,12 +28,12 @@ public:
 	SDL_Rect const &location() const;
 	virtual void set_location(SDL_Rect const &rect);
 	void set_location(int x, int y);
-	void set_width(unsigned w);
-	void set_height(unsigned h);
-	void set_measurements(unsigned w, unsigned h);
+	void set_width(int w);
+	void set_height(int h);
+	void set_measurements(int w, int h);
 
-	unsigned width() const;
-	unsigned height() const;
+	int width() const;
+	int height() const;
 
 	//focus() may gain the focus if the currently focused handler doesn't require this event
 	bool focus(const SDL_Event* event);
@@ -89,7 +89,7 @@ protected:
 	const SDL_Rect* clip_rect() const;
 	virtual sdl_handler_vector member_handlers() { return sdl_handler::handler_members(); }
 
-	virtual void handle_event(SDL_Event const &/*event*/) {}
+	virtual void handle_event(SDL_Event const &event);
 	bool focus_;		// Should user input be ignored?
 
 	bool mouse_locked() const;

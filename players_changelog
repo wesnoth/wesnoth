@@ -2,7 +2,18 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
-Version 1.13.1+dev:
+Version 1.13.2+dev:
+ * Language and i18n:
+   * Updated translations: British English, Russian, Swedish.
+
+ * Miscellaneous and bug fixes:
+   * Fix the new log code on Windows to actually use Unicode-aware functions
+     in a couple of places so Wesnoth does not quit on startup when trying to
+     relocate the log file to a path with Unicode characters (bug #22897,
+     definitely fixed this time).
+
+
+Version 1.13.2:
  * Campaigns:
    * Delfador's Memoirs:
      * Added defeat condition for death of the last undead veteran in
@@ -16,11 +27,12 @@ Version 1.13.1+dev:
 
  * Language and i18n:
    * Updated translations: British English, French, Galician, Hungarian,
-     Japanese, Latvian.
+     Italian, Japanese, Latvian, Polish, RACV, Scottish Gaelic, Slovak, Spanish.
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
 
  * Music and sound effects:
+   * Updated music track "Frantic", new one by Stephen Rozanc.
    * New sounds: dwarf hit and die, ink, mud fist and glob.
 
  * User interface:
@@ -41,7 +53,14 @@ Version 1.13.1+dev:
    * Fixed OOS on random maps, where clients placed sides in different castles.
    * Fixed possibility of corrupting saved games in certain instances,
      eg if an add-on tries to set an invalid variable
-   * Enhanced tab completion in text boxes for easier whispers answer.
+   * Enhanced tab completion in text boxes for friends and for easier whispers
+     answer (bug #9742)
+   * Fixed Cancel Orders not working when loading MP game (bug #22133)
+   * Fixed load game hot-key not working in the main menu (bug #23215)
+   * Added user's leave notification for ingame players
+   * Fixed broken Oasis terrain help entry (bug #23023)
+   * Fixed cases of wrong unit type used in planning moves (bug #20299)
+   * Avoid crash when planning moves on planned recruits (bug #18637)
 
 
 Version 1.13.1:

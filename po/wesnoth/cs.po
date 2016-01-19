@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2014-10-07 14:37+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -235,112 +235,121 @@ msgstr ""
 "Nahradit klasickou čekárnu pro hru více hráčů novým, experimentálním "
 "rozhraním"
 
-#. [advanced_preference]: type=boolean
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:191
+msgid "Editor recent files limit"
+msgstr ""
+
+#. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
+msgid ""
+"The maximum number of items to display on the Recent Files menu in the editor"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:202
 msgid "Show color cursors"
 msgstr "Zobrazit barevné kurzory"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:193
-msgid ""
-"Use colored mouse cursors, which may be slower or break the game (use at "
-"your own risk)"
-msgstr ""
-"Použít barevné kurzory, které ale mohou zpomalovat nebo zcela zaseknout hru "
-"(použití na vlastní riziko)"
+#: data/advanced_preferences.cfg:203
+#, fuzzy
+#| msgid "Show color cursors"
+msgid "Use colored mouse cursors"
+msgstr "Zobrazit barevné kurzory"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:202
+#: data/advanced_preferences.cfg:211
 msgid "Joystick support"
 msgstr "Podpora joysticku"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:209
+#: data/advanced_preferences.cfg:218
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Joystick: number of the scroll X-axis joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:219
+#: data/advanced_preferences.cfg:228
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Joystick: number of the scroll X-axis"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:229
+#: data/advanced_preferences.cfg:238
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Joystick: number of the scroll Y-axis joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:239
+#: data/advanced_preferences.cfg:248
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Joystick: number of the scroll Y-axis"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:249
+#: data/advanced_preferences.cfg:258
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Joystick: deadzone of the scrolling stick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:259
+#: data/advanced_preferences.cfg:268
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Joystick: number of the cursor X-axis joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:269
+#: data/advanced_preferences.cfg:278
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Joystick: number of the cursor X-axis"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:279
+#: data/advanced_preferences.cfg:288
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Joystick: number of the cursor Y-axis joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:289
+#: data/advanced_preferences.cfg:298
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Joystick: number of the cursor Y-axis"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:299
+#: data/advanced_preferences.cfg:308
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Joystick: mrtvá zóna kurzorové páky"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:309
+#: data/advanced_preferences.cfg:318
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Joystick: number of the mouse X-axis joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:319
+#: data/advanced_preferences.cfg:328
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Joystick: number of the mouse X-axis"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:329
+#: data/advanced_preferences.cfg:338
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Joystick: number of the mouse Y-axis joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:339
+#: data/advanced_preferences.cfg:348
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Joystick: number of the mouse Y-axis"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:349
+#: data/advanced_preferences.cfg:358
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Joystick: deadzone of the mouse stick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:359
+#: data/advanced_preferences.cfg:368
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Joystick: number of the thrust axis joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:369
+#: data/advanced_preferences.cfg:378
 msgid "Joystick: number of the thrust axis"
 msgstr "Joystick: number of the thrust axis"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:379
+#: data/advanced_preferences.cfg:388
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: deadzone of the thruster"
 
@@ -348,21 +357,21 @@ msgstr "Joystick: deadzone of the thruster"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2514 src/actions/attack.cpp:948
 msgid "poisoned"
 msgstr "otrávený"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:3222
+#: data/lua/wml/objectives.lua:3751
 msgid "Gold carryover:"
 msgstr "Přenesené zlato:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:3223
+#: data/lua/wml/objectives.lua:3752
 msgid "Notes:"
 msgstr "Poznámky:"
 
@@ -383,315 +392,310 @@ msgid "Artwork and Graphics"
 msgstr "Kresby a grafika"
 
 #. [about]
-#: data/core/about.cfg:670
+#: data/core/about.cfg:682
 msgid "Music"
 msgstr "Hudba"
 
 #. [about]
-#: data/core/about.cfg:707
+#: data/core/about.cfg:719
 msgid "Sound Effects"
 msgstr "Zvukové efekty"
 
 #. [about]
-#: data/core/about.cfg:723
+#: data/core/about.cfg:743
 msgid "Campaign Design"
 msgstr "Návrh tažení"
 
 #. [about]
-#: data/core/about.cfg:802
+#: data/core/about.cfg:822
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapy pro Hru více hráčů"
 
 #. [about]
-#: data/core/about.cfg:847
+#: data/core/about.cfg:867
 msgid "Packagers"
 msgstr "Tvorba balíčků"
 
 #. [about]
-#: data/core/about.cfg:927
+#: data/core/about.cfg:966
 msgid "Miscellaneous Contributors"
 msgstr "Různé"
 
 #. [about]
-#: data/core/about.cfg:1392
+#: data/core/about.cfg:1464
 msgid "Internationalization Managers"
 msgstr "Správa internacionalizace"
 
 #. [about]
-#: data/core/about.cfg:1417
-msgid "English strings edition"
-msgstr "Úpravy anglické verze textů"
-
-#. [about]
-#: data/core/about.cfg:1424
+#: data/core/about.cfg:1489
 msgid "Afrikaans Translation"
 msgstr "Afrikánský překlad"
 
 #. [about]
-#: data/core/about.cfg:1444
+#: data/core/about.cfg:1509
 msgid "Arabic Translation"
 msgstr "Arabský překlad"
 
 #. [about]
-#: data/core/about.cfg:1451
+#: data/core/about.cfg:1516
 msgid "Basque Translation"
 msgstr "Baskický překlad"
 
 #. [about]
-#: data/core/about.cfg:1464
+#: data/core/about.cfg:1529
 msgid "Bulgarian Translation"
 msgstr "Bulharský překlad"
 
 #. [about]
-#: data/core/about.cfg:1483
+#: data/core/about.cfg:1548
 msgid "Catalan Translation"
 msgstr "Katalánský překlad"
 
 #. [about]
-#: data/core/about.cfg:1524
+#: data/core/about.cfg:1589
 msgid "Chinese Translation"
 msgstr "Čínský překlad"
 
 #. [about]
-#: data/core/about.cfg:1598
+#: data/core/about.cfg:1663
 msgid "Chinese (Taiwan) Translation"
 msgstr "Překlad do Taiwanské čínštiny"
 
 #. [about]
-#: data/core/about.cfg:1611
+#: data/core/about.cfg:1676
 msgid "Croatian Translation"
 msgstr "Chorvatský překlad"
 
 #. [about]
-#: data/core/about.cfg:1621
+#: data/core/about.cfg:1686
 msgid "Czech Translation"
 msgstr "Český překlad"
 
 #. [about]
-#: data/core/about.cfg:1681
+#: data/core/about.cfg:1746
 msgid "Danish Translation"
 msgstr "Dánský překlad"
 
 #. [about]
-#: data/core/about.cfg:1712
+#: data/core/about.cfg:1777
 msgid "Dutch Translation"
 msgstr "Holandský překlad"
 
 #. [about]
-#: data/core/about.cfg:1776
+#: data/core/about.cfg:1841
 msgid "English (GB) Translation"
 msgstr "Anglický překlad (VB)"
 
 # dlouhé!
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1864
 msgid "English (Shaw) Translation"
 msgstr "Anglický překlad (Shawovský fonetický přepis)"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1882
 msgid "Esperanto Translation"
 msgstr "Překlad do Esperanta"
 
 #. [about]
-#: data/core/about.cfg:1836
+#: data/core/about.cfg:1901
 msgid "Estonian Translation"
 msgstr "Estonský překlad"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1911
 msgid "Filipino Translation"
 msgstr "Filipínský překlad"
 
 #. [about]
-#: data/core/about.cfg:1856
+#: data/core/about.cfg:1921
 msgid "Finnish Translation"
 msgstr "Finský překlad"
 
 #. [about]
-#: data/core/about.cfg:1902
+#: data/core/about.cfg:1967
 msgid "French Translation"
 msgstr "Francouzský překlad"
 
 #. [about]
-#: data/core/about.cfg:2064
+#: data/core/about.cfg:2129
 msgid "Friulian Translation"
 msgstr "Překlad do Furlanštiny"
 
 #. [about]
-#: data/core/about.cfg:2071
+#: data/core/about.cfg:2136
 msgid "Galician Translation"
 msgstr "Galicijský překlad"
 
 #. [about]
-#: data/core/about.cfg:2107
+#: data/core/about.cfg:2172
 msgid "German Translation"
 msgstr "Německý překlad"
 
 #. [about]
-#: data/core/about.cfg:2181
+#: data/core/about.cfg:2246
 msgid "Greek Translation"
 msgstr "Řecký překlad"
 
 #. [about]
-#: data/core/about.cfg:2224
+#: data/core/about.cfg:2289
 msgid "Hebrew Translation"
 msgstr "Hebrejský překlad"
 
 #. [about]
-#: data/core/about.cfg:2237
+#: data/core/about.cfg:2302
 msgid "Hungarian Translation"
 msgstr "Maďarský překlad"
 
 #. [about]
-#: data/core/about.cfg:2298
+#: data/core/about.cfg:2363
 msgid "Icelandic Translation"
 msgstr "Islandský překlad"
 
 #. [about]
-#: data/core/about.cfg:2308
+#: data/core/about.cfg:2373
 msgid "Indonesian Translation"
 msgstr "Estonský překlad"
 
 #. [about]
-#: data/core/about.cfg:2331
+#: data/core/about.cfg:2396
 msgid "Irish Translation"
 msgstr "Irský překlad"
 
 #. [about]
-#: data/core/about.cfg:2338
+#: data/core/about.cfg:2403
 msgid "Italian Translation"
 msgstr "Italský překlad"
 
 #. [about]
-#: data/core/about.cfg:2385
+#: data/core/about.cfg:2450
 msgid "Japanese Translation"
 msgstr "Japonský překlad"
 
 #. [about]
-#: data/core/about.cfg:2453
+#: data/core/about.cfg:2529
 msgid "Korean Translation"
 msgstr "Korejský překlad"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2537
 msgid "Latin Translation"
 msgstr "Latinský překlad"
 
 #. [about]
-#: data/core/about.cfg:2487
+#: data/core/about.cfg:2563
 msgid "Latvian Translation"
 msgstr "Litevský překlad"
 
 #. [about]
-#: data/core/about.cfg:2498
+#: data/core/about.cfg:2578
 msgid "Lithuanian Translation"
 msgstr "Litevský překlad"
 
 #. [about]
-#: data/core/about.cfg:2523
+#: data/core/about.cfg:2603
 msgid "Macedonian Translation"
 msgstr "Makedonský překlad"
 
 #. [about]
-#: data/core/about.cfg:2530
+#: data/core/about.cfg:2610
 msgid "Marathi Translation"
 msgstr "Překlad do Maráthštiny"
 
 #. [about]
-#: data/core/about.cfg:2539
+#: data/core/about.cfg:2619
 msgid "Norwegian Translation"
 msgstr "Norský překlad"
 
 #. [about]
-#: data/core/about.cfg:2564
+#: data/core/about.cfg:2644
 msgid "Old English Translation"
 msgstr "Překlad do staré angličtiny"
 
 #. [about]
-#: data/core/about.cfg:2582
+#: data/core/about.cfg:2662
 msgid "Polish Translation"
 msgstr "Polský překlad"
 
 #. [about]
-#: data/core/about.cfg:2626
+#: data/core/about.cfg:2706
 msgid "Portuguese Translation"
 msgstr "Portugalský překlad"
 
 #. [about]
-#: data/core/about.cfg:2640
+#: data/core/about.cfg:2720
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalský (brazilský) překlad"
 
 #. [about]
-#: data/core/about.cfg:2694
+#: data/core/about.cfg:2774
 msgid "Romanian Translation"
 msgstr "Rumunský překlad"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2782
 msgid "Russian Translation"
 msgstr "Ruský překlad"
 
 #. [about]
-#: data/core/about.cfg:2794
+#: data/core/about.cfg:2874
 msgid "Scottish Gaelic Translation"
 msgstr "Skotský Galicijský překlad"
 
 #. [about]
-#: data/core/about.cfg:2803
+#: data/core/about.cfg:2883
 msgid "Serbian Translation"
 msgstr "Srbský překlad"
 
 #. [about]
-#: data/core/about.cfg:2822
+#: data/core/about.cfg:2902
 msgid "Slovak Translation"
 msgstr "Slovenský překlad"
 
 #. [about]
-#: data/core/about.cfg:2851
+#: data/core/about.cfg:2931
 msgid "Slovenian Translation"
 msgstr "Slovinský překlad"
 
 #. [about]
-#: data/core/about.cfg:2867
+#: data/core/about.cfg:2947
 msgid "Spanish Translation"
 msgstr "Španělský překlad"
 
 #. [about]
-#: data/core/about.cfg:2949
+#: data/core/about.cfg:3029
 msgid "Swedish Translation"
 msgstr "Švédský překlad"
 
 #. [about]
-#: data/core/about.cfg:2990
+#: data/core/about.cfg:3070
 msgid "Turkish Translation"
 msgstr "Turecký překlad"
 
 #. [about]
-#: data/core/about.cfg:3012
+#: data/core/about.cfg:3092
 msgid "Ukrainian Translation"
 msgstr "Ukrajinský  překlad"
 
 #. [about]
-#: data/core/about.cfg:3025
+#: data/core/about.cfg:3105
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský překlad (jižní Katalánie)"
 
 #. [about]
-#: data/core/about.cfg:3038
+#: data/core/about.cfg:3118
 msgid "Vietnamese Translation"
 msgstr "Vietnamský překlad"
 
 # RACV je nějaká univerzita vydávající direktivy ohledně vývoje jazyka, v rozporu se státem nebo něco takového, je kolem toho dost politiky, víc nevím.
 # Každopádně RACV představuje zkratku instituce, proto tato forma.
 #. [about]
-#: data/core/about.cfg:3057
+#: data/core/about.cfg:3137
 msgid "RACV’s Translation"
 msgstr "Překlad RACV"
 
 #. [about]
-#: data/core/about.cfg:3064
+#: data/core/about.cfg:3144
 msgid "Bots"
 msgstr "Boti"
 
@@ -1376,7 +1380,7 @@ msgstr "strana $temp_i|($side_i_leader.name)"
 #: data/core/macros/ai_controller.cfg:416
 #: data/core/macros/ai_controller.cfg:810
 #: data/core/macros/ai_controller.cfg:901
-#: src/game_initialization/multiplayer_configure.cpp:91
+#: src/game_initialization/multiplayer_configure.cpp:90
 msgid "Back"
 msgstr "Zpět"
 
@@ -1504,26 +1508,26 @@ msgstr ""
 "Zvláštní příkaz: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 
-#: data/core/macros/deprecated-utils.cfg:17
+#: data/core/macros/deprecated-utils.cfg:37
 msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(bonus za rychlý konec)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:20 data/lua/wml/objectives.lua:3284
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:3813
 msgid "Early finish bonus."
 msgstr "Bonus za rychlý konec."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:23 data/lua/wml/objectives.lua:3286
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:3815
 msgid "No early finish bonus."
 msgstr "Bez bonusu za rychlý konec."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:26 data/lua/wml/objectives.lua:3294
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:3823
 msgid "No gold carried over to the next scenario."
 msgstr "Do dalšího scénáře není přeneseno žádné zlato."
 
-#: data/core/macros/deprecated-utils.cfg:29
+#: data/core/macros/deprecated-utils.cfg:49
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1531,7 +1535,7 @@ msgstr ""
 "\n"
 "100% výsledného zlata je přeneseno do dalšího scénáře."
 
-#: data/core/macros/deprecated-utils.cfg:33
+#: data/core/macros/deprecated-utils.cfg:53
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1539,7 +1543,7 @@ msgstr ""
 "\n"
 "40% výsledného zlata je přeneseno do dalšího scénáře."
 
-#: data/core/macros/deprecated-utils.cfg:37
+#: data/core/macros/deprecated-utils.cfg:57
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -2708,7 +2712,7 @@ msgstr ""
 "Strana č. $side_number je vyhrazena lidskému hráči."
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:762
+#: data/core/macros/utils.cfg:688
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Získáváš $amount_gold zlata."
 
@@ -2807,7 +2811,7 @@ msgstr "Azurová"
 #. [color_range]: id=gold
 #. [color_range]: id=orb_8gold
 #: data/core/team-colors.cfg:139 data/core/team-colors.cfg:144
-#: src/game_initialization/multiplayer_connect.cpp:384
+#: src/game_initialization/multiplayer_connect.cpp:383
 #: src/leader_scroll_dialog.cpp:50 src/menu_events.cpp:211
 msgid "Gold"
 msgstr "Zlatých"
@@ -2906,7 +2910,7 @@ msgstr "Neschůdný"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:261
-#: src/game_initialization/multiplayer_lobby.cpp:821
+#: src/game_initialization/multiplayer_lobby.cpp:824
 #: src/gui/dialogs/lobby/lobby_data.cpp:341
 msgid "Fog"
 msgstr "Mlha"
@@ -2914,23 +2918,23 @@ msgstr "Mlha"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:267
-#: src/game_initialization/multiplayer_configure.cpp:64
-#: src/game_initialization/multiplayer_lobby.cpp:825
-#: src/game_initialization/multiplayer_lobby.cpp:831
+#: src/game_initialization/multiplayer_configure.cpp:63
+#: src/game_initialization/multiplayer_lobby.cpp:828
+#: src/game_initialization/multiplayer_lobby.cpp:834
 #: src/gui/dialogs/lobby/lobby_data.cpp:344
 #: src/gui/dialogs/lobby/lobby_data.cpp:347
 msgid "Shroud"
 msgstr "Zahalení tmou"
 
 #. [core]: id=default
-#: data/cores.cfg:3
+#: data/cores.cfg:5
 #, fuzzy
 #| msgid "theme^Default"
 msgid "Wesnoth (Default)"
 msgstr "Výchozí"
 
 #. [core]: id=default
-#: data/cores.cfg:6
+#: data/cores.cfg:8
 msgid ""
 "Wesnoth has many different sagas waiting to be played. Fight to regain the "
 "throne of Wesnoth, of which you are the legitimate heir... step into the "
@@ -2947,7 +2951,7 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default
-#: data/cores.cfg:10
+#: data/cores.cfg:12
 msgid ""
 "(17 Single Player Campaigns with 211 Scenarios,\n"
 "One Multiplayer Campaign with 14 Scenarios,\n"
@@ -2956,12 +2960,12 @@ msgid ""
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:19
+#: data/cores.cfg:21
 msgid "Wesnoth (Failsafe)"
 msgstr ""
 
 #. [core]: id=default_
-#: data/cores.cfg:22
+#: data/cores.cfg:24
 msgid "Loads only mainline Wesnoth data without any add-ons."
 msgstr ""
 
@@ -3219,193 +3223,183 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2220 src/actions/attack.cpp:985
+#: data/lua/wml-tags.lua:2514 src/actions/attack.cpp:948
 msgid "female^poisoned"
 msgstr "otrávená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2516 src/actions/attack.cpp:955
 msgid "female^slowed"
 msgstr "zpomalená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2222 src/actions/attack.cpp:990
+#: data/lua/wml-tags.lua:2516 src/actions/attack.cpp:955
 msgid "slowed"
 msgstr "zpomalený"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:962
 msgid "female^petrified"
 msgstr "zkamenělá"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2223 src/actions/attack.cpp:995
+#: data/lua/wml-tags.lua:2517 src/actions/attack.cpp:962
 msgid "petrified"
 msgstr "zkamenělý"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2518
 msgid "female^unhealable"
 msgstr "neléčitelná"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:2224
+#: data/lua/wml-tags.lua:2518
 msgid "unhealable"
 msgstr "neléčitelný"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3220
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:3749
+#: src/game_initialization/mp_game_utils.cpp:73
 msgid "Victory:"
 msgstr "Vítězství:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3221
+#: data/lua/wml/objectives.lua:3750
 msgid "Defeat:"
 msgstr "Prohra:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3241
+#: data/lua/wml/objectives.lua:3770
 msgid "(%d turns left)"
 msgstr "(zbývá %d kol)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3243
+#: data/lua/wml/objectives.lua:3772
 msgid "(this turn left)"
 msgstr "(zbývá tento tah)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:3296
+#: data/lua/wml/objectives.lua:3825
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% zlata přeneseno do dalšího scénáře."
 
-#. [trait]: id=overpowered
-#: data/scenario-test.cfg:281
-msgid "overpowered"
-msgstr ""
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1040 src/dialogs.cpp:973
-#: src/game_initialization/depcheck.cpp:488
-#: src/game_initialization/multiplayer_configure.cpp:92
+#: data/scenario-test.cfg:1030 src/game_initialization/depcheck.cpp:488
+#: src/game_initialization/multiplayer_configure.cpp:91
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1041 src/dialogs.cpp:974 src/dialogs.cpp:1567
-#: src/dialogs.cpp:1673 src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_create.cpp:104
-#: src/game_initialization/multiplayer_wait.cpp:197
+#: data/scenario-test.cfg:1031 src/dialogs.cpp:1165 src/dialogs.cpp:1271
+#: src/game_initialization/multiplayer_connect.cpp:389
+#: src/game_initialization/multiplayer_create.cpp:107
+#: src/game_initialization/multiplayer_wait.cpp:200
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: data/scenario-test.cfg:4018
+#: data/scenario-test.cfg:4003
 msgid "very long"
 msgstr "velmi dlouhý"
 
-#: data/scenario-test.cfg:4019
+#: data/scenario-test.cfg:4004
 msgid "electrical"
 msgstr "elektrický"
 
-#: data/test/scenarios/test_check_victory.cfg:87
-#: data/test/scenarios/test_check_victory.cfg:93
-msgid "2,3"
-msgstr ""
-
-#: data/test/scenarios/test_check_victory.cfg:118
-#: data/test/scenarios/test_check_victory.cfg:123
-msgid "4"
-msgstr ""
-
-#: data/test/scenarios/test_check_victory.cfg:139
-#: data/test/scenarios/test_check_victory.cfg:144
-msgid "1,4"
-msgstr ""
-
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:545
+#: data/themes/_initial.cfg:397 data/themes/_initial.cfg:557
 msgid "Play"
 msgstr "Hrát"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:546
+#: data/themes/_initial.cfg:398 data/themes/_initial.cfg:558
 msgid "continuous replay"
 msgstr "souvislé přehrávání záznamu"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:559
+#: data/themes/_initial.cfg:412 data/themes/_initial.cfg:571
 msgid "Stop"
 msgstr "Zastavit"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:560
+#: data/themes/_initial.cfg:413 data/themes/_initial.cfg:572
 msgid "pause at end of turn"
 msgstr "pozastav na konci kola"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:573
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:585
 msgid "Reset"
 msgstr "Resetovat"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:574
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:586
 msgid "reset to beginning"
 msgstr "znovu od začátku"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:444 data/themes/_initial.cfg:599
 msgid "Next Turn"
 msgstr "Další kolo"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:588
+#: data/themes/_initial.cfg:445 data/themes/_initial.cfg:600
 msgid "play turn"
 msgstr "přehraj další kolo"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:613
 msgid "Next Side"
 msgstr "Další strana"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:602
+#: data/themes/_initial.cfg:461 data/themes/_initial.cfg:614
 msgid "play side turn"
 msgstr "přehraj kolo další strany"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:627
 #, fuzzy
 #| msgid "Next Side"
 msgid "Next Move"
 msgstr "Další strana"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:616
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:628
 #, fuzzy
 #| msgid "play side turn"
 msgid "play single move"
 msgstr "přehraj kolo další strany"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:488 data/themes/_initial.cfg:640
 msgid "Point of view"
 msgstr "Druh pohledu"
 
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:499
+#, fuzzy
+#| msgid "continuous replay"
+msgid "Continue Play"
+msgstr "souvislé přehrávání záznamu"
+
+#. [action]: id=button-continue
+#: data/themes/_initial.cfg:500
+msgid "Exit the replay mode and continue playing normally."
+msgstr ""
+
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:500 data/themes/_initial.cfg:640
+#: data/themes/_initial.cfg:512 data/themes/_initial.cfg:652
 msgid "Skip animation"
 msgstr "Přeskočit animaci"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:530 src/dialogs.cpp:882
+#: data/themes/_initial.cfg:542
 msgid "Replay"
 msgstr "záznam"
 
@@ -3452,8 +3446,8 @@ msgstr "Ukončit scénář"
 #. [label]: id=selected-label-hp
 #: data/themes/classic.cfg:215 data/themes/default.cfg:132
 #: data/themes/unit_box.cfg:373 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1736
-#: src/unit.cpp:1927
+#: data/themes/widescreen.cfg:257 src/dialogs.cpp:302 src/unit.cpp:1769
+#: src/unit.cpp:2086
 msgid "HP"
 msgstr "Životů"
 
@@ -4378,54 +4372,54 @@ msgstr ""
 "postaví na políčko s vesnicí, nezískají z ní žádné obranné bonusy, i když "
 "budou léčeny."
 
-#: src/about.cpp:253 src/dialogs.cpp:413 src/menu_events.cpp:184
+#: src/about.cpp:251 src/dialogs.cpp:413 src/menu_events.cpp:184
 #: src/statistics_dialog.cpp:182
 msgid "Close"
 msgstr "Zavřít"
 
-#: src/actions/attack.cpp:350 src/actions/attack.cpp:576
-#: src/actions/attack.cpp:1224
+#: src/actions/attack.cpp:351 src/actions/attack.cpp:577
+#: src/actions/attack.cpp:1200
 msgid "An invalid attacker weapon got selected."
 msgstr "Byla vybrána neplatná zbraň útočníka."
 
-#: src/actions/attack.cpp:355
+#: src/actions/attack.cpp:356
 msgid "An invalid defender weapon got selected."
 msgstr "Byla vybrána neplatná zbraň obránce."
 
-#: src/actions/create.cpp:514
+#: src/actions/create.cpp:339
 msgid "You don’t have a leader to recall with."
 msgstr "Nemáš vůdce, který by přivolával."
 
-#: src/actions/create.cpp:518
+#: src/actions/create.cpp:343
 msgid "None of your leaders are able to recall that unit."
 msgstr "Tuto jednotku není schopen přivolat žádný ze Tvých vůdců."
 
-#: src/actions/create.cpp:522
+#: src/actions/create.cpp:347
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "Musíš mít v tvrzi vůdce schopného přivolat tuto jednotku."
 
-#: src/actions/create.cpp:526
+#: src/actions/create.cpp:351
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr ""
 "Nejsou žádná volná políčka hradu, na kterých by se daly přivolávat jednotky."
 
-#: src/actions/create.cpp:536 src/actions/create.cpp:672
+#: src/actions/create.cpp:361 src/actions/create.cpp:497
 msgid "An unrecognized error has occurred."
 msgstr "Nastala chyba, kterou nebylo možno rozeznat."
 
-#: src/actions/create.cpp:650
+#: src/actions/create.cpp:475
 msgid "You don’t have a leader to recruit with."
 msgstr "Nemáš vůdce, který by verboval či přivolával."
 
-#: src/actions/create.cpp:654
+#: src/actions/create.cpp:479
 msgid "None of your leaders are able to recruit that unit."
 msgstr "Tuto jednotku není schopen naverbovat žádný ze Tvých vůdců."
 
-#: src/actions/create.cpp:658
+#: src/actions/create.cpp:483
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "Musíš mít v tvrzi vůdce schopného verbovat tuto jednotku."
 
-#: src/actions/create.cpp:662
+#: src/actions/create.cpp:487
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr ""
 "Nejsou žádná volná políčka hradu, na kterých by se daly verbovat jednotky."
@@ -4482,31 +4476,31 @@ msgstr[2] "Spatřeno $friends spřátelených jednotek"
 msgid "(press $hotkey to keep moving)"
 msgstr "(stiskni $hotkey k pokračování)"
 
-#: src/addon/client.cpp:68
+#: src/addon/client.cpp:67
 msgid "Connecting to $server_address|..."
 msgstr "Připojuji se k $server_adress|..."
 
-#: src/addon/client.cpp:80
+#: src/addon/client.cpp:79
 msgid "Downloading list of add-ons..."
 msgstr "Stahuji seznam rozšíření..."
 
-#: src/addon/client.cpp:94
+#: src/addon/client.cpp:93
 msgid "Requesting distribution terms..."
 msgstr "Žádám o podmínky používání..."
 
-#: src/addon/client.cpp:143
+#: src/addon/client.cpp:139
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
 
-#: src/addon/client.cpp:177
+#: src/addon/client.cpp:173
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Odstraňuji rozšíření: <i>$addon_title|</i> ze serveru..."
 
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:200
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
 
-#: src/addon/client.cpp:218
+#: src/addon/client.cpp:214
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -4514,7 +4508,7 @@ msgstr ""
 "Rozšíření <i>$addon_title</i> obsahuje neplatný název souboru nebo složky a "
 "nebude instalováno."
 
-#: src/addon/client.cpp:306 src/addon/manager_ui.cpp:810
+#: src/addon/client.cpp:302 src/addon/manager_ui.cpp:828
 msgid "Add-ons Manager"
 msgstr "Správce rozšíření"
 
@@ -4573,7 +4567,7 @@ msgid "addon_type^(unknown)"
 msgstr "(neznámý)"
 
 # jednotka informace "byte"
-#: src/addon/info.cpp:222 src/dialogs.cpp:1600
+#: src/addon/info.cpp:222 src/dialogs.cpp:1198
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -4621,12 +4615,12 @@ msgstr "Vydaný, poškozený"
 msgid "addon_state^Unknown"
 msgstr "Neznámý"
 
-#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:372
-#: src/addon/manager_ui.cpp:387 src/addon/manager_ui.cpp:392
+#: src/addon/manager_ui.cpp:131 src/addon/manager_ui.cpp:373
+#: src/addon/manager_ui.cpp:405 src/addon/manager_ui.cpp:410
 msgid "The server responded with an error:"
 msgstr "Server odpověděl chybou: "
 
-#: src/addon/manager_ui.cpp:184
+#: src/addon/manager_ui.cpp:185
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -4643,38 +4637,38 @@ msgstr[2] ""
 "Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
 "nainstalováno nebo není dostupné na serveru. Přejete si pokračovat?"
 
-#: src/addon/manager_ui.cpp:193
+#: src/addon/manager_ui.cpp:194
 msgid "Broken Dependencies"
 msgstr "Porušení závislostí"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:659
 msgid "Author"
 msgstr "Autor"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:635
-#: src/dialogs.cpp:299 src/dialogs.cpp:474 src/dialogs.cpp:919
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:653
+#: src/dialogs.cpp:299 src/dialogs.cpp:474
 msgid "Name"
 msgstr "Jméno"
 
-#: src/addon/manager_ui.cpp:210 src/addon/manager_ui.cpp:639
+#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:657
 msgid "Version"
 msgstr "Verze"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:641
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:659
 msgid "Size"
 msgstr "Velikost"
 
-#: src/addon/manager_ui.cpp:211 src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:212 src/addon/manager_ui.cpp:668
 #: src/dialogs.cpp:298 src/dialogs.cpp:473
-#: src/help/help_topic_generators.cpp:477 src/menu_events.cpp:1016
+#: src/help/help_topic_generators.cpp:480
 msgid "Type"
 msgstr "Typ"
 
-#: src/addon/manager_ui.cpp:241
+#: src/addon/manager_ui.cpp:242
 msgid "Install Dependencies"
 msgstr "Instalovat závislosti"
 
-#: src/addon/manager_ui.cpp:242
+#: src/addon/manager_ui.cpp:243
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -4691,7 +4685,7 @@ msgstr[2] ""
 "Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
 "nainstalováno. Přejete si pokračovat?"
 
-#: src/addon/manager_ui.cpp:278
+#: src/addon/manager_ui.cpp:279
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -4704,11 +4698,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Následující závislosti nebylo možné nainstalovat. Chcete pokračovat?"
 
-#: src/addon/manager_ui.cpp:282
+#: src/addon/manager_ui.cpp:283
 msgid "Dependencies Installation Failed"
 msgstr "Instalace závislostí selhala"
 
-#: src/addon/manager_ui.cpp:306
+#: src/addon/manager_ui.cpp:307
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -4716,24 +4710,24 @@ msgstr ""
 "Rozšíření  '$addon|' už je nainstalovaný a obsahuje dodatečné informace, "
 "které budou navždy ztraceny, jestli budete pokračovat:"
 
-#: src/addon/manager_ui.cpp:310
+#: src/addon/manager_ui.cpp:311
 msgid "Publishing information file (.pbl)"
 msgstr "Soubor pro publikace (.pbl)"
 
-#: src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:315
 msgid "Version control system (VCS) information"
 msgstr "Informace o verzovacím systému (VCS)"
 
-#: src/addon/manager_ui.cpp:318
+#: src/addon/manager_ui.cpp:319
 msgid "Do you really wish to continue?"
 msgstr "Opravdu si přeješ pokračovat?"
 
-#: src/addon/manager_ui.cpp:320 src/addon/manager_ui.cpp:363
-#: src/addon/manager_ui.cpp:1128 src/game_initialization/multiplayer.cpp:292
+#: src/addon/manager_ui.cpp:321 src/addon/manager_ui.cpp:364
+#: src/addon/manager_ui.cpp:1146 src/game_initialization/multiplayer.cpp:293
 msgid "Confirm"
 msgstr "Potvrdit"
 
-#: src/addon/manager_ui.cpp:360
+#: src/addon/manager_ui.cpp:361
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -4741,103 +4735,117 @@ msgstr ""
 "Smazání rozšíření „$addon|“ trvale smaže jeho počty nahrání a stažení na "
 "serveru. Opravdu si přejete pokračovat?"
 
-#: src/addon/manager_ui.cpp:376 src/addon/manager_ui.cpp:395
-#: src/game_initialization/multiplayer_wait.cpp:464
+#: src/addon/manager_ui.cpp:377 src/addon/manager_ui.cpp:413
+#: src/game_initialization/multiplayer_wait.cpp:438
 msgid "Response"
 msgstr "Odpověď"
 
-#: src/addon/manager_ui.cpp:389
+#: src/addon/manager_ui.cpp:392 src/game_initialization/multiplayer.cpp:279
+#: src/game_launcher.cpp:783
+msgid "Warning"
+msgstr "Varování"
+
+#: src/addon/manager_ui.cpp:393
+msgid ""
+"The remote version of this add-on is greater or equal to the version being "
+"uploaded. Do you really wish to continue?"
+msgstr ""
+
+#: src/addon/manager_ui.cpp:402
+msgid "Invalid icon path. Make sure the path points to a valid image."
+msgstr ""
+
+#: src/addon/manager_ui.cpp:407
 msgid "Terms"
 msgstr "Podmínky"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 msgid "New Version"
 msgstr "Nová verze"
 
-#: src/addon/manager_ui.cpp:637
+#: src/addon/manager_ui.cpp:655
 msgid "Old Version"
 msgstr "Stará verze"
 
-#: src/addon/manager_ui.cpp:650
+#: src/addon/manager_ui.cpp:668
 msgid "Downloads"
 msgstr "Stažení"
 
-#: src/addon/manager_ui.cpp:770
+#: src/addon/manager_ui.cpp:788
 msgid "Publish: $addon_title"
 msgstr "Zveřejni $addon_title"
 
-#: src/addon/manager_ui.cpp:779
+#: src/addon/manager_ui.cpp:797
 msgid "Delete: $addon_title"
 msgstr "Vymaž $addon_title"
 
-#: src/addon/manager_ui.cpp:806
+#: src/addon/manager_ui.cpp:824
 msgid "There are no add-ons available for download from this server."
 msgstr "Na tomto serveru nejsou k dispozici žádná rozšíření ke stažení."
 
-#: src/addon/manager_ui.cpp:807
+#: src/addon/manager_ui.cpp:825
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr ""
 "Na tomto serveru nejsou k dispozici žádná rozšíření odpovídající zadaným "
 "požadavkům."
 
-#: src/addon/manager_ui.cpp:829 src/dialogs.cpp:570 src/dialogs.cpp:944
-#: src/menu_events.cpp:1049
+#: src/addon/manager_ui.cpp:847 src/dialogs.cpp:570
 msgid "Filter: "
 msgstr "Filtr: "
 
-#: src/addon/manager_ui.cpp:839
+#: src/addon/manager_ui.cpp:857
 msgid "Description"
 msgstr "Popis"
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:860
 msgid "Update All"
 msgstr "Aktualizovat vše"
 
-#: src/addon/manager_ui.cpp:849
+#: src/addon/manager_ui.cpp:867
 msgid "filter^Options"
 msgstr "Nastavení"
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 msgid "Add-on Installed"
 msgstr "Rozšíření nainstalováno"
 
-#: src/addon/manager_ui.cpp:950
+#: src/addon/manager_ui.cpp:968
 msgid "Add-on Updated"
 msgstr "Rozšíření aktualizováno"
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Rozšíření '$addon_title|' bylo úspěšně nainstalováno."
 
-#: src/addon/manager_ui.cpp:951
+#: src/addon/manager_ui.cpp:969
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "Rozšíření '$addon_title|' bylo úspěšně aktualizováno."
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 msgid "Add-ons Installed"
 msgstr "Rozšíření nainstalována"
 
-#: src/addon/manager_ui.cpp:956
+#: src/addon/manager_ui.cpp:974
 msgid "Add-ons Updated"
 msgstr "Rozšíření smazána"
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 msgid "All add-ons installed successfully."
 msgstr "Všechna rozšíření byla úspěšně nainstalována."
 
-#: src/addon/manager_ui.cpp:957
+#: src/addon/manager_ui.cpp:975
 msgid "All add-ons updated successfully."
 msgstr "Všechna rozšíření byla úspěšně aktualizována."
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 msgid "Installation Failed"
 msgstr "Instalace selhala"
 
-#: src/addon/manager_ui.cpp:961
+#: src/addon/manager_ui.cpp:979
 msgid "Update Failed"
 msgstr "Aktualizace selhala"
 
-#: src/addon/manager_ui.cpp:963
+#: src/addon/manager_ui.cpp:981
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
@@ -4845,27 +4853,27 @@ msgstr[0] "Následující rozšíření se nezdařilo stáhnout či nainstalovat
 msgstr[1] "Následující rozšíření se nezdařilo stáhnout či nainstalovat:"
 msgstr[2] "Následující rozšíření se nezdařilo stáhnout či nainstalovat:"
 
-#: src/addon/manager_ui.cpp:1006 src/addon/manager_ui.cpp:1016
-#: src/addon/manager_ui.cpp:1224
+#: src/addon/manager_ui.cpp:1024 src/addon/manager_ui.cpp:1034
+#: src/addon/manager_ui.cpp:1242
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
 
-#: src/addon/manager_ui.cpp:1034 src/addon/manager_ui.cpp:1247
+#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
 msgid "Network communication error."
 msgstr "Chyba při síťové komunikaci."
 
-#: src/addon/manager_ui.cpp:1037 src/addon/manager_ui.cpp:1040
-#: src/addon/manager_ui.cpp:1250 src/addon/manager_ui.cpp:1253
+#: src/addon/manager_ui.cpp:1055 src/addon/manager_ui.cpp:1058
+#: src/addon/manager_ui.cpp:1268 src/addon/manager_ui.cpp:1271
 msgid "Remote host disconnected."
 msgstr "Vzdálený hostitel se odpojil."
 
-#: src/addon/manager_ui.cpp:1043 src/addon/manager_ui.cpp:1256
+#: src/addon/manager_ui.cpp:1061 src/addon/manager_ui.cpp:1274
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Při vytváření souborů potřebných k instalaci rozšíření došlo k chybě."
 
-#: src/addon/manager_ui.cpp:1052 src/addon/manager_ui.cpp:1265
+#: src/addon/manager_ui.cpp:1070 src/addon/manager_ui.cpp:1283
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -4877,22 +4885,22 @@ msgstr ""
 "Soubor: $path\n"
 "Chybové hlášení: $msg"
 
-#: src/addon/manager_ui.cpp:1058 src/addon/manager_ui.cpp:1271
+#: src/addon/manager_ui.cpp:1076 src/addon/manager_ui.cpp:1289
 msgid "The add-ons server address specified is not valid."
 msgstr "Adresa serveru s rozšířeními není platná."
 
-#: src/addon/manager_ui.cpp:1072
+#: src/addon/manager_ui.cpp:1090
 msgid "You have no add-ons installed."
 msgstr "Nejsou nainstalována žádná rozšíření."
 
-#: src/addon/manager_ui.cpp:1123
+#: src/addon/manager_ui.cpp:1141
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Opravdu si přejete odstranit následující rozšíření?"
 msgstr[1] "Opravdu si přejete odstranit následující rozšíření?"
 msgstr[2] "Opravdu si přejete odstranit následující rozšíření?"
 
-#: src/addon/manager_ui.cpp:1149
+#: src/addon/manager_ui.cpp:1167
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -4909,28 +4917,28 @@ msgstr[2] ""
 "Následující rozšíření mají zřejmě informace pro publikaci nebo správu verzí "
 "a nebudou proto odstraněny:"
 
-#: src/addon/manager_ui.cpp:1159
+#: src/addon/manager_ui.cpp:1177
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Následující rozšíření nebylo možno správně odstranit:"
 msgstr[1] "Následující rozšíření nebylo možno správně odstranit:"
 msgstr[2] "Následující rozšíření nebylo možno správně odstranit:"
 
-#: src/addon/manager_ui.cpp:1166
+#: src/addon/manager_ui.cpp:1184
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Rozšíření smazáno"
 msgstr[1] "Rozšíření smazána"
 msgstr[2] "Rozšíření smazána"
 
-#: src/addon/manager_ui.cpp:1168
+#: src/addon/manager_ui.cpp:1186
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Následující rozšíření bylo úspěšně smazáno:"
 msgstr[1] "Následující rozšíření byla úspěšně smazána:"
 msgstr[2] "Následující rozšíření byla úspěšně smazána:"
 
-#: src/addon/manager_ui.cpp:1238
+#: src/addon/manager_ui.cpp:1256
 #, fuzzy
 #| msgid "Could not find any updated add-ons on this server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
@@ -4972,7 +4980,7 @@ msgstr "zpomalený"
 msgid "Total damage"
 msgstr "celkové poškození"
 
-#: src/attack_prediction_display.cpp:263 src/mouse_events.cpp:1066
+#: src/attack_prediction_display.cpp:263
 msgid "No usable weapon"
 msgstr "Žádná použitelná zbraň"
 
@@ -4980,7 +4988,7 @@ msgstr "Žádná použitelná zbraň"
 msgid "Chance of being unscathed"
 msgstr "Šance přečkat bez zranění"
 
-#: src/attack_prediction_display.cpp:537 src/mouse_events.cpp:1075
+#: src/attack_prediction_display.cpp:551
 msgid "Damage Calculations"
 msgstr "Výpočet poškození"
 
@@ -4988,8 +4996,7 @@ msgstr "Výpočet poškození"
 msgid "Chat message"
 msgstr "Zpráva chatu"
 
-#: src/desktop/windows_tray_notification.cpp:108 src/game_launcher.cpp:383
-#: src/game_launcher.cpp:1035
+#: src/desktop/windows_tray_notification.cpp:141 src/game_config.cpp:426
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
@@ -5064,8 +5071,8 @@ msgstr "Naverbuj"
 msgid "Select unit:"
 msgstr "Vyber jednotku:"
 
-#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:387
-#: src/help/help_topic_generators.cpp:408
+#: src/dialogs.cpp:477 src/help/help_topic_generators.cpp:390
+#: src/help/help_topic_generators.cpp:411
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -5073,119 +5080,25 @@ msgstr "Vlastnosti"
 msgid "Recall"
 msgstr "Přivolej"
 
-#: src/dialogs.cpp:818 src/save_index.cpp:193
-msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
-
-#: src/dialogs.cpp:818 src/save_index.cpp:193
-msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %I:%M %p %Y"
-
-#: src/dialogs.cpp:834
-msgid "#(Invalid)"
-msgstr "#(Neplatné)"
-
-#: src/dialogs.cpp:857
-msgid "Campaign: $campaign_name"
-msgstr "Tažení: $campaign_name"
-
-#: src/dialogs.cpp:866
-msgid "Multiplayer"
-msgstr "Hra více hráčů"
-
-#: src/dialogs.cpp:869
-msgid "Tutorial"
-msgstr "Výcvik"
-
-#: src/dialogs.cpp:872
-msgid "Test scenario"
-msgstr "Testovací scénář"
-
-#: src/dialogs.cpp:884 src/savegame.cpp:681
-msgid "Turn"
-msgstr "Kolo"
-
-#: src/dialogs.cpp:886
-msgid "Scenario start"
-msgstr "Začátek scénáře"
-
-#: src/dialogs.cpp:889
-msgid "Difficulty: "
-msgstr "Obtížnost: "
-
-#: src/dialogs.cpp:891
-msgid "Version: "
-msgstr "Verze: "
-
-#: src/dialogs.cpp:910
-msgid "No Saved Games"
-msgstr "Žádné uložené hry"
-
-#: src/dialogs.cpp:911
-msgid ""
-"There are no saved games to load.\n"
-"\n"
-"(Games are saved automatically when you complete a scenario)"
-msgstr ""
-"Nemohu nahrát hru, protože nic není uloženo.\n"
-"\n"
-"(Hra se ukládá automaticky po dokončení scénáře)."
-
-#: src/dialogs.cpp:919
-msgid "Date"
-msgstr "Datum"
-
-#: src/dialogs.cpp:936 src/savegame.cpp:310
-msgid "Load Game"
-msgstr "Načti hru"
-
-#: src/dialogs.cpp:951
-msgid "Change difficulty"
-msgstr "Změnit obtížnost: "
-
-#: src/dialogs.cpp:954
-msgid "Change campaign difficulty before loading"
-msgstr "Změnit obtížnost tažení před nahrátím"
-
-#: src/dialogs.cpp:962
-msgid "Show replay"
-msgstr "Ukaž záznamy"
-
-#: src/dialogs.cpp:964
-msgid "Play the embedded replay from the saved game if applicable"
-msgstr "Přehrát vložený záznam z uloženého souboru, pokud je použitelný"
-
-#: src/dialogs.cpp:968
-msgid "Cancel orders"
-msgstr "Zrušit příkazy"
-
-#: src/dialogs.cpp:970
-msgid "Cancel any pending unit movements in the saved game"
-msgstr "Přerušit všechny nedokončené přesuny jednotek v uložené hře"
-
-#: src/dialogs.cpp:977
-msgid "Delete Save"
-msgstr "Smaž pozici"
-
-#: src/dialogs.cpp:1036
+#: src/dialogs.cpp:632
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:1166 src/dialogs.cpp:1310
+#: src/dialogs.cpp:762 src/dialogs.cpp:906
 msgid "level"
 msgstr "úroveň"
 
-#: src/dialogs.cpp:1179 src/dialogs.cpp:1323
-#: src/help/help_topic_generators.cpp:449
+#: src/dialogs.cpp:775 src/dialogs.cpp:919
+#: src/help/help_topic_generators.cpp:452
 msgid "HP: "
 msgstr "životů: "
 
-#: src/dialogs.cpp:1182 src/dialogs.cpp:1326
+#: src/dialogs.cpp:778 src/dialogs.cpp:922
 msgid "XP: "
 msgstr "zkušeností: "
 
-#: src/dialogs.cpp:1186 src/dialogs.cpp:1330
-#: src/help/help_topic_generators.cpp:450
+#: src/dialogs.cpp:782 src/dialogs.cpp:926
+#: src/help/help_topic_generators.cpp:453
 msgid "Moves: "
 msgstr "kroků: "
 
@@ -5213,68 +5126,68 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
-#: src/game_config.cpp:371
+#: src/game_config.cpp:385
 msgid "Invalid color range: "
 msgstr "Neplatná barva: "
 
-#: src/game_config_manager.cpp:185 src/game_config_manager.cpp:193
-#: src/game_config_manager.cpp:204
+#: src/game_config_manager.cpp:191 src/game_config_manager.cpp:199
+#: src/game_config_manager.cpp:210
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:186
+#: src/game_config_manager.cpp:192
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:187 src/game_config_manager.cpp:196
-#: src/game_config_manager.cpp:208
+#: src/game_config_manager.cpp:193 src/game_config_manager.cpp:202
+#: src/game_config_manager.cpp:214
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:194 src/game_config_manager.cpp:205
-#: src/game_config_manager.cpp:227
+#: src/game_config_manager.cpp:200 src/game_config_manager.cpp:211
+#: src/game_config_manager.cpp:233
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:195
+#: src/game_config_manager.cpp:201
 #, fuzzy
 #| msgid "The map is invalid."
 msgid "The ID is already in use."
 msgstr "Mapa je neplatná."
 
-#: src/game_config_manager.cpp:206
+#: src/game_config_manager.cpp:212
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:207
+#: src/game_config_manager.cpp:213
 #, fuzzy
 #| msgid "Variable not found"
 msgid "File not found."
 msgstr "Proměnná nenalezena"
 
-#: src/game_config_manager.cpp:226 src/game_config_manager.cpp:237
+#: src/game_config_manager.cpp:232 src/game_config_manager.cpp:243
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:228
+#: src/game_config_manager.cpp:234
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:229
+#: src/game_config_manager.cpp:235
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:238
+#: src/game_config_manager.cpp:244
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:239
+#: src/game_config_manager.cpp:245
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "“ (Hra se ukončí)"
 
-#: src/game_config_manager.cpp:311
+#: src/game_config_manager.cpp:306
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
@@ -5282,7 +5195,7 @@ msgid ""
 "loading add-ons."
 msgstr "Chyba při nahrávání konfiguračních souborů. Hra bude nyní ukončena."
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:311
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
@@ -5290,21 +5203,21 @@ msgid ""
 "default core files."
 msgstr "Chyba při nahrávání konfiguračních souborů. Hra bude nyní ukončena."
 
-#: src/game_config_manager.cpp:323
+#: src/game_config_manager.cpp:318
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Chyba při nahrávání konfiguračních souborů. Hra bude nyní ukončena."
 
-#: src/game_config_manager.cpp:449
+#: src/game_config_manager.cpp:444
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Následující rozšíření obsahovalo chybu a nemohlo být nahráno:"
 msgstr[1] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
 msgstr[2] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
 
-#: src/game_config_manager.cpp:453
+#: src/game_config_manager.cpp:448
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -5315,24 +5228,24 @@ msgstr[1] ""
 msgstr[2] ""
 "Prosíme ohlašte tyto problémy autorům nebo správcům těchto rozšíření."
 
-#: src/game_events/pump.cpp:463 src/game_launcher.cpp:998
+#: src/game_events/pump.cpp:462 src/game_launcher.cpp:1020
 msgid "Error: "
 msgstr "Chyba: "
 
-#: src/game_events/pump.cpp:465
+#: src/game_events/pump.cpp:464
 msgid "Warning: "
 msgstr "Varování: "
 
-#: src/game_events/pump.cpp:467
+#: src/game_events/pump.cpp:466
 msgid "Debug: "
 msgstr "Ladění: "
 
-#: src/game_events/pump.cpp:469
+#: src/game_events/pump.cpp:468
 msgid "Info: "
 msgstr "Info: "
 
-#: src/game_initialization/configure_engine.cpp:127
-#: src/game_initialization/create_engine.cpp:651
+#: src/game_initialization/configure_engine.cpp:126
+#: src/game_initialization/create_engine.cpp:637
 msgid "$login|’s game"
 msgstr "hraje $login"
 
@@ -5341,56 +5254,56 @@ msgstr "hraje $login"
 msgid "Team"
 msgstr "Tým"
 
-#: src/game_initialization/connect_engine.cpp:947
+#: src/game_initialization/connect_engine.cpp:973
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Anonymní lokální hráč"
 
-#: src/game_initialization/connect_engine.cpp:952
-#: src/game_initialization/connect_engine.cpp:1243
-#: src/game_initialization/multiplayer_wait.cpp:518
+#: src/game_initialization/connect_engine.cpp:978
+#: src/game_initialization/connect_engine.cpp:1258
+#: src/game_initialization/multiplayer_wait.cpp:492
 msgid "Computer Player"
 msgstr "Počítačový hráč"
 
-#: src/game_initialization/connect_engine.cpp:1000
+#: src/game_initialization/connect_engine.cpp:1020
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1240
+#: src/game_initialization/connect_engine.cpp:1255
 msgid "Network Player"
 msgstr "Síťový hráč"
 
-#: src/game_initialization/connect_engine.cpp:1242
+#: src/game_initialization/connect_engine.cpp:1257
 msgid "Local Player"
 msgstr "Místní hráč"
 
-#: src/game_initialization/connect_engine.cpp:1244
+#: src/game_initialization/connect_engine.cpp:1259
 msgid "Empty"
 msgstr "Prázdný"
 
-#: src/game_initialization/connect_engine.cpp:1247
+#: src/game_initialization/connect_engine.cpp:1262
 msgid "Reserved"
 msgstr "Rezervováno"
 
-#: src/game_initialization/connect_engine.cpp:1251
+#: src/game_initialization/connect_engine.cpp:1266
 msgid "--give--"
 msgstr "--dát--"
 
-#: src/game_initialization/create_engine.cpp:170
-#: src/game_initialization/create_engine.cpp:1020
+#: src/game_initialization/create_engine.cpp:169
+#: src/game_initialization/create_engine.cpp:1006
 msgid "Map could not be loaded: "
 msgstr "Mapu se nepodařilo nahrát: "
 
-#: src/game_initialization/create_engine.cpp:174
+#: src/game_initialization/create_engine.cpp:173
 msgid "Map could not be loaded."
 msgstr "Mapu se nepodařilo nahrát."
 
-#: src/game_initialization/create_engine.cpp:196
+#: src/game_initialization/create_engine.cpp:195
 msgid "not available."
 msgstr "není k dispozici."
 
-#: src/game_initialization/create_engine.cpp:248
+#: src/game_initialization/create_engine.cpp:247
 msgid "User made map"
 msgstr "Uživatelem vytvořená mapa"
 
@@ -5440,7 +5353,7 @@ msgstr "Mužské ♂"
 msgid "Only random sides in the current era."
 msgstr "Ve zvoleném věku existují pouze náhodné strany."
 
-#: src/game_initialization/flg_manager.cpp:299 src/teambuilder.cpp:269
+#: src/game_initialization/flg_manager.cpp:299
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nemohu najít vůdčí typ pro frakci $faction"
 
@@ -5448,17 +5361,17 @@ msgstr "Nemohu najít vůdčí typ pro frakci $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Nebylo možné zjistit pohlaví pro neplatného velitele $leader"
 
-#: src/game_initialization/mp_game_utils.cpp:73
+#: src/game_initialization/mp_game_utils.cpp:75
 msgid "Defeat enemy leader(s)"
 msgstr "Znič nepřátelské(ho) vůdce"
 
-#: src/game_initialization/mp_game_utils.cpp:92
+#: src/game_initialization/mp_game_utils.cpp:94
 msgid "Cannot find era $era"
 msgstr "Nemohu najít následující věk - $era"
 
-#: src/game_initialization/mp_game_utils.cpp:134
-#: src/game_initialization/multiplayer.cpp:255
-#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/mp_game_utils.cpp:136
+#: src/game_initialization/multiplayer.cpp:256
+#: src/game_initialization/multiplayer.cpp:341
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
@@ -5468,27 +5381,27 @@ msgstr "Časový limit pro připojení vypršel"
 msgid "Defaults"
 msgstr "Výchozí"
 
-#: src/game_initialization/multiplayer.cpp:171
-#: src/game_initialization/multiplayer.cpp:214
+#: src/game_initialization/multiplayer.cpp:172
+#: src/game_initialization/multiplayer.cpp:215
 msgid "Connecting to Server..."
 msgstr "Připojuji se na server...."
 
-#: src/game_initialization/multiplayer.cpp:181
+#: src/game_initialization/multiplayer.cpp:182
 msgid "Reading from Server..."
 msgstr "Načítání ze serveru..."
 
-#: src/game_initialization/multiplayer.cpp:197
+#: src/game_initialization/multiplayer.cpp:198
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "Server přijímá pouze verzi '$version1', zatímco vy máte verzi '$version2'"
 
-#: src/game_initialization/multiplayer.cpp:208
+#: src/game_initialization/multiplayer.cpp:209
 msgid "Server-side redirect loop"
 msgstr "Serverově orientované přesměrování"
 
-#: src/game_initialization/multiplayer.cpp:267
+#: src/game_initialization/multiplayer.cpp:268
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -5497,27 +5410,23 @@ msgstr ""
 "Přezdívka ‘$nick’ není aktivní. Nelze si ji přivlastnit, dokud svůj účet "
 "neaktivujete emailem, nebo o to nepožádáte administrátora."
 
-#: src/game_initialization/multiplayer.cpp:276
+#: src/game_initialization/multiplayer.cpp:277
 msgid "Do you want to continue?"
 msgstr "Přeješ si pokračovat?"
 
-#: src/game_initialization/multiplayer.cpp:278 src/game_launcher.cpp:766
-msgid "Warning"
-msgstr "Varování"
-
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:323
 msgid "Bad data received from server"
 msgstr "Ze serveru byla přijata špatná data"
 
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:364
 msgid "You must login first."
 msgstr "Nejprve se musíš přihlásit."
 
-#: src/game_initialization/multiplayer.cpp:365
+#: src/game_initialization/multiplayer.cpp:366
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Přezdívka „$nick“ již je registrována někým jiným."
 
-#: src/game_initialization/multiplayer.cpp:367
+#: src/game_initialization/multiplayer.cpp:368
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
@@ -5525,342 +5434,343 @@ msgstr ""
 "Přezdívka '$nick' obsahuje neplatné znaky. Povolena jsou pouze písmena, "
 "čísla, podtržítka a pomlčky."
 
-#: src/game_initialization/multiplayer.cpp:371
+#: src/game_initialization/multiplayer.cpp:372
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Přezdívka '$nick' je příliš dlouhá. Maximální délka je 20 znaků."
 
-#: src/game_initialization/multiplayer.cpp:374
+#: src/game_initialization/multiplayer.cpp:375
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Přezdívka '$nick' je rezervovaná a hráči ji nemohou registrovat."
 
-#: src/game_initialization/multiplayer.cpp:376
+#: src/game_initialization/multiplayer.cpp:377
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Přezdívka '$nick' není na tomto serveru registrovaná."
 
-#: src/game_initialization/multiplayer.cpp:377
+#: src/game_initialization/multiplayer.cpp:378
 msgid " This server disallows unregistered nicknames."
 msgstr " Tento server nepovoluje použití neregistrovaných přezdívek."
 
-#: src/game_initialization/multiplayer.cpp:379
-#: src/game_initialization/multiplayer.cpp:381
+#: src/game_initialization/multiplayer.cpp:380
+#: src/game_initialization/multiplayer.cpp:382
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Přezdívka '$nick' je na tomto serveru registrovaná."
 
-#: src/game_initialization/multiplayer.cpp:382
+#: src/game_initialization/multiplayer.cpp:383
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr "Varování: Tuto přezdívku již někdo používá, přihlášení jej vyhodí!"
 
-#: src/game_initialization/multiplayer.cpp:385
+#: src/game_initialization/multiplayer.cpp:386
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Chyba při přihlašování (server nemá seed pro vaše připojení)."
 
-#: src/game_initialization/multiplayer.cpp:388
+#: src/game_initialization/multiplayer.cpp:389
 msgid "The password you provided was incorrect."
 msgstr "Zadané heslo není správné."
 
-#: src/game_initialization/multiplayer.cpp:390
+#: src/game_initialization/multiplayer.cpp:391
 msgid "You have made too many login attempts."
 msgstr "Bylo provedeno příliš mnoho pokusů o přihášení."
 
-#: src/game_initialization/multiplayer.cpp:609
+#: src/game_initialization/multiplayer.cpp:621
 msgid "No sides found. At least one side or starting position must be defined."
 msgstr ""
 
-#: src/game_initialization/multiplayer_configure.cpp:60
+#: src/game_initialization/multiplayer_configure.cpp:59
 msgid "Generic"
 msgstr "Základní"
 
-#: src/game_initialization/multiplayer_configure.cpp:61
-#: src/game_initialization/multiplayer_lobby.cpp:355
+#: src/game_initialization/multiplayer_configure.cpp:60
+#: src/game_initialization/multiplayer_lobby.cpp:358
 msgid "Use map settings"
 msgstr "Použij nastavení z mapy"
 
-#: src/game_initialization/multiplayer_configure.cpp:62
+#: src/game_initialization/multiplayer_configure.cpp:61
 msgid "Random start time"
 msgstr "Náhodná počáteční doba"
 
-#: src/game_initialization/multiplayer_configure.cpp:63
+#: src/game_initialization/multiplayer_configure.cpp:62
 msgid "Fog of war"
 msgstr "Mlha pro skrytí nepřátelských pohybů"
 
-#: src/game_initialization/multiplayer_configure.cpp:69
+#: src/game_initialization/multiplayer_configure.cpp:68
 msgid "Configure Game"
 msgstr "Nastavit hru"
 
-#: src/game_initialization/multiplayer_configure.cpp:76
+#: src/game_initialization/multiplayer_configure.cpp:75
 msgid "Time limit"
 msgstr "Časový limit"
 
-#: src/game_initialization/multiplayer_configure.cpp:85
+#: src/game_initialization/multiplayer_configure.cpp:84
 msgid "Name of game:"
 msgstr "Název hry:"
 
-#: src/game_initialization/multiplayer_configure.cpp:86
+#: src/game_initialization/multiplayer_configure.cpp:85
 msgid "Observers"
 msgstr "Pozorovatelé"
 
-#: src/game_initialization/multiplayer_configure.cpp:87
+#: src/game_initialization/multiplayer_configure.cpp:86
 #, fuzzy
 #| msgid "Debug: "
 msgid "Debug OOS"
 msgstr "Ladění: "
 
-#: src/game_initialization/multiplayer_configure.cpp:88
+#: src/game_initialization/multiplayer_configure.cpp:87
 msgid "Shuffle sides"
 msgstr "Promíchat strany"
 
-#: src/game_initialization/multiplayer_configure.cpp:89
+#: src/game_initialization/multiplayer_configure.cpp:88
 #, fuzzy
 #| msgid "Random map options:"
 msgid "Random factions:"
 msgstr "Nastavení náhodné mapy:"
 
-#: src/game_initialization/multiplayer_configure.cpp:93
+#: src/game_initialization/multiplayer_configure.cpp:92
 msgid "Set Password..."
 msgstr "Nastavit heslo..."
 
-#: src/game_initialization/multiplayer_configure.cpp:95
+#: src/game_initialization/multiplayer_configure.cpp:94
 msgid "Select an entry point:"
 msgstr "Vyberte vstupní bod:"
 
-#: src/game_initialization/multiplayer_configure.cpp:113
+#: src/game_initialization/multiplayer_configure.cpp:112
 msgid "Enables user time limit"
 msgstr "Zapíná časový limit hráče"
 
-#: src/game_initialization/multiplayer_configure.cpp:119
+#: src/game_initialization/multiplayer_configure.cpp:118
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Nejdelší čas povolený pro první tah (vteřin)"
 
-#: src/game_initialization/multiplayer_configure.cpp:125
+#: src/game_initialization/multiplayer_configure.cpp:124
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Nejdelší čas povolený pro libovolný tah (vteřin)"
 
-#: src/game_initialization/multiplayer_configure.cpp:131
+#: src/game_initialization/multiplayer_configure.cpp:130
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Čas určený pro hlavní úkoly na každý tah (vteřin)"
 
-#: src/game_initialization/multiplayer_configure.cpp:137
+#: src/game_initialization/multiplayer_configure.cpp:136
 msgid "Time for each attack, recruit, and capture"
 msgstr "Čas na každý útok, verbování a obsazování"
 
-#: src/game_initialization/multiplayer_configure.cpp:140
+#: src/game_initialization/multiplayer_configure.cpp:139
 msgid "Allow users who are not playing to watch the game"
 msgstr "Povolit nehrajícím uživatelům pozorovat hru"
 
-#: src/game_initialization/multiplayer_configure.cpp:144
+#: src/game_initialization/multiplayer_configure.cpp:143
 msgid "More checks for OOS errors but also more network traffic"
 msgstr ""
 
-#: src/game_initialization/multiplayer_configure.cpp:148
+#: src/game_initialization/multiplayer_configure.cpp:147
 msgid "Assign sides to players at random"
 msgstr "Přiřadí strany hráčům náhodně"
 
-#: src/game_initialization/multiplayer_configure.cpp:150
+#: src/game_initialization/multiplayer_configure.cpp:149
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
 
-#: src/game_initialization/multiplayer_configure.cpp:159
+#: src/game_initialization/multiplayer_configure.cpp:158
 msgid ""
 "Independent: Random factions assigned independently\n"
 "No Mirror: No two players will get the same faction\n"
 "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/game_initialization/multiplayer_configure.cpp:164
+#: src/game_initialization/multiplayer_configure.cpp:163
 msgid "Use scenario specific settings"
 msgstr "Použij specifické nastavení scénáře"
 
-#: src/game_initialization/multiplayer_configure.cpp:170
+#: src/game_initialization/multiplayer_configure.cpp:169
 msgid "The maximum number of turns the game can last"
 msgstr "Limit kol pro danou hru"
 
-#: src/game_initialization/multiplayer_configure.cpp:176
+#: src/game_initialization/multiplayer_configure.cpp:175
 msgid "The amount of income each village yields per turn"
 msgstr "Příjem z každé vesnice za kolo"
 
-#: src/game_initialization/multiplayer_configure.cpp:182
+#: src/game_initialization/multiplayer_configure.cpp:181
 msgid "The number of unit levels each village can support"
 msgstr "Počet úrovní, které může každá vesnice podpořit"
 
-#: src/game_initialization/multiplayer_configure.cpp:189
+#: src/game_initialization/multiplayer_configure.cpp:188
 msgid "The amount of experience a unit needs to advance"
 msgstr ""
 "Počet zkušenostních bodů, které jednotka potřebuje k přechodu na další stupeň"
 
-#: src/game_initialization/multiplayer_configure.cpp:193
+#: src/game_initialization/multiplayer_configure.cpp:192
 msgid "Randomize time of day in begin"
 msgstr "Nastaví na začátku hry náhodnou denní dobu"
 
-#: src/game_initialization/multiplayer_configure.cpp:197
+#: src/game_initialization/multiplayer_configure.cpp:196
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Nepřátelské jednotky jsou vidět pouze tehdy, jsou-li v dohledu nějakých "
 "tvých jednotek"
 
-#: src/game_initialization/multiplayer_configure.cpp:201
+#: src/game_initialization/multiplayer_configure.cpp:200
 msgid "The map is unknown until your units explore it"
 msgstr "Neprozkoumané části mapy nejsou vidět"
 
-#: src/game_initialization/multiplayer_configure.cpp:207
+#: src/game_initialization/multiplayer_configure.cpp:206
 msgid "Share View"
 msgstr "Sdílej pohled"
 
-#: src/game_initialization/multiplayer_configure.cpp:208
+#: src/game_initialization/multiplayer_configure.cpp:207
 msgid "Share Maps"
 msgstr "Sdílej mapy"
 
-#: src/game_initialization/multiplayer_configure.cpp:209
+#: src/game_initialization/multiplayer_configure.cpp:208
 msgid "Share None"
 msgstr "Nesdílej nic"
 
-#: src/game_initialization/multiplayer_configure.cpp:361
+#: src/game_initialization/multiplayer_configure.cpp:360
 msgid "You must enter a name."
 msgstr "Musíš zadat jméno."
 
-#: src/game_initialization/multiplayer_configure.cpp:384
+#: src/game_initialization/multiplayer_configure.cpp:383
 msgid "Turns: "
 msgstr "Počet kol: "
 
-#: src/game_initialization/multiplayer_configure.cpp:386
+#: src/game_initialization/multiplayer_configure.cpp:385
 msgid "Unlimited turns"
 msgstr "Neomezeně kol"
 
-#: src/game_initialization/multiplayer_configure.cpp:394
+#: src/game_initialization/multiplayer_configure.cpp:393
 msgid "Village gold: "
 msgstr "Zlato/Vesnice: "
 
-#: src/game_initialization/multiplayer_configure.cpp:400
+#: src/game_initialization/multiplayer_configure.cpp:399
 msgid "Village support: "
 msgstr "Zlato/Vesnice:"
 
-#: src/game_initialization/multiplayer_configure.cpp:406
+#: src/game_initialization/multiplayer_configure.cpp:405
 msgid "Experience modifier: "
 msgstr "Modifikátor zkušenostních bodů: "
 
-#: src/game_initialization/multiplayer_configure.cpp:460
+#: src/game_initialization/multiplayer_configure.cpp:459
 msgid "Init. limit: "
 msgstr "Počáteční limit: "
 
-#: src/game_initialization/multiplayer_configure.cpp:465
+#: src/game_initialization/multiplayer_configure.cpp:464
 msgid "Turn bonus: "
 msgstr "Bonus za kolo: "
 
-#: src/game_initialization/multiplayer_configure.cpp:469
+#: src/game_initialization/multiplayer_configure.cpp:468
 msgid "Reservoir: "
 msgstr "Zásobárna: "
 
-#: src/game_initialization/multiplayer_configure.cpp:474
+#: src/game_initialization/multiplayer_configure.cpp:473
 msgid "Action bonus: "
 msgstr "Bonus za akce:"
 
-#: src/game_initialization/multiplayer_connect.cpp:58
-#: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_connect.cpp:57
+#: src/game_initialization/multiplayer_connect.cpp:257
+#: src/game_initialization/multiplayer_wait.cpp:590
+#: src/game_initialization/multiplayer_wait.cpp:598
 msgid "("
 msgstr "("
 
-#: src/game_initialization/multiplayer_connect.cpp:58
-#: src/game_initialization/multiplayer_connect.cpp:258
-#: src/game_initialization/multiplayer_wait.cpp:616
-#: src/game_initialization/multiplayer_wait.cpp:627
+#: src/game_initialization/multiplayer_connect.cpp:57
+#: src/game_initialization/multiplayer_connect.cpp:257
+#: src/game_initialization/multiplayer_wait.cpp:590
+#: src/game_initialization/multiplayer_wait.cpp:601
 msgid ")"
 msgstr ")"
 
-#: src/game_initialization/multiplayer_connect.cpp:60
-#: src/game_initialization/multiplayer_connect.cpp:260
-#: src/game_initialization/multiplayer_wait.cpp:626
+#: src/game_initialization/multiplayer_connect.cpp:59
+#: src/game_initialization/multiplayer_connect.cpp:259
+#: src/game_initialization/multiplayer_wait.cpp:600
 msgid "+"
 msgstr "+"
 
-#: src/game_initialization/multiplayer_connect.cpp:62
-#: src/game_initialization/multiplayer_connect.cpp:262
+#: src/game_initialization/multiplayer_connect.cpp:61
+#: src/game_initialization/multiplayer_connect.cpp:261
 msgid "Normal"
 msgstr "Normální"
 
 # pův.: "Před bitvou"
-#: src/game_initialization/multiplayer_connect.cpp:371
+#: src/game_initialization/multiplayer_connect.cpp:370
 msgid "Game Lobby: "
 msgstr "Čekárna hry více hráčů: "
 
-#: src/game_initialization/multiplayer_connect.cpp:376
+#: src/game_initialization/multiplayer_connect.cpp:375
 msgid "Player/Type"
 msgstr "Hráč/Typ"
 
-#: src/game_initialization/multiplayer_connect.cpp:378
+#: src/game_initialization/multiplayer_connect.cpp:377
 msgid "Faction/Name"
 msgstr "Frakce/Jméno"
 
 # a něco neutrálnějšího by nebylo?
-#: src/game_initialization/multiplayer_connect.cpp:380
+#: src/game_initialization/multiplayer_connect.cpp:379
 msgid "Leader/Gender"
 msgstr "Velitel / pohlaví"
 
-#: src/game_initialization/multiplayer_connect.cpp:382
+#: src/game_initialization/multiplayer_connect.cpp:381
 msgid "Team/Color"
 msgstr "Tým/Barva"
 
-#: src/game_initialization/multiplayer_connect.cpp:386
-#: src/game_initialization/multiplayer_wait.cpp:624
+#: src/game_initialization/multiplayer_connect.cpp:385
+#: src/game_initialization/multiplayer_wait.cpp:598
 #: src/leader_scroll_dialog.cpp:54 src/menu_events.cpp:215
 msgid "Income"
 msgstr "Příjmy"
 
-#: src/game_initialization/multiplayer_connect.cpp:389
+#: src/game_initialization/multiplayer_connect.cpp:388
 msgid "I’m Ready"
 msgstr "Můžeme začít"
 
-#: src/game_initialization/multiplayer_connect.cpp:390
-#: src/game_initialization/multiplayer_lobby.cpp:1036
-#: src/game_initialization/multiplayer_wait.cpp:197
-#: src/hotkey/command_executor.cpp:522 src/hotkey/command_executor.cpp:695
+#: src/game_initialization/multiplayer_connect.cpp:389
+#: src/game_initialization/multiplayer_lobby.cpp:1040
+#: src/game_initialization/multiplayer_wait.cpp:200
+#: src/gui/dialogs/synced_choice_wait.cpp:102
+#: src/hotkey/command_executor.cpp:700 src/hotkey/command_executor.cpp:710
+#: src/quit_confirmation.cpp:41
 msgid "Quit"
 msgstr "Konec"
 
-#: src/game_initialization/multiplayer_connect.cpp:405
+#: src/game_initialization/multiplayer_connect.cpp:404
 msgid "The scenario is invalid because it has no id."
 msgstr "Scénář je neplatný, protože neobsahuje žádné ID."
 
-#: src/game_initialization/multiplayer_connect.cpp:416
+#: src/game_initialization/multiplayer_connect.cpp:415
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scénář je neplatný, protože neobsahuje žádné válčící strany."
 
-#: src/game_initialization/multiplayer_connect.cpp:599
+#: src/game_initialization/multiplayer_connect.cpp:598
 msgid "Waiting for players to join..."
 msgstr "Čekám na připojení dalších hráčů..."
 
-#: src/game_initialization/multiplayer_connect.cpp:600
+#: src/game_initialization/multiplayer_connect.cpp:599
 msgid "Waiting for players to choose factions..."
 msgstr "Čekám na výběr frakcí dalších hráčů..."
 
-#: src/game_initialization/multiplayer_create.cpp:85
-#: src/game_initialization/multiplayer_lobby.cpp:1033
+#: src/game_initialization/multiplayer_create.cpp:88
+#: src/game_initialization/multiplayer_lobby.cpp:1037
 msgid "Create Game"
 msgstr "Vytvoř hru"
 
-#: src/game_initialization/multiplayer_create.cpp:93
+#: src/game_initialization/multiplayer_create.cpp:96
 msgid "Filter:"
 msgstr "Filtr:"
 
-#: src/game_initialization/multiplayer_create.cpp:94
-#: src/game_initialization/multiplayer_create.cpp:476
+#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_create.cpp:466
 msgid "Number of players: any"
 msgstr "Počet hráčů: jakýkoliv"
 
-#: src/game_initialization/multiplayer_create.cpp:95
+#: src/game_initialization/multiplayer_create.cpp:98
 msgid "Random map options:"
 msgstr "Nastavení náhodné mapy:"
 
-#: src/game_initialization/multiplayer_create.cpp:96
-#: src/game_initialization/multiplayer_lobby.cpp:698
-#: src/help/help_impl.cpp:529
+#: src/game_initialization/multiplayer_create.cpp:99
+#: src/game_initialization/multiplayer_lobby.cpp:701 src/help/help_impl.cpp:529
 msgid "Era:"
 msgstr "Věk:"
 
-#: src/game_initialization/multiplayer_create.cpp:97
+#: src/game_initialization/multiplayer_create.cpp:100
 msgid ""
 "No eras available\n"
 "for this game."
@@ -5868,68 +5778,63 @@ msgstr ""
 "Pro tuto hru nejsou\n"
 "dostupné žádné věky."
 
-#: src/game_initialization/multiplayer_create.cpp:99
-#: src/game_initialization/multiplayer_lobby.cpp:725
+#: src/game_initialization/multiplayer_create.cpp:102
+#: src/game_initialization/multiplayer_lobby.cpp:728
 msgid "Modifications:"
 msgstr "Úpravy:"
 
-#: src/game_initialization/multiplayer_create.cpp:103
+#: src/game_initialization/multiplayer_create.cpp:106
 msgid "Next"
 msgstr "Další"
 
-#: src/game_initialization/multiplayer_create.cpp:105
+#: src/game_initialization/multiplayer_create.cpp:108
 msgid "Regenerate"
 msgstr "Vygeneruj další"
 
-#: src/game_initialization/multiplayer_create.cpp:106
+#: src/game_initialization/multiplayer_create.cpp:109
 msgid "Settings..."
 msgstr "Nastavení..."
 
-#: src/game_initialization/multiplayer_create.cpp:107
+#: src/game_initialization/multiplayer_create.cpp:110
 msgid "Load Game..."
 msgstr "Načti hru..."
 
-#: src/game_initialization/multiplayer_create.cpp:108
-#: src/game_initialization/multiplayer_create.cpp:369
-msgid "Activate"
-msgstr "Aktivovat"
-
 # !!!!
-#: src/game_initialization/multiplayer_create.cpp:128
+#: src/game_initialization/multiplayer_create.cpp:130
 msgid "Scenarios"
 msgstr "Scénáře"
 
-#: src/game_initialization/multiplayer_create.cpp:129
+#: src/game_initialization/multiplayer_create.cpp:131
 msgid "Campaigns"
 msgstr "Kampaně"
 
-#: src/game_initialization/multiplayer_create.cpp:130
+#: src/game_initialization/multiplayer_create.cpp:132
 msgid "User Maps"
 msgstr "Mapy od uživatelů"
 
 # !!!!
-#: src/game_initialization/multiplayer_create.cpp:131
+#: src/game_initialization/multiplayer_create.cpp:133
 msgid "User Scenarios"
 msgstr "Uživatelské scénáře"
 
-#: src/game_initialization/multiplayer_create.cpp:132
+#: src/game_initialization/multiplayer_create.cpp:134
 msgid "Random Maps"
 msgstr "Náhodné mapy"
 
-#: src/game_initialization/multiplayer_create.cpp:149
-#: src/game_initialization/multiplayer_create.cpp:150
+#: src/game_initialization/multiplayer_create.cpp:151
+#: src/game_initialization/multiplayer_create.cpp:152
 msgid "No games found."
 msgstr "Žádné hry nenalezeny."
 
-#: src/game_initialization/multiplayer_create.cpp:181
+#: src/game_initialization/multiplayer_create.cpp:183
 msgid "No eras found."
 msgstr "Žádný věk nenalezen."
 
-#: src/game_initialization/multiplayer_create.cpp:182
+#: src/game_initialization/multiplayer_create.cpp:184
 msgid "No eras found"
 msgstr "Žádný věk nenalezen"
 
-#: src/game_initialization/multiplayer_create.cpp:204
+#: src/game_initialization/multiplayer_create.cpp:201
 msgid ""
 "Modifications:\n"
 "None found."
@@ -5937,122 +5842,117 @@ msgstr ""
 "Úpravy:\n"
 "Žádné nenalezeny."
 
-#: src/game_initialization/multiplayer_create.cpp:206
-#: src/game_initialization/multiplayer_create.cpp:367
-msgid "Deactivate"
-msgstr "Vypnout"
-
-#: src/game_initialization/multiplayer_create.cpp:319
+#: src/game_initialization/multiplayer_create.cpp:314
 msgid "The level is invalid."
 msgstr "Úroveň je neplatná"
 
-#: src/game_initialization/multiplayer_create.cpp:421
+#: src/game_initialization/multiplayer_create.cpp:411
 msgid "Players: "
 msgstr "Počet hráčů: "
 
-#: src/game_initialization/multiplayer_create.cpp:441
+#: src/game_initialization/multiplayer_create.cpp:431
 msgid "Size: "
 msgstr "Velikost: "
 
-#: src/game_initialization/multiplayer_create.cpp:478
+#: src/game_initialization/multiplayer_create.cpp:468
 msgid "Number of players: "
 msgstr "Počet hráčů:"
 
 # v nápovědě podrobnosti jednotky když k ní není žádný text
-#: src/game_initialization/multiplayer_create.cpp:584 src/unit_types.cpp:474
+#: src/game_initialization/multiplayer_create.cpp:574 src/unit_types.cpp:477
 msgid "No description available."
 msgstr "Žádné informace nejsou k dispozici."
 
-#: src/game_initialization/multiplayer_lobby.cpp:145
+#: src/game_initialization/multiplayer_lobby.cpp:148
 msgid "--no games open--"
 msgstr "--žádné volné hry--"
 
-#: src/game_initialization/multiplayer_lobby.cpp:182
+#: src/game_initialization/multiplayer_lobby.cpp:185
 msgid " (Unknown Era)"
 msgstr " (Neznámý věk)"
 
-#: src/game_initialization/multiplayer_lobby.cpp:190
+#: src/game_initialization/multiplayer_lobby.cpp:193
 msgid " (Need to download addons)"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:192
+#: src/game_initialization/multiplayer_lobby.cpp:195
 #, fuzzy
 #| msgid "Outdated add-ons"
 msgid " (Outdated addons)"
 msgstr "Zastaralá rozšíření"
 
 # !!!!
-#: src/game_initialization/multiplayer_lobby.cpp:476
+#: src/game_initialization/multiplayer_lobby.cpp:479
 msgid "Scenario:"
 msgstr "Scénář:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:497
+#: src/game_initialization/multiplayer_lobby.cpp:500
 #: src/gui/dialogs/lobby/lobby_data.cpp:300
 msgid "Remote scenario"
 msgstr "Vzdálený scénář"
 
-#: src/game_initialization/multiplayer_lobby.cpp:511
+#: src/game_initialization/multiplayer_lobby.cpp:514
 #: src/gui/dialogs/lobby/lobby_data.cpp:308
 msgid "Unknown scenario: $scenario_id"
 msgstr "Neznámý scénář: '$scenario_id|'"
 
-#: src/game_initialization/multiplayer_lobby.cpp:519
+#: src/game_initialization/multiplayer_lobby.cpp:522
 #: src/gui/dialogs/lobby/lobby_data.cpp:313
 msgid "Unknown scenario"
 msgstr "Neznámý scénář"
 
-#: src/game_initialization/multiplayer_lobby.cpp:530
+#: src/game_initialization/multiplayer_lobby.cpp:533
 msgid "Campaign:"
 msgstr "Kampaň:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:564
+#: src/game_initialization/multiplayer_lobby.cpp:567
 msgid "Unknown campaign: $campaign_id"
 msgstr "Neznámé tažení: $campaign_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:667
+#: src/game_initialization/multiplayer_lobby.cpp:670
 msgid ""
 "Host's version of $addon is too old: host's version $host_ver < your version "
 "$local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:680
+#: src/game_initialization/multiplayer_lobby.cpp:683
 msgid ""
 "Your version of $addon is out of date: host's version $host_ver > your "
 "version $local_ver."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:710
+#: src/game_initialization/multiplayer_lobby.cpp:713
 #: src/gui/dialogs/lobby/lobby_data.cpp:215
 msgid "Unknown era: $era_id"
 msgstr "Neznámý věk: $era_id"
 
-#: src/game_initialization/multiplayer_lobby.cpp:714
+#: src/game_initialization/multiplayer_lobby.cpp:717
 #: src/gui/dialogs/lobby/lobby_data.cpp:220
 msgid "Unknown era"
 msgstr "Neznámý věk"
 
-#: src/game_initialization/multiplayer_lobby.cpp:740
+#: src/game_initialization/multiplayer_lobby.cpp:743
 msgid " (missing)"
 msgstr "(chybí)"
 
-#: src/game_initialization/multiplayer_lobby.cpp:763
+#: src/game_initialization/multiplayer_lobby.cpp:766
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Chybí parametr $arg_id"
 
 # jako že nezačala teď, ale dřív, byla přerušena a teď je načtená a pokračuje
-#: src/game_initialization/multiplayer_lobby.cpp:790
+#: src/game_initialization/multiplayer_lobby.cpp:793
 #: src/gui/dialogs/lobby/lobby_data.cpp:319
 msgid "Reloaded game"
 msgstr "Načtená hra"
 
-#: src/game_initialization/multiplayer_lobby.cpp:806
+#: src/game_initialization/multiplayer_lobby.cpp:809
 #: src/gui/dialogs/lobby/lobby_data.cpp:330
 msgid "Turn "
 msgstr "Kolo"
 
-#: src/game_initialization/multiplayer_lobby.cpp:810
+#: src/game_initialization/multiplayer_lobby.cpp:813
 #: src/gui/dialogs/lobby/lobby_data.cpp:335
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
@@ -6060,80 +5960,80 @@ msgstr[0] "Prázdná pozice:"
 msgstr[1] "Prázdné pozice:"
 msgstr[2] "Prázdných pozic:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:813
+#: src/game_initialization/multiplayer_lobby.cpp:816
 msgid "Password Required"
 msgstr "Je zapotřebí heslo"
 
-#: src/game_initialization/multiplayer_lobby.cpp:835
+#: src/game_initialization/multiplayer_lobby.cpp:838
 #: src/gui/dialogs/lobby/lobby_data.cpp:349
 msgid "none"
 msgstr "žádná"
 
 # pův.: "Před bitvou"
-#: src/game_initialization/multiplayer_lobby.cpp:1026
-#: src/game_initialization/multiplayer_wait.cpp:196
+#: src/game_initialization/multiplayer_lobby.cpp:1029
+#: src/game_initialization/multiplayer_wait.cpp:199
 msgid "Game Lobby"
 msgstr "Čekárna hry více hráčů"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1031
+#: src/game_initialization/multiplayer_lobby.cpp:1035
 msgid "Observe Game"
 msgstr "Pozoruj hru"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1032
+#: src/game_initialization/multiplayer_lobby.cpp:1036
 msgid "Join Game"
 msgstr "Přidej se ke hře"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1035
+#: src/game_initialization/multiplayer_lobby.cpp:1039
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1037
+#: src/game_initialization/multiplayer_lobby.cpp:1041
 msgid "Apply filter"
 msgstr "Použít filtr"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1038
+#: src/game_initialization/multiplayer_lobby.cpp:1042
 msgid "Invert"
 msgstr "Invertovat"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1039
+#: src/game_initialization/multiplayer_lobby.cpp:1043
 msgid "Vacant slots"
 msgstr "Prázdné pozice"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1040
+#: src/game_initialization/multiplayer_lobby.cpp:1044
 msgid "Friends in game"
 msgstr "Přátelé ve hře"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1041
+#: src/game_initialization/multiplayer_lobby.cpp:1045
 msgid "Search:"
 msgstr "Hledat:"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1050
+#: src/game_initialization/multiplayer_lobby.cpp:1054
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Normal Replays"
 msgstr "Uložení záznamu"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1051
+#: src/game_initialization/multiplayer_lobby.cpp:1055
 #, fuzzy
 #| msgid "Quick replays"
 msgid "Quick Replays"
 msgstr "Rychlé přehrávání"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1052
+#: src/game_initialization/multiplayer_lobby.cpp:1056
 #, fuzzy
 #| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
 msgstr "Vstoupit se zavázanýma očima"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1056
+#: src/game_initialization/multiplayer_lobby.cpp:1060
 msgid "Skip quickly to the active turn when observing"
 msgstr "Přeskoč rychle na aktivní kolo, jsi-li pozorovatelem"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1057
+#: src/game_initialization/multiplayer_lobby.cpp:1061
 msgid "Do not show the map until given control of a side"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1070
+#: src/game_initialization/multiplayer_lobby.cpp:1074
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -6141,7 +6041,7 @@ msgstr ""
 "Zapíná filtr her. Pokud není aktivní, jsou vidět všechny hry bez ohledu jeho "
 "na nastavení."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1073
+#: src/game_initialization/multiplayer_lobby.cpp:1077
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -6149,17 +6049,17 @@ msgstr ""
 "Zobrazí pouze hry, které nesouhlasí s filtrem. Vhodné pro skrytí her, které "
 "nejsou zajímavé."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1077
+#: src/game_initialization/multiplayer_lobby.cpp:1081
 msgid "Only show games that have at least one vacant slot"
 msgstr "Zobrazí pouze hry, které mají alespoň jednu volnou pozici"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1081
+#: src/game_initialization/multiplayer_lobby.cpp:1085
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Zobrazí pouze hry, v nichž hraje či jimž přihlíží alespoň jeden tvůj přítel"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1087
+#: src/game_initialization/multiplayer_lobby.cpp:1091
 #, fuzzy
 #| msgid "Only show games whose title or description contain the entered text"
 msgid ""
@@ -6167,203 +6067,284 @@ msgid ""
 "text"
 msgstr "Zobrazí pouze hry, jejichž název nebo popis obsahuje zvolený text"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1192
+#: src/game_initialization/multiplayer_lobby.cpp:1196
 #, fuzzy
 #| msgid "No compatible eras found."
 msgid "Incompatible user-made content."
 msgstr "Žádný odpovídající věk nenalezen."
 
-#: src/game_initialization/multiplayer_lobby.cpp:1193
+#: src/game_initialization/multiplayer_lobby.cpp:1197
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons which "
 "are incompatible with your version. You might suggest to them that they "
 "update their add-ons."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1196
-#: src/game_initialization/multiplayer_lobby.cpp:1211
+#: src/game_initialization/multiplayer_lobby.cpp:1200
+#: src/game_initialization/multiplayer_lobby.cpp:1215
 #, fuzzy
 #| msgid "Details"
 msgid "Details:"
 msgstr "Detaily"
 
-#: src/game_initialization/multiplayer_lobby.cpp:1207
+#: src/game_initialization/multiplayer_lobby.cpp:1211
 msgid "Missing user-made content."
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1208
+#: src/game_initialization/multiplayer_lobby.cpp:1212
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join. Do you want to try to install them?"
 msgstr ""
 
-#: src/game_initialization/multiplayer_lobby.cpp:1246
+#: src/game_initialization/multiplayer_lobby.cpp:1250
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby, please report this at bugs.wesnoth.org."
 msgstr ""
 
-#: src/game_initialization/multiplayer_ui.cpp:86
-#: src/game_initialization/multiplayer_ui.cpp:97
+#: src/game_initialization/multiplayer_ui.cpp:89
+#: src/game_initialization/multiplayer_ui.cpp:100
 msgid "Invalid Color"
 msgstr "Neplatná barva"
 
-#: src/game_initialization/multiplayer_ui.cpp:325
+#: src/game_initialization/multiplayer_ui.cpp:338
 msgid "Selected user: "
 msgstr "Vybraný uživatel: "
 
-#: src/game_initialization/multiplayer_ui.cpp:463
+#: src/game_initialization/multiplayer_ui.cpp:476
 #, fuzzy
 #| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
 msgstr "Přijímat soukromé zprávy pouze od přátel"
 
-#: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2296
+#: src/game_initialization/multiplayer_ui.cpp:503 src/menu_events.cpp:2180
 msgid "whisper: $sender"
 msgstr "soukromá zpráva: $sender"
 
-#: src/game_initialization/multiplayer_wait.cpp:149
+#: src/game_initialization/multiplayer_wait.cpp:152
 msgid "Leader: "
 msgstr "Vůdce: "
 
-#: src/game_initialization/multiplayer_wait.cpp:152 src/menu_events.cpp:1039
+#: src/game_initialization/multiplayer_wait.cpp:155
 msgid "Gender: "
 msgstr "Pohlaví: "
 
-#: src/game_initialization/multiplayer_wait.cpp:155
+#: src/game_initialization/multiplayer_wait.cpp:158
 msgid "Recruits: "
 msgstr "Verbuje: "
 
-#: src/game_initialization/multiplayer_wait.cpp:198
+#: src/game_initialization/multiplayer_wait.cpp:201
 msgid "Waiting for game to start..."
 msgstr "Čekám, až hra začne..."
 
 # Když nedostane klient v datech která éra je použita.
-#: src/game_initialization/multiplayer_wait.cpp:351
+#: src/game_initialization/multiplayer_wait.cpp:324
 msgid "No era information found."
 msgstr "Nenalezeny žádné informace o věku."
 
-#: src/game_initialization/multiplayer_wait.cpp:355
+#: src/game_initialization/multiplayer_wait.cpp:328
 msgid "No multiplayer sides found"
 msgstr "Hra více hráčů nemá určené strany"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:373
 msgid "Choose your faction:"
 msgstr "Vyber si svoji frakci:"
 
-#: src/game_initialization/multiplayer_wait.cpp:399
+#: src/game_initialization/multiplayer_wait.cpp:373
 msgid "Starting position: "
 msgstr "Počáteční pozice: "
 
-#: src/game_initialization/multiplayer_wait.cpp:521
+#: src/game_initialization/multiplayer_wait.cpp:495
 msgid "(Empty slot)"
 msgstr "(prázdná pozice)"
 
-#: src/game_initialization/multiplayer_wait.cpp:526
+#: src/game_initialization/multiplayer_wait.cpp:500
 msgid "(Reserved for $playername)"
 msgstr "(Vyhrazeno pro $playername)"
 
-#: src/game_initialization/multiplayer_wait.cpp:529
+#: src/game_initialization/multiplayer_wait.cpp:503
 msgid "(Vacant slot)"
 msgstr "(volná pozice)"
 
-#: src/game_initialization/multiplayer_wait.cpp:536 src/menu_events.cpp:2392
-#: src/menu_events.cpp:2410
+#: src/game_initialization/multiplayer_wait.cpp:510 src/menu_events.cpp:2276
+#: src/menu_events.cpp:2294
 msgid "(empty)"
 msgstr "(prázdný)"
 
-#: src/game_initialization/multiplayer_wait.cpp:620
+#: src/game_initialization/multiplayer_wait.cpp:594
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "zlatý"
 msgstr[1] "zlaté"
 msgstr[2] "zlatých"
 
-#: src/game_initialization/multiplayer_wait.cpp:664
+#: src/game_initialization/multiplayer_wait.cpp:630
 msgid "Getting game data..."
 msgstr "Získávám data o hře..."
 
+#: src/game_initialization/playcampaign.cpp:66
+msgid "Remaining gold: "
+msgstr "Zbývající zlato: "
+
+#: src/game_initialization/playcampaign.cpp:70
+msgid "Turns finished early: "
+msgstr "Zbývajících kol: "
+
+#: src/game_initialization/playcampaign.cpp:71
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "na kolo"
+
+#: src/game_initialization/playcampaign.cpp:71
+msgid "Early finish bonus: "
+msgstr "Bonus za rychlý konec: "
+
+#: src/game_initialization/playcampaign.cpp:72
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Total bonus: "
+msgstr "Bonus za kolo: "
+
+#: src/game_initialization/playcampaign.cpp:74
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "Zlato/Vesnice: "
+
 #: src/game_initialization/playcampaign.cpp:77
+#, fuzzy
+#| msgid "Carry over percentage: "
+msgid "Carryover percentage: "
+msgstr "Podíl přenesených peněz: "
+
+#: src/game_initialization/playcampaign.cpp:80
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "Bonusové zlato: "
+
+#: src/game_initialization/playcampaign.cpp:82
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "Zůstalo zlatých: "
+
+#: src/game_initialization/playcampaign.cpp:95
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatým."
+msgstr[1] ""
+"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
+msgstr[2] ""
+"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
+
+#: src/game_initialization/playcampaign.cpp:103
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem zlata."
+msgstr[1] "Příští scénář zahájíš s jeho definovaným minimem zlata."
+msgstr[2] "Příští scénář zahájíš s jeho definovaným minimem zlata."
+
+#: src/game_initialization/playcampaign.cpp:111
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Příští scénář zahájíš buď s jedním zlatým nebo jeho definovaným minimem; "
+"použita je vyšší částka."
+msgstr[1] ""
+"Příští scénář zahájíš buď se $gold zlatými nebo jeho definovaným minimem; "
+"použita je vyšší částka."
+msgstr[2] ""
+"Příští scénář zahájíš buď s $gold zlatými nebo jeho definovaným minimem; "
+"použita je vyšší částka."
+
+#: src/game_initialization/playcampaign.cpp:141
 msgid "Scenario Report"
 msgstr "Shrnutí scénáře"
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:143
 msgid "Victory"
 msgstr "Vítězství"
 
-#: src/game_initialization/playcampaign.cpp:80
+#: src/game_initialization/playcampaign.cpp:144
 msgid "You have emerged victorious!"
 msgstr "Zvítězil jsi!"
 
-#: src/game_initialization/playcampaign.cpp:82
+#: src/game_initialization/playcampaign.cpp:146
 msgid "Defeat"
 msgstr "Porážka"
 
-#: src/game_initialization/playcampaign.cpp:83
+#: src/game_initialization/playcampaign.cpp:147
 msgid "You have been defeated!"
 msgstr "Byl jsi poražen!"
 
-#: src/game_initialization/playcampaign.cpp:147
-#: src/game_initialization/playcampaign.cpp:151
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:969
+#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:991
 msgid "The game could not be loaded: "
 msgstr "Hru se nepodařilo nahrát: "
 
-#: src/game_initialization/playcampaign.cpp:158
-#: src/game_initialization/playcampaign.cpp:162
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:971
+#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:993
 msgid "Error while playing the game: "
 msgstr "Během hraní hry se vyskytla chyba: "
 
-#: src/game_initialization/playcampaign.cpp:165
-#: src/game_initialization/playcampaign.cpp:169
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:991
+#: src/game_initialization/playcampaign.cpp:307 src/game_launcher.cpp:1013
 msgid "The game map could not be loaded: "
 msgstr "Nepodařilo se nahrát herní mapu: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:973
+#: src/game_initialization/playcampaign.cpp:310 src/game_launcher.cpp:995
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:305
+#: src/game_initialization/playcampaign.cpp:312
 msgid "Error while reading the WML: "
 msgstr "Chyba při načítání WML: "
 
-#: src/game_initialization/playcampaign.cpp:343
-#: src/playsingle_controller.cpp:319
+#: src/game_initialization/playcampaign.cpp:350
+#: src/playsingle_controller.cpp:285
 msgid "Game Over"
 msgstr "Konec hry"
 
-#: src/game_initialization/playcampaign.cpp:344
+#: src/game_initialization/playcampaign.cpp:351
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Tento scénář skončil. Přejete si pokračovat v tažení?"
 
-#: src/game_initialization/playcampaign.cpp:418
+#: src/game_initialization/playcampaign.cpp:419
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Neznámý scénář: „$scenario|“"
 
-#: src/game_initialization/singleplayer.cpp:41
+#: src/game_initialization/singleplayer.cpp:40
 msgid "No campaigns are available.\n"
 msgstr "K dispozici nejsou žádná tažení.\n"
 
-#: src/game_launcher.cpp:726 src/game_launcher.cpp:744
+#: src/game_launcher.cpp:743 src/game_launcher.cpp:761
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený."
 
-#: src/game_launcher.cpp:729 src/game_launcher.cpp:747 src/savegame.cpp:195
-#: src/savegame.cpp:343
+#: src/game_launcher.cpp:746 src/game_launcher.cpp:764
+#: src/hotkey_handler_sp.cpp:309 src/savegame.cpp:174 src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Soubor, který ses snažil načíst, je poškozený: '"
 
-#: src/game_launcher.cpp:737
+#: src/game_launcher.cpp:754
 msgid "File I/O Error while reading the game"
 msgstr "Vstupně výstupní chyba souboru při načítání hry"
 
-#: src/game_launcher.cpp:739
+#: src/game_launcher.cpp:756
 msgid "File I/O Error while reading the game: '"
 msgstr "Vstupně výstupní chyba souboru při načítání hry: '"
 
-#: src/game_launcher.cpp:766
+#: src/game_launcher.cpp:783
 #, fuzzy
 #| msgid ""
 #| "This is a multiplayer scenario. Some parts of it may not work properly in "
@@ -6378,7 +6359,7 @@ msgstr ""
 "pro jednoho hráče. Doporučujeme nahrávat scénáře přes nabídku Multiplayer -> "
 "Nahrát hru."
 
-#: src/game_launcher.cpp:967
+#: src/game_launcher.cpp:989
 msgid "Error while starting server: "
 msgstr "Při spouštění serveru se vyskytla chyba: "
 
@@ -6431,11 +6412,17 @@ msgstr "Ty"
 msgid "Error"
 msgstr "Chyba"
 
-#: src/help/help_browser.cpp:150
+#: src/gui/dialogs/synced_choice_wait.cpp:103
+#: src/hotkey/command_executor.cpp:700 src/hotkey/command_executor.cpp:710
+#: src/quit_confirmation.cpp:42
+msgid "Do you really want to quit?"
+msgstr "Určitě chceš odejít?"
+
+#: src/help/help_browser.cpp:153
 msgid "Reference to unknown topic: "
 msgstr ""
 
-#: src/help/help_button.cpp:30
+#: src/help/help_button.cpp:29
 msgid "Help"
 msgstr ""
 
@@ -6485,11 +6472,11 @@ msgid "Recruits"
 msgstr "Naverbováno"
 
 #: src/help/help_impl.cpp:696 src/help/help_impl.cpp:871
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:366
 msgid "race^Miscellaneous"
 msgstr ""
 
-#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:456
+#: src/help/help_impl.cpp:883 src/help/help_topic_generators.cpp:459
 #: src/reports.cpp:351
 msgid "Alignment: "
 msgstr "Příslušnost: "
@@ -6528,170 +6515,158 @@ msgstr "Pohyb stojí:"
 msgid "Defense properties: "
 msgstr "Obrana: "
 
-#: src/help/help_topic_generators.cpp:289
+#: src/help/help_topic_generators.cpp:292
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances from: "
 msgstr "Povyšuje na:"
 
-#: src/help/help_topic_generators.cpp:291
+#: src/help/help_topic_generators.cpp:294
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances to: "
 msgstr "Povyšuje na:"
 
-#: src/help/help_topic_generators.cpp:316
+#: src/help/help_topic_generators.cpp:319
 #, fuzzy
 #| msgid "Base attacks: "
 msgid "Base unit: "
 msgstr "Základní útoky: "
 
-#: src/help/help_topic_generators.cpp:321
+#: src/help/help_topic_generators.cpp:324
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Base units: "
 msgstr "Zákonné jednotky:"
 
-#: src/help/help_topic_generators.cpp:339
+#: src/help/help_topic_generators.cpp:342
 #, fuzzy
 #| msgid "Modifications:"
 msgid "Variations: "
 msgstr "Úpravy:"
 
-#: src/help/help_topic_generators.cpp:365 src/reports.cpp:189
+#: src/help/help_topic_generators.cpp:368 src/reports.cpp:189
 msgid "Race: "
 msgstr "Národ: "
 
-#: src/help/help_topic_generators.cpp:418
+#: src/help/help_topic_generators.cpp:421
 #, fuzzy
 #| msgid "Ability: "
 msgid "Abilities: "
 msgstr "Schopnost: "
 
-#: src/help/help_topic_generators.cpp:434
+#: src/help/help_topic_generators.cpp:437
 #, fuzzy
 #| msgid "Ability: "
 msgid "Ability Upgrades: "
 msgstr "Schopnost: "
 
-#: src/help/help_topic_generators.cpp:452
+#: src/help/help_topic_generators.cpp:455
 #, fuzzy
 #| msgid "vision: "
 msgid "Vision: "
 msgstr "vidění:"
 
-#: src/help/help_topic_generators.cpp:454
+#: src/help/help_topic_generators.cpp:457
 #, fuzzy
 #| msgid "Warning: "
 msgid "Jamming: "
 msgstr "Varování: "
 
-#: src/help/help_topic_generators.cpp:455
+#: src/help/help_topic_generators.cpp:458
 msgid "Cost: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:460
+#: src/help/help_topic_generators.cpp:463
 msgid "Required XP: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:469
+#: src/help/help_topic_generators.cpp:472
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:479
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:478
+#: src/help/help_topic_generators.cpp:481
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
 msgid "Strikes"
 msgstr "úder"
 
-#: src/help/help_topic_generators.cpp:479
+#: src/help/help_topic_generators.cpp:482
 #, fuzzy
 #| msgid "Orange"
 msgid "Range"
 msgstr "Oranžová"
 
-#: src/help/help_topic_generators.cpp:480
+#: src/help/help_topic_generators.cpp:483
 #, fuzzy
 #| msgid "Specials: "
 msgid "Special"
 msgstr "Zvláštnosti: "
 
-#: src/help/help_topic_generators.cpp:545
+#: src/help/help_topic_generators.cpp:548
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistances"
 msgstr "Odolnosti: "
 
-#: src/help/help_topic_generators.cpp:549
+#: src/help/help_topic_generators.cpp:552
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack Type"
 msgstr "Útočník"
 
-#: src/help/help_topic_generators.cpp:550
+#: src/help/help_topic_generators.cpp:553
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistance"
 msgstr "Odolnosti: "
 
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:582
 #, fuzzy
 #| msgid "Experience Modifier: "
 msgid "Terrain Modifiers"
 msgstr "Modifikátor zkušeností: "
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 #| msgid "Terrain: "
 msgid "Terrain"
 msgstr "Terén: "
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:587
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense"
 msgstr "Obrana: "
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:588
 #, fuzzy
 #| msgid "Movement Costs:"
 msgid "Movement Cost"
 msgstr "Pohyb stojí:"
 
-#: src/help/help_topic_generators.cpp:589
+#: src/help/help_topic_generators.cpp:592
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense Cap"
 msgstr "Obrana: "
 
-#: src/help/help_topic_generators.cpp:593
+#: src/help/help_topic_generators.cpp:596
 #, fuzzy
 #| msgid "Version: "
 msgid "Vision Cost"
 msgstr "Verze: "
 
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:599
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:523 src/hotkey/command_executor.cpp:696
-msgid "Do you really want to quit?"
-msgstr "Určitě chceš odejít?"
-
-#: src/hotkey/command_executor.cpp:644
-msgid "Map-Screenshot"
-msgstr "Screenshot mapy"
-
-#: src/hotkey/command_executor.cpp:644
-msgid "Screenshot"
-msgstr "Screenshot"
-
-#: src/hotkey/command_executor.cpp:657
+#: src/hotkey/command_executor.cpp:68
 msgid ""
 "Screenshot creation failed.\n"
 "\n"
@@ -6699,44 +6674,52 @@ msgid ""
 "resource files and that file permissions are set up correctly."
 msgstr ""
 
-#: src/hotkey_handler.cpp:212
+#: src/hotkey/command_executor.cpp:558
+msgid "Screenshot"
+msgstr "Screenshot"
+
+#: src/hotkey/command_executor.cpp:696
+msgid "Map-Screenshot"
+msgstr "Screenshot mapy"
+
+#: src/hotkey_handler.cpp:213
 msgid "(press $hk to disable)"
 msgstr "(stiskni $hk k vypnutí)"
 
-#: src/hotkey_handler.cpp:212
+#: src/hotkey_handler.cpp:213
 msgid "Accelerated speed enabled!"
 msgstr "Povoleno zvýšení rychlosti!"
 
-#: src/hotkey_handler.cpp:216
+#: src/hotkey_handler.cpp:217
 msgid "Accelerated speed disabled!"
 msgstr "Zakázáno zvýšení rychlosti!"
 
-#: src/hotkey_handler.cpp:366 src/save_index.cpp:290 src/savegame.cpp:78
-#: src/savegame.cpp:635 src/savegame.cpp:637
+#: src/hotkey_handler.cpp:369 src/save_index.cpp:290 src/savegame.cpp:77
+#: src/savegame.cpp:606 src/savegame.cpp:608
 msgid "Auto-Save"
 msgstr "Automatické uložení"
 
-#: src/hotkey_handler.cpp:370
+#: src/hotkey_handler.cpp:373
 msgid "Back to Turn "
 msgstr "Zpět na kolo"
 
-#: src/hotkey_handler.cpp:378
+#: src/hotkey_handler.cpp:381
 msgid "Back to Start"
 msgstr "Zpět na začátek"
 
-#: src/hotkey_handler_sp.cpp:134
+#: src/hotkey_handler_sp.cpp:143
 msgid "(press $hotkey to deactivate)"
 msgstr "(stiskni $hotkey k vypnutí)"
 
-#: src/hotkey_handler_sp.cpp:134 src/menu_events.cpp:3203
+#: src/hotkey_handler_sp.cpp:143 src/menu_events.cpp:3090
 msgid "Planning mode activated!"
 msgstr "Plánovací mód je aktivní!"
 
-#: src/hotkey_handler_sp.cpp:136 src/menu_events.cpp:3206
+#: src/hotkey_handler_sp.cpp:145 src/menu_events.cpp:3093
 msgid "Planning mode deactivated!"
 msgstr "Plánovací mód byl ukončen!"
 
-#: src/intro.cpp:35
+#: src/intro.cpp:37
 msgid "The End"
 msgstr "Konec"
 
@@ -6835,89 +6818,89 @@ msgstr "Nastavení scénáře"
 msgid " < Back"
 msgstr " < Zpět"
 
-#: src/loadscreen.cpp:323
+#: src/loadscreen.cpp:333
 msgid "Initializing user interface"
 msgstr "Příprava uživatelského rozhraní"
 
-#: src/loadscreen.cpp:324
+#: src/loadscreen.cpp:334
 msgid "Loading game configuration"
 msgstr "Nahrávání konfigurace"
 
-#: src/loadscreen.cpp:325 src/loadscreen.cpp:332
+#: src/loadscreen.cpp:335 src/loadscreen.cpp:342
 msgid "Verifying cache"
 msgstr "Prověřování dočasných úložišť"
 
-#: src/loadscreen.cpp:326 src/loadscreen.cpp:333
+#: src/loadscreen.cpp:336 src/loadscreen.cpp:343
 msgid "Reading files and creating cache"
 msgstr "Načítání souborů a vytváření dočasných úložišť"
 
-#: src/loadscreen.cpp:327 src/loadscreen.cpp:334
+#: src/loadscreen.cpp:337 src/loadscreen.cpp:344
 msgid "Reading unit files"
 msgstr "Načítání souborů s jednotkami"
 
-#: src/loadscreen.cpp:328
+#: src/loadscreen.cpp:338
 msgid "Reinitialize fonts for the current language"
 msgstr "Přenastavení písma pro současný jazyk"
 
-#: src/loadscreen.cpp:329
+#: src/loadscreen.cpp:339
 msgid "Searching for installed add-ons"
 msgstr "Hledání instalovaných rozšíření"
 
-#: src/loadscreen.cpp:330
+#: src/loadscreen.cpp:340
 msgid "Loading title screen"
 msgstr "Načítání hlavní obrazovky"
 
-#: src/loadscreen.cpp:331
+#: src/loadscreen.cpp:341
 msgid "Loading data files"
 msgstr "Načítám datové soubory."
 
-#: src/loadscreen.cpp:335
+#: src/loadscreen.cpp:345
 msgid "Loading level"
 msgstr "Načítám scénář"
 
-#: src/loadscreen.cpp:336
+#: src/loadscreen.cpp:346
 msgid "Initializing teams"
 msgstr "Nastavuji týmy"
 
-#: src/loadscreen.cpp:337
+#: src/loadscreen.cpp:347
 msgid "Loading units"
 msgstr "Načítám jednotky"
 
-#: src/loadscreen.cpp:338 src/loadscreen.cpp:340
+#: src/loadscreen.cpp:348 src/loadscreen.cpp:350
 msgid "Initializing display"
 msgstr "Připravuji zobrazení"
 
-#: src/loadscreen.cpp:339
+#: src/loadscreen.cpp:349
 msgid "Building terrain rules"
 msgstr "Sestavuji pravidla pro terén"
 
-#: src/loadscreen.cpp:341
+#: src/loadscreen.cpp:351
 msgid "Starting game"
 msgstr "Zahajuji hru"
 
-#: src/map_location.cpp:134
+#: src/map_location.cpp:170
 msgid "North"
 msgstr ""
 
-#: src/map_location.cpp:136
+#: src/map_location.cpp:172
 msgid "North East"
 msgstr ""
 
-#: src/map_location.cpp:138
+#: src/map_location.cpp:174
 msgid "North West"
 msgstr ""
 
-#: src/map_location.cpp:140
+#: src/map_location.cpp:176
 msgid "South"
 msgstr ""
 
-#: src/map_location.cpp:142
+#: src/map_location.cpp:178
 #, fuzzy
 #| msgid "Rusty Gate South East"
 msgid "South East"
 msgstr "Rezavá brána na východ"
 
-#: src/map_location.cpp:144
+#: src/map_location.cpp:180
 #, fuzzy
 #| msgid "Rusty Gate South West"
 msgid "South West"
@@ -6943,38 +6926,38 @@ msgstr "Mapa uložena."
 msgid "Could not save the map: $msg"
 msgstr "Mapu nebylo možno uložit: $msg"
 
-#: src/menu_events.cpp:531
+#: src/menu_events.cpp:490
 msgid "Message:"
 msgstr "Zpráva:"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 msgid "Send to allies only"
 msgstr "Pošli jen spojencům"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:491
 msgid "Send to observers only"
 msgstr "Pošli jen pozorovatelům"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:562
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "zlatý za jednotku"
 msgstr[1] "zlaté za jednotku"
 msgstr[2] "zlatých za jednotku"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:569
 msgid "You have no units available to recruit."
 msgstr "Nemáš žádné jednotky k naverbování."
 
-#: src/menu_events.cpp:643
+#: src/menu_events.cpp:602
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "K naverbování této jednotky nemáš dost peněz "
 
-#: src/menu_events.cpp:676
+#: src/menu_events.cpp:635
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Jsi oddělen od svých vojáků a nemůžeš je přivolat"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:657
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6982,11 +6965,11 @@ msgstr ""
 "Nelze přivolat jednotky\n"
 "(musíš mít zkušené jednotky, které přežily předchozí scénář)."
 
-#: src/menu_events.cpp:704
+#: src/menu_events.cpp:663
 msgid "You currently can't recall at the highlighted location"
 msgstr "V tuto chvíli nelze ve vybraném umístění přivolávat"
 
-#: src/menu_events.cpp:726
+#: src/menu_events.cpp:685
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -6996,67 +6979,55 @@ msgstr[0] "K přivolání jednotky potřebuješ nejméně 1 zlaťák"
 msgstr[1] "K přivolání jednotky potřebuješ nejméně $cost zlaťáky"
 msgstr[2] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků"
 
-#: src/menu_events.cpp:850
+#: src/menu_events.cpp:809
 msgid "You cannot end your turn yet!"
 msgstr "Ještě nelze ukončit tah!"
 
-#: src/menu_events.cpp:864
+#: src/menu_events.cpp:823
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Ještě jsi ani nezapočal svůj tah. Opravdu si jej přeješ ukončit?"
 
-#: src/menu_events.cpp:871
+#: src/menu_events.cpp:830
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Některé jednotky ještě nevyčerpaly všechny své kroky. Opravdu si přeješ "
 "ukončit kolo?"
 
-#: src/menu_events.cpp:878
+#: src/menu_events.cpp:837
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 "Některé jednotky ještě nevyčerpaly všechny své kroky. Opravdu si přeješ "
 "ukončit kolo?"
 
-#: src/menu_events.cpp:930
+#: src/menu_events.cpp:889
 msgid "Rename Unit"
 msgstr "Přejmenuj jednotku"
 
-#: src/menu_events.cpp:931
+#: src/menu_events.cpp:890
 msgid "Name:"
 msgstr "Jméno:"
 
-#: src/menu_events.cpp:1015
-msgid "Race"
-msgstr "Národ"
-
-#: src/menu_events.cpp:1036
-msgid "Create Unit (Debug!)"
-msgstr "Vytvořit jednotku (Ladění!)"
-
-#: src/menu_events.cpp:1039
-msgid "gender^Random"
-msgstr "Náhodné"
-
-#: src/menu_events.cpp:1372
+#: src/menu_events.cpp:1254
 msgid "Search"
 msgstr "Najdi popisek nebo jednotku"
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1435
 msgid "This command is currently unavailable."
 msgstr "Tento příkaz nelze momentálně použít."
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1441
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
 "Neznámý příkaz '$command'; zkus $help_command pro seznam dostupných příkazů."
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1457
 msgid "Error:"
 msgstr "Chyba:"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1463
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -7064,15 +7035,15 @@ msgstr ""
 "Seznam dostupných příkazů a jejich nápověda. Použijte \"help all\" pro "
 "zahrnutí nedostupných příkazů."
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1465
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<příkaz>]"
 
-#: src/menu_events.cpp:1628
+#: src/menu_events.cpp:1510
 msgid "Missing argument $arg_id"
 msgstr "Chybí parametr $arg_id"
 
-#: src/menu_events.cpp:1676
+#: src/menu_events.cpp:1558
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -7080,35 +7051,35 @@ msgstr ""
 "Dostupné příkazy $flags_description:\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:1676 src/menu_events.cpp:1677 src/menu_events.cpp:1700
+#: src/menu_events.cpp:1558 src/menu_events.cpp:1559 src/menu_events.cpp:1582
 msgid "help"
 msgstr "nápověda"
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1559
 msgid "Type $help_command <command> for more info."
 msgstr "Napiš $help_command <příkaz> pro více informací."
 
-#: src/menu_events.cpp:1688
+#: src/menu_events.cpp:1570
 msgid " No help available."
 msgstr " K dispozici není žádná nápověda."
 
-#: src/menu_events.cpp:1693
+#: src/menu_events.cpp:1575
 msgid "Usage:"
 msgstr "Použití:"
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1580
 msgid "aliases:"
 msgstr "aliasy:"
 
-#: src/menu_events.cpp:1819
+#: src/menu_events.cpp:1701
 msgid "(A) — admin command"
 msgstr "(A) - administrátorský příkaz"
 
-#: src/menu_events.cpp:1826 src/menu_events.cpp:2034
+#: src/menu_events.cpp:1708 src/menu_events.cpp:1916
 msgid "(admin only)"
 msgstr "(pouze admin)"
 
-#: src/menu_events.cpp:1846
+#: src/menu_events.cpp:1728
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -7117,7 +7088,7 @@ msgstr ""
 "Pokud se nepoužije žádný argument, server by měl vypsat seznam možných "
 "příkazů."
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1732
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -7125,35 +7096,35 @@ msgstr ""
 "Zakáže přístup a vyhodí hráče nebo pozorovatele. Pokud není ve hře, ale jen "
 "na serveru, bude mu pouze zakázán přístup."
 
-#: src/menu_events.cpp:1851 src/menu_events.cpp:1854 src/menu_events.cpp:1856
-#: src/menu_events.cpp:1858 src/menu_events.cpp:1860 src/menu_events.cpp:1887
-#: src/menu_events.cpp:1889 src/menu_events.cpp:1891 src/menu_events.cpp:1905
+#: src/menu_events.cpp:1733 src/menu_events.cpp:1736 src/menu_events.cpp:1738
+#: src/menu_events.cpp:1740 src/menu_events.cpp:1742 src/menu_events.cpp:1769
+#: src/menu_events.cpp:1771 src/menu_events.cpp:1773 src/menu_events.cpp:1787
 msgid "<nickname>"
 msgstr "<přezdívka>"
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1735
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "Zruší zákaz hráče. Nemusí být přímo ve hře, ale na serveru ano."
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1738
 msgid "Kick a player or observer."
 msgstr "Vyhodí hráče nebo pozorovatele."
 
-#: src/menu_events.cpp:1858
+#: src/menu_events.cpp:1740
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Umlčí pozorovatele. Bez parametru vypíše stav umlčení."
 
-#: src/menu_events.cpp:1860
+#: src/menu_events.cpp:1742
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Od-umlčí pozorovatele. Bez parametru je akce provedena pro všechny "
 "pozorovatele."
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1744
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Umlčí všechny pozorovatele. (přepínač)"
 
-#: src/menu_events.cpp:1872
+#: src/menu_events.cpp:1754
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -7161,15 +7132,15 @@ msgstr ""
 "Porušení pravidel, nevhodné chování atd. hlašte moderátorům serveru. "
 "Nezapomeňte zmínit konkrétní přezdívky a role v konfliktu."
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 msgid "<message>"
 msgstr "<zpráva>"
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1758
 msgid "Send an emotion or personal action in chat."
 msgstr "Napíše, co děláš, nebo jak se cítíš, do chatu."
 
-#: src/menu_events.cpp:1879
+#: src/menu_events.cpp:1761
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -7177,202 +7148,206 @@ msgstr ""
 "Pošle soukromou zprávu. Nelze ji poslat hráči, který hraje za některou "
 "stranu ve stejné hře jako vy (právě běžící)."
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1763
 msgid "<nickname> <message>"
 msgstr "<přezdívka> <zpráva>"
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "<level> <domain>"
 msgstr "<úroveň> <doména>"
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1767
 msgid "Change the log level of a log domain."
 msgstr "Přepne logovací kategorii na jinou úroveň logování."
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1769
 msgid "Add a nickname to your ignores list."
 msgstr "Přidá jméno do seznamu otrapů."
 
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1771
 msgid "Add a nickname to your friends list."
 msgstr "Přidá jméno do seznamu přátel."
 
-#: src/menu_events.cpp:1891
+#: src/menu_events.cpp:1773
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Smaže jméno ze seznamu otrapů nebo přátel."
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1775
 msgid "Show your ignores and friends list."
 msgstr "Zobrazí seznam otrapů a přátel."
 
 # Když nedostane klient v datech která éra je použita.
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1778
 msgid "Display version information."
 msgstr "Zobrazí informace o verzi."
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 msgid "<password> <email (optional)>"
 msgstr "<heslo> <email (nepovinný)>"
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1780
 msgid "Register your nickname"
 msgstr "Registruje přezdívku."
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1782
 msgid "Drop your nickname."
 msgstr "Zahodí tvou přezdívku."
 
-#: src/menu_events.cpp:1902
+#: src/menu_events.cpp:1784
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "Aktualizuje podrobnosti vaší přezdívky. Možné detaily viz '/details'."
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1785
 msgid "<detail> <value>"
 msgstr "<vlastnost> <hodnota>"
 
-#: src/menu_events.cpp:1905
+#: src/menu_events.cpp:1787
 msgid "Request information about a nickname."
 msgstr "Vyžádá informace o hráči."
 
-#: src/menu_events.cpp:1907
+#: src/menu_events.cpp:1789
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 "Vyžádá seznam podrobností, které můžete nastavit pro vaši registrovanou "
 "přezdívku."
 
-#: src/menu_events.cpp:1909 src/menu_events.cpp:1912 src/menu_events.cpp:1914
+#: src/menu_events.cpp:1791 src/menu_events.cpp:1794 src/menu_events.cpp:1796
 msgid "<room>"
 msgstr "<místnost>"
 
-#: src/menu_events.cpp:1909
+#: src/menu_events.cpp:1791
 msgid "Join a room."
 msgstr "Vstup do místnosti."
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1794
 msgid "Part a room."
 msgstr "Rozdělí místnost."
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1796
 msgid "List room members."
 msgstr "Vypíše hráče v místnosti."
 
-#: src/menu_events.cpp:1916
+#: src/menu_events.cpp:1798
 msgid "List available rooms."
 msgstr "Vypíše dostupné místnosti."
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "<room> <msg>"
 msgstr "<místnost> <zpráva>"
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1800
 msgid "Room message."
 msgstr "Pošle zprávu pro celou místnost."
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "<room> <type> [value]"
 msgstr "<místnost> <zpráva> [hodnota]"
 
-#: src/menu_events.cpp:1920
+#: src/menu_events.cpp:1802
 msgid "Room query."
 msgstr "Odešle místnosti dotaz."
 
-#: src/menu_events.cpp:2026
+#: src/menu_events.cpp:1908
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - pouze ladění, (N) - pouze síť, (A) - pouze admin"
 
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:1914
 msgid "(debug command)"
 msgstr "(ladící příkaz)"
 
-#: src/menu_events.cpp:2033
+#: src/menu_events.cpp:1915
 msgid "(network only)"
 msgstr "(pouze na síti)"
 
-#: src/menu_events.cpp:2058
+#: src/menu_events.cpp:1917
+msgid "(not during other events)"
+msgstr ""
+
+#: src/menu_events.cpp:1942
 msgid "Refresh gui."
 msgstr "Obnoví grafické rozhraní."
 
-#: src/menu_events.cpp:2060
+#: src/menu_events.cpp:1944
 msgid "Switch a side to/from AI control."
 msgstr "Předá/odejme ovládání strany AI."
 
-#: src/menu_events.cpp:2060 src/menu_events.cpp:2062
+#: src/menu_events.cpp:1944 src/menu_events.cpp:1946
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<strana> on/off]"
 
-#: src/menu_events.cpp:2062
+#: src/menu_events.cpp:1946
 msgid "Switch a side to/from idle state."
 msgstr "Označit stranu jako nečinnou."
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "<side> <nickname>"
 msgstr "<strana> <přezdívka>"
 
-#: src/menu_events.cpp:2065
+#: src/menu_events.cpp:1949
 msgid "Assign control of a side to a different player or observer."
 msgstr "Převede ovládání strany na jiného hráče nebo pozorovatele."
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "<side>"
 msgstr "<strana>"
 
-#: src/menu_events.cpp:2067
+#: src/menu_events.cpp:1951
 msgid "Query the controller status of a side."
 msgstr "Dotaz na stav hráče dané strany"
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:1953
 msgid "Clear chat history."
 msgstr "Smaže zprávy rozhovoru."
 
-#: src/menu_events.cpp:2071
+#: src/menu_events.cpp:1955
 msgid "Visualize the screen refresh procedure."
 msgstr "Předvede obnovovací proceduru obrazovky."
 
-#: src/menu_events.cpp:2073
+#: src/menu_events.cpp:1957
 msgid "Debug foreground terrain."
 msgstr "Ladí terén v popředí."
 
-#: src/menu_events.cpp:2075
+#: src/menu_events.cpp:1959
 msgid "Debug layers from terrain under the mouse."
 msgstr "Ladí terénní vrstvy pod myší."
 
-#: src/menu_events.cpp:2076
+#: src/menu_events.cpp:1960
 msgid "Show fps."
 msgstr "Ukaž FPS."
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:1962
 msgid "Save game."
 msgstr "Uloží hru."
 
-#: src/menu_events.cpp:2080
+#: src/menu_events.cpp:1964
 msgid "Quit game."
 msgstr "Ukončí hru."
 
-#: src/menu_events.cpp:2084
+#: src/menu_events.cpp:1968
 msgid "Save and quit."
 msgstr "Uloží hru a skončí."
 
-#: src/menu_events.cpp:2087
+#: src/menu_events.cpp:1971
 msgid "Ignore replay errors."
 msgstr "Ignoruje chyby záznamu."
 
-#: src/menu_events.cpp:2089
+#: src/menu_events.cpp:1973
 msgid "Disable autosaves."
 msgstr "Vypne automatické ukládání"
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:1975
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Postoupí do dalšího scénáře, nebo scénáře určeného \"id\"."
 
-#: src/menu_events.cpp:2094
+#: src/menu_events.cpp:1978
 msgid "Choose next scenario"
 msgstr "Vybere další scénář."
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7380,11 +7355,11 @@ msgstr ""
 "Změní číslo kola (a s ním i denní dobu), nebo jej o jedna zvýší, pokud není "
 "udáno číslo."
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:1981
 msgid "[turn]"
 msgstr "[kolo]"
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7392,275 +7367,275 @@ msgstr ""
 "Změní limit kol, nebo jej vypne, pokud je hodnota nastavena na -1 nebo "
 "neudána."
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1983
 msgid "[limit]"
 msgstr "[limit]"
 
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:1985
 msgid "Turn debug mode on."
 msgstr "Zapne ladící mód."
 
-#: src/menu_events.cpp:2103
+#: src/menu_events.cpp:1987
 msgid "Turn debug mode off."
 msgstr "Vypne ladící mód."
 
-#: src/menu_events.cpp:2105 src/menu_events.cpp:2109
+#: src/menu_events.cpp:1989 src/menu_events.cpp:1993
 msgid "<command>[;<command>...]"
 msgstr "<příkaz>[;<příkaz>...]"
 
-#: src/menu_events.cpp:2105
+#: src/menu_events.cpp:1989
 msgid "Execute a Lua statement."
 msgstr "Spustí příkaz v jazyce Lua."
 
-#: src/menu_events.cpp:2107
+#: src/menu_events.cpp:1991
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Povolit Lua skriptům vyšší práva"
 
-#: src/menu_events.cpp:2109
+#: src/menu_events.cpp:1993
 msgid "Set the command used by the custom command hotkey"
 msgstr "Nastaví příkaz připojený ke klávesové zkratce."
 
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:1996
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Spustí dialog umožňující změnu kontroly stran ve hře."
 
-#: src/menu_events.cpp:2116
+#: src/menu_events.cpp:2000
 msgid "Launch the gamestate inspector"
 msgstr "Spustí inspektor herního stavu"
 
-#: src/menu_events.cpp:2118
+#: src/menu_events.cpp:2002
 msgid "Manage persistence data"
 msgstr "Spravuje trvalá data"
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "<name>[=<command>]"
 msgstr "<název>[=<příkaz>]"
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2004
 msgid "Set or show alias to a command"
 msgstr "Nastaví či zobrazí alias příkazu."
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "<var>=<value>"
 msgstr "<proměnná>=<hodnota>"
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:2006
 msgid "Set a scenario variable."
 msgstr "Nastaví proměnnou stavu hry."
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "<var>"
 msgstr "<proměnná>"
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2008
 msgid "Show a scenario variable."
 msgstr "Zobrazí proměnnou stavu hry."
 
-#: src/menu_events.cpp:2126
+#: src/menu_events.cpp:2010
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Upraví vlastnost jednotky (pouze na svrchní úrovni)."
 
-#: src/menu_events.cpp:2133
+#: src/menu_events.cpp:2017
 msgid "Discover all units in help."
 msgstr "Odhalí v nápovědě všechny jednotky."
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2019
 msgid "'Undiscover' all units in help."
 msgstr "Opětovně zahalí v nápovědě všechny jednotky."
 
-#: src/menu_events.cpp:2137
+#: src/menu_events.cpp:2021
 msgid "Create a unit."
 msgstr "Vytvoří jednotku."
 
-#: src/menu_events.cpp:2139
+#: src/menu_events.cpp:2023
 msgid "Toggle fog for the current player."
 msgstr "Přepne zobrazování mlhy pro aktivní stranu."
 
-#: src/menu_events.cpp:2141
+#: src/menu_events.cpp:2025
 msgid "Toggle shroud for the current player."
 msgstr "Přepíná zobrazování tmy pro aktivní stranu."
 
-#: src/menu_events.cpp:2143
+#: src/menu_events.cpp:2027
 msgid "Give gold to the current player."
 msgstr "Přidělí zlato stávájícímu hráči."
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2029
 msgid "Fire a game event."
 msgstr "Spouští herní událost (event)."
 
-#: src/menu_events.cpp:2148
+#: src/menu_events.cpp:2032
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Přepíná zobrazení souřadnic x,y na políčkách."
 
-#: src/menu_events.cpp:2151
+#: src/menu_events.cpp:2035
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Přepíná zobrazení terénních kódů na políčkách."
 
-#: src/menu_events.cpp:2154
+#: src/menu_events.cpp:2038
 msgid "Toggle planning mode."
 msgstr "Přepne plánovací mód."
 
-#: src/menu_events.cpp:2157
+#: src/menu_events.cpp:2041
 msgid "Access whiteboard options dialog."
 msgstr "Otevře dialog nastavení plánovacího módu."
 
-#: src/menu_events.cpp:2200
+#: src/menu_events.cpp:2084
 msgid "Unknown debug level: '$level'."
 msgstr "Neznámá ladící úroveň „$level|“."
 
-#: src/menu_events.cpp:2202 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2086 src/menu_events.cpp:2095
 msgid "error"
 msgstr "Chyba"
 
-#: src/menu_events.cpp:2209
+#: src/menu_events.cpp:2093
 msgid "Unknown debug domain: '$domain'."
 msgstr "Neznámá ladící kategorie „$domain|“."
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2102
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Doména „$domain|“ přepnuta do úrovně „$level|“."
 
-#: src/menu_events.cpp:2289
+#: src/menu_events.cpp:2173
 msgid "whisper to $receiver"
 msgstr "soukromá zpráva pro $receiver"
 
-#: src/menu_events.cpp:2392 src/menu_events.cpp:2398 src/menu_events.cpp:2445
+#: src/menu_events.cpp:2276 src/menu_events.cpp:2282 src/menu_events.cpp:2329
 msgid "ignores list"
 msgstr "seznam otrapů"
 
-#: src/menu_events.cpp:2398
+#: src/menu_events.cpp:2282
 msgid "Added to ignore list: $nick"
 msgstr "Přidán(a) do seznamu otrapů: $nick"
 
-#: src/menu_events.cpp:2401 src/menu_events.cpp:2419
+#: src/menu_events.cpp:2285 src/menu_events.cpp:2303
 msgid "Invalid username: $nick"
 msgstr "Neplatné uživatelské jméno: $nick"
 
-#: src/menu_events.cpp:2410 src/menu_events.cpp:2416 src/menu_events.cpp:2441
+#: src/menu_events.cpp:2294 src/menu_events.cpp:2300 src/menu_events.cpp:2325
 msgid "friends list"
 msgstr "seznam přátel"
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2300
 msgid "Added to friends list: $nick"
 msgstr "Přidáni do seznamu přátel: $nick"
 
 # jaký je to rod? zdá se, že to vypíše celý seznam
-#: src/menu_events.cpp:2431
+#: src/menu_events.cpp:2315
 msgid "Removed from list: $nick"
 msgstr "Smazáni ze seznamu: $nick"
 
-#: src/menu_events.cpp:2431 src/menu_events.cpp:2449
+#: src/menu_events.cpp:2315 src/menu_events.cpp:2333
 msgid "friends and ignores list"
 msgstr "seznam otrapů a přátel."
 
-#: src/menu_events.cpp:2449
+#: src/menu_events.cpp:2333
 msgid "There are no players on your friends or ignore list."
 msgstr "Ve Vašem seznamu přátel nebo otrapů nejsou žádní hráči."
 
-#: src/menu_events.cpp:2454
+#: src/menu_events.cpp:2338
 msgid "version"
 msgstr "verze"
 
-#: src/menu_events.cpp:2470
+#: src/menu_events.cpp:2354
 msgid "registering with password *** and no email address"
 msgstr "registruji s heslem *** a bez e-mailové adresy"
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2358
 msgid "registering with password *** and email address $email"
 msgstr "registruji s heslem *** a adresou $email"
 
-#: src/menu_events.cpp:2477 src/menu_events.cpp:2488 src/menu_events.cpp:2506
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2361 src/menu_events.cpp:2372 src/menu_events.cpp:2390
+#: src/menu_events.cpp:2404
 msgid "nick registration"
 msgstr "registrace přezdívky"
 
-#: src/menu_events.cpp:2488
+#: src/menu_events.cpp:2372
 msgid "dropping your username"
 msgstr "mazání přezdívky"
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2390
 msgid "setting $var to $value"
 msgstr "nastavuji $var na $value"
 
-#: src/menu_events.cpp:2520
+#: src/menu_events.cpp:2404
 msgid "requesting information for user $nick"
 msgstr "vyžaduji informace o uživateli $nick"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2521
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Nenašel jsem popisek ani jednotku obsahující řetězec „$search“."
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2560
 msgid "Can't droid invalid side: '$side'."
 msgstr "Nelze „droidovat“ neplatnou stranu „$side|“."
 
-#: src/menu_events.cpp:2681
+#: src/menu_events.cpp:2565
 msgid "Can't droid networked side: '$side'."
 msgstr "Nelze „droidovat“ síťovou stranu „$side|“."
 
-#: src/menu_events.cpp:2699
+#: src/menu_events.cpp:2583
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Nelze „droidovat“ neplatnou stranu „$side|“."
 
-#: src/menu_events.cpp:2715
+#: src/menu_events.cpp:2599
 msgid "Can't idle invalid side: '$side'."
 msgstr "Strau „$side“ nelze označit jako nečinnou."
 
-#: src/menu_events.cpp:2720
+#: src/menu_events.cpp:2604
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Nelze „droidovat“ síťovou stranu „$side|“."
 
-#: src/menu_events.cpp:2725
+#: src/menu_events.cpp:2609
 #, fuzzy
 #| msgid "Can't idle invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Strau „$side“ nelze označit jako nečinnou."
 
-#: src/menu_events.cpp:2774
+#: src/menu_events.cpp:2658
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Nelze změnit vlastníka neplatné strany „$side|“."
 
-#: src/menu_events.cpp:2784
+#: src/menu_events.cpp:2668
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Nelze změnit vlastníka strany „$side|“ - mimo rozsah platných stran."
 
-#: src/menu_events.cpp:2799
+#: src/menu_events.cpp:2683
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Nelze se dotázat na vlastníka neplatné strany „$side“."
 
-#: src/menu_events.cpp:2805
+#: src/menu_events.cpp:2689
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Nelze změnit vlastníka strany „$side“ - mimo rozsah platných stran."
 
-#: src/menu_events.cpp:2925
+#: src/menu_events.cpp:2812
 msgid "Layers"
 msgstr "Vrstvy"
 
-#: src/menu_events.cpp:2987
+#: src/menu_events.cpp:2874
 msgid "Choose Scenario (Debug!)"
 msgstr "Vybrat scénář (Ladění!)"
 
-#: src/menu_events.cpp:3021
+#: src/menu_events.cpp:2908
 msgid "Debug mode activated!"
 msgstr "Ladící mód je aktivní!"
 
-#: src/menu_events.cpp:3024
+#: src/menu_events.cpp:2911
 msgid "Debug mode not available in network games"
 msgstr "Ladící mód nelze spustit během síťové hry"
 
-#: src/menu_events.cpp:3029
+#: src/menu_events.cpp:2916
 msgid "Debug mode deactivated!"
 msgstr "Ladící mód byl ukončen!"
 
-#: src/menu_events.cpp:3045
+#: src/menu_events.cpp:2932
 msgid "Unsafe Lua scripts."
 msgstr "Nebezpečné Lua skripty."
 
-#: src/menu_events.cpp:3046
+#: src/menu_events.cpp:2933
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -7672,15 +7647,15 @@ msgstr ""
 "nad tvým počítačem. A pokud chceš přesto pokračovat, nestěžuj si pak, že jsi "
 "nebyl varován. Byl jsi."
 
-#: src/menu_events.cpp:3049
+#: src/menu_events.cpp:2936
 msgid "Unsafe mode enabled!"
 msgstr "Bezpečnostní mód byl vypnut!"
 
-#: src/menu_events.cpp:3093
+#: src/menu_events.cpp:2980
 msgid "Variable not found"
 msgstr "Proměnná nenalezena"
 
-#: src/menu_events.cpp:3138
+#: src/menu_events.cpp:3025
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7688,27 +7663,27 @@ msgstr ""
 "Neplatná příslušnost '$alignment', musí být jedna z 'lawful', 'neutral', "
 "'chaotic' nebo 'liminal'."
 
-#: src/menu_events.cpp:3153
+#: src/menu_events.cpp:3040
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Přejete si smazat z nápovědy všechny spatřené druhy jednotek?"
 
-#: src/menu_events.cpp:3167
+#: src/menu_events.cpp:3054
 msgid "Invalid unit type"
 msgstr "Neplatný druh jednotky"
 
-#: src/menu_events.cpp:3175
+#: src/menu_events.cpp:3062
 msgid "Invalid location"
 msgstr "Neplatná lokace"
 
-#: src/menu_events.cpp:3222
+#: src/menu_events.cpp:3109
 msgid "ai"
 msgstr "AI"
 
-#: src/menu_events.cpp:3230 src/menu_events.cpp:3258
+#: src/menu_events.cpp:3117 src/menu_events.cpp:3145
 msgid "prompt^Command:"
 msgstr "Příkaz:"
 
-#: src/mouse_events.cpp:886
+#: src/mouse_events.cpp:885
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7716,13 +7691,11 @@ msgstr ""
 "Pokud má vůdce naplánováno verbování nebo přivolávání, nelze jím pohnout z "
 "tvrze."
 
-#: src/mouse_events.cpp:1065 src/mouse_events.cpp:1083
-msgid "Attack Enemy"
-msgstr "Napadni nepřítele"
-
-#: src/mouse_events.cpp:1084
-msgid "Choose weapon:"
-msgstr "Vyber si zbraň:"
+#: src/mouse_events.cpp:970
+#, fuzzy
+#| msgid "No usable weapon"
+msgid "This unit has no usable weapons."
+msgstr "Žádná použitelná zbraň"
 
 #: src/mp_ui_alerts.cpp:69
 msgid "A player has joined"
@@ -7776,39 +7749,39 @@ msgstr "Nepodařilo se přidat soket do souboru soketů"
 msgid "Could not send initial handshake"
 msgstr "Nemohu poslat žádost o spojení"
 
-#: src/pathfind/pathfind.cpp:714
+#: src/pathfind/pathfind.cpp:718
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Nalezen terén s cenou pohybu menší než 1."
 
-#: src/play_controller.cpp:232
+#: src/play_controller.cpp:269
 msgid "time left for current turn"
 msgstr "zbývající čas do konce tohoto tahu"
 
-#: src/play_controller.cpp:234 src/replay_controller.cpp:177
+#: src/play_controller.cpp:271 src/replay_controller.cpp:132
 msgid "current local time"
 msgstr "skutečný čas (hodiny)"
 
-#: src/play_controller.cpp:920
+#: src/play_controller.cpp:1002
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 "Je porušen souběh her a pokračování ve hře nemá smysl. Chcete hru uložit?"
 
-#: src/play_controller.cpp:921 src/replay_controller.cpp:410
+#: src/play_controller.cpp:1003
 msgid "Error details:"
 msgstr "Podrobnosti chyby:"
 
 # chybové hlášení nebo jenom upozornění?
-#: src/playmp_controller.cpp:159
+#: src/playmp_controller.cpp:152
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Vracení pohybu ještě nebylo odesláno na server."
 
-#: src/playmp_controller.cpp:295
+#: src/playmp_controller.cpp:288
 msgid "Waiting for next scenario..."
 msgstr "Čekám na další scénář..."
 
-#: src/playmp_controller.cpp:375
+#: src/playmp_controller.cpp:368
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7823,161 +7796,66 @@ msgstr ""
 "\n"
 "Přeješ si uložit záznam chyb hry?"
 
-#: src/playmp_controller.cpp:412
+#: src/playmp_controller.cpp:411
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:139
-msgid "Remaining gold: "
-msgstr "Zbývající zlato: "
-
-#: src/playsingle_controller.cpp:143
-msgid "Turns finished early: "
-msgstr "Zbývajících kol: "
-
-#: src/playsingle_controller.cpp:144
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "na kolo"
-
-#: src/playsingle_controller.cpp:144
-msgid "Early finish bonus: "
-msgstr "Bonus za rychlý konec: "
-
-#: src/playsingle_controller.cpp:145
-#, fuzzy
-#| msgid "Turn bonus: "
-msgid "Total bonus: "
-msgstr "Bonus za kolo: "
-
 #: src/playsingle_controller.cpp:147
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "Zlato/Vesnice: "
-
-#: src/playsingle_controller.cpp:150
-#, fuzzy
-#| msgid "Carry over percentage: "
-msgid "Carryover percentage: "
-msgstr "Podíl přenesených peněz: "
-
-#: src/playsingle_controller.cpp:153
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "Bonusové zlato: "
-
-#: src/playsingle_controller.cpp:155
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "Zůstalo zlatých: "
-
-#: src/playsingle_controller.cpp:168
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatým."
-msgstr[1] ""
-"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
-msgstr[2] ""
-"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
-
-#: src/playsingle_controller.cpp:176
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem zlata."
-msgstr[1] "Příští scénář zahájíš s jeho definovaným minimem zlata."
-msgstr[2] "Příští scénář zahájíš s jeho definovaným minimem zlata."
-
-#: src/playsingle_controller.cpp:184
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Příští scénář zahájíš buď s jedním zlatým nebo jeho definovaným minimem; "
-"použita je vyšší částka."
-msgstr[1] ""
-"Příští scénář zahájíš buď se $gold zlatými nebo jeho definovaným minimem; "
-"použita je vyšší částka."
-msgstr[2] ""
-"Příští scénář zahájíš buď s $gold zlatými nebo jeho definovaným minimem; "
-"použita je vyšší částka."
-
-#: src/playsingle_controller.cpp:208
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Chyba"
 
-#: src/playsingle_controller.cpp:209
+#: src/playsingle_controller.cpp:148
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:285
 msgid "The game is over."
 msgstr "Hra skončila."
 
-#: src/playsingle_controller.cpp:359
+#: src/playsingle_controller.cpp:325
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chcete ji uložit?"
 
-#: src/playsingle_controller.cpp:547
+#: src/playsingle_controller.cpp:417
 msgid "It is now $name|’s turn"
 msgstr "Na tahu je $name"
 
-#: src/playturn.cpp:261
+#: src/playturn.cpp:252
 msgid "Replace with AI"
 msgstr "Nahraď umělou inteligencí"
 
-#: src/playturn.cpp:262
+#: src/playturn.cpp:253
 msgid "Replace with local player"
 msgstr "Nahraď místním hráčem"
 
-#: src/playturn.cpp:263
+#: src/playturn.cpp:254
 msgid "Set side to idle"
 msgstr "Nastavit stranu jako nečinnou"
 
-#: src/playturn.cpp:264
+#: src/playturn.cpp:255
 msgid "Save and abort game"
 msgstr "Ulož a ukonči hru"
 
-#: src/playturn.cpp:272 src/playturn.cpp:288
+#: src/playturn.cpp:263 src/playturn.cpp:279
 msgid "Replace with $player"
 msgstr "Nahraď hráčem $player"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:285
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player opustil(a) hru. Co s tím chceš dělat?"
 
-#: src/replay_controller.cpp:409
-msgid ""
-"The replay is corrupt/out of sync. It might not make much sense to continue. "
-"Do you want to save the game?"
-msgstr ""
-"Záznam je poškozený nebo je porušen souběh se hrou. Pokračování nemusí mít "
-"smysl. Chcete hru uložit?"
-
-#: src/reports.cpp:148 src/savegame.cpp:445
+#: src/reports.cpp:148 src/savegame.cpp:416
 msgid "Name: "
 msgstr "Jméno: "
 
@@ -8198,17 +8076,33 @@ msgstr "Šeré jednotky: "
 msgid "Observers:"
 msgstr "Pozorovatelé:"
 
+#: src/save_index.cpp:193
+msgid "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %H:%M %Y"
+
+#: src/save_index.cpp:193
+msgid "%a %b %d %I:%M %p %Y"
+msgstr "%a %b %d %I:%M %p %Y"
+
 #: src/save_index.cpp:222 src/save_index.cpp:224
 msgid " replay"
 msgstr " záznam"
 
-#: src/savegame.cpp:240 src/savegame.cpp:244
+#: src/savegame.cpp:102
+msgid "No Saved Games"
+msgstr "Žádné uložené hry"
+
+#: src/savegame.cpp:103
+msgid "There are no savefiles to load"
+msgstr ""
+
+#: src/savegame.cpp:219 src/savegame.cpp:223
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Upozornění: Soubor, který ses snažil načíst, je poškozený. Pokouším se "
 "pokračovat.\n"
 
-#: src/savegame.cpp:299
+#: src/savegame.cpp:270
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -8216,7 +8110,7 @@ msgstr ""
 "Tato uložená pozice je z příliš staré, nepodporované verze hry "
 "($version_number|) a nelze ji nahrát."
 
-#: src/savegame.cpp:307
+#: src/savegame.cpp:278
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -8224,60 +8118,69 @@ msgstr ""
 "Tato uložená pozice je z jiné verze hry ($version_number|). Chceš se ji "
 "opravdu pokusit nahrát?"
 
-#: src/savegame.cpp:349
+#: src/savegame.cpp:281
+msgid "Load Game"
+msgstr "Načti hru"
+
+#: src/savegame.cpp:320
 msgid "This is not a multiplayer save."
 msgstr "Toto není uložená pozice ze hry více hráčů."
 
-#: src/savegame.cpp:374
+#: src/savegame.cpp:345
 msgid "The game could not be saved: "
 msgstr "Hru se nepodařilo uložit: "
 
-#: src/savegame.cpp:445
+#: src/savegame.cpp:416
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Tato uložená pozice již existuje. Chceš ji přepsat?"
 
-#: src/savegame.cpp:446
+#: src/savegame.cpp:417
 msgid "Overwrite?"
 msgstr "Přepsat?"
 
-#: src/savegame.cpp:454
+#: src/savegame.cpp:425
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 "Jména uložených her by neměla končit „.gz“ nebo „.bz2“. Vymažte prosím "
 "příponu."
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:475
 msgid "Saved"
 msgstr "Uloženo"
 
-#: src/savegame.cpp:504
+#: src/savegame.cpp:475
 msgid "The game has been saved."
 msgstr "Hra byla uložena."
 
-#: src/savegame.cpp:535 src/savegame.cpp:555
+#: src/savegame.cpp:506 src/savegame.cpp:526
 msgid "Could not write to file"
 msgstr "Nemohu zapsat do souboru"
 
-#: src/savegame.cpp:588
+#: src/savegame.cpp:559
 msgid "Save Replay"
 msgstr "Uložení záznamu"
 
-#: src/savegame.cpp:597
+#: src/savegame.cpp:568
 msgid "replay"
 msgstr "záznam"
 
-#: src/savegame.cpp:618
+#: src/savegame.cpp:589
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Hru se nepodařilo automaticky uložit. Uložte ji prosím ručně."
 
-#: src/savegame.cpp:670
+#: src/savegame.cpp:641
 msgid "Save Game"
 msgstr "Ulož hru"
 
-#: src/scripting/game_lua_kernel.cpp:1697
-msgid "Invalid value in the result key for [end_level]"
-msgstr "Neplatná hodnota ve výsledném klíči 'result' pro [end_level]"
+#: src/savegame.cpp:652
+msgid "Turn"
+msgstr "Kolo"
+
+#: src/scripting/game_lua_kernel.cpp:2976
+#: src/scripting/game_lua_kernel.cpp:3011
+msgid "input"
+msgstr ""
 
 #: src/serialization/parser.cpp:133
 msgid "Unexpected characters at line start"
@@ -8475,7 +8378,7 @@ msgstr "Způsobená"
 msgid "Taken"
 msgstr "Přijatá"
 
-#: src/storyscreen/controller.cpp:158
+#: src/storyscreen/controller.cpp:161
 msgid "Skip"
 msgstr "Přeskočit"
 
@@ -8631,29 +8534,33 @@ msgstr "Říjen"
 msgid "September"
 msgstr "Září"
 
-#: src/strftime.cpp:73
+#: src/strftime.cpp:78
 msgid "%a %b %e %H:%M:%S %Y"
 msgstr "%a %b %d %H:%M:%S %Y"
 
-#: src/strftime.cpp:77
+#: src/strftime.cpp:82
 msgid "%a %d %b %Y %H:%M:%S %z"
 msgstr "%a %b %d %H:%M:%S %Y"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "AM"
 msgstr "Odpoledne"
 
-#: src/strftime.cpp:88
+#: src/strftime.cpp:93
 msgid "PM"
 msgstr "Dopoledne"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "am"
 msgstr "odpoledne"
 
-#: src/strftime.cpp:91
+#: src/strftime.cpp:96
 msgid "pm"
 msgstr "odpoledne"
+
+#: src/synced_user_choice.cpp:331
+msgid "waiting for $desc from side(s)$sides"
+msgstr ""
 
 #: src/terrain.cpp:184
 msgid "Allied village"
@@ -8683,88 +8590,145 @@ msgstr "Denní doba"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/unit.cpp:1695 src/unit.cpp:1916 src/unit.cpp:1997
+#: src/unit.cpp:1728 src/unit.cpp:2075 src/unit.cpp:2168
 #: src/unit_attack_type.cpp:152
 msgid " and "
 msgstr " a "
 
-#: src/unit.cpp:1706
+#: src/unit.cpp:1739
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:1767
+#: src/unit.cpp:1800
 msgid "moves"
 msgstr "kroků"
 
-#: src/unit.cpp:1797 src/unit.cpp:1940
+#: src/unit.cpp:1816
+#, fuzzy
+#| msgid "vision: "
+msgid "vision"
+msgstr "vidění:"
+
+#: src/unit.cpp:1830
+#, fuzzy
+#| msgid "Warning: "
+msgid "jamming"
+msgstr "Varování: "
+
+#: src/unit.cpp:1867 src/unit.cpp:2111
 msgid "XP to advance"
 msgstr "zkušenostních bodů k postupu"
 
-#: src/unit.cpp:1933
+#: src/unit.cpp:2028
+#, fuzzy
+#| msgid "per turn"
+msgid "attack per turn"
+msgstr "na kolo"
+
+#: src/unit.cpp:2029
+#, fuzzy
+#| msgid "per turn"
+msgid "attacks per turn"
+msgstr "na kolo"
+
+#: src/unit.cpp:2054
+msgid "cost to recall"
+msgstr ""
+
+#: src/unit.cpp:2092
 msgid " move"
 msgstr " krok"
 
-#: src/unit.cpp:1948
+#: src/unit.cpp:2098
+#, fuzzy
+#| msgid "vision: "
+msgid " vision"
+msgstr "vidění:"
+
+#: src/unit.cpp:2104
+#, fuzzy
+#| msgid "Warning: "
+msgid " jamming"
+msgstr "Varování: "
+
+#: src/unit.cpp:2119
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 
-#: src/unit_attack_type.cpp:235 src/unit_attack_type.cpp:315
+#: src/unit_attack_type.cpp:239 src/unit_attack_type.cpp:253
+#: src/unit_attack_type.cpp:380
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "poškození"
 msgstr[1] "poškození"
 msgstr[2] "poškození"
 
-#: src/unit_attack_type.cpp:246 src/unit_attack_type.cpp:322
+#: src/unit_attack_type.cpp:262 src/unit_attack_type.cpp:273
+#: src/unit_attack_type.cpp:387
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "úder"
 msgstr[1] "údery"
 msgstr[2] "úderů"
 
-#: src/unit_attack_type.cpp:258
+#: src/unit_attack_type.cpp:283 src/unit_attack_type.cpp:295
 #, no-c-format
 msgid "% accuracy"
 msgstr "% přesnosti"
 
-#: src/unit_attack_type.cpp:269
+#: src/unit_attack_type.cpp:304
+#, fuzzy
+#| msgid "% parry"
+msgid " parry"
+msgstr "% vykrývání"
+
+#: src/unit_attack_type.cpp:315
 #, no-c-format
 msgid "% parry"
 msgstr "% vykrývání"
 
-#: src/unit_types.cpp:850
+#: src/unit_attack_type.cpp:324 src/unit_attack_type.cpp:334
+#, fuzzy
+#| msgid "Movement Costs:"
+msgid "movement point"
+msgid_plural "movement points"
+msgstr[0] "Pohyb stojí:"
+msgstr[1] "Pohyb stojí:"
+msgstr[2] "Pohyb stojí:"
+
+#: src/unit_types.cpp:853
 msgid "female^lawful"
 msgstr "zákonná"
 
-#: src/unit_types.cpp:851
+#: src/unit_types.cpp:854
 msgid "female^neutral"
 msgstr "neutrální"
 
-#: src/unit_types.cpp:852
+#: src/unit_types.cpp:855
 msgid "female^chaotic"
 msgstr "chaotická"
 
-#: src/unit_types.cpp:853
+#: src/unit_types.cpp:856
 msgid "female^liminal"
 msgstr "šerá"
 
-#: src/whiteboard/manager.cpp:1080
+#: src/whiteboard/manager.cpp:1082
 msgid "SHOW ALL allies’ plans"
 msgstr "ZOBRAZIT VŠECHNY plány spojenců"
 
-#: src/whiteboard/manager.cpp:1081
+#: src/whiteboard/manager.cpp:1083
 msgid "HIDE ALL allies’ plans"
 msgstr "SKRÝT VŠECHNY plány spojenců"
 
-#: src/whiteboard/manager.cpp:1095
+#: src/whiteboard/manager.cpp:1097
 msgid "Show plans for $player"
 msgstr "Ukaž plány pro hráče $player"
 
-#: src/whiteboard/manager.cpp:1097
+#: src/whiteboard/manager.cpp:1099
 msgid "Hide plans for $player"
 msgstr "Skryj plány pro hráče $player"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1102
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
 
@@ -8777,6 +8741,104 @@ msgstr "Předměty"
 #: src/wmi_pager.cpp:51
 msgid "Previous Items"
 msgstr ""
+
+#~ msgid ""
+#~ "Use colored mouse cursors, which may be slower or break the game (use at "
+#~ "your own risk)"
+#~ msgstr ""
+#~ "Použít barevné kurzory, které ale mohou zpomalovat nebo zcela zaseknout "
+#~ "hru (použití na vlastní riziko)"
+
+#~ msgid "#(Invalid)"
+#~ msgstr "#(Neplatné)"
+
+#~ msgid "Campaign: $campaign_name"
+#~ msgstr "Tažení: $campaign_name"
+
+#~ msgid "Multiplayer"
+#~ msgstr "Hra více hráčů"
+
+#~ msgid "Tutorial"
+#~ msgstr "Výcvik"
+
+#~ msgid "Test scenario"
+#~ msgstr "Testovací scénář"
+
+#~ msgid "Scenario start"
+#~ msgstr "Začátek scénáře"
+
+#~ msgid "Difficulty: "
+#~ msgstr "Obtížnost: "
+
+#~ msgid "Version: "
+#~ msgstr "Verze: "
+
+#~ msgid "Attack Enemy"
+#~ msgstr "Napadni nepřítele"
+
+#~ msgid "Choose weapon:"
+#~ msgstr "Vyber si zbraň:"
+
+#~ msgid "English strings edition"
+#~ msgstr "Úpravy anglické verze textů"
+
+#~ msgid ""
+#~ "There are no saved games to load.\n"
+#~ "\n"
+#~ "(Games are saved automatically when you complete a scenario)"
+#~ msgstr ""
+#~ "Nemohu nahrát hru, protože nic není uloženo.\n"
+#~ "\n"
+#~ "(Hra se ukládá automaticky po dokončení scénáře)."
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Change difficulty"
+#~ msgstr "Změnit obtížnost: "
+
+#~ msgid "Change campaign difficulty before loading"
+#~ msgstr "Změnit obtížnost tažení před nahrátím"
+
+#~ msgid "Show replay"
+#~ msgstr "Ukaž záznamy"
+
+#~ msgid "Play the embedded replay from the saved game if applicable"
+#~ msgstr "Přehrát vložený záznam z uloženého souboru, pokud je použitelný"
+
+#~ msgid "Cancel orders"
+#~ msgstr "Zrušit příkazy"
+
+#~ msgid "Cancel any pending unit movements in the saved game"
+#~ msgstr "Přerušit všechny nedokončené přesuny jednotek v uložené hře"
+
+#~ msgid "Delete Save"
+#~ msgstr "Smaž pozici"
+
+#~ msgid "Activate"
+#~ msgstr "Aktivovat"
+
+#~ msgid "Deactivate"
+#~ msgstr "Vypnout"
+
+#~ msgid "Race"
+#~ msgstr "Národ"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "Vytvořit jednotku (Ladění!)"
+
+#~ msgid "gender^Random"
+#~ msgstr "Náhodné"
+
+#~ msgid ""
+#~ "The replay is corrupt/out of sync. It might not make much sense to "
+#~ "continue. Do you want to save the game?"
+#~ msgstr ""
+#~ "Záznam je poškozený nebo je porušen souběh se hrou. Pokračování nemusí "
+#~ "mít smysl. Chcete hru uložit?"
+
+#~ msgid "Invalid value in the result key for [end_level]"
+#~ msgstr "Neplatná hodnota ve výsledném klíči 'result' pro [end_level]"
 
 #~ msgid "Could not connect to host"
 #~ msgstr "Spojení s hostitelem se nezdařilo."

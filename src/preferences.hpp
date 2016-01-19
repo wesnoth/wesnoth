@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2015 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,8 @@ class config;
 class display;
 
 #include "terrain_translation.hpp"
+
+#include "SDL.h"
 
 #include <utility>
 
@@ -58,9 +60,6 @@ namespace preferences {
 	std::string core_id();
 	void set_core_id(const std::string& root);
 
-	bool fullscreen();
-	void _set_fullscreen(bool ison);
-
 	bool scroll_to_action();
 	void _set_scroll_to_action(bool ison);
 
@@ -69,6 +68,12 @@ namespace preferences {
 
 	std::pair<int,int> resolution();
 	void _set_resolution(const std::pair<int,int>& res);
+
+	bool maximized();
+	void _set_maximized(bool ison);
+
+	bool fullscreen();
+	void _set_fullscreen(bool ison);
 
 	bool turbo();
 	void _set_turbo(bool ison);

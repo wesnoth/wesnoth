@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2015 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -132,7 +132,7 @@ private:
 	std::vector<std::string> team_names_;
 	std::vector<std::string> user_team_names_;
 	std::vector<std::string> player_teams_;
-	
+
 	std::set<std::string>& connected_users_rw();
 };
 
@@ -246,9 +246,9 @@ private:
 	int gold_;
 	int income_;
 	// set during create_engines constructor never set after that.
-	// the name of the player who is preferred for this side, 
+	// the name of the player who is preferred for this side,
 	// if controller_ == reserved only this player can take this side.
-	// can also be a number of a side if this side shoudl be controlled 
+	// can also be a number of a side if this side shoudl be controlled
 	// by the player who controlls  that side
 	std::string reserved_for_;
 	std::string player_id_;
