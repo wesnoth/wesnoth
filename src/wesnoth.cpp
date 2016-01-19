@@ -1033,6 +1033,12 @@ int main(int argc, char** argv)
 			else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
 				auto_dir = filesystem::normalize_path(exe_dir + "/..");
 			}
+			// In Windows debug builds, the EXE is placed away from the game data dir
+			// (in projectfiles\VCx\Debug), but the working directory is set to the
+			// game data dir. Thus, check if the working dir is the game data dir.
+			else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
+				auto_dir = filesystem::get_cwd();
+			}
 
 			if(!auto_dir.empty()) {
 				std::cerr << "Automatically found a possible data directory at "
