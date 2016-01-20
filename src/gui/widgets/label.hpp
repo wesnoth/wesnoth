@@ -63,6 +63,7 @@ public:
 
 	void set_link_color(const std::string & color);
 
+	virtual bool can_mouse_focus() const OVERRIDE { return false; }
 private:
 	/**
 	 * Possible states of the widget.
