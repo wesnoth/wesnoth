@@ -383,7 +383,7 @@ int intf_set_dialog_value(lua_State *L)
 	}
 	else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w))
 	{
-		s->set_value(luaW_toboolean(L, 1));
+		s->set_value(luaL_checkinteger(L, 1));
 	}
 	else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w))
 	{
@@ -438,7 +438,7 @@ int intf_get_dialog_value(lua_State *L)
 	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
 		lua_pushinteger(L, l->get_selected_page() + 1);
 	} else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w)) {
-		lua_pushboolean(L, s->get_value());
+		lua_pushinteger(L, s->get_value());
 	} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
 		lua_pushstring(L, t->get_value().c_str());
 	} else if (gui2::tslider *s = dynamic_cast<gui2::tslider *>(w)) {
