@@ -46,8 +46,9 @@ twidget* tbuilder_combobox::build() const
 	init_control(widget);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
-	widget->set_values(options_);
-
+	if(!options_.empty()) {
+		widget->set_values(options_);
+	}
 	DBG_GUI_G << "Window builder: placed combobox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
