@@ -23,10 +23,11 @@ namespace gui2
 class tdrop_down_list : public tdialog
 {
 public:
-	tdrop_down_list(SDL_Rect button_pos, const std::vector<std::string>& items, int selected_item)
+	tdrop_down_list(SDL_Rect button_pos, const std::vector<std::string>& items, int selected_item, bool use_markup)
 		: button_pos_(button_pos)
 		, items_(items)
 		, selected_item_(selected_item)
+		, use_markup_(use_markup)
 	{
 	}
 	int selected_item() const { return selected_item_; }
@@ -37,6 +38,7 @@ private:
 	SDL_Rect button_pos_;
 	std::vector<std::string> items_;
 	int selected_item_;
+	bool use_markup_;
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 

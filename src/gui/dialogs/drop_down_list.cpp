@@ -56,8 +56,10 @@ void tdrop_down_list::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "list", true);
 	std::map<std::string, string_map> data;
 	t_string& label = data["label"]["label"];
+	t_string& use_markup = data["label"]["use_markup"];
 	FOREACH(const AUTO& str, items_) {
 		label = str;
+		use_markup = use_markup_ ? "true" : "false";
 		list.add_row(data);
 	}
 	list.select_row(selected_item_);

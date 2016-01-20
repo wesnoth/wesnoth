@@ -139,7 +139,7 @@ void tcombobox::signal_handler_left_button_click(const event::tevent event,
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	tdrop_down_list droplist(this->get_rectangle(), this->values_, this->selected_);
+	tdrop_down_list droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
 
 	if(droplist.show(get_window()->video())) {
 		selected_ = droplist.selected_item();
