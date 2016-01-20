@@ -54,6 +54,8 @@ public:
 		return label();
 	}
 
+	virtual bool can_mouse_focus() const OVERRIDE { return false; }
+
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:

@@ -342,6 +342,10 @@ private:
 
 public:
 	/**
+	 * Whether the mouse move/click event go 'through' this widget.
+	 */
+	virtual bool can_mouse_focus() const { return true; }
+	/**
 	 * Can the widget wrap.
 	 *
 	 * When a widget can wrap it can reduce its width by increasing its

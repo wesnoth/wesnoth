@@ -184,6 +184,7 @@ public:
 		return child(row, col).widget();
 	}
 
+	virtual bool can_mouse_focus() const OVERRIDE { return false; }
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::layout_initialise. */
