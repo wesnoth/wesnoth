@@ -147,9 +147,8 @@ void tslider::set_maximum_value(const int maximum_value)
 
 t_string tslider::get_value_label() const
 {
-	if(!value_labels_.empty()) {
-		assert(value_labels_.size() == get_item_count());
-		return value_labels_[get_item_position()];
+	if(value_labels_) {
+		return value_labels_(get_item_position(), get_item_count());
 	} else if(!minimum_value_label_.empty() && get_value()
 											   == get_minimum_value()) {
 		return minimum_value_label_;
@@ -290,6 +289,19 @@ void tslider::signal_handler_left_button_up(const event::tevent event,
 	get_window()->keyboard_capture(this);
 
 	handled = true;
+}
+namespace {
+	t_string default_value_label_generator(const std::vector<t_string>& value_labels, int item_position, int max)
+	{
+		assert(value_labels.size() == max);
+		assert(item_position < max && item_position >= 0);
+		return value_labels[item_position];
+	}
+}
+void tslider::set_value_labels(const std::vector<t_string>& value_labels)
+{
+	//dont use boost::ref becasue we want to store value_labels in the cloasure.
+	set_value_labels(boost::bind(&default_value_label_generator, value_labels, _1, _2));
 }
 
 } // namespace gui2

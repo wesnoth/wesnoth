@@ -63,7 +63,7 @@ public:
 	{
 		return minimum_value_ + get_item_count() - 1;
 	}
-
+	typedef boost::function<t_string(int /*current position*/, int /*num positions*/)> tlabel_creator;
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_slider_length(const unsigned length)
@@ -82,7 +82,9 @@ public:
 		maximum_value_label_ = maximum_value_label;
 	}
 
-	void set_value_labels(const std::vector<t_string>& value_labels)
+	void set_value_labels(const std::vector<t_string>& value_labels);
+
+	void set_value_labels(const tlabel_creator& value_labels)
 	{
 		value_labels_ = value_labels;
 	}
@@ -164,7 +166,7 @@ private:
 	 * sliders. When set these texts are shown instead of the values. It also
 	 * overrides minimum_value_label_ and maximum_value_label_.
 	 */
-	std::vector<t_string> value_labels_;
+	tlabel_creator value_labels_;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
