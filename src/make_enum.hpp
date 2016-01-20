@@ -161,6 +161,9 @@ struct NAME : public enum_tag \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \
 		throw bad_enum_cast( #NAME , str); \
 	} \
+	/** Sets *this to the value given in str, does nothing if str was not valid enum value. */ \
+	/** @returns true iff @a str was a valid enum value. */ \
+	/** @param TStr a std::string or a string_span (from the wesnothd code). */ \
 	template<typename TStr> \
 	bool parse (const TStr& str) \
 	{ \
