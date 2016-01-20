@@ -34,6 +34,7 @@
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
+#include "gui/auxiliary/window_builder/combobox.hpp"
 #include "gui/auxiliary/window_builder/drawing.hpp"
 #include "gui/auxiliary/window_builder/pane.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
@@ -194,6 +195,12 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
  * in the final binary only if the #if is enabled.
  *
  * If this code is executed, which it will cause an assertion failure.
+ *
+ * Its likeley that this happens becasue some build this as a library file
+ * which is then used by the wesnoth executable. For msvc a good try to fix
+ * this issue is to add __pragma(comment(linker, "/include:" #TYPE)) or
+ * similar in the REGISTER_WIDGET3 macro. For gcc and similar this can only
+ * be fixed by using --whole-archive flag when linking this library.
  */
 #if 1
 #define TRY(name)                                                              \
@@ -217,6 +224,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(matrix);
 	TRY(minimap);
 	TRY(button);
+	TRY(combobox);
 	TRY(drawing);
 	TRY(password_box);
 #undef TRY
