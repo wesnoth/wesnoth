@@ -20,6 +20,7 @@ Example contents.
 
 [rasection="WML/Lua compatibility changes and deprecations"]
 [list]
+[*]wesnoth.set/get_dialog_value now takes/returns an integer (0 or 1) instead of a boolean for toggelbuttons and toggelpanels. The reason is that wesnoth now also supports tristate buttons and comboboxes where it can returns values other than 0 or 1.
 [/list]
 [/rasection]
 
