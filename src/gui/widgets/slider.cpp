@@ -293,7 +293,7 @@ void tslider::signal_handler_left_button_up(const event::tevent event,
 namespace {
 	t_string default_value_label_generator(const std::vector<t_string>& value_labels, int item_position, int max)
 	{
-		assert(value_labels.size() == max);
+		assert(int(value_labels.size()) == max);
 		assert(item_position < max && item_position >= 0);
 		return value_labels[item_position];
 	}
