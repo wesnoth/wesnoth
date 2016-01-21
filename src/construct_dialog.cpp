@@ -42,7 +42,7 @@ namespace gui {
 //note: style names are directly related to the panel image file names
 const dialog::style& dialog::default_style = dialog_frame::default_style;
 const dialog::style& dialog::message_style = dialog_frame::message_style;
-const dialog::style dialog::hotkeys_style("menu2", 0);
+const dialog::style dialog::hotkeys_style("menu", 0);
 const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
 const size_t dialog::left_padding = font::relative_size(10);
