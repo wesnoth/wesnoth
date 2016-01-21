@@ -85,7 +85,7 @@ void tcombobox::set_state(const tstate state)
 
 const std::string& tcombobox::get_control_type() const
 {
-	static const std::string type = "button";
+	static const std::string type = "combobox";
 	return type;
 }
 
