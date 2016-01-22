@@ -66,6 +66,10 @@ ttree_view_node::ttree_view_node(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2));
+					icon_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+							&ttree_view_node::signal_handler_left_button_click,
+							this,
+							_2), event::tdispatcher::back_post_child);
 				}
 
 				if(parent_node_ && parent_node_->icon_) {
