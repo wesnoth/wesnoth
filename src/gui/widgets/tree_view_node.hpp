@@ -190,6 +190,8 @@ public:
 	*/
 	std::vector<int> describe_path();
 private:
+
+	int calculate_ypos();
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 

@@ -157,7 +157,7 @@ ttree_view_node& ttree_view_node::add_child(
 	assert(height_modification > 0);
 
 	// Request new size.
-	tree_view().resize_content(width_modification, height_modification);
+	tree_view().resize_content(width_modification, height_modification, -1, itor->calculate_ypos());
 
 	return *itor;
 }
@@ -238,7 +238,7 @@ void ttree_view_node::clear()
 		return;
 	}
 
-	tree_view().resize_content(0, -height_reduction);
+	tree_view().resize_content(0, -height_reduction,  -1, calculate_ypos());
 }
 
 struct ttree_view_node_implementation
@@ -338,7 +338,7 @@ bool ttree_view_node::disable_click_dismiss() const
 
 tpoint ttree_view_node::get_current_size(bool assume_visible) const
 {
-	if(parent_node_ && parent_node_->is_folded() && !assume_visible) {
+	if(!assume_visible && parent_node_ && parent_node_->is_folded()) {
 		return tpoint(0, 0);
 	}
 
@@ -561,7 +561,7 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 		const int height_modification = new_size.y - current_size.y;
 		assert(height_modification <= 0);
 
-		tree_view().resize_content(width_modification, height_modification);
+		tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
 	} else {
 
 		// From folded to unfolded.
@@ -576,7 +576,7 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 		const int height_modification = new_size.y - current_size.y;
 		assert(height_modification >= 0);
 
-		tree_view().resize_content(width_modification, height_modification);
+		tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
 	}
 }
 
@@ -676,5 +676,19 @@ std::vector<int> ttree_view_node::describe_path()
 		assert(!"tree_view_node was not found in parent nodes children");
 		throw "assertion ignored"; //To silence 'no return value in this codepath' warning.
 	}
+}
+int ttree_view_node::calculate_ypos()
+{
+	if(!parent_node_) {
+		return 0;
+	}
+	int res = parent_node_->calculate_ypos();
+	FOREACH(const AUTO& node, parent_node_->children_) {
+		if(&node == this) {
+			break;
+		}
+		res += node.get_current_size(true).y;
+	}
+	return res;
 }
 } // namespace gui2
