@@ -23,7 +23,6 @@ namespace gui2
 {
 
 class tselectable_;
-class ttoggle_button;
 class ttree_view;
 
 class ttree_view_node : public twidget
@@ -226,7 +225,7 @@ private:
 	const std::vector<tnode_definition>& node_definitions_;
 
 	/** The icon to show the folded state. */
-	ttoggle_button* icon_;
+	tselectable_* icon_;
 
 	/** The label to show our selected state. */
 	tselectable_* label_;

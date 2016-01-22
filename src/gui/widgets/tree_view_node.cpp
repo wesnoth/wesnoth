@@ -57,19 +57,19 @@ ttree_view_node::ttree_view_node(
 				node_definition.builder->build(&grid_);
 				init_grid(&grid_, data);
 
-				icon_ = find_widget<ttoggle_button>(
-						&grid_, "tree_view_node_icon", false, false);
+				twidget* icon_widget = grid_.find("tree_view_node_icon", false);
+				icon_ = dynamic_cast<tselectable_*>(icon_widget);
 
 				if(icon_) {
-					icon_->set_visible(twidget::tvisible::hidden);
-					icon_->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+					icon_widget->set_visible(twidget::tvisible::hidden);
+					icon_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2));
 				}
 
 				if(parent_node_ && parent_node_->icon_) {
-					parent_node_->icon_->set_visible(
+					dynamic_cast<twidget&>(*parent_node_->icon_).set_visible(
 							twidget::tvisible::visible);
 				}
 
