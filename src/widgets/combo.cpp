@@ -17,9 +17,8 @@
 #include "global.hpp"
 
 #include "widgets/combo.hpp"
+#include "construct_dialog.hpp"
 #include "display.hpp"
-#include "show_dialog.hpp"
-
 
 namespace gui {
 
@@ -75,7 +74,8 @@ void combo::make_drop_down_menu()
 {
 	SDL_Rect const &loc = location();
 	set_selected_internal(gui::show_dialog(*disp_, NULL, "", "", gui::MESSAGE, &items_,
-	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h));
+	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h,
+	                                       &gui::dialog::hotkeys_style));
 }
 
 void combo::process_event()
