@@ -1,17 +1,20 @@
 Version 1.13.2+dev:
- * Greatly improved SDL2 support. SDL2 is now the default build.
-   * Fix bug #18112: Color cursor causes slow mouse movement at menus
-   * Fix bug #20332: Cursor not mapping correctly on Retina display when in Windowed mode
-   * Fix bug #24138: SDL2 crash on resize after starting a game and returning to title screen
-   * Fix bug #23908: SDL2 SDL_BlitSurface Causes Crashes
-   * Fix bug #23821: Text input is broken in GUI1 under SDL2
-   * Fix bug #23820: SDL 2 alpha blending issues
-   * Fix bug #23918: UI Graphics in OS X 10.11 El Capitan
-   * Fix bug #18112: Color cursor causes slow mouse movement at menus
-   * Fix bug #24214: SDL2 build handles fullscreen toggle badly
-   * Fix bug #23934: Resize actions are laggy
-   * Fix bug #24209: Screen becomes black upon minimise and restore
-   * Fix bug #24213: SDL2 build leaves menu items stuck if window dimensions change when open
+ * Greatly improved SDL 2 support. SDL 2 is now used by default build when
+   building. This fixes the following bugs, among others:
+   * Bug #18112: Color cursors cause slow mouse movement at menus
+   * Bug #20332: Cursor not mapping correctly on Retina display when in Windowed
+     mode
+   * Bug #24138: SDL 2 crash on resize after starting a game and returning to
+     the title screen
+   * Bug #23908: SDL 2 SDL_BlitSurface causes crashes
+   * Bug #23821: Text input is broken in GUI1 under SDL 2
+   * Bug #23820: SDL 2 alpha blending issues
+   * Bug #23918: UI graphics garbled on OS X 10.11 El Capitan
+   * Bug #24214: SDL 2 build handles fullscreen toggle badly
+   * Bug #23934: Resize actions are laggy
+   * Bug #24209: Screen becomes black upon minimise and restore
+   * Bug #24213: SDL 2 build leaves menu items stuck if window dimensions
+     change while open
  * Campaigns:
    * Liberty:
      * Added some animations for the Rogue Mage line.
@@ -31,6 +34,7 @@ Version 1.13.2+dev:
  * Sound effects:
    * Fixed various subtle timing problems with attack sounds.
  * User Interface:
+   * GUI1 comboboxes now use the thinner menu frame style.
    * Implemented a new GUI2 Attack dialog
    * Added gui2 comboboxes.
  * WML engine:
