@@ -15,7 +15,6 @@
 #pragma once
 
 #include "gui/widgets/control.hpp"
-#include "gui/widgets/clickable.hpp"
 #include "gui/widgets/selectable.hpp"
 
 namespace gui2
@@ -24,7 +23,7 @@ namespace gui2
 /**
  * Simple push button.
  */
-class tcombobox : public tcontrol, public tclickable_, public tselectable_
+class tcombobox : public tcontrol, public tselectable_
 {
 public:
 	tcombobox();

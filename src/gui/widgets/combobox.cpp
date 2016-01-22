@@ -37,7 +37,7 @@ REGISTER_WIDGET(combobox)
 
 tcombobox::tcombobox() 
 	: tcontrol(COUNT)
-	, tclickable_()
+	, tselectable_()
 	, state_(ENABLED)
 	, retval_(0)
 	, values_()
