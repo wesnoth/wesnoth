@@ -926,7 +926,7 @@ static void wesnoth_terminate_handler(int) {
 }
 #endif
 
-#ifdef _WIN32
+#if defined(_OPENMP) && _MSC_VER >= 1600
 static void restart_process(const std::vector<std::string>& commandline)
 {
 	wchar_t process_path[MAX_PATH];
