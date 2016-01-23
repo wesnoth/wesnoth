@@ -44,7 +44,7 @@ public:
 		(EMPTY, "null")
 	)
 
-	game(PlayerMap& player_connections, socket_ptr host,
+	game(PlayerConnections& player_connections, socket_ptr host,
 			const std::string& name="", bool save_replays=false,
 			const std::string& replay_save_path="");
 	~game();
@@ -345,7 +345,7 @@ private:
 	/** Helps debugging controller tweaks. */
 	std::string debug_sides_info() const;
 
-	PlayerMap& player_connections_;
+	PlayerConnections& player_connections_;
 
 	static int id_num;
 	int id_;

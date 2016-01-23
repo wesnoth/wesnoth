@@ -21,19 +21,60 @@
 
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/bimap/bimap.hpp>
-#include <boost/bimap/unordered_set_of.hpp>
+
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/member.hpp>
+#include <boost/multi_index/mem_fun.hpp>
+#include <boost/multi_index/ordered_index.hpp>
+#include <boost/multi_index/hashed_index.hpp>
+
+namespace wesnothd
+{
 
 typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
 
-typedef boost::bimaps::bimap<
-		boost::bimaps::unordered_set_of<socket_ptr>, 
-		boost::bimaps::unordered_set_of<std::string>,
-		boost::bimaps::with_info<wesnothd::player> > PlayerMap;
+class PlayerRecord
+{
+	const socket_ptr socket_;
+	mutable player player_;
+	boost::shared_ptr<game> game_;
+
+	public:
+
+	const socket_ptr socket() const { return socket_; }
+	player& info() const { return player_; }
+	const std::string& name() const { return player_.name(); }
+	const boost::shared_ptr<game> get_game() const;
+	boost::shared_ptr<game>& get_game();
+	int game_id() const;
+	static void set_game(PlayerRecord&, boost::shared_ptr<game>);
+	static void enter_lobby(PlayerRecord&);
+
+	PlayerRecord(const socket_ptr socket, const player& player) : socket_(socket), player_(player) {}
+};
+
+struct socket_t{};
+struct name_t{};
+struct game_t{};
+
+using namespace boost::multi_index;
+
+typedef multi_index_container<
+	PlayerRecord,
+	indexed_by<
+		ordered_unique<
+			tag<socket_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(PlayerRecord,const socket_ptr,socket)>,
+		hashed_unique<
+			tag<name_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(PlayerRecord,const std::string&,name)>,
+		ordered_non_unique<
+			tag<game_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(PlayerRecord,int,game_id)>
+	>
+> PlayerConnections;
 
 void send_to_player(socket_ptr socket, simple_wml::document& doc);
 
-template<typename Container> void send_to_players(simple_wml::document& data, const Container& players, socket_ptr exclude = socket_ptr())
+template<typename Container>
+void send_to_players(simple_wml::document& data, const Container& players, socket_ptr exclude = socket_ptr())
 {
 	typename Container::const_iterator iter = players.begin(), iter_end = players.end();
 	for(;iter != iter_end; ++iter)
@@ -44,5 +85,7 @@ template<typename Container> void send_to_players(simple_wml::document& data, co
 void send_server_message(socket_ptr socket, const std::string& message);
 
 std::string client_address(socket_ptr socket);
+
+} // namespace wesnothd
 
 #endif

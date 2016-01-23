@@ -25,6 +25,9 @@ static lg::log_domain log_server("server");
 #define LOG_SERVER LOG_STREAM(info, log_server)
 #define DBG_SERVER LOG_STREAM(debug, log_server)
 
+namespace wesnothd
+{
+
 Room::Room(const std::string& name) : name_(name)
 {
 	LOG_SERVER << "Created room '" << name_ << "'\n";
@@ -35,7 +38,7 @@ Room::~Room()
 	LOG_SERVER << "Destroyed room '" << name_ << "'\n";
 }
 
-RoomList::RoomList(PlayerMap& player_connections) : lobby_(make_room("lobby")), player_connections_(player_connections)
+RoomList::RoomList(PlayerConnections& player_connections) : lobby_(make_room("lobby")), player_connections_(player_connections)
 {
 }
 
@@ -142,3 +145,5 @@ Room& RoomList::room(const std::string& room_name)
 	
 	return *(iter->info);
 }
+
+} // namespace wesnothd

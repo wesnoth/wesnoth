@@ -22,7 +22,6 @@
 #include "player.hpp"
 #include "simple_wml.hpp"
 #include "player_connection.hpp"
-#include "rooms.hpp"
 
 #include "utils/boost_function_guarded.hpp"
 #include <boost/scoped_ptr.hpp>
@@ -30,6 +29,9 @@
 #include <boost/ptr_container/ptr_vector.hpp>
 
 #include <boost/asio/signal_set.hpp>
+
+namespace wesnothd
+{
 
 class server
 {
@@ -66,12 +68,17 @@ private:
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
 	void handle_message(socket_ptr socket, simple_wml::node& message);
-	void handle_room_join(socket_ptr socket, simple_wml::node& room_join);
-	void handle_room_part(socket_ptr socket, simple_wml::node& room_join);
-	void handle_room_query(socket_ptr socket, simple_wml::node& room_query);
 	void handle_create_game(socket_ptr socket, simple_wml::node& create_game);
+	void create_game(PlayerRecord& host, simple_wml::node& create_game);
 	void handle_join_game(socket_ptr socket, simple_wml::node& join);
 	void remove_player(socket_ptr socket);
+
+	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr()) const;
+	bool player_is_in_game(socket_ptr socket) const {
+		return bool(player_connections_.find(socket)->get_game());
+	}
 
 	wesnothd::ban_manager ban_manager_;
 
@@ -113,13 +120,9 @@ private:
 	//wesnothd::player_map players_;
 	//std::set<network::connection> ghost_players_;
 
-	PlayerMap player_connections_;
+	PlayerConnections player_connections_;
 
-	typedef boost::ptr_vector<wesnothd::game> t_games;
-	t_games games_;
 	//std::set<network::connection> not_logged_in_;
-
-	RoomList room_list_;
 
 	/** server socket/fifo. */
 #ifndef _WIN32
@@ -182,7 +185,7 @@ private:
 	/** Process commands from admins and users. */
 	std::string process_command(std::string cmd, std::string issuer_name);
 
-	void delete_game(t_games::iterator game_it);
+	void delete_game(int);
 
 	void update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude=socket_ptr());
 
@@ -229,5 +232,7 @@ private:
 	boost::asio::signal_set sighup_;
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
 };
+
+}
 
 #endif

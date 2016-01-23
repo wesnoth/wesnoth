@@ -78,7 +78,7 @@ void game::missing_user(socket_ptr /*socket*/, const std::string& func) const
 		<< ") in player_info_ in game:\t\"" << name_ << "\" (" << id_ << ")\n";
 }
 
-game::game(PlayerMap& player_connections, socket_ptr host,
+game::game(PlayerConnections& player_connections, socket_ptr host,
 		const std::string& name, bool save_replays,
 		const std::string& replay_save_path) :
 	player_connections_(player_connections),
@@ -108,14 +108,14 @@ game::game(PlayerMap& player_connections, socket_ptr host,
 {
 	assert(owner_);
 	players_.push_back(owner_);
-	const PlayerMap::left_iterator iter = player_connections_.left.find(owner_);
-	if (iter == player_connections_.left.end()) {
+	const PlayerConnections::iterator iter = player_connections_.find(owner_);
+	if (iter == player_connections_.end()) {
 		missing_user(owner_, __func__);
 		return;
 	}
 	// Mark the host as unavailable in the lobby.
-	iter->info.mark_available(id_, name_);
-	iter->info.set_status(player::PLAYING);
+	iter->info().mark_available(id_, name_);
+	iter->info().set_status(player::PLAYING);
 }
 
 game::~game()
@@ -183,9 +183,9 @@ std::string describe_turns(int turn, int num_turns)
 
 std::string game::username(const socket_ptr player) const
 {
-	const PlayerMap::left_iterator iter = player_connections_.left.find(player);
-	if(iter != player_connections_.left.end()) {
-		return iter->info.name();
+	const PlayerConnections::iterator iter = player_connections_.find(player);
+	if(iter != player_connections_.end()) {
+		return iter->info().name();
 	}
 
 	return "(unknown)";
@@ -196,10 +196,10 @@ std::string game::list_users(user_vector users, const std::string& func) const
 	std::string list;
 
 	BOOST_FOREACH(const user_vector::value_type& user, users) {
-		const PlayerMap::left_iterator iter = player_connections_.left.find(user);
-		if (iter != player_connections_.left.end()) {
+		const PlayerConnections::iterator iter = player_connections_.find(user);
+		if (iter != player_connections_.end()) {
 			if (!list.empty()) list += ", ";
-			list += iter->info.name();
+			list += iter->info().name();
 		} else missing_user(user, func);
 	}
 
@@ -226,12 +226,12 @@ void game::perform_controller_tweaks() {
 				send_and_record_server_message(msg.str());
 			}
 
-			const PlayerMap::left_iterator user = player_connections_.left.find(sides_[side_index]);
+			const PlayerConnections::iterator user = player_connections_.find(sides_[side_index]);
 			std::string user_name = "null (server missing user)";
-			if (user == player_connections_.left.end()) {
-				missing_user(user->first, __func__);
+			if (user == player_connections_.end()) {
+				missing_user(user->socket(), __func__);
 			} else {
-				user_name = username(user->first);
+				user_name = username(user->socket());
 			}
 
 			// Issue change_controller command, transfering this side to its owner with proper name and controller.
@@ -278,7 +278,7 @@ void game::start_game(const socket_ptr starter) {
 
 	const bool save = multiplayer["savegame"].to_bool();
 	LOG_GAME << client_address(starter) << "\t"
-		<< player_connections_.left.info_at(starter).name() << "\t" << "started"
+		<< player_connections_.find(starter)->name() << "\t" << "started"
 		<< (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
 		// << ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
 		<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << multiplayer["mp_scenario"]
@@ -362,7 +362,7 @@ bool game::take_side(const socket_ptr user)
 	if (started_) return false;
 
 	simple_wml::document cfg;
-	cfg.root().set_attr_dup("name", player_connections_.left.info_at(user).name().c_str());
+	cfg.root().set_attr_dup("name", player_connections_.find(user)->name().c_str());
 
 	//FIXME: It the client code (multiplayer.wait.cpp) the host code (connect_engine.cpp) and the server code (this file)
 	//       Has this code to figure out a fitting side for new players, this is clearly too much.
@@ -370,7 +370,7 @@ bool game::take_side(const socket_ptr user)
 	const simple_wml::node::child_list& sides = get_sides_list();
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
 		if(((**side)["controller"] == "human" || (**side)["controller"] == "reserved")
-				&& (**side)["current_player"] == player_connections_.left.info_at(user).name().c_str())
+				&& (**side)["current_player"] == player_connections_.find(user)->name().c_str())
 		{
 			if (send_taken_side(cfg, side)) return true;
 		}
@@ -416,8 +416,8 @@ void game::update_side_data()
 	// * Find the username.
 	// * Find the side this username corresponds to.
 	for (user_vector::const_iterator user = users.begin(); user != users.end(); ++user) {
-		PlayerMap::left_iterator iter = player_connections_.left.find(*user);
-		if (iter == player_connections_.left.end()) {
+		PlayerConnections::iterator iter = player_connections_.find(*user);
+		if (iter == player_connections_.end()) {
 			missing_user(*user, __func__);
 			continue;
 		}
@@ -432,7 +432,7 @@ void game::update_side_data()
 
 			const simple_wml::string_span& player_id = (**side)["player_id"];
 			const simple_wml::string_span& controller = (**side)["controller"];
-			if ( player_id == iter->info.name().c_str()) {
+			if ( player_id == iter->info().name().c_str()) {
 				if(controller != "human" && controller != "ai") {
 					//we found invalid [side] data. Some message would be cool.
 					continue;
@@ -449,10 +449,10 @@ void game::update_side_data()
 		}
 		if (side_found) {
 			players_.push_back(*user);
-			iter->info.set_status(player::PLAYING);
+			iter->info().set_status(player::PLAYING);
 		} else {
 			observers_.push_back(*user);
-			iter->info.set_status(player::OBSERVING);
+			iter->info().set_status(player::OBSERVING);
 		}
 	}
 	DBG_GAME << debug_player_info();
@@ -482,8 +482,8 @@ void game::transfer_side_control(const socket_ptr sock, const simple_wml::node& 
 
 	const simple_wml::string_span& newplayer_name = cfg["player"];
 	const socket_ptr old_player = sides_[side_num - 1];
-	const PlayerMap::left_iterator oldplayer = player_connections_.left.find(old_player);
-	if (oldplayer == player_connections_.left.end()) missing_user(old_player, __func__);
+	const PlayerConnections::iterator oldplayer = player_connections_.find(old_player);
+	if (oldplayer == player_connections_.end()) missing_user(old_player, __func__);
 	const std::string old_player_name = username(old_player);
 
 	// Not supported anymore.
@@ -508,7 +508,7 @@ void game::transfer_side_control(const socket_ptr sock, const simple_wml::node& 
 	socket_ptr newplayer = find_user(newplayer_name);
 
 	// Is he in this game?
-	if (player_connections_.left.find(newplayer) == player_connections_.left.end() || !is_member(newplayer)) {
+	if (player_connections_.find(newplayer) == player_connections_.end() || !is_member(newplayer)) {
 		send_server_message(newplayer_name.to_string() + " is not in this game", sock);
 		return;
 	}
@@ -524,7 +524,7 @@ void game::transfer_side_control(const socket_ptr sock, const simple_wml::node& 
 	if (std::find(sides_.begin(), sides_.end(), old_player) == sides_.end()
 	&& is_player(old_player)) {
 		observers_.push_back(old_player);
-		player_connections_.left.info_at(old_player).set_status(player::OBSERVING);
+		player_connections_.find(old_player)->info().set_status(player::OBSERVING);
 		players_.erase(std::remove(players_.begin(), players_.end(), old_player), players_.end());
 		// Tell others that the player becomes an observer.
 		send_and_record_server_message(old_player_name + " becomes an observer.");
@@ -533,12 +533,12 @@ void game::transfer_side_control(const socket_ptr sock, const simple_wml::node& 
 		observer_join.root().add_child("observer").set_attr_dup("name", old_player_name.c_str());
 		send_data(observer_join, old_player);
 	}
-	change_controller(side_num - 1, newplayer, player_connections_.left.info_at(newplayer).name(), false);
+	change_controller(side_num - 1, newplayer, player_connections_.find(newplayer)->info().name(), false);
 
 	// If we gave the new side to an observer add him to players_.
 	if (is_observer(newplayer)) {
 		players_.push_back(newplayer);
-		player_connections_.left.info_at(newplayer).set_status(player::PLAYING);
+		player_connections_.find(newplayer)->info().set_status(player::PLAYING);
 		observers_.erase(std::remove(observers_.begin(), observers_.end(), newplayer), observers_.end());
 		// Send everyone but the new player the observer_quit message.
 		send_observerquit(newplayer);
@@ -745,7 +745,7 @@ socket_ptr game::kick_member(const simple_wml::node& kick,
 	} else if (user == kicker) {
 		send_server_message("Don't kick yourself, silly.", kicker);
 		return socket_ptr();
-	} else if (player_connections_.left.info_at(user).is_moderator()) {
+	} else if (player_connections_.find(user)->info().is_moderator()) {
 		send_server_message("You're not allowed to kick a moderator.", kicker);
 		return socket_ptr();
 	}
@@ -779,7 +779,7 @@ socket_ptr game::ban_user(const simple_wml::node& ban,
 	} else if (player_is_banned(user)) {
 		send_server_message("'" + username.to_string() + "' is already banned.", banner);
 		return socket_ptr();
-	} else if (player_connections_.left.info_at(user).is_moderator()) {
+	} else if (player_connections_.find(user)->info().is_moderator()) {
 		send_server_message("You're not allowed to ban a moderator.", banner);
 		return socket_ptr();
 	}
@@ -817,7 +817,7 @@ void game::unban_user(const simple_wml::node& unban,
 		return;
 	}
 	LOG_GAME << client_address(unbanner) << "\t"
-		<< player_connections_.left.info_at(unbanner).name() << "\tunbanned: " << username << " ("
+		<< player_connections_.find(unbanner)->info().name() << "\tunbanned: " << username << " ("
 		<< client_address(user) << ")\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.erase(std::remove(bans_.begin(), bans_.end(), client_address(user)), bans_.end());
@@ -831,7 +831,7 @@ void game::process_message(simple_wml::document& data, const socket_ptr user) {
 
 	simple_wml::node* const message = data.root().child("message");
 	assert(message);
-	message->set_attr_dup("sender", player_connections_.left.info_at(user).name().c_str());
+	message->set_attr_dup("sender", player_connections_.find(user)->info().name().c_str());
 
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
@@ -899,7 +899,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 				<< simple_wml::node_to_string(**command) << ")))\n";
 			std::stringstream msg;
 			msg << "Removing illegal command '" << (**command).first_child().to_string()
-				<< "' from: " << player_connections_.left.info_at(user).name()
+				<< "' from: " << player_connections_.find(user)->info().name()
 				<< ". Current player is: "
 				<< username(current_player())
 				<< " (" << end_turn_ + 1 << "/" << nsides_ << ").";
@@ -920,7 +920,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 
 			// Force the description to be correct,
 			// to prevent spoofing of messages.
-			speak.set_attr_dup("id", player_connections_.left.info_at(user).name().c_str());
+			speak.set_attr_dup("id", player_connections_.find(user)->info().name().c_str());
 			// Also check the side for players.
 			if (is_player(user)) {
 				const size_t side_index = speak["side"].to_int() - 1;
@@ -1071,7 +1071,7 @@ void game::handle_choice(const simple_wml::node& data, const socket_ptr user)
 		// We gave already an anwer to this request.
 		return;
 	}
-	DBG_GAME << "answering seed request " << request_id << " by player " << player_connections_.left.info_at(user).name() << "(" << user << ")" << std::endl;
+	DBG_GAME << "answering seed request " << request_id << " by player " << player_connections_.find(user)->info().name() << "(" << user << ")" << std::endl;
 	last_choice_request_id_ = request_id;
 
 	if(const simple_wml::node* rand = data.child("random_seed")) {
@@ -1100,7 +1100,7 @@ void game::process_whiteboard(simple_wml::document& data, const socket_ptr user)
 			|| sides_[side_index] != user)
 	{
 		std::ostringstream msg;
-		msg << "Ignoring illegal whiteboard data, sent from user '" << player_connections_.left.info_at(user).name()
+		msg << "Ignoring illegal whiteboard data, sent from user '" << player_connections_.find(user)->info().name()
 				<< "' which had an invalid side '" << side_index + 1 << "' specified" << std::endl;
 		const std::string& msg_str = msg.str();
 		LOG_GAME << msg_str << std::endl;
@@ -1172,9 +1172,9 @@ bool game::add_player(const socket_ptr player, bool observer) {
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
-		player_connections_.left.info_at(user).set_status(player::PLAYING);
-		send_and_record_server_message(player_connections_.left.info_at(user).name() + " has joined the game.", player);
-	} else if (!allow_observers() && !player_connections_.left.info_at(user).is_moderator()) {
+		player_connections_.find(user)->info().set_status(player::PLAYING);
+		send_and_record_server_message(player_connections_.find(user)->info().name() + " has joined the game.", player);
+	} else if (!allow_observers() && !player_connections_.find(user)->info().is_moderator()) {
 		return false;
 	} else {
 		if (!observer) {
@@ -1183,20 +1183,20 @@ bool game::add_player(const socket_ptr player, bool observer) {
 		}
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
-		if (!allow_observers()) send_and_record_server_message(player_connections_.left.info_at(user).name() + " is now observing the game.", player);
+		if (!allow_observers()) send_and_record_server_message(player_connections_.find(user)->info().name() + " is now observing the game.", player);
 
 		simple_wml::document observer_join;
-		observer_join.root().add_child("observer").set_attr_dup("name", player_connections_.left.info_at(user).name().c_str());
+		observer_join.root().add_child("observer").set_attr_dup("name", player_connections_.find(user)->info().name().c_str());
 
 		// Send observer join to everyone except the new observer.
 		send_data(observer_join, player);
 	}
-	LOG_GAME << client_address(player) << "\t" << player_connections_.left.info_at(user).name()
+	LOG_GAME << client_address(player) << "\t" << player_connections_.find(user)->info().name()
 		<< "\tjoined game:\t\"" << name_ << "\" (" << id_ << ")"
 		<< (observer ? " as an observer" : "")
 		<< ". (socket: " << player << ")\n";
-	player_connections_.left.info_at(user).mark_available(id_, name_);
-	player_connections_.left.info_at(user).set_status((observer) ? player::OBSERVING : player::PLAYING);
+	player_connections_.find(user)->info().mark_available(id_, name_);
+	player_connections_.find(user)->info().set_status((observer) ? player::OBSERVING : player::PLAYING);
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
 	send_to_player(player, level_);
@@ -1217,7 +1217,7 @@ bool game::add_player(const socket_ptr player, bool observer) {
 
 	const std::string clones = has_same_ip(player, observer);
 	if (!clones.empty()) {
-		send_and_record_server_message(player_connections_.left.info_at(user).name() + " has the same IP as: " + clones);
+		send_and_record_server_message(player_connections_.find(user)->info().name() + " has the same IP as: " + clones);
 	}
 
 	if (became_observer) {
@@ -1244,7 +1244,7 @@ bool game::remove_player(const socket_ptr player, const bool disconnect, const b
 
 	socket_ptr user = player;
 
-	LOG_GAME << client_address(user) << "\t" << player_connections_.left.info_at(user).name()
+	LOG_GAME << client_address(user) << "\t" << player_connections_.find(user)->info().name()
 		<< ((game_ended && !(observer && destruct))
 			? (started_ ? "\tended" : "\taborted") : "\thas left")
 		<< " game:\t\"" << name_ << "\" (" << id_ << ")"
@@ -1255,19 +1255,19 @@ bool game::remove_player(const socket_ptr player, const bool disconnect, const b
 		<< (disconnect ? " and disconnected" : "")
 		<< ". (socket: " << user << ")\n";
 	if (game_ended && started_ && !(observer && destruct)) {
-		send_server_message_to_all(player_connections_.left.info_at(user).name() + " ended the game.", player);
+		send_server_message_to_all(player_connections_.find(user)->info().name() + " ended the game.", player);
 	}
 	if (game_ended || destruct) return game_ended;
 
 	// Don't mark_available() since the player got already removed from the
 	// games_and_users_list_.
 	if (!disconnect) {
-		player_connections_.left.info_at(user).mark_available();
+		player_connections_.find(user)->info().mark_available();
 	}
 	if (observer) {
 		send_observerquit(user);
 	} else {
-		send_and_record_server_message(player_connections_.left.info_at(user).name()
+		send_and_record_server_message(player_connections_.find(user)->info().name()
 				+ (disconnect ? " has disconnected." : " has left the game."), player);
 	}
 	// If the player was host choose a new one.
@@ -1288,7 +1288,7 @@ bool game::remove_player(const socket_ptr player, const bool disconnect, const b
 		// Check whether the host is actually a player and make him one if not.
 		if (!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...\n";
-			player_connections_.left.info_at(owner_).set_status(player::PLAYING);
+			player_connections_.find(owner_)->info().set_status(player::PLAYING);
 			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
 			players_.push_back(owner_);
 			send_observerquit(owner_);
@@ -1321,18 +1321,18 @@ void game::send_user_list(const socket_ptr exclude) const {
 	cfg.root().add_child("gamelist");
 	user_vector users = all_game_users();
 	for(user_vector::const_iterator p = users.begin(); p != users.end(); ++p) {
-		const PlayerMap::left_const_iterator pl = player_connections_.left.find(*p);
-		if (pl != player_connections_.left.end()) {
+		const PlayerConnections::const_iterator pl = player_connections_.find(*p);
+		if (pl != player_connections_.end()) {
 			//don't need to duplicate pl->second.name().c_str() because the
 			//document will be destroyed by the end of the function
-			cfg.root().add_child("user").set_attr("name", pl->info.name().c_str());
+			cfg.root().add_child("user").set_attr("name", pl->info().name().c_str());
 		}
 	}
 	send_data(cfg, exclude);
 }
 
 void game::load_next_scenario(const socket_ptr user) {
-	send_server_message_to_all(player_connections_.left.info_at(user).name() + " advances to the next scenario", user);
+	send_server_message_to_all(player_connections_.find(user)->info().name() + " advances to the next scenario", user);
 	simple_wml::document cfg_scenario;
 	simple_wml::node & next_scen = cfg_scenario.root().add_child("next_scenario");
 	level_.root().copy_into(next_scen);
@@ -1429,9 +1429,9 @@ std::string game::has_same_ip(socket_ptr user, bool observer) const {
 	std::string clones;
 	for (user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
 		if (ip == client_address(*i) && user != *i) {
-			const PlayerMap::left_const_iterator pl = player_connections_.left.find(*i);
-			if (pl != player_connections_.left.end()) {
-				clones += (clones.empty() ? "" : ", ") + pl->info.name();
+			const PlayerConnections::const_iterator pl = player_connections_.find(*i);
+			if (pl != player_connections_.end()) {
+				clones += (clones.empty() ? "" : ", ") + pl->info().name();
 			}
 		}
 	}
@@ -1443,7 +1443,7 @@ void game::send_observerjoins(const socket_ptr sock) const {
 		if (*ob == sock) continue;
 
 		simple_wml::document cfg;
-		cfg.root().add_child("observer").set_attr_dup("name", player_connections_.left.info_at(*ob).name().c_str());
+		cfg.root().add_child("observer").set_attr_dup("name", player_connections_.find(*ob)->info().name().c_str());
 		if (sock == socket_ptr()) {
 			// Send to everyone except the observer in question.
 			send_data(cfg, *ob);
@@ -1459,7 +1459,7 @@ void game::send_observerquit(const socket_ptr observer) const {
 
 	//don't need to dup the attribute because this document is
 	//short-lived.
-	observer_quit.root().add_child("observer_quit").set_attr("name", player_connections_.left.info_at(observer).name().c_str());
+	observer_quit.root().add_child("observer_quit").set_attr("name", player_connections_.find(observer)->info().name().c_str());
 	send_data(observer_quit, observer);
 }
 
@@ -1593,9 +1593,9 @@ std::string game::debug_player_info() const {
 	result << "game id: " << id_ << "\n";
 //	result << "players_.size: " << players_.size() << "\n";
 	for (user_vector::const_iterator p = players_.begin(); p != players_.end(); ++p){
-		const PlayerMap::left_const_iterator user = player_connections_.left.find(*p);
-		if (user != player_connections_.left.end()){
-			result << "player: " << user->info.name().c_str() << "\n";
+		const PlayerConnections::const_iterator user = player_connections_.find(*p);
+		if (user != player_connections_.end()){
+			result << "player: " << user->info().name().c_str() << "\n";
 		}
 		else{
 			result << "player: '" << *p << "' not found\n";
@@ -1603,9 +1603,9 @@ std::string game::debug_player_info() const {
 	}
 //	result << "observers_.size: " << observers_.size() << "\n";
 	for (user_vector::const_iterator o = observers_.begin(); o != observers_.end(); ++o){
-		const PlayerMap::left_const_iterator user = player_connections_.left.find(*o);
-		if (user != player_connections_.left.end()){
-			result << "observer: " << user->info.name().c_str() << "\n";
+		const PlayerConnections::const_iterator user = player_connections_.find(*o);
+		if (user != player_connections_.end()){
+			result << "observer: " << user->info().name().c_str() << "\n";
 		}
 		else{
 			result << "observer: '" << *o << "' not found\n";
@@ -1637,9 +1637,9 @@ std::string game::debug_sides_info() const {
 
 socket_ptr game::find_user(const simple_wml::string_span& name)
 {
-	const PlayerMap::right_const_iterator iter = player_connections_.right.find(name.to_string());
-	if(iter != player_connections_.right.end())
-		return iter->second;
+	const PlayerConnections::index<name_t>::type::iterator iter = player_connections_.get<name_t>().find(name.to_string());
+	if(iter != player_connections_.get<name_t>().end())
+		return iter->socket();
 	else
 		return socket_ptr();
 }

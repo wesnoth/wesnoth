@@ -55,19 +55,6 @@ public:
 
 	bool is_message_flooding();
 
-	/**
-	 * @return true iff the player is in a game
-	 */
-	bool in_game() const { return get_game() != NULL; }
-
-	/**
-	 * @return a pointer to the game the player is in, or NULL if he/she is not
-	 * in a game at the moment
-	 */
-	const game* get_game() const;
-
-	void set_game(game* g);
-
 	void set_moderator(bool moderator) { moderator_ = moderator; }
 	bool is_moderator() const { return moderator_; }
 

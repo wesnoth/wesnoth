@@ -20,6 +20,9 @@
 
 #include <boost/bimap/unordered_multiset_of.hpp>
 
+namespace wesnothd
+{
+
 class Room : public boost::noncopyable
 {
 	std::string name_;
@@ -47,11 +50,11 @@ class RoomList : public boost::noncopyable
 	> RoomMap;
 	RoomMap room_map_;
 	RoomMap stored_room_map_; // remember rooms of players that are in game
-	PlayerMap& player_connections_;
+	PlayerConnections& player_connections_;
 
 	room_ptr make_room(const std::string& room_name);
 	public:
-	RoomList(PlayerMap& player_connections);
+	RoomList(PlayerConnections& player_connections);
 	
 	bool in_lobby(socket_ptr socket) {
 		return room_map_.left.count(socket);
@@ -73,5 +76,7 @@ class RoomList : public boost::noncopyable
 	private:
 	void fill_member_list(const std::string room_name, simple_wml::node& root);
 };
+
+} //namespace wesnothd
 
 #endif
