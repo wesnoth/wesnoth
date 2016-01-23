@@ -934,7 +934,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 	GetModuleFileNameW(NULL, process_path, MAX_PATH);
 	if (GetLastError() != ERROR_SUCCESS)
 	{
-		throw std::exception("Failed to retrieve the process path");
+		throw std::runtime_error("Failed to retrieve the process path");
 	}
 
 	std::wstring commandline_str = unicode_cast<std::wstring>(utils::join(commandline, " "));
