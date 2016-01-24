@@ -373,7 +373,7 @@ tpoint ttree_view_node::get_current_size(bool assume_visible) const
 
 tpoint ttree_view_node::get_folded_size() const
 {
-	tpoint size = grid_.get_size();
+	tpoint size = grid_.get_best_size();
 	if(get_indention_level() > 1) {
 		size.x += (get_indention_level() - 1)
 				  * tree_view().indention_step_size_;
