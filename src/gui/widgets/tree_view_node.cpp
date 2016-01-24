@@ -47,6 +47,9 @@ ttree_view_node::ttree_view_node(
 	, node_definitions_(node_definitions)
 	, toggle_(NULL)
 	, label_(NULL)
+	, callback_state_change_()
+	, callback_state_to_folded_()
+	, callback_state_to_unfolded_()
 {
 	grid_.set_parent(this);
 	set_parent(&parent_tree_view);
@@ -561,6 +564,10 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 		assert(height_modification <= 0);
 
 		tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+
+		if(callback_state_to_folded_) {
+			callback_state_to_folded_(*this);
+		}
 	} else {
 
 		// From folded to unfolded.
@@ -576,6 +583,14 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 		assert(height_modification >= 0);
 
 		tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+		
+		if(callback_state_to_unfolded_) {
+			callback_state_to_unfolded_(*this);
+		}
+	}
+
+	if(callback_state_change_) {
+		callback_state_change_(*this);
 	}
 }
 

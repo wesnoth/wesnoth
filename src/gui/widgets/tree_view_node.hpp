@@ -188,6 +188,30 @@ public:
 		calculates the node indicies that we need to get from the root node to this node.
 	*/
 	std::vector<int> describe_path();
+
+	/** Inherited from tselectable_.
+	 *
+	 * @param scope      Specifies the scope of the callback event
+	 *                   0 : on both fold and unfold
+	 *                   1 : on unfolded to folded
+	 *                   2 : on folded to unfolded
+	*/
+	void set_callback_state_change(
+			const int scope, boost::function<void(twidget&)> callback)
+	{
+		switch (scope) {
+			case 0:
+				callback_state_change_ = callback;
+				break;
+			case 1:
+				callback_state_to_folded_ = callback;
+				break;
+			case 2:
+				callback_state_to_unfolded_ = callback;
+				break;
+		}
+	}
+
 private:
 
 	int calculate_ypos();
@@ -267,6 +291,15 @@ private:
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) OVERRIDE;
+									
+	/** See tselectable_::set_callback_state_change. */
+	boost::function<void(twidget&)> callback_state_change_;
+
+	/** See tselectable_::set_callback_state_change. */
+	boost::function<void(twidget&)> callback_state_to_folded_;
+
+	/** See tselectable_::set_callback_state_change. */
+	boost::function<void(twidget&)> callback_state_to_unfolded_;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::tevent event);
