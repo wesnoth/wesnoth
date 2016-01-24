@@ -45,7 +45,7 @@ ttree_view_node::ttree_view_node(
 	, grid_()
 	, children_()
 	, node_definitions_(node_definitions)
-	, icon_(NULL)
+	, toggle_(NULL)
 	, label_(NULL)
 {
 	grid_.set_parent(this);
@@ -57,23 +57,23 @@ ttree_view_node::ttree_view_node(
 				node_definition.builder->build(&grid_);
 				init_grid(&grid_, data);
 
-				twidget* icon_widget = grid_.find("tree_view_node_icon", false);
-				icon_ = dynamic_cast<tselectable_*>(icon_widget);
+				twidget* toggle_widget = grid_.find("tree_view_node_icon", false);
+				toggle_ = dynamic_cast<tselectable_*>(toggle_widget);
 
-				if(icon_) {
-					icon_widget->set_visible(twidget::tvisible::hidden);
-					icon_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+				if(toggle_) {
+					toggle_widget->set_visible(twidget::tvisible::hidden);
+					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2));
-					icon_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2), event::tdispatcher::back_post_child);
 				}
 
-				if(parent_node_ && parent_node_->icon_) {
-					dynamic_cast<twidget&>(*parent_node_->icon_).set_visible(
+				if(parent_node_ && parent_node_->toggle_) {
+					dynamic_cast<twidget&>(*parent_node_->toggle_).set_visible(
 							twidget::tvisible::visible);
 				}
 
@@ -208,7 +208,7 @@ const ttree_view& ttree_view_node::tree_view() const
 
 bool ttree_view_node::is_folded() const
 {
-	return icon_ && !icon_->get_value();
+	return toggle_ && !toggle_->get_value();
 }
 #if 0
 void ttree_view_node::fold(const bool /*recursive*/)

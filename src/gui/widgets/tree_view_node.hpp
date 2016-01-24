@@ -224,8 +224,8 @@ private:
 	 */
 	const std::vector<tnode_definition>& node_definitions_;
 
-	/** The icon to show the folded state. */
-	tselectable_* icon_;
+	/** The toggle for the folded state. */
+	tselectable_* toggle_;
 
 	/** The label to show our selected state. */
 	tselectable_* label_;
