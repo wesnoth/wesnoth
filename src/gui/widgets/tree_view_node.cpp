@@ -208,7 +208,7 @@ const ttree_view& ttree_view_node::tree_view() const
 
 bool ttree_view_node::is_folded() const
 {
-	return icon_ && icon_->get_value();
+	return icon_ && !icon_->get_value();
 }
 #if 0
 void ttree_view_node::fold(const bool /*recursive*/)
