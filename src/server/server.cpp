@@ -247,7 +247,9 @@ struct HandleReceiveDoc : public HandleDoc<Handler, ErrorHandler>
 			try {
 				this->doc.reset(new simple_wml::document(compressed_buf));
 			} catch (simple_wml::error& e) {
-				WRN_CONFIG << "simple_wml error in received data: " << e.message << std::endl;
+				ERR_SERVER <<
+					client_address(this->socket) <<
+					"\tsimple_wml error in received data: " << e.message << std::endl;
 				async_send_error(this->socket, "Invalid WML received: " + e.message);
 				this->error_handler(this->socket);
 				return;
