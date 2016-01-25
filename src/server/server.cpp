@@ -1266,13 +1266,43 @@ void server::create_game(PlayerRecord& host_record, simple_wml::node& create_gam
 
 	// Create the new game, remove the player from the lobby
 	// and set the player as the host/owner.
-	host_record.get_game().reset(new wesnothd::game(player_connections_, host_record.socket(), game_name, save_replays_, replay_save_path_));
+	host_record.get_game().reset(
+		new wesnothd::game(player_connections_, host_record.socket(), game_name, save_replays_, replay_save_path_),
+		boost::bind(&server::cleanup_game, this, _1));
 	wesnothd::game& g = *host_record.get_game();
 	if(game_password.empty() == false) {
 		g.set_password(game_password);
 	}
 
 	create_game.copy_into(g.level().root());
+}
+
+void server::cleanup_game(game* game_ptr)
+{
+	metrics_.game_terminated(game_ptr->termination_reason());
+
+	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
+	assert(gamelist != NULL);
+
+	// Send a diff of the gamelist with the game deleted to players in the lobby
+	simple_wml::document diff;
+	if(make_delete_diff(*gamelist, "gamelist", "game",
+						game_ptr->description(), diff)) {
+		send_to_lobby(diff);
+	}
+
+	// Delete the game from the games_and_users_list_.
+	const simple_wml::node::child_list& games = gamelist->children("game");
+	const simple_wml::node::child_list::const_iterator g =
+		std::find(games.begin(), games.end(), game_ptr->description());
+	if (g != games.end()) {
+		const size_t index = g - games.begin();
+		gamelist->remove_child("game", index);
+	} else {
+		// Can happen when the game ends before the scenario was transferred.
+		LOG_SERVER << "Could not find game (" << game_ptr->id()
+			<< ") to delete in games_and_users_list_.\n";
+	}
 }
 
 void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
@@ -3471,31 +3501,6 @@ void server::process_data_game(const network::connection sock,
 */
 void server::delete_game(int gameid) {
 	const boost::shared_ptr<game>& game_ptr = player_connections_.get<game_t>().find(gameid)->get_game();
-
-	metrics_.game_terminated(game_ptr->termination_reason());
-
-	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
-	assert(gamelist != NULL);
-
-	// Send a diff of the gamelist with the game deleted to players in the lobby
-	simple_wml::document diff;
-	if(make_delete_diff(*gamelist, "gamelist", "game",
-						game_ptr->description(), diff)) {
-		send_to_lobby(diff);
-	}
-
-	// Delete the game from the games_and_users_list_.
-	const simple_wml::node::child_list& games = gamelist->children("game");
-	const simple_wml::node::child_list::const_iterator g =
-		std::find(games.begin(), games.end(), game_ptr->description());
-	if (g != games.end()) {
-		const size_t index = g - games.begin();
-		gamelist->remove_child("game", index);
-	} else {
-		// Can happen when the game ends before the scenario was transferred.
-		LOG_SERVER << "Could not find game (" << game_ptr->id()
-			<< ") to delete in games_and_users_list_.\n";
-	}
 
 	// Set the availability status for all quitting users.
 	FOREACH(const AUTO& user, player_connections_.get<game_t>().equal_range(gameid)) {

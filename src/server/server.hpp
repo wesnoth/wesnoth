@@ -70,6 +70,7 @@ private:
 	void handle_message(socket_ptr socket, simple_wml::node& message);
 	void handle_create_game(socket_ptr socket, simple_wml::node& create_game);
 	void create_game(PlayerRecord& host, simple_wml::node& create_game);
+	void cleanup_game(game*); // deleter for shared_ptr
 	void handle_join_game(socket_ptr socket, simple_wml::node& join);
 	void remove_player(socket_ptr socket);
 
