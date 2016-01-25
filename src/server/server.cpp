@@ -1714,12 +1714,13 @@ void server::remove_player(socket_ptr socket)
 {
 	std::string ip = client_address(socket);
 
-	if(socket->is_open())
-		socket->close();
-	
 	PlayerConnections::iterator iter = player_connections_.find(socket);
 	if(iter == player_connections_.end())
 		return;
+
+	const boost::shared_ptr<game> g = iter->get_game();
+	if(g)
+		g->remove_player(socket, true, false);
 
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
 	const size_t index = std::find(users.begin(), users.end(), iter->info().config_address()) - users.begin();
@@ -1736,6 +1737,9 @@ void server::remove_player(socket_ptr socket)
 		<< "\twas logged off" << "\n";
 
 	player_connections_.erase(iter);
+
+	if(socket->is_open())
+		socket->close();
 }
 
 void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
