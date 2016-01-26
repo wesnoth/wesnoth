@@ -78,6 +78,9 @@ public:
 		selected_callback_ = callback;
 	}
 
+	/** Returns the value of the selected row */
+	std::string get_value_string() const { return values_[selected_]; }
+
 private:
 	/**
 	 * Possible states of the widget.
