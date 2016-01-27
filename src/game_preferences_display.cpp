@@ -43,29 +43,33 @@ bool show_theme_dialog(CVideo& video)
 {
 	std::vector<theme_info> themes = theme::get_known_themes();
 
-	if(!themes.empty()){
-		gui2::ttheme_list dlg(themes);
+	if (themes.empty()) {
+		gui2::show_transient_message(video, "",
+			_("No known themes. Try changing from within an existing game."));
 
-		for(size_t k = 0; k < themes.size(); ++k) {
-			if(themes[k].id == preferences::theme()) {
-				dlg.set_selected_index(static_cast<int>(k));
-			}
-		}
-
-		dlg.show(video);
-		const int action = dlg.selected_index();
-
-		if(action >= 0){
-			preferences::set_theme(themes[action].id);
-			// FIXME: it would be preferable for the new theme to take effect
-			//        immediately.
-			return 1;
-		}
-	} else {
-		gui2::show_transient_message(video,"",_("No known themes. Try changing from within an existing game."));
+		return false;
 	}
 
-	return 0;
+	gui2::ttheme_list dlg(themes);
+
+	for (size_t k = 0; k < themes.size(); ++k) {
+		if(themes[k].id == preferences::theme()) {
+			dlg.set_selected_index(static_cast<int>(k));
+		}
+	}
+
+	dlg.show(video);
+	const int action = dlg.selected_index();
+
+	if (action >= 0) {
+		// FIXME: it would be preferable for the new theme to take effect
+		//        immediately.
+		preferences::set_theme(themes[action].id);
+
+		return true;
+	}
+
+	return false;
 }
 
 void show_mp_alerts_dialog(CVideo& video)
