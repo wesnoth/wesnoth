@@ -64,8 +64,6 @@ std::map<std::string, std::vector<std::string> > history_map;
 
 std::map<std::string, preferences::acquaintance> acquaintances;
 
-bool acquaintances_initialized = false;
-
 std::vector<std::string> mp_modifications;
 bool mp_modifications_initialized = false;
 std::vector<std::string> sp_modifications;
@@ -241,8 +239,7 @@ admin_authentication_reset::~admin_authentication_reset()
 }
 
 static void load_acquaintances() {
-	if(!acquaintances_initialized) {
-		acquaintances.clear();
+	if(acquaintances.empty()) {
 		BOOST_FOREACH(const config &acfg, preferences::get_prefs()->child_range("acquaintance")) {
 			acquaintance ac = acquaintance(acfg);
 			acquaintances[ac.get_nick()] = ac;
