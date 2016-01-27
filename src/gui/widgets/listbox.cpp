@@ -108,8 +108,10 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 		generator_->delete_item(row);
 	}
 
-	if(height_reduced != 0) {
+	if(height_reduced != 0 && get_item_count() != 0) {
 		resize_content(0, -height_reduced, 0, row_pos);
+	} else {
+		update_content_size();
 	}
 }
 
