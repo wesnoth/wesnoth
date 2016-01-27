@@ -415,7 +415,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::ttheme_list>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
-//	test<gui2::tunit_attack>(); /** @todo ENABLE */
+	//test<gui2::tunit_attack>();
 	test<gui2::tunit_create>();
 	test<gui2::twml_error>();
 	test<gui2::twml_message_left>();
@@ -473,6 +473,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "drop_down_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "preferences"), list.end());
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
