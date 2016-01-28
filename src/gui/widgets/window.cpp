@@ -1205,6 +1205,12 @@ void twindow::layout_linked_widgets()
 				max_size.y = size.y;
 			}
 		}
+		if(linked_size.second.width != -1) {
+			linked_size.second.width = max_size.x;
+		}
+		if(linked_size.second.height != -1) {
+			linked_size.second.height = max_size.y;
+		}
 
 		// Set the maximum size.
 		FOREACH(AUTO widget, linked_size.second.widgets)
@@ -1212,10 +1218,10 @@ void twindow::layout_linked_widgets()
 
 			tpoint size = widget->get_best_size();
 
-			if(linked_size.second.width) {
+			if(linked_size.second.width != -1) {
 				size.x = max_size.x;
 			}
-			if(linked_size.second.height) {
+			if(linked_size.second.height != -1) {
 				size.y = max_size.y;
 			}
 
