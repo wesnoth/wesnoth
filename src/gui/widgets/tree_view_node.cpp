@@ -420,13 +420,6 @@ tpoint ttree_view_node::calculate_best_size(const int indention_level,
 		best_size.x += indention_level * indention_step_size;
 	}
 
-	if(is_folded()) {
-
-		DBG_GUI_L << LOG_HEADER << " Folded grid return own best size "
-				  << best_size << ".\n";
-		return best_size;
-	}
-
 	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
 
 	for(boost::ptr_vector<ttree_view_node>::const_iterator itor
@@ -443,7 +436,9 @@ tpoint ttree_view_node::calculate_best_size(const int indention_level,
 		const tpoint node_size = node.calculate_best_size(indention_level + 1,
 														  indention_step_size);
 
-		best_size.y += node_size.y;
+		if(!is_folded()) {
+			best_size.y += node_size.y;
+		}
 		best_size.x = std::max(best_size.x, node_size.x);
 	}
 
