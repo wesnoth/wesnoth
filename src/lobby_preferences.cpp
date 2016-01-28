@@ -39,10 +39,14 @@ void _set_iconize_list(bool sort)
 	preferences::set("iconize_list", sort);
 }
 
-
 bool whisper_friends_only()
 {
 	return preferences::get("lobby_whisper_friends_only", false);
+}
+
+void set_whisper_friends_only(bool v)
+{
+	preferences::set("lobby_whisper_friends_only", v);
 }
 
 bool auto_open_whisper_windows()

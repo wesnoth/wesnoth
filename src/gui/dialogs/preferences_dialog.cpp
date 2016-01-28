@@ -563,6 +563,10 @@ void tpreferences::initialize_members(twindow& window)
 	setup_single_toggle("lobby_player_icons",
 		iconize_list(), _set_iconize_list, window);
 
+	/** WHISPERS FROM FRIENDS ONLY **/
+	setup_single_toggle("lobby_whisper_friends_only",
+		whisper_friends_only(), set_whisper_friends_only, window);
+
 	/** LOBBY JOIN NOTIFICATIONS **/
 	setup_radio_toggle("lobby_joins_none", SHOW_NONE,
 		lobby_joins(), lobby_joins_, window);
