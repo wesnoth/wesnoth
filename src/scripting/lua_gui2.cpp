@@ -646,6 +646,7 @@ int intf_set_dialog_canvas(lua_State *L)
 
 	config cfg = luaW_checkconfig(L, 2);
 	cv[i - 1].set_cfg(cfg);
+	c->set_dirty(true);
 	return 0;
 }
 
