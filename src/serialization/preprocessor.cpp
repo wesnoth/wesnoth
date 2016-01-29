@@ -45,6 +45,8 @@ static lg::log_domain log_preprocessor("preprocessor");
 
 using std::streambuf;
 
+static std::string current_file_str = "CURRENT_FILE";
+static std::string current_dir_str = "CURRENT_DIRECTORY";
 
 // map associating each filename encountered to a number
 typedef std::map<std::string, int> t_file_number_map;
@@ -105,6 +107,19 @@ static std::string get_location(const std::string& loc)
 		res += ' ';
 	}
 	return res;
+}
+
+// decode the filenames placed in a location
+static std::string get_current_file(const std::string& loc)
+{
+	std::string res;
+	std::vector< std::string > pos = utils::quoted_split(loc, ' ');
+	if(pos.empty()) {
+		return res;
+	}
+	else {
+		return get_filename(pos.front());
+	}
 }
 
 bool preproc_define::operator==(preproc_define const &v) const {
@@ -1068,7 +1083,16 @@ bool preprocessor_data::get_chunk()
 			preproc_map::const_iterator macro;
 			// If this is a known pre-processing symbol, then we insert it,
 			// otherwise we assume it's a file name to load.
-			if (local_defines_ &&
+			if(symbol == current_file_str && strings_.size() - token.stack_pos == 1) {
+				
+				pop_token();
+				put(get_current_file(target_.location_));
+			}
+			else if(symbol == current_dir_str && strings_.size() - token.stack_pos == 1) {
+				pop_token();
+				put(filesystem::directory_name(get_current_file(target_.location_)));
+			}
+			else if (local_defines_ &&
 			    (arg = local_defines_->find(symbol)) != local_defines_->end())
 			{
 				if (strings_.size() - token.stack_pos != 1)
