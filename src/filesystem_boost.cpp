@@ -818,7 +818,7 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 	}
 }
 
-std::ostream *ostream_file(std::string const &fname)
+std::ostream *ostream_file(std::string const &fname, bool create_directory)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
 #if 1
@@ -829,6 +829,12 @@ std::ostream *ostream_file(std::string const &fname)
 	}
 	catch(BOOST_IOSTREAMS_FAILURE& e)
 	{
+		// If this operation failed because the parent directoy didn't exist, create the parent directoy and retry.
+		error_code ec_unused;
+		if(create_directory && bfs::create_directories(bfs::path(fname).parent_path(), ec_unused))
+		{
+			return ostream_file(fname, false);
+		}
 		throw filesystem::io_exception(e.what());
 	}
 #else
