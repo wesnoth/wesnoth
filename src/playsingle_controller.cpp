@@ -133,12 +133,13 @@ void playsingle_controller::init_gui(){
 }
 
 
-void playsingle_controller::play_scenario_init(const config& level) {
+void playsingle_controller::play_scenario_init()
+{
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
 	}
-	start_game(level);
+	start_game();
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
@@ -190,7 +191,7 @@ void playsingle_controller::play_scenario_main_loop()
 			for(size_t i = 0; i < local_players.size(); ++i) {
 				(*resources::teams)[i].set_local(local_players[i]);
 			}
-			play_scenario_init(*ex.level);
+			play_scenario_init();
 			mp_replay_.reset(new replay_controller(*this, false, ex.level));
 			mp_replay_->play_replay();
 		}
@@ -226,7 +227,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	}
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks()) << "\n";
 	try {
-		play_scenario_init(level);
+		play_scenario_init();
 		// clears level config;
 		this->saved_game_.remove_snapshot();
 

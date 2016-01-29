@@ -285,10 +285,10 @@ protected:
 
 	void init_managers();
 	///preload events cannot be synced
-	void fire_preload(const config& level);
+	void fire_preload();
 	void fire_prestart();
 	void fire_start();
-	void start_game(const config& level);
+	void start_game();
 	virtual void init_gui();
 	void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
