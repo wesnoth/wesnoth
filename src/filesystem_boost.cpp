@@ -763,7 +763,7 @@ std::string read_file(const std::string &fname)
 	return ss.str();
 }
 
-#if BOOST_VERSION < 1048000
+#if BOOST_VERSION < 104800
 //boost iostream < 1.48 expects boost filesystem v2 paths. This is an adapter
 struct iostream_path
 {
