@@ -81,10 +81,11 @@ public:
 		return lfs->buff_;
 	}
 
-	static int lua_loadfile(lua_State *L, const std::string& fname)
+	static int lua_loadfile(lua_State *L, const std::string& fname, const std::string& relativename)
 	{
+		UNUSED(relativename);
 		lua_filestream lfs(fname);
-		//lua uses '@' to know that this is a file (as opposed to a something as opposed to something loaded via loadstring )
+		//lua uses '@' to know that this is a file (as opposed to something loaded via loadstring )
 		std::string chunkname = '@' + fname;
 		LOG_LUA << "starting to read from " << fname << "\n";
 		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), NULL);
@@ -101,15 +102,25 @@ private:
  */
 int load_file(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, -1);
-	std::string p = filesystem::get_wml_location(m);
+	std::string m = luaL_checkstring(L, -1);
+	
+	std::string current_dir = "";
+	lua_Debug ar;
+	if(lua_getstack(L, 1, &ar)) {
+		lua_getinfo(L, "S", &ar);
+		if(ar.source[0] == '@') {
+			// TODO: i don't think it is possible to lua change the .source field by lua but i would still be good if ar.source would contains a relative string (~add-ons/...) which get_wml_location would then expand.
+			current_dir = filesystem::directory_name(std::string(ar.source + 1));
+		}
+	}
+	std::string p = filesystem::get_wml_location(m, current_dir);
 	if (p.empty())
 		return luaL_argerror(L, -1, "file not found");
 
 #if 1
 	try
 	{
-		if(lua_filestream::lua_loadfile(L, p)) {
+		if(lua_filestream::lua_loadfile(L, p, m)) {
 			return lua_error(L);
 		}
 	}
