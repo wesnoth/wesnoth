@@ -117,15 +117,13 @@ public:
 		, recursive_expand // recursively expands the children
 		, not_recursive
 	};
-
-
+#endif
 
 	// If recursive all children will be closed recursively causing
 	// restore expaning not to expand anything
-//		void fold(const bool recursive); // FIXME implement
-
-//		void unfold(const texpand_mode mode); // FIXME implement
-#endif
+	// TODO: ^ implement
+	void fold(/*const bool recursive*/);
+	void unfold(/*const texpand_mode mode*/);
 
 	/**
 	 * See @ref twidget::create_walker.

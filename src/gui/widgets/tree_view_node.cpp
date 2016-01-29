@@ -213,19 +213,52 @@ bool ttree_view_node::is_folded() const
 {
 	return toggle_ && !toggle_->get_value();
 }
-#if 0
-void ttree_view_node::fold(const bool /*recursive*/)
-{
-	// FIXME set state
 
+void ttree_view_node::fold(/*const bool recursive*/)
+{
+	// is_folded() returns the new state, which is why this looks backwards
+	if(!is_folded()) {
+		return;
+	}
+
+	const tpoint current_size(get_current_size().x, get_unfolded_size().y);
+	const tpoint new_size = get_folded_size();
+
+	const int width_modification = std::max(0, new_size.x - current_size.x);
+	const int height_modification = new_size.y - current_size.y;
+	assert(height_modification <= 0);
+
+	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+
+	toggle_->set_value(false);
+
+	if(callback_state_to_folded_) {
+		callback_state_to_folded_(*this);
+	}
 }
 
-void ttree_view_node::unfold(const texpand_mode /*mode*/)
+void ttree_view_node::unfold(/*const texpand_mode mode*/)
 {
-	// FIXME set state
+	// is_folded() returns the new state, which is why this looks backwards
+	if(is_folded()) {
+		return;
+	}
+	
+	const tpoint current_size(get_current_size().x, get_folded_size().y);
+	const tpoint new_size = get_unfolded_size();
 
+	const int width_modification = std::max(0, new_size.x - current_size.x);
+	const int height_modification = new_size.y - current_size.y;
+	assert(height_modification >= 0);
+
+	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+
+	toggle_->set_value(true);
+
+	if(callback_state_to_unfolded_) {
+		callback_state_to_unfolded_(*this);
+	}
 }
-#endif
 
 void ttree_view_node::clear()
 {
@@ -548,46 +581,8 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 	 * drawingboard for 1.9.
 	 */
 
-	// is_folded() returns the new state.
-	if(is_folded()) {
-
-		// From unfolded to folded.
-		const tpoint current_size(get_current_size().x, get_unfolded_size().y);
-		const tpoint new_size = get_folded_size();
-
-		int width_modification = new_size.x - current_size.x;
-		if(width_modification < 0) {
-			width_modification = 0;
-		}
-
-		const int height_modification = new_size.y - current_size.y;
-		assert(height_modification <= 0);
-
-		tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
-
-		if(callback_state_to_folded_) {
-			callback_state_to_folded_(*this);
-		}
-	} else {
-
-		// From folded to unfolded.
-		const tpoint current_size(get_current_size().x, get_folded_size().y);
-		const tpoint new_size = get_unfolded_size();
-
-		int width_modification = new_size.x - current_size.x;
-		if(width_modification < 0) {
-			width_modification = 0;
-		}
-
-		const int height_modification = new_size.y - current_size.y;
-		assert(height_modification >= 0);
-
-		tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
-		
-		if(callback_state_to_unfolded_) {
-			callback_state_to_unfolded_(*this);
-		}
-	}
+	// is_folded() returns the new state, which is why this looks backwards
+	is_folded() ? fold() : unfold();
 
 	if(callback_state_change_) {
 		callback_state_change_(*this);
