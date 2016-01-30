@@ -96,6 +96,8 @@ void tscrollbar_::scroll(const tscroll scroll)
 		default:
 			assert(false);
 	}
+
+	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
 void tscrollbar_::place(const tpoint& origin, const tpoint& size)
