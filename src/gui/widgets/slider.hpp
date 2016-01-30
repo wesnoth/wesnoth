@@ -139,6 +139,9 @@ private:
 	int on_bar(const tpoint& coordinate) const;
 
 	/** Inherited from tscrollbar. */
+	bool in_orthogonal_range(const tpoint& coordinate) const;
+
+	/** Inherited from tscrollbar. */
 	int get_length_difference(const tpoint& original, const tpoint& current)
 			const
 	{

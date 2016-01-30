@@ -304,6 +304,16 @@ private:
 	virtual int on_bar(const tpoint& coordinate) const = 0;
 
 	/**
+	 * Is the coordinate in the bar's orthogonal range?
+	 *
+	 * @param coordinate          Coordinate to test whether it's in-range.
+	 *
+	 * @returns                   Whether the location is in the bar's.
+	 *                            orthogonal range.
+	 */
+	virtual bool in_orthogonal_range(const tpoint& coordinate) const = 0;
+
+	/**
 	 * Gets the relevant difference in between the two positions.
 	 *
 	 * This function is used to determine how much the positioner needs to  be
