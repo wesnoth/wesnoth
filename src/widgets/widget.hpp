@@ -17,12 +17,13 @@
 
 #include "../events.hpp"
 #include "../sdl/utils.hpp"
+#include "video.hpp"
 
 class CVideo;
 
 namespace gui {
 
-class widget : public events::sdl_handler
+class widget : public video2::draw_layering
 {
 public:
 	SDL_Rect const &location() const;

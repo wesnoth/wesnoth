@@ -52,7 +52,7 @@ private:
 	bool reset_to;
 };
 
-class dialog_frame :public events::sdl_handler {
+class dialog_frame :public video2::draw_layering {
 public:
 	struct dimension_measurements {
 		dimension_measurements();

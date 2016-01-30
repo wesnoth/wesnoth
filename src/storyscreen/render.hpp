@@ -24,10 +24,11 @@
 #include "key.hpp"
 #include "storyscreen/part.hpp"
 #include "events.hpp"
+#include "video.hpp"
 // #include "widgets/button.hpp"
 
 class display;
-class CVideo;
+
 
 namespace gui { class button; }
 
@@ -40,7 +41,7 @@ namespace storyscreen {
  * assumed that the screen dimensions remain constant between the
  * constructor call, and the destruction of the objects.
  */
-class part_ui : public events::sdl_handler
+class part_ui : public video2::draw_layering
 {
 public:
 	/** Storyscreen result. */

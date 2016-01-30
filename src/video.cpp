@@ -251,8 +251,51 @@ bool fake_interactive = false;
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 sdl::twindow* window = NULL;
+
 #endif
+
+std::list<events::sdl_handler*> draw_layers;
 }
+
+namespace video2 {
+draw_layering::draw_layering(const bool auto_join) :
+		sdl_handler(auto_join)
+{
+	draw_layers.push_back(this);
+}
+
+draw_layering::~draw_layering()
+{
+	draw_layers.remove(this);
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_Event event;
+	event.type = SDL_WINDOWEVENT;
+	event.window.event = SDL_WINDOWEVENT_RESIZED;
+	event.window.data1 = (*frameBuffer).h;
+	event.window.data2 = (*frameBuffer).w;
+
+	for(std::list<events::sdl_handler*>::iterator it = draw_layers.begin(); it != draw_layers.end(); it++) {
+		(*it)->handle_window_event(event);
+	}
+#endif
+
+	SDL_Event drawEvent;
+	SDL_UserEvent data;
+
+	data.type = DRAW_EVENT;
+	data.code = 0;
+	data.data1 = NULL;
+	data.data2 = NULL;
+
+	drawEvent.type = DRAW_EVENT;
+	drawEvent.user = data;
+
+	SDL_PushEvent(&drawEvent);
+}
+}
+
+
 
 bool non_interactive()
 {

@@ -311,4 +311,12 @@ struct resize_lock {
 	~resize_lock();
 };
 
+namespace video2 {
+class draw_layering: public events::sdl_handler {
+protected:
+	draw_layering(const bool auto_join=true);
+	virtual ~draw_layering();
+};
+
+}
 #endif

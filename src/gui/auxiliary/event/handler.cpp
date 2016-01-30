@@ -121,7 +121,7 @@ static Uint32 timer_sdl_poll_events(Uint32, void*)
  *
  * It's a new experimental class.
  */
-class thandler : public events::sdl_handler
+class thandler : public video2::draw_layering
 {
 	friend bool gui2::is_in_dialog();
 
@@ -298,7 +298,7 @@ private:
 };
 
 thandler::thandler()
-	: events::sdl_handler(false)
+	: video2::draw_layering(false)
 	, mouse_focus(NULL)
 	, dispatchers_()
 	, keyboard_focus_(NULL)

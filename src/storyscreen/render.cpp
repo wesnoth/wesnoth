@@ -88,7 +88,7 @@ namespace storyscreen {
 
 part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	gui::button &back_button, gui::button&play_button)
-	: events::sdl_handler(false)
+	: video2::draw_layering(false)
 	, p_(p)
 	, disp_(disp)
 	, video_(disp.video())
