@@ -68,7 +68,7 @@ namespace lua_check_impl
 		return luaL_checkstring(L, n);
 	}
 	template<typename T>
-	typename boost::enable_if<typename boost::is_same<T, std::string>::type, void>::type lua_push(lua_State *L, const std::string& val)
+	typename boost::enable_if<typename boost::is_same<T, std::string>::type, void>::type lua_push(lua_State *L, const T& val)
 	{
 		lua_pushlstring(L, val.c_str(), val.size());
 	}
@@ -91,14 +91,11 @@ namespace lua_check_impl
 	{
 		T val;
 		std::string str = lua_check_impl::lua_check<std::string>(L, n);
-		if(val.parse(str))
-		{
-			return val;
-		}
-		else
+		if(!val.parse(str))
 		{
 			luaL_argerror(L, n, ("cannot convert " + str + " to enum " + T::name()).c_str());
 		}
+		return val;
 	}
 	template<typename T>
 	typename boost::enable_if<boost::is_base_of<enum_tag, T>, void>::type lua_push(lua_State *L, T val)

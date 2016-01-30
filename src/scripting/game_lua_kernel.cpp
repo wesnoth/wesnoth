@@ -290,6 +290,11 @@ static int impl_unit_get(lua_State *L)
 	return_vector_string_attrib("extra_recruit", u.recruits());
 	return_vector_string_attrib("advances_to", u.advances_to());
 
+	if (strcmp(m, "alignment") == 0) {
+		lua_push(L, u.alignment());
+		return 1;
+	}
+
 	if (strcmp(m, "upkeep") == 0) {
 		const config::attribute_value& upkeep = u.upkeep_raw();
 		if(upkeep == "full"){
@@ -385,6 +390,11 @@ static int impl_unit_set(lua_State *L)
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+	if (strcmp(m, "alignment") == 0) {
+		u.set_alignment(lua_check<unit_type::ALIGNMENT>(L, 3));
+		return 0;
+	}
+
 
 	if (strcmp(m, "advancements") == 0) {
 		u.set_advancements(lua_check<std::vector<config> >(L, 3));

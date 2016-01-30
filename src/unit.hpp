@@ -342,6 +342,7 @@ public:
 
 	std::string usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
+	void set_alignment(unit_type::ALIGNMENT alignment) { alignment_ = alignment; }
 	/// Never returns NULL, but may point to the null race.
 	const unit_race* race() const { return race_; }
 
