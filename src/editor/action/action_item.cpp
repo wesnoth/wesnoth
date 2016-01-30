@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -73,7 +73,7 @@ void editor_action_item_delete::perform_without_undo(map_context& /*mc*/) const
 {
 //	item_map& items = mc.get_items();
 //	if (!items.erase(loc_)) {
-//		ERR_ED << "Could not delete item on " << loc_.x << "/" << loc_.y << "\n";
+//		ERR_ED << "Could not delete item on " << loc_.x << "/" << loc_.y << std::endl;
 //	} else {
 //		mc.add_changed_location(loc_);
 //	}
@@ -101,7 +101,7 @@ void editor_action_item_replace::perform_without_undo(map_context& /*mc*/) const
 //
 //	item& u = *items.find(new_loc_);
 //	//TODO do we still need set_standing?
-//	u.set_standing();
+//	u.anim_comp().set_standing();
 //
 //	mc.add_changed_location(loc_);
 //	mc.add_changed_location(new_loc_);

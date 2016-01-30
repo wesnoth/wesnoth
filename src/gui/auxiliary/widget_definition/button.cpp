@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tbutton_definition::tbutton_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -28,9 +29,6 @@ tbutton_definition::tbutton_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tbutton_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_button
@@ -43,7 +41,7 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
  * * state_enabled, the button is enabled.
  * * state_disabled, the button is disabled.
  * * state_pressed, the left mouse button is down.
- * * state_focussed, the mouse is over the button.
+ * * state_focused, the mouse is over the button.
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
@@ -53,19 +51,20 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="state_disabled"}
  * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_pressed"}
- * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
- * @end{tag}{name="state_focussed"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
  * @end{tag}{name="resolution"}
  * @end{tag}{name="button_definition"}
  * @end{parent}{name="gui/"}
  */
-
+tbutton_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	// Note the order should be the same as the enum tstate in button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focussed")));
+	state.push_back(tstate_definition(cfg.child("state_focused")));
 }
 
 } // namespace gui2
-

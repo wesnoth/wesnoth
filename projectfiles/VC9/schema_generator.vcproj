@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="schema_generator"
 	ProjectGUID="{9FDDFD0B-C23F-47DB-97F7-7BDCA3E754D9}"
 	RootNamespace="schema_generator"
@@ -32,21 +32,15 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="2"
 				RuntimeLibrary="3"
 				WarningLevel="4"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4127;4512"
+				DisableSpecificWarnings="4127;4512;4003;4068"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -59,7 +53,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -104,16 +99,10 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -130,7 +119,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -176,15 +166,9 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -203,7 +187,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -248,16 +233,10 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -274,7 +253,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib SDL2_net.lib cairo.lib winmm.lib ws2_32.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
 				SubSystem="1"
 				OptimizeReferences="2"

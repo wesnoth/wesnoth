@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Felix Bauer <fehlxb+wesnoth@gmail.com>
+   Copyright (C) 2013 - 2016 by Felix Bauer <fehlxb+wesnoth@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,9 +18,9 @@
 #include <string>
 #include <vector>
 
-#include "lua/lualib.h"
 #include "../../unit_map.hpp"
-#include "../../config.hpp"
+
+struct lua_State;
 
 namespace ai {
 

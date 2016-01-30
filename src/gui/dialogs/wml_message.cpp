@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
 #include "gui/dialogs/wml_message.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/old_markup.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -29,10 +28,12 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 void twml_message_::set_input(const std::string& caption,
-		std::string* text, const unsigned maximum_length)
+							  std::string* text,
+							  const unsigned maximum_length)
 {
 	assert(text);
 
@@ -42,8 +43,8 @@ void twml_message_::set_input(const std::string& caption,
 	input_maximum_length_ = maximum_length;
 }
 
-void twml_message_::set_option_list(
-		const std::vector<std::string>& option_list, int* chosen_option)
+void twml_message_::set_option_list(const std::vector<twml_message_option>& option_list,
+									int* chosen_option)
 {
 	assert(!option_list.empty());
 	assert(chosen_option);
@@ -98,21 +99,9 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
-		for(size_t i = 0; i < option_list_.size(); ++i) {
-			/**
-			 * @todo This syntax looks like a bad hack, it would be nice to write
-			 * a new syntax which doesn't use those hacks (also avoids the problem
-			 * with special meanings for certain characters.
-			 */
-			tlegacy_menu_item item(option_list_[i]);
-
-			if(item.is_default()) {
-				// Number of items hasn't been increased yet so i is ok.
-				*chosen_option_ = i;
-			}
-
+		BOOST_FOREACH(const twml_message_option& item, option_list_) {
 			// Add the data.
-			data["icon"]["label"] = item.icon();
+			data["icon"]["label"] = item.image();
 			data["label"]["label"] = item.label();
 			data["label"]["use_markup"] = "true";
 			data["description"]["label"] = item.description();
@@ -120,10 +109,9 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			options.add_row(data);
 		}
 
-		// Avoid negetive and 0 since item 0 is already selected.
-		if(*chosen_option_ > 0
-				&& static_cast<size_t>(*chosen_option_)
-				< option_list_.size()) {
+		// Avoid negative and 0 since item 0 is already selected.
+		if(*chosen_option_ > 0 && static_cast<size_t>(*chosen_option_)
+								  < option_list_.size()) {
 
 			options.select_row(*chosen_option_);
 		}
@@ -145,13 +133,13 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 void twml_message_::post_show(twindow& window)
 {
 	if(has_input_) {
-		*input_text_ =
-				find_widget<ttext_box>(&window, "input", true).get_value();
+		*input_text_
+				= find_widget<ttext_box>(&window, "input", true).get_value();
 	}
 
 	if(!option_list_.empty()) {
-		*chosen_option_ = find_widget<tlistbox>(
-				&window, "input_list", true).get_selected_row();
+		*chosen_option_ = find_widget<tlistbox>(&window, "input_list", true)
+								  .get_selected_row();
 	}
 }
 
@@ -159,20 +147,20 @@ REGISTER_DIALOG(wml_message_left)
 
 REGISTER_DIALOG(wml_message_right)
 
-int show_wml_message(const bool left_side
-		, CVideo& video
-		, const std::string& title
-		, const std::string& message
-		, const std::string& portrait
-		, const bool mirror
-		, const bool has_input
-		, const std::string& input_caption
-		, std::string* input_text
-		, const unsigned maximum_length
-		, const std::vector<std::string>& option_list
-		, int* chosen_option)
+int show_wml_message(const bool left_side,
+					 CVideo& video,
+					 const std::string& title,
+					 const std::string& message,
+					 const std::string& portrait,
+					 const bool mirror,
+					 const bool has_input,
+					 const std::string& input_caption,
+					 std::string* input_text,
+					 const unsigned maximum_length,
+					 const std::vector<twml_message_option>& option_list,
+					 int* chosen_option)
 {
-	std::auto_ptr<twml_message_> dlg;
+	boost::shared_ptr<twml_message_> dlg;
 	if(left_side) {
 		dlg.reset(new twml_message_left(title, message, portrait, mirror));
 	} else {
@@ -193,4 +181,3 @@ int show_wml_message(const bool left_side
 }
 
 } // namespace gui2
-

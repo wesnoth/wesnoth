@@ -107,6 +107,16 @@ if(NOT XSLTPROC_EXECUTABLE)
 	set(TRANSLATION_TOOLS_FOUND false)
 endif(NOT XSLTPROC_EXECUTABLE)
 
+find_path(ASCIIDOC_DOCBOOK_XSL_PATH
+	xhtml.xsl
+	HINTS /usr/share/asciidoc/docbook-xsl /etc/asciidoc/docbook-xsl
+	NO_DEFAULT_PATH
+)
+if(NOT ASCIIDOC_DOCBOOK_XSL_PATH)
+	message("asciidoc DocBook XSL path not found")
+	set(TRANSLATION_TOOLS_FOUND false)
+endif(NOT ASCIIDOC_DOCBOOK_XSL_PATH)
+
 if(NOT TRANSLATION_TOOLS_FOUND)
 	if(TranslationTools_FIND_REQUIRED)
 		message(FATAL_ERROR "Not all translation tools are found")

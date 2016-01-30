@@ -1,16 +1,16 @@
 /*
- Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+   See the COPYING file for more details.
+*/
 
 #ifndef CONTEXT_MANAGER_HPP_INCLUDED
 #define CONTEXT_MANAGER_HPP_INCLUDED
@@ -18,10 +18,7 @@
 #include "editor/map/map_context.hpp"
 #include "editor/editor_preferences.hpp"
 #include "editor/map/map_fragment.hpp"
-
-#include "mapgen.hpp"
-
-#include "hotkeys.hpp"
+class map_generator;
 
 namespace editor {
 
@@ -51,17 +48,14 @@ public:
 		}
 		return false;
 	}
-	;
 
 	bool clipboard_empty() {
 		return clipboard_.empty();
 	}
-	;
 
 	map_fragment& get_clipboard() {
 		return clipboard_;
 	}
-	;
 
 	/** Fill the selection with the foreground terrain */
 	void fill_selection();
@@ -70,7 +64,6 @@ public:
 	int current_context_index() {
 		return current_context_index_;
 	}
-	;
 
 public:
 	context_manager(editor_display& gui, const config& game_config);
@@ -79,7 +72,6 @@ public:
 	size_t open_maps(void) {
 		return map_contexts_.size();
 	}
-	;
 
 	/**
 	 * Perform an action on the current map_context, then refresh the display.
@@ -99,7 +91,6 @@ public:
 	editor_display& gui() {
 		return gui_;
 	}
-	;
 
 	/**
 	 * Refresh everything, i.e. invalidate all hexes and redraw them. Does *not* reload the map.
@@ -112,8 +103,14 @@ public:
 	/** Display an apply mask dialog and process user input. */
 	void create_mask_to_dialog();
 
+	/** Display an dialog to querry a new id for an [time_area] */
+	void rename_area_dialog();
+
 	/** Menu expanding for open maps list */
 	void expand_open_maps_menu(std::vector<std::string>& items);
+
+	/** Menu expanding for most recent loaded list */
+	void expand_load_mru_menu(std::vector<std::string>& items);
 
 	/** Menu expanding for the map's player sides */
 	void expand_sides_menu(std::vector<std::string>& items);
@@ -124,14 +121,32 @@ public:
 	/** Menu expanding for the map's defined areas */
 	void expand_time_menu(std::vector<std::string>& items);
 
+	/** Menu expanding for the map's defined areas */
+	void expand_local_time_menu(std::vector<std::string>& items);
+
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);
+
+	/** Open the specified entry from the recent files list. */
+	void load_mru_item(unsigned index, bool force_same_context = false);
+
+	/** Display a scenario edit dialog and process user input. */
+	void edit_scenario_dialog();
+
+	/** TODO */
+	void edit_side_dialog(int side);
 
 	/** Display a new map dialog and process user input. */
 	void new_map_dialog();
 
+	/** Display a new map dialog and process user input. */
+	void new_scenario_dialog();
+
 	/** Display a save map as dialog and process user input. */
 	void save_map_as_dialog();
+
+	/** Display a save map as dialog and process user input. */
+	void save_scenario_as_dialog();
 
 	/** Display a generate random map dialog and process user input. */
 	void generate_map_dialog();
@@ -212,17 +227,26 @@ private:
 	 * @return true on success
 	 */
 	bool save_map_as(const std::string& filename);
+	//TODO
+	bool save_scenario_as(const std::string& filename);
 
 	/**
 	 * Save the map under a given filename. Displays an error message on failure.
 	 * @return true on success
 	 */
 	bool write_map(bool display_confirmation = false);
+	bool write_scenario(bool display_confirmation = false);
 
 	/**
 	 * Create a new map.
 	 */
 	void new_map(int width, int height, const t_translation::t_terrain & fill,
+			bool new_context);
+
+	/**
+	 * Create a new scenario.
+	 */
+	void new_scenario(int width, int height, const t_translation::t_terrain & fill,
 			bool new_context);
 
 	/**
@@ -233,19 +257,15 @@ private:
 	size_t check_open_map(const std::string& fn) const;
 
 	/**
-	 * check_open_map shorthand
-	 * @return true if the map is open, false otherwise
-	 */
-	bool map_is_open(const std::string& fn) const {
-		return check_open_map(fn) < map_contexts_.size();
-	}
-
-	/**
 	 * Check if a map is already open. If yes, switch to it
 	 * and return true, return false otherwise.
 	 */
 	bool check_switch_open_map(const std::string& fn);
 
+	/**
+	 * Displays the specified map name in the window titlebar
+	 */
+	void set_window_title();
 public:
 	/**
 	 * Load a map given the filename
@@ -274,6 +294,7 @@ private:
 
 	/** Available random map generators */
 	std::vector<map_generator*> map_generators_;
+	map_generator* last_map_generator_;
 
 	int current_context_index_;
 
@@ -286,7 +307,6 @@ private:
 
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;
-
 };
 
 }

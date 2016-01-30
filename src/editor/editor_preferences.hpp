@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 #define EDITOR_PREFERENCES_HPP_INCLUDED
 
 #include <string>
+#include <vector>
 
 namespace preferences {
 
@@ -55,6 +56,13 @@ namespace editor {
 	int tod_g();
 	/** Get editor blue tint level. */
 	int tod_b();
+
+	/** Retrieves the list of recently opened files. */
+	std::vector<std::string> recent_files();
+	/** Adds an entry to the recent files list. */
+	void add_recent_files_entry(const std::string& path);
+	/** Removes a single entry from the recent files list. */
+	void remove_recent_files_entry(const std::string& path);
 
 } //end namespace editor
 

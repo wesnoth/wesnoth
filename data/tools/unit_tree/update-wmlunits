@@ -3,12 +3,13 @@
 set -e -u
 
 # set them in the environment
-# VERSION=1.10
-# PORT=1.10.x
+# VERSION=1.12
+# PORT=1.12.x
 
 # must run from the correct directory
 DIR="$(dirname $0)"
 
+TIMEOUT=${TIMEOUT:-20}
 SOURCES=/usr/src/wesnoth
 ADDONS=$DIR/addons
 EXE=$DIR/build/wesnoth
@@ -17,12 +18,16 @@ SRC=$SOURCES/$VERSION
 DATA=$SRC
 LOG=$DIR/logs
 TMPOUT=$DIR/output
-OUT=wesnoth.org:/var/www/html/units/$VERSION
+OUT="elias@192.168.1.2:/srv/www/html/units/$VERSION"
 TRANS=$DIR/translations
 BUILD=$DIR/build
 # always using the master version
-TOOLS=$SOURCES/master/data/tools
+TOOLS=${TOOLS:-$SOURCES/master/data/tools}
 export TEMP=$DIR/temp
+
+# in case there's leftovers from a previous run
+rm -rf $CONFIG/data/add-ons
+rm -rf $TMPOUT
 
 mkdir -p $CONFIG/data/add-ons
 mkdir -p $ADDONS
@@ -42,10 +47,12 @@ make -C $BUILD mo-update > /dev/null 2>&1
 rm -f $DIR/overview.txt
 
 echo DOWNLOADING
-$TOOLS/wesnoth_addon_manager -p $PORT -d '.*' -c $ADDONS > $LOG/wesnoth_addon_manager.txt 2>&1 &&
+$TOOLS/wesnoth_addon_manager -p $PORT -d '.*' -c $ADDONS > $LOG/wesnoth_addon_manager.txt 2>&1
 echo WORKING
-python -u $TOOLS/wmlunits -t $TRANS -D $DATA -o $TMPOUT -w $EXE -C $CONFIG -a $ADDONS -L $DIR/overview.txt -B $DIR/overview.txt > $LOG/wmlunits.txt 2>&1 &&
-rsync -vaz --delete $TMPOUT/ $OUT > $LOG/rsync.txt 2>&1 &&
-rm -rf $TEMP/* &&
+python3 -u $TOOLS/wmlunits -t $TRANS -D $DATA -o $TMPOUT -w $EXE -C $CONFIG -a $ADDONS -L $DIR/overview.txt -B $DIR/overview.txt -T $TIMEOUT > $LOG/wmlunits.txt 2>&1
+test -f $TMPOUT/mainline/en_US/mainline.html
+test -f $TMPOUT/'pics/core$images$units$woses$wose.png'
+rsync -vaz --delete $TMPOUT/ $OUT > $LOG/rsync.txt 2>&1
+rm -rf $TEMP/*
 rm -rf $TMPOUT
 

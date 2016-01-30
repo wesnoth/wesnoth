@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Class for a toggle button.
@@ -49,22 +50,34 @@ public:
 	void update_canvas();
 
 	/** Inherited from tselectable_ */
-	bool get_value() const { return state_ >= ENABLED_SELECTED; }
-
+	unsigned get_value() const OVERRIDE
+	{
+		return state_num_;
+	}
 	/** Inherited from tselectable_ */
-	void set_value(const bool selected);
+	unsigned num_states() const OVERRIDE;
+	/** Inherited from tselectable_ */
+	void set_value(const unsigned selected);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(boost::function<void (twidget&)> callback)
-		{ callback_state_change_ = callback; }
+	void set_callback_state_change(boost::function<void(twidget&)> callback)
+	{
+		callback_state_change_ = callback;
+	}
 
 	void set_icon_name(const std::string& icon_name)
-		{ icon_name_ = icon_name; update_canvas(); }
-	const std::string& icon_name() const { return icon_name_; }
+	{
+		icon_name_ = icon_name;
+		update_canvas();
+	}
+	const std::string& icon_name() const
+	{
+		return icon_name_;
+	}
 
 private:
 	/**
@@ -76,9 +89,11 @@ private:
 	 * the SELECTED suffix.
 	 */
 	enum tstate {
-		ENABLED,          DISABLED,          FOCUSSED,
-		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED,
-		COUNT};
+		ENABLED,
+		DISABLED,
+		FOCUSED,
+		COUNT
+	};
 
 	void set_state(const tstate state);
 
@@ -89,7 +104,10 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
-
+	/**
+	 *	Usually 1 for selected and 0 for not selected, can also have higher values in tristate buttons.
+	 */
+	unsigned state_num_;
 	/**
 	 * The return value of the button.
 	 *
@@ -99,7 +117,7 @@ private:
 	int retval_;
 
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void (twidget&)> callback_state_change_;
+	boost::function<void(twidget&)> callback_state_change_;
 
 	/**
 	 * The toggle button can contain an icon next to the text.
@@ -116,14 +134,13 @@ private:
 
 	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 
-	void signal_handler_left_button_click(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_click(const event::tevent event,
+										  bool& handled);
 
-	void signal_handler_left_button_double_click(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_double_click(const event::tevent event,
+												 bool& handled);
 };
 
 } // namespace gui2
 
 #endif
-

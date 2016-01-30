@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -73,6 +73,7 @@ struct time_of_day
 	/** The image to be displayed in the game status. */
 	std::string image;
 	t_string name;
+	t_string description;
 	std::string id;
 
 	/**

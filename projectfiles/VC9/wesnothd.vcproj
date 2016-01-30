@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
@@ -34,24 +34,18 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="2"
 				RuntimeLibrary="3"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4127;4512"
+				DisableSpecificWarnings="4127;4512;4003;4068"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -64,10 +58,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalOptions="/SAFESEH:NO"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -111,17 +107,11 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				OpenMP="true"
@@ -140,11 +130,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories=""
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
-				SubSystem="2"
+				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				LinkTimeCodeGeneration="1"
@@ -190,15 +180,9 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS;HAVE_VISUAL_LEAK_DETECTOR"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -220,10 +204,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -251,7 +236,7 @@
 		<Configuration
 			Name="ReleaseDEBUG|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)\wesnothd"
 			ConfigurationType="1"
 			CharacterSet="0"
 			WholeProgramOptimization="1"
@@ -267,17 +252,11 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				OpenMP="true"
@@ -296,11 +275,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="SDL2main.lib SDL2.lib SDL2_net.lib winmm.lib ws2_32.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories=""
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				LinkTimeCodeGeneration="1"
@@ -332,6 +311,15 @@
 	<References>
 	</References>
 	<Files>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
+			>
+			<File
+				RelativePath="..\..\packaging\windows\wesnothd.rc"
+				>
+			</File>
+		</Filter>
 		<Filter
 			Name="Others"
 			Filter="ii;i"
@@ -720,6 +708,22 @@
 		</Filter>
 		<File
 			RelativePath="..\..\src\loadscreen_empty.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\mt_rng.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\mt_rng.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\seed_rng.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\seed_rng.hpp"
 			>
 		</File>
 	</Files>

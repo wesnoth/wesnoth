@@ -73,7 +73,7 @@ class ParseArgs:
                     self.lead = self.lead[:-1]
                 return c
             elif c == '{':
-              self.parse_call()
+                self.parse_call()
     def parse_call(self):
         "We see a start of call."
         if self.verbose:

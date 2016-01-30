@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 import glob, os, sys, time, re
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-import html_output
+from . import html_output
 
 def write_addon_overview(folder, addon):
-    out = open(os.path.join(folder, "index.html"), "wb")
-    def w(x): out.write(x.encode("utf8") + "\n")
+    out = open(os.path.join(folder, "index.html"), "w")
+    def w(x): out.write(x + "\n")
     
     name = addon["name"]
 
@@ -50,8 +50,8 @@ def write_addon_overview(folder, addon):
     
 
 def main(folder):
-    out = open(os.path.join(folder, "overview.html"), "wb")
-    def w(x): out.write(x.encode("utf8") + "\n")
+    out = open(os.path.join(folder, "overview.html"), "w")
+    def w(x): out.write(x + "\n")
 
     path = ""
     title = "Wesnoth Unit Database Overview"

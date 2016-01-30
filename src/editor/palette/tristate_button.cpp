@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2013 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "sdl/alpha.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
@@ -34,9 +35,7 @@ static lg::log_domain log_display("display");
 namespace gui {
 
 const int font_size = font::SIZE_SMALL;
-const int horizontal_padding = font::SIZE_SMALL;
 const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
-const int vertical_padding = font::SIZE_SMALL / 2;
 
 tristate_button::tristate_button(CVideo& video,
 		editor::common_palette* palette,
@@ -48,6 +47,7 @@ tristate_button::tristate_button(CVideo& video,
 				pressedDownImage_(NULL), pressedUpImage_(NULL), pressedBothImage_(NULL),
 				pressedBothActiveImage_(NULL), pressedDownActiveImage_(NULL), pressedUpActiveImage_(NULL),
 				touchedDownImage_(NULL), touchedUpImage_(NULL), touchedBothImage_(NULL),
+				textRect_(),
 				state_(NORMAL), pressed_(false),
 				base_height_(0), base_width_(0),
 				palette_(palette), item_id_()
@@ -87,7 +87,7 @@ tristate_button::tristate_button(CVideo& video,
 
 	//TODO
 //	if (button_image.null()) {
-//		ERR_DP<< "error initializing button!\n";
+//		ERR_DP<< "error initializing button!" << std::endl;
 //		throw error();
 //	}
 
@@ -243,7 +243,7 @@ void tristate_button::draw_contents() {
 	surface nbase = make_neutral_surface(base);
 
 	//TODO avoid magic numbers
-	SDL_Rect r = create_rect(1, 1, 0, 0);
+	SDL_Rect r = sdl::create_rect(1, 1, 0, 0);
 	blit_surface(nitem, NULL, nbase, &r);
 
 	if (!overlay.null()) {
@@ -273,7 +273,7 @@ void tristate_button::draw_contents() {
 
 //TODO move to widget
 bool tristate_button::hit(int x, int y) const {
-	return point_in_rect(x, y, location());
+	return sdl::point_in_rect(x, y, location());
 }
 
 void tristate_button::mouse_motion(SDL_MouseMotionEvent const &event) {
@@ -375,7 +375,7 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 		if (state_ == TOUCHED_BOTH_RIGHT) {
 			state_ = PRESSED_ACTIVE_BOTH;
 			palette_->select_fg_item(item_id_);
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
 			pressed_ = true;
 		}
@@ -383,18 +383,21 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 
 	if (event.button == SDL_BUTTON_RIGHT) {
 
+		pressed_ = true;
+		palette_->select_bg_item(item_id_);
+
 		if (state_ == TOUCHED_RIGHT) {
 			state_ = PRESSED_ACTIVE_RIGHT;
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
-			pressed_ = true;
+		//	pressed_ = true;
 		}
 		if (state_ == TOUCHED_BOTH_LEFT) {
 			state_ = PRESSED_ACTIVE_BOTH;
-			palette_->select_fg_item(item_id_);
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_fg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
-			pressed_ = true;
+		//	pressed_ = true;
 		}
 	}
 
@@ -403,6 +406,8 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 }
 
 void tristate_button::handle_event(const SDL_Event& event) {
+
+	gui::widget::handle_event(event);
 
 	if (hidden() || !enabled())
 		return;

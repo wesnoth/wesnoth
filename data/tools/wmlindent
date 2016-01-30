@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """\
 wmlindent - re-indent WML in a uniform way.
@@ -61,18 +61,15 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, getopt, filecmp, re
-from wesnoth import wmltools
+import sys, os, argparse, filecmp, re, codecs
+from wesnoth import wmltools3 as wmltools
 
 closer_prefixes = ["{NEXT "]
 opener_prefixes = ["{FOREACH "]
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
-    for prefix in ("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef"):
-        if str.startswith(prefix):
-            return True
-    return False
+    return str.startswith(("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef"))
 
 def closer(str):
     "Are we looking at a closing tag?"
@@ -81,10 +78,7 @@ def closer(str):
     elif str.startswith("[/") or str.startswith(")"):
         return True
     else:
-        for prefix in closer_prefixes:
-            if str.startswith(prefix):
-                return True
-    return False
+        return str.startswith(tuple(closer_prefixes))
 
 def opener(str):
     "Are we looking at an opening tag?"
@@ -99,10 +93,7 @@ def opener(str):
     elif str.endswith("(\n") and '#' not in str:
         return True
     else:
-        for prefix in opener_prefixes:
-            if str.startswith(prefix):
-                return True
-    return False
+        return str.startswith(tuple(opener_prefixes))
 
 class bailout:
     def __init__(self, filename, lineno, msg):
@@ -121,19 +112,19 @@ def reindent(name, infp, outfp):
     lasttag = ""
     countlines = 0
     countblanks = 0
-    multitag = re.compile(r"\[a-z]].*\[[a-z]")	# Avoid triggering on arrays
+    multitag = re.compile(r"\[a-z]].*\[[a-z]") # Avoid triggering on arrays
     for line in infp:
         countlines += 1
         # User may declare indentation exceptions
         if "wmlindent: opener" in line:
             tag = line.split('"')[1]
             if verbose and not quiet:
-                print >>sys.stderr, "wmlindent: declaring indent exception for %s" % tag
+                print("wmlindent: declaring indent exception for %s" % tag, file=sys.stderr)
             opener_prefixes.append(tag)
         elif "wmlindent: closer" in line:
             tag = line.split('"')[1]
             if verbose and not quiet:
-                print >>sys.stderr, "wmlindent: declaring outdent exception for %s" % tag
+                print("wmlindent: declaring outdent exception for %s" % tag, file=sys.stderr)
             closer_prefixes.append(tag)
         # Implement passthrough mode
         if "wmlindent: start ignoring" in line:
@@ -172,7 +163,7 @@ def reindent(name, infp, outfp):
         # one that started the block.
         if closer(transformed):
             if indent == "":
-                print >>sys.stderr, 'wmlindent: "%s", line %d: close tag %s with indent already zero.' % (name, countlines, transformed.strip())
+                print('wmlindent: "%s", line %d: close tag %s with indent already zero.' % (name, countlines, transformed.strip()), file=sys.stderr)
             else:
                 indent = indent[:-len(wmltools.baseindent)]
         # Cope with blank lines outside of multiline literals
@@ -203,7 +194,7 @@ def reindent(name, infp, outfp):
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
         if dostrip:
-            eligible = transformed.split("#")[0]
+            eligible = re.split("\s#", transformed)[0]
         else:
             eligible = transformed
         if dostrip and "<<" in eligible and not ">>" in eligible.split("<<", 1)[1]:
@@ -222,16 +213,16 @@ def reindent(name, infp, outfp):
             lasttag = ""
     # Pure macro files look like they have unbalanced indents.  That's OK
     if indent != "" and seen_wml:
-        print >>sys.stderr, 'wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines)
+        print('wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines), file=sys.stderr)
 
-def allwmlfiles(dir):
+def allwmlfiles(directory):
     "Get names of all WML files under dir, or dir itself if not a directory."
     datafiles = []
-    if not os.path.isdir(dir):
-        if dir.endswith(".cfg"):
-            datafiles.append(dir)
+    if not os.path.isdir(directory):
+        if directory.endswith(".cfg"):
+            datafiles.append(directory)
     else:
-        for root, dirs, files in os.walk(dir):
+        for root, dirs, files in os.walk(directory):
             if wmltools.vcdir in dirs:
                 dirs.remove(wmltools.vcdir)
             for name in files:
@@ -248,33 +239,30 @@ def convertor(linefilter, arglist, exclude):
             for filename in allwmlfiles(arg):
                 if exclude and re.search(exclude, filename):
                     if verbose:
-                        sys.stderr.write("wmlindent: %s excluded\n" % filename)
+                        print("wmlindent: %s excluded" % filename, file=sys.stderr)
                     continue
                 else:
                     try:
-                        infp = open(filename, "rb")
-                        outfp = open(filename + ".out", "wb")
-                        linefilter(filename, infp, outfp)
-                        infp.close()
-                        outfp.close()
-                    except bailout, e:
-                        sys.stderr.write('wmlindent: "%s", %d: %s\n' % (e.filename, e.lineno, e.msg))
+                        with codecs.open(filename,"r","utf8") as infp, codecs.open(filename + ".out", "w","utf8") as outfp:
+                            linefilter(filename, infp, outfp)
+                    except bailout as e:
+                        print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
                         os.remove(filename + ".out")
                     except KeyboardInterrupt:
                         os.remove(filename + ".out")
-                        sys.stderr.write("wmlindent: %s interrupted\n" % filename)
+                        print("wmlindent: %s interrupted" % filename, file=sys.stderr)
                     else:
                         if filecmp.cmp(filename, filename + ".out"):
                             if verbose >= 2:
-                                sys.stderr.write("wmlindent: %s unchanged\n" % filename)
+                                print("wmlindent: %s unchanged" % filename, file=sys.stderr)
                             os.remove(filename + ".out")
                         else:
                             if not quiet:
-                                sys.stderr.write("wmlindent: %s changed\n" % filename)
+                                print("wmlindent: %s changed" % filename, file=sys.stderr)
                             if dryrun:
                                 os.remove(filename + ".out")
                             else:
-                                os.remove(filename)	# For Windows portability
+                                os.remove(filename) # For Windows portability
                                 # There's a tiny window open if you keyboard-
                                 # interrupt here. It's unavoidable, because
                                 # there's no known way to do an atomic rename
@@ -283,25 +271,36 @@ def convertor(linefilter, arglist, exclude):
                                 os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h?de:qv",
-                                         ['help', 'dryrun', 'exclude=', 'quiet', 'verbose'])
-    verbose = 0
-    quiet = False
-    dryrun = False
-    exclude = []
-    for (opt, val) in options:
-        if opt in ('-?', '-h', '--help'):
-            print __doc__
-            sys.exit(0)
-        elif opt in ('-d', '--dryrun'):
-            dryrun = True
-            verbose = max(1, verbose)
-        elif opt in ('-e', '--exclude'):
-            exclude.append(val)
-        elif opt in ('-q', '--quiet'):
-            quiet = True
-        elif opt in ('-v', '--verbose'):
-            verbose += 1
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawTextHelpFormatter
+        )
+    parser.add_argument("-?", action="help",
+                        help="show this help message and exit") # original --help, -h and -? printed __doc__
+    parser.add_argument("-d", "--dryrun", action="store_true",
+                        help="""detects and reports files that would be changed without
+changing them.""")
+    parser.add_argument("-v", "--verbose", action="count", default=0,
+                        help="""-v enables reporting files that are changed.
+-v -v unchanged files are also reported.""")
+    parser.add_argument("-e", "--exclude", action="append", default=[],
+                        help="takes a regexp and excludes files matching it.")
+    parser.add_argument("-q", "--quiet", action="store_true",
+                        help="Do not generate output") # TODO: improve description?
+    parser.add_argument("files", action="store", nargs="*",
+                        help="""Any number of files or directories.
+Call with no arguments to filter WML on stdin to
+reindented WML on stdout.""")
+
+    namespace = parser.parse_args()
+    verbose = namespace.verbose
+    quiet = namespace.quiet
+    dryrun = namespace.dryrun
+    exclude = namespace.exclude
+    arguments = namespace.files # a remnant of getopt...
+
+    if dryrun:
+        verbose = max(1, verbose)
+
     # in certain situations, Windows' command prompt appends a double quote
     # to the command line parameters. This block takes care of this issue.
     for i,arg in enumerate(arguments):

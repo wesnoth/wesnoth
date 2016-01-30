@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Dominic Bolin <dominic.bolin@exong.net>
+   Copyright (C) 2006 - 2016 by Dominic Bolin <dominic.bolin@exong.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,20 +17,44 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
-#include "gamestatus.hpp"
+#include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
+#include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
-#include "team.hpp"
 #include "unit_abilities.hpp"
+#include "unit_filter.hpp"
+#include "unit_map.hpp"
+#include "filter_context.hpp"
 
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-
+namespace {
+	class temporary_facing
+	{
+		map_location::DIRECTION save_dir_;
+		unit_map::const_iterator u_;
+	public:
+		temporary_facing(unit_map::const_iterator u, map_location::DIRECTION new_dir)
+			: save_dir_(u.valid() ? u->facing() : map_location::NDIRECTIONS)
+			, u_(u)
+		{
+			if (u_.valid()) {
+				u_->set_facing(new_dir);
+			}
+		}
+		~temporary_facing()
+		{
+			if (u_.valid()) {
+				u_->set_facing(save_dir_);
+			}
+		}
+	};
+}
 
 /*
  *
@@ -89,9 +113,9 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
  */
 
 
-namespace unit_abilities {
+namespace {
 
-static bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
+bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
 {
 	if (side == other_side)
 		return cfg["affect_allies"].to_bool(true);
@@ -106,12 +130,13 @@ static bool affects_side(const config& cfg, const std::vector<team>& teams, size
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
-	if (const config &abilities = cfg_.child("abilities"))
-	{
-		BOOST_FOREACH(const config &i, abilities.child_range(tag_name)) {
-			if (ability_active(tag_name, i, loc) &&
-			    ability_affects_self(tag_name, i, loc))
-				return true;
+	assert(resources::teams);
+
+	BOOST_FOREACH(const config &i, this->abilities_.child_range(tag_name)) {
+		if (ability_active(tag_name, i, loc) &&
+			ability_affects_self(tag_name, i, loc))
+		{
+			return true;
 		}
 	}
 
@@ -122,14 +147,20 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
 			continue;
-		const config &adj_abilities = it->cfg_.child("abilities");
-		if (!adj_abilities)
+		// Abilities may be tested at locations other than the unit's current
+		// location. This is intentional to allow for less messing with the unit
+		// map during calculations, particularly with regards to movement.
+		// Thus, we need to make sure the adjacent unit (*it) is not actually
+		// ourself.
+		if ( &*it == this )
 			continue;
-		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
-			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
+		BOOST_FOREACH(const config &j, it->abilities_.child_range(tag_name)) {
+			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name,  j, i, loc))
+			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
+			{
 				return true;
+			}
 		}
 	}
 
@@ -138,14 +169,15 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 }
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
+	assert(resources::teams);
+
 	unit_ability_list res;
 
-	if (const config &abilities = cfg_.child("abilities"))
-	{
-		BOOST_FOREACH(const config &i, abilities.child_range(tag_name)) {
-			if (ability_active(tag_name, i, loc) &&
-			    ability_affects_self(tag_name, i, loc))
-				res.push_back(unit_ability(&i, loc));
+	BOOST_FOREACH(const config &i, this->abilities_.child_range(tag_name)) {
+		if (ability_active(tag_name, i, loc) &&
+			ability_affects_self(tag_name, i, loc))
+		{
+			res.push_back(unit_ability(&i, loc));
 		}
 	}
 
@@ -156,14 +188,20 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
 			continue;
-		const config &adj_abilities = it->cfg_.child("abilities");
-		if (!adj_abilities)
+		// Abilities may be tested at locations other than the unit's current
+		// location. This is intentional to allow for less messing with the unit
+		// map during calculations, particularly with regards to movement.
+		// Thus, we need to make sure the adjacent unit (*it) is not actually
+		// ourself.
+		if ( &*it == this )
 			continue;
-		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
-			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
+		BOOST_FOREACH(const config &j, it->abilities_.child_range(tag_name)) {
+			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name, j, i, loc))
+			    ability_affects_adjacent(tag_name, j, i, loc, *it))
+			{
 				res.push_back(unit_ability(&j, adjacent[i]));
+			}
 		}
 	}
 
@@ -175,9 +213,7 @@ std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	const config &abilities = cfg_.child("abilities");
-	if (!abilities) return res;
-	BOOST_FOREACH(const config::any_child &ab, abilities.all_children_range()) {
+	BOOST_FOREACH(const config::any_child &ab, this->abilities_.all_children_range()) {
 		std::string const &id = ab.cfg["id"];
 		if (!id.empty())
 			res.push_back(id);
@@ -213,34 +249,6 @@ namespace {
 		                     gender == unit_race::MALE ? male_key : female_key,
 		                     default_key);
 	}
-
-	/**
-	 * Strips the name of an ability/special from the description.
-	 * This is legacy support, introduced for version 1.11.1.
-	 * Can (should) be removed post-1.12.
-	 */
-	t_string legacy_description(const t_string & description)
-	{
-		// The legacy format is name + ':' + newline + description.
-		// We identify this by the colon.
-		std::string revision = description.str();
-		const size_t colon_pos = revision.find(':');
-		if ( colon_pos != std::string::npos )
-			// Make sure this colon ends the first line.
-			if ( revision.find('\n') == colon_pos + 1 ) {
-				//@deprecated Format changed for 1.11.1.
-				// Not logging this here because it would spam the screen,
-				// and these will have been caught when the help was generated.
-				//lg::wml_error << "Descriptions should no longer include the name as the first line.\n";
-
-				// Remove the first line.
-				revision.erase(0, colon_pos + 2);
-				return t_string(revision);
-			}
-
-		// No adaptation needed.
-		return description;
-	}
 }
 
 /**
@@ -258,10 +266,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 	if ( active_list )
 		active_list->clear();
 
-	const config &abilities = cfg_.child("abilities");
-	if (!abilities) return res;
-
-	BOOST_FOREACH(const config::any_child &ab, abilities.all_children_range())
+	BOOST_FOREACH(const config::any_child &ab, this->abilities_.all_children_range())
 	{
 		if ( !active_list || ability_active(ab.key, ab.cfg, loc_) )
 		{
@@ -272,7 +277,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				res.push_back(boost::make_tuple(
 						ab.cfg["name"].t_str(),
 						name,
-						legacy_description(ab.cfg["description"].t_str()) ));
+						ab.cfg["description"].t_str() ));
 				if ( active_list )
 					active_list->push_back(true);
 			}
@@ -290,7 +295,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				res.push_back(boost::make_tuple(
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
-						legacy_description(default_value(ab.cfg, "description_inactive", "description").t_str()) ));
+						default_value(ab.cfg, "description_inactive", "description").t_str() ));
 				active_list->push_back(false);
 			}
 		}
@@ -306,10 +311,10 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
-	assert(resources::units && resources::game_map && resources::teams && resources::tod_manager);
+	assert(resources::units && resources::gameboard && resources::teams && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
-		if ( !matches_filter(vconfig(afilter), loc, illuminates) )
+		if ( !unit_filter(vconfig(afilter), resources::filter_con, illuminates).matches(*this, loc) )
 			return false;
 
 	map_location adjacent[6];
@@ -318,33 +323,56 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent"))
 	{
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		size_t count = 0;
+		const unit_filter ufilt(vconfig(i), resources::filter_con, illuminates);
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index =
-				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if (unit == units.end())
 				return false;
-			if (!unit->matches_filter(vconfig(i), unit->get_location(), illuminates))
+			if (!ufilt(*unit, *this))
 				return false;
+			if (i.has_attribute("is_enemy")) {
+				const display_context& dc = resources::filter_con->get_disp_context();
+				if (i["is_enemy"].to_bool() != dc.teams()[unit->side() - 1].is_enemy(side_)) {
+					continue;
+				}
+			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 
 	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent_location"))
 	{
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		size_t count = 0;
+		terrain_filter adj_filter(vconfig(i), resources::filter_con);
+		adj_filter.flatten(illuminates);
+
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index = map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), units);
-			adj_filter.flatten(illuminates);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 	return true;
@@ -354,21 +382,25 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
  * cfg: an ability WML structure
  *
  */
-bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc) const
+bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc,const unit& from) const
 {
 	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
-	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
+	map_location::DIRECTION direction = static_cast<map_location::DIRECTION>(dir);
+
 	BOOST_FOREACH(const config &i, cfg.child_range("affect_adjacent"))
 	{
-		std::vector<std::string> dirs = utils::split(i["adjacent"]);
-		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
-			if (const config &filter = i.child("filter")) {
-				if ( matches_filter(vconfig(filter), loc, illuminates) )
-					return true;
-			} else
-				return true;
+		if (i.has_attribute("adjacent")) { //key adjacent defined
+			std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+			if (std::find(dirs.begin(), dirs.end(), direction) == dirs.end()) {
+				continue;
+			}
+		}
+		const config &filter = i.child("filter");
+		if (!filter || //filter tag given
+			unit_filter(vconfig(filter), resources::filter_con, illuminates).matches(*this, loc, from) ) {
+			return true;
 		}
 	}
 	return false;
@@ -383,16 +415,13 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	const config &filter = cfg.child("filter_self");
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return matches_filter(vconfig(filter), loc, ability == "illuminates");
+	return unit_filter(vconfig(filter), resources::filter_con, ability == "illuminates").matches(*this, loc);
 }
 
 bool unit::has_ability_type(const std::string& ability) const
 {
-	if (const config &list = cfg_.child("abilities")) {
-		config::const_child_itors itors = list.child_range(ability);
-		return itors.first != itors.second;
-	}
-	return false;
+	config::const_child_itors itors = this->abilities_.child_range(ability);
+	return itors.first != itors.second;
 }
 
 
@@ -524,35 +553,30 @@ namespace {
  */
 bool attack_type::get_special_bool(const std::string& special, bool simple_check) const
 {
-	//log_scope("get_special_bool");
-	if (const config &specials = cfg_.child("specials"))
 	{
 		std::vector<const config*> list;
-		if ( get_special_children(list, specials, special, simple_check) )
+		if ( get_special_children(list, specials_, special, simple_check) ) {
 			return true;
-
+		}
 		// If we make it to here, then either list.empty() or !simple_check.
 		// So if the list is not empty, then this is not a simple check and
 		// we need to check each special in the list to see if any are active.
-		for (std::vector<const config*>::iterator i = list.begin(),
-		     i_end = list.end(); i != i_end; ++i) {
-			if ( special_active(**i, AFFECT_SELF) )
+		for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
+			if ( special_active(**i, AFFECT_SELF) ) {
 				return true;
+			}
 		}
 	}
-
 	// Skip checking the opponent's attack?
-	if ( simple_check || !other_attack_ )
+	if ( simple_check || !other_attack_ ) {
 		return false;
+	}
 
-	if (const config &specials = other_attack_->cfg_.child("specials"))
-	{
-		std::vector<const config*> list;
-		get_special_children(list, specials, special);
-		for (std::vector<const config*>::iterator i = list.begin(),
-		     i_end = list.end(); i != i_end; ++i) {
-			if ( other_attack_->special_active(**i, AFFECT_OTHER) )
-				return true;
+	std::vector<const config*> list;
+	get_special_children(list, other_attack_->specials_, special);
+	for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
+		if ( other_attack_->special_active(**i, AFFECT_OTHER) ) {
+			return true;
 		}
 	}
 	return false;
@@ -566,26 +590,20 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
 	unit_ability_list res;
-	if (const config &specials = cfg_.child("specials"))
-	{
-		BOOST_FOREACH(const config &i, specials.child_range(special)) {
-			if ( special_active(i, AFFECT_SELF) )
-				res.push_back(unit_ability(&i, self_loc_));
-		}
+	BOOST_FOREACH(const config &i, specials_.child_range(special)) {
+		if ( special_active(i, AFFECT_SELF) )
+			res.push_back(unit_ability(&i, self_loc_));
 	}
 	if (!other_attack_) return res;
-	if (const config &specials = other_attack_->cfg_.child("specials"))
-	{
-		BOOST_FOREACH(const config &i, specials.child_range(special)) {
-			if ( other_attack_->special_active(i, AFFECT_OTHER) )
-				res.push_back(unit_ability(&i, other_loc_));
-		}
+	BOOST_FOREACH(const config &i, other_attack_->specials_.child_range(special)) {
+		if ( other_attack_->special_active(i, AFFECT_OTHER) )
+			res.push_back(unit_ability(&i, other_loc_));
 	}
 	return res;
 }
 
 /**
- * Returns a vector of names and decriptions for the specials of *this.
+ * Returns a vector of names and descriptions for the specials of *this.
  * Each std::pair in the vector has first = name and second = description.
  *
  * This uses either the active or inactive name/description for each special,
@@ -601,15 +619,12 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 	if ( active_list )
 		active_list->clear();
 
-	const config &specials = cfg_.child("specials");
-	if (!specials) return res;
-
-	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
+	BOOST_FOREACH(const config::any_child &sp, specials_.all_children_range())
 	{
 		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER) ) {
 			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
-				res.push_back(std::make_pair(name, legacy_description(sp.cfg["description"].t_str()) ));
+				res.push_back(std::make_pair(name, sp.cfg["description"].t_str() ));
 				if ( active_list )
 					active_list->push_back(true);
 			}
@@ -617,7 +632,7 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 			t_string const &name = default_value(sp.cfg, "name_inactive", "name").t_str();
 			if (!name.empty()) {
 				res.push_back(std::make_pair(
-					name, legacy_description(default_value(sp.cfg, "description_inactive", "description").t_str()) ));
+					name, default_value(sp.cfg, "description_inactive", "description").t_str() ));
 				active_list->push_back(false);
 			}
 		}
@@ -637,10 +652,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 {
 	//log_scope("weapon_specials");
 	std::string res;
-	const config &specials = cfg_.child("specials");
-	if (!specials) return res;
-
-	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
+	BOOST_FOREACH(const config::any_child &sp, specials_.all_children_range())
 	{
 		if ( only_active  &&  !special_active(sp.cfg, AFFECT_EITHER, is_backstab) )
 			continue;
@@ -684,7 +696,7 @@ void attack_type::set_specials_context(const map_location& unit_loc,
 void attack_type::set_specials_context(const map_location& loc, bool attacking) const
 {
 	self_loc_ = loc;
-	other_loc_ = map_location::null_location;
+	other_loc_ = map_location::null_location();
 	is_attacker_ = attacking;
 	other_attack_ = NULL;
 }
@@ -706,7 +718,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 	int attacks_value = attacks_effect.get_composite_value();
 	if ( attacks_value < 0 ) {
 		attacks_value = num_attacks();
-		ERR_NG << "negative number of strikes after applying weapon specials\n";
+		ERR_NG << "negative number of strikes after applying weapon specials" << std::endl;
 	}
 
 	// Apply [swarm].
@@ -787,26 +799,27 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  child_tag  The tag of the child filter to use.
 	 */
 	static bool special_unit_matches(const unit_map::const_iterator & un_it,
+									 const unit_map::const_iterator & u2,
 		                             const map_location & loc,
 		                             const attack_type * weapon,
 		                             const config & filter,
 		                             const std::string & child_tag)
 	{
-		if ( !loc.valid() )
+		if (!loc.valid() || !u2.valid())
 			// The special's context was set to ignore this unit, so assume we pass.
 			// (This is used by reports.cpp to show active specials when the
 			// opponent is not known. From a player's perspective, the special
 			// is active, in that it can be used, even though the player might
 			// need to select an appropriate opponent.)
 			return true;
- 
+
 		const config & filter_child = filter.child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.
 			return true;
 
 		// Check for a unit match.
-		if ( !un_it.valid() || !un_it->matches_filter(vconfig(filter_child), loc) )
+		if ( !un_it.valid() || !unit_filter(vconfig(filter_child), resources::filter_con).matches(*un_it, loc, *u2))
 			return false;
 
 		// Check for a weapon match.
@@ -864,6 +877,10 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	unit_map::const_iterator self  = units.find(self_loc_);
 	unit_map::const_iterator other = units.find(other_loc_);
 
+	// Make sure they're facing each other.
+	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
+	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
+
 	// Translate our context into terms of "attacker" and "defender".
 	unit_map::const_iterator & att = is_attacker_ ? self : other;
 	unit_map::const_iterator & def = is_attacker_ ? other : self;
@@ -873,13 +890,13 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	const attack_type * def_weapon = is_attacker_ ? other_attack_ : this;
 
 	// Filter the units involved.
-	if ( !special_unit_matches(self, self_loc_, this, special, "filter_self") )
+	if (!special_unit_matches(self, other, self_loc_, this, special, "filter_self"))
 		return false;
-	if ( !special_unit_matches(other, other_loc_, other_attack_, special, "filter_opponent") )
+	if (!special_unit_matches(other, self, other_loc_, other_attack_, special, "filter_opponent"))
 		return false;
-	if ( !special_unit_matches(att, att_loc, att_weapon, special, "filter_attacker") )
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, "filter_attacker"))
 		return false;
-	if ( !special_unit_matches(def, def_loc, def_weapon, special, "filter_defender") )
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, "filter_defender"))
 		return false;
 
 	map_location adjacent[6];
@@ -888,32 +905,52 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	// Filter the adjacent units.
 	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent"))
 	{
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		size_t count = 0;
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index =
-				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if ( unit == units.end() ||
-			     !unit->matches_filter(vconfig(i), adjacent[index]) )
+			     !unit_filter(vconfig(i), resources::filter_con).matches(*unit, adjacent[index], *self)) //TODO: Should this filter get precomputed?
 				return false;
+			if (i.has_attribute("is_enemy")) {
+				const display_context& dc = resources::filter_con->get_disp_context();
+				if (i["is_enemy"].to_bool() != dc.teams()[unit->side() - 1].is_enemy(self->side())) {
+					continue;
+				}
+			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 
 	// Filter the adjacent locations.
 	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent_location"))
 	{
-		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
+		size_t count = 0;
+		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		BOOST_FOREACH(const map_location::DIRECTION index, dirs)
 		{
-			map_location::DIRECTION index =
-				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(i), units);
+			terrain_filter adj_filter(vconfig(i), resources::filter_con);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
+			count++;
+		}
+		if (i["count"].empty() && count != dirs.size()) {
+			return false;
+		}
+		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+			return false;
 		}
 	}
 
@@ -969,6 +1006,10 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		const config& cfg = *ability.first;
 		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
+		if (!cfg["backstab"].blank()) {
+			lg::wml_error << "The backstab= key in weapon specials is deprecated; use [filter_adjacent] instead\n";
+		}
+
 		if (!backstab && cfg["backstab"].to_bool())
 			continue;
 		if (!filter_base_matches(cfg, def))
@@ -1013,7 +1054,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
 			if (*v == 0) {
-				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << "\n";
+				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << std::endl;
 			}
 			else {
 				int divide = int(v->to_double() * 100);

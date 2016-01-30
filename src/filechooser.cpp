@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "display.hpp"
+#include "video.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -27,12 +27,12 @@
 namespace dialogs
 {
 
-int show_file_chooser_dialog(display &disp, std::string &filename,
+int show_file_chooser_dialog(CVideo& video, std::string &filename,
                              std::string const &title, bool show_directory_buttons,
 							 const std::string& type_a_head,
 							 int xloc, int yloc) {
 
-	file_dialog d(disp, filename, title, show_directory_buttons);
+	file_dialog d(video, filename, title, "", show_directory_buttons);
 	if (!type_a_head.empty())
 		d.select_file(type_a_head);
 	if(d.show(xloc, yloc) >= 0) {
@@ -41,12 +41,14 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 	return d.result();
 }
 
-int show_file_chooser_dialog_save(display &disp, std::string &filename,
-                             std::string const &title, bool show_directory_buttons,
+int show_file_chooser_dialog_save(CVideo& video, std::string &filename,
+                             std::string const &title,
+                             const std::string& default_file_name,
+                             bool show_directory_buttons,
 							 const std::string& type_a_head,
 							 int xloc, int yloc) {
 
-	file_dialog d(disp, filename, title, show_directory_buttons);
+	file_dialog d(video, filename, title, default_file_name, show_directory_buttons);
     d.set_autocomplete(false);
 	if (!type_a_head.empty())
 		d.select_file(type_a_head);
@@ -56,9 +58,10 @@ int show_file_chooser_dialog_save(display &disp, std::string &filename,
 	return d.result();
 }
 
-file_dialog::file_dialog(display &disp, const std::string& file_path,
-		const std::string& title, bool show_directory_buttons) :
-	gui::dialog(disp, title, file_path, gui::OK_CANCEL),
+file_dialog::file_dialog(CVideo& video, const std::string& file_path,
+		const std::string& title, const std::string& default_file_name,
+		bool show_directory_buttons) :
+	gui::dialog(video, title, file_path, gui::OK_CANCEL),
 	show_directory_buttons_(show_directory_buttons),
 	files_list_(NULL),
 	last_selection_(-1),
@@ -66,19 +69,20 @@ file_dialog::file_dialog(display &disp, const std::string& file_path,
 	chosen_file_(".."),
     autocomplete_(true)
 {
-	files_list_ = new gui::file_menu(disp.video(), file_path);
-	const unsigned file_list_height = (disp.h() / 2);
-	const unsigned file_list_width = std::min<unsigned>(files_list_->width(), (disp.w() / 4));
+	files_list_ = new gui::file_menu(video, file_path);
+	const unsigned file_list_height = (video.gety() / 2);
+	const unsigned file_list_width = std::min<unsigned>(files_list_->width(), (video.gety() / 4));
 	files_list_->set_measurements(file_list_width, file_list_height);
 	files_list_->set_max_height(file_list_height);
 	set_menu(files_list_);
+	default_file_name_ = default_file_name;
 	get_message().set_text(format_dirname(files_list_->get_directory()));
 	set_textbox(_("File: "), format_filename(file_path), 100);
 	if (show_directory_buttons_)
 	{
-		add_button( new gui::dialog_button(disp.video(), _("Delete File"),
+		add_button( new gui::dialog_button(video, _("Delete File"),
 					gui::button::TYPE_PRESS, gui::DELETE_ITEM), dialog::BUTTON_EXTRA);
-		add_button( new gui::dialog_button(disp.video(), _("New Folder"),
+		add_button( new gui::dialog_button(video, _("New Folder"),
 					gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_EXTRA_LEFT);
 	}
 }
@@ -124,7 +128,7 @@ std::string file_dialog::unformat_filename(const std::string& filename) const
 std::string file_dialog::format_filename(const std::string& filename) const
 {
 	if(files_list_->is_directory(filename)) {
-		return "";
+		return default_file_name_;
 	}
 	std::string::size_type last_delim = filename.find_last_of(gui::file_menu::path_delim);
 	if(last_delim != std::string::npos) {
@@ -180,8 +184,17 @@ std::string file_dialog::format_dirname(const std::string& dirname) const
 	return dir_prefix + tmp;
 }
 
+void file_dialog::set_save_text(const std::string& filename)
+{
+	const std::string fn = format_filename(filename);
+	const size_t filename_dot = fn.find_last_of('.');
+	get_textbox().set_text(fn);
+	get_textbox().set_selection(0, filename_dot != std::string::npos ? filename_dot : fn.length());
+	get_textbox().set_cursor_pos(0);
+}
 
-void file_dialog::action(gui::dialog_process_info &dp_info) {
+void file_dialog::action(gui::dialog_process_info &dp_info)
+{
 	if(result() == gui::CLOSE_DIALOG)
 		return;
 
@@ -191,7 +204,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		if(!chosen_file_.empty())
 		{
 			if(files_list_->delete_chosen_file() == -1) {
-				gui2::show_transient_error_message(get_display().video()
+				gui2::show_transient_error_message(get_video()
 						, _("Deletion of the file failed."));
 				dp_info.clear_buttons();
 			} else {
@@ -204,10 +217,10 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 	else if(result() == gui::CREATE_ITEM)
 	{
 		std::string new_dir_name = "";
-		if(gui2::tfolder_create::execute(new_dir_name, get_display().video()))
+		if(gui2::tfolder_create::execute(new_dir_name, get_video()))
 		{
 			if( !files_list_->make_directory(new_dir_name) ) {
-				gui2::show_transient_error_message(get_display().video()
+				gui2::show_transient_error_message(get_video()
 						, _("Creation of the directory failed."));
 			} else {
 				dp_info.first_time = true;
@@ -227,7 +240,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		files_list_->reset_type_a_head();
 
 		chosen_file_ = files_list_->get_choice();
-		get_textbox().set_text(format_filename(chosen_file_));
+		set_save_text(chosen_file_);
 		last_selection_ = (dp_info.double_clicked) ? -1 : dp_info.selection;
 		last_textbox_text_ = textbox_text();
 	}

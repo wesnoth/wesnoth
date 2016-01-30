@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,14 +22,15 @@
 #include "actions/attack.hpp"
 #include "actions/undo.hpp"
 #include "dialogs.hpp"
-#include "game_events.hpp"
+#include "format_time_summary.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
-#include "help.hpp"
+#include "help/help.hpp"
+#include "help/help_button.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -38,10 +39,18 @@
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
 #include "minimap.hpp"
+#include "recall_list_manager.hpp"
 #include "replay.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "save_index.hpp"
+#include "strftime.hpp"
+#include "synced_context.hpp"
+#include "terrain_type_data.hpp"
 #include "thread.hpp"
+#include "unit.hpp"
+#include "unit_animation.hpp"
 #include "unit_helper.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
@@ -53,6 +62,8 @@
 #include "ai/lua/unit_advancements_aspect.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
+#include <boost/shared_ptr.hpp>
 
 //#ifdef _WIN32
 //#include "locale.h"
@@ -81,22 +92,34 @@ namespace
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<const unit*>& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, const boost::shared_ptr<std::vector<unit_const_ptr > >& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	gui::filter_textbox& filter_;
-	const std::vector<const unit*>& units_;
+	boost::shared_ptr<std::vector<unit_const_ptr > > units_;
 };
+
+template<typename T> void dump(const T & units)
+{
+	log_scope2(log_display, "dump()")
+
+	LOG_DP << "size: " << units.size() << "\n";
+	size_t idx = 0;
+	BOOST_FOREACH(const unit_const_ptr & u_ptr, units) {
+		LOG_DP << "unit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'\n";
+	}
+}
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
-	const std::vector<std::pair<int, int> >& param = std::vector<std::pair<int, int> >();
-	param.back();
 	const size_t index = size_t(filter_.get_index(menu_selection));
-	if(index < units_.size()) {
-		const unit &u = *(units_[index]);
+
+	LOG_DP << "units_:\n"; dump(*units_);
+	if(index < units_->size()) {
+		const unit_const_ptr & u_ptr = units_->at(index);
+		const unit & u = *u_ptr;
 
 		//If the unit is of level > 1, or is close to advancing,
 		//we warn the player about it
@@ -122,21 +145,22 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 				return gui::CONTINUE_DIALOG;
 			}
 		}
+		// Remove the item from our dialog's list
+		units_->erase(units_->begin() + index);
+
 		// Remove the item from filter_textbox memory
-		filter_.delete_item(index);
-		//add dismissal to the undo stack
-		resources::undo_stack->add_dismissal(u);
+		filter_.delete_item(menu_selection);
+
+		LOG_DP << "Dismissing a unit, side = " << u.side() << " id = '" << u.id() << "'\n";
+		LOG_DP << "That side's recall list:\n";
+		dump((*resources::teams)[u.side() -1].recall_list());
 
 		// Find the unit in the recall list.
-		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
-		assert(!recall_list.empty());
-		std::vector<unit>::iterator dismissed_unit =
-				find_if_matches_id(recall_list, u.id());
-		assert(dismissed_unit != recall_list.end());
+		unit_ptr dismissed_unit = (*resources::teams)[u.side() -1].recall_list().find_if_matches_id(u.id());
+		assert(dismissed_unit);
 
 		// Record the dismissal, then delete the unit.
-		recorder.add_disband(dismissed_unit->id());
-		recall_list.erase(dismissed_unit);
+		synced_context::run_and_throw("disband", replay_helper::get_disband(dismissed_unit->id()));
 
 		return gui::DELETE_ITEM;
 	} else {
@@ -154,10 +178,10 @@ int advance_unit_dialog(const map_location &loc)
 
 	std::vector<std::string> lang_options;
 
-	std::vector<unit> sample_units;
+	boost::shared_ptr<std::vector<unit_const_ptr> > sample_units(boost::make_shared<std::vector<unit_const_ptr> >());
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
-		sample_units.push_back(::get_advanced_unit(*u, *op));
-		const unit& type = sample_units.back();
+		sample_units->push_back(::get_advanced_unit(*u, *op));
+		const unit& type = *sample_units->back();
 
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX
@@ -173,8 +197,8 @@ int advance_unit_dialog(const map_location &loc)
 	BOOST_FOREACH(const config &mod, u->get_modification_advances())
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
-		sample_units.push_back(::get_amla_unit(*u, mod));
-		const unit& type = sample_units.back();
+		sample_units->push_back(::get_amla_unit(*u, mod));
+		const unit& type = *sample_units->back();
 		if (!mod["image"].empty()) {
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
 		} else {
@@ -196,7 +220,7 @@ int advance_unit_dialog(const map_location &loc)
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		gui::dialog advances = gui::dialog(*resources::screen,
+		gui::dialog advances = gui::dialog(resources::screen->video(),
 				      _("Advance Unit"),
 		                      _("What should our victorious unit become?"),
 		                      gui::OK_ONLY);
@@ -205,66 +229,6 @@ int advance_unit_dialog(const map_location &loc)
 		return advances.show();
 	}
 	return 0;
-}
-
-void advance_unit(const map_location &loc, bool automatic, bool add_replay_event, const ai::unit_advancements_aspect& advancements)
-{
-	unit_map::iterator u = resources::units->find(loc);
-	if(!unit_helper::will_certainly_advance(u)) {
-		return;
-	}
-
-	LOG_DP << "advance_unit: " << u->type_id() << " (advances: " << u->advances()
-		<< " XP: " <<u->experience() << '/' << u->max_experience() << ")\n";
-
-	int res;
-
-	if (automatic) {
-
-		//if the advancements are empty or don't match any option
-		//choose random instead.
-		res = rand() % unit_helper::number_of_possible_advances(*u);
-
-		const std::vector<std::string>& options = u->advances_to();
-		const std::vector<std::string>& allowed = advancements.get_advancements(u);
-
-		for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
-			if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
-				res = a - options.begin();
-				break;
-			}
-		}
-	} else {
-		res = advance_unit_dialog(loc);
-	}
-	if(add_replay_event) {
-		recorder.add_advancement(loc);
-	}
-
-	config choice_cfg;
-	choice_cfg["value"] = res;
-	recorder.user_input("choose", choice_cfg);
-
-	LOG_DP << "animating advancement...\n";
-	animate_unit_advancement(loc, size_t(res));
-
-	// In some rare cases the unit can have enough XP to advance again,
-	// so try to do that.
-	// Make sure that we don't enter an infinite level loop.
-	u = resources::units->find(loc);
-	if (u != resources::units->end()) {
-		// Level 10 unit gives 80 XP and the highest mainline is level 5
-		if (u->experience() < 81) {
-			// For all leveling up we have to add advancement to replay here because replay
-			// doesn't handle cascading advancement since it just calls animate_unit_advancement().
-			advance_unit(loc, automatic, true, advancements);
-		} else {
-			ERR_CF << "Unit has too many (" << u->experience()
-				<< ") XP left; cascade leveling disabled.\n";
-		}
-	} else {
-		ERR_NG << "Unit advanced no longer exists.\n";
-	}
 }
 
 bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event, const bool animate)
@@ -349,7 +313,7 @@ void show_unit_list(display& gui)
 	items.push_back(heading);
 
 	std::vector<map_location> locations_list;
-	std::vector<unit> units_list;
+	boost::shared_ptr<std::vector<unit_const_ptr> > units_list = boost::make_shared<std::vector<unit_const_ptr> >();
 
 	int selected = 0;
 
@@ -363,7 +327,7 @@ void show_unit_list(display& gui)
 		// If a unit is already selected on the map, we do the same in the unit list dialog
 		if (gui.selected_hex() == i->get_location()) {
 			row << DEFAULT_ITEM;
-			selected = units_list.size();
+			selected = units_list->size();
 		}
 		// If unit is leader, show name in special color, e.g. gold/silver
 		/** @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query */
@@ -431,14 +395,14 @@ void show_unit_list(display& gui)
 		items.push_back(row.str());
 
 		locations_list.push_back(i->get_location());
-		units_list.push_back(*i);
+		units_list->push_back(i.get_shared_ptr());
 	}
 
 	{
 		dialogs::units_list_preview_pane unit_preview(units_list);
 		unit_preview.set_selection(selected);
 
-		gui::dialog umenu(gui, _("Unit List"), "", gui::NULL_DIALOG);
+		gui::dialog umenu(gui.video(), _("Unit List"), "", gui::NULL_DIALOG);
 		umenu.set_menu(items, &sorter);
 		umenu.add_pane(&unit_preview);
 		//sort by type name
@@ -459,10 +423,10 @@ void show_unit_list(display& gui)
 	}
 }
 
-void show_objectives(const config &level, const std::string &objectives)
+void show_objectives(const std::string &scenarioname, const std::string &objectives)
 {
 	static const std::string no_objectives(_("No objectives available"));
-	gui2::show_transient_message(resources::screen->video(), level["name"],
+	gui2::show_transient_message(resources::screen->video(), scenarioname,
 		(objectives.empty() ? no_objectives : objectives), "", true);
 }
 
@@ -476,11 +440,11 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(1);
 
-	gui::dialog rmenu(disp, _("Recruit") + title_suffix,
+	gui::dialog rmenu(disp.video(), _("Recruit") + title_suffix,
 			  _("Select unit:") + std::string("\n"),
 			  gui::OK_CANCEL,
 			  gui::dialog::default_style);
-	rmenu.add_button(new help::help_button(disp, "recruit_and_recall"),
+	rmenu.add_button(new help::help_button(disp.video(), "recruit_and_recall"),
 		gui::dialog::BUTTON_HELP);
 
 	gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
@@ -498,9 +462,9 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 
 
 #ifdef LOW_MEM
-int recall_dialog(display& disp, std::vector< const unit* >& units, int /*side*/, const std::string& title_suffix)
+int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const_ptr > > & units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
-int recall_dialog(display& disp, std::vector< const unit* >& units, int side, const std::string& title_suffix)
+int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost)
 #endif
 {
 	std::vector<std::string> options, options_to_filter;
@@ -519,19 +483,44 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	BOOST_FOREACH(const unit* u, units)
+	BOOST_FOREACH(const unit_const_ptr & u, *units)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
 		if (name.empty()) name = utils::unicode_em_dash;
 
 		option << IMAGE_PREFIX << u->absolute_image();
+
 	#ifndef LOW_MEM
 		option << "~RC("  << u->team_color() << '>'
 			<< team::get_side_color_index(side) << ')';
+
+		if(u->can_recruit()) {
+			option << "~BLIT(" << unit::leader_crown() << ")";
+		}
+
+		BOOST_FOREACH(const std::string& overlay, u->overlays())
+		{
+			option << "~BLIT(" << overlay << ")";
+		}
 	#endif
-		option << COLUMN_SEPARATOR
-			<< u->type_name() << COLUMN_SEPARATOR
+
+		option << COLUMN_SEPARATOR;
+		int cost = u->recall_cost();
+		if(cost < 0) {
+			cost = team_recall_cost;
+		}
+		option << u->type_name() << "\n";
+		if(cost > team_recall_cost) {
+			option << font::NORMAL_TEXT << "<255,0,0>";
+		}
+		else if(cost == team_recall_cost) {
+			option << font::NORMAL_TEXT;
+		}
+		else if(cost < team_recall_cost) {
+			option << font::NORMAL_TEXT << "<0,255,0>";
+		}
+		option << cost << " Gold" << COLUMN_SEPARATOR
 			<< name << COLUMN_SEPARATOR;
 
 		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
@@ -564,8 +553,8 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 		options.push_back(option.str());
 		options_to_filter.push_back(option_to_filter.str());
 	}
-	
-	gui::dialog rmenu(disp, _("Recall") + title_suffix,
+
+	gui::dialog rmenu(disp.video(), _("Recall") + title_suffix,
 		_("Select unit:") + std::string("\n"),
 		gui::OK_CANCEL, gui::dialog::default_style);
 
@@ -585,7 +574,7 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 	gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
 	rmenu.add_button(delete_button);
 
-	rmenu.add_button(new help::help_button(disp,"recruit_and_recall"),
+	rmenu.add_button(new help::help_button(disp.video(), "recruit_and_recall"),
 		gui::dialog::BUTTON_HELP);
 
 	dialogs::units_list_preview_pane unit_preview(units, filter);
@@ -612,447 +601,6 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 	return res;
 }
 
-
-
-namespace {
-
-/** Class to handle deleting a saved game. */
-class delete_save : public gui::dialog_button_action
-{
-public:
-	delete_save(display& disp, gui::filter_textbox& filter, std::vector<savegame::save_info>& saves) :
-		disp_(disp), saves_(saves), filter_(filter) {}
-private:
-	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
-
-	display& disp_;
-	std::vector<savegame::save_info>& saves_;
-	gui::filter_textbox& filter_;
-};
-
-gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection)
-{
-	const size_t index = size_t(filter_.get_index(menu_selection));
-	if(index < saves_.size()) {
-
-		// See if we should ask the user for deletion confirmation
-		if(preferences::ask_delete_saves()) {
-			if(!gui2::tgame_delete::execute(disp_.video())) {
-				return gui::CONTINUE_DIALOG;
-			}
-		}
-
-		// Remove the item from filter_textbox memory
-		filter_.delete_item(menu_selection);
-
-		// Delete the file
-		savegame::delete_game(saves_[index].name());
-
-		// Remove it from the list of saves
-		saves_.erase(saves_.begin() + index);
-
-		return gui::DELETE_ITEM;
-	} else {
-		return gui::CONTINUE_DIALOG;
-	}
-}
-
-static const int save_preview_border = 10;
-
-class save_preview_pane : public gui::preview_pane
-{
-public:
-	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
-			const std::vector<savegame::save_info>& info,
-			const gui::filter_textbox& textbox,
-			gui::dialog_button* difficulty_option) :
-		gui::preview_pane(video),
-		game_config_(&game_config),
-		map_(map), info_(&info),
-		index_(0),
-		map_cache_(),
-		textbox_(textbox),
-		difficulty_option_(difficulty_option)
-	{
-		set_measurements(std::min<int>(200,video.getx()/4),
-				 std::min<int>(400,video.gety() * 4/5));
-
-		if (difficulty_option_ != NULL) {
-			difficulty_option_->enable(false);
-		}
-	}
-
-	void draw_contents();
-
-	/**
-	 * Enables "Change difficulty" option box for start-of-scenario
-	 * save-files only
-	 */
-	void decide_on_difficulty_option();
-
-	void set_selection(int index) {
-		int res = textbox_.get_index(index);
-		index_ = (res >= 0) ? res : index_;
-		decide_on_difficulty_option();
-		set_dirty();
-	}
-
-	bool left_side() const { return true; }
-
-private:
-	const config* game_config_;
-	gamemap* map_;
-	const std::vector<savegame::save_info>* info_;
-	int index_;
-	std::map<std::string,surface> map_cache_;
-	const gui::filter_textbox& textbox_;
-	gui::dialog_button* difficulty_option_;
-};
-
-void save_preview_pane::decide_on_difficulty_option()
-{
-	if (difficulty_option_ == NULL) {
-		return;
-	}
-
-	const config& summary = ((*info_)[index_]).summary();
-	const bool start_of_scenario = summary["turn"].empty() && !summary["replay"].to_bool();
-	difficulty_option_->enable(start_of_scenario);
-}
-
-void save_preview_pane::draw_contents()
-{
-	if(size_t(index_) >= info_->size()) {
-		return;
-	}
-
-	surface screen = video().getSurface();
-
-	SDL_Rect const &loc = location();
-	const SDL_Rect area = create_rect(loc.x + save_preview_border
-			, loc.y + save_preview_border
-			, loc.w - save_preview_border * 2
-			, loc.h - save_preview_border * 2);
-
-	const clip_rect_setter clipper(screen, &area);
-
-	int ypos = area.y;
-
-	bool have_leader_image = false;
-
-	const config& summary = ((*info_)[index_]).summary();
-	const std::string& leader_image = summary["leader_image"].str();
-
-	if(!leader_image.empty() && image::exists(leader_image))
-	{
-#ifdef LOW_MEM
-		const surface& image(image::get_image(leader_image));
-#else
-		// NOTE: assuming magenta for TC here. This is what's used in all of
-		// mainline, so the compromise should be good enough until we add more
-		// summary fields to help with this and deciding the side color range.
-		const surface& image(image::get_image(leader_image + "~RC(magenta>1)"));
-#endif
-
-		have_leader_image = !image.null();
-
-		if(have_leader_image) {
-			SDL_Rect image_rect = create_rect(area.x, area.y, image->w, image->h);
-			ypos += image_rect.h + save_preview_border;
-
-			sdl_blit(image,NULL,screen,&image_rect);
-		}
-	}
-
-	std::string map_data = summary["map_data"];
-	if(map_data.empty()) {
-		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
-		if (scenario && !scenario.find_child("side", "shroud", "yes")) {
-			map_data = scenario["map_data"].str();
-			if (map_data.empty() && scenario.has_attribute("map")) {
-				try {
-					map_data = read_map(scenario["map"]);
-				} catch(io_exception& e) {
-					ERR_G << "could not read map '" << scenario["map"] << "': " << e.what() << '\n';
-				}
-			}
-		}
-	}
-
-	surface map_surf(NULL);
-
-	if(map_data.empty() == false) {
-		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
-		if(itor != map_cache_.end()) {
-			map_surf = itor->second;
-		} else if(map_ != NULL) {
-			try {
-				const int minimap_size = 100;
-				map_->read(map_data);
-
-				map_surf = image::getMinimap(minimap_size, minimap_size, *map_);
-				if(map_surf != NULL) {
-					map_cache_.insert(std::pair<std::string,surface>(map_data, map_surf));
-				}
-			} catch(incorrect_map_format_error& e) {
-				ERR_CF << "map could not be loaded: " << e.message << '\n';
-			} catch(twml_exception& e) {
-				ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
-			}
-		}
-	}
-
-	if(map_surf != NULL) {
-		// Align the map to the left when the leader image is missing.
-		const int map_x = have_leader_image ? area.x + area.w - map_surf->w : area.x;
-		SDL_Rect map_rect = create_rect(map_x
-				, area.y
-				, map_surf->w
-				, map_surf->h);
-
-		ypos = std::max<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
-		sdl_blit(map_surf,NULL,screen,&map_rect);
-	}
-
-	char time_buf[256] = {0};
-	const savegame::save_info& save = (*info_)[index_];
-	tm* tm_l = localtime(&save.modified());
-	if (tm_l) {
-		const size_t res = strftime(time_buf,sizeof(time_buf),
-			(preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y")),
-			tm_l);
-		if(res == 0) {
-			time_buf[0] = 0;
-		}
-	} else {
-		LOG_NG << "localtime() returned null for time " << save.modified() << ", save " << save.name();
-	}
-
-	std::stringstream str;
-
-	str << font::BOLD_TEXT << font::NULL_MARKUP
-		<< (*info_)[index_].name() << '\n' << time_buf;
-
-	const std::string& campaign_type = summary["campaign_type"];
-	if (summary["corrupt"].to_bool()) {
-		str << "\n" << _("#(Invalid)");
-	} else if (!campaign_type.empty()) {
-		str << "\n";
-
-		if(campaign_type == "scenario") {
-			const std::string campaign_id = summary["campaign"];
-			const config *campaign = NULL;
-			if (!campaign_id.empty()) {
-				if (const config &c = game_config_->find_child("campaign", "id", campaign_id))
-					campaign = &c;
-			}
-			utils::string_map symbols;
-			if (campaign != NULL) {
-				symbols["campaign_name"] = (*campaign)["name"];
-			} else {
-				// Fallback to nontranslatable campaign id.
-				symbols["campaign_name"] = "(" + campaign_id + ")";
-			}
-			str << vgettext("Campaign: $campaign_name", symbols);
-
-			// Display internal id for debug purposes if we didn't above
-			if (game_config::debug && (campaign != NULL)) {
-				str << '\n' << "(" << campaign_id << ")";
-			}
-		} else if(campaign_type == "multiplayer") {
-			str << _("Multiplayer");
-		} else if(campaign_type == "tutorial") {
-			str << _("Tutorial");
-		} else if(campaign_type == "test") {
-			str << _("Test scenario");
-		} else {
-			str << campaign_type;
-		}
-
-		str << "\n";
-
-		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
-			str << _("Replay");
-		} else if (!summary["turn"].empty()) {
-			str << _("Turn") << " " << summary["turn"];
-		} else {
-			str << _("Scenario start");
-		}
-
-		str << "\n" << _("Difficulty: ") << string_table[summary["difficulty"]];
-		if(!summary["version"].empty()) {
-			str << "\n" << _("Version: ") << summary["version"];
-		}
-	}
-
-	font::draw_text(&video(), area, font::SIZE_SMALL, font::NORMAL_COLOR, str.str(), area.x, ypos, true);
-}
-
-std::string format_time_summary(time_t t)
-{
-	time_t curtime = time(NULL);
-	const struct tm* timeptr = localtime(&curtime);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm current_time = *timeptr;
-
-	timeptr = localtime(&t);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm save_time = *timeptr;
-
-	const char* format_string = _("%b %d %y");
-
-	if(current_time.tm_year == save_time.tm_year) {
-		const int days_apart = current_time.tm_yday - save_time.tm_yday;
-		if(days_apart == 0) {
-			// save is from today
-			if(preferences::use_twelve_hour_clock_format() == false) {
-				format_string = _("%H:%M");
-			}
-			else {
-				format_string = _("%I:%M %p");
-			}
-		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
-			// save is from this week
-			if(preferences::use_twelve_hour_clock_format() == false) {
-				format_string = _("%A, %H:%M");
-			}
-			else {
-				format_string = _("%A, %I:%M %p");
-			}
-		} else {
-			// save is from current year
-			format_string = _("%b %d");
-		}
-	} else {
-		// save is from a different year
-		format_string = _("%b %d %y");
-	}
-
-	char buf[40];
-	const size_t res = strftime(buf,sizeof(buf),format_string,&save_time);
-	if(res == 0) {
-		buf[0] = 0;
-	}
-
-	return buf;
-}
-
-} // end anon namespace
-
-std::string load_game_dialog(display& disp, const config& game_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders)
-{
-	std::vector<savegame::save_info> games;
-	{
-		cursor::setter cur(cursor::WAIT);
-		games = savegame::get_saves_list();
-	}
-
-	if(games.empty()) {
-		gui2::show_transient_message(disp.video(),
-		                 _("No Saved Games"),
-				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"));
-		return "";
-	}
-
-	const events::event_context context;
-
-	std::vector<std::string> items;
-	std::ostringstream heading;
-	heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Date");
-	items.push_back(heading.str());
-	std::vector<savegame::save_info>::const_iterator i;
-	for(i = games.begin(); i != games.end(); ++i) {
-		std::string name = i->name();
-		utils::truncate_as_wstring(name, std::min<size_t>(name.size(), 40));
-
-		std::ostringstream str;
-		str << name << COLUMN_SEPARATOR << format_time_summary(i->modified());
-
-		items.push_back(str.str());
-	}
-
-	gamemap map_obj(game_config, "");
-
-
-	gui::dialog lmenu(disp,
-			  _("Load Game"),
-			  "", gui::NULL_DIALOG);
-	lmenu.set_basic_behavior(gui::OK_CANCEL);
-
-	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(0).set_id_sort(1);
-	lmenu.set_menu(items, &sorter);
-
-	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, items, 1, lmenu);
-	lmenu.set_textbox(filter);
-
-	gui::dialog_button* change_difficulty_option = NULL;
-
-	if(select_difficulty != NULL) {
-		// implmentation of gui::dialog::add_option, needed for storing a pointer to the option-box
-		change_difficulty_option = new gui::dialog_button(disp.video(), _("Change difficulty"), gui::button::TYPE_CHECK);
-		change_difficulty_option->set_check(false);
-
-		change_difficulty_option->set_help_string(_("Change campaign difficulty before loading"));
-		lmenu.add_button(change_difficulty_option, gui::dialog::BUTTON_CHECKBOX);
-	}
-
-	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,*filter,change_difficulty_option);
-	lmenu.add_pane(&save_preview);
-	// create an option for whether the replay should be shown or not
-	if(show_replay != NULL) {
-		lmenu.add_option(_("Show replay"), false,
-			gui::dialog::BUTTON_CHECKBOX_LEFT,
-			_("Play the embedded replay from the saved game if applicable")
-			);
-	}
-	if(cancel_orders != NULL) {
-		lmenu.add_option(_("Cancel orders"), false,
-			gui::dialog::BUTTON_CHECKBOX_LEFT,
-			_("Cancel any pending unit movements in the saved game")
-			);
-	}
-	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
-	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
-
-	delete_save save_deleter(disp,*filter,games);
-	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
-
-	lmenu.add_button(delete_button,
-		// Beware load screen glitches at low res!
-		gui::dialog::BUTTON_HELP);
-
-	int res = lmenu.show();
-
-	if(res == -1)
-		return "";
-
-	res = filter->get_index(res);
-	int option_index = 0;
-	if (select_difficulty != NULL) {
-		*select_difficulty = lmenu.option_checked(option_index++) && change_difficulty_option->enabled();
-	}
-	if(show_replay != NULL) {
-	  *show_replay = lmenu.option_checked(option_index++);
-
-		const config& summary = games[res].summary();
-		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
-			*show_replay = true;
-		}
-	}
-	if (cancel_orders != NULL) {
-		*cancel_orders = lmenu.option_checked(option_index++);
-	}
-
-	return games[res].name();
-}
-
 namespace {
 	static const int unit_preview_border = 10;
 }
@@ -1074,7 +622,8 @@ unit_preview_pane::details::details() :
 	xp_color(),
 	movement_left(0),
 	total_movement(0),
-	attacks()
+	attacks(),
+	overlays()
 {
 }
 
@@ -1091,9 +640,9 @@ unit_preview_pane::unit_preview_pane(const gui::filter_textbox *filter, TYPE typ
 }
 
 
-handler_vector unit_preview_pane::handler_members()
+sdl_handler_vector unit_preview_pane::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&details_button_);
 	return h;
 }
@@ -1133,37 +682,53 @@ void unit_preview_pane::draw_contents()
 
 	const bool right_align = left_side();
 
-	surface screen = video().getSurface();
-
 	SDL_Rect const &loc = location();
-	const SDL_Rect area = create_rect(loc.x + unit_preview_border
+	const SDL_Rect area = sdl::create_rect(loc.x + unit_preview_border
 			, loc.y + unit_preview_border
 			, loc.w - unit_preview_border * 2
 			, loc.h - unit_preview_border * 2);
 
-	const clip_rect_setter clipper(screen, &area);
+#ifdef SDL_GPU
+	GPU_SetClip(get_render_target(), area.x, area.y, area.w, area.h);
 
-	surface unit_image = det.image;
-	if (!left_)
-		unit_image = image::reverse_image(unit_image);
+	sdl::timage unit_image = det.image;
+	// TODO: port this to SDL_gpu
+//	if (!left_)
+//		unit_image = image::reverse_image(unit_image);
 
-	SDL_Rect image_rect = create_rect(area.x, area.y, 0, 0);
+	SDL_Rect image_rect = sdl::create_rect(area.x, area.y, 0, 0);
 
-	if(unit_image != NULL) {
-		SDL_Rect rect = create_rect(
+	if(!unit_image.null()) {
+		SDL_Rect rect = sdl::create_rect(
 				  right_align
 					? area.x
-					: area.x + area.w - unit_image->w
+					: area.x + area.w - unit_image.width()
 				, area.y
-				, unit_image->w
-				, unit_image->h);
+				, unit_image.width()
+				, unit_image.height());
 
-		sdl_blit(unit_image,NULL,screen,&rect);
+		video().draw_texture(unit_image, rect.x, rect.y);
 		image_rect = rect;
+
+		if(!det.overlays.empty()) {
+			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+				sdl::timage oi = image::get_texture(overlay);
+
+				if(!oi.null()) {
+					continue;
+				}
+
+				if(oi.width() > rect.w || oi.height() > rect.h) {
+					oi.set_scale(float(rect.w) / oi.width(), float(rect.h) / oi.height());
+				}
+
+				video().draw_texture(oi, rect.x, rect.y);
+			}
+		}
 	}
 
 	// Place the 'unit profile' button
-	const SDL_Rect button_loc = create_rect(
+	const SDL_Rect button_loc = sdl::create_rect(
 			  right_align
 				? area.x
 				: area.x + area.w - details_button_.location().w
@@ -1172,7 +737,7 @@ void unit_preview_pane::draw_contents()
 			, details_button_.location().h);
 	details_button_.set_location(button_loc);
 
-	SDL_Rect description_rect = create_rect(image_rect.x
+	SDL_Rect description_rect = sdl::create_rect(image_rect.x
 			, image_rect.y + image_rect.h + details_button_.location().h
 			, 0
 			, 0);
@@ -1182,11 +747,12 @@ void unit_preview_pane::draw_contents()
 		desc << font::BOLD_TEXT << det.name;
 		const std::string description = desc.str();
 		description_rect = font::text_area(description, font::SIZE_NORMAL);
-		description_rect = font::draw_text(&video(), area,
+		sdl::timage img = font::draw_text_to_texture(area,
 							font::SIZE_NORMAL, font::NORMAL_COLOR,
-							desc.str(), right_align ?  image_rect.x :
-							image_rect.x + image_rect.w - description_rect.w,
-							image_rect.y + image_rect.h + details_button_.location().h);
+							desc.str());
+		video().draw_texture(img, right_align ?  image_rect.x :
+							 image_rect.x + image_rect.w - description_rect.w,
+							 image_rect.y + image_rect.h + details_button_.location().h);
 	}
 
 	std::stringstream text;
@@ -1261,44 +827,195 @@ void unit_preview_pane::draw_contents()
 				xpos = area.x + area.w - line_area.w;
 		}
 
+		sdl::timage img = font::draw_text_to_texture(location(),font::SIZE_SMALL,font::NORMAL_COLOR,*line);
+		video().draw_texture(img, xpos, ypos);
+		ypos += img.height();
+	}
+
+	GPU_UnsetClip(get_render_target());
+#else
+	surface& screen(video().getSurface());
+	const clip_rect_setter clipper(screen, &area);
+
+	surface unit_image = det.image;
+	if (!left_)
+		unit_image = image::reverse_image(unit_image);
+
+	SDL_Rect image_rect = sdl::create_rect(area.x, area.y, 0, 0);
+
+	if(unit_image != NULL) {
+		SDL_Rect rect = sdl::create_rect(
+				  right_align
+					? area.x
+					: area.x + area.w - unit_image->w
+				, area.y
+				, unit_image->w
+				, unit_image->h);
+
+		sdl_blit(unit_image,NULL,screen,&rect);
+		image_rect = rect;
+
+		if(!det.overlays.empty()) {
+			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+				surface os = image::get_image(overlay);
+
+				if(!os) {
+					continue;
+				}
+
+				if(os->w > rect.w || os->h > rect.h) {
+					os = scale_surface(os, rect.w, rect.h, false);
+				}
+
+				sdl_blit(os, NULL, screen, &rect);
+			}
+		}
+	}
+
+	// Place the 'unit profile' button
+	const SDL_Rect button_loc = sdl::create_rect(
+			  right_align
+				? area.x
+				: area.x + area.w - details_button_.location().w
+			, image_rect.y + image_rect.h
+			, details_button_.location().w
+			, details_button_.location().h);
+	details_button_.set_location(button_loc);
+
+	SDL_Rect description_rect = sdl::create_rect(image_rect.x
+			, image_rect.y + image_rect.h + details_button_.location().h
+			, 0
+			, 0);
+
+	if(det.name.empty() == false) {
+		std::stringstream desc;
+		desc << font::BOLD_TEXT << det.name;
+		const std::string description = desc.str();
+		description_rect = font::text_area(description, font::SIZE_NORMAL);
+		description_rect = font::draw_text(&video(), area,
+							font::SIZE_NORMAL, font::NORMAL_COLOR,
+							desc.str(), right_align ?  image_rect.x :
+							image_rect.x + image_rect.w - description_rect.w,
+							image_rect.y + image_rect.h + details_button_.location().h);
+	}
+
+	std::stringstream text;
+	text << font::unit_type << det.type_name << "\n"
+		<< font::race
+		<< (right_align && !weapons_ ? det.race+"  " : "  "+det.race) << "\n"
+		<< _("level") << " " << det.level << "\n"
+		<< det.alignment << "\n"
+		<< det.traits << "\n";
+
+	for(std::vector<t_string>::const_iterator a = det.abilities.begin(); a != det.abilities.end(); ++a) {
+		if(a != det.abilities.begin()) {
+			text << ", ";
+		}
+		text << (*a);
+	}
+	text << "\n";
+
+	// Use same coloring as in generate_report.cpp:
+	text << det.hp_color << _("HP: ")
+		<< det.hitpoints << "/" << det.max_hitpoints << "\n";
+
+	text << det.xp_color << _("XP: ")
+		<< det.experience << "/" << det.max_experience << "\n";
+
+	if(weapons_) {
+		text << _("Moves: ")
+			<< det.movement_left << "/" << det.total_movement << "\n";
+
+		for(std::vector<attack_type>::const_iterator at_it = det.attacks.begin();
+			at_it != det.attacks.end(); ++at_it) {
+			// see generate_report() in generate_report.cpp
+			text << font::weapon
+				<< at_it->damage()
+				<< font::weapon_numbers_sep
+				<< at_it->num_attacks()
+				<< " " << at_it->name() << "\n";
+			text << font::weapon_details
+				<< "  " << string_table["range_" + at_it->range()]
+				<< font::weapon_details_sep
+				<< string_table["type_" + at_it->type()] << "\n";
+
+			std::string accuracy_parry = at_it->accuracy_parry_description();
+			if(accuracy_parry.empty() == false) {
+				text << font::weapon_details << "  " << accuracy_parry << "\n";
+			}
+
+			std::string special = at_it->weapon_specials();
+			if (!special.empty()) {
+				text << font::weapon_details << "  " << special << "\n";
+			}
+		}
+	}
+
+	// we don't remove empty lines, so all fields stay at the same place
+	const std::vector<std::string> lines
+			= utils::split(text.str(), '\n', utils::STRIP_SPACES);
+
+
+	int ypos = area.y;
+
+	if(weapons_) {
+		ypos += image_rect.h + description_rect.h + details_button_.location().h;
+	}
+
+	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
+		int xpos = area.x;
+		if(right_align && !weapons_) {
+			const SDL_Rect& line_area = font::text_area(*line,font::SIZE_SMALL);
+			// right align, but if too long, don't hide line's beginning
+			if (line_area.w < area.w)
+				xpos = area.x + area.w - line_area.w;
+		}
+
 		SDL_Rect cur_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOR,*line,xpos,ypos);
 		ypos += cur_area.h;
 	}
+#endif
 }
 
-units_list_preview_pane::units_list_preview_pane(const unit *u, TYPE type, bool on_left_side) :
+
+units_list_preview_pane::units_list_preview_pane(unit_const_ptr u, TYPE type, bool on_left_side) :
 	unit_preview_pane(NULL, type, on_left_side),
-	units_(1, u)
+	units_(boost::make_shared<const std::vector<unit_const_ptr> >(1, u))
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const std::vector<const unit *> &units,
+units_list_preview_pane::units_list_preview_pane(const boost::shared_ptr<const std::vector<unit_const_ptr > > &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
 	units_(units)
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
-		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
-	unit_preview_pane(filter, type, on_left_side),
-	units_(units.size())
-{
-	for (unsigned i = 0; i < units.size(); ++i)
-		units_[i] = &units[i];
-}
-
 size_t units_list_preview_pane::size() const
 {
-	return units_.size();
+	return units_->size();
 }
 
 const unit_preview_pane::details units_list_preview_pane::get_details() const
 {
-	const unit &u = *units_[index_];
+	const unit &u = *units_->at(index_);
 	details det;
 
-	det.image = u.still_image();
+	/** Get an SDL surface, ready for display for place where we need a still-image of the unit. */
+	image::locator image_loc;
+
+#ifdef LOW_MEM
+	image_loc = image::locator(u.absolute_image());
+#else
+	std::string mods=u.image_mods();
+	if(!mods.empty()){
+		image_loc = image::locator(u.absolute_image(),mods);
+	} else {
+		image_loc = image::locator(u.absolute_image());
+	}
+#endif
+	det.image = image::get_image(image_loc, image::UNSCALED);
+	/***/
 
 	det.name = u.name();
 	det.type_name = u.type_name();
@@ -1326,13 +1043,23 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.total_movement= u.total_movement();
 
 	det.attacks = u.attacks();
+
+	if(u.can_recruit()) {
+		det.overlays.push_back(unit::leader_crown());
+	};
+
+	BOOST_FOREACH(const std::string& overlay, u.overlays()) {
+		det.overlays.push_back(overlay);
+	}
+
 	return det;
 }
 
 void units_list_preview_pane::process_event()
 {
+	assert(resources::screen);
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		show_unit_description(*units_[index_]);
+		help::show_unit_description(resources::screen->video(), *units_->at(index_));
 	}
 }
 
@@ -1357,7 +1084,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 		return det;
 
 	// Make sure the unit type is built with enough data for our needs.
-	unit_types.build_unit_type(*t, unit_type::WITHOUT_ANIMATIONS);
+	unit_types.build_unit_type(*t, unit_type::FULL);
 
 	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_color_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);
@@ -1417,71 +1144,46 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 
 void unit_types_preview_pane::process_event()
 {
+	assert(resources::screen);
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
 		if (type != NULL)
-			show_unit_description(*type);
+			help::show_unit_description(resources::screen->video(), *type);
 	}
 }
 
-
-void show_unit_description(const unit &u)
-{
-	show_unit_description(u.type());
-}
-
-void show_unit_description(const unit_type &t)
-{
-	const std::string &var = t.get_cfg()["variation_name"];
-	bool hide_help = t.hide_help();
-	bool use_variation = false;
-	if (!var.empty()) {
-		const unit_type *parent = unit_types.find(t.id());
-		if (hide_help) {
-			hide_help = parent->hide_help();
-		} else {
-			use_variation = true;
-		}
-	}
-
-	if (use_variation)
-		help::show_variation_help(*display::get_singleton(), t.id(), var, hide_help);
-	else
-		help::show_unit_help(*display::get_singleton(), t.id(), hide_help);
-}
-
-static network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
+static network::connection network_data_dialog(CVideo& video, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
 {
 	const size_t width = 300;
 	const size_t height = 80;
 	const size_t border = 20;
-	const int left = disp.w()/2 - width/2;
-	const int top  = disp.h()/2 - height/2;
+	const int left = video.getx()/2 - width/2;
+	const int top  = video.gety()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 
-	gui::button cancel_button(disp.video(),_("Cancel"));
+	gui::button cancel_button(video, _("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, true, &buttons_ptr);
+	gui::dialog_frame frame(video, msg, gui::dialog_frame::default_style, true, &buttons_ptr);
 	SDL_Rect centered_layout = frame.layout(left,top,width,height).interior;
-	centered_layout.x = disp.w() / 2 - centered_layout.w / 2;
-	centered_layout.y = disp.h() / 2 - centered_layout.h / 2;
+	centered_layout.x = video.getx() / 2 - centered_layout.w / 2;
+	centered_layout.y = video.gety() / 2 - centered_layout.h / 2;
 	// HACK: otherwise we get an empty useless space in the dialog below the progressbar
 	centered_layout.h = height;
 	frame.layout(centered_layout);
 	frame.draw();
 
-	const SDL_Rect progress_rect = create_rect(centered_layout.x + border
+	const SDL_Rect progress_rect = sdl::create_rect(centered_layout.x + border
 			, centered_layout.y + border
 			, centered_layout.w - border * 2
 			, centered_layout.h - border * 2);
 
-	gui::progress_bar progress(disp.video());
+	gui::progress_bar progress(video);
 	progress.set_location(progress_rect);
 
 	events::raise_draw_event();
-	disp.flip();
+	video.flip();
 
 	network::statistics old_stats = get_stats(connection_num);
 
@@ -1493,12 +1195,12 @@ static network::connection network_data_dialog(display& disp, const std::string&
 			old_stats = stats;
 			progress.set_progress_percent((stats.current*100)/stats.current_max);
 			std::ostringstream stream;
-			stream << stats.current/1024 << "/" << stats.current_max/1024 << _("KB");
+			stream << utils::si_string(stats.current, true, _("unit_byte^B")) << "/" << utils::si_string(stats.current_max, true, _("unit_byte^B"));
 			progress.set_text(stream.str());
 		}
 
 		events::raise_draw_event();
-		disp.flip();
+		video.flip();
 		events::pump();
 
 		if(res != 0) {
@@ -1514,13 +1216,13 @@ static network::connection network_data_dialog(display& disp, const std::string&
 
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
 {
-	return network_data_dialog(disp, msg, cfg, connection_num,
+	return network_data_dialog(disp.video(), msg, cfg, connection_num,
 							   network::get_send_stats);
 }
 
-network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
+network::connection network_receive_dialog(CVideo& v, const std::string& msg, config& cfg, network::connection connection_num)
 {
-	return network_data_dialog(disp, msg, cfg, connection_num,
+	return network_data_dialog(v, msg, cfg, connection_num,
 							   network::get_receive_stats);
 }
 
@@ -1531,19 +1233,19 @@ namespace {
 class connect_waiter : public threading::waiter
 {
 public:
-	connect_waiter(display& disp, gui::button& button) : disp_(disp), button_(button)
+	connect_waiter(CVideo& v, gui::button& button) : v_(v), button_(button)
 	{}
 	ACTION process();
 
 private:
-	display& disp_;
+	CVideo& v_;
 	gui::button& button_;
 };
 
 connect_waiter::ACTION connect_waiter::process()
 {
 	events::raise_draw_event();
-	disp_.flip();
+	v_.flip();
 	events::pump();
 	if(button_.pressed()) {
 		return ABORT;
@@ -1557,26 +1259,26 @@ connect_waiter::ACTION connect_waiter::process()
 namespace dialogs
 {
 
-network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port)
+network::connection network_connect_dialog(CVideo& v, const std::string& msg, const std::string& hostname, int port)
 {
 	const size_t width = 250;
 	const size_t height = 20;
-	const int left = disp.w()/2 - width/2;
-	const int top  = disp.h()/2 - height/2;
+	const int left = v.getx()/2 - width/2;
+	const int top  = v.gety()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 
-	gui::button cancel_button(disp.video(),_("Cancel"));
+	gui::button cancel_button(v,_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, true, &buttons_ptr);
+	gui::dialog_frame frame(v, msg, gui::dialog_frame::default_style, true, &buttons_ptr);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
 	events::raise_draw_event();
-	disp.flip();
+	v.flip();
 
-	connect_waiter waiter(disp,cancel_button);
+	connect_waiter waiter(v,cancel_button);
 	return network::connect(hostname,port,waiter);
 }
 

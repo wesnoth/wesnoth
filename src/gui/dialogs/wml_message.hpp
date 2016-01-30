@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,19 +17,38 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
+
+/**
+ *  Helper class for message options
+ */
+class twml_message_option {
+public:
+	explicit twml_message_option(std::string label, std::string description = "", std::string image = "")
+		: label_(label)
+		, description_(description)
+		, image_(image)
+	{}
+	std::string label() const {return label_;};
+	std::string description() const {return description_;};
+	std::string image() const {return image_;};
+private:
+	std::string label_, description_, image_;
+};
 
 /**
  * Base class for the wml generated messages.
  *
  * We have a separate sub class for left and right images.
  */
-class twml_message_
-	: public tdialog
+class twml_message_ : public tdialog
 {
 public:
-	twml_message_(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
+	twml_message_(const std::string& title,
+				  const std::string& message,
+				  const std::string& portrait,
+				  const bool mirror)
 		: title_(title)
 		, image_("")
 		, message_(message)
@@ -48,18 +67,25 @@ public:
 	 * Sets the input text variables.
 	 *
 	 * @param caption             The caption for the label.
-	 * @param text                The initial text, after showing the final
+	 * @param [in,out] text       The initial text, after showing the final
 	 *                            text.
 	 * @param maximum_length      The maximum length of the text.
 	 */
 	void set_input(const std::string& caption,
-			std::string* text, const unsigned maximum_length);
-
-	void set_option_list(
-			const std::vector<std::string>& option_list, int* chosen_option);
+				   std::string* text,
+				   const unsigned maximum_length);
+	/**
+	 * Sets the option list
+	 *
+	 * @param option_list            The list of options to display.
+	 * @param [in,out] chosen_option Pointer to the index of the initially
+	 *                               selected option; after showing, the
+	 *                               chosen option.
+	 */
+	void set_option_list(const std::vector<twml_message_option>& option_list,
+						 int* chosen_option);
 
 private:
-
 	/** The title for the dialog. */
 	std::string title_;
 
@@ -91,10 +117,10 @@ private:
 	unsigned input_maximum_length_;
 
 	/** The list of options the user can choose. */
-	std::vector<std::string> option_list_;
+	std::vector<twml_message_option> option_list_;
 
 	/** The chosen option. */
-	int *chosen_option_;
+	int* chosen_option_;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
@@ -107,14 +133,15 @@ private:
 class twml_message_left : public twml_message_
 {
 public:
-	twml_message_left(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
+	twml_message_left(const std::string& title,
+					  const std::string& message,
+					  const std::string& portrait,
+					  const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -123,14 +150,15 @@ private:
 class twml_message_right : public twml_message_
 {
 public:
-	twml_message_right(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
+	twml_message_right(const std::string& title,
+					   const std::string& message,
+					   const std::string& portrait,
+					   const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -157,24 +185,23 @@ private:
  *
  *  @param option_list            A list of options to select in the dialog.
  *  @param chosen_option          Pointer to the initially chosen option.
- *                                Will be set to the chosen_option when the
+ *                                Will be set to the chosen option when the
  *                                dialog closes.
  */
-int show_wml_message(const bool left_side
-		, CVideo& video
-		, const std::string& title
-		, const std::string& message
-		, const std::string& portrait
-		, const bool mirror
-		, const bool has_input
-		, const std::string& input_caption
-		, std::string* input_text
-	    , const unsigned maximum_length
-		, const std::vector<std::string>& option_list
-		, int* chosen_option);
+int show_wml_message(const bool left_side,
+					 CVideo& video,
+					 const std::string& title,
+					 const std::string& message,
+					 const std::string& portrait,
+					 const bool mirror,
+					 const bool has_input,
+					 const std::string& input_caption,
+					 std::string* input_text,
+					 const unsigned maximum_length,
+					 const std::vector<twml_message_option>& option_list,
+					 int* chosen_option);
 
 
 } // namespace gui2
 
 #endif
-

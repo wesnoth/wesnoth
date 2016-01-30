@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,8 @@
 
 namespace editor {
 
-std::string item_palette::get_help_string() {
+std::string item_palette::get_help_string()
+{
 	return selected_fg_item().name;
 }
 
@@ -54,24 +55,25 @@ void item_palette::setup(const config& cfg)
 	set_group("items");
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found.\n";
+		ERR_ED << "No items found." << std::endl;
 	}
 }
 
-void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text) {
-
-	surface screen = gui_.video().getSurface();
+void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text)
+{
 
 	std::stringstream filename;
 	filename << item.image;
+	if (item.image.empty())
+		filename << item.halo;
 
 	image = image::get_image(filename.str());
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for item type: '" << filename.str() << "' not found\n";
+		ERR_ED << "image for item type: '" << filename.str() << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
 		if (image == NULL) {
-			ERR_ED << "Placeholder image not found\n";
+			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
 	}

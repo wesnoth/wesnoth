@@ -51,11 +51,11 @@ với những người khác.
 đặt giá trị số bit mỗi điểm ảnh. Ví dụ: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign \ [<định_danh_chiến_dịch>]\fP
-đến trực tiếp chiến dịch có định danh <định_danh_chiến_dịch>. Một
-trình đơn chọn lựa sẽ xuất hiện nếu không có định danh nào được chỉ
-định. \fBGhi chú:\fP Khi sử dụng tùy chọn này, đảm bảo rằng bạn cũng chỉ định
-đường dẫn thư mục dữ liệu làm tham số cuối cùng, nếu không trò chơi sẽ lấy
-định danh chiến dịch/màn chơi làm thư mục dữ liệu.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<độ_khó>]\fP
 Mức độ khó của chiến dịch được chỉ định (1 đến tối đa). Nếu không chỉ định,
@@ -65,17 +65,11 @@ hộp chọn mức độ khó của chiến dịch sẽ xuất hiện.
 Định danh của màn chơi từ chiến dịch được chỉ định. Mặc định là màn chơi đầu
 tiên.
 .TP 
-\fB\-\-config\-dir\fP\fI\ tên\fP
-đặt đường dẫn thư mục chứa thiết lập người dùng thành \fItên\fP dưới $HOME hoặc
-"My Documents\eMy Games" với windows. Bạn cũng có thể chỉ định một đường dẫn
-tuyệt đối cho thư mục chứa thiết lập nằm ngoài $HOME hoặc "My Documents\eMy
-Games"
-.TP 
-\fB\-\-config\-path\fP
-in đường dẫn của thư mục chứa thiết lập người dùng và thoát.
-.TP 
 \fB\-\-data\-dir <thư mục>\fP
 ghi đè thư mục dữ liệu bằng thư mục được chỉ định
+.TP 
+\fB\-\-data\-path\fP
+in đường dẫn của thư mục dữ liệu và thoát.
 .TP 
 \fB\-d, \-\-debug\fP
 bật các tùy chọn chế độ lệnh bổ sung trong trò chơi (xem trang wiki ở địa
@@ -189,6 +183,28 @@ lỗi kiểm định được đối xử như là lỗi nghiêm trọng.
 \fB\-t, \-\-test\fP
 chạy trò chơi trong một màn chơi thử nghiệm nhỏ.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+in đường dẫn của thư mục chứa thiết lập người dùng và thoát.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ tên\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
+.TP 
+\fB\-\-userdata\-path\fP
+in đường dẫn của thư mục dữ liệu của người dùng và thoát.
+.TP 
 \fB\-\-validcache\fP
 giả sử rằng bộ nhớ đệm hợp lệ. (nguy hiểm)
 .TP 
@@ -231,6 +247,10 @@ nghiệm theo kịch bản.
 \fB\-\-ignore\-map\-settings\fP
 không sử dụng thiết lập bản đồ, mà sử dụng các giá trị mặc định.
 .TP 
+\fB\-\-multiplayer\-repeat=\fP\fIgiá_trị\fP
+lặp lại một trò chơi nhiều người chơi \fIgiá_trị\fP lần. Sử dụng tốt nhất với
+\fB\-\-nogui\fP để kiểm nghiệm theo kịch bản.
+.TP 
 \fB\-\-nogui\fP
 chạy trò chơi không có giao diện người dùng đồ họa. Phải xuất hiện trước
 \fB\-\-multiplayer\fP để có hiệu quả mong muốn.
@@ -271,7 +291,7 @@ Truy cập trang chủ chính thức: http://www.wesnoth.org/
 .
 .SH "BẢN QUYỀN"
 .
-Bản quyền \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 Đây là Phần mềm Tự do; phần mềm này được cấp phép theo GPL phiên bản 2, được
 công bố bởi Free Software Foundation (Tổ chức phần mềm tự do). KHÔNG có bảo

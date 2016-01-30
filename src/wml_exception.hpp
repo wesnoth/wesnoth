@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 
 #include <string>
 
-class display;
+class CVideo;
 
 /**
  * The macro to use for the validation of WML
@@ -132,7 +132,7 @@ struct twml_exception
 	 * Shows the error in a dialog.
 	 *  @param disp         The display object to show the message on.
 	 */
-	void show(display &disp);
+	void show(CVideo &video);
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
 };
@@ -145,7 +145,7 @@ private:
  *                                It may contain parent sections to make it
  *                                easier to find the wanted sections. They are
  *                                listed like [parent][child][section].
- * @param key                     The ommitted key.
+ * @param key                     The omitted key.
  * @param primary_key             The primary key of the section.
  * @param primary_value           The value of the primary key (mandatory if
  *                                primary key isn't empty).

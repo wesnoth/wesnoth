@@ -51,11 +51,11 @@ Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: \fB\-\-bpp
 32\fP
 .TP 
 \fB\-c, \-\-campaign \ [<id_Kampagne>]\fP
-Geht direkt zur Kampagne mit der ID <id_Kampagne>. Ein Auswahlmenü
-wird angezeigt, falls keine ID angegeben wurde. \fBAnmerkung\fP: Wenn dieser
-Schalter verwendet wird, stellen Sie sicher, dass ebenfalls der Pfad zum
-Datenverzeichnis als letztes Argument angegeben ist, anderenfalls wird das
-Spiel die Kampagnen\-/Szenario\-ID als Datenverzeichnis verwenden.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<difficulty>]\fP
 Die Einstufung der gewünschten Kampagne (1 bis Max). Falls nicht angegeben,
@@ -65,17 +65,11 @@ wird ein Dialog zur Auswahl der Kampagnen\-Einstufung angezeigt.
 Die ID des Szenarios der gewünschten Kampagne. Der Vorgabewert ist das erste
 Szenario.
 .TP 
-\fB\-\-config\-dir\fP\fI\ Name\fP
-Setzt das Konfigurationsverzeichnis des Benutzers auf \fIname\fP in $HOME oder
-»Eigene Dateien\eMy Games« auf Windows. Es kann auch ein absoluter Pfad zum
-Konfigurationsverzeichnis außerhalb von $HOME oder »Eigene Dateien\eMy
-Games« angegeben werden.
-.TP 
-\fB\-\-config\-path\fP
-Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.
-.TP 
 \fB\-\-data\-dir <Verzeichnis>\fP
 Das angegebene Verzeichnis als Daten\-Verzeichnis verwenden
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 Erlaubt zusätzliche Kommandos in der spieleigenen Befehlszeile (auf der
@@ -198,6 +192,28 @@ Prüfungsfehler werden als schwerwiegende Fehler angesehen.
 \fB\-t, \-\-test\fP
 Startet das Programm mit einem kleinen Testszenario.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 Nimmt an, dass der Cache gültig ist. (gefährlich)
 .TP 
@@ -242,6 +258,10 @@ automatisierten Leistungsvergleichen verwendet.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 Das Spiel startet ohne grafische Oberfläche. Muss vor \fB\-\-multiplayer\fP in
@@ -288,7 +308,7 @@ Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
 GNU General Public License, wie von der Free Software Foundation

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2015-12-10 19:01-0300\n"
 "PO-Revision-Date: 2011-03-22 13:49+0200\n"
 "Last-Translator: nikos\n"
 "Language-Team: none\n"
@@ -24,36 +24,6 @@ msgstr ""
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:16
-msgid "(Beginner)"
-msgstr "(Αρχάριος)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:16
-msgid "Fighter"
-msgstr "Πολεμιστής"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:17
-msgid "(Normal)"
-msgstr "(Κανονικό)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:17
-msgid "Lord"
-msgstr "Άρχοντας"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:18
-msgid "(Challenging)"
-msgstr "(Απαιτητικό)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:18
-msgid "High Lord"
-msgstr "Ηγεμόνας "
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
 "Continent, learning valuable tactics as you do so.\n"
@@ -64,79 +34,78 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:18
 msgid "(Novice level, 7 scenarios.)"
 msgstr "(για αρχάριους, 7 αποστολές)"
 
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
+#, fuzzy
+#| msgid "(Beginner)"
+msgid "Beginner"
+msgstr "(Αρχάριος)"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
+msgid "Fighter"
+msgstr "Πολεμιστής"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:21
+msgid "Lord"
+msgstr "Άρχοντας"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:21
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(Κανονικό)"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Απαιτητικό)"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+msgid "High Lord"
+msgstr "Ηγεμόνας "
+
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:35
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:36
 msgid "Campaign Design"
 msgstr "Σχεδιασμός"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:41
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:42
 msgid "Adaptation for mainline"
 msgstr "Προσαρμογή για την κύρια έκδοση του Γουέσνοθ"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:47
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:48
 msgid "Post 1.4 story and gameplay improvements"
 msgstr "Βελτιώσεις στην υπόθεση και το gameplay (μετά την έκδοση 1.4)"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:53
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:54
 msgid "Artwork and Graphics Design"
 msgstr "Σχεδιασμός γραφικών"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:60
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:61
 msgid "Editing, proofreading and gameplay testing"
 msgstr "Εκδότης, διορθωτής, δοκιμαστής"
 
 #. [scenario]: id=01_Defend_the_Forest
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:10
 msgid "Defend the Forest"
 msgstr "Προστάτεψε το δάσος"
 
-#. [side]: type=Elvish Lord, id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:24
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:44
-msgid "Erlornas"
-msgstr "Ερλόρνας"
-
-#. [side]: type=Elvish Lord, id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:31
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:27
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:29
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:29
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:49
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:28
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:34
-msgid "Elves"
-msgstr "Ξωτικά"
-
-#. [side]: type=Orcish Warrior, id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:43
-msgid "Urugha"
-msgstr "Ουρούγκα"
-
-#. [side]: type=Lich, id=Keremal
-#. [side]: type=Orcish Slayer, id=Gharlsa
-#. [side]: type=Orcish Sovereign, id=Rualsha
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warlord, id=Krughnar
-#. [side]: type=Orcish Warrior, id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:49
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:44
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:45
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:70
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:38
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:87
-msgid "Orcs"
-msgstr "Ορκ"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:65
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:25
 msgid ""
 "The arrival of humans and orcs caused turmoil among the nations of the Great "
 "Continent. Elves, previously in uneasy balance with dwarves and others, had "
@@ -149,7 +118,7 @@ msgstr ""
 "και πάλι πολεμικές συγκρούσεις σαν αυτές που μόνο οι θρύλοι τους θυμούνταν."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:69
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:29
 msgid ""
 "Their first encounter with the newcomers went less well than either side "
 "might have wished."
@@ -158,7 +127,7 @@ msgstr ""
 "δυο πλευρές επιθυμούσαν."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:73
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:33
 msgid ""
 "But humans, though crude and brash, at least had in them a creative spark "
 "which elves could recognize as akin to their own nature. Orcs seemed "
@@ -169,7 +138,7 @@ msgstr ""
 "δική τους φύση. Τα Ορκ απ' την άλλη έμοιαζαν τελείως ξένα."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:77
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:37
 msgid ""
 "For some years after Haldric’s people landed, orcs remained scarce more than "
 "a rumor to trouble the green fastnesses of the elves. That remained so until "
@@ -184,7 +153,7 @@ msgstr ""
 #. [part]
 #. "northern marches" is *not* a typo for "northern marshes" here.
 #. In archaic English, "march" means "border country".
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:83
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:43
 msgid ""
 "The orcs were first sighted from the north marches of the great forest of "
 "Wesmere."
@@ -192,10 +161,67 @@ msgstr ""
 "Τα Ορκ εντοπίστηκαν πρώτη φορά στις βόρειες παρυφές του μεγάλου δάσους του "
 "Γουίσμηρ."
 
+#. [side]
+#. [side]: type=Elvish Lord
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:57
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:42
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:50
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:45
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:48
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:29
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:30
+msgid "Elves"
+msgstr "Ξωτικά"
+
+#. [side]
+#. [unit]: type=Elvish Rider, id=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:65
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:119
+msgid "Lomarfel"
+msgstr "Λόμαρφελ"
+
+#. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warlord, id=Gnargha
+#. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Warrior, id=Urugha
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:80
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:60
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:67
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:65
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:59
+msgid "Orcs"
+msgstr "Ορκ"
+
+#. [side]: type=Orcish Warrior, id=Urugha
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:85
+msgid "Urugha"
+msgstr "Ουρούγκα"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:105
+msgid "Defeat Urugha"
+msgstr "Νίκησε τον Ουρούγκα"
+
+#. [objective]: condition=lose
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:109
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:104
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:92
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:159
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:111
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:75
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:95
+msgid "Death of Erlornas"
+msgstr "Θάνατος του Ερλόρνας"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:98
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:121
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Elves can move quickly and safely among the trees. Pick off the enemy "
+#| "grunts with your archers from the safety of the forest."
 msgid ""
-"Hint:\n"
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
 msgstr ""
@@ -204,29 +230,8 @@ msgstr ""
 "Ξεμονάχιασε τους Πεζοναύτες των Ορκ και σκότωσέ τους με τους τοξότες σου από "
 "την ασφάλεια του δάσους."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:102
-msgid "Defeat Urugha"
-msgstr "Νίκησε τον Ουρούγκα"
-
-#. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:106
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:97
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:93
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:167
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:116
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:68
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:121
-msgid "Death of Erlornas"
-msgstr "Θάνατος του Ερλόρνας"
-
-#. [event]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:118
-msgid "Lomarfel"
-msgstr "Λόμαρφελ"
-
-#. [message]: id=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:129
+#. [message]: speaker=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:131
 msgid ""
 "My lord! A party of aliens has made camp to the north and lays waste to the "
 "forest. Our scouts believe it’s a band of orcs."
@@ -234,8 +239,8 @@ msgstr ""
 "Αυθέντα μου! Ένα άγημα ξένων έχει στρατοπεδεύσει στα βόρεια και ξεκίνησε να "
 "καταστρέφει το δάσος. Οι ανιχνευτές μας πσιτεύουν ότι είναι Ορκ."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:133
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:136
 msgid ""
 "Orcs? It seems unlikely. The human king, Haldric, crushed them when they "
 "landed on these shores, and since then they’ve been no more than a bogey "
@@ -245,8 +250,8 @@ msgstr ""
 "όταν αποβιβάστηκαν στη στεριά, και από τότε δεν είναι παρά μπαμπούλες, για "
 "να τρώνε τα παιδιά το φαγητό τους."
 
-#. [message]: id=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:137
+#. [message]: speaker=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:141
 msgid ""
 "So it seemed, my lord. Yet there is a band of them in the north cutting down "
 "healthy trees by the dozen, and making great fires from the wood. They "
@@ -258,8 +263,8 @@ msgstr ""
 "πρασινάδα και την κάνουν λάσπη. Ούτε καν θάβουν την βρωμερή κοπριά τους, "
 "νομίζω ότι μπορώ να το μυρίσω ακόμα κι από εδώ."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:141
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:146
 msgid ""
 "So the grim tales of them prove true. They must not be allowed to continue; "
 "we must banish this blight from our forests. I shall marshal the wardens and "
@@ -272,13 +277,13 @@ msgstr ""
 "πληροφορηθεί όμως. Πήγαινέ τους το μήνυμα και επίστρεψε με ενισχύσεις, ίσως "
 "υπάρχουν κι άλλοι από αυτούς."
 
-#. [message]: id=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:145
+#. [message]: speaker=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:151
 msgid "Yes, my lord!"
 msgstr "Μάλιστα κύριε!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:162
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:170
 msgid ""
 "Look at them. Big, slow, clumsy and hardly a bow in hand. Keep to the trees, "
 "use your arrows and the day will be ours."
@@ -287,13 +292,13 @@ msgstr ""
 "κοντά στα δέντρα, χρησιμοποιήστε τα βέλη σας και η νίκη θα ανήκει σε εμάς."
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:171
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:179
 msgid "It’s hopeless; we’ve tried everything, and they’re still coming back."
 msgstr ""
 "Δεν έχουμε καμμία ελπίδα. Προσπαθήσαμε τα πάντα, και δεν καταφέραμε τίποτα."
 
-#. [message]: id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:175
+#. [message]: speaker=Urugha
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:184
 msgid ""
 "Forward, you worthless worms! Look at them, they’re tired and afraid! You "
 "killed their will to fight, now go and finish the job!"
@@ -301,8 +306,8 @@ msgstr ""
 "Προχωρήστε, άθλια σκουλήκια! Δέστε τους, είναι κουρασμένοι και φοβούνται! "
 "Σκοτώσατε την θέλησή τους να πολεμήσουν, τώρα σκοτώστε και τα σώματά τους!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:179
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:189
 msgid ""
 "That cloud of dust on the horizon... flee! There’s more of the abominations "
 "heading this way! Fall back before we’re outnumbered and crushed."
@@ -311,7 +316,7 @@ msgstr ""
 "προς τα εδώ! Υποχώρηση, προτού μας περικυκλώσουν και μας διαλύσουν!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:183
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:195
 msgid ""
 "Lord Erlornas didn’t drive the orcs back, although he and his warriors tried "
 "their absolute best. When another war band arrived, elvish resistance "
@@ -322,7 +327,7 @@ msgstr ""
 "κατέφτασε, η αντίσταση των Ξωτικών κατέρρευσε."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:188
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:201
 msgid ""
 "Of the ensuing events little is known, since much was lost in the chaos and "
 "confusion, but one thing is painfully sure. Elves lost the campaign."
@@ -331,28 +336,28 @@ msgstr ""
 "χάθηκαν στο χάος και την σύγχυση που ακολούθησε, αλλά ένα πράγμα είναι "
 "σίγουρο: τα Ξωτικά ηττήθηκαν ολοσχερώς."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:201
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:213
 msgid "Ugh..."
 msgstr "Αργκ..."
 
-#. [message]: id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:205
+#. [message]: speaker=Urugha
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:218
 msgid "Finally! Got him!"
 msgstr "Επιτέλους! Τον πέτυχα!"
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:212
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:226
 msgid "Lord!"
 msgstr "Άρχοντα!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:216
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:231
 msgid "Take... command... Drive them... away."
 msgstr "Πρέπει... να... τους διώξετε..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:220
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:237
 msgid ""
 "Lord Erlornas died the day he first fought the orcs and never saw the end of "
 "the war. Given its final outcome, this was perhaps for the best."
@@ -362,7 +367,7 @@ msgstr ""
 "μάλλον ήταν και το καλύτερο..."
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:232
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:249
 msgid ""
 "I’ve been bested, but the combat wasn’t fair... A thousand curses on you, "
 "withered coward! May you suffer... and when my master, Rualsha, finds you "
@@ -373,8 +378,8 @@ msgstr ""
 "αφέντης μου ο Ρουάλσα σε βρει, να εξαφανίσει το λαό σου από το πρόσωπο της "
 "Γης!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:243
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:261
 msgid ""
 "Rualsha? Hmm... What if... Assemble a war-party, we need to scout north!"
 msgstr ""
@@ -382,17 +387,12 @@ msgstr ""
 "ανιχνεύσουμε βόρεια!"
 
 #. [scenario]: id=02_Assassins
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:10
 msgid "Assassins"
 msgstr "Δολοφόνοι"
 
-#. [side]: type=Orcish Slayer, id=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:39
-msgid "Gharlsa"
-msgstr "Γκάρλσα"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:72
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:25
 msgid ""
 "The path of the orcish war band was easy to follow — a wide swathe of "
 "trampled ground through violated forest. Erlornas and his party swiftly "
@@ -403,7 +403,7 @@ msgstr ""
 "ομάδα του προχώρησαν γρήγορα κατά μήκος της, κατευθυνόμενοι βορειοδυτικά."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:76
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:29
 msgid ""
 "Soon they arrived at a region where the forest was cut through by many "
 "streams, only to find something unexpected."
@@ -411,10 +411,25 @@ msgstr ""
 "Σύντομα έφτασαν σε μια περιοχή όπου το δάσος διέκοπταν πολλοί χείμαρροι, "
 "όπου μια έκπληξη τους περίμενε."
 
+#. [side]: type=Orcish Slayer, id=Gharlsa
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:66
+msgid "Gharlsa"
+msgstr "Γκάρλσα"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:100
+msgid "Defeat Gharlsa"
+msgstr "Νίκησε τον Γκάρλσα"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:89
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:116
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Assassins are hard to hit, and their poison is insidious. Stay close to "
+#| "the villages, where poisoning can be cured, and force your enemies to "
+#| "attack you from the river."
 msgid ""
-"Hint:\n"
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
 "from the river."
@@ -425,18 +440,13 @@ msgstr ""
 "να θεραπευτεί, και ανάγκασε τους αντιπάλους σου να σου επιτεθούν από το "
 "ποτάμι."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:93
-msgid "Defeat Gharlsa"
-msgstr "Νίκησε τον Γκάρλσα"
-
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:126
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:130
 msgid "The trail leads straight to this place, my lord."
 msgstr "Τα ίχνη οδηγούν ευθεία εδω, αυθέντα μου."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:130
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:135
 msgid ""
 "There is a keep ahead of us. How comes it that we know nothing of it? I "
 "thought our borders were watched more carefully."
@@ -444,8 +454,8 @@ msgstr ""
 "Υπάρχει ένα φρούριο μπροστά μας. Γιατί δεν ξέραμε ότι υπήρχε; Νόμιζα ότι τα "
 "σύνορά μας επιτηρούνταν καλύτερα."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:134
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:140
 msgid ""
 "I... I know not, my lord. For ages there was no one in these lands that "
 "could build such a thing save us. I fear we have fallen prey a false sense "
@@ -456,45 +466,45 @@ msgstr ""
 "πέσαμε θύματα μιας εσφαλμένης αίσθησης ασφάλειας, και ότι αυτό χαλάρωσε την "
 "επαγρύπνηση των ανιχνευτών μας."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:138
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:145
 msgid "When the fighting ends, I’ll have some answers. But for now—"
 msgstr "Όταν τελειώσουν οι μάχες θα βρω τις απαντήσεις μου. Αλλά για την ώρα-"
 
-#. [message]: id=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:142
+#. [message]: speaker=Gharlsa
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:150
 msgid "Gharlsa sees elves... yes... Fresh meat for wolves. Yes, yes..."
 msgstr ""
 "Ο Γκάρλσα βλέπει Ξωτικα... ναι... Φρέσκο κρέας για τους λύκους... ναι, ναι..."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:146
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:155
 msgid "— let’s focus on the task at hand."
 msgstr "-ας συγκεντρωθούμε σε αυτό που βρίσκεται μπροστά μας."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:150
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:160
 msgid "Does that demented creature truly believe he can kill us?"
 msgstr ""
 "Αυτό το παράφρον πλάσμα πιστεύει στ' αλήθεια ότι μπορεί να μας σκοτώσει;"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:154
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:165
 msgid "Appearances can be deceiving. Tell the men to be cautious."
 msgstr "Τα φαινόμενα απατούν. Πες στους άνδρες να είναι προσεκτικοί."
 
-#. [message]: id=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:165
+#. [message]: speaker=Gharlsa
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:177
 msgid "Yes... yes... Slay them!"
 msgstr "Ναι... ναι... Σκοτώστε τους!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:176
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:189
 msgid "Hurts... failed... Rualsha gonna be angry..."
 msgstr "Πονάει... αποτυχία... Ρουάλσα θυμώσει..."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:187
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:201
 msgid ""
 "This... ‘Rualsha’ again. We need to forge ahead; the answers we seek are not "
 "here. Perhaps we will find them further north."
@@ -502,8 +512,8 @@ msgstr ""
 "Αυτό... Πάλι αυτός ο \"Ρουάλσα\". Πρέπει να ψάξουμε ακόμα βαθύτερα, οι "
 "απαντήσεις που ψάχνουμε δεν είναι εδώ. Ίσως τις  βρούμε ακόμα βορειότερα."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:191
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:206
 msgid ""
 "Destroy this place and let the forest take the ruins. We don’t want any more "
 "undesirables to use it."
@@ -512,17 +522,12 @@ msgstr ""
 "χρειάζόμαστε κι άλλους ανεπιθύμητους εδω."
 
 #. [scenario]: id=03_Wasteland
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:10
 msgid "Wasteland"
 msgstr "Ερημιά"
 
-#. [side]: type=Orcish Warlord, id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:39
-msgid "Gnargha"
-msgstr "Γκνάργκα"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:60
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:25
 msgid ""
 "As they fared further north the green forest thinned around them, slowly "
 "fading into a barren and fallow country. The signs were obvious and "
@@ -537,7 +542,7 @@ msgstr ""
 "ονόμαζαν σπίτι τους. Το είχαν σκοτώσει."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:64
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:29
 msgid ""
 "There was no trail to be found here; wind and rain had erased the spoor. "
 "Fortunately, there was no need of a trail; smoke on the horizon betrayed the "
@@ -548,7 +553,7 @@ msgstr ""
 "στον ορίζοντα πρόδιδε την παρουσία των εχθρών τους."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:68
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:33
 msgid ""
 "Erlornas was near-certain they would find orcs there. No clan of dwarves "
 "would break their ancient treaties with the elves in this way; humans were "
@@ -564,7 +569,7 @@ msgstr ""
 "Ρουάλσα;"
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:72
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:37
 msgid ""
 "Perhaps, but not here. The tribe this camp housed was too small to impress "
 "fear on other orcs. Come next morning, the elves were prepared for battle."
@@ -573,10 +578,24 @@ msgstr ""
 "εμπνεύσει φόβο σε άλλα Ορκ. Τα Ξωτικά σταμάτησαν για να ξεκουραστουν, έτοιμα "
 "για μάχη με το πρώτο φως της μέρας."
 
+#. [side]: type=Orcish Warlord, id=Gnargha
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:72
+msgid "Gnargha"
+msgstr "Γκνάργκα"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:88
+msgid "Defeat Gnargha"
+msgstr "Νίκησε τον Γκνάργκα"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:85
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:104
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "There are no villages in this scenario — you must use healers instead. "
+#| "Use hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgid ""
-"Hint:\n"
 "There are no villages in this scenario — you must use healers instead. Use "
 "hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgstr ""
@@ -586,13 +605,8 @@ msgstr ""
 "θα αδυνατίσεις τους αντιπάλους σου, που δεν έχουν δυνατότητα θεραπείας και "
 "θα διατηρησεις την δική σου δύναμη."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:89
-msgid "Defeat Gnargha"
-msgstr "Νίκησε τον Γκνάργκα"
-
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:170
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:122
 msgid ""
 "Lord... I’m... I am filled with grief. This senseless destruction is... "
 "overwhelming."
@@ -600,8 +614,8 @@ msgstr ""
 "Κύριε... είμαι... είμαι τόσο λυπημένος. Αυτή η ανούσια καταστροφή με γε... "
 "γεμίζει θλίψη..."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:174
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:127
 msgid ""
 "Yes. And this is the threat we were blind to but are now facing. This tribe "
 "is small, yet we must drive them back to the north. They must have no "
@@ -611,8 +625,8 @@ msgstr ""
 "τώρα. Αυτή η φυλή είναι τόσο μικρή, κι όμως πρέπει να τους απωθήσουμε πίσω "
 "στον βορρά. Πρέπει να μείνουν χωρίς προγεφύρωμα νότια των λόφων."
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:178
+#. [message]: speaker=Gnargha
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:132
 msgid ""
 "Elves!? This means Urugha failed and his spirit will suffer greatly for his "
 "weakness. So be it!"
@@ -620,8 +634,8 @@ msgstr ""
 "Ξωτικά; Αυτό σημαίνει ότι ο Ουρούγκα απέτυχε. Το πνεύμα του θα υποφέρει γι "
 "αυτήν την αδυναμία... Ας είναι!"
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:182
+#. [message]: speaker=Gnargha
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:137
 msgid ""
 "Rise up, grunts! We have a great fight upon us! Let your rage flow freely! "
 "Let your blades slay all! First one to draw blood will feast by my fire this "
@@ -631,8 +645,8 @@ msgstr ""
 "οργή σας να κυλήσει ελεύθερα! Ο πρώτος που θα ματώσει τον αντίπαλό του θα "
 "φάει δίπλα μου σήμερα το βράδυ!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:186
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:142
 msgid ""
 "Aim true, men, with wit and courage the day will be ours. And spare no-one, "
 "there can be no orc south of the hills, else we’ll never have peace again."
@@ -641,13 +655,13 @@ msgstr ""
 "είναι δική μας. Μην αφήσετε κανέναν ζωντανό, όσο υπάρχουν Ορκ νότια των "
 "λόφων δεν θα έχουμε ειρήνη ξανά."
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:198
+#. [message]: speaker=unit
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:200
 msgid "You won... elf... But it changes... nothing... (<i>cough</i>)"
 msgstr "Νίκησες... Ξωτικό... Αλλά δεν... αλλάζει τίποτα... (<i>γκουχ</i>)"
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:202
+#. [message]: speaker=unit
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:205
 msgid ""
 "We found the way... Now... we will come in numbers... (<i>cough</i>) you "
 "can’t imagine..."
@@ -655,13 +669,13 @@ msgstr ""
 "Βρήκαμε τον δρόμο... Τώρα... θα έρθουμε σε αριθμούς... (<i>γκουχ</i>) που "
 "δεν φαντάζεσαι..."
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:206
+#. [message]: speaker=unit
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:210
 msgid "(<i>Cough</i>) I’ll be waiting... among the dead..."
 msgstr " (<i>Γκουχ</i>) θα περιμένω... με τους... νεκρούς..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:217
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:223
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
 "themselves in a half-ruined camp littered with the bodies of both sides, "
@@ -673,16 +687,16 @@ msgstr ""
 "ένα Ορκ δεν είχε μείνει όρθιο, και κανένα απ' τα πληγωμένα δεν ζήτησε έλεος. "
 "Τα Ξωτικά δεν πήραν αιχμαλώτους."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:241
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:246
 msgid ""
 "It’s done, lord. No-one escaped. No-one tried to escape. I’m... disturbed."
 msgstr ""
 "Όλα έτοιμα, κύριε. Κανείς δεν ξέφυγε. Κανείς δεν προσπάθησε να ξεφύγει. "
 "Είμαι... ταραγμένος."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:245
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:251
 msgid ""
 "Good. But their disregard for self-preservation is astounding. As is their "
 "ferocity when defending what they claim as their own. Have the scouts found "
@@ -693,8 +707,8 @@ msgstr ""
 "αυτό που θεωρούν δικό τους. Βρήκαν άλλους οι ανιχνευτές μας σε αυτή τη μεριά "
 "των λόφων;"
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:249
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:256
 msgid ""
 "No, lord. But trolls were spotted in the hills ahead. Do we really need to "
 "cross them to the north?"
@@ -702,8 +716,8 @@ msgstr ""
 "Όχι, άρχοντά μου. Αλλά εντοπίσαμε Τρολ στους λόφους που είναι μπροστά μας. "
 "Δεν μπορούμε να τα παρακάμψουμε;"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:253
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:261
 msgid ""
 "Yes. The council has spoken to me through a dream-sending. They are "
 "troubled. Reinforcements have been sent after us, but we need to press on. "
@@ -714,8 +728,8 @@ msgstr ""
 "προχωρήσουμε κι άλλο. Πες τους ανδρες να ξεκουραστούν, αύριο τα χαράματα "
 "συνεχίζουμε."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:263
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:272
 msgid ""
 "What about the loot lord? We found supplies worth over a hundred gold in the "
 "camp."
@@ -723,8 +737,8 @@ msgstr ""
 "Τι να κάνουμε με τα λάφυρα, αρχηγέ; Βρήκαμε προμήθειες αξίας πάνω από εκατό "
 "χρυσά στο στρατόπεδό τους."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:267
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:277
 msgid ""
 "Distribute some among the men, save the rest for the road. This country is a "
 "wasteland now; we won’t find much forage on the march."
@@ -732,8 +746,8 @@ msgstr ""
 "Μοίρασε κάτι στους άνδρες, και κράτα τα υπόλοιπα για τον δρόμο. Η περιοχή "
 "είναι τελείως έρημη τώρα, δεν θα βρούμε τροφές όσο προχωράμε."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:283
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:294
 msgid ""
 "We found some supplies when searching the camp, but nothing much. What is to "
 "be done with them?"
@@ -741,8 +755,8 @@ msgstr ""
 "Βρήκαμε κάποιες προμήθειες μέσα στον καταυλισμό, αλλά όχι πολλά πράματα. Τι "
 "να κάνουμε;"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:287
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:299
 msgid ""
 "Save it for the march north. There is little to be found in this barren "
 "country."
@@ -751,7 +765,8 @@ msgstr ""
 "φιλόξενο μέρος."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:316
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:329
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:13
 msgid ""
 "Lord Erlornas never saw the blade that felled him. He died on the spot, with "
 "not a chance to issue last commands or farewells. Without him his wardens "
@@ -763,7 +778,8 @@ msgstr ""
 "το ηθικό τους αποτραβήχτηκαν από την μάχη."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:321
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:335
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:19
 msgid ""
 "When reinforcements finally arrived, elves managed to dislodge the orcish "
 "tribe. But the threat from the north remained unresolved and loomed large "
@@ -773,21 +789,21 @@ msgstr ""
 "Ορκ από τους λόφους. Όμως ο κίνδυνος στο Βορρά παρέμεινε, ρίχνοντας μια "
 "μεγάλη σκιά στο μέλλον τους."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:339
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:352
 msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
 msgstr ""
 "Δεν μπορούμε να συνεχίσουμε, αυθέντα μου, οι άντρες είναι πολύ κουρασμένοι. "
 "Πρέπει να υποχωρήσουμε."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:343
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:357
 msgid "Damn it. Sound the retreat, we’ll try again when reinforcements arrive."
 msgstr ""
 "Ανάθεμα! Σήμανε υποχώρηση, θα ξαναπροσπαθήσουμε όταν έρθουν ενισχύσεις."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:347
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:363
 msgid ""
 "The expected relief caught up with them a few days later. The following "
 "morning they took the field against a far larger host of orcs. The battle "
@@ -798,29 +814,12 @@ msgstr ""
 "πάλι ισόπαλη. Ο πόλεμος συνεχίστηκε για χρόνια..."
 
 #. [scenario]: id=04_Valley_of_Trolls
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:10
 msgid "Valley of Trolls"
 msgstr "Η Κοιλάδα Των Τρολ"
 
-#. [side]: type=Troll, type=Troll Warrior, id=Gurk
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:41
-msgid "Gurk"
-msgstr "Γκουρκ"
-
-#. [side]: type=Troll, type=Troll Warrior, id=Gurk
-#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:53
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:92
-msgid "Trolls"
-msgstr "Τρολ"
-
-#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:81
-msgid "Hrugu"
-msgstr "Χρούγκου"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:124
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:25
 msgid ""
 "Next morning, the elves set off again, increasingly wearied by the hardships "
 "of the campaign and longing for the green comfort of their home forests. "
@@ -834,7 +833,7 @@ msgstr ""
 "προς τα βουνά που δέσποζαν εμπρός τους."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:128
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:29
 msgid ""
 "At dusk they arrived at the mouth of a valley cutting almost straight "
 "through the range and made camp, as scouts warned that the area was hostile "
@@ -849,7 +848,7 @@ msgstr ""
 "κοιμήθηκαν ανήσυχα. Λίγοι άτυχοι φύλαξαν σκοπιά."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:132
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:33
 msgid ""
 "When sunrise came, the elves moved into battle formations. Whatever waited "
 "in the slopes ahead, it would not find them unprepared."
@@ -857,10 +856,36 @@ msgstr ""
 "Όταν ο ήλιος ανέτειλε τα Ξωτικά πήραν θέσεις μάχης. Ό,τι κι αν περίμενε στις "
 "πλαγιές μπροστά τους θα τους έβρισκε έτοιμους να το εντιμετωπίσουν."
 
+#. [side]: type=Troll, type=Troll Warrior, id=Gurk
+#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:67
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:107
+msgid "Trolls"
+msgstr "Τρολ"
+
+#. [side]: type=Troll, type=Troll Warrior, id=Gurk
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:76
+msgid "Gurk"
+msgstr "Γκουρκ"
+
+#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:116
+msgid "Hrugu"
+msgstr "Χρούγκου"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:155
+msgid "Defeat all enemy leaders"
+msgstr "Νίκησε όλους αντίπαλους αρχηγούς"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:159
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:171
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Trolls are poor fighters when not on rugged terrain and fare even worse "
+#| "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgid ""
-"Hint:\n"
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgstr ""
@@ -869,13 +894,8 @@ msgstr ""
 "ακόμα πιο ευάλωτα στο φως της μέρας. Παράσυρέ τα μακριά από τους λόφους και "
 "επιθέσου όσο υπάρχει φως."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:163
-msgid "Defeat all enemy leaders"
-msgstr "Νίκησε όλους αντίπαλους αρχηγούς"
-
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:196
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:185
 msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
 "the forest. Why do we not return home?"
@@ -883,8 +903,8 @@ msgstr ""
 "Είμαστε μακριά από την πατρίδα μας, Ερλόρνας, και έχουμε ήδη διώξει τα Ορκ "
 "από το δάσος. Γιατί δεν γυρνάμε πίσω;"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:200
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:190
 msgid ""
 "You know well enough... Rualsha. That name sounds everywhere we go since the "
 "incursion began. That orc is much more than a mere marauding bandit in "
@@ -898,20 +918,20 @@ msgstr ""
 "Σχεδιάζει μια μεγαλύτερης κλίμακας εισβολή, είμαι σίγουρος. Πρέπει να "
 "συλλέξουμε περισσότερες πληροφορίες για τα σχέδιά του προτού γυρίσουμε."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:204
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:195
 msgid "And tell me... How did you sleep last night?"
 msgstr "Και πες μου... πώς κοιμήθηκες εχθές το βράδυ;"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:208
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:200
 msgid ""
 "How did I?... Uneasy, lord. My dreams were bleak, some of them nightmares."
 msgstr ""
 "Πώς;... Ανήσυχα, αυθέντα μου. Τα όνειρά μου ήταν ζοφερά, κάποια εφιάλτες."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:212
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:205
 msgid ""
 "Yes. The earth currents are perturbed here, and the bridges to the dreamland "
 "are tainted. I think there is a mage dwelling somewhere nearby. Or perhaps "
@@ -924,7 +944,7 @@ msgstr ""
 "αυτά αναδίδουν την μυρωδιά πολλών προσώπων."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:216
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:210
 msgid ""
 "It would be dire indeed for us if these orcs have magic to add to their "
 "battle-might."
@@ -932,13 +952,13 @@ msgstr ""
 "Θα ήταν έσχατος κίνδυνος αν τα Ορκ μπορούν να μας απειλήσουν και με την "
 "μαγεία εκτός από τους πολεμιστές τους."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:220
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:215
 msgid "We must discover if this is so."
 msgstr "Πρέπει να ανακαλύψουμε αν αυτό είναι όντως έτσι."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:224
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:220
 msgid ""
 "Information will do us no good if we are killed before we return with it! "
 "These mountains look like troll territory."
@@ -946,15 +966,15 @@ msgstr ""
 "Οι πληροφορίες δεν θα αξίζουν τίποτα αν δεν τις φέρουμε μαζί μας πίσω! Αυτά "
 "τα βουνά μοιάζουν ιδανική περιοχή για τα Τρολ."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:228
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:225
 msgid "Enough. The sun’s fully over the horizon. Give the order to advance."
 msgstr ""
 "Αρκετά. Ο ήλιος είναι πια ψηλά πάνω από τον ορίζοντα. Δώσε διαταγές για "
 "αναχώρηση."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:245
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:242
 msgid ""
 "That was the last of the chieftains, lord. The lesser trolls seem to be "
 "retreating now."
@@ -962,8 +982,8 @@ msgstr ""
 "Αυτός ήταν ο τελευταίος από τους αρχηγούς των Τρολ, αυθέντα μου. Τα "
 "μικρότερα Τρολ υποχωρούν."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:249
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:247
 msgid ""
 "It is well. Break camp and move everyone through the pass before they rally. "
 "We’ll rest a bit on the other side; we have earned it."
@@ -973,11 +993,11 @@ msgstr ""
 "άλλη πλευρά, το έχουμε κερδίσει με το σπαθί μας."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:253
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:252
 msgid "At once. How much time do you think we have?"
 msgstr "Αμέσως. Πόσο χρόνο νομίζετε ότι έχουμε στην διάθεσή μας;"
 
-#. [message]: id=Erlornas
+#. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:257
 msgid ""
 "A day, perhaps. We fought two clans today; they won’t take long to rally. We "
@@ -986,7 +1006,7 @@ msgstr ""
 "Μια μέρα, ίσως δύο. Πολεμήσαμε δυο φυλές σήμερα, δεν θα αργήσουν πολύ να "
 "ανασυγκροτηθούν. Πρέπει να έχουμε φύγει από εδώ πριν το ηλιοβασίλεμα."
 
-#. [message]: id=Erlornas
+#. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:276
 msgid "We have slain a chieftain! Take heart! This battle is almost won!"
 msgstr "Σκοτώσαμε έναν από τους αρχηγούς! Πάρτε θάρρος, η νίκη είναι κοντά!"
@@ -997,12 +1017,12 @@ msgid "Ha! Me smashed da funny elf. Me got a trophy!"
 msgstr "Χα, εγώ έσπασε ντο αστείο Ξωτικό. Εγω πάρει βραβείο!"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:301
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:302
 msgid "No! This can’t be!"
 msgstr "Όχι! Δεν γίνεται!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:305
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:308
 msgid ""
 "Soon after Erlornas died, the elven party, lacking a leader and pressed from "
 "all sides, scattered and fled. Their retreat to Wesmere was arduous and long."
@@ -1012,7 +1032,7 @@ msgstr ""
 "ήταν επίπονος και μακρύς."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:310
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:313
 msgid ""
 "During their retreat, the pass was crossed by another army moving in the "
 "opposite direction. Orcs were back south of the pass, and this time they "
@@ -1023,7 +1043,7 @@ msgstr ""
 "έρθει για να μείνουν..."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:320
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:323
 msgid ""
 "We can’t get through, my Lord. These whelps are not individually very "
 "dangerous, but there are huge numbers of them."
@@ -1031,15 +1051,15 @@ msgstr ""
 "Δεν μπορούμε να περάσουμε, αυθέντα μου. Τούτα τα μικρά Τρολ δεν είναι πολύ "
 "επικίνδυνα από μόνα τους, αλλά είναι ατελείωτα!!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:324
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:328
 msgid ""
 "Four days of combat and nothing to show for it. How does it feel to you?"
 msgstr ""
 "Τέσσερις ημέρες μάχης, και ακόμα κανένα αποτέλεσμα. Πώς το βρίσκεις αυτό;"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:328
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:333
 msgid ""
 "Terrible, my lord. Never in my life did I dream I’d be bested by mere "
 "trolls. What are your orders?"
@@ -1047,8 +1067,8 @@ msgstr ""
 "Απαίσιο, άρχοντά μου. Ποτέ στην ζωή μου δεν πίστεψα ότι απλά Τρολ θα "
 "υπερτερούσαν στη μάχη εναντίον μας. Ποιες είναι οι διαταγές σας;"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:332
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:338
 msgid ""
 "Withdraw and make camp a safe distance from the hills. There is no further "
 "point in this fight. We’ll wait for reinforcements."
@@ -1057,7 +1077,7 @@ msgstr ""
 "λόγος να παρατείνουμε την μάχη. Θα περιμένουμε για ενισχύσεις."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:336
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:344
 msgid ""
 "The reinforcements arrived a few days later, a crack force of rangers with "
 "some cavalry support. When they attempted the pass again, they found not "
@@ -1069,7 +1089,7 @@ msgstr ""
 "που κατέβαινε από τον Βορρά."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:341
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:350
 msgid ""
 "The battle that ensued was bloody and inconclusive, and the elven losses "
 "were only the beginning of the mournful toll in a war that would rage for "
@@ -1080,12 +1100,12 @@ msgstr ""
 "άλλο σε έναν πόλεμο που μαινόταν για χρόνια μετά."
 
 #. [scenario]: id=05_Linaera_the_Quick
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:10
 msgid "Linaera the Quick"
 msgstr "Λινάερα η Γρήγορη"
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:24
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:26
 msgid ""
 "After a day of hard-earned rest the elves marched north again. This was "
 "unknown country, not frequented even by Wesmere’s furthermost-faring scouts."
@@ -1095,7 +1115,7 @@ msgstr ""
 "έφταναν ούτε οι πιο τολμηροί ανιχνευτές του Γουίσμηρ."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:28
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:30
 msgid ""
 "Two days’ travel later, the forward scouts reported another orcish warband "
 "laying siege to a tower."
@@ -1104,7 +1124,7 @@ msgstr ""
 "που πολιορκούσε έναν πύργο."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:32
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:34
 msgid ""
 "Erlornas surveyed the siege from atop a small tree-covered hill overlooking "
 "the tower valley..."
@@ -1113,24 +1133,34 @@ msgstr ""
 "λόφου, που παρείχε θέα σε όλη την κοιλάδα..."
 
 #. [side]: type=Orcish Warlord, id=Krughnar
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:64
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:70
 msgid "Krughnar"
 msgstr "Κρούγκναρ"
 
-#. [side]: type=Silver Mage, id=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:92
-msgid "Linaera"
-msgstr "Λινάερα"
-
-#. [side]: type=Silver Mage, id=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:96
+#. [side]
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:89
 msgid "Wizards"
 msgstr "Μάγοι"
 
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:107
+msgid "Defeat Krughnar and break the siege"
+msgstr "Νίκησε τον Κρουγκναρ και σπάσε την πολιορκία."
+
+#. [objective]: condition=lose
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:115
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:79
+msgid "Death of Linaera"
+msgstr "Θάνατος της Λινάερα"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:108
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:127
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-"
+#| "run attacks."
 msgid ""
-"Hint:\n"
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
 msgstr ""
@@ -1138,24 +1168,13 @@ msgstr ""
 "Χρησιμοποίησε τους Ανιχνευτές σου και την τηλεμεταφορά της Λινάερα για να "
 "επιτεθείς και να υποχωρήσεις γρήγορα."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:112
-msgid "Defeat Krughnar and break the siege"
-msgstr "Νίκησε τον Κρουγκναρ και σπάσε την πολιορκία."
-
-#. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:120
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:72
-msgid "Death of Linaera"
-msgstr "Θάνατος της Λινάερα"
-
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:150
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:141
 msgid "Report."
 msgstr "Αναφέρατε."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:154
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:146
 msgid ""
 "A warband of orcs, no women or children among them, besieges a tower. It’s "
 "of human design... but we are far from the lands granted to humans by "
@@ -1165,8 +1184,8 @@ msgstr ""
 "ανθρώπινης κατασκευής, αλλά είμαστε πολύ μακριά από τις χώρες που με βάση "
 "την συνθήκη ανήκουν στους ανθρώπους, άρχοντα Ερλόρνας."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:158
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:151
 msgid ""
 "Under the letter of the treaty, it is so. But this country is too cold and "
 "barren for us. I wonder, what manner of human would choose to live here, far "
@@ -1177,12 +1196,12 @@ msgstr ""
 "τόσο μακριά από τους ομοφύλους τους;"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:162
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:156
 msgid "It trespasses, and should be driven out!"
 msgstr "Είναι καταπατητές, και πρέπει να τους διώξουμε!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:166
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:161
 msgid ""
 "Hold. It is only one human, or a few of them at most. Time enough to speak "
 "of driving it out when we have no enemies in common."
@@ -1191,8 +1210,8 @@ msgstr ""
 "περίπτωση. Έχουμε αρκετό χρόνο να μιλάμε για καταπατητές όταν έχουμε κοινούς "
 "εχθρούς;"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:170
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:166
 msgid ""
 "Tell me: I see no bridge over the chasm around that keep. Is there any sign "
 "that one has been withdrawn by the defenders?"
@@ -1201,7 +1220,7 @@ msgstr ""
 "το φρούριο. Υπάρχει κάποια ένδειξη ότι την τράβηξαν μέσα;"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:174
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:171
 msgid ""
 "No, lord. No traces of any construction. It looks like no bridge has ever "
 "existed there. There must be other, hidden means of access to the tower."
@@ -1210,8 +1229,8 @@ msgstr ""
 "να μην υπήρξε ποτέ μια γέφυρα εκεί. Πρέπει να υπάρχουν άλλοι, κρυμμένοι "
 "τρόποι πρόσβασης στον πύργο."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:178
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:176
 msgid ""
 "Interesting... Go to my personal stores and bring me a bottle of wine. And a "
 "couple of glasses."
@@ -1220,11 +1239,11 @@ msgstr ""
 "μερικά ποτήρια."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:182
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:181
 msgid "... Glasses?"
 msgstr "...Ποτήρια;"
 
-#. [message]: id=Erlornas
+#. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:186
 msgid "Do it. We’ll have a guest soon."
 msgstr "Απλώς κάν'το. Θα έχουμε σύντομα επισκέψεις."
@@ -1238,7 +1257,7 @@ msgstr "Απλώς κάν'το. Θα έχουμε σύντομα επισκέψ�
 #. deliberately unclear whether Faerie is a place that is
 #. the source of magical power or a label for the inner
 #. nonhuman/magical nature of the Elves.  Translate freely.
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:198
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:200
 msgid ""
 "Erlornas closed his eyes and brought his hands forward, joined palms forming "
 "a cup open to the sky. Soon they began to glow, then to flare like a brazier "
@@ -1256,12 +1275,12 @@ msgstr ""
 "πριν."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:206
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:210
 msgid "Some time later..."
 msgstr "Λίγη ώρα αργότερα..."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:240
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:253
 msgid ""
 "So you decided to accept the invitation. Good. Welcome, I am lord Erlornas "
 "of Wesmere. I find your presence here... surprising."
@@ -1270,7 +1289,7 @@ msgstr ""
 "Ερλόρνας του Γουίσμηρ. Η παρουσία σας εδώ μου προκαλεί... έκπληξη."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:244
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:258
 msgid ""
 "Scarcely less than I find yours, my lord elf, but I would welcome your aid "
 "against these orcs. They have been besieging my tower for weeks."
@@ -1280,7 +1299,7 @@ msgstr ""
 "και μήνες."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:248
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:263
 msgid ""
 "I wish their foul kind driven as far as possible from my borders, not to "
 "return. It would be no bad thing if an ally of the elves kept watch over "
@@ -1291,14 +1310,14 @@ msgstr ""
 "σύμμαχος των Ξωτικών μπορούσε να επιβλεπει την περιοχή."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:252
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:268
 msgid "Count me an ally, then, lord Erlornas. We can defeat them together."
 msgstr ""
 "Τότε θεώρησέ με σύμμαχό σου, Άρχοντα Ερλόρνας. Μπορούμε να τους νικήσουμε "
 "μαζί."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:272
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:282
 msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
@@ -1306,8 +1325,8 @@ msgstr ""
 "Άρχοντά μου... δεν μπορούμε να εμπιστευτούμε τους Ανθρώπους! Η αφοσίωσή τους "
 "εξαρτάται από το φύσημα του ανέμου! Θυμάστε πώς μας πρόδωσε ο Χάλντρικ;!;!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:276
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:287
 msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
@@ -1316,14 +1335,8 @@ msgstr ""
 "στα Ορκ. Και θα χρειαστούμε και την βοήθειά της, οι εχθροί μας δεν είναι "
 "λίγοι."
 
-#. [message]: id=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:288
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:128
-msgid "Alas, Erlornas, I have failed us..."
-msgstr "Ωιμέ, Ερλόρνας, απέτυχα..."
-
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:306
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:296
 msgid ""
 "And that is well ended. But, Linaera, there is somewhat else that concerns "
 "me. You are a mage; do you not feel something... wrong... to the east of "
@@ -1333,7 +1346,7 @@ msgstr ""
 "Είσαι μάγισσα: αισθάνεσαι ότι κάτι είναι... λάθος... στα ανατολικά μας;"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:310
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:301
 msgid ""
 "I do indeed. Something evil has recently made a nest in the next valley "
 "over; its servants have been sniffing at the edges of my domain. I had meant "
@@ -1345,25 +1358,39 @@ msgstr ""
 "μόνη μου, αλλά εσείς, τα Ξωτικά που λατρεύουν το πράσινο της Γης, φαντάζομαι "
 "ότι θα το μισείτε όσο εγώ."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:314
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:306
 msgid "We are of one mind, then. Let us go to it."
 msgstr "Συμφωνούμε τότε. Ας πηγαίνουμε."
 
 #. [scenario]: id=06_A_Detour_through_the_Swamp
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:10
 msgid "A Detour through the Swamp"
 msgstr "Παράκαμψη Στους Βάλτους"
 
 #. [side]: type=Lich, id=Keremal
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:44
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:46
+msgid "Undead"
+msgstr ""
+
+#. [side]: type=Lich, id=Keremal
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:51
 msgid "Keremal"
 msgstr "Κέρεμαλ"
 
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:71
+msgid "Defeat Keremal"
+msgstr "Νίκησε τον Κέρεμαλ"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:60
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Undead are resistant to physical attack. Use mages to attack the undead, "
+#| "and elves to protect and support the mages."
 msgid ""
-"Hint:\n"
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
 msgstr ""
@@ -1372,13 +1399,8 @@ msgstr ""
 "τους μάγους για να τους κάνεις ζημιά και τα Ξωτικά για να προστατέψεις τους "
 "μάγους."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:64
-msgid "Defeat Keremal"
-msgstr "Νίκησε τον Κέρεμαλ"
-
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:117
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:114
 msgid ""
 "The evil spirits who have settled in this wetland have turned it into a vile "
 "bog. My apprentices and I have the power to dispel them, but you must "
@@ -1388,17 +1410,8 @@ msgstr ""
 "τέλμα. Οι μαθητές μου κι εγώ έχουμε την δύναμη να τα διασκορπίσουμε, αλλά "
 "πρέπει να μας προστατέψετε από τα όπλα τους."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:139
-msgid ""
-"All is lost! Without Linaera’s help, I cannot hope to defeat these "
-"horrifying apparitions!"
-msgstr ""
-"Όλα χάθηκαν! Χωρίς την βοήθεια της Λινάερα δεν μπορούμε να νικήσουμε τα "
-"φαντάσματα!"
-
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:154
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:128
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in pursuit of the orcs."
@@ -1407,7 +1420,7 @@ msgstr ""
 "κάποιοι από τους μαθητές μου θέλουν να σε ακολουθήσουν στα βορεια."
 
 #. [message]: role=mage
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:158
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:133
 msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please travel with you?"
@@ -1415,25 +1428,34 @@ msgstr ""
 "Πάντοτε ήθελα να δω Ξωτικά, και τώρα πολεμάω στο πλευρό τους! Μπορώ να "
 "ταξιδέψω μαζί σας, παρακαλώ;"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:162
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:138
 msgid "Certainly... I shall be glad of your help."
 msgstr "Βεβαίως... χρειαζόμαστε την βοήθειά σου."
 
 #. [scenario]: id=07_Showdown
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:10
 msgid "Showdown"
 msgstr "Αναμέτρηση"
 
 #. [side]: type=Orcish Sovereign, id=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:93
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:64
 msgid "Rualsha"
 msgstr "Ρουάλσα"
 
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:91
+msgid "Defeat Rualsha"
+msgstr "Νίκησε τον Ρουάλσα"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:113
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:103
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Your enemy is well-defended against attacks from the south. Use rangers "
+#| "to sneak through the forest and mount a surprise attack from the north."
 msgid ""
-"Hint:\n"
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
 msgstr ""
@@ -1442,13 +1464,28 @@ msgstr ""
 "Νότο. Χρησιμοποίησε τους Καταδρομείς για να γλιστρήσεις μέσα από το δάσος "
 "και να επιτεθείς αιφνιδιαστικά από τον βορρά."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:117
-msgid "Defeat Rualsha"
-msgstr "Νίκησε τον Ρουάλσα"
+#. [unit]: type=Elvish Ranger, id=Celodith
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:136
+msgid "Celodith"
+msgstr ""
+
+#. [unit]: type=Elvish Ranger, id=Earanduil
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:153
+msgid "Earanduil"
+msgstr ""
+
+#. [unit]: type=Elvish Ranger, id=Elvyniel
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:170
+msgid "Elvyniel"
+msgstr ""
+
+#. [unit]: type=Elvish Ranger, id=Delorfilith
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:187
+msgid "Delorfilith"
+msgstr ""
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:223
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:197
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
 "Ka’lian has deliberated, and asks you to defeat Rualsha quickly before he "
@@ -1459,7 +1496,7 @@ msgstr ""
 "καταφέρει να συγκεντρώσει αρκετό στρατό ώστε να εισβάλλει."
 
 #. [message]: speaker=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:227
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:202
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
@@ -1468,7 +1505,7 @@ msgstr ""
 "τσακίσουμε. Θα παρακαλάτε να πεθάνετε γρήγορα!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:237
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:214
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
@@ -1477,7 +1514,7 @@ msgstr ""
 "σε κυνηγήσουν, και θα σε καταστρέψουν ολοκληρωτικά... θα... θα...αργκ..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:248
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:227
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1487,23 +1524,53 @@ msgstr ""
 "Με τον αρχηγό τους νεκρό σκόρπισαν, και γύρισαν πίσω στα φρούριά τους στον "
 "μακρινό βορρά."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:260
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:241
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr "Με θλίβει να παίρνω ζωές, ακόμα και αυτές βαρβάρων όπως ο Ρουάλσα."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:264
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:246
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr ""
 "Αν τα Ορκ συνεχίσουν να μας πιέζουν θα πρέπει να συνηθίσουμε στον πόλεμο."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:268
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:251
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."
 msgstr ""
 "Πολύ φοβάμαι ότι έτσι είναι. Κερδίσαμε μια νίκη εδώ, αλλά σκοτεινοί καιροί "
 "έρχονται από πίσω της."
+
+#: data/campaigns/An_Orcish_Incursion/utils/characters.cfg:6
+msgid "Erlornas"
+msgstr "Ερλόρνας"
+
+#: data/campaigns/An_Orcish_Incursion/utils/characters.cfg:15
+msgid "Linaera"
+msgstr "Λινάερα"
+
+#. [message]: speaker=Linaera
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:37
+msgid "Alas, Erlornas, I have failed us..."
+msgstr "Ωιμέ, Ερλόρνας, απέτυχα..."
+
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:49
+#, fuzzy
+#| msgid ""
+#| "All is lost! Without Linaera’s help, I cannot hope to defeat these "
+#| "horrifying apparitions!"
+msgid ""
+"All is lost! Without Linaera’s help, I cannot hope to defeat these "
+"abominations!"
+msgstr ""
+"Όλα χάθηκαν! Χωρίς την βοήθεια της Λινάερα δεν μπορούμε να νικήσουμε τα "
+"φαντάσματα!"
+
+#: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
+msgid "Hint:"
+msgstr ""

@@ -21,6 +21,7 @@ if(ENABLE_DESIGN_DOCUMENTS)
 		gui2/introduction.tex
 		gui2/overall_design.tex
 		gui2/design_details.tex
+		gui2/design_details/tooltip_placement.tex
 		gui2/creating_widgets_and_dialogs.tex
 		gui2/files_for_the_widget.tex
 		gui2/files_for_the_window.tex

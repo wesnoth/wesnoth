@@ -170,7 +170,7 @@ class JourneyTracks:
             definitions = []
             for name in self.track_order:
                 track = self.tracks[name]
-                index_tuples = zip(range(len(track)), track)
+                index_tuples = zip(xrange(len(track)), track)
                 index_tuples = filter(lambda (i, (a, x, y)): a in segmenters,
                                       index_tuples)
                 endpoints = map(lambda (i, t): i, index_tuples)
@@ -181,7 +181,7 @@ class JourneyTracks:
                     stagename = "%s_STAGE%d" % (outname, i+1,)
                     definitions.append(stagename)
                     fp.write("#define %s\n" % stagename)
-                    for j in range(0, e+1):
+                    for j in xrange(0, e+1):
                         age="OLD"
                         if i == 0 or j > endpoints[i-1]:
                             age = "NEW"
@@ -192,7 +192,7 @@ class JourneyTracks:
                     endname = "%s_END" % stagename
                     fp.write("#define %s\n" % endname)
                     definitions.append(endname)
-                    for j in range(0, e+1):
+                    for j in xrange(0, e+1):
                         age="OLD"
                         if j == endpoints[i]:
                             age = "NEW"
@@ -203,7 +203,7 @@ class JourneyTracks:
                 completename = "%s_COMPLETE" % name
                 fp.write("#define %s\n" % completename)
                 definitions.append(completename)
-                for j in range(len(track)):
+                for j in xrange(len(track)):
                     waypoint = track[j]
                     fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
                 fp.write("#enddef\n\n")
@@ -222,7 +222,7 @@ class JourneyTracks:
         "Initialize a journey from map and track information."
         if type(fp) == type(""):
             try:
-                fp = open(fp)
+                fp = open(fp, "rU")
             except IOError:
                 raise IOException("Cannot read file.", fp)
         if self.tracks:
@@ -317,7 +317,7 @@ class JourneyTracks:
     def neighbors(self, x, y):
         "Return list of neighbors on selected track, enumerated and sorted by distance."
         neighbors = []
-        candidates = zip(range(len(self.selected_track())), self.selected_track())
+        candidates = zip(xrange(len(self.selected_track())), self.selected_track())
         candidates.sort(lambda (i1, (a1, x1, y1)), (i2, (a2, x2, y2)): cmp(distance(x, y, x1, y1), distance(x, y, x2, y2)))
         return candidates
     def find(self, x, y):
@@ -384,7 +384,7 @@ class ContextPopup:
             for (possible, item) in self.editor.journey.neighbors(x, y):
                 if within(x, y, self.editor.box(item)):
                     stagecount = 0
-                    for i in range(possible):
+                    for i in xrange(possible):
                         (action, xn, yn) = self.editor.journey[i]
                         if action in segmenters:
                             stagecount += 1
@@ -666,7 +666,7 @@ class TracksEditor:
         screen_height = gtk.gdk.screen_height()
         if self.map_width < 0.75 * screen_width and self.map_height < 0.75 * screen_width:
             # Screen is large relative to the image.  Grab enough
-            # space to display the wntire map.  and never scroll.
+            # space to display the entire map.  and never scroll.
             # There should be enough space around the edges for window
             # decorations, task bars, etc.
             vbox.pack_start(self.drawing_area, expand=True, fill=True, padding=0)

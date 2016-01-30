@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+                 2008 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
@@ -33,8 +32,8 @@ static lg::log_domain log_addons_client("addons-client");
 #define LOG_ADDONS LOG_STREAM(info,  log_addons_client)
 #define DBG_ADDONS LOG_STREAM(debug, log_addons_client)
 
-addons_client::addons_client(display& disp, const std::string& address)
-	: disp_(disp)
+addons_client::addons_client(CVideo& v, const std::string& address)
+	: v_(v)
 	, addr_(address)
 	, host_()
 	, port_()
@@ -53,7 +52,10 @@ addons_client::addons_client(display& disp, const std::string& address)
 	host_ = address_components[0];
 	port_ = address_components.size() == 2 ?
 		address_components[1] : str_cast(default_campaignd_port);
+}
 
+void addons_client::connect()
+{
 	LOG_ADDONS << "connecting to server " << host_ << " on port " << port_ << '\n';
 
 	utils::string_map i18n_symbols;
@@ -97,14 +99,11 @@ bool addons_client::request_distribution_terms(std::string& terms)
 	return !this->update_last_error(response_buf);
 }
 
-bool addons_client::upload_addon(const std::string& id, std::string& response_message)
+bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg)
 {
 	LOG_ADDONS << "preparing to upload " << id << '\n';
 
 	response_message.clear();
-
-	config cfg;
-	get_addon_pbl_info(id, cfg);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = cfg["title"];
@@ -182,12 +181,15 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	return !this->update_last_error(response_buf);
 }
 
-bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title)
+bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads)
 {
 	archive_cfg.clear();
 
 	config request_buf;
-	request_buf.add_child("request_campaign")["name"] = id;
+	config& request_body = request_buf.add_child("request_campaign");
+
+	request_body["name"] = id;
+	request_body["increase_downloads"] = increase_downloads;
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = title;
@@ -208,7 +210,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	i18n_symbols["addon_title"] = info.title;
 
 	if(!check_names_legal(archive_cfg)) {
-		gui2::show_error_message(disp_.video(),
+		gui2::show_error_message(v_,
 			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be installed.", i18n_symbols));
 		return false;
@@ -247,7 +249,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 
 	// Remove any previously installed versions
 	if(!remove_local_addon(info.id)) {
-		WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!\n";
+		WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!" << std::endl;
 	}
 
 	unarchive_addon(archive_cfg);
@@ -272,7 +274,7 @@ void addons_client::check_connected() const
 {
 	assert(conn_ != NULL);
 	if(conn_ == NULL) {
-		ERR_ADDONS << "not connected to server\n";
+		ERR_ADDONS << "not connected to server" << std::endl;
 		throw not_connected_to_server();
 	}
 }
@@ -303,7 +305,7 @@ void addons_client::wait_for_transfer_done(const std::string& status_message, bo
 		stat_->set_track_upload(track_upload);
 	}
 
-	if(!stat_->show(disp_.video())) {
+	if(!stat_->show(v_)) {
 		// Notify the caller chain that the user aborted the operation.
 		throw user_exit();
 	}

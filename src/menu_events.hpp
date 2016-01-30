@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -21,8 +21,16 @@
 #include "floating_textbox.hpp"
 #include "unit_map.hpp"
 
+#include <vector>
+
 class game_state;
 class gamemap;
+class game_data;
+class game_board;
+class gamemap;
+class play_controller;
+class team;
+class unit_map;
 
 namespace events {
 	class mouse_handler;
@@ -34,9 +42,8 @@ namespace events {
 
 class menu_handler : private chat_handler {
 public:
-	menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
-		const config& level, const gamemap& map,
-		const config& game_config, game_state& gamestate);
+	menu_handler(game_display* gui, play_controller & pc,
+		const config& game_config);
 	virtual ~menu_handler();
 
 	gui::floating_textbox& get_textbox();
@@ -63,12 +70,14 @@ public:
 	bool end_turn(int side_num);
 	void goto_leader(int side_num);
 	void unit_description();
+	void terrain_description(mouse_handler& mousehandler);
 	void rename_unit();
 	void create_unit(mouse_handler& mousehandler);
-	void create_unit_2(mouse_handler& mousehandler); // TODO: replace create_unit when complete
 	void change_side(mouse_handler& mousehandler);
+	void kill_unit(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
 	void clear_labels();
+	void label_settings();
 	void continue_move(mouse_handler &mousehandler, int side_num);
 	void execute_gotos(mouse_handler &mousehandler, int side_num);
 	void toggle_ellipses();
@@ -107,17 +116,20 @@ private:
 	//void do_speak(const std::string& message, bool allies_only);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
-	static void change_controller(const std::string& side, const std::string& controller);
 	static void change_side_controller(const std::string& side, const std::string& player);
 	void scenario_settings_table(int selected=0);
 
 	game_display* gui_;
-	unit_map& units_;
-	std::vector<team>& teams_;
-	const config& level_;
-	const gamemap& map_;
+	play_controller & pc_;
+
+	game_state & gamestate() const;
+	game_data & gamedata();
+	game_board & board() const;
+	unit_map& units();
+	std::vector<team>& teams() const;
+	const gamemap& map();
+
 	const config& game_config_;
-	game_state& gamestate_;
 
 	gui::floating_textbox textbox_info_;
 	std::string last_search_;

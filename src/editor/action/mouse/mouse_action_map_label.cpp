@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,8 @@
 
 #include "../../editor_display.hpp"
 #include "../../map/context_manager.hpp"
+
+#include <SDL_video.h>
 
 #include "gui/dialogs/editor/editor_edit_label.hpp"
 
@@ -50,7 +52,7 @@ editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, in
 		partial = true;
 		chain = new editor_action_chain(new editor_action_label_delete(last_draged_));
 		chain->append_action(new editor_action_label(hex, label->text(), label->team_name(), label->color(),
-				label->visible_in_shroud(), label->visible_in_fog(), label->immutable()));
+				label->visible_in_shroud(), label->visible_in_fog(), label->immutable(), label->category()));
 	}
 
 	last_draged_ = hex;
@@ -70,16 +72,18 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 	const terrain_label* old_label = editor::get_current_labels()->get_label(hex);
 	std::string label     = old_label ? old_label->text()              : "";
 	std::string team_name = old_label ? old_label->team_name()         : "";
+	std::string category  = old_label ? old_label->category()          : "";
 	bool visible_shroud   = old_label ? old_label->visible_in_shroud() : false;
 	bool visible_fog      = old_label ? old_label->visible_in_fog()    : true;
 	bool immutable        = old_label ? old_label->immutable()         : true;
+	SDL_Color color       = old_label ? old_label->color()             : font::NORMAL_COLOR;
 
-	gui2::teditor_edit_label d(label, immutable, visible_fog, visible_shroud);
+	gui2::teditor_edit_label d(label, immutable, visible_fog, visible_shroud, color, category);
 
 	editor_action* a = NULL;
 	if(d.show(disp.video())) {
-		a = new editor_action_label(hex, label, team_name, font::NORMAL_COLOR
-				, visible_fog, visible_shroud, immutable);
+		a = new editor_action_label(hex, label, team_name, color
+				, visible_fog, visible_shroud, immutable, category);
 		update_brush_highlights(disp, hex);
 	}
 	return a;
@@ -109,7 +113,7 @@ void mouse_action_map_label::set_mouse_overlay(editor_display& disp)
 	//TODO avoid hardcoded hex field size
 	surface image = create_neutral_surface(72,72);
 
-	SDL_Rect r = create_rect(6, 6, 0, 0);
+	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
 	blit_surface(image60, NULL, image, &r);
 
 	Uint8 alpha = 196;

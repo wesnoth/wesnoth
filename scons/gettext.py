@@ -79,7 +79,7 @@ def CheckGettextLibintl(context):
     prefixes = [env["prefix"]]
     if env.get("gettextdir"):
         prefixes = [env["gettextdir"]] + prefixes
-    includes = find_include(prefixes, "libintl.h", "", not env["host"])
+    includes = find_include(prefixes, "libintl.h", default_prefixes=not env["host"])
     if includes:
         env.AppendUnique(
             CPPPATH = [join(includes[0][0], "include")],

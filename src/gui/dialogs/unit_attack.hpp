@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,26 +17,29 @@
 
 #include "actions/attack.hpp"
 #include "gui/dialogs/dialog.hpp"
+#include "display.hpp"
 #include "unit_map.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-class tunit_attack
-	: public tdialog
+class tunit_attack : public tdialog
 {
 public:
-	tunit_attack(
-			  const unit_map::iterator& attacker_itor
-			, const unit_map::iterator& defender_itor
-			, const std::vector<battle_context>& weapons
-			, const int best_weapon);
+	tunit_attack(const unit_map::iterator& attacker_itor,
+				 const unit_map::iterator& defender_itor,
+				 const std::vector<battle_context>& weapons,
+				 const int best_weapon,
+				 display* disp = NULL);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	int get_selected_weapon() const { return selected_weapon_; }
+	int get_selected_weapon() const
+	{
+		return selected_weapon_;
+	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -45,6 +48,10 @@ private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
+
+	void profile_button_callback(const std::string& type);
+
+	void damage_calc_callback(twindow& window);
 
 	/** The index of the selected weapon. */
 	int selected_weapon_;
@@ -60,9 +67,10 @@ private:
 
 	/** The best weapon, aka the one high-lighted. */
 	int best_weapon_;
+
+	display* disp_;
 };
 
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,15 +14,16 @@
 
 #include "global.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
 #include "log.hpp"
-#include "preferences_display.hpp"
 #include "sound.hpp"
+#include "quit_confirmation.hpp"
+#include "preferences.hpp"
 #include "video.hpp"
 #if defined _WIN32
-#include "windows_tray_notification.hpp"
+#include "desktop/windows_tray_notification.hpp"
 #endif
 
 #include "SDL.h"
@@ -32,6 +33,7 @@
 #include <deque>
 #include <utility>
 #include <vector>
+#include <algorithm>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
@@ -48,18 +50,18 @@ struct context
 	{
 	}
 
-	void add_handler(handler* ptr);
-	bool remove_handler(handler* ptr);
+	void add_handler(sdl_handler* ptr);
+	bool remove_handler(sdl_handler* ptr);
 	int cycle_focus();
-	void set_focus(const handler* ptr);
+	void set_focus(const sdl_handler* ptr);
 
-	std::vector<handler*> handlers;
+	std::vector<sdl_handler*> handlers;
 	int focused_handler;
 
 	void delete_handler_index(size_t handler);
 };
 
-void context::add_handler(handler* ptr)
+void context::add_handler(sdl_handler* ptr)
 {
 	handlers.push_back(ptr);
 }
@@ -75,7 +77,7 @@ void context::delete_handler_index(size_t handler)
 	handlers.erase(handlers.begin()+handler);
 }
 
-bool context::remove_handler(handler* ptr)
+bool context::remove_handler(sdl_handler* ptr)
 {
 	if(handlers.empty()) {
 		return false;
@@ -89,7 +91,7 @@ bool context::remove_handler(handler* ptr)
 	if(handlers.back() == ptr) {
 		delete_handler_index(handlers.size()-1);
 	} else {
-		const std::vector<handler*>::iterator i = std::find(handlers.begin(),handlers.end(),ptr);
+		const std::vector<sdl_handler*>::iterator i = std::find(handlers.begin(),handlers.end(),ptr);
 		if(i != handlers.end()) {
 			delete_handler_index(i - handlers.begin());
 		} else {
@@ -125,9 +127,9 @@ int context::cycle_focus()
 	return focused_handler;
 }
 
-void context::set_focus(const handler* ptr)
+void context::set_focus(const sdl_handler* ptr)
 {
-	const std::vector<handler*>::const_iterator i = std::find(handlers.begin(),handlers.end(),ptr);
+	const std::vector<sdl_handler*>::const_iterator i = std::find(handlers.begin(),handlers.end(),ptr);
 	if(i != handlers.end() && (**i).requires_event_focus()) {
 		focused_handler = int(i - handlers.begin());
 	}
@@ -138,6 +140,10 @@ void context::set_focus(const handler* ptr)
 //closed when that dialog is closed. Each context contains a list of the handlers
 //in that context. The current context is the one on the top of the stack
 std::deque<context> event_contexts;
+
+//add a global context for event handlers. Whichever object has joined this will always
+//receive all events, regardless of the current context.
+context global_context;
 
 std::vector<pump_monitor*> pump_monitors;
 
@@ -164,9 +170,16 @@ event_context::~event_context()
 	event_contexts.pop_back();
 }
 
-handler::handler(const bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joined_(false)
+	sdl_handler::sdl_handler(const bool auto_join) :
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	unicode_(SDL_EnableUNICODE(1)),
+#endif
+	has_joined_(false)
 {
+
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
+#endif
 	if(auto_join) {
 		assert(!event_contexts.empty());
 		event_contexts.back().add_handler(this);
@@ -174,13 +187,20 @@ handler::handler(const bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joi
 	}
 }
 
-handler::~handler()
+sdl_handler::~sdl_handler()
 {
-	leave();
+	if (has_joined_)
+		leave();
+
+	if (has_joined_global_)
+		leave_global();
+
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_EnableUNICODE(unicode_);
+#endif
 }
 
-void handler::join()
+void sdl_handler::join()
 {
 	if(has_joined_) {
 		leave(); // should not be in multiple event contexts
@@ -190,19 +210,19 @@ void handler::join()
 	has_joined_ = true;
 
 	//instruct members to join
-	handler_vector members = handler_members();
+	sdl_handler_vector members = handler_members();
 	if(!members.empty()) {
-		for(handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
 			(*i)->join();
 		}
 	}
 }
 
-void handler::leave()
+void sdl_handler::leave()
 {
-	handler_vector members = handler_members();
+	sdl_handler_vector members = handler_members();
 	if(!members.empty()) {
-		for(handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
 			(*i)->leave();
 		}
 	} else {
@@ -216,14 +236,46 @@ void handler::leave()
 	has_joined_ = false;
 }
 
-void focus_handler(const handler* ptr)
+void sdl_handler::join_global()
+{
+	if(has_joined_global_) {
+		leave_global(); // should not be in multiple event contexts
+	}
+	//join self
+	global_context.add_handler(this);
+	has_joined_global_ = true;
+
+	//instruct members to join
+	sdl_handler_vector members = handler_members();
+	if(!members.empty()) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+			(*i)->join_global();
+		}
+	}
+}
+
+void sdl_handler::leave_global()
+{
+	sdl_handler_vector members = handler_members();
+	if(!members.empty()) {
+		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
+			(*i)->leave_global();
+		}
+	}
+
+	global_context.remove_handler(this);
+
+	has_joined_global_ = false;
+}
+
+void focus_handler(const sdl_handler* ptr)
 {
 	if(event_contexts.empty() == false) {
 		event_contexts.back().set_focus(ptr);
 	}
 }
 
-bool has_focus(const handler* hand, const SDL_Event* event)
+bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 {
 	if(event_contexts.empty()) {
 		return true;
@@ -242,7 +294,7 @@ bool has_focus(const handler* hand, const SDL_Event* event)
 		return true;
 	}
 
-	handler *const foc_hand = event_contexts.back().handlers[foc_i];
+	sdl_handler *const foc_hand = event_contexts.back().handlers[foc_i];
 	if(foc_hand == hand){
 		return true;
 	} else if(!foc_hand->requires_event_focus(event)) {
@@ -250,7 +302,7 @@ bool has_focus(const handler* hand, const SDL_Event* event)
 		//allow the most recent interested handler to take care of it
 		int back_i = event_contexts.back().handlers.size() - 1;
 		for(int i=back_i; i>=0; --i) {
-			handler *const thief_hand = event_contexts.back().handlers[i];
+			sdl_handler *const thief_hand = event_contexts.back().handlers[i];
 			if(i != foc_i && thief_hand->requires_event_focus(event)) {
 				//steal focus
 				focus_handler(thief_hand);
@@ -266,10 +318,37 @@ bool has_focus(const handler* hand, const SDL_Event* event)
 	return false;
 }
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+
+const Uint32 resize_timeout = 100;
+SDL_Event last_resize_event;
+bool last_resize_event_used = true;
+
+static bool remove_on_resize(const SDL_Event &a) {
+	if (a.type == DRAW_EVENT) {
+		return true;
+	}
+	if (a.type == SHOW_HELPTIP_EVENT) {
+		return true;
+	}
+	if ((a.type == SDL_WINDOWEVENT) &&
+			(a.window.event == SDL_WINDOWEVENT_RESIZED ||
+					a.window.event == SDL_WINDOWEVENT_SIZE_CHANGED ||
+					a.window.event == SDL_WINDOWEVENT_EXPOSED)) {
+		return true;
+	}
+
+	return false;
+}
+
+#endif
+
 void pump()
 {
 	SDL_PumpEvents();
-
+#if SDL_VERSION_ATLEAST(2,0,0)
+	peek_for_resize();
+#endif
 	pump_info info;
 
 	//used to keep track of double click events
@@ -282,7 +361,16 @@ void pump()
 	std::vector< SDL_Event > events;
 	while(SDL_PollEvent(&temp_event)) {
 		++poll_count;
-		if(!begin_ignoring && temp_event.type == SDL_ACTIVEEVENT) {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		peek_for_resize();
+
+		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT
+				&& (temp_event.window.event == SDL_WINDOWEVENT_ENTER
+						|| temp_event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED))
+#else
+		if(!begin_ignoring && temp_event.type == SDL_ACTIVEEVENT)
+#endif
+		{
 			begin_ignoring = poll_count;
 		} else if(begin_ignoring > 0 && is_input(temp_event)) {
 			//ignore user input events that occurred after the window was activated
@@ -290,6 +378,7 @@ void pump()
 		}
 		events.push_back(temp_event);
 	}
+
 	std::vector<SDL_Event>::iterator ev_it = events.begin();
 	for(int i=1; i < begin_ignoring; ++i){
 		if(is_input(*ev_it)) {
@@ -299,11 +388,61 @@ void pump()
 			++ev_it;
 		}
 	}
+
 	std::vector<SDL_Event>::iterator ev_end = events.end();
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	bool resize_found = false;
+	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
+		SDL_Event &event = *ev_it;
+		if (event.type == SDL_WINDOWEVENT &&
+				event.window.event == SDL_WINDOWEVENT_RESIZED) {
+			resize_found = true;
+			last_resize_event = event;
+			last_resize_event_used = false;
+
+		}
+	}
+	// remove all inputs, draw events and only keep the last of the resize events
+	// This will turn horrible after ~38 days when the Uint32 wraps.
+	if (resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + resize_timeout) {
+		events.erase(std::remove_if(events.begin(), events.end(), remove_on_resize), events.end());
+	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {
+		events.insert(events.begin(), last_resize_event);
+		last_resize_event_used = true;
+	}
+
+	ev_end = events.end();
+#endif
+
 	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
 		SDL_Event &event = *ev_it;
 		switch(event.type) {
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+			case SDL_WINDOWEVENT:
+				switch(event.window.event) {
+					case SDL_WINDOWEVENT_ENTER:
+					case SDL_WINDOWEVENT_FOCUS_GAINED:
+						cursor::set_focus(1);
+						break;
+
+					case SDL_WINDOWEVENT_LEAVE:
+					case SDL_WINDOWEVENT_FOCUS_LOST:
+						cursor::set_focus(1);
+						break;
+
+					case SDL_WINDOWEVENT_EXPOSED:
+						update_whole_screen();
+						break;
+
+					case SDL_WINDOWEVENT_RESIZED:
+						info.resize_dimensions.first = event.window.data1;
+						info.resize_dimensions.second = event.window.data2;
+						break;
+				}
+
+				break;
+#else
 			case SDL_ACTIVEEVENT: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
 				if((ae.state & SDL_APPMOUSEFOCUS) != 0 || (ae.state & SDL_APPINPUTFOCUS) != 0) {
@@ -313,10 +452,9 @@ void pump()
 			}
 
 			//if the window must be redrawn, update the entire screen
-			case SDL_VIDEOEXPOSE: {
+			case SDL_VIDEOEXPOSE:
 				update_whole_screen();
 				break;
-			}
 
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize = reinterpret_cast<SDL_ResizeEvent*>(&event);
@@ -324,6 +462,7 @@ void pump()
 				info.resize_dimensions.second = resize->h;
 				break;
 			}
+#endif
 
 			case SDL_MOUSEMOTION: {
 				//always make sure a cursor is displayed if the
@@ -357,10 +496,20 @@ void pump()
 				break;
 			}
 
+#ifndef __APPLE__
+			case SDL_KEYDOWN: {
+				if(event.key.keysym.sym == SDLK_F4 && (event.key.keysym.mod == KMOD_RALT || event.key.keysym.mod == KMOD_LALT)) {
+					quit_confirmation::quit();
+					continue; // this event is already handled
+				}
+				break;
+			}
+#endif
+
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
 				//clipboard support for X11
-				handle_system_event(event);
+				desktop::clipboard::handle_system_event(event);
 				break;
 			}
 #endif
@@ -373,13 +522,19 @@ void pump()
 #endif
 
 			case SDL_QUIT: {
-				throw CVideo::quit();
+				quit_confirmation::quit();
+				continue; //this event is already handled.
 			}
+		}
+
+		const std::vector<sdl_handler*>& event_handlers = global_context.handlers;
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->handle_event(event);
 		}
 
 		if(event_contexts.empty() == false) {
 
-			const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
+			const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
 
 			//events may cause more event handlers to be added and/or removed,
 			//so we must use indexes instead of iterators here.
@@ -387,6 +542,7 @@ void pump()
 				event_handlers[i1]->handle_event(event);
 			}
 		}
+
 	}
 
 	//inform the pump monitors that an events::pump() has occurred
@@ -399,7 +555,7 @@ void raise_process_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
+		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
@@ -413,7 +569,7 @@ void raise_draw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
+		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
@@ -427,7 +583,7 @@ void raise_volatile_draw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
+		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
@@ -441,7 +597,7 @@ void raise_volatile_undraw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
+		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
@@ -455,7 +611,7 @@ void raise_help_string_event(int mousex, int mousey)
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
+		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
 
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->process_help_string(mousex,mousey);
@@ -473,8 +629,8 @@ int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 
 #if SDL_VERSION_ATLEAST(2,0,0)
 
-/* The contanstants for the minimum and maximum are picked from the headers. */
-#define INPUT_MIN 0x200
+/* The constants for the minimum and maximum are picked from the headers. */
+#define INPUT_MIN 0x300
 #define INPUT_MAX 0x8FF
 
 bool is_input(const SDL_Event& event)
@@ -485,6 +641,19 @@ bool is_input(const SDL_Event& event)
 void discard_input()
 {
 	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
+}
+
+void peek_for_resize()
+{
+	SDL_Event events[100];
+	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
+	for (int i = 0; i < num; i++) {
+		if (events[i].type == SDL_WINDOWEVENT &&
+				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
+			CVideo::get_singleton().update_framebuffer();
+
+		}
+	}
 }
 
 #else
@@ -498,7 +667,7 @@ void discard_input()
 
 bool is_input(const SDL_Event& event)
 {
-	return SDL_EVENTMASK(event.type) & INPUT_MASK;
+	return (SDL_EVENTMASK(event.type) & INPUT_MASK) != 0;
 }
 
 static void discard(Uint32 event_mask)

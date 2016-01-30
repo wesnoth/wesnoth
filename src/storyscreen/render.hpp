@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 
 #include "key.hpp"
 #include "storyscreen/part.hpp"
+#include "events.hpp"
 // #include "widgets/button.hpp"
 
 class display;
@@ -39,7 +40,7 @@ namespace storyscreen {
  * assumed that the screen dimensions remain constant between the
  * constructor call, and the destruction of the objects.
  */
-class part_ui
+class part_ui : public events::sdl_handler
 {
 public:
 	/** Storyscreen result. */
@@ -54,7 +55,6 @@ public:
 	 * @param p A storyscreen::part with the required information and parameters.
 	 * @param disp Display.
 	 * @param next_button Next button. Shouldn't be destroyed before the part_ui object.
-	 * @param skip_button Skip button. Shouldn't be destroyed before the part_ui object.
 	 */
 	part_ui(part &p, display &disp, gui::button &next_button,
 		gui::button &back_button, gui::button& play_button);
@@ -63,6 +63,8 @@ public:
 	 * Render and display the storyscreen, process and return user input.
 	 */
 	RESULT show();
+
+	virtual void handle_event(const SDL_Event& event);
 
 private:
 	part& p_;
@@ -74,6 +76,8 @@ private:
 	gui::button& back_button_;
 	gui::button& play_button_;
 
+	bool dirty_;
+
 	RESULT ret_;
 	bool skip_, last_key_;
 
@@ -84,7 +88,12 @@ private:
 	// (the background layer we align the images to)
 	SDL_Rect base_rect_;
 
+#ifdef SDL_GPU
+	std::vector< sdl::timage > background_images_;
+	std::vector< std::pair<int, int> > background_positions_;
+#else
 	surface background_;
+#endif
 	std::vector< floating_image::render_input > imgs_;
 	bool has_background_;
 

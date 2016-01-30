@@ -21,7 +21,7 @@ if [ $# -ge 1 ] && [ "$1" = "--test" ]; then
 	shift
 	PARAMETERS="$@"
 	cd "$SERVERBASE"/build || exit 1
-	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port 14990 $PARAMETERS
+	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port 15001 $PARAMETERS
 	# remove the socket so it looks like we never ran the server
 	rm var/run/socket
 	exit 0
@@ -31,13 +31,20 @@ PARAMETERS="$@"
 THREADS=4
 PORT=15000
 case $SERVER in
-1.4)   PORT=14998
-       THREADS=32 ;;
+1.4|1.8)
+       PORT=14998
+       THREADS=8  ;;
 1.6)   PORT=14999
-       THREADS=32 ;;
+       THREADS=8  ;;
 1.5*)  PORT=14999
        THREADS=16 ;;
 1.7*)  PORT=14997
+       THREADS=16 ;;
+1.9*|1.10*)
+       PORT=14997
+       THREADS=30 ;;
+1.12*)
+       # TODO: increase after 1.12.0 is announced
        THREADS=16 ;;
 esac
 
@@ -45,7 +52,8 @@ ulimit -Ss 2048
 ulimit -c unlimited
 
 # send the standard server message to the appropriate server when killing it with ctrl+c
-trap "$HOME/bin/send_server_message $SERVER; sleep 2; echo -n 'terminated: '; date; exit 0" INT
+#trap "$HOME/bin/send_server_message $SERVER; sleep 2; echo -n 'terminated: '; date; exit 0" INT
+trap "echo -n 'terminated: '; date; exit 0" INT
 
 while [ true ] 
 do
@@ -55,14 +63,15 @@ do
 	DATE=$(date +"%Y%m%d-%H%M%S")
 	[ -r "$SERVERBASE"/redirect.cfg ] && PORT=$(sed -nre '/port=/s/[ \t]*port="?([0-9]+)"?/\1/p' "$SERVERBASE"/redirect.cfg)
 	BUILDDIR=$(readlink "$SERVERBASE"/build)
-	REV=r$(echo $BUILDDIR | sed -nre "s,.*wesnothd-dev-([0-9:SM]+)_$SERVER$,\1,p")
+	#REV=r$(echo $BUILDDIR | sed -nre "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER$,\1,p")
+	REV=$(echo $BUILDDIR | sed -nre "s,.*wesnothd-$SERVER-git-(.*)$,\1,p")
 	LOG="wesnothd.$DATE.$REV.log"
 	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > "$SERVERBASE/logs/$LOG" 2>&1 &
 	PID=$!
-	echo "started $SERVER server with command: 'wesnothd-$SERVER -c \"$SERVERBASE\"/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS' (revision: $REV, pid: $PID) logging to: $LOG"
+	echo "started $SERVER server with command: 'wesnothd-$SERVER -c \"$SERVERBASE\"/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS' (commit: $REV, pid: $PID) logging to: $LOG"
 	# wait a bit in case the process dies immediately
 	sleep 5
-	if jobs -l | grep Running
+	if ps -p $PID > /dev/null 2>&1
 	then # create some convenient links
 		ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
 		rm -f "$SERVERBASE"/old.log "$SERVERBASE"/old.pid
@@ -83,4 +92,7 @@ do
 	0)   exit ;;
 	98|127|128) dietail ;; #Could not bind to port #Command not found #Invalid argument to exit
 	esac
+
+	tail "$SERVERBASE/logs/$LOG"
+	echo
 done

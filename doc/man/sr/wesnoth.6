@@ -47,10 +47,11 @@ wesnoth \-\- "Бој за Веснот", фантазијска стратеги
 поставља вредност BitsPerPixel. Пример: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign  \ [<ид\-похода>]\fP
-скаче директно на поход са ИД\-ом <ид\-похода>. Ако се ИД не зада,
-појавиће се мени за избор. \fBНапомена:\fP При употреби ове опције морате
-задати и путању директоријума података као последњи аргумент, иначе ће ИД
-похода или сценарија бити схваћен као директоријум података.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<difficulty>]\fP
 тежина задатог похода (од 1 до највеће). Ако се не зада, појавиће се дијалог
@@ -59,16 +60,11 @@ wesnoth \-\- "Бој за Веснот", фантазијска стратеги
 \fB\-\-campaign\-scenario <ид\-сценарија>\fP
 ИД сценарија из задатог похода. Подразумеван је први сценарио.
 .TP 
-\fB\-\-config\-dir\fP\fI\ име\fP
-задаје поставни директоријум \fIиме\fP, под $HOME или "Моји документи\eМоје
-игре" на Виндоузу. Такође можете задати апсолутну путању поставног
-директоријума изван $HOME или "My Documents\eMy Games".
-.TP 
-\fB\-\-config\-path\fP
-исписује путању корисничког поставног директоријума и излази.
-.TP 
 \fB\-\-data\-dir <директоријум>\fP
 потискује директоријум података овде задатим.
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 укључује допунске опције командног режима током игре (више детаља потражите
@@ -180,6 +176,28 @@ preferences. Unsafe.
 \fB\-t, \-\-test\fP
 покреће игру са малим пробним сценариом.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+исписује путању корисничког поставног директоријума и излази.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 претпоставља да је кеш ажуран (опасно).
 .TP 
@@ -222,6 +240,10 @@ preferences. Unsafe.
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
 .TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
+.TP 
 \fB\-\-nogui\fP
 покреће игру без графичког сучеља. Мора се јавити пре \fB\-\-multiplayer\fP да би
 имало жељени ефекат.
@@ -261,7 +283,7 @@ do not use map settings, use default values instead.
 .
 .SH "АУТОРСКА ПРАВА"
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 Ово је слободан софтвер; лиценциран је под условима ОЈЛ верзије 2  (GPLv2),
 коју издаје Задужбина за слободни софтвер. Нема БИЛО КАКВЕ ГАРАНЦИЈЕ; чак ни

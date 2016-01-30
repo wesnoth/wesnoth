@@ -1,0 +1,22 @@
+#!/bin/sh
+
+die() {	echo >&2 "$@"; exit 1; }
+
+[ $# -ge 1 ] || die "Syntax: $0 <campaignd version> <command [arguments]>"
+
+VERSION=$1
+
+PREFIX="$HOME/campaignd"
+SERVERBASE="$PREFIX/$VERSION"
+SOCKET="$SERVERBASE/socket"
+
+[ -d "$SERVERBASE" ] || die "'$VERSION' add-ons server instance not found."
+
+[ -p "$SOCKET" ] || die "'$SOCKET' not found or is not a FIFO.
+Is the '$VERSION' add-ons server instance running?"
+
+shift
+
+echo "$@" > "$SOCKET"
+
+

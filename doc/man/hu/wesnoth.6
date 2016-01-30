@@ -49,12 +49,11 @@ nagy közösségéhez! Hozd létre a saját egységeidet, pályáidat, hadjárat
 meghatározza az egy képpontra jutó bitek számát. Példa: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign \ [<hadjárat_azonosító>]\fP
-rögtön betölti a <hadjárat_azonosító> helyén megadott azonosítóhoz
-tartozó hadjáratot. Ha nincs azonosító megadva, akkor egy választómenü fog
-megjelenni. \fBMegjegyzés:\fP ha ezt a kapcsolót használod, akkor ügyelj arra,
-hogy az adatmappához tartozó útvonalat utolsó paraméterként add meg,
-különben a játék a hadjárat/küldetés azonosítót is az adatmappának fogja
-tartani.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<difficulty>]\fP
 A megadott hadjárat nehézségi foka (1\-től egészen a max\-ig). Ha nincs
@@ -64,17 +63,11 @@ megadva, akkor megjelenik a nehézségválasztó menü.
 A megadott hadjáraton belüli küldetés azonosítója. Alapértelmezetten az első
 küldetés.
 .TP 
-\fB\-\-config\-dir\fP\fI\ név\fP
-a felhasználói beállítások könyvtárát \fInév\fP\-re állítja a $HOME könyvtárban
-vagy Windows alatt a "Dokumentumok\eJátékok" könyvtárban. Abszolút útvonal
-is megadható.
-.TP 
-\fB\-\-config\-path\fP
-kiírja a játék felhasználói beállításait tartalmazó könyvtár nevét, majd
-kilép.
-.TP 
 \fB\-\-data\-dir <könyvtár>\fP
 a megadott könyvtárra módosítja az alapértelmezett adatkönyvtárat.
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 kibővített parancssori beállításokat tesz lehetővé a játékban (további
@@ -192,6 +185,29 @@ az érvényességi hibákat végzetes hibaként kezeli.
 \fB\-t, \-\-test\fP
 elindítja a játékot és betölt egy kis teszthadjáratot.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+kiírja a játék felhasználói beállításait tartalmazó könyvtár nevét, majd
+kilép.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games". On Windows it is
+also possible to specify a directory relative to the process working
+directory by using path starting with ".\e" or "..\e".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 feltételezi, hogy a gyorsítótár érvényes. (veszélyes)
 .TP 
@@ -235,6 +251,10 @@ kívánná meg. Ez szkriptelt teljesítménymérés esetén lehet hasznos.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 do not use map settings, use default values instead.
+.TP 
+\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
+repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
+scriptable benchmarking.
 .TP 
 \fB\-\-nogui\fP
 a játékot grafikus felhasználói felület nélkül indítja el. A
@@ -285,7 +305,7 @@ közösségi portált: http://wesnoth.fsf.hu/
 .
 .SH "SZERZŐI JOGOK"
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 Ez egy szabad szoftver; terjeszthető illetve módosítható a GNU Általános
 Közreadási Feltételek dokumentumában \- 2. vagy későbbi verzió \- leírtak

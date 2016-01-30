@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@ class CVideo;
 class display;
 
 #include "cursor.hpp"
+#include "floating_label.hpp"
 #include "font.hpp"
 #include "tooltips.hpp"
 
@@ -51,7 +52,7 @@ private:
 	bool reset_to;
 };
 
-class dialog_frame {
+class dialog_frame :public events::sdl_handler {
 public:
 	struct dimension_measurements {
 		dimension_measurements();
@@ -94,6 +95,10 @@ public:
 	//also called by layout with null param
 	SDL_Rect draw_title(CVideo *video);
 
+	void set_dirty(bool dirty = true);
+
+	virtual void handle_event(const SDL_Event& event);
+
 private:
 	void clear_background();
 
@@ -105,8 +110,13 @@ private:
 	surface_restorer* restorer_;
 	bool auto_restore_;
 	dimension_measurements dim_;
+#ifdef SDL_GPU
+	sdl::timage top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+#else
 	surface top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+#endif
 	bool have_border_;
+	bool dirty_;
 };
 
 //frame_measurements draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);
@@ -170,13 +180,13 @@ public:
 	virtual bool show_above() const { return false; }
 	virtual bool left_side() const = 0;
 	virtual void set_selection(int index) = 0;
-	virtual handler_vector handler_members() { return widget::handler_members(); }
+	virtual sdl_handler_vector handler_members() { return widget::handler_members(); }
 };
 
 //if a menu is given, then returns -1 if the dialog was canceled, and the
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed
-int show_dialog(display &screen, surface image,
+int show_dialog(CVideo& video, surface image,
 				const std::string& caption, const std::string& message,
 				DIALOG_TYPE type=MESSAGE,
 				const std::vector<std::string>* menu_items=NULL,

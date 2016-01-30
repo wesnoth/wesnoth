@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,10 +17,24 @@
 #define FORMULA_STRING_UTILS_HPP_INCLUDED
 
 #include "serialization/string_utils.hpp"
+#include <boost/assign.hpp>
 
 class variable_set;
 
 namespace utils {
+
+/**
+ * Determines if a string might contain variables to interpolate.
+ * This can allow one to skip future interpolations (plural -- if there is only
+ * one interpolation, the savings are not worth this check). In this spirit,
+ * precision is sacrificed in the name of efficiency; the check is quick and
+ * allows false positives, but there are no false negatives. (A false negative
+ * would lead to incorrect behavior, whereas a false positive leads to merely
+ * inefficient behavior.) In practice, false positives should be uncommon enough
+ * to not worry about.
+ */
+inline bool might_contain_variables(const std::string &str)
+{ return str.find('$') != std::string::npos; }
 
 /**
  * Function which will interpolate variables, starting with '$' in the string
@@ -38,6 +52,16 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
  */
 t_string interpolate_variables_into_tstring(const t_string &str, const variable_set& variables);
 
+}
+/// An alias for boost::assign::map_list_of<std::string, std::string>
+inline boost::assign_detail::generic_list< std::pair
+        <
+            boost::assign_detail::assign_decay<std::string>::type,
+            boost::assign_detail::assign_decay<std::string>::type
+        > >
+string_map_of(const std::string& k, const std::string& v)
+{
+	return boost::assign::map_list_of<std::string, std::string>(k, v);
 }
 
 /** Handy wrappers around interpolate_variables_into_string and gettext. */

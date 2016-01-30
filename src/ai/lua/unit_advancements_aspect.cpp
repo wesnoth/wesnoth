@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Felix Bauer <fehlxb+wesnoth@gmail.com>
+   Copyright (C) 2013 - 2016 by Felix Bauer <fehlxb+wesnoth@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,19 +13,23 @@
 */
 
 #include "unit_advancements_aspect.hpp"
-#include "../../log.hpp"
-#include "lua/lualib.h"
-#include "lua/lauxlib.h"
-#include <string>
-#include <vector>
-
-#include "scripting/lua.hpp"
-#include "scripting/lua_api.hpp"
-
 #include "global.hpp"
 
+#include "../../log.hpp"                // for LOG_STREAM, logger, etc
+#include "../../lua/lauxlib.h"                // for luaL_ref, LUA_REFNIL
+#include "../../lua/lua.h"                    // for lua_isstring, etc
+#include "../../map_location.hpp"             // for map_location
+#include "../../serialization/string_utils.hpp"  // for split
 #include "../../unit.hpp"
-#include "../../map.hpp"
+#include "../../unit_map.hpp"    // for unit_map::const_iterator, etc
+
+#include <cstddef>                     // for NULL
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits, etc
+#include <vector>                       // for vector
+
+struct lua_State;
+
 
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
@@ -40,9 +44,10 @@ unit_advancements_aspect::unit_advancements_aspect():
 }
 
 unit_advancements_aspect::unit_advancements_aspect(lua_State* L, int n)
+	: val_("Lua Function")
+	, L_(L)
+	, ref_()
 {
-	val_ = "Lua Function";
-	L_ = L;
 	lua_settop(L, n);
 
 	//on the top of the Lua-Stack is now the pointer to the function. Save it:
@@ -90,7 +95,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 
 	if(!lua_isfunction(L_, -1))
 	{
-		ERR_LUA << "Can't evaluate advancement aspect: Value is neither a string nor a function.\n";
+		ERR_LUA << "Can't evaluate advancement aspect: Value is neither a string nor a function." << std::endl;
 		return std::vector<std::string>();
 	}
 
@@ -104,12 +109,12 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 	//call function
 	if(lua_pcall(L_, 2, 1, 0) != 0)
 	{
-		ERR_LUA << "LUA Error while evaluating advancements_aspect: " << lua_tostring(L_, -1) << "\n";
+		ERR_LUA << "LUA Error while evaluating advancements_aspect: " << lua_tostring(L_, -1) << std::endl;
 		return std::vector<std::string>();
 	}
 	if (!lua_isstring(L_, -1))
 	{
-		ERR_LUA << "LUA Error while evaluating advancements_aspect: Function must return String \n";
+		ERR_LUA << "LUA Error while evaluating advancements_aspect: Function must return String " << std::endl;
 		return std::vector<std::string>();
 	}
 

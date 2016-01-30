@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,44 +16,43 @@
 #define GUI_DIALOGS_ADDON_LIST_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-
+#include "../widgets/generator.hpp"
 #include "gui/widgets/pane.hpp"
 
 class config;
 #include "config.hpp" // needed for config::const_child_itors
 
-namespace gui2 {
-
+namespace gui2
+{
+class ttext_;
 class pane;
+class tselectable_;
 
 /** Shows the list of addons on the server. */
-class taddon_list
-	: public tdialog
+class taddon_list : public tdialog
 {
 public:
 	explicit taddon_list(const config& cfg)
-		: cfg_(cfg)
-		, cfg_iterators_(cfg_.child_range("campaign"))
+		: orders_(), cfg_(cfg), cfg_iterators_(cfg_.child_range("campaign"))
 	{
 	}
 
 private:
+	void register_sort_button(twindow& window, const std::string& id, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down);
+	void register_sort_button_alphabetical(twindow& window, const std::string& id, const std::string& prop_id);
+	void register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id);
 
-	/**
-	 * Collapses the description of an addon.
-	 *
-	 * @param grid                The grid of the item whose description to
-	 *                            collapse.
-	 */
-	void collapse(tgrid& grid);
+	void on_order_button_click(twindow& window, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down, twidget& w);
+	void on_filtertext_changed(ttext_* textbox, const std::string& text);
 
+	std::vector<tselectable_*> orders_;
 	/**
 	 * Expands the description of an addon.
 	 *
 	 * @param grid                The grid of the item whose description to
 	 *                            expand.
 	 */
-	void expand(tgrid& grid);
+	void expand(tgrid& grid, twidget& w);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -89,4 +88,3 @@ private:
 } // namespace gui2
 
 #endif
-

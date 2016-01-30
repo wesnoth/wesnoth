@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 
 class config;
 class display;
+class display_context;
 //class team;
 class terrain_label;
 
@@ -46,40 +47,56 @@ public:
 	const terrain_label* get_label(const map_location& loc) const;
 	const terrain_label* set_label(const map_location& loc,
 							   const t_string& text,
+							   const int creator = -1,
 							   const std::string& team = "",
 							   const SDL_Color color = font::NORMAL_COLOR,
 							   const bool visible_in_fog = true,
 							   const bool visible_in_shroud = false,
-							   const bool immutable = false);
+							   const bool immutable = false,
+							   const std::string& category = "",
+							   const t_string& tooltip = "" );
 
-	bool enabled() const { return enabled_; };
+	bool enabled() const { return enabled_; }
 	void enable(bool is_enabled);
 
-	void add_label(const map_location &, terrain_label *);
 
 	void clear(const std::string&, bool force);
 
 	void recalculate_labels();
+	void recalculate_shroud();
+
 	bool visible_global_label(const map_location&) const;
 
-	void recalculate_shroud();
 
 	const display& disp() const;
 
 	const std::string& team_name() const;
+	const std::vector<std::string>& all_categories() const;
 
 	void set_team(const team*);
 
 	void clear_all();
 
 private:
+
+	void add_label(const map_location &, terrain_label *);
+
 	void clear_map(label_map &, bool);
+	/// For our private use, a wrapper for get_label() that can return a pointer
+	/// to a non-const terrain_label.
+	terrain_label* get_label_private(const map_location& loc, const std::string& team_name)
+	{ return const_cast<terrain_label*>(get_label(loc, team_name)); }
+	// Note: this is not an overload of get_label() so that we do not block
+	//       outsiders from calling get_label for a non-const map_labels object.
 
 	const display& disp_;
 	const team* team_;
 
 	team_label_map labels_;
 	bool enabled_;
+
+	mutable std::vector<std::string> categories;
+	mutable bool categories_dirty;
 };
 
 /// To store label data
@@ -87,14 +104,17 @@ private:
 class terrain_label
 {
 public:
-	terrain_label(const t_string&,
-				  const std::string&,
-				  const map_location&,
-				  const map_labels&,
-				  const SDL_Color color = font::NORMAL_COLOR,
-				  const bool visible_in_fog = true,
-				  const bool visible_in_shroud = false,
-				  const bool immutable = false);
+	terrain_label(const t_string& text,
+			const int creator,
+			const std::string& team_name,
+			const map_location& loc,
+			const map_labels& parent,
+			const SDL_Color color = font::NORMAL_COLOR,
+			const bool visible_in_fog = true,
+			const bool visible_in_shroud = false,
+			const bool immutable = false,
+			const std::string& category = "",
+			const t_string& tooltip = "" );
 
 	terrain_label(const map_labels &, const config &);
 
@@ -104,7 +124,10 @@ public:
 	void read(const config &cfg);
 
 	const t_string& text() const;
+	const t_string& tooltip() const;
+	int creator() const;
 	const std::string& team_name() const;
+	const std::string& category() const;
 	bool visible_in_fog() const;
 	bool visible_in_shroud() const;
 	bool immutable() const;
@@ -114,40 +137,51 @@ public:
 	void set_text(const t_string&);
 
 	void update_info(const t_string&,
+					 const int creator,
+					 const t_string&,
 					 const std::string&,
 					 const SDL_Color);
 
 	void update_info(const t_string& text,
+			const int creator,
+			const t_string& tooltip,
 			const std::string& team_name,
 			const SDL_Color color,
 			const bool visible_in_fog,
 			const bool visible_in_shroud,
-			const bool immutable);
+			const bool immutable,
+			const std::string& category);
 
 	void recalculate();
-	void calculate_shroud() const;
+	void calculate_shroud();
 
 private:
 	terrain_label(const terrain_label&);
 	const terrain_label& operator=(const terrain_label&);
 	void clear();
 	void draw();
-	bool visible() const;
+	bool hidden() const;
+	bool viewable(const display_context & dc) const;
 	std::string cfg_color() const;
 
 	int handle_;
+	int tooltip_handle_;
 
 	t_string text_;
+	t_string tooltip_;
+	std::string category_;
 	std::string team_name_;
 	bool visible_in_fog_;
 	bool visible_in_shroud_;
 	bool immutable_;
+	int creator_;
 
 	SDL_Color	color_;
 
 	const map_labels* parent_;
 	map_location loc_;
 
+	SDL_Rect get_rect() const;
 };
 
 #endif

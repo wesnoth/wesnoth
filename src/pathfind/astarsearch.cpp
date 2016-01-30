@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+                 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -167,13 +167,13 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		search_counter += 2;
 
 	static std::vector<node> nodes;
-	nodes.resize(width * height);  // this create uninitalized nodes
+	nodes.resize(width * height);  // this create uninitialized nodes
 
 	indexer index(width);
 	comp node_comp(nodes);
 
 	nodes[index(dst)].g = stop_at + 1;
-	nodes[index(src)] = node(0, src, map_location::null_location, dst, true, teleports);
+	nodes[index(src)] = node(0, src, map_location::null_location(), dst, true, teleports);
 
 	std::vector<int> pq;
 	pq.push_back(index(src));
@@ -188,20 +188,16 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 		if (n.t >= nodes[index(dst)].g) break;
 
-		std::vector<map_location> locs;
+		std::vector<map_location> locs(6);
 
-		int i;
 		if (teleports && !teleports->empty()) {
 
 			std::set<map_location> allowed_teleports;
 			teleports->get_adjacents(allowed_teleports, n.curr);
+			locs.insert(locs.end(), allowed_teleports.begin(), allowed_teleports.end());
+		}
 
-			i = allowed_teleports.size() +6;
-			locs = std::vector<map_location>(i);
-
-			std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);
-		} else
-		{ locs = std::vector<map_location>(6); i = 6;}
+		int i = locs.size();
 
 		get_adjacent_tiles(n.curr, &locs[0]);
 
@@ -233,7 +229,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	if (nodes[index(dst)].g <= stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
 		route.move_cost = static_cast<int>(nodes[index(dst)].g);
-		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
+		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location(); curr = nodes[index(curr.prev)]) {
 			route.steps.push_back(curr.curr);
 		}
 		route.steps.push_back(src);

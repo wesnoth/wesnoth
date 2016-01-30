@@ -15,7 +15,7 @@ local methods = {}
 local locset_meta = { __index = methods }
 
 function methods:empty()
-	return next(self.values)
+	return (not next(self.values))
 end
 
 function methods:size()
@@ -100,7 +100,7 @@ function methods:stable_iter(f)
 	table.sort(indices)
 	for i,p in ipairs(indices) do
 		local x, y = revindex(p)
-		f(x, y, v)
+		f(x, y)
 	end
 end
 

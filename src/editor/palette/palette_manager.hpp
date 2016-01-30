@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
  */
 
 #ifndef PALETTE_MANAGER_H_INCLUDED
-#define PALETTE_MANAGER H_INCLUDED
+#define PALETTE_MANAGER_H_INCLUDED
 
 #include "common_palette.hpp"
 
@@ -54,7 +54,7 @@ public:
 
 	void adjust_size();
 
-	handler_vector handler_members();
+	sdl_handler_vector handler_members();
 	virtual void handle_event(const SDL_Event& event);
 
 	/**

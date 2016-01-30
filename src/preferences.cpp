@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,8 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "hotkeys.hpp"
+#include "game_config.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"
@@ -33,6 +34,9 @@
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/concept_check.hpp>
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
@@ -41,8 +45,6 @@ static lg::log_domain log_filesystem("filesystem");
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
 namespace {
-
-bool color_cursors = false;
 
 bool no_preferences_save = false;
 
@@ -55,66 +57,110 @@ config prefs;
 
 namespace preferences {
 
+class prefs_event_handler : public events::sdl_handler {
+public:
+	virtual void handle_event(const SDL_Event &event);
+	prefs_event_handler() :	sdl_handler(false) {}
+};
+
+prefs_event_handler event_handler_;
+
 base_manager::base_manager()
 {
+	event_handler_.join_global();
+
 	try{
 #ifdef DEFAULT_PREFS_PATH
-		scoped_istream stream = istream_file(get_default_prefs_file());
+		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
 		read(prefs, *stream);
 
 		config user_prefs;
-		stream = istream_file(get_prefs_file());
+		stream = filesystem::istream_file(filesystem::get_prefs_file());
 		read(user_prefs, *stream);
 
 		prefs.merge_with(user_prefs);
 #else
-		scoped_istream stream = istream_file(get_prefs_file());
+		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_prefs_file(),false);
 		read(prefs, *stream);
 #endif
 	} catch(const config::error& e) {
 		ERR_CFG << "Error loading preference, message: "
 				<< e.what()
-				<< '\n';
+				<< std::endl;
 	}
 }
 
 base_manager::~base_manager()
 {
-	if (no_preferences_save) return;
+	try {
+		if (no_preferences_save) return;
 
-	// Set the 'hidden' preferences.
-	prefs["scroll_threshold"] = mouse_scroll_threshold();
+		// Set the 'hidden' preferences.
+		prefs["scroll_threshold"] = mouse_scroll_threshold();
 
-	write_preferences();
+		write_preferences();
+	} catch (...) {}
+}
+
+/* 
+ * Hook for setting window state variables on window resize and maximize
+ * events. Since there is no fullscreen window event, that setter is called 
+ * from the CVideo function instead.
+ */
+void prefs_event_handler::handle_event(const SDL_Event& event)
+{
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	// Saftey check to make sure this is a window event
+	if (event.type != SDL_WINDOWEVENT) return;
+
+	switch(event.window.event) {
+	case SDL_WINDOWEVENT_RESIZED:
+		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
+
+		break;
+
+	case SDL_WINDOWEVENT_MAXIMIZED:
+		_set_maximized(true);
+
+		break;
+
+	case SDL_WINDOWEVENT_RESTORED:
+		_set_maximized(false);
+
+		break;
+	}
+#else
+	UNUSED(event);
+#endif
 }
 
 void write_preferences()
 {
-    #ifndef _WIN32
+#ifndef _WIN32
 
-    bool prefs_file_existed = access(get_prefs_file().c_str(), F_OK) == 0;
+    bool prefs_file_existed = access(filesystem::get_prefs_file().c_str(), F_OK) == 0;
 
-    #endif
+#endif
 
 	try {
-		scoped_ostream prefs_file = ostream_file(get_prefs_file());
+		filesystem::scoped_ostream prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
 		write(*prefs_file, prefs);
-	} catch(io_exception&) {
-		ERR_FS << "error writing to preferences file '" << get_prefs_file() << "'\n";
+	} catch(filesystem::io_exception&) {
+		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
 	}
 
 
-    #ifndef _WIN32
+#ifndef _WIN32
 
     if(!prefs_file_existed) {
 
-        if(chmod(get_prefs_file().c_str(), 0600) == -1) {
-			ERR_FS << "error setting permissions of preferences file '" << get_prefs_file() << "'\n";
+        if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
+			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
         }
 
     }
 
-    #endif
+#endif
 
 
 }
@@ -180,14 +226,101 @@ config* get_prefs(){
 	return pointer;
 }
 
-bool fullscreen()
-{
-	return get("fullscreen", false);
+
+bool show_allied_orb() {
+	return get("show_ally_orb", game_config::show_ally_orb);
+}
+void set_show_allied_orb(bool show_orb) {
+	prefs["show_ally_orb"] = show_orb;
 }
 
-void _set_fullscreen(bool ison)
-{
-	prefs["fullscreen"] = ison;
+bool show_enemy_orb() {
+	return get("show_enemy_orb", game_config::show_enemy_orb);
+}
+void set_show_enemy_orb(bool show_orb) {
+	prefs["show_enemy_orb"] = show_orb;
+}
+
+bool show_moved_orb() {
+	return get("show_moved_orb", game_config::show_moved_orb);
+}
+void set_show_moved_orb(bool show_orb) {
+	prefs["show_moved_orb"] = show_orb;
+}
+
+bool show_unmoved_orb() {
+	return get("show_unmoved_orb", game_config::show_unmoved_orb);
+}
+void set_show_unmoved_orb(bool show_orb) {
+	prefs["show_unmoved_orb"] = show_orb;
+}
+
+bool show_partial_orb() {
+	return get("show_partial_orb", game_config::show_partial_orb);
+}
+void set_show_partial_orb(bool show_orb) {
+	prefs["show_partial_orb"] = show_orb;
+}
+
+
+std::string allied_color() {
+	std::string ally_color = get("ally_orb_color");
+	if (ally_color.empty())
+		return game_config::colors::ally_orb_color;
+	return ally_color;
+}
+void set_allied_color(const std::string& color_id) {
+	prefs["ally_orb_color"] = color_id;
+}
+
+std::string core_id() {
+	std::string core_id = get("core");
+	if (core_id.empty())
+		return "default";
+	return core_id;
+}
+void set_core_id(const std::string& core_id) {
+	prefs["core"] = core_id;
+}
+
+std::string enemy_color() {
+	std::string enemy_color = get("enemy_orb_color");
+	if (enemy_color.empty())
+		return game_config::colors::enemy_orb_color;
+	return enemy_color;
+}
+void set_enemy_color(const std::string& color_id) {
+	prefs["enemy_orb_color"] = color_id;
+}
+
+std::string moved_color() {
+	std::string moved_color = get("moved_orb_color");
+	if (moved_color.empty())
+		return game_config::colors::moved_orb_color;
+	return moved_color;
+}
+void set_moved_color(const std::string& color_id) {
+	prefs["moved_orb_color"] = color_id;
+}
+
+std::string unmoved_color() {
+	std::string unmoved_color = get("unmoved_orb_color");
+	if (unmoved_color.empty())
+		return game_config::colors::unmoved_orb_color;
+	return unmoved_color;
+}
+void set_unmoved_color(const std::string& color_id) {
+	prefs["unmoved_orb_color"] = color_id;
+}
+
+std::string partial_color() {
+	std::string partmoved_color = get("partial_orb_color");
+	if (partmoved_color.empty())
+		return game_config::colors::partial_orb_color;
+	return partmoved_color;
+}
+void set_partial_color(const std::string& color_id) {
+	prefs["partial_orb_color"] = color_id;
 }
 
 bool scroll_to_action()
@@ -214,22 +347,46 @@ std::pair<int,int> resolution()
 {
 	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
 	std::string x = prefs['x' + postfix], y = prefs['y' + postfix];
-	if (!x.empty() && !y.empty()) {
-		std::pair<int,int> res(std::max(atoi(x.c_str()), min_allowed_width()),
-		                       std::max(atoi(y.c_str()), min_allowed_height()));
 
-		// Make sure resolutions are always divisible by 4
-		//res.first &= ~3;
-		//res.second &= ~3;
-		return res;
+	if (!x.empty() && !y.empty()) {
+		return std::make_pair(
+			std::max(atoi(x.c_str()), min_allowed_width()),
+			std::max(atoi(y.c_str()), min_allowed_height()));
 	} else {
 		return std::pair<int,int>(1024,768);
 	}
 }
 
+bool maximized()
+{
+	return get("maximized", (fullscreen() & true));
+}
+
+bool fullscreen()
+{
+	return get("fullscreen", false);
+}
+
+void _set_resolution(const std::pair<int, int>& res)
+{
+	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
+	preferences::set('x' + postfix, lexical_cast<std::string>(res.first));
+	preferences::set('y' + postfix, lexical_cast<std::string>(res.second));
+}
+
+void _set_maximized(bool ison)
+{
+	prefs["maximized"] = ison;
+}
+
+void _set_fullscreen(bool ison)
+{
+	prefs["fullscreen"] = ison;
+}
+
 bool turbo()
 {
-	if(non_interactive()) {
+	if(CVideo::get_singleton().non_interactive()) {
 		return true;
 	}
 
@@ -674,6 +831,56 @@ bool animate_map()
 	return preferences::get("animate_map", true);
 }
 
+bool minimap_movement_coding()
+{
+	return preferences::get("minimap_movement_coding", true);
+}
+
+void toggle_minimap_movement_coding()
+{
+	set("minimap_movement_coding", !minimap_movement_coding());
+}
+
+bool minimap_terrain_coding()
+{
+	return preferences::get("minimap_terrain_coding", true);
+}
+
+void toggle_minimap_terrain_coding()
+{
+	set("minimap_terrain_coding", !minimap_terrain_coding());
+}
+
+bool minimap_draw_units()
+{
+	return preferences::get("minimap_draw_units", true);
+}
+
+void toggle_minimap_draw_units()
+{
+	set("minimap_draw_units", !minimap_draw_units());
+}
+
+bool minimap_draw_villages()
+{
+	return preferences::get("minimap_draw_villages", true);
+}
+
+void toggle_minimap_draw_villages()
+{
+	set("minimap_draw_villages", !minimap_draw_villages());
+}
+
+bool minimap_draw_terrain()
+{
+	return preferences::get("minimap_draw_terrain", true);
+}
+
+void toggle_minimap_draw_terrain()
+{
+	set("minimap_draw_terrain", !minimap_draw_terrain());
+}
+
 void set_animate_map(bool value)
 {
 	set("animate_map", value);
@@ -711,13 +918,16 @@ void set_draw_delay(int value)
 
 bool use_color_cursors()
 {
-	return color_cursors;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return get("color_cursors", true);
+#else
+	return get("color_cursors", false);
+#endif
 }
 
 void _set_color_cursors(bool value)
 {
 	preferences::set("color_cursors", value);
-	color_cursors = value;
 }
 
 void load_hotkeys()
@@ -774,14 +984,14 @@ bool use_twelve_hour_clock_format()
 	return get("use_twelve_hour_clock_format", false);
 }
 
-bool bzip2_savegame_compression()
+bool disable_auto_moves()
 {
-	return get("bzip2_savegame_compression", false);
+	return get("disable_auto_moves", false);
 }
 
-void set_bzip2_savegame_compression(bool ison)
+void set_disable_auto_moves(bool value)
 {
-	preferences::set("bzip2_savegame_compression", ison);
+	preferences::set("disable_auto_moves", value);
 }
 
 } // end namespace preferences

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Patrick Parker <patrick_x99@hotmail.com>
+   Copyright (C) 2006 - 2016 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth widget Copyright (C) 2003-5 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -17,12 +17,18 @@
 
 #include "construct_dialog.hpp"
 
+#include "config_assign.hpp"
 #include "display.hpp"
+#include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
+#include "sdl/utils.hpp"
 
+#include <boost/bind.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -36,7 +42,7 @@ namespace gui {
 //note: style names are directly related to the panel image file names
 const dialog::style& dialog::default_style = dialog_frame::default_style;
 const dialog::style& dialog::message_style = dialog_frame::message_style;
-const dialog::style dialog::hotkeys_style("menu2", 0);
+const dialog::style dialog::hotkeys_style("menu", 0);
 const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
 const size_t dialog::left_padding = font::relative_size(10);
@@ -66,9 +72,9 @@ dialog_textbox::~dialog_textbox()
 dialog::dimension_measurements::dimension_measurements() :
 	x(-1),
 	y(-1),
-	interior(empty_rect),
-	message(empty_rect),
-	textbox(empty_rect),
+	interior(sdl::empty_rect),
+	message(sdl::empty_rect),
+	textbox(sdl::empty_rect),
 	menu_width(0),
 	panes(),
 	label_x(-1),
@@ -87,16 +93,16 @@ dialog::dimension_measurements::dimension_measurements() :
 	//(unnamed namespace and/or const object defined at declaration time).
 }
 
-dialog::dialog(display &disp, const std::string& title, const std::string& message,
+dialog::dialog(CVideo& video, const std::string& title, const std::string& message,
 		const DIALOG_TYPE type, const style& dialog_style) :
-	disp_(disp),
+	video_(video),
 	image_(NULL),
 	title_(title),
 	style_(dialog_style),
 	title_widget_(NULL),
 	message_(NULL),
 	type_(type),
-	menu_(get_empty_menu(disp)),
+	menu_(get_empty_menu(video)),
 	preview_panes_(),
 	button_pool_(),
 	standard_buttons_(),
@@ -110,38 +116,36 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	dim_(),
 	result_(CONTINUE_DIALOG)
 {
-	CVideo& screen = disp_.video();
-
 	switch(type)
 	{
 	case MESSAGE:
 	default:
 		break;
 	case OK_ONLY:
-		add_button(new standard_dialog_button(screen,_("OK"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("OK"),0,true), BUTTON_STANDARD);
 		break;
 	case YES_NO:
-		add_button(new standard_dialog_button(screen,_("Yes"),0,false), BUTTON_STANDARD);
-		add_button(new standard_dialog_button(screen,_("No"),1,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Yes"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("No"),1,true), BUTTON_STANDARD);
 		break;
 	case OK_CANCEL:
-		add_button(new standard_dialog_button(screen,_("OK"),0,false), BUTTON_STANDARD);
-		add_button(new standard_dialog_button(screen,_("Cancel"),1,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("OK"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Cancel"),1,true), BUTTON_STANDARD);
 		break;
 	case CANCEL_ONLY:
-		add_button(new standard_dialog_button(screen,_("Cancel"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Cancel"),0,true), BUTTON_STANDARD);
 		break;
 	case CLOSE_ONLY:
-		add_button(new standard_dialog_button(screen,_("Close"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Close"),0,true), BUTTON_STANDARD);
 		break;
 	}
 	//dialog creator should catch(button::error&) ?
 
 	try {
-		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
-		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOR, false);
-	} catch(utils::invalid_utf8_exception&) {
-		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
+		std::string msg = font::word_wrap_text(message, message_font_size, video_.getx() / 2, video_.gety() / 2);
+		message_ = new label(video_, msg, message_font_size, font::NORMAL_COLOR, false);
+	} catch(utf8::invalid_utf8_exception&) {
+		ERR_DP << "Problem handling utf8 in message '" << message << "'" << std::endl;
 		throw;
 	}
 
@@ -213,13 +217,13 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 
 void dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
 {
-	dialog_button *btn = new dialog_button(disp_.video(), btn_info.label, button::TYPE_PRESS, CONTINUE_DIALOG, btn_info.handler);
+	dialog_button *btn = new dialog_button(video_, btn_info.label, button::TYPE_PRESS, CONTINUE_DIALOG, btn_info.handler);
 	add_button(btn, loc);
 }
 
 void dialog::add_option(const std::string& label, bool checked, BUTTON_LOCATION loc, const std::string& help_string)
 {
-	gui::dialog_button *btn = new dialog_button(disp_.video(), label, button::TYPE_CHECK);
+	gui::dialog_button *btn = new dialog_button(video_, label, button::TYPE_CHECK);
 	btn->set_check(checked);
 	btn->set_help_string(help_string);
 	add_button(btn, loc);
@@ -229,15 +233,15 @@ void dialog::set_textbox(const std::string& text_widget_label,
 				const std::string& text_widget_text,
 				const int text_widget_max_chars, const unsigned int text_box_width)
 {
-	label *label_ptr = new label(disp_.video(), text_widget_label, message_font_size, font::NORMAL_COLOR, false);
+	label *label_ptr = new label(video_, text_widget_label, message_font_size, font::NORMAL_COLOR, false);
 	const bool editable_textbox = std::find(text_widget_text.begin(),text_widget_text.end(),'\n') == text_widget_text.end();
-	text_widget_ = new dialog_textbox(label_ptr, disp_.video(), text_box_width, text_widget_text, editable_textbox, text_widget_max_chars);
+	text_widget_ = new dialog_textbox(label_ptr, video_, text_box_width, text_widget_text, editable_textbox, text_widget_max_chars);
 	text_widget_->set_wrap(!editable_textbox);
 }
 
 void dialog::set_menu(const std::vector<std::string> &menu_items, menu::sorter* sorter)
 {
-	set_menu(new gui::menu(disp_.video(), menu_items, (type_==MESSAGE),
+	set_menu(new gui::menu(video_, menu_items, (type_==MESSAGE),
 		-1, dialog::max_menu_width, sorter, &menu::default_style, false));
 }
 
@@ -263,10 +267,10 @@ void dialog::set_menu_items(const std::vector<std::string> &menu_items, bool kee
  * Provides create-on-use semantics for empty_menu.
  * This is called by dialog's constructor, so other code can use empty_menu directly.
  */
-menu * dialog::get_empty_menu(display &disp)
+menu * dialog::get_empty_menu(CVideo& video)
 {
 	if ( empty_menu == NULL ) {
-		empty_menu = new gui::menu(disp.video(), empty_string_vector, false, -1, -1, NULL, &menu::simple_style);
+		empty_menu = new gui::menu(video, empty_string_vector, false, -1, -1, NULL, &menu::simple_style);
 		empty_menu->leave();
 	}
 	return empty_menu;
@@ -280,20 +284,39 @@ int dialog::show(int xloc, int yloc)
 
 int dialog::show()
 {
-    if (disp_.video().faked()) return CLOSE_DIALOG;
+	if (video_.faked()) {
+		plugins_manager * pm = plugins_manager::get();
+		if (pm && pm->any_running()) {
+			pm->notify_event("show_dialog", config(config_of
+					("title",	title_)
+					("message",	message_->get_text())
+			));
 
-	if(disp_.video().update_locked()) {
-		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'\n";
+			plugins_context pc("Dialog");
+			pc.set_callback("set_result", boost::bind(&dialog::set_result, this, boost::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
+
+			while (pm->any_running() && result() == CONTINUE_DIALOG) {
+				pc.play_slice();
+			}
+			return result();
+		}
+		return CLOSE_DIALOG;
+	}
+
+	if(video_.update_locked()) {
+		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'" << std::endl;
 		return CLOSE_DIALOG;
 	}
 
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_->get_text() << "'\n";
-	if(dim_.interior == empty_rect) { layout(); }
+	if(dim_.interior == sdl::empty_rect) { layout(); }
 
 	//create the event context, remember to instruct any passed-in widgets to join it
 	const events::event_context dialog_events_context;
 	const dialog_manager manager;
 	const resize_lock prevent_resizing;
+
+	get_frame().join();
 
 	//draw
 	draw_frame();
@@ -301,6 +324,14 @@ int dialog::show()
 	draw_contents();
 
 	//process
+	plugins_manager::get()->notify_event("show_dialog", config(config_of
+			("title",	title_)
+			("message",	message_->get_text())
+		));
+
+	plugins_context pc("Dialog");
+	pc.set_callback("set_result", boost::bind(&dialog::set_result, this, boost::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
+
 	dialog_process_info dp_info;
 	do
 	{
@@ -311,6 +342,8 @@ int dialog::show()
 		}
 		action(dp_info);
 		dp_info.cycle();
+
+		pc.play_slice();
 	} while(!done());
 
 	clear_background();
@@ -331,20 +364,18 @@ void dialog::draw_contents()
 	}
 	events::raise_draw_event(); //draw widgets
 
-	disp_.flip();
-	disp_.invalidate_all();
+	video_.flip();
 }
 
 dialog_frame& dialog::get_frame()
 {
 	if(frame_ == NULL) {
-		CVideo& screen = disp_.video();
 		frame_buttons_.clear();
 		for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
 		{
 			frame_buttons_.push_back(*b);
 		}
-		frame_ = new dialog_frame(screen, title_, style_,  true, &frame_buttons_, help_button_);
+		frame_ = new dialog_frame(video_, title_, style_,  true, &frame_buttons_, help_button_);
 	}
 	return *frame_;
 }
@@ -364,11 +395,13 @@ void dialog::update_widget_positions()
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 			preview_pane *pane = *i;
+			pane->leave();
 			pane->join();
 			pane->set_location(dim_.panes.find(pane)->second);
 		}
 	}
 	if(text_widget_) {
+		text_widget_->leave();
 		text_widget_->join();
 		text_widget_->set_location(dim_.textbox);
 		if(text_widget_->get_label()) {
@@ -376,6 +409,7 @@ void dialog::update_widget_positions()
 		}
 	}
 	if(get_menu().height() > 0) {
+		menu_->leave();
 		menu_->join();
 		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
 		menu_->set_width( dim_.menu_width );
@@ -386,6 +420,7 @@ void dialog::update_widget_positions()
 		menu_->set_location( dim_.menu_x, dim_.menu_y );
 	}
 	if(image_) {
+		image_->leave();
 		image_->join();
 		image_->set_location(dim_.image_x, dim_.image_y);
 		if(image_->caption()) {
@@ -395,37 +430,42 @@ void dialog::update_widget_positions()
 	button_iterator b;
 	for(b = top_buttons_.begin(); b != top_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
+		btn->leave();
 		btn->join();
 		std::pair<int,int> coords = dim_.buttons.find(btn)->second;
 		btn->set_location(coords.first, coords.second);
 	}
 	for(b = extra_buttons_.begin(); b != extra_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
+		btn->leave();
 		btn->join();
 		std::pair<int,int> coords = dim_.buttons.find(btn)->second;
 		btn->set_location(coords.first, coords.second);
 	}
 	for(b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
+		btn->leave();
 		btn->join();
 	}
 	if(help_button_) {
+		help_button_->leave();
 		help_button_->join();
 	}
 	message_->set_location(dim_.message);
+	message_->leave();
 	message_->join();
 }
 
 void dialog::refresh()
 {
-	disp_.flip();
-	disp_.delay(10);
+	video_.flip();
+	CVideo::delay(10);
 }
 
 dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 {
-	CVideo& screen = disp_.video();
-	surface const scr = screen.getSurface();
+	CVideo& screen = video_;
+	const surface& scr = screen.getSurface();
 
 	dimension_measurements dim;
 	dim.x = xloc;
@@ -624,7 +664,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		}
 	}
 
-	const int text_widget_y = dim.y+top_padding+text_and_image_height-6+menu_hpadding;
+	const int text_widget_y = dim.y + top_padding + text_and_image_height - 6 + menu_hpadding;
 
 	if(use_textbox) {
 		dim.textbox.x = dim.x + left_padding + text_widget_width - dim.textbox.w;
@@ -675,7 +715,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	//set the position of any tick boxes. by default, they go right below the menu,
 	//slammed against the right side of the dialog
 	if(extra_buttons_.empty() == false) {
-		int options_y = text_widget_y + std::max<int>(text_widget_height, top_button_height) + menu_->height() + button_height_padding + menu_hpadding;
+		int options_y = dim.menu_y + menu_->height() + menu_hpadding + button_height_padding;
 		int options_left_y = options_y;
 		for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
 		dialog_button const *const btn = b->first;
@@ -766,12 +806,15 @@ int dialog::process(dialog_process_info &info)
 		}
 	}
 
+	draw_frame();
+	//draw_contents();
+
 	events::raise_process_event();
 	events::raise_draw_event();
 
 	//left-clicking outside of a drop-down or context-menu should close it
 	if (info.new_left_button && !info.left_button) {
-		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location())) {
+		if (standard_buttons_.empty() && !sdl::point_in_rect(mousex,mousey, menu_->location())) {
 			if (use_menu)
 				sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
@@ -783,7 +826,7 @@ int dialog::process(dialog_process_info &info)
 	//      but that may be changed to allow right-click selection instead.
 	if (info.new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
-		|| (!point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
+		|| (!sdl::point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
 		&& type_ != YES_NO && !(type_ == OK_ONLY && has_input))) {
 			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
@@ -862,9 +905,9 @@ void dialog::set_image(surface surf, const std::string &caption)
 {
 	label *label_ptr = NULL;
 	if(!caption.empty()) {
-		label_ptr = new label(disp_.video(), caption, caption_font_size, font::NORMAL_COLOR, false);
+		label_ptr = new label(video_, caption, caption_font_size, font::NORMAL_COLOR, false);
 	}
-	set_image( new dialog_image(label_ptr, disp_.video(), surf ));
+	set_image( new dialog_image(label_ptr, video_, surf ));
 }
 
 void dialog_image::draw_contents()
@@ -910,8 +953,8 @@ void filter_textbox::delete_item(int selection) {
 	/* dialog_.set_menu_items(filtered_items_); */
 }
 
-void filter_textbox::handle_text_changed(const wide_string& text) {
-	const std::vector<std::string> words = utils::split(utils::wstring_to_string(text),' ');
+void filter_textbox::handle_text_changed(const ucs4::string& text) {
+	const std::vector<std::string> words = utils::split(unicode_cast<utf8::string>(text),' ');
 	if (words == last_words)
 		return;
 	last_words = words;

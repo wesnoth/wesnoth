@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -75,7 +75,7 @@ editor_action* mouse_action_item::click_left(editor_display& disp, int x, int y)
 	}
 
 	const overlay& item = item_palette_.selected_fg_item();
-	disp.add_overlay(start_hex_, item.image, "", "", true);
+	disp.add_overlay(start_hex_, item.image, item.halo, "", true);
 
 
 
@@ -112,7 +112,7 @@ editor_action* mouse_action_item::up_left(editor_display& disp, int x, int y)
 //	const item_type *new_item_type = item_types.find(type_id);
 //	if (!new_item_type) {
 //		//TODO rewrite the error message.
-//		ERR_ED << "create item dialog returned inexistent or unusable item_type id '" << type_id << "'\n";
+//		ERR_ED << "create item dialog returned inexistent or unusable item_type id '" << type_id << "'" << std::endl;
 //		return NULL;
 //	}
 //

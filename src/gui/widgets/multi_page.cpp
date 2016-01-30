@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,13 +25,14 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(multi_page)
 tmulti_page::tmulti_page()
 	: tcontainer_(0)
 	, generator_(
-			tgenerator_::build(true, true, tgenerator_::independent, false))
+			  tgenerator_::build(true, true, tgenerator_::independent, false))
 	, page_builder_(NULL)
 {
 }
@@ -112,12 +113,15 @@ unsigned tmulti_page::get_state() const
 	return 0;
 }
 
-namespace {
+namespace
+{
 
 /**
  * Swaps an item in a grid for another one.*/
 void swap_grid(tgrid* grid,
-		tgrid* content_grid, twidget* widget, const std::string& id)
+			   tgrid* content_grid,
+			   twidget* widget,
+			   const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
@@ -145,23 +149,18 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void tmulti_page::finalize(
-		const std::vector<string_map>& page_data)
+void tmulti_page::finalize(const std::vector<string_map>& page_data)
 {
 	assert(generator_);
 	generator_->create_items(-1, page_builder_, page_data, NULL);
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
 }
 
-void tmulti_page::impl_draw_background(surface& /*frame_buffer*/)
-{
-	/* DO NOTHING */
-}
-
-void tmulti_page::impl_draw_background(
-		  surface& /*frame_buffer*/
-		, int /*x_offset*/
-		, int /*y_offset*/)
+void tmulti_page::impl_draw_background(surface& /*frame_buffer*/
+									   ,
+									   int /*x_offset*/
+									   ,
+									   int /*y_offset*/)
 {
 	/* DO NOTHING */
 }
