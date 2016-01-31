@@ -99,13 +99,13 @@ void display::parse_team_overlays()
 }
 
 
-void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_name, bool visible_under_fog)
+void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog)
 {
 	if (halo_man_) {
 		const halo::handle halo_handle = halo_man_->add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-		const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
+		const overlay item(img, halo, halo_handle, team_name, item_id, visible_under_fog);
 		overlays_->insert(overlay_map::value_type(loc,item));
 	}
 }
@@ -134,7 +134,7 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
 	while(itors.first != itors.second) {
 		//If image or halo of overlay struct matches toDelete, remove the overlay
-		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete) {
+		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete || itors.first->second.id == toDelete) {
 			iteratorCopy = itors.first;
 			++itors.first;
 			//Not needed because of RAII --> halo_man_->remove(iteratorCopy->second.halo_handle);
