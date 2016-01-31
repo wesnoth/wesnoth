@@ -45,6 +45,15 @@ Version 1.13.2+dev:
    * Added new event "unit placed", which triggers when (and regardless of how)
      a unit appears on the map.
    * Added support for color= in [unstore_unit] and [print]
+   * removed network and network_ai controlles, whether a side is networked is
+     now stored in the is_local attribute.
+   * Eventnames (received in wesnoth.game_events.on_event) now have all their
+     spaces replaced with underscores.
+   * lua can now read/write the 'persistent' attribute of sides.
+   * lua can now read/write the 'alignment' attribute of units.
+   * Added {CURRENT_FILE} and {CURRENT_DIRECTORY} macros.
+   * add support for relative dirs in wesnoth.dofile/require
+   * Added name= and write_name= attributes in [item]
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
@@ -55,6 +64,11 @@ Version 1.13.2+dev:
    * Fix bug #15259: Secondary click uses control-click instead of command-click in OS X
    * New hi-res icon using new logo for OS X
    * Removed the "wmlmove" Python tool
+   * Fixed [event] in [unit_type].
+   * Fixed oos caused by mp replay turn feature.
+   * Fixed oos bugs caused by plattform dependent rounding from double to int in lua.
+   * Fixed custom (lua-defined) scenario tags beeing removed from [replay_start]
+   * fixed savefile bloat caused by unit variations (walking corpses)
 
 Version 1.13.2:
  * Add-ons client:
