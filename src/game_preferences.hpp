@@ -61,7 +61,7 @@ class acquaintance;
 	bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
 	int lobby_joins();
 	void _set_lobby_joins(int show);
-	enum { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
+	enum LOBBY_JOINS { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 
 	bool new_lobby();
 
