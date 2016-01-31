@@ -221,11 +221,24 @@ bool ttree_view_node::is_folded() const
 
 void ttree_view_node::fold(/*const bool recursive*/)
 {
-	// is_folded() returns the new state, which is why this looks backwards
-	if(!is_folded()) {
-		return;
-	}
+	if(is_folded()) {
+		fold_internal();
 
+		toggle_->set_value(false);
+	}
+}
+
+void ttree_view_node::unfold(/*const texpand_mode mode*/)
+{
+	if(!is_folded()) {
+		unfold_internal();
+
+		toggle_->set_value(true);
+	}
+}
+
+void ttree_view_node::fold_internal()
+{
 	const tpoint current_size(get_current_size().x, get_unfolded_size().y);
 	const tpoint new_size = get_folded_size();
 
@@ -235,20 +248,13 @@ void ttree_view_node::fold(/*const bool recursive*/)
 
 	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
 
-	toggle_->set_value(false);
-
 	if(callback_state_to_folded_) {
 		callback_state_to_folded_(*this);
 	}
 }
 
-void ttree_view_node::unfold(/*const texpand_mode mode*/)
+void ttree_view_node::unfold_internal()
 {
-	// is_folded() returns the new state, which is why this looks backwards
-	if(is_folded()) {
-		return;
-	}
-	
 	const tpoint current_size(get_current_size().x, get_folded_size().y);
 	const tpoint new_size = get_unfolded_size();
 
@@ -257,8 +263,6 @@ void ttree_view_node::unfold(/*const texpand_mode mode*/)
 	assert(height_modification >= 0);
 
 	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
-
-	toggle_->set_value(true);
 
 	if(callback_state_to_unfolded_) {
 		callback_state_to_unfolded_(*this);
@@ -587,7 +591,7 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 	 */
 
 	// is_folded() returns the new state, which is why this looks backwards
-	is_folded() ? fold() : unfold();
+	is_folded() ? fold_internal() : unfold_internal();
 
 	if(callback_state_change_) {
 		callback_state_change_(*this);

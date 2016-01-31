@@ -252,6 +252,9 @@ private:
 	/** The label to show our selected state. */
 	tselectable_* label_;
 
+	void fold_internal();
+	void unfold_internal();
+
 	/**
 	 * "Inherited" from twidget.
 	 *
