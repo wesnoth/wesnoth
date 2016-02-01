@@ -46,7 +46,6 @@ namespace preferences {
 
 	std::string show_wesnothd_server_search(CVideo&);
 	void show_preferences_dialog(CVideo& disp, const config& game_cfg);
-	bool show_video_mode_dialog(CVideo& disp);
 	bool show_theme_dialog(CVideo& disp);
 	void show_paths_dialog(CVideo& disp);
 	void show_mp_alerts_dialog(CVideo& disp);

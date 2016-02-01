@@ -1687,8 +1687,8 @@ void preferences_dialog::set_selection(int index)
 void show_preferences_dialog(CVideo& video, const config& game_cfg)
 {
 	if(true/*gui2::new_widgets*/) {
-		gui2::tpreferences dlg;
-		dlg.show(disp.video());
+		gui2::tpreferences dlg(video, game_cfg);
+		dlg.show(video);
 		return;
 	}
 
@@ -1790,7 +1790,7 @@ std::string show_wesnothd_server_search(CVideo& video)
 	symbols["filename"] = filename;
 
 	const std::string title = utils::interpolate_variables_into_string(
-			  _("Find $filename server binary to host networked games")
+			  _("Find $filename server binary")
 			, &symbols);
 
 	int res = dialogs::show_file_chooser_dialog(video, path, title, false, filename);

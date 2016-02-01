@@ -212,6 +212,10 @@ std::string get(const std::string& key) {
 	return prefs[key];
 }
 
+std::string get(const std::string& key, const std::string& def) {
+	return prefs[key].empty() ? def : prefs[key];
+}
+
 bool get(const std::string &key, bool def)
 {
 	return prefs[key].to_bool(def);
