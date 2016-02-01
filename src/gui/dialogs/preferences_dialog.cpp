@@ -792,7 +792,7 @@ void tpreferences::initialize_tabs(twindow& window)
 	tlistbox& tabs_multiplayer = find_widget<tlistbox>(&window, "mp_tab", false);
 	add_tab(tabs_multiplayer, _("Prefs tab^General"));
 	add_tab(tabs_multiplayer, _("Prefs tab^Friends"));
-	add_tab(tabs_multiplayer, _("Prefs tab^Alerts"));
+	//add_tab(tabs_multiplayer, _("Prefs tab^Alerts"));
 
 	tabs_multiplayer.set_callback_value_change(make_dialog_callback(
 		boost::bind(&tpreferences::on_tab_select, this, _1, "mp_tab")));
