@@ -119,18 +119,6 @@ static lg::log_domain log_config("config");
 #define SIGHUP 20
 #endif
 
-static void exit_sigint(int signal) {
-	assert(signal == SIGINT);
-	LOG_SERVER << "SIGINT caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGINT);
-}
-
-static void exit_sigterm(int signal) {
-	assert(signal == SIGTERM);
-	LOG_SERVER << "SIGTERM caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGTERM);
-}
-
 namespace wesnothd
 {
 
@@ -435,7 +423,8 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	last_stats_(last_ping_),
 	last_uh_clean_(last_ping_),
 	cmd_handlers_(),
-	sighup_(io_service_, SIGHUP)
+	sighup_(io_service_, SIGHUP),
+	sigs_(io_service_, SIGINT, SIGTERM)
 {
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
 	acceptor_.open(endpoint.protocol());
@@ -452,9 +441,7 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	ban_manager_.read();
 
 	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
-
-	signal(SIGINT, exit_sigint);
-	signal(SIGTERM, exit_sigterm);
+	sigs_.async_wait(boost::bind(&server::handle_termination, this, _1, _2));
 }
 
 void server::handle_sighup(const boost::system::error_code& error, int) {
@@ -466,6 +453,17 @@ void server::handle_sighup(const boost::system::error_code& error, int) {
 	load_config();
 
 	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
+}
+
+void server::handle_termination(const boost::system::error_code& error, int signal_number)
+{
+	assert(!error);
+
+	const char* signame;
+	if(signal_number == SIGINT) signame = "SIGINT";
+	if(signal_number == SIGTERM) signame = "SIGTERM";
+	LOG_SERVER << signame << " caught, exiting without cleanup immediately.\n";
+	exit(128 + signal_number);
 }
 
 void server::setup_fifo() {
