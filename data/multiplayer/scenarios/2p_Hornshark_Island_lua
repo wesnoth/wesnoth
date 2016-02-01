@@ -20,8 +20,13 @@
 			end
 			local function leader_matches()
 				local actual = wesnoth.get_units({ canrecruit = true, side = side_number })[1]
-				for searched in string.gmatch(multiplayer_side.leader, "[^%s,][^,]*") do
-					if searched == actual.type then return true end
+
+				if actual then
+					for searched in string.gmatch(multiplayer_side.leader, "[^%s,][^,]*") do
+						if searched == actual.type then return true end
+					end
+				else
+					return false
 				end
 			end
 			if recruits_match() and leader_matches() then
