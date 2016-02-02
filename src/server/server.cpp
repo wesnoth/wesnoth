@@ -39,7 +39,7 @@
 #include "player.hpp"
 #include "simple_wml.hpp"
 #include "ban.hpp"
-
+#include "exceptions.hpp"
 
 #include "user_handler.hpp"
 #include "sample_user_handler.hpp"
@@ -118,6 +118,16 @@ static lg::log_domain log_config("config");
 #ifndef SIGHUP
 #define SIGHUP 20
 #endif
+
+namespace
+{
+
+struct server_shutdown : public game::error
+{
+	server_shutdown(const std::string& msg) : game::error(msg) {}
+};
+
+}
 
 namespace wesnothd
 {
@@ -424,7 +434,8 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	last_uh_clean_(last_ping_),
 	cmd_handlers_(),
 	sighup_(io_service_, SIGHUP),
-	sigs_(io_service_, SIGINT, SIGTERM)
+	sigs_(io_service_, SIGINT, SIGTERM),
+	timer_(io_service_)
 {
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
 	acceptor_.open(endpoint.protocol());
@@ -464,6 +475,14 @@ void server::handle_termination(const boost::system::error_code& error, int sign
 	if(signal_number == SIGTERM) signame = "SIGTERM";
 	LOG_SERVER << signame << " caught, exiting without cleanup immediately.\n";
 	exit(128 + signal_number);
+}
+
+void server::handle_graceful_timeout(const boost::system::error_code& error)
+{
+	assert(!error);
+
+	// TODO: shutdown only if no games exist
+	throw server_shutdown("graceful shutdown timeout");
 }
 
 void server::setup_fifo() {
@@ -755,7 +774,8 @@ void server::serve()
 
 void server::accept_connection(const boost::system::error_code& error, socket_ptr socket)
 {
-	serve();
+	if(!graceful_restart)
+		serve();
 	if(error) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
 		return;
@@ -1813,7 +1833,13 @@ void server::send_server_message_to_all(const std::string& message, socket_ptr e
 }
 
 void server::run() {
-	io_service_.run();
+	try {
+		io_service_.run();
+		LOG_SERVER << "Server has shut down because event loop is out of work\n";
+	} catch(const server_shutdown& e) {
+		LOG_SERVER << "Server has been shut down: " << e.what() << "\n";
+	}
+
 	/*
 	int graceful_counter = 0;
 
@@ -2208,8 +2234,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 }
 
 // Shutdown, restart and sample commands can only be issued via the socket.
-void server::shut_down_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream */*out*/) {
-	/*
+void server::shut_down_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
 	if (issuer_name != "*socket*" && !allow_remote_shutdown_) {
@@ -2217,16 +2242,16 @@ void server::shut_down_handler(const std::string& /*issuer_name*/, const std::st
 		return;
 	}
 	if (parameters == "now") {
-		throw network::error("shut down");
+		throw server_shutdown("shut down by admin command");
 	} else {
 		// Graceful shut down.
-		// TODO: Shutdown
-		input_.reset();
 		graceful_restart = true;
+		acceptor_.close();
+		timer_.expires_from_now(boost::posix_time::seconds(10));
+		timer_.async_wait(boost::bind(&server::handle_graceful_timeout, this, _1));
 		process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.", issuer_name);
 		*out << "Server is doing graceful shut down.";
 	}
-	*/
 }
 
 void server::restart_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
@@ -2241,10 +2266,9 @@ void server::restart_handler(const std::string& issuer_name, const std::string& 
 		*out << "No restart_command configured! Not restarting.";
 	} else {
 		graceful_restart = true;
-		// stop listening socket
-		// TODO: Shutdown
-		//input_.reset();
-		// start new server
+		acceptor_.close();
+		timer_.expires_from_now(boost::posix_time::seconds(10));
+		timer_.async_wait(boost::bind(&server::handle_graceful_timeout, this, _1));
 		start_new_server();
 		process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
 		*out << "New server started.";

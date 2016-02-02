@@ -234,6 +234,9 @@ private:
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
 	boost::asio::signal_set sigs_;
 	void handle_termination(const boost::system::error_code& error, int signal_number);
+
+	boost::asio::deadline_timer timer_;
+	void handle_graceful_timeout(const boost::system::error_code& error);
 };
 
 }
