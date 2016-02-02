@@ -283,14 +283,14 @@ draw_layering::~draw_layering()
 	SDL_Event drawEvent;
 	SDL_UserEvent data;
 
-	data.type = DRAW_EVENT;
+	data.type = DRAW_ALL_EVENT;
 	data.code = 0;
 	data.data1 = NULL;
 	data.data2 = NULL;
 
-	drawEvent.type = DRAW_EVENT;
+	drawEvent.type = DRAW_ALL_EVENT;
 	drawEvent.user = data;
-
+	SDL_FlushEvent(DRAW_ALL_EVENT);
 	SDL_PushEvent(&drawEvent);
 }
 }
@@ -403,14 +403,29 @@ void update_whole_screen()
 void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 {
 
+
+
 	if (event.type == SDL_WINDOWEVENT) {
 		switch (event.window.event) {
 			case SDL_WINDOWEVENT_RESIZED:
 			case SDL_WINDOWEVENT_RESTORED:
 			case SDL_WINDOWEVENT_SHOWN:
 			case SDL_WINDOWEVENT_EXPOSED:
-				if (display::get_singleton())
-					display::get_singleton()->redraw_everything();
+				//if (display::get_singleton())
+					//display::get_singleton()->redraw_everything();
+				SDL_Event drawEvent;
+				SDL_UserEvent data;
+
+				data.type = DRAW_ALL_EVENT;
+				data.code = 0;
+				data.data1 = NULL;
+				data.data2 = NULL;
+
+				drawEvent.type = DRAW_ALL_EVENT;
+				drawEvent.user = data;
+
+				SDL_FlushEvent(DRAW_ALL_EVENT);
+				SDL_PushEvent(&drawEvent);
 				break;
 #if !SDL_VERSION_ATLEAST(2, 0, 4) && defined(_WIN32)
 			case SDL_WINDOWEVENT_FOCUS_GAINED:

@@ -221,7 +221,8 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
 	arrows_map_(),
-	color_adjust_()
+	color_adjust_(),
+	dirty_()
 #ifdef SDL_GPU
 	, update_panel_image_(true),
 	panel_image_()
@@ -2723,10 +2724,6 @@ void display::redraw_everything()
 	layout_buttons();
 	render_buttons();
 
-	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
-		create_buttons();
-	}
-
 	panelsDrawn_ = false;
 	if (!gui::in_dialog()) {
 		labels().recalculate_labels();
@@ -2760,9 +2757,17 @@ void display::clear_redraw_observers()
 
 void display::draw(bool update,bool force) {
 //	log_scope("display::draw");
+
 	if (screen_.update_locked()) {
 		return;
 	}
+
+	if (dirty_) {
+		dirty_ = false;
+		redraw_everything();
+		return;
+	}
+
 	set_scontext_unsynced leave_synced_context;
 	local_tod_light_ = has_time_area() && preferences::get("local_tod_lighting", true);
 
@@ -3810,6 +3815,29 @@ void display::process_reachmap_changes()
 	}
 	reach_map_old_ = reach_map_;
 	reach_map_changed_ = false;
+}
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+void display::handle_window_event(const SDL_Event& event) {
+	if (event.type == SDL_WINDOWEVENT) {
+			switch (event.window.event) {
+				case SDL_WINDOWEVENT_RESIZED:
+				case SDL_WINDOWEVENT_RESTORED:
+				case SDL_WINDOWEVENT_EXPOSED:
+					dirty_ = true;
+
+					break;
+			}
+	}
+
+
+}
+#endif
+
+void display::handle_event(const SDL_Event& event) {
+	if (event.type == DRAW_ALL_EVENT) {
+		draw();
+	}
 }
 
 display *display::singleton_ = NULL;

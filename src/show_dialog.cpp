@@ -158,6 +158,13 @@ void dialog_frame::handle_window_event(const SDL_Event& event) {
 }
 #endif
 
+void dialog_frame::handle_event(const SDL_Event& event) {
+
+	if (event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT) {
+		draw();
+	}
+}
+
 int dialog_frame::bottom_padding() const {
 	int padding = 0;
 	if(buttons_ != NULL) {

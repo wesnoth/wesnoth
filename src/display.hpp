@@ -74,7 +74,7 @@ namespace wb {
 
 class gamemap;
 
-class display : public filter_context
+class display : public filter_context, public video2::draw_layering
 {
 public:
 	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
@@ -152,13 +152,6 @@ public:
 
 	/** remove_single_overlay will remove a single overlay from a tile */
 	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
-
-
-
-
-
-
-
 
 	/**
 	 * Updates internals that cache map size. This should be called when the map
@@ -638,6 +631,12 @@ public:
 	bool is_blindfolded() const;
 
 	void write(config& cfg) const;
+
+	virtual void handle_event(const SDL_Event& );
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	virtual void handle_window_event(const SDL_Event& event);
+#endif
+
 private:
 	void read(const config& cfg);
 
@@ -1160,6 +1159,8 @@ private:
 	arrows_map_t arrows_map_;
 
 	tod_color color_adjust_;
+
+	bool dirty_;
 
 #ifdef SDL_GPU
 	bool update_panel_image_;

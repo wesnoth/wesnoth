@@ -449,7 +449,7 @@ void pump()
 				}
 				//make sure this runs in it's own scope.
 				{
-					for( std::deque<context>::reverse_iterator i = event_contexts.rbegin() ; i != event_contexts.rend(); i++) {
+					for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
 						const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 						for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 							event_handlers[i1]->handle_window_event(event);
@@ -515,6 +515,20 @@ void pump()
 					last_click_y = event.button.y;
 				}
 				break;
+			case DRAW_ALL_EVENT:
+			{
+				/* iterate backwards as the most recent things will be at the top */
+				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
+					const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
+					for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+						event_handlers[i1]->handle_event(event);
+						//event_handlers[i1]->draw();
+					}
+				}
+				continue; //do not do further handling here
+			}
+
+
 			}
 
 #ifndef __APPLE__
@@ -602,8 +616,7 @@ void raise_draw_event()
 
 void raise_draw_all_event()
 {
-	/* iterate backwards as the most recent things will be at the top */
-	for( std::deque<context>::reverse_iterator i = event_contexts.rbegin() ; i != event_contexts.rend(); i++) {
+	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
 		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->draw();
@@ -627,8 +640,7 @@ void raise_volatile_draw_event()
 
 void raise_volatile_draw_all_event()
 {
-	/* iterate backwards as the most recent things will be at the top */
-	for( std::deque<context>::reverse_iterator i = event_contexts.rbegin() ; i != event_contexts.rend(); i++) {
+	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
 		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->volatile_draw();
