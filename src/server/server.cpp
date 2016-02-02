@@ -829,21 +829,40 @@ void server::read_version(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 		                              version_str_span.end());
 		std::vector<std::string>::const_iterator accepted_it;
 		// Check if it is an accepted version.
-		for(accepted_it = accepted_versions_.begin();
-			accepted_it != accepted_versions_.end(); ++accepted_it) {
-			if (utils::wildcard_string_match(version_str, *accepted_it)) break;
-		}
+		accepted_it = std::find_if(accepted_versions_.begin(), accepted_versions_.end(),
+			boost::bind(&utils::wildcard_string_match, version_str, _1));
 		if(accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << client_address(socket)
 				<< "\tplayer joined using accepted version " << version_str
 				<< ":\ttelling them to log in.\n";
 			async_send_doc(socket, login_response_, boost::bind(&server::login, this, _1));
 			return;
-		} else {
-			LOG_SERVER << client_address(socket)
+		}
+
+		simple_wml::document response;
+
+		// Check if it is a redirected version
+		FOREACH(const AUTO& redirect_version, redirected_versions_) {
+			if(utils::wildcard_string_match(version_str, redirect_version.first)) {
+				LOG_SERVER << client_address(socket)
+					<< "\tplayer joined using version " << version_str
+					<< ":\tredirecting them to " << redirect_version.second["host"]
+					<< ":" << redirect_version.second["port"] << "\n";
+				simple_wml::node& redirect = response.root().add_child("redirect");
+				FOREACH(const AUTO& attr, redirect_version.second.attribute_range()) {
+					redirect.set_attr(attr.first.c_str(), attr.second.str().c_str());
+				}
+				send_to_player(socket, response);
+				return;
+			}
+		}
+
+		LOG_SERVER << client_address(socket)
 				<< "\tplayer joined using unknown version " << version_str
 				<< ":\trejecting them\n";
-		}
+		simple_wml::node& reject = response.root().add_child("reject");
+		reject.set_attr("accepted_versions", utils::join(accepted_versions_).c_str());
+		send_to_player(socket, response);
 	} else {
 		LOG_SERVER << client_address(socket)
 			<< "\tclient didn't send its version: rejecting\n";
