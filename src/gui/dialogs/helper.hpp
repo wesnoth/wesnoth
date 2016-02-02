@@ -32,7 +32,7 @@ void dialog_callback(twidget& caller)
 {
 	D* dialog = dynamic_cast<D*>(caller.dialog());
 	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller.get_window());
+	twindow* window = caller.get_window();
 	assert(window);
 	(dialog->*fptr)(*window);
 }
@@ -42,7 +42,7 @@ typedef boost::function<void(twindow &)> dialog_member_func_type;
 inline void make_dialog_callback_helper(const dialog_member_func_type & t, 
 		twidget & caller)
 {
-	twindow * window = dynamic_cast<twindow *>(caller.get_window());
+	twindow * window = caller.get_window();
 	assert(window);
 	t(*window);
 }
