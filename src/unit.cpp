@@ -555,7 +555,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	}
 
 	BOOST_FOREACH(const config::attribute &attr, input_cfg.attribute_range()) {
-		if (attr.first == "do_not_list") continue;
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded." << std::endl;
 	}
 

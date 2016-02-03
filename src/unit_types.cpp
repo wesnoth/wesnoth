@@ -772,7 +772,7 @@ const config & unit_type::build_unit_cfg() const
 		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
 		"name", "num_traits", "variation_id", "variation_name", "recall_cost",
-		"cost", "level", "gender", "flag_rgb", "alignment", "advances_to"
+		"cost", "level", "gender", "flag_rgb", "alignment", "advances_to", "do_not_list"
 	};
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
