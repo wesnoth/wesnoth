@@ -2009,7 +2009,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 							advancements_.clear();
 						}
 						config temp = effect;
-						//cfg_.splice_children(temp, "advancement");
+						boost::copy( effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
 					}
 				} else if (apply_to == "remove_advancement") {
 					const std::string &types = effect["types"];
@@ -2027,15 +2027,11 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					temp_advances = utils::parenthetical_split(amlas, ',');
 					std::vector<size_t> remove_indices;
 					size_t remove_index = 0;
-					BOOST_FOREACH(const config &adv, modification_advancements()) {
-						iter = std::find(temp_advances.begin(), temp_advances.end(), adv["id"]);
-						if (iter != temp_advances.end()) {
-							remove_indices.push_back(remove_index);
+
+					for(int i = advancements_.size() - 1; i >= 0; i--) {
+						if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
+							advancements_.erase(advancements_.begin() + i);
 						}
-						remove_index++;
-					}
-					for (size_t i = remove_indices.size(); i > 0; i--) {
-						//cfg_.remove_child("advancement", i - 1);
 					}
 				} else if (apply_to == "alignment") {
 					unit_type::ALIGNMENT new_align;
