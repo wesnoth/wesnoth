@@ -403,7 +403,27 @@ static int impl_unit_set(lua_State *L)
 		u.set_advancements(lua_check<std::vector<config> >(L, 3));
 		return 0;
 	}
-
+	
+	if (strcmp(m, "upkeep") == 0) {
+		if(lua_isnumber(L, 3)) {
+			u.set_upkeep(luaL_checkint(L, 3));
+			return 0;
+		}
+		const char* v = luaL_checkstring(L, 3);
+		if(strcmp(m, "loyal") == 0) {
+			u.set_upkeep(unit::upkeep_loyal());
+		}
+		else if(strcmp(m, "full") == 0) {
+			u.set_upkeep(unit::upkeep_full());		
+		}
+		else {
+		
+			std::string err_msg = "unknown upkeep value of unit: ";
+			err_msg += v;
+			return luaL_argerror(L, 2, err_msg.c_str());
+		}
+		return 0;
+	}
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
 		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));

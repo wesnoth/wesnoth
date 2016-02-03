@@ -296,6 +296,7 @@ public:
 	typedef boost::variant<upkeep_full, upkeep_loyal, int> t_upkeep;
 
 	t_upkeep upkeep_raw() const { return upkeep_; }
+	void set_upkeep(t_upkeep v) { upkeep_ = v; }
 	bool loyal() const;
 
 	void set_hidden(bool state) const;
