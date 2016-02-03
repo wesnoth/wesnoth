@@ -95,15 +95,13 @@ function wml_actions.store_items(cfg)
 	wesnoth.set_variable(variable)
 	local index = 0
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
-		--ugly workaround for the lack of the "continue" statement in lua
-		repeat
-			local items = scenario_items[loc[1] * 10000 + loc[2]]
-			if not items then break end
+		local items = scenario_items[loc[1] * 10000 + loc[2]]
+		if items then
 			for j, item in ipairs(items) do
 				wesnoth.set_variable(string.format("%s[%u]", variable, index), item)
 				index = index + 1
 			end
-		until true
+		end
 	end
 end
 
