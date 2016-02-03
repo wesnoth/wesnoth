@@ -52,6 +52,9 @@
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/function_output_iterator.hpp>
+#include <boost/range/begin.hpp>
+#include <boost/range/end.hpp>
+
 #ifdef _MSC_VER
 #pragma warning (push)
 #pragma warning (disable: 4510 4610)
@@ -101,6 +104,57 @@ namespace {
 	static std::vector<const unit *> units_with_cache;
 
 	const std::string leader_crown_path = "misc/leader-crown.png";
+	static std::string internalized_attrs[] = { "type", "id", "name",
+		"gender", "random_gender", "variation", "role", "ai_special",
+		"side", "underlying_id", "overlays", "facing", "race",
+		"level", "recall_cost", "undead_variation", "max_attacks",
+		"attacks_left", "alpha", "zoc", "flying", "cost",
+		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
+		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
+		"experience", "resting", "unrenamable", "alignment",
+		"canrecruit", "extra_recruit", "x", "y", "placement",
+		"parent_type", "description", "usage", "halo", "ellipse",
+		"random_taits", "upkeep", "random_traits", "generate_name",
+		"profile", "small_profile",
+		// Useless attributes created when saving units to WML:
+		"flag_rgb", "language_name", "image", "image_icon"
+	};
+	//Sort the array to make set_difference below work.
+	struct t_internalized_attrs_sorter {
+		t_internalized_attrs_sorter()
+		{
+			std::sort(boost::begin(internalized_attrs), boost::begin(internalized_attrs));
+		}
+	} internalized_attrs_sorter;
+
+	void warn_unknown_attribute(const config::const_attr_itors& cfg)
+	{
+		config::const_attribute_iterator cur = cfg.first;
+		config::const_attribute_iterator end = cfg.second;
+		const std::string* cur_known = boost::begin(internalized_attrs);
+		const std::string* end_known = boost::end(internalized_attrs);
+		while(cur_known != end_known) {
+			if(cur == end) {
+				return;
+			}
+			int comp = cur->first.compare(*cur_known);
+			if(comp < 0) {
+				WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
+				++cur;
+			}
+			else if (comp == 0) {
+				++cur;
+				++cur_known;
+			}
+			else {
+				++cur_known;
+			}
+		}
+		while(cur != end) {
+			WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
+			++cur;		
+		}
+	}
 }
 
 /**
@@ -540,32 +594,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	set_recruits(utils::split(cfg["extra_recruit"]));
 
 	game_config::add_color_info(cfg);
-
-	config input_cfg;
-	input_cfg.merge_attributes(cfg);
-
-	static char const *internalized_attrs[] = { "type", "id", "name",
-		"gender", "random_gender", "variation", "role", "ai_special",
-		"side", "underlying_id", "overlays", "facing", "race",
-		"level", "recall_cost", "undead_variation", "max_attacks",
-		"attacks_left", "alpha", "zoc", "flying", "cost",
-		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
-		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
-		"experience", "resting", "unrenamable", "alignment",
-		"canrecruit", "extra_recruit", "x", "y", "placement",
-		"parent_type", "description", "usage", "halo", "ellipse",
-		"random_taits", "upkeep", "random_traits", "generate_name",
-		"profile", "small_profile",
-		// Useless attributes created when saving units to WML:
-		"flag_rgb", "language_name", "image", "image_icon" };
-	BOOST_FOREACH(const char *attr, internalized_attrs) {
-		input_cfg.remove_attribute(attr);
-	}
-
-	BOOST_FOREACH(const config::attribute &attr, input_cfg.attribute_range()) {
-		WRN_UT << "Unknown attribute '" << attr.first << "' discarded." << std::endl;
-	}
-
+	warn_unknown_attribute(cfg.attribute_range());
 	//debug unit animations for units as they appear in game
 	/*for(std::vector<unit_animation>::const_iterator i = anim_comp_->animations_.begin(); i != anim_comp_->animations_.end(); ++i) {
 		std::cout << (*i).debug();
