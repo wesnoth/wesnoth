@@ -130,7 +130,9 @@ public:
 	const std::string& icon() const { return icon_; }
 	const std::string &small_profile() const { return small_profile_; }
 	const std::string &big_profile() const { return big_profile_; }
-
+	std::string halo() const { return cfg_["halo"]; }
+	std::string ellipse() const { return cfg_["ellipse"]; }
+	bool generate_name() const { return cfg_["generate_name"].to_bool(true); }
 	const std::vector<unit_animation>& animations() const;
 
 	const std::string& flag_rgb() const { return flag_rgb_; }

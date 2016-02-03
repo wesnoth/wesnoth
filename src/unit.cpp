@@ -180,7 +180,13 @@ const std::string& unit::leader_crown()
 {
 	return leader_crown_path;
 }
-
+namespace {
+	template<typename T>
+	T* copy_or_null(const boost::scoped_ptr<T>& ptr)
+	{
+		return ptr ? new T(*ptr) : NULL;
+	}
+}
 // Copy constructor
 unit::unit(const unit& o)
 	: ref_count_(0)
@@ -247,6 +253,13 @@ unit::unit(const unit& o)
 	, modifications_(o.modifications_)
 	, abilities_(o.abilities_)
 	, advancements_(o.advancements_)
+	, description_(o.description_)
+	, usage_(copy_or_null(o.usage_))
+	, halo_(copy_or_null(o.halo_))
+	, ellipse_(copy_or_null(o.ellipse_))
+	, random_traits_(o.random_traits_)
+	, generate_name_(o.generate_name_)
+	, upkeep_(o.upkeep_)
 	, invisibility_cache_()
 {
 }
@@ -327,6 +340,13 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	, modifications_()
 	, abilities_()
 	, advancements_()
+	, description_()
+	, usage_()
+	, halo_()
+	, ellipse_()
+	, random_traits_(true)
+	, generate_name_(true)
+	, upkeep_()
 	, invisibility_cache_()
 {
 	side_ = cfg["side"];
@@ -369,13 +389,14 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		resources::game_events->add_events(events_.child_range("event"));
 	}
 
+	random_traits_ = cfg["random_taits"].to_bool(true);
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
 
 	if (const config &mods = cfg.child("modifications")) {
 		modifications_ = mods;
 	}
-
+	generate_name_ = cfg["generate_name"].to_bool(true);
 	// Apply the unit type's data to this unit.
 	advance_to(cfg, *type_, use_traits);
 
@@ -402,18 +423,21 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		emit_zoc_ = v->to_bool(level_ > 0);
 	}
 	if (const config::attribute_value *v = cfg.get("description")) {
-		cfg_["description"] = *v;
+		description_ = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("cost")) {
 		unit_value_ = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("ellipse")) {
-		cfg_["ellipse"] = *v;
+		set_image_ellipse(*v);
 	}
 	if (const config::attribute_value *v = cfg.get("halo")) {
-		anim_comp_->clear_haloes();
-		cfg_["halo"] = *v;
+		set_image_halo(*v);
 	}
+	if (const config::attribute_value *v = cfg.get("usage")) {
+		set_usage(*v);
+	}
+
 	if (const config::attribute_value *v = cfg.get("profile")) {
 		std::string big = *v, small = cfg["small_profile"];
 		adjust_profile(small, big, "");
@@ -518,10 +542,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 
 	generate_name();
 
-	// Make the default upkeep "full"
-	if(cfg_["upkeep"].empty()) {
-		cfg_["upkeep"] = "full";
-	}
+	parse_upkeep(cfg["upkeep"]);
 
 	set_recruits(utils::split(cfg["extra_recruit"]));
 
@@ -539,17 +560,17 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
 		"canrecruit", "extra_recruit", "x", "y", "placement",
-		"parent_type",
+		"parent_type", "description", "usage", "halo", "ellipse",
+		"random_taits", "upkeep", "random_traits", "generate_name",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name" };
 	BOOST_FOREACH(const char *attr, internalized_attrs) {
 		input_cfg.remove_attribute(attr);
 		cfg_.remove_attribute(attr);
 	}
-
-	static char const *raw_attrs[] = { "description", "halo",
-		"profile", "small_profile", "upkeep", "usage", "ellipse",
-		"image", "image_icon", "random_traits", "generate_name" };
+	static char const *raw_attrs[] = {
+		"profile", "small_profile",
+		"image", "image_icon"};
 	BOOST_FOREACH(const char *attr, raw_attrs) {
 		input_cfg.remove_attribute(attr);
 	}
@@ -639,9 +660,16 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	, modifications_()
 	, abilities_()
 	, advancements_()
+	, description_()
+	, usage_()
+	, halo_()
+	, ellipse_()
+	, random_traits_(true)
+	, generate_name_(true)
+	, upkeep_()
 	, invisibility_cache_()
 {
-	cfg_["upkeep"]="full";
+	upkeep_ = upkeep_full();
 
 	// Apply the unit type's data to this unit.
 	advance_to(u_type, real_unit);
@@ -756,10 +784,11 @@ unit& unit::operator=(unit other)
 
 void unit::generate_name()
 {
-	if (!name_.empty() || !cfg_["generate_name"].to_bool(true)) return;
-
+	if (!name_.empty() || !generate_name_) {
+		return;
+	}
 	name_ = race_->generate_name(gender_);
-	cfg_["generate_name"] = false;
+	generate_name_ = false;
 }
 
 
@@ -829,7 +858,7 @@ void unit::generate_traits(bool musthaveonly)
 
 	// Once random traits are added, don't do it again.
 	// Such as when restoring a saved character.
-	cfg_["random_traits"] = false;
+	random_traits_ = false;
 }
 
 std::vector<std::string> unit::get_traits_list() const
@@ -873,8 +902,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	// Clear the stored config and replace it with the one from the unit type,
 	// except for a few attributes.
 	config new_cfg;
-	static char const *persistent_attrs[] = { "upkeep", "ellipse",
-		"image", "image_icon", "usage", "random_traits", "generate_name" };
+	static char const *persistent_attrs[] = { "image", "image_icon"};
 	BOOST_FOREACH(const char *attr, persistent_attrs) {
 		if (const config::attribute_value *v = old_cfg.get(attr)) {
 			new_cfg[attr] = *v;
@@ -883,7 +911,13 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	// Inherit from the new unit type.
 	new_cfg.merge_attributes(new_type.get_cfg_for_units());
-	
+
+	if(!new_type.usage().empty()) {
+		 set_usage(new_type.usage());
+	}
+	set_image_halo(new_type.halo());
+	set_image_ellipse(new_type.ellipse());
+	generate_name_ &= new_type.generate_name();
 	abilities_ = new_type.abilities_cfg();
 	advancements_.clear();
 	BOOST_FOREACH(const config& advancement, new_type.advancements()) {
@@ -912,7 +946,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	race_ = new_type.race();
 	type_ = &new_type;
 	type_name_ = new_type.type_name();
-	cfg_["description"] = new_type.unit_description();
+	description_ = new_type.unit_description();
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
@@ -942,7 +976,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	anim_comp_->reset_after_advance(&new_type);
 
-	if (cfg_["random_traits"].to_bool(true)) {
+	if (random_traits_) {
 		generate_traits(!use_traits);
 	} else {
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
@@ -1348,13 +1382,24 @@ void unit::write(config& cfg) const
 	cfg.append(cfg_);
 	movement_type_.write(cfg);
 
-	if ( cfg["description"] == type().unit_description() ) {
-		cfg.remove_attribute("description");
+	if ( description_ != type().unit_description() ) {
+		cfg["description"] = description_;
 	}
-
+	if(halo_.get()) {
+		cfg["halo"] = *halo_;
+	}
+	if(ellipse_.get()) {
+		cfg["ellipse"] = *ellipse_;
+	}
+	if(usage_.get()) {
+		cfg["usage"] = *usage_;
+	}
+	write_upkeep(cfg["upkeep"]);
 	cfg["hitpoints"] = hit_points_;
 	cfg["max_hitpoints"] = max_hit_points_;
 
+	cfg["random_taits"] = random_traits_;
+	cfg["generate_name"] = generate_name_;
 	cfg["experience"] = experience_;
 	cfg["max_experience"] = max_experience_;
 	cfg["recall_cost"] = recall_cost_;
@@ -1455,21 +1500,20 @@ int unit::upkeep() const
 	if(can_recruit()) {
 		return 0;
 	}
-	if(cfg_["upkeep"] == "full") {
+	else if(boost::get<upkeep_full>(&upkeep_) != NULL) {
 		return level();
 	}
-	if(cfg_["upkeep"] == "loyal") {
+	else if(boost::get<upkeep_loyal>(&upkeep_) != NULL) {
 		return 0;
 	}
-	if(cfg_["upkeep"] == "free") {
-		return 0;
+	else {
+		return boost::get<int>(upkeep_);
 	}
-	return cfg_["upkeep"];
 }
 
 bool unit::loyal() const
 {
-	return cfg_["upkeep"] == "loyal" || cfg_["upkeep"] == "free";
+	return boost::get<upkeep_loyal>(&upkeep_) != NULL;
 }
 
 int unit::defense_modifier(const t_translation::t_terrain & terrain) const
@@ -1714,7 +1758,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						cfg_["small_profile"] = small;
 					}
 					if (const config::attribute_value *v = effect.get("description"))
-						cfg_["description"] = *v;
+						description_ = *v;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
 					attacks_.push_back(attack_type(effect));
@@ -1886,7 +1930,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 
 				} else if(apply_to == "loyal") {
-					cfg_["upkeep"] = "loyal";
+					upkeep_ = upkeep_loyal();;
 				} else if(apply_to == "status") {
 					const std::string &add = effect["add"];
 					const std::string &remove = effect["remove"];
@@ -1963,12 +2007,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				} else if (apply_to == "new_animation") {
 					anim_comp_->apply_new_animation_effect(effect);
 				} else if (apply_to == "ellipse") {
-					cfg_["ellipse"] = effect["ellipse"];
-
+					set_image_ellipse(effect["ellipse"]);
 				} else if (apply_to == "halo") {
-					anim_comp_->clear_haloes();
-					cfg_["halo"] = effect["halo"];
-
+					set_image_halo(effect["halo"]);
 				} else if (apply_to == "overlay") {
 					const std::string &add = effect["add"];
 					const std::string &replace = effect["replace"];
@@ -2410,6 +2451,45 @@ void unit::set_hidden(bool state) const {
 	if(!state) return;
 	// We need to get rid of haloes immediately to avoid display glitches
 	anim_comp_->clear_haloes();
+}
+
+void unit::set_image_halo(const std::string& halo)
+{
+	anim_comp_->clear_haloes();
+	halo_.reset(new std::string(halo));
+}
+
+
+
+void unit::parse_upkeep(const config::attribute_value& upkeep)
+{
+	//TODO: create abetter way to check whether it is actually an int.	
+	int upkeep_int = upkeep.to_int(-99);
+	if(upkeep_int != -99) {
+		upkeep_ = upkeep_int;
+	}
+	else if(upkeep == "loyal" || upkeep == "free") {
+		upkeep_ = upkeep_loyal();
+	}
+	else if(upkeep == "full" || upkeep.empty() ) {
+		upkeep_ = upkeep_full();
+	}
+	else {
+		WRN_UT << "Fund invalid upkeep=\"" << upkeep <<  "\" in a unit\n";
+		upkeep_ = upkeep_full();
+	}
+}
+void unit::write_upkeep(config::attribute_value& upkeep) const
+{
+	if(boost::get<upkeep_full>(&upkeep_) != NULL) {
+		upkeep = "full";
+	}
+	else if(boost::get<upkeep_loyal>(&upkeep_) != NULL) {
+		upkeep = "loyal";
+	}
+	else {
+		upkeep = boost::get<int>(upkeep_);
+	}
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

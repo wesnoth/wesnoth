@@ -43,7 +43,18 @@ class vconfig;
 
 /// The things contained within a unit_ability_list.
 typedef std::pair<const config *, map_location> unit_ability;
-
+namespace unit_detail {
+	template<typename T> const T& get_or_default(const boost::scoped_ptr<T>& v)
+	{
+		if(v) {
+			return *v;
+		}
+		else {
+			static const T def;
+			return def;
+		}
+	}
+}
 class unit_ability_list
 {
 public:
@@ -154,7 +165,7 @@ public:
 	std::string small_profile() const;
 	std::string big_profile() const;
 	/** Information about the unit -- a detailed description of it */
-	t_string unit_description() const { return cfg_["description"]; }
+	t_string unit_description() const { return description_; }
 
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }
@@ -281,7 +292,12 @@ public:
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
-	const config::attribute_value& upkeep_raw() const { return cfg_["upkeep"]; }
+	
+	struct upkeep_full {};
+	struct upkeep_loyal {};
+	typedef boost::variant<upkeep_full, upkeep_loyal, int> t_upkeep;
+
+	t_upkeep upkeep_raw() const { return upkeep_; }
 	bool loyal() const;
 
 	void set_hidden(bool state) const;
@@ -333,14 +349,18 @@ public:
 	/** The default image to use for animation frames with no defined image. */
 	std::string default_anim_image() const;
 
-	std::string image_halo() const { return cfg_["halo"]; }
+	std::string image_halo() const { return unit_detail::get_or_default(halo_); }
 
-	std::string image_ellipse() const { return cfg_["ellipse"]; }
+	std::string image_ellipse() const { return unit_detail::get_or_default(ellipse_); }
+
+	std::string usage() const { return unit_detail::get_or_default(usage_); }
+
+	void set_image_halo(const std::string& halo);
+	void set_image_ellipse(const std::string& ellipse) { ellipse_.reset(new std::string(ellipse)); }
+	void set_usage(const std::string& usage) { usage_.reset(new std::string(usage)); }
 
 	config &variables() { return variables_; }
 	const config &variables() const { return variables_; }
-
-	std::string usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	void set_alignment(unit_type::ALIGNMENT alignment) { alignment_ = alignment; }
 	/// Never returns NULL, but may point to the null race.
@@ -502,6 +522,16 @@ private:
 	config modifications_;
 	config abilities_;
 	t_advancements advancements_;
+	t_string description_;
+	boost::scoped_ptr<std::string> usage_;
+	boost::scoped_ptr<std::string> halo_;
+	boost::scoped_ptr<std::string> ellipse_;
+	bool random_traits_;
+	bool generate_name_;
+	t_upkeep upkeep_;
+	//TODO add a to initializer list.
+	void parse_upkeep(const config::attribute_value& upkeep);
+	void write_upkeep(config::attribute_value& upkeep) const;
 	/**
 	 * Hold the visibility status cache for a unit, when not uncovered.
 	 * This is mutable since it is a cache.

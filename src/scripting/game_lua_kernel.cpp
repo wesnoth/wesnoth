@@ -296,12 +296,15 @@ static int impl_unit_get(lua_State *L)
 	}
 
 	if (strcmp(m, "upkeep") == 0) {
-		const config::attribute_value& upkeep = u.upkeep_raw();
-		if(upkeep == "full"){
+		unit::t_upkeep upkeep = u.upkeep_raw();
+		if(boost::get<unit::upkeep_full>(&upkeep) != NULL){
 			lua_pushstring(L, "full");
 		}
+		if(boost::get<unit::upkeep_loyal>(&upkeep) != NULL){
+			lua_pushstring(L, "loyal");
+		}
 		else {
-			lua_push(L, upkeep.to_int());
+			lua_push(L, boost::get<int>(upkeep));
 		}
 		return 1;
 	}
