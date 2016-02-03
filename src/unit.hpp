@@ -20,6 +20,7 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/variant.hpp>
 
 #include "unit_types.hpp"
 #include "unit_ptr.hpp"
@@ -128,10 +129,7 @@ public:
 
 
 	/** Advances this unit to another type */
-	void advance_to(const unit_type &t, bool use_traits = false)
-	{
-		advance_to(cfg_, t, use_traits);
-	}
+	void advance_to(const unit_type &t, bool use_traits = false);
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
 	const std::vector<std::string> advances_to_translated() const;
 	void set_advances_to(const std::vector<std::string>& advances_to);
@@ -413,8 +411,6 @@ public:
 protected:
 	mutable long ref_count_; //used by intrusive_ptr
 private:
-	void advance_to(const config &old_cfg, const unit_type &t,
-		bool use_traits);
 	/*
 	 * cfg: an ability WML structure
 	 */
@@ -434,7 +430,6 @@ private:
 
 	void set_underlying_id(n_unit::id_manager& id_manager);
 
-	config cfg_;
 private:
 	map_location loc_;
 
@@ -529,6 +524,8 @@ private:
 	bool random_traits_;
 	bool generate_name_;
 	t_upkeep upkeep_;
+	std::string profile_;
+	std::string small_profile_;
 	//TODO add a to initializer list.
 	void parse_upkeep(const config::attribute_value& upkeep);
 	void write_upkeep(config::attribute_value& upkeep) const;

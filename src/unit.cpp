@@ -190,7 +190,6 @@ namespace {
 // Copy constructor
 unit::unit(const unit& o)
 	: ref_count_(0)
-	, cfg_(o.cfg_)
 	, loc_(o.loc_)
 	, advances_to_(o.advances_to_)
 	, type_(o.type_)
@@ -277,7 +276,6 @@ struct ptr_vector_pushback
 
 unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_manager* id_manager)
 	: ref_count_(0)
-	, cfg_()
 	, loc_(cfg["x"] - 1, cfg["y"] - 1)
 	, advances_to_()
 	, type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"]))
@@ -398,7 +396,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	}
 	generate_name_ = cfg["generate_name"].to_bool(true);
 	// Apply the unit type's data to this unit.
-	advance_to(cfg, *type_, use_traits);
+	advance_to(*type_, use_traits);
 
 	if (const config::attribute_value *v = cfg.get("race")) {
 		if (const unit_race *r = unit_types.find_race(*v)) {
@@ -441,8 +439,8 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	if (const config::attribute_value *v = cfg.get("profile")) {
 		std::string big = *v, small = cfg["small_profile"];
 		adjust_profile(small, big, "");
-		cfg_["profile"] = big;
-		cfg_["small_profile"] = small;
+		profile_ = big;
+		small_profile_ = small;
 	}
 	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));
 	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
@@ -505,11 +503,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		set_state(STATE_GUARDIAN, true);
 	}
 
-	// Remove animations from private cfg, they're not needed there now
-	BOOST_FOREACH(const std::string& tag_name, unit_animation::all_tag_names()) {
-		cfg_.clear_children(tag_name);
-	}
-
 	if (const config::attribute_value *v = cfg.get("hitpoints")) {
 		hit_points_ = *v;
 	} else {
@@ -562,17 +555,10 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		"canrecruit", "extra_recruit", "x", "y", "placement",
 		"parent_type", "description", "usage", "halo", "ellipse",
 		"random_taits", "upkeep", "random_traits", "generate_name",
+		"profile", "small_profile",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name", "image", "image_icon" };
 	BOOST_FOREACH(const char *attr, internalized_attrs) {
-		input_cfg.remove_attribute(attr);
-		cfg_.remove_attribute(attr);
-	}
-	static char const *raw_attrs[] = {
-		"profile", "small_profile",
-
-	};
-	BOOST_FOREACH(const char *attr, raw_attrs) {
 		input_cfg.remove_attribute(attr);
 	}
 
@@ -596,10 +582,8 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit::unit(const unit_type &u_type, int side, bool real_unit,
-	unit_race::GENDER gender)
+unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER gender)
 	: ref_count_(0)
-	, cfg_()
 	, loc_()
 	, advances_to_()
 	, type_(&u_type)
@@ -711,7 +695,6 @@ void unit::swap(unit & o)
 	using std::swap;
 
 	// Don't swap reference count, or it will be incorrect...
-	swap(cfg_, o.cfg_);
 	swap(loc_, o.loc_);
 	swap(advances_to_, o.advances_to_);
 	swap(type_, o.type_);
@@ -883,7 +866,7 @@ std::vector<std::string> unit::get_traits_list() const
  * Current hit point total is left unchanged unless it would violate max HP.
  * Assumes gender_ and variation_ are set to their correct values.
  */
-void unit::advance_to(const config &old_cfg, const unit_type &u_type,
+void unit::advance_to(const unit_type &u_type,
 	bool use_traits)
 {
 	// For reference, the type before this advancement.
@@ -900,12 +883,8 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	// Clear modification-related caches
 	modification_descriptions_.clear();
 
-	// Clear the stored config and replace it with the one from the unit type,
-	// except for a few attributes.
-	config new_cfg;
-
-	// Inherit from the new unit type.
-	new_cfg.merge_attributes(new_type.get_cfg_for_units());
+	// build unit type ready to create units. Not sure if needed.
+	new_type.get_cfg_for_units();
 
 	if(!new_type.usage().empty()) {
 		 set_usage(new_type.usage());
@@ -919,20 +898,12 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 		advancements_.push_back(new config(advancement));
 	}
  	// If unit has specific profile, remember it and keep it after advancing
-	std::string profile = old_cfg["profile"].str();
-	if ( !profile.empty()  &&  profile != old_type.big_profile() ) {
-		new_cfg["profile"] = profile;
-	} else {
-		new_cfg["profile"] = new_type.big_profile();
+	if(small_profile_.empty() || small_profile_ == old_type.small_profile()) {
+		small_profile_ = new_type.small_profile();
 	}
-	profile = old_cfg["small_profile"].str();
-	if ( !profile.empty()  &&  profile != old_type.small_profile() ) {
-		new_cfg["small_profile"] = profile;
-	} else {
-		new_cfg["small_profile"] = new_type.small_profile();
+	if(profile_.empty() || profile_ == old_type.big_profile()) {
+		profile_ = new_type.big_profile();
 	}
-
-	cfg_.swap(new_cfg);
 	// NOTE: There should be no need to access old_cfg (or new_cfg) after this
 	//       line. Particularly since the swap might have affected old_cfg.
 
@@ -1005,18 +976,16 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 std::string unit::big_profile() const
 {
-	const std::string &prof = cfg_["profile"];
-	if (!prof.empty() && prof != "unit_image") {
-		return prof;
+	if (!profile_.empty() && profile_ != "unit_image") {
+		return profile_;
 	}
 	return absolute_image();
 }
 
 std::string unit::small_profile() const
 {
-	const std::string &prof = cfg_["small_profile"];
-	if (!prof.empty() && prof != "unit_image") {
-		return prof;
+	if (!small_profile_.empty() && small_profile_ != "unit_image") {
+		return small_profile_;
 	}
 	return absolute_image();
 }
@@ -1374,9 +1343,9 @@ void unit::remove_ability_by_id(const std::string &ability)
 
 void unit::write(config& cfg) const
 {
-	cfg.append(cfg_);
 	movement_type_.write(cfg);
-
+	cfg["small_profile"] = small_profile_;
+	cfg["profile"] = profile_;
 	if ( description_ != type().unit_description() ) {
 		cfg["description"] = description_;
 	}
@@ -1751,8 +1720,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					if (const config::attribute_value *v = effect.get("portrait")) {
 						std::string big = *v, small = effect["small_portrait"];
 						adjust_profile(small, big, "");
-						cfg_["profile"] = big;
-						cfg_["small_profile"] = small;
+						
+						profile_ = big;
+						small_profile_ = small;
 					}
 					if (const config::attribute_value *v = effect.get("description"))
 						description_ = *v;
@@ -2036,10 +2006,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 					if (effect.has_child("advancement")) {
 						if (replace) {
-							cfg_.clear_children("advancement");
+							advancements_.clear();
 						}
 						config temp = effect;
-						cfg_.splice_children(temp, "advancement");
+						//cfg_.splice_children(temp, "advancement");
 					}
 				} else if (apply_to == "remove_advancement") {
 					const std::string &types = effect["types"];
@@ -2065,7 +2035,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						remove_index++;
 					}
 					for (size_t i = remove_indices.size(); i > 0; i--) {
-						cfg_.remove_child("advancement", i - 1);
+						//cfg_.remove_child("advancement", i - 1);
 					}
 				} else if (apply_to == "alignment") {
 					unit_type::ALIGNMENT new_align;
