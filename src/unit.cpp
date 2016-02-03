@@ -563,14 +563,15 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		"parent_type", "description", "usage", "halo", "ellipse",
 		"random_taits", "upkeep", "random_traits", "generate_name",
 		// Useless attributes created when saving units to WML:
-		"flag_rgb", "language_name" };
+		"flag_rgb", "language_name", "image", "image_icon" };
 	BOOST_FOREACH(const char *attr, internalized_attrs) {
 		input_cfg.remove_attribute(attr);
 		cfg_.remove_attribute(attr);
 	}
 	static char const *raw_attrs[] = {
 		"profile", "small_profile",
-		"image", "image_icon"};
+
+	};
 	BOOST_FOREACH(const char *attr, raw_attrs) {
 		input_cfg.remove_attribute(attr);
 	}
@@ -902,12 +903,6 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	// Clear the stored config and replace it with the one from the unit type,
 	// except for a few attributes.
 	config new_cfg;
-	static char const *persistent_attrs[] = { "image", "image_icon"};
-	BOOST_FOREACH(const char *attr, persistent_attrs) {
-		if (const config::attribute_value *v = old_cfg.get(attr)) {
-			new_cfg[attr] = *v;
-		}
-	}
 
 	// Inherit from the new unit type.
 	new_cfg.merge_attributes(new_type.get_cfg_for_units());
@@ -1397,7 +1392,9 @@ void unit::write(config& cfg) const
 	write_upkeep(cfg["upkeep"]);
 	cfg["hitpoints"] = hit_points_;
 	cfg["max_hitpoints"] = max_hit_points_;
-
+	
+	cfg["image_icon"] == type().icon();
+	cfg["image"] == type().image();
 	cfg["random_taits"] = random_traits_;
 	cfg["generate_name"] = generate_name_;
 	cfg["experience"] = experience_;
@@ -2250,11 +2247,12 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 }
 
 std::string unit::absolute_image() const {
-	return cfg_["image_icon"].empty() ? cfg_["image"] : cfg_["image_icon"];
+	
+	return type().icon().empty() ? type().image() : type().icon();
 }
 
 std::string unit::default_anim_image() const {
-	return cfg_["image"].empty() ? cfg_["image_icon"] : cfg_["image"];
+	return type().image().empty() ? type().icon() : type().image();
 }
 
 void unit::apply_modifications()
