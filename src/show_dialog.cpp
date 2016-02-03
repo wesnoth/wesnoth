@@ -153,12 +153,22 @@ void dialog_frame::set_dirty(bool dirty) {
 void dialog_frame::handle_window_event(const SDL_Event& event) {
 
 	if (event.type == SDL_WINDOWEVENT) {
-		dirty_ = true;
+		switch (event.window.event) {
+		case SDL_WINDOWEVENT_RESIZED:
+		case SDL_WINDOWEVENT_RESTORED:
+		case SDL_WINDOWEVENT_SHOWN:
+		case SDL_WINDOWEVENT_EXPOSED:
+			set_dirty();
+		}
 	}
 }
 #endif
 
 void dialog_frame::handle_event(const SDL_Event& event) {
+
+	if (event.type == DRAW_ALL_EVENT) {
+		set_dirty();
+	}
 
 	if (event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT) {
 		draw();

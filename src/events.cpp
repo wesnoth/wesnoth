@@ -332,7 +332,7 @@ bool resize_comparer(SDL_Event a, SDL_Event b) {
 }
 
 bool remove_on_resize(const SDL_Event &a) {
-	if (a.type == DRAW_EVENT) {
+	if (a.type == DRAW_EVENT || a.type == DRAW_ALL_EVENT) {
 		return true;
 	}
 	if (a.type == SHOW_HELPTIP_EVENT) {
@@ -520,8 +520,8 @@ void pump()
 				/* iterate backwards as the most recent things will be at the top */
 				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
 					const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
-					for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-						event_handlers[i1]->handle_event(event);
+					for( std::vector<sdl_handler*>::const_iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); i1++) {
+						(*i1)->handle_event(event);
 						//event_handlers[i1]->draw();
 					}
 				}
