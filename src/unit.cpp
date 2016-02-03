@@ -971,10 +971,8 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	// In case the unit carries EventWML, apply it now
 	if (resources::game_events) {
-		resources::game_events->add_events(cfg_.child_range("event"), new_type.id());
+		resources::game_events->add_events(new_type.events(), new_type.id());
 	}
-
-	cfg_.clear_children("event");
 }
 
 std::string unit::big_profile() const

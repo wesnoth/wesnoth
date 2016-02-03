@@ -177,6 +177,9 @@ public:
 	config::const_child_itors advancements() const
 	{ return cfg_.child_range("advancement"); }
 
+	config::const_child_itors events() const
+	{ return cfg_.child_range("event"); }
+
 	bool has_random_traits() const;
 
 	/// The returned vector will not be empty, provided this has been built
