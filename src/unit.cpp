@@ -123,7 +123,7 @@ namespace {
 	struct t_internalized_attrs_sorter {
 		t_internalized_attrs_sorter()
 		{
-			std::sort(boost::begin(internalized_attrs), boost::begin(internalized_attrs));
+			std::sort(boost::begin(internalized_attrs), boost::end(internalized_attrs));
 		}
 	} internalized_attrs_sorter;
 
