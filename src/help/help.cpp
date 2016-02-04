@@ -170,7 +170,7 @@ void show_help(CVideo& video, const section &toplevel_sec,
 	CVideo& screen = video;
 	const surface& scr = screen.getSurface();
 
-	const int width  = std::min<int>(font::relative_size(1250), scr->w - font::relative_size(20));
+	const int width  = std::min<int>(font::relative_size(1200), scr->w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(850), scr->h - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
