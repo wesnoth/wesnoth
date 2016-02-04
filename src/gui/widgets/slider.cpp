@@ -231,7 +231,7 @@ int tslider::on_bar(const tpoint& coordinate) const
 
 bool tslider::in_orthogonal_range(const tpoint& coordinate) const
 {
-	return static_cast<size_t>(coordinate.x) < get_width();
+	return static_cast<size_t>(coordinate.x) < (get_width() - offset_after());
 }
 
 void tslider::update_canvas()
