@@ -88,7 +88,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	: resolutions_(video.get_available_resolutions(true))
 	, adv_preferences_cfg_()
 	, friend_names_()
-	, last_selected_node_(NULL)
+	, last_selected_item_(0)
 	, accl_speeds_()
 {
 	BOOST_FOREACH(const config& adv, game_cfg.child_range("advanced_preference")) {
@@ -360,6 +360,14 @@ void tpreferences::remove_friend_list_entry(tlistbox& friends_list,
 	setup_friends_list(window);
 }
 
+// Helper function to get the main grid in each row of the advanced section
+// lisbox, which contains the value and setter widgets.
+static tgrid* get_advanced_row_grid(tlistbox& list, const int selected_row)
+{
+	return dynamic_cast<tgrid*>(
+		list.get_row_grid(selected_row)->find("pref_main_grid", false));
+}
+
 /**
  * Sets up states and callbacks for each of the widgets
  */
@@ -622,10 +630,9 @@ void tpreferences::initialize_members(twindow& window)
 	// ADVANCED PANEL
 	//
 
-	ttree_view& advanced = find_widget<ttree_view>(&window, "advanced_prefs", false);
+	tlistbox& advanced = find_widget<tlistbox>(&window, "advanced_prefs", false);
 
-	typedef std::map<std::string, string_map> node_content;
-	node_content tree_group_item;
+	std::map<std::string, string_map> row_data;
 
 	BOOST_FOREACH(const config& option, adv_preferences_cfg_)
 	{
@@ -634,25 +641,25 @@ void tpreferences::initialize_members(twindow& window)
 			option["type"].str());
 		const std::string& pref_name = option["field"].str();
 
-		tree_group_item["tree_view_node_label"]["label"] = option["name"];
+		row_data["pref_name"]["label"] = option["name"];
+		advanced.add_row(row_data);
 
-		ttree_view_node& pref_node = advanced.add_node("pref_main", tree_group_item);
-		ttree_view_node& detail_node = pref_node.add_child("pref_details", node_content());
+		const int this_row = advanced.get_item_count() - 1;
 
-		// Get the main grids from each node
-		tgrid* main_grid = dynamic_cast<tgrid*>(pref_node.find("pref_main_grid", true));
-		VALIDATE(main_grid, missing_widget("pref_main_grid"));
-
-		tgrid* details_grid = dynamic_cast<tgrid*>(detail_node.find("pref_setter_grid", true));
-		VALIDATE(details_grid, missing_widget("pref_setter_grid"));
+		// Get the main grid from each row
+		tgrid* main_grid = get_advanced_row_grid(advanced, this_row);
+		assert(main_grid);
 
 		// The toggle widget for toggle-type options (hidden for other types)
 		ttoggle_button& toggle_box = find_widget<ttoggle_button>(main_grid, "value_toggle", false);
 		toggle_box.set_visible(tcontrol::tvisible::hidden);
 
+		twidget& setter_main = find_widget<twidget>(main_grid, "setter", false);
+		setter_main.set_visible(tcontrol::tvisible::invisible);
+
 		switch (pref_type.v) {
 			case ADVANCED_PREF_TYPE::TOGGLE: {
-				pref_node.clear();
+				//main_grid->remove_child("setter");
 
 				toggle_box.set_visible(tcontrol::tvisible::visible);
 
@@ -673,23 +680,23 @@ void tpreferences::initialize_members(twindow& window)
 			case ADVANCED_PREF_TYPE::SLIDER: {
 				tslider* setter_widget = new tslider;
 				setter_widget->set_definition("minimal");
-				setter_widget->set_id("control_slider");
+				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
 				setter_widget->set_maximum_value(option["max"].to_int());
 				setter_widget->set_minimum_value(option["min"].to_int());
 				setter_widget->set_step_size(
 					option["step"].empty() ? 1 : option["step"].to_int());
 
-				delete details_grid->swap_child("setter", setter_widget, true);
+				delete main_grid->swap_child("setter", setter_widget, true);
 
 				// Needed to disambiguate overloaded function
 				typedef void (*setter) (const std::string &, int);
 				setter set_ptr = &preferences::set;
 
-				setup_single_slider("control_slider",
+				setup_single_slider("setter",
 					lexical_cast_default<int>(get(pref_name), option["default"].to_int()),
 					boost::bind(set_ptr, pref_name, _1),
-					*details_grid);
+					*main_grid);
 
 				bind_status_label(*setter_widget, "value", *main_grid);
 
@@ -711,18 +718,18 @@ void tpreferences::initialize_members(twindow& window)
 
 				tcombobox* setter_widget = new tcombobox;
 				setter_widget->set_definition("default");
-				setter_widget->set_id("control_combobox");
+				setter_widget->set_id("setter");
 
-				delete details_grid->swap_child("setter", setter_widget, true);
+				delete main_grid->swap_child("setter", setter_widget, true);
 
 				// Needed to disambiguate overloaded function
 				typedef void (*setter) (const std::string &, const std::string &);
 				setter set_ptr = &preferences::set;
 
-				setup_combobox("control_combobox",
+				setup_combobox("setter",
 					combo_options, selected,
 					boost::bind(set_ptr, pref_name, _1),
-					*details_grid);
+					*main_grid);
 
 				bind_status_label(*setter_widget, "value", *main_grid);
 
@@ -730,44 +737,68 @@ void tpreferences::initialize_members(twindow& window)
 			}
 
 			case ADVANCED_PREF_TYPE::SPECIAL: {
-				pref_node.clear();
+				//main_grid->remove_child("setter");
 
 				timage* value_widget = new timage;
 				value_widget->set_definition("default");
-				value_widget->set_label("icons/arrows/short_arrow_right_25.png");
+				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 
 				delete main_grid->swap_child("value", value_widget, true);
-
-				if (pref_name == "advanced_graphic_options") {
-					pref_node.set_callback_state_change(2,
-						boost::bind(show_advanced_graphics_dialog,
-						boost::ref(window.video())));
-				}
-
-				if (pref_name == "orb_color") {
-					// TODO
-				}
-
-				// Add more options here as needed
 
 				break;
 			}
 		}
 	}
 
-	connect_signal_mouse_left_click(advanced, boost::bind(
-		&tpreferences::on_node_select, this, boost::ref(advanced)));
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(advanced, boost::bind(
+		&tpreferences::on_advanced_prefs_list_select, 
+		this, 
+		boost::ref(advanced),
+		boost::ref(window)));
+#else
+	advanced.set_callback_value_change(make_dialog_callback(
+		boost::bind(
+		&tpreferences::on_advanced_prefs_list_select, 
+		this, 
+		boost::ref(advanced),
+		boost::ref(window))));
+#endif
 
-	last_selected_node_ = advanced.selected_item();
+	advanced.select_row(0);
 }
 
-void tpreferences::on_node_select(ttree_view& tree)
+void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window)
 {
-	ttree_view_node* last_item = tree.selected_item();
+	const int selected_row = list.get_selected_row();
 
-	if(last_selected_node_ != last_item) {
-		last_selected_node_->fold();
-		last_selected_node_ = last_item;
+	const ADVANCED_PREF_TYPE& selected_type = ADVANCED_PREF_TYPE::string_to_enum(
+		adv_preferences_cfg_[selected_row]["type"].str());
+
+	const std::string& selected_field = adv_preferences_cfg_[selected_row]["field"].str();
+
+	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
+		if (selected_field == "advanced_graphic_options") {
+			show_advanced_graphics_dialog(window.video());
+		}
+
+		if (selected_field == "orb_color") {
+			// TODO
+		}
+
+		// Add more options here as needed
+	}
+
+	if(selected_type != ADVANCED_PREF_TYPE::TOGGLE && selected_type != ADVANCED_PREF_TYPE::SPECIAL) {
+		find_widget<twidget>(get_advanced_row_grid(list, selected_row), "setter", false)
+			.set_visible(tcontrol::tvisible::visible);
+	}
+
+	if(last_selected_item_ != selected_row) {
+		find_widget<twidget>(get_advanced_row_grid(list, last_selected_item_), "setter", false)
+			.set_visible(tcontrol::tvisible::invisible);
+
+		last_selected_item_ = selected_row;
 	}
 }
 

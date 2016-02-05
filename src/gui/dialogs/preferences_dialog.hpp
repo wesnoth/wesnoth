@@ -32,8 +32,6 @@ class tcontrol;
 class tslider;
 class ttext_box;
 class ttoggle_button;
-class ttree_view;
-class ttree_view_node;
 
 class tpreferences : public tdialog
 {
@@ -75,7 +73,7 @@ private:
 	/** Callback for selection changes */
 	void on_page_select(twindow& window);
 	void on_tab_select(twindow& window, const std::string& widget_id);
-	void on_node_select(ttree_view& tree);
+	void on_advanced_prefs_list_select(tlistbox& tree, twindow& window);
 
 	/** Special callback functions */
 	void handle_res_select(twindow& window);
@@ -190,7 +188,7 @@ private:
 	std::vector<config> adv_preferences_cfg_;
 	std::vector<std::string> friend_names_;
 
-	ttree_view_node* last_selected_node_;
+	int last_selected_item_;
 
 	std::vector<t_string> accl_speeds_;
 };
