@@ -443,7 +443,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		resources::game_events->add_events(events_.child_range("event"));
 	}
 
-	random_traits_ = cfg["random_taits"].to_bool(true);
+	random_traits_ = cfg["random_traits"].to_bool(true);
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
 
@@ -1395,7 +1395,7 @@ void unit::write(config& cfg) const
 	
 	cfg["image_icon"] == type().icon();
 	cfg["image"] == type().image();
-	cfg["random_taits"] = random_traits_;
+	cfg["random_traits"] = random_traits_;
 	cfg["generate_name"] = generate_name_;
 	cfg["experience"] = experience_;
 	cfg["max_experience"] = max_experience_;
