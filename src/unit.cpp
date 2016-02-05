@@ -313,6 +313,8 @@ unit::unit(const unit& o)
 	, random_traits_(o.random_traits_)
 	, generate_name_(o.generate_name_)
 	, upkeep_(o.upkeep_)
+	, profile_(o.profile_)
+	, small_profile_(o.small_profile_)
 	, invisibility_cache_()
 {
 }
