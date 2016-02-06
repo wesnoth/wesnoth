@@ -1459,7 +1459,7 @@ void unit::write(config& cfg) const
 	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
 	cfg["level"] = level_;
-	cfg["alignment"] = lexical_cast<std::string> (alignment_);
+	cfg["alignment"] = alignment_.to_string();
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
 	cfg["alpha"] = str_cast(alpha_);
