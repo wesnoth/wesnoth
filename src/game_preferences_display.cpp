@@ -21,12 +21,8 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
-#include "gui/dialogs/advanced_graphics_options.hpp"
-#include "gui/dialogs/game_cache_options.hpp"
-#include "gui/dialogs/mp_alerts_options.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/settings.hpp"
 #include "lobby_preferences.hpp"
 #include "preferences_display.hpp"
 #include "formula_string_utils.hpp"
@@ -35,8 +31,7 @@ namespace preferences {
 
 void show_preferences_dialog(CVideo& video, const config& game_cfg)
 {
-	gui2::tpreferences dlg(video, game_cfg);
-	dlg.show(video);
+	gui2::tpreferences::display(video, game_cfg);
 }
 
 bool show_theme_dialog(CVideo& video)
@@ -70,16 +65,6 @@ bool show_theme_dialog(CVideo& video)
 	}
 
 	return false;
-}
-
-void show_mp_alerts_dialog(CVideo& video)
-{
-	gui2::tmp_alerts_options::display(video);
-}
-
-void show_advanced_graphics_dialog(CVideo& video)
-{
-	gui2::tadvanced_graphics_options::display(video);
 }
 
 std::string show_wesnothd_server_search(CVideo& video)

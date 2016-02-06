@@ -21,15 +21,16 @@
 #include "preferences_display.hpp"
 #include "lobby_preferences.hpp"
 #include "gettext.hpp"
-#include "formatter.hpp"
 #include "video.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
+
+// Sub-dialog includes
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/mp_alerts_options.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
+
+#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/combobox.hpp"
@@ -47,8 +48,6 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/tree_view.hpp"
-#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 #include "util.hpp"
 #include "utils/foreach.tpp"
@@ -779,7 +778,7 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
 		if (selected_field == "advanced_graphic_options") {
-			show_advanced_graphics_dialog(window.video());
+			gui2::tadvanced_graphics_options::display(window.video());
 		}
 
 		if (selected_field == "orb_color") {
