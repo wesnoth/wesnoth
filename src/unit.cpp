@@ -1393,8 +1393,8 @@ void unit::write(config& cfg) const
 	cfg["hitpoints"] = hit_points_;
 	cfg["max_hitpoints"] = max_hit_points_;
 	
-	cfg["image_icon"] == type().icon();
-	cfg["image"] == type().image();
+	cfg["image_icon"] = type().icon();
+	cfg["image"] = type().image();
 	cfg["random_traits"] = random_traits_;
 	cfg["generate_name"] = generate_name_;
 	cfg["experience"] = experience_;
