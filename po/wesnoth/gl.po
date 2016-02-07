@@ -8,13 +8,13 @@
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007-2009.
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013, 2014, 2015.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-01-16 20:58-0300\n"
-"PO-Revision-Date: 2015-06-29 09:59+0100\n"
+"PO-Revision-Date: 2016-02-06 20:14+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -236,25 +236,25 @@ msgstr "Substituír a sala de espera clásica cunha nova interface experimental.
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:191
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "Límite de ficheiros recentes do editor"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
+"O número máximo de elementos para mostrar no menú de ficheiros recentes do "
+"editor."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:202
 msgid "Show color cursors"
-msgstr "Empregar punteiros de cores."
+msgstr "Usar punteiros de cores."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:203
-#, fuzzy
-#| msgid "Show color cursors"
 msgid "Use colored mouse cursors"
-msgstr "Empregar punteiros de cores."
+msgstr "Usar punteiros de cores."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:211
@@ -3487,15 +3487,13 @@ msgstr "Punto de vista"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:499
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Play"
-msgstr "Continuar o movemento"
+msgstr "Continuar xogando"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:500
 msgid "Exit the replay mode and continue playing normally."
-msgstr ""
+msgstr "Saír do modo de repetición e continuar xogando a partida."
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:512 data/themes/_initial.cfg:652
@@ -4864,10 +4862,14 @@ msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"A versión remota deste complemento é igual ou superior á versión que están "
+"enviando. Está seguro de que quere continuar?"
 
 #: src/addon/manager_ui.cpp:402
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"A ruta da icona é incorrecta. Asegúrese de que a ruta apunta a unha imaxe "
+"válida."
 
 #: src/addon/manager_ui.cpp:407
 msgid "Terms"
@@ -7303,7 +7305,7 @@ msgstr "(só para rede)"
 
 #: src/menu_events.cpp:1917
 msgid "(not during other events)"
-msgstr ""
+msgstr "(non durante outros acontecementos)"
 
 #: src/menu_events.cpp:1942
 msgid "Refresh gui."
@@ -7754,10 +7756,8 @@ msgstr ""
 
 # Situación do defensor cando o atacante utiliza un tipo de ataque do que non dispón o defensor.
 #: src/mouse_events.cpp:970
-#, fuzzy
-#| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
-msgstr "Non é posíbel contraatacar."
+msgstr "Esta unidade non ten armas que poida usar."
 
 #: src/mp_ui_alerts.cpp:69
 msgid "A player has joined"
@@ -8161,7 +8161,7 @@ msgstr "Non hai partidas gardadas"
 
 #: src/savegame.cpp:103
 msgid "There are no savefiles to load"
-msgstr ""
+msgstr "Non hai partidas para cargar."
 
 #: src/savegame.cpp:219 src/savegame.cpp:223
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
@@ -8251,7 +8251,7 @@ msgstr "Rolda"
 #: src/scripting/game_lua_kernel.cpp:2976
 #: src/scripting/game_lua_kernel.cpp:3011
 msgid "input"
-msgstr ""
+msgstr "entrada"
 
 #: src/serialization/parser.cpp:133
 msgid "Unexpected characters at line start"
@@ -8634,7 +8634,7 @@ msgstr "pm"
 
 #: src/synced_user_choice.cpp:331
 msgid "waiting for $desc from side(s)$sides"
-msgstr ""
+msgstr "agardando por $desc dos bandos$sides"
 
 #: src/terrain.cpp:184
 msgid "Allied village"
@@ -8678,52 +8678,40 @@ msgid "moves"
 msgstr "movementos"
 
 #: src/unit.cpp:1816
-#, fuzzy
-#| msgid "vision: "
 msgid "vision"
-msgstr "visión: "
+msgstr "visión"
 
 #: src/unit.cpp:1830
-#, fuzzy
-#| msgid "Jamming: "
 msgid "jamming"
-msgstr "Interferencia: "
+msgstr "interferencia"
 
 #: src/unit.cpp:1867 src/unit.cpp:2111
 msgid "XP to advance"
 msgstr "Experiencia para avanzar"
 
 #: src/unit.cpp:2028
-#, fuzzy
-#| msgid " per turn"
 msgid "attack per turn"
-msgstr "por rolda"
+msgstr "ataque por rolda"
 
 #: src/unit.cpp:2029
-#, fuzzy
-#| msgid " per turn"
 msgid "attacks per turn"
-msgstr "por rolda"
+msgstr "ataques por rolda"
 
 #: src/unit.cpp:2054
 msgid "cost to recall"
-msgstr ""
+msgstr "custo para reincorporar"
 
 #: src/unit.cpp:2092
 msgid " move"
 msgstr " movemento"
 
 #: src/unit.cpp:2098
-#, fuzzy
-#| msgid "vision: "
 msgid " vision"
-msgstr "visión: "
+msgstr " visión"
 
 #: src/unit.cpp:2104
-#, fuzzy
-#| msgid "Jamming: "
 msgid " jamming"
-msgstr "Interferencia: "
+msgstr " interferencia"
 
 #: src/unit.cpp:2119
 msgid "$effect_description per level"
@@ -8749,10 +8737,8 @@ msgid "% accuracy"
 msgstr "% de precisión"
 
 #: src/unit_attack_type.cpp:304
-#, fuzzy
-#| msgid "% parry"
 msgid " parry"
-msgstr "% de defensa"
+msgstr " de defensa"
 
 #: src/unit_attack_type.cpp:315
 #, no-c-format
@@ -8760,12 +8746,10 @@ msgid "% parry"
 msgstr "% de defensa"
 
 #: src/unit_attack_type.cpp:324 src/unit_attack_type.cpp:334
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "movement point"
 msgid_plural "movement points"
-msgstr[0] "Custo de movemento"
-msgstr[1] "Custo de movemento"
+msgstr[0] "punto de movemento"
+msgstr[1] "puntos de movemento"
 
 #: src/unit_types.cpp:853
 msgid "female^lawful"

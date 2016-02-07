@@ -9,13 +9,13 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2010, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014, 2015.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-01-16 20:58-0300\n"
-"PO-Revision-Date: 2015-06-29 10:05+0100\n"
+"PO-Revision-Date: 2016-02-06 20:22+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -2229,26 +2229,20 @@ msgstr "Versión"
 #. [toggle_button]: id=sort_author
 #: data/gui-2/default/window/addon_list.cfg:227
 #: data/gui/default/window/addon_list.cfg:227
-#, fuzzy
-#| msgid "Author:"
 msgid "Author"
-msgstr "Autor:"
+msgstr "Autor"
 
 #. [toggle_button]: id=sort_downloads
 #: data/gui-2/default/window/addon_list.cfg:244
 #: data/gui/default/window/addon_list.cfg:244
-#, fuzzy
-#| msgid "Downloads:"
 msgid "Downloads"
-msgstr "Descargas:"
+msgstr "Descargas"
 
 #. [toggle_button]: id=sort_size
 #: data/gui-2/default/window/addon_list.cfg:261
 #: data/gui/default/window/addon_list.cfg:261
-#, fuzzy
-#| msgid "Size:"
 msgid "Size"
-msgstr "Tamaño:"
+msgstr "Tamaño"
 
 #. [scroll_label]
 #: data/gui-2/default/window/addon_uninstall_list.cfg:70
@@ -2268,8 +2262,6 @@ msgid "Remove"
 msgstr "Eliminar"
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:42
-#, fuzzy
-#| msgid "Bilinear intepolation scaling (legacy wesnoth option)"
 msgid "Bilinear interpolation scaling (legacy wesnoth option)"
 msgstr "Axuste de tamaño de interpolación bilineal (opción antiga)"
 
@@ -2308,8 +2300,6 @@ msgid "xBRZ followed by Nearest Neighbor (recommended)"
 msgstr "xBRZ seguido do axuste do veciño máis recomendado (recomendado)"
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:46
-#, fuzzy
-#| msgid "Bilinear intepolation scaling (new implementation)"
 msgid "Bilinear interpolation scaling (new implementation)"
 msgstr "Axuste de tamaño de interpolación bilineal (método novo)"
 
@@ -2845,21 +2835,19 @@ msgstr "Só co equipo"
 #: data/gui-2/default/window/editor_edit_label.cfg:107
 #: data/gui/default/window/editor_edit_label.cfg:107
 msgid "Category:"
-msgstr ""
+msgstr "Categoría:"
 
 #. [label]
 #: data/gui-2/default/window/editor_edit_label.cfg:154
 #: data/gui/default/window/editor_edit_label.cfg:154
 msgid "Properties"
-msgstr ""
+msgstr "Propiedades"
 
 #. [label]
 #: data/gui-2/default/window/editor_edit_label.cfg:166
 #: data/gui/default/window/editor_edit_label.cfg:166
-#, fuzzy
-#| msgid "Colors"
 msgid "Color"
-msgstr "Cores"
+msgstr "Cor"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui-2/default/window/editor_edit_label.cfg:183
@@ -3010,32 +2998,26 @@ msgstr "Ninguén"
 #. [label]
 #: data/gui-2/default/window/editor_edit_side.cfg:398
 #: data/gui/default/window/editor_edit_side.cfg:398
-#, fuzzy
-#| msgid "Share view"
 msgid "Share Vision:"
-msgstr "Compartir a vista"
+msgstr "Compartir a visión:"
 
 #. [row]
 #: data/gui-2/default/window/editor_edit_side.cfg:408
 #: data/gui/default/window/editor_edit_side.cfg:408
 msgid "vision^All"
-msgstr ""
+msgstr "Todo"
 
 #. [row]
 #: data/gui-2/default/window/editor_edit_side.cfg:410
 #: data/gui/default/window/editor_edit_side.cfg:410
-#, fuzzy
-#| msgid "Shroud"
 msgid "vision^Shroud"
 msgstr "Manto do descoñecido"
 
 #. [row]
 #: data/gui-2/default/window/editor_edit_side.cfg:412
 #: data/gui/default/window/editor_edit_side.cfg:412
-#, fuzzy
-#| msgid "translations^None"
 msgid "vision^None"
-msgstr "ningunha."
+msgstr "Nada"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3513,31 +3495,33 @@ msgstr "Caché:"
 #: data/gui-2/default/window/game_version.cfg:162
 #: data/gui/default/window/game_version.cfg:162
 msgid "Open Log File"
-msgstr ""
+msgstr "Abrir o ficheiro do historial"
 
 #. [button]: id=open_stderr
 #: data/gui-2/default/window/game_version.cfg:163
 #: data/gui/default/window/game_version.cfg:163
 msgid "Opens the log file, which may contain useful debug information"
 msgstr ""
+"Abre o ficheiro do historial, que podería conter información de depuración "
+"útil."
 
 #. [label]
 #: data/gui-2/default/window/game_version.cfg:196
 #: data/gui/default/window/game_version.cfg:196
 msgid "library^Name"
-msgstr ""
+msgstr "Nome"
 
 #. [label]
 #: data/gui-2/default/window/game_version.cfg:206
 #: data/gui/default/window/game_version.cfg:206
 msgid "library^Build version"
-msgstr ""
+msgstr "Versión de construción"
 
 #. [label]
 #: data/gui-2/default/window/game_version.cfg:216
 #: data/gui/default/window/game_version.cfg:216
 msgid "library^Runtime version"
-msgstr ""
+msgstr "Versión de execución"
 
 #. [label]
 #: data/gui-2/default/window/game_version.cfg:294
@@ -3545,30 +3529,26 @@ msgstr ""
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
+"As seguintes funcionalidades seleccionáronse durante a construción desta "
+"versión de A batalla polo Noroeste:"
 
 #. [label]
 #: data/gui-2/default/window/game_version.cfg:448
 #: data/gui/default/window/game_version.cfg:448
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "The Battle for Wesnoth"
-msgstr "Mostrar a axuda do xogo"
+msgstr "A batalla polo Noroeste"
 
 #. [button]: id=copy_all
 #: data/gui-2/default/window/game_version.cfg:584
 #: data/gui/default/window/game_version.cfg:584
-#, fuzzy
-#| msgid "Copy"
 msgid "page^Copy"
 msgstr "Copiar"
 
 #. [button]: id=copy_all
 #: data/gui-2/default/window/game_version.cfg:585
 #: data/gui/default/window/game_version.cfg:585
-#, fuzzy
-#| msgid "Copy this report to clipboard"
 msgid "Copy the full report to clipboard"
-msgstr "Copiar este informe ao portapapeis"
+msgstr "Copiar o informe completo no portapapeis."
 
 #. [label]
 #: data/gui-2/default/window/gamestate_inspector.cfg:45
@@ -3630,10 +3610,8 @@ msgstr "Permitir o uso de mandos."
 #. [label]: id=title
 #: data/gui-2/default/window/label_settings.cfg:42
 #: data/gui/default/window/label_settings.cfg:42
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show or Hide Labels"
-msgstr "Mostrar etiquetas flotantes."
+msgstr "Mostrar ou ocultar as etiquetas"
 
 #. [grid]
 #. [label]
@@ -4017,8 +3995,6 @@ msgstr "Mensaxe privada:"
 #. [grid]
 #: data/gui-2/default/window/mp_alerts_options.cfg:179
 #: data/gui/default/window/mp_alerts_options.cfg:179
-#, fuzzy
-#| msgid "When a private message is recieved"
 msgid "When a private message is received"
 msgstr "Cando se recibe unha mensaxe privada."
 
@@ -4032,8 +4008,6 @@ msgstr "Mensaxe dun amigo:"
 #. [grid]
 #: data/gui-2/default/window/mp_alerts_options.cfg:180
 #: data/gui/default/window/mp_alerts_options.cfg:180
-#, fuzzy
-#| msgid "When a message from a friend is recieved"
 msgid "When a message from a friend is received"
 msgstr "Cando se recibe unha mensaxe dun amigo."
 
@@ -4046,8 +4020,6 @@ msgstr "Mensaxe pública:"
 #. [grid]
 #: data/gui-2/default/window/mp_alerts_options.cfg:181
 #: data/gui/default/window/mp_alerts_options.cfg:181
-#, fuzzy
-#| msgid "When a public message is recieved"
 msgid "When a public message is received"
 msgstr "Cando se recibe unha mensaxe pública."
 
@@ -4060,8 +4032,6 @@ msgstr "Mensaxe do servidor:"
 #. [grid]
 #: data/gui-2/default/window/mp_alerts_options.cfg:182
 #: data/gui/default/window/mp_alerts_options.cfg:182
-#, fuzzy
-#| msgid "When a server message is recieved"
 msgid "When a server message is received"
 msgstr "Cando se recibe unha mensaxe do servidor."
 
@@ -4493,21 +4463,19 @@ msgstr "Explorar o cartafol de capturas cun cun xestor de ficheiros."
 #: data/gui-2/default/window/synced_choice_wait.cfg:40
 #: data/gui/default/window/synced_choice_wait.cfg:40
 msgid "Waiting..."
-msgstr ""
+msgstr "Agardando…"
 
 #. [label]: id=lblMessage
 #: data/gui-2/default/window/synced_choice_wait.cfg:60
 #: data/gui/default/window/synced_choice_wait.cfg:60
 msgid "Waiting for remote input"
-msgstr ""
+msgstr "Agardando por datos de entrada remotos."
 
 #. [button]: id=btn_quit_game
 #: data/gui-2/default/window/synced_choice_wait.cfg:96
 #: data/gui-2/default/window/synced_choice_wait.cfg:97
 #: data/gui/default/window/synced_choice_wait.cfg:96
 #: data/gui/default/window/synced_choice_wait.cfg:97
-#, fuzzy
-#| msgid "Quit Game"
 msgid "Quit game"
 msgstr "Saír da partida"
 
@@ -4559,10 +4527,8 @@ msgstr "Aprendizaxe"
 #. [grid]
 #: data/gui-2/default/window/title_screen.cfg:257
 #: data/gui/default/window/title_screen.cfg:257
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaigns"
-msgstr "Un xogador"
+msgstr "Campañas"
 
 #. [grid]
 #: data/gui-2/default/window/title_screen.cfg:257
@@ -4663,7 +4629,7 @@ msgstr "Saír do xogo."
 #: data/gui-2/default/window/title_screen.cfg:476
 #: data/gui/default/window/title_screen.cfg:476
 msgid "Display the game version and build information"
-msgstr ""
+msgstr "Mostrar a versión do xogo e a información da construción."
 
 #. [button]: id=ok
 #: data/gui-2/default/window/unit_attack.cfg:197
@@ -4709,10 +4675,8 @@ msgid "Race"
 msgstr "Especie"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:45
-#, fuzzy
-#| msgid "Bilinear intepolation scaling (new implementation)"
 msgid "Bilinear interpolation scaling"
-msgstr "Axuste de tamaño de interpolación bilineal (método novo)"
+msgstr "Axuste de tamaño de interpolación bilineal"
 
 #. [button]: id=attacker_profile
 #. [button]: id=defender_profile
@@ -4726,57 +4690,53 @@ msgstr "Perfil"
 #. [button]: id=damage_calculation
 #: data/gui/default/window/unit_attack.cfg:328
 msgid "Damage Calculation"
-msgstr ""
+msgstr "Cálculo de danos"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:435
-#, fuzzy
-#| msgid "Attack enemy"
 msgid "Attack Enemy"
 msgstr "Atacar ao inimigo"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:461
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose weapon:"
-msgstr "Escoller a resolución"
+msgstr "Escoller unha arma:"
 
 #: src/build_info.cpp:190
 msgid "feature^Experimental OpenMP support"
-msgstr ""
+msgstr "Compatibilidade experimental con OpenMP"
 
 #: src/build_info.cpp:195
 msgid "feature^PNG screenshots"
-msgstr ""
+msgstr "Capturas de pantalla en formato PNG"
 
 #: src/build_info.cpp:200
 msgid "feature^Lua console completion"
-msgstr ""
+msgstr "Completamento da consola de Lua"
 
 #: src/build_info.cpp:205
 msgid "feature^Legacy bidirectional rendering"
-msgstr ""
+msgstr "Renderización bidireccional de versións anteriores"
 
 #: src/build_info.cpp:212
 msgid "feature^D-Bus notifications back end"
-msgstr ""
+msgstr "Infraestrutura de notificacións de D-Bus"
 
 #: src/build_info.cpp:221
 msgid "feature^Win32 notifications back end"
-msgstr ""
+msgstr "Infraestrutura de notificacións de Win32"
 
 #: src/build_info.cpp:227
 msgid "feature^Cocoa notifications back end"
-msgstr ""
+msgstr "Infraestrutura de notificacións de Cocoa"
 
 #: src/build_info.cpp:232
 msgid "feature^Growl notifications back end"
-msgstr ""
+msgstr "Infraestrutura de notificacións de Growl"
 
 #: src/desktop/version.cpp:277
 msgid "operating_system^<unknown>"
-msgstr ""
+msgstr "<descoñecido>"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -5750,20 +5710,16 @@ msgid "Version: "
 msgstr "Versión: "
 
 #: src/gui/dialogs/game_version.cpp:137
-#, fuzzy
-#| msgid "Version "
 msgid "Version $version"
-msgstr "Versión "
+msgstr "Versión  $version"
 
 #: src/gui/dialogs/game_version.cpp:141
 msgid "Running on $os"
-msgstr ""
+msgstr "Executándose en $os"
 
 #: src/gui/dialogs/game_version.cpp:226
-#, fuzzy
-#| msgid "Version"
 msgid "version^N/A"
-msgstr "Versión"
+msgstr "N/A"
 
 #: src/gui/dialogs/game_version.cpp:270
 msgid "Paths"
@@ -5771,17 +5727,15 @@ msgstr "Rutas"
 
 #: src/gui/dialogs/game_version.cpp:273
 msgid "Libraries"
-msgstr ""
+msgstr "Bibliotecas"
 
 #: src/gui/dialogs/game_version.cpp:276
 msgid "Features"
-msgstr ""
+msgstr "Funcionalidades"
 
 #: src/gui/dialogs/label_settings.cpp:49
-#, fuzzy
-#| msgid "Set Team Label"
 msgid "Team Labels"
-msgstr "Poñer unha etiqueta do equipo"
+msgstr "Etiquetas de equipo"
 
 #: src/gui/dialogs/label_settings.cpp:67
 msgid "Unknown"
@@ -5789,7 +5743,7 @@ msgstr "Descoñecido"
 
 #: src/gui/dialogs/label_settings.cpp:72
 msgid "Side $side_number ($name)"
-msgstr ""
+msgstr "Bando $side_number ($name)"
 
 #: src/gui/dialogs/lobby_main.cpp:226
 msgid "whisper to $receiver"
@@ -5855,15 +5809,15 @@ msgstr "Versión "
 
 #: src/gui/dialogs/unit_attack.cpp:131 src/gui/dialogs/unit_create.cpp:246
 msgid "HP: "
-msgstr ""
+msgstr "Vida: "
 
 #: src/gui/dialogs/unit_attack.cpp:133 src/gui/dialogs/unit_create.cpp:249
 msgid "XP: "
-msgstr ""
+msgstr "Exp.: "
 
 #: src/gui/dialogs/unit_create.cpp:252
 msgid "MP: "
-msgstr ""
+msgstr "Mult.: "
 
 #: src/gui/widgets/helper.cpp:127
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -6033,10 +5987,8 @@ msgid "Recall"
 msgstr "Reincorporar"
 
 #: src/hotkey/hotkey_command.cpp:73
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show/Hide Labels"
-msgstr "Mostrar as etiquetas"
+msgstr "Mostrar ou ocultar as etiquetas"
 
 #: src/hotkey/hotkey_command.cpp:74
 msgid "End Turn"
@@ -6096,7 +6048,7 @@ msgstr "Continuar a partida en rede"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Quit to Titlescreen"
-msgstr ""
+msgstr "Saír ao menú principal"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Set Team Label"
@@ -6159,10 +6111,8 @@ msgid "Skip Animation"
 msgstr "Saltarse a animación"
 
 #: src/hotkey/hotkey_command.cpp:108
-#, fuzzy
-#| msgid "Replay"
 msgid "End Replay"
-msgstr "Repetición"
+msgstr "Rematar a repetición"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:111

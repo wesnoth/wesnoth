@@ -7,12 +7,12 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008, 2010.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014, 2015.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2016-01-16 20:56-0300\n"
-"PO-Revision-Date: 2015-06-29 10:07+0100\n"
+"PO-Revision-Date: 2016-02-06 20:51+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -150,13 +150,6 @@ msgstr "B<-c, --campaign \\ [E<lt>identificador da campañaE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
-#| "menu will appear if no id was specified.  B<Note:> When using this switch "
-#| "please ensure that you specify the data directory path as the final "
-#| "argument aswell, otherwise the game will take the campaign/scenario id as "
-#| "the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -670,13 +663,6 @@ msgstr "B<--userconfig-dir>I<\\ nome>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:209
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
-#| "config/wesnoth, on other systems to the userdata path."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -689,7 +675,9 @@ msgstr ""
 "Define I<nome> coma o nome do cartafol da configuración do usuario no seu "
 "directorio persoal («$HOME») ou «Os meus documentos\\eOs meus xogos» en "
 "Windows. Tamén podes indicar unha ruta absoluta para o directorio da "
-"configuración fóra dos antes mencionados. En X11 o cartafol predeterminado é "
+"configuración fóra dos antes mencionados. En Windows tamén podes prefixar a "
+"ruta con \".\\e\" or \"..\\e \" para indicar un cartafol relativo ao "
+"cartafol de traballo do proceso. En X11 o cartafol predeterminado é "
 "«$XDG_CONFIG_HOME» ou «$HOME/.config/wesnoth», noutros sistemas é a ruta de "
 "datos do usuario."
 
@@ -716,11 +704,6 @@ msgstr "B<--userdata-dir>I<\\ nome>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:221
-#, fuzzy
-#| msgid ""
-#| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
-#| "Games\" for windows.  You can also specify an absolute path for the "
-#| "userdata directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
@@ -731,7 +714,8 @@ msgstr ""
 "Define I<nome> coma o nome do cartafol dos datos do usuario no seu cartafol "
 "persoal («$HOME») ou «Os meus documentos\\eOs meus xogos» en Windows. Tamén "
 "podes indicar unha ruta absoluta para o cartafol dos datos fóra dos antes "
-"mencionados."
+"mencionados. En Windows tamén podes prefixar a ruta con \".\\e\" or \"..\\e "
+"\" para indicar un cartafol relativo ao cartafol de traballo do proceso."
 
 # type: TP
 #. type: TP
@@ -1085,12 +1069,9 @@ msgstr "DEREITOS DE AUTOR"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:328 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2013, David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2016, David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
