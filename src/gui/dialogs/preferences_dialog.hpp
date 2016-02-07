@@ -20,6 +20,7 @@
 #include "game_preferences.hpp"
 #include "make_enum.hpp"
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/group.hpp"
 
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
@@ -67,7 +68,7 @@ private:
 
 	void edit_friend_list_entry(tlistbox& friends, ttext_box& textbox);
 
-	void remove_friend_list_entry(tlistbox& friends_list, 
+	void remove_friend_list_entry(tlistbox& friends_list,
 		ttext_box& textbox, twindow& window);
 
 	void add_tab(tlistbox& tab_bar, const std::string& label);
@@ -152,17 +153,21 @@ private:
 	 * If (at a later date) more groups need to be added, this will have to be
 	 * generalized.
 	 */
+	tgroup<preferences::LOBBY_JOINS> lobby_joins_group;
+
+	template <typename T>
 	void setup_radio_toggle(
 		const std::string& toggle_id,
-		preferences::LOBBY_JOINS enum_value,
-		int start_value,
-		std::vector<std::pair<ttoggle_button*, int> >& vec,
+		const T& enum_value,
+		const int start_value,
+		tgroup<T>& group,
+		boost::function<void(int)> callback,
 		twindow& window);
 
+	template <typename T>
 	void toggle_radio_callback(
-		const std::vector<std::pair<ttoggle_button*, int> >& vec,
-		int& value,
-		ttoggle_button* active);
+		tgroup<T>& group,
+		boost::function<void(int)> setter);
 
 	/**
 	 * Sets up a label that always displays the value of another widget.
@@ -183,10 +188,7 @@ private:
 	void status_label_callback(T& parent_widget,
 		tcontrol& label_widget, const std::string& suffix = "");
 
-	typedef std::pair<ttoggle_button*, int> lobby_radio_toggle;
-	std::vector<lobby_radio_toggle> lobby_joins_;
-
-	MAKE_ENUM(ADVANCED_PREF_TYPE, 
+	MAKE_ENUM(ADVANCED_PREF_TYPE,
 		(TOGGLE,  "boolean")
 		(SLIDER,  "int")
 		(COMBO,   "combo")
