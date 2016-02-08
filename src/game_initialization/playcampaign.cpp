@@ -344,9 +344,8 @@ LEVEL_RESULT campaign_controller::play_game()
 		{
 			return res;
 		}
-		else if(res == LEVEL_RESULT::OBSERVER_END)
+		else if(res == LEVEL_RESULT::OBSERVER_END && mp_info_ && !mp_info_->is_host)
 		{
-			// TODO: does it make sense to ask this question if we are currently the host?
 			const int dlg_res = gui2::show_message(video_, _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::tmessage::yes_no_buttons);
