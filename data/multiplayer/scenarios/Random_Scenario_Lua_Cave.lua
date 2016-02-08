@@ -197,7 +197,6 @@ local function set_tile_index(index, val)
 	else
 		map[index] = val
 	end
-	end
 end
 
 local function set_tile(x, y, val)
