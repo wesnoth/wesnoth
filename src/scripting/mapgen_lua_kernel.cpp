@@ -28,6 +28,7 @@
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
+#include "scripting/push_check.hpp"
 
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
@@ -36,6 +37,38 @@ static lg::log_domain log_mapgen("mapgen");
 
 struct lua_State;
 
+
+
+/**
+ * Returns a random numer, same interface as math.random.
+ */
+static int intf_random(lua_State *L)
+{
+	boost::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
+	if(lua_isnoneornil(L, 1)) {
+		double r = double (rng());
+		double r_max = double (rng.max());
+		lua_push(L, r / (r_max + 1));
+		return 1;
+	}
+	else {
+		int32_t min;
+		int32_t max;
+		if(lua_isnumber(L, 2)) {
+			min = lua_check<int32_t>(L, 1);
+			max = lua_check<int32_t>(L, 2);
+		}
+		else {
+			min = 1;
+			max = lua_check<int32_t>(L, 1);
+		}
+		if(min > max) {
+			return luaL_argerror(L, 1, "min > max");
+		}
+		lua_push(L, min + static_cast<int>(rng() % (max - min + 1)));
+		return 1;
+	}
+}
 
 /**
  * Finds a path between two locations.
@@ -83,12 +116,14 @@ static int intf_find_path(lua_State *L)
 mapgen_lua_kernel::mapgen_lua_kernel()
 	: lua_kernel_base(NULL)
 	, random_seed_()
+	, default_rng_()
 {
 	lua_State *L = mState;
 	lua_settop(L, 0);
 
 	static luaL_Reg const callbacks[] = {
 		{ "find_path",           &intf_find_path           },
+		{ "random",              &intf_random              },
 		{ NULL, NULL }
 	};
 
@@ -153,4 +188,12 @@ boost::uint32_t mapgen_lua_kernel::get_random_seed()
 	else {
 		return lua_kernel_base::get_random_seed();
 	}
+}
+
+boost::mt19937& mapgen_lua_kernel::get_default_rng()
+{
+	if(!default_rng_) {
+		default_rng_ = boost::mt19937(get_random_seed());
+	}
+	return *default_rng_;
 }
