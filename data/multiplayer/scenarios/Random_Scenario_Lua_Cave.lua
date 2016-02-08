@@ -208,7 +208,7 @@ local function set_tile(x, y, val)
 end
 
 local function get_tile(x, y, val)
-	return map[loc_to_index(x,y)], index
+	return map[loc_to_index(x,y)]
 end
 
 local function on_board(x, y)
@@ -313,7 +313,7 @@ for i,v in ipairs(passages) do
 				res = laziness
 			end
 			if windiness > 1 then
-				res = res  * (random(windiness) - 1)
+				res = res * random(windiness)
 			end
 			return res
 		end
