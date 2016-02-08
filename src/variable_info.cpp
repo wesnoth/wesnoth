@@ -41,14 +41,6 @@ namespace
 			throw invalid_variablename_exception();
 		}
 	}
-	/// Checks if name is a valid key for an attribute_value/child
-	void check_valid_name(const std::string& name)
-	{
-		if(name.empty())
-		{
-			throw invalid_variablename_exception();
-		}
-	}
 
 	template<const variable_info_type vit>
 	typename maybe_const<vit, config>::type& get_child_at(typename maybe_const<vit, config>::type& cfg, const std::string& key, int index = 0);
@@ -57,7 +49,6 @@ namespace
 	config& get_child_at<vit_create_if_not_existent>(config& cfg, const std::string& key, int index)
 	{
 		assert(index >= 0);
-		check_valid_name(key);
 		// the 'create_if_not_existent' logic.
 		while(static_cast<int>(cfg.child_count(key)) <= index)
 		{
@@ -72,7 +63,6 @@ namespace
 	const config& get_child_at<vit_const>(const config& cfg, const std::string& key, int index)
 	{
 		assert(index >= 0);
-		check_valid_name(key);
 		//cfg.child_or_empty does not support index parameter
 		if(const config& child = cfg.child(key, index))
 		{
@@ -88,7 +78,6 @@ namespace
 	config& get_child_at<vit_throw_if_not_existent>(config& cfg, const std::string& key, int index)
 	{
 		assert(index >= 0);
-		check_valid_name(key);
 		if(config& child = cfg.child(key, index))
 		{
 			return child;
@@ -249,7 +238,6 @@ namespace
 	public:
 		typename as_skalar_visitor::result_type from_named(typename as_skalar_visitor::param_type state) const
 		{
-			check_valid_name(state.key_);
 			return (*state.child_)[state.key_];
 		}
 		///Defined below for different cases.
