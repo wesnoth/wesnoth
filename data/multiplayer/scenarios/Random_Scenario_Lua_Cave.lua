@@ -197,9 +197,6 @@ local function set_tile_index(index, val)
 	else
 		map[index] = val
 	end
-	if random(100) < 5 then
-		map[index] = terrain_village
-	else
 	end
 end
 
