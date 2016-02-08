@@ -20,11 +20,13 @@
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_rng.hpp"
+#include "scripting/lua_pathfind_cost_calculator.hpp"
 
 #include <ostream>
 #include <string>
 #include <boost/bind.hpp>
 
+#include "lua/lauxlib.h"
 #include "lua/lua.h"
 
 static lg::log_domain log_mapgen("mapgen");
@@ -34,12 +36,67 @@ static lg::log_domain log_mapgen("mapgen");
 
 struct lua_State;
 
+
+/**
+ * Finds a path between two locations.
+ * - Args 1,2: source location.
+ * - Args 3,4: destination.
+ * - Arg 5: cost function
+ * - Args 6,7 size of map.
+ * - Ret 1: array of pairs containing path steps.
+ * - Ret 2: path cost.
+ */
+static int intf_find_path(lua_State *L)
+{
+	int arg = 1;
+	map_location src, dst;
+	src.x = luaL_checkinteger(L, 1) - 1;
+	src.y = luaL_checkinteger(L, 2) - 1;
+	dst.x = luaL_checkinteger(L, 3) - 1;
+	dst.y = luaL_checkinteger(L, 4) - 1;
+	if(lua_isfunction(L, arg)) { 
+		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 5));
+		return luaL_argerror(L, 5, msg);
+	}
+	lua_pathfind_cost_calculator calc(L, 5);
+	int width = luaL_checkinteger(L, 6);
+	int height = luaL_checkinteger(L, 7);
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, &calc, width, height, NULL);
+
+	int nb = res.steps.size();
+	lua_createtable(L, nb, 0);
+	for (int i = 0; i < nb; ++i)
+	{
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, res.steps[i].x + 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, res.steps[i].y + 1);
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i + 1);
+	}
+	lua_pushinteger(L, res.move_cost);
+
+	return 2;
+}
+
+
 mapgen_lua_kernel::mapgen_lua_kernel()
 	: lua_kernel_base(NULL)
 	, random_seed_()
 {
 	lua_State *L = mState;
 	lua_settop(L, 0);
+
+	static luaL_Reg const callbacks[] = {
+		{ "find_path",           &intf_find_path           },
+		{ NULL, NULL }
+	};
+
+	lua_getglobal(L, "wesnoth");
+	assert(lua_istable(L,-1));
+	luaL_setfuncs(L, callbacks, 0);
+	lua_pop(L, 1);
+	assert(lua_gettop(L) == 0);
 }
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)

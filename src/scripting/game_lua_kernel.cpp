@@ -76,6 +76,7 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_race.hpp"
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
@@ -1757,38 +1758,6 @@ static int intf_eval_conditional(lua_State *L)
 	return 1;
 }
 
-namespace {
-	/**
-	 * Cost function object relying on a Lua function.
-	 * @note The stack index of the Lua function must be valid each time the cost is computed.
-	 */
-	struct lua_calculator : pathfind::cost_calculator
-	{
-		lua_State *L;
-		int index;
-
-		lua_calculator(lua_State *L_, int i): L(L_), index(i) {}
-		double cost(const map_location &loc, const double so_far) const;
-	};
-
-	double lua_calculator::cost(const map_location &loc, const double so_far) const
-	{
-		// Copy the user function and push the location and current cost.
-		lua_pushvalue(L, index);
-		lua_pushinteger(L, loc.x + 1);
-		lua_pushinteger(L, loc.y + 1);
-		lua_pushnumber(L, so_far);
-
-		// Execute the user function.
-		if (!luaW_pcall(L, 3, 1)) return 1.;
-
-		// Return a cost of at least 1 mp to avoid issues in pathfinder.
-		// (Condition is inverted to detect NaNs.)
-		double cost = lua_tonumber(L, -1);
-		lua_pop(L, 1);
-		return !(cost >= 1.) ? 1. : cost;
-	}
-}//unnamed namespace for lua_calculator
 
 /**
  * Finds a path between two locations.
@@ -1868,7 +1837,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	}
 	else if (lua_isfunction(L, arg))
 	{
-		calc = new lua_calculator(L, arg);
+		calc = new lua_pathfind_cost_calculator(L, arg);
 	}
 
 	pathfind::teleport_map teleport_locations;
