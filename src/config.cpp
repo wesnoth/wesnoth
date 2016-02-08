@@ -480,13 +480,16 @@ config &config::operator=(config &&cfg)
 }
 #endif
 
-bool config::valid_id(const std::string id)
+bool config::valid_id(const std::string& id)
 {
 	if (id.empty()) {
 		return false;
 	}
 	BOOST_FOREACH(char c, id) {
-		if (!isalnum(c) && c != '_') {
+		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
+			//valid character.
+		}
+		else {
 			return false;
 		}
 	}
