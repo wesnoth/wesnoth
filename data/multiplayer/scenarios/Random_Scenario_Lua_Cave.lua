@@ -156,6 +156,7 @@ local param_chambers = {
 		side=7,
 	}
 }
+
 local size_x = 50
 local size_y = 70
 local terrain_wall = "Xu"
@@ -163,7 +164,6 @@ local terrain_clear = "Re"
 local terrain_keep = "Kud"
 local terrain_castle = "Cud"
 local terrain_village = "Uu^Vud"
-local terrain_path_marker = "Gs"
 
 local map = {}
 
@@ -178,23 +178,37 @@ local function set_tile_index(index, val)
 	if index < 1 or index > size_x * size_y then
 		return
 	end
-	if map[index] == terrain_castle or map[index] == terrain_keep or map[index] == terrain_path_marker then
+	if map[index] == terrain_castle or map[index] == terrain_keep then
 		return
+	end
+	if val == terrain_clear then
+		local r = random(100)
+		if r <= 5 then
+			map[index] = "Uu^Vud"
+		elseif r <= 20 then
+			map[index] = "Re"
+		elseif r <= 40 then
+			map[index] = "Uh"
+		elseif r <= 65 then
+			map[index] = "Uu^Uf"
+		else
+			map[index] = "Uu"
+		end
+	else
+		map[index] = val
 	end
 	if random(100) < 5 then
 		map[index] = terrain_village
 	else
-		map[index] = val
 	end
 end
 
 local function set_tile(x, y, val)
-	set_tile_index(x + 1 + (y) * size_x, val)
+	set_tile_index(loc_to_index(x, y), val)
 end
 
 local function get_tile(x, y, val)
-	local index = x + 1 + (y) * size_x
-	return map[index], index
+	return map[loc_to_index(x,y)], index
 end
 
 local function on_board(x, y)
@@ -219,7 +233,7 @@ local function adjacent_tiles(x, y)
 end
 
 local function build_chamber(x, y, locs_set, size, jagged)
-	local index = x + 1 + (y) * size_x
+	local index = loc_to_index(x, y)
 	if locs_set[index] or not on_board(x, y) or size == 0 then
 		return
 	end
@@ -288,7 +302,7 @@ for i,v in ipairs(chambers) do
 end
 
 for i,v in ipairs(passages) do
-	if math.random(100) <= (v.data.chance or 100) then
+	if random(100) <= (v.data.chance or 100) then
 		local windiness = v.data.windiness or 0
 		local laziness = math.max(v.data.laziness or 1, 1)
 		local width = math.max(v.data.width or 1, 1)
@@ -299,19 +313,17 @@ for i,v in ipairs(passages) do
 				res = laziness
 			end
 			if windiness > 1 then
-				res = res  * (math.random(windiness) - 1)
+				res = res  * (random(windiness) - 1)
 			end
 			return res
 		end
 		local path, cost = wesnoth.find_path(v.start_x, v.start_y, v.dest_x, v.dest_y, calc, size_x, size_y)
-
 		for i, loc in ipairs(path) do
 			local locs_set = {}
 			build_chamber(loc[1], loc[2], locs_set, width, jagged)
 			for k,v in pairs(locs_set) do
 				set_tile_index(k, terrain_clear)
 			end
-			--set_tile(loc[1], loc[2], terrain_path_marker)
 		end
 	end
 
@@ -321,6 +333,7 @@ local starting_pos_by_tile = {}
 for k,v in ipairs(starting_positions) do
 	starting_pos_by_tile[v[1] + 1 + v[2] * size_x] = k
 end
+
 local stringbuilder = {}
 for y = 0, size_y - 1 do
 	local stringbuilder_row = {}
