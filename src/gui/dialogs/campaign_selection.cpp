@@ -93,13 +93,15 @@ void tcampaign_selection::campaign_selected(twindow& window)
 		}
 
 		assert(tree.selected_item());
-		const unsigned choice
+		if(tree.selected_item()->id() != "") {
+			const unsigned choice
 				= lexical_cast<unsigned>(tree.selected_item()->id());
 
-		tmulti_page& multi_page
+			tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
-		multi_page.select_page(choice);
-		engine_.set_current_level(choice);
+			multi_page.select_page(choice);
+			engine_.set_current_level(choice);
+		}
 	} else {
 		const int selected_row
 				= find_widget<tlistbox>(&window, "campaign_list", false)
@@ -281,7 +283,9 @@ void tcampaign_selection::post_show(twindow& window)
 		}
 
 		assert(tree.selected_item());
-		choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
+		if(tree.selected_item()->id() != "") {
+			choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
+		}
 		deterministic_ = find_widget<ttoggle_button>(&window,
 													 "checkbox_deterministic",
 													 false).get_value_bool();
