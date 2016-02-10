@@ -835,12 +835,12 @@ static int sdl_display_index(sdl::twindow* window)
 #endif
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
+std::vector<std::pair<int, int> > CVideo::get_available_resolutions(const bool include_current)
 {
 	std::vector<std::pair<int, int> > result;
 
 	const int modes = SDL_GetNumDisplayModes(sdl_display_index(window.get()));
-	if(modes <= 0) {
+	if (modes <= 0) {
 		std::cerr << "No modes supported\n";
 		return result;
 	}
@@ -848,14 +848,20 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
 
 	SDL_DisplayMode mode;
-	for(int i = 0; i < modes; ++i) {
+	for (int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(0, i, &mode) == 0) {
 			if (mode.w >= min_res.first && mode.h >= min_res.second)
 				result.push_back(std::make_pair(mode.w, mode.h));
 		}
 	}
-	if(std::find(result.begin(), result.end(), min_res) == result.end())
+
+	if (std::find(result.begin(), result.end(), min_res) == result.end()) {
 		result.push_back(min_res);
+	}
+
+	if(include_current) {
+		result.push_back(current_resolution());
+	}
 
 	std::sort(result.begin(), result.end());
 	result.erase(std::unique(result.begin(), result.end()), result.end());
@@ -863,8 +869,9 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 	return result;
 }
 #else
-std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
+std::vector<std::pair<int, int> > CVideo::get_available_resolutions(const bool include_current)
 {
+	UNUSED(include_current);
 	std::vector<std::pair<int, int> > result;
 	const SDL_Rect* const * modes;
 	if (const surface& surf = getSurface()) {

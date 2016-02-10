@@ -834,9 +834,6 @@ protected:
 	/** Local cache for preferences::animate_map, since it is constantly queried. */
 	bool animate_map_;
 
-	/** Local cache for preferences "local_tod_lighting" */
-	bool local_tod_light_;
-
 private:
 
 #ifdef SDL_GPU

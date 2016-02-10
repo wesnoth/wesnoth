@@ -61,7 +61,7 @@ class acquaintance;
 	bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
 	int lobby_joins();
 	void _set_lobby_joins(int show);
-	enum { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
+	enum LOBBY_JOINS { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 
 	bool new_lobby();
 
@@ -70,7 +70,7 @@ class acquaintance;
 	bool add_friend(const std::string& nick, const std::string& notes);
 	bool add_ignore(const std::string& nick, const std::string& reason);
 	void add_completed_campaign(const std::string &campaign_id, const std::string &difficulty_level);
-	void remove_acquaintance(const std::string& nick);
+	bool remove_acquaintance(const std::string& nick);
 	bool is_friend(const std::string& nick);
 	bool is_ignored(const std::string& nick);
 	bool is_campaign_completed(const std::string& campaign_id);
@@ -239,9 +239,6 @@ class acquaintance;
 	void set_show_haloes(bool value);
 
 
-	bool flip_time();
-	void set_flip_time(bool value);
-
 	// Multiplayer functions
 	std::string get_chat_timestamp(const time_t& t);
 	bool chat_timestamping();
@@ -260,8 +257,6 @@ class acquaintance;
 	void set_show_all_units_in_help(bool value);
 
 	compression::format save_compression_format();
-
-	bool startup_effect();
 
 	std::set<std::string> &encountered_units();
 	std::set<t_translation::t_terrain> &encountered_terrains();

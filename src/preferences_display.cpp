@@ -119,7 +119,8 @@ void set_idle_anim_rate(int rate) {
 bool show_video_mode_dialog(CVideo& video)
 {
 	const resize_lock prevent_resizing;
-	const events::event_context dialog_events_context;
+	// For some reason, this line prevents the dialog from being opened from GUI2...
+	//const events::event_context dialog_events_context;
 
 	std::vector<std::pair<int,int> > resolutions
 			= video.get_available_resolutions();

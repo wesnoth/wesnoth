@@ -937,6 +937,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_method_selection.cpp
 	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
+	gui/dialogs/preferences_dialog.cpp
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/screenshot_notification.cpp
 	gui/dialogs/simple_item_selector.cpp

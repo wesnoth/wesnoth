@@ -240,7 +240,7 @@ public:
 	/**
 	 * Returns the list of available screen resolutions.
 	 */
-	std::vector<std::pair<int, int> > get_available_resolutions();
+	std::vector<std::pair<int, int> > get_available_resolutions(const bool include_current = false);
 
 private:
 	static CVideo* singleton_;
