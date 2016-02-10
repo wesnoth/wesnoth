@@ -79,6 +79,7 @@ private:
 	void handle_res_select(twindow& window);
 	void fullscreen_toggle_callback(twindow& window);
 	void accl_speed_slider_callback(tslider& slider);
+	void max_autosaves_slider_callback(tslider& slider, tcontrol& status_label);
 
 	/**
 	 * Sets the initial state and callback for a simple bool-state toggle button

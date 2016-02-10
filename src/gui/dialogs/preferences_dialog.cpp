@@ -122,6 +122,22 @@ static std::string disambiguate_widget_value(const tslider& parent_widget)
 	return parent_widget.get_value_label();
 }
 
+// Parse the max atosaves slider value. Max value means infinte autosaves.
+static std::string get_max_autosaves_status_label(const tslider& slider)
+{
+	std::string label;
+	const int value = slider.get_value();
+
+	// INFINITE_AUTO_SAVES is hardcoded as 61 in game_preferences.hpp
+	if(value == INFINITE_AUTO_SAVES) {
+		label = "<b>∞</b>";
+	} else {
+		label = disambiguate_widget_value(slider);
+	}
+
+	return label;
+}
+
 // Helper function to refresh resolution list
 static void set_resolution_list(tcombobox& res_list, CVideo& video)
 {
@@ -449,8 +465,15 @@ void tpreferences::initialize_members(twindow& window)
 	setup_single_slider("max_saves_slider",
 		autosavemax(), set_autosavemax, window);
 
-	bind_status_label(find_widget<tslider>(&window, "max_saves_slider", false),
-		"max_saves_value", window);
+	tslider& autosaves_slider = find_widget<tslider>(&window, "max_saves_slider", false);
+	tcontrol& autosaves_label = find_widget<tcontrol>(&window, "max_saves_value", false);
+
+	autosaves_label.set_label(get_max_autosaves_status_label(autosaves_slider));
+	autosaves_label.set_use_markup(true);
+
+	connect_signal_notify_modified(autosaves_slider, boost::bind(
+		&tpreferences::max_autosaves_slider_callback,
+		this, boost::ref(autosaves_slider), boost::ref(autosaves_label)));
 
 	/** SET HOTKEYS **/
 	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "hotkeys", false),
@@ -942,6 +965,12 @@ void tpreferences::accl_speed_slider_callback(tslider& slider)
 {
 	const int index = slider.get_value();
 	set_turbo_speed(lexical_cast<double>(accl_speeds_[index - 1]));
+}
+
+// Special Max Autosaves slider callback
+void tpreferences::max_autosaves_slider_callback(tslider& slider, tcontrol& status_label)
+{
+	status_label.set_label(get_max_autosaves_status_label(slider));
 }
 
 void tpreferences::toggle_radio_callback(
