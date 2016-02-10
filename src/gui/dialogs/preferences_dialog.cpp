@@ -529,7 +529,7 @@ void tpreferences::initialize_members(twindow& window)
 
 	/** ANIMATE MAP **/
 	setup_single_toggle("animate_terrains",
-		show_haloes(), set_show_haloes, window);
+		animate_map(), set_animate_map, window);
 
 	/** SHOW UNIT STANDING ANIMS **/
 	setup_single_toggle("animate_units_standing",
