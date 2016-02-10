@@ -84,11 +84,6 @@ ttree_view_node::ttree_view_node(
 						&grid_, "tree_view_node_label", false, false);
 
 				label_ = dynamic_cast<tselectable_*>(widget);
-
-				if(!label_) {
-					label_ = dynamic_cast<tselectable_*>(toggle_widget);
-				}
-
 				if(label_) {
 					widget->connect_signal<event::LEFT_BUTTON_CLICK>(
 							boost::bind(
