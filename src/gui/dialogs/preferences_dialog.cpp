@@ -353,7 +353,10 @@ void tpreferences::remove_friend_list_entry(tlistbox& friends_list,
 		to_remove = friend_names_[selected_row];
 	}
 
-	remove_acquaintance(to_remove);
+	if(!remove_acquaintance(to_remove)) {
+		gui2::show_transient_error_message(window.video(), _("Not on friends or ignore lists"));
+		return;
+	}
 
 	textbox.clear();
 	setup_friends_list(window);

@@ -294,7 +294,7 @@ bool add_ignore(const std::string& nick, const std::string& reason) {
 	return true;
 }
 
-void remove_acquaintance(const std::string& nick) {
+bool remove_acquaintance(const std::string& nick) {
 	std::map<std::string, acquaintance>::iterator i = acquaintances.find(nick);
 
 	//nick might include the notes, depending on how we're removing
@@ -306,10 +306,14 @@ void remove_acquaintance(const std::string& nick) {
 		}
 	}
 
-	if(i != acquaintances.end()) {
-		acquaintances.erase(i);
-		save_acquaintances();
+	if(i == acquaintances.end()) {
+		return false;
 	}
+
+	acquaintances.erase(i);
+	save_acquaintances();
+
+	return true;
 }
 
 bool is_friend(const std::string& nick)
