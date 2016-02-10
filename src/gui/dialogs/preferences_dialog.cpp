@@ -130,7 +130,8 @@ static std::string get_max_autosaves_status_label(const tslider& slider)
 
 	// INFINITE_AUTO_SAVES is hardcoded as 61 in game_preferences.hpp
 	if(value == INFINITE_AUTO_SAVES) {
-		label = "<b>∞</b>";
+		// label = _("∞"); Doesn't look good on Windows. Restore when it does
+		label = _("infinite");
 	} else {
 		label = disambiguate_widget_value(slider);
 	}
