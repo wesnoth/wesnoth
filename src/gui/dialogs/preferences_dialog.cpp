@@ -676,12 +676,16 @@ void tpreferences::initialize_members(twindow& window)
 		tgrid* main_grid = get_advanced_row_grid(advanced, this_row);
 		assert(main_grid);
 
+		tgrid* details_grid = &find_widget<tgrid>(main_grid, "prefs_setter_grid", false);
+		details_grid->set_visible(tcontrol::tvisible::invisible);
+
 		// The toggle widget for toggle-type options (hidden for other types)
 		ttoggle_button& toggle_box = find_widget<ttoggle_button>(main_grid, "value_toggle", false);
 		toggle_box.set_visible(tcontrol::tvisible::hidden);
 
-		twidget& setter_main = find_widget<twidget>(main_grid, "setter", false);
-		setter_main.set_visible(tcontrol::tvisible::invisible);
+		if(!option["description"].empty()) {
+			find_widget<tcontrol>(main_grid, "description", false).set_label(option["description"]);
+		}
 
 		switch (pref_type.v) {
 			case ADVANCED_PREF_TYPE::TOGGLE: {
@@ -713,7 +717,7 @@ void tpreferences::initialize_members(twindow& window)
 				setter_widget->set_step_size(
 					option["step"].empty() ? 1 : option["step"].to_int());
 
-				delete main_grid->swap_child("setter", setter_widget, true);
+				delete details_grid->swap_child("setter", setter_widget, true);
 
 				// Needed to disambiguate overloaded function
 				typedef void (*setter) (const std::string &, int);
@@ -722,7 +726,7 @@ void tpreferences::initialize_members(twindow& window)
 				setup_single_slider("setter",
 					lexical_cast_default<int>(get(pref_name), option["default"].to_int()),
 					boost::bind(set_ptr, pref_name, _1),
-					*main_grid);
+					*details_grid);
 
 				bind_status_label(*setter_widget, "value", *main_grid);
 
@@ -746,7 +750,7 @@ void tpreferences::initialize_members(twindow& window)
 				setter_widget->set_definition("default");
 				setter_widget->set_id("setter");
 
-				delete main_grid->swap_child("setter", setter_widget, true);
+				delete details_grid->swap_child("setter", setter_widget, true);
 
 				// Needed to disambiguate overloaded function
 				typedef void (*setter) (const std::string &, const std::string &);
@@ -755,7 +759,7 @@ void tpreferences::initialize_members(twindow& window)
 				setup_combobox("setter",
 					combo_options, selected,
 					boost::bind(set_ptr, pref_name, _1),
-					*main_grid);
+					*details_grid);
 
 				bind_status_label(*setter_widget, "value", *main_grid);
 
@@ -816,12 +820,12 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 	}
 
 	if(selected_type != ADVANCED_PREF_TYPE::TOGGLE && selected_type != ADVANCED_PREF_TYPE::SPECIAL) {
-		find_widget<twidget>(get_advanced_row_grid(list, selected_row), "setter", false)
+		find_widget<twidget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
 			.set_visible(tcontrol::tvisible::visible);
 	}
 
 	if(last_selected_item_ != selected_row) {
-		find_widget<twidget>(get_advanced_row_grid(list, last_selected_item_), "setter", false)
+		find_widget<twidget>(get_advanced_row_grid(list, last_selected_item_), "prefs_setter_grid", false)
 			.set_visible(tcontrol::tvisible::invisible);
 
 		last_selected_item_ = selected_row;
