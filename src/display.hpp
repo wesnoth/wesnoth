@@ -79,7 +79,7 @@ class display : public filter_context, public video2::draw_layering
 public:
 	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
 			reports & reports_object,
-			const config& theme_cfg, const config& level);
+			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 

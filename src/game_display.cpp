@@ -72,8 +72,10 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb::manager> wb,
 		reports & reports_object,
 		const tod_manager& tod,
-		const config& theme_cfg, const config& level) :
-		display(&board, video, wb, reports_object, theme_cfg, level),
+		const config& theme_cfg,
+		const config& level,
+		bool dummy) :
+		display(&board, video, wb, reports_object, theme_cfg, level, !dummy),
 		overlay_map_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
@@ -99,7 +101,7 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static tod_manager dummy_tod(dummy_cfg);
 	static reports rep_;
 	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), rep_, dummy_tod,
-			dummy_cfg, dummy_cfg);
+			dummy_cfg, dummy_cfg, true);
 }
 
 game_display::~game_display()

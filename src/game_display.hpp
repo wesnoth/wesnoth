@@ -43,7 +43,8 @@ public:
 			reports & reports_object,
 			const tod_manager& tod_manager,
 			const config& theme_cfg,
-			const config& level);
+			const config& level,
+			bool dummy=false);
 
 	static game_display* create_dummy_display(CVideo& video);
 
