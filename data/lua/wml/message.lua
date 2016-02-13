@@ -142,7 +142,7 @@ function wesnoth.wml_actions.message(cfg)
 			if option.message and not option.image and not option.label then
 				local message = tostring(option.message)
 				if message:find("&") or message:find("=") or message:find("*") == 1 then
-					wesnoth.wml_actions.deprecated_message{message = '[option]message="&image=col1=col2" is deprecated, use new DescriptionWML instead (default, image, label, description)'}
+					log('[option]message="&image=col1=col2" is deprecated, use new DescriptionWML instead (default, image, label, description)', "warning")
 				end
 				-- Legacy format
 				table.insert(options, option.message)
