@@ -16,6 +16,7 @@
 
 #include "../game_config.hpp" // game_config::observer_team_name
 #include "../log.hpp"
+#include "filesystem.hpp"
 
 #include "game.hpp"
 #include "player_network.hpp"
@@ -1539,13 +1540,12 @@ void game::save_replay() {
 		std::replace(filename.begin(), filename.end(), ' ', '_');
 		filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
 		DBG_GAME << "saving replay: " << filename << std::endl;
-		/*filesystem::scoped_ostream os(filesystem::ostream_file(replay_save_path_ + filename));
+		filesystem::scoped_ostream os(filesystem::ostream_file(replay_save_path_ + filename));
 		(*os) << replay.output_compressed(true);
 
 		if (!os->good()) {
 			ERR_GAME << "Could not save replay! (" << filename << ")" << std::endl;
 		}
-		*/
 	} catch (simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
