@@ -128,24 +128,6 @@ preproc_map& config_cache::make_copy_map()
 	return config_cache_transaction::instance().get_active_map(defines_map_);
 }
 
-
-static bool compare_define(const preproc_map::value_type& a, const preproc_map::value_type& b)
-{
-	if(a.first < b.first) {
-		return true;
-	}
-
-	if(b.first < a.first) {
-		return false;
-	}
-
-	if(a.second < b.second) {
-		return true;
-	}
-
-	return false;
-}
-
 void config_cache::add_defines_map_diff(preproc_map& defines_map)
 {
 	return config_cache_transaction::instance().add_defines_map_diff(defines_map);
@@ -450,6 +432,28 @@ preproc_map& config_cache_transaction::get_active_map(const preproc_map& defines
 
 	return active_map_;
 }
+
+namespace
+{
+
+bool compare_define(const preproc_map::value_type& a, const preproc_map::value_type& b)
+{
+	if(a.first < b.first) {
+		return true;
+	}
+
+	if(b.first < a.first) {
+		return false;
+	}
+
+	if(a.second < b.second) {
+		return true;
+	}
+
+	return false;
+}
+
+} // end anonymous namespace
 
 void config_cache_transaction::add_defines_map_diff(preproc_map& new_map)
 {
