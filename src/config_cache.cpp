@@ -143,98 +143,113 @@ void config_cache::read_configs(const std::string& path, config& cfg, preproc_ma
 
 void config_cache::read_cache(const std::string& path, config& cfg)
 {
-	const std::string extension = ".gz";
-	bool is_valid = true;
+	static const std::string extension = ".gz";
+
 	std::stringstream defines_string;
 	defines_string << path;
+
+	bool is_valid = true;
+
 	for(preproc_map::const_iterator i = defines_map_.begin(); i != defines_map_.end(); ++i) {
-		if(i->second.value != "" || i->second.arguments.empty() == false) {
-			// VERSION is defined non-empty by the engine,
-			// it should be safe to rely on caches containing it.
-			if(i->first != "WESNOTH_VERSION") {
-				is_valid = false;
-				ERR_CACHE << "Preprocessor define not valid" << std::endl;
-				break;
-			}
+		//
+		// Only WESNOTH_VERSION is allowed to be non-empty.
+		// FIXME: why? -- shadowm
+		//
+		if((!i->second.value.empty() || !i->second.arguments.empty()) &&
+		   i->first != "WESNOTH_VERSION")
+		{
+			is_valid = false;
+			ERR_CACHE << "Invalid preprocessor define: " << i->first << '\n';
+			break;
 		}
 
 		defines_string << " " << i->first;
 	}
 
-	// Do cache check only if  define map is valid and
-	// caching is allowed
-	if(is_valid) {
-		const std::string& cache = filesystem::get_cache_dir();
-		if(cache != "") {
-			sha1_hash sha(defines_string.str()); // use a hash for a shorter display of the defines
-			const std::string fname = cache + "/" +
-									  cache_file_prefix_ + sha.display();
-			const std::string fname_checksum = fname + ".checksum" + extension;
+	// Do cache check only if define map is valid and
+	// caching is allowed.
+	const std::string& cache_path = filesystem::get_cache_dir();
 
-			filesystem::file_tree_checksum dir_checksum;
+	if(is_valid && !cache_path.empty()) {
+		// Use a hash for a shorter display of the defines.
+		const std::string fname = cache_path + "/" +
+								  cache_file_prefix_ +
+								  sha1_hash(defines_string.str()).display();
+		const std::string fname_checksum = fname + ".checksum" + extension;
 
-			if(!force_valid_cache_ && !fake_invalid_cache_) {
-				try {
-					if(filesystem::file_exists(fname_checksum)) {
-						DBG_CACHE << "Reading checksum: " << fname_checksum << "\n";
-						config checksum_cfg;
-						read_file(fname_checksum, checksum_cfg);
-						dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
-					}
-				} catch(config::error&) {
-					ERR_CACHE << "cache checksum is corrupt" << std::endl;
-				} catch(filesystem::io_exception&) {
-					ERR_CACHE << "error reading cache checksum" << std::endl;
+		filesystem::file_tree_checksum dir_checksum;
+
+		if(!force_valid_cache_ && !fake_invalid_cache_) {
+			try {
+				if(filesystem::file_exists(fname_checksum)) {
+					config checksum_cfg;
+
+					DBG_CACHE << "Reading checksum: " << fname_checksum << "\n";
+					read_file(fname_checksum, checksum_cfg);
+
+					dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
 				}
+			} catch(config::error&) {
+				ERR_CACHE << "cache checksum is corrupt" << std::endl;
+			} catch(filesystem::io_exception&) {
+				ERR_CACHE << "error reading cache checksum" << std::endl;
 			}
+		}
 
-			if(force_valid_cache_) {
-				LOG_CACHE << "skipping cache validation (forced)\n";
-			}
+		if(force_valid_cache_) {
+			LOG_CACHE << "skipping cache validation (forced)\n";
+		}
 
-			if(filesystem::file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == filesystem::data_tree_checksum()))) {
-				LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str() << "\n";
-				log_scope("read cache");
-				try {
-					read_file(fname + extension,cfg);
-					const std::string define_file = fname + ".define" + extension;
-					if(filesystem::file_exists(define_file)) {
-						config_cache_transaction::instance().add_define_file(define_file);
-					}
-					return;
-				} catch(config::error& e) {
-					ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<< std::endl;
-				} catch(filesystem::io_exception&) {
-					ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
-				} catch (boost::iostreams::gzip_error& e) {
-					//read_file -> ... -> read_gz can throw this exception.
-					ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << std::endl;
-				}
-			}
-
-			LOG_CACHE << "no valid cache found. Writing cache to '" << fname << extension << " with defines_map "<< defines_string.str() << "'\n";
-			// Now we need queued defines so read them to memory
-			read_defines_queue();
-
-			preproc_map copy_map(make_copy_map());
-
-			read_configs(path, cfg, copy_map);
-
-			add_defines_map_diff(copy_map);
+		if(filesystem::file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == filesystem::data_tree_checksum()))) {
+			LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str() << "\n";
+			log_scope("read cache");
 
 			try {
-				write_file(fname + extension, cfg);
-				write_file(fname + ".define" + extension, copy_map);
-				config checksum_cfg;
-				filesystem::data_tree_checksum().write(checksum_cfg);
-				write_file(fname_checksum, checksum_cfg);
+				read_file(fname + extension,cfg);
+				const std::string define_file = fname + ".define" + extension;
+
+				if(filesystem::file_exists(define_file)) {
+					config_cache_transaction::instance().add_define_file(define_file);
+				}
+
+				return;
+			} catch(config::error& e) {
+				ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message << std::endl;
 			} catch(filesystem::io_exception&) {
-				ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
+				ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
+			} catch (boost::iostreams::gzip_error& e) {
+				//read_file -> ... -> read_gz can throw this exception.
+				ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << std::endl;
 			}
-			return;
 		}
+
+		LOG_CACHE << "no valid cache found. Writing cache to '" << fname << extension << " with defines_map "<< defines_string.str() << "'\n";
+
+		// Now we need queued defines so read them to memory
+		read_defines_queue();
+
+		preproc_map copy_map(make_copy_map());
+
+		read_configs(path, cfg, copy_map);
+		add_defines_map_diff(copy_map);
+
+		try {
+			write_file(fname + extension, cfg);
+			write_file(fname + ".define" + extension, copy_map);
+
+			config checksum_cfg;
+
+			filesystem::data_tree_checksum().write(checksum_cfg);
+			write_file(fname_checksum, checksum_cfg);
+		} catch(filesystem::io_exception&) {
+			ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
+		}
+
+		return;
 	}
+
 	LOG_CACHE << "Loading plain config instead of cache\n";
+
 	preproc_map copy_map(make_copy_map());
 	read_configs(path, cfg, copy_map);
 	add_defines_map_diff(copy_map);
