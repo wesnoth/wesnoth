@@ -297,6 +297,9 @@ void tpreferences::setup_friends_list(twindow& window)
 
 	find_widget<tbutton>(&window, "remove", false).set_active(!acquaintances.empty());
 
+	friends_list.clear();
+	friend_names_.clear();
+
 	if (acquaintances.empty()) {
 		data["friend_icon"]["label"] = "misc/status-neutral.png";
 		data["friend_name"]["label"] = _("Empty list");
@@ -304,9 +307,6 @@ void tpreferences::setup_friends_list(twindow& window)
 
 		return;
 	}
-
-	friends_list.clear();
-	friend_names_.clear();
 
 	FOREACH(const AUTO& acquaintence, acquaintances)
 	{
