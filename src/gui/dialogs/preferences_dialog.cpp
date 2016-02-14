@@ -361,6 +361,18 @@ void tpreferences::add_friend_list_entry(const bool is_friend,
 	setup_friends_list(window);
 }
 
+void tpreferences::edit_friend_list_entry(tlistbox& friends,
+		ttext_box& textbox)
+{
+	const int sel = friends.get_selected_row();
+	if(sel < 0) {
+		return;
+	}
+	std::map<std::string, preferences::acquaintance>::const_iterator who = get_acquaintances().begin();
+	std::advance(who, sel);
+	textbox.set_value(who->second.get_nick() + " " + who->second.get_notes());
+}
+
 void tpreferences::remove_friend_list_entry(tlistbox& friends_list, 
 		ttext_box& textbox, twindow& window)
 {
@@ -637,6 +649,12 @@ void tpreferences::initialize_members(twindow& window)
 			boost::ref(friend_list),
 			boost::ref(textbox),
 			boost::ref(window)));
+
+	friend_list.set_callback_value_change(boost::bind(
+		&tpreferences::edit_friend_list_entry,
+		this,
+		boost::ref(friend_list),
+		boost::ref(textbox)));
 
 	friend_list.select_row(0);
 

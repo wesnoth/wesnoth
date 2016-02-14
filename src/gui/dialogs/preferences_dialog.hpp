@@ -64,6 +64,8 @@ private:
 	void add_friend_list_entry(const bool is_friend,
 		ttext_box& textbox, twindow& window);
 
+	void edit_friend_list_entry(tlistbox& friends, ttext_box& textbox);
+
 	void remove_friend_list_entry(tlistbox& friends_list, 
 		ttext_box& textbox, twindow& window);
 
