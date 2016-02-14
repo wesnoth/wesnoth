@@ -928,4 +928,7 @@ def resolve_unit_image(namespace, subdir, resource):
 # And this is for code that does syntax transformation
 baseindent = "    "
 
+# a constant to detect version control directories
+vcdir = ".git"
+
 # wmltools.py ends here
