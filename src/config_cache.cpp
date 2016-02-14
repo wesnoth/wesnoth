@@ -70,6 +70,7 @@ const preproc_map& config_cache::get_preproc_map() const
 void config_cache::clear_defines()
 {
 	LOG_CACHE << "Clearing defines map!" << std::endl;
+
 	defines_map_.clear();
 
 	//
@@ -80,7 +81,7 @@ void config_cache::clear_defines()
 	defines_map_["LOW_MEM"] = preproc_define();
 #endif
 
-#if defined(__APPLE__)
+#ifdef __APPLE__
 	defines_map_["APPLE"] = preproc_define();
 #endif
 
@@ -95,24 +96,24 @@ void config_cache::get_config(const std::string& path, config& cfg)
 void config_cache::write_file(std::string path, const config& cfg)
 {
 	filesystem::scoped_ostream stream = filesystem::ostream_file(path);
-	const bool gzip = true;
-	config_writer writer(*stream, gzip, game_config::cache_compression_level);
+	config_writer writer(*stream, true, game_config::cache_compression_level);
 	writer.write(cfg);
 }
-void config_cache::write_file(std::string path, const preproc_map& defines_map)
+
+void config_cache::write_file(std::string path, const preproc_map& defines)
 {
-	if(defines_map.empty()) {
+	if(defines.empty()) {
 		if(filesystem::file_exists(path)) {
 			filesystem::delete_directory(path);
 		}
 		return;
 	}
-	filesystem::scoped_ostream stream = filesystem::ostream_file(path);
-	const bool gzip = true;
-	config_writer writer(*stream, gzip, game_config::cache_compression_level);
 
-	// write all defines to stream
-	BOOST_FOREACH(const preproc_map::value_type &define, defines_map) {
+	filesystem::scoped_ostream stream = filesystem::ostream_file(path);
+	config_writer writer(*stream, true, game_config::cache_compression_level);
+
+	// Write all defines to stream.
+	BOOST_FOREACH(const preproc_map::value_type& define, defines) {
 		define.second.write(writer, define.first);
 	}
 }
@@ -133,7 +134,6 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 	return config_cache_transaction::instance().add_defines_map_diff(defines_map);
 }
 
-
 void config_cache::read_configs(const std::string& path, config& cfg, preproc_map& defines_map)
 {
 	//read the file and then write to the cache
@@ -150,20 +150,19 @@ void config_cache::read_cache(const std::string& path, config& cfg)
 
 	bool is_valid = true;
 
-	for(preproc_map::const_iterator i = defines_map_.begin(); i != defines_map_.end(); ++i) {
+	BOOST_FOREACH(const preproc_map::value_type& d, defines_map_) {
 		//
 		// Only WESNOTH_VERSION is allowed to be non-empty.
-		// FIXME: why? -- shadowm
 		//
-		if((!i->second.value.empty() || !i->second.arguments.empty()) &&
-		   i->first != "WESNOTH_VERSION")
+		if((!d.second.value.empty() || !d.second.arguments.empty()) &&
+		   d.first != "WESNOTH_VERSION")
 		{
 			is_valid = false;
-			ERR_CACHE << "Invalid preprocessor define: " << i->first << '\n';
+			ERR_CACHE << "Invalid preprocessor define: " << d.first << '\n';
 			break;
 		}
 
-		defines_string << " " << i->first;
+		defines_string << " " << d.first;
 	}
 
 	// Do cache check only if define map is valid and
