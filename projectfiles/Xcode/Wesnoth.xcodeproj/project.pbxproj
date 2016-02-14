@@ -121,6 +121,8 @@
 		91B622241B76C0F400B00E0F /* libboost_threadw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_threadw.dylib */; };
 		91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D01BA11A5200B25CF1 /* unit_creator.cpp */; };
 		91ECD5D51BA11A6400B25CF1 /* mp_replay_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D31BA11A6400B25CF1 /* mp_replay_controller.cpp */; };
+		91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462821C71139B0050A9C9 /* preferences_dialog.cpp */; };
+		91F462851C71139C0050A9C9 /* preferences_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462821C71139B0050A9C9 /* preferences_dialog.cpp */; };
 		B504B94C1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		B504B94D1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		B508D13F10013BF900B12852 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508D13E10013BF900B12852 /* Growl.framework */; };
@@ -1374,6 +1376,8 @@
 		91ECD5D11BA11A5200B25CF1 /* unit_creator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_creator.hpp; sourceTree = "<group>"; };
 		91ECD5D31BA11A6400B25CF1 /* mp_replay_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_replay_controller.cpp; sourceTree = "<group>"; };
 		91ECD5D41BA11A6400B25CF1 /* mp_replay_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_replay_controller.hpp; sourceTree = "<group>"; };
+		91F462821C71139B0050A9C9 /* preferences_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = preferences_dialog.cpp; sourceTree = "<group>"; };
+		91F462831C71139B0050A9C9 /* preferences_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = preferences_dialog.hpp; sourceTree = "<group>"; };
 		B504B94A1284C06B00261FE9 /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
 		B504B94B1284C06B00261FE9 /* tips.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tips.hpp; sourceTree = "<group>"; };
 		B508D13E10013BF900B12852 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = lib/Growl.framework; sourceTree = "<group>"; };
@@ -4018,6 +4022,8 @@
 				F4EF0D7213AD52EA003C701D /* network_transmission.hpp */,
 				4944F4101354FB970027E614 /* popup.cpp */,
 				F40C04831706613100B4DA68 /* popup.hpp */,
+				91F462821C71139B0050A9C9 /* preferences_dialog.cpp */,
+				91F462831C71139B0050A9C9 /* preferences_dialog.hpp */,
 				EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */,
 				EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */,
 				B5CE470312A041EF00D665EE /* simple_item_selector.cpp */,
@@ -5026,6 +5032,7 @@
 				911F2DB01BA086FA00E3102E /* alpha.cpp in Sources */,
 				919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */,
 				919B37FC1BAF7A9D00E0094C /* synced_choice_wait.cpp in Sources */,
+				91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5349,6 +5356,7 @@
 				B5FCE93A1104C2A50081F1DF /* window.cpp in Sources */,
 				B597C5A40FACD6CA00CE81F5 /* wml_exception.cpp in Sources */,
 				B597C57B0FACD6CA00CE81F5 /* wml_message.cpp in Sources */,
+				91F462851C71139C0050A9C9 /* preferences_dialog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
