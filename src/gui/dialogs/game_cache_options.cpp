@@ -168,17 +168,6 @@ bool tgame_cache_options::clean_cache()
 
 void tgame_cache_options::purge_cache_callback(CVideo& video)
 {
-	if(show_message(video,
-					 _("Purge Cache"),
-					 _("Are you sure you want to purge the game data cache? "
-					   "All files in the cache directory will be deleted, and "
-					   "the cache will be regenerated next time it is "
-					   "required."),
-					 gui2::tmessage::yes_no_buttons) != gui2::twindow::OK)
-	{
-		return;
-	}
-
 	if(purge_cache()) {
 		show_message(video,
 					 _("Cache Purged"),
