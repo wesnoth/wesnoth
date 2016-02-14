@@ -76,13 +76,18 @@ REGISTER_DIALOG(game_cache_options)
 
 tgame_cache_options::tgame_cache_options()
 	: cache_path_(filesystem::get_cache_dir())
+	, clean_button_(NULL)
+	, purge_button_(NULL)
 	, size_label_(NULL)
 {
 }
 
 void tgame_cache_options::pre_show(CVideo& video, twindow& window)
 {
+	clean_button_ = &find_widget<tbutton>(&window, "clean", false);
+	purge_button_ = &find_widget<tbutton>(&window, "purge", false);
 	size_label_ = &find_widget<tlabel>(&window, "size", false);
+
 	update_cache_size_display();
 
 	ttext_& path_box = find_widget<ttext_>(&window, "path", false);
@@ -103,14 +108,12 @@ void tgame_cache_options::pre_show(CVideo& video, twindow& window)
 									boost::bind(&tgame_cache_options::browse_cache_callback,
 												this));
 
-	tbutton& clean = find_widget<tbutton>(&window, "clean", false);
-	connect_signal_mouse_left_click(clean,
+	connect_signal_mouse_left_click(*clean_button_,
 									boost::bind(&tgame_cache_options::clean_cache_callback,
 												this,
 												boost::ref(video)));
 
-	tbutton& purge = find_widget<tbutton>(&window, "purge", false);
-	connect_signal_mouse_left_click(purge,
+	connect_signal_mouse_left_click(*purge_button_,
 									boost::bind(&tgame_cache_options::purge_cache_callback,
 												this,
 												boost::ref(video)));
@@ -133,6 +136,11 @@ void tgame_cache_options::update_cache_size_display()
 		size_label_->set_label(_("dir_size^Unknown"));
 	} else {
 		size_label_->set_label(utils::si_string(size, true, _("unit_byte^B")));
+	}
+
+	if(size == 0) {
+		clean_button_->set_active(false);
+		purge_button_->set_active(false);
 	}
 }
 
