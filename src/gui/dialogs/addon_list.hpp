@@ -15,8 +15,11 @@
 #ifndef GUI_DIALOGS_ADDON_LIST_HPP_INCLUDED
 #define GUI_DIALOGS_ADDON_LIST_HPP_INCLUDED
 
+#include "addon/info.hpp"
+#include "addon/state.hpp"
+
 #include "gui/dialogs/dialog.hpp"
-#include "../widgets/generator.hpp"
+#include "gui/widgets/generator.hpp"
 #include "gui/widgets/pane.hpp"
 
 class config;
@@ -32,10 +35,7 @@ class tselectable_;
 class taddon_list : public tdialog
 {
 public:
-	explicit taddon_list(const config& cfg)
-		: orders_(), cfg_(cfg), cfg_iterators_(cfg_.child_range("campaign"))
-	{
-	}
+	explicit taddon_list(const config& cfg);
 
 private:
 	void register_sort_button(twindow& window, const std::string& id, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down);
@@ -76,6 +76,10 @@ private:
 	 * Debug iterators for testing with --new-widgets
 	 */
 	config::const_child_itors cfg_iterators_;
+
+	addons_list addons_;
+
+	addons_tracking_list tracking_info_;
 
 	/**
 	 * Debug function to load a single campaign.
