@@ -62,14 +62,6 @@ config_cache::config_cache()
 	clear_defines();
 }
 
-struct output
-{
-	void operator()(const preproc_map::value_type& def)
-	{
-		DBG_CACHE << "key: " << def.first << " " << def.second << std::endl;
-	}
-};
-
 const preproc_map& config_cache::get_preproc_map() const
 {
 	return defines_map_;
