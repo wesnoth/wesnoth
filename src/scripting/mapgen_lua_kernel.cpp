@@ -94,7 +94,11 @@ static int intf_find_path(lua_State *L)
 	lua_pathfind_cost_calculator calc(L, 5);
 	int width = luaL_checkinteger(L, 6);
 	int height = luaL_checkinteger(L, 7);
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, &calc, width, height, NULL);
+	bool border = false;
+	if(lua_isboolean(L, 8)) {
+		border = luaW_toboolean(L, 8);
+	}
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, &calc, width, height, NULL, border);
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);

@@ -71,6 +71,9 @@ struct map_location {
 	inline bool valid(const int parWidth, const int parHeight) const
 	{ return ((x >= 0) && (y >= 0) && (x < parWidth) && (y < parHeight)); }
 
+	inline bool valid(const int parWidth, const int parHeight, const int border) const
+	{ return ((x + border >= 0) && (y + border >= 0) && (x < parWidth + border) && (y < parHeight + border)); }
+
 	int x, y;
 	bool matches_range(const std::string& xloc, const std::string& yloc) const;
 
