@@ -32,6 +32,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "preferences.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
@@ -894,6 +895,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& color, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {
+	size = preferences::font_scaled(size);
 	if (gui_surface.null()) {
 		text_surface const &u = text_cache::find(text_surface(text, size, color, style));
 		return sdl::create_rect(0, 0, u.width(), u.height());

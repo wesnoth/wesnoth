@@ -29,6 +29,7 @@
 #include "serialization/unicode.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
+#include "preferences.hpp"
 
 namespace font {
 
@@ -323,6 +324,7 @@ static void cut_word(std::string& line, std::string& word, int font_size, int st
 	std::string tmp = line;
 	utf8::iterator tc(word);
 	bool first = true;
+	font_size = preferences::font_scaled(font_size);
 
 	for(;tc != utf8::iterator::end(word); ++tc) {
 		tmp.append(tc.substr().first, tc.substr().second);
@@ -509,7 +511,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 			start_of_line = true;
 		} else {
 
-			const size_t word_width = line_size(current_word, font_sz, style).w;
+			const size_t word_width = line_size(current_word, preferences::font_scaled(font_sz), style).w;
 
 			line_width += word_width;
 
@@ -528,7 +530,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 		}
 
 		if(line_break || (current_word.empty() && ch == end)) {
-			SDL_Rect size = line_size(current_line, font_sz, style);
+			SDL_Rect size = line_size(current_line, preferences::font_scaled(font_sz), style);
 			if(max_height > 0 && current_height + size.h >= size_t(max_height)) {
 				return wrapped_text;
 			}
