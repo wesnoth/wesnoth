@@ -1010,9 +1010,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	const map_location attacker_loc = att_loc;
 	const map_location defender_loc = def_loc;
 
-	//may fire event and modify things
-	pc_.get_undo_stack().clear();
-
 	unit_map::iterator attacker = find_unit(attacker_loc);
 	if(!attacker
 			|| attacker->side() != side_num_
