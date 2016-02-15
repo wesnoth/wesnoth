@@ -314,7 +314,9 @@ namespace {
 		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
 		{
 			//Ensure we have a config at the given explicit position.
-			get_child_at<vit>(*state.child_, state.key_, state.index_);
+			if(state.index_ > 0) {
+				get_child_at<vit>(*state.child_, state.key_, state.index_ - 1);
+			}
 			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
 		}
 	};
