@@ -457,8 +457,6 @@ bool undo_list::apply_shroud_changes() const
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
 		return false;
 	}
-	// If we clear fog or shroud outside a synced context we get OOS
-	assert(synced_context::is_synced());
 	shroud_clearer clearer;
 	bool cleared_shroud = false;
 	const size_t list_size = undos_.size();
@@ -482,9 +480,16 @@ bool undo_list::apply_shroud_changes() const
 		}
 	}
 
+
 	if (!cleared_shroud) {
 		return false;
 	}
+	// If we clear fog or shroud outside a synced context we get OOS
+	// Note that it can happen that we call this function from ouside a synced context
+	// when we reload  a game and want to prevent undoing. But in this case this is
+	// preceeded by a manual update_shroud call so that cleared_shroud is false.
+	assert(synced_context::is_synced());
+
 	// The entire stack needs to be cleared in order to preserve replays.
 	// (The events that fired might depend on current unit positions.)
 	// (Also the events that did not fire might depend on unit positions (they whould have fired if the unit would have standed on different positions, for example this can happen if they have a [have_unit] in [filter_condition]))
