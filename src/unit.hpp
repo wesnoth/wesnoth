@@ -173,6 +173,7 @@ public:
 	void set_experience(int xp) { experience_ = xp; }
 	void set_recall_cost(int recall_cost) { recall_cost_ = recall_cost; }
 	int level() const { return level_; }
+	void set_level(int level) { level_ = level; }
 	int recall_cost() const { return recall_cost_; }
 	void remove_movement_ai();
 	void remove_attacks_ai();
