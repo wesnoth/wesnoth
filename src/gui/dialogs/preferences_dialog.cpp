@@ -277,10 +277,10 @@ void tpreferences::bind_status_label(T& parent, const std::string& label_id,
 }
 
 void tpreferences::bind_status_label(tslider& parent, const std::string& label_id,
-		twidget& find_in)
+		twidget& find_in, const std::string& suffix)
 {
 	tcontrol& label = find_widget<tcontrol>(&find_in, label_id, false);
-	label.set_label(lexical_cast<std::string>(parent.get_value_label()));
+	label.set_label(lexical_cast<std::string>(parent.get_value_label()) + suffix);
 
 	connect_signal_notify_modified(parent, boost::bind(
 		&tpreferences::status_label_callback<tslider>,
@@ -553,6 +553,11 @@ void tpreferences::initialize_members(twindow& window)
 	setup_toggle_slider_pair("animate_units_idle", "idle_anim_frequency",
 		idle_anim(), idle_anim_rate(),
 		set_idle_anim, set_idle_anim_rate, window);
+
+	/** FONT SCALING **/
+	tslider& scale_slider = find_widget<tslider>(&window, "scaling_slider", false);
+	setup_single_slider("scaling_slider", font_scaling(), set_font_scaling, window);
+	bind_status_label(scale_slider, "scaling_value", window, "%");
 
 	/** SELECT THEME **/
 	connect_signal_mouse_left_click(

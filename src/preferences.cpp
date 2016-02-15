@@ -411,6 +411,22 @@ void save_turbo_speed(const double speed)
 {
 	prefs["turbo_speed"] = speed;
 }
+	
+int font_scaling()
+{
+	// Clip at 50 because if it's too low it'll cause crashes
+	return std::max<int>(50, prefs["font_scale"].to_int(100));
+}
+
+void set_font_scaling(int scale)
+{
+	prefs["font_scale"] = scale;
+}
+
+int font_scaled(int size)
+{
+	return (size * font_scaling()) / 100;
+}
 
 bool idle_anim()
 {

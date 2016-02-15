@@ -172,7 +172,8 @@ private:
 	void bind_status_label(
 		tslider& parent,
 		const std::string& label_id,
-		twidget& find_in);
+		twidget& find_in,
+		const std::string& suffix = "");
 
 	template <typename T>
 	void status_label_callback(T& parent_widget,
