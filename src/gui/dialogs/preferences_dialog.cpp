@@ -18,12 +18,15 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 
 #include "game_preferences.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "preferences.hpp"
 #include "preferences_display.hpp"
 #include "lobby_preferences.hpp"
 #include "gettext.hpp"
 #include "video.hpp"
-
+#include "formula_string_utils.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 
 // Sub-dialog includes
@@ -69,7 +72,28 @@ struct advanced_preferences_sorter
 			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
 	}
 };
-
+template<hotkey::scope scope, bool reverse>
+struct hotkey_sort_by_type
+{
+	hotkey_sort_by_type(const hotkey::t_hotkey_command_list& l) : hotkey_commands_(&l) {}
+	bool operator()(int lhs, int rhs) const
+	{
+		return reverse ? (*hotkey_commands_)[lhs].scope[scope] < (*hotkey_commands_)[rhs].scope[scope]
+		               : (*hotkey_commands_)[lhs].scope[scope] > (*hotkey_commands_)[rhs].scope[scope];
+	}
+	const hotkey::t_hotkey_command_list* hotkey_commands_;
+};
+template<bool reverse>
+struct hotkey_sort_by_desc
+{
+	hotkey_sort_by_desc(const hotkey::t_hotkey_command_list& l) : hotkey_commands_(&l) {}
+	bool operator()(int lhs, int rhs) const
+	{
+		return reverse ? (*hotkey_commands_)[lhs].description.str() < (*hotkey_commands_)[rhs].description.str()
+		               : (*hotkey_commands_)[lhs].description.str() > (*hotkey_commands_)[rhs].description.str();
+	}
+	const hotkey::t_hotkey_command_list* hotkey_commands_;
+};
 const std::string bool_to_display_string(bool value)
 {
 	return value ? _("yes") : _("no");
@@ -830,6 +854,113 @@ void tpreferences::initialize_members(twindow& window)
 #endif
 
 	advanced.select_row(0);
+
+	//
+	// HOTKEYS PANEL
+	//
+	row_data.clear();
+	t_string& row_action = row_data["lbl_desc"]["label"];
+	t_string& row_hotkey = row_data["lbl_hotkey"]["label"];
+	t_string& row_is_g = row_data["lbl_is_game"]["label"];
+	t_string& row_is_e = row_data["lbl_is_editor"]["label"];
+	t_string& row_is_t = row_data["lbl_is_titlescreen"]["label"];
+	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
+	FOREACH(const AUTO& hotkey_item, hotkey::get_hotkey_commands())
+	{
+
+		row_action = hotkey_item.description;
+		row_hotkey = hotkey::get_names(hotkey_item.command);
+		//TODO: maybe use symbos/colors instead of yes no to be language independed and to save space.
+		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME] ? _("yes") : _("no");
+		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR] ? _("yes") : _("no");
+		row_is_t = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? _("yes") : _("no");
+		hotkey_list.add_row(row_data);
+	}
+	std::vector<tgenerator_::torder_func> order_funcs(2);
+	order_funcs[0] = hotkey_sort_by_desc<false>(hotkey::get_hotkey_commands());
+	order_funcs[1] = hotkey_sort_by_desc<true>(hotkey::get_hotkey_commands());
+	hotkey_list.set_column_order(0, order_funcs);
+	hotkey_list.set_column_order(1, order_funcs);
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, false>(hotkey::get_hotkey_commands());
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, true>(hotkey::get_hotkey_commands());
+	hotkey_list.set_column_order(2, order_funcs);
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, false>(hotkey::get_hotkey_commands());
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, true>(hotkey::get_hotkey_commands());
+	hotkey_list.set_column_order(3, order_funcs);
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, false>(hotkey::get_hotkey_commands());
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, true>(hotkey::get_hotkey_commands());
+	hotkey_list.set_column_order(4, order_funcs);
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "btn_add_hotkey", false), boost::bind(
+			&tpreferences::add_hotkey_callback,
+			this,
+			boost::ref(hotkey_list)));
+
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "btn_clear_hotkey", false), boost::bind(
+			&tpreferences::remove_hotkey_callback,
+			this,
+			boost::ref(hotkey_list)));
+}
+
+void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
+{
+	CVideo& video = hotkeys.get_window()->video();
+	int row_number = hotkeys.get_selected_row();
+	const hotkey::hotkey_command& hotkey_item = hotkey::get_hotkey_commands()[row_number];
+	hotkey::hotkey_ptr newhk = hotkey::show_binding_dialog(video, hotkey_item.command);
+	hotkey::hotkey_ptr oldhk;
+
+	// only if not cancelled.
+	if (newhk.get() == NULL) {
+		return;
+	}
+	BOOST_FOREACH(const hotkey::hotkey_ptr& hk, hotkey::get_hotkeys()) {
+		if(newhk->bindings_equal(hk)) {
+			oldhk = hk;
+		}
+	}
+	hotkey::scope_changer scope_restorer;
+	hotkey::set_active_scopes(hotkey_item.scope);
+	if(oldhk && oldhk->get_command() == hotkey_item.command) {
+		return;
+	}
+	if (oldhk) {
+
+		utils::string_map symbols;
+		symbols["hotkey_sequence"]   = oldhk->get_name();
+		symbols["old_hotkey_action"] = hotkey::get_description(oldhk->get_command());
+		symbols["new_hotkey_action"] = hotkey::get_description(newhk->get_command());
+
+		std::string text = vgettext("\"$hotkey_sequence|\" is in use by \n\"$old_hotkey_action|\". Do you wish to reassign it to \"$new_hotkey_action|\"?", symbols);
+
+		const int res = gui2::show_message(video,
+			_("Reassign Hotkey"), text,
+			gui2::tmessage::yes_no_buttons);
+		if (res != gui2::twindow::OK) {
+			return;
+		}
+	}
+	hotkey::add_hotkey(newhk);
+	//Wew need to recalculate all hotkey names in because we migth have removed an hotkey from another command.
+	for(size_t i = 0; i < hotkeys.get_item_count(); ++i) {
+		const hotkey::hotkey_command& hotkey_item_row = hotkey::get_hotkey_commands()[i];
+		find_widget<tlabel>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));	
+	}
+}
+void tpreferences::default_hotkey_callback(tlistbox& hotkeys)
+{
+	clear_hotkeys();
+	gui2::show_transient_message(hotkeys.get_window()->video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
+	//TODO: updatet listbox& hotkeys with the new values, note that clearing hotkeys might remove some wml defined hotkeys from the list.
+	//So we eigher have to recalculate the layout or 
+}
+void tpreferences::remove_hotkey_callback(tlistbox& hotkeys)
+{
+	int row_number = hotkeys.get_selected_row();
+	const hotkey::hotkey_command& hotkey_item = hotkey::get_hotkey_commands()[row_number];
+	hotkey::clear_hotkeys(hotkey_item.command);
+	find_widget<tlabel>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
 }
 
 void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window)
@@ -919,6 +1050,7 @@ void tpreferences::pre_show(CVideo& /*video*/, twindow& window)
 	add_pager_row(selector, "music.png",  _("Prefs section^Sound"));
 	add_pager_row(selector, "multiplayer.png", _("Prefs section^Multiplayer"));
 	add_pager_row(selector, "advanced.png", _("Prefs section^Advanced"));
+	add_pager_row(selector, "advanced.png", _("Prefs section^Hotkeys"));
 
 	// Initializes tabs for the various pages. This should be done before
 	// setting up the member callbacks.

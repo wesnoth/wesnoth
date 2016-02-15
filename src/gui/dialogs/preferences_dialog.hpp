@@ -86,6 +86,9 @@ private:
 	void accl_speed_slider_callback(tslider& slider);
 	void max_autosaves_slider_callback(tslider& slider, tcontrol& status_label);
 	void font_scaling_slider_callback(tslider& slider);
+	void add_hotkey_callback(tlistbox& hotkeys);
+	void remove_hotkey_callback(tlistbox& hotkeys);
+	void default_hotkey_callback(tlistbox& hotkeys);
 
 	/**
 	 * Sets the initial state and callback for a simple bool-state toggle button
