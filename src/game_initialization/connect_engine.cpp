@@ -999,7 +999,8 @@ config side_engine::new_config() const
 		faction.remove_attribute("id");
 		faction.remove_attribute("name");
 		faction.remove_attribute("image");
-		faction.remove_attribute("flag_rgb");
+		faction.remove_attribute("gender");
+		faction.remove_attribute("type");
 		res.append(faction);
 	}
 
