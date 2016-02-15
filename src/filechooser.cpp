@@ -18,6 +18,7 @@
 
 #include "video.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "filechooser.hpp"
@@ -30,7 +31,19 @@ namespace dialogs
 int show_file_chooser_dialog(CVideo& video, std::string &filename,
                              std::string const &title, bool show_directory_buttons,
 							 const std::string& type_a_head,
-							 int xloc, int yloc) {
+							 int xloc, int yloc)
+{
+	if(true) {
+		gui2::tfile_dialog dlg;
+		dlg.set_path(filename).set_title(title).set_read_only(!show_directory_buttons).set_filename(type_a_head);
+		if(dlg.show(video)) {
+			filename = dlg.path();
+			std::cerr << filename << '\n';
+			return 0;
+		}
+
+		return -1;
+	}
 
 	file_dialog d(video, filename, title, "", show_directory_buttons);
 	if (!type_a_head.empty())
@@ -46,7 +59,19 @@ int show_file_chooser_dialog_save(CVideo& video, std::string &filename,
                              const std::string& default_file_name,
                              bool show_directory_buttons,
 							 const std::string& type_a_head,
-							 int xloc, int yloc) {
+							 int xloc, int yloc)
+{
+	if(true) {
+		gui2::tfile_dialog dlg;
+		dlg.set_path(filename).set_title(title).set_read_only(!show_directory_buttons).set_filename(type_a_head).set_save_mode(true);
+		if(dlg.show(video)) {
+			filename = dlg.path();
+			std::cerr << filename << '\n';
+			return 0;
+		}
+
+		return -1;
+	}
 
 	file_dialog d(video, filename, title, default_file_name, show_directory_buttons);
     d.set_autocomplete(false);

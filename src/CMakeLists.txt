@@ -787,6 +787,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/editor/resize_map.cpp
 	gui/dialogs/editor/set_starting_position.cpp
 	gui/dialogs/end_credits.cpp
+	gui/dialogs/file_dialog.cpp
 	gui/dialogs/folder_create.cpp
 	gui/dialogs/formula_debugger.cpp
 	gui/dialogs/game_cache_options.cpp

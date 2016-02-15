@@ -51,6 +51,7 @@
 #include "gui/dialogs/editor/resize_map.hpp"
 #include "gui/dialogs/editor/set_starting_position.hpp"
 #include "gui/dialogs/end_credits.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
@@ -388,6 +389,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::teditor_resize_map>();
 	test<gui2::teditor_set_starting_position>();
 	test<gui2::tfaction_select>();
+	test<gui2::tfile_dialog>();
 	test<gui2::tfolder_create>();
 	test<gui2::tformula_debugger>();
 	test<gui2::tgame_cache_options>();
@@ -1015,6 +1017,15 @@ struct twrapper<gui2::teditor_resize_map>
 	gui2::teditor_resize_map* create()
 	{
 		return new gui2::teditor_resize_map(width, height, expand_direction, copy);
+	}
+};
+
+template<>
+struct twrapper<gui2::tfile_dialog>
+{
+	gui2::tfile_dialog* create()
+	{
+		return new gui2::tfile_dialog();
 	}
 };
 
