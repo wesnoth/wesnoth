@@ -76,6 +76,7 @@ static int intf_random(lua_State *L)
  * - Args 3,4: destination.
  * - Arg 5: cost function
  * - Args 6,7 size of map.
+ * - Arg 8 include border.
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
