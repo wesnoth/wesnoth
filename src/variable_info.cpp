@@ -159,7 +159,7 @@ namespace
 		char* endptr;
 		int res = strtol(index_str, &endptr, 10);
 
-		if (*endptr != ']' || res > int(game_config::max_loop))
+		if (*endptr != ']' || res > int(game_config::max_loop) || endptr == index_str)
 		{
 			throw invalid_variablename_exception();
 		}
