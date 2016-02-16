@@ -203,7 +203,7 @@ public:
 		/** Helper struct to store information about the tips. */
 		struct ttip
 		{
-			ttip(const config& cfg);
+			ttip(const config& cfg, const std::string& tagname);
 
 			std::string id;
 		};
