@@ -263,7 +263,8 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 	static luaL_Reg const callbacks[] = {
 		{ "compare_versions",         &intf_compare_versions         		},
-		{ "have_file",                &lua_fileops::intf_have_file              },
+		{ "have_file",                &lua_fileops::intf_have_file          },
+		{ "read_file",                &lua_fileops::intf_read_file          },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
 		{ "tovconfig",                &lua_common::intf_tovconfig		},
 		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
