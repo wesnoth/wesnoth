@@ -26,6 +26,7 @@
 #include <string>
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/algorithm/string/predicate.hpp>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -38,6 +39,53 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 namespace lua_fileops {
+/// resolves @a filename where @a currentdir is the current directory, note that @a currentdir
+/// is no absolute directory
+/// @returns true iff the filename was sucesful resolved.
+static bool resolve_filename(std::string& filename, const std::string& currentdir)
+{
+	if(filename.size() < 2) {
+		return false;
+	}
+	if(filename[0] == '.' && filename[1] == '/') {
+		filename = currentdir + filename.substr(1);
+	}
+	if(std::find(filename.begin(), filename.end(), '\\') != filename.end()) {
+		return false;
+	}
+	//resolve /./
+	while(true) {
+		size_t pos = filename.find("/./");
+		if(pos == std::string::npos) {
+			break;
+		}
+		filename = filename.replace(pos, 2, "");
+	}
+	//resolve //
+	while(true) {
+		size_t pos = filename.find("//");
+		if(pos == std::string::npos) {
+			break;
+		}
+		filename = filename.replace(pos, 1, "");
+	}
+	//resolve /../
+	while(true) {
+		size_t pos = filename.find("/..");
+		if(pos == std::string::npos) {
+			break;
+		}
+		size_t pos2 = filename.find_last_of('/', pos - 1);
+		if(pos == std::string::npos || pos2 >= pos) {
+			return false;
+		}
+		filename = filename.replace(pos2, pos- pos2 + 3, "");
+	}
+	if(filename.find("..") != std::string::npos) {
+		return false;
+	}
+	return true;
+}
 
 /**
  * Checks if a file exists (not necessarily a Lua script).
@@ -83,10 +131,9 @@ public:
 
 	static int lua_loadfile(lua_State *L, const std::string& fname, const std::string& relativename)
 	{
-		UNUSED(relativename);
 		lua_filestream lfs(fname);
 		//lua uses '@' to know that this is a file (as opposed to something loaded via loadstring )
-		std::string chunkname = '@' + fname;
+		std::string chunkname = '@' + relativename;
 		LOG_LUA << "starting to read from " << fname << "\n";
 		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), NULL);
 	}
@@ -109,14 +156,16 @@ int load_file(lua_State *L)
 	if(lua_getstack(L, 1, &ar)) {
 		lua_getinfo(L, "S", &ar);
 		if(ar.source[0] == '@') {
-			// TODO: i don't think it is possible to lua change the .source field by lua but i would still be good if ar.source would contains a relative string (~add-ons/...) which get_wml_location would then expand.
 			current_dir = filesystem::directory_name(std::string(ar.source + 1));
 		}
 	}
-	std::string p = filesystem::get_wml_location(m, current_dir);
-	if (p.empty())
+	if(!resolve_filename(m, current_dir)) {
 		return luaL_argerror(L, -1, "file not found");
-
+	}
+	std::string p = filesystem::get_wml_location(m);
+	if (p.empty()) {
+		return luaL_argerror(L, -1, "file not found");
+	}
 #if 1
 	try
 	{
