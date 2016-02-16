@@ -465,11 +465,10 @@ void tpreferences::initialize_members(twindow& window)
 		delete_saves(), set_delete_saves, window);
 
 	/** MAX AUTO SAVES **/
-	setup_single_slider("max_saves_slider",
-		autosavemax(), set_autosavemax, window);
-
 	tslider& autosaves_slider = find_widget<tslider>(&window, "max_saves_slider", false);
 	tcontrol& autosaves_label = find_widget<tcontrol>(&window, "max_saves_value", false);
+
+	autosaves_slider.set_value(autosavemax());
 
 	autosaves_label.set_label(get_max_autosaves_status_label(autosaves_slider));
 	autosaves_label.set_use_markup(true);
@@ -978,6 +977,7 @@ void tpreferences::accl_speed_slider_callback(tslider& slider)
 // Special Max Autosaves slider callback
 void tpreferences::max_autosaves_slider_callback(tslider& slider, tcontrol& status_label)
 {
+	set_autosavemax(slider.get_value());
 	status_label.set_label(get_max_autosaves_status_label(slider));
 }
 
