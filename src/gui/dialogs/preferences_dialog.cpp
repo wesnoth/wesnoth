@@ -171,7 +171,8 @@ void tpreferences::setup_single_toggle(
 		const std::string& widget_id,
 		const bool start_value,
 		boost::function<void(bool)> callback,
-		twidget& find_in)
+		twidget& find_in,
+		const bool inverted)
 {
 	ttoggle_button& widget =
 		find_widget<ttoggle_button>(&find_in, widget_id, false);
@@ -180,7 +181,7 @@ void tpreferences::setup_single_toggle(
 
 	connect_signal_mouse_left_click(widget, boost::bind(
 		&tpreferences::single_toggle_callback,
-		this, boost::ref(widget), callback));
+		this, boost::ref(widget), callback, inverted));
 }
 
 void tpreferences::setup_toggle_slider_pair(
@@ -433,7 +434,7 @@ void tpreferences::initialize_members(twindow& window)
 
 	/** SKIP AI MOVES **/
 	setup_single_toggle("skip_ai_moves",
-		show_ai_moves(), set_show_ai_moves, window);
+		!show_ai_moves(), set_show_ai_moves, window, true);
 
 	/** DISABLE AUTO MOVES **/
 	setup_single_toggle("disable_auto_moves",
@@ -907,9 +908,10 @@ void tpreferences::set_visible_page(twindow& window, unsigned int page, const st
 }
 
 void tpreferences::single_toggle_callback(const ttoggle_button& widget,
-		boost::function<void(bool)> setter)
+		boost::function<void(bool)> setter,
+		const bool inverted)
 {
-	setter(widget.get_value_bool());
+	setter(inverted ? !widget.get_value_bool() : widget.get_value_bool());
 }
 
 void tpreferences::toggle_slider_pair_callback(const ttoggle_button& toggle_widget,

@@ -90,10 +90,12 @@ private:
 		const std::string& widget_id,
 		const bool start_value,
 		boost::function<void(bool)> callback,
-		twidget& find_in);
+		twidget& find_in,
+		const bool inverted = false);
 
 	void single_toggle_callback(const ttoggle_button& widget,
-		boost::function<void(bool)> setter);
+		boost::function<void(bool)> setter,
+		const bool inverted);
 
 	/**
 	 * Sets the initial state and callback for a bool-state toggle button/slider
