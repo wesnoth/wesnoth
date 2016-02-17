@@ -30,6 +30,7 @@
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/mp_alerts_options.hpp"
+#include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -837,7 +838,7 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 		}
 
 		if (selected_field == "orb_color") {
-			// TODO
+			gui2::tselect_orb_colors::display(window.video());
 		}
 
 		// Add more options here as needed
