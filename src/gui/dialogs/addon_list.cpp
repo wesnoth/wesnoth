@@ -22,8 +22,11 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.tpp"
+#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/drawing.hpp"
+#include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -40,6 +43,8 @@
 #include "marked-up_text.hpp"
 #include "font.hpp"
 #include "formatter.hpp"
+#include "preferences.hpp"
+#include "strftime.hpp"
 
 #include "config.hpp"
 
@@ -121,6 +126,7 @@ taddon_list::taddon_list(const config& cfg)
 	, cfg_iterators_(cfg_.child_range("campaign"))
 	, addons_()
 	, tracking_info_()
+	, ids_()
 {
 	read_addons_list(cfg, addons_);
 }
@@ -314,7 +320,8 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 		FOREACH(const AUTO & c, cfg_.child_range("campaign"))
 		{
-			const addon_info& info = addon_at(c["name"], addons_);
+			ids_.push_back(c["name"]);
+			const addon_info& info = addon_at(ids_.back(), addons_);
 			tracking_info_[info.id] = get_addon_tracking_info(info);
 
 			std::map<std::string, string_map> data;
@@ -358,7 +365,61 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 		filter_box.set_text_changed_callback(
 			boost::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+		connect_signal_notify_modified(list,
+				boost::bind(&taddon_list::on_addon_select,
+				*this,
+				boost::ref(window)));
+#else
+		list.set_callback_value_change(
+				dialog_callback<taddon_list, &taddon_list::on_addon_select>);
+#endif
+
+		on_addon_select(window);
 	}
+}
+
+static std::string format_addon_time(time_t time)
+{
+	if(time) {
+		char buf[1024] = { 0 };
+		struct std::tm* const t = std::localtime(&time);
+
+		const char* format = preferences::use_twelve_hour_clock_format()
+									 ? "%Y-%m-%d %I:%M %p"
+									 : "%Y-%m-%d %H:%M";
+
+		if(util::strftime(buf, sizeof(buf), format, t)) {
+			return buf;
+		}
+	}
+
+	return utils::unicode_em_dash;
+}
+
+void taddon_list::on_addon_select(twindow& window)
+{
+	const int index = find_widget<tlistbox>(&window, "addons", false).get_selected_row();
+
+	const addon_info& info = addon_at(ids_[index], addons_);
+
+	find_widget<tdrawing>(&window, "image", false).set_label(info.display_icon());
+
+	find_widget<tcontrol>(&window, "title", false).set_label(info.display_title());
+	find_widget<tcontrol>(&window, "description", false).set_label(info.description);
+	find_widget<tcontrol>(&window, "version", false).set_label(info.version.str());
+	find_widget<tcontrol>(&window, "author", false).set_label(info.author);
+	find_widget<tcontrol>(&window, "type", false).set_label(info.display_type());
+
+	tcontrol& status = find_widget<tcontrol>(&window, "status", false);
+	status.set_label(describe_addon_status(tracking_info_[info.id]));
+	status.set_use_markup(true);
+
+	find_widget<tcontrol>(&window, "size", false).set_label(size_display_string(info.size));
+	find_widget<tcontrol>(&window, "downloads", false).set_label(lexical_cast<std::string>(info.downloads));
+	find_widget<tcontrol>(&window, "created", false).set_label(format_addon_time(info.created));
+	find_widget<tcontrol>(&window, "updated", false).set_label(format_addon_time(info.updated));
 }
 
 void taddon_list::create_campaign(tpane& pane, const config& campaign)

@@ -53,7 +53,7 @@ private:
 	 *                            expand.
 	 */
 	void expand(tgrid& grid, twidget& w);
-
+	void on_addon_select(twindow& window);
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -80,6 +80,8 @@ private:
 	addons_list addons_;
 
 	addons_tracking_list tracking_info_;
+
+	std::vector<std::string> ids_;
 
 	/**
 	 * Debug function to load a single campaign.
