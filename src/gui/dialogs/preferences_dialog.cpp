@@ -80,7 +80,6 @@ const std::string bool_to_display_string(bool value)
 
 namespace gui2 {
 
-// TODO: probably should use a namespace alias instead
 using namespace preferences;
 
 REGISTER_DIALOG(preferences)
@@ -835,10 +834,10 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
 		if (selected_field == "advanced_graphic_options") {
 			gui2::tadvanced_graphics_options::display(window.video());
-		}
-
-		if (selected_field == "orb_color") {
+		} else if (selected_field == "orb_color") {
 			gui2::tselect_orb_colors::display(window.video());
+		} else {
+			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << selected_field << "\n";
 		}
 
 		// Add more options here as needed
