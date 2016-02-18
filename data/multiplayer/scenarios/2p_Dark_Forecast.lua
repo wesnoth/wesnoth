@@ -18,6 +18,92 @@ local function on_event(eventname, handler)
 	table.insert(event_handlers[eventname], handler)
 end
 
+local random_spawns = {
+	{
+		{"Heavy Infantryman", "Shock Trooper", "Iron Mauler", "none"},
+		{"Elvish Fighter", "Elvish Hero", "more", "Elvish Champion"},
+		{"Goblin Spearman", "more", "more", "more"},
+		{"Goblin Spearman", "Goblin Rouser", "none", "none"},
+		{"Elvish Fighter", "Elvish Captain", "Elvish Marshal", "none"},
+	},
+	{
+		{"Mage", "Red Mage", "Silver Mage", "none"},
+		{"Footpad", "Outlaw", "more", "none"},
+		{"Drake Fighter", "Drake Warrior", "Drake Blademaster", "none"},
+		{"Walking Corpse", "more", "more", "more"},
+	},
+	{
+		{"Merman Hunter", "Merman Spearman", "Merman Entangler", "none"},
+		{"Naga Fighter", "Naga Warrior", "Naga Myrmidon", "none"},
+		{"Spearman", "Pikeman", "none", "Halberdier"},
+	},
+	{
+		{"Elvish Shaman", "Elvish Druid", "Elvish Shyde", "Elvish Sylph"},
+		{"Drake Burner", "Fire Drake", "Inferno Drake", "Armageddon Drake"},
+		{"Skeleton", "Revenant", "more", "Draug"},
+	},
+	{
+		{"Giant Mudcrawler", "Sea Serpent", "none", "none"},
+		{"Mudcrawler", "more", "Giant Mudcrawler", "more"},
+	},
+	{
+		{"Ghoul", "Necrophage", "more", "none"},
+		{"Elvish Archer", "Elvish Marksman", "none", "Elvish Sharpshooter"},
+		{"Elvish Archer", "Elvish Ranger", "Elvish Avenger", "none"},
+		{"Drake Clasher", "Drake Thrasher", "more", "Drake Enforcer"},
+	},
+	{
+		{"Skeleton Archer", "Bone Shooter", "more", "Banebow"},
+		{"Fencer", "Duelist", "none", "Master at Arms"},
+		{"Drake Glider", "Sky Drake", "Hurricane Drake", "none"},
+	},
+	{
+		{"Merman Fighter", "Merman Warrior", "more", "Merman Triton"},
+		{"Dark Adept", "Dark Sorcerer", "Necromancer", "none"},
+		{"Elvish Scout", "Elvish Rider", "more", "none"},
+	},
+	{
+		{"Wose", "Elder Wose", "Ancient Wose", "none"},
+		{"Orcish Archer", "Orcish Crossbowman", "Orcish Slurbow", "none"},
+		{"Saurian Skirmisher", "more", "Saurian Ambusher", "more"},
+	},
+	{
+		{"Orcish Grunt", "Orcish Warrior", "more", "none"},
+		{"Vampire Bat", "Blood Bat", "more", "none"},
+		{"Dwarvish Thunderer", "Dwarvish Thunderguard", "none", "none"},
+		{"Peasant", "more", "more", "more"},
+		{"Woodsman", "more", "Sergeant", "Orcish Ruler"},
+	},
+	{
+		{"Dwarvish Guardsman", "Dwarvish Stalwart", "none", "none"},
+		{"Bowman", "Longbowman", "more", "Master Bowman"},
+		{"Troll Whelp", "Troll", "Troll Warrior", "none"},
+	},
+	{
+		{"Orcish Assassin", "Orcish Slayer", "more", "none"},
+		{"Cavalryman", "Dragoon", "more", "Cavalier"},
+		{"Saurian Augur", "Saurian Soothsayer", "none", "none"},
+	},
+	{
+		{"Wolf Rider", "Goblin Pillager", "more", "none"},
+		{"Ghost", "Shadow", "more", "more"},
+		{"Sergeant", "Lieutenant", "General", "Grand Marshal"},
+	},
+	{
+		{"Gryphon Rider", "none", "more", "none"},
+		{"Thief", "Rogue", "more", "Assassin"},
+	},
+	{
+		{"Dwarvish Fighter", "Dwarvish Steelclad", "more", "Dwarvish Lord"},
+		{"Poacher", "Trapper", "more", "none"},
+		{"Cuttle Fish", "more", "more", "none"},
+	},
+	{
+		{"Walking Corpse", "more", "more", "more"},
+		{"Mage", "White Mage", "Mage of Light", "none"},
+		{"Thug", "Bandit", "more", "none"},
+	},
+}
 
 local function get_spawn_types(num_units, max_gold, unit_pool)
 	local gold_left = max_gold
@@ -82,18 +168,6 @@ local function get_spawn_types(num_units, max_gold, unit_pool)
 	return res
 end
 
--- convert a ugly wml lua table to a normal lua table from the 'main_spawn' wml array from that get_spawn_types can use.
-local function parse_unit_pool(pool)
-	local res = {}
-	for type_group in helper.child_range(pool, "group") do
-		table.insert(res, {})
-		for rank in helper.child_range(type_group, "rank") do
-			table.insert(res[#res], rank.type)
-		end
-	end
-	return res
-end
-
 -- creates the 'timed_spawn' wml array.
 -- @a num_spawns: the total number of times units get spawned
 -- @a interval: the number of turns between 2 spawns
@@ -101,6 +175,11 @@ end
 -- @a units_amount, gold_per_unit_amount: used to cauculate the number of units spawned in each timed spawn
 local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
 	local configure_gold_factor = (wesnoth.get_variable("enemey_gold_factor") + 100)/100
+	local random_spawn_numbers = {}
+	for i = 1, #random_spawns do
+		table.insert(random_spawn_numbers, i)
+	end
+	helper.shuffle(random_spawn_numbers)
 	local final_turn = math.ceil(((num_spawns - 1) * interval + 40 + wesnoth.random(2,4))/2)
 	local end_spawns = 0
 	for spawn_number = 1, num_spawns do
@@ -130,12 +209,14 @@ local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_i
 				units = math.ceil(units),
 				turn = turn,
 				gold = helper.round(gold * configure_gold_factor),
+				pool_num = random_spawn_numbers[spawn_number],
 			})
 		else
 			wesnoth.set_variable("timed_spawn[" .. (spawn_number - 1) .. "]", {
 				units = units_amount + 1,
 				turn = turn,
 				gold = gold,
+				pool_num = random_spawn_numbers[spawn_number],
 			})
 		end
 	end
@@ -216,14 +297,7 @@ on_event("new turn", function()
 		return
 	end
 	wesnoth.set_variable("timed_spawn[0]")
-	local num_spawns = wesnoth.get_variable("main_spawn.length")
-	if num_spawns == 0 then
-		return
-	end
-	local pool_id = wesnoth.random(num_spawns) - 1
-	local unit_pool = wesnoth.get_variable("main_spawn[" .. pool_id .. "]")
-	wesnoth.set_variable("main_spawn[" .. pool_id .. "]")
-	local unit_types = get_spawn_types(next_spawn.units, next_spawn.gold, parse_unit_pool(unit_pool))
+	local unit_types = get_spawn_types(next_spawn.units, next_spawn.gold, random_spawns[next_spawn.pool_num])
 	local spawn_areas = {{"3-14", "15"}, {"1", "4-13"}, {"2-13", "1"}, {"1", "2-15"}}
 	local spawn_area = spawn_areas[wesnoth.random(#spawn_areas)]
 	local locations_in_area = wesnoth.get_locations { x = spawn_area[1], y = spawn_area[2], radius=1, include_borders=false }
@@ -292,108 +366,11 @@ on_event("prestart", function()
 		end
 		return res
 	end
-	local main_spawn = function(...)
-		local res = {}
-		for i, v in ipairs {...} do
-			local group = {}
-			table.insert(res, T.group(group))
-			for i2, utype in ipairs(v) do
-				table.insert(group, T.rank { type = utype})
-			end
-		end
-		return res
-	end
 	helper.set_variable_array("fixed_spawn", {
 		fixed_spawn(1, 15, "Fire Dragon", "Gryphon Master", "Hurricane Drake"),
 		fixed_spawn(5, 1, "Yeti", "Elvish Druid", "Elvish Druid"),
 		fixed_spawn(1, 7, "Lich", "Walking Corpse", "Walking Corpse", "Walking Corpse", "Ghoul", "Soulless", "Walking Corpse", "Walking Corpse", "Walking Corpse"),
 		fixed_spawn(11, 15, "Elvish Champion", "Dwarvish Stalwart", "Dwarvish Stalwart", "Orcish Slayer"),
-	})
-	helper.set_variable_array("main_spawn", {
-		main_spawn(
-			{"Heavy Infantryman", "Shock Trooper", "Iron Mauler", "none"},
-			{"Elvish Fighter", "Elvish Hero", "more", "Elvish Champion"},
-			{"Goblin Spearman", "more", "more", "more"},
-			{"Goblin Spearman", "Goblin Rouser", "none", "none"},
-			{"Elvish Fighter", "Elvish Captain", "Elvish Marshal", "none"}
-		),
-		main_spawn(
-			{"Mage", "Red Mage", "Silver Mage", "none"},
-			{"Footpad", "Outlaw", "more", "none"},
-			{"Drake Fighter", "Drake Warrior", "Drake Blademaster", "none"},
-			{"Walking Corpse", "more", "more", "more"}
-		),
-		main_spawn(
-			{"Merman Hunter", "Merman Spearman", "Merman Entangler", "none"},
-			{"Naga Fighter", "Naga Warrior", "Naga Myrmidon", "none"},
-			{"Spearman", "Pikeman", "none", "Halberdier"}
-		),
-		main_spawn(
-			{"Elvish Shaman", "Elvish Druid", "Elvish Shyde", "Elvish Sylph"},
-			{"Drake Burner", "Fire Drake", "Inferno Drake", "Armageddon Drake"},
-			{"Skeleton", "Revenant", "more", "Draug"}
-		),
-		main_spawn(
-			{"Giant Mudcrawler", "Sea Serpent", "none", "none"},
-			{"Mudcrawler", "more", "Giant Mudcrawler", "more"}
-		),
-		main_spawn(
-			{"Ghoul", "Necrophage", "more", "none"},
-			{"Elvish Archer", "Elvish Marksman", "none", "Elvish Sharpshooter"},
-			{"Elvish Archer", "Elvish Ranger", "Elvish Avenger", "none"},
-			{"Drake Clasher", "Drake Thrasher", "more", "Drake Enforcer"}
-		),
-		main_spawn(
-			{"Skeleton Archer", "Bone Shooter", "more", "Banebow"},
-			{"Fencer", "Duelist", "none", "Master at Arms"},
-			{"Drake Glider", "Sky Drake", "Hurricane Drake", "none"}
-		),
-		main_spawn(
-			{"Merman Fighter", "Merman Warrior", "more", "Merman Triton"},
-			{"Dark Adept", "Dark Sorcerer", "Necromancer", "none"},
-			{"Elvish Scout", "Elvish Rider", "more", "none"}
-		),
-		main_spawn(
-			{"Wose", "Elder Wose", "Ancient Wose", "none"},
-			{"Orcish Archer", "Orcish Crossbowman", "Orcish Slurbow", "none"},
-			{"Saurian Skirmisher", "more", "Saurian Ambusher", "more"}
-		),
-		main_spawn(
-			{"Orcish Grunt", "Orcish Warrior", "more", "none"},
-			{"Vampire Bat", "Blood Bat", "more", "none"},
-			{"Dwarvish Thunderer", "Dwarvish Thunderguard", "none", "none"},
-			{"Peasant", "more", "more", "more"},
-			{"Woodsman", "more", "Sergeant", "Orcish Ruler"}
-		),
-		main_spawn(
-			{"Dwarvish Guardsman", "Dwarvish Stalwart", "none", "none"},
-			{"Bowman", "Longbowman", "more", "Master Bowman"},
-			{"Troll Whelp", "Troll", "Troll Warrior", "none"}
-		),
-		main_spawn(
-			{"Orcish Assassin", "Orcish Slayer", "more", "none"},
-			{"Cavalryman", "Dragoon", "more", "Cavalier"},
-			{"Saurian Augur", "Saurian Soothsayer", "none", "none"}
-		),
-		main_spawn(
-			{"Wolf Rider", "Goblin Pillager", "more", "none"},
-			{"Ghost", "Shadow", "more", "more"},
-			{"Sergeant", "Lieutenant", "General", "Grand Marshal"}
-		),
-		main_spawn(
-			{"Gryphon Rider", "none", "more", "none"},
-			{"Thief", "Rogue", "more", "Assassin"}
-		),
-		main_spawn(
-			{"Dwarvish Fighter", "Dwarvish Steelclad", "more", "Dwarvish Lord"},
-			{"Poacher", "Trapper", "more", "none"},
-			{"Cuttle Fish", "more", "more", "none"}
-		),
-		main_spawn(
-			{"Walking Corpse", "more", "more", "more"},
-			{"Mage", "White Mage", "Mage of Light", "none"},
-			{"Thug", "Bandit", "more", "none"}
-		),
 	})
 end)
 
