@@ -136,6 +136,10 @@ game_stringfixes = {
 website_stringfixes = {
 
 "1.12-announcement" : (
+("http://1.12-changelog.wesnoth.org", "//changelog.wesnoth.org/1.12"),
+("http://wiki.wesnoth.org", "//wiki.wesnoth.org"),
+("http://forums.wesnoth.org", "//forums.wesnoth.org"),
+("http://www.wesnoth.org", "//www.wesnoth.org"),
 ("wesnoth-1.12.4/wesnoth-1.12.4.tar.bz2", "wesnoth-1.12.5/wesnoth-1.12.5.tar.bz2"),
 ("wesnoth-1.12.4/wesnoth-1.12.4a-win32.exe", "wesnoth-1.12.5/wesnoth-1.12.5-win32.exe"),
 ("wesnoth-1.12.4/Wesnoth_1.12.4.dmg", "wesnoth-1.12.5/Wesnoth_1.12.5.dmg"),
