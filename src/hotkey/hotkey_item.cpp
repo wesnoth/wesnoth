@@ -144,7 +144,7 @@ bool hotkey_base::matches(const SDL_Event &event) const
 	unsigned int mods = sdl_get_mods();
 
 	if (!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) ||
-			!active()) {
+			!active() || is_disabled()) {
 		return false;
 	}
 
@@ -158,6 +158,7 @@ bool hotkey_base::matches(const SDL_Event &event) const
 void hotkey_base::save(config& item) const
 {
 	item["command"] = get_command();
+	item["disabled"] = is_disabled();
 
 	item["shift"] = !!(mod_ & KMOD_SHIFT);
 	item["ctrl"] = !!(mod_ & KMOD_CTRL);
@@ -269,6 +270,8 @@ hotkey_ptr load_from_config(const config& cfg)
 
 	base->set_mods(mods);
 	base->set_command(cfg["command"].str());
+
+	cfg["disabled"].to_bool() ? base->disable() : base->enable();
 
 	return base;
 }
@@ -401,8 +404,12 @@ void add_hotkey(const hotkey_ptr item)
 void clear_hotkeys(const std::string& command)
 {
 	BOOST_FOREACH(hotkey::hotkey_ptr item, hotkeys_) {
-		if (item->get_command() == command) {
-			item->clear();
+		if (item->get_command() == command)
+		{
+			if (item->is_default())
+				item->disable();
+			else
+				item->clear();
 		}
 	}
 }
@@ -462,7 +469,8 @@ void save_hotkeys(config& cfg)
 	cfg.clear_children("hotkey");
 
 	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
-		if (!item->is_default() && item->active()) {
+		if ((!item->is_default() && item->active()) ||
+			(item->is_default() && item->is_disabled())) {
 			item->save(cfg.add_child("hotkey"));
 		}
 	}
@@ -470,10 +478,10 @@ void save_hotkeys(config& cfg)
 
 std::string get_names(std::string id)
 {
-
+	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
 	BOOST_FOREACH(const hotkey::hotkey_ptr item, hotkeys_) {
-		if (item->get_command() == id && (!item->null())) {
+		if (item->get_command() == id && !item->null() && !item->is_disabled()) {
 			names.push_back(item->get_name());
 		}
 	}
