@@ -141,7 +141,7 @@ int intf_read_file(lua_State *L)
 	//throws an exception if malloc failed.
 	char* out = luaL_prepbuffsize(&b, size); 
 	fs->read(out, size);
-	if(!fs->good()) {
+	if(fs->good()) {
 		luaL_addsize(&b, size);
 	}
 	luaL_pushresult(&b);
