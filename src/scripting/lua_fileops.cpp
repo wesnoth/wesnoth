@@ -100,6 +100,53 @@ int intf_have_file(lua_State *L)
 	else { lua_pushboolean(L, true); }
 	return 1;
 }
+/**
+ * Checks if a file exists (not necessarily a Lua script).
+ * - Arg 1: string containing the file name.
+ * - Ret 1: string
+ */
+int intf_read_file(lua_State *L)
+{
+	std::string m = luaL_checkstring(L, 1);
+	
+	std::string current_dir = "";
+	lua_Debug ar;
+	if(lua_getstack(L, 1, &ar)) {
+		lua_getinfo(L, "S", &ar);
+		if(ar.source[0] == '@') {
+			current_dir = filesystem::directory_name(std::string(ar.source + 1));
+		}
+	}
+	if(!resolve_filename(m, current_dir)) {
+		return luaL_argerror(L, -1, "file not found");
+	}
+	std::string p = filesystem::get_wml_location(m);
+	if(p.empty()) {
+		return luaL_argerror(L, -1, "file not found");
+	}
+	boost::scoped_ptr<std::istream> fs(filesystem::istream_file(p));
+	fs->exceptions(std::ios_base::goodbit);
+	size_t size = 0;
+	fs->seekg(0, std::ios::end);
+	if(!fs->good()) {
+		return luaL_error(L, "Error when reading file");
+	}
+	size = fs->tellg();
+	fs->seekg(0, std::ios::beg);
+	if(!fs->good()) {
+		return luaL_error(L, "Error when reading file");
+	}
+	luaL_Buffer b;
+	luaL_buffinit(L, &b);
+	//throws an exception if malloc failed.
+	char* out = luaL_prepbuffsize(&b, size); 
+	fs->read(out, size);
+	if(!fs->good()) {
+		luaL_addsize(&b, size);
+	}
+	luaL_pushresult(&b);
+	return 1;
+}
 
 class lua_filestream
 {
