@@ -213,7 +213,6 @@ int load_file(lua_State *L)
 	if (p.empty()) {
 		return luaL_argerror(L, -1, "file not found");
 	}
-#if 1
 	try
 	{
 		if(lua_filestream::lua_loadfile(L, p, m)) {
@@ -224,11 +223,6 @@ int load_file(lua_State *L)
 	{
 		luaL_argerror(L, -1, ex.what());
 	}
-#else
-	//oldcode to be deleted if newcode works
-	if (luaL_loadfile(L, p.c_str()))
-		return lua_error(L);
-#endif
 	lua_remove(L, -2);	//remove the filename from the stack
 
 	return 1;
