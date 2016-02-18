@@ -25,6 +25,9 @@
 #include "video.hpp"
 
 
+#include <boost/math/special_functions/sign.hpp>
+
+
 namespace {
 	const std::string slider_image   = ".png";
 	const std::string disabled_image = ".png~GS()";
@@ -89,7 +92,7 @@ void slider::set_value(int value)
 		value = min_;
 
 	if (increment_ > 1) {
-		int hi = increment_ / 2;
+		int hi = boost::math::sign(value) * increment_ / 2;
 		value = ((value + hi) / increment_) * increment_;
 	}
 
