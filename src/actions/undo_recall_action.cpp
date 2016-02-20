@@ -1,7 +1,7 @@
 #include "undo_recall_action.hpp"
 #include "create.hpp"
 
-#include "../construct_dialog.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../replay.hpp"
@@ -107,7 +107,7 @@ bool recall_action::redo(int side)
 		}
 		sync.do_final_checkup();
 	} else {
-		gui::dialog(gui.video(), "", msg, gui::OK_ONLY).show();
+		gui2::show_transient_message(gui.video(), "", msg);
 		return false;
 	}
 
