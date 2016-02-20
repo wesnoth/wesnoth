@@ -770,6 +770,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 				? gui2::ttitle_screen::LOAD_GAME
 				: gui2::ttitle_screen::NOTHING;
 
+		preferences::load_hotkeys();
+
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
