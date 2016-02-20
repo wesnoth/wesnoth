@@ -1226,7 +1226,7 @@ bool manage_addons(CVideo& v)
 	}
 }
 
-bool ad_hoc_addon_fetch_session(CVideo & v, const std::vector<std::string> & addon_ids)
+bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon_ids)
 {
 	std::string remote_address = preferences::campaign_server();
 

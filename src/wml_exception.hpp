@@ -130,9 +130,10 @@ struct twml_exception
 
 	/**
 	 * Shows the error in a dialog.
-	 *  @param disp         The display object to show the message on.
+	 *
+	 * @param video          Target for rendering the UI message.
 	 */
-	void show(CVideo &video);
+	void show(CVideo& video);
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
 };
