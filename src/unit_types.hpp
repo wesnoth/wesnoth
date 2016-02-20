@@ -191,7 +191,9 @@ public:
 
 	/**
 	 * @param variation_id		The id of the variation we search for.
-	 * @return					Iff one of the type's variations' (or the sibling's if the unit_type is a variation itself) id matches @variation_id.
+	 * @return					Whether one of the type's variations' (or the
+	 *                          siblings' if the unit_type is a variation
+	 *                          itself) id matches @a variation_id.
 	 */
 	bool has_variation(const std::string& variation_id) const;
 

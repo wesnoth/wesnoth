@@ -53,7 +53,9 @@ protected:
 	const game_state & gamestate() const;
 
 private:
-	/** Private data related to menu implementation (expansion of AUTOSAVES, WML entries) */
+	//
+	// Private data related to menu implementation (expansion of AUTOSAVES, WML entries)
+	//
 
 	/// A smart pointer used when retrieving menu items.
 	typedef boost::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
@@ -63,6 +65,9 @@ private:
 
 	std::vector<std::string> savenames_;
 
+	/**
+	 * Replaces "wml" in @a items with all active WML menu items for the current field.
+	 */
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const_item_ptr> wml_commands_;
 	boost::scoped_ptr<wmi_pager> wml_command_pager_;

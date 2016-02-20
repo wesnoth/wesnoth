@@ -364,8 +364,8 @@ surface blend_surface(
 /**
  * Rotates a surface by any degrees.
  *
- * @pre @zoom >= @offset          Otherwise @return will have empty pixels.
- * @pre @offset > 0               Otherwise the procedure will not return.
+ * @pre @p zoom >= @p offset      Otherwise @return will have empty pixels.
+ * @pre @p offset > 0             Otherwise the procedure will not return.
  *
  * @param surf                    The surface to rotate.
  * @param angle                   The angle of rotation.
@@ -472,8 +472,8 @@ private:
  *
  * @param surf           The image to get or receive the pixel from.
  * @param surf_lock      The locked surface to make sure the pointers are valid.
- * @x                    The position in the row of the pixel.
- * @y                    The row of the pixel.
+ * @param x              The position in the row of the pixel.
+ * @param y              The row of the pixel.
  */
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel);
 Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);

@@ -160,9 +160,9 @@ public:
 	 * 1. The hotkey is valid in the current scope.
 	 * 2. The Keyboard modifiers and SDL_Event mathes this hotkey.
 	 *
-	 * @param event The @SDL_Event that has triggered and is being evaluated.
+	 * @param event The SDL_Event that has triggered and is being evaluated.
 	 */
-	bool matches(const SDL_Event &event) const;
+	bool matches(const SDL_Event& event) const;
 
 	/**
 	 * Checks whether the hotkey bindings and scope are equal.
@@ -387,7 +387,8 @@ const hotkey_list& get_hotkeys();
 
 /**
  * Unset the command bindings for all hotkeys matching the command.
- * @command The binding to be unset
+ *
+ * @param command The binding to be unset
  */
 void clear_hotkeys(const std::string& command);
 
