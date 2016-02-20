@@ -41,7 +41,6 @@
 #include "replay_helper.hpp"
 #include "sdl/utils.hpp"                // for int_to_color
 #include "serialization/string_utils.hpp"  // for unicode_em_dash
-#include "show_dialog.hpp"              // for dialog_button_info, etc
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"                     // for team

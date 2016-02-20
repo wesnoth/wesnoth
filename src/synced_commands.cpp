@@ -29,7 +29,6 @@
 #include "game_preferences.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "dialogs.hpp"
 #include "unit_helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"

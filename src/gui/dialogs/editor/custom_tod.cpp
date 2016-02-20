@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/editor/custom_tod.hpp"
 
-#include "dialogs.hpp"
 #include "filesystem.hpp"
 #include "filechooser.hpp"
 #include "editor/editor_preferences.hpp"

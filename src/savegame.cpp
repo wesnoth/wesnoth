@@ -21,7 +21,6 @@
 #include "save_index.hpp"
 #include "carryover.hpp"
 #include "config_assign.hpp"
-#include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "format_time_summary.hpp"
 #include "formula_string_utils.hpp"
 #include "game_display.hpp"

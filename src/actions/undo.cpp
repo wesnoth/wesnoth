@@ -20,7 +20,6 @@
 #include "undo.hpp"
 #include "global.hpp"
 
-#include "../construct_dialog.hpp"
 #include "../game_board.hpp"               // for game_board
 #include "../game_display.hpp"          // for game_display
 #include "../log.hpp"                   // for LOG_STREAM, logger, etc

@@ -19,7 +19,6 @@
 #include "config.hpp"
 
 #include "hotkey/command_executor.hpp"
-#include "construct_dialog.hpp"
 
 #include <string>
 
