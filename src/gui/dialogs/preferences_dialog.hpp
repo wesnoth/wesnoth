@@ -55,7 +55,7 @@ private:
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-	void post_show(twindow& window);
+	void post_show(twindow& /*window*/);
 
 	/** Initializers */
 	void initialize_members(twindow& window);

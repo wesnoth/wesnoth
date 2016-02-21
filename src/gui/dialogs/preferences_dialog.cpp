@@ -1052,7 +1052,7 @@ void tpreferences::on_tab_select(twindow& window, const std::string& widget_id)
 	set_visible_page(window, static_cast<unsigned int>(selected_row), (widget_id + "_pager"));
 }
 
-void tpreferences::post_show(twindow& window)
+void tpreferences::post_show(twindow& /*window*/)
 {
 	// Handle the font scaling setter only once prefs is closed
 	set_font_scaling(font_scaling_);
