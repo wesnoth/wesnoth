@@ -64,6 +64,7 @@ const int
 	SIZE_15         = 15 * SIZE_NORMAL / 14,
 	SIZE_PLUS       = 16 * SIZE_NORMAL / 14,
 	SIZE_LARGE      = 18 * SIZE_NORMAL / 14,
+	SIZE_TITLE      = 20 * SIZE_NORMAL / 14,
 	SIZE_XLARGE     = 24 * SIZE_NORMAL / 14
   ;
 // For arbitrary scaling:

@@ -140,7 +140,7 @@ int dialog_frame::top_padding() const {
 #endif
 	}
 	if(!title_.empty()) {
-		padding += font::get_max_height(font::SIZE_LARGE) + 2*dialog_frame::title_border_h;
+		padding += font::get_max_height(font::SIZE_TITLE) + 2*dialog_frame::title_border_h;
 	}
 	return padding;
 }
@@ -385,8 +385,8 @@ void dialog_frame::draw_background()
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
 	SDL_Rect rect = screen_area();
-	return font::draw_text(video, rect, font::SIZE_LARGE, font::TITLE_COLOR,
-	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_BOLD);
+	return font::draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
+	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_NORMAL);
 }
 
 void dialog_frame::draw()
