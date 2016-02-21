@@ -291,7 +291,7 @@ void tpreferences::setup_friends_list(twindow& window)
 {
 	tlistbox& friends_list = find_widget<tlistbox>(&window, "friends_list", false);
 
-	const std::map<std::string, preferences::acquaintance>& acquaintances = get_acquaintances();
+	const std::map<std::string, acquaintance>& acquaintances = get_acquaintances();
 
 	std::map<std::string, string_map> data;
 
@@ -364,11 +364,12 @@ void tpreferences::add_friend_list_entry(const bool is_friend,
 void tpreferences::edit_friend_list_entry(tlistbox& friends,
 		ttext_box& textbox)
 {
+	const int num_available = get_acquaintances().size();
 	const int sel = friends.get_selected_row();
-	if(sel < 0) {
+	if(sel < 0 || sel >= num_available) {
 		return;
 	}
-	std::map<std::string, preferences::acquaintance>::const_iterator who = get_acquaintances().begin();
+	std::map<std::string, acquaintance>::const_iterator who = get_acquaintances().begin();
 	std::advance(who, sel);
 	textbox.set_value(who->second.get_nick() + " " + who->second.get_notes());
 }
@@ -491,7 +492,7 @@ void tpreferences::initialize_members(twindow& window)
 
 	/** SET HOTKEYS **/
 	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "hotkeys", false),
-			boost::bind(&preferences::show_hotkeys_preferences_dialog,
+			boost::bind(&show_hotkeys_preferences_dialog,
 			boost::ref(window.video())));
 
 	/** CACHE MANAGE **/
@@ -562,7 +563,7 @@ void tpreferences::initialize_members(twindow& window)
 	/** SELECT THEME **/
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "choose_theme", false),
-			boost::bind(&preferences::show_theme_dialog,
+			boost::bind(&show_theme_dialog,
 			boost::ref(window.video())));
 
 
@@ -672,7 +673,7 @@ void tpreferences::initialize_members(twindow& window)
 	/** SET WESNOTHD PATH **/
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "mp_wesnothd", false), boost::bind(
-			&preferences::show_wesnothd_server_search,
+			&show_wesnothd_server_search,
 			boost::ref(window.video())));
 
 

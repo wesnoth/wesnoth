@@ -55,27 +55,26 @@ void tselect_orb_colors::pre_show(CVideo&, twindow& window)
 	setup_orb_group("enemy", show_enemy_, enemy_, window);
 	
 	tbutton& reset = find_widget<tbutton>(&window, "orb_defaults", false);
-	event::connect_signal_mouse_left_click(reset, boost::bind(
+	connect_signal_mouse_left_click(reset, boost::bind(
 		&tselect_orb_colors::handle_reset_click,
 		this, boost::ref(window)
 	));
 }
 
-void tselect_orb_colors::display(CVideo& video)
+void tselect_orb_colors::post_show(twindow&)
 {
-	tselect_orb_colors dialog;
-	if(dialog.show(video)) {
-		preferences::set_show_unmoved_orb(dialog.show_unmoved_);
-		preferences::set_show_partial_orb(dialog.show_partial_);
-		preferences::set_show_moved_orb(dialog.show_moved_);
-		preferences::set_show_allied_orb(dialog.show_ally_);
-		preferences::set_show_enemy_orb(dialog.show_enemy_);
+	if(get_retval() == twindow::OK) {
+		preferences::set_show_unmoved_orb(show_unmoved_);
+		preferences::set_show_partial_orb(show_partial_);
+		preferences::set_show_moved_orb(show_moved_);
+		preferences::set_show_allied_orb(show_ally_);
+		preferences::set_show_enemy_orb(show_enemy_);
 
-		preferences::set_unmoved_color(dialog.unmoved_);
-		preferences::set_partial_color(dialog.partial_);
-		preferences::set_moved_color(dialog.moved_);
-		preferences::set_allied_color(dialog.ally_);
-		preferences::set_enemy_color(dialog.enemy_);
+		preferences::set_unmoved_color(unmoved_);
+		preferences::set_partial_color(partial_);
+		preferences::set_moved_color(moved_);
+		preferences::set_allied_color(ally_);
+		preferences::set_enemy_color(enemy_);
 	}
 }
 
@@ -84,7 +83,7 @@ void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown
 	ttoggle_button& toggle = find_widget<ttoggle_button>(&window, "orb_" + base_id + "_show", false);
 	toggle.set_value_bool(shown);
 	if(connect) {
-		event::connect_signal_mouse_left_click(toggle, boost::bind(
+		connect_signal_mouse_left_click(toggle, boost::bind(
 			&tselect_orb_colors::handle_toggle_click,
 			this,
 			boost::ref(shown)
@@ -106,7 +105,7 @@ void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown
 				button->set_value_bool(false);
 			}
 			if(connect) {
-				event::connect_signal_mouse_left_click(*button, boost::bind(
+				connect_signal_mouse_left_click(*button, boost::bind(
 					&tselect_orb_colors::handle_orb_click,
 					this,
 					button,

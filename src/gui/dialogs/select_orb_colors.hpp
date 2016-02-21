@@ -30,7 +30,9 @@ public:
 	 *
 	 * See @ref tdialog for more information.
 	 */
-	static void display(CVideo& video);
+	static void display(CVideo& video) {
+		tselect_orb_colors().show(video);
+	}
 private:
 	void setup_orb_group(const std::string& base_id, bool& shown, std::string& color, twindow& window, bool connect = true);
 	void handle_orb_click(ttoggle_button* clicked, const std::vector<ttoggle_button*>& group, std::string& storage);
@@ -46,6 +48,8 @@ private:
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
 };
 
 }
