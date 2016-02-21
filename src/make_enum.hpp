@@ -58,9 +58,7 @@
  * // by the enumeration.
  * std::ostream& operator<<(std::ostream&, enumname);
  *
- * // If the stream input is not recognized, it sets the stream state to
- * // failing; additionally, iff game_config::debug == true, it throws
- * // twml_exception (FIXME: that's not what the code says -- shadowm).
+ * // Never throws. Sets the stream's fail bit if the input is not recognized.
  * std::istream& operator>>(std::istream&, enumname&);
  * @endcode
  *
