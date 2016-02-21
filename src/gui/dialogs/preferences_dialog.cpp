@@ -274,7 +274,7 @@ void tpreferences::bind_status_label(T& parent, const std::string& label_id,
 
 	parent.set_callback_state_change(boost::bind(
 		&tpreferences::status_label_callback<T>,
-		this, boost::ref(parent), boost::ref(label)));
+		this, boost::ref(parent), boost::ref(label), ""));
 }
 
 void tpreferences::bind_status_label(tslider& parent, const std::string& label_id,
@@ -285,7 +285,7 @@ void tpreferences::bind_status_label(tslider& parent, const std::string& label_i
 
 	connect_signal_notify_modified(parent, boost::bind(
 		&tpreferences::status_label_callback<tslider>,
-		this, boost::ref(parent), boost::ref(label)));
+		this, boost::ref(parent), boost::ref(label), suffix));
 }
 
 void tpreferences::setup_friends_list(twindow& window)
@@ -962,9 +962,9 @@ void tpreferences::simple_combobox_callback(const tcombobox& widget,
 
 template <typename T>
 void tpreferences::status_label_callback(T& parent_widget,
-		tcontrol& label_widget)
+		tcontrol& label_widget, const std::string& suffix)
 {
-	label_widget.set_label(disambiguate_widget_value(parent_widget));
+	label_widget.set_label(disambiguate_widget_value(parent_widget) + suffix);
 }
 
 // Special fullsceen callback
