@@ -940,6 +940,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/preferences_dialog.cpp
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/screenshot_notification.cpp
+	gui/dialogs/select_orb_colors.cpp
 	gui/dialogs/simple_item_selector.cpp
 	gui/dialogs/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp

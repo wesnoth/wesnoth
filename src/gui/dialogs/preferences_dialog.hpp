@@ -64,6 +64,8 @@ private:
 	void add_friend_list_entry(const bool is_friend,
 		ttext_box& textbox, twindow& window);
 
+	void edit_friend_list_entry(tlistbox& friends, ttext_box& textbox);
+
 	void remove_friend_list_entry(tlistbox& friends_list, 
 		ttext_box& textbox, twindow& window);
 
@@ -172,7 +174,8 @@ private:
 	void bind_status_label(
 		tslider& parent,
 		const std::string& label_id,
-		twidget& find_in);
+		twidget& find_in,
+		const std::string& suffix = "");
 
 	template <typename T>
 	void status_label_callback(T& parent_widget,

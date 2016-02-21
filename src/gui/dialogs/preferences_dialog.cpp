@@ -30,6 +30,7 @@
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/mp_alerts_options.hpp"
+#include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -79,7 +80,6 @@ const std::string bool_to_display_string(bool value)
 
 namespace gui2 {
 
-// TODO: probably should use a namespace alias instead
 using namespace preferences;
 
 REGISTER_DIALOG(preferences)
@@ -278,10 +278,10 @@ void tpreferences::bind_status_label(T& parent, const std::string& label_id,
 }
 
 void tpreferences::bind_status_label(tslider& parent, const std::string& label_id,
-		twidget& find_in)
+		twidget& find_in, const std::string& suffix)
 {
 	tcontrol& label = find_widget<tcontrol>(&find_in, label_id, false);
-	label.set_label(lexical_cast<std::string>(parent.get_value_label()));
+	label.set_label(lexical_cast<std::string>(parent.get_value_label()) + suffix);
 
 	connect_signal_notify_modified(parent, boost::bind(
 		&tpreferences::status_label_callback<tslider>,
@@ -292,7 +292,7 @@ void tpreferences::setup_friends_list(twindow& window)
 {
 	tlistbox& friends_list = find_widget<tlistbox>(&window, "friends_list", false);
 
-	const std::map<std::string, preferences::acquaintance>& acquaintances = get_acquaintances();
+	const std::map<std::string, acquaintance>& acquaintances = get_acquaintances();
 
 	std::map<std::string, string_map> data;
 
@@ -360,6 +360,19 @@ void tpreferences::add_friend_list_entry(const bool is_friend,
 
 	textbox.clear();
 	setup_friends_list(window);
+}
+
+void tpreferences::edit_friend_list_entry(tlistbox& friends,
+		ttext_box& textbox)
+{
+	const int num_available = get_acquaintances().size();
+	const int sel = friends.get_selected_row();
+	if(sel < 0 || sel >= num_available) {
+		return;
+	}
+	std::map<std::string, acquaintance>::const_iterator who = get_acquaintances().begin();
+	std::advance(who, sel);
+	textbox.set_value(who->second.get_nick() + " " + who->second.get_notes());
 }
 
 void tpreferences::remove_friend_list_entry(tlistbox& friends_list, 
@@ -479,7 +492,7 @@ void tpreferences::initialize_members(twindow& window)
 
 	/** SET HOTKEYS **/
 	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "hotkeys", false),
-			boost::bind(&preferences::show_hotkeys_preferences_dialog,
+			boost::bind(&show_hotkeys_preferences_dialog,
 			boost::ref(window.video())));
 
 	/** CACHE MANAGE **/
@@ -542,10 +555,15 @@ void tpreferences::initialize_members(twindow& window)
 		idle_anim(), idle_anim_rate(),
 		set_idle_anim, set_idle_anim_rate, window);
 
+	/** FONT SCALING **/
+	tslider& scale_slider = find_widget<tslider>(&window, "scaling_slider", false);
+	setup_single_slider("scaling_slider", font_scaling(), set_font_scaling, window);
+	bind_status_label(scale_slider, "scaling_value", window, "%");
+
 	/** SELECT THEME **/
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "choose_theme", false),
-			boost::bind(&preferences::show_theme_dialog,
+			boost::bind(&show_theme_dialog,
 			boost::ref(window.video())));
 
 
@@ -638,6 +656,12 @@ void tpreferences::initialize_members(twindow& window)
 			boost::ref(textbox),
 			boost::ref(window)));
 
+	friend_list.set_callback_value_change(boost::bind(
+		&tpreferences::edit_friend_list_entry,
+		this,
+		boost::ref(friend_list),
+		boost::ref(textbox)));
+
 	friend_list.select_row(0);
 
 	/** ALERTS **/
@@ -649,7 +673,7 @@ void tpreferences::initialize_members(twindow& window)
 	/** SET WESNOTHD PATH **/
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "mp_wesnothd", false), boost::bind(
-			&preferences::show_wesnothd_server_search,
+			&show_wesnothd_server_search,
 			boost::ref(window.video())));
 
 
@@ -811,10 +835,10 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
 		if (selected_field == "advanced_graphic_options") {
 			gui2::tadvanced_graphics_options::display(window.video());
-		}
-
-		if (selected_field == "orb_color") {
-			// TODO
+		} else if (selected_field == "orb_color") {
+			gui2::tselect_orb_colors::display(window.video());
+		} else {
+			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << selected_field << "\n";
 		}
 
 		// Add more options here as needed

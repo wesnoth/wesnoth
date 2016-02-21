@@ -399,8 +399,8 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 	, click_dismiss(cfg["click_dismiss"].to_bool())
 	, definition(cfg["definition"])
 	, linked_groups()
-	, tooltip(cfg.child_or_empty("tooltip"))
-	, helptip(cfg.child_or_empty("helptip"))
+	, tooltip(cfg.child_or_empty("tooltip"), "tooltip")
+	, helptip(cfg.child_or_empty("helptip"), "helptip")
 	, grid(0)
 {
 	if(!cfg["functions"].empty()) {
@@ -452,10 +452,10 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 	}
 }
 
-twindow_builder::tresolution::ttip::ttip(const config& cfg) : id(cfg["id"])
+twindow_builder::tresolution::ttip::ttip(const config& cfg, const std::string& tagname) : id(cfg["id"])
 {
 	VALIDATE(!id.empty(),
-			 missing_mandatory_wml_key("[window][resolution][tip]", "id"));
+			 missing_mandatory_wml_key("[window][resolution][" + tagname + "]", "id"));
 }
 
 /*WIKI

@@ -68,6 +68,7 @@
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
+#include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
@@ -412,6 +413,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_server_list>();
 	test<gui2::tsimple_item_selector>();
 	test<gui2::tscreenshot_notification>();
+	test<gui2::tselect_orb_colors>();
 	test<gui2::ttheme_list>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
@@ -821,6 +823,15 @@ struct twrapper<gui2::tscreenshot_notification>
 	static gui2::tscreenshot_notification* create()
 	{
 		return new gui2::tscreenshot_notification("path");
+	}
+};
+
+template<>
+struct twrapper<gui2::tselect_orb_colors>
+{
+	static gui2::tselect_orb_colors* create()
+	{
+		return new gui2::tselect_orb_colors();
 	}
 };
 

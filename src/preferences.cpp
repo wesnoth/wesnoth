@@ -267,11 +267,22 @@ void set_show_partial_orb(bool show_orb) {
 }
 
 
+static std::string fix_orb_color_name(const std::string& color) {
+	if (color.substr(0,4) == "orb_") {
+		if(color[4] >= '0' && color[4] <= '9') {
+			return color.substr(5);
+		} else {
+			return color.substr(4);
+		}
+	}
+	return color;
+}
+
 std::string allied_color() {
 	std::string ally_color = get("ally_orb_color");
 	if (ally_color.empty())
 		return game_config::colors::ally_orb_color;
-	return ally_color;
+	return fix_orb_color_name(ally_color);
 }
 void set_allied_color(const std::string& color_id) {
 	prefs["ally_orb_color"] = color_id;
@@ -291,7 +302,7 @@ std::string enemy_color() {
 	std::string enemy_color = get("enemy_orb_color");
 	if (enemy_color.empty())
 		return game_config::colors::enemy_orb_color;
-	return enemy_color;
+	return fix_orb_color_name(enemy_color);
 }
 void set_enemy_color(const std::string& color_id) {
 	prefs["enemy_orb_color"] = color_id;
@@ -301,7 +312,7 @@ std::string moved_color() {
 	std::string moved_color = get("moved_orb_color");
 	if (moved_color.empty())
 		return game_config::colors::moved_orb_color;
-	return moved_color;
+	return fix_orb_color_name(moved_color);
 }
 void set_moved_color(const std::string& color_id) {
 	prefs["moved_orb_color"] = color_id;
@@ -311,7 +322,7 @@ std::string unmoved_color() {
 	std::string unmoved_color = get("unmoved_orb_color");
 	if (unmoved_color.empty())
 		return game_config::colors::unmoved_orb_color;
-	return unmoved_color;
+	return fix_orb_color_name(unmoved_color);
 }
 void set_unmoved_color(const std::string& color_id) {
 	prefs["unmoved_orb_color"] = color_id;
@@ -321,7 +332,7 @@ std::string partial_color() {
 	std::string partmoved_color = get("partial_orb_color");
 	if (partmoved_color.empty())
 		return game_config::colors::partial_orb_color;
-	return partmoved_color;
+	return fix_orb_color_name(partmoved_color);
 }
 void set_partial_color(const std::string& color_id) {
 	prefs["partial_orb_color"] = color_id;
@@ -410,6 +421,22 @@ double turbo_speed()
 void save_turbo_speed(const double speed)
 {
 	prefs["turbo_speed"] = speed;
+}
+	
+int font_scaling()
+{
+	// Clip at 50 because if it's too low it'll cause crashes
+	return std::max<int>(50, prefs["font_scale"].to_int(100));
+}
+
+void set_font_scaling(int scale)
+{
+	prefs["font_scale"] = scale;
+}
+
+int font_scaled(int size)
+{
+	return (size * font_scaling()) / 100;
 }
 
 bool idle_anim()

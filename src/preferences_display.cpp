@@ -115,57 +115,5 @@ void set_idle_anim_rate(int rate) {
 	}
 }
 
-
-bool show_video_mode_dialog(CVideo& video)
-{
-	const resize_lock prevent_resizing;
-	// For some reason, this line prevents the dialog from being opened from GUI2...
-	//const events::event_context dialog_events_context;
-
-	std::vector<std::pair<int,int> > resolutions
-			= video.get_available_resolutions();
-
-	if(resolutions.empty()) {
-		gui2::show_transient_message(
-				video
-				, ""
-				, _("There are no alternative video modes available"));
-
-		return false;
-	}
-
-	std::vector<std::string> options;
-	unsigned current_choice = 0;
-
-	for(size_t k = 0; k < resolutions.size(); ++k) {
-		std::pair<int, int> const& res = resolutions[k];
-
-		if (res == video.current_resolution())
-			current_choice = static_cast<unsigned>(k);
-
-		std::ostringstream option;
-		option << res.first << utils::unicode_multiplication_sign << res.second;
-		const int div = boost::math::gcd(res.first, res.second);
-		const int ratio[2] = {res.first/div, res.second/div};
-		if (ratio[0] <= 10 || ratio[1] <= 10)
-			option << " (" << ratio[0] << ':' << ratio[1] << ')';
-		options.push_back(option.str());
-	}
-
-	gui2::tsimple_item_selector dlg(_("Choose Resolution"), "", options);
-	dlg.set_selected_index(current_choice);
-	dlg.show(video);
-
-	int choice = dlg.selected_index();
-
-	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == video.current_resolution()) {
-		return false;
-	}
-
-	video.set_resolution(resolutions[static_cast<size_t>(choice)]);
-
-	return true;
-}
-
 } // end namespace preferences
 
