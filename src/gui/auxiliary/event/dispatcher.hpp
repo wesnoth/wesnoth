@@ -22,6 +22,8 @@
 
 #include "SDL_events.h"
 
+#include "video.hpp"
+
 #include "utils/boost_function_guarded.hpp"
 #include <boost/mpl/int.hpp>
 #include <boost/utility/enable_if.hpp>
