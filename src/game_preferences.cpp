@@ -64,8 +64,6 @@ std::map<std::string, std::vector<std::string> > history_map;
 
 std::map<std::string, preferences::acquaintance> acquaintances;
 
-bool acquaintances_initialized = false;
-
 std::vector<std::string> mp_modifications;
 bool mp_modifications_initialized = false;
 std::vector<std::string> sp_modifications;
@@ -241,8 +239,7 @@ admin_authentication_reset::~admin_authentication_reset()
 }
 
 static void load_acquaintances() {
-	if(!acquaintances_initialized) {
-		acquaintances.clear();
+	if(acquaintances.empty()) {
 		BOOST_FOREACH(const config &acfg, preferences::get_prefs()->child_range("acquaintance")) {
 			acquaintance ac = acquaintance(acfg);
 			acquaintances[ac.get_nick()] = ac;
@@ -297,7 +294,7 @@ bool add_ignore(const std::string& nick, const std::string& reason) {
 	return true;
 }
 
-void remove_acquaintance(const std::string& nick) {
+bool remove_acquaintance(const std::string& nick) {
 	std::map<std::string, acquaintance>::iterator i = acquaintances.find(nick);
 
 	//nick might include the notes, depending on how we're removing
@@ -309,10 +306,14 @@ void remove_acquaintance(const std::string& nick) {
 		}
 	}
 
-	if(i != acquaintances.end()) {
-		acquaintances.erase(i);
-		save_acquaintances();
+	if(i == acquaintances.end()) {
+		return false;
 	}
+
+	acquaintances.erase(i);
+	save_acquaintances();
+
+	return true;
 }
 
 bool is_friend(const std::string& nick)
@@ -951,7 +952,7 @@ void set_autosavemax(int value)
 
 std::string theme()
 {
-	if(non_interactive()) {
+	if(CVideo::get_singleton().non_interactive()) {
 		static const std::string null_theme = "null";
 		return null_theme;
 	}
@@ -1006,16 +1007,6 @@ void set_show_haloes(bool value)
 	preferences::set("show_haloes", value);
 }
 
-bool flip_time()
-{
-	return preferences::get("flip_time", false);
-}
-
-void set_flip_time(bool value)
-{
-	preferences::set("flip_time", value);
-}
-
 compression::format save_compression_format()
 {
 	const std::string& choice =
@@ -1035,11 +1026,6 @@ compression::format save_compression_format()
 	// supporting some algorithm we don't; although why would anyone
 	// playing a game need more algorithms, really...
 	return compression::GZIP;
-}
-
-bool startup_effect()
-{
-	return preferences::get("startup_effect", false);
 }
 
 std::string get_chat_timestamp(const time_t& t) {

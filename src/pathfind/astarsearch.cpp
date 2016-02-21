@@ -144,10 +144,10 @@ public:
 plain_route a_star_search(const map_location& src, const map_location& dst,
                           double stop_at, const cost_calculator *calc,
                           const size_t width, const size_t height,
-                          const teleport_map *teleports) {
+                          const teleport_map *teleports, bool border) {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(src.valid(width, height));
-	assert(dst.valid(width, height));
+	assert(src.valid(width, height, border));
+	assert(dst.valid(width, height, border));
 	assert(calc != NULL);
 	assert(stop_at <= calc->getNoPathValue());
 	//---------------------------------------------------
@@ -202,7 +202,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		get_adjacent_tiles(n.curr, &locs[0]);
 
 		for (; i-- > 0;) {
-			if (!locs[i].valid(width, height)) continue;
+			if (!locs[i].valid(width, height, border)) continue;
 			if (locs[i] == n.curr) continue;
 			node& next = nodes[index(locs[i])];
 

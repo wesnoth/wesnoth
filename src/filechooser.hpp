@@ -15,7 +15,7 @@
 #define FILE_CHOOSER_H_INCLUDED
 
 class config;
-class display;
+class CVideo;
 
 #include "construct_dialog.hpp"
 
@@ -29,7 +29,7 @@ namespace dialogs
 
 class file_dialog : public gui::dialog {
 public:
-	file_dialog(display &disp, const std::string& file_path, const std::string& title, const std::string& default_file_name, bool show_directory_buttons);
+	file_dialog(CVideo& video, const std::string& file_path, const std::string& title, const std::string& default_file_name, bool show_directory_buttons);
 
 	virtual gui::dialog::dimension_measurements layout(int xloc=-1, int yloc=-1);
 
@@ -62,14 +62,14 @@ private:
 /// contains the chosen file when the function returns.  Return the
 /// index of the button pressed, or -1 if the dialog was canceled
 /// through keypress.
-int show_file_chooser_dialog(display &displ, std::string &filename,
+int show_file_chooser_dialog(CVideo& video, std::string &filename,
                              std::string const &title, bool show_directory_buttons = true,
 							 const std::string& file_to_search = "",
 							 int xloc = -1, int yloc = -1);
 
 /// Show a filechooser dialog in a "save" mode, that is, without relying
 /// on autocomplete to allow saving under any filename
-int show_file_chooser_dialog_save(display &displ, std::string &filename,
+int show_file_chooser_dialog_save(CVideo& video, std::string &filename,
                              std::string const &title,
                              const std::string& default_file_name = "",
                              bool show_directory_buttons = true,

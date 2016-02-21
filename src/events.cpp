@@ -325,13 +325,7 @@ const Uint32 resize_timeout = 100;
 SDL_Event last_resize_event;
 bool last_resize_event_used = true;
 
-bool resize_comparer(SDL_Event a, SDL_Event b) {
-	return a.type == SDL_WINDOWEVENT && a.type == b.type &&
-			a.window.event == SDL_WINDOWEVENT_RESIZED &&
-			a.window.event == b.window.event;
-}
-
-bool remove_on_resize(const SDL_Event &a) {
+static bool remove_on_resize(const SDL_Event &a) {
 	if (a.type == DRAW_EVENT || a.type == DRAW_ALL_EVENT) {
 		return true;
 	}
@@ -705,7 +699,7 @@ void peek_for_resize()
 	for (int i = 0; i < num; i++) {
 		if (events[i].type == SDL_WINDOWEVENT &&
 				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
-			update_framebuffer();
+			CVideo::get_singleton().update_framebuffer();
 
 		}
 	}

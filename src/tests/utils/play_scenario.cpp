@@ -118,7 +118,7 @@ namespace test_utils {
 		state.set_carryover_sides_start(
 			config_of("next_scenario", id_)
 		);
-		campaign_controller controller(get_fake_display(1024, 768), state, game_config_, tdata_);
+		campaign_controller controller(get_fake_display(1024, 768).video(), state, game_config_, tdata_);
 
 		controller.play_game();
 	}

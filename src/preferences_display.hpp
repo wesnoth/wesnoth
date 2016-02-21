@@ -17,7 +17,7 @@
 
 class config;
 class display;
-
+class CVideo;
 #include <string>
 
 namespace preferences {
@@ -44,17 +44,13 @@ namespace preferences {
 	void set_idle_anim(bool ison);
 	void set_idle_anim_rate(int rate);
 
-	std::string show_wesnothd_server_search(display&);
-	void show_preferences_dialog(display& disp, const config& game_cfg);
-	bool show_video_mode_dialog(display& disp);
-	bool show_theme_dialog(display& disp);
-	void show_paths_dialog(display& disp);
-	void show_mp_alerts_dialog(display& disp);
-	void show_advanced_graphics_dialog(display & disp);
+	std::string show_wesnothd_server_search(CVideo&);
+	void show_preferences_dialog(CVideo& disp, const config& game_cfg);
+	bool show_theme_dialog(CVideo& disp);
 
 	// If prefs is non-null, save the hotkeys in that config
 	// instead of the default.
-	void show_hotkeys_preferences_dialog(display & disp);
+	void show_hotkeys_preferences_dialog(CVideo & disp);
 } // end namespace preferences
 
 #endif

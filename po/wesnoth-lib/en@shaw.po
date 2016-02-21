@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2010-09-30 05:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@gmail.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -1664,15 +1664,15 @@ msgstr ""
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_description.cfg:555
 #: data/gui/default/window/addon_filter_options.cfg:420
-#: data/gui/default/window/advanced_graphics_options.cfg:166
+#: data/gui/default/window/advanced_graphics_options.cfg:165
 #: data/gui/default/window/chat_log.cfg:205
 #: data/gui/default/window/game_version.cfg:599
 #: data/gui/default/window/gamestate_inspector.cfg:299
 #: data/gui/default/window/lobby_main.cfg:625
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/lua_interpreter.cfg:137
-#: data/gui/default/window/message.cfg:137 src/construct_dialog.cpp:141
-#: src/generators/default_map_generator.cpp:111
+#: data/gui/default/window/message.cfg:137 src/construct_dialog.cpp:139
+#: src/generators/default_map_generator.cpp:112
 msgid "Close"
 msgstr "𐑒𐑤𐑴𐑕"
 
@@ -1796,7 +1796,7 @@ msgstr "𐑒𐑩𐑯𐑧𐑒𐑑"
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
 #: data/gui/default/window/folder_create.cfg:134
-#: data/gui/default/window/game_load.cfg:471
+#: data/gui/default/window/game_load.cfg:469
 #: data/gui/default/window/game_save.cfg:135
 #: data/gui/default/window/label_settings.cfg:149
 #: data/gui/default/window/language_selection.cfg:141
@@ -1813,10 +1813,10 @@ msgstr "𐑒𐑩𐑯𐑧𐑒𐑑"
 #: data/gui/default/window/network_transmission.cfg:114
 #: data/gui/default/window/simple_item_selector.cfg:158
 #: data/gui/default/window/theme_list.cfg:172
-#: data/gui/default/window/unit_attack.cfg:210
+#: data/gui/default/window/unit_attack.cfg:369
 #: data/gui/default/window/unit_create.cfg:424
-#: data/gui/default/window/unit_create.cfg:425 src/construct_dialog.cpp:135
-#: src/construct_dialog.cpp:138 src/hotkey/hotkey_command.cpp:41
+#: data/gui/default/window/unit_create.cfg:425 src/construct_dialog.cpp:133
+#: src/construct_dialog.cpp:136 src/hotkey/hotkey_command.cpp:41
 msgid "Cancel"
 msgstr "𐑒𐑨𐑯𐑕𐑩𐑤"
 
@@ -2118,7 +2118,7 @@ msgstr ""
 #: data/gui-2/default/window/mp_server_list.cfg:107
 #: data/gui/default/window/addon_list.cfg:195
 #: data/gui/default/window/data_manage.cfg:163
-#: data/gui/default/window/game_load.cfg:252
+#: data/gui/default/window/game_load.cfg:250
 #: data/gui/default/window/mp_server_list.cfg:107
 msgid "Name"
 msgstr "𐑯𐑱𐑥"
@@ -2127,7 +2127,7 @@ msgstr "𐑯𐑱𐑥"
 #. [label]
 #: data/gui-2/default/window/addon_list.cfg:210
 #: data/gui/default/window/addon_list.cfg:210
-#: src/gui/dialogs/title_screen.cpp:325
+#: src/gui/dialogs/title_screen.cpp:319
 msgid "Version"
 msgstr "𐑝𐑻𐑠𐑩𐑯"
 
@@ -2162,63 +2162,60 @@ msgstr ""
 #: data/gui-2/default/window/mp_cmd_wrapper.cfg:200
 #: data/gui/default/window/addon_uninstall_list.cfg:161
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:219
+#: src/game_preferences_display.cpp:209
 msgid "Remove"
 msgstr "𐑮𐑰𐑥𐑵𐑝"
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:42
-#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Bilinear interpolation scaling (legacy wesnoth option)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:42
-#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Linear (legacy)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:43
-#: data/gui/default/window/advanced_graphics_options.cfg:43
+#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:43
-#: data/gui/default/window/advanced_graphics_options.cfg:43
+#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor scaling (fastest)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:44
-#: data/gui/default/window/advanced_graphics_options.cfg:44
+#: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "xBRZ + linear"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:44
-#: data/gui/default/window/advanced_graphics_options.cfg:44
+#: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "xBRZ followed by Bilinear interpolation"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:45
-#: data/gui/default/window/advanced_graphics_options.cfg:45
+#: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + NN"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:45
-#: data/gui/default/window/advanced_graphics_options.cfg:45
+#: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ followed by Nearest Neighbor (recommended)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:46
-#: data/gui/default/window/advanced_graphics_options.cfg:46
 msgid "Bilinear interpolation scaling (new implementation)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:46
-#: data/gui/default/window/advanced_graphics_options.cfg:46
+#: data/gui/default/window/advanced_graphics_options.cfg:45
 msgid "Linear"
 msgstr ""
 
 #. [label]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:92
-#: data/gui/default/window/advanced_graphics_options.cfg:92
+#: data/gui/default/window/advanced_graphics_options.cfg:91
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advanced Graphics Options"
@@ -2226,31 +2223,31 @@ msgstr "𐑩𐑛𐑝𐑭𐑯𐑕𐑑 𐑪𐑐𐑖𐑩𐑯𐑟"
 
 #. [label]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:108
-#: data/gui/default/window/advanced_graphics_options.cfg:108
+#: data/gui/default/window/advanced_graphics_options.cfg:107
 msgid "Images will be scaled using the following algorithms:"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:129
-#: data/gui/default/window/advanced_graphics_options.cfg:129
+#: data/gui/default/window/advanced_graphics_options.cfg:128
 msgid "All units, haloes, border hexes"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:129
-#: data/gui/default/window/advanced_graphics_options.cfg:129
+#: data/gui/default/window/advanced_graphics_options.cfg:128
 msgid "Scaled to zoom"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:140
-#: data/gui/default/window/advanced_graphics_options.cfg:140
+#: data/gui/default/window/advanced_graphics_options.cfg:139
 msgid "Everything else"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:140
-#: data/gui/default/window/advanced_graphics_options.cfg:140
+#: data/gui/default/window/advanced_graphics_options.cfg:139
 msgid "Scaled to hex"
 msgstr ""
 
@@ -2335,8 +2332,8 @@ msgstr ""
 #: data/gui/default/window/editor_set_starting_position.cfg:162
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_cache_options.cfg:249
-#: data/gui/default/window/game_load.cfg:457
-#: data/gui/default/window/game_load.cfg:458
+#: data/gui/default/window/game_load.cfg:455
+#: data/gui/default/window/game_load.cfg:456
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/game_save.cfg:121
 #: data/gui/default/window/label_settings.cfg:137
@@ -2356,8 +2353,8 @@ msgstr ""
 #: data/gui/default/window/unit_create.cfg:413
 #: data/gui/default/window/wml_error.cfg:162
 #: data/gui/default/window/wml_message.cfg:485
-#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:127
-#: src/construct_dialog.cpp:134 src/gui/dialogs/message.cpp:173
+#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:173
 #: src/gui/dialogs/message.cpp:180
 msgid "OK"
 msgstr "𐑴𐑒𐑱"
@@ -2625,7 +2622,7 @@ msgstr "𐑗𐑵𐑟 𐑞 𐑜𐑱𐑥 𐑑 𐑤𐑴𐑛"
 #: data/gui-2/default/window/data_manage.cfg:113
 #: data/gui-2/default/window/game_load.cfg:213
 #: data/gui/default/window/data_manage.cfg:113
-#: data/gui/default/window/game_load.cfg:201
+#: data/gui/default/window/game_load.cfg:199
 #: data/gui/default/window/unit_create.cfg:217
 msgid "Filter"
 msgstr "𐑓𐑦𐑤𐑑𐑼"
@@ -2635,7 +2632,7 @@ msgstr "𐑓𐑦𐑤𐑑𐑼"
 #: data/gui-2/default/window/data_manage.cfg:177
 #: data/gui-2/default/window/game_load.cfg:278
 #: data/gui/default/window/data_manage.cfg:177
-#: data/gui/default/window/game_load.cfg:266
+#: data/gui/default/window/game_load.cfg:264
 msgid "Date"
 msgstr "𐑛𐑱𐑑"
 
@@ -2699,7 +2696,7 @@ msgstr ""
 #: data/gui/default/window/game_save_overwrite.cfg:96
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: data/gui/default/window/mp_host_game_prompt.cfg:105
-#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:188
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:188
 msgid "Yes"
 msgstr "𐑘𐑧𐑕"
 
@@ -2717,7 +2714,7 @@ msgstr "𐑘𐑧𐑕"
 #: data/gui/default/window/game_save_oos.cfg:209
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: data/gui/default/window/mp_host_game_prompt.cfg:118
-#: src/construct_dialog.cpp:131 src/gui/dialogs/message.cpp:191
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:191
 msgid "No"
 msgstr "𐑯𐑴"
 
@@ -3021,7 +3018,7 @@ msgstr "𐑯𐑿 𐑥𐑨𐑐"
 #. [label]
 #: data/gui-2/default/window/editor_new_map.cfg:54
 #: data/gui/default/window/editor_new_map.cfg:54
-#: src/generators/default_map_generator.cpp:122
+#: src/generators/default_map_generator.cpp:123
 msgid "Width:"
 msgstr "𐑢𐑦𐑛𐑔:"
 
@@ -3029,7 +3026,7 @@ msgstr "𐑢𐑦𐑛𐑔:"
 #. [label]
 #: data/gui-2/default/window/editor_new_map.cfg:81
 #: data/gui/default/window/editor_new_map.cfg:81
-#: src/generators/default_map_generator.cpp:123
+#: src/generators/default_map_generator.cpp:124
 msgid "Height:"
 msgstr "𐑣𐑲𐑑:"
 
@@ -3336,45 +3333,45 @@ msgstr "𐑤𐑴𐑛 𐑜𐑱𐑥"
 #. [button]: id=delete
 #: data/gui-2/default/window/game_load.cfg:360
 #: data/gui-2/default/window/game_load.cfg:361
-#: data/gui/default/window/game_load.cfg:372
-#: data/gui/default/window/game_load.cfg:373
+#: data/gui/default/window/game_load.cfg:370
+#: data/gui/default/window/game_load.cfg:371
 msgid "Delete"
 msgstr "𐑛𐑦𐑤𐑰𐑑"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui-2/default/window/game_load.cfg:379
-#: data/gui/default/window/game_load.cfg:356
+#: data/gui/default/window/game_load.cfg:354
 #, fuzzy
 msgid "Change difficulty"
 msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑰: "
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui-2/default/window/game_load.cfg:380
-#: data/gui/default/window/game_load.cfg:357
+#: data/gui/default/window/game_load.cfg:355
 msgid "Change campaign difficulty before loading"
 msgstr ""
 
 #. [toggle_button]: id=show_replay
 #: data/gui-2/default/window/game_load.cfg:399
-#: data/gui/default/window/game_load.cfg:397
+#: data/gui/default/window/game_load.cfg:395
 msgid "Show replay"
 msgstr "𐑖𐑴 𐑮𐑰𐑐𐑤𐑱"
 
 #. [toggle_button]: id=show_replay
 #: data/gui-2/default/window/game_load.cfg:400
-#: data/gui/default/window/game_load.cfg:398
+#: data/gui/default/window/game_load.cfg:396
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui-2/default/window/game_load.cfg:418
-#: data/gui/default/window/game_load.cfg:416
+#: data/gui/default/window/game_load.cfg:414
 msgid "Cancel orders"
 msgstr "𐑒𐑨𐑯𐑕𐑩𐑤 𐑹𐑛𐑼𐑟"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui-2/default/window/game_load.cfg:419
-#: data/gui/default/window/game_load.cfg:417
+#: data/gui/default/window/game_load.cfg:415
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 
@@ -4069,7 +4066,7 @@ msgstr ""
 #. [button]: id=revert_to_defaults
 #: data/gui-2/default/window/mp_alerts_options.cfg:210
 #: data/gui/default/window/mp_alerts_options.cfg:210
-#: src/game_preferences_display.cpp:252
+#: src/game_preferences_display.cpp:242
 #: src/hotkey/hotkey_preferences_display.cpp:172
 #, fuzzy
 #| msgid "Default"
@@ -4354,7 +4351,7 @@ msgstr "𐑐𐑭𐑕𐑢𐑻𐑛 𐑮𐑦𐑥𐑲𐑯𐑛𐑼"
 #: data/gui-2/default/window/title_screen.cfg:258
 #: data/gui/default/window/mp_method_selection.cfg:39
 #: data/gui/default/window/title_screen.cfg:258
-#: src/gui/dialogs/game_load.cpp:339
+#: src/gui/dialogs/game_load.cpp:352
 msgid "Multiplayer"
 msgstr "𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻"
 
@@ -4530,7 +4527,7 @@ msgstr "𐑕𐑑𐑸𐑑 𐑨 𐑑𐑵𐑑𐑹𐑰𐑩𐑤 𐑑 𐑓𐑨𐑥𐑦
 #. [grid]
 #: data/gui-2/default/window/title_screen.cfg:256
 #: data/gui/default/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:342
+#: src/gui/dialogs/game_load.cpp:355
 msgid "Tutorial"
 msgstr "𐑑𐑵𐑑𐑹𐑰𐑩𐑤"
 
@@ -4647,13 +4644,12 @@ msgstr ""
 
 #. [button]: id=ok
 #: data/gui-2/default/window/unit_attack.cfg:197
-#: data/gui/default/window/unit_attack.cfg:197
+#: data/gui/default/window/unit_attack.cfg:356
 msgid "Attack"
 msgstr "𐑩𐑑𐑨𐑒"
 
 #. [label]
 #: data/gui-2/default/window/unit_attack.cfg:265
-#: data/gui/default/window/unit_attack.cfg:265
 msgid "Attack enemy"
 msgstr "𐑩𐑑𐑨𐑒 𐑧𐑯𐑩𐑥𐑦"
 
@@ -4689,10 +4685,37 @@ msgstr "𐑓𐑰𐑥𐑱𐑤"
 msgid "Race"
 msgstr "𐑮𐑱𐑕"
 
+#: data/gui/default/window/advanced_graphics_options.cfg:45
+msgid "Bilinear interpolation scaling"
+msgstr ""
+
+#. [button]: id=attacker_profile
+#. [button]: id=defender_profile
 #. [button]: id=type_profile
+#: data/gui/default/window/unit_attack.cfg:64
+#: data/gui/default/window/unit_attack.cfg:126
 #: data/gui/default/window/unit_create.cfg:116
 msgid "Profile"
 msgstr ""
+
+#. [button]: id=damage_calculation
+#: data/gui/default/window/unit_attack.cfg:328
+msgid "Damage Calculation"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/unit_attack.cfg:435
+#, fuzzy
+#| msgid "Attack enemy"
+msgid "Attack Enemy"
+msgstr "𐑩𐑑𐑨𐑒 𐑧𐑯𐑩𐑥𐑦"
+
+#. [label]
+#: data/gui/default/window/unit_attack.cfg:461
+#, fuzzy
+#| msgid "Choose Resolution"
+msgid "Choose weapon:"
+msgstr "𐑗𐑵𐑟 𐑮𐑧𐑟𐑩𐑤𐑵𐑖𐑩𐑯"
 
 #: src/build_info.cpp:190
 msgid "feature^Experimental OpenMP support"
@@ -4762,611 +4785,611 @@ msgstr ""
 msgid "%I:%M %p"
 msgstr ""
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:191
 msgid "Full screen"
 msgstr "𐑓𐑫𐑤 𐑕𐑒𐑮𐑰𐑯"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:192
 msgid "Accelerated speed"
 msgstr "𐑨𐑒𐑕𐑧𐑤𐑼𐑱𐑑𐑩𐑛 𐑕𐑐𐑰𐑛"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:193
 msgid "Skip AI moves"
 msgstr "𐑕𐑒𐑦𐑐 AI 𐑥𐑵𐑝𐑟"
 
-#: src/game_preferences_display.cpp:204
+#: src/game_preferences_display.cpp:194
 #, fuzzy
 #| msgid "Interrupt move when an ally is sighted"
 msgid "Interrupt move when an ally is sighted"
 msgstr "𐑦𐑯𐑑𐑻𐑳𐑐𐑑 𐑥𐑵𐑝 𐑢𐑧𐑯 𐑩𐑯 𐑨𐑤𐑲 𐑦𐑟 𐑕𐑲𐑑𐑩𐑛"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:195
 msgid "Show grid"
 msgstr "𐑖𐑴 𐑜𐑮𐑦𐑛"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:196
 msgid "Save replays at the end of scenarios"
 msgstr ""
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:197
 msgid "Delete auto-saves at the end of scenarios"
 msgstr ""
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:198
 msgid "Do not show lobby joins"
 msgstr "𐑛𐑵 𐑯𐑪𐑑 𐑖𐑴 𐑤𐑭𐑚𐑰 𐑡𐑶𐑯𐑟"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:199
 msgid "Show lobby joins of friends only"
 msgstr "𐑖𐑴 𐑤𐑭𐑚𐑰 𐑡𐑶𐑯𐑟 𐑝 𐑓𐑮𐑧𐑯𐑛𐑟 𐑴𐑯𐑤𐑦"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:200
 msgid "Show all lobby joins"
 msgstr "𐑖𐑴 𐑷𐑤 𐑤𐑭𐑚𐑰 𐑡𐑶𐑯𐑟"
 
-#: src/game_preferences_display.cpp:211
+#: src/game_preferences_display.cpp:201
 msgid "Sort lobby list"
 msgstr "𐑕𐑹𐑑 𐑤𐑭𐑚𐑰 𐑤𐑦𐑕𐑑"
 
-#: src/game_preferences_display.cpp:212
+#: src/game_preferences_display.cpp:202
 msgid "Iconize lobby list"
 msgstr "𐑲𐑒𐑪𐑯𐑲𐑟 𐑤𐑭𐑚𐑰 𐑤𐑦𐑕𐑑"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:203
 #, fuzzy
 #| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
 msgstr "𐑕𐑱𐑝 𐑐𐑭𐑕𐑢𐑻𐑛 𐑑 𐑐𐑮𐑧𐑓𐑼𐑩𐑯𐑕𐑩𐑟 (𐑒𐑤𐑽 𐑑𐑧𐑒𐑕𐑑)"
 
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:204
 #, fuzzy
 #| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "𐑕𐑧𐑑 𐑐𐑭𐑔 𐑑 wesnothd"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:205
 msgid "Friends List"
 msgstr "𐑓𐑮𐑧𐑯𐑛𐑟 𐑤𐑦𐑕𐑑"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:206
 msgid "Multiplayer Options"
 msgstr "𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑪𐑐𐑖𐑩𐑯𐑟"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:207
 msgid "Add As Friend"
 msgstr "𐑨𐑛 𐑨𐑟 𐑓𐑮𐑧𐑯𐑛"
 
-#: src/game_preferences_display.cpp:218
+#: src/game_preferences_display.cpp:208
 msgid "Add As Ignore"
 msgstr "𐑨𐑛 𐑨𐑟 𐑦𐑜𐑯𐑹"
 
-#: src/game_preferences_display.cpp:220
+#: src/game_preferences_display.cpp:210
 msgid "Show floating labels"
 msgstr "𐑖𐑴 𐑓𐑤𐑴𐑑𐑦𐑙 𐑤𐑱𐑚𐑩𐑤𐑟"
 
-#: src/game_preferences_display.cpp:221
+#: src/game_preferences_display.cpp:211
 msgid "Turn dialog"
 msgstr "𐑑𐑻𐑯 𐑛𐑲𐑩𐑤𐑪𐑜"
 
-#: src/game_preferences_display.cpp:222
+#: src/game_preferences_display.cpp:212
 msgid "Enable planning mode on start"
 msgstr "𐑧𐑯𐑱𐑚𐑩𐑤 𐑐𐑤𐑨𐑯𐑦𐑙 𐑥𐑴𐑛 𐑪𐑯 𐑕𐑑𐑸𐑑"
 
-#: src/game_preferences_display.cpp:223
+#: src/game_preferences_display.cpp:213
 msgid "Hide allies’ plans by default"
 msgstr ""
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:214
 msgid "Turn bell"
 msgstr "𐑑𐑻𐑯 𐑚𐑧𐑤"
 
-#: src/game_preferences_display.cpp:225
+#: src/game_preferences_display.cpp:215
 msgid "Show team colors"
 msgstr "𐑖𐑴 𐑑𐑰𐑥 𐑒𐑳𐑤𐑼𐑟"
 
-#: src/game_preferences_display.cpp:226
+#: src/game_preferences_display.cpp:216
 msgid "Show haloing effects"
 msgstr "𐑖𐑴 𐑣𐑱𐑤𐑴𐑦𐑙 𐑧𐑓𐑧𐑒𐑑𐑕"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:217
 msgid "Change Resolution"
 msgstr "𐑗𐑱𐑯𐑡 𐑮𐑧𐑟𐑩𐑤𐑵𐑖𐑩𐑯"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:218
 msgid "Theme"
 msgstr "𐑔𐑰𐑥"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:219
 msgid "Hotkeys"
 msgstr "𐑣𐑭𐑑𐑒𐑰𐑟"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:220
 msgid "Colors"
 msgstr ""
 
-#: src/game_preferences_display.cpp:231
+#: src/game_preferences_display.cpp:221
 msgid "Cache"
 msgstr ""
 
-#: src/game_preferences_display.cpp:233
+#: src/game_preferences_display.cpp:223
 msgid "Sound effects"
 msgstr "𐑕𐑬𐑯𐑛 𐑧𐑓𐑧𐑒𐑑𐑕"
 
-#: src/game_preferences_display.cpp:234
+#: src/game_preferences_display.cpp:224
 msgid "Music"
 msgstr "𐑥𐑿𐑟𐑦𐑒"
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:225
 msgid "Chat timestamping"
 msgstr "𐑗𐑨𐑑 𐑑𐑲𐑥𐑕𐑑𐑨𐑥𐑐𐑦𐑙"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:226
 msgid "sound^Advanced Options"
 msgstr "𐑩𐑛𐑝𐑭𐑯𐑕𐑑 𐑪𐑐𐑖𐑩𐑯𐑟"
 
-#: src/game_preferences_display.cpp:237
+#: src/game_preferences_display.cpp:227
 msgid "sound^Standard Options"
 msgstr "𐑕𐑑𐑨𐑯𐑛𐑼𐑛 𐑪𐑐𐑖𐑩𐑯𐑟"
 
-#: src/game_preferences_display.cpp:238
+#: src/game_preferences_display.cpp:228
 #, fuzzy
 #| msgid "Refresh Display"
 msgid "colors^Display"
 msgstr "𐑮𐑰𐑓𐑮𐑧𐑖 𐑛𐑩𐑕𐑐𐑤𐑱"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:229
 msgid "User interface sounds"
 msgstr "𐑿𐑟𐑼 𐑦𐑯𐑑𐑼𐑓𐑱𐑕 𐑕𐑬𐑯𐑛𐑟"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:232
 msgid "Custom"
 msgstr "𐑒𐑳𐑕𐑑𐑩𐑥"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:233
 msgid "Apply"
 msgstr "𐑩𐑐𐑤𐑲"
 
-#: src/game_preferences_display.cpp:244
+#: src/game_preferences_display.cpp:234
 msgid "Show unit idle animations"
 msgstr "𐑖𐑴 𐑿𐑯𐑦𐑑 𐑲𐑛𐑩𐑤 𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯𐑟"
 
-#: src/game_preferences_display.cpp:245
+#: src/game_preferences_display.cpp:235
 #, fuzzy
 #| msgid "Show Unit Idle Animations"
 msgid "Show unit standing animations"
 msgstr "𐑖𐑴 𐑿𐑯𐑦𐑑 𐑲𐑛𐑩𐑤 𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯𐑟"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:236
 #, fuzzy
 msgid "Animate map"
 msgstr "𐑡𐑧𐑯𐑼𐑱𐑑 𐑥𐑨𐑐"
 
-#: src/game_preferences_display.cpp:247
+#: src/game_preferences_display.cpp:237
 msgid "Disable automatic moves"
 msgstr ""
 
-#: src/game_preferences_display.cpp:248
+#: src/game_preferences_display.cpp:238
 msgid "Alerts"
 msgstr ""
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:239
 msgid "Advanced"
 msgstr ""
 
-#: src/game_preferences_display.cpp:253
+#: src/game_preferences_display.cpp:243
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
 msgstr "𐑖𐑴 𐑧𐑯𐑩𐑥𐑦 𐑥𐑵𐑝𐑟"
 
-#: src/game_preferences_display.cpp:254
+#: src/game_preferences_display.cpp:244
 #, fuzzy
 #| msgid "Show all lobby joins"
 msgid "Show ally orb"
 msgstr "𐑖𐑴 𐑷𐑤 𐑤𐑭𐑚𐑰 𐑡𐑶𐑯𐑟"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:245
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
 msgstr "𐑖𐑴 𐑧𐑯𐑩𐑥𐑦 𐑥𐑵𐑝𐑟"
 
-#: src/game_preferences_display.cpp:256
+#: src/game_preferences_display.cpp:246
 msgid "Show partial moved orb"
 msgstr ""
 
-#: src/game_preferences_display.cpp:257
+#: src/game_preferences_display.cpp:247
 #, fuzzy
 #| msgid "Show team colors"
 msgid "Show moved orb"
 msgstr "𐑖𐑴 𐑑𐑰𐑥 𐑒𐑳𐑤𐑼𐑟"
 
-#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:268
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:270
+#: src/game_preferences_display.cpp:257 src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:259 src/game_preferences_display.cpp:260
 #, fuzzy
 #| msgid "SFX Volume:"
 msgid "Volume:"
 msgstr "𐑕𐑬𐑯𐑛 𐑧𐑓𐑧𐑒𐑑𐑕 𐑝𐑪𐑤𐑿𐑥:"
 
-#: src/game_preferences_display.cpp:272
+#: src/game_preferences_display.cpp:262
 msgid "Scroll speed:"
 msgstr "𐑕𐑒𐑮𐑴𐑤 𐑕𐑐𐑰𐑛:"
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:265
 msgid "Sample rate (Hz):"
 msgstr "𐑕𐑭𐑥𐑐𐑩𐑤 𐑮𐑱𐑑 (Hz):"
 
-#: src/game_preferences_display.cpp:276
+#: src/game_preferences_display.cpp:266
 msgid "Frequency:"
 msgstr "𐑓𐑮𐑰𐑒𐑢𐑩𐑯𐑕𐑰:"
 
-#: src/game_preferences_display.cpp:300
+#: src/game_preferences_display.cpp:290
 msgid "Sound effects on/off"
 msgstr "𐑕𐑬𐑯𐑛 𐑧𐑓𐑧𐑒𐑑𐑕 𐑪𐑯/𐑪𐑓"
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:294
 msgid "Change the sound effects volume"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑕𐑬𐑯𐑛 𐑧𐑓𐑧𐑒𐑑𐑕 𐑝𐑪𐑤𐑿𐑥"
 
-#: src/game_preferences_display.cpp:307
+#: src/game_preferences_display.cpp:297
 msgid "Music on/off"
 msgstr "𐑥𐑿𐑟𐑦𐑒 𐑪𐑯/𐑪𐑓"
 
-#: src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:301
 msgid "Change the music volume"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑥𐑿𐑟𐑦𐑒 𐑝𐑪𐑤𐑿𐑥"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:349
 msgid "Change the bell volume"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑚𐑧𐑤 𐑝𐑪𐑤𐑿𐑥"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:352
 msgid "Turn menu and button sounds on/off"
 msgstr "𐑑𐑻𐑯 𐑥𐑧𐑯𐑿 𐑯 𐑚𐑳𐑑𐑩𐑯 𐑕𐑬𐑯𐑛𐑟 𐑪𐑯/𐑪𐑓"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:356
 msgid "Change the sound volume for button clicks, etc."
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑕𐑬𐑯𐑛 𐑝𐑪𐑤𐑿𐑥 𐑓𐑹 𐑚𐑳𐑑𐑩𐑯 𐑒𐑤𐑦𐑒𐑕, etc."
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:358
 msgid "Change the sample rate"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑕𐑭𐑥𐑐𐑩𐑤 𐑮𐑱𐑑"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:367
 msgid "User defined sample rate"
 msgstr "𐑿𐑟𐑼 𐑛𐑦𐑓𐑲𐑯𐑛 𐑕𐑭𐑥𐑐𐑩𐑤 𐑮𐑱𐑑"
 
-#: src/game_preferences_display.cpp:387 src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:377 src/game_preferences_display.cpp:381
 msgid "Change the buffer size"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑚𐑳𐑓𐑻 𐑕𐑲𐑟"
 
-#: src/game_preferences_display.cpp:389 src/game_preferences_display.cpp:1167
+#: src/game_preferences_display.cpp:379 src/game_preferences_display.cpp:1155
 msgid "Buffer size: "
 msgstr "𐑚𐑳𐑓𐑻 𐑕𐑲𐑟: "
 
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:386
 msgid "Change the speed of scrolling around the map"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑕𐑐𐑰𐑛 𐑝 𐑕𐑒𐑮𐑴𐑤𐑦𐑙 𐑩𐑮𐑬𐑯𐑛 𐑞 𐑥𐑨𐑐"
 
-#: src/game_preferences_display.cpp:401 src/game_preferences_display.cpp:403
+#: src/game_preferences_display.cpp:391 src/game_preferences_display.cpp:393
 msgid "Set the amount of chat lines shown"
 msgstr "𐑕𐑧𐑑 𐑞 𐑩𐑥𐑬𐑯𐑑 𐑝 𐑗𐑨𐑑 𐑤𐑲𐑯𐑟 𐑖𐑴𐑯"
 
-#: src/game_preferences_display.cpp:406
+#: src/game_preferences_display.cpp:396
 msgid "Add a timestamp to chat messages"
 msgstr "𐑨𐑛 𐑩 𐑑𐑲𐑥𐑕𐑑𐑨𐑥𐑐 𐑑 𐑗𐑨𐑑 𐑥𐑧𐑕𐑦𐑡𐑩𐑟"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:399
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "𐑗𐑵𐑟 𐑢𐑧𐑞𐑼 𐑞 𐑜𐑱𐑥 𐑖𐑫𐑛 𐑮𐑳𐑯 𐑓𐑫𐑤 𐑕𐑒𐑮𐑰𐑯 𐑹 𐑦𐑯 𐑩 𐑢𐑦𐑯𐑛𐑴"
 
-#: src/game_preferences_display.cpp:412
+#: src/game_preferences_display.cpp:402
 msgid "Make units move and fight faster"
 msgstr "𐑥𐑱𐑒 𐑿𐑯𐑦𐑑𐑕 𐑥𐑵𐑝 𐑯 𐑓𐑲𐑑 𐑓𐑭𐑕𐑑𐑼"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:421
 msgid "Units move and fight speed"
 msgstr "𐑿𐑯𐑦𐑑𐑕 𐑥𐑵𐑝 𐑯 𐑓𐑲𐑑 𐑕𐑐𐑰𐑛"
 
-#: src/game_preferences_display.cpp:434
+#: src/game_preferences_display.cpp:424
 msgid "Play short random animations for idle units"
 msgstr ""
 
-#: src/game_preferences_display.cpp:437
+#: src/game_preferences_display.cpp:427
 msgid "Continuously animate standing units in the battlefield"
 msgstr ""
 
-#: src/game_preferences_display.cpp:440
+#: src/game_preferences_display.cpp:430
 msgid "Display animated terrain graphics"
 msgstr ""
 
-#: src/game_preferences_display.cpp:446
+#: src/game_preferences_display.cpp:436
 msgid "Set the frequency of unit idle animations"
 msgstr "𐑕𐑧𐑑 𐑞 𐑓𐑮𐑰𐑒𐑢𐑩𐑯𐑕𐑰 𐑝 𐑿𐑯𐑦𐑑 𐑲𐑛𐑩𐑤 𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯𐑟"
 
-#: src/game_preferences_display.cpp:451
+#: src/game_preferences_display.cpp:441
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "𐑕𐑧𐑑 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑯𐑳𐑥𐑚𐑻 𐑝 𐑷𐑑𐑴𐑥𐑨𐑑𐑦𐑒 𐑕𐑱𐑝𐑟 𐑑 𐑚𐑰 𐑮𐑦𐑑𐑱𐑯𐑛"
 
-#: src/game_preferences_display.cpp:455
+#: src/game_preferences_display.cpp:445
 msgid "Do not animate AI units moving"
 msgstr "𐑛𐑵 𐑯𐑪𐑑 𐑨𐑯𐑩𐑥𐑩𐑑 AI 𐑿𐑯𐑦𐑑𐑕 𐑥𐑵𐑝𐑦𐑙"
 
-#: src/game_preferences_display.cpp:458
+#: src/game_preferences_display.cpp:448
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "𐑕𐑲𐑑𐑦𐑙 𐑨𐑯 𐑨𐑤𐑲𐑛 𐑿𐑯𐑦𐑑 𐑦𐑯𐑑𐑻𐑳𐑐𐑑𐑕 𐑘𐑹 𐑿𐑯𐑦𐑑𐑕 𐑥𐑵𐑝𐑥𐑧𐑯𐑑"
 
-#: src/game_preferences_display.cpp:461
+#: src/game_preferences_display.cpp:451
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
 
-#: src/game_preferences_display.cpp:464
+#: src/game_preferences_display.cpp:454
 #, fuzzy
 #| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr "𐑛𐑦𐑤𐑰𐑑 𐑷𐑑𐑴-𐑕𐑱𐑝𐑟 𐑪𐑯 SP/MP 𐑝𐑦𐑒𐑑𐑼𐑦 𐑹 MP 𐑛𐑦𐑓𐑰𐑑"
 
-#: src/game_preferences_display.cpp:466
+#: src/game_preferences_display.cpp:456
 msgid "Overlay a grid onto the map"
 msgstr "𐑴𐑝𐑼𐑤𐑱 𐑩 𐑜𐑮𐑦𐑛 𐑪𐑯𐑑𐑵 𐑞 𐑥𐑨𐑐"
 
-#: src/game_preferences_display.cpp:469
+#: src/game_preferences_display.cpp:459
 msgid "Sort the player list in the lobby by player groups"
 msgstr "𐑕𐑹𐑑 𐑞 𐑐𐑤𐑱𐑻 𐑤𐑦𐑕𐑑 𐑦𐑯 𐑞 𐑤𐑭𐑚𐑰 𐑚𐑲 𐑐𐑤𐑱𐑻 𐑜𐑮𐑵𐑐𐑕"
 
-#: src/game_preferences_display.cpp:472
+#: src/game_preferences_display.cpp:462
 #, fuzzy
 #| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
 msgstr "𐑖𐑴 𐑲𐑒𐑪𐑯𐑟 𐑦𐑯 𐑓𐑮𐑳𐑯𐑑 𐑝 𐑞 𐑐𐑤𐑱𐑻 𐑯𐑱𐑥𐑟 𐑦𐑯 𐑞 𐑤𐑭𐑚𐑰."
 
-#: src/game_preferences_display.cpp:475
+#: src/game_preferences_display.cpp:465
 #, fuzzy
 #| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr "𐑳𐑯𐑗𐑧𐑒 𐑑 𐑛𐑦𐑤𐑰𐑑 𐑞 𐑕𐑱𐑝𐑛 𐑐𐑭𐑕𐑢𐑻𐑛 (𐑪𐑯 𐑧𐑜𐑟𐑦𐑑)."
 
-#: src/game_preferences_display.cpp:479
+#: src/game_preferences_display.cpp:469
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "𐑛𐑵 𐑯𐑪𐑑 𐑖𐑴 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑩𐑚𐑬𐑑 𐑐𐑤𐑱𐑻𐑟 𐑡𐑶𐑯𐑦𐑙 𐑞 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑤𐑭𐑚𐑰"
 
-#: src/game_preferences_display.cpp:481
+#: src/game_preferences_display.cpp:471
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "𐑖𐑴 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑩𐑚𐑬𐑑 𐑿𐑼 𐑓𐑮𐑧𐑯𐑛𐑟 𐑡𐑶𐑯𐑦𐑙 𐑞 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑤𐑭𐑚𐑰"
 
-#: src/game_preferences_display.cpp:483
+#: src/game_preferences_display.cpp:473
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "𐑖𐑴 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑩𐑚𐑬𐑑 𐑷𐑤 𐑐𐑤𐑱𐑻𐑟 𐑡𐑶𐑯𐑦𐑙 𐑞 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑤𐑭𐑚𐑰"
 
-#: src/game_preferences_display.cpp:485
+#: src/game_preferences_display.cpp:475
 #, fuzzy
 #| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr "𐑓𐑲𐑯𐑛 𐑯 𐑕𐑧𐑑 𐑐𐑭𐑔 𐑑 MP 𐑕𐑻𐑝𐑻 𐑑 𐑣𐑴𐑕𐑑 LAN 𐑜𐑱𐑥𐑟."
 
-#: src/game_preferences_display.cpp:486
+#: src/game_preferences_display.cpp:476
 msgid "View and edit your friends and ignores list"
 msgstr "𐑝𐑿 𐑯 𐑧𐑛𐑦𐑑 𐑿𐑼 𐑓𐑮𐑧𐑯𐑛𐑟 𐑯 𐑦𐑜𐑯𐑹𐑟 𐑤𐑦𐑕𐑑"
 
-#: src/game_preferences_display.cpp:487
+#: src/game_preferences_display.cpp:477
 msgid "Back to the multiplayer options"
 msgstr "𐑚𐑨𐑒 𐑑 𐑞 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑪𐑐𐑖𐑩𐑯𐑟"
 
-#: src/game_preferences_display.cpp:488
+#: src/game_preferences_display.cpp:478
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
 
-#: src/game_preferences_display.cpp:489
+#: src/game_preferences_display.cpp:479
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
 
-#: src/game_preferences_display.cpp:490
+#: src/game_preferences_display.cpp:480
 msgid "Remove this username from your list"
 msgstr "𐑮𐑰𐑥𐑵𐑝 𐑞𐑦𐑕 𐑿𐑟𐑻𐑯𐑱𐑥 𐑓𐑮𐑪𐑥 𐑿𐑼 𐑤𐑦𐑕𐑑"
 
-#: src/game_preferences_display.cpp:493
+#: src/game_preferences_display.cpp:483
 msgid "Insert a username"
 msgstr "𐑦𐑯𐑕𐑻𐑑 𐑩 𐑿𐑟𐑻𐑯𐑱𐑥"
 
-#: src/game_preferences_display.cpp:496
+#: src/game_preferences_display.cpp:486
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "𐑖𐑴 𐑑𐑧𐑒𐑕𐑑 𐑩𐑚𐑳𐑝 𐑩 𐑿𐑯𐑦𐑑 𐑢𐑧𐑯 𐑦𐑑 𐑦𐑟 𐑣𐑦𐑑 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱 𐑛𐑨𐑥𐑦𐑡 𐑦𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑛"
 
-#: src/game_preferences_display.cpp:498
+#: src/game_preferences_display.cpp:488
 msgid "Change the resolution the game runs at"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑮𐑧𐑟𐑩𐑤𐑵𐑖𐑩𐑯 𐑞 𐑜𐑱𐑥 𐑮𐑳𐑯𐑟 𐑨𐑑"
 
-#: src/game_preferences_display.cpp:499
+#: src/game_preferences_display.cpp:489
 msgid "Change the theme the game runs with"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑔𐑰𐑥 𐑞 𐑜𐑱𐑥 𐑮𐑳𐑯𐑟 𐑢𐑦𐑞"
 
-#: src/game_preferences_display.cpp:502
+#: src/game_preferences_display.cpp:492
 msgid "Display a dialog at the beginning of your turn"
 msgstr "𐑛𐑦𐑕𐑐𐑤𐑱 𐑩 𐑛𐑲𐑩𐑤𐑪𐑜 𐑨𐑑 𐑞 𐑚𐑩𐑜𐑦𐑯𐑦𐑙 𐑝 𐑿𐑼 𐑑𐑻𐑯"
 
-#: src/game_preferences_display.cpp:505
+#: src/game_preferences_display.cpp:495
 msgid "Activates Planning Mode on game start"
 msgstr "𐑨𐑒𐑑𐑦𐑝𐑱𐑑𐑕 𐑐𐑤𐑨𐑯𐑦𐑙 𐑥𐑴𐑛 𐑪𐑯 𐑜𐑱𐑥 𐑕𐑑𐑸𐑑"
 
-#: src/game_preferences_display.cpp:508
+#: src/game_preferences_display.cpp:498
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 
-#: src/game_preferences_display.cpp:511
+#: src/game_preferences_display.cpp:501
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "𐑐𐑤𐑱 𐑩 𐑚𐑧𐑤 𐑕𐑬𐑯𐑛 𐑨𐑑 𐑞 𐑚𐑩𐑜𐑦𐑯𐑦𐑙 𐑝 𐑿𐑼 𐑑𐑻𐑯"
 
-#: src/game_preferences_display.cpp:514
+#: src/game_preferences_display.cpp:504
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "𐑖𐑴 𐑩 𐑒𐑳𐑤𐑼𐑛 𐑕𐑻𐑒𐑩𐑤 𐑩𐑮𐑬𐑯𐑛 𐑞 𐑚𐑱𐑕 𐑝 𐑰𐑗 𐑿𐑯𐑦𐑑 𐑑 𐑖𐑴 𐑢𐑦𐑗 𐑕𐑲𐑛 𐑦𐑑 𐑦𐑟 𐑪𐑯"
 
-#: src/game_preferences_display.cpp:517
+#: src/game_preferences_display.cpp:507
 msgid "Use graphical special effects (may be slower)"
 msgstr "𐑿𐑕 𐑜𐑮𐑨𐑓𐑦𐑒𐑩𐑤 𐑕𐑐𐑧𐑖𐑩𐑤 𐑧𐑓𐑧𐑒𐑑𐑕 (𐑥𐑱 𐑚𐑰 𐑕𐑤𐑴𐑻)"
 
-#: src/game_preferences_display.cpp:519
+#: src/game_preferences_display.cpp:509
 msgid "View and configure keyboard shortcuts"
 msgstr "𐑝𐑿 𐑯 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼 𐑒𐑰𐑚𐑹𐑛 𐑖𐑹𐑑𐑒𐑳𐑑𐑕"
 
-#: src/game_preferences_display.cpp:520
+#: src/game_preferences_display.cpp:510
 msgid "Adjust orb colors"
 msgstr ""
 
-#: src/game_preferences_display.cpp:521
+#: src/game_preferences_display.cpp:511
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
 msgstr "𐑗𐑱𐑯𐑡 𐑞 𐑕𐑭𐑥𐑐𐑩𐑤 𐑮𐑱𐑑"
 
-#: src/game_preferences_display.cpp:524
+#: src/game_preferences_display.cpp:514
 #, fuzzy
 #| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the begining of a turn"
 msgstr "𐑐𐑤𐑱 𐑩 𐑚𐑧𐑤 𐑕𐑬𐑯𐑛 𐑨𐑑 𐑞 𐑚𐑩𐑜𐑦𐑯𐑦𐑙 𐑝 𐑿𐑼 𐑑𐑻𐑯"
 
-#: src/game_preferences_display.cpp:951
+#: src/game_preferences_display.cpp:941
 msgid "Speed: "
 msgstr "𐑕𐑐𐑰𐑛: "
 
-#: src/game_preferences_display.cpp:956 src/game_preferences_display.cpp:958
+#: src/game_preferences_display.cpp:946 src/game_preferences_display.cpp:948
 msgid "Maximum auto-saves: "
 msgstr "𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑷𐑑𐑴-𐑕𐑱𐑝𐑟: "
 
-#: src/game_preferences_display.cpp:956
+#: src/game_preferences_display.cpp:946
 msgid "infinite"
 msgstr "𐑦𐑯𐑓𐑦𐑯𐑦𐑑"
 
-#: src/game_preferences_display.cpp:1223
+#: src/game_preferences_display.cpp:1211
 msgid "Chat lines: "
 msgstr "𐑗𐑨𐑑 𐑤𐑲𐑯𐑟: "
 
-#: src/game_preferences_display.cpp:1254 src/game_preferences_display.cpp:1271
+#: src/game_preferences_display.cpp:1242 src/game_preferences_display.cpp:1259
 msgid "Invalid username"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑿𐑟𐑻𐑯𐑱𐑥"
 
-#: src/game_preferences_display.cpp:1402
+#: src/game_preferences_display.cpp:1390
 msgid "Desktop Notifications Unavailable"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1403
+#: src/game_preferences_display.cpp:1391
 msgid ""
 "This build of Wesnoth does not include support for desktop notifications. "
 "Check with the packager for your platform, or if compiling yourself, make "
 "sure that you have the appropriate dependencies installed."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1484
+#: src/game_preferences_display.cpp:1472
 msgid "yes"
 msgstr "𐑘𐑧𐑕"
 
-#: src/game_preferences_display.cpp:1486
+#: src/game_preferences_display.cpp:1474
 msgid "no"
 msgstr "𐑯𐑴"
 
-#: src/game_preferences_display.cpp:1537
+#: src/game_preferences_display.cpp:1525
 #, fuzzy
 msgid "friend"
 msgstr "𐑓𐑮𐑧𐑯𐑛𐑟"
 
-#: src/game_preferences_display.cpp:1541
+#: src/game_preferences_display.cpp:1529
 #, fuzzy
 msgid "ignored"
 msgstr "𐑯𐑴 𐑦𐑜𐑯𐑹𐑛"
 
-#: src/game_preferences_display.cpp:1555
+#: src/game_preferences_display.cpp:1543
 msgid "(empty list)"
 msgstr "(𐑧𐑥𐑐𐑑𐑦 𐑤𐑦𐑕𐑑)"
 
-#: src/game_preferences_display.cpp:1703
+#: src/game_preferences_display.cpp:1691
 #: src/hotkey/hotkey_preferences_display.cpp:223
 msgid "Prefs section^General"
 msgstr "𐑐𐑮𐑧𐑓𐑕 𐑡𐑧𐑯𐑼𐑩𐑤"
 
-#: src/game_preferences_display.cpp:1704
+#: src/game_preferences_display.cpp:1692
 msgid "Prefs section^Display"
 msgstr "𐑐𐑮𐑧𐑓𐑕 𐑛𐑩𐑕𐑐𐑤𐑱"
 
-#: src/game_preferences_display.cpp:1705
+#: src/game_preferences_display.cpp:1693
 msgid "Prefs section^Sound"
 msgstr "𐑐𐑮𐑧𐑓𐑕 𐑕𐑬𐑯𐑛"
 
-#: src/game_preferences_display.cpp:1706
+#: src/game_preferences_display.cpp:1694
 msgid "Prefs section^Multiplayer"
 msgstr "𐑐𐑮𐑧𐑓𐑕 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻"
 
-#: src/game_preferences_display.cpp:1707
+#: src/game_preferences_display.cpp:1695
 msgid "Advanced section^Advanced"
 msgstr "𐑩𐑛𐑝𐑭𐑯𐑕𐑑 𐑩𐑛𐑝𐑭𐑯𐑕𐑑"
 
-#: src/game_preferences_display.cpp:1760
+#: src/game_preferences_display.cpp:1731
 msgid "No known themes. Try changing from within an existing game."
 msgstr "𐑯𐑴 𐑯𐑴𐑯 𐑔𐑰𐑥𐑟. 𐑑𐑮𐑲 𐑗𐑱𐑯𐑡𐑦𐑙 𐑓𐑮𐑪𐑥 𐑢𐑦𐑞𐑦𐑯 𐑩𐑯 𐑧𐑒𐑟𐑦𐑕𐑑𐑦𐑙 𐑜𐑱𐑥."
 
-#: src/game_preferences_display.cpp:1814
+#: src/game_preferences_display.cpp:1785
 msgid "Find $filename server binary to host networked games"
 msgstr "𐑓𐑲𐑯𐑛 $filename 𐑕𐑻𐑝𐑻 𐑚𐑲𐑯𐑼𐑦 𐑑 𐑣𐑴𐑕𐑑 𐑯𐑧𐑑𐑢𐑻𐑒𐑑 𐑜𐑱𐑥𐑟"
 
-#: src/generators/default_map_generator.cpp:114
+#: src/generators/default_map_generator.cpp:115
 msgid "Map Generator"
 msgstr "𐑥𐑨𐑐 𐑡𐑧𐑯𐑻𐑱𐑑𐑻"
 
-#: src/generators/default_map_generator.cpp:121
+#: src/generators/default_map_generator.cpp:122
 msgid "Players:"
 msgstr "𐑐𐑤𐑱𐑻𐑟:"
 
-#: src/generators/default_map_generator.cpp:124
+#: src/generators/default_map_generator.cpp:125
 msgid "Number of hills:"
 msgstr "𐑯𐑳𐑥𐑚𐑻 𐑝 𐑣𐑦𐑤𐑟:"
 
-#: src/generators/default_map_generator.cpp:125
+#: src/generators/default_map_generator.cpp:126
 msgid "Max hill size:"
 msgstr "𐑥𐑨𐑒𐑕 𐑣𐑦𐑤 𐑕𐑲𐑟:"
 
-#: src/generators/default_map_generator.cpp:126
+#: src/generators/default_map_generator.cpp:127
 msgid "Villages:"
 msgstr "𐑝𐑦𐑤𐑦𐑡𐑦𐑟:"
 
-#: src/generators/default_map_generator.cpp:127
+#: src/generators/default_map_generator.cpp:128
 msgid "Castle size:"
 msgstr "𐑒𐑨𐑕𐑩𐑤 𐑕𐑲𐑟:"
 
-#: src/generators/default_map_generator.cpp:128
+#: src/generators/default_map_generator.cpp:129
 msgid "Landform:"
 msgstr "𐑤𐑨𐑯𐑛𐑓𐑹𐑥:"
 
-#: src/generators/default_map_generator.cpp:250
+#: src/generators/default_map_generator.cpp:251
 #, fuzzy
 #| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "𐑮𐑴𐑛𐑟 𐑚𐑦𐑑𐑢𐑰𐑯 𐑒𐑨𐑕𐑩𐑤𐑟"
 
-#: src/generators/default_map_generator.cpp:257
+#: src/generators/default_map_generator.cpp:258
 #, fuzzy
 #| msgid "Show floating labels"
 msgid "Show labels"
 msgstr "𐑖𐑴 𐑓𐑤𐑴𐑑𐑦𐑙 𐑤𐑱𐑚𐑩𐑤𐑟"
 
-#: src/generators/default_map_generator.cpp:315
+#: src/generators/default_map_generator.cpp:317
 msgid "/1000 tiles"
 msgstr "/1000 𐑑𐑲𐑤𐑟"
 
-#: src/generators/default_map_generator.cpp:324
+#: src/generators/default_map_generator.cpp:326
 msgid "Coastal"
 msgstr "𐑒𐑴𐑕𐑑𐑩𐑤"
 
-#: src/generators/default_map_generator.cpp:324
+#: src/generators/default_map_generator.cpp:326
 msgid "Inland"
 msgstr "𐑦𐑯𐑤𐑩𐑯𐑛"
 
-#: src/generators/default_map_generator.cpp:324
+#: src/generators/default_map_generator.cpp:326
 msgid "Island"
 msgstr "𐑲𐑤𐑩𐑯𐑛"
 
@@ -5538,7 +5561,7 @@ msgstr ""
 #: src/gui/dialogs/game_cache_options.cpp:98
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:839
-#: src/gui/dialogs/lua_interpreter.cpp:459
+#: src/gui/dialogs/lua_interpreter.cpp:460
 #: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:224
 msgid "Clipboard support not found, contact your packager"
@@ -5652,37 +5675,37 @@ msgstr ""
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:302
+#: src/gui/dialogs/game_load.cpp:315
 msgid "#(Invalid)"
 msgstr "#(𐑦𐑯𐑝𐑨𐑤𐑦𐑛)"
 
-#: src/gui/dialogs/game_load.cpp:330
+#: src/gui/dialogs/game_load.cpp:343
 msgid "Campaign: $campaign_name"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:345
+#: src/gui/dialogs/game_load.cpp:358
 msgid "Test scenario"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:370
 #, fuzzy
 #| msgid "replay"
 msgid "Replay"
 msgstr "𐑮𐑰𐑐𐑤𐑱"
 
-#: src/gui/dialogs/game_load.cpp:360
+#: src/gui/dialogs/game_load.cpp:372
 msgid "Turn"
 msgstr "𐑑𐑻𐑯"
 
-#: src/gui/dialogs/game_load.cpp:362
+#: src/gui/dialogs/game_load.cpp:374
 msgid "Scenario start"
 msgstr "𐑕𐑦𐑯𐑺𐑰𐑴 𐑕𐑑𐑸𐑑"
 
-#: src/gui/dialogs/game_load.cpp:365
+#: src/gui/dialogs/game_load.cpp:377
 msgid "Difficulty: "
 msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑰: "
 
-#: src/gui/dialogs/game_load.cpp:369
+#: src/gui/dialogs/game_load.cpp:381
 msgid "Version: "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
@@ -5720,7 +5743,7 @@ msgstr ""
 msgid "Team Labels"
 msgstr "𐑕𐑧𐑑 𐑑𐑰𐑥 𐑤𐑱𐑚𐑩𐑤"
 
-#: src/gui/dialogs/label_settings.cpp:67 src/hotkey/hotkey_item.cpp:448
+#: src/gui/dialogs/label_settings.cpp:67
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
@@ -5730,23 +5753,23 @@ msgstr "𐑳𐑯𐑯𐑴𐑯 𐑺𐑨"
 msgid "Side $side_number ($name)"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:227
+#: src/gui/dialogs/lobby_main.cpp:226
 msgid "whisper to $receiver"
 msgstr "𐑢𐑦𐑕𐑐𐑻 𐑑 $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:697
+#: src/gui/dialogs/lobby_main.cpp:649
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "𐑜𐑱𐑥𐑕: 𐑖𐑴𐑦𐑙 $num_shown 𐑬𐑑 𐑝 $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:741
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid "Observers allowed"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑩𐑤𐑬𐑛"
 
-#: src/gui/dialogs/lobby_main.cpp:744
+#: src/gui/dialogs/lobby_main.cpp:696
 msgid "Observers not allowed"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟 𐑯𐑪𐑑 𐑩𐑤𐑬𐑛"
 
-#: src/gui/dialogs/lobby_main.cpp:1157
+#: src/gui/dialogs/lobby_main.cpp:1109
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -5754,15 +5777,15 @@ msgstr ""
 "𐑢𐑦𐑕𐑐𐑻 𐑕𐑧𐑖𐑩𐑯 𐑢𐑦𐑞 $name 𐑕𐑑𐑸𐑑𐑩𐑛. 𐑦𐑓 𐑿 𐑛𐑴𐑯𐑑 𐑢𐑪𐑯𐑑 𐑑 𐑮𐑦𐑕𐑰𐑝 𐑥𐑧𐑕𐑦𐑡𐑩𐑟 𐑓𐑮𐑪𐑥 𐑞𐑦𐑕 𐑿𐑟𐑼, "
 "𐑑𐑲𐑐 /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1165
+#: src/gui/dialogs/lobby_main.cpp:1117
 msgid "Room $name joined"
 msgstr "𐑮𐑵𐑥 $name 𐑡𐑶𐑯𐑛"
 
-#: src/gui/dialogs/lobby_main.cpp:1491
+#: src/gui/dialogs/lobby_main.cpp:1443
 msgid "$player has entered the room"
 msgstr "$player 𐑣𐑨𐑟 𐑧𐑯𐑑𐑻𐑛 𐑞 𐑮𐑵𐑥"
 
-#: src/gui/dialogs/lobby_main.cpp:1531
+#: src/gui/dialogs/lobby_main.cpp:1483
 msgid "$player has left the room"
 msgstr "$player 𐑣𐑨𐑟 𐑤𐑧𐑝𐑑 𐑞 𐑮𐑵𐑥"
 
@@ -5786,15 +5809,15 @@ msgstr "𐑤𐑴𐑛 𐑜𐑱𐑥..."
 msgid "file_size^Unknown"
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑺𐑨"
 
-#: src/gui/dialogs/title_screen.cpp:321
+#: src/gui/dialogs/title_screen.cpp:315
 msgid "Version "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/gui/dialogs/unit_create.cpp:246
+#: src/gui/dialogs/unit_attack.cpp:131 src/gui/dialogs/unit_create.cpp:246
 msgid "HP: "
 msgstr ""
 
-#: src/gui/dialogs/unit_create.cpp:249
+#: src/gui/dialogs/unit_attack.cpp:133 src/gui/dialogs/unit_create.cpp:249
 msgid "XP: "
 msgstr ""
 
@@ -5837,12 +5860,12 @@ msgstr "𐑯𐑴 𐑕𐑑𐑱𐑑 𐑹 𐑛𐑮𐑷 𐑕𐑧𐑒𐑖𐑩𐑯 �
 msgid "Unknown builder id for tree view node."
 msgstr "𐑳𐑯𐑯𐑴𐑯 𐑚𐑦𐑤𐑛𐑻 id 𐑓𐑹 𐑑𐑮𐑰 𐑝𐑿 𐑯𐑴𐑛."
 
-#: src/gui/widgets/window.cpp:1087
+#: src/gui/widgets/window.cpp:1049
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "𐑒𐑤𐑦𐑒 𐑛𐑦𐑕𐑥𐑦𐑕 𐑯𐑰𐑛𐑟 𐑩 'click_dismiss' 𐑹 '𐑴𐑒𐑱' 𐑚𐑳𐑑𐑩𐑯."
 
-#: src/gui/widgets/window.cpp:1112 src/gui/widgets/window.cpp:1149
-#: src/tests/gui/test_gui2.cpp:495
+#: src/gui/widgets/window.cpp:1074 src/gui/widgets/window.cpp:1111
+#: src/tests/gui/test_gui2.cpp:491
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑖𐑴 𐑩 𐑛𐑲𐑩𐑤𐑪𐑜, 𐑢𐑦𐑗 𐑛𐑳𐑟𐑯𐑑 𐑓𐑦𐑑 𐑪𐑯 𐑞 𐑕𐑒𐑮𐑰𐑯."
 
@@ -6737,61 +6760,6 @@ msgstr ""
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkey/hotkey_item.cpp:412 src/hotkey/hotkey_item.cpp:415
-msgid "Button"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:412
-msgid "Mouse"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:415 src/hotkey/hotkey_item.cpp:451
-msgid "Joystick"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:421
-msgid "Centered"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:424
-msgid "Up"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:427
-#, fuzzy
-#| msgid "Height:"
-msgid "Right"
-msgstr "𐑣𐑲𐑑:"
-
-#: src/hotkey/hotkey_item.cpp:430
-msgid "Down"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:433
-msgid "Left"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:436
-msgid "RightUp"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:439
-msgid "RightDown"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:442
-msgid "LeftUp"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:445
-msgid "LeftDown"
-msgstr ""
-
-#: src/hotkey/hotkey_item.cpp:451
-#, fuzzy
-msgid "Hat"
-msgstr "𐑒𐑳𐑑"
-
 #: src/hotkey/hotkey_preferences_display.cpp:134
 msgid "Add a new binding to \"$hotkey_description|\""
 msgstr ""
@@ -6860,13 +6828,13 @@ msgstr "𐑚𐑲𐑯𐑛𐑦𐑙"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "𐑐𐑮𐑧𐑕 𐑛𐑦𐑟𐑲𐑼𐑛 𐑣𐑭𐑑𐑒𐑰 (Esc 𐑒𐑨𐑯𐑕𐑩𐑤𐑟)"
 
-#: src/hotkey/hotkey_preferences_display.cpp:700
+#: src/hotkey/hotkey_preferences_display.cpp:661
 msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
 msgstr ""
 
-#: src/hotkey/hotkey_preferences_display.cpp:705
+#: src/hotkey/hotkey_preferences_display.cpp:666
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Reassign Hotkey"
@@ -6886,25 +6854,15 @@ msgstr "𐑣𐑭𐑑𐑒𐑰𐑟"
 msgid "language code for localized resources^en_US"
 msgstr "en@shaw"
 
-#: src/marked-up_text.cpp:439
+#: src/marked-up_text.cpp:441
 msgid "The maximum text width is less than 1."
 msgstr "𐑞 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑑𐑧𐑒𐑕𐑑 𐑢𐑦𐑛𐑔 𐑦𐑟 𐑤𐑧𐑕 𐑞𐑨𐑯 1."
 
-#: src/preferences_display.cpp:133 src/preferences_display.cpp:187
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-"𐑞 𐑝𐑦𐑛𐑦𐑴 𐑥𐑴𐑛 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑗𐑱𐑯𐑡𐑛. 𐑿𐑼 𐑢𐑦𐑯𐑛𐑴 𐑥𐑨𐑯𐑩𐑡𐑼 𐑥𐑳𐑕𐑑 𐑚𐑰 𐑕𐑧𐑑 𐑑 16 𐑚𐑦𐑑𐑕 𐑐𐑻 "
-"𐑐𐑦𐑒𐑕𐑩𐑤 𐑑 𐑮𐑳𐑯 𐑞 𐑜𐑱𐑥 𐑦𐑯 𐑢𐑦𐑯𐑛𐑴𐑛 𐑥𐑴𐑛. 𐑿𐑼 𐑛𐑩𐑕𐑐𐑤𐑱 𐑥𐑳𐑕𐑑 𐑕𐑩𐑐𐑹𐑑 1024x768x16 𐑑 𐑮𐑳𐑯 𐑞 "
-"𐑜𐑱𐑥 𐑓𐑫𐑤 𐑕𐑒𐑮𐑰𐑯."
-
-#: src/preferences_display.cpp:275
+#: src/preferences_display.cpp:131
 msgid "There are no alternative video modes available"
 msgstr "𐑞𐑺 𐑸 𐑯𐑴 𐑷𐑤𐑑𐑻𐑯𐑩𐑑𐑦𐑝 𐑝𐑦𐑛𐑦𐑴 𐑥𐑴𐑛𐑟 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤"
 
-#: src/preferences_display.cpp:302
+#: src/preferences_display.cpp:154
 msgid "Choose Resolution"
 msgstr "𐑗𐑵𐑟 𐑮𐑧𐑟𐑩𐑤𐑵𐑖𐑩𐑯"
 
@@ -6919,7 +6877,7 @@ msgstr ""
 msgid "The text contains invalid markup: "
 msgstr "𐑞 𐑑𐑧𐑒𐑕𐑑 𐑒𐑪𐑯𐑑𐑱𐑯𐑕 𐑦𐑯𐑝𐑨𐑤𐑦𐑐 𐑥𐑸𐑒𐑳𐑐: "
 
-#: src/wml_exception.cpp:64
+#: src/wml_exception.cpp:63
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -6927,11 +6885,11 @@ msgstr ""
 "𐑩𐑯 𐑻𐑹 𐑛𐑿 𐑑 𐑐𐑪𐑕𐑩𐑚𐑩𐑤𐑦 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 WML 𐑪𐑒𐑻𐑛\n"
 "𐑞 𐑻𐑹 𐑥𐑧𐑕𐑦𐑡 𐑦𐑟 :"
 
-#: src/wml_exception.cpp:66
+#: src/wml_exception.cpp:65
 msgid "When reporting the bug please include the following error message :"
 msgstr "𐑢𐑧𐑯 𐑮𐑰𐑐𐑹𐑑𐑦𐑙 𐑞 𐑚𐑳𐑜 𐑐𐑤𐑰𐑟 𐑦𐑯𐑒𐑤𐑵𐑛 𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑻𐑹 𐑥𐑧𐑕𐑦𐑡 :"
 
-#: src/wml_exception.cpp:96
+#: src/wml_exception.cpp:95
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -6939,21 +6897,39 @@ msgstr ""
 "𐑦𐑯 𐑕𐑧𐑒𐑖𐑩𐑯 '[$section|]' 𐑢𐑺 '$primary_key| = $primary_value' 𐑞 𐑥𐑨𐑯𐑛𐑩𐑑𐑹𐑰 𐑒𐑰 "
 "'$key|' 𐑦𐑟𐑯𐑑 𐑕𐑧𐑑."
 
-#: src/wml_exception.cpp:99
+#: src/wml_exception.cpp:98
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "𐑦𐑯 𐑕𐑧𐑒𐑖𐑩𐑯 '[$section|]' 𐑞 𐑥𐑨𐑯𐑛𐑩𐑑𐑹𐑰 𐑒𐑰 '$key|' 𐑦𐑟𐑯𐑑 𐑕𐑧𐑑."
 
-#: src/wml_exception.cpp:115
+#: src/wml_exception.cpp:114
 msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
 msgstr ""
 
-#: src/wml_exception.cpp:134
+#: src/wml_exception.cpp:133
 msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Height:"
+#~ msgid "Right"
+#~ msgstr "𐑣𐑲𐑑:"
+
+#, fuzzy
+#~ msgid "Hat"
+#~ msgstr "𐑒𐑳𐑑"
+
+#~ msgid ""
+#~ "The video mode could not be changed. Your window manager must be set to "
+#~ "16 bits per pixel to run the game in windowed mode. Your display must "
+#~ "support 1024x768x16 to run the game full screen."
+#~ msgstr ""
+#~ "𐑞 𐑝𐑦𐑛𐑦𐑴 𐑥𐑴𐑛 𐑒𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑗𐑱𐑯𐑡𐑛. 𐑿𐑼 𐑢𐑦𐑯𐑛𐑴 𐑥𐑨𐑯𐑩𐑡𐑼 𐑥𐑳𐑕𐑑 𐑚𐑰 𐑕𐑧𐑑 𐑑 16 𐑚𐑦𐑑𐑕 𐑐𐑻 "
+#~ "𐑐𐑦𐑒𐑕𐑩𐑤 𐑑 𐑮𐑳𐑯 𐑞 𐑜𐑱𐑥 𐑦𐑯 𐑢𐑦𐑯𐑛𐑴𐑛 𐑥𐑴𐑛. 𐑿𐑼 𐑛𐑩𐑕𐑐𐑤𐑱 𐑥𐑳𐑕𐑑 𐑕𐑩𐑐𐑹𐑑 1024x768x16 𐑑 𐑮𐑳𐑯 "
+#~ "𐑞 𐑜𐑱𐑥 𐑓𐑫𐑤 𐑕𐑒𐑮𐑰𐑯."
 
 #, fuzzy
 #~ msgid "Share map"

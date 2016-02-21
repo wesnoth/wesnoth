@@ -20,6 +20,7 @@ Example contents.
 
 [rasection="WML/Lua compatibility changes and deprecations"]
 [list]
+[*]wesnoth.set/get_dialog_value now takes/returns an integer (0 or 1) instead of a boolean for toggelbuttons and toggelpanels. The reason is that wesnoth now also supports tristate buttons and comboboxes where it can returns values other than 0 or 1.
 [/list]
 [/rasection]
 
@@ -31,6 +32,10 @@ The game now uses SDL2 for all operations. There is still a fall-back option of 
 The hotkey implementation has been changed to rely on scancodes over characters. This means that the hotkey configuration now uses the same physical buttons on the keyboard, regardless of the keyboard layout.
 [/rasection]
 
+[rasection="New WML event"]
+A new 'unit placed' event has been added, making it possible to better implement certain kinds of event-driven behavior. [wiki=EventWML]See the wiki for details[/wiki].
+[/rasection]
+
 ==========
 KNOWN BUGS
 ==========
@@ -40,7 +45,14 @@ KNOWN BUGS
 
 [list]
 [*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
+[*]2p mp survival map Dark Forecast is bugged (24200).
 [/list]
+[*]Doubled-up GUI1 dialogs don't redraw the secondary in SDL2 (bug [bug]24294[/bug]).
+[*]Window state handling inconsistent across different OSes in SDL2 builds (bug [bug]24270[/bug]).
+[*]Area under Objectives not redrawn on resize (bug [bug]24261[/bug]).
+[*]Menu and Action buttons disappear on resize (bug [bug]24260[/bug]).
+[*]Wesnoth does not exist on the panel (bug [bug]24202[/bug]).
+[*]SDL2 build handled input incorrectly once window focus is lost when menus are open (bug [bug]24212[/bug]).
 [/raissue]
 
 [raissue="Carried over from 1.12.x"]
@@ -66,13 +78,10 @@ This is likely caused by outdated libraries in the packaging process. There is n
 The following issues affecting Wesnoth on Apple OS X are known and they are pending fixes. Many of them require significant re-engineering that can only be done in 1.13.x development releases later, or cannot be properly addressed due to a lack of experienced OS X coders in our team. Thus, unless someone can contribute patches to address them, it is unlikely that these bugs will be fixed.
 
 [list]
-[*]Color cursors are forcibly disabled on this platform due to severe performance issues (bug [bug]18112[/bug]).
 [*]The default variable-width font is used instead of a monospace font even where a monospace font is required (bug [bug]23628[/bug]).
 [*]Helvetica is used as the default variable-width font instead of DejaVu Sans (bug [bug]23560[/bug]).
 [*]Fullscreen mode does not fill the entire screen when maximum resolution is selected in Preferences → Display, and user interface elements are scaled and distorted.
 [*]System commands do not work while Wesnoth is running in fullscreen mode (bug [bug]21943[/bug]).
-[*]The mouse cursor is not mapped correctly to the game screen contents on Retina displays due to problems with detected vs. real screen resolution mismatches (bug [bug]20332[/bug]).
-A workaround is in place making Wesnoth default to 800x600 on OS X regardless of the incorrectly-detected maximum resolution.
 [*]Trackpad tap clicking is sometimes not recognized ([url=http://forums.wesnoth.org/viewtopic.php?f=4&t=39788]forum post[/url]).
 [*]Unofficial builds  with OpenMP support enabled randomly freeze (bug [bug]18144[/bug]).
 [*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).

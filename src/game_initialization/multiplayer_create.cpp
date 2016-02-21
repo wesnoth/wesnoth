@@ -21,7 +21,7 @@
 
 #include "gettext.hpp"
 #include "game_config_manager.hpp"
-#include "game_display.hpp"
+#include "video.hpp"
 #include "game_preferences.hpp"
 #include "config_assign.hpp"
 #include "construct_dialog.hpp"
@@ -44,6 +44,8 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "widgets/multimenu.hpp"
+#include "sdl/utils.hpp"
+#include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -81,39 +83,39 @@ static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
 	return config_of("index", eng.find_level_by_id(str))("type", eng.find_level_type_by_id(str));
 }
 
-create::create(game_display& disp, const config& cfg, saved_game& state,
+create::create(CVideo& video, const config& cfg, saved_game& state,
 	chat& c, config& gamelist) :
-	ui(disp, _("Create Game"), cfg, c, gamelist),
-	tooltip_manager_(disp.video()),
+	ui(video, _("Create Game"), cfg, c, gamelist),
+	tooltip_manager_(video),
 	era_selection_(-1),
 	mod_selection_(-1),
 	level_selection_(-1),
-	eras_menu_(disp.video(), std::vector<std::string>()),
-	levels_menu_(disp.video(), std::vector<std::string>()),
-	mods_menu_(disp.video(), std::vector<std::string>()),
-	filter_name_label_(disp.video(), _("Filter:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	filter_num_players_label_(disp.video(), _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	map_generator_label_(disp.video(), _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	no_era_label_(disp.video(), _("No eras available\nfor this game."),
+	eras_menu_(video, std::vector<std::string>()),
+	levels_menu_(video, std::vector<std::string>()),
+	mods_menu_(video, std::vector<std::string>()),
+	filter_name_label_(video, _("Filter:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	filter_num_players_label_(video, _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	map_generator_label_(video, _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	era_label_(video, _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	no_era_label_(video, _("No eras available\nfor this game."),
 		font::SIZE_SMALL, font::LOBBY_COLOR),
-	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	level_type_label_(disp.video(), "Game type:", font::SIZE_SMALL, font::LOBBY_COLOR),
-	launch_game_(disp.video(), _("Next")),
-	cancel_game_(disp.video(), _("Cancel")),
-	regenerate_map_(disp.video(), _("Regenerate")),
-	generator_settings_(disp.video(), _("Settings...")),
-	load_game_(disp.video(), _("Load Game...")),
-	level_type_combo_(disp, std::vector<std::string>()),
-	filter_num_players_slider_(disp.video()),
-	description_(disp.video(), 100, "", false),
-	filter_name_(disp.video(), 100, "", true, 256, font::SIZE_SMALL),
+	mod_label_(video, _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	map_size_label_(video, "", font::SIZE_SMALL, font::LOBBY_COLOR),
+	num_players_label_(video, "", font::SIZE_SMALL, font::LOBBY_COLOR),
+	level_type_label_(video, "Game type:", font::SIZE_SMALL, font::LOBBY_COLOR),
+	launch_game_(video, _("Next")),
+	cancel_game_(video, _("Cancel")),
+	regenerate_map_(video, _("Regenerate")),
+	generator_settings_(video, _("Settings...")),
+	load_game_(video, _("Load Game...")),
+	level_type_combo_(video, std::vector<std::string>()),
+	filter_num_players_slider_(video),
+	description_(video, 100, "", false),
+	filter_name_(video, 100, "", true, 256, font::SIZE_SMALL),
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
-	engine_(disp, state)
+	engine_(video, state)
 {
 	filter_num_players_slider_.set_min(1);
 	filter_num_players_slider_.set_max(9);
@@ -146,7 +148,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	}
 
 	if (available_level_types_.empty()) {
-		gui2::show_transient_message(disp.video(), "", _("No games found."));
+		gui2::show_transient_message(video, "", _("No games found."));
 		throw game::error(_("No games found."));
 	}
 
@@ -178,7 +180,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	const std::vector<std::string>& era_names =
 		engine_.extras_menu_item_names(ng::create_engine::ERA);
 	if(era_names.empty()) {
-		gui2::show_transient_message(disp.video(), "", _("No eras found."));
+		gui2::show_transient_message(video, "", _("No eras found."));
 		throw config::error(_("No eras found"));
 	}
 	eras_menu_.set_items(era_names);
@@ -308,7 +310,7 @@ void create::process_event_impl(const process_event_data & data)
 			set_result(CREATE);
 			return;
 		} else {
-			gui2::show_transient_message(disp_.video(), "",
+			gui2::show_transient_message(video(), "",
 				_("The level is invalid."));
 		}
 	}
@@ -320,7 +322,7 @@ void create::process_event_impl(const process_event_data & data)
 	if (data.load) {
 		try
 		{
-			savegame::loadgame load(disp_,
+			savegame::loadgame load(video(),
 				game_config_manager::get()->game_config(), engine_.get_state());
 
 			if (data.filename) {
@@ -383,7 +385,7 @@ void create::process_event_impl(const process_event_data & data)
 	}
 
 	if (engine_.generator_assigned() && generator_settings_.pressed()) {
-		engine_.generator_user_config(disp_);
+		engine_.generator_user_config(video());
 
 		level_changed = true;
 	}
@@ -396,7 +398,7 @@ void create::process_event_impl(const process_event_data & data)
 		engine_.init_generated_level_data();
 
 		if (!engine_.current_level().data()["error_message"].empty())
-			gui2::show_message(disp().video(), "map generation error",
+			gui2::show_message(video(), "map generation error",
 				engine_.current_level().data()["error_message"]);
 
 		level_changed = true;
@@ -560,7 +562,7 @@ void create::draw_level_image()
 		draw_centered_on_background(image, image_rect_, back_color,
 			video().getSurface());
 	} else {
-		surface& display(disp_.get_screen_surface());
+		surface& display(video().getSurface());
 		sdl::fill_rect(display, &image_rect_,
 			SDL_MapRGB(display->format, 0, 0, 0));
 		update_rect(image_rect_);

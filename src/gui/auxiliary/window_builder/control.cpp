@@ -148,9 +148,6 @@ twidget* tbuilder_control::build(const treplacements& /*replacements*/) const
  *                                     @* 2 floodfill the widget area. $
  *
  *   debug_border_color & color & "" & The color of the debug border. $
- *   size_text & t_string & "" &       Sets the minimum width of the widget
- *                                     depending on the text in it. (Note not
- *                                     implemented yet.) $
  * @end{table}
  * @end{tag}{name="widget_instance"}
  * @end{parent}{name="generic/"}

@@ -347,6 +347,7 @@ wesnoth_sources = Split("""
     gui/auxiliary/tips.cpp
     gui/auxiliary/widget_definition.cpp
     gui/auxiliary/widget_definition/button.cpp
+    gui/auxiliary/widget_definition/combobox.cpp
     gui/auxiliary/widget_definition/drawing.cpp
     gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
     gui/auxiliary/widget_definition/image.cpp
@@ -371,6 +372,7 @@ wesnoth_sources = Split("""
     gui/auxiliary/widget_definition/window.cpp
     gui/auxiliary/window_builder.cpp
     gui/auxiliary/window_builder/button.cpp
+    gui/auxiliary/window_builder/combobox.cpp
     gui/auxiliary/window_builder/control.cpp
     gui/auxiliary/window_builder/drawing.cpp
     gui/auxiliary/window_builder/helper.cpp
@@ -415,6 +417,7 @@ wesnoth_sources = Split("""
     gui/dialogs/depcheck_confirm_change.cpp
     gui/dialogs/depcheck_select_new.cpp
     gui/dialogs/dialog.cpp
+    gui/dialogs/drop_down_list.cpp
     gui/dialogs/edit_label.cpp
     gui/dialogs/editor/editor_edit_label.cpp
     gui/dialogs/editor/editor_edit_scenario.cpp
@@ -452,8 +455,10 @@ wesnoth_sources = Split("""
     gui/dialogs/mp_method_selection.cpp
     gui/dialogs/network_transmission.cpp
     gui/dialogs/popup.cpp
+    gui/dialogs/preferences_dialog.cpp
     gui/dialogs/edit_text.cpp
     gui/dialogs/screenshot_notification.cpp
+    gui/dialogs/select_orb_colors.cpp
     gui/dialogs/simple_item_selector.cpp
     gui/dialogs/synced_choice_wait.cpp
     gui/dialogs/theme_list.cpp
@@ -466,6 +471,7 @@ wesnoth_sources = Split("""
     gui/dialogs/wml_message.cpp
     gui/lib/types/point.cpp
     gui/widgets/button.cpp
+    gui/widgets/combobox.cpp
     gui/widgets/container.cpp
     gui/widgets/control.cpp
     gui/widgets/drawing.cpp

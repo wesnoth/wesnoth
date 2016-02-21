@@ -1,7 +1,6 @@
 #include "undo_move_action.hpp"
 #include "move.hpp"
 
-#include "../construct_dialog.hpp"
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../replay.hpp"

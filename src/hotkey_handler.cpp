@@ -16,6 +16,7 @@
 
 #include "actions/create.hpp"
 #include "formula_string_utils.hpp"
+#include "game_display.hpp"
 #include "game_errors.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
@@ -392,7 +393,7 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<std::string>&
 		savenames_.push_back("");
 	}
 }
-///replaces "wml" in @items with all active wml menu items for the current field
+
 void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::string>& items)
 {
 	wml_commands_.clear();

@@ -30,7 +30,7 @@ namespace mp {
 class create : public mp::ui
 {
 public:
-	create(game_display& disp, const config& game_config, saved_game& state,
+	create(CVideo& v, const config& game_config, saved_game& state,
 		chat& c, config& gamelist);
 	~create();
 

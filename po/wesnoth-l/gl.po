@@ -4,15 +4,16 @@
 # Proxecto Trasno http://trasno.net
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010, 2012, 2013.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010, 2012, 2013, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
-"PO-Revision-Date: 2013-08-18 12:25+0200\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"PO-Revision-Date: 2016-02-06 20:48+0100\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"com>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
@@ -40,10 +41,8 @@ msgstr "A liberdade"
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(fácil)"
+msgstr "Fácil"
 
 # labrego FIXADO
 #. [campaign]: id=Liberty
@@ -57,10 +56,8 @@ msgstr "Labrego"
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:19
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(normal)"
+msgstr "Normal"
 
 # proscrito FIXADO
 #. [campaign]: id=Liberty
@@ -74,10 +71,8 @@ msgstr "Proscrito"
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:20
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(difícil)"
+msgstr "Difícil"
 
 # fuxitivo FIXADO
 #. [campaign]: id=Liberty
@@ -888,12 +883,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Baldras and Relana returned to their villages to find them destroyed, "
-#| "with those who fought left dead and the few survivors born away to "
-#| "unguessable fates. It was a bitter doom, and as Wesnoth descended into "
-#| "darkness they would live to see worse."
 msgid ""
 "Baldras and Relana returned to their villages to find them destroyed, with "
 "those who fought left dead and the few survivors borne away to unknown "
@@ -2700,12 +2689,12 @@ msgstr ""
 
 # vilán ancián FIXADO
 #. [unit_type]: id=Highwayman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:52
+#: data/campaigns/Liberty/units/Villagers.cfg:53
 msgid "Senior Village Elder"
 msgstr "Vilán ancián"
 
 #. [unit_type]: id=Highwayman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:56
+#: data/campaigns/Liberty/units/Villagers.cfg:57
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
 "the senior elders take responsibility for the community’s well-being on "
@@ -2719,18 +2708,18 @@ msgstr ""
 
 # vilán ancián FIXADO
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:58
+#: data/campaigns/Liberty/units/Villagers.cfg:59
 msgid "female^Senior Village Elder"
 msgstr "Vilá anciá"
 
 # labrego xove FIXADO
 #. [unit_type]: id=Footpad_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:119
+#: data/campaigns/Liberty/units/Villagers.cfg:92
 msgid "Peasant Youth"
 msgstr "Mozo labrego"
 
 #. [unit_type]: id=Footpad_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:123
+#: data/campaigns/Liberty/units/Villagers.cfg:96
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
 "elsewhere in Wesnoth: reckless, cocky, and eager to explore."
@@ -2741,18 +2730,18 @@ msgstr ""
 
 # labrega xove FIXADO
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:129
+#: data/campaigns/Liberty/units/Villagers.cfg:102
 msgid "female^Peasant Youth"
 msgstr "Moza labrega"
 
 # vixía FIXADO
 #. [unit_type]: id=Outlaw_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:143
+#: data/campaigns/Liberty/units/Villagers.cfg:116
 msgid "Watchman"
 msgstr "Vixía"
 
 #. [unit_type]: id=Outlaw_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:148
+#: data/campaigns/Liberty/units/Villagers.cfg:121
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
 "human and otherwise, that prowl the Wesnoth countryside at night."
@@ -2762,18 +2751,18 @@ msgstr ""
 
 # vixía FIXADO
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:150
+#: data/campaigns/Liberty/units/Villagers.cfg:123
 msgid "female^Watchwoman"
 msgstr "Vixía"
 
 # raiano FIXADO
 #. [unit_type]: id=Fugitive_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:164
+#: data/campaigns/Liberty/units/Villagers.cfg:137
 msgid "Borderer"
 msgstr "Raiano"
 
 #. [unit_type]: id=Fugitive_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:169
+#: data/campaigns/Liberty/units/Villagers.cfg:142
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
 "these borderers are not trained and armed to up to military standards, their "
@@ -2787,18 +2776,18 @@ msgstr ""
 
 # raiana FIXADO
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:171
+#: data/campaigns/Liberty/units/Villagers.cfg:144
 msgid "female^Borderer"
 msgstr "Raiana"
 
 # labrego cazador FIXADO
 #. [unit_type]: id=Poacher_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:190
+#: data/campaigns/Liberty/units/Villagers.cfg:163
 msgid "Peasant Hunter"
 msgstr "Labrego cazador"
 
 #. [unit_type]: id=Poacher_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:193
+#: data/campaigns/Liberty/units/Villagers.cfg:166
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
 "bring in much of their food supply. Their stealth and intimate knowledge of "
@@ -2811,12 +2800,12 @@ msgstr ""
 
 # labrego trampeiro FIXADO
 #. [unit_type]: id=Trapper_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:206
+#: data/campaigns/Liberty/units/Villagers.cfg:179
 msgid "Peasant Trapper"
 msgstr "Labrego trampeiro"
 
 #. [unit_type]: id=Trapper_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:210
+#: data/campaigns/Liberty/units/Villagers.cfg:183
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
 "Their hunting experience makes them most valuable at night and in forests "
@@ -2828,12 +2817,12 @@ msgstr ""
 
 # labrego mestre cazador FIXADO
 #. [unit_type]: id=Huntsman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:223
+#: data/campaigns/Liberty/units/Villagers.cfg:196
 msgid "Peasant Huntsman"
 msgstr "Labrego mestre cazador"
 
 #. [unit_type]: id=Huntsman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:228
+#: data/campaigns/Liberty/units/Villagers.cfg:201
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes. They can bullseye ferocious swamp rats and track anything "
@@ -2892,12 +2881,6 @@ msgstr "Como pode ser? Perdemos."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/utils/utils.cfg:164
-#, fuzzy
-#| msgid ""
-#| "They returned to their village to find it destroyed, with those who "
-#| "fought left dead and the few survivors borne away to unguessable fates. "
-#| "It was a bitter doom, but as Asheviere’s grip tightened they would live "
-#| "to see worse."
 msgid ""
 "They returned to their village to find it destroyed, with those who fought "
 "left dead and the few survivors borne away to unknown fates. It was a bitter "

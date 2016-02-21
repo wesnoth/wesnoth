@@ -42,7 +42,7 @@ namespace gui {
 //note: style names are directly related to the panel image file names
 const dialog::style& dialog::default_style = dialog_frame::default_style;
 const dialog::style& dialog::message_style = dialog_frame::message_style;
-const dialog::style dialog::hotkeys_style("menu2", 0);
+const dialog::style dialog::hotkeys_style("menu", 0);
 const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
 const size_t dialog::left_padding = font::relative_size(10);
@@ -93,16 +93,16 @@ dialog::dimension_measurements::dimension_measurements() :
 	//(unnamed namespace and/or const object defined at declaration time).
 }
 
-dialog::dialog(display &disp, const std::string& title, const std::string& message,
+dialog::dialog(CVideo& video, const std::string& title, const std::string& message,
 		const DIALOG_TYPE type, const style& dialog_style) :
-	disp_(disp),
+	video_(video),
 	image_(NULL),
 	title_(title),
 	style_(dialog_style),
 	title_widget_(NULL),
 	message_(NULL),
 	type_(type),
-	menu_(get_empty_menu(disp)),
+	menu_(get_empty_menu(video)),
 	preview_panes_(),
 	button_pool_(),
 	standard_buttons_(),
@@ -116,36 +116,34 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	dim_(),
 	result_(CONTINUE_DIALOG)
 {
-	CVideo& screen = disp_.video();
-
 	switch(type)
 	{
 	case MESSAGE:
 	default:
 		break;
 	case OK_ONLY:
-		add_button(new standard_dialog_button(screen,_("OK"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("OK"),0,true), BUTTON_STANDARD);
 		break;
 	case YES_NO:
-		add_button(new standard_dialog_button(screen,_("Yes"),0,false), BUTTON_STANDARD);
-		add_button(new standard_dialog_button(screen,_("No"),1,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Yes"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("No"),1,true), BUTTON_STANDARD);
 		break;
 	case OK_CANCEL:
-		add_button(new standard_dialog_button(screen,_("OK"),0,false), BUTTON_STANDARD);
-		add_button(new standard_dialog_button(screen,_("Cancel"),1,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("OK"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Cancel"),1,true), BUTTON_STANDARD);
 		break;
 	case CANCEL_ONLY:
-		add_button(new standard_dialog_button(screen,_("Cancel"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Cancel"),0,true), BUTTON_STANDARD);
 		break;
 	case CLOSE_ONLY:
-		add_button(new standard_dialog_button(screen,_("Close"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(video_,_("Close"),0,true), BUTTON_STANDARD);
 		break;
 	}
 	//dialog creator should catch(button::error&) ?
 
 	try {
-		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
-		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOR, false);
+		std::string msg = font::word_wrap_text(message, message_font_size, video_.getx() / 2, video_.gety() / 2);
+		message_ = new label(video_, msg, message_font_size, font::NORMAL_COLOR, false);
 	} catch(utf8::invalid_utf8_exception&) {
 		ERR_DP << "Problem handling utf8 in message '" << message << "'" << std::endl;
 		throw;
@@ -219,13 +217,13 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 
 void dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
 {
-	dialog_button *btn = new dialog_button(disp_.video(), btn_info.label, button::TYPE_PRESS, CONTINUE_DIALOG, btn_info.handler);
+	dialog_button *btn = new dialog_button(video_, btn_info.label, button::TYPE_PRESS, CONTINUE_DIALOG, btn_info.handler);
 	add_button(btn, loc);
 }
 
 void dialog::add_option(const std::string& label, bool checked, BUTTON_LOCATION loc, const std::string& help_string)
 {
-	gui::dialog_button *btn = new dialog_button(disp_.video(), label, button::TYPE_CHECK);
+	gui::dialog_button *btn = new dialog_button(video_, label, button::TYPE_CHECK);
 	btn->set_check(checked);
 	btn->set_help_string(help_string);
 	add_button(btn, loc);
@@ -235,15 +233,15 @@ void dialog::set_textbox(const std::string& text_widget_label,
 				const std::string& text_widget_text,
 				const int text_widget_max_chars, const unsigned int text_box_width)
 {
-	label *label_ptr = new label(disp_.video(), text_widget_label, message_font_size, font::NORMAL_COLOR, false);
+	label *label_ptr = new label(video_, text_widget_label, message_font_size, font::NORMAL_COLOR, false);
 	const bool editable_textbox = std::find(text_widget_text.begin(),text_widget_text.end(),'\n') == text_widget_text.end();
-	text_widget_ = new dialog_textbox(label_ptr, disp_.video(), text_box_width, text_widget_text, editable_textbox, text_widget_max_chars);
+	text_widget_ = new dialog_textbox(label_ptr, video_, text_box_width, text_widget_text, editable_textbox, text_widget_max_chars);
 	text_widget_->set_wrap(!editable_textbox);
 }
 
 void dialog::set_menu(const std::vector<std::string> &menu_items, menu::sorter* sorter)
 {
-	set_menu(new gui::menu(disp_.video(), menu_items, (type_==MESSAGE),
+	set_menu(new gui::menu(video_, menu_items, (type_==MESSAGE),
 		-1, dialog::max_menu_width, sorter, &menu::default_style, false));
 }
 
@@ -269,10 +267,10 @@ void dialog::set_menu_items(const std::vector<std::string> &menu_items, bool kee
  * Provides create-on-use semantics for empty_menu.
  * This is called by dialog's constructor, so other code can use empty_menu directly.
  */
-menu * dialog::get_empty_menu(display &disp)
+menu * dialog::get_empty_menu(CVideo& video)
 {
 	if ( empty_menu == NULL ) {
-		empty_menu = new gui::menu(disp.video(), empty_string_vector, false, -1, -1, NULL, &menu::simple_style);
+		empty_menu = new gui::menu(video, empty_string_vector, false, -1, -1, NULL, &menu::simple_style);
 		empty_menu->leave();
 	}
 	return empty_menu;
@@ -286,7 +284,7 @@ int dialog::show(int xloc, int yloc)
 
 int dialog::show()
 {
-	if (disp_.video().faked()) {
+	if (video_.faked()) {
 		plugins_manager * pm = plugins_manager::get();
 		if (pm && pm->any_running()) {
 			pm->notify_event("show_dialog", config(config_of
@@ -305,7 +303,7 @@ int dialog::show()
 		return CLOSE_DIALOG;
 	}
 
-	if(disp_.video().update_locked()) {
+	if(video_.update_locked()) {
 		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'" << std::endl;
 		return CLOSE_DIALOG;
 	}
@@ -366,20 +364,18 @@ void dialog::draw_contents()
 	}
 	events::raise_draw_event(); //draw widgets
 
-	disp_.flip();
-	disp_.invalidate_all();
+	video_.flip();
 }
 
 dialog_frame& dialog::get_frame()
 {
 	if(frame_ == NULL) {
-		CVideo& screen = disp_.video();
 		frame_buttons_.clear();
 		for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
 		{
 			frame_buttons_.push_back(*b);
 		}
-		frame_ = new dialog_frame(screen, title_, style_,  true, &frame_buttons_, help_button_);
+		frame_ = new dialog_frame(video_, title_, style_,  true, &frame_buttons_, help_button_);
 	}
 	return *frame_;
 }
@@ -462,13 +458,13 @@ void dialog::update_widget_positions()
 
 void dialog::refresh()
 {
-	disp_.flip();
-	disp_.delay(10);
+	video_.flip();
+	CVideo::delay(10);
 }
 
 dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 {
-	CVideo& screen = disp_.video();
+	CVideo& screen = video_;
 	const surface& scr = screen.getSurface();
 
 	dimension_measurements dim;
@@ -909,9 +905,9 @@ void dialog::set_image(surface surf, const std::string &caption)
 {
 	label *label_ptr = NULL;
 	if(!caption.empty()) {
-		label_ptr = new label(disp_.video(), caption, caption_font_size, font::NORMAL_COLOR, false);
+		label_ptr = new label(video_, caption, caption_font_size, font::NORMAL_COLOR, false);
 	}
-	set_image( new dialog_image(label_ptr, disp_.video(), surf ));
+	set_image( new dialog_image(label_ptr, video_, surf ));
 }
 
 void dialog_image::draw_contents()

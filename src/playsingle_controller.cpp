@@ -128,17 +128,18 @@ void playsingle_controller::init_gui(){
 
 	update_locker lock_display(gui_->video(), is_skipping_replay());
 	gui_->draw();
-	get_hotkey_command_executor()->set_button_state(*gui_);
+	get_hotkey_command_executor()->set_button_state();
 	events::raise_draw_event();
 }
 
 
-void playsingle_controller::play_scenario_init(const config& level) {
+void playsingle_controller::play_scenario_init()
+{
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
 	}
-	start_game(level);
+	start_game();
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
@@ -172,15 +173,25 @@ void playsingle_controller::play_scenario_main_loop()
 			gamestate_->player_number_ = 1;
 		}
 		catch(const reset_gamestate_exception& ex) {
-			/**
-				@TODO: The mp replay feature still doesnt work properly (casues OOS) becasue:
-					1) The undo stack is not reset along with the gamestate (fixed).
-					2) The server_request_number_ is not reset along with the gamestate (fixed).
-					3) chat and other unsynced actions are inserted in the middle of the replay bringing the replay_pos in unorder (fixed).
-					4) untracked changes in side controllers are lost when resetting gamestate. (fixed)
-					5) The game should have a stricter check for whether the loaded game is actually a parent of this game.
-					6) If an action was undone after a game was saved it can casue if teh undone action is in the snapshot of the saved game. (luckyli this is never the case for autosaves)
-			*/
+			//
+			// TODO:
+			//
+			// The MP replay feature still doesn't work properly (causes OOS)
+			// because:
+			//
+			// 1) The undo stack is not reset along with the gamestate (fixed).
+			// 2) The server_request_number_ is not reset along with the
+			//    gamestate (fixed).
+			// 3) chat and other unsynced actions are inserted in the middle of
+			//    the replay bringing the replay_pos in unorder (fixed).
+			// 4) untracked changes in side controllers are lost when resetting
+			//    gamestate (fixed).
+			// 5) The game should have a stricter check for whether the loaded
+			//    game is actually a parent of this game.
+			// 6) If an action was undone after a game was saved it can cause
+			//    OOS if the undone action is in the snapshot of the saved
+			//    game (luckily this is never the case for autosaves).
+			//
 			std::vector<bool> local_players(gamestate().board_.teams().size(), true);
 			//Preserve side controllers, becasue we won't get the side controoller updates again when replaying.
 			for(size_t i = 0; i < local_players.size(); ++i) {
@@ -190,7 +201,7 @@ void playsingle_controller::play_scenario_main_loop()
 			for(size_t i = 0; i < local_players.size(); ++i) {
 				(*resources::teams)[i].set_local(local_players[i]);
 			}
-			play_scenario_init(*ex.level);
+			play_scenario_init();
 			mp_replay_.reset(new replay_controller(*this, false, ex.level));
 			mp_replay_->play_replay();
 		}
@@ -226,7 +237,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	}
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks()) << "\n";
 	try {
-		play_scenario_init(level);
+		play_scenario_init();
 		// clears level config;
 		this->saved_game_.remove_snapshot();
 
@@ -498,7 +509,7 @@ void playsingle_controller::linger()
 void playsingle_controller::end_turn_enable(bool enable)
 {
 	gui_->enable_menu("endturn", enable);
-	get_hotkey_command_executor()->set_button_state(*gui_);
+	get_hotkey_command_executor()->set_button_state();
 }
 
 

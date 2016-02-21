@@ -112,13 +112,15 @@ void ttree_view::layout_children()
 }
 
 void ttree_view::resize_content(const int width_modification,
-								const int height_modification)
+								const int height_modification,
+						const int width__modification_pos,
+						const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
 			  << " width_modification " << width_modification
 			  << " height_modification " << height_modification << ".\n";
 
-	if(content_resize_request(width_modification, height_modification)) {
+	if(content_resize_request(width_modification, height_modification, width__modification_pos, height_modification_pos)) {
 
 		// Calculate new size.
 		tpoint size = content_grid()->get_size();
@@ -134,6 +136,7 @@ void ttree_view::resize_content(const int width_modification,
 		if(width_modification < 0 || height_modification < 0) {
 			set_is_dirty(true);
 		}
+		horizontal_scrollbar_moved();
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
 		DBG_GUI_L << LOG_HEADER << " failed.\n";
@@ -151,6 +154,7 @@ void ttree_view::layout_children(const bool force)
 		root_node_->set_visible_rectangle(content_visible_area_);
 
 		need_layout_ = false;
+		horizontal_scrollbar_moved();
 	}
 }
 

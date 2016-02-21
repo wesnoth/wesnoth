@@ -192,6 +192,13 @@ tpoint twidget::get_best_size() const
 	tpoint result = layout_size_;
 	if(result == tpoint(0, 0)) {
 		result = calculate_best_size();
+		//Adjust to linked widget size if linked widget size was already calculated.
+		if(!get_window()->get_need_layout() && !linked_group_.empty())
+		{
+			tpoint linked_size = get_window()->get_linked_size(linked_group_);
+			result.x = std::max(result.x, linked_size.x);
+			result.y = std::max(result.y, linked_size.y);
+		}
 	}
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

@@ -193,7 +193,7 @@ struct marked_route
 plain_route a_star_search(map_location const &src, map_location const &dst,
 		double stop_at, const cost_calculator* costCalculator,
 		const size_t parWidth, const size_t parHeight,
-		const teleport_map* teleports = NULL);
+		const teleport_map* teleports = NULL, bool border = false);
 
 /**
  * Add marks on a route @a rt assuming that the unit located at the first hex of

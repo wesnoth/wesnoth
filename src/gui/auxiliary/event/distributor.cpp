@@ -175,6 +175,9 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(const event::tevent event,
 		}
 	} else {
 		twidget* mouse_over = owner_.find_at(coordinate, true);
+		while(mouse_over && !mouse_over->can_mouse_focus() && mouse_over->parent()) {
+			mouse_over = mouse_over->parent();
+		}
 		if(mouse_over) {
 			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".\n";
 			if(owner_.fire(event, *mouse_over, coordinate)) {

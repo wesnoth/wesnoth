@@ -18,7 +18,7 @@
 #define MAP_GEN_HPP_INCLUDED
 
 class config;
-class display;
+class CVideo;
 
 #include "exceptions.hpp"
 #include "map_location.hpp"
@@ -49,7 +49,7 @@ public:
 	 * to modify how the generator behaves.
 	 * (This function will not be called if allow_user_config() returns false).
 	 */
-	virtual void user_config(display& disp);
+	virtual void user_config(CVideo& v);
 
 	/**
 	 * Returns a string identifying the generator by name.

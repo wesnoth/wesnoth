@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
-"POT-Creation-Date: 2015-12-10 19:00-0300\n"
+"POT-Creation-Date: 2016-01-16 20:56-0300\n"
 "PO-Revision-Date: 2015-02-07 13:06+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -118,11 +118,18 @@ msgstr "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
+#, fuzzy
+#| msgid ""
+#| "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
+#| "menu will appear if no id was specified.  B<Note:> When using this switch "
+#| "please ensure that you specify the data directory path as the final "
+#| "argument aswell, otherwise the game will take the campaign/scenario id as "
+#| "the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
 "please ensure that you specify the data directory path as the final argument "
-"aswell, otherwise the game will take the campaign/scenario id as the data "
+"as well, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
 "直接进入ID为 E<lt>id_campaignE<gt> 的战役中。如果没有指定ID，则将出现一个选择"
@@ -915,7 +922,10 @@ msgstr "版权"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:328 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版权所有 \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text

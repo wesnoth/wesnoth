@@ -17,7 +17,7 @@
 
 #include "global.hpp"
 
-class display;
+class CVideo;
 class config;
 
 #include <vector>
@@ -26,7 +26,7 @@ class config;
 namespace about
 {
 
-void show_about(display &disp, const std::string &campaign = std::string());
+void show_about(CVideo& video, const std::string &campaign = std::string());
 void set_about(const config& cfg);
 std::vector<std::string> get_text(const std::string &campaign = std::string(), bool split_multiline_headers = false);
 

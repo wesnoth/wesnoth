@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2014-04-16 23:12+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -331,87 +331,83 @@ msgid "Name:"
 msgstr "Jméno:"
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:305
+#: src/editor/map/context_manager.cpp:306
 msgid "(New Map)"
 msgstr "(Nová mapa)"
 
-#: src/editor/map/context_manager.cpp:148
-msgid "The Battle for Wesnoth"
-msgstr ""
-
-#: src/editor/map/context_manager.cpp:192
+#: src/editor/map/context_manager.cpp:193
 msgid "Choose a File to Open"
 msgstr "Vyber soubor k načtení"
 
-#: src/editor/map/context_manager.cpp:307
+#: src/editor/map/context_manager.cpp:308
 msgid "(New Scenario)"
 msgstr "(Nový scénář)"
 
-#: src/editor/map/context_manager.cpp:334
+#: src/editor/map/context_manager.cpp:335
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:371
+#: src/editor/map/context_manager.cpp:372
 msgid "(Unnamed Area)"
 msgstr "(Nepojmenovaná oblast)"
 
-#: src/editor/map/context_manager.cpp:400
+#: src/editor/map/context_manager.cpp:401
 msgid "(New Side)"
 msgstr "(Nová strana)"
 
 # co je zase toto?
-#: src/editor/map/context_manager.cpp:466
+#: src/editor/map/context_manager.cpp:467
 msgid "Choose a Mask to Apply"
 msgstr "Vyber masku k aplikaci"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:474
 msgid "Error loading mask"
 msgstr "Chyba při načítání masky"
 
-#: src/editor/map/context_manager.cpp:492
+#: src/editor/map/context_manager.cpp:493
 msgid "Identifier:"
 msgstr "Identifikátor:"
 
-#: src/editor/map/context_manager.cpp:492
+#: src/editor/map/context_manager.cpp:493
 msgid "Rename Area"
 msgstr "Přejmenovat oblast"
 
-#: src/editor/map/context_manager.cpp:503
+#: src/editor/map/context_manager.cpp:504
 msgid "Choose Target Map"
 msgstr "vyber cílovou mapu"
 
-#: src/editor/map/context_manager.cpp:510
-#: src/editor/map/context_manager.cpp:950
+#: src/editor/map/context_manager.cpp:511
+#: src/editor/map/context_manager.cpp:951
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
-#: src/editor/map/context_manager.cpp:627
+#: src/editor/map/context_manager.cpp:628
 msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
-#: src/editor/map/context_manager.cpp:631
-#: src/editor/map/context_manager.cpp:659
+#: src/editor/map/context_manager.cpp:632
+#: src/editor/map/context_manager.cpp:660
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
-#: src/editor/map/context_manager.cpp:655
+#: src/editor/map/context_manager.cpp:656
 msgid "Save the Scenario As"
 msgstr "Ulož scénář jako"
 
-#: src/editor/map/context_manager.cpp:694
+#: src/editor/map/context_manager.cpp:695
 msgid "No random map generators found."
 msgstr "Nebyly nalezeny žádné generátory map."
 
-#: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:712
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:713
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
-#: src/editor/map/context_manager.cpp:726
+#: src/editor/map/context_manager.cpp:727
 msgid "Unsaved Changes"
 msgstr "Neuložené změny"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:728
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -419,33 +415,33 @@ msgstr "Neuložené změny"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
-#: src/editor/map/context_manager.cpp:826
+#: src/editor/map/context_manager.cpp:827
 msgid "This scenario is already open."
 msgstr "Tento scénář již je otevřen."
 
-#: src/editor/map/context_manager.cpp:848
-#: src/editor/map/context_manager.cpp:903
+#: src/editor/map/context_manager.cpp:849
+#: src/editor/map/context_manager.cpp:904
 msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
-#: src/editor/map/context_manager.cpp:869
+#: src/editor/map/context_manager.cpp:870
 msgid "Scenario saved."
 msgstr "Scénář uložen."
 
-#: src/editor/map/context_manager.cpp:883
+#: src/editor/map/context_manager.cpp:884
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor/map/context_manager.cpp:928
+#: src/editor/map/context_manager.cpp:929
 msgid "Loaded embedded map data"
 msgstr "Načtena vložená data mapy"
 
-#: src/editor/map/context_manager.cpp:929
-#: src/editor/map/context_manager.cpp:943
+#: src/editor/map/context_manager.cpp:930
+#: src/editor/map/context_manager.cpp:944
 msgid "Map loaded from scenario"
 msgstr "Mapa načtena ze scénáře"
 
-#: src/editor/map/context_manager.cpp:939
+#: src/editor/map/context_manager.cpp:940
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -453,13 +449,13 @@ msgstr ""
 "Načten odkazovaný soubor mapy:\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1025
+#: src/editor/map/context_manager.cpp:1026
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nová mapa)"
 
-#: src/editor/map/context_manager.cpp:1025
+#: src/editor/map/context_manager.cpp:1026
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"

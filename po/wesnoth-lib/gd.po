@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-01-16 20:58-0300\n"
 "PO-Revision-Date: 2015-04-22 10:16+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -1774,15 +1774,15 @@ msgstr ""
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_description.cfg:555
 #: data/gui/default/window/addon_filter_options.cfg:420
-#: data/gui/default/window/advanced_graphics_options.cfg:166
+#: data/gui/default/window/advanced_graphics_options.cfg:165
 #: data/gui/default/window/chat_log.cfg:205
 #: data/gui/default/window/game_version.cfg:599
 #: data/gui/default/window/gamestate_inspector.cfg:299
 #: data/gui/default/window/lobby_main.cfg:625
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/lua_interpreter.cfg:137
-#: data/gui/default/window/message.cfg:137 src/construct_dialog.cpp:141
-#: src/generators/default_map_generator.cpp:111
+#: data/gui/default/window/message.cfg:137 src/construct_dialog.cpp:139
+#: src/generators/default_map_generator.cpp:112
 msgid "Close"
 msgstr "Dùin"
 
@@ -1907,7 +1907,7 @@ msgstr "Dèan ceangal"
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
 #: data/gui/default/window/folder_create.cfg:134
-#: data/gui/default/window/game_load.cfg:471
+#: data/gui/default/window/game_load.cfg:469
 #: data/gui/default/window/game_save.cfg:135
 #: data/gui/default/window/label_settings.cfg:149
 #: data/gui/default/window/language_selection.cfg:141
@@ -1924,10 +1924,10 @@ msgstr "Dèan ceangal"
 #: data/gui/default/window/network_transmission.cfg:114
 #: data/gui/default/window/simple_item_selector.cfg:158
 #: data/gui/default/window/theme_list.cfg:172
-#: data/gui/default/window/unit_attack.cfg:210
+#: data/gui/default/window/unit_attack.cfg:369
 #: data/gui/default/window/unit_create.cfg:424
-#: data/gui/default/window/unit_create.cfg:425 src/construct_dialog.cpp:135
-#: src/construct_dialog.cpp:138 src/hotkey/hotkey_command.cpp:41
+#: data/gui/default/window/unit_create.cfg:425 src/construct_dialog.cpp:133
+#: src/construct_dialog.cpp:136 src/hotkey/hotkey_command.cpp:41
 msgid "Cancel"
 msgstr "Sguir dheth"
 
@@ -2215,7 +2215,7 @@ msgstr "A’ teàrnadh"
 #: data/gui-2/default/window/mp_server_list.cfg:107
 #: data/gui/default/window/addon_list.cfg:195
 #: data/gui/default/window/data_manage.cfg:163
-#: data/gui/default/window/game_load.cfg:252
+#: data/gui/default/window/game_load.cfg:250
 #: data/gui/default/window/mp_server_list.cfg:107
 msgid "Name"
 msgstr "Ainm"
@@ -2224,7 +2224,7 @@ msgstr "Ainm"
 #. [label]
 #: data/gui-2/default/window/addon_list.cfg:210
 #: data/gui/default/window/addon_list.cfg:210
-#: src/gui/dialogs/title_screen.cpp:325
+#: src/gui/dialogs/title_screen.cpp:319
 msgid "Version"
 msgstr "Tionndadh"
 
@@ -2265,63 +2265,60 @@ msgstr "Tagh na tuilleadain a tha thu airson toirt air falbh."
 #: data/gui-2/default/window/mp_cmd_wrapper.cfg:200
 #: data/gui/default/window/addon_uninstall_list.cfg:161
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:219
+#: src/game_preferences_display.cpp:209
 msgid "Remove"
 msgstr "Thoir air falbh"
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:42
-#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Bilinear interpolation scaling (legacy wesnoth option)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:42
-#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Linear (legacy)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:43
-#: data/gui/default/window/advanced_graphics_options.cfg:43
+#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:43
-#: data/gui/default/window/advanced_graphics_options.cfg:43
+#: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor scaling (fastest)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:44
-#: data/gui/default/window/advanced_graphics_options.cfg:44
+#: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "xBRZ + linear"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:44
-#: data/gui/default/window/advanced_graphics_options.cfg:44
+#: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "xBRZ followed by Bilinear interpolation"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:45
-#: data/gui/default/window/advanced_graphics_options.cfg:45
+#: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + NN"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:45
-#: data/gui/default/window/advanced_graphics_options.cfg:45
+#: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ followed by Nearest Neighbor (recommended)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:46
-#: data/gui/default/window/advanced_graphics_options.cfg:46
 msgid "Bilinear interpolation scaling (new implementation)"
 msgstr ""
 
 #: data/gui-2/default/window/advanced_graphics_options.cfg:46
-#: data/gui/default/window/advanced_graphics_options.cfg:46
+#: data/gui/default/window/advanced_graphics_options.cfg:45
 msgid "Linear"
 msgstr ""
 
 #. [label]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:92
-#: data/gui/default/window/advanced_graphics_options.cfg:92
+#: data/gui/default/window/advanced_graphics_options.cfg:91
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advanced Graphics Options"
@@ -2329,31 +2326,31 @@ msgstr "Roghainnean adhartach"
 
 #. [label]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:108
-#: data/gui/default/window/advanced_graphics_options.cfg:108
+#: data/gui/default/window/advanced_graphics_options.cfg:107
 msgid "Images will be scaled using the following algorithms:"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:129
-#: data/gui/default/window/advanced_graphics_options.cfg:129
+#: data/gui/default/window/advanced_graphics_options.cfg:128
 msgid "All units, haloes, border hexes"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:129
-#: data/gui/default/window/advanced_graphics_options.cfg:129
+#: data/gui/default/window/advanced_graphics_options.cfg:128
 msgid "Scaled to zoom"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:140
-#: data/gui/default/window/advanced_graphics_options.cfg:140
+#: data/gui/default/window/advanced_graphics_options.cfg:139
 msgid "Everything else"
 msgstr ""
 
 #. [column]
 #: data/gui-2/default/window/advanced_graphics_options.cfg:140
-#: data/gui/default/window/advanced_graphics_options.cfg:140
+#: data/gui/default/window/advanced_graphics_options.cfg:139
 msgid "Scaled to hex"
 msgstr ""
 
@@ -2436,8 +2433,8 @@ msgstr ""
 #: data/gui/default/window/editor_set_starting_position.cfg:162
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_cache_options.cfg:249
-#: data/gui/default/window/game_load.cfg:457
-#: data/gui/default/window/game_load.cfg:458
+#: data/gui/default/window/game_load.cfg:455
+#: data/gui/default/window/game_load.cfg:456
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/game_save.cfg:121
 #: data/gui/default/window/label_settings.cfg:137
@@ -2457,8 +2454,8 @@ msgstr ""
 #: data/gui/default/window/unit_create.cfg:413
 #: data/gui/default/window/wml_error.cfg:162
 #: data/gui/default/window/wml_message.cfg:485
-#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:127
-#: src/construct_dialog.cpp:134 src/gui/dialogs/message.cpp:173
+#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:173
 #: src/gui/dialogs/message.cpp:180
 msgid "OK"
 msgstr "Ceart ma-thà"
@@ -2719,7 +2716,7 @@ msgstr "Tagh an geama airson luchdadh"
 #: data/gui-2/default/window/data_manage.cfg:113
 #: data/gui-2/default/window/game_load.cfg:213
 #: data/gui/default/window/data_manage.cfg:113
-#: data/gui/default/window/game_load.cfg:201
+#: data/gui/default/window/game_load.cfg:199
 #: data/gui/default/window/unit_create.cfg:217
 msgid "Filter"
 msgstr "Criathrag"
@@ -2729,7 +2726,7 @@ msgstr "Criathrag"
 #: data/gui-2/default/window/data_manage.cfg:177
 #: data/gui-2/default/window/game_load.cfg:278
 #: data/gui/default/window/data_manage.cfg:177
-#: data/gui/default/window/game_load.cfg:266
+#: data/gui/default/window/game_load.cfg:264
 msgid "Date"
 msgstr "Ceann-latha"
 
@@ -2793,7 +2790,7 @@ msgstr "A bheil thu airson na h-atharraichean a chur an sàs?"
 #: data/gui/default/window/game_save_overwrite.cfg:96
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: data/gui/default/window/mp_host_game_prompt.cfg:105
-#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:188
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:188
 msgid "Yes"
 msgstr "Tha"
 
@@ -2811,7 +2808,7 @@ msgstr "Tha"
 #: data/gui/default/window/game_save_oos.cfg:209
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: data/gui/default/window/mp_host_game_prompt.cfg:118
-#: src/construct_dialog.cpp:131 src/gui/dialogs/message.cpp:191
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:191
 msgid "No"
 msgstr "Chan eil"
 
@@ -3091,7 +3088,7 @@ msgstr "Mapa ùr"
 #. [label]
 #: data/gui-2/default/window/editor_new_map.cfg:54
 #: data/gui/default/window/editor_new_map.cfg:54
-#: src/generators/default_map_generator.cpp:122
+#: src/generators/default_map_generator.cpp:123
 msgid "Width:"
 msgstr "Leud:"
 
@@ -3099,7 +3096,7 @@ msgstr "Leud:"
 #. [label]
 #: data/gui-2/default/window/editor_new_map.cfg:81
 #: data/gui/default/window/editor_new_map.cfg:81
-#: src/generators/default_map_generator.cpp:123
+#: src/generators/default_map_generator.cpp:124
 msgid "Height:"
 msgstr "Àirde:"
 
@@ -3397,32 +3394,32 @@ msgstr "Luchdaich geama"
 #. [button]: id=delete
 #: data/gui-2/default/window/game_load.cfg:360
 #: data/gui-2/default/window/game_load.cfg:361
-#: data/gui/default/window/game_load.cfg:372
-#: data/gui/default/window/game_load.cfg:373
+#: data/gui/default/window/game_load.cfg:370
+#: data/gui/default/window/game_load.cfg:371
 msgid "Delete"
 msgstr "Sguab às"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui-2/default/window/game_load.cfg:379
-#: data/gui/default/window/game_load.cfg:356
+#: data/gui/default/window/game_load.cfg:354
 msgid "Change difficulty"
 msgstr "Atharraich an duilgheas"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui-2/default/window/game_load.cfg:380
-#: data/gui/default/window/game_load.cfg:357
+#: data/gui/default/window/game_load.cfg:355
 msgid "Change campaign difficulty before loading"
 msgstr "Atharraich duilgheas na h-iomairte ron luchdadh"
 
 #. [toggle_button]: id=show_replay
 #: data/gui-2/default/window/game_load.cfg:399
-#: data/gui/default/window/game_load.cfg:397
+#: data/gui/default/window/game_load.cfg:395
 msgid "Show replay"
 msgstr "Seall ath-chluiche"
 
 #. [toggle_button]: id=show_replay
 #: data/gui-2/default/window/game_load.cfg:400
-#: data/gui/default/window/game_load.cfg:398
+#: data/gui/default/window/game_load.cfg:396
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
 "Cluich an ath-chluiche am broinn a’ gheama air shàbhaladh ma tha seo "
@@ -3430,13 +3427,13 @@ msgstr ""
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui-2/default/window/game_load.cfg:418
-#: data/gui/default/window/game_load.cfg:416
+#: data/gui/default/window/game_load.cfg:414
 msgid "Cancel orders"
 msgstr "Sgur dhe na h-òrduighean"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui-2/default/window/game_load.cfg:419
-#: data/gui/default/window/game_load.cfg:417
+#: data/gui/default/window/game_load.cfg:415
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 "Sguir dhe ghluasad aonaid ri dhèanamh sam bith sa gheama air a shàbhaladh"
@@ -4113,7 +4110,7 @@ msgstr ""
 #. [button]: id=revert_to_defaults
 #: data/gui-2/default/window/mp_alerts_options.cfg:210
 #: data/gui/default/window/mp_alerts_options.cfg:210
-#: src/game_preferences_display.cpp:252
+#: src/game_preferences_display.cpp:242
 #: src/hotkey/hotkey_preferences_display.cpp:172
 msgid "Defaults"
 msgstr "Bun-roghainnean"
@@ -4394,7 +4391,7 @@ msgstr "Cuimhneachan facail-fhaire"
 #: data/gui-2/default/window/title_screen.cfg:258
 #: data/gui/default/window/mp_method_selection.cfg:39
 #: data/gui/default/window/title_screen.cfg:258
-#: src/gui/dialogs/game_load.cpp:339
+#: src/gui/dialogs/game_load.cpp:352
 msgid "Multiplayer"
 msgstr "Ioma-chluicheadair"
 
@@ -4562,7 +4559,7 @@ msgstr "Tòisich oideachadh gus ionnsachadh mun gheama"
 #. [grid]
 #: data/gui-2/default/window/title_screen.cfg:256
 #: data/gui/default/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:342
+#: src/gui/dialogs/game_load.cpp:355
 msgid "Tutorial"
 msgstr "Oideachadh"
 
@@ -4681,13 +4678,12 @@ msgstr ""
 
 #. [button]: id=ok
 #: data/gui-2/default/window/unit_attack.cfg:197
-#: data/gui/default/window/unit_attack.cfg:197
+#: data/gui/default/window/unit_attack.cfg:356
 msgid "Attack"
 msgstr "Thoir ionnsaigh"
 
 #. [label]
 #: data/gui-2/default/window/unit_attack.cfg:265
-#: data/gui/default/window/unit_attack.cfg:265
 msgid "Attack enemy"
 msgstr "Gabh air an nàmhaid"
 
@@ -4723,10 +4719,37 @@ msgstr "Boireann"
 msgid "Race"
 msgstr "Cinneadh"
 
+#: data/gui/default/window/advanced_graphics_options.cfg:45
+msgid "Bilinear interpolation scaling"
+msgstr ""
+
+#. [button]: id=attacker_profile
+#. [button]: id=defender_profile
 #. [button]: id=type_profile
+#: data/gui/default/window/unit_attack.cfg:64
+#: data/gui/default/window/unit_attack.cfg:126
 #: data/gui/default/window/unit_create.cfg:116
 msgid "Profile"
 msgstr ""
+
+#. [button]: id=damage_calculation
+#: data/gui/default/window/unit_attack.cfg:328
+msgid "Damage Calculation"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/unit_attack.cfg:435
+#, fuzzy
+#| msgid "Attack enemy"
+msgid "Attack Enemy"
+msgstr "Gabh air an nàmhaid"
+
+#. [label]
+#: data/gui/default/window/unit_attack.cfg:461
+#, fuzzy
+#| msgid "Choose Resolution"
+msgid "Choose weapon:"
+msgstr "Atharraich an dùmhlachd-bhreacaidh"
 
 #: src/build_info.cpp:190
 msgid "feature^Experimental OpenMP support"
@@ -4796,400 +4819,400 @@ msgstr "%H:%M"
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:191
 msgid "Full screen"
 msgstr "Làn-sgrìn"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:192
 msgid "Accelerated speed"
 msgstr "Astar luathaichte"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:193
 msgid "Skip AI moves"
 msgstr "Leig seachad gluasadan IF"
 
-#: src/game_preferences_display.cpp:204
+#: src/game_preferences_display.cpp:194
 msgid "Interrupt move when an ally is sighted"
 msgstr "Sgur dhen ghluasad ma thig caidreabhach air faire"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:195
 msgid "Show grid"
 msgstr "Seall griod"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:196
 msgid "Save replays at the end of scenarios"
 msgstr "Sàbhail ath-chluiche air deireadh chnàmh-sgeulan"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:197
 msgid "Delete auto-saves at the end of scenarios"
 msgstr "Sguab às na fèin-shàbhalaidhean air deireadh chnàmh-sgeulan"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:198
 msgid "Do not show lobby joins"
 msgstr "Na seall gabhalaichean ann an lobaidh"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:199
 msgid "Show lobby joins of friends only"
 msgstr "Na seall ach gabhalaichean ann an lobaidh aig caraidean"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:200
 msgid "Show all lobby joins"
 msgstr "Seall a h-uile gabhail ann an lobaidh"
 
-#: src/game_preferences_display.cpp:211
+#: src/game_preferences_display.cpp:201
 msgid "Sort lobby list"
 msgstr "Seòrsaich liosta an lobaidh"
 
-#: src/game_preferences_display.cpp:212
+#: src/game_preferences_display.cpp:202
 msgid "Iconize lobby list"
 msgstr "Cuir ìomhaigheagan ri liosta an lobaidh"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:203
 msgid "Save password to preferences (plain text)"
 msgstr "Sàbhail am facal-faire sna roghainnean (teacsa soilleir)"
 
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:204
 msgid "Set Path to wesnothd"
 msgstr "Tagh slighe dha wesnothd"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:205
 msgid "Friends List"
 msgstr "Liosta nan caraidean"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:206
 msgid "Multiplayer Options"
 msgstr "Roghainnean ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:207
 msgid "Add As Friend"
 msgstr "Cuir ri caraidean"
 
-#: src/game_preferences_display.cpp:218
+#: src/game_preferences_display.cpp:208
 msgid "Add As Ignore"
 msgstr "Cuir ri luchd neo-shuime"
 
-#: src/game_preferences_display.cpp:220
+#: src/game_preferences_display.cpp:210
 msgid "Show floating labels"
 msgstr "Seall leubailean fleòdragain"
 
-#: src/game_preferences_display.cpp:221
+#: src/game_preferences_display.cpp:211
 msgid "Turn dialog"
 msgstr "Còmhradh cuairte"
 
-#: src/game_preferences_display.cpp:222
+#: src/game_preferences_display.cpp:212
 msgid "Enable planning mode on start"
 msgstr "Cuir am modh planaidh an comas air an tòiseachadh"
 
-#: src/game_preferences_display.cpp:223
+#: src/game_preferences_display.cpp:213
 msgid "Hide allies’ plans by default"
 msgstr "Falaich planaichean nan caidreabhach a ghnàth"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:214
 msgid "Turn bell"
 msgstr "Clag na cuairte"
 
-#: src/game_preferences_display.cpp:225
+#: src/game_preferences_display.cpp:215
 msgid "Show team colors"
 msgstr "Seall dathan an sgioba"
 
-#: src/game_preferences_display.cpp:226
+#: src/game_preferences_display.cpp:216
 msgid "Show haloing effects"
 msgstr "Seall èifeachdan riombaill"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:217
 msgid "Change Resolution"
 msgstr "Atharraich an dùmhlachd-bhreacaidh"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:218
 msgid "Theme"
 msgstr "Ùrlar"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:219
 msgid "Hotkeys"
 msgstr "Hotkeys"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:220
 msgid "Colors"
 msgstr ""
 
-#: src/game_preferences_display.cpp:231
+#: src/game_preferences_display.cpp:221
 #, fuzzy
 #| msgid "Cache:"
 msgid "Cache"
 msgstr "An tasgadan:"
 
-#: src/game_preferences_display.cpp:233
+#: src/game_preferences_display.cpp:223
 msgid "Sound effects"
 msgstr "Èifeachdan fuaime"
 
-#: src/game_preferences_display.cpp:234
+#: src/game_preferences_display.cpp:224
 msgid "Music"
 msgstr "Ceòl"
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:225
 msgid "Chat timestamping"
 msgstr "Stampaichean-tìde na cabadaiche"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:226
 msgid "sound^Advanced Options"
 msgstr "Roghainnean adhartach"
 
-#: src/game_preferences_display.cpp:237
+#: src/game_preferences_display.cpp:227
 msgid "sound^Standard Options"
 msgstr "Roghainnean bunasach"
 
-#: src/game_preferences_display.cpp:238
+#: src/game_preferences_display.cpp:228
 #, fuzzy
 #| msgid "Refresh Display"
 msgid "colors^Display"
 msgstr "Ath-ùraich an taisbeanadh"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:229
 msgid "User interface sounds"
 msgstr "Cleachd fuaimean eadar-aghaidh"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:232
 msgid "Custom"
 msgstr "Gnàthaichte"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:233
 msgid "Apply"
 msgstr "Cuir an gnìomh"
 
-#: src/game_preferences_display.cpp:244
+#: src/game_preferences_display.cpp:234
 msgid "Show unit idle animations"
 msgstr "Seall beòthachadh nan aonadan air tàmh"
 
-#: src/game_preferences_display.cpp:245
+#: src/game_preferences_display.cpp:235
 msgid "Show unit standing animations"
 msgstr "Seall beòthachadh seasaimh nan aonadan"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:236
 msgid "Animate map"
 msgstr "Beòthaich mapa"
 
-#: src/game_preferences_display.cpp:247
+#: src/game_preferences_display.cpp:237
 msgid "Disable automatic moves"
 msgstr ""
 
-#: src/game_preferences_display.cpp:248
+#: src/game_preferences_display.cpp:238
 msgid "Alerts"
 msgstr ""
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:239
 msgid "Advanced"
 msgstr ""
 
-#: src/game_preferences_display.cpp:253
+#: src/game_preferences_display.cpp:243
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
 msgstr "Seall gluasadan an nàmhad"
 
-#: src/game_preferences_display.cpp:254
+#: src/game_preferences_display.cpp:244
 #, fuzzy
 #| msgid "Show all lobby joins"
 msgid "Show ally orb"
 msgstr "Seall a h-uile gabhail ann an lobaidh"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:245
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
 msgstr "Seall gluasadan an nàmhad"
 
-#: src/game_preferences_display.cpp:256
+#: src/game_preferences_display.cpp:246
 msgid "Show partial moved orb"
 msgstr ""
 
-#: src/game_preferences_display.cpp:257
+#: src/game_preferences_display.cpp:247
 #, fuzzy
 #| msgid "Show team colors"
 msgid "Show moved orb"
 msgstr "Seall dathan an sgioba"
 
-#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:268
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:270
+#: src/game_preferences_display.cpp:257 src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:259 src/game_preferences_display.cpp:260
 msgid "Volume:"
 msgstr "Fuaim:"
 
-#: src/game_preferences_display.cpp:272
+#: src/game_preferences_display.cpp:262
 msgid "Scroll speed:"
 msgstr "Astar an sgrolaidh:"
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:265
 msgid "Sample rate (Hz):"
 msgstr "Reat sampaill (Hz):"
 
-#: src/game_preferences_display.cpp:276
+#: src/game_preferences_display.cpp:266
 msgid "Frequency:"
 msgstr "Tricead:"
 
-#: src/game_preferences_display.cpp:300
+#: src/game_preferences_display.cpp:290
 msgid "Sound effects on/off"
 msgstr "Èifeachdan fuaime air/dheth"
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:294
 msgid "Change the sound effects volume"
 msgstr "Atharraich àirde nan èifeachdan fuaime"
 
-#: src/game_preferences_display.cpp:307
+#: src/game_preferences_display.cpp:297
 msgid "Music on/off"
 msgstr "Ceòl air/dheth"
 
-#: src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:301
 msgid "Change the music volume"
 msgstr "Atharraich àirde a’ chiùil"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:349
 msgid "Change the bell volume"
 msgstr "Atharraich àirde a’ chluig"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:352
 msgid "Turn menu and button sounds on/off"
 msgstr "Cuir fuaim nam putan clàir-thaice air/dheth"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:356
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Atharraich àirde fuaime airson briogadh air putain amsaa."
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:358
 msgid "Change the sample rate"
 msgstr "Atharraich reat sampaill"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:367
 msgid "User defined sample rate"
 msgstr "Reat sampaill gnàthaichte"
 
-#: src/game_preferences_display.cpp:387 src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:377 src/game_preferences_display.cpp:381
 msgid "Change the buffer size"
 msgstr "Atharraich meud a’ bhufair"
 
-#: src/game_preferences_display.cpp:389 src/game_preferences_display.cpp:1167
+#: src/game_preferences_display.cpp:379 src/game_preferences_display.cpp:1155
 msgid "Buffer size: "
 msgstr "Meud a’ bhufair: "
 
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:386
 msgid "Change the speed of scrolling around the map"
 msgstr "Atharraich an t-astar sgrolaidh mun mhapa"
 
-#: src/game_preferences_display.cpp:401 src/game_preferences_display.cpp:403
+#: src/game_preferences_display.cpp:391 src/game_preferences_display.cpp:393
 msgid "Set the amount of chat lines shown"
 msgstr "Suidhich am meud dhe loidhnichean cabadaiche a chì thu"
 
-#: src/game_preferences_display.cpp:406
+#: src/game_preferences_display.cpp:396
 msgid "Add a timestamp to chat messages"
 msgstr "Cuir stampa-tìde ri teachdaireachdan chabadaiche"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:399
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Tagh an ruith an geama ann an uinneag no làn-sgrìn"
 
-#: src/game_preferences_display.cpp:412
+#: src/game_preferences_display.cpp:402
 msgid "Make units move and fight faster"
 msgstr "Thoir air aonadan gluasad is sabaid nas luaithe"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:421
 msgid "Units move and fight speed"
 msgstr "Astar gluasad is sabaid nan aonadan"
 
-#: src/game_preferences_display.cpp:434
+#: src/game_preferences_display.cpp:424
 msgid "Play short random animations for idle units"
 msgstr "Cluich beòthachadh goirid air thuaiream airson aonadan nach dèan dad"
 
-#: src/game_preferences_display.cpp:437
+#: src/game_preferences_display.cpp:427
 msgid "Continuously animate standing units in the battlefield"
 msgstr "Seall beòthachadh gun sgur airson aonadan ’nan seasamh air a’ bhlàr"
 
-#: src/game_preferences_display.cpp:440
+#: src/game_preferences_display.cpp:430
 msgid "Display animated terrain graphics"
 msgstr "Seall grafaigeachd le beòthachadh airson crutha-thìre"
 
-#: src/game_preferences_display.cpp:446
+#: src/game_preferences_display.cpp:436
 msgid "Set the frequency of unit idle animations"
 msgstr "Tag an tricead aig beòthachadh nan aonadan nach dèan dad"
 
-#: src/game_preferences_display.cpp:451
+#: src/game_preferences_display.cpp:441
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 "Suidhich an t-àireamh as motha dhe fhèin-shàbhalaidhean a thèid a chumail"
 
-#: src/game_preferences_display.cpp:455
+#: src/game_preferences_display.cpp:445
 msgid "Do not animate AI units moving"
 msgstr "Na seall beòthachadh air aonadan IF a’ gluasad"
 
-#: src/game_preferences_display.cpp:458
+#: src/game_preferences_display.cpp:448
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 "Thèid stad a thoirt air gluasad aonaid nuair a chì e aonad aig caidreabhach"
 
-#: src/game_preferences_display.cpp:461
+#: src/game_preferences_display.cpp:451
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Sàbhailidh seo ath-chluiche aig geamannan a bhuannaich thu an-còmhnaidh is a "
 "chaill thu ann am modh ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:464
+#: src/game_preferences_display.cpp:454
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Sguabaidh seo às fèin-shàbhalaidhean roimhe le buaidh AonChl/IomChl no ruaig "
 "IomChl"
 
-#: src/game_preferences_display.cpp:466
+#: src/game_preferences_display.cpp:456
 msgid "Overlay a grid onto the map"
 msgstr "Tar-chòmhdaich griod air a’ mhapa"
 
-#: src/game_preferences_display.cpp:469
+#: src/game_preferences_display.cpp:459
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 "Seòrsaich liosta nan cluicheadairean san lobaidh a rèir buidhnean nan "
 "cluicheadairean"
 
-#: src/game_preferences_display.cpp:472
+#: src/game_preferences_display.cpp:462
 msgid "Show icons in front of the player names in the lobby"
 msgstr ""
 "Seall ìomhaigheagan air beulaibh ainmean nan cluicheadairean san lobaidh"
 
-#: src/game_preferences_display.cpp:475
+#: src/game_preferences_display.cpp:465
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr ""
 "Thoir a’ chromag air falbh gus am facal-faire air a shàbhaladh a sguabadh às "
 "(as dèidh fàgail)."
 
-#: src/game_preferences_display.cpp:479
+#: src/game_preferences_display.cpp:469
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "Na seall teachdaireachdan mu chluicheadairean a thig a-steach dhan lobaidh "
 "ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:481
+#: src/game_preferences_display.cpp:471
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 "Seall teachdaireachdan mu na caraidean agad a thig a-steach dhan lobaidh "
 "ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:483
+#: src/game_preferences_display.cpp:473
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 "Seall teachdaireachdan mun a h-uile cluicheadair a thig a-steach dhan "
 "lobaidh ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:485
+#: src/game_preferences_display.cpp:475
 msgid "Find and set path to MP server to host LAN games"
 msgstr ""
 "Lorg is suidhich slighe dhan fhrithealaiche IomChl gus geamannan LAN òstadh"
 
-#: src/game_preferences_display.cpp:486
+#: src/game_preferences_display.cpp:476
 msgid "View and edit your friends and ignores list"
 msgstr "Faic is deasaich liosta nan caraidean is neo-shuime agad"
 
-#: src/game_preferences_display.cpp:487
+#: src/game_preferences_display.cpp:477
 msgid "Back to the multiplayer options"
 msgstr "Air ais dha na roghainnean ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:488
+#: src/game_preferences_display.cpp:478
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
@@ -5197,7 +5220,7 @@ msgstr ""
 "Cuir am far-ainm seo ri liosta nan caraidean agad (cuir nòtaichean "
 "roghainneil ris, m.e. “nòtaichean air caraid fhar_ainm”)"
 
-#: src/game_preferences_display.cpp:489
+#: src/game_preferences_display.cpp:479
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
@@ -5205,47 +5228,47 @@ msgstr ""
 "Cuir am far-ainm seo ris an liosta neo-shuime agad (cuir adhbhar roghainneil "
 "ris, m.e. “adhbhar gus far_ainm a sheachnadh”)"
 
-#: src/game_preferences_display.cpp:490
+#: src/game_preferences_display.cpp:480
 msgid "Remove this username from your list"
 msgstr "Thoir ainm a’ chleachdaiche seo air falbh on liosta agad"
 
-#: src/game_preferences_display.cpp:493
+#: src/game_preferences_display.cpp:483
 msgid "Insert a username"
 msgstr "Cuir ainm cleachdaiche ris"
 
-#: src/game_preferences_display.cpp:496
+#: src/game_preferences_display.cpp:486
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Seall teacsa os cionn aonaid nuair a dh’fhulaingeas e buille gus an dochann "
 "a chaidh a thoirt dha a shealltainn"
 
-#: src/game_preferences_display.cpp:498
+#: src/game_preferences_display.cpp:488
 msgid "Change the resolution the game runs at"
 msgstr "Atharraich an dùmhlachd-bhreacaidh sa ruith an geama"
 
-#: src/game_preferences_display.cpp:499
+#: src/game_preferences_display.cpp:489
 msgid "Change the theme the game runs with"
 msgstr "Atharraich an ùrlar leis a ruitheas an geama"
 
-#: src/game_preferences_display.cpp:502
+#: src/game_preferences_display.cpp:492
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Seall còmhradh air toiseach na cuairte agad"
 
-#: src/game_preferences_display.cpp:505
+#: src/game_preferences_display.cpp:495
 msgid "Activates Planning Mode on game start"
 msgstr "Cuiridh seo am modh planaidh an comas nuair a thòisicheas an geama"
 
-#: src/game_preferences_display.cpp:508
+#: src/game_preferences_display.cpp:498
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 "Falaichidh seo planaichean modh-planaidh nan caidreabhach ann an geamannan "
 "ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:511
+#: src/game_preferences_display.cpp:501
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Cluich fuaim chluig aig toiseach na cuairte agad"
 
-#: src/game_preferences_display.cpp:514
+#: src/game_preferences_display.cpp:504
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -5253,164 +5276,164 @@ msgstr ""
 "Seall cearcall dathte fo gach aonad gus an taobh ris a bhuineas e a "
 "shealltainn"
 
-#: src/game_preferences_display.cpp:517
+#: src/game_preferences_display.cpp:507
 msgid "Use graphical special effects (may be slower)"
 msgstr ""
 "Cleachd èifeachdan sònraichte grafaigeachd (faodaidh e bhith nas maille)"
 
-#: src/game_preferences_display.cpp:519
+#: src/game_preferences_display.cpp:509
 msgid "View and configure keyboard shortcuts"
 msgstr "Faic is rèitich ath-ghoiridean a’ mheur-chlàir"
 
-#: src/game_preferences_display.cpp:520
+#: src/game_preferences_display.cpp:510
 msgid "Adjust orb colors"
 msgstr ""
 
-#: src/game_preferences_display.cpp:521
+#: src/game_preferences_display.cpp:511
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
 msgstr "Atharraich reat sampaill"
 
-#: src/game_preferences_display.cpp:524
+#: src/game_preferences_display.cpp:514
 #, fuzzy
 #| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the begining of a turn"
 msgstr "Cluich fuaim chluig aig toiseach na cuairte agad"
 
-#: src/game_preferences_display.cpp:951
+#: src/game_preferences_display.cpp:941
 msgid "Speed: "
 msgstr "Astar: "
 
-#: src/game_preferences_display.cpp:956 src/game_preferences_display.cpp:958
+#: src/game_preferences_display.cpp:946 src/game_preferences_display.cpp:948
 msgid "Maximum auto-saves: "
 msgstr "Àireamh as motha dhe fhèin-shàbhalaidhean: "
 
-#: src/game_preferences_display.cpp:956
+#: src/game_preferences_display.cpp:946
 msgid "infinite"
 msgstr "neo-chrìochnach"
 
-#: src/game_preferences_display.cpp:1223
+#: src/game_preferences_display.cpp:1211
 msgid "Chat lines: "
 msgstr "Loidhnichean na cabadaiche: "
 
-#: src/game_preferences_display.cpp:1254 src/game_preferences_display.cpp:1271
+#: src/game_preferences_display.cpp:1242 src/game_preferences_display.cpp:1259
 msgid "Invalid username"
 msgstr "Ainm cleachdaiche mì-dhligheach"
 
-#: src/game_preferences_display.cpp:1402
+#: src/game_preferences_display.cpp:1390
 msgid "Desktop Notifications Unavailable"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1403
+#: src/game_preferences_display.cpp:1391
 msgid ""
 "This build of Wesnoth does not include support for desktop notifications. "
 "Check with the packager for your platform, or if compiling yourself, make "
 "sure that you have the appropriate dependencies installed."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1484
+#: src/game_preferences_display.cpp:1472
 msgid "yes"
 msgstr "air"
 
-#: src/game_preferences_display.cpp:1486
+#: src/game_preferences_display.cpp:1474
 msgid "no"
 msgstr "dheth"
 
-#: src/game_preferences_display.cpp:1537
+#: src/game_preferences_display.cpp:1525
 msgid "friend"
 msgstr "caraid"
 
-#: src/game_preferences_display.cpp:1541
+#: src/game_preferences_display.cpp:1529
 msgid "ignored"
 msgstr "neo-shuim"
 
-#: src/game_preferences_display.cpp:1555
+#: src/game_preferences_display.cpp:1543
 msgid "(empty list)"
 msgstr "(liosta falamh)"
 
-#: src/game_preferences_display.cpp:1703
+#: src/game_preferences_display.cpp:1691
 #: src/hotkey/hotkey_preferences_display.cpp:223
 msgid "Prefs section^General"
 msgstr "Coitcheann"
 
-#: src/game_preferences_display.cpp:1704
+#: src/game_preferences_display.cpp:1692
 msgid "Prefs section^Display"
 msgstr "Sealladh"
 
-#: src/game_preferences_display.cpp:1705
+#: src/game_preferences_display.cpp:1693
 msgid "Prefs section^Sound"
 msgstr "Fuaim"
 
-#: src/game_preferences_display.cpp:1706
+#: src/game_preferences_display.cpp:1694
 msgid "Prefs section^Multiplayer"
 msgstr "Ioma-chluicheadair"
 
-#: src/game_preferences_display.cpp:1707
+#: src/game_preferences_display.cpp:1695
 msgid "Advanced section^Advanced"
 msgstr "Adhartach"
 
-#: src/game_preferences_display.cpp:1760
+#: src/game_preferences_display.cpp:1731
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Chan eil ùrlaran aithnichte ann. Feuch an atharraich thu taobh a-staigh "
 "geama a tha ann."
 
-#: src/game_preferences_display.cpp:1814
+#: src/game_preferences_display.cpp:1785
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 "Lorg faidhle bìnearaidh $filename an fhrithealaiche gus geamannan lìonraidh "
 "òstadh"
 
-#: src/generators/default_map_generator.cpp:114
+#: src/generators/default_map_generator.cpp:115
 msgid "Map Generator"
 msgstr "Gineadair mapa"
 
-#: src/generators/default_map_generator.cpp:121
+#: src/generators/default_map_generator.cpp:122
 msgid "Players:"
 msgstr "Cluicheadairean:"
 
-#: src/generators/default_map_generator.cpp:124
+#: src/generators/default_map_generator.cpp:125
 msgid "Number of hills:"
 msgstr "Àireamh dhe chnuic:"
 
-#: src/generators/default_map_generator.cpp:125
+#: src/generators/default_map_generator.cpp:126
 msgid "Max hill size:"
 msgstr "Meud as motha nan cnoc:"
 
-#: src/generators/default_map_generator.cpp:126
+#: src/generators/default_map_generator.cpp:127
 msgid "Villages:"
 msgstr "Bailtean:"
 
-#: src/generators/default_map_generator.cpp:127
+#: src/generators/default_map_generator.cpp:128
 msgid "Castle size:"
 msgstr "Meud a’ chaisteil:"
 
-#: src/generators/default_map_generator.cpp:128
+#: src/generators/default_map_generator.cpp:129
 msgid "Landform:"
 msgstr "Cruth-tìre:"
 
-#: src/generators/default_map_generator.cpp:250
+#: src/generators/default_map_generator.cpp:251
 msgid "Roads between castles"
 msgstr "Rathaidean eadar caistealan"
 
-#: src/generators/default_map_generator.cpp:257
+#: src/generators/default_map_generator.cpp:258
 msgid "Show labels"
 msgstr "Seall leubailean"
 
-#: src/generators/default_map_generator.cpp:315
+#: src/generators/default_map_generator.cpp:317
 msgid "/1000 tiles"
 msgstr "/1000 leacan"
 
-#: src/generators/default_map_generator.cpp:324
+#: src/generators/default_map_generator.cpp:326
 msgid "Coastal"
 msgstr "Oirthir"
 
-#: src/generators/default_map_generator.cpp:324
+#: src/generators/default_map_generator.cpp:326
 msgid "Inland"
 msgstr "Meadhan tìre"
 
-#: src/generators/default_map_generator.cpp:324
+#: src/generators/default_map_generator.cpp:326
 msgid "Island"
 msgstr "Eilean"
 
@@ -5583,7 +5606,7 @@ msgstr "Chan eil fios"
 #: src/gui/dialogs/game_cache_options.cpp:98
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:839
-#: src/gui/dialogs/lua_interpreter.cpp:459
+#: src/gui/dialogs/lua_interpreter.cpp:460
 #: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:224
 msgid "Clipboard support not found, contact your packager"
@@ -5704,35 +5727,35 @@ msgstr ""
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:302
+#: src/gui/dialogs/game_load.cpp:315
 msgid "#(Invalid)"
 msgstr "#(Mì-dhligheach)"
 
-#: src/gui/dialogs/game_load.cpp:330
+#: src/gui/dialogs/game_load.cpp:343
 msgid "Campaign: $campaign_name"
 msgstr "Iomairt: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:345
+#: src/gui/dialogs/game_load.cpp:358
 msgid "Test scenario"
 msgstr "Deuchainn air cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:370
 msgid "Replay"
 msgstr "Ath-chluich"
 
-#: src/gui/dialogs/game_load.cpp:360
+#: src/gui/dialogs/game_load.cpp:372
 msgid "Turn"
 msgstr "Cuairt"
 
-#: src/gui/dialogs/game_load.cpp:362
+#: src/gui/dialogs/game_load.cpp:374
 msgid "Scenario start"
 msgstr "Tòisich cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:365
+#: src/gui/dialogs/game_load.cpp:377
 msgid "Difficulty: "
 msgstr "Duilgheas: "
 
-#: src/gui/dialogs/game_load.cpp:369
+#: src/gui/dialogs/game_load.cpp:381
 msgid "Version: "
 msgstr "Tionndadh: "
 
@@ -5770,7 +5793,7 @@ msgstr ""
 msgid "Team Labels"
 msgstr "Suidhich leubail an sgioba"
 
-#: src/gui/dialogs/label_settings.cpp:67 src/hotkey/hotkey_item.cpp:448
+#: src/gui/dialogs/label_settings.cpp:67
 msgid "Unknown"
 msgstr "Neo-aithnichte"
 
@@ -5778,23 +5801,23 @@ msgstr "Neo-aithnichte"
 msgid "Side $side_number ($name)"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:227
+#: src/gui/dialogs/lobby_main.cpp:226
 msgid "whisper to $receiver"
 msgstr "cagair gu $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:697
+#: src/gui/dialogs/lobby_main.cpp:649
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Geamannan: a’ sealltainn $num_shown a-mach à $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:741
+#: src/gui/dialogs/lobby_main.cpp:693
 msgid "Observers allowed"
 msgstr "Amhairc cheadaichte"
 
-#: src/gui/dialogs/lobby_main.cpp:744
+#: src/gui/dialogs/lobby_main.cpp:696
 msgid "Observers not allowed"
 msgstr "Chan eil amhairc ceadaichte"
 
-#: src/gui/dialogs/lobby_main.cpp:1157
+#: src/gui/dialogs/lobby_main.cpp:1109
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -5802,15 +5825,15 @@ msgstr ""
 "Chaidh seisean cagair le $name a thòiseachadh. Mura h-eil thu airson "
 "teachdaireachdan fhaighinn on chleachdaiche seo, sgrìobh /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1165
+#: src/gui/dialogs/lobby_main.cpp:1117
 msgid "Room $name joined"
 msgstr "Air gabhail ann an seòmar $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1491
+#: src/gui/dialogs/lobby_main.cpp:1443
 msgid "$player has entered the room"
 msgstr "Thàinig $player a-steach dhan t-seòmar"
 
-#: src/gui/dialogs/lobby_main.cpp:1531
+#: src/gui/dialogs/lobby_main.cpp:1483
 msgid "$player has left the room"
 msgstr "Dh’fhàg $player an seòmar"
 
@@ -5834,15 +5857,15 @@ msgstr "Luchdaich geama..."
 msgid "file_size^Unknown"
 msgstr "Chan eil fios"
 
-#: src/gui/dialogs/title_screen.cpp:321
+#: src/gui/dialogs/title_screen.cpp:315
 msgid "Version "
 msgstr "Tionndadh "
 
-#: src/gui/dialogs/unit_create.cpp:246
+#: src/gui/dialogs/unit_attack.cpp:131 src/gui/dialogs/unit_create.cpp:246
 msgid "HP: "
 msgstr ""
 
-#: src/gui/dialogs/unit_create.cpp:249
+#: src/gui/dialogs/unit_attack.cpp:133 src/gui/dialogs/unit_create.cpp:249
 msgid "XP: "
 msgstr ""
 
@@ -5887,12 +5910,12 @@ msgstr "Cha deach staid no roinn tarraing a mhìneachadh."
 msgid "Unknown builder id for tree view node."
 msgstr "Builder id neo-aithnichte airson tree view node."
 
-#: src/gui/widgets/window.cpp:1087
+#: src/gui/widgets/window.cpp:1049
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Tha putan ‘click_dismiss’ no ‘ok’ a dhìth air click dismiss."
 
-#: src/gui/widgets/window.cpp:1112 src/gui/widgets/window.cpp:1149
-#: src/tests/gui/test_gui2.cpp:495
+#: src/gui/widgets/window.cpp:1074 src/gui/widgets/window.cpp:1111
+#: src/tests/gui/test_gui2.cpp:491
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Cha deach còmhradh a shealltainn a tha ro mhòr airson an sgrìn."
 
@@ -6704,58 +6727,6 @@ msgstr ""
 msgid "Unrecognized Command"
 msgstr "Àithne neo-aithnichte"
 
-#: src/hotkey/hotkey_item.cpp:412 src/hotkey/hotkey_item.cpp:415
-msgid "Button"
-msgstr "Putan"
-
-#: src/hotkey/hotkey_item.cpp:412
-msgid "Mouse"
-msgstr "Luchag"
-
-#: src/hotkey/hotkey_item.cpp:415 src/hotkey/hotkey_item.cpp:451
-msgid "Joystick"
-msgstr "Joystick"
-
-#: src/hotkey/hotkey_item.cpp:421
-msgid "Centered"
-msgstr "Meadhanaichte"
-
-#: src/hotkey/hotkey_item.cpp:424
-msgid "Up"
-msgstr "Suas"
-
-#: src/hotkey/hotkey_item.cpp:427
-msgid "Right"
-msgstr "Gu deas"
-
-#: src/hotkey/hotkey_item.cpp:430
-msgid "Down"
-msgstr "Sìos"
-
-#: src/hotkey/hotkey_item.cpp:433
-msgid "Left"
-msgstr "Gu clì"
-
-#: src/hotkey/hotkey_item.cpp:436
-msgid "RightUp"
-msgstr "Suas deas"
-
-#: src/hotkey/hotkey_item.cpp:439
-msgid "RightDown"
-msgstr "Sìos deas"
-
-#: src/hotkey/hotkey_item.cpp:442
-msgid "LeftUp"
-msgstr "Suas clì"
-
-#: src/hotkey/hotkey_item.cpp:445
-msgid "LeftDown"
-msgstr "Sìos clì"
-
-#: src/hotkey/hotkey_item.cpp:451
-msgid "Hat"
-msgstr "Ad"
-
 #: src/hotkey/hotkey_preferences_display.cpp:134
 msgid "Add a new binding to \"$hotkey_description|\""
 msgstr ""
@@ -6812,7 +6783,7 @@ msgstr "Nasgadh"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Brùth air an hotkey a thogras tu (Sguiridh Esc dheth)"
 
-#: src/hotkey/hotkey_preferences_display.cpp:700
+#: src/hotkey/hotkey_preferences_display.cpp:661
 msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
@@ -6820,7 +6791,7 @@ msgstr ""
 "Tha \"$hotkey_sequence|\" ’ga chleachdadh le \"$old_hotkey_action|\". A "
 "bheil thu airson a shònrachadh dha \"$new_hotkey_action|\" ’na àite?"
 
-#: src/hotkey/hotkey_preferences_display.cpp:705
+#: src/hotkey/hotkey_preferences_display.cpp:666
 msgid "Reassign Hotkey"
 msgstr "Sònraich hotkey dhan nì ùr"
 
@@ -6838,26 +6809,15 @@ msgstr "Sònraich hotkey dhan nì ùr"
 msgid "language code for localized resources^en_US"
 msgstr "gd"
 
-#: src/marked-up_text.cpp:439
+#: src/marked-up_text.cpp:441
 msgid "The maximum text width is less than 1."
 msgstr "Tha an leud as motha dhe theacsa nas lugha na 1."
 
-#: src/preferences_display.cpp:133 src/preferences_display.cpp:187
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-"Cha b' urrainn dhuinn am modh bhideo atharrachadh. Faodaidh stiùiriche nan "
-"uinneag a bhith suidhichte air 16 biodan sa phiogsail ach an ruith an geama "
-"sa mhodh uinneige. Feumaidh an t-inneal-taisbeanaidh agad taic a chur ri "
-"1024x768x16 gus an geama a ruith làn-sgrìn."
-
-#: src/preferences_display.cpp:275
+#: src/preferences_display.cpp:131
 msgid "There are no alternative video modes available"
 msgstr "Chan eil modhan bhideo eile ri fhaighinn"
 
-#: src/preferences_display.cpp:302
+#: src/preferences_display.cpp:154
 msgid "Choose Resolution"
 msgstr "Atharraich an dùmhlachd-bhreacaidh"
 
@@ -6873,7 +6833,7 @@ msgstr ""
 msgid "The text contains invalid markup: "
 msgstr "Tha markup mì-dhligheach san teacsa seo: "
 
-#: src/wml_exception.cpp:64
+#: src/wml_exception.cpp:63
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -6881,13 +6841,13 @@ msgstr ""
 "Thachair mearachd air adhbharachadh le WML mì-dhligheach, ’s dòcha\n"
 "Is an teachdaireachd mearachd seo :"
 
-#: src/wml_exception.cpp:66
+#: src/wml_exception.cpp:65
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
 "Nuair a nì thu aithisg air a’ bhuga, feuch an cuir thu an teachdaireachd "
 "mearachd seo ris :"
 
-#: src/wml_exception.cpp:96
+#: src/wml_exception.cpp:95
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -6895,13 +6855,13 @@ msgstr ""
 "San earrann ‘[$section|]’ far a bheil ‘$primary_key| = $primary_value’, cha "
 "deach an iuchair riatanach ‘$key|’ a shuidheachadh."
 
-#: src/wml_exception.cpp:99
+#: src/wml_exception.cpp:98
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "San earrann ‘[$section|]’, cha deach an iuchair riatanach ‘$key|’ a "
 "shuidheachadh."
 
-#: src/wml_exception.cpp:115
+#: src/wml_exception.cpp:114
 msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
@@ -6909,7 +6869,7 @@ msgstr ""
 "Tha an iuchair ‘$key’ deprecated is thèid gach taic dha a thoirt air falbh "
 "leis an tionndadh $removal_version."
 
-#: src/wml_exception.cpp:134
+#: src/wml_exception.cpp:133
 msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
@@ -6917,6 +6877,55 @@ msgstr ""
 "Chaidh an iuchair ‘$deprecated_key’ ath-ainmeachadh gu ‘$key’. Thèid gach "
 "taic airson ‘$deprecated_key’ a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "Button"
+#~ msgstr "Putan"
+
+#~ msgid "Mouse"
+#~ msgstr "Luchag"
+
+#~ msgid "Joystick"
+#~ msgstr "Joystick"
+
+#~ msgid "Centered"
+#~ msgstr "Meadhanaichte"
+
+#~ msgid "Up"
+#~ msgstr "Suas"
+
+#~ msgid "Right"
+#~ msgstr "Gu deas"
+
+#~ msgid "Down"
+#~ msgstr "Sìos"
+
+#~ msgid "Left"
+#~ msgstr "Gu clì"
+
+#~ msgid "RightUp"
+#~ msgstr "Suas deas"
+
+#~ msgid "RightDown"
+#~ msgstr "Sìos deas"
+
+#~ msgid "LeftUp"
+#~ msgstr "Suas clì"
+
+#~ msgid "LeftDown"
+#~ msgstr "Sìos clì"
+
+#~ msgid "Hat"
+#~ msgstr "Ad"
+
+#~ msgid ""
+#~ "The video mode could not be changed. Your window manager must be set to "
+#~ "16 bits per pixel to run the game in windowed mode. Your display must "
+#~ "support 1024x768x16 to run the game full screen."
+#~ msgstr ""
+#~ "Cha b' urrainn dhuinn am modh bhideo atharrachadh. Faodaidh stiùiriche "
+#~ "nan uinneag a bhith suidhichte air 16 biodan sa phiogsail ach an ruith an "
+#~ "geama sa mhodh uinneige. Feumaidh an t-inneal-taisbeanaidh agad taic a "
+#~ "chur ri 1024x768x16 gus an geama a ruith làn-sgrìn."
 
 #~ msgid "Share map"
 #~ msgstr "Co-roinn mapa"

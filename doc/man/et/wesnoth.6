@@ -49,10 +49,11 @@ teistega.
 määrab bittide arvu pikseli kohta. N: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign \ [<id_campaign>]\fP
-läheb otse vastavasse sõjakäiku. Kui pole määratud, avatakse valikumenüü.
-\fBMärkus: selle võtme kasutamisel lisa kindlasti viimase argumendina
-andmekataloogi asukoht\fP , vastasel juhul käsitleb mäng sõjakäigu või
-stsenaariumi nime kataloogina.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<difficulty>]\fP
 Valitud sõjakäigu raskusaste (1 kuni maksimaalne). Kui see pole määratud,
@@ -283,7 +284,7 @@ Külasta ametlikku kodulehte: http://www.wesnoth.org/
 .
 .SH AUTORIÕIGUS
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 See on vaba tarkvara \- see tarkvara kasutab Vaba Tarkvara Sihtasutuse
 koostatud GPL litsentsi versiooni 2. Garantiid EI OLE, isegi mitte

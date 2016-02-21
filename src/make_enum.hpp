@@ -12,8 +12,72 @@
    See the COPYING file for more details.
 */
 
+/**
+ * @file
+ * Defines the MAKE_ENUM macro.
+ *
+ * Currently this comes in 1-argument and 2-argument versions.
+ *
+ * <b>Example usage:</b>
+ *
+ * @code
+ * #include "make_enum.hpp"
+ *
+ * MAKE_ENUM(enumname,
+ *     (val1, "name1")
+ *     (val2, "name2")
+ *     (val3, "name3")
+ * )
+ * @endcode
+ *
+ * <b>What it does:</b>
+ *
+ * Generates a struct @a enumname which holds an enum and provides functions to
+ * convert to and from string, as well as a constant @a enumname::count, which
+ * is set to the number of possible enum values defined.
+ *
+ * @code
+ * // Throws bad_enum_cast if the string value is not recognized.
+ * enumname enumname::string_to_enum(const std::string&);
+ *
+ * // Returns the specified default instead of throwing if the string value is
+ * // not recognized. Never throws.
+ * enumname enumname::string_to_enum(const std::string&, enumname);
+ *
+ * // Never throws.
+ * std::string enumname::enum_to_string(enumname);
+ *
+ * // Count of defined enum values.
+ * const size_t enumname::count;
+ * @endcode
+ *
+ * It also defines the following stream operations:
+ *
+ * @code
+ * // Never throws. Fails an assertion check if the value passed is not defined
+ * // by the enumeration.
+ * std::ostream& operator<<(std::ostream&, enumname);
+ *
+ * // Never throws. Sets the stream's fail bit if the input is not recognized.
+ * std::istream& operator>>(std::istream&, enumname&);
+ * @endcode
+ *
+ * In case of a bad string -> enum conversion from istream input, the istream
+ * will have its fail bit set. This means that lexical_casts will throw a
+ * bad_lexical_cast in the similar scenario; however, note that
+ * bad_lexical_cast does not provide any details about the error.
+ *
+ * It is recommended to use MAKE_ENUM types with the built-in versions of
+ * lexical_cast or lexical_cast_default provided by Wesnoth (see util.hpp).
+ * However, if you do <b>not</b> want twml_exception to be thrown under any
+ * circumstances, use the string_to_enumname functions instead.
+ *
+ * See src/tests/test_make_enum.cpp for example code.
+ */
+
 #ifndef MAKE_ENUM_HPP
 #define MAKE_ENUM_HPP
+
 #include <cassert>
 #include <exception>
 #include <string>
@@ -24,67 +88,6 @@
 
 #include <istream>
 #include <ostream>
-
-// Defines the MAKE_ENUM macro,
-// Currently this has 1 argument and 2 argument variety.
-
-/**
- *
- * Example Usage:
- *
- */
-
-/*
-
-#include "make_enum.hpp"
-
-MAKE_ENUM(enumname,
-	(val1, "name1")
-	(val2, "name2")
-	(val3, "name3")
-)
-*/
-
-/**
- *
- * What it does:
- *
- * generates a struct enumname which holds an enum and gives function to convert to and from string
- * const size_t enumname::count, which counts the number of possible values,
- *
- *
- * enumname enumname::string_to_enum(std::string);                           //throws bad_enum_cast
- * enumname enumname::string_to_enum(std::string, enumname default);    //no throw
- * std::string enumname::enum_to_string(enumname);                      //no throw
- *
- * The stream ops define
- * std::ostream & operator<< (std::ostream &, enumname)    //no throw. asserts false if enum has an illegal value.
- * std::istream & operator>> (std::istream &, enumname &)  //throws twml_exception including line number and arguments, IF game_config::debug is true.
- * 								//doesn't throw except in that case, and correctly sets istream state to failing always.
- *								//this is generally a recoverable exception that only shows a temporary dialog box,
- *								//and is caught at many places in the gui code. you may safely catch it and ignore it,
- *								//and then proceeding, or use a wrapper like lexical_cast_default which will assign the
- *								//default value and proceed after the dialog passes.
- *
- * In case of a bad string -> enum conversion from istream output,
- * the istream will have its fail bit set.
- * This means that lexical_casts will throw a bad_lexical_cast,
- * in the similar scenario. (but, that exception won't have any
- * details about the error.)
- *
- * It is recommended to use this type either the built-in wesnoth
- * lexical_cast or lexical_cast default.
- *
- * HOWEVER, if you DON'T want twml_exceptions to be thrown in any
- * circumstance, then use the string_to_enumname functions instead.
- *
- * To get lexical_cast, you must separately include util.hpp
- *
- *
- *
- * For example code, see src/tests/test_make_enum.cpp
- *
- **/
 
 class bad_enum_cast : public std::exception
 {
@@ -161,6 +164,9 @@ struct NAME : public enum_tag \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \
 		throw bad_enum_cast( #NAME , str); \
 	} \
+	/** Sets *this to the value given in str, does nothing if str was not valid enum value. */ \
+	/** @returns true iff @a str was a valid enum value. */ \
+	/** @param TStr a std::string or a string_span (from the wesnothd code). */ \
 	template<typename TStr> \
 	bool parse (const TStr& str) \
 	{ \

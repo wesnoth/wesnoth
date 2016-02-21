@@ -202,7 +202,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			if(i->type == unit_abilities::MUL) {
 				left_strings.push_back((*i->ability)["name"]);
 				str.str("");
-				str << "* " << (i->value / 100);
+				str << "× " << (i->value / 100);
 				if(i->value % 100) {
 					str << "." << ((i->value % 100) / 10);
 					if(i->value % 10) str << (i->value % 10);
@@ -242,7 +242,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			str << string_table["type_" + weapon->type()];
 			left_strings.push_back(str.str());
 			str.str("");
-			str << "* " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
+			str << "× " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
 			right_strings.push_back(str.str());
 		}
 
@@ -548,7 +548,7 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);
 
-		gui::show_dialog(*resources::screen, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
+		gui::show_dialog(resources::screen->video(), NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
 	}
 
 	return gui::CONTINUE_DIALOG;

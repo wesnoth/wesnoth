@@ -75,7 +75,7 @@ editor_action* mouse_action_item::click_left(editor_display& disp, int x, int y)
 	}
 
 	const overlay& item = item_palette_.selected_fg_item();
-	disp.add_overlay(start_hex_, item.image, item.halo, "", true);
+	disp.add_overlay(start_hex_, item.image, item.halo, "", "", true);
 
 
 

@@ -306,6 +306,8 @@ void play_controller::init(CVideo& video, const config& level)
 	init_managers();
 	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
+	gamestate().gamedata_.set_phase(game_data::PRELOAD);
+	gamestate().lua_kernel_->initialize(level);
 
 	plugins_context_.reset(new plugins_context("Game"));
 	plugins_context_->set_callback("save_game", boost::bind(&play_controller::save_game_auto, this, boost::bind(get_str, _1, "filename" )), true);
@@ -345,6 +347,8 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	gui_->reset_reports(*gamestate().reports_);
 	gui_->change_display_context(&gamestate().board_);
 	saved_game_.get_replay().set_pos(replay_pos);
+	gamestate().gamedata_.set_phase(game_data::PRELOAD);
+	gamestate().lua_kernel_->initialize(level);
 }
 
 void play_controller::init_managers()
@@ -358,11 +362,9 @@ void play_controller::init_managers()
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
 }
 
-void play_controller::fire_preload(const config& level)
+void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
-	gamestate().gamedata_.set_phase(game_data::PRELOAD);
-	gamestate().lua_kernel_->initialize(level);
 	gamestate().gamedata_.get_variable("turn_number") = int(turn());
 	pump().fire("preload");
 }
@@ -373,6 +375,13 @@ void play_controller::fire_prestart()
 	// as those may cause the display to be refreshed.
 	update_locker lock_display(gui_->video());
 	gamestate().gamedata_.set_phase(game_data::PRESTART);
+
+	// Fire these right before prestart events, to catch only the units sides
+	// have started with.
+	BOOST_FOREACH(const unit& u, gamestate().board_.units()) {
+		pump().fire("unit placed", map_location(u.get_location()));
+	}
+
 	pump().fire("prestart");
 	// prestart event may modify start turn with WML, reflect any changes.
 	gamestate().gamedata_.get_variable("turn_number") = int(turn());
@@ -868,7 +877,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(*gui_, game_config_, saved_game_);
+	savegame::loadgame load(gui_->video(), game_config_, saved_game_);
 	load.load_game();
 }
 
@@ -965,7 +974,7 @@ void play_controller::check_victory()
 		return;
 	}
 
-	if (non_interactive()) {
+	if (gui_->video().non_interactive()) {
 		LOG_AIT << "winner: ";
 		BOOST_FOREACH(unsigned l, not_defeated) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
@@ -986,7 +995,7 @@ void play_controller::check_victory()
 
 void play_controller::process_oos(const std::string& msg) const
 {
-	if (non_interactive()) {
+	if (gui_->video().non_interactive()) {
 		throw game::game_error(msg);
 	}
 	if (game_config::ignore_replay_errors) return;
@@ -1077,9 +1086,9 @@ void play_controller::play_slice_catch()
 	}
 }
 
-void play_controller::start_game(const config& level)
+void play_controller::start_game()
 {
-	fire_preload(level);
+	fire_preload();
 
 	if(!gamestate().start_event_fired_)
 	{
@@ -1181,7 +1190,7 @@ void play_controller::play_turn()
 
 	LOG_NG << "turn: " << turn() << "\n";
 
-	if(non_interactive()) {
+	if(gui_->video().non_interactive()) {
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
@@ -1206,7 +1215,7 @@ void play_controller::play_turn()
 		if(is_regular_game_end()) {
 			return;
 		}
-		if(non_interactive()) {
+		if(gui_->video().non_interactive()) {
 			LOG_AIT << " Player " << current_side() << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
@@ -1236,7 +1245,7 @@ void play_controller::check_time_over()
 			return;
 		}
 
-		if(non_interactive()) {
+		if(gui_->video().non_interactive()) {
 			LOG_AIT << "time over (draw)\n";
 			ai_testing::log_draw();
 		}

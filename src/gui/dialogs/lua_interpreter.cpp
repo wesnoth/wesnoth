@@ -133,6 +133,7 @@ public:
 		DBG_LUA << "constructing a tlua_interpreter::model\n";
 		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.\n";
 		log_ << lk.get_log().str() << std::flush;
+		//FIXME: we should escapte th input that we get from L_ with escape_text
 		L_.set_external_log(&log_); //register our log to get commands and output from the lua interpreter
 		//DBG_LUA << "recieved:\n" << log_.str() << "\n.\n";
 

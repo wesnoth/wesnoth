@@ -979,7 +979,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 void editor_controller::show_help()
 {
-	help::show_help(*gui_, "..editor");
+	help::show_help(gui_->video(), "..editor");
 }
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
@@ -1072,7 +1072,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	preferences::show_preferences_dialog(*gui_, game_config_);
+	preferences::show_preferences_dialog(gui_->video(), game_config_);
 
 	gui_->redraw_everything();
 }
@@ -1089,9 +1089,9 @@ void editor_controller::unit_description()
 	const unit_map & units = context_manager_->get_map_context().get_units();
 	const unit_map::const_unit_iterator un = units.find(loc);
 	if(un != units.end()) {
-		help::show_unit_help(*gui_, un->type_id(), un->type().show_variations_in_help(), false);
+		help::show_unit_help(gui_->video(), un->type_id(), un->type().show_variations_in_help(), false);
 	} else {
-		help::show_help(*gui_, "..units");
+		help::show_help(gui_->video(), "..units");
 	}
 }
 
@@ -1202,9 +1202,9 @@ void editor_controller::refresh_image_cache()
 	context_manager_->refresh_all();
 }
 
-void editor_controller::display_redraw_callback(display& disp)
+void editor_controller::display_redraw_callback(display&)
 {
-	set_button_state(disp);
+	set_button_state();
 	toolkit_->adjust_size();
 	context_manager_->get_map_context().get_labels().recalculate_labels();
 }
@@ -1279,7 +1279,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 
 	return false;
 }
@@ -1294,14 +1294,14 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_left(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change()) {
 		if (gui_->set_zoom(s->value(), true)) {
 			context_manager_->get_map_context().get_labels().recalculate_labels();
 			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
-			set_button_state(*gui_);
+			set_button_state();
 		}
 	}
 	context_manager_->refresh_after_action();
@@ -1317,7 +1317,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	return false;
 }
 
@@ -1331,7 +1331,7 @@ void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_right(*gui_, x, y);
 	perform_delete(a);
-	if (a) set_button_state(*gui_);
+	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
 }
@@ -1343,7 +1343,7 @@ void editor_controller::terrain_description()
 		return;
 
 	const terrain_type& type = context_manager_->get_map().get_terrain_info(loc);
-	help::show_terrain_description(type);
+	help::show_terrain_description(gui().video(), type);
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)

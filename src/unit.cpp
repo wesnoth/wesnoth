@@ -52,6 +52,9 @@
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/function_output_iterator.hpp>
+#include <boost/range/begin.hpp>
+#include <boost/range/end.hpp>
+
 #ifdef _MSC_VER
 #pragma warning (push)
 #pragma warning (disable: 4510 4610)
@@ -101,6 +104,57 @@ namespace {
 	static std::vector<const unit *> units_with_cache;
 
 	const std::string leader_crown_path = "misc/leader-crown.png";
+	static std::string internalized_attrs[] = { "type", "id", "name",
+		"gender", "random_gender", "variation", "role", "ai_special",
+		"side", "underlying_id", "overlays", "facing", "race",
+		"level", "recall_cost", "undead_variation", "max_attacks",
+		"attacks_left", "alpha", "zoc", "flying", "cost",
+		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
+		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
+		"experience", "resting", "unrenamable", "alignment",
+		"canrecruit", "extra_recruit", "x", "y", "placement",
+		"parent_type", "description", "usage", "halo", "ellipse",
+		"random_taits", "upkeep", "random_traits", "generate_name",
+		"profile", "small_profile",
+		// Useless attributes created when saving units to WML:
+		"flag_rgb", "language_name", "image", "image_icon"
+	};
+	//Sort the array to make set_difference below work.
+	struct t_internalized_attrs_sorter {
+		t_internalized_attrs_sorter()
+		{
+			std::sort(boost::begin(internalized_attrs), boost::end(internalized_attrs));
+		}
+	} internalized_attrs_sorter;
+
+	void warn_unknown_attribute(const config::const_attr_itors& cfg)
+	{
+		config::const_attribute_iterator cur = cfg.first;
+		config::const_attribute_iterator end = cfg.second;
+		const std::string* cur_known = boost::begin(internalized_attrs);
+		const std::string* end_known = boost::end(internalized_attrs);
+		while(cur_known != end_known) {
+			if(cur == end) {
+				return;
+			}
+			int comp = cur->first.compare(*cur_known);
+			if(comp < 0) {
+				WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
+				++cur;
+			}
+			else if (comp == 0) {
+				++cur;
+				++cur_known;
+			}
+			else {
+				++cur_known;
+			}
+		}
+		while(cur != end) {
+			WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
+			++cur;		
+		}
+	}
 }
 
 /**
@@ -180,11 +234,16 @@ const std::string& unit::leader_crown()
 {
 	return leader_crown_path;
 }
-
+namespace {
+	template<typename T>
+	T* copy_or_null(const boost::scoped_ptr<T>& ptr)
+	{
+		return ptr ? new T(*ptr) : NULL;
+	}
+}
 // Copy constructor
 unit::unit(const unit& o)
 	: ref_count_(0)
-	, cfg_(o.cfg_)
 	, loc_(o.loc_)
 	, advances_to_(o.advances_to_)
 	, type_(o.type_)
@@ -245,13 +304,34 @@ unit::unit(const unit& o)
 	, hp_bar_scaling_(o.hp_bar_scaling_)
 	, xp_bar_scaling_(o.xp_bar_scaling_)
 	, modifications_(o.modifications_)
+	, abilities_(o.abilities_)
+	, advancements_(o.advancements_)
+	, description_(o.description_)
+	, usage_(copy_or_null(o.usage_))
+	, halo_(copy_or_null(o.halo_))
+	, ellipse_(copy_or_null(o.ellipse_))
+	, random_traits_(o.random_traits_)
+	, generate_name_(o.generate_name_)
+	, upkeep_(o.upkeep_)
+	, profile_(o.profile_)
+	, small_profile_(o.small_profile_)
 	, invisibility_cache_()
 {
 }
 
+struct ptr_vector_pushback
+{
+	ptr_vector_pushback(boost::ptr_vector<config>&  vec) : vec_(&vec) {}
+	void operator()(const config& cfg)
+	{
+		vec_->push_back(new config(cfg));
+	}
+	//Dont use reference to be copyable.
+	boost::ptr_vector<config>* vec_;
+};
+
 unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_manager* id_manager)
 	: ref_count_(0)
-	, cfg_()
 	, loc_(cfg["x"] - 1, cfg["y"] - 1)
 	, advances_to_()
 	, type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"]))
@@ -312,6 +392,15 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	, hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"])
 	, xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"])
 	, modifications_()
+	, abilities_()
+	, advancements_()
+	, description_()
+	, usage_()
+	, halo_()
+	, ellipse_()
+	, random_traits_(true)
+	, generate_name_(true)
+	, upkeep_()
 	, invisibility_cache_()
 {
 	side_ = cfg["side"];
@@ -354,15 +443,16 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		resources::game_events->add_events(events_.child_range("event"));
 	}
 
+	random_traits_ = cfg["random_traits"].to_bool(true);
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
 
 	if (const config &mods = cfg.child("modifications")) {
 		modifications_ = mods;
 	}
-
+	generate_name_ = cfg["generate_name"].to_bool(true);
 	// Apply the unit type's data to this unit.
-	advance_to(cfg, *type_, use_traits);
+	advance_to(*type_, use_traits);
 
 	if (const config::attribute_value *v = cfg.get("race")) {
 		if (const unit_race *r = unit_types.find_race(*v)) {
@@ -387,23 +477,26 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 		emit_zoc_ = v->to_bool(level_ > 0);
 	}
 	if (const config::attribute_value *v = cfg.get("description")) {
-		cfg_["description"] = *v;
+		description_ = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("cost")) {
 		unit_value_ = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("ellipse")) {
-		cfg_["ellipse"] = *v;
+		set_image_ellipse(*v);
 	}
 	if (const config::attribute_value *v = cfg.get("halo")) {
-		anim_comp_->clear_haloes();
-		cfg_["halo"] = *v;
+		set_image_halo(*v);
 	}
+	if (const config::attribute_value *v = cfg.get("usage")) {
+		set_usage(*v);
+	}
+
 	if (const config::attribute_value *v = cfg.get("profile")) {
 		std::string big = *v, small = cfg["small_profile"];
 		adjust_profile(small, big, "");
-		cfg_["profile"] = big;
-		cfg_["small_profile"] = small;
+		profile_ = big;
+		small_profile_ = small;
 	}
 	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));
 	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
@@ -435,25 +528,19 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	//If cfg specifies [advancement]s, replace this [advancement]s with them.
 	if(cfg.has_child("advancement"))
 	{
-		cfg_.clear_children("advancement");
-		boost::copy( cfg.child_range("advancement")
-			, boost::make_function_output_iterator(
-				boost::bind(
-					  /* The static_cast is required to select the proper overload in C++11 mode. */
-					  static_cast<config&(config::*)(const std::string &, const config&)>(&config::add_child)
-					, boost::ref(cfg_) /*thisptr*/
-					, "advancement"
-					, _1 )) );
+		this->advancements_.clear();
+		boost::copy( cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
 	}
 
 	//don't use the unit_type's abilities if this config has its own defined
+	//Why do we allow multiple [abilities] tags?
 	cfg_range = cfg.child_range("abilities");
 	if(cfg_range.first != cfg_range.second) {
-		cfg_.clear_children("abilities");
-		config &target = cfg_.add_child("abilities");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
+		this->abilities_.clear();
+		BOOST_FOREACH(const config& abilities, cfg_range)
+		{
+			this->abilities_.append(abilities);
+		}
 	}
 
 	// Adjust the unit's defense, movement, vision, jamming, resistances, and
@@ -470,11 +557,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	}
 	if(cfg["ai_special"] == "guardian") {
 		set_state(STATE_GUARDIAN, true);
-	}
-
-	// Remove animations from private cfg, they're not needed there now
-	BOOST_FOREACH(const std::string& tag_name, unit_animation::all_tag_names()) {
-		cfg_.clear_children(tag_name);
 	}
 
 	if (const config::attribute_value *v = cfg.get("hitpoints")) {
@@ -509,47 +591,12 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 
 	generate_name();
 
-	// Make the default upkeep "full"
-	if(cfg_["upkeep"].empty()) {
-		cfg_["upkeep"] = "full";
-	}
+	parse_upkeep(cfg["upkeep"]);
 
 	set_recruits(utils::split(cfg["extra_recruit"]));
 
 	game_config::add_color_info(cfg);
-
-	config input_cfg;
-	input_cfg.merge_attributes(cfg);
-
-	static char const *internalized_attrs[] = { "type", "id", "name",
-		"gender", "random_gender", "variation", "role", "ai_special",
-		"side", "underlying_id", "overlays", "facing", "race",
-		"level", "recall_cost", "undead_variation", "max_attacks",
-		"attacks_left", "alpha", "zoc", "flying", "cost",
-		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
-		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
-		"experience", "resting", "unrenamable", "alignment",
-		"canrecruit", "extra_recruit", "x", "y", "placement",
-		"parent_type",
-		// Useless attributes created when saving units to WML:
-		"flag_rgb", "language_name" };
-	BOOST_FOREACH(const char *attr, internalized_attrs) {
-		input_cfg.remove_attribute(attr);
-		cfg_.remove_attribute(attr);
-	}
-
-	static char const *raw_attrs[] = { "description", "halo",
-		"profile", "small_profile", "upkeep", "usage", "ellipse",
-		"image", "image_icon", "random_traits", "generate_name" };
-	BOOST_FOREACH(const char *attr, raw_attrs) {
-		input_cfg.remove_attribute(attr);
-	}
-
-	BOOST_FOREACH(const config::attribute &attr, input_cfg.attribute_range()) {
-		if (attr.first == "do_not_list") continue;
-		WRN_UT << "Unknown attribute '" << attr.first << "' discarded." << std::endl;
-	}
-
+	warn_unknown_attribute(cfg.attribute_range());
 	//debug unit animations for units as they appear in game
 	/*for(std::vector<unit_animation>::const_iterator i = anim_comp_->animations_.begin(); i != anim_comp_->animations_.end(); ++i) {
 		std::cout << (*i).debug();
@@ -566,10 +613,8 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit::unit(const unit_type &u_type, int side, bool real_unit,
-	unit_race::GENDER gender)
+unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER gender)
 	: ref_count_(0)
-	, cfg_()
 	, loc_()
 	, advances_to_()
 	, type_(&u_type)
@@ -629,9 +674,18 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	, getsHit_(0)
 	, hidden_(false)
 	, modifications_()
+	, abilities_()
+	, advancements_()
+	, description_()
+	, usage_()
+	, halo_()
+	, ellipse_()
+	, random_traits_(true)
+	, generate_name_(true)
+	, upkeep_()
 	, invisibility_cache_()
 {
-	cfg_["upkeep"]="full";
+	upkeep_ = upkeep_full();
 
 	// Apply the unit type's data to this unit.
 	advance_to(u_type, real_unit);
@@ -672,7 +726,6 @@ void unit::swap(unit & o)
 	using std::swap;
 
 	// Don't swap reference count, or it will be incorrect...
-	swap(cfg_, o.cfg_);
 	swap(loc_, o.loc_);
 	swap(advances_to_, o.advances_to_);
 	swap(type_, o.type_);
@@ -746,10 +799,11 @@ unit& unit::operator=(unit other)
 
 void unit::generate_name()
 {
-	if (!name_.empty() || !cfg_["generate_name"].to_bool(true)) return;
-
+	if (!name_.empty() || !generate_name_) {
+		return;
+	}
 	name_ = race_->generate_name(gender_);
-	cfg_["generate_name"] = false;
+	generate_name_ = false;
 }
 
 
@@ -819,7 +873,7 @@ void unit::generate_traits(bool musthaveonly)
 
 	// Once random traits are added, don't do it again.
 	// Such as when restoring a saved character.
-	cfg_["random_traits"] = false;
+	random_traits_ = false;
 }
 
 std::vector<std::string> unit::get_traits_list() const
@@ -843,7 +897,7 @@ std::vector<std::string> unit::get_traits_list() const
  * Current hit point total is left unchanged unless it would violate max HP.
  * Assumes gender_ and variation_ are set to their correct values.
  */
-void unit::advance_to(const config &old_cfg, const unit_type &u_type,
+void unit::advance_to(const unit_type &u_type,
 	bool use_traits)
 {
 	// For reference, the type before this advancement.
@@ -860,35 +914,27 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	// Clear modification-related caches
 	modification_descriptions_.clear();
 
-	// Clear the stored config and replace it with the one from the unit type,
-	// except for a few attributes.
-	config new_cfg;
-	static char const *persistent_attrs[] = { "upkeep", "ellipse",
-		"image", "image_icon", "usage", "random_traits", "generate_name" };
-	BOOST_FOREACH(const char *attr, persistent_attrs) {
-		if (const config::attribute_value *v = old_cfg.get(attr)) {
-			new_cfg[attr] = *v;
-		}
-	}
+	// build unit type ready to create units. Not sure if needed.
+	new_type.get_cfg_for_units();
 
-	// Inherit from the new unit type.
-	new_cfg.merge_with(new_type.get_cfg_for_units());
-
-	// If unit has specific profile, remember it and keep it after advancing
-	std::string profile = old_cfg["profile"].str();
-	if ( !profile.empty()  &&  profile != old_type.big_profile() ) {
-		new_cfg["profile"] = profile;
-	} else {
-		new_cfg["profile"] = new_type.big_profile();
+	if(!new_type.usage().empty()) {
+		 set_usage(new_type.usage());
 	}
-	profile = old_cfg["small_profile"].str();
-	if ( !profile.empty()  &&  profile != old_type.small_profile() ) {
-		new_cfg["small_profile"] = profile;
-	} else {
-		new_cfg["small_profile"] = new_type.small_profile();
+	set_image_halo(new_type.halo());
+	set_image_ellipse(new_type.ellipse());
+	generate_name_ &= new_type.generate_name();
+	abilities_ = new_type.abilities_cfg();
+	advancements_.clear();
+	BOOST_FOREACH(const config& advancement, new_type.advancements()) {
+		advancements_.push_back(new config(advancement));
 	}
-
-	cfg_.swap(new_cfg);
+ 	// If unit has specific profile, remember it and keep it after advancing
+	if(small_profile_.empty() || small_profile_ == old_type.small_profile()) {
+		small_profile_ = new_type.small_profile();
+	}
+	if(profile_.empty() || profile_ == old_type.big_profile()) {
+		profile_ = new_type.big_profile();
+	}
 	// NOTE: There should be no need to access old_cfg (or new_cfg) after this
 	//       line. Particularly since the swap might have affected old_cfg.
 
@@ -897,7 +943,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	race_ = new_type.race();
 	type_ = &new_type;
 	type_name_ = new_type.type_name();
-	cfg_["description"] = new_type.unit_description();
+	description_ = new_type.unit_description();
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
@@ -927,7 +973,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	anim_comp_->reset_after_advance(&new_type);
 
-	if (cfg_["random_traits"].to_bool(true)) {
+	if (random_traits_) {
 		generate_traits(!use_traits);
 	} else {
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
@@ -955,26 +1001,22 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	// In case the unit carries EventWML, apply it now
 	if (resources::game_events) {
-		resources::game_events->add_events(cfg_.child_range("event"), new_type.id());
+		resources::game_events->add_events(new_type.events(), new_type.id());
 	}
-
-	cfg_.clear_children("event");
 }
 
 std::string unit::big_profile() const
 {
-	const std::string &prof = cfg_["profile"];
-	if (!prof.empty() && prof != "unit_image") {
-		return prof;
+	if (!profile_.empty() && profile_ != "unit_image") {
+		return profile_;
 	}
 	return absolute_image();
 }
 
 std::string unit::small_profile() const
 {
-	const std::string &prof = cfg_["small_profile"];
-	if (!prof.empty() && prof != "unit_image") {
-		return prof;
+	if (!small_profile_.empty() && small_profile_ != "unit_image") {
+		return small_profile_;
 	}
 	return absolute_image();
 }
@@ -1310,11 +1352,9 @@ void unit::set_state(const std::string &state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	if (const config &abil = cfg_.child("abilities"))
-	{
-		BOOST_FOREACH(const config::any_child &ab, abil.all_children_range()) {
-			if (ab.cfg["id"] == ability)
-				return true;
+	BOOST_FOREACH(const config::any_child &ab, this->abilities_.all_children_range()) {
+		if (ab.cfg["id"] == ability) {
+			return true;
 		}
 	}
 	return false;
@@ -1322,31 +1362,41 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 void unit::remove_ability_by_id(const std::string &ability)
 {
-	if (config &abil = cfg_.child("abilities"))
-	{
-		config::all_children_iterator i = abil.ordered_begin();
-		while (i != abil.ordered_end()) {
-			if (i->cfg["id"] == ability) {
-				i = abil.erase(i);
-			} else {
-				++i;
-			}
+	config::all_children_iterator i = this->abilities_.ordered_begin();
+	while (i != this->abilities_.ordered_end()) {
+		if (i->cfg["id"] == ability) {
+			i = this->abilities_.erase(i);
+		} else {
+			++i;
 		}
 	}
 }
 
 void unit::write(config& cfg) const
 {
-	cfg.append(cfg_);
 	movement_type_.write(cfg);
-
-	if ( cfg["description"] == type().unit_description() ) {
-		cfg.remove_attribute("description");
+	cfg["small_profile"] = small_profile_;
+	cfg["profile"] = profile_;
+	if ( description_ != type().unit_description() ) {
+		cfg["description"] = description_;
 	}
-
+	if(halo_.get()) {
+		cfg["halo"] = *halo_;
+	}
+	if(ellipse_.get()) {
+		cfg["ellipse"] = *ellipse_;
+	}
+	if(usage_.get()) {
+		cfg["usage"] = *usage_;
+	}
+	write_upkeep(cfg["upkeep"]);
 	cfg["hitpoints"] = hit_points_;
 	cfg["max_hitpoints"] = max_hit_points_;
-
+	
+	cfg["image_icon"] = type().icon();
+	cfg["image"] = type().image();
+	cfg["random_traits"] = random_traits_;
+	cfg["generate_name"] = generate_name_;
 	cfg["experience"] = experience_;
 	cfg["max_experience"] = max_experience_;
 	cfg["recall_cost"] = recall_cost_;
@@ -1409,7 +1459,7 @@ void unit::write(config& cfg) const
 	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
 	cfg["level"] = level_;
-	cfg["alignment"] = lexical_cast<std::string> (alignment_);
+	cfg["alignment"] = alignment_.to_string();
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
 	cfg["alpha"] = str_cast(alpha_);
@@ -1423,7 +1473,14 @@ void unit::write(config& cfg) const
 	}
 	cfg["cost"] = unit_value_;
 	cfg.clear_children("modifications");
-	cfg.add_child("modifications",modifications_);
+	cfg.add_child("modifications", modifications_);
+	cfg.clear_children("abilities");
+	cfg.add_child("abilities", abilities_);
+	cfg.clear_children("advancement");
+	BOOST_FOREACH(const config& advancement, this->advancements_)
+	{
+		cfg.add_child("advancement", advancement);
+	}
 
 }
 
@@ -1440,21 +1497,20 @@ int unit::upkeep() const
 	if(can_recruit()) {
 		return 0;
 	}
-	if(cfg_["upkeep"] == "full") {
+	else if(boost::get<upkeep_full>(&upkeep_) != NULL) {
 		return level();
 	}
-	if(cfg_["upkeep"] == "loyal") {
+	else if(boost::get<upkeep_loyal>(&upkeep_) != NULL) {
 		return 0;
 	}
-	if(cfg_["upkeep"] == "free") {
-		return 0;
+	else {
+		return boost::get<int>(upkeep_);
 	}
-	return cfg_["upkeep"];
 }
 
 bool unit::loyal() const
 {
-	return cfg_["upkeep"] == "loyal" || cfg_["upkeep"] == "free";
+	return boost::get<upkeep_loyal>(&upkeep_) != NULL;
 }
 
 int unit::defense_modifier(const t_translation::t_terrain & terrain) const
@@ -1624,10 +1680,11 @@ std::vector<config> unit::get_modification_advances() const
 
 void unit::set_advancements(std::vector<config> advancements)
 {
-	cfg_.clear_children("advancement");
+	this->advancements_.clear();
 	BOOST_FOREACH(config& advancement, advancements)
 	{
-		cfg_.add_child("advancement").swap(advancement);
+		this->advancements_.push_back(new config());
+		this->advancements_.back().swap(advancement);
 	}
 }
 
@@ -1694,11 +1751,12 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					if (const config::attribute_value *v = effect.get("portrait")) {
 						std::string big = *v, small = effect["small_portrait"];
 						adjust_profile(small, big, "");
-						cfg_["profile"] = big;
-						cfg_["small_profile"] = small;
+						
+						profile_ = big;
+						small_profile_ = small;
 					}
 					if (const config::attribute_value *v = effect.get("description"))
-						cfg_["description"] = *v;
+						description_ = *v;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
 					attacks_.push_back(attack_type(effect));
@@ -1870,7 +1928,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					}
 
 				} else if(apply_to == "loyal") {
-					cfg_["upkeep"] = "loyal";
+					upkeep_ = upkeep_loyal();;
 				} else if(apply_to == "status") {
 					const std::string &add = effect["add"];
 					const std::string &remove = effect["remove"];
@@ -1911,7 +1969,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						emit_zoc_ = v->to_bool();
 					}
 				} else if (apply_to == "new_ability") {
-					config &ab = cfg_.child_or_add("abilities");
 					if (const config &ab_effect = effect.child("abilities")) {
 						config to_append;
 						BOOST_FOREACH(const config::any_child &ab, ab_effect.all_children_range()) {
@@ -1919,7 +1976,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 								to_append.add_child(ab.key, ab.cfg);
 							}
 						}
-						ab.append(to_append);
+						this->abilities_.append(to_append);
 					}
 				} else if (apply_to == "remove_ability") {
 					if (const config &ab_effect = effect.child("abilities")) {
@@ -1948,12 +2005,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				} else if (apply_to == "new_animation") {
 					anim_comp_->apply_new_animation_effect(effect);
 				} else if (apply_to == "ellipse") {
-					cfg_["ellipse"] = effect["ellipse"];
-
+					set_image_ellipse(effect["ellipse"]);
 				} else if (apply_to == "halo") {
-					anim_comp_->clear_haloes();
-					cfg_["halo"] = effect["halo"];
-
+					set_image_halo(effect["halo"]);
 				} else if (apply_to == "overlay") {
 					const std::string &add = effect["add"];
 					const std::string &replace = effect["replace"];
@@ -1983,10 +2037,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 					if (effect.has_child("advancement")) {
 						if (replace) {
-							cfg_.clear_children("advancement");
+							advancements_.clear();
 						}
 						config temp = effect;
-						cfg_.splice_children(temp, "advancement");
+						boost::copy( effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
 					}
 				} else if (apply_to == "remove_advancement") {
 					const std::string &types = effect["types"];
@@ -2003,16 +2057,11 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 					temp_advances = utils::parenthetical_split(amlas, ',');
 					std::vector<size_t> remove_indices;
-					size_t remove_index = 0;
-					BOOST_FOREACH(const config &adv, modification_advancements()) {
-						iter = std::find(temp_advances.begin(), temp_advances.end(), adv["id"]);
-						if (iter != temp_advances.end()) {
-							remove_indices.push_back(remove_index);
+
+					for(int i = advancements_.size() - 1; i >= 0; i--) {
+						if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
+							advancements_.erase(advancements_.begin() + i);
 						}
-						remove_index++;
-					}
-					for (size_t i = remove_indices.size(); i > 0; i--) {
-						cfg_.remove_child("advancement", i - 1);
 					}
 				} else if (apply_to == "alignment") {
 					unit_type::ALIGNMENT new_align;
@@ -2194,11 +2243,12 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 }
 
 std::string unit::absolute_image() const {
-	return cfg_["image_icon"].empty() ? cfg_["image"] : cfg_["image_icon"];
+	
+	return type().icon().empty() ? type().image() : type().icon();
 }
 
 std::string unit::default_anim_image() const {
-	return cfg_["image"].empty() ? cfg_["image_icon"] : cfg_["image"];
+	return type().image().empty() ? type().icon() : type().image();
 }
 
 void unit::apply_modifications()
@@ -2395,6 +2445,45 @@ void unit::set_hidden(bool state) const {
 	if(!state) return;
 	// We need to get rid of haloes immediately to avoid display glitches
 	anim_comp_->clear_haloes();
+}
+
+void unit::set_image_halo(const std::string& halo)
+{
+	anim_comp_->clear_haloes();
+	halo_.reset(new std::string(halo));
+}
+
+
+
+void unit::parse_upkeep(const config::attribute_value& upkeep)
+{
+	//TODO: create abetter way to check whether it is actually an int.	
+	int upkeep_int = upkeep.to_int(-99);
+	if(upkeep_int != -99) {
+		upkeep_ = upkeep_int;
+	}
+	else if(upkeep == "loyal" || upkeep == "free") {
+		upkeep_ = upkeep_loyal();
+	}
+	else if(upkeep == "full" || upkeep.empty() ) {
+		upkeep_ = upkeep_full();
+	}
+	else {
+		WRN_UT << "Fund invalid upkeep=\"" << upkeep <<  "\" in a unit\n";
+		upkeep_ = upkeep_full();
+	}
+}
+void unit::write_upkeep(config::attribute_value& upkeep) const
+{
+	if(boost::get<upkeep_full>(&upkeep_) != NULL) {
+		upkeep = "full";
+	}
+	else if(boost::get<upkeep_loyal>(&upkeep_) != NULL) {
+		upkeep = "loyal";
+	}
+	else {
+		upkeep = boost::get<int>(upkeep_);
+	}
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

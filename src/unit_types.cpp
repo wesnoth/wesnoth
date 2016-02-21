@@ -762,8 +762,9 @@ bool unit_type::show_variations_in_help() const
  */
 const config & unit_type::build_unit_cfg() const
 {
-	// We start with everything.
-	unit_cfg_ = cfg_;
+	// We start with all attributes.
+	assert(unit_cfg_.empty());
+	unit_cfg_.append_attributes(cfg_);
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
@@ -771,32 +772,11 @@ const config & unit_type::build_unit_cfg() const
 		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
 		"name", "num_traits", "variation_id", "variation_name", "recall_cost",
-		"cost", "level", "gender", "flag_rgb", "alignment", "advances_to"
+		"cost", "level", "gender", "flag_rgb", "alignment", "advances_to", "do_not_list"
 	};
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
 	}
-
-	// Remove gendered children.
-	unit_cfg_.clear_children("male");
-	unit_cfg_.clear_children("female");
-
-	// Remove movement type data (it will be received via a movetype object).
-	unit_cfg_.clear_children("movement_costs");
-	unit_cfg_.clear_children("vision_costs");
-	unit_cfg_.clear_children("jamming_costs");
-	unit_cfg_.clear_children("defense");
-	unit_cfg_.clear_children("resistance");
-
-	// Units use unit_type::attacks() to get their attacks
-	unit_cfg_.clear_children("attack");
-	// Units (animation component) use unit_type::animations()
-	BOOST_FOREACH(const std::string& tag_name, unit_animation::all_tag_names()) {
-		unit_cfg_.clear_children(tag_name);
-	}
-	// [portrait] is not used yet by unit class.
-	unit_cfg_.clear_children("portrait");
-
 	built_unit_cfg_ = true;
 	return unit_cfg_;
 }

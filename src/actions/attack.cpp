@@ -1160,6 +1160,10 @@ namespace {
 					newunit.heal_all();
 				}
 				units_.add(death_loc, newunit);
+
+				game_events::entity_location reanim_loc(defender.loc_, newunit.underlying_id());
+				resources::game_events->pump().fire("unit placed", reanim_loc);
+
 				preferences::encountered_units().insert(newunit.type_id());
 				if (update_display_) {
 					resources::screen->invalidate(death_loc);
@@ -1413,7 +1417,7 @@ namespace
 
 			//to make mp games equal we only allow selecting advancements to the current side.
 			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
-			if(!non_interactive() && (force_dialog_ || (t.is_local_human() && !t.is_idle() && (is_current_side || !is_mp))))
+			if(!CVideo::get_singleton().non_interactive() && (force_dialog_ || (t.is_local_human() && !t.is_idle() && (is_current_side || !is_mp))))
 			{
 				res = dialogs::advance_unit_dialog(loc_);
 			}

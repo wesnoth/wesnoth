@@ -15,7 +15,7 @@
 #include "global.hpp"
 
 #include "construct_dialog.hpp"
-#include "game_display.hpp"
+#include "video.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
@@ -31,6 +31,9 @@
 #include "formula_string_utils.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
+#include "team.hpp"
+#include "sdl/utils.hpp"
+#include "sdl/rect.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -176,23 +179,20 @@ SDL_Color chat::color_message(const msg& message) {
 	return c;
 }
 
-ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
-	gui::widget(disp.video()),
-	disp_(disp),
+ui::ui(CVideo& video, const std::string& title, const config& cfg, chat& c, config& gamelist) :
+	gui::widget(video),
+	video_(video),
 	initialized_(false),
 	gamelist_initialized_(false),
-
-	hotkey_handler_(&disp),
-	disp_manager_(&disp),
 
 	game_config_(cfg),
 	chat_(c),
 	gamelist_(gamelist),
 
-	title_(disp.video(), title, font::SIZE_LARGE, font::TITLE_COLOR),
-	entry_textbox_(disp.video(), 100),
-	chat_textbox_(disp.video(), 100, "", false),
-	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
+	title_(video_, title, font::SIZE_LARGE, font::TITLE_COLOR),
+	entry_textbox_(video_, 100),
+	chat_textbox_(video_, 100, "", false),
+	users_menu_(video_, std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
 
 	user_list_(),
 	selected_game_(""),
@@ -207,8 +207,8 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 {
 	const SDL_Rect area = sdl::create_rect(0
 			, 0
-			, disp.video().getx()
-			, disp.video().gety());
+			, video.getx()
+			, video.gety());
 	users_menu_.set_numeric_keypress_selection(false);
 	set_location(area);
 }
@@ -333,10 +333,10 @@ void ui::handle_event(const SDL_Event& event)
 
 		// Hack: for some reason the help string stays visible for ever
 		/** @todo find out why the help string stays visible and fix it */
-		disp().video().clear_all_help_strings();
+		video().clear_all_help_strings();
 
 		gui2::tmp_cmd_wrapper dlg(_("Selected user: ") + usr_text);
-		dlg.show(disp().video());
+		dlg.show(video());
 
 		std::stringstream msg;
 		switch(dlg.get_retval()) {

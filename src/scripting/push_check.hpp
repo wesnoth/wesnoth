@@ -68,7 +68,7 @@ namespace lua_check_impl
 		return luaL_checkstring(L, n);
 	}
 	template<typename T>
-	typename boost::enable_if<typename boost::is_same<T, std::string>::type, void>::type lua_push(lua_State *L, const std::string& val)
+	typename boost::enable_if<typename boost::is_same<T, std::string>::type, void>::type lua_push(lua_State *L, const T& val)
 	{
 		lua_pushlstring(L, val.c_str(), val.size());
 	}
@@ -91,14 +91,11 @@ namespace lua_check_impl
 	{
 		T val;
 		std::string str = lua_check_impl::lua_check<std::string>(L, n);
-		if(val.parse(str))
-		{
-			return val;
-		}
-		else
+		if(!val.parse(str))
 		{
 			luaL_argerror(L, n, ("cannot convert " + str + " to enum " + T::name()).c_str());
 		}
+		return val;
 	}
 	template<typename T>
 	typename boost::enable_if<boost::is_base_of<enum_tag, T>, void>::type lua_push(lua_State *L, T val)
@@ -184,7 +181,7 @@ namespace lua_check_impl
 			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
-				res.push_back(lua_check_impl::lua_check<typename remove_constref<typename T::value_type>::type>(L, -1));
+				res.push_back(lua_check_impl::lua_check<typename remove_constref<typename T::reference>::type>(L, -1));
 			}
 			return res;
 		}
@@ -218,7 +215,7 @@ namespace lua_check_impl
 		assert(list.size() >= 0);
 		lua_createtable(L, list.size(), 0);
 		for(size_t i = 0, size = static_cast<size_t>(list.size()); i < size; ++i) {
-			lua_check_impl::lua_push<typename remove_constref<typename T::value_type>::type>(L, list[i]);
+			lua_check_impl::lua_push<typename remove_constref<typename T::reference>::type>(L, list[i]);
 			lua_rawseti(L, -2, i + 1);
 		}
 	}

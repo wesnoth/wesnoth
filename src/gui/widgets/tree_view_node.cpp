@@ -45,8 +45,11 @@ ttree_view_node::ttree_view_node(
 	, grid_()
 	, children_()
 	, node_definitions_(node_definitions)
-	, icon_(NULL)
+	, toggle_(NULL)
 	, label_(NULL)
+	, callback_state_change_()
+	, callback_state_to_folded_()
+	, callback_state_to_unfolded_()
 {
 	grid_.set_parent(this);
 	set_parent(&parent_tree_view);
@@ -57,19 +60,23 @@ ttree_view_node::ttree_view_node(
 				node_definition.builder->build(&grid_);
 				init_grid(&grid_, data);
 
-				icon_ = find_widget<ttoggle_button>(
-						&grid_, "tree_view_node_icon", false, false);
+				twidget* toggle_widget = grid_.find("tree_view_node_icon", false);
+				toggle_ = dynamic_cast<tselectable_*>(toggle_widget);
 
-				if(icon_) {
-					icon_->set_visible(twidget::tvisible::hidden);
-					icon_->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+				if(toggle_) {
+					toggle_widget->set_visible(twidget::tvisible::hidden);
+					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2));
+					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+							&ttree_view_node::signal_handler_left_button_click,
+							this,
+							_2), event::tdispatcher::back_post_child);
 				}
 
-				if(parent_node_ && parent_node_->icon_) {
-					parent_node_->icon_->set_visible(
+				if(parent_node_ && parent_node_->toggle_) {
+					dynamic_cast<twidget&>(*parent_node_->toggle_).set_visible(
 							twidget::tvisible::visible);
 				}
 
@@ -157,7 +164,7 @@ ttree_view_node& ttree_view_node::add_child(
 	assert(height_modification > 0);
 
 	// Request new size.
-	tree_view().resize_content(width_modification, height_modification);
+	tree_view().resize_content(width_modification, height_modification, -1, itor->calculate_ypos());
 
 	return *itor;
 }
@@ -204,21 +211,58 @@ const ttree_view& ttree_view_node::tree_view() const
 
 bool ttree_view_node::is_folded() const
 {
-	return icon_ && icon_->get_value();
+	return toggle_ && !toggle_->get_value();
 }
-#if 0
-void ttree_view_node::fold(const bool /*recursive*/)
+
+void ttree_view_node::fold(/*const bool recursive*/)
 {
-	// FIXME set state
+	if(is_folded()) {
+		fold_internal();
 
+		toggle_->set_value(false);
+	}
 }
 
-void ttree_view_node::unfold(const texpand_mode /*mode*/)
+void ttree_view_node::unfold(/*const texpand_mode mode*/)
 {
-	// FIXME set state
+	if(!is_folded()) {
+		unfold_internal();
 
+		toggle_->set_value(true);
+	}
 }
-#endif
+
+void ttree_view_node::fold_internal()
+{
+	const tpoint current_size(get_current_size().x, get_unfolded_size().y);
+	const tpoint new_size = get_folded_size();
+
+	const int width_modification = std::max(0, new_size.x - current_size.x);
+	const int height_modification = new_size.y - current_size.y;
+	assert(height_modification <= 0);
+
+	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+
+	if(callback_state_to_folded_) {
+		callback_state_to_folded_(*this);
+	}
+}
+
+void ttree_view_node::unfold_internal()
+{
+	const tpoint current_size(get_current_size().x, get_folded_size().y);
+	const tpoint new_size = get_unfolded_size();
+
+	const int width_modification = std::max(0, new_size.x - current_size.x);
+	const int height_modification = new_size.y - current_size.y;
+	assert(height_modification >= 0);
+
+	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+
+	if(callback_state_to_unfolded_) {
+		callback_state_to_unfolded_(*this);
+	}
+}
 
 void ttree_view_node::clear()
 {
@@ -238,7 +282,7 @@ void ttree_view_node::clear()
 		return;
 	}
 
-	tree_view().resize_content(0, -height_reduction);
+	tree_view().resize_content(0, -height_reduction,  -1, calculate_ypos());
 }
 
 struct ttree_view_node_implementation
@@ -338,7 +382,7 @@ bool ttree_view_node::disable_click_dismiss() const
 
 tpoint ttree_view_node::get_current_size(bool assume_visible) const
 {
-	if(parent_node_ && parent_node_->is_folded() && !assume_visible) {
+	if(!assume_visible && parent_node_ && parent_node_->is_folded()) {
 		return tpoint(0, 0);
 	}
 
@@ -369,7 +413,7 @@ tpoint ttree_view_node::get_current_size(bool assume_visible) const
 
 tpoint ttree_view_node::get_folded_size() const
 {
-	tpoint size = grid_.get_size();
+	tpoint size = grid_.get_best_size();
 	if(get_indention_level() > 1) {
 		size.x += (get_indention_level() - 1)
 				  * tree_view().indention_step_size_;
@@ -416,13 +460,6 @@ tpoint ttree_view_node::calculate_best_size(const int indention_level,
 		best_size.x += indention_level * indention_step_size;
 	}
 
-	if(is_folded()) {
-
-		DBG_GUI_L << LOG_HEADER << " Folded grid return own best size "
-				  << best_size << ".\n";
-		return best_size;
-	}
-
 	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
 
 	for(boost::ptr_vector<ttree_view_node>::const_iterator itor
@@ -439,7 +476,9 @@ tpoint ttree_view_node::calculate_best_size(const int indention_level,
 		const tpoint node_size = node.calculate_best_size(indention_level + 1,
 														  indention_step_size);
 
-		best_size.y += node_size.y;
+		if(!is_folded()) {
+			best_size.y += node_size.y;
+		}
 		best_size.x = std::max(best_size.x, node_size.x);
 	}
 
@@ -546,37 +585,11 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 	 * drawingboard for 1.9.
 	 */
 
-	// is_folded() returns the new state.
-	if(is_folded()) {
+	// is_folded() returns the new state, which is why this looks backwards
+	is_folded() ? fold_internal() : unfold_internal();
 
-		// From unfolded to folded.
-		const tpoint current_size(get_current_size().x, get_unfolded_size().y);
-		const tpoint new_size = get_folded_size();
-
-		int width_modification = new_size.x - current_size.x;
-		if(width_modification < 0) {
-			width_modification = 0;
-		}
-
-		const int height_modification = new_size.y - current_size.y;
-		assert(height_modification <= 0);
-
-		tree_view().resize_content(width_modification, height_modification);
-	} else {
-
-		// From folded to unfolded.
-		const tpoint current_size(get_current_size().x, get_folded_size().y);
-		const tpoint new_size = get_unfolded_size();
-
-		int width_modification = new_size.x - current_size.x;
-		if(width_modification < 0) {
-			width_modification = 0;
-		}
-
-		const int height_modification = new_size.y - current_size.y;
-		assert(height_modification >= 0);
-
-		tree_view().resize_content(width_modification, height_modification);
+	if(callback_state_change_) {
+		callback_state_change_(*this);
 	}
 }
 
@@ -676,5 +689,19 @@ std::vector<int> ttree_view_node::describe_path()
 		assert(!"tree_view_node was not found in parent nodes children");
 		throw "assertion ignored"; //To silence 'no return value in this codepath' warning.
 	}
+}
+int ttree_view_node::calculate_ypos()
+{
+	if(!parent_node_) {
+		return 0;
+	}
+	int res = parent_node_->calculate_ypos();
+	FOREACH(const AUTO& node, parent_node_->children_) {
+		if(&node == this) {
+			break;
+		}
+		res += node.get_current_size(true).y;
+	}
+	return res;
 }
 } // namespace gui2

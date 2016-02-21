@@ -104,8 +104,9 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
 /**
  * Returns the menu items that can be shown for the given location.
  * Should be used with a wmi_pager to limit the number of items displayed at once.
+ *
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
- * @param[out] descriptions Menu item text will be pushed onto @descriptions (in the same order as @a items).
+ * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
  */
 std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi_container::get_items(const map_location& hex,
 	game_data & gamedata, filter_context & fc, unit_map & units, const_iterator start, const_iterator finish) const

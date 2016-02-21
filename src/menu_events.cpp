@@ -173,7 +173,7 @@ public:
 	leader_scroll_dialog(display &disp, const std::string &title,
 			std::vector<bool> &leader_bools, int selected,
 			gui::DIALOG_RESULT extra_result) :
-		dialog(disp, title, "", gui::NULL_DIALOG),
+		dialog(disp.video(), title, "", gui::NULL_DIALOG),
 		scroll_btn_(new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false)),
 		leader_bools_(leader_bools),
 		extra_result_(extra_result)
@@ -437,7 +437,7 @@ void menu_handler::save_map()
 	int res = 0;
 	int overwrite = 1;
 	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"), ".map");
+		res = dialogs::show_file_chooser_dialog_save(gui_->video(), input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
 
 			if (filesystem::file_exists(input_name)) {
@@ -465,7 +465,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	preferences::show_preferences_dialog(*gui_, game_config_);
+	preferences::show_preferences_dialog(gui_->video(), game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
@@ -482,7 +482,7 @@ void menu_handler::show_chat_log()
 
 void menu_handler::show_help()
 {
-	help::show_help(*gui_);
+	help::show_help(gui_->video());
 }
 
 void menu_handler::speak()
@@ -861,7 +861,7 @@ void menu_handler::unit_description()
 {
 	const unit_map::const_iterator un = current_unit();
 	if(un != units().end()) {
-		help::show_unit_description(*un);
+		help::show_unit_description(pc_.get_display().video(), *un);
 	}
 }
 
@@ -874,7 +874,7 @@ void menu_handler::terrain_description(mouse_handler& mousehandler)
 
 	const terrain_type& type = map().get_terrain_info(loc);
 	//const terrain_type& info = board().map().get_terrain_info(terrain);
-	help::show_terrain_description(type);
+	help::show_terrain_description(pc_.get_display().video(), type);
 }
 
 void menu_handler::rename_unit()
@@ -2624,7 +2624,7 @@ void console_handler::do_idle() {
 }
 
 void console_handler::do_theme() {
-	preferences::show_theme_dialog(*menu_handler_.gui_);
+	preferences::show_theme_dialog(menu_handler_.gui_->video());
 }
 
 struct save_id_matches
@@ -2809,7 +2809,7 @@ void console_handler::do_layers() {
 	// NOTE using ", " also allows better word wrapping
 	info << "Flags :" << utils::join(flags, ", ");
 	{
-		gui::dialog menu(*menu_handler_.gui_, _("Layers"), info.str(), gui::OK_CANCEL);
+		gui::dialog menu(menu_handler_.gui_->video(), _("Layers"), info.str(), gui::OK_CANCEL);
 		menu.set_menu(layers);
 		menu.show();
 	}

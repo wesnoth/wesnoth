@@ -41,7 +41,7 @@ public:
 	virtual ~playsingle_controller();
 
 	LEVEL_RESULT play_scenario(const config& level);
-	void play_scenario_init(const config& level);
+	void play_scenario_init();
 	void play_scenario_main_loop();
 
 	virtual void handle_generic_event(const std::string& name);

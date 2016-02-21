@@ -14,7 +14,6 @@
 #ifndef MP_GAME_UTILS_HPP_INCLUDED
 #define MP_GAME_UTILS_HPP_INCLUDED
 
-#include "game_display.hpp"
 #include "mp_game_settings.hpp"
 #include "network.hpp"
 

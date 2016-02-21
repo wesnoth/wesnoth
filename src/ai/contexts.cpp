@@ -608,7 +608,7 @@ const terrain_filter& readonly_context_impl::get_avoid() const
 	}
 	config cfg;
 	cfg.add_child("not");
-	static terrain_filter tf(vconfig(cfg),resources::filter_con);
+	static terrain_filter tf(vconfig(cfg, true), resources::filter_con);
 	return tf;
 }
 

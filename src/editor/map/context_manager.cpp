@@ -166,7 +166,7 @@ context_manager::~context_manager()
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
 #else
-	CVideo::set_window_title(game_config::get_default_title_string());
+	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
 #endif
 }
 
@@ -190,7 +190,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a File to Open"));
+	int res = dialogs::show_file_chooser_dialog(gui_.video(), fn, _("Choose a File to Open"));
 	if (res == 0) {
 		load_map(fn, !force_same_context);
 	}
@@ -464,7 +464,7 @@ void context_manager::apply_mask_dialog()
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Mask to Apply"));
+	int res = dialogs::show_file_chooser_dialog(gui_.video(), fn, _("Choose a Mask to Apply"));
 	if (res == 0) {
 		try {
 			map_context mask(game_config_, fn, gui_);
@@ -501,7 +501,7 @@ void context_manager::create_mask_to_dialog()
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose Target Map"));
+	int res = dialogs::show_file_chooser_dialog(gui_.video(), fn, _("Choose Target Map"));
 	if (res == 0) {
 		try {
 			map_context map(game_config_, fn, gui_);
@@ -625,7 +625,7 @@ void context_manager::save_map_as_dialog()
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;
-		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Map As"), ".map");
+		int res = dialogs::show_file_chooser_dialog_save(gui_.video(), input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
 			if (filesystem::file_exists(input_name)) {
 				res = gui2::show_message(gui_.video(), "",
@@ -653,7 +653,7 @@ void context_manager::save_scenario_as_dialog()
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;
-		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Scenario As"), ".cfg");
+		int res = dialogs::show_file_chooser_dialog_save(gui_.video(), input_name, _("Save the Scenario As"), ".cfg");
 		if (res == 0) {
 			if (filesystem::file_exists(input_name)) {
 				res = gui2::show_message(gui_.video(), "",
@@ -1030,7 +1030,7 @@ void context_manager::set_window_title()
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 #else
-	CVideo::set_window_title(wm_title_string);
+	CVideo::get_singleton().set_window_title(wm_title_string);
 #endif
 }
 

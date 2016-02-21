@@ -92,6 +92,11 @@ int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
 	}
 }
 
+bool tvertical_scrollbar::in_orthogonal_range(const tpoint& coordinate) const
+{
+	return static_cast<size_t>(coordinate.y) < get_height();
+}
+
 const std::string& tvertical_scrollbar::get_control_type() const
 {
 	static const std::string type = "vertical_scrollbar";

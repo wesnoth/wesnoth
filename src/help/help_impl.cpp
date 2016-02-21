@@ -1221,6 +1221,10 @@ SDL_Color string_to_color(const std::string &cmp_str)
 	if (cmp_str == "white") {
 		return font::BIGMAP_COLOR;
 	}
+	// a #rrggbb color in pango format.
+	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
+		return int_to_color(strtoul(cmp_str.c_str() + 1, NULL, 16));
+	}
 	return font::NORMAL_COLOR;
 }
 

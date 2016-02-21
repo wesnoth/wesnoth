@@ -19,7 +19,7 @@
 #include "default_map_generator.hpp"
 
 #include "default_map_generator_job.hpp"
-#include "display.hpp"
+#include "video.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -27,6 +27,7 @@
 #include "show_dialog.hpp"
 #include "seed_rng.hpp"
 #include "widgets/slider.hpp"
+#include "sdl/rect.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -96,12 +97,12 @@ default_map_generator::default_map_generator(const config &cfg) :
 
 bool default_map_generator::allow_user_config() const { return true; }
 
-void default_map_generator::user_config(display& disp)
+void default_map_generator::user_config(CVideo& v)
 {
 	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
-	CVideo& screen = disp.video();
+	CVideo& screen = v;
 
 	const int width = 600;
 	const int height = 400;
@@ -328,8 +329,8 @@ void default_map_generator::user_config(display& disp)
 
 		update_rect(xpos,ypos,width,height);
 
-		disp.update_display();
-		disp.delay(100);
+		v.flip();
+		CVideo::delay(100);
 		events::pump();
 	}
 

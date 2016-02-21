@@ -14,9 +14,13 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "attack_prediction_display.hpp"
+
 #include "gui/dialogs/unit_attack.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
+#include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -25,14 +29,20 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "display.hpp"
 #include "game_config.hpp"
+#include "gettext.hpp"
+#include "help/help.hpp"
 #include "language.hpp"
 #include "marked-up_text.hpp"
-#include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "unit_types.hpp"
+
 #include "utils/foreach.tpp"
+
+#include <boost/bind.hpp>
 
 namespace gui2
 {
@@ -69,12 +79,14 @@ REGISTER_DIALOG(unit_attack)
 tunit_attack::tunit_attack(const unit_map::iterator& attacker_itor,
 						   const unit_map::iterator& defender_itor,
 						   const std::vector<battle_context>& weapons,
-						   const int best_weapon)
+						   const int best_weapon,
+						   display* disp)
 	: selected_weapon_(-1)
 	, attacker_itor_(attacker_itor)
 	, defender_itor_(defender_itor)
 	, weapons_(weapons)
 	, best_weapon_(best_weapon)
+	, disp_(disp)
 {
 }
 
@@ -88,31 +100,80 @@ set_label(twindow& window, const std::string& id, const std::string& label)
 	}
 }
 
-static void set_attacker_info(twindow& w, unit& u)
+static std::string format_stats(const unit& u)
 {
-	std::string tc;
+	const std::string name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
+	std::string traits;
 
-	if(resources::controller) {
-		tc = "~RC(" + u.team_color() + ">" +
-			 team::get_side_color_index(resources::controller->current_side())
-			 + ")";
+	BOOST_FOREACH(const std::string& trait, u.get_traits_list()) {
+		traits += (traits.empty() ? "" : ", ") + trait;
 	}
 
-	set_label<timage>(w, "attacker_portrait", u.absolute_image() + tc);
-	set_label<timage>(w, "attacker_icon", u.absolute_image() + tc);
-	set_label<tcontrol>(w, "attacker_name", u.name());
+	if (traits.empty()) {
+		traits = " ";
+	}
+
+	std::stringstream str;
+
+	str << name << "\n";
+
+	str << "<small>";
+
+	str << "<span color='#f5e6c1'>" << u.type_name() << "</span>" << "\n";
+
+	str << "Lvl " << u.level() << "\n";
+
+	str << u.alignment() << "\n";
+
+	str << traits << "\n";
+
+	str << font::span_color(u.hp_color()) 
+		<< _("HP: ") << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << "\n";
+	str << font::span_color(u.xp_color()) 
+		<< _("XP: ") << u.experience() << "/" << u.max_experience() << "</span>" << "\n";
+
+	str << "</small>" << "\n";
+
+	return str.str();
 }
 
-static void set_defender_info(twindow& w, unit& u)
+static std::string get_image_mods(const unit& u)
 {
-	const std::string& 
-		tc = "~RC(" + u.team_color() + ">" + 
-			 team::get_side_color_index(u.side())
-			 + ")";
+	std::string res
+		= "~RC(" + u.team_color() + ">" + team::get_side_color_index(u.side()) + ")";
 
-	set_label<timage>(w, "defender_portrait", u.absolute_image() + tc);
-	set_label<timage>(w, "defender_icon", u.absolute_image() + tc);
-	set_label<tcontrol>(w, "defender_name", u.name());
+	if (u.can_recruit()) {
+		res += "~BLIT(" + unit::leader_crown() + ")";
+	}
+
+	BOOST_FOREACH(const std::string& overlay, u.overlays()) {
+		res += "~BLIT(" + overlay + ")";
+	}
+
+	return res;
+}
+
+static void set_attacker_info(twindow& window, const unit& u)
+{
+	set_label<timage>(window, "attacker_image", u.absolute_image() + get_image_mods(u));
+
+	tcontrol& attacker_name =
+		find_widget<tcontrol>(&window, "attacker_stats", false);
+
+	attacker_name.set_use_markup(true);
+	attacker_name.set_label(format_stats(u));
+}
+
+static void set_defender_info(twindow& window, const unit& u)
+{
+	// Ensure the defender image is always facing left
+	set_label<timage>(window, "defender_image", u.absolute_image() + "~FL(horiz)" + get_image_mods(u));
+
+	tcontrol& defender_name =
+		find_widget<tcontrol>(&window, "defender_stats", false);
+
+	defender_name.set_use_markup(true);
+	defender_name.set_label(format_stats(u));
 }
 
 static void set_weapon_info(twindow& window,
@@ -149,16 +210,21 @@ static void set_weapon_info(twindow& window,
 			range = string_table["range_" + range];
 		}
 
+		const std::string& attw_apecials = 
+			!attacker_weapon.weapon_specials().empty() ? "  " + attacker_weapon.weapon_specials() : "";
+		const std::string& defw_specials = 
+			!defender_weapon.weapon_specials().empty() ? "  " + defender_weapon.weapon_specials() : "";
+
 		std::stringstream attacker_stats, defender_stats;
 
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
-			<< attacker_weapon.damage() << font::weapon_numbers_sep << attacker_weapon.num_attacks()
-			<< "  " << attacker_weapon.weapon_specials() << "\n"
+			<< attacker.damage << font::weapon_numbers_sep << attacker_weapon.num_attacks()
+			<< attw_apecials << "\n"
 			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>" << "\n";
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
-			<< defender_weapon.damage() << font::weapon_numbers_sep << defender_weapon.num_attacks()
-			<< "  " << defender_weapon.weapon_specials() << "\n"
+			<< defender.damage << font::weapon_numbers_sep << defender_weapon.num_attacks()
+			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>" << "\n";
 
 		std::map<std::string, string_map> data;
@@ -171,7 +237,6 @@ static void set_weapon_info(twindow& window,
 		item["use_markup"] = "true";
 		data.insert(std::make_pair("attacker_weapon", item));
 
-		//item["label"] = << utils::unicode_em_dash + " " << range << " " + utils::unicode_em_dash;
 		item["label"] = "<span color='#a69275'>" + utils::unicode_em_dash + " " + range + " " + utils::unicode_em_dash + "</span>";
 		item["use_markup"] = "true";
 		data.insert(std::make_pair("range", item));
@@ -190,8 +255,38 @@ static void set_weapon_info(twindow& window,
 	weapon_list.select_row(best_weapon);
 }
 
+void tunit_attack::profile_button_callback(const std::string& type)
+{
+	if (!disp_) {
+		return;
+	}
+
+	help::show_unit_help(disp_->video(), type);
+}
+
+void tunit_attack::damage_calc_callback(twindow& window)
+{
+	const int selection
+		= find_widget<tlistbox>(&window, "weapon_list", false).get_selected_row();
+
+	attack_prediction_displayer predition_dialog(weapons_, (*attacker_itor_).get_location(), (*defender_itor_).get_location());
+	predition_dialog.button_pressed(selection);
+}
+
 void tunit_attack::pre_show(CVideo& /*video*/, twindow& window)
 {
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "attacker_profile", false),
+			boost::bind(&tunit_attack::profile_button_callback, this, (*attacker_itor_).type_id()));
+
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "defender_profile", false),
+			boost::bind(&tunit_attack::profile_button_callback, this, (*defender_itor_).type_id()));
+
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "damage_calculation", false),
+			boost::bind(&tunit_attack::damage_calc_callback, this, boost::ref(window)));
+
 	set_attacker_info(window, *attacker_itor_);
 	set_defender_info(window, *defender_itor_);
 

@@ -130,7 +130,9 @@ public:
 	const std::string& icon() const { return icon_; }
 	const std::string &small_profile() const { return small_profile_; }
 	const std::string &big_profile() const { return big_profile_; }
-
+	std::string halo() const { return cfg_["halo"]; }
+	std::string ellipse() const { return cfg_["ellipse"]; }
+	bool generate_name() const { return cfg_["generate_name"].to_bool(true); }
 	const std::vector<unit_animation>& animations() const;
 
 	const std::string& flag_rgb() const { return flag_rgb_; }
@@ -170,6 +172,16 @@ public:
 
 	config::const_child_itors possible_traits() const
 	{ return possible_traits_.child_range("trait"); }
+
+	const config& abilities_cfg() const
+	{ return cfg_.child_or_empty("abilities"); }
+
+	config::const_child_itors advancements() const
+	{ return cfg_.child_range("advancement"); }
+
+	config::const_child_itors events() const
+	{ return cfg_.child_range("event"); }
+
 	bool has_random_traits() const;
 
 	/// The returned vector will not be empty, provided this has been built
@@ -179,7 +191,9 @@ public:
 
 	/**
 	 * @param variation_id		The id of the variation we search for.
-	 * @return					Iff one of the type's variations' (or the sibling's if the unit_type is a variation itself) id matches @variation_id.
+	 * @return					Whether one of the type's variations' (or the
+	 *                          siblings' if the unit_type is a variation
+	 *                          itself) id matches @a variation_id.
 	 */
 	bool has_variation(const std::string& variation_id) const;
 

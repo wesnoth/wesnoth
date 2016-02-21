@@ -47,11 +47,11 @@ yksiköitä, skenaarioita tai kampanjoitasi ja jaa ne muiden pelaajien kanssa.
 Asettaa värisyvyyden (bits per pixel). Esimerkki: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign \ [<kampanjan_tunniste>]\fP
-aloittaa suoraan kampanjasta, jonka tunniste on
-<kamppanjan_tunniste>. Kampanjavalikko näytetään, jos tunnistetta ei
-ole määritetty. \fBHuom:\fP Käyttäessäsi tätä kytkintä, varmista, että
-datahakemiston polku on viimeisenä argumenttina. Muuten peli olettaa, että
-kampanjan/ skenaarion tunniste on myös datahakemisto.
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+as well, otherwise the game will take the campaign/scenario id as the data
+dir.
 .TP 
 \fB\-\-campaign\-difficulty [<difficulty>]\fP
 Annetun kampanjan vaikeustaso (1:stä maksimiin). Jos vaikeustasoa ei ole
@@ -290,7 +290,7 @@ Käy virallisella kotisivulla: http://www.wesnoth.org/
 .
 .SH TEKIJÄNOIKEUS
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

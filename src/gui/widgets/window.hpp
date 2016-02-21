@@ -450,7 +450,16 @@ public:
 		variables_.add(key, value);
 		set_is_dirty(true);
 	}
-
+	tpoint get_linked_size(const std::string& linked_group_id) const
+	{
+		std::map<std::string, tlinked_size>::const_iterator it = linked_size_.find(linked_group_id);
+		if(it != linked_size_.end()) {
+			return tpoint(it->second.width, it->second.height);
+		}
+		else {
+			return tpoint(-1, -1);
+		}
+	}
 private:
 	/** Needed so we can change what's drawn on the screen. */
 	CVideo& video_;
@@ -593,18 +602,18 @@ private:
 	struct tlinked_size
 	{
 		tlinked_size(const bool width = false, const bool height = false)
-			: widgets(), width(width), height(height)
+			: widgets(), width(width ? 0 : -1), height(height ? 0 : -1)
 		{
 		}
 
 		/** The widgets linked. */
 		std::vector<twidget*> widgets;
 
-		/** Link the widgets in the width? */
-		bool width;
+		/** the current width of all widgets in the intis group, -1 if the width is not linked*/
+		int width;
 
-		/** Link the widgets in the height? */
-		bool height;
+		/** the current height of all widgets in the intis group, -1 if the height is not linked*/
+		int height;
 	};
 
 	/** List of the widgets, whose size are linked together. */

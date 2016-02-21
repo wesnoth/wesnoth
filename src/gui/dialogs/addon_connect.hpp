@@ -46,8 +46,6 @@ private:
 	/** Enable the addon remove button? */
 	bool allow_remove_;
 
-	display* disp_;
-
 	void help_button_callback(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */

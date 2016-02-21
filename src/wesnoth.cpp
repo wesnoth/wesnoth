@@ -28,6 +28,7 @@
 #include "formula.hpp"                  // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
 #include "game_config_manager.hpp"      // for game_config_manager, etc
+#include "game_end_exceptions.hpp"
 #include "game_launcher.hpp"          // for game_launcher, etc
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"  // for tmanager
@@ -36,13 +37,11 @@
 #include "gui/dialogs/message.hpp" 	// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
 #include "help/help.hpp"                     // for help_manager
-#include "hotkey/command_executor.hpp"  // for basic_handler
 #include "image.hpp"                    // for flush_cache, etc
 #include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "network.hpp"			// for describe_versions
 #include "preferences.hpp"              // for core_id, etc
-#include "preferences_display.hpp"      // for display_manager
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -50,6 +49,7 @@
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
 #include "serialization/preprocessor.hpp"  // for preproc_define, etc
+#include "serialization/string_utils.hpp"
 #include "serialization/validator.hpp"  // for strict_validation_enabled
 #include "serialization/unicode_cast.hpp"
 #include "sound.hpp"                    // for commit_music_changes, etc
@@ -72,6 +72,7 @@
 #endif // _MSC_VER
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/iostreams/categories.hpp>  // for input, output
 #include <boost/iostreams/copy.hpp>     // for copy
@@ -83,6 +84,7 @@
 #include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <boost/tuple/tuple.hpp>        // for tuple
 
+#include <algorithm>                    // for transform
 #include <cerrno>                       // for ENOMEM
 #include <clocale>                      // for setlocale, NULL, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
@@ -91,6 +93,7 @@
 #include <exception>                    // for exception
 #include <fstream>                      // for operator<<, basic_ostream, etc
 #include <iostream>                     // for cerr, cout
+#include <vector>
 
 //#define NO_CATCH_AT_GAME_END
 
@@ -637,13 +640,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(game->disp().video());
+	loadscreen::global_loadscreen_manager loadscreen_manager(game->video());
 
 	loadscreen::start_stage("init gui");
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
-	game_config_manager config_manager(cmdline_opts, game->disp(),
+	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
 	loadscreen::start_stage("load config");
@@ -669,7 +672,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	plugins_manager plugins_man(new application_lua_kernel(&game->disp().video()));
+	plugins_manager plugins_man(new application_lua_kernel(&game->video()));
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
@@ -767,15 +770,14 @@ static int do_gameloop(const std::vector<std::string>& args)
 				? gui2::ttitle_screen::LOAD_GAME
 				: gui2::ttitle_screen::NOTHING;
 
-		const preferences::display_manager disp_manager(&game->disp());
+		preferences::load_hotkeys();
 
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
 		if(res == gui2::ttitle_screen::NOTHING) {
-			const hotkey::basic_handler key_handler(&game->disp());
 			gui2::ttitle_screen dlg;
-			dlg.show(game->disp().video());
+			dlg.show(game->video());
 
 			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
@@ -813,24 +815,24 @@ static int do_gameloop(const std::vector<std::string>& args)
 					image::flush_cache();
 				}
 			} catch ( std::runtime_error & e ) {
-				gui2::show_error_message(game->disp().video(), e.what());
+				gui2::show_error_message(game->video(), e.what());
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::EDIT_PREFERENCES) {
 			game->show_preferences();
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_ABOUT) {
-			about::show_about(game->disp());
+			about::show_about(game->video());
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
 			help::help_manager help_manager(&config_manager.game_config());
-			help::show_help(game->disp());
+			help::show_help(game->video());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
 			// NOTE: we need the help_manager to get access to the Add-ons
 			// section in the game help!
 			help::help_manager help_manager(&config_manager.game_config());
-			if(manage_addons(game->disp())) {
+			if(manage_addons(game->video())) {
 				config_manager.reload_changed_game_config();
 			}
 			continue;
@@ -846,7 +848,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 
 			gui2::tcore_selection core_dlg(cores, current);
-			if (core_dlg.show(game->disp().video())) {
+			if (core_dlg.show(game->video())) {
 				int core_index = core_dlg.get_choice();
 				const std::string& core_id = cores[core_index]["id"];
 				preferences::set_core_id(core_id);
@@ -854,7 +856,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			loadscreen::global_loadscreen_manager loadscreen(game->disp().video());
+			loadscreen::global_loadscreen_manager loadscreen(game->video());
 			config_manager.reload_changed_game_config();
 			image::flush_cache();
 			continue;
@@ -926,6 +928,40 @@ static void wesnoth_terminate_handler(int) {
 }
 #endif
 
+#if defined(_OPENMP) && _MSC_VER >= 1600
+static void restart_process(const std::vector<std::string>& commandline)
+{
+	wchar_t process_path[MAX_PATH];
+	SetLastError(ERROR_SUCCESS);
+	GetModuleFileNameW(NULL, process_path, MAX_PATH);
+	if (GetLastError() != ERROR_SUCCESS)
+	{
+		throw std::runtime_error("Failed to retrieve the process path");
+	}
+
+	std::wstring commandline_str = unicode_cast<std::wstring>(utils::join(commandline, " "));
+	// CreateProcessW is allowed to modify the passed command line.
+	// Therefore we need to copy it.
+	wchar_t* commandline_c_str = new wchar_t[commandline_str.length() + 1];
+	commandline_str.copy(commandline_c_str, commandline_str.length());
+	commandline_c_str[commandline_str.length()] = L'\0';
+
+	STARTUPINFOW startup_info;
+	ZeroMemory(&startup_info, sizeof(startup_info));
+	startup_info.cb = sizeof(startup_info);
+	PROCESS_INFORMATION process_info;
+	ZeroMemory(&process_info, sizeof(process_info));
+
+	CreateProcessW(process_path, commandline_c_str, NULL, NULL,
+		false, 0u, NULL, NULL, &startup_info, &process_info);
+
+	CloseHandle(process_info.hProcess);
+	CloseHandle(process_info.hThread);
+
+	std::exit(EXIT_SUCCESS);
+}
+#endif
+
 #if defined(__native_client__) || (defined(__APPLE__) && SDL_VERSION_ATLEAST(2, 0, 0))
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
@@ -938,31 +974,6 @@ int main(int argc, char** argv)
 	VLDEnable();
 #endif
 
-#ifdef _OPENMP
-	// Wesnoth is a special case for OMP
-	// OMP wait strategy is to have threads busy-loop for 100ms
-	// if there is nothing to do, they then go to sleep.
-	// this avoids the scheduler putting the thread to sleep when work
-	// is about to be available
-	//
-	// However Wesnoth has a lot of very small jobs that need to be done
-	// at each redraw => 50fps every 2ms.
-	// All the threads are thus busy-waiting all the time, hogging the CPU
-	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
-	// but that var is read by OMP at library loading time (before main)
-	// thus the relaunching of ourselves after setting the variable.
-#if !defined(_WIN32) && !defined(__APPLE__)
-	if (!getenv("OMP_WAIT_POLICY")) {
-		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
-		execv(argv[0], argv);
-	}
-#elif _MSC_VER >= 1600
-	if (!getenv("OMP_WAIT_POLICY")) {
-		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
-		_execv(argv[0], argv);
-	}
-#endif
-#endif //_OPENMP
 #ifdef _WIN32
 	(void)argc;
 	(void)argv;
@@ -990,6 +1001,34 @@ int main(int argc, char** argv)
 	}
 #endif
 	assert(!args.empty());
+
+#ifdef _OPENMP
+	// Wesnoth is a special case for OMP
+	// OMP wait strategy is to have threads busy-loop for 100ms
+	// if there is nothing to do, they then go to sleep.
+	// this avoids the scheduler putting the thread to sleep when work
+	// is about to be available
+	//
+	// However Wesnoth has a lot of very small jobs that need to be done
+	// at each redraw => 50fps every 2ms.
+	// All the threads are thus busy-waiting all the time, hogging the CPU
+	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
+	// but that var is read by OMP at library loading time (before main)
+	// thus the relaunching of ourselves after setting the variable.
+#if !defined(_WIN32) && !defined(__APPLE__)
+	if (!getenv("OMP_WAIT_POLICY")) {
+		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
+		execv(argv[0], argv);
+	}
+#elif _MSC_VER >= 1600
+	if (!getenv("OMP_WAIT_POLICY")) {
+		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
+		args[0] = utils::quote(args[0]);
+		restart_process(args);
+	}
+#endif
+#endif //_OPENMP
+
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
@@ -1024,6 +1063,12 @@ int main(int argc, char** argv)
 			// tree for the build, and the resulting binaries are found in it.
 			else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
 				auto_dir = filesystem::normalize_path(exe_dir + "/..");
+			}
+			// In Windows debug builds, the EXE is placed away from the game data dir
+			// (in projectfiles\VCx\Debug), but the working directory is set to the
+			// game data dir. Thus, check if the working dir is the game data dir.
+			else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
+				auto_dir = filesystem::get_cwd();
 			}
 
 			if(!auto_dir.empty()) {

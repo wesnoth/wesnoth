@@ -20,6 +20,7 @@
 namespace gui2
 {
 class tlabel;
+class tbutton;
 
 class tgame_cache_options : public tdialog
 {
@@ -39,6 +40,9 @@ public:
 
 private:
 	std::string cache_path_;
+
+	tbutton* clean_button_;
+	tbutton* purge_button_;
 	tlabel* size_label_;
 
 	void clean_cache_callback(CVideo& video);

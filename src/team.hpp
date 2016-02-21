@@ -338,7 +338,8 @@ public:
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
-	bool persistent() const {return info_.persistent;}
+	bool persistent() const { return info_.persistent; }
+	void set_persistent(bool value) { info_.persistent = value; }
 	void set_lost(bool value=true) { info_.lost = value; }
 	bool lost() const { return info_.lost; }
 

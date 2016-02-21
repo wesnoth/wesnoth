@@ -68,6 +68,7 @@
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
+#include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
@@ -154,16 +155,11 @@ namespace {
 	typedef std::pair<unsigned, unsigned> tresolution;
 	typedef std::vector<std::pair<unsigned, unsigned> > tresolution_list;
 
-CVideo & video() {
-	static CVideo * v_ = new CVideo(CVideo::FAKE_TEST);
-	return *v_;
-}
-
 	template<class T>
 	void test_resolutions(const tresolution_list& resolutions)
 	{
 		BOOST_FOREACH(const tresolution& resolution, resolutions) {
-			video().make_test_fake(resolution.first, resolution.second);
+			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			boost::scoped_ptr<gui2::tdialog> dlg(twrapper<T>::create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -172,7 +168,7 @@ CVideo & video() {
 
 			std::string exception;
 			try {
-				dlg->show(video(), 1);
+				dlg->show(video, 1);
 			} catch(gui2::tlayout_exception_width_modified&) {
 				exception = "gui2::tlayout_exception_width_modified";
 			} catch(gui2::tlayout_exception_width_resize_failed&) {
@@ -201,7 +197,7 @@ CVideo & video() {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			BOOST_FOREACH(const tresolution& resolution, resolutions) {
-				video().make_test_fake(resolution.first, resolution.second);
+				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 				boost::scoped_ptr<gui2::tpopup> dlg(twrapper<T>::create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -210,7 +206,7 @@ CVideo & video() {
 
 				std::string exception;
 				try {
-					dlg->show(video(), interact);
+					dlg->show(video, interact);
 					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, static_cast<void*>(NULL));
 					window->draw();
@@ -247,7 +243,8 @@ CVideo & video() {
 			, const std::string& id)
 	{
 		BOOST_FOREACH(const tresolution& resolution, resolutions) {
-			video().make_test_fake(resolution.first, resolution.second);
+			
+			//CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			std::vector<std::string>& list =
 					gui2::unit_test_registered_window_list();
@@ -263,7 +260,7 @@ CVideo & video() {
  * compilers and try to find the cause.
  */
 #if 0
-				gui2::tip::show(video()
+				gui2::tip::show(video
 						, id
 						, "Test messsage for a tooltip."
 						, gui2::tpoint(0, 0));
@@ -416,10 +413,11 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_server_list>();
 	test<gui2::tsimple_item_selector>();
 	test<gui2::tscreenshot_notification>();
+	test<gui2::tselect_orb_colors>();
 	test<gui2::ttheme_list>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
-//	test<gui2::tunit_attack>(); /** @todo ENABLE */
+	//test<gui2::tunit_attack>();
 	test<gui2::tunit_create>();
 	test<gui2::twml_error>();
 	test<gui2::twml_message_left>();
@@ -476,6 +474,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "addon_uninstall_list"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "drop_down_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "preferences"), list.end());
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
@@ -486,11 +486,11 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 BOOST_AUTO_TEST_CASE(test_make_test_fake)
 {
-	video().make_test_fake(10, 10);
+	CVideo& video = test_utils::get_fake_display(10, 10).video();
 
 	try {
 		gui2::tmessage dlg("title", "message", true, false);
-		dlg.show(video(), 1);
+		dlg.show(video, 1);
 	} catch(twml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));
@@ -541,7 +541,7 @@ struct twrapper<gui2::tcampaign_selection>
 	{
 		static saved_game state;
 		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
+		static ng::create_engine ng(test_utils::get_fake_display(-1, -1).video(), state);
 		return new gui2::tcampaign_selection(ng);
 	}
 };
@@ -553,7 +553,7 @@ struct twrapper<gui2::tcampaign_settings>
 	{
 		static saved_game state;
 		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
+		static ng::create_engine ng(test_utils::get_fake_display(-1, -1).video(), state);
 		return new gui2::tcampaign_settings(ng);
 	}
 };
@@ -695,7 +695,7 @@ struct twrapper<gui2::tlobby_main>
 		static config game_config;
 		static lobby_info li(game_config);
 		return new gui2::tlobby_main(game_config, li,
-			*static_cast<display*>(&test_utils::get_fake_display(-1, -1)));
+			static_cast<display*>(&test_utils::get_fake_display(-1, -1))->video());
 	}
 };
 
@@ -823,6 +823,15 @@ struct twrapper<gui2::tscreenshot_notification>
 	static gui2::tscreenshot_notification* create()
 	{
 		return new gui2::tscreenshot_notification("path");
+	}
+};
+
+template<>
+struct twrapper<gui2::tselect_orb_colors>
+{
+	static gui2::tselect_orb_colors* create()
+	{
+		return new gui2::tselect_orb_colors();
 	}
 };
 

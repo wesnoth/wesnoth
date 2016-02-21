@@ -36,7 +36,7 @@ void clean_saves(const std::string& label);
 class loadgame
 {
 public:
-	loadgame(display& gui, const config& game_config, saved_game& gamestate);
+	loadgame(CVideo& video, const config& game_config, saved_game& gamestate);
 	virtual ~loadgame() {}
 
 	/* In any of the following three function, a bool value of false indicates
@@ -76,7 +76,7 @@ private:
 	void copy_era(config& cfg);
 
 	const config& game_config_;
-	display& gui_;
+	CVideo& video_;
 
 	saved_game& gamestate_; /** Primary output information. */
 	std::string filename_; /** Name of the savefile to be loaded. */

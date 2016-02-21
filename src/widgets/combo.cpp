@@ -16,10 +16,10 @@
 
 #include "global.hpp"
 
+#include "construct_dialog.hpp"
 #include "widgets/combo.hpp"
-#include "display.hpp"
-#include "show_dialog.hpp"
 
+class CVideo;
 
 namespace gui {
 
@@ -29,9 +29,9 @@ const int combo::font_size = font::SIZE_SMALL;
 const int combo::horizontal_padding = 10;
 const int combo::vertical_padding = 10;
 
-combo::combo(display& disp, const std::vector<std::string>& items)
-	: button(disp.video(), items.empty() ? empty_combo_label : items[0]),
-	  items_(items), selected_(0), oldSelected_(0), disp_(&disp)
+combo::combo(CVideo& video, const std::vector<std::string>& items)
+	: button(video, items.empty() ? empty_combo_label : items[0]),
+	  items_(items), selected_(0), oldSelected_(0), video_(&video)
 {
 }
 
@@ -74,8 +74,9 @@ void combo::set_selected(int val)
 void combo::make_drop_down_menu()
 {
 	SDL_Rect const &loc = location();
-	set_selected_internal(gui::show_dialog(*disp_, NULL, "", "", gui::MESSAGE, &items_,
-	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h));
+	set_selected_internal(gui::show_dialog(*video_, NULL, "", "", gui::MESSAGE, &items_,
+	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h,
+	                                       &gui::dialog::hotkeys_style));
 }
 
 void combo::process_event()

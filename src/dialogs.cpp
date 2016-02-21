@@ -220,7 +220,7 @@ int advance_unit_dialog(const map_location &loc)
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		gui::dialog advances = gui::dialog(*resources::screen,
+		gui::dialog advances = gui::dialog(resources::screen->video(),
 				      _("Advance Unit"),
 		                      _("What should our victorious unit become?"),
 		                      gui::OK_ONLY);
@@ -402,7 +402,7 @@ void show_unit_list(display& gui)
 		dialogs::units_list_preview_pane unit_preview(units_list);
 		unit_preview.set_selection(selected);
 
-		gui::dialog umenu(gui, _("Unit List"), "", gui::NULL_DIALOG);
+		gui::dialog umenu(gui.video(), _("Unit List"), "", gui::NULL_DIALOG);
 		umenu.set_menu(items, &sorter);
 		umenu.add_pane(&unit_preview);
 		//sort by type name
@@ -440,11 +440,11 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(1);
 
-	gui::dialog rmenu(disp, _("Recruit") + title_suffix,
+	gui::dialog rmenu(disp.video(), _("Recruit") + title_suffix,
 			  _("Select unit:") + std::string("\n"),
 			  gui::OK_CANCEL,
 			  gui::dialog::default_style);
-	rmenu.add_button(new help::help_button(disp, "recruit_and_recall"),
+	rmenu.add_button(new help::help_button(disp.video(), "recruit_and_recall"),
 		gui::dialog::BUTTON_HELP);
 
 	gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
@@ -554,7 +554,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 		options_to_filter.push_back(option_to_filter.str());
 	}
 
-	gui::dialog rmenu(disp, _("Recall") + title_suffix,
+	gui::dialog rmenu(disp.video(), _("Recall") + title_suffix,
 		_("Select unit:") + std::string("\n"),
 		gui::OK_CANCEL, gui::dialog::default_style);
 
@@ -574,7 +574,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 	gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
 	rmenu.add_button(delete_button);
 
-	rmenu.add_button(new help::help_button(disp,"recruit_and_recall"),
+	rmenu.add_button(new help::help_button(disp.video(), "recruit_and_recall"),
 		gui::dialog::BUTTON_HELP);
 
 	dialogs::units_list_preview_pane unit_preview(units, filter);
@@ -1057,8 +1057,9 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 
 void units_list_preview_pane::process_event()
 {
+	assert(resources::screen);
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		help::show_unit_description(*units_->at(index_));
+		help::show_unit_description(resources::screen->video(), *units_->at(index_));
 	}
 }
 
@@ -1143,30 +1144,31 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 
 void unit_types_preview_pane::process_event()
 {
+	assert(resources::screen);
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
 		if (type != NULL)
-			help::show_unit_description(*type);
+			help::show_unit_description(resources::screen->video(), *type);
 	}
 }
 
-static network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
+static network::connection network_data_dialog(CVideo& video, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
 {
 	const size_t width = 300;
 	const size_t height = 80;
 	const size_t border = 20;
-	const int left = disp.w()/2 - width/2;
-	const int top  = disp.h()/2 - height/2;
+	const int left = video.getx()/2 - width/2;
+	const int top  = video.gety()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 
-	gui::button cancel_button(disp.video(),_("Cancel"));
+	gui::button cancel_button(video, _("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, true, &buttons_ptr);
+	gui::dialog_frame frame(video, msg, gui::dialog_frame::default_style, true, &buttons_ptr);
 	SDL_Rect centered_layout = frame.layout(left,top,width,height).interior;
-	centered_layout.x = disp.w() / 2 - centered_layout.w / 2;
-	centered_layout.y = disp.h() / 2 - centered_layout.h / 2;
+	centered_layout.x = video.getx() / 2 - centered_layout.w / 2;
+	centered_layout.y = video.gety() / 2 - centered_layout.h / 2;
 	// HACK: otherwise we get an empty useless space in the dialog below the progressbar
 	centered_layout.h = height;
 	frame.layout(centered_layout);
@@ -1177,11 +1179,11 @@ static network::connection network_data_dialog(display& disp, const std::string&
 			, centered_layout.w - border * 2
 			, centered_layout.h - border * 2);
 
-	gui::progress_bar progress(disp.video());
+	gui::progress_bar progress(video);
 	progress.set_location(progress_rect);
 
 	events::raise_draw_event();
-	disp.flip();
+	video.flip();
 
 	network::statistics old_stats = get_stats(connection_num);
 
@@ -1198,7 +1200,7 @@ static network::connection network_data_dialog(display& disp, const std::string&
 		}
 
 		events::raise_draw_event();
-		disp.flip();
+		video.flip();
 		events::pump();
 
 		if(res != 0) {
@@ -1214,13 +1216,13 @@ static network::connection network_data_dialog(display& disp, const std::string&
 
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
 {
-	return network_data_dialog(disp, msg, cfg, connection_num,
+	return network_data_dialog(disp.video(), msg, cfg, connection_num,
 							   network::get_send_stats);
 }
 
-network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
+network::connection network_receive_dialog(CVideo& v, const std::string& msg, config& cfg, network::connection connection_num)
 {
-	return network_data_dialog(disp, msg, cfg, connection_num,
+	return network_data_dialog(v, msg, cfg, connection_num,
 							   network::get_receive_stats);
 }
 
@@ -1231,19 +1233,19 @@ namespace {
 class connect_waiter : public threading::waiter
 {
 public:
-	connect_waiter(display& disp, gui::button& button) : disp_(disp), button_(button)
+	connect_waiter(CVideo& v, gui::button& button) : v_(v), button_(button)
 	{}
 	ACTION process();
 
 private:
-	display& disp_;
+	CVideo& v_;
 	gui::button& button_;
 };
 
 connect_waiter::ACTION connect_waiter::process()
 {
 	events::raise_draw_event();
-	disp_.flip();
+	v_.flip();
 	events::pump();
 	if(button_.pressed()) {
 		return ABORT;
@@ -1257,26 +1259,26 @@ connect_waiter::ACTION connect_waiter::process()
 namespace dialogs
 {
 
-network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port)
+network::connection network_connect_dialog(CVideo& v, const std::string& msg, const std::string& hostname, int port)
 {
 	const size_t width = 250;
 	const size_t height = 20;
-	const int left = disp.w()/2 - width/2;
-	const int top  = disp.h()/2 - height/2;
+	const int left = v.getx()/2 - width/2;
+	const int top  = v.gety()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 
-	gui::button cancel_button(disp.video(),_("Cancel"));
+	gui::button cancel_button(v,_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, true, &buttons_ptr);
+	gui::dialog_frame frame(v, msg, gui::dialog_frame::default_style, true, &buttons_ptr);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
 	events::raise_draw_event();
-	disp.flip();
+	v.flip();
 
-	connect_waiter waiter(disp,cancel_button);
+	connect_waiter waiter(v,cancel_button);
 	return network::connect(hostname,port,waiter);
 }
 

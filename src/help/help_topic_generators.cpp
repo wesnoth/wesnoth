@@ -261,13 +261,13 @@ std::string unit_topic_generator::operator()() const {
 
 		// TODO: figure out why the second checks don't match but the last does
 		if (!male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image") {
-			ss << "<img>src='" << male_portrait << "' box='no' align='right' float='yes'</img> ";
+			ss << "<img>src='" << male_portrait << "~FL(horiz)' box='no' align='right' float='yes'</img> ";
 		}
 
 		ss << "\n\n";
 
 		if (!female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image") {
-			ss << "<img>src='" << female_portrait << "' box='no' align='right' float='yes'</img> ";
+			ss << "<img>src='" << female_portrait << "~FL(horiz)' box='no' align='right' float='yes'</img> ";
 		}
 
 		ss << "\n";
@@ -567,7 +567,7 @@ std::string unit_topic_generator::operator()() const {
 			std::string lang_weapon = string_table["type_" + dam_it->first];
 			push_tab_pair(row, lang_weapon);
 			std::stringstream str;
-			str << "<format>color=" << color << " text='"<< resist << "'</format>";
+			str << "<format>color=\"" << color << "\" text='"<< resist << "'</format>";
 			const std::string markup = str.str();
 			str.str(clear_stringstream);
 			str << resist;

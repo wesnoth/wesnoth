@@ -17,6 +17,8 @@
 
 #include "gui/widgets/window.hpp"
 
+#include <boost/bind.hpp>
+
 namespace gui2
 {
 
@@ -30,9 +32,25 @@ void dialog_callback(twidget& caller)
 {
 	D* dialog = dynamic_cast<D*>(caller.dialog());
 	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller.get_window());
+	twindow* window = caller.get_window();
 	assert(window);
 	(dialog->*fptr)(*window);
+}
+
+typedef boost::function<void(twindow &)> dialog_member_func_type;
+
+inline void make_dialog_callback_helper(const dialog_member_func_type & t, 
+		twidget & caller)
+{
+	twindow * window = caller.get_window();
+	assert(window);
+	t(*window);
+}
+
+inline boost::function<void(twidget &)> make_dialog_callback(
+		dialog_member_func_type func)
+{
+	return boost::bind(make_dialog_callback_helper, func, _1);
 }
 
 } // namespace gui2

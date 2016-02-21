@@ -3,14 +3,27 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
 Version 1.13.2+dev:
+ * SDL 2 is now used by default when building. This fixes the following bugs,
+   among others:
+   * Color cursors cause slow mouse movement at menus (bug #18112).
+   * Cursor not mapping correctly on Retina display when in windowed mode
+     (bug #20332).
+   * UI graphics garbled on Apple OS X 10.11 El Capitan (bug #23918).
+
+ * Graphics:
+   * Improved or new terrain graphics: Stones with Sand Drifts, Igloo Village,
+     Adobe Village.
+
  * Language and i18n:
-   * Updated translations: British English, Russian, Swedish.
+   * New translation: Asturian
+   * Updated translations: British English, Galician, Russian, Swedish.
 
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
      relocate the log file to a path with Unicode characters (bug #22897,
      definitely fixed this time).
+   * Decreased high memory consumption caused by the animated water.
 
 
 Version 1.13.2:

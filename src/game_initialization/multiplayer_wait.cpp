@@ -19,7 +19,7 @@
 #include "game_config_manager.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "game_display.hpp"
+#include "image.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "mp_game_utils.hpp"
@@ -28,10 +28,12 @@
 #include "saved_game.hpp"
 #include "mp_ui_alerts.hpp"
 #include "scripting/plugins/context.hpp"
+#include "sdl/rect.hpp"
 #include "unit_types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "video.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -58,13 +60,13 @@ const int leader_pane_border = 10;
 
 namespace mp {
 
-wait::leader_preview_pane::leader_preview_pane(game_display& disp,
+wait::leader_preview_pane::leader_preview_pane(CVideo& v,
 	ng::flg_manager& flg, const std::string& color) :
-	gui::preview_pane(disp.video()),
+	gui::preview_pane(v),
 	flg_(flg),
 	color_(color),
-	combo_leader_(disp, std::vector<std::string>()),
-	combo_gender_(disp, std::vector<std::string>())
+	combo_leader_(v, std::vector<std::string>()),
+	combo_gender_(v, std::vector<std::string>())
 {
 	flg_.reset_leader_combo(combo_leader_, color_);
 	flg_.reset_gender_combo(combo_gender_, color_);
@@ -192,12 +194,12 @@ sdl_handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(game_display& disp, const config& cfg, saved_game& state,
+wait::wait(CVideo& v, const config& cfg, saved_game& state,
 	mp::chat& c, config& gamelist, const bool first_scenario) :
-	ui(disp, _("Game Lobby"), cfg, c, gamelist),
-	cancel_button_(disp.video(), first_scenario ? _("Cancel") : _("Quit")),
-	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
-	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
+	ui(v, _("Game Lobby"), cfg, c, gamelist),
+	cancel_button_(video(), first_scenario ? _("Cancel") : _("Quit")),
+	start_label_(video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
+	game_menu_(video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
 	level_(),
 	state_(state),
 	first_scenario_(first_scenario),
@@ -364,10 +366,10 @@ void wait::join_game(bool observe)
 
 
 			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(disp(), flg, color);
+			leader_preview_pane leader_selector(video(), flg, color);
 			preview_panes.push_back(&leader_selector);
 
-			const int faction_choice = gui::show_dialog(disp(), NULL,
+			const int faction_choice = gui::show_dialog(video(), NULL,
 				_("Choose your faction:"), _("Starting position: ") +
 				lexical_cast<std::string>(side_num + 1), gui::OK_CANCEL,
 				&choices, &preview_panes);
@@ -432,7 +434,7 @@ void wait::process_network_data(const config& data, const network::connection so
 	ui::process_network_data(data, sock);
 
 	if(!data["message"].empty()) {
-		gui2::show_transient_message(disp().video()
+		gui2::show_transient_message(video()
 				, _("Response")
 				, data["message"]);
 	}
@@ -625,7 +627,7 @@ bool wait::download_level_data()
 	while (!has_scenario_and_controllers) {
 		config revc;
 		network::connection data_res = dialogs::network_receive_dialog(
-			disp(), _("Getting game data..."), revc);
+			video(), _("Getting game data..."), revc);
 
 		if (!data_res) {
 			DBG_MP << "download_level_data bad results\n";

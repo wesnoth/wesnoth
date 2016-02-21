@@ -17,7 +17,7 @@
 #ifndef INTRO_HPP_INCLUDED
 #define INTRO_HPP_INCLUDED
 
-class display;
+class CVideo;
 
 #include <string>
 
@@ -30,6 +30,6 @@ class display;
  * @param duration In milliseconds, for how much time the text will
  *                 be displayed on screen.
  */
-void the_end(display &disp, std::string text, unsigned int duration);
+void the_end(CVideo &video, std::string text, unsigned int duration);
 
 #endif /* ! INTRO_HPP_INCLUDED */

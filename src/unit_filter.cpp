@@ -122,16 +122,14 @@ public:
 		while(cond != cond_end)
 		{
 			const std::string& cond_name = cond.get_key();
-
-			try {
-				conditional::TYPE type = conditional::TYPE::string_to_enum(cond_name); // throws bad_enum_cast if we don't get a string match with any enum
-
+			conditional::TYPE type;
+			if(type.parse(cond_name)) {
 				const vconfig& cond_filter = cond.get_child();
 
 				cond_children_.push_back(unit_filter(cond_filter, &fc_, use_flat_tod_));
-				cond_child_types_.push_back(type);
-			} catch (bad_enum_cast &) { // this means it isn't a conditional filter tag
-
+				cond_child_types_.push_back(type);			
+			}
+			else {
 				static const int NUM_VALID_TAGS = 5;
 				static const std::string valid_tags[NUM_VALID_TAGS] = {
 					"filter_vision",
@@ -147,6 +145,7 @@ public:
 					errmsg << "encountered a child [" << cond_name << "] of a standard unit filter, it is being ignored";
 					DBG_CF << errmsg.str() << std::endl; //FAIL( errmsg.str() );
 				}
+
 			}
 			++cond;
 		}

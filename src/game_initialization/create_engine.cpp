@@ -17,7 +17,6 @@
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_generator.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
@@ -389,7 +388,7 @@ int campaign::max_players() const
 	return max_players_;
 }
 
-create_engine::create_engine(game_display& disp, saved_game& state) :
+create_engine::create_engine(CVideo& v, saved_game& state) :
 	current_level_type_(),
 	current_level_index_(0),
 	current_era_index_(0),
@@ -407,7 +406,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	eras_(),
 	mods_(),
 	state_(state),
-	disp_(disp),
+	video_(v),
 	dependency_manager_(NULL),
 	generator_(NULL)
 {
@@ -421,7 +420,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_connect = connect;
 	game_config_manager::get()->load_game_config_for_create(type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 	//Initilialize dependency_manager_ after refreshing game config.
-	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, disp.video()));
+	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, video_));
 	//TODO the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, filesystem::FILE_NAME_ONLY);
@@ -619,7 +618,7 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	// We don't pass the difficulties vector here because additional data is required
 	// to constrict the dialog
 	gui2::tcampaign_difficulty dlg(current_level().data());
-	dlg.show(disp_.video());
+	dlg.show(video_);
 
 	return dlg.selected_difficulty();
 }
@@ -853,9 +852,9 @@ bool create_engine::generator_assigned() const
 	return generator_ != NULL;
 }
 
-void create_engine::generator_user_config(display& disp)
+void create_engine::generator_user_config(CVideo& v)
 {
-	generator_->user_config(disp);
+	generator_->user_config(v);
 }
 
 int create_engine::find_level_by_id(const std::string& id) const

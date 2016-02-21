@@ -131,6 +131,11 @@ public:
 		history_ = ttext_history::get_history(id, true);
 	}
 
+	void clear()
+	{
+		set_value("");
+	}
+
 protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 

@@ -29,7 +29,6 @@
 #include "game_preferences.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "dialogs.hpp"
 #include "unit_helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
@@ -476,6 +475,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	// Add the unit to the board.
 	std::pair<unit_map::iterator, bool> add_result = resources::units->replace(loc, created);
 	resources::screen->invalidate_unit();
+	resources::game_events->pump().fire("unit placed", loc);
 	unit_display::unit_recruited(loc);
 
 	// Village capture?

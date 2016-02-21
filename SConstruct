@@ -179,6 +179,12 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
+SDL2_version = '';
+if env["PLATFORM"] is "win32" or env["PLATFORM"] is "cygwin" or env["PLATFORM"] is "darwin":
+    SDL2_version = '2.0.4';
+else:
+    SDL2_version = '2.0.2';
+
 
 Help("""Arguments may be a mixture of switches and targets in any order.
 Switches apply to the entire build regardless of where they are in the order.
@@ -360,12 +366,12 @@ if env["prereqs"]:
     if env['sdl2']:
         def have_sdl_net():
             return \
-                conf.CheckSDL(require_version = '2.0.0') & \
+                conf.CheckSDL(require_version = SDL2_version) & \
                 conf.CheckSDL("SDL2_net", header_file = "SDL_net")
 
         def have_sdl_other():
             return \
-                conf.CheckSDL(require_version = '2.0.0') & \
+                conf.CheckSDL(require_version = SDL2_version) & \
                 conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
                 conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
                 conf.CheckSDL("SDL2_image", header_file = "SDL_image")

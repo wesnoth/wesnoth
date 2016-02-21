@@ -81,6 +81,9 @@ public:
 			reports & reports_object,
 			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
+	/// Returns the display object if a display object exists. Otherwise it returns NULL.
+	/// the display object represents the game gui which handles themewml and drawing the map.
+	/// A display object only exists during a game or while the mapeditor is running.
 	static display* get_singleton() { return singleton_ ;}
 
 	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
@@ -144,7 +147,7 @@ public:
 	 * One tile may have multiple overlays.
 	 */
 	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",
+		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
 		bool visible_under_fog = true);
 
 	/** remove_overlay will remove all overlays on a tile. */
@@ -498,9 +501,6 @@ public:
 
 	void set_diagnostic(const std::string& msg);
 
-	/** Delay routines: use these not SDL_Delay (for --nogui). */
-	void delay(unsigned int milliseconds) const;
-
 	/**
 	 * Set/Get whether 'turbo' mode is on.
 	 * When turbo mode is on, everything moves much faster.
@@ -834,9 +834,6 @@ protected:
 
 	/** Local cache for preferences::animate_map, since it is constantly queried. */
 	bool animate_map_;
-
-	/** Local cache for preferences "local_tod_lighting" */
-	bool local_tod_light_;
 
 private:
 

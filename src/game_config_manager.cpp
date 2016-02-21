@@ -32,6 +32,8 @@
 #include "terrain_type_data.hpp"
 #include "unit_types.hpp"
 #include "version.hpp"
+#include "theme.hpp"
+#include "image.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
@@ -45,10 +47,10 @@ static game_config_manager * singleton;
 
 game_config_manager::game_config_manager(
 		const commandline_options& cmdline_opts,
-		game_display& display,
+		CVideo& video,
 		const bool jump_to_editor) :
 	cmdline_opts_(cmdline_opts),
-	disp_(display),
+	video_(video),
 	jump_to_editor_(jump_to_editor),
 	game_config_(),
 	old_defines_map_(),
@@ -136,7 +138,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		}
 	}
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(disp_.video());
+	loadscreen::global_loadscreen_manager loadscreen_manager(video_);
 	cursor::setter cur(cursor::WAIT);
 
 	// The loadscreen will erase the titlescreen.
@@ -189,7 +191,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 						_("Error validating data core."),
 						_("Found a core without id attribute.")
 						+ '\n' +  _("Skipping the core."),
-						disp_.video());
+						video_);
 				continue;
 			}
 			if (*&valid_cores.find_child("core", "id", id)) {
@@ -198,7 +200,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 						_("Core ID: ") + id
 						+ '\n' + _("The ID is already in use.")
 						+ '\n' + _("Skipping the core."),
-						disp_.video());
+						video_);
 				continue;
 			}
 
@@ -210,7 +212,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 						+ '\n' + _("Core Path: ") + path
 						+ '\n' + _("File not found.")
 						+ '\n' + _("Skipping the core."),
-						disp_.video());
+						video_);
 				continue;
 			}
 
@@ -231,7 +233,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 					_("Core ID: ") + preferences::core_id()
 					+ '\n' + _("Error loading the core with named id.")
 					+ '\n' + _("Falling back to the default core."),
-					disp_.video());
+					video_);
 			preferences::set_core_id("default");
 		}
 
@@ -241,7 +243,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 					_("Error loading core data."),
 					_("Can't locate the default core.")
 					+ '\n' + _("The game will now exit."),
-					disp_.video());
+					video_);
 			throw;
 		}
 
@@ -302,19 +304,19 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			game_config::no_addons = true;
 			gui2::twml_error::display(
 					_("Error loading custom game configuration files. The game will try without loading add-ons."),
-					e.message, disp_.video());
+					e.message, video_);
 			load_game_config(force_reload, classification);
 		} else if (preferences::core_id() != "default") {
 			gui2::twml_error::display(
 					_("Error loading custom game configuration files. The game will fallback to the default core files."),
-					e.message, disp_.video());
+					e.message, video_);
 			preferences::set_core_id("default");
 			game_config::no_addons = false;
 			load_game_config(force_reload, classification);
 		} else {
 			gui2::twml_error::display(
 					_("Error loading default core game configuration files. The game will now exit."),
-					e.message, disp_.video());
+					e.message, video_);
 			throw;
 		}
 	}
@@ -450,7 +452,7 @@ void game_config_manager::load_addons_cfg()
 		const std::string& report = utils::join(error_log, "\n\n");
 
 		gui2::twml_error::display(msg1, msg2, error_addons, report,
-								  disp_.video());
+								  video_);
 	}
 }
 

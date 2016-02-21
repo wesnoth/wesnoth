@@ -77,6 +77,8 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		911F2DAD1BA086A400E3102E /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAB1BA086A400E3102E /* window.cpp */; };
 		911F2DB01BA086FA00E3102E /* alpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAE1BA086F900E3102E /* alpha.cpp */; };
+		9130A4601C73BB6100852782 /* select_orb_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9130A45E1C73BB6100852782 /* select_orb_colors.cpp */; };
+		9130A4611C73BB6100852782 /* select_orb_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9130A45E1C73BB6100852782 /* select_orb_colors.cpp */; };
 		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
 		919B37FC1BAF7A9D00E0094C /* synced_choice_wait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */; };
 		91B6217C1B74E6D200B00E0F /* label_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B6217A1B74E6D100B00E0F /* label_settings.cpp */; };
@@ -121,6 +123,16 @@
 		91B622241B76C0F400B00E0F /* libboost_threadw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_threadw.dylib */; };
 		91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D01BA11A5200B25CF1 /* unit_creator.cpp */; };
 		91ECD5D51BA11A6400B25CF1 /* mp_replay_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D31BA11A6400B25CF1 /* mp_replay_controller.cpp */; };
+		91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462821C71139B0050A9C9 /* preferences_dialog.cpp */; };
+		91F462851C71139C0050A9C9 /* preferences_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462821C71139B0050A9C9 /* preferences_dialog.cpp */; };
+		91F462881C7115C50050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462861C7115C50050A9C9 /* combobox.cpp */; };
+		91F462891C7115C50050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462861C7115C50050A9C9 /* combobox.cpp */; };
+		91F4628C1C7116C40050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F4628A1C7116C40050A9C9 /* combobox.cpp */; };
+		91F4628D1C7116C40050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F4628A1C7116C40050A9C9 /* combobox.cpp */; };
+		91F462901C7116E30050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F4628E1C7116E30050A9C9 /* combobox.cpp */; };
+		91F462911C7116E30050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F4628E1C7116E30050A9C9 /* combobox.cpp */; };
+		91F462941C7117400050A9C9 /* drop_down_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462921C7117400050A9C9 /* drop_down_list.cpp */; };
+		91F462951C7117400050A9C9 /* drop_down_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462921C7117400050A9C9 /* drop_down_list.cpp */; };
 		B504B94C1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		B504B94D1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		B508D13F10013BF900B12852 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508D13E10013BF900B12852 /* Growl.framework */; };
@@ -1254,6 +1266,8 @@
 		911F2DAE1BA086F900E3102E /* alpha.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alpha.cpp; sourceTree = "<group>"; };
 		911F2DAF1BA086FA00E3102E /* alpha.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alpha.hpp; sourceTree = "<group>"; };
 		911F2DB11BA0870E00E3102E /* compat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compat.hpp; sourceTree = "<group>"; };
+		9130A45E1C73BB6100852782 /* select_orb_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = select_orb_colors.cpp; sourceTree = "<group>"; };
+		9130A45F1C73BB6100852782 /* select_orb_colors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = select_orb_colors.hpp; sourceTree = "<group>"; };
 		919B37F71BAF789D00E0094C /* synced_user_choice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_user_choice.cpp; sourceTree = "<group>"; };
 		919B37F91BAF78AB00E0094C /* synced_user_choice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_user_choice.hpp; sourceTree = "<group>"; };
 		919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_choice_wait.cpp; sourceTree = "<group>"; };
@@ -1374,6 +1388,16 @@
 		91ECD5D11BA11A5200B25CF1 /* unit_creator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_creator.hpp; sourceTree = "<group>"; };
 		91ECD5D31BA11A6400B25CF1 /* mp_replay_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_replay_controller.cpp; sourceTree = "<group>"; };
 		91ECD5D41BA11A6400B25CF1 /* mp_replay_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_replay_controller.hpp; sourceTree = "<group>"; };
+		91F462821C71139B0050A9C9 /* preferences_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = preferences_dialog.cpp; sourceTree = "<group>"; };
+		91F462831C71139B0050A9C9 /* preferences_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = preferences_dialog.hpp; sourceTree = "<group>"; };
+		91F462861C7115C50050A9C9 /* combobox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
+		91F462871C7115C50050A9C9 /* combobox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = combobox.hpp; sourceTree = "<group>"; };
+		91F4628A1C7116C40050A9C9 /* combobox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
+		91F4628B1C7116C40050A9C9 /* combobox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = combobox.hpp; sourceTree = "<group>"; };
+		91F4628E1C7116E30050A9C9 /* combobox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
+		91F4628F1C7116E30050A9C9 /* combobox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = combobox.hpp; sourceTree = "<group>"; };
+		91F462921C7117400050A9C9 /* drop_down_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drop_down_list.cpp; sourceTree = "<group>"; };
+		91F462931C7117400050A9C9 /* drop_down_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drop_down_list.hpp; sourceTree = "<group>"; };
 		B504B94A1284C06B00261FE9 /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
 		B504B94B1284C06B00261FE9 /* tips.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tips.hpp; sourceTree = "<group>"; };
 		B508D13E10013BF900B12852 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = lib/Growl.framework; sourceTree = "<group>"; };
@@ -3487,6 +3511,8 @@
 			children = (
 				B54AC7480FEC3CF9006F6FBD /* button.cpp */,
 				B54AC7490FEC3CF9006F6FBD /* button.hpp */,
+				91F4628A1C7116C40050A9C9 /* combobox.cpp */,
+				91F4628B1C7116C40050A9C9 /* combobox.hpp */,
 				B54AC6EB0FEA9F7A006F6FBD /* control.cpp */,
 				B54AC6EC0FEA9F7A006F6FBD /* control.hpp */,
 				4944F40A1354FB610027E614 /* drawing.cpp */,
@@ -3950,6 +3976,8 @@
 				91B621DA1B76B6E600B00E0F /* depcheck_select_new.hpp */,
 				B5A9BCB20ECA805A002BE442 /* dialog.cpp */,
 				B5A9BCB30ECA805A002BE442 /* dialog.hpp */,
+				91F462921C7117400050A9C9 /* drop_down_list.cpp */,
+				91F462931C7117400050A9C9 /* drop_down_list.hpp */,
 				B5CE470112A041EF00D665EE /* edit_label.cpp */,
 				B5CE470212A041EF00D665EE /* edit_label.hpp */,
 				497455CC174066A800E89E30 /* edit_text.cpp */,
@@ -4018,8 +4046,12 @@
 				F4EF0D7213AD52EA003C701D /* network_transmission.hpp */,
 				4944F4101354FB970027E614 /* popup.cpp */,
 				F40C04831706613100B4DA68 /* popup.hpp */,
+				91F462821C71139B0050A9C9 /* preferences_dialog.cpp */,
+				91F462831C71139B0050A9C9 /* preferences_dialog.hpp */,
 				EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */,
 				EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */,
+				9130A45E1C73BB6100852782 /* select_orb_colors.cpp */,
+				9130A45F1C73BB6100852782 /* select_orb_colors.hpp */,
 				B5CE470312A041EF00D665EE /* simple_item_selector.cpp */,
 				B5CE470412A041EF00D665EE /* simple_item_selector.hpp */,
 				919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */,
@@ -4050,6 +4082,8 @@
 				B5A9BCEA0ECA805A002BE442 /* button.cpp */,
 				B5A9BCEB0ECA805A002BE442 /* button.hpp */,
 				B5CF7BBE10D55F7B00A8BEB5 /* clickable.hpp */,
+				91F462861C7115C50050A9C9 /* combobox.cpp */,
+				91F462871C7115C50050A9C9 /* combobox.hpp */,
 				B5A9BCEE0ECA805A002BE442 /* container.cpp */,
 				B5A9BCEF0ECA805A002BE442 /* container.hpp */,
 				B5A9BCF00ECA805A002BE442 /* control.cpp */,
@@ -4194,6 +4228,8 @@
 			children = (
 				B5FCE8E71104C2A50081F1DF /* button.cpp */,
 				B5FCE8E81104C2A50081F1DF /* button.hpp */,
+				91F4628E1C7116E30050A9C9 /* combobox.cpp */,
+				91F4628F1C7116E30050A9C9 /* combobox.hpp */,
 				4944F4181354FBCD0027E614 /* drawing.cpp */,
 				F419E48A133551170031448A /* drawing.hpp */,
 				B5FCE8E91104C2A50081F1DF /* horizontal_scrollbar.cpp */,
@@ -5026,6 +5062,12 @@
 				911F2DB01BA086FA00E3102E /* alpha.cpp in Sources */,
 				919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */,
 				919B37FC1BAF7A9D00E0094C /* synced_choice_wait.cpp in Sources */,
+				91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */,
+				91F462881C7115C50050A9C9 /* combobox.cpp in Sources */,
+				91F4628C1C7116C40050A9C9 /* combobox.cpp in Sources */,
+				91F462901C7116E30050A9C9 /* combobox.cpp in Sources */,
+				91F462941C7117400050A9C9 /* drop_down_list.cpp in Sources */,
+				9130A4601C73BB6100852782 /* select_orb_colors.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5349,6 +5391,12 @@
 				B5FCE93A1104C2A50081F1DF /* window.cpp in Sources */,
 				B597C5A40FACD6CA00CE81F5 /* wml_exception.cpp in Sources */,
 				B597C57B0FACD6CA00CE81F5 /* wml_message.cpp in Sources */,
+				91F462851C71139C0050A9C9 /* preferences_dialog.cpp in Sources */,
+				91F462891C7115C50050A9C9 /* combobox.cpp in Sources */,
+				91F4628D1C7116C40050A9C9 /* combobox.cpp in Sources */,
+				91F462911C7116E30050A9C9 /* combobox.cpp in Sources */,
+				91F462951C7117400050A9C9 /* drop_down_list.cpp in Sources */,
+				9130A4611C73BB6100852782 /* select_orb_colors.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

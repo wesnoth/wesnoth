@@ -189,7 +189,7 @@ public:
 //if a menu is given, then returns -1 if the dialog was canceled, and the
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed
-int show_dialog(display &screen, surface image,
+int show_dialog(CVideo& video, surface image,
 				const std::string& caption, const std::string& message,
 				DIALOG_TYPE type=MESSAGE,
 				const std::vector<std::string>* menu_items=NULL,

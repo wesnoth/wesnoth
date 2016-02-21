@@ -129,6 +129,7 @@ twidget* tgrid::swap_child(const std::string& id,
 		old->set_parent(new_parent);
 
 		widget->set_parent(this);
+		widget->set_visible(old->get_visible());
 		child.set_widget(widget);
 
 		return old;

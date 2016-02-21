@@ -17,7 +17,6 @@
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
@@ -33,8 +32,8 @@ static lg::log_domain log_addons_client("addons-client");
 #define LOG_ADDONS LOG_STREAM(info,  log_addons_client)
 #define DBG_ADDONS LOG_STREAM(debug, log_addons_client)
 
-addons_client::addons_client(display& disp, const std::string& address)
-	: disp_(disp)
+addons_client::addons_client(CVideo& v, const std::string& address)
+	: v_(v)
 	, addr_(address)
 	, host_()
 	, port_()
@@ -211,7 +210,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	i18n_symbols["addon_title"] = info.title;
 
 	if(!check_names_legal(archive_cfg)) {
-		gui2::show_error_message(disp_.video(),
+		gui2::show_error_message(v_,
 			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be installed.", i18n_symbols));
 		return false;
@@ -306,7 +305,7 @@ void addons_client::wait_for_transfer_done(const std::string& status_message, bo
 		stat_->set_track_upload(track_upload);
 	}
 
-	if(!stat_->show(disp_.video())) {
+	if(!stat_->show(v_)) {
 		// Notify the caller chain that the user aborted the operation.
 		throw user_exit();
 	}

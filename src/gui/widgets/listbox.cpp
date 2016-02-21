@@ -98,6 +98,9 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 	}
 
 	int height_reduced = 0;
+	//TODO: Fix this for horizinal listboxes
+	//Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
+	int row_pos = generator_->item(row).get_y()  - content_grid_->get_y();
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != tvisible::invisible) {
 			height_reduced += generator_->item(row).get_height();
@@ -105,8 +108,10 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 		generator_->delete_item(row);
 	}
 
-	if(height_reduced != 0) {
-		resize_content(0, -height_reduced);
+	if(height_reduced != 0 && get_item_count() != 0) {
+		resize_content(0, -height_reduced, 0, row_pos);
+	} else {
+		update_content_size();
 	}
 }
 
@@ -296,13 +301,15 @@ void tlistbox::place(const tpoint& origin, const tpoint& size)
 }
 
 void tlistbox::resize_content(const int width_modification,
-							  const int height_modification)
+							  const int height_modification,
+							  const int width_modification_pos,
+							  const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
 			  << " width_modification " << width_modification
 			  << " height_modification " << height_modification << ".\n";
 
-	if(content_resize_request(width_modification, height_modification)) {
+	if(content_resize_request(width_modification, height_modification, width_modification_pos, height_modification_pos)) {
 
 		// Calculate new size.
 		tpoint size = content_grid()->get_size();
@@ -519,7 +526,7 @@ void tlistbox::finalize(tbuilder_grid_const_ptr header,
 	}
 	tgrid& p = find_widget<tgrid>(this, "_header_grid", false);
 	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
-		if(tselectable_* selectable = find_widget<tselectable_>(p.widget(0,i), "sort_" +  lexical_cast<std::string>(i), false, false)) {
+		if(tselectable_* selectable = find_widget<tselectable_>(&p, "sort_" +  lexical_cast<std::string>(i), false, false)) {
 			selectable->set_callback_state_change(boost::bind(&tlistbox::order_by_column, this, i, _1));
 			if(orders_.size() < max ) {
 				orders_.resize(max);

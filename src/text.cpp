@@ -24,6 +24,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "tstring.hpp"
+#include "preferences.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -404,8 +405,9 @@ ttext& ttext::set_family_class(font::family_class fclass)
 
 ttext& ttext::set_font_size(const unsigned font_size)
 {
-	if(font_size != font_size_) {
-		font_size_ = font_size;
+	unsigned int actual_size = preferences::font_scaled(font_size);
+	if(actual_size != font_size_) {
+		font_size_ = actual_size;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
 	}

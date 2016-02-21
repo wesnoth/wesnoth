@@ -72,22 +72,22 @@ void manager::init_widgets()
 			continue;
 		}
 
-		widgets_ordered_.push_back(new title_display(display_.video(), comp.cfg["name"]));
+		widgets_ordered_.push_back(new title_display(video_, comp.cfg["name"]));
 		BOOST_FOREACH (const config::any_child& c, comp.cfg.all_children_range()) {
 			const std::string id = c.cfg["id"];
 			if (c.key == "slider") {
-				widgets_ordered_.push_back(new slider_display(display_.video(), c.cfg));
+				widgets_ordered_.push_back(new slider_display(video_, c.cfg));
 			} else if (c.key == "entry") {
-				widgets_ordered_.push_back(new entry_display(display_.video(), c.cfg));
+				widgets_ordered_.push_back(new entry_display(video_, c.cfg));
 			} else if (c.key == "checkbox") {
-				widgets_ordered_.push_back(new checkbox_display(display_.video(), c.cfg));
+				widgets_ordered_.push_back(new checkbox_display(video_, c.cfg));
 			} else if (c.key == "combo") {
-				widgets_ordered_.push_back(new combo_display(display_, c.cfg));
+				widgets_ordered_.push_back(new combo_display(video_, c.cfg));
 			}
 			widgets_ordered_.back()->set_value(get_stored_value(id));
 			widgets_[id] = widgets_ordered_.back();
 		}
-		widgets_ordered_.push_back(new reset_display(display_.video(), comp.cfg["id"], *this));
+		widgets_ordered_.push_back(new reset_display(video_, comp.cfg["id"], *this));
 	}
 }
 
@@ -109,10 +109,10 @@ bool manager::has_options() const
 	return !widgets_.empty();
 }
 
-manager::manager(const config &gamecfg, game_display &display, gui::scrollpane *pane, const config &values)
+manager::manager(const config &gamecfg, CVideo &video, gui::scrollpane *pane, const config &values)
 	: options_info_()
 	, values_(values)
-	, display_(display)
+	, video_(video)
 	, pane_(pane)
 	, era_()
 	, scenario_()
@@ -523,9 +523,9 @@ void title_display::hide_children(bool hide)
 	title_->hide(hide);
 }
 
-combo_display::combo_display(game_display &display, const config &cfg) :
-	label_(new gui::label(display.video(), cfg["name"])),
-	combo_(new gui::combo(display, std::vector<std::string>())),
+combo_display::combo_display(CVideo &video, const config &cfg) :
+	label_(new gui::label(video, cfg["name"])),
+	combo_(new gui::combo(video, std::vector<std::string>())),
 	values_()
 {
 	std::vector<std::string> items;

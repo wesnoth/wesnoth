@@ -96,6 +96,8 @@ void tscrollbar_::scroll(const tscroll scroll)
 		default:
 			assert(false);
 	}
+
+	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
 void tscrollbar_::place(const tpoint& origin, const tpoint& size)
@@ -342,9 +344,12 @@ void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
 			break;
 
 		case PRESSED: {
-			const int distance = get_length_difference(mouse_, mouse);
-			mouse_ = mouse;
-			move_positioner(distance);
+			if(in_orthogonal_range(mouse)) {
+				const int distance = get_length_difference(mouse_, mouse);
+				mouse_ = mouse;
+				move_positioner(distance);
+			}
+
 		} break;
 
 		case FOCUSED:

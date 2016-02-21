@@ -55,17 +55,15 @@ REGISTER_DIALOG(addon_connect)
 
 taddon_connect::taddon_connect(std::string& host_name,
 							   const bool allow_remove,
-							   display* disp)
-	: allow_remove_(allow_remove), disp_(disp)
+							   display*)
+	: allow_remove_(allow_remove)
 {
 	register_text("host_name", false, host_name, true);
 }
 
-void taddon_connect::help_button_callback(twindow& /*window*/)
+void taddon_connect::help_button_callback(twindow& window)
 {
-	if(disp_) {
-		help::show_help(*disp_, "installing_addons");
-	}
+	help::show_help(window.video(), "installing_addons");
 }
 
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)

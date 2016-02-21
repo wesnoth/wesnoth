@@ -362,7 +362,7 @@ bool part_ui::render_floating_images()
 			{
 				if (handle_interface()) return false;
 				if (skip_) break;
-				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
+				CVideo::delay(std::min<int>(delay_step, delay - i * delay_step));
 			}
 		}
 
@@ -393,7 +393,7 @@ bool part_ui::render_floating_images()
 			{
 				if (handle_interface()) return false;
 				if (skip_) break;
-				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
+				CVideo::delay(std::min<int>(delay_step, delay - i * delay_step));
 			}
 		}
 
@@ -736,7 +736,7 @@ void part_ui::render_story_box()
 		if (handle_interface()) break;
 
 		if (!skip_ || scan_finished) {
-			disp_.delay(20);
+			CVideo::delay(20);
 		}
 	}
 
@@ -745,6 +745,20 @@ void part_ui::render_story_box()
 #else
 
 	LOG_NG<< "ENTER part_ui()::render_story_box()\n";
+	bool first = true;
+
+	render_background();
+
+	if(p_.show_title()) {
+		render_title_box();
+	}
+
+	if(!imgs_.empty()) {
+		if(!render_floating_images()) {
+			return;
+		}
+	}
+
 
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
@@ -759,11 +773,11 @@ void part_ui::render_story_box()
 	bool scan_finished = false;
 	SDL_Rect scan;
 	SDL_Rect dstrect;
-	bool first = true;
+
 
 	while(true) {
 
-		if (dirty_ || first) {
+		if (dirty_) {
 
 			render_background();
 
@@ -894,7 +908,7 @@ void part_ui::render_story_box()
 		if (handle_interface()) break;
 
 		if (!skip_ || scan_finished) {
-			disp_.delay(20);
+			CVideo::delay(20);
 		}
 
 	}
@@ -913,7 +927,7 @@ void part_ui::wait_for_input()
 	last_key_ = true;
 	skip_ = true;
 	while (!handle_interface()) {
-		disp_.delay(20);
+		CVideo::delay(20);
 	}
 }
 
@@ -991,7 +1005,12 @@ void part_ui::handle_window_event(const SDL_Event &event)
 {
 
 	if (event.type == SDL_WINDOWEVENT &&
-			(event.window.event == SDL_WINDOWEVENT_MAXIMIZED || SDL_WINDOWEVENT_RESIZED || SDL_WINDOWEVENT_EXPOSED || SDL_WINDOWEVENT_RESTORED)) {
+			(event.window.event == SDL_WINDOWEVENT_MAXIMIZED ||
+					event.window.event == SDL_WINDOWEVENT_RESIZED ||
+					event.window.event == SDL_WINDOWEVENT_EXPOSED ||
+					event.window.event == SDL_WINDOWEVENT_RESTORED)) {
+
+
 
 		this->prepare_background();
 		this->prepare_geometry();

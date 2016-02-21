@@ -131,7 +131,9 @@ private:
 	 *                            * positive values increase height.
 	 */
 	void resize_content(const int width_modification,
-						const int height_modification);
+						const int height_modification,
+						const int width__modification_pos = -1,
+						const int height_modification_pos = -1);
 
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);

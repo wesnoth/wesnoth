@@ -39,10 +39,10 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param disp    Display object on which to display a status dialog.
+	 * @param v       Target for UI rendering for the progress dialog.
 	 * @param address Add-ons server host address (i.e. localhost:15999).
 	 */
-	addons_client(display& disp, const std::string& address);
+	addons_client(CVideo& v, const std::string& address);
 
 	~addons_client();
 
@@ -134,7 +134,7 @@ public:
 	bool delete_remote_addon(const std::string& id, std::string& response_message);
 
 private:
-	display& disp_;
+	CVideo& v_;
 	std::string addr_;
 	std::string host_;
 	std::string port_;

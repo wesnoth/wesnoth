@@ -36,15 +36,15 @@ bool will_certainly_advance(const unit_map::iterator &u)
 std::string resistance_color(const int resistance)
 {
 	if (resistance < 0)
-		return std::string("red");
+		return std::string("#FF0000");
 
 	if (resistance <= 20)
-		return std::string("yellow");
+		return std::string("#FFFF00");
 
 	if (resistance <= 40)
-		return std::string("white");
+		return std::string("#FFFFFF");
 
-	return std::string("green");
+	return std::string("#00FF00");
 }
 
 }

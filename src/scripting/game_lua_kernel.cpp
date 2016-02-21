@@ -76,6 +76,7 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_race.hpp"
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
@@ -290,18 +291,26 @@ static int impl_unit_get(lua_State *L)
 	return_vector_string_attrib("extra_recruit", u.recruits());
 	return_vector_string_attrib("advances_to", u.advances_to());
 
+	if (strcmp(m, "alignment") == 0) {
+		lua_push(L, u.alignment());
+		return 1;
+	}
+
 	if (strcmp(m, "upkeep") == 0) {
-		const config::attribute_value& upkeep = u.upkeep_raw();
-		if(upkeep == "full"){
+		unit::t_upkeep upkeep = u.upkeep_raw();
+		if(boost::get<unit::upkeep_full>(&upkeep) != NULL){
 			lua_pushstring(L, "full");
 		}
+		if(boost::get<unit::upkeep_loyal>(&upkeep) != NULL){
+			lua_pushstring(L, "loyal");
+		}
 		else {
-			lua_push(L, upkeep.to_int());
+			lua_push(L, boost::get<int>(upkeep));
 		}
 		return 1;
 	}
 	if (strcmp(m, "advancements") == 0) {
-		lua_push(L, boost::iterator_range<config::const_child_iterator>(u.modification_advancements()));
+		lua_push(L, u.modification_advancements());
 		return 1;
 	}
 	if (strcmp(m, "overlays") == 0) {
@@ -375,6 +384,7 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("experience", u.set_experience(value));
 	modify_int_attrib("recall_cost", u.set_recall_cost(value));
 	modify_int_attrib("attacks_left", u.set_attacks(value));
+	modify_int_attrib("level", u.set_level(value));
 	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
@@ -385,12 +395,37 @@ static int impl_unit_set(lua_State *L)
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+	if (strcmp(m, "alignment") == 0) {
+		u.set_alignment(lua_check<unit_type::ALIGNMENT>(L, 3));
+		return 0;
+	}
+
 
 	if (strcmp(m, "advancements") == 0) {
 		u.set_advancements(lua_check<std::vector<config> >(L, 3));
 		return 0;
 	}
-
+	
+	if (strcmp(m, "upkeep") == 0) {
+		if(lua_isnumber(L, 3)) {
+			u.set_upkeep(luaL_checkint(L, 3));
+			return 0;
+		}
+		const char* v = luaL_checkstring(L, 3);
+		if(strcmp(m, "loyal") == 0) {
+			u.set_upkeep(unit::upkeep_loyal());
+		}
+		else if(strcmp(m, "full") == 0) {
+			u.set_upkeep(unit::upkeep_full());		
+		}
+		else {
+		
+			std::string err_msg = "unknown upkeep value of unit: ";
+			err_msg += v;
+			return luaL_argerror(L, 2, err_msg.c_str());
+		}
+		return 0;
+	}
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
 		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));
@@ -1648,7 +1683,7 @@ int game_lua_kernel::intf_message(lua_State *L)
 int game_lua_kernel::intf_open_help(lua_State *L)
 {
 	if (game_display_) {
-		help::show_help(*game_display_, luaL_checkstring(L, 1));
+		help::show_help(game_display_->video(), luaL_checkstring(L, 1));
 	}
 	return 0;
 }
@@ -1724,38 +1759,6 @@ static int intf_eval_conditional(lua_State *L)
 	return 1;
 }
 
-namespace {
-	/**
-	 * Cost function object relying on a Lua function.
-	 * @note The stack index of the Lua function must be valid each time the cost is computed.
-	 */
-	struct lua_calculator : pathfind::cost_calculator
-	{
-		lua_State *L;
-		int index;
-
-		lua_calculator(lua_State *L_, int i): L(L_), index(i) {}
-		double cost(const map_location &loc, const double so_far) const;
-	};
-
-	double lua_calculator::cost(const map_location &loc, const double so_far) const
-	{
-		// Copy the user function and push the location and current cost.
-		lua_pushvalue(L, index);
-		lua_pushinteger(L, loc.x + 1);
-		lua_pushinteger(L, loc.y + 1);
-		lua_pushnumber(L, so_far);
-
-		// Execute the user function.
-		if (!luaW_pcall(L, 3, 1)) return 1.;
-
-		// Return a cost of at least 1 mp to avoid issues in pathfinder.
-		// (Condition is inverted to detect NaNs.)
-		double cost = lua_tonumber(L, -1);
-		lua_pop(L, 1);
-		return !(cost >= 1.) ? 1. : cost;
-	}
-}//unnamed namespace for lua_calculator
 
 /**
  * Finds a path between two locations.
@@ -1835,7 +1838,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	}
 	else if (lua_isfunction(L, arg))
 	{
-		calc = new lua_calculator(L, arg);
+		calc = new lua_pathfind_cost_calculator(L, arg);
 	}
 
 	pathfind::teleport_map teleport_locations;
@@ -2356,6 +2359,8 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		u->set_location(loc);
 		units().insert(u);
 	}
+
+	play_controller_.pump().fire("unit placed", loc);
 
 	return 0;
 }
@@ -3453,7 +3458,7 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 
 	if (game_display_) {
 		game_display_->add_overlay(map_location(x, y), cfg["image"], cfg["halo"],
-			cfg["team_name"], cfg["visible_in_fog"].to_bool(true));
+			cfg["team_name"], cfg["name"], cfg["visible_in_fog"].to_bool(true));
 	}
 	return 0;
 }
@@ -3531,9 +3536,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	const unsigned final = SDL_GetTicks() + delay;
 	do {
 		play_controller_.play_slice(false);
-		if (game_display_) {
-			game_display_->delay(10);
-		}
+		CVideo::delay(10);
 	} while (int(final - SDL_GetTicks()) > 0);
 	return 0;
 }

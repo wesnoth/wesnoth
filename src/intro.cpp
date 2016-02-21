@@ -22,11 +22,13 @@
 
 #include "intro.hpp"
 
-#include "display.hpp"
+#include "video.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
+#include "sdl/rect.hpp"
+#include "font.hpp"
 
-void the_end(display &disp, std::string text, unsigned int duration)
+void the_end(CVideo &video, std::string text, unsigned int duration)
 {
 	//
 	// Some sane defaults.
@@ -37,11 +39,10 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		duration = 3500;
 
 	SDL_Rect area = screen_area();
-	CVideo &video = disp.video();
 	sdl::fill_rect(video.getSurface(),&area,0);
 
 	update_whole_screen();
-	disp.flip();
+	video.flip();
 
 	const size_t font_size = font::SIZE_XLARGE;
 
@@ -60,8 +61,8 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
-		disp.flip();
-		disp.delay(10);
+		video.flip();
+		CVideo::delay(10);
 	}
 
 	//
@@ -73,8 +74,8 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
-		disp.flip();
-		disp.delay(10);
+		video.flip();
+		CVideo::delay(10);
 		--count;
 	}
 }

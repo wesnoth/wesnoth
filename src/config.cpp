@@ -480,13 +480,16 @@ config &config::operator=(config &&cfg)
 }
 #endif
 
-bool config::valid_id(const std::string id)
+bool config::valid_id(const std::string& id)
 {
 	if (id.empty()) {
 		return false;
 	}
 	BOOST_FOREACH(char c, id) {
-		if (!isalnum(c) && c != '_') {
+		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
+			//valid character.
+		}
+		else {
 			return false;
 		}
 	}
@@ -525,6 +528,14 @@ void config::append_children(const config &cfg)
 
 	BOOST_FOREACH(const any_child &value, cfg.all_children_range()) {
 		add_child(value.key, value.cfg);
+	}
+}
+
+void config::append_attributes(const config &cfg)
+{
+	check_valid(cfg);
+	BOOST_FOREACH(const attribute &v, cfg.values) {
+		values[v.first] = v.second;
 	}
 }
 

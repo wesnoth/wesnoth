@@ -357,7 +357,7 @@ void tunit_create::list_item_clicked(twindow& window)
 	u_name.set_use_markup(true);
 
 	std::stringstream l_str;
-	l_str << "<span size='x-large'>" << "L " << u->level() << "</span>";
+	l_str << "<b>" << "Lvl " << u->level() << "</b>";
 
 	tlabel& l_label = find_widget<tlabel>(&window, "type_level", false);
 
@@ -436,7 +436,7 @@ void tunit_create::profile_button_callback(twindow& window)
 	const int selected_row
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
-	help::show_unit_help(*disp_,
+	help::show_unit_help(disp_->video(),
 		units_[selected_row]->id(),
 		units_[selected_row]->show_variations_in_help(), false);
 }

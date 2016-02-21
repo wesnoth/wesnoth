@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/title_screen.hpp"
 
-#include "display.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -33,12 +32,13 @@
 #include "gui/dialogs/tip.hpp"
 #endif
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
+#include "video.hpp"
 
 #include <boost/bind.hpp>
 
@@ -132,39 +132,13 @@ static bool hotkey(twindow& window, const ttitle_screen::tresult result)
 	return true;
 }
 
-ttitle_screen::ttitle_screen() : logo_timer_id_(0), debug_clock_(NULL)
+ttitle_screen::ttitle_screen() : debug_clock_(NULL)
 {
 }
 
 ttitle_screen::~ttitle_screen()
 {
-	if(logo_timer_id_) {
-		remove_timer(logo_timer_id_);
-	}
 	delete debug_clock_;
-}
-
-static void animate_logo(size_t& timer_id,
-						 unsigned& percentage,
-						 tprogress_bar& progress_bar,
-						 twindow& window)
-{
-	assert(percentage <= 100);
-	++percentage;
-	progress_bar.set_percentage(percentage);
-
-	/*
-	 * The progress bar may overlap (actually underlap) other widgets, which
-	 * the update invalidates, so make sure the whole window is redrawn to fix
-	 * this possible problem. Of course this is expensive but the logo is
-	 * animated once so the cost is only once.
-	 */
-	window.set_is_dirty(true);
-
-	if(percentage == 100) {
-		remove_timer(timer_id);
-		timer_id = 0;
-	}
 }
 
 static bool fullscreen(CVideo& video)
@@ -374,31 +348,8 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 				variant(game_config::images::game_title_background));
 	}
 
-	/***** Set the logo *****/
-	tprogress_bar* logo
-			= find_widget<tprogress_bar>(&window, "logo", false, false);
-	if(logo) {
-		/*
-		 * A 'singleton' value, since the progress bar only needs to progress
-		 * once its state needs to be global.
-		 */
-		static unsigned percentage = preferences::startup_effect() ? 0 : 100;
-		logo->set_percentage(percentage);
-
-		if(percentage < 100) {
-			/*
-			 * The interval is empirically determined  so that the speed "felt"
-			 * good.
-			 */
-			logo_timer_id_ = add_timer(30,
-									   boost::bind(animate_logo,
-												   boost::ref(logo_timer_id_),
-												   boost::ref(percentage),
-												   boost::ref(*logo),
-												   boost::ref(window)),
-									   true);
-		}
-	}
+	/***** Logo *****/
+	find_widget<timage>(&window, "logo", false).set_image("misc/logo.png");
 
 	/***** About dialog button *****/
 	tbutton& about = find_widget<tbutton>(&window, "about", false);
