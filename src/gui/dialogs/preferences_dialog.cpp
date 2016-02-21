@@ -90,6 +90,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	, friend_names_()
 	, last_selected_item_(0)
 	, accl_speeds_()
+	, font_scaling_(font_scaling())
 {
 	BOOST_FOREACH(const config& adv, game_cfg.child_range("advanced_preference")) {
 		adv_preferences_cfg_.push_back(adv);
@@ -556,9 +557,14 @@ void tpreferences::initialize_members(twindow& window)
 		set_idle_anim, set_idle_anim_rate, window);
 
 	/** FONT SCALING **/
-	// The setter is handled in post_show to avoid dynamically changing text
 	tslider& scale_slider = find_widget<tslider>(&window, "scaling_slider", false);
+
 	scale_slider.set_value(font_scaling());
+
+	connect_signal_notify_modified(scale_slider, boost::bind(
+		&tpreferences::font_scaling_slider_callback,
+		this, boost::ref(scale_slider)));
+
 	bind_status_label(scale_slider, "scaling_value", window, "%");
 
 	/** SELECT THEME **/
@@ -1006,6 +1012,11 @@ void tpreferences::max_autosaves_slider_callback(tslider& slider, tcontrol& stat
 	status_label.set_label(get_max_autosaves_status_label(slider));
 }
 
+void tpreferences::font_scaling_slider_callback(tslider& slider)
+{
+	font_scaling_ = slider.get_value();
+}
+
 void tpreferences::toggle_radio_callback(
 		const std::vector<std::pair<ttoggle_button*, int> >& vec,
 		int& value,
@@ -1044,7 +1055,7 @@ void tpreferences::on_tab_select(twindow& window, const std::string& widget_id)
 void tpreferences::post_show(twindow& window)
 {
 	// Handle the font scaling setter only once prefs is closed
-	set_font_scaling(find_widget<tslider>(&window, "scaling_slider", false).get_value());
+	set_font_scaling(font_scaling_);
 }
 
 } // end namespace gui2

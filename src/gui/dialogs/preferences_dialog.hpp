@@ -84,6 +84,7 @@ private:
 	void fullscreen_toggle_callback(twindow& window);
 	void accl_speed_slider_callback(tslider& slider);
 	void max_autosaves_slider_callback(tslider& slider, tcontrol& status_label);
+	void font_scaling_slider_callback(tslider& slider);
 
 	/**
 	 * Sets the initial state and callback for a simple bool-state toggle button
@@ -199,6 +200,10 @@ private:
 	int last_selected_item_;
 
 	std::vector<t_string> accl_speeds_;
+
+	// Special variable to keep the value of the scaling slider,
+	// to be used in post_show
+	int font_scaling_;
 };
 
 } // namespace gui2
