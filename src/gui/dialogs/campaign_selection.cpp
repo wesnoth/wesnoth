@@ -163,6 +163,11 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 
 			detail_item["label"] = campaign["description"];
 			detail_item["use_markup"] = "true";
+
+			if(!campaign["description_alignment"].empty()) {
+				detail_item["text_alignment"] = campaign["description_alignment"];
+			}
+
 			detail_page.insert(std::make_pair("description", detail_item));
 
 			detail_item["label"] = campaign["image"];
