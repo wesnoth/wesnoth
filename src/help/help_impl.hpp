@@ -32,6 +32,7 @@
 #ifndef HELP_IMPL_INCLUDED
 #define HELP_IMPL_INCLUDED
 
+#include "config.hpp"
 #include "exceptions.hpp"               // for error
 #include "font.hpp"                     // for line_width, relative_size
 
@@ -43,7 +44,6 @@
 #include <boost/shared_ptr.hpp>
 #include <SDL.h>                  // for SDL_Color, SDL_Surface
 
-class config;
 class unit_type;
 class terrain_type_data;
 typedef boost::shared_ptr<terrain_type_data> tdata_cache;
