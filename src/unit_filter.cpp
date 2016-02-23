@@ -231,6 +231,12 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 
 bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_location& loc) const
 {
+	//We don't support name= becasue it casues oos since it depends on the translations
+	//It is for example possible that 2 units have the same name in one lanugage but not in aother
+	//Also note that translations are currently broken in mp (see this http://gna.org/bugs/?22918 and related bugreports)
+	if (!vcfg["name"].empty()) {
+		ERR_CF << "'name' is not supported in standart unit filters\n";
+	}
 	if (!vcfg["id"].empty()) {
 		std::vector<std::string> id_list = utils::split(vcfg["id"]);
 		if (std::find(id_list.begin(), id_list.end(), u.id()) == id_list.end()) {
