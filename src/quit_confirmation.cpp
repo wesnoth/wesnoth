@@ -41,5 +41,6 @@ void quit_confirmation::quit()
 
 bool quit_confirmation::default_promt()
 {
-	return gui2::show_message(CVideo::get_singleton(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
+	return gui2::show_message(CVideo::get_singleton(), _("Quit"), _("Do you really want to quit?"),
+		gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
 }
