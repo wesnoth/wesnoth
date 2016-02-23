@@ -77,6 +77,35 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		911F2DAD1BA086A400E3102E /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAB1BA086A400E3102E /* window.cpp */; };
 		911F2DB01BA086FA00E3102E /* alpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAE1BA086F900E3102E /* alpha.cpp */; };
+		91273E8F1C7BF1D7005E7F81 /* _main.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E721C7BF1C0005E7F81 /* _main.cfg */; };
+		91273E901C7BF1D7005E7F81 /* advanced_preferences.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E731C7BF1C0005E7F81 /* advanced_preferences.cfg */; };
+		91273E911C7BF1D7005E7F81 /* ai in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E741C7BF1C0005E7F81 /* ai */; };
+		91273E921C7BF1D7005E7F81 /* campaigns in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E751C7BF1C0005E7F81 /* campaigns */; };
+		91273E931C7BF1D8005E7F81 /* COPYING.txt in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E761C7BF1C0005E7F81 /* COPYING.txt */; };
+		91273E941C7BF1D8005E7F81 /* core in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E771C7BF1C0005E7F81 /* core */; };
+		91273E951C7BF1D8005E7F81 /* cores.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E781C7BF1C0005E7F81 /* cores.cfg */; };
+		91273E961C7BF1D8005E7F81 /* english.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E791C7BF1C1005E7F81 /* english.cfg */; };
+		91273E971C7BF1D8005E7F81 /* era_blank.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7A1C7BF1C1005E7F81 /* era_blank.cfg */; };
+		91273E981C7BF1D8005E7F81 /* game_config.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7B1C7BF1C1005E7F81 /* game_config.cfg */; };
+		91273E991C7BF1D8005E7F81 /* gui in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7C1C7BF1C1005E7F81 /* gui */; };
+		91273E9A1C7BF1D8005E7F81 /* hardwired in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7D1C7BF1C1005E7F81 /* hardwired */; };
+		91273E9B1C7BF1D8005E7F81 /* lan_server.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7E1C7BF1C2005E7F81 /* lan_server.cfg */; };
+		91273E9C1C7BF1D8005E7F81 /* languages in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7F1C7BF1C2005E7F81 /* languages */; };
+		91273E9D1C7BF1D8005E7F81 /* lua in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E801C7BF1C2005E7F81 /* lua */; };
+		91273E9E1C7BF1D8005E7F81 /* multiplayer in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E811C7BF1C2005E7F81 /* multiplayer */; };
+		91273E9F1C7BF1D8005E7F81 /* scenario-formula-recruitment.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E821C7BF1C2005E7F81 /* scenario-formula-recruitment.cfg */; };
+		91273EA01C7BF1D8005E7F81 /* scenario-formula.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E831C7BF1C3005E7F81 /* scenario-formula.cfg */; };
+		91273EA11C7BF1D8005E7F81 /* scenario-leaders.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E841C7BF1C3005E7F81 /* scenario-leaders.cfg */; };
+		91273EA21C7BF1D8005E7F81 /* scenario-movethrough.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E851C7BF1C3005E7F81 /* scenario-movethrough.cfg */; };
+		91273EA31C7BF1D8005E7F81 /* scenario-poisoning.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E861C7BF1C3005E7F81 /* scenario-poisoning.cfg */; };
+		91273EA41C7BF1D8005E7F81 /* scenario-test.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E871C7BF1C3005E7F81 /* scenario-test.cfg */; };
+		91273EA51C7BF1D8005E7F81 /* schema-gui.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E881C7BF1C4005E7F81 /* schema-gui.cfg */; };
+		91273EA61C7BF1D8005E7F81 /* schema.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E891C7BF1C4005E7F81 /* schema.cfg */; };
+		91273EA71C7BF1D8005E7F81 /* shaders in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E8A1C7BF1C4005E7F81 /* shaders */; };
+		91273EA81C7BF1D8005E7F81 /* test in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E8B1C7BF1C4005E7F81 /* test */; };
+		91273EA91C7BF1D8005E7F81 /* themes in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E8C1C7BF1C4005E7F81 /* themes */; };
+		91273EAA1C7BF1D8005E7F81 /* tips.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E8D1C7BF1C5005E7F81 /* tips.cfg */; };
+		91273EAB1C7BF1D8005E7F81 /* tools in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E8E1C7BF1C5005E7F81 /* tools */; };
 		9130A4601C73BB6100852782 /* select_orb_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9130A45E1C73BB6100852782 /* select_orb_colors.cpp */; };
 		9130A4611C73BB6100852782 /* select_orb_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9130A45E1C73BB6100852782 /* select_orb_colors.cpp */; };
 		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
@@ -678,7 +707,6 @@
 		B59F9733103716E400A57C1A /* unit_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F9731103716E400A57C1A /* unit_create.cpp */; };
 		B59F9734103716E400A57C1A /* unit_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F9731103716E400A57C1A /* unit_create.cpp */; };
 		B5A9B2290ECA4074002BE442 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = B5A9914A0ECA4064002BE442 /* fonts */; };
-		B5A9B22A0ECA4074002BE442 /* data in Resources */ = {isa = PBXBuildFile; fileRef = B5A991500ECA4064002BE442 /* data */; };
 		B5A9B22B0ECA4074002BE442 /* images in Resources */ = {isa = PBXBuildFile; fileRef = B5A9B0780ECA4074002BE442 /* images */; };
 		B5A9B22C0ECA4074002BE442 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = B5A9B2140ECA4074002BE442 /* sounds */; };
 		B5A9BD320ECA805A002BE442 /* addon_connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCB00ECA805A002BE442 /* addon_connect.cpp */; };
@@ -998,7 +1026,6 @@
 		ECD39895194B844A00CF2125 /* display_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39894194B844A00CF2125 /* display_context.cpp */; };
 		ECD5D7BF1A22DC8600114175 /* lua_cpp_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */; };
 		ECDEAF72194FE84000DB2F47 /* fake_unit_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF6D194FE84000DB2F47 /* fake_unit_manager.cpp */; };
-		ECDEAF75194FE86C00DB2F47 /* animated.tpp in Resources */ = {isa = PBXBuildFile; fileRef = ECDEAF74194FE86C00DB2F47 /* animated.tpp */; };
 		ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */; };
 		ECDEAF79194FEA9D00DB2F47 /* game_classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */; };
 		ECDF18201A3FE0DE00D157A6 /* manager_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */; };
@@ -1068,6 +1095,45 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		91273E191C7BF105005E7F81 /* Copy Data Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data;
+			dstSubfolderSpec = 7;
+			files = (
+				91273E8F1C7BF1D7005E7F81 /* _main.cfg in Copy Data Files */,
+				91273E901C7BF1D7005E7F81 /* advanced_preferences.cfg in Copy Data Files */,
+				91273E911C7BF1D7005E7F81 /* ai in Copy Data Files */,
+				91273E921C7BF1D7005E7F81 /* campaigns in Copy Data Files */,
+				91273E931C7BF1D8005E7F81 /* COPYING.txt in Copy Data Files */,
+				91273E941C7BF1D8005E7F81 /* core in Copy Data Files */,
+				91273E951C7BF1D8005E7F81 /* cores.cfg in Copy Data Files */,
+				91273E961C7BF1D8005E7F81 /* english.cfg in Copy Data Files */,
+				91273E971C7BF1D8005E7F81 /* era_blank.cfg in Copy Data Files */,
+				91273E981C7BF1D8005E7F81 /* game_config.cfg in Copy Data Files */,
+				91273E991C7BF1D8005E7F81 /* gui in Copy Data Files */,
+				91273E9A1C7BF1D8005E7F81 /* hardwired in Copy Data Files */,
+				91273E9B1C7BF1D8005E7F81 /* lan_server.cfg in Copy Data Files */,
+				91273E9C1C7BF1D8005E7F81 /* languages in Copy Data Files */,
+				91273E9D1C7BF1D8005E7F81 /* lua in Copy Data Files */,
+				91273E9E1C7BF1D8005E7F81 /* multiplayer in Copy Data Files */,
+				91273E9F1C7BF1D8005E7F81 /* scenario-formula-recruitment.cfg in Copy Data Files */,
+				91273EA01C7BF1D8005E7F81 /* scenario-formula.cfg in Copy Data Files */,
+				91273EA11C7BF1D8005E7F81 /* scenario-leaders.cfg in Copy Data Files */,
+				91273EA21C7BF1D8005E7F81 /* scenario-movethrough.cfg in Copy Data Files */,
+				91273EA31C7BF1D8005E7F81 /* scenario-poisoning.cfg in Copy Data Files */,
+				91273EA41C7BF1D8005E7F81 /* scenario-test.cfg in Copy Data Files */,
+				91273EA51C7BF1D8005E7F81 /* schema-gui.cfg in Copy Data Files */,
+				91273EA61C7BF1D8005E7F81 /* schema.cfg in Copy Data Files */,
+				91273EA71C7BF1D8005E7F81 /* shaders in Copy Data Files */,
+				91273EA81C7BF1D8005E7F81 /* test in Copy Data Files */,
+				91273EA91C7BF1D8005E7F81 /* themes in Copy Data Files */,
+				91273EAA1C7BF1D8005E7F81 /* tips.cfg in Copy Data Files */,
+				91273EAB1C7BF1D8005E7F81 /* tools in Copy Data Files */,
+			);
+			name = "Copy Data Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5599E8F0EC64D18008DD061 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1266,6 +1332,35 @@
 		911F2DAE1BA086F900E3102E /* alpha.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alpha.cpp; sourceTree = "<group>"; };
 		911F2DAF1BA086FA00E3102E /* alpha.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alpha.hpp; sourceTree = "<group>"; };
 		911F2DB11BA0870E00E3102E /* compat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compat.hpp; sourceTree = "<group>"; };
+		91273E721C7BF1C0005E7F81 /* _main.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = _main.cfg; sourceTree = "<group>"; };
+		91273E731C7BF1C0005E7F81 /* advanced_preferences.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = advanced_preferences.cfg; sourceTree = "<group>"; };
+		91273E741C7BF1C0005E7F81 /* ai */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ai; sourceTree = "<group>"; };
+		91273E751C7BF1C0005E7F81 /* campaigns */ = {isa = PBXFileReference; lastKnownFileType = folder; path = campaigns; sourceTree = "<group>"; };
+		91273E761C7BF1C0005E7F81 /* COPYING.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING.txt; sourceTree = "<group>"; };
+		91273E771C7BF1C0005E7F81 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; path = core; sourceTree = "<group>"; };
+		91273E781C7BF1C0005E7F81 /* cores.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = cores.cfg; sourceTree = "<group>"; };
+		91273E791C7BF1C1005E7F81 /* english.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = english.cfg; sourceTree = "<group>"; };
+		91273E7A1C7BF1C1005E7F81 /* era_blank.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = era_blank.cfg; sourceTree = "<group>"; };
+		91273E7B1C7BF1C1005E7F81 /* game_config.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = game_config.cfg; sourceTree = "<group>"; };
+		91273E7C1C7BF1C1005E7F81 /* gui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gui; sourceTree = "<group>"; };
+		91273E7D1C7BF1C1005E7F81 /* hardwired */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hardwired; sourceTree = "<group>"; };
+		91273E7E1C7BF1C2005E7F81 /* lan_server.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = lan_server.cfg; sourceTree = "<group>"; };
+		91273E7F1C7BF1C2005E7F81 /* languages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = languages; sourceTree = "<group>"; };
+		91273E801C7BF1C2005E7F81 /* lua */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lua; sourceTree = "<group>"; };
+		91273E811C7BF1C2005E7F81 /* multiplayer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = multiplayer; sourceTree = "<group>"; };
+		91273E821C7BF1C2005E7F81 /* scenario-formula-recruitment.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-formula-recruitment.cfg"; sourceTree = "<group>"; };
+		91273E831C7BF1C3005E7F81 /* scenario-formula.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-formula.cfg"; sourceTree = "<group>"; };
+		91273E841C7BF1C3005E7F81 /* scenario-leaders.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-leaders.cfg"; sourceTree = "<group>"; };
+		91273E851C7BF1C3005E7F81 /* scenario-movethrough.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-movethrough.cfg"; sourceTree = "<group>"; };
+		91273E861C7BF1C3005E7F81 /* scenario-poisoning.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-poisoning.cfg"; sourceTree = "<group>"; };
+		91273E871C7BF1C3005E7F81 /* scenario-test.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-test.cfg"; sourceTree = "<group>"; };
+		91273E881C7BF1C4005E7F81 /* schema-gui.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "schema-gui.cfg"; sourceTree = "<group>"; };
+		91273E891C7BF1C4005E7F81 /* schema.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.cfg; sourceTree = "<group>"; };
+		91273E8A1C7BF1C4005E7F81 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
+		91273E8B1C7BF1C4005E7F81 /* test */ = {isa = PBXFileReference; lastKnownFileType = folder; path = test; sourceTree = "<group>"; };
+		91273E8C1C7BF1C4005E7F81 /* themes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = themes; sourceTree = "<group>"; };
+		91273E8D1C7BF1C5005E7F81 /* tips.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = tips.cfg; sourceTree = "<group>"; };
+		91273E8E1C7BF1C5005E7F81 /* tools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tools; sourceTree = "<group>"; };
 		9130A45E1C73BB6100852782 /* select_orb_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = select_orb_colors.cpp; sourceTree = "<group>"; };
 		9130A45F1C73BB6100852782 /* select_orb_colors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = select_orb_colors.hpp; sourceTree = "<group>"; };
 		919B37F71BAF789D00E0094C /* synced_user_choice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_user_choice.cpp; sourceTree = "<group>"; };
@@ -1965,7 +2060,6 @@
 		B5A5E3E412132C790047782D /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		B5A5E45012132DE30047782D /* lua_api.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_api.hpp; sourceTree = "<group>"; };
 		B5A9914A0ECA4064002BE442 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../fonts; sourceTree = SOURCE_ROOT; };
-		B5A991500ECA4064002BE442 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = SOURCE_ROOT; };
 		B5A9B0780ECA4074002BE442 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../images; sourceTree = SOURCE_ROOT; };
 		B5A9B2140ECA4074002BE442 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = ../../sounds; sourceTree = SOURCE_ROOT; };
 		B5A9BCB00ECA805A002BE442 /* addon_connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addon_connect.cpp; sourceTree = "<group>"; };
@@ -2986,7 +3080,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B5A991500ECA4064002BE442 /* data */,
+				91273E541C7BF141005E7F81 /* data */,
 				B5A9914A0ECA4064002BE442 /* fonts */,
 				EC1D88DE18EF448400E66AC1 /* fonts.conf */,
 				B508D14A10013E4700B12852 /* Growl Registration Ticket.growlRegDict */,
@@ -3234,6 +3328,43 @@
 				62D24F2C1519982500350848 /* editor_toolkit.hpp */,
 			);
 			path = toolkit;
+			sourceTree = "<group>";
+		};
+		91273E541C7BF141005E7F81 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				91273E721C7BF1C0005E7F81 /* _main.cfg */,
+				91273E731C7BF1C0005E7F81 /* advanced_preferences.cfg */,
+				91273E741C7BF1C0005E7F81 /* ai */,
+				91273E751C7BF1C0005E7F81 /* campaigns */,
+				91273E761C7BF1C0005E7F81 /* COPYING.txt */,
+				91273E771C7BF1C0005E7F81 /* core */,
+				91273E781C7BF1C0005E7F81 /* cores.cfg */,
+				91273E791C7BF1C1005E7F81 /* english.cfg */,
+				91273E7A1C7BF1C1005E7F81 /* era_blank.cfg */,
+				91273E7B1C7BF1C1005E7F81 /* game_config.cfg */,
+				91273E7C1C7BF1C1005E7F81 /* gui */,
+				91273E7D1C7BF1C1005E7F81 /* hardwired */,
+				91273E7E1C7BF1C2005E7F81 /* lan_server.cfg */,
+				91273E7F1C7BF1C2005E7F81 /* languages */,
+				91273E801C7BF1C2005E7F81 /* lua */,
+				91273E811C7BF1C2005E7F81 /* multiplayer */,
+				91273E821C7BF1C2005E7F81 /* scenario-formula-recruitment.cfg */,
+				91273E831C7BF1C3005E7F81 /* scenario-formula.cfg */,
+				91273E841C7BF1C3005E7F81 /* scenario-leaders.cfg */,
+				91273E851C7BF1C3005E7F81 /* scenario-movethrough.cfg */,
+				91273E861C7BF1C3005E7F81 /* scenario-poisoning.cfg */,
+				91273E871C7BF1C3005E7F81 /* scenario-test.cfg */,
+				91273E881C7BF1C4005E7F81 /* schema-gui.cfg */,
+				91273E891C7BF1C4005E7F81 /* schema.cfg */,
+				91273E8A1C7BF1C4005E7F81 /* shaders */,
+				91273E8B1C7BF1C4005E7F81 /* test */,
+				91273E8C1C7BF1C4005E7F81 /* themes */,
+				91273E8D1C7BF1C5005E7F81 /* tips.cfg */,
+				91273E8E1C7BF1C5005E7F81 /* tools */,
+			);
+			name = data;
+			path = ../../data;
 			sourceTree = "<group>";
 		};
 		91B6218E1B76710700B00E0F /* help */ = {
@@ -4359,6 +4490,7 @@
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Wesnoth" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
+				91273E191C7BF105005E7F81 /* Copy Data Files */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				B5599E8F0EC64D18008DD061 /* CopyFiles */,
@@ -4442,8 +4574,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECDEAF75194FE86C00DB2F47 /* animated.tpp in Resources */,
-				B5A9B22A0ECA4074002BE442 /* data in Resources */,
 				B5A9B2290ECA4074002BE442 /* fonts in Resources */,
 				EC1D88DF18EF448400E66AC1 /* fonts.conf in Resources */,
 				B508D14B10013E4700B12852 /* Growl Registration Ticket.growlRegDict in Resources */,
