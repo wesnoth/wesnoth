@@ -30,6 +30,7 @@
 #include "preferences.hpp"
 #include "game_end_exceptions.hpp"
 #include "display.hpp"
+#include "quit_confirmation.hpp"
 
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
@@ -697,7 +698,7 @@ void command_executor_default::map_screenshot()
 }
 void command_executor_default::quit_to_desktop()
 {
-	if(gui2::show_message(get_video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL) {
+	if(quit_confirmation::default_promt()) {
 		throw CVideo::quit();
 	}
 }
@@ -707,7 +708,7 @@ void command_executor::quit_to_desktop()
 }
 void command_executor_default::quit_to_main_menu()
 {
-	if(gui2::show_message(get_video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL) {
+	if(quit_confirmation::default_promt()) {
 		throw_quit_game_exception();
 	}
 }

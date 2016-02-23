@@ -54,7 +54,7 @@ namespace hotkey { class command_executor; }
 
 namespace soundsource { class manager; }
 
-class controller_base : public events::sdl_handler, quit_confirmation
+class controller_base : public events::sdl_handler
 {
 public:
 	controller_base(const config& game_config, CVideo& video);

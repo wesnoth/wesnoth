@@ -19,7 +19,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-
+#include "quit_confirmation.hpp"
 
 #include "message.hpp"
 #include "../../game_end_exceptions.hpp"
@@ -97,11 +97,9 @@ void tsynced_choice_wait::handle_generic_event(const std::string& event_name)
 	}
 }
 
-void tsynced_choice_wait::on_btn_quit_game(CVideo& video)
+void tsynced_choice_wait::on_btn_quit_game(CVideo&)
 {
-	const int res = gui2::show_message(video, _("Quit"),
-		_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
-	if (res != gui2::twindow::CANCEL) {
+	if (quit_confirmation::default_promt()) {
 		throw_quit_game_exception();
 	}
 }

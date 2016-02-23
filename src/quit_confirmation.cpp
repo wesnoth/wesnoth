@@ -19,31 +19,27 @@
 #include "gui/widgets/window.hpp"
 #include "resources.hpp"
 
-int quit_confirmation::count_ = 0;
+std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
 bool quit_confirmation::open_ = false;
 
 void quit_confirmation::quit()
 {
-	if(count_ != 0 && !open_)
+	if(!open_)
 	{
-		quit(CVideo::get_singleton());
+		open_ = true;
+		BOOST_REVERSE_FOREACH(quit_confirmation* blocker, blockers_)
+		{
+			if(!blocker->promt_()) {
+				open_ = false;
+				return;
+			}
+		}
+		open_ = false;
 	}
-	else
-	{
-		throw CVideo::quit();
-	}
+	throw CVideo::quit();
 }
 
-void quit_confirmation::quit(CVideo& video)
+bool quit_confirmation::default_promt()
 {
-	assert(!open_);
-	open_ = true;
-	const int res = gui2::show_message(video, _("Quit"),
-		_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
-	open_ = false;
-	if(res != gui2::twindow::CANCEL) {
-		throw CVideo::quit();
-	} else {
-		return;
-	}
+	return gui2::show_message(CVideo::get_singleton(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
 }
