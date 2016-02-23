@@ -290,7 +290,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_REPLAY_RESET:
 			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd, index);
 		case hotkey::HOTKEY_REPLAY_EXIT:
-			return playsingle_controller_.get_replay_controller() != NULL;
+			return playsingle_controller_.is_replay();
 		default: return play_controller::hotkey_handler::can_execute_command(cmd, index);
 	}
 	return res;
