@@ -113,7 +113,6 @@ public:
 	virtual void zoom_out() {}
 	virtual void zoom_default() {}
 	virtual void map_screenshot() {}
-	virtual void quit_to_desktop();
 	virtual void quit_to_main_menu() {}
 
 	virtual void set_button_state() {}
@@ -150,7 +149,6 @@ public:
 	void zoom_out();
 	void zoom_default();
 	void map_screenshot();
-	void quit_to_desktop();
 	void quit_to_main_menu();
 };
 /* Functions to be called every time a event is intercepted.

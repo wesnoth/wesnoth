@@ -313,7 +313,7 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			map_screenshot();
 			break;
 		case HOTKEY_QUIT_TO_DESKTOP:
-			quit_to_desktop();
+			quit_confirmation::quit();
 			break;
 		case HOTKEY_QUIT_GAME:
 			quit_to_main_menu();
@@ -695,16 +695,6 @@ void command_executor_default::zoom_default()
 void command_executor_default::map_screenshot()
 {
 	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
-}
-void command_executor_default::quit_to_desktop()
-{
-	if(quit_confirmation::default_promt()) {
-		throw CVideo::quit();
-	}
-}
-void command_executor::quit_to_desktop()
-{
-	throw CVideo::quit();
 }
 void command_executor_default::quit_to_main_menu()
 {
