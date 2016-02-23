@@ -31,8 +31,8 @@ class CVideo;
 class quit_confirmation
 {
 public:
-	quit_confirmation(const boost::function<bool()>& promt = &quit_confirmation::default_prompt)
-		: prompt_(promt) { blockers_.push_back(this); }
+	quit_confirmation(const boost::function<bool()>& prompt = &quit_confirmation::default_prompt)
+		: prompt_(prompt) { blockers_.push_back(this); }
 
 	~quit_confirmation() { blockers_.pop_back(); }
 
