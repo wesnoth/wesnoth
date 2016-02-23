@@ -76,10 +76,8 @@ void tsynced_choice_wait::pre_show(CVideo& video, twindow& window)
 	tbutton& quit_button = find_widget<tbutton>(
 				&window, "btn_quit_game", false);
 
-	connect_signal_mouse_left_click(
-		quit_button,
-		boost::bind(&tsynced_choice_wait::on_btn_quit_game, this, boost::ref(video))
-	);
+	connect_signal_mouse_left_click(quit_button,
+		boost::bind(&quit_confirmation::quit, false));
 
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
@@ -94,13 +92,6 @@ void tsynced_choice_wait::handle_generic_event(const std::string& event_name)
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
 		window_->close();
-	}
-}
-
-void tsynced_choice_wait::on_btn_quit_game(CVideo&)
-{
-	if (quit_confirmation::default_prompt()) {
-		throw_quit_game_exception();
 	}
 }
 

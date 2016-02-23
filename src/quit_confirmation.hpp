@@ -31,17 +31,22 @@ class CVideo;
 class quit_confirmation
 {
 public:
-	quit_confirmation(const boost::function<bool()>& prompt = &quit_confirmation::default_prompt) : prompt_(prompt) { blockers_.push_back(this); }
+	quit_confirmation(const boost::function<bool()>& promt = &quit_confirmation::default_prompt)
+		: prompt_(promt) { blockers_.push_back(this); }
+
 	~quit_confirmation() { blockers_.pop_back(); }
 
 	/**
 	 * Shows the quit confirmation if needed.
 	 *
+	 * @param  full_exit    Whether to quit fully to the desktop or simply
+	 *                      exit game. Defaults to true.
 	 * @throws CVideo::quit If the user chooses to quit or no prompt was
 	 *                      displayed.
 	 */
-	static void quit();
+	static void quit(const bool full_exit = true);
 	static bool default_prompt();
+
 private:
 	//noncopyable
 	quit_confirmation( const quit_confirmation& );

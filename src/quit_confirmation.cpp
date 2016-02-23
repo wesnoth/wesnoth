@@ -13,6 +13,7 @@
 */
 
 #include "quit_confirmation.hpp"
+#include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "video.hpp"
 #include "gui/dialogs/message.hpp"
@@ -22,7 +23,7 @@
 std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
 bool quit_confirmation::open_ = false;
 
-void quit_confirmation::quit()
+void quit_confirmation::quit(const bool full_exit)
 {
 	if(!open_)
 	{
@@ -36,6 +37,11 @@ void quit_confirmation::quit()
 		}
 		open_ = false;
 	}
+
+	if(!full_exit) {
+		throw_quit_game_exception();
+	}
+
 	throw CVideo::quit();
 }
 

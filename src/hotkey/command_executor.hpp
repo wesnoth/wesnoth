@@ -113,7 +113,6 @@ public:
 	virtual void zoom_out() {}
 	virtual void zoom_default() {}
 	virtual void map_screenshot() {}
-	virtual void quit_to_main_menu() {}
 
 	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}

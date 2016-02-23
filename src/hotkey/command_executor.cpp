@@ -316,7 +316,7 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			quit_confirmation::quit();
 			break;
 		case HOTKEY_QUIT_GAME:
-			quit_to_main_menu();
+			quit_confirmation::quit(false);
 			break;
 		default:
 			return false;
@@ -695,11 +695,5 @@ void command_executor_default::zoom_default()
 void command_executor_default::map_screenshot()
 {
 	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
-}
-void command_executor_default::quit_to_main_menu()
-{
-	if(quit_confirmation::default_prompt()) {
-		throw_quit_game_exception();
-	}
 }
 }
