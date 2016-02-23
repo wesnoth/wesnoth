@@ -16,9 +16,11 @@
 
 #include <map>
 #include <exception>
-#include "config.hpp"
 
 #include "utils/boost_function_guarded.hpp"
+
+class config;
+
 class synced_command {
 	public:
 		/*

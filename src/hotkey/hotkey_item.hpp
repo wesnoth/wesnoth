@@ -16,7 +16,6 @@
 #ifndef HOTKEY_ITEM_HPP_INCLUDED
 #define HOTKEY_ITEM_HPP_INCLUDED
 
-#include "config.hpp"
 #include "SDL_events.h"
 #include "SDL.h"
 #include <boost/shared_ptr.hpp>
@@ -25,6 +24,8 @@
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 #include "sdl/keyboard.hpp"
 #endif
+
+class config;
 
 namespace hotkey {
 

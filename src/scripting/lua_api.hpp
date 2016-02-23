@@ -17,7 +17,6 @@
 
 #include <cstddef>
 #include <string>
-#include "config.hpp" // forward declaration of the nested type config::attribute_value is not possible
 #include "lua_types.hpp" // the luatype typedef
 #include "unit_ptr.hpp"
 

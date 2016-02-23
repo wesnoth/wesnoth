@@ -32,7 +32,6 @@
 #ifndef HELP_IMPL_INCLUDED
 #define HELP_IMPL_INCLUDED
 
-#include "config.hpp"                   // for config
 #include "exceptions.hpp"               // for error
 #include "font.hpp"                     // for line_width, relative_size
 
@@ -44,6 +43,7 @@
 #include <boost/shared_ptr.hpp>
 #include <SDL.h>                  // for SDL_Color, SDL_Surface
 
+class config;
 class unit_type;
 class terrain_type_data;
 typedef boost::shared_ptr<terrain_type_data> tdata_cache;
@@ -322,7 +322,6 @@ extern int last_num_encountered_units;
 extern int last_num_encountered_terrains;
 extern bool last_debug_state;
 
-extern config dummy_cfg;
 extern std::vector<std::string> empty_string_vector;
 extern const int max_section_level;
 extern const int title_size;

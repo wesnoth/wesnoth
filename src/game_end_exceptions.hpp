@@ -24,12 +24,13 @@
 
 #include "lua_jailbreak_exception.hpp"
 
-#include "config.hpp"
 #include "make_enum.hpp"
 
 #include <string>
 #include <exception>
 #include <boost/optional.hpp>
+
+class config;
 
 MAKE_ENUM(LEVEL_RESULT,
 	(VICTORY,      "victory")
@@ -103,12 +104,7 @@ struct end_level_data
 
 	void read(const config& cfg);
 
-	config to_config() const
-	{
-		config r;
-		write(r);
-		return r;
-	}
+	config to_config() const;
 };
 inline void throw_quit_game_exception()
 {

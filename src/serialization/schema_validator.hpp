@@ -18,7 +18,6 @@
 #include "serialization/validator.hpp"
 #include "tools/schema/tag.hpp"
 
-#include "config.hpp"
 #include "config_cache.hpp"
 #include "serialization/parser.hpp"
 
@@ -30,6 +29,8 @@
 #include <queue>
 #include <string>
 #include <stack>
+
+class config;
 
 /** @file
  *  One of the realizations of serialization/validator.hpp abstract validator.

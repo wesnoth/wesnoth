@@ -16,7 +16,6 @@
 #define GUI_DIALOGS_LOBBY_PLAYER_INFO_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "config.hpp"
 #include "chat_events.hpp"
 #include "gui/dialogs/lobby/lobby_info.hpp"
 

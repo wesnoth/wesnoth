@@ -16,7 +16,6 @@
 #define GUI_DIALOGS_EDITOR_EDIT_SIDE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "config.hpp"
 #include "team.hpp"
 
 namespace gui2

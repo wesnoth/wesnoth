@@ -90,6 +90,8 @@ void show_unit_description(CVideo& video, const unit_type &t)
 		help::show_unit_help(video, t.id(), t.show_variations_in_help(), hide_help);
 }
 
+extern config dummy_cfg;
+
 help_manager::help_manager(const config *cfg) //, gamemap *_map)
 {
 	game_cfg = cfg == NULL ? &dummy_cfg : cfg;

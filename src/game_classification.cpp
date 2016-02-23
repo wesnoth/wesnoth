@@ -15,6 +15,7 @@
 #include "global.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
+#include "config.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "log.hpp"

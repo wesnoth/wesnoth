@@ -16,10 +16,10 @@
 #define COMMON_PALETTES_H_INCLUDED
 
 #include "display.hpp"
-#include "config.hpp"
 #include "gui/widgets/widget.hpp"
 
 struct SDL_Rect;
+class config;
 
 namespace editor {
 

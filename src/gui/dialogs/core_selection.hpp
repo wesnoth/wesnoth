@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include "config.hpp"
+class config;
 
 namespace gui2
 {

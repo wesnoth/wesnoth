@@ -19,7 +19,6 @@
 #include "../widgets/generator.hpp"
 #include "gui/widgets/pane.hpp"
 
-class config;
 #include "config.hpp" // needed for config::const_child_itors
 
 namespace gui2

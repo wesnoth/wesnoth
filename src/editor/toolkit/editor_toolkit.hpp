@@ -16,13 +16,14 @@
 #define EDITOR_TOOLKIT_H_INCLUDED
 
 
-#include "config.hpp"
 #include "editor/map/context_manager.hpp"
 #include "editor/palette/palette_manager.hpp"
 #include "editor/toolkit/brush.hpp"
 #include "hotkey/hotkey_command.hpp"
 
 #include <boost/scoped_ptr.hpp>
+
+class config;
 
 namespace editor {
 
