@@ -5735,7 +5735,6 @@
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
-					"-Wno-unused-local-typedefs",
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = "";
@@ -5837,7 +5836,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ./lib;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-Wall";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wno-unused-local-typedefs",
+					"-Wno-unknown-warning-option",
+				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
