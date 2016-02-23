@@ -231,10 +231,6 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 
 bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_location& loc) const
 {
-	if (!vcfg["name"].blank() && vcfg["name"].str() != u.name()) {
-		return false;
-	}
-
 	if (!vcfg["id"].empty()) {
 		std::vector<std::string> id_list = utils::split(vcfg["id"]);
 		if (std::find(id_list.begin(), id_list.end(), u.id()) == id_list.end()) {
