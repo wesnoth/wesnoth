@@ -91,6 +91,12 @@ bool synced_context::run(const std::string& commandname, const config& data, boo
 
 bool synced_context::run_and_store(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
+	if(resources::controller->is_replay())
+	{
+		ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
+		return false;
+	}
+
 	assert(resources::recorder->at_end());
 	resources::recorder->add_synced_command(commandname, data);
 	bool success = run(commandname, data, use_undo, show, error_handler);
@@ -117,11 +123,6 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	{
 	case(synced_context::UNSYNCED):
 	{
-		if(resources::controller->is_replay())
-		{
-			ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
-			return false;
-		}
 		return run_and_throw(commandname, data, use_undo, show, error_handler);
 	}
 	case(synced_context::LOCAL_CHOICE):
