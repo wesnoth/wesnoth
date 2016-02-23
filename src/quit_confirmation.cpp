@@ -29,7 +29,7 @@ void quit_confirmation::quit()
 		open_ = true;
 		BOOST_REVERSE_FOREACH(quit_confirmation* blocker, blockers_)
 		{
-			if(!blocker->promt_()) {
+			if(!blocker->prompt_()) {
 				open_ = false;
 				return;
 			}
@@ -39,7 +39,7 @@ void quit_confirmation::quit()
 	throw CVideo::quit();
 }
 
-bool quit_confirmation::default_promt()
+bool quit_confirmation::default_prompt()
 {
 	return gui2::show_message(CVideo::get_singleton(), _("Quit"), _("Do you really want to quit?"),
 		gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;

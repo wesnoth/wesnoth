@@ -698,7 +698,7 @@ void command_executor_default::map_screenshot()
 }
 void command_executor_default::quit_to_main_menu()
 {
-	if(quit_confirmation::default_promt()) {
+	if(quit_confirmation::default_prompt()) {
 		throw_quit_game_exception();
 	}
 }

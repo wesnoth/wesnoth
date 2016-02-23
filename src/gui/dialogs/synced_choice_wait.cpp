@@ -99,7 +99,7 @@ void tsynced_choice_wait::handle_generic_event(const std::string& event_name)
 
 void tsynced_choice_wait::on_btn_quit_game(CVideo&)
 {
-	if (quit_confirmation::default_promt()) {
+	if (quit_confirmation::default_prompt()) {
 		throw_quit_game_exception();
 	}
 }
