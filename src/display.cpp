@@ -898,6 +898,7 @@ void display::layout_buttons()
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(i->title());
+			b->set_image(i->image());
 			b->set_volatile(
 					sdl::rects_overlap(b->location(),map_outside_area()));
 		}
@@ -912,6 +913,7 @@ void display::layout_buttons()
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(i->title());
+			b->set_image(i->image());
 			b->set_volatile(
 						sdl::rects_overlap(b->location(),map_outside_area()));
 		}
@@ -2745,6 +2747,15 @@ void display::clear_redraw_observers()
 {
 	redraw_observers_.clear();
 }
+
+void display::draw() {
+	draw(true, false);
+}
+
+void display::draw(bool update) {
+	draw(update, false);
+}
+
 
 void display::draw(bool update,bool force) {
 //	log_scope("display::draw");

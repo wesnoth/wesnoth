@@ -602,7 +602,11 @@ public:
 	 * Not virtual, since it gathers common actions. Calls various protected
 	 * virtuals (further below) to allow specialized behavior in derived classes.
 	 */
-	void draw(bool update=true, bool force=false);
+	virtual void draw();
+
+	void draw(bool update);
+
+	void draw(bool update, bool force);
 
 	map_labels& labels();
 	const map_labels& labels() const;

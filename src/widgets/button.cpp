@@ -572,7 +572,7 @@ static bool not_image(const std::string& str) { return !str.empty() && str[0] !=
 
 void button::set_image(const std::string& image_file)
 {
-	button_image_name_ = image_file;
+	button_image_name_ = "buttons/" + image_file;
 	load_images();
 	set_dirty();
 }
