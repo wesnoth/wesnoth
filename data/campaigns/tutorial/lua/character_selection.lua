@@ -93,6 +93,7 @@ function wml_actions.select_character()
 			type = "Fighteress",
 			id = unit.id,
 			name = _"Li’sar",
+			unrenamable = true,
 			profile = "portraits/lisar.png",
 			canrecruit = true,
 			facing = unit.facing,
