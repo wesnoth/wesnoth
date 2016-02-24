@@ -153,16 +153,16 @@ interface& holder::get_ai_ref()
 }
 
 
-void holder::modify_ai_config_old( const config::const_child_itors &ai_parameters)
+void holder::modify_side_ai_config(config cfg)
 {
 	// only handle aspects
 	// transform ai_parameters to new-style config
 
-	config cfg;
-	configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(this->side_,ai_parameters,cfg);
+	configuration::expand_simplified_aspects(this->side_, cfg);
 	//at this point we have a single config which contains [aspect][facet] tags
 	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
 
+	// TODO: Also add [goal] tags. And what about [stage] or [engine] tags? (Maybe they're not important.)
 	if (this->readonly_context_ == NULL) {
 		// if not initialized, append that config to the bottom of base cfg
 		// then, merge aspects with the same id
@@ -720,7 +720,9 @@ void manager::clear_ais()
 
 void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
 {
-	get_active_ai_holder_for_side(side).modify_ai_config_old(ai_parameters);
+	BOOST_FOREACH(const config& cfg, ai_parameters) {
+		get_active_ai_holder_for_side(side).modify_side_ai_config(cfg);
+	}
 }
 
 
