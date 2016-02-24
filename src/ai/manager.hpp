@@ -63,11 +63,10 @@ public:
 
 	const std::string describe_ai();
 
-	void modify_ai_config_old( const config::const_child_itors &ai_parameters );
-
 	config to_config() const;
 
 	void modify_ai(const config& cfg);
+	void modify_side_ai_config(config cfg);
 
 
 	const std::string get_ai_overview();
