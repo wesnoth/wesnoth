@@ -72,7 +72,8 @@ enum menu_type {
 class editor_controller : public controller_base,
 	public hotkey::command_executor_default,
 	public events::mouse_handler_base,
-	private boost::noncopyable
+	private boost::noncopyable,
+	quit_confirmation
 {
 	public:
 		/**
@@ -94,8 +95,8 @@ class editor_controller : public controller_base,
 		/** Process a hotkey quit command */
 		void hotkey_quit();
 
-		/** Show a quit confirmation dialog and if confirmed quit with the given exit status */
-		void quit_confirm(EXIT_STATUS status);
+		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
+		bool quit_confirm();
 
 		/** Display the settings dialog, used to control e.g. the lighting settings */
 		void custom_tods_dialog();

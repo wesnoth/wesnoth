@@ -49,6 +49,8 @@
 #include "../../unit.hpp"
 #include "../../unit_animation_component.hpp"
 
+#include "quit_confirmation.hpp"
+
 #include "halo.hpp"
 
 #include <boost/bind.hpp>
@@ -63,6 +65,7 @@ namespace editor {
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(game_config, video)
 	, mouse_handler_base()
+	, quit_confirmation(boost::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
 	, gui_(new editor_display(editor::get_dummy_display_context(), video, *reports_, controller_base::get_theme(game_config, "editor"), config()))
@@ -199,7 +202,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 	}
 }
 
-void editor_controller::quit_confirm(EXIT_STATUS mode)
+bool editor_controller::quit_confirm()
 {
 	std::string modified;
 	size_t amount = context_manager_->modified_maps(modified);
@@ -208,16 +211,12 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 	if (amount == 0) {
 		message = _("Do you really want to quit?");
 	} else if (amount == 1) {
-		message = _("Do you really want to quit? Changes in the map since the last save will be lost.");
+		message = _("Do you really want to quit? Changes to this map since the last save will be lost.");
 	} else {
 		message = _("Do you really want to quit? The following maps were modified and all changes since the last save will be lost:");
-		message += modified;
+		message += "\n" + modified;
 	}
-	const int res = gui2::show_message(gui().video(), _("Quit"), message, gui2::tmessage::yes_no_buttons);
-	if(res != gui2::twindow::CANCEL) {
-		do_quit_ = true;
-		quit_mode_ = mode;
-	}
+	return quit_confirmation::show_prompt(message);
 }
 
 void editor_controller::custom_tods_dialog()
@@ -720,10 +719,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 
 		case HOTKEY_QUIT_GAME:
-			quit_confirm(EXIT_NORMAL);
+			if(quit_confirmation::quit()) {
+				do_quit_ = true;
+				quit_mode_ = EXIT_NORMAL;
+			}
 			return true;
 		case HOTKEY_QUIT_TO_DESKTOP:
-			quit_confirm(EXIT_QUIT_TO_DESKTOP);
+			quit_confirmation::quit_to_desktop();
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
 			context_manager_->save_all_maps(true);

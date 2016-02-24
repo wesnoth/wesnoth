@@ -38,7 +38,6 @@ private:
 	void pre_show(CVideo& video, twindow& window);
 
 	virtual void handle_generic_event(const std::string& event_name);
-	void on_btn_quit_game(CVideo& video);
 };
 }
 

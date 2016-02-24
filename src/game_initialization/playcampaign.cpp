@@ -284,7 +284,7 @@ LEVEL_RESULT campaign_controller::play_game()
 			state_.expand_mp_options();
 
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
-			if (game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+			if (game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER || is_replay_) {
 				res = playsingle_scenario(end_level);
 				if(is_replay_) {
 					return res;

@@ -15,9 +15,11 @@
 #ifndef GAME_CLASSIFICATION_HPP_INCLUDED
 #define GAME_CLASSIFICATION_HPP_INCLUDED
 
-#include "config.hpp"
 #include "make_enum.hpp"
 #include "savegame_config.hpp"
+#include <vector>
+
+class config;
 
 /// The default difficulty setting for campaigns.
 extern const std::string DEFAULT_DIFFICULTY;

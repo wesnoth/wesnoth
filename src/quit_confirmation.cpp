@@ -13,37 +13,50 @@
 */
 
 #include "quit_confirmation.hpp"
+#include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "video.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include "resources.hpp"
 
-int quit_confirmation::count_ = 0;
+std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
 bool quit_confirmation::open_ = false;
 
-void quit_confirmation::quit()
+bool quit_confirmation::quit()
 {
-	if(count_ != 0 && !open_)
-	{
-		quit(CVideo::get_singleton());
+	if(!open_) {
+		open_ = true;
+		BOOST_REVERSE_FOREACH(quit_confirmation* blocker, blockers_)
+		{
+			if(!blocker->prompt_()) {
+				open_ = false;
+				return false;
+			}
+		}
+		open_ = false;
 	}
-	else
-	{
-		throw CVideo::quit();
-	}
+
+	return true;
 }
 
-void quit_confirmation::quit(CVideo& video)
+void quit_confirmation::quit_to_title()
 {
-	assert(!open_);
-	open_ = true;
-	const int res = gui2::show_message(video, _("Quit"),
-		_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
-	open_ = false;
-	if(res != gui2::twindow::CANCEL) {
-		throw CVideo::quit();
-	} else {
-		return;
-	}
+	if(quit()) { throw_quit_game_exception(); }
+}
+
+void quit_confirmation::quit_to_desktop()
+{
+	if(quit()) { throw CVideo::quit(); }
+}
+
+bool quit_confirmation::show_prompt(const std::string& message)
+{
+	return gui2::show_message(CVideo::get_singleton(), _("Quit"), message,
+		gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
+}
+
+bool quit_confirmation::default_prompt()
+{
+	return show_prompt(_("Do you really want to quit?"));
 }

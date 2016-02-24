@@ -55,7 +55,7 @@ namespace hotkey { class command_executor; }
 
 namespace soundsource { class manager; }
 
-class controller_base : public quit_confirmation, video2::draw_layering
+class controller_base : public video2::draw_layering
 {
 public:
 	controller_base(const config& game_config, CVideo& video);

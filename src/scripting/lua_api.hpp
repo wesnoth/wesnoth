@@ -17,7 +17,6 @@
 
 #include <cstddef>
 #include <string>
-#include "config.hpp" // forward declaration of the nested type config::attribute_value is not possible
 #include "lua_types.hpp" // the luatype typedef
 #include "unit_ptr.hpp"
 
@@ -45,7 +44,7 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false
  */
 unit& luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
 class lua_unit;
-lua_unit* LuaW_pushlocalunit(lua_State *L, unit& u);
+lua_unit* luaW_pushlocalunit(lua_State *L, unit& u);
 struct map_location;
 
 /**

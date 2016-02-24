@@ -13,6 +13,7 @@
 */
 
 #include "addon/state.hpp"
+#include "config.hpp"
 
 #include "addon/manager.hpp"
 #include "font.hpp"

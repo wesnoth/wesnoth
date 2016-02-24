@@ -27,21 +27,21 @@
 #include <iostream>
 
 namespace {
-	const std::string scrollbar_top = "buttons/scrolltop.png";
-	const std::string scrollbar_bottom = "buttons/scrollbottom.png";
-	const std::string scrollbar_mid = "buttons/scrollmid.png";
+	const std::string scrollbar_top = "buttons/scrollbars/scrolltop.png";
+	const std::string scrollbar_bottom = "buttons/scrollbars/scrollbottom.png";
+	const std::string scrollbar_mid = "buttons/scrollbars/scrollmid.png";
 
-	const std::string scrollbar_top_hl = "buttons/scrolltop-active.png";
-	const std::string scrollbar_bottom_hl = "buttons/scrollbottom-active.png";
-	const std::string scrollbar_mid_hl = "buttons/scrollmid-active.png";
+	const std::string scrollbar_top_hl = "buttons/scrollbars/scrolltop-active.png";
+	const std::string scrollbar_bottom_hl = "buttons/scrollbars/scrollbottom-active.png";
+	const std::string scrollbar_mid_hl = "buttons/scrollbars/scrollmid-active.png";
 
-	const std::string scrollbar_top_pressed = "buttons/scrolltop-pressed.png";
-	const std::string scrollbar_bottom_pressed = "buttons/scrollbottom-pressed.png";
-	const std::string scrollbar_mid_pressed = "buttons/scrollmid-pressed.png";
+	const std::string scrollbar_top_pressed = "buttons/scrollbars/scrolltop-pressed.png";
+	const std::string scrollbar_bottom_pressed = "buttons/scrollbars/scrollbottom-pressed.png";
+	const std::string scrollbar_mid_pressed = "buttons/scrollbars/scrollmid-pressed.png";
 
-	const std::string groove_top = "buttons/scrollgroove-top.png";
-	const std::string groove_mid = "buttons/scrollgroove-mid.png";
-	const std::string groove_bottom = "buttons/scrollgroove-bottom.png";
+	const std::string groove_top = "buttons/scrollbars/scrollgroove-top.png";
+	const std::string groove_mid = "buttons/scrollbars/scrollgroove-mid.png";
+	const std::string groove_bottom = "buttons/scrollbars/scrollgroove-bottom.png";
 
 }
 

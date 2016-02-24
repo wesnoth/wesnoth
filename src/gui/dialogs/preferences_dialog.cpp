@@ -90,6 +90,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	, friend_names_()
 	, last_selected_item_(0)
 	, accl_speeds_()
+	, font_scaling_(font_scaling())
 {
 	BOOST_FOREACH(const config& adv, game_cfg.child_range("advanced_preference")) {
 		adv_preferences_cfg_.push_back(adv);
@@ -411,11 +412,11 @@ void tpreferences::initialize_members(twindow& window)
 	// GENERAL PANEL
 	// 
 
-	/** SCROLL SPEED **/
+	/* SCROLL SPEED */
 	setup_single_slider("scroll_speed",
 		scroll_speed(), set_scroll_speed, window);
 
-	/** ACCELERATED SPEED **/
+	/* ACCELERATED SPEED */
 	ttoggle_button& accl_toggle =
 		find_widget<ttoggle_button>(&window, "turbo_toggle", false);
 	tslider& accl_slider =
@@ -445,39 +446,39 @@ void tpreferences::initialize_members(twindow& window)
 
 	bind_status_label(accl_slider, "turbo_value", window);
 
-	/** SKIP AI MOVES **/
+	/* SKIP AI MOVES */
 	setup_single_toggle("skip_ai_moves",
 		!show_ai_moves(), set_show_ai_moves, window, true);
 
-	/** DISABLE AUTO MOVES **/
+	/* DISABLE AUTO MOVES */
 	setup_single_toggle("disable_auto_moves",
 		disable_auto_moves(), set_disable_auto_moves, window);
 
-	/** TURN DIALOG **/
+	/* TURN DIALOG */
 	setup_single_toggle("show_turn_dialog",
 		turn_dialog(), set_turn_dialog, window);
 
-	/** ENABLE PLANNING MODE **/
+	/* ENABLE PLANNING MODE */
 	setup_single_toggle("whiteboard_on_start",
 		enable_whiteboard_mode_on_start(), set_enable_whiteboard_mode_on_start, window);
 
-	/** HIDE ALLY PLANS **/
+	/* HIDE ALLY PLANS */
 	setup_single_toggle("whiteboard_hide_allies",
 		hide_whiteboard(), set_hide_whiteboard, window);
 
-	/** INTERRUPT ON SIGHTING **/
+	/* INTERRUPT ON SIGHTING */
 	setup_single_toggle("interrupt_move_when_ally_sighted",
 		interrupt_when_ally_sighted(), set_interrupt_when_ally_sighted, window);
 
-	/** SAVE REPLAYS **/
+	/* SAVE REPLAYS */
 	setup_single_toggle("save_replays",
 		save_replays(), set_save_replays, window);
 
-	/** DELETE AUTOSAVES **/
+	/* DELETE AUTOSAVES */
 	setup_single_toggle("delete_saves",
 		delete_saves(), set_delete_saves, window);
 
-	/** MAX AUTO SAVES **/
+	/* MAX AUTO SAVES */
 	tslider& autosaves_slider = find_widget<tslider>(&window, "max_saves_slider", false);
 	tcontrol& autosaves_label = find_widget<tcontrol>(&window, "max_saves_value", false);
 
@@ -490,12 +491,12 @@ void tpreferences::initialize_members(twindow& window)
 		&tpreferences::max_autosaves_slider_callback,
 		this, boost::ref(autosaves_slider), boost::ref(autosaves_label)));
 
-	/** SET HOTKEYS **/
+	/* SET HOTKEYS */
 	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "hotkeys", false),
 			boost::bind(&show_hotkeys_preferences_dialog,
 			boost::ref(window.video())));
 
-	/** CACHE MANAGE **/
+	/* CACHE MANAGE */
 	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "cachemg", false),
 			boost::bind(&gui2::tgame_cache_options::display,
 			boost::ref(window.video())));
@@ -504,7 +505,7 @@ void tpreferences::initialize_members(twindow& window)
 	// DISPLAY PANEL
 	//
 
-	/** FULLSCREEN TOGGLE **/
+	/* FULLSCREEN TOGGLE */
 	ttoggle_button& toggle_fullscreen =
 			find_widget<ttoggle_button>(&window, "fullscreen", false);
 
@@ -515,7 +516,7 @@ void tpreferences::initialize_members(twindow& window)
 			&tpreferences::fullscreen_toggle_callback,
 			this, boost::ref(window)));
 
-	/** SET RESOLUTION **/
+	/* SET RESOLUTION */
 	tcombobox& res_list = find_widget<tcombobox>(&window, "resolution_set", false);
 
 	res_list.set_use_markup(true);
@@ -526,42 +527,47 @@ void tpreferences::initialize_members(twindow& window)
 			boost::bind(&tpreferences::handle_res_select,
 			this, boost::ref(window)));
 
-	/** SHOW FLOATING LABELS **/
+	/* SHOW FLOATING LABELS */
 	setup_single_toggle("show_floating_labels",
 		show_floating_labels(), set_show_floating_labels, window);
 
-	/** SHOW HALOES **/
+	/* SHOW HALOES */
 	setup_single_toggle("show_halos",
 		show_haloes(), set_show_haloes, window);
 
-	/** SHOW TEAM COLORS **/
+	/* SHOW TEAM COLORS */
 	setup_single_toggle("show_ellipses",
 		show_side_colors(), set_show_side_colors, window);
 
-	/** SHOW GRID **/
+	/* SHOW GRID */
 	setup_single_toggle("show_grid",
 		grid(), set_grid, window);
 
-	/** ANIMATE MAP **/
+	/* ANIMATE MAP */
 	setup_single_toggle("animate_terrains",
 		animate_map(), set_animate_map, window);
 
-	/** SHOW UNIT STANDING ANIMS **/
+	/* SHOW UNIT STANDING ANIMS */
 	setup_single_toggle("animate_units_standing",
 		show_standing_animations(), set_show_standing_animations, window);
 
-	/** SHOW UNIT IDLE ANIMS **/
+	/* SHOW UNIT IDLE ANIMS */
 	setup_toggle_slider_pair("animate_units_idle", "idle_anim_frequency",
 		idle_anim(), idle_anim_rate(),
 		set_idle_anim, set_idle_anim_rate, window);
 
-	/** FONT SCALING **/
-	// The setter is handled in post_show to avoid dynamically changing text
+	/* FONT SCALING */
 	tslider& scale_slider = find_widget<tslider>(&window, "scaling_slider", false);
+
 	scale_slider.set_value(font_scaling());
+
+	connect_signal_notify_modified(scale_slider, boost::bind(
+		&tpreferences::font_scaling_slider_callback,
+		this, boost::ref(scale_slider)));
+
 	bind_status_label(scale_slider, "scaling_value", window, "%");
 
-	/** SELECT THEME **/
+	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "choose_theme", false),
 			boost::bind(&show_theme_dialog,
@@ -572,22 +578,22 @@ void tpreferences::initialize_members(twindow& window)
 	// SOUND PANEL
 	//
 
-	/** SOUND FX **/
+	/* SOUND FX */
 	setup_toggle_slider_pair("sound_toggle_sfx", "sound_volume_sfx",
 		sound_on(), sound_volume(),
 		set_sound, set_sound_volume, window);
 
-	/** MUSIC **/
+	/* MUSIC */
 	setup_toggle_slider_pair("sound_toggle_music", "sound_volume_music",
 		music_on(), music_volume(),
 		set_music, set_music_volume, window);
 
-	/** TURN BELL **/
+	/* TURN BELL */
 	setup_toggle_slider_pair("sound_toggle_bell", "sound_volume_bell",
 		turn_bell(), bell_volume(),
 		set_turn_bell, set_bell_volume, window);
 
-	/** UI FX **/
+	/* UI FX */
 	setup_toggle_slider_pair("sound_toggle_uisfx", "sound_volume_uisfx",
 		UI_sound_on(), UI_volume(),
 		set_UI_sound, set_UI_volume, window);
@@ -597,31 +603,31 @@ void tpreferences::initialize_members(twindow& window)
 	// MULTIPLAYER PANEL
 	//
 
-	/** CHAT LINES **/
+	/* CHAT LINES */
 	setup_single_slider("chat_lines",
 		chat_lines(), set_chat_lines, window);
 
-	/** CHAT TIMESTAMPPING **/
+	/* CHAT TIMESTAMPPING */
 	setup_single_toggle("chat_timestamps",
 		chat_timestamping(), set_chat_timestamping, window);
 
-	/** SAVE PASSWORD **/
+	/* SAVE PASSWORD */
 	setup_single_toggle("remember_password",
 		remember_password(), set_remember_password, window);
 
-	/** SORT LOBBY LIST **/
+	/* SORT LOBBY LIST */
 	setup_single_toggle("lobby_sort_players",
 		sort_list(), _set_sort_list, window);
 
-	/** ICONIZE LOBBY LIST **/
+	/* ICONIZE LOBBY LIST */
 	setup_single_toggle("lobby_player_icons",
 		iconize_list(), _set_iconize_list, window);
 
-	/** WHISPERS FROM FRIENDS ONLY **/
+	/* WHISPERS FROM FRIENDS ONLY */
 	setup_single_toggle("lobby_whisper_friends_only",
 		whisper_friends_only(), set_whisper_friends_only, window);
 
-	/** LOBBY JOIN NOTIFICATIONS **/
+	/* LOBBY JOIN NOTIFICATIONS */
 	setup_radio_toggle("lobby_joins_none", SHOW_NONE,
 		lobby_joins(), lobby_joins_, window);
 	setup_radio_toggle("lobby_joins_friends", SHOW_FRIENDS,
@@ -629,7 +635,7 @@ void tpreferences::initialize_members(twindow& window)
 	setup_radio_toggle("lobby_joins_all", SHOW_ALL,
 		lobby_joins(), lobby_joins_, window);
 
-	/** FRIENDS LIST **/
+	/* FRIENDS LIST */
 	setup_friends_list(window);
 
 	ttext_box& textbox = find_widget<ttext_box>(&window, "friend_name_box", false);
@@ -665,13 +671,13 @@ void tpreferences::initialize_members(twindow& window)
 
 	friend_list.select_row(0);
 
-	/** ALERTS **/
+	/* ALERTS */
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "mp_alerts", false),
 			boost::bind(&gui2::tmp_alerts_options::display,
 			boost::ref(window.video())));
 
-	/** SET WESNOTHD PATH **/
+	/* SET WESNOTHD PATH */
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "mp_wesnothd", false), boost::bind(
 			&show_wesnothd_server_search,
@@ -845,7 +851,9 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 		// Add more options here as needed
 	}
 
-	if(selected_type != ADVANCED_PREF_TYPE::TOGGLE && selected_type != ADVANCED_PREF_TYPE::SPECIAL) {
+	const bool has_description = !adv_preferences_cfg_[selected_row]["description"].empty();
+
+	if(has_description && selected_type != ADVANCED_PREF_TYPE::SPECIAL) {
 		find_widget<twidget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
 			.set_visible(tcontrol::tvisible::visible);
 	}
@@ -875,7 +883,10 @@ void tpreferences::add_tab(tlistbox& tab_bar, const std::string& label)
 
 void tpreferences::initialize_tabs(twindow& window)
 {
-	/** MULTIPLAYER TABS **/
+	//
+	// MULTIPLAYER TABS
+	//
+
 	tlistbox& tabs_multiplayer = find_widget<tlistbox>(&window, "mp_tab", false);
 	add_tab(tabs_multiplayer, _("Prefs tab^General"));
 	add_tab(tabs_multiplayer, _("Prefs tab^Friends"));
@@ -1006,6 +1017,11 @@ void tpreferences::max_autosaves_slider_callback(tslider& slider, tcontrol& stat
 	status_label.set_label(get_max_autosaves_status_label(slider));
 }
 
+void tpreferences::font_scaling_slider_callback(tslider& slider)
+{
+	font_scaling_ = slider.get_value();
+}
+
 void tpreferences::toggle_radio_callback(
 		const std::vector<std::pair<ttoggle_button*, int> >& vec,
 		int& value,
@@ -1041,10 +1057,10 @@ void tpreferences::on_tab_select(twindow& window, const std::string& widget_id)
 	set_visible_page(window, static_cast<unsigned int>(selected_row), (widget_id + "_pager"));
 }
 
-void tpreferences::post_show(twindow& window)
+void tpreferences::post_show(twindow& /*window*/)
 {
 	// Handle the font scaling setter only once prefs is closed
-	set_font_scaling(find_widget<tslider>(&window, "scaling_slider", false).get_value());
+	set_font_scaling(font_scaling_);
 }
 
 } // end namespace gui2

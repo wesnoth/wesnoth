@@ -126,6 +126,11 @@ void tcontrol::set_members(const string_map& data)
 	if(itor != data.end()) {
 		set_use_markup(utils::string_bool(itor->second));
 	}
+
+	itor = data.find("text_alignment");
+	if(itor != data.end()) {
+		set_text_alignment(decode_text_alignment(itor->second));
+	}
 }
 
 bool tcontrol::disable_click_dismiss() const

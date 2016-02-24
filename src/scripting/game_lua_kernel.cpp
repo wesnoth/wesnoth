@@ -4772,7 +4772,7 @@ void game_lua_kernel::apply_effect(const std::string& name, unit& u, const confi
 		return;
 	}
 	// Stack: effect_func
-	lua_unit* lu = LuaW_pushlocalunit(L, u);
+	lua_unit* lu = luaW_pushlocalunit(L, u);
 	// Stack: effect_func, unit
 	lua_pushvalue(L, -2);
 	// Stack: effect_func, unit, effect_func

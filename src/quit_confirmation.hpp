@@ -18,6 +18,9 @@
 class CVideo;
 
 #include <cassert>
+#include <vector>
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
 
 /**
  * Implements a quit confirmation dialog.
@@ -28,9 +31,10 @@ class CVideo;
 class quit_confirmation
 {
 public:
-	quit_confirmation() { ++count_; }
-	quit_confirmation(const quit_confirmation&) { ++count_; }
-	~quit_confirmation() { --count_; assert(count_ >= 0); }
+	explicit quit_confirmation(const boost::function<bool()>& prompt = &quit_confirmation::default_prompt)
+		: prompt_(prompt) { blockers_.push_back(this); }
+
+	~quit_confirmation() { blockers_.pop_back(); }
 
 	/**
 	 * Shows the quit confirmation if needed.
@@ -38,12 +42,21 @@ public:
 	 * @throws CVideo::quit If the user chooses to quit or no prompt was
 	 *                      displayed.
 	 */
-	static void quit();
-	static void quit(CVideo& video );
+	static bool quit();
+	static void quit_to_title();
+	static void quit_to_desktop();
+
+	static bool show_prompt(const std::string& message);
+	static bool default_prompt();
 
 private:
-	static int count_;
+	//noncopyable
+	quit_confirmation( const quit_confirmation& );
+	const quit_confirmation& operator=( const quit_confirmation& );
+	static std::vector<quit_confirmation*> blockers_;
 	static bool open_;
+
+	boost::function<bool()> prompt_;
 };
 
 #endif

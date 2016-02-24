@@ -368,6 +368,7 @@ public:
 		typename V::result_type apply_visitor(const V & visitor) const
 		{ return boost::apply_visitor(visitor, value_); }
 
+	private:
 		// Special strings.
 		static const std::string s_yes, s_no;
 		static const std::string s_true, s_false;
