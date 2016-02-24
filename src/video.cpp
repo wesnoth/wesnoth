@@ -270,7 +270,7 @@ draw_layering::~draw_layering()
 	event.window.data1 = (*frameBuffer).h;
 	event.window.data2 = (*frameBuffer).w;
 
-	for(std::list<events::sdl_handler*>::iterator it = draw_layers.begin(); it != draw_layers.end(); it++) {
+	for(std::list<events::sdl_handler*>::iterator it = draw_layers.begin(); it != draw_layers.end(); ++it) {
 		(*it)->handle_window_event(event);
 	}
 #endif

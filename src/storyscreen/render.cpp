@@ -1000,6 +1000,15 @@ part_ui::RESULT part_ui::show()
 	return ret_;
 }
 
+void part_ui::handle_event(const SDL_Event &event)
+{
+	if (event.type == DRAW_ALL_EVENT) {
+		dirty_ = true;
+		draw();
+	}
+
+}
+
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 void part_ui::handle_window_event(const SDL_Event &event)
 {

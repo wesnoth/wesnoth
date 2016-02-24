@@ -443,7 +443,7 @@ void pump()
 				}
 				//make sure this runs in it's own scope.
 				{
-					for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
+					for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
 						const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 						for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 							event_handlers[i1]->handle_window_event(event);
@@ -512,11 +512,10 @@ void pump()
 			case DRAW_ALL_EVENT:
 			{
 				/* iterate backwards as the most recent things will be at the top */
-				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
+				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
 					const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
-					for( std::vector<sdl_handler*>::const_iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); i1++) {
+					for( std::vector<sdl_handler*>::const_iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); ++i1) {
 						(*i1)->handle_event(event);
-						//event_handlers[i1]->draw();
 					}
 				}
 				continue; //do not do further handling here
@@ -610,7 +609,7 @@ void raise_draw_event()
 
 void raise_draw_all_event()
 {
-	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
+	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
 		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->draw();
@@ -634,7 +633,7 @@ void raise_volatile_draw_event()
 
 void raise_volatile_draw_all_event()
 {
-	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); i++) {
+	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
 		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->volatile_draw();
@@ -696,7 +695,7 @@ void peek_for_resize()
 {
 	SDL_Event events[100];
 	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
-	for (int i = 0; i < num; i++) {
+	for (int i = 0; i < num; ++i) {
 		if (events[i].type == SDL_WINDOWEVENT &&
 				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
 			CVideo::get_singleton().update_framebuffer();

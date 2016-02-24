@@ -883,6 +883,7 @@ void display::layout_buttons()
 		if (s) {
 			const SDL_Rect& loc = i->location(screen_area());
 			s->set_location(loc);
+			s->set_measurements(0,0);
 			s->set_volatile(
 				sdl::rects_overlap(s->location(),map_outside_area()));
 		}
@@ -895,6 +896,7 @@ void display::layout_buttons()
 		if(b) {
 			const SDL_Rect& loc = i->location(screen_area());
 			b->set_location(loc);
+			b->set_measurements(0,0);
 			b->set_label(i->title());
 			b->set_volatile(
 					sdl::rects_overlap(b->location(),map_outside_area()));
@@ -908,6 +910,7 @@ void display::layout_buttons()
 		if(b) {
 			const SDL_Rect& loc = i->location(screen_area());
 			b->set_location(loc);
+			b->set_measurements(0,0);
 			b->set_label(i->title());
 			b->set_volatile(
 						sdl::rects_overlap(b->location(),map_outside_area()));
