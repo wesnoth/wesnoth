@@ -276,9 +276,25 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_configs.push_back(std::make_pair(attr.first, facet_config));
 		}
 		BOOST_FOREACH(const config::any_child &child, aiparam.all_children_range()) {
-			if (child.key == "engine" || child.key == "stage" || child.key == "aspect" || child.key == "goal") {
+			if (child.key == "engine" || child.key == "stage" || child.key == "aspect" || child.key == "goal" || child.key == "modify_ai") {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child.key, child.cfg);
+				continue;
+			} else if(child.key == "protect_unit" || child.key == "protect_location" || child.key == "target" || child.key == "target_location") {
+				// A simplified goal, mainly kept around just for backwards compatibility.
+				config goal_config, criteria_config = child.cfg;
+				goal_config["name"] = child.key;
+				goal_config["turns"] = turns;
+				goal_config["time_of_day"] = time_of_day;
+				if(child.key.substr(0,7) == "protect" && criteria_config.has_attribute("protect_radius")) {
+					goal_config["protect_radius"] = criteria_config["protect_radius"];
+					criteria_config.remove_attribute("protect_radius");
+				}
+				if(criteria_config.has_attribute("value")) {
+					goal_config["value"] = criteria_config["value"];
+					criteria_config.remove_attribute("value");
+				}
+				parsed_config.add_child("goal", goal_config);
 				continue;
 			}
 			// Now there's two possibilities. If the tag is [attacks] or contains either value= or [value],
