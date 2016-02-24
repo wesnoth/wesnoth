@@ -130,7 +130,7 @@ size_t context_manager::modified_maps(std::string& message) {
 		}
 	}
 	BOOST_FOREACH(std::string& str, modified) {
-		message += "\n" + str;
+		message += "\n" + std::string("• ") + str;
 	}
 	return modified.size();
 }

@@ -214,7 +214,7 @@ bool editor_controller::quit_confirm()
 		message = _("Do you really want to quit? Changes in the map since the last save will be lost.");
 	} else {
 		message = _("Do you really want to quit? The following maps were modified and all changes since the last save will be lost:");
-		message += modified;
+		message += "\n" + modified;
 	}
 	return quit_confirmation::show_prompt(message);
 }
