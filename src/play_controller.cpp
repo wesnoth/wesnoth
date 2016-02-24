@@ -1234,7 +1234,7 @@ void play_controller::play_turn()
 
 void play_controller::check_time_over()
 {
-	const bool time_left = gamestate().tod_manager_.next_turn(gamestate().gamedata_);
+	const bool time_left = gamestate().tod_manager_.next_turn(&gamestate().gamedata_);
 
 	if(!time_left) {
 		LOG_NG << "firing time over event...\n";

@@ -278,7 +278,7 @@ void strategy_formulation_with_rca::switch_side()
 	else
 		this->set_side(1);
 
-	resources::tod_manager->next_turn(*resources::gamedata);
+	resources::tod_manager->next_turn(resources::gamedata);
 
 	DBG_AI_TESTING_SF_WITH_RCA << "switch to turn " << resources::tod_manager->turn() << std::endl;
 	DBG_AI_TESTING_SF_WITH_RCA << "------switch_side() end------" << std::endl;
