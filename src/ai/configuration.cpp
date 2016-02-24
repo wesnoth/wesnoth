@@ -258,7 +258,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 					algorithm = "ai_idle";
 				}
 				base_config = get_ai_config_for(algorithm);
-			} else {
+			} else if(algorithm != aiparam["ai_algorithm"]) {
 				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
 			}
 		}
