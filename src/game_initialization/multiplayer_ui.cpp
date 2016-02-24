@@ -613,7 +613,9 @@ void ui::layout_children(const SDL_Rect& /*rect*/)
 	entry_textbox_.set_width(xscale(833) - 8);
 }
 
-bool ui::user_info::operator> (const user_info& b) const {
+bool ui::user_info::operator> (const user_info& b) const
+{
+	//FIXME: to cmpare names, use translation::compare from gettext.hpp
 	user_info const& a = *this;
 
 	// ME always on top
