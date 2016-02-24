@@ -39,56 +39,11 @@ static lg::log_domain log_ai_configuration("ai/config");
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
 
-
-class well_known_aspect {
-public:
-	well_known_aspect(const std::string &name, bool attr = true)
-		: name_(name),was_an_attribute_(attr)
-	{
-	}
-
-	virtual ~well_known_aspect() {}
-
-	std::string name_;
-	bool was_an_attribute_;
-};
-
-static std::vector<well_known_aspect> well_known_aspects;
-
 void configuration::init(const config &game_config)
 {
 	ai_configurations_.clear();
 	era_ai_configurations_.clear();
 	mod_ai_configurations_.clear();
-	well_known_aspects.clear();
-	well_known_aspects.push_back(well_known_aspect("advancements"));
-	well_known_aspects.push_back(well_known_aspect("aggression"));
-	well_known_aspects.push_back(well_known_aspect("attack_depth"));
-	well_known_aspects.push_back(well_known_aspect("attacks",false));
-	well_known_aspects.push_back(well_known_aspect("avoid",false));
-	well_known_aspects.push_back(well_known_aspect("caution"));
-	well_known_aspects.push_back(well_known_aspect("grouping"));
-	well_known_aspects.push_back(well_known_aspect("leader_aggression"));
-	well_known_aspects.push_back(well_known_aspect("leader_goal",false));
-	well_known_aspects.push_back(well_known_aspect("leader_ignores_keep"));
-	well_known_aspects.push_back(well_known_aspect("leader_value"));
-	well_known_aspects.push_back(well_known_aspect("number_of_possible_recruits_to_force_recruit"));
-	well_known_aspects.push_back(well_known_aspect("passive_leader"));
-	well_known_aspects.push_back(well_known_aspect("passive_leader_shares_keep"));
-	well_known_aspects.push_back(well_known_aspect("recruitment"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_diversity"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_combat"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_movement"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_instructions"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_more"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_pattern"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_randomness"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_save_gold"));
-	well_known_aspects.push_back(well_known_aspect("scout_village_targeting"));
-	well_known_aspects.push_back(well_known_aspect("simple_targeting"));
-	well_known_aspects.push_back(well_known_aspect("support_villages"));
-	well_known_aspects.push_back(well_known_aspect("village_value"));
-	well_known_aspects.push_back(well_known_aspect("villages_per_scout"));
 
 	const config &ais = game_config.child("ais");
 	default_config_ = ais.child("default_config");
