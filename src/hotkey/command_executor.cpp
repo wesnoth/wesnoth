@@ -313,10 +313,10 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			map_screenshot();
 			break;
 		case HOTKEY_QUIT_TO_DESKTOP:
-			quit_confirmation::quit();
+			quit_confirmation::quit_to_desktop();
 			break;
 		case HOTKEY_QUIT_GAME:
-			quit_confirmation::quit(false);
+			quit_confirmation::quit_to_title();
 			break;
 		default:
 			return false;

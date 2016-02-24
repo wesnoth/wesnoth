@@ -77,7 +77,7 @@ void tsynced_choice_wait::pre_show(CVideo& video, twindow& window)
 				&window, "btn_quit_game", false);
 
 	connect_signal_mouse_left_click(quit_button,
-		boost::bind(&quit_confirmation::quit, false));
+		boost::bind(&quit_confirmation::quit_to_title));
 
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {

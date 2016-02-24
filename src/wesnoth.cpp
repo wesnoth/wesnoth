@@ -861,10 +861,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			image::flush_cache();
 			continue;
 		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {
-			///@todo editor can ask the game to quit completely
-			if (game->start_editor() == editor::EXIT_QUIT_TO_DESKTOP) {
-				return 0;
-			}
+			game->start_editor();
 			continue;
 		}
 		game->launch_game(should_reload);

@@ -49,6 +49,8 @@
 #include "../../unit.hpp"
 #include "../../unit_animation_component.hpp"
 
+#include "quit_confirmation.hpp"
+
 #include "halo.hpp"
 
 #include <boost/bind.hpp>
@@ -214,7 +216,7 @@ bool editor_controller::quit_confirm()
 		message = _("Do you really want to quit? The following maps were modified and all changes since the last save will be lost:");
 		message += modified;
 	}
-	return gui2::show_message(gui().video(), _("Quit"), message, gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
+	return quit_confirmation::show_prompt(message);
 }
 
 void editor_controller::custom_tods_dialog()
@@ -717,16 +719,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 
 		case HOTKEY_QUIT_GAME:
-			if(quit_confirm()) {
+			if(quit_confirmation::quit()) {
 				do_quit_ = true;
 				quit_mode_ = EXIT_NORMAL;
 			}
 			return true;
 		case HOTKEY_QUIT_TO_DESKTOP:
-			if(quit_confirm()) {
-				do_quit_ = true;
-				quit_mode_ = EXIT_QUIT_TO_DESKTOP;
-			}
+			quit_confirmation::quit_to_desktop();
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
 			context_manager_->save_all_maps(true);

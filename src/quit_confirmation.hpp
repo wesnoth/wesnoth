@@ -39,12 +39,14 @@ public:
 	/**
 	 * Shows the quit confirmation if needed.
 	 *
-	 * @param  full_exit    Whether to quit fully to the desktop or simply
-	 *                      exit game. Defaults to true.
 	 * @throws CVideo::quit If the user chooses to quit or no prompt was
 	 *                      displayed.
 	 */
-	static void quit(const bool full_exit = true);
+	static bool quit();
+	static void quit_to_title();
+	static void quit_to_desktop();
+
+	static bool show_prompt(const std::string& message);
 	static bool default_prompt();
 
 private:

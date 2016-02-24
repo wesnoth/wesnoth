@@ -23,30 +23,40 @@
 std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
 bool quit_confirmation::open_ = false;
 
-void quit_confirmation::quit(const bool full_exit)
+bool quit_confirmation::quit()
 {
-	if(!open_)
-	{
+	if(!open_) {
 		open_ = true;
 		BOOST_REVERSE_FOREACH(quit_confirmation* blocker, blockers_)
 		{
 			if(!blocker->prompt_()) {
 				open_ = false;
-				return;
+				return false;
 			}
 		}
 		open_ = false;
 	}
 
-	if(!full_exit) {
-		throw_quit_game_exception();
-	}
+	return true;
+}
 
-	throw CVideo::quit();
+void quit_confirmation::quit_to_title()
+{
+	if(quit()) { throw_quit_game_exception(); }
+}
+
+void quit_confirmation::quit_to_desktop()
+{
+	if(quit()) { throw CVideo::quit(); }
+}
+
+bool quit_confirmation::show_prompt(const std::string& message)
+{
+	return gui2::show_message(CVideo::get_singleton(), _("Quit"), message,
+		gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
 }
 
 bool quit_confirmation::default_prompt()
 {
-	return gui2::show_message(CVideo::get_singleton(), _("Quit"), _("Do you really want to quit?"),
-		gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
+	return show_prompt(_("Do you really want to quit?"));
 }
