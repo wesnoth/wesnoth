@@ -67,7 +67,7 @@ tsynced_choice_wait::~tsynced_choice_wait()
 	mgr_.changed_event_.detach_handler(this);
 }
 
-void tsynced_choice_wait::pre_show(twindow& window)
+void tsynced_choice_wait::pre_show(CVideo& /*video*/, twindow& window)
 {
 	window_ = &window;
 	message_ = find_widget<tlabel>(&window, "lblMessage", false, true);
