@@ -110,6 +110,8 @@ static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result
 	lua_setfield(L, -2, "gamestate_changed");
 	lua_pushinteger(L,action_result->get_status());
 	lua_setfield(L, -2, "status");
+	lua_pushstring(L, actions::get_error_name(action_result->get_status()).c_str());
+	lua_setfield(L, -2, "result");
 	return 1;
 }
 
