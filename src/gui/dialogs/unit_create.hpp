@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/group.hpp"
 #include "gui/widgets/text.hpp"
 #include "race.hpp"
 #include "unit_types.hpp"
@@ -83,6 +84,8 @@ private:
 	bool filter_text_changed(ttext_* textbox, const std::string& text);
 	void profile_button_callback(twindow& window);
 	void gender_toggle_callback(twindow& window);
+
+	tgroup<unit_race::GENDER> gender_toggle;
 };
 }
 

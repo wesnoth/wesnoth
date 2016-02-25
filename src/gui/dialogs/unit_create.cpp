@@ -46,25 +46,8 @@
 
 #include <boost/bind.hpp>
 
-namespace
-{
 static std::string last_chosen_type_id = "";
 static unit_race::GENDER last_gender = unit_race::MALE;
-
-/**
- * Helper function for updating the male/female checkboxes.
- * It's not a private member of class gui2::tunit_create so
- * we don't have to expose a forward-declaration of ttoggle_button
- * in the interface.
- */
-void update_male_female_toggles(gui2::ttoggle_button& male,
-								gui2::ttoggle_button& female,
-								unit_race::GENDER choice)
-{
-	male.set_value(choice == unit_race::MALE);
-	female.set_value(choice == unit_race::FEMALE);
-}
-}
 
 namespace gui2
 {
@@ -113,6 +96,18 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			= find_widget<ttoggle_button>(&window, "male_toggle", false);
 	ttoggle_button& female_toggle
 			= find_widget<ttoggle_button>(&window, "female_toggle", false);
+
+	gender_toggle.add_member(&male_toggle, unit_race::MALE);
+	gender_toggle.add_member(&female_toggle, unit_race::FEMALE);
+
+	gender_toggle.set_member_states(last_gender);
+
+	male_toggle.set_callback_state_change(
+			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
+
+	female_toggle.set_callback_state_change(
+			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
+
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	ttext_box* filter
@@ -138,14 +133,6 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			boost::bind(&tunit_create::profile_button_callback,
 						this,
 						boost::ref(window)));
-
-	male_toggle.set_callback_state_change(
-			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
-
-	female_toggle.set_callback_state_change(
-			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
-
-	update_male_female_toggles(male_toggle, female_toggle, gender_);
 
 	list.clear();
 
@@ -213,8 +200,6 @@ bool tunit_create::compare_race_rev(unsigned i1, unsigned i2) const
 
 void tunit_create::post_show(twindow& window)
 {
-	ttoggle_button& female_toggle
-			= find_widget<ttoggle_button>(&window, "female_toggle", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	choice_ = "";
@@ -233,10 +218,8 @@ void tunit_create::post_show(twindow& window)
 		return;
 	}
 
-	last_chosen_type_id = choice_
-			= units_[selected_row]->id();
-	last_gender = gender_ = female_toggle.get_value() ? unit_race::FEMALE
-													  : unit_race::MALE;
+	last_chosen_type_id = choice_ = units_[selected_row]->id();
+	last_gender = gender_;
 }
 
 void tunit_create::print_stats(std::stringstream& str, const int row)
@@ -443,20 +426,6 @@ void tunit_create::profile_button_callback(twindow& window)
 
 void tunit_create::gender_toggle_callback(twindow& window)
 {
-	ttoggle_button& male_toggle
-			= find_widget<ttoggle_button>(&window, "male_toggle", false);
-	ttoggle_button& female_toggle
-			= find_widget<ttoggle_button>(&window, "female_toggle", false);
-
-	// TODO Ye olde ugly hack for the lack of radio buttons.
-
-	if(gender_ == unit_race::MALE) {
-		gender_ = female_toggle.get_value() ? unit_race::FEMALE
-											: unit_race::MALE;
-	} else {
-		gender_ = male_toggle.get_value() ? unit_race::MALE : unit_race::FEMALE;
-	}
-
-	update_male_female_toggles(male_toggle, female_toggle, gender_);
+	gender_ = gender_toggle.get_active_member_value();
 }
 }
