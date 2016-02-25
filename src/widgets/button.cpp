@@ -32,6 +32,8 @@
 #include "text.hpp"
 #include "wml_separators.hpp"
 
+#include <boost/algorithm/string/predicate.hpp>
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
@@ -104,6 +106,7 @@ void button::load_images() {
 		default:
 			break;
 	}
+
 #ifdef SDL_GPU
 	sdl::timage button_image(image::get_texture(button_image_name_ + ".png" + button_image_path_suffix_));
 	sdl::timage pressed_image(image::get_texture(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
@@ -193,6 +196,12 @@ void button::load_images() {
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
 	if (!button_overlay_image_name_.empty()) {
+
+		if (button_overlay_image_name_.length() > size_postfix.length() &&
+				boost::algorithm::ends_with(button_overlay_image_name_, size_postfix)) {
+			button_overlay_image_name_.resize(button_overlay_image_name_.length() - size_postfix.length());
+		}
+
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_));
 
