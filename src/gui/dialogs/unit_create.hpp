@@ -32,7 +32,7 @@ namespace gui2
 class tunit_create : public tdialog
 {
 public:
-	tunit_create(display* disp = NULL);
+	tunit_create();
 
 	/** Unit type choice from the user. */
 	const std::string& choice() const
@@ -60,8 +60,6 @@ private:
 	std::string choice_;
 
 	std::vector<std::string> last_words_;
-
-	display* disp_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

@@ -82,11 +82,10 @@ namespace gui2
 
 REGISTER_DIALOG(unit_create)
 
-tunit_create::tunit_create(display* disp)
+tunit_create::tunit_create()
 	: gender_(last_gender)
 	, choice_(last_chosen_type_id)
 	, last_words_()
-	, disp_(disp)
 {
 }
 
@@ -412,14 +411,10 @@ bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 
 void tunit_create::profile_button_callback(twindow& window)
 {
-	if(!disp_) {
-		return;
-	}
-
 	const int selected_row
 			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
-	help::show_unit_help(disp_->video(),
+	help::show_unit_help(window.video(),
 		units_[selected_row]->id(),
 		units_[selected_row]->show_variations_in_help(), false);
 }
