@@ -419,7 +419,7 @@ void tunit_create::profile_button_callback(twindow& window)
 		units_[selected_row]->show_variations_in_help(), false);
 }
 
-void tunit_create::gender_toggle_callback(twindow& window)
+void tunit_create::gender_toggle_callback(twindow&)
 {
 	gender_ = gender_toggle.get_active_member_value();
 }
