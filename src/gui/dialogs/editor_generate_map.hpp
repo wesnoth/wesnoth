@@ -48,14 +48,6 @@ public:
 
 	void select_map_generator(map_generator* mg);
 
-	void set_gui(display* d)
-	{
-		gui_ = d;
-	}
-	display* get_gui()
-	{
-		return gui_;
-	}
 	boost::optional<boost::uint32_t> get_seed();
 
 private:
@@ -82,9 +74,6 @@ private:
 
 	/** random seed integer input*/
 	std::string random_seed_;
-
-	/** Needed for the old-style map generator settings dialog */
-	display* gui_;
 };
 
 } // namespace gui2

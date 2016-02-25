@@ -698,7 +698,6 @@ void context_manager::generate_map_dialog()
 	gui2::teditor_generate_map dialog;
 	dialog.set_map_generators(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
-	dialog.set_gui(&gui_);
 	dialog.show(gui_.video());
 	if (dialog.get_retval() == gui2::twindow::OK) {
 		std::string map_string;

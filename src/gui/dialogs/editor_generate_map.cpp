@@ -68,7 +68,6 @@ teditor_generate_map::teditor_generate_map()
 	, last_map_generator_(NULL)
 	, current_map_generator_(0)
 	, random_seed_()
-	, gui_(NULL)
 {
 }
 
@@ -87,9 +86,9 @@ void teditor_generate_map::do_generator_selected(twindow& window)
 	current_map_generator_ = current;
 }
 
-void teditor_generate_map::do_settings(twindow&)
+void teditor_generate_map::do_settings(twindow& window)
 {
-	get_selected_map_generator()->user_config(gui_->video());
+	get_selected_map_generator()->user_config(window.video());
 }
 
 map_generator* teditor_generate_map::get_selected_map_generator()
@@ -107,7 +106,6 @@ void teditor_generate_map::select_map_generator(map_generator* mg)
 void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(!map_generators_.empty());
-	assert(gui_);
 
 	register_text("seed_textbox", false, random_seed_, false);
 
