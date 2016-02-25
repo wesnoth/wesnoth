@@ -29,9 +29,10 @@ template <class T>
 class tgroup
 {
 public:
-	typedef typename std::vector<std::pair<tselectable_*, T> > group_list;
-	typedef typename group_list::iterator                      group_iterator;
-	typedef typename group_list::const_iterator                group_iterator_const;
+	typedef typename std::pair<tselectable_*, T> group_type;
+	typedef typename std::vector<group_type>     group_list;
+	typedef typename group_list::iterator        group_iterator;
+	typedef typename group_list::const_iterator  group_iterator_const;
 
 	/**
 	 * Adds a widget/value pair to the group vector. A callback is set
@@ -49,11 +50,14 @@ public:
 
 	/**
 	 * Removes a member from the group vector.
-	 *
-	 * TODO: implement
+	 */
+#ifdef HAVE_CXX11
 	void remove_member(tselectable_* widget)
 	{
-	}*/
+		members_.erase(std::find_if(members_.begin(), members_.end(),
+			[&widget](const group_type& member){ return member.first == widget; }));
+	}
+#endif
 
 	/**
 	 * Group member getters
