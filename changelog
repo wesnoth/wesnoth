@@ -3,6 +3,10 @@ Version 1.12.5+dev:
    * Updated translations: Galician, Italian, RACV, Russian, Slovak, Swedish
  * User interface:
    * GUI1 comboboxes now use the thinner menu frame style.
+ * Miscellaneous and bug fixes:
+   * Revert all updates to hot-key handling which broke letter-based short-cuts
+     on non-US keyboard layouts, where characters are in different key
+     locations (bug #24186).
 
 Version 1.12.5:
  * Campaigns:
