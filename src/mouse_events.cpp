@@ -978,8 +978,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			  attacker
 			, defender
 			, bc_vector
-			, best
-			, gui_);
+			, best);
 
 	dlg.show(gui_->video());
 
