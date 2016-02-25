@@ -23,6 +23,7 @@
 #include "map_location.hpp"
 
 #include <deque>
+#include <iterator>
 #include <map>
 #include <set>
 class replay_recorder_base;
