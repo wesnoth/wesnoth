@@ -248,22 +248,24 @@ void tpreferences::setup_combobox(
 		callback, options.second));
 }
 
+template <typename T>
 void tpreferences::setup_radio_toggle(
 		const std::string& toggle_id,
-		LOBBY_JOINS enum_value,
-		int start_value,
-		std::vector<std::pair<ttoggle_button*, int> >& vec,
+		const T& enum_value,
+		const int start_value,
+		tgroup<T>& group,
+		boost::function<void(int)> callback,
 		twindow& window)
 {
 	ttoggle_button& button = find_widget<ttoggle_button>(&window, toggle_id, false);
 
 	button.set_value(enum_value == start_value);
 
-	connect_signal_mouse_left_click(button, boost::bind(
-		&tpreferences::toggle_radio_callback,
-		this, boost::ref(vec), boost::ref(start_value), &button));
+	group.add_member(&button, enum_value);
 
-	vec.push_back(std::make_pair(&button, enum_value));
+	connect_signal_mouse_left_click(button, boost::bind(
+		&tpreferences::toggle_radio_callback<T>,
+		this, group, callback));
 }
 
 template <typename T>
@@ -629,11 +631,11 @@ void tpreferences::initialize_members(twindow& window)
 
 	/* LOBBY JOIN NOTIFICATIONS */
 	setup_radio_toggle("lobby_joins_none", SHOW_NONE,
-		lobby_joins(), lobby_joins_, window);
+		lobby_joins(), lobby_joins_group, _set_lobby_joins, window);
 	setup_radio_toggle("lobby_joins_friends", SHOW_FRIENDS,
-		lobby_joins(), lobby_joins_, window);
+		lobby_joins(), lobby_joins_group, _set_lobby_joins, window);
 	setup_radio_toggle("lobby_joins_all", SHOW_ALL,
-		lobby_joins(), lobby_joins_, window);
+		lobby_joins(), lobby_joins_group, _set_lobby_joins, window);
 
 	/* FRIENDS LIST */
 	setup_friends_list(window);
@@ -1022,25 +1024,12 @@ void tpreferences::font_scaling_slider_callback(tslider& slider)
 	font_scaling_ = slider.get_value();
 }
 
+template <typename T>
 void tpreferences::toggle_radio_callback(
-		const std::vector<std::pair<ttoggle_button*, int> >& vec,
-		int& value,
-		ttoggle_button* active)
+		tgroup<T>& group,
+		boost::function<void(int)> setter)
 {
-	FOREACH(const AUTO & e, vec)
-	{
-		ttoggle_button* const b = e.first;
-		if(b == NULL) {
-			continue;
-		} else if(b == active && !b->get_value()) {
-			b->set_value(true);
-		} else if(b == active) {
-			value = e.second;
-			_set_lobby_joins(value);
-		} else if(b != active && b->get_value()) {
-			b->set_value(false);
-		}
-	}
+	setter(group.get_active_member_value());
 }
 
 void tpreferences::on_page_select(twindow& window)
