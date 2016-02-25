@@ -39,8 +39,7 @@ public:
 	 *                            in-game help when requested.
 	 */
 	taddon_connect(std::string& host_name,
-				   const bool allow_remove,
-				   display* disp = NULL);
+				   const bool allow_remove);
 
 private:
 	/** Enable the addon remove button? */
