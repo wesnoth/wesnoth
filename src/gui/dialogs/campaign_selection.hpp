@@ -30,6 +30,7 @@ public:
 		choice_(-1),
 		deterministic_(false)
 	{
+		set_restore(true);
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

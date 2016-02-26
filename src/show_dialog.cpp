@@ -168,6 +168,10 @@ void dialog_frame::handle_event(const SDL_Event& event) {
 
 	if (event.type == DRAW_ALL_EVENT) {
 		set_dirty();
+
+		for(std::vector<button *>::iterator it = buttons_->begin(); it != buttons_->end(); ++it) {
+			(*it)->set_dirty(true);
+		}
 	}
 
 	if (event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT) {

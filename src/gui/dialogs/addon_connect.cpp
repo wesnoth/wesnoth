@@ -58,6 +58,7 @@ taddon_connect::taddon_connect(std::string& host_name,
 							   display*)
 	: allow_remove_(allow_remove)
 {
+	set_restore(true);
 	register_text("host_name", false, host_name, true);
 }
 

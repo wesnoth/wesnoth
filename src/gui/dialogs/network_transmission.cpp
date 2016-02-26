@@ -73,6 +73,7 @@ tnetwork_transmission::tnetwork_transmission(
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);
+	set_restore(true);
 }
 
 void tnetwork_transmission::set_subtitle(const std::string& subtitle)

@@ -79,6 +79,8 @@ tcampaign_difficulty::tcampaign_difficulty(
 	, campaign_id_(campaign["id"])
 	, selected_difficulty_()
 {
+	set_restore(true);
+
 	// Populate local config with difficulty children
 	difficulties_.append_children(campaign, "difficulty");
 
