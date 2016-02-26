@@ -60,6 +60,14 @@ public:
 #endif
 
 	/**
+	 * Clears the entire group of members.
+	 */
+	void clear()
+	{
+		members_.clear();
+	}
+
+	/**
 	 * Group member getters
 	 */
 	std::pair<group_iterator, group_iterator> members()
