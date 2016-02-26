@@ -51,13 +51,19 @@ public:
 	/**
 	 * Removes a member from the group vector.
 	 */
-#ifdef HAVE_CXX11
 	void remove_member(tselectable_* widget)
 	{
+#ifdef HAVE_CXX11
 		members_.erase(std::find_if(members_.begin(), members_.end(),
 			[&widget](const group_type& member){ return member.first == widget; }));
-	}
+#else
+		for(group_iterator iter = members_.end() - 1; iter >= members_.begin(); iter--) {
+			if(iter->first == widget) {
+				iter = members_.erase(iter);
+			}
+		}
 #endif
+	}
 
 	/**
 	 * Clears the entire group of members.
