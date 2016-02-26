@@ -309,9 +309,12 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 				facet_config["turns"] = turns;
 				facet_config["time_of_day"] = time_of_day;
 				facet_config.add_child("value", child.cfg);
-				if (child.key == "leader_goal") {
+				if (child.key == "leader_goal" && !child.cfg["id"].empty()) {
 					// Use id= attribute (if present) as the facet ID
-					facet_config["id"] = child.cfg["id"];
+					const std::string& id = child.cfg["id"];
+					if(id != "*" && id.find_first_not_of("0123456789") != std::string::npos) {
+						facet_config["id"] = child.cfg["id"];
+					}
 				}
 				facet_configs.push_back(std::make_pair(child.key, facet_config));
 			}
