@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_ADVANCED_GRAPHICS_OPTIONS_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/group.hpp"
 #include "make_enum.hpp"
 
 namespace gui2
@@ -61,8 +62,10 @@ private:
 	void post_show(twindow& window);
 
 	void setup_scale_case(const std::string &, twindow &);
-	void setup_scale_button(const std::string &, SCALING_ALGORITHM, twindow &);
-	void scale_button_callback(std::string, SCALING_ALGORITHM, twindow &);
+	void update_scale_case(const std::string &);
+	SCALING_ALGORITHM get_scale_pref(const std::string& pref_id);
+	
+	std::map<std::string,tgroup<SCALING_ALGORITHM> > groups_;
 };
 
 } // end namespace gui2
