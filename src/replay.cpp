@@ -772,6 +772,9 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			else
 			{
 				resources::controller->do_init_side();
+				if (one_move) {
+					return REPLAY_FOUND_INIT_TURN;
+				}
 			}
 		}
 
