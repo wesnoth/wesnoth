@@ -19,17 +19,24 @@
 #include "formula.hpp"
 #include "formula_string_utils.hpp"
 #include "map_location.hpp"
+#include "log.hpp"
 
 #include <boost/foreach.hpp>
 
 bool unit_formula_manager::matches_filter(const std::string & cfg_formula, const map_location & loc, const unit & me)
 {
-	const unit_callable callable(loc,me);
-	const game_logic::formula form(cfg_formula);
-	if(!form.evaluate(callable).as_bool()) {///@todo use formula_ai
+	try {
+		const unit_callable callable(loc,me);
+		const game_logic::formula form(cfg_formula);
+		if(!form.evaluate(callable).as_bool()) {///@todo use formula_ai
+			return false;
+		}
+		return true;
+	} catch(game_logic::formula_error& e) {
+		lg::wml_error << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+		// Formulae with syntax errors match nothing
 		return false;
 	}
-	return true;
 }
 
 void unit_formula_manager::add_formula_var(std::string str, variant var)
