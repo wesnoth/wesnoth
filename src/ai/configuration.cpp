@@ -264,7 +264,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		}
 		std::deque<std::pair<std::string, config> > facet_configs;
 		BOOST_FOREACH(const config::attribute &attr, aiparam.attribute_range()) {
-			if (attr.first == "turns" || attr.first == "time_of_day" || attr.first == "engine" || attr.first == "ai_algorithm") {
+			if (attr.first == "turns" || attr.first == "time_of_day" || attr.first == "engine" || attr.first == "ai_algorithm" || attr.first == "id" || attr.first == "description") {
 				continue;
 			}
 			config facet_config;
