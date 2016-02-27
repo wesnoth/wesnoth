@@ -55,6 +55,15 @@ inline std::string config_to_string(const config& cfg)
 	return s.str();
 }
 
+inline std::string config_to_string(const config& cfg, std::string only_children)
+{
+	config filtered;
+	BOOST_FOREACH(const config& child, cfg.child_range(only_children)) {
+		filtered.add_child(only_children, child);
+	}
+	return config_to_string(filtered);
+}
+
 }
 
 namespace gui2
@@ -522,7 +531,10 @@ public:
 		// note: needs sync with handle_stuff_list_selection()
 		model_.add_row_to_stuff_list("overview", "overview");
 		model_.add_row_to_stuff_list("ai overview", "ai overview");
-		model_.add_row_to_stuff_list("ai config full", "ai config full");
+		model_.add_row_to_stuff_list("ai engines", "ai engines");
+		model_.add_row_to_stuff_list("ai stages", "ai stages");
+		model_.add_row_to_stuff_list("ai aspects", "ai aspects");
+		model_.add_row_to_stuff_list("ai goals", "ai goals");
 		model_.add_row_to_stuff_list("recall list overview",
 									 "recall list overview");
 		model_.add_row_to_stuff_list("recall list full", "recall list full");
@@ -559,11 +571,25 @@ public:
 
 		if(selected == 2) {
 			model_.set_inspect_window_text(
-					config_to_string(ai::manager::to_config(side_)));
-			return;
+					config_to_string(ai::manager::to_config(side_), "engine"));
+		}
+		
+		if(selected == 3) {
+			model_.set_inspect_window_text(
+					config_to_string(ai::manager::to_config(side_), "stage"));
+		}
+		
+		if(selected == 4) {
+			model_.set_inspect_window_text(
+					config_to_string(ai::manager::to_config(side_), "aspect"));
+		}
+		
+		if(selected == 5) {
+			model_.set_inspect_window_text(
+					config_to_string(ai::manager::to_config(side_), "goal"));
 		}
 
-		if(selected == 3) {
+		if(selected == 6) {
 			std::stringstream s;
 			if (resources::teams) {
 				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
@@ -583,7 +609,7 @@ public:
 			return;
 		}
 
-		if(selected == 4) {
+		if(selected == 7) {
 			config c;
 			if (resources::teams) {
 				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
@@ -597,14 +623,14 @@ public:
 			return;
 		}
 
-		if(selected == 5) {
+		if(selected == 8) {
 			model_.set_inspect_window_text(
 					ai::manager::get_active_ai_structure_for_side(side_));
 			return;
 		}
 
 
-		if(selected == 6) {
+		if(selected == 9) {
 			std::stringstream s;
 			if(resources::units) {
 				for(unit_map::iterator i = resources::units->begin();
