@@ -69,6 +69,7 @@ public:
 
 
 	bool active() const;
+	bool ok() const;
 
 	virtual std::string get_id() const;
 	virtual std::string get_name() const;
@@ -78,8 +79,9 @@ public:
 
 
 protected:
+	void unrecognized();
 	config cfg_;
-
+	bool ok_;
 
 };
 

@@ -351,7 +351,7 @@ void engine_lua::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 	}
 	goal_ptr new_goal = f->second->get_new_instance(ai_,cfg);
 	new_goal->on_create(lua_ai_context_);
-	if (!new_goal) {
+	if (!new_goal || !new_goal->ok()) {
 		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]"<< std::endl;
 		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
 		return;
