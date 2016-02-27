@@ -49,7 +49,7 @@ static lg::log_domain log_ai_goal("ai/goal");
 #define ERR_AI_GOAL LOG_STREAM(err, log_ai_goal)
 
 goal::goal(readonly_context &context, const config &cfg)
-	: readonly_context_proxy(), cfg_(cfg)
+	: readonly_context_proxy(), cfg_(cfg), ok_(true)
 {
 	init_readonly_context_proxy(context);
 }
@@ -58,10 +58,18 @@ goal::goal(readonly_context &context, const config &cfg)
 
 void goal::on_create()
 {
+	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]" << std::endl;
 }
 
 void goal::on_create(boost::shared_ptr<ai::lua_ai_context>)
 {
+	unrecognized();
+}
+
+void goal::unrecognized()
+{
+	ERR_AI_GOAL << "side " << get_side() << " : " << " tried to create goal with name=[" << cfg_["name"] << "], but the [" << cfg_["engine"] << "] engine did not recognize that type of goal. " << std::endl;
+	ok_ = false;
 }
 
 
@@ -105,6 +113,12 @@ bool goal::redeploy(const config &cfg)
 }
 
 
+bool goal::ok() const
+{
+	return ok_;
+}
+
+
 bool goal::active() const
 {
 	return is_active(cfg_["time_of_day"],cfg_["turns"]);
@@ -114,6 +128,11 @@ bool goal::active() const
 void target_unit_goal::on_create()
 {
 	goal::on_create();
+	if (cfg_["engine"] != "cpp") {
+		unrecognized();
+		value_ = 0;
+		return;
+	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
 			value_ = boost::lexical_cast<double>(*v);
@@ -156,6 +175,11 @@ target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 void target_location_goal::on_create()
 {
 	goal::on_create();
+	if (cfg_["engine"] != "cpp") {
+		unrecognized();
+		value_ = 0;
+		return;
+	}
 	if (cfg_.has_attribute("value")) {
 		try {
 			value_ = boost::lexical_cast<double>(cfg_["value"]);
@@ -200,6 +224,11 @@ target_location_goal::target_location_goal(readonly_context &context, const conf
 void protect_goal::on_create()
 {
 	goal::on_create();
+	if (cfg_["engine"] != "cpp") {
+		unrecognized();
+		value_ = 0;
+		return;
+	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
 			value_ = boost::lexical_cast<double>(*v);
@@ -319,7 +348,7 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 	}
 	else
 	{
-		// report failure
+		ERR_AI_GOAL << "side " << get_side() << " : Error creating Lua goal (missing code= key)" << std::endl;
 	}
 }
 
