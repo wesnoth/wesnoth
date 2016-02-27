@@ -83,7 +83,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config));
-	context_manager_->switch_context(0);
+	context_manager_->switch_context(0, true);
 	init_tods(game_config);
 	init_music(game_config);
 	context_manager_->get_map_context().set_starting_position_labels(gui());
