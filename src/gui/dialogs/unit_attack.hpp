@@ -29,8 +29,7 @@ public:
 	tunit_attack(const unit_map::iterator& attacker_itor,
 				 const unit_map::iterator& defender_itor,
 				 const std::vector<battle_context>& weapons,
-				 const int best_weapon,
-				 display* disp = NULL);
+				 const int best_weapon);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -49,7 +48,7 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	void profile_button_callback(const std::string& type);
+	void profile_button_callback(twindow& window, const std::string& type);
 
 	void damage_calc_callback(twindow& window);
 
@@ -67,8 +66,6 @@ private:
 
 	/** The best weapon, aka the one high-lighted. */
 	int best_weapon_;
-
-	display* disp_;
 };
 
 } // namespace gui2

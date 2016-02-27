@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_EDITOR_EDIT_SIDE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/group.hpp"
 #include "team.hpp"
 
 namespace gui2
@@ -73,22 +74,16 @@ public:
 
 private:
 	void pre_show(CVideo& /*video*/, twindow& window);
+	void post_show(twindow& window);
 
 	template <typename T>
-	void register_radio_toggle(twindow& window, const std::string& toggle_id, T enum_value, T& current_value, std::vector<std::pair<ttoggle_button*, T> >& dst);
+	void register_radio_toggle(const std::string& toggle_id, tgroup<T>& group, const T& enum_value, T& current_value, twindow& window);
 
 	team::CONTROLLER& controller_;
+	tgroup<team::CONTROLLER> controller_group;
 
 	team::SHARE_VISION& share_vision_;
-
-	typedef std::pair<ttoggle_button*, team::CONTROLLER> controller_toggle;
-	std::vector<controller_toggle> controller_tgroup_;
-
-	typedef std::pair<ttoggle_button*, team::SHARE_VISION> vision_toggle;
-	std::vector<vision_toggle> vision_tgroup_;
-
-	template <typename C>
-	void toggle_radio_callback(const std::vector<std::pair<ttoggle_button*, C> >& vec, C& value, ttoggle_button* active);
+	tgroup<team::SHARE_VISION> vision_group;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

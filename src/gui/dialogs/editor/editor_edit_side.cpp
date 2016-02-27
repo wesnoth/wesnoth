@@ -88,45 +88,29 @@ teditor_edit_side::teditor_edit_side(int side,
 
 void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
 {
-	register_radio_toggle<team::CONTROLLER>(window, "controller_human", team::CONTROLLER::HUMAN, controller_, controller_tgroup_);
-	register_radio_toggle<team::CONTROLLER>(window, "controller_ai",    team::CONTROLLER::AI,    controller_, controller_tgroup_);
-	register_radio_toggle<team::CONTROLLER>(window, "controller_null",  team::CONTROLLER::EMPTY, controller_, controller_tgroup_);
+	register_radio_toggle<team::CONTROLLER>("controller_human", controller_group, team::CONTROLLER::HUMAN, controller_, window);
+	register_radio_toggle<team::CONTROLLER>("controller_ai",    controller_group, team::CONTROLLER::AI,    controller_, window);
+	register_radio_toggle<team::CONTROLLER>("controller_null",  controller_group, team::CONTROLLER::EMPTY, controller_, window);
 
-	register_radio_toggle<team::SHARE_VISION>(window, "vision_all",    team::SHARE_VISION::ALL,    share_vision_, vision_tgroup_);
-	register_radio_toggle<team::SHARE_VISION>(window, "vision_shroud", team::SHARE_VISION::SHROUD, share_vision_, vision_tgroup_);
-	register_radio_toggle<team::SHARE_VISION>(window, "vision_null",   team::SHARE_VISION::NONE,   share_vision_, vision_tgroup_);
+	register_radio_toggle<team::SHARE_VISION>("vision_all",    vision_group, team::SHARE_VISION::ALL,    share_vision_, window);
+	register_radio_toggle<team::SHARE_VISION>("vision_shroud", vision_group, team::SHARE_VISION::SHROUD, share_vision_, window);
+	register_radio_toggle<team::SHARE_VISION>("vision_null",   vision_group, team::SHARE_VISION::NONE,   share_vision_, window);
 }
 
 template <typename T>
-void teditor_edit_side::register_radio_toggle(twindow& window, const std::string& toggle_id, T enum_value, T& current_value, std::vector<std::pair<ttoggle_button*, T> >& dst)
+void teditor_edit_side::register_radio_toggle(const std::string& toggle_id, tgroup<T>& group, const T& enum_value, T& current_value, twindow& window)
 {
-	ttoggle_button* b = &find_widget<ttoggle_button>(
-								 &window, toggle_id, false);
+	ttoggle_button& b = find_widget<ttoggle_button>(&window, toggle_id, false);
 
-	b->set_value(enum_value == current_value);
-	connect_signal_mouse_left_click(*b,
-				boost::bind(
-					&teditor_edit_side::toggle_radio_callback<T>, this, boost::ref(dst), boost::ref(current_value), b));
+	b.set_value(enum_value == current_value);
 
-	dst.push_back(std::make_pair(b, enum_value));
+	group.add_member(&b, enum_value);
 }
 
-template <typename C>
-void teditor_edit_side::toggle_radio_callback(const std::vector<std::pair<ttoggle_button*, C> >& vec, C& value, ttoggle_button* active)
+void teditor_edit_side::post_show(twindow&)
 {
-	FOREACH(const AUTO & e, vec)
-	{
-		ttoggle_button* const b = e.first;
-		if(b == NULL) {
-			continue;
-		} else if(b == active && !b->get_value()) {
-			b->set_value(true);
-		} else if(b == active) {
-			value = e.second;
-		} else if(b != active && b->get_value()) {
-			b->set_value(false);
-		}
-	}
+	controller_ = controller_group.get_active_member_value();
+	share_vision_ = vision_group.get_active_member_value();
 }
 
 } // end namespace gui2

@@ -219,7 +219,7 @@ public:
 	void close_current_context();
 
 	/** Switches the context to the one under the specified index. */
-	void switch_context(const int index);
+	void switch_context(const int index, const bool force = false);
 
 private:
 	/**

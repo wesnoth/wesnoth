@@ -175,38 +175,14 @@ void taddon_filter_options::toggle_all_displayed_types_button_callback(
 	}
 }
 
-void taddon_filter_options::toggle_sort_callback(ttoggle_button* active)
+void taddon_filter_options::toggle_sort_callback()
 {
-	FOREACH(const AUTO & e, sort_tgroup_)
-	{
-		ttoggle_button* const b = e.first;
-		if(b == NULL) {
-			continue;
-		} else if(b == active && !b->get_value()) {
-			b->set_value(true);
-		} else if(b == active) {
-			sort_ = e.second;
-		} else if(b != active && b->get_value()) {
-			b->set_value(false);
-		}
-	}
+	sort_ = sort_tgroup_.get_active_member_value();
 }
 
-void taddon_filter_options::toggle_dir_callback(ttoggle_button* active)
+void taddon_filter_options::toggle_dir_callback()
 {
-	FOREACH(const AUTO & e, dir_tgroup_)
-	{
-		ttoggle_button* const b = e.first;
-		if(b == NULL) {
-			continue;
-		} else if(b == active && !b->get_value()) {
-			b->set_value(true);
-		} else if(b == active) {
-			dir_ = e.second;
-		} else if(b != active && b->get_value()) {
-			b->set_value(false);
-		}
-	}
+	dir_ = dir_tgroup_.get_active_member_value();
 }
 
 void taddon_filter_options::pre_show(CVideo& /*video*/, twindow& window)
@@ -251,11 +227,12 @@ void taddon_filter_options::register_sort_toggle(twindow& window,
 			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == sort_);
+
+	sort_tgroup_.add_member(b, value);
+
 	connect_signal_mouse_left_click(
 			*b,
-			boost::bind(&taddon_filter_options::toggle_sort_callback, this, b));
-
-	sort_tgroup_.push_back(std::make_pair(b, value));
+			boost::bind(&taddon_filter_options::toggle_sort_callback, this));
 }
 
 void taddon_filter_options::register_dir_toggle(twindow& window,
@@ -266,11 +243,12 @@ void taddon_filter_options::register_dir_toggle(twindow& window,
 			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == dir_);
+
+	dir_tgroup_.add_member(b, value);
+
 	connect_signal_mouse_left_click(
 			*b,
-			boost::bind(&taddon_filter_options::toggle_dir_callback, this, b));
-
-	dir_tgroup_.push_back(std::make_pair(b, value));
+			boost::bind(&taddon_filter_options::toggle_dir_callback, this));
 }
 
 void taddon_filter_options::post_show(twindow& window)

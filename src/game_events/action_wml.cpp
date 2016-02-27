@@ -409,7 +409,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")" << std::endl;
 		} else if(new_turn_number_u != current_turn_number) {
-			tod_man.set_turn_by_wml(new_turn_number_u, *resources::gamedata);
+			tod_man.set_turn_by_wml(new_turn_number_u, resources::gamedata);
 			resources::screen->new_turn();
 		}
 	}

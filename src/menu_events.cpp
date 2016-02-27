@@ -927,7 +927,7 @@ namespace { // Helpers for create_unit()
 		// The unit creation dialog makes sure unit types
 		// are properly cached.
 		//
-		gui2::tunit_create create_dlg(&gui);
+		gui2::tunit_create create_dlg;
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {

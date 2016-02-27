@@ -699,7 +699,6 @@ void context_manager::generate_map_dialog()
 	gui2::teditor_generate_map dialog;
 	dialog.set_map_generators(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
-	dialog.set_gui(&gui_);
 	dialog.show(gui_.video());
 	if (dialog.get_retval() == gui2::twindow::OK) {
 		std::string map_string;
@@ -903,9 +902,7 @@ bool context_manager::check_switch_open_map(const std::string& fn)
 	size_t i = check_open_map(fn);
 	if (i < map_contexts_.size()) {
 		gui2::show_transient_message(gui_.video(), _("This map is already open."), fn);
-		if (i != static_cast<unsigned>(current_context_index_)) {
-			switch_context(i);
-		}
+		switch_context(i);
 		return true;
 	}
 	return false;
@@ -997,10 +994,13 @@ void context_manager::reload_map()
 	refresh_all();
 }
 
-void context_manager::switch_context(const int index)
+void context_manager::switch_context(const int index, const bool force)
 {
 	if (index < 0 || static_cast<size_t>(index) >= map_contexts_.size()) {
 		WRN_ED << "Invalid index in switch map context: " << index << std::endl;
+		return;
+	}
+	if (index == current_context_index_ && !force) {
 		return;
 	}
 	map_context_refresher mcr(*this, *map_contexts_[index]);

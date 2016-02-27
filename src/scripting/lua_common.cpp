@@ -31,6 +31,7 @@
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
 #include "log.hpp"
+#include "gettext.hpp"
 
 #include <boost/foreach.hpp>
 #include <cstring>
@@ -136,6 +137,30 @@ static int impl_tstring_collect(lua_State *L)
 	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
 	t->t_string::~t_string();
 	return 0;
+}
+
+static int impl_tstring_lt(lua_State *L)
+{
+	t_string *t1 = static_cast<t_string *>(lua_touserdata(L, 1));
+	t_string *t2 = static_cast<t_string *>(lua_touserdata(L, 2));
+	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) < 0);
+	return 1;
+}
+
+static int impl_tstring_le(lua_State *L)
+{
+	t_string *t1 = static_cast<t_string *>(lua_touserdata(L, 1));
+	t_string *t2 = static_cast<t_string *>(lua_touserdata(L, 2));
+	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) < 1);
+	return 1;
+}
+
+static int impl_tstring_eq(lua_State *L)
+{
+	t_string *t1 = static_cast<t_string *>(lua_touserdata(L, 1));
+	t_string *t2 = static_cast<t_string *>(lua_touserdata(L, 2));
+	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) == 0);
+	return 1;
 }
 
 /**
@@ -376,6 +401,9 @@ std::string register_tstring_metatable(lua_State *L)
 		{ "__concat", 	    &impl_tstring_concat},
 		{ "__gc",           &impl_tstring_collect},
 		{ "__tostring",	    &impl_tstring_tostring},
+		{ "__lt",	        &impl_tstring_lt},
+		{ "__le",	        &impl_tstring_le},
+		{ "__eq",	        &impl_tstring_eq},
 		{ NULL, NULL }
 	};
 	luaL_setfuncs(L, callbacks, 0);

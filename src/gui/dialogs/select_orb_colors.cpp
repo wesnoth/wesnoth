@@ -38,21 +38,16 @@ tselect_orb_colors::tselect_orb_colors()
 	, show_moved_(preferences::show_moved_orb())
 	, show_ally_(preferences::show_allied_orb())
 	, show_enemy_(preferences::show_enemy_orb())
-	, unmoved_(preferences::unmoved_color())
-	, partial_(preferences::partial_color())
-	, moved_(preferences::moved_color())
-	, ally_(preferences::allied_color())
-	, enemy_(preferences::enemy_color())
 {
 }
 
 void tselect_orb_colors::pre_show(CVideo&, twindow& window)
 {
-	setup_orb_group("unmoved", show_unmoved_, unmoved_, window);
-	setup_orb_group("partial", show_partial_, partial_, window);
-	setup_orb_group("moved", show_moved_, moved_, window);
-	setup_orb_group("ally", show_ally_, ally_, window);
-	setup_orb_group("enemy", show_enemy_, enemy_, window);
+	setup_orb_group("unmoved", show_unmoved_, preferences::unmoved_color(), window);
+	setup_orb_group("partial", show_partial_, preferences::partial_color(), window);
+	setup_orb_group("moved", show_moved_, preferences::moved_color(), window);
+	setup_orb_group("ally", show_ally_, preferences::allied_color(), window);
+	setup_orb_group("enemy", show_enemy_, preferences::enemy_color(), window);
 	
 	tbutton& reset = find_widget<tbutton>(&window, "orb_defaults", false);
 	connect_signal_mouse_left_click(reset, boost::bind(
@@ -70,17 +65,18 @@ void tselect_orb_colors::post_show(twindow&)
 		preferences::set_show_allied_orb(show_ally_);
 		preferences::set_show_enemy_orb(show_enemy_);
 
-		preferences::set_unmoved_color(unmoved_);
-		preferences::set_partial_color(partial_);
-		preferences::set_moved_color(moved_);
-		preferences::set_allied_color(ally_);
-		preferences::set_enemy_color(enemy_);
+		preferences::set_unmoved_color(groups_["unmoved"].get_active_member_value());
+		preferences::set_partial_color(groups_["partial"].get_active_member_value());
+		preferences::set_moved_color(groups_["moved"].get_active_member_value());
+		preferences::set_allied_color(groups_["ally"].get_active_member_value());
+		preferences::set_enemy_color(groups_["enemy"].get_active_member_value());
 	}
 }
 
-void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown, std::string& color, twindow& window, bool connect)
+void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, twindow& window, bool connect)
 {
-	ttoggle_button& toggle = find_widget<ttoggle_button>(&window, "orb_" + base_id + "_show", false);
+	std::string prefix = "orb_" + base_id + "_";
+	ttoggle_button& toggle = find_widget<ttoggle_button>(&window, prefix + "show", false);
 	toggle.set_value_bool(shown);
 	if(connect) {
 		connect_signal_mouse_left_click(toggle, boost::bind(
@@ -90,44 +86,20 @@ void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown
 		));
 	}
 
-	tgrid& selection = find_widget<tgrid>(&window, "orb_" + base_id + "_selection", false);
-	std::vector<ttoggle_button*>& group = groups_[base_id];
+	tgrid& selection = find_widget<tgrid>(&window, prefix + "selection", false);
+	tgroup<std::string>& group = groups_[base_id];
 
 	using iterator::twalker_;
 	twalker_* iter = selection.create_walker();
 	while(!iter->at_end(twalker_::child)) {
 		twidget* next = iter->get(twalker_::child);
 		if(ttoggle_button* button = dynamic_cast<ttoggle_button*>(next)) {
-			group.push_back(button);
-			if(button->id().rfind("_" + color) != std::string::npos) {
-				button->set_value_bool(true);
-			} else {
-				button->set_value_bool(false);
-			}
-			if(connect) {
-				connect_signal_mouse_left_click(*button, boost::bind(
-					&tselect_orb_colors::handle_orb_click,
-					this,
-					button,
-					boost::ref(group),
-					boost::ref(color)
-				));
-			}
+			const std::string& id = button->id();
+			group.add_member(button, id.substr(prefix.size()));
 		}
 		iter->next(twalker_::child);
 	}
-}
-
-void tselect_orb_colors::handle_orb_click(ttoggle_button* clicked, const std::vector<ttoggle_button*>& group, std::string& storage)
-{
-	int split = clicked->id().find_last_of('_');
-	storage = clicked->id().substr(split + 1);
-	
-	FOREACH(const AUTO& button, group) {
-		button->set_value_bool(false);
-	}
-	
-	clicked->set_value_bool(true);
+	group.set_member_states(initial);
 }
 
 void tselect_orb_colors::handle_toggle_click(bool& storage)
@@ -143,17 +115,11 @@ void tselect_orb_colors::handle_reset_click(twindow& window)
 	show_ally_ = game_config::show_ally_orb;
 	show_enemy_ = game_config::show_enemy_orb;
 	
-	unmoved_ = game_config::colors::unmoved_orb_color;
-	partial_ = game_config::colors::partial_orb_color;
-	moved_ = game_config::colors::moved_orb_color;
-	ally_ = game_config::colors::ally_orb_color;
-	enemy_ = game_config::colors::enemy_orb_color;
-	
-	setup_orb_group("unmoved", show_unmoved_, unmoved_, window, false);
-	setup_orb_group("partial", show_partial_, partial_, window, false);
-	setup_orb_group("moved", show_moved_, moved_, window, false);
-	setup_orb_group("ally", show_ally_, ally_, window, false);
-	setup_orb_group("enemy", show_enemy_, enemy_, window, false);
+	setup_orb_group("unmoved", show_unmoved_, game_config::colors::unmoved_orb_color, window, false);
+	setup_orb_group("partial", show_partial_, game_config::colors::partial_orb_color, window, false);
+	setup_orb_group("moved", show_moved_, game_config::colors::moved_orb_color, window, false);
+	setup_orb_group("ally", show_ally_, game_config::colors::ally_orb_color, window, false);
+	setup_orb_group("enemy", show_enemy_, game_config::colors::enemy_orb_color, window, false);
 }
 
 }

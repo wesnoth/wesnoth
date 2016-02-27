@@ -36,6 +36,7 @@
 			<Add option="-fopenmp" />
 			<Add option="-Wno-strict-aliasing" />
 			<Add option="-Wno-missing-braces" />
+			<Add option="-Wunused" />
 			<Add option="-DHAVE_LIBPNG" />
 			<Add option="-D_WIN32_WINDOWS" />
 			<Add option="-D_WIN32_WINNT=0x0501" />
@@ -759,6 +760,7 @@
 		<Unit filename="../../src/gui/widgets/grid.cpp" />
 		<Unit filename="../../src/gui/widgets/grid.hpp" />
 		<Unit filename="../../src/gui/widgets/grid_private.hpp" />
+		<Unit filename="../../src/gui/widgets/group.hpp" />
 		<Unit filename="../../src/gui/widgets/helper.cpp" />
 		<Unit filename="../../src/gui/widgets/helper.hpp" />
 		<Unit filename="../../src/gui/widgets/horizontal_scrollbar.cpp" />

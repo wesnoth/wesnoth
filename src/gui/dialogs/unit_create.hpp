@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/group.hpp"
 #include "gui/widgets/text.hpp"
 #include "race.hpp"
 #include "unit_types.hpp"
@@ -31,7 +32,7 @@ namespace gui2
 class tunit_create : public tdialog
 {
 public:
-	tunit_create(display* disp = NULL);
+	tunit_create();
 
 	/** Unit type choice from the user. */
 	const std::string& choice() const
@@ -60,8 +61,6 @@ private:
 
 	std::vector<std::string> last_words_;
 
-	display* disp_;
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -83,6 +82,8 @@ private:
 	bool filter_text_changed(ttext_* textbox, const std::string& text);
 	void profile_button_callback(twindow& window);
 	void gender_toggle_callback(twindow& window);
+
+	tgroup<unit_race::GENDER> gender_toggle;
 };
 }
 

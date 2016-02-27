@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_ADDON_FILTER_OPTIONS_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/group.hpp"
 
 #include "addon/validation.hpp"
 #include "addon/state.hpp"
@@ -85,8 +86,8 @@ private:
 	typedef std::pair<ttoggle_button*, ADDON_SORT_DIRECTION> dir_toggle;
 
 	// Dialog display state variables.
-	std::vector<sort_toggle> sort_tgroup_;
-	std::vector<dir_toggle> dir_tgroup_;
+	tgroup<ADDON_SORT> sort_tgroup_;
+	tgroup<ADDON_SORT_DIRECTION> dir_tgroup_;
 
 	void register_displayed_type_field(const std::string& field_id,
 									   ADDON_TYPE addon_type);
@@ -102,8 +103,8 @@ private:
 							 const std::string& toggle_id,
 							 ADDON_SORT_DIRECTION value);
 
-	void toggle_sort_callback(ttoggle_button* active);
-	void toggle_dir_callback(ttoggle_button* active);
+	void toggle_sort_callback();
+	void toggle_dir_callback();
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

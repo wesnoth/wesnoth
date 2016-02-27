@@ -79,14 +79,12 @@ REGISTER_DIALOG(unit_attack)
 tunit_attack::tunit_attack(const unit_map::iterator& attacker_itor,
 						   const unit_map::iterator& defender_itor,
 						   const std::vector<battle_context>& weapons,
-						   const int best_weapon,
-						   display* disp)
+						   const int best_weapon)
 	: selected_weapon_(-1)
 	, attacker_itor_(attacker_itor)
 	, defender_itor_(defender_itor)
 	, weapons_(weapons)
 	, best_weapon_(best_weapon)
-	, disp_(disp)
 {
 }
 
@@ -255,13 +253,9 @@ static void set_weapon_info(twindow& window,
 	weapon_list.select_row(best_weapon);
 }
 
-void tunit_attack::profile_button_callback(const std::string& type)
+void tunit_attack::profile_button_callback(twindow& window, const std::string& type)
 {
-	if (!disp_) {
-		return;
-	}
-
-	help::show_unit_help(disp_->video(), type);
+	help::show_unit_help(window.video(), type);
 }
 
 void tunit_attack::damage_calc_callback(twindow& window)
@@ -277,11 +271,13 @@ void tunit_attack::pre_show(CVideo& /*video*/, twindow& window)
 {
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "attacker_profile", false),
-			boost::bind(&tunit_attack::profile_button_callback, this, (*attacker_itor_).type_id()));
+			boost::bind(&tunit_attack::profile_button_callback, this, boost::ref(window),
+			(*attacker_itor_).type_id()));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "defender_profile", false),
-			boost::bind(&tunit_attack::profile_button_callback, this, (*defender_itor_).type_id()));
+			boost::bind(&tunit_attack::profile_button_callback, this,  boost::ref(window),
+			(*defender_itor_).type_id()));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "damage_calculation", false),

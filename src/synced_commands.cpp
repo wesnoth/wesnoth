@@ -549,7 +549,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 
 	debug_notification(":turn debug command was used during turn of $player");
 
-	resources::tod_manager->set_turn(child["turn"].to_int(1), *resources::gamedata);
+	resources::tod_manager->set_turn(child["turn"].to_int(1), resources::gamedata);
 
 	resources::screen->new_turn();
 	resources::screen->redraw_everything();

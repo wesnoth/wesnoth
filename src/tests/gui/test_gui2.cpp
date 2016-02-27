@@ -874,9 +874,6 @@ struct twrapper<gui2::teditor_generate_map>
 		}
 		result->set_map_generators(map_generators);
 
-		result->set_gui(
-				static_cast<display*>(&test_utils::get_fake_display(-1, -1)));
-
 		return result;
 	}
 };

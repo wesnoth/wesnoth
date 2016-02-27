@@ -668,8 +668,6 @@ void command_executor_default::lua_console()
 {
 	if (get_display().in_game()) {
 		gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::GAME);
-		//WRN_G << "caution: attempting to interface console with game lua kernel when we are not in game...\n";
-		gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::APP);
 	} else {
 		command_executor::lua_console();
 	}

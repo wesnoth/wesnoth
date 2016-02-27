@@ -1278,16 +1278,17 @@ bool save_image(const surface & surf, const std::string & filename)
 
 bool update_from_preferences()
 {
-	gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
+	typedef gui2::tadvanced_graphics_options::SCALING_ALGORITHM SCALING_ALGORITHM;
+	SCALING_ALGORITHM algo = SCALING_ALGORITHM::LINEAR;
 	try {
-		algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
+		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_hex_func = select_algorithm(algo);
 
-	algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
+	algo = SCALING_ALGORITHM::LINEAR;
 	try {
-		algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
+		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_zoom_func = select_algorithm(algo);

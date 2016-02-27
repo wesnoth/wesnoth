@@ -43,6 +43,7 @@ Version 1.13.2+dev:
    * Implemented a new GUI2 Attack dialog
    * Added gui2 comboboxes.
    * Removed prompt when purging the WML cache from Preferences.
+   * Implemented a new GUI2 Preferences dialog
  * WML engine:
    * Added new event "unit placed", which triggers when (and regardless of how)
      a unit appears on the map.
@@ -56,6 +57,7 @@ Version 1.13.2+dev:
    * Added {CURRENT_FILE} and {CURRENT_DIRECTORY} macros.
    * add support for relative dirs in wesnoth.dofile/require
    * Added name= and write_name= attributes in [item]
+   * Added description_alignment= key to [campaign]
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to

@@ -15,6 +15,7 @@
 #define GUI_DIALOGS_SELECT_ORB_COLORS_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/group.hpp"
 #include <map>
 
 namespace gui2 {
@@ -34,14 +35,12 @@ public:
 		tselect_orb_colors().show(video);
 	}
 private:
-	void setup_orb_group(const std::string& base_id, bool& shown, std::string& color, twindow& window, bool connect = true);
-	void handle_orb_click(ttoggle_button* clicked, const std::vector<ttoggle_button*>& group, std::string& storage);
+	void setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, twindow& window, bool connect = true);
 	void handle_toggle_click(bool& storage);
 	void handle_reset_click(twindow& window);
 
 	bool show_unmoved_, show_partial_, show_moved_, show_ally_, show_enemy_;
-	std::string unmoved_, partial_, moved_, ally_, enemy_;
-	std::map<std::string, std::vector<ttoggle_button*> > groups_;
+	std::map<std::string, tgroup<std::string> > groups_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

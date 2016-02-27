@@ -82,7 +82,7 @@ namespace
 			}
 
 			generator_.use_ansi_encoding(false);
-			generator_.categories(bl::message_facet | bl::information_facet);
+			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet);
 			generator_.characters(bl::char_facet);
 			//we cannot have current_locale_ beeing a non boost gerenerated locale since it might not suppy
 			//the boost::locale::info facet. as soon as we add message paths update_locale_internal might fail
@@ -265,6 +265,10 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "' \n";
 	get_manager().set_language(language);
+}
+int compare(const std::string& s1, const std::string& s2)
+{
+	return std::use_facet<std::collate<char> >(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
 }
 
 void init()
