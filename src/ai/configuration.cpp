@@ -25,11 +25,14 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
+#include "config_assign.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/assign/list_of.hpp>
 
 #include <vector>
 #include <deque>
+#include <set>
 
 namespace ai {
 
@@ -235,6 +238,10 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	return true;
 
 }
+	
+static const std::set<std::string> non_aspect_attributes = boost::assign::list_of("turns")("time_of_day")("engine")("ai_algorithm")("id")("description");
+static const std::set<std::string> just_copy_tags = boost::assign::list_of("engine")("stage")("aspect")("goal")("modify_ai");
+static const std::set<std::string> old_goal_tags = boost::assign::list_of("target")("target_location")("protect_unit")("protect_location");
 
 void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	std::string algorithm;
@@ -264,7 +271,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		}
 		std::deque<std::pair<std::string, config> > facet_configs;
 		BOOST_FOREACH(const config::attribute &attr, aiparam.attribute_range()) {
-			if (attr.first == "turns" || attr.first == "time_of_day" || attr.first == "engine" || attr.first == "ai_algorithm" || attr.first == "id" || attr.first == "description") {
+			if (non_aspect_attributes.count(attr.first)) {
 				continue;
 			}
 			config facet_config;
@@ -276,11 +283,11 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_configs.push_back(std::make_pair(attr.first, facet_config));
 		}
 		BOOST_FOREACH(const config::any_child &child, aiparam.all_children_range()) {
-			if (child.key == "engine" || child.key == "stage" || child.key == "aspect" || child.key == "goal" || child.key == "modify_ai") {
+			if (just_copy_tags.count(child.key)) {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child.key, child.cfg);
 				continue;
-			} else if(child.key == "protect_unit" || child.key == "protect_location" || child.key == "target" || child.key == "target_location") {
+			} else if(old_goal_tags.count(child.key)) {
 				// A simplified goal, mainly kept around just for backwards compatibility.
 				config goal_config, criteria_config = child.cfg;
 				goal_config["name"] = child.key;
