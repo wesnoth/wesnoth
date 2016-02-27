@@ -84,6 +84,14 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
+	
+	if(lua_isnoneornil(L, -1)) {
+		// Just in case the self table wasn't initialized.
+		lua_pop(L, 1);
+		lua_newtable(L);
+		lua_rawseti(L, -2, num_);
+		lua_rawgeti(L, -1, num_);
+	}
 
 	luaW_pushconfig(L, cfg);
 	lua_setfield(L, -2, "data");
