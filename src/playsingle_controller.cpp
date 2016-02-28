@@ -82,7 +82,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
 	, skip_next_turn_(false)
-	, mp_replay_()
+	, replay_()
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 
@@ -202,8 +202,8 @@ void playsingle_controller::play_scenario_main_loop()
 				(*resources::teams)[i].set_local(local_players[i]);
 			}
 			play_scenario_init();
-			mp_replay_.reset(new replay_controller(*this, false, ex.level));
-			mp_replay_->play_replay();
+			replay_.reset(new replay_controller(*this, false, ex.level));
+			replay_->play_replay();
 		}
 	} //end for loop
 }
@@ -358,13 +358,13 @@ void playsingle_controller::play_side_impl()
 	if (!skip_next_turn_) {
 		end_turn_ = END_TURN_NONE;
 	}
-	if(mp_replay_.get() != NULL) {
-		REPLAY_RETURN res = mp_replay_->play_side_impl();
+	if(replay_.get() != NULL) {
+		REPLAY_RETURN res = replay_->play_side_impl();
 		if(res == REPLAY_FOUND_END_TURN) {
 			end_turn_ = END_TURN_SYNCED;
 		}
 		if (player_type_changed_) {
-			mp_replay_.reset();
+			replay_.reset();
 		}
 	} else if((current_team().is_local_human() && current_team().is_proxy_human())) {
 		LOG_NG << "is human...\n";
@@ -646,8 +646,8 @@ void playsingle_controller::sync_end_turn()
 
 void playsingle_controller::update_viewing_player()
 {
-	if(mp_replay_ && mp_replay_->is_controlling_view()) {
-		mp_replay_->update_viewing_player();
+	if(replay_ && replay_->is_controlling_view()) {
+		replay_->update_viewing_player();
 	}
 	//Update viewing team in case it has changed during the loop.
 	else if(int side_num = play_controller::find_last_visible_team()) {
@@ -659,9 +659,9 @@ void playsingle_controller::update_viewing_player()
 
 void playsingle_controller::reset_replay()
 {
-	if(mp_replay_ && mp_replay_->allow_reset_replay()) {
-		mp_replay_->stop_replay();
-		throw reset_gamestate_exception(mp_replay_->get_reset_state());
+	if(replay_ && replay_->allow_reset_replay()) {
+		replay_->stop_replay();
+		throw reset_gamestate_exception(replay_->get_reset_state());
 	}
 	else {
 		ERR_NG << "recieved invalid reset replay\n";
@@ -670,9 +670,9 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	mp_replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
-		mp_replay_->play_replay();
+		replay_->play_replay();
 	}
 }
 
@@ -681,7 +681,7 @@ bool playsingle_controller::should_return_to_play_side()
 	if(player_type_changed_ || is_regular_game_end()) {
 		return true;
 	}
-	else if (end_turn_ == END_TURN_NONE || mp_replay_.get() != 0 || current_team().is_network()) {
+	else if (end_turn_ == END_TURN_NONE || replay_.get() != 0 || current_team().is_network()) {
 		return false;
 	}
 	else {
@@ -692,7 +692,7 @@ bool playsingle_controller::should_return_to_play_side()
 void playsingle_controller::on_replay_end(bool is_unit_test)
 {
 	if(is_unit_test) {
-		mp_replay_->return_to_play_side();
+		replay_->return_to_play_side();
 		if(!is_regular_game_end()) {
 			end_level_data e;
 			e.proceed_to_next_level = false;
