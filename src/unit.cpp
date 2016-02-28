@@ -1930,17 +1930,19 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				} else if(apply_to == "loyal") {
 					upkeep_ = upkeep_loyal();;
 				} else if(apply_to == "status") {
-					const std::string &add = effect["add"];
-					const std::string &remove = effect["remove"];
+					const std::string& add = effect["add"];
+					const std::string& remove = effect["remove"];
 
-					if(add.empty() == false) {
-						set_state(add, true);
-						set_poisoned = set_poisoned  ||  add == "poisoned";
+					BOOST_FOREACH(const std::string& to_add, utils::split(add))
+					{
+						set_state(to_add, true);
+						set_poisoned = set_poisoned  ||  to_add == "poisoned";
 					}
 
-					if(remove.empty() == false) {
-						set_state(remove, false);
-						set_poisoned = set_poisoned  &&  remove != "poisoned";
+					BOOST_FOREACH(const std::string& to_remove, utils::split(remove))
+					{
+						set_state(to_remove, false);
+						set_poisoned = set_poisoned  &&  to_remove != "poisoned";
 					}
 				// Note: It would not be hard to define a new "applies_to=" that
 				//       combines the next five options (the movetype effects).
