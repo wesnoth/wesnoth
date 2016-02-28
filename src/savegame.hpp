@@ -225,11 +225,12 @@ private:
 class oos_savegame : public ingame_savegame
 {
 public:
-	oos_savegame(saved_game& gamestate, game_display& gui);
+	oos_savegame(saved_game& gamestate, game_display& gui, bool& ignore);
 
 private:
 	/** Display the save game dialog. */
 	virtual int show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type);
+	bool& ignore_;
 };
 
 /** Class for start-of-scenario saves */

@@ -181,6 +181,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, victory_music_()
 	, defeat_music_()
 	, scope_()
+	, ignore_replay_errors_(false)
 	, player_type_changed_(false)
 {
 	copy_persistent(level, level_);
@@ -1006,7 +1007,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::oos_savegame save(saved_game_, *gui_);
+	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
 	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw quit_game_exception
 }
 

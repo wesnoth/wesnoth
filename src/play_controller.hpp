@@ -365,8 +365,8 @@ private:
 	hotkey::scope_changer scope_;
 
 protected:
+	mutable bool ignore_replay_errors_;
 	bool player_type_changed_;
-
 	virtual void sync_end_turn() {};
 	virtual void check_time_over();
 	virtual void update_viewing_player() = 0;

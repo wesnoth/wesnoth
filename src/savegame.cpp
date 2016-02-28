@@ -609,19 +609,19 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui)
+oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, bool& ignore)
 	: ingame_savegame(gamestate, gui, preferences::save_compression_format())
+	, ignore_(ignore)
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
 {
-	static bool ignore_all = false;
 	int res = 0;
 
 	std::string filename = this->filename();
 
-	if (!ignore_all){
-		gui2::tgame_save_oos dlg(ignore_all, filename, title(), message);
+	if (!ignore_){
+		gui2::tgame_save_oos dlg(ignore_, filename, title(), message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
