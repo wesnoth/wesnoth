@@ -42,10 +42,11 @@
 #include "util.hpp"
 #include "variable.hpp"
 #include "wml_exception.hpp"
+#include "config_assign.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
-#include <math.h>
+#include <cmath>
 
 static lg::log_domain log_ai_recruitment("ai/recruitment");
 #define LOG_AI_RECRUITMENT LOG_STREAM(info, log_ai_recruitment)
@@ -1779,5 +1780,73 @@ int recruitment::recruit_situation_change_observer::gamestate_changed() {
 void recruitment::recruit_situation_change_observer::reset_gamestate_changed() {
 	gamestate_changed_ = 0;
 }
+
+recruitment_aspect::recruitment_aspect(readonly_context &context, const config &cfg, const std::string &id)
+	: standard_aspect<config>(context, cfg, id)
+{
+	config parsed_cfg(cfg.has_child("value") ? cfg.child("value") : cfg);
+	// First, transform simplified tags into [recruit] tags.
+	BOOST_FOREACH (config pattern, parsed_cfg.child_range("pattern")) {
+		parsed_cfg["pattern"] = true;
+		parsed_cfg.add_child("recruit", pattern);
+	}
+	parsed_cfg.clear_children("pattern");
+	BOOST_FOREACH (config total, parsed_cfg.child_range("total")) {
+		parsed_cfg["total"] = true;
+		parsed_cfg.add_child("recruit", total);
+	}
+	parsed_cfg.clear_children("total");
+	// Then, if there's no [recruit], add one.
+	if (!parsed_cfg.has_child("recruit")) {
+		parsed_cfg.add_child("recruit", config_of("importance", 0));
+	}
+	// Finally, populate our lists
+	BOOST_FOREACH (config job, parsed_cfg.child_range("recruit")) {
+		create_job(jobs_, job);
+	}
+	BOOST_FOREACH (config lim, parsed_cfg.child_range("limit")) {
+		create_limit(limits_, lim);
+	}
+	boost::function2<void, std::vector<boost::shared_ptr<recruit_job> >&, const config&> factory_jobs =
+		boost::bind(&recruitment_aspect::create_job,*this,_1,_2);
+	boost::function2<void, std::vector<boost::shared_ptr<recruit_limit> >&, const config&> factory_limits =
+		boost::bind(&recruitment_aspect::create_limit,*this,_1,_2);
+	register_vector_property(property_handlers(), "recruit", jobs_, factory_jobs);
+	register_vector_property(property_handlers(), "limit", limits_, factory_limits);
+}
+
+void recruitment_aspect::recalculate() const {
+	config cfg;
+	BOOST_FOREACH (const boost::shared_ptr<recruit_job>& job, jobs_) {
+		cfg.add_child("recruit", job->to_config());
+	}
+	BOOST_FOREACH (const boost::shared_ptr<recruit_limit>& lim, limits_) {
+		cfg.add_child("limit", lim->to_config());
+	}
+	*this->value_ = cfg;
+	this->valid_ = true;
+}
+
+void recruitment_aspect::create_job(std::vector<boost::shared_ptr<recruit_job> > &jobs, const config &job) {
+	boost::shared_ptr<recruit_job> job_ptr(new recruit_job(
+		utils::split(job["type"]),
+		job["leader_id"], job["id"],
+		job["number"].to_int(-1), job["importance"].to_int(1),
+		job["total"].to_bool(false),
+		job["blocker"].to_bool(true),
+		job["pattern"].to_bool(true)
+	));
+	jobs.push_back(job_ptr);
+}
+
+void recruitment_aspect::create_limit(std::vector<boost::shared_ptr<recruit_limit> > &limits, const config &lim) {
+	boost::shared_ptr<recruit_limit> lim_ptr(new recruit_limit(
+		utils::split(lim["type"]),
+		lim["id"],
+		lim["max"].to_int(0)
+	));
+	limits.push_back(lim_ptr);
+}
+
 }  // namespace default_recruitment
 }  // namespace ai

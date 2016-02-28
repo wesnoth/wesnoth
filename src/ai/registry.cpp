@@ -344,7 +344,7 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory("recruitment_diversity*standard_aspect");
 
-static register_aspect_factory< standard_aspect<config> >
+static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment_instructions__standard_aspect_factory("recruitment_instructions*standard_aspect");
 
 static register_aspect_factory< standard_aspect< std::vector<std::string> > >
@@ -422,7 +422,7 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory2("recruitment_diversity*");
 
-static register_aspect_factory< standard_aspect<config> >
+static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment_instructions__standard_aspect_factory2("recruitment_instructions*");
 
 static register_aspect_factory< standard_aspect< std::vector<std::string> > >
