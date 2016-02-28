@@ -1073,9 +1073,8 @@ void menu_handler::clear_labels()
 }
 
 void menu_handler::label_settings() {
-	// TODO: I think redraw_everything might be a bit too much? It causes a flicker.
 	if(gui2::tlabel_settings::execute(board(), gui_->video()))
-		gui_->redraw_everything();
+		gui_->labels().recalculate_labels();
 }
 
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)
