@@ -172,6 +172,10 @@ public:
 	basic_handler(command_executor* exec);
 
 	void handle_event(const SDL_Event& event);
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	void handle_window_event(const SDL_Event&) {}
+#endif
+
 private:
 	command_executor* exec_;
 };

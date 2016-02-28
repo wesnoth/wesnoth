@@ -503,6 +503,9 @@ private:
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;
 
+	/** Whether the window should undraw the window using restorer_ */
+	bool restore_;
+
 	/** When the window closes this surface is used to undraw the window. */
 	surface restorer_;
 

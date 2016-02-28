@@ -22,6 +22,7 @@
 #include "quit_confirmation.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
+#include "display.hpp"
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
 #endif
@@ -325,7 +326,7 @@ SDL_Event last_resize_event;
 bool last_resize_event_used = true;
 
 static bool remove_on_resize(const SDL_Event &a) {
-	if (a.type == DRAW_EVENT) {
+	if (a.type == DRAW_EVENT || a.type == DRAW_ALL_EVENT) {
 		return true;
 	}
 	if (a.type == SHOW_HELPTIP_EVENT) {
@@ -440,8 +441,22 @@ void pump()
 						info.resize_dimensions.second = event.window.data2;
 						break;
 				}
+				//make sure this runs in it's own scope.
+				{
+					for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
+						const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
+						for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+							event_handlers[i1]->handle_window_event(event);
+						}
+					}
+					const std::vector<sdl_handler*>& event_handlers = global_context.handlers;
+					for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+						event_handlers[i1]->handle_window_event(event);
+					}
+				}
 
-				break;
+				//This event was just distributed, don't re-distribute.
+				continue;
 #else
 			case SDL_ACTIVEEVENT: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
@@ -494,6 +509,17 @@ void pump()
 					last_click_y = event.button.y;
 				}
 				break;
+			}
+			case DRAW_ALL_EVENT:
+			{
+				/* iterate backwards as the most recent things will be at the top */
+				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
+					const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
+					for( std::vector<sdl_handler*>::const_iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); ++i1) {
+						(*i1)->handle_event(event);
+					}
+				}
+				continue; //do not do further handling here
 			}
 
 #ifndef __APPLE__
@@ -579,6 +605,16 @@ void raise_draw_event()
 	}
 }
 
+void raise_draw_all_event()
+{
+	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
+		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->draw();
+		}
+	}
+}
+
 void raise_volatile_draw_event()
 {
 	if(event_contexts.empty() == false) {
@@ -587,6 +623,16 @@ void raise_volatile_draw_event()
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->volatile_draw();
+		}
+	}
+}
+
+void raise_volatile_draw_all_event()
+{
+	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
+		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->volatile_draw();
 		}
@@ -647,7 +693,7 @@ void peek_for_resize()
 {
 	SDL_Event events[100];
 	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
-	for (int i = 0; i < num; i++) {
+	for (int i = 0; i < num; ++i) {
 		if (events[i].type == SDL_WINDOWEVENT &&
 				events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
 			CVideo::get_singleton().update_framebuffer();

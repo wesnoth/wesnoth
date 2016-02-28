@@ -74,12 +74,12 @@ namespace wb {
 
 class gamemap;
 
-class display : public filter_context
+class display : public filter_context, public video2::draw_layering
 {
 public:
 	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
 			reports & reports_object,
-			const config& theme_cfg, const config& level);
+			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
 	/// Returns the display object if a display object exists. Otherwise it returns NULL.
 	/// the display object represents the game gui which handles themewml and drawing the map.
@@ -155,13 +155,6 @@ public:
 
 	/** remove_single_overlay will remove a single overlay from a tile */
 	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
-
-
-
-
-
-
-
 
 	/**
 	 * Updates internals that cache map size. This should be called when the map
@@ -406,9 +399,11 @@ public:
 
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
-#ifdef SDL_GPU
+
+	void layout_buttons();
+
 	void render_buttons();
-#endif
+
 	void invalidate_theme() { panelsDrawn_ = false; }
 
 	void refresh_report(std::string const &report_name, const config * new_cfg=NULL);
@@ -607,7 +602,11 @@ public:
 	 * Not virtual, since it gathers common actions. Calls various protected
 	 * virtuals (further below) to allow specialized behavior in derived classes.
 	 */
-	void draw(bool update=true, bool force=false);
+	virtual void draw();
+
+	void draw(bool update);
+
+	void draw(bool update, bool force);
 
 	map_labels& labels();
 	const map_labels& labels() const;
@@ -636,6 +635,12 @@ public:
 	bool is_blindfolded() const;
 
 	void write(config& cfg) const;
+
+	virtual void handle_event(const SDL_Event& );
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	virtual void handle_window_event(const SDL_Event& event);
+#endif
+
 private:
 	void read(const config& cfg);
 
@@ -1155,6 +1160,8 @@ private:
 	arrows_map_t arrows_map_;
 
 	tod_color color_adjust_;
+
+	bool dirty_;
 
 #ifdef SDL_GPU
 	bool update_panel_image_;

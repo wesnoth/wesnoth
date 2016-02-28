@@ -249,6 +249,48 @@ surface frameBuffer = NULL;
 bool fake_interactive = false;
 }
 
+namespace video2 {
+
+std::list<events::sdl_handler *> draw_layers;
+
+draw_layering::draw_layering(const bool auto_join) :
+		sdl_handler(auto_join)
+{
+	draw_layers.push_back(this);
+}
+
+draw_layering::~draw_layering()
+{
+	draw_layers.remove(this);
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_Event event;
+	event.type = SDL_WINDOWEVENT;
+	event.window.event = SDL_WINDOWEVENT_RESIZED;
+	event.window.data1 = (*frameBuffer).h;
+	event.window.data2 = (*frameBuffer).w;
+
+	for(std::list<events::sdl_handler*>::iterator it = draw_layers.begin(); it != draw_layers.end(); ++it) {
+		(*it)->handle_window_event(event);
+	}
+#endif
+
+	SDL_Event drawEvent;
+	SDL_UserEvent data;
+
+	data.type = DRAW_ALL_EVENT;
+	data.code = 0;
+	data.data1 = NULL;
+	data.data2 = NULL;
+
+	drawEvent.type = DRAW_ALL_EVENT;
+	drawEvent.user = data;
+	SDL_FlushEvent(DRAW_ALL_EVENT);
+	SDL_PushEvent(&drawEvent);
+}
+}
+
+
 bool CVideo::non_interactive()
 {
 	if (fake_interactive)
@@ -357,7 +399,7 @@ void update_whole_screen()
 }
 
 
-void CVideo::video_event_handler::handle_event(const SDL_Event &event)
+void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (event.type == SDL_WINDOWEVENT) {
@@ -366,8 +408,21 @@ void CVideo::video_event_handler::handle_event(const SDL_Event &event)
 			case SDL_WINDOWEVENT_RESTORED:
 			case SDL_WINDOWEVENT_SHOWN:
 			case SDL_WINDOWEVENT_EXPOSED:
-				if (display::get_singleton())
-					display::get_singleton()->redraw_everything();
+				//if (display::get_singleton())
+					//display::get_singleton()->redraw_everything();
+				SDL_Event drawEvent;
+				SDL_UserEvent data;
+
+				data.type = DRAW_ALL_EVENT;
+				data.code = 0;
+				data.data1 = NULL;
+				data.data2 = NULL;
+
+				drawEvent.type = DRAW_ALL_EVENT;
+				drawEvent.user = data;
+
+				SDL_FlushEvent(DRAW_ALL_EVENT);
+				SDL_PushEvent(&drawEvent);
 				break;
 		}
 	}
@@ -1049,7 +1104,13 @@ bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int
 
 void CVideo::set_fullscreen(bool ison)
 {
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (window && isFullScreen() != ison) {
+#else
+	if (frameBuffer && isFullScreen() != ison) {
+#endif
+
 		const std::pair<int,int>& res = preferences::resolution();
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)

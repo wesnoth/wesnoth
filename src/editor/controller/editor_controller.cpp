@@ -90,6 +90,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	cursor::set(cursor::NORMAL);
 	image::set_color_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
 
+	gui().create_buttons();
 	gui().redraw_everything();
     events::raise_draw_event();
 }

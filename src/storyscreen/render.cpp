@@ -88,7 +88,7 @@ namespace storyscreen {
 
 part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	gui::button &back_button, gui::button&play_button)
-	: events::sdl_handler(false)
+	: video2::draw_layering(false)
 	, p_(p)
 	, disp_(disp)
 	, video_(disp.video())
@@ -1002,7 +1002,17 @@ part_ui::RESULT part_ui::show()
 
 void part_ui::handle_event(const SDL_Event &event)
 {
+	if (event.type == DRAW_ALL_EVENT) {
+		dirty_ = true;
+		draw();
+	}
+
+}
+
 #if SDL_VERSION_ATLEAST(2, 0, 0)
+void part_ui::handle_window_event(const SDL_Event &event)
+{
+
 	if (event.type == SDL_WINDOWEVENT &&
 			(event.window.event == SDL_WINDOWEVENT_MAXIMIZED ||
 					event.window.event == SDL_WINDOWEVENT_RESIZED ||
@@ -1016,10 +1026,8 @@ void part_ui::handle_event(const SDL_Event &event)
 		this->prepare_floating_images();
 		dirty_ = true;
 	}
-#else
-	UNUSED(event);
-#endif
 }
+#endif
 
 
 } // end namespace storyscreen

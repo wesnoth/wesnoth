@@ -149,7 +149,8 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 
 
 
-display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level) :
+display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
+	video2::draw_layering(auto_join),
 	dc_(dc),
 	halo_man_(new halo::manager(*this)),
 	wb_(wb),
@@ -220,7 +221,8 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
 	arrows_map_(),
-	color_adjust_()
+	color_adjust_(),
+	dirty_()
 #ifdef SDL_GPU
 	, update_panel_image_(true),
 	panel_image_()
@@ -253,6 +255,10 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	image::set_zoom(zoom_);
 
 	init_flags();
+
+	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+		create_buttons();
+	}
 
 #if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 	// Runtime checks for bug #17573
@@ -867,6 +873,53 @@ gui::zoom_slider* display::find_slider(const std::string& id)
 	return NULL;
 }
 
+void display::layout_buttons()
+{
+
+	DBG_DP << "positioning sliders...\n";
+	const std::vector<theme::slider>& sliders = theme_.sliders();
+	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
+		gui::zoom_slider* s = find_slider(i->get_id());
+		if (s) {
+			const SDL_Rect& loc = i->location(screen_area());
+			s->set_location(loc);
+			s->set_measurements(0,0);
+			s->set_volatile(
+				sdl::rects_overlap(s->location(),map_outside_area()));
+		}
+	}
+
+	DBG_DP << "positioning menu buttons...\n";
+	const std::vector<theme::menu>& buttons = theme_.menus();
+	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+		gui::button* b = find_menu_button(i->get_id());
+		if(b) {
+			const SDL_Rect& loc = i->location(screen_area());
+			b->set_location(loc);
+			b->set_measurements(0,0);
+			b->set_label(i->title());
+			b->set_image(i->image());
+			b->set_volatile(
+					sdl::rects_overlap(b->location(),map_outside_area()));
+		}
+	}
+
+	DBG_DP << "positioning action buttons...\n";
+	const std::vector<theme::action>& actions = theme_.actions();
+	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
+		gui::button* b = find_action_button(i->get_id());
+		if(b) {
+			const SDL_Rect& loc = i->location(screen_area());
+			b->set_location(loc);
+			b->set_measurements(0,0);
+			b->set_label(i->title());
+			b->set_image(i->image());
+			b->set_volatile(
+						sdl::rects_overlap(b->location(),map_outside_area()));
+		}
+	}
+}
+
 void display::create_buttons()
 {
 	std::vector<gui::button> menu_work;
@@ -879,17 +932,12 @@ void display::create_buttons()
 		gui::zoom_slider s(screen_, i->image(), i->black_line());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		s.set_id(i->get_id());
-		const SDL_Rect& loc = i->location(screen_area());
-		s.set_location(loc);
 		//TODO support for non zoom sliders
 		s.set_max(MaxZoom);
 		s.set_min(MinZoom);
 		s.set_value(zoom_);
 		if (!i->tooltip().empty()){
 			s.set_tooltip_string(i->tooltip());
-		}
-		if(sdl::rects_overlap(s.location(),map_outside_area())) {
-			s.set_volatile(true);
 		}
 
 		gui::zoom_slider* s_prev = find_slider(s.id());
@@ -913,13 +961,8 @@ void display::create_buttons()
 				gui::button::DEFAULT_SPACE, true, i->overlay());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
-		const SDL_Rect& loc = i->location(screen_area());
-		b.set_location(loc.x,loc.y);
 		if (!i->tooltip().empty()){
 			b.set_tooltip_string(i->tooltip());
-		}
-		if(sdl::rects_overlap(b.location(),map_outside_area())) {
-			b.set_volatile(true);
 		}
 
 		gui::button* b_prev = find_menu_button(b.id());
@@ -935,13 +978,8 @@ void display::create_buttons()
 
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
-		const SDL_Rect& loc = i->location(screen_area());
-		b.set_location(loc.x,loc.y);
 		if (!i->tooltip(0).empty()){
 			b.set_tooltip_string(i->tooltip(0));
-		}
-		if(sdl::rects_overlap(b.location(),map_outside_area())) {
-			b.set_volatile(true);
 		}
 
 		gui::button* b_prev = find_action_button(b.id());
@@ -950,13 +988,16 @@ void display::create_buttons()
 		action_work.push_back(b);
 	}
 
+
+
 	menu_buttons_.swap(menu_work);
 	action_buttons_.swap(action_work);
 	sliders_.swap(slider_work);
+
+	layout_buttons();
 	DBG_DP << "buttons created\n";
 }
 
-#ifdef SDL_GPU
 void display::render_buttons()
 {
 	BOOST_FOREACH(gui::button &btn, menu_buttons_) {
@@ -971,7 +1012,7 @@ void display::render_buttons()
 		sld.set_dirty(true);
 	}
 }
-#endif
+
 
 gui::button::TYPE display::string_to_button_type(std::string type)
 {
@@ -1584,8 +1625,7 @@ void display::draw_all_panels()
 		draw_label(video(),screen,*i);
 	}
 
-	//FIXME: does it really make sense to recreate buttons all the time?
-	create_buttons();
+	render_buttons();
 #endif
 }
 
@@ -2674,9 +2714,8 @@ void display::redraw_everything()
 
 	theme_.set_resolution(screen_area());
 
-	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
-		create_buttons();
-	}
+	layout_buttons();
+	render_buttons();
 
 	panelsDrawn_ = false;
 	if (!gui::in_dialog()) {
@@ -2709,11 +2748,28 @@ void display::clear_redraw_observers()
 	redraw_observers_.clear();
 }
 
+void display::draw() {
+	draw(true, false);
+}
+
+void display::draw(bool update) {
+	draw(update, false);
+}
+
+
 void display::draw(bool update,bool force) {
 //	log_scope("display::draw");
+
 	if (screen_.update_locked()) {
 		return;
 	}
+
+	if (dirty_) {
+		dirty_ = false;
+		redraw_everything();
+		return;
+	}
+
 	set_scontext_unsynced leave_synced_context;
 
 	draw_init();
@@ -3756,6 +3812,29 @@ void display::process_reachmap_changes()
 	}
 	reach_map_old_ = reach_map_;
 	reach_map_changed_ = false;
+}
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+void display::handle_window_event(const SDL_Event& event) {
+	if (event.type == SDL_WINDOWEVENT) {
+			switch (event.window.event) {
+				case SDL_WINDOWEVENT_RESIZED:
+				case SDL_WINDOWEVENT_RESTORED:
+				case SDL_WINDOWEVENT_EXPOSED:
+					dirty_ = true;
+
+					break;
+			}
+	}
+
+
+}
+#endif
+
+void display::handle_event(const SDL_Event& event) {
+	if (event.type == DRAW_ALL_EVENT) {
+		draw();
+	}
 }
 
 display *display::singleton_ = NULL;

@@ -271,6 +271,19 @@ public:
 	void keyboard_remove_from_chain(twidget* widget);
 
 private:
+	class layer : public video2::draw_layering
+	{
+	public:
+		virtual void handle_event(const SDL_Event& ) {}
+	#if SDL_VERSION_ATLEAST(2, 0, 0)
+		virtual void handle_window_event(const SDL_Event& ) {}
+	#endif
+		layer() : video2::draw_layering(false) { }
+	};
+
+	// make sure the appropriate things happens when we close.
+	layer layer_;
+
 #if 0
 	bool hover_pending_;			   /**< Is there a hover event pending? */
 	unsigned hover_id_;                /**< Id of the pending hover event. */

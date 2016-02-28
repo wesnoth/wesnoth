@@ -59,7 +59,10 @@ namespace preferences {
 
 class prefs_event_handler : public events::sdl_handler {
 public:
-	virtual void handle_event(const SDL_Event &event);
+	virtual void handle_event(const SDL_Event &) {}
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	virtual void handle_window_event(const SDL_Event &event);
+#endif
 	prefs_event_handler() :	sdl_handler(false) {}
 };
 
@@ -102,14 +105,15 @@ base_manager::~base_manager()
 	} catch (...) {}
 }
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 /* 
  * Hook for setting window state variables on window resize and maximize
  * events. Since there is no fullscreen window event, that setter is called 
  * from the CVideo function instead.
  */
-void prefs_event_handler::handle_event(const SDL_Event& event)
+void prefs_event_handler::handle_window_event(const SDL_Event& event)
 {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
+
 	// Saftey check to make sure this is a window event
 	if (event.type != SDL_WINDOWEVENT) return;
 
@@ -129,10 +133,8 @@ void prefs_event_handler::handle_event(const SDL_Event& event)
 
 		break;
 	}
-#else
-	UNUSED(event);
-#endif
 }
+#endif
 
 void write_preferences()
 {

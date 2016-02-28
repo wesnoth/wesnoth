@@ -32,6 +32,8 @@
 #include "text.hpp"
 #include "wml_separators.hpp"
 
+#include <boost/algorithm/string/predicate.hpp>
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
@@ -104,6 +106,7 @@ void button::load_images() {
 		default:
 			break;
 	}
+
 #ifdef SDL_GPU
 	sdl::timage button_image(image::get_texture(button_image_name_ + ".png" + button_image_path_suffix_));
 	sdl::timage pressed_image(image::get_texture(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
@@ -193,6 +196,12 @@ void button::load_images() {
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
 	if (!button_overlay_image_name_.empty()) {
+
+		if (button_overlay_image_name_.length() > size_postfix.length() &&
+				boost::algorithm::ends_with(button_overlay_image_name_, size_postfix)) {
+			button_overlay_image_name_.resize(button_overlay_image_name_.length() - size_postfix.length());
+		}
+
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_));
 
@@ -317,8 +326,12 @@ void button::calculate_size()
 									font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
+	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
+	// The proper fix should possibly be in the draw_contents() function.
+#if 0
 	if (!change_size)
 		return;
+#endif
 
 	set_height(std::max(textRect_.h+vertical_padding,base_height_));
 	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
@@ -568,7 +581,7 @@ static bool not_image(const std::string& str) { return !str.empty() && str[0] !=
 
 void button::set_image(const std::string& image_file)
 {
-	button_image_name_ = image_file;
+	button_image_name_ = "buttons/" + image_file;
 	load_images();
 	set_dirty();
 }

@@ -316,6 +316,7 @@ twindow::twindow(CVideo& video,
 	, variables_()
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
+	, restore_(true)
 	, restorer_()
 	, automatic_placement_(automatic_placement)
 	, horizontal_placement_(horizontal_placement)
@@ -596,6 +597,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	tip::remove();
 
 	show_mode_ = modal;
+	restore_ = restore;
 
 	/**
 	 * Helper class to set and restore the drawing interval.
@@ -702,7 +704,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		suspend_drawing_ = true;
 
 		// restore area
-		if(restore) {
+		if(restore_) {
 			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 			update_rect(get_rectangle());
@@ -718,7 +720,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	suspend_drawing_ = true;
 
 	// restore area
-	if(restore) {
+	if(restore_) {
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rectangle());
@@ -747,7 +749,7 @@ void twindow::draw()
 		// Restore old surface. In the future this phase will not be needed
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
-		if(restorer_) {
+		if(restore_ && restorer_) {
 			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, frame_buffer, &rect);
 			// Since the old area might be bigger as the new one, invalidate
@@ -766,7 +768,9 @@ void twindow::draw()
 #else
 		font::draw_floating_labels(frame_buffer);
 #endif
-		restorer_ = get_surface_portion(frame_buffer, rect);
+		if(restore_) {
+			restorer_ = get_surface_portion(frame_buffer, rect);
+		}
 
 		// Need full redraw so only set ourselves dirty.
 		dirty_list_.push_back(std::vector<twidget*>(1, this));
@@ -869,8 +873,10 @@ void twindow::draw()
 		}
 
 		// Restore.
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, frame_buffer, &rect);
+		if(restore_) {
+			SDL_Rect rect = get_rectangle();
+			sdl_blit(restorer_, 0, frame_buffer, &rect);
+		}
 
 		// Background.
 		for(std::vector<twidget*>::iterator itor = item.begin();
@@ -909,7 +915,7 @@ void twindow::draw()
 
 void twindow::undraw()
 {
-	if(restorer_) {
+	if(restore_ && restorer_) {
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		// Since the old area might be bigger as the new one, invalidate

@@ -133,6 +133,11 @@ public:
 	/** Inherited from events::sdl_handler. */
 	void handle_event(const SDL_Event& event);
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	/** Inherited from events::sdl_handler. */
+	void handle_window_event(const SDL_Event& event);
+#endif
+
 	/**
 	 * Connects a dispatcher.
 	 *
@@ -356,6 +361,9 @@ void thandler::handle_event(const SDL_Event& event)
 		case DRAW_EVENT:
 			draw(false);
 			break;
+		case DRAW_ALL_EVENT:
+			draw(true);
+			break;
 
 		case TIMER_EVENT:
 			execute_timer(reinterpret_cast<size_t>(event.user.data1));
@@ -443,6 +451,13 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 	}
 }
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+void thandler::handle_window_event(const SDL_Event& event)
+{
+	handle_event(event);
+}
+#endif
 
 void thandler::connect(tdispatcher* dispatcher)
 {

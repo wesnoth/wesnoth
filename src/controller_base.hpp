@@ -42,6 +42,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "joystick.hpp"
 #include "key.hpp"
+#include "video.hpp"
 #include "quit_confirmation.hpp"
 
 class CVideo;
@@ -54,7 +55,7 @@ namespace hotkey { class command_executor; }
 
 namespace soundsource { class manager; }
 
-class controller_base : public events::sdl_handler
+class controller_base : public video2::draw_layering
 {
 public:
 	controller_base(const config& game_config, CVideo& video);
@@ -112,6 +113,10 @@ protected:
 	 * behavior of derived classes.
 	 */
 	void handle_event(const SDL_Event& event);
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	void handle_window_event(const SDL_Event& ) {}
+#endif
 
 	/**
 	 * Process keydown (only when the general map display does not have focus).

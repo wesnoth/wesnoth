@@ -134,7 +134,7 @@ public:
 		, always_save_fields_(false)
 		, fields_()
 		, focus_()
-		, restore_(true)
+		, restore_(false)
 	{
 	}
 

@@ -250,7 +250,10 @@ private:
 #endif
 	class video_event_handler : public events::sdl_handler {
 	public:
-		virtual void handle_event(const SDL_Event &event);
+		virtual void handle_event(const SDL_Event &) {}
+
+		virtual void handle_window_event(const SDL_Event &event);
+
 		video_event_handler() :	sdl_handler(false) {}
 	};
 
@@ -315,4 +318,12 @@ struct resize_lock {
 	~resize_lock();
 };
 
+namespace video2 {
+class draw_layering: public events::sdl_handler {
+protected:
+	draw_layering(const bool auto_join=true);
+	virtual ~draw_layering();
+};
+
+}
 #endif
