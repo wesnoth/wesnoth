@@ -157,7 +157,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	BOOST_FOREACH(const unit &u, *resources::units) {
 		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
-			*target_list = target(u.get_location(), value(), target::EXPLICIT);
+			*target_list = target(u.get_location(), value(), target::TYPE::EXPLICIT);
 		}
 	}
 
@@ -207,7 +207,7 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 	BOOST_FOREACH(const map_location &loc, items)
 	{
 		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
-		*target_list = target(loc, value(), target::EXPLICIT);
+		*target_list = target(loc, value(), target::TYPE::EXPLICIT);
 	}
 
 }
@@ -316,7 +316,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
 				*target_list = target(u.get_location(),
 					value_ * double(radius_ - distance) /
-					radius_, target::THREAT);
+					radius_, target::TYPE::THREAT);
 			}
 		}
 	}
@@ -363,12 +363,16 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > ta
 		= boost::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
 	config c = config();
 	handler_->handle(c, true, l_obj);
-	std::vector < target > targets = *(l_obj->get());
+	try {
+		std::vector < target > targets = *(l_obj->get());
 
- 	BOOST_FOREACH(target tg, targets)
- 	{
- 		*target_list = tg;
- 	}
+		BOOST_FOREACH(target tg, targets)
+		{
+			*target_list = tg;
+		}
+	} catch(bad_enum_cast& e) {
+		ERR_AI_GOAL << "A Lua goal returned a target of an unknown type (\"" << e.value() << "\"; unfortunately, the engine cannot recover from this error. As a result, all targets returned by the goal have been lost.\n";
+	}
 
 }
 

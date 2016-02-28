@@ -233,7 +233,7 @@ double testing_move_to_targets_phase::rate_target(const target& tg, const unit_m
 
 	//for 'support' targets, they are rated much higher if we can get there within two turns,
 	//otherwise they are worthless to go for at all.
-	if(tg.type == target::SUPPORT) {
+	if(tg.type == target::TYPE::SUPPORT) {
 		if (move_cost <= u->movement_left() * 2) {
 			rating *= 10.0;
 		} else {
@@ -245,7 +245,7 @@ double testing_move_to_targets_phase::rate_target(const target& tg, const unit_m
 	//scouts do not like encountering enemies on their paths
 	if (u->usage() == "scout") {
 		//scouts get a bonus for going after villages
-		if(tg.type == target::VILLAGE) {
+		if(tg.type == target::TYPE::VILLAGE) {
 				rating *= get_scout_village_targeting();
 		}
 
@@ -428,7 +428,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 
 	//if our target is a position to support, then we
 	//see if we can move to a position in support of this target
-	if(best_target->type == target::SUPPORT) {
+	if(best_target->type == target::TYPE::SUPPORT) {
 		LOG_AI << "support...\n";
 
 		std::vector<map_location> locs;
@@ -554,7 +554,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 			for(std::set<map_location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
 				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
 					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0 << "\n";
-					targets.push_back(target(*j,value*4.0,target::MASS));
+					targets.push_back(target(*j,value*4.0,target::TYPE::MASS));
 					best_target = targets.end() - 1;
 				}
 			}
@@ -578,12 +578,12 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 								   get_caution())) {
 					double value = best_target->value - best->cost() / 20.0;
 
-					if(value > 0.0 && best_target->type != target::MASS) {
+					if(value > 0.0 && best_target->type != target::TYPE::MASS) {
 						//there are enemies ahead. Rally troops around us to
 						//try to take the target
 						if(is_dangerous) {
 							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0 << "\n";
-							targets.push_back(target(its.first->first,value*2.0,target::BATTLE_AID));
+							targets.push_back(target(its.first->first,value*2.0,target::TYPE::BATTLE_AID));
 						}
 
 						best_target->value = value;

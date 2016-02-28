@@ -382,7 +382,7 @@ static int cfun_ai_get_targets(lua_State *L)
 
 
 		lua_pushstring(L, "type");
-		lua_pushnumber(L, it->type);
+		lua_pushstring(L, it->type.to_string().c_str());
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "loc");
