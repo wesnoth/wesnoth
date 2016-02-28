@@ -230,10 +230,6 @@ static register_goal_factory<protect_location_goal>
 	goal_factory_protect_location("protect_location");
 
 
-static register_goal_factory<protect_my_unit_goal>
-	goal_factory_protect_my_unit("protect_my_unit");
-
-
 static register_goal_factory<protect_unit_goal>
 	goal_factory_protect_unit("protect_unit");
 
