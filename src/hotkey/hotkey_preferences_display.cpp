@@ -559,87 +559,27 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 #pragma warning (push)
 #pragma warning (disable:4701)
 #endif
-void hotkey_preferences_dialog::show_binding_dialog(
-		const std::string& id) {
 
-	// Lets bind a hotkey...
-
-	const std::string text = _("Press desired hotkey (Esc cancels)");
-
-	SDL_Rect clip_rect = sdl::create_rect(0, 0, video_.getx(), video_.gety());
-	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
-			font::NORMAL_COLOR, text, 0, 0);
-
-	const int centerx = video_.getx() / 2;
-	const int centery = video_.gety() / 2;
-
-	SDL_Rect dlgr = sdl::create_rect(centerx - text_size.w / 2 - 30,
-			centery - text_size.h / 2 - 16, text_size.w + 60,
-			text_size.h + 32);
-
-	surface_restorer restorer(&video_, dlgr);
-	gui::dialog_frame mini_frame(video_);
-	mini_frame.layout(centerx - text_size.w / 2 - 20,
-			centery - text_size.h / 2 - 6, text_size.w + 40,
-			text_size.h + 12);
-	mini_frame.draw_background();
-	mini_frame.draw_border();
-	font::draw_text(&video_, clip_rect, font::SIZE_LARGE,
-			font::NORMAL_COLOR, text,
-			centerx - text_size.w / 2, centery - text_size.h / 2);
-	video_.flip();
-	SDL_Event event;
-	event.type = 0;
-	int keycode  = -1, mod    = -1;
-	const int any_mod = KMOD_CTRL | KMOD_META | KMOD_ALT;
-
-	while ( event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
-			&& event.type  != SDL_JOYHATMOTION
-			&& (event.type != SDL_MOUSEBUTTONDOWN )
-	)
-		SDL_PollEvent(&event);
-#if SDL_VERSION_ATLEAST(2,0,0)
-	events::peek_for_resize();
-#endif
-
-	do {
-		switch (event.type) {
-
-		case SDL_KEYDOWN:
-			keycode = event.key.keysym.sym;
-			mod = event.key.keysym.mod;
-			break;
-		}
-
-
-		SDL_PollEvent(&event);
-#if SDL_VERSION_ATLEAST(2,0,0)
-	events::peek_for_resize();
-#endif
-
-	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
-			&& event.type != SDL_JOYHATMOTION
-			&& event.type != SDL_MOUSEBUTTONUP);
-
-	restorer.restore();
-
+void hotkey_preferences_dialog::show_binding_dialog(const std::string& id)
+{
+	hotkey::hotkey_ptr newhk = hotkey::show_binding_dialog(video_, id);
+	hotkey::hotkey_ptr oldhk;
 	// only if not cancelled.
-	if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
+	if (newhk.get() != NULL) {
+		BOOST_FOREACH(const hotkey::hotkey_ptr& hk, hotkey::get_hotkeys()) {
+			if(newhk->bindings_equal(hk)) {
+				oldhk == hk;
+			}
+		}
 		hotkey::scope_changer scope_restorer;
 		hotkey::set_active_scopes(hotkey::get_hotkey_command(id).scope);
-
-		hotkey::hotkey_ptr newhk;
-		hotkey::hotkey_ptr oldhk;
-
-		oldhk = hotkey::get_hotkey(event);
-		newhk = hotkey::create_hotkey(id, event);
 
 #if 0
 			//TODO
 //			if ( (hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_SCREENSHOT
 //					|| hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_MAP_SCREENSHOT)
 //					&& (mod & any_mod) == 0 ) {
-//				gui2::show_transient_message(video_, _("Warning"),
+//				gui2::show_transient_message(video, _("Warning"),
 /*						_("Screenshot hotkeys should be combined with the \
 Control, Alt or Meta modifiers to avoid problems.")); */
 //			}
@@ -680,4 +620,72 @@ Control, Alt or Meta modifiers to avoid problems.")); */
 #endif
 
 } // end namespace preferences
+namespace hotkey {
 
+hotkey::hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id)
+{
+
+	// Lets bind a hotkey...
+
+	const std::string text = _("Press desired hotkey (Esc cancels)");
+
+	SDL_Rect clip_rect = sdl::create_rect(0, 0, video.getx(), video.gety());
+	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
+			font::NORMAL_COLOR, text, 0, 0);
+
+	const int centerx = video.getx() / 2;
+	const int centery = video.gety() / 2;
+
+	SDL_Rect dlgr = sdl::create_rect(centerx - text_size.w / 2 - 30,
+			centery - text_size.h / 2 - 16, text_size.w + 60,
+			text_size.h + 32);
+
+	surface_restorer restorer(&video, dlgr);
+	gui::dialog_frame mini_frame(video);
+	mini_frame.layout(centerx - text_size.w / 2 - 20,
+			centery - text_size.h / 2 - 6, text_size.w + 40,
+			text_size.h + 12);
+	mini_frame.draw_background();
+	mini_frame.draw_border();
+	font::draw_text(&video, clip_rect, font::SIZE_LARGE,
+			font::NORMAL_COLOR, text,
+			centerx - text_size.w / 2, centery - text_size.h / 2);
+	video.flip();
+	SDL_Event event;
+	event.type = 0;
+	int keycode  = -1, mod    = -1;
+	const int any_mod = KMOD_CTRL | KMOD_META | KMOD_ALT;
+
+	while ( event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
+			&& event.type  != SDL_JOYHATMOTION
+			&& (event.type != SDL_MOUSEBUTTONDOWN )
+	)
+		SDL_PollEvent(&event);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	events::peek_for_resize();
+#endif
+
+	do {
+		switch (event.type) {
+
+		case SDL_KEYDOWN:
+			keycode = event.key.keysym.sym;
+			mod = event.key.keysym.mod;
+			break;
+		}
+
+
+		SDL_PollEvent(&event);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	events::peek_for_resize();
+#endif
+
+	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
+			&& event.type != SDL_JOYHATMOTION
+			&& event.type != SDL_MOUSEBUTTONUP);
+
+	restorer.restore();
+	return keycode == SDLK_ESCAPE ? hotkey::hotkey_ptr() : hotkey::create_hotkey(id, event);
+}
+
+} //end namespace hotkey

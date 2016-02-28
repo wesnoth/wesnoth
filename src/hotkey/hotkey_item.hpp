@@ -26,7 +26,7 @@
 #endif
 
 class config;
-
+class CVideo;
 namespace hotkey {
 
 /* forward declarations */
@@ -432,6 +432,8 @@ std::string get_names(std::string id);
  * @param cfg The config to save to.
  */
 void save_hotkeys(config& cfg);
+
+hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id);
 
 }
 
