@@ -1104,7 +1104,13 @@ bool CVideo::detect_video_settings(std::pair<int,int>& resolution, int& bpp, int
 
 void CVideo::set_fullscreen(bool ison)
 {
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (window && isFullScreen() != ison) {
+#else
+	if (frameBuffer && isFullScreen() != ison) {
+#endif
+
 		const std::pair<int,int>& res = preferences::resolution();
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
