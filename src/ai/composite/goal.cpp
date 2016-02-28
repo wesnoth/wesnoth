@@ -262,11 +262,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 {
 	std::string goal_type;
 	if (protect_unit_) {
-		if (protect_only_own_unit_) {
-			goal_type = "protect_my_unit";
-		} else {
-			goal_type = "protect_unit";
-		}
+		goal_type = "protect_unit";
 	} else {
 		goal_type ="protect_location";
 	}
@@ -291,9 +287,6 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 		const unit_filter ufilt(vconfig(criteria), resources::filter_con);
 		BOOST_FOREACH(const unit &u, units)
 		{
-			if (protect_only_own_unit_ && u.side() != get_side()) {
-				continue;
-			}
 			//TODO: we will protect hidden units, by not testing for invisibility to current side
 			if (ufilt(u)) {
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
@@ -325,17 +318,13 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 }
 
 
-protect_goal::protect_goal(readonly_context &context, const config &cfg, bool protect_only_own_unit, bool protect_unit)
+protect_goal::protect_goal(readonly_context &context, const config &cfg, bool protect_unit)
 	: goal(context,cfg)
 	, filter_ptr_()
-	, protect_only_own_unit_(protect_only_own_unit)
 	, protect_unit_(protect_unit)
 	, radius_(20) //this default radius is taken from old code
 	, value_(1.0) //this default value taken from old code
 {
-	if(protect_only_own_unit_) {
-		lg::wml_error() << deprecate_wml_key_warning("protect_my_unit", "1.13.0") << "\n";
-	}
 }
 
 lua_goal::lua_goal(readonly_context &context, const config &cfg)

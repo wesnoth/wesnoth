@@ -127,7 +127,7 @@ private:
 
 class protect_goal : public goal {
 public:
-	protect_goal(readonly_context &context, const config &cfg, bool protect_only_own_unit, bool protect_unit);
+	protect_goal(readonly_context &context, const config &cfg, bool protect_unit);
 
 
 	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
@@ -143,7 +143,6 @@ private:
 	}
 
 	boost::shared_ptr<terrain_filter> filter_ptr_;
-	bool protect_only_own_unit_;
 	bool protect_unit_;
 	int radius_;
 	double value_;
@@ -153,7 +152,7 @@ private:
 class protect_location_goal : public protect_goal {
 public:
 	protect_location_goal(readonly_context &context, const config &cfg)
-	: protect_goal(context,cfg,false,false)
+	: protect_goal(context,cfg,false)
 	{
 	}
 };
@@ -162,16 +161,7 @@ public:
 class protect_unit_goal : public protect_goal {
 public:
 	protect_unit_goal(readonly_context &context, const config &cfg)
-	: protect_goal(context,cfg,false,true)
-	{
-	}
-};
-
-
-class protect_my_unit_goal : public protect_goal {
-public:
-	protect_my_unit_goal(readonly_context &context, const config &cfg)
-	: protect_goal(context,cfg,true,true)
+	: protect_goal(context,cfg,true)
 	{
 	}
 };
