@@ -2459,6 +2459,9 @@ void unit::set_image_halo(const std::string& halo)
 
 void unit::parse_upkeep(const config::attribute_value& upkeep)
 {
+	if (upkeep.empty()) {
+		return;
+	}
 	//TODO: create abetter way to check whether it is actually an int.	
 	int upkeep_int = upkeep.to_int(-99);
 	if(upkeep_int != -99) {
@@ -2467,7 +2470,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	else if(upkeep == "loyal" || upkeep == "free") {
 		upkeep_ = upkeep_loyal();
 	}
-	else if(upkeep == "full" || upkeep.empty() ) {
+	else if(upkeep == "full") {
 		upkeep_ = upkeep_full();
 	}
 	else {
