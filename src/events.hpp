@@ -124,9 +124,9 @@ public:
 
 void raise_process_event();
 void raise_draw_event();
-void rasie_draw_all_event();
+void raise_draw_all_event();
 void raise_volatile_draw_event();
-void raise_volativle_draw_all_event();
+void raise_volatile_draw_all_event();
 void raise_volatile_undraw_event();
 void raise_help_string_event(int mousex, int mousey);
 
