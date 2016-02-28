@@ -1068,8 +1068,6 @@ void game_launcher::show_preferences()
 {
 	preferences::show_preferences_dialog(video(),
 	    game_config_manager::get()->game_config());
-
-	video().flip();
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)

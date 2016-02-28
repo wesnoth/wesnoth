@@ -118,7 +118,6 @@ help_manager::~help_manager()
 void show_help(CVideo& video, const std::string& show_topic, int xloc, int yloc)
 {
 	show_help(video, toplevel, show_topic, xloc, yloc);
-	video.flip();
 }
 
 /**
@@ -130,7 +129,6 @@ void show_unit_help(CVideo& video, const std::string& show_topic, bool has_varia
 {
 	show_help(video, toplevel,
 			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
-	video.flip();
 }
 
 /**
@@ -141,7 +139,6 @@ void show_unit_help(CVideo& video, const std::string& show_topic, bool has_varia
 void show_terrain_help(CVideo& video, const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
 	show_help(video, toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
-	video.flip();
 }
 
 
@@ -152,7 +149,6 @@ void show_terrain_help(CVideo& video, const std::string& show_topic, bool hidden
 void show_variation_help(CVideo& video, const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
 {
 	show_help(video, toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
-	video.flip();
 }
 
 /**
@@ -221,7 +217,6 @@ void show_help(CVideo& video, const section &toplevel_sec,
 		}
 		hb.set_dirty(true);
 		events::raise_draw_event();
-		video.flip();
 		CKey key;
 		for (;;) {
 			events::pump();

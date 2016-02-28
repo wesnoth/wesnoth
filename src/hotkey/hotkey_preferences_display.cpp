@@ -616,14 +616,12 @@ void hotkey_preferences_dialog::show_binding_dialog(
 #if SDL_VERSION_ATLEAST(2,0,0)
 	events::peek_for_resize();
 #endif
-		video_.flip();
-		CVideo::delay(10);
+
 	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
 			&& event.type != SDL_JOYHATMOTION
 			&& event.type != SDL_MOUSEBUTTONUP);
 
 	restorer.restore();
-	video_.flip();
 
 	// only if not cancelled.
 	if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
