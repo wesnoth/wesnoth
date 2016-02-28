@@ -170,7 +170,12 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
-		target::TYPE type = static_cast<target::TYPE>(lua_tointeger(L, -1));  // st n + 2
+		target::TYPE type = target::TYPE::EXPLICIT;
+		if(lua_isnumber(L, -1)) {
+			type = target::TYPE::from_int(lua_tointeger(L, -1));  // st n + 2
+		} else if(lua_isstring(L, -1)) {
+			type = target::TYPE::string_to_enum(lua_tostring(L, -1));  // st n + 2
+		}
 		lua_pop(L, 1); // st n + 1
 
 
