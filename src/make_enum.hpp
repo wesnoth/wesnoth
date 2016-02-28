@@ -93,7 +93,9 @@ class bad_enum_cast : public std::exception
 {
 public:
 	bad_enum_cast(const std::string& enumname, const std::string& str)
-		: message("Failed to convert String \"" + str + "\" to type " + enumname)
+		: message("Failed to convert string \"" + str + "\" to type " + enumname)
+		, name(enumname)
+		, bad_val(str)
 	{}
 
 	virtual ~bad_enum_cast() throw() {}
@@ -102,9 +104,19 @@ public:
 	{
 		return message.c_str();
 	}
+	
+	const char * type() const throw()
+	{
+		return name.c_str();
+	}
+	
+	const char * value() const throw()
+	{
+		return bad_val.c_str();
+	}
 
 private:
-	std::string message;
+	std::string message, name, bad_val;
 };
 
 namespace make_enum_detail
