@@ -509,6 +509,7 @@ void pump()
 					last_click_y = event.button.y;
 				}
 				break;
+			}
 			case DRAW_ALL_EVENT:
 			{
 				/* iterate backwards as the most recent things will be at the top */
@@ -519,9 +520,6 @@ void pump()
 					}
 				}
 				continue; //do not do further handling here
-			}
-
-
 			}
 
 #ifndef __APPLE__
