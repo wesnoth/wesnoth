@@ -260,10 +260,6 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		if (aiparam.has_attribute("ai_algorithm")) {
 			if (algorithm.empty()) {
 				algorithm = aiparam["ai_algorithm"].str();
-				if (algorithm == "idle_ai") {
-					lg::wml_error() << "side " << side << " uses deprecated ai_algorithm=idle_ai; use ai_idle instead.\n";
-					algorithm = "ai_idle";
-				}
 				base_config = get_ai_config_for(algorithm);
 			} else if(algorithm != aiparam["ai_algorithm"]) {
 				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
