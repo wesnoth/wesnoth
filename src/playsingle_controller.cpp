@@ -670,7 +670,7 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	mp_replay_.reset(new replay_controller(*this, true, boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	mp_replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
 		mp_replay_->play_replay();
 	}
