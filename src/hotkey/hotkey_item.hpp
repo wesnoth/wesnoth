@@ -49,7 +49,7 @@ public:
 	/**
 	 * Initialises a new empty hotkey that will be disabled
 	 */
-	hotkey_base() : command_("null"), is_default_(true), mod_(0)
+	hotkey_base() : command_("null"), is_default_(true), is_disabled_(false), mod_(0)
 	{}
 
 	void set_command(const std::string& command)
@@ -108,6 +108,19 @@ public:
 	void unset_default()
 	{
 		is_default_ = false;
+	}
+
+	bool is_disabled() const
+	{
+		return is_disabled_;
+	}
+	void disable()
+	{
+		is_disabled_ = true;
+	}
+	void enable()
+	{
+		is_disabled_ = false;
 	}
 
 	/**
@@ -203,12 +216,21 @@ protected:
 	std::string command_;
 
 	/**
-	 *
+	 * is_default_ is true if the hot-key is part of the default hot-key list defined in data/core/hotkeys.cfg.
+	 * is_default_ is false if it is not, in which case it would be defined in the user's preferences file.
 	 */
 	bool is_default_;
+
+	/*
+	 * The original design of using a "null" command to indicate a disabled hot-key is ambiguous with regards
+	 * to when to save a user hot-key to preferences as well as when a default hot-key should be flagged as
+	 * disabled. So introduce a separate disabled flag to resolve the ambiguity.
+	 * Where the flag is true, the hot-key should not be written to preferences unless it is a default hot-key.
+	 */
+	bool is_disabled_;
+
 	/*
 	 * Keyboard modifiers. Treat as opaque, only do comparisons.
-	 *
 	 */
 	unsigned int mod_;
 };

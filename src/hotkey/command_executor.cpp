@@ -514,7 +514,7 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
 	const hotkey_ptr hk = get_hotkey(event);
-	if (!hk->active()) {
+	if (!hk->active() || hk->is_disabled()) {
 		return;
 	}
 
