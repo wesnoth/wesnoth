@@ -510,26 +510,24 @@ namespace
 
 void team::change_controller_by_wml(const std::string& new_controller_string)
 {
-	try
-	{
-		CONTROLLER new_controller = lexical_cast<CONTROLLER> (new_controller_string);
-		if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
-			//We don't allow changing the currently active side to "null" controlled.
-			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
-		}
-		config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
-		if(!new_controller.parse(choice["controller"])) {
-			ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
-		}
-		if(!resources::controller->is_replay()) {
-			set_local(choice["is_local"].to_bool());
-		}
-		change_controller(new_controller);
-	}
-	catch(const bad_enum_cast&)
-	{
+	CONTROLLER new_controller;
+	if(!new_controller.parse(new_controller_string)) {
 		ERR_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
+		return;
 	}
+	if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
+		ERR_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
+		return;
+	}
+	config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
+	if(!new_controller.parse(choice["controller"])) {
+		//TODO: this should be more than a ERR_NG message.
+		ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
+	}
+	if(!resources::controller->is_replay()) {
+		set_local(choice["is_local"].to_bool());
+	}
+	change_controller(new_controller);
 }
 
 void team::change_team(const std::string &name, const t_string &user_name)
