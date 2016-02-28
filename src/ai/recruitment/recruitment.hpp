@@ -21,6 +21,7 @@
 #ifndef AI_DEFAULT_RECRUITMENT_HPP_INCLUDED
 #define AI_DEFAULT_RECRUITMENT_HPP_INCLUDED
 
+#include "ai/composite/aspect.hpp"
 #include "ai/composite/rca.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
@@ -111,6 +112,62 @@ struct cached_combat_value {
 	bool operator<(const cached_combat_value& o) const {
 		return value < o.value;
 	}
+};
+
+struct recruit_job : public component {
+	std::vector<std::string> types;
+	std::string leader, id;
+	int number, importance;
+	bool total, pattern, blocker;
+	recruit_job(std::vector<std::string> t, std::string L, std::string id, int n, int i, bool s, bool p, bool b)
+		: types(t), leader(L), id(id)
+		, number(n), importance(i)
+		, total(s), pattern(p), blocker(b)
+	{}
+	config to_config() const {
+		config cfg;
+		cfg["number"] = number;
+		cfg["importance"] = importance;
+		cfg["total"] = total;
+		cfg["pattern"] = pattern;
+		cfg["blocker"] = blocker;
+		cfg["leader_id"] = leader;
+		cfg["id"] = id;
+		cfg["type"] = utils::join(types);
+		return cfg;
+	}
+	std::string get_id() const {return id;};
+	std::string get_name() const {return "recruit_job";};
+	std::string get_engine() const {return "cpp";};
+};
+
+struct recruit_limit : public component {
+	std::vector<std::string> types;
+	std::string id;
+	int limit;
+	recruit_limit(std::vector<std::string> t, std::string id, int lim)
+		: types(t), id(id), limit(lim)
+	{}
+	config to_config() const {
+		config cfg;
+		cfg["max"] = limit;
+		cfg["id"] = id;
+		cfg["type"] = utils::join(types);
+		return cfg;
+	}
+	std::string get_id() const {return id;};
+	std::string get_name() const {return "recruit_limit";};
+	std::string get_engine() const {return "cpp";};
+};
+
+class recruitment_aspect : public standard_aspect<config> {
+	std::vector<boost::shared_ptr<recruit_job> > jobs_;
+	std::vector<boost::shared_ptr<recruit_limit> > limits_;
+public:
+	recruitment_aspect(readonly_context &context, const config &cfg, const std::string &id);
+	void recalculate() const;
+	void create_job(std::vector<boost::shared_ptr<recruit_job> > &jobs, const config &job);
+	void create_limit(std::vector<boost::shared_ptr<recruit_limit> > &limits, const config &lim);
 };
 
 typedef std::map<std::string, std::set<cached_combat_value> > table_row;
