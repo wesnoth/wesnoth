@@ -17,6 +17,7 @@
 #include "gui/dialogs/mp_connect.hpp"
 
 #include "game_preferences.hpp"
+#include "gui/dialogs/dialog.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -86,6 +87,8 @@ REGISTER_DIALOG(mp_server_list)
 
 void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 {
+	set_restore(true);
+
 	tlistbox& list = find_widget<tlistbox>(&window, "server_list", false);
 
 	window.keyboard_capture(&list);
@@ -166,6 +169,7 @@ tmp_connect::tmp_connect()
 							   preferences::set_network_host,
 							   true))
 {
+	set_restore(true);
 }
 
 void tmp_connect::pre_show(CVideo& video, twindow& window)
