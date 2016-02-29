@@ -27,6 +27,7 @@ class vconfig;
 #include "config.hpp"
 #include "scripting/lua_types.hpp"
 #include "variable_info.hpp"
+#include "map_location.hpp"
 
 namespace lua_common {
 	int intf_textdomain(lua_State *L);
@@ -83,13 +84,32 @@ t_string luaW_checktstring(lua_State *L, int index);
 void luaW_filltable(lua_State *L, config const &cfg);
 
 /**
+ * Converts a map location object to a Lua table pushed at the top of the stack.
+ */
+void luaW_pushlocation(lua_State *L, map_location const &loc);
+
+/**
+ * Converts an optional table or pair of integers to a map location object.
+ * @param index stack position of the table or first integer.
+ * @return false if a map location couldn't be matched.
+ */
+bool luaW_tolocation(lua_State *L, int index, map_location &loc);
+
+/**
+ * Converts an optional table or pair of integers to a map location object.
+ * @note If a pair of integers was found, the first one will be removed
+ *       from the stack when the function returns.
+ */
+map_location luaW_checklocation(lua_State *L, int index);
+
+/**
  * Converts a config object to a Lua table pushed at the top of the stack.
  */
 void luaW_pushconfig(lua_State *L, config const &cfg);
 
 /**
  * Converts an optional table or vconfig to a config object.
- * @param index absolute stack position of t_string's metatable, or 0 if none.
+ * @param index stack position of the table.
  * @return false if some attributes had not the proper type.
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
