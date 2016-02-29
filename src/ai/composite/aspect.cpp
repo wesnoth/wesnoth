@@ -148,4 +148,15 @@ known_aspect::~known_aspect()
 {
 }
 
+std::string lua_aspect_visitor::quote_string(const std::string& s)
+{
+	if (s.find_first_of('"') == std::string::npos) {
+		return '"' + s + '"';
+	} else if (s.find_first_of("'") == std::string::npos) {
+		return "'" + s + "'";
+	} else {
+		return "[=====[" + s + "]=====]";
+	}
+}
+
 } //end of namespace ai

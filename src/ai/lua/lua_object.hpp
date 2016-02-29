@@ -135,11 +135,10 @@ inline boost::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n
 template <>
 inline boost::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
 {
-	// To Crab_: Is this part ok? I tested it, works fine
 	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
 	boost::shared_ptr<vconfig> vcfg = boost::shared_ptr<vconfig>(new vconfig(*cfg));
 	luaW_tovconfig(L, n, *vcfg);
-	boost::shared_ptr<terrain_filter> tf = boost::shared_ptr<terrain_filter>(new terrain_filter(*vcfg, resources::filter_con));
+	boost::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con));
 	return tf;
 }
 

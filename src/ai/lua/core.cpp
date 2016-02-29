@@ -63,6 +63,34 @@ void lua_ai_context::init(lua_State *L)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 }
 
+void lua_ai_context::get_arguments(config &cfg) const
+{
+	int top = lua_gettop(L);
+
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num_);
+
+	lua_getfield(L, -1, "args");
+	luaW_toconfig(L, -1, cfg);
+
+	lua_settop(L, top);
+}
+
+void lua_ai_context::set_arguments(const config &cfg)
+{
+	int top = lua_gettop(L);
+
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num_);
+
+	luaW_pushconfig(L, cfg);
+	lua_setfield(L, -2, "args");
+
+	lua_settop(L, top);
+}
+
 void lua_ai_context::get_persistent_data(config &cfg) const
 {
 	int top = lua_gettop(L);
@@ -84,20 +112,13 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
-	
-	if(lua_isnoneornil(L, -1)) {
-		// Just in case the self table wasn't initialized.
-		lua_pop(L, 1);
-		lua_newtable(L);
-		lua_rawseti(L, -2, num_);
-		lua_rawgeti(L, -1, num_);
-	}
 
 	luaW_pushconfig(L, cfg);
 	lua_setfield(L, -2, "data");
 
 	lua_settop(L, top);
 }
+
 static ai::engine_lua &get_engine(lua_State *L)
 {
 	return *(static_cast<ai::engine_lua*>(
@@ -812,13 +833,18 @@ static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 	return 1;
 }
 
-static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
-	//push data table here
-	lua_newtable(L);
-	lua_pushinteger(L, engine->get_readonly_context().get_side());
-	lua_setfield(L, -2, "side"); //stack size is 2 [- 1: new table; -2 ai as string]
+static int impl_ai_get(lua_State* L)
+{
+	if(!lua_isstring(L,2)) {
+		return 0;
+	}
+	ai::engine_lua& engine = get_engine(L);
+	std::string m = lua_tostring(L,2);
+	if(m == "side") {
+		lua_pushinteger(L, engine.get_readonly_context().get_side());
+		return 1;
+	}
 	static luaL_Reg const callbacks[] = {
-			{ "attack", &cfun_ai_execute_attack },
 			// Move maps
 			{ "get_new_dst_src", &cfun_ai_get_dstsrc },
 			{ "get_new_src_dst", &cfun_ai_get_srcdst },
@@ -859,14 +885,6 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 			{ "is_src_dst_valid", &cfun_ai_is_src_dst_valid },
 			{ "is_enemy_src_dst_valid", &cfun_ai_is_src_dst_enemy_valid },
 			// End of validation functions
-			{ "move", &cfun_ai_execute_move_partial },
-			{ "move_full", &cfun_ai_execute_move_full },
-			{ "recall", &cfun_ai_execute_recall },
-			{ "recruit", &cfun_ai_execute_recruit },
-			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
-			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
-			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
-			{ "synced_command", &cfun_ai_execute_synced_command },
 			{ "suitable_keep", &cfun_ai_get_suitable_keep },
 			{ "check_recall", &cfun_ai_check_recall },
 			{ "check_move", &cfun_ai_check_move },
@@ -878,16 +896,73 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 			//{ "",},
 			{ NULL, NULL } };
 	for (const luaL_Reg* p = callbacks; p->name; ++p) {
-		lua_pushlightuserdata(L, engine);
-		lua_pushcclosure(L, p->func, 1);
-		lua_setfield(L, -2, p->name);
+		if(m == p->name) {
+			lua_pushlightuserdata(L, &engine); // [-1: engine  ...]
+			lua_pushcclosure(L, p->func, 1); // [-1: function  ...]
+			// Store the function so that __index doesn't need to be called next time
+			lua_pushstring(L, p->name); // [-1: name  -2: function  ...]
+			lua_pushvalue(L, -2); // [-1: function  -2: name  -3: function ...]
+			lua_rawset(L, 1); // [-1: function  ...]
+			return 1;
+		}
 	}
+	lua_pushstring(L, "read_only");
+	lua_rawget(L, 1);
+	bool read_only = lua_toboolean(L, -1);
+	lua_pop(L, 1);
+	if(read_only) {
+		return 0;
+	}
+	static luaL_Reg const mutating_callbacks[] = {
+			{ "attack", &cfun_ai_execute_attack },
+			{ "move", &cfun_ai_execute_move_partial },
+			{ "move_full", &cfun_ai_execute_move_full },
+			{ "recall", &cfun_ai_execute_recall },
+			{ "recruit", &cfun_ai_execute_recruit },
+			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
+			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
+			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
+			{ "synced_command", &cfun_ai_execute_synced_command },
+			{ NULL, NULL } };
+	for (const luaL_Reg* p = mutating_callbacks; p->name; ++p) {
+		if(m == p->name) {
+			lua_pushlightuserdata(L, &engine);
+			lua_pushcclosure(L, p->func, 1);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
+	//push data table here
+	lua_newtable(L); // [-1: ai table]
+	lua_newtable(L); // [-1: metatable  -2: ai table]
+	lua_pushlightuserdata(L, engine); // [-1: engine  -2: metatable  -3: ai table]
+	lua_pushcclosure(L, &impl_ai_get, 1); // [-1: metafunc  -2: metatable  -3: ai table]
+	lua_setfield(L, -2, "__index"); // [-1: metatable  -2: ai table]
+	lua_setmetatable(L, -2); // [-1: ai table]
+}
+
+static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
+{
+	// Retrieve the ai elements table from the registry.
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
+	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AIs registry table]
+	size_t length_ai = lua_rawlen(L, -1); // length of table
+	lua_newtable(L); // [-1: AI state table  -2: AIs registry table]
+	generate_and_push_ai_table(L, engine); // [-1: AI routines  -2: AI state  -3: AIs registry]
+	lua_setfield(L, -2, "ai"); // [-1: AI state  -2: AIs registry]
+	lua_pushvalue(L, -1); // [-1: AI state  -2: AI state  -3: AIs registry]
+	lua_rawseti(L, -3, length_ai + 1); // [-1: AI state  -2: AIs registry]
+	lua_remove(L, -2); // [-1: AI state table]
+	return length_ai + 1;
 }
 
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
-	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
-	if (res_ai)
+	int res_ai = luaL_loadstring(L, code); // [-1: AI code]
+	if (res_ai != 0)
 	{
 
 		char const *m = lua_tostring(L, -1);
@@ -896,22 +971,35 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		return NULL;
 	}
 	//push data table here
-	generate_and_push_ai_table(L, engine);
-
-	//compile the ai as a closure
-	if (!luaW_pcall(L, 1, 1, true)) {
-		return NULL;//return with stack size 0 []
-	}
-
-	// Retrieve the ai elements table from the registry.
-	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
-	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
-	// Push the function in the table so that it is not collected.
-	size_t length_ai = lua_rawlen(L, -1);//length of ais_table
-	lua_pushvalue(L, -2); //stack size is now 3: [-1: ai_context  -2: ais_table  -3: ai_context]
-	lua_rawseti(L, -2, length_ai + 1);// ais_table[length+1]=ai_context.  stack size is now 2 [-1: ais_table  -2: ai_context]
+	size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
+	lua_pushvalue(L, -2); // [-1: AI code  -2: AI state  -3: AI code]
+	lua_setfield(L, -2, "update_state"); // [-1: AI state  -2: AI code]
+	lua_pushlightuserdata(L, engine);
+	lua_setfield(L, -2, "engine"); // [-1: AI state  -2: AI code]
 	lua_pop(L, 2);
-	return new lua_ai_context(L, length_ai + 1, engine->get_readonly_context().get_side());
+	return new lua_ai_context(L, idx, engine->get_readonly_context().get_side());
+}
+
+void lua_ai_context::update_state()
+{
+	lua_ai_load ctx(*this, true); // [-1: AI state table]
+	
+	// Load the AI code and arguments
+	lua_getfield(L, -1, "update_state"); // [-1: AI code  -2: AI state]
+	lua_getfield(L, -2, "args"); // [-1: Arguments  -2: AI code  -3: AI state]
+	lua_getfield(L, -3, "data"); // [-1: Persistent data  -2: Arguments  -3: AI code  -4: AI state]
+	
+	// Call the function
+	if (!luaW_pcall(L, 2, 1, true)) { // [-1: Result  -2: AI state]
+		lua_pop(L, 2); // (The result in this case is an error message.)
+		return; // return with stack size 0 []
+	}
+	
+	// Store the state for use by components
+	lua_setfield(L, -2, "state"); // [-1: AI state]
+	
+	// And return with empty stack.
+	lua_pop(L, 1);
 }
 
 lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *code, lua_ai_context &context)
@@ -924,7 +1012,6 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 		lua_pop(L, 2);//return with stack size 0 []
 		return NULL;
 	}
-
 
 	// Retrieve the ai elements table from the registry.
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
@@ -940,19 +1027,26 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 }
 
 
-void lua_ai_context::load()
+lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L)
 {
-	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));//stack size is now 1 [-1: ais_table key]
-	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
-	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_context -2: ais_table]
-	lua_remove(L,-2);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey))); // [-1: key]
+	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AI registry]
+	lua_rawgeti(L, -1, ctx.num_); // [-1: AI state  -2: AI registry]
+	lua_remove(L,-2); // [-1: AI state]
+	
+	// Load the AI functions table into global scope
+	lua_getfield(L, -1, "ai"); // [-1: AI functions  -2: AI state]
+	lua_pushstring(L, "read_only"); // [-1: key  -2: AI functions  -3: AI state]
+	lua_pushboolean(L, read_only); // [-1: value  -2: key  -3: AI functions  -4: AI state]
+	lua_rawset(L, -3); // [-1: AI functions  -2: AI state]
+	lua_setglobal(L, "ai"); // [-1: AI state]
 }
 
-void lua_ai_context::load_and_inject_ai_table(ai::engine_lua* engine)
+lua_ai_load::~lua_ai_load()
 {
-	load(); //stack size is 1 [-1: ai_context]
-	generate_and_push_ai_table(L, engine); //stack size is 2 [-1: ai_table -2: ai_context]
-	lua_setfield(L, -2, "ai"); //stack size is 1 [-1: ai_context]
+	// Remove the AI functions from the global scope
+	lua_pushnil(L);
+	lua_setglobal(L, "ai");
 }
 
 lua_ai_context::~lua_ai_context()
@@ -965,26 +1059,28 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l_obj)
+void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object_ptr l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
+	
+	// Load the context
+	lua_ai_load ctx(context_, read_only); // [-1: AI state table]
 
 	// Load the user function from the registry.
-	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));//stack size is now 1 [-1: ais_table key]
-	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
-	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_action  -2: ais_table]
-	lua_remove(L, -2);//stack size is 1 [-1: ai_action]
-	//load the lua ai context as a parameter
-	context_.load();//stack size is 2 [-1: ai_context -2: ai_action]
-
-	if (!configOut)
-	{
-		luaW_pushconfig(L, cfg);
-		luaW_pcall(L, 2, 0, true);
-	}
-	else if (luaW_pcall(L, 1, 5, true)) // @note for Crab: how much nrets should we actually have here
-	{				    // there were 2 initially, but aspects like recruitment pattern
-		l_obj->store(L, initial_top + 1); // return a lot of results
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey))); // [-1: key  -2: AI state]
+	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AI registry  -2: AI state]
+	lua_rawgeti(L, -1, num_); // [-1: AI action  -2: AI registry  -3: AI state]
+	lua_remove(L, -2); // [-1: AI action  -2: AI state]
+	
+	// Load the arguments
+	luaW_pushconfig(L, cfg); // [-1: parameters  -2: AI action  -3: AI state]
+	lua_getfield(L, -3, "data"); // [-1: data  -2: parameters  -3: action  -4: state]
+	lua_getfield(L, -4, "state");
+	
+	// Call the function
+	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
+	if (l_obj) {
+		l_obj->store(L, initial_top + 1);
 	}
 
 	lua_settop(L, initial_top);//empty stack
