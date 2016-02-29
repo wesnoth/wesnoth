@@ -51,7 +51,8 @@ public:
 		tpreferences(video, game_cfg).show(video);
 		return true;
 	}
-
+	
+	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -208,7 +209,7 @@ private:
 	int last_selected_item_;
 
 	std::vector<t_string> accl_speeds_;
-	std::vector<const hotkey::hotkey_command*> visible_hotkeys_;
+	t_visible_hotkeys visible_hotkeys_;
 
 	// Special variable to keep the value of the scaling slider,
 	// to be used in post_show

@@ -75,24 +75,24 @@ struct advanced_preferences_sorter
 template<hotkey::scope scope, bool reverse>
 struct hotkey_sort_by_type
 {
-	hotkey_sort_by_type(const hotkey::t_hotkey_command_list& l) : hotkey_commands_(&l) {}
+	hotkey_sort_by_type(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
 	bool operator()(int lhs, int rhs) const
 	{
-		return reverse ? (*hotkey_commands_)[lhs].scope[scope] < (*hotkey_commands_)[rhs].scope[scope]
-		               : (*hotkey_commands_)[lhs].scope[scope] > (*hotkey_commands_)[rhs].scope[scope];
+		return reverse ? (*hotkey_commands_)[lhs]->scope[scope] < (*hotkey_commands_)[rhs]->scope[scope]
+		               : (*hotkey_commands_)[lhs]->scope[scope] > (*hotkey_commands_)[rhs]->scope[scope];
 	}
-	const hotkey::t_hotkey_command_list* hotkey_commands_;
+	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
 };
 template<bool reverse>
 struct hotkey_sort_by_desc
 {
-	hotkey_sort_by_desc(const hotkey::t_hotkey_command_list& l) : hotkey_commands_(&l) {}
+	hotkey_sort_by_desc(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
 	bool operator()(int lhs, int rhs) const
 	{
-		return reverse ? (*hotkey_commands_)[lhs].description.str() < (*hotkey_commands_)[rhs].description.str()
-		               : (*hotkey_commands_)[lhs].description.str() > (*hotkey_commands_)[rhs].description.str();
+		return reverse ? (*hotkey_commands_)[lhs]->description.str() < (*hotkey_commands_)[rhs]->description.str()
+		               : (*hotkey_commands_)[lhs]->description.str() > (*hotkey_commands_)[rhs]->description.str();
 	}
-	const hotkey::t_hotkey_command_list* hotkey_commands_;
+	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
 };
 const std::string bool_to_display_string(bool value)
 {
@@ -863,18 +863,18 @@ void tpreferences::initialize_members(twindow& window)
 	setup_hotkey_list(window);
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
 	std::vector<tgenerator_::torder_func> order_funcs(2);
-	order_funcs[0] = hotkey_sort_by_desc<false>(hotkey::get_hotkey_commands());
-	order_funcs[1] = hotkey_sort_by_desc<true>(hotkey::get_hotkey_commands());
+	order_funcs[0] = hotkey_sort_by_desc<false>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_desc<true>(visible_hotkeys_);
 	hotkey_list.set_column_order(0, order_funcs);
 	hotkey_list.set_column_order(1, order_funcs);
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, false>(hotkey::get_hotkey_commands());
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, true>(hotkey::get_hotkey_commands());
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, false>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, true>(visible_hotkeys_);
 	hotkey_list.set_column_order(2, order_funcs);
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, false>(hotkey::get_hotkey_commands());
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, true>(hotkey::get_hotkey_commands());
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, false>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, true>(visible_hotkeys_);
 	hotkey_list.set_column_order(3, order_funcs);
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, false>(hotkey::get_hotkey_commands());
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, true>(hotkey::get_hotkey_commands());
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, false>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, true>(visible_hotkeys_);
 	hotkey_list.set_column_order(4, order_funcs);
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "btn_add_hotkey", false), boost::bind(
@@ -907,7 +907,6 @@ void tpreferences::setup_hotkey_list(twindow& window)
 			continue;
 		}
 		visible_hotkeys_.push_back(&hotkey_item);
-		//FIXME: Dont show hidden hotkeys.
 		row_action = hotkey_item.description;
 		row_hotkey = hotkey::get_names(hotkey_item.command);
 		//TODO: maybe use symbos/colors instead of yes no to be language independed and to save space.
@@ -922,7 +921,7 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 {
 	CVideo& video = hotkeys.get_window()->video();
 	int row_number = hotkeys.get_selected_row();
-	const hotkey::hotkey_command& hotkey_item = hotkey::get_hotkey_commands()[row_number];
+	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 	hotkey::hotkey_ptr newhk = hotkey::show_binding_dialog(video, hotkey_item.command);
 	hotkey::hotkey_ptr oldhk;
 
@@ -931,7 +930,7 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 		return;
 	}
 	BOOST_FOREACH(const hotkey::hotkey_ptr& hk, hotkey::get_hotkeys()) {
-		if(newhk->bindings_equal(hk)) {
+		if(!hk->is_disabled() && newhk->bindings_equal(hk)) {
 			oldhk = hk;
 		}
 	}
@@ -973,7 +972,7 @@ void tpreferences::default_hotkey_callback(twindow& window)
 void tpreferences::remove_hotkey_callback(tlistbox& hotkeys)
 {
 	int row_number = hotkeys.get_selected_row();
-	const hotkey::hotkey_command& hotkey_item = hotkey::get_hotkey_commands()[row_number];
+	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 	hotkey::clear_hotkeys(hotkey_item.command);
 	find_widget<tlabel>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
 }
