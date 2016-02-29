@@ -521,11 +521,6 @@ void tpreferences::initialize_members(twindow& window)
 		&tpreferences::max_autosaves_slider_callback,
 		this, boost::ref(autosaves_slider), boost::ref(autosaves_label)));
 
-	/* SET HOTKEYS */
-	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "hotkeys", false),
-			boost::bind(&show_hotkeys_preferences_dialog,
-			boost::ref(window.video())));
-
 	/* CACHE MANAGE */
 	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "cachemg", false),
 			boost::bind(&gui2::tgame_cache_options::display,
