@@ -22,6 +22,7 @@
 #include "carryover.hpp"
 #include "config_assign.hpp"
 #include "format_time_summary.hpp"
+#include "formatter.hpp"
 #include "formula_string_utils.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
@@ -563,13 +564,7 @@ replay_savegame::replay_savegame(saved_game &gamestate, const compression::forma
 
 void replay_savegame::create_filename()
 {
-	std::stringstream stream;
-
-	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
-			font::SIZE_NORMAL, 200);
-	stream << ellipsed_name << " " << _("replay");
-
-	set_filename(stream.str());
+	set_filename((formatter() << gamestate().classification().label << " " << _("replay")).str());
 }
 
 void replay_savegame::write_game(config_writer &out) {
@@ -647,14 +642,9 @@ ingame_savegame::ingame_savegame(saved_game &gamestate,
 
 void ingame_savegame::create_filename()
 {
-	std::stringstream stream;
-
-	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
-			font::SIZE_NORMAL, 200);
-	stream << ellipsed_name << " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"];
-	set_filename(stream.str());
+	set_filename((formatter() << gamestate().classification().label
+        << " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"]).str());
 }
-
 
 void ingame_savegame::write_game(config_writer &out) {
 	log_scope("write_game");
