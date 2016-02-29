@@ -313,6 +313,11 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
+	if(is_replay_save(summary_)) {
+		gui2::show_transient_message(video_, _("Load Game"), _("Replays are not supported in multiplayer mode."));
+		return false;
+	}
+
 	if(gamestate_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		gui2::show_transient_error_message(video_, _("This is not a multiplayer save."));
 		return false;
