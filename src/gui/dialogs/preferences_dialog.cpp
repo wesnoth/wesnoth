@@ -1080,11 +1080,11 @@ void tpreferences::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(&selector);
 
 	add_pager_row(selector, "general.png", _("Prefs section^General"));
+	add_pager_row(selector, "game.png", _("Prefs section^Hotkeys"));
 	add_pager_row(selector, "display.png", _("Prefs section^Display"));
 	add_pager_row(selector, "music.png",  _("Prefs section^Sound"));
 	add_pager_row(selector, "multiplayer.png", _("Prefs section^Multiplayer"));
 	add_pager_row(selector, "advanced.png", _("Prefs section^Advanced"));
-	add_pager_row(selector, "game.png", _("Prefs section^Hotkeys"));
 
 	// Initializes tabs for the various pages. This should be done before
 	// setting up the member callbacks.
