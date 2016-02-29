@@ -881,6 +881,7 @@ void unit_preview_pane::draw_contents()
 			, details_button_.location().w
 			, details_button_.location().h);
 	details_button_.set_location(button_loc);
+	details_button_.set_dirty(true);
 
 	SDL_Rect description_rect = sdl::create_rect(image_rect.x
 			, image_rect.y + image_rect.h + details_button_.location().h
