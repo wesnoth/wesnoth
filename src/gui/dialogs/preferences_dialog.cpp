@@ -862,23 +862,33 @@ void tpreferences::initialize_members(twindow& window)
 	//
 	// HOTKEYS PANEL
 	//
+
 	row_data.clear();
+
 	setup_hotkey_list(window);
+
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
+
 	std::vector<tgenerator_::torder_func> order_funcs(2);
+
 	order_funcs[0] = hotkey_sort_by_desc<false>(visible_hotkeys_);
 	order_funcs[1] = hotkey_sort_by_desc<true>(visible_hotkeys_);
+
 	hotkey_list.set_column_order(0, order_funcs);
+
 	hotkey_list.set_column_order(1, order_funcs);
 	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, false>(visible_hotkeys_);
 	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, true>(visible_hotkeys_);
 	hotkey_list.set_column_order(2, order_funcs);
+
 	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, false>(visible_hotkeys_);
 	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, true>(visible_hotkeys_);
 	hotkey_list.set_column_order(3, order_funcs);
+
 	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, false>(visible_hotkeys_);
 	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, true>(visible_hotkeys_);
 	hotkey_list.set_column_order(4, order_funcs);
+
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "btn_add_hotkey", false), boost::bind(
 			&tpreferences::add_hotkey_callback,
@@ -890,16 +900,12 @@ void tpreferences::initialize_members(twindow& window)
 			&tpreferences::remove_hotkey_callback,
 			this,
 			boost::ref(hotkey_list)));
-	tbutton* btn_reset_hotkeys = find_widget<tbutton>(&window, "btn_reset_hotkeys", false, false);
-	if(btn_reset_hotkeys) {
-	connect_signal_mouse_left_click(*btn_reset_hotkeys,
-		boost::bind(
+
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "btn_reset_hotkeys", false), boost::bind(
 			&tpreferences::default_hotkey_callback,
 			this,
-			boost::ref(window)
-		)
-	);
-	}
+			boost::ref(window)));
 }
 
 void tpreferences::setup_hotkey_list(twindow& window)
@@ -963,18 +969,21 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 	if (newhk.get() == NULL) {
 		return;
 	}
+
 	BOOST_FOREACH(const hotkey::hotkey_ptr& hk, hotkey::get_hotkeys()) {
 		if(!hk->is_disabled() && newhk->bindings_equal(hk)) {
 			oldhk = hk;
 		}
 	}
+
 	hotkey::scope_changer scope_restorer;
 	hotkey::set_active_scopes(hotkey_item.scope);
+
 	if(oldhk && oldhk->get_command() == hotkey_item.command) {
 		return;
 	}
-	if (oldhk) {
 
+	if (oldhk) {
 		utils::string_map symbols;
 		symbols["hotkey_sequence"]   = oldhk->get_name();
 		symbols["old_hotkey_action"] = hotkey::get_description(oldhk->get_command());
@@ -987,8 +996,10 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 			return;
 		}
 	}
+
 	hotkey::add_hotkey(newhk);
-	//Wew need to recalculate all hotkey names in because we migth have removed an hotkey from another command.
+
+	// We need to recalculate all hotkey names in because we might have removed a hotkey from another command.
 	for(size_t i = 0; i < hotkeys.get_item_count(); ++i) {
 		const hotkey::hotkey_command& hotkey_item_row = *visible_hotkeys_[i];
 		find_widget<tlabel>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));
