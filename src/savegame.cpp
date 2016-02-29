@@ -93,6 +93,7 @@ loadgame::loadgame(CVideo& video, const config& game_config, saved_game& gamesta
 	, show_replay_(false)
 	, cancel_orders_(false)
 	, select_difficulty_(false)
+	, summary_()
 {}
 
 void loadgame::show_dialog()
@@ -114,21 +115,18 @@ void loadgame::show_dialog()
 		filename_ = load_dialog.filename();
 		show_replay_ = load_dialog.show_replay();
 		cancel_orders_ = load_dialog.cancel_orders();
+
+		summary_ = load_dialog.summary();
 	}
 }
 
 void loadgame::show_difficulty_dialog()
 {
-	create_save_info creator;
-	save_info info = creator(filename_);
-	const config& cfg_summary = info.summary();
-
-	if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
-		|| (!cfg_summary["turn"].empty()) ) {
+	if(summary_["corrupt"].to_bool() || (is_replay_save(summary_)) || (!summary_["turn"].empty())) {
 		return;
 	}
 
-	std::string campaign_id = cfg_summary["campaign"];
+	std::string campaign_id = summary_["campaign"];
 
 	BOOST_FOREACH(const config &campaign, game_config_.child_range("campaign"))
 	{

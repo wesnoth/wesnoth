@@ -40,16 +40,11 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences_display.hpp"
+#include "savegame.hpp"
 #include "utils/foreach.tpp"
 
 #include <cctype>
 #include <boost/bind.hpp>
-
-/* Helper function for determining if the selected save is a replay */
-static bool is_replay_save(const config& cfg)
-{
-	return cfg["replay"].to_bool() && !cfg["snapshot"].to_bool(true);
-}
 
 namespace gui2
 {
@@ -105,6 +100,7 @@ tgame_load::tgame_load(const config& cache_config)
 	, games_()
 	, cache_config_(cache_config)
 	, last_words_()
+	, summary_()
 {
 }
 
@@ -251,9 +247,13 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 
 void tgame_load::post_show(twindow& window)
 {
+	const int index =
+		find_widget<tlistbox>(&window, "savegame_list", false).get_selected_row();
+
 	change_difficulty_ = chk_change_difficulty_->get_widget_value(window);
 	show_replay_ = chk_show_replay_->get_widget_value(window);
 	cancel_orders_ = chk_cancel_orders_->get_widget_value(window);
+	summary_ = games_[index].summary();
 }
 
 void tgame_load::display_savegame(twindow& window)
@@ -290,13 +290,13 @@ void tgame_load::display_savegame(twindow& window)
 	ttoggle_button& cancel_orders_toggle =
 			find_widget<ttoggle_button>(&window, "cancel_orders", false);
 
-	const bool is_replay = is_replay_save(summary);
+	const bool is_replay = savegame::loadgame::is_replay_save(summary);
 	const bool is_scenario_start = summary["turn"].empty();
 
 	// Always toggle show_replay on if the save is a replay
 	replay_toggle.set_value(is_replay);
 	replay_toggle.set_active(!is_replay && !is_scenario_start);
-	
+
 	// Cancel orders doesnt make sense on replay saves or start-of-scenario saves.
 	cancel_orders_toggle.set_active(!is_replay && !is_scenario_start);
 
@@ -366,7 +366,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 
 		str << "\n";
 
-		if(is_replay_save(cfg_summary)) {
+		if(savegame::loadgame::is_replay_save(cfg_summary)) {
 			str << _("Replay");
 		} else if(!cfg_summary["turn"].empty()) {
 			str << _("Turn") << " " << cfg_summary["turn"];

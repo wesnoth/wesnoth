@@ -45,6 +45,10 @@ public:
 	{
 		return cancel_orders_;
 	}
+	const config& summary()
+	{
+		return summary_;
+	}
 
 protected:
 	/** Inherited from tdialog. */
@@ -87,6 +91,8 @@ private:
 	const config& cache_config_;
 
 	std::vector<std::string> last_words_;
+
+	config summary_;
 };
 }
 

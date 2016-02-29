@@ -65,6 +65,11 @@ public:
 	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
 	static bool check_version_compatibility(const version_info & version, CVideo & video);
 
+	static bool is_replay_save(const config& cfg)
+	{
+		return cfg["replay"].to_bool() && !cfg["snapshot"].to_bool(true);
+	}
+
 private:
 	/** Display the load-game dialog. */
 	void show_dialog();
@@ -85,6 +90,7 @@ private:
 	bool show_replay_; /** State of the "show_replay" checkbox in the load-game dialog. */
 	bool cancel_orders_; /** State of the "cancel_orders" checkbox in the load-game dialog. */
 	bool select_difficulty_; /** State of the "change_difficulty" checkbox in the load-game dialog. */
+	config summary_; /** Summary config of the save selected in the load game dialog. */
 };
 
 /**
