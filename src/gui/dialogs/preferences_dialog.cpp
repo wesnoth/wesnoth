@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "video.hpp"
 #include "formula_string_utils.hpp"
+#include "filesystem.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 
@@ -121,7 +122,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 		adv_preferences_cfg_.push_back(adv);
 	}
 
-	std::sort(adv_preferences_cfg_.begin(), adv_preferences_cfg_.end(), 
+	std::sort(adv_preferences_cfg_.begin(), adv_preferences_cfg_.end(),
 		advanced_preferences_sorter());
 
 	// IMPORTANT: NEVER have trailing zeroes here, or else the cast from doubles
@@ -180,14 +181,14 @@ static void set_resolution_list(tcombobox& res_list, CVideo& video)
 		const int div = boost::math::gcd(res.first, res.second);
 		const int ratio[2] = {res.first/div, res.second/div};
 		if (ratio[0] <= 10 || ratio[1] <= 10) {
-			option << " <span color='#777777'>(" 
+			option << " <span color='#777777'>("
 				<< ratio[0] << ':' << ratio[1] << ")</span>";
 		}
 
 		options.push_back(option.str());
 	}
 
-	const unsigned current_res = std::find(resolutions.begin(), resolutions.end(), 
+	const unsigned current_res = std::find(resolutions.begin(), resolutions.end(),
 		video.current_resolution()) - resolutions.begin();
 
 	res_list.set_values(options, current_res);
@@ -377,8 +378,8 @@ void tpreferences::add_friend_list_entry(const bool is_friend,
 		username = username.substr(0, pos);
 	}
 
-	const bool added_sucessfully = is_friend ? 
-		add_friend(username, reason) : 
+	const bool added_sucessfully = is_friend ?
+		add_friend(username, reason) :
 		add_ignore(username, reason) ;
 
 	if (!added_sucessfully) {
@@ -403,7 +404,7 @@ void tpreferences::edit_friend_list_entry(tlistbox& friends,
 	textbox.set_value(who->second.get_nick() + " " + who->second.get_notes());
 }
 
-void tpreferences::remove_friend_list_entry(tlistbox& friends_list, 
+void tpreferences::remove_friend_list_entry(tlistbox& friends_list,
 		ttext_box& textbox, twindow& window)
 {
 	std::string to_remove = textbox.text();
@@ -437,7 +438,7 @@ void tpreferences::initialize_members(twindow& window)
 {
 	//
 	// GENERAL PANEL
-	// 
+	//
 
 	/* SCROLL SPEED */
 	setup_single_slider("scroll_speed",
@@ -450,7 +451,7 @@ void tpreferences::initialize_members(twindow& window)
 		find_widget<tslider>(&window, "turbo_slider", false);
 
 	const int selected_speed = std::find(
-		  (accl_speeds_.begin()), accl_speeds_.end(), lexical_cast<std::string>(turbo_speed())) 
+		  (accl_speeds_.begin()), accl_speeds_.end(), lexical_cast<std::string>(turbo_speed()))
 		- (accl_speeds_.begin());
 
 	accl_slider.set_value_labels(accl_speeds_);
@@ -802,7 +803,7 @@ void tpreferences::initialize_members(twindow& window)
 				}
 
 				const unsigned selected = std::find(
-					combo_options.second.begin(), combo_options.second.end(), 
+					combo_options.second.begin(), combo_options.second.end(),
 					get(pref_name, option["default"].str())) - combo_options.second.begin();
 
 				tcombobox* setter_widget = new tcombobox;
@@ -841,15 +842,15 @@ void tpreferences::initialize_members(twindow& window)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(advanced, boost::bind(
-		&tpreferences::on_advanced_prefs_list_select, 
-		this, 
+		&tpreferences::on_advanced_prefs_list_select,
+		this,
 		boost::ref(advanced),
 		boost::ref(window)));
 #else
 	advanced.set_callback_value_change(make_dialog_callback(
 		boost::bind(
-		&tpreferences::on_advanced_prefs_list_select, 
-		this, 
+		&tpreferences::on_advanced_prefs_list_select,
+		this,
 		boost::ref(advanced),
 		boost::ref(window))));
 #endif
@@ -901,7 +902,10 @@ void tpreferences::initialize_members(twindow& window)
 
 void tpreferences::setup_hotkey_list(twindow& window)
 {
+	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
+
 	std::map<std::string, string_map> row_data;
+	t_string& row_icon = row_data["img_icon"]["label"];
 	t_string& row_action = row_data["lbl_desc"]["label"];
 	t_string& row_hotkey = row_data["lbl_hotkey"]["label"];
 	t_string& row_is_g = row_data["lbl_is_game"]["label"];
@@ -917,6 +921,13 @@ void tpreferences::setup_hotkey_list(twindow& window)
 			continue;
 		}
 		visible_hotkeys_.push_back(&hotkey_item);
+
+		if (filesystem::file_exists(game_config::path + "/images/icons/action/" + hotkey_item.command + "_25.png")) {
+			row_icon = "icons/action/" + hotkey_item.command + "_25.png~CROP(3,3,18,18)";
+		} else {
+			row_icon = default_icon;
+		}
+
 		row_action = hotkey_item.description;
 		row_hotkey = hotkey::get_names(hotkey_item.command);
 		//TODO: maybe use symbos/colors instead of yes no to be language independed and to save space.
@@ -967,7 +978,7 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 	//Wew need to recalculate all hotkey names in because we migth have removed an hotkey from another command.
 	for(size_t i = 0; i < hotkeys.get_item_count(); ++i) {
 		const hotkey::hotkey_command& hotkey_item_row = *visible_hotkeys_[i];
-		find_widget<tlabel>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));	
+		find_widget<tlabel>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));
 	}
 }
 
@@ -1080,7 +1091,7 @@ void tpreferences::pre_show(CVideo& /*video*/, twindow& window)
 	initialize_tabs(window);
 
 	// Initializes initial values and sets up callbacks. This needs to be
-	// done before selecting the initial page, otherwise widgets from other 
+	// done before selecting the initial page, otherwise widgets from other
 	// pages cannot be found afterwards.
 	initialize_members(window);
 
