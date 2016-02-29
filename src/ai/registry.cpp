@@ -88,9 +88,6 @@ static register_stage_factory<testing_ai_default::strategy_formulation_with_rca>
 static register_stage_factory<testing_ai_default::fallback_to_other_ai>
 	fallback_to_other_ai_factory("testing_ai_default::fallback");
 
-static register_stage_factory<ai_default_recruitment_stage>
-	ai_default_recruitment_stage_factory("ai_default::recruitment");
-
 static register_stage_factory<idle_stage>
 	ai_idle_stage_factory("empty");
 
@@ -104,12 +101,6 @@ static register_stage_factory<testing_ai_default::candidate_action_evaluation_lo
 
 static register_candidate_action_factory<testing_ai_default::goto_phase>
 	goto_phase_factory("ai_default_rca::goto_phase");
-
-static register_candidate_action_factory<testing_ai_default::aspect_recruitment_phase>
-	aspect_recruitment_phase_factory("ai_default_rca::aspect_recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::recruitment_phase>
-	recruitment_phase_factory("ai_default_rca::recruitment_phase");
 
 static register_candidate_action_factory<testing_ai_default::combat_phase>
 	combat_phase_factory("ai_default_rca::combat_phase");
@@ -160,12 +151,6 @@ static register_candidate_action_factory<default_recruitment::recruitment>
 // === Also keep the old syntax ===
 static register_candidate_action_factory<testing_ai_default::goto_phase>
 	old_goto_phase_factory("testing_ai_default::goto_phase");
-
-static register_candidate_action_factory<testing_ai_default::aspect_recruitment_phase>
-	old_aspect_recruitment_phase_factory("testing_ai_default::aspect_recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::recruitment_phase>
-	old_recruitment_phase_factory("testing_ai_default::recruitment_phase");
 
 static register_candidate_action_factory<testing_ai_default::combat_phase>
 	old_combat_phase_factory("testing_ai_default::combat_phase");
@@ -285,9 +270,6 @@ static register_aspect_factory< composite_aspect<bool> >
 static register_aspect_factory< composite_aspect<bool> >
 	passive_leader_shares_keep__composite_aspect_factory("passive_leader_shares_keep*composite_aspect");
 
-static register_aspect_factory< composite_aspect<ministage> >
-	recruitment__composite_aspect_factory("recruitment*composite_aspect");
-
 static register_aspect_factory< composite_aspect<double> >
 	recruitment_diversity__composite_aspect_factory("recruitment_diversity*composite_aspect");
 
@@ -370,9 +352,6 @@ static register_aspect_factory< standard_aspect<bool> >
 
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory("passive_leader_shares_keep*standard_aspect");
-
-static register_aspect_factory< standard_aspect<ministage> >
-	recruitment__standard_aspect_factory("recruitment*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory("recruitment_diversity*standard_aspect");
@@ -460,9 +439,6 @@ static register_aspect_factory< standard_aspect<bool> >
 
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory2("passive_leader_shares_keep*");
-
-static register_aspect_factory< standard_aspect<ministage> >
-	recruitment__standard_aspect_factory2("recruitment*");
 
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory2("recruitment_diversity*");

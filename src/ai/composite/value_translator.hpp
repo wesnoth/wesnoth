@@ -146,33 +146,6 @@ public:
 };
 
 template<>
-class config_value_translator<ministage> {
-public:
-
-	static ministage cfg_to_value(const config &cfg)
-	{
-		return ministage(cfg.child_or_empty("value"));
-	}
-
-	static void cfg_to_value(const config &cfg, ministage &value)
-	{
-		value = cfg_to_value(cfg);
-	}
-
-	static void value_to_cfg(const ministage &value, config &cfg)
-	{
-		cfg.add_child("value",value.to_config());
-	}
-
-	static config value_to_cfg(const ministage &value)
-	{
-		config cfg;
-		value_to_cfg(value,cfg);
-		return cfg;
-	}
-};
-
-template<>
 class config_value_translator<terrain_filter> {
 public:
 
@@ -261,34 +234,6 @@ public:
 		T value = T();
 		variant_to_value(var,value);
 		return value;
-	}
-};
-
-template<>
-class variant_value_translator<ministage> {
-public:
-
-	static void variant_to_value(const variant &/*var*/, ministage &/*value*/)
-	{
-	        assert(false);//not implemented
-	}
-
-	static void value_to_variant(const ministage &/*value*/, variant &/*var*/)
-	{
-		assert(false);//not implemented
-	}
-
-	static variant value_to_variant(const ministage &/*value*/)
-	{
-		assert(false);
-		return variant();
-	}
-
-	static ministage variant_to_value(const variant &/*var*/)
-	{
-		assert(false);
-		config cfg;
-		return ministage(cfg);
 	}
 };
 

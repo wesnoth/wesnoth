@@ -44,7 +44,6 @@ class unit_map;
 class unit_type;  // lines 46-46
 class variant;  // lines 42-42
 namespace ai { class ai_context; }  // lines 51-51
-namespace ai { class ministage; }
 namespace ai { class unit_advancements_aspect; }
 namespace ai { template <typename T> class typesafe_aspect; }
 namespace boost { template <class T> class shared_ptr; }
@@ -308,9 +307,6 @@ public:
 
 
 	virtual const std::vector<unit_ptr>& get_recall_list() const = 0;
-
-
-	virtual stage_ptr get_recruitment(ai_context &context) const = 0;
 
 
 	virtual double get_recruitment_diversity() const = 0;
@@ -831,12 +827,6 @@ public:
 	virtual const std::vector<unit_ptr>& get_recall_list() const
 	{
 		return target_->get_recall_list();
-	}
-
-
-	virtual stage_ptr get_recruitment(ai_context &context) const
-	{
-		return target_->get_recruitment(context);
 	}
 
 
@@ -1439,9 +1429,6 @@ public:
 	virtual const std::vector<unit_ptr>& get_recall_list() const;
 
 
-	virtual stage_ptr get_recruitment(ai_context &context) const;
-
-
 	virtual double get_recruitment_diversity() const;
 
 
@@ -1587,7 +1574,6 @@ private:
 	aspect_type<bool>::typesafe_ptr passive_leader_;
 	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
-	aspect_type< ministage >::typesafe_ptr recruitment_;
 	aspect_type< double >::typesafe_ptr recruitment_diversity_;
 	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_combat_;
 	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_movement_;

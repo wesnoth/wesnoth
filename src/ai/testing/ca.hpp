@@ -52,67 +52,6 @@ private:
 	move_result_ptr move_;
 };
 
-
-//============================================================================
-class aspect_recruitment_phase : public candidate_action {
-public:
-
-	aspect_recruitment_phase( rca_context &context, const config &cfg );
-
-	virtual ~aspect_recruitment_phase();
-
-	virtual double evaluate();
-
-	virtual void execute();
-};
-
-//============================================================================
-
-class recruitment_phase : public candidate_action {
-public:
-
-	recruitment_phase( rca_context &context, const config &cfg );
-
-	virtual ~recruitment_phase();
-
-	virtual double evaluate();
-
-	virtual void execute();
-
-private:
-
-	bool recruit_usage(const std::string& usage);
-
-	std::map<std::string,int> unit_movement_scores_;
-	std::set<std::string> not_recommended_units_;
-
-	/**
-	 * Analyze all the units that this side can recruit
-	 * and rate their fighting suitability against enemy units.
-	 * Ratings will be placed in 'unit_combat_scores_',
-	 * with a '0' rating indicating that the unit is 'average' against enemy units,
-	 * negative ratings meaning they are poorly suited,
-	 * and positive ratings meaning they are well suited.
-	 */
-	void analyze_potential_recruit_combat();
-
-	std::map<std::string,int> unit_combat_scores_;
-
-	/**
-	 * Rates two unit types for their suitability against each other.
-	 * Returns 0 if the units are equally matched,
-	 * a positive number if a is suited against b,
-	 * and a negative number if b is suited against a.
-	 */
-	int compare_unit_types(const unit_type& a, const unit_type& b) const;
-
-	/**
-	 * calculates the average resistance unit type a has against the attacks of
-	 * unit type b.
-	 */
-	int average_resistance_against(const unit_type& a, const unit_type& b) const;
-};
-
 //============================================================================
 
 class combat_phase : public candidate_action {

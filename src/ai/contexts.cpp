@@ -218,7 +218,6 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		passive_leader_(),
 		passive_leader_shares_keep_(),
 		possible_moves_(),
-		recruitment_(),
 		recruitment_diversity_(),
 		recruitment_ignore_bad_combat_(),
 		recruitment_ignore_bad_movement_(),
@@ -253,7 +252,6 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
 		add_known_aspect("passive_leader",passive_leader_);
 		add_known_aspect("passive_leader_shares_keep",passive_leader_shares_keep_);
-		add_known_aspect("recruitment",recruitment_);
 		add_known_aspect("recruitment_diversity",recruitment_diversity_);
 		add_known_aspect("recruitment_ignore_bad_combat",recruitment_ignore_bad_combat_);
 		add_known_aspect("recruitment_ignore_bad_movement",recruitment_ignore_bad_movement_);
@@ -804,17 +802,6 @@ const std::vector<unit_ptr>& readonly_context_impl::get_recall_list() const
 {
 	///@todo 1.9: check for (level_["disallow_recall"]))
 	return current_team().recall_list().recall_list_; //TODO: Refactor ai so that friend of ai context is not required of recall_list_manager at this line
-}
-
-stage_ptr readonly_context_impl::get_recruitment(ai_context &context) const
-{
-	if (recruitment_) {
-		ministage_ptr m = recruitment_->get_ptr();
-		if (m) {
-			return m->get_stage_ptr(context);
-		}
-	}
-	return stage_ptr();
 }
 
 
