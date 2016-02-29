@@ -887,6 +887,16 @@ void tpreferences::initialize_members(twindow& window)
 			&tpreferences::remove_hotkey_callback,
 			this,
 			boost::ref(hotkey_list)));
+	tbutton* btn_reset_hotkeys = find_widget<tbutton>(&window, "btn_reset_hotkeys", false, false);
+	if(btn_reset_hotkeys) {
+	connect_signal_mouse_left_click(*btn_reset_hotkeys,
+		boost::bind(
+			&tpreferences::default_hotkey_callback,
+			this,
+			boost::ref(window)
+		)
+	);
+	}
 }
 
 void tpreferences::setup_hotkey_list(twindow& window)
@@ -962,6 +972,7 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 		find_widget<tlabel>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));	
 	}
 }
+
 void tpreferences::default_hotkey_callback(twindow& window)
 {
 	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
