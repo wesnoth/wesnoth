@@ -956,11 +956,9 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 		symbols["old_hotkey_action"] = hotkey::get_description(oldhk->get_command());
 		symbols["new_hotkey_action"] = hotkey::get_description(newhk->get_command());
 
-		std::string text = vgettext("\"$hotkey_sequence|\" is in use by \n\"$old_hotkey_action|\". Do you wish to reassign it to \"$new_hotkey_action|\"?", symbols);
+		std::string text = vgettext("“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\nDo you wish to reassign it to “<b>$new_hotkey_action|</b>”?", symbols);
 
-		const int res = gui2::show_message(video,
-			_("Reassign Hotkey"), text,
-			gui2::tmessage::yes_no_buttons);
+		const int res = gui2::show_message(video, _("Reassign Hotkey"), text, gui2::tmessage::yes_no_buttons, true);
 		if (res != gui2::twindow::OK) {
 			return;
 		}
