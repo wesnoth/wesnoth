@@ -66,6 +66,8 @@
 
 namespace {
 
+const std::string text_feature_on =  "<span color='#0f0'>&#10003;</span>";
+
 struct advanced_preferences_sorter
 {
 	bool operator()(const config& lhs, const config& rhs) const
@@ -905,13 +907,20 @@ void tpreferences::setup_hotkey_list(twindow& window)
 	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
 
 	std::map<std::string, string_map> row_data;
-	t_string& row_icon = row_data["img_icon"]["label"];
+
+	t_string& row_icon =   row_data["img_icon"]["label"];
 	t_string& row_action = row_data["lbl_desc"]["label"];
 	t_string& row_hotkey = row_data["lbl_hotkey"]["label"];
-	t_string& row_is_g = row_data["lbl_is_game"]["label"];
-	t_string& row_is_e = row_data["lbl_is_editor"]["label"];
-	t_string& row_is_t = row_data["lbl_is_titlescreen"]["label"];
+
+	t_string& row_is_g        = row_data["lbl_is_game"]["label"];
+	t_string& row_is_g_markup = row_data["lbl_is_game"]["use_markup"];
+	t_string& row_is_e        = row_data["lbl_is_editor"]["label"];
+	t_string& row_is_e_markup = row_data["lbl_is_editor"]["use_markup"];
+	t_string& row_is_t        = row_data["lbl_is_titlescreen"]["label"];
+	t_string& row_is_t_markup = row_data["lbl_is_titlescreen"]["use_markup"];
+
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
+
 	hotkey_list.clear();
 	visible_hotkeys_.clear();
 
@@ -930,10 +939,14 @@ void tpreferences::setup_hotkey_list(twindow& window)
 
 		row_action = hotkey_item.description;
 		row_hotkey = hotkey::get_names(hotkey_item.command);
-		//TODO: maybe use symbos/colors instead of yes no to be language independed and to save space.
-		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME] ? _("yes") : _("no");
-		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR] ? _("yes") : _("no");
-		row_is_t = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? _("yes") : _("no");
+
+		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME]      ? text_feature_on : "";
+		row_is_g_markup = "true";
+		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR]    ? text_feature_on : "";
+		row_is_e_markup = "true";
+		row_is_t = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? text_feature_on : "";
+		row_is_t_markup = "true";
+
 		hotkey_list.add_row(row_data);
 	}
 }
