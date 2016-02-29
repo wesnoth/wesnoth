@@ -33,6 +33,8 @@ public:
 	twidget* build() const;
 
 	std::string history;
+
+	size_t max_input_length;
 };
 
 

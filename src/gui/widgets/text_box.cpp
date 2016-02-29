@@ -99,6 +99,7 @@ std::string ttext_history::get_value() const
 ttext_box::ttext_box()
 	: ttext_()
 	, history_()
+	, max_input_length_(0)
 	, text_x_offset_(0)
 	, text_y_offset_(0)
 	, text_height_(0)
@@ -124,6 +125,10 @@ void ttext_box::place(const tpoint& origin, const tpoint& size)
 	set_maximum_width(get_text_maximum_width());
 	set_maximum_height(get_text_maximum_height(), false);
 
+	if(max_input_length_ != 0) {
+		set_maximum_length(max_input_length_);
+	}
+
 	update_offsets();
 }
 
@@ -135,6 +140,9 @@ void ttext_box::update_canvas()
 	const unsigned start = get_selection_start();
 	const int length = get_selection_length();
 
+	if(max_input_length_ != 0) {
+		set_maximum_length(max_input_length_);
+	}
 
 	PangoEllipsizeMode ellipse_mode = PANGO_ELLIPSIZE_NONE;
 	if(!can_wrap()) {

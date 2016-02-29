@@ -27,7 +27,9 @@ namespace implementation
 {
 
 tbuilder_text_box::tbuilder_text_box(const config& cfg)
-	: tbuilder_control(cfg), history(cfg["history"])
+	: tbuilder_control(cfg)
+	, history(cfg["history"])
+	, max_input_length(cfg["max_input_length"])
 {
 }
 
@@ -43,6 +45,8 @@ twidget* tbuilder_text_box::build() const
 	if(!history.empty()) {
 		widget->set_history(history);
 	}
+
+	widget->set_max_input_length(max_input_length);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.\n";
