@@ -46,6 +46,16 @@ void replace_space2underbar(std::string &name) {
 	std::replace(name.begin(),name.end(),' ','_');
 }
 
+/** Replace the spaces in the filter */
+std::string replace_filter(const std::string* filter)
+{
+    std::string filter_value = *filter;
+    std::string filter_replaced;
+    std::copy(filter_value.begin(), filter_value.end(), filter_replaced.begin());
+    replace_space2underbar(filter_replaced);
+    return filter_replaced;
+}
+
 namespace savegame {
 
 void extract_summary_from_config(config &, config &);
@@ -169,7 +179,7 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 
 	if (filter) {
 		filenames.erase(std::remove_if(filenames.begin(), filenames.end(),
-                                               filename_filter(*filter)),
+                                               filename_filter(replace_filter(filter))),
                                 filenames.end());
 	}
 
