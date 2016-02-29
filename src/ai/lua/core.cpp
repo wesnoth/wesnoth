@@ -22,6 +22,7 @@
 #include <cstring>
 
 #include "core.hpp"
+#include "ai/composite/aspect.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_api.hpp"
 #include "scripting/push_check.hpp"
@@ -128,6 +129,16 @@ static ai::engine_lua &get_engine(lua_State *L)
 static ai::readonly_context &get_readonly_context(lua_State *L)
 {
 	return get_engine(L).get_readonly_context();
+}
+
+static void push_location_key(lua_State* L, const map_location& loc)
+{
+	// This should be factored out. The same function is defined in data/lua/location_set.lua
+	// At this point, it is not clear, where this(hashing) function can be placed
+	// Implemented it this way, to test the new version of the data structure
+	// as requested from the users of LuaAI <Nephro>
+	int hashed_index = (loc.x + 1) * 16384 + (loc.y + 1) + 2000;
+	lua_pushinteger(L, hashed_index);
 }
 
 static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
@@ -732,15 +743,7 @@ static void push_move_map(lua_State *L, const move_map& m)
 	do
 	{
 		map_location key = it->first;
-
-		//push_map_location(L, key); // deprecated
-
-		// This should be factored out. The same function is defined in data/lua/location_set.lua
-		// At this point, it is not clear, where this(hashing) function can be placed
-		// Implemented it this way, to test the new version of the data structure
-		// as requested from the users of LuaAI <Nephro>
-		int hashed_index = (key.x + 1) * 16384 + (key.y + 1) + 2000;
-		lua_pushinteger(L, hashed_index);
+		push_location_key(L, key);
 
 		lua_createtable(L, 0, 0);
 
@@ -833,6 +836,70 @@ static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 	return 1;
 }
 
+template<typename T>
+typesafe_aspect<T>* try_aspect_as(aspect_ptr p)
+{
+	return boost::dynamic_pointer_cast<typesafe_aspect<T> >(p).get();
+}
+
+static int impl_ai_aspect_get(lua_State* L)
+{
+	const aspect_map& aspects = get_engine(L).get_readonly_context().get_aspects();
+	aspect_map::const_iterator iter = aspects.find(luaL_checkstring(L, 2));
+	if(iter == aspects.end()) {
+		return 0;
+	}
+	
+	// For attacks, just fall back to existing function
+	if(iter->first == "attacks") {
+		lua_pushlightuserdata(L, &get_engine(L));
+		lua_pushcclosure(L, &cfun_ai_get_attacks, 1);
+		lua_call(L, 0, 1);
+		return 1;
+	}
+	
+	typedef std::vector<std::string> string_list;
+	if(typesafe_aspect<bool>* aspect = try_aspect_as<bool>(iter->second)) {
+		lua_pushboolean(L, aspect->get());
+	} else if(typesafe_aspect<int>* aspect = try_aspect_as<int>(iter->second)) {
+		lua_pushinteger(L, aspect->get());
+	} else if(typesafe_aspect<double>* aspect = try_aspect_as<double>(iter->second)) {
+		lua_pushnumber(L, aspect->get());
+	} else if(typesafe_aspect<config>* aspect = try_aspect_as<config>(iter->second)) {
+		luaW_pushconfig(L, aspect->get());
+	} else if(typesafe_aspect<string_list>* aspect = try_aspect_as<string_list>(iter->second)) {
+		lua_push(L, aspect->get());
+	} else if(typesafe_aspect<terrain_filter>* aspect = try_aspect_as<terrain_filter>(iter->second)) {
+		std::set<map_location> result;
+		aspect->get().get_locations(result);
+		lua_push(L, result);
+	} else if(typesafe_aspect<attacks_vector>* aspect = try_aspect_as<attacks_vector>(iter->second)) {
+		// This case is caught separately above, but should the get_* aspect functions ever be
+		// deprecated, this is the place to move the code of cfun_ai_get_attacks to.
+		(void) aspect;
+	} else if(typesafe_aspect<unit_advancements_aspect>* aspect = try_aspect_as<unit_advancements_aspect>(iter->second)) {
+		const unit_advancements_aspect& val = aspect->get();
+		int my_side = luaW_getglobal(L, "ai", "side", NULL) - 1;
+		lua_newtable(L);
+		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+			if (!u.valid() || u->side() != my_side) {
+				continue;
+			}
+			push_location_key(L, u->get_location());
+			lua_push(L, val.get_advancements(u));
+			lua_settable(L, -3);
+		}
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+static int impl_ai_aspect_set(lua_State*)
+{
+	return 0; // The aspects table is read-only
+}
+
 static int impl_ai_get(lua_State* L)
 {
 	if(!lua_isstring(L,2)) {
@@ -842,6 +909,17 @@ static int impl_ai_get(lua_State* L)
 	std::string m = lua_tostring(L,2);
 	if(m == "side") {
 		lua_pushinteger(L, engine.get_readonly_context().get_side());
+		return 1;
+	}
+	if(m == "aspects") {
+		lua_newtable(L); // [-1: Aspects table]
+		lua_newtable(L); // [-1: Aspects metatable  -2: Aspects table]
+		lua_pushlightuserdata(L, &engine); // [-1: Engine  -2: Aspects mt  -3: Aspects table]
+		lua_pushcclosure(L, &impl_ai_aspect_get, 1); // [-1: Metafunction  -2: Aspects mt  -3: Aspects table]
+		lua_setfield(L, -2, "__index"); // [-1: Aspects metatable  -2: Aspects table]
+		lua_pushcfunction(L, &impl_ai_aspect_set); // [-1: Metafunction  -2: Aspects mt  -3: Aspects table]
+		lua_setfield(L, -2, "__newindex"); // [-1: Aspects metatable  -2: Aspects table]
+		lua_setmetatable(L, -2); // [-1: Aspects table]
 		return 1;
 	}
 	static luaL_Reg const callbacks[] = {
