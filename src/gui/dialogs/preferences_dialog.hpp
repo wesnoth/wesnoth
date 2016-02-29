@@ -24,7 +24,9 @@
 
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
-
+namespace hotkey {
+	struct hotkey_command;
+}
 namespace gui2
 {
 
@@ -62,6 +64,7 @@ private:
 	void initialize_members(twindow& window);
 	void initialize_tabs(twindow& window);
 	void setup_friends_list(twindow& window);
+	void setup_hotkey_list(twindow& window);
 
 	void add_friend_list_entry(const bool is_friend,
 		ttext_box& textbox, twindow& window);
@@ -88,7 +91,7 @@ private:
 	void font_scaling_slider_callback(tslider& slider);
 	void add_hotkey_callback(tlistbox& hotkeys);
 	void remove_hotkey_callback(tlistbox& hotkeys);
-	void default_hotkey_callback(tlistbox& hotkeys);
+	void default_hotkey_callback(twindow& window);
 
 	/**
 	 * Sets the initial state and callback for a simple bool-state toggle button
@@ -205,6 +208,7 @@ private:
 	int last_selected_item_;
 
 	std::vector<t_string> accl_speeds_;
+	std::vector<const hotkey::hotkey_command*> visible_hotkeys_;
 
 	// Special variable to keep the value of the scaling slider,
 	// to be used in post_show

@@ -114,6 +114,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	, friend_names_()
 	, last_selected_item_(0)
 	, accl_speeds_()
+	, visible_hotkeys_()
 	, font_scaling_(font_scaling())
 {
 	BOOST_FOREACH(const config& adv, game_cfg.child_range("advanced_preference")) {
@@ -859,23 +860,8 @@ void tpreferences::initialize_members(twindow& window)
 	// HOTKEYS PANEL
 	//
 	row_data.clear();
-	t_string& row_action = row_data["lbl_desc"]["label"];
-	t_string& row_hotkey = row_data["lbl_hotkey"]["label"];
-	t_string& row_is_g = row_data["lbl_is_game"]["label"];
-	t_string& row_is_e = row_data["lbl_is_editor"]["label"];
-	t_string& row_is_t = row_data["lbl_is_titlescreen"]["label"];
+	setup_hotkey_list(window);
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
-	FOREACH(const AUTO& hotkey_item, hotkey::get_hotkey_commands())
-	{
-
-		row_action = hotkey_item.description;
-		row_hotkey = hotkey::get_names(hotkey_item.command);
-		//TODO: maybe use symbos/colors instead of yes no to be language independed and to save space.
-		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME] ? _("yes") : _("no");
-		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR] ? _("yes") : _("no");
-		row_is_t = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? _("yes") : _("no");
-		hotkey_list.add_row(row_data);
-	}
 	std::vector<tgenerator_::torder_func> order_funcs(2);
 	order_funcs[0] = hotkey_sort_by_desc<false>(hotkey::get_hotkey_commands());
 	order_funcs[1] = hotkey_sort_by_desc<true>(hotkey::get_hotkey_commands());
@@ -901,6 +887,35 @@ void tpreferences::initialize_members(twindow& window)
 			&tpreferences::remove_hotkey_callback,
 			this,
 			boost::ref(hotkey_list)));
+}
+
+void tpreferences::setup_hotkey_list(twindow& window)
+{
+	std::map<std::string, string_map> row_data;
+	t_string& row_action = row_data["lbl_desc"]["label"];
+	t_string& row_hotkey = row_data["lbl_hotkey"]["label"];
+	t_string& row_is_g = row_data["lbl_is_game"]["label"];
+	t_string& row_is_e = row_data["lbl_is_editor"]["label"];
+	t_string& row_is_t = row_data["lbl_is_titlescreen"]["label"];
+	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
+	hotkey_list.clear();
+	visible_hotkeys_.clear();
+
+	FOREACH(const AUTO& hotkey_item, hotkey::get_hotkey_commands())
+	{
+		if (hotkey_item.hidden) {
+			continue;
+		}
+		visible_hotkeys_.push_back(&hotkey_item);
+		//FIXME: Dont show hidden hotkeys.
+		row_action = hotkey_item.description;
+		row_hotkey = hotkey::get_names(hotkey_item.command);
+		//TODO: maybe use symbos/colors instead of yes no to be language independed and to save space.
+		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME] ? _("yes") : _("no");
+		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR] ? _("yes") : _("no");
+		row_is_t = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? _("yes") : _("no");
+		hotkey_list.add_row(row_data);
+	}
 }
 
 void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
@@ -944,16 +959,16 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 	hotkey::add_hotkey(newhk);
 	//Wew need to recalculate all hotkey names in because we migth have removed an hotkey from another command.
 	for(size_t i = 0; i < hotkeys.get_item_count(); ++i) {
-		const hotkey::hotkey_command& hotkey_item_row = hotkey::get_hotkey_commands()[i];
+		const hotkey::hotkey_command& hotkey_item_row = *visible_hotkeys_[i];
 		find_widget<tlabel>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));	
 	}
 }
-void tpreferences::default_hotkey_callback(tlistbox& hotkeys)
+void tpreferences::default_hotkey_callback(twindow& window)
 {
+	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
 	clear_hotkeys();
-	gui2::show_transient_message(hotkeys.get_window()->video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
-	//TODO: updatet listbox& hotkeys with the new values, note that clearing hotkeys might remove some wml defined hotkeys from the list.
-	//So we eigher have to recalculate the layout or 
+	setup_hotkey_list(window);
+	window.invalidate_layout();
 }
 void tpreferences::remove_hotkey_callback(tlistbox& hotkeys)
 {
