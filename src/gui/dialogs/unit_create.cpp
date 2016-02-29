@@ -352,7 +352,9 @@ void tunit_create::list_item_clicked(twindow& window)
 	timage& a_icon = find_widget<timage>(&window, "type_alignment", false);
 
 	a_icon.set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
-	a_icon.set_tooltip(alignment_name);
+	a_icon.set_tooltip(unit_type::alignment_description(
+		u->alignment(),
+		u->genders().front()));
 
 	tlabel& details = find_widget<tlabel>(&window, "type_details", false);
 
