@@ -841,6 +841,7 @@ int game_lua_kernel::intf_get_units(lua_State *L)
  * Matches a unit against the given filter.
  * - Arg 1: full userdata.
  * - Arg 2: table containing a filter
+ * - Arg 3: optional location OR optional "adjacent" unit
  * - Ret 1: boolean.
  */
 int game_lua_kernel::intf_match_unit(lua_State *L)
@@ -860,27 +861,34 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 	}
 
 	filter_context & fc = game_state_;
-	if (int side = lu->on_recall_list()) {
-		if (!lua_isnoneornil(L, 3)) {
-			WRN_LUA << "wesnoth.match_unit called with 3rd argument, but unit to match was on recall list. ";
-			WRN_LUA << "Thus the 3rd argument is ignored.\n";
-		}
-		team &t = (teams())[side - 1];
-		scoped_recall_unit auto_store("this_unit",
-			t.save_id(), t.recall_list().find_index(u->id()));
-		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
-		return 1;
-	}
 
-	if (!lua_isnoneornil(L, 3)) {
+	if (luaW_hasmetatable(L, 3, getunitKey)) {
+		if (int side = lu->on_recall_list()) {
+			WRN_LUA << "wesnoth.match_unit called with a secondary unit (3rd argument), ";
+			WRN_LUA << "but unit to match was on recall list. ";
+			WRN_LUA << "Thus the 3rd argument is ignored.\n";
+			team &t = (teams())[side - 1];
+			scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
+			lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
+			return 1;
+		}
 		lua_unit *lu_adj = static_cast<lua_unit *>(lua_touserdata(L, 1));
 		unit* u_adj = lu_adj->get();
 		if (!u_adj) {
 			return luaL_argerror(L, 3, "unit not found");
 		}
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, *u_adj));
+	} else if (int side = lu->on_recall_list()) {
+		map_location loc;
+		luaW_tolocation(L, 3, loc); // If argument 3 isn't a location, loc is unchanged
+		team &t = (teams())[side - 1];
+		scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
+		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, loc));
+		return 1;
 	} else {
-		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u));
+		map_location loc = u->get_location();
+		luaW_tolocation(L, 3, loc); // If argument 3 isn't a location, loc is unchanged
+		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, loc));
 	}
 	return 1;
 }
