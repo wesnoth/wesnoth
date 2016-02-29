@@ -350,7 +350,7 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > ta
 {
 	boost::shared_ptr< lua_object< std::vector < target > > > l_obj
 		= boost::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
-	config c = config();
+	config c(cfg_.child_or_empty("args"));
 	handler_->handle(c, true, l_obj);
 	try {
 		std::vector < target > targets = *(l_obj->get());

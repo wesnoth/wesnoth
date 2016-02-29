@@ -26,6 +26,7 @@
 #include "scripting/game_lua_kernel.hpp"
 
 #include "log.hpp"
+#include "util.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/pointer_cast.hpp>
@@ -394,6 +395,18 @@ protected:
 	std::string turns_;
 
 };
+	
+class lua_aspect_visitor : public boost::static_visitor<std::string> {
+	static std::string quote_string(const std::string& s);
+public:
+	std::string operator()(bool b) const {return b ? "true" : "false";}
+	std::string operator()(int i) const {return quote_string(str_cast(i));}
+	std::string operator()(unsigned long long i) const {return quote_string(str_cast(i));}
+	std::string operator()(double i) const {return quote_string(str_cast(i));}
+	std::string operator()(const std::string& s) const {return quote_string(s);}
+	std::string operator()(const t_string& s) const {return quote_string(s.str());}
+	std::string operator()(boost::blank) const {return "nil";}
+};
 
 template<typename T>
 class lua_aspect : public typesafe_aspect<T>
@@ -401,50 +414,44 @@ class lua_aspect : public typesafe_aspect<T>
 public:
 	lua_aspect(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
 		: typesafe_aspect<T>(context, cfg, id)
-		, handler_(), code_()
+		, handler_(), code_(), params_(cfg.child_or_empty("args"))
 	{
-		std::string value;
 		if (cfg.has_attribute("value"))
 		{
-			value = cfg["value"].str();
-			if (value == "yes") /** @todo for Nephro or Crab: get rid of this workaround */
-			{
-				value = "true";
-			}
-			value = "return " + value;
+			code_ = "return " + cfg["value"].apply_visitor(lua_aspect_visitor());
 		}
 		else if (cfg.has_attribute("code"))
 		{
-			value = cfg["code"].str();
+			code_ = cfg["code"].str();
 		}
 		else
 		{
 			// error
 			return;
 		}
-		code_ = value;
-		handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(value.c_str(), *l_ctx));
+		handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 	}
 
 	void recalculate() const
 	{
 		this->valid_lua_ = true;
-		boost::shared_ptr< lua_object<T> > l_obj = boost::shared_ptr< lua_object<T> >(new lua_object<T>());
-		config c = config();
-		handler_->handle(c, true, l_obj);
-		this->value_lua_ = l_obj;
+		handler_->handle(params_, true, this->value_lua_);
 	}
 
 	config to_config() const
 	{
 		config cfg = aspect::to_config();
 		cfg["code"] = code_;
+		if (!params_.empty()) {
+			cfg.add_child("args", params_);
+		}
 		return cfg;
 	}
 
 private:
 	boost::shared_ptr<lua_ai_action_handler> handler_;
 	std::string code_;
+	const config params_;
 };
 
 
