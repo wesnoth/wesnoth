@@ -72,6 +72,10 @@ unsigned ttext_::get_state() const
 
 void ttext_::set_maximum_length(const size_t maximum_length)
 {
+	if(maximum_length == 0) {
+		return;
+	}
+
 	const bool need_update = text_.get_length() > maximum_length;
 
 	text_.set_maximum_length(maximum_length);
