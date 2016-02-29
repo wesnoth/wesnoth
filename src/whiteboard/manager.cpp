@@ -874,6 +874,8 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 
 			print_help_once();
 #else
+			UNUSED (name);
+			UNUSED (recruit_hex);
 			created_planned_recruit = false;
 #endif
 		}
