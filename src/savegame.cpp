@@ -643,7 +643,7 @@ ingame_savegame::ingame_savegame(saved_game &gamestate,
 void ingame_savegame::create_filename()
 {
 	set_filename((formatter() << gamestate().classification().label
-        << " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"]).str());
+		<< " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"]).str());
 }
 
 void ingame_savegame::write_game(config_writer &out) {
