@@ -247,13 +247,15 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 
 void tgame_load::post_show(twindow& window)
 {
-	const int index =
-		find_widget<tlistbox>(&window, "savegame_list", false).get_selected_row();
-
 	change_difficulty_ = chk_change_difficulty_->get_widget_value(window);
 	show_replay_ = chk_show_replay_->get_widget_value(window);
 	cancel_orders_ = chk_cancel_orders_->get_widget_value(window);
-	summary_ = games_[index].summary();
+
+	if(!games_.empty()) {
+		const int index =
+			find_widget<tlistbox>(&window, "savegame_list", false).get_selected_row();
+		summary_ = games_[index].summary();
+	}
 }
 
 void tgame_load::display_savegame(twindow& window)
