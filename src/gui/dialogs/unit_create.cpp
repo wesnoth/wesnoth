@@ -326,10 +326,6 @@ void tunit_create::list_item_clicked(twindow& window)
 			 + ")";
 	}
 
-	const std::string& alignment_name = unit_type::alignment_description(
-		u->alignment(),
-		u->genders().front());
-
 	find_widget<timage>(&window, "type_image", false)
 			.set_label((u->icon().empty() ? u->image() : u->icon()) + tc);
 
@@ -350,6 +346,8 @@ void tunit_create::list_item_clicked(twindow& window)
 
 	r_icon.set_label("icons/unit-groups/race_" + u->race_id() + "_30.png");
 	r_icon.set_tooltip(u->race()->name(u->genders().front()));
+
+	const std::string& alignment_name = u->alignment().to_string();
 
 	timage& a_icon = find_widget<timage>(&window, "type_alignment", false);
 
