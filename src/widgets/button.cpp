@@ -577,10 +577,14 @@ bool button::hit(int x, int y) const
 	return sdl::point_in_rect(x,y,location());
 }
 
-static bool not_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
+static bool is_valid_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
 
 void button::set_image(const std::string& image_file)
 {
+	if(!is_valid_image(image_file)) {
+		return;
+	}
+
 	button_image_name_ = "buttons/" + image_file;
 	load_images();
 	set_dirty();
@@ -588,6 +592,10 @@ void button::set_image(const std::string& image_file)
 
 void button::set_overlay(const std::string& image_file)
 {
+	if(!is_valid_image(image_file)) {
+		return;
+	}
+
 	button_overlay_image_name_ = image_file;
 	load_images();
 	set_dirty();
@@ -600,7 +608,7 @@ void button::set_label(const std::string& val)
 	//if we have a list of items, use the first one that isn't an image
 	if (std::find(label_text_.begin(), label_text_.end(), COLUMN_SEPARATOR) != label_text_.end()) {
 		const std::vector<std::string>& items = utils::split(label_text_, COLUMN_SEPARATOR);
-		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),not_image);
+		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),is_valid_image);
 		if(i != items.end()) {
 			label_text_ = *i;
 		}
