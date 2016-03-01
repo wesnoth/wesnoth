@@ -1050,7 +1050,7 @@ void lua_ai_context::update_state()
 	}
 	
 	// Store the state for use by components
-	lua_setfield(L, -2, "state"); // [-1: AI state]
+	lua_setfield(L, -2, "self"); // [-1: AI state]
 	
 	// And return with empty stack.
 	lua_pop(L, 1);
@@ -1127,9 +1127,10 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	lua_remove(L, -2); // [-1: AI action  -2: AI state]
 	
 	// Load the arguments
-	luaW_pushconfig(L, cfg); // [-1: parameters  -2: AI action  -3: AI state]
-	lua_getfield(L, -3, "data"); // [-1: data  -2: parameters  -3: action  -4: state]
-	lua_getfield(L, -4, "state");
+	int iState = lua_absindex(L, -2);
+	lua_getfield(L, iState, "self");
+	luaW_pushconfig(L, cfg);
+	lua_getfield(L, iState, "data");
 	
 	// Call the function
 	luaW_pcall(L, 3, l_obj ? 1 : 0, true);

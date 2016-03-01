@@ -7,4 +7,6 @@
 local ai_stdlib = wesnoth.require('ai/lua/stdlib.lua')
 ai_stdlib.init(ai)
 
--- No special state is returned by the default engine
+-- This is only returned for minor backwards compatibility
+local p, d = ...
+return {data = d}
