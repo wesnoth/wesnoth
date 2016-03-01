@@ -49,6 +49,7 @@ public:
 	void set_persistent_data(const config &);
 	void get_arguments(config &) const;
 	void set_arguments(const config &);
+	void push_ai_table();
 	static void init(lua_State *L);
 	friend class ::game_lua_kernel;
 	friend class lua_ai_load;

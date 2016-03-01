@@ -288,7 +288,7 @@ void engine_lua::push_ai_table()
 {
 	if (game_config::debug)
 	{
-		// TODO: Reimplement this somehow
+		lua_ai_context_->push_ai_table();
 	}
 }
 

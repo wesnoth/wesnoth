@@ -72,7 +72,7 @@ void lua_ai_context::get_arguments(config &cfg) const
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
 
-	lua_getfield(L, -1, "args");
+	lua_getfield(L, -1, "params");
 	luaW_toconfig(L, -1, cfg);
 
 	lua_settop(L, top);
@@ -87,7 +87,7 @@ void lua_ai_context::set_arguments(const config &cfg)
 	lua_rawgeti(L, -1, num_);
 
 	luaW_pushconfig(L, cfg);
-	lua_setfield(L, -2, "args");
+	lua_setfield(L, -2, "params");
 
 	lua_settop(L, top);
 }
@@ -129,6 +129,11 @@ static ai::engine_lua &get_engine(lua_State *L)
 static ai::readonly_context &get_readonly_context(lua_State *L)
 {
 	return get_engine(L).get_readonly_context();
+}
+
+void lua_ai_context::push_ai_table()
+{
+	lua_ai_load ctx(*this, false);
 }
 
 static void push_location_key(lua_State* L, const map_location& loc)
@@ -1027,7 +1032,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	//push data table here
 	size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
 	lua_pushvalue(L, -2); // [-1: AI code  -2: AI state  -3: AI code]
-	lua_setfield(L, -2, "update_state"); // [-1: AI state  -2: AI code]
+	lua_setfield(L, -2, "update_self"); // [-1: AI state  -2: AI code]
 	lua_pushlightuserdata(L, engine);
 	lua_setfield(L, -2, "engine"); // [-1: AI state  -2: AI code]
 	lua_pop(L, 2);
@@ -1039,8 +1044,8 @@ void lua_ai_context::update_state()
 	lua_ai_load ctx(*this, true); // [-1: AI state table]
 	
 	// Load the AI code and arguments
-	lua_getfield(L, -1, "update_state"); // [-1: AI code  -2: AI state]
-	lua_getfield(L, -2, "args"); // [-1: Arguments  -2: AI code  -3: AI state]
+	lua_getfield(L, -1, "update_self"); // [-1: AI code  -2: AI state]
+	lua_getfield(L, -2, "params"); // [-1: Arguments  -2: AI code  -3: AI state]
 	lua_getfield(L, -3, "data"); // [-1: Persistent data  -2: Arguments  -3: AI code  -4: AI state]
 	
 	// Call the function
