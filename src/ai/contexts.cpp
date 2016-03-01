@@ -214,13 +214,10 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		dst_src_enemy_valid_lua_(false),
 		src_dst_valid_lua_(false),
 		src_dst_enemy_valid_lua_(false),
-		number_of_possible_recruits_to_force_recruit_(),
 		passive_leader_(),
 		passive_leader_shares_keep_(),
 		possible_moves_(),
 		recruitment_diversity_(),
-		recruitment_ignore_bad_combat_(),
-		recruitment_ignore_bad_movement_(),
 		recruitment_instructions_(),
 		recruitment_more_(),
 		recruitment_pattern_(),
@@ -249,12 +246,9 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("leader_goal",leader_goal_);
 		add_known_aspect("leader_ignores_keep",leader_ignores_keep_);
 		add_known_aspect("leader_value",leader_value_);
-		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
 		add_known_aspect("passive_leader",passive_leader_);
 		add_known_aspect("passive_leader_shares_keep",passive_leader_shares_keep_);
 		add_known_aspect("recruitment_diversity",recruitment_diversity_);
-		add_known_aspect("recruitment_ignore_bad_combat",recruitment_ignore_bad_combat_);
-		add_known_aspect("recruitment_ignore_bad_movement",recruitment_ignore_bad_movement_);
 		add_known_aspect("recruitment_instructions",recruitment_instructions_);
 		add_known_aspect("recruitment_more",recruitment_more_);
 		add_known_aspect("recruitment_pattern",recruitment_pattern_);
@@ -762,15 +756,6 @@ double readonly_context_impl::get_leader_value() const
 }
 
 
-double readonly_context_impl::get_number_of_possible_recruits_to_force_recruit() const
-{
-	if (number_of_possible_recruits_to_force_recruit_) {
-		return number_of_possible_recruits_to_force_recruit_->get();
-	}
-	return 0;
-}
-
-
 bool readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
@@ -811,24 +796,6 @@ double readonly_context_impl::get_recruitment_diversity() const
 		return recruitment_diversity_->get();
 	}
 	return 0.;
-}
-
-
-bool readonly_context_impl::get_recruitment_ignore_bad_combat() const
-{
-	if (recruitment_ignore_bad_combat_) {
-		return recruitment_ignore_bad_combat_->get();
-	}
-	return false;
-}
-
-
-bool readonly_context_impl::get_recruitment_ignore_bad_movement() const
-{
-	if (recruitment_ignore_bad_movement_) {
-		return recruitment_ignore_bad_movement_->get();
-	}
-	return false;
 }
 
 

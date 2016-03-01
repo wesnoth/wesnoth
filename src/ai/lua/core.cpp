@@ -528,27 +528,6 @@ static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 	return 1;
 }
 
-static int cfun_ai_get_number_of_possible_recruits_to_force_recruit(lua_State *L)
-{
-	double noprtfr = get_readonly_context(L).get_number_of_possible_recruits_to_force_recruit(); // @note: abbreviation
-	lua_pushnumber(L, noprtfr);
-	return 1;
-}
-
-static int cfun_ai_get_recruitment_ignore_bad_combat(lua_State *L)
-{
-	bool recruitment_ignore_bad_combat = get_readonly_context(L).get_recruitment_ignore_bad_combat();
-	lua_pushboolean(L, recruitment_ignore_bad_combat);
-	return 1;
-}
-
-static int cfun_ai_get_recruitment_ignore_bad_movement(lua_State *L)
-{
-	bool recruitment_ignore_bad_movement = get_readonly_context(L).get_recruitment_ignore_bad_movement();
-	lua_pushboolean(L, recruitment_ignore_bad_movement);
-	return 1;
-}
-
 static int cfun_ai_get_recruitment_pattern(lua_State *L)
 {
 	std::vector<std::string> recruiting = get_readonly_context(L).get_recruitment_pattern();
@@ -945,11 +924,8 @@ static int impl_ai_get(lua_State* L)
 			{ "get_leader_goal", &cfun_ai_get_leader_goal },
 			{ "get_leader_ignores_keep", &cfun_ai_get_leader_ignores_keep },
 			{ "get_leader_value", &cfun_ai_get_leader_value },
-			{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit },
 			{ "get_passive_leader", &cfun_ai_get_passive_leader },
 			{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep },
-			{ "get_recruitment_ignore_bad_combat", &cfun_ai_get_recruitment_ignore_bad_combat },
-			{ "get_recruitment_ignore_bad_movement", &cfun_ai_get_recruitment_ignore_bad_movement },
 			{ "get_recruitment_pattern", &cfun_ai_get_recruitment_pattern },
 			{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting },
 			{ "get_simple_targeting", &cfun_ai_get_simple_targeting },

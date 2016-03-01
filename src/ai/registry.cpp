@@ -261,9 +261,6 @@ static register_aspect_factory< composite_aspect<bool> >
 static register_aspect_factory< composite_aspect<double> >
 	leader_value__composite_aspect_factory("leader_value*composite_aspect");
 
-static register_aspect_factory< composite_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__composite_aspect_factory("number_of_possible_recruits_to_force_recruit*composite_aspect");
-
 static register_aspect_factory< composite_aspect<bool> >
 	passive_leader__composite_aspect_factory("passive_leader*composite_aspect");
 
@@ -272,12 +269,6 @@ static register_aspect_factory< composite_aspect<bool> >
 
 static register_aspect_factory< composite_aspect<double> >
 	recruitment_diversity__composite_aspect_factory("recruitment_diversity*composite_aspect");
-
-static register_aspect_factory< composite_aspect<bool> >
-	recruitment_ignore_bad_combat__composite_aspect_factory("recruitment_ignore_bad_combat*composite_aspect");
-
-static register_aspect_factory< composite_aspect<bool> >
-	recruitment_ignore_bad_movement__composite_aspect_factory("recruitment_ignore_bad_movement*composite_aspect");
 
 static register_aspect_factory< composite_aspect<config> >
 	recruitment_instructions__composite_aspect_factory("recruitment_instructions*composite_aspect");
@@ -344,9 +335,6 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<double> >
 	leader_value__standard_aspect_factory("leader_value*standard_aspect");
 
-static register_aspect_factory< standard_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__standard_aspect_factory("number_of_possible_recruits_to_force_recruit*standard_aspect");
-
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader__standard_aspect_factory("passive_leader*standard_aspect");
 
@@ -355,12 +343,6 @@ static register_aspect_factory< standard_aspect<bool> >
 
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory("recruitment_diversity*standard_aspect");
-
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_combat__standard_aspect_factory("recruitment_ignore_bad_combat*standard_aspect");
-
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_movement__standard_aspect_factory("recruitment_ignore_bad_movement*standard_aspect");
 
 static register_aspect_factory< standard_aspect<config> >
 	recruitment_instructions__standard_aspect_factory("recruitment_instructions*standard_aspect");
@@ -431,9 +413,6 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<double> >
 	leader_value__standard_aspect_factory2("leader_value*");
 
-static register_aspect_factory< standard_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__standard_aspect_factory2("number_of_possible_recruits_to_force_recruit*");
-
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader__standard_aspect_factory2("passive_leader*");
 
@@ -442,12 +421,6 @@ static register_aspect_factory< standard_aspect<bool> >
 
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory2("recruitment_diversity*");
-
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_combat__standard_aspect_factory2("recruitment_ignore_bad_combat*");
-
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_movement__standard_aspect_factory2("recruitment_ignore_bad_movement*");
 
 static register_aspect_factory< standard_aspect<config> >
 	recruitment_instructions__standard_aspect_factory2("recruitment_instructions*");
@@ -511,20 +484,11 @@ static register_lua_aspect_factory< lua_aspect<bool> >
 static register_lua_aspect_factory< lua_aspect<double> >
 	leader_value__lua_aspect_factory("leader_value*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__lua_aspect_factory("number_of_possible_recruits_to_force_recruit*lua_aspect");
-
 static register_lua_aspect_factory< lua_aspect<bool> >
 	passive_leader__lua_aspect_factory("passive_leader*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<bool> >
 	passive_leader_shares_keep__lua_aspect_factory("passive_leader_shares_keep*lua_aspect");
-
-static register_lua_aspect_factory< lua_aspect<bool> >
-	recruitment_ignore_bad_combat__lua_aspect_factory("recruitment_ignore_bad_combat*lua_aspect");
-
-static register_lua_aspect_factory< lua_aspect<bool> >
-	recruitment_ignore_bad_movement__lua_aspect_factory("recruitment_ignore_bad_movement*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double> >
 	scout_village_targeting__lua_aspect_factory("scout_village_targeting*lua_aspect");
