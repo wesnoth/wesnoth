@@ -126,8 +126,13 @@ private:
 class lua_candidate_action_wrapper_external : public lua_candidate_action_wrapper_base {
 public:
 	lua_candidate_action_wrapper_external(rca_context& context, const config& cfg, lua_ai_context &lua_ai_ctx)
-		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"]), eval_parms_(cfg["eval_parms"]), exec_parms_(cfg["exec_parms"])
+		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"]), use_parms_(false)
 	{
+		if (cfg.has_attribute("exec_parms") || cfg.has_attribute("eval_parms")) {
+			use_parms_ = true;
+			exec_parms_ = cfg["exec_parms"].str();
+			eval_parms_ = cfg["eval_parms"].str();
+		}
 		std::string eval_code;
 		std::string exec_code;
 		generate_code(eval_code, exec_code);
@@ -142,8 +147,10 @@ public:
 	{
 		config cfg = lua_candidate_action_wrapper_base::to_config();
 		cfg["location"] = location_;
-		cfg["eval_parms"] = eval_parms_;
-		cfg["exec_parms"] = exec_parms_;
+		if (use_parms_) {
+			cfg["eval_parms"] = eval_parms_;
+			cfg["exec_parms"] = exec_parms_;
+		}
 		return cfg;
 	}
 
@@ -151,12 +158,18 @@ private:
 	std::string location_;
 	std::string eval_parms_;
 	std::string exec_parms_;
+	bool use_parms_;
 
 	void generate_code(std::string& eval, std::string& exec) {
 		std::string preamble = "local params, data, state = ...\n";
 		std::string load = "wesnoth.require(\"" + location_ + "\")";
-		eval = preamble + "return " + load + ":evaluation(ai, {" + eval_parms_ + "}, {data = data})";
-		exec = preamble + load + ":execution(ai, {" + exec_parms_ + "}, {data = data})";
+		if (use_parms_) {
+			eval = preamble + "return " + load + ":evaluation(ai, {" + eval_parms_ + "}, {data = data})";
+			exec = preamble + load + ":execution(ai, {" + exec_parms_ + "}, {data = data})";
+		} else {
+			eval = preamble + "return " + load + ".evaluation(params, data, state)";
+			exec = preamble + load + ".execution(params, data, state)";
+		}
 	}
 };
 
