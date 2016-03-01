@@ -294,9 +294,6 @@ public:
 	virtual double get_leader_value() const = 0;
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const = 0;
-
-
 	virtual bool get_passive_leader() const = 0;
 
 
@@ -310,12 +307,6 @@ public:
 
 
 	virtual double get_recruitment_diversity() const = 0;
-
-
-	virtual bool get_recruitment_ignore_bad_combat() const = 0;
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const = 0;
 
 
 	virtual const config get_recruitment_instructions() const = 0;
@@ -794,12 +785,6 @@ public:
 	}
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const
-	{
-		return target_->get_number_of_possible_recruits_to_force_recruit();
-	}
-
-
 	virtual bool get_passive_leader() const
 	{
 		return target_->get_passive_leader();
@@ -833,18 +818,6 @@ public:
 	virtual double get_recruitment_diversity() const
 	{
 		return target_->get_recruitment_diversity();
-	}
-
-
-	virtual bool get_recruitment_ignore_bad_combat() const
-	{
-		return target_->get_recruitment_ignore_bad_combat();
-	}
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const
-	{
-		return target_->get_recruitment_ignore_bad_movement();
 	}
 
 
@@ -1402,9 +1375,6 @@ public:
 	virtual std::vector<goal_ptr>& get_goals();
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const;
-
-
 	virtual double get_leader_aggression() const;
 
 
@@ -1430,12 +1400,6 @@ public:
 
 
 	virtual double get_recruitment_diversity() const;
-
-
-	virtual bool get_recruitment_ignore_bad_combat() const;
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const;
 
 
 	virtual const config get_recruitment_instructions() const;
@@ -1570,13 +1534,10 @@ private:
 	mutable bool dst_src_enemy_valid_lua_;
 	mutable bool src_dst_valid_lua_;
 	mutable bool src_dst_enemy_valid_lua_;
-	aspect_type<double>::typesafe_ptr number_of_possible_recruits_to_force_recruit_;
 	aspect_type<bool>::typesafe_ptr passive_leader_;
 	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
 	aspect_type< double >::typesafe_ptr recruitment_diversity_;
-	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_combat_;
-	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_movement_;
 	aspect_type< config >::typesafe_ptr recruitment_instructions_;
 	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_more_;
 	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_pattern_;

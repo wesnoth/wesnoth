@@ -266,12 +266,9 @@ const std::string holder::get_ai_overview()
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
 	s << "leader_ignores_keep:  " << this->ai_->get_leader_ignores_keep() << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
-	s << "number_of_possible_recruits_to_force_recruit:  " << this->ai_->get_number_of_possible_recruits_to_force_recruit() << std::endl;
 	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
 	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
 	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
-	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
-	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;
 	s << "recruitment_more:  " << utils::join(this->ai_->get_recruitment_more()) << std::endl;
