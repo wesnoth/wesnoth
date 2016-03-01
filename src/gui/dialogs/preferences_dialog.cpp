@@ -1235,6 +1235,8 @@ void tpreferences::post_show(twindow& /*window*/)
 {
 	// Handle the font scaling setter only once prefs is closed
 	set_font_scaling(font_scaling_);
+
+	save_hotkeys();
 }
 
 } // end namespace gui2
