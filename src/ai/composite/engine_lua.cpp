@@ -161,14 +161,14 @@ private:
 	bool use_parms_;
 
 	void generate_code(std::string& eval, std::string& exec) {
-		std::string preamble = "local params, data, state = ...\n";
+		std::string preamble = "local self, params, data = ...\n";
 		std::string load = "wesnoth.require(\"" + location_ + "\")";
 		if (use_parms_) {
 			eval = preamble + "return " + load + ":evaluation(ai, {" + eval_parms_ + "}, {data = data})";
 			exec = preamble + load + ":execution(ai, {" + exec_parms_ + "}, {data = data})";
 		} else {
-			eval = preamble + "return " + load + ".evaluation(params, data, state)";
-			exec = preamble + load + ".execution(params, data, state)";
+			eval = preamble + "return " + load + ".evaluation(self, params, data)";
+			exec = preamble + load + ".execution(self, params, data)";
 		}
 	}
 };
