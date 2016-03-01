@@ -24,6 +24,7 @@
 #include "goal.hpp"
 #include "property_handler.hpp"
 #include "stage.hpp"
+#include "ai/configuration.hpp"
 #include "ai/manager.hpp"
 #include "actions/attack.hpp"
 #include "log.hpp"
@@ -210,6 +211,14 @@ config ai_composite::to_config() const
 	}
 
 	return cfg;
+}
+
+config ai_composite::preparse_cfg(ai_context& ctx, const config& cfg)
+{
+	config temp_cfg, parsed_cfg;
+	temp_cfg.add_child("ai", cfg);
+	configuration::parse_side_config(ctx.get_side(), temp_cfg, parsed_cfg);
+	return parsed_cfg;
 }
 
 } //end of namespace ai

@@ -84,9 +84,7 @@ void idle_ai::switch_side(side_number side)
 
 config idle_ai::to_config() const
 {
-	config cfg;
-	cfg["ai_algorithm"]= "idle_ai";
-	return cfg;
+	return config();
 }
 
 
