@@ -115,7 +115,8 @@ public:
 	}
 
 	virtual ai_ptr get_new_instance( ai_context &context, const config &cfg){
-		ai_ptr a(new AI(context,cfg));
+		config preparsed_cfg = AI::preparse_cfg(context, cfg);
+		ai_ptr a(new AI(context,preparsed_cfg));
 		a->on_create();
 		return a;
 	}

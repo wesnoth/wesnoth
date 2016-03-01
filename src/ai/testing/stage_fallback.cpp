@@ -40,15 +40,7 @@ fallback_to_other_ai::fallback_to_other_ai( ai_context &context, const config &c
 
 void fallback_to_other_ai::on_create()
 {
-	config ai_cfg = cfg_.child_or_empty("ai");
-	///@deprecated 1.9.3 backward-compatibility hack - try to update the old default ai config.
-	std::string ai_algorithm = ai_cfg["ai_algorithm"];
-	if ((ai_algorithm.empty()) || (ai_algorithm=="default_ai")) {
-		if (configuration::parse_side_config(get_side(),cfg_,ai_cfg)) {
-				fallback_ai_ = manager::create_transient_ai("", ai_cfg, this);
-		}
-	}
-
+	fallback_ai_ = manager::create_transient_ai(cfg_["type"], cfg_.child_or_empty("params"), this);
 }
 
 
@@ -57,7 +49,8 @@ config fallback_to_other_ai::to_config() const
 	config cfg = stage::to_config();
 
 	if (fallback_ai_) {
-		cfg.add_child("ai",fallback_ai_->to_config());
+		cfg["type"] = cfg_["type"];
+		cfg.add_child("params",fallback_ai_->to_config());
 	}
 	return cfg;
 }

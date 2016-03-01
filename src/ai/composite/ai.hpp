@@ -106,6 +106,8 @@ public:
 	virtual std::string get_id() const;
 	virtual std::string get_name() const;
 	virtual std::string get_engine() const;
+	
+	static config preparse_cfg(ai_context& ctx, const config& cfg);
 
 protected:
 

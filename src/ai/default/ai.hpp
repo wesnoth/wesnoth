@@ -39,6 +39,7 @@ public:
 	void switch_side(side_number side);
 	int get_recursion_count() const;
 	virtual config to_config() const;
+	static config preparse_cfg(ai_context&, const config& cfg) {return cfg;}
 private:
 	recursion_counter recursion_counter_;
 };
