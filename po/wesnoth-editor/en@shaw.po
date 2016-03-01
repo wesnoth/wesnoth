@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2009-10-08 21:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -279,21 +279,25 @@ msgstr ""
 msgid "Recruit: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:183
 msgid "Fatal error"
 msgstr "𐑓𐑱𐑑𐑩𐑤 𐑻𐑹"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:213
 msgid "Do you really want to quit?"
 msgstr "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑒𐑢𐑦𐑑?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:215
+#, fuzzy
+#| msgid ""
+#| "Do you really want to quit? Changes in the map since the last save will "
+#| "be lost."
 msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
+"Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑒𐑢𐑦𐑑? 𐑗𐑱𐑯𐑡𐑩𐑟 𐑦𐑯 𐑞 𐑥𐑨𐑐 𐑕𐑦𐑯𐑕 𐑞 𐑤𐑭𐑕𐑑 𐑕𐑱𐑝 𐑢𐑦𐑤 𐑚𐑰 𐑤𐑪𐑕𐑑."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:217
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -301,117 +305,113 @@ msgstr ""
 "𐑛𐑵 𐑿 𐑮𐑾𐑤𐑦 𐑢𐑪𐑯𐑑 𐑑 𐑒𐑢𐑦𐑑? 𐑞 𐑓𐑪𐑤𐑴𐑦𐑙 𐑥𐑨𐑐𐑕 𐑢𐑻 𐑥𐑪𐑛𐑦𐑓𐑲𐑛 𐑯 𐑷𐑤 𐑗𐑱𐑯𐑡𐑩𐑟 𐑕𐑦𐑯𐑕 𐑞 𐑤𐑭𐑕𐑑 𐑕𐑱𐑝 "
 "𐑢𐑦𐑤 𐑚𐑰 𐑤𐑪𐑕𐑑:"
 
-#: src/editor/controller/editor_controller.cpp:216
-msgid "Quit"
-msgstr "𐑒𐑢𐑦𐑑"
-
 #: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
 msgstr "𐑯𐑴 𐑧𐑛𐑦𐑑𐑹 𐑑𐑲𐑥-𐑝-𐑛𐑱 𐑓𐑬𐑯𐑛."
 
-#: src/editor/controller/editor_controller.cpp:1113
+#: src/editor/controller/editor_controller.cpp:1116
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1114
+#: src/editor/controller/editor_controller.cpp:1117
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1130
+#: src/editor/controller/editor_controller.cpp:1133
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1131
+#: src/editor/controller/editor_controller.cpp:1134
 msgid "Name:"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:306
+#: src/editor/map/context_manager.cpp:308
 msgid "(New Map)"
 msgstr "(𐑯𐑿 𐑥𐑨𐑐)"
 
-#: src/editor/map/context_manager.cpp:193
+#: src/editor/map/context_manager.cpp:195
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
 msgstr "𐑗𐑵𐑟 𐑩 𐑥𐑨𐑐 𐑑 𐑴𐑐𐑩𐑯"
 
-#: src/editor/map/context_manager.cpp:308
+#: src/editor/map/context_manager.cpp:310
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Scenario)"
 msgstr "(𐑯𐑿 𐑥𐑨𐑐)"
 
-#: src/editor/map/context_manager.cpp:335
+#: src/editor/map/context_manager.cpp:337
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:372
+#: src/editor/map/context_manager.cpp:374
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(Unnamed Area)"
 msgstr "(𐑯𐑿 𐑥𐑨𐑐)"
 
-#: src/editor/map/context_manager.cpp:401
+#: src/editor/map/context_manager.cpp:403
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(𐑯𐑿 𐑥𐑨𐑐)"
 
-#: src/editor/map/context_manager.cpp:467
+#: src/editor/map/context_manager.cpp:469
 msgid "Choose a Mask to Apply"
 msgstr "𐑗𐑵𐑟 𐑩 𐑥𐑭𐑕𐑒 𐑑 𐑩𐑐𐑤𐑲"
 
-#: src/editor/map/context_manager.cpp:474
+#: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
 msgstr "𐑻𐑹 𐑤𐑴𐑛𐑦𐑙 𐑥𐑭𐑕𐑒"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:504
+#: src/editor/map/context_manager.cpp:506
 msgid "Choose Target Map"
 msgstr "𐑗𐑵𐑟 𐑑𐑸𐑜𐑧𐑑 𐑥𐑨𐑐"
 
-#: src/editor/map/context_manager.cpp:511
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:950
 msgid "Error loading map"
 msgstr "𐑻𐑹 𐑤𐑴𐑛𐑦𐑙 𐑥𐑨𐑐"
 
-#: src/editor/map/context_manager.cpp:628
+#: src/editor/map/context_manager.cpp:630
 msgid "Save the Map As"
 msgstr "𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐 𐑨𐑟"
 
-#: src/editor/map/context_manager.cpp:632
-#: src/editor/map/context_manager.cpp:660
+#: src/editor/map/context_manager.cpp:634
+#: src/editor/map/context_manager.cpp:662
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "𐑞 𐑓𐑲𐑤 𐑷𐑤𐑮𐑧𐑛𐑦 𐑧𐑒𐑟𐑦𐑕𐑑𐑕. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑴𐑝𐑼𐑮𐑲𐑑 𐑦𐑑?"
 
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:658
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save the Scenario As"
 msgstr "𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐 𐑨𐑟"
 
-#: src/editor/map/context_manager.cpp:695
+#: src/editor/map/context_manager.cpp:697
 msgid "No random map generators found."
 msgstr "𐑯𐑴 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐 𐑡𐑧𐑯𐑻𐑱𐑑𐑻𐑟 𐑓𐑬𐑯𐑛."
 
-#: src/editor/map/context_manager.cpp:709
-#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:710
+#: src/editor/map/context_manager.cpp:714
 msgid "Map creation failed."
 msgstr "𐑥𐑨𐑐 𐑒𐑮𐑰𐑱𐑖𐑩𐑯 𐑓𐑱𐑤𐑛."
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:728
 msgid "Unsaved Changes"
 msgstr "𐑳𐑯𐑕𐑱𐑝𐑛 𐑗𐑱𐑯𐑡𐑩𐑟"
 
-#: src/editor/map/context_manager.cpp:728
+#: src/editor/map/context_manager.cpp:729
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -419,37 +419,37 @@ msgstr "𐑳𐑯𐑕𐑱𐑝𐑛 𐑗𐑱𐑯𐑡𐑩𐑟"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑦𐑕𐑒𐑸𐑛 𐑷𐑤 𐑗𐑱𐑯𐑡𐑩𐑟 𐑿 𐑥𐑱𐑛 𐑑 𐑞 𐑥𐑨𐑐 𐑕𐑦𐑯𐑕 𐑞 𐑤𐑭𐑕𐑑 𐑕𐑱𐑝?"
 
-#: src/editor/map/context_manager.cpp:827
+#: src/editor/map/context_manager.cpp:828
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "𐑞𐑦𐑕 𐑥𐑨𐑐 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑴𐑐𐑩𐑯."
 
-#: src/editor/map/context_manager.cpp:849
-#: src/editor/map/context_manager.cpp:904
+#: src/editor/map/context_manager.cpp:850
+#: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
 msgstr "𐑞𐑦𐑕 𐑥𐑨𐑐 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑴𐑐𐑩𐑯."
 
-#: src/editor/map/context_manager.cpp:870
+#: src/editor/map/context_manager.cpp:871
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "𐑥𐑨𐑐 𐑕𐑱𐑝𐑛."
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:885
 msgid "Map saved."
 msgstr "𐑥𐑨𐑐 𐑕𐑱𐑝𐑛."
 
-#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:928
 msgid "Loaded embedded map data"
 msgstr "𐑤𐑴𐑛𐑩𐑛 𐑧𐑥𐑚𐑧𐑛𐑦𐑛 𐑥𐑨𐑐 𐑛𐑱𐑑𐑩"
 
-#: src/editor/map/context_manager.cpp:930
-#: src/editor/map/context_manager.cpp:944
+#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:943
 msgid "Map loaded from scenario"
 msgstr "𐑥𐑨𐑐 𐑤𐑴𐑛𐑩𐑛 𐑓𐑮𐑪𐑥 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:939
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -457,13 +457,13 @@ msgstr ""
 "𐑤𐑴𐑛𐑩𐑛 𐑮𐑧𐑓𐑼𐑩𐑯𐑕𐑑 𐑥𐑨𐑐 𐑓𐑲𐑤:\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(𐑯𐑿 𐑥𐑨𐑐)"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
@@ -514,11 +514,11 @@ msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐: $msg"
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:386
 msgid "(non-core)"
 msgstr "(𐑯𐑪𐑯-𐑒𐑴𐑮)"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:387
 msgid "Will not work in game without extra care."
 msgstr "𐑢𐑦𐑤 𐑯𐑪𐑑 𐑢𐑻𐑒 𐑦𐑯 𐑜𐑱𐑥 𐑢𐑦𐑞𐑬𐑑 𐑧𐑒𐑕𐑑𐑮𐑩 𐑒𐑺."
 
@@ -530,7 +530,7 @@ msgstr ""
 msgid "BG: "
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:129
+#: src/gui/dialogs/editor/custom_tod.cpp:128
 #, fuzzy
 #| msgid "Choose player"
 msgid "Choose File"
@@ -545,6 +545,9 @@ msgstr "𐑯𐑳𐑯"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr ""
+
+#~ msgid "Quit"
+#~ msgstr "𐑒𐑢𐑦𐑑"
 
 #~ msgid ""
 #~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "

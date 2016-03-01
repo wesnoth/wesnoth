@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-did\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2011-01-09 12:57+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -262,7 +262,7 @@ msgstr "Az orkok áttörik a folyóparti erőd védelmét"
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:183
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:190
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:464
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:273
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:272
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:72
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:391
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:116
@@ -587,7 +587,7 @@ msgstr "Elfoglalod az összes kobold falut"
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:141
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:125
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:187
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:277
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:276
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:76
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:395
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:120
@@ -1556,6 +1556,7 @@ msgid "Taylor"
 msgstr "Taylor"
 
 #. [side]: type=General, id=Taylor
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:165
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:166
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:167
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:168
@@ -1564,46 +1565,45 @@ msgstr "Taylor"
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:171
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:172
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:173
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:174
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:183
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:184
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:185
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:189
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:190
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:191
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:196
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:197
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:198
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:199
 msgid "Night Watchman"
 msgstr "Éjjeliőr"
 
 #. [side]: type=General, id=Taylor
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:175
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:176
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:177
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:178
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:179
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:180
 msgid "Gate Guard"
 msgstr "Kapuőr"
 
 #. [side]: type=General, id=Taylor
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:186
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:193
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:200
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:185
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:192
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:199
 msgid "Head Trainer"
 msgstr "Kiképzőtiszt"
 
 #. [side]: type=General, id=Taylor
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:192
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:191
 msgid "Townperson"
 msgstr "Városlakó"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:269
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:268
 #, fuzzy
 #| msgid "Malin and Darken Volk enter the Mage Lord’s manor"
 msgid "Move Malin and Darken Volk into the Mage Lord’s manor"
 msgstr "Malin és Darken Volk bejut a Mágus Úr kastélyába"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:311
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:310
 msgid ""
 "The stolen book lies within Lord Karres’s manor on the north end of the "
 "city. We cannot defeat the entire city guard, so we must stay hidden as long "
@@ -1618,14 +1618,14 @@ msgstr ""
 "hogy bevegyük az egész várost."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:316
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:315
 msgid ""
 "Note: Only the units you recruit now will be available to you once inside."
 msgstr ""
 "Fontos: csak azokat az egységeket használhatod odabenn, amiket most toborzol."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:334
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:333
 msgid ""
 "Sir! Undead creatures are coming out of the forest! Wake the guard "
 "immediately!"
@@ -1633,22 +1633,22 @@ msgstr ""
 "Uram! Élőholtak bukkantak fel az erdőből! Riadóztassuk az őröket azonnal!"
 
 #. [message]: speaker=Taylor
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:339
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:338
 msgid "To arms, men!"
 msgstr "Emberek, fegyverbe!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:358
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:357
 msgid "Ooouuuh! It burns... burrrrnnns..."
 msgstr "Auuuuuu! Égek... égeeeeek..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:380
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:379
 msgid "What in the name of all demons of hell was this thing?"
 msgstr "Az összes ördögre a pokolban, mi a fene volt ez?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:385
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:384
 msgid ""
 "This was the impact of what is known as holy water among common people. It "
 "is brewed in a complicated and mysterious procedure only known to a few "
@@ -1659,7 +1659,7 @@ msgstr ""
 "használják a feltámasztott lények elleni harcban."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:413
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:412
 msgid "Here is the entrance! Hurry!"
 msgstr "Itt egy bejárat! Gyorsan!"
 
