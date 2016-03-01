@@ -1140,7 +1140,7 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	// Call the function
 	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
 	if (l_obj) {
-		l_obj->store(L, initial_top + 1);
+		l_obj->store(L, -1);
 	}
 
 	lua_settop(L, initial_top);//empty stack
