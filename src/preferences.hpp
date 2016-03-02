@@ -222,6 +222,9 @@ namespace preferences {
 	bool animate_map();
 	void set_animate_map(bool value);
 
+	bool animate_water();
+	void set_animate_water(bool value);
+
 	bool minimap_movement_coding();
 	void toggle_minimap_movement_coding();
 

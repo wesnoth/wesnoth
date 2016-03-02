@@ -143,6 +143,8 @@ public:
 	 */
 	void rebuild_all();
 
+	void rebuild_cache_all();
+
 	/**
 	 * An image variant. The in-memory representation of the [variant]
 	 * WML tag of the [image] WML tag. When an image only has one variant,
@@ -209,7 +211,7 @@ public:
 	 * The rule_image structure represents one such image.
 	 */
 	struct rule_image {
-		rule_image(int layer, int x, int y, bool global_image=false, int center_x=-1, int center_y=-1);
+		rule_image(int layer, int x, int y, bool global_image=false, int center_x=-1, int center_y=-1, bool is_water=false);
 
 		bool is_background() const {
 		return layer < 0 || (layer == 0 && basey < UNITPOS);
@@ -233,6 +235,8 @@ public:
 		/** The position where the center of the image base should be
 		 */
 		int center_x, center_y;
+
+		bool is_water;
 	};
 
 	/**

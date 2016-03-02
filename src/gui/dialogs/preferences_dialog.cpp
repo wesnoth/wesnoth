@@ -573,6 +573,10 @@ void tpreferences::initialize_members(twindow& window)
 	setup_single_toggle("animate_terrains",
 		animate_map(), set_animate_map, window);
 
+	/* ANIMATE WATER */
+	setup_single_toggle("animate_water",
+		animate_water(), set_animate_water, window);
+
 	/* SHOW UNIT STANDING ANIMS */
 	setup_single_toggle("animate_units_standing",
 		show_standing_animations(), set_show_standing_animations, window);

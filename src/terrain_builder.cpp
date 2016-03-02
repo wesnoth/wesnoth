@@ -19,6 +19,7 @@
 
 #include "terrain_builder.hpp"
 
+#include "game_preferences.hpp"
 #include "image.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
@@ -88,14 +89,15 @@ static map_location legacy_difference(const map_location & me, const map_locatio
 terrain_builder::building_ruleset terrain_builder::building_rules_;
 const config* terrain_builder::rules_cfg_ = NULL;
 
-terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy) :
+terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy, bool is_water) :
 	layer(layer),
 	basex(x),
 	basey(y),
 	variants(),
 	global_image(global_image),
 	center_x(cx),
-	center_y(cy)
+	center_y(cy),
+	is_water(is_water)
 {}
 
 terrain_builder::tile::tile() :
@@ -121,6 +123,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 	BOOST_FOREACH(const rule_image_rand& ri, images){
 		bool is_background = ri->is_background();
+		bool animate = (!ri.ri->is_water || preferences::animate_water());
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
@@ -163,6 +166,10 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 			if(variant.random_start)
 				img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
+
+			if (!animate) {
+				img_list.back().pause_animation();
+			}
 
 			if(log) {
 				log->push_back(std::make_pair(&ri, &variant));
@@ -254,6 +261,15 @@ terrain_builder::terrain_builder(const config& level,
 
 	if (m)
 		build_terrains();
+}
+
+void terrain_builder::rebuild_cache_all()
+{
+	for(int x = -2; x <= map().w(); ++x) {
+		for(int y = -2; y <= map().h(); ++y) {
+			tile_map_[map_location(x,y)].rebuild_cache("");
+		}
+	}
 }
 
 void terrain_builder::flush_local_rules()
@@ -684,7 +700,9 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			}
 		}
 
-		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y));
+		bool is_water = img["is_water"].to_bool();
+
+		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y, is_water));
 
 		// Adds the other variants of the image
 		BOOST_FOREACH(const config &variant, img.child_range("variant"))
