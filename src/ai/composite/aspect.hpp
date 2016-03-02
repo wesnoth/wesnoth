@@ -419,13 +419,13 @@ public:
 		, handler_(), code_(), params_(cfg.child_or_empty("args"))
 	{
 		this->name_ = "lua_aspect";
-		if (cfg.has_attribute("value"))
-		{
-			code_ = "return " + cfg["value"].apply_visitor(lua_aspect_visitor());
-		}
-		else if (cfg.has_attribute("code"))
+		if (cfg.has_attribute("code"))
 		{
 			code_ = cfg["code"].str();
+		}
+		else if (cfg.has_attribute("value"))
+		{
+			code_ = "return " + cfg["value"].apply_visitor(lua_aspect_visitor());
 		}
 		else
 		{
