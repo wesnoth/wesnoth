@@ -95,6 +95,9 @@ public:
 	void create_engine(std::vector<engine_ptr> &engines, const config &cfg);
 
 
+	void replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id);
+
+
 	void on_create();
 
 	/**

@@ -139,6 +139,11 @@ public:
 		return children;
 	}
 
+protected:
+	void call_factory(t_ptr_vector& vec, const config& cfg)
+	{
+		factory_(vec, cfg);
+	}
 private:
 	bool do_add(int pos, const config &cfg)
 	{
@@ -146,7 +151,7 @@ private:
 			pos = values_.size();
 		}
 		t_ptr_vector values;
-		factory_(values,cfg);
+		call_factory(values,cfg);
 		int j=0;
 		BOOST_FOREACH(t_ptr b, values ){
 			values_.insert(values_.begin()+pos+j,b);
@@ -164,13 +169,59 @@ private:
 
 
 template<typename T>
+class facets_property_handler : public vector_property_handler<T> {
+	typedef typename vector_property_handler<T>::t_ptr t_ptr;
+	typedef typename vector_property_handler<T>::t_ptr_vector t_ptr_vector;
+public:
+	
+	facets_property_handler(const std::string &property, t_ptr_vector &values, t_ptr& def, boost::function2<void, t_ptr_vector&, const config&> &construction_factory)
+		: vector_property_handler<T>(property, values, construction_factory)
+		, default_(def)
+	{
+	}
+	
+	component* handle_get(const path_element &child)
+	{
+		//* is a special case - 'get the default facet'
+		if (child.id == "*") {
+			return default_.get();
+		}
+		return vector_property_handler<T>::handle_get(child);
+	}
+	
+	bool handle_change(const path_element &child, const config &cfg)
+	{
+		//* is a special case - 'replace the default facet'
+		if (child.id == "*") {
+			t_ptr_vector values;
+			this->call_factory(values,cfg);
+			default_ = values.back();
+			return true;
+		}
+		return vector_property_handler<T>::handle_change(child, cfg);
+	}
+		
+	std::vector<component*> handle_get_children()
+	{
+		std::vector<component*> children = vector_property_handler<T>::handle_get_children();
+		children.push_back(default_.get());
+		return children;
+	}
+	
+private:
+	t_ptr& default_;
+};
+
+
+
+template<typename T>
 class aspect_property_handler : public base_property_handler {
 public:
 	typedef boost::shared_ptr<T> t_ptr;
 	typedef std::map< std::string, t_ptr > aspect_map;
 
-	aspect_property_handler(const std::string &property, aspect_map &aspects)
-		: property_(property), aspects_(aspects)
+	aspect_property_handler(const std::string &property, aspect_map &aspects, boost::function3<void, aspect_map&, const config&, std::string> &construction_factory)
+		: property_(property), aspects_(aspects), factory_(construction_factory)
 	{
 	}
 
@@ -184,9 +235,13 @@ public:
 		return NULL;
 	}
 
-	bool handle_change(const path_element &/*child*/, const config &/*cfg*/)
+	bool handle_change(const path_element &child, const config &cfg)
 	{
-		return false;
+		if (cfg["id"] != child.id || aspects_.find(child.id) == aspects_.end()) {
+			return false;
+		}
+		factory_(aspects_, cfg, child.id);
+		return true;
 	}
 
 	bool handle_add(const path_element &/*child*/, const config &/*cfg*/)
@@ -221,6 +276,7 @@ private:
 
 	const std::string &property_;
 	aspect_map &aspects_;
+	boost::function3<void, aspect_map&, const config&, std::string> factory_;
 
 };
 
@@ -234,9 +290,16 @@ static void register_vector_property(std::map<std::string,property_handler_ptr> 
 }
 
 template<typename X>
-static void register_aspect_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::map< std::string, boost::shared_ptr<X> > &aspects)
+static void register_facets_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::vector< boost::shared_ptr<X> > &values, boost::shared_ptr<X>& def, boost::function2<void, std::vector< boost::shared_ptr<X> >&, const config&> construction_factory)
 {
-	property_handler_ptr handler_ptr = property_handler_ptr(new aspect_property_handler<X>(property,aspects));
+	property_handler_ptr handler_ptr = property_handler_ptr(new facets_property_handler<X>(property,values,def,construction_factory));
+	property_handlers.insert(std::make_pair(property,handler_ptr));
+}
+
+template<typename X>
+static void register_aspect_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::map< std::string, boost::shared_ptr<X> > &aspects, boost::function3<void, std::map< std::string, boost::shared_ptr<X> >&, const config&, std::string> construction_factory)
+{
+	property_handler_ptr handler_ptr = property_handler_ptr(new aspect_property_handler<X>(property,aspects,construction_factory));
 	property_handlers.insert(std::make_pair(property,handler_ptr));
 }
 

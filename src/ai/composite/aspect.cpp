@@ -29,6 +29,7 @@ static lg::log_domain log_ai_aspect("ai/aspect");
 #define ERR_AI_ASPECT LOG_STREAM(err, log_ai_aspect)
 
 aspect::aspect(readonly_context &context, const config &cfg, const std::string &id):
+	time_of_day_(cfg["time_of_day"]),turns_(cfg["turns"]),
 	valid_(false), valid_variant_(false), valid_lua_(false), cfg_(cfg),
 	invalidate_on_turn_start_(cfg["invalidate_on_turn_start"].to_bool(true)),
 	invalidate_on_tod_change_(cfg["invalidate_on_tod_change"].to_bool(true)),
@@ -39,6 +40,7 @@ aspect::aspect(readonly_context &context, const config &cfg, const std::string &
 		DBG_AI_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 		init_readonly_context_proxy(context);
 		redeploy(cfg,id);
+		DBG_AI_ASPECT << "aspect has time_of_day=["<<time_of_day_<<"], turns=["<<turns_<<"]" << std::endl;
 	}
 
 
@@ -122,12 +124,22 @@ config aspect::to_config() const
 	cfg["invalidate_on_tod_change"] = invalidate_on_tod_change_;
 	cfg["invalidate_on_gamestate_change"] = invalidate_on_gamestate_change_;
 	cfg["invalidate_on_minor_gamestate_change"] = invalidate_on_minor_gamestate_change_;
+	if (!time_of_day_.empty()) {
+		cfg["time_of_day"] = time_of_day_;
+	}
+	if (!turns_.empty()) {
+		cfg["turns"] = turns_;
+	}
 	cfg["engine"] = engine_;
 	cfg["name"] = name_;
 	cfg["id"] = id_;
 	return cfg;
 }
 
+bool aspect::active() const
+{
+	return this->is_active(time_of_day_,turns_);
+}
 
 bool aspect::delete_all_facets()
 {

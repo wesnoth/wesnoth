@@ -80,10 +80,13 @@ void ai_composite::on_create()
 	boost::function2<void, std::vector<stage_ptr>&, const config&> factory_stages =
 		boost::bind(&ai::ai_composite::create_stage,*this,_1,_2);
 
+	boost::function3<void, std::map<std::string,aspect_ptr>&, const config&, std::string> factory_aspects =
+		boost::bind(&ai::ai_composite::replace_aspect,*this,_1,_2,_3);
+
 	register_vector_property(property_handlers(),"engine",get_engines(), factory_engines);
 	register_vector_property(property_handlers(),"goal",get_goals(), factory_goals);
 	register_vector_property(property_handlers(),"stage",stages_, factory_stages);
-	register_aspect_property(property_handlers(),"aspect",get_aspects());
+	register_aspect_property(property_handlers(),"aspect",get_aspects(), factory_aspects);
 
 }
 
@@ -103,6 +106,14 @@ void ai_composite::create_goal(std::vector<goal_ptr> &goals, const config &cfg)
 void ai_composite::create_engine(std::vector<engine_ptr> &engines, const config &cfg)
 {
 	engine::parse_engine_from_config(*this,cfg,std::back_inserter(engines));
+}
+
+
+void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id)
+{
+	std::vector<aspect_ptr> temp_aspects;
+	engine::parse_aspect_from_config(*this,cfg,id,std::back_inserter(temp_aspects));
+	aspects[id] = temp_aspects.back();
 }
 
 ai_composite::~ai_composite()

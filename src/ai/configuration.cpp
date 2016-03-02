@@ -202,9 +202,10 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration" << std::endl;
 		cfg.add_child_at("ai",default_config_,0);
 	} else {
-		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, do not applying it" << std::endl;
+		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, not applying it" << std::endl;
 	}
 
+	LOG_AI_CONFIGURATION << "side "<< side << ": expanding simplified aspects into full facets"<< std::endl;
 	expand_simplified_aspects(side, cfg);
 
 	//construct new-style integrated config
@@ -226,9 +227,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
 			continue;
 		}
-		config c = aspect_cfg.child("default");
-		aspect_cfg.clear_children("default");
-		aspect_cfg.add_child("default",c);
+		aspect_cfg.merge_children("default");
 	}
 
 	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
@@ -272,7 +271,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			}
 			config facet_config;
 			facet_config["engine"] = engine;
-			facet_config["name"] = "standard_aspect"; // I believe this can be omitted.
+			facet_config["name"] = "standard_aspect";
 			facet_config["turns"] = turns;
 			facet_config["time_of_day"] = time_of_day;
 			facet_config["value"] = attr.second;
@@ -308,7 +307,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			} else {
 				config facet_config;
 				facet_config["engine"] = engine;
-				facet_config["name"] = "standard_aspect"; // I believe this can be omitted.
+				facet_config["name"] = "standard_aspect";
 				facet_config["turns"] = turns;
 				facet_config["time_of_day"] = time_of_day;
 				facet_config.add_child("value", child.cfg);
@@ -333,6 +332,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			const std::string &aspect = facet_configs.front().first;
 			const config &facet_config = facet_configs.front().second;
 			aspect_configs[aspect]["id"] = aspect; // Will sometimes be redundant assignment
+			aspect_configs[aspect]["name"] = "composite_aspect";
 			aspect_configs[aspect].add_child("facet", facet_config);
 			facet_configs.pop_front();
 		}

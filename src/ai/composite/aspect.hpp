@@ -78,12 +78,9 @@ public:
 	{
 		invalidate();
 	}
-
-
-	virtual bool active() const
-	{
-		return true;
-	}
+	
+	
+	virtual bool active() const;
 
 	virtual std::string get_name() const
 	{ return name_; }
@@ -97,6 +94,9 @@ public:
 	static lg::log_domain& log();
 
 protected:
+	std::string time_of_day_;
+	std::string turns_;
+	
 	mutable bool valid_;
 	mutable bool valid_variant_;
 	mutable bool valid_lua_;
@@ -263,6 +263,7 @@ public:
 		: typesafe_aspect<T>(context, cfg, id)
 		, facets_()
 		, default_()
+		, parent_id_(id)
 	{
 		BOOST_FOREACH(const config &cfg_element, this->cfg_.child_range("facet") ){
 			add_facet(-1,cfg_element);
@@ -271,9 +272,12 @@ public:
 		const config &_default = this->cfg_.child("default");
 		if (_default) {
 			std::vector< aspect_ptr > default_aspects;
-			engine::parse_aspect_from_config(*this,_default,this->get_id(),std::back_inserter(default_aspects));
+			engine::parse_aspect_from_config(*this,_default,parent_id_,std::back_inserter(default_aspects));
 			if (!default_aspects.empty()) {
 				typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> >(default_aspects.front());
+				if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
+					c->parent_id_ = parent_id_;
+				}
 				default_ = b;
 			}
 		}
@@ -281,20 +285,23 @@ public:
 		boost::function2<void, typename aspect_type<T>::typesafe_ptr_vector&, const config&> factory_facets =
                         boost::bind(&ai::composite_aspect<T>::create_facet,*this,_1,_2);
 
-                register_vector_property(this->property_handlers(),"facet",facets_, factory_facets);
+		register_facets_property(this->property_handlers(),"facet",facets_,default_, factory_facets);
 
 	}
 
 
 	void create_facet(  typename aspect_type<T>::typesafe_ptr_vector &facets, const config &cfg)
-        {
+	{
 		std::vector<aspect_ptr> facets_base;
-		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets_base));
+		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets_base));
 		BOOST_FOREACH(aspect_ptr a, facets_base ){
 			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
+				c->parent_id_ = parent_id_;
+			}
 			facets.push_back(b);
 		}
-        }
+	}
 
 
 	virtual void recalculate() const
@@ -307,8 +314,10 @@ public:
 				return;
 			}
 		}
-		this->value_ = boost::shared_ptr<T>(default_->get_ptr());
-		this->valid_ = true;
+		if (default_) {
+			this->value_ = boost::shared_ptr<T>(default_->get_ptr());
+			this->valid_ = true;
+		}
 	}
 
 
@@ -332,10 +341,13 @@ public:
 			pos = facets_.size();
 		}
 		std::vector< aspect_ptr > facets;
-		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets));
+		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets));
 		int j=0;
 		BOOST_FOREACH(aspect_ptr a, facets ){
 			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
+				c->parent_id_ = parent_id_;
+			}
 			facets_.insert(facets_.begin()+pos+j,b);
 			j++;
 		}
@@ -353,6 +365,7 @@ public:
 protected:
 	typename aspect_type<T>::typesafe_ptr_vector facets_;
 	typename aspect_type<T>::typesafe_ptr default_;
+	std::string parent_id_;
 
 };
 
@@ -360,17 +373,12 @@ template<typename T>
 class standard_aspect : public typesafe_aspect<T> {
 public:
 	standard_aspect(readonly_context &context, const config &cfg, const std::string &id)
-		: typesafe_aspect<T>(context, cfg, id), time_of_day_(cfg["time_of_day"]),turns_(cfg["turns"])
+		: typesafe_aspect<T>(context, cfg, id)
 	{
+		this->name_ = "standard_aspect";
 		boost::shared_ptr<T> value(new T(config_value_translator<T>::cfg_to_value(this->cfg_)));
 		this->value_= value;
-		LOG_STREAM(debug, aspect::log()) << "standard aspect has time_of_day=["<<time_of_day_<<"], turns=["<<turns_<<"], and value: "<< std::endl << config_value_translator<T>::value_to_cfg(this->get()) << std::endl;
-	}
-
-
-	virtual bool active() const
-	{
-		return this->is_active(time_of_day_,turns_);
+		LOG_STREAM(debug, aspect::log()) << "standard aspect has value: "<< std::endl << config_value_translator<T>::value_to_cfg(this->get()) << std::endl;
 	}
 
 
@@ -385,14 +393,8 @@ public:
 	{
 		config cfg = aspect::to_config();
 		config_value_translator<T>::value_to_cfg(this->get(),cfg);
-		cfg["time_of_day"] = time_of_day_;
-		cfg["turns"] = turns_;
 		return cfg;
 	}
-
-protected:
-	std::string time_of_day_;
-	std::string turns_;
 
 };
 	
@@ -400,9 +402,9 @@ class lua_aspect_visitor : public boost::static_visitor<std::string> {
 	static std::string quote_string(const std::string& s);
 public:
 	std::string operator()(bool b) const {return b ? "true" : "false";}
-	std::string operator()(int i) const {return quote_string(str_cast(i));}
-	std::string operator()(unsigned long long i) const {return quote_string(str_cast(i));}
-	std::string operator()(double i) const {return quote_string(str_cast(i));}
+	std::string operator()(int i) const {return str_cast(i);}
+	std::string operator()(unsigned long long i) const {return str_cast(i);}
+	std::string operator()(double i) const {return str_cast(i);}
 	std::string operator()(const std::string& s) const {return quote_string(s);}
 	std::string operator()(const t_string& s) const {return quote_string(s.str());}
 	std::string operator()(boost::blank) const {return "nil";}
@@ -416,6 +418,7 @@ public:
 		: typesafe_aspect<T>(context, cfg, id)
 		, handler_(), code_(), params_(cfg.child_or_empty("args"))
 	{
+		this->name_ = "lua_aspect";
 		if (cfg.has_attribute("value"))
 		{
 			code_ = "return " + cfg["value"].apply_visitor(lua_aspect_visitor());
@@ -435,6 +438,7 @@ public:
 	void recalculate() const
 	{
 		this->valid_lua_ = true;
+		this->value_lua_.reset(new lua_object<T>);
 		handler_->handle(params_, true, this->value_lua_);
 	}
 
