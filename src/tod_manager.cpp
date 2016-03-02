@@ -485,6 +485,13 @@ void tod_manager::set_current_time(int time, int area_index) {
 	set_current_time(time, areas_[area_index]);
 }
 
+void tod_manager::set_current_time(int time, const std::string& area_id) {
+	for (area_time_of_day& area : areas_) {
+		if (area.id == area_id)
+			set_current_time(time, area);
+	}
+}
+
 void tod_manager::set_current_time(int time, area_time_of_day& area) {
 	assert(time < static_cast<int>(area.times.size()) );
 	if (area.times[time].lawful_bonus != area.times[area.currentTime].lawful_bonus) {

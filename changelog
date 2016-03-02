@@ -115,6 +115,11 @@ Version 1.13.4+dev:
      (with the exception that it does not outline the hex if true is
      passed as the second argument), but this name change was done to
      emphasize that it acts on a unit, more than a location.
+   * New wesnoth.set_time_of_day function which sets the current time
+     of day, taken either as the time ID (eg "second_watch") or the index
+     of the time in the overall schedule (eg, 1 would be dawn in the default
+     schedule). Optional second argument takes a time area ID, to set
+     local instead of global time.
    * WML tables defined in Lua now accept string keys with array values
      (where "array" is a table whose keys are all integers). This joins
      the elements of the array with commas and produces a single string

@@ -47,6 +47,7 @@ class tod_manager : public savegame::savegame_config
 
 		void set_current_time(int time);
 		void set_current_time(int time, int area_index);
+		void set_current_time(int time, const std::string& area_id);
 		void set_area_id(int area_index, const std::string& id);
 
 		/**

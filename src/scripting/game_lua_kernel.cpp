@@ -4037,6 +4037,52 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 	return 0;
 }
 
+int game_lua_kernel::intf_set_time_of_day(lua_State * L)
+{
+	if(!game_display_) {
+		return 0;
+	}
+	std::string area_id;
+	size_t area_i;
+	if (lua_isstring(L, 2)) {
+		area_id = lua_tostring(L, 1);
+		std::vector<std::string> area_ids = resources::tod_manager->get_area_ids();
+		area_i = std::find(area_ids.begin(), area_ids.end(), area_id) - area_ids.begin();
+		if(area_i >= area_ids.size()) {
+			return luaL_argerror(L, 1, "invalid time area ID");
+		}
+	}
+	int is_num = false;
+	int new_time = lua_tonumberx(L, 1, &is_num) - 1;
+	const std::vector<time_of_day>& times = area_id.empty()
+		? game_display_->get_tod_man().times()
+		: game_display_->get_tod_man().times(area_i);
+	int num_times = times.size();
+	if(!is_num) {
+		std::string time_id = luaL_checkstring(L, 1);
+		new_time = 0;
+		for(const time_of_day& time : times) {
+			if(time_id == time.id) {
+				break;
+			}
+			new_time++;
+		}
+		if(new_time >= num_times) {
+			return luaL_argerror(L, 1, "invalid time of day ID");
+		}
+	}
+	if(new_time < 0 || new_time >= num_times) {
+		return luaL_argerror(L, 1, "invalid time of day index");
+	}
+	
+	if(area_id.empty()) {
+		resources::tod_manager->set_current_time(new_time);
+	} else {
+		resources::tod_manager->set_current_time(new_time, area_i);
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
 	vconfig cfg = luaW_checkvconfig(L, 1);
@@ -4343,6 +4389,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "scroll",                    &dispatch<&game_lua_kernel::intf_scroll                     >        },
 		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
+		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
 		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
 		{ "select_unit",               &dispatch<&game_lua_kernel::intf_select_unit                >        },
 		{ "skip_messages",             &dispatch<&game_lua_kernel::intf_skip_messages              >        },
