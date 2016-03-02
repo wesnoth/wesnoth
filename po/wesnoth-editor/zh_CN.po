@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2015-01-02 13:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team:  Wesnoth Simplified Chinese Team\n"
@@ -276,128 +276,128 @@ msgstr "花费："
 msgid "Recruit: "
 msgstr "征募："
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:183
 msgid "Fatal error"
 msgstr "严重错误"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:213
 msgid "Do you really want to quit?"
 msgstr "您真的想退出吗？"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:215
+#, fuzzy
+#| msgid ""
+#| "Do you really want to quit? Changes in the map since the last save will "
+#| "be lost."
 msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
+"Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr "您真的想退出吗？上次保存之后对地图所作的修改将会全部丢失。"
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:217
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 "您真的想退出吗？以下地图已经被修改，上次保存之后所作的修改将会全部丢失："
 
-#: src/editor/controller/editor_controller.cpp:216
-msgid "Quit"
-msgstr "退出"
-
 #: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
 msgstr "没有找到编辑器的时段设置。"
 
-#: src/editor/controller/editor_controller.cpp:1113
+#: src/editor/controller/editor_controller.cpp:1116
 msgid "Change Unit ID"
 msgstr "变更单位ID"
 
-#: src/editor/controller/editor_controller.cpp:1114
+#: src/editor/controller/editor_controller.cpp:1117
 msgid "ID:"
 msgstr "ID："
 
-#: src/editor/controller/editor_controller.cpp:1130
+#: src/editor/controller/editor_controller.cpp:1133
 msgid "Rename Unit"
 msgstr "单位重命名"
 
-#: src/editor/controller/editor_controller.cpp:1131
+#: src/editor/controller/editor_controller.cpp:1134
 msgid "Name:"
 msgstr "名字："
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:306
+#: src/editor/map/context_manager.cpp:308
 msgid "(New Map)"
 msgstr "（新建地图）"
 
-#: src/editor/map/context_manager.cpp:193
+#: src/editor/map/context_manager.cpp:195
 msgid "Choose a File to Open"
 msgstr "选择要打开的文件"
 
-#: src/editor/map/context_manager.cpp:308
+#: src/editor/map/context_manager.cpp:310
 msgid "(New Scenario)"
 msgstr "（新场景）"
 
-#: src/editor/map/context_manager.cpp:335
+#: src/editor/map/context_manager.cpp:337
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:372
+#: src/editor/map/context_manager.cpp:374
 msgid "(Unnamed Area)"
 msgstr "（未命名区域）"
 
-#: src/editor/map/context_manager.cpp:401
+#: src/editor/map/context_manager.cpp:403
 msgid "(New Side)"
 msgstr "（新阵营）"
 
-#: src/editor/map/context_manager.cpp:467
+#: src/editor/map/context_manager.cpp:469
 msgid "Choose a Mask to Apply"
 msgstr "选择要使用的遮罩"
 
-#: src/editor/map/context_manager.cpp:474
+#: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
 msgstr "读取遮罩时发生错误"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Identifier:"
 msgstr "标识符："
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Rename Area"
 msgstr "区域重命名"
 
-#: src/editor/map/context_manager.cpp:504
+#: src/editor/map/context_manager.cpp:506
 msgid "Choose Target Map"
 msgstr "选择目标地图"
 
-#: src/editor/map/context_manager.cpp:511
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:950
 msgid "Error loading map"
 msgstr "读取地图时发生错误"
 
-#: src/editor/map/context_manager.cpp:628
+#: src/editor/map/context_manager.cpp:630
 msgid "Save the Map As"
 msgstr "地图另存为"
 
-#: src/editor/map/context_manager.cpp:632
-#: src/editor/map/context_manager.cpp:660
+#: src/editor/map/context_manager.cpp:634
+#: src/editor/map/context_manager.cpp:662
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "文件已存在，要覆盖吗？"
 
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:658
 msgid "Save the Scenario As"
 msgstr "场景另存为"
 
-#: src/editor/map/context_manager.cpp:695
+#: src/editor/map/context_manager.cpp:697
 msgid "No random map generators found."
 msgstr "没有找到随机地图生成器。"
 
-#: src/editor/map/context_manager.cpp:709
-#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:710
+#: src/editor/map/context_manager.cpp:714
 msgid "Map creation failed."
 msgstr "创建地图失败。"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:728
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
-#: src/editor/map/context_manager.cpp:728
+#: src/editor/map/context_manager.cpp:729
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -405,33 +405,33 @@ msgstr "未保存的更改"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "您想要放弃上次保存之后所作的修改吗？"
 
-#: src/editor/map/context_manager.cpp:827
+#: src/editor/map/context_manager.cpp:828
 msgid "This scenario is already open."
 msgstr "这一场景已打开。"
 
-#: src/editor/map/context_manager.cpp:849
-#: src/editor/map/context_manager.cpp:904
+#: src/editor/map/context_manager.cpp:850
+#: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
 msgstr "这张地图已经被打开。"
 
-#: src/editor/map/context_manager.cpp:870
+#: src/editor/map/context_manager.cpp:871
 msgid "Scenario saved."
 msgstr "场景已保存。"
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:885
 msgid "Map saved."
 msgstr "地图已保存。"
 
-#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:928
 msgid "Loaded embedded map data"
 msgstr "已读取嵌入的地图数据"
 
-#: src/editor/map/context_manager.cpp:930
-#: src/editor/map/context_manager.cpp:944
+#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:943
 msgid "Map loaded from scenario"
 msgstr "已从场景中读取地图"
 
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:939
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -439,13 +439,13 @@ msgstr ""
 "已读取被引用的地图文件：\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "（新建地图）"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -491,11 +491,11 @@ msgstr "无法保存地图：$msg"
 msgid "(Unknown Group)"
 msgstr "（未知分组）"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:386
 msgid "(non-core)"
 msgstr "（非核心）"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:387
 msgid "Will not work in game without extra care."
 msgstr "除非特别注意，否则不会正常工作。"
 
@@ -507,7 +507,7 @@ msgstr "前景地形："
 msgid "BG: "
 msgstr "背景地形："
 
-#: src/gui/dialogs/editor/custom_tod.cpp:129
+#: src/gui/dialogs/editor/custom_tod.cpp:128
 msgid "Choose File"
 msgstr "选择文件"
 
@@ -518,3 +518,6 @@ msgstr "无"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "玩家 $player_number"
+
+#~ msgid "Quit"
+#~ msgstr "退出"

@@ -1335,7 +1335,9 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			resources::units->erase(loc);
 			resources::units->add(loc, *u);
 
-			resources::game_events->pump().fire("unit placed", loc);
+			if (cfg["fire_event"].to_bool(false)) {
+				resources::game_events->pump().fire("unit placed", loc);
+			}
 
 			config::attribute_value text = var["gender"].str() == "female" ? cfg["female_text"] : cfg["male_text"];
 			if(text.blank()) {

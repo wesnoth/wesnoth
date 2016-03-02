@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2014-10-30 11:43+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -109,12 +109,12 @@ msgstr ""
 "nalezené problémy hlašte."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:65
+#: data/multiplayer/eras.lua:921
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Strana %d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:937
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -123,12 +123,12 @@ msgstr ""
 "jednotek = %d  Zlato = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:937
 msgid "Grand total: <b>%d</b>"
 msgstr "Celkový součet: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:91
+#: data/multiplayer/eras.lua:947
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground='%s'>Strana %d</span> má výhodu."
 
@@ -1006,98 +1006,53 @@ msgstr ""
 "\n"
 "Poznámka: Aby scénář fungoval správně, je zapotřebí použít nastavení z mapy."
 
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:371
-msgid ""
-"The screams and pleas for mercy are finally silenced, as you remove your "
-"blood soaked blade from the last of the rebels. There will be no more "
-"resistance from the local scum. Your reign has finally earned stability."
-msgstr ""
-"Výkřiky a prosby o milost konečně utichají, když vytahuješ potřísněnou čepel "
-"z posledního rebela. Místní chátra se již neodváží stavět na odpor. Konečně "
-"zažije tvá vláda období klidu."
-
-#. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:703
-msgid ""
-"The last and most powerful of these creatures are almost upon us. I feel "
-"that if we can finish them off in time, we shall be victorious."
-msgstr ""
-"Poslední a nejnebezpečnější tvorové jsou již skoro u nás. Cítím, že když je "
-"dokážeme porazit rychle, zvítězíme."
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:870
-msgid "Heavy Snowfall"
-msgstr "Sněhová vánice"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:880
-msgid "Snowfall"
-msgstr "Sníh"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:896
-msgid "Heavy Rains"
-msgstr "Přívalové deště"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:906
-msgid "Drought"
-msgstr "Sucho"
-
-#. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:915
-msgid "Clear Weather"
-msgstr "Slunečno"
-
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1042
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:19
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:32
 msgid "teamname^Revolt"
 msgstr "Povstalci"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1061
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1078
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:51
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:68
 msgid "teamname^Human"
 msgstr "Lidé"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1233
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:100
 msgid "Death of your leader"
 msgstr "Tvůj vůdce zemře"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1234
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:101
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr "Tvůj tým má pouze jednoho vůdce, nepřátelské vlny tedy budou oslabeny."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1237
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:104
 msgid "Death of both of your team’s leaders"
 msgstr "Vůdci obou tvých týmů zemřou"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1238
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "Tvůj tým má dva vůdce, takže nepřátelské vlny zaútočí v plné síle."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1259
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:126
 msgid "Survive and defeat all enemy waves"
 msgstr "Přežij a poraz všechny nepřátelské útoky"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1279
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Temná předpověď - náhodný přežívací scénář"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1284
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1141,12 +1096,12 @@ msgstr ""
 "• kódování WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1304
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:171
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Takže toto je to prokleté údolí. Země, kterou zabereme."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1308
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:175
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1157,14 +1112,14 @@ msgstr ""
 "tato země přichystá."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1312
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:179
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "Zjistíme, kdo a co na nás čeká, a naučíme je nestavět se nám na odpor."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1349
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:198
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -1172,7 +1127,7 @@ msgstr ""
 "Ech! Je to možné? Porazili mě takovíto barbaři, mí bozi mne museli opustit..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1363
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:212
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1181,7 +1136,7 @@ msgstr ""
 "nepřátel. Jejich radost tě na poslední okamžik plní nejčistší nenávistí."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1385
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:234
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -2356,6 +2311,37 @@ msgid ""
 msgstr ""
 "Test rychlosti Wesnothu, použij --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid ""
+#~ "The screams and pleas for mercy are finally silenced, as you remove your "
+#~ "blood soaked blade from the last of the rebels. There will be no more "
+#~ "resistance from the local scum. Your reign has finally earned stability."
+#~ msgstr ""
+#~ "Výkřiky a prosby o milost konečně utichají, když vytahuješ potřísněnou "
+#~ "čepel z posledního rebela. Místní chátra se již neodváží stavět na odpor. "
+#~ "Konečně zažije tvá vláda období klidu."
+
+#~ msgid ""
+#~ "The last and most powerful of these creatures are almost upon us. I feel "
+#~ "that if we can finish them off in time, we shall be victorious."
+#~ msgstr ""
+#~ "Poslední a nejnebezpečnější tvorové jsou již skoro u nás. Cítím, že když "
+#~ "je dokážeme porazit rychle, zvítězíme."
+
+#~ msgid "Heavy Snowfall"
+#~ msgstr "Sněhová vánice"
+
+#~ msgid "Snowfall"
+#~ msgstr "Sníh"
+
+#~ msgid "Heavy Rains"
+#~ msgstr "Přívalové deště"
+
+#~ msgid "Drought"
+#~ msgstr "Sucho"
+
+#~ msgid "Clear Weather"
+#~ msgstr "Slunečno"
 
 #, fuzzy
 #~| msgid "Random map"

@@ -474,8 +474,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 			pw = pw->parent();
 		}
 		ERR_GUI_L << LOG_HEADER << out.str() << ".\n";
-		// This shouldn't be possible...
-		assert(false);
+
 		return;
 	}
 

@@ -203,6 +203,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	mouseoverHex_(),
 	keys_(),
 	animate_map_(true),
+	animate_water_(true),
 	flags_(),
 	activeTeam_(0),
 	drawing_buffer_(),
@@ -2768,6 +2769,12 @@ void display::draw(bool update,bool force) {
 		dirty_ = false;
 		redraw_everything();
 		return;
+	}
+
+	// Trigger cache rebuild when preference gets changed
+	if (animate_water_ != preferences::animate_water()) {
+		animate_water_ = preferences::animate_water();
+		builder_->rebuild_cache_all();
 	}
 
 	set_scontext_unsynced leave_synced_context;

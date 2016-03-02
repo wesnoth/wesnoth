@@ -58,29 +58,19 @@ hotkey::hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id)
 	video.flip();
 	SDL_Event event;
 	event.type = 0;
-	int keycode  = -1, mod    = -1;
-
-	while ( event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
-			&& event.type  != SDL_JOYHATMOTION
-			&& (event.type != SDL_MOUSEBUTTONDOWN )
-	)
-		SDL_PollEvent(&event);
-#if SDL_VERSION_ATLEAST(2,0,0)
-	events::peek_for_resize();
-#endif
+	int keycode = -1;
 
 	do {
 		switch (event.type) {
 
 		case SDL_KEYDOWN:
 			keycode = event.key.keysym.sym;
-			mod = event.key.keysym.mod;
 			break;
 		}
 
 		SDL_PollEvent(&event);
 #if SDL_VERSION_ATLEAST(2,0,0)
-	events::peek_for_resize();
+		events::peek_for_resize();
 #endif
 
 	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2011-05-09 09:23+0100\n"
 "Last-Translator: Niklas Bolmdahl <wesnoth@niklas.bolmdahl.se>\n"
 "Language-Team: Swedish\n"
@@ -87,24 +87,24 @@ msgid ""
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:65
+#: data/multiplayer/eras.lua:921
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:937
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:937
 msgid "Grand total: <b>%d</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:91
+#: data/multiplayer/eras.lua:947
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr ""
 
@@ -931,104 +931,59 @@ msgstr ""
 "Notera: Du behöver använda kartinställningar för att detta scenario ska "
 "fungera korrekt."
 
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:371
-msgid ""
-"The screams and pleas for mercy are finally silenced, as you remove your "
-"blood soaked blade from the last of the rebels. There will be no more "
-"resistance from the local scum. Your reign has finally earned stability."
-msgstr ""
-"Skriken och bönerna efter nåd tystnar till slut, när du lösgör ditt "
-"blodfläckade svärd från den sista av rebellerna. Det här packet kommer inte "
-"att orsaka mer problem. Ditt styre får äntligen sitt grepp."
-
-#. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:703
-msgid ""
-"The last and most powerful of these creatures are almost upon us. I feel "
-"that if we can finish them off in time, we shall be victorious."
-msgstr ""
-"De sista och mäktigaste av dessa varelser är snart här. Om vi kan dräpa dem "
-"i tid, så kommer vi att segra."
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:870
-msgid "Heavy Snowfall"
-msgstr "Kraftigt snöfall"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:880
-msgid "Snowfall"
-msgstr "Snöfall"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:896
-msgid "Heavy Rains"
-msgstr "Ösregn"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:906
-msgid "Drought"
-msgstr "Torka"
-
-#. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:915
-msgid "Clear Weather"
-msgstr "Klart väder"
-
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1042
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:19
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:32
 msgid "teamname^Revolt"
 msgstr "Uppror"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1061
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1078
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:51
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:68
 msgid "teamname^Human"
 msgstr "Människa"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1233
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:100
 #, fuzzy
 #| msgid "Death of your team leaders"
 msgid "Death of your leader"
 msgstr "Dina lags ledare dör"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1234
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:101
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1237
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:104
 #, fuzzy
 #| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
 msgstr "Dina lags ledare dör"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1238
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1259
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:126
 #, fuzzy
 #| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
 msgstr "Överlev alla fiendeattacker"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1279
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Vädrets makter - ett slumpmässigt överlevnadsscenario"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1284
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
 #, fuzzy
 #| msgid ""
 #| "Your aim is to survive the spawning waves and defeat the final arch-"
@@ -1100,12 +1055,12 @@ msgstr ""
 "- WML-implementation "
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1304
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:171
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Så detta är den fördömda dalen - alldeles öppet för oss att ta över."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1308
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:175
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1116,7 +1071,7 @@ msgstr ""
 "överraskningar vi kan möta här."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1312
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:179
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1125,7 +1080,7 @@ msgstr ""
 "mot vårt anspråk."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1349
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:198
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -1134,7 +1089,7 @@ msgstr ""
 "övergivit mig..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1363
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:212
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1143,7 +1098,7 @@ msgstr ""
 "glädje fyller dina sista ögonblick med brännande hat."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1385
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:234
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -2305,6 +2260,37 @@ msgid ""
 msgstr ""
 "För denna prestandamätning, använd flaggorna --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid ""
+#~ "The screams and pleas for mercy are finally silenced, as you remove your "
+#~ "blood soaked blade from the last of the rebels. There will be no more "
+#~ "resistance from the local scum. Your reign has finally earned stability."
+#~ msgstr ""
+#~ "Skriken och bönerna efter nåd tystnar till slut, när du lösgör ditt "
+#~ "blodfläckade svärd från den sista av rebellerna. Det här packet kommer "
+#~ "inte att orsaka mer problem. Ditt styre får äntligen sitt grepp."
+
+#~ msgid ""
+#~ "The last and most powerful of these creatures are almost upon us. I feel "
+#~ "that if we can finish them off in time, we shall be victorious."
+#~ msgstr ""
+#~ "De sista och mäktigaste av dessa varelser är snart här. Om vi kan dräpa "
+#~ "dem i tid, så kommer vi att segra."
+
+#~ msgid "Heavy Snowfall"
+#~ msgstr "Kraftigt snöfall"
+
+#~ msgid "Snowfall"
+#~ msgstr "Snöfall"
+
+#~ msgid "Heavy Rains"
+#~ msgstr "Ösregn"
+
+#~ msgid "Drought"
+#~ msgstr "Torka"
+
+#~ msgid "Clear Weather"
+#~ msgstr "Klart väder"
 
 #, fuzzy
 #~| msgid "Random map"

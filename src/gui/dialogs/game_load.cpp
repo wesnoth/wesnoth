@@ -42,6 +42,7 @@
 #include "preferences_display.hpp"
 #include "savegame.hpp"
 #include "utils/foreach.tpp"
+#include "serialization/string_utils.hpp"
 
 #include <cctype>
 #include <boost/bind.hpp>
@@ -176,7 +177,9 @@ void tgame_load::fill_game_list(twindow& window,
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = game.name();
+		std::string name = game.name();
+		utils::ellipsis_truncate(name, 50);
+		item["label"] = name;
 		data.insert(std::make_pair("filename", item));
 
 		item["label"] = game.format_time_summary();

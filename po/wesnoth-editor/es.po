@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2015-10-31 16:22+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -281,23 +281,27 @@ msgstr "Coste: "
 msgid "Recruit: "
 msgstr "Reclutas: "
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:183
 msgid "Fatal error"
 msgstr "Error grave"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:213
 msgid "Do you really want to quit?"
 msgstr "¿Realmente desea salir?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:215
+#, fuzzy
+#| msgid ""
+#| "Do you really want to quit? Changes in the map since the last save will "
+#| "be lost."
 msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
+"Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "¿Realmente desea salir? Se perderán los cambios realizados en el mapa desde "
 "la última vez que lo guardó."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:217
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -305,107 +309,103 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios realizados en los siguientes "
 "mapas desde la última vez que los guardó:"
 
-#: src/editor/controller/editor_controller.cpp:216
-msgid "Quit"
-msgstr "Salir"
-
 #: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
 msgstr "No se encontraron datos de la «hora del día» para el editor."
 
-#: src/editor/controller/editor_controller.cpp:1113
+#: src/editor/controller/editor_controller.cpp:1116
 msgid "Change Unit ID"
 msgstr "Cambiar el ID de la unidad"
 
-#: src/editor/controller/editor_controller.cpp:1114
+#: src/editor/controller/editor_controller.cpp:1117
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1130
+#: src/editor/controller/editor_controller.cpp:1133
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/editor/controller/editor_controller.cpp:1131
+#: src/editor/controller/editor_controller.cpp:1134
 msgid "Name:"
 msgstr "Nombre:"
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:306
+#: src/editor/map/context_manager.cpp:308
 msgid "(New Map)"
 msgstr "(Nuevo mapa)"
 
-#: src/editor/map/context_manager.cpp:193
+#: src/editor/map/context_manager.cpp:195
 msgid "Choose a File to Open"
 msgstr "Seleccionar un archivo para cargar"
 
-#: src/editor/map/context_manager.cpp:308
+#: src/editor/map/context_manager.cpp:310
 msgid "(New Scenario)"
 msgstr "(Nuevo escenario)"
 
-#: src/editor/map/context_manager.cpp:335
+#: src/editor/map/context_manager.cpp:337
 msgid "No Recent Files"
 msgstr "Sin archivos recientes"
 
-#: src/editor/map/context_manager.cpp:372
+#: src/editor/map/context_manager.cpp:374
 msgid "(Unnamed Area)"
 msgstr "(Área sin nombre)"
 
-#: src/editor/map/context_manager.cpp:401
+#: src/editor/map/context_manager.cpp:403
 msgid "(New Side)"
 msgstr "(Nuevo bando)"
 
-#: src/editor/map/context_manager.cpp:467
+#: src/editor/map/context_manager.cpp:469
 msgid "Choose a Mask to Apply"
 msgstr "Seleccionar una máscara para aplicar"
 
-#: src/editor/map/context_manager.cpp:474
+#: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Identifier:"
 msgstr "Identificador:"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Rename Area"
 msgstr "Renombrar área"
 
-#: src/editor/map/context_manager.cpp:504
+#: src/editor/map/context_manager.cpp:506
 msgid "Choose Target Map"
 msgstr "Seleccionar mapa de destino"
 
-#: src/editor/map/context_manager.cpp:511
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:950
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor/map/context_manager.cpp:628
+#: src/editor/map/context_manager.cpp:630
 msgid "Save the Map As"
 msgstr "Guardar el mapa como"
 
-#: src/editor/map/context_manager.cpp:632
-#: src/editor/map/context_manager.cpp:660
+#: src/editor/map/context_manager.cpp:634
+#: src/editor/map/context_manager.cpp:662
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:658
 msgid "Save the Scenario As"
 msgstr "Guardar el escenario como"
 
-#: src/editor/map/context_manager.cpp:695
+#: src/editor/map/context_manager.cpp:697
 msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapas aleatorios."
 
-#: src/editor/map/context_manager.cpp:709
-#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:710
+#: src/editor/map/context_manager.cpp:714
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:728
 msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
-#: src/editor/map/context_manager.cpp:728
+#: src/editor/map/context_manager.cpp:729
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -415,33 +415,33 @@ msgstr ""
 "¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
 "por última vez?"
 
-#: src/editor/map/context_manager.cpp:827
+#: src/editor/map/context_manager.cpp:828
 msgid "This scenario is already open."
 msgstr "Este escenario ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:849
-#: src/editor/map/context_manager.cpp:904
+#: src/editor/map/context_manager.cpp:850
+#: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
 msgstr "Este mapa ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:870
+#: src/editor/map/context_manager.cpp:871
 msgid "Scenario saved."
 msgstr "Escenario guardado."
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:885
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:928
 msgid "Loaded embedded map data"
 msgstr "Cargado los datos de mapa incrustados"
 
-#: src/editor/map/context_manager.cpp:930
-#: src/editor/map/context_manager.cpp:944
+#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:943
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:939
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -449,13 +449,13 @@ msgstr ""
 "Cargado el archivo de mapa indicado:\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nuevo mapa)"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -502,11 +502,11 @@ msgstr "No se pudo guardar el mapa: $msg"
 msgid "(Unknown Group)"
 msgstr "(Grupo desconocido)"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:386
 msgid "(non-core)"
 msgstr "(no principal)"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:387
 msgid "Will not work in game without extra care."
 msgstr "No funcionará en un juego sin atención adicional."
 
@@ -518,7 +518,7 @@ msgstr "Primer plano: "
 msgid "BG: "
 msgstr "Fondo: "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:129
+#: src/gui/dialogs/editor/custom_tod.cpp:128
 msgid "Choose File"
 msgstr "Seleccionar un archivo"
 
@@ -529,6 +529,9 @@ msgstr "Ninguno"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Jugador $player_number"
+
+#~ msgid "Quit"
+#~ msgstr "Salir"
 
 #~ msgid ""
 #~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "

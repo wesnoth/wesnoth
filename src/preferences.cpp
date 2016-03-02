@@ -864,6 +864,11 @@ bool animate_map()
 	return preferences::get("animate_map", true);
 }
 
+bool animate_water()
+{
+	return preferences::get("animate_water", true);
+}
+
 bool minimap_movement_coding()
 {
 	return preferences::get("minimap_movement_coding", true);
@@ -917,6 +922,11 @@ void toggle_minimap_draw_terrain()
 void set_animate_map(bool value)
 {
 	set("animate_map", value);
+}
+
+void set_animate_water(bool value)
+{
+	set("animate_water", value);
 }
 
 bool show_standing_animations()

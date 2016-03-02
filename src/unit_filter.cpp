@@ -116,12 +116,6 @@ public:
 		, cond_children_()
 		, cond_child_types_()
 	{
-		// We don't support name= becasue it causes OOS since it depends on the translations
-		// It is for example possible that 2 units have the same name in one lanugage but not in another
-		// Also note that translations are currently broken in mp (see this http://gna.org/bugs/?22918 and related bugreports)
-		if (!vcfg["name"].empty()) {
-			ERR_CF << "'name' is not supported in standard unit filters - use 'id' or 'role' instead.\n";
-		}
 		// Handle [and], [or], and [not] with in-order precedence
 		vconfig::all_children_iterator cond = vcfg.ordered_begin();
 		vconfig::all_children_iterator cond_end = vcfg.ordered_end();
@@ -237,6 +231,10 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 
 bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_location& loc) const
 {
+	if (!vcfg["name"].blank() && vcfg["name"].t_str() != u.name()) {
+		return false;
+	}
+
 	if (!vcfg["id"].empty()) {
 		std::vector<std::string> id_list = utils::split(vcfg["id"]);
 		if (std::find(id_list.begin(), id_list.end(), u.id()) == id_list.end()) {
