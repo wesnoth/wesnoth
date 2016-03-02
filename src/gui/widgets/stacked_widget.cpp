@@ -153,4 +153,10 @@ unsigned int tstacked_widget::get_layer_count() const
 	return generator_->get_item_count();
 }
 
+tgrid* tstacked_widget::get_layer_grid(unsigned int i)
+{
+	assert(generator_);
+	return &generator_->item(i);
+}
+
 } // namespace gui2

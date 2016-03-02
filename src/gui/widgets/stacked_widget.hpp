@@ -68,6 +68,8 @@ public:
 	 */
 	unsigned int get_layer_count() const;
 
+	tgrid* get_layer_grid(unsigned int i);
+
 private:
 	/**
 	 * Finishes the building initialization of the widget.
