@@ -138,6 +138,9 @@ as explained below. Only these additional options can follow
 runs the game without any delays for graphic benchmarking. This is automatically enabled by
 .BR --nogui .
 .TP
+.B --noaddons
+disables loading of user addons.
+.TP
 .B --nocache
 disables caching of game data.
 .TP
@@ -195,6 +198,9 @@ validation errors are treated as fatal errors.
 .TP
 .B -t, --test
 runs the game in a small test scenario.
+.TP
+.B -u <scenario id>
+runs the specified test scenario as a unit test.
 .TP
 .BI --userconfig-dir \ name
 sets the user configuration directory to
