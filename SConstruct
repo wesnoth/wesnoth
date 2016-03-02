@@ -223,6 +223,7 @@ You can make the following special build targets:
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
     binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
     wesnoth-bundle = make Mac OS application bundle from game (*)
+    windows-installer = create Windows distribution with NSIS (*)
     sanity-check = run a pre-release sanity check on the distribution.
     manual = regenerate English-language manual and, possibly, localized manuals if appropriate xmls exist.
 
