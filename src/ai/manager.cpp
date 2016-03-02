@@ -27,6 +27,7 @@
 #include "map/location.hpp"       // for map_location
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
+#include "tod_manager.hpp"
 
 #include "composite/ai.hpp"             // for ai_composite
 #include "composite/component.hpp"      // for component_manager
@@ -329,6 +330,7 @@ manager::AI_map_of_stacks manager::ai_map_;
 game_info *manager::ai_info_;
 events::generic_event manager::user_interact_("ai_user_interact");
 events::generic_event manager::sync_network_("ai_sync_network");
+events::generic_event manager::tod_changed_("ai_tod_changed");
 events::generic_event manager::gamestate_changed_("ai_gamestate_changed");
 events::generic_event manager::turn_started_("ai_turn_started");
 events::generic_event manager::recruit_list_changed_("ai_recruit_list_changed");
@@ -380,6 +382,16 @@ void manager::remove_gamestate_observer(events::observer* event_observer){
 	gamestate_changed_.detach_handler(event_observer);
 	turn_started_.detach_handler(event_observer);
 	map_changed_.detach_handler(event_observer);
+}
+
+
+void manager::add_tod_changed_observer( events::observer* event_observer){
+	tod_changed_.attach_handler(event_observer);
+}
+
+
+void manager::remove_tod_changed_observer(events::observer* event_observer){
+	tod_changed_.detach_handler(event_observer);
 }
 
 
@@ -444,6 +456,11 @@ void manager::raise_sync_network() {
 
 void manager::raise_gamestate_changed() {
 	gamestate_changed_.notify_observers();
+}
+
+
+void manager::raise_tod_changed() {
+	tod_changed_.notify_observers();
 }
 
 
@@ -791,6 +808,9 @@ void manager::play_turn( side_number side ){
 	interface& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai turn");
 	raise_turn_started();
+	if (resources::tod_manager->has_tod_bonus_changed()) {
+		raise_tod_changed();
+	}
 	ai_obj.new_turn();
 	ai_obj.play_turn();
 	const int turn_end_time= SDL_GetTicks();
