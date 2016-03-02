@@ -47,11 +47,9 @@ void replace_space2underbar(std::string &name) {
 }
 
 /** Replace the spaces in the filter */
-std::string replace_filter(const std::string* filter)
+std::string replace_space_for_filter(const std::string &filter)
 {
-    std::string filter_value = *filter;
-    std::string filter_replaced;
-    std::copy(filter_value.begin(), filter_value.end(), filter_replaced.begin());
+    std::string filter_replaced(filter.begin(), filter.end());
     replace_space2underbar(filter_replaced);
     return filter_replaced;
 }
@@ -179,7 +177,7 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 
 	if (filter) {
 		filenames.erase(std::remove_if(filenames.begin(), filenames.end(),
-                                               filename_filter(replace_filter(filter))),
+                                               filename_filter(replace_space_for_filter(*filter))),
                                 filenames.end());
 	}
 

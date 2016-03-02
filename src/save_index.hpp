@@ -100,6 +100,5 @@ extern save_index_class save_index_manager;
 
 void replace_underbar2space(std::string &name);
 void replace_space2underbar(std::string &name);
-std::string replace_filter(const std::string* filter);
 
 #endif
