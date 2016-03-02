@@ -58,11 +58,13 @@ void show_transient_message(CVideo& video,
 							const std::string& message,
 							const std::string& image,
 							const bool message_use_markup,
-							const bool title_use_markup)
+							const bool title_use_markup,
+							const bool restore_background)
 {
 	ttransient_message dlg(
 			title, title_use_markup, message, message_use_markup, image);
 
+	dlg.set_restore(restore_background);
 	dlg.show(video);
 }
 

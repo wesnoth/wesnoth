@@ -385,7 +385,8 @@ void tpreferences::add_friend_list_entry(const bool is_friend,
 		add_ignore(username, reason) ;
 
 	if (!added_sucessfully) {
-		gui2::show_transient_error_message(window.video(), _("Invalid username"));
+		gui2::show_transient_message(window.video(),  _("Error"), _("Invalid username"),
+				std::string(), false, false, true);
 		return;
 	}
 
@@ -1003,7 +1004,8 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 
 void tpreferences::default_hotkey_callback(twindow& window)
 {
-	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
+	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
+			std::string(), false, false, true);
 	clear_hotkeys();
 	setup_hotkey_list(window);
 	window.invalidate_layout();
