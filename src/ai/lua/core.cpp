@@ -1087,6 +1087,8 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 }
 
 
+int lua_ai_load::refcount = 0;
+
 lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L)
 {
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey))); // [-1: key]
@@ -1100,13 +1102,18 @@ lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L)
 	lua_pushboolean(L, read_only); // [-1: value  -2: key  -3: AI functions  -4: AI state]
 	lua_rawset(L, -3); // [-1: AI functions  -2: AI state]
 	lua_setglobal(L, "ai"); // [-1: AI state]
+	
+	refcount++;
 }
 
 lua_ai_load::~lua_ai_load()
 {
-	// Remove the AI functions from the global scope
-	lua_pushnil(L);
-	lua_setglobal(L, "ai");
+	refcount--;
+	if (refcount == 0) {
+		// Remove the AI functions from the global scope
+		lua_pushnil(L);
+		lua_setglobal(L, "ai");
+	}
 }
 
 lua_ai_context::~lua_ai_context()

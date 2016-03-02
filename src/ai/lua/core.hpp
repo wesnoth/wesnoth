@@ -58,6 +58,7 @@ public:
 class lua_ai_load
 {
 	lua_State* L;
+	static int refcount;
 public:
 	lua_ai_load(lua_ai_context& ctx, bool read_only);
 	~lua_ai_load();
