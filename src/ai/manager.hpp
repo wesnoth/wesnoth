@@ -203,6 +203,12 @@ public:
 
 
 	/**
+	 * Notifies all observers of 'ai_tod_changed' event.
+	 */
+	static void raise_tod_changed();
+
+
+	/**
 	 * Notifies all observers of 'ai_recruit_list_changed' event.
 	 */
 	static void raise_recruit_list_changed();
@@ -239,6 +245,12 @@ public:
 
 
 	/**
+	 * Adds an observer of 'ai_tod_changed' event.
+	 */
+	static void add_tod_changed_observer( events::observer* event_observer );
+
+
+	/**
 	 * Deletes an observer of 'ai_map_changed' event.
 	 */
 	static void remove_map_changed_observer( events::observer* event_observer );
@@ -255,6 +267,12 @@ public:
 	 * Deletes an observer of 'ai_turn_started' event.
 	 */
 	static void remove_turn_started_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'ai_tod_changed' event.
+	 */
+	static void remove_tod_changed_observer( events::observer* event_observer );
 
 
 private:
@@ -467,6 +485,7 @@ private:
 	static events::generic_event recruit_list_changed_;
 	static events::generic_event user_interact_;
 	static events::generic_event sync_network_;
+	static events::generic_event tod_changed_;
 	static events::generic_event gamestate_changed_;
 	static events::generic_event turn_started_;
 	static int last_interact_;

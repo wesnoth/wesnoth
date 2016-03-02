@@ -50,8 +50,7 @@ aspect::~aspect()
 			manager::remove_turn_started_observer(this);
 		}
 		if (invalidate_on_tod_change_) {
-			///@todo 1.9 add tod_changed_observer
-			//manager::remove_tod_changed_observer(this);
+			manager::remove_tod_changed_observer(this);
 		}
 		if (invalidate_on_gamestate_change_) {
 			manager::remove_gamestate_observer(this);
@@ -77,8 +76,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 		manager::remove_turn_started_observer(this);
 	}
 	if (invalidate_on_tod_change_) {
-		///@todo 1.9 add tod_changed_observer
-		//manager::remove_tod_changed_observer(this);
+		manager::remove_tod_changed_observer(this);
 	}
 	if (invalidate_on_gamestate_change_) {
 		manager::remove_gamestate_observer(this);
@@ -104,8 +102,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 		manager::add_turn_started_observer(this);
 	}
 	if (invalidate_on_tod_change_) {
-		///@todo 1.9 add tod_changed_observer
-		//manager::add_tod_changed_observer(this);
+		manager::add_tod_changed_observer(this);
 	}
 	if (invalidate_on_gamestate_change_) {
 		manager::add_gamestate_observer(this);
