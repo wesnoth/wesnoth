@@ -64,7 +64,7 @@ public:
 	virtual ~base_property_handler() {}
 
 	virtual component* handle_get(const path_element &child) = 0;
-	virtual bool handle_change(const path_element &child, const config &cfg) = 0;
+	virtual bool handle_change(const path_element &child, config cfg) = 0;
 	virtual bool handle_add(const path_element &child, const config &cfg) = 0;
 	virtual bool handle_delete(const path_element &child) = 0;
 	virtual std::vector< component* > handle_get_children() = 0;
@@ -90,10 +90,13 @@ public:
 		}
 		return NULL;
 	}
-	bool handle_change(const path_element &child, const config &cfg)
+	bool handle_change(const path_element &child, config cfg)
 	{
 		if (!handle_delete(child)) {
 			return false;
+		}
+		if (!cfg.has_attribute("id")) {
+			cfg["id"] = child.id;
 		}
 
 		return handle_add(child,cfg);
@@ -189,7 +192,7 @@ public:
 		return vector_property_handler<T>::handle_get(child);
 	}
 	
-	bool handle_change(const path_element &child, const config &cfg)
+	bool handle_change(const path_element &child, config cfg)
 	{
 		//* is a special case - 'replace the default facet'
 		if (child.id == "*") {
@@ -235,11 +238,15 @@ public:
 		return NULL;
 	}
 
-	bool handle_change(const path_element &child, const config &cfg)
+	bool handle_change(const path_element &child, config cfg)
 	{
-		if (cfg["id"] != child.id || aspects_.find(child.id) == aspects_.end()) {
+		if (aspects_.find(child.id) == aspects_.end()) {
 			return false;
 		}
+		if (!cfg.has_attribute("name")) {
+			cfg["name"] = "composite_aspect";
+		}
+		cfg["id"] = child.id;
 		factory_(aspects_, cfg, child.id);
 		return true;
 	}
