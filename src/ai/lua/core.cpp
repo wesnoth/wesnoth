@@ -879,9 +879,10 @@ static int impl_ai_aspect_get(lua_State* L)
 	return 1;
 }
 
-static int impl_ai_aspect_set(lua_State*)
+static int impl_ai_aspect_set(lua_State* L)
 {
-	return 0; // The aspects table is read-only
+	lua_pushstring(L, "attempted to write to the ai.aspects table, which is read-only");
+	return lua_error(L);
 }
 
 static int impl_ai_get(lua_State* L)
