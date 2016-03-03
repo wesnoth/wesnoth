@@ -1046,7 +1046,7 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 
 	const bool has_description = !adv_preferences_cfg_[selected_row]["description"].empty();
 
-	if(has_description && selected_type != ADVANCED_PREF_TYPE::SPECIAL) {
+	if(has_description || (selected_type != ADVANCED_PREF_TYPE::SPECIAL && selected_type != ADVANCED_PREF_TYPE::TOGGLE)) {
 		find_widget<twidget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
 			.set_visible(tcontrol::tvisible::visible);
 	}
