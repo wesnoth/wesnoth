@@ -29,8 +29,9 @@ class team;
 
 struct reset_gamestate_exception
 {
-	reset_gamestate_exception(boost::shared_ptr<config> l) : level(l) {}
+	reset_gamestate_exception(boost::shared_ptr<config> l, bool s = true) : level(l), start_replay(s) {}
 	boost::shared_ptr<config> level;
+	bool start_replay;
 };
 
 class playsingle_controller : public play_controller

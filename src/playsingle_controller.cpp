@@ -203,7 +203,9 @@ void playsingle_controller::play_scenario_main_loop()
 			}
 			play_scenario_init();
 			replay_.reset(new replay_controller(*this, false, ex.level));
-			replay_->play_replay();
+			if(ex.start_replay) {
+				replay_->play_replay();
+			}
 		}
 	} //end for loop
 }
@@ -661,7 +663,7 @@ void playsingle_controller::reset_replay()
 {
 	if(replay_ && replay_->allow_reset_replay()) {
 		replay_->stop_replay();
-		throw reset_gamestate_exception(replay_->get_reset_state());
+		throw reset_gamestate_exception(replay_->get_reset_state(), false);
 	}
 	else {
 		ERR_NG << "recieved invalid reset replay\n";

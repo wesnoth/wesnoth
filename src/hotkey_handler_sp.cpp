@@ -311,7 +311,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 			return;
 		}
 		boost::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
-		throw reset_gamestate_exception(res);
+		throw reset_gamestate_exception(res, true);
 	}
 	else
 	{
