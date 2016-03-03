@@ -45,6 +45,9 @@ Version 1.13.2+dev:
    * Added gui2 comboboxes.
    * Removed prompt when purging the WML cache from Preferences.
    * Implemented a new GUI2 Preferences dialog
+   * Implemented a new font scaling option on the Display panel.
+   * Selecting an entry in the friend/ignore list panel now copies it to the
+     input field; this makes it easier to edit friend/ignore notes.
  * WML engine:
    * Added new event "unit placed", which triggers when (and regardless of how)
      a unit appears on the map.
@@ -77,6 +80,9 @@ Version 1.13.2+dev:
    * Fixed savefile bloat caused by unit variations (walking corpses)
    * Fixed preferences file bloat caused by null-command hot-keys (bug #21969)
    * Fixed clearing of default hot-keys not working (bugs #21983/#22218/#23981)
+   * Fix [for] not correctly handling the case when the array length changes
+     during iteration
+   * Fix variables in [message][command] (bug #24288)
 
 Version 1.13.2:
  * Add-ons client:
