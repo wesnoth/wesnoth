@@ -185,8 +185,8 @@ public:
 	
 	component* handle_get(const path_element &child)
 	{
-		//* is a special case - 'get the default facet'
-		if (child.id == "*") {
+		// special case - 'get the default facet'
+		if (child.id == "default_facet") {
 			return default_.get();
 		}
 		return vector_property_handler<T>::handle_get(child);
@@ -194,8 +194,8 @@ public:
 	
 	bool handle_change(const path_element &child, config cfg)
 	{
-		//* is a special case - 'replace the default facet'
-		if (child.id == "*") {
+		// special case - 'replace the default facet'
+		if (child.id == "default_facet") {
 			t_ptr_vector values;
 			this->call_factory(values,cfg);
 			default_ = values.back();

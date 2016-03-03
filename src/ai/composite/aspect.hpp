@@ -269,8 +269,9 @@ public:
 			add_facet(-1,cfg_element);
 		}
 
-		const config &_default = this->cfg_.child("default");
+		config _default = this->cfg_.child("default");
 		if (_default) {
+			_default["id"] = "default_facet";
 			std::vector< aspect_ptr > default_aspects;
 			engine::parse_aspect_from_config(*this,_default,parent_id_,std::back_inserter(default_aspects));
 			if (!default_aspects.empty()) {
