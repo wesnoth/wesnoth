@@ -27,10 +27,6 @@ namespace preferences {
 		VIEW_FRIENDS
 	};
 
-    // FIXME: this box should be vertically centered on the screen, but is not
-	static const int height = 400;
-	static const int width = 465;
-
 	struct display_manager
 	{
 		display_manager(display* disp);
@@ -53,10 +49,6 @@ namespace preferences {
 	void show_preferences_dialog(CVideo& disp, const config& game_cfg,
 		const DIALOG_OPEN_TO initial_view = VIEW_DEFAULT);
 	bool show_theme_dialog(CVideo& disp);
-
-	// If prefs is non-null, save the hotkeys in that config
-	// instead of the default.
-	void show_hotkeys_preferences_dialog(CVideo & disp);
 } // end namespace preferences
 
 #endif
