@@ -508,6 +508,18 @@ static register_lua_aspect_factory< lua_aspect<int> >
 static register_lua_aspect_factory< lua_aspect< std::vector<std::string> > >
 	recruitment_pattern__lua_aspect_factory("recruitment_pattern*lua_aspect");
 
+
+// Some compatibility - recruitment is a removed aspect, but its syntax
+// is compatible with recruitment_instructions
+static register_aspect_factory< composite_aspect<config> >
+	recruitments__composit_aspect_factory("recruitment*composite_aspect");
+
+static register_aspect_factory< default_recruitment::recruitment_aspect >
+	recruitment__standard_aspect_factory("recruitment*standard_aspect");
+
+static register_aspect_factory< default_recruitment::recruitment_aspect >
+	recruitment__standard_aspect_factory2("recruitment*");
+
 void registry::init()
 {
 }

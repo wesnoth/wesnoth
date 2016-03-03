@@ -318,13 +318,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 						facet_config["id"] = child.cfg["id"];
 					}
 				}
-				if (child.key == "recruitment") {
-					// This aspect is deprecated; transform it to a valid recruitment_instructions aspect
-					facet_config.child("value").add_child("recruit", config_of("importance", 0));
-					facet_configs.push_back(std::make_pair("recruitment_instructions", facet_config));
-				} else {
-					facet_configs.push_back(std::make_pair(child.key, facet_config));
-				}
+				facet_configs.push_back(std::make_pair(child.key, facet_config));
 			}
 		}
 		std::map<std::string, config> aspect_configs;
