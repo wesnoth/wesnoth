@@ -24,6 +24,7 @@
 
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
+
 namespace hotkey {
 	struct hotkey_command;
 }
@@ -51,8 +52,14 @@ public:
 		tpreferences(video, game_cfg).show(video);
 		return true;
 	}
-	
+
 	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;
+
+	void set_selected_index(std::pair<int, int> index)
+	{
+		index_ = index;
+	}
+
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -63,7 +70,7 @@ private:
 
 	/** Initializers */
 	void initialize_members(twindow& window);
-	void initialize_tabs(twindow& window);
+	void initialize_tabs(twindow& window, tlistbox& selector, const int index);
 	void setup_friends_list(twindow& window);
 	void setup_hotkey_list(twindow& window);
 
@@ -81,7 +88,7 @@ private:
 
 	/** Callback for selection changes */
 	void on_page_select(twindow& window);
-	void on_tab_select(twindow& window, const std::string& widget_id);
+	void on_tab_select(twindow& window);
 	void on_advanced_prefs_list_select(tlistbox& tree, twindow& window);
 
 	/** Special callback functions */
@@ -214,6 +221,9 @@ private:
 	// Special variable to keep the value of the scaling slider,
 	// to be used in post_show
 	int font_scaling_;
+
+	// The page/tab index pairs for setting visible pages
+	std::pair<int, int> index_;
 };
 
 } // namespace gui2

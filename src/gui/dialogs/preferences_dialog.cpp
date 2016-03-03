@@ -119,6 +119,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	, accl_speeds_()
 	, visible_hotkeys_()
 	, font_scaling_(font_scaling())
+	, index_(0,0)
 {
 	BOOST_FOREACH(const config& adv, game_cfg.child_range("advanced_preference")) {
 		adv_preferences_cfg_.push_back(adv);
@@ -1073,19 +1074,33 @@ void tpreferences::add_tab(tlistbox& tab_bar, const std::string& label)
 	tab_bar.add_row(data);
 }
 
-void tpreferences::initialize_tabs(twindow& window)
+void tpreferences::initialize_tabs(twindow& /*window*/, tlistbox& selector, const int index)
 {
 	//
 	// MULTIPLAYER TABS
 	//
 
-	tlistbox& tabs_multiplayer = find_widget<tlistbox>(&window, "mp_tab", false);
-	add_tab(tabs_multiplayer, _("Prefs tab^General"));
-	add_tab(tabs_multiplayer, _("Prefs tab^Friends"));
-	//add_tab(tabs_multiplayer, _("Prefs tab^Alerts"));
+	if(index == 4) {
+		add_tab(selector, _("Prefs tab^General"));
+		add_tab(selector, _("Prefs tab^Friends"));
+	}
 
-	tabs_multiplayer.set_callback_value_change(make_dialog_callback(
-		boost::bind(&tpreferences::on_tab_select, this, _1, "mp_tab")));
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(selector, boost::bind(
+			&tpreferences::on_tab_select,
+			this,
+			boost::ref(window)));
+#else
+	selector.set_callback_value_change(dialog_callback
+			<tpreferences, &tpreferences::on_tab_select>);
+#endif
+}
+
+static int index_in_pager_range(const int& first, const tstacked_widget& pager)
+{
+	// Ensure the specified index is between 0 and one less than the max
+	// number of pager layers (since get_layer_count returns one-past-end).
+	return std::min<int>(std::max(0, first), pager.get_layer_count() - 1);
 }
 
 void tpreferences::pre_show(CVideo& /*video*/, twindow& window)
@@ -1111,10 +1126,6 @@ void tpreferences::pre_show(CVideo& /*video*/, twindow& window)
 	add_pager_row(selector, "multiplayer.png", _("Prefs section^Multiplayer"));
 	add_pager_row(selector, "advanced.png", _("Prefs section^Advanced"));
 
-	// Initializes tabs for the various pages. This should be done before
-	// setting up the member callbacks.
-	initialize_tabs(window);
-
 	// Initializes initial values and sets up callbacks. This needs to be
 	// done before selecting the initial page, otherwise widgets from other
 	// pages cannot be found afterwards.
@@ -1122,12 +1133,34 @@ void tpreferences::pre_show(CVideo& /*video*/, twindow& window)
 
 	assert(selector.get_item_count() == pager.get_layer_count());
 
-	// Selects initial tab for each page and the initially displayed main
-	// page. This should be done last after all intilization
-	set_visible_page(window, 0, "mp_tab_pager");
+	const int main_index = index_in_pager_range(index_.first, pager);
 
-	selector.select_row(0);
-	pager.select_layer(0);
+	// Loops through each pager layer and checks if it has both a tab bar
+	// and stack. If so, it initilizes the options for the former and
+	// selects the specified layer of the latter.
+	for(unsigned int i = 0; i < pager.get_layer_count(); ++i) {
+		tlistbox* tab_selector = find_widget<tlistbox>(
+			pager.get_layer_grid(i), "tab_selector", false, false);
+
+		tstacked_widget* tab_pager = find_widget<tstacked_widget>(
+			pager.get_layer_grid(i), "tab_pager", false, false);
+
+		if(tab_pager && tab_selector) {
+			const int ii = static_cast<int>(i);
+			const int tab_index = index_in_pager_range(index_.second, *tab_pager);
+			const int to_select = (ii == main_index ? tab_index : 0);
+
+			// Initialize tabs for this page
+			initialize_tabs(window, *tab_selector, ii);
+
+			tab_selector->select_row(to_select);
+			tab_pager->select_layer(to_select);
+		}
+	}
+
+	// Finally, select the initial main page
+	selector.select_row(main_index);
+	pager.select_layer(main_index);
 }
 
 void tpreferences::set_visible_page(twindow& window, unsigned int page, const std::string& pager_id)
@@ -1230,11 +1263,11 @@ void tpreferences::on_page_select(twindow& window)
 	set_visible_page(window, static_cast<unsigned int>(selected_row), "pager");
 }
 
-void tpreferences::on_tab_select(twindow& window, const std::string& widget_id)
+void tpreferences::on_tab_select(twindow& window)
 {
 	const int selected_row =
-		std::max(0, find_widget<tlistbox>(&window, widget_id, false).get_selected_row());
-	set_visible_page(window, static_cast<unsigned int>(selected_row), (widget_id + "_pager"));
+		std::max(0, find_widget<tlistbox>(&window, "tab_selector", false).get_selected_row());
+	set_visible_page(window, static_cast<unsigned int>(selected_row), "tab_pager");
 }
 
 void tpreferences::post_show(twindow& /*window*/)

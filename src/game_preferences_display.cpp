@@ -29,9 +29,21 @@
 
 namespace preferences {
 
-void show_preferences_dialog(CVideo& video, const config& game_cfg)
+void show_preferences_dialog(CVideo& video, const config& game_cfg, const DIALOG_OPEN_TO initial_view)
 {
-	gui2::tpreferences::display(video, game_cfg);
+	gui2::tpreferences dlg(video, game_cfg);
+
+	switch (initial_view) {
+		case VIEW_DEFAULT:
+			// Default value (0,0) already set in tpreferences
+			break;
+		case VIEW_FRIENDS: {
+			dlg.set_selected_index(std::make_pair(4, 1));
+			break;
+		}
+	}
+
+	dlg.show(video);
 }
 
 bool show_theme_dialog(CVideo& video)

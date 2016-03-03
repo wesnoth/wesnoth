@@ -22,6 +22,11 @@ class CVideo;
 
 namespace preferences {
 
+	enum DIALOG_OPEN_TO {
+		VIEW_DEFAULT,
+		VIEW_FRIENDS
+	};
+
     // FIXME: this box should be vertically centered on the screen, but is not
 	static const int height = 400;
 	static const int width = 465;
@@ -45,7 +50,8 @@ namespace preferences {
 	void set_idle_anim_rate(int rate);
 
 	std::string show_wesnothd_server_search(CVideo&);
-	void show_preferences_dialog(CVideo& disp, const config& game_cfg);
+	void show_preferences_dialog(CVideo& disp, const config& game_cfg,
+		const DIALOG_OPEN_TO initial_view = VIEW_DEFAULT);
 	bool show_theme_dialog(CVideo& disp);
 
 	// If prefs is non-null, save the hotkeys in that config
