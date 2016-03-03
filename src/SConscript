@@ -649,7 +649,7 @@ if env["PLATFORM"] == 'darwin':
 if env["notifications"]:
     wesnoth_sources.append("desktop/dbus_notification.cpp")
 
-wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
+wesnoth_sources.extend(client_env.Object("preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
 

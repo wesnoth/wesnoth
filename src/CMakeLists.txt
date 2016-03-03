@@ -876,7 +876,6 @@ set(wesnoth-main_SRC
 	game_events/wmi_container.cpp
 	game_launcher.cpp
 	game_preferences.cpp
-	game_preferences_display.cpp
 	game_state.cpp
 	generic_event.cpp
 	gui/auxiliary/canvas.cpp
