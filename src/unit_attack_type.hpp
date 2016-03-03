@@ -84,7 +84,7 @@ public:
 	// In unit_types.cpp:
 
 	bool matches_filter(const config& filter) const;
-	bool apply_modification(const config& cfg,std::string* description);
+	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
 	int movement_used() const { return movement_used_; }

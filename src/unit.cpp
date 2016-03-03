@@ -1705,13 +1705,432 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 	return res;
 }
 
+const std::set<std::string> unit::builtin_effects = boost::assign::list_of
+	("alignment")("attack")("defense")("ellipse")("experience")("fearless")
+	("halo")("healthy")("hitpoints")("image_mod")("jamming")("jamming_costs")
+	("loyal")("max_attacks")("max_experience")("movement")("movement_costs")
+	("new_ability")("new_advancement")("new_animation")("new_attack")("overlay")("profile")
+	("recall_cost")("remove_ability")("remove_advancement")("remove_attacks")("resistance")
+	("status")("type")("variation")("vision")("vision_costs")("zoc");
+
+std::string unit::describe_builtin_effect(std::string apply_to, const config& effect)
+{
+	if(apply_to == "attack") {
+		std::string attack_names;
+		bool first_attack = true;
+		
+		std::string desc;
+		for(std::vector<attack_type>::iterator a = attacks_.begin();
+			a != attacks_.end(); ++a) {
+			bool affected = a->describe_modification(effect, &desc);
+			if(affected && desc != "") {
+				if(first_attack) {
+					first_attack = false;
+				} else {
+					attack_names += t_string(N_(" and "), "wesnoth");
+				}
+				
+				attack_names += t_string(a->name(), "wesnoth-units");
+			}
+		}
+		if (!attack_names.empty()) {
+			utils::string_map symbols;
+			symbols["attack_list"] = attack_names;
+			symbols["effect_description"] = desc;
+			return vgettext("$attack_list|: $effect_description", symbols);
+		}
+	} else if(apply_to == "hitpoints") {
+		const std::string &increase_total = effect["increase_total"];
+		
+		if(!increase_total.empty()) {
+			return utils::print_modifier(increase_total) + " " +
+			t_string(N_("HP"), "wesnoth");
+		}
+	} else if(apply_to == "movement") {
+		const std::string &increase = effect["increase"];
+		
+		if(!increase.empty()) {
+			int n = lexical_cast<int>(increase);
+			return utils::print_modifier(increase) + " " +
+				_n("move", "moves", n);
+		}
+	} else if(apply_to == "vision") {
+		const std::string &increase = effect["increase"];
+		
+		if(!increase.empty()) {
+			return utils::print_modifier(increase) + " " + t_string(N_("vision"), "wesnoth");
+		}
+	} else if(apply_to == "jamming") {
+		const std::string &increase = effect["increase"];
+		
+		if(!increase.empty()) {
+			return utils::print_modifier(increase) + " " + t_string(N_("jamming"), "wesnoth");
+		}
+	} else if(apply_to == "max_experience") {
+		const std::string &increase = effect["increase"];
+		
+		if(!increase.empty()) {
+			return utils::print_modifier(increase) + " " +
+			t_string(N_("XP to advance"), "wesnoth");
+		}
+	} else if (apply_to == "max_attacks") {
+		const std::string &increase = effect["increase"];
+		
+		std::string description = utils::print_modifier(increase) + " ";
+		const char* const singular = N_("attack per turn");
+		const char* const plural = N_("attacks per turn");
+		if (increase[increase.size()-1] == '%' || abs(lexical_cast<int>(increase)) != 1) {
+			description += t_string(plural, "wesnoth");
+		} else {
+			description += t_string(singular, "wesnoth");
+		}
+		return description;
+	} else if (apply_to == "recall_cost") {
+		const std::string &increase = effect["increase"];
+		return utils::print_modifier(increase) + " " +
+				t_string(N_("cost to recall"), "wesnoth");
+	}
+	return "";
+}
+
+void unit::apply_builtin_effect(std::string apply_to, const config& effect)
+{
+	if(apply_to == "fearless")
+	{
+		is_fearless_ = effect["set"].to_bool(true);
+	}
+	else if(apply_to == "healthy")
+	{
+		is_healthy_ = effect["set"].to_bool(true);
+	}
+	else if(apply_to == "profile") {
+		if (const config::attribute_value *v = effect.get("portrait")) {
+			std::string big = *v, small = effect["small_portrait"];
+			adjust_profile(small, big, "");
+			
+			profile_ = big;
+			small_profile_ = small;
+		}
+		if (const config::attribute_value *v = effect.get("description")) {
+			description_ = *v;
+		}
+	} else if(apply_to == "new_attack") {
+		attacks_.push_back(attack_type(effect));
+	} else if(apply_to == "remove_attacks") {
+		std::vector<attack_type>::iterator a = attacks_.begin();
+		while(a != attacks_.end()) {
+			if(a->matches_filter(effect)) {
+				a = attacks_.erase(a);
+				continue;
+			}
+			++a;
+		}
+	} else if(apply_to == "attack") {
+		for(std::vector<attack_type>::iterator a = attacks_.begin();
+			a != attacks_.end(); ++a) {
+			a->apply_modification(effect);
+		}
+	} else if(apply_to == "hitpoints") {
+		LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
+		const std::string &increase_hp = effect["increase"];
+		const std::string &increase_total = effect["increase_total"];
+		const std::string &set_hp = effect["set"];
+		const std::string &set_total = effect["set_total"];
+
+		// If the hitpoints are allowed to end up greater than max hitpoints
+		const bool violate_max = effect["violate_maximum"].to_bool();
+
+		if(!set_hp.empty()) {
+			if(set_hp[set_hp.size()-1] == '%') {
+				hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
+			} else {
+				hit_points_ = lexical_cast_default<int>(set_hp);
+			}
+		}
+		if(!set_total.empty()) {
+			if(set_total[set_total.size()-1] == '%') {
+				max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
+			} else {
+				max_hit_points_ = lexical_cast_default<int>(set_total);
+			}
+		}
+
+		if(!increase_total.empty()) {
+			// A percentage on the end means increase by that many percent
+			max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
+		}
+
+		if(max_hit_points_ < 1)
+			max_hit_points_ = 1;
+
+		if (effect["heal_full"].to_bool()) {
+			heal_all();
+		}
+
+		if(!increase_hp.empty()) {
+			hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
+		}
+
+		LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
+		if(hit_points_ > max_hit_points_ && !violate_max) {
+			LOG_UT << "resetting hp to max\n";
+			hit_points_ = max_hit_points_;
+		}
+
+		if(hit_points_ < 1)
+			hit_points_ = 1;
+	} else if(apply_to == "movement") {
+		const std::string &increase = effect["increase"];
+
+		if(!increase.empty()) {
+			max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
+		}
+
+		max_movement_ = effect["set"].to_int(max_movement_);
+
+		if(movement_ > max_movement_)
+			movement_ = max_movement_;
+	} else if(apply_to == "vision") {
+		const std::string &increase = effect["increase"];
+
+		if(!increase.empty()) {
+			const int current_vision = vision_ < 0 ? max_movement_ : vision_;
+			vision_ = utils::apply_modifier(current_vision, increase, 1);
+		}
+
+		vision_ = effect["set"].to_int(vision_);
+	} else if(apply_to == "jamming") {
+		const std::string &increase = effect["increase"];
+
+		if(!increase.empty()) {
+			jamming_ = utils::apply_modifier(jamming_, increase, 1);
+		}
+
+		jamming_ = effect["set"].to_int(jamming_);
+	} else if(apply_to == "experience") {
+		const std::string &increase = effect["increase"];
+		const std::string &set = effect["set"];
+
+		if(!set.empty()) {
+			if(set[set.size()-1] == '%') {
+				experience_ = lexical_cast_default<int>(set)*max_experience_/100;
+			} else {
+				experience_ = lexical_cast_default<int>(set);
+			}
+		}
+
+		if(increase.empty() == false) {
+			experience_ = utils::apply_modifier(experience_, increase, 1);
+		}
+	} else if(apply_to == "max_experience") {
+		const std::string &increase = effect["increase"];
+		const std::string &set = effect["set"];
+
+		if(set.empty() == false) {
+			if(set[set.size()-1] == '%') {
+				max_experience_ = lexical_cast_default<int>(set)*max_experience_/100;
+			} else {
+				max_experience_ = lexical_cast_default<int>(set);
+			}
+		}
+
+		if(increase.empty() == false) {
+			max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
+		}
+	} else if(apply_to == "loyal") {
+		upkeep_ = upkeep_loyal();;
+	} else if(apply_to == "status") {
+		const std::string& add = effect["add"];
+		const std::string& remove = effect["remove"];
+
+		BOOST_FOREACH(const std::string& to_add, utils::split(add))
+		{
+			set_state(to_add, true);
+		}
+
+		BOOST_FOREACH(const std::string& to_remove, utils::split(remove))
+		{
+			set_state(to_remove, false);
+		}
+	// Note: It would not be hard to define a new "applies_to=" that
+	//       combines the next five options (the movetype effects).
+	} else if (apply_to == "movement_costs") {
+		if (const config &ap = effect.child("movement_costs")) {
+			movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
+		}
+	} else if (apply_to == "vision_costs") {
+		if (const config &ap = effect.child("vision_costs")) {
+			movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
+		}
+	} else if (apply_to == "jamming_costs") {
+		if (const config &ap = effect.child("jamming_costs")) {
+			movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
+		}
+	} else if (apply_to == "defense") {
+		if (const config &ap = effect.child("defense")) {
+			movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
+		}
+	} else if (apply_to == "resistance") {
+		if (const config &ap = effect.child("resistance")) {
+			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
+		}
+	} else if (apply_to == "zoc") {
+		if (const config::attribute_value *v = effect.get("value")) {
+			emit_zoc_ = v->to_bool();
+		}
+	} else if (apply_to == "new_ability") {
+		if (const config &ab_effect = effect.child("abilities")) {
+			config to_append;
+			BOOST_FOREACH(const config::any_child &ab, ab_effect.all_children_range()) {
+				if(!has_ability_by_id(ab.cfg["id"])) {
+					to_append.add_child(ab.key, ab.cfg);
+				}
+			}
+			this->abilities_.append(to_append);
+		}
+	} else if (apply_to == "remove_ability") {
+		if (const config &ab_effect = effect.child("abilities")) {
+			BOOST_FOREACH(const config::any_child &ab, ab_effect.all_children_range()) {
+				remove_ability_by_id(ab.cfg["id"]);
+			}
+		}
+	} else if (apply_to == "image_mod") {
+		LOG_UT << "applying image_mod \n";
+		std::string mod = effect["replace"];
+		if (!mod.empty()){
+			image_mods_ = mod;
+		}
+		LOG_UT << "applying image_mod \n";
+		mod = effect["add"].str();
+		if (!mod.empty()){
+			if(!image_mods_.empty()) {
+				image_mods_ += '~';
+			}
+
+			image_mods_ += mod;
+		}
+
+		game_config::add_color_info(effect);
+		LOG_UT << "applying image_mod \n";
+	} else if (apply_to == "new_animation") {
+		anim_comp_->apply_new_animation_effect(effect);
+	} else if (apply_to == "ellipse") {
+		set_image_ellipse(effect["ellipse"]);
+	} else if (apply_to == "halo") {
+		set_image_halo(effect["halo"]);
+	} else if (apply_to == "overlay") {
+		const std::string &add = effect["add"];
+		const std::string &replace = effect["replace"];
+
+		if (!add.empty()) {
+			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
+			std::vector<std::string>::iterator it;
+			for (it=temp_overlays.begin();it<temp_overlays.end();++it) {
+				overlays_.push_back( *it );
+			}
+		}
+		else if (!replace.empty()) {
+			overlays_ = utils::parenthetical_split(replace, ',');
+		}
+	} else if (apply_to == "new_advancement") {
+		const std::string &types = effect["types"];
+		const bool replace = effect["replace"].to_bool(false);
+
+		if (!types.empty()) {
+			if (replace) {
+				advances_to_ = utils::parenthetical_split(types, ',');
+			} else {
+				std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
+				std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
+			}
+		}
+
+		if (effect.has_child("advancement")) {
+			if (replace) {
+				advancements_.clear();
+			}
+			config temp = effect;
+			boost::copy(effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+		}
+	} else if (apply_to == "remove_advancement") {
+		const std::string &types = effect["types"];
+		const std::string &amlas = effect["amlas"];
+
+		std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
+		std::vector<std::string>::iterator iter;
+		BOOST_FOREACH(const std::string& unit, temp_advances) {
+			iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
+			if (iter != advances_to_.end()) {
+				advances_to_.erase(iter);
+			}
+		}
+
+		temp_advances = utils::parenthetical_split(amlas, ',');
+		std::vector<size_t> remove_indices;
+
+		for(int i = advancements_.size() - 1; i >= 0; i--) {
+			if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
+				advancements_.erase(advancements_.begin() + i);
+			}
+		}
+	} else if (apply_to == "alignment") {
+		unit_type::ALIGNMENT new_align;
+		if(new_align.parse(effect["set"])) {
+			alignment_ = new_align;
+		}
+	} else if (apply_to == "max_attacks") {
+		const std::string &increase = effect["increase"];
+
+		if(!increase.empty()) {
+			max_attacks_ = utils::apply_modifier(max_attacks_, increase, 1);
+		}
+	} else if (apply_to == "recall_cost") {
+		const std::string &increase = effect["increase"];
+		const std::string &set = effect["set"];
+		const int recall_cost = recall_cost_ < 0 ? resources::teams->at(side_).recall_cost() : recall_cost_;
+
+		if(!set.empty()) {
+			if(set[set.size()-1] == '%') {
+				recall_cost_ = lexical_cast_default<int>(set)*recall_cost/100;
+			} else {
+				recall_cost_ = lexical_cast_default<int>(set);
+			}
+		}
+
+		if(!increase.empty()) {
+			recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
+		}
+	} else if (effect["apply_to"] == "variation") {
+		variation_ = effect["name"].str();
+		const unit_type * base_type = unit_types.find(type().base_id());
+		assert(base_type != NULL);
+		advance_to(*base_type);
+	} else if (effect["apply_to"] == "type") {
+		std::string prev_type = effect["prev_type"];
+		if (prev_type.empty()) {
+			prev_type = type().base_id();
+		}
+		const std::string& new_type_id = effect["name"];
+		const unit_type* new_type = unit_types.find(new_type_id);
+		if (new_type) {
+			const bool heal_full = effect["heal_full"].to_bool(false);
+			advance_to(*new_type);
+			preferences::encountered_units().insert(new_type_id);
+			if(heal_full) {
+				heal_all();
+			}
+		} else {
+			WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
+		}
+	}
+}
+
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
 	bool generate_description = mod["generate_description"].to_bool(true);
 
-	config *new_child = NULL;
 	if(no_add == false) {
-		new_child = &modifications_.add_child(mod_type, mod);
+		modifications_.add_child(mod_type, mod);
 	}
 	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
 	config last_effect;
@@ -1720,7 +2139,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	{
 		// Apply SUF.
 		if (const config &afilter = effect.child("filter")) {
-			// @FIXME: during gamesate construction resources::filter_con is not available
+			// @FIXME: during gamestate construction resources::filter_con is not available
 			if (resources::filter_con && !unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) continue;
 		}
 		const std::string &apply_to = effect["apply_to"];
@@ -1734,433 +2153,37 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 			while (times > 0) {
 				times --;
 
-				// Apply unit type/variation changes last to avoid double applying effects on advance.
+				bool was_poisoned = get_state(STATE_POISONED);
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
+					// Apply unit type/variation changes last to avoid double applying effects on advance.
 					set_poisoned = false;
 					last_effect = effect;
+					continue;
 				}
-				else if(apply_to == "fearless")
-				{
-					is_fearless_ = effect["set"].to_bool(true);
+				std::string description_component;
+				if (resources::lua_kernel) {
+					description_component = resources::lua_kernel->apply_effect(apply_to, *this, effect, true);
+				} else if (builtin_effects.count(apply_to)) {
+					// Normally, the built-in effects are dispatched through Lua so that a user
+					// can override them if desired. However, since they're built-in, we can still
+					// apply them if the lua kernel is unavailable.
+					apply_builtin_effect(apply_to, effect);
+					description_component = describe_builtin_effect(apply_to, effect);
 				}
-				else if(apply_to == "healthy")
-				{
-					is_healthy_ = effect["set"].to_bool(true);
+				if (!times) {
+					description += description_component;
 				}
-				else if(apply_to == "profile") {
-					if (const config::attribute_value *v = effect.get("portrait")) {
-						std::string big = *v, small = effect["small_portrait"];
-						adjust_profile(small, big, "");
-						
-						profile_ = big;
-						small_profile_ = small;
-					}
-					if (const config::attribute_value *v = effect.get("description"))
-						description_ = *v;
-					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
-				} else if(apply_to == "new_attack") {
-					attacks_.push_back(attack_type(effect));
-				} else if(apply_to == "remove_attacks") {
-					std::vector<attack_type>::iterator a = attacks_.begin();
-					while(a != attacks_.end()) {
-						if(a->matches_filter(effect)) {
-							a = attacks_.erase(a);
-							continue;
-						}
-						++a;
-					}
-				} else if(apply_to == "attack") {
-
-					bool first_attack = true;
-
-					std::string attack_names;
-					std::string desc;
-					for(std::vector<attack_type>::iterator a = attacks_.begin();
-						a != attacks_.end(); ++a) {
-						bool affected = a->apply_modification(effect, &desc);
-						if(affected && desc != "") {
-							if(first_attack) {
-								first_attack = false;
-							} else {
-								if (!times)
-									attack_names += t_string(N_(" and "), "wesnoth");
-							}
-
-							if (!times)
-								attack_names += t_string(a->name(), "wesnoth");
-						}
-					}
-					if (attack_names.empty() == false) {
-						utils::string_map symbols;
-						symbols["attack_list"] = attack_names;
-						symbols["effect_description"] = desc;
-						description += vgettext("$attack_list|: $effect_description", symbols);
-					}
-				} else if(apply_to == "hitpoints") {
-					LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
-					const std::string &increase_hp = effect["increase"];
-					const std::string &increase_total = effect["increase_total"];
-					const std::string &set_hp = effect["set"];
-					const std::string &set_total = effect["set_total"];
-
-					// If the hitpoints are allowed to end up greater than max hitpoints
-					const bool violate_max = effect["violate_maximum"].to_bool();
-
-					if(set_hp.empty() == false) {
-						if(set_hp[set_hp.size()-1] == '%') {
-							hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
-						} else {
-							hit_points_ = lexical_cast_default<int>(set_hp);
-						}
-					}
-					if(set_total.empty() == false) {
-						if(set_total[set_total.size()-1] == '%') {
-							max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
-						} else {
-							max_hit_points_ = lexical_cast_default<int>(set_total);
-						}
-					}
-
-					if(increase_total.empty() == false) {
-						if (!times)
-							description += utils::print_modifier(increase_total) + " " +
-								t_string(N_("HP"), "wesnoth");
-
-						// A percentage on the end means increase by that many percent
-						max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
-					}
-
-					if(max_hit_points_ < 1)
-						max_hit_points_ = 1;
-
-					if (effect["heal_full"].to_bool()) {
-						heal_all();
-					}
-
-					if(increase_hp.empty() == false) {
-						hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
-					}
-
-					LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
-					if(hit_points_ > max_hit_points_ && !violate_max) {
-						LOG_UT << "resetting hp to max\n";
-						hit_points_ = max_hit_points_;
-					}
-
-					if(hit_points_ < 1)
-						hit_points_ = 1;
-				} else if(apply_to == "movement") {
-					const std::string &increase = effect["increase"];
-
-					if(increase.empty() == false) {
-						if (!times) {
-							description += utils::print_modifier(increase) + " " +
-								t_string(N_("moves"), "wesnoth");
-						}
-
-						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
-					}
-
-					max_movement_ = effect["set"].to_int(max_movement_);
-
-					if(movement_ > max_movement_)
-						movement_ = max_movement_;
-				} else if(apply_to == "vision") {
-					const std::string &increase = effect["increase"];
-
-					if(increase.empty() == false) {
-						if (!times) {
-							description += utils::print_modifier(increase) + " " +
-								t_string(N_("vision"), "wesnoth");
-						}
-
-						const int current_vision = vision_ < 0 ? max_movement_ : vision_;
-						vision_ = utils::apply_modifier(current_vision, increase, 1);
-					}
-
-					vision_ = effect["set"].to_int(vision_);
-				} else if(apply_to == "jamming") {
-					const std::string &increase = effect["increase"];
-
-					if(increase.empty() == false) {
-						if (!times) {
-							description += utils::print_modifier(increase) + " " +
-								t_string(N_("jamming"), "wesnoth");
-						}
-
-						jamming_ = utils::apply_modifier(jamming_, increase, 1);
-					}
-
-					jamming_ = effect["set"].to_int(jamming_);
-				} else if(apply_to == "experience") {
-					const std::string &increase = effect["increase"];
-					const std::string &set = effect["set"];
-
-					if(set.empty() == false) {
-						if(set[set.size()-1] == '%') {
-							experience_ = lexical_cast_default<int>(set)*max_experience_/100;
-						} else {
-							experience_ = lexical_cast_default<int>(set);
-						}
-					}
-
-					if(increase.empty() == false) {
-						experience_ = utils::apply_modifier(experience_, increase, 1);
-					}
-				} else if(apply_to == "max_experience") {
-					const std::string &increase = effect["increase"];
-					const std::string &set = effect["set"];
-
-					if(set.empty() == false) {
-						if(set[set.size()-1] == '%') {
-							max_experience_ = lexical_cast_default<int>(set)*max_experience_/100;
-						} else {
-							max_experience_ = lexical_cast_default<int>(set);
-						}
-					}
-
-					if(increase.empty() == false) {
-						if (!times)
-							description += utils::print_modifier(increase) + " " +
-								t_string(N_("XP to advance"), "wesnoth");
-
-						max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
-					}
-
-				} else if(apply_to == "loyal") {
-					upkeep_ = upkeep_loyal();;
-				} else if(apply_to == "status") {
-					const std::string& add = effect["add"];
-					const std::string& remove = effect["remove"];
-
-					BOOST_FOREACH(const std::string& to_add, utils::split(add))
-					{
-						set_state(to_add, true);
-						set_poisoned = set_poisoned  ||  to_add == "poisoned";
-					}
-
-					BOOST_FOREACH(const std::string& to_remove, utils::split(remove))
-					{
-						set_state(to_remove, false);
-						set_poisoned = set_poisoned  &&  to_remove != "poisoned";
-					}
-				// Note: It would not be hard to define a new "applies_to=" that
-				//       combines the next five options (the movetype effects).
-				} else if (apply_to == "movement_costs") {
-					if (const config &ap = effect.child("movement_costs")) {
-						movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
-					}
-				} else if (apply_to == "vision_costs") {
-					if (const config &ap = effect.child("vision_costs")) {
-						movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
-					}
-				} else if (apply_to == "jamming_costs") {
-					if (const config &ap = effect.child("jamming_costs")) {
-						movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
-					}
-				} else if (apply_to == "defense") {
-					if (const config &ap = effect.child("defense")) {
-						movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
-					}
-				} else if (apply_to == "resistance") {
-					if (const config &ap = effect.child("resistance")) {
-						movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
-					}
-				} else if (apply_to == "zoc") {
-					if (const config::attribute_value *v = effect.get("value")) {
-						emit_zoc_ = v->to_bool();
-					}
-				} else if (apply_to == "new_ability") {
-					if (const config &ab_effect = effect.child("abilities")) {
-						config to_append;
-						BOOST_FOREACH(const config::any_child &ab, ab_effect.all_children_range()) {
-							if(!has_ability_by_id(ab.cfg["id"])) {
-								to_append.add_child(ab.key, ab.cfg);
-							}
-						}
-						this->abilities_.append(to_append);
-					}
-				} else if (apply_to == "remove_ability") {
-					if (const config &ab_effect = effect.child("abilities")) {
-						BOOST_FOREACH(const config::any_child &ab, ab_effect.all_children_range()) {
-							remove_ability_by_id(ab.cfg["id"]);
-						}
-					}
-				} else if (apply_to == "image_mod") {
-					LOG_UT << "applying image_mod \n";
-					std::string mod = effect["replace"];
-					if (!mod.empty()){
-						image_mods_ = mod;
-					}
-					LOG_UT << "applying image_mod \n";
-					mod = effect["add"].str();
-					if (!mod.empty()){
-						if(!image_mods_.empty()) {
-							image_mods_ += '~';
-						}
-
-						image_mods_ += mod;
-					}
-
-					game_config::add_color_info(effect);
-					LOG_UT << "applying image_mod \n";
-				} else if (apply_to == "new_animation") {
-					anim_comp_->apply_new_animation_effect(effect);
-				} else if (apply_to == "ellipse") {
-					set_image_ellipse(effect["ellipse"]);
-				} else if (apply_to == "halo") {
-					set_image_halo(effect["halo"]);
-				} else if (apply_to == "overlay") {
-					const std::string &add = effect["add"];
-					const std::string &replace = effect["replace"];
-
-					if (!add.empty()) {
-						std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
-						std::vector<std::string>::iterator it;
-						for (it=temp_overlays.begin();it<temp_overlays.end();++it) {
-							overlays_.push_back( *it );
-						}
-					}
-					else if (!replace.empty()) {
-						overlays_ = utils::parenthetical_split(replace, ',');
-					}
-				} else if (apply_to == "new_advancement") {
-					const std::string &types = effect["types"];
-					const bool replace = effect["replace"].to_bool(false);
-
-					if (!types.empty()) {
-						if (replace) {
-							advances_to_ = utils::parenthetical_split(types, ',');
-						} else {
-							std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
-							std::copy(temp_advances.begin(), temp_advances.end(), std::back_inserter(advances_to_));
-						}
-					}
-
-					if (effect.has_child("advancement")) {
-						if (replace) {
-							advancements_.clear();
-						}
-						config temp = effect;
-						boost::copy( effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
-					}
-				} else if (apply_to == "remove_advancement") {
-					const std::string &types = effect["types"];
-					const std::string &amlas = effect["amlas"];
-
-					std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
-					std::vector<std::string>::iterator iter;
-					BOOST_FOREACH(const std::string& unit, temp_advances) {
-						iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
-						if (iter != advances_to_.end()) {
-							advances_to_.erase(iter);
-						}
-					}
-
-					temp_advances = utils::parenthetical_split(amlas, ',');
-					std::vector<size_t> remove_indices;
-
-					for(int i = advancements_.size() - 1; i >= 0; i--) {
-						if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
-							advancements_.erase(advancements_.begin() + i);
-						}
-					}
-				} else if (apply_to == "alignment") {
-					unit_type::ALIGNMENT new_align;
-					if(new_align.parse(effect["set"])) {
-						alignment_ = new_align;
-					}
-				} else if (apply_to == "max_attacks") {
-					const std::string &increase = effect["increase"];
-
-					if(increase.empty() == false) {
-						if (!times) {
-							description += utils::print_modifier(increase) + " ";
-							const char* const singular = N_("attack per turn");
-							const char* const plural = N_("attacks per turn");
-							if (increase[increase.size()-1] == '%' || abs(lexical_cast<int>(increase)) != 1) {
-								description += t_string(plural, "wesnoth");
-							} else {
-								description += t_string(singular, "wesnoth");
-							}
-						}
-						max_attacks_ = utils::apply_modifier(max_attacks_, increase, 1);
-					}
-				} else if (apply_to == "recall_cost") {
-					const std::string &increase = effect["increase"];
-					const std::string &set = effect["set"];
-					const int recall_cost = recall_cost_ < 0 ? resources::teams->at(side_).recall_cost() : recall_cost_;
-
-					if(set.empty() == false) {
-						if(set[set.size()-1] == '%') {
-							recall_cost_ = lexical_cast_default<int>(set)*recall_cost/100;
-						} else {
-							recall_cost_ = lexical_cast_default<int>(set);
-						}
-					}
-
-					if(increase.empty() == false) {
-						if (!times) {
-							description += utils::print_modifier(increase) + " " +
-								t_string(N_("cost to recall"), "wesnoth");
-						}
-						recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
-					}
-				} else if (resources::lua_kernel) {
-					resources::lua_kernel->apply_effect(apply_to, *this, effect);
+				if (!was_poisoned && get_state(STATE_POISONED)) {
+					set_poisoned = true;
+				} else if(was_poisoned && !get_state(STATE_POISONED)) {
+					set_poisoned = false;
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
-			if(apply_to == "attack") {
-
-				bool first_attack = true;
-
-				for(std::vector<attack_type>::iterator a = attacks_.begin();
-					a != attacks_.end(); ++a) {
-					std::string desc;
-					bool affected = a->describe_modification(effect, &desc);
-					if(affected && desc != "") {
-						if(first_attack) {
-							first_attack = false;
-						} else {
-							description += t_string(N_(" and "), "wesnoth");
-						}
-
-						description += t_string(a->name(), "wesnoth") + ": " + desc;
-					}
-				}
-			} else if(apply_to == "hitpoints") {
-				const std::string &increase_total = effect["increase_total"];
-
-				if(increase_total.empty() == false) {
-					description += utils::print_modifier(increase_total) + " " +
-						t_string(N_("HP"), "wesnoth");
-				}
-			} else if(apply_to == "movement") {
-				const std::string &increase = effect["increase"];
-
-				if(increase.empty() == false) {
-					description += utils::print_modifier(increase) + t_string(N_(" move"), "wesnoth");
-				}
-			} else if(apply_to == "vision") {
-				const std::string &increase = effect["increase"];
-
-				if(increase.empty() == false) {
-					description += utils::print_modifier(increase) + t_string(N_(" vision"), "wesnoth");
-				}
-			} else if(apply_to == "jamming") {
-				const std::string &increase = effect["increase"];
-
-				if(increase.empty() == false) {
-					description += utils::print_modifier(increase) + t_string(N_(" jamming"), "wesnoth");
-				}
-			} else if(apply_to == "max_experience") {
-				const std::string &increase = effect["increase"];
-
-				if(increase.empty() == false) {
-					description += utils::print_modifier(increase) + " " +
-						t_string(N_("XP to advance"), "wesnoth");
-				}
+			if (resources::lua_kernel) {
+				description += resources::lua_kernel->apply_effect(apply_to, *this, effect, false);
+			} else if(builtin_effects.count(apply_to)) {
+				description += describe_builtin_effect(apply_to, effect);
 			}
 		}
 
@@ -2175,27 +2198,14 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	}
 	// Apply variations -- only apply if we are adding this for the first time.
 	if (!last_effect.empty() && no_add == false) {
-		if ((last_effect)["apply_to"] == "variation") {
-			variation_ = last_effect["name"].str();
-			const unit_type * base_type = unit_types.find(type().base_id());
-			assert(base_type != NULL);
-			advance_to(*base_type);
-		} else if ((last_effect)["apply_to"] == "type") {
-			config::attribute_value &prev_type = (*new_child)["prev_type"];
-			if (prev_type.blank()) prev_type = type().base_id();
-			const std::string& new_type_id = last_effect["name"];
-			const unit_type* new_type = unit_types.find(new_type_id);
-			if ( new_type ) {
-				const bool heal_full = last_effect["heal_full"].to_bool(false);
-				advance_to(*new_type);
-				preferences::encountered_units().insert(new_type_id);
-				if( heal_full ) {
-					heal_all();
-				}
-			} else {
-				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
-			}
+		std::string description;
+		if (resources::lua_kernel) {
+			description = resources::lua_kernel->apply_effect(last_effect["apply_to"], *this, last_effect, true);
+		} else if (builtin_effects.count(last_effect["apply_to"])) {
+			apply_builtin_effect(last_effect["apply_to"], last_effect);
+			description = describe_builtin_effect(last_effect["apply_to"], last_effect);
 		}
+		effects_description.push_back(description);
 		if ( set_poisoned )
 			// An effect explicitly set the poisoned state, and this
 			// should override the unit being immune to poison.
@@ -2214,6 +2224,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	if(effects_description.empty() == false && generate_description == true) {
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
+			if (i->empty()) {
+				continue;
+			}
 			description += *i;
 			if(i+1 != effects_description.end())
 				description += t_string(N_(" and "), "wesnoth");
