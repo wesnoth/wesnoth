@@ -895,6 +895,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	const simple_wml::node::child_list& commands = turn->children("command");
 	simple_wml::node::child_list::const_iterator command;
 	for (command = commands.begin(); command != commands.end(); ++command) {
+		DBG_GAME << "game " << id_ << " recieved ["  << (**command).first_child() << "] from player '" << user->second.name() << "'(" << user->first << ") during turn " << end_turn_ << "\n";
 		if (!is_legal_command(**command, user)) {
 			LOG_GAME << "ILLEGAL COMMAND in game: " << id_ << " ((("
 				<< simple_wml::node_to_string(**command) << ")))\n";
