@@ -418,7 +418,6 @@
 		B5599B360EC62181008DD061 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0F0EC62181008DD061 /* image.cpp */; };
 		B5599B390EC62181008DD061 /* halo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A150EC62181008DD061 /* halo.cpp */; };
 		B5599B640EC62181008DD061 /* generic_event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A730EC62181008DD061 /* generic_event.cpp */; };
-		B5599B670EC62181008DD061 /* game_preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A770EC62181008DD061 /* game_preferences_display.cpp */; };
 		B5599B680EC62181008DD061 /* game_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A790EC62181008DD061 /* game_preferences.cpp */; };
 		B5599B6A0EC62181008DD061 /* game_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A7E0EC62181008DD061 /* game_display.cpp */; };
 		B5599B6B0EC62181008DD061 /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; settings = {COMPILER_FLAGS = "-DWESNOTH_PATH='\"./\"'"; }; };
@@ -629,7 +628,6 @@
 		B597C5CC0FACD6CA00CE81F5 /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A990EC62181008DD061 /* display.cpp */; };
 		B597C5CD0FACD6CA00CE81F5 /* controller_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA00EC62181008DD061 /* controller_base.cpp */; };
 		B597C5CE0FACD6CA00CE81F5 /* scroll_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD070ECA805A002BE442 /* scroll_label.cpp */; };
-		B597C5CF0FACD6CA00CE81F5 /* game_preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A770EC62181008DD061 /* game_preferences_display.cpp */; };
 		B597C5D00FACD6CA00CE81F5 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD210ECA805A002BE442 /* window.cpp */; };
 		B597C5D10FACD6CA00CE81F5 /* combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999470EC62181008DD061 /* combo.cpp */; };
 		B597C5D30FACD6CA00CE81F5 /* unit_id.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999750EC62181008DD061 /* unit_id.cpp */; };
@@ -1850,7 +1848,6 @@
 		B5599A6F0EC62181008DD061 /* global.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = global.hpp; path = ../src/global.hpp; sourceTree = "<group>"; };
 		B5599A720EC62181008DD061 /* generic_event.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = generic_event.hpp; path = ../src/generic_event.hpp; sourceTree = "<group>"; };
 		B5599A730EC62181008DD061 /* generic_event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = generic_event.cpp; path = ../src/generic_event.cpp; sourceTree = "<group>"; };
-		B5599A770EC62181008DD061 /* game_preferences_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game_preferences_display.cpp; path = ../src/game_preferences_display.cpp; sourceTree = "<group>"; };
 		B5599A780EC62181008DD061 /* game_preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = game_preferences.hpp; path = ../src/game_preferences.hpp; sourceTree = "<group>"; };
 		B5599A790EC62181008DD061 /* game_preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game_preferences.cpp; path = ../src/game_preferences.cpp; sourceTree = "<group>"; };
 		B5599A7C0EC62181008DD061 /* game_errors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = game_errors.hpp; path = ../src/game_errors.hpp; sourceTree = "<group>"; };
@@ -2806,7 +2803,6 @@
 				EC2194481960634100420969 /* game_launcher.hpp */,
 				B5599A790EC62181008DD061 /* game_preferences.cpp */,
 				B5599A780EC62181008DD061 /* game_preferences.hpp */,
-				B5599A770EC62181008DD061 /* game_preferences_display.cpp */,
 				EC387E6A195AFB1F00FC0342 /* game_state.cpp */,
 				EC387E6B195AFB1F00FC0342 /* game_state.hpp */,
 				62CC8E7917B9064B00C16B75 /* generators */,
@@ -4773,7 +4769,6 @@
 				EC2194491960634100420969 /* game_launcher.cpp in Sources */,
 				B595EFE2100436C900C10B66 /* game_load.cpp in Sources */,
 				EC218EA31A106673007C910C /* game_lua_kernel.cpp in Sources */,
-				B5599B670EC62181008DD061 /* game_preferences_display.cpp in Sources */,
 				B5599B680EC62181008DD061 /* game_preferences.cpp in Sources */,
 				B597EC630FC08E5D00CE81F5 /* game_save.cpp in Sources */,
 				EC387E6D195AFB1F00FC0342 /* game_state.cpp in Sources */,
@@ -5296,7 +5291,6 @@
 				B597C57F0FACD6CA00CE81F5 /* game_display.cpp in Sources */,
 				B597EBFF0FC082AB00CE81F5 /* game_info.cpp in Sources */,
 				B595EFE3100436C900C10B66 /* game_load.cpp in Sources */,
-				B597C5CF0FACD6CA00CE81F5 /* game_preferences_display.cpp in Sources */,
 				B597C5770FACD6CA00CE81F5 /* game_preferences.cpp in Sources */,
 				B597EC640FC08E5D00CE81F5 /* game_save.cpp in Sources */,
 				B5B4692D1071189700327599 /* gamestate_inspector.cpp in Sources */,
