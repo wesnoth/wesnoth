@@ -558,8 +558,8 @@ public:
 		subs_()
 	{
 		std::string::iterator i;
-		while((i = std::find(str.begin(), str.end(), '{')) != str.end()) {
-			std::string::iterator j = std::find(i, str.end(), '}');
+		while((i = std::find(str.begin(), str.end(), '[')) != str.end()) {
+			std::string::iterator j = std::find(i, str.end(), ']');
 			if(j == str.end()) {
 				break;
 			}
