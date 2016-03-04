@@ -780,7 +780,6 @@ bool variant::operator==(const variant& v) const
 	}
 	}
 
-	assert(false);
 	return false;
 }
 
