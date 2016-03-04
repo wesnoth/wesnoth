@@ -164,6 +164,33 @@ variant_iterator variant_iterator::operator++(int)
 	return iter;
 }
 
+variant_iterator& variant_iterator::operator--()
+{
+	if (type_ == TYPE_LIST)
+	{
+		--list_iterator_;
+	} else if (type_ == TYPE_MAP)
+	{
+		--map_iterator_;
+	}
+
+	return *this;
+}
+
+variant_iterator variant_iterator::operator--(int)
+{
+	variant_iterator iter(*this);
+	if (type_ == TYPE_LIST)
+	{
+		--list_iterator_;
+	} else if (type_ == TYPE_MAP)
+	{
+		--map_iterator_;
+	}
+
+	return iter;
+}
+
 variant_iterator& variant_iterator::operator=(const variant_iterator& that)
 {
 	if (this == &that)

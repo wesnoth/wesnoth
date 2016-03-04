@@ -181,6 +181,12 @@ private:
  */
 class variant_iterator {
 public:
+	typedef variant value_type;
+	typedef std::bidirectional_iterator_tag iterator_category;
+	typedef variant& reference;
+	typedef variant* pointer;
+	typedef int difference_type;
+	
 	/**
 	 * Constructor for a TYPE_NULL variant.
 	 */
@@ -209,6 +215,8 @@ public:
 	variant operator*() const;
 	variant_iterator& operator++();
 	variant_iterator operator++(int);
+	variant_iterator& operator--();
+	variant_iterator operator--(int);
 	variant_iterator& operator=(const variant_iterator& that);
 	bool operator==(const variant_iterator& that) const;
 	bool operator!=(const variant_iterator& that) const;
