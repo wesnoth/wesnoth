@@ -571,8 +571,18 @@ void tpreferences::initialize_members(twindow& window)
 		grid(), set_grid, window);
 
 	/* ANIMATE MAP */
-	setup_single_toggle("animate_terrains",
-		animate_map(), set_animate_map, window);
+	ttoggle_button& animate_map_toggle =
+		find_widget<ttoggle_button>(&window, "animate_terrains", false);
+
+	ttoggle_button& animate_water_toggle =
+		find_widget<ttoggle_button>(&window, "animate_water", false);
+
+	animate_map_toggle.set_value(animate_map());
+	animate_water_toggle.set_active(animate_map_toggle.get_value_bool());
+
+	connect_signal_mouse_left_click(animate_map_toggle, boost::bind(
+			&tpreferences::animate_map_toggle_callback,
+			this, boost::ref(animate_map_toggle), boost::ref(animate_water_toggle)));
 
 	/* ANIMATE WATER */
 	setup_single_toggle("animate_water",
@@ -1246,6 +1256,14 @@ void tpreferences::max_autosaves_slider_callback(tslider& slider, tcontrol& stat
 void tpreferences::font_scaling_slider_callback(tslider& slider)
 {
 	font_scaling_ = slider.get_value();
+}
+
+void tpreferences::animate_map_toggle_callback(ttoggle_button& toggle,
+		ttoggle_button& toggle_water)
+{
+	const bool value = toggle.get_value_bool();
+	set_animate_map(value);
+	toggle_water.set_active(value);
 }
 
 template <typename T>

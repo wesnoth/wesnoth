@@ -97,6 +97,7 @@ private:
 	void accl_speed_slider_callback(tslider& slider);
 	void max_autosaves_slider_callback(tslider& slider, tcontrol& status_label);
 	void font_scaling_slider_callback(tslider& slider);
+	void animate_map_toggle_callback(ttoggle_button& toggle, ttoggle_button& toggle_water);
 	void add_hotkey_callback(tlistbox& hotkeys);
 	void remove_hotkey_callback(tlistbox& hotkeys);
 	void default_hotkey_callback(twindow& window);
