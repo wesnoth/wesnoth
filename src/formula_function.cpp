@@ -498,6 +498,19 @@ private:
 	}
 };
 
+class tan_function
+	: public function_expression {
+public:
+	explicit tan_function(const args_list& args)
+	     : function_expression("tan", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * tan(angle * pi<double>() / 180.0), variant::DECIMAL_VARIANT);
+	}
+};
+
 class index_of_function : public function_expression {
 public:
 	explicit index_of_function(const args_list& args)
@@ -862,7 +875,7 @@ private:
 class head_function : public function_expression {
 public:
 	explicit head_function(const args_list& args)
-	    : function_expression("head", args, 1, 1)
+	    : function_expression("head", args, 1, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -871,7 +884,40 @@ private:
 		if(it == items.end()) {
 			return variant();
 		}
-		return *it;
+		if(args().size() == 1) {
+			return *it;
+		}
+		const int n = items.num_elements(), req = args()[1]->evaluate(variables,fdb).as_int();
+		const int count = req < 0 ? n - std::min(-req, n) : std::min(req, n);
+		variant_iterator end = it;
+		std::advance(end, count);
+		std::vector<variant> res;
+		std::copy(it, end, std::back_inserter(res));
+		return variant(&res);
+	}
+};
+
+class tail_function : public function_expression {
+public:
+	explicit tail_function(const args_list& args)
+	    : function_expression("tail", args, 1, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant items = args()[0]->evaluate(variables,fdb);
+		variant_iterator it = items.end();
+		if(it == items.begin()) {
+			return variant();
+		}
+		if(args().size() == 1) {
+			return *--it;
+		}
+		const int n = items.num_elements(), req = args()[1]->evaluate(variables,fdb).as_int();
+		const int count = req < 0 ? n - std::min(-req, n) : std::min(req, n);
+		std::advance(it, -count);
+		std::vector<variant> res;
+		std::copy(it, items.end(), std::back_inserter(res));
+		return variant(&res);
 	}
 };
 
@@ -1168,6 +1214,7 @@ functions_map& get_functions_map() {
 		FUNCTION(reduce);
 		FUNCTION(sum);
 		FUNCTION(head);
+		FUNCTION(tail);
 		FUNCTION(size);
 		FUNCTION(null);
 		FUNCTION(ceil);
@@ -1186,6 +1233,7 @@ functions_map& get_functions_map() {
 		FUNCTION(concatenate);
 		FUNCTION(sin);
 		FUNCTION(cos);
+		FUNCTION(tan);
 #undef FUNCTION
 	}
 
