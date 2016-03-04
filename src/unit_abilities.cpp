@@ -1006,10 +1006,6 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		const config& cfg = *ability.first;
 		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
-		if (!cfg["backstab"].blank()) {
-			lg::wml_error << "The backstab= key in weapon specials is deprecated; use [filter_adjacent] instead\n";
-		}
-
 		if (!backstab && cfg["backstab"].to_bool())
 			continue;
 		if (!filter_base_matches(cfg, def))
