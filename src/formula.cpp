@@ -1030,6 +1030,8 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 
 	//set true when 'fai' keyword is found
 	bool fai_keyword = false;
+	//set true when 'wfl' keyword is found
+	bool wfl_keyword = false;
 	//used to locally keep the track of which file we parse actually and in which line we are
 	std::vector< std::pair< std::string, int> > files;
 	//used as a source of strings - we point to these strings from tokens
@@ -1067,6 +1069,10 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 				fai_keyword = true;
 				tokens.pop_back();
 			} else
+			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end)  == "wfl") ) {
+				wfl_keyword = true;
+				tokens.pop_back();
+			} else
 			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end) == "faiend") ) {
 				if (files.size() > 1) {
 					files.pop_back();
@@ -1076,7 +1082,16 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 					throw formula_error("Unexpected 'faiend' found", "", "", 0);
 				}
 			} else
-			if (fai_keyword) {
+			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end) == "wflend") ) {
+				if (files.size() > 1) {
+					files.pop_back();
+					filenames_it = filenames.find( files.back().first );
+					tokens.pop_back();
+				} else {
+					throw formula_error("Unexpected 'wflend' found", "", "", 0);
+				}
+			} else
+			if (fai_keyword || wfl_keyword) {
 				if(current_type == TOKEN_STRING_LITERAL) {
 					std::string str = std::string(tokens.back().begin,tokens.back().end);
 					files.push_back( std::make_pair( str , 1 ) );
@@ -1085,12 +1100,17 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 					if(ret.second==true) {
 						filenames_it = ret.first;
 					} else {
-						throw formula_error("Faifile already included", "fai" + str, "", 0);
+						if (fai_keyword)
+							throw formula_error("Faifile already included", "fai" + str, "", 0);
+						else throw formula_error("Wflfile already included", "wfl" + str, "", 0);
 					}
 					tokens.pop_back();
 					fai_keyword = false;
+					wfl_keyword = false;
 				} else {
-					throw formula_error("Expected string after the 'fai'", "fai", "", 0);
+					if (fai_keyword)
+						throw formula_error("Expected string after the 'fai'", "fai", "", 0);
+					else throw formula_error("Expected string after the 'wfl'", "wfl", "", 0);
 				}
 			} else {
 				//in every token not specified above, store line number and name of file it came from
@@ -1116,7 +1136,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	}
 
 	if(files.size() > 1) {
-		throw formula_error("Missing 'faiend', make sure each .fai file ends with it", "", "", 0);
+		throw formula_error("Missing 'wflend', make sure each .wfl file ends with it", "", "", 0);
 	}
 
 	if(!tokens.empty()) {

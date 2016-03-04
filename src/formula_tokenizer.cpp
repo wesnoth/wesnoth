@@ -72,6 +72,9 @@ token get_token(iterator& i1, iterator i2) {
 				} else if( *it == 'f' ) { //fai
 					if( *(it+1) == 'a' && *(it+2) == 'i' )
 						t = TOKEN_KEYWORD;
+				} else if( *it == 'w' ) { //wfl
+					if( *(it+1) == 'f' && *(it+2) == 'l' )
+						t = TOKEN_KEYWORD;
 				}
 			} else if( diff == 5 ) {
 				std::string s(it, i1);
@@ -80,6 +83,8 @@ token get_token(iterator& i1, iterator i2) {
 			} else if( diff == 6 ) {
 				std::string s(it, i1);
 				if( s == "faiend" )
+					t = TOKEN_KEYWORD;
+				else if( s == "wflend" )
 					t = TOKEN_KEYWORD;
 			} else if( diff == 9 ) {
 				std::string s(it, i1);
