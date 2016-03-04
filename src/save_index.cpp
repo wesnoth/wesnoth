@@ -168,8 +168,13 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 	filesystem::get_files_in_dir(creator.dir,&filenames);
 
 	if (filter) {
+
+		// Replace the spaces in the filter
+		std::string filter_replaced(filter->begin(), filter->end());
+		replace_space2underbar(filter_replaced);
+
 		filenames.erase(std::remove_if(filenames.begin(), filenames.end(),
-                                               filename_filter(*filter)),
+                                               filename_filter(filter_replaced)),
                                 filenames.end());
 	}
 
