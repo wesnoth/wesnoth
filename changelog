@@ -2,19 +2,21 @@ Version 1.13.2+dev:
  * Greatly improved SDL 2 support. SDL 2 is now used by default build when
    building. This fixes the following bugs, among others:
    * Bug #18112: Color cursors cause slow mouse movement at menus
-   * Bug #20332: Cursor not mapping correctly on Retina display when in Windowed
-     mode
-   * Bug #24138: SDL 2 crash on resize after starting a game and returning to
-     the title screen
-   * Bug #23908: SDL 2 SDL_BlitSurface causes crashes
-   * Bug #23821: Text input is broken in GUI1 under SDL 2
+   * Bug #19666: When I resize windows during dialog I lose the menu buttons
+   * Bug #20332: Cursor not mapping correctly on Retina display when in Windowed mode
    * Bug #23820: SDL 2 alpha blending issues
+   * Bug #23821: Text input is broken in GUI1 under SDL 2
+   * Bug #23908: SDL 2 SDL_BlitSurface causes crashes
    * Bug #23918: UI graphics garbled on OS X 10.11 El Capitan
-   * Bug #24214: SDL 2 build handles fullscreen toggle badly
    * Bug #23934: Resize actions are laggy
+   * Bug #24138: SDL 2 crash on resize after starting a game and returning to the title screen
    * Bug #24209: Screen becomes black upon minimise and restore
-   * Bug #24213: SDL 2 build leaves menu items stuck if window dimensions
-     change while open
+   * Bug #24213: SDL 2 build leaves menu items stuck if window dimensions change while open
+   * Bug #24214: SDL 2 build handles fullscreen toggle badly
+   * Bug #24260: Menu and Action buttons disappear on resize
+   * Bug #24261: Area under Objectives not redrawn on resize
+   * Bug #24294: Doubled-up GUI1 dialogs don't redraw the secondary in SDL2
+   * Bug #24477: Segfault when launching Credits
  * Campaigns:
    * Liberty:
      * Added some animations for the Rogue Mage line.
