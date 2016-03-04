@@ -68,8 +68,8 @@ public:
 	variant(const variant& v);
 	variant& operator=(const variant& v);
 
-	const variant& operator[](size_t n) const;
-	const variant& operator[](const variant& v) const;
+	variant operator[](size_t n) const;
+	variant operator[](const variant& v) const;
 	size_t num_elements() const;
 	bool is_empty() const;
 

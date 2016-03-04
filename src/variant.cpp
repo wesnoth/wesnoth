@@ -373,7 +373,7 @@ variant& variant::operator=(const variant& v)
 	return *this;
 }
 
-const variant& variant::operator[](size_t n) const
+variant variant::operator[](size_t n) const
 {
 	if(type_ == TYPE_CALLABLE) {
 		assert(n == 0);
@@ -389,7 +389,7 @@ const variant& variant::operator[](size_t n) const
 	return list_->elements[n];
 }
 
-const variant& variant::operator[](const variant& v) const
+variant variant::operator[](const variant& v) const
 {
 	if(type_ == TYPE_CALLABLE) {
 		assert(v.as_int() == 0);
@@ -406,6 +406,14 @@ const variant& variant::operator[](const variant& v) const
 		}
 		return i->second;
 	} else if(type_ == TYPE_LIST) {
+		if(v.is_list()) {
+			std::vector<variant> slice;
+			
+			for(size_t i = 0; i < v.num_elements(); ++i) {
+				slice.push_back( (*this)[v[i]] );
+			}
+			return variant(&slice);
+		}
 		return operator[](v.as_int());
 	} else {
 		throw type_error((formatter() << "type error: "
