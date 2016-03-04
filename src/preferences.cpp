@@ -106,9 +106,9 @@ base_manager::~base_manager()
 }
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-/* 
+/*
  * Hook for setting window state variables on window resize and maximize
- * events. Since there is no fullscreen window event, that setter is called 
+ * events. Since there is no fullscreen window event, that setter is called
  * from the CVideo function instead.
  */
 void prefs_event_handler::handle_window_event(const SDL_Event& event)
@@ -129,7 +129,7 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 		break;
 
 	case SDL_WINDOWEVENT_RESTORED:
-		_set_maximized(false);
+		_set_maximized(fullscreen() || false);
 
 		break;
 	}
@@ -362,8 +362,7 @@ int min_allowed_height()
 
 std::pair<int,int> resolution()
 {
-	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-	std::string x = prefs['x' + postfix], y = prefs['y' + postfix];
+	const std::string& x = prefs["xresolution"], y = prefs["yresolution"];
 
 	if (!x.empty() && !y.empty()) {
 		return std::make_pair(
@@ -376,7 +375,7 @@ std::pair<int,int> resolution()
 
 bool maximized()
 {
-	return get("maximized", (fullscreen() & true));
+	return get("maximized", !fullscreen());
 }
 
 bool fullscreen()
@@ -386,9 +385,8 @@ bool fullscreen()
 
 void _set_resolution(const std::pair<int, int>& res)
 {
-	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-	preferences::set('x' + postfix, lexical_cast<std::string>(res.first));
-	preferences::set('y' + postfix, lexical_cast<std::string>(res.second));
+	preferences::set("xresolution", lexical_cast<std::string>(res.first));
+	preferences::set("yresolution", lexical_cast<std::string>(res.second));
 }
 
 void _set_maximized(bool ison)
@@ -424,7 +422,7 @@ void save_turbo_speed(const double speed)
 {
 	prefs["turbo_speed"] = speed;
 }
-	
+
 int font_scaling()
 {
 	// Clip at 50 because if it's too low it'll cause crashes
