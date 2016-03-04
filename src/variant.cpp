@@ -893,6 +893,55 @@ variant variant::list_elements_div(const variant& v) const
 	return variant( &res );
 }
 
+variant variant::concatenate(const variant& v) const
+{
+	if(type_ == TYPE_LIST) {
+		v.must_be(TYPE_LIST);
+		
+		std::vector< variant > res;
+		res.reserve(num_elements() + v.num_elements());
+		
+		for(size_t i = 0; i < num_elements(); ++i) {
+			res.push_back( (*this)[i] );
+		}
+		
+		for(size_t i = 0; i < v.num_elements(); ++i) {
+			res.push_back( v[i] );
+		}
+		
+		return variant( &res );
+	} else if(type_ == TYPE_STRING) {
+		v.must_be(TYPE_STRING);
+		std::string res = as_string() + v.as_string();
+		return variant( res );
+	} else {
+		throw type_error((formatter() << "type error: " << " expected two "
+			<< variant_type_to_string(TYPE_LIST) << " or two "
+			<< variant_type_to_string(TYPE_STRING) << " but found "
+			<< variant_type_to_string(type_)
+			<< " (" << to_debug_string() << ")"
+			<< " and " << variant_type_to_string(v.type_)
+			<< " (" << v.to_debug_string() << ")").str());
+	}
+}
+
+variant variant::build_range(const variant& v) const {
+	must_be(TYPE_INT);
+	v.must_be(TYPE_INT);
+	
+	int lhs = as_int(), rhs = v.as_int();
+	int len = abs(rhs - lhs) + 1;
+	
+	std::vector< variant > res;
+	res.reserve(len);
+		
+	for(size_t i = lhs; res.size() != res.capacity(); lhs < rhs ? ++i : --i) {
+		res.push_back( variant(i) );
+	}
+	
+	return variant( &res );
+}
+
 void variant::must_be(variant::TYPE t) const
 {
 	if(type_ != t) {

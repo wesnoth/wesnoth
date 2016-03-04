@@ -342,6 +342,8 @@ public:
 			op_ = MULL;
 		} else if(op == "./") {
 			op_ = DIVL;
+		} else if(op == "..") {
+			op_ = CAT;
 		}
 	}
 
@@ -378,6 +380,8 @@ private:
 			return left.list_elements_mul(right);
 		case DIVL:
 			return left.list_elements_div(right);
+		case CAT:
+			return left.concatenate(right);
 		case EQ:
 			return left == right ? variant(1) : variant(0);
 		case NEQ:
@@ -392,9 +396,13 @@ private:
 			return left > right ? variant(1) : variant(0);
 		case MOD:
 			return left % right;
+		case RAN:
+			return left.build_range(right);
 		case DICE:
-		default:
 			return variant(dice_roll(left.as_int(), right.as_int()));
+		default:
+			std::cerr << "ERROR: Unimplemented operator!" << std::endl;
+			return variant();
 		}
 	}
 
@@ -407,7 +415,7 @@ private:
 		return res;
 	}
 
-	enum OP { AND, OR, NEQ, LTE, GTE, GT='>', LT='<', EQ='=',
+	enum OP { AND, OR, NEQ, LTE, GTE, CAT, GT='>', LT='<', EQ='=', RAN='~',
 	          ADD='+', SUB='-', MUL='*', DIV='/', ADDL, SUBL, MULL, DIVL, DICE='d', POW='^', MOD='%' };
 
 	OP op_;
@@ -631,8 +639,10 @@ int operator_precedence(const token& t)
 		precedence_map[">"]     = n;
 		precedence_map["<="]    = n;
 		precedence_map[">="]    = n;
+		precedence_map["~"]     = ++n;
 		precedence_map["+"]     = ++n;
 		precedence_map["-"]     = n;
+		precedence_map[".."]    = n;
 		precedence_map["*"]     = ++n;
 		precedence_map["/"]     = n;
 		precedence_map["%"]     = ++n;

@@ -99,6 +99,11 @@ token get_token(iterator& i1, iterator i2) {
 			if( *i1 == '^' )
 				return token( it, ++i1, TOKEN_OPERATOR );
 
+			if( *i1 == '~' )
+				return token( it, ++i1, TOKEN_OPERATOR );
+
+			//unused characters in this range:
+			// \ ` { | }
 		}
 	} else {
 		//limit search to the lower-half of the ASCII table
@@ -147,6 +152,8 @@ token get_token(iterator& i1, iterator i2) {
 				//current character is between ':' and '@'
 				//possible tokens at this point that we are interested in:
 				// ; < = > <= >=
+				//unused characters in this range:
+				// : ? @
 
 				if( *i1 == ';' ) {
 					return token( it, ++i1, TOKEN_SEMICOLON);
@@ -173,6 +180,10 @@ token get_token(iterator& i1, iterator i2) {
 				}
 			}
 		//current character is between '!' and '/'
+		//possible tokens:
+		// , . .+ .- .* ./ .. ( ) ' # + - -> * / % !=
+		//unused characters:
+		// ! " $ &
 		} else if ( *i1 == ',' ) {
 			return token( it, ++i1, TOKEN_COMMA);
 
@@ -180,7 +191,7 @@ token get_token(iterator& i1, iterator i2) {
 			++i1;
 
 			if( i1 != i2 ) {
-				if( *i1 == '+' || *i1 == '-' || *i1 == '*' || *i1 == '/')
+				if( *i1 == '+' || *i1 == '-' || *i1 == '*' || *i1 == '/' || *i1 == '.')
 					return token( it, ++i1, TOKEN_OPERATOR );
 				else
 					return token( it, i1, TOKEN_OPERATOR );
