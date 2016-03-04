@@ -316,7 +316,6 @@ log_file_manager::~log_file_manager()
 		return;
 	}
 
-	DBG_LS << "Closing log file...\n";
 	fclose(stdout);
 	fclose(stderr);
 }
