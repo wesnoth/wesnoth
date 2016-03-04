@@ -243,10 +243,7 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 		//(we want to see that message before entering the linger mode)
 		show_carryover_message(playcontroller, end_level, res);
 	}
-	if(!video_.faked())
-	{
-		playcontroller.maybe_linger();
-	}
+	playcontroller.maybe_linger();
 	playcontroller.update_savegame_snapshot();
 	if(mp_info_) {
 		mp_info_->connected_players = playcontroller.all_players();
