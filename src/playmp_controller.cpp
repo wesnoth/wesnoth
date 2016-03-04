@@ -416,7 +416,7 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (!get_end_level_data_const().transient.linger_mode || gamestate().board_.teams().empty()) {
+	if (!get_end_level_data_const().transient.linger_mode || gamestate().board_.teams().empty() || gui_->video().faked()) {
 		if(!is_host()) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario
