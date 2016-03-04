@@ -147,6 +147,16 @@ readonly_context& engine::get_readonly_context()
 {
 	return ai_;
 }
+	
+// This is defined in the source file so that it can easily access the logger
+bool engine_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_ENGINE << "Error: Attempt to double-register engine " << name << std::endl;
+		return true;
+	}
+	return false;
+}
 
 
 } //end of namespace ai

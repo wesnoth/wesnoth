@@ -99,6 +99,7 @@ public:
 
 
 class stage_factory{
+	bool is_duplicate(const std::string &name);
 public:
 	typedef boost::shared_ptr< stage_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
@@ -116,6 +117,9 @@ public:
 
 	stage_factory( const std::string &name )
 	{
+		if (is_duplicate(name)) {
+			return;
+		}
 		factory_ptr ptr_to_this(this);
 		get_list().insert(make_pair(name,ptr_to_this));
 	}

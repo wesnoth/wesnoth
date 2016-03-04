@@ -108,6 +108,16 @@ bool candidate_action::to_be_removed()
 	return to_be_removed_;
 }
 
+// This is defined in the source file so that it can easily access the logger
+bool candidate_action_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_STAGE_RCA << "Error: Attempt to double-register candidate action " << name << std::endl;
+		return true;
+	}
+	return false;
+}
+
 //============================================================================
 
 } // of namespace ai

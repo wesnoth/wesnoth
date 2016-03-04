@@ -168,4 +168,14 @@ std::string lua_aspect_visitor::quote_string(const std::string& s)
 	}
 }
 
+// This is defined in the source file so that it can easily access the logger
+bool aspect_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_ASPECT << "Error: Attempt to double-register aspect " << name << std::endl;
+		return true;
+	}
+	return false;
+}
+
 } //end of namespace ai

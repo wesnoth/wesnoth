@@ -110,5 +110,15 @@ bool idle_stage::do_play_stage(){
 }
 
 
+// This is defined in the source file so that it can easily access the logger
+bool stage_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_STAGE << "Error: Attempt to double-register stage " << name << std::endl;
+		return true;
+	}
+	return false;
+}
+
 
 } //end of namespace ai

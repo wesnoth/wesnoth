@@ -366,5 +366,15 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > ta
 }
 
 
+// This is defined in the source file so that it can easily access the logger
+bool goal_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_GOAL << "Error: Attempt to double-register goal " << name << std::endl;
+		return true;
+	}
+	return false;
+}
+
 
 } //end of namespace ai
