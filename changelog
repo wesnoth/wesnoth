@@ -64,7 +64,7 @@ Version 1.13.2+dev:
    * add support for relative dirs in wesnoth.dofile/require
    * Added name= and write_name= attributes in [item]
    * Added description_alignment= key to [campaign]
-   * Fixed [put_to_recall_list] not working currently (bug #24390)
+   * Fixed [put_to_recall_list] not working correctly (bug #24390)
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
