@@ -64,7 +64,8 @@ void show_story(display &disp, const std::string &scenario_name,
 			}
 			break;
 		case storyscreen::QUIT:
-			break;
+			video2::trigger_full_redraw();
+			return;
 		}
 	}
 	video2::trigger_full_redraw();
