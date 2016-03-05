@@ -263,6 +263,10 @@ draw_layering::~draw_layering()
 {
 	draw_layers.remove(this);
 
+	video2::trigger_full_redraw();
+}
+
+void trigger_full_redraw() {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_Event event;
 	event.type = SDL_WINDOWEVENT;

@@ -88,7 +88,7 @@ namespace storyscreen {
 
 part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	gui::button &back_button, gui::button&play_button)
-	: video2::draw_layering(false)
+	: events::sdl_handler(false)
 	, p_(p)
 	, disp_(disp)
 	, video_(disp.video())
@@ -382,6 +382,7 @@ bool part_ui::render_floating_images()
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
+			render_background();
 			sdl_blit(ri.image, NULL, video_.getSurface(), &ri.rect);
 			update_rect(ri.rect);
 		}

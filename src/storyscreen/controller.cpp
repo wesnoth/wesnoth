@@ -147,8 +147,6 @@ void controller::resolve_wml(const vconfig& cfg)
 STORY_RESULT controller::show(START_POSITION startpos)
 {
 
-	events::event_context story_context;
-
 	if(parts_.empty()) {
 		LOG_NG << "no storyscreen parts to show\n";
 		return NEXT;

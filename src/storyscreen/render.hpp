@@ -41,7 +41,7 @@ namespace storyscreen {
  * assumed that the screen dimensions remain constant between the
  * constructor call, and the destruction of the objects.
  */
-class part_ui : public video2::draw_layering
+class part_ui : public events::sdl_handler
 {
 public:
 	/** Storyscreen result. */

@@ -37,6 +37,8 @@ static lg::log_domain log_engine("engine");
 void show_story(display &disp, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
+	events::event_context story_context;
+
 	int segment_count = 0;
 	config::const_child_iterator itor = story.first;
 	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
@@ -62,8 +64,9 @@ void show_story(display &disp, const std::string &scenario_name,
 			}
 			break;
 		case storyscreen::QUIT:
-			return;
+			break;
 		}
 	}
+	video2::trigger_full_redraw();
 	return;
 }
