@@ -383,8 +383,12 @@ bool part_ui::render_floating_images()
 
 		if(!ri.image.null()) {
 			render_background();
-			sdl_blit(ri.image, NULL, video_.getSurface(), &ri.rect);
-			update_rect(ri.rect);
+			for (size_t i = 0; i <= fi_n; i++)
+			{
+				floating_image::render_input& old_ri = imgs_[i];
+				sdl_blit(old_ri.image, NULL, video_.getSurface(), &old_ri.rect);
+				update_rect(old_ri.rect);
+			}
 		}
 
 		if (!skip_)
