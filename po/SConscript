@@ -86,9 +86,9 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 ]
             )
         elif cfgs:
-            env.Command(new_pot, wml_pot, Move("$TARGET", "$SOURCE"))
+            env.Command(new_pot, wml_pot, ["msgcat --sort-by-file $SOURCES -o $TARGET", Delete(wml_pot)])
         else:
-            env.Command(new_pot, source_pot, Move("$TARGET", "$SOURCE"))
+            env.Command(new_pot, source_pot, ["msgcat --sort-by-file $SOURCES -o $TARGET", Delete(source_pot)])
         env.Command(pot, new_pot, Action(update_pot))
 
     env.Alias("pot-update", "../translations")
