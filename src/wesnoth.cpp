@@ -715,6 +715,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		handle_lua_script_args(&*game,cmdline_opts);
 
 		plugins.play_slice();
+		plugins.play_slice();
 
 		if(cmdline_opts.unit_test) {
 			if(cmdline_opts.timeout) {
