@@ -21,7 +21,7 @@ def generate(env):
 
     env["MSGMERGE"] = WhereIs("msgmerge")
     msgmerge = Builder(
-        action = "$MSGMERGE $TARGET $SOURCE -o $TARGET",
+        action = "$MSGMERGE --backup=none --previous -U $TARGET $SOURCE",
         src_suffix = ".pot",
         suffix = ".po",
         single_source = True
