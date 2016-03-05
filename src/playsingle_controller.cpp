@@ -168,6 +168,7 @@ void playsingle_controller::play_scenario_main_loop()
 		try {
 			play_turn();
 			if (is_regular_game_end()) {
+				turn_data_.send_data();
 				return;
 			}
 			gamestate_->player_number_ = 1;
