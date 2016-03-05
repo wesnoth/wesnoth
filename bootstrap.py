@@ -27,6 +27,26 @@
 #   getsecure(targetdir, filespec, quiet=False)
 #                    - download file and check hash/size
 
+# --- Data ---
+
+"""
+Every entry in specification for downloaded files below
+contains following *required* fields:
+
+  filename     - file is saved under this name in LOOT dir
+                 (because file detection is not secure)
+  hashsize     - to ensure that file is right
+  url          -
+  check        - LOOT path to check that file is unpacked
+
+These fields are *optional*:
+
+  name         - convenient name for dependency data
+  unpackto     - LOOT path to unpack to
+                 (in case archive doesn't have top dir)
+
+Let's say this is filespec version 1.0
+"""
 
 filespec = [
   # tools needed for bootstrap
@@ -127,6 +147,8 @@ filespec = [
   ),
 ]
 
+# --- Code ---
+
 # index for easy access, like toolspec['boost']['path']
 toolspec = {}
 for entry in filespec:
@@ -170,7 +192,9 @@ def hashsize(path):
   h = sha1()
   with open(path, 'rb') as source:
     while True:
-      c = source.read(64*1024)  # read in 64k blocks
+      # read in 64k blocks, because some files are too big
+      # and free memory is not enough
+      c = source.read(64*1024)
       if not c:
         break
       h.update(c)
@@ -352,6 +376,7 @@ def run_capture_limited(command, maxlines=20000):
                 lines.append(line)
             else:
                 # the only safe way to decode *any* binary data to
+                # string http://stackoverflow.com/a/27527728/239247
                 lines.append(line.decode('cp437'))
 
     outpipe = subprocess.PIPE
