@@ -1010,6 +1010,13 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 
 }
 
+formula::~formula()
+{
+	if(managing_symbols) {
+		delete symbols_;
+	}
+}
+
 formula_ptr formula::create_optional_formula(const std::string& str, function_symbol_table* symbols)
 {
 	if(str.empty()) {
@@ -1021,9 +1028,15 @@ formula_ptr formula::create_optional_formula(const std::string& str, function_sy
 
 formula::formula(const std::string& str, function_symbol_table* symbols) :
 	expr_(),
-	str_(str)
+	str_(str),
+	symbols_(symbols),
+	managing_symbols(symbols == NULL)
 {
 	using namespace formula_tokenizer;
+	
+	if(symbols == NULL) {
+		symbols_ = new function_symbol_table;
+	}
 
 	std::vector<token> tokens;
 	std::string::const_iterator i1 = str.begin(), i2 = str.end();
@@ -1140,15 +1153,20 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	}
 
 	if(!tokens.empty()) {
-		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
+		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols_);
 	} else {
 		expr_ = expression_ptr(new null_expression());
 	}
 }
 formula::formula(const token* i1, const token* i2, function_symbol_table* symbols) :
 	expr_(),
-	str_()
+	str_(),
+	symbols_(symbols),
+	managing_symbols(symbols == NULL)
 {
+	if(symbols == NULL) {
+		symbols_ = new function_symbol_table;
+	}
 
 	if(i1 != i2) {
 		expr_ = parse_expression(i1,i2, symbols);
