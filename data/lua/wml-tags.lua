@@ -1368,7 +1368,6 @@ function wml_actions.put_to_recall_list(cfg)
 			unit.status.slowed = false
 		end
 		wesnoth.put_recall_unit(unit, unit.side)
-		wesnoth.erase_unit(unit)
 	end
 end
 
