@@ -11,6 +11,7 @@ Version 1.13.2+dev:
    * Bug #23934: Resize actions are laggy
    * Bug #24138: SDL 2 crash on resize after starting a game and returning to the title screen
    * Bug #24209: Screen becomes black upon minimise and restore
+   * bug #24212: SDL 2 build handled input incorrectly once window focus is lost when menus are open
    * Bug #24213: SDL 2 build leaves menu items stuck if window dimensions change while open
    * Bug #24214: SDL 2 build handles fullscreen toggle badly
    * Bug #24260: Menu and Action buttons disappear on resize
