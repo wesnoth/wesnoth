@@ -113,10 +113,9 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 
 	ttext_box* filter
 			= find_widget<ttext_box>(&window, "txtFilter", false, true);
-	window.keyboard_capture(filter);
+
 	filter->set_text_changed_callback(
 			boost::bind(&tgame_load::filter_text_changed, this, _1, _2));
-	window.keyboard_capture(filter);
 
 	tlistbox* list
 			= find_widget<tlistbox>(&window, "savegame_list", false, true);
@@ -130,6 +129,7 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	list->set_callback_value_change(
 			dialog_callback<tgame_load, &tgame_load::list_item_clicked>);
 #endif
+	window.keyboard_capture(list);
 
 	{
 		cursor::setter cur(cursor::WAIT);
