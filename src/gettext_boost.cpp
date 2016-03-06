@@ -20,6 +20,8 @@
 #include <locale>
 #include <boost/locale.hpp>
 #include <boost/foreach.hpp>
+// including boost/thread fixes linking of boost locale for msvc on boost 1.60
+#include <boost/thread.hpp>
 #include <set>
 
 #define DBG_G LOG_STREAM(debug, lg::general)
