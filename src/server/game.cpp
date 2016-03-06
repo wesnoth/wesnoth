@@ -1038,6 +1038,10 @@ void game::process_whiteboard(simple_wml::document& data, const player_map::cons
 			|| side_num > gamemap::MAX_PLAYERS
 			|| sides_[side_num-1] != user->first)
 	{
+		if(sides_[side_num-1] != user->first) {
+			//This case seems to happen quite frequently in mp matches, mute this warning since it gives us no new information.
+			return;
+		}
 		std::ostringstream msg;
 		msg << "Ignoring illegal whiteboard data, sent from user '" << user->second.name()
 				<< "' to team '" << std::string(team_name.begin(), team_name.end()) << "'";
