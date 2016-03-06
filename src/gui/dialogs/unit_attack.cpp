@@ -218,12 +218,12 @@ static void set_weapon_info(twindow& window,
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
 			<< attacker.damage << font::weapon_numbers_sep << attacker_weapon.num_attacks()
 			<< attw_apecials << "\n"
-			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>" << "\n";
+			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>";
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
 			<< defender.damage << font::weapon_numbers_sep << defender_weapon.num_attacks()
 			<< defw_specials << "\n"
-			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>" << "\n";
+			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
 		std::map<std::string, string_map> data;
 		string_map item;
