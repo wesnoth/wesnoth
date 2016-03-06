@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
-"PO-Revision-Date: 2016-01-23 13:19+1100\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-03-02 15:18+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -213,15 +213,11 @@ msgstr "A quintain? You want me to fight a dummy?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:309
-#, fuzzy
-#| msgid ""
-#| "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
-#| "sure you’ll win."
 msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
 msgstr ""
-"Young lady, you have $student_hp hit-points and a sword. I’m fairly sure "
+"Young man, you have $student_hp hit-points and a sword. I’m fairly sure "
 "you’ll win."
 
 #. [message]: speaker=Delfador
@@ -941,12 +937,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:192
-#, fuzzy
-#| msgid ""
-#| "I see you have veteran troops from your training! You should <i>recall</"
-#| "i> them as as to start off the battle with more experienced units. Think "
-#| "carefully, though; if a unit has too little experience, it might be "
-#| "cheaper to recruit a new one."
 msgid ""
 "I see you have veteran troops from your training! You should <i>recall</i> "
 "them so as to start off the battle with more experienced units. Think "
@@ -954,22 +944,18 @@ msgid ""
 "to recruit a new one."
 msgstr ""
 "I see you have veteran troops from your training! You should <i>recall</i> "
-"them as as to start off the battle with more experienced units. Think "
-"carefully, though; if a unit has too little experience, it might be cheaper "
+"them so as to start off the battle with more experienced units. Think "
+"carefully, though; if a unit has too little experience, it might be better "
 "to recruit a new one."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:198
-#, fuzzy
-#| msgid ""
-#| "Some of your units have also managed to level up. They’re even more "
-#| "formidable, so you should recall them first."
 msgid ""
 "Some of your units have also managed to level up. They’re even more "
 "formidable, so you should recall them as well."
 msgstr ""
-"Some of your units have also managed to level up. They’re even more "
-"formidable, so you should recall them first."
+"Some of your units have also managed to gain levels. They’re even more "
+"formidable, so you should recall them as well."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:213
@@ -1091,12 +1077,6 @@ msgstr "Elvish Archer"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:272
-#, fuzzy
-#| msgid ""
-#| "Unlike the Elvish Fighter, which has strong melee attacks, the Elvish "
-#| "Archer has strong ranged attacks. It’s useful to attack enemy units with "
-#| "strong melee attacks with strong ranged attacks, and vice versa. This "
-#| "allows your units to take less damage when your enemy counterattacks."
 msgid ""
 "Unlike the Elvish Fighter, which has strong melee attacks, the Elvish Archer "
 "has strong ranged attacks. It’s useful to attack enemy units with strong "
@@ -1106,7 +1086,7 @@ msgstr ""
 "Unlike the Elvish Fighter, which has strong melee attacks, the Elvish Archer "
 "has strong ranged attacks. It’s useful to attack enemy units with strong "
 "melee attacks with strong ranged attacks, and vice versa. This allows your "
-"units to take less damage when your enemy counter-attacks."
+"units to take less damage overall when your enemy counter-attacks."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:295
@@ -1222,14 +1202,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
-#, fuzzy
-#| msgid ""
-#| "That Orcish Grunt is still blocking our path. He has no ranged attacks, "
-#| "so your archers should be able to engage him with little risk. "
-#| "Unfortunately, your units cannot reach him this turn, but you should not "
-#| "let them languish! Move them into position so they can attack next turn. "
-#| "There are also other villages on this side of the river. You should "
-#| "secure them for income and healing"
 msgid ""
 "That Orcish Grunt is still blocking our path. He has no ranged attacks, so "
 "your archers should be able to engage him with little risk. Unfortunately, "
@@ -1338,14 +1310,6 @@ msgstr "Zone of Control"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:437
-#, fuzzy
-#| msgid ""
-#| "The hexes immediately around a unit constitute its <i>Zone of Control</"
-#| "i>. When an enemy unit enters those hexes, they cannot move any further "
-#| "that turn. An exception are units with the <i>skirmish</i> ability, who "
-#| "are unaffected by zones of control. This can be used to create a blockade "
-#| "to prevent stronger enemies from reaching key locations, such as "
-#| "villages, even if you have limited manpower."
 msgid ""
 "The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
 "When an enemy unit enters those hexes, they cannot move any further that "
@@ -1356,8 +1320,8 @@ msgid ""
 msgstr ""
 "The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
 "When an enemy unit enters those hexes, they cannot move any further that "
-"turn. An exception are units with the <i>skirmish</i> ability, who are "
-"unaffected by zones of control. This can be used to create a blockade to "
+"turn. (An exception are units with the <i>skirmisher</i> ability, who are "
+"unaffected by zones of control.) This can be used to create a blockade to "
 "prevent stronger enemies from reaching key locations, such as villages, even "
 "if you have limited manpower."
 
@@ -1416,19 +1380,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:510
-#, fuzzy
-#| msgid ""
-#| "Don’t forget about that last village near the channel. They orcs will "
-#| "capture if it they try to sneak around via the ford! It will be hard to "
-#| "dislodge them of they do."
 msgid ""
 "Don’t forget about that last village near the channel. The orcs will capture "
 "it if they try to sneak around via the ford! It will be hard to dislodge "
 "them if they do."
 msgstr ""
-"Don’t forget about that last village near the channel. They orcs will "
-"capture if it they try to sneak around via the ford! It will be hard to "
-"dislodge them of they do."
+"Don’t forget about that last village near the channel. The orcs will capture "
+"it if they try to sneak around via the ford! It will be hard to dislodge "
+"them if they do."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:524

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-03-05 05:00+0300\n"
-"PO-Revision-Date: 2016-01-23 13:18+1100\n"
+"PO-Revision-Date: 2016-03-05 13:54+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -559,10 +559,8 @@ msgstr "Snowy Mountains"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:798
-#, fuzzy
-#| msgid "Dry Mountains"
 msgid "Desert Mountains"
-msgstr "Dry Mountains"
+msgstr "Desert Mountains"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:809
@@ -729,10 +727,8 @@ msgstr "Regular Impassable Mountains"
 
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1042
-#, fuzzy
-#| msgid "Desert Impassable Mountains"
 msgid "Dry Impassable Mountains"
-msgstr "Desert Impassable Mountains"
+msgstr "Dry Impassable Mountains"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1053
@@ -859,10 +855,8 @@ msgstr "Adobe Village"
 
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1192
-#, fuzzy
-#| msgid "Adobe Village"
 msgid "Ruined Adobe Village"
-msgstr "Adobe Village"
+msgstr "Ruined Adobe Village"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1205
@@ -3370,27 +3364,24 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
+"Choose how you wish to be notified of events in multiplayer games or in the "
+"multiplayer lobby; either by playing sound alerts or (if the game window is "
+"inactive or minimized) displaying desktop notifications."
 
 #. [label]
 #: data/gui/default/window/mp_alerts_options.cfg:139
-#, fuzzy
-#| msgid "Event:"
 msgid "Event"
-msgstr "Event:"
+msgstr "Event"
 
 #. [label]: id=notification_label
 #: data/gui/default/window/mp_alerts_options.cfg:170
-#, fuzzy
-#| msgid "Desktop Notification:"
 msgid "Desktop Notification"
-msgstr "Desktop Notification:"
+msgstr "Desktop Notification"
 
 #. [label]
 #: data/gui/default/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Lobby"
 msgid "In Lobby"
-msgstr "Lobby"
+msgstr "In Lobby"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:191
@@ -3414,15 +3405,13 @@ msgstr "When a player leaves the lobby or game"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "When a public message is received"
 msgid "When a whisper is received"
-msgstr "When a public message is received"
+msgstr "When a whisper is received"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:193
 msgid "Whisper:"
-msgstr ""
+msgstr "Whisper:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:194
@@ -3456,10 +3445,8 @@ msgstr "When a server message is received"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:197
-#, fuzzy
-#| msgid "Ready to start game:"
 msgid "Ready to start:"
-msgstr "Ready to start game:"
+msgstr "Ready to start:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:197
@@ -3809,10 +3796,8 @@ msgstr "Do not animate AI units moving"
 
 #. [column]
 #: data/gui/default/window/preferences/01_general.cfg:83
-#, fuzzy
-#| msgid "Speed: "
 msgid "Speed:"
-msgstr "Speed: "
+msgstr "Speed:"
 
 #. [column]
 #: data/gui/default/window/preferences/01_general.cfg:87
@@ -3826,10 +3811,8 @@ msgstr "Disable automatic moves"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/default/window/preferences/01_general.cfg:104
-#, fuzzy
-#| msgid "Do not allow automatic movements at the begining of a turn"
 msgid "Do not allow automatic movements at the beginning of a turn"
-msgstr "Do not allow automatic movements at the begining of a turn"
+msgstr "Do not allow automatic movements at the beginning of a turn"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/default/window/preferences/01_general.cfg:117
@@ -3858,10 +3841,8 @@ msgstr "Hide allies’ plans by default"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/default/window/preferences/01_general.cfg:146
-#, fuzzy
-#| msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
-msgstr "Hides allies’ Planning Mode plans in multiplayer games"
+msgstr "Hide allies’ Planning Mode plans in multiplayer games"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
 #: data/gui/default/window/preferences/01_general.cfg:159
@@ -3880,12 +3861,9 @@ msgstr "Save replays at the end of scenarios"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/default/window/preferences/01_general.cfg:176
-#, fuzzy
-#| msgid ""
-#| "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Saves replays of games on victory in all modes and defeat in multiplayer"
+"Save replays of games on victory in all modes and defeat in multiplayer"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/default/window/preferences/01_general.cfg:189
@@ -3894,21 +3872,15 @@ msgstr "Delete auto-saves at the end of scenarios"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/default/window/preferences/01_general.cfg:190
-#, fuzzy
-#| msgid ""
-#| "Deletes previous auto-saves on victory in all modes and defeat in "
-#| "multiplayer"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
+"Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 
 #. [column]
 #: data/gui/default/window/preferences/01_general.cfg:200
-#, fuzzy
-#| msgid "Maximum auto-saves: "
 msgid "Maximum auto-saves:"
-msgstr "Maximum auto-saves: "
+msgstr "Maximum auto-saves:"
 
 #. [column]
 #: data/gui/default/window/preferences/01_general.cfg:204
@@ -3932,42 +3904,38 @@ msgstr "Action"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/default/window/preferences/02_hotkeys.cfg:51
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkey"
-msgstr "Hotkeys"
+msgstr "Hotkey"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/default/window/preferences/02_hotkeys.cfg:62
 msgid "game_hotkeys^G"
-msgstr ""
+msgstr "G"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/default/window/preferences/02_hotkeys.cfg:63
 msgid "Available in game"
-msgstr ""
+msgstr "Available in game"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/default/window/preferences/02_hotkeys.cfg:74
 msgid "editor_hotkeys^E"
-msgstr ""
+msgstr "E"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/default/window/preferences/02_hotkeys.cfg:75
 msgid "Available in editor"
-msgstr ""
+msgstr "Available in editor"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/default/window/preferences/02_hotkeys.cfg:86
 msgid "titlescreen_hotkeys^T"
-msgstr ""
+msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/default/window/preferences/02_hotkeys.cfg:87
-#, fuzzy
-#| msgid "Quit to Titlescreen"
 msgid "Available in titlescreen"
-msgstr "Quit to Title Screen"
+msgstr "Available in title screen"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/default/window/preferences/02_hotkeys.cfg:199
@@ -3981,17 +3949,13 @@ msgstr "Clear Hotkey"
 
 #. [label]
 #: data/gui/default/window/preferences/03_display.cfg:20
-#, fuzzy
-#| msgid "Change Resolution"
 msgid "Resolution:"
-msgstr "Change Resolution"
+msgstr "Resolution:"
 
 #. [combobox]: id=resolution_set
 #: data/gui/default/window/preferences/03_display.cfg:32
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the game resolution"
-msgstr "Change the sample rate"
+msgstr "Change the game resolution"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/default/window/preferences/03_display.cfg:48
@@ -4001,7 +3965,7 @@ msgstr "Full screen"
 #. [toggle_button]: id=fullscreen
 #: data/gui/default/window/preferences/03_display.cfg:49
 msgid "Toggle between fullscreen and window mode"
-msgstr ""
+msgstr "Toggle between fullscreen and window mode"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/default/window/preferences/03_display.cfg:68
@@ -4011,7 +3975,7 @@ msgstr "Show floating labels"
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/default/window/preferences/03_display.cfg:69
 msgid "Show damage and healing amounts above a unit"
-msgstr ""
+msgstr "Show damage and healing amounts above a unit"
 
 #. [toggle_button]: id=show_halos
 #: data/gui/default/window/preferences/03_display.cfg:82
@@ -4020,10 +3984,8 @@ msgstr "Show haloing effects"
 
 #. [toggle_button]: id=show_halos
 #: data/gui/default/window/preferences/03_display.cfg:83
-#, fuzzy
-#| msgid "Show haloing effects"
 msgid "Show special unit graphical effects"
-msgstr "Show haloing effects"
+msgstr "Show special unit graphical effects"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/default/window/preferences/03_display.cfg:96
@@ -4046,10 +4008,8 @@ msgstr "Show grid"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/default/window/preferences/03_display.cfg:113
-#, fuzzy
-#| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
-msgstr "Overlay a grid on to the map"
+msgstr "Overlay a grid over the map"
 
 #. [toggle_button]: id=animate_terrains
 #: data/gui/default/window/preferences/03_display.cfg:128
@@ -4063,17 +4023,13 @@ msgstr "Display animated terrain graphics"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/default/window/preferences/03_display.cfg:142
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate water"
-msgstr "Animate map"
+msgstr "Animate water"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/default/window/preferences/03_display.cfg:143
-#, fuzzy
-#| msgid "Display animated terrain graphics"
 msgid "Display animated water graphics (can be slow)"
-msgstr "Display animated terrain graphics"
+msgstr "Display animated water graphics (can be slow)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/default/window/preferences/03_display.cfg:156
@@ -4108,12 +4064,12 @@ msgstr "Set the frequency of unit idle animations"
 #. [label]
 #: data/gui/default/window/preferences/03_display.cfg:243
 msgid "Font Scaling:"
-msgstr ""
+msgstr "Font Scaling:"
 
 #. [slider]: id=scaling_slider
 #: data/gui/default/window/preferences/03_display.cfg:258
 msgid "Set the scaling factor of fonts"
-msgstr ""
+msgstr "Set the scaling factor of fonts"
 
 #. [button]: id=choose_theme
 #: data/gui/default/window/preferences/03_display.cfg:288
@@ -4122,10 +4078,8 @@ msgstr "Theme"
 
 #. [button]: id=choose_theme
 #: data/gui/default/window/preferences/03_display.cfg:289
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the in-game theme"
-msgstr "Change the sample rate"
+msgstr "Change the in-game theme"
 
 #. [label]
 #: data/gui/default/window/preferences/04_sound.cfg:38
@@ -4179,8 +4133,6 @@ msgstr "Change the bell volume"
 
 #. [column]
 #: data/gui/default/window/preferences/04_sound.cfg:101
-#, fuzzy
-#| msgid "Turn menu and button sounds on/off"
 msgid "Turn menu and button sounds on/off"
 msgstr "Turn menu and button sounds on/off"
 
@@ -4191,22 +4143,16 @@ msgstr "User interface sounds"
 
 #. [column]
 #: data/gui/default/window/preferences/04_sound.cfg:102
-#, fuzzy
-#| msgid "Change the sound volume for button clicks, etc."
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Change the sound volume for button clicks, etc."
 
 #. [label]
 #: data/gui/default/window/preferences/05_multiplayer.cfg:20
-#, fuzzy
-#| msgid "Chat lines: "
 msgid "Chat lines:"
-msgstr "Chat lines: "
+msgstr "Chat lines:"
 
 #. [slider]: id=chat_lines
 #: data/gui/default/window/preferences/05_multiplayer.cfg:36
-#, fuzzy
-#| msgid "Set the amount of chat lines shown"
 msgid "Set the number of chat lines shown"
 msgstr "Set the number of chat lines shown"
 
@@ -4253,14 +4199,12 @@ msgstr "Show icons in front of the player names in the lobby"
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/default/window/preferences/05_multiplayer.cfg:112
 msgid "Accept whispers from friends only"
-msgstr ""
+msgstr "Accept whispers from friends only"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/default/window/preferences/05_multiplayer.cfg:113
-#, fuzzy
-#| msgid "Add this username to your friends list"
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "Add this username to your friends list"
+msgstr "Only accept whisper messages from people on your friends list"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/default/window/preferences/05_multiplayer.cfg:129
@@ -4299,17 +4243,13 @@ msgstr "Alerts"
 
 #. [button]: id=mp_alerts
 #: data/gui/default/window/preferences/05_multiplayer.cfg:178
-#, fuzzy
-#| msgid "Configure the game’s settings"
 msgid "Configure multiplayer notification settings"
-msgstr "Configure the game’s settings"
+msgstr "Configure multiplayer notification settings"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/default/window/preferences/05_multiplayer.cfg:190
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server Executable"
-msgstr "Server message:"
+msgstr "Server Executable"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/default/window/preferences/05_multiplayer.cfg:191
@@ -4318,10 +4258,8 @@ msgstr "Find and set path to MP server to host LAN games"
 
 #. [button]: id=add_friend
 #: data/gui/default/window/preferences/05_multiplayer.cfg:291
-#, fuzzy
-#| msgid "Add as Friend"
 msgid "Add Friend"
-msgstr "Add as Friend"
+msgstr "Add Friend"
 
 #. [button]: id=add_friend
 #: data/gui/default/window/preferences/05_multiplayer.cfg:292
@@ -4334,22 +4272,16 @@ msgstr ""
 
 #. [button]: id=add_ignored
 #: data/gui/default/window/preferences/05_multiplayer.cfg:304
-#, fuzzy
-#| msgid "Add as Ignore"
 msgid "Add Ignored"
-msgstr "Add as Ignore"
+msgstr "Add Ignored"
 
 #. [button]: id=add_ignored
 #: data/gui/default/window/preferences/05_multiplayer.cfg:305
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignores list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
-"Add this username to your ignores list (add optional reason, e.g., "
+"Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 
 #. [button]: id=remove
@@ -5126,10 +5058,8 @@ msgid "infinite"
 msgstr "infinite"
 
 #: src/gui/dialogs/preferences_dialog.cpp:338
-#, fuzzy
-#| msgid "(empty list)"
 msgid "Empty list"
-msgstr "(empty list)"
+msgstr "Empty list"
 
 #: src/gui/dialogs/preferences_dialog.cpp:347
 msgid "friend"
@@ -5144,22 +5074,16 @@ msgid "Invalid username"
 msgstr "Invalid username"
 
 #: src/gui/dialogs/preferences_dialog.cpp:422
-#, fuzzy
-#| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
-msgstr "View and edit your friends and ignores list"
+msgstr "Not on friends or ignore lists"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1003
-#, fuzzy
-#| msgid ""
-#| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
-#| "to reassign it to \"$new_hotkey_action|\"?"
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
-"re-assign it to \"$new_hotkey_action|\"?"
+"“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
+"Do you wish to re-assign it to “<b>$new_hotkey_action|</b>”?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "Reassign Hotkey"
@@ -5174,24 +5098,20 @@ msgid "Hotkeys Reset"
 msgstr "Hotkeys Reset"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1094
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs tab^General"
 msgstr "General"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1095
 msgid "Prefs tab^Friends"
-msgstr ""
+msgstr "Friends"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1132
 msgid "Prefs section^General"
 msgstr "General"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1133
-#, fuzzy
-#| msgid "Prefs section^Game"
 msgid "Prefs section^Hotkeys"
-msgstr "Game"
+msgstr "Hotkeys"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1134
 msgid "Prefs section^Display"
@@ -5206,10 +5126,8 @@ msgid "Prefs section^Multiplayer"
 msgstr "Multiplayer"
 
 #: src/gui/dialogs/preferences_dialog.cpp:1137
-#, fuzzy
-#| msgid "Prefs section^Game"
 msgid "Prefs section^Advanced"
-msgstr "Game"
+msgstr "Advanced"
 
 #: src/gui/dialogs/screenshot_notification.cpp:74
 msgid "file_size^Unknown"
@@ -6088,10 +6006,8 @@ msgid "No known themes. Try changing from within an existing game."
 msgstr "No known themes. Try changing from within an existing game."
 
 #: src/preferences_display.cpp:210
-#, fuzzy
-#| msgid "Find $filename server binary to host networked games"
 msgid "Find $filename server binary"
-msgstr "Find $filename server binary to host networked games"
+msgstr "Find $filename server binary"
 
 #: src/terrain_translation.cpp:712
 msgid ""

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-03-05 05:00+0300\n"
-"PO-Revision-Date: 2016-01-24 06:10+1100\n"
+"PO-Revision-Date: 2016-03-05 13:50+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -208,12 +208,12 @@ msgstr "Use coloured mouse cursors"
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:175
 msgid "Graphics scaling options"
-msgstr ""
+msgstr "Graphics scaling options"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:181
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Customize orb colours"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:188
@@ -394,10 +394,8 @@ msgstr "Arabic Translation"
 
 #. [about]
 #: data/core/about.cfg:1522
-#, fuzzy
-#| msgid "Estonian Translation"
 msgid "Asturian Translation"
-msgstr "Estonian Translation"
+msgstr "Asturian Translation"
 
 #. [about]
 #: data/core/about.cfg:1528
@@ -3160,32 +3158,32 @@ msgstr "Alternate Wesnoth Server"
 #. [label]
 #: data/gui/default/window/select_orb_colors.cfg:79
 msgid "Choose Orb/Minimap Colors"
-msgstr ""
+msgstr "Choose Orb/Minimap Colours"
 
 #. [grid]
 #: data/gui/default/window/select_orb_colors.cfg:83
 msgid "Show unmoved orb"
-msgstr ""
+msgstr "Show unmoved orb"
 
 #. [grid]
 #: data/gui/default/window/select_orb_colors.cfg:84
 msgid "Show partial moved orb"
-msgstr ""
+msgstr "Show partial moved orb"
 
 #. [grid]
 #: data/gui/default/window/select_orb_colors.cfg:85
 msgid "Show moved orb"
-msgstr ""
+msgstr "Show moved orb"
 
 #. [grid]
 #: data/gui/default/window/select_orb_colors.cfg:86
 msgid "Show ally orb"
-msgstr ""
+msgstr "Show ally orb"
 
 #. [grid]
 #: data/gui/default/window/select_orb_colors.cfg:87
 msgid "Show enemy orb"
-msgstr ""
+msgstr "Show enemy orb"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=orb_defaults
@@ -3306,6 +3304,8 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:13105
@@ -3314,38 +3314,39 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:13226
-#, fuzzy
-#| msgid "Chat message aging"
 msgid "Clear Weather"
-msgstr "Chat message ageing"
+msgstr "Clear Weather"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:13232
 msgid "Drought"
-msgstr ""
+msgstr "Drought"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:13244
 msgid "Heavy Rains"
-msgstr ""
+msgstr "Heavy Rains"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:13250
 msgid "Snowfall"
-msgstr ""
+msgstr "Snowfall"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:13256
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "Heavy Snowfall"
 
 #. [multiplayer]: id=lua_cavegen
 #: data/multiplayer/scenarios/Random_Scenario_Lua_Cave.cfg:4
 msgid "Cave Generator"
-msgstr ""
+msgstr "Cave Generator"
 
 #. [multiplayer]: id=lua_cavegen
 #: data/multiplayer/scenarios/Random_Scenario_Lua_Cave.cfg:5
@@ -3353,6 +3354,8 @@ msgid ""
 "A sample lua map generator that generates caves like in scenario 17 of the "
 "mainline campaign 'Heir to the Throne'"
 msgstr ""
+"A sample lua map generator that generates caves like in scenario 17 of the "
+"mainline campaign 'Heir to the Throne'"
 
 #: data/scenario-test.cfg:4003
 msgid "very long"
@@ -3380,7 +3383,7 @@ msgstr "Stop"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:413
 msgid "pause after current move"
-msgstr ""
+msgstr "pause after current move"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:428 data/themes/_initial.cfg:585
@@ -7951,8 +7954,6 @@ msgid "No Saved Games"
 msgstr "No Saved Games"
 
 #: src/savegame.cpp:104
-#, fuzzy
-#| msgid "There are no savefiles to load"
 msgid "There are no save files to load"
 msgstr "There are no save files to load"
 
@@ -7982,7 +7983,7 @@ msgstr "Load Game"
 
 #: src/savegame.cpp:318
 msgid "Replays are not supported in multiplayer mode."
-msgstr ""
+msgstr "Replays are not supported in multiplayer mode."
 
 #: src/savegame.cpp:323
 msgid "This is not a multiplayer save."
