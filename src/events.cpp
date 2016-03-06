@@ -171,11 +171,12 @@ event_context::~event_context()
 	event_contexts.pop_back();
 }
 
-	sdl_handler::sdl_handler(const bool auto_join) :
+sdl_handler::sdl_handler(const bool auto_join) :
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	unicode_(SDL_EnableUNICODE(1)),
 #endif
-	has_joined_(false)
+	has_joined_(false),
+	has_joined_global_(false)
 {
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
