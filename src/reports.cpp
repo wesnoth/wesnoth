@@ -802,6 +802,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		add_text(res, flush(str), flush(tooltip));
 	}
 
+	at.set_specials_context_for_listing();
 	std::vector<bool> active;
 	const std::vector<std::pair<t_string, t_string> > &specials = at.special_tooltips(&active);
 	const size_t specials_size = specials.size();

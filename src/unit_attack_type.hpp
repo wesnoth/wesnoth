@@ -73,6 +73,7 @@ public:
 	void set_specials_context(const map_location& unit_loc, const map_location& other_loc,
 	                          bool attacking, const attack_type *other_attack) const;
 	void set_specials_context(const map_location& loc, bool attacking = true) const;
+	void set_specials_context_for_listing() const;
 
 	/// Calculates the number of attacks this weapon has, considering specials.
 	void modified_attacks(bool is_backstab, unsigned & min_attacks,
@@ -105,6 +106,7 @@ private:
 	mutable map_location self_loc_, other_loc_;
 	mutable bool is_attacker_;
 	mutable const attack_type* other_attack_;
+	mutable bool is_for_listing_;
 
 	t_string description_;
 	std::string id_;
