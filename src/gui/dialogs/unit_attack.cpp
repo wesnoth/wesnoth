@@ -200,8 +200,8 @@ static void set_weapon_info(twindow& window,
 		const SDL_Color d_cth_color =
 			int_to_color(game_config::red_to_green(defender.chance_to_hit));
 
-		const std::string& attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
-		const std::string& defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";
+		const std::string attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
+		const std::string defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";
 
 		std::string range = attacker_weapon.range().empty() ? defender_weapon.range() : attacker_weapon.range();
 		if (!range.empty()) {

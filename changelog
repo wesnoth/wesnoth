@@ -1,6 +1,9 @@
 Version 1.13.3+dev:
  * Language and i18n:
    * Updated translations:
+ * Miscellaneous and bug fixes:
+   * Fix non-deterministic crashes in the Attack Unit dialog resulting from
+     invalid memory references (regression introduced in 1.13.3).
 
 Version 1.13.3:
  * Greatly improved SDL 2 support. SDL 2 is now used by default build when
