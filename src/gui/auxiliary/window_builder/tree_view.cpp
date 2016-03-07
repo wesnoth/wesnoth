@@ -79,7 +79,9 @@ twidget* tbuilder_tree_view::build() const
 }
 
 tbuilder_tree_view::tnode::tnode(const config& cfg)
-	: id(cfg["id"]), builder(NULL)
+	: id(cfg["id"])
+	, unfolded(cfg["unfolded"].to_bool(false))
+	, builder(NULL)
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 

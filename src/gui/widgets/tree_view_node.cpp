@@ -74,6 +74,11 @@ ttree_view_node::ttree_view_node(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2), event::tdispatcher::back_post_child);
+
+					if(node_definition.unfolded) {
+						toggle_->set_value(1);
+						unfolded_ = true;
+					}
 				}
 
 				if(parent_node_ && parent_node_->toggle_) {

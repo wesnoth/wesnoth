@@ -43,6 +43,7 @@ struct tbuilder_tree_view : public tbuilder_control
 		explicit tnode(const config& cfg);
 
 		std::string id;
+		bool unfolded;
 		tbuilder_grid_ptr builder;
 	};
 
