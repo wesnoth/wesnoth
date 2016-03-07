@@ -165,8 +165,14 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const int n = args()[0]->evaluate(variables,fdb).as_int();
-		return variant(n >= 0 ? n : -n);
+		const variant input = args()[0]->evaluate(variables,fdb);
+		if(input.is_decimal()) {
+			const int n = input.as_decimal();
+			return variant(n >= 0 ? n : -n, variant::DECIMAL_VARIANT);
+		} else {
+			const int n = input.as_int();
+			return variant(n >= 0 ? n : -n);
+		}
 	}
 };
 

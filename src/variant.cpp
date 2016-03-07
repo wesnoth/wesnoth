@@ -696,13 +696,23 @@ variant variant::operator/(const variant& v) const
 
 variant variant::operator%(const variant& v) const
 {
-	const int numerator = as_int();
-	const int denominator = v.as_int();
-	if(denominator == 0) {
-		throw type_error((formatter() << "divide by zero error").str());
-	}
+	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
+		const int numerator = as_decimal();
+		const int denominator = v.as_decimal();
+		if(denominator == 0) {
+			throw type_error((formatter() << "divide by zero error").str());
+		}
+		
+		return variant(numerator%denominator, DECIMAL_VARIANT);
+	} else {
+		const int numerator = as_int();
+		const int denominator = v.as_int();
+		if(denominator == 0) {
+			throw type_error((formatter() << "divide by zero error").str());
+		}
 
-	return variant(numerator%denominator);
+		return variant(numerator%denominator);
+	}
 }
 
 
