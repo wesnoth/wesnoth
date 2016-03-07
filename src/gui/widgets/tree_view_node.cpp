@@ -47,6 +47,7 @@ ttree_view_node::ttree_view_node(
 	, node_definitions_(node_definitions)
 	, toggle_(NULL)
 	, label_(NULL)
+	, unfolded_(false)
 	, callback_state_change_()
 	, callback_state_to_folded_()
 	, callback_state_to_unfolded_()
@@ -115,6 +116,9 @@ ttree_view_node::ttree_view_node(
 		}
 
 		VALIDATE(false, _("Unknown builder id for tree view node."));
+	}
+	else {
+		unfolded_ = true;
 	}
 }
 
@@ -211,15 +215,16 @@ const ttree_view& ttree_view_node::tree_view() const
 
 bool ttree_view_node::is_folded() const
 {
-	return toggle_ && !toggle_->get_value();
+	return !unfolded_;
 }
 
 void ttree_view_node::fold(/*const bool recursive*/)
 {
 	if(is_folded()) {
 		fold_internal();
-
-		toggle_->set_value(false);
+		if(toggle_) {
+			toggle_->set_value(false);
+		}
 	}
 }
 
@@ -227,8 +232,9 @@ void ttree_view_node::unfold(/*const texpand_mode mode*/)
 {
 	if(!is_folded()) {
 		unfold_internal();
-
-		toggle_->set_value(true);
+		if(toggle_) {
+			toggle_->set_value(true);
+		}
 	}
 }
 
@@ -242,6 +248,7 @@ void ttree_view_node::fold_internal()
 	assert(height_modification <= 0);
 
 	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+	unfolded_ = false;
 
 	if(callback_state_to_folded_) {
 		callback_state_to_folded_(*this);
@@ -258,6 +265,7 @@ void ttree_view_node::unfold_internal()
 	assert(height_modification >= 0);
 
 	tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
+	unfolded_ = true;
 
 	if(callback_state_to_unfolded_) {
 		callback_state_to_unfolded_(*this);
@@ -584,8 +592,11 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 	 * The code works but feels rather hacky, so better move back to the
 	 * drawingboard for 1.9.
 	 */
-
-	// is_folded() returns the new state, which is why this looks backwards
+	const bool unfolded_new = toggle_->get_value_bool();
+	if(unfolded_ == unfolded_new) {
+		return;
+	}
+	unfolded_ = unfolded_new;
 	is_folded() ? fold_internal() : unfold_internal();
 
 	if(callback_state_change_) {
