@@ -547,6 +547,46 @@ private:
 	}
 };
 
+class sqrt_function
+	: public function_expression {
+public:
+	explicit sqrt_function(const args_list& args)
+	     : function_expression("sqrt", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * sqrt(num), variant::DECIMAL_VARIANT);
+	}
+};
+
+class cbrt_function
+	: public function_expression {
+public:
+	explicit cbrt_function(const args_list& args)
+	     : function_expression("cbrt", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * (num < 0 ? -pow(-num, 1.0l / 3.0l) : pow(num, 1.0l / 3.0l)), variant::DECIMAL_VARIANT);
+	}
+};
+
+class root_function
+	: public function_expression {
+public:
+	explicit root_function(const args_list& args)
+	     : function_expression("root", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double base = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double root = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * (base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0l / root) : pow(base, 1.0l / root)), variant::DECIMAL_VARIANT);
+	}
+};
+
 class index_of_function : public function_expression {
 public:
 	explicit index_of_function(const args_list& args)
@@ -1370,6 +1410,9 @@ functions_map& get_functions_map() {
 		FUNCTION(asin);
 		FUNCTION(acos);
 		FUNCTION(atan);
+		FUNCTION(sqrt);
+		FUNCTION(cbrt);
+		FUNCTION(root);
 #undef FUNCTION
 	}
 
