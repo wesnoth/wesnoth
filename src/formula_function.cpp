@@ -587,6 +587,63 @@ private:
 	}
 };
 
+class log_function
+: public function_expression {
+public:
+	explicit log_function(const args_list& args)
+	: function_expression("log", args, 1, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		if(args().size() == 1) {
+			return variant(1000.0 * log(num), variant::DECIMAL_VARIANT);
+		} else {
+			const double base = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
+			return variant(1000.0 * log(num) / log(base), variant::DECIMAL_VARIANT);
+		}
+	}
+};
+
+class exp_function
+	: public function_expression {
+public:
+	explicit exp_function(const args_list& args)
+	     : function_expression("exp", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * exp(num), variant::DECIMAL_VARIANT);
+	}
+};
+
+class pi_function
+	: public function_expression {
+public:
+	explicit pi_function(const args_list& args)
+	     : function_expression("pi", args, 0, 0)
+	{}
+private:
+	variant execute(const formula_callable&, formula_debugger*) const {
+		return variant(1000 * pi<double>(), variant::DECIMAL_VARIANT);
+	}
+};
+
+class hypot_function
+	: public function_expression {
+public:
+	explicit hypot_function(const args_list& args)
+	     : function_expression("hypot", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double x = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double y = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * hypot(x, y), variant::DECIMAL_VARIANT);
+	}
+};
+
 class index_of_function : public function_expression {
 public:
 	explicit index_of_function(const args_list& args)
@@ -1413,6 +1470,10 @@ functions_map& get_functions_map() {
 		FUNCTION(sqrt);
 		FUNCTION(cbrt);
 		FUNCTION(root);
+		FUNCTION(log);
+		FUNCTION(exp);
+		FUNCTION(pi);
+		FUNCTION(hypot);
 #undef FUNCTION
 	}
 
