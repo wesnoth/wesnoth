@@ -828,6 +828,25 @@ private:
 	}
 };
 
+class take_while_function : public function_expression {
+public:
+	explicit take_while_function(const args_list& args)
+		: function_expression("take_while", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant& items = args()[0]->evaluate(variables, fdb);
+		variant_iterator it = items.begin();
+		for(; it != items.end(); ++it) {
+			const variant matches = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
+			if (!matches.as_bool())
+				break;
+		}
+		std::vector<variant> result(items.begin(), it);
+		return variant(&result);
+	}
+};
+
 class zip_function : public function_expression {
 public:
 	explicit zip_function(const args_list& args)
@@ -1294,6 +1313,7 @@ functions_map& get_functions_map() {
 		FUNCTION(find);
 		FUNCTION(map);
 		FUNCTION(zip);
+		FUNCTION(take_while);
 		FUNCTION(reduce);
 		FUNCTION(sum);
 		FUNCTION(head);
