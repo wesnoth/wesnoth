@@ -654,6 +654,28 @@ private:
 	}
 };
 
+class reverse_function : public function_expression {
+public:
+	explicit reverse_function(const args_list& args)
+	     : function_expression("reverse", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant& arg = args()[0]->evaluate(variables,fdb);
+		if(arg.is_string()) {
+			std::string str = args()[0]->evaluate(variables,fdb).as_string();
+			std::reverse(str.begin(), str.end());
+			return variant(str);
+		} else if(arg.is_list()) {
+			std::vector<variant> list = args()[0]->evaluate(variables,fdb).as_list();
+			std::reverse(list.begin(), list.end());
+			return variant(&list);
+		}
+		return variant();
+	}
+};
+
 class contains_string_function : public function_expression {
 public:
 	explicit contains_string_function(const args_list& args)
@@ -1216,6 +1238,7 @@ functions_map& get_functions_map() {
 		FUNCTION(wave);
 		FUNCTION(sort);
 		FUNCTION(contains_string);
+		FUNCTION(reverse);
 		FUNCTION(filter);
 		FUNCTION(find);
 		FUNCTION(map);

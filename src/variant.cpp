@@ -592,6 +592,20 @@ const std::string& variant::as_string() const
 	return string_->str;
 }
 
+const std::vector<variant>& variant::as_list() const
+{
+	must_be(TYPE_LIST);
+	assert(list_);
+	return list_->elements;
+}
+
+const std::map<variant,variant>& variant::as_map() const
+{
+	must_be(TYPE_MAP);
+	assert(map_);
+	return map_->elements;
+}
+
 variant variant::operator+(const variant& v) const
 {
 	if(type_ == TYPE_LIST) {

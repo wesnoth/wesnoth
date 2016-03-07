@@ -89,6 +89,9 @@ public:
 	bool as_bool() const;
 
 	bool is_list() const { return type_ == TYPE_LIST; }
+	
+	const std::vector<variant>& as_list() const;
+	const std::map<variant,variant>& as_map() const;
 
 	const std::string& as_string() const;
 
