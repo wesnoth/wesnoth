@@ -505,6 +505,48 @@ private:
 	}
 };
 
+class asin_function
+	: public function_expression {
+public:
+	explicit asin_function(const args_list& args)
+	     : function_expression("asin", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables
+			, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * asin(num) * 180.0 / pi<double>(), variant::DECIMAL_VARIANT);
+	}
+};
+
+class acos_function
+	: public function_expression {
+public:
+	explicit acos_function(const args_list& args)
+	     : function_expression("acos", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables
+			, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * acos(num) * 180.0 / pi<double>(), variant::DECIMAL_VARIANT);
+	}
+};
+
+class atan_function
+	: public function_expression {
+public:
+	explicit atan_function(const args_list& args)
+	     : function_expression("acos", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * atan(num) * 180.0 / pi<double>(), variant::DECIMAL_VARIANT);
+	}
+};
+
 class index_of_function : public function_expression {
 public:
 	explicit index_of_function(const args_list& args)
@@ -1325,6 +1367,9 @@ functions_map& get_functions_map() {
 		FUNCTION(sin);
 		FUNCTION(cos);
 		FUNCTION(tan);
+		FUNCTION(asin);
+		FUNCTION(acos);
+		FUNCTION(atan);
 #undef FUNCTION
 	}
 
