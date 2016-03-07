@@ -403,7 +403,6 @@ variant& variant::operator=(const variant& v)
 variant variant::operator[](size_t n) const
 {
 	if(type_ == TYPE_CALLABLE) {
-		assert(n == 0);
 		return *this;
 	}
 
@@ -419,7 +418,6 @@ variant variant::operator[](size_t n) const
 variant variant::operator[](const variant& v) const
 {
 	if(type_ == TYPE_CALLABLE) {
-		assert(v.as_int() == 0);
 		return *this;
 	}
 
@@ -539,6 +537,13 @@ variant variant::get_member(const std::string& str) const
 	} else {
 		return variant();
 	}
+}
+
+int variant::as_int() const {
+	if(type_ == TYPE_NULL) { return 0; }
+	if(type_ == TYPE_DECIMAL) { return as_decimal() / 1000; }
+	must_be(TYPE_INT);
+	return int_value_;
 }
 
 int variant::as_decimal() const

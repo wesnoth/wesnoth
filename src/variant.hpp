@@ -80,7 +80,7 @@ public:
 	bool is_int() const { return type_ == TYPE_INT; }
 	bool is_decimal() const { return type_ == TYPE_DECIMAL; }
 	bool is_map() const { return type_ == TYPE_MAP; }
-	int as_int() const { if(type_ == TYPE_NULL) { return 0; } must_be(TYPE_INT); return int_value_; }
+	int as_int() const;
 
 	//this function returns variant's internal representation of decimal number:
 	//for example number 1.234 is represented as 1234
