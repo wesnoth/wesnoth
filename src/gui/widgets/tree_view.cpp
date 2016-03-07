@@ -186,4 +186,26 @@ void ttree_view::signal_handler_left_button_down(const event::tevent event)
 	get_window()->keyboard_capture(this);
 }
 
+void ttree_view::handle_key_left_arrow(SDLMod modifier, bool& handled)
+{
+	ttree_view_node* selected = selected_item();
+	if(!selected || selected->is_folded()) {
+		tscrollbar_container::handle_key_left_arrow(modifier, handled);
+		return;
+	}
+	selected->fold();
+	handled = true;
+}
+
+void ttree_view::handle_key_right_arrow(SDLMod modifier, bool& handled)
+{
+	ttree_view_node* selected = selected_item();
+	if(!selected || !selected->is_folded()) {
+		tscrollbar_container::handle_key_left_arrow(modifier, handled);
+		return;
+	}
+	selected->unfold();
+	handled = true;
+}
+
 } // namespace gui2

@@ -89,13 +89,12 @@ protected:
 
 	/** Inherited from tscrollbar_container. */
 	void handle_key_down_arrow(SDLMod modifier, bool& handled);
-
+#endif
 	/** Inherited from tscrollbar_container. */
 	void handle_key_left_arrow(SDLMod modifier, bool& handled);
 
 	/** Inherited from tscrollbar_container. */
 	void handle_key_right_arrow(SDLMod modifier, bool& handled);
-#endif
 private:
 	/**
 	 * @todo evaluate which way the dependancy should go.
