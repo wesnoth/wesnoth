@@ -828,6 +828,57 @@ private:
 	}
 };
 
+class zip_function : public function_expression {
+public:
+	explicit zip_function(const args_list& args)
+	    : function_expression("zip", args, 1, -1)
+	{}
+private:
+	struct indexer {
+		size_t i;
+		explicit indexer(size_t i) : i(i) {}
+		variant operator()(const variant& v) {
+			if(i >= v.num_elements()) {
+				return variant();
+			} else {
+				return v[i];
+			}
+		}
+	};
+	struct comparator {
+		bool operator()(const variant& a, const variant& b) {
+			return a.num_elements() < b.num_elements();
+		}
+	};
+	std::vector<variant> get_input(const formula_callable& variables, formula_debugger* fdb) const {
+		if(args().size() == 1) {
+			const variant list = args()[0]->evaluate(variables, fdb);
+			return std::vector<variant>(list.begin(), list.end());
+		} else {
+			std::vector<variant> input;
+			input.reserve(args().size());
+			BOOST_FOREACH(expression_ptr expr, args()) {
+				input.push_back(expr->evaluate(variables, fdb));
+			}
+			return input;
+		}
+	}
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const std::vector<variant> input = get_input(variables, fdb);
+		std::vector<variant> output;
+		// So basically this does [[a,b,c],[d,e,f],[x,y,z]] -> [[a,d,x],[b,e,y],[c,f,z]]
+		// Or [[a,b,c,d],[x,y,z]] -> [[a,x],[b,y],[c,z],[d,null()]]
+		size_t max_i = std::max_element(input.begin(), input.end(), comparator())->num_elements();
+		output.reserve(max_i);
+		for(size_t i = 0; i < max_i; i++) {
+			std::vector<variant> elem(input.size());
+			std::transform(input.begin(), input.end(), elem.begin(), indexer(i));
+			output.push_back(variant(&elem));
+		}
+		return variant(&output);
+	}
+};
+
 class reduce_function : public function_expression {
 public:
 	explicit reduce_function(const args_list& args)
@@ -1242,6 +1293,7 @@ functions_map& get_functions_map() {
 		FUNCTION(filter);
 		FUNCTION(find);
 		FUNCTION(map);
+		FUNCTION(zip);
 		FUNCTION(reduce);
 		FUNCTION(sum);
 		FUNCTION(head);
