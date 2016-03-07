@@ -720,4 +720,92 @@ int ttree_view_node::calculate_ypos()
 	}
 	return res;
 }
+ttree_view_node* ttree_view_node::get_last_visible_parent_node()
+{
+	if(!parent_node_) {
+		return this;
+	}
+	ttree_view_node* res = parent_node_->get_last_visible_parent_node();
+	return res == parent_node_ && !res->is_folded() ? this : res;
+}
+
+ttree_view_node* ttree_view_node::get_node_above()
+{
+	assert(!is_root_node());
+	ttree_view_node* cur = NULL;
+	for(size_t i = 0; i < parent_node_->size(); ++i) {
+		if(&parent_node_->children_[i] == this) {
+			if(i == 0) {
+				return parent_node_->is_root_node() ? NULL : parent_node_;
+			}
+			else {
+				cur = &parent_node_->children_[i - 1];
+				break;
+			}
+		}
+	}
+	while(!cur->is_folded() && cur->size() > 0) {
+		cur = &cur->get_child_at(cur->size() - 1);
+	}
+	return cur;
+}
+
+ttree_view_node* ttree_view_node::get_node_below()
+{
+	assert(!is_root_node());
+	if(!is_folded() && size() > 0) {
+		return &get_child_at(0);
+	}
+	ttree_view_node* cur = this;
+	while(cur->parent_node_ != NULL) {
+		ttree_view_node& parent = *cur->parent_node_;
+
+		for(size_t i = 0; i < parent.size(); ++i) {
+			if(&parent.children_[i] == cur) {
+				if(i < parent.size() - 1) {
+					return &parent.children_[i + 1];
+				}
+				else {
+					cur = &parent;
+				}
+				break;
+			}
+		}	
+	}
+	return NULL;
+}
+ttree_view_node* ttree_view_node::get_selectable_node_above()
+{
+	ttree_view_node* above = this;
+	do {
+		above = above->get_node_above();
+	} while(above != NULL && above->label_ == NULL);
+	return above;
+}
+ttree_view_node* ttree_view_node::get_selectable_node_below()
+{
+	ttree_view_node* below = this;
+	do {
+		below = below->get_node_below();
+	} while(below != NULL && below->label_ == NULL);
+	return below;
+
+}
+void ttree_view_node::select_node()
+{
+	if(!label_ || label_->get_value_bool()) {
+		return;
+	}
+
+	if(tree_view().selected_item_ && tree_view().selected_item_->label_) {
+		tree_view().selected_item_->label_->set_value(false);
+	}
+	tree_view().selected_item_ = this;
+
+	if(tree_view().selection_change_callback_) {
+		tree_view().selection_change_callback_(tree_view());
+	}
+	label_->set_value_bool(true);
+}
+
 } // namespace gui2

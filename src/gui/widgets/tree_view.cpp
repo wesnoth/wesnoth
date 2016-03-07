@@ -185,6 +185,56 @@ void ttree_view::signal_handler_left_button_down(const event::tevent event)
 
 	get_window()->keyboard_capture(this);
 }
+template<ttree_view_node* (ttree_view_node::*func) ()>
+ttree_view_node* ttree_view::get_next_node()
+{	
+	ttree_view_node* selected = selected_item();
+	if(!selected) {
+		return NULL;
+	}
+	ttree_view_node* visible = selected->get_last_visible_parent_node();
+	if(visible != selected) {
+		return visible;
+	}
+	return (selected->*func)();
+}
+
+template<ttree_view_node* (ttree_view_node::*func) ()>
+bool ttree_view::handle_up_down_arrow()
+{
+	if(ttree_view_node* next = get_next_node<func>())
+	{
+		next->select_node();
+		SDL_Rect visible = content_visible_area();
+		SDL_Rect rect = next->get_grid().get_rectangle();
+		visible.y = rect.y;// - content_grid()->get_y();
+		visible.h = rect.h;
+		show_content_rect(visible);
+		return true;
+	}
+	return false;
+}
+
+void ttree_view::handle_key_up_arrow(SDLMod modifier, bool& handled)
+{
+	if(handle_up_down_arrow<&ttree_view_node::get_selectable_node_above>()) {
+		handled = true;
+	}
+	else {
+		tscrollbar_container::handle_key_up_arrow(modifier, handled);	
+	}
+}
+
+void ttree_view::handle_key_down_arrow(SDLMod modifier, bool& handled)
+{
+	if(handle_up_down_arrow<&ttree_view_node::get_selectable_node_below>()) {
+		handled = true;
+	}
+	else {
+		tscrollbar_container::handle_key_down_arrow(modifier, handled);	
+	}
+}
+
 
 void ttree_view::handle_key_left_arrow(SDLMod modifier, bool& handled)
 {
@@ -201,7 +251,7 @@ void ttree_view::handle_key_right_arrow(SDLMod modifier, bool& handled)
 {
 	ttree_view_node* selected = selected_item();
 	if(!selected || !selected->is_folded()) {
-		tscrollbar_container::handle_key_left_arrow(modifier, handled);
+		tscrollbar_container::handle_key_right_arrow(modifier, handled);
 		return;
 	}
 	selected->unfold();

@@ -209,7 +209,13 @@ public:
 				break;
 		}
 	}
-
+	ttree_view_node* get_last_visible_parent_node();
+	ttree_view_node* get_node_above();
+	ttree_view_node* get_node_below();
+	ttree_view_node* get_selectable_node_above();
+	ttree_view_node* get_selectable_node_below();
+	void select_node();
+	tgrid& get_grid() { return grid_; }
 private:
 
 	int calculate_ypos();

@@ -83,13 +83,12 @@ public:
 
 protected:
 /***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
-#if 0
 	/** Inherited from tscrollbar_container. */
 	void handle_key_up_arrow(SDLMod modifier, bool& handled);
 
 	/** Inherited from tscrollbar_container. */
 	void handle_key_down_arrow(SDLMod modifier, bool& handled);
-#endif
+
 	/** Inherited from tscrollbar_container. */
 	void handle_key_left_arrow(SDLMod modifier, bool& handled);
 
@@ -146,6 +145,12 @@ private:
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_left_button_down(const event::tevent event);
+
+	template<ttree_view_node* (ttree_view_node::*func) ()>
+	ttree_view_node* get_next_node();
+	
+	template<ttree_view_node* (ttree_view_node::*func) ()>
+	bool handle_up_down_arrow();
 };
 
 } // namespace gui2
