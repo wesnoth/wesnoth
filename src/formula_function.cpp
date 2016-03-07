@@ -809,22 +809,24 @@ private:
 class reduce_function : public function_expression {
 public:
 	explicit reduce_function(const args_list& args)
-	    : function_expression("reduce", args, 2, 2)
+	    : function_expression("reduce", args, 2, 3)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const variant items = args()[0]->evaluate(variables,fdb);
+		const variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables,fdb);
 
 		if(items.num_elements() == 0)
-			return variant();
-		else if(items.num_elements() == 1)
-			return items[0];
+			return initial;
 
 		variant_iterator it = items.begin();
-		variant res(*it);
+		variant res(initial.is_null() ? *it : initial);
+		if(res != initial) {
+			++it;
+		}
 		map_formula_callable self_callable;
 		self_callable.add_ref();
-		for(++it; it != items.end(); ++it) {
+		for(; it != items.end(); ++it) {
 			self_callable.add("a", res);
 			self_callable.add("b", *it);
 			res = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
