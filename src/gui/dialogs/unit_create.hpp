@@ -75,12 +75,9 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	void print_stats(std::stringstream& str, const int row);
-
 	/** Callbacks */
 	void list_item_clicked(twindow& window);
 	bool filter_text_changed(ttext_* textbox, const std::string& text);
-	void profile_button_callback(twindow& window);
 	void gender_toggle_callback(twindow& window);
 
 	tgroup<unit_race::GENDER> gender_toggle;
