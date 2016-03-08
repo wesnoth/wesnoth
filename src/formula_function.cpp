@@ -414,6 +414,42 @@ private:
 	}
 };
 
+class replace_function : public function_expression {
+public:
+	explicit replace_function(const args_list& args)
+	     : function_expression("replace", args, 3, 4)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+
+		std::string result = args()[0]->evaluate(variables, fdb).as_string();
+		std::string replacement = args().back()->evaluate(variables, fdb).as_string();
+
+		int offset = args()[1]->evaluate(variables, fdb).as_int();
+		if(offset < 0) {
+			offset += result.size();
+			if(offset < 0) {
+				offset = 0;
+			}
+		} else {
+			if(static_cast<size_t>(offset) >= result.size()) {
+				return variant(result);
+			}
+		}
+
+		if(args().size() > 2) {
+			int size = args()[2]->evaluate(variables, fdb).as_int();
+			if(size < 0) {
+				size = -size;
+				offset = std::max(0, offset - size + 1);
+			}
+			return variant(result.replace(offset, size, replacement));
+		} else {
+			return variant(result.replace(offset, std::string::npos, replacement));
+		}
+	}
+};
+
 class length_function : public function_expression {
 public:
 	explicit length_function(const args_list& args)
@@ -813,29 +849,23 @@ private:
 		std::string str = args()[0]->evaluate(variables,fdb).as_string();
 		std::string key = args()[1]->evaluate(variables,fdb).as_string();
 
-		if (key.size() > str.size())
-			return variant(0);
+		return variant(str.find(key) != std::string::npos);
+	}
+};
 
-		std::string::iterator str_it, key_it, tmp_it;
+class find_string_function : public function_expression {
+public:
+	explicit find_string_function(const args_list& args)
+	     : function_expression("find_string", args, 2, 2)
+	{}
 
-		for(str_it = str.begin(); str_it != str.end() - (key.size()-1); ++str_it)
-		{
-			key_it = key.begin();
-			if((key_it) == key.end()) {
-				return variant(1);
-			}
-			tmp_it = str_it;
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const std::string str = args()[0]->evaluate(variables,fdb).as_string();
+		const std::string key = args()[1]->evaluate(variables,fdb).as_string();
 
-			while( *tmp_it == *key_it)
-			{
-				if( ++key_it == key.end())
-					return variant(1);
-				if( ++tmp_it == str.end())
-					return variant(0);
-			}
-		}
-
-		return variant(0);
+		size_t pos = str.find(key);
+		return variant(static_cast<int>(pos));
 	}
 };
 
@@ -1434,6 +1464,7 @@ functions_map& get_functions_map() {
 		FUNCTION(wave);
 		FUNCTION(sort);
 		FUNCTION(contains_string);
+		FUNCTION(find_string);
 		FUNCTION(reverse);
 		FUNCTION(filter);
 		FUNCTION(find);
@@ -1458,6 +1489,7 @@ functions_map& get_functions_map() {
 		FUNCTION(tolist);
 		FUNCTION(tomap);
 		FUNCTION(substring);
+		FUNCTION(replace);
 		FUNCTION(length);
 		FUNCTION(concatenate);
 		FUNCTION(sin);
