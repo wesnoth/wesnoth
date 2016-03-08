@@ -240,7 +240,7 @@ void scenario_settings_table(display& gui, int selected)
 		}
 
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			<< teams[n].current_player() << COLUMN_SEPARATOR
+			<< teams[n].side_name() << COLUMN_SEPARATOR
 			<< n + 1 << COLUMN_SEPARATOR
 			<< teams[n].start_gold() << COLUMN_SEPARATOR
 			<< teams[n].base_income() << COLUMN_SEPARATOR

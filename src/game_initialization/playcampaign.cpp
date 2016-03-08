@@ -176,7 +176,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 				continue;
 			}
 			if (persistent_teams > 1) {
-				report << "\n<b>" << t.current_player() << "</b>\n";
+				report << "\n<b>" << t.side_name() << "</b>\n";
 			}
 
 			report_victory(report, t, finishing_bonus_per_turn, turns_left, finishing_bonus);

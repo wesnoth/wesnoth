@@ -1027,6 +1027,7 @@ config side_engine::new_config() const
 		desc = player_id_;
 	}
 	if(res["name"].str().empty() && !desc.empty()) {
+		//TODO: maybe we should add this in to the leaders config instead of the side config?
 		res["name"] = desc;
 	}
 

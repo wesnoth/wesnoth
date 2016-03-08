@@ -297,12 +297,6 @@ protected:
 		BOOST_FOREACH(const config *u, unit_configs_) {
 			uc.add_unit(*u);
 		}
-
-		// Find the first leader and use its name as the player name.
-		unit_map::iterator u = board_.units().find_first_leader(t_->side());
-		if ((u != board_.units().end()) && t_->current_player().empty())
-			t_->set_current_player(u->name());
-
 	}
 
 };
