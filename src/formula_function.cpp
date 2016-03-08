@@ -379,15 +379,13 @@ private:
 	}
 };
 
-class substring_function
-	: public function_expression {
+class substring_function : public function_expression {
 public:
 	explicit substring_function(const args_list& args)
 	     : function_expression("substring", args, 2, 3)
 	{}
-
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 
 		std::string result = args()[0]->evaluate(variables, fdb).as_string();
 
@@ -416,84 +414,59 @@ public:
 	}
 };
 
-class length_function
-	: public function_expression {
+class length_function : public function_expression {
 public:
 	explicit length_function(const args_list& args)
 	     : function_expression("length", args, 1, 1)
 	{}
-
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
-
-		return variant(
-				args()[0]->evaluate(variables, fdb).as_string().length());
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		return variant(args()[0]->evaluate(variables, fdb).as_string().length());
 	}
 };
 
-class concatenate_function
-		: public function_expression {
+class concatenate_function : public function_expression {
 public:
 		explicit concatenate_function(const args_list& args)
 			: function_expression("concatenate", args, 1, -1)
 		{}
-
 private:
-		variant execute(const formula_callable& variables
-						, formula_debugger *fdb) const {
+		variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+			std::string result;
 
-				std::string result;
+			BOOST_FOREACH(expression_ptr arg, args()) {
+					result += arg->evaluate(variables, fdb).string_cast();
+			}
 
-				BOOST_FOREACH(expression_ptr arg, args()) {
-						result += arg->evaluate(variables, fdb).string_cast();
-				}
-
-				return variant(result);
+			return variant(result);
 		}
 };
 
-class sin_function
-	: public function_expression {
+class sin_function : public function_expression {
 public:
 	explicit sin_function(const args_list& args)
 	     : function_expression("sin", args, 1, 1)
 	{}
-
 private:
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
-
-		const double angle =
-				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
-
-		return variant(
-				  static_cast<int>(1000. * sin(angle * pi<double>() / 180.))
-				, variant::DECIMAL_VARIANT);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000.0 * sin(angle * pi<double>() / 180.0), variant::DECIMAL_VARIANT);
 	}
 };
 
-class cos_function
-	: public function_expression {
+class cos_function : public function_expression {
 public:
 	explicit cos_function(const args_list& args)
 	     : function_expression("cos", args, 1, 1)
 	{}
-
 private:
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
-
-		const double angle =
-				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
-
-		return variant(
-				  static_cast<int>(1000. * cos(angle * pi<double>() / 180.))
-				, variant::DECIMAL_VARIANT);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(1000. * cos(angle * pi<double>() / 180.0), variant::DECIMAL_VARIANT);
 	}
 };
 
-class tan_function
-	: public function_expression {
+class tan_function : public function_expression {
 public:
 	explicit tan_function(const args_list& args)
 	     : function_expression("tan", args, 1, 1)
@@ -509,16 +482,14 @@ private:
 	}
 };
 
-class asin_function
-	: public function_expression {
+class asin_function : public function_expression {
 public:
 	explicit asin_function(const args_list& args)
 	     : function_expression("asin", args, 1, 1)
 	{}
 
 private:
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = asin(num) * 180.0 / pi<double>();
 		if(result != result) {
@@ -528,15 +499,13 @@ private:
 	}
 };
 
-class acos_function
-	: public function_expression {
+class acos_function : public function_expression {
 public:
 	explicit acos_function(const args_list& args)
 	     : function_expression("acos", args, 1, 1)
 	{}
 private:
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = acos(num) * 180.0 / pi<double>();
 		if(result != result) {
@@ -546,8 +515,7 @@ private:
 	}
 };
 
-class atan_function
-	: public function_expression {
+class atan_function : public function_expression {
 public:
 	explicit atan_function(const args_list& args)
 	     : function_expression("acos", args, 1, 1)
@@ -559,8 +527,7 @@ private:
 	}
 };
 
-class sqrt_function
-	: public function_expression {
+class sqrt_function : public function_expression {
 public:
 	explicit sqrt_function(const args_list& args)
 	     : function_expression("sqrt", args, 1, 1)
@@ -576,8 +543,7 @@ private:
 	}
 };
 
-class cbrt_function
-	: public function_expression {
+class cbrt_function : public function_expression {
 public:
 	explicit cbrt_function(const args_list& args)
 	     : function_expression("cbrt", args, 1, 1)
@@ -589,8 +555,7 @@ private:
 	}
 };
 
-class root_function
-	: public function_expression {
+class root_function : public function_expression {
 public:
 	explicit root_function(const args_list& args)
 	     : function_expression("root", args, 2, 2)
@@ -607,8 +572,7 @@ private:
 	}
 };
 
-class log_function
-: public function_expression {
+class log_function : public function_expression {
 public:
 	explicit log_function(const args_list& args)
 	: function_expression("log", args, 1, 2)
@@ -633,8 +597,7 @@ private:
 	}
 };
 
-class exp_function
-	: public function_expression {
+class exp_function : public function_expression {
 public:
 	explicit exp_function(const args_list& args)
 	     : function_expression("exp", args, 1, 1)
@@ -652,8 +615,7 @@ private:
 	}
 };
 
-class pi_function
-	: public function_expression {
+class pi_function : public function_expression {
 public:
 	explicit pi_function(const args_list& args)
 	     : function_expression("pi", args, 0, 0)
@@ -664,8 +626,7 @@ private:
 	}
 };
 
-class hypot_function
-	: public function_expression {
+class hypot_function : public function_expression {
 public:
 	explicit hypot_function(const args_list& args)
 	     : function_expression("hypot", args, 2, 2)
