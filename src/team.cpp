@@ -65,7 +65,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("recall_cost")("recruit")("save_id")("id")("scroll_to_leader")
 	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
 	("suppress_end_turn_confirmation")
-	("team_name")("user_team_name")("village_gold")("village_support")("is_local")
+	("team_name")("user_team_name")("side_name")("village_gold")("village_support")("is_local")
 	// Multiplayer attributes.
 	("action_bonus_count")("allow_changes")("allow_player")("color_lock")
 	("countdown_time")("disallow_observers")("faction")
@@ -85,6 +85,7 @@ team::team_info::team_info() :
 	can_recruit(),
 	team_name(),
 	user_team_name(),
+	side_name(),
 	save_id(),
 	current_player(),
 	countdown_time(),
@@ -123,6 +124,7 @@ void team::team_info::read(const config &cfg)
 	income = cfg["income"];
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
+	side_name = cfg["side_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -239,6 +241,7 @@ void team::team_info::write(config& cfg) const
 	cfg["income"] = income;
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
+	cfg["side_name"] = side_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;

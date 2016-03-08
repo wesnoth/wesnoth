@@ -216,7 +216,7 @@ static config unit_side(reports::context & rc, const unit* u)
 	std::stringstream text;
 	text << " " << u->side();
 
-	add_image(report, flag_icon + mods, u_team.current_player(), "");
+	add_image(report, flag_icon + mods, u_team.side_name(), "");
 	add_text(report, text.str(), "", "");
 	return report;
 }
@@ -1485,7 +1485,7 @@ REPORT_GENERATOR(side_playing, rc)
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
-	return image_report(flag_icon + mods, active_team.current_player());
+	return image_report(flag_icon + mods, active_team.side_name());
 }
 
 REPORT_GENERATOR(observers, rc)

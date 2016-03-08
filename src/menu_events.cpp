@@ -154,7 +154,7 @@ void menu_handler::show_statistics(int side_num)
 {
 	team &current_team = teams()[side_num - 1];
 	// Current Player name
-	const std::string &player = current_team.current_player();
+	const std::string &player = current_team.side_name();
 	//add player's name to title of dialog
 	std::stringstream title_str;
 	title_str <<  _("Statistics") << " (" << player << ")";
@@ -272,7 +272,7 @@ void menu_handler::status_table(int selected)
 			}
 
 			if (pc_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)
-				leader_name = teams()[n].current_player();
+				leader_name = teams()[n].side_name();
 
 		} else {
 			leader_bools.push_back(false);
@@ -393,7 +393,7 @@ void menu_handler::scenario_settings_table(int selected)
 		}
 
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			<< teams()[n].current_player() << COLUMN_SEPARATOR
+			<< teams()[n].side_name() << COLUMN_SEPARATOR
 			<< n + 1 << COLUMN_SEPARATOR
 			<< teams()[n].start_gold() << COLUMN_SEPARATOR
 			<< teams()[n].base_income() << COLUMN_SEPARATOR

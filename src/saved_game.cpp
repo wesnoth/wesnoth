@@ -168,6 +168,7 @@ void saved_game::write_general_info(config_writer& out) const
 
 void saved_game::set_defaults()
 {
+	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
 	static const std::vector<std::string> team_defaults = boost::assign::list_of
 		("carryover_percentage")
 		("carryover_add")
@@ -178,6 +179,10 @@ void saved_game::set_defaults()
 		if(side["save_id"].empty())
 		{
 			side["save_id"] = side["id"];
+		}
+		if(!is_multiplayer_tag && side["side_name"].blank())
+		{
+			side["side_name"] = side["name"];
 		}
 		// Set some team specific values to their defaults specified in scenario
 		BOOST_FOREACH(const std::string& att_name, team_defaults)
