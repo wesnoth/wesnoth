@@ -153,12 +153,12 @@ BOOST_AUTO_TEST_CASE(test_formula_function_sin_cos)
 		BOOST_CHECK_EQUAL(
 			  game_logic::formula("sin(x)")
 				.evaluate(variables).as_decimal()
-			, static_cast<int>(1000. * sin(x * pi / 180.)));
+			, static_cast<int>(round(1000. * sin(x * pi / 180.))));
 
 		BOOST_CHECK_EQUAL(
 			  game_logic::formula("cos(x)")
 				.evaluate(variables).as_decimal()
-			, static_cast<int>(1000. * cos(x * pi / 180.)));
+			, static_cast<int>(round(1000. * cos(x * pi / 180.))));
 	}
 }
 

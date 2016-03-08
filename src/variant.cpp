@@ -345,6 +345,18 @@ variant::variant(int n) : type_(TYPE_INT), int_value_(n)
 variant::variant(int n, variant::DECIMAL_VARIANT_TYPE /*type*/) : type_(TYPE_DECIMAL), decimal_value_(n)
 {}
 
+variant::variant(double n, variant::DECIMAL_VARIANT_TYPE /*type*/) : type_(TYPE_DECIMAL) {
+	n *= 1000;
+	decimal_value_ = static_cast<int>(n);
+	
+	n -= decimal_value_;
+	
+	if(n > 0.5)
+		decimal_value_++;
+	else if(n < -0.5)
+		decimal_value_--;
+}
+
 variant::variant(const game_logic::formula_callable* callable)
 	: type_(TYPE_CALLABLE), callable_(callable)
 {
@@ -736,15 +748,7 @@ variant variant::operator^(const variant& v) const
 
 		double res = pow( as_decimal()/1000.0 , v.as_decimal()/1000.0 );
 
-		res *= 1000;
-		int i =  static_cast<int>( res );
-
-		res -= i;
-
-		if( res > 0.5 )
-			i++;
-
-		return variant( i , variant::DECIMAL_VARIANT);
+		return variant(res, DECIMAL_VARIANT);
 	}
 
 	return variant(static_cast<int>(

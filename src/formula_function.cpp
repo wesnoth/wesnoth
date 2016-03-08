@@ -450,7 +450,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * sin(angle * pi<double>() / 180.0), variant::DECIMAL_VARIANT);
+		const double result = sin(angle * pi<double>() / 180.0);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -462,7 +463,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000. * cos(angle * pi<double>() / 180.0), variant::DECIMAL_VARIANT);
+		const double result = cos(angle * pi<double>() / 180.0);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -478,7 +480,7 @@ private:
 		if(result != result || result <= INT_MIN || result >= INT_MAX) {
 			return variant();
 		}
-		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -495,7 +497,7 @@ private:
 		if(result != result) {
 			return variant();
 		}
-		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -511,7 +513,7 @@ private:
 		if(result != result) {
 			return variant();
 		}
-		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -523,7 +525,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * atan(num) * 180.0 / pi<double>(), variant::DECIMAL_VARIANT);
+		const double result = atan(num) * 180.0 / pi<double>();
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -539,7 +542,7 @@ private:
 		if(result != result) {
 			return variant();
 		}
-		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -551,7 +554,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * (num < 0 ? -pow(-num, 1.0l / 3.0l) : pow(num, 1.0l / 3.0l)), variant::DECIMAL_VARIANT);
+		const double result = num < 0 ? -pow(-num, 1.0l / 3.0l) : pow(num, 1.0l / 3.0l);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -568,7 +572,7 @@ private:
 		if(result != result) {
 			return variant();
 		}
-		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -585,14 +589,14 @@ private:
 			if(result != result) {
 				return variant();
 			}
-			return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+			return variant(result, variant::DECIMAL_VARIANT);
 		} else {
 			const double base = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
 			const double result = log(num) / log(base);
 			if(result != result) {
 				return variant();
 			}
-			return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+			return variant(result, variant::DECIMAL_VARIANT);
 		}
 	}
 };
@@ -611,7 +615,7 @@ private:
 			// but I figure it's better than returning INT_MIN.
 			return variant();
 		}
-		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -622,7 +626,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable&, formula_debugger*) const {
-		return variant(1000 * pi<double>(), variant::DECIMAL_VARIANT);
+		return variant(pi<double>(), variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -635,7 +639,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double x = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double y = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * hypot(x, y), variant::DECIMAL_VARIANT);
+		return variant(hypot(x,y), variant::DECIMAL_VARIANT);
 	}
 };
 
