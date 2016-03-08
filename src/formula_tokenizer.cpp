@@ -35,7 +35,7 @@ void raise_exception(iterator& i1, iterator i2, std::string str) {
 
 }
 
-token get_token(iterator& i1, iterator i2) {
+token get_token(iterator& i1, const iterator i2) {
 
 	iterator it = i1;
 	if( *i1 >= 'A' ) {
@@ -109,6 +109,7 @@ token get_token(iterator& i1, iterator i2) {
 
 			//unused characters in this range:
 			// \ ` { | }
+			// Note: {} should never be used since they play poorly with WML preprocessor
 		}
 	} else {
 		//limit search to the lower-half of the ASCII table
@@ -189,6 +190,8 @@ token get_token(iterator& i1, iterator i2) {
 		// , . .+ .- .* ./ .. ( ) ' # + - -> * / % !=
 		//unused characters:
 		// ! " $ &
+		// ! is used only as part of !=
+		// Note: " should never be used since it plays poorly with WML
 		} else if ( *i1 == ',' ) {
 			return token( it, ++i1, TOKEN_COMMA);
 
@@ -211,9 +214,18 @@ token get_token(iterator& i1, iterator i2) {
 			return token( it, ++i1, TOKEN_RPARENS);
 
 		} else if ( *i1 == '\'' ) {
+			int bracket_depth = 0;
 			++i1;
-			while( i1 != i2 && *i1 != '\'' )
+			while (i1 != i2) {
+				if (*i1 == '[') {
+					bracket_depth++;
+				} else if(bracket_depth > 0 && *i1 == ']') {
+					bracket_depth--;
+				} else if(bracket_depth == 0 && *i1 == '\'') {
+					break;
+				}
 				++i1;
+			}
 
 			if( i1 != i2 ) {
 				return token( it, ++i1, TOKEN_STRING_LITERAL );

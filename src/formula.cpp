@@ -569,20 +569,44 @@ public:
 		str_(),
 		subs_()
 	{
-		std::string::iterator i;
-		while((i = std::find(str.begin(), str.end(), '[')) != str.end()) {
-			std::string::iterator j = std::find(i, str.end(), ']');
+		std::string::iterator i = str.begin();
+		while((i = std::find(i, str.end(), '[')) != str.end()) {
+			int bracket_depth = 0;
+			std::string::iterator j = i + 1;
+			while(j != str.end() && (bracket_depth > 0 || *j != ']')) {
+				if(*j == '[') {
+					bracket_depth++;
+				} else if(*j == ']' && bracket_depth > 0) {
+					bracket_depth--;
+				}
+				++j;
+			}
 			if(j == str.end()) {
 				break;
 			}
 
 			const std::string formula_str(i+1, j);
 			const int pos = i - str.begin();
-			str.erase(i, j+1);
+			if(j - i == 2 && (i[1] == '(' || i[1] == '\'' || i[1] == ')')) {
+				// Bracket contained nothing but a quote or parenthesis.
+				// This means it was intended as a literal quote or square bracket.
+				i = str.erase(i);
+				if(*i == '(') *i = '[';
+				else if(*i == ')') *i = ']';
+				i = str.erase(i + 1);
+				continue;
+			} else {
+				i = str.erase(i, j+1);
+			}
 
 			substitution sub;
 			sub.pos = pos;
-			sub.calculation.reset(new formula(formula_str));
+			try {
+				sub.calculation.reset(new formula(formula_str));
+			} catch(formula_error& e) {
+				e.filename += " - string substitution";
+				throw e;
+			}
 			subs_.push_back(sub);
 		}
 

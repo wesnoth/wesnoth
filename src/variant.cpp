@@ -1084,7 +1084,22 @@ void variant::serialize_to_string(std::string& str) const
 	}
 	case TYPE_STRING:
 		str += "'";
-		str += string_->str;
+		for(std::string::iterator it = string_->str.begin(); it < string_->str.end(); ++it) {
+			switch(*it) {
+			case '\'':
+				str += "[']";
+				break;
+			case '[':
+				str += "[(]";
+				break;
+			case ']':
+				str += "[)]";
+				break;
+			default:
+				str += *it;
+				break;
+			}
+		}
 		str += "'";
 		break;
 	default:
