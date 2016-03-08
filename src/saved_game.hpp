@@ -111,7 +111,7 @@ public:
 	void cancel_orders();
 	/* removes network_ai and network controller types*/
 	void unify_controllers();
-
+	/** does some post loading stuff must be used before passing the data to connect_engine */
 	void set_defaults();
 	replay_recorder_base& get_replay() { return replay_data_; }
 	const replay_recorder_base& get_replay() const { return replay_data_; }

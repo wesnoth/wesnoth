@@ -168,6 +168,7 @@ void saved_game::write_general_info(config_writer& out) const
 
 void saved_game::set_defaults()
 {
+	const bool is_loaded_game = this->starting_pos_type_ != STARTINGPOS_SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
 	static const std::vector<std::string> team_defaults = boost::assign::list_of
 		("carryover_percentage")
@@ -183,6 +184,11 @@ void saved_game::set_defaults()
 		if(!is_multiplayer_tag && side["side_name"].blank())
 		{
 			side["side_name"] = side["name"];
+		}
+		if(!is_loaded_game && !side["current_player"].empty())
+		{
+			ERR_NG << "Removed invalid 'current_player' attribute from [side] while loading a scenario. Consider using 'side_name' instead\n";
+			side["current_player"] = config::attribute_value();
 		}
 		// Set some team specific values to their defaults specified in scenario
 		BOOST_FOREACH(const std::string& att_name, team_defaults)
