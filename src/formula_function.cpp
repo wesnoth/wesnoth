@@ -501,7 +501,11 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * tan(angle * pi<double>() / 180.0), variant::DECIMAL_VARIANT);
+		const double result = tan(angle * pi<double>() / 180.0);
+		if(result != result || result <= INT_MIN || result >= INT_MAX) {
+			return variant();
+		}
+		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -516,7 +520,11 @@ private:
 	variant execute(const formula_callable& variables
 			, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * asin(num) * 180.0 / pi<double>(), variant::DECIMAL_VARIANT);
+		const double result = asin(num) * 180.0 / pi<double>();
+		if(result != result) {
+			return variant();
+		}
+		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -530,7 +538,11 @@ private:
 	variant execute(const formula_callable& variables
 			, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * acos(num) * 180.0 / pi<double>(), variant::DECIMAL_VARIANT);
+		const double result = acos(num) * 180.0 / pi<double>();
+		if(result != result) {
+			return variant();
+		}
+		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -556,7 +568,11 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * sqrt(num), variant::DECIMAL_VARIANT);
+		const double result = sqrt(num);
+		if(result != result) {
+			return variant();
+		}
+		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -583,7 +599,11 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double base = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double root = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * (base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0l / root) : pow(base, 1.0l / root)), variant::DECIMAL_VARIANT);
+		const double result = base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0l / root) : pow(base, 1.0l / root);
+		if(result != result) {
+			return variant();
+		}
+		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -597,10 +617,18 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		if(args().size() == 1) {
-			return variant(1000.0 * log(num), variant::DECIMAL_VARIANT);
+			const double result = log(num);
+			if(result != result) {
+				return variant();
+			}
+			return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 		} else {
 			const double base = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
-			return variant(1000.0 * log(num) / log(base), variant::DECIMAL_VARIANT);
+			const double result = log(num) / log(base);
+			if(result != result) {
+				return variant();
+			}
+			return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 		}
 	}
 };
@@ -614,7 +642,13 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		return variant(1000.0 * exp(num), variant::DECIMAL_VARIANT);
+		const double result = exp(num);
+		if(result == 0 || result >= INT_MAX) {
+			// These are range errors rather than NaNs,
+			// but I figure it's better than returning INT_MIN.
+			return variant();
+		}
+		return variant(1000.0 * result, variant::DECIMAL_VARIANT);
 	}
 };
 
