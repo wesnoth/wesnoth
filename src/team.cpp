@@ -184,9 +184,6 @@ void team::team_info::read(const config &cfg)
 	if(save_id.empty()) {
 		save_id = id;
 	}
-	if (current_player.empty()) {
-		current_player = save_id;
-	}
 
 	income_per_village = cfg["village_gold"].to_int(game_config::village_income);
 	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
