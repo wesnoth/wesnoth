@@ -918,7 +918,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		set_controller(CNTR_EMPTY);
 	} else if (cfg_["controller"] == "ai") {
 		set_controller(CNTR_COMPUTER);
-	} else if (!reserved_for_.empty()) {
+	} else if (parent_.default_controller_ == CNTR_NETWORK && !reserved_for_.empty()) {
 		// Reserve a side for "current_player", unless the side
 		// is played by an AI.
 		set_controller(CNTR_RESERVED);
