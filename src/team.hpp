@@ -126,7 +126,7 @@ private:
 		std::string flag;
 		std::string flag_icon;
 
-		std::string description;
+		std::string id;
 
 		bool scroll_to_leader;
 

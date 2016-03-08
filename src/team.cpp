@@ -62,7 +62,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("carryover_add")("carryover_percentage")("color")("controller")("current_player")("defeat_condition")("flag")
 	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")
 	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
-	("recall_cost")("recruit")("save_id")("scroll_to_leader")
+	("recall_cost")("recruit")("save_id")("id")("scroll_to_leader")
 	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
 	("suppress_end_turn_confirmation")
 	("team_name")("user_team_name")("village_gold")("village_support")("is_local")
@@ -91,7 +91,7 @@ team::team_info::team_info() :
 	action_bonus_count(0),
 	flag(),
 	flag_icon(),
-	description(),
+	id(),
 	scroll_to_leader(true),
 	objectives(),
 	objectives_changed(false),
@@ -129,7 +129,7 @@ void team::team_info::read(const config &cfg)
 	action_bonus_count = cfg["action_bonus_count"];
 	flag = cfg["flag"].str();
 	flag_icon = cfg["flag_icon"].str();
-	description = cfg["id"].str();
+	id = cfg["id"].str();
 	scroll_to_leader = cfg["scroll_to_leader"].to_bool(true);
 	objectives = cfg["objectives"];
 	objectives_changed = cfg["objectives_changed"].to_bool();
@@ -182,7 +182,7 @@ void team::team_info::read(const config &cfg)
 	}
 
 	if(save_id.empty()) {
-		save_id = description;
+		save_id = id;
 	}
 	if (current_player.empty()) {
 		current_player = save_id;
@@ -246,7 +246,7 @@ void team::team_info::write(config& cfg) const
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
 	cfg["flag_icon"] = flag_icon;
-	cfg["id"] = description;
+	cfg["id"] = id;
 	cfg["objectives"] = objectives;
 	cfg["objectives_changed"] = objectives_changed;
 	cfg["countdown_time"]= countdown_time;
