@@ -62,7 +62,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("carryover_add")("carryover_percentage")("color")("controller")("current_player")("defeat_condition")("flag")
 	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")
 	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
-	("recall_cost")("recruit")("save_id")("id")("scroll_to_leader")
+	("recall_cost")("recruit")("save_id")("scroll_to_leader")
 	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
 	("suppress_end_turn_confirmation")
 	("team_name")("user_team_name")("side_name")("village_gold")("village_support")("is_local")
