@@ -52,6 +52,7 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/unit_create.hpp"
+#include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
@@ -522,59 +523,33 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location &last_hex)
 {
-	team &current_team = teams()[side_num - 1];
-
 	std::vector<const unit_type*> sample_units;
 
 	gui_->draw(); //clear the old menu
-	std::vector<std::string> item_keys;
-	std::vector<std::string> items;
 
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
-		const unit_type *type = unit_types.find(*it);
+		const unit_type* type = unit_types.find(*it);
 		if (!type) {
 			ERR_NG << "could not find unit '" << *it << "'" << std::endl;
 			return;
 		}
 
-		item_keys.push_back(*it);
-
-		char prefix;
-		int wb_gold = 0;
-
-		if (const boost::shared_ptr<wb::manager> & whiteb = pc_.get_whiteboard())
-		{ wb::future_map future; // so gold takes into account planned spending
-			wb_gold = whiteb->get_spent_gold_for(side_num);
-			//display units that we can't afford to recruit in red
-		} // end planned unit map scope
-
-		prefix = (type->cost() > current_team.gold() - wb_gold
-				? font::BAD_TEXT : font::NULL_MARKUP);
-
-		std::stringstream description;
-		description << font::IMAGE << type->image();
-#ifndef LOW_MEM
-		description << "~RC(" << type->flag_rgb() << '>'
-			<< team::get_side_color_index(side_num) << ')';
-#endif
-		description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->type_name() << "\n"
-				<< prefix << type->cost() << " " << translation::sngettext("unit^Gold", "Gold", type->cost());
-
-		items.push_back(description.str());
 		sample_units.push_back(type);
 	}
 
 	if(sample_units.empty()) {
-		gui2::show_transient_message(gui_->video(),"",_("You have no units available to recruit."));
+		gui2::show_transient_message(gui_->video(), "", _("You have no units available to recruit."));
 		return;
 	}
 
-	int recruit_res = dialogs::recruit_dialog(*gui_, sample_units, items, side_num, get_title_suffix(side_num));
+	gui2::tunit_recruit dlg(sample_units, teams()[side_num - 1]);
 
-	if(recruit_res != -1) {
-		do_recruit(item_keys[recruit_res], side_num, last_hex);
+	dlg.show(gui_->video());
+
+	if(dlg.get_retval() == gui2::twindow::OK) {
+		do_recruit(sample_units[dlg.get_selected_index()]->type_name(), side_num, last_hex);
 	}
 }
 
