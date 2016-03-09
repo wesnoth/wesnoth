@@ -127,6 +127,9 @@ void team::team_info::read(const config &cfg)
 	side_name = cfg["side_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
+	if(side_name.empty()) {
+		side_name = current_player;
+	}
 	countdown_time = cfg["countdown_time"].str();
 	action_bonus_count = cfg["action_bonus_count"];
 	flag = cfg["flag"].str();
