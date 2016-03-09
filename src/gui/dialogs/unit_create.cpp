@@ -31,6 +31,7 @@
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "display.hpp"
 #include "marked-up_text.hpp"
@@ -127,12 +128,6 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			dialog_callback<tunit_create, &tunit_create::list_item_clicked>);
 #endif
 
-	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "type_profile", false),
-			boost::bind(&tunit_create::profile_button_callback,
-						this,
-						boost::ref(window)));
-
 	list.clear();
 
 	FOREACH(const AUTO & i, unit_types.types())
@@ -221,145 +216,17 @@ void tunit_create::post_show(twindow& window)
 	last_gender = gender_;
 }
 
-void tunit_create::print_stats(std::stringstream& str, const int row)
-{
-	const unit_type* u = units_[row];
-
-	str << "<b>" << _("HP: ") << "</b>"
-		<< "<span color='#21e100'>" << u->hitpoints() << "</span> ";
-
-	str << "<b>" << _("XP: ") << "</b>"
-		<< "<span color='#00a0e1'>" << u->experience_needed() << "</span> ";
-
-	str << "<b>" << _("MP: ") << "</b>"
-		<< u->movement() << "\n";
-
-	str << " \n";
-
-	// Print trait details
-	bool has_traits = false;
-	std::stringstream t_str;
-
-	BOOST_FOREACH(const config& tr, u->possible_traits())
-	{
-		if(tr["availability"] != "musthave") continue;
-
-		const std::string gender_string =
-			u->genders().front() == unit_race::FEMALE ? "female_name" : "male_name";
-
-		t_string name = tr[gender_string];
-		if(name.empty()) {
-			name = tr["name"];
-		}
-
-		if(!name.empty()) {
-			t_str << "  " << name << "\n";
-		}
-
-		has_traits = true;
-	}
-
-	if(has_traits) {
-		str << "<b>" << "Traits" << "</b>" << "\n";
-		str << t_str.str();
-		str << " \n";
-	}
-
-	// Print ability details
-	if(!u->abilities().empty()) {
-		str << "<b>" << "Abilities" << "</b>" << "\n";
-
-		BOOST_FOREACH(const std::string& ab, u->abilities())
-		{
-			str << "  " << ab << "\n";
-		}
-
-		str << " \n";
-	}
-
-	// Print attack details
-	if(!u->attacks().empty()) {
-		str << "<b>" << "Attacks" << "</b>" << "\n";
-
-		BOOST_FOREACH(const attack_type& a, u->attacks())
-		{
-			str << "<span color='#f5e6c1'>" << a.damage()
-				<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>" << "\n";
-
-			str << "<span color='#a69275'>" << "  " << a.range()
-				<< font::weapon_details_sep << a.type() << "</span>" << "\n";
-
-			const std::string special = a.weapon_specials();
-			if (!special.empty()) {
-				str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
-			}
-
-			const std::string accuracy_parry = a.accuracy_parry_description();
-			if(!accuracy_parry.empty()) {
-				str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
-			}
-
-			str << " \n";
-		}
-	}
-}
-
 void tunit_create::list_item_clicked(twindow& window)
 {
 	const int selected_row
-			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
+		= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	const unit_type* u = units_[selected_row];
-
-	std::stringstream str;
-	print_stats(str, selected_row);
-
-	std::string tc;
-
-	if(resources::controller) {
-		tc = "~RC(" + u->flag_rgb() + ">" +
-			 team::get_side_color_index(resources::controller->current_side())
-			 + ")";
-	}
-
-	find_widget<timage>(&window, "type_image", false)
-			.set_label((u->icon().empty() ? u->image() : u->icon()) + tc);
-
-	tlabel& u_name = find_widget<tlabel>(&window, "type_name", false);
-
-	u_name.set_label("<big>" + u->type_name() + "</big>");
-	u_name.set_use_markup(true);
-
-	std::stringstream l_str;
-	l_str << "<b>" << "Lvl " << u->level() << "</b>";
-
-	tlabel& l_label = find_widget<tlabel>(&window, "type_level", false);
-
-	l_label.set_label(l_str.str());
-	l_label.set_use_markup(true);
-
-	timage& r_icon = find_widget<timage>(&window, "type_race", false);
-
-	r_icon.set_label("icons/unit-groups/race_" + u->race_id() + "_30.png");
-	r_icon.set_tooltip(u->race()->name(u->genders().front()));
-
-	const std::string& alignment_name = u->alignment().to_string();
-
-	timage& a_icon = find_widget<timage>(&window, "type_alignment", false);
-
-	a_icon.set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
-	a_icon.set_tooltip(unit_type::alignment_description(
-		u->alignment(),
-		u->genders().front()));
-
-	tlabel& details = find_widget<tlabel>(&window, "type_details", false);
-
-	details.set_label(str.str());
-	details.set_use_markup(true);
+	find_widget<tunit_preview_pane>(&window, "unit_details", false)
+		.set_displayed_type(units_[selected_row]);
 }
 
 bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
@@ -407,16 +274,6 @@ bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 	list.set_row_shown(show_items);
 
 	return false;
-}
-
-void tunit_create::profile_button_callback(twindow& window)
-{
-	const int selected_row
-			= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
-
-	help::show_unit_help(window.video(),
-		units_[selected_row]->id(),
-		units_[selected_row]->show_variations_in_help(), false);
 }
 
 void tunit_create::gender_toggle_callback(twindow&)

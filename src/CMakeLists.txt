@@ -604,6 +604,7 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/toggle_panel.cpp
 	gui/widgets/tree_view.cpp
 	gui/widgets/tree_view_node.cpp
+	gui/widgets/unit_preview_pane.cpp
 	gui/widgets/vertical_scrollbar.cpp
 	gui/widgets/viewport.cpp
 	gui/widgets/widget.cpp
@@ -637,6 +638,7 @@ set(wesnoth-gui_widget_SRC
 	gui/auxiliary/window_builder/toggle_button.cpp
 	gui/auxiliary/window_builder/toggle_panel.cpp
 	gui/auxiliary/window_builder/tree_view.cpp
+	gui/auxiliary/window_builder/unit_preview_pane.cpp
 	gui/auxiliary/window_builder/vertical_scrollbar.cpp
 	gui/auxiliary/window_builder/viewport.cpp
 )
@@ -685,6 +687,7 @@ set(wesnoth-gui_widget_definition_SRC
 	gui/auxiliary/widget_definition/toggle_button.cpp
 	gui/auxiliary/widget_definition/toggle_panel.cpp
 	gui/auxiliary/widget_definition/tree_view.cpp
+	gui/auxiliary/widget_definition/unit_preview_pane.cpp
 	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
 	gui/auxiliary/widget_definition/window.cpp
 )
@@ -947,6 +950,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
+	gui/dialogs/unit_recruit.cpp
 	gui/dialogs/wml_error.cpp
 	gui/dialogs/wml_message.cpp
 	halo.cpp
