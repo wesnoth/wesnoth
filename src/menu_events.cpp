@@ -549,7 +549,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	dlg.show(gui_->video());
 
 	if(dlg.get_retval() == gui2::twindow::OK) {
-		do_recruit(sample_units[dlg.get_selected_index()]->type_name(), side_num, last_hex);
+		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
 	}
 }
 
