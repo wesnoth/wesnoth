@@ -303,7 +303,7 @@ public:
 	void set_flag(const std::string& flag) { info_.flag = flag; }
 	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
 
-	const std::string& side_name() const { return info_.side_name.empty() ? info_.current_player : info_.side_name; }
+	const std::string& side_name() const { return info_.side_name.empty() ? info_.current_player : info_.side_name.str(); }
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
 	bool shrouded(const map_location& loc) const;
