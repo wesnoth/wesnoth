@@ -450,6 +450,8 @@ variant variant::operator[](const variant& v) const
 				slice.push_back( (*this)[v[i]] );
 			}
 			return variant(&slice);
+		} else if(v.as_int() < 0) {
+			return operator[](num_elements() + v.as_int());
 		}
 		return operator[](v.as_int());
 	} else {
