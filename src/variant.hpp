@@ -95,6 +95,7 @@ public:
 	const std::map<variant,variant>& as_map() const;
 
 	const std::string& as_string() const;
+	std::string type_string() const;
 
 	bool is_callable() const { return type_ == TYPE_CALLABLE; }
 	const game_logic::formula_callable* as_callable() const {

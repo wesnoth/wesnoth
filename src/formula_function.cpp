@@ -1316,6 +1316,19 @@ private:
 	}
 };
 
+
+class type_function : public function_expression {
+public:
+	explicit type_function(const args_list& args)
+	    : function_expression("type", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant& v = args()[0]->evaluate(variables, fdb);
+		return variant(v.type_string());
+	}
+};
+
 }
 
 variant key_value_pair::get_value(const std::string& key) const
@@ -1505,6 +1518,7 @@ functions_map& get_functions_map() {
 		FUNCTION(exp);
 		FUNCTION(pi);
 		FUNCTION(hypot);
+		FUNCTION(type);
 #undef FUNCTION
 	}
 

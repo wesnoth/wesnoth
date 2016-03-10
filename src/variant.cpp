@@ -31,7 +31,7 @@ std::string variant_type_to_string(variant::TYPE type) {
 	case variant::TYPE_NULL:
 		return "null";
 	case variant::TYPE_INT:
-		return "int";
+		return "integer";
 	case variant::TYPE_DECIMAL:
 		return "decimal";
 	case variant::TYPE_CALLABLE:
@@ -336,6 +336,10 @@ void variant::release()
 	}
 }
 
+std::string variant::type_string() const {
+	return variant_type_to_string(type_);
+}
+
 variant::variant() : type_(TYPE_NULL), int_value_(0)
 {}
 
@@ -456,8 +460,7 @@ variant variant::operator[](const variant& v) const
 		return operator[](v.as_int());
 	} else {
 		throw type_error((formatter() << "type error: "
-			<< " expected a list or a map but found "
-			<< variant_type_to_string(type_)
+			<< " expected a list or a map but found " << type_string()
 			<< " (" << to_debug_string() << ")").str());
 	}
 }
@@ -534,8 +537,7 @@ size_t variant::num_elements() const
 		return map_->elements.size();
 	} else {
 		throw type_error((formatter() << "type error: "
-			<< " expected a list or a map but found "
-			<< variant_type_to_string(type_)
+			<< " expected a list or a map but found " << type_string()
 			<< " (" << to_debug_string() << ")").str());
 	}
 }
@@ -570,8 +572,7 @@ int variant::as_decimal() const
 		return 0;
 	} else {
 		throw type_error((formatter() << "type error: "
-			<< " expected integer or decimal but found "
-			<< variant_type_to_string(type_)
+			<< " expected integer or decimal but found " << type_string()
 			<< " (" << to_debug_string() << ")").str());
 	}
 }
@@ -984,12 +985,10 @@ variant variant::concatenate(const variant& v) const
 		std::string res = as_string() + v.as_string();
 		return variant( res );
 	} else {
-		throw type_error((formatter() << "type error: " << " expected two "
-			<< variant_type_to_string(TYPE_LIST) << " or two "
-			<< variant_type_to_string(TYPE_STRING) << " but found "
-			<< variant_type_to_string(type_)
+		throw type_error((formatter() << "type error: expected two "
+			<< " lists or two maps  but found " << type_string()
 			<< " (" << to_debug_string() << ")"
-			<< " and " << variant_type_to_string(v.type_)
+			<< " and " << v.type_string()
 			<< " (" << v.to_debug_string() << ")").str());
 	}
 }
@@ -1015,8 +1014,7 @@ void variant::must_be(variant::TYPE t) const
 {
 	if(type_ != t) {
 		throw type_error((formatter() << "type error: " << " expected "
-			<< variant_type_to_string(t) << " but found "
-			<< variant_type_to_string(type_)
+			<< variant_type_to_string(t) << " but found " << type_string()
 			<< " (" << to_debug_string() << ")").str());
 	}
 }
