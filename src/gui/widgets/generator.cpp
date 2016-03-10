@@ -38,9 +38,10 @@ void tone::set_item_shown(const unsigned index, const bool show)
 	} else if(!show && is_selected(index)) {
 		do_deselect_item(index);
 
-		for(unsigned i = index + 1; i < get_item_count(); ++i) {
-			if(get_item_shown(i)) {
-				do_select_item(i);
+		for(unsigned i = 1; i < get_item_count(); ++i) {
+			unsigned new_index = (index + i) % get_item_count(); 
+			if(get_item_shown(new_index)) {
+				do_select_item(new_index);
 				break;
 			}
 		}
