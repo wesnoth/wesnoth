@@ -876,6 +876,34 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			}
 		}
 	}
+	
+	if((i2-1)->type == TOKEN_RSQUARE) { // Check if there is [ ] : a indexing operator
+		const token* tok = i2-2;
+		int square_parens = 0;
+		bool is_index_op = true;
+		while((tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
+			if (tok->type == TOKEN_RSQUARE) {
+				square_parens++;
+			} else if(tok->type == TOKEN_LSQUARE) {
+				square_parens--;
+			} else if((tok->type == TOKEN_POINTER || tok->type == TOKEN_COMMA) && !square_parens ) {
+				is_index_op = false;
+			}
+			--tok;
+		}
+		if(tok == i1 || tok->type != TOKEN_LSQUARE) {
+			is_index_op = false;
+		}
+		if(is_index_op) {
+			try {
+				return expression_ptr(new square_bracket_expression(
+						parse_expression(i1,tok,symbols),
+						parse_expression(tok+1,i2-1,symbols)));
+			} catch (formula_error& e){
+				throw formula_error(e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number);
+			}
+		}
+	}
 
 	int parens = 0;
 	const token* op = NULL;
@@ -901,44 +929,32 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 	if(op == NULL) {
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
-				const token* tok = i2-2;
-				int square_parens = 0;
-				bool is_map = false;
-				while ( (tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
-						if (tok->type == TOKEN_RSQUARE) {
-							square_parens++;
-						} else if(tok->type == TOKEN_LSQUARE) {
-							square_parens--;
-						} else if( (tok->type == TOKEN_POINTER) && !square_parens ) {
-							is_map = true;
-						}
-						--tok;
-				}
-				if (tok->type == TOKEN_LSQUARE) {
-					if (tok == i1) {
-						//create a list or a map
-						std::vector<expression_ptr> args;
-
-						if ( is_map ) {
-							parse_set_args(i1+1, i2-1, &args, symbols);
-							return expression_ptr(new map_expression(args));
-						} else {
-							parse_args(i1+1,i2-1,&args,symbols);
-							return expression_ptr(new list_expression(args));
-						}
-					} else {
-						//execute operator [ ]
-						try{
-							return expression_ptr(new square_bracket_expression(
-											parse_expression(i1,tok,symbols),
-								 				parse_expression(tok+1,i2-1,symbols)));
-						}
-						catch (formula_error& e){
-							throw formula_error( e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
-						}
+		} else if((i2-1)->type == TOKEN_RSQUARE) { // Check if there is [ ] : a list/map definition
+			const token* tok = i2-2;
+			int square_parens = 0;
+			bool is_map = false;
+			while ((tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
+					if (tok->type == TOKEN_RSQUARE) {
+						square_parens++;
+					} else if(tok->type == TOKEN_LSQUARE) {
+						square_parens--;
+					} else if( (tok->type == TOKEN_POINTER) && !square_parens ) {
+						is_map = true;
 					}
+					--tok;
+			}
+			if (tok->type == TOKEN_LSQUARE && tok == i1) {
+				//create a list or a map
+				std::vector<expression_ptr> args;
+
+				if (is_map) {
+					parse_set_args(i1+1, i2-1, &args, symbols);
+					return expression_ptr(new map_expression(args));
+				} else {
+					parse_args(i1+1,i2-1,&args,symbols);
+					return expression_ptr(new list_expression(args));
 				}
+			}
 		} else if(i2 - i1 == 1) {
 			if(i1->type == TOKEN_KEYWORD) {
 				if(std::string(i1->begin,i1->end) == "functions") {
