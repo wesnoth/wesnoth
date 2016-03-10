@@ -750,6 +750,8 @@ variant variant::operator^(const variant& v) const
 	if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
 
 		double res = pow( as_decimal()/1000.0 , v.as_decimal()/1000.0 );
+		
+		if(res != res) return variant();
 
 		return variant(res, DECIMAL_VARIANT);
 	}
