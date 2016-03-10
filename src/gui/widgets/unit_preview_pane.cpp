@@ -186,8 +186,6 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 				if(!accuracy_parry.empty()) {
 					str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
 				}
-
-				str << " \n";
 			}
 		}
 
