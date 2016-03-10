@@ -1079,6 +1079,9 @@ void variant::serialize_to_string(std::string& str) const
 			str += "->";
 			i->second.serialize_to_string(str);
 		}
+		if(map_->elements.empty()) {
+			str += "->";
+		}
 		str += "]";
 		break;
 	}

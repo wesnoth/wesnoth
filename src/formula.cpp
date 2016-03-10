@@ -147,6 +147,9 @@ public:
 			s << " -> ";
 			s << (*(i+1))->str();
 		}
+		if(items_.empty()) {
+			s << "->";
+		}
 		s << " ]";
 		return s.str();
 	}
@@ -930,6 +933,10 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
 		} else if((i2-1)->type == TOKEN_RSQUARE) { // Check if there is [ ] : a list/map definition
+			// First, a special case for an empty map
+			if(i2 - i1 == 3 && i1->type == TOKEN_LSQUARE && (i1+1)->type == TOKEN_POINTER) {
+				return expression_ptr(new map_expression(std::vector<expression_ptr>()));
+			}
 			const token* tok = i2-2;
 			int square_parens = 0;
 			bool is_map = false;
