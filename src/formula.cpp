@@ -888,7 +888,9 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		} else if(parens == 0 && i->type == TOKEN_OPERATOR) {
 			if( ( !operator_group ) && (op == NULL || operator_precedence(*op) >=
 							 operator_precedence(*i)) ) {
-				op = i;
+				// Need special exception for exponentiation to be right-associative
+				if(*i->begin != '^' || op == NULL || *op->begin != '^')
+					op = i;
 			}
 			operator_group = true;
 		} else {
