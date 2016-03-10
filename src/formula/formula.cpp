@@ -24,6 +24,8 @@
 namespace game_logic
 {
 
+const char*const formula::id_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+
 void formula_callable::set_value(const std::string& key, const variant& /*value*/)
 {
 	std::cerr << "ERROR: cannot set key '" << key << "' on object" << std::endl;

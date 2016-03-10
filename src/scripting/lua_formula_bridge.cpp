@@ -22,13 +22,10 @@
 #include "lua/lua.h"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
-#include "formula/function.hpp"
 #include "variable.hpp"
 
 void luaW_pushfaivariant(lua_State* L, variant val);
 variant luaW_tofaivariant(lua_State* L, int i);
-
-static const char*const formula_id_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
 
 using namespace game_logic;
 
@@ -69,72 +66,9 @@ public:
 		for(lua_pushnil(mState); lua_next(mState, table_i); lua_pop(mState,1)) {
 			if(lua_isstring(mState, -2) && !lua_isnumber(mState, -2)) {
 				std::string key = lua_tostring(mState, -2);
-				if(key.find_first_not_of(formula_id_chars) != std::string::npos) {
+				if(key.find_first_not_of(formula::id_chars) != std::string::npos) {
 					inputs->push_back(formula_input(key, FORMULA_READ_ONLY));
 				}
-			}
-		}
-	}
-};
-
-class fai_variant_visitor : public boost::static_visitor<variant> {
-public:
-	variant operator()(bool b) const {return variant(b ? 1 : 0);}
-	variant operator()(int i) const {return variant(i);}
-	variant operator()(unsigned long long i) const {return variant(i);}
-	variant operator()(double i) const {return variant(i * 1000, variant::DECIMAL_VARIANT);}
-	variant operator()(const std::string& s) const {return variant(s);} // TODO: Should comma-separated lists of stuff be returned as a list? The challenge is to distinguish them from ordinary strings that happen to contain a comma (or should we assume that such strings will be translatable?)
-	variant operator()(const t_string& s) const {return variant(s.str());}
-	variant operator()(boost::blank) const {return variant();}
-};
-
-class config_callable : public formula_callable {
-	const config& cfg;
-public:
-	config_callable(const config& c) : cfg(c) {}
-	variant get_value(const std::string& key) const {
-		if(cfg.has_attribute(key)) {
-			return cfg[key].apply_visitor(fai_variant_visitor());
-		} else if(cfg.has_child(key)) {
-			std::vector<variant> result;
-			for(const config& child : cfg.child_range(key)) {
-				result.push_back(variant(new config_callable(child)));
-			}
-			return variant(&result);
-		} else if(key == "__all_children") {
-			std::vector<variant> result;
-			for(const config::any_child& child : cfg.all_children_range()) {
-				const variant cfg_child(new config_callable(child.cfg));
-				const variant kv(new key_value_pair(variant(child.key), cfg_child));
-				result.push_back(kv);
-			}
-			return variant(&result);
-		} else if(key == "__children") {
-			std::map<std::string, std::vector<variant> > build;
-			for(const config::any_child& child : cfg.all_children_range()) {
-				const variant cfg_child(new config_callable(child.cfg));
-				build[child.key].push_back(cfg_child);
-			}
-			std::map<variant,variant> result;
-			for(auto& p : build) {
-				result[variant(p.first)] = variant(&p.second);
-			}
-			return variant(&result);
-		} else if(key == "__attributes") {
-			std::map<variant,variant> result;
-			for(const config::attribute& val : cfg.attribute_range()) {
-				result[variant(val.first)] = val.second.apply_visitor(fai_variant_visitor());
-			}
-			return variant(&result);
-		} else return variant();
-	}
-	void get_inputs(std::vector<formula_input>* inputs) const {
-		inputs->push_back(formula_input("__all_children", FORMULA_READ_ONLY));
-		inputs->push_back(formula_input("__children", FORMULA_READ_ONLY));
-		inputs->push_back(formula_input("__attributes", FORMULA_READ_ONLY));
-		for(const config::attribute& val : cfg.attribute_range()) {
-			if(val.first.find_first_not_of(formula_id_chars) != std::string::npos) {
-				inputs->push_back(formula_input(val.first, FORMULA_READ_ONLY));
 			}
 		}
 	}
@@ -165,11 +99,17 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 		}
 	} else if(val.is_callable()) {
 		// First try a few special cases (well, currently, only one)
-		if(unit_callable* u = val.try_convert<unit_callable>()) {
-			std::string id = u->query_value("id").as_string();
-			luaW_getglobal(L, "wesnoth", "get_unit", NULL);
-			lua_pushstring(L, id.c_str());
-			luaW_pcall(L, 1, 1);
+		if(unit_callable* u_ref = val.try_convert<unit_callable>()) {
+			const unit& u = u_ref->get_unit();
+			unit_map::iterator un_it = resources::units->find(u.get_location());
+			if(&*un_it == &u) {
+				new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
+			} else {
+				new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.side(), u.underlying_id());
+			}
+			lua_pushlightuserdata(L, getunitKey);
+			lua_rawget(L, LUA_REGISTRYINDEX);
+			lua_setmetatable(L, -2);
 		} else {
 			// If those fail, convert generically to a map
 			const formula_callable* obj = val.as_callable();

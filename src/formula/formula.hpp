@@ -62,6 +62,7 @@ public:
 	~formula();
 	const std::string& str() const { return str_; }
 
+	static const char*const id_chars;
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb = nullptr) const;
 	variant execute(formula_debugger *fdb) const;

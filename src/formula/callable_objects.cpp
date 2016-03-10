@@ -13,8 +13,10 @@
 */
 
 #include "formula/callable_objects.hpp"
+#include "formula/function.hpp"
 #include "units/unit.hpp"
 #include "units/formula_manager.hpp"
+#include "config.hpp"
 
 template <typename T, typename K>
 variant convert_map( const std::map<T, K>& input_map ) {
@@ -457,6 +459,80 @@ int unit_type_callable::do_compare(const formula_callable* callable) const
 	}
 
 	return u_.id().compare(u_callable->u_.id());
+}
+
+class fai_variant_visitor : public boost::static_visitor<variant> {
+public:
+	variant operator()(bool b) const {return variant(b ? 1 : 0);}
+	variant operator()(int i) const {return variant(i);}
+	variant operator()(unsigned long long i) const {return variant(i);}
+	variant operator()(double i) const {return variant(i * 1000, variant::DECIMAL_VARIANT);}
+	variant operator()(const std::string& s) const {return variant(s);} // TODO: Should comma-separated lists of stuff be returned as a list? The challenge is to distinguish them from ordinary strings that happen to contain a comma (or should we assume that such strings will be translatable?)
+	variant operator()(const t_string& s) const {return variant(s.str());}
+	variant operator()(boost::blank) const {return variant();}
+};
+
+variant config_callable::get_value(const std::string& key) const
+{
+	if(cfg_.has_attribute(key)) {
+		return cfg_[key].apply_visitor(fai_variant_visitor());
+	} else if(cfg_.has_child(key)) {
+		std::vector<variant> result;
+		for(const auto& child : cfg_.child_range(key)) {
+			result.push_back(variant(new config_callable(child)));
+		}
+		return variant(&result);
+	} else if(key == "__all_children") {
+		std::vector<variant> result;
+		for(const auto& child : cfg_.all_children_range()) {
+			const variant cfg_child(new config_callable(child.cfg));
+			const variant kv(new game_logic::key_value_pair(variant(child.key), cfg_child));
+			result.push_back(kv);
+		}
+		return variant(&result);
+	} else if(key == "__children") {
+		std::map<std::string, std::vector<variant> > build;
+		for(const auto& child : cfg_.all_children_range()) {
+			const variant cfg_child(new config_callable(child.cfg));
+			build[child.key].push_back(cfg_child);
+		}
+		std::map<variant,variant> result;
+		for(auto& p : build) {
+			result[variant(p.first)] = variant(&p.second);
+		}
+		return variant(&result);
+	} else if(key == "__attributes") {
+		std::map<variant,variant> result;
+		for(const auto& val : cfg_.attribute_range()) {
+			result[variant(val.first)] = val.second.apply_visitor(fai_variant_visitor());
+		}
+		return variant(&result);
+	} else return variant();
+}
+
+void config_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	inputs->push_back(game_logic::formula_input("__all_children", game_logic::FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("__children", game_logic::FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("__attributes", game_logic::FORMULA_READ_ONLY));
+	for(const auto& val : cfg_.attribute_range()) {
+		if(val.first.find_first_not_of(game_logic::formula::id_chars) != std::string::npos) {
+			inputs->push_back(game_logic::formula_input(val.first, game_logic::FORMULA_READ_ONLY));
+		}
+	}
+}
+
+int config_callable::do_compare(const game_logic::formula_callable* callable) const
+{
+	const config_callable* cfg_callable = dynamic_cast<const config_callable*>(callable);
+	if(cfg_callable == NULL) {
+		return formula_callable::do_compare(callable);
+	}
+	
+	if(cfg_ == cfg_callable->get_config()) {
+		return 0;
+	}
+	return cfg_.hash().compare(cfg_callable->get_config().hash());
 }
 
 variant terrain_callable::get_value(const std::string& key) const

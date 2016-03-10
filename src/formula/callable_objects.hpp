@@ -186,6 +186,17 @@ private:
 	const unit_type& u_;
 };
 
+class config_callable : public game_logic::formula_callable {
+public:
+	config_callable(const config& c) : cfg_(c) {}
+	variant get_value(const std::string& key) const;
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	int do_compare(const formula_callable* callable) const;
+	const config& get_config() const {return cfg_;}
+private:
+	const config& cfg_;
+};
+
 
 CALLABLE_WRAPPER_START(team)
 CALLABLE_WRAPPER_INPUT(side)
