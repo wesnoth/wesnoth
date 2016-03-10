@@ -16,11 +16,17 @@
 
 #include "gui/dialogs/addon_list.hpp"
 
+#include "addon/info.hpp"
+#include "addon/state.hpp"
+
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.tpp"
+#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/drawing.hpp"
+#include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -34,7 +40,16 @@
 #include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
 
+#include "marked-up_text.hpp"
+#include "font.hpp"
+#include "formatter.hpp"
+#include "preferences.hpp"
+#include "strftime.hpp"
+
+#include "config.hpp"
+
 #include <boost/bind.hpp>
+#include <sstream>
 
 namespace gui2
 {
@@ -104,6 +119,17 @@ struct filter_transform
 	}
 	const std::vector<std::string> filtertext_;
 };
+
+taddon_list::taddon_list(const config& cfg)
+	: orders_()
+	, cfg_(cfg)
+	, cfg_iterators_(cfg_.child_range("campaign"))
+	, addons_()
+	, tracking_info_()
+	, ids_()
+{
+	read_addons_list(cfg, addons_);
+}
 
 void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text)
 {
@@ -187,22 +213,6 @@ void taddon_list::register_sort_button_numeric(twindow& window, const std::strin
 	register_sort_button(window, id, boost::bind(&num_up, &cfg_, prop_id, _1, _2), boost::bind(&num_down, &cfg_, prop_id, _1, _2));
 }
 
-
-void taddon_list::expand(tgrid& grid, twidget& w)
-{
-	tselectable_& selectable = dynamic_cast<tselectable_&>(w);
-	if(selectable.get_value_bool())
-	{
-		find_widget<tlabel>(&grid, "description", false)
-			.set_visible(twidget::tvisible::visible);
-	}
-	else
-	{
-		find_widget<tlabel>(&grid, "description", false)
-			.set_visible(twidget::tvisible::invisible);
-	}
-}
-
 namespace {
 	bool default_sort(const tpane::titem& i1, const tpane::titem& i2)
 	{
@@ -220,6 +230,50 @@ namespace {
 			pane->sort(boost::bind(&sort<T>,  _1, _2, name_prop, (selectable.get_value() == 1)));
 		}
 	}
+}
+
+static inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
+{
+	addons_list::const_iterator it = addons.find(id);
+	assert(it != addons.end());
+	return it->second;
+}
+
+static std::string describe_addon_status(const addon_tracking_info& info)
+{
+	std::string tc, tx;
+
+	switch(info.state) {
+	case ADDON_NONE:
+		tc = "a69275";
+		tx = info.can_publish ? _("addon_state^Published, not installed") : _("addon_state^Not installed");
+		break;
+	case ADDON_INSTALLED:
+	case ADDON_NOT_TRACKED:
+		// Consider add-ons without version information as installed
+		// for the main display. Their Description info should elaborate
+		// on their status.
+		tc = font::color2hexa(font::GOOD_COLOR);
+		tx = info.can_publish ? _("addon_state^Published") : _("addon_state^Installed");
+		break;
+	case ADDON_INSTALLED_UPGRADABLE:
+		tc = font::color2hexa(font::YELLOW_COLOR);
+		tx = info.can_publish ? _("addon_state^Published, upgradable") : _("addon_state^Installed, upgradable");
+		break;
+	case ADDON_INSTALLED_OUTDATED:
+		tc = "FF7F00";
+		tx = info.can_publish ? _("addon_state^Published, outdated on server") : _("addon_state^Installed, outdated on server");
+		break;
+	case ADDON_INSTALLED_BROKEN:
+		tc = font::color2hexa(font::BAD_COLOR);
+		tx = info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken");
+		break;
+	default:
+		tc = font::color2hexa(font::GRAY_COLOR);
+		tx = _("addon_state^Unknown");
+	}
+
+	return (formatter() << "<span color='#" << tc << "'>" << tx << "</span>").str();
 }
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
@@ -264,45 +318,42 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 	} else {
 		tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
 
-		/**
-		 * @todo do we really want to keep the length limit for the various
-		 * items?
-		 */
 		FOREACH(const AUTO & c, cfg_.child_range("campaign"))
 		{
+			ids_.push_back(c["name"]);
+			const addon_info& info = addon_at(ids_.back(), addons_);
+			tracking_info_[info.id] = get_addon_tracking_info(info);
+
 			std::map<std::string, string_map> data;
 			string_map item;
 
-			item["label"] = c["icon"];
+			item["label"] = info.display_icon();
 			data.insert(std::make_pair("icon", item));
 
-			utf8::string tmp = c["name"];
-			item["label"] = utf8::truncate(tmp, 20);
+			item["label"] = info.display_title();
 			data.insert(std::make_pair("name", item));
 
-			tmp = c["version"].str();
-			item["label"] = utf8::truncate(tmp, 12);
+			item["label"] = describe_addon_status(tracking_info_[info.id]);
+			item["use_markup"] = "true";
+			data.insert(std::make_pair("installation_status", item));
+
+			item["label"] = info.version.str();
 			data.insert(std::make_pair("version", item));
 
-			tmp = c["author"].str();
-			item["label"] = utf8::truncate(tmp, 16);
+			// utf8::truncate(tmp, 16)
+			item["label"] = info.author;
 			data.insert(std::make_pair("author", item));
 
-			item["label"] = c["downloads"];
-			data.insert(std::make_pair("downloads", item));
-
-			item["label"] = c["size"];
+			item["label"] = size_display_string(info.size);
 			data.insert(std::make_pair("size", item));
 
-			item["label"] = c["description"];
-			data.insert(std::make_pair("description", item));
+			item["label"] = lexical_cast<std::string>(info.downloads);
+			data.insert(std::make_pair("downloads", item));
+
+			item["label"] = info.display_type();
+			data.insert(std::make_pair("type", item));
 
 			list.add_row(data);
-			unsigned index = list.get_item_count() - 1;
-			ttoggle_button& button = find_widget<ttoggle_button>(list.get_row_grid(list.get_item_count() - 1), "expand", true);
-			tgrid& lower_grid = find_widget<tgrid>(list.get_row_grid(list.get_item_count() - 1), "description_grid", false);
-			lower_grid.set_visible(twidget::tvisible::invisible);
-			button.set_callback_state_change(boost::bind(show_desc_impl, index, boost::ref(list), boost::ref(lower_grid), _1));
 		}
 		register_sort_button_alphabetical(window, "sort_name", "name");
 		register_sort_button_alphabetical(window, "sort_author", "author");
@@ -314,7 +365,61 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 		filter_box.set_text_changed_callback(
 			boost::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+		connect_signal_notify_modified(list,
+				boost::bind(&taddon_list::on_addon_select,
+				*this,
+				boost::ref(window)));
+#else
+		list.set_callback_value_change(
+				dialog_callback<taddon_list, &taddon_list::on_addon_select>);
+#endif
+
+		on_addon_select(window);
 	}
+}
+
+static std::string format_addon_time(time_t time)
+{
+	if(time) {
+		char buf[1024] = { 0 };
+		struct std::tm* const t = std::localtime(&time);
+
+		const char* format = preferences::use_twelve_hour_clock_format()
+									 ? "%Y-%m-%d %I:%M %p"
+									 : "%Y-%m-%d %H:%M";
+
+		if(util::strftime(buf, sizeof(buf), format, t)) {
+			return buf;
+		}
+	}
+
+	return utils::unicode_em_dash;
+}
+
+void taddon_list::on_addon_select(twindow& window)
+{
+	const int index = find_widget<tlistbox>(&window, "addons", false).get_selected_row();
+
+	const addon_info& info = addon_at(ids_[index], addons_);
+
+	find_widget<tdrawing>(&window, "image", false).set_label(info.display_icon());
+
+	find_widget<tcontrol>(&window, "title", false).set_label(info.display_title());
+	find_widget<tcontrol>(&window, "description", false).set_label(info.description);
+	find_widget<tcontrol>(&window, "version", false).set_label(info.version.str());
+	find_widget<tcontrol>(&window, "author", false).set_label(info.author);
+	find_widget<tcontrol>(&window, "type", false).set_label(info.display_type());
+
+	tcontrol& status = find_widget<tcontrol>(&window, "status", false);
+	status.set_label(describe_addon_status(tracking_info_[info.id]));
+	status.set_use_markup(true);
+
+	find_widget<tcontrol>(&window, "size", false).set_label(size_display_string(info.size));
+	find_widget<tcontrol>(&window, "downloads", false).set_label(lexical_cast<std::string>(info.downloads));
+	find_widget<tcontrol>(&window, "created", false).set_label(format_addon_time(info.created));
+	find_widget<tcontrol>(&window, "updated", false).set_label(format_addon_time(info.updated));
 }
 
 void taddon_list::create_campaign(tpane& pane, const config& campaign)
@@ -339,12 +444,11 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 	item["label"] = utf8::truncate(tmp, 16);
 	data.insert(std::make_pair("author", item));
 
+	item["label"] = utils::si_string(campaign["size"], true, _("unit_byte^B"));
+	data.insert(std::make_pair("size", item));
+
 	item["label"] = campaign["downloads"];
 	data.insert(std::make_pair("downloads", item));
-
-	item["label"] = utils::si_string(campaign["size"], true, _("unit_byte^B"));
-
-	data.insert(std::make_pair("size", item));
 
 	item["label"] = campaign["description"];
 	data.insert(std::make_pair("description", item));
@@ -367,16 +471,6 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 
 	tgrid* grid = pane.grid(id);
 	assert(grid);
-
-	ttoggle_button* expand
-			= find_widget<ttoggle_button>(grid, "expand", false, false);
-
-	if(expand) {
-		expand->set_callback_state_change(
-				boost::bind(&taddon_list::expand, this, boost::ref(*grid), _1));
-		find_widget<tlabel>(grid, "description", false)
-				.set_visible(twidget::tvisible::invisible);
-	}
 }
 
 void taddon_list::load(tpane& pane)
