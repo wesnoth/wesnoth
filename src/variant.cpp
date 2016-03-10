@@ -829,7 +829,10 @@ bool variant::operator!=(const variant& v) const
 bool variant::operator<=(const variant& v) const
 {
 	if(type_ != v.type_) {
-		if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
+		if(type_ == TYPE_DECIMAL && v.type_ == TYPE_INT) {
+			return as_decimal() <= v.as_decimal();
+		}
+		if(v.type_ == TYPE_DECIMAL && type_ == TYPE_INT) {
 			return as_decimal() <= v.as_decimal();
 		}
 
