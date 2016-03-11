@@ -23,22 +23,6 @@ Example contents.
 [/list]
 [/rasection]
 
-[rasection="SDL2 support"]
-The game now uses SDL2 for all operations. There is still a fall-back option of using SDL 1.2, but it is deprecated and slated for removal. 
-[/rasection]
-
-[rasection="Hotkeys rely on scancodes"]
-The hotkey implementation has been changed to rely on scancodes over characters. This means that the hotkey configuration now uses the same physical buttons on the keyboard, regardless of the keyboard layout.
-[/rasection]
-
-[rasection="New WML event"]
-A new 'unit placed' event has been added, making it possible to better implement certain kinds of event-driven behavior. [wiki=EventWML]See the wiki for details[/wiki].
-[/rasection]
-
-[rasection="Animated water performance"]
-The new animated water graphics introduced in 1.13.2 now consume considerably less memory. Also, water animations can now be toggled off independently from other terrain animations in Preferences->Display if they cause too much slowdown on large maps.
-[/rasection]
-
 ==========
 KNOWN BUGS
 ==========
