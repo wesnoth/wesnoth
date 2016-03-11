@@ -21,6 +21,77 @@ Version 1.13.4+dev:
      (where "array" is a table whose keys are all integers). This joins
      the elements of the array with commas and produces a single string
      value. eg {x = {1,2,3}} is equivalent to {x = "1,2,3"}.
+ * Wesnoth formula engine:
+   * Formulas in unit filters can now access nearly all unit attributes
+   * New syntax features:
+     * String interpolation syntax. Within a formula string (enclosed in
+       'single quotes'), the syntax [some_formula] interpolates the result
+       of the inner formula into the string. (The simplest use case is
+       interpolating the values of variables.)
+     * String can now escape special characters:
+       ['] single quote, [(] open square bracket, [)] close square bracket
+     * New 'in' operator which tests if a list contains an item or if a map
+       contains a key.
+     * New concatenation operator a..b which works on strings and lists
+     * New range operator a~b which produces a list of consecutive integers
+       This can also be used for "list slicing" - eg my_list[3~5] returns
+       a new list containing elements 3 through 5 of my_list.
+     * Lists can be used as an index for a list. This is "selection indexing"
+       and returns a new list with only the elements specified by the indexing
+       list.
+     * Function definitions (using the def keyword) are now supported in all
+       formula contexts, which means that they can be used outside FormulaAI.
+       However, non-FormulaAI functions are currently local to the formula
+       that declares them.
+     * Maps containing string keyss that are valid identifiers can now be
+       indexed with the dot operator instead of the indexing operator.
+     * Strings can now be indexed via 'string'.char[n]. Also supported are
+       'string'.word[n] and 'string'.item[n] (the latter splits on commas)
+   * Changes to core functions:
+     * head() takes an optional argument - if present, a sublist is returned.
+     * abs(), max(), min() now work on decimal numbers
+     * reduce() function can specify an optional initial accumulator
+       This will be returned for an empty list instead of null.
+     * substring() function can now accept a negative size parameter
+       This counts backwards from the specified offset
+       A size of -1 is the same as 1.
+     * if() can take two arguments; returns null if the condition is false
+     * debug_print() now shows in console if debug mode is on
+   * New core functions:
+     * Trig functions tan, acos, asin, atan have been added. (Sin and cos
+       existed since at least 1.9 but were undocumented until very recently.)
+     * Other common math functions - root(), sqrt(), cbrt(), log(), exp()
+     * hypot(x,y) function calculates sqrt(x*x+y*y) with minimal error
+     * pi() returning the circle ratio
+     * tail() - opposite of head()
+     * reverse() function for strings and lists
+     * zip() function - converts [[1,2,3],[4,5,6]] to [[1,4],[2,5],[3,6]]
+     * take_while() function returns items from a list until the first one
+       that fails a condition
+     * find_string() locates a substring within a string
+     * replace() replaces a sequence within a string
+     * type() function checks the type of a formula result
+     * distance_between() - this was promoted from FormulaAI to core
+   * Bugfixes:
+     * Dice operator is now synced (where possible)
+     * Modulus (%) operator now works on decimal numbers
+     * Exponentiation (^) operator is now right-associative
+     * List/map indexing now has highest precedence of any operator (instead of lowest)
+     * Fix several math operations returning a very large negative number when
+       the operation was invalid (for example, (-2) ^ 0.5).
+       Now they return null instead.
+   * Formula debugger (accessed with the debug() function):
+     * Now works again, but is skipped unless in debug mode
+     * No longer explodes on formulas using less-than
+     * Some better information and formatting in the execution trace
+     * You can now step through "where" variable assignments
+   * Deprecated:
+     * The fai/faiend keywords are deprecated as part of a move to clearly
+       define the difference between "Wesnoth Formula Language", the language,
+       and "FormulaAI", the AI engine that uses the language. For now they
+       still work, but any future code should use wfl/wflend instead.
+       Use of the .fai file extension is still fine for FormulaAI code;
+       for other formula code in a separate file, .wfl is recommended instead.
 
 Version 1.13.4:
  * Language and i18n:
