@@ -375,7 +375,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/* The tdialog classes. */
 	test<gui2::taddon_connect>();
-	test<gui2::taddon_list>();
+	//test<gui2::taddon_list>();
 	test<gui2::tcampaign_difficulty>();
 	test<gui2::tcampaign_selection>();
 	test<gui2::tcampaign_settings>();
@@ -474,6 +474,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "addon_description"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "addon_filter_options"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "addon_uninstall_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "addon_list"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "drop_down_list"), list.end());
