@@ -384,7 +384,7 @@ class Parser:
                 out.decode("utf8") +
                 err.decode("utf8"))
 
-    def parse_line_without_commands(self, line):
+    def parse_line_without_commands_loop(self, line : str) -> str:
         """
         Once the .plain commands are handled WML lines are passed to
         this.
@@ -408,7 +408,7 @@ class Parser:
                 self.temp_key_nodes[self.commas].value.append(
                     self.temp_string_node)
                 self.in_arrows = False
-                self.parse_line_without_commands(line[arrows + 2:])
+                return line[arrows + 2:]
             else:
                 self.temp_string += line
             return
@@ -420,16 +420,14 @@ class Parser:
             if arrows >= 0 and (quote < 0 or quote > arrows):
                 self.parse_line_without_commands(line[:arrows])
                 self.in_arrows = True
-                self.parse_line_without_commands(line[arrows + 2:])
-                return
+                return line[arrows + 2:]
 
         if quote >= 0:
             if self.in_string:
                 # double quote
                 if quote < len(line) - 1 and line[quote + 1] == b'"'[0]:
                     self.temp_string += line[:quote + 1]
-                    self.parse_line_without_commands(line[quote + 2:])
-                    return
+                    return line[quote + 2:]
                 self.temp_string += line[:quote]
                 self.temp_string_node = StringNode(self.temp_string)
                 if self.translatable:
@@ -443,16 +441,22 @@ class Parser:
                     self.temp_string_node)
 
                 self.in_string = False
-                self.parse_line_without_commands(line[quote + 1:])
+                return line[quote + 1:]
             else:
                 self.parse_outside_strings(line[:quote])
                 self.in_string = True
-                self.parse_line_without_commands(line[quote + 1:])
+                return line[quote + 1:]
         else:
             if self.in_string:
                 self.temp_string += line
             else:
                 self.parse_outside_strings(line)
+
+    def parse_line_without_commands(self, line):
+        while True:
+            line = self.parse_line_without_commands_loop(line)
+            if not line:
+                break
 
     def parse_outside_strings(self, line):
         """

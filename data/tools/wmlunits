@@ -606,11 +606,11 @@ if __name__ == '__main__':
         options.wesnoth = "wesnoth"
 
     if not options.data_dir:
-        options.data_dir = shell_out([options.wesnoth, "--path"]).strip()
+        options.data_dir = shell_out([options.wesnoth, "--path"]).strip().decode("utf8")
         print(("Using " + options.data_dir + " as data dir."))
 
     if not options.config_dir:
-        options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip()
+        options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip().decode("utf8")
         print(("Using " + options.config_dir + " as config dir."))
 
     if not options.transdir:
