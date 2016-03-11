@@ -21,6 +21,8 @@
 
 #include <cmath>
 
+using namespace game_logic;
+
 BOOST_AUTO_TEST_SUITE(formula_function)
 
 BOOST_AUTO_TEST_CASE(test_formula_function_substring)
@@ -139,6 +141,19 @@ BOOST_AUTO_TEST_CASE(test_formula_function_concatenate)
 					"concatenate([1.0, 1.00, 1.000, 1.2, 1.23, 1.234])")
 						.evaluate().as_string()
 			, "1.000, 1.000, 1.000, 1.200, 1.230, 1.234");
+}
+
+BOOST_AUTO_TEST_CASE(test_formula_function_math)
+{
+	BOOST_CHECK_EQUAL(formula("abs(5)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("abs(-5)").evaluate().as_int(), 5);
+	
+	BOOST_CHECK_EQUAL(formula("min(3,5)").evaluate().as_int(), 3);
+	BOOST_CHECK_EQUAL(formula("min(5,2)").evaluate().as_int(), 2);
+	BOOST_CHECK_EQUAL(formula("max(3,5)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("max(5,2)").evaluate().as_int(), 5);
+	
+	BOOST_CHECK_EQUAL(formula("max(4,5,[2,18,7])").evaluate().as_int(), 18);
 }
 
 BOOST_AUTO_TEST_CASE(test_formula_function_sin_cos)
