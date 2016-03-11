@@ -27,6 +27,7 @@
 namespace gui2
 {
 class ttext_;
+class ttext_box;
 class pane;
 class tselectable_;
 
@@ -45,28 +46,13 @@ private:
 	void on_filtertext_changed(ttext_* textbox, const std::string& text);
 
 	std::vector<tselectable_*> orders_;
-	/**
-	 * Expands the description of an addon.
-	 *
-	 * @param grid                The grid of the item whose description to
-	 *                            expand.
-	 */
-	void expand(tgrid& grid, twidget& w);
+
 	void on_addon_select(twindow& window);
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-
-	/**
-	 * Creates a single campaign.
-	 *
-	 * @param pane                The pane to add the campaigns to.
-	 * @param campaign            A config object containing the campaign info
-	 *                            as send by campaignd.
-	 */
-	void create_campaign(tpane& pane, const config& campaign);
 
 	/** Config which contains the list with the campaigns. */
 	const config& cfg_;
@@ -81,13 +67,9 @@ private:
 	addons_tracking_list tracking_info_;
 
 	std::vector<std::string> ids_;
-
-	/**
-	 * Debug function to load a single campaign.
-	 *
-	 * @param pane                The pane to add the campaigns to.
-	 */
-	void load(tpane& pane);
+	
+	void browse_url_callback(ttext_box& url_box);
+	void copy_url_callback(ttext_box& url_box);
 };
 
 } // namespace gui2

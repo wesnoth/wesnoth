@@ -89,13 +89,30 @@ namespace gui2
  * @end{table}
  */
 
-REGISTER_DIALOG(addon_list)
-
-struct filter_transform
-{
-	filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
-	bool operator()(const config& cfg) const
+namespace {
+	// TODO: it would be better if we didnt have to parse the config every time.
+	bool str_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
 	{
+		return cfg->child("campaign", i1)[prop_id].str() < cfg->child("campaign", i2)[prop_id].str();
+	}
+	bool str_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
+	{
+		return cfg->child("campaign", i1)[prop_id].str() > cfg->child("campaign", i2)[prop_id].str();
+	}
+	bool num_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
+	{
+		return cfg->child("campaign", i1)[prop_id].to_int() < cfg->child("campaign", i2)[prop_id].to_int();
+	}
+	bool num_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
+	{
+		return cfg->child("campaign", i1)[prop_id].to_int() > cfg->child("campaign", i2)[prop_id].to_int();
+	}
+
+	struct filter_transform
+	{
+		filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
+		bool operator()(const config& cfg) const
+		{
 			FOREACH(const AUTO& filter, filtertext_)
 			{
 				bool found = false;
@@ -113,15 +130,47 @@ struct filter_transform
 						break;
 					}
 				}
-				if(!found)
-				{
+				if(!found) {
 					return false;
 				}
 			}
 			return true;
+		}
+		const std::vector<std::string> filtertext_;
+	};
+	
+	/**
+	 * Retrieves an element from the given associative container or dies in some
+	 * way.
+	 *
+	 * It fails an @a assert() check or throws an exception if the requested element
+	 * does not exist.
+	 *
+	 * @return An element from the container that is guranteed to have existed
+	 *         before running this function.
+	 */
+	template <typename MapT>
+	typename MapT::mapped_type const& const_at(typename MapT::key_type const& key,
+										   MapT const& map)
+	{
+		typename MapT::const_iterator it = map.find(key);
+		if(it == map.end()) {
+			assert(it != map.end());
+			throw std::out_of_range(
+					"const_at()"); // Shouldn't get here without disabling assert()
+		}
+		return it->second;
 	}
-	const std::vector<std::string> filtertext_;
-};
+
+	inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
+	{
+		addons_list::const_iterator it = addons.find(id);
+		assert(it != addons.end());
+		return it->second;
+	}
+}
+
+REGISTER_DIALOG(addon_list)
 
 taddon_list::taddon_list(const config& cfg)
 	: orders_()
@@ -177,121 +226,35 @@ void taddon_list::register_sort_button(twindow& window, const std::string& id, c
 	orders_.push_back(&selectable);
 	selectable.set_callback_state_change(boost::bind(&taddon_list::on_order_button_click, this, boost::ref(window), up, down, _1));
 }
-namespace {
-	/// TODO: it would be better if we didnt have to parse the config every time.
-	bool str_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].str() < cfg->child("campaign", i2)[prop_id].str();
-	}
-	bool str_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].str() > cfg->child("campaign", i2)[prop_id].str();
-	}
-	bool num_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].to_int() < cfg->child("campaign", i2)[prop_id].to_int();
-	}
-	bool num_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].to_int() > cfg->child("campaign", i2)[prop_id].to_int();
-	}
 
-	void show_desc_impl(unsigned index, tlistbox& list, tgrid &lower_grid,twidget& w)
-	{
-		// showing teh description ona  seperate multipage woudo be better specially on large screens.
-		tselectable_& selectable = dynamic_cast<tselectable_ &>(w);
-		list.select_row(index);
-		lower_grid.set_visible(!selectable.get_value_bool() ? twidget::tvisible::invisible : twidget::tvisible::visible);
-	}
-
-}
 void taddon_list::register_sort_button_alphabetical(twindow& window, const std::string& id, const std::string& prop_id)
 {
-	register_sort_button(window, id, boost::bind(&str_up, &cfg_, prop_id, _1, _2), boost::bind(&str_down, &cfg_, prop_id, _1, _2));
+	register_sort_button(window, id,
+		boost::bind(&str_up,   &cfg_, prop_id, _1, _2),
+		boost::bind(&str_down, &cfg_, prop_id, _1, _2)
+	);
 }
 
 void taddon_list::register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id)
 {
-
-	register_sort_button(window, id, boost::bind(&num_up, &cfg_, prop_id, _1, _2), boost::bind(&num_down, &cfg_, prop_id, _1, _2));
-}
-
-namespace {
-	bool default_sort(const tpane::titem& i1, const tpane::titem& i2)
-	{
-		return i1.id < i2.id;
-	}
-
-	template<typename T>
-	void sort_callback(twidget& w, tpane* pane, const std::string& name_prop)
-	{
-		tselectable_& selectable = dynamic_cast<tselectable_&>(w);
-		if(selectable.get_value() == 0) {
-			pane->sort(&default_sort);
-		}
-		else {
-			pane->sort(boost::bind(&sort<T>,  _1, _2, name_prop, (selectable.get_value() == 1)));
-		}
-	}
-}
-
-static inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
-{
-	addons_list::const_iterator it = addons.find(id);
-	assert(it != addons.end());
-	return it->second;
-}
-
-static std::string describe_addon_status(const addon_tracking_info& info)
-{
-	std::string tc, tx;
-
-	switch(info.state) {
-		case ADDON_NONE:
-			tc = "#a69275";
-			tx = info.can_publish ? _("addon_state^Published, not installed") : _("addon_state^Not installed");
-			break;
-
-		case ADDON_INSTALLED:
-		case ADDON_NOT_TRACKED:
-			// Consider add-ons without version information as installed
-			// for the main display. Their Description info should elaborate
-			// on their status.
-			tc = "#00ff00";
-			tx = info.can_publish ? _("addon_state^Published") : _("addon_state^Installed");
-			break;
-
-		case ADDON_INSTALLED_UPGRADABLE:
-			tc = "#ffff00";
-			tx = info.can_publish ? _("addon_state^Published, upgradable") : _("addon_state^Installed, upgradable");
-			break;
-
-		case ADDON_INSTALLED_OUTDATED:
-			tc = "#ff7f00";
-			tx = info.can_publish ? _("addon_state^Published, outdated on server") : _("addon_state^Installed, outdated on server");
-			break;
-
-		case ADDON_INSTALLED_BROKEN:
-			tc = "#ff0000";
-			tx = info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken");
-			break;
-
-		default:
-			tc = "#777777";
-			tx = _("addon_state^Unknown");
-	}
-
-	return "<span color='" + tc + "'>" + tx + "</span>";
+	register_sort_button(window, id,
+		boost::bind(&num_up,   &cfg_, prop_id, _1, _2),
+		boost::bind(&num_down, &cfg_, prop_id, _1, _2)
+	);
 }
 
 static std::string colorify_addon_state_string(const std::string& str,
-										const addon_tracking_info& state)
+										const addon_tracking_info& state, bool verbose = false)
 {
 	std::string colorname = "";
 
 	switch(state.state) {
 		case ADDON_NONE:
-			return str;
+			if(!verbose) {
+				return str;
+			}
+			colorname = "#a69275";
+			break;
 		case ADDON_INSTALLED:
 		case ADDON_NOT_TRACKED:
 			colorname = "#00ff00"; // GOOD_COLOR
@@ -313,7 +276,43 @@ static std::string colorify_addon_state_string(const std::string& str,
 	return "<span color='" + colorname + "'>" + str + "</span>";
 }
 
-static std::string describe_addon_state_info(const addon_tracking_info& state)
+static std::string describe_status_simple(const addon_tracking_info& info)
+{
+	std::string tc, tx;
+
+	switch(info.state) {
+		case ADDON_NONE:
+			tx = info.can_publish ? _("addon_state^Published, not installed") : _("addon_state^Not installed");
+			break;
+
+		case ADDON_INSTALLED:
+		case ADDON_NOT_TRACKED:
+			// Consider add-ons without version information as installed
+			// for the main display. Their Description info should elaborate
+			// on their status.
+			tx = info.can_publish ? _("addon_state^Published") : _("addon_state^Installed");
+			break;
+
+		case ADDON_INSTALLED_UPGRADABLE:
+			tx = info.can_publish ? _("addon_state^Published, upgradable") : _("addon_state^Installed, upgradable");
+			break;
+
+		case ADDON_INSTALLED_OUTDATED:
+			tx = info.can_publish ? _("addon_state^Published, outdated on server") : _("addon_state^Installed, outdated on server");
+			break;
+
+		case ADDON_INSTALLED_BROKEN:
+			tx = info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken");
+			break;
+
+		default:
+			tx = _("addon_state^Unknown");
+	}
+
+	return colorify_addon_state_string(tx, info, true);
+}
+
+static std::string describe_status_verbose(const addon_tracking_info& state)
 {
 	std::string s;
 
@@ -378,131 +377,102 @@ static std::string describe_addon_state_info(const addon_tracking_info& state)
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	if(new_widgets) {
+	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
 
-		/***** ***** Init buttons. ***** *****/
+	FOREACH(const AUTO & c, cfg_.child_range("campaign"))
+	{
+		ids_.push_back(c["name"]);
+		const addon_info& info = addon_at(ids_.back(), addons_);
+		tracking_info_[info.id] = get_addon_tracking_info(info);
 
-		tpane& pane = find_widget<tpane>(&window, "addons", false);
+		std::map<std::string, string_map> data;
+		string_map item;
 
-		find_widget<tselectable_>(&window, "sort_name", false).set_callback_state_change(boost::bind(&sort_callback<std::string>, _1, &pane, "name"));
-		find_widget<tselectable_>(&window, "sort_size", false).set_callback_state_change(boost::bind(&sort_callback<std::string>, _1, &pane, "size"));
+		item["label"] = info.display_icon();
+		data.insert(std::make_pair("icon", item));
 
+		item["label"] = info.display_title();
+		data.insert(std::make_pair("name", item));
 
-		/***** ***** Init the filter text box. ***** *****/
+		item["label"] = describe_status_simple(tracking_info_[info.id]);
+		item["use_markup"] = "true";
+		data.insert(std::make_pair("installation_status", item));
 
-		ttext_box& filter_box
-				= find_widget<ttext_box>(&window, "filter", false);
+		item["label"] = info.version.str();
+		data.insert(std::make_pair("version", item));
 
-		tpane::tfilter_functor filter_functor
-				= boost::bind(&contains, _1, "filter", boost::cref(filter_box));
+		item["label"] = info.author;
+		data.insert(std::make_pair("author", item));
 
-		connect_signal_notify_modified(
-				filter_box, boost::bind(&tpane::filter, &pane, filter_functor));
+		item["label"] = size_display_string(info.size);
+		data.insert(std::make_pair("size", item));
 
-		/***** ***** Fill the listbox. ***** *****/
+		item["label"] = lexical_cast<std::string>(info.downloads);
+		data.insert(std::make_pair("downloads", item));
 
-		tbutton* load_button
-				= find_widget<tbutton>(&window, "load_campaign", false, false);
-		if(load_button) {
-			connect_signal_mouse_left_click(
-					*load_button,
-					boost::bind(&taddon_list::load, this, boost::ref(pane)));
-			load(pane);
-		} else {
-			while(cfg_iterators_.first != cfg_iterators_.second) {
-				create_campaign(pane, *cfg_iterators_.first);
-				++cfg_iterators_.first;
-			}
-		}
+		item["label"] = info.display_type();
+		data.insert(std::make_pair("type", item));
 
-	} else {
-		tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
+		list.add_row(data);
+	}
 
-		FOREACH(const AUTO & c, cfg_.child_range("campaign"))
-		{
-			ids_.push_back(c["name"]);
-			const addon_info& info = addon_at(ids_.back(), addons_);
-			tracking_info_[info.id] = get_addon_tracking_info(info);
+	register_sort_button_alphabetical(window, "sort_name", "name");
+	register_sort_button_alphabetical(window, "sort_author", "author");
+	register_sort_button_alphabetical(window, "sort_type", "type");
+	register_sort_button_numeric(window, "sort_downloads", "downloads");
+	register_sort_button_numeric(window, "sort_size", "size");
 
-			std::map<std::string, string_map> data;
-			string_map item;
-
-			item["label"] = info.display_icon();
-			data.insert(std::make_pair("icon", item));
-
-			item["label"] = info.display_title();
-			data.insert(std::make_pair("name", item));
-
-			item["label"] = describe_addon_status(tracking_info_[info.id]);
-			item["use_markup"] = "true";
-			data.insert(std::make_pair("installation_status", item));
-
-			item["label"] = info.version.str();
-			data.insert(std::make_pair("version", item));
-
-			// utf8::truncate(tmp, 16)
-			item["label"] = info.author;
-			data.insert(std::make_pair("author", item));
-
-			item["label"] = size_display_string(info.size);
-			data.insert(std::make_pair("size", item));
-
-			item["label"] = lexical_cast<std::string>(info.downloads);
-			data.insert(std::make_pair("downloads", item));
-
-			item["label"] = info.display_type();
-			data.insert(std::make_pair("type", item));
-
-			list.add_row(data);
-		}
-		register_sort_button_alphabetical(window, "sort_name", "name");
-		register_sort_button_alphabetical(window, "sort_author", "author");
-		register_sort_button_numeric(window, "sort_downloads", "downloads");
-		register_sort_button_numeric(window, "sort_size", "size");
-
-		ttext_box& filter_box
-				= find_widget<ttext_box>(&window, "filter", false);
-
-		filter_box.set_text_changed_callback(
-			boost::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
+	find_widget<ttext_box>(&window, "filter", false).set_text_changed_callback(
+		boost::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-		connect_signal_notify_modified(list,
-				boost::bind(&taddon_list::on_addon_select,
-				*this,
-				boost::ref(window)));
+	connect_signal_notify_modified(list,
+			boost::bind(&taddon_list::on_addon_select,
+			*this,
+			boost::ref(window)));
 #else
-		list.set_callback_value_change(
-				dialog_callback<taddon_list, &taddon_list::on_addon_select>);
+	list.set_callback_value_change(
+			dialog_callback<taddon_list, &taddon_list::on_addon_select>);
 #endif
 
-		tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);
-		tbutton& url_copy_button = find_widget<tbutton>(&window, "url_copy", false);
-		ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
+	tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);
+	tbutton& url_copy_button = find_widget<tbutton>(&window, "url_copy", false);
+	ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
 
-		url_textbox.set_active(false);
+	url_textbox.set_active(false);
 
-		if (!desktop::clipboard::available()) {
-			url_copy_button.set_active(false);
-			url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
-
-		if(!desktop::open_object_is_supported()) {
-			// No point in displaying the button on platforms that can't do
-			// open_object().
-			url_go_button.set_visible(tcontrol::tvisible::invisible);
-		}
-
-		//connect_signal_mouse_left_click(
-		//		url_go_button,
-		//		boost::bind(&taddon_description::browse_url_callback, this));
-
-		//connect_signal_mouse_left_click(
-		//		url_copy_button,
-		//		boost::bind(&taddon_description::copy_url_callback, this));
-
-		on_addon_select(window);
+	if (!desktop::clipboard::available()) {
+		url_copy_button.set_active(false);
+		url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
+
+	if(!desktop::open_object_is_supported()) {
+		// No point in displaying the button on platforms that can't do
+		// open_object().
+		url_go_button.set_visible(tcontrol::tvisible::invisible);
+	}
+
+	connect_signal_mouse_left_click(
+			url_go_button,
+			boost::bind(&taddon_list::browse_url_callback, this, boost::ref(url_textbox)));
+
+	connect_signal_mouse_left_click(
+			url_copy_button,
+			boost::bind(&taddon_list::copy_url_callback, this, boost::ref(url_textbox)));
+
+	on_addon_select(window);
+}
+
+void taddon_list::browse_url_callback(ttext_box& url_box)
+{
+	/* TODO: ask for confirmation */
+
+	desktop::open_object(url_box.get_value());
+}
+
+void taddon_list::copy_url_callback(ttext_box& url_box)
+{
+	desktop::clipboard::copy_to_clipboard(url_box.get_value(), false);
 }
 
 static std::string format_addon_time(time_t time)
@@ -512,8 +482,8 @@ static std::string format_addon_time(time_t time)
 		struct std::tm* const t = std::localtime(&time);
 
 		const char* format = preferences::use_twelve_hour_clock_format()
-									 ? "%Y-%m-%d %I:%M %p"
-									 : "%Y-%m-%d %H:%M";
+				? "%Y-%m-%d %I:%M %p"
+				: "%Y-%m-%d %H:%M";
 
 		if(util::strftime(buf, sizeof(buf), format, t)) {
 			return buf;
@@ -523,32 +493,13 @@ static std::string format_addon_time(time_t time)
 	return utils::unicode_em_dash;
 }
 
-/**
- * Retrieves an element from the given associative container or dies in some
- * way.
- *
- * It fails an @a assert() check or throws an exception if the requested element
- * does not exist.
- *
- * @return An element from the container that is guranteed to have existed
- *         before running this function.
- */
-template <typename MapT>
-static typename MapT::mapped_type const& const_at(typename MapT::key_type const& key,
-										   MapT const& map)
-{
-	typename MapT::const_iterator it = map.find(key);
-	if(it == map.end()) {
-		assert(it != map.end());
-		throw std::out_of_range(
-				"const_at()"); // Shouldn't get here without disabling assert()
-	}
-	return it->second;
-}
-
 void taddon_list::on_addon_select(twindow& window)
 {
 	const int index = find_widget<tlistbox>(&window, "addons", false).get_selected_row();
+
+	if(index == -1) {
+		return;
+	}
 
 	const addon_info& info = addon_at(ids_[index], addons_);
 
@@ -561,7 +512,7 @@ void taddon_list::on_addon_select(twindow& window)
 	find_widget<tcontrol>(&window, "type", false).set_label(info.display_type());
 
 	tcontrol& status = find_widget<tcontrol>(&window, "status", false);
-	status.set_label(describe_addon_state_info(tracking_info_[info.id]));
+	status.set_label(describe_status_verbose(tracking_info_[info.id]));
 	status.set_use_markup(true);
 
 	find_widget<tcontrol>(&window, "size", false).set_label(size_display_string(info.size));
@@ -577,68 +528,8 @@ void taddon_list::on_addon_select(twindow& window)
 	} else {
 		find_widget<tstacked_widget>(&window, "feedback_stack", false).select_layer(0);
 	}
-}
 
-void taddon_list::create_campaign(tpane& pane, const config& campaign)
-{
-	/***** Determine the data for the widgets. *****/
-
-	std::map<std::string, string_map> data;
-	string_map item;
-
-	item["label"] = campaign["icon"];
-	data.insert(std::make_pair("icon", item));
-
-	utf8::string tmp = campaign["name"];
-	item["label"] = utf8::truncate(tmp, 20);
-	data.insert(std::make_pair("name", item));
-
-	tmp = campaign["version"].str();
-	item["label"] = utf8::truncate(tmp, 12);
-	data.insert(std::make_pair("version", item));
-
-	tmp = campaign["author"].str();
-	item["label"] = utf8::truncate(tmp, 16);
-	data.insert(std::make_pair("author", item));
-
-	item["label"] = utils::si_string(campaign["size"], true, _("unit_byte^B"));
-	data.insert(std::make_pair("size", item));
-
-	item["label"] = campaign["downloads"];
-	data.insert(std::make_pair("downloads", item));
-
-	item["label"] = campaign["description"];
-	data.insert(std::make_pair("description", item));
-
-	/***** Determine the tags for the campaign. *****/
-
-	std::map<std::string, std::string> tags;
-	tags.insert(std::make_pair("name", campaign["name"]));
-	tags.insert(std::make_pair("size", campaign["size"]));
-
-	std::stringstream filter;
-	filter << campaign["version"] << '\n' << campaign["author"] << '\n'
-		   << campaign["type"] << '\n' << campaign["description"];
-
-	tags.insert(std::make_pair("filter", utf8::lowercase(filter.str())));
-
-	/***** Add the campaign. *****/
-
-	const unsigned id = pane.create_item(data, tags);
-
-	tgrid* grid = pane.grid(id);
-	assert(grid);
-}
-
-void taddon_list::load(tpane& pane)
-{
-	while(cfg_iterators_.first != cfg_iterators_.second) {
-		create_campaign(pane, *cfg_iterators_.first);
-		++cfg_iterators_.first;
-	}
-
-	find_widget<tbutton>(pane.get_window(), "load_campaign", false)
-			.set_active(cfg_iterators_.first != cfg_iterators_.second);
+	find_widget<tbutton>(&window, "uninstall", false).set_active(tracking_info_[info.id].state == ADDON_INSTALLED);
 }
 
 } // namespace gui2
