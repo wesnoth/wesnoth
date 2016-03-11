@@ -2143,12 +2143,12 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 			if (resources::filter_con && !unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) continue;
 		}
 		const std::string &apply_to = effect["apply_to"];
-		const std::string &apply_times = effect["times"];
-		int times = 1;
+		int times = effect["times"].to_int(1);
 		t_string description;
 
-		if (apply_times == "per level")
+		if (effect["times"] == "per level")
 			times = level_;
+
 		if (times) {
 			while (times > 0) {
 				times --;
@@ -2187,7 +2187,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 			}
 		}
 
-		if (apply_times == "per level" && !times) {
+		if (effect["times"] == "per level" && !times) {
 			utils::string_map symbols;
 			symbols["effect_description"] = description;
 			description = vgettext("$effect_description per level", symbols);
