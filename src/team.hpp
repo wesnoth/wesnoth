@@ -117,7 +117,7 @@ private:
 		std::set<std::string> can_recruit;
 		std::string team_name;
 		t_string user_team_name;
-		t_string side_name;
+		std::string side_name;
 		std::string save_id;
 		// 'id' of the current player (not necessarily unique)
 		std::string current_player;
