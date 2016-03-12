@@ -30,9 +30,6 @@
 ** CHANGE it (define it) if you want Lua to avoid the use of any
 ** non-ansi feature or library.
 */
-#if 0 && !defined(LUA_ANSI) && defined(__STRICT_ANSI__)
-#define LUA_ANSI
-#endif
 
 
 #if !defined(LUA_ANSI) && defined(_WIN32) && !defined(_WIN32_WCE)

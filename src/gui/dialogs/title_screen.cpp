@@ -145,18 +145,6 @@ static bool fullscreen(CVideo& video)
 {
 	video.set_fullscreen(!preferences::fullscreen());
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	// Setting to fullscreen doesn't seem to generate a resize event.
-	const SDL_Rect& rect = screen_area();
-
-	SDL_Event event;
-	event.type = SDL_VIDEORESIZE;
-	event.resize.type = SDL_VIDEORESIZE;
-	event.resize.w = rect.w;
-	event.resize.h = rect.h;
-
-	SDL_PushEvent(&event);
-#endif
 
 	return true;
 }

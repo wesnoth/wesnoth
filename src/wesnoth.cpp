@@ -439,12 +439,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		srand(*cmdline_opts.rng_seed);
 	}
 	if(cmdline_opts.screenshot || cmdline_opts.render_image) {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
-#else
-		static char opt[] = "SDL_VIDEODRIVER=dummy";
-		SDL_putenv(opt);
-#endif
 	}
 	if(cmdline_opts.strict_validation) {
 		strict_validation_enabled = true;
@@ -960,7 +955,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 }
 #endif
 
-#if defined(__native_client__) || (defined(__APPLE__) && SDL_VERSION_ATLEAST(2, 0, 0))
+#if defined(__native_client__) || defined(__APPLE__)
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else

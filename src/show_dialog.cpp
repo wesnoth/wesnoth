@@ -149,7 +149,6 @@ void dialog_frame::set_dirty(bool dirty) {
 	dirty_ = dirty;
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 void dialog_frame::handle_window_event(const SDL_Event& event) {
 
 	if (event.type == SDL_WINDOWEVENT) {
@@ -162,7 +161,6 @@ void dialog_frame::handle_window_event(const SDL_Event& event) {
 		}
 	}
 }
-#endif
 
 void dialog_frame::handle_event(const SDL_Event& event) {
 

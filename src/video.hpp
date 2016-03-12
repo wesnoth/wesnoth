@@ -21,9 +21,7 @@
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 #include "sdl/window.hpp"
-#endif
 
 struct surface;
 #ifdef SDL_GPU
@@ -37,11 +35,9 @@ class timage;
 #endif
 
 //possible flags when setting video modes
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 #define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
 #define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
 #define SDL_APPACTIVE		0x04		/**< The application is active */
-#endif
 
 #ifdef SDL_GPU
 struct GPU_Target;
@@ -84,35 +80,14 @@ public:
 
 	const static int DefaultBpp = 32;
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	int bppForMode( int x, int y, int flags);
-	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
-#endif
 
 	/**
 	 * Initializes a new window, taking into account any preiously saved states.
 	 */
 	bool init_window();
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	void setMode( int x, int y, const MODE_EVENT mode );
-#else
-	int setMode( int x, int y, int bits_per_pixel, int flags );
-#endif
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	/**
-	 * Detect a good resolution.
-	 *
-	 * @param video               The video 'holding' the framebuffer.
-	 * @param resolution          Any good resolution is returned through this reference.
-	 * @param bpp                 A reference through which the best bpp is returned.
-	 * @param video_flags         A reference through which the video flags for setting the video mode are returned.
-	 *
-	 * @returns                   Whether valid video settings were found.
-	 */
-	bool detect_video_settings(std::pair<int,int>& resolution, int& bpp, int& video_flags);
-#endif
 
 	void set_fullscreen(bool ison);
 
@@ -179,10 +154,6 @@ public:
 	};
 
 	//functions to allow changing video modes when 16BPP is emulated
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	void setBpp( int bpp );
-	int getBpp();
-#endif
 
 	void make_fake();
 	/**
@@ -211,7 +182,6 @@ public:
 	void lock_updates(bool value);
 	bool update_locked() const;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	//this needs to be invoked immediately after a resize event or the game will crash.
 	void update_framebuffer();
 
@@ -235,7 +205,6 @@ public:
 	void set_window_icon(surface& icon);
 
 	sdl::twindow *get_window();
-#endif
 
 	/**
 	 * Returns the list of available screen resolutions.
@@ -245,9 +214,7 @@ public:
 private:
 	static CVideo* singleton_;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	boost::scoped_ptr<sdl::twindow> window;
-#endif
 	class video_event_handler : public events::sdl_handler {
 	public:
 		virtual void handle_event(const SDL_Event &) {}
@@ -267,9 +234,6 @@ private:
 
 	bool mode_changed_;
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	int bpp_;	// Store real bits per pixel
-#endif
 
 	//if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;

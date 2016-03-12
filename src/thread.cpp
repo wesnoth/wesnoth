@@ -56,11 +56,7 @@ manager::~manager()
 }
 
 thread::thread(int (*f)(void*), void* data)
-#if SDL_VERSION_ATLEAST(2,0,0)
 	: thread_(SDL_CreateThread(f, "", data))
-#else
-	: thread_(SDL_CreateThread(f, data))
-#endif
 {
 }
 

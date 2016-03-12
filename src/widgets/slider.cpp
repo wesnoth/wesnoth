@@ -218,28 +218,6 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 	if (!sdl::point_in_rect(event.x, event.y, location()))
 		return;
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	if (event.button == SDL_BUTTON_WHEELUP || event.button == SDL_BUTTON_WHEELRIGHT) {
-		value_change_ = false;
-		set_focus(true);
-		set_value(value_ + increment_);
-		if(value_change_) {
-			sound::play_UI_sound(game_config::sounds::slider_adjust);
-		} else {
-			value_change_ = prev_change;
-		}
-	}
-	if (event.button == SDL_BUTTON_WHEELDOWN || event.button == SDL_BUTTON_WHEELLEFT) {
-		value_change_ = false;
-		set_focus(true);
-		set_value(value_ - increment_);
-		if(value_change_) {
-			sound::play_UI_sound(game_config::sounds::slider_adjust);
-		} else {
-			value_change_ = prev_change;
-		}
-	}
-#endif
 
 	if (event.button != SDL_BUTTON_LEFT)
 		return;
@@ -259,7 +237,6 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 	}
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 void slider::mouse_wheel(const SDL_MouseWheelEvent& event) {
 	bool prev_change = value_change_;
 	int x, y;
@@ -289,7 +266,6 @@ void slider::mouse_wheel(const SDL_MouseWheelEvent& event) {
 		}
 	}
 }
-#endif
 
 bool slider::requires_event_focus(const SDL_Event* event) const
 {
@@ -352,12 +328,10 @@ void slider::handle_event(const SDL_Event& event)
 			}
 		}
 		break;
-#if SDL_VERSION_ATLEAST(2,0,0)
 	case SDL_MOUSEWHEEL:
 		if (!mouse_locked())
 			mouse_wheel(event.wheel);
 		break;
-#endif
 	default:
 		return;
 	}

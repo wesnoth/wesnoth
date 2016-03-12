@@ -163,11 +163,7 @@ context_manager::~context_manager()
 	}
 
 	// Restore default window title
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
-#else
 	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
-#endif
 }
 
 void context_manager::refresh_all()
@@ -1029,11 +1025,7 @@ void context_manager::set_window_title()
 	}
 
 	const std::string& wm_title_string = map_name + " - " + game_config::get_default_title_string();
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
-#else
 	CVideo::get_singleton().set_window_title(wm_title_string);
-#endif
 }
 
 } //Namespace editor

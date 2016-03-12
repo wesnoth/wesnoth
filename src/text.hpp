@@ -26,9 +26,7 @@
 
 #include <string>
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 #include "sdl/image.hpp"
-#endif
 
 #ifdef SDL_GPU
 #include "sdl/gpu.hpp"

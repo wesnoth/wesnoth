@@ -69,9 +69,7 @@ hotkey::hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id)
 		}
 
 		SDL_PollEvent(&event);
-#if SDL_VERSION_ATLEAST(2,0,0)
 		events::peek_for_resize();
-#endif
 
 	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
 			&& event.type != SDL_JOYHATMOTION

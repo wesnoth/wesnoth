@@ -25,7 +25,6 @@
 
 #include <SDL_version.h>
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 
 #define SDLKey SDL_Keycode
 #define SDLMod SDL_Keymod
@@ -40,6 +39,5 @@
 #define SDL_EVENTMASK(EVENT) EVENT, EVENT
 #define SDL_GetAppState CVideo::get_singleton().window_state
 
-#endif
 
 #endif

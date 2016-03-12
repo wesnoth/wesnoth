@@ -114,14 +114,10 @@ inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_R
 }
 
 inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surface& dst, SDL_Rect* dst_rect){
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
 	SDL_SetSurfaceBlendMode(dst, SDL_BLENDMODE_NONE);
-#endif
 	SDL_BlitSurface(screen, screen_rect, dst, dst_rect);
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
-#endif
 }
 
 /**

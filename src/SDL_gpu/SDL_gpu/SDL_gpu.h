@@ -16,9 +16,7 @@ extern "C" {
 #define SDL_GPU_VERSION_PATCH 0
 
 /* Auto-detect if we're using the SDL2 API by the headers available. */
-#if SDL_VERSION_ATLEAST(2,0,0)
     #define SDL_GPU_USE_SDL2
-#endif
 
 typedef struct GPU_Renderer GPU_Renderer;
 typedef struct GPU_Target GPU_Target;
