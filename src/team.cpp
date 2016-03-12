@@ -124,7 +124,7 @@ void team::team_info::read(const config &cfg)
 	income = cfg["income"];
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
-	side_name = cfg["side_name"];
+	side_name = cfg["side_name"].str();
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
