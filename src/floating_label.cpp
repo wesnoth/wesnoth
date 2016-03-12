@@ -23,9 +23,7 @@
 #include <set>
 #include <stack>
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 #include "sdl/alpha.hpp"
-#endif
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -390,11 +388,7 @@ floating_label_context::floating_label_context()
 #ifdef SDL_GPU
 
 #else
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	surface const screen = NULL;
-#else
-	surface const screen = SDL_GetVideoSurface();
-#endif
 	if(screen != NULL) {
 		draw_floating_labels(screen);
 	}
@@ -415,11 +409,7 @@ floating_label_context::~floating_label_context()
 #ifdef SDL_GPU
 	//TODO
 #else
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	surface const screen = NULL;
-#else
-	surface const screen = SDL_GetVideoSurface();
-#endif
 	if(screen != NULL) {
 		undraw_floating_labels(screen);
 	}

@@ -14,7 +14,6 @@
 
 #include "sdl/window.hpp"
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 
 #include "sdl/exception.hpp"
 #include "sdl/image.hpp"
@@ -141,4 +140,3 @@ twindow::operator SDL_Renderer*()
 
 } // namespace sdl
 
-#endif

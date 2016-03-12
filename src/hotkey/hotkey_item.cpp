@@ -34,9 +34,6 @@
 
 #include "SDL.h"
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/keyboard.hpp"
-#endif
 
 static lg::log_domain log_config("config");
 #define ERR_G  LOG_STREAM(err,   lg::general)
@@ -68,13 +65,8 @@ static unsigned int sdl_get_mods()
 	if (mods & KMOD_ALT)
 		mods |= KMOD_ALT;
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 	if (mods & KMOD_GUI)
 	mods |= KMOD_GUI;
-#else
-	if (mods & KMOD_META)
-		mods |= KMOD_META;
-#endif
 
 	return mods;
 }
@@ -101,11 +93,7 @@ const std::string hotkey_base::get_name() const
 	ret +=
 			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
 					"+" : "");
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (mod_ & KMOD_GUI)
-#else
-	if (mod_ & KMOD_META)
-#endif
 #ifdef __APPLE__
 		ret += "cmd";
 #else
@@ -162,11 +150,7 @@ void hotkey_base::save(config& item) const
 
 	item["shift"] = !!(mod_ & KMOD_SHIFT);
 	item["ctrl"] = !!(mod_ & KMOD_CTRL);
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	item["cmd"] = !!(mod_ & KMOD_GUI);
-#else
-	item["cmd"] = !!(mod_ & KMOD_META);
-#endif
 	item["alt"] = !!(mod_ & KMOD_ALT);
 
 	save_helper(item);
@@ -182,11 +166,7 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
 		SDL_Scancode code;
-#if  SDL_VERSION_ATLEAST(2, 0, 0)
 		code = event.key.keysym.scancode;
-#else
-		code = SDL_GetScancodeFromKey(event.key.keysym.sym);
-#endif
 		keyboard->set_scancode(code);
 		break;
 	}
@@ -260,11 +240,7 @@ hotkey_ptr load_from_config(const config& cfg)
 	if (cfg["ctrl"].to_bool())
 		mods |= KMOD_CTRL;
 	if (cfg["cmd"].to_bool())
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		mods |= KMOD_GUI;
-#else
-		mods |= KMOD_META;
-#endif
 	if (cfg["alt"].to_bool())
 		mods |= KMOD_ALT;
 
@@ -320,11 +296,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 	}
 
 	SDL_Scancode code;
-#if  SDL_VERSION_ATLEAST(2, 0, 0)
 	code = event.key.keysym.scancode;
-#else
-	code = SDL_GetScancodeFromKey(event.key.keysym.sym);
-#endif
 
 	if (code != scancode_) {
 		return false;

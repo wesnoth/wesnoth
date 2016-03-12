@@ -917,9 +917,6 @@ void tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset
 	 * Without the call when resizing larger a black area of remains, this is
 	 * the area not used for resizing the screen, this call `fixes' that.
 	 */
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	SDL_PumpEvents();
-#endif
 
 	assert(get_visible() == twidget::tvisible::visible);
 	set_is_dirty(false);

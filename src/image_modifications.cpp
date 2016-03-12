@@ -526,13 +526,8 @@ surface darken_modification::operator()(const surface &src) const
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
-#if SDL_VERSION_ATLEAST(2,0,0)
 	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.a));
-#else
-	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
-					    color_.b, color_.unused));
-#endif
 	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
 	blit_surface(src, NULL, ret, NULL);
 	return ret;

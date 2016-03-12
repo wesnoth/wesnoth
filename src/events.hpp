@@ -42,9 +42,7 @@ class sdl_handler
 {
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	virtual void handle_window_event(const SDL_Event& event) = 0;
-#endif
 	virtual void process_event() {}
 	virtual void draw() {}
 
@@ -71,9 +69,6 @@ protected:
 	}
 
 private:
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	int unicode_;
-#endif
 	bool has_joined_;
 	bool has_joined_global_;
 };
@@ -101,10 +96,8 @@ struct event_context
 //causes events to be dispatched to all handler objects.
 void pump();
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 //look for resize events and update references to the screen area
 void peek_for_resize();
-#endif
 
 struct pump_info {
 	pump_info() : resize_dimensions(), ticks_(0) {}
@@ -145,17 +138,5 @@ void discard_input();
 
 typedef std::vector<events::sdl_handler*> sdl_handler_vector;
 
-#if ! SDL_VERSION_ATLEAST(2,0,0)
-
-/**
- * Removes events from the queue.
- *
- * This emulates the function available in SDL 2.0.
- *
- * @param type                    The type of event to flush.
- */
-void SDL_FlushEvent(Uint32 type);
-
-#endif
 
 #endif

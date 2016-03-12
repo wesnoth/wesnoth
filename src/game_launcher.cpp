@@ -365,7 +365,6 @@ bool game_launcher::init_language()
 	return true;
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 bool game_launcher::init_video()
 {
 	// Handle special commandline launch flags
@@ -394,66 +393,6 @@ bool game_launcher::init_video()
 #endif
 	return true;
 }
-#else
-bool game_launcher::init_video()
-{
-	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
-		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.plugin_file || cmdline_opts_.headless_unit_test) ) {
-			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
-			return false;
-		}
-		video().make_fake();
-		game_config::no_delay = true;
-		return true;
-	}
-
-	SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
-
-#if !(defined(__APPLE__))
-	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
-	if(icon != NULL) {
-		///must be called after SDL_Init() and before setting video mode
-		SDL_WM_SetIcon(icon,NULL);
-	}
-#endif
-
-	std::pair<int,int> resolution;
-	int bpp = 0;
-	int video_flags = 0;
-
-	bool found_matching = video().detect_video_settings(resolution, bpp, video_flags);
-
-	if (cmdline_opts_.screenshot) {
-		bpp = CVideo::DefaultBpp;
-	}
-
-	if(!found_matching && (video_flags & SDL_FULLSCREEN)) {
-		video_flags ^= SDL_FULLSCREEN;
-		found_matching = video().detect_video_settings(resolution, bpp, video_flags);
-		if (found_matching) {
-			std::cerr << "Failed to set " << resolution.first << 'x' << resolution.second << 'x' << bpp << " in fullscreen mode. Using windowed instead.\n";
-		}
-	}
-
-	if(!found_matching) {
-		std::cerr << "Video mode " << resolution.first << 'x'
-			<< resolution.second << 'x' << bpp
-			<< " is not supported.\n";
-
-		return false;
-	}
-
-	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
-	const int res = video().setMode(resolution.first,resolution.second,bpp,video_flags);
-	video().setBpp(bpp);
-	if(res == 0) {
-		std::cerr << "Required video mode, " << resolution.first << "x"
-		          << resolution.second << "x" << bpp << " is not supported\n";
-		return false;
-	}
-	return true;
-}
-#endif
 
 bool game_launcher::init_lua_script()
 {
@@ -1053,11 +992,7 @@ bool game_launcher::change_language()
 	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		video().set_window_title(game_config::get_default_title_string());
-#else
-		SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
-#endif
 	}
 
 	return true;

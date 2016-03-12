@@ -136,10 +136,6 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	show_menu_ = false;
 	map_location loc = gui().hex_clicked_on(event.x,event.y);
 	mouse_update(browse, loc);
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	int scrollx = 0;
-	int scrolly = 0;
-#endif
 
 	if (is_left_click(event)) {
 		if (event.state == SDL_PRESSED) {
@@ -187,38 +183,6 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			scroll_started_ = false;
 		}
 	}
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	else if (allow_mouse_wheel_scroll(event.x, event.y)) {
-		if (event.button == SDL_BUTTON_WHEELUP) {
-			scrolly = - preferences::scroll_speed();
-			mouse_wheel_up(event.x, event.y, browse);
-		} else if (event.button == SDL_BUTTON_WHEELDOWN) {
-			scrolly = preferences::scroll_speed();
-			mouse_wheel_down(event.x, event.y, browse);
-		} else if (event.button == SDL_BUTTON_WHEELLEFT) {
-			scrollx = - preferences::scroll_speed();
-			mouse_wheel_left(event.x, event.y, browse);
-		} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
-			scrollx = preferences::scroll_speed();
-			mouse_wheel_right(event.x, event.y, browse);
-		}
-
-		// Don't scroll map and map zoom slider at same time
-		gui::slider* s = gui().find_slider("map-zoom-slider");
-		if (s && sdl::point_in_rect(event.x, event.y, s->location())) {
-			scrollx = 0; scrolly = 0;
-		}
-	}
-
-	if (scrollx != 0 || scrolly != 0) {
-		CKey pressed;
-		// Alt + mousewheel do an 90° rotation on the scroll direction
-		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
-			gui().scroll(scrolly,scrollx);
-		else
-			gui().scroll(scrollx,scrolly);
-	}
-#endif
 	if (!dragging_left_ && !dragging_right_ && dragging_started_) {
 		dragging_started_ = false;
 		cursor::set_dragging(false);
@@ -286,7 +250,6 @@ void mouse_handler_base::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse
 {
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 {
 	int x, y;
@@ -323,7 +286,6 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 		mouse_wheel_up(x, y, browse);
 	}
 }
-#endif
 
 void mouse_handler_base::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {

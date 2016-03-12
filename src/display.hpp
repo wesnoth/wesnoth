@@ -637,9 +637,7 @@ public:
 	void write(config& cfg) const;
 
 	virtual void handle_event(const SDL_Event& );
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	virtual void handle_window_event(const SDL_Event& event);
-#endif
 
 private:
 	void read(const config& cfg);
@@ -1171,10 +1169,6 @@ private:
 	sdl::timage panel_image_;
 #endif
 
-#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
-	/** Flag for bug #17573 - this is set in the constructor **/
-	bool do_reverse_memcpy_workaround_;
-#endif
 
 public:
 	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }

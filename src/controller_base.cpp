@@ -105,27 +105,9 @@ void controller_base::handle_event(const SDL_Event& event)
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	case SDL_ACTIVEEVENT:
-		if (event.active.state == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
-			if (get_mouse_handler_base().is_dragging()) {
-				//simulate mouse button up when the app has lost mouse focus
-				//this should be a general fix for the issue when the mouse
-				//is dragged out of the game window and then the button is released
-				int x, y;
-				Uint8 mouse_flags = SDL_GetMouseState(&x, &y);
-				if ((mouse_flags & SDL_BUTTON_LEFT) == 0) {
-					get_mouse_handler_base().mouse_press(event.button, is_browsing());
-				}
-			}
-		}
-		break;
-#endif
-#if SDL_VERSION_ATLEAST(2,0,0)
 	case SDL_MOUSEWHEEL:
 		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
 		break;
-#endif
 	default:
 		break;
 	}

@@ -44,12 +44,7 @@
 #include <map>                          // for map, map<>::mapped_type
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-#include "SDL_keysym.h"                 // for ::SDLK_ESCAPE, ::SDLK_DOWN, etc
-#include "SDL_video.h"                  // for SDL_Rect, SDL_Surface, etc
-#else
 #include "sdl/alpha.hpp"
-#endif
 
 /**
  * @namespace about

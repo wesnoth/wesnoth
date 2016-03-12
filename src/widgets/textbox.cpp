@@ -38,9 +38,7 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 	     wrap_(false), line_height_(0), yscroll_(0), alpha_(alpha),
 	     alpha_focus_(alpha_focus),
 	     edit_target_(NULL)
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		,listening_(false)
-#endif
 {
 	// static const SDL_Rect area = d.screen_area();
 	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
@@ -106,21 +104,15 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 
 	SDL_SetAlpha(new_text.get(),0,0);
 	SDL_SetAlpha(text_image_.get(),0,0);
-#if SDL_VERSION_ATLEAST(2,0,0)
 	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_NONE);
-#endif
 	sdl_blit(text_image_,NULL,new_surface,NULL);
-#if SDL_VERSION_ATLEAST(2,0,0)
 	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_BLEND);
-#endif
 
 	SDL_Rect target = sdl::create_rect(0
 			, text_image_->h
 			, new_text->w
 			, new_text->h);
-#if SDL_VERSION_ATLEAST(2,0,0)
 	SDL_SetSurfaceBlendMode(new_text, SDL_BLENDMODE_NONE);
-#endif
 	sdl_blit(new_text,NULL,new_surface,&target);
 	text_image_.assign(new_surface);
 
@@ -451,7 +443,6 @@ void textbox::handle_event(const SDL_Event& event)
 	handle_event(event, false);
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 bool textbox::handle_text_input(const SDL_Event& event)
 {
 	bool changed = false;
@@ -475,7 +466,6 @@ bool textbox::handle_text_input(const SDL_Event& event)
 	}
 	return changed;
 }
-#endif
 
 bool textbox::handle_key_down(const SDL_Event &event)
 {
@@ -487,9 +477,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 	const int c = key.sym;
 	const int old_cursor = cursor_;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	listening_ = true;
-#endif
 
 	if(editable_) {
 		if(c == SDLK_LEFT && cursor_ > 0)
@@ -545,19 +533,11 @@ bool textbox::handle_key_down(const SDL_Event &event)
 		pass_event_to_target(event);
 	}
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	ucs4::char_t character = key.unicode;
-#endif
 
 	//movement characters may have a "Unicode" field on some platforms, so ignore it.
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
 			c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME ||
 			c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-		if(character != 0) {
-			DBG_G << "Char: " << character << ", c = " << c << "\n";
-		}
-#endif
 		if((event.key.keysym.mod & copypaste_modifier)
 				//on windows SDL fires for AltGr lctrl+ralt (needed to access @ etc on certain keyboards)
 #ifdef _WIN32
@@ -610,20 +590,6 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			break;
 			}
 		}
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-		else if(editable_) {
-			if(character >= 32 && character != 127) {
-				changed = true;
-				if(is_selection())
-					erase_selection();
-
-				if(text_.size() + 1 <= max_size_) {
-					text_.insert(text_.begin()+cursor_,character);
-					++cursor_;
-				}
-			}
-		}
-#endif
 		else {
 			pass_event_to_target(event);
 		}
@@ -713,11 +679,9 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	const int old_cursor = cursor_;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (event.type == SDL_TEXTINPUT && listening_) {
 		changed = handle_text_input(event);
 	} else
-#endif
 		if (event.type == SDL_KEYDOWN) {
 			changed = handle_key_down(event);
 	}

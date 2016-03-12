@@ -133,10 +133,8 @@ public:
 	/** Inherited from events::sdl_handler. */
 	void handle_event(const SDL_Event& event);
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	/** Inherited from events::sdl_handler. */
 	void handle_window_event(const SDL_Event& event);
-#endif
 
 	/**
 	 * Connects a dispatcher.
@@ -344,11 +342,9 @@ void thandler::handle_event(const SDL_Event& event)
 							event.button.button);
 			break;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		case SDL_MOUSEWHEEL:
 			mouse_wheel(get_mouse_position(), event.wheel.x, event.wheel.y);
 			break;
-#endif
 
 		case SHOW_HELPTIP_EVENT:
 			mouse(SHOW_HELPTIP, get_mouse_position());
@@ -397,7 +393,6 @@ void thandler::handle_event(const SDL_Event& event)
 			key_down(event);
 			break;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
 				case SDL_WINDOWEVENT_EXPOSED:
@@ -420,19 +415,6 @@ void thandler::handle_event(const SDL_Event& event)
 		case SDL_TEXTINPUT:
 			text_input(event.text.text);
 			break;
-#else
-		case SDL_VIDEOEXPOSE:
-			draw(true);
-			break;
-
-		case SDL_VIDEORESIZE:
-			video_resize(tpoint(event.resize.w, event.resize.h));
-			break;
-
-		case SDL_ACTIVEEVENT:
-			activate();
-			break;
-#endif
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
@@ -452,12 +434,10 @@ void thandler::handle_event(const SDL_Event& event)
 	}
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 void thandler::handle_window_event(const SDL_Event& event)
 {
 	handle_event(event);
 }
-#endif
 
 void thandler::connect(tdispatcher* dispatcher)
 {
@@ -554,14 +534,7 @@ void thandler::draw(const bool force)
 	if(!dispatchers_.empty()) {
 		CVideo& video = dynamic_cast<twindow&>(*dispatchers_.back()).video();
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-		surface& frame_buffer = video.getSurface();
-		cursor::draw(frame_buffer);
-#endif
 		video.flip();
-#if !SDL_VERSION_ATLEAST(2,0,0)
-		cursor::undraw(frame_buffer);
-#endif
 	}
 }
 
@@ -621,20 +594,6 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 			mouse(SDL_RIGHT_BUTTON_UP, position);
 			break;
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-		case SDL_BUTTON_WHEELLEFT:
-			mouse(SDL_WHEEL_LEFT, get_mouse_position());
-			break;
-		case SDL_BUTTON_WHEELRIGHT:
-			mouse(SDL_WHEEL_RIGHT, get_mouse_position());
-			break;
-		case SDL_BUTTON_WHEELUP:
-			mouse(SDL_WHEEL_UP, get_mouse_position());
-			break;
-		case SDL_BUTTON_WHEELDOWN:
-			mouse(SDL_WHEEL_DOWN, get_mouse_position());
-			break;
-#endif
 
 		default:
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
@@ -671,7 +630,6 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 	}
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 void thandler::mouse_wheel(const tpoint& position, int x, int y)
 {
 	if(x > 0) {
@@ -686,7 +644,6 @@ void thandler::mouse_wheel(const tpoint& position, int x, int y)
 		mouse(SDL_WHEEL_UP, position);
 	}
 }
-#endif
 
 tdispatcher* thandler::keyboard_dispatcher()
 {
@@ -741,15 +698,9 @@ void thandler::key_down(const SDL_Event& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		key_down(event.key.keysym.sym,
 				 static_cast<const SDL_Keymod>(event.key.keysym.mod),
 				 "");
-#else
-		key_down(event.key.keysym.sym,
-				 event.key.keysym.mod,
-				 unicode_cast<std::string>(static_cast<ucs4::char_t>(event.key.keysym.unicode)));
-#endif
 	}
 }
 

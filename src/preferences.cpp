@@ -60,9 +60,7 @@ namespace preferences {
 class prefs_event_handler : public events::sdl_handler {
 public:
 	virtual void handle_event(const SDL_Event &) {}
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	virtual void handle_window_event(const SDL_Event &event);
-#endif
 	prefs_event_handler() :	sdl_handler(false) {}
 };
 
@@ -105,7 +103,6 @@ base_manager::~base_manager()
 	} catch (...) {}
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 /*
  * Hook for setting window state variables on window resize and maximize
  * events. Since there is no fullscreen window event, that setter is called
@@ -134,7 +131,6 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 		break;
 	}
 }
-#endif
 
 void write_preferences()
 {
@@ -959,11 +955,7 @@ void set_draw_delay(int value)
 
 bool use_color_cursors()
 {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	return get("color_cursors", true);
-#else
-	return get("color_cursors", false);
-#endif
 }
 
 void _set_color_cursors(bool value)

@@ -1420,24 +1420,6 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 											  const tpoint& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	if(new_size.x < preferences::min_allowed_width()
-	   || new_size.y < preferences::min_allowed_height()) {
-
-		DBG_GUI_E << LOG_HEADER << " resize aborted, too small.\n";
-		return;
-	}
-
-	if(new_size.x == static_cast<int>(settings::screen_width)
-	   && new_size.y == static_cast<int>(settings::screen_height)) {
-
-		DBG_GUI_E << LOG_HEADER << " resize not needed.\n";
-		handled = true;
-		return;
-	}
-
-	video_.set_resolution(new_size.x, new_size.y);
-#endif
 
 	settings::gamemap_width += new_size.x - settings::screen_width;
 	settings::gamemap_height += new_size.y - settings::screen_height;

@@ -58,10 +58,6 @@
 #include <cmath>
 
 // Includes for bug #17573
-#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
-#include <gnu/libc-version.h>
-#include <cstdio>
-#endif
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -228,9 +224,6 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	, update_panel_image_(true),
 	panel_image_()
 #endif
-#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
-	, do_reverse_memcpy_workaround_(false)
-#endif
 {
 	//The following assertion fails when starting a campaign
 	assert(singleton_ == NULL);
@@ -261,19 +254,6 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 		create_buttons();
 	}
 
-#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
-	// Runtime checks for bug #17573
-	// Get glibc runtime version information
-	int glibc, glibc_minor;
-	sscanf(gnu_get_libc_version(), "%d.%d", &glibc, &glibc_minor);
-
-	// Get SDL runtime version information
-	const SDL_version* v = SDL_Linked_Version();
-
-	do_reverse_memcpy_workaround_ = (glibc > 2 || (glibc == 2 && glibc_minor >= 13)) &&
-		(v->major < 1 || (v->major == 1 && v->minor < 2) ||
-			(v->major == 1 && v->minor == 2 && v->patch < 15) );
-#endif
 }
 
 display::~display()
@@ -1450,15 +1430,9 @@ void display::flip()
 	font::draw_floating_labels(frameBuffer);
 #endif
 	events::raise_volatile_draw_event();
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	cursor::draw(frameBuffer);
-#endif
 
 	video().flip();
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	cursor::undraw(frameBuffer);
-#endif
 	events::raise_volatile_undraw_event();
 #ifdef SDL_GPU
 	font::undraw_floating_labels(screen_);
@@ -2263,23 +2237,9 @@ bool display::scroll(int xmove, int ymove, bool force)
 		/* TODO: This is a workaround for a SDL2 bug when blitting on overlapping surfaces.
 		 * The bug only strikes during scrolling, but will then duplicate textures across
 		 * the entire map. */
-#if SDL_VERSION_ATLEAST(2,0,0)
 		surface screen_copy = make_neutral_surface(screen);
 		SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
 		SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
-#else
-// Hack to workaround bug #17573
-#if defined(__GLIBC__)
-		if (do_reverse_memcpy_workaround_) {
-			surface screen_copy = make_neutral_surface(screen);
-			SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
-		} else {
-			SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
-		}
-#else
-		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
-#endif
-#endif
 	}
 
 //This is necessary to avoid a crash in some SDL versions on some systems
@@ -3821,7 +3781,6 @@ void display::process_reachmap_changes()
 	reach_map_changed_ = false;
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 void display::handle_window_event(const SDL_Event& event) {
 	if (event.type == SDL_WINDOWEVENT) {
 			switch (event.window.event) {
@@ -3836,7 +3795,6 @@ void display::handle_window_event(const SDL_Event& event) {
 
 
 }
-#endif
 
 void display::handle_event(const SDL_Event& event) {
 	if (event.type == DRAW_ALL_EVENT) {

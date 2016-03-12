@@ -688,10 +688,6 @@ void set_pixel_format(SDL_PixelFormat* format)
 			|| f.Gshift != l.Gshift
 			|| f.Bshift != l.Bshift
 //			|| f.Ashift != l.Ashift This field in not checked, not sure why.
-#if !SDL_VERSION_ATLEAST(2,0,0)
-			|| f.colorkey != l.colorkey
-			|| f.alpha != l.alpha
-#endif
 			)
 	{
 		LOG_DP << "detected a new display format\n";

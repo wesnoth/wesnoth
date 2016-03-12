@@ -14,7 +14,6 @@
 
 #include "sdl/alpha.hpp"
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 
 int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha)
 {
@@ -30,4 +29,3 @@ int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha)
 	}
 }
 
-#endif

@@ -31,9 +31,7 @@
 #include <cassert>
 #include <cstring>
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 #include "video.hpp"
-#endif
 
 namespace font {
 

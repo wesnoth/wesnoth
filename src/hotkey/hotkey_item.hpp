@@ -21,9 +21,6 @@
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-#include "sdl/keyboard.hpp"
-#endif
 
 class config;
 class CVideo;

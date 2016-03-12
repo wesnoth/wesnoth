@@ -24,12 +24,10 @@
 
 #include <SDL.h>
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 
 #define SDL_SRCALPHA 0x00010000
 
 int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha);
 
-#endif
 
 #endif

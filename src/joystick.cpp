@@ -35,7 +35,6 @@ joystick_manager::~joystick_manager() {
 	close();
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 
 static bool attached(
 		  const std::vector<SDL_Joystick*>& joysticks
@@ -51,19 +50,6 @@ static const char* name(
 	return SDL_JoystickName(joysticks[index]);
 }
 
-#else
-
-static bool attached(const std::vector<SDL_Joystick*>&, const size_t index)
-{
-	return SDL_JoystickOpened(index) == 1;
-}
-
-static const char* name(const std::vector<SDL_Joystick*>&, const size_t index)
-{
-	return SDL_JoystickName(index);
-}
-
-#endif
 
 bool joystick_manager::close() {
 	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
