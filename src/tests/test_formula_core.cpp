@@ -137,6 +137,11 @@ BOOST_AUTO_TEST_CASE(test_formula_strings)
 	
 	BOOST_CHECK_EQUAL(formula("'strength, agility: [strength], [agility]'").evaluate(c).as_string(),
 		   "strength, agility: 15, 12");
+	
+	BOOST_CHECK_EQUAL(formula("'String with [']quotes['] and [(]brackets[)]!'").evaluate().as_string(),
+		"String with 'quotes' and [brackets]!");
+	BOOST_CHECK_EQUAL(formula("'String with ['embedded ' .. 'string']!'").evaluate().as_string(),
+		"String with embedded string!");
 }
 
 BOOST_AUTO_TEST_CASE(test_formula_dice) {
