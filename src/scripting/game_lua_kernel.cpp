@@ -1175,8 +1175,6 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
  */
 int game_lua_kernel::intf_highlight_hex(lua_State *L)
 {
-	ERR_LUA << "wesnoth.highlight_hex is deprecated, use wesnoth.select_hex" << std::endl;
-
 	if (!game_display_) {
 		return 0;
 	}
@@ -1184,16 +1182,10 @@ int game_lua_kernel::intf_highlight_hex(lua_State *L)
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
 	const map_location loc(x, y);
+	if(!map().on_board(loc)) return luaL_argerror(L, 1, "not on board");
+
 	game_display_->highlight_hex(loc);
 	game_display_->display_unit_hex(loc);
-
-	unit_map::const_unit_iterator i = board().units().find(loc);
-	if(i != board().units().end()) {
-		game_display_->highlight_reach(pathfind::paths(*i, false,
-			true, teams().front()));
-			/// @todo: teams().front() is not always the correct
-			///        choice for the viewing team.
-	}
 
 	return 0;
 }
