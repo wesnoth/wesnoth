@@ -61,6 +61,8 @@ void twml_message_::set_option_list(const std::vector<twml_message_option>& opti
  */
 void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 {
+	set_restore(true);
+
 	window.canvas(1).set_variable("portrait_image", variant(portrait_));
 	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
 
