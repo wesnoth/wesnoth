@@ -808,12 +808,7 @@ void trectangle::draw(surface& canvas,
 
 	if(fill_color_) {
 
-		const unsigned left = x + border_thickness_;
-		const unsigned right = left + w - (2 * border_thickness_) - 1;
-		const unsigned top = y + border_thickness_;
-		const unsigned bottom = top + h - (2 * border_thickness_);
-
-		sdl::draw_solid_tinted_rectangle(left, top, right, bottom,
+		sdl::draw_solid_tinted_rectangle(x, y, w, h,
 			(fill_color_ & 0xFF000000) >> 24,
 			(fill_color_ & 0x00FF0000) >> 16,
 			(fill_color_ & 0x0000FF00) >> 8,
