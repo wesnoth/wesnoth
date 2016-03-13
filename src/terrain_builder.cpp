@@ -1193,6 +1193,34 @@ void terrain_builder::build_terrains()
 		}
 
 	}
+
+	for(int x = -2; x <= map().w(); ++x) {
+		for(int y = -2; y <= map().h(); ++y) {
+			const map_location loc(x,y);
+
+			const imagelist* img_list_fg = get_terrain_at(loc, "", FOREGROUND);
+			if (img_list_fg != NULL) {
+				BOOST_FOREACH(const animated<image::locator>& locator, *img_list_fg){
+					for(size_t i=0; i<=locator.get_frames_count(); i++) {
+						const image::locator &image = locator.get_frame(i);
+						image::get_image(image, image::UNSCALED);
+						//std::cout << "Preloaded terrain image " << image.get_filename() << "\n";
+					}
+				}
+			}
+
+			const imagelist* img_list_bg = get_terrain_at(loc, "", BACKGROUND);
+			if (img_list_bg != NULL) {
+				BOOST_FOREACH(const animated<image::locator>& locator, *img_list_bg){
+					for(size_t i=0; i<=locator.get_frames_count(); i++) {
+						const image::locator &image = locator.get_frame(i);
+						image::get_image(image, image::UNSCALED);
+						//std::cout << "Preloaded terrain image " << image.get_filename() << "\n";
+					}
+				}
+			}
+		}
+	}
 }
 
 terrain_builder::tile* terrain_builder::get_tile(const map_location &loc)
