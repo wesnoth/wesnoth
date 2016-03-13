@@ -86,12 +86,11 @@ namespace {
 
 namespace storyscreen {
 
-part_ui::part_ui(part &p, display &disp, gui::button &next_button,
+part_ui::part_ui(part &p, CVideo& video, gui::button &next_button,
 	gui::button &back_button, gui::button&play_button)
 	: events::sdl_handler(false)
 	, p_(p)
-	, disp_(disp)
-	, video_(disp.video())
+	, video_(video)
 	, keys_()
 	, next_button_(next_button)
 	, back_button_(back_button)
@@ -298,10 +297,6 @@ void part_ui::prepare_geometry()
 	back_button_.set_location(buttons_x_, buttons_y_ - 30);
 	next_button_.set_location(buttons_x_ + play_button_.width() - next_button_.width(), buttons_y_ - 30);
 	play_button_.set_location(buttons_x_, buttons_y_);
-
-	next_button_.set_volatile(true);
-	play_button_.set_volatile(true);
-	back_button_.set_volatile(true);
 }
 
 void part_ui::prepare_floating_images()
@@ -952,7 +947,7 @@ bool part_ui::handle_interface()
 	events::pump();
 	events::raise_process_event();
 	events::raise_draw_event();
-	disp_.flip();
+	video_.flip();
 
 	return result;
 }

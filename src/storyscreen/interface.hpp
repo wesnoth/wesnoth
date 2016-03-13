@@ -25,7 +25,7 @@
 #include "config.hpp"
 
 class vconfig;
-class display;
+class CVideo;
 class t_string;
 
 namespace storyscreen {
@@ -43,7 +43,7 @@ enum START_POSITION {
  * Each part of the sequence will be displayed in turn, with the user
  * able to go to the next part, previous part, or skip it entirely.
  */
-void show_story(display &disp, const std::string &scenario_name,
+void show_story(CVideo& video, const std::string &scenario_name,
 	const config::const_child_itors &story);
 
 #endif /* ! STORYSCREEN_HPP_INCLUDED */

@@ -23,7 +23,6 @@
 #include "storyscreen/interface.hpp"
 #include "storyscreen/controller.hpp"
 
-#include "display.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "language.hpp"
@@ -34,7 +33,7 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-void show_story(display &disp, const std::string &scenario_name,
+void show_story(CVideo& video, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
 	events::event_context story_context;
@@ -44,7 +43,7 @@ void show_story(display &disp, const std::string &scenario_name,
 	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
 	while (itor != story.second)
 	{
-		storyscreen::controller ctl(disp, vconfig(*itor, true),
+		storyscreen::controller ctl(video, vconfig(*itor, true),
 			scenario_name, segment_count);
 		storyscreen::STORY_RESULT result = ctl.show(startpos);
 

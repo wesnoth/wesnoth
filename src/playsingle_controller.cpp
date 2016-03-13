@@ -222,7 +222,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	sound::commit_music_changes();
 
 	if(!this->is_skipping_replay()) {
-		show_story(*gui_, get_scenario_name(), level.child_range("story"));
+		show_story(gui_->video(), get_scenario_name(), level.child_range("story"));
 	}
 	gui_->labels().read(level);
 

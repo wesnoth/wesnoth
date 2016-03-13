@@ -44,9 +44,9 @@ static lg::log_domain log_engine("engine");
 
 namespace storyscreen {
 
-controller::controller(display& disp, const vconfig& data, const std::string& scenario_name,
+controller::controller(CVideo& video, const vconfig& data, const std::string& scenario_name,
 		       int segment_index)
-	: disp_(disp)
+	: video_(video)
 	, disp_resize_lock_()
 	, evt_context_()
 	, scenario_name_(scenario_name)
@@ -152,11 +152,11 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		return NEXT;
 	}
 
-	gui::button back_button (disp_.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22"
+	gui::button back_button (video_, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22"
 		, gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left");
-	gui::button next_button (disp_.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22"
+	gui::button next_button (video_, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22"
 		, gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right");
-	gui::button play_button (disp_.video(), _("Skip"));
+	gui::button play_button (video_, _("Skip"));
 
 	// Build renderer cache unless built for a low-memory environment;
 	// caching the scaled backgrounds can take over a decent amount of memory.
@@ -164,7 +164,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 	std::vector< render_pointer_type > uis_;
 	BOOST_FOREACH(part_pointer_type p, parts_) {
 		ASSERT_LOG( p != NULL, "Ouch: hit NULL storyscreen part in collection" );
-		render_pointer_type const rpt(new part_ui(*p, disp_, next_button, back_button, play_button));
+		render_pointer_type const rpt(new part_ui(*p, video_, next_button, back_button, play_button));
 		uis_.push_back(rpt);
 	}
 #endif
@@ -185,7 +185,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 #ifndef LOW_MEM
 		part_ui &render_interface = *uis_[k];
 #else
-		part_ui render_interface(*parts_[k], disp_, next_button, back_button, play_button);
+		part_ui render_interface(*parts_[k], video_, next_button, back_button, play_button);
 #endif
 
 		LOG_NG << "displaying storyscreen part " << k+1 << " of " << parts_.size() << '\n';
