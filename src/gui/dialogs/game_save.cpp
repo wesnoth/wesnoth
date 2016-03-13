@@ -61,6 +61,8 @@ tgame_save_message::tgame_save_message(std::string& filename,
 									   const std::string& title,
 									   const std::string& message)
 {
+	set_restore(true);
+
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);
 	register_label("lblMessage", true, message);
