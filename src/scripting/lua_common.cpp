@@ -608,11 +608,16 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 	if (!lua_checkstack(L, LUA_MINSTACK)) {
 		return false;
 	}
+	if (lua_isnoneornil(L, index)) {
+		// Need this special check because luaW_tovconfig returns true in this case
+		return false;
+	}
+	
+	vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
 	
 	index = lua_absindex(L, index);
 	
-	if (lua_istable(L, index)) {
-		// TODO: Could support vconfigs as well?
+	if (lua_istable(L, index) || luaW_tounit(L, index) || luaW_tovconfig(L, index, dummy_vcfg)) {
 		map_location result;
 		int x_was_num = 0, y_was_num = 0;
 		lua_getfield(L, index, "x");
@@ -621,6 +626,11 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		result.y = lua_tonumberx(L, -1, &y_was_num) - 1;
 		lua_pop(L, 2);
 		if (!x_was_num || !y_was_num) {
+			// If we get here and it was userdata, checking numeric indices won't help
+			// (It won't help if it was a config either, but there's no easy way to check that.)
+			if (lua_isuserdata(L, index)) {
+				return false;
+			}
 			lua_rawgeti(L, index, 1);
 			result.x = lua_tonumberx(L, -1, &x_was_num) - 1;
 			lua_rawgeti(L, index, 2);
