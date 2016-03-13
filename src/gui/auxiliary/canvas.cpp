@@ -806,8 +806,6 @@ void trectangle::draw(surface& canvas,
 		draw_line(canvas, border_color_, left, top, left, bottom);
 	}
 
-	// The fill_rect_alpha code below fails, can't remember the exact cause
-	// so use the slow line drawing method to fill the rect.
 	if(fill_color_) {
 
 		const unsigned left = x + border_thickness_;
@@ -815,10 +813,11 @@ void trectangle::draw(surface& canvas,
 		const unsigned top = y + border_thickness_;
 		const unsigned bottom = top + h - (2 * border_thickness_);
 
-		for(unsigned i = top; i < bottom; ++i) {
-
-			draw_line(canvas, fill_color_, left, i, right, i);
-		}
+		sdl::draw_solid_tinted_rectangle(left, top, right, bottom,
+			(fill_color_ & 0xFF000000) >> 24,
+			(fill_color_ & 0x00FF0000) >> 16,
+			(fill_color_ & 0x0000FF00) >> 8,
+			(fill_color_ & 0x000000FF) /  255.0, canvas);
 	}
 }
 
