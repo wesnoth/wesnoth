@@ -172,7 +172,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 			FOREACH(const AUTO& a, type->attacks())
 			{
 				str << "<span color='#f5e6c1'>" << a.damage()
-					<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>" << "\n";
+					<< utils::unicode_multiplication_sign << a.num_attacks() << " " << a.name() << "</span>" << "\n";
 
 				str << "<span color='#a69275'>" << "  " << a.range()
 					<< font::weapon_details_sep << a.type() << "</span>" << "\n";
