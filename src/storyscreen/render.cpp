@@ -355,7 +355,6 @@ bool part_ui::render_floating_images()
 	return true;
 #else
 	events::raise_draw_event();
-	update_whole_screen();
 
 	skip_ = false;
 	last_key_ = true;
@@ -750,7 +749,6 @@ void part_ui::render_story_box()
 
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
-		update_whole_screen();
 		wait_for_input();
 		return;
 	}
@@ -858,9 +856,7 @@ void part_ui::render_story_box()
 		}
 
 		if (dirty_ || first) {
-			if(imgs_.empty()) {
-				update_whole_screen();
-			} else if(update_area.h > 0) {
+			if(!imgs_.empty() && update_area.h > 0) {
 				update_rect(update_area);
 			}
 		}

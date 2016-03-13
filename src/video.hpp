@@ -55,7 +55,6 @@ SDL_Rect screen_area();
 //which areas of the screen will be updated when the buffer is flipped?
 void update_rect(size_t x, size_t y, size_t w, size_t h);
 void update_rect(const SDL_Rect& rect);
-void update_whole_screen();
 
 class CVideo : private boost::noncopyable {
 public:

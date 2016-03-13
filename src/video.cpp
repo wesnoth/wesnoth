@@ -204,11 +204,6 @@ void update_rect(const SDL_Rect& rect_value)
 	}
 }
 
-void update_whole_screen()
-{
-}
-
-
 void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 {
 	if (event.type == SDL_WINDOWEVENT) {

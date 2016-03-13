@@ -286,8 +286,6 @@ void ui::draw_contents()
 	if(background == NULL)
 		return;
 	sdl_blit(background, NULL, video().getSurface(), NULL);
-	update_whole_screen();
-
 	hide_children(false);
 }
 

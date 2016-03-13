@@ -302,7 +302,6 @@ void loadscreen::clear_screen()
 	surface& disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
 	sdl::fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
-	update_whole_screen();
 	screen_.flip();
 #endif
 }

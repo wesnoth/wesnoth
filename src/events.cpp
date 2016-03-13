@@ -413,10 +413,6 @@ void pump()
 						cursor::set_focus(1);
 						break;
 
-					case SDL_WINDOWEVENT_EXPOSED:
-						update_whole_screen();
-						break;
-
 					case SDL_WINDOWEVENT_RESIZED:
 						info.resize_dimensions.first = event.window.data1;
 						info.resize_dimensions.second = event.window.data2;

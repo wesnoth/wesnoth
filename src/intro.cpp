@@ -41,7 +41,6 @@ void the_end(CVideo &video, std::string text, unsigned int duration)
 	SDL_Rect area = screen_area();
 	sdl::fill_rect(video.getSurface(),&area,0);
 
-	update_whole_screen();
 	video.flip();
 
 	const size_t font_size = font::SIZE_XLARGE;
