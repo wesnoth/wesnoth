@@ -56,7 +56,7 @@
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default
-#include "video.hpp"                    // for CVideo, resize_monitor
+#include "video.hpp"                    // for CVideo
 #include "wml_exception.hpp"            // for twml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
@@ -115,7 +115,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	main_event_context_(),
 	hotkey_manager_(),
 	music_thinker_(),
-	resize_monitor_(new resize_monitor()),
 	test_scenario_("test"),
 	screenshot_map_(),
 	screenshot_filename_(),

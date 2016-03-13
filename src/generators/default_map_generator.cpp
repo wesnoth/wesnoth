@@ -99,7 +99,6 @@ bool default_map_generator::allow_user_config() const { return true; }
 
 void default_map_generator::user_config(CVideo& v)
 {
-	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
 	CVideo& screen = v;

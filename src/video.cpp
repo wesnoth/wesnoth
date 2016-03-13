@@ -51,19 +51,6 @@ namespace {
 #endif
 }
 
-void resize_monitor::process(events::pump_info &info) {
-	UNUSED(info);
-}
-
-resize_lock::resize_lock()
-{
-
-}
-
-resize_lock::~resize_lock()
-{
-}
-
 static unsigned int get_flags(unsigned int flags)
 {
 	/* The wanted flags for the render need to be evaluated for SDL2. */

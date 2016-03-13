@@ -269,17 +269,6 @@ private:
 	bool unlock;
 };
 
-class resize_monitor : public events::pump_monitor {
-	void process(events::pump_info &info);
-};
-
-//an object which prevents resizing of the screen occurring during
-//its lifetime.
-struct resize_lock {
-	resize_lock();
-	~resize_lock();
-};
-
 namespace video2 {
 class draw_layering: public events::sdl_handler {
 protected:

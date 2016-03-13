@@ -163,7 +163,6 @@ void show_help(CVideo& video, const section &toplevel_sec,
 {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
-	const resize_lock prevent_resizing;
 
 	CVideo& screen = video;
 	const surface& scr = screen.getSurface();

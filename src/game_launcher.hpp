@@ -34,7 +34,6 @@
 class commandline_options;
 class config;
 class CVideo;
-class resize_monitor;
 
 struct jump_to_campaign_info
 {
@@ -119,8 +118,6 @@ private:
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
 	sound::music_thinker music_thinker_;
-	//Never null.
-	boost::scoped_ptr<resize_monitor> resize_monitor_;
 
 	std::string test_scenario_;
 
