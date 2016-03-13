@@ -217,7 +217,7 @@ function wesnoth.wml_actions.message(cfg)
 			wesnoth.scroll_to_tile(speaker.x, speaker.y)
 		end
 
-		wesnoth.select_hex(speaker.x, speaker.y, true)
+		wesnoth.highlight_hex(speaker.x, speaker.y)
 		wesnoth.fire("redraw")
 	end
 
