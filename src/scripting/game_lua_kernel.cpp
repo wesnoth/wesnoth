@@ -2837,12 +2837,30 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_select_hex(lua_State *L)
+{
+	ERR_LUA << "wesnoth.select_hex is deprecated, use wesnoth.select_unit and/or wesnoth.highlight_hex" << std::endl;
+	
+	// Need this because check_location may change the stack
+	// By doing this now, we ensure that it won't do so when
+	// intf_select_unit and intf_highlight_hex call it.
+	const map_location loc = luaW_checklocation(L, 1);
+	luaW_pushlocation(L, loc);
+	lua_replace(L, 1);
+	
+	intf_select_unit(L);
+	if(!lua_isnoneornil(L, 2) && luaW_toboolean(L,2)) {
+		intf_highlight_hex(L);
+	}
+	return 0;
+}
+
 /**
  * Selects and highlights the given location on the map.
  * - Arg 1: location.
  * - Args 2,3: booleans
  */
-int game_lua_kernel::intf_select_hex(lua_State *L)
+int game_lua_kernel::intf_select_unit(lua_State *L)
 {
 	const map_location loc = luaW_checklocation(L, 1);
 	if(!map().on_board(loc)) return luaL_argerror(L, 1, "not on board");
@@ -2852,9 +2870,6 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
 	const bool fire_event = luaW_toboolean(L, 3);
 	play_controller_.get_mouse_handler_base().select_hex(
 		loc, false, highlight, fire_event);
-	if(highlight && game_display_) {
-		game_display_->highlight_hex(loc);
-	}
 	return 0;
 }
 
@@ -4306,6 +4321,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
+		{ "select_unit",               &dispatch<&game_lua_kernel::intf_select_unit                >        },
 		{ "skip_messages",             &dispatch<&game_lua_kernel::intf_skip_messages              >        },
 		{ "is_skipping_messages",      &dispatch<&game_lua_kernel::intf_is_skipping_messages       >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
@@ -4581,6 +4597,7 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"jamming",               intf_unit_jamming_cost},
 		{"ability",               intf_unit_ability},
 		{"transform",             intf_transform_unit},
+		{"select",                &dispatch<&game_lua_kernel::intf_select_unit>},
 	};
 
 	BOOST_FOREACH(const luaL_Reg& r, methods) {
