@@ -319,6 +319,8 @@ void part_ui::render_background()
 			video_.getSurface()
 	);
 	sdl_blit(background_, NULL, video_.getSurface(), NULL);
+	// Render the titlebox over the background
+	render_title_box();
 }
 
 bool part_ui::render_floating_images()
