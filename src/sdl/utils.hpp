@@ -272,15 +272,11 @@ surface brighten_image(const surface &surf, fixed_t amount, bool optimize=true);
  *  Send NULL if the portion is outside of the screen.
  *  @param surf              The source surface.
  *  @param rect              The portion of the source surface to copy.
- *  @param optimize_format   Optimize by converting to result to display format.
- *                           Only useful if the source is not the screen and you
- *                           plan to blit the result on screen several times.
  *  @return                  A surface containing the portion of the source.
  *                           No RLE or Alpha bits are set.
  *  @retval 0                if error or the portion is outside of the surface.
  */
-surface get_surface_portion(const surface &surf, SDL_Rect &rect,
-	bool optimize_format=false);
+surface get_surface_portion(const surface &surf, SDL_Rect &rect);
 
 surface adjust_surface_alpha(const surface &surf, fixed_t amount, bool optimize=true);
 surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize=true);

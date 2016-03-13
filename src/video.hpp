@@ -44,7 +44,6 @@ struct GPU_Target;
 GPU_Target *get_render_target();
 #endif
 
-surface display_format_alpha(surface surf);
 surface& get_video_surface();
 
 

@@ -170,16 +170,9 @@ surface create_optimized_surface(const surface &surf)
 	if(surf == NULL)
 		return NULL;
 
-	surface const result = display_format_alpha(surf);
-	if(result == surf) {
-		std::cerr << "resulting surface is the same as the source!!!\n";
-	} else if(result == NULL) {
-		return surf;
-	}
+	SDL_SetAlpha(surf,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
 
-	SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
-
-	return result;
+	return surf;
 }
 
 surface stretch_surface_horizontal(
@@ -2339,7 +2332,7 @@ void blit_surface(const surface& surf,
 	}
 }
 
-surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_format)
+surface get_surface_portion(const surface &src, SDL_Rect &area)
 {
 	if (src == NULL) {
 		return NULL;
@@ -2367,7 +2360,7 @@ surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_fo
 
 	sdl_copy_portion(src, &area, dst, NULL);
 
-	return optimize_format ? display_format_alpha(dst) : dst;
+	return dst;
 }
 
 namespace {

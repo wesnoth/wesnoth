@@ -3064,7 +3064,7 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 		}
 
 		if(visible_area.w > rect.w || visible_area.h > rect.h) {
-			img.assign(get_surface_portion(img,visible_area,false));
+			img.assign(get_surface_portion(img,visible_area));
 			img.assign(scale_surface(img,rect.w,rect.h));
 			visible_area.x = 0;
 			visible_area.y = 0;
