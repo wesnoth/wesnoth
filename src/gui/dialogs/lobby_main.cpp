@@ -412,11 +412,11 @@ static bool fullscreen(CVideo& video)
 	return true;
 }
 
-void tlobby_main::post_build(CVideo& video, twindow& window)
+void tlobby_main::post_build(twindow& window)
 {
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-			boost::bind(fullscreen, boost::ref(video)));
+			boost::bind(fullscreen, boost::ref(window.video())));
 
 	/*** Local hotkeys. ***/
 	preferences_wrapper_

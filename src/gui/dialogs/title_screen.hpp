@@ -86,7 +86,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	virtual void post_build(CVideo& video, twindow& window);
+	virtual void post_build(twindow& window);
 
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);

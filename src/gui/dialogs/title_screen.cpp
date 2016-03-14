@@ -155,7 +155,7 @@ static bool launch_lua_console(twindow & window)
 	return true;
 }
 
-void ttitle_screen::post_build(CVideo& video, twindow& window)
+void ttitle_screen::post_build(twindow& window)
 {
 	/** @todo Should become a title screen hotkey. */
 	window.register_hotkey(
@@ -163,7 +163,7 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 			boost::bind(&hotkey, boost::ref(window), RELOAD_GAME_DATA));
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-			boost::bind(fullscreen, boost::ref(video)));
+			boost::bind(fullscreen, boost::ref(window.video())));
 
 	window.register_hotkey(
 			hotkey::HOTKEY_LANGUAGE,

@@ -43,7 +43,7 @@ void tpopup::show(CVideo& video,
 
 	window_ = build_window(video);
 
-	post_build(video, *window_);
+	post_build(*window_);
 
 	pre_show(*window_);
 
@@ -68,7 +68,7 @@ twindow* tpopup::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
-void tpopup::post_build(CVideo& /*video*/, twindow& /*window*/)
+void tpopup::post_build(twindow& /*window*/)
 {
 	/* DO NOTHING */
 }

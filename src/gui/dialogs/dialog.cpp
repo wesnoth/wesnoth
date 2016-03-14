@@ -41,7 +41,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	std::auto_ptr<twindow> window(build_window(video));
 	assert(window.get());
 
-	post_build(video, *window);
+	post_build(*window);
 
 	window->set_owner(this);
 
@@ -174,7 +174,7 @@ twindow* tdialog::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
-void tdialog::post_build(CVideo& /*video*/, twindow& /*window*/)
+void tdialog::post_build(twindow& /*window*/)
 {
 	/* DO NOTHING */
 }

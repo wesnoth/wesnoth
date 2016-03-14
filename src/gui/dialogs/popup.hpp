@@ -106,7 +106,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(CVideo& video, twindow& window);
+	virtual void post_build(twindow& window);
 
 	/**
 	 * Actions to be taken before showing the window.
