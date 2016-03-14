@@ -159,6 +159,7 @@ class game_lua_kernel : public lua_kernel_base
 	int cfun_wml_action(lua_State *L);
 	int intf_fire_event(lua_State *L);
 	int intf_fire_wml_menu_item(lua_State *L);
+	int intf_teleport(lua_State *L);
 
 	//private helpers
 	std::string synced_state();

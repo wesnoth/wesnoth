@@ -189,6 +189,20 @@ unit* luaW_tounit(lua_State *L, int index, bool only_on_map)
 	return lu->get();
 }
 
+unit_ptr luaW_tounit_ptr(lua_State *L, int index, bool only_on_map)
+{
+	if (!luaW_hasmetatable(L, index, getunitKey)) return unit_ptr();
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
+	if (only_on_map && !lu->on_map()) return unit_ptr();
+	return lu->get_shared();
+}
+
+unit_ptr luaW_checkunit_ptr(lua_State *L, int index, bool only_on_map)
+{
+	unit_ptr u = luaW_tounit(L, index, only_on_map);
+	if (!u) luaL_typerror(L, index, "unit");
+	return u;
+}
 unit& luaW_checkunit(lua_State *L, int index, bool only_on_map)
 {
 	unit* u = luaW_tounit(L, index, only_on_map);

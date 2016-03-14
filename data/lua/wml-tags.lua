@@ -1752,3 +1752,14 @@ wml_actions.unstore_unit = function(cfg)
 		unit:to_recall()
 	end
 end
+
+wml_actions.teleport = function(cfg)
+	local context = wesnoth.current.event_context
+	local filter = helper.get_child(cfg, "filter") or { x = context.x1, y = context.y1 }
+	local unit = wesnoth.get_units(filter)[0]
+	if not unit then
+		-- No error if no unit matches.
+		return
+	end
+	wesnoth.teleport(unit, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
+end

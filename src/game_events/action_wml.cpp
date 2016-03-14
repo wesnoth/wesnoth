@@ -1140,69 +1140,6 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(teleport, event_info, cfg)
-{
-	unit_map::iterator u = resources::units->find(event_info.loc1);
-
-	// Search for a valid unit filter, and if we have one, look for the matching unit
-	const vconfig & filter = cfg.child("filter");
-	if(!filter.null()) {
-		const unit_filter ufilt(filter, resources::filter_con);
-		for (u = resources::units->begin(); u != resources::units->end(); ++u){
-			if ( ufilt(*u) )
-				break;
-		}
-	}
-
-	if (u == resources::units->end()) return;
-
-	// We have found a unit that matches the filter
-	const map_location dst = cfg_to_loc(cfg);
-	if (dst == u->get_location() || !resources::gameboard->map().on_board(dst)) return;
-
-	const unit* pass_check = NULL;
-	if (cfg["check_passability"].to_bool(true))
-		pass_check = &*u;
-	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, pass_check);
-	if (!resources::gameboard->map().on_board(vacant_dst)) return;
-
-	// Clear the destination hex before the move (so the animation can be seen).
-	bool clear_shroud = cfg["clear_shroud"].to_bool(true);
-	actions::shroud_clearer clearer;
-	if ( clear_shroud ) {
-		clearer.clear_dest(vacant_dst, *u);
-	}
-
-	map_location src_loc = u->get_location();
-
-	std::vector<map_location> teleport_path;
-	teleport_path.push_back(src_loc);
-	teleport_path.push_back(vacant_dst);
-	bool animate = cfg["animate"].to_bool();
-	unit_display::move_unit(teleport_path, u.get_shared_ptr(), animate);
-
-	resources::units->move(src_loc, vacant_dst);
-	unit::clear_status_caches();
-
-	u = resources::units->find(vacant_dst);
-	u->anim_comp().set_standing();
-
-	if ( clear_shroud ) {
-		// Now that the unit is visibly in position, clear the shroud.
-		clearer.clear_unit(vacant_dst, *u);
-	}
-
-	if (resources::gameboard->map().is_village(vacant_dst)) {
-		actions::get_village(vacant_dst, u->side());
-	}
-
-	resources::screen->invalidate_unit_after_move(src_loc, vacant_dst);
-	resources::screen->draw();
-
-	// Sighted events.
-	clearer.fire_events();
-}
-
 /// Creating a mask of the terrain
 WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {

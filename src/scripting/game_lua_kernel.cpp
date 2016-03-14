@@ -28,6 +28,7 @@
 #include "global.hpp"
 
 #include "actions/attack.hpp"           // for battle_context_unit_stats, etc
+#include "actions/move.hpp"		// for clear_shroud
 #include "actions/vision.hpp"		// for clear_shroud
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
@@ -4128,6 +4129,65 @@ int game_lua_kernel::impl_theme_items_set(lua_State *L)
 int game_lua_kernel::intf_get_all_vars(lua_State *L) {
 	luaW_pushconfig(L, gamedata().get_variables());
 	return 1;
+}
+
+/**
+ * Teeleports a unit to a location.
+ * Arg 1: unit
+ * Arg 2,3: taget location
+ * Arg 4: bool (ignore_passability)
+ * Arg 5: bool (clear_shroud)
+ * Arg 6: bool (animate)
+ */
+int game_lua_kernel::intf_teleport(lua_State *L)
+{
+	unit_ptr u = luaW_checkunit_ptr(L, 1, true);
+	map_location dst(luaL_checkinteger(L, 2) - 1, luaL_checkinteger(L, 3) - 1);
+	bool check_passability = !lua_toboolean(L, 4);
+	bool clear_shroud = luaW_toboolean(L, 5);
+	bool animate = luaW_toboolean(L, 6);
+
+	if (dst == u->get_location() || !resources::gameboard->map().on_board(dst)) {
+		return 0;
+	}
+	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, check_passability ? u.get() : NULL);
+	if (!resources::gameboard->map().on_board(vacant_dst)) {
+		return 0;
+	}
+	// Clear the destination hex before the move (so the animation can be seen).
+	actions::shroud_clearer clearer;
+	if ( clear_shroud ) {
+		clearer.clear_dest(vacant_dst, *u);
+	}
+
+	map_location src_loc = u->get_location();
+
+	std::vector<map_location> teleport_path;
+	teleport_path.push_back(src_loc);
+	teleport_path.push_back(vacant_dst);
+	unit_display::move_unit(teleport_path, u, animate);
+	
+	resources::units->move(src_loc, vacant_dst);
+	unit::clear_status_caches();
+
+	u = &*resources::units->find(vacant_dst);
+	u->anim_comp().set_standing();
+
+	if ( clear_shroud ) {
+		// Now that the unit is visibly in position, clear the shroud.
+		clearer.clear_unit(vacant_dst, *u);
+	}
+
+	if (resources::gameboard->map().is_village(vacant_dst)) {
+		actions::get_village(vacant_dst, u->side());
+	}
+
+	resources::screen->invalidate_unit_after_move(src_loc, vacant_dst);
+	resources::screen->draw();
+
+	// Sighted events.
+	clearer.fire_events();
+	return 0;
 }
 
 // END CALLBACK IMPLEMENTATION
