@@ -35,6 +35,9 @@
 #include <sstream>
 #include <utility>
 
+#include <boost/optional.hpp>
+#include <boost/foreach.hpp>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define LOG_G LOG_STREAM(info, lg::general)
@@ -284,21 +287,58 @@ std::string gamemap::write() const
 		<< "\n";
 	return s.str();
 }
+namespace
+{
+	struct overlay_rule
+	{
+		t_translation::t_list old_;
+		t_translation::t_list new_;
+		terrain_type_data::tmerge_mode mode_;
+		boost::optional<t_translation::t_terrain> terrain_;
+		bool use_old_;
+		bool replace_if_failed_;
 
+		overlay_rule()
+			: old_()
+			, new_()
+			, mode_(terrain_type_data::BOTH)
+			, terrain_()
+			, use_old_(false)
+			, replace_if_failed_(false)
+		{
+
+		}
+	};
+}
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
 {
-	const config::const_child_itors &rules = rules_cfg.child_range("rule");
+	//const config::const_child_itors &rules = rules_cfg.child_range("rule");
+	std::vector<overlay_rule> rules(rules_cfg.child_count("rule"));
+	for(size_t i = 0; i <rules.size(); ++i)
+	{
+		const config& cfg = rules_cfg.child("rule", i);
+		rules[i].old_ = t_translation::read_list(cfg["old"]);
+		rules[i].new_ = t_translation::read_list(cfg["new"]);
+		rules[i].mode_ = cfg["layer"] == "base" ? terrain_type_data::BASE : cfg["layer"] == "overlay" ? terrain_type_data::OVERLAY : terrain_type_data::BOTH;
+		const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
+		if(!terrain.empty()) {
+			rules[i].terrain_ = terrain[0];
+		}
+		rules[i].use_old_ = cfg["use_old"].to_bool();
+		rules[i].replace_if_failed_ = cfg["replace_if_failed"].to_bool();
+	}
+	
 	int actual_border = (m.border_size() == border_size()) && border ? border_size() : 0;
 
 	const int xstart = std::max<int>(-actual_border, -xpos - actual_border);
 	const int ystart = std::max<int>(-actual_border, -ypos - actual_border - ((xpos & 1) ? 1 : 0));
 	const int xend = std::min<int>(m.w() + actual_border, w() + actual_border - xpos);
 	const int yend = std::min<int>(m.h() + actual_border, h() + actual_border - ypos);
+
 	for(int x1 = xstart; x1 < xend; ++x1) {
 		for(int y1 = ystart; y1 < yend; ++y1) {
 			const int x2 = x1 + xpos;
-			const int y2 = y1 + ypos +
-				((xpos & 1) && (x1 & 1) ? 1 : 0);
+			const int y2 = y1 + ypos + ((xpos & 1) && (x1 & 1) ? 1 : 0);
 
 			const t_translation::t_terrain t = m[x1][y1 + m.border_size_];
 			const t_translation::t_terrain current = (*this)[x2][y2 + border_size_];
@@ -308,51 +348,24 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 
 			// See if there is a matching rule
-			config::const_child_iterator rule = rules.first;
-			for( ; rule != rules.second; ++rule)
+			const overlay_rule* rule = NULL;
+			BOOST_FOREACH(const overlay_rule& current_rule, rules)
 			{
-				static const std::string src_key = "old", dst_key = "new";
-				const config &cfg = *rule;
-				const t_translation::t_list& src = t_translation::read_list(cfg[src_key]);
-
-				if(!src.empty() && t_translation::terrain_matches(current, src) == false) {
+				if(!current_rule.old_.empty() && !t_translation::terrain_matches(current, current_rule.old_)) {
 					continue;
 				}
-
-				const t_translation::t_list& dst = t_translation::read_list(cfg[dst_key]);
-
-				if(!dst.empty() && t_translation::terrain_matches(t, dst) == false) {
+				if(!current_rule.new_.empty() && !t_translation::terrain_matches(t, current_rule.new_)) {
 					continue;
 				}
-
+				rule = &current_rule;
 				break;
 			}
 
-
-			if (rule != rules.second)
-			{
-				const config &cfg = *rule;
-				const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
-
-				terrain_type_data::tmerge_mode mode = terrain_type_data::BOTH;
-				if (cfg["layer"] == "base") {
-					mode = terrain_type_data::BASE;
-				}
-				else if (cfg["layer"] == "overlay") {
-					mode = terrain_type_data::OVERLAY;
-				}
-
-				t_translation::t_terrain new_terrain = t;
-				if(!terrain.empty()) {
-					new_terrain = terrain[0];
-				}
-
-				if (!cfg["use_old"].to_bool()) {
-					set_terrain(map_location(x2, y2), new_terrain, mode, cfg["replace_if_failed"].to_bool());
-				}
-
-			} else {
-				set_terrain(map_location(x2,y2),t);
+			if (rule && !rule->use_old_) {
+				set_terrain(map_location(x2, y2), rule->terrain_ ? *rule->terrain_ : t , rule->mode_, rule->replace_if_failed_);
+			}
+			else {
+				set_terrain(map_location(x2,y2), t);
 			}
 		}
 	}
