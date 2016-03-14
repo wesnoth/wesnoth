@@ -157,8 +157,6 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 {
 	config temp_cfg(cfg);
 	temp_cfg["side"] = team_.side();
-	temp_cfg.remove_attribute("player_id");
-	temp_cfg.remove_attribute("faction_from_recruit");
 
 	const std::string& id =(cfg)["id"];
 	bool animate = temp_cfg["animate"].to_bool();

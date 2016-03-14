@@ -67,7 +67,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("suppress_end_turn_confirmation")
 	("team_name")("user_team_name")("side_name")("village_gold")("village_support")("is_local")
 	// Multiplayer attributes.
-	("action_bonus_count")("allow_changes")("allow_player")("color_lock")
+	("player_id")("action_bonus_count")("allow_changes")("allow_player")("color_lock")
 	("countdown_time")("disallow_observers")("faction")
 	("faction_from_recruit")("faction_name")("gold_lock")("income_lock")
 	("leader")("random_leader")("team_lock")("terrain_liked")
