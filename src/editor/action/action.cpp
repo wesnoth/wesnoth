@@ -223,7 +223,7 @@ editor_action_starting_position* editor_action_starting_position::clone() const
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
 	util::unique_ptr<editor_action> undo;
-	int old_player = mc.get_map().is_starting_position(loc_) + 1;
+	int old_player = mc.get_map().is_starting_position(loc_);
 	map_location old_loc = mc.get_map().starting_position(player_);
 	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
 	if (old_player != -1) {
@@ -244,9 +244,9 @@ editor_action* editor_action_starting_position::perform(map_context& mc) const
 }
 void editor_action_starting_position::perform_without_undo(map_context& mc) const
 {
-	int old_player = mc.get_map().is_starting_position(loc_);
+	int old_player = mc.get_map().is_starting_position(loc_) - 1;
 	if (old_player != -1) {
-		mc.get_map().set_starting_position(old_player, map_location());
+		mc.get_map().set_starting_position(old_player - 1, map_location());
 	}
 	mc.get_map().set_starting_position(player_, loc_);
 	mc.set_needs_labels_reset();

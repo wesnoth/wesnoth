@@ -37,6 +37,7 @@
 
 #include <boost/optional.hpp>
 #include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -158,8 +159,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 	border_size_ = border_size;
 	tiles_.clear();
 	villages_.clear();
-	std::fill(startingPositions_, startingPositions_ +
-		sizeof(startingPositions_) / sizeof(*startingPositions_), map_location());
+	starting_positions_.clear();
 	std::map<int, t_translation::coordinate> starting_positions;
 
 	if(data.empty()) {
@@ -184,26 +184,26 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 	}
 
 	// Convert the starting positions to the array
-	std::map<int, t_translation::coordinate>::const_iterator itor =
-		starting_positions.begin();
-
-	for(; itor != starting_positions.end(); ++itor) {
-
+	int max_stating_pos = 0;
+	FOREACH(const AUTO& pair, starting_positions) {
 		// Check for valid position,
 		// the first valid position is 1,
 		// so the offset 0 in the array is never used.
-		if(itor->first < 1 || itor->first >= MAX_PLAYERS+1) {
+		if(pair.first < 1 || pair.first >= MAX_PLAYERS+1) {
 			std::stringstream ss;
-			ss << "Starting position " << itor->first << " out of range\n";
+			ss << "Starting position " << pair.first << " out of range\n";
 			ERR_CF << ss.str();
 			ss << "The map cannot be loaded.";
 			throw incorrect_map_format_error(ss.str().c_str());
 		}
 
 		// Add to the starting position array
-		startingPositions_[itor->first] = map_location(itor->second.x - 1, itor->second.y - 1);
+		max_stating_pos = std::max<int>(max_stating_pos, pair.first);
 	}
-
+	starting_positions_.resize(max_stating_pos);
+	FOREACH(const AUTO& pair, starting_positions) {
+		starting_positions_[pair.first - 1] =  map_location(pair.second.x - border_size_, pair.second.y - border_size_);
+	}
 	// Post processing on the map
 	total_width_ = tiles_.size();
 	total_height_ = total_width_ > 0 ? tiles_[0].size() : 0;
@@ -272,13 +272,14 @@ std::string gamemap::write() const
 {
 	// Convert the starting positions to a map
 	std::map<int, t_translation::coordinate> starting_positions;
-	for (int i = 0; i < MAX_PLAYERS + 1; ++i)
-	{
-		if (!on_board(startingPositions_[i])) continue;
-		t_translation::coordinate position(
-				  startingPositions_[i].x + border_size_
-				, startingPositions_[i].y + border_size_);
-		starting_positions[i] = position;
+	
+	for(int i = 0, size = starting_positions_.size(); i < size; ++i) {
+		if(on_board(starting_positions_[i])) {
+			starting_positions[i + 1] = t_translation::coordinate(
+				starting_positions[i].x + border_size_,
+				starting_positions[i].y + border_size_
+			);
+		}	
 	}
 
 	// Let the low level converter do the conversion
@@ -369,14 +370,13 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 		}
 	}
-
-	for(const map_location* pos = m.startingPositions_;
-			pos != m.startingPositions_ + sizeof(m.startingPositions_)/sizeof(*m.startingPositions_);
-			++pos) {
-
-		if(pos->valid()) {
-			startingPositions_[pos - m.startingPositions_] = *pos;
-		}
+	if (m.starting_positions_ > starting_positions_) {
+		starting_positions_.resize(m.starting_positions_.size());
+	}
+	for(int i = 0, size = m.starting_positions_.size(); i < size; ++i) {
+		if(m.starting_positions_[i].valid()) {
+			starting_positions_[i] = m.starting_positions_[i];
+		}	
 	}
 }
 
@@ -450,8 +450,9 @@ t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
 
 const map_location& gamemap::starting_position(int n) const
 {
-	if(size_t(n) < sizeof(startingPositions_)/sizeof(*startingPositions_)) {
-		return startingPositions_[n];
+	size_t index = n - 1;
+	if(index < starting_positions_.size()) {
+		return starting_positions_[index];
 	} else {
 		static const map_location null_loc;
 		return null_loc;
@@ -462,25 +463,29 @@ int gamemap::num_valid_starting_positions() const
 {
 	const int res = is_starting_position(map_location());
 	if(res == -1)
-		return num_starting_positions()-1;
+		return num_starting_positions();
 	else
 		return res;
 }
 
 int gamemap::is_starting_position(const map_location& loc) const
 {
-	const map_location* const beg = startingPositions_+1;
-	const map_location* const end = startingPositions_+num_starting_positions();
-	const map_location* const pos = std::find(beg,end,loc);
+	std::vector<map_location>::const_iterator pos = std::find(starting_positions_.begin(), starting_positions_.end(), loc);
 
-	return pos == end ? -1 : pos - beg;
+	return pos == starting_positions_.end() ? 0 : pos - starting_positions_.begin() + 1;
 }
 
 void gamemap::set_starting_position(int side, const map_location& loc)
 {
-	if(side >= 0 && side < num_starting_positions()) {
-		startingPositions_[side] = loc;
+	int index = side - 1;
+
+	if(index < 0) {
+		return;
 	}
+	if(index >= int(starting_positions_.size())) {
+		starting_positions_.resize(index + 1);
+	}
+	starting_positions_[index] = loc;
 }
 
 bool gamemap::on_board(const map_location& loc) const

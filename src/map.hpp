@@ -133,6 +133,7 @@ public:
 
 	/** Manipulate starting positions of the different sides. */
 	const map_location& starting_position(int side) const;
+	/// returns the side number of the side starting at position loc, 0 if no such side exists.
 	int is_starting_position(const map_location& loc) const;
 	int num_valid_starting_positions() const;
 
@@ -206,7 +207,7 @@ protected:
 	 * The size of the starting positions array is MAX_PLAYERS + 1,
 	 * because the positions themselves are numbered from 1.
 	 */
-	map_location startingPositions_[MAX_PLAYERS+1];
+	std::vector<map_location> starting_positions_;
 
 	/**
 	 * Clears the border cache, needed for the editor
@@ -223,7 +224,7 @@ private:
 	int read_header(const std::string& data);
 
 	int num_starting_positions() const
-		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
+		{ return starting_positions_.size(); }
 
 	/** Allows lookup of terrain at a particular location. */
 	//const t_translation::t_list operator[](int index) const

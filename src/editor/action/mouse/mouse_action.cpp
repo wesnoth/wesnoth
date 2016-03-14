@@ -107,7 +107,7 @@ editor_action* mouse_action::key_event(
 	|| event.key.keysym.sym == SDLK_DELETE) {
 		int res = event.key.keysym.sym - '0';
 		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
-		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_) + 1;
+		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_);
 		if (res == 0 && player_starting_at_hex != -1) {
 			a = new editor_action_starting_position(map_location(), player_starting_at_hex);
 		} else if (res > 0 && res != player_starting_at_hex) {
@@ -399,8 +399,7 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 		return NULL;
 	}
 
-	const unsigned player_starting_at_hex =
-		static_cast<unsigned>(disp.map().is_starting_position(hex) + 1); // 1st player = 1
+	const unsigned player_starting_at_hex = disp.map().is_starting_position(hex);
 
 	std::vector<map_location> starting_positions;
 
@@ -439,7 +438,7 @@ editor_action* mouse_action_starting_position::click_left(editor_display& /*disp
 editor_action* mouse_action_starting_position::up_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
+	int player_starting_at_hex = disp.map().is_starting_position(hex);
 	if (player_starting_at_hex != -1) {
 		return new editor_action_starting_position(map_location(), player_starting_at_hex);
 	} else {

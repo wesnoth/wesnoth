@@ -151,10 +151,10 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 	std::set<map_location> label_locs;
 	std::string label = _("Player");
 	label += " ";
-	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
-		if (startingPositions_[i].valid()) {
-			disp.labels().set_label(startingPositions_[i], label + lexical_cast<std::string>(i));
-			label_locs.insert(startingPositions_[i]);
+	for (int i = 0, size = starting_positions_.size(); i < size; ++i) {
+		if (starting_positions_[i].valid()) {
+			disp.labels().set_label(starting_positions_[i], label + lexical_cast<std::string>(i + 1));
+			label_locs.insert(starting_positions_[i]);
 		}
 	}
 	return label_locs;
@@ -253,10 +253,10 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 
 	// fix the starting positions
 	if(x_offset || y_offset) {
-		for(size_t i = 0; i < MAX_PLAYERS+1; ++i) {
-			if(startingPositions_[i] != map_location()) {
-				startingPositions_[i].x -= x_offset;
-				startingPositions_[i].y -= y_offset;
+		for(size_t i = 0; i < starting_positions_.size(); ++i) {
+			if(starting_positions_[i] != map_location()) {
+				starting_positions_[i].x -= x_offset;
+				starting_positions_[i].y -= y_offset;
 			}
 		}
 	}
