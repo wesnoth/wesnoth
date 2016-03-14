@@ -754,15 +754,17 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
 				y = luaL_checkinteger(L, -1) - 1;
 			}
 		} else if(lua_isstring(L, 1)) {
-			// Forward to wesnoth.get_units and return the first result
-			luaW_getglobal(L, "wesnoth", "get_units", NULL);
-			lua_newtable(L);
-			lua_pushstring(L, "id");
-			lua_pushvalue(L, 1);
-			lua_rawset(L, -3);
-			lua_call(L, 1, 1);
-			lua_rawgeti(L, -1, 1);
-			return 1;
+			std::string id = luaL_checkstring(L, 1);
+			BOOST_FOREACH(const unit& u, units()) {
+				if(u.id() == id) {
+					new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
+					lua_pushlightuserdata(L, getunitKey);
+					lua_rawget(L, LUA_REGISTRYINDEX);
+					lua_setmetatable(L, -2);
+					return 1;
+				}
+			}
+			return 0;
 		} else {
 			return luaL_argerror(L, 1, "expected string, location table, or integer");
 		}
