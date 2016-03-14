@@ -104,7 +104,7 @@ teditor_resize_map::teditor_resize_map(int& width,
 	register_label("old_height", false, str_cast(height));
 }
 
-void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
+void teditor_resize_map::pre_show(twindow& window)
 {
 	tslider& height = find_widget<tslider>(&window, "height", false);
 	connect_signal_notify_modified(

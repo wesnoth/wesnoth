@@ -50,7 +50,7 @@ tlobby_player_info::~tlobby_player_info()
 {
 }
 
-void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)
+void tlobby_player_info::pre_show(twindow& window)
 {
 	relation_ = find_widget<tlabel>(&window, "relation_info", false, true);
 	connect_signal_mouse_left_click(

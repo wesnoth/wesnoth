@@ -57,7 +57,7 @@ ttheme_list::ttheme_list(const std::vector<theme_info>& themes, int selection)
 {
 }
 
-void ttheme_list::pre_show(CVideo& /*video*/, twindow& window)
+void ttheme_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
 	window.keyboard_capture(&list);

@@ -369,11 +369,9 @@ private:
 	 * At this point the registered fields are registered and initialized with
 	 * their initial values.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(CVideo& video, twindow& window);
+	virtual void pre_show(twindow& window);
 
 	/**
 	 * Actions to be taken after the window has been shown.

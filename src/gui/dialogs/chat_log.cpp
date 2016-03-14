@@ -346,7 +346,7 @@ public:
 	{
 	}
 
-	void pre_show(CVideo& /*video*/, twindow& window)
+	void pre_show(twindow& window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::pre_show" << std::endl;
 		controller_.update_view_from_model(true);
@@ -448,11 +448,11 @@ twindow* tchat_log::build_window(CVideo& video)
 	return build(video, window_id());
 }
 
-void tchat_log::pre_show(CVideo& video, twindow& window)
+void tchat_log::pre_show(twindow& window)
 {
 	LOG_CHAT_LOG << "Entering tchat_log::pre_show" << std::endl;
 	view_->bind(window);
-	view_->pre_show(video, window);
+	view_->pre_show(window);
 	LOG_CHAT_LOG << "Exiting tchat_log::pre_show" << std::endl;
 }
 

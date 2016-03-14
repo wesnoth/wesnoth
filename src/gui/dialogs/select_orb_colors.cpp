@@ -41,7 +41,7 @@ tselect_orb_colors::tselect_orb_colors()
 {
 }
 
-void tselect_orb_colors::pre_show(CVideo&, twindow& window)
+void tselect_orb_colors::pre_show(twindow& window)
 {
 	setup_orb_group("unmoved", show_unmoved_, preferences::unmoved_color(), window);
 	setup_orb_group("partial", show_partial_, preferences::partial_color(), window);

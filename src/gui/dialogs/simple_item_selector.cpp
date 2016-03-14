@@ -79,7 +79,7 @@ tsimple_item_selector::tsimple_item_selector(const std::string& title,
 	register_label("message", true, message, message_uses_markup);
 }
 
-void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
+void tsimple_item_selector::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);

@@ -84,7 +84,7 @@ tmp_login::tmp_login(const std::string& label, const bool focus_password)
 				  &preferences::set_remember_password);
 }
 
-void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
+void tmp_login::pre_show(twindow& window)
 {
 	if(tbutton* button
 	   = find_widget<tbutton>(&window, "password_reminder", false, false)) {

@@ -105,7 +105,7 @@ tgame_load::tgame_load(const config& cache_config)
 {
 }
 
-void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
+void tgame_load::pre_show(twindow& window)
 {
 	assert(txtFilter_);
 

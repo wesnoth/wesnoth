@@ -257,7 +257,7 @@ debug_tooltip(twindow& window, bool& handled, const tpoint& coordinate)
 }
 #endif
 
-void ttitle_screen::pre_show(CVideo& video, twindow& window)
+void ttitle_screen::pre_show(twindow& window)
 {
 	set_restore(false);
 	window.set_click_dismiss(false);
@@ -343,7 +343,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	tbutton& about = find_widget<tbutton>(&window, "about", false);
 	connect_signal_mouse_left_click(
 			about,
-			boost::bind(&tgame_version::display, boost::ref(video)));
+			boost::bind(&tgame_version::display, boost::ref(window.video())));
 
 	/***** Set the clock button. *****/
 	tbutton& clock = find_widget<tbutton>(&window, "clock", false);
@@ -354,7 +354,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 			clock,
 			boost::bind(&ttitle_screen::show_debug_clock_window,
 						this,
-						boost::ref(video)));
+						boost::ref(window.video())));
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)

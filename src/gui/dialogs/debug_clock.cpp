@@ -76,7 +76,7 @@ namespace gui2
 
 REGISTER_DIALOG(debug_clock)
 
-void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
+void tdebug_clock::pre_show(twindow& window)
 {
 	hour_percentage_ = find_widget<tprogress_bar>(
 			&window, "hour_percentage", false, false);

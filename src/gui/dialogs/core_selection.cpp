@@ -83,7 +83,7 @@ void tcore_selection::core_selected(twindow& window)
 	multi_page.select_page(selected_row);
 }
 
-void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
+void tcore_selection::pre_show(twindow& window)
 {
 	/***** Setup core list. *****/
 	tlistbox& list = find_widget<tlistbox>(&window, "core_list", false);

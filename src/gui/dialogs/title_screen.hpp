@@ -89,7 +89,7 @@ private:
 	virtual void post_build(CVideo& video, twindow& window);
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Holds the debug clock dialog. */
 	tpopup* debug_clock_;

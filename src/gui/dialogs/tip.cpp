@@ -101,10 +101,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tpopup. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 };
 
-void ttip::pre_show(CVideo& /*video*/, twindow& window)
+void ttip::pre_show(twindow& window)
 {
 	find_widget<tcontrol>(&window, "label", false).set_label(message_);
 

@@ -55,7 +55,7 @@ namespace gui2
 
 REGISTER_DIALOG(addon_uninstall_list)
 
-void taddon_uninstall_list::pre_show(CVideo& /*video*/, twindow& window)
+void taddon_uninstall_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
 	window.keyboard_capture(&list);

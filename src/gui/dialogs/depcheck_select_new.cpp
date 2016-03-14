@@ -87,7 +87,7 @@ tdepcheck_select_new::tdepcheck_select_new(
 	register_label("message", false, message);
 }
 
-void tdepcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
+void tdepcheck_select_new::pre_show(twindow& window)
 {
 	tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
 

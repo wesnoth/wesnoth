@@ -79,7 +79,7 @@ tscreenshot_notification::tscreenshot_notification(const std::string& path)
 				   false);
 }
 
-void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
+void tscreenshot_notification::pre_show(twindow& window)
 {
 	ttext_box& path_box = find_widget<ttext_box>(&window, "path", false);
 	path_box.set_value(filesystem::base_name(path_));

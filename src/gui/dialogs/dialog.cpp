@@ -47,7 +47,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 
 	init_fields(*window);
 
-	pre_show(video, *window);
+	pre_show(*window);
 
 	retval_ = window->show(restore_, auto_close_time);
 
@@ -179,7 +179,7 @@ void tdialog::post_build(CVideo& /*video*/, twindow& /*window*/)
 	/* DO NOTHING */
 }
 
-void tdialog::pre_show(CVideo& /*video*/, twindow& /*window*/)
+void tdialog::pre_show(twindow& /*window*/)
 {
 	/* DO NOTHING */
 }

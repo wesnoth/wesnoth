@@ -73,7 +73,7 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 	}
 }
 
-void tlabel_settings::pre_show(CVideo& /*video*/, twindow& window) {
+void tlabel_settings::pre_show(twindow& window) {
 	std::map<std::string, string_map> list_data;
 	tlistbox& cats_listbox = find_widget<tlistbox>(&window, "label_types", false);
 	FOREACH(const AUTO & label_entry, all_labels) {

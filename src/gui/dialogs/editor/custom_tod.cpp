@@ -249,7 +249,7 @@ void tcustom_tod::update_selected_tod_info(twindow& window)
 	window.invalidate_layout();
 }
 
-void tcustom_tod::pre_show(CVideo& /*video*/, twindow& window)
+void tcustom_tod::pre_show(twindow& window)
 {
 	assert(!tods_.empty());
 	current_tod_name_

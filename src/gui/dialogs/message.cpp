@@ -63,7 +63,7 @@ struct tmessage_implementation
 	}
 };
 
-void tmessage::pre_show(CVideo& /*video*/, twindow& window)
+void tmessage::pre_show(twindow& window)
 {
 	// ***** Validate the required buttons ***** ***** ***** *****
 	tmessage_implementation::init_button(window, buttons_[left_1], "left_side");

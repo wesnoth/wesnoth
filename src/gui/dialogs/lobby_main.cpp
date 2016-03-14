@@ -906,7 +906,7 @@ void tlobby_main::update_selected_game()
 	player_list_dirty_ = true;
 }
 
-void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
+void tlobby_main::pre_show(twindow& window)
 {
 	SCOPE_LB;
 	roomlistbox_ = find_widget<tlistbox>(&window, "room_list", false, true);

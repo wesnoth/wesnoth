@@ -267,7 +267,7 @@ void tunit_attack::damage_calc_callback(twindow& window)
 	predition_dialog.button_pressed(selection);
 }
 
-void tunit_attack::pre_show(CVideo& /*video*/, twindow& window)
+void tunit_attack::pre_show(twindow& window)
 {
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "attacker_profile", false),

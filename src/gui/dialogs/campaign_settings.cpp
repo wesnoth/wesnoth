@@ -149,7 +149,7 @@ void tcampaign_settings::update_lists(twindow& window)
 	}
 }
 
-void tcampaign_settings::pre_show(CVideo&, twindow& window)
+void tcampaign_settings::pre_show(twindow& window)
 {
 	find_widget<ttoggle_button>(&window, "mp_connect", false).set_value(
 		engine_.get_state().mp_settings().show_connect);

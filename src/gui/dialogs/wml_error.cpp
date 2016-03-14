@@ -201,7 +201,7 @@ twml_error::twml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void twml_error::pre_show(CVideo& /*video*/, twindow& window)
+void twml_error::pre_show(twindow& window)
 {
 	if(!have_files_) {
 		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);

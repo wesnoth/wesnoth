@@ -47,7 +47,7 @@ namespace {
 	}
 }
 
-void tdrop_down_list::pre_show(CVideo& /*video*/, twindow& window)
+void tdrop_down_list::pre_show(twindow& window)
 {
 	window.set_variable("button_x", variant(button_pos_.x));
 	window.set_variable("button_y", variant(button_pos_.y));

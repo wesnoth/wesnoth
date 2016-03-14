@@ -37,7 +37,7 @@ public:
 	twindow* build_window(CVideo& video);
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	boost::shared_ptr<view> get_view();
 

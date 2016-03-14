@@ -366,7 +366,7 @@ void taddon_description::copy_url_callback()
 	desktop::clipboard::copy_to_clipboard(feedback_url_, false);
 }
 
-void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
+void taddon_description::pre_show(twindow& window)
 {
 	tcontrol& url_none = find_widget<tcontrol>(&window, "url_none", false);
 	tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);

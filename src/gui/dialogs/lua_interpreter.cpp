@@ -660,7 +660,7 @@ twindow* tlua_interpreter::build_window(CVideo& video)
 }
 
 /** Bind the controller, initialize one of the static labels with info about this kernel, and update the view. */
-void tlua_interpreter::pre_show(CVideo& /*video*/, twindow& window)
+void tlua_interpreter::pre_show(twindow& window)
 {
 	LOG_LUA << "Entering tlua_interpreter::view::pre_show" << std::endl;
 	register_text("text_entry", false, controller_->text_entry_, true);

@@ -103,7 +103,7 @@ void teditor_generate_map::select_map_generator(map_generator* mg)
 	last_map_generator_ = mg;
 }
 
-void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
+void teditor_generate_map::pre_show(twindow& window)
 {
 	assert(!map_generators_.empty());
 

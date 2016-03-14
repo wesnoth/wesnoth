@@ -115,7 +115,7 @@ private:
 	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(CVideo& video, twindow& window);
+	virtual void pre_show(twindow& window);
 };
 
 } // namespace gui2

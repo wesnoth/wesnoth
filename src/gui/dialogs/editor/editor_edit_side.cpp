@@ -86,7 +86,7 @@ teditor_edit_side::teditor_edit_side(int side,
 	register_bool("hidden", true, hidden);
 }
 
-void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
+void teditor_edit_side::pre_show(twindow& window)
 {
 	register_radio_toggle<team::CONTROLLER>("controller_human", controller_group, team::CONTROLLER::HUMAN, controller_, window);
 	register_radio_toggle<team::CONTROLLER>("controller_ai",    controller_group, team::CONTROLLER::AI,    controller_, window);

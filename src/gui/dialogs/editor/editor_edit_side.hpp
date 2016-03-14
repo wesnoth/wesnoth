@@ -73,7 +73,7 @@ public:
 	}
 
 private:
-	void pre_show(CVideo& /*video*/, twindow& window);
+	void pre_show(twindow& window);
 	void post_show(twindow& window);
 
 	template <typename T>

@@ -55,7 +55,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Callback for generator list selection changes. */
 	void do_generator_selected(twindow& window);

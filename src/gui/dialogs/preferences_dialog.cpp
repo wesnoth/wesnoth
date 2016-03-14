@@ -1113,7 +1113,7 @@ static int index_in_pager_range(const int& first, const tstacked_widget& pager)
 	return std::min<int>(std::max(0, first), pager.get_layer_count() - 1);
 }
 
-void tpreferences::pre_show(CVideo& /*video*/, twindow& window)
+void tpreferences::pre_show(twindow& window)
 {
 	tlistbox& selector = find_widget<tlistbox>(&window, "selector", false);
 	tstacked_widget& pager = find_widget<tstacked_widget>(&window, "pager", false);

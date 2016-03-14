@@ -59,7 +59,7 @@ namespace gui2
 
 REGISTER_DIALOG(language_selection)
 
-void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
+void tlanguage_selection::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "language_list", false);
 	window.keyboard_capture(&list);

@@ -58,7 +58,7 @@ tdata_manage::tdata_manage()
 {
 }
 
-void tdata_manage::pre_show(CVideo& /*video*/, twindow& window)
+void tdata_manage::pre_show(twindow& window)
 {
 	assert(txtFilter_);
 

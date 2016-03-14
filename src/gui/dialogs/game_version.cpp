@@ -124,7 +124,7 @@ tgame_version::tgame_version()
 	generate_plain_text_report();
 }
 
-void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
+void tgame_version::pre_show(twindow& window)
 {
 	string_map i18n_syms;
 

@@ -124,7 +124,7 @@ tmp_alerts_options::tmp_alerts_options()
 {
 }
 
-void tmp_alerts_options::pre_show(CVideo& /*video*/, twindow& window)
+void tmp_alerts_options::pre_show(twindow& window)
 {
 	BOOST_FOREACH(const std::string & i, mp_ui_alerts::items) {
 		setup_item(i, window);

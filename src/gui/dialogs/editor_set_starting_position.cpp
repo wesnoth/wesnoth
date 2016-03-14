@@ -76,7 +76,7 @@ teditor_set_starting_position::teditor_set_starting_position(
 	}
 }
 
-void teditor_set_starting_position::pre_show(CVideo& /*video*/, twindow& window)
+void teditor_set_starting_position::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);

@@ -57,7 +57,7 @@ static std::string can_afford_unit(const std::string& text, const bool can_affor
 	return can_afford ? text : "<span color='#ff0000'>" + text + "</span>";
 }
 
-void tunit_recruit::pre_show(CVideo& /*video*/, twindow& window)
+void tunit_recruit::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "recruit_list", false);
 

@@ -65,7 +65,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	bool compare_type(unsigned i1, unsigned i2) const;
 	bool compare_race(unsigned i1, unsigned i2) const;

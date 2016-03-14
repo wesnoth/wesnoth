@@ -77,7 +77,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
@@ -85,7 +85,7 @@ private:
 
 REGISTER_DIALOG(mp_server_list)
 
-void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
+void tmp_server_list::pre_show(twindow& window)
 {
 	set_restore(true);
 
@@ -172,7 +172,7 @@ tmp_connect::tmp_connect()
 	set_restore(true);
 }
 
-void tmp_connect::pre_show(CVideo& video, twindow& window)
+void tmp_connect::pre_show(twindow& window)
 {
 	assert(host_name_);
 
@@ -181,7 +181,7 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 
 		connect_signal_mouse_left_click(*button,
 										boost::bind(show_server_list,
-													boost::ref(video),
+													boost::ref(window.video()),
 													boost::ref(window),
 													host_name_));
 	}

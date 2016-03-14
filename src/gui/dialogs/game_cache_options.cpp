@@ -82,7 +82,7 @@ tgame_cache_options::tgame_cache_options()
 {
 }
 
-void tgame_cache_options::pre_show(CVideo& video, twindow& window)
+void tgame_cache_options::pre_show(twindow& window)
 {
 	clean_button_ = &find_widget<tbutton>(&window, "clean", false);
 	purge_button_ = &find_widget<tbutton>(&window, "purge", false);
@@ -111,12 +111,12 @@ void tgame_cache_options::pre_show(CVideo& video, twindow& window)
 	connect_signal_mouse_left_click(*clean_button_,
 									boost::bind(&tgame_cache_options::clean_cache_callback,
 												this,
-												boost::ref(video)));
+												boost::ref(window.video())));
 
 	connect_signal_mouse_left_click(*purge_button_,
 									boost::bind(&tgame_cache_options::purge_cache_callback,
 												this,
-												boost::ref(video)));
+												boost::ref(window.video())));
 }
 
 void tgame_cache_options::post_show(twindow& /*window*/)

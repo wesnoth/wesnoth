@@ -120,7 +120,7 @@ void tcampaign_selection::show_settings(CVideo& video) {
 	settings_dlg.show(video);
 }
 
-void tcampaign_selection::pre_show(CVideo& video, twindow& window)
+void tcampaign_selection::pre_show(twindow& window)
 {
 	if(new_widgets || true) {
 		/***** Setup campaign tree. *****/
@@ -273,7 +273,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 			find_widget<tbutton>(&window, "advanced_settings", false, false);
 	if(advanced_settings_button) {
 		advanced_settings_button->connect_click_handler(
-			boost::bind(&tcampaign_selection::show_settings, this, boost::ref(video)));
+			boost::bind(&tcampaign_selection::show_settings, this, boost::ref(window.video())));
 	}
 }
 

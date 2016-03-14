@@ -40,7 +40,7 @@ ttransient_message::ttransient_message(const std::string& title,
 	register_image("image", true, image);
 }
 
-void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
+void ttransient_message::pre_show(twindow& window)
 {
 	if(hide_title_) {
 		twidget& title = find_widget<twidget>(&window, "title", false);

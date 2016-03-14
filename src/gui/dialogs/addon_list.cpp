@@ -375,7 +375,7 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 	return colorify_addon_state_string(s, state);
 }
 
-void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
+void taddon_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
 

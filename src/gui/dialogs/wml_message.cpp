@@ -59,7 +59,7 @@ void twml_message_::set_option_list(const std::vector<twml_message_option>& opti
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
+void twml_message_::pre_show(twindow& window)
 {
 	set_restore(true);
 

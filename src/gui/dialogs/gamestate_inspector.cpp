@@ -754,7 +754,7 @@ public:
 	{
 	}
 
-	void pre_show(CVideo& /*video*/, twindow& /*window*/)
+	void pre_show(twindow& /*window*/)
 	{
 		controller_.show_stuff_types_list();
 		controller_.update_view_from_model();
@@ -858,10 +858,10 @@ boost::shared_ptr<tgamestate_inspector::view> tgamestate_inspector::get_view()
 	return view_;
 }
 
-void tgamestate_inspector::pre_show(CVideo& video, twindow& window)
+void tgamestate_inspector::pre_show(twindow& window)
 {
 	view_->bind(window);
-	view_->pre_show(video, window);
+	view_->pre_show(window);
 }
 
 } // end of namespace gui2

@@ -80,7 +80,7 @@ tadvanced_graphics_options::tadvanced_graphics_options()
 {
 }
 
-void tadvanced_graphics_options::pre_show(CVideo& /*video*/, twindow& window)
+void tadvanced_graphics_options::pre_show(twindow& window)
 {
 	BOOST_FOREACH(const std::string & i, scale_cases) {
 		setup_scale_case(i, window);
