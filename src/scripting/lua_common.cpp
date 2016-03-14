@@ -753,7 +753,7 @@ bool luaW_toboolean(lua_State *L, int n)
 	return lua_toboolean(L,n) != 0;
 }
 
-bool LuaW_pushvariable(lua_State *L, variable_access_const& v)
+bool luaW_pushvariable(lua_State *L, variable_access_const& v)
 {
 	try
 	{
@@ -781,7 +781,7 @@ bool LuaW_pushvariable(lua_State *L, variable_access_const& v)
 	}
 }
 
-bool LuaW_checkvariable(lua_State *L, variable_access_create& v, int n)
+bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 {
 	int variabletype = lua_type(L, n);
 	try

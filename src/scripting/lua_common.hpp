@@ -124,9 +124,9 @@ bool luaW_getglobal(lua_State *L, ...);
 bool luaW_toboolean(lua_State *L, int n);
 
 
-bool LuaW_pushvariable(lua_State *L, variable_access_const& v);
+bool luaW_pushvariable(lua_State *L, variable_access_const& v);
 
-bool LuaW_checkvariable(lua_State *L, variable_access_create& v, int n);
+bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 
 
 #define return_tstring_attrib(name, accessor) \

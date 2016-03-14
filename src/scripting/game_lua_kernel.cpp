@@ -505,7 +505,7 @@ static int impl_unit_variables_get(lua_State *L)
 	return_cfgref_attrib("__cfg", u->variables());
 
 	variable_access_const v(m, u->variables());
-	return LuaW_pushvariable(L, v) ? 1 : 0;
+	return luaW_pushvariable(L, v) ? 1 : 0;
 }
 /**
  * Gets the attacks of a unit (__index metamethod).
@@ -703,7 +703,7 @@ static int impl_unit_variables_set(lua_State *L)
 		return 0;
 	}
 	variable_access_create v(m, u->variables());
-	LuaW_checkvariable(L, v, 3);
+	luaW_checkvariable(L, v, 3);
 	return 0;
 }
 
@@ -1019,7 +1019,7 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	variable_access_const v = gamedata().get_variable_access_read(m);
-	return LuaW_pushvariable(L, v) ? 1 : 0;
+	return luaW_pushvariable(L, v) ? 1 : 0;
 }
 
 /**
@@ -1037,7 +1037,7 @@ int game_lua_kernel::intf_get_side_variable(lua_State *L)
 	}
 	char const *m = luaL_checkstring(L, 1);
 	variable_access_const v(m, teams()[side_index].variables());
-	return LuaW_pushvariable(L, v) ? 1 : 0;
+	return luaW_pushvariable(L, v) ? 1 : 0;
 }
 
 /**
@@ -1055,7 +1055,7 @@ int game_lua_kernel::intf_set_side_variable(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	//TODO: maybe support removing values with an empty arg3.
 	variable_access_create v(m, teams()[side_index].variables());
-	LuaW_checkvariable(L, v, 2);
+	luaW_checkvariable(L, v, 2);
 	return 0;
 }
 
@@ -1073,7 +1073,7 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 		return 0;
 	}
 	variable_access_create v = gamedata().get_variable_access_write(m);
-	LuaW_checkvariable(L, v, 2);
+	luaW_checkvariable(L, v, 2);
 	return 0;
 }
 
