@@ -4751,7 +4751,7 @@ int game_lua_kernel::cfun_wml_action(lua_State *L)
 		(lua_touserdata(L, lua_upvalueindex(1)));
 
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	h(get_event_info(), vcfg);
+	h(vcfg);
 	return 0;
 }
 

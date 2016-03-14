@@ -48,7 +48,7 @@ namespace game_events
 
 	class wml_action {
 	public:
-		typedef void (*handler)(const queued_event &, const vconfig &);
+		typedef void (*handler)(const vconfig &);
 		typedef std::map<std::string, handler> map;
 
 		/// Using this constructor for a static object outside action_wml.cpp

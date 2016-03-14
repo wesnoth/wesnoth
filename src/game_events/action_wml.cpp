@@ -310,21 +310,21 @@ wml_action::wml_action(const std::string & tag, handler function)
  * }
  * \endcode
  */
-#define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
-	static void wml_func_##pname(const queued_event &pei, const vconfig &pcfg); \
+#define WML_HANDLER_FUNCTION(pname, pcfg) \
+	static void wml_func_##pname(const vconfig &pcfg); \
 	static wml_action wml_action_##pname(#pname, &wml_func_##pname);  \
-	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
+	static void wml_func_##pname(const vconfig& pcfg)
 
 
 /// Experimental data persistence
 /// @todo Finish experimenting.
-WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
+WML_HANDLER_FUNCTION(clear_global_variable,pcfg)
 {
 	if (!resources::controller->is_replay())
 		verify_and_clear_global_variable(pcfg);
 }
 
-WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(deprecated_message, cfg)
 {
 	handle_deprecated_message( cfg.get_parsed_config() );
 }
@@ -337,7 +337,7 @@ static void on_replay_error(const std::string& message, bool /*b*/)
 
 // This tag exposes part of the code path used to handle [command]'s in replays
 // This allows to perform scripting in WML that will use the same code path as player actions, for example.
-WML_HANDLER_FUNCTION(do_command, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(do_command, cfg)
 {
 	// Doing this in a whiteboard applied context will cause bugs
 	// Note that even though game_events::pump() will always apply the real unit map
@@ -380,17 +380,17 @@ WML_HANDLER_FUNCTION(do_command, /*event_info*/, cfg)
 
 /// Experimental data persistence
 /// @todo Finish experimenting.
-WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)
+WML_HANDLER_FUNCTION(get_global_variable, pcfg)
 {
 	verify_and_get_global_variable(pcfg);
 }
 
-WML_HANDLER_FUNCTION(lift_fog, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(lift_fog, cfg)
 {
 	toggle_fog(true, cfg, !cfg["multiturn"].to_bool(false));
 }
 
-WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(modify_turns, cfg)
 {
 	config::attribute_value value = cfg["value"];
 	std::string add = cfg["add"];
@@ -417,7 +417,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 
 /// Moving a 'unit' - i.e. a dummy unit
 /// that is just moving for the visual effect
-WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(move_unit_fake, cfg)
 {
 	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
@@ -438,7 +438,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(move_units_fake, cfg)
 {
 	LOG_NG << "Processing [move_units_fake]\n";
 
@@ -491,7 +491,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 }
 
 /// If we should recall units that match a certain description.
-WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(recall, cfg)
 {
 	LOG_NG << "recalling unit...\n";
 	config temp_config(cfg.get_config());
@@ -573,7 +573,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	LOG_WML << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
-WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(remove_sound_source, cfg)
 {
 	resources::soundsources->remove(cfg["id"]);
 }
@@ -618,7 +618,7 @@ namespace {
 }
 /// Experimental map replace
 /// @todo Finish experimenting.
-WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(replace_map, cfg)
 {
 	/*
 	 * When a hex changes from a village terrain to a non-village terrain, and
@@ -676,20 +676,20 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	ai::manager::raise_map_changed();
 }
 
-WML_HANDLER_FUNCTION(reset_fog, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(reset_fog, cfg)
 {
 	toggle_fog(false, cfg, cfg["reset_view"].to_bool(false));
 }
 
 /// Experimental data persistence
 /// @todo Finish experimenting.
-WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
+WML_HANDLER_FUNCTION(set_global_variable, pcfg)
 {
 	if (!resources::controller->is_replay())
 		verify_and_set_global_variable(pcfg);
 }
 
-WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(set_variable, cfg)
 {
 	game_data *gameinfo = resources::gamedata;
 	const std::string name = cfg["name"];
@@ -927,7 +927,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(set_variables, cfg)
 {
 	const t_string& name = cfg["name"];
 	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
@@ -1029,7 +1029,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(sound_source, cfg)
 {
 	config parsed = cfg.get_parsed_config();
 	try {
@@ -1045,7 +1045,7 @@ WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 /// Store the relative direction from one hex to another in a WML variable.
 /// This is mainly useful as a diagnostic tool, but could be useful
 /// for some kind of scenario.
-WML_HANDLER_FUNCTION(store_relative_direction, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(store_relative_direction, cfg)
 {
 	if (!cfg.child("source")) {
 		WRN_NG << "No source in [store_relative_direction]" << std::endl;
@@ -1081,7 +1081,7 @@ WML_HANDLER_FUNCTION(store_relative_direction, /*event_info*/, cfg)
 /// In increments of 60 degrees, clockwise.
 /// This is mainly useful as a diagnostic tool, but could be useful
 /// for some kind of scenario.
-WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(store_rotate_map_location, cfg)
 {
 	if (!cfg.child("source")) {
 		WRN_NG << "No source in [store_rotate_map_location]" << std::endl;
@@ -1118,7 +1118,7 @@ WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 /// Store time of day config in a WML variable. This is useful for those who
 /// are too lazy to calculate the corresponding time of day for a given turn,
 /// or if the turn / time-of-day sequence mutates in a scenario.
-WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(store_time_of_day, cfg)
 {
 	const map_location loc = cfg_to_loc(cfg);
 	int turn = cfg["turn"];
@@ -1141,7 +1141,7 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 }
 
 /// Creating a mask of the terrain
-WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(terrain_mask, cfg)
 {
 	map_location loc = cfg_to_loc(cfg, 1, 1);
 
@@ -1172,7 +1172,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	resources::screen->needs_rebuild(true);
 }
 
-WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(tunnel, cfg)
 {
 	const bool remove = cfg["remove"].to_bool(false);
 	if (remove) {
@@ -1197,7 +1197,7 @@ WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 }
 
 /// If we should spawn a new unit on the map somewhere
-WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(unit, cfg)
 {
 	config parsed_cfg = cfg.get_parsed_config();
 
@@ -1246,7 +1246,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 
 }
 
-WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(volume, cfg)
 {
 
 	int vol;
@@ -1274,17 +1274,17 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 
 }
 
-WML_HANDLER_FUNCTION(wml_message, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(wml_message, cfg)
 {
 	handle_wml_log_message( cfg.get_parsed_config() );
 }
 
-WML_HANDLER_FUNCTION(on_undo, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(on_undo, cfg)
 {
 	synced_context::add_undo_commands(cfg.get_parsed_config());
 }
 
-WML_HANDLER_FUNCTION(on_redo, /*event_info*/, cfg)
+WML_HANDLER_FUNCTION(on_redo, cfg)
 {
 	synced_context::add_redo_commands(cfg.get_parsed_config());
 }
