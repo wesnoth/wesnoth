@@ -2339,7 +2339,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		} else {
-			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
+			//WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
 	}
 	else if (!lua_isnoneornil(L, unit_arg))
