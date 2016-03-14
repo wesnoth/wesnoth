@@ -299,6 +299,10 @@ wml_actions["if"] = function(cfg)
 end
 
 wml_actions["while"] = function( cfg )
+	if helper.child_count(cfg, "do") == 0 then
+		helper.wml_error "[while] does not contain any [do] tags"
+	end
+	
 	-- execute [do] up to 65536 times
 	for i = 1, 65536 do
 		if wesnoth.eval_conditional( cfg ) then
@@ -331,6 +335,10 @@ function wml_actions.continue(cfg)
 end
 
 wesnoth.wml_actions["for"] = function(cfg)
+	if helper.child_count(cfg, "do") == 0 then
+		helper.wml_error "[for] does not contain any [do] tags"
+	end
+	
 	local loop_lim = {}
 	local first
 	if cfg.array ~= nil then
@@ -398,6 +406,10 @@ wesnoth.wml_actions["for"] = function(cfg)
 end
 
 wml_actions["repeat"] = function(cfg)
+	if helper.child_count(cfg, "do") == 0 then
+		helper.wml_error "[repeat] does not contain any [do] tags"
+	end
+	
 	local times = cfg.times or 1
 	for i = 1, times do
 		for do_child in helper.child_range( cfg, "do" ) do
@@ -416,6 +428,10 @@ wml_actions["repeat"] = function(cfg)
 end
 
 function wml_actions.foreach(cfg)
+	if helper.child_count(cfg, "do") == 0 then
+		helper.wml_error "[foreach] does not contain any [do] tags"
+	end
+	
 	local array_name = cfg.variable or helper.wml_error "[foreach] missing required variable= attribute"
 	local array = helper.get_variable_array(array_name)
 	if #array == 0 then return end -- empty and scalars unwanted
