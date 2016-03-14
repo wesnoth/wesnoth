@@ -608,37 +608,35 @@ namespace { // Helpers for place_recruit()
 	}
 }// anonymous namespace
 //Used by recalls and recruits
-place_recruit_result place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
+place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
     int cost, bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
 	place_recruit_result res(false, 0, false);
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
-	unit new_unit = u;
 	if (full_movement) {
-		new_unit.set_movement(new_unit.total_movement(), true);
+		u->set_movement(u->total_movement(), true);
 	} else {
-		new_unit.set_movement(0, true);
-		new_unit.set_attacks(0);
+		u->set_movement(0, true);
+		u->set_attacks(0);
 	}
-	new_unit.heal_all();
-	new_unit.set_hidden(true);
+	u->heal_all();
+	u->set_hidden(true);
 
 	// Get the leader location before adding the unit to the board.
 	const map_location leader_loc = !show ? map_location::null_location() :
-			find_recruit_leader(new_unit.side(), recruit_location, recruited_from);
-
+			find_recruit_leader(u->side(), recruit_location, recruited_from);
+	u->set_location(recruit_location);
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result =
-			resources::units->add(recruit_location, new_unit);
+	std::pair<unit_map::iterator, bool> add_result = resources::units->insert(u);
 	assert(add_result.second);
 	unit_map::iterator & new_unit_itor = add_result.first;
 	map_location current_loc = recruit_location;
 
-	set_recruit_facing(new_unit_itor, new_unit, recruit_location, leader_loc);
+	set_recruit_facing(new_unit_itor, *u, recruit_location, leader_loc);
 
 	// Do some bookkeeping.
-	recruit_checksums(new_unit, wml_triggered);
+	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
 	resources::game_events->pump().fire("unit placed", current_loc);
@@ -654,7 +652,7 @@ place_recruit_result place_recruit(const unit &u, const map_location &recruit_lo
 		new_unit_itor->set_hidden(true);
 	}
 	preferences::encountered_units().insert(new_unit_itor->type_id());
-	(*resources::teams)[new_unit.side()-1].spend_gold(cost);
+	(*resources::teams)[u->side()-1].spend_gold(cost);
 
 	if ( show ) {
 		unit_display::unit_recruited(current_loc, leader_loc);
@@ -706,7 +704,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 
 	// Place the recruit.
-	place_recruit_result res = place_recruit(*new_unit, loc, from, u_type.cost(), false, show);
+	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
 	statistics::recruit_unit(*new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
@@ -749,11 +747,11 @@ bool recall_unit(const std::string & id, team & current_team,
 	// we use the team's recall cost otherwise the unit's.
 	place_recruit_result res;
 	if (recall->recall_cost() < 0) {
-		res = place_recruit(*recall, loc, from, current_team.recall_cost(),
+		res = place_recruit(recall, loc, from, current_team.recall_cost(),
 	                             true, show);
 	}
 	else {
-		res = place_recruit(*recall, loc, from, recall->recall_cost(),
+		res = place_recruit(recall, loc, from, recall->recall_cost(),
 	                             true, show);
 	}
 	statistics::recall_unit(*recall);

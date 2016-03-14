@@ -149,7 +149,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
  * @returns true if an event (or fog clearing) has mutated the game state.
  */
 typedef boost::tuple<bool /*event modified*/, int /*previous village owner side*/, bool /*capture bonus time*/> place_recruit_result;
-place_recruit_result place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
+place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
 	int cost, bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
 	bool wml_triggered = false);
 
