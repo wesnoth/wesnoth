@@ -50,9 +50,14 @@ void luaW_pushvconfig(lua_State *L, vconfig const &cfg);
 void luaW_pushtstring(lua_State *L, t_string const &v);
 
 /**
- * Converts a string into a Lua object pushed at the top of the stack.
+ * Converts an attribute value into a Lua object pushed at the top of the stack.
  */
 void luaW_pushscalar(lua_State *L, config::attribute_value const &v);
+
+/**
+ * Converts the value at the top of the stack to an attribute value
+ */
+bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v);
 
 
 /**

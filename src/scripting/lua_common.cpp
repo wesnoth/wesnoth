@@ -495,6 +495,33 @@ void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
 	v.apply_visitor(luaW_pushscalar_visitor(L));
 }
 
+bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v)
+{
+	switch (lua_type(L, index)) {
+		case LUA_TBOOLEAN:
+			v = luaW_toboolean(L, -1);
+			break;
+		case LUA_TNUMBER:
+			v = lua_tonumber(L, -1);
+			break;
+		case LUA_TSTRING:
+			v = lua_tostring(L, -1);
+			break;
+		case LUA_TUSERDATA:
+		{
+			if (t_string * tptr = static_cast<t_string *>(luaL_testudata(L, -1, tstringKey))) {
+				v = *tptr;
+				break;
+			} else {
+				return false;
+			}
+		}
+		default:
+			return false;
+	}
+	return true;
+}
+
 bool luaW_hasmetatable(lua_State *L
 		, int index
 		, luatypekey key)
@@ -626,28 +653,22 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 		if (lua_isnumber(L, -2)) continue;
 		if (!lua_isstring(L, -2)) return_misformed();
 		config::attribute_value &v = cfg[lua_tostring(L, -2)];
-		switch (lua_type(L, -1)) {
-			case LUA_TBOOLEAN:
-				v = luaW_toboolean(L, -1);
-				break;
-			case LUA_TNUMBER:
-				v = lua_tonumber(L, -1);
-				break;
-			case LUA_TSTRING:
-				v = lua_tostring(L, -1);
-				break;
-			case LUA_TUSERDATA:
-			{
-				if (t_string * tptr = static_cast<t_string *>(luaL_testudata(L, -1, tstringKey))) {
-					v = *tptr;
-					break;
-				} else {
-					return_misformed();
-				}
+		if (lua_istable(L, -1)) {
+			int subindex = lua_absindex(L, -1);
+			std::ostringstream str;
+			for (int i = 1, i_end = lua_rawlen(L, subindex); i <= i_end; ++i, lua_pop(L, 1)) {
+				lua_rawgeti(L, -1, i);
+				config::attribute_value item;
+				if (!luaW_toscalar(L, -1, item)) return_misformed();
+				if (i > 1) str << ',';
+				str << item;
 			}
-			default:
-				return_misformed();
-		}
+			// If there are any string keys, it's misformed
+			for (lua_pushnil(L); lua_next(L, subindex); lua_pop(L, 1)) {
+				if (!lua_isnumber(L, -2)) return_misformed();
+			}
+			v = str.str();
+		} else if (!luaW_toscalar(L, -1, v)) return_misformed();
 	}
 
 	lua_settop(L, initial_top);
