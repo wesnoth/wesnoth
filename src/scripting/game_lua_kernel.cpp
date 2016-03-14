@@ -2275,13 +2275,16 @@ int game_lua_kernel::intf_print(lua_State *L) {
  * Places a unit on the map.
  * - Args 1,2: (optional) location.
  * - Arg 3: Unit (WML table or proxy), or nothing/nil to delete.
+ * - Args 4: (optional) boolean
  * OR
  * - Arg 1: Unit (WML table or proxy)
  * - Args 2,3: (optional) location
+ * - Args 4: (optional) boolean
  */
 int game_lua_kernel::intf_put_unit(lua_State *L)
 {
 	int unit_arg = 1;
+	int fire_event_arg = 4;
 
 	lua_unit *lu = NULL;
 	unit_ptr u = unit_ptr();
@@ -2299,6 +2302,8 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		if (!map().on_board(loc)) {
 			return luaL_argerror(L, 1, "invalid location");
 		}
+	} else {
+		fire_event_arg = 2;
 	}
 
 	if (luaW_hasmetatable(L, unit_arg, getunitKey))
@@ -2351,9 +2356,9 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		u->set_location(loc);
 		units().insert(u);
 	}
-
-	play_controller_.pump().fire("unit placed", loc);
-
+	if(luaW_toboolean(L, fire_event_arg)) {
+		play_controller_.pump().fire("unit placed", loc);
+	}
 	return 0;
 }
 
@@ -2516,10 +2521,14 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 	map_location loc;
 	loc.x = luaL_checkinteger(L, 1) - 1;
 	loc.y = luaL_checkinteger(L, 2) - 1;
+	SDL_Color color = font::LABEL_COLOR;
 
 	t_string text = luaW_checktstring(L, 3);
+	if (!lua_isnoneornil(L, 4)) {
+		color = string_to_color(luaW_checktstring(L, 4));
+	}
 	if (game_display_) {
-		game_display_->float_label(loc, text, font::LABEL_COLOR);
+		game_display_->float_label(loc, text, color);
 	}
 	return 0;
 }

@@ -1709,3 +1709,46 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	utils.end_var_scope(variable, variable_previous)
 
 end
+
+local function on_board(x, y)
+	if type(x) ~= "number" or type(y) ~= "number" then
+		return false
+	end
+	local w, h = wesnoth.get_map_size()
+	return x >= 1 and y >= 1 and x <= w and y <= h
+end
+
+wml_actions.unstore_unit = function(cfg)
+	local variable = cfg.variable or helper.wml_error("[unstore_unit] missing required 'variable' attribute")
+	local unit_cfg = wesnoth.get_variable(variable)
+	local unit = wesnoth.create_unit(unit_cfg)
+	local advance = cfg.advance ~= false
+	local animate = cfg.animate ~= false
+	local x = cfg.x or unit.x or -1
+	local y = cfg.y or unit.y or -1
+	wesnoth.add_known_unit(unit.type)
+	if on_board(x, y) then
+		if cfg.find_vacant then
+			x,y = wesnoth.find_vacant_tile(x, y, cfg.check_passability ~= false and unit)
+		end
+		unit:to_map(x, y, cfg.fire_event)
+		local text = nil
+		if unit_cfg.gender == "female" then
+			text = cfg.female_text or cfg.text
+		else
+			text = cfg.male_text or cfg.text				
+		end
+		local color = cfg.color
+		if color == nil and cfg.red and cfg.blue and cfg.green then
+			color = cfg.red .. "," .. cfg.green .. "," .. cfg.blue
+		end
+		if text ~= nil and not wesnoth.is_skipping_messages() then
+			wesnoth.float_label(x, y, text, color)
+		end
+		if advance then
+			wesnoth.advance_unit(unit, animate, cfg.fire_event)
+		end
+	else
+		unit:to_recall()
+	end
+end
