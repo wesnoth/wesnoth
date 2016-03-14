@@ -340,8 +340,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			const int x2 = x1 + xpos;
 			const int y2 = y1 + ypos + ((xpos & 1) && (x1 & 1) ? 1 : 0);
 
-			const t_translation::t_terrain t = m[x1][y1 + m.border_size_];
-			const t_translation::t_terrain current = (*this)[x2][y2 + border_size_];
+			const t_translation::t_terrain t = m.tiles_[x1 + m.border_size_][y1 + m.border_size_];
+			const t_translation::t_terrain current = tiles_[x2 + border_size_][y2 + border_size_];
 
 			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
 				continue;
@@ -545,7 +545,7 @@ const std::map<t_translation::t_terrain, size_t>& gamemap::get_weighted_terrain_
 	for(size_t i = 0; i != size_t(w()); ++i) {
 		for(size_t j = 0; j != size_t(h()); ++j) {
 			const size_t distance = distance_between(map_location(i,j),center);
-			terrainFrequencyCache_[(*this)[i][j]] += weight_at_edge +
+			terrainFrequencyCache_[tiles_[i + border_size_][j]] += weight_at_edge +
 			    (furthest_distance-distance)*additional_weight_at_center;
 		}
 	}

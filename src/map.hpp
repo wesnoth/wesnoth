@@ -226,8 +226,8 @@ private:
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 
 	/** Allows lookup of terrain at a particular location. */
-	const t_translation::t_list operator[](int index) const
-		{ return tiles_[index + border_size_]; }
+	//const t_translation::t_list operator[](int index) const
+	//	{ return tiles_[index + border_size_]; }
 
 
 	tdata_cache tdata_;
