@@ -228,6 +228,12 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 			continue;
 		}
 		aspect_cfg.merge_children("default");
+		config& dflt = aspect_cfg.child("default");
+		if (dflt.has_child("value")) {
+			while (dflt.child_count("value") > 1) {
+				dflt.remove_child("value", 0);
+			}
+		}
 	}
 
 	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
