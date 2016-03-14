@@ -455,8 +455,8 @@ function wml_actions.foreach(cfg)
 	::exit::
 	
 	-- house cleaning
-	utils.end_var_scope(item_name)
-	utils.end_var_scope(i)
+	utils.end_var_scope(item_name, this_item)
+	utils.end_var_scope(i_name, i)
 	
 	--[[
 		This forces the readonly key to be taken literally.
