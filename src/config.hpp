@@ -406,6 +406,9 @@ public:
 	const_child_itors child_range(const std::string& key) const;
 	unsigned child_count(const std::string &key) const;
 	unsigned all_children_count() const;
+	/** Note: this function also counts the 'blank' attributes, so it might return more than one might expect */
+	unsigned attribute_count() const
+	{ return values.size(); }
 
 	/**
 	 * Determine whether a config has a child or not.

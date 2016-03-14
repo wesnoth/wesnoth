@@ -77,10 +77,14 @@ public:
 	virtual bool matches(const unit & /*u*/, const map_location & /*loc*/, const unit *) const {
 		return true;
 	}
-	virtual std::vector<const unit *> all_matches_on_map() const {
+	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches) const {
 		std::vector<const unit *> ret;
 		BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
+			--max_matches;
 			ret.push_back(&u);
+			if(max_matches == 0) {
+				return ret;
+			}
 		}
 		return ret;
 	}
@@ -153,7 +157,7 @@ public:
 	}
 
 	virtual bool matches(const unit & u, const map_location & loc, const unit * u2) const;
-	virtual std::vector<const unit *> all_matches_on_map() const;
+	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches) const;
 	virtual unit_const_ptr first_match_on_map() const;
 
 	virtual ~basic_unit_filter_impl() {}
@@ -174,7 +178,10 @@ private:
 
 static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
 {
-	if (vcfg.null()) {
+	if (vcfg.empty()) {
+		return boost::make_shared<null_unit_filter_impl> (fc);
+	}
+	if (vcfg.get_config().attribute_count() == 1 && vcfg.get_config().all_children_count() == 0 && vcfg.has_attribute("limit")) {
 		return boost::make_shared<null_unit_filter_impl> (fc);
 	}
 	return boost::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
@@ -185,7 +192,11 @@ static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vc
  *  unit_filter::unit_filter acts as a factory, selecting the appropriate implementation class
  */
 unit_filter::unit_filter(const vconfig & vcfg, const filter_context * fc, bool flat_tod)
+	: max_matches_(static_cast<unsigned>(-1))
 {
+	if(vcfg) {
+		max_matches_ = vcfg["limit"].to_unsigned(max_matches_);
+	}
 	if (!fc) {
 		assert(false && "attempt to instantiate a unit filter with a null filter context!");
 	}
@@ -539,10 +550,14 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	return true;
 }
 
-std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map() const {
+std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map(unsigned max_matches) const {
 	std::vector<const unit *> ret;
 	BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
 		if (matches(u, u.get_location(), NULL)) {
+			if(max_matches == 0) {
+				return ret;
+			}
+			--max_matches;
 			ret.push_back(&u);
 		}
 	}
