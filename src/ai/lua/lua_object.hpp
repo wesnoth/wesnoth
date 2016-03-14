@@ -137,7 +137,10 @@ inline boost::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua
 {
 	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
 	boost::shared_ptr<vconfig> vcfg = boost::shared_ptr<vconfig>(new vconfig(*cfg));
-	luaW_tovconfig(L, n, *vcfg);
+	if (!luaW_tovconfig(L, n, *vcfg)) {
+		cfg->add_child("not");
+	}
+	vcfg->make_safe();
 	boost::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con));
 	return tf;
 }
