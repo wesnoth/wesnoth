@@ -808,7 +808,11 @@ void trectangle::draw(surface& canvas,
 
 	if(fill_color_) {
 
-		sdl::draw_solid_tinted_rectangle(x, y, w, h,
+		sdl::draw_solid_tinted_rectangle(
+			(x +  border_thickness_),
+			(y +  border_thickness_),
+			(w - (border_thickness_ * 2)),
+			(h - (border_thickness_ * 2)),
 			(fill_color_ & 0xFF000000) >> 24,
 			(fill_color_ & 0x00FF0000) >> 16,
 			(fill_color_ & 0x0000FF00) >> 8,
