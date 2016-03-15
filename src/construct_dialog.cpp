@@ -362,6 +362,8 @@ void dialog::draw_contents()
 		}
 	}
 	events::raise_draw_event(); //draw widgets
+
+	video_.flip();
 }
 
 dialog_frame& dialog::get_frame()
