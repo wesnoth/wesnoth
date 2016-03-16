@@ -2,6 +2,25 @@ Version 1.13.4+dev:
  * Language and i18n:
    * Updated translations:
  * Removed support for SDL 1.2. SDL 2 is now the only supported version.
+ * WML engine:
+   * Fix some issues with [foreach]
+   * Fix some issues with backstab-like weapon specials
+ * Lua API:
+   * wesnoth.match_unit can now take a location (rather than a unit) as
+     the optional third parameter. This will cause the filter to consider
+     the unit to be on that location instead of its actual location.
+     This even works for units on a recall list.
+   * wesnoth.highlight_hex is no longer deprecated, but its effect is
+     slightly different from the old one. It outlines a hex, nothing more.
+   * wesnoth.select_hex is now deprecated in favour of the new
+     wesnoth.select_unit (or u:select_unit). The effect is almost the same
+     (with the exception that it does not outline the hex if true is
+     passed as the second argument), but this name change was done to
+     emphasize that it acts on a unit, more than a location.
+   * WML tables defined in Lua now accept string keys with array values
+     (where "array" is a table whose keys are all integers). This joins
+     the elements of the array with commas and produces a single string
+     value. eg {x = {1,2,3}} is equivalent to {x = "1,2,3"}.
 
 Version 1.13.4:
  * Language and i18n:
