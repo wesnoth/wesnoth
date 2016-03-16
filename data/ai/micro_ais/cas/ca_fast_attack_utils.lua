@@ -19,24 +19,13 @@ function ca_fast_attack_utils.get_avoid_map(cfg)
     -- Get map of locations to be avoided.
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
     -- If neither is given, return an empty location set.
-    -- Note that ai.get_avoid() cannot be used as it always returns an array,
-    -- even when the aspect is not set, and an empty array could also mean that
-    -- no hexes match the filter
 
     local avoid_tag
 
     if cfg.avoid then
         avoid_tag = cfg.avoid
     else
-        local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
-        for aspect in H.child_range(ai_tag, 'aspect') do
-            if (aspect.id == 'avoid') then
-                local facet = H.get_child(aspect, 'facet')
-                if facet then
-                    avoid_tag = H.get_child(facet, 'value')
-                end
-            end
-        end
+        return LS.of_pairs(ai.aspects.avoid)
     end
 
     if avoid_tag then
