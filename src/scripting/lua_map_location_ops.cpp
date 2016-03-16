@@ -13,6 +13,7 @@
 */
 
 #include "lua_map_location_ops.hpp"
+#include "lua_common.hpp"
 
 #include "map_location.hpp"
 #include "util.hpp"
@@ -24,49 +25,30 @@
 #include "lua/lua.h"
 #include "lua/lauxlib.h"
 
-/**
- * Helper function which gets a map location from the stack. Handles lua (1-based) to C++ (0-based) conversion.
- * Expected: stack has at least two elements, top is y, next is x.
- */
-static map_location pop_map_location(lua_State* L)
-{
-	if (lua_gettop(L) < 2) {
-		luaL_error(L, "pop_map_location: expected to find a map location on the stack, but stack has less than two elements");
-		return map_location();
-	}
-	int y = luaL_checkint(L, -1);
-	int x = luaL_checkint(L, -2);
-	lua_pop(L, 2);
-
-	return map_location(x-1, y-1);
-}
-
-/**
- * Helper function which pushes a map location onto the stack. Handles lua (1-based) to C++ (0-based) conversion.
- */
-static void push_map_location(lua_State* L, const map_location & loc)
-{
-	lua_pushinteger(L, loc.x+1);
-	lua_pushinteger(L, loc.y+1);
-}
-
 namespace lua_map_location {
 
 /**
  * Expose map_location::get_direction function to lua
+ * Arg 1: a location
+ * Arg 2: a direction
+ * Arg 3: number of steps
  */
 int intf_get_direction(lua_State* L)
 {
+	map_location l;
+	if(!luaW_tolocation(L, 1, l)) {
+		return luaL_argerror(L, 1, "get_direction: first argument(S) must be a location");
+	}
 	int nargs = lua_gettop(L);
-	if (nargs != 3 and nargs != 4) {
-		std::string msg("get_direction: must pass 3 or 4 args, found ");
+	if (nargs != 2 and nargs != 3) {
+		std::string msg("get_direction: must pass 2 or 3 args, found ");
 		msg += str_cast(nargs);
 		luaL_error(L, msg.c_str());
 		return 0;
 	}
 
 	int n = 1;
-	if (nargs == 4) {
+	if (nargs == 3) {
 		n = luaL_checkint(L, -1);
 		lua_pop(L,1);
 	}
@@ -79,17 +61,14 @@ int intf_get_direction(lua_State* L)
 		d = map_location::parse_direction(luaL_checkstring(L,-1));
 		lua_pop(L,1);
 	} else {
-		std::string msg("get_direction: third argument should be a direction, either a string or an integer, instead found a ");
+		std::string msg("get_direction: second argument should be a direction, either a string or an integer, instead found a ");
 		msg += lua_typename(L, lua_type(L, -1));
-		luaL_argerror(L, -1, msg.c_str());
-		return 0;
+		return luaL_argerror(L, -1, msg.c_str());
 	}
 
-	map_location l = pop_map_location(L);
 	map_location result = l.get_direction(d, n);
-
-	push_map_location(L, result);
-	return 2;
+	luaW_pushlocation(L, result);
+	return 1;
 }
 
 /**
@@ -97,11 +76,14 @@ int intf_get_direction(lua_State* L)
  */
 int intf_vector_sum(lua_State* L)
 {
-	map_location l2 = pop_map_location(L);
-	map_location l1 = pop_map_location(L);
+	map_location l1, l2;
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+		lua_pushstring(L, "vector_sum: requires two locations");
+		return lua_error(L);
+	}
 
-	push_map_location(L, l1.vector_sum_assign(l2));
-	return 2;
+	luaW_pushlocation(L, l1.vector_sum_assign(l2));
+	return 1;
 }
 
 /**
@@ -109,10 +91,13 @@ int intf_vector_sum(lua_State* L)
  */
 int intf_vector_negation(lua_State* L)
 {
-	map_location l1 = pop_map_location(L);
+	map_location l1;
+	if(!luaW_tolocation(L, 1, l1)) {
+		return luaL_argerror(L, 1, "expected a location");
+	}
 
-	push_map_location(L, l1.vector_negation());
-	return 2;
+	luaW_pushlocation(L, l1.vector_negation());
+	return 1;
 }
 
 /**
@@ -120,8 +105,8 @@ int intf_vector_negation(lua_State* L)
  */
 int intf_vector_zero(lua_State* L)
 {
-	push_map_location(L, map_location::ZERO());
-	return 2;
+	luaW_pushlocation(L, map_location::ZERO());
+	return 1;
 }
 
 /**
@@ -131,11 +116,14 @@ int intf_rotate_right_around_center(lua_State* L)
 {
 	int k = luaL_checkint(L, -1);
 	lua_pop(L,1);
-	map_location center = pop_map_location(L);
-	map_location loc = pop_map_location(L);
+	map_location center, loc;
+	if(!luaW_tolocation(L, 1, loc) || !luaW_tolocation(L, 2, center)) {
+		lua_pushstring(L, "rotate_right_around_center: requires two locations");
+		return lua_error(L);
+	}
 
-	push_map_location(L, loc.rotate_right_around_center(center, k));
-	return 2;
+	luaW_pushlocation(L, loc.rotate_right_around_center(center, k));
+	return 1;
 }
 
 /**
@@ -143,8 +131,11 @@ int intf_rotate_right_around_center(lua_State* L)
  */
 int intf_tiles_adjacent(lua_State* L)
 {
-	map_location l2 = pop_map_location(L);
-	map_location l1 = pop_map_location(L);
+	map_location l1, l2;
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+		lua_pushstring(L, "vector_sum: requires two locations");
+		return lua_error(L);
+	}
 
 	lua_pushboolean(L, tiles_adjacent(l1,l2));
 	return 1;
@@ -155,16 +146,19 @@ int intf_tiles_adjacent(lua_State* L)
  */
 int intf_get_adjacent_tiles(lua_State* L)
 {
-	map_location l1 = pop_map_location(L);
+	map_location l1;
+	if(!luaW_tolocation(L, 1, l1)) {
+		return luaL_argerror(L, 1, "expected a location");
+	}
 
 	map_location locs[6];
 	get_adjacent_tiles(l1, locs);
 
 	for (int i = 0; i < 6; ++i) {
-		push_map_location(L, locs[i]);
+		luaW_pushlocation(L, locs[i]);
 	}
 
-	return 12;
+	return 6;
 }
 
 /**
@@ -172,8 +166,11 @@ int intf_get_adjacent_tiles(lua_State* L)
  */
 int intf_distance_between(lua_State* L)
 {
-	map_location l2 = pop_map_location(L);
-	map_location l1 = pop_map_location(L);
+	map_location l1, l2;
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+		lua_pushstring(L, "distance_between: requires two locations");
+		return lua_error(L);
+	}
 
 	lua_pushinteger(L, distance_between(l1,l2));
 	return 1;
@@ -184,7 +181,10 @@ int intf_distance_between(lua_State* L)
  */
 int intf_get_in_basis_N_NE(lua_State* L)
 {
-	map_location l1 = pop_map_location(L);
+	map_location l1;
+	if(!luaW_tolocation(L, 1, l1)) {
+		return luaL_argerror(L, 1, "expected a location");
+	}
 
 	std::pair<int, int> r = l1.get_in_basis_N_NE();
 	lua_pushinteger(L, r.first);
@@ -197,8 +197,11 @@ int intf_get_in_basis_N_NE(lua_State* L)
  */
 int intf_get_relative_dir(lua_State* L)
 {
-	map_location l2 = pop_map_location(L);
-	map_location l1 = pop_map_location(L);
+	map_location l1, l2;
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+		lua_pushstring(L, "get_relative_dir: requires two locations");
+		return lua_error(L);
+	}
 
 	lua_pushinteger(L, l1.get_relative_dir(l2));
 	return 1;

@@ -591,6 +591,76 @@ void luaW_filltable(lua_State *L, config const &cfg)
 	}
 }
 
+void luaW_pushlocation(lua_State *L, const map_location& ml)
+{
+	lua_createtable(L, 2, 0);
+	
+	lua_pushinteger(L, 1);
+	lua_pushinteger(L, ml.x + 1);
+	lua_rawset(L, -3);
+	
+	lua_pushinteger(L, 2);
+	lua_pushinteger(L, ml.y + 1);
+	lua_rawset(L, -3);
+}
+
+bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
+	if (!lua_checkstack(L, LUA_MINSTACK)) {
+		return false;
+	}
+	if (lua_isnoneornil(L, index)) {
+		// Need this special check because luaW_tovconfig returns true in this case
+		return false;
+	}
+	
+	vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
+	
+	index = lua_absindex(L, index);
+	
+	if (lua_istable(L, index) || luaW_tounit(L, index) || luaW_tovconfig(L, index, dummy_vcfg)) {
+		map_location result;
+		int x_was_num = 0, y_was_num = 0;
+		lua_getfield(L, index, "x");
+		result.x = lua_tonumberx(L, -1, &x_was_num) - 1;
+		lua_getfield(L, index, "y");
+		result.y = lua_tonumberx(L, -1, &y_was_num) - 1;
+		lua_pop(L, 2);
+		if (!x_was_num || !y_was_num) {
+			// If we get here and it was userdata, checking numeric indices won't help
+			// (It won't help if it was a config either, but there's no easy way to check that.)
+			if (lua_isuserdata(L, index)) {
+				return false;
+			}
+			lua_rawgeti(L, index, 1);
+			result.x = lua_tonumberx(L, -1, &x_was_num) - 1;
+			lua_rawgeti(L, index, 2);
+			result.y = lua_tonumberx(L, -1, &y_was_num) - 1;
+			lua_pop(L, 2);
+		}
+		if (x_was_num && y_was_num) {
+			loc = result;
+			return true;
+		}
+	} else if (lua_isnumber(L, index) && lua_isnumber(L, index + 1)) {
+		// If it's a number, then we consume two elements on the stack
+		// Since we have no way of notifying the caller that we have
+		// done this, we remove the first number from the stack.
+		loc.x = lua_tonumber(L, index) - 1;
+		lua_remove(L, index);
+		loc.y = lua_tonumber(L, index) - 1;
+		return true;
+	}
+	return false;
+}
+
+map_location luaW_checklocation(lua_State *L, int index)
+{
+	map_location result;
+	if (!luaW_tolocation(L, index, result))
+		luaL_typerror(L, index, "location");
+	return result;
+}
+
 void luaW_pushconfig(lua_State *L, config const &cfg)
 {
 	lua_newtable(L);
@@ -609,9 +679,8 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 		return false;
 
 	// Get the absolute index of the table.
+	index = lua_absindex(L, index);
 	int initial_top = lua_gettop(L);
-	if (-initial_top <= index && index <= -1)
-		index = initial_top + index + 1;
 
 	switch (lua_type(L, index))
 	{

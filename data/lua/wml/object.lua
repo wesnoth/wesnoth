@@ -35,7 +35,8 @@ function wml_actions.object(cfg)
 			wesnoth.add_modification(unit, "object", helper.parsed(cfg), add)
 		end
 
-		wesnoth.select_hex(unit.x, unit.y, false)
+		wesnoth.select_unit(unit, false)
+		wesnoth.highlight_hex(unit.x, unit.y)
 
 		-- Mark this item as used up
 		if obj_id then used_items[obj_id] = true end

@@ -24,6 +24,7 @@
 #include "core.hpp"
 #include "../../scripting/game_lua_kernel.hpp"
 #include "../../scripting/lua_api.hpp"
+#include "../../scripting/push_check.hpp"
 #include "lua_object.hpp" // (Nephro)
 
 #include "../../attack_prediction.hpp"
@@ -52,7 +53,6 @@ static char const aisKey     = 0;
 
 namespace ai {
 
-static void push_map_location(lua_State *L, const map_location& ml);
 static void push_attack_analysis(lua_State *L, attack_analysis&);
 
 void lua_ai_context::init(lua_State *L)
@@ -376,7 +376,7 @@ static int cfun_ai_get_targets(lua_State *L)
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "loc");
-		push_map_location(L, it->loc);
+		luaW_pushlocation(L, it->loc);
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "value");
@@ -425,30 +425,7 @@ static int cfun_ai_get_avoid(lua_State *L)
 	std::set<map_location> locs;
 	terrain_filter avoid = get_readonly_context(L).get_avoid();
 	avoid.get_locations(locs);
-
-	int sz = locs.size();
-	lua_createtable(L, sz, 0); // create a table that we'll use as an array
-
-	std::set<map_location>::iterator it = locs.begin();
-	for (int i = 0; it != locs.end(); ++it, ++i)
-	{
-		lua_pushinteger(L, i + 1); // Index for the map location
-
-		push_map_location(L, *it);
-
-		// Deprecated
-		//lua_createtable(L, 2, 0); // Table for a single map location
-
-		//lua_pushstring(L, "x");
-		//lua_pushinteger(L, it->x + 1);
-		//lua_settable(L, -3);
-
-		//lua_pushstring(L, "y");
-		//lua_pushinteger(L, it->y + 1);
-		//lua_settable(L, -3);
-
-		lua_settable(L, -3);
-	}
+	lua_push(L, locs);
 
 	return 1;
 }
@@ -613,11 +590,11 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 		lua_createtable(L, 2, 0); // Creating a table for a pair of map_location's
 
 		lua_pushstring(L, "src");
-		push_map_location(L, move->first);
+		luaW_pushlocation(L, move->first);
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "dst");
-		push_map_location(L, move->second);
+		luaW_pushlocation(L, move->second);
 		lua_rawset(L, -3);
 
 		lua_rawseti(L, table_index, i); // setting  the pair as an element of the movements table
@@ -646,7 +623,7 @@ static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "target");
-	push_map_location(L, aa.target);
+	luaW_pushlocation(L, aa.target);
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "target_value");
@@ -706,19 +683,6 @@ static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 	lua_rawset(L, -3);
 }
 
-static void push_map_location(lua_State *L, const map_location& ml)
-{
-	lua_createtable(L, 2, 0);
-
-	lua_pushstring(L, "x");
-	lua_pushinteger(L, ml.x + 1);
-	lua_rawset(L, -3);
-
-	lua_pushstring(L, "y");
-	lua_pushinteger(L, ml.y + 1);
-	lua_rawset(L, -3);
-}
-
 static void push_move_map(lua_State *L, const move_map& m)
 {
 	lua_createtable(L, 0, 0); // the main table
@@ -751,7 +715,7 @@ static void push_move_map(lua_State *L, const move_map& m)
 
 		while (key == it->first) {
 
-			push_map_location(L, it->second);
+			luaW_pushlocation(L, it->second);
 			lua_rawseti(L, -2, index);
 
 			++index;
