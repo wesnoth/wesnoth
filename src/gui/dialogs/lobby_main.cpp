@@ -965,12 +965,6 @@ void tlobby_main::pre_show(twindow& window)
 						boost::ref(window)));
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "send_message", false),
-			boost::bind(&tlobby_main::send_message_button_callback,
-						this,
-						boost::ref(window)));
-
-	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "create", false),
 			boost::bind(&tlobby_main::create_button_callback,
 						this,
@@ -1090,7 +1084,7 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 		utils::string_map symbols;
 		symbols["name"] = name;
 		if(whisper) {
-			add_label_data(data, "log_header", "<" + name + ">");
+			//add_label_data(data, "log_header", "<" + name + ">");
 			add_label_data(data,
 						   "log_text",
 						   VGETTEXT("Whisper session with $name started. "
@@ -1099,7 +1093,7 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 									"type /ignore $name\n",
 									symbols));
 		} else {
-			add_label_data(data, "log_header", name);
+			//add_label_data(data, "log_header", name);
 			add_label_data(
 					data, "log_text", VGETTEXT("Room $name joined", symbols));
 			lobby_info_.open_room(name);
@@ -1225,22 +1219,22 @@ void tlobby_main::switch_to_window(size_t id)
 
 void tlobby_main::active_window_changed()
 {
-	tlabel& header = find_widget<tlabel>(
-			&chat_log_container_->page_grid(active_window_),
-			"log_header",
-			false);
+	//tlabel& header = find_widget<tlabel>(
+	//		&chat_log_container_->page_grid(active_window_),
+	//		"log_header",
+	//		false);
 
 	tlobby_chat_window& t = open_windows_[active_window_];
 	std::string expected_label;
-	if(t.whisper) {
-		expected_label = "<" + t.name + ">";
-	} else {
-		expected_label = t.name;
-	}
-	if(header.label() != expected_label) {
-		ERR_LB << "Chat log header not what it should be! " << header.label()
-			   << " vs " << expected_label << "\n";
-	}
+	//if(t.whisper) {
+	//	expected_label = "<" + t.name + ">";
+	//} else {
+	//	expected_label = t.name;
+	//}
+	//if(header.label() != expected_label) {
+	//	ERR_LB << "Chat log header not what it should be! " << header.label()
+	//		   << " vs " << expected_label << "\n";
+	//}
 
 	bool close_button_active = (t.whisper || (t.name != "lobby"));
 
