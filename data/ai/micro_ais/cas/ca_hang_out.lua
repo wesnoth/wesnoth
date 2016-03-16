@@ -60,23 +60,28 @@ function ca_hang_out:execution(ai, cfg, self)
     -- If neither is given, default to all castle terrain.
     -- ai.get_avoid() cannot be used as it always returns an array, even when the aspect is not set,
     -- and an empty array could also mean that no hexes match the filter
-    local avoid_tag
+    local avoid_map
     if cfg.avoid then
-        avoid_tag = cfg.avoid
+        avoid_map = LS.of_pairs(wesnoth.get_locations(cfg.avoid))
     else
         local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
         for aspect in H.child_range(ai_tag, 'aspect') do
             if (aspect.id == 'avoid') then
                 local facet = H.get_child(aspect, 'facet')
-                if facet then
-                    avoid_tag = H.get_child(facet, 'value')
-                else
-                    avoid_tag = { terrain = 'C*,C*^*,*^C*' }
+                if facet or aspect.name ~= "composite_aspect" then
+                    -- If there's a [facet] child, it's set as a composite aspect,
+                    -- with at least one facet.
+                    -- But it might not be a composite aspect; it could be
+                    -- a Lua aspect or a standard aspect.
+                    avoid_map = LS.of_pairs(ai.aspects.avoid)
+                    break
                 end
             end
         end
     end
-    local avoid_map = LS.of_pairs(wesnoth.get_locations(avoid_tag))
+    if avoid_map == nil then
+        avoid_map = LS.of_pairs(wesnoth.get_locations { terrain = 'C*,C*^*,*^C*' })
+    end
 
     local max_rating, best_hex, best_unit = -9e99
     for _,unit in ipairs(units) do
