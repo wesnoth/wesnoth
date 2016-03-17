@@ -637,12 +637,16 @@ paths.append(os.path.normpath(MINGWPATH))          # g++
 paths.append(os.path.normpath(GTKPATH + '/bin'))   # pkg-config
 paths.append(os.path.normpath(LOOT + toolspec['nsis']['path']))  # NSIS
 
-sconspath = os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons')
-
-open(ROOT + '/compile.bat', 'wb').write("""\
+batfile = """\
 @echo off
-set PATH=%%PATH%%;%s
-python %s %%*
-""" % (os.pathsep.join(paths), sconspath))
+set PATH=%PATH%;{path}
+"{python}" {scons} %*
+""".format(
+  path=os.pathsep.join(paths),
+  python=sys.executable,
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons'),
+)
+
+open(ROOT + '/compile.bat', 'wb').write(batfile)
 
 print('Done. Run compile.bat to build Wesnoth.')
