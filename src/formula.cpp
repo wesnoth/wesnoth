@@ -453,6 +453,8 @@ public:
 			op_ = DIVL;
 		} else if(op == "..") {
 			op_ = CAT;
+		} else if(op == "in") {
+			op_ = IN;
 		}
 	}
 
@@ -489,6 +491,8 @@ private:
 			return left.list_elements_mul(right);
 		case DIVL:
 			return left.list_elements_div(right);
+		case IN:
+			return variant(right.contains(left));
 		case CAT:
 			return left.concatenate(right);
 		case EQ:
@@ -527,7 +531,7 @@ private:
 		return res;
 	}
 
-	enum OP { AND, OR, NEQ, LTE, GTE, CAT, GT='>', LT='<', EQ='=', RAN='~',
+	enum OP { AND, OR, NEQ, LTE, GTE, CAT, IN, GT='>', LT='<', EQ='=', RAN='~',
 	          ADD='+', SUB='-', MUL='*', DIV='/', ADDL, SUBL, MULL, DIVL, DICE='d', POW='^', MOD='%' };
 
 	OP op_;

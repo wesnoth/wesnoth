@@ -52,12 +52,14 @@ token get_token(iterator& i1, const iterator i2) {
 
 			//check if this string matches any keyword or an operator
 			//possible operators and keywords:
-			// d, or, def, and, not, fai, where, faiend, functions
+			// d, or, in, def, and, not, wfl, where, wflend, functions
 			if( diff == 1 ) {
 				if( *it == 'd' )
 					t = TOKEN_OPERATOR;
 			} else if( diff == 2 ) {
 				if( *it == 'o' && *(it+1) == 'r' )
+					t = TOKEN_OPERATOR;
+				else if( *it == 'i' && *(it+1) == 'n' )
 					t = TOKEN_OPERATOR;
 			} else if( diff == 3 ) {
 				if( *it == 'd' ) { //def

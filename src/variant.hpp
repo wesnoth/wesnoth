@@ -143,6 +143,7 @@ public:
 	variant list_elements_div(const variant& v) const;
 	variant concatenate(const variant& v) const;
 	variant build_range(const variant& v) const;
+	bool contains(const variant& other) const;
 
 	variant get_keys() const;
 	variant get_values() const;

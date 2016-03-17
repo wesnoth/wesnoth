@@ -1015,6 +1015,24 @@ variant variant::build_range(const variant& v) const {
 	return variant( &res );
 }
 
+bool variant::contains(const variant& v) const {
+	if(type_ != TYPE_LIST && type_ != TYPE_MAP) {
+		throw type_error((formatter() << "type error: expected "
+			<< variant_type_to_string(TYPE_LIST) << " or "
+			<< variant_type_to_string(TYPE_MAP) << " but found "
+			<< variant_type_to_string(type_)
+			<< " (" << to_debug_string() << ")").str());
+	}
+	
+	if(type_ == TYPE_LIST) {
+		variant_iterator iter = std::find(begin(), end(), v);
+		return iter != end();
+	} else {
+		std::map<variant,variant>::const_iterator iter = map_->elements.find(v);
+		return iter != map_->elements.end();
+	}
+}
+
 void variant::must_be(variant::TYPE t) const
 {
 	if(type_ != t) {
