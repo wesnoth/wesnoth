@@ -1316,6 +1316,20 @@ private:
 	}
 };
 
+class distance_between_function : public function_expression {
+public:
+	explicit distance_between_function(const args_list& args)
+	: function_expression("distance_between", args, 2, 2)
+	{}
+	
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
+		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"distance_between:location_B")))->loc();
+		return variant(distance_between(loc1, loc2));
+	}
+};
+
 
 class type_function : public function_expression {
 public:
@@ -1496,6 +1510,7 @@ functions_map& get_functions_map() {
 		FUNCTION(as_decimal);
 		FUNCTION(refcount);
 		FUNCTION(loc);
+		FUNCTION(distance_between);
 		FUNCTION(index_of);
 		FUNCTION(keys);
 		FUNCTION(values);

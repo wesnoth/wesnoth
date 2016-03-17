@@ -97,20 +97,6 @@ class unit_adapter {
 		const unit* unit_;
 };
 
-class distance_between_function : public function_expression {
-public:
-	explicit distance_between_function(const args_list& args)
-	  : function_expression("distance_between", args, 2, 2)
-	{}
-
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
-		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"distance_between:location_B")))->loc();
-		return variant(distance_between(loc1, loc2));
-	}
-};
-
 
 class distance_to_nearest_unowned_village_function : public function_expression {
 public:
@@ -1847,8 +1833,6 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new close_enemies_function(args, ai_));
 	} else if(fn == "calculate_outcome") {
 		return expression_ptr(new calculate_outcome_function(args, ai_));
-	} else if(fn == "distance_between") {
-		return expression_ptr(new distance_between_function(args));
 	} else if(fn == "run_file") {
 		return expression_ptr(new run_file_function(args, ai_));
 	} else if(fn == "calculate_map_ownership") {
