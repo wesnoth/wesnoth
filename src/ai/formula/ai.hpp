@@ -31,12 +31,14 @@
 #include "generic_event.hpp"  // for observer
 #include "pathfind/teleport.hpp"  // for teleport_map
 #include "unit_map.hpp"
-#include "variant.hpp"                  // for variant
 #include <boost/noncopyable.hpp>        // for noncopyable
 #include <set>                          // for multiset
 #include <string>                       // for string
 #include <utility>                      // for pair
 #include <vector>                       // for vector
+
+class variant;
+
 namespace ai { class ai_context; }
 namespace game_logic { struct formula_error; }
 namespace pathfind { struct plain_route; }  // lines 57-57
