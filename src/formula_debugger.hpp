@@ -81,7 +81,7 @@ public:
 	virtual ~formula_debugger();
 
 
-	void add_debug_info(int arg_number, const char *f_name);
+	void add_debug_info(int arg_number, const std::string& f_name);
 
 
 	void call_stack_push(const std::string &str);
@@ -134,7 +134,7 @@ public:
 
 	//static functions
 
-	static formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const char *f_name)
+	static formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const std::string& f_name)
 	{
 		if (fdb==NULL) {
 			return NULL;
@@ -150,7 +150,7 @@ private:
 	std::deque< breakpoint_ptr > breakpoints_;
 	std::deque<debug_info> execution_trace_;
 	int arg_number_extra_debug_info;
-	const char *f_name_extra_debug_info;
+	std::string f_name_extra_debug_info;
 
 
 };

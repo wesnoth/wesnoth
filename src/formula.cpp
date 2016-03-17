@@ -105,7 +105,7 @@ private:
 		std::vector<variant> res;
 		res.reserve(items_.size());
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); i != items_.end(); ++i) {
-			res.push_back((*i)->evaluate(variables,fdb));
+			res.push_back((*i)->evaluate(variables,add_debug_info(fdb, 0, "[list element]")));
 		}
 
 		return variant(&res);
@@ -144,6 +144,9 @@ public:
 		std::stringstream s;
 		s << " [";
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
+			if(i != items_.begin()) {
+				s << ", ";
+			}
 			s << (*i)->str();
 			s << " -> ";
 			s << (*(i+1))->str();
@@ -158,8 +161,8 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::map<variant,variant> res;
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
-			variant key = (*i)->evaluate(variables,fdb);
-			variant value = (*(i+1))->evaluate(variables,fdb);
+			variant key = (*i)->evaluate(variables,add_debug_info(fdb, 0, "key ->"));
+			variant value = (*(i+1))->evaluate(variables,add_debug_info(fdb, 1, "-> value"));
 			res[ key ] = value;
 		}
 
@@ -192,7 +195,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant res = operand_->evaluate(variables,fdb);
+		const variant res = operand_->evaluate(variables,add_debug_info(fdb, 0, op_str_ + " unary"));
 		switch(op_) {
 		case NOT:
 			return res.as_bool() ? variant(0) : variant(1);
@@ -373,7 +376,7 @@ public:
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left."));
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left ."));
 		if(!left.is_callable()) {
 			if(left.is_list()) {
 				list_callable list_call(left);
@@ -395,7 +398,7 @@ private:
 		}
 
 		dot_callable callable(variables, *left.as_callable());
-		return right_->evaluate(callable,add_debug_info(fdb,1,".right"));
+		return right_->evaluate(callable,add_debug_info(fdb,1,". right"));
 	}
 
 	expression_ptr left_, right_;
@@ -415,8 +418,8 @@ public:
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,fdb);
-		const variant key = key_->evaluate(variables,fdb);
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"base[]"));
+		const variant key = key_->evaluate(variables,add_debug_info(fdb,1,"[index]"));
 		if(left.is_list() || left.is_map()) {
 			return left[ key ];
 		} else {
@@ -461,13 +464,13 @@ public:
 	std::string str() const
 	{
 		std::stringstream s;
-		s << left_->str() << op_str_ << right_->str();
+		s << '(' << left_->str() << op_str_ << right_->str() << ')';
 		return s.str();
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left_OP"));
-		const variant right = right_->evaluate(variables,add_debug_info(fdb,1,"OP_right"));
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left " + op_str_));
+		const variant right = right_->evaluate(variables,add_debug_info(fdb,1,op_str_ + " right"));
 		switch(op_) {
 		case AND:
 			return left.as_bool() == false ? left : right;
@@ -546,11 +549,12 @@ typedef std::map<std::string, variant> exp_table_evaluated;
 class where_variables: public formula_callable {
 public:
 	where_variables(const formula_callable &base,
-			expr_table_ptr table )
+			expr_table_ptr table, formula_debugger* fdb )
 		: formula_callable(false)
 		, base_(base)
 		, table_(table)
 		, evaluated_table_()
+		, debugger_(fdb)
 	{
 	}
 
@@ -558,6 +562,7 @@ private:
 	const formula_callable& base_;
 	expr_table_ptr table_;
 	mutable exp_table_evaluated evaluated_table_;
+	formula_debugger* debugger_;
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
 		for(expr_table::const_iterator i = table_->begin(); i != table_->end(); ++i) {
@@ -572,7 +577,7 @@ private:
 			if( ev != evaluated_table_.end())
 				return ev->second;
 
-			variant v = i->second->evaluate(base_);
+			variant v = i->second->evaluate(base_, add_debug_info(debugger_, 0, "where[" + key + "]"));
 			evaluated_table_[key] = v;
 			return v;
 		}
@@ -604,8 +609,8 @@ private:
 	expr_table_ptr clauses_;
 
 	variant execute(const formula_callable& variables,formula_debugger *fdb) const {
-		where_variables wrapped_variables(variables, clauses_);
-		return body_->evaluate(wrapped_variables,fdb);
+		where_variables wrapped_variables(variables, clauses_, fdb);
+		return body_->evaluate(wrapped_variables,add_debug_info(fdb, 0, "... where"));
 	}
 };
 
@@ -729,7 +734,33 @@ public:
 
 	std::string str() const
 	{
-		return str_.as_string();
+		std::string res = str_.as_string();
+		int j = res.size() - 1;
+		for(size_t i = 0; i < subs_.size(); ++i) {
+			const substitution& sub = subs_[i];
+			for(;j >= sub.pos && j >= 0;j--) {
+				if(res[j] == '\'') {
+					res.replace(j, 1, "[']");
+				} else if(res[j] == '[') {
+					res.replace(j, 1, "[(]");
+				} else if(res[j] == ']') {
+					res.replace(j, 1, "[)]");
+				}
+			}
+			const std::string str = "[" + sub.calculation->str() + "]";
+			res.insert(sub.pos, str);
+		}
+		for(;j >= 0;j--) {
+			if(res[j] == '\'') {
+				res.replace(j, 1, "[']");
+			} else if(res[j] == '[') {
+				res.replace(j, 1, "[(]");
+			} else if(res[j] == ']') {
+				res.replace(j, 1, "[)]");
+			}
+		}
+
+		return "'" + res + "'";
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -738,7 +769,9 @@ private:
 		} else {
 			std::string res = str_.as_string();
 			for(size_t i=0; i < subs_.size(); ++i) {
+				const int j = subs_.size() - i - 1;
 				const substitution& sub = subs_[i];
+				add_debug_info(fdb, j, "[string subst]");
 				const std::string str = sub.calculation->evaluate(variables,fdb).string_cast();
 				res.insert(sub.pos, str);
 			}

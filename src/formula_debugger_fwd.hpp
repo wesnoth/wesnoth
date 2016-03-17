@@ -41,7 +41,7 @@ class base_breakpoint;
 
 typedef boost::shared_ptr<base_breakpoint> breakpoint_ptr;
 
-formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const char *f_name);
+formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const std::string& f_name);
 
 variant evaluate_arg_callback(formula_debugger &fdb, const formula_expression &expression, const formula_callable &variables);
 
