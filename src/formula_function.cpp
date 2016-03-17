@@ -113,7 +113,7 @@ private:
 class if_function : public function_expression {
 public:
 	explicit if_function(const args_list& args)
-	     : function_expression("if", args, 3, -1)
+	     : function_expression("if", args, 2, -1)
 	{}
 
 private:
