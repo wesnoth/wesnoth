@@ -76,9 +76,9 @@ filespec = [
 
   # GCC MinGW-W64 32bit, using http://qt-project.org/wiki/MinGW
   dict(
-    filename='i686-4.9.2-release-posix-dwarf-rt_v3-rev0.7z',
-    hashsize='554e272a79ea3e9e3b318055ce13eb2efe8b9558 50145107',
-    url='http://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/4.9.2/threads-posix/dwarf/i686-4.9.2-release-posix-dwarf-rt_v3-rev0.7z',
+    filename='i686-5.3.0-release-posix-dwarf-rt_v4-rev0.7z',
+    hashsize='d4f21d25f3454f8efdada50e5ad799a0a9e07c6a 43539891',
+    url='http://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/5.3.0/threads-posix/dwarf/i686-5.3.0-release-posix-dwarf-rt_v4-rev0.7z',
     check='mingw32',
     name='mingw',
   ),
@@ -471,7 +471,8 @@ http://www.boost.org/doc/libs/1_55_0/more/getting_started/windows.html#or-build-
   [x] cd ..\..\..
   [+] set PATH=%PATH%;_b2\bin
 """
-BOOSTPATH = LOOT + toolspec['boost']['path']
+BOOSTPATH = (LOOT + toolspec['boost']['path']).replace('\\', '/')
+BOOSTLIBS = BOOSTPATH + '/stage/lib'
 BZIP2PATH = LOOT + toolspec['bzip2']['path']
 toolpath = BOOSTPATH + '/_b2'
 if exists(toolpath):
@@ -609,7 +610,7 @@ GTKPATH = LOOT + toolspec['gtk']['path']
 # 
 #     mingw32/i686-w64-mingw32/lib/libstdc++-6.dll
 for name in os.listdir(MINGWPATH):
-  if 'libstd' in name:
+  if 'libstd' in name or 'libgcc' in name or 'winpthread' in name:
      print('.. ' + name)
      shutil.copyfile(MINGWPATH + '/' + name, ROOT + '/' + name)
 for name in os.listdir(GTKPATH + '/bin'):
@@ -619,17 +620,40 @@ for name in os.listdir(GTKPATH + '/bin'):
      print('.. ' + name)
      shutil.copyfile(GTKPATH + '/bin/' + name, ROOT + '/' + name)
 
+
 print('---[ write SCons params to .scons-option-cache ]---')
 # [x] create .scons-option-cache
-cachecontent  = "boostdir = '%s'\n" % BOOSTPATH.replace('\\', '/')
-cachecontent += "boostlibdir = '%s/stage/lib'\n" % BOOSTPATH.replace('\\', '/')
-boostsuffix = BOOSTPATH[-6:-2] # ...boost_1_57_0 -> 1_57
-cachecontent += "boost_suffix = '-mgw49-mt-%s'\n" % boostsuffix
-cachecontent += "gtkdir = '%s'\n" % GTKPATH.replace('\\', '/')
-cachecontent += "sdldir = '%s'\n" % SDLPATH.replace('\\', '/')
+def get_boost_suffix():
+  """return suffix that looks like -mgw49-mt-1_57, which means
+     MinGW 4.9.x, multi-threaded, boost 1.57.x
+     http://stackoverflow.com/questions/1646994/boost-lib-build-configuraton-variations
+     Needs compiled Boost.
+  """
+  boostver = BOOSTPATH[-6:-2] # ...boost_1_57_0 -> 1_57
+  for name in os.listdir(BOOSTLIBS):
+    if name.endswith('-mt-' + boostver + '.a'):
+      return name[name.rfind('-mgw'):name.rfind(',a')-1]
+
+boostinfo = dict(
+  path = BOOSTPATH,
+  libdir = BOOSTLIBS,
+  suffix = get_boost_suffix(),  # something like '-mgw49-mt-1_57'
+  gtkdir = GTKPATH.replace('\\', '/'),
+  sdldir = SDLPATH.replace('\\', '/'),
+)
+
+cachecontent = """\
+boostdir = '{path}'
+boostlibdir = '{libdir}'
+boost_suffix = '{suffix}'
+gtkdir = '{gtkdir}'
+sdldir = '{sdldir}'
+""".format(**boostinfo)
+   
 with open(os.path.join(ROOT, ".scons-option-cache"), 'w') as sconsoptcache:
   sconsoptcache.write(cachecontent)
 print(cachecontent)
+
 
 print('---[ writing compile.bat ]---')
 paths = []
