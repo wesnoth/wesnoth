@@ -20,6 +20,7 @@
 #include "formula_function.hpp"
 #include "map_utils.hpp"
 #include "random_new.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -206,6 +207,56 @@ private:
 	expression_ptr operand_;
 };
 
+class string_callable : public formula_callable {
+	variant string_;
+public:
+	explicit string_callable(const variant& string) : string_(string)
+	{}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		inputs->push_back(formula_input("size", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("empty", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("char", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("word", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("item", FORMULA_READ_ONLY));
+	}
+
+	variant get_value(const std::string& key) const {
+		if(key == "size") {
+			return variant(string_.as_string().length());
+		} else if(key == "empty") {
+			return variant(string_.as_string().empty());
+		} else if(key == "char" || key == "chars") {
+			std::vector<variant> chars;
+			BOOST_FOREACH(char c , string_.as_string()) {
+				chars.push_back(variant(std::string(1, c)));
+			}
+			return variant(&chars);
+		} else if(key == "word" || key == "words") {
+			std::vector<variant> words;
+			const std::string& str = string_.as_string();
+			size_t next_space = 0;
+			do {
+				size_t last_space = next_space;
+				next_space = str.find_first_of(" \t", next_space);
+				words.push_back(variant(str.substr(last_space, next_space - last_space)));
+				next_space = str.find_first_not_of(" \t", next_space);
+			} while(next_space != std::string::npos);
+			return variant(&words);
+		} else if(key == "item" || key == "items") {
+			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
+			std::vector<variant> items;
+			items.reserve(split.size());
+			BOOST_FOREACH(const std::string s , split) {
+				items.push_back(variant(s));
+			}
+			return variant(&items);
+		} else {
+			return variant();
+		}
+	}
+};
+
 class list_callable : public formula_callable {
 	variant list_;
 public:
@@ -241,6 +292,50 @@ public:
 		}
 	}
 
+};
+
+class map_callable : public formula_callable {
+	variant map_;
+public:
+	explicit map_callable(const variant& map) : map_(map)
+	{}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		inputs->push_back(formula_input("size", FORMULA_READ_WRITE));
+		inputs->push_back(formula_input("empty", FORMULA_READ_WRITE));
+		for(variant_iterator iter = map_.begin(); iter != map_.end(); iter++) {
+			// variant_iterator does not implement operator->,
+			// and to do so is notrivial since it returns temporaries for maps.
+			const variant& key_variant = (*iter).get_member("key");
+			if(!key_variant.is_string()) {
+				continue;
+			}
+			std::string key = key_variant.as_string();
+			bool valid = true;
+			BOOST_FOREACH(char c , key) {
+				if(!isalpha(c) && c != '_') {
+					valid = false;
+					break;
+				}
+			}
+			if(valid) {
+				inputs->push_back(formula_input(key, FORMULA_READ_ONLY));
+			}
+		}
+	}
+
+	variant get_value(const std::string& key) const {
+		const variant key_variant(key);
+		if(map_.as_map().find(key_variant) != map_.as_map().end()) {
+			return map_[key_variant];
+		} else if(key == "size") {
+			return variant(map_.num_elements());
+		} else if(key == "empty") {
+			return variant(map_.num_elements() == 0);
+		} else {
+			return variant();
+		}
+	}
 };
 
 class dot_callable : public formula_callable {
@@ -283,6 +378,16 @@ private:
 			if(left.is_list()) {
 				list_callable list_call(left);
 				dot_callable callable(variables, list_call);
+				return right_->evaluate(callable,fdb);
+			}
+			if(left.is_map()) {
+				map_callable map_call(left);
+				dot_callable callable(variables, map_call);
+				return right_->evaluate(callable,fdb);
+			}
+			if(left.is_string()) {
+				string_callable string_call(left);
+				dot_callable callable(variables, string_call);
 				return right_->evaluate(callable,fdb);
 			}
 
