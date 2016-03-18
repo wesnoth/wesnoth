@@ -2373,11 +2373,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 	}
 	map_location loc;
 
-	if (luaW_tolocation(L, 1, loc)) {
-		if (!map().on_board(loc)) {
-			return luaL_argerror(L, 1, "invalid location");
-		}
-	} else if (luaW_hasmetatable(L, 1, getunitKey)) {
+	if (luaW_hasmetatable(L, 1, getunitKey)) {
 		lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 		unit_ptr u = lu->get_shared();
 		if (!lu->get()) {
@@ -2394,6 +2390,10 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			t.recall_list().erase_if_matches_id(u->id());
 		} else {
 			return luaL_argerror(L, 1, "can't erase private units");
+		}
+	} else if (luaW_tolocation(L, 1, loc)) {
+		if (!map().on_board(loc)) {
+			return luaL_argerror(L, 1, "invalid location");
 		}
 	} else if (!lua_isnoneornil(L, 1)) {
 		config cfg = luaW_checkconfig(L, 1);
