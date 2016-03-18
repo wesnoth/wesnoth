@@ -19,6 +19,8 @@
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "map_utils.hpp"
+#include "random_new.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -103,7 +105,7 @@ private:
 		std::vector<variant> res;
 		res.reserve(items_.size());
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); i != items_.end(); ++i) {
-			res.push_back((*i)->evaluate(variables,fdb));
+			res.push_back((*i)->evaluate(variables,add_debug_info(fdb, 0, "[list element]")));
 		}
 
 		return variant(&res);
@@ -142,9 +144,15 @@ public:
 		std::stringstream s;
 		s << " [";
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
+			if(i != items_.begin()) {
+				s << ", ";
+			}
 			s << (*i)->str();
 			s << " -> ";
 			s << (*(i+1))->str();
+		}
+		if(items_.empty()) {
+			s << "->";
 		}
 		s << " ]";
 		return s.str();
@@ -153,8 +161,8 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::map<variant,variant> res;
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
-			variant key = (*i)->evaluate(variables,fdb);
-			variant value = (*(i+1))->evaluate(variables,fdb);
+			variant key = (*i)->evaluate(variables,add_debug_info(fdb, 0, "key ->"));
+			variant value = (*(i+1))->evaluate(variables,add_debug_info(fdb, 1, "-> value"));
 			res[ key ] = value;
 		}
 
@@ -187,7 +195,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant res = operand_->evaluate(variables,fdb);
+		const variant res = operand_->evaluate(variables,add_debug_info(fdb, 0, op_str_ + " unary"));
 		switch(op_) {
 		case NOT:
 			return res.as_bool() ? variant(0) : variant(1);
@@ -200,6 +208,56 @@ private:
 	OP op_;
 	std::string op_str_;
 	expression_ptr operand_;
+};
+
+class string_callable : public formula_callable {
+	variant string_;
+public:
+	explicit string_callable(const variant& string) : string_(string)
+	{}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		inputs->push_back(formula_input("size", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("empty", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("char", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("word", FORMULA_READ_ONLY));
+		inputs->push_back(formula_input("item", FORMULA_READ_ONLY));
+	}
+
+	variant get_value(const std::string& key) const {
+		if(key == "size") {
+			return variant(string_.as_string().length());
+		} else if(key == "empty") {
+			return variant(string_.as_string().empty());
+		} else if(key == "char" || key == "chars") {
+			std::vector<variant> chars;
+			BOOST_FOREACH(char c , string_.as_string()) {
+				chars.push_back(variant(std::string(1, c)));
+			}
+			return variant(&chars);
+		} else if(key == "word" || key == "words") {
+			std::vector<variant> words;
+			const std::string& str = string_.as_string();
+			size_t next_space = 0;
+			do {
+				size_t last_space = next_space;
+				next_space = str.find_first_of(" \t", next_space);
+				words.push_back(variant(str.substr(last_space, next_space - last_space)));
+				next_space = str.find_first_not_of(" \t", next_space);
+			} while(next_space != std::string::npos);
+			return variant(&words);
+		} else if(key == "item" || key == "items") {
+			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
+			std::vector<variant> items;
+			items.reserve(split.size());
+			BOOST_FOREACH(const std::string s , split) {
+				items.push_back(variant(s));
+			}
+			return variant(&items);
+		} else {
+			return variant();
+		}
+	}
 };
 
 class list_callable : public formula_callable {
@@ -239,6 +297,50 @@ public:
 
 };
 
+class map_callable : public formula_callable {
+	variant map_;
+public:
+	explicit map_callable(const variant& map) : map_(map)
+	{}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		inputs->push_back(formula_input("size", FORMULA_READ_WRITE));
+		inputs->push_back(formula_input("empty", FORMULA_READ_WRITE));
+		for(variant_iterator iter = map_.begin(); iter != map_.end(); iter++) {
+			// variant_iterator does not implement operator->,
+			// and to do so is notrivial since it returns temporaries for maps.
+			const variant& key_variant = (*iter).get_member("key");
+			if(!key_variant.is_string()) {
+				continue;
+			}
+			std::string key = key_variant.as_string();
+			bool valid = true;
+			BOOST_FOREACH(char c , key) {
+				if(!isalpha(c) && c != '_') {
+					valid = false;
+					break;
+				}
+			}
+			if(valid) {
+				inputs->push_back(formula_input(key, FORMULA_READ_ONLY));
+			}
+		}
+	}
+
+	variant get_value(const std::string& key) const {
+		const variant key_variant(key);
+		if(map_.as_map().find(key_variant) != map_.as_map().end()) {
+			return map_[key_variant];
+		} else if(key == "size") {
+			return variant(map_.num_elements());
+		} else if(key == "empty") {
+			return variant(map_.num_elements() == 0);
+		} else {
+			return variant();
+		}
+	}
+};
+
 class dot_callable : public formula_callable {
 public:
 	dot_callable(const formula_callable &global,
@@ -274,11 +376,21 @@ public:
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left."));
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left ."));
 		if(!left.is_callable()) {
 			if(left.is_list()) {
 				list_callable list_call(left);
 				dot_callable callable(variables, list_call);
+				return right_->evaluate(callable,fdb);
+			}
+			if(left.is_map()) {
+				map_callable map_call(left);
+				dot_callable callable(variables, map_call);
+				return right_->evaluate(callable,fdb);
+			}
+			if(left.is_string()) {
+				string_callable string_call(left);
+				dot_callable callable(variables, string_call);
 				return right_->evaluate(callable,fdb);
 			}
 
@@ -286,7 +398,7 @@ private:
 		}
 
 		dot_callable callable(variables, *left.as_callable());
-		return right_->evaluate(callable,add_debug_info(fdb,1,".right"));
+		return right_->evaluate(callable,add_debug_info(fdb,1,". right"));
 	}
 
 	expression_ptr left_, right_;
@@ -306,8 +418,8 @@ public:
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,fdb);
-		const variant key = key_->evaluate(variables,fdb);
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"base[]"));
+		const variant key = key_->evaluate(variables,add_debug_info(fdb,1,"[index]"));
 		if(left.is_list() || left.is_map()) {
 			return left[ key ];
 		} else {
@@ -342,19 +454,23 @@ public:
 			op_ = MULL;
 		} else if(op == "./") {
 			op_ = DIVL;
+		} else if(op == "..") {
+			op_ = CAT;
+		} else if(op == "in") {
+			op_ = IN;
 		}
 	}
 
 	std::string str() const
 	{
 		std::stringstream s;
-		s << left_->str() << op_str_ << right_->str();
+		s << '(' << left_->str() << op_str_ << right_->str() << ')';
 		return s.str();
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left_OP"));
-		const variant right = right_->evaluate(variables,add_debug_info(fdb,1,"OP_right"));
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left " + op_str_));
+		const variant right = right_->evaluate(variables,add_debug_info(fdb,1,op_str_ + " right"));
 		switch(op_) {
 		case AND:
 			return left.as_bool() == false ? left : right;
@@ -378,6 +494,10 @@ private:
 			return left.list_elements_mul(right);
 		case DIVL:
 			return left.list_elements_div(right);
+		case IN:
+			return variant(right.contains(left));
+		case CAT:
+			return left.concatenate(right);
 		case EQ:
 			return left == right ? variant(1) : variant(0);
 		case NEQ:
@@ -392,22 +512,29 @@ private:
 			return left > right ? variant(1) : variant(0);
 		case MOD:
 			return left % right;
+		case RAN:
+			return left.build_range(right);
 		case DICE:
-		default:
 			return variant(dice_roll(left.as_int(), right.as_int()));
+		default:
+			std::cerr << "ERROR: Unimplemented operator!" << std::endl;
+			return variant();
 		}
 	}
 
 	static int dice_roll(int num_rolls, int faces) {
 		int res = 0;
 		while(faces > 0 && num_rolls-- > 0) {
-			// TODO: should we use the synced rng here ?
-			res += (rand()%faces)+1;
+			if(random_new::generator) {
+				res += (random_new::generator->next_random() % faces) + 1;
+			} else {
+				res += (rand() % faces) + 1;
+			}
 		}
 		return res;
 	}
 
-	enum OP { AND, OR, NEQ, LTE, GTE, GT='>', LT='<', EQ='=',
+	enum OP { AND, OR, NEQ, LTE, GTE, CAT, IN, GT='>', LT='<', EQ='=', RAN='~',
 	          ADD='+', SUB='-', MUL='*', DIV='/', ADDL, SUBL, MULL, DIVL, DICE='d', POW='^', MOD='%' };
 
 	OP op_;
@@ -422,11 +549,12 @@ typedef std::map<std::string, variant> exp_table_evaluated;
 class where_variables: public formula_callable {
 public:
 	where_variables(const formula_callable &base,
-			expr_table_ptr table )
+			expr_table_ptr table, formula_debugger* fdb )
 		: formula_callable(false)
 		, base_(base)
 		, table_(table)
 		, evaluated_table_()
+		, debugger_(fdb)
 	{
 	}
 
@@ -434,6 +562,7 @@ private:
 	const formula_callable& base_;
 	expr_table_ptr table_;
 	mutable exp_table_evaluated evaluated_table_;
+	formula_debugger* debugger_;
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
 		for(expr_table::const_iterator i = table_->begin(); i != table_->end(); ++i) {
@@ -448,7 +577,7 @@ private:
 			if( ev != evaluated_table_.end())
 				return ev->second;
 
-			variant v = i->second->evaluate(base_);
+			variant v = i->second->evaluate(base_, add_debug_info(debugger_, 0, "where[" + key + "]"));
 			evaluated_table_[key] = v;
 			return v;
 		}
@@ -480,8 +609,8 @@ private:
 	expr_table_ptr clauses_;
 
 	variant execute(const formula_callable& variables,formula_debugger *fdb) const {
-		where_variables wrapped_variables(variables, clauses_);
-		return body_->evaluate(wrapped_variables,fdb);
+		where_variables wrapped_variables(variables, clauses_, fdb);
+		return body_->evaluate(wrapped_variables,add_debug_info(fdb, 0, "... where"));
 	}
 };
 
@@ -557,20 +686,44 @@ public:
 		str_(),
 		subs_()
 	{
-		std::string::iterator i;
-		while((i = std::find(str.begin(), str.end(), '{')) != str.end()) {
-			std::string::iterator j = std::find(i, str.end(), '}');
+		std::string::iterator i = str.begin();
+		while((i = std::find(i, str.end(), '[')) != str.end()) {
+			int bracket_depth = 0;
+			std::string::iterator j = i + 1;
+			while(j != str.end() && (bracket_depth > 0 || *j != ']')) {
+				if(*j == '[') {
+					bracket_depth++;
+				} else if(*j == ']' && bracket_depth > 0) {
+					bracket_depth--;
+				}
+				++j;
+			}
 			if(j == str.end()) {
 				break;
 			}
 
 			const std::string formula_str(i+1, j);
 			const int pos = i - str.begin();
-			str.erase(i, j+1);
+			if(j - i == 2 && (i[1] == '(' || i[1] == '\'' || i[1] == ')')) {
+				// Bracket contained nothing but a quote or parenthesis.
+				// This means it was intended as a literal quote or square bracket.
+				i = str.erase(i);
+				if(*i == '(') *i = '[';
+				else if(*i == ')') *i = ']';
+				i = str.erase(i + 1);
+				continue;
+			} else {
+				i = str.erase(i, j+1);
+			}
 
 			substitution sub;
 			sub.pos = pos;
-			sub.calculation.reset(new formula(formula_str));
+			try {
+				sub.calculation.reset(new formula(formula_str));
+			} catch(formula_error& e) {
+				e.filename += " - string substitution";
+				throw e;
+			}
 			subs_.push_back(sub);
 		}
 
@@ -581,7 +734,33 @@ public:
 
 	std::string str() const
 	{
-		return str_.as_string();
+		std::string res = str_.as_string();
+		int j = res.size() - 1;
+		for(size_t i = 0; i < subs_.size(); ++i) {
+			const substitution& sub = subs_[i];
+			for(;j >= sub.pos && j >= 0;j--) {
+				if(res[j] == '\'') {
+					res.replace(j, 1, "[']");
+				} else if(res[j] == '[') {
+					res.replace(j, 1, "[(]");
+				} else if(res[j] == ']') {
+					res.replace(j, 1, "[)]");
+				}
+			}
+			const std::string str = "[" + sub.calculation->str() + "]";
+			res.insert(sub.pos, str);
+		}
+		for(;j >= 0;j--) {
+			if(res[j] == '\'') {
+				res.replace(j, 1, "[']");
+			} else if(res[j] == '[') {
+				res.replace(j, 1, "[(]");
+			} else if(res[j] == ']') {
+				res.replace(j, 1, "[)]");
+			}
+		}
+
+		return "'" + res + "'";
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -590,7 +769,9 @@ private:
 		} else {
 			std::string res = str_.as_string();
 			for(size_t i=0; i < subs_.size(); ++i) {
+				const int j = subs_.size() - i - 1;
 				const substitution& sub = subs_[i];
+				add_debug_info(fdb, j, "[string subst]");
 				const std::string str = sub.calculation->evaluate(variables,fdb).string_cast();
 				res.insert(sub.pos, str);
 			}
@@ -631,8 +812,10 @@ int operator_precedence(const token& t)
 		precedence_map[">"]     = n;
 		precedence_map["<="]    = n;
 		precedence_map[">="]    = n;
+		precedence_map["~"]     = ++n;
 		precedence_map["+"]     = ++n;
 		precedence_map["-"]     = n;
+		precedence_map[".."]    = n;
 		precedence_map["*"]     = ++n;
 		precedence_map["/"]     = n;
 		precedence_map["%"]     = ++n;
@@ -838,6 +1021,34 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			}
 		}
 	}
+	
+	if((i2-1)->type == TOKEN_RSQUARE) { // Check if there is [ ] : a indexing operator
+		const token* tok = i2-2;
+		int square_parens = 0;
+		bool is_index_op = true;
+		while((tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
+			if (tok->type == TOKEN_RSQUARE) {
+				square_parens++;
+			} else if(tok->type == TOKEN_LSQUARE) {
+				square_parens--;
+			} else if((tok->type == TOKEN_POINTER || tok->type == TOKEN_COMMA) && !square_parens ) {
+				is_index_op = false;
+			}
+			--tok;
+		}
+		if(tok == i1 || tok->type != TOKEN_LSQUARE) {
+			is_index_op = false;
+		}
+		if(is_index_op) {
+			try {
+				return expression_ptr(new square_bracket_expression(
+						parse_expression(i1,tok,symbols),
+						parse_expression(tok+1,i2-1,symbols)));
+			} catch (formula_error& e){
+				throw formula_error(e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number);
+			}
+		}
+	}
 
 	int parens = 0;
 	const token* op = NULL;
@@ -850,7 +1061,9 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		} else if(parens == 0 && i->type == TOKEN_OPERATOR) {
 			if( ( !operator_group ) && (op == NULL || operator_precedence(*op) >=
 							 operator_precedence(*i)) ) {
-				op = i;
+				// Need special exception for exponentiation to be right-associative
+				if(*i->begin != '^' || op == NULL || *op->begin != '^')
+					op = i;
 			}
 			operator_group = true;
 		} else {
@@ -861,44 +1074,36 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 	if(op == NULL) {
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
-				const token* tok = i2-2;
-				int square_parens = 0;
-				bool is_map = false;
-				while ( (tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
-						if (tok->type == TOKEN_RSQUARE) {
-							square_parens++;
-						} else if(tok->type == TOKEN_LSQUARE) {
-							square_parens--;
-						} else if( (tok->type == TOKEN_POINTER) && !square_parens ) {
-							is_map = true;
-						}
-						--tok;
-				}
-				if (tok->type == TOKEN_LSQUARE) {
-					if (tok == i1) {
-						//create a list or a map
-						std::vector<expression_ptr> args;
-
-						if ( is_map ) {
-							parse_set_args(i1+1, i2-1, &args, symbols);
-							return expression_ptr(new map_expression(args));
-						} else {
-							parse_args(i1+1,i2-1,&args,symbols);
-							return expression_ptr(new list_expression(args));
-						}
-					} else {
-						//execute operator [ ]
-						try{
-							return expression_ptr(new square_bracket_expression(
-											parse_expression(i1,tok,symbols),
-								 				parse_expression(tok+1,i2-1,symbols)));
-						}
-						catch (formula_error& e){
-							throw formula_error( e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
-						}
+		} else if((i2-1)->type == TOKEN_RSQUARE) { // Check if there is [ ] : a list/map definition
+			// First, a special case for an empty map
+			if(i2 - i1 == 3 && i1->type == TOKEN_LSQUARE && (i1+1)->type == TOKEN_POINTER) {
+				return expression_ptr(new map_expression(std::vector<expression_ptr>()));
+			}
+			const token* tok = i2-2;
+			int square_parens = 0;
+			bool is_map = false;
+			while ((tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
+					if (tok->type == TOKEN_RSQUARE) {
+						square_parens++;
+					} else if(tok->type == TOKEN_LSQUARE) {
+						square_parens--;
+					} else if( (tok->type == TOKEN_POINTER) && !square_parens ) {
+						is_map = true;
 					}
+					--tok;
+			}
+			if (tok->type == TOKEN_LSQUARE && tok == i1) {
+				//create a list or a map
+				std::vector<expression_ptr> args;
+
+				if (is_map) {
+					parse_set_args(i1+1, i2-1, &args, symbols);
+					return expression_ptr(new map_expression(args));
+				} else {
+					parse_args(i1+1,i2-1,&args,symbols);
+					return expression_ptr(new list_expression(args));
 				}
+			}
 		} else if(i2 - i1 == 1) {
 			if(i1->type == TOKEN_KEYWORD) {
 				if(std::string(i1->begin,i1->end) == "functions") {
@@ -1000,6 +1205,13 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 
 }
 
+formula::~formula()
+{
+	if(managing_symbols) {
+		delete symbols_;
+	}
+}
+
 formula_ptr formula::create_optional_formula(const std::string& str, function_symbol_table* symbols)
 {
 	if(str.empty()) {
@@ -1011,15 +1223,23 @@ formula_ptr formula::create_optional_formula(const std::string& str, function_sy
 
 formula::formula(const std::string& str, function_symbol_table* symbols) :
 	expr_(),
-	str_(str)
+	str_(str),
+	symbols_(symbols),
+	managing_symbols(symbols == NULL)
 {
 	using namespace formula_tokenizer;
+	
+	if(symbols == NULL) {
+		symbols_ = new function_symbol_table;
+	}
 
 	std::vector<token> tokens;
 	std::string::const_iterator i1 = str.begin(), i2 = str.end();
 
 	//set true when 'fai' keyword is found
 	bool fai_keyword = false;
+	//set true when 'wfl' keyword is found
+	bool wfl_keyword = false;
 	//used to locally keep the track of which file we parse actually and in which line we are
 	std::vector< std::pair< std::string, int> > files;
 	//used as a source of strings - we point to these strings from tokens
@@ -1057,6 +1277,10 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 				fai_keyword = true;
 				tokens.pop_back();
 			} else
+			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end)  == "wfl") ) {
+				wfl_keyword = true;
+				tokens.pop_back();
+			} else
 			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end) == "faiend") ) {
 				if (files.size() > 1) {
 					files.pop_back();
@@ -1066,7 +1290,16 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 					throw formula_error("Unexpected 'faiend' found", "", "", 0);
 				}
 			} else
-			if (fai_keyword) {
+			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end) == "wflend") ) {
+				if (files.size() > 1) {
+					files.pop_back();
+					filenames_it = filenames.find( files.back().first );
+					tokens.pop_back();
+				} else {
+					throw formula_error("Unexpected 'wflend' found", "", "", 0);
+				}
+			} else
+			if (fai_keyword || wfl_keyword) {
 				if(current_type == TOKEN_STRING_LITERAL) {
 					std::string str = std::string(tokens.back().begin,tokens.back().end);
 					files.push_back( std::make_pair( str , 1 ) );
@@ -1075,12 +1308,17 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 					if(ret.second==true) {
 						filenames_it = ret.first;
 					} else {
-						throw formula_error("Faifile already included", "fai" + str, "", 0);
+						if (fai_keyword)
+							throw formula_error("Faifile already included", "fai" + str, "", 0);
+						else throw formula_error("Wflfile already included", "wfl" + str, "", 0);
 					}
 					tokens.pop_back();
 					fai_keyword = false;
+					wfl_keyword = false;
 				} else {
-					throw formula_error("Expected string after the 'fai'", "fai", "", 0);
+					if (fai_keyword)
+						throw formula_error("Expected string after the 'fai'", "fai", "", 0);
+					else throw formula_error("Expected string after the 'wfl'", "wfl", "", 0);
 				}
 			} else {
 				//in every token not specified above, store line number and name of file it came from
@@ -1106,19 +1344,24 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	}
 
 	if(files.size() > 1) {
-		throw formula_error("Missing 'faiend', make sure each .fai file ends with it", "", "", 0);
+		throw formula_error("Missing 'wflend', make sure each .wfl file ends with it", "", "", 0);
 	}
 
 	if(!tokens.empty()) {
-		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
+		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols_);
 	} else {
 		expr_ = expression_ptr(new null_expression());
 	}
 }
 formula::formula(const token* i1, const token* i2, function_symbol_table* symbols) :
 	expr_(),
-	str_()
+	str_(),
+	symbols_(symbols),
+	managing_symbols(symbols == NULL)
 {
+	if(symbols == NULL) {
+		symbols_ = new function_symbol_table;
+	}
 
 	if(i1 != i2) {
 		expr_ = parse_expression(i1,i2, symbols);
@@ -1160,96 +1403,3 @@ formula_error::formula_error(const std::string& type, const std::string& formula
 
 }
 
-#ifdef UNIT_TEST_FORMULA
-using namespace game_logic;
-class mock_char : public formula_callable {
-	variant get_value(const std::string& key) const {
-		if(key == "strength") {
-			return variant(15);
-		} else if(key == "agility") {
-			return variant(12);
-		}
-
-		return variant(10);
-	}
-};
-class mock_party : public formula_callable {
-	variant get_value(const std::string& key) const {
-		if(key == "members") {
-			i_[0].add("strength",variant(12));
-			i_[1].add("strength",variant(16));
-			i_[2].add("strength",variant(14));
-			std::vector<variant> members;
-			for(int n = 0; n != 3; ++n) {
-				members.push_back(variant(&i_[n]));
-			}
-
-			return variant(&members);
-		} else if(key == "char") {
-			return variant(&c_);
-		} else {
-			return variant(0);
-		}
-	}
-
-	mock_char c_;
-	mutable map_formula_callable i_[3];
-
-};
-
-#include <time.h>
-
-int main()
-{
-	srand(time(NULL));
-	try {
-		mock_char c;
-		mock_party p;
-
-		assert(formula("strength").execute(c).as_int() == 15);
-		assert(formula("17").execute(c).as_int() == 17);
-		assert(formula("strength/2 + agility").execute(c).as_int() == 19);
-		assert(formula("(strength+agility)/2").execute(c).as_int() == 13);
-		assert(formula("strength > 12").execute(c).as_int() == 1);
-		assert(formula("strength > 18").execute(c).as_int() == 0);
-		assert(formula("if(strength > 12, 7, 2)").execute(c).as_int() == 7);
-		assert(formula("if(strength > 18, 7, 2)").execute(c).as_int() == 2);
-		assert(formula("2 and 1").execute(c).as_int() == 1);
-		assert(formula("2 and 0").execute(c).as_int() == 0);
-		assert(formula("2 or 0").execute(c).as_int() == 1);
-		assert(formula("-5").execute(c).as_int() == -5);
-		assert(formula("not 5").execute(c).as_int() == 0);
-		assert(formula("not 0").execute(c).as_int() == 1);
-		assert(formula("abs(5)").execute(c).as_int() == 5);
-		assert(formula("abs(-5)").execute(c).as_int() == 5);
-		assert(formula("min(3,5)").execute(c).as_int() == 3);
-		assert(formula("min(5,2)").execute(c).as_int() == 2);
-		assert(formula("max(3,5)").execute(c).as_int() == 5);
-		assert(formula("max(5,2)").execute(c).as_int() == 5);
-		assert(formula("max(4,5,[2,18,7])").execute(c).as_int() == 18);
-		assert(formula("char.strength").execute(p).as_int() == 15);
-		assert(formula("choose(members,strength).strength").execute(p).as_int() == 16);
-		assert(formula("4^2").execute().as_int() == 16);
-		assert(formula("2+3^3").execute().as_int() == 29);
-		assert(formula("2*3^3+2").execute().as_int() == 56);
-		assert(formula("9^3").execute().as_int() == 729);
-		assert(formula("x*5 where x=1").execute().as_int() == 5);
-		assert(formula("x*(a*b where a=2,b=1) where x=5").execute().as_int() == 10);
-		assert(formula("char.strength * ability where ability=3").execute(p).as_int() == 45);
-		assert(formula("'abcd' = 'abcd'").execute(p).as_bool() == true);
-		assert(formula("'abcd' = 'acd'").execute(p).as_bool() == false);
-		assert(formula("'strength, agility: {strength}, {agility}'").execute(c).as_string() ==
-		               "strength, agility: 15, 12");
-		const int dice_roll = formula("3d6").execute().as_int();
-		assert(dice_roll >= 3 && dice_roll <= 18);
-
-		variant myarray = formula("[1,2,3]").execute();
-		assert(myarray.num_elements() == 3);
-		assert(myarray[0].as_int() == 1);
-		assert(myarray[1].as_int() == 2);
-		assert(myarray[2].as_int() == 3);
-	} catch(formula_error& e) {
-		std::cerr << "parse error\n";
-	}
-}
-#endif

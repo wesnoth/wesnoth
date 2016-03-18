@@ -59,6 +59,7 @@ public:
 	variant();
 	explicit variant(int n);
 	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
+	variant(double n, DECIMAL_VARIANT_TYPE /*type*/);
 	explicit variant(const game_logic::formula_callable* callable);
 	explicit variant(std::vector<variant>* array);
 	explicit variant(const std::string& str);
@@ -68,8 +69,8 @@ public:
 	variant(const variant& v);
 	variant& operator=(const variant& v);
 
-	const variant& operator[](size_t n) const;
-	const variant& operator[](const variant& v) const;
+	variant operator[](size_t n) const;
+	variant operator[](const variant& v) const;
 	size_t num_elements() const;
 	bool is_empty() const;
 
@@ -80,7 +81,7 @@ public:
 	bool is_int() const { return type_ == TYPE_INT; }
 	bool is_decimal() const { return type_ == TYPE_DECIMAL; }
 	bool is_map() const { return type_ == TYPE_MAP; }
-	int as_int() const { if(type_ == TYPE_NULL) { return 0; } must_be(TYPE_INT); return int_value_; }
+	int as_int() const;
 
 	//this function returns variant's internal representation of decimal number:
 	//for example number 1.234 is represented as 1234
@@ -89,8 +90,12 @@ public:
 	bool as_bool() const;
 
 	bool is_list() const { return type_ == TYPE_LIST; }
+	
+	const std::vector<variant>& as_list() const;
+	const std::map<variant,variant>& as_map() const;
 
 	const std::string& as_string() const;
+	std::string type_string() const;
 
 	bool is_callable() const { return type_ == TYPE_CALLABLE; }
 	const game_logic::formula_callable* as_callable() const {
@@ -136,6 +141,9 @@ public:
 	variant list_elements_sub(const variant& v) const;
 	variant list_elements_mul(const variant& v) const;
 	variant list_elements_div(const variant& v) const;
+	variant concatenate(const variant& v) const;
+	variant build_range(const variant& v) const;
+	bool contains(const variant& other) const;
 
 	variant get_keys() const;
 	variant get_values() const;
@@ -179,6 +187,12 @@ private:
  */
 class variant_iterator {
 public:
+	typedef variant value_type;
+	typedef std::bidirectional_iterator_tag iterator_category;
+	typedef variant& reference;
+	typedef variant* pointer;
+	typedef int difference_type;
+	
 	/**
 	 * Constructor for a TYPE_NULL variant.
 	 */
@@ -207,6 +221,8 @@ public:
 	variant operator*() const;
 	variant_iterator& operator++();
 	variant_iterator operator++(int);
+	variant_iterator& operator--();
+	variant_iterator operator--(int);
 	variant_iterator& operator=(const variant_iterator& that);
 	bool operator==(const variant_iterator& that) const;
 	bool operator!=(const variant_iterator& that) const;

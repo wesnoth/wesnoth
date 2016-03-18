@@ -167,7 +167,7 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.name());
 	} else if(key == "usage") {
 		return variant(u_.usage());
-	} else if(key == "leader") {
+	} else if(key == "leader" || key == "canrecruit") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
 		return variant(u_.get_state("not_living") ? 1 : 0);
@@ -198,14 +198,17 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.experience());
 	} else if(key == "max_experience") {
 		return variant(u_.max_experience());
-	} else if(key == "level") {
+	} else if(key == "level" || key == "full") {
+		// This allows writing "upkeep == full"
 		return variant(u_.level());
-	} else if(key == "total_movement") {
+	} else if(key == "total_movement" || key == "max_moves") {
 		return variant(u_.total_movement());
-	} else if(key == "movement_left") {
+	} else if(key == "movement_left" || key == "moves") {
 		return variant(u_.movement_left());
 	} else if(key == "attacks_left") {
 		return variant(u_.attacks_left());
+	} else if(key == "max_attacks") {
+		return variant(u_.max_attacks());
 	} else if(key == "traits") {
 		const std::vector<std::string> traits = u_.get_traits_list();
 		std::vector<variant> res;
@@ -218,7 +221,31 @@ variant unit_callable::get_value(const std::string& key) const
 			res.push_back( variant(*it) );
 		}
 		return variant( &res );
-	} else if(key == "states") {
+	} else if(key == "extra_recruit") {
+		const std::vector<std::string> recruits = u_.recruits();
+		std::vector<variant> res;
+
+		if(recruits.empty())
+			return variant( &res );
+
+		for (std::vector<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it)
+		{
+			res.push_back( variant(*it) );
+		}
+		return variant( &res );
+	} else if(key == "advances_to") {
+		const std::vector<std::string> advances = u_.advances_to();
+		std::vector<variant> res;
+
+		if(advances.empty())
+			return variant( &res );
+
+		for (std::vector<std::string>::const_iterator it = advances.begin(); it != advances.end(); ++it)
+		{
+			res.push_back( variant(*it) );
+		}
+		return variant( &res );
+	} else if(key == "states" || key == "status") {
 		const std::map<std::string, std::string>& states_map = u_.get_states();
 
 		return convert_map( states_map );
@@ -226,12 +253,39 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.side()-1);
 	} else if(key == "cost") {
 		return variant(u_.cost());
+	} else if(key == "upkeep") {
+		return variant(u_.upkeep());
+	} else if(key == "loyal") {
+		// So we can write "upkeep == loyal"
+		return variant(0);
+	} else if(key == "hidden") {
+		return variant(u_.get_hidden());
+	} else if(key == "petrified") {
+		return variant(u_.incapacitated());
+	} else if(key == "resting") {
+		return variant(u_.resting());
+	} else if(key == "role") {
+		return variant(u_.get_role());
+	} else if(key == "race") {
+		return variant(u_.race()->id());
+	} else if(key == "gender") {
+		return variant(gender_string(u_.gender()));
+	} else if(key == "variation") {
+		return variant(u_.variation());
+	} else if(key == "zoc") {
+		return variant(u_.get_emit_zoc());
+	} else if(key == "alignment") {
+		return variant(u_.alignment().to_string());
+	} else if(key == "facing") {
+		return variant(map_location::write_direction(u_.facing()));
 	} else if(key == "vars") {
 		if(u_.formula_manager().formula_vars()) {
 			return variant(u_.formula_manager().formula_vars().get());
 		} else {
 			return variant();
 		}
+	} else if(key == "n" || key == "s" || key == "ne" || key == "se" || key == "nw" || key == "sw" || key == "lawful" || key == "neutral" || key == "chaotic" || key == "liminal" || key == "male" || key == "female") {
+		return variant(key);
 	} else {
 		return variant();
 	}
@@ -246,7 +300,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("name", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("leader", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("canrecruit", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("undead", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("traits", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
@@ -256,13 +310,27 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("experience", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("max_experience", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("level", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("movement_left", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("moves", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("max_moves", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("attacks_left", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("max_attacks", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("side", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("states", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("extra_recruit", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("advances_to", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("status", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("usage", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("upkeep", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("hidden", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("petrified", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("resting", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("role", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("race", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("gender", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("variation", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("zoc", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("alignment", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("facing", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
 }
 

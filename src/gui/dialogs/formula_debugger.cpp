@@ -26,6 +26,27 @@
 
 #include <boost/bind.hpp>
 
+namespace {
+
+std::string pango_escape(std::string str) {
+	for(size_t i = str.size(); i > 0; i--) {
+		if(str[i-1] == '<') {
+			str.replace(i-1, 1, "&lt;");
+		} else if(str[i-1] == '>') {
+			str.replace(i-1, 1, "&gt;");
+		} else if(str[i-1] == '&') {
+			str.replace(i-1, 1, "&amp;");
+		} else if(str[i-1] == '"') {
+			str.replace(i-1, 1, "&quot;");
+		} else if(str[i-1] == '\'') {
+			str.replace(i-1, 1, "&apos;");
+		}
+	}
+	return str;
+}
+
+}
+
 namespace gui2
 {
 
@@ -80,8 +101,8 @@ void tformula_debugger::pre_show(twindow& window)
 			stack_text << indent;
 		}
 		stack_text << "#<span color=\"green\">" << i.counter()
-				   << "</span>: \"<span color=\"green\">" << i.name()
-				   << "</span>\": '" << i.str() << "' " << std::endl;
+				   << "</span>: \"<span color=\"green\">" << pango_escape(i.name())
+				   << "</span>\": (" << pango_escape(i.str()) << ") " << std::endl;
 		++c;
 	}
 
@@ -101,14 +122,14 @@ void tformula_debugger::pre_show(twindow& window)
 		}
 		if(!i.evaluated()) {
 			execution_text << "#<span color=\"green\">" << i.counter()
-						   << "</span>: \"<span color=\"green\">" << i.name()
-						   << "</span>\": '" << i.str() << "' " << std::endl;
+						   << "</span>: \"<span color=\"green\">" << pango_escape(i.name())
+						   << "</span>\": (" << pango_escape(i.str()) << ") " << std::endl;
 		} else {
 			execution_text << "#<span color=\"yellow\">" << i.counter()
-						   << "</span>: \"<span color=\"yellow\">" << i.name()
-						   << "</span>\": '" << i.str() << "' = "
-						   << "<span color=\"red\">"
-						   << i.value().to_debug_string(NULL, false)
+						   << "</span>: \"<span color=\"yellow\">" << pango_escape(i.name())
+						   << "</span>\": (" << pango_escape(i.str()) << ") = "
+						   << "<span color=\"orange\">"
+						   << pango_escape(i.value().to_debug_string(NULL, false))
 						   << "</span>" << std::endl;
 		}
 	}

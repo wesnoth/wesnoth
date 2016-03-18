@@ -21,6 +21,8 @@
 
 #include <cmath>
 
+using namespace game_logic;
+
 BOOST_AUTO_TEST_SUITE(formula_function)
 
 BOOST_AUTO_TEST_CASE(test_formula_function_substring)
@@ -73,12 +75,10 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 				.evaluate().as_string()
 			, "");
 
-	lg::set_log_domain_severity("scripting/formula", lg::err.get_severity() - 1); // Don't log anything
-
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 0, -1)")
 				.evaluate().as_string()
-			, "");
+			, "h");
 
 	lg::set_log_domain_severity("scripting/formula", lg::debug);
 
@@ -96,6 +96,16 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 			game_logic::formula("substring('hello world', -10, 9)")
 				.evaluate().as_string()
 			, "ello worl");
+
+	BOOST_CHECK_EQUAL(
+			game_logic::formula("substring('hello world', -1, -5)")
+				.evaluate().as_string()
+			, "world");
+
+	BOOST_CHECK_EQUAL(
+			game_logic::formula("substring('hello world', 4, -5)")
+				.evaluate().as_string()
+			, "hello");
 
 }
 
@@ -133,7 +143,30 @@ BOOST_AUTO_TEST_CASE(test_formula_function_concatenate)
 			, "1.000, 1.000, 1.000, 1.200, 1.230, 1.234");
 }
 
-BOOST_AUTO_TEST_CASE(test_formula_function_sin_cos)
+BOOST_AUTO_TEST_CASE(test_formula_function_math)
+{
+	BOOST_CHECK_EQUAL(formula("abs(5)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("abs(-5)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("abs(5.0)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("abs(-5.0)").evaluate().as_int(), 5);
+	
+	BOOST_CHECK_EQUAL(formula("min(3,5)").evaluate().as_int(), 3);
+	BOOST_CHECK_EQUAL(formula("min(5,2)").evaluate().as_int(), 2);
+	BOOST_CHECK_EQUAL(formula("max(3,5)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("max(5,2)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("max(5.5,5)").evaluate().as_decimal(),
+		static_cast<int>(1000.0 * 5.5));
+	
+	BOOST_CHECK_EQUAL(formula("max(4,5,[2,18,7])").evaluate().as_int(), 18);
+	
+	BOOST_CHECK_EQUAL(formula("log(8,2)").evaluate().as_int(), 3);
+	BOOST_CHECK_EQUAL(formula("log(12)").evaluate().as_decimal(),
+		static_cast<int>(round(1000.0 * log(12))));
+	BOOST_CHECK_EQUAL(formula("exp(3)").evaluate().as_decimal(),
+		static_cast<int>(round(1000.0 * exp(3))));
+}
+
+BOOST_AUTO_TEST_CASE(test_formula_function_trig)
 {
 	const double pi = 4. * atan(1.);
 
@@ -145,12 +178,23 @@ BOOST_AUTO_TEST_CASE(test_formula_function_sin_cos)
 		BOOST_CHECK_EQUAL(
 			  game_logic::formula("sin(x)")
 				.evaluate(variables).as_decimal()
-			, static_cast<int>(1000. * sin(x * pi / 180.)));
+			, static_cast<int>(round(1000. * sin(x * pi / 180.))));
 
 		BOOST_CHECK_EQUAL(
 			  game_logic::formula("cos(x)")
 				.evaluate(variables).as_decimal()
-			, static_cast<int>(1000. * cos(x * pi / 180.)));
+			, static_cast<int>(round(1000. * cos(x * pi / 180.))));
+
+		if(x % 90 == 0 && x % 180 != 0) {
+			BOOST_CHECK(
+				game_logic::formula("tan(x)")
+				.evaluate(variables).is_null());
+		} else {
+			BOOST_CHECK_EQUAL(
+				game_logic::formula("tan(x)")
+				.evaluate(variables).as_decimal(),
+				static_cast<int>(round(1000. * tan(x * pi / 180.))));
+		}
 	}
 }
 

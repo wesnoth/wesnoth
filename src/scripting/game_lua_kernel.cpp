@@ -290,6 +290,7 @@ static int impl_unit_get(lua_State *L)
 	return_string_attrib("id", u.id());
 	return_string_attrib("type", u.type_id());
 	return_string_attrib("image_mods", u.effect_image_mods());
+	return_string_attrib("usage", u.usage());
 	return_int_attrib("hitpoints", u.hitpoints());
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
 	return_int_attrib("experience", u.experience());
@@ -302,6 +303,7 @@ static int impl_unit_get(lua_State *L)
 	return_tstring_attrib("name", u.name());
 	return_bool_attrib("canrecruit", u.can_recruit());
 	return_int_attrib("level", u.level());
+	return_int_attrib("cost", u.cost());
 
 	return_vector_string_attrib("extra_recruit", u.recruits());
 	return_vector_string_attrib("advances_to", u.advances_to());
@@ -330,6 +332,14 @@ static int impl_unit_get(lua_State *L)
 	}
 	if (strcmp(m, "overlays") == 0) {
 		lua_push(L, u.overlays());
+		return 1;
+	}
+	if (strcmp(m, "traits") == 0) {
+		lua_push(L, u.get_ability_list());
+		return 1;
+	}
+	if (strcmp(m, "abilities") == 0) {
+		lua_push(L, u.get_traits_list());
 		return 1;
 	}
 	if (strcmp(m, "status") == 0) {

@@ -111,11 +111,11 @@ formula_debugger::~formula_debugger()
 
 static void msg(const char *act, debug_info &i, const char *to="", const char *result = "")
 {
-	DBG_FDB << "#" << i.counter() << act << std::endl <<"     \""<< i.name().c_str() << "\"='" << i.str().c_str() << "' " << to << result << std::endl;
+	DBG_FDB << "#" << i.counter() << act << std::endl <<"     \""<< i.name() << "\"='" << i.str() << "' " << to << result << std::endl;
 }
 
 
-void formula_debugger::add_debug_info(int arg_number, const char *f_name)
+void formula_debugger::add_debug_info(int arg_number, const std::string& f_name)
 {
 	arg_number_extra_debug_info = arg_number;
 	f_name_extra_debug_info = f_name;

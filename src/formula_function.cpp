@@ -19,6 +19,7 @@
 #include "formula_debugger.hpp"
 #include "formula_function.hpp"
 #include "game_display.hpp"
+#include "game_config.hpp"
 #include "log.hpp"
 
 #include <boost/foreach.hpp>
@@ -113,7 +114,7 @@ private:
 class if_function : public function_expression {
 public:
 	explicit if_function(const args_list& args)
-	     : function_expression("if", args, 3, -1)
+	     : function_expression("if", args, 2, -1)
 	{}
 
 private:
@@ -165,8 +166,14 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const int n = args()[0]->evaluate(variables,fdb).as_int();
-		return variant(n >= 0 ? n : -n);
+		const variant input = args()[0]->evaluate(variables,fdb);
+		if(input.is_decimal()) {
+			const int n = input.as_decimal();
+			return variant(n >= 0 ? n : -n, variant::DECIMAL_VARIANT);
+		} else {
+			const int n = input.as_int();
+			return variant(n >= 0 ? n : -n);
+		}
 	}
 };
 
@@ -179,25 +186,25 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		bool found = false;
-		int res = 0;
+		variant res(0);
 		for(size_t n = 0; n != args().size(); ++n) {
 			const variant v = args()[n]->evaluate(variables,fdb);
 			if(v.is_list()) {
 				for(size_t m = 0; m != v.num_elements(); ++m) {
-					if(!found || v[m].as_int() < res) {
-						res = v[m].as_int();
+					if(!found || v[m] < res) {
+						res = v[m];
 						found = true;
 					}
 				}
-			} else if(v.is_int()) {
-				if(!found || v.as_int() < res) {
-					res = v.as_int();
+			} else if(v.is_int() || v.is_decimal()) {
+				if(!found || v < res) {
+					res = v;
 					found = true;
 				}
 			}
 		}
 
-		return variant(res);
+		return res;
 	}
 };
 
@@ -210,25 +217,25 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		bool found = false;
-		int res = 0;
+		variant res(0);
 		for(size_t n = 0; n != args().size(); ++n) {
 			const variant v = args()[n]->evaluate(variables,fdb);
 			if(v.is_list()) {
 				for(size_t m = 0; m != v.num_elements(); ++m) {
-					if(!found || v[m].as_int() > res) {
-						res = v[m].as_int();
+					if(!found || v[m] > res) {
+						res = v[m];
 						found = true;
 					}
 				}
-			} else if(v.is_int()) {
-				if(!found || v.as_int() > res) {
-					res = v.as_int();
+			} else if(v.is_int() || v.is_decimal()) {
+				if(!found || v > res) {
+					res = v;
 					found = true;
 				}
 			}
 		}
 
-		return variant(res);
+		return res;
 	}
 };
 
@@ -282,12 +289,18 @@ private:
 		{
 			str1 = var1.to_debug_string(NULL, true);
 			LOG_SF << str1 << std::endl;
+			if(game_config::debug) {
+				game_display::get_singleton()->get_chat_manager().add_chat_message(time(NULL), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
+			}
 			return var1;
 		} else {
 			str1 = var1.string_cast();
 			const variant var2 = args()[1]->evaluate(variables,fdb);
 			str2 = var2.to_debug_string(NULL, true);
 			LOG_SF << str1 << str2 << std::endl;
+			if(game_config::debug) {
+				game_display::get_singleton()->get_chat_manager().add_chat_message(time(NULL), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
+			}
 			return var2;
 		}
 	}
@@ -373,15 +386,13 @@ private:
 	}
 };
 
-class substring_function
-	: public function_expression {
+class substring_function : public function_expression {
 public:
 	explicit substring_function(const args_list& args)
 	     : function_expression("substring", args, 2, 3)
 	{}
-
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 
 		std::string result = args()[0]->evaluate(variables, fdb).as_string();
 
@@ -389,31 +400,19 @@ public:
 		if(offset < 0) {
 			offset += result.size();
 			if(offset < 0) {
-				WRN_SF << "[substring] Offset '"
-						<< args()[1]->evaluate(variables, fdb).as_int()
-						<< "' results in a negative start in string '"
-						<< result
-						<< "' and is reset at the beginning of the string.\n";
-
 				offset = 0;
 			}
 		} else {
 			if(static_cast<size_t>(offset) >= result.size()) {
-				WRN_SF << "[substring] Offset '" << offset
-						<< "' is larger than the size of '" << result
-						<< "' and results in an empty string.\n";
-
 				return variant(std::string());
 			}
 		}
 
 		if(args().size() > 2) {
-			const int size = args()[2]->evaluate(variables, fdb).as_int();
+			int size = args()[2]->evaluate(variables, fdb).as_int();
 			if(size < 0) {
-				ERR_SF << "[substring] Size is negative an "
-						<< "empty string is returned.\n";
-
-				return variant(std::string());
+				size = -size;
+				offset = std::max(0, offset - size + 1);
 			}
 			return variant(result.substr(offset, size));
 		} else {
@@ -422,79 +421,268 @@ public:
 	}
 };
 
-class length_function
-	: public function_expression {
+class replace_function : public function_expression {
+public:
+	explicit replace_function(const args_list& args)
+	     : function_expression("replace", args, 3, 4)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+
+		std::string result = args()[0]->evaluate(variables, fdb).as_string();
+		std::string replacement = args().back()->evaluate(variables, fdb).as_string();
+
+		int offset = args()[1]->evaluate(variables, fdb).as_int();
+		if(offset < 0) {
+			offset += result.size();
+			if(offset < 0) {
+				offset = 0;
+			}
+		} else {
+			if(static_cast<size_t>(offset) >= result.size()) {
+				return variant(result);
+			}
+		}
+
+		if(args().size() > 2) {
+			int size = args()[2]->evaluate(variables, fdb).as_int();
+			if(size < 0) {
+				size = -size;
+				offset = std::max(0, offset - size + 1);
+			}
+			return variant(result.replace(offset, size, replacement));
+		} else {
+			return variant(result.replace(offset, std::string::npos, replacement));
+		}
+	}
+};
+
+class length_function : public function_expression {
 public:
 	explicit length_function(const args_list& args)
 	     : function_expression("length", args, 1, 1)
 	{}
-
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
-
-		return variant(
-				args()[0]->evaluate(variables, fdb).as_string().length());
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		return variant(args()[0]->evaluate(variables, fdb).as_string().length());
 	}
 };
 
-class concatenate_function
-		: public function_expression {
+class concatenate_function : public function_expression {
 public:
 		explicit concatenate_function(const args_list& args)
 			: function_expression("concatenate", args, 1, -1)
 		{}
-
 private:
-		variant execute(const formula_callable& variables
-						, formula_debugger *fdb) const {
+		variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+			std::string result;
 
-				std::string result;
+			BOOST_FOREACH(expression_ptr arg, args()) {
+					result += arg->evaluate(variables, fdb).string_cast();
+			}
 
-				BOOST_FOREACH(expression_ptr arg, args()) {
-						result += arg->evaluate(variables, fdb).string_cast();
-				}
-
-				return variant(result);
+			return variant(result);
 		}
 };
 
-class sin_function
-	: public function_expression {
+class sin_function : public function_expression {
 public:
 	explicit sin_function(const args_list& args)
 	     : function_expression("sin", args, 1, 1)
 	{}
-
 private:
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
-
-		const double angle =
-				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
-
-		return variant(
-				  static_cast<int>(1000. * sin(angle * pi<double>() / 180.))
-				, variant::DECIMAL_VARIANT);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = sin(angle * pi<double>() / 180.0);
+		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
 
-class cos_function
-	: public function_expression {
+class cos_function : public function_expression {
 public:
 	explicit cos_function(const args_list& args)
 	     : function_expression("cos", args, 1, 1)
 	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = cos(angle * pi<double>() / 180.0);
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
+
+class tan_function : public function_expression {
+public:
+	explicit tan_function(const args_list& args)
+	     : function_expression("tan", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = tan(angle * pi<double>() / 180.0);
+		if(result != result || result <= INT_MIN || result >= INT_MAX) {
+			return variant();
+		}
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
+
+class asin_function : public function_expression {
+public:
+	explicit asin_function(const args_list& args)
+	     : function_expression("asin", args, 1, 1)
+	{}
 
 private:
-	variant execute(const formula_callable& variables
-			, formula_debugger *fdb) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = asin(num) * 180.0 / pi<double>();
+		if(result != result) {
+			return variant();
+		}
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
 
-		const double angle =
-				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
+class acos_function : public function_expression {
+public:
+	explicit acos_function(const args_list& args)
+	     : function_expression("acos", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = acos(num) * 180.0 / pi<double>();
+		if(result != result) {
+			return variant();
+		}
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
 
-		return variant(
-				  static_cast<int>(1000. * cos(angle * pi<double>() / 180.))
-				, variant::DECIMAL_VARIANT);
+class atan_function : public function_expression {
+public:
+	explicit atan_function(const args_list& args)
+	     : function_expression("acos", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = atan(num) * 180.0 / pi<double>();
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
+
+class sqrt_function : public function_expression {
+public:
+	explicit sqrt_function(const args_list& args)
+	     : function_expression("sqrt", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = sqrt(num);
+		if(result != result) {
+			return variant();
+		}
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
+
+class cbrt_function : public function_expression {
+public:
+	explicit cbrt_function(const args_list& args)
+	     : function_expression("cbrt", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = num < 0 ? -pow(-num, 1.0l / 3.0l) : pow(num, 1.0l / 3.0l);
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
+
+class root_function : public function_expression {
+public:
+	explicit root_function(const args_list& args)
+	     : function_expression("root", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double base = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double root = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0l / root) : pow(base, 1.0l / root);
+		if(result != result) {
+			return variant();
+		}
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
+
+class log_function : public function_expression {
+public:
+	explicit log_function(const args_list& args)
+	: function_expression("log", args, 1, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		if(args().size() == 1) {
+			const double result = log(num);
+			if(result != result) {
+				return variant();
+			}
+			return variant(result, variant::DECIMAL_VARIANT);
+		} else {
+			const double base = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
+			const double result = log(num) / log(base);
+			if(result != result) {
+				return variant();
+			}
+			return variant(result, variant::DECIMAL_VARIANT);
+		}
+	}
+};
+
+class exp_function : public function_expression {
+public:
+	explicit exp_function(const args_list& args)
+	     : function_expression("exp", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double result = exp(num);
+		if(result == 0 || result >= INT_MAX) {
+			// These are range errors rather than NaNs,
+			// but I figure it's better than returning INT_MIN.
+			return variant();
+		}
+		return variant(result, variant::DECIMAL_VARIANT);
+	}
+};
+
+class pi_function : public function_expression {
+public:
+	explicit pi_function(const args_list& args)
+	     : function_expression("pi", args, 0, 0)
+	{}
+private:
+	variant execute(const formula_callable&, formula_debugger*) const {
+		return variant(pi<double>(), variant::DECIMAL_VARIANT);
+	}
+};
+
+class hypot_function : public function_expression {
+public:
+	explicit hypot_function(const args_list& args)
+	     : function_expression("hypot", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const double x = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		const double y = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
+		return variant(hypot(x,y), variant::DECIMAL_VARIANT);
 	}
 };
 
@@ -635,6 +823,28 @@ private:
 	}
 };
 
+class reverse_function : public function_expression {
+public:
+	explicit reverse_function(const args_list& args)
+	     : function_expression("reverse", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant& arg = args()[0]->evaluate(variables,fdb);
+		if(arg.is_string()) {
+			std::string str = args()[0]->evaluate(variables,fdb).as_string();
+			std::reverse(str.begin(), str.end());
+			return variant(str);
+		} else if(arg.is_list()) {
+			std::vector<variant> list = args()[0]->evaluate(variables,fdb).as_list();
+			std::reverse(list.begin(), list.end());
+			return variant(&list);
+		}
+		return variant();
+	}
+};
+
 class contains_string_function : public function_expression {
 public:
 	explicit contains_string_function(const args_list& args)
@@ -646,29 +856,23 @@ private:
 		std::string str = args()[0]->evaluate(variables,fdb).as_string();
 		std::string key = args()[1]->evaluate(variables,fdb).as_string();
 
-		if (key.size() > str.size())
-			return variant(0);
+		return variant(str.find(key) != std::string::npos);
+	}
+};
 
-		std::string::iterator str_it, key_it, tmp_it;
+class find_string_function : public function_expression {
+public:
+	explicit find_string_function(const args_list& args)
+	     : function_expression("find_string", args, 2, 2)
+	{}
 
-		for(str_it = str.begin(); str_it != str.end() - (key.size()-1); ++str_it)
-		{
-			key_it = key.begin();
-			if((key_it) == key.end()) {
-				return variant(1);
-			}
-			tmp_it = str_it;
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const std::string str = args()[0]->evaluate(variables,fdb).as_string();
+		const std::string key = args()[1]->evaluate(variables,fdb).as_string();
 
-			while( *tmp_it == *key_it)
-			{
-				if( ++key_it == key.end())
-					return variant(1);
-				if( ++tmp_it == str.end())
-					return variant(0);
-			}
-		}
-
-		return variant(0);
+		size_t pos = str.find(key);
+		return variant(static_cast<int>(pos));
 	}
 };
 
@@ -787,25 +991,97 @@ private:
 	}
 };
 
+class take_while_function : public function_expression {
+public:
+	explicit take_while_function(const args_list& args)
+		: function_expression("take_while", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant& items = args()[0]->evaluate(variables, fdb);
+		variant_iterator it = items.begin();
+		for(; it != items.end(); ++it) {
+			const variant matches = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
+			if (!matches.as_bool())
+				break;
+		}
+		std::vector<variant> result(items.begin(), it);
+		return variant(&result);
+	}
+};
+
+class zip_function : public function_expression {
+public:
+	explicit zip_function(const args_list& args)
+	    : function_expression("zip", args, 1, -1)
+	{}
+private:
+	struct indexer {
+		size_t i;
+		explicit indexer(size_t i) : i(i) {}
+		variant operator()(const variant& v) {
+			if(i >= v.num_elements()) {
+				return variant();
+			} else {
+				return v[i];
+			}
+		}
+	};
+	struct comparator {
+		bool operator()(const variant& a, const variant& b) {
+			return a.num_elements() < b.num_elements();
+		}
+	};
+	std::vector<variant> get_input(const formula_callable& variables, formula_debugger* fdb) const {
+		if(args().size() == 1) {
+			const variant list = args()[0]->evaluate(variables, fdb);
+			return std::vector<variant>(list.begin(), list.end());
+		} else {
+			std::vector<variant> input;
+			input.reserve(args().size());
+			BOOST_FOREACH(expression_ptr expr, args()) {
+				input.push_back(expr->evaluate(variables, fdb));
+			}
+			return input;
+		}
+	}
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const std::vector<variant> input = get_input(variables, fdb);
+		std::vector<variant> output;
+		// So basically this does [[a,b,c],[d,e,f],[x,y,z]] -> [[a,d,x],[b,e,y],[c,f,z]]
+		// Or [[a,b,c,d],[x,y,z]] -> [[a,x],[b,y],[c,z],[d,null()]]
+		size_t max_i = std::max_element(input.begin(), input.end(), comparator())->num_elements();
+		output.reserve(max_i);
+		for(size_t i = 0; i < max_i; i++) {
+			std::vector<variant> elem(input.size());
+			std::transform(input.begin(), input.end(), elem.begin(), indexer(i));
+			output.push_back(variant(&elem));
+		}
+		return variant(&output);
+	}
+};
+
 class reduce_function : public function_expression {
 public:
 	explicit reduce_function(const args_list& args)
-	    : function_expression("reduce", args, 2, 2)
+	    : function_expression("reduce", args, 2, 3)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const variant items = args()[0]->evaluate(variables,fdb);
+		const variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables,fdb);
 
 		if(items.num_elements() == 0)
-			return variant();
-		else if(items.num_elements() == 1)
-			return items[0];
+			return initial;
 
 		variant_iterator it = items.begin();
-		variant res(*it);
+		variant res(initial.is_null() ? *it : initial);
+		if(res != initial) {
+			++it;
+		}
 		map_formula_callable self_callable;
 		self_callable.add_ref();
-		for(++it; it != items.end(); ++it) {
+		for(; it != items.end(); ++it) {
 			self_callable.add("a", res);
 			self_callable.add("b", *it);
 			res = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
@@ -862,7 +1138,7 @@ private:
 class head_function : public function_expression {
 public:
 	explicit head_function(const args_list& args)
-	    : function_expression("head", args, 1, 1)
+	    : function_expression("head", args, 1, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -871,7 +1147,40 @@ private:
 		if(it == items.end()) {
 			return variant();
 		}
-		return *it;
+		if(args().size() == 1) {
+			return *it;
+		}
+		const int n = items.num_elements(), req = args()[1]->evaluate(variables,fdb).as_int();
+		const int count = req < 0 ? n - std::min(-req, n) : std::min(req, n);
+		variant_iterator end = it;
+		std::advance(end, count);
+		std::vector<variant> res;
+		std::copy(it, end, std::back_inserter(res));
+		return variant(&res);
+	}
+};
+
+class tail_function : public function_expression {
+public:
+	explicit tail_function(const args_list& args)
+	    : function_expression("tail", args, 1, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant items = args()[0]->evaluate(variables,fdb);
+		variant_iterator it = items.end();
+		if(it == items.begin()) {
+			return variant();
+		}
+		if(args().size() == 1) {
+			return *--it;
+		}
+		const int n = items.num_elements(), req = args()[1]->evaluate(variables,fdb).as_int();
+		const int count = req < 0 ? n - std::min(-req, n) : std::min(req, n);
+		std::advance(it, -count);
+		std::vector<variant> res;
+		std::copy(it, items.end(), std::back_inserter(res));
+		return variant(&res);
 	}
 };
 
@@ -1011,6 +1320,33 @@ private:
 		return variant(new location_callable(map_location(
 							     args()[0]->evaluate(variables,add_debug_info(fdb,0,"loc:x")).as_int()-1,
 							     args()[1]->evaluate(variables,add_debug_info(fdb,1,"loc:y")).as_int()-1)));
+	}
+};
+
+class distance_between_function : public function_expression {
+public:
+	explicit distance_between_function(const args_list& args)
+	: function_expression("distance_between", args, 2, 2)
+	{}
+	
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
+		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"distance_between:location_B")))->loc();
+		return variant(distance_between(loc1, loc2));
+	}
+};
+
+
+class type_function : public function_expression {
+public:
+	explicit type_function(const args_list& args)
+	    : function_expression("type", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant& v = args()[0]->evaluate(variables, fdb);
+		return variant(v.type_string());
 	}
 };
 
@@ -1162,12 +1498,17 @@ functions_map& get_functions_map() {
 		FUNCTION(wave);
 		FUNCTION(sort);
 		FUNCTION(contains_string);
+		FUNCTION(find_string);
+		FUNCTION(reverse);
 		FUNCTION(filter);
 		FUNCTION(find);
 		FUNCTION(map);
+		FUNCTION(zip);
+		FUNCTION(take_while);
 		FUNCTION(reduce);
 		FUNCTION(sum);
 		FUNCTION(head);
+		FUNCTION(tail);
 		FUNCTION(size);
 		FUNCTION(null);
 		FUNCTION(ceil);
@@ -1176,16 +1517,30 @@ functions_map& get_functions_map() {
 		FUNCTION(as_decimal);
 		FUNCTION(refcount);
 		FUNCTION(loc);
+		FUNCTION(distance_between);
 		FUNCTION(index_of);
 		FUNCTION(keys);
 		FUNCTION(values);
 		FUNCTION(tolist);
 		FUNCTION(tomap);
 		FUNCTION(substring);
+		FUNCTION(replace);
 		FUNCTION(length);
 		FUNCTION(concatenate);
 		FUNCTION(sin);
 		FUNCTION(cos);
+		FUNCTION(tan);
+		FUNCTION(asin);
+		FUNCTION(acos);
+		FUNCTION(atan);
+		FUNCTION(sqrt);
+		FUNCTION(cbrt);
+		FUNCTION(root);
+		FUNCTION(log);
+		FUNCTION(exp);
+		FUNCTION(pi);
+		FUNCTION(hypot);
+		FUNCTION(type);
 #undef FUNCTION
 	}
 

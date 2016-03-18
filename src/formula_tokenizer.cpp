@@ -35,7 +35,7 @@ void raise_exception(iterator& i1, iterator i2, std::string str) {
 
 }
 
-token get_token(iterator& i1, iterator i2) {
+token get_token(iterator& i1, const iterator i2) {
 
 	iterator it = i1;
 	if( *i1 >= 'A' ) {
@@ -52,12 +52,14 @@ token get_token(iterator& i1, iterator i2) {
 
 			//check if this string matches any keyword or an operator
 			//possible operators and keywords:
-			// d, or, def, and, not, fai, where, faiend, functions
+			// d, or, in, def, and, not, wfl, where, wflend, functions
 			if( diff == 1 ) {
 				if( *it == 'd' )
 					t = TOKEN_OPERATOR;
 			} else if( diff == 2 ) {
 				if( *it == 'o' && *(it+1) == 'r' )
+					t = TOKEN_OPERATOR;
+				else if( *it == 'i' && *(it+1) == 'n' )
 					t = TOKEN_OPERATOR;
 			} else if( diff == 3 ) {
 				if( *it == 'd' ) { //def
@@ -72,6 +74,9 @@ token get_token(iterator& i1, iterator i2) {
 				} else if( *it == 'f' ) { //fai
 					if( *(it+1) == 'a' && *(it+2) == 'i' )
 						t = TOKEN_KEYWORD;
+				} else if( *it == 'w' ) { //wfl
+					if( *(it+1) == 'f' && *(it+2) == 'l' )
+						t = TOKEN_KEYWORD;
 				}
 			} else if( diff == 5 ) {
 				std::string s(it, i1);
@@ -80,6 +85,8 @@ token get_token(iterator& i1, iterator i2) {
 			} else if( diff == 6 ) {
 				std::string s(it, i1);
 				if( s == "faiend" )
+					t = TOKEN_KEYWORD;
+				else if( s == "wflend" )
 					t = TOKEN_KEYWORD;
 			} else if( diff == 9 ) {
 				std::string s(it, i1);
@@ -99,6 +106,12 @@ token get_token(iterator& i1, iterator i2) {
 			if( *i1 == '^' )
 				return token( it, ++i1, TOKEN_OPERATOR );
 
+			if( *i1 == '~' )
+				return token( it, ++i1, TOKEN_OPERATOR );
+
+			//unused characters in this range:
+			// \ ` { | }
+			// Note: {} should never be used since they play poorly with WML preprocessor
 		}
 	} else {
 		//limit search to the lower-half of the ASCII table
@@ -147,6 +160,8 @@ token get_token(iterator& i1, iterator i2) {
 				//current character is between ':' and '@'
 				//possible tokens at this point that we are interested in:
 				// ; < = > <= >=
+				//unused characters in this range:
+				// : ? @
 
 				if( *i1 == ';' ) {
 					return token( it, ++i1, TOKEN_SEMICOLON);
@@ -173,6 +188,12 @@ token get_token(iterator& i1, iterator i2) {
 				}
 			}
 		//current character is between '!' and '/'
+		//possible tokens:
+		// , . .+ .- .* ./ .. ( ) ' # + - -> * / % !=
+		//unused characters:
+		// ! " $ &
+		// ! is used only as part of !=
+		// Note: " should never be used since it plays poorly with WML
 		} else if ( *i1 == ',' ) {
 			return token( it, ++i1, TOKEN_COMMA);
 
@@ -180,7 +201,7 @@ token get_token(iterator& i1, iterator i2) {
 			++i1;
 
 			if( i1 != i2 ) {
-				if( *i1 == '+' || *i1 == '-' || *i1 == '*' || *i1 == '/')
+				if( *i1 == '+' || *i1 == '-' || *i1 == '*' || *i1 == '/' || *i1 == '.')
 					return token( it, ++i1, TOKEN_OPERATOR );
 				else
 					return token( it, i1, TOKEN_OPERATOR );
@@ -195,9 +216,18 @@ token get_token(iterator& i1, iterator i2) {
 			return token( it, ++i1, TOKEN_RPARENS);
 
 		} else if ( *i1 == '\'' ) {
+			int bracket_depth = 0;
 			++i1;
-			while( i1 != i2 && *i1 != '\'' )
+			while (i1 != i2) {
+				if (*i1 == '[') {
+					bracket_depth++;
+				} else if(bracket_depth > 0 && *i1 == ']') {
+					bracket_depth--;
+				} else if(bracket_depth == 0 && *i1 == '\'') {
+					break;
+				}
 				++i1;
+			}
 
 			if( i1 != i2 ) {
 				return token( it, ++i1, TOKEN_STRING_LITERAL );

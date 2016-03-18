@@ -23,7 +23,7 @@
 
 namespace game_logic {
 
-formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const char *f_name)
+formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const std::string& f_name)
 {
 	if (fdb==NULL) {
 		return NULL;

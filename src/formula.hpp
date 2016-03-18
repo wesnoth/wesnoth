@@ -59,6 +59,7 @@ public:
 	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=NULL);
 	explicit formula(const std::string& str, function_symbol_table* symbols=NULL);
 	explicit formula(const formula_tokenizer::token* i1, const formula_tokenizer::token* i2, function_symbol_table* symbols=NULL);
+	~formula();
 	const std::string& str() const { return str_; }
 
 private:
@@ -68,6 +69,8 @@ private:
    	{}
 	expression_ptr expr_;
 	std::string str_;
+	function_symbol_table* symbols_;
+	bool managing_symbols;
 	friend class formula_debugger;
 };
 
