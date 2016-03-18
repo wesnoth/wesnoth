@@ -663,7 +663,7 @@ paths.append(os.path.normpath(LOOT + toolspec['nsis']['path']))  # NSIS
 
 batfile = """\
 @echo off
-set PATH=%PATH%;{path}
+set PATH={path};%PATH%
 "{python}" {scons} %*
 """.format(
   path=os.pathsep.join(paths),
