@@ -201,11 +201,14 @@ variant luaW_tofaivariant(lua_State* L, int i) {
  */
 int lua_formula_bridge::intf_eval_formula(lua_State *L)
 {
-	using namespace game_logic;
-	if(!lua_isstring(L, 1)) {
-		luaL_typerror(L, 1, "string");
+	bool need_delete = false;
+	fwrapper* form;
+	if(luaW_hasmetatable(L, 1, formulaKey)) {
+		form = static_cast<fwrapper*>(lua_touserdata(L, 1));
+	} else {
+		need_delete = true;
+		form = new fwrapper(luaL_checkstring(L, 1));
 	}
-	const formula form(lua_tostring(L, 1));
 	boost::shared_ptr<formula_callable> context, fallback;
 	if(unit* u = luaW_tounit(L, 2)) {
 		context.reset(new unit_callable(*u));
@@ -214,7 +217,75 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 	} else {
 		context.reset(new map_formula_callable);
 	}
-	variant result = form.evaluate(*context);
+	variant result = form->evaluate(*context);
 	luaW_pushfaivariant(L, result);
+	if(need_delete) {
+		delete form;
+	}
 	return 1;
+}
+
+int lua_formula_bridge::intf_compile_formula(lua_State* L)
+{
+	if(!lua_isstring(L, 1)) {
+		luaL_typerror(L, 1, "string");
+	}
+	new(lua_newuserdata(L, sizeof(fwrapper))) fwrapper(lua_tostring(L, 1));
+	lua_pushlightuserdata(L, formulaKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+lua_formula_bridge::fwrapper::fwrapper(const std::string& code, game_logic::function_symbol_table* functions)
+	: formula_ptr(new formula(code, functions))
+{
+}
+
+std::string lua_formula_bridge::fwrapper::str() const
+{
+	if(formula_ptr) {
+		return formula_ptr->str();
+	}
+	return "";
+}
+
+variant lua_formula_bridge::fwrapper::evaluate(const formula_callable& variables, formula_debugger* fdb) const
+{
+	if(formula_ptr) {
+		return formula_ptr->evaluate(variables, fdb);
+	}
+	return variant();
+}
+
+static int impl_formula_collect(lua_State* L)
+{
+	lua_formula_bridge::fwrapper* form = static_cast<lua_formula_bridge::fwrapper*>(lua_touserdata(L, 1));
+	form->~fwrapper();
+	return 0;
+}
+
+static int impl_formula_tostring(lua_State* L)
+{
+	lua_formula_bridge::fwrapper* form = static_cast<lua_formula_bridge::fwrapper*>(lua_touserdata(L, 1));
+	const std::string str = form->str();
+	lua_pushlstring(L, str.c_str(), str.size());
+	return 1;
+}
+
+std::string lua_formula_bridge::register_metatables(lua_State* L)
+{
+	lua_pushlightuserdata(L, formulaKey);
+	lua_createtable(L, 0, 4);
+	lua_pushcfunction(L, impl_formula_collect);
+	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, impl_formula_tostring);
+	lua_setfield(L, -2, "__tostring");
+	lua_pushcfunction(L, intf_eval_formula);
+	lua_setfield(L, -2, "__call");
+	lua_pushstring(L, "formula");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+	
+	return "Adding formula metatable...";
 }

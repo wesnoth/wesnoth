@@ -4257,6 +4257,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "add_modification",         &intf_add_modification         },
 		{ "advance_unit",             &intf_advance_unit             },
+		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug",                    &intf_debug                    },
@@ -4455,6 +4456,9 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_pushstring(L, "unit variables");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
+	
+	// Create formula bridge metatables
+	cmd_log_ << lua_formula_bridge::register_metatables(L);
 
 	// Create the vconfig metatable.
 	cmd_log_ << lua_common::register_vconfig_metatable(L);
