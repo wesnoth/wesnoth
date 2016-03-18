@@ -499,6 +499,12 @@ void part_ui::render_title_box()
 		break; // already set before
 	}
 
+	update_locker locker(video_);
+
+	next_button_.hide();
+	back_button_.hide();
+	play_button_.hide();
+
 	sdl::draw_solid_tinted_rectangle(
 		base_rect_.x + titlebox_x - titleshadow_padding,
 		base_rect_.y + titlebox_y - titleshadow_padding,
@@ -517,6 +523,11 @@ void part_ui::render_title_box()
 		static_cast<size_t>(std::max(0, titlebox_w)),
 		static_cast<size_t>(std::max(0, titlebox_h))
 	);
+
+	next_button_.hide(false);
+	back_button_.hide(false);
+	play_button_.hide(false);
+
 #endif
 }
 
