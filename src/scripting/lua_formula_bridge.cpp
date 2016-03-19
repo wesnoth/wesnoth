@@ -136,7 +136,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			lua_settable(L, -3);
 		}
 	} else if(val.is_callable()) {
-		// First try a few special cases (well, currently, only one)
+		// First try a few special cases
 		if(unit_callable* u_ref = val.try_convert<unit_callable>()) {
 			const unit& u = u_ref->get_unit();
 			unit_map::iterator un_it = resources::units->find(u.get_location());
@@ -148,6 +148,8 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			lua_pushlightuserdata(L, getunitKey);
 			lua_rawget(L, LUA_REGISTRYINDEX);
 			lua_setmetatable(L, -2);
+		} else if(location_callable* loc_ref = val.try_convert<location_callable>()) {
+			luaW_pushlocation(L, loc_ref->loc());
 		} else {
 			// If those fail, convert generically to a map
 			const formula_callable* obj = val.as_callable();
@@ -181,12 +183,15 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 		case LUA_TUSERDATA:
 			static t_string tstr;
 			static vconfig vcfg = vconfig::unconstructed_vconfig();
+			static map_location loc;
 			if(luaW_totstring(L, i, tstr)) {
 				return variant(tstr.str());
 			} else if(luaW_tovconfig(L, i, vcfg)) {
 				return variant(new config_callable(vcfg.get_parsed_config()));
 			} else if(unit* u = luaW_tounit(L, i)) {
 				return variant(new unit_callable(*u));
+			} else if(luaW_tolocation(L, i, loc)) {
+				return variant(new location_callable(loc));
 			}
 			break;
 	}
