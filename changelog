@@ -48,7 +48,7 @@ Version 1.13.4+dev:
        formula contexts, which means that they can be used outside FormulaAI.
        However, non-FormulaAI functions are currently local to the formula
        that declares them.
-     * Maps containing string keyss that are valid identifiers can now be
+     * Maps containing string keys that are valid identifiers can now be
        indexed with the dot operator instead of the indexing operator.
      * Strings can now be indexed via 'string'.char[n]. Also supported are
        'string'.word[n] and 'string'.item[n] (the latter splits on commas)

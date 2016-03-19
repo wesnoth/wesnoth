@@ -27,6 +27,21 @@ SDL version 1.2.x has been removed in favour of SDL version 2.0.x. The build sys
 [/list]
 [/rasection]
 
+[rasection="Wesnoth Formula Language update"]
+The Wesnoth formula language used by $(...) substitution, the formula= key in standard unit filters, and a few other places has received some significant updates. The changlog has the full list, but some highlights are:
+[list]
+[*]New operators for string concatenation, ranges, and testing containment
+[*]New string interpolation syntax
+[*]Dot operator can access identifier-friendly string keys in maps
+[*]Function definitions work outside FormulaAI and GUI2
+[*]Many new functions for math and string manipulation
+[*]Exponentiation operator is now right-associative (meaning 2^3^2 now produces 512 rather than 64)
+[*]Dice operator is now synced
+[*]Improved formula debugger
+[/list]
+The "fai" and "faiend" keywords are deprecated in favour of "wfl" and "wflend" respectively. This is part of a move to more clearly distinguish [wiki]Wesnoth Formula Language[/wiki], the language itself, from [wiki]FormulaAI[/wiki], which is just one use of the language in Wesnoth.
+[/rasection]
+
 ==========
 KNOWN BUGS
 ==========
