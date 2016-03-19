@@ -865,8 +865,6 @@ void display::layout_buttons()
 			const SDL_Rect& loc = i->location(screen_area());
 			s->set_location(loc);
 			s->set_measurements(0,0);
-			s->set_volatile(
-				sdl::rects_overlap(s->location(),map_outside_area()));
 		}
 	}
 
@@ -880,8 +878,6 @@ void display::layout_buttons()
 			b->set_measurements(0,0);
 			b->set_label(i->title());
 			b->set_image(i->image());
-			b->set_volatile(
-					sdl::rects_overlap(b->location(),map_outside_area()));
 		}
 	}
 
@@ -895,8 +891,6 @@ void display::layout_buttons()
 			b->set_measurements(0,0);
 			b->set_label(i->title());
 			b->set_image(i->image());
-			b->set_volatile(
-						sdl::rects_overlap(b->location(),map_outside_area()));
 		}
 	}
 }
