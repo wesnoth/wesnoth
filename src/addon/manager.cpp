@@ -36,7 +36,6 @@
 #include "marked-up_text.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
-#include "video.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "addon/client.hpp"

@@ -29,6 +29,7 @@
 #include "log.hpp"
 #include "sound.hpp"
 #include "text.hpp"
+#include "video.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)

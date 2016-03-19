@@ -19,7 +19,6 @@
 #include "default_map_generator.hpp"
 
 #include "default_map_generator_job.hpp"
-#include "video.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"

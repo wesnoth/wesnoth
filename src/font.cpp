@@ -25,7 +25,6 @@
 #include "marked-up_text.hpp"
 #include "text.hpp"
 #include "tooltips.hpp"
-#include "video.hpp"
 #include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/parser.hpp"

@@ -24,11 +24,10 @@
 #include "key.hpp"
 #include "storyscreen/part.hpp"
 #include "events.hpp"
-#include "video.hpp"
 // #include "widgets/button.hpp"
 
+class CVideo;
 class display;
-
 
 namespace gui { class button; }
 

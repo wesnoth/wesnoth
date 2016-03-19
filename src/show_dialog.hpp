@@ -16,14 +16,13 @@
 #define SHOW_DIALOG_HPP_INCLUDED
 
 class config;
-class CVideo;
 class display;
 
 #include "cursor.hpp"
 #include "floating_label.hpp"
 #include "font.hpp"
 #include "tooltips.hpp"
-
+#include "video.hpp"
 #include "widgets/menu.hpp"
 
 namespace gui

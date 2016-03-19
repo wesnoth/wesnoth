@@ -22,10 +22,10 @@
 
 #include "events.hpp"
 #include "interface.hpp"
-#include "video.hpp" //for resize_lock
 
 #include <boost/shared_ptr.hpp>
 
+class CVideo;
 class vconfig;
 
 namespace storyscreen {

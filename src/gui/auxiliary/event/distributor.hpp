@@ -42,6 +42,8 @@
 #include "gui/auxiliary/event/handler.hpp"
 #include "gui/lib/types/point.hpp"
 #include "serialization/unicode_types.hpp"
+#include "video.hpp"
+
 #include <string>
 #include <vector>
 

@@ -17,7 +17,6 @@
 
 #include "events.hpp"
 #include "sdl/utils.hpp"
-#include "video.hpp"
 
 class CVideo;
 

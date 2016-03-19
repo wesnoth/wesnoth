@@ -23,7 +23,6 @@
 #include "image.hpp"
 #include "preferences_display.hpp"
 #include "sdl/rect.hpp"
-#include "video.hpp"
 
 #include <iostream>
 #include <boost/logic/tribool.hpp>
