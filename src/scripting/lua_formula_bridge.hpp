@@ -25,6 +25,7 @@ namespace wfl {
 	class function_symbol_table;
 	class formula_debugger;
 	class formula_callable;
+	class formula_expression;
 	class variant;
 }
 
@@ -36,10 +37,14 @@ namespace lua_formula_bridge {
 
 	class fwrapper {
 		std::shared_ptr<wfl::formula> formula_ptr;
+		std::shared_ptr<wfl::formula_expression> expr_ptr;
 	public:
 		fwrapper(const std::string& code, wfl::function_symbol_table* functions = nullptr);
+		fwrapper(std::shared_ptr<wfl::formula_expression> expr);
 		std::string str() const;
 		wfl::variant evaluate(const wfl::formula_callable& variables, wfl::formula_debugger* fdb = nullptr) const;
+		std::shared_ptr<wfl::formula> to_formula() const;
+		std::shared_ptr<wfl::formula_expression> to_expr() const;
 	};
 
 	using fpointer = std::unique_ptr<fwrapper, std::function<void(fwrapper*)>>;

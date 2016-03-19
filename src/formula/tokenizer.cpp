@@ -14,12 +14,19 @@
 */
 
 #include "formula/tokenizer.hpp"
+#include "formula/formula.hpp" // for formula::keywords
 
 #include <locale>
 #include <sstream>
 
 namespace wfl
 {
+
+// This is defined here to make it easy to remember to update it if a new one is added
+const std::set<std::string> formula::keywords = {
+	"d", "or", "def", "and", "not", "wfl", "fai", "where", "wflend", "faiend", "functions",
+};
+
 namespace tokenizer
 {
 
