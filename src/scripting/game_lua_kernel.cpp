@@ -4538,6 +4538,13 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	{
 		set_wml_action(handler.first, handler.second);
 	}
+	luaW_getglobal(L, "wesnoth", "effects", NULL);
+	BOOST_FOREACH(const std::string& effect, unit::builtin_effects) {
+		lua_pushstring(L, effect.c_str());
+		push_builtin_effect();
+		lua_rawset(L, -3);
+	}
+	lua_settop(L, 0);
 }
 
 void game_lua_kernel::initialize(const config& level)
@@ -4549,6 +4556,7 @@ void game_lua_kernel::initialize(const config& level)
 	// note:
 	// This table is redundant to the return value of wesnoth.get_sides({}).
 	// Still needed for backwards compatibility.
+	lua_settop(L, 0);
 	lua_getglobal(L, "wesnoth");
 
 	lua_pushstring(L, "get_sides");
@@ -4737,6 +4745,59 @@ bool game_lua_kernel::run_event(game_events::queued_event const &ev)
 }
 
 /**
+ * Applies its upvalue as an effect
+ * Arg 1: The unit to apply to
+ * Arg 3: The [effect] tag contents
+ * Arg 3: If false, only build description
+ * Return: The description of the effect
+ */
+int game_lua_kernel::cfun_builtin_effect(lua_State *L)
+{
+	std::string which_effect = lua_tostring(L, lua_upvalueindex(1));
+	bool need_apply = lua_toboolean(L, lua_upvalueindex(2));
+	// Argument 1 is the implicit "self" argument, which isn't needed here
+	lua_unit u(luaW_checkunit(L, 2));
+	config cfg = luaW_checkconfig(L, 3);
+
+	// The times= key is supposed to be ignored by the effect function.
+	// However, just in case someone doesn't realize this, we will set it to 1 here.
+	cfg["times"] = 1;
+	
+	if(need_apply) {
+		u.get()->apply_builtin_effect(which_effect, cfg);
+		return 0;
+	} else {
+		std::string description = u.get()->describe_builtin_effect(which_effect, cfg);
+		lua_pushstring(L, description.c_str());
+		return 1;
+	}
+}
+
+/**
+ * Registers a function for use as an effect handler.
+ */
+void game_lua_kernel::push_builtin_effect()
+{
+	lua_State *L = mState;
+
+	// The effect name is at the top of the stack
+	int str_i = lua_gettop(L);
+	lua_newtable(L); // The functor table
+	lua_newtable(L); // The functor metatable
+	lua_pushstring(L, "__call");
+	lua_pushvalue(L, str_i);
+	lua_pushboolean(L, true);
+	lua_pushcclosure(L, &dispatch<&game_lua_kernel::cfun_builtin_effect>, 2);
+	lua_rawset(L, -3); // Set the call metafunction
+	lua_pushstring(L, "__descr");
+	lua_pushvalue(L, str_i);
+	lua_pushboolean(L, false);
+	lua_pushcclosure(L, &dispatch<&game_lua_kernel::cfun_builtin_effect>, 2);
+	lua_rawset(L, -3); // Set the descr "metafunction"
+	lua_setmetatable(L, -2); // Apply the metatable to the functor table
+}
+
+/**
  * Executes its upvalue as a wml action.
  */
 int game_lua_kernel::cfun_wml_action(lua_State *L)
@@ -4848,29 +4909,70 @@ bool game_lua_kernel::run_filter(char const *name, unit const &u)
 	return b;
 }
 
-void game_lua_kernel::apply_effect(const std::string& name, unit& u, const config& cfg)
+std::string game_lua_kernel::apply_effect(const std::string& name, unit& u, const config& cfg, bool need_apply)
 {
 	lua_State *L = mState;
+	int top = lua_gettop(L);
+	std::string descr;
 	// Stack: nothing
-	if (!luaW_getglobal(L, "wesnoth", "effects", name.c_str(), NULL)) {
-		return;
-	}
-	map_locker(this);
-	// Stack: effect_func
 	lua_unit* lu = luaW_pushlocalunit(L, u);
-	// Stack: effect_func, unit
-	lua_pushvalue(L, -2);
-	// Stack: effect_func, unit, effect_func
-	// we need to push the lua unit to the stack twice to ensure that it won't be collected during the function call.
-	lua_pushvalue(L, -2);
-	// Stack: effect_func, unit, effect_func, unit
-	lua_push(L, cfg);
-	// Stack: effect_func, unit, effect_func, unit, cfg
-	luaW_pcall(L, 2, 0, true);
-	// Stack: effect_func, unit
+	// Stack: unit
+	// (Note: The unit needs to be on the stack twice to prevent untimely GC.)
+	luaW_pushconfig(L, cfg);
+	// Stack: unit, cfg
+	if(luaW_getglobal(L, "wesnoth", "effects", name.c_str(), NULL)) {
+		map_locker(this);
+		// Stack: unit, cfg, effect
+		if(lua_istable(L, -1)) {
+			// Effect is implemented by a table with __call and __descr
+			if(need_apply) {
+				lua_pushvalue(L, -1);
+				// Stack: unit, cfg, effect, effect
+				lua_pushvalue(L, top + 1);
+				// Stack: unit, cfg, effect, effect, unit
+				lua_pushvalue(L, top + 2);
+				// Stack: unit, cfg, effect, effect, unit, cfg
+				luaW_pcall(L, 2, 0);
+				// Stack: unit, cfg, effect
+			}
+			if(luaL_getmetafield(L, -1, "__descr")) {
+				// Stack: unit, cfg, effect, __descr
+				if(lua_isstring(L, -1)) {
+					// __descr was a static string
+					descr = lua_tostring(L, -1);
+				} else {
+					lua_pushvalue(L, -2);
+					// Stack: unit, cfg, effect, __descr, effect
+					lua_pushvalue(L, top + 1);
+					// Stack: unit, cfg, effect, __descr, effect, unit
+					lua_pushvalue(L, top + 2);
+					// Stack: unit, cfg, effect, __descr, effect, unit, cfg
+					luaW_pcall(L, 3, 1);
+					if(lua_isstring(L, -1) && !lua_isnumber(L, -1)) {
+						descr = lua_tostring(L, -1);
+					} else {
+						ERR_LUA << "Effect __descr metafunction should have returned a string, but instead returned ";
+						if(lua_isnone(L, -1)) {
+							ERR_LUA << "nothing";
+						} else {
+							ERR_LUA << lua_typename(L, lua_type(L, -1));
+						}
+					}
+				}
+			}
+		} else if(need_apply) {
+			// Effect is assumed to be a simple function; no description is provided
+			lua_pushvalue(L, top + 1);
+			// Stack: unit, cfg, effect, unit
+			lua_pushvalue(L, top + 2);
+			// Stack: unit, cfg, effect, unit, cfg
+			luaW_pcall(L, 2, 0);
+			// Stack: unit, cfg
+		}
+	}
+	lua_settop(L, top);
 	lu->clear_ref();
-	lua_pop(L, 2);
-	return;
+	return descr;
 }
 
 ai::lua_ai_context* game_lua_kernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)

@@ -157,6 +157,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_theme_item(lua_State *L, std::string name);
 	int impl_theme_items_get(lua_State *L);
 	int impl_theme_items_set(lua_State *L);
+	int cfun_builtin_effect(lua_State *L);
 	int cfun_wml_action(lua_State *L);
 	int intf_fire_event(lua_State *L);
 	int intf_fire_wml_menu_item(lua_State *L);
@@ -184,11 +185,12 @@ public:
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 
-	void apply_effect(const std::string& name, unit& u, const config& cfg);
+	std::string apply_effect(const std::string& name, unit& u, const config& cfg, bool need_apply);
 	void initialize(const config& level);
 	void save_game(config & level);
 	void load_game(const config& level);
 	bool run_event(game_events::queued_event const &);
+	void push_builtin_effect();
 	void set_wml_action(std::string const &, game_events::wml_action::handler);
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);

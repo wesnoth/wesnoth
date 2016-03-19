@@ -338,6 +338,10 @@ public:
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 	void expire_modifications(const std::string & duration);
+	
+	static const std::set<std::string> builtin_effects;
+	void apply_builtin_effect(std::string type, const config& effect);
+	std::string describe_builtin_effect(std::string type, const config& effect);
 
 	bool move_interrupted() const { return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0; }
 	const map_location& get_interrupted_move() const { return interrupted_move_; }
