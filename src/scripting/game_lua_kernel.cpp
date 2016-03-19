@@ -2310,9 +2310,9 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		if (!map().on_board(loc)) {
 			return luaL_argerror(L, 1, "invalid location");
 		}
-	} else if (luaW_tolocation(L, 1, loc)) {
+	} else if (luaW_tolocation(L, 2, loc)) {
 		if (!map().on_board(loc)) {
-			return luaL_argerror(L, 1, "invalid location");
+			return luaL_argerror(L, 2, "invalid location");
 		}
 	}
 
