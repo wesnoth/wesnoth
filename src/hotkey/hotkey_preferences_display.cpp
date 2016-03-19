@@ -22,9 +22,9 @@
 #include "hotkey/hotkey_item.hpp"
 
 #include "construct_dialog.hpp"
-#include "display.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
+#include "sdl/rect.hpp"
 
 namespace hotkey {
 

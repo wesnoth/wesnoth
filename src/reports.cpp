@@ -18,7 +18,6 @@
 #include "attack_prediction.hpp"
 //#include "editor/editor_controller.hpp"
 //#include "editor/palette/terrain_palettes.hpp"
-#include "display.hpp"
 #include "font.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"

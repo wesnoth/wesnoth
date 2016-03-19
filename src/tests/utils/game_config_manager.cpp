@@ -19,7 +19,6 @@
 
 #include "config.hpp"
 #include "config_cache.hpp"
-#include "display.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"

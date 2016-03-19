@@ -19,15 +19,15 @@
 #include "show_dialog.hpp"
 
 #include "construct_dialog.hpp"
-#include "display.hpp"
 #include "floating_label.hpp"
+#include "image.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-
+#include "sdl/rect.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)

@@ -18,8 +18,8 @@
 #include "construct_dialog.hpp"
 
 #include "config_assign.hpp"
-#include "display.hpp"
 #include "formula_string_utils.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "log.hpp"
@@ -27,6 +27,7 @@
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/utils.hpp"
+#include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>
 
