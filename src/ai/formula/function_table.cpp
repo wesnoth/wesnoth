@@ -376,7 +376,7 @@ private:
 
 class nearest_loc_function : public function_expression {
 public:
-	nearest_loc_function(const args_list& args, const formula_ai& /*ai*/)
+	nearest_loc_function(const args_list& args)
 	  : function_expression("nearest_loc", args, 2, 2)
 	{
 	}
@@ -409,7 +409,7 @@ private:
 
 class adjacent_locs_function : public function_expression {
 public:
-	adjacent_locs_function(const args_list& args, const formula_ai& /*ai*/)
+	adjacent_locs_function(const args_list& args)
 	  : function_expression("adjacent_locs", args, 1, 1)
 	{
 	}
@@ -433,7 +433,7 @@ private:
 
 class locations_in_radius_function : public function_expression {
 public:
-	locations_in_radius_function(const args_list& args, const formula_ai& /*ai*/)
+	locations_in_radius_function(const args_list& args)
 	  : function_expression("locations_in_radius", args, 2, 2)
 	{
 	}
@@ -505,7 +505,7 @@ private:
 
 class castle_locs_function : public function_expression {
 public:
-	castle_locs_function(const args_list& args, const formula_ai& /*ai*/)
+	castle_locs_function(const args_list& args)
 	  : function_expression("castle_locs", args, 1, 1)
 	{
 	}
@@ -565,7 +565,7 @@ private:
  */
 class timeofday_modifier_function : public function_expression {
 public:
-	timeofday_modifier_function(const args_list& args, const formula_ai& /*ai*/)
+	timeofday_modifier_function(const args_list& args)
 	  : function_expression("timeofday_modifier", args, 1, 2)
 	{
 	}
@@ -725,10 +725,9 @@ private:
 	const formula_ai& ai_;
 };
 
-
 class calculate_outcome_function : public function_expression {
 public:
-	calculate_outcome_function(const args_list& args, const formula_ai& /*ai*/)
+	calculate_outcome_function(const args_list& args)
 	  : function_expression( "calculate_outcome", args, 3, 4)
 	{
 	}
@@ -812,7 +811,7 @@ private:
 
 class outcomes_function : public function_expression {
 public:
-	outcomes_function(const args_list& args, const formula_ai& /*ai*/)
+	outcomes_function(const args_list& args)
 	  : function_expression("outcomes", args, 1, 1)
 	{
 	}
@@ -1175,7 +1174,7 @@ private:
 
 class attack_function : public function_expression {
 public:
-	explicit attack_function(const args_list& args, const formula_ai& /*ai*/)
+	explicit attack_function(const args_list& args)
 	  : function_expression("attack", args, 3, 4)
 	{}
 private:
@@ -1303,7 +1302,7 @@ private:
 
 class unit_at_function : public function_expression {
 public:
-	unit_at_function(const args_list& args, const formula_ai& /*ai*/)
+	unit_at_function(const args_list& args)
 	  : function_expression("unit_at", args, 1, 1)
 	{}
 private:
@@ -1354,7 +1353,7 @@ private:
 
 class units_can_reach_function : public function_expression {
 public:
-	units_can_reach_function(const args_list& args, const formula_ai& /*ai*/)
+	units_can_reach_function(const args_list& args)
 	  : function_expression("units_can_reach", args, 2, 2)
 	{}
 private:
@@ -1378,7 +1377,7 @@ private:
 
 class defense_on_function : public function_expression {
 public:
-	defense_on_function(const args_list& args, const formula_ai& /*ai*/)
+	defense_on_function(const args_list& args)
 	  : function_expression("defense_on", args, 2, 2)
 	{}
 private:
@@ -1428,7 +1427,7 @@ private:
 
 class chance_to_hit_function : public function_expression {
 public:
-	chance_to_hit_function(const args_list& args, const formula_ai& /*ai*/)
+	chance_to_hit_function(const args_list& args)
 	  : function_expression("chance_to_hit", args, 2, 2)
 	{}
 private:
@@ -1472,7 +1471,7 @@ private:
 
 class movement_cost_function : public function_expression {
 public:
-	movement_cost_function(const args_list& args, const formula_ai& /*ai*/)
+	movement_cost_function(const args_list& args)
 	  : function_expression("movement_cost", args, 2, 2)
 	{}
 private:
@@ -1533,9 +1532,7 @@ private:
 
 class max_possible_damage_function : public function_expression {
 public:
-	max_possible_damage_function(
-			  const args_list& args
-			, const formula_ai& /*ai*/)
+	max_possible_damage_function(const args_list& args)
 	  : function_expression("max_possible_damage", args, 2, 2)
 	{}
 private:
@@ -1587,9 +1584,7 @@ private:
 
 class max_possible_damage_with_retaliation_function : public function_expression {
 public:
-	max_possible_damage_with_retaliation_function(
-			  const args_list& args
-			, const formula_ai& /*ai*/)
+	max_possible_damage_with_retaliation_function(const args_list& args)
 		: function_expression("max_possible_damage_with_retaliation", args, 2, 2)
 	{}
 private:
@@ -1637,96 +1632,69 @@ private:
 	}
 };
 
-}
-
-
-expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
-				const std::vector<expression_ptr>& args) const {
-	if(fn == "outcomes") {
-		return expression_ptr(new outcomes_function(args, ai_));
-	//} else if(fn == "evaluate_for_position") {
-	//	return expression_ptr(new evaluate_for_position_function(args, ai_));
-	} else if(fn == "move") {
-		return expression_ptr(new move_function(args));
-	} else if(fn == "move_partial") {
-		return expression_ptr(new move_partial_function(args));
-	} else if(fn == "attack") {
-		return expression_ptr(new attack_function(args, ai_));
-	} else if(fn == "rate_action") {
-		return expression_ptr(new rate_action_function(args, ai_));
-	} else if(fn == "recall") {
-		return expression_ptr(new recall_function(args));
-	} else if(fn == "recruit") {
-		return expression_ptr(new recruit_function(args));
-	} else if(fn == "safe_call") {
-		return expression_ptr(new safe_call_function(args));
-	} else if(fn == "get_unit_type") {
-		return expression_ptr(new get_unit_type_function(args));
-	} else if(fn == "is_avoided_location") {
-		return expression_ptr(new is_avoided_location_function(args,ai_));
-	} else if(fn == "is_village") {
-		return expression_ptr(new is_village_function(args));
-	} else if(fn == "is_unowned_village") {
-		return expression_ptr(new is_unowned_village_function(args, ai_));
-	} else if(fn == "unit_at") {
-		return expression_ptr(new unit_at_function(args, ai_));
-	} else if(fn == "unit_moves") {
-		return expression_ptr(new unit_moves_function(args, ai_));
-	} else if(fn == "set_var") {
-		return expression_ptr(new set_var_function(args));
-	} else if(fn == "set_unit_var") {
-		return expression_ptr(new set_unit_var_function(args));
-	} else if(fn == "fallback") {
-		return expression_ptr(new fallback_function(args));
-	} else if(fn == "units_can_reach") {
-		return expression_ptr(new units_can_reach_function(args, ai_));
-	} else if(fn == "debug_label") {
-		return expression_ptr(new debug_label_function(args, ai_));
-	} else if(fn == "defense_on") {
-		return expression_ptr(new defense_on_function(args, ai_));
-	} else if(fn == "chance_to_hit") {
-		return expression_ptr(new chance_to_hit_function(args, ai_));
-	} else if(fn == "movement_cost") {
-		return expression_ptr(new movement_cost_function(args, ai_));
-	} else if(fn == "max_possible_damage") {
-		return expression_ptr(new max_possible_damage_function(args, ai_));
-	} else if(fn == "max_possible_damage_with_retaliation") {
-		return expression_ptr(new max_possible_damage_with_retaliation_function(args, ai_));
-	} else if(fn == "next_hop") {
-		return expression_ptr(new next_hop_function(args, ai_));
-	} else if(fn == "adjacent_locs") {
-		return expression_ptr(new adjacent_locs_function(args, ai_));
-	} else if(fn == "locations_in_radius") {
-		return expression_ptr(new locations_in_radius_function(args, ai_));
-	} else if(fn == "castle_locs") {
-		return expression_ptr(new castle_locs_function(args, ai_));
-	} else if(fn == "timeofday_modifier") {
-		return expression_ptr(new timeofday_modifier_function(args, ai_));
-	} else if(fn == "distance_to_nearest_unowned_village") {
-		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
-	} else if(fn == "shortest_path") {
-		return expression_ptr(new shortest_path_function(args, ai_));
-	} else if(fn == "simplest_path") {
-		return expression_ptr(new simplest_path_function(args, ai_));
-	} else if(fn == "nearest_keep") {
-		return expression_ptr(new nearest_keep_function(args, ai_));
-	} else if(fn == "suitable_keep") {
-		return expression_ptr(new suitable_keep_function(args, ai_));
-	} else if(fn == "nearest_loc") {
-		return expression_ptr(new nearest_loc_function(args, ai_));
-	} else if(fn == "find_shroud") {
-		return expression_ptr(new find_shroud_function(args, ai_));
-	} else if(fn == "close_enemies") {
-		return expression_ptr(new close_enemies_function(args, ai_));
-	} else if(fn == "calculate_outcome") {
-		return expression_ptr(new calculate_outcome_function(args, ai_));
-	} else if(fn == "run_file") {
-		return expression_ptr(new run_file_function(args, ai_));
-	} else if(fn == "calculate_map_ownership") {
-		return expression_ptr(new calculate_map_ownership_function(args, ai_));
-	} else {
-		return function_symbol_table::create_function(fn, args);
+template<typename T>
+class ai_formula_function : public formula_function {
+protected:
+	formula_ai& ai_;
+public:
+	ai_formula_function(const std::string& name, ai::formula_ai& ai) : formula_function(name), ai_(ai) {}
+	function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const {
+		return function_expression_ptr(new T(args, ai_));
 	}
+};
+
 }
+
+// First macro is for functions taking an additional formula_ai argument.
+// Functions using the second macro could potentially be made core.
+#define AI_FUNCTION(name) add_function(#name, formula_function_ptr( \
+	new ai_formula_function<name##_function>(#name, ai)))
+#define FUNCTION(name) add_function(#name, formula_function_ptr( \
+	new builtin_formula_function<name##_function>(#name)))
+
+ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai) {
+	FUNCTION(outcomes);
+	//AI_FUNCTION(evaluate_for_position);
+	FUNCTION(move);
+	FUNCTION(move_partial);
+	FUNCTION(attack);
+	AI_FUNCTION(rate_action);
+	FUNCTION(recall);
+	FUNCTION(recruit);
+	FUNCTION(safe_call);
+	FUNCTION(get_unit_type);
+	AI_FUNCTION(is_avoided_location);
+	FUNCTION(is_village);
+	AI_FUNCTION(is_unowned_village);
+	FUNCTION(unit_at);
+	AI_FUNCTION(unit_moves);
+	FUNCTION(set_var);
+	FUNCTION(set_unit_var);
+	FUNCTION(fallback);
+	FUNCTION(units_can_reach);
+	AI_FUNCTION(debug_label);
+	FUNCTION(defense_on);
+	FUNCTION(chance_to_hit);
+	FUNCTION(movement_cost);
+	FUNCTION(max_possible_damage);
+	FUNCTION(max_possible_damage_with_retaliation);
+	AI_FUNCTION(next_hop);
+	FUNCTION(adjacent_locs);
+	FUNCTION(locations_in_radius);
+	FUNCTION(castle_locs);
+	FUNCTION(timeofday_modifier);
+	AI_FUNCTION(distance_to_nearest_unowned_village);
+	AI_FUNCTION(shortest_path);
+	AI_FUNCTION(simplest_path);
+	AI_FUNCTION(nearest_keep);
+	AI_FUNCTION(suitable_keep);
+	FUNCTION(nearest_loc);
+	AI_FUNCTION(find_shroud);
+	AI_FUNCTION(close_enemies);
+	FUNCTION(calculate_outcome);
+	AI_FUNCTION(run_file);
+	AI_FUNCTION(calculate_map_ownership);
+}
+#undef FUNCTION
 
 }

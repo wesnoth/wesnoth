@@ -561,7 +561,8 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	function_table_.add_formula_function(name,formula,precondition,args);
+	formula_function_ptr fcn(new user_formula_function(name,formula,precondition,args));
+	function_table_.add_function(name, fcn);
 }
 
 namespace {

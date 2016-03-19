@@ -1019,10 +1019,11 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			if(symbols == nullptr) {
 				throw formula_error("Function symbol table required but not present", "",*i1->filename, i1->line_number);
 			}
-			symbols->add_formula_function(formula_name,
+			symbols->add_function(formula_name,
+				formula_function_ptr(new user_formula_function(formula_name,
 					const_formula_ptr(new formula(beg, i1, symbols)),
 					formula::create_optional_formula(precond, symbols),
-					args);
+					args)));
 			if((i1 == i2) || (i1 == (i2-1))) {
 				return expression_ptr(new function_list_expression(symbols));
 			}
@@ -1347,6 +1348,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 		expr_ = expression_ptr(new null_expression());
 	}
 }
+
 formula::formula(const token* i1, const token* i2, function_symbol_table* symbols) :
 	expr_(),
 	str_(),

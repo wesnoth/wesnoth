@@ -96,38 +96,48 @@ private:
 typedef boost::shared_ptr<function_expression> function_expression_ptr;
 
 class formula_function {
+protected:
 	std::string name_;
+public:
+	formula_function(const std::string name) : name_(name) {}
+	virtual function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const = 0;
+	virtual ~formula_function() {}
+};
+
+class user_formula_function : public formula_function {
 	const_formula_ptr formula_;
 	const_formula_ptr precondition_;
 	std::vector<std::string> args_;
 public:
-	formula_function() :
-		name_(),
-		formula_(),
-		precondition_(),
-		args_()
-	{
-	}
-
-	formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args) : name_(name), formula_(formula), precondition_(precondition), args_(args)
+	user_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
+		: formula_function(name)
+		, formula_(formula)
+		, precondition_(precondition)
+		, args_(args)
 	{}
 
 	function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const;
 };
 
-class function_symbol_table {
-	std::map<std::string, formula_function> custom_formulas_;
+template<typename T>
+class builtin_formula_function : public formula_function {
 public:
-	function_symbol_table() :
-		custom_formulas_()
-	{
+	builtin_formula_function(const std::string& name) : formula_function(name) {}
+	function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const {
+		return function_expression_ptr(new T(args));
 	}
+};
 
-	virtual ~function_symbol_table() {}
-	virtual void add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args);
-	virtual expression_ptr create_function(const std::string& fn,
-					                       const std::vector<expression_ptr>& args) const;
+typedef boost::shared_ptr<formula_function> formula_function_ptr;
+typedef std::map<std::string, formula_function_ptr> functions_map;
+
+class function_symbol_table {
+	functions_map custom_formulas_;
+public:
+	void add_function(const std::string& name, formula_function_ptr fcn);
+	expression_ptr create_function(const std::string& fn, const std::vector<expression_ptr>& args) const;
 	std::vector<std::string> get_function_names() const;
+	bool empty() {return custom_formulas_.empty();}
 };
 
 expression_ptr create_function(const std::string& fn,

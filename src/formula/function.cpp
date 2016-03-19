@@ -1447,21 +1447,21 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 	return res;
 }
 
-function_expression_ptr formula_function::generate_function_expression(const std::vector<expression_ptr>& args) const
+function_expression_ptr user_formula_function::generate_function_expression(const std::vector<expression_ptr>& args) const
 {
 	return function_expression_ptr(new formula_function_expression(name_, args, formula_, precondition_, args_));
 }
 
-void function_symbol_table::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
+void function_symbol_table::add_function(const std::string& name, formula_function_ptr fcn)
 {
-	custom_formulas_[name] = formula_function(name, formula, precondition, args);
+	custom_formulas_[name] = fcn;
 }
 
 expression_ptr function_symbol_table::create_function(const std::string& fn, const std::vector<expression_ptr>& args) const
 {
-	const std::map<std::string, formula_function>::const_iterator i = custom_formulas_.find(fn);
+	const functions_map::const_iterator i = custom_formulas_.find(fn);
 	if(i != custom_formulas_.end()) {
-		return i->second.generate_function_expression(args);
+		return i->second->generate_function_expression(args);
 	}
 
 	return expression_ptr();
@@ -1470,7 +1470,7 @@ expression_ptr function_symbol_table::create_function(const std::string& fn, con
 std::vector<std::string> function_symbol_table::get_function_names() const
 {
 	std::vector<std::string> res;
-	for(std::map<std::string, formula_function>::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); ++iter ) {
+	for(functions_map::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); ++iter ) {
 		res.push_back((*iter).first);
 	}
 	return res;
@@ -1478,45 +1478,12 @@ std::vector<std::string> function_symbol_table::get_function_names() const
 
 namespace {
 
-class base_function_creator {
-public:
-	virtual expression_ptr create_function(const std::vector<expression_ptr>& args) const = 0;
-	virtual ~base_function_creator() {}
-};
-
-template<typename T>
-class function_creator : public base_function_creator {
-public:
-	virtual expression_ptr create_function(const std::vector<expression_ptr>& args) const {
-		return expression_ptr(new T(args));
-	}
-	virtual ~function_creator() {}
-};
-
-typedef std::map<std::string, base_function_creator*> functions_map;
-
-// Takes ownership of the pointers, deleting them at program termination to
-// suppress valgrind false positives
-struct functions_map_manager {
-	functions_map map_;
-	~functions_map_manager() {
-		for (functions_map::value_type & v : map_) {
-			delete(v.second);
-		}
-	}
-};
-
-functions_map& get_functions_map() {
-
-	static functions_map_manager map_man;
-	functions_map & functions_table = map_man.map_;
-
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-	VLDDisable();
-#endif
+function_symbol_table& get_functions_map() {
+	static function_symbol_table functions_table;
 
 	if(functions_table.empty()) {
-#define FUNCTION(name) functions_table[#name] = new function_creator<name##_function>();
+#define FUNCTION(name) functions_table.add_function(#name, \
+			formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
 		FUNCTION(debug);
 		FUNCTION(dir);
 		FUNCTION(if);
@@ -1525,7 +1492,7 @@ functions_map& get_functions_map() {
 		FUNCTION(min);
 		FUNCTION(max);
 		FUNCTION(choose);
-                FUNCTION(debug_float);
+		FUNCTION(debug_float);
 		FUNCTION(debug_print);
 		FUNCTION(debug_profile);
 		FUNCTION(wave);
@@ -1596,26 +1563,18 @@ expression_ptr create_function(const std::string& fn,
 			return res;
 		}
 	}
-
-	//DBG_NG << "FN: '" << fn << "' " << fn.size() << "\n";
-
-	functions_map::const_iterator i = get_functions_map().find(fn);
-	if(i == get_functions_map().end()) {
-		throw formula_error("Unknow function: " + fn, "", "", 0);
+	
+	expression_ptr res(get_functions_map().create_function(fn, args));
+	if(!res) {
+		throw formula_error("Unknown function: " + fn, "", "", 0);
 	}
 
-	return i->second->create_function(args);
+	return res;
 }
 
 std::vector<std::string> builtin_function_names()
 {
-	std::vector<std::string> res;
-	const functions_map& m = get_functions_map();
-	for(functions_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		res.push_back(i->first);
-	}
-
-	return res;
+	return get_functions_map().get_function_names();
 }
 
 }
