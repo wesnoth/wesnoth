@@ -24,8 +24,8 @@
 #ifndef GAME_EVENTS_HANDLERS_H_INCLUDED
 #define GAME_EVENTS_HANDLERS_H_INCLUDED
 
-#include "../config.hpp"
-#include "../utils/smart_list.hpp"
+#include "config.hpp"
+#include "utils/smart_list.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>

@@ -15,9 +15,9 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "mouse_action_unit.hpp"
-#include "../action_unit.hpp"
+#include "editor/action/action_unit.hpp"
 
-#include "../../editor_display.hpp"
+#include "editor/editor_display.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "tooltips.hpp"
 #include "gettext.hpp"

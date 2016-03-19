@@ -21,19 +21,19 @@
 
 #include "move.hpp"
 
-#include "../config.hpp"
-#include "../game_display.hpp"
+#include "config.hpp"
+#include "game_display.hpp"
 #include "game_events/manager.hpp"
-#include "../game_events/pump.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../map_label.hpp"
-#include "../map_location.hpp"
-#include "../pathfind/pathfind.hpp"
-#include "../play_controller.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
+#include "game_events/pump.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "map_label.hpp"
+#include "map_location.hpp"
+#include "pathfind/pathfind.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "unit.hpp"
 
 #include <boost/foreach.hpp>
 

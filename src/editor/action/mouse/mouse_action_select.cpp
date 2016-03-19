@@ -13,9 +13,9 @@
 */
 
 #include "mouse_action_select.hpp"
-#include "../action_select.hpp"
+#include "editor/action/action_select.hpp"
 
-#include "../../editor_display.hpp"
+#include "editor/editor_display.hpp"
 
 namespace editor {
 

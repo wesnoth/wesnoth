@@ -20,14 +20,14 @@
 
 #include "contexts.hpp"
 
-#include "../../game_board.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
-#include "../../unit.hpp"
-#include "../composite/goal.hpp"
-#include "../../pathfind/pathfind.hpp"
+#include "game_board.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "unit.hpp"
+#include "ai/composite/goal.hpp"
+#include "pathfind/pathfind.hpp"
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)

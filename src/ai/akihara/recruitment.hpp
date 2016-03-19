@@ -20,8 +20,8 @@
 #ifndef AI_AKIHARA_RECRUITMENT_HPP_INCLUDED
 #define AI_AKIHARA_RECRUITMENT_HPP_INCLUDED
 
-#include "../composite/rca.hpp"
-#include "../../team.hpp"
+#include "ai/composite/rca.hpp"
+#include "team.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

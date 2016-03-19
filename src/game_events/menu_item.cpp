@@ -19,27 +19,27 @@
 
 #include "menu_item.hpp"
 
-#include "../global.hpp"
+#include "global.hpp"
 
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
 #include "manager.hpp"
 #include "pump.hpp"
 
-#include "../actions/undo.hpp"
-#include "../game_config.hpp"
-#include "../game_data.hpp"
-#include "../log.hpp"
-#include "../mouse_handler_base.hpp"
+#include "actions/undo.hpp"
+#include "game_config.hpp"
+#include "game_data.hpp"
+#include "log.hpp"
+#include "mouse_handler_base.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey_handler.hpp"
 #include "play_controller.hpp"
-#include "../preferences.hpp"
-#include "../replay.hpp"
-#include "../replay_helper.hpp"
-#include "../resources.hpp"
-#include "../synced_context.hpp"
-#include "../terrain_filter.hpp"
+#include "preferences.hpp"
+#include "replay.hpp"
+#include "replay_helper.hpp"
+#include "resources.hpp"
+#include "synced_context.hpp"
+#include "terrain_filter.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

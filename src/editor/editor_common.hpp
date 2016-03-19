@@ -21,8 +21,8 @@
 #ifndef EDITOR_EDITOR_COMMON_HPP_INCLUDED
 #define EDITOR_EDITOR_COMMON_HPP_INCLUDED
 
-#include "../exceptions.hpp"
-#include "../log.hpp"
+#include "exceptions.hpp"
+#include "log.hpp"
 
 extern lg::log_domain log_editor;
 #define DBG_ED LOG_STREAM_INDENT(debug, log_editor)

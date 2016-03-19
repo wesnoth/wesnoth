@@ -17,17 +17,17 @@
  * Definitions for a container for wml_menu_item.
  */
 
-#include "../global.hpp"
+#include "global.hpp"
 #include "wmi_container.hpp"
 #include "handlers.hpp"
 #include "menu_item.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
 
-#include "../config.hpp"
-#include "../game_data.hpp"
-#include "../log.hpp"
-#include "../map_location.hpp"
+#include "config.hpp"
+#include "game_data.hpp"
+#include "log.hpp"
+#include "map_location.hpp"
 
 #include <boost/foreach.hpp>
 

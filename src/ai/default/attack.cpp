@@ -17,18 +17,18 @@
  * Calculate & analyze attacks of the default ai
  */
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 #include "ai.hpp"
-#include "../manager.hpp"
+#include "ai/manager.hpp"
 
-#include "../../actions/attack.hpp"
-#include "../../attack_prediction.hpp"
-#include "../../game_config.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../team.hpp"
-#include "../../unit.hpp"
+#include "actions/attack.hpp"
+#include "attack_prediction.hpp"
+#include "game_config.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "team.hpp"
+#include "unit.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)

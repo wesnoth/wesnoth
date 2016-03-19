@@ -33,13 +33,13 @@
 #include "serialization/parser.hpp" // for write()
 #include "utils/foreach.tpp"
 
-#include "../../game_data.hpp"
-#include "../../recall_list_manager.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
-#include "../../unit.hpp"
-#include "../../unit_map.hpp"
-#include "../../ai/manager.hpp"
+#include "game_data.hpp"
+#include "recall_list_manager.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
+#include "ai/manager.hpp"
 
 #include <vector>
 #include <boost/bind.hpp>

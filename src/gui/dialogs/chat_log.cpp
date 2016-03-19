@@ -32,11 +32,11 @@
 
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
-#include "../../game_preferences.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
-#include "../../replay.hpp"
+#include "game_preferences.hpp"
+#include "log.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "replay.hpp"
 #include "gettext.hpp"
 
 #include <vector>

@@ -24,9 +24,9 @@
 #include "goal.hpp"
 #include "property_handler.hpp"
 #include "stage.hpp"
-#include "../manager.hpp"
-#include "../../actions/attack.hpp"
-#include "../../log.hpp"
+#include "ai/manager.hpp"
+#include "actions/attack.hpp"
+#include "log.hpp"
 
 #include <boost/bind.hpp>
 #include "utils/boost_function_guarded.hpp"

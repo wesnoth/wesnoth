@@ -2,13 +2,13 @@
 #include "create.hpp"
 
 #include "gui/dialogs/transient_message.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../replay.hpp"
-#include "../unit_map.hpp"
-#include "../statistics.hpp"
-#include "../log.hpp"
-#include "../game_display.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "replay.hpp"
+#include "unit_map.hpp"
+#include "statistics.hpp"
+#include "log.hpp"
+#include "game_display.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

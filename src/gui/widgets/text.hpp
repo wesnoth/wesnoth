@@ -17,7 +17,7 @@
 
 //#include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/control.hpp"
-#include "../../text.hpp"
+#include "../../text.hpp" // We want the file in src/
 
 #include <string>
 

@@ -20,9 +20,9 @@
 #ifndef GAME_EVENTS_MENU_ITEM_HPP_INCLUDED
 #define GAME_EVENTS_MENU_ITEM_HPP_INCLUDED
 
-#include "../config.hpp"
-#include "../tstring.hpp"
-#include "../variable.hpp"
+#include "config.hpp"
+#include "tstring.hpp"
+#include "variable.hpp"
 
 class filter_context;
 class game_data;

@@ -16,7 +16,7 @@
 
 #include "gui/widgets/image.hpp"
 
-#include "../../image.hpp"
+#include "../../image.hpp" // We want the file in src/
 #include "gui/auxiliary/widget_definition/image.hpp"
 #include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/auxiliary/log.hpp"

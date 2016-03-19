@@ -1,13 +1,13 @@
 #include "shroud_clearing_action.hpp"
 
 #include "move.hpp" //get_village
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../log.hpp"
-#include "../unit_display.hpp"
-#include "../game_board.hpp"
-#include "../map.hpp"
-#include "../play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "log.hpp"
+#include "unit_display.hpp"
+#include "game_board.hpp"
+#include "map.hpp"
+#include "play_controller.hpp"
 
 namespace actions {
 void shroud_clearing_action::return_village()

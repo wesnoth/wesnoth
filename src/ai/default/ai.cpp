@@ -19,25 +19,25 @@
 
 #include "ai.hpp"
 
-#include "../actions.hpp"
-#include "../manager.hpp"
-#include "../formula/ai.hpp"
+#include "ai/actions.hpp"
+#include "ai/manager.hpp"
+#include "ai/formula/ai.hpp"
 
-#include "../../array.hpp"
-#include "../../game_board.hpp"
+#include "array.hpp"
+#include "game_board.hpp"
 #include "game_events/manager.hpp"
-#include "../../game_events/pump.hpp"
-#include "../../game_classification.hpp"
-#include "../../log.hpp"
-#include "../../mouse_handler_base.hpp"
-#include "../../recall_list_manager.hpp"
-#include "../../resources.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../unit.hpp"
-#include "../../unit_display.hpp"
-#include "../../wml_exception.hpp"
+#include "game_events/pump.hpp"
+#include "game_classification.hpp"
+#include "log.hpp"
+#include "mouse_handler_base.hpp"
+#include "recall_list_manager.hpp"
+#include "resources.hpp"
+#include "terrain_filter.hpp"
+#include "unit.hpp"
+#include "unit_display.hpp"
+#include "wml_exception.hpp"
 
-#include "../../pathfind/pathfind.hpp"
+#include "pathfind/pathfind.hpp"
 
 #include <boost/foreach.hpp>
 

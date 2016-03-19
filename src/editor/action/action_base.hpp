@@ -27,7 +27,7 @@
 #ifndef EDITOR_ACTION_BASE_HPP_INCLUDED
 #define EDITOR_ACTION_BASE_HPP_INCLUDED
 
-#include "../editor_common.hpp"
+#include "editor/editor_common.hpp"
 
 namespace editor {
 

@@ -19,14 +19,14 @@
 
 #include "manager.hpp"
 
-#include "../config.hpp"             // for config, etc
+#include "config.hpp"             // for config, etc
 #include "game_events/manager.hpp"
-#include "../game_events/pump.hpp"
-#include "../generic_event.hpp"      // for generic_event, etc
-#include "../log.hpp"
-#include "../map_location.hpp"       // for map_location
-#include "../resources.hpp"
-#include "../serialization/string_utils.hpp"
+#include "game_events/pump.hpp"
+#include "generic_event.hpp"      // for generic_event, etc
+#include "log.hpp"
+#include "map_location.hpp"       // for map_location
+#include "resources.hpp"
+#include "serialization/string_utils.hpp"
 
 #include "composite/ai.hpp"             // for ai_composite
 #include "composite/component.hpp"      // for component_manager

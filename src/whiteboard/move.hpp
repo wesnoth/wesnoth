@@ -20,7 +20,7 @@
 #define WB_MOVE_HPP_
 
 #include "action.hpp"
-#include "../game_errors.hpp"
+#include "game_errors.hpp"
 
 struct temporary_unit_mover;
 

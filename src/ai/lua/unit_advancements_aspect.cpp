@@ -15,13 +15,13 @@
 #include "unit_advancements_aspect.hpp"
 #include "global.hpp"
 
-#include "../../log.hpp"                // for LOG_STREAM, logger, etc
-#include "../../lua/lauxlib.h"                // for luaL_ref, LUA_REFNIL
-#include "../../lua/lua.h"                    // for lua_isstring, etc
-#include "../../map_location.hpp"             // for map_location
-#include "../../serialization/string_utils.hpp"  // for split
-#include "../../unit.hpp"
-#include "../../unit_map.hpp"    // for unit_map::const_iterator, etc
+#include "log.hpp"                // for LOG_STREAM, logger, etc
+#include "lua/lauxlib.h"                // for luaL_ref, LUA_REFNIL
+#include "lua/lua.h"                    // for lua_isstring, etc
+#include "map_location.hpp"             // for map_location
+#include "serialization/string_utils.hpp"  // for split
+#include "unit.hpp"
+#include "unit_map.hpp"    // for unit_map::const_iterator, etc
 
 #include <cstddef>                     // for NULL
 #include <ostream>                      // for operator<<, basic_ostream, etc

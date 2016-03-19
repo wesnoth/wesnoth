@@ -21,7 +21,7 @@
 #define AI_GAME_INFO_HPP_INCLUDED
 
 #include <boost/shared_ptr.hpp>
-#include "../map_location.hpp"
+#include "map_location.hpp"
 namespace pathfind {
     struct paths;
 }

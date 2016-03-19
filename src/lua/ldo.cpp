@@ -11,7 +11,7 @@
 #define ldo_c
 #define LUA_CORE
 
-#include "../lua_jailbreak_exception.hpp"
+#include "lua_jailbreak_exception.hpp"
 #include <exception>
 #if !defined(__cplusplus)
 #error "Exception support requires a C++ compiler."

@@ -21,7 +21,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "../../formula_debugger.hpp"
+#include "../../formula_debugger.hpp" // We want the file in src/
 #include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>

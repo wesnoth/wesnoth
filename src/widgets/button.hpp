@@ -16,7 +16,7 @@
 
 #include "widget.hpp"
 
-#include "../exceptions.hpp"
+#include "exceptions.hpp"
 
 #ifdef SDL_GPU
 #include "sdl/image.hpp"

@@ -20,8 +20,8 @@
 #ifndef AI_TESTING_ASPECT_ATTACKS_HPP_INCLUDED
 #define AI_TESTING_ASPECT_ATTACKS_HPP_INCLUDED
 
-#include "../composite/aspect.hpp"
-#include "../interface.hpp"
+#include "ai/composite/aspect.hpp"
+#include "ai/interface.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

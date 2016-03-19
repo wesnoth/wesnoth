@@ -20,10 +20,10 @@
 #include "ai.hpp"
 #include "engine.hpp"
 #include "stage.hpp"
-#include "../contexts.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-#include "../../tod_manager.hpp"
+#include "ai/contexts.hpp"
+#include "log.hpp"
+#include "resources.hpp"
+#include "tod_manager.hpp"
 #include <map>
 #include <string>
 

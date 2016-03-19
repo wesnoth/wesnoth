@@ -20,7 +20,7 @@
 #ifndef ACTIONS_VISION_H_INCLUDED
 #define ACTIONS_VISION_H_INCLUDED
 
-#include "../movetype.hpp"
+#include "movetype.hpp"
 
 struct map_location;
 class  team;

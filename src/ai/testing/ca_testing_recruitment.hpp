@@ -20,9 +20,9 @@
 #ifndef AI_TESTING_CA_TESTING_RECRUITMENT_HPP_INCLUDED
 #define AI_TESTING_CA_TESTING_RECRUITMENT_HPP_INCLUDED
 
-#include "../composite/rca.hpp"
+#include "ai/composite/rca.hpp"
 
-#include "../../unit_map.hpp"
+#include "unit_map.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

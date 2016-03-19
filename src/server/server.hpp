@@ -19,7 +19,7 @@
 #include "user_handler.hpp"
 #include "input_stream.hpp"
 #include "metrics.hpp"
-#include "../network.hpp"
+#include "network.hpp"
 #include "ban.hpp"
 #include "player.hpp"
 #include "room_manager.hpp"

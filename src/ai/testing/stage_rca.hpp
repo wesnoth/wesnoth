@@ -20,8 +20,8 @@
 #ifndef AI_TESTING_STAGE_RCA_HPP_INCLUDED
 #define AI_TESTING_STAGE_RCA_HPP_INCLUDED
 
-#include "../composite/rca.hpp"
-#include "../composite/stage.hpp"
+#include "ai/composite/rca.hpp"
+#include "ai/composite/stage.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

@@ -20,7 +20,7 @@
 #ifndef GUI_AUXILIARY_LOG_HPP_INCLUDED
 #define GUI_AUXILIARY_LOG_HPP_INCLUDED
 
-#include "../../log.hpp"
+#include "../../log.hpp" // We want the file in src/
 
 namespace gui2
 {

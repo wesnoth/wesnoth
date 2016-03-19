@@ -17,7 +17,7 @@
 
 #include "gui/auxiliary/widget_definition.hpp"
 #include "gui/widgets/widget.hpp"
-#include "../../text.hpp"
+#include "../../text.hpp" // We want the file in src/
 
 typedef std::map<std::string, t_string> string_map;
 

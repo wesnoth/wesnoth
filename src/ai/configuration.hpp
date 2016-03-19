@@ -20,7 +20,7 @@
 #ifndef AI_CONFIGURATION_HPP_INCLUDED
 #define AI_CONFIGURATION_HPP_INCLUDED
 
-#include "../config.hpp"
+#include "config.hpp"
 #include "game_info.hpp"
 
 namespace ai {

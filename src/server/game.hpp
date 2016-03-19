@@ -15,7 +15,7 @@
 #ifndef GAME_HPP_INCLUDED
 #define GAME_HPP_INCLUDED
 
-#include "../network.hpp"
+#include "network.hpp"
 #include "player.hpp"
 
 #include "simple_wml.hpp"
@@ -23,8 +23,8 @@
 #include <map>
 #include <vector>
 
-#include "../mt_rng.hpp"
-#include "../make_enum.hpp"
+#include "mt_rng.hpp"
+#include "make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 //class player;

@@ -19,10 +19,10 @@
 
 #include "stage_fallback.hpp"
 
-#include "../configuration.hpp"
-#include "../manager.hpp"
-#include "../composite/ai.hpp"
-#include "../../log.hpp"
+#include "ai/configuration.hpp"
+#include "ai/manager.hpp"
+#include "ai/composite/ai.hpp"
+#include "log.hpp"
 
 namespace ai {
 

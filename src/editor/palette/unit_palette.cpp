@@ -20,9 +20,9 @@
 
 #include "unit_palette.hpp"
 
-#include "../../gettext.hpp"
+#include "gettext.hpp"
 
-#include "../../unit_types.hpp"
+#include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
 

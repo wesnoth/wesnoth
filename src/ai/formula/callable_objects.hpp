@@ -15,11 +15,11 @@
 #ifndef FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 #define	FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 
-#include "../game_info.hpp"
-#include "../../actions/attack.hpp"
-#include "../../callable_objects.hpp"
-#include "../../formula.hpp"
-#include "../../formula_callable.hpp"
+#include "ai/game_info.hpp"
+#include "actions/attack.hpp"
+#include "../../callable_objects.hpp" // We want the file in src/
+#include "formula.hpp"
+#include "formula_callable.hpp"
 
 namespace ai {
 	class formula_ai;

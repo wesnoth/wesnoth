@@ -19,7 +19,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "item_palette.hpp"
-#include "../../gettext.hpp"
+#include "gettext.hpp"
 
 #include <boost/foreach.hpp>
 #include <string>

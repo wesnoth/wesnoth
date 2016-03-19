@@ -22,11 +22,11 @@
 #include "editor/map/map_fragment.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
-#include "../../controller_base.hpp"
+#include "controller_base.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
-#include "../../mouse_handler_base.hpp"
-#include "../../tooltips.hpp"
+#include "mouse_handler_base.hpp"
+#include "tooltips.hpp"
 
 #include "sound_music_track.hpp"
 

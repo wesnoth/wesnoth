@@ -21,19 +21,19 @@
 #include <boost/foreach.hpp>
 #include <map>
 
-#include "../../actions/attack.hpp"
-#include "../../attack_prediction.hpp"
-#include "../../game_board.hpp"
-#include "../../resources.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../team.hpp"
-#include "../../unit.hpp"
-#include "../../unit_display.hpp"
-#include "../../unit_map.hpp"
-#include "../../unit_types.hpp"
-#include "../composite/rca.hpp"
-#include "../default/ai.hpp"
+#include "actions/attack.hpp"
+#include "attack_prediction.hpp"
+#include "game_board.hpp"
+#include "resources.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "team.hpp"
+#include "unit.hpp"
+#include "unit_display.hpp"
+#include "unit_map.hpp"
+#include "unit_types.hpp"
+#include "ai/composite/rca.hpp"
+#include "ai/default/ai.hpp"
 
 #include "recruitment.hpp"
 

@@ -15,7 +15,7 @@
 
 #include "editor/action/action.hpp"
 #include "editor/toolkit/brush.hpp"
-#include "../../editor_display.hpp"
+#include "editor/editor_display.hpp"
 #include "mouse_action.hpp"
 
 #include "gettext.hpp"

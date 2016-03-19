@@ -19,8 +19,8 @@
 
 #include "ai.hpp"
 #include "candidates.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
+#include "log.hpp"
+#include "resources.hpp"
 
 #include <boost/foreach.hpp>
 

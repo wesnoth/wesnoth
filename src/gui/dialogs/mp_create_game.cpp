@@ -31,7 +31,7 @@
 #endif
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
-#include "../../settings.hpp"
+#include "settings.hpp"
 #include "utils/foreach.tpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

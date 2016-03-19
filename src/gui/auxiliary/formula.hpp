@@ -17,7 +17,7 @@
 
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
-#include "../../formula.hpp"
+#include "formula.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "serialization/string_utils.hpp"

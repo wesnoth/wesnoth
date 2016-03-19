@@ -21,9 +21,9 @@
 #ifndef AI_TESTING_CA_HPP_INCLUDED
 #define AI_TESTING_CA_HPP_INCLUDED
 
-#include "../../unit_map.hpp"
+#include "unit_map.hpp"
 
-#include "../composite/rca.hpp"
+#include "ai/composite/rca.hpp"
 
 
 #ifdef _MSC_VER

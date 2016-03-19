@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "../game_config.hpp"
+#include "game_config.hpp"
 #include "exploder_composer.hpp"
 
 #include <iostream>

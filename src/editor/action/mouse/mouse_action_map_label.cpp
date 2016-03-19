@@ -14,10 +14,10 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "mouse_action_map_label.hpp"
-#include "../action_label.hpp"
+#include "editor/action/action_label.hpp"
 
-#include "../../editor_display.hpp"
-#include "../../map/context_manager.hpp"
+#include "editor/editor_display.hpp"
+#include "editor/map/context_manager.hpp"
 
 #include <SDL_video.h>
 

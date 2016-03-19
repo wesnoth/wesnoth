@@ -23,7 +23,7 @@
 #include "tod_manager.hpp"
 #include "unit_map.hpp"
 #include "overlay.hpp"
-#include "../../display_context.hpp"
+#include "display_context.hpp"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>

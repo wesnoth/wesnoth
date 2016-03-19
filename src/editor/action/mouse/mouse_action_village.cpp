@@ -13,9 +13,9 @@
 */
 
 #include "mouse_action_village.hpp"
-#include "../action_village.hpp"
+#include "editor/action/action_village.hpp"
 
-#include "../../editor_display.hpp"
+#include "editor/editor_display.hpp"
 
 namespace editor {
 

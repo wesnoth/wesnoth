@@ -22,7 +22,7 @@
 #define AI_COMPOSITE_ENGINE_HPP_INCLUDED
 
 #include "component.hpp"
-#include "../contexts.hpp"
+#include "ai/contexts.hpp"
 
 #include <algorithm>
 #include <iterator>

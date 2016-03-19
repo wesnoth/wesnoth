@@ -1,16 +1,16 @@
 #include "undo_move_action.hpp"
 #include "move.hpp"
 
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../replay.hpp"
-#include "../unit_map.hpp"
-#include "../unit_animation_component.hpp"
-#include "../log.hpp"
-#include "../game_display.hpp"
-#include "../unit_display.hpp"
-#include "../game_board.hpp"
-#include "../map.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "replay.hpp"
+#include "unit_map.hpp"
+#include "unit_animation_component.hpp"
+#include "log.hpp"
+#include "game_display.hpp"
+#include "unit_display.hpp"
+#include "game_board.hpp"
+#include "map.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

@@ -15,12 +15,12 @@
 #include "player_network.hpp"
 #include "room_manager.hpp"
 
-#include "../serialization/parser.hpp"
-#include "../serialization/binary_or_text.hpp"
-#include "../serialization/string_utils.hpp"
-#include "../util.hpp"
-#include "../filesystem.hpp"
-#include "../log.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/binary_or_text.hpp"
+#include "serialization/string_utils.hpp"
+#include "util.hpp"
+#include "filesystem.hpp"
+#include "log.hpp"
 
 #include <boost/foreach.hpp>
 

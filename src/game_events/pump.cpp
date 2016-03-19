@@ -18,26 +18,26 @@
  * as well as tracking the context for event firing.
  */
 
-#include "../global.hpp"
+#include "global.hpp"
 #include "pump.hpp"
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
 #include "manager.hpp"
 
-#include "../display_chat_manager.hpp"
-#include "../game_config.hpp"
-#include "../game_display.hpp"
-#include "../game_data.hpp"
-#include "../gettext.hpp"
-#include "../log.hpp"
-#include "../play_controller.hpp"
-#include "../scripting/game_lua_kernel.hpp"
-#include "../side_filter.hpp"
-#include "../unit.hpp"
-#include "../unit_map.hpp"
-#include "../whiteboard/manager.hpp"
-#include "../variable.hpp"
-#include "../resources.hpp"
+#include "display_chat_manager.hpp"
+#include "game_config.hpp"
+#include "game_display.hpp"
+#include "game_data.hpp"
+#include "gettext.hpp"
+#include "log.hpp"
+#include "play_controller.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "side_filter.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
+#include "whiteboard/manager.hpp"
+#include "variable.hpp"
+#include "resources.hpp"
 
 #include <boost/foreach.hpp>
 #include <iomanip>

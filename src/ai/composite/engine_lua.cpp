@@ -24,16 +24,16 @@
 #include "stage.hpp"
 #include "aspect.hpp"
 
-#include "../gamestate_observer.hpp"
+#include "ai/gamestate_observer.hpp"
 
-#include "../../log.hpp"
-#include "../../resources.hpp"
-#include "../lua/core.hpp"
-#include "../lua/lua_object.hpp"
-#include "../../scripting/game_lua_kernel.hpp"
-#include "../../util.hpp"
-#include "../../unit.hpp"
-#include "../../unit_map.hpp"
+#include "log.hpp"
+#include "resources.hpp"
+#include "ai/lua/core.hpp"
+#include "ai/lua/lua_object.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "util.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 
 
 namespace ai {

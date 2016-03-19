@@ -2,8 +2,8 @@
 
 #include "undo_action.hpp"
 #include "shroud_clearing_action.hpp"
-#include "../unit_ptr.hpp"
-#include "../unit.hpp"
+#include "unit_ptr.hpp"
+#include "unit.hpp"
 
 namespace actions
 {

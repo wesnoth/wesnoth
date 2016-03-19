@@ -21,7 +21,7 @@
 
 #include "side_actions.hpp"
 
-#include "../unit_map.hpp"
+#include "unit_map.hpp"
 
 #include <boost/noncopyable.hpp>
 

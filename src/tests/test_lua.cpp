@@ -14,7 +14,7 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
-#include "../scripting/lua_kernel_base.hpp"
+#include "scripting/lua_kernel_base.hpp"
 
 #include "lua/lualib.h"
 #include "lua/lauxlib.h"

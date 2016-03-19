@@ -19,19 +19,19 @@
 
 #include "ca_global_fallback.hpp"
 
-#include "../composite/ai.hpp"
+#include "ai/composite/ai.hpp"
 
-#include "../../game_display.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../map_label.hpp"
-#include "../../replay.hpp"
-#include "../../resources.hpp"
-#include "../../sdl/utils.hpp"
-#include "../../team.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../tod_manager.hpp"
-#include "../../unit.hpp"
+#include "game_display.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "map_label.hpp"
+#include "replay.hpp"
+#include "resources.hpp"
+#include "sdl/utils.hpp"
+#include "team.hpp"
+#include "terrain_filter.hpp"
+#include "tod_manager.hpp"
+#include "unit.hpp"
 
 #include <boost/foreach.hpp>
 

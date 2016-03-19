@@ -20,10 +20,10 @@
 #include "global.hpp"
 #include "entity_location.hpp"
 
-#include "../resources.hpp"
-#include "../unit.hpp"
-#include "../unit_filter.hpp"
-#include "../variable.hpp"
+#include "resources.hpp"
+#include "unit.hpp"
+#include "unit_filter.hpp"
+#include "variable.hpp"
 
 
 // This file is in the game_events namespace.

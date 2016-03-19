@@ -13,7 +13,7 @@
 */
 
 #include "user_handler.hpp"
-#include "../config.hpp"
+#include "config.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <ctime>

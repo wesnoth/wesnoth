@@ -21,11 +21,11 @@
 
 #include "property_handler.hpp"
 #include "value_translator.hpp"
-#include "../lua/lua_object.hpp"
-#include "../lua/core.hpp"
-#include "../../scripting/game_lua_kernel.hpp"
+#include "ai/lua/lua_object.hpp"
+#include "ai/lua/core.hpp"
+#include "scripting/game_lua_kernel.hpp"
 
-#include "../../log.hpp"
+#include "log.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/pointer_cast.hpp>

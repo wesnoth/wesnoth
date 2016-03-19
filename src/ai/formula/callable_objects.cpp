@@ -13,10 +13,10 @@
 */
 
 #include "ai.hpp"
-#include "../../attack_prediction.hpp"
-#include "../../game_board.hpp"
+#include "attack_prediction.hpp"
+#include "game_board.hpp"
 #include "callable_objects.hpp"
-#include "../../resources.hpp"
+#include "resources.hpp"
 
 
 namespace game_logic {

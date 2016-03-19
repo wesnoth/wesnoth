@@ -41,13 +41,13 @@
 #include "reports.hpp"
 
 #include "desktop/clipboard.hpp"
-#include "../../game_preferences.hpp"
-#include "../../gettext.hpp"
-#include "../../leader_scroll_dialog.hpp"
-#include "../../preferences_display.hpp"
-#include "../../sound.hpp"
-#include "../../unit.hpp"
-#include "../../unit_animation_component.hpp"
+#include "game_preferences.hpp"
+#include "gettext.hpp"
+#include "leader_scroll_dialog.hpp"
+#include "preferences_display.hpp"
+#include "sound.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 
 #include "quit_confirmation.hpp"
 

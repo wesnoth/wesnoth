@@ -15,7 +15,7 @@
 #ifndef EXPLODER_UTILS_HPP_INCLUDED
 #define EXPLODER_UTILS_HPP_INCLUDED
 
-#include "../sdl/utils.hpp"
+#include "sdl/utils.hpp"
 #include <string>
 
 struct exploder_failure

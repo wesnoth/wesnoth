@@ -18,14 +18,14 @@
  */
 #include "manager.hpp"
 #include "testing.hpp"
-#include "../log.hpp"
-#include "../game_board.hpp"
-#include "../replay.hpp"
-#include "../util.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-#include "../tod_manager.hpp"
+#include "log.hpp"
+#include "game_board.hpp"
+#include "replay.hpp"
+#include "util.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "unit.hpp"
+#include "tod_manager.hpp"
 
 static lg::log_domain log_ai_testing("ai/testing");
 #define DBG_AI_TESTING LOG_STREAM(debug, log_ai_testing)

@@ -16,7 +16,7 @@
 #define GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "../../variable.hpp"
+#include "variable.hpp"
 
 #include <boost/shared_ptr.hpp>
 

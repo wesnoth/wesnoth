@@ -21,8 +21,8 @@
 #ifndef AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
 #define AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
 
-#include "../composite/stage.hpp"
-#include "../../formula_fwd.hpp"
+#include "ai/composite/stage.hpp"
+#include "formula_fwd.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

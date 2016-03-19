@@ -20,11 +20,11 @@
 
 #include "configuration.hpp"
 
-#include "../filesystem.hpp"
-#include "../log.hpp"
-#include "../serialization/parser.hpp"
-#include "../serialization/preprocessor.hpp"
-#include "../team.hpp"
+#include "filesystem.hpp"
+#include "log.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
+#include "team.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>

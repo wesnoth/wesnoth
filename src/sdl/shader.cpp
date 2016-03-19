@@ -15,7 +15,7 @@
 #include "shader.hpp"
 #include <iostream>
 #include "image.hpp"
-#include "../image.hpp"
+#include "../image.hpp" // We want the file in src/
 
 #ifdef SDL_GPU
 namespace sdl

@@ -21,12 +21,12 @@
 #include "stage_unit_formulas.hpp"
 #include "ai.hpp"
 
-#include "../../formula.hpp"
-#include "../../formula_function.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-#include "../../unit.hpp"
-#include "../../unit_formula_manager.hpp"
+#include "formula.hpp"
+#include "formula_function.hpp"
+#include "log.hpp"
+#include "resources.hpp"
+#include "unit.hpp"
+#include "unit_formula_manager.hpp"
 #include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_formula_ai("ai/stage/unit_formulas");

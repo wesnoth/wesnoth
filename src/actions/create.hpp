@@ -28,8 +28,8 @@ class vconfig;
 
 #include "unit_creator.hpp"
 
-#include "../map_location.hpp"
-#include "../unit_ptr.hpp"
+#include "map_location.hpp"
+#include "unit_ptr.hpp"
 
 #include <boost/tuple/tuple.hpp>
 

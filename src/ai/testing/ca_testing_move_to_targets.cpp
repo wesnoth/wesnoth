@@ -19,16 +19,16 @@
 
 #include "ca_testing_move_to_targets.hpp"
 
-#include "../composite/ai.hpp"
-#include "../actions.hpp"
-#include "../../game_board.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
-#include "../../unit.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../pathfind/pathfind.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/actions.hpp"
+#include "game_board.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "unit.hpp"
+#include "terrain_filter.hpp"
+#include "pathfind/pathfind.hpp"
 
 #include <deque>
 

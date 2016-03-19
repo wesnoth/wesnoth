@@ -18,7 +18,7 @@
 #include <string>
 #include <vector>
 
-#include "../../unit_map.hpp"
+#include "unit_map.hpp"
 
 struct lua_State;
 

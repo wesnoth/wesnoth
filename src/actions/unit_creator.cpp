@@ -21,24 +21,24 @@
 
 #include "move.hpp" //for actions::get_village
 
-#include "../config.hpp"
-#include "../filter_context.hpp"
-#include "../game_board.hpp"
-#include "../game_events/manager.hpp"
-#include "../game_events/pump.hpp"
-#include "../game_preferences.hpp"
-#include "../game_data.hpp" // for resources::gamedata conversion variable_set
-#include "../gettext.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../pathfind/pathfind.hpp"
-#include "../resources.hpp" // for resources::screen, resources::gamedata
-#include "../team.hpp" //for team
-#include "../unit.hpp" // for unit
-#include "../unit_display.hpp" // for unit_display
-#include "../variable.hpp" // for vconfig
+#include "config.hpp"
+#include "filter_context.hpp"
+#include "game_board.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
+#include "game_preferences.hpp"
+#include "game_data.hpp" // for resources::gamedata conversion variable_set
+#include "gettext.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "pathfind/pathfind.hpp"
+#include "resources.hpp" // for resources::screen, resources::gamedata
+#include "team.hpp" //for team
+#include "unit.hpp" // for unit
+#include "unit_display.hpp" // for unit_display
+#include "variable.hpp" // for vconfig
 
-#include "../game_display.hpp" // for resources::screen
+#include "game_display.hpp" // for resources::screen
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>

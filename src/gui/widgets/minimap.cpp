@@ -24,7 +24,7 @@
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "terrain_type_data.hpp"
-#include "../../minimap.hpp"
+#include "../../minimap.hpp" // We want the file in src/
 
 #include <boost/bind.hpp>
 #include <boost/make_shared.hpp>

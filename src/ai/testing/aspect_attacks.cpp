@@ -19,17 +19,17 @@
 
 #include "aspect_attacks.hpp"
 
-#include "../manager.hpp"
-#include "../../actions/attack.hpp"
-#include "../../game_board.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../team.hpp"
-#include "../../tod_manager.hpp"
-#include "../../resources.hpp"
-#include "../../unit.hpp"
-#include "../../pathfind/pathfind.hpp"
-#include "../../unit_filter.hpp"
+#include "ai/manager.hpp"
+#include "actions/attack.hpp"
+#include "game_board.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "team.hpp"
+#include "tod_manager.hpp"
+#include "resources.hpp"
+#include "unit.hpp"
+#include "pathfind/pathfind.hpp"
+#include "unit_filter.hpp"
 
 namespace ai {
 

@@ -15,7 +15,7 @@
 #ifndef EDITOR_PALETTES_H_INCLUDED
 #define EDITOR_PALETTES_H_INCLUDED
 
-#include "../editor_display.hpp"
+#include "editor/editor_display.hpp"
 #include "common_palette.hpp"
 #include "tristate_button.hpp"
 

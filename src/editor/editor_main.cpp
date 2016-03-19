@@ -15,8 +15,8 @@
 
 #include "controller/editor_controller.hpp"
 
-#include "../gettext.hpp"
-#include "../filesystem.hpp"
+#include "gettext.hpp"
+#include "filesystem.hpp"
 #include "editor/action/action_base.hpp"
 
 #include <boost/algorithm/string/replace.hpp>

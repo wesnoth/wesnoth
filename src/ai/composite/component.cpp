@@ -20,11 +20,11 @@
 #include "component.hpp"
 #include "engine.hpp"
 #include "property_handler.hpp"
-#include "../../config.hpp"
-#include "../../log.hpp"
-#include "../../unit.hpp"
+#include "config.hpp"
+#include "log.hpp"
+#include "unit.hpp"
 
-#include "../formula/ai.hpp"
+#include "ai/formula/ai.hpp"
 
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>

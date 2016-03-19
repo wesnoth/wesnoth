@@ -19,20 +19,20 @@
 
 #include "server.hpp"
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "../config.hpp"
-#include "../game_config.hpp"
-#include "../log.hpp"
-#include "../map.hpp" // gamemap::MAX_PLAYERS
-#include "../network.hpp"
-#include "../filesystem.hpp"
-#include "../multiplayer_error_codes.hpp"
-#include "../serialization/parser.hpp"
-#include "../serialization/preprocessor.hpp"
-#include "../serialization/string_utils.hpp"
-#include "../serialization/unicode.hpp"
-#include "../util.hpp"
+#include "config.hpp"
+#include "game_config.hpp"
+#include "log.hpp"
+#include "map.hpp" // gamemap::MAX_PLAYERS
+#include "network.hpp"
+#include "filesystem.hpp"
+#include "multiplayer_error_codes.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
+#include "util.hpp"
 
 #include "game.hpp"
 #include "input_stream.hpp"

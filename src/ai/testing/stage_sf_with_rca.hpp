@@ -22,9 +22,9 @@
 #define AI_TESTING_STAGE_SF_WITH_RCA_HPP_INCLUDED
 
 #include "stage_rca.hpp"
-#include "../composite/stage.hpp"
+#include "ai/composite/stage.hpp"
 
-#include "../../unit_map.hpp"
+#include "unit_map.hpp"
 
 #include <queue>
 

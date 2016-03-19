@@ -22,9 +22,9 @@
 
 #include "game_info.hpp"
 
-#include "../actions/move.hpp"
+#include "actions/move.hpp"
 #include "lua/unit_advancements_aspect.hpp"
-#include "../unit_ptr.hpp"
+#include "unit_ptr.hpp"
 
 namespace pathfind {
 struct plain_route;

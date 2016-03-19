@@ -15,7 +15,7 @@
 #ifndef FILE_MENU_H_INCLUDED
 #define FILE_MENU_H_INCLUDED
 
-#include "../construct_dialog.hpp"
+#include "construct_dialog.hpp"
 
 namespace gui {
 

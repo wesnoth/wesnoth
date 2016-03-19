@@ -24,19 +24,19 @@
 
 #include "ai/default/contexts.hpp"
 
-#include "../../attack_prediction.hpp"
-#include "../../filesystem.hpp"
-#include "../../game_board.hpp"
-#include "../../display.hpp"
-#include "../../log.hpp"
-#include "../../map_label.hpp"
-#include "../../pathfind/teleport.hpp"
-#include "../../replay.hpp"
-#include "../../resources.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../unit.hpp"
-#include "../../pathfind/pathfind.hpp"
-#include "../../unit_types.hpp"
+#include "attack_prediction.hpp"
+#include "filesystem.hpp"
+#include "game_board.hpp"
+#include "display.hpp"
+#include "log.hpp"
+#include "map_label.hpp"
+#include "pathfind/teleport.hpp"
+#include "replay.hpp"
+#include "resources.hpp"
+#include "terrain_filter.hpp"
+#include "unit.hpp"
+#include "pathfind/pathfind.hpp"
+#include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
 

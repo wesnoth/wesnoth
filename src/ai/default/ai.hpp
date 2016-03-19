@@ -17,8 +17,8 @@
 #ifndef AI_DEFAULT_AI_HPP_INCLUDED
 #define AI_DEFAULT_AI_HPP_INCLUDED
 
-#include "../interface.hpp"
-#include "../composite/stage.hpp"
+#include "ai/interface.hpp"
+#include "ai/composite/stage.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

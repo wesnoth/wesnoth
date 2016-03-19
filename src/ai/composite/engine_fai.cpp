@@ -20,12 +20,12 @@
 #include "ai.hpp"
 #include "engine_fai.hpp"
 #include "rca.hpp"
-#include "../formula/ai.hpp"
-#include "../formula/candidates.hpp"
-#include "../formula/stage_side_formulas.hpp"
-#include "../formula/stage_unit_formulas.hpp"
-#include "../../log.hpp"
-#include "../../unit.hpp"
+#include "ai/formula/ai.hpp"
+#include "ai/formula/candidates.hpp"
+#include "ai/formula/stage_side_formulas.hpp"
+#include "ai/formula/stage_unit_formulas.hpp"
+#include "log.hpp"
+#include "unit.hpp"
 
 namespace ai {
 

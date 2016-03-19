@@ -16,7 +16,7 @@
 #include "game.hpp"
 #include "player_network.hpp"
 #include "room.hpp"
-#include "../log.hpp"
+#include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 

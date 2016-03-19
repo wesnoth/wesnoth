@@ -19,17 +19,17 @@
 
 #include "simulated_actions.hpp"
 
-#include "../game_board.hpp"
-#include "../game_config.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../recall_list_manager.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-#include "../unit_helper.hpp"
-#include "../unit_ptr.hpp"
-#include "../unit_types.hpp"
+#include "game_board.hpp"
+#include "game_config.hpp"
+#include "log.hpp"
+#include "map.hpp"
+#include "recall_list_manager.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "unit.hpp"
+#include "unit_helper.hpp"
+#include "unit_ptr.hpp"
+#include "unit_types.hpp"
 
 namespace ai {
 

@@ -25,8 +25,8 @@
 #include <map>                          // for map, map<>::value_compare
 #include <string>                       // for string, basic_string, etc
 #include <utility>                      // for make_pair, pair
-#include "../savegame_config.hpp"       // for savegame_config
-#include "../config.hpp"             // for config
+#include "savegame_config.hpp"       // for savegame_config
+#include "config.hpp"             // for config
 #include "ai/game_info.hpp"             // for ai_ptr, side_number
 namespace ai { class ai_context; }
 

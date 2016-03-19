@@ -20,7 +20,7 @@
 #ifndef AI_DEFAULT_CONTEXTS_HPP_INCLUDED
 #define AI_DEFAULT_CONTEXTS_HPP_INCLUDED
 
-#include "../contexts.hpp"
+#include "ai/contexts.hpp"
 #include "formula_callable.hpp"
 
 #ifdef _MSC_VER

@@ -19,12 +19,12 @@
 
 #include "stage_rca.hpp"
 
-#include "../manager.hpp"
-#include "../composite/ai.hpp"
-#include "../composite/engine.hpp"
-#include "../composite/property_handler.hpp"
-#include "../gamestate_observer.hpp"
-#include "../../log.hpp"
+#include "ai/manager.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/property_handler.hpp"
+#include "ai/gamestate_observer.hpp"
+#include "log.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>

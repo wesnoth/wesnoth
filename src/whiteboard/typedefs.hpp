@@ -37,8 +37,8 @@ static lg::log_domain log_whiteboard("whiteboard");
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-#include "../fake_unit_ptr.hpp"
-#include "../unit_ptr.hpp"
+#include "fake_unit_ptr.hpp"
+#include "unit_ptr.hpp"
 
 class arrow;
 class config;

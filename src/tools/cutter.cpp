@@ -17,7 +17,7 @@
  * Standalone-Utility for images / tiles
  */
 
-#include "../game_config.hpp"
+#include "game_config.hpp"
 #include "exploder_composer.hpp"
 
 #include "SDL_image.h"

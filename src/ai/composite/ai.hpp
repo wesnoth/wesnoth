@@ -21,7 +21,7 @@
 #define AI_COMPOSITE_AI_HPP_INCLUDED
 
 #include "contexts.hpp"
-#include "../interface.hpp"
+#include "ai/interface.hpp"
 #include "component.hpp"
 
 #ifdef _MSC_VER

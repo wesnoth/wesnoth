@@ -17,7 +17,7 @@
 
 #include "mouse_action.hpp"
 #include "editor/palette/empty_palette.hpp"
-#include "../../../map_label.hpp"
+#include "map_label.hpp"
 
 class CKey;
 

@@ -22,8 +22,8 @@
 #ifndef AI_MANAGER_HPP_INCLUDED
 #define AI_MANAGER_HPP_INCLUDED
 
-#include "../config.hpp"                // for config, etc
-#include "../global.hpp"
+#include "config.hpp"                // for config, etc
+#include "global.hpp"
 #include "game_info.hpp"                // for side_number, ai_ptr
 
 #include <boost/shared_ptr.hpp>         // for shared_ptr

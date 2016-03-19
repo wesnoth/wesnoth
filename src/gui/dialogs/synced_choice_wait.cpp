@@ -22,8 +22,8 @@
 #include "quit_confirmation.hpp"
 
 #include "message.hpp"
-#include "../../game_end_exceptions.hpp"
-#include "../../gettext.hpp"
+#include "game_end_exceptions.hpp"
+#include "gettext.hpp"
 
 
 #include <boost/bind.hpp>

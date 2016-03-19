@@ -16,12 +16,12 @@
 #ifndef SERVER_PLAYER_NETWORK_HPP_INCLUDED
 #define SERVER_PLAYER_NETWORK_HPP_INCLUDED
 
-#include "../network.hpp"
+#include "network.hpp"
 #include "player.hpp"
 #include "simple_wml.hpp"
 
 #include "utils/boost_function_guarded.hpp"
-#include "../log.hpp"
+#include "log.hpp"
 
 extern lg::log_domain log_config_pn;
 namespace wesnothd {
