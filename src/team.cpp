@@ -488,7 +488,7 @@ namespace
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const
 		{
-			return config_of("controller", new_controller_);
+			return config_of("controller", new_controller_)("is_local", true);
 		}
 		/// the request which is sended to the mp server.
 		virtual config request() const
