@@ -35,7 +35,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\..\external\include"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="2"
@@ -95,7 +95,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\..\external\include"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -152,7 +152,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\..\external\include"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -212,7 +212,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\..\external\include"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -395,6 +395,10 @@
 				RelativePath="..\..\src\lua\lzio.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\..\src\lua_jailbreak_exception.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -499,6 +503,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lzio.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\lua_jailbreak_exception.h"
 				>
 			</File>
 		</Filter>
