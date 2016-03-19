@@ -36,17 +36,6 @@ namespace gui2
 
 REGISTER_WIDGET(slider)
 
-static int distance(const int a, const int b)
-{
-	/**
-	 * @todo once this works properly the assert can be removed and the code
-	 * inlined.
-	 */
-	int result = b - a;
-	assert(result >= 0);
-	return result;
-}
-
 tslider::tslider()
 	: tscrollbar_()
 	, best_slider_length_(0)
@@ -95,7 +84,7 @@ void tslider::set_value(const int value)
 	} else if(value > get_maximum_value()) {
 		set_value(get_maximum_value());
 	} else {
-		set_item_position(distance(minimum_value_, value));
+		set_item_position(value - minimum_value_);
 	}
 }
 
@@ -114,7 +103,7 @@ void tslider::set_minimum_value(const int minimum_value)
 
 	// The number of items needs to include the begin and end so distance step
 	// size.
-	set_item_count(distance(minimum_value_, maximum_value) + get_step_size());
+	set_item_count(maximum_value - minimum_value_ + get_step_size());
 
 	if(value < minimum_value_) {
 		set_item_position(0);
@@ -136,7 +125,7 @@ void tslider::set_maximum_value(const int maximum_value)
 
 	// The number of items needs to include the begin and end so distance + step
 	// size.
-	set_item_count(distance(minimum_value_, maximum_value) + get_step_size());
+	set_item_count(maximum_value - minimum_value_ + get_step_size());
 
 	if(value > maximum_value) {
 		set_item_position(get_maximum_value());
@@ -155,9 +144,9 @@ t_string tslider::get_value_label() const
 	} else if(!maximum_value_label_.empty() && get_value()
 											   == get_maximum_value()) {
 		return maximum_value_label_;
-	} else {
-		return t_string((formatter() << get_value()).str());
 	}
+
+	return t_string((formatter() << get_value()).str());
 }
 
 void tslider::child_callback_positioner_moved()
@@ -212,21 +201,22 @@ bool tslider::on_positioner(const tpoint& coordinate) const
 
 int tslider::on_bar(const tpoint& coordinate) const
 {
+	const unsigned x = static_cast<size_t>(coordinate.x);
+	const unsigned y = static_cast<size_t>(coordinate.y);
+
 	// Not on the widget, leave.
-	if(static_cast<size_t>(coordinate.x) > get_width()
-	   || static_cast<size_t>(coordinate.y) > get_height()) {
+	if(x > get_width() || y > get_height()) {
 		return 0;
 	}
 
 	// we also assume the bar is over the entire height of the widget.
-	if(static_cast<size_t>(coordinate.x) < get_positioner_offset()) {
+	if(x < get_positioner_offset()) {
 		return -1;
-	} else if(static_cast<size_t>(coordinate.x) > get_positioner_offset()
-												  + get_positioner_length()) {
+	} else if(x > get_positioner_offset() + get_positioner_length()) {
 		return 1;
-	} else {
-		return 0;
 	}
+
+	return 0;
 }
 
 bool tslider::in_orthogonal_range(const tpoint& coordinate) const
@@ -295,14 +285,14 @@ void tslider::signal_handler_left_button_up(const event::tevent event,
 
 	handled = true;
 }
-namespace {
-	t_string default_value_label_generator(const std::vector<t_string>& value_labels, int item_position, int max)
-	{
-		assert(int(value_labels.size()) == max);
-		assert(item_position < max && item_position >= 0);
-		return value_labels[item_position];
-	}
+
+static t_string default_value_label_generator(const std::vector<t_string>& value_labels, int item_position, int max)
+{
+	assert(int(value_labels.size()) == max);
+	assert(item_position < max && item_position >= 0);
+	return value_labels[item_position];
 }
+
 void tslider::set_value_labels(const std::vector<t_string>& value_labels)
 {
 	//dont use boost::ref becasue we want to store value_labels in the cloasure.
