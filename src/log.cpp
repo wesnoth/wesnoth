@@ -79,8 +79,35 @@ static int strict_level_ = -1;
 void timestamps(bool t) { timestamp = t; }
 void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
-logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
-log_domain general("general");
+logger& err()
+{
+	static logger lg("error", 0);
+	return lg;
+}
+
+logger& warn()
+{
+	static logger lg("warning", 1);
+	return lg;
+}
+
+logger& info()
+{
+	static logger lg("info", 2);
+	return lg;
+}
+
+logger& debug()
+{
+	static logger lg("debug", 3);
+	return lg;
+}
+
+log_domain& general()
+{
+	static log_domain dom("general");
+	return dom;
+}
 
 log_domain::log_domain(char const *name)
 	: domain_(NULL)
@@ -204,7 +231,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 
 void scope_logger::do_log_entry(log_domain const &domain, const std::string& str)
 {
-	output_ = &debug(domain, false, true);
+	output_ = &debug()(domain, false, true);
 	str_ = str;
 	ticks_ = SDL_GetTicks();
 	(*output_) << "{ BEGIN: " << str_ << "\n";
@@ -226,7 +253,11 @@ void scope_logger::do_indent() const
 		(*output_) << "  ";
 }
 
-std::stringstream wml_error;
+std::stringstream& wml_error()
+{
+	static std::stringstream lg;
+	return lg;
+}
 
 } // end namespace lg
 

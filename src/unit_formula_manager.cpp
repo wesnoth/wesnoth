@@ -33,7 +33,7 @@ bool unit_formula_manager::matches_filter(const std::string & cfg_formula, const
 		}
 		return true;
 	} catch(game_logic::formula_error& e) {
-		lg::wml_error << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+		lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 		// Formulae with syntax errors match nothing
 		return false;
 	}

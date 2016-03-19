@@ -200,7 +200,7 @@ void show_error_message(CVideo& video,
 						const std::string& message,
 						bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general) << message << '\n';
+	LOG_STREAM(err, lg::general()) << message << '\n';
 	show_message(video,
 				 _("Error"),
 				 message,

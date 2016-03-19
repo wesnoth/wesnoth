@@ -46,7 +46,7 @@ namespace game_events {
 
 	void t_event_handlers::log_handlers()
 	{
-		if(lg::debug.dont_log("event_handler")) return;
+		if(lg::debug().dont_log("event_handler")) return;
 
 		std::stringstream ss;
 

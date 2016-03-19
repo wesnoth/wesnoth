@@ -357,13 +357,13 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("load"))
 		load = vm["load"].as<std::string>();
 	if (vm.count("log-error"))
-		 parse_log_domains_(vm["log-error"].as<std::string>(),lg::err.get_severity());
+		 parse_log_domains_(vm["log-error"].as<std::string>(),lg::err().get_severity());
 	if (vm.count("log-warning"))
-		 parse_log_domains_(vm["log-warning"].as<std::string>(),lg::warn.get_severity());
+		 parse_log_domains_(vm["log-warning"].as<std::string>(),lg::warn().get_severity());
 	if (vm.count("log-info"))
-		 parse_log_domains_(vm["log-info"].as<std::string>(),lg::info.get_severity());
+		 parse_log_domains_(vm["log-info"].as<std::string>(),lg::info().get_severity());
 	if (vm.count("log-debug"))
-		 parse_log_domains_(vm["log-debug"].as<std::string>(),lg::debug.get_severity());
+		 parse_log_domains_(vm["log-debug"].as<std::string>(),lg::debug().get_severity());
 	if (vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
 	if (vm.count("log-precise"))
@@ -498,7 +498,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 }
 
 void commandline_options::parse_log_strictness (const std::string & severity ) {
-	static lg::logger const *loggers[] = { &lg::err, &lg::warn, &lg::info, &lg::debug };
+	static lg::logger const *loggers[] = { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
 	BOOST_FOREACH (const lg::logger * l, loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);

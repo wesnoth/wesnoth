@@ -2044,10 +2044,10 @@ void chat_handler::change_logging(const std::string& data) {
 	const std::string level(data.begin(),j);
 	const std::string domain(j+1,data.end());
 	int severity;
-	if (level == "error") severity = lg::err.get_severity();
-	else if (level == "warning") severity = lg::warn.get_severity();
-	else if (level == "info") severity = lg::info.get_severity();
-	else if (level == "debug") severity = lg::debug.get_severity();
+	if (level == "error") severity = lg::err().get_severity();
+	else if (level == "warning") severity = lg::warn().get_severity();
+	else if (level == "info") severity = lg::info().get_severity();
+	else if (level == "debug") severity = lg::debug().get_severity();
 	else {
 		utils::string_map symbols;
 		symbols["level"] = level;

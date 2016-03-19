@@ -257,7 +257,7 @@ void handle_deprecated_message(const config& cfg)
 {
 	// Note: no need to translate the string, since only used for deprecated things.
 	const std::string& message = cfg["message"];
-	lg::wml_error << message << '\n';
+	lg::wml_error() << message << '\n';
 }
 
 void handle_wml_log_message(const config& cfg)
@@ -642,7 +642,7 @@ WML_HANDLER_FUNCTION(replace_map, cfg)
 		}
 	} catch(incorrect_map_format_error&) {
 		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline data");
-		lg::wml_error << "replace_map: Unable to load map " << log_map_name << std::endl;
+		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
 	} catch(twml_exception& e) {
 		e.show(resources::screen->video());
@@ -652,7 +652,7 @@ WML_HANDLER_FUNCTION(replace_map, cfg)
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
 		if (!cfg["expand"].to_bool()) {
-			lg::wml_error << "replace_map: Map dimension(s) increase but expand is not set" << std::endl;
+			lg::wml_error() << "replace_map: Map dimension(s) increase but expand is not set" << std::endl;
 			return;
 		}
 	}
@@ -660,7 +660,7 @@ WML_HANDLER_FUNCTION(replace_map, cfg)
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
 		if (!cfg["shrink"].to_bool()) {
-			lg::wml_error << "replace_map: Map dimension(s) decrease but shrink is not set" << std::endl;
+			lg::wml_error() << "replace_map: Map dimension(s) decrease but shrink is not set" << std::endl;
 			return;
 		}
 	}
@@ -668,7 +668,7 @@ WML_HANDLER_FUNCTION(replace_map, cfg)
 	boost::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
-		lg::wml_error << *errmsg << std::endl;
+		lg::wml_error() << *errmsg << std::endl;
 	}
 
 	resources::screen->reload_map();

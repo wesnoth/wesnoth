@@ -230,7 +230,7 @@ void recruitment::execute() {
 		// Add team recruits.
 		BOOST_FOREACH(const std::string& recruit, current_team().recruits()) {
 			if (!unit_types.find(recruit)) {
-				lg::wml_error << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				lg::wml_error() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
 			}
 			data.recruits.insert(recruit);
 			data.scores[recruit] = 0.0;
@@ -240,7 +240,7 @@ void recruitment::execute() {
 		// Add extra recruits.
 		BOOST_FOREACH(const std::string& recruit, leader->recruits()) {
 			if (!unit_types.find(recruit)) {
-				lg::wml_error << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				lg::wml_error() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
 			}
 			data.recruits.insert(recruit);
 			data.scores[recruit] = 0.0;
@@ -291,7 +291,7 @@ void recruitment::execute() {
 	update_important_hexes();
 	// Show "x" on important hexes if debug mode is activated AND
 	// the log domain "ai/recruitment" is used.
-	if (game_config::debug && !lg::info.dont_log(log_ai_recruitment)) {
+	if (game_config::debug && !lg::info().dont_log(log_ai_recruitment)) {
 		show_important_hexes();
 	}
 

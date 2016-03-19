@@ -26,7 +26,7 @@
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
-#define DBG_G LOG_STREAM(debug, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general())
 
 namespace gui {
 

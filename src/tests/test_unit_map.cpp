@@ -68,19 +68,19 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 
 	//	unit * orc1p = new unit(orc1_side0_real);
 
-	lg::set_log_domain_severity("engine", lg::err.get_severity() - 1); // Don't log anything
-	lg::set_log_domain_severity("unit", lg::err);
+	lg::set_log_domain_severity("engine", lg::err().get_severity() - 1); // Don't log anything
+	lg::set_log_domain_severity("unit", lg::err());
 	uresult1 = unit_map.add(map_location(1,1), orc1_side0_real);
-	lg::set_log_domain_severity("unit", lg::warn);
-	lg::set_log_domain_severity("engine", lg::info);
+	lg::set_log_domain_severity("unit", lg::warn());
+	lg::set_log_domain_severity("engine", lg::info());
 	BOOST_CHECK_EQUAL(unit_map.size(), 1);
 	BOOST_CHECK_MESSAGE(uresult1.second == false, "Didn't Add at occupied location.");
 	BOOST_CHECK_MESSAGE(uresult1.first == unit_map.end(), "Didn't Add at occupied location.");
 
-	lg::set_log_domain_severity("engine", lg::err.get_severity() - 1); // Don't log anything
+	lg::set_log_domain_severity("engine", lg::err().get_severity() - 1); // Don't log anything
 	// If the location is invalid, the unit never needs to be cloned, so no warning is emitted in the unit domain
 	uresult1 = unit_map.add(map_location(-1,1), orc1_side0_real);
-	lg::set_log_domain_severity("engine", lg::info);
+	lg::set_log_domain_severity("engine", lg::info());
 	BOOST_CHECK_EQUAL(unit_map.size(), 1);
 	BOOST_CHECK_MESSAGE(uresult1.second == false, "Didn't Add at invalid location.");
 	BOOST_CHECK_MESSAGE(uresult1.first == unit_map.end(), "Didn't Add at invalid location.");
@@ -89,11 +89,11 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	// std::cerr<<"ID real ="<<orc1_side0_real.underlying_id()<<"\n";
 	// std::cerr<<"ID fake ="<<orc2_side0_fake.underlying_id()<<"\n";
 
-	lg::set_log_domain_severity("engine", lg::err.get_severity() - 1); // Don't log anything
-	lg::set_log_domain_severity("unit", lg::err);
+	lg::set_log_domain_severity("engine", lg::err().get_severity() - 1); // Don't log anything
+	lg::set_log_domain_severity("unit", lg::err());
 	uresult1 = unit_map.add(map_location(1,2), orc1_side0_real);
-	lg::set_log_domain_severity("unit", lg::warn);
-	lg::set_log_domain_severity("engine", lg::info);
+	lg::set_log_domain_severity("unit", lg::warn());
+	lg::set_log_domain_severity("engine", lg::info());
 	BOOST_CHECK_EQUAL(unit_map.size(), 2);
 	BOOST_CHECK_MESSAGE(uresult1.second == true, "Added in face of id collision.");
 	BOOST_CHECK_MESSAGE(uresult1.first != unit_map.end(), "Added in face of id collision.");

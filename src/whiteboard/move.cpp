@@ -367,7 +367,7 @@ void move::remove_temp_modifier(unit_map&)
 		return; //zero-hex move, probably used by attack subclass
 
 	// Debug movement points
-	if ( !lg::debug.dont_log(log_whiteboard) )
+	if ( !lg::debug().dont_log(log_whiteboard) )
 	{
 		unit* unit;
 		{

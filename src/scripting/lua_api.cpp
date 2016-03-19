@@ -84,7 +84,7 @@ bool luaW_pcall(lua_State *L
 			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
 				m += 5;
 				char const *e = strstr(m, "stack traceback");
-				lg::wml_error << std::string(m, e ? e - m : strlen(m));
+				lg::wml_error() << std::string(m, e ? e - m : strlen(m));
 			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
 				m += 5;
 				char const *e = NULL, *em = m;

@@ -38,10 +38,10 @@ extern "C" int _putenv(const char*);
 #include <cerrno>
 #endif
 
-#define DBG_G LOG_STREAM(debug, lg::general)
-#define LOG_G LOG_STREAM(info, lg::general)
-#define WRN_G LOG_STREAM(warn, lg::general)
-#define ERR_G LOG_STREAM(err, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general())
+#define LOG_G LOG_STREAM(info, lg::general())
+#define WRN_G LOG_STREAM(warn, lg::general())
+#define ERR_G LOG_STREAM(err, lg::general())
 
 namespace {
 	language_def current_language;

@@ -135,8 +135,8 @@ void precise_timestamps(bool);
 std::string get_timestamp(const time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
 std::string get_timespan(const time_t& t);
 
-extern logger err, warn, info, debug;
-extern log_domain general;
+logger &err(), &warn(), &info(), &debug();
+log_domain& general();
 
 class scope_logger
 {
@@ -149,14 +149,14 @@ public:
 		output_(NULL),
 		str_()
 	{
-		if (!debug.dont_log(domain)) do_log_entry(domain, str);
+		if (!debug().dont_log(domain)) do_log_entry(domain, str);
 	}
 	scope_logger(log_domain const &domain, const std::string& str) :
 		ticks_(0),
 		output_(NULL),
 		str_()
 	{
-		if (!debug.dont_log(domain)) do_log_entry(domain, str);
+		if (!debug().dont_log(domain)) do_log_entry(domain, str);
 	}
 	~scope_logger()
 	{
@@ -177,16 +177,16 @@ private:
  * After every wml-event the errors are shown to the user,
  * so they can inform the campaign maintainer.
  */
-extern std::stringstream wml_error;
+std::stringstream& wml_error();
 
 } // namespace lg
 
-#define log_scope(a) lg::scope_logger scope_logging_object__(lg::general, a);
-#define log_scope2(a,b) lg::scope_logger scope_logging_object__(a, b);
+#define log_scope(description) lg::scope_logger scope_logging_object__(lg::general(), description);
+#define log_scope2(domain,description) lg::scope_logger scope_logging_object__(domain, description);
 
-#define LOG_STREAM(a, b) if (lg::a.dont_log(b)) ; else lg::a(b)
+#define LOG_STREAM(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain)
 
 // When using log_scope/log_scope2 it is nice to have all output indented.
-#define LOG_STREAM_INDENT(a,b) if (lg::a.dont_log(b)) ; else lg::a(b, true, true)
+#define LOG_STREAM_INDENT(level,domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, true, true)
 
 #endif

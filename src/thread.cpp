@@ -23,7 +23,7 @@
 #include "SDL_thread.h"
 #include "SDL_version.h"
 
-#define ERR_G LOG_STREAM(err, lg::general)
+#define ERR_G LOG_STREAM(err, lg::general())
 
 boost::uint32_t threading::thread::get_id() { return SDL_GetThreadID(thread_); }
 

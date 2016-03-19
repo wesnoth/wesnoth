@@ -18,7 +18,6 @@
 #include <boost/bind.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include "log.hpp"
 #include "map_location.hpp"
 
 static std::vector<map_location> preset_locs;

@@ -38,10 +38,10 @@
 #include <cassert>
 
 static lg::log_domain log_config("config");
-#define ERR_G  LOG_STREAM(err,   lg::general)
-#define WRN_G  LOG_STREAM(warn,   lg::general)
-#define LOG_G  LOG_STREAM(info,  lg::general)
-#define DBG_G  LOG_STREAM(debug, lg::general)
+#define ERR_G  LOG_STREAM(err,   lg::general())
+#define WRN_G  LOG_STREAM(warn,   lg::general())
+#define LOG_G  LOG_STREAM(info,  lg::general())
+#define DBG_G  LOG_STREAM(debug, lg::general())
 #define ERR_CF LOG_STREAM(err,   log_config)
 
 namespace {

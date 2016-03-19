@@ -41,8 +41,8 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
-#define LOG_G LOG_STREAM(info, lg::general)
-#define DBG_G LOG_STREAM(debug, lg::general)
+#define LOG_G LOG_STREAM(info, lg::general())
+#define DBG_G LOG_STREAM(debug, lg::general())
 
 /** Gets the list of terrains. */
 const t_translation::t_list& gamemap::get_terrain_list() const

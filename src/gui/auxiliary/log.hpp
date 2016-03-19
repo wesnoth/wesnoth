@@ -45,10 +45,10 @@ extern lg::log_domain log_gui_general;
 
 extern lg::log_domain log_gui_iterator;
 #define TST_GUI_I                                                              \
-	if(lg::debug.dont_log(gui2::log_gui_iterator))                             \
+	if(lg::debug().dont_log(gui2::log_gui_iterator))                             \
 		;                                                                      \
 	else                                                                       \
-	lg::debug(gui2::log_gui_iterator, false, false)
+	lg::debug()(gui2::log_gui_iterator, false, false)
 #define DBG_GUI_I LOG_STREAM_INDENT(debug, gui2::log_gui_iterator)
 #define LOG_GUI_I LOG_STREAM_INDENT(info, gui2::log_gui_iterator)
 #define WRN_GUI_I LOG_STREAM_INDENT(warn, gui2::log_gui_iterator)

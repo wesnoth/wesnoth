@@ -746,7 +746,7 @@ public:
 
 static void debug_print_recall_list_scores(const std::vector< std::pair<std::string,double> > &recall_list_scores,const char *message)
 {
-	if (!lg::debug.dont_log(log_ai)) {
+	if (!lg::debug().dont_log(log_ai)) {
 		std::stringstream s;
 		s << message << std::endl;
 		for (std::vector< std::pair<std::string,double> >::const_iterator p = recall_list_scores.begin(); p!=recall_list_scores.end();++p) {

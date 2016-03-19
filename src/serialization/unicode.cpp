@@ -32,7 +32,7 @@
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
-#define ERR_GENERAL LOG_STREAM(err, lg::general)
+#define ERR_GENERAL LOG_STREAM(err, lg::general())
 
 namespace utf8 {
 

@@ -994,7 +994,7 @@ void get_villages_phase::get_villages(
 		leader_loc_ = map_location::null_location();
 	}
 
-	debug_ = !lg::debug.dont_log(log_ai_testing_ai_default);
+	debug_ = !lg::debug().dont_log(log_ai_testing_ai_default);
 
 	// Find our units who can move.
 	treachmap reachmap;

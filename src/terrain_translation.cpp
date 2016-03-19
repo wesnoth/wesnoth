@@ -28,8 +28,8 @@
 #include "wml_exception.hpp"
 
 
-#define ERR_G LOG_STREAM(err, lg::general)
-#define WRN_G LOG_STREAM(warn, lg::general)
+#define ERR_G LOG_STREAM(err, lg::general())
+#define WRN_G LOG_STREAM(warn, lg::general())
 
 namespace t_translation {
 

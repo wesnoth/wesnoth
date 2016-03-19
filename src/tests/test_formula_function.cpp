@@ -37,14 +37,14 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 				.evaluate().as_string()
 			, "world");
 
-	lg::set_log_domain_severity("scripting/formula", lg::err);
+	lg::set_log_domain_severity("scripting/formula", lg::err());
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 11)")
 				.evaluate().as_string()
 			, "");
 
-	lg::set_log_domain_severity("scripting/formula", lg::debug);
+	lg::set_log_domain_severity("scripting/formula", lg::debug());
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', -1)")
@@ -61,14 +61,14 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 				.evaluate().as_string()
 			, "hello world");
 
-	lg::set_log_domain_severity("scripting/formula", lg::err);
+	lg::set_log_domain_severity("scripting/formula", lg::err());
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', -12)")
 				.evaluate().as_string()
 			, "hello world");
 
-	lg::set_log_domain_severity("scripting/formula", lg::debug);
+	lg::set_log_domain_severity("scripting/formula", lg::debug());
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 0, 0)")
@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 				.evaluate().as_string()
 			, "h");
 
-	lg::set_log_domain_severity("scripting/formula", lg::debug);
+	lg::set_log_domain_severity("scripting/formula", lg::debug());
 
 	BOOST_CHECK_EQUAL(
 			game_logic::formula("substring('hello world', 5, 1)")

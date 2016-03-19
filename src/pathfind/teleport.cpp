@@ -257,7 +257,7 @@ manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_i
 	for(int i = 0; i < tunnel_count; ++i) {
 		const config& t = cfg.child("tunnel", i);
 		if(!t["saved"].to_bool()) {
-			lg::wml_error << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
+			lg::wml_error() << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
 			continue;
 		}
 		const teleport_group tunnel(t);

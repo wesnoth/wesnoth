@@ -73,7 +73,7 @@ void show_transient_error_message(CVideo& video,
 								  const std::string& image,
 								  const bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general) << message << '\n';
+	LOG_STREAM(err, lg::general()) << message << '\n';
 	show_transient_message(
 			video, _("Error"), message, image, message_use_markup);
 }

@@ -509,7 +509,7 @@ bool config::has_old_attribute(const std::string &key, const std::string &old_ke
 		return true;
 	} else if (values.find(old_key) != values.end()) {
 		if (!msg.empty())
-			lg::wml_error << msg;
+			lg::wml_error() << msg;
 		return true;
 	}
 	return false;
@@ -903,7 +903,7 @@ const config::attribute_value &config::get_old_attribute(const std::string &key,
 	i = values.find(old_key);
 	if (i != values.end()) {
 		if (!msg.empty())
-			lg::wml_error << msg;
+			lg::wml_error() << msg;
 		return i->second;
 	}
 

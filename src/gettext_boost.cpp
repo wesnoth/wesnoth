@@ -24,10 +24,10 @@
 #include <boost/thread.hpp>
 #include <set>
 
-#define DBG_G LOG_STREAM(debug, lg::general)
-#define LOG_G LOG_STREAM(info, lg::general)
-#define WRN_G LOG_STREAM(warn, lg::general)
-#define ERR_G LOG_STREAM(err, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general())
+#define LOG_G LOG_STREAM(info, lg::general())
+#define WRN_G LOG_STREAM(warn, lg::general())
+#define ERR_G LOG_STREAM(err, lg::general())
 
 namespace bl = boost::locale;
 namespace

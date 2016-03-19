@@ -391,7 +391,7 @@ void loadscreen::increment_progress()
 
 void loadscreen::dump_counters() const
 {
-	if (lg::info.dont_log(log_loadscreen)) return;
+	if (lg::info().dont_log(log_loadscreen)) return;
 
 	std::ostringstream s;
 

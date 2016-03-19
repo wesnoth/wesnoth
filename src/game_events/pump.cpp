@@ -383,7 +383,7 @@ namespace { // Support functions
 	{
 		static const std::string caption("Invalid WML found");
 
-		show_wml_messages(lg::wml_error, caption, true);
+		show_wml_messages(lg::wml_error(), caption, true);
 	}
 
 	/**
@@ -459,13 +459,13 @@ void t_pump::context_skip_messages(bool b)
 void t_pump::put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
 {
 	if (logger == "err" || logger == "error") {
-		put_wml_message(lg::err, _("Error: "), message, in_chat );
+		put_wml_message(lg::err(), _("Error: "), message, in_chat );
 	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
-		put_wml_message(lg::warn, _("Warning: "), message, in_chat );
-	} else if ((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(log_wml)) {
-		put_wml_message(lg::debug, _("Debug: "), message, in_chat );
-	} else if (!lg::info.dont_log(log_wml)) {
-		put_wml_message(lg::info, _("Info: "), message, in_chat );
+		put_wml_message(lg::warn(), _("Warning: "), message, in_chat );
+	} else if ((logger == "debug" || logger == "dbg") && !lg::debug().dont_log(log_wml)) {
+		put_wml_message(lg::debug(), _("Debug: "), message, in_chat );
+	} else if (!lg::info().dont_log(log_wml)) {
+		put_wml_message(lg::info(), _("Info: "), message, in_chat );
 	}
 }
 
@@ -506,7 +506,7 @@ bool t_pump::operator()()
 		       << "recursion level would exceed maximum: " << game_config::max_loop << '\n';
 		return false;
 	}
-	if(!lg::debug.dont_log("event_handler")) {
+	if(!lg::debug().dont_log("event_handler")) {
 		std::stringstream ss;
 		BOOST_FOREACH(const queued_event& ev, impl_->events_queue) {
 			ss << "name=" << ev.name << "; ";

@@ -127,7 +127,7 @@ namespace game { struct error; }
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
-#define LOG_GENERAL LOG_STREAM(info, lg::general)
+#define LOG_GENERAL LOG_STREAM(info, lg::general())
 
 static lg::log_domain log_preprocessor("preprocessor");
 #define LOG_PREPROC LOG_STREAM(info,log_preprocessor)

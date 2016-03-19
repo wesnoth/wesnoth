@@ -711,7 +711,7 @@ void server::run() {
 							   simple_wml::INIT_COMPRESSED );
 				simple_wml::string_span s = ping.output_compressed();
 				BOOST_FOREACH(network::connection sock, ghost_players_) {
-					if (!lg::debug.dont_log(log_server)) {
+					if (!lg::debug().dont_log(log_server)) {
 						wesnothd::player_map::const_iterator i = players_.find(sock);
 						if (i != players_.end()) {
 							DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n";
@@ -2812,7 +2812,7 @@ int main(int argc, char** argv) {
 	game_config::path = filesystem::get_cwd();
 
 	// show 'info' by default
-	lg::set_log_domain_severity("server", lg::info);
+	lg::set_log_domain_severity("server", lg::info());
 	lg::timestamps(true);
 
 	for (int arg = 1; arg != argc; ++arg) {
@@ -2824,7 +2824,7 @@ int main(int argc, char** argv) {
 		if ((val == "--config" || val == "-c") && arg+1 != argc) {
 			config_file = argv[++arg];
 		} else if (val == "--verbose" || val == "-v") {
-			lg::set_log_domain_severity("all", lg::debug);
+			lg::set_log_domain_severity("all", lg::debug());
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {
@@ -2833,10 +2833,10 @@ int main(int argc, char** argv) {
 			}
 			std::string s = val.substr(6, p - 6);
 			int severity;
-			if (s == "error") severity = lg::err.get_severity();
-			else if (s == "warning") severity = lg::warn.get_severity();
-			else if (s == "info") severity = lg::info.get_severity();
-			else if (s == "debug") severity = lg::debug.get_severity();
+			if (s == "error") severity = lg::err().get_severity();
+			else if (s == "warning") severity = lg::warn().get_severity();
+			else if (s == "info") severity = lg::info().get_severity();
+			else if (s == "debug") severity = lg::debug().get_severity();
 			else {
 				std::cerr << "unknown debug level: " << s << '\n';
 				return 2;

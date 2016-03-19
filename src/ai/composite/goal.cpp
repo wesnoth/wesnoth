@@ -306,7 +306,7 @@ protect_goal::protect_goal(readonly_context &context, const config &cfg, bool pr
 	, value_(1.0) //this default value taken from old code
 {
 	if(protect_only_own_unit_) {
-		lg::wml_error << deprecate_wml_key_warning("protect_my_unit", "1.13.0") << "\n";
+		lg::wml_error() << deprecate_wml_key_warning("protect_my_unit", "1.13.0") << "\n";
 	}
 }
 

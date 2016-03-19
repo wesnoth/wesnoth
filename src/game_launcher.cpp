@@ -92,9 +92,9 @@ static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
-#define LOG_GENERAL LOG_STREAM(info, lg::general)
-#define WRN_GENERAL LOG_STREAM(warn, lg::general)
-#define DBG_GENERAL LOG_STREAM(debug, lg::general)
+#define LOG_GENERAL LOG_STREAM(info, lg::general())
+#define WRN_GENERAL LOG_STREAM(warn, lg::general())
+#define DBG_GENERAL LOG_STREAM(debug, lg::general())
 
 static lg::log_domain log_mp_create("mp/create");
 #define DBG_MP LOG_STREAM(debug, log_mp_create)

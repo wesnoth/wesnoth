@@ -150,7 +150,7 @@ const config::attribute_value& get_renamed_config_attribute(
 
 	result = cfg.get(deprecated_key);
 	if(result) {
-		lg::wml_error
+		lg::wml_error()
 			<< deprecated_renamed_wml_key_warning(
 				  deprecated_key
 				, key
