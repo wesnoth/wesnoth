@@ -46,7 +46,7 @@
 #include "sound.hpp"
 #include "terrain_type_data.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include <boost/foreach.hpp>
 

@@ -19,7 +19,7 @@
 
 #include "config.hpp"
 #include "gettext.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "savegame_config.hpp"
 #include "version.hpp"
 

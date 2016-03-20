@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/data_manage.hpp"
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"

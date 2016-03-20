@@ -16,8 +16,8 @@
 #ifndef FORMULA_FUNCTION_HPP_INCLUDED
 #define FORMULA_FUNCTION_HPP_INCLUDED
 
-#include "formula.hpp"
-#include "formula_callable.hpp"
+#include "formula/formula.hpp"
+#include "formula/callable.hpp"
 
 namespace game_logic {
 

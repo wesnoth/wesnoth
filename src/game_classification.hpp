@@ -15,7 +15,7 @@
 #ifndef GAME_CLASSIFICATION_HPP_INCLUDED
 #define GAME_CLASSIFICATION_HPP_INCLUDED
 
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "savegame_config.hpp"
 #include <vector>
 

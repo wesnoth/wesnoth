@@ -23,7 +23,7 @@
 
 #include "playsingle_controller.hpp"
 
-#include "hotkey_handler.hpp"
+#include "hotkey/hotkey_handler.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>

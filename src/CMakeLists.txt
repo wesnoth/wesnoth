@@ -785,7 +785,6 @@ set(wesnoth-main_SRC
 	attack_prediction.cpp
 	attack_prediction_display.cpp
 	build_info.cpp
-	callable_objects.cpp
 	carryover.cpp
 	commandline_options.cpp
 	config_cache.cpp
@@ -833,12 +832,14 @@ set(wesnoth-main_SRC
 	filechooser.cpp
 	game_initialization/flg_manager.cpp
 	floating_textbox.cpp
-	formula.cpp
-	formula_debugger.cpp
-	formula_debugger_fwd.cpp
-	formula_function.cpp
-	formula_string_utils.cpp
-	formula_tokenizer.cpp
+	formula/callable_objects.cpp
+	formula/formula.cpp
+	formula/debugger.cpp
+	formula/debugger_fwd.cpp
+	formula/function.cpp
+	formula/string_utils.cpp
+	formula/tokenizer.cpp
+	formula/variant.cpp
 	game_board.cpp
 	game_classification.cpp
 	game_config_manager.cpp
@@ -939,10 +940,10 @@ set(wesnoth-main_SRC
 	help/help_text_area.cpp
 	help/help_topic_generators.cpp
 	hotkey/hotkey_preferences_display.cpp
-	hotkey_handler.cpp
-	hotkey_handler_sp.cpp
-	hotkey_handler_mp.cpp
-	hotkey_handler_replay.cpp
+	hotkey/hotkey_handler.cpp
+	hotkey/hotkey_handler_sp.cpp
+	hotkey/hotkey_handler_mp.cpp
+	hotkey/hotkey_handler_replay.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp
 	map.cpp
@@ -1044,7 +1045,6 @@ set(wesnoth-main_SRC
 	utils/sha1.cpp
 	variable.cpp
 	variable_info.cpp
-	variant.cpp
 	whiteboard/action.cpp
 	whiteboard/attack.cpp
 	whiteboard/highlighter.cpp

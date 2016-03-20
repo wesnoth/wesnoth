@@ -24,7 +24,7 @@
 #include "map_location.hpp"
 
 #include "config.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "util.hpp"
 

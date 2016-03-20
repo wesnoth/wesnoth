@@ -24,7 +24,7 @@
 
 #include "lua_jailbreak_exception.hpp"
 
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 
 #include <string>
 #include <exception>

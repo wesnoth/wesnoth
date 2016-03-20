@@ -21,8 +21,8 @@
 #include "stage_side_formulas.hpp"
 #include "ai.hpp"
 
-#include "formula.hpp"
-#include "formula_function.hpp"
+#include "formula/formula.hpp"
+#include "formula/function.hpp"
 #include "log.hpp"
 #include <boost/lexical_cast.hpp>
 

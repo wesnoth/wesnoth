@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 
 namespace gui2
 {

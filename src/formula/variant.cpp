@@ -21,8 +21,8 @@
 #include <boost/lexical_cast.hpp>
 
 #include "formatter.hpp"
-#include "formula_callable.hpp"
-#include "formula_function.hpp"
+#include "formula/callable.hpp"
+#include "formula/function.hpp"
 #include "util.hpp"
 
 namespace {

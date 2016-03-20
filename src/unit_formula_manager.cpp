@@ -14,10 +14,10 @@
 
 #include "unit_formula_manager.hpp"
 
-#include "callable_objects.hpp"
+#include "formula/callable_objects.hpp"
 #include "config.hpp"
-#include "formula.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/formula.hpp"
+#include "formula/string_utils.hpp"
 #include "map_location.hpp"
 #include "log.hpp"
 

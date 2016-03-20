@@ -23,7 +23,7 @@
 #include "callable_objects.hpp"   // for unit_callable, etc
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "display_chat_manager.hpp"
-#include "formula_function.hpp"         // for formula_expression
+#include "formula/function.hpp"         // for formula_expression
 #include "game_board.hpp"         // for game_board
 #include "game_display.hpp"       // for game_display
 #include "log.hpp"                // for LOG_STREAM, logger, etc
@@ -43,7 +43,7 @@
 #include "unit_formula_manager.hpp"  // for unit_formula_manager
 #include "unit_ptr.hpp"                 // for unit_ptr
 #include "unit_types.hpp"
-#include "formula.hpp"  // for formula_error, formula, etc
+#include "formula/formula.hpp"  // for formula_error, formula, etc
 #include "map_location.hpp"  // for map_location, etc
 #include "ai/actions.hpp"               // for recall_result, etc
 #include "ai/manager.hpp"               // for manager
@@ -53,7 +53,6 @@
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "ai/interface.hpp"  // for interface
-#include "callable_objects.hpp"         // for safe_call_result, etc
 #include "candidates.hpp"               // for base_candidate_action, etc
 
 

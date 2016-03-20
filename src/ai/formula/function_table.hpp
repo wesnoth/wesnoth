@@ -15,7 +15,7 @@
 #ifndef FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED
 #define FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED
 
-#include "formula_function.hpp"
+#include "formula/function.hpp"
 
 #include <set>
 

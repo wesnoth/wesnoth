@@ -15,7 +15,7 @@
 
 #include "editor/action/action_base.hpp"
 #include "editor_map.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include "display.hpp"
 #include "gettext.hpp"

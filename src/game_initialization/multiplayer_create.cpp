@@ -42,7 +42,7 @@
 #include "log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "widgets/multimenu.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"

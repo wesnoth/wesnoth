@@ -30,7 +30,7 @@
 #include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)

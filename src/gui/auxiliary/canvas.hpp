@@ -21,7 +21,7 @@
 #ifndef GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 #define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 
-#include "formula_callable.hpp"
+#include "formula/callable.hpp"
 #include "sdl/utils.hpp"
 
 class config;

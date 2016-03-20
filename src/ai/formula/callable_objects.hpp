@@ -17,9 +17,9 @@
 
 #include "ai/game_info.hpp"
 #include "actions/attack.hpp"
-#include "../../callable_objects.hpp" // We want the file in src/
-#include "formula.hpp"
-#include "formula_callable.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
+#include "formula/callable.hpp"
 
 namespace ai {
 	class formula_ai;

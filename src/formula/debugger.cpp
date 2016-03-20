@@ -18,9 +18,9 @@
  * */
 
 
-#include "formula_debugger.hpp"
-#include "formula.hpp"
-#include "formula_function.hpp"
+#include "formula/debugger.hpp"
+#include "formula/formula.hpp"
+#include "formula/function.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
 #include "resources.hpp"

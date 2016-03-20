@@ -43,7 +43,7 @@
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "marked-up_text.hpp"
 #include "font.hpp"
 #include "preferences.hpp"

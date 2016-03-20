@@ -16,7 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "util.hpp"
 #include "config.hpp"
 

@@ -55,7 +55,7 @@
 #include "unit_map.hpp"  // for unit_map::iterator_base, etc
 #include "unit_ptr.hpp"                 // for unit_ptr
 #include "unit_types.hpp"  // for attack_type, unit_type, etc
-#include "variant.hpp"                  // for variant
+#include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
 #include <boost/foreach.hpp>            // for auto_any_base, etc

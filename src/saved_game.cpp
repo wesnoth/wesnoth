@@ -58,7 +58,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "util.hpp"
 #include "variable_info.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "config.hpp" //Also for variable_set
 
 #include <boost/assign/list_of.hpp>

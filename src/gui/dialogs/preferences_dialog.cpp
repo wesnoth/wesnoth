@@ -25,7 +25,7 @@
 #include "lobby_preferences.hpp"
 #include "gettext.hpp"
 #include "video.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "filesystem.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/auxiliary/find_widget.hpp"

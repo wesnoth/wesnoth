@@ -18,7 +18,7 @@
 
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 
 namespace gui2

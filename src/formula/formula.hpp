@@ -13,10 +13,10 @@
 #ifndef FORMULA_HPP_INCLUDED
 #define FORMULA_HPP_INCLUDED
 
-#include "formula_debugger_fwd.hpp"
-#include "formula_fwd.hpp"
-#include "formula_tokenizer.hpp"
-#include "variant.hpp"
+#include "formula/debugger_fwd.hpp"
+#include "formula/formula_fwd.hpp"
+#include "formula/tokenizer.hpp"
+#include "formula/variant.hpp"
 
 namespace game_logic
 {

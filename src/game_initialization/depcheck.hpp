@@ -19,7 +19,7 @@
 #include <vector>
 #include "config.hpp"
 #include "gettext.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 
 class CVideo;
 

@@ -15,9 +15,9 @@
 #include "global.hpp"
 
 
-#include "callable_objects.hpp"
-#include "formula_debugger.hpp"
-#include "formula_function.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/debugger.hpp"
+#include "formula/function.hpp"
 #include "game_display.hpp"
 #include "game_config.hpp"
 #include "log.hpp"

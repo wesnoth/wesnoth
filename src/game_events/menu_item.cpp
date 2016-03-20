@@ -32,7 +32,7 @@
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "hotkey_handler.hpp"
+#include "hotkey/hotkey_handler.hpp"
 #include "play_controller.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"

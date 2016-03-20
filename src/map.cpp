@@ -22,7 +22,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "log.hpp"
 #include "map_exception.hpp"
 #include "serialization/parser.hpp"

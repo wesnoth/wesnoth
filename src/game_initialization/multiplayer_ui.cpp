@@ -28,7 +28,7 @@
 #include "multiplayer_lobby.hpp" //needed for dynamic cast when implementing the lobby_sounds preference
 #include "mp_ui_alerts.hpp"
 #include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "team.hpp"

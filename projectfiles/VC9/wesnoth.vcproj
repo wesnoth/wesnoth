@@ -17925,7 +17925,23 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\utils\const_clone.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\utils\foreach.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\utils\iterator.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\utils\make_enum.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\utils\make_enum.hpp"
 				>
 			</File>
 			<File
@@ -24228,14 +24244,6 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\callable_objects.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\callable_objects.hpp"
-			>
-		</File>
-		<File
 			RelativePath="..\..\src\carryover.cpp"
 			>
 		</File>
@@ -24412,55 +24420,75 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula.cpp"
+			RelativePath="..\..\src\formula\formula.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula.hpp"
+			RelativePath="..\..\src\formula\formula.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_callable.hpp"
+			RelativePath="..\..\src\formula\formula_fwd.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_debugger.cpp"
+			RelativePath="..\..\src\formula\callable_objects.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_debugger.hpp"
+			RelativePath="..\..\src\formula\callable_objects.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_debugger_fwd.cpp"
+			RelativePath="..\..\src\formula\callable.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_debugger_fwd.hpp"
+			RelativePath="..\..\src\formula\debugger.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_function.cpp"
+			RelativePath="..\..\src\formula\debugger.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_function.hpp"
+			RelativePath="..\..\src\formula\debugger_fwd.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_string_utils.cpp"
+			RelativePath="..\..\src\formula\debugger_fwd.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_string_utils.hpp"
+			RelativePath="..\..\src\formula\function.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_tokenizer.cpp"
+			RelativePath="..\..\src\formula\function.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\formula_tokenizer.hpp"
+			RelativePath="..\..\src\formula\string_utils.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\formula\string_utils.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\formula\tokenizer.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\formula\tokenizer.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\formula\variant.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\formula\variant.hpp"
 			>
 		</File>
 		<File
@@ -24580,35 +24608,35 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler.cpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler.hpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler_mp.cpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler_mp.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler_mp.hpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler_mp.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler_replay.cpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler_replay.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler_replay.hpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler_replay.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler_sp.cpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler_sp.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\hotkey_handler_sp.hpp"
+			RelativePath="..\..\src\hotkey\hotkey_handler_sp.hpp"
 			>
 		</File>
 		<File
@@ -24693,14 +24721,6 @@
 		</File>
 		<File
 			RelativePath="..\..\src\lua_jailbreak_exception.hpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\make_enum.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\make_enum.hpp"
 			>
 		</File>
 		<File
@@ -25453,10 +25473,6 @@
 		</File>
 		<File
 			RelativePath="..\..\src\variable_info_detail.hpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\variant.cpp"
 			>
 		</File>
 		<File

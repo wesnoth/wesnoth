@@ -20,7 +20,7 @@
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include <SDL_ttf.h>
 

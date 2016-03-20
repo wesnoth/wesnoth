@@ -16,7 +16,7 @@
 
 #include "color_range.hpp"
 #include "game_config.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "map_location.hpp"
 #include "recall_list_manager.hpp"
 #include "savegame_config.hpp"

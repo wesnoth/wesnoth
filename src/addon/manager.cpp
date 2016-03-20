@@ -37,7 +37,7 @@
 #include "serialization/parser.hpp"
 #include "version.hpp"
 #include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "addon/client.hpp"
 
 #include <boost/foreach.hpp>

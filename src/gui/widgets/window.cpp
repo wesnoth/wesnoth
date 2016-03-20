@@ -26,7 +26,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "floating_label.hpp"
-#include "formula_callable.hpp"
+#include "formula/callable.hpp"
 #include "font.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -62,7 +62,7 @@
 #include "sdl/utils.hpp"
 #include "tstring.hpp"
 #include "utils/foreach.hpp"
-#include "variant.hpp"
+#include "formula/variant.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 

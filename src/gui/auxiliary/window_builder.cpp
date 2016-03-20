@@ -44,7 +44,7 @@
 #include "gui/auxiliary/window_builder/instance.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 

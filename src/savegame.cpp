@@ -23,7 +23,7 @@
 #include "config_assign.hpp"
 #include "format_time_summary.hpp"
 #include "formatter.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"

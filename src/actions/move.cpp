@@ -40,7 +40,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit_display.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "team.hpp"
 #include "unit.hpp"
 #include "unit_animation_component.hpp"

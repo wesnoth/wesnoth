@@ -12,7 +12,7 @@
 
 #include <sstream>
 
-#include "formula_tokenizer.hpp"
+#include "formula/tokenizer.hpp"
 
 namespace formula_tokenizer
 {

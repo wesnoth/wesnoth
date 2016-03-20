@@ -15,7 +15,7 @@
 #define MULTIPLAYER_CREATE_ENGINE_HPP_INCLUDED
 
 #include "config.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "map.hpp"
 #include "mp_game_settings.hpp"
 #include "sdl/utils.hpp"

@@ -13,11 +13,11 @@
    See the COPYING file for more details.
 */
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include "config.hpp"
 #include "log.hpp"
-#include "formula.hpp"
+#include "formula/formula.hpp"
 #include "gettext.hpp"
 
 static lg::log_domain log_engine("engine");

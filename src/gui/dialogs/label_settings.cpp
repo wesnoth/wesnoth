@@ -32,7 +32,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/label.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 namespace gui2 {
 REGISTER_DIALOG(label_settings);

@@ -16,7 +16,7 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "network.hpp"
 #include "utils/foreach.hpp"

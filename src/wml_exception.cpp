@@ -24,7 +24,7 @@
 
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_engine("engine");

@@ -16,7 +16,7 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include "gui/dialogs/campaign_difficulty.hpp"
 

@@ -18,8 +18,8 @@
 
 #include <ctime>
 
-#include "formula.hpp"
-#include "formula_callable.hpp"
+#include "formula/formula.hpp"
+#include "formula/callable.hpp"
 
 using namespace game_logic;
 

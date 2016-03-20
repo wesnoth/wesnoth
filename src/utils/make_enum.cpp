@@ -1,4 +1,4 @@
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "wml_exception.hpp"
 #include "game_config.hpp"
 

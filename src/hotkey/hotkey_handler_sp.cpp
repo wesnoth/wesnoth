@@ -12,9 +12,9 @@
    See the COPYING file for more details.
 */
 
-#include "hotkey_handler_sp.hpp"
+#include "hotkey/hotkey_handler_sp.hpp"
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "map_label.hpp"

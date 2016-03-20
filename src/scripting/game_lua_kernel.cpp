@@ -60,7 +60,7 @@
 #include "help/help.hpp"
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "make_enum.hpp"                // for operator<<
+#include "utils/make_enum.hpp"                // for operator<<
 #include "map.hpp"                      // for gamemap
 #include "map_label.hpp"
 #include "map_location.hpp"             // for map_location

@@ -33,7 +33,7 @@
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "unit_types.hpp"
 #include "unit_display.hpp"
 

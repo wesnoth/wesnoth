@@ -33,7 +33,7 @@
 #include "scripting/plugins/context.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include <boost/assign/list_of.hpp>
 #include <boost/bind.hpp>

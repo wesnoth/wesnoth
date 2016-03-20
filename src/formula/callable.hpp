@@ -16,7 +16,7 @@
 #define FORMULA_CALLABLE_HPP_INCLUDED
 
 #include "reference_counted_object.hpp"
-#include "variant.hpp"
+#include "formula/variant.hpp"
 
 namespace game_logic
 {

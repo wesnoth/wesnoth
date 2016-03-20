@@ -22,7 +22,7 @@
 #define HOTKEY_HANDLER_MP_HPP_INCL_
 
 #include "playmp_controller.hpp"
-#include "hotkey_handler_sp.hpp"
+#include "hotkey/hotkey_handler_sp.hpp"
 
 class playmp_controller::hotkey_handler : public playsingle_controller::hotkey_handler {
 

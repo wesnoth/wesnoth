@@ -15,7 +15,7 @@
 #define UNIT_TYPES_H_INCLUDED
 
 #include "gettext.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "map_location.hpp"
 #include "movetype.hpp"
 #include "race.hpp"

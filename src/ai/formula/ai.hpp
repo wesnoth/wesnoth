@@ -26,8 +26,8 @@
 #include "callable_objects.hpp"         // for position_callable, etc
 #include "candidates.hpp"               // for candidate_action_ptr, etc
 #include "config.hpp"                   // for config
-#include "formula_callable.hpp"         // for formula_callable, etc
-#include "formula_fwd.hpp"              // for const_formula_ptr, etc
+#include "formula/callable.hpp"         // for formula_callable, etc
+#include "formula/formula_fwd.hpp"              // for const_formula_ptr, etc
 #include "generic_event.hpp"  // for observer
 #include "pathfind/teleport.hpp"  // for teleport_map
 #include "unit_map.hpp"

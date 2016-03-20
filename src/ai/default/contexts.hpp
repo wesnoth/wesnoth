@@ -21,7 +21,7 @@
 #define AI_DEFAULT_CONTEXTS_HPP_INCLUDED
 
 #include "ai/contexts.hpp"
-#include "formula_callable.hpp"
+#include "formula/callable.hpp"
 
 #ifdef _MSC_VER
 #if _MSC_VER < 1600

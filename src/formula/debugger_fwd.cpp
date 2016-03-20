@@ -18,8 +18,8 @@
  * */
 
 
-#include "formula_debugger_fwd.hpp"
-#include "formula_debugger.hpp"
+#include "formula/debugger_fwd.hpp"
+#include "formula/debugger.hpp"
 
 namespace game_logic {
 

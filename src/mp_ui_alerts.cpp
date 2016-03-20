@@ -22,7 +22,7 @@
 #include "global.hpp"
 
 #include "desktop/notifications.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "preferences.hpp"

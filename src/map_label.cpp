@@ -21,7 +21,7 @@
 #include "map_label.hpp"
 #include "resources.hpp"
 #include "tooltips.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include <boost/foreach.hpp>
 

@@ -32,7 +32,7 @@
 #include "wml_exception.hpp"
 
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include <boost/regex.hpp>
 #include <boost/foreach.hpp>

@@ -21,7 +21,7 @@
 #include "global.hpp"
 
 #include "display_context.hpp"
-#include "formula_string_utils.hpp"     // for vgettext
+#include "formula/string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
 #include "game_data.hpp"
 #include "game_config.hpp"              // for add_color_info, etc
@@ -30,7 +30,7 @@
 #include "game_preferences.hpp"         // for encountered_units
 #include "gettext.hpp"                  // for N_
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "make_enum.hpp"                // for operator<<, operator>>
+#include "utils/make_enum.hpp"                // for operator<<, operator>>
 #include "map.hpp"       // for gamemap
 #include "random_new.hpp"               // for generator, rng
 #include "resources.hpp"                // for units, gameboard, teams, etc

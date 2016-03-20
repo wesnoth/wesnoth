@@ -19,14 +19,14 @@
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for add_chat_message, add_observer, etc
-#include "formula_string_utils.hpp"     // for vgettext
+#include "formula/string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
 #include "game_display.hpp"             // for game_display
 #include "game_end_exceptions.hpp"      // for end_level_exception, etc
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "make_enum.hpp"                // for bad_enum_cast
+#include "utils/make_enum.hpp"                // for bad_enum_cast
 #include "map_label.hpp"
 #include "network.hpp"                  // for error
 #include "play_controller.hpp"          // for play_controller

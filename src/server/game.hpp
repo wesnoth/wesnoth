@@ -24,7 +24,7 @@
 #include <vector>
 
 #include "mt_rng.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 //class player;

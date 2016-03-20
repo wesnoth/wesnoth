@@ -14,7 +14,7 @@
 #include "flg_manager.hpp"
 
 #include "config.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "mt_rng.hpp"
 #include "unit_types.hpp"

@@ -19,7 +19,7 @@
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "reports.hpp"

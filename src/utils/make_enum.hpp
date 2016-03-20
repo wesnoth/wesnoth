@@ -21,7 +21,7 @@
  * <b>Example usage:</b>
  *
  * @code
- * #include "make_enum.hpp"
+ * #include "utils/make_enum.hpp"
  *
  * MAKE_ENUM(enumname,
  *     (val1, "name1")

@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "hotkey_handler.hpp"
+#include "hotkey/hotkey_handler.hpp"
 
 #include "actions/create.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_errors.hpp"
 #include "game_events/menu_item.hpp"

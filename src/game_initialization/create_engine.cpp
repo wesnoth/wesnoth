@@ -21,7 +21,7 @@
 #include "generators/map_generator.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "generators/map_create.hpp"

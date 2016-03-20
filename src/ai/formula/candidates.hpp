@@ -20,7 +20,7 @@
 #ifndef AI_FORMULA_CANDIDATES_HPP_INCLUDED
 #define AI_FORMULA_CANDIDATES_HPP_INCLUDED
 
-#include "formula_function.hpp"
+#include "formula/function.hpp"
 
 #include <set>
 

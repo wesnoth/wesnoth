@@ -18,7 +18,7 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/group.hpp"
 

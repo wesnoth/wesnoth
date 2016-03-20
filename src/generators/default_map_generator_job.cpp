@@ -30,7 +30,7 @@
 #include "race.hpp"
 #include "util.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include <SDL.h>
 
 #include <boost/foreach.hpp>

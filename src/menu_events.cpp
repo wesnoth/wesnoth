@@ -32,7 +32,7 @@
 #include "display_chat_manager.hpp"
 #include "filechooser.hpp"
 #include "formatter.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "game_end_exceptions.hpp"

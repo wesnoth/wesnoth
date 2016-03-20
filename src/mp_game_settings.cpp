@@ -20,7 +20,7 @@
 
 #include "log.hpp"
 #include "mp_game_settings.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include <boost/foreach.hpp>
 

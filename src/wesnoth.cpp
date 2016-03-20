@@ -25,7 +25,7 @@
 #include "filesystem.hpp"               // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font.hpp"                     // for load_font_config, etc
-#include "formula.hpp"                  // for formula_error
+#include "formula/formula.hpp"                  // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
 #include "game_config_manager.hpp"      // for game_config_manager, etc
 #include "game_end_exceptions.hpp"

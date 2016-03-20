@@ -16,8 +16,8 @@
 #include <set>
 #include <sstream>
 
-#include "formula_callable.hpp"
-#include "formula_function.hpp"
+#include "formula/callable.hpp"
+#include "formula/function.hpp"
 #include "map_utils.hpp"
 #include "random_new.hpp"
 #include "serialization/string_utils.hpp"

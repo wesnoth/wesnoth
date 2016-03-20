@@ -25,7 +25,7 @@
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "make_enum.hpp"                // for operator<<
+#include "utils/make_enum.hpp"                // for operator<<
 #include "map.hpp"                      // for gamemap
 #include "marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
 #include "race.hpp"                     // for unit_race, etc

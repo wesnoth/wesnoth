@@ -23,8 +23,8 @@
 
 #include "global.hpp"
 
-#include "variant.hpp"
-#include "formula_debugger_fwd.hpp"
+#include "formula/variant.hpp"
+#include "formula/debugger_fwd.hpp"
 #include <deque>
 
 namespace game_logic {
