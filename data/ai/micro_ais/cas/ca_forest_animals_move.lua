@@ -156,7 +156,7 @@ function ca_forest_animals_move:execution(ai, cfg)
             if unit and unit.valid
                 and (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2])
             then
-                local command =  "wesnoth.put_unit(x1, y1)"
+                local command =  "wesnoth.erase_unit(x1, y1)"
                 ai.synced_command(command, farthest_hex[1], farthest_hex[2])
             end
         end

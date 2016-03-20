@@ -57,17 +57,17 @@ function ca_messenger_move:execution(ai, cfg)
     if (unit_in_way == messenger) then unit_in_way = nil end
     if unit_in_way then wesnoth.extract_unit(unit_in_way) end
 
-    wesnoth.put_unit(next_hop[1], next_hop[2], messenger)
+    wesnoth.put_unit(messenger, next_hop[1], next_hop[2])
     local _, cost1 = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
 
     local unit_in_way2 = wesnoth.get_unit(optimum_hop[1], optimum_hop[2])
     if (unit_in_way2 == messenger) then unit_in_way2 = nil end
     if unit_in_way2 then wesnoth.extract_unit(unit_in_way2) end
 
-    wesnoth.put_unit(optimum_hop[1], optimum_hop[2], messenger)
+    wesnoth.put_unit(messenger, optimum_hop[1], optimum_hop[2])
     local _, cost2 = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
 
-    wesnoth.put_unit(x_current, y_current, messenger)
+    wesnoth.put_unit(messenger, x_current, y_current)
     if unit_in_way then wesnoth.put_unit(unit_in_way) end
     if unit_in_way2 then wesnoth.put_unit(unit_in_way2) end
 

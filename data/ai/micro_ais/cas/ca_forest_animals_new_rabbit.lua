@@ -59,11 +59,11 @@ function ca_forest_animals_new_rabbit:execution(ai, cfg)
             x, y = wesnoth.find_vacant_tile(holes[i].x, holes[i].y)
         end
 
-        local command =  "wesnoth.put_unit(x1, y1, { side = "
+        local command =  "wesnoth.put_unit({ side = "
             .. wesnoth.current.side
             .. ", type = '"
             ..  cfg.rabbit_type
-            .. "' })"
+            .. "' }, x1, y1)"
         ai.synced_command(command, x, y)
     end
 end
