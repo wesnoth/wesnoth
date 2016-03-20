@@ -149,7 +149,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         -- separately as it affects a default CA
         if cfg.disable_move_leader_to_keep then
             W.modify_ai {
-                side = side,
+                side = cfg.side,
                 action = "try_delete",
                 path = "stage[main_loop].candidate_action[move_leader_to_keep]"
             }
