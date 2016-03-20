@@ -32,7 +32,7 @@
 #include "whiteboard/manager.hpp"
 #include "wmi_pager.hpp"
 
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 const std::string play_controller::hotkey_handler::wml_menu_hotkey_prefix = "wml_menu:";
 

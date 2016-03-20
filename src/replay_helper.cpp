@@ -15,7 +15,7 @@
 
 #include <string>
 #include <cassert>
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "time_of_day.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"

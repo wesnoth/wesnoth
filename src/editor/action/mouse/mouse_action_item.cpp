@@ -22,7 +22,7 @@
 #include "tooltips.hpp"
 #include "gettext.hpp"
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 namespace editor {
 

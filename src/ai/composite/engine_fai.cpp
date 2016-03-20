@@ -25,7 +25,7 @@
 #include "ai/formula/stage_side_formulas.hpp"
 #include "ai/formula/stage_unit_formulas.hpp"
 #include "log.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 namespace ai {
 

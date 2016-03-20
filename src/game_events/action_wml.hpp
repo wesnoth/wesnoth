@@ -25,7 +25,7 @@
 #ifndef GAME_EVENTS_ACTION_WML_H_INCLUDED
 #define GAME_EVENTS_ACTION_WML_H_INCLUDED
 
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include <map>
 #include <string>
 

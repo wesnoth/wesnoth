@@ -20,7 +20,7 @@
 #define WB_RECALL_HPP_
 
 #include "action.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 namespace wb
 {

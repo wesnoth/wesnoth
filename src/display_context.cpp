@@ -14,11 +14,11 @@
 
 #include "display_context.hpp"
 
-#include "map.hpp"
-#include "map_location.hpp"
+#include "map/map.hpp"
+#include "map/location.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
 #include <boost/foreach.hpp>
 

@@ -34,7 +34,7 @@
 #include "persist_manager.hpp"
 #include "playmp_controller.hpp"
 #include "log.hpp"
-#include "map_exception.hpp"
+#include "map/exception.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer.hpp"
 #include "connect_engine.hpp"
@@ -44,7 +44,7 @@
 #include "savegame.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
 #include "formula/string_utils.hpp"
 

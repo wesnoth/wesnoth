@@ -18,7 +18,7 @@
 #include <cstddef>
 #include <string>
 #include "lua_types.hpp" // the luatype typedef
-#include "unit_ptr.hpp"
+#include "units/ptr.hpp"
 
 struct lua_State;
 

@@ -21,9 +21,9 @@
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
-#include "map.hpp"
-#include "map_exception.hpp"
-#include "terrain_type_data.hpp"
+#include "map/map.hpp"
+#include "map/exception.hpp"
+#include "terrain/type_data.hpp"
 #include "../../minimap.hpp" // We want the file in src/
 
 #include <boost/bind.hpp>

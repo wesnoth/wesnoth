@@ -21,7 +21,7 @@
 
 #include "editor_palettes.hpp"
 
-#include "unit_types.hpp"
+#include "units/types.hpp"
 
 namespace editor {
 

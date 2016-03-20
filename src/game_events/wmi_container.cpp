@@ -27,7 +27,7 @@
 #include "config.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 #include <boost/foreach.hpp>
 

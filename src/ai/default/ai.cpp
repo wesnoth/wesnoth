@@ -32,9 +32,9 @@
 #include "mouse_handler_base.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
-#include "terrain_filter.hpp"
-#include "unit.hpp"
-#include "unit_display.hpp"
+#include "terrain/filter.hpp"
+#include "units/unit.hpp"
+#include "units/udisplay.hpp"
 #include "wml_exception.hpp"
 
 #include "pathfind/pathfind.hpp"

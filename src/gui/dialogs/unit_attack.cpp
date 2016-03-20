@@ -36,7 +36,7 @@
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 #include "utils/foreach.hpp"
 

@@ -16,7 +16,7 @@
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "statistics_dialog.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 #include "wml_separators.hpp"
 #include "game_display.hpp"
 

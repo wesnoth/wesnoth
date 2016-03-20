@@ -22,10 +22,10 @@
 #include "tooltips.hpp"
 #include "gettext.hpp"
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "sdl/rect.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
 namespace editor {
 

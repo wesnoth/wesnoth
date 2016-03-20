@@ -50,8 +50,8 @@
 #include "resources.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_ptr.hpp"
+#include "units/unit.hpp"
+#include "units/ptr.hpp"
 
 namespace ai {
 

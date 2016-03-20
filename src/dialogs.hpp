@@ -23,10 +23,10 @@ class unit_map;
 class unit_type;
 class terrain_type;
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "construct_dialog.hpp"
 #include "network.hpp"
-#include "unit_ptr.hpp"
+#include "units/ptr.hpp"
 #include "ai/lua/unit_advancements_aspect.hpp"
 
 namespace dialogs {

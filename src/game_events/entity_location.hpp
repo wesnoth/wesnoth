@@ -20,8 +20,8 @@
 #ifndef GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
 #define GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
 
-#include "map_location.hpp"
-#include "unit_map.hpp"
+#include "map/location.hpp"
+#include "units/map.hpp"
 
 class unit;
 class vconfig;

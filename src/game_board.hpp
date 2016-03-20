@@ -19,9 +19,9 @@
 
 #include "display_context.hpp"
 #include "team.hpp"
-#include "terrain_type_data.hpp"
-#include "unit_map.hpp"
-#include "unit_id.hpp"
+#include "terrain/type_data.hpp"
+#include "units/map.hpp"
+#include "units/id.hpp"
 
 #include <boost/optional.hpp>
 #include <boost/scoped_ptr.hpp>

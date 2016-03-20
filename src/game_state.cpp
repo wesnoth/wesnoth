@@ -20,7 +20,7 @@
 #include "game_events/manager.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
@@ -29,7 +29,7 @@
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "teambuilder.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/bind.hpp>

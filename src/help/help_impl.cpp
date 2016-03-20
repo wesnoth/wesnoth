@@ -26,7 +26,7 @@
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"                // for operator<<
-#include "map.hpp"                      // for gamemap
+#include "map/map.hpp"                      // for gamemap
 #include "marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
 #include "race.hpp"                     // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
@@ -34,13 +34,13 @@
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/unicode_types.hpp"  // for char_t, etc
-#include "terrain.hpp"                  // for terrain_type
-#include "terrain_translation.hpp"      // for operator==, t_list, etc
-#include "terrain_type_data.hpp"        // for terrain_type_data, etc
+#include "terrain/terrain.hpp"                  // for terrain_type
+#include "terrain/translation.hpp"      // for operator==, t_list, etc
+#include "terrain/type_data.hpp"        // for terrain_type_data, etc
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator<<
-#include "unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "units/types.hpp"               // for unit_type, unit_type_data, etc
 #include "serialization/unicode.hpp"  // for iterator
 
 #include <assert.h>                     // for assert

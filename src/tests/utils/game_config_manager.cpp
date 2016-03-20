@@ -27,7 +27,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "language.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 
 #include "gui/widgets/helper.hpp"
 

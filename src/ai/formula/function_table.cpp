@@ -29,12 +29,12 @@
 #include "game_board.hpp"
 #include "display.hpp"
 #include "log.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "pathfind/teleport.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "terrain_filter.hpp"
-#include "unit.hpp"
+#include "terrain/filter.hpp"
+#include "units/unit.hpp"
 #include "pathfind/pathfind.hpp"
 
 #include <boost/foreach.hpp>

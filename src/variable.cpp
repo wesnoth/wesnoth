@@ -28,8 +28,8 @@
 #include "game_data.hpp"
 #include "log.hpp"
 #include "resources.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 #include "team.hpp"
 
 #include <boost/foreach.hpp>

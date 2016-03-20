@@ -21,9 +21,9 @@
 #include "gettext.hpp"
 #include "network.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_exception.hpp"
-#include "terrain_type_data.hpp"
+#include "map/map.hpp"
+#include "map/exception.hpp"
+#include "terrain/type_data.hpp"
 #include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 

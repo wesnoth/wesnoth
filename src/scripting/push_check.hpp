@@ -8,7 +8,7 @@
 #include <boost/mpl/has_xxx.hpp>
 #include <boost/foreach.hpp>
 #include "tstring.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 

@@ -30,12 +30,12 @@
 #include "game_data.hpp" // for resources::gamedata conversion variable_set
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "resources.hpp" // for resources::screen, resources::gamedata
 #include "team.hpp" //for team
-#include "unit.hpp" // for unit
-#include "unit_display.hpp" // for unit_display
+#include "units/unit.hpp" // for unit
+#include "units/udisplay.hpp" // for unit_display
 #include "variable.hpp" // for vconfig
 
 #include "game_display.hpp" // for resources::screen

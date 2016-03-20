@@ -22,12 +22,12 @@
 #include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
-#include "map_location.hpp"             // for map_location
+#include "map/location.hpp"             // for map_location
 #include "resources.hpp"
 #include "scripting/lua_common.hpp"
 #include "tstring.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 #include "variable.hpp"
 
 #include <boost/foreach.hpp>

@@ -21,7 +21,7 @@
 #include "color_range.hpp"
 
 #include "game_config.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 

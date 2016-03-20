@@ -30,7 +30,7 @@
 #include "formula/formula_fwd.hpp"              // for const_formula_ptr, etc
 #include "generic_event.hpp"  // for observer
 #include "pathfind/teleport.hpp"  // for teleport_map
-#include "unit_map.hpp"
+#include "units/map.hpp"
 #include <boost/noncopyable.hpp>        // for noncopyable
 #include <set>                          // for multiset
 #include <string>                       // for string

@@ -21,11 +21,11 @@
 #include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
 #include "sdl/utils.hpp"
 #include "team.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
 #include "formula/string_utils.hpp"
 

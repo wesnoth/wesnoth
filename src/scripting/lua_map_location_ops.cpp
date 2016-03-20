@@ -15,7 +15,7 @@
 #include "lua_map_location_ops.hpp"
 #include "lua_common.hpp"
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "util.hpp"
 
 #include <string>

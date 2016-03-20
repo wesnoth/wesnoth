@@ -19,14 +19,14 @@
 
 #include "leader_scroll_dialog.hpp"
 #include "wml_separators.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 
 //#include "construct_dialog.hpp"
 //#include "display.hpp"
 //#include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "resources.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 //
 //#include <boost/foreach.hpp>

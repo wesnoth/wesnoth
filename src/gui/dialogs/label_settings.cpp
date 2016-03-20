@@ -19,7 +19,7 @@
 #include <boost/bind.hpp>
 #include "gettext.hpp"
 #include "game_display.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "resources.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/control.hpp"

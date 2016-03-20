@@ -21,7 +21,7 @@
 #include "global.hpp"
 
 #include "config.hpp"             // for config, operator<<
-#include "terrain_filter.hpp"  // for terrain_filter
+#include "terrain/filter.hpp"  // for terrain_filter
 #include "ai/composite/engine.hpp"      // for register_engine_factory
 #include "ai/composite/stage.hpp"       // for ministage, idle_stage, etc
 #include "ai/composite/rca.hpp"

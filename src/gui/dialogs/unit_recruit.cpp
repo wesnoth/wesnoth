@@ -33,7 +33,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 #include "whiteboard/manager.hpp"
 
 #include "utils/foreach.hpp"

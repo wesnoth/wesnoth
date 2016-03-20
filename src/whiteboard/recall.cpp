@@ -33,8 +33,8 @@
 #include "statistics.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 
 #include <boost/foreach.hpp>
 

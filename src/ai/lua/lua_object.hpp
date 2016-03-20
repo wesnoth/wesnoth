@@ -23,11 +23,11 @@
 
 #include "config.hpp"
 #include "lua/lua.h"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "resources.hpp"
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
-#include "terrain_filter.hpp"
+#include "terrain/filter.hpp"
 #include "variable.hpp"
 #include "ai/default/contexts.hpp"
 #include "unit_advancements_aspect.hpp"

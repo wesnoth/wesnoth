@@ -26,9 +26,9 @@
 #include "attack_prediction.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)

@@ -29,7 +29,7 @@ class  unit;
 class  unit_map;
 class  gamemap;
 
-#include "unit_types.hpp"
+#include "units/types.hpp"
 #include "ai/lua/unit_advancements_aspect.hpp"
 
 #include <vector>

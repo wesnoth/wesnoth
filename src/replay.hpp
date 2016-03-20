@@ -20,7 +20,7 @@
 #ifndef REPLAY_H_INCLUDED
 #define REPLAY_H_INCLUDED
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 #include <deque>
 #include <iterator>

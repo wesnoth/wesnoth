@@ -24,7 +24,7 @@
 
 #include "actions/move.hpp"
 #include "lua/unit_advancements_aspect.hpp"
-#include "unit_ptr.hpp"
+#include "units/ptr.hpp"
 
 namespace pathfind {
 struct plain_route;

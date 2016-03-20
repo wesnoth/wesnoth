@@ -23,11 +23,11 @@
 #include "ai/actions.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "terrain_filter.hpp"
+#include "units/unit.hpp"
+#include "terrain/filter.hpp"
 #include "pathfind/pathfind.hpp"
 
 #include <deque>

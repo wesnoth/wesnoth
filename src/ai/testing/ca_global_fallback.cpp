@@ -23,15 +23,15 @@
 
 #include "game_display.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_label.hpp"
+#include "map/map.hpp"
+#include "map/label.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "sdl/utils.hpp"
 #include "team.hpp"
-#include "terrain_filter.hpp"
+#include "terrain/filter.hpp"
 #include "tod_manager.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 #include <boost/foreach.hpp>
 

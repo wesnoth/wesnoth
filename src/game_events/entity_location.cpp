@@ -21,8 +21,8 @@
 #include "entity_location.hpp"
 
 #include "resources.hpp"
-#include "unit.hpp"
-#include "unit_filter.hpp"
+#include "units/unit.hpp"
+#include "units/filter.hpp"
 #include "variable.hpp"
 
 

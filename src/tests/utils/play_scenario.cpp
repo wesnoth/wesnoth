@@ -22,9 +22,9 @@
 #include "game_display.hpp"
 #include "saved_game.hpp"
 #include "game_initialization/playcampaign.hpp"
-#include "terrain_type_data.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "terrain/type_data.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
 #include <boost/make_shared.hpp>
 

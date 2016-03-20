@@ -26,7 +26,7 @@ class vconfig;
 class game_board;
 class unit;
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 class unit_creator
 {

@@ -19,7 +19,7 @@
 
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "mt_rng.hpp"
 #include "variable_info.hpp"
 

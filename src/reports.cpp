@@ -22,7 +22,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "marked-up_text.hpp"
 #include "mouse_events.hpp"
 #include "reports.hpp"
@@ -30,8 +30,8 @@
 #include "team.hpp"
 #include "text.hpp"
 #include "tod_manager.hpp"
-#include "unit.hpp"
-#include "unit_helper.hpp"
+#include "units/unit.hpp"
+#include "units/helper.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>

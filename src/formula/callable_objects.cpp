@@ -13,8 +13,8 @@
 */
 
 #include "formula/callable_objects.hpp"
-#include "unit.hpp"
-#include "unit_formula_manager.hpp"
+#include "units/unit.hpp"
+#include "units/formula_manager.hpp"
 
 template <typename T, typename K>
 variant convert_map( const std::map<T, K>& input_map ) {

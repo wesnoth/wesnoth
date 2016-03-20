@@ -24,7 +24,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "mp_ui_alerts.hpp"
 #include "scripting/plugins/context.hpp"
 #include "wml_separators.hpp"

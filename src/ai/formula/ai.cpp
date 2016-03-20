@@ -27,7 +27,7 @@
 #include "game_board.hpp"         // for game_board
 #include "game_display.hpp"       // for game_display
 #include "log.hpp"                // for LOG_STREAM, logger, etc
-#include "map.hpp"                      // for gamemap
+#include "map/map.hpp"                      // for gamemap
 #include "menu_events.hpp"
 #include "pathfind/pathfind.hpp"  // for plain_route, etc
 #include "pathfind/teleport.hpp"  // for get_teleport_locations, etc
@@ -35,16 +35,16 @@
 #include "resources.hpp"          // for gameboard, teams, units, etc
 #include "serialization/string_utils.hpp"  // for split
 #include "team.hpp"                     // for team
-#include "terrain_filter.hpp"     // for terrain_filter
+#include "terrain/filter.hpp"     // for terrain_filter
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"        // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
-#include "unit.hpp"               // for unit
-#include "unit_formula_manager.hpp"  // for unit_formula_manager
-#include "unit_ptr.hpp"                 // for unit_ptr
-#include "unit_types.hpp"
+#include "units/unit.hpp"               // for unit
+#include "units/formula_manager.hpp"  // for unit_formula_manager
+#include "units/ptr.hpp"                 // for unit_ptr
+#include "units/types.hpp"
 #include "formula/formula.hpp"  // for formula_error, formula, etc
-#include "map_location.hpp"  // for map_location, etc
+#include "map/location.hpp"  // for map_location, etc
 #include "ai/actions.hpp"               // for recall_result, etc
 #include "ai/manager.hpp"               // for manager
 #include "ai/composite/contexts.hpp"

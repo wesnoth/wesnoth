@@ -4,9 +4,9 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "log.hpp"
-#include "unit_display.hpp"
+#include "units/udisplay.hpp"
 #include "game_board.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "play_controller.hpp"
 
 namespace actions {

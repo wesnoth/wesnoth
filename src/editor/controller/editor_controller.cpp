@@ -46,8 +46,8 @@
 #include "leader_scroll_dialog.hpp"
 #include "preferences_display.hpp"
 #include "sound.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 
 #include "quit_confirmation.hpp"
 

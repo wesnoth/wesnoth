@@ -16,9 +16,9 @@
 
 #include "log.hpp"
 #include "resources.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "game_data.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 #include "team.hpp"
 #include "play_controller.hpp"
 #include "actions/create.hpp"
@@ -29,13 +29,13 @@
 #include "game_preferences.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "unit_helper.hpp"
+#include "units/helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "formula/string_utils.hpp"
-#include "unit_types.hpp"
-#include "unit_display.hpp"
+#include "units/types.hpp"
+#include "units/udisplay.hpp"
 
 #include <boost/foreach.hpp>
 

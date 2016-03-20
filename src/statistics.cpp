@@ -23,7 +23,7 @@
 #include "resources.hpp" // Needed for teams, to get team save_id for a unit
 #include "serialization/binary_or_text.hpp"
 #include "team.hpp" // Needed to get team save_id
-#include "unit.hpp"
+#include "units/unit.hpp"
 #include "util.hpp"
 
 #include <boost/foreach.hpp>

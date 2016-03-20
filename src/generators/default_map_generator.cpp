@@ -21,7 +21,7 @@
 #include "default_map_generator_job.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
 #include "seed_rng.hpp"

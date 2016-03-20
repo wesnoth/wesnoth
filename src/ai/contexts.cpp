@@ -41,20 +41,20 @@
 #include "game_display.hpp"          // for game_display
 #include "game_errors.hpp"		// for throw
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
-#include "map.hpp"                   // for gamemap
+#include "map/map.hpp"                   // for gamemap
 #include "pathfind/pathfind.hpp"        // for paths::dest_vect, paths, etc
 #include "recall_list_manager.hpp"   // for recall_list_manager
 #include "resources.hpp"             // for units, gameboard, etc
 #include "serialization/string_utils.hpp"  // for split, etc
 #include "team.hpp"                     // for team
-#include "terrain_filter.hpp"  // for terrain_filter
-#include "terrain_translation.hpp"      // for t_terrain
+#include "terrain/filter.hpp"  // for terrain_filter
+#include "terrain/translation.hpp"      // for t_terrain
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
-#include "unit.hpp"                  // for unit, intrusive_ptr_release, etc
-#include "unit_map.hpp"  // for unit_map::iterator_base, etc
-#include "unit_ptr.hpp"                 // for unit_ptr
-#include "unit_types.hpp"  // for attack_type, unit_type, etc
+#include "units/unit.hpp"                  // for unit, intrusive_ptr_release, etc
+#include "units/map.hpp"  // for unit_map::iterator_base, etc
+#include "units/ptr.hpp"                 // for unit_ptr
+#include "units/types.hpp"  // for attack_type, unit_type, etc
 #include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n

@@ -19,11 +19,11 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
-#include "map_exception.hpp"
-#include "map_label.hpp"
+#include "map/exception.hpp"
+#include "map/label.hpp"
 #include "wml_exception.hpp"
 
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>

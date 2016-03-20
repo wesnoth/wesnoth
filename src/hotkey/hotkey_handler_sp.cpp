@@ -17,7 +17,7 @@
 #include "formula/string_utils.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
 #include "whiteboard/manager.hpp"
@@ -29,7 +29,7 @@
 #include "resources.hpp"
 #include "replay.hpp"
 
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 playsingle_controller::hotkey_handler::hotkey_handler(playsingle_controller & pc, saved_game & sg)
 	: play_controller::hotkey_handler(pc, sg)

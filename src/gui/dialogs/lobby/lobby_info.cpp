@@ -21,8 +21,8 @@
 #include "network.hpp"
 #include "utils/foreach.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_exception.hpp"
+#include "map/map.hpp"
+#include "map/exception.hpp"
 #include "wml_exception.hpp"
 
 #include <iterator>

@@ -34,7 +34,7 @@
 #include "gui/widgets/window.hpp"     // for enum
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "map.hpp"                      // for gamemap
+#include "map/map.hpp"                      // for gamemap
 #include "marked-up_text.hpp"           // for color2markup, BOLD_TEXT, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"		// for playing_side, set_button_state
@@ -46,9 +46,9 @@
 #include "team.hpp"                     // for team
 #include "tod_manager.hpp"
 #include "tstring.hpp"                  // for t_string
-#include "unit.hpp"                     // for unit, intrusive_ptr_add_ref
-#include "unit_animation_component.hpp"
-#include "unit_ptr.hpp"                 // for unit_const_ptr
+#include "units/unit.hpp"                     // for unit, intrusive_ptr_add_ref
+#include "units/animation_component.hpp"
+#include "units/ptr.hpp"                 // for unit_const_ptr
 #include "whiteboard/manager.hpp"       // for manager, etc
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
 #include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc

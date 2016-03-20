@@ -17,10 +17,10 @@
 #include "color_range.hpp"
 #include "game_config.hpp"
 #include "utils/make_enum.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "recall_list_manager.hpp"
 #include "savegame_config.hpp"
-#include "unit_ptr.hpp"
+#include "units/ptr.hpp"
 #include "util.hpp"
 #include "config.hpp"
 

@@ -16,7 +16,7 @@
 #define GUI_DIALOGS_EDITOR_EDIT_LABEL_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 
 namespace gui2
 {

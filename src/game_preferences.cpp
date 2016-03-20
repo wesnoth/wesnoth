@@ -21,13 +21,13 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "network.hpp" // ping_timeout
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "settings.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>

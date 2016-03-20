@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "mp_options.hpp"
 #include "savegame.hpp"
-#include "unit_id.hpp"
+#include "units/id.hpp"
 
 #include <boost/foreach.hpp>
 

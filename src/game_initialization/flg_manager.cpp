@@ -17,7 +17,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "mt_rng.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 #include "wml_separators.hpp"
 #include "log.hpp"
 

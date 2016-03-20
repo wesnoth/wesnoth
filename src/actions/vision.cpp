@@ -26,14 +26,14 @@
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_label.hpp"
-#include "map_location.hpp"
+#include "map/map.hpp"
+#include "map/label.hpp"
+#include "map/location.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 #include <boost/foreach.hpp>
 

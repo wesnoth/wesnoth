@@ -27,7 +27,7 @@ class vconfig;
 #include "config.hpp"
 #include "scripting/lua_types.hpp"
 #include "variable_info.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 namespace lua_common {
 	int intf_textdomain(lua_State *L);

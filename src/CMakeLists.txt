@@ -946,8 +946,8 @@ set(wesnoth-main_SRC
 	hotkey/hotkey_handler_replay.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp
-	map.cpp
-	map_location.cpp
+	map/map.cpp
+	map/location.cpp
 	menu_events.cpp
 	mouse_events.cpp
 	mouse_handler_base.cpp
@@ -1024,24 +1024,24 @@ set(wesnoth-main_SRC
 	syncmp_handler.cpp
 	team.cpp
 	teambuilder.cpp
-	terrain_type_data.cpp
-	terrain_filter.cpp
+	terrain/type_data.cpp
+	terrain/filter.cpp
 	tod_manager.cpp
 	tooltips.cpp
-	unit.cpp
-	unit_abilities.cpp
-	unit_animation.cpp
-	unit_animation_component.cpp
-	unit_attack_type.cpp
-	unit_display.cpp
-	unit_drawer.cpp
-	unit_filter.cpp
-	unit_formula_manager.cpp
-	unit_frame.cpp
-	unit_helper.cpp
-	unit_id.cpp
-	unit_map.cpp
-	unit_types.cpp
+	units/unit.cpp
+	units/abilities.cpp
+	units/animation.cpp
+	units/animation_component.cpp
+	units/attack_type.cpp
+	units/udisplay.cpp
+	units/drawer.cpp
+	units/filter.cpp
+	units/formula_manager.cpp
+	units/frame.cpp
+	units/helper.cpp
+	units/id.cpp
+	units/map.cpp
+	units/types.cpp
 	utils/sha1.cpp
 	variable.cpp
 	variable_info.cpp
@@ -1093,7 +1093,7 @@ set(libwesnoth-game_STAT_SRC
 	loadscreen.cpp
 	lobby_preferences.cpp
 	make_enum.cpp
-	map_label.cpp
+	map/label.cpp
 	marked-up_text.cpp
 	minimap.cpp
 	pathfind/astarsearch.cpp
@@ -1108,9 +1108,9 @@ set(libwesnoth-game_STAT_SRC
 	sound.cpp
 	soundsource.cpp
 	sound_music_track.cpp
-	terrain.cpp
-	terrain_builder.cpp
-	terrain_translation.cpp
+	terrain/terrain.cpp
+	terrain/builder.cpp
+	terrain/translation.cpp
 	text.cpp
 	time_of_day.cpp
 	tracer.cpp

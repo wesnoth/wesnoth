@@ -18,7 +18,7 @@
 
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "map_utils.hpp"
+#include "map/utils.hpp"
 #include "random_new.hpp"
 #include "serialization/string_utils.hpp"
 

@@ -16,10 +16,10 @@
 #include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "recall_list_manager.hpp"
-#include "terrain_type_data.hpp"
-#include "unit.hpp"
+#include "terrain/type_data.hpp"
+#include "units/unit.hpp"
 
 #include "utils/foreach.hpp"
 

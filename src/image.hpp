@@ -15,10 +15,10 @@
 #ifndef IMAGE_HPP_INCLUDED
 #define IMAGE_HPP_INCLUDED
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/image.hpp"
-#include "terrain_translation.hpp"
+#include "terrain/translation.hpp"
 #include "game_config.hpp"
 
 #include <boost/unordered_map.hpp>

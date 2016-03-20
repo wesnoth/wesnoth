@@ -15,7 +15,7 @@
 #define TELEPORT_H_INCLUDED
 
 #include "config.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "savegame_config.hpp"
 
 

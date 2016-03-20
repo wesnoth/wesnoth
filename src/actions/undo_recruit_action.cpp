@@ -5,7 +5,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "replay.hpp"
-#include "unit_map.hpp"
+#include "units/map.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
 #include "game_display.hpp"

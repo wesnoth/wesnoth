@@ -13,8 +13,8 @@
 */
 
 #include "recall_list_manager.hpp"
-#include "unit.hpp"
-#include "unit_ptr.hpp"
+#include "units/unit.hpp"
+#include "units/ptr.hpp"
 
 #include <algorithm>
 #include <string>

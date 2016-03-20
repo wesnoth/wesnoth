@@ -17,11 +17,11 @@
 
 #include "editor_map.hpp"
 #include "game_classification.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "mp_game_settings.hpp"
 #include "sound_music_track.hpp"
 #include "tod_manager.hpp"
-#include "unit_map.hpp"
+#include "units/map.hpp"
 #include "overlay.hpp"
 #include "display_context.hpp"
 

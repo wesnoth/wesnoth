@@ -30,11 +30,11 @@
 #include "config.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 #include <boost/bind.hpp>
 #include <SDL.h>

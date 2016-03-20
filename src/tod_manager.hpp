@@ -14,7 +14,7 @@
 #ifndef TOD_MANAGER_HPP_INCLUDED
 #define TOD_MANAGER_HPP_INCLUDED
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "config.hpp"
 #include "time_of_day.hpp"
 #include "savegame_config.hpp"

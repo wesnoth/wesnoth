@@ -22,8 +22,8 @@
 #define AI_DEFAULT_RECRUITMENT_HPP_INCLUDED
 
 #include "ai/composite/rca.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>

@@ -28,7 +28,7 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 namespace gui2
 {

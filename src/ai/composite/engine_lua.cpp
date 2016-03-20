@@ -32,8 +32,8 @@
 #include "ai/lua/lua_object.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "util.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
 
 namespace ai {

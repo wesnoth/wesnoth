@@ -16,7 +16,7 @@
 
 #include "race.hpp"
 #include "scripting/lua_common.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 
 #include <boost/foreach.hpp>
 #include <string>

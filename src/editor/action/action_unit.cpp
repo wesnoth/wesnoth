@@ -24,8 +24,8 @@
 
 #include "editor/map/map_context.hpp"
 
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 
 #include <boost/scoped_ptr.hpp>
 

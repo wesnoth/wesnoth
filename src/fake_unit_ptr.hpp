@@ -15,7 +15,7 @@
 #ifndef INCL_FAKE_UNIT_HPP_
 #define INCL_FAKE_UNIT_HPP_
 
-#include "unit_ptr.hpp"
+#include "units/ptr.hpp"
 
 class fake_unit_manager;
 

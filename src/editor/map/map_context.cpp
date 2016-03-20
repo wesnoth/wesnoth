@@ -21,14 +21,14 @@
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
-#include "map_exception.hpp"
-#include "map_label.hpp"
+#include "map/exception.hpp"
+#include "map/label.hpp"
 #include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 #include "wml_exception.hpp"
 
 

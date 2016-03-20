@@ -36,8 +36,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_label.hpp"
+#include "map/map.hpp"
+#include "map/label.hpp"
 #include "persist_manager.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -45,8 +45,8 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
-//#include "unit.hpp"
-#include "unit_id.hpp"
+//#include "units/unit.hpp"
+#include "units/id.hpp"
 #include "version.hpp"
 
 #include <boost/foreach.hpp>

@@ -17,7 +17,7 @@
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 
 class CVideo;
 class config;

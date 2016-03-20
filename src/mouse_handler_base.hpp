@@ -16,7 +16,7 @@
 #ifndef MOUSE_HANDLER_BASE_H_INCLUDED
 #define MOUSE_HANDLER_BASE_H_INCLUDED
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include <SDL_events.h>
 #include <SDL_version.h>
 

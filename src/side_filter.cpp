@@ -27,9 +27,9 @@
 #include "serialization/string_utils.hpp"
 #include "network.hpp"
 #include "synced_context.hpp"
-#include "unit.hpp"
-#include "unit_filter.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/filter.hpp"
+#include "units/map.hpp"
 #include "variable.hpp"
 
 #include <boost/foreach.hpp>

@@ -24,7 +24,7 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "map.hpp" // gamemap::MAX_PLAYERS
+#include "map/map.hpp" // gamemap::MAX_PLAYERS
 #include "network.hpp"
 #include "filesystem.hpp"
 #include "multiplayer_error_codes.hpp"

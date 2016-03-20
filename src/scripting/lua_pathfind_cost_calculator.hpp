@@ -1,6 +1,6 @@
 #pragma once
 #include "lua/lua.h"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "scripting/lua_api.hpp"
 #include "pathfind/pathfind.hpp"
 

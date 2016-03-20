@@ -39,7 +39,7 @@
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
-#include "terrain_filter.hpp"
+#include "terrain/filter.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

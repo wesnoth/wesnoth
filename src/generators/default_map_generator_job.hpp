@@ -21,8 +21,8 @@ class config;
 class unit_race;
 
 #include "util.hpp"
-#include "map_location.hpp"
-#include "terrain_translation.hpp"
+#include "map/location.hpp"
+#include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/random.hpp>

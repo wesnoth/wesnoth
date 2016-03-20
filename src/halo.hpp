@@ -19,7 +19,7 @@
 
 class display;
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>

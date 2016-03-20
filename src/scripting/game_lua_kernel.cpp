@@ -61,9 +61,9 @@
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"                // for operator<<
-#include "map.hpp"                      // for gamemap
-#include "map_label.hpp"
-#include "map_location.hpp"             // for map_location
+#include "map/map.hpp"                      // for gamemap
+#include "map/label.hpp"
+#include "map/location.hpp"             // for map_location
 #include "mouse_events.hpp"             // for mouse_handler
 #include "mp_game_settings.hpp"         // for mp_game_settings
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
@@ -89,20 +89,20 @@
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
-#include "terrain.hpp"                  // for terrain_type
-#include "terrain_filter.hpp"           // for terrain_filter
-#include "terrain_translation.hpp"      // for read_terrain_code, etc
-#include "terrain_type_data.hpp"
+#include "terrain/terrain.hpp"                  // for terrain_type
+#include "terrain/filter.hpp"           // for terrain_filter
+#include "terrain/translation.hpp"      // for read_terrain_code, etc
+#include "terrain/type_data.hpp"
 #include "time_of_day.hpp"              // for time_of_day, tod_color
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
-#include "unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
-#include "unit_animation_component.hpp"  // for unit_animation_component
-#include "unit_display.hpp"
-#include "unit_filter.hpp"
-#include "unit_map.hpp"  // for unit_map, etc
-#include "unit_ptr.hpp"                 // for unit_const_ptr, unit_ptr
-#include "unit_types.hpp"    // for unit_type_data, unit_types, etc
+#include "units/unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
+#include "units/animation_component.hpp"  // for unit_animation_component
+#include "units/udisplay.hpp"
+#include "units/filter.hpp"
+#include "units/map.hpp"  // for unit_map, etc
+#include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
+#include "units/types.hpp"    // for unit_type_data, unit_types, etc
 #include "util.hpp"                     // for lexical_cast
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"

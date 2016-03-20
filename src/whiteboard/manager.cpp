@@ -46,9 +46,9 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
-#include "unit_display.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
+#include "units/udisplay.hpp"
 
 #include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>

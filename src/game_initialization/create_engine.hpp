@@ -16,7 +16,7 @@
 
 #include "config.hpp"
 #include "utils/make_enum.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "mp_game_settings.hpp"
 #include "sdl/utils.hpp"
 

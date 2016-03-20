@@ -28,8 +28,8 @@
 #include "config.hpp"                // for config
 #include "game_errors.hpp"
 #include "generic_event.hpp"         // for observer
-#include "unit_ptr.hpp"              // for unit_ptr
-#include "map_location.hpp"       // for map_location
+#include "units/ptr.hpp"              // for unit_ptr
+#include "map/location.hpp"       // for map_location
 
 #include <map>                          // for map, map<>::value_compare
 #include <set>                          // for set

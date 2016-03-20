@@ -26,12 +26,12 @@
 #include "game_board.hpp"
 #include "resources.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_display.hpp"
-#include "unit_map.hpp"
-//#include "unit_types.hpp" used in the below commented-out code
+#include "units/unit.hpp"
+#include "units/udisplay.hpp"
+#include "units/map.hpp"
+//#include "units/types.hpp" // used in the below commented-out code
 #include "ai/composite/rca.hpp"
 #include "ai/default/ai.hpp"
 

@@ -25,7 +25,7 @@
 #include "hash.hpp"
 #include "log.hpp"
 #include "generators/map_create.hpp"
-#include "map_exception.hpp"
+#include "map/exception.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"

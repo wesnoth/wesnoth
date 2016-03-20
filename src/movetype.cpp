@@ -22,10 +22,10 @@
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "terrain_translation.hpp"
-#include "terrain_type_data.hpp"
-#include "unit_types.hpp" // for attack_type
+#include "map/map.hpp"
+#include "terrain/translation.hpp"
+#include "terrain/type_data.hpp"
+#include "units/types.hpp" // for attack_type
 
 #include <boost/assign.hpp>
 #include <boost/foreach.hpp>

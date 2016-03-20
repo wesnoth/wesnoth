@@ -1,8 +1,8 @@
 #pragma once
 
 #include "vision.hpp"
-#include "map_location.hpp"
-#include "unit_ptr.hpp"
+#include "map/location.hpp"
+#include "units/ptr.hpp"
 #include "synced_context.hpp"
 
 #include <boost/noncopyable.hpp>

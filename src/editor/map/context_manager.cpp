@@ -43,7 +43,7 @@
 
 #include <boost/foreach.hpp>
 
-#include "terrain_translation.hpp"
+#include "terrain/translation.hpp"
 
 #include "wml_separators.hpp"
 

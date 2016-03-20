@@ -21,12 +21,12 @@
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "movetype.hpp"                 // for movetype, movetype::effects, etc
 #include "race.hpp"                     // for unit_race, etc
-#include "terrain.hpp"                  // for terrain_type
-#include "terrain_translation.hpp"      // for operator==, t_list, etc
-#include "terrain_type_data.hpp"        // for terrain_type_data, etc
+#include "terrain/terrain.hpp"                  // for terrain_type
+#include "terrain/translation.hpp"      // for operator==, t_list, etc
+#include "terrain/type_data.hpp"        // for terrain_type_data, etc
 #include "tstring.hpp"                  // for t_string, operator<<
-#include "unit_helper.hpp"              // for resistance_color
-#include "unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "units/helper.hpp"              // for resistance_color
+#include "units/types.hpp"               // for unit_type, unit_type_data, etc
 
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/optional.hpp>  // for optional

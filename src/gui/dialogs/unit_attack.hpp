@@ -17,7 +17,7 @@
 
 #include "actions/attack.hpp"
 #include "gui/dialogs/dialog.hpp"
-#include "unit_map.hpp"
+#include "units/map.hpp"
 
 namespace gui2
 {

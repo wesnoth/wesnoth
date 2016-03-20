@@ -38,9 +38,9 @@
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 #include <boost/foreach.hpp>
 

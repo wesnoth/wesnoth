@@ -31,7 +31,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "pathfind/pathfind.hpp"
 #include "replay.hpp"
@@ -39,11 +39,11 @@
 #include "synced_context.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "unit_display.hpp"
+#include "units/udisplay.hpp"
 #include "formula/string_utils.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>

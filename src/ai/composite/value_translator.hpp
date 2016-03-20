@@ -23,7 +23,7 @@
 #include "stage.hpp"
 
 #include "ai/manager.hpp"
-#include "terrain_filter.hpp"
+#include "terrain/filter.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "resources.hpp"

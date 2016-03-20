@@ -36,7 +36,7 @@
 #include "game_end_exceptions.hpp"
 #include "seed_rng.hpp"
 #include "syncmp_handler.hpp"
-#include "unit_id.hpp"
+#include "units/id.hpp"
 #include "whiteboard/manager.hpp"
 #include <boost/lexical_cast.hpp>
 

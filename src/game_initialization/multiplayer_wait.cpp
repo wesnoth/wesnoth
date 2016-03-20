@@ -29,7 +29,7 @@
 #include "mp_ui_alerts.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sdl/rect.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula/string_utils.hpp"

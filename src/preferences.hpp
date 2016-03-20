@@ -20,7 +20,7 @@
 class config;
 class display;
 
-#include "terrain_translation.hpp"
+#include "terrain/translation.hpp"
 
 #include <SDL.h>
 

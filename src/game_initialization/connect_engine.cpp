@@ -19,7 +19,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "multiplayer_ui.hpp"
 #include "mp_game_utils.hpp"
 #include "mt_rng.hpp"

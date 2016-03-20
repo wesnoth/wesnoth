@@ -24,7 +24,7 @@
 #include "stage_rca.hpp"
 #include "ai/composite/stage.hpp"
 
-#include "unit_map.hpp"
+#include "units/map.hpp"
 
 #include <queue>
 

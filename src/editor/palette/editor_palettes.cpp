@@ -21,7 +21,7 @@
 #include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"
 

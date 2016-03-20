@@ -20,7 +20,7 @@
 #define WB_ACTION_HPP_
 
 #include "typedefs.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "game_errors.hpp"
 
 namespace wb {

@@ -18,13 +18,13 @@ libwesnoth_core_sources = Split("""
     config.cpp
     hash.cpp
     log.cpp
-    map.cpp
-    map_location.cpp
+    game_map.cpp
+    map/location.cpp
     md5.cpp
     mt_rng.cpp
     seed_rng.cpp
     network.cpp
-    terrain_type_data.cpp
+    terrain/type_data.cpp
     thread.cpp
     tstring.cpp
     util.cpp
@@ -115,7 +115,7 @@ libwesnoth_sources = Split("""
     language.cpp
     loadscreen.cpp
     make_enum.cpp
-    map_label.cpp
+    map/label.cpp
     marked-up_text.cpp
     minimap.cpp
     pathfind/astarsearch.cpp
@@ -129,9 +129,9 @@ libwesnoth_sources = Split("""
     sound.cpp
     soundsource.cpp
     sound_music_track.cpp
-    terrain.cpp
-    terrain_builder.cpp
-    terrain_translation.cpp
+    terrain/terrain.cpp
+    terrain/builder.cpp
+    terrain/translation.cpp
     text.cpp
     time_of_day.cpp
     tooltips.cpp
@@ -604,22 +604,22 @@ wesnoth_sources = Split("""
     syncmp_handler.cpp
     team.cpp
     teambuilder.cpp
-    terrain_filter.cpp
+    terrain/filter.cpp
     tod_manager.cpp
-    unit.cpp
-    unit_abilities.cpp
-    unit_animation.cpp
-    unit_animation_component.cpp
-    unit_attack_type.cpp
-    unit_display.cpp
-    unit_drawer.cpp
-    unit_filter.cpp
-    unit_formula_manager.cpp
-    unit_frame.cpp
-    unit_helper.cpp
-    unit_id.cpp
-    unit_map.cpp
-    unit_types.cpp
+    units/unit.cpp
+    units/abilities.cpp
+    units/animation.cpp
+    units/animation_component.cpp
+    units/attack_type.cpp
+    units/udisplay.cpp
+    units/drawer.cpp
+    units/filter.cpp
+    units/formula_manager.cpp
+    units/frame.cpp
+    units/helper.cpp
+    units/id.cpp
+    units/map.cpp
+    units/types.cpp
     utils/sha1.cpp
     variable.cpp
     variable_info.cpp

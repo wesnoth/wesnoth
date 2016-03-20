@@ -4,13 +4,13 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "replay.hpp"
-#include "unit_map.hpp"
-#include "unit_animation_component.hpp"
+#include "units/map.hpp"
+#include "units/animation_component.hpp"
 #include "log.hpp"
 #include "game_display.hpp"
-#include "unit_display.hpp"
+#include "units/udisplay.hpp"
 #include "game_board.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

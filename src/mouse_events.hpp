@@ -17,10 +17,10 @@
 #define MOUSE_EVENTS_H_INCLUDED
 
 #include "game_display.hpp"             // for game_display -> display conversion.
-#include "map_location.hpp"             // for map_location
+#include "map/location.hpp"             // for map_location
 #include "mouse_handler_base.hpp"       // for mouse_handler_base
 #include "pathfind/pathfind.hpp"        // for marked_route, paths
-#include "unit_map.hpp"                 // for unit_map, etc
+#include "units/map.hpp"                 // for unit_map, etc
 
 #include <set>                          // for set
 #include <vector>                       // for vector

@@ -22,10 +22,10 @@
 
 #include "game_board.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 #include "ai/composite/goal.hpp"
 #include "pathfind/pathfind.hpp"
 

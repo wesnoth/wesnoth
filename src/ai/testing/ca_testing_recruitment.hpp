@@ -22,7 +22,7 @@
 
 #include "ai/composite/rca.hpp"
 
-#include "unit_map.hpp"
+#include "units/map.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

@@ -27,7 +27,7 @@
 #include "game_board.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 namespace wb {
 

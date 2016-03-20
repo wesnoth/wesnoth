@@ -20,7 +20,7 @@
 #define WB_HIGHLIGHTER_HPP_
 
 #include "visitor.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 static lg::log_domain log_whiteboard_highlight("whiteboard/highlight");
 #define ERR_WB_H LOG_STREAM(err, log_whiteboard_highlight)

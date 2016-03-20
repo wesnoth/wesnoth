@@ -24,7 +24,7 @@
 #include "game_events/pump.hpp"
 #include "generic_event.hpp"      // for generic_event, etc
 #include "log.hpp"
-#include "map_location.hpp"       // for map_location
+#include "map/location.hpp"       // for map_location
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
 

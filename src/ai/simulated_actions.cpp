@@ -22,14 +22,14 @@
 #include "game_board.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_helper.hpp"
-#include "unit_ptr.hpp"
-#include "unit_types.hpp"
+#include "units/unit.hpp"
+#include "units/helper.hpp"
+#include "units/ptr.hpp"
+#include "units/types.hpp"
 
 namespace ai {
 

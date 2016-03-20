@@ -41,7 +41,7 @@
 #include "language.hpp"                 // for language_def, etc
 #include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
-#include "map_exception.hpp"
+#include "map/exception.hpp"
 #include "game_initialization/multiplayer.hpp"              // for start_client, etc
 #include "game_initialization/create_engine.hpp"
 #include "network.hpp"

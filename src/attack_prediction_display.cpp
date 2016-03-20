@@ -24,8 +24,8 @@
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "sdl/alpha.hpp"
-#include "unit.hpp"
-#include "unit_abilities.hpp"
+#include "units/unit.hpp"
+#include "units/abilities.hpp"
 
 // Conversion routine for both unscathed and damage change percentage.
 static void format_prob(char str_buf[10], double prob)

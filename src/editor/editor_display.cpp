@@ -15,8 +15,8 @@
 
 #include "editor_display.hpp"
 #include "reports.hpp"
-#include "terrain_builder.hpp"
-#include "unit_map.hpp"
+#include "terrain/builder.hpp"
+#include "units/map.hpp"
 
 #include <boost/shared_ptr.hpp>
 

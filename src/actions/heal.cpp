@@ -23,14 +23,14 @@
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_abilities.hpp"
-#include "unit_display.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/abilities.hpp"
+#include "units/udisplay.hpp"
+#include "units/map.hpp"
 
 #include <boost/foreach.hpp>
 #include <list>
