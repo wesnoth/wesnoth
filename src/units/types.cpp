@@ -27,7 +27,6 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "utils/make_enum.hpp"
-#include "portrait.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
