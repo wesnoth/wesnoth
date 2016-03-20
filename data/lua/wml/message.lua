@@ -206,6 +206,8 @@ function wesnoth.wml_actions.message(cfg)
 		-- No matching unit found, continue onto the next message
 		log("No speaker found for [message]", "debug")
 		return
+	elseif cfg.highlight == false then
+		-- Nothing to do here
 	elseif speaker == "narrator" then
 		-- Narrator, so deselect units
 		wesnoth.deselect_hex()

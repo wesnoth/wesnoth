@@ -573,6 +573,10 @@ function wml_actions.scroll_to(cfg)
 	if not loc then return end
 	if not utils.optional_side_filter(cfg) then return end
 	wesnoth.scroll_to_tile(loc[1], loc[2], cfg.check_fogged, cfg.immediate)
+	if cfg.highlight then
+		wesnoth.highlight_hex(loc[1], loc[2])
+		wml_actions.redraw{}
+	end
 end
 
 function wml_actions.scroll_to_unit(cfg)
@@ -580,6 +584,10 @@ function wml_actions.scroll_to_unit(cfg)
 	if not u then return end
 	if not utils.optional_side_filter(cfg, "for_side", "for_side") then return end
 	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged, cfg.immediate)
+	if cfg.highlight then
+		wesnoth.highlight_hex(u.x, u.y)
+		wml_actions.redraw{}
+	end
 end
 
 function wml_actions.lock_view(cfg)
@@ -593,7 +601,7 @@ end
 function wml_actions.select_unit(cfg)
 	local u = wesnoth.get_units(cfg)[1]
 	if not u then return end
-	wesnoth.select_hex(u.x, u.y, cfg.highlight, cfg.fire_event)
+	wesnoth.select_unit(u.x, u.y, cfg.highlight, cfg.fire_event)
 end
 
 function wml_actions.unit_overlay(cfg)
