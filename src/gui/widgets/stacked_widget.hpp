@@ -17,8 +17,13 @@
 
 #include "gui/widgets/container.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -104,6 +109,41 @@ private:
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tstacked_widget_definition : public tcontrol_definition
+{
+	explicit tstacked_widget_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_stacked_widget : public tbuilder_control
+{
+	explicit tbuilder_stacked_widget(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	/** The builders for all layers of the stack .*/
+	std::vector<tbuilder_grid_const_ptr> stack;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

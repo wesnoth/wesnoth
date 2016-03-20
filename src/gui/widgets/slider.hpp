@@ -18,8 +18,13 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /** A slider. */
 class tslider : public tscrollbar_, public tinteger_selector_
@@ -192,6 +197,54 @@ private:
 	void signal_handler_left_button_up(const event::tevent event,
 									   bool& handled);
 };
+
+// }---------- DEFINITION ---------{
+
+struct tslider_definition : public tcontrol_definition
+{
+	explicit tslider_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		unsigned minimum_positioner_length;
+		unsigned maximum_positioner_length;
+
+		unsigned left_offset;
+		unsigned right_offset;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_slider : public tbuilder_control
+{
+	explicit tbuilder_slider(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+private:
+	unsigned best_slider_length_;
+	int minimum_value_;
+	int maximum_value_;
+	unsigned step_size_;
+	int value_;
+
+	t_string minimum_value_label_;
+	t_string maximum_value_label_;
+
+	std::vector<t_string> value_labels_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

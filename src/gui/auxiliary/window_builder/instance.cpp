@@ -16,7 +16,7 @@
 
 #include "gui/auxiliary/window_builder/instance.hpp"
 
-#include "gui/auxiliary/window_builder/spacer.hpp"
+#include "gui/widgets/spacer.hpp"
 
 namespace gui2
 {

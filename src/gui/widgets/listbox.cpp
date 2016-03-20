@@ -21,13 +21,17 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/listbox.hpp"
-#include "gui/auxiliary/window_builder/listbox.hpp"
-#include "gui/auxiliary/window_builder/horizontal_listbox.hpp"
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+#include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/detail/register.hpp"
+#include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/selectable.hpp"
+#include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
+
+#include "gettext.hpp"
 
 #include <boost/bind.hpp>
 
@@ -36,6 +40,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(listbox)
 
@@ -619,6 +625,469 @@ const std::string& tlistbox::get_control_type() const
 	static const std::string type = "listbox";
 	return type;
 }
+
+// }---------- DEFINITION ---------{
+
+tlistbox_definition::tlistbox_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing listbox " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_listbox
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="listbox_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * == Listbox ==
+ *
+ * @macro = listbox_description
+ *
+ * The definition of a listbox contains the definition of its scrollbar.
+ *
+ * The resolution for a listbox also contains the following keys:
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
+ * @begin{table}{config}
+ *     scrollbar & section & &         A grid containing the widgets for the
+ *                                     scrollbar. The scrollbar has some special
+ *                                     widgets so it can make default behavior
+ *                                     for certain widgets. $
+ * @end{table}
+ * @begin{table}{dialog_widgets}
+ *     _begin & & clickable & o &      Moves the position to the beginning
+ *                                     of the list. $
+ *     _line_up & & clickable & o &    Move the position one item up. (NOTE
+ *                                     if too many items to move per item it
+ *                                     might be more items.) $
+ *     _half_page_up & & clickable & o &
+ *                                     Move the position half the number of the
+ *                                     visible items up. (See note at
+ *                                     _line_up.) $
+ *     _page_up & & clickable & o &    Move the position the number of
+ *                                     visible items up. (See note at
+ *                                     _line_up.) $
+ *
+ *     _end & & clickable & o &        Moves the position to the end of the
+ *                                     list. $
+ *     _line_down & & clickable & o &  Move the position one item down.(See
+ *                                     note at _line_up.) $
+ *     _half_page_down & & clickable & o &
+ *                                     Move the position half the number of the
+ *                                     visible items down. (See note at
+ *                                     _line_up.) $
+ *     _page_down & & clickable & o &  Move the position the number of
+ *                                     visible items down. (See note at
+ *                                     _line_up.) $
+ *
+ *     _scrollbar & & vertical_scrollbar & m &
+ *                                     This is the scrollbar so the user can
+ *                                     scroll through the list. $
+ * @end{table}
+ * A clickable is one of:
+ * * button
+ * * repeating_button
+ * @{allow}{link}{name="gui/window/resolution/grid/row/column/button"}
+ * @{allow}{link}{name="gui/window/resolution/grid/row/column/repeating_button"}
+ * The following states exist:
+ * * state_enabled, the listbox is enabled.
+ * * state_disabled, the listbox is disabled.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="listbox_definition"}
+ * @end{parent}{name="gui/"}
+ */
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_horizonal_listbox
+ *
+ * == Horizontal listbox ==
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="horizontal_listbox_definition"}{min=0}{max=-1}{super="gui/listbox_definition"}
+ * @end{tag}{name="horizontal_listbox_definition"}
+ * @end{parent}{name="gui/"}
+ * @macro = horizontal_listbox_description
+ * The definition of a horizontal listbox is the same as for a normal listbox.
+ */
+tlistbox_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid(NULL)
+{
+	// Note the order should be the same as the enum tstate in listbox.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+
+	const config& child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(child);
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{listbox_description}
+ *
+ *        A listbox is a control that holds several items of the same type.
+ *        Normally the items in a listbox are ordered in rows, this version
+ *        might allow more options for ordering the items in the future.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_listbox
+ *
+ * == Listbox ==
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="listbox"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @macro = listbox_description
+ *
+ * List with the listbox specific variables:
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *
+ *     header & grid & [] &            Defines the grid for the optional
+ *                                     header. (This grid will automatically
+ *                                     get the id _header_grid.) $
+ *     footer & grid & [] &            Defines the grid for the optional
+ *                                     footer. (This grid will automatically
+ *                                     get the id _footer_grid.) $
+ *
+ *     list_definition & section & &   This defines how a listbox item
+ *                                     looks. It must contain the grid
+ *                                     definition for 1 row of the list. $
+ *
+ *     list_data & section & [] &      A grid alike section which stores the
+ *                                     initial data for the listbox. Every row
+ *                                     must have the same number of columns as
+ *                                     the 'list_definition'. $
+ *
+ *     has_minimum & bool & true &     If false, less than one row can be selected. $
+ *
+ *     has_maximum & bool & true &     If false, more than one row can be selected. $
+ *
+ * @end{table}
+ * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="header"}
+ * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="footer"}
+ * @begin{tag}{name="list_definition"}{min=0}{max=1}
+ * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="list_definition"}x
+ * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
+ * @end{tag}{name="list_data"}
+ *
+ * In order to force widgets to be the same size inside a listbox, the widgets
+ * need to be inside a linked_group.
+ *
+ * Inside the list section there are only the following widgets allowed
+ * * grid (to nest)
+ * * selectable widgets which are
+ * ** toggle_button
+ * ** toggle_panel
+ * @end{tag}{name="listbox"}
+ *
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+/*WIKI
+ * @begin{parent}{name="generic/"}
+ * @begin{tag}{name="listbox_grid"}{min="0"}{max="-1"}
+ * @begin{tag}{name="row"}{min="0"}{max="-1"}
+ * @begin{table}{config}
+ *     grow_factor & unsigned & 0 &      The grow factor for a row. $
+ * @end{table}
+ * @begin{tag}{name="column"}{min="0"}{max="-1"}{super="gui/window/resolution/grid/row/column"}
+ * @begin{table}{config}
+ *     label & t_string & "" &  $
+ *     tooltip & t_string & "" &  $
+ *     icon & t_string & "" &  $
+ * @end{table}
+ * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_button"}
+ * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_panel"}
+ * @end{tag}{name="column"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="listbox_grid"}
+ * @end{parent}{name="generic/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_listbox::tbuilder_listbox(const config& cfg)
+	: tbuilder_control(cfg)
+	, vertical_scrollbar_mode(
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, header(NULL)
+	, footer(NULL)
+	, list_builder(NULL)
+	, list_data()
+	, has_minimum_(cfg["has_minimum"].to_bool(true))
+	, has_maximum_(cfg["has_maximum"].to_bool(true))
+{
+	if(const config& h = cfg.child("header")) {
+		header = new tbuilder_grid(h);
+	}
+
+	if(const config& f = cfg.child("footer")) {
+		footer = new tbuilder_grid(f);
+	}
+
+	const config& l = cfg.child("list_definition");
+
+	VALIDATE(l, _("No list defined."));
+	list_builder = new tbuilder_grid(l);
+	assert(list_builder);
+	VALIDATE(list_builder->rows == 1,
+			 _("A 'list_definition' should contain one row."));
+
+	const config& data = cfg.child("list_data");
+	if(!data) {
+		return;
+	}
+
+	FOREACH(const AUTO & row, data.child_range("row"))
+	{
+		unsigned col = 0;
+
+		FOREACH(const AUTO & c, row.child_range("column"))
+		{
+			list_data.push_back(string_map());
+			FOREACH(const AUTO & i, c.attribute_range())
+			{
+				list_data.back()[i.first] = i.second;
+			}
+			++col;
+		}
+
+		VALIDATE(col == list_builder->cols,
+				 _("'list_data' must have the same number of "
+				   "columns as the 'list_definition'."));
+	}
+}
+
+twidget* tbuilder_listbox::build() const
+{
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	tlist* widget = new tlist(
+			true, true, tgenerator_::vertical_list, true, list_builder);
+
+	init_control(widget);
+	if(!list_data.empty()) {
+		widget->append_rows(list_data);
+	}
+	return widget;
+#else
+	if(new_widgets) {
+
+		tpane* pane = new tpane(list_builder);
+		pane->set_id(id);
+
+
+		tgrid* grid = new tgrid();
+		grid->set_rows_cols(1, 1);
+#if 0
+		grid->set_child(
+				  pane
+				, 0
+				, 0
+				, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
+					| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+				, tgrid::BORDER_ALL);
+#else
+		tviewport* viewport = new tviewport(*pane);
+		grid->set_child(viewport,
+						0,
+						0,
+						tgrid::VERTICAL_GROW_SEND_TO_CLIENT
+						| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT,
+						tgrid::BORDER_ALL);
+#endif
+		return grid;
+	}
+
+	tlistbox* widget
+			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::vertical_list, true);
+
+	init_control(widget);
+
+	widget->set_list_builder(list_builder); // FIXME in finalize???
+
+	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+
+	DBG_GUI_G << "Window builder: placed listbox '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	boost::intrusive_ptr<const tlistbox_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(
+			widget->config());
+	assert(conf);
+
+	widget->init_grid(conf->grid);
+
+	widget->finalize(header, footer, list_data);
+
+	return widget;
+#endif
+}
+
+/*WIKI_MACRO
+ * @begin{macro}{horizontal_listbox_description}
+ *
+ *        A horizontal listbox is a control that holds several items of the
+ *        same type.  Normally the items in a listbox are ordered in rows,
+ *        this version orders them in columns instead.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_horizontal_listbox
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="horizontal_listbox"}{min="0"}{max="-1"}{super="generic/widget_instance"}
+ * == Horizontal listbox ==
+ *
+ * @macro = horizontal_listbox_description
+ *
+ * List with the horizontal listbox specific variables:
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *
+ *     list_definition & section & &   This defines how a listbox item
+ *                                     looks. It must contain the grid
+ *                                     definition for 1 column of the list. $
+ *
+ *     list_data & section & [] &      A grid alike section which stores the
+ *                                     initial data for the listbox. Every row
+ *                                     must have the same number of columns as
+ *                                     the 'list_definition'. $
+ *
+ * @end{table}
+ * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="header"}
+ * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="footer"}
+ * @begin{tag}{name="list_definition"}{min=0}{max=1}
+ * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="list_definition"}
+ * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
+ * @end{tag}{name="list_data"}
+ * In order to force widgets to be the same size inside a horizontal listbox,
+ * the widgets need to be inside a linked_group.
+ *
+ * Inside the list section there are only the following widgets allowed
+ * * grid (to nest)
+ * * selectable widgets which are
+ * ** toggle_button
+ * ** toggle_panel
+ * @end{tag}{name="horizontal_listbox"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
+	: tbuilder_control(cfg)
+	, vertical_scrollbar_mode(
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, list_builder(NULL)
+	, list_data()
+{
+	const config& l = cfg.child("list_definition");
+
+	VALIDATE(l, _("No list defined."));
+	list_builder = new tbuilder_grid(l);
+	assert(list_builder);
+	VALIDATE(list_builder->rows == 1,
+			 _("A 'list_definition' should contain one row."));
+
+	const config& data = cfg.child("list_data");
+	if(!data)
+		return;
+
+	FOREACH(const AUTO & row, data.child_range("row"))
+	{
+		unsigned col = 0;
+
+		FOREACH(const AUTO & c, row.child_range("column"))
+		{
+			list_data.push_back(string_map());
+			FOREACH(const AUTO & i, c.attribute_range())
+			{
+				list_data.back()[i.first] = i.second;
+			}
+			++col;
+		}
+
+		VALIDATE(col == list_builder->cols,
+				 _("'list_data' must have "
+				   "the same number of columns as the 'list_definition'."));
+	}
+}
+
+twidget* tbuilder_horizontal_listbox::build() const
+{
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	tlist* widget = new tlist(
+			true, true, tgenerator_::horizontal_list, true, list_builder);
+
+	init_control(widget);
+	if(!list_data.empty()) {
+		widget->append_rows(list_data);
+	}
+	return widget;
+#else
+	tlistbox* widget
+			= new tlistbox(true, true, tgenerator_::horizontal_list, true);
+
+	init_control(widget);
+
+	widget->set_list_builder(list_builder); // FIXME in finalize???
+
+	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+
+	DBG_GUI_G << "Window builder: placed listbox '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	boost::intrusive_ptr<const tlistbox_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(
+			widget->config());
+	assert(conf);
+
+	widget->init_grid(conf->grid);
+
+	widget->finalize(NULL, NULL, list_data);
+
+	return widget;
+#endif
+}
+
+} // namespace implementation
+
+// }------------ END --------------
+
 } // namespace gui2
 
 #endif

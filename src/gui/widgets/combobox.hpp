@@ -14,11 +14,16 @@
 
 #pragma once
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * Simple push button.
@@ -139,5 +144,42 @@ private:
 										  bool& handled);
 };
 
+// }---------- DEFINITION ---------{
+
+struct tcombobox_definition : public tcontrol_definition
+{
+	explicit tcombobox_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+class tcontrol;
+
+namespace implementation
+{
+
+struct tbuilder_combobox : public tbuilder_control
+{
+public:
+	explicit tbuilder_combobox(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+private:
+	std::string retval_id_;
+	int retval_;
+	std::vector<std::string> options_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

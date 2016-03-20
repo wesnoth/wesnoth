@@ -37,9 +37,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
-#include "gui/auxiliary/widget_definition/window.hpp"
 #include "gui/auxiliary/window_builder.hpp"
-#include "gui/auxiliary/window_builder/control.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
 #include "gui/lib/types/point.hpp"
@@ -81,6 +79,8 @@ namespace gui2 { class tbutton; }
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -1501,6 +1501,49 @@ void twindow::signal_handler_request_placement(const event::tevent event,
 
 	handled = true;
 }
+
+// }---------- DEFINITION ---------{
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_window
+ *
+ * == Window ==
+ *
+ * The definition of a window. A window is a kind of panel see the panel for
+ * which fields exist
+ *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="window_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="gui/panel_definition/resolution"}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @allow{link}{name="gui/panel_definition/resolution/background"}
+ * @allow{link}{name="gui/panel_definition/resolution/foreground"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="window_definition"}
+ * @end{parent}{name="gui/"}
+ */
+twindow_definition::twindow_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing window " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+twindow_definition::tresolution::tresolution(const config& cfg)
+	: tpanel_definition::tresolution(cfg), grid(NULL)
+{
+	const config& child = cfg.child("grid");
+	// VALIDATE(child, _("No grid defined."));
+
+	/** @todo Evaluate whether the grid should become mandatory. */
+	if(child) {
+		grid = new tbuilder_grid(child);
+	}
+}
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -17,8 +17,14 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+#include "gui/auxiliary/formula.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * An empty widget.
@@ -77,6 +83,39 @@ private:
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
+// }---------- DEFINITION ---------{
+
+struct tspacer_definition : public tcontrol_definition
+{
+	explicit tspacer_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_spacer : public tbuilder_control
+{
+	explicit tbuilder_spacer(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+private:
+	tformula<unsigned> width_;
+	tformula<unsigned> height_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

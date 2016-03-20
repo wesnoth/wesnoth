@@ -18,8 +18,13 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/clickable.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 class trepeating_button : public tcontrol, public tclickable_
 {
@@ -111,6 +116,36 @@ private:
 									   bool& handled);
 };
 
+// }---------- DEFINITION ---------{
+
+struct trepeating_button_definition : public tcontrol_definition
+{
+	explicit trepeating_button_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_repeating_button : public tbuilder_control
+{
+public:
+	explicit tbuilder_repeating_button(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

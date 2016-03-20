@@ -20,8 +20,14 @@
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
+
 class tselectable_;
 namespace implementation
 {
@@ -342,6 +348,79 @@ private:
 
 	void order_by_column(unsigned column, twidget& widget);
 };
+
+// }---------- DEFINITION ---------{
+
+struct tlistbox_definition : public tcontrol_definition
+{
+
+	explicit tlistbox_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_listbox : public tbuilder_control
+{
+	explicit tbuilder_listbox(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr header;
+	tbuilder_grid_ptr footer;
+
+	tbuilder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<string_map> list_data;
+
+	bool has_minimum_, has_maximum_;
+};
+
+struct tbuilder_horizontal_listbox : public tbuilder_control
+{
+	explicit tbuilder_horizontal_listbox(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<string_map> list_data;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

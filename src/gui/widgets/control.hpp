@@ -16,13 +16,14 @@
 #define GUI_WIDGETS_CONTROL_HPP_INCLUDED
 
 #include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 #include "gui/widgets/widget.hpp"
 #include "../../text.hpp" // We want the file in src/
 
-typedef std::map<std::string, t_string> string_map;
-
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -505,6 +506,37 @@ private:
 	void signal_handler_notify_remove_tooltip(const event::tevent event,
 											  bool& handled);
 };
+
+// }---------- BUILDER -----------{
+
+class tcontrol;
+
+namespace implementation
+{
+
+struct tbuilder_control : public tbuilder_widget
+{
+public:
+	tbuilder_control(const config& cfg);
+
+	using tbuilder_widget::build;
+
+	virtual twidget* build(const treplacements& replacements) const OVERRIDE;
+
+	/** @deprecated The control can initialize itself. */
+	void init_control(tcontrol* control) const;
+
+	/** Parameters for the control. */
+	std::string definition;
+	t_string label;
+	t_string tooltip;
+	t_string help;
+	bool use_tooltip_on_label_overflow;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

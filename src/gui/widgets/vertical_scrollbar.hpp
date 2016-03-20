@@ -20,6 +20,8 @@
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 /** A vertical scrollbar. */
 class tvertical_scrollbar : public tscrollbar_
 {
@@ -66,6 +68,42 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tvertical_scrollbar_definition : public tcontrol_definition
+{
+	explicit tvertical_scrollbar_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		unsigned minimum_positioner_length;
+		unsigned maximum_positioner_length;
+
+		unsigned top_offset;
+		unsigned bottom_offset;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_vertical_scrollbar : public tbuilder_control
+{
+	explicit tbuilder_vertical_scrollbar(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

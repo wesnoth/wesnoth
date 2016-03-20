@@ -28,6 +28,8 @@ typedef std::map<std::string, t_string> string_map;
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 namespace implementation
 {
 struct tbuilder_pane;
@@ -193,6 +195,30 @@ private:
 										  const event::tevent event,
 										  bool& handled);
 };
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_pane : public tbuilder_widget
+{
+	explicit tbuilder_pane(const config& cfg);
+
+	twidget* build() const;
+
+	twidget* build(const treplacements& replacements) const;
+
+	tplacer_::tgrow_direction grow_direction;
+
+	unsigned parallel_items;
+
+	tbuilder_grid_ptr item_definition;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -17,8 +17,13 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /** Label showing a text. */
 class tlabel : public tcontrol
@@ -125,6 +130,46 @@ private:
 	 */
 	void signal_handler_right_button_click(const event::tevent event, bool & handled);
 };
+
+// }---------- DEFINITION ---------{
+
+struct tlabel_definition : public tcontrol_definition
+{
+
+	explicit tlabel_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		bool link_aware;
+		std::string link_color;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_label : public tbuilder_control
+{
+	tbuilder_label(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	bool wrap;
+
+	unsigned characters_per_line;
+
+	PangoAlignment text_alignment;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

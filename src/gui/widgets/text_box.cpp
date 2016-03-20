@@ -18,8 +18,6 @@
 
 #include "font.hpp"
 #include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/text_box.hpp"
-#include "gui/auxiliary/window_builder/text_box.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -33,6 +31,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(text_box)
 
@@ -395,5 +395,121 @@ ttext_box::signal_handler_left_button_double_click(const event::tevent event,
 	select_all();
 	handled = true;
 }
+
+// }---------- DEFINITION ---------{
+
+ttext_box_definition::ttext_box_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing text_box " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_text_box
+ *
+ * == Text box ==
+ *
+ * The definition of a text box.
+ *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="text_box_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * The resolution for a text box also contains the following keys:
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
+ * @begin{table}{config}
+ *     text_x_offset & f_unsigned & "" & The x offset of the text in the text
+ *                                     box. This is needed for the code to
+ *                                     determine where in the text the mouse
+ *                                     clicks, so it can set the cursor
+ *                                     properly. $
+ *     text_y_offset & f_unsigned & "" & The y offset of the text in the text
+ *                                     box. $
+ * @end{table}
+ *
+ * The following states exist:
+ * * state_enabled, the text box is enabled.
+ * * state_disabled, the text box is disabled.
+ * * state_focused, the text box has the focus of the keyboard.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="text_box_definition"}
+ * @end{parent}{name="gui/"}
+ */
+ttext_box_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, text_x_offset(cfg["text_x_offset"])
+	, text_y_offset(cfg["text_y_offset"])
+{
+	// Note the order should be the same as the enum tstate in text_box.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_focused")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_text_box
+ *
+ * == Text box ==
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="text_box"}{min="0"}{max="-1"}{super="generic/widget_instance"}
+ * @begin{table}{config}
+ *     label & t_string & "" &          The initial text of the text box. $
+ *     history & string & "" &         The name of the history for the text
+ *                                     box.
+ *                                     A history saves the data entered in a
+ *                                     text box between the games. With the up
+ *                                     and down arrow it can be accessed. To
+ *                                     create a new history item just add a
+ *                                     new unique name for this field and the
+ *                                     engine will handle the rest. $
+ * @end{table}
+ * @end{tag}{name="text_box"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_text_box::tbuilder_text_box(const config& cfg)
+	: tbuilder_control(cfg)
+	, history(cfg["history"])
+	, max_input_length(cfg["max_input_length"])
+{
+}
+
+twidget* tbuilder_text_box::build() const
+{
+	ttext_box* widget = new ttext_box();
+
+	init_control(widget);
+
+	// A textbox doesn't have a label but a text
+	widget->set_value(label);
+
+	if(!history.empty()) {
+		widget->set_history(history);
+	}
+
+	widget->set_max_input_length(max_input_length);
+
+	DBG_GUI_G << "Window builder: placed text box '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

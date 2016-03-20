@@ -17,10 +17,15 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 class config;
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * The basic minimap class.
@@ -103,6 +108,36 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tminimap_definition : public tcontrol_definition
+{
+	explicit tminimap_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_minimap : public tbuilder_control
+{
+	explicit tbuilder_minimap(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

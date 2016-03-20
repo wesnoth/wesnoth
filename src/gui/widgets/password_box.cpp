@@ -19,8 +19,6 @@
 #include "gui/widgets/password_box.hpp"
 
 #include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/text_box.hpp"
-#include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "serialization/string_utils.hpp"
@@ -33,6 +31,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET3(ttext_box_definition, password_box, "text_box_definition")
 
@@ -148,5 +148,50 @@ const std::string& tpassword_box::get_control_type() const
 	static const std::string type = "password_box";
 	return type;
 }
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_password_box
+ *
+ * == Password box ==
+ *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="password_box"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @begin{table}{config}
+ *     label & t_string & "" &         The initial text of the password box. $
+ * @end{table}
+ * @end{tag}{name="password_box"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+tbuilder_password_box::tbuilder_password_box(const config& cfg)
+	: tbuilder_control(cfg), history_(cfg["history"])
+{
+}
+
+twidget* tbuilder_password_box::build() const
+{
+	tpassword_box* widget = new tpassword_box();
+
+	init_control(widget);
+
+	// A password box doesn't have a label but a text.
+	// It also has no history.
+	widget->set_value(label);
+
+	DBG_GUI_G << "Window builder: placed password box '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

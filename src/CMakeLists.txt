@@ -587,37 +587,8 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/widget.cpp
 	gui/widgets/window.cpp
 	gui/auxiliary/window_builder.cpp
-	gui/auxiliary/window_builder/button.cpp
-	gui/auxiliary/window_builder/combobox.cpp
-	gui/auxiliary/window_builder/control.cpp
-	gui/auxiliary/window_builder/drawing.cpp
 	gui/auxiliary/window_builder/helper.cpp
-	gui/auxiliary/window_builder/horizontal_listbox.cpp
-	gui/auxiliary/window_builder/horizontal_scrollbar.cpp
 	gui/auxiliary/window_builder/instance.cpp
-	gui/auxiliary/window_builder/image.cpp
-	gui/auxiliary/window_builder/label.cpp
-	gui/auxiliary/window_builder/listbox.cpp
-	gui/auxiliary/window_builder/matrix.cpp
-	gui/auxiliary/window_builder/minimap.cpp
-	gui/auxiliary/window_builder/multi_page.cpp
-	gui/auxiliary/window_builder/pane.cpp
-	gui/auxiliary/window_builder/panel.cpp
-	gui/auxiliary/window_builder/password_box.cpp
-	gui/auxiliary/window_builder/progress_bar.cpp
-	gui/auxiliary/window_builder/repeating_button.cpp
-	gui/auxiliary/window_builder/scroll_label.cpp
-	gui/auxiliary/window_builder/scrollbar_panel.cpp
-	gui/auxiliary/window_builder/slider.cpp
-	gui/auxiliary/window_builder/spacer.cpp
-	gui/auxiliary/window_builder/stacked_widget.cpp
-	gui/auxiliary/window_builder/text_box.cpp
-	gui/auxiliary/window_builder/toggle_button.cpp
-	gui/auxiliary/window_builder/toggle_panel.cpp
-	gui/auxiliary/window_builder/tree_view.cpp
-	gui/auxiliary/window_builder/unit_preview_pane.cpp
-	gui/auxiliary/window_builder/vertical_scrollbar.cpp
-	gui/auxiliary/window_builder/viewport.cpp
 )
 
 add_library(wesnoth-gui_widget
@@ -642,31 +613,6 @@ target_link_libraries(wesnoth-gui_widget
 # its own structures. The definitions define the looks of the widgets.
 set(wesnoth-gui_widget_definition_SRC
 	gui/auxiliary/widget_definition.cpp
-	gui/auxiliary/widget_definition/button.cpp
-	gui/auxiliary/widget_definition/combobox.cpp
-	gui/auxiliary/widget_definition/drawing.cpp
-	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
-	gui/auxiliary/widget_definition/image.cpp
-	gui/auxiliary/widget_definition/label.cpp
-	gui/auxiliary/widget_definition/listbox.cpp
-	gui/auxiliary/widget_definition/matrix.cpp
-	gui/auxiliary/widget_definition/minimap.cpp
-	gui/auxiliary/widget_definition/multi_page.cpp
-	gui/auxiliary/widget_definition/panel.cpp
-	gui/auxiliary/widget_definition/progress_bar.cpp
-	gui/auxiliary/widget_definition/repeating_button.cpp
-	gui/auxiliary/widget_definition/scroll_label.cpp
-	gui/auxiliary/widget_definition/scrollbar_panel.cpp
-	gui/auxiliary/widget_definition/slider.cpp
-	gui/auxiliary/widget_definition/spacer.cpp
-	gui/auxiliary/widget_definition/stacked_widget.cpp
-	gui/auxiliary/widget_definition/text_box.cpp
-	gui/auxiliary/widget_definition/toggle_button.cpp
-	gui/auxiliary/widget_definition/toggle_panel.cpp
-	gui/auxiliary/widget_definition/tree_view.cpp
-	gui/auxiliary/widget_definition/unit_preview_pane.cpp
-	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
-	gui/auxiliary/widget_definition/window.cpp
 )
 
 add_library(wesnoth-gui_widget_definition

@@ -45,6 +45,8 @@ namespace gui2 { struct tpoint; }
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 class tdialog;
 class tdebug_layout_graph;
 class tpane;
@@ -769,6 +771,22 @@ private:
 	void signal_handler_request_placement(const event::tevent event,
 										  bool& handled);
 };
+
+// }---------- DEFINITION ---------{
+
+struct twindow_definition : public tcontrol_definition
+{
+	explicit twindow_definition(const config& cfg);
+
+	struct tresolution : public tpanel_definition::tresolution
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }------------ END --------------
 
 } // namespace gui2
 

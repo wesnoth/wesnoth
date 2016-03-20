@@ -17,8 +17,9 @@
 #include "gui/widgets/label.hpp"
 
 #include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/label.hpp"
-#include "gui/auxiliary/window_builder/label.hpp"
+
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
@@ -34,6 +35,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(label)
 
@@ -209,5 +212,133 @@ void tlabel::signal_handler_right_button_click(const event::tevent /* event */, 
 
 	handled = true;
 }
+
+// }---------- DEFINITION ---------{
+
+tlabel_definition::tlabel_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing label " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_label
+ *
+ * == Label ==
+ *
+ * @macro = label_description
+ *
+ * Although the label itself has no event interaction it still has two states.
+ * The reason is that labels are often used as visual indication of the state
+ * of the widget it labels.
+ *
+ * Note: The above is outdated, if "link_aware" is enabled then there is interaction.
+ *
+ *
+ * The following states exist:
+ * * state_enabled, the label is enabled.
+ * * state_disabled, the label is disabled.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="label_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{table}{config}
+ *     link_aware & f_bool & false & Whether the label is link aware. This means
+ *                                     it is rendered with links highlighted,
+ *                                     and responds to click events on those
+ *                                     links. $
+ *     link_color & string & #ffff00 & The color to render links with. This
+ *                                     string will be used verbatim in pango
+ *                                     markup for each link. $
+ * @end{table}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="label_definition"}
+ * @end{parent}{name="gui/"}
+ */
+tlabel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, link_aware(cfg["link_aware"].to_bool(false))
+	, link_color(cfg["link_color"].str().size() > 0 ? cfg["link_color"].str() : "#ffff00")
+{
+	// Note the order should be the same as the enum tstate is label.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{label_description}
+ *
+ *        A label displays a text, the text can be wrapped but no scrollbars
+ *        are provided.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_label
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="label"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == Label ==
+ *
+ * @macro = label_description
+ *
+ * List with the label specific variables:
+ * @begin{table}{config}
+ *     wrap & bool & false &      Is wrapping enabled for the label. $
+ *     characters_per_line & unsigned & 0 &
+ *                                Sets the maximum number of characters per
+ *                                line. The amount is an approximate since the
+ *                                width of a character differs. E.g. iii is
+ *                                smaller than MMM. When the value is non-zero
+ *                                it also implies can_wrap is true.
+ *                                When having long strings wrapping them can
+ *                                increase readability, often 66 characters per
+ *                                line is considered the optimum for a one
+ *                                column text.
+ *     text_alignment & h_align & "left" &
+ *                                How is the text aligned in the label. $
+ * @end{table}
+ * @end{tag}{name="label"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_label::tbuilder_label(const config& cfg)
+	: tbuilder_control(cfg)
+	, wrap(cfg["wrap"].to_bool())
+	, characters_per_line(cfg["characters_per_line"])
+	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
+{
+}
+
+twidget* tbuilder_label::build() const
+{
+	tlabel* label = new tlabel();
+
+	init_control(label);
+
+	label->set_can_wrap(wrap);
+	label->set_characters_per_line(characters_per_line);
+	label->set_text_alignment(text_alignment);
+
+	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
+			  << definition << "'.\n";
+
+	return label;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

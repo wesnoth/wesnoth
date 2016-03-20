@@ -17,10 +17,12 @@
 #include "gui/widgets/helper.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/lib/types/point.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
-
+#include "formula/callable.hpp"
 #include "formula/string_utils.hpp"
+#include "tstring.hpp"
 
 #include <SDL_ttf.h>
 

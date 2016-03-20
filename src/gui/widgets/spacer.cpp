@@ -16,8 +16,6 @@
 
 #include "gui/widgets/spacer.hpp"
 
-#include "gui/auxiliary/widget_definition/spacer.hpp"
-#include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 
@@ -25,6 +23,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(spacer)
 
@@ -68,5 +68,102 @@ const std::string& tspacer::get_control_type() const
 	static const std::string type = "spacer";
 	return type;
 }
+
+// }---------- DEFINITION ---------{
+
+tspacer_definition::tspacer_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing spacer " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_spacer
+ *
+ * == Spacer ==
+ *
+ * @macro = spacer_description
+ *
+ * A spacer has no states so nothing to load.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="spacer_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @end{tag}{name="spacer_definition"}
+ * @end{parent}{name="gui/"}
+ */
+tspacer_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{spacer_description}
+ *
+ *        A spacer is a dummy item to either fill in a widget since no empty
+ *        items are allowed or to reserve a fixed space.
+ * @end{macro}
+ */
+
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_spacer
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="spacer"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == Spacer ==
+ *
+ * @macro = spacer_description
+ *
+ * If either the width or the height is non-zero the spacer functions as a
+ * fixed size spacer.
+ *
+ * @begin{table}{config}
+ *     width & f_unsigned & 0 &          The width of the spacer. $
+ *     height & f_unsigned & 0 &         The height of the spacer. $
+ * @end{table}
+ *
+ * The variable available are the same as for the window resolution see
+ * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
+ * items.
+ * @end{tag}{name="spacer"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_spacer::tbuilder_spacer(const config& cfg)
+	: tbuilder_control(cfg), width_(cfg["width"]), height_(cfg["height"])
+{
+}
+
+twidget* tbuilder_spacer::build() const
+{
+	tspacer* widget = new tspacer();
+
+	init_control(widget);
+
+	const game_logic::map_formula_callable& size = get_screen_size_variables();
+
+	const unsigned width = width_(size);
+	const unsigned height = height_(size);
+
+	if(width || height) {
+		widget->set_best_size(tpoint(width, height));
+	}
+
+	DBG_GUI_G << "Window builder: placed spacer '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

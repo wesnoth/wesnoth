@@ -21,6 +21,8 @@
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 namespace implementation
 {
 struct tbuilder_viewport;
@@ -96,6 +98,26 @@ private:
 
 	bool owns_widget_;
 };
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_viewport : public tbuilder_widget
+{
+	explicit tbuilder_viewport(const config& cfg);
+
+	twidget* build() const;
+
+	twidget* build(const treplacements& replacements) const;
+
+	tbuilder_widget_ptr widget;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -18,8 +18,6 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/timer.hpp"
-#include "gui/auxiliary/widget_definition/repeating_button.hpp"
-#include "gui/auxiliary/window_builder/repeating_button.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -32,6 +30,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(repeating_button)
 
@@ -167,5 +167,102 @@ void trepeating_button::signal_handler_left_button_up(const event::tevent event,
 	}
 	handled = true;
 }
+
+// }---------- DEFINITION ---------{
+
+trepeating_button_definition::trepeating_button_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing repeating button " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_repeating_button
+ *
+ * == Repeating button ==
+ *
+ * @macro = repeating_button_description
+ *
+ * The following states exist:
+ * * state_enabled, the repeating_button is enabled.
+ * * state_disabled, the repeating_button is disabled.
+ * * state_pressed, the left mouse repeating_button is down.
+ * * state_focused, the mouse is over the repeating_button.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="repeating_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_pressed"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="repeating_button_definition"}
+ * @end{parent}{name="gui/"}
+ */
+trepeating_button_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
+	// Note the order should be the same as the enum tstate in
+	// repeating_button.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_pressed")));
+	state.push_back(tstate_definition(cfg.child("state_focused")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{repeating_button_description}
+ *
+ *        A repeating_button is a control that can be pushed down and repeat a
+ *        certain action. Once the button is down every x milliseconds it is
+ *        down a new down event is triggered.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_repeating_button
+ *
+ * == Repeating button ==
+ *
+ * @macro = repeating_button_description
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="repeating_button"}{min=0}{max=-1}{super="gui/window/resolution/grid/row/column/button"}
+ * @end{tag}{name="repeating_button"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_repeating_button::tbuilder_repeating_button(const config& cfg)
+	: tbuilder_control(cfg)
+{
+}
+
+twidget* tbuilder_repeating_button::build() const
+{
+	trepeating_button* widget = new trepeating_button();
+
+	init_control(widget);
+
+	DBG_GUI_G << "Window builder: placed repeating button '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

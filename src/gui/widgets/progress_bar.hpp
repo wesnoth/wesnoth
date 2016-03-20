@@ -17,8 +17,13 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 class tprogress_bar : public tcontrol
 {
@@ -69,6 +74,37 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tprogress_bar_definition : public tcontrol_definition
+{
+	explicit tprogress_bar_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_progress_bar : public tbuilder_control
+{
+
+	explicit tbuilder_progress_bar(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -17,8 +17,13 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 class tlabel;
 class tspacer;
@@ -93,6 +98,41 @@ private:
 
 	void signal_handler_left_button_down(const event::tevent event);
 };
+
+// }---------- DEFINITION ---------{
+
+struct tscroll_label_definition : public tcontrol_definition
+{
+	explicit tscroll_label_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_scroll_label : public tbuilder_control
+{
+	explicit tbuilder_scroll_label(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

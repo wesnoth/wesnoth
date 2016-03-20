@@ -20,11 +20,12 @@
 #ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
-#include "gui/auxiliary/widget_definition/window.hpp"
-
 #include "utils/foreach.hpp"
-
 #include "utils/boost_function_guarded.hpp"
+#include "config.hpp"
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+#include "tstring.hpp"
 
 #include <string>
 #include <vector>

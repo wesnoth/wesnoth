@@ -17,16 +17,18 @@
 #include "gui/widgets/multi_page.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/widget_definition/multi_page.hpp"
-#include "gui/auxiliary/window_builder/multi_page.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
+
+#include "gettext.hpp"
 
 #include <boost/bind.hpp>
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(multi_page)
 tmulti_page::tmulti_page()
@@ -175,5 +177,156 @@ void tmulti_page::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
+
+// }---------- DEFINITION ---------{
+
+tmulti_page_definition::tmulti_page_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing multipage " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_multi_page
+ *
+ * == Multi page ==
+ *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="multi_page_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @macro = multi_page_description
+ *
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{table}{config}
+ *     grid & grid & &                    A grid containing the widgets for main
+ *                                     widget. $
+ * @end{table}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="multi_page_definition"}
+ * @end{parent}{name="gui/"}
+ * A multipage has no states.
+ */
+tmulti_page_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid(NULL)
+{
+	const config& child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(child);
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{multi_page_description}
+ *
+ *        A multi page is a control that contains several 'pages' of which
+ *        only one is visible. The pages can contain the same widgets containing
+ *        the same 'kind' of data or look completely different.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_multi_page
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="multi_page"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == Multi page ==
+ *
+ * @macro = multi_page_description
+ *
+ * List with the multi page specific variables:
+ * @begin{table}{config}
+ *     page_definition & section & &   This defines how a multi page item
+ *                                     looks. It must contain the grid
+ *                                     definition for at least one page. $
+ *
+ *     page_data & section & [] &      A grid alike section which stores the
+ *                                     initial data for the multi page. Every
+ *                                     row must have the same number of columns
+ *                                     as the 'page_definition'. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar.
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar.
+ * @end{table}
+ * @begin{tag}{name="page_definition"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="page_definition"}
+ * @begin{tag}{name="page_data"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="page_data"}
+ * @end{tag}{name="multi_page"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
+	: implementation::tbuilder_control(cfg), builder(NULL), data()
+{
+	const config& page = cfg.child("page_definition");
+
+	VALIDATE(page, _("No page defined."));
+	builder = new tbuilder_grid(page);
+	assert(builder);
+
+	/** @todo This part is untested. */
+	const config& d = cfg.child("page_data");
+	if(!d) {
+		return;
+	}
+
+	FOREACH(const AUTO & row, d.child_range("row"))
+	{
+		unsigned col = 0;
+
+		FOREACH(const AUTO & column, row.child_range("column"))
+		{
+			data.push_back(string_map());
+			FOREACH(const AUTO & i, column.attribute_range())
+			{
+				data.back()[i.first] = i.second;
+			}
+			++col;
+		}
+
+		VALIDATE(col == builder->cols,
+				 _("'list_data' must have "
+				   "the same number of columns as the 'list_definition'."));
+	}
+}
+
+twidget* tbuilder_multi_page::build() const
+{
+	tmulti_page* widget = new tmulti_page();
+
+	init_control(widget);
+
+	widget->set_page_builder(builder);
+
+	DBG_GUI_G << "Window builder: placed multi_page '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	boost::intrusive_ptr<const tmulti_page_definition::tresolution>
+	conf = boost::
+			dynamic_pointer_cast<const tmulti_page_definition::tresolution>(
+					widget->config());
+	assert(conf);
+
+	widget->init_grid(conf->grid);
+
+	widget->finalize(data);
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

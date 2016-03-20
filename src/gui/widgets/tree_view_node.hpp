@@ -15,12 +15,17 @@
 #ifndef GUI_WIDGETS_TREE_VIEW_NODE_HPP_INCLUDED
 #define GUI_WIDGETS_TREE_VIEW_NODE_HPP_INCLUDED
 
-#include "gui/auxiliary/window_builder/tree_view.hpp"
+#include "gui/widgets/widget.hpp"
+#include "gui/widgets/grid.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
 namespace gui2
 {
+
+namespace implementation {
+	struct ttree_node;
+}
 
 class tselectable_;
 class ttree_view;
@@ -31,7 +36,7 @@ class ttree_view_node : public twidget
 	friend class ttree_view;
 
 public:
-	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
+	typedef implementation::ttree_node tnode_definition;
 	ttree_view_node(
 			const std::string& id,
 			const std::vector<tnode_definition>& node_definitions,

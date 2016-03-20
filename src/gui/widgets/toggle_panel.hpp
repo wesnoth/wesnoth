@@ -21,6 +21,8 @@
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 /**
  * Class for a toggle button.
  *
@@ -183,6 +185,48 @@ private:
 	void signal_handler_left_button_double_click(const event::tevent event,
 												 bool& handled);
 };
+
+// }---------- DEFINITION ---------{
+
+struct ttoggle_panel_definition : public tcontrol_definition
+{
+	explicit ttoggle_panel_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		unsigned top_border;
+		unsigned bottom_border;
+
+		unsigned left_border;
+		unsigned right_border;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_toggle_panel : public tbuilder_control
+{
+	explicit tbuilder_toggle_panel(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tbuilder_grid_ptr grid;
+
+private:
+	std::string retval_id_;
+	int retval_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

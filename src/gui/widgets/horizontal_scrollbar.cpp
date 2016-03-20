@@ -18,13 +18,18 @@
 
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/auxiliary/widget_definition/horizontal_scrollbar.hpp"
-#include "gui/auxiliary/window_builder/horizontal_scrollbar.hpp"
+
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
+#include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(horizontal_scrollbar)
 
@@ -107,5 +112,132 @@ const std::string& thorizontal_scrollbar::get_control_type() const
 	static const std::string type = "horizontal_scrollbar";
 	return type;
 }
+
+// }---------- DEFINITION ---------{
+
+thorizontal_scrollbar_definition::thorizontal_scrollbar_definition(
+		const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_vertical_scrollbar
+ *
+ * == Horizontal scrollbar ==
+ *
+ * @macro = horizontal_scrollbar_description
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="horizontal_scrollbar_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * The resolution for a horizontal scrollbar also contains the following keys:
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{table}{config}
+ *     minimum_positioner_length & unsigned & &
+ *                                     The minimum size the positioner is
+ *                                     allowed to be. The engine needs to know
+ *                                     this in order to calculate the best size
+ *                                     for the positioner. $
+ *     maximum_positioner_length & unsigned & 0 &
+ *                                     The maximum size the positioner is
+ *                                     allowed to be. If minimum and maximum are
+ *                                     the same value the positioner is fixed
+ *                                     size. If the maximum is 0 (and the
+ *                                     minimum not) there's no maximum. $
+ *     left_offset & unsigned & 0 &      The number of pixels at the left which
+ *                                     can't be used by the positioner. $
+ *     right_offset & unsigned & 0 &     The number of pixels at the right which
+ *                                     can't be used by the positioner. $
+ * @end{table}
+ *
+ * The following states exist:
+ * * state_enabled, the horizontal scrollbar is enabled.
+ * * state_disabled, the horizontal scrollbar is disabled.
+ * * state_pressed, the left mouse button is down on the positioner of the
+ *   horizontal scrollbar.
+ * * state_focused, the mouse is over the positioner of the horizontal
+ *   scrollbar.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_pressed"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="horizontal_scrollbar_definition"}
+ * @end{parent}{name="gui/"}
+ */
+thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, minimum_positioner_length(cfg["minimum_positioner_length"])
+	, maximum_positioner_length(cfg["maximum_positioner_length"])
+	, left_offset(cfg["left_offset"])
+	, right_offset(cfg["right_offset"])
+{
+	VALIDATE(minimum_positioner_length,
+			 missing_mandatory_wml_key("resolution",
+									   "minimum_positioner_length"));
+
+	// Note the order should be the same as the enum tstate is scrollbar.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_pressed")));
+	state.push_back(tstate_definition(cfg.child("state_focused")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{horizontal_scrollbar_description}
+ *
+ *        A horizontal scrollbar is a widget that shows a horizontal scrollbar.
+ *        This widget is most of the time used in a container to control the
+ *        scrolling of its contents.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 2_horizontal_scrollbar
+ *
+ * == Horizontal scrollbar ==
+ *
+ * @macro = horizontal_scrollbar_description
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="horizontal_scrollbar"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @end{tag}{name="horizontal_scrollbar"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ * A horizontal scrollbar has no special fields.
+ */
+
+namespace implementation
+{
+
+tbuilder_horizontal_scrollbar::tbuilder_horizontal_scrollbar(const config& cfg)
+	: tbuilder_control(cfg)
+{
+}
+
+twidget* tbuilder_horizontal_scrollbar::build() const
+{
+	thorizontal_scrollbar* widget = new thorizontal_scrollbar();
+
+	init_control(widget);
+
+	DBG_GUI_G << "Window builder:"
+			  << " placed horizontal scrollbar '" << id << "' with definition '"
+			  << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

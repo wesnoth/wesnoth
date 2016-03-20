@@ -16,10 +16,23 @@
 #define GUI_WIDGETS_TREE_VIEW_HPP_INCLUDED
 
 #include "gui/widgets/scrollbar_container.hpp"
-#include "gui/auxiliary/window_builder/tree_view.hpp"
 
 namespace gui2
 {
+
+namespace implementation {
+	struct tbuilder_tree_view;
+	struct ttree_node
+	{
+		explicit ttree_node(const config& cfg);
+
+		std::string id;
+		bool unfolded;
+		tbuilder_grid_ptr builder;
+	};
+}
+
+// ------------ WIDGET -----------{
 
 class ttree_view_node;
 
@@ -29,7 +42,7 @@ class ttree_view : public tscrollbar_container
 	friend class ttree_view_node;
 
 public:
-	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
+	typedef implementation::ttree_node tnode_definition;
 
 	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
 
@@ -152,6 +165,59 @@ private:
 	template<ttree_view_node* (ttree_view_node::*func) ()>
 	bool handle_up_down_arrow();
 };
+
+// }---------- DEFINITION ---------{
+
+struct ttree_view_definition : public tcontrol_definition
+{
+
+	explicit ttree_view_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_tree_view : public tbuilder_control
+{
+	explicit tbuilder_tree_view(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	unsigned indention_step_size;
+
+	/**
+	 * The types of nodes in the tree view.
+	 *
+	 * Since we expect the amount of nodes to remain low it's stored in a
+	 * vector and not in a map.
+	 */
+	std::vector<ttree_node> nodes;
+
+	/*
+	 * NOTE this class doesn't have a data section, so it can only be filled
+	 * with data by the engine. I think this poses no limit on the usage since
+	 * I don't foresee that somebody wants to pre-fill a tree view. If the need
+	 * arises the data part can be added.
+	 */
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

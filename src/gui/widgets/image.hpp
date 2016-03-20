@@ -17,8 +17,13 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /** An image. */
 class timage : public tcontrol
@@ -91,6 +96,36 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct timage_definition : public tcontrol_definition
+{
+	explicit timage_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_image : public tbuilder_control
+{
+	explicit tbuilder_image(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

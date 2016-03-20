@@ -17,8 +17,13 @@
 
 #include "gui/widgets/scrollbar.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /** A horizontal scrollbar. */
 class thorizontal_scrollbar : public tscrollbar_
@@ -66,6 +71,42 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct thorizontal_scrollbar_definition : public tcontrol_definition
+{
+	explicit thorizontal_scrollbar_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		unsigned minimum_positioner_length;
+		unsigned maximum_positioner_length;
+
+		unsigned left_offset;
+		unsigned right_offset;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_horizontal_scrollbar : public tbuilder_control
+{
+	explicit tbuilder_horizontal_scrollbar(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -16,8 +16,6 @@
 
 #include "gui/widgets/progress_bar.hpp"
 
-#include "gui/auxiliary/widget_definition/progress_bar.hpp"
-#include "gui/auxiliary/window_builder/progress_bar.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
@@ -30,6 +28,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(progress_bar)
 
@@ -74,5 +74,91 @@ const std::string& tprogress_bar::get_control_type() const
 	static const std::string type = "progress_bar";
 	return type;
 }
+
+// }---------- DEFINITION ---------{
+
+tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing progress bar " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_progress_bar
+ *
+ * == Progress bar ==
+ *
+ * @macro = progress_bar_description
+ *
+ * The definition of a progress bar. This object shows the progress of a certain
+ * action, or the value state of a certain item.
+ *
+ * The following states exist:
+ * * state_enabled, the progress bar is enabled.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="progress_bar_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="progress_bar_definition"}
+ * @end{parent}{name="gui/"}
+ */
+tprogress_bar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
+	// Note the order should be the same as the enum tstate in progress_bar.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{progress_bar_description}
+ * A progress bar shows the progress of a certain object.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_progress_bar
+ *
+ * == Image ==
+ *
+ * @macro = progress_bar_description
+ *
+ * A progress bar has no extra fields.
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="progress_bar"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @end{tag}{name="progress_bar"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_progress_bar::tbuilder_progress_bar(const config& cfg)
+	: tbuilder_control(cfg)
+{
+}
+
+twidget* tbuilder_progress_bar::build() const
+{
+	tprogress_bar* widget = new tprogress_bar();
+
+	init_control(widget);
+
+	DBG_GUI_G << "Window builder: placed progress bar '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

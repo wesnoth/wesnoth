@@ -17,8 +17,13 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * A widget to draw upon.
@@ -80,6 +85,44 @@ private:
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
+// }---------- DEFINITION ---------{
+
+struct tdrawing_definition : public tcontrol_definition
+{
+	explicit tdrawing_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_drawing : public tbuilder_control
+{
+	explicit tbuilder_drawing(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	/** The width of the widget. */
+	tformula<unsigned> width;
+
+	/** The height of the widget. */
+	tformula<unsigned> height;
+
+	/** Config containing what to draw on the widgets canvas. */
+	config draw;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

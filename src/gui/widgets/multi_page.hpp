@@ -18,8 +18,13 @@
 
 #include "gui/widgets/container.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -165,6 +170,48 @@ private:
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tmulti_page_definition : public tcontrol_definition
+{
+	explicit tmulti_page_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_multi_page : public tbuilder_control
+{
+	explicit tbuilder_multi_page(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tbuilder_grid_ptr builder;
+
+	/**
+	 * Multi page data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<std::map<std::string, t_string> > data;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -14,7 +14,6 @@
 #ifndef GUI_WIDGETS_UNIT_PREVIEW_PANE_HPP_INCLUDED
 #define GUI_WIDGETS_UNIT_PREVIEW_PANE_HPP_INCLUDED
 
-#include "gui/auxiliary/widget_definition/unit_preview_pane.hpp"
 #include "gui/widgets/container.hpp"
 
 #include <string>
@@ -23,6 +22,8 @@ class unit_type;
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 class tbutton;
 class timage;
@@ -97,6 +98,39 @@ private:
 	virtual void set_self_active(const bool active) OVERRIDE;
 
 };
+
+// }---------- DEFINITION ---------{
+
+struct tunit_preview_pane_definition : public tcontrol_definition
+{
+
+	explicit tunit_preview_pane_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_unit_preview_pane : public tbuilder_control
+{
+	explicit tbuilder_unit_preview_pane(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -17,13 +17,14 @@
 #include "gui/widgets/toggle_panel.hpp"
 
 #include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/toggle_panel.hpp"
-#include "gui/auxiliary/window_builder/toggle_panel.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/auxiliary/window_builder/helper.hpp"
+#include "gettext.hpp"
 #include "sound.hpp"
 #include "utils/foreach.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
 
@@ -32,6 +33,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(toggle_panel)
 
@@ -295,5 +298,145 @@ void ttoggle_panel::signal_handler_left_button_double_click(
 	}
 	handled = true;
 }
+
+// }---------- DEFINITION ---------{
+
+ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing toggle panel " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_toggle_panel
+ *
+ * == Toggle panel ==
+ *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="toggle_panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * The definition of a toggle panel. A toggle panel is like a toggle button, but
+ * instead of being a button it's a panel. This means it can hold multiple child
+ * items.
+ *
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
+ * The resolution for a toggle panel also contains the following keys:
+ * @begin{table}{config}
+ *     top_border & unsigned & 0 &     The size which isn't used for the client
+ *                                   area. $
+ *     bottom_border & unsigned & 0 &  The size which isn't used for the client
+ *                                   area. $
+ *     left_border & unsigned & 0 &    The size which isn't used for the client
+ *                                   area. $
+ *     right_border & unsigned & 0 &   The size which isn't used for the client
+ *                                   area. $
+ * @end{table}
+ *
+ * The following states exist:
+ * * state_enabled, the panel is enabled and not selected.
+ * * state_disabled, the panel is disabled and not selected.
+ * * state_focused, the mouse is over the panel and not selected.
+ *
+ * * state_enabled_selected, the panel is enabled and selected.
+ * * state_disabled_selected, the panel is disabled and selected.
+ * * state_focused_selected, the mouse is over the panel and selected.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
+ * @begin{tag}{name="state_enabled_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled_selected"}
+ * @begin{tag}{name="state_disabled_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled_selected"}
+ * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused_selected"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="toggle_panel_definition"}
+ * @end{parent}{name="gui/"}
+ */
+ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, top_border(cfg["top_border"])
+	, bottom_border(cfg["bottom_border"])
+	, left_border(cfg["left_border"])
+	, right_border(cfg["right_border"])
+{
+	// Note the order should be the same as the enum tstate in toggle_panel.hpp.
+	FOREACH(const AUTO& c, cfg.child_range("state"))
+	{
+		state.push_back(tstate_definition(c.child("enabled")));
+		state.push_back(tstate_definition(c.child("disabled")));
+		state.push_back(tstate_definition(c.child("focused")));
+	}
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_toggle_panel
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="toggle_panel"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == Toggle panel ==
+ *
+ * A toggle panel is an item which can hold other items. The difference between
+ * a grid and a panel is that it's possible to define how a panel looks. A grid
+ * in an invisible container to just hold the items. The toggle panel is a
+ * combination of the panel and a toggle button, it allows a toggle button with
+ * its own grid.
+ *
+ * @begin{table}{config}
+ *     grid & grid & &                 Defines the grid with the widgets to
+ *                                     place on the panel. $
+ *     return_value_id & string & "" & The return value id, see
+ *                                     [[GUIToolkitWML#Button]] for more
+ *                                     information. $
+ *     return_value & int & 0 &        The return value, see
+ *                                     [[GUIToolkitWML#Button]] for more
+ *                                     information. $
+ * @end{table}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @end{tag}{name="toggle_panel"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
+	: tbuilder_control(cfg)
+	, grid(NULL)
+	, retval_id_(cfg["return_value_id"])
+	, retval_(cfg["return_value"])
+{
+	const config& c = cfg.child("grid");
+
+	VALIDATE(c, _("No grid defined."));
+
+	grid = new tbuilder_grid(c);
+}
+
+twidget* tbuilder_toggle_panel::build() const
+{
+	ttoggle_panel* widget = new ttoggle_panel();
+
+	init_control(widget);
+
+	widget->set_retval(get_retval(retval_id_, retval_, id));
+
+	DBG_GUI_G << "Window builder: placed toggle panel '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	widget->init_grid(grid);
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

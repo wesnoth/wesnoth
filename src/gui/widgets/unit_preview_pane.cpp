@@ -16,8 +16,6 @@
 #include "gui/widgets/unit_preview_pane.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/widget_definition/unit_preview_pane.hpp"
-#include "gui/auxiliary/window_builder/unit_preview_pane.hpp"
 
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/button.hpp"
@@ -42,6 +40,8 @@
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(unit_preview_pane)
 
@@ -227,5 +227,62 @@ void tunit_preview_pane::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
+
+// }---------- DEFINITION ---------{
+
+tunit_preview_pane_definition::tunit_preview_pane_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing unit preview pane " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+tunit_preview_pane_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid()
+{
+	state.push_back(tstate_definition(cfg.child("background")));
+	state.push_back(tstate_definition(cfg.child("foreground")));
+
+	const config& child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(child);
+}
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+tbuilder_unit_preview_pane::tbuilder_unit_preview_pane(const config& cfg)
+	: tbuilder_control(cfg)
+{
+}
+
+twidget* tbuilder_unit_preview_pane::build() const
+{
+	tunit_preview_pane* widget = new tunit_preview_pane();
+
+	init_control(widget);
+
+	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	boost::intrusive_ptr<const tunit_preview_pane_definition::tresolution> conf
+		= boost::dynamic_pointer_cast<
+			const tunit_preview_pane_definition::tresolution>(widget->config());
+
+	assert(conf);
+
+	widget->init_grid(conf->grid);
+	widget->finalize_setup();
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

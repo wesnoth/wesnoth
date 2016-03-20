@@ -17,8 +17,13 @@
 
 #include "gui/widgets/container.hpp"
 
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * Visible container to hold multiple widgets.
@@ -68,6 +73,44 @@ private:
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tpanel_definition : public tcontrol_definition
+{
+	explicit tpanel_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		unsigned top_border;
+		unsigned bottom_border;
+
+		unsigned left_border;
+		unsigned right_border;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_panel : public tbuilder_control
+{
+	explicit tbuilder_panel(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tbuilder_grid_ptr grid;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

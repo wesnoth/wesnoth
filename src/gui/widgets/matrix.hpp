@@ -17,9 +17,15 @@
 
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/pane.hpp"
+#include "gui/widgets/scrollbar_container.hpp"
+
+#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -223,6 +229,50 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tmatrix_definition : public tcontrol_definition
+{
+
+	explicit tmatrix_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr content;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_matrix : public tbuilder_control
+{
+	explicit tbuilder_matrix(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr builder_top;
+	tbuilder_grid_ptr builder_bottom;
+
+	tbuilder_grid_ptr builder_left;
+	tbuilder_grid_ptr builder_right;
+
+	tbuilder_widget_ptr builder_main;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 
