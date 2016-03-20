@@ -53,7 +53,7 @@
 
 ; Translations
   !insertmacro		MUI_LANGUAGE	"Czech"
-  LicenseLangString	MUILicense		${LANG_CZECH}			"packaging\windows\gpl-3.cs.txt"
+  LicenseLangString	MUILicense		${LANG_CZECH}			"COPYING"
   LangString		LCode			${LANG_CZECH}			"cs"
   LangString		LEditor			${LANG_CZECH}			"Editor map"
   LangString		LManual			${LANG_CZECH}			"Manuál uživatele"
@@ -69,7 +69,7 @@
   LangString		LUserdata		${LANG_FINNISH}			"Käyttäjän tiedot"
 
   !insertmacro		MUI_LANGUAGE	"French"
-  LicenseLangString	MUILicense		${LANG_FRENCH}			"packaging\windows\gpl-3.fr.txt"
+  LicenseLangString	MUILicense		${LANG_FRENCH}			"COPYING"
   LangString		LCode			${LANG_FRENCH}			"fr"
   LangString		LEditor			${LANG_FRENCH}			"Éditeur de cartes"
   LangString		LManual			${LANG_FRENCH}			"Manuel utilisateur"
@@ -93,7 +93,7 @@
   LangString		LUserdata		${LANG_GERMAN}			"Benutzerdaten"
 
   !insertmacro		MUI_LANGUAGE	"Hungarian"
-  LicenseLangString	MUILicense		${LANG_HUNGARIAN}		"packaging\windows\gpl-3.hu.txt"
+  LicenseLangString	MUILicense		${LANG_HUNGARIAN}		"COPYING"
   LangString		LCode			${LANG_HUNGARIAN}		"hu"
   LangString		LEditor			${LANG_HUNGARIAN}		"Pályaszerkesztő"
   LangString		LManual			${LANG_HUNGARIAN}		"Felhasználói Kézikönyv"
