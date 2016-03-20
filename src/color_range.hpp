@@ -28,7 +28,7 @@
 #include <string>
 #include <vector>
 
-#include "SDL_types.h"
+#include <SDL_types.h>
 
 /* Convert comma separated string into rgb values.
  * Return false and empty result on error.

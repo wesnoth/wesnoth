@@ -22,7 +22,7 @@
 #include "game_errors.hpp"
 #include "global.hpp"
 
-#include "SDL_timer.h"
+#include <SDL_timer.h>
 
 #include "log.hpp"
 

@@ -13,7 +13,7 @@
 */
 
 #include "exploder_composer.hpp"
-#include "SDL_image.h"
+#include <SDL_image.h>
 
 #include <iostream>
 

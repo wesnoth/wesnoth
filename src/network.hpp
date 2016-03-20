@@ -23,7 +23,7 @@
 class config;
 
 #include "exceptions.hpp"
-#include "SDL_net.h"
+#include <SDL_net.h>
 
 #include <string>
 #include <vector>

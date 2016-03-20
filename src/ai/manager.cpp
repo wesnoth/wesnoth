@@ -56,7 +56,7 @@
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, allocator, etc
 
-#include "SDL_timer.h"
+#include <SDL_timer.h>
 
 namespace ai {
 

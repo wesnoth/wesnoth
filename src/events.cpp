@@ -26,7 +26,7 @@
 #include "desktop/windows_tray_notification.hpp"
 #endif
 
-#include "SDL.h"
+#include <SDL.h>
 
 #include <algorithm>
 #include <cassert>

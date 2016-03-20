@@ -40,7 +40,7 @@
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
 
-#include "SDL_image.h"
+#include <SDL_image.h>
 
 #include <boost/bind.hpp>
 #include <boost/functional/hash.hpp>

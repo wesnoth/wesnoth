@@ -18,7 +18,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
-#include "SDL_image.h"
+#include <SDL_image.h>
 
 #include <boost/foreach.hpp>
 

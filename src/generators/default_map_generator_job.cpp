@@ -31,7 +31,7 @@
 #include "util.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
-#include "SDL.h"
+#include <SDL.h>
 
 #include <boost/foreach.hpp>
 #include "seed_rng.hpp"

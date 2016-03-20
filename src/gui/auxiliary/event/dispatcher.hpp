@@ -20,7 +20,7 @@
 #include "sdl/compat.hpp"
 #include "serialization/unicode_types.hpp"
 
-#include "SDL_events.h"
+#include <SDL_events.h>
 
 #include "utils/boost_function_guarded.hpp"
 #include <boost/mpl/int.hpp>

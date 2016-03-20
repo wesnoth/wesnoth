@@ -69,7 +69,7 @@
 #include <iterator>                     // for back_insert_iterator, etc
 #include <new>                          // for operator new
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include "SDL_video.h"                  // for SDL_Color
+#include <SDL_video.h>                  // for SDL_Color
 
 
 namespace t_translation { struct t_terrain; }

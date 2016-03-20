@@ -38,7 +38,7 @@
 
 #include <numeric>
 
-#include "SDL.h"
+#include <SDL.h>
 
 static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 #define DBG_AI_TESTING_AI_DEFAULT LOG_STREAM(debug, log_ai_testing_ai_default)

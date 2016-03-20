@@ -15,7 +15,7 @@
 #include "help_browser.hpp"
 #include <stddef.h>                     // for NULL
 #include <iostream>                     // for operator<<, basic_ostream, etc
-#include "SDL_mouse.h"                  // for SDL_GetMouseState, etc
+#include <SDL_mouse.h>                  // for SDL_GetMouseState, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::HYPERLINK, etc
 #include "font.hpp"                     // for relative_size
 #include "gettext.hpp"                  // for _

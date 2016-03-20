@@ -32,7 +32,7 @@
 
 #include "key.hpp"
 
-#include "SDL.h"
+#include <SDL.h>
 
 
 static lg::log_domain log_config("config");

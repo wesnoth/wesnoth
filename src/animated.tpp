@@ -21,7 +21,7 @@
 
 #include <climits>
 
-#include "SDL.h"
+#include <SDL.h>
 #include "animated.hpp"
 
 namespace {

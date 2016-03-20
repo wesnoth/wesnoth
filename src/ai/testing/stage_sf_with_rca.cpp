@@ -37,7 +37,7 @@
 #include "unit.hpp"
 
 #include <boost/bind.hpp>
-#include "SDL.h"
+#include <SDL.h>
 
 namespace ai {
 

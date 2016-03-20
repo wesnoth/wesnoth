@@ -15,7 +15,7 @@
 
 #include "sdl/image.hpp"
 
-#include "SDL_image.h"
+#include <SDL_image.h>
 #include "sdl/exception.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"

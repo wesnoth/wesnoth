@@ -20,7 +20,7 @@
 #include <map>
 #include <vector>
 
-#include "SDL.h"
+#include <SDL.h>
 #include "sdl/utils.hpp"
 #include "scrollarea.hpp"
 

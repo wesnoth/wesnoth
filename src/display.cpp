@@ -47,7 +47,7 @@
 #include "whiteboard/manager.hpp"
 #include "show_dialog.hpp"
 
-#include "SDL_image.h"
+#include <SDL_image.h>
 
 #include <boost/foreach.hpp>
 

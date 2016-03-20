@@ -14,7 +14,7 @@
 #ifndef SLIDER_HPP_INCLUDED
 #define SLIDER_HPP_INCLUDED
 
-#include "SDL.h"
+#include <SDL.h>
 
 #include "sdl/utils.hpp"
 

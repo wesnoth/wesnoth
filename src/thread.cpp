@@ -19,9 +19,9 @@
 #include "log.hpp"
 #include "thread.hpp"
 
-#include "SDL_mutex.h"
-#include "SDL_thread.h"
-#include "SDL_version.h"
+#include <SDL_mutex.h>
+#include <SDL_thread.h>
+#include <SDL_version.h>
 
 #define ERR_G LOG_STREAM(err, lg::general())
 

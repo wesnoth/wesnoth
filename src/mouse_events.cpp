@@ -62,8 +62,8 @@
 #include <new>                          // for bad_alloc
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, operator<<, etc
-#include "SDL_mouse.h"                  // for SDL_GetMouseState
-#include "SDL_video.h"                  // for SDL_Color
+#include <SDL_mouse.h>                  // for SDL_GetMouseState
+#include <SDL_video.h>                  // for SDL_Color
 
 namespace gui { class slider; }
 

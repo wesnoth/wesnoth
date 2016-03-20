@@ -22,7 +22,7 @@
 
 #include "formula_string_utils.hpp"
 
-#include "SDL_ttf.h"
+#include <SDL_ttf.h>
 
 namespace gui2
 {

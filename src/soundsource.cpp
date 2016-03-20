@@ -21,7 +21,7 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 
-#include "SDL.h" // Travis doesn't like this, although it works on my machine -> '#include "SDL_sound.h"
+#include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
 
 namespace soundsource {
 

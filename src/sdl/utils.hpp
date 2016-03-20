@@ -21,7 +21,7 @@
 #include "util.hpp"
 #include "sdl/compat.hpp"
 
-#include "SDL.h"
+#include <SDL.h>
 
 #include <cstdlib>
 #include <iosfwd>

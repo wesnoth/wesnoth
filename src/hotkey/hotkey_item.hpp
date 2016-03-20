@@ -16,8 +16,8 @@
 #ifndef HOTKEY_ITEM_HPP_INCLUDED
 #define HOTKEY_ITEM_HPP_INCLUDED
 
-#include "SDL_events.h"
-#include "SDL.h"
+#include <SDL_events.h>
+#include <SDL.h>
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
