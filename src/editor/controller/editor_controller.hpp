@@ -40,10 +40,6 @@ namespace font {
 struct floating_label_context;
 }
 
-namespace preferences {
-	struct display_manager;
-} // namespace preferences
-
 namespace editor {
 
 class editor_map;
@@ -235,7 +231,6 @@ class editor_controller : public controller_base,
 		boost::scoped_ptr<context_manager> context_manager_;
 	private:
 		boost::scoped_ptr<editor_toolkit> toolkit_;
-		boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 		tooltips::manager tooltip_manager_;
 		boost::scoped_ptr<font::floating_label_context> floating_label_manager_;
 

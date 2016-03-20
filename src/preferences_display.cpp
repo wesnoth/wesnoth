@@ -41,26 +41,6 @@
 
 namespace preferences {
 
-static display* disp = NULL;
-
-display_manager::display_manager(display* d)
-{
-	disp = d;
-
-	load_hotkeys();
-
-	set_grid(grid());
-	set_turbo(turbo());
-	set_turbo_speed(turbo_speed());
-	set_scroll_to_action(scroll_to_action());
-	set_color_cursors(preferences::get("color_cursors", false));
-}
-
-display_manager::~display_manager()
-{
-	disp = NULL;
-}
-
 void show_preferences_dialog(CVideo& video, const config& game_cfg, const DIALOG_OPEN_TO initial_view)
 {
 	gui2::tpreferences dlg(video, game_cfg);
@@ -87,8 +67,8 @@ void set_turbo(bool ison)
 {
 	_set_turbo(ison);
 
-	if(disp != NULL) {
-		disp->set_turbo(ison);
+	if(display::get_singleton()) {
+		display::get_singleton()->set_turbo(ison);
 	}
 }
 
@@ -96,8 +76,8 @@ void set_turbo_speed(double speed)
 {
 	save_turbo_speed(speed);
 
-	if(disp != NULL) {
-		disp->set_turbo_speed(speed);
+	if(display::get_singleton()) {
+		display::get_singleton()->set_turbo_speed(speed);
 	}
 }
 
@@ -110,8 +90,8 @@ void set_grid(bool ison)
 {
 	_set_grid(ison);
 
-	if(disp != NULL) {
-		disp->set_grid(ison);
+	if(display::get_singleton()) {
+		display::get_singleton()->set_grid(ison);
 	}
 }
 
@@ -124,15 +104,17 @@ void set_color_cursors(bool value)
 
 void set_idle_anim(bool ison) {
 	_set_idle_anim(ison);
-	if(disp != NULL) {
-		disp->set_idle_anim(ison);
+
+	if(display::get_singleton()) {
+		display::get_singleton()->set_idle_anim(ison);
 	}
 }
 
 void set_idle_anim_rate(int rate) {
 	_set_idle_anim_rate(rate);
-	if(disp != NULL) {
-		disp->set_idle_anim_rate(rate);
+
+	if(display::get_singleton()) {
+		display::get_singleton()->set_idle_anim_rate(rate);
 	}
 }
 

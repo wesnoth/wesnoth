@@ -27,12 +27,6 @@ namespace preferences {
 		VIEW_FRIENDS
 	};
 
-	struct display_manager
-	{
-		display_manager(display* disp);
-		~display_manager();
-	};
-
 	void set_scroll_to_action(bool ison);
 
 	void set_turbo(bool ison);

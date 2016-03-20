@@ -53,10 +53,6 @@ namespace game_events {
 	class wml_menu_item;
 } // namespace game_events
 
-namespace preferences {
-	struct display_manager;
-}
-
 namespace soundsource {
 	class manager;
 } // namespace soundsource
@@ -313,7 +309,6 @@ protected:
 	saved_game& saved_game_;
 
 	//managers
-	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
 
 	//whiteboard manager

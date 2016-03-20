@@ -72,7 +72,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(NULL)
-	, prefs_disp_manager_(NULL)
 	, tooltip_manager_(video)
 	, floating_label_manager_(NULL)
 	, help_manager_(NULL)
@@ -99,7 +98,6 @@ void editor_controller::init_gui()
 {
 	gui_->change_display_context(&context_manager_->get_map_context());
 	gui_->set_grid(preferences::grid());
-	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());

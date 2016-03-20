@@ -157,7 +157,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, gamestate_()
 	, level_()
 	, saved_game_(state_of_game)
-	, prefs_disp_manager_()
 	, tooltips_manager_()
 	, whiteboard_manager_()
 	, plugins_context_()
@@ -355,7 +354,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 void play_controller::init_managers()
 {
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
-	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
