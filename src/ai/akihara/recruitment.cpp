@@ -31,7 +31,7 @@
 #include "unit.hpp"
 #include "unit_display.hpp"
 #include "unit_map.hpp"
-#include "unit_types.hpp"
+//#include "unit_types.hpp" used in the below commented-out code
 #include "ai/composite/rca.hpp"
 #include "ai/default/ai.hpp"
 

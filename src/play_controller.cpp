@@ -61,7 +61,6 @@
 #include "tooltips.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
-#include "unit_types.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 

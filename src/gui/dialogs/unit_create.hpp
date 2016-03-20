@@ -19,12 +19,12 @@
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/text.hpp"
 #include "race.hpp"
-#include "unit_types.hpp"
 
 #include <string>
 #include <vector>
 
 class display;
+class unit_type;
 
 namespace gui2
 {

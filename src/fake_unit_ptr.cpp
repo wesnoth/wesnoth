@@ -17,7 +17,6 @@
 #include "fake_unit_manager.hpp"
 #include "unit.hpp"
 #include "unit_ptr.hpp"
-#include "unit_types.hpp"
 
 #include <boost/swap.hpp>
 

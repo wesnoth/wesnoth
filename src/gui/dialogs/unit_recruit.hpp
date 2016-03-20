@@ -16,7 +16,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "team.hpp"
-#include "unit_types.hpp"
+
+class unit_type;
 
 namespace gui2 {
 

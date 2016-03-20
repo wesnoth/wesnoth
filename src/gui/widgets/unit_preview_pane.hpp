@@ -16,9 +16,10 @@
 
 #include "gui/auxiliary/widget_definition/unit_preview_pane.hpp"
 #include "gui/widgets/container.hpp"
-#include "unit_types.hpp"
 
 #include <string>
+
+class unit_type;
 
 namespace gui2
 {

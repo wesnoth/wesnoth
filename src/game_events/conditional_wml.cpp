@@ -33,7 +33,6 @@
 #include "unit.hpp"
 #include "unit_filter.hpp"
 #include "unit_map.hpp"
-#include "unit_types.hpp"
 #include "util.hpp"
 #include "variable.hpp"
 

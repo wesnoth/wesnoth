@@ -28,9 +28,7 @@
 
 #include "editor/action/action.hpp"
 
-#include "unit_types.hpp"
 #include "unit.hpp"
-
 
 namespace editor {
 

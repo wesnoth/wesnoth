@@ -16,7 +16,6 @@
 #define INCL_FAKE_UNIT_HPP_
 
 #include "unit_ptr.hpp"
-#include "unit_types.hpp"
 
 class fake_unit_manager;
 

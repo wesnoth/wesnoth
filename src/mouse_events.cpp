@@ -49,7 +49,6 @@
 #include "unit.hpp"                     // for unit, intrusive_ptr_add_ref
 #include "unit_animation_component.hpp"
 #include "unit_ptr.hpp"                 // for unit_const_ptr
-#include "unit_types.hpp"    // for attack_type
 #include "whiteboard/manager.hpp"       // for manager, etc
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
 #include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc

@@ -36,7 +36,6 @@
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "pathfind/pathfind.hpp"
-#include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
 
