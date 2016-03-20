@@ -111,7 +111,7 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	, items_()
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
-	, placer_(tplacer_::build(tplacer_::vertical, 1))
+	, placer_(tplacer_::build(tplacer_::tgrow_direction::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			boost::bind(

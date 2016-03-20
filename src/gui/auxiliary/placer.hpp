@@ -25,6 +25,7 @@
 #define GUI_AUXILIARY_PLACER_HPP_INCLUDED
 
 #include "global.hpp"
+#include "make_enum.hpp"
 
 namespace gui2
 {
@@ -54,10 +55,10 @@ public:
 	/***** ***** Types. ***** *****/
 
 	/** The direction the placer should grow towards. */
-	enum tgrow_direction {
-		horizontal,
-		vertical
-	};
+	MAKE_ENUM(tgrow_direction,
+		(horizontal, "horizontal")
+		(vertical, "vertical")
+	)
 
 
 	/***** ***** Constructor, destructor, assignment. ***** *****/
@@ -118,15 +119,6 @@ public:
 	 */
 	virtual tpoint get_origin(const unsigned index) const = 0;
 };
-
-} // namespace gui2
-
-#include "utils/enumerate.hpp"
-
-namespace gui2
-{
-
-ENUM_DECLARE_STREAM_OPERATORS(::gui2::tplacer_::tgrow_direction)
 
 } // namespace gui2
 
