@@ -28,7 +28,6 @@
 #include <string>
 #include <vector>
 
-struct tportrait;
 class unit_ability_list;
 class unit_animation;
 
@@ -210,8 +209,6 @@ public:
 	bool hide_help() const;
 	bool do_not_list() const { return do_not_list_; }
 
-	const std::vector<tportrait>& portraits() const { return portraits_; }
-
 	const config &get_cfg() const { return cfg_; }
 	/// Returns a trimmed config suitable for use with units.
 	const config & get_cfg_for_units() const
@@ -293,9 +290,6 @@ private:
 	mutable std::vector<unit_animation> animations_;
 
 	BUILD_STATUS build_status_;
-
-	/** List with the portraits available for the unit. */
-	std::vector<tportrait> portraits_;
 };
 
 class unit_type_data

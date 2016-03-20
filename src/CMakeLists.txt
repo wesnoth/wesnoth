@@ -975,7 +975,6 @@ set(wesnoth-main_SRC
 	playsingle_controller.cpp
 	playturn.cpp
 	playturn_network_adapter.cpp
-	portrait.cpp
 	random_new.cpp
 	random_new_deterministic.cpp
 	random_new_synced.cpp

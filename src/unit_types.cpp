@@ -27,7 +27,6 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "make_enum.hpp"
-#include "portrait.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 #include "unit_animation.hpp"
@@ -99,8 +98,7 @@ unit_type::unit_type(const unit_type& o) :
 	possible_traits_(o.possible_traits_),
 	genders_(o.genders_),
 	animations_(o.animations_),
-    build_status_(o.build_status_),
-	portraits_(o.portraits_)
+    build_status_(o.build_status_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -159,8 +157,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	possible_traits_(),
 	genders_(),
 	animations_(),
-	build_status_(NOT_BUILT),
-	portraits_()
+	build_status_(NOT_BUILT)
 {
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
@@ -226,10 +223,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	}
 
 	game_config::add_color_info(cfg_);
-
-	BOOST_FOREACH(const config &portrait, cfg_.child_range("portrait")) {
-		portraits_.push_back(tportrait(portrait));
-	}
 
 	hp_bar_scaling_ = cfg_["hp_bar_scaling"].to_double(game_config::hp_bar_scaling);
 	xp_bar_scaling_ = cfg_["xp_bar_scaling"].to_double(game_config::xp_bar_scaling);
