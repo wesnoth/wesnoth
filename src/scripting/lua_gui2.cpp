@@ -273,13 +273,20 @@ int show_message_dialog(lua_State *L, CVideo & video)
 				// for the deprecated syntax, this branch should still be retained
 				// when the deprecated syntax is removed, as a simpler method
 				// of specifying options when only a single string is needed.
-				gui2::tlegacy_menu_item item(short_opt);
+				const std::string& opt_str = short_opt;
+				gui2::tlegacy_menu_item item(opt_str);
 				opt["image"] = item.icon();
 				opt["label"] = item.label();
 				opt["description"] = item.description();
 				opt["default"] = item.is_default();
 				if(!opt["image"].blank() || !opt["description"].blank() || !opt["default"].blank()) {
-					ERR_LUA << "The &image=col1=col2 syntax is deprecated, use new DescriptionWML instead.\n";
+					// The exact error message depends on whether & or = was actually present
+					if(opt_str.find_first_of('=') == std::string::npos) {
+						// They just used a simple message, so the other error would be misleading
+						ERR_LUA << "[option]message= is deprecated, use label= instead.\n";
+					} else {
+						ERR_LUA << "The &image=col1=col2 syntax is deprecated, use new DescriptionWML instead.\n";
+					}
 				}
 			} else if(!luaW_toconfig(L, -1, opt)) {
 				std::ostringstream error;
