@@ -271,8 +271,6 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				BOOST_FOREACH(config& scenario, game_config_.child_range("scenario"))
 				{
 					scenario["require_scenario"] = require_campaign;
-					// make force_lock_settings default to true for [scenario]
-					scenario["force_lock_settings"] = scenario["force_lock_settings"].to_bool(true);
 					BOOST_FOREACH(config& side, scenario.child_range("side"))
 					{
 						side["no_leader"] = side["no_leader"].to_bool(true);

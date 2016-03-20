@@ -369,9 +369,10 @@ LEVEL_RESULT campaign_controller::play_game()
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = state_.get_starting_pos();
 
+				const bool is_mp = state_.classification().is_normal_mp_game();
 				state_.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
 				state_.mp_settings().saved_game = false;
-				state_.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
+				state_.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool(!is_mp);
 
 				ng::connect_engine_ptr connect_engine(new ng::connect_engine(state_, false, mp_info_));
 

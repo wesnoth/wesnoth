@@ -97,7 +97,8 @@ connect_engine::connect_engine(saved_game& state,
 		return;
 	}
 
-	force_lock_settings_ = (!state.mp_settings().saved_game) && scenario()["force_lock_settings"].to_bool();
+	const bool is_mp = state_.classification().is_normal_mp_game();
+	force_lock_settings_ = (!state.mp_settings().saved_game) && scenario()["force_lock_settings"].to_bool(!is_mp);
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
