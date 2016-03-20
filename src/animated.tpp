@@ -24,20 +24,6 @@
 #include <SDL.h>
 #include "animated.hpp"
 
-namespace {
-	int current_ticks = 0;
-}
-
-inline void new_animation_frame()
-{
-	current_ticks = SDL_GetTicks();
-}
-
-inline int get_current_animation_tick()
-{
-	return current_ticks;
-}
-
 template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
@@ -91,7 +77,7 @@ template<typename T, typename T_void_value>
 inline void animated<T,T_void_value>::start_animation(int start_time, bool cycles)
 {
 	started_ = true;
-	last_update_tick_ = current_ticks;
+	last_update_tick_ = get_current_animation_tick();
 	acceleration_ = 1.0; //assume acceleration is 1, this will be fixed at first update_last_draw_time
 	start_tick_ = last_update_tick_ +
 		static_cast<int>(( starting_frame_time_ - start_time)/acceleration_);
@@ -115,9 +101,9 @@ inline void animated<T,T_void_value>::update_last_draw_time(double acceleration)
 	}
 	if (!started_ && start_tick_ != 0) {
 		// animation is paused
-		start_tick_ += current_ticks - last_update_tick_;
+		start_tick_ += get_current_animation_tick() - last_update_tick_;
 	}
-	last_update_tick_ = current_ticks;
+	last_update_tick_ = get_current_animation_tick();
 	if (force_next_update_) {
 		force_next_update_ = false;
 		return;
@@ -162,7 +148,7 @@ inline bool animated<T,T_void_value>::need_update() const
 	if (!started_ && start_tick_ == 0) {
 		return false;
 	}
-	if (current_ticks >
+	if (get_current_animation_tick() >
 			static_cast<int>(get_current_frame_end_time() /
 			acceleration_ + start_tick_)) {
 		return true;
@@ -182,7 +168,7 @@ inline bool animated<T,T_void_value>::animation_finished_potential() const
 	if (cycles_ ) {
 		return true;
 	}
-	if (tick_to_time(current_ticks) > get_end_time()) {
+	if (tick_to_time(get_current_animation_tick()) > get_end_time()) {
 		return true;
 	}
 
@@ -215,7 +201,7 @@ inline int animated<T,T_void_value>::get_animation_time_potential() const
 		return starting_frame_time_;
 	}
 
-	return tick_to_time(current_ticks);
+	return tick_to_time(get_current_animation_tick());
 }
 
 template<typename T, typename T_void_value>
