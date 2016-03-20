@@ -335,8 +335,9 @@ void wait::join_game(bool observe)
 				era_factions.push_back(&side);
 			}
 
+			const bool is_mp = state_.classification().is_normal_mp_game();
 			const bool lock_settings =
-				get_scenario()["force_lock_settings"].to_bool();
+				get_scenario()["force_lock_settings"].to_bool(!is_mp);
 			const bool use_map_settings =
 				level_.child("multiplayer")["mp_use_map_settings"].to_bool();
 			const bool saved_game =
