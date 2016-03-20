@@ -24,7 +24,7 @@
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "terrain_type_data.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 #include <iterator>

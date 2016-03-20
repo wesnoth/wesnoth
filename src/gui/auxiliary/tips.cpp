@@ -18,7 +18,7 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui2

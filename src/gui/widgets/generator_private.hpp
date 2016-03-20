@@ -22,7 +22,7 @@
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 namespace gui2
 {

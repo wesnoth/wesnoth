@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/editor_generate_map.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 
 #include "gui/widgets/button.hpp"
@@ -28,7 +28,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "generators/map_generator.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

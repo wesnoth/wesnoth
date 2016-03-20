@@ -28,12 +28,12 @@ namespace {
 	int current_ticks = 0;
 }
 
-void new_animation_frame()
+inline void new_animation_frame()
 {
 	current_ticks = SDL_GetTicks();
 }
 
-int get_current_animation_tick()
+inline int get_current_animation_tick()
 {
 	return current_ticks;
 }
@@ -42,7 +42,7 @@ template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
 template<typename T, typename T_void_value>
-animated<T,T_void_value>::animated(int start_time) :
+inline animated<T,T_void_value>::animated(int start_time) :
 	starting_frame_time_(start_time),
 	does_not_change_(true),
 	started_(false),
@@ -57,7 +57,7 @@ animated<T,T_void_value>::animated(int start_time) :
 }
 
 template<typename T,  typename T_void_value>
-animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, int start_time, bool force_change ):
+inline animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, int start_time, bool force_change ):
 	starting_frame_time_(start_time),
 	does_not_change_(true),
 	started_(false),
@@ -80,7 +80,7 @@ animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, in
 
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force_change)
+inline void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force_change)
 {
 	if(frames_.empty() ) {
 		does_not_change_=!force_change;
@@ -92,7 +92,7 @@ void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force
 }
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::start_animation(int start_time, bool cycles)
+inline void animated<T,T_void_value>::start_animation(int start_time, bool cycles)
 {
 	started_ = true;
 	last_update_tick_ = current_ticks;
@@ -108,7 +108,7 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles)
 
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::update_last_draw_time(double acceleration)
+inline void animated<T,T_void_value>::update_last_draw_time(double acceleration)
 {
         if (acceleration > 0 && acceleration_ != acceleration) {
                 int tmp = tick_to_time(last_update_tick_);
@@ -150,7 +150,7 @@ void animated<T,T_void_value>::update_last_draw_time(double acceleration)
 }
 
 template<typename T,  typename T_void_value>
-bool animated<T,T_void_value>::need_update() const
+inline bool animated<T,T_void_value>::need_update() const
 {
 	if(force_next_update_) {
 		return true;
@@ -174,7 +174,7 @@ bool animated<T,T_void_value>::need_update() const
 }
 
 template<typename T,  typename T_void_value>
-bool animated<T,T_void_value>::animation_finished_potential() const
+inline bool animated<T,T_void_value>::animation_finished_potential() const
 {
 	if(frames_.empty())
 		return true;
@@ -188,7 +188,7 @@ bool animated<T,T_void_value>::animation_finished_potential() const
 	return false;
 }
 template<typename T,  typename T_void_value>
-bool animated<T,T_void_value>::animation_finished() const
+inline bool animated<T,T_void_value>::animation_finished() const
 {
 	if(frames_.empty())
 		return true;
@@ -203,14 +203,14 @@ bool animated<T,T_void_value>::animation_finished() const
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_animation_time_potential() const
+inline int animated<T,T_void_value>::get_animation_time_potential() const
 {
 	if(!started_  && start_tick_ == 0 ) return starting_frame_time_;
 
 	return  tick_to_time(current_ticks);
 }
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_animation_time() const
+inline int animated<T,T_void_value>::get_animation_time() const
 {
 	if(!started_  && start_tick_ == 0 ) return starting_frame_time_;
 
@@ -218,7 +218,7 @@ int animated<T,T_void_value>::get_animation_time() const
 }
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::set_animation_time(int time)
+inline void animated<T,T_void_value>::set_animation_time(int time)
 {
 	start_tick_ =  last_update_tick_ +
         static_cast<int>(( starting_frame_time_ - time)/acceleration_);
@@ -228,13 +228,13 @@ void animated<T,T_void_value>::set_animation_time(int time)
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_animation_duration() const
+inline int animated<T,T_void_value>::get_animation_duration() const
 {
 	return get_end_time() - get_begin_time();
 }
 
 template<typename T,  typename T_void_value>
-const T& animated<T,T_void_value>::get_current_frame() const
+inline const T& animated<T,T_void_value>::get_current_frame() const
 {
 	if(frames_.empty() )
 		return void_value_;
@@ -242,7 +242,7 @@ const T& animated<T,T_void_value>::get_current_frame() const
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_current_frame_begin_time() const
+inline int animated<T,T_void_value>::get_current_frame_begin_time() const
 {
 	if(frames_.empty() )
 		return starting_frame_time_;
@@ -250,7 +250,7 @@ int animated<T,T_void_value>::get_current_frame_begin_time() const
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_current_frame_end_time() const
+inline int animated<T,T_void_value>::get_current_frame_end_time() const
 {
 	if(frames_.empty() )
 		return starting_frame_time_;
@@ -258,7 +258,7 @@ int animated<T,T_void_value>::get_current_frame_end_time() const
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_current_frame_duration() const
+inline int animated<T,T_void_value>::get_current_frame_duration() const
 {
 	if(frames_.empty() )
 		return 0;
@@ -266,7 +266,7 @@ int animated<T,T_void_value>::get_current_frame_duration() const
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_current_frame_time() const
+inline int animated<T,T_void_value>::get_current_frame_time() const
 {
 	if(frames_.empty() )
 		return 0;
@@ -275,7 +275,7 @@ int animated<T,T_void_value>::get_current_frame_time() const
 }
 
 template<typename T,  typename T_void_value>
-const T& animated<T,T_void_value>::get_first_frame() const
+inline const T& animated<T,T_void_value>::get_first_frame() const
 {
 	if(frames_.empty() )
 		return void_value_;
@@ -283,7 +283,7 @@ const T& animated<T,T_void_value>::get_first_frame() const
 }
 
 template<typename T,  typename T_void_value>
-const T& animated<T,T_void_value>::get_frame(size_t n) const
+inline const T& animated<T,T_void_value>::get_frame(size_t n) const
 {
 	if(n >= frames_.size())
 		return void_value_;
@@ -291,7 +291,7 @@ const T& animated<T,T_void_value>::get_frame(size_t n) const
 }
 
 template<typename T,  typename T_void_value>
-const T& animated<T,T_void_value>::get_last_frame() const
+inline const T& animated<T,T_void_value>::get_last_frame() const
 {
 	if(frames_.empty() )
 		return void_value_;
@@ -299,25 +299,25 @@ const T& animated<T,T_void_value>::get_last_frame() const
 }
 
 template<typename T, typename T_void_value>
-size_t animated<T,T_void_value>::get_frames_count() const
+inline size_t animated<T,T_void_value>::get_frames_count() const
 {
 	return frames_.size();
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_begin_time() const
+inline int animated<T,T_void_value>::get_begin_time() const
 {
 	return starting_frame_time_;
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::time_to_tick(int animation_time) const
+inline int animated<T,T_void_value>::time_to_tick(int animation_time) const
 {
         if(!started_ && start_tick_ == 0) return 0;
         return start_tick_ + static_cast<int>((animation_time-starting_frame_time_)/acceleration_);
 }
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::tick_to_time(int animation_tick) const
+inline int animated<T,T_void_value>::tick_to_time(int animation_tick) const
 {
         if(!started_ && start_tick_ == 0) return 0;
 	return static_cast<int>(
@@ -325,7 +325,7 @@ int animated<T,T_void_value>::tick_to_time(int animation_tick) const
         acceleration_) + starting_frame_time_);
 }
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_end_time() const
+inline int animated<T,T_void_value>::get_end_time() const
 {
 	if(frames_.empty())
 		return starting_frame_time_;
@@ -341,7 +341,7 @@ void animated<T,T_void_value>::remove_frames_until(int new_starting_time)
 
 }
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::set_end_time(int new_ending_time)
+inline void animated<T,T_void_value>::set_end_time(int new_ending_time)
 {
 int last_start_time = starting_frame_time_;
 typename std::vector<frame>::iterator current_frame = frames_.begin();
@@ -358,7 +358,7 @@ typename std::vector<frame>::iterator current_frame = frames_.begin();
 
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::set_begin_time(int new_begin_time)
+inline void animated<T,T_void_value>::set_begin_time(int new_begin_time)
 {
         const int variation = new_begin_time - starting_frame_time_;
         starting_frame_time_ += variation;

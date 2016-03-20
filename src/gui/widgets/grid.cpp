@@ -20,7 +20,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/widgets/control.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <numeric>
 

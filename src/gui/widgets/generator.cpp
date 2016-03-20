@@ -17,7 +17,7 @@
 #include "gui/widgets/generator_private.hpp"
 
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

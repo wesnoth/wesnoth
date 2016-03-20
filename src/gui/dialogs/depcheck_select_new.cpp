@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/depcheck_select_new.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

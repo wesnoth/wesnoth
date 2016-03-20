@@ -18,7 +18,7 @@
 
 #include "gui/dialogs/unit_attack.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/image.hpp"
@@ -39,7 +39,7 @@
 #include "unit.hpp"
 #include "unit_types.hpp"
 
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

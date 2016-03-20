@@ -16,7 +16,7 @@
 
 #include "gui/widgets/horizontal_scrollbar.hpp"
 
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/auxiliary/widget_definition/horizontal_scrollbar.hpp"
 #include "gui/auxiliary/window_builder/horizontal_scrollbar.hpp"

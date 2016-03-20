@@ -21,7 +21,7 @@
 #include "gui/auxiliary/widget_definition/tree_view.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/tree_view.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/chat_log.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -28,7 +28,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/slider.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"

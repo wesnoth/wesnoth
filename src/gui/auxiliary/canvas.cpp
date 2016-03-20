@@ -30,7 +30,7 @@
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
 #include "text.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 

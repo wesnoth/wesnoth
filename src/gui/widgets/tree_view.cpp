@@ -19,7 +19,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/tree_view.hpp"
 #include "gui/auxiliary/window_builder/tree_view.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"

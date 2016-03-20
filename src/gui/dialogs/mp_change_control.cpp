@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/mp_change_control.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -35,7 +35,7 @@
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <vector>
 #include <boost/bind.hpp>

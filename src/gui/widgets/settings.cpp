@@ -32,7 +32,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 #include "formula_string_utils.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

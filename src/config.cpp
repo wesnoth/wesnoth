@@ -24,7 +24,7 @@
 
 #include "log.hpp"
 #include "util.hpp"
-#include "utils/const_clone.tpp"
+#include "utils/const_clone.hpp"
 
 #include <cstdlib>
 #include <cstring>

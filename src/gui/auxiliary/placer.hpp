@@ -121,7 +121,7 @@ public:
 
 } // namespace gui2
 
-#include "utils/enumerate.tpp"
+#include "utils/enumerate.hpp"
 
 namespace gui2
 {

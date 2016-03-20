@@ -21,7 +21,7 @@
 #include "cursor.hpp"
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"

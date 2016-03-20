@@ -29,7 +29,7 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/settings.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

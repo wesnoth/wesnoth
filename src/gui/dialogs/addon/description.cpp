@@ -20,7 +20,7 @@
 #include "desktop/open.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -28,7 +28,7 @@
 #include "language.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

@@ -21,7 +21,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/text_box.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"

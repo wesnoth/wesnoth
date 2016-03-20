@@ -14,7 +14,7 @@
 
 #include "gui/dialogs/synced_choice_wait.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"

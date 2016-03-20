@@ -16,13 +16,13 @@
 
 #include "gui/widgets/scrollbar_container_private.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/widgets/clickable.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>

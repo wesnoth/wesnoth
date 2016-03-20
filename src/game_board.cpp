@@ -21,7 +21,7 @@
 #include "terrain_type_data.hpp"
 #include "unit.hpp"
 
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/foreach.hpp>
 #include <set>

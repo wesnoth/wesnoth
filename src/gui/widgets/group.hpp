@@ -17,7 +17,7 @@
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/widget.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <vector>
 #include <boost/bind.hpp>

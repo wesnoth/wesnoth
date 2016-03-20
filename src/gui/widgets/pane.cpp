@@ -16,11 +16,11 @@
 
 #include "gui/widgets/pane.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/const_clone.tpp"
+#include "utils/const_clone.hpp"
 #include "gui/auxiliary/window_builder/pane.hpp"
 #include "gui/auxiliary/event/message.hpp"
 

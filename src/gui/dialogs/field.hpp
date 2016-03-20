@@ -23,7 +23,7 @@
 #ifndef GUI_DIALOGS_FIELD_HPP_INCLUDED
 #define GUI_DIALOGS_FIELD_HPP_INCLUDED
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/field-fwd.hpp"
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"

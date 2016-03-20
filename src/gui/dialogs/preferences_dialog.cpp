@@ -28,7 +28,7 @@
 #include "formula_string_utils.hpp"
 #include "filesystem.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 
 // Sub-dialog includes
 #include "gui/dialogs/advanced_graphics_options.hpp"
@@ -56,7 +56,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "util.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include "gettext.hpp"
 

@@ -39,7 +39,7 @@
 #include "language.hpp"
 #include "preferences_display.hpp"
 #include "savegame.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <cctype>
 #include <boost/bind.hpp>

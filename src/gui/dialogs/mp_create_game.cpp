@@ -32,7 +32,7 @@
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "settings.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include <boost/bind.hpp>

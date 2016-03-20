@@ -21,10 +21,10 @@
 #include "gui/auxiliary/widget_definition/slider.hpp"
 #include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sound.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

@@ -16,13 +16,13 @@
 
 #include "gui/widgets/stacked_widget.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/widget_definition/stacked_widget.hpp"
 #include "gui/auxiliary/window_builder/stacked_widget.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

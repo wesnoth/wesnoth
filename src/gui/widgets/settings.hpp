@@ -22,7 +22,7 @@
 
 #include "gui/auxiliary/widget_definition/window.hpp"
 
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include "utils/boost_function_guarded.hpp"
 

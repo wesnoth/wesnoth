@@ -17,7 +17,7 @@
 #include "gui/dialogs/mp_login.hpp"
 
 #include "game_preferences.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/settings.hpp"

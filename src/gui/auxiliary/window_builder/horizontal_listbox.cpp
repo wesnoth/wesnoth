@@ -25,7 +25,7 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

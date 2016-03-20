@@ -19,11 +19,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/toggle_button.hpp"
 #include "gui/auxiliary/window_builder/toggle_button.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

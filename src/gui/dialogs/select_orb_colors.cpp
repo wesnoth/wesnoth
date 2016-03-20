@@ -16,7 +16,7 @@
 #include "select_orb_colors.hpp"
 
 #include "gui/auxiliary/event/dispatcher.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/grid.hpp"

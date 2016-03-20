@@ -16,12 +16,12 @@
 
 #include "gui/dialogs/drop_down_list.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 

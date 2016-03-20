@@ -16,11 +16,11 @@
 
 #include "gui/widgets/matrix.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/matrix.hpp"
 #include "gui/auxiliary/window_builder/matrix.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>

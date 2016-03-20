@@ -13,7 +13,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/button.hpp"
@@ -36,7 +36,7 @@
 #include "unit_types.hpp"
 #include "whiteboard/manager.hpp"
 
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

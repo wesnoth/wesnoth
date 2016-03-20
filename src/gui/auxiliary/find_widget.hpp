@@ -17,7 +17,7 @@
 
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
-#include "utils/const_clone.tpp"
+#include "utils/const_clone.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

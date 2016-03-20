@@ -23,7 +23,7 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "video.hpp"
 #include "serialization/unicode_cast.hpp"
 

@@ -20,7 +20,7 @@
 
 #include "gui/dialogs/campaign_difficulty.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/old_markup.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -29,7 +29,7 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include "log.hpp"
 

@@ -16,10 +16,10 @@
 
 #include "gui/widgets/multi_page.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/auxiliary/window_builder/multi_page.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
 

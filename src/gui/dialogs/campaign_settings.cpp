@@ -16,7 +16,7 @@
 
 #include "saved_game.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"

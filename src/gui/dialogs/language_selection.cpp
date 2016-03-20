@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/language_selection.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -26,7 +26,7 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 namespace gui2
 {

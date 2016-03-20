@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/gamestate_inspector.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/button.hpp"
@@ -31,7 +31,7 @@
 #include "desktop/clipboard.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include "game_data.hpp"
 #include "recall_list_manager.hpp"

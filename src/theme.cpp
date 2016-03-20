@@ -23,7 +23,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "theme.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 #include "sdl/rect.hpp"
 

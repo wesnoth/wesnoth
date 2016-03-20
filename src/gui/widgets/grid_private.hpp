@@ -32,7 +32,7 @@
 
 #include "gui/widgets/grid.hpp"
 
-#include "utils/const_clone.tpp"
+#include "utils/const_clone.hpp"
 
 #include <boost/foreach.hpp>
 

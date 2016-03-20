@@ -18,7 +18,7 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

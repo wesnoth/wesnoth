@@ -41,7 +41,7 @@
 #include "language.hpp"
 #include "preferences_display.hpp"
 #include "savegame.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cctype>

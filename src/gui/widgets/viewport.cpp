@@ -17,7 +17,7 @@
 #include "gui/widgets/viewport.hpp"
 
 #include "gui/auxiliary/log.hpp"
-#include "utils/const_clone.tpp"
+#include "utils/const_clone.hpp"
 #include "gui/auxiliary/window_builder/viewport.hpp"
 
 #define LOG_SCOPE_HEADER "tviewport [" + id() + "] " + __func__

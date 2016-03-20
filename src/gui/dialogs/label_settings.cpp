@@ -21,7 +21,7 @@
 #include "game_display.hpp"
 #include "map_label.hpp"
 #include "resources.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/control.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"

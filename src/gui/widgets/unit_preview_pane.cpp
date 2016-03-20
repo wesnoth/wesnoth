@@ -15,11 +15,11 @@
 
 #include "gui/widgets/unit_preview_pane.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/widget_definition/unit_preview_pane.hpp"
 #include "gui/auxiliary/window_builder/unit_preview_pane.hpp"
 
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -35,7 +35,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

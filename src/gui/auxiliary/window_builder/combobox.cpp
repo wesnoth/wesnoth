@@ -20,7 +20,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/combobox.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 namespace gui2
 {

@@ -18,7 +18,7 @@
 
 #include "gui/auxiliary/widget_definition/scrollbar_panel.hpp"
 #include "gui/auxiliary/window_builder/scrollbar_panel.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>

@@ -20,7 +20,7 @@
 #include "gui/auxiliary/timer.hpp"
 #include "gui/auxiliary/widget_definition/repeating_button.hpp"
 #include "gui/auxiliary/window_builder/repeating_button.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"

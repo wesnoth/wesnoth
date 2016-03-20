@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/unit_create.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/dialogs/helper.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -42,7 +42,7 @@
 #include "team.hpp"
 #include "unit_types.hpp"
 
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 

@@ -26,7 +26,7 @@
 #include "gui/widgets/window.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
 #include "marked-up_text.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "hotkey/hotkey_item.hpp"
 
 #include <boost/bind.hpp>

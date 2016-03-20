@@ -24,7 +24,7 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -41,7 +41,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
+#include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula_string_utils.hpp"
 #include "marked-up_text.hpp"
