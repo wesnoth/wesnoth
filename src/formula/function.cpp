@@ -444,7 +444,7 @@ private:
 			}
 		}
 
-		if(args().size() > 2) {
+		if(args().size() > 3) {
 			int size = args()[2]->evaluate(variables, fdb).as_int();
 			if(size < 0) {
 				size = -size;
