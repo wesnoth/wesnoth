@@ -76,7 +76,7 @@ unit_type::unit_type(const unit_type& o) :
 	image_(o.image_),
 	icon_(o.icon_),
 	small_profile_(o.small_profile_),
-	big_profile_(o.big_profile_),
+	profile_(o.profile_),
 	flag_rgb_(o.flag_rgb_),
 	num_traits_(o.num_traits_),
 	variations_(o.variations_),
@@ -133,7 +133,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	image_(cfg_["image"].str()),
 	icon_(),
 	small_profile_(),
-	big_profile_(),
+	profile_(),
 	flag_rgb_(cfg_["flag_rgb"].str()),
 	num_traits_(0),
 	gender_types_(),
@@ -264,8 +264,8 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	image_ = cfg_["image"].str();
 	icon_ = cfg_["image_icon"].str();
 	small_profile_ = cfg_["small_profile"].str();
-	big_profile_ = cfg_["profile"].str();
-	adjust_profile(small_profile_, big_profile_, image_);
+	profile_ = cfg_["profile"].str();
+	adjust_profile(profile_);
 
 	alignment_ = unit_type::ALIGNMENT::NEUTRAL;
 	alignment_.parse(cfg_["alignment"].str());
@@ -1292,30 +1292,29 @@ const unit_race *unit_type_data::find_race(const std::string &key) const
 unit_type_data unit_types;
 
 
-/* **  ** */
-
-
-void adjust_profile(std::string &small, std::string &big, std::string const &def)
+void adjust_profile(std::string& profile)
 {
-	if (big.empty())
-	{
-		// No profile data; use the default image.
-		small = def;
-		big = def;
-	}
-	else if (small.empty())
-	{
-		// No small profile; use the current profile for it and
-		// try to infer the big one.
-		small = big;
-		std::string::size_type offset = big.find('~');
-		offset = big.find_last_of('/', offset);
-		if (offset != std::string::npos) {
-			big.insert(offset, "/transparent");
-		} else {
-			big = "transparent/" + big;
+	// Create a temp copy
+	std::string temp = profile;
+
+	static const std::string path_adjust = "/transparent";
+	const std::string::size_type offset = profile.find_last_of('/', profile.find('~'));
+
+	// If the path already refers to /transparent...
+	if(profile.find(path_adjust) != std::string::npos && offset != std::string::npos) {
+		if(!image::locator(profile).file_exists()) {
+			profile.replace(profile.find(path_adjust), path_adjust.length(), "");
 		}
-		if (!image::locator(big).file_exists())
-			big = small;
+
+		return;
+	} 
+
+	// else, check for the file with /transparent appended...
+	offset != std::string::npos ?
+		temp.insert(offset, path_adjust) : temp = path_adjust + temp;
+
+	// and use that path if it exists
+	if(image::locator(temp).file_exists()) {
+		profile = temp;
 	}
 }

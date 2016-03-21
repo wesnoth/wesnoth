@@ -152,7 +152,7 @@ namespace {
 		}
 		while(cur != end) {
 			WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
-			++cur;		
+			++cur;
 		}
 	}
 }
@@ -493,11 +493,14 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	}
 
 	if (const config::attribute_value *v = cfg.get("profile")) {
-		std::string big = *v, small = cfg["small_profile"];
-		adjust_profile(small, big, "");
-		profile_ = big;
-		small_profile_ = small;
+		std::string profile = (*v).str();
+		adjust_profile(profile);
+		profile_ = profile;
 	}
+	if (const config::attribute_value *v = cfg.get("small_profile")) {
+		small_profile_ = (*v).str();
+	}
+
 	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));
 	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
 	max_experience_ = std::max(1, cfg["max_experience"].to_int(max_experience_));
@@ -1392,7 +1395,7 @@ void unit::write(config& cfg) const
 	write_upkeep(cfg["upkeep"]);
 	cfg["hitpoints"] = hit_points_;
 	cfg["max_hitpoints"] = max_hit_points_;
-	
+
 	cfg["image_icon"] = type().icon();
 	cfg["image"] = type().image();
 	cfg["random_traits"] = random_traits_;
@@ -1718,7 +1721,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 	if(apply_to == "attack") {
 		std::string attack_names;
 		bool first_attack = true;
-		
+
 		std::string desc;
 		for(std::vector<attack_type>::iterator a = attacks_.begin();
 			a != attacks_.end(); ++a) {
@@ -1729,7 +1732,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 				} else {
 					attack_names += t_string(N_(" and "), "wesnoth");
 				}
-				
+
 				attack_names += t_string(a->name(), "wesnoth-units");
 			}
 		}
@@ -1741,14 +1744,14 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		}
 	} else if(apply_to == "hitpoints") {
 		const std::string &increase_total = effect["increase_total"];
-		
+
 		if(!increase_total.empty()) {
 			return utils::print_modifier(increase_total) + " " +
 			t_string(N_("HP"), "wesnoth");
 		}
 	} else if(apply_to == "movement") {
 		const std::string &increase = effect["increase"];
-		
+
 		if(!increase.empty()) {
 			int n = lexical_cast<int>(increase);
 			return utils::print_modifier(increase) + " " +
@@ -1756,26 +1759,26 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		}
 	} else if(apply_to == "vision") {
 		const std::string &increase = effect["increase"];
-		
+
 		if(!increase.empty()) {
 			return utils::print_modifier(increase) + " " + t_string(N_("vision"), "wesnoth");
 		}
 	} else if(apply_to == "jamming") {
 		const std::string &increase = effect["increase"];
-		
+
 		if(!increase.empty()) {
 			return utils::print_modifier(increase) + " " + t_string(N_("jamming"), "wesnoth");
 		}
 	} else if(apply_to == "max_experience") {
 		const std::string &increase = effect["increase"];
-		
+
 		if(!increase.empty()) {
 			return utils::print_modifier(increase) + " " +
 			t_string(N_("XP to advance"), "wesnoth");
 		}
 	} else if (apply_to == "max_attacks") {
 		const std::string &increase = effect["increase"];
-		
+
 		std::string description = utils::print_modifier(increase) + " ";
 		const char* const singular = N_("attack per turn");
 		const char* const plural = N_("attacks per turn");
@@ -1805,11 +1808,12 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	}
 	else if(apply_to == "profile") {
 		if (const config::attribute_value *v = effect.get("portrait")) {
-			std::string big = *v, small = effect["small_portrait"];
-			adjust_profile(small, big, "");
-			
-			profile_ = big;
-			small_profile_ = small;
+			std::string portrait = (*v).str();
+			adjust_profile(portrait);
+			profile_ = portrait;
+		}
+		if (const config::attribute_value *v = effect.get("small_portrait")) {
+			small_profile_ = (*v).str();
 		}
 		if (const config::attribute_value *v = effect.get("description")) {
 			description_ = *v;
@@ -2258,7 +2262,7 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 }
 
 std::string unit::absolute_image() const {
-	
+
 	return type().icon().empty() ? type().image() : type().icon();
 }
 
@@ -2475,7 +2479,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	if (upkeep.empty()) {
 		return;
 	}
-	//TODO: create abetter way to check whether it is actually an int.	
+	//TODO: create abetter way to check whether it is actually an int.
 	int upkeep_int = upkeep.to_int(-99);
 	if(upkeep_int != -99) {
 		upkeep_ = upkeep_int;
