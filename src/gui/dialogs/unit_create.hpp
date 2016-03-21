@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "gui/widgets/text.hpp"
 #include "race.hpp"
 
 #include <string>
@@ -28,6 +27,8 @@ class unit_type;
 
 namespace gui2
 {
+
+class ttext_;
 
 class tunit_create : public tdialog
 {

@@ -16,13 +16,14 @@
 #define GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/text.hpp"
 #include "save_index.hpp"
 #include "tstring.hpp"
 
 namespace gui2
 {
+
+class tlistbox;
+class ttext_;
 
 class tgame_load : public tdialog
 {
