@@ -48,7 +48,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
-#include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/unit_create.hpp"
@@ -1860,7 +1859,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_show_var();
 		void do_inspect();
 		void do_control_dialog();
-		void do_manage();
 		void do_unit();
 		// void do_buff();
 		// void do_unbuff();
@@ -1969,8 +1967,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 					, "N");
 			register_command("inspect", &console_handler::do_inspect,
 				_("Launch the gamestate inspector"), "", "D");
-			register_command("manage", &console_handler::do_manage,
-				_("Manage persistence data"), "", "D");
 			register_command("alias", &console_handler::do_set_alias,
 				_("Set or show alias to a command"), _("<name>[=<command>]"));
 			register_command("set_var", &console_handler::do_set_var,
@@ -2956,12 +2952,6 @@ void console_handler::do_control_dialog()
 {
 	gui2::tmp_change_control mp_change_control(&menu_handler_);
 	mp_change_control.show(menu_handler_.gui_->video());
-}
-
-void console_handler::do_manage() {
-	config cfg;
-	gui2::tdata_manage manager;
-	manager.show(menu_handler_.gui_->video());
 }
 
 void console_handler::do_unit() {

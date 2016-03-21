@@ -820,7 +820,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/campaign_settings.cpp
 	gui/dialogs/core_selection.cpp
 	gui/dialogs/chat_log.cpp
-	gui/dialogs/data_manage.cpp
 	gui/dialogs/debug_clock.cpp
 	gui/dialogs/depcheck_confirm_change.cpp
 	gui/dialogs/depcheck_select_new.cpp

@@ -33,7 +33,6 @@
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
 #include "gui/dialogs/chat_log.hpp"
-#include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
@@ -380,7 +379,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tcampaign_selection>();
 	test<gui2::tcampaign_settings>();
 //	test<gui2::tchat_log>(); /** @todo ENABLE */
-	test<gui2::tdata_manage>();
 	test<gui2::tedit_label>();
 	test<gui2::tedit_text>();
 	test<gui2::teditor_generate_map>();
@@ -571,15 +569,6 @@ struct twrapper<gui2::tchat_log>
 		static vconfig vcfg(cfg);
 
 		return new gui2::tchat_log(vcfg, NULL);
-	}
-};
-
-template<>
-struct twrapper<gui2::tdata_manage>
-{
-	static gui2::tdata_manage* create()
-	{
-		return new gui2::tdata_manage();
 	}
 };
 
