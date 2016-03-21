@@ -18,7 +18,7 @@ libwesnoth_core_sources = Split("""
     config.cpp
     hash.cpp
     log.cpp
-    game_map.cpp
+    map/map.cpp
     map/location.cpp
     md5.cpp
     mt_rng.cpp
@@ -417,7 +417,7 @@ wesnoth_sources = Split("""
     gui/dialogs/unit_recruit.cpp
     gui/dialogs/wml_error.cpp
     gui/dialogs/wml_message.cpp
-    gui/lib/types/point.cpp
+    gui/core/point.cpp
     gui/widgets/button.cpp
     gui/widgets/combobox.cpp
     gui/widgets/container.cpp

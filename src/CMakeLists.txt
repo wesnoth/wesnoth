@@ -462,7 +462,7 @@ target_link_libraries(wesnoth-sdl
 # - Public Enumerates
 # - Small structs
 set(wesnoth-gui_types_SRC
-	gui/lib/types/point.cpp
+	gui/core/point.cpp
 )
 
 add_library(wesnoth-gui_types
