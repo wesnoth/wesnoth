@@ -546,6 +546,18 @@ void raise_process_event()
 	}
 }
 
+void raise_resize_event()
+{
+	SDL_Event event;
+	event.window.type = SDL_WINDOWEVENT;
+	event.window.event = SDL_WINDOWEVENT_RESIZED;
+	event.window.windowID = 0; // We don't check this anyway... I think...
+	event.window.data1 = CVideo::get_singleton().getx();
+	event.window.data2 = CVideo::get_singleton().gety();
+	
+	SDL_PushEvent(&event);
+}
+
 void raise_draw_event()
 {
 	if(event_contexts.empty() == false) {

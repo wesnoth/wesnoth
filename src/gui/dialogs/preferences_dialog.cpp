@@ -1236,6 +1236,7 @@ void tpreferences::handle_res_select(twindow& window)
 	}
 
 	window.video().set_resolution(resolutions_[static_cast<size_t>(choice)]);
+	events::raise_resize_event();
 	set_resolution_list(res_list, window.video());
 }
 
