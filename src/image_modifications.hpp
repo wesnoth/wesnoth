@@ -368,73 +368,49 @@ private:
 };
 
 /**
- * Scale (SCALE) modification. (Uses bilinear interpolation.)
+ * Scaling modifications base class.
  */
 class scale_modification : public modification
 {
 public:
-	scale_modification(int width, int height)
-		: w_(width), h_(height)
+	scale_modification(int width, int height, std::string fn, bool use_nn)
+		: w_(width), h_(height), nn_(use_nn), fn_(fn)
 	{}
 	virtual surface operator()(const surface& src) const;
+	virtual std::pair<int,int> calculate_size(const surface& src) const = 0;
 	int get_w() const;
 	int get_h() const;
 
 private:
 	int w_, h_;
+	bool nn_;
+protected:
+	const std::string fn_;
 };
 
 /**
- * Scale sharp (SCALE_SHARP) modification. (Uses nearest neighbor.)
+ * Scale exact modification. (SCALE, SCALE_SHARP)
  */
-class scale_sharp_modification : public modification
+class scale_exact_modification : public scale_modification
 {
 public:
-	scale_sharp_modification(int width, int height)
-		: w_(width), h_(height)
+	scale_exact_modification(int width, int height, std::string fn, bool use_nn)
+		: scale_modification(width, height, fn, use_nn)
 	{}
-	virtual surface operator()(const surface& src) const;
-	int get_w() const;
-	int get_h() const;
-
-private:
-	int w_, h_;
+	virtual std::pair<int,int> calculate_size(const surface& src) const;
 };
 
 /**
- * Scale into (SCALE_INTO) modification. (Uses bilinear interpolation.)
+ * Scale into (SCALE_INTO) modification. (SCALE_INTO, SCALE_INTO_SHARP)
  * Preserves aspect ratio.
  */
-class scale_into_modification : public modification
+class scale_into_modification : public scale_modification
 {
 public:
-	scale_into_modification(int width, int height)
-		: w_(width), h_(height)
+	scale_into_modification(int width, int height, std::string fn, bool use_nn)
+		: scale_modification(width, height, fn, use_nn)
 	{}
-	virtual surface operator()(const surface& src) const;
-	int get_w() const;
-	int get_h() const;
-
-private:
-	int w_, h_;
-};
-
-/**
- * Scale into (SCALE_INTO_SHARP) modification. (Uses nearest neighbor.)
- * Preserves aspect ratio.
- */
-class scale_into_sharp_modification : public modification
-{
-public:
-	scale_into_sharp_modification(int width, int height)
-		: w_(width), h_(height)
-	{}
-	virtual surface operator()(const surface& src) const;
-	int get_w() const;
-	int get_h() const;
-
-private:
-	int w_, h_;
+	virtual std::pair<int,int> calculate_size(const surface& src) const;
 };
 
 /**

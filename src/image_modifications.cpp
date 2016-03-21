@@ -362,25 +362,13 @@ const surface& light_modification::get_surface() const
 
 surface scale_modification::operator()(const surface& src) const
 {
-	const int old_w = src->w;
-	const int old_h = src->h;
-	int w = w_;
-	int h = h_;
+	std::pair<int,int> sz = calculate_size(src);
 
-	if(w <= 0) {
-		if(w < 0) {
-			ERR_DP << "width of SCALE is negative - resetting to original width" << std::endl;
-		}
-		w = old_w;
+	if(nn_) {
+		return scale_surface_sharp(src, sz.first, sz.second);
+	} else {
+		return scale_surface(src, sz.first, sz.second);
 	}
-	if(h <= 0) {
-		if(h < 0) {
-			ERR_DP << "height of SCALE is negative - resetting to original height" << std::endl;
-		}
-		h = old_h;
-	}
-
-	return scale_surface(src, w, h);
 }
 
 int scale_modification::get_w() const
@@ -393,45 +381,35 @@ int scale_modification::get_h() const
 	return h_;
 }
 
-surface scale_sharp_modification::operator()(const surface& src) const
+std::pair<int,int> scale_exact_modification::calculate_size(const surface& src) const
 {
 	const int old_w = src->w;
 	const int old_h = src->h;
-	int w = w_;
-	int h = h_;
+	int w = get_w();
+	int h = get_h();
 
 	if(w <= 0) {
 		if(w < 0) {
-			ERR_DP << "width of SCALE_SHARP is negative - resetting to original width" << std::endl;
+			ERR_DP << "width of " << fn_ << " is negative - resetting to original width" << std::endl;
 		}
 		w = old_w;
 	}
 	if(h <= 0) {
 		if(h < 0) {
-			ERR_DP << "height of SCALE_SHARP is negative - resetting to original height" << std::endl;
+			ERR_DP << "height of " << fn_ << " is negative - resetting to original height" << std::endl;
 		}
 		h = old_h;
 	}
-
-	return scale_surface_sharp(src, w, h);
+	
+	return std::make_pair(w, h);
 }
 
-int scale_sharp_modification::get_w() const
-{
-	return w_;
-}
-
-int scale_sharp_modification::get_h() const
-{
-	return h_;
-}
-
-surface scale_into_modification::operator()(const surface& src) const
+std::pair<int,int> scale_into_modification::calculate_size(const surface& src) const
 {
 	const int old_w = src->w;
 	const int old_h = src->h;
-	long double w = w_;
-	long double h = h_;
+	long double w = get_w();
+	long double h = get_h();
 
 	if(w <= 0) {
 		if(w < 0) {
@@ -448,52 +426,7 @@ surface scale_into_modification::operator()(const surface& src) const
 	
 	long double ratio = std::min(w / old_w, h / old_h);
 
-	return scale_surface(src, old_w * ratio, old_h * ratio);
-}
-
-int scale_into_modification::get_w() const
-{
-	return w_;
-}
-
-int scale_into_modification::get_h() const
-{
-	return h_;
-}
-
-surface scale_into_sharp_modification::operator()(const surface& src) const
-{
-	const int old_w = src->w;
-	const int old_h = src->h;
-	long double w = w_;
-	long double h = h_;
-
-	if(w <= 0) {
-		if(w < 0) {
-			ERR_DP << "width of SCALE_INTO_SHARP is negative - resetting to original width" << std::endl;
-		}
-		w = old_w;
-	}
-	if(h <= 0) {
-		if(h < 0) {
-			ERR_DP << "height of SCALE_INTO_SHARP is negative - resetting to original height" << std::endl;
-		}
-		h = old_h;
-	}
-	
-	long double ratio = std::min(w / old_w, h / old_h);
-
-	return scale_surface_sharp(src, old_w * ratio, old_h * ratio);
-}
-
-int scale_into_sharp_modification::get_w() const
-{
-	return w_;
-}
-
-int scale_into_sharp_modification::get_h() const
-{
-	return h_;
+	return std::make_pair(old_w * ratio, old_h * ratio);
 }
 
 surface xbrz_modification::operator()(const surface& src) const
@@ -1126,7 +1059,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_modification(w, h);
+	return new scale_exact_modification(w, h, "SCALE", false);
 }
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
@@ -1147,7 +1080,7 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_sharp_modification(w, h);
+	return new scale_exact_modification(w, h, "SCALE_SHARP", true);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
@@ -1168,7 +1101,7 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_into_modification(w, h);
+	return new scale_into_modification(w, h, "SCALE_INTO", false);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
@@ -1189,7 +1122,7 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_into_sharp_modification(w, h);
+	return new scale_into_modification(w, h, "SCALE_INTO_SHARP", true);
 }
 
 // xBRZ
