@@ -15,7 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_change_control.hpp"
+#include "gui/dialogs/multiplayer/mp_change_control.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"

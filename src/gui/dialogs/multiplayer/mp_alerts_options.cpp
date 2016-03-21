@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_alerts_options.hpp"
+#include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 
 #include "desktop/notifications.hpp"
 #include "gui/auxiliary/find_widget.hpp"

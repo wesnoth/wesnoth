@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "chat_events.hpp"
-#include "gui/dialogs/lobby/lobby_info.hpp"
+#include "gui/dialogs/lobby/info.hpp"
 
 namespace gui2
 {

@@ -31,8 +31,8 @@
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
 #include "gui/dialogs/message.hpp" //for show error message
-#include "gui/dialogs/mp_host_game_prompt.hpp" //for host game prompt
-#include "gui/dialogs/mp_method_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
 #include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
 #include "gui/widgets/settings.hpp"     // for new_widgets

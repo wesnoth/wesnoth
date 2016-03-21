@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,11 +12,8 @@
    See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-lib"
+#include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 
-#include "gui/dialogs/mp_create_game_set_password.hpp"
-
-//#include "gui/dialogs/field.hpp"
 #include "gui/widgets/settings.hpp"
 
 namespace gui2
@@ -24,11 +21,11 @@ namespace gui2
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
- * @order = 2_mp_create_game_set_password
+ * @order = 2_mp_join_game_password_prompt
  *
- * == Create Game: Set Password ==
+ * == Join Game: Password Prompt ==
  *
- * Dialog for setting a join password for MP games.
+ * Dialog for entering a password for joining a password-protected MP game.
  *
  * @begin{table}{dialog_widgets}
  *
@@ -38,12 +35,12 @@ namespace gui2
  * @end{table}
  */
 
-REGISTER_DIALOG(mp_create_game_set_password)
+REGISTER_DIALOG(mp_join_game_password_prompt)
 
-tmp_create_game_set_password::tmp_create_game_set_password(
+tmp_join_game_password_prompt::tmp_join_game_password_prompt(
 		std::string& password)
 {
 	register_text("password", true, password, true);
 }
 
-} // namespace gui2
+} // end namespace gui2

@@ -15,7 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/vertical_scrollbar.hpp"
-#include "gui/widgets/detail/register.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 

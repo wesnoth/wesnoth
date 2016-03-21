@@ -30,16 +30,16 @@
 #include "editor/controller/editor_controller.hpp"
 #include "editor/editor_preferences.hpp"
 
-#include "gui/dialogs/editor_generate_map.hpp"
-#include "gui/dialogs/editor_new_map.hpp"
-#include "gui/dialogs/editor_resize_map.hpp"
+#include "gui/dialogs/editor/generate_map.hpp"
+#include "gui/dialogs/editor/new_map.hpp"
+#include "gui/dialogs/editor/resize_map.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "gui/dialogs/editor/editor_edit_scenario.hpp"
-#include "gui/dialogs/editor/editor_edit_side.hpp"
+#include "gui/dialogs/editor/edit_scenario.hpp"
+#include "gui/dialogs/editor/edit_side.hpp"
 
 #include <boost/foreach.hpp>
 

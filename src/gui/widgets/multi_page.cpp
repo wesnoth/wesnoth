@@ -17,7 +17,7 @@
 #include "gui/widgets/multi_page.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/detail/register.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
 

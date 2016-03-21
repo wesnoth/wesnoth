@@ -812,8 +812,8 @@ set(wesnoth-main_SRC
 	gui/dialogs/addon/description.cpp
 	gui/dialogs/addon/filter_options.cpp
 	gui/dialogs/addon/uninstall_list.cpp
-	gui/dialogs/addon_connect.cpp
-	gui/dialogs/addon_list.cpp
+	gui/dialogs/addon/connect.cpp
+	gui/dialogs/addon/list.cpp
 	gui/dialogs/advanced_graphics_options.cpp
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
@@ -828,13 +828,13 @@ set(wesnoth-main_SRC
 	gui/dialogs/drop_down_list.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
-	gui/dialogs/editor/editor_edit_label.cpp
-	gui/dialogs/editor/editor_edit_side.cpp
-	gui/dialogs/editor/editor_edit_scenario.cpp
-	gui/dialogs/editor_generate_map.cpp
-	gui/dialogs/editor_new_map.cpp
-	gui/dialogs/editor_resize_map.cpp
-	gui/dialogs/editor_set_starting_position.cpp
+	gui/dialogs/editor/edit_label.cpp
+	gui/dialogs/editor/edit_side.cpp
+	gui/dialogs/editor/edit_scenario.cpp
+	gui/dialogs/editor/generate_map.cpp
+	gui/dialogs/editor/new_map.cpp
+	gui/dialogs/editor/resize_map.cpp
+	gui/dialogs/editor/set_starting_position.cpp
 	gui/dialogs/folder_create.cpp
 	gui/dialogs/formula_debugger.cpp
 	gui/dialogs/game_cache_options.cpp
@@ -845,22 +845,22 @@ set(wesnoth-main_SRC
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
-	gui/dialogs/lobby/lobby_data.cpp
-	gui/dialogs/lobby/lobby_info.cpp
-	gui/dialogs/lobby_main.cpp
-	gui/dialogs/lobby_player_info.cpp
+	gui/dialogs/lobby/data.cpp
+	gui/dialogs/lobby/info.cpp
+	gui/dialogs/lobby/lobby.cpp
+	gui/dialogs/lobby/player_info.cpp
 	gui/dialogs/lua_interpreter.cpp
 	gui/dialogs/message.cpp
-	gui/dialogs/mp_alerts_options.cpp
-	gui/dialogs/mp_change_control.cpp
-	gui/dialogs/mp_cmd_wrapper.cpp
-	gui/dialogs/mp_connect.cpp
-	gui/dialogs/mp_create_game.cpp
-	gui/dialogs/mp_create_game_set_password.cpp
-	gui/dialogs/mp_host_game_prompt.cpp
-	gui/dialogs/mp_join_game_password_prompt.cpp
-	gui/dialogs/mp_login.cpp
-	gui/dialogs/mp_method_selection.cpp
+	gui/dialogs/multiplayer/mp_alerts_options.cpp
+	gui/dialogs/multiplayer/mp_change_control.cpp
+	gui/dialogs/multiplayer/mp_cmd_wrapper.cpp
+	gui/dialogs/multiplayer/mp_connect.cpp
+	gui/dialogs/multiplayer/mp_create_game.cpp
+	gui/dialogs/multiplayer/mp_create_game_set_password.cpp
+	gui/dialogs/multiplayer/mp_host_game_prompt.cpp
+	gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp
+	gui/dialogs/multiplayer/mp_login.cpp
+	gui/dialogs/multiplayer/mp_method_selection.cpp
 	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
 	gui/dialogs/preferences_dialog.cpp
@@ -868,7 +868,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/screenshot_notification.cpp
 	gui/dialogs/select_orb_colors.cpp
 	gui/dialogs/simple_item_selector.cpp
-	gui/dialogs/synced_choice_wait.cpp
+	gui/dialogs/multiplayer/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp

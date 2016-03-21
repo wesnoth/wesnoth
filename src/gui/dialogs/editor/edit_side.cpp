@@ -14,9 +14,9 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/editor/editor_edit_side.hpp"
+#include "gui/dialogs/editor/edit_side.hpp"
 
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/settings.hpp"
 

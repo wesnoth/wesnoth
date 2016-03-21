@@ -13,7 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "gui/dialogs/editor_generate_map.hpp"
+#include "gui/dialogs/editor/generate_map.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"

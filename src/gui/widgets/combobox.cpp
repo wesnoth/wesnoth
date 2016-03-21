@@ -20,7 +20,7 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
-#include "gui/widgets/detail/register.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/dialogs/drop_down_list.hpp"

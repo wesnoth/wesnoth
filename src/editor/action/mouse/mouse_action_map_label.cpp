@@ -21,7 +21,7 @@
 
 #include <SDL_video.h>
 
-#include "gui/dialogs/editor/editor_edit_label.hpp"
+#include "gui/dialogs/editor/edit_label.hpp"
 
 namespace editor {
 

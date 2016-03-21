@@ -17,7 +17,7 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 
-#include "gui/widgets/detail/register.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"

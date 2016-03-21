@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "gui/dialogs/editor_set_starting_position.hpp"
+#include "gui/dialogs/editor/set_starting_position.hpp"
 
 #include <boost/foreach.hpp>
 #include "formatter.hpp"

@@ -21,7 +21,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"

@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/addon/filter_options.hpp"
 
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"

@@ -7284,7 +7284,7 @@
 				Name="Dialogs"
 				>
 				<File
-					RelativePath="..\..\src\gui\dialogs\addon_connect.cpp"
+					RelativePath="..\..\src\gui\dialogs\addon\connect.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -7336,11 +7336,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\addon_connect.hpp"
+					RelativePath="..\..\src\gui\dialogs\addon\connect.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\addon_list.cpp"
+					RelativePath="..\..\src\gui\dialogs\addon\list.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -7392,7 +7392,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\addon_list.hpp"
+					RelativePath="..\..\src\gui\dialogs\addon\list.hpp"
 					>
 				</File>
 				<File
@@ -8180,7 +8180,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\editor_generate_map.cpp"
+					RelativePath="..\..\src\gui\dialogs\editor\generate_map.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -8232,67 +8232,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\editor_generate_map.hpp"
+					RelativePath="..\..\src\gui\dialogs\editor\generate_map.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\editor_new_map.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\editor_new_map.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\editor_resize_map.cpp"
+					RelativePath="..\..\src\gui\dialogs\editor\new_map.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -8344,11 +8288,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\editor_resize_map.hpp"
+					RelativePath="..\..\src\gui\dialogs\editor\new_map.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\editor_set_starting_position.cpp"
+					RelativePath="..\..\src\gui\dialogs\editor\resize_map.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -8400,15 +8344,71 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\editor_set_starting_position.hpp"
+					RelativePath="..\..\src\gui\dialogs\editor\resize_map.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\field-fwd.hpp"
+					RelativePath="..\..\src\gui\dialogs\editor\set_starting_position.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\editor\set_starting_position.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\field.hpp"
+					RelativePath="..\..\src\gui\auxiliary\field-fwd.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\auxiliary\field.hpp"
 					>
 				</File>
 				<File
@@ -8972,7 +8972,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\lobby_main.cpp"
+					RelativePath="..\..\src\gui\dialogs\lobby\lobby.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9024,11 +9024,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\lobby_main.hpp"
+					RelativePath="..\..\src\gui\dialogs\lobby\lobby.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\lobby_player_info.cpp"
+					RelativePath="..\..\src\gui\dialogs\lobby\player_info.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9080,7 +9080,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\lobby_player_info.hpp"
+					RelativePath="..\..\src\gui\dialogs\lobby\player_info.hpp"
 					>
 				</File>
 				<File
@@ -9196,7 +9196,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_alerts_options.cpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9248,67 +9248,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_alerts_options.hpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_change_control.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_change_control.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_cmd_wrapper.cpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_change_control.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9360,67 +9304,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_cmd_wrapper.hpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_change_control.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_connect.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_connect.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_create_game.cpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9472,67 +9360,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_create_game.hpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_host_game_prompt.cpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_connect.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9584,67 +9416,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_host_game_prompt.hpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_connect.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_join_game_password_prompt.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_join_game_password_prompt.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_login.cpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_create_game.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9696,11 +9472,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_login.hpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_create_game.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_method_selection.cpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_create_game_set_password.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -9752,7 +9528,231 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_method_selection.hpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_create_game_set_password.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_login.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_login.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_method_selection.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\multiplayer\mp_method_selection.hpp"
 					>
 				</File>
 				<File
@@ -10092,7 +10092,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\synced_choice_wait.cpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -10144,7 +10144,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\synced_choice_wait.hpp"
+					RelativePath="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.hpp"
 					>
 				</File>
 				<File
@@ -10655,7 +10655,7 @@
 					Name="Lobby"
 					>
 					<File
-						RelativePath="..\..\src\gui\dialogs\lobby\lobby_data.cpp"
+						RelativePath="..\..\src\gui\dialogs\lobby\data.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -10707,11 +10707,11 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\dialogs\lobby\lobby_data.hpp"
+						RelativePath="..\..\src\gui\dialogs\lobby\data.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\dialogs\lobby\lobby_info.cpp"
+						RelativePath="..\..\src\gui\dialogs\lobby\info.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -10763,7 +10763,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\dialogs\lobby\lobby_info.hpp"
+						RelativePath="..\..\src\gui\dialogs\lobby\info.hpp"
 						>
 					</File>
 				</Filter>
@@ -10975,7 +10975,7 @@
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\dialogs\editor\editor_edit_label.cpp"
+						RelativePath="..\..\src\gui\dialogs\editor\edit_label.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -11027,67 +11027,11 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\dialogs\editor\editor_edit_label.hpp"
+						RelativePath="..\..\src\gui\dialogs\editor\edit_label.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\dialogs\editor\editor_edit_scenario.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug_with_VLD|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Test_Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Test_Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="ReleaseDEBUG|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\src\gui\dialogs\editor\editor_edit_scenario.hpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\gui\dialogs\editor\editor_edit_side.cpp"
+						RelativePath="..\..\src\gui\dialogs\editor\edit_scenario.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -11139,7 +11083,63 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\dialogs\editor\editor_edit_side.hpp"
+						RelativePath="..\..\src\gui\dialogs\editor\edit_scenario.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\editor\edit_side.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug_with_VLD|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Test_Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Test_Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Editor\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\editor\edit_side.hpp"
 						>
 					</File>
 				</Filter>

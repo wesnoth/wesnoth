@@ -43,7 +43,7 @@
 #include "gui/dialogs/tip.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/container.hpp"
-#include "gui/widgets/detail/register.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/panel.hpp"

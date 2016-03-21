@@ -14,11 +14,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_connect.hpp"
+#include "gui/dialogs/multiplayer/mp_connect.hpp"
 
 #include "game_preferences.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/dialog.hpp"
-#include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"

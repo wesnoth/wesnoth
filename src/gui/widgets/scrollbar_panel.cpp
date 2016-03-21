@@ -16,7 +16,7 @@
 
 #include "gui/widgets/scrollbar_panel.hpp"
 
-#include "gui/widgets/detail/register.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/core/window_builder/helper.hpp"
 

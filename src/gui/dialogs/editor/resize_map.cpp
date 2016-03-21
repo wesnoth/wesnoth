@@ -13,9 +13,9 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "gui/dialogs/editor_resize_map.hpp"
+#include "gui/dialogs/editor/resize_map.hpp"
 
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/settings.hpp"

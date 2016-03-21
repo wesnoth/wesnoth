@@ -14,7 +14,7 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
-#include "gui/dialogs/lobby_player_info.hpp"
+#include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"

@@ -14,14 +14,14 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_create_game.hpp"
+#include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
 #include <boost/multi_index_container.hpp>
 // ^ This is apparently unnecessary, but if removed it doesn't compile...
 
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

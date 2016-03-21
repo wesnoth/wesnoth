@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/addon_connect.hpp"
+#include "gui/dialogs/addon/connect.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "gui/dialogs/synced_choice_wait.hpp"
+#include "gui/dialogs/multiplayer/synced_choice_wait.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"

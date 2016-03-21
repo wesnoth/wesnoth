@@ -18,7 +18,7 @@
 #include "video.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/mp_cmd_wrapper.hpp"
+#include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
 #include "lobby_preferences.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"

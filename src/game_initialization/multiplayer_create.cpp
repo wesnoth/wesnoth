@@ -31,7 +31,7 @@
 #include "generators/map_create.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "gui/dialogs/mp_create_game_set_password.hpp"
+#include "gui/dialogs/multiplayer/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "minimap.hpp"

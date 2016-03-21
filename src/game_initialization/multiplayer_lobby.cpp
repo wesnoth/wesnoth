@@ -30,7 +30,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/message.hpp" // for gui2::show_message
-#include "gui/dialogs/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/widgets/window.hpp" // for gui2::twindow::OK
 #include "lobby_reload_request_exception.hpp"
 #include "log.hpp"

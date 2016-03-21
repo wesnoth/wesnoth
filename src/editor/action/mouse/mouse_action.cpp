@@ -19,7 +19,7 @@
 #include "mouse_action.hpp"
 
 #include "gettext.hpp"
-#include "gui/dialogs/editor_set_starting_position.hpp"
+#include "gui/dialogs/editor/set_starting_position.hpp"
 #include "editor/palette/terrain_palettes.hpp"
 
 namespace editor {

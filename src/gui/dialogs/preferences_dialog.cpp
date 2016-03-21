@@ -33,7 +33,7 @@
 // Sub-dialog includes
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
-#include "gui/dialogs/mp_alerts_options.hpp"
+#include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/dialogs/helper.hpp"

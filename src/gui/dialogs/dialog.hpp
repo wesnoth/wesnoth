@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_DIALOG_HPP_INCLUDED
 #define GUI_DIALOGS_DIALOG_HPP_INCLUDED
 
-#include "gui/dialogs/field-fwd.hpp"
+#include "gui/auxiliary/field-fwd.hpp"
 
 #include "utils/boost_function_guarded.hpp"
 

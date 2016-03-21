@@ -20,7 +20,7 @@
 #include "filechooser.hpp"
 #include "editor/editor_preferences.hpp"
 #include "editor/editor_display.hpp"
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"

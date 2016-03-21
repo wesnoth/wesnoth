@@ -18,7 +18,7 @@
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "chat_events.hpp"
-#include "gui/dialogs/lobby/lobby_info.hpp"
+#include "gui/dialogs/lobby/info.hpp"
 
 #include <boost/scoped_ptr.hpp>
 

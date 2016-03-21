@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_login.hpp"
+#include "gui/dialogs/multiplayer/mp_login.hpp"
 
 #include "game_preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"

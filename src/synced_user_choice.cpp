@@ -25,7 +25,7 @@
 #include "synced_context.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "gui/dialogs/synced_choice_wait.hpp"
+#include "gui/dialogs/multiplayer/synced_choice_wait.hpp"
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 #include <set>

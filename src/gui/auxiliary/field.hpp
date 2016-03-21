@@ -24,7 +24,7 @@
 #define GUI_DIALOGS_FIELD_HPP_INCLUDED
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/field-fwd.hpp"
+#include "gui/auxiliary/field-fwd.hpp"
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/text_box.hpp"

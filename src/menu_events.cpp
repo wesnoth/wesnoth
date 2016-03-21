@@ -47,7 +47,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
-#include "gui/dialogs/mp_change_control.hpp"
+#include "gui/dialogs/multiplayer/mp_change_control.hpp"
 #include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/edit_text.hpp"

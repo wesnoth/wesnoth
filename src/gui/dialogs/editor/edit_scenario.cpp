@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/editor/editor_edit_scenario.hpp"
+#include "gui/dialogs/editor/edit_scenario.hpp"
 
 #include "gui/widgets/settings.hpp"
 

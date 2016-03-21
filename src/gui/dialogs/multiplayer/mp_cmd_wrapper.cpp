@@ -15,9 +15,9 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_cmd_wrapper.hpp"
+#include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
 
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"

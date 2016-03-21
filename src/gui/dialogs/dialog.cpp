@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "utils/foreach.hpp"
 #include "video.hpp"

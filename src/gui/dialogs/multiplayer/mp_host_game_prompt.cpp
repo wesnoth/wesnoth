@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-#include "gui/dialogs/mp_host_game_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 
 #include "game_preferences.hpp"
 #include "gui/widgets/settings.hpp"

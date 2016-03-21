@@ -18,7 +18,7 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
-#include "gui/widgets/detail/register.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
