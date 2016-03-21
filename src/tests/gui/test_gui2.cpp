@@ -19,7 +19,7 @@
 
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "formula_debugger.hpp"
+#include "formula/debugger.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
