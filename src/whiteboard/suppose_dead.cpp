@@ -31,7 +31,6 @@
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "team.hpp"
 #include "units/unit.hpp"
 #include "units/udisplay.hpp"
 #include "units/map.hpp"

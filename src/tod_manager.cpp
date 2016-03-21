@@ -26,7 +26,6 @@
 #include "units/abilities.hpp"
 #include "wml_exception.hpp"
 #include "resources.hpp"
-#include "team.hpp"
 #include "network.hpp"
 #include "config_assign.hpp"
 

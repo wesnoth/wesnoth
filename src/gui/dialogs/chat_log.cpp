@@ -35,7 +35,6 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "resources.hpp"
-#include "team.hpp"
 #include "replay.hpp"
 #include "gettext.hpp"
 

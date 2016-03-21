@@ -15,9 +15,9 @@
 #define GUI_DIALOGS_UNIT_RECRUIT_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "team.hpp"
 
 class unit_type;
+class team;
 
 namespace gui2 {
 

@@ -25,7 +25,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "resources.hpp"
-#include "team.hpp"
 #include "units/unit.hpp"
 #include "terrain/filter.hpp"
 #include "pathfind/pathfind.hpp"

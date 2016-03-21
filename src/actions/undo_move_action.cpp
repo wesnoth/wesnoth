@@ -2,7 +2,6 @@
 #include "move.hpp"
 
 #include "resources.hpp"
-#include "team.hpp"
 #include "replay.hpp"
 #include "units/map.hpp"
 #include "units/animation_component.hpp"

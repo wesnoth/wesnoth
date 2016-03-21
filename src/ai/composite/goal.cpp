@@ -30,7 +30,6 @@
 #include "map/location.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "team.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"

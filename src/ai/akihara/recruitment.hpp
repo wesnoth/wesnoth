@@ -21,7 +21,8 @@
 #define AI_AKIHARA_RECRUITMENT_HPP_INCLUDED
 
 #include "ai/composite/rca.hpp"
-#include "team.hpp"
+
+class team;
 
 #ifdef _MSC_VER
 #pragma warning(push)
