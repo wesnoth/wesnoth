@@ -401,6 +401,24 @@ private:
 	int w_, h_;
 };
 
+/**
+ * Scale into (SCALE_INTO) modification. (Uses nearest neighbor.)
+ * Preserves aspect ratio.
+ */
+class scale_into_modification : public modification
+{
+public:
+	scale_into_modification(int width, int height)
+		: w_(width), h_(height)
+	{}
+	virtual surface operator()(const surface& src) const;
+	int get_w() const;
+	int get_h() const;
+
+private:
+	int w_, h_;
+};
+
 
 /**
  * xBRZ scale (xBRZ) modification
