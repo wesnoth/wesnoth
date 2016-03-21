@@ -17,8 +17,8 @@
 #include "gui/widgets/scrollbar_container_private.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/layout_exception.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/layout_exception.hpp"
 #include "gui/widgets/clickable.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"

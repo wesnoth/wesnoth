@@ -36,7 +36,7 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
-#include "gui/auxiliary/event/handler.hpp"
+#include "gui/core/event/handler.hpp"
 #include "gui/widgets/helper.hpp"
 #include "network.hpp"
 #include "config.hpp"

@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/popup.hpp"
 
-#include "gui/auxiliary/event/dispatcher.hpp"
+#include "gui/core/event/dispatcher.hpp"
 
 namespace gui2
 {

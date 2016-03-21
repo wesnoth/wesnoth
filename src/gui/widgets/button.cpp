@@ -16,11 +16,11 @@
 
 #include "gui/widgets/button.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 
-#include "gui/auxiliary/widget_definition.hpp"
-#include "gui/auxiliary/window_builder.hpp"
-#include "gui/auxiliary/window_builder/helper.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+#include "gui/core/window_builder/helper.hpp"
 
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"

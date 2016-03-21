@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_CLICKABLE_HPP_INCLUDED
 #define GUI_WIDGETS_CLICKABLE_HPP_INCLUDED
 
-#include "gui/auxiliary/event/dispatcher.hpp"
+#include "gui/core/event/dispatcher.hpp"
 
 namespace gui2
 {

@@ -17,8 +17,8 @@
 #include "gui/widgets/grid_private.hpp"
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/layout_exception.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/layout_exception.hpp"
 #include "gui/widgets/control.hpp"
 #include "utils/foreach.hpp"
 

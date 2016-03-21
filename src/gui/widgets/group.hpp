@@ -14,7 +14,7 @@
 #ifndef GUI_WIDGETS_GROUP_HPP_INCLUDED
 #define GUI_WIDGETS_GROUP_HPP_INCLUDED
 
-#include "gui/auxiliary/event/dispatcher.hpp"
+#include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/widget.hpp"
 #include "utils/foreach.hpp"

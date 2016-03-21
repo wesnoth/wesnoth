@@ -15,7 +15,7 @@
 #include "mp_options.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/window_builder.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/slider.hpp"

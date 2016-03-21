@@ -19,14 +19,14 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/canvas.hpp"
+#include "gui/core/canvas.hpp"
 
 #include "config.hpp"
 #include "image.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/formula.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
 #include "text.hpp"

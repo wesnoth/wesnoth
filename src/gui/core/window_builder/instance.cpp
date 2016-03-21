@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/window_builder/instance.hpp"
+#include "gui/core/window_builder/instance.hpp"
 
 #include "gui/widgets/spacer.hpp"
 

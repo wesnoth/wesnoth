@@ -20,7 +20,7 @@
 #ifndef GUI_AUXILIARY_PLACER_VERTICAL_LIST_HPP_INCLUDED
 #define GUI_AUXILIARY_PLACER_VERTICAL_LIST_HPP_INCLUDED
 
-#include "gui/auxiliary/placer.hpp"
+#include "gui/core/placer.hpp"
 
 #include <vector>
 

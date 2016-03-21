@@ -16,11 +16,11 @@
 
 #include "gui/widgets/toggle_panel.hpp"
 
-#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/auxiliary/window_builder/helper.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "utils/foreach.hpp"

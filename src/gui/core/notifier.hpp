@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_AUXILIARY_NOTIFIER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_NOTIFIER_HPP_INCLUDED
 
-#include "gui/auxiliary/notifiee.hpp"
+#include "gui/core/notifiee.hpp"
 #include "utils/foreach.hpp"
 
 #include <cassert>

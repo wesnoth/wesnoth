@@ -17,7 +17,7 @@
 #include "gui/dialogs/lua_interpreter.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/window_builder.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"

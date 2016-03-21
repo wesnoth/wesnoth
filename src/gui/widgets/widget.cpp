@@ -16,8 +16,8 @@
 
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/auxiliary/event/message.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/event/message.hpp"
+#include "gui/core/log.hpp"
 #include "sdl/rect.hpp"
 
 namespace gui2

@@ -16,7 +16,7 @@
 
 #include "gui/widgets/viewport.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "config.hpp"
 #include "utils/const_clone.hpp"
 

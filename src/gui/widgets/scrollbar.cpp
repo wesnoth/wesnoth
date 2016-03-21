@@ -16,7 +16,7 @@
 
 #include "gui/widgets/scrollbar.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 #include "utils/foreach.hpp"
 

@@ -31,7 +31,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_launcher.hpp"          // for game_launcher, etc
 #include "gettext.hpp"
-#include "gui/auxiliary/event/handler.hpp"  // for tmanager
+#include "gui/core/event/handler.hpp"  // for tmanager
 #include "gui/dialogs/core_selection.hpp"  // for tcore_selection
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
 #include "gui/dialogs/message.hpp" 	// for show_error_message

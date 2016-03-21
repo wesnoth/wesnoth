@@ -17,7 +17,7 @@
 #include "gui/widgets/text.hpp"
 
 #include "desktop/clipboard.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 

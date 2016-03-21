@@ -16,8 +16,8 @@
 #define GUI_WIDGETS_PANE_HPP_INCLUDED
 
 #include "gui/widgets/widget.hpp"
-#include "gui/auxiliary/window_builder.hpp"
-#include "gui/auxiliary/placer.hpp"
+#include "gui/core/window_builder.hpp"
+#include "gui/core/placer.hpp"
 
 #include "utils/boost_function_guarded.hpp"
 

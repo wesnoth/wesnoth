@@ -17,8 +17,8 @@
 
 #include "gui/widgets/scrollbar.hpp"
 
-#include "gui/auxiliary/widget_definition.hpp"
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {

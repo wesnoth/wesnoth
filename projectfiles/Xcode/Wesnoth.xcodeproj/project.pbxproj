@@ -3348,6 +3348,35 @@
 			path = map;
 			sourceTree = "<group>";
 		};
+		91F16D511C9F6F220041C047 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				B597EC510FC08E0100CE81F5 /* canvas.cpp */,
+				B597EC520FC08E0100CE81F5 /* canvas.hpp */,
+				B5B46932107118C400327599 /* event */,
+				B597EC540FC08E0100CE81F5 /* layout_exception.hpp */,
+				B597EC550FC08E0100CE81F5 /* log.cpp */,
+				B597EC560FC08E0100CE81F5 /* log.hpp */,
+				B52EE88F121358D700CFBDAB /* notifiee.hpp */,
+				B52EE890121358D700CFBDAB /* notifier.hpp */,
+				F4D5AFEF157120B30062EAFC /* placer */,
+				F4D5AFEA1571208B0062EAFC /* placer.cpp */,
+				F4D5AFEB1571208B0062EAFC /* placer.hpp */,
+				F4C5DD66158CFD5E0044F754 /* point.cpp */,
+				F4C5DD67158CFD5E0044F754 /* point.hpp */,
+				B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */,
+				B5CF7BBB10D55F5A00A8BEB5 /* timer.hpp */,
+				B504B94A1284C06B00261FE9 /* tips.cpp */,
+				B504B94B1284C06B00261FE9 /* tips.hpp */,
+				B5B4692E107118B200327599 /* widget_definition.cpp */,
+				B5B4692F107118B200327599 /* widget_definition.hpp */,
+				B54AC6EA0FEA9F7A006F6FBD /* window_builder */,
+				B597EC570FC08E0100CE81F5 /* window_builder.cpp */,
+				B597EC580FC08E0100CE81F5 /* window_builder.hpp */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		B52EE8FD12135AC300CFBDAB /* whiteboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -3775,32 +3804,12 @@
 		B597EC500FC08E0100CE81F5 /* auxiliary */ = {
 			isa = PBXGroup;
 			children = (
-				B597EC510FC08E0100CE81F5 /* canvas.cpp */,
-				B597EC520FC08E0100CE81F5 /* canvas.hpp */,
-				B5B46932107118C400327599 /* event */,
 				62579C6D1573E4E3003089D5 /* filter.hpp */,
 				91B621D41B76B51600B00E0F /* find_widget.hpp */,
 				B597EC530FC08E0100CE81F5 /* formula.hpp */,
 				49DA0D3113550EB2000AFEBD /* iterator */,
-				B597EC540FC08E0100CE81F5 /* layout_exception.hpp */,
-				B597EC550FC08E0100CE81F5 /* log.cpp */,
-				B597EC560FC08E0100CE81F5 /* log.hpp */,
-				B52EE88F121358D700CFBDAB /* notifiee.hpp */,
-				B52EE890121358D700CFBDAB /* notifier.hpp */,
 				B5CE470B12A0422800D665EE /* old_markup.cpp */,
 				B5CE470C12A0422800D665EE /* old_markup.hpp */,
-				F4D5AFEF157120B30062EAFC /* placer */,
-				F4D5AFEA1571208B0062EAFC /* placer.cpp */,
-				F4D5AFEB1571208B0062EAFC /* placer.hpp */,
-				B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */,
-				B5CF7BBB10D55F5A00A8BEB5 /* timer.hpp */,
-				B504B94A1284C06B00261FE9 /* tips.cpp */,
-				B504B94B1284C06B00261FE9 /* tips.hpp */,
-				B5B4692E107118B200327599 /* widget_definition.cpp */,
-				B5B4692F107118B200327599 /* widget_definition.hpp */,
-				B54AC6EA0FEA9F7A006F6FBD /* window_builder */,
-				B597EC570FC08E0100CE81F5 /* window_builder.cpp */,
-				B597EC580FC08E0100CE81F5 /* window_builder.hpp */,
 			);
 			path = auxiliary;
 			sourceTree = "<group>";
@@ -3873,8 +3882,8 @@
 			isa = PBXGroup;
 			children = (
 				B597EC500FC08E0100CE81F5 /* auxiliary */,
+				91F16D511C9F6F220041C047 /* core */,
 				B5A9BCA20ECA805A002BE442 /* dialogs */,
-				F4C5DD64158CFD5E0044F754 /* lib */,
 				B5A9BCCC0ECA805A002BE442 /* widgets */,
 			);
 			path = gui;
@@ -4205,23 +4214,6 @@
 				EC95E50718612BB600F3A9EF /* editor_edit_side.hpp */,
 			);
 			path = editor;
-			sourceTree = "<group>";
-		};
-		F4C5DD64158CFD5E0044F754 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				F4C5DD65158CFD5E0044F754 /* types */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		F4C5DD65158CFD5E0044F754 /* types */ = {
-			isa = PBXGroup;
-			children = (
-				F4C5DD66158CFD5E0044F754 /* point.cpp */,
-				F4C5DD67158CFD5E0044F754 /* point.hpp */,
-			);
-			path = types;
 			sourceTree = "<group>";
 		};
 		F4D5AFEF157120B30062EAFC /* placer */ = {

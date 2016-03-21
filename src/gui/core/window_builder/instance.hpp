@@ -15,7 +15,7 @@
 #ifndef GUI_AUXILIARY_WINDOW_BUILDER_INSTANCE_HPP_INCLUDED
 #define GUI_AUXILIARY_WINDOW_BUILDER_INSTANCE_HPP_INCLUDED
 
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/window_builder.hpp"
 
 #include "config.hpp"
 

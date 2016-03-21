@@ -20,7 +20,7 @@
 #include "gui/widgets/listbox.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/settings.hpp"

@@ -21,7 +21,7 @@
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "game_classification.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/helper.hpp"

@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/lib/types/point.hpp"
+#include "gui/core/point.hpp"
 
 #include <iostream>
 

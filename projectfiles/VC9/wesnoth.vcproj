@@ -11148,7 +11148,7 @@
 				Name="Auxiliary"
 				>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\canvas.cpp"
+					RelativePath="..\..\src\gui\core\canvas.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -11200,7 +11200,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\canvas.hpp"
+					RelativePath="..\..\src\gui\core\canvas.hpp"
 					>
 				</File>
 				<File
@@ -11216,11 +11216,11 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\layout_exception.hpp"
+					RelativePath="..\..\src\gui\core\layout_exception.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\log.cpp"
+					RelativePath="..\..\src\gui\core\log.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -11272,7 +11272,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\log.hpp"
+					RelativePath="..\..\src\gui\core\log.hpp"
 					>
 				</File>
 				<File
@@ -11284,7 +11284,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\placer.cpp"
+					RelativePath="..\..\src\gui\core\placer.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -11336,7 +11336,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\placer.hpp"
+					RelativePath="..\..\src\gui\core\placer.hpp"
 					>
 				</File>
 				<File
@@ -11348,7 +11348,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\timer.cpp"
+					RelativePath="..\..\src\gui\core\timer.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -11400,15 +11400,15 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\timer.hpp"
+					RelativePath="..\..\src\gui\core\timer.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\tips.cpp"
+					RelativePath="..\..\src\gui\core\tips.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\tips.hpp"
+					RelativePath="..\..\src\gui\core\tips.hpp"
 					>
 				</File>
 				<File
@@ -11424,7 +11424,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\widget_definition.cpp"
+					RelativePath="..\..\src\gui\core\widget_definition.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -11476,11 +11476,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\widget_definition.hpp"
+					RelativePath="..\..\src\gui\core\widget_definition.hpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\window_builder.cpp"
+					RelativePath="..\..\src\gui\core\window_builder.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -11532,14 +11532,14 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\auxiliary\window_builder.hpp"
+					RelativePath="..\..\src\gui\core\window_builder.hpp"
 					>
 				</File>
 				<Filter
 					Name="Window_Builder"
 					>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\window_builder\helper.cpp"
+						RelativePath="..\..\src\gui\core\window_builder\helper.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -11591,11 +11591,11 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\window_builder\helper.hpp"
+						RelativePath="..\..\src\gui\core\window_builder\helper.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\window_builder\instance.cpp"
+						RelativePath="..\..\src\gui\core\window_builder\instance.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -11647,7 +11647,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\window_builder\instance.hpp"
+						RelativePath="..\..\src\gui\core\window_builder\instance.hpp"
 						>
 					</File>
 				</Filter>
@@ -11655,7 +11655,7 @@
 					Name="Event"
 					>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\event\dispatcher.cpp"
+						RelativePath="..\..\src\gui\core\event\dispatcher.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -11707,71 +11707,15 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\event\dispatcher.hpp"
+						RelativePath="..\..\src\gui\core\event\dispatcher.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\event\dispatcher_private.hpp"
+						RelativePath="..\..\src\gui\core\event\dispatcher_private.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\event\distributor.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug_with_VLD|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Test_Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Test_Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="ReleaseDEBUG|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\src\gui\auxiliary\event\distributor.hpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\gui\auxiliary\event\handler.cpp"
+						RelativePath="..\..\src\gui\core\event\distributor.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -11823,11 +11767,67 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\event\handler.hpp"
+						RelativePath="..\..\src\gui\core\event\distributor.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\event\message.hpp"
+						RelativePath="..\..\src\gui\core\event\handler.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug_with_VLD|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Test_Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Test_Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\core\event\handler.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\core\event\message.hpp"
 						>
 					</File>
 				</Filter>
@@ -11995,7 +11995,7 @@
 					Name="Placer"
 					>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\placer\horizontal_list.cpp"
+						RelativePath="..\..\src\gui\core\placer\horizontal_list.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -12047,11 +12047,11 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\placer\horizontal_list.hpp"
+						RelativePath="..\..\src\gui\core\placer\horizontal_list.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\placer\vertical_list.cpp"
+						RelativePath="..\..\src\gui\core\placer\vertical_list.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -12103,7 +12103,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\auxiliary\placer\vertical_list.hpp"
+						RelativePath="..\..\src\gui\core\placer\vertical_list.hpp"
 						>
 					</File>
 				</Filter>

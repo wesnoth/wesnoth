@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_TEXT_HPP_INCLUDED
 #define GUI_WIDGETS_TEXT_HPP_INCLUDED
 
-//#include "gui/auxiliary/event/dispatcher.hpp"
+//#include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/control.hpp"
 #include "../../text.hpp" // We want the file in src/
 

@@ -16,8 +16,8 @@
 
 #include "gui/widgets/tree_view.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/window_builder/helper.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view_node.hpp"

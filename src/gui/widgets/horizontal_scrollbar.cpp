@@ -19,8 +19,8 @@
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 
-#include "gui/auxiliary/widget_definition.hpp"
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 #include "wml_exception.hpp"
 

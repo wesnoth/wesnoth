@@ -16,7 +16,7 @@
 
 #include "gui/widgets/container.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 
 #define LOG_SCOPE_HEADER                                                       \
 	"tcontainer(" + get_control_type() + ") [" + id() + "] " + __func__

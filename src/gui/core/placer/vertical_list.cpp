@@ -14,9 +14,9 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/placer/vertical_list.hpp"
+#include "gui/core/placer/vertical_list.hpp"
 
-#include "gui/lib/types/point.hpp"
+#include "gui/core/point.hpp"
 
 #include <cassert>
 #include <numeric>

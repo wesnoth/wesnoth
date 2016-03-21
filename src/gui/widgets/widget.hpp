@@ -15,8 +15,8 @@
 #ifndef GUI_WIDGETS_WIDGET_HPP_INCLUDED
 #define GUI_WIDGETS_WIDGET_HPP_INCLUDED
 
-#include "gui/auxiliary/event/dispatcher.hpp"
-#include "gui/lib/types/point.hpp"
+#include "gui/core/event/dispatcher.hpp"
+#include "gui/core/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 
 #include "sdl/utils.hpp"

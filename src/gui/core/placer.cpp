@@ -14,11 +14,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/placer.hpp"
+#include "gui/core/placer.hpp"
 
 #include "asserts.hpp"
-#include "gui/auxiliary/placer/horizontal_list.hpp"
-#include "gui/auxiliary/placer/vertical_list.hpp"
+#include "gui/core/placer/horizontal_list.hpp"
+#include "gui/core/placer/vertical_list.hpp"
 
 
 namespace gui2

@@ -18,7 +18,7 @@
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 #include "formula/formula.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"

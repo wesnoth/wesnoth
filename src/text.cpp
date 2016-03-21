@@ -18,8 +18,8 @@
 
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/lib/types/point.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/point.hpp"
 #include "font.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"

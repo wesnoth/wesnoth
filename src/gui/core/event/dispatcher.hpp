@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_AUXILIARY_EVENT_DISPATCHER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_EVENT_DISPATCHER_HPP_INCLUDED
 
-#include "gui/auxiliary/event/handler.hpp"
+#include "gui/core/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "sdl/compat.hpp"
 #include "serialization/unicode_types.hpp"

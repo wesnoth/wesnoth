@@ -194,9 +194,9 @@ if(MSVC)
 	SOURCE_GROUP("src editor map" REGULAR_EXPRESSION "editor/map/.*")
 	SOURCE_GROUP("src gui" REGULAR_EXPRESSION "gui/.*")
 	SOURCE_GROUP("src gui auxiliary" REGULAR_EXPRESSION "gui/auxiliary/.*")
-	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/auxiliary/event/.*")
-	SOURCE_GROUP("src gui auxiliary widget_definition" REGULAR_EXPRESSION "gui/auxiliary/widget_definition/.*")
-	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/auxiliary/window_builder/.*")
+	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/core/event/.*")
+	SOURCE_GROUP("src gui auxiliary widget_definition" REGULAR_EXPRESSION "gui/core/widget_definition/.*")
+	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/core/window_builder/.*")
 	SOURCE_GROUP("src gui dialogs" REGULAR_EXPRESSION "gui/dialogs/.*")
 	SOURCE_GROUP("src gui dialogs lobby" REGULAR_EXPRESSION "gui/dialogs/lobby/.*")
 	SOURCE_GROUP("src lua" REGULAR_EXPRESSION "lua/.*")
@@ -477,9 +477,9 @@ add_library(wesnoth-gui_types
 # converts the SDL events to internal events and allows other code to
 # connect to the events based on slots.
 set(wesnoth-gui_event_SRC
-	gui/auxiliary/event/dispatcher.cpp
-	gui/auxiliary/event/distributor.cpp
-	gui/auxiliary/event/handler.cpp
+	gui/core/event/dispatcher.cpp
+	gui/core/event/distributor.cpp
+	gui/core/event/handler.cpp
 )
 
 add_library(wesnoth-gui_event
@@ -511,9 +511,9 @@ add_library(wesnoth-gui_iterator
 # This library contains the basic placer for the gui library.
 # The placer is used is some widgets to determine how to place its content.
 set(wesnoth-gui_placer_SRC
-	gui/auxiliary/placer.cpp
-	gui/auxiliary/placer/horizontal_list.cpp
-	gui/auxiliary/placer/vertical_list.cpp
+	gui/core/placer.cpp
+	gui/core/placer/horizontal_list.cpp
+	gui/core/placer/vertical_list.cpp
 )
 
 add_library(wesnoth-gui_placer
@@ -527,7 +527,7 @@ add_library(wesnoth-gui_placer
 
 # This library contains the tooltip handling code.
 set(wesnoth-gui_tooltip_SRC
-	gui/auxiliary/tips.cpp
+	gui/core/tips.cpp
 	gui/dialogs/tip.cpp
 )
 
@@ -586,9 +586,9 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/viewport.cpp
 	gui/widgets/widget.cpp
 	gui/widgets/window.cpp
-	gui/auxiliary/window_builder.cpp
-	gui/auxiliary/window_builder/helper.cpp
-	gui/auxiliary/window_builder/instance.cpp
+	gui/core/window_builder.cpp
+	gui/core/window_builder/helper.cpp
+	gui/core/window_builder/instance.cpp
 )
 
 add_library(wesnoth-gui_widget
@@ -612,7 +612,7 @@ target_link_libraries(wesnoth-gui_widget
 # The widget definitions serialise the widget definition WML code into
 # its own structures. The definitions define the looks of the widgets.
 set(wesnoth-gui_widget_definition_SRC
-	gui/auxiliary/widget_definition.cpp
+	gui/core/widget_definition.cpp
 )
 
 add_library(wesnoth-gui_widget_definition
@@ -805,10 +805,10 @@ set(wesnoth-main_SRC
 	game_preferences.cpp
 	game_state.cpp
 	generic_event.cpp
-	gui/auxiliary/canvas.cpp
-	gui/auxiliary/log.cpp
+	gui/core/canvas.cpp
+	gui/core/log.cpp
 	gui/auxiliary/old_markup.cpp
-	gui/auxiliary/timer.cpp
+	gui/core/timer.cpp
 	gui/dialogs/addon/description.cpp
 	gui/dialogs/addon/filter_options.cpp
 	gui/dialogs/addon/uninstall_list.cpp

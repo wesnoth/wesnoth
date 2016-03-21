@@ -16,8 +16,8 @@
 
 #include "gui/widgets/helper.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "gui/lib/types/point.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/point.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
 #include "formula/callable.hpp"

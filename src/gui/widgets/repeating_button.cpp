@@ -16,8 +16,8 @@
 
 #include "gui/widgets/repeating_button.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/timer.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/timer.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"

@@ -19,7 +19,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 
 namespace gui2
 {

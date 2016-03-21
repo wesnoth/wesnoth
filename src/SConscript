@@ -330,24 +330,24 @@ wesnoth_sources = Split("""
     game_launcher.cpp
     game_preferences.cpp
     game_state.cpp
-    gui/auxiliary/canvas.cpp
-    gui/auxiliary/event/dispatcher.cpp
-    gui/auxiliary/event/distributor.cpp
-    gui/auxiliary/event/handler.cpp
+    gui/core/canvas.cpp
+    gui/core/event/dispatcher.cpp
+    gui/core/event/distributor.cpp
+    gui/core/event/handler.cpp
     gui/auxiliary/iterator/iterator.cpp
     gui/auxiliary/iterator/walker_grid.cpp
     gui/auxiliary/iterator/walker_widget.cpp
-    gui/auxiliary/log.cpp
-    gui/auxiliary/placer.cpp
-    gui/auxiliary/placer/horizontal_list.cpp
-    gui/auxiliary/placer/vertical_list.cpp
+    gui/core/log.cpp
+    gui/core/placer.cpp
+    gui/core/placer/horizontal_list.cpp
+    gui/core/placer/vertical_list.cpp
     gui/auxiliary/old_markup.cpp
-    gui/auxiliary/timer.cpp
-    gui/auxiliary/tips.cpp
-    gui/auxiliary/widget_definition.cpp
-    gui/auxiliary/window_builder.cpp
-    gui/auxiliary/window_builder/helper.cpp
-    gui/auxiliary/window_builder/instance.cpp
+    gui/core/timer.cpp
+    gui/core/tips.cpp
+    gui/core/widget_definition.cpp
+    gui/core/window_builder.cpp
+    gui/core/window_builder/helper.cpp
+    gui/core/window_builder/instance.cpp
     gui/dialogs/addon/description.cpp
     gui/dialogs/addon/filter_options.cpp
     gui/dialogs/addon/uninstall_list.cpp

@@ -14,10 +14,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/core/widget_definition.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "wml_exception.hpp"
 

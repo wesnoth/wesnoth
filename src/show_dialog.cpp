@@ -22,7 +22,7 @@
 #include "floating_label.hpp"
 #include "image.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/event/handler.hpp"
+#include "gui/core/event/handler.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"

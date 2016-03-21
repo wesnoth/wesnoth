@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "gui/auxiliary/timer.hpp"
+#include "gui/core/timer.hpp"
 
 #include "events.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 
 #include <boost/static_assert.hpp>
 

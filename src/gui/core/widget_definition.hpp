@@ -17,7 +17,7 @@
 
 #include "config.hpp"
 #include "font_options.hpp"
-#include "gui/auxiliary/canvas.hpp"
+#include "gui/core/canvas.hpp"
 #include "utils/foreach.hpp"
 
 namespace gui2

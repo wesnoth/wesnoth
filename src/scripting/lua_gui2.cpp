@@ -14,9 +14,9 @@
 
 #include "lua_gui2.hpp"
 
-#include "gui/auxiliary/canvas.hpp"     // for tcanvas
-#include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
 #include "gui/auxiliary/old_markup.hpp"
+#include "gui/core/canvas.hpp"     // for tcanvas
+#include "gui/core/window_builder.hpp"  // for twindow_builder, etc
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"

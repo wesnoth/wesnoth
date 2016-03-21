@@ -14,13 +14,13 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/window_builder.hpp"
 
 #include "asserts.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/window_builder/helper.hpp"
-#include "gui/auxiliary/window_builder/instance.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
+#include "gui/core/window_builder/instance.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/combobox.hpp"
 #include "gui/widgets/drawing.hpp"

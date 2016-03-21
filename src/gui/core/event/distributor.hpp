@@ -38,9 +38,9 @@
  * contains the handling of the keyboard as well.
  */
 
-#include "gui/auxiliary/event/dispatcher.hpp"
-#include "gui/auxiliary/event/handler.hpp"
-#include "gui/lib/types/point.hpp"
+#include "gui/core/event/dispatcher.hpp"
+#include "gui/core/event/handler.hpp"
+#include "gui/core/point.hpp"
 #include "serialization/unicode_types.hpp"
 #include "video.hpp"
 

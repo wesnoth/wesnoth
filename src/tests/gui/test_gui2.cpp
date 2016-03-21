@@ -25,7 +25,7 @@
 #include "game_config.hpp"
 #include "game_display.hpp"
 #include "generators/map_create.hpp"
-#include "gui/auxiliary/layout_exception.hpp"
+#include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/advanced_graphics_options.hpp"

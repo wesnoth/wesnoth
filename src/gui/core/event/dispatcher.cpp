@@ -14,9 +14,9 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/event/dispatcher_private.hpp"
+#include "gui/core/event/dispatcher_private.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 
 namespace gui2
 {

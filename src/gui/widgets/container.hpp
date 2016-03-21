@@ -17,7 +17,7 @@
 
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/control.hpp"
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {

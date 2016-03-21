@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "gui/auxiliary/widget_definition.hpp"
-#include "gui/auxiliary/window_builder.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"

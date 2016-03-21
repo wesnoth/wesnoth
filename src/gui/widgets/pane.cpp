@@ -17,11 +17,11 @@
 #include "gui/widgets/pane.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/const_clone.hpp"
-#include "gui/auxiliary/event/message.hpp"
+#include "gui/core/event/message.hpp"
 #include "gettext.hpp"
 
 #include <boost/bind.hpp>

@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 #define GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 
-#include "gui/auxiliary/notifier.hpp"
+#include "gui/core/notifier.hpp"
 #include "gui/widgets/control.hpp"
 
 #include "utils/boost_function_guarded.hpp"

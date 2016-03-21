@@ -19,8 +19,8 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/timer.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"

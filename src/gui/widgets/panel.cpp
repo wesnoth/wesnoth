@@ -16,7 +16,7 @@
 
 #include "gui/widgets/panel.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gettext.hpp"

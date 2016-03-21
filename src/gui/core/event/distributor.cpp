@@ -14,11 +14,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/event/distributor.hpp"
+#include "gui/core/event/distributor.hpp"
 
 #include "events.hpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/timer.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/timer.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
