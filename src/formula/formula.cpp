@@ -455,9 +455,9 @@ public:
 		} else if(op == "./") {
 			op_ = DIVL;
 		} else if(op == "..") {
-			op_ = CAT;
+			op_ = OP_CAT;
 		} else if(op == "in") {
-			op_ = IN;
+			op_ = OP_IN;
 		}
 	}
 
@@ -494,9 +494,9 @@ private:
 			return left.list_elements_mul(right);
 		case DIVL:
 			return left.list_elements_div(right);
-		case IN:
+		case OP_IN:
 			return variant(right.contains(left));
-		case CAT:
+		case OP_CAT:
 			return left.concatenate(right);
 		case EQ:
 			return left == right ? variant(1) : variant(0);
@@ -534,7 +534,8 @@ private:
 		return res;
 	}
 
-	enum OP { AND, OR, NEQ, LTE, GTE, CAT, IN, GT='>', LT='<', EQ='=', RAN='~',
+	//In some cases a IN  or CAT macros are defined.
+	enum OP { AND, OR, NEQ, LTE, GTE, OP_CAT, OP_IN, GT='>', LT='<', EQ='=', RAN='~',
 	          ADD='+', SUB='-', MUL='*', DIV='/', ADDL, SUBL, MULL, DIVL, DICE='d', POW='^', MOD='%' };
 
 	OP op_;

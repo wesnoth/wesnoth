@@ -597,7 +597,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		const double result = num < 0 ? -pow(-num, 1.0l / 3.0l) : pow(num, 1.0l / 3.0l);
+		const double result = num < 0 ? -pow(-num, 1.0 / 3.0) : pow(num, 1.0 / 3.0);
 		return variant(result, variant::DECIMAL_VARIANT);
 	}
 };
@@ -611,7 +611,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double base = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double root = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
-		const double result = base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0l / root) : pow(base, 1.0l / root);
+		const double result = base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0 / root) : pow(base, 1.0 / root);
 		if(result != result) {
 			return variant();
 		}
