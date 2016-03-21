@@ -20,11 +20,14 @@
 #ifndef GUI_AUXILIARY_FILTER_HPP_INCLUDED
 #define GUI_AUXILIARY_FILTER_HPP_INCLUDED
 
+#include "global.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "map/utils.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#ifndef HAVE_CXX11
+#include <stdexcept> // needed for the at() emulation
+#endif
 
 namespace gui2
 {
@@ -35,13 +38,26 @@ inline bool sort(const tpane::titem& lhs,
 				 const std::string& tag,
 				 const bool ascending)
 {
+#ifdef HAVE_CXX11
 	if(ascending) {
-		return lexical_cast<T>(at(lhs.tags, tag))
-			   < lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(lhs.tags.at(tag))
+			   < lexical_cast<T>(rhs.tags.at(tag));
 	} else {
-		return lexical_cast<T>(at(lhs.tags, tag))
-			   > lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(lhs.tags.at(tag))
+			   > lexical_cast<T>(rhs.tags.at(tag));
 	}
+#else
+	typedef std::map<std::string,std::string>::const_iterator iterator;
+	iterator lhs_it = lhs.tags.find(tag), rhs_it = rhs.tags.find(tag);
+	if(lhs_it == lhs.tags.end() || rhs_it == rhs.tags.end()) {
+		throw std::out_of_range("Key »" + tag + "« doesn't exist.");
+	}
+	if(ascending) {
+		return lexical_cast<T>(*lhs_it) < lexical_cast<T>(*rhs_it);
+	} else {
+		return lexical_cast<T>(*lhs_it) > lexical_cast<T>(*rhs_it);
+	}
+#endif
 }
 
 /**
@@ -67,8 +83,16 @@ inline bool contains(const tpane::titem& item,
 					 const std::string& tag,
 					 const ttext_box& text_box)
 {
-	return at(item.tags, tag).find(utf8::lowercase(text_box.text()))
+#ifdef HAVE_CXX11
+	return item.tags.at(tag).find(utf8::lowercase(text_box.text()))
 		   != std::string::npos;
+#else
+	std::map<std::string,std::string>::const_iterator it = item.tags.find(tag);
+	if(it == item.tags.end()) {
+		throw std::out_of_range("Key »" + tag + "« doesn't exist.");
+	}
+	return it->second.find(utf8::lowercase(text_box.text())) != std::string::npos;
+#endif
 }
 
 } // namespace gui2

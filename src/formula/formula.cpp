@@ -18,7 +18,6 @@
 
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "map/utils.hpp"
 #include "random_new.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -48,8 +47,14 @@ map_formula_callable& map_formula_callable::add(const std::string& key,
 
 variant map_formula_callable::get_value(const std::string& key) const
 {
-	return map_get_value_default(values_, key,
-	        fallback_ ? fallback_->query_value(key) : variant());
+	std::map<std::string,variant>::const_iterator it = values_.find(key);
+	if(it != values_.end()) {
+		return it->second;
+	} else if(fallback_) {
+		return fallback_->query_value(key);
+	} else {
+		return variant();
+	}
 }
 
 void map_formula_callable::get_inputs(std::vector<formula_input>* inputs) const
