@@ -256,8 +256,10 @@ std::string unit_topic_generator::operator()() const {
 			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
 #endif
 
-		const std::string &male_portrait = male_type.big_profile();
-		const std::string &female_portrait = female_type.big_profile();
+		const std::string &male_portrait = male_type.small_profile().empty() ?
+			male_type.big_profile()      : male_type.small_profile(); 
+		const std::string &female_portrait = female_type.small_profile().empty() ?
+			female_type.big_profile()      : female_type.small_profile();  ;
 
 		// TODO: figure out why the second checks don't match but the last does
 		if (!male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image") {
