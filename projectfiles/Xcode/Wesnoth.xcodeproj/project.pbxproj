@@ -176,9 +176,7 @@
 		B514C70B0F5450CC00E273F0 /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B514C7090F5450CC00E273F0 /* list.cpp */; };
 		B52EE8841213585300CFBDAB /* tod_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8821213585300CFBDAB /* tod_manager.cpp */; };
 		B52EE8851213585300CFBDAB /* tod_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8821213585300CFBDAB /* tod_manager.cpp */; };
-		B52EE88B1213589100CFBDAB /* data_manage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8871213589100CFBDAB /* data_manage.cpp */; };
 		B52EE88C1213589100CFBDAB /* unit_attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8891213589100CFBDAB /* unit_attack.cpp */; };
-		B52EE88D1213589100CFBDAB /* data_manage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8871213589100CFBDAB /* data_manage.cpp */; };
 		B52EE88E1213589100CFBDAB /* unit_attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8891213589100CFBDAB /* unit_attack.cpp */; };
 		B52EE89D1213590500CFBDAB /* list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8991213590500CFBDAB /* list.cpp */; };
 		B52EE89E1213590500CFBDAB /* progress_bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE89B1213590500CFBDAB /* progress_bar.cpp */; };
@@ -1260,6 +1258,8 @@
 		91273E8E1C7BF1C5005E7F81 /* tools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tools; sourceTree = "<group>"; };
 		9130A45E1C73BB6100852782 /* select_orb_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = select_orb_colors.cpp; sourceTree = "<group>"; };
 		9130A45F1C73BB6100852782 /* select_orb_colors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = select_orb_colors.hpp; sourceTree = "<group>"; };
+		9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_pathfind_cost_calculator.hpp; sourceTree = "<group>"; };
+		9190B73B1CA0564700B0EF66 /* register_widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = register_widget.hpp; sourceTree = "<group>"; };
 		919B37F71BAF789D00E0094C /* synced_user_choice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_user_choice.cpp; sourceTree = "<group>"; };
 		919B37F91BAF78AB00E0094C /* synced_user_choice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_user_choice.hpp; sourceTree = "<group>"; };
 		919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_choice_wait.cpp; sourceTree = "<group>"; };
@@ -1350,7 +1350,6 @@
 		91B621DD1B76B72500B00E0F /* mp_alerts_options.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mp_alerts_options.hpp; sourceTree = "<group>"; };
 		91B621DE1B76B72900B00E0F /* mp_change_control.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mp_change_control.hpp; sourceTree = "<group>"; };
 		91B621DF1B76B7DA00B00E0F /* mp_join_game_password_prompt.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mp_join_game_password_prompt.hpp; sourceTree = "<group>"; };
-		91B621E01B76B90700B00E0F /* register.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = register.hpp; path = detail/register.hpp; sourceTree = "<group>"; };
 		91B621E11B76BAB300B00E0F /* application_lua_kernel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = application_lua_kernel.hpp; sourceTree = "<group>"; };
 		91B621E21B76BAF300B00E0F /* context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = context.hpp; path = plugins/context.hpp; sourceTree = "<group>"; };
 		91B621E31B76BAF600B00E0F /* manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = manager.hpp; path = plugins/manager.hpp; sourceTree = "<group>"; };
@@ -1417,8 +1416,6 @@
 		B514C70A0F5450CC00E273F0 /* list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = list.hpp; sourceTree = "<group>"; };
 		B52EE8821213585300CFBDAB /* tod_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tod_manager.cpp; sourceTree = "<group>"; };
 		B52EE8831213585300CFBDAB /* tod_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tod_manager.hpp; sourceTree = "<group>"; };
-		B52EE8871213589100CFBDAB /* data_manage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = data_manage.cpp; sourceTree = "<group>"; };
-		B52EE8881213589100CFBDAB /* data_manage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = data_manage.hpp; sourceTree = "<group>"; };
 		B52EE8891213589100CFBDAB /* unit_attack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_attack.cpp; sourceTree = "<group>"; };
 		B52EE88A1213589100CFBDAB /* unit_attack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_attack.hpp; sourceTree = "<group>"; };
 		B52EE88F121358D700CFBDAB /* notifiee.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = notifiee.hpp; sourceTree = "<group>"; };
@@ -3368,6 +3365,7 @@
 				F4D5AFEB1571208B0062EAFC /* placer.hpp */,
 				F4C5DD66158CFD5E0044F754 /* point.cpp */,
 				F4C5DD67158CFD5E0044F754 /* point.hpp */,
+				9190B73B1CA0564700B0EF66 /* register_widget.hpp */,
 				B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */,
 				B5CF7BBB10D55F5A00A8BEB5 /* timer.hpp */,
 				B504B94A1284C06B00261FE9 /* tips.cpp */,
@@ -3804,6 +3802,7 @@
 				91B621E91B76BB1500B00E0F /* lua_kernel_base.hpp */,
 				ECA4A6791A1EC319006BCCF2 /* lua_map_location_ops.cpp */,
 				91B621EA1B76BB1800B00E0F /* lua_map_location_ops.hpp */,
+				9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */,
 				ECC2FFF91A51A00900023AF4 /* lua_race.cpp */,
 				91B621EB1B76BB1D00B00E0F /* lua_race.hpp */,
 				ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */,
@@ -3944,8 +3943,6 @@
 				F4D5DF38149CE9B500294046 /* chat_log.hpp */,
 				ECBBD73E1928F41500E434C6 /* core_selection.cpp */,
 				ECBBD73F1928F41500E434C6 /* core_selection.hpp */,
-				B52EE8871213589100CFBDAB /* data_manage.cpp */,
-				B52EE8881213589100CFBDAB /* data_manage.hpp */,
 				4944F40E1354FB970027E614 /* debug_clock.cpp */,
 				91B621D81B76B6DB00B00E0F /* debug_clock.hpp */,
 				EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */,
@@ -4072,7 +4069,6 @@
 				B59915260F20EA1400BAD4C1 /* password_box.hpp */,
 				B52EE89B1213590500CFBDAB /* progress_bar.cpp */,
 				B52EE89C1213590500CFBDAB /* progress_bar.hpp */,
-				91B621E01B76B90700B00E0F /* register.hpp */,
 				B59271F910E9577800A13911 /* repeating_button.cpp */,
 				B59271FA10E9577800A13911 /* repeating_button.hpp */,
 				B5A9BD070ECA805A002BE442 /* scroll_label.cpp */,
@@ -4442,7 +4438,6 @@
 				620A386F15E9364E00A4F513 /* create.cpp in Sources */,
 				B5599B780EC62181008DD061 /* cursor.cpp in Sources */,
 				49B4B8AB175E9F1300DB8C9B /* custom_tod.cpp in Sources */,
-				B52EE88B1213589100CFBDAB /* data_manage.cpp in Sources */,
 				4944F4121354FB970027E614 /* debug_clock.cpp in Sources */,
 				ECEEB7F01A1E8AB20006575B /* default_map_generator_job.cpp in Sources */,
 				EC4E3B1C19B2D7AD0049CBD7 /* default_map_generator.cpp in Sources */,
@@ -4952,7 +4947,6 @@
 				B597EC180FC0835900CE81F5 /* controller.cpp in Sources */,
 				B52EE9A7121363EB00CFBDAB /* core.cpp in Sources */,
 				B597C5340FACD6CA00CE81F5 /* cursor.cpp in Sources */,
-				B52EE88D1213589100CFBDAB /* data_manage.cpp in Sources */,
 				B597C57A0FACD6CA00CE81F5 /* debug.cpp in Sources */,
 				B597C5B30FACD6CA00CE81F5 /* dialog.cpp in Sources */,
 				B597C5C60FACD6CA00CE81F5 /* dialogs.cpp in Sources */,
