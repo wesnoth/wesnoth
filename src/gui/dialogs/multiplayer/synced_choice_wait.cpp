@@ -21,7 +21,7 @@
 #include "gui/widgets/window.hpp"
 #include "quit_confirmation.hpp"
 
-#include "message.hpp"
+#include "gui/dialogs/message.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 
