@@ -27,6 +27,7 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"              // for resistance_color
 #include "units/types.hpp"               // for unit_type, unit_type_data, etc
+#include "video.hpp"                    // fore current_resolution
 
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/optional.hpp>  // for optional
@@ -261,16 +262,24 @@ std::string unit_topic_generator::operator()() const {
 		male_type.big_profile() : male_type.small_profile();
 	const std::string &female_portrait = female_type.small_profile().empty() ?
 		female_type.big_profile() : female_type.small_profile();
+	
+	int sz = 400;
+	int screen_width = CVideo::get_singleton().getx();
+	if (screen_width <= 800) {
+		sz = 200;
+	} else if(screen_width <= 1024) {
+		sz = 300;
+	}
 
 	// TODO: figure out why the second checks don't match but the last does
 	if (!male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image") {
-		ss << "<img>src='" << male_portrait << "~FL(horiz)' box='no' align='right' float='yes'</img> ";
+		ss << "<img>src='" << male_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
 	}
 
 	ss << "\n\n";
 
 	if (!female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image") {
-		ss << "<img>src='" << female_portrait << "~FL(horiz)' box='no' align='right' float='yes'</img> ";
+		ss << "<img>src='" << female_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
 	}
 
 	ss << "\n";
