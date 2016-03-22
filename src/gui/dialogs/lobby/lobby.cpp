@@ -996,12 +996,6 @@ void tlobby_main::pre_show(twindow& window)
 						boost::ref(window)));
 	find_widget<tbutton>(&window, "observe_global", false).set_active(false);
 
-	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "close_window", false),
-			boost::bind(&tlobby_main::close_window_button_callback,
-						this,
-						boost::ref(window)));
-
 	ttoggle_button& skip_replay
 			= find_widget<ttoggle_button>(&window, "skip_replay", false);
 	skip_replay.set_value(preferences::skip_mp_replay());
@@ -1084,7 +1078,6 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 		utils::string_map symbols;
 		symbols["name"] = name;
 		if(whisper) {
-			//add_label_data(data, "log_header", "<" + name + ">");
 			add_label_data(data,
 						   "log_text",
 						   VGETTEXT("Whisper session with $name started. "
@@ -1093,7 +1086,6 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 									"type /ignore $name\n",
 									symbols));
 		} else {
-			//add_label_data(data, "log_header", name);
 			add_label_data(
 					data, "log_text", VGETTEXT("Room $name joined", symbols));
 			lobby_info_.open_room(name);
@@ -1102,6 +1094,16 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 		std::map<std::string, string_map> data2;
 		add_label_data(data2, "room", whisper ? "<" + name + ">" : name);
 		roomlistbox_->add_row(data2);
+
+		tbutton& close_button = find_widget<tbutton>(roomlistbox_->get_row_grid(roomlistbox_->get_item_count() - 1), "close_window", false);
+		connect_signal_mouse_left_click(close_button,
+			boost::bind(&tlobby_main::close_window_button_callback,
+					this,
+					boost::ref(*roomlistbox_->get_window())));
+
+		if(name == "lobby") {
+			close_button.set_active(false);
+		}
 
 		return &open_windows_.back();
 	}
@@ -1219,41 +1221,17 @@ void tlobby_main::switch_to_window(size_t id)
 
 void tlobby_main::active_window_changed()
 {
-	//tlabel& header = find_widget<tlabel>(
-	//		&chat_log_container_->page_grid(active_window_),
-	//		"log_header",
-	//		false);
-
 	tlobby_chat_window& t = open_windows_[active_window_];
-	std::string expected_label;
-	//if(t.whisper) {
-	//	expected_label = "<" + t.name + ">";
-	//} else {
-	//	expected_label = t.name;
-	//}
-	//if(header.label() != expected_label) {
-	//	ERR_LB << "Chat log header not what it should be! " << header.label()
-	//		   << " vs " << expected_label << "\n";
-	//}
-
-	bool close_button_active = (t.whisper || (t.name != "lobby"));
 
 	DBG_LB << "active window changed to " << active_window_ << " "
-		   << (t.whisper ? "w" : "r") << " " << t.name << " "
-		   << t.pending_messages << " : " << expected_label
-		   << " close button:" << close_button_active << "\n";
+		   << (t.whisper ? "w" : "r") << " " << t.name << "\n";
 
 	// clear pending messages notification in room listbox
 	tgrid* grid = roomlistbox_->get_row_grid(active_window_);
-	// this breaks for some reason
-	// tlabel& label = grid->get_widget<tlabel>("room", false);
-	// label.set_label(expected_label);
 	find_widget<timage>(grid, "pending_messages", false)
 			.set_visible(twidget::tvisible::hidden);
 	t.pending_messages = 0;
 
-	find_widget<tbutton>(window_, "close_window", false)
-			.set_active(close_button_active);
 	player_list_dirty_ = true;
 }
 
