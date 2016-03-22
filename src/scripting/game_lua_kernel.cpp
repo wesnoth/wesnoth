@@ -4126,18 +4126,18 @@ int game_lua_kernel::intf_get_all_vars(lua_State *L) {
 /**
  * Teeleports a unit to a location.
  * Arg 1: unit
- * Arg 2,3: taget location
- * Arg 4: bool (ignore_passability)
- * Arg 5: bool (clear_shroud)
- * Arg 6: bool (animate)
+ * Arg 2: target location
+ * Arg 3: bool (ignore_passability)
+ * Arg 4: bool (clear_shroud)
+ * Arg 5: bool (animate)
  */
 int game_lua_kernel::intf_teleport(lua_State *L)
 {
 	unit_ptr u = luaW_checkunit_ptr(L, 1, true);
-	map_location dst(luaL_checkinteger(L, 2) - 1, luaL_checkinteger(L, 3) - 1);
-	bool check_passability = !lua_toboolean(L, 4);
-	bool clear_shroud = luaW_toboolean(L, 5);
-	bool animate = luaW_toboolean(L, 6);
+	map_location dst = luaW_checklocation(L, 2);
+	bool check_passability = !luaW_toboolean(L, 3);
+	bool clear_shroud = luaW_toboolean(L, 4);
+	bool animate = luaW_toboolean(L, 5);
 
 	if (dst == u->get_location() || !resources::gameboard->map().on_board(dst)) {
 		return 0;
