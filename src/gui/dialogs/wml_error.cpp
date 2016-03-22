@@ -176,6 +176,8 @@ twml_error::twml_error(const std::string& summary,
 	, have_post_summary_(!post_summary.empty())
 	, report_()
 {
+	set_restore(true);
+
 	const std::string& file_list_text = format_file_list(files);
 
 	report_ = summary;
