@@ -120,11 +120,9 @@ bool candidate_action_factory::is_duplicate(const std::string& name)
 
 //============================================================================
 
-} // of namespace ai
-
-
 std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca) {
 	s << "candidate action with name ["<< ca.get_name() <<"]";
 	return s;
 }
 
+} // of namespace ai

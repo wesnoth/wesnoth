@@ -192,12 +192,11 @@ public:
 	}
 };
 
-
 //============================================================================
 
-} //end of namespace ai
-
 std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca);
+
+} //end of namespace ai
 
 #ifdef _MSC_VER
 #pragma warning(pop)

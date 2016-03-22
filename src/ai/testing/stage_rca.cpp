@@ -23,6 +23,7 @@
 #include "ai/composite/ai.hpp"
 #include "ai/composite/engine.hpp"
 #include "ai/composite/property_handler.hpp"
+#include "ai/composite/rca.hpp"
 #include "ai/gamestate_observer.hpp"
 #include "log.hpp"
 
