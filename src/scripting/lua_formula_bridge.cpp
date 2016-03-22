@@ -24,6 +24,9 @@
 #include "formula/formula.hpp"
 #include "variable.hpp"
 
+#include "resources.hpp"
+#include "units/map.hpp"
+
 void luaW_pushfaivariant(lua_State* L, variant val);
 variant luaW_tofaivariant(lua_State* L, int i);
 
@@ -71,6 +74,41 @@ public:
 				}
 			}
 		}
+	}
+	int do_compare(const formula_callable* other) const {
+		const lua_callable* lua = dynamic_cast<const lua_callable*>(other);
+		if(lua == NULL) {
+			return formula_callable::do_compare(other);
+		}
+		if(mState == lua->mState) { // Which should always be the case, but let's be safe here
+			if(lua_compare(mState, table_i, lua->table_i, LUA_OPEQ)) {
+				return 0;
+			}
+			int top = lua_gettop(mState);
+			if(lua_getmetatable(mState, table_i)) {
+				lua_getfield(mState, -1, "__lt");
+				if(!lua_isnoneornil(mState, -1)) {
+					if(lua_getmetatable(mState, lua->table_i)) {
+						lua_getfield(mState, -1, "__lt");
+						if(!lua_isnoneornil(mState, -1)) {
+							lua_settop(mState, top);
+							return lua_compare(mState, table_i, lua->table_i, LUA_OPLT) ? -1 : 1;
+						}
+						if(lua_compare(mState, -4, -2, LUA_OPEQ)) {
+							lua_settop(mState, top);
+							return 0;
+						}
+						const void* lhs = lua_topointer(mState, -4);
+						const void* rhs = lua_topointer(mState, -2);
+						lua_settop(mState, top);
+						return lhs < rhs ? -1 : (lhs > rhs ? 1 : 0);
+					}
+				}
+			}
+			lua_settop(mState, top);
+			return lua_topointer(mState, -2) < lua_topointer(mState, -1) ? -1 : 1;
+		}
+		return mState < lua->mState ? -1 : 1;
 	}
 };
 
