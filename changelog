@@ -13,6 +13,7 @@ Version 1.13.4+dev:
      interpolation scaling.
    * New ~SCALE_INTO_SHARP(w,h) IPF which preserves aspect ratio, using
      nearest neighbor scaling.
+   * Support delayed_variable_substitution= in [on_undo], [on_redo]
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider

@@ -1281,12 +1281,20 @@ WML_HANDLER_FUNCTION(wml_message, cfg)
 
 WML_HANDLER_FUNCTION(on_undo, cfg)
 {
-	synced_context::add_undo_commands(cfg.get_parsed_config());
+	if(cfg["delayed_variable_substitution"].to_bool(false)) {
+		synced_context::add_undo_commands(cfg.get_config());
+	} else {
+		synced_context::add_undo_commands(cfg.get_parsed_config());
+	}
 }
 
 WML_HANDLER_FUNCTION(on_redo, cfg)
 {
-	synced_context::add_redo_commands(cfg.get_parsed_config());
+	if(cfg["delayed_variable_substitution"].to_bool(false)) {
+		synced_context::add_redo_commands(cfg.get_config());
+	} else {
+		synced_context::add_redo_commands(cfg.get_parsed_config());
+	}
 }
 
 } // end namespace game_events
