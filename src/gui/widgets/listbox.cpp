@@ -62,8 +62,8 @@ tlistbox::tlistbox(const bool has_minimum,
 				   const tgenerator_::tplacement placement,
 				   const bool select)
 	: tscrollbar_container(2) // FIXME magic number
-	, generator_(
-			  tgenerator_::build(has_minimum, has_maximum, placement, select))
+	, generator_(tgenerator_::build(has_minimum, has_maximum, placement, select))
+	, is_horizonal_(placement == tgenerator_::horizontal_list)
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
 	, need_layout_(false)
@@ -104,18 +104,25 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 	}
 
 	int height_reduced = 0;
+	int width_reduced = 0;
 	//TODO: Fix this for horizinal listboxes
 	//Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
-	int row_pos = generator_->item(row).get_y()  - content_grid_->get_y();
+	int row_pos_y = is_horizonal_ ? -1 : generator_->item(row).get_y()  - content_grid_->get_y();
+	int row_pos_x = is_horizonal_ ? -1 : 0;
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != tvisible::invisible) {
-			height_reduced += generator_->item(row).get_height();
+			if(is_horizonal_) {
+				width_reduced += generator_->item(row).get_width();
+			}
+			else {
+				height_reduced += generator_->item(row).get_height();			
+			}
 		}
 		generator_->delete_item(row);
 	}
 
-	if(height_reduced != 0 && get_item_count() != 0) {
-		resize_content(0, -height_reduced, 0, row_pos);
+	if((height_reduced != 0 || width_reduced != 0) && get_item_count() != 0) {
+		resize_content(-width_reduced, -height_reduced, row_pos_x, row_pos_y);
 	} else {
 		update_content_size();
 	}

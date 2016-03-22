@@ -285,6 +285,8 @@ private:
 	 */
 	tgenerator_* generator_;
 
+	const bool is_horizonal_;
+
 	/** Contains the builder for the new items. */
 	tbuilder_grid_const_ptr list_builder_;
 
