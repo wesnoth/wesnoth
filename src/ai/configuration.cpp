@@ -341,7 +341,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			parsed_config.add_child("aspect", p.second);
 		}
 	}
-	if (algorithm.empty()) {
+	if (algorithm.empty() && !parsed_config.has_child("stage")) {
 		base_config = get_ai_config_for("ai_default_rca");
 	}
 	BOOST_FOREACH(const config::any_child &child, parsed_config.all_children_range()) {
