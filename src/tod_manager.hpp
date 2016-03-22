@@ -45,14 +45,8 @@ class tod_manager : public savegame::savegame_config
 		void resolve_random(random_new::rng& r);
 		int get_current_time(const map_location& loc = map_location::null_location()) const;
 
-		void set_current_time(int time) { currentTime_ = time; }
-
-		void set_current_time(int time, int area_index) {
-			assert(area_index < static_cast<int>(areas_.size()));
-			assert(time < static_cast<int>(areas_[area_index].times.size()) );
-			areas_[area_index].currentTime = time;
-		}
-
+		void set_current_time(int time);
+		void set_current_time(int time, int area_index);
 		void set_area_id(int area_index, const std::string& id);
 
 		/**
@@ -184,6 +178,8 @@ class tod_manager : public savegame::savegame_config
 		{ return has_turn_event_fired_; }
 		void turn_event_fired()
 		{ has_turn_event_fired_ = true; }
+		bool has_tod_bonus_changed()
+		{ return has_tod_bonus_changed_; }
 	private:
 
 		/**
@@ -229,6 +225,8 @@ class tod_manager : public savegame::savegame_config
 			int currentTime;
 		};
 
+		void set_current_time(int time, area_time_of_day& area);
+
 		//index of the times vector of the main time where we're currently at
 		int currentTime_;
 		std::vector<time_of_day> times_;
@@ -240,6 +238,7 @@ class tod_manager : public savegame::savegame_config
 		int num_turns_;
 		//Whether the "turn X" and the "new turn" events were already fired this turn.
 		bool has_turn_event_fired_;
+		bool has_tod_bonus_changed_;
 		//
 		config::attribute_value random_tod_;
 };

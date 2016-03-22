@@ -135,11 +135,13 @@ inline boost::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n
 template <>
 inline boost::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
 {
-	// To Crab_: Is this part ok? I tested it, works fine
 	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
 	boost::shared_ptr<vconfig> vcfg = boost::shared_ptr<vconfig>(new vconfig(*cfg));
-	luaW_tovconfig(L, n, *vcfg);
-	boost::shared_ptr<terrain_filter> tf = boost::shared_ptr<terrain_filter>(new terrain_filter(*vcfg, resources::filter_con));
+	if (!luaW_tovconfig(L, n, *vcfg)) {
+		cfg->add_child("not");
+	}
+	vcfg->make_safe();
+	boost::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con));
 	return tf;
 }
 
@@ -170,7 +172,12 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
-		target::TYPE type = static_cast<target::TYPE>(lua_tointeger(L, -1));  // st n + 2
+		target::TYPE type = target::TYPE::EXPLICIT;
+		if(lua_isnumber(L, -1)) {
+			type = target::TYPE::from_int(lua_tointeger(L, -1));  // st n + 2
+		} else if(lua_isstring(L, -1)) {
+			type = target::TYPE::string_to_enum(lua_tostring(L, -1));  // st n + 2
+		}
 		lua_pop(L, 1); // st n + 1
 
 

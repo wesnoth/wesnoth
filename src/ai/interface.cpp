@@ -18,8 +18,11 @@
  */
 
 #include "interface.hpp"
+#include "log.hpp"
 
 namespace ai {
+
+static lg::log_domain log_ai("ai/general");
 
 // =======================================================================
 //
@@ -27,6 +30,16 @@ namespace ai {
 std::string interface::describe_self() const
 {
 	return "? [ai]";
+}
+
+// This is defined in the source file so that it can easily access the logger
+bool ai_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		LOG_STREAM(err, log_ai) << "Error: Attempt to double-register AI " << name << std::endl;
+		return true;
+	}
+	return false;
 }
 
 } //end of namespace ai

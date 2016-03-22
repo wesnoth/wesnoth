@@ -489,12 +489,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			}
 
 		} else if( action.is_string() && action.as_string() == "recruit") {
-			stage_ptr r = get_recruitment(ai_);
-			if (r) {
-				if (r->play_stage()) {
-					made_moves.push_back(action);
-				}
-			}
+			ERR_AI << "FormulaAI recruitment is currently broken, sorry!" << std::endl;
 		} else if( action.is_string() && action.as_string() == "continue") {
 			if( infinite_loop_guardian_.continue_check() ) {
 				made_moves.push_back(action);
@@ -622,10 +617,6 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		return variant(get_leader_value()*1000,variant::DECIMAL_VARIANT);
 
-	} else if(key == "number_of_possible_recruits_to_force_recruit")
-	{
-		return variant(get_number_of_possible_recruits_to_force_recruit()*1000,variant::DECIMAL_VARIANT);
-
 	} else if(key == "passive_leader")
 	{
 		return variant(get_passive_leader());
@@ -633,14 +624,6 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "passive_leader_shares_keep")
 	{
 		return variant(get_passive_leader_shares_keep());
-
-	} else if(key == "recruitment_ignore_bad_movement")
-	{
-		return variant(get_recruitment_ignore_bad_movement());
-
-	} else if(key == "recruitment_ignore_bad_combat")
-	{
-		return variant(get_recruitment_ignore_bad_combat());
 
 	} else if(key == "recruitment_pattern")
 	{

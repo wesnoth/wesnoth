@@ -54,7 +54,7 @@ public:
 
 	/**
 	 * Play the turn - strategy
-	 * @return true only if game state has changed. Really only needed for ministages. Returning false is always safe.
+	 * @return true only if game state has changed. Returning false is always safe.
 	 */
 	bool play_stage();
 
@@ -77,7 +77,7 @@ public:
 protected:
 	/**
 	 * Play the turn - implementation
-	 * @return true only if game state has changed. Really only needed for ministages. Returning false is always safe.
+	 * @return true only if game state has changed. Returning false is always safe.
 	 */
 	virtual bool do_play_stage() = 0;
 
@@ -99,6 +99,7 @@ public:
 
 
 class stage_factory{
+	bool is_duplicate(const std::string &name);
 public:
 	typedef boost::shared_ptr< stage_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
@@ -116,6 +117,9 @@ public:
 
 	stage_factory( const std::string &name )
 	{
+		if (is_duplicate(name)) {
+			return;
+		}
 		factory_ptr ptr_to_this(this);
 		get_list().insert(make_pair(name,ptr_to_this));
 	}
@@ -137,20 +141,6 @@ public:
 		a->on_create();
 		return a;
 	}
-};
-
-
-/** this class is a lazily-initializing proxy for a stage **/
-class ministage {
-public:
-	ministage(const config &cfg);
-	virtual ~ministage();
-	stage_ptr get_stage_ptr(ai_context &context);
-	config to_config() const;
-
-private:
-	config cfg_;
-	stage_ptr stage_;
 };
 
 } //end of namespace ai

@@ -109,43 +109,16 @@ bool idle_stage::do_play_stage(){
 	return false;
 }
 
-// =======================================================================
-// COMPOSITE AI MINISTAGE
-// =======================================================================
 
-ministage::ministage(const config &cfg)
-	: cfg_(cfg),stage_()
+// This is defined in the source file so that it can easily access the logger
+bool stage_factory::is_duplicate(const std::string& name)
 {
-}
-
-ministage::~ministage()
-{
-}
-
-
-stage_ptr ministage::get_stage_ptr(ai_context &context)
-{
-	if (stage_) {
-		return stage_;
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_STAGE << "Error: Attempt to double-register stage " << name << std::endl;
+		return true;
 	}
-
-	std::vector<stage_ptr> stages;
-	engine::parse_stage_from_config(context,cfg_,std::back_inserter(stages));
-	if (stages.empty()) {
-		return stage_ptr();
-	}
-	stage_ = stages.front();
-	return stage_;
+	return false;
 }
-
-config ministage::to_config() const
-{
-	if (!stage_) {
-		return cfg_;
-	}
-	return stage_->to_config();
-}
-
 
 
 } //end of namespace ai

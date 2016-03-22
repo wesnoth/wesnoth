@@ -27,6 +27,7 @@
 #include "map/location.hpp"       // for map_location
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
+#include "tod_manager.hpp"
 
 #include "composite/ai.hpp"             // for ai_composite
 #include "composite/component.hpp"      // for component_manager
@@ -153,16 +154,16 @@ interface& holder::get_ai_ref()
 }
 
 
-void holder::modify_ai_config_old( const config::const_child_itors &ai_parameters)
+void holder::modify_side_ai_config(config cfg)
 {
 	// only handle aspects
 	// transform ai_parameters to new-style config
 
-	config cfg;
-	configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(this->side_,ai_parameters,cfg);
+	configuration::expand_simplified_aspects(this->side_, cfg);
 	//at this point we have a single config which contains [aspect][facet] tags
 	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
 
+	// TODO: Also add [goal] tags. And what about [stage] or [engine] tags? (Maybe they're not important.)
 	if (this->readonly_context_ == NULL) {
 		// if not initialized, append that config to the bottom of base cfg
 		// then, merge aspects with the same id
@@ -266,12 +267,9 @@ const std::string holder::get_ai_overview()
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
 	s << "leader_ignores_keep:  " << this->ai_->get_leader_ignores_keep() << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
-	s << "number_of_possible_recruits_to_force_recruit:  " << this->ai_->get_number_of_possible_recruits_to_force_recruit() << std::endl;
 	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
 	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
 	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
-	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
-	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;
 	s << "recruitment_more:  " << utils::join(this->ai_->get_recruitment_more()) << std::endl;
@@ -332,6 +330,7 @@ manager::AI_map_of_stacks manager::ai_map_;
 game_info *manager::ai_info_;
 events::generic_event manager::user_interact_("ai_user_interact");
 events::generic_event manager::sync_network_("ai_sync_network");
+events::generic_event manager::tod_changed_("ai_tod_changed");
 events::generic_event manager::gamestate_changed_("ai_gamestate_changed");
 events::generic_event manager::turn_started_("ai_turn_started");
 events::generic_event manager::recruit_list_changed_("ai_recruit_list_changed");
@@ -383,6 +382,16 @@ void manager::remove_gamestate_observer(events::observer* event_observer){
 	gamestate_changed_.detach_handler(event_observer);
 	turn_started_.detach_handler(event_observer);
 	map_changed_.detach_handler(event_observer);
+}
+
+
+void manager::add_tod_changed_observer( events::observer* event_observer){
+	tod_changed_.attach_handler(event_observer);
+}
+
+
+void manager::remove_tod_changed_observer(events::observer* event_observer){
+	tod_changed_.detach_handler(event_observer);
 }
 
 
@@ -447,6 +456,11 @@ void manager::raise_sync_network() {
 
 void manager::raise_gamestate_changed() {
 	gamestate_changed_.notify_observers();
+}
+
+
+void manager::raise_tod_changed() {
+	tod_changed_.notify_observers();
 }
 
 
@@ -720,7 +734,9 @@ void manager::clear_ais()
 
 void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
 {
-	get_active_ai_holder_for_side(side).modify_ai_config_old(ai_parameters);
+	BOOST_FOREACH(const config& cfg, ai_parameters) {
+		get_active_ai_holder_for_side(side).modify_side_ai_config(cfg);
+	}
 }
 
 
@@ -792,6 +808,9 @@ void manager::play_turn( side_number side ){
 	interface& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai turn");
 	raise_turn_started();
+	if (resources::tod_manager->has_tod_bonus_changed()) {
+		raise_tod_changed();
+	}
 	ai_obj.new_turn();
 	ai_obj.play_turn();
 	const int turn_end_time= SDL_GetTicks();

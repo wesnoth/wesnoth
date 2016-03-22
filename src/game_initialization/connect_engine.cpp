@@ -1027,7 +1027,7 @@ config side_engine::new_config() const
 	assert(controller_ != CNTR_LAST);
 	if(controller_ == CNTR_COMPUTER && allow_player_) {
 		// Do not import default ai cfg otherwise - all is set by scenario config.
-		res.add_child("ai", ai::configuration::get_ai_config_for(ai_algorithm_));
+		res.add_child_at("ai", config_of("ai_algorithm", ai_algorithm_), 0);
 	}
 
 	if(controller_ == CNTR_EMPTY) {

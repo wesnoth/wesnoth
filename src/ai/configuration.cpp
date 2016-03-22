@@ -25,10 +25,14 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
+#include "config_assign.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/assign/list_of.hpp>
 
 #include <vector>
+#include <deque>
+#include <set>
 
 namespace ai {
 
@@ -38,56 +42,11 @@ static lg::log_domain log_ai_configuration("ai/config");
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
 
-
-class well_known_aspect {
-public:
-	well_known_aspect(const std::string &name, bool attr = true)
-		: name_(name),was_an_attribute_(attr)
-	{
-	}
-
-	virtual ~well_known_aspect() {}
-
-	std::string name_;
-	bool was_an_attribute_;
-};
-
-static std::vector<well_known_aspect> well_known_aspects;
-
 void configuration::init(const config &game_config)
 {
 	ai_configurations_.clear();
 	era_ai_configurations_.clear();
 	mod_ai_configurations_.clear();
-	well_known_aspects.clear();
-	well_known_aspects.push_back(well_known_aspect("advancements"));
-	well_known_aspects.push_back(well_known_aspect("aggression"));
-	well_known_aspects.push_back(well_known_aspect("attack_depth"));
-	well_known_aspects.push_back(well_known_aspect("attacks"));
-	well_known_aspects.push_back(well_known_aspect("avoid",false));
-	well_known_aspects.push_back(well_known_aspect("caution"));
-	well_known_aspects.push_back(well_known_aspect("grouping"));
-	well_known_aspects.push_back(well_known_aspect("leader_aggression"));
-	well_known_aspects.push_back(well_known_aspect("leader_goal",false));
-	well_known_aspects.push_back(well_known_aspect("leader_ignores_keep"));
-	well_known_aspects.push_back(well_known_aspect("leader_value"));
-	well_known_aspects.push_back(well_known_aspect("number_of_possible_recruits_to_force_recruit"));
-	well_known_aspects.push_back(well_known_aspect("passive_leader"));
-	well_known_aspects.push_back(well_known_aspect("passive_leader_shares_keep"));
-	well_known_aspects.push_back(well_known_aspect("recruitment"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_diversity"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_combat"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_movement"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_instructions"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_more"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_pattern"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_randomness"));
-	well_known_aspects.push_back(well_known_aspect("recruitment_save_gold"));
-	well_known_aspects.push_back(well_known_aspect("scout_village_targeting"));
-	well_known_aspects.push_back(well_known_aspect("simple_targeting"));
-	well_known_aspects.push_back(well_known_aspect("support_villages"));
-	well_known_aspects.push_back(well_known_aspect("village_value"));
-	well_known_aspects.push_back(well_known_aspect("villages_per_scout"));
 
 	const config &ais = game_config.child("ais");
 	default_config_ = ais.child("default_config");
@@ -220,52 +179,6 @@ const config& configuration::get_default_ai_parameters()
 }
 
 
-bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(side_number side, const config& cfg, config& parsed_cfg, const std::string &id, bool aspect_was_attribute)
-{
-	config aspect_config;
-	aspect_config["id"] = id;
-
-	BOOST_FOREACH(const config &aiparam, cfg.child_range("ai")) {
-		const config &_aspect = aiparam.find_child("aspect","id",id);
-		if (_aspect) {
-			aspect_config.append(_aspect);
-		}
-
-		if (aspect_was_attribute && !aiparam.has_attribute(id)) {
-			continue;//we are looking for an attribute but it isn't present
-		}
-
-		if (!aspect_was_attribute && !aiparam.child(id)) {
-			continue;//we are looking for a child but it isn't present
-		}
-
-		config facet_config;
-		facet_config["engine"] = "cpp";
-		facet_config["name"] = "standard_aspect";
-		if (aspect_was_attribute) {
-			facet_config["value"] = aiparam[id];
-		} else {
-			BOOST_FOREACH(const config &value, aiparam.child_range(id)) {
-				facet_config.add_child("value",value);
-			}
-		}
-
-		if (const config::attribute_value *v = aiparam.get("turns")) {
-			facet_config["turns"] = *v;
-		}
-		if (const config::attribute_value *v = aiparam.get("time_of_day")) {
-			facet_config["time_of_day"] = *v;
-		}
-
-		aspect_config.add_child("facet",facet_config);
-	}
-	DBG_AI_CONFIGURATION << "side "<< side << " aspect[" << id << "] config :\n"<< cfg << "\n";
-
-	parsed_cfg.add_child("aspect",aspect_config);
-	return true;
-}
-
-
 bool configuration::parse_side_config(side_number side, const config& original_cfg, config &cfg )
 {
 	LOG_AI_CONFIGURATION << "side "<< side <<": parsing AI configuration from config" << std::endl;
@@ -289,31 +202,11 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration" << std::endl;
 		cfg.add_child_at("ai",default_config_,0);
 	} else {
-		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, do not applying it" << std::endl;
+		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, not applying it" << std::endl;
 	}
 
-	//find version
-	int version = 10600;
-	BOOST_FOREACH(const config &aiparam, cfg.child_range("ai")) {
-		if (const config::attribute_value *a = aiparam.get("version")){
-			int v = a->to_int(version);
-			if (version<v) {
-				version = v;
-			}
-		}
-	}
-
-	if (version<10703) {
-		if (!upgrade_side_config_from_1_07_02_to_1_07_03(side, cfg)) {
-			return false;
-		}
-		version = 10703;
-	}
-
-
-	if (version<10710) {
-		version = 10710;
-	}
+	LOG_AI_CONFIGURATION << "side "<< side << ": expanding simplified aspects into full facets"<< std::endl;
+	expand_simplified_aspects(side, cfg);
 
 	//construct new-style integrated config
 	LOG_AI_CONFIGURATION << "side "<< side << ": doing final operations on AI config"<< std::endl;
@@ -323,9 +216,6 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	BOOST_FOREACH(const config &aiparam, cfg.child_range("ai")) {
 		parsed_cfg.append(aiparam);
 	}
-
-	LOG_AI_CONFIGURATION << "side "<< side <<": setting config version to "<< version << std::endl;
-	parsed_cfg["version"] = version;
 
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI aspect with the same id"<< std::endl;
@@ -337,9 +227,13 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
 			continue;
 		}
-		config c = aspect_cfg.child("default");
-		aspect_cfg.clear_children("default");
-		aspect_cfg.add_child("default",c);
+		aspect_cfg.merge_children("default");
+		config& dflt = aspect_cfg.child("default");
+		if (dflt.has_child("value")) {
+			while (dflt.child_count("value") > 1) {
+				dflt.remove_child("value", 0);
+			}
+		}
 	}
 
 	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
@@ -349,197 +243,112 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	return true;
 
 }
+	
+static const std::set<std::string> non_aspect_attributes = boost::assign::list_of("turns")("time_of_day")("engine")("ai_algorithm")("id")("description");
+static const std::set<std::string> just_copy_tags = boost::assign::list_of("engine")("stage")("aspect")("goal")("modify_ai");
+static const std::set<std::string> old_goal_tags = boost::assign::list_of("target")("target_location")("protect_unit")("protect_location");
 
-
-static void transfer_turns_and_time_of_day_data(const config &src, config &dst)
-{
-	if (const config::attribute_value *turns = src.get("turns")) {
-		dst["turns"] = *turns;
-	}
-	if (const config::attribute_value *time_of_day = src.get("time_of_day")) {
-		dst["time_of_day"] = *time_of_day;
-	}
-}
-
-
-bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side, config &cfg)
-{
-	LOG_AI_CONFIGURATION << "side "<< side <<": upgrading ai config version from version 1.7.2 to 1.7.3"<< std::endl;
-	config parsed_cfg;
-
-	bool is_idle_ai = false;
-	if (cfg["ai_algorithm"]=="idle_ai") {
-		is_idle_ai = true;
-	} else {
-		BOOST_FOREACH(config &aiparam, cfg.child_range("ai")) {
-			if (aiparam["ai_algorithm"]=="idle_ai") {
-				is_idle_ai = true;
-				break;
+void configuration::expand_simplified_aspects(side_number side, config &cfg) {
+	std::string algorithm;
+	config base_config, parsed_config;
+	BOOST_FOREACH(const config &aiparam, cfg.child_range("ai")) {
+		std::string turns, time_of_day, engine = "cpp";
+		if (aiparam.has_attribute("turns")) {
+			turns = aiparam["turns"].str();
+		}
+		if (aiparam.has_attribute("time_of_day")) {
+			time_of_day = aiparam["time_of_day"].str();
+		}
+		if (aiparam.has_attribute("engine")) {
+			engine = aiparam["engine"].str();
+		}
+		if (aiparam.has_attribute("ai_algorithm")) {
+			if (algorithm.empty()) {
+				algorithm = aiparam["ai_algorithm"].str();
+				base_config = get_ai_config_for(algorithm);
+			} else if(algorithm != aiparam["ai_algorithm"]) {
+				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
 			}
 		}
-	}
-
-	if (!is_idle_ai) {
-		parsed_cfg = get_ai_config_for("ai_default_rca");
-	}
-
-	//get values of all aspects
-	upgrade_aspect_configs_from_1_07_02_to_1_07_03(side, cfg.child_range("ai"), parsed_cfg);
-
-	//dump the rest of the config into fallback stage
-
-	config fallback_stage_cfg_ai;
-
-	BOOST_FOREACH(config &aiparam, cfg.child_range("ai")) {
-		BOOST_FOREACH(const well_known_aspect &wka, well_known_aspects) {
-			if (wka.was_an_attribute_) {
-				aiparam.remove_attribute(wka.name_);
+		std::deque<std::pair<std::string, config> > facet_configs;
+		BOOST_FOREACH(const config::attribute &attr, aiparam.attribute_range()) {
+			if (non_aspect_attributes.count(attr.first)) {
+				continue;
+			}
+			config facet_config;
+			facet_config["engine"] = engine;
+			facet_config["name"] = "standard_aspect";
+			facet_config["turns"] = turns;
+			facet_config["time_of_day"] = time_of_day;
+			facet_config["value"] = attr.second;
+			facet_configs.push_back(std::make_pair(attr.first, facet_config));
+		}
+		BOOST_FOREACH(const config::any_child &child, aiparam.all_children_range()) {
+			if (just_copy_tags.count(child.key)) {
+				// These aren't simplified, so just copy over unchanged.
+				parsed_config.add_child(child.key, child.cfg);
+				continue;
+			} else if(old_goal_tags.count(child.key)) {
+				// A simplified goal, mainly kept around just for backwards compatibility.
+				config goal_config, criteria_config = child.cfg;
+				goal_config["name"] = child.key;
+				goal_config["turns"] = turns;
+				goal_config["time_of_day"] = time_of_day;
+				if(child.key.substr(0,7) == "protect" && criteria_config.has_attribute("protect_radius")) {
+					goal_config["protect_radius"] = criteria_config["protect_radius"];
+					criteria_config.remove_attribute("protect_radius");
+				}
+				if(criteria_config.has_attribute("value")) {
+					goal_config["value"] = criteria_config["value"];
+					criteria_config.remove_attribute("value");
+				}
+				parsed_config.add_child("goal", goal_config);
+				continue;
+			}
+			// Now there's two possibilities. If the tag is [attacks] or contains either value= or [value],
+			// then it can be copied verbatim as a [facet] tag.
+			// Otherwise, it needs to be placed as a [value] within a [facet] tag.
+			if (child.key == "attacks" || child.cfg.has_attribute("value") || child.cfg.has_child("value")) {
+				facet_configs.push_back(std::make_pair(child.key, child.cfg));
 			} else {
-				aiparam.clear_children(wka.name_);
+				config facet_config;
+				facet_config["engine"] = engine;
+				facet_config["name"] = "standard_aspect";
+				facet_config["turns"] = turns;
+				facet_config["time_of_day"] = time_of_day;
+				facet_config.add_child("value", child.cfg);
+				if (child.key == "leader_goal" && !child.cfg["id"].empty()) {
+					// Use id= attribute (if present) as the facet ID
+					const std::string& id = child.cfg["id"];
+					if(id != "*" && id.find_first_not_of("0123456789") != std::string::npos) {
+						facet_config["id"] = child.cfg["id"];
+					}
+				}
+				facet_configs.push_back(std::make_pair(child.key, facet_config));
 			}
 		}
-
-
-		BOOST_FOREACH(const config &aitarget, aiparam.child_range("target")) {
-			lg::wml_error() << deprecate_wml_key_warning("target", "1.13.0") << "\n";
-			config aigoal;
-			transfer_turns_and_time_of_day_data(aiparam,aigoal);
-
-			if (const config::attribute_value *v = aitarget.get("value")) {
-				aigoal["value"] = *v;
-			} else {
-				aigoal["value"] = 0;
-			}
-
-			config &aigoalcriteria = aigoal.add_child("criteria",aitarget);
-			aigoalcriteria.remove_attribute("value");
-
-			parsed_cfg.add_child("goal",aigoal);
+		std::map<std::string, config> aspect_configs;
+		while (!facet_configs.empty()) {
+			const std::string &aspect = facet_configs.front().first;
+			const config &facet_config = facet_configs.front().second;
+			aspect_configs[aspect]["id"] = aspect; // Will sometimes be redundant assignment
+			aspect_configs[aspect]["name"] = "composite_aspect";
+			aspect_configs[aspect].add_child("facet", facet_config);
+			facet_configs.pop_front();
 		}
-		aiparam.clear_children("target");
-
-
-		BOOST_FOREACH(config &ai_protect_unit, aiparam.child_range("protect_unit")) {
-			lg::wml_error() << deprecate_wml_key_warning("protect_unit", "1.13.0") << "\n";
-			transfer_turns_and_time_of_day_data(aiparam,ai_protect_unit);
-			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_unit,parsed_cfg,true);
+		typedef std::map<std::string, config>::value_type aspect_pair;
+		BOOST_FOREACH(const aspect_pair& p, aspect_configs) {
+			parsed_config.add_child("aspect", p.second);
 		}
-		aiparam.clear_children("protect_unit");
-
-
-		BOOST_FOREACH(config &ai_protect_location, aiparam.child_range("protect_location")) {
-			lg::wml_error() << deprecate_wml_key_warning("protect_location", "1.13.0") << "\n";
-			transfer_turns_and_time_of_day_data(aiparam,ai_protect_location);
-			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_location,parsed_cfg,false);
-		}
-		aiparam.clear_children("protect_location");
-
-
-		if (const config::attribute_value *v = aiparam.get("protect_leader"))
-		{
-			lg::wml_error() << deprecate_wml_key_warning("protect_leader", "1.13.0") << "\n";
-			config c;
-			c["value"] = *v;
-			c["canrecruit"] = true;
-			c["side_number"] = side;
-			transfer_turns_and_time_of_day_data(aiparam,c);
-			if (const config::attribute_value *v = aiparam.get("protect_leader_radius")) {
-				lg::wml_error() << deprecate_wml_key_warning("protect_leader_radius", "1.13.0") << "\n";
-				c["radius"] = *v;
-			}
-
-			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,c,parsed_cfg,true);
-		}
-
-		if (!aiparam.has_attribute("turns") && !aiparam.has_attribute("time_of_day")) {
-			fallback_stage_cfg_ai.append(aiparam);
-		} else {
-			// Move [goal]s to root of the config, adding turns and time_of_day.
-			BOOST_FOREACH(const config &aigoal, aiparam.child_range("goal")) {
-				config updated_goal_config = aigoal;
-				transfer_turns_and_time_of_day_data(aiparam, updated_goal_config);
-				parsed_cfg.add_child("goal", updated_goal_config);
-			}
-                }
 	}
-	fallback_stage_cfg_ai.clear_children("aspect");
-
-	//move [stage]s to root of the config
-	BOOST_FOREACH(const config &aistage, fallback_stage_cfg_ai.child_range("stage")) {
-		parsed_cfg.add_child("stage",aistage);
+	if (algorithm.empty()) {
+		base_config = get_ai_config_for("ai_default_rca");
 	}
-	fallback_stage_cfg_ai.clear_children("stage");
-
-	//move [goal]s to root of the config
-	BOOST_FOREACH(const config &aigoal, fallback_stage_cfg_ai.child_range("goal")) {
-		parsed_cfg.add_child("goal",aigoal);
+	BOOST_FOREACH(const config::any_child &child, parsed_config.all_children_range()) {
+		base_config.add_child(child.key, child.cfg);
 	}
-	fallback_stage_cfg_ai.clear_children("goal");
-
-	//move [modify_ai]'s to root of the config
-	BOOST_FOREACH(const config &aimodifyai, fallback_stage_cfg_ai.child_range("modify_ai")) {
-		parsed_cfg.add_child("modify_ai",aimodifyai);
-	}
-	fallback_stage_cfg_ai.clear_children("modify_ai");
-	//nothing useful should be at fallback_stage_cfg_ai at this point
-
-	cfg = config();
-	cfg.add_child("ai",parsed_cfg);
-	DBG_AI_CONFIGURATION << "side "<< side <<": after upgrade to 1.7.3 syntax, config contains:"<< std::endl << cfg << std::endl;
-	return true;
-}
-
-
-void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number side, const config::const_child_itors &ai_parameters, config &parsed_cfg)
-{
-	config cfg;
-
-	BOOST_FOREACH(const config &aiparam, ai_parameters) {
-		cfg.add_child("ai",aiparam);
-	}
-
-	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading aspects from syntax of 1.7.2 to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
-	BOOST_FOREACH(const well_known_aspect &wka, well_known_aspects) {
-		upgrade_aspect_config_from_1_07_02_to_1_07_03(side, cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
-	}
-}
-
-
-void configuration::upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side_number side, const config &protect_cfg, config &parsed_cfg, bool add_filter)
-{
-	config aigoal;
-	aigoal["name"] = "protect";
-	transfer_turns_and_time_of_day_data(protect_cfg,aigoal);
-
-	if (const config::attribute_value *v = protect_cfg.get("value")) {
-		aigoal["value"] = *v;
-	} else {
-		aigoal["value"] = 1; //old default value
-	}
-
-	//note: 'radius' attribute is renamed to avoid confusion with SLF's radius
-	if (const config::attribute_value *v = protect_cfg.get("radius")) {
-		aigoal["protect_radius"] = *v;
-	} else {
-		aigoal["protect_radius"] = 20; //old default value
-	}
-	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading protect goal from syntax of 1.7.2 to 1.7.3, old-style config is:" << std::endl << protect_cfg << std::endl;
-
-
-	if (add_filter) {
-		config &aigoal_criteria = aigoal.add_child("criteria",config());
-		config &aigoal_criteria_filter = aigoal_criteria.add_child("filter",protect_cfg);
-		aigoal_criteria_filter.remove_attribute("value");
-		aigoal_criteria_filter.remove_attribute("radius");
-	} else {
-		config &aigoal_criteria = aigoal.add_child("criteria",protect_cfg);
-		aigoal_criteria.remove_attribute("value");
-		aigoal_criteria.remove_attribute("radius");
-	}
-
-
-	parsed_cfg.add_child("goal",aigoal);
-	DBG_AI_CONFIGURATION << "side "<< side <<": after upgrade of protect goal from syntax of 1.7.2 to 1.7.3, new-style config is:" << std::endl << aigoal << std::endl;
+	cfg.clear_children("ai");
+	cfg.add_child("ai", base_config);
 }
 
 } //end of namespace ai
