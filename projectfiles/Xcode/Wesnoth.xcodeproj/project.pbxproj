@@ -286,7 +286,7 @@
 		B552D92F108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */; };
 		B553B6BA12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		B553B6BB12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
-		B559986C0EC616B3008DD061 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		B559986C0EC616B3008DD061 /* SDLMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.mm */; settings = {COMPILER_FLAGS = "-w"; }; };
 		B55998F80EC61EA5008DD061 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55998F70EC61EA5008DD061 /* SDL2.framework */; };
 		B55999250EC61F59008DD061 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999220EC61F59008DD061 /* SDL2_image.framework */; };
 		B55999260EC61F59008DD061 /* SDL2_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999230EC61F59008DD061 /* SDL2_net.framework */; };
@@ -1538,7 +1538,7 @@
 		B553B6B812189C5900CC8C58 /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
 		B553B6B912189C5900CC8C58 /* utility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utility.hpp; sourceTree = "<group>"; };
 		B559986A0EC616B3008DD061 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "Mac Sources/SDLMain.h"; sourceTree = "<group>"; };
-		B559986B0EC616B3008DD061 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = "Mac Sources/SDLMain.m"; sourceTree = "<group>"; };
+		B559986B0EC616B3008DD061 /* SDLMain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SDLMain.mm; path = "Mac Sources/SDLMain.mm"; sourceTree = "<group>"; };
 		B55998F70EC61EA5008DD061 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = lib/SDL2.framework; sourceTree = "<group>"; };
 		B55999220EC61F59008DD061 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = lib/SDL2_image.framework; sourceTree = "<group>"; };
 		B55999230EC61F59008DD061 /* SDL2_net.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_net.framework; path = lib/SDL2_net.framework; sourceTree = "<group>"; };
@@ -2446,7 +2446,7 @@
 				F40A13BD1A3AA56800C4D071 /* apple_notification.hpp */,
 				F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */,
 				B559986A0EC616B3008DD061 /* SDLMain.h */,
-				B559986B0EC616B3008DD061 /* SDLMain.m */,
+				B559986B0EC616B3008DD061 /* SDLMain.mm */,
 				B5BB6CD80F89470B00444FBF /* server_main.m */,
 				32CA4F630368D1EE00C91783 /* Wesnoth_Prefix.pch */,
 			);
@@ -4753,7 +4753,7 @@
 				B5599ADE0EC62181008DD061 /* scrollbar.cpp in Sources */,
 				B5A9BD6A0ECA805A002BE442 /* scrollbar.cpp in Sources */,
 				B5599ADF0EC62181008DD061 /* scrollpane.cpp in Sources */,
-				B559986C0EC616B3008DD061 /* SDLMain.m in Sources */,
+				B559986C0EC616B3008DD061 /* SDLMain.mm in Sources */,
 				EC64D7611A085CE60092EF75 /* seed_rng.cpp in Sources */,
 				B5599B030EC62181008DD061 /* settings.cpp in Sources */,
 				B5A9BD6B0ECA805A002BE442 /* settings.cpp in Sources */,

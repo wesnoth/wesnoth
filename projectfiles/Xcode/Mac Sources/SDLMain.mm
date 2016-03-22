@@ -6,10 +6,10 @@
 
 #import "SDL.h"
 #import "SDLMain.h"
+#include <vector>
 
-extern int wesnoth_main(int argc, char **argv);
-static int    gArgc;
-static char  **gArgv;
+extern "C" int wesnoth_main(int argc, char **argv);
+static std::vector<char*> gArgs;
 
 @interface SDLApplication : NSApplication
 @end
@@ -70,15 +70,19 @@ static char  **gArgv;
 
 	/* Set the working directory to the .app's Resources directory */
 	chdir([[[NSBundle mainBundle] resourcePath] fileSystemRepresentation]);
-	//setenv("PYTHONHOME", ".", 1); //not needed because we don't use Python anymore
 
 	/* Hand off to main application code */
-	status = wesnoth_main (gArgc, gArgv);
+	status = wesnoth_main(gArgs.size() - 1, gArgs.data());
 
 	/* We're done, thank you for playing */
 	exit(status);
 }
 @end
+
+template<int sz>
+bool str_eq(const char* str, const char(& cstr)[sz]) {
+	return strncmp(str, cstr, sz) == 0;
+}
 
 #ifdef main
 #  undef main
@@ -87,24 +91,25 @@ static char  **gArgv;
 /* Main entry point to executable - should *not* be SDL_main! */
 int main (int argc, char **argv)
 {
-	/* Copy the arguments into a global variable */
-	int i;
-
-	/* This is passed if we are launched by double-clicking */
-	if (argc >= 2 && strncmp (argv[1], "-psn", 4) == 0)
-	{
-		gArgc = 1;
-	} else {
-		gArgc = argc;
+	gArgs.push_back(argv[0]); // Program name
+	for (int i = 1; i < argc; i++) {
+		// Filter out debug arguments that XCode might pass
+		if (str_eq(argv[i], "-ApplePersistenceIgnoreState")) {
+			i++; // Skip the argument
+			continue;
+		}
+		if (str_eq(argv[i], "-NSDocumentRevisionsDebugMode")) {
+			i++; // Skip the argument
+			continue;
+		}
+		// This is passed if launched by double-clicking
+		if (strncmp(argv[i], "-psn", 4) == 0) {
+			continue;
+		}
+		gArgs.push_back(argv[i]);
 	}
-	gArgv = (char**) malloc (sizeof(*gArgv) * (gArgc+1));
-	assert (gArgv != NULL);
-	for (i = 0; i < gArgc; i++)
-		gArgv[i] = argv[i];
-	gArgv[i] = NULL;
+	gArgs.push_back(NULL);
 
-//	[SDLApplication poseAsClass:[NSApplication class]];
-//	NSApplicationMain (argc, argv);
 	[SDLApplication sharedApplication];
 	[NSBundle loadNibNamed:@"SDLMain" owner:NSApp];
 	[NSApp run];
