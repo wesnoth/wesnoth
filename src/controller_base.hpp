@@ -102,7 +102,7 @@ protected:
 
 	/**
 	 * Handle scrolling by keyboard, joystick and moving mouse near map edges
-	 * @see is_keyboard_scroll_active
+	 * @see scrolling_, which is set if the display is being scrolled
 	 * @return true when there was any scrolling, false otherwise
 	 */
 	bool handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags, double joystickx, double joysticky);
