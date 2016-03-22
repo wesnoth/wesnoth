@@ -781,7 +781,7 @@ namespace { // Helpers for menu_handler::end_turn()
 bool menu_handler::end_turn(int side_num)
 {
 	if(!gamedata().allow_end_turn()) {
-		gui2::show_message((*gui_).video(), "", _("You cannot end your turn yet!"), gui2::tmessage::ok_button);
+		gui2::show_transient_message((*gui_).video(), "", _("You cannot end your turn yet!"));
 		return false;
 	}
 
