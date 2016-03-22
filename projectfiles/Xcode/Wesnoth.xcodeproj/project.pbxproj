@@ -5370,6 +5370,7 @@
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 					"HAVE_LIBPNG=1",
+					"HAVE_HISTORY=1",
 				);
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -5385,6 +5386,11 @@
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
+				);
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lbz2",
+					"-lreadline",
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = "";
@@ -5416,6 +5422,7 @@
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 					"HAVE_LIBPNG=1",
+					"HAVE_HISTORY=1",
 				);
 				GCC_VERSION = "";
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -5431,6 +5438,11 @@
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
+				);
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lbz2",
+					"-lreadline",
 				);
 				PRODUCT_NAME = Wesnoth;
 				WARNING_CFLAGS = (
