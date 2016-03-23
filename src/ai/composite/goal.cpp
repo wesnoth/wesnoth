@@ -175,7 +175,7 @@ target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 void target_location_goal::on_create()
 {
 	goal::on_create();
-	if (cfg_["engine"] != "cpp") {
+	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
 		unrecognized();
 		value_ = 0;
 		return;
@@ -224,7 +224,7 @@ target_location_goal::target_location_goal(readonly_context &context, const conf
 void protect_goal::on_create()
 {
 	goal::on_create();
-	if (cfg_["engine"] != "cpp") {
+	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
 		unrecognized();
 		value_ = 0;
 		return;
