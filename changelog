@@ -18,10 +18,10 @@ Version 1.13.4+dev:
      * Simplified aspect syntax which works for all aspects, present and future
        * All aspects with simple values can be specified as key=value
        * Except attacks, all aspects with complex values have a simple tag form
-         containing only the aspect value (eg like [avoid])
+         containing only the aspect value (e.g. [avoid])
        * All aspects, simple and complex, can be specified using a tag named by
          the aspect, whose contents is the same as a corresponding [facet]
-       * Of course, the full [aspect] and [facet] syntax also still works
+       * The full [aspect] and [facet] syntax also still works
      * [ai] configs no longer recognize the version= key
      * ai_algorithm key now selects a preset AI; possible values include
        "ai_default_rca", "experimental_ai", and "idle_ai", but custom AIs
@@ -33,13 +33,14 @@ Version 1.13.4+dev:
        sections according to the type of component.
      * The following deprecated component have been removed:
        * recruitment stage (name=ai_default::recruitment)
-       * old recruitment candidate action (name=ai_default_rca::aspect_recruitment_phase)
+       * old recruitment candidate action
+         (name=ai_default_rca::aspect_recruitment_phase)
        * number_of_possible_recruits_to_force_recruit aspect
        * recruitment_ignore_bad_combat aspect
        * recruitment_ignore_bad_movement aspect
        * The recruitment aspect has been removed from the engine; however,
-         "recruitment" is now accepted as a synonym for "recruitment_instructions".
-         Old code should work without changes.
+         "recruitment" is now accepted as a synonym for
+         "recruitment_instructions". Old code should work without changes.
        * [goal]name=protect_my_unit
      * Lua components (goals, aspects, stages, and candidate actions)
        now support an [args] subtag, which passes any sort of WML data
@@ -57,25 +58,26 @@ Version 1.13.4+dev:
        illumination abilities) changes at any location on the map. Thus, it
        occurs on average less often than invalidate_on_turn_start and may
        be best combined with an explicit invalidate_on_turn_start=no.
-     * A minor shorthand has been introduced in the recruitment_instructions aspect:
+     * A minor shorthand has been introduced in the recruitment_instructions
+       aspect:
        * [pattern] tag is like [recruit] with pattern=yes
        * [total] tag is like [recruit] with total=yes
-       * If no [recruit] tag is present, a default is added with importance=0
+       * If no [recruit] tag is present, a default is added with importance=0.
          This means recruitment will happen even with only [limit] tags.
      * Extensions to [modify_ai]:
-       * [modify_ai]action=change works on aspects, using path=aspect[id]
+       * [modify_ai]action=change works on aspects, using path=aspect[id].
          Useful if you need to change all the facets at once, but note that
          it also wipes the [default] facet.
-       * The [default] facet can be referenced as facet[default_facet]
+       * The [default] facet can be referenced as facet[default_facet].
          This should rarely be needed, but is there in case it is.
          It also makes them easily identifiable in the inspector.
-       * Automatically copies over the id= with action=change, if the
-         new component didn't specify one.
+       * Automatically copy over the id= with action=change, if the
+         new component did not specify one.
        * It can add, remove, and change jobs and limits in the
          recruitment_instructions aspect. The path to use for this is
          aspect[recruitment_instructions].facet[facet_id].recruit[recruit_id].
          (For a limit, replace "recruit" with "limit".)
-         Of course, the [recruit] and [limit] tags now support id keys for this.
+         The [recruit] and [limit] tags now support id keys for this.
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -98,7 +100,7 @@ Version 1.13.4+dev:
      for use by the [trait] tag.
    * LuaAI:
      * The table returned by check_*() now has a "result" field which
-       gives a description of the action's result; it's like "status"
+       gives a description of the action's result; similar to "status"
        but more descriptive.
      * Target tables now use a descriptive name for "type", instead of
        an integer. This applies to the elements of the table returned by
@@ -108,7 +110,7 @@ Version 1.13.4+dev:
      * There are some compatibility-breaking changes to Lua candidate
        actions - see the release notes or the wiki for full details.
      * Lua AI code can now access the AI routines through the global ai
-       object. This object is only accessible to AI code; it doesn't exist
+       object. This object is only accessible to AI code; it does not exist
        in the general Lua global scope.
      * When executing Lua goals, aspects, or candidate action evaluations,
        the ai is in "read-only" mode - the read_only key is set to true,
@@ -411,7 +413,7 @@ Version 1.13.2:
  * WML engine:
    * controller= in side filters can now be used in mp games for unsynced code
    * Added [effect] apply_to=max_expereince set=<value>
-   * Added enable_if= to mod and era events 
+   * Added enable_if= to mod and era events
    * Added $varname?default_value| in variable substitution
    * Fixed side_for= parameter in [message]s with input
    * New actionwml tag [on_undo] contains actionswml that is executed when the
