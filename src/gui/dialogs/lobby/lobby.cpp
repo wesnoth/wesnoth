@@ -204,7 +204,7 @@ void tlobby_main::add_chat_message(const time_t& /*time*/,
 								   events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::stringstream ss;
-	ss << "<" << speaker << "> ";
+	ss << "<b>&lt;" << speaker << "&gt</b> ";
 	ss << message;
 	append_to_chatbox(ss.str());
 }
@@ -311,6 +311,7 @@ void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
 {
 	tgrid& grid = chat_log_container_->page_grid(id);
 	tscroll_label& log = find_widget<tscroll_label>(&grid, "log_text", false);
+	log.set_use_markup(true);
 	log.set_label(log.label() + "\n" + preferences::get_chat_timestamp(time(0))
 				  + text);
 	log.scroll_vertical_scrollbar(tscrollbar_::END);
@@ -1163,7 +1164,7 @@ void tlobby_main::add_whisper_window_whisper(const std::string& sender,
 											 const std::string& message)
 {
 	std::stringstream ss;
-	ss << "<" << sender << ">" << message;
+	ss << "<" << sender << "> " << message;
 	tlobby_chat_window* t = whisper_window_open(sender, false);
 	if(!t) {
 		ERR_LB << "Whisper window not open in add_whisper_window_whisper for "
@@ -1177,8 +1178,8 @@ void tlobby_main::add_active_window_whisper(const std::string& sender,
 											const std::string& message)
 {
 	std::stringstream ss;
-	ss << "<"
-	   << "whisper: " << sender << ">" << message;
+	ss << "<b>&lt;"
+	   << "whisper: " << sender << "&gt;</b> " << message;
 	append_to_chatbox(ss.str());
 }
 
@@ -1187,7 +1188,7 @@ void tlobby_main::add_room_window_message(const std::string& room,
 										  const std::string& message)
 {
 	std::stringstream ss;
-	ss << "<" << sender << ">" << message;
+	ss << "<b>&lt;" << sender << "&gt;</b> " << message;
 	tlobby_chat_window* t = room_window_open(room, false);
 	if(!t) {
 		ERR_LB << "Room window not open in add_room_window_message for " << room
@@ -1201,7 +1202,7 @@ void tlobby_main::add_active_window_message(const std::string& sender,
 											const std::string& message)
 {
 	std::stringstream ss;
-	ss << "<" << sender << ">" << message;
+	ss << "<b>&lt;" << sender << "&gt;</b> " << message;
 	append_to_chatbox(ss.str());
 }
 
