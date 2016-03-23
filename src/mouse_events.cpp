@@ -48,6 +48,7 @@
 #include "tstring.hpp"                  // for t_string
 #include "units/unit.hpp"                     // for unit, intrusive_ptr_add_ref
 #include "units/animation_component.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "units/ptr.hpp"                 // for unit_const_ptr
 #include "whiteboard/manager.hpp"       // for manager, etc
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
@@ -125,6 +126,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		new_hex = gui().hex_clicked_on(x,y);
 
 	if(new_hex != last_hex_) {
+		if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+			lk->mouse_over_hex_callback(new_hex);
+		}
 		update = true;
 		if ( pc_.get_map_const().on_board(last_hex_) ) {
 			// we store the previous hexes used to propose attack direction
@@ -554,7 +558,9 @@ void mouse_handler::move_action(bool browse)
 	//		deselect_hex();
 	//		return false;
 	//	}
-
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->select_hex_callback(last_hex_);
+	}
 	unit_map::iterator u;
 	unit_map::iterator clicked_u;
 	map_location src;
@@ -721,6 +727,9 @@ void mouse_handler::move_action(bool browse)
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event) {
 
 	selected_hex_ = hex;
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->select_hex_callback(last_hex_);
+	}
 
 	gui().select_hex(selected_hex_);
 	gui().clear_attack_indicator();

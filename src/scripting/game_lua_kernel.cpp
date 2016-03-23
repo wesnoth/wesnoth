@@ -4984,3 +4984,29 @@ ai::lua_ai_action_handler* game_lua_kernel::create_lua_ai_action_handler(char co
 {
 	return ai::lua_ai_action_handler::create(mState,code,context);
 }
+
+void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
+{
+	lua_State *L = mState;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_move", NULL)) {
+		return;
+	}
+	lua_push(L, loc.x + 1);
+	lua_push(L, loc.y + 1);
+	luaW_pcall(L, 2, 0, false);
+	return;
+}
+
+void game_lua_kernel::select_hex_callback(const map_location& loc)
+{
+	lua_State *L = mState;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_action", NULL)) {
+		return;
+	}
+	lua_push(L, loc.x + 1);
+	lua_push(L, loc.y + 1);
+	luaW_pcall(L, 2, 0, false);
+	return;
+}
