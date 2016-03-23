@@ -58,7 +58,7 @@ Version 1.13.4+dev:
        illumination abilities) changes at any location on the map. Thus, it
        occurs on average less often than invalidate_on_turn_start and may
        be best combined with an explicit invalidate_on_turn_start=no.
-     * A minor shorthand has been introduced in the recruitment_instructions
+     * Minor shorthands have been introduced in the recruitment_instructions
        aspect:
        * [pattern] tag is like [recruit] with pattern=yes
        * [total] tag is like [recruit] with total=yes
@@ -120,6 +120,8 @@ Version 1.13.4+dev:
        engine, including several that previously did not have corresponding
        ai.get_*() functions. You access them as ai.aspects.avoid, for example.
        The table is read-only and raises an error if you attempt to write to it.
+     * The way to create Lua candidate actions has changed a little. Old code
+       will require minor changes.
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
    * New syntax features:
