@@ -26,27 +26,6 @@
 
 #include <boost/bind.hpp>
 
-namespace {
-
-std::string pango_escape(std::string str) {
-	for(size_t i = str.size(); i > 0; i--) {
-		if(str[i-1] == '<') {
-			str.replace(i-1, 1, "&lt;");
-		} else if(str[i-1] == '>') {
-			str.replace(i-1, 1, "&gt;");
-		} else if(str[i-1] == '&') {
-			str.replace(i-1, 1, "&amp;");
-		} else if(str[i-1] == '"') {
-			str.replace(i-1, 1, "&quot;");
-		} else if(str[i-1] == '\'') {
-			str.replace(i-1, 1, "&apos;");
-		}
-	}
-	return str;
-}
-
-}
-
 namespace gui2
 {
 
@@ -101,8 +80,8 @@ void tformula_debugger::pre_show(twindow& window)
 			stack_text << indent;
 		}
 		stack_text << "#<span color=\"green\">" << i.counter()
-				   << "</span>: \"<span color=\"green\">" << pango_escape(i.name())
-				   << "</span>\": (" << pango_escape(i.str()) << ") " << std::endl;
+				   << "</span>: \"<span color=\"green\">" << font::escape_text(i.name())
+				   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		++c;
 	}
 
@@ -122,14 +101,14 @@ void tformula_debugger::pre_show(twindow& window)
 		}
 		if(!i.evaluated()) {
 			execution_text << "#<span color=\"green\">" << i.counter()
-						   << "</span>: \"<span color=\"green\">" << pango_escape(i.name())
-						   << "</span>\": (" << pango_escape(i.str()) << ") " << std::endl;
+						   << "</span>: \"<span color=\"green\">" << font::escape_text(i.name())
+						   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		} else {
 			execution_text << "#<span color=\"yellow\">" << i.counter()
-						   << "</span>: \"<span color=\"yellow\">" << pango_escape(i.name())
-						   << "</span>\": (" << pango_escape(i.str()) << ") = "
+						   << "</span>: \"<span color=\"yellow\">" << font::escape_text(i.name())
+						   << "</span>\": (" << font::escape_text(i.str()) << ") = "
 						   << "<span color=\"orange\">"
-						   << pango_escape(i.value().to_debug_string(NULL, false))
+						   << font::escape_text(i.value().to_debug_string(NULL, false))
 						   << "</span>" << std::endl;
 		}
 	}
