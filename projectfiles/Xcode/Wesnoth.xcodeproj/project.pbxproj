@@ -23,7 +23,6 @@
 		49DA0D2E13550E9B000AFEBD /* iterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2B13550E9B000AFEBD /* iterator.cpp */; };
 		49DA0D2F13550E9B000AFEBD /* walker_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */; };
 		49DA0D3013550E9B000AFEBD /* walker_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2D13550E9B000AFEBD /* walker_widget.cpp */; };
-		49DA0D3613550F27000AFEBD /* ca_global_fallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D3513550F27000AFEBD /* ca_global_fallback.cpp */; };
 		49E84DC217384EF800A4F376 /* leader_scroll_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E84DC017384EF800A4F376 /* leader_scroll_dialog.cpp */; };
 		620091C31575C784009AA2C9 /* filter_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620091C11575C784009AA2C9 /* filter_options.cpp */; };
 		620A386E15E9364E00A4F513 /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386215E9364E00A4F513 /* attack.cpp */; };
@@ -1109,7 +1108,6 @@
 		49DA0D2B13550E9B000AFEBD /* iterator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = iterator.cpp; path = iterator/iterator.cpp; sourceTree = "<group>"; };
 		49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = walker_grid.cpp; path = iterator/walker_grid.cpp; sourceTree = "<group>"; };
 		49DA0D2D13550E9B000AFEBD /* walker_widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = walker_widget.cpp; path = iterator/walker_widget.cpp; sourceTree = "<group>"; };
-		49DA0D3513550F27000AFEBD /* ca_global_fallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ca_global_fallback.cpp; sourceTree = "<group>"; };
 		49E84DC017384EF800A4F376 /* leader_scroll_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = leader_scroll_dialog.cpp; sourceTree = "<group>"; };
 		49E84DC117384EF800A4F376 /* leader_scroll_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = leader_scroll_dialog.hpp; sourceTree = "<group>"; };
 		620091C11575C784009AA2C9 /* filter_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filter_options.cpp; sourceTree = "<group>"; };
@@ -2284,7 +2282,6 @@
 		F419E43E13354E220031448A /* teleport.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = teleport.hpp; sourceTree = "<group>"; };
 		F419E44313354E620031448A /* lua_jailbreak_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_jailbreak_exception.hpp; sourceTree = "<group>"; };
 		F419E44413354E620031448A /* lua_jailbreak_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_jailbreak_exception.cpp; sourceTree = "<group>"; };
-		F419E46213354F8D0031448A /* ca_global_fallback.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ca_global_fallback.hpp; sourceTree = "<group>"; };
 		F419E485133550FB0031448A /* drawing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drawing.hpp; sourceTree = "<group>"; };
 		F444907513C5483E003B6442 /* joystick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = joystick.cpp; sourceTree = "<group>"; };
 		F444907613C5483E003B6442 /* joystick.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = joystick.hpp; sourceTree = "<group>"; };
@@ -3515,8 +3512,6 @@
 			children = (
 				B59F96E51034791200A57C1A /* aspect_attacks.cpp */,
 				B59F96E61034791200A57C1A /* aspect_attacks.hpp */,
-				49DA0D3513550F27000AFEBD /* ca_global_fallback.cpp */,
-				F419E46213354F8D0031448A /* ca_global_fallback.hpp */,
 				B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */,
 				B552D92B108694BB002D8F86 /* ca_testing_move_to_targets.hpp */,
 				B5CE46FB12A041CE00D665EE /* ca_testing_recruitment.cpp */,
@@ -4355,7 +4350,6 @@
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
 				B5599AD40EC62181008DD061 /* button.cpp in Sources */,
 				B5A9BD5B0ECA805A002BE442 /* button.cpp in Sources */,
-				49DA0D3613550F27000AFEBD /* ca_global_fallback.cpp in Sources */,
 				B552D92D108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */,
 				B5CE46FD12A041CE00D665EE /* ca_testing_recruitment.cpp in Sources */,
 				B54AC6E60FEA9EB5006F6FBD /* ca.cpp in Sources */,

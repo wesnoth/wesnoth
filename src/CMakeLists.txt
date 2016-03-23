@@ -718,7 +718,6 @@ set(wesnoth-main_SRC
 	ai/testing.cpp
 	ai/testing/aspect_attacks.cpp
 	ai/testing/ca.cpp
-	ai/testing/ca_global_fallback.cpp
 	ai/testing/ca_testing_move_to_targets.cpp
 	ai/testing/ca_testing_recruitment.cpp
 	ai/testing/stage_rca.cpp

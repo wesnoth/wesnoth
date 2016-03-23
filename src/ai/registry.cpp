@@ -36,7 +36,6 @@
 #include "recruitment/recruitment.hpp"  // for recruitment
 #include "testing/aspect_attacks.hpp"   // for aspect_attacks
 #include "testing/ca.hpp"               // for leader_shares_keep_phase, etc
-#include "testing/ca_global_fallback.hpp"  // for global_fallback_phase
 #include "testing/ca_testing_move_to_targets.hpp"
 #include "testing/ca_testing_recruitment.hpp"
 #include "testing/stage_sf_with_rca.hpp"
@@ -122,9 +121,6 @@ static register_candidate_action_factory<testing_ai_default::leader_shares_keep_
 static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
 	passive_leader_shares_keep_phase_factory("ai_default_rca::passive_leader_shares_keep_phase");
 
-static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
-	global_fallback_phase_factory("ai_default_rca::global_fallback_phase");
-
 static register_candidate_action_factory<default_recruitment::recruitment>
 	default_recruitment_factory("default_recruitment::recruitment");
 
@@ -167,9 +163,6 @@ static register_candidate_action_factory<testing_ai_default::testing_recruitment
 
 static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
 	old_passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
-
-static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
-	old_global_fallback_phase_factory("testing_ai_default::global_fallback_phase");
 
 // =======================================================================
 // Goals
