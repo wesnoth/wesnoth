@@ -128,7 +128,7 @@ bool goal::active() const
 void target_unit_goal::on_create()
 {
 	goal::on_create();
-	if (cfg_["engine"] != "cpp") {
+	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
 		unrecognized();
 		value_ = 0;
 		return;
