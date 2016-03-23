@@ -39,7 +39,6 @@
 #include "game_info.hpp"             // for side_number, engine_ptr, etc
 #include "game_config.hpp"              // for debug
 #include "game_errors.hpp"              // for game_error
-#include "interface.hpp"  // for ai_factory, etc
 #include "lua/unit_advancements_aspect.hpp"
 #include "registry.hpp"                 // for init
 #include "util.hpp"                     // for lexical_cast
@@ -143,7 +142,7 @@ holder::~holder()
 }
 
 
-interface& holder::get_ai_ref()
+ai_composite& holder::get_ai_ref()
 {
 	if (!this->ai_) {
 		this->init(this->side_);
@@ -495,7 +494,7 @@ const std::string manager::evaluate_command( side_number side, const std::string
 	}
 
 	if (!should_intercept(str)){
-		interface& ai = get_active_ai_for_side(side);
+		ai_composite& ai = get_active_ai_for_side(side);
 		raise_gamestate_changed();
 		return ai.evaluate(str);
 	}
@@ -681,24 +680,6 @@ bool manager::add_ai_for_side( side_number side, const std::string& ai_algorithm
 }
 
 
-ai_ptr manager::create_transient_ai(const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context )
-{
-	assert(ai_context!=NULL);
-
-	//to add your own ai, register it in registry,cpp
-	ai_factory::factory_map::iterator aii = ai_factory::get_list().find(ai_algorithm_type);
-	if (aii == ai_factory::get_list().end()){
-		aii = ai_factory::get_list().find("");
-		if (aii == ai_factory::get_list().end()){
-			throw game::game_error("no default ai set!");
-		}
-	}
-	LOG_AI_MANAGER << "Creating new AI of type [" << ai_algorithm_type << "]"<< std::endl;
-	ai_ptr new_ai = aii->second->get_new_instance(*ai_context,cfg);
-	return new_ai;
-}
-
-
 // =======================================================================
 // REMOVE
 // =======================================================================
@@ -805,7 +786,7 @@ void manager::play_turn( side_number side ){
 	const int turn_start_time = SDL_GetTicks();
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
-	interface& ai_obj = get_active_ai_for_side(side);
+	ai_composite& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai turn");
 	raise_turn_started();
 	if (resources::tod_manager->has_tod_bonus_changed()) {
@@ -855,7 +836,7 @@ holder& manager::get_active_ai_holder_for_side( side_number side )
 // AI POINTERS
 // =======================================================================
 
-interface& manager::get_active_ai_for_side( side_number side )
+ai_composite& manager::get_active_ai_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_ref();
 }

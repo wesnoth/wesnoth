@@ -36,7 +36,6 @@ namespace ai { class ai_composite; }  // lines 45-45
 namespace ai { class ai_context; }  // lines 42-42
 namespace ai { class component; }  // lines 43-43
 namespace ai { class default_ai_context; }  // lines 41-41
-namespace ai { class interface; }  // lines 36-36
 namespace ai { class readonly_context; }  // lines 39-39
 namespace ai { class readwrite_context; }  // lines 40-40
 namespace ai { class side_context; }  // lines 38-38
@@ -59,7 +58,7 @@ public:
 
 	virtual ~holder();
 
-	interface& get_ai_ref();
+	ai_composite& get_ai_ref();
 
 	const std::string describe_ai();
 
@@ -338,16 +337,6 @@ public:
 	static bool add_ai_for_side( side_number side, const std::string& ai_algorithm_type, bool replace = true);
 
 
-	/**
-	 * Returns a smart pointer to a new AI.
-	 * @param ai_algorithm_type type of AI algorithm to create
-	 * @param cfg a config of the ai
-	 * @param ai_context context in which this ai is created
-	 * @return the reference to the created AI
-	 */
-	static ai_ptr create_transient_ai( const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context);
-
-
 	// =======================================================================
 	// REMOVE
 	// =======================================================================
@@ -545,7 +534,7 @@ private:
 	 * @return a reference to the active AI.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static interface& get_active_ai_for_side( side_number side );
+	static ai_composite& get_active_ai_for_side( side_number side );
 
 
 };

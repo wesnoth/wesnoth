@@ -26,7 +26,6 @@
 #include "ai/composite/stage.hpp"       // for ministage, idle_stage, etc
 #include "ai/composite/rca.hpp"
 #include "ai/game_info.hpp"             // for attacks_vector
-#include "ai/interface.hpp"  // for register_ai_factory
 #include "akihara/recruitment.hpp"      // for recruitment
 #include "composite/ai.hpp"             // for ai_composite
 #include "composite/aspect.hpp"         // for composite_aspect, etc
@@ -34,7 +33,6 @@
 #include "composite/engine_fai.hpp"     // for engine_fai
 #include "composite/engine_lua.hpp"     // for engine_lua
 #include "composite/goal.hpp"           // for register_goal_factory, etc
-#include "default/ai.hpp"
 #include "lua/unit_advancements_aspect.hpp"
 #include "recruitment/recruitment.hpp"  // for recruitment
 #include "testing/aspect_attacks.hpp"   // for aspect_attacks
@@ -43,7 +41,6 @@
 #include "testing/ca_testing_move_to_targets.hpp"
 #include "testing/ca_testing_recruitment.hpp"
 #include "testing/stage_sf_with_rca.hpp"
-#include "testing/stage_fallback.hpp"   // for fallback_to_other_ai
 #include "testing/stage_rca.hpp"
 
 #include <boost/shared_ptr.hpp>         // for shared_ptr, etc
@@ -52,16 +49,6 @@
 
 
 namespace ai {
-// =======================================================================
-// AIs
-// =======================================================================
-
-static register_ai_factory<ai_composite> ai_factory_default("");
-static register_ai_factory<ai_composite> ai_default_ai_factory("default_ai");
-static register_ai_factory<idle_ai> ai_idle_ai_factory("idle_ai");
-static register_ai_factory<ai_composite> ai_composite_ai_factory("composite_ai");
-
-
 // =======================================================================
 // Engines
 // =======================================================================
@@ -84,9 +71,6 @@ static register_stage_factory<testing_ai_default::candidate_action_evaluation_lo
 
 static register_stage_factory<testing_ai_default::strategy_formulation_with_rca>
 	strategy_formulation_with_rca_factory("testing_ai_default::strategy_formulation_with_rca");
-
-static register_stage_factory<testing_ai_default::fallback_to_other_ai>
-	fallback_to_other_ai_factory("testing_ai_default::fallback");
 
 static register_stage_factory<idle_stage>
 	ai_idle_stage_factory("empty");

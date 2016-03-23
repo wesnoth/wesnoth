@@ -224,7 +224,6 @@ wesnoth_sources = Split("""
     ai/composite/stage.cpp
     ai/configuration.cpp
     ai/contexts.cpp
-    ai/default/ai.cpp
     ai/default/attack.cpp
     ai/default/contexts.cpp
     ai/formula/ai.cpp
@@ -235,7 +234,6 @@ wesnoth_sources = Split("""
     ai/formula/stage_unit_formulas.cpp
     ai/game_info.cpp
     ai/gamestate_observer.cpp
-    ai/interface.cpp
     ai/lua/core.cpp
     ai/lua/lua_object.cpp
     ai/lua/unit_advancements_aspect.cpp
@@ -249,7 +247,6 @@ wesnoth_sources = Split("""
     ai/testing/ca_global_fallback.cpp
     ai/testing/ca_testing_move_to_targets.cpp
     ai/testing/ca_testing_recruitment.cpp
-    ai/testing/stage_fallback.cpp
     ai/testing/stage_rca.cpp
     ai/testing/stage_sf_with_rca.cpp
     animated_game.cpp

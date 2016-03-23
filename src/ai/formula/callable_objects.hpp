@@ -195,13 +195,10 @@ public:
 };
 
 class fallback_callable : public formula_callable {
-	std::string key_;
 	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
-	explicit fallback_callable(const std::string& key) : key_(key) {
+	explicit fallback_callable() {
 	}
-
-	const std::string& key() const { return key_; }
 };
 
 class safe_call_callable : public formula_callable {

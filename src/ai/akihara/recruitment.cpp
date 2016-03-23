@@ -33,7 +33,6 @@
 #include "units/map.hpp"
 //#include "units/types.hpp" // used in the below commented-out code
 #include "ai/composite/rca.hpp"
-#include "ai/default/ai.hpp"
 
 #include "recruitment.hpp"
 

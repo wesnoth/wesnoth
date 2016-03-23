@@ -179,7 +179,8 @@ std::string ai_composite::evaluate(const std::string& str)
 	cfg["engine"] = "fai";///@todo 1.9 : consider allowing other engines to evaluate
 	engine_ptr e_ptr = get_engine_by_cfg(cfg);
 	if (!e_ptr) {
-		return interface::evaluate(str);
+		// This should be unreachable, but not entirely sure...
+		return "engine not found for evaluate command";
 	}
 	return e_ptr->evaluate(str);
 }

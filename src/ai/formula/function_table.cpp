@@ -1277,10 +1277,11 @@ public:
 	  : function_expression("fallback", args, 0, 1)
 	{}
 private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		if( args().size() == 0 )
-			return variant(new fallback_callable(""));
-		return variant(new fallback_callable(args()[0]->evaluate(variables,add_debug_info(fdb,0,"fallback:name")).as_string()));
+	variant execute(const formula_callable& variables, formula_debugger*) const {
+		// The parameter is not used, but is accepted for legacy compatibility
+		if(args().size() == 1 && args()[0]->evaluate(variables).as_string() != "human")
+			return variant();
+		return variant(new fallback_callable);
 	}
 };
 

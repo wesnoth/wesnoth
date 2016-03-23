@@ -52,7 +52,6 @@
 #include "ai/default/contexts.hpp"  // for attack_analysis
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
-#include "ai/interface.hpp"  // for interface
 #include "candidates.hpp"               // for base_candidate_action, etc
 
 
@@ -502,18 +501,8 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			return variant();
 		} else if(fallback_command) {
 			if(get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE) {
-				if(fallback_command->key() == "human")
-				{
-					//we want give control of the side to human for the rest of this turn
-					throw fallback_ai_to_human_exception();
-				} else
-				{
-					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					ai_ptr fallback( manager::create_transient_ai(fallback_command->key(), config(), &ai_));
-					if(fallback) {
-						fallback->play_turn();
-					}
-				}
+				//we want give control of the side to human for the rest of this turn
+				throw fallback_ai_to_human_exception();
 			}
 			return variant();
 		} else {

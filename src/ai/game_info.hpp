@@ -49,9 +49,9 @@ typedef std::multimap<map_location,map_location> move_map;
 /** The standard way in which a map of possible movement routes to location is recorded*/
 typedef std::map<map_location,pathfind::paths> moves_map;
 
-class interface;
+class ai_composite;
 
-typedef boost::shared_ptr< interface > ai_ptr;
+typedef boost::shared_ptr<ai_composite> ai_ptr;
 
 class attack_analysis;
 typedef std::vector<attack_analysis> attacks_vector;

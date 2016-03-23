@@ -19,7 +19,6 @@
 
 #include "global.hpp"
 
-#include "ai.hpp"
 #include "ai/manager.hpp"
 
 #include "actions/attack.hpp"
@@ -29,6 +28,7 @@
 #include "map/map.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
+#include "formula/callable_objects.hpp" // for location_callable
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)
@@ -329,6 +329,83 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		<< " alternative quality: " << alternative_terrain_quality << "\n";
 
 	return value;
+}
+
+variant attack_analysis::get_value(const std::string& key) const
+{
+	using namespace game_logic;
+	if(key == "target") {
+		return variant(new location_callable(target));
+	} else if(key == "movements") {
+		std::vector<variant> res;
+		for(size_t n = 0; n != movements.size(); ++n) {
+			map_formula_callable* item = new map_formula_callable(NULL);
+			item->add("src", variant(new location_callable(movements[n].first)));
+			item->add("dst", variant(new location_callable(movements[n].second)));
+			res.push_back(variant(item));
+		}
+
+		return variant(&res);
+	} else if(key == "units") {
+		std::vector<variant> res;
+		for(size_t n = 0; n != movements.size(); ++n) {
+			res.push_back(variant(new location_callable(movements[n].first)));
+		}
+
+		return variant(&res);
+	} else if(key == "target_value") {
+		return variant(static_cast<int>(target_value*1000));
+	} else if(key == "avg_losses") {
+		return variant(static_cast<int>(avg_losses*1000));
+	} else if(key == "chance_to_kill") {
+		return variant(static_cast<int>(chance_to_kill*100));
+	} else if(key == "avg_damage_inflicted") {
+		return variant(static_cast<int>(avg_damage_inflicted));
+	} else if(key == "target_starting_damage") {
+		return variant(target_starting_damage);
+	} else if(key == "avg_damage_taken") {
+		return variant(static_cast<int>(avg_damage_taken));
+	} else if(key == "resources_used") {
+		return variant(static_cast<int>(resources_used));
+	} else if(key == "terrain_quality") {
+		return variant(static_cast<int>(terrain_quality));
+	} else if(key == "alternative_terrain_quality") {
+		return variant(static_cast<int>(alternative_terrain_quality));
+	} else if(key == "vulnerability") {
+		return variant(static_cast<int>(vulnerability));
+	} else if(key == "support") {
+		return variant(static_cast<int>(support));
+	} else if(key == "leader_threat") {
+		return variant(leader_threat);
+	} else if(key == "uses_leader") {
+		return variant(uses_leader);
+	} else if(key == "is_surrounded") {
+		return variant(is_surrounded);
+	} else {
+		return variant();
+	}
+}
+
+void attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using namespace game_logic;
+	inputs->push_back(formula_input("target", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("movements", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("units", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("target_value", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("avg_losses", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("chance_to_kill", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("avg_damage_inflicted", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("target_starting_damage", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("avg_damage_taken", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("resources_used", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("terrain_quality", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("alternative_terrain_quality", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("vulnerability", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("support", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("leader_threat", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("uses_leader", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
 }
 
 } //end of namespace ai

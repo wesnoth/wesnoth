@@ -21,7 +21,6 @@
 #define AI_COMPOSITE_AI_HPP_INCLUDED
 
 #include "contexts.hpp"
-#include "ai/interface.hpp"
 #include "component.hpp"
 
 #ifdef _MSC_VER
@@ -33,7 +32,7 @@
 //============================================================================
 namespace ai {
 
-class ai_composite : public ai_context, public virtual default_ai_context_proxy, public interface, public component {
+class ai_composite : public ai_context, public virtual default_ai_context_proxy, public component {
 public:
 
 
@@ -58,7 +57,7 @@ public:
 	/**
 	 * Evaluate command (using fai)
 	 */
-        virtual std::string evaluate(const std::string& str);
+	virtual std::string evaluate(const std::string& str);
 
 	/**
 	 * On new turn
