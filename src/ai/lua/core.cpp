@@ -968,7 +968,7 @@ static int impl_ai_get(lua_State* L)
 	}
 	lua_pushstring(L, "read_only");
 	lua_rawget(L, 1);
-	bool read_only = lua_toboolean(L, -1);
+	bool read_only = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
 	if(read_only) {
 		return 0;

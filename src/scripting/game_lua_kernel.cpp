@@ -4754,7 +4754,7 @@ bool game_lua_kernel::run_event(game_events::queued_event const &ev)
 int game_lua_kernel::cfun_builtin_effect(lua_State *L)
 {
 	std::string which_effect = lua_tostring(L, lua_upvalueindex(1));
-	bool need_apply = lua_toboolean(L, lua_upvalueindex(2));
+	bool need_apply = luaW_toboolean(L, lua_upvalueindex(2));
 	// Argument 1 is the implicit "self" argument, which isn't needed here
 	lua_unit u(luaW_checkunit(L, 2));
 	config cfg = luaW_checkconfig(L, 3);
