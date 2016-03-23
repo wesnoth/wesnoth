@@ -204,7 +204,7 @@ void tlobby_main::add_chat_message(const time_t& /*time*/,
 								   events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::stringstream ss;
-	ss << "<b>&lt;" << speaker << "&gt</b> ";
+	ss << "<b>&lt;" << speaker << "&gt;</b> ";
 	ss << font::escape_text(message);
 	append_to_chatbox(ss.str());
 }
