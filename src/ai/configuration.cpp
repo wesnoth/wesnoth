@@ -223,6 +223,10 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects"<< std::endl;
 	BOOST_FOREACH(config &aspect_cfg, parsed_cfg.child_range("aspect")) {
+		if (aspect_cfg["name"] != "composite_aspect") {
+			// No point in warning about Lua or standard aspects lacking [default]
+			continue;
+		}
 		if (!aspect_cfg.child("default")) {
 			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
 			continue;
