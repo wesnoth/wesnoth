@@ -1103,7 +1103,7 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 					this, row_index));
 
 		if(name == "lobby") {
-			close_button.set_active(false);
+			close_button.set_visible(tcontrol::tvisible::hidden);
 		}
 
 		return &open_windows_.back();
