@@ -1175,10 +1175,7 @@ config* recruitment::get_most_important_job() {
 			continue;
 		}
 		int importance = job["importance"].to_int(1);
-		int number = job["number"].to_int(-1);
-		if (number == -1) {
-			number = 99999; // "As much as possible" is just a lot.
-		}
+		int number = job["number"].to_int(99999);
 		bool total = job["total"].to_bool(false);
 		if (total) {
 			// If the total flag is set we have to subtract

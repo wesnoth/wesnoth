@@ -126,14 +126,22 @@ struct recruit_job : public component {
 	{}
 	config to_config() const {
 		config cfg;
-		cfg["number"] = number;
+		if(number > 0 && number < 99999) {
+			cfg["number"] = number;
+		}
 		cfg["importance"] = importance;
 		cfg["total"] = total;
 		cfg["pattern"] = pattern;
 		cfg["blocker"] = blocker;
-		cfg["leader_id"] = leader;
-		cfg["id"] = id;
-		cfg["type"] = utils::join(types);
+		if(!leader.empty()) {
+			cfg["leader_id"] = leader;
+		}
+		if(!id.empty()) {
+			cfg["id"] = id;
+		}
+		if(!types.empty()) {
+			cfg["type"] = utils::join(types);
+		}
 		return cfg;
 	}
 	std::string get_id() const {return id;};
@@ -151,8 +159,12 @@ struct recruit_limit : public component {
 	config to_config() const {
 		config cfg;
 		cfg["max"] = limit;
-		cfg["id"] = id;
-		cfg["type"] = utils::join(types);
+		if(!id.empty()) {
+			cfg["id"] = id;
+		}
+		if(!types.empty()) {
+			cfg["type"] = utils::join(types);
+		}
 		return cfg;
 	}
 	std::string get_id() const {return id;};
