@@ -727,117 +727,6 @@ private:
 	const formula_ai& ai_;
 };
 
-class akihara_battle_evaluation : public function_expression {
-public:
-	akihara_battle_evaluation(const args_list& args, const formula_ai& /*ai*/)
-		: function_expression("aki_eval", args, 4, 4)
-	{
-	}
-
-private:
-
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		std::vector<variant> vars;
-		std::vector<variant> terrain;
-		std::vector<variant> unit_t;
-
-		map_location att_loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"aki_eval:attacker_current_location")))->loc();
-		map_location def_loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"aki_eval:defender_current_location")))->loc();
-
-		terrain.push_back(variant(resources::gameboard->map().get_terrain_string(att_loc)));
-		terrain.push_back(variant(resources::gameboard->map().get_terrain_string(def_loc)));
-
-		std::string att = args()[2]->evaluate(variables,add_debug_info(fdb,2,"aki_eval:atta_type")).as_string();
-		std::string def = args()[3]->evaluate(variables,add_debug_info(fdb,3,"aki_eval:def_type")).as_string();
-
-		unit_t.push_back(variant(att));
-		unit_t.push_back(variant(def));
-
-		const unit_type* att_type = unit_types.find(att);
-		const unit_type* def_type = unit_types.find(def);
-		if ( att_type == NULL  ||  def_type == NULL )
-			return variant();
-
-		unit attacker(*att_type, 3, false);
-		unit defender(*def_type, 2, false);
-
-
-		temporary_unit_placer att_place(*resources::units, att_loc, attacker);
-		temporary_unit_placer def_place(*resources::units, def_loc, defender);
-
-
-		std::pair<double, std::vector<variant> > score = get_battle_score(attacker, defender, att_loc, def_loc);
-		std::pair<double, std::vector<variant> > score2 = get_battle_score(defender, attacker, def_loc, att_loc);
-
-		vars.push_back(variant(&terrain));
-		vars.push_back(variant(&unit_t));
-		vars.push_back(variant(&score.second));
-		vars.push_back(variant(&score2.second));
-		vars.push_back(variant(score.first - score2.first));
-
-		return variant(&vars);
-	}
-
-	std::pair<double, std::vector<variant> > get_battle_score(unit& attacker, unit& defender, map_location& att_loc, map_location& def_loc) const {
-		std::pair<double, std::vector<variant> > result;
-		std::vector<variant> vars;
-			double score_plus = 0.0;
-			double score_min = 0.0;
-			int max_att_hp = attacker.hitpoints();
-			int max_def_hp = defender.hitpoints();
-			int per = 0;
-			int nb_sol = 0;
-			double weight = attacker.hitpoints() / attacker.max_hitpoints();
-
-			battle_context bc(*resources::units, att_loc, def_loc, -1, -1, 0.5, NULL, &attacker);
-			std::vector<double> hp_dist = bc.get_defender_combatant().hp_dist;
-
-			for(unsigned i = 0; i < hp_dist.size(); i++) {
-				if (hp_dist[i] != 0) {
-					per = (max_def_hp - i) * hp_dist[i] * 100;
-					nb_sol++;
-					score_plus += per;
-				}
-			}
-
-			if (nb_sol != 0) {
-				score_plus /= nb_sol;
-			}
-
-			if (bc.get_defender_combatant().poisoned != 0)
-				score_plus += bc.get_defender_combatant().poisoned;
-			if (bc.get_defender_combatant().slowed != 0)
-				score_plus += bc.get_defender_combatant().slowed;
-
-			nb_sol = 0;
-			hp_dist = bc.get_attacker_combatant().hp_dist;
-
-			for(unsigned i = 0; i < hp_dist.size(); i++) {
-				if (hp_dist[i] != 0) {
-					per = (max_att_hp - i) * hp_dist[i] * 100;
-					score_min += per;
-					nb_sol++;
-				}
-			}
-
-			if (nb_sol != 0 ) {
-				score_min /= nb_sol;
-			}
-
-			if (bc.get_attacker_combatant().poisoned != 0)
-				score_min += bc.get_defender_combatant().poisoned;
-			if (bc.get_attacker_combatant().slowed != 0)
-				score_min += bc.get_defender_combatant().slowed;
-
-			vars.push_back(variant(score_plus));
-			vars.push_back(variant(score_min));
-			vars.push_back(variant((score_plus - score_min) * weight));
-			result.first = (score_plus - score_min) * weight;
-			result.second = vars;
-			return result;
-	}
-};
-
 
 class calculate_outcome_function : public function_expression {
 public:
@@ -1837,8 +1726,6 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new run_file_function(args, ai_));
 	} else if(fn == "calculate_map_ownership") {
 		return expression_ptr(new calculate_map_ownership_function(args, ai_));
-	} else if(fn == "aki_eval") {
-		return expression_ptr(new akihara_battle_evaluation(args, ai_));
 	} else {
 		return function_symbol_table::create_function(fn, args);
 	}

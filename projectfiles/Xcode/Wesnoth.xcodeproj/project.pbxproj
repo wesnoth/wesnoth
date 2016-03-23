@@ -960,7 +960,6 @@
 		F480CD4914035038007175D6 /* error_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3914035038007175D6 /* error_container.cpp */; };
 		F480CD4B14035038007175D6 /* sourceparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3C14035038007175D6 /* sourceparser.cpp */; };
 		F480CD4C14035038007175D6 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3E14035038007175D6 /* tag.cpp */; };
-		F49F12BB15B1E4E400B64B0B /* recruitment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F49F12B915B1E4E400B64B0B /* recruitment.cpp */; };
 		F49F134A15BC627C00B64B0B /* edit_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F49F134815BC627C00B64B0B /* edit_label.cpp */; };
 		F4C02A10182F1F64008525C6 /* lua_api.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C02A0D182F1F64008525C6 /* lua_api.cpp */; };
 		F4C02A11182F1F64008525C6 /* lua_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C02A0E182F1F64008525C6 /* lua_types.cpp */; };
@@ -2313,8 +2312,6 @@
 		F480CD3D14035038007175D6 /* sourceparser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sourceparser.hpp; sourceTree = "<group>"; };
 		F480CD3E14035038007175D6 /* tag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tag.cpp; sourceTree = "<group>"; };
 		F480CD3F14035038007175D6 /* tag.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tag.hpp; sourceTree = "<group>"; };
-		F49F12B915B1E4E400B64B0B /* recruitment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = recruitment.cpp; sourceTree = "<group>"; };
-		F49F12BA15B1E4E400B64B0B /* recruitment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = recruitment.hpp; sourceTree = "<group>"; };
 		F49F134815BC627C00B64B0B /* edit_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = edit_label.cpp; sourceTree = "<group>"; };
 		F49F134915BC627C00B64B0B /* edit_label.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = edit_label.hpp; sourceTree = "<group>"; };
 		F4C02A0D182F1F64008525C6 /* lua_api.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_api.cpp; sourceTree = "<group>"; };
@@ -3727,7 +3724,6 @@
 			children = (
 				B54AC68D0FEA9E8F006F6FBD /* actions.cpp */,
 				B54AC68E0FEA9E8F006F6FBD /* actions.hpp */,
-				F49F12B815B1E4E400B64B0B /* akihara */,
 				B54AC6A30FEA9EB5006F6FBD /* composite */,
 				B54AC68F0FEA9E8F006F6FBD /* configuration.cpp */,
 				B54AC6900FEA9E8F006F6FBD /* configuration.hpp */,
@@ -4162,15 +4158,6 @@
 				F480CD3F14035038007175D6 /* tag.hpp */,
 			);
 			path = schema;
-			sourceTree = "<group>";
-		};
-		F49F12B815B1E4E400B64B0B /* akihara */ = {
-			isa = PBXGroup;
-			children = (
-				F49F12B915B1E4E400B64B0B /* recruitment.cpp */,
-				F49F12BA15B1E4E400B64B0B /* recruitment.hpp */,
-			);
-			path = akihara;
 			sourceTree = "<group>";
 		};
 		F49F134715BC627C00B64B0B /* editor */ = {
@@ -4704,7 +4691,6 @@
 				B52EE91B12135AC300CFBDAB /* recall.cpp in Sources */,
 				B52EE91C12135AC300CFBDAB /* recruit.cpp in Sources */,
 				EC48D74D17F3148300DE80BF /* recruitment.cpp in Sources */,
-				F49F12BB15B1E4E400B64B0B /* recruitment.cpp in Sources */,
 				ECFB9FAC193BFB6E00146ED0 /* rect.cpp in Sources */,
 				B54AC6A00FEA9E8F006F6FBD /* registry.cpp in Sources */,
 				B597EC170FC0835900CE81F5 /* render.cpp in Sources */,

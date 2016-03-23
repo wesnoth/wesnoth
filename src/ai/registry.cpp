@@ -26,7 +26,6 @@
 #include "ai/composite/stage.hpp"       // for ministage, idle_stage, etc
 #include "ai/composite/rca.hpp"
 #include "ai/game_info.hpp"             // for attacks_vector
-#include "akihara/recruitment.hpp"      // for recruitment
 #include "composite/ai.hpp"             // for ai_composite
 #include "composite/aspect.hpp"         // for composite_aspect, etc
 #include "composite/engine_default.hpp"  // for engine_cpp
@@ -125,9 +124,6 @@ static register_candidate_action_factory<testing_ai_default::leader_shares_keep_
 
 static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
 	global_fallback_phase_factory("ai_default_rca::global_fallback_phase");
-
-static register_candidate_action_factory<akihara_recruitment::recruitment>
-	recruitment_factory("akihara_recruitment::recruitment");
 
 static register_candidate_action_factory<default_recruitment::recruitment>
 	default_recruitment_factory("default_recruitment::recruitment");
