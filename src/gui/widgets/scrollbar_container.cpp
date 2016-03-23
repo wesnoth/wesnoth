@@ -970,6 +970,29 @@ void tscrollbar_container::set_scrollbar_button_status()
 	}
 }
 
+bool tscrollbar_container::vertical_scrollbar_at_end()
+{
+	assert(vertical_scrollbar_);
+
+	return vertical_scrollbar_->at_end();
+}
+
+unsigned tscrollbar_container::get_vertical_scrollbar_item_position() const
+{
+	assert(vertical_scrollbar_);
+
+	return vertical_scrollbar_->get_item_position();
+}
+
+void tscrollbar_container::set_vertical_scrollbar_item_position(
+		const unsigned position)
+{
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->set_item_position(position);
+	scrollbar_moved();
+}
+
 void tscrollbar_container::scroll_vertical_scrollbar(
 		const tscrollbar_::tscroll scroll)
 {

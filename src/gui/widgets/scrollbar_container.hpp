@@ -175,6 +175,24 @@ public:
 
 	/***** ***** ***** scrollbar helpers ***** ****** *****/
 
+	/* Returns at_end status of the vertical scrollbar.
+	 *
+	 */
+	bool vertical_scrollbar_at_end();
+
+	/**
+	 * Returns current position of the vertical scrollbar.
+	 *
+	 */
+	unsigned get_vertical_scrollbar_item_position() const;
+
+	/**
+	 * Move the vertical scrollbar to a position.
+	 *
+	 * @param position              The position to scroll to.
+	 */
+	void set_vertical_scrollbar_item_position(const unsigned position);
+
 	/**
 	 * Scrolls the vertical scrollbar.
 	 *
