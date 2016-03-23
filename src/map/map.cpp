@@ -462,7 +462,7 @@ const map_location& gamemap::starting_position(int n) const
 int gamemap::num_valid_starting_positions() const
 {
 	const int res = is_starting_position(map_location());
-	if(res == -1)
+	if(res == 0)
 		return num_starting_positions();
 	else
 		return res;
