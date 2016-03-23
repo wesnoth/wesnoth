@@ -41,6 +41,9 @@
 #include "units/map.hpp"
 #include "ai/manager.hpp"
 
+#include "display_context.hpp"
+#include "filter_context.hpp"
+
 #include <vector>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
@@ -167,24 +170,25 @@ public:
 		stuff_types_list->clear();
 	}
 
-	void add_row_to_stuff_list(const std::string& id, const std::string& label)
+	void add_row_to_stuff_list(const std::string& id, const std::string& label, bool colorize = false)
 	{
 		std::map<std::string, string_map> data;
 		string_map item;
 		item["id"] = id;
 		item["label"] = label;
+		item["use_markup"] = colorize ? "true" : "false";
 		data.insert(std::make_pair("name", item));
 		stuff_list->add_row(data);
 	}
 
 
-	void add_row_to_stuff_types_list(const std::string& id,
-									 const std::string& label)
+	void add_row_to_stuff_types_list(const std::string& id, const std::string& label, bool colorize = false)
 	{
 		std::map<std::string, string_map> data;
 		string_map item;
 		item["id"] = id;
 		item["label"] = label;
+		item["use_markup"] = colorize ? "true" : "false";
 		data.insert(std::make_pair("typename", item));
 		stuff_types_list->add_row(data);
 	}
@@ -451,16 +455,19 @@ public:
 	{
 		model_.clear_stuff_list();
 
-		if(resources::units) {
+		if(resources::units && resources::filter_con) {
+			const display_context& viewer = resources::filter_con->get_disp_context();
 			for(unit_map::iterator i = resources::units->begin();
 				i != resources::units->end();
 				++i) {
+				Uint32 which_color = game_config::tc_info(viewer.teams()[i->side() - 1].color())[0];
 
 				std::stringstream s;
 				s << '(' << i->get_location();
-				s << ") side=" << i->side() << ' ';
+				s << ") <span color='#" << std::hex << which_color << std::dec;
+				s << "'>side=" << i->side() << "</span> ";
 				if(i->can_recruit()) {
-					s << "LEADER ";
+					s << "<span color='yellow'>LEADER</span> ";
 				}
 
 				s << "\nid=\"" << i->id() << "\" (" << i->type_id() << ")\n"
@@ -473,7 +480,7 @@ public:
 				}
 
 				std::string key = s.str();
-				model_.add_row_to_stuff_list(key, key);
+				model_.add_row_to_stuff_list(i->id(), key, true);
 			}
 		}
 
