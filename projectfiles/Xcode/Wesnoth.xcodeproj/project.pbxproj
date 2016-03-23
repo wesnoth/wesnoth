@@ -904,6 +904,7 @@
 		ECA563881A47BA36006278A5 /* hotkey_handler_replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563841A47BA36006278A5 /* hotkey_handler_replay.cpp */; };
 		ECA563891A47BA36006278A5 /* hotkey_handler_sp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */; };
 		ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563861A47BA36006278A5 /* hotkey_handler.cpp */; };
+		ECA9E7471CA20AA800A947D6 /* libreadline.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.6.dylib */; };
 		ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */; };
@@ -2225,6 +2226,7 @@
 		ECA563841A47BA36006278A5 /* hotkey_handler_replay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_replay.cpp; sourceTree = "<group>"; };
 		ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_sp.cpp; sourceTree = "<group>"; };
 		ECA563861A47BA36006278A5 /* hotkey_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler.cpp; sourceTree = "<group>"; };
+		ECA9E7461CA20AA800A947D6 /* libreadline.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.6.dylib; path = lib/libreadline.6.dylib; sourceTree = "<group>"; };
 		ECAA3FE518E0E4EF002E8998 /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
 		ECAA3FE618E0E4EF002E8998 /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
 		ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shroud_clearing_action.cpp; sourceTree = "<group>"; };
@@ -2360,6 +2362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA9E7471CA20AA800A947D6 /* libreadline.6.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
 				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
@@ -2825,6 +2828,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECA9E7461CA20AA800A947D6 /* libreadline.6.dylib */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
 				ECF9D43F19F4026D00E6C9D9 /* libboost_filesystemw.dylib */,
 				F4EF0D4B13AD4D53003C701D /* libboost_iostreamsw.dylib */,
