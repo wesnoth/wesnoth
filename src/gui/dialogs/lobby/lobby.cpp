@@ -1096,11 +1096,11 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 		add_label_data(data2, "room", whisper ? "<" + name + ">" : name);
 		roomlistbox_->add_row(data2);
 
-		tbutton& close_button = find_widget<tbutton>(roomlistbox_->get_row_grid(roomlistbox_->get_item_count() - 1), "close_window", false);
+		const int row_index = roomlistbox_->get_item_count() - 1;
+		tbutton& close_button = find_widget<tbutton>(roomlistbox_->get_row_grid(row_index), "close_window", false);
 		connect_signal_mouse_left_click(close_button,
 			boost::bind(&tlobby_main::close_window_button_callback,
-					this,
-					boost::ref(*roomlistbox_->get_window())));
+					this, row_index));
 
 		if(name == "lobby") {
 			close_button.set_active(false);
@@ -1599,9 +1599,9 @@ void tlobby_main::send_message_to_active_window(const std::string& input)
 	}
 }
 
-void tlobby_main::close_window_button_callback(twindow& /*window*/)
+void tlobby_main::close_window_button_callback(size_t idx)
 {
-	close_active_window();
+	close_window(idx);
 }
 
 void tlobby_main::create_button_callback(gui2::twindow& window)
