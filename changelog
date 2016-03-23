@@ -14,6 +14,68 @@ Version 1.13.4+dev:
    * New ~SCALE_INTO_SHARP(w,h) IPF which preserves aspect ratio, using
      nearest neighbor scaling.
    * Support delayed_variable_substitution= in [on_undo], [on_redo]
+   * AiWML:
+     * Simplified aspect syntax which works for all aspects, present and future
+       * All aspects with simple values can be specified as key=value
+       * Except attacks, all aspects with complex values have a simple tag form
+         containing only the aspect value (eg like [avoid])
+       * All aspects, simple and complex, can be specified using a tag named by
+         the aspect, whose contents is the same as a corresponding [facet]
+       * Of course, the full [aspect] and [facet] syntax also still works
+     * [ai] configs no longer recognize the version= key
+     * ai_algorithm key now selects a preset AI; possible values include
+       "ai_default_rca", "experimental_ai", and "idle_ai", but custom AIs
+       defined by eras or modifications with an [ai] tag can also be used
+     * [leader_goal] now automatically sets facet ID for auto_remove
+       (Only if using simplified syntax; in full syntax, the ID must still be
+       specified in two places.)
+     * The AI config in the gamestate inspector is now split into multiple
+       sections according to the type of component.
+     * The following deprecated component have been removed:
+       * recruitment stage (name=ai_default::recruitment)
+       * old recruitment candidate action (name=ai_default_rca::aspect_recruitment_phase)
+       * number_of_possible_recruits_to_force_recruit aspect
+       * recruitment_ignore_bad_combat aspect
+       * recruitment_ignore_bad_movement aspect
+       * The recruitment aspect has been removed from the engine; however,
+         "recruitment" is now accepted as a synonym for "recruitment_instructions".
+         Old code should work without changes.
+       * [goal]name=protect_my_unit
+     * Lua components (goals, aspects, stages, and candidate actions)
+       now support an [args] subtag, which passes any sort of WML data
+       to the Lua code - this works similarly to [args] in a [lua] tag,
+       though not quite identically.
+     * Aspect syntax with [aspect] tag has been fully generalized so that
+       [aspect], [facet], and [default] are all exactly the same in terms of
+       what contents they expect. (Except that [facet] additionally takes
+       turns= and time_of_day=.) The most useful consequences of this:
+       * You can nest a [facet] inside another [facet] if the outer one has
+         name=composite_aspect
+       * You can define a [facet] with the Lua engine
+     * invalidate_on_tod_change= has been implemented for aspects. It applies
+       when the bonus resulting from time of day modifiers (excluding any
+       illumination abilities) changes at any location on the map. Thus, it
+       occurs on average less often than invalidate_on_turn_start and may
+       be best combined with an explicit invalidate_on_turn_start=no.
+     * A minor shorthand has been introduced in the recruitment_instructions aspect:
+       * [pattern] tag is like [recruit] with pattern=yes
+       * [total] tag is like [recruit] with total=yes
+       * If no [recruit] tag is present, a default is added with importance=0
+         This means recruitment will happen even with only [limit] tags.
+     * Extensions to [modify_ai]:
+       * [modify_ai]action=change works on aspects, using path=aspect[id]
+         Useful if you need to change all the facets at once, but note that
+         it also wipes the [default] facet.
+       * The [default] facet can be referenced as facet[default_facet]
+         This should rarely be needed, but is there in case it is.
+         It also makes them easily identifiable in the inspector.
+       * Automatically copies over the id= with action=change, if the
+         new component didn't specify one.
+       * It can add, remove, and change jobs and limits in the
+         recruitment_instructions aspect. The path to use for this is
+         aspect[recruitment_instructions].facet[facet_id].recruit[recruit_id].
+         (For a limit, replace "recruit" with "limit".)
+         Of course, the [recruit] and [limit] tags now support id keys for this.
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -34,6 +96,28 @@ Version 1.13.4+dev:
      built-in effects - for example, to add a new feature to
      [effect]apply_to=attack. It also now supports effect descriptions,
      for use by the [trait] tag.
+   * LuaAI:
+     * The table returned by check_*() now has a "result" field which
+       gives a description of the action's result; it's like "status"
+       but more descriptive.
+     * Target tables now use a descriptive name for "type", instead of
+       an integer. This applies to the elements of the table returned by
+       ai.get_targets() and also to the elements of tables returned by
+       Lua goals. (However, Lua goals that used integers will continue
+       to work for now.)
+     * There are some compatibility-breaking changes to Lua candidate
+       actions - see the release notes or the wiki for full details.
+     * Lua AI code can now access the AI routines through the global ai
+       object. This object is only accessible to AI code; it doesn't exist
+       in the general Lua global scope.
+     * When executing Lua goals, aspects, or candidate action evaluations,
+       the ai is in "read-only" mode - the read_only key is set to true,
+       and functions that change the gamestate, such as ai.attack(), are
+       missing from the table. (ai.check_*() functions are still present.)
+     * The ai.aspects table provides access to every aspect known by the
+       engine, including several that previously did not have corresponding
+       ai.get_*() functions. You access them as ai.aspects.avoid, for example.
+       The table is read-only and raises an error if you attempt to write to it.
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
    * New syntax features:
@@ -98,6 +182,8 @@ Version 1.13.4+dev:
      * No longer explodes on formulas using less-than
      * Some better information and formatting in the execution trace
      * You can now step through "where" variable assignments
+   * FormulaAI no longer starts recruiting if a formula evaluates to the
+     string 'recruit'.
    * Deprecated:
      * The fai/faiend keywords are deprecated as part of a move to clearly
        define the difference between "Wesnoth Formula Language", the language,
