@@ -177,12 +177,12 @@ private:
 	/**
 	 * Append some text to the active chat log
 	 */
-	void append_to_chatbox(const std::string& text);
+	void append_to_chatbox(const std::string& text, const bool force_scroll = false);
 
 	/**
 	 * Append some text to the chat log for window "id"
 	 */
-	void append_to_chatbox(const std::string& text, size_t id);
+	void append_to_chatbox(const std::string& text, size_t id, const bool force_scroll = false);
 
 	/**
 	 * Result flag for interfacing with other MP dialogs
@@ -249,7 +249,8 @@ private:
 	 * for "name".
 	 */
 	void add_active_window_whisper(const std::string& sender,
-								   const std::string& message);
+								   const std::string& message,
+								   const bool force_scroll = false);
 
 	/**
 	 * Add a message to the window for room "room"
@@ -262,7 +263,8 @@ private:
 	 * Add a message to the window for room "room"
 	 */
 	void add_active_window_message(const std::string& sender,
-								   const std::string& message);
+								   const std::string& message,
+								   const bool force_scroll = false);
 
 	/**
 	 * Switch to the window given by a valid pointer (e.g. received from a call

@@ -214,16 +214,16 @@ void tlobby_main::add_whisper_sent(const std::string& receiver,
 								   const std::string& message)
 {
 	if(whisper_window_active(receiver)) {
-		add_active_window_message(preferences::login(), message);
+		add_active_window_message(preferences::login(), message, true);
 	} else if(tlobby_chat_window* t = whisper_window_open(
 					  receiver, preferences::auto_open_whisper_windows())) {
 		switch_to_window(t);
-		add_active_window_message(preferences::login(), message);
+		add_active_window_message(preferences::login(), message, true);
 	} else {
 		utils::string_map symbols;
 		symbols["receiver"] = receiver;
 		add_active_window_whisper(VGETTEXT("whisper to $receiver", symbols),
-								  message);
+								  message, true);
 	}
 	lobby_info_.get_whisper_log(receiver)
 			.add_message(preferences::login(), message);
@@ -266,7 +266,7 @@ void tlobby_main::add_chat_room_message_sent(const std::string& room,
 			switch_to_window(t);
 		}
 		ri->log().add_message(preferences::login(), message);
-		add_active_window_message(preferences::login(), message);
+		add_active_window_message(preferences::login(), message, true);
 	} else {
 		LOG_LB << "Cannot add sent message to ui for room " << room
 			   << ", player not in the room\n";
@@ -302,19 +302,26 @@ void tlobby_main::add_chat_room_message_received(const std::string& room,
 	}
 }
 
-void tlobby_main::append_to_chatbox(const std::string& text)
+void tlobby_main::append_to_chatbox(const std::string& text, const bool force_scroll)
 {
-	append_to_chatbox(text, active_window_);
+	append_to_chatbox(text, active_window_, force_scroll);
 }
 
-void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
+void tlobby_main::append_to_chatbox(const std::string& text, size_t id, const bool force_scroll)
 {
 	tgrid& grid = chat_log_container_->page_grid(id);
 	tscroll_label& log = find_widget<tscroll_label>(&grid, "log_text", false);
+	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
+	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 	log.set_use_markup(true);
 	log.set_label(log.label() + "\n" + preferences::get_chat_timestamp(time(0))
 				  + text);
-	log.scroll_vertical_scrollbar(tscrollbar_::END);
+
+	if(chatbox_at_end || force_scroll) {
+		log.scroll_vertical_scrollbar(tscrollbar_::END);
+	} else {
+		log.set_vertical_scrollbar_item_position(chatbox_position);
+	}
 }
 
 void tlobby_main::do_notify(t_notify_mode mode, const std::string & sender, const std::string & message)
@@ -1171,16 +1178,17 @@ void tlobby_main::add_whisper_window_whisper(const std::string& sender,
 			   << sender << "\n";
 		return;
 	}
-	append_to_chatbox(ss.str(), t - &open_windows_[0]);
+	append_to_chatbox(ss.str(), t - &open_windows_[0], false);
 }
 
 void tlobby_main::add_active_window_whisper(const std::string& sender,
-											const std::string& message)
+											const std::string& message,
+											const bool force_scroll)
 {
 	std::stringstream ss;
 	ss << "<b>&lt;"
 	   << "whisper: " << sender << "&gt;</b> " << font::escape_text(message);
-	append_to_chatbox(ss.str());
+	append_to_chatbox(ss.str(), force_scroll);
 }
 
 void tlobby_main::add_room_window_message(const std::string& room,
@@ -1195,15 +1203,16 @@ void tlobby_main::add_room_window_message(const std::string& room,
 			   << "\n";
 		return;
 	}
-	append_to_chatbox(ss.str(), t - &open_windows_[0]);
+	append_to_chatbox(ss.str(), t - &open_windows_[0], false);
 }
 
 void tlobby_main::add_active_window_message(const std::string& sender,
-											const std::string& message)
+											const std::string& message,
+											const bool force_scroll)
 {
 	std::stringstream ss;
 	ss << "<b>&lt;" << sender << "&gt;</b> " << font::escape_text(message);
-	append_to_chatbox(ss.str());
+	append_to_chatbox(ss.str(), force_scroll);
 }
 
 void tlobby_main::switch_to_window(tlobby_chat_window* t)
