@@ -19,6 +19,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula/debugger.hpp"
@@ -68,8 +69,8 @@ REGISTER_DIALOG(formula_debugger)
 void tformula_debugger::pre_show(twindow& window)
 {
 	// stack label
-	tcontrol* stack_label
-			= find_widget<tcontrol>(&window, "stack", false, true);
+	tscroll_label* stack_label
+			= find_widget<tscroll_label>(&window, "stack", false, true);
 
 	std::stringstream stack_text;
 	std::string indent = "  ";
@@ -87,11 +88,12 @@ void tformula_debugger::pre_show(twindow& window)
 
 	stack_label->set_use_markup(true);
 	stack_label->set_label(stack_text.str());
+	stack_label->scroll_vertical_scrollbar(tscrollbar_::END);
 	window.keyboard_capture(stack_label);
 
 	// execution trace label
-	tcontrol* execution_label
-			= find_widget<tcontrol>(&window, "execution", false, true);
+	tscroll_label* execution_label
+			= find_widget<tscroll_label>(&window, "execution", false, true);
 
 	std::stringstream execution_text;
 	FOREACH(const AUTO & i, fdb_.get_execution_trace())
@@ -115,7 +117,7 @@ void tformula_debugger::pre_show(twindow& window)
 
 	execution_label->set_use_markup(true);
 	execution_label->set_label(execution_text.str());
-
+	execution_label->scroll_vertical_scrollbar(tscrollbar_::END);
 	// state
 	std::string state_str;
 	bool is_end = false;
