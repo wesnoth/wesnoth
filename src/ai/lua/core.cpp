@@ -160,28 +160,6 @@ static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result
 	return 1;
 }
 
-static bool to_map_location(lua_State *L, int &index, map_location &res)
-{
-	if (lua_isuserdata(L, index))
-	{
-		const unit* u = luaW_tounit(L, index);
-		if (!u) return false;
-		res = u->get_location();
-		++index;
-	}
-	else
-	{
-		if (!lua_isnumber(L, index)) return false;
-		res.x = lua_tointeger(L, index) - 1;
-		++index;
-		if (!lua_isnumber(L, index)) return false;
-		res.y = lua_tointeger(L, index) - 1;
-		++index;
-	}
-
-	return true;
-}
-
 static int cfun_ai_get_suitable_keep(lua_State *L)
 {
 	int index = 1;
@@ -209,19 +187,12 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 
 static int ai_move(lua_State *L, bool exec, bool remove_movement)
 {
-	int index = 1;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, index, "location (unit/integers)");
-	}
-
 	int side = get_readonly_context(L).get_side();
-	map_location from, to;
-	if (!to_map_location(L, index, from)) goto error_call_destructors;
-	if (!to_map_location(L, index, to)) goto error_call_destructors;
+	map_location from = luaW_checklocation(L, 1);
+	map_location to = luaW_checklocation(L, 2);
 	bool unreach_is_ok = false;
-	if (lua_isboolean(L, index)) {
-		unreach_is_ok = luaW_toboolean(L, index);
+	if (lua_isboolean(L, 3)) {
+		unreach_is_ok = luaW_toboolean(L, 3);
 	}
 	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,exec,from,to,remove_movement, unreach_is_ok);
 	return transform_ai_action(L,move_result);
@@ -244,24 +215,17 @@ static int cfun_ai_check_move(lua_State *L)
 
 static int ai_attack(lua_State *L, bool exec)
 {
-	int index = 1;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, index, "location (unit/integers)");
-	}
-
 	ai::readonly_context &context = get_readonly_context(L);
 
 	int side = context.get_side();
-	map_location attacker, defender;
-	if (!to_map_location(L, index, attacker)) goto error_call_destructors;
-	if (!to_map_location(L, index, defender)) goto error_call_destructors;
+	map_location attacker = luaW_checklocation(L, 1);
+	map_location defender = luaW_checklocation(L, 2);
 
 	int attacker_weapon = -1;//-1 means 'select what is best'
 	double aggression = context.get_aggression();//use the aggression from the context
 
-	if (!lua_isnoneornil(L, index)) {
-		attacker_weapon = lua_tointeger(L, index);
+	if (!lua_isnoneornil(L, 3)) {
+		attacker_weapon = lua_tointeger(L, 3);
 		if (attacker_weapon != -1) {
 			attacker_weapon--;	// Done for consistency of the Lua style
 		}
@@ -271,8 +235,8 @@ static int ai_attack(lua_State *L, bool exec)
 	// If a decision is made to expand the function that determines the weapon, this block must be refactored
 	// to parse aggression if a single int is on the stack, or create a table of parameters, if a table is on the
 	// stack.
-	if (!lua_isnoneornil(L, index + 1) && lua_isnumber(L,index + 1)) {
-		aggression = lua_tonumber(L, index + 1);
+	if (!lua_isnoneornil(L, 4) && lua_isnumber(L,4)) {
+		aggression = lua_tonumber(L, 4);
 	}
 
 	unit_advancements_aspect advancements = context.get_advancements();
@@ -292,15 +256,8 @@ static int cfun_ai_check_attack(lua_State *L)
 
 static int ai_stopunit_select(lua_State *L, bool exec, bool remove_movement, bool remove_attacks)
 {
-	int index = 1;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, index, "location (unit/integers)");
-	}
-
 	int side = get_readonly_context(L).get_side();
-	map_location loc;
-	if (!to_map_location(L, index, loc)) goto error_call_destructors;
+	map_location loc = luaW_checklocation(L, 1);
 
 	ai::stopunit_result_ptr stopunit_result = ai::actions::execute_stopunit_action(side,exec,loc,remove_movement,remove_attacks);
 	return transform_ai_action(L,stopunit_result);
