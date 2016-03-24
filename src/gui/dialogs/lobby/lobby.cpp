@@ -149,21 +149,6 @@ void tplayer_list::init(gui2::twindow& w)
 
 	find_widget<twidget>(&w, "old_player_list", false)
 			.set_visible(twidget::tvisible::invisible);
-
-	/**
-	 * @todo This is a hack to fold the items.
-	 *
-	 * This hack can be removed when folding is properly implemented.
-	 */
-	assert(active_room.tree);
-	find_widget<ttoggle_button>(active_room.tree, "tree_view_node_icon", false)
-			.set_value(true);
-	assert(other_rooms.tree);
-	find_widget<ttoggle_button>(other_rooms.tree, "tree_view_node_icon", false)
-			.set_value(true);
-	assert(other_games.tree);
-	find_widget<ttoggle_button>(other_games.tree, "tree_view_node_icon", false)
-			.set_value(true);
 }
 
 void tplayer_list::update_sort_icons()
