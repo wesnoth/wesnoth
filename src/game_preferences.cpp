@@ -1031,10 +1031,10 @@ compression::format save_compression_format()
 std::string get_chat_timestamp(const time_t& t) {
 	if (chat_timestamping()) {
 		if(preferences::use_twelve_hour_clock_format() == false) {
-			return lg::get_timestamp(t, _("%H:%M")) + " ";
+			return lg::get_timestamp(t, _("[%H:%M]")) + " ";
 		}
 		else {
-			return lg::get_timestamp(t, _("%I:%M %p")) + " ";
+			return lg::get_timestamp(t, _("[%I:%M %p]")) + " ";
 		}
 	}
 	return "";
