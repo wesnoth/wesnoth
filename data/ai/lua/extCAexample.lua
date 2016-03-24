@@ -2,13 +2,13 @@
 
 example_ca = {}
 
-function example_ca:evaluation(ai)
+function example_ca:evaluation()
     wesnoth.message("External CA evaluation says hi.")
 
     return 10000
 end
 
-function example_ca:execution(ai)
+function example_ca:execution()
     wesnoth.message("External CA execution attacks.")
 
     -- Note that there is no check whether these attacks are possible.
