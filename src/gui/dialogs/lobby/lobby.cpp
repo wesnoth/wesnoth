@@ -299,8 +299,8 @@ void tlobby_main::append_to_chatbox(const std::string& text, size_t id, const bo
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 	log.set_use_markup(true);
-	log.set_label(log.label() + "\n" + preferences::get_chat_timestamp(time(0))
-				  + text);
+	log.set_label(log.label() + "\n" +
+				  "<span color='#bcb088'>" + preferences::get_chat_timestamp(time(0)) + text + "</span>");
 
 	if(chatbox_at_end || force_scroll) {
 		log.scroll_vertical_scrollbar(tscrollbar_::END);
@@ -433,6 +433,7 @@ void add_label_data(std::map<std::string, string_map>& map,
 {
 	string_map item;
 	item["label"] = label;
+	item["use_markup"] = "true";
 	map.insert(std::make_pair(key, item));
 }
 
@@ -1080,7 +1081,7 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 									symbols));
 		} else {
 			add_label_data(
-					data, "log_text", VGETTEXT("Room $name joined", symbols));
+					data, "log_text", VGETTEXT("<i>Room $name joined</i>", symbols));
 			lobby_info_.open_room(name);
 		}
 		chat_log_container_->add_page(data);
