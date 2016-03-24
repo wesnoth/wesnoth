@@ -31,10 +31,12 @@ Version 1.13.4+dev:
        specified in two places.)
      * The AI config in the gamestate inspector is now split into multiple
        sections according to the type of component.
-     * The following deprecated component have been removed:
+     * The following deprecated components have been removed:
        * recruitment stage (name=ai_default::recruitment)
        * old recruitment candidate action
          (name=ai_default_rca::aspect_recruitment_phase)
+       * old simple move-to-targets candidate action
+         (name=ai_default_rca::simple_move_and_targeting_phase)
        * number_of_possible_recruits_to_force_recruit aspect
        * recruitment_ignore_bad_combat aspect
        * recruitment_ignore_bad_movement aspect
@@ -42,6 +44,14 @@ Version 1.13.4+dev:
          "recruitment" is now accepted as a synonym for
          "recruitment_instructions". Old code should work without changes.
        * [goal]name=protect_my_unit
+     * The following experimental components have been removed:
+       (Most of these were broken or non-functional)
+       * Experimental recruitment candidate action
+       * Global gallback candidate action
+       * Akihara recruitment candidate action
+       * Strategy Formulation with RCA stage
+         This worked, but was slow and unmaintained. If a maintainer
+         steps up, it may be restored later.
      * Lua components (goals, aspects, stages, and candidate actions)
        now support an [args] subtag, which passes any sort of WML data
        to the Lua code - this works similarly to [args] in a [lua] tag,

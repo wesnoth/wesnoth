@@ -43,16 +43,23 @@ The "fai" and "faiend" keywords are deprecated in favour of "wfl" and "wflend" r
 [/rasection]
 
 [rasection="Changes to AI"]
-The format for configuring AI parameters has been simplified for easier configuring - see the changelog or wiki for full details. It has also been extended in several ways, for example allowing Lua facets. The [modify_ai] tag has been extended to allow editing the internal jobs of the recruitment_instructions aspect.
+The format for configuring AI parameters has been simplified - see the changelog or wiki for full details. It has also been extended in several ways, for example allowing Lua facets. The [modify_ai] tag has been extended to allow editing the internal jobs of the recruitment_instructions aspect.
 [/rasection]
 
 [rawarn="AI compatibility breaks"]
-Several old, deprecated AI components were removed - the aspects number_of_possible_recruits_to_force_recruit, recruitment_ignore_bad_combat, recruitment_ignore_bad_movement, recruitment, the recruitment stage, the old (and by default no longer used) recruitment candidate action, and the protect_my_unit goal. The mentioned aspects no longer did anything anyway, and the recruitment aspect is automatically translated to a recruitment_instructions aspect - which means that it now does something where previously it was ignored.
+Several old, deprecated AI components were removed:
+[list]
+[*]Several aspects that no longer did anything anyway: number_of_possible_recruits_to_force_recruit, recruitment_ignore_bad_combat, recruitment_ignore_bad_movement
+[*]The recruitment aspect; however, this is automatically translated to a recruitment_instructions aspect, which means it will now be honored where it was previously ignored
+[*]Stages that were either old and deprecated or experimental and unmaintained/broken: old recruitment, fallback, Strategy Formulation with RCA
+[*]Candidate actions that were either old and deprecated or experimental and unmaintained/broken: old recruitment, simple move-to-targets, global fallback, Akihara recruitment, experimental recruitment
+[*]The protect_my_unit [goal] type
+[/list]
 
 
-The changes to how Lua candidate actions work are likely to break some AIs. Fortunately, the fixes will be simple in most cases.
+A number of changes were made to the way Lua AI components are declared in the WML and how the code is called by the engine. The wiki documents the new method in detail, but unfortunately these changes are likely to break some AIs. However, the fixes will be simple in most cases:
 [list=1]
-[*]If you used old-style Lua candidate actions (with execute and evaluate keys) together with an explicit [engine]name=lua tag, they will no longer work as written. In many cases, the fix will be simple - the code within [engine] frequently begins with a line similar to [c]local ai = ...[/c]. Simply removing this line will be sufficient to fix most such cases.
+[*]If you used old-style Lua candidate actions (with execute and evaluate keys) together with an explicit [engine]name=lua tag, they will no longer work as written. In many cases, the fix will be simple - the code within [engine] frequently begins with a line similar to [c]local ai = ...[/c]. Simply removing this line will be sufficient to fix most such cases; if you accessed a "data" variable in the AI, see the Experimental AI definition (data/ai/ais/ai_generic_rush.cfg) for an example of how to fix it.
 [*]If you used old-style Lua candidate actions without an explicit engine tag, you may need to remove a line similar to [c]local ai = ...[/c] from some of your code. In general, anything of the form [c]ai = <something>[/c] needs to be changed.
 [*]If you used new-style (external) Lua candidate actions (with a location key), they will still work for the time being (provided that they use exec_parms and/or eval_parms), but they should be updated nevertheless. The exec_parms and eval_parms keys should be combined into an [args] tag, and the argument list of your execution and evaluation functions should be changed from [c](ai, cfg, self)[/c] to [c](data, cfg)[/c]. The data parameter is the same as self.data was before; however, provided you do not have an explicit [engine] tag, self.data will continue to work.
 [/list]
