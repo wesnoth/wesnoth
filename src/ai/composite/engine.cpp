@@ -17,8 +17,8 @@
  * @file
  */
 
-#include "engine.hpp"
-#include "contexts.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/contexts.hpp"
 
 #include "log.hpp"
 

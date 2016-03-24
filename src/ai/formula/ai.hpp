@@ -24,7 +24,7 @@
 #include "ai/contexts.hpp"
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/formula/callable_objects.hpp"         // for position_callable, etc
-#include "candidates.hpp"               // for candidate_action_ptr, etc
+#include "ai/formula/candidates.hpp"               // for candidate_action_ptr, etc
 #include "config.hpp"                   // for config
 #include "formula/callable.hpp"         // for formula_callable, etc
 #include "formula/formula_fwd.hpp"              // for const_formula_ptr, etc

@@ -17,8 +17,8 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "engine_fai.hpp"
+#include "ai/formula/ai.hpp"
+#include "ai/formula/engine_fai.hpp"
 #include "ai/composite/rca.hpp"
 #include "ai/formula/ai.hpp"
 #include "ai/formula/candidates.hpp"

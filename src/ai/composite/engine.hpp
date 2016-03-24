@@ -21,7 +21,7 @@
 #ifndef AI_COMPOSITE_ENGINE_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_HPP_INCLUDED
 
-#include "component.hpp"
+#include "ai/composite/component.hpp"
 #include "ai/contexts.hpp"
 
 #include <algorithm>
