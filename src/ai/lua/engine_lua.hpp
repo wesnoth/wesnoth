@@ -20,7 +20,7 @@
 #ifndef AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
 
-#include "engine.hpp"
+#include "ai/composite/engine.hpp"
 
 //============================================================================
 namespace ai {

@@ -17,12 +17,12 @@
  * @file
  */
 
-#include "ai.hpp"
+#include "ai/formula/ai.hpp"
 #include "engine_lua.hpp"
-#include "goal.hpp"
-#include "rca.hpp"
-#include "stage.hpp"
-#include "aspect.hpp"
+#include "ai/composite/goal.hpp"
+#include "ai/composite/rca.hpp"
+#include "ai/composite/stage.hpp"
+#include "ai/composite/aspect.hpp"
 
 #include "ai/gamestate_observer.hpp"
 

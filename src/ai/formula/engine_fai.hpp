@@ -20,8 +20,8 @@
 #ifndef AI_COMPOSITE_ENGINE_FAI_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_FAI_HPP_INCLUDED
 
-#include "engine.hpp"
-#include "contexts.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/default/contexts.hpp"
 
 //============================================================================
 namespace ai {
