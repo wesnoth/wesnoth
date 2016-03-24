@@ -47,8 +47,10 @@ Version 1.13.4+dev:
      * The following experimental components have been removed:
        (Most of these were broken or non-functional)
        * Experimental recruitment candidate action
-       * Global gallback candidate action
+         This worked, but was worse than the default recruitment.
+       * Global fallback candidate action
        * Akihara recruitment candidate action
+       * Fallback stage (functional but useless)
        * Strategy Formulation with RCA stage
          This worked, but was slow and unmaintained. If a maintainer
          steps up, it may be restored later.
