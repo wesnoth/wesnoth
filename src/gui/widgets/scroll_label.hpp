@@ -45,7 +45,7 @@ class tscroll_label : public tscrollbar_container
 	friend struct implementation::tbuilder_scroll_label;
 
 public:
-	tscroll_label();
+	tscroll_label(bool wrap);
 
 	/** See @ref tcontrol::set_label. */
 	virtual void set_label(const t_string& label) OVERRIDE;
@@ -63,6 +63,9 @@ public:
 
 	/** See @ref tcontrol::get_state. */
 	virtual unsigned get_state() const OVERRIDE;
+	
+	bool can_wrap() const;
+	void set_can_wrap(bool can_wrap);
 
 private:
 	/**
@@ -86,6 +89,7 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
+	bool wrap_on;
 
 	void finalize_subclass();
 
@@ -128,6 +132,7 @@ struct tbuilder_scroll_label : public tbuilder_control
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	bool wrap_on;
 };
 
 } // namespace implementation

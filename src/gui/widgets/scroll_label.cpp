@@ -39,7 +39,7 @@ namespace gui2
 
 REGISTER_WIDGET(scroll_label)
 
-tscroll_label::tscroll_label() : tscrollbar_container(COUNT), state_(ENABLED)
+tscroll_label::tscroll_label(bool wrap) : tscrollbar_container(COUNT), state_(ENABLED), wrap_on(wrap)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			boost::bind(
@@ -95,13 +95,22 @@ void tscroll_label::finalize_subclass()
 
 	assert(lbl);
 	lbl->set_label(label());
+	lbl->set_can_wrap(wrap_on);
+}
 
-	/**
-	 * @todo wrapping should be a label setting.
-	 * This setting shoul be mutual exclusive with the horizontal scrollbar.
-	 * Also the scroll_grid needs to set the status for the scrollbars.
-	 */
-	lbl->set_can_wrap(true);
+void tscroll_label::set_can_wrap(bool can_wrap)
+{
+	assert(content_grid());
+	tlabel* lbl = dynamic_cast<tlabel*>(content_grid()->find("_label", false));
+
+	assert(lbl);
+	wrap_on = can_wrap;
+	lbl->set_can_wrap(wrap_on);
+}
+
+bool tscroll_label::can_wrap() const
+{
+	return wrap_on;
 }
 
 const std::string& tscroll_label::get_control_type() const
@@ -210,6 +219,8 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
  *                                     scrollbar. $
+ *     wrap & boolean & true &         Determines whether the text of the
+ *                                     label is allowed to wrap. $
  * @end{table}
  * @end{tag}{name="scroll_label"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
@@ -224,12 +235,13 @@ tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, wrap_on(cfg["wrap"].to_bool(true))
 {
 }
 
 twidget* tbuilder_scroll_label::build() const
 {
-	tscroll_label* widget = new tscroll_label();
+	tscroll_label* widget = new tscroll_label(wrap_on);
 
 	init_control(widget);
 
