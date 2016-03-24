@@ -189,7 +189,7 @@ void tlobby_main::add_chat_message(const time_t& /*time*/,
 								   events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::stringstream ss;
-	ss << "<b>&lt;" << speaker << "&gt;</b> ";
+	ss << "<b>" << speaker << ":</b> ";
 	ss << font::escape_text(message);
 	append_to_chatbox(ss.str());
 }
@@ -1171,8 +1171,8 @@ void tlobby_main::add_active_window_whisper(const std::string& sender,
 											const bool force_scroll)
 {
 	std::stringstream ss;
-	ss << "<b>&lt;"
-	   << "whisper: " << sender << "&gt;</b> " << font::escape_text(message);
+	ss << "<b>"
+	   << "whisper: " << sender << ":</b> " << font::escape_text(message);
 	append_to_chatbox(ss.str(), force_scroll);
 }
 
@@ -1181,7 +1181,7 @@ void tlobby_main::add_room_window_message(const std::string& room,
 										  const std::string& message)
 {
 	std::stringstream ss;
-	ss << "<b>&lt;" << sender << "&gt;</b> " << font::escape_text(message);
+	ss << "<b>" << sender << ":</b> " << font::escape_text(message);
 	tlobby_chat_window* t = room_window_open(room, false);
 	if(!t) {
 		ERR_LB << "Room window not open in add_room_window_message for " << room
@@ -1196,7 +1196,7 @@ void tlobby_main::add_active_window_message(const std::string& sender,
 											const bool force_scroll)
 {
 	std::stringstream ss;
-	ss << "<b>&lt;" << sender << "&gt;</b> " << font::escape_text(message);
+	ss << "<b>" << sender << ":</b> " << font::escape_text(message);
 	append_to_chatbox(ss.str(), force_scroll);
 }
 
