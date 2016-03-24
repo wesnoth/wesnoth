@@ -37,7 +37,6 @@
 #include "ai/default/aspect_attacks.hpp"   // for aspect_attacks
 #include "ai/default/ca.hpp"               // for leader_shares_keep_phase, etc
 #include "ai/testing/ca_testing_move_to_targets.hpp"
-#include "ai/testing/ca_testing_recruitment.hpp"
 #include "ai/testing/stage_sf_with_rca.hpp"
 #include "ai/default/stage_rca.hpp"
 
@@ -111,9 +110,6 @@ static register_candidate_action_factory<testing_ai_default::testing_move_to_tar
 static register_candidate_action_factory<ai_default_rca::leader_control_phase>
 	leader_control_phase_factory("ai_default_rca::leader_control_phase");
 
-static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
-	testing_recruitment_phase_factory("ai_default_rca::testing_recruitment_phase");
-
 static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	leader_shares_keep_phase_factory("ai_default_rca::leader_shares_keep_phase");
 
@@ -157,9 +153,6 @@ static register_candidate_action_factory<testing_ai_default::testing_move_to_tar
 
 static register_candidate_action_factory<ai_default_rca::leader_control_phase>
 	old_leader_control_phase_factory("testing_ai_default::leader_control_phase");
-
-static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
-	old_testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
 
 static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	old_passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
