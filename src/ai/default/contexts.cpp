@@ -18,7 +18,7 @@
  * @file
  */
 
-#include "contexts.hpp"
+#include "ai/default/contexts.hpp"
 
 #include "game_board.hpp"
 #include "log.hpp"

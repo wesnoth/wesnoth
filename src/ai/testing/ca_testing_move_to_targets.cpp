@@ -17,7 +17,7 @@
  * Strategic movement routine, taken from default AI
  */
 
-#include "ca_testing_move_to_targets.hpp"
+#include "ai/testing/ca_testing_move_to_targets.hpp"
 
 #include "ai/composite/ai.hpp"
 #include "ai/actions.hpp"

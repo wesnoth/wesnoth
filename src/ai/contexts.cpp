@@ -30,7 +30,7 @@
 #include "ai/composite/goal.hpp"           // for goal
 #include "ai/composite/stage.hpp"       // for ministage
 #include "ai/game_info.hpp"             // for aspect_type<>::typesafe_ptr, etc
-#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 #include "ai/manager.hpp"                  // for manager
 
 #include "chat_events.hpp"              // for chat_handler, etc

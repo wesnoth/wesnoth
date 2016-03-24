@@ -18,7 +18,7 @@
  * See http://wiki.wesnoth.org/AI_Recruitment
  */
 
-#include "recruitment.hpp"
+#include "ai/default/recruitment.hpp"
 
 #include "ai/actions.hpp"
 #include "ai/composite/rca.hpp"

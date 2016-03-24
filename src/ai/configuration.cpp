@@ -18,7 +18,7 @@
  * @file
  */
 
-#include "configuration.hpp"
+#include "ai/configuration.hpp"
 
 #include "filesystem.hpp"
 #include "log.hpp"

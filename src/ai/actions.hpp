@@ -20,10 +20,10 @@
 #ifndef AI_ACTIONS_HPP_INCLUDED
 #define AI_ACTIONS_HPP_INCLUDED
 
-#include "game_info.hpp"
+#include "ai/game_info.hpp"
 
 #include "actions/move.hpp"
-#include "lua/unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 #include "units/ptr.hpp"
 
 namespace pathfind {

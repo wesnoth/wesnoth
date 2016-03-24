@@ -21,7 +21,7 @@
 #include <cassert>
 #include <cstring>
 
-#include "core.hpp"
+#include "ai/lua/core.hpp"
 #include "ai/composite/aspect.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_api.hpp"
@@ -39,7 +39,7 @@
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "ai/actions.hpp"
-#include "ai/composite/engine_lua.hpp"
+#include "ai/lua/engine_lua.hpp"
 #include "ai/composite/contexts.hpp"
 
 #include "lua/lualib.h"

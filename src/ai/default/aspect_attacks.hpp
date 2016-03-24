@@ -31,7 +31,7 @@
 namespace ai {
 
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
 class aspect_attacks: public typesafe_aspect<attacks_vector> {
 public:

@@ -17,7 +17,7 @@
 * Experimental recruitment phase by Floris Kint
 */
 
-#include "ca_testing_recruitment.hpp"
+#include "ai/testing/ca_testing_recruitment.hpp"
 #include "ai/actions.hpp"
 #include "ai/manager.hpp"
 #include "ai/composite/engine.hpp"

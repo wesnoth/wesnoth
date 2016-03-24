@@ -20,8 +20,8 @@
 #ifndef AI_COMPOSITE_AI_HPP_INCLUDED
 #define AI_COMPOSITE_AI_HPP_INCLUDED
 
-#include "contexts.hpp"
-#include "component.hpp"
+#include "ai/composite/contexts.hpp"
+#include "ai/composite/component.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

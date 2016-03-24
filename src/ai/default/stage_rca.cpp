@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "stage_rca.hpp"
+#include "ai/default/stage_rca.hpp"
 
 #include "ai/manager.hpp"
 #include "ai/composite/ai.hpp"
@@ -32,7 +32,7 @@
 
 namespace ai {
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
 static lg::log_domain log_ai_testing_rca_default("ai/stage/rca");
 #define DBG_AI_TESTING_RCA_DEFAULT LOG_STREAM(debug, log_ai_testing_rca_default)
@@ -54,7 +54,7 @@ void candidate_action_evaluation_loop::on_create()
 	}
 
 	boost::function2<void, std::vector<candidate_action_ptr>&, const config&> factory_candidate_actions =
-		boost::bind(&testing_ai_default::candidate_action_evaluation_loop::create_candidate_action,*this,_1,_2);
+		boost::bind(&candidate_action_evaluation_loop::create_candidate_action,*this,_1,_2);
 
 	register_vector_property(property_handlers(),"candidate_action",candidate_actions_, factory_candidate_actions);
 

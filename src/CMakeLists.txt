@@ -690,37 +690,37 @@ set(wesnoth-main_SRC
 	ai/composite/component.cpp
 	ai/composite/contexts.cpp
 	ai/composite/engine.cpp
-	ai/composite/engine_default.cpp
-	ai/composite/engine_fai.cpp
-	ai/composite/engine_lua.cpp
 	ai/composite/goal.cpp
 	ai/composite/rca.cpp
 	ai/composite/stage.cpp
 	ai/configuration.cpp
 	ai/contexts.cpp
+	ai/default/aspect_attacks.cpp
 	ai/default/attack.cpp
+	ai/default/ca.cpp
 	ai/default/contexts.cpp
+	ai/default/engine_cpp.cpp
+	ai/default/recruitment.cpp
+	ai/default/stage_rca.cpp
 	ai/formula/ai.cpp
 	ai/formula/callable_objects.cpp
 	ai/formula/candidates.cpp
+	ai/formula/engine_fai.cpp
 	ai/formula/function_table.cpp
 	ai/formula/stage_side_formulas.cpp
 	ai/formula/stage_unit_formulas.cpp
 	ai/game_info.cpp
 	ai/gamestate_observer.cpp
 	ai/lua/core.cpp
+	ai/lua/engine_lua.cpp
 	ai/lua/lua_object.cpp
-	ai/lua/unit_advancements_aspect.cpp
+	ai/lua/aspect_advancements.cpp
 	ai/manager.cpp
-	ai/recruitment/recruitment.cpp
 	ai/registry.cpp
 	ai/simulated_actions.cpp
 	ai/testing.cpp
-	ai/testing/aspect_attacks.cpp
-	ai/testing/ca.cpp
 	ai/testing/ca_testing_move_to_targets.cpp
 	ai/testing/ca_testing_recruitment.cpp
-	ai/testing/stage_rca.cpp
 	ai/testing/stage_sf_with_rca.cpp
 	animated_game.cpp
 	attack_prediction.cpp

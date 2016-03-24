@@ -20,9 +20,9 @@
 #ifndef AI_SIMULATED_ACTIONS_HPP_INCLUDED
 #define AI_SIMULATED_ACTIONS_HPP_INCLUDED
 
-#include "game_info.hpp"
+#include "ai/game_info.hpp"
 
-#include "lua/unit_advancements_aspect.hpp"
+#include "lua/aspect_advancements.hpp"
 
 class unit_type;
 

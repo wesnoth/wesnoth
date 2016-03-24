@@ -33,7 +33,7 @@
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
 #include "ai/composite/contexts.hpp"    // for ai_context
-#include "ai/composite/engine_lua.hpp"  // for engine_lua
+#include "ai/lua/engine_lua.hpp"  // for engine_lua
 #include "ai/composite/rca.hpp"  // for candidate_action
 #include "ai/composite/stage.hpp"  // for stage
 #include "ai/configuration.hpp"         // for configuration

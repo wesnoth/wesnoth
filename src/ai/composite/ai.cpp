@@ -18,12 +18,12 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "aspect.hpp"
-#include "engine.hpp"
-#include "goal.hpp"
-#include "property_handler.hpp"
-#include "stage.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/composite/aspect.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/goal.hpp"
+#include "ai/composite/property_handler.hpp"
+#include "ai/composite/stage.hpp"
 #include "ai/configuration.hpp"
 #include "ai/manager.hpp"
 #include "actions/attack.hpp"

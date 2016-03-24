@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "aspect_attacks.hpp"
+#include "ai/default/aspect_attacks.hpp"
 
 #include "ai/manager.hpp"
 #include "actions/attack.hpp"
@@ -33,7 +33,7 @@
 
 namespace ai {
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
 static lg::log_domain log_ai_testing_aspect_attacks("ai/aspect/attacks");
 #define DBG_AI LOG_STREAM(debug, log_ai_testing_aspect_attacks)

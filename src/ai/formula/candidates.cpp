@@ -17,8 +17,8 @@
  * Defines formula ai candidate actions
  * */
 
-#include "ai.hpp"
-#include "candidates.hpp"
+#include "ai/formula/ai.hpp"
+#include "ai/formula/candidates.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 

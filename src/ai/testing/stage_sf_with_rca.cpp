@@ -18,7 +18,7 @@
  * See http://wiki.wesnoth.org/AI_sfrca
  */
 
-#include "stage_sf_with_rca.hpp"
+#include "ai/testing/stage_sf_with_rca.hpp"
 
 #include "ai/manager.hpp"
 #include "ai/composite/ai.hpp"
@@ -47,6 +47,8 @@ static lg::log_domain log_ai_testing_sf_with_rca("ai/stage/sf_with_rca");
 #define DBG_AI_TESTING_SF_WITH_RCA LOG_STREAM(debug, log_ai_testing_sf_with_rca)
 #define LOG_AI_TESTING_SF_WITH_RCA LOG_STREAM(info, log_ai_testing_sf_with_rca)
 #define ERR_AI_TESTING_SF_WITH_RCA LOG_STREAM(err, log_ai_testing_sf_with_rca)
+
+using ai_default_rca::candidate_action_evaluation_loop;
 
 strategy_formulation_with_rca::strategy_formulation_with_rca(ai_context &context, const config &cfg)
 	: stage(context,cfg)

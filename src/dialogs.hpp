@@ -27,7 +27,7 @@ class terrain_type;
 #include "construct_dialog.hpp"
 #include "network.hpp"
 #include "units/ptr.hpp"
-#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 
 namespace dialogs {
 

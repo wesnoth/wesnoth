@@ -17,10 +17,10 @@
  * Defines formula ai candidate actions - headers
  */
 
-#include "ai.hpp"
+#include "ai/formula/ai.hpp"
 #include "global.hpp"
 
-#include "callable_objects.hpp"   // for unit_callable, etc
+#include "ai/formula/callable_objects.hpp"   // for unit_callable, etc
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "display_chat_manager.hpp"
 #include "formula/function.hpp"         // for formula_expression

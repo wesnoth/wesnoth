@@ -31,7 +31,7 @@
 
 namespace ai {
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
 class candidate_action_evaluation_loop: public virtual stage, public virtual rca_context {
 public:

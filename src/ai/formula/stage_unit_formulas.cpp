@@ -18,8 +18,8 @@
  * */
 
 
-#include "stage_unit_formulas.hpp"
-#include "ai.hpp"
+#include "ai/formula/stage_unit_formulas.hpp"
+#include "ai/formula/ai.hpp"
 
 #include "formula/formula.hpp"
 #include "formula/function.hpp"

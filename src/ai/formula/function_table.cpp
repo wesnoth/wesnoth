@@ -18,9 +18,9 @@
 #include <utility>
 #include <vector>
 
-#include "ai.hpp"
-#include "callable_objects.hpp"
-#include "function_table.hpp"
+#include "ai/formula/ai.hpp"
+#include "ai/formula/callable_objects.hpp"
+#include "ai/formula/function_table.hpp"
 
 #include "ai/default/contexts.hpp"
 

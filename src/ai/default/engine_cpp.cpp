@@ -17,12 +17,12 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "aspect.hpp"
-#include "goal.hpp"
-#include "engine_default.hpp"
-#include "rca.hpp"
-#include "stage.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/composite/aspect.hpp"
+#include "ai/composite/goal.hpp"
+#include "ai/composite/rca.hpp"
+#include "ai/composite/stage.hpp"
+#include "ai/default/engine_cpp.hpp"
 #include "log.hpp"
 
 namespace ai {

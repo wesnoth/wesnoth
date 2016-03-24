@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 #include "global.hpp"
 
 #include "log.hpp"                // for LOG_STREAM, logger, etc

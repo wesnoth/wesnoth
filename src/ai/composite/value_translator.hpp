@@ -19,15 +19,15 @@
 #ifndef VALUE_TRANSLATOR_HPP_INCLUDED
 #define VALUE_TRANSLATOR_HPP_INCLUDED
 
-#include "engine.hpp"
-#include "stage.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/stage.hpp"
 
 #include "ai/manager.hpp"
 #include "terrain/filter.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "resources.hpp"
-#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 
 namespace ai {
 

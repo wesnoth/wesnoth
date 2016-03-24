@@ -30,7 +30,7 @@
 #include "terrain/filter.hpp"
 #include "variable.hpp"
 #include "ai/default/contexts.hpp"
-#include "unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 
 #include <boost/shared_ptr.hpp>
 #include <iterator>

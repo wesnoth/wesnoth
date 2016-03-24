@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "simulated_actions.hpp"
+#include "ai/simulated_actions.hpp"
 
 #include "game_board.hpp"
 #include "game_config.hpp"

@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "ca.hpp"
+#include "ai/default/ca.hpp"
 #include "ai/actions.hpp"
 #include "ai/manager.hpp"
 #include "ai/composite/engine.hpp"
@@ -49,7 +49,7 @@ static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 
 namespace ai {
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
 //==============================================================
 

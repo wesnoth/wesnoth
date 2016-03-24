@@ -30,7 +30,7 @@ class  unit_map;
 class  gamemap;
 
 #include "units/types.hpp"
-#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 
 #include <vector>
 

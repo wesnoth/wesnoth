@@ -18,8 +18,8 @@
  * @file
  */
 
-#include "manager.hpp"
-#include "gamestate_observer.hpp"
+#include "ai/manager.hpp"
+#include "ai/gamestate_observer.hpp"
 
 namespace ai {
 // =======================================================================

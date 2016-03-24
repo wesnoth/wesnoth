@@ -19,8 +19,8 @@
 #ifndef AI_COMPOSITE_ASPECT_HPP_INCLUDED
 #define AI_COMPOSITE_ASPECT_HPP_INCLUDED
 
-#include "property_handler.hpp"
-#include "value_translator.hpp"
+#include "ai/composite/property_handler.hpp"
+#include "ai/composite/value_translator.hpp"
 #include "ai/lua/lua_object.hpp"
 #include "ai/lua/core.hpp"
 #include "scripting/game_lua_kernel.hpp"

@@ -16,7 +16,7 @@
  * @file
  */
 
-#include "aspect.hpp"
+#include "ai/composite/aspect.hpp"
 #include "ai/manager.hpp"
 #include "log.hpp"
 

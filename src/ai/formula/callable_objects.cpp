@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "ai.hpp"
+#include "ai/formula/ai.hpp"
 #include "attack_prediction.hpp"
 #include "game_board.hpp"
-#include "callable_objects.hpp"
+#include "ai/formula/callable_objects.hpp"
 #include "resources.hpp"
 
 

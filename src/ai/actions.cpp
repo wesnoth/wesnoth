@@ -32,9 +32,9 @@
  * So far the use of 'subjective info' is stubbed out.
  */
 
-#include "actions.hpp"
-#include "manager.hpp"
-#include "simulated_actions.hpp"
+#include "ai/actions.hpp"
+#include "ai/manager.hpp"
+#include "ai/simulated_actions.hpp"
 
 #include "actions/attack.hpp"
 #include "actions/create.hpp"

@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "manager.hpp"
+#include "ai/manager.hpp"
 
 #include "config.hpp"             // for config, etc
 #include "game_events/manager.hpp"
@@ -29,18 +29,18 @@
 #include "serialization/string_utils.hpp"
 #include "tod_manager.hpp"
 
-#include "composite/ai.hpp"             // for ai_composite
-#include "composite/component.hpp"      // for component_manager
-#include "composite/engine.hpp"         // for engine
-#include "configuration.hpp"            // for configuration
-#include "contexts.hpp"                 // for readonly_context, etc
-#include "default/contexts.hpp"  // for default_ai_context, etc
+#include "ai/composite/ai.hpp"             // for ai_composite
+#include "ai/composite/component.hpp"      // for component_manager
+#include "ai/composite/engine.hpp"         // for engine
+#include "ai/configuration.hpp"            // for configuration
+#include "ai/contexts.hpp"                 // for readonly_context, etc
+#include "ai/default/contexts.hpp"  // for default_ai_context, etc
 #include "game_end_exceptions.hpp" // for ai_end_turn_exception
 #include "game_info.hpp"             // for side_number, engine_ptr, etc
 #include "game_config.hpp"              // for debug
 #include "game_errors.hpp"              // for game_error
-#include "lua/unit_advancements_aspect.hpp"
-#include "registry.hpp"                 // for init
+#include "ai/lua/aspect_advancements.hpp"
+#include "ai/registry.hpp"                 // for init
 #include "util.hpp"                     // for lexical_cast
 
 

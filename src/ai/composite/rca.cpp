@@ -17,9 +17,9 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "engine.hpp"
-#include "rca.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/rca.hpp"
 #include "log.hpp"
 
 namespace ai {

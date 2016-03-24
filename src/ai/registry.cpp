@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "registry.hpp"
+#include "ai/registry.hpp"
 #include "global.hpp"
 
 #include "config.hpp"             // for config, operator<<
@@ -26,20 +26,20 @@
 #include "ai/composite/stage.hpp"       // for ministage, idle_stage, etc
 #include "ai/composite/rca.hpp"
 #include "ai/game_info.hpp"             // for attacks_vector
-#include "composite/ai.hpp"             // for ai_composite
-#include "composite/aspect.hpp"         // for composite_aspect, etc
-#include "composite/engine_default.hpp"  // for engine_cpp
-#include "composite/engine_fai.hpp"     // for engine_fai
-#include "composite/engine_lua.hpp"     // for engine_lua
-#include "composite/goal.hpp"           // for register_goal_factory, etc
-#include "lua/unit_advancements_aspect.hpp"
-#include "recruitment/recruitment.hpp"  // for recruitment
-#include "testing/aspect_attacks.hpp"   // for aspect_attacks
-#include "testing/ca.hpp"               // for leader_shares_keep_phase, etc
-#include "testing/ca_testing_move_to_targets.hpp"
-#include "testing/ca_testing_recruitment.hpp"
-#include "testing/stage_sf_with_rca.hpp"
-#include "testing/stage_rca.hpp"
+#include "ai/composite/ai.hpp"             // for ai_composite
+#include "ai/composite/aspect.hpp"         // for composite_aspect, etc
+#include "ai/default/engine_cpp.hpp"  // for engine_cpp
+#include "ai/formula/engine_fai.hpp"     // for engine_fai
+#include "ai/lua/engine_lua.hpp"     // for engine_lua
+#include "ai/composite/goal.hpp"           // for register_goal_factory, etc
+#include "ai/lua/aspect_advancements.hpp"
+#include "ai/default/recruitment.hpp"  // for recruitment
+#include "ai/default/aspect_attacks.hpp"   // for aspect_attacks
+#include "ai/default/ca.hpp"               // for leader_shares_keep_phase, etc
+#include "ai/testing/ca_testing_move_to_targets.hpp"
+#include "ai/testing/ca_testing_recruitment.hpp"
+#include "ai/testing/stage_sf_with_rca.hpp"
+#include "ai/default/stage_rca.hpp"
 
 #include <boost/shared_ptr.hpp>         // for shared_ptr, etc
 #include <string>                       // for string
@@ -64,7 +64,7 @@ static register_engine_factory<engine_lua>
 // Stages
 // =======================================================================
 
-static register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
+static register_stage_factory<ai_default_rca::candidate_action_evaluation_loop>
 	candidate_action_evaluation_loop_factory("ai_default_rca::candidate_action_evaluation_loop");
 
 static register_stage_factory<testing_ai_default::strategy_formulation_with_rca>
@@ -74,79 +74,79 @@ static register_stage_factory<idle_stage>
 	ai_idle_stage_factory("empty");
 
 // === Also keep the old syntax ===
-static register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
+static register_stage_factory<ai_default_rca::candidate_action_evaluation_loop>
 	old_candidate_action_evaluation_loop_factory("testing_ai_default::candidate_action_evaluation_loop");
 
 // =======================================================================
 // Candidate actions
 // =======================================================================
 
-static register_candidate_action_factory<testing_ai_default::goto_phase>
+static register_candidate_action_factory<ai_default_rca::goto_phase>
 	goto_phase_factory("ai_default_rca::goto_phase");
 
-static register_candidate_action_factory<testing_ai_default::combat_phase>
+static register_candidate_action_factory<ai_default_rca::combat_phase>
 	combat_phase_factory("ai_default_rca::combat_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_goals_phase>
 	move_leader_to_goals_phase_factory("ai_default_rca::move_leader_to_goals_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_keep_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_keep_phase>
 	move_leader_to_keep_phase_factory("ai_default_rca::move_leader_to_keep_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_villages_phase>
+static register_candidate_action_factory<ai_default_rca::get_villages_phase>
 	get_villages_phase_factory("ai_default_rca::get_villages_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_healing_phase>
+static register_candidate_action_factory<ai_default_rca::get_healing_phase>
 	get_healing_phase_factory("ai_default_rca::get_healing_phase");
 
-static register_candidate_action_factory<testing_ai_default::retreat_phase>
+static register_candidate_action_factory<ai_default_rca::retreat_phase>
 	retreat_phase_factory("ai_default_rca::retreat_phase");
 
-static register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
+static register_candidate_action_factory<ai_default_rca::simple_move_and_targeting_phase>
 	simple_move_and_targeting_phase_factory("ai_default_rca::simple_move_and_targeting_phase");
 
 static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
 	default_move_to_targets_phase_factory("ai_default_rca::move_to_targets_phase");
 
-static register_candidate_action_factory<testing_ai_default::leader_control_phase>
+static register_candidate_action_factory<ai_default_rca::leader_control_phase>
 	leader_control_phase_factory("ai_default_rca::leader_control_phase");
 
 static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
 	testing_recruitment_phase_factory("ai_default_rca::testing_recruitment_phase");
 
-static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
+static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	leader_shares_keep_phase_factory("ai_default_rca::leader_shares_keep_phase");
 
 //Also keep passive_leader_shares_keep_phase for backward compatibility
-static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
+static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	passive_leader_shares_keep_phase_factory("ai_default_rca::passive_leader_shares_keep_phase");
 
 static register_candidate_action_factory<default_recruitment::recruitment>
 	default_recruitment_factory("default_recruitment::recruitment");
 
 // === Also keep the old syntax ===
-static register_candidate_action_factory<testing_ai_default::goto_phase>
+static register_candidate_action_factory<ai_default_rca::goto_phase>
 	old_goto_phase_factory("testing_ai_default::goto_phase");
 
-static register_candidate_action_factory<testing_ai_default::combat_phase>
+static register_candidate_action_factory<ai_default_rca::combat_phase>
 	old_combat_phase_factory("testing_ai_default::combat_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_goals_phase>
 	old_move_leader_to_goals_phase_factory("testing_ai_default::move_leader_to_goals_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_keep_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_keep_phase>
 	old_move_leader_to_keep_phase_factory("testing_ai_default::move_leader_to_keep_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_villages_phase>
+static register_candidate_action_factory<ai_default_rca::get_villages_phase>
 	old_get_villages_phase_factory("testing_ai_default::get_villages_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_healing_phase>
+static register_candidate_action_factory<ai_default_rca::get_healing_phase>
 	old_get_healing_phase_factory("testing_ai_default::get_healing_phase");
 
-static register_candidate_action_factory<testing_ai_default::retreat_phase>
+static register_candidate_action_factory<ai_default_rca::retreat_phase>
 	old_retreat_phase_factory("testing_ai_default::retreat_phase");
 
-static register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
+static register_candidate_action_factory<ai_default_rca::simple_move_and_targeting_phase>
 	old_simple_move_and_targeting_phase_factory("testing_ai_default::simple_move_and_targeting_phase");
 
 static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
@@ -155,13 +155,13 @@ static register_candidate_action_factory<testing_ai_default::testing_move_to_tar
 static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
 	old_testing_move_to_targets_phase_factory("testing_ai_default::testing_move_to_targets_phase");
 
-static register_candidate_action_factory<testing_ai_default::leader_control_phase>
+static register_candidate_action_factory<ai_default_rca::leader_control_phase>
 	old_leader_control_phase_factory("testing_ai_default::leader_control_phase");
 
 static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
 	old_testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
 
-static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
+static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	old_passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
 
 // =======================================================================
@@ -284,7 +284,7 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	attack_depth__standard_aspect_factory("attack_depth*standard_aspect");
 
-static register_aspect_factory< testing_ai_default::aspect_attacks >
+static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory("attacks*ai_default_rca::aspect_attacks");
 
 static register_aspect_factory< standard_aspect< terrain_filter > >
@@ -349,7 +349,7 @@ static register_aspect_factory< standard_aspect<int> >
 
 
 // Also keep the old syntax
-static register_aspect_factory< testing_ai_default::aspect_attacks >
+static register_aspect_factory< ai_default_rca::aspect_attacks >
 	old_attacks__testing_ai_default_aspect_attacks_factory("attacks*testing_ai_default::aspect_attacks");
 
 //name = default
@@ -362,7 +362,7 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	attack_depth__standard_aspect_factory2("attack_depth*");
 
-static register_aspect_factory< testing_ai_default::aspect_attacks >
+static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory2("attacks*");
 
 static register_aspect_factory< standard_aspect< terrain_filter > >
@@ -485,7 +485,7 @@ static register_lua_aspect_factory< lua_aspect< std::vector<std::string> > >
 // Some compatibility - recruitment is a removed aspect, but its syntax
 // is compatible with recruitment_instructions
 static register_aspect_factory< composite_aspect<config> >
-	recruitments__composit_aspect_factory("recruitment*composite_aspect");
+	recruitments__composite_aspect_factory("recruitment*composite_aspect");
 
 static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment__standard_aspect_factory("recruitment*standard_aspect");

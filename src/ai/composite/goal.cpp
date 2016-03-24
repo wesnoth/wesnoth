@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "goal.hpp"
+#include "ai/composite/goal.hpp"
 #include "global.hpp"
 
 #include "ai/default/contexts.hpp"

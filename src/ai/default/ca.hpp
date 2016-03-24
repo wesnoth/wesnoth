@@ -34,7 +34,7 @@
 
 namespace ai {
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
 //============================================================================
 

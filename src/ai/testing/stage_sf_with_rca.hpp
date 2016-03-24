@@ -21,7 +21,7 @@
 #ifndef AI_TESTING_STAGE_SF_WITH_RCA_HPP_INCLUDED
 #define AI_TESTING_STAGE_SF_WITH_RCA_HPP_INCLUDED
 
-#include "stage_rca.hpp"
+#include "ai/default/stage_rca.hpp"
 #include "ai/composite/stage.hpp"
 
 #include "units/map.hpp"
@@ -130,7 +130,7 @@ private:
 
 	std::vector<bool> enemy_this_turn_;	// Store if is enemy for this turn. Use in the set optimal strategy function.
 
-	boost::shared_ptr<candidate_action_evaluation_loop> rca_;
+	boost::shared_ptr<ai_default_rca::candidate_action_evaluation_loop> rca_;
 };
 
 } // of namespace testing_ai_default

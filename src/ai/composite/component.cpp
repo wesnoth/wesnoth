@@ -17,9 +17,9 @@
  * @file
  */
 
-#include "component.hpp"
-#include "engine.hpp"
-#include "property_handler.hpp"
+#include "ai/composite/component.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/property_handler.hpp"
 #include "config.hpp"
 #include "log.hpp"
 #include "units/unit.hpp"

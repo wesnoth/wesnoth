@@ -17,9 +17,9 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "engine.hpp"
-#include "stage.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/stage.hpp"
 #include "ai/contexts.hpp"
 #include "log.hpp"
 #include "resources.hpp"

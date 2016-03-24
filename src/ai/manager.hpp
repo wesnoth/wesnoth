@@ -24,7 +24,7 @@
 
 #include "config.hpp"                // for config, etc
 #include "global.hpp"
-#include "game_info.hpp"                // for side_number, ai_ptr
+#include "ai/game_info.hpp"                // for side_number, ai_ptr
 
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <deque>                        // for deque

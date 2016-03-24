@@ -16,8 +16,8 @@
  * Gather statistics important for AI testing and output them
  * @file
  */
-#include "manager.hpp"
-#include "testing.hpp"
+#include "ai/manager.hpp"
+#include "ai/testing.hpp"
 #include "log.hpp"
 #include "game_board.hpp"
 #include "replay.hpp"

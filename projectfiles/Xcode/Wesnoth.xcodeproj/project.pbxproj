@@ -39,7 +39,7 @@
 		621DEB8415A7BA1F00FEE18A /* highlighter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 621DEB8215A7BA1F00FEE18A /* highlighter.cpp */; };
 		62579C7E1573E70C003089D5 /* instance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62579C781573E70C003089D5 /* instance.cpp */; };
 		62579C831573E797003089D5 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62579C811573E797003089D5 /* matrix.cpp */; };
-		627F1EDB175AF35C000042E0 /* unit_advancements_aspect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 627F1ED9175AF35C000042E0 /* unit_advancements_aspect.cpp */; };
+		627F1EDB175AF35C000042E0 /* aspect_advancements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 627F1ED9175AF35C000042E0 /* aspect_advancements.cpp */; };
 		6295C3B5150FC95C0077D8C5 /* action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3A7150FC95C0077D8C5 /* action.cpp */; };
 		6295C3B6150FC95C0077D8C5 /* action_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3AA150FC95C0077D8C5 /* action_label.cpp */; };
 		6295C3B7150FC95C0077D8C5 /* action_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3AC150FC95C0077D8C5 /* action_unit.cpp */; };
@@ -244,7 +244,7 @@
 		B54AC6C70FEA9EB5006F6FBD /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6A40FEA9EB5006F6FBD /* ai.cpp */; };
 		B54AC6C80FEA9EB5006F6FBD /* contexts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6A60FEA9EB5006F6FBD /* contexts.cpp */; };
 		B54AC6C90FEA9EB5006F6FBD /* engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6A80FEA9EB5006F6FBD /* engine.cpp */; };
-		B54AC6CA0FEA9EB5006F6FBD /* engine_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AA0FEA9EB5006F6FBD /* engine_default.cpp */; };
+		B54AC6CA0FEA9EB5006F6FBD /* engine_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AA0FEA9EB5006F6FBD /* engine_cpp.cpp */; };
 		B54AC6CB0FEA9EB5006F6FBD /* rca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AC0FEA9EB5006F6FBD /* rca.cpp */; };
 		B54AC6CC0FEA9EB5006F6FBD /* stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AE0FEA9EB5006F6FBD /* stage.cpp */; };
 		B54AC6CE0FEA9EB5006F6FBD /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6B30FEA9EB5006F6FBD /* attack.cpp */; };
@@ -256,7 +256,7 @@
 		B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6A40FEA9EB5006F6FBD /* ai.cpp */; };
 		B54AC6D90FEA9EB5006F6FBD /* contexts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6A60FEA9EB5006F6FBD /* contexts.cpp */; };
 		B54AC6DA0FEA9EB5006F6FBD /* engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6A80FEA9EB5006F6FBD /* engine.cpp */; };
-		B54AC6DB0FEA9EB5006F6FBD /* engine_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AA0FEA9EB5006F6FBD /* engine_default.cpp */; };
+		B54AC6DB0FEA9EB5006F6FBD /* engine_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AA0FEA9EB5006F6FBD /* engine_cpp.cpp */; };
 		B54AC6DC0FEA9EB5006F6FBD /* rca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AC0FEA9EB5006F6FBD /* rca.cpp */; };
 		B54AC6DD0FEA9EB5006F6FBD /* stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6AE0FEA9EB5006F6FBD /* stage.cpp */; };
 		B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6B30FEA9EB5006F6FBD /* attack.cpp */; };
@@ -1151,8 +1151,8 @@
 		62579C791573E70C003089D5 /* instance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = instance.hpp; sourceTree = "<group>"; };
 		62579C811573E797003089D5 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 		62579C821573E797003089D5 /* matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
-		627F1ED9175AF35C000042E0 /* unit_advancements_aspect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_advancements_aspect.cpp; sourceTree = "<group>"; };
-		627F1EDA175AF35C000042E0 /* unit_advancements_aspect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_advancements_aspect.hpp; sourceTree = "<group>"; };
+		627F1ED9175AF35C000042E0 /* aspect_advancements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aspect_advancements.cpp; sourceTree = "<group>"; };
+		627F1EDA175AF35C000042E0 /* aspect_advancements.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = aspect_advancements.hpp; sourceTree = "<group>"; };
 		6295C3A7150FC95C0077D8C5 /* action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action.cpp; sourceTree = "<group>"; };
 		6295C3A8150FC95C0077D8C5 /* action.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = action.hpp; sourceTree = "<group>"; };
 		6295C3A9150FC95C0077D8C5 /* action_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = action_base.hpp; sourceTree = "<group>"; };
@@ -1487,8 +1487,8 @@
 		B54AC6A70FEA9EB5006F6FBD /* contexts.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = contexts.hpp; sourceTree = "<group>"; };
 		B54AC6A80FEA9EB5006F6FBD /* engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine.cpp; sourceTree = "<group>"; };
 		B54AC6A90FEA9EB5006F6FBD /* engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine.hpp; sourceTree = "<group>"; };
-		B54AC6AA0FEA9EB5006F6FBD /* engine_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine_default.cpp; sourceTree = "<group>"; };
-		B54AC6AB0FEA9EB5006F6FBD /* engine_default.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine_default.hpp; sourceTree = "<group>"; };
+		B54AC6AA0FEA9EB5006F6FBD /* engine_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine_cpp.cpp; sourceTree = "<group>"; };
+		B54AC6AB0FEA9EB5006F6FBD /* engine_cpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine_cpp.hpp; sourceTree = "<group>"; };
 		B54AC6AC0FEA9EB5006F6FBD /* rca.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rca.cpp; sourceTree = "<group>"; };
 		B54AC6AD0FEA9EB5006F6FBD /* rca.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rca.hpp; sourceTree = "<group>"; };
 		B54AC6AE0FEA9EB5006F6FBD /* stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stage.cpp; sourceTree = "<group>"; };
@@ -2091,8 +2091,8 @@
 		EC45DEDC1AD1CEA300BD760C /* countdown_clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = countdown_clock.cpp; sourceTree = "<group>"; };
 		EC45DEDE1AD1CED100BD760C /* replay_recorder_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = replay_recorder_base.cpp; sourceTree = "<group>"; };
 		EC45DEE01AD1CEF600BD760C /* floating_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = floating_label.cpp; sourceTree = "<group>"; };
-		EC48D74B17F3148300DE80BF /* recruitment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = recruitment.cpp; path = recruitment/recruitment.cpp; sourceTree = "<group>"; };
-		EC48D74C17F3148300DE80BF /* recruitment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = recruitment.hpp; path = recruitment/recruitment.hpp; sourceTree = "<group>"; };
+		EC48D74B17F3148300DE80BF /* recruitment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = recruitment.cpp; sourceTree = "<group>"; };
+		EC48D74C17F3148300DE80BF /* recruitment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = recruitment.hpp; sourceTree = "<group>"; };
 		EC49A38119F34F1200E78528 /* clipboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clipboard.cpp; sourceTree = "<group>"; };
 		EC4D40AD17FCCF14002E7C81 /* strftime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strftime.cpp; sourceTree = "<group>"; };
 		EC4D40AE17FCCF14002E7C81 /* strftime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strftime.hpp; sourceTree = "<group>"; };
@@ -3418,12 +3418,14 @@
 		B52EE9A3121363EB00CFBDAB /* lua */ = {
 			isa = PBXGroup;
 			children = (
+				627F1ED9175AF35C000042E0 /* aspect_advancements.cpp */,
+				627F1EDA175AF35C000042E0 /* aspect_advancements.hpp */,
 				B52EE9A4121363EB00CFBDAB /* core.cpp */,
 				B52EE9A5121363EB00CFBDAB /* core.hpp */,
+				B55BE03C11234AD700154E6C /* engine_lua.cpp */,
+				B55BE03D11234AD700154E6C /* engine_lua.hpp */,
 				F46C5DD313A5089100DD0816 /* lua_object.cpp */,
 				F46C5DD213A5089100DD0816 /* lua_object.hpp */,
-				627F1ED9175AF35C000042E0 /* unit_advancements_aspect.cpp */,
-				627F1EDA175AF35C000042E0 /* unit_advancements_aspect.hpp */,
 			);
 			path = lua;
 			sourceTree = "<group>";
@@ -3460,12 +3462,6 @@
 				B54AC6A70FEA9EB5006F6FBD /* contexts.hpp */,
 				B54AC6A80FEA9EB5006F6FBD /* engine.cpp */,
 				B54AC6A90FEA9EB5006F6FBD /* engine.hpp */,
-				B54AC6AA0FEA9EB5006F6FBD /* engine_default.cpp */,
-				B54AC6AB0FEA9EB5006F6FBD /* engine_default.hpp */,
-				B508D191100146E300B12852 /* engine_fai.cpp */,
-				B508D192100146E300B12852 /* engine_fai.hpp */,
-				B55BE03C11234AD700154E6C /* engine_lua.cpp */,
-				B55BE03D11234AD700154E6C /* engine_lua.hpp */,
 				B59F96D3103478C900A57C1A /* goal.cpp */,
 				B59F96D4103478C900A57C1A /* goal.hpp */,
 				B55BE03E11234AD700154E6C /* property_handler.hpp */,
@@ -3481,9 +3477,19 @@
 		B54AC6B00FEA9EB5006F6FBD /* default */ = {
 			isa = PBXGroup;
 			children = (
+				B59F96E51034791200A57C1A /* aspect_attacks.cpp */,
+				B59F96E61034791200A57C1A /* aspect_attacks.hpp */,
 				B54AC6B30FEA9EB5006F6FBD /* attack.cpp */,
+				B54AC6C10FEA9EB5006F6FBD /* ca.cpp */,
+				B54AC6C20FEA9EB5006F6FBD /* ca.hpp */,
 				B54AC6B40FEA9EB5006F6FBD /* contexts.cpp */,
 				B54AC6B50FEA9EB5006F6FBD /* contexts.hpp */,
+				B54AC6AA0FEA9EB5006F6FBD /* engine_cpp.cpp */,
+				B54AC6AB0FEA9EB5006F6FBD /* engine_cpp.hpp */,
+				EC48D74B17F3148300DE80BF /* recruitment.cpp */,
+				EC48D74C17F3148300DE80BF /* recruitment.hpp */,
+				B54AC6C50FEA9EB5006F6FBD /* stage_rca.cpp */,
+				B54AC6C60FEA9EB5006F6FBD /* stage_rca.hpp */,
 			);
 			path = default;
 			sourceTree = "<group>";
@@ -3497,6 +3503,8 @@
 				B5951A981013BB5A00C10B66 /* callable_objects.hpp */,
 				B54AC6BE0FEA9EB5006F6FBD /* candidates.cpp */,
 				B54AC6BF0FEA9EB5006F6FBD /* candidates.hpp */,
+				B508D191100146E300B12852 /* engine_fai.cpp */,
+				B508D192100146E300B12852 /* engine_fai.hpp */,
 				B5951A991013BB5A00C10B66 /* function_table.cpp */,
 				B5951A9A1013BB5A00C10B66 /* function_table.hpp */,
 				B59F96DB103478DE00A57C1A /* stage_side_formulas.cpp */,
@@ -3510,16 +3518,10 @@
 		B54AC6C00FEA9EB5006F6FBD /* testing */ = {
 			isa = PBXGroup;
 			children = (
-				B59F96E51034791200A57C1A /* aspect_attacks.cpp */,
-				B59F96E61034791200A57C1A /* aspect_attacks.hpp */,
 				B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */,
 				B552D92B108694BB002D8F86 /* ca_testing_move_to_targets.hpp */,
 				B5CE46FB12A041CE00D665EE /* ca_testing_recruitment.cpp */,
 				B5CE46FC12A041CE00D665EE /* ca_testing_recruitment.hpp */,
-				B54AC6C10FEA9EB5006F6FBD /* ca.cpp */,
-				B54AC6C20FEA9EB5006F6FBD /* ca.hpp */,
-				B54AC6C50FEA9EB5006F6FBD /* stage_rca.cpp */,
-				B54AC6C60FEA9EB5006F6FBD /* stage_rca.hpp */,
 				EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */,
 				EC4E3B1F19B2D8480049CBD7 /* stage_sf_with_rca.hpp */,
 			);
@@ -3733,8 +3735,6 @@
 				B52EE9A3121363EB00CFBDAB /* lua */,
 				B54AC6930FEA9E8F006F6FBD /* manager.cpp */,
 				B54AC6940FEA9E8F006F6FBD /* manager.hpp */,
-				EC48D74B17F3148300DE80BF /* recruitment.cpp */,
-				EC48D74C17F3148300DE80BF /* recruitment.hpp */,
 				B54AC6950FEA9E8F006F6FBD /* registry.cpp */,
 				B54AC6960FEA9E8F006F6FBD /* registry.hpp */,
 				EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */,
@@ -4427,7 +4427,7 @@
 				B5A9BD360ECA805A002BE442 /* resize_map.cpp in Sources */,
 				F4728DB1145A59CF00F0E1E1 /* set_starting_position.cpp in Sources */,
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
-				B54AC6DB0FEA9EB5006F6FBD /* engine_default.cpp in Sources */,
+				B54AC6DB0FEA9EB5006F6FBD /* engine_cpp.cpp in Sources */,
 				B508D193100146E300B12852 /* engine_fai.cpp in Sources */,
 				B55BE04011234AD700154E6C /* engine_lua.cpp in Sources */,
 				B54AC6DA0FEA9EB5006F6FBD /* engine.cpp in Sources */,
@@ -4787,7 +4787,7 @@
 				ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */,
 				F4FBD76A145D93370083CA67 /* uninstall_list.cpp in Sources */,
 				B5599AEF0EC62181008DD061 /* abilities.cpp in Sources */,
-				627F1EDB175AF35C000042E0 /* unit_advancements_aspect.cpp in Sources */,
+				627F1EDB175AF35C000042E0 /* aspect_advancements.cpp in Sources */,
 				EC386CF1195119AA006004ED /* animation_component.cpp in Sources */,
 				B5599AEE0EC62181008DD061 /* animation.cpp in Sources */,
 				ECC2FFFC1A51A91100023AF4 /* attack_type.cpp in Sources */,
@@ -4911,7 +4911,7 @@
 				B597C5640FACD6CA00CE81F5 /* new_map.cpp in Sources */,
 				B561F392104B11F7001369F5 /* editor_preferences.cpp in Sources */,
 				B597C5A80FACD6CA00CE81F5 /* resize_map.cpp in Sources */,
-				B54AC6CA0FEA9EB5006F6FBD /* engine_default.cpp in Sources */,
+				B54AC6CA0FEA9EB5006F6FBD /* engine_cpp.cpp in Sources */,
 				B508D194100146E300B12852 /* engine_fai.cpp in Sources */,
 				B55BE04111234AD700154E6C /* engine_lua.cpp in Sources */,
 				B54AC6C90FEA9EB5006F6FBD /* engine.cpp in Sources */,

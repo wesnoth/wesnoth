@@ -26,7 +26,7 @@
 #pragma warning(disable:4250)
 #endif
 
-#include "component.hpp"
+#include "ai/composite/component.hpp"
 
 #include "global.hpp"
 
