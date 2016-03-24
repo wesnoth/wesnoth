@@ -38,14 +38,14 @@ struct plain_route;
 
 namespace ai {
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
-class testing_move_to_targets_phase : public candidate_action {
+class move_to_targets_phase : public candidate_action {
 public:
 
-	testing_move_to_targets_phase( rca_context &context, const config &cfg );
+	move_to_targets_phase( rca_context &context, const config &cfg );
 
-	virtual ~testing_move_to_targets_phase();
+	virtual ~move_to_targets_phase();
 
 	virtual double evaluate();
 

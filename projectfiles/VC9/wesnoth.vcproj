@@ -2008,6 +2008,62 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\ai\default\ca_move_to_targets.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\default\ca_move_to_targets.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\ai\default\contexts.cpp"
 					>
 					<FileConfiguration
@@ -2235,62 +2291,6 @@
 			<Filter
 				Name="testing"
 				>
-				<File
-					RelativePath="..\..\src\ai\testing\ca_testing_move_to_targets.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\ai\testing\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\ai\testing\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\ai\testing\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\ai\testing\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\ai\testing\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\ai\testing\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\ai\testing\ca_testing_move_to_targets.hpp"
-					>
-				</File>
 				<File
 					RelativePath="..\..\src\ai\testing\stage_sf_with_rca.cpp"
 					>

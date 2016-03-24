@@ -275,8 +275,8 @@
 		B54AC7010FEA9FA5006F6FBD /* scrollbar_panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6FB0FEA9FA5006F6FBD /* scrollbar_panel.cpp */; };
 		B552D92410869477002D8F86 /* distributor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92210869477002D8F86 /* distributor.cpp */; };
 		B552D92510869477002D8F86 /* distributor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92210869477002D8F86 /* distributor.cpp */; };
-		B552D92D108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */; };
-		B552D92F108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */; };
+		B552D92D108694BB002D8F86 /* ca_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_move_to_targets.cpp */; };
+		B552D92F108694BB002D8F86 /* ca_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_move_to_targets.cpp */; };
 		B553B6BA12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		B553B6BB12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		B559986C0EC616B3008DD061 /* SDLMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.mm */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -1515,8 +1515,8 @@
 		B54AC6FD0FEA9FA5006F6FBD /* window_private.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window_private.hpp; sourceTree = "<group>"; };
 		B552D92210869477002D8F86 /* distributor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = distributor.cpp; sourceTree = "<group>"; };
 		B552D92310869477002D8F86 /* distributor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = distributor.hpp; sourceTree = "<group>"; };
-		B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ca_testing_move_to_targets.cpp; sourceTree = "<group>"; };
-		B552D92B108694BB002D8F86 /* ca_testing_move_to_targets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ca_testing_move_to_targets.hpp; sourceTree = "<group>"; };
+		B552D92A108694BB002D8F86 /* ca_move_to_targets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ca_move_to_targets.cpp; sourceTree = "<group>"; };
+		B552D92B108694BB002D8F86 /* ca_move_to_targets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ca_move_to_targets.hpp; sourceTree = "<group>"; };
 		B553B6B812189C5900CC8C58 /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
 		B553B6B912189C5900CC8C58 /* utility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utility.hpp; sourceTree = "<group>"; };
 		B559986A0EC616B3008DD061 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "Mac Sources/SDLMain.h"; sourceTree = "<group>"; };
@@ -3484,6 +3484,8 @@
 				B54AC6AB0FEA9EB5006F6FBD /* engine_cpp.hpp */,
 				EC48D74B17F3148300DE80BF /* recruitment.cpp */,
 				EC48D74C17F3148300DE80BF /* recruitment.hpp */,
+				B552D92A108694BB002D8F86 /* ca_move_to_targets.cpp */,
+				B552D92B108694BB002D8F86 /* ca_move_to_targets.hpp */,
 				B54AC6C50FEA9EB5006F6FBD /* stage_rca.cpp */,
 				B54AC6C60FEA9EB5006F6FBD /* stage_rca.hpp */,
 			);
@@ -3514,8 +3516,6 @@
 		B54AC6C00FEA9EB5006F6FBD /* testing */ = {
 			isa = PBXGroup;
 			children = (
-				B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */,
-				B552D92B108694BB002D8F86 /* ca_testing_move_to_targets.hpp */,
 				EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */,
 				EC4E3B1F19B2D8480049CBD7 /* stage_sf_with_rca.hpp */,
 			);
@@ -4344,7 +4344,7 @@
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
 				B5599AD40EC62181008DD061 /* button.cpp in Sources */,
 				B5A9BD5B0ECA805A002BE442 /* button.cpp in Sources */,
-				B552D92D108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */,
+				B552D92D108694BB002D8F86 /* ca_move_to_targets.cpp in Sources */,
 				B54AC6E60FEA9EB5006F6FBD /* ca.cpp in Sources */,
 				B5599B810EC62181008DD061 /* callable_objects.cpp in Sources */,
 				B5951A9B1013BB5A00C10B66 /* callable_objects.cpp in Sources */,
@@ -4864,7 +4864,7 @@
 				B597C5600FACD6CA00CE81F5 /* binary_or_text.cpp in Sources */,
 				B597C5690FACD6CA00CE81F5 /* button.cpp in Sources */,
 				B597C65A0FACDDE800CE81F5 /* button.cpp in Sources */,
-				B552D92F108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */,
+				B552D92F108694BB002D8F86 /* ca_move_to_targets.cpp in Sources */,
 				B54AC6D50FEA9EB5006F6FBD /* ca.cpp in Sources */,
 				B597C5310FACD6CA00CE81F5 /* callable_objects.cpp in Sources */,
 				B5951A9D1013BB5A00C10B66 /* callable_objects.cpp in Sources */,

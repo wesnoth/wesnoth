@@ -237,24 +237,6 @@ private:
 
 };
 
-//============================================================================
-
-class simple_move_and_targeting_phase : public candidate_action {
-public:
-
-	simple_move_and_targeting_phase( rca_context &context, const config &cfg );
-
-	virtual ~simple_move_and_targeting_phase();
-
-	virtual double evaluate();
-
-	virtual void execute();
-
-private:
-
-	move_result_ptr move_;
-};
-
 
 //============================================================================
 

@@ -36,7 +36,7 @@
 #include "ai/default/recruitment.hpp"  // for recruitment
 #include "ai/default/aspect_attacks.hpp"   // for aspect_attacks
 #include "ai/default/ca.hpp"               // for leader_shares_keep_phase, etc
-#include "ai/testing/ca_testing_move_to_targets.hpp"
+#include "ai/default/ca_move_to_targets.hpp"
 #include "ai/testing/stage_sf_with_rca.hpp"
 #include "ai/default/stage_rca.hpp"
 
@@ -101,10 +101,7 @@ static register_candidate_action_factory<ai_default_rca::get_healing_phase>
 static register_candidate_action_factory<ai_default_rca::retreat_phase>
 	retreat_phase_factory("ai_default_rca::retreat_phase");
 
-static register_candidate_action_factory<ai_default_rca::simple_move_and_targeting_phase>
-	simple_move_and_targeting_phase_factory("ai_default_rca::simple_move_and_targeting_phase");
-
-static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+static register_candidate_action_factory<ai_default_rca::move_to_targets_phase>
 	default_move_to_targets_phase_factory("ai_default_rca::move_to_targets_phase");
 
 static register_candidate_action_factory<ai_default_rca::leader_control_phase>
@@ -142,13 +139,10 @@ static register_candidate_action_factory<ai_default_rca::get_healing_phase>
 static register_candidate_action_factory<ai_default_rca::retreat_phase>
 	old_retreat_phase_factory("testing_ai_default::retreat_phase");
 
-static register_candidate_action_factory<ai_default_rca::simple_move_and_targeting_phase>
-	old_simple_move_and_targeting_phase_factory("testing_ai_default::simple_move_and_targeting_phase");
-
-static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+static register_candidate_action_factory<ai_default_rca::move_to_targets_phase>
 	old_default_move_to_targets_phase_factory("testing_ai_default::default_move_to_targets_phase");
 
-static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+static register_candidate_action_factory<ai_default_rca::move_to_targets_phase>
 	old_testing_move_to_targets_phase_factory("testing_ai_default::testing_move_to_targets_phase");
 
 static register_candidate_action_factory<ai_default_rca::leader_control_phase>

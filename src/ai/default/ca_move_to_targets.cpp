@@ -17,7 +17,7 @@
  * Strategic movement routine, taken from default AI
  */
 
-#include "ai/testing/ca_testing_move_to_targets.hpp"
+#include "ai/default/ca_move_to_targets.hpp"
 
 #include "ai/composite/ai.hpp"
 #include "ai/actions.hpp"
@@ -33,13 +33,13 @@
 
 namespace ai {
 
-namespace testing_ai_default {
+namespace ai_default_rca {
 
-static lg::log_domain log_ai_testing_ca_testing_move_to_targets("ai/ca/testing_move_to_targets");
-#define DBG_AI LOG_STREAM(debug, log_ai_testing_ca_testing_move_to_targets)
-#define LOG_AI LOG_STREAM(info, log_ai_testing_ca_testing_move_to_targets)
-#define WRN_AI LOG_STREAM(warn, log_ai_testing_ca_testing_move_to_targets)
-#define ERR_AI LOG_STREAM(err, log_ai_testing_ca_testing_move_to_targets)
+static lg::log_domain log_ai_testing_ca_move_to_targets("ai/ca/move_to_targets");
+#define DBG_AI LOG_STREAM(debug, log_ai_testing_ca_move_to_targets)
+#define LOG_AI LOG_STREAM(info, log_ai_testing_ca_move_to_targets)
+#define WRN_AI LOG_STREAM(warn, log_ai_testing_ca_move_to_targets)
+#define ERR_AI LOG_STREAM(err, log_ai_testing_ca_move_to_targets)
 
 
 
@@ -116,24 +116,24 @@ private:
 
 };
 
-testing_move_to_targets_phase::testing_move_to_targets_phase( rca_context &context, const config &cfg )
+move_to_targets_phase::move_to_targets_phase( rca_context &context, const config &cfg )
 	: candidate_action(context,cfg)
 {
 }
 
 
-testing_move_to_targets_phase::~testing_move_to_targets_phase()
+move_to_targets_phase::~move_to_targets_phase()
 {
 }
 
 
-double testing_move_to_targets_phase::evaluate()
+double move_to_targets_phase::evaluate()
 {
 	return get_score();
 }
 
 
-void testing_move_to_targets_phase::execute()
+void move_to_targets_phase::execute()
 {
 	unit_map::const_iterator leader = resources::units->find_leader(get_side());
 	LOG_AI << "finding targets...\n";
@@ -202,7 +202,7 @@ struct rated_target_comparer {
 };
 
 
-double testing_move_to_targets_phase::rate_target(const target& tg, const unit_map::iterator& u,
+double move_to_targets_phase::rate_target(const target& tg, const unit_map::iterator& u,
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
 			const pathfind::plain_route& rt)
 {
@@ -268,9 +268,9 @@ double testing_move_to_targets_phase::rate_target(const target& tg, const unit_m
 
 
 
-std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
+std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
 {
-	log_scope2(log_ai_testing_ca_testing_move_to_targets, "choosing move");
+	log_scope2(log_ai_testing_ca_move_to_targets, "choosing move");
 
 	raise_user_interact();
 	unit_map &units_ = *resources::units;
@@ -618,7 +618,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 	return std::pair<map_location,map_location>();
 }
 
-void testing_move_to_targets_phase::access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out)
+void move_to_targets_phase::access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out)
 {
 	unit_map &units_ = *resources::units;
 	const gamemap &map_ = resources::gameboard->map();
@@ -643,7 +643,7 @@ void testing_move_to_targets_phase::access_points(const move_map& srcdst, const 
 }
 
 
-double testing_move_to_targets_phase::compare_groups(const std::set<map_location>& our_group, const std::set<map_location>& their_group, const std::vector<map_location>& battlefield) const
+double move_to_targets_phase::compare_groups(const std::set<map_location>& our_group, const std::set<map_location>& their_group, const std::vector<map_location>& battlefield) const
 {
 	const double a = rate_group(our_group,battlefield);
 	const double b = std::max<double>(rate_group(their_group,battlefield),0.01);
@@ -651,7 +651,7 @@ double testing_move_to_targets_phase::compare_groups(const std::set<map_location
 }
 
 
-void testing_move_to_targets_phase::enemies_along_path(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
+void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
 	for(std::vector<map_location>::const_iterator i = route.begin(); i != route.end(); ++i) {
 		map_location adj[6];
@@ -666,7 +666,7 @@ void testing_move_to_targets_phase::enemies_along_path(const std::vector<map_loc
 }
 
 
-map_location testing_move_to_targets_phase::form_group(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
+map_location move_to_targets_phase::form_group(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
 	unit_map &units_ = *resources::units;
 	if(route.empty()) {
@@ -709,7 +709,7 @@ map_location testing_move_to_targets_phase::form_group(const std::vector<map_loc
 }
 
 
-bool testing_move_to_targets_phase::move_group(const map_location& dst, const std::vector<map_location>& route, const std::set<map_location>& units)
+bool move_to_targets_phase::move_group(const map_location& dst, const std::vector<map_location>& route, const std::set<map_location>& units)
 {
 	unit_map &units_ = *resources::units;
 	const gamemap &map_ = resources::gameboard->map();
@@ -811,7 +811,7 @@ bool testing_move_to_targets_phase::move_group(const map_location& dst, const st
 }
 
 
-double testing_move_to_targets_phase::rate_group(const std::set<map_location>& group, const std::vector<map_location>& battlefield) const
+double move_to_targets_phase::rate_group(const std::set<map_location>& group, const std::vector<map_location>& battlefield) const
 {
 	unit_map &units_ = *resources::units;
 	const gamemap &map_ = resources::gameboard->map();
@@ -848,7 +848,7 @@ double testing_move_to_targets_phase::rate_group(const std::set<map_location>& g
 
 
 
-bool testing_move_to_targets_phase::should_retreat(const map_location& loc, const unit_map::const_iterator& un,
+bool move_to_targets_phase::should_retreat(const map_location& loc, const unit_map::const_iterator& un,
 		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
 		double caution)
 {
@@ -870,6 +870,6 @@ bool testing_move_to_targets_phase::should_retreat(const map_location& loc, cons
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-} // end of namespace testing_ai_default
+} // end of namespace ai_default_rca
 
 } // end of namespace ai

@@ -223,6 +223,7 @@ wesnoth_sources = Split("""
     ai/default/aspect_attacks.cpp
     ai/default/attack.cpp
     ai/default/ca.cpp
+    ai/default/ca_move_to_targets.cpp
     ai/default/contexts.cpp
     ai/default/engine_cpp.cpp
     ai/default/recruitment.cpp
@@ -244,7 +245,6 @@ wesnoth_sources = Split("""
     ai/registry.cpp
     ai/simulated_actions.cpp
     ai/testing.cpp
-    ai/testing/ca_testing_move_to_targets.cpp
     ai/testing/stage_sf_with_rca.cpp
     animated_game.cpp
     attack_prediction.cpp
