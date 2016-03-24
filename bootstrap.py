@@ -22,12 +22,12 @@
 #
 # this provides some helpers:
 #
-#   extract_zip(zippath, subdir, target)
+#   unzip(zippath, target, subdir=None)
 #                    - extracts subdir from the zip file
 #   getsecure(targetdir, filespec, quiet=False)
 #                    - download file and check hash/size
 
-# --- Data ---
+# ------------------------------ Data ---
 
 """
 Every entry in specification for downloaded files below
@@ -147,7 +147,7 @@ filespec = [
   ),
 ]
 
-# --- Code ---
+# ------------------------------ Code ---
 
 # index for easy access, like toolspec['boost']['path']
 toolspec = {}
@@ -156,8 +156,6 @@ for entry in filespec:
         toolspec[entry['name']] = {}
         toolspec[entry['name']]['path'] = entry['check']
 
-
-# --- create .locally/ subdir ---
 import os
 import sys
 
@@ -165,6 +163,9 @@ PY3K = sys.version_info >= (3, 0)
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 LOOT = os.path.join(ROOT, '.locally/')
+
+# --- create .locally/ subdir ---
+
 if not os.path.exists(LOOT):
   os.mkdir(LOOT)
 
@@ -405,7 +406,7 @@ def run_capture_limited(command, maxlines=20000):
 
     return output
 
-# ---[ /utils ]---
+# ---[ /utilities ]---
 
 
 print('---[ download dependencies ]---')
