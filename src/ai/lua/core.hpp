@@ -60,6 +60,7 @@ class lua_ai_load
 	lua_State* L;
 	static int refcount;
 public:
+	bool was_readonly;
 	lua_ai_load(lua_ai_context& ctx, bool read_only);
 	~lua_ai_load();
 };
