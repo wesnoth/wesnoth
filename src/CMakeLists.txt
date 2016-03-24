@@ -720,7 +720,6 @@ set(wesnoth-main_SRC
 	ai/registry.cpp
 	ai/simulated_actions.cpp
 	ai/testing.cpp
-	ai/testing/stage_sf_with_rca.cpp
 	animated_game.cpp
 	attack_prediction.cpp
 	attack_prediction_display.cpp

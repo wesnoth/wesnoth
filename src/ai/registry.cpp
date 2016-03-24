@@ -37,7 +37,6 @@
 #include "ai/default/aspect_attacks.hpp"   // for aspect_attacks
 #include "ai/default/ca.hpp"               // for leader_shares_keep_phase, etc
 #include "ai/default/ca_move_to_targets.hpp"
-#include "ai/testing/stage_sf_with_rca.hpp"
 #include "ai/default/stage_rca.hpp"
 
 #include <boost/shared_ptr.hpp>         // for shared_ptr, etc
@@ -65,9 +64,6 @@ static register_engine_factory<engine_lua>
 
 static register_stage_factory<ai_default_rca::candidate_action_evaluation_loop>
 	candidate_action_evaluation_loop_factory("ai_default_rca::candidate_action_evaluation_loop");
-
-static register_stage_factory<testing_ai_default::strategy_formulation_with_rca>
-	strategy_formulation_with_rca_factory("testing_ai_default::strategy_formulation_with_rca");
 
 static register_stage_factory<idle_stage>
 	ai_idle_stage_factory("empty");

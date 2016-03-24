@@ -797,7 +797,6 @@
 		EC4E3B1B19B2D7AD0049CBD7 /* cave_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */; };
 		EC4E3B1C19B2D7AD0049CBD7 /* default_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */; };
 		EC4E3B1D19B2D7AD0049CBD7 /* map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1A19B2D7AD0049CBD7 /* map_generator.cpp */; };
-		EC4E3B2019B2D8480049CBD7 /* stage_sf_with_rca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */; };
 		EC4E3B2219B2D8880049CBD7 /* simulated_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */; };
 		EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
 		EC53B04E1B23BB0E002F758F /* make_enum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC53B04D1B23BB0E002F758F /* make_enum.cpp */; };
@@ -2097,8 +2096,6 @@
 		EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cave_map_generator.cpp; sourceTree = "<group>"; };
 		EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_map_generator.cpp; sourceTree = "<group>"; };
 		EC4E3B1A19B2D7AD0049CBD7 /* map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map_generator.cpp; sourceTree = "<group>"; };
-		EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stage_sf_with_rca.cpp; sourceTree = "<group>"; };
-		EC4E3B1F19B2D8480049CBD7 /* stage_sf_with_rca.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stage_sf_with_rca.hpp; sourceTree = "<group>"; };
 		EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulated_actions.cpp; sourceTree = "<group>"; };
 		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
@@ -3516,8 +3513,6 @@
 		B54AC6C00FEA9EB5006F6FBD /* testing */ = {
 			isa = PBXGroup;
 			children = (
-				EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */,
-				EC4E3B1F19B2D8480049CBD7 /* stage_sf_with_rca.hpp */,
 			);
 			path = testing;
 			sourceTree = "<group>";
@@ -4723,7 +4718,6 @@
 				B5A9BD6D0ECA805A002BE442 /* spacer.cpp in Sources */,
 				B508D2161001560100B12852 /* stacked_widget.cpp in Sources */,
 				B54AC6E80FEA9EB5006F6FBD /* stage_rca.cpp in Sources */,
-				EC4E3B2019B2D8480049CBD7 /* stage_sf_with_rca.cpp in Sources */,
 				B59F96E0103478DE00A57C1A /* stage_side_formulas.cpp in Sources */,
 				B59F96E1103478DE00A57C1A /* stage_unit_formulas.cpp in Sources */,
 				B54AC6DD0FEA9EB5006F6FBD /* stage.cpp in Sources */,
