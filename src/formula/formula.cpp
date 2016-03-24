@@ -675,7 +675,10 @@ public:
 	std::string str() const
 	{
 		std::stringstream s;
-		s << i_ << '.' << f_;
+		s << i_ << '.';
+		s.width(3);
+		s.fill('0');
+		s << f_;
 		return s.str();
 	}
 private:
