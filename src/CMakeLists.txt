@@ -945,6 +945,7 @@ set(wesnoth-main_SRC
 	scripting/plugins/context.cpp
 	scripting/plugins/manager.cpp
 	settings.cpp
+	silent_update_check.cpp
 	side_filter.cpp
 	game_initialization/singleplayer.cpp
 	statistics.cpp

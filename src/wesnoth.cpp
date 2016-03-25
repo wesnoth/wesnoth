@@ -52,6 +52,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/validator.hpp"  // for strict_validation_enabled
 #include "serialization/unicode_cast.hpp"
+#include "silent_update_check.hpp"
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "statistics.hpp"               // for fresh_stats
 #include "tstring.hpp"                  // for operator==, t_string
@@ -644,6 +645,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
+	silent_update_check updater;
 	loadscreen::start_stage("load config");
 	res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 	if(res == false) {
