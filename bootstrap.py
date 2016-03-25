@@ -450,9 +450,9 @@ for entry in filespec:
       unzip(LOOT + fname, targetdir)
     else:
       if fname.endswith('.tar.gz') or fname.endswith('.txz'):
-        cmd = '"%s" x -so "%s" | %s x -y -si -ttar -o"%s"' % (cmd7zip, LOOT + fname, cmd7zip, targetdir)
+        cmd = '"%s" x -so "%s" | "%s" x -y -si -ttar -o"%s"' % (cmd7zip, LOOT + fname, cmd7zip, targetdir)
       else:
-        cmd = '"%s" x -y -bd -o"%s" %s' % (cmd7zip, targetdir, LOOT + fname)
+        cmd = '"%s" x -y -bd -o"%s" "%s"' % (cmd7zip, targetdir, LOOT + fname)
       r = run_capture_limited(cmd, maxlines=10)
       if not r.success:
         print('error: command failed')
