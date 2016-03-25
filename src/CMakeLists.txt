@@ -1029,7 +1029,7 @@ set(libwesnoth-game_STAT_SRC
 	language.cpp
 	loadscreen.cpp
 	lobby_preferences.cpp
-	make_enum.cpp
+	utils/make_enum.cpp
 	map/label.cpp
 	marked-up_text.cpp
 	minimap.cpp
