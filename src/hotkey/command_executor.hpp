@@ -132,7 +132,7 @@ public:
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
-	virtual bool execute_command(const hotkey_command& command, int index=-1);
+	virtual bool execute_command(const hotkey_command& command, int index=-1, HOTKEY_EVENT_TYPE type = HOTKEY_EVENT_PRESS);
 };
 class command_executor_default : public command_executor
 {
@@ -162,7 +162,7 @@ void mbutton_event(const SDL_Event& event, command_executor* executor);
 
 
 //TODO
-void execute_command(const hotkey_command& command, command_executor* executor, int index=-1);
+void execute_command(const hotkey_command& command, command_executor* executor, int index=-1, HOTKEY_EVENT_TYPE type = HOTKEY_EVENT_PRESS);
 
 // Object which will ensure that basic keyboard events like escape
 // are handled properly for the duration of its lifetime.

@@ -61,13 +61,14 @@ void controller_base::handle_event(const SDL_Event& event)
 
 			process_keydown_event(event);
 			hotkey::key_event(event, get_hotkey_command_executor());
+			process_keyup_event(event);
 		} else {
 			process_focus_keydown_event(event);
-			break;
 		}
-		// intentionally fall-through
+		break;
 	case SDL_KEYUP:
 		process_keyup_event(event);
+		hotkey::key_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_JOYBUTTONDOWN:
 		process_keydown_event(event);

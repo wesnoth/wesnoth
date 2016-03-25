@@ -125,7 +125,7 @@ public:
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
-	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1);
+	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1, hotkey::HOTKEY_EVENT_TYPE type = hotkey::HOTKEY_EVENT_PRESS);
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 
 	/**
