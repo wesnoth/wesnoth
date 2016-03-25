@@ -29,7 +29,7 @@
 
 #include <boost/lexical_cast.hpp>
 
-static lg::log_domain log_formula_debugger("ai/debug/formula");
+static lg::log_domain log_formula_debugger("scripting/formula/debug");
 #define DBG_FDB LOG_STREAM(debug, log_formula_debugger)
 #define LOG_FDB LOG_STREAM(info, log_formula_debugger)
 #define WRN_FDB LOG_STREAM(warn, log_formula_debugger)
