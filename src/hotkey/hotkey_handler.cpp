@@ -218,6 +218,11 @@ void play_controller::hotkey_handler::toggle_accelerated_speed()
 	}
 }
 
+void play_controller::hotkey_handler::keyboard_scroll(int x, int y)
+{
+	play_controller_.keyboard_scroll(x, y);
+}
+
 bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_command& cmd, int index, hotkey::HOTKEY_EVENT_TYPE type)
 {
 	hotkey::HOTKEY_COMMAND command = cmd.id;
@@ -302,6 +307,10 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_SAVE_REPLAY:
 	case hotkey::HOTKEY_LABEL_SETTINGS:
 	case hotkey::LUA_CONSOLE:
+	case hotkey::HOTKEY_SCROLL_UP:
+	case hotkey::HOTKEY_SCROLL_DOWN:
+	case hotkey::HOTKEY_SCROLL_LEFT:
+	case hotkey::HOTKEY_SCROLL_RIGHT:
 		return true;
 
 	// Commands that have some preconditions:

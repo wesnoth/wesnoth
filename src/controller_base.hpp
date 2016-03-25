@@ -64,6 +64,8 @@ public:
 	void play_slice(bool is_delay_enabled = true);
 
 	static const config &get_theme(const config& game_config, std::string theme_name);
+
+	void keyboard_scroll(int x, int y);
 protected:
 	virtual bool is_browsing() const
 	{ return false; }
@@ -105,7 +107,7 @@ protected:
 	 * @see scrolling_, which is set if the display is being scrolled
 	 * @return true when there was any scrolling, false otherwise
 	 */
-	bool handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags, double joystickx, double joysticky);
+	bool handle_scroll(int mousex, int mousey, int mouse_flags, double joystickx, double joysticky);
 
 	/**
 	 * Process mouse- and keypress-events from SDL.
@@ -141,6 +143,8 @@ protected:
 	const config& game_config_;
 	CKey key_;
 	bool scrolling_;
+	int scrollx_;
+	int scrolly_;
 	joystick_manager joystick_manager_;
 };
 

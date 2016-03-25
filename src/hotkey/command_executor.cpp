@@ -74,9 +74,47 @@ static void event_execute(const SDL_Event& event, command_executor* executor);
 
 bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/, HOTKEY_EVENT_TYPE type)
 {
-	if (type == HOTKEY_EVENT_RELEASE)
-		return false; // nothing responds to a release yet
+	if (type == HOTKEY_EVENT_RELEASE) {
+		switch(cmd.id) {
+			// release a scroll key, un-apply scrolling in the given direction
+			case HOTKEY_SCROLL_UP:
+				keyboard_scroll(0, 1);
+				break;
+			case HOTKEY_SCROLL_DOWN:
+				keyboard_scroll(0, -1);
+				break;
+			case HOTKEY_SCROLL_LEFT:
+				keyboard_scroll(1, 0);
+				break;
+			case HOTKEY_SCROLL_RIGHT:
+				keyboard_scroll(-1, 0);
+				break;
+			default:
+				return false; // nothing else handles a hotkey release
+		}
 
+		return true;
+	}
+
+	// special handling for scroll keys, which do not handle repeat
+	if (type == HOTKEY_EVENT_PRESS) {
+		switch(cmd.id) {
+			case HOTKEY_SCROLL_UP:
+				keyboard_scroll(0, -1);
+				return true;
+			case HOTKEY_SCROLL_DOWN:
+				keyboard_scroll(0, 1);
+				return true;
+			case HOTKEY_SCROLL_LEFT:
+				keyboard_scroll(-1, 0);
+				return true;
+			case HOTKEY_SCROLL_RIGHT:
+				keyboard_scroll(1, 0);
+				return true;
+		}
+	}
+
+	// everything following responds to a press or repeat, but not release
 	switch(cmd.id) {
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();
