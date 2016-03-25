@@ -328,14 +328,14 @@ def run(command):
 class ResultString(str):
     def __init__(self, obj):
         self.return_code = 0
-        self.succeeded = False
+        self.success = False
 
 def run_capture_limited(command, maxlines=20000):
     """
     Run command through a system shell, return last `maxlines`
     from command output as a string with additional properties:
 
-        output.succeeded    - result of the operation True/False
+        output.success      - result of the operation True/False
         output.return_code  - specific return code
 
     ┌─────────┐ (stdin) ┌─────────────┐            ┌─────────┐
@@ -402,7 +402,7 @@ def run_capture_limited(command, maxlines=20000):
     output = ResultString(''.join(lines))
     output.return_code = process.returncode
     if process.returncode == 0:
-        output.succeeded = True
+        output.success = True
 
     return output
 
@@ -448,12 +448,19 @@ for entry in filespec:
       print('unpacking %s' % fname)
     if fname.endswith('.zip'):
       unzip(LOOT + fname, targetdir)
-    elif fname.endswith('.tar.gz') or fname.endswith('.txz'):
-      cmd = '%s x -so "%s" | %s x -y -si -ttar -o"%s"' % (cmd7zip, LOOT + fname, cmd7zip, targetdir)
-      run_capture_limited(cmd, maxlines=10)
     else:
-      run_capture_limited('%s x -y -bd -o"%s" %s' % (cmd7zip, targetdir, LOOT + fname), maxlines=10)
-
+      if fname.endswith('.tar.gz') or fname.endswith('.txz'):
+        cmd = '"%s" x -so "%s" | %s x -y -si -ttar -o"%s"' % (cmd7zip, LOOT + fname, cmd7zip, targetdir)
+      else:
+        cmd = '"%s" x -y -bd -o"%s" %s' % (cmd7zip, targetdir, LOOT + fname)
+      r = run_capture_limited(cmd, maxlines=10)
+      if not r.success:
+        print('error: command failed')
+        print('  %s' % cmd)
+        print('output:')
+        for line in r.splitlines():
+          print('  '+line)
+        sys.exit(-1)
 
 print('---[ prepare and process dependencies ]---')
 print('Add GCC to PATH..')
