@@ -42,11 +42,15 @@ The Wesnoth formula language used by $(...) substitution, the formula= key in st
 The "fai" and "faiend" keywords are deprecated in favour of "wfl" and "wflend" respectively. This is part of a move to more clearly distinguish [wiki]Wesnoth Formula Language[/wiki], the language itself, from [wiki]FormulaAI[/wiki], which is just one use of the language in Wesnoth.
 [/rasection]
 
-[rasection="Changes to AI"]
-The format for configuring AI parameters has been simplified - see the changelog or wiki for full details. It has also been extended in several ways, for example allowing Lua facets. The [modify_ai] tag has been extended to allow editing the internal jobs of the recruitment_instructions aspect.
+[rasection="Changes to the AI"]
+After several development cycles of adding new and/or experimental features to the AI engine, a long overdue AI code cleanup effort was undertaken in order to facilitate future AI maintenance and development. This included a refactoring and reorganization of the code of the current AI as well as the removal of non-functional, outdated or deprecated code.
+
+As a result, the format for configuring some AI parameters has been simplified. The AI functionality has also been extended in several ways. For example, it now allows Lua facets and the [modify_ai] tag has been extended to allow editing the internal jobs of the recruitment_instructions aspect.
+
+While making these changes, we tried to retain backward compatibility as much as feasible. Thus, most of the changes are invisible to the WML and custom AI developer and the vast majority of existing UMC code will continue to function as is. It is, however, unavoidable that some old AIs or AI configurations will require updating. A summary of those changes is given below. For more details, see the full changelog and the Wesnoth wiki. In addition, we have set up a separate [forum thread; create first post and add link] in which you can post any questions and problems you might encounter while updating your code.
 [/rasection]
 
-[rawarn="AI compatibility breaks"]
+[rawarn="AI compatibility breaking changes"]
 Several old, deprecated AI components were removed:
 [list]
 [*]Several aspects that no longer did anything anyway: number_of_possible_recruits_to_force_recruit, recruitment_ignore_bad_combat, recruitment_ignore_bad_movement
@@ -56,12 +60,11 @@ Several old, deprecated AI components were removed:
 [*]The protect_my_unit [goal] type
 [/list]
 
-
 A number of changes were made to the way Lua AI components are declared in the WML and how the code is called by the engine. The wiki documents the new method in detail, but unfortunately these changes are likely to break some AIs. However, the fixes will be simple in most cases:
 [list=1]
-[*]If you used old-style Lua candidate actions (with execute and evaluate keys) together with an explicit [engine]name=lua tag, they will no longer work as written. In many cases, the fix will be simple - the code within [engine] frequently begins with a line similar to [c]local ai = ...[/c]. Simply removing this line will be sufficient to fix most such cases; if you accessed a "data" variable in the AI, see the Experimental AI definition (data/ai/ais/ai_generic_rush.cfg) for an example of how to fix it.
+[*]If you used old-style Lua candidate actions (with execute= and evaluate= keys) together with an explicit [engine]name=lua tag, they will no longer work as written. In many cases, the fix will be simple - the code within [engine] frequently begins with a line similar to [c]local ai = ...[/c]. Simply removing this line will be sufficient to fix most such cases; if you accessed a "data" variable in the AI, see the Experimental AI definition (data/ai/ais/ai_generic_rush.cfg) for an example of how to fix it.
 [*]If you used old-style Lua candidate actions without an explicit engine tag, you may need to remove a line similar to [c]local ai = ...[/c] from some of your code. In general, anything of the form [c]ai = <something>[/c] needs to be changed.
-[*]If you used new-style (external) Lua candidate actions (with a location key), they will still work for the time being (provided that they use exec_parms and/or eval_parms), but they should be updated nevertheless. The exec_parms and eval_parms keys should be combined into an [args] tag, and the argument list of your execution and evaluation functions should be changed from [c](ai, cfg, self)[/c] to [c](data, cfg)[/c]. The data parameter is the same as self.data was before; however, provided you do not have an explicit [engine] tag, self.data will continue to work.
+[*]If you used new-style (external) Lua candidate actions (with a location key), they will still work for the time being (provided that they use the exec_parms= and/or eval_parms= keys), but we recommend updating them nevertheless. The exec_parms= and eval_parms= keys should be combined into an [args] tag, and the argument list of your execution and evaluation functions should be changed from [c](ai, cfg, self)[/c] to [c](data, cfg)[/c]. The data parameter is the same as self.data was before; however, provided you do not have an explicit [engine] tag, self.data will continue to work.
 [/list]
 [/rawarn]
 
