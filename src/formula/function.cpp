@@ -306,6 +306,39 @@ private:
 	}
 };
 
+class debug_profile_function : public function_expression {
+public:
+	explicit debug_profile_function(const args_list& args)
+	     : function_expression("debug_profile", args, 1, 2)
+	{}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		std::string speaker = "WFL";
+		int i_value = 0;
+		if(args().size() == 2) {
+			speaker = args()[0]->evaluate(variables, fdb).string_cast();
+			i_value = 1;
+		}
+		
+		const variant value = args()[i_value]->evaluate(variables,fdb);
+		long run_time = 0;
+		for(int i = 1; i < 1000; i++) {
+			const long start = SDL_GetTicks();
+			args()[i_value]->evaluate(variables,fdb);
+			run_time += SDL_GetTicks() - start;
+		}
+
+		std::ostringstream str;
+		str << "Evaluated in " << (run_time / 1000.0) << " ms on average";
+		LOG_SF << speaker << ": " << str.str() << std::endl;
+		if(game_config::debug) {
+			game_display::get_singleton()->get_chat_manager().add_chat_message(time(NULL), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
+		}
+		return value;
+	}
+};
+
 class keys_function : public function_expression {
 public:
 	explicit keys_function(const args_list& args)
@@ -1495,6 +1528,7 @@ functions_map& get_functions_map() {
 		FUNCTION(choose);
                 FUNCTION(debug_float);
 		FUNCTION(debug_print);
+		FUNCTION(debug_profile);
 		FUNCTION(wave);
 		FUNCTION(sort);
 		FUNCTION(contains_string);
