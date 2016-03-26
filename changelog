@@ -15,7 +15,7 @@ Version 1.13.4+dev:
      nearest neighbor scaling.
    * Support delayed_variable_substitution= in [on_undo], [on_redo]
    * AiWML:
-     * Simplified aspect syntax which works for all aspects, present and future
+     * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
        * Except attacks, all aspects with complex values have a simple tag form
          containing only the aspect value (e.g. [avoid])
@@ -54,6 +54,10 @@ Version 1.13.4+dev:
        * Strategy Formulation with RCA stage
          This worked, but was slow and unmaintained. If a maintainer
          steps up, it may be restored later.
+       * Several of the development AIs available in debug mode in the
+         multiplayer setup menu
+     * The "Strong AI" has been renamed to "Default AI (RCA) with Alternate
+       Recruiting" and is now only available in debug mode.
      * Lua components (goals, aspects, stages, and candidate actions)
        now support an [args] subtag, which passes any sort of WML data
        to the Lua code - this works similarly to [args] in a [lua] tag,
