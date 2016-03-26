@@ -1245,6 +1245,13 @@
 		91273E8C1C7BF1C4005E7F81 /* themes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = themes; sourceTree = "<group>"; };
 		91273E8D1C7BF1C5005E7F81 /* tips.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = tips.cfg; sourceTree = "<group>"; };
 		91273E8E1C7BF1C5005E7F81 /* tools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tools; sourceTree = "<group>"; };
+		912DCA641CA6F5F90019A6F9 /* doxygen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = doxygen.cpp; sourceTree = "<group>"; };
+		912DCA651CA6F5F90019A6F9 /* footer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = footer.html; sourceTree = "<group>"; };
+		912DCA661CA6F5F90019A6F9 /* header.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = header.html; sourceTree = "<group>"; };
+		912DCA671CA6F5F90019A6F9 /* stylesheet.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = stylesheet.css; sourceTree = "<group>"; };
+		912DCA681CA6F6160019A6F9 /* wesnoth.6 */ = {isa = PBXFileReference; explicitFileType = text.man; name = wesnoth.6; path = man/wesnoth.6; sourceTree = "<group>"; };
+		912DCA691CA6F6160019A6F9 /* wesnothd.6 */ = {isa = PBXFileReference; explicitFileType = text.man; name = wesnothd.6; path = man/wesnothd.6; sourceTree = "<group>"; };
+		912DCA6A1CA6F65A0019A6F9 /* manual.en.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = manual.en.html; path = manual/manual.en.html; sourceTree = "<group>"; };
 		9130A45E1C73BB6100852782 /* select_orb_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = select_orb_colors.cpp; sourceTree = "<group>"; };
 		9130A45F1C73BB6100852782 /* select_orb_colors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = select_orb_colors.hpp; sourceTree = "<group>"; };
 		9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_pathfind_cost_calculator.hpp; sourceTree = "<group>"; };
@@ -2467,6 +2474,7 @@
 				B5BB6B560F893DE000444FBF /* server */,
 				29B97315FDCFA39411CA2CEA /* src */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				912DCA621CA6F5710019A6F9 /* Documentation */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -3075,6 +3083,29 @@
 			);
 			name = data;
 			path = ../../data;
+			sourceTree = "<group>";
+		};
+		912DCA621CA6F5710019A6F9 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				912DCA6A1CA6F65A0019A6F9 /* manual.en.html */,
+				912DCA681CA6F6160019A6F9 /* wesnoth.6 */,
+				912DCA691CA6F6160019A6F9 /* wesnothd.6 */,
+				912DCA631CA6F5EC0019A6F9 /* doxygen */,
+			);
+			name = Documentation;
+			path = ../../doc;
+			sourceTree = "<group>";
+		};
+		912DCA631CA6F5EC0019A6F9 /* doxygen */ = {
+			isa = PBXGroup;
+			children = (
+				912DCA641CA6F5F90019A6F9 /* doxygen.cpp */,
+				912DCA651CA6F5F90019A6F9 /* footer.html */,
+				912DCA661CA6F5F90019A6F9 /* header.html */,
+				912DCA671CA6F5F90019A6F9 /* stylesheet.css */,
+			);
+			path = doxygen;
 			sourceTree = "<group>";
 		};
 		91B6218E1B76710700B00E0F /* help */ = {
