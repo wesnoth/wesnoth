@@ -578,8 +578,9 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 		}
 	}
 
-	if (type == HOTKEY_EVENT_RELEASE)
+	if (type == HOTKEY_EVENT_RELEASE) {
 		return; // none of the commands here respond to a key release
+    }
 
 	switch (command.id) {
 
