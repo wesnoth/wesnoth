@@ -162,7 +162,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
 		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-path and userconfig-path instead.")
 		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path and userconfig-path instead.")
-		("core", po::value<std::string>(), "overrides the loaded core with the one which id is spcified.")
+		("core", po::value<std::string>(), "overrides the loaded core with the one whose id is specified.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
 		("data-path", "prints the path of the data directory and exits.")
 		("debug,d", "enables additional command mode options in-game.")
@@ -184,9 +184,17 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("nosound", "runs the game without sounds and music.")
 		("path", "prints the path to the data directory and exits.")
 		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
-		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file")
+		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file."
+#ifdef _WIN32
+		 " Implies --wconsole."
+#endif // _WIN32
+		 )
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
-		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
+		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work."
+#ifdef _WIN32
+		 " Implies --wconsole."
+#endif // _WIN32
+		 )
 		("script", po::value<std::string>(), "(experimental) file containing a lua script to control the client")
 		("unsafe-scripts", "makes the \'package\' package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
@@ -201,7 +209,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
 #ifdef _WIN32
-		("wconsole", "attaches a console window on startup (Windows only)")
+		("wconsole", "attaches a console window on startup (Windows only). Implied by any option that prints something and exits.")
 #endif // _WIN32
 		;
 
@@ -229,7 +237,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
-		("log-precise", "shows the timestamps in the logfile with more precision")
+		("log-precise", "shows the timestamps in the logfile with more precision.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -257,8 +265,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("showgui", "don't run headlessly (for debugging a failing test)")
 		("timeout", po::value<unsigned int>(), "sets a timeout (milliseconds) for the unit test. (DEPRECATED)")
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
-		("noreplaycheck", "don't try to validate replay of unit test")
-		("mp-test", "load the test mp scenarios")
+		("noreplaycheck", "don't try to validate replay of unit test.")
+		("mp-test", "load the test mp scenarios.")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
