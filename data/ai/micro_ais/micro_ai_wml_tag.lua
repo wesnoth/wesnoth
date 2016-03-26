@@ -7,46 +7,6 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     cfg = cfg.__parsed
 
-    -- Add translation for old-syntax animal MAIs to new syntax plus deprecation message
-    if (cfg.ai_type == 'animals') and (cfg.animal_type) then
-        wesnoth.message("The syntax 'ai_type=animals animal_type=" .. cfg.animal_type .. "' is deprecated.  Use 'ai_type=" .. cfg.animal_type .. "' instead.")
-
-        cfg.ai_type = cfg.animal_type
-        cfg.animal_type = nil
-    end
-
-    -- Add translation for old-syntax guardian MAIs to new syntax plus deprecation message
-    if (cfg.ai_type == 'guardian_unit') and (cfg.guardian_type) then
-        wesnoth.message("The syntax 'ai_type=guardian_unit guardian_type=" .. cfg.guardian_type .. "' is deprecated.  Use 'ai_type=" .. cfg.guardian_type .. "' instead.")
-
-        cfg.ai_type = cfg.guardian_type
-        cfg.guardian_type = nil
-    end
-
-    -- Add translation for old-syntax hunter_unit MAI to new syntax plus deprecation message
-    if (cfg.ai_type == 'hunter_unit') then
-        wesnoth.message("'ai_type=hunter_unit' is deprecated.  Use 'ai_type=hunter' instead.")
-
-        cfg.ai_type = 'hunter'
-    end
-
-    -- Add translation for old-syntax patrol_unit MAI to new syntax plus deprecation message
-    if (cfg.ai_type == 'patrol_unit') then
-        wesnoth.message("'ai_type=patrol_unit' is deprecated.  Use 'ai_type=patrol' instead.")
-
-        cfg.ai_type = 'patrol'
-    end
-
-    -- Add translation for old-syntax recruiting MAI to new syntax plus deprecation message
-    if (cfg.ai_type == 'recruiting') and (cfg.recruiting_type) then
-        local new_type = 'recruit_random'
-        if (cfg.recruiting_type == 'rushers') then new_type = 'recruit_rushers' end
-        wesnoth.message("The syntax 'ai_type=recruiting recruiting_type=" .. cfg.recruiting_type .. "' is deprecated.  Use 'ai_type=" .. new_type .. "' instead.")
-
-        cfg.ai_type = new_type
-        cfg.recruiting_type = nil
-    end
-
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then H.wml_error("[micro_ai] is missing required side= key") end
