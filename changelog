@@ -114,6 +114,10 @@ Version 1.13.4+dev:
      built-in effects - for example, to add a new feature to
      [effect]apply_to=attack. It also now supports effect descriptions,
      for use by the [trait] tag.
+   * Additional fields in unit proxy:
+     * usage, cost - self-explanatory
+     * traits - list of the IDs of all traits
+     * abilities - list of the IDs of all abilities
    * Additional fields in table returned by wesnoth.get_terrain_info:
      * icon, editor_image, light
    * LuaAI:
@@ -198,7 +202,6 @@ Version 1.13.4+dev:
      * Dice operator is now synced (where possible)
      * Modulus (%) operator now works on decimal numbers
      * Exponentiation (^) operator is now right-associative
-     * List/map indexing now has highest precedence of any operator (instead of lowest)
      * Fix several math operations returning a very large negative number when
        the operation was invalid (for example, (-2) ^ 0.5).
        Now they return null instead.

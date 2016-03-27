@@ -335,11 +335,11 @@ static int impl_unit_get(lua_State *L)
 		return 1;
 	}
 	if (strcmp(m, "traits") == 0) {
-		lua_push(L, u.get_ability_list());
+		lua_push(L, u.get_traits_list());
 		return 1;
 	}
 	if (strcmp(m, "abilities") == 0) {
-		lua_push(L, u.get_traits_list());
+		lua_push(L, u.get_ability_list());
 		return 1;
 	}
 	if (strcmp(m, "status") == 0) {
