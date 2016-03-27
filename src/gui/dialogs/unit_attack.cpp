@@ -126,7 +126,7 @@ static std::string format_stats(const unit& u)
 	str << font::span_color(u.hp_color()) 
 		<< _("HP: ") << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << "\n";
 	str << font::span_color(u.xp_color()) 
-		<< _("XP: ") << u.experience() << "/" << u.max_experience() << "</span>" << "\n";
+		<< _("XP: ") << u.experience() << "/" << u.max_experience() << "</span>";
 
 	str << "</small>";
 
