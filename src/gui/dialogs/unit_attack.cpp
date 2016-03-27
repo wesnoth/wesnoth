@@ -101,7 +101,7 @@ static std::string format_stats(const unit& u)
 	const std::string name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
 	std::string traits;
 
-	BOOST_FOREACH(const std::string& trait, u.get_traits_list()) {
+	BOOST_FOREACH(const std::string& trait, u.trait_names()) {
 		traits += (traits.empty() ? "" : ", ") + trait;
 	}
 
