@@ -1309,6 +1309,12 @@ int game_lua_kernel::intf_get_terrain_info(lua_State *L)
 	lua_setfield(L, -2, "editor_name");
 	luaW_pushtstring(L, info.description());
 	lua_setfield(L, -2, "description");
+	lua_push(L, info.icon_image());
+	lua_setfield(L, -2, "icon");
+	lua_push(L, info.editor_image());
+	lua_setfield(L, -2, "editor_image");
+	lua_pushinteger(L, info.light_bonus(0));
+	lua_setfield(L, -2, "light");
 	lua_pushboolean(L, info.is_village());
 	lua_setfield(L, -2, "village");
 	lua_pushboolean(L, info.is_castle());
