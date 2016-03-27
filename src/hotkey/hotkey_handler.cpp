@@ -223,7 +223,7 @@ void play_controller::hotkey_handler::keyboard_scroll(int x, int y)
 	play_controller_.keyboard_scroll(x, y);
 }
 
-bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_command& cmd, int index, hotkey::HOTKEY_EVENT_TYPE type)
+bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
 {
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	if(index >= 0) {
@@ -250,7 +250,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
 		/// @todo Shouldn't the function return at this point?
 	}
-	return command_executor::execute_command(cmd, index, type);
+	return command_executor::execute_command(cmd, index, press);
 }
 
 bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const

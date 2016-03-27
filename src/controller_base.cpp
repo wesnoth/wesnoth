@@ -350,7 +350,8 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 void controller_base::keyboard_scroll(int x, int y)
 {
 	if (have_keyboard_focus()) {
-		scrollx_ += x;
-		scrolly_ += y;
+		// clamp between -1 and 1 so key repeats don't accelerate scrolling
+		scrollx_ = std::min(1, std::max(-1, scrollx_ + x));
+		scrolly_ = std::min(1, std::max(-1, scrolly_ + y));
 	}
 }

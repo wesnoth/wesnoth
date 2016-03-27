@@ -72,9 +72,10 @@ namespace hotkey {
 
 static void event_execute(const SDL_Event& event, command_executor* executor);
 
-bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/, HOTKEY_EVENT_TYPE type)
+bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/, bool press)
 {
-	if (type == HOTKEY_EVENT_RELEASE) {
+	// hotkey release handling
+	if (!press) {
 		switch(cmd.id) {
 			// release a scroll key, un-apply scrolling in the given direction
 			case HOTKEY_SCROLL_UP:
@@ -96,30 +97,20 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		return true;
 	}
 
-	// special handling for scroll keys, which do not handle repeat
-	if (type == HOTKEY_EVENT_PRESS) {
-		switch(cmd.id) {
-			case HOTKEY_SCROLL_UP:
-				keyboard_scroll(0, -1);
-				return true;
-			case HOTKEY_SCROLL_DOWN:
-				keyboard_scroll(0, 1);
-				return true;
-			case HOTKEY_SCROLL_LEFT:
-				keyboard_scroll(-1, 0);
-				return true;
-			case HOTKEY_SCROLL_RIGHT:
-				keyboard_scroll(1, 0);
-				return true;
-		}
-	}
-
-	// everything following responds to a press or repeat, but not release
+	// hotkey press handling
 	switch(cmd.id) {
-		case HOTKEY_CYCLE_UNITS:
-			cycle_units();
+		case HOTKEY_SCROLL_UP:
+			keyboard_scroll(0, -1);
 			break;
-		case HOTKEY_CYCLE_BACK_UNITS:
+		case HOTKEY_SCROLL_DOWN:
+			keyboard_scroll(0, 1);
+			break;
+		case HOTKEY_SCROLL_LEFT:
+			keyboard_scroll(-1, 0);
+			break;
+		case HOTKEY_SCROLL_RIGHT:
+			keyboard_scroll(1, 0);
+			break;
 			cycle_back_units();
 			break;
 		case HOTKEY_ENDTURN:
@@ -559,26 +550,22 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 		return;
 	}
 
-	HOTKEY_EVENT_TYPE type = HOTKEY_EVENT_PRESS;
-	if (event.type == SDL_KEYUP || event.type == SDL_JOYBUTTONUP || event.type == SDL_MOUSEBUTTONUP)
-		type = HOTKEY_EVENT_RELEASE;
-	else if (event.type == SDL_KEYDOWN && event.key.repeat > 0)
-		type = HOTKEY_EVENT_REPEAT;
+	bool press = event.type == SDL_KEYDOWN || event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN;
 
-	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor, -1, type);
+	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor, -1, press);
 	executor->set_button_state();
 }
 
-void execute_command(const hotkey_command& command, command_executor* executor, int index, HOTKEY_EVENT_TYPE type)
+void execute_command(const hotkey_command& command, command_executor* executor, int index, bool press)
 {
 	if (executor != nullptr) {
 		if (!executor->can_execute_command(command, index)
-				|| executor->execute_command(command, index, type)) {
+				|| executor->execute_command(command, index, press)) {
 			return;
 		}
 	}
 
-	if (type == HOTKEY_EVENT_RELEASE) {
+	if (!press) {
 		return; // none of the commands here respond to a key release
     }
 
